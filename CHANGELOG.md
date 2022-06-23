@@ -60,7 +60,7 @@ Cannot find module '../node_modules/govuk-frontend/govuk-esm/common' imported fr
 
 You should not need to make any changes if you are successfully importing our JavaScript as ES modules with version 4.1.0, but there still might be config you can remove. For example, removing `fullySpecified: false` from your Webpack config file.
 
-This change was introduced in [pull request #2658: Add missing mandatory file extensions for ESM JavaScript](https://github.com/alphagov/govuk-frontend/pull/2658). Thanks to @colinrotheram for reporting issues and suggesting and testing fixes.
+This change was introduced in [pull request #2658: Add missing mandatory file extensions for ESM JavaScript](https://github.com/alphagov/govuk-frontend/pull/2658). Thanks to @colinrotherham for reporting issues and suggesting and testing fixes.
 
 ### Fixes
 
