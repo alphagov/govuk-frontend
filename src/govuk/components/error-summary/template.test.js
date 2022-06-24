@@ -25,11 +25,11 @@ describe('Error-summary', () => {
       expect(ariaAttr).toEqual('error-summary-title')
     })
 
-    it('has role=alert attribute', () => {
+    it('has a child container with the role=alert attribute', () => {
       const $ = render('error-summary', examples.default)
-      const roleAttr = $('.govuk-error-summary').attr('role')
+      const childRoleAttr = $('.govuk-error-summary div:first-child').attr('role')
 
-      expect(roleAttr).toEqual('alert')
+      expect(childRoleAttr).toEqual('alert')
     })
 
     it('renders title text', () => {
