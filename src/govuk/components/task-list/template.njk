@@ -5,30 +5,26 @@
       {%- set hintId = idPrefix + "-" + loop.index + "-hint" -%}
     {% endif %}
     {%- set statusId = idPrefix + "-" + loop.index + "-status" -%}
-    <li class="govuk-task-list__item">
-      {% if item.href %}
-        <a class="govuk-task-list__task-link" href="{{ item.href }}" aria-describedby="{{ hintId + " " if item.hint }}{{ statusId }}">
-      {% else %}
-        <div class="govuk-task-list__task-no-link">
-      {% endif %}
-          <span class="govuk-task-list__task-name-and-hint">
-            <span class="govuk-task-list__task-link__task_name">{{ item.title.html | safe if item.title.html else item.title.text }}</span>
-            {% if item.hint %}
-              <span id="{{ hintId }}" class="govuk-task-list__task-link__task_hint">
-                {{ item.hint.html | safe if item.hint.html else item.hint.text }}
-              </span>
-            {% endif %}
+    <li class="govuk-task-list__item{% if item.href %} govuk-task-list__item--with-link{% endif %}">
+      <div class="govuk-task-list__item-container">
+        <span class="govuk-task-list__task-name-and-hint">
+          {% if item.href %}
+            <a class="govuk-link govuk-task-list__task-link" href="{{ item.href }}" aria-describedby="{{ hintId + " " if item.hint }}{{ statusId }}">{{ item.title.html | safe if item.title.html else item.title.text }}</a>
+          {% else %}
+            <div class="govuk-task-list__task-no-link">{{ item.title.html | safe if item.title.html else item.title.text }}</div>
+          {% endif %}
+          {% if item.hint %}
+            <div id="{{ hintId }}" class="govuk-task-list__task-link__task_hint">
+              {{ item.hint.html | safe if item.hint.html else item.hint.text }}
+            </div>
+          {% endif %}
+        </span>
+        <span class="govuk-task-list__status-container">
+          <span id="{{ statusId }}" class="govuk-task-list__status {{ item.status.classes }}">
+            {{ item.status.text }}
           </span>
-          <span class="govuk-task-list__status-container">
-            <span id="{{ statusId }}" class="govuk-task-list__status {{ item.status.classes }}">
-              {{ item.status.text }}
-            </span>
-          </span>
-      {% if item.href %}
-        </a>
-      {% else %}
-        </div>
-      {% endif %}
+        </span>
+      </div>
     </li>
   {% endfor %}
 </ul>
