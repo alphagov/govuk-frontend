@@ -1,4 +1,4 @@
-import './matches'
+import './matches.mjs'
 
 (function(undefined) {
 

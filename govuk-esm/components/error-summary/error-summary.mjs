@@ -1,6 +1,6 @@
-import '../../vendor/polyfills/Function/prototype/bind'
-import '../../vendor/polyfills/Event' // addEventListener
-import '../../vendor/polyfills/Element/prototype/closest'
+import '../../vendor/polyfills/Function/prototype/bind.mjs'
+import '../../vendor/polyfills/Event.mjs' // addEventListener
+import '../../vendor/polyfills/Element/prototype/closest.mjs'
 
 function ErrorSummary ($module) {
   this.$module = $module
