@@ -112,7 +112,7 @@
                 "name": "checked",
                 "type": "boolean",
                 "required": false,
-                "description": "If `true`, checkbox will be checked."
+                "description": "Whether the checkbox should be checked when the page loads. Takes precedence over the top-level `values` option."
             },
             {
                 "name": "conditional",
@@ -145,6 +145,12 @@
                 "description": "HTML attributes (for example data attributes) to add to the checkbox input tag."
             }
         ]
+    },
+    {
+        "name": "values",
+        "type": "array",
+        "required": false,
+        "description": "Array of values for checkboxes which should be checked when the page loads. Use this as an alternative to setting the `checked` option on each individual item."
     },
     {
         "name": "classes",

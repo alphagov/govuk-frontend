@@ -63,13 +63,14 @@
         {%- if item.divider %}
           <div class="govuk-checkboxes__divider">{{ item.divider }}</div>
         {%- else %}
+          {% set isChecked = item.checked | default(params.values and item.value in params.values) %}
           {% set hasHint = true if item.hint.text or item.hint.html %}
           {% set itemHintId = id + "-item-hint" if hasHint else "" %}
           {% set itemDescribedBy = describedBy if not hasFieldset else "" %}
           {% set itemDescribedBy = (itemDescribedBy + " " + itemHintId) | trim %}
           <div class="govuk-checkboxes__item">
             <input class="govuk-checkboxes__input" id="{{ id }}" name="{{ name }}" type="checkbox" value="{{ item.value }}"
-            {{-" checked" if item.checked }}
+            {{-" checked" if isChecked }}
             {{-" disabled" if item.disabled }}
             {%- if item.conditional.html %} data-aria-controls="{{ conditionalId }}"{% endif -%}
             {%- if item.behaviour %} data-behaviour="{{ item.behaviour }}"{% endif -%}
@@ -93,7 +94,7 @@
             {% endif %}
           </div>
           {% if item.conditional.html %}
-            <div class="govuk-checkboxes__conditional{% if not item.checked %} govuk-checkboxes__conditional--hidden{% endif %}" id="{{ conditionalId }}">
+            <div class="govuk-checkboxes__conditional{% if not isChecked %} govuk-checkboxes__conditional--hidden{% endif %}" id="{{ conditionalId }}">
               {{ item.conditional.html | safe }}
             </div>
           {% endif %}

@@ -56,11 +56,12 @@
         {%- if item.divider %}
         <div class="govuk-radios__divider">{{ item.divider }}</div>
         {%- else %}
+        {% set isChecked = item.checked | default(params.value and item.value == params.value) %}
         {% set hasHint = true if item.hint.text or item.hint.html %}
         {% set itemHintId = id + '-item-hint' %}
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="{{ id }}" name="{{ params.name }}" type="radio" value="{{ item.value }}"
-          {{-" checked" if item.checked }}
+          {{-" checked" if isChecked }}
           {{-" disabled" if item.disabled }}
           {%- if item.conditional.html %} data-aria-controls="{{ conditionalId }}"{% endif -%}
           {%- if hasHint %} aria-describedby="{{ itemHintId }}"{% endif -%}
@@ -83,7 +84,7 @@
           {% endif %}
         </div>
         {% if item.conditional.html %}
-          <div class="govuk-radios__conditional{% if not item.checked %} govuk-radios__conditional--hidden{% endif %}" id="{{ conditionalId }}">
+          <div class="govuk-radios__conditional{% if not isChecked %} govuk-radios__conditional--hidden{% endif %}" id="{{ conditionalId }}">
             {{ item.conditional.html | safe }}
           </div>
         {% endif %}
