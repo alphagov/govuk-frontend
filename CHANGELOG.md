@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 4.2.0 (Feature release)
+
 ### New features
 
 #### Help users navigate through pages with pagination
