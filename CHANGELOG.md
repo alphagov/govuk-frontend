@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Fixes
+
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#2668: Fix Summary List action link alignment](https://github.com/alphagov/govuk-frontend/pull/2668)
+
 ## 4.2.0 (Feature release)
 
 ### New features
