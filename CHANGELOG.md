@@ -9,6 +9,7 @@ In [pull request 2678: Replace ex units with ems for input lengths](https://gith
 We’ve also made fixes in the following pull requests:
 
 - [#2668: Fix Summary List action link alignment](https://github.com/alphagov/govuk-frontend/pull/2668)
+- [#2670: Define mininimum width for select component](https://github.com/alphagov/govuk-frontend/pull/2670)
 
 ## 4.2.0 (Feature release)
 
