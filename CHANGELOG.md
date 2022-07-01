@@ -4,7 +4,9 @@
 
 ### Fixes
 
-We’ve made fixes to GOV.UK Frontend in the following pull requests:
+In [pull request 2678: Replace ex units with ems for input lengths](https://github.com/alphagov/govuk-frontend/pull/2678), we changed how we define input lengths in our CSS. Browsers might now display these inputs as being slightly wider than before. The difference is usually fewer than 3 pixels.  
+
+We’ve also made fixes in the following pull requests:
 
 - [#2668: Fix Summary List action link alignment](https://github.com/alphagov/govuk-frontend/pull/2668)
 
