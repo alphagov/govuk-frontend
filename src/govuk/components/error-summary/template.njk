@@ -1,11 +1,11 @@
 <div class="govuk-error-summary
-  {%- if params.classes %} {{ params.classes }}{% endif %}" aria-labelledby="error-summary-title"
+  {%- if params.classes %} {{ params.classes }}{% endif %}"
   {%- if params.disableAutoFocus %} data-disable-auto-focus="true"{% endif %}
   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %} data-module="govuk-error-summary">
   {# Keep the role="alert" in a seperate child container to prevent a race condition between
   the focusing js at the alert, resulting in information getting missed in screen reader announcements #}
   <div role="alert">
-    <h2 class="govuk-error-summary__title" id="error-summary-title">
+    <h2 class="govuk-error-summary__title">
       {{ params.titleHtml | safe if params.titleHtml else params.titleText }}
     </h2>
     <div class="govuk-error-summary__body">
