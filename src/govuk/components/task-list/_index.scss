@@ -14,42 +14,30 @@
     }
   }
 
-  .govuk-task-list__items {
-    @include govuk-font($size: 19);
-    @include govuk-responsive-margin(9, "bottom");
-    padding-left: 0;
-    list-style: none;
-    @include govuk-media-query($from: tablet) {
-      padding-left: govuk-spacing(6);
-    }
-  }
-
   .govuk-task-list__item {
     margin-bottom: 0;
     border-bottom: 1px solid $govuk-border-colour;
-    @include govuk-clearfix;
   }
 
   .govuk-task-list__item:first-child {
     border-top: 1px solid $govuk-border-colour;
   }
 
+  // This class is added to the <li> elements where the task name is a link.
+  // The background hover colour is added to help indicate that the whole row is clickable, rather
+  // than just the visible link text.
+  .govuk-task-list__item--with-link:hover {
+    background: $govuk-task-list-hover-colour;
+  }
+
+  // This uses table layout so that the task name and status always appear side-by-side, with the width of
+  // each 'column' being flexible depending upon the length of the task names and statuses.
   .govuk-task-list__item-container {
     display: table;
     position: relative;
     width: 100%;
     padding-top: govuk-spacing(2);
     padding-bottom: govuk-spacing(2);
-  }
-
-  .govuk-task-list__task-link:after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
   }
 
   .govuk-task-list__task-name-and-hint {
@@ -64,35 +52,20 @@
     vertical-align: top;
   }
 
-  .govuk-task-list__task-link__task_name {
+  // This adds an empty transparent box covering the whole row, including the task status and
+  // any hint text. Because this is generated within the link element, this allows the whole area
+  // to be clickable.
+  .govuk-task-list__task-link:after {
+    content: "";
     display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
   }
 
-  .govuk-task-list__item--with-link:hover {
-    background: $govuk-task-list-hover-colour;
-  }
-
-  .govuk-task-list__task-link:hover .govuk-task-list__task-link__task_name {
-    @include govuk-link-hover-decoration;
-  }
-
-  .govuk-task-list__task-link:focus {
-    outline: none;
-  }
-
-  .govuk-task-list__task-link:focus .govuk-task-list__task-link__task_name {
-    @include govuk-focused-text;
-
-    color: $govuk-task-list-focus-colour;
-    background-color: $govuk-task-list-focus-background-colour;
-  }
-
-  .govuk-task-list__task-link__task_hint {
-    margin-top: 5px;
-    color: $govuk-secondary-text-colour;
-  }
-
-  .govuk-task-list__hint {
+  .govuk-task-list__task_hint {
     margin-top: govuk-spacing(1);
     color: $govuk-secondary-text-colour;
   }
