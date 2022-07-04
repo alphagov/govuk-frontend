@@ -59,7 +59,7 @@ describe('Task List', () => {
     it('renders hint text', () => {
       const $ = render('task-list', examples['example with hint text and additional states'])
 
-      const $hintText = $('.govuk-task-list__task-link__task_hint')
+      const $hintText = $('.govuk-task-list__task_hint')
       expect($hintText.get(0).tagName).toEqual('div')
       expect($hintText.text()).toContain('Ensure the plan covers objectives, strategies, sales, marketing and financial forecasts.')
     })
