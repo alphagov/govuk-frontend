@@ -63,5 +63,15 @@ describe('Task List', () => {
       expect($hintText.get(0).tagName).toEqual('div')
       expect($hintText.text()).toContain('Ensure the plan covers objectives, strategies, sales, marketing and financial forecasts.')
     })
+
+    it('associates the hint text with the task link using aria', () => {
+      const $ = render('task-list', examples['example with hint text and additional states'])
+
+      const $hintText = $('.govuk-task-list__task_hint')
+      expect($hintText.attr('id')).toEqual('task-list-example-3-hint')
+
+      const $itemAssociatedWithHint = $('.govuk-task-list__task-link[aria-describedby~="' + $hintText.attr('id') + '"]')
+      expect($itemAssociatedWithHint.text()).toContain('Business plan')
+    })
   })
 })
