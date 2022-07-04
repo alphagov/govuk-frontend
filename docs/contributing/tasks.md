@@ -59,7 +59,7 @@ This task will:
 **`gulp watch`**
 
 This task will:
-- watch for changes in .js, .scss and .njk files and run below tasks.
+- watch for changes in .mjs, .scss and .njk files and run below tasks.
 
 **`gulp styles`**
 

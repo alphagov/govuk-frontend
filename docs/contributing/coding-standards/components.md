@@ -20,7 +20,7 @@ When creating your component, you should create the following files in the compo
 
 If your component uses JavaScript, you must also create the following files in the component’s folder:
 
-      - `_[component-name].js`
+      - `_[component-name].mjs`
       - `_[component-name].test.js`
 
 ## Building your components

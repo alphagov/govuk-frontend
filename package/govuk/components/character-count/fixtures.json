@@ -83,10 +83,11 @@
                 "maxlength": 10,
                 "label": {
                     "text": "Full address",
+                    "classes": "govuk-label--l",
                     "isPageHeading": true
                 }
             },
-            "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  \n\n<div class=\"govuk-form-group\">\n  <h1 class=\"govuk-label-wrapper\">\n    <label class=\"govuk-label\" for=\"textarea-with-page-heading\">\n      Full address\n    </label>\n    </h1>\n\n\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"textarea-with-page-heading\" name=\"address\" rows=\"5\" aria-describedby=\"textarea-with-page-heading-info\"></textarea>\n</div>\n\n  <div id=\"textarea-with-page-heading-info\" class=\"govuk-hint govuk-character-count__message\">\n  You can enter up to 10 characters\n</div>\n\n</div>",
+            "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  \n\n<div class=\"govuk-form-group\">\n  <h1 class=\"govuk-label-wrapper\">\n    <label class=\"govuk-label govuk-label--l\" for=\"textarea-with-page-heading\">\n      Full address\n    </label>\n    </h1>\n\n\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"textarea-with-page-heading\" name=\"address\" rows=\"5\" aria-describedby=\"textarea-with-page-heading-info\"></textarea>\n</div>\n\n  <div id=\"textarea-with-page-heading-info\" class=\"govuk-hint govuk-character-count__message\">\n  You can enter up to 10 characters\n</div>\n\n</div>",
             "hidden": false
         },
         {

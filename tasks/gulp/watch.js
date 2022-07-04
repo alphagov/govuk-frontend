@@ -7,5 +7,5 @@ const configPaths = require('../../config/paths.json')
 // ---------------------------------------
 gulp.task('watch', () => Promise.all([
   gulp.watch([configPaths.src + '**/**/*.scss', configPaths.app + 'assets/scss/**/*.scss', configPaths.fullPageExamples + '**/*.scss'], gulp.parallel('styles', 'sassdoc')),
-  gulp.watch([configPaths.src + '**/**/*.js'], gulp.series('scripts'))
+  gulp.watch([configPaths.src + '**/**/*.mjs'], gulp.series('scripts'))
 ]))
