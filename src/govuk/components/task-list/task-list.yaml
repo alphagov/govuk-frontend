@@ -151,7 +151,7 @@ examples:
             text: It will cost between £15 and £75
           status:
             text: Cannot start yet
-            classes: govuk-task-list__status--white
+            classes: govuk-task-list__status--secondary-text-colour
 
   - name: example with all possible colours
     data:
@@ -161,26 +161,26 @@ examples:
             text: Task A
           href: '#'
           status:
-            text: Black
-            classes: govuk-task-list__status--black
+            text: Text colour
+            classes: govuk-task-list__status--text-colour
         - title:
             text: Task B
+          href: '#'
+          status:
+            text: Secondary text colour
+            classes: govuk-task-list__status--secondary-text-colour
+        - title:
+            text: Task C
           href: '#'
           status:
             text: Light blue
             classes: govuk-task-list__status--light-blue
         - title:
-            text: Task C
+            text: Task D
           href: '#'
           status:
             text: Blue
             classes: govuk-task-list__status--blue
-        - title:
-            text: Task D
-          href: '#'
-          status:
-            text: White
-            classes: govuk-task-list__status--white
         - title:
             text: Task E
           href: '#'
