@@ -105,43 +105,43 @@
     padding-right: 4px;
     padding-bottom: 2px;
     padding-left: 4px;
+  }
 
-    &--light-blue {
-      color: govuk-shade(govuk-colour("blue"), 60);
-      background-color: govuk-tint(govuk-colour("blue"), 90);
-    }
+  .govuk-task-list__status--light-blue {
+    color: govuk-shade(govuk-colour("blue"), 60);
+    background-color: govuk-tint(govuk-colour("blue"), 90);
+  }
 
-    &--blue {
-      color: govuk-shade(govuk-colour("blue"), 60);
-      background-color: govuk-tint(govuk-colour("blue"), 75);
-    }
+  .govuk-task-list__status--blue {
+    color: govuk-shade(govuk-colour("blue"), 60);
+    background-color: govuk-tint(govuk-colour("blue"), 75);
+  }
 
-    &--white {
-      color: $govuk-secondary-text-colour;
-    }
+  .govuk-task-list__status--text-colour {
+    color: $govuk-text-colour;
+  }
 
-    &--black {
-      color: govuk-colour("black");
-    }
+  .govuk-task-list__status--secondary-text-colour {
+    color: $govuk-secondary-text-colour;
+  }
 
-    &--purple {
-      color: govuk-shade(govuk-colour("bright-purple"), 50);
-      background-color: govuk-tint(govuk-colour("bright-purple"), 85);
-    }
+  .govuk-task-list__status--purple {
+    color: govuk-shade(govuk-colour("bright-purple"), 50);
+    background-color: govuk-tint(govuk-colour("bright-purple"), 85);
+  }
 
-    &--grey {
-      color: govuk-shade(govuk-colour("dark-grey", $legacy: "grey-1"), 50);
-      background-color: govuk-tint(govuk-colour("dark-grey", $legacy: "grey-1"), 85);
-    }
+  .govuk-task-list__status--grey {
+    color: govuk-shade(govuk-colour("dark-grey", $legacy: "grey-1"), 50);
+    background-color: govuk-tint(govuk-colour("dark-grey", $legacy: "grey-1"), 85);
+  }
 
-    &--pink {
-      color: govuk-shade(govuk-colour("pink"), 50);
-      background-color: govuk-tint(govuk-colour("pink"), 85);
-    }
+  .govuk-task-list__status--pink {
+    color: govuk-shade(govuk-colour("pink"), 50);
+    background-color: govuk-tint(govuk-colour("pink"), 85);
+  }
 
-    &--error {
-      color: govuk-shade(govuk-colour("red"), 80);
-      background-color: govuk-tint(govuk-colour("red"), 75);
-    }
+  .govuk-task-list__status--error {
+    color: govuk-shade($govuk-error-colour, 80);
+    background-color: govuk-tint($govuk-error-colour, 75);
   }
 }
