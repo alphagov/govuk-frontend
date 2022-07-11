@@ -310,6 +310,7 @@ examples:
     hidden: true
     data:
       name: colors
+      id: colors
       items:
         - value: red
           text: Red
