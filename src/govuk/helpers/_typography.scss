@@ -86,12 +86,13 @@
 
 /// Responsive typography helper
 ///
-/// Takes a 'font map' as an argument and uses it to create font-size and
-/// line-height declarations for different breakpoints, and for print.
+/// Takes a point from the responsive 'font map' as an argument (the size as it
+/// would appear on tablet and above), and uses it to create font-size and
+/// line-height declarations for different breakpoints, and print.
 ///
 /// Example font map:
 ///
-/// $my-font-map: (
+/// 19: (
 ///   null: (
 ///     font-size: 16px,
 ///     line-height: 20px
@@ -106,11 +107,14 @@
 ///   )
 /// );
 ///
-/// @param {Map} $font-map - Font map
+/// @param {Number} $size - Point from the spacing scale (the size as it would
+///   appear on tablet and above)
 /// @param {Number} $override-line-height [false] - Non responsive custom line
 ///   height. Omit to use the line height from the font map.
 /// @param {Boolean} $important [false] - Whether to mark declarations as
 ///   `!important`.
+///
+/// @throw if `$size` is not a valid point from the spacing scale
 ///
 /// @access public
 
@@ -167,11 +171,14 @@
 
 /// Font helper
 ///
-/// @param {Number} $size - Size of the font as it would appear on desktop -
-///   uses the responsive font size map
+/// @param {Number | Boolean} $size Point from the spacing scale (the size as it
+///   would appear on tablet and above). Use `false` to avoid setting a size.
 /// @param {String} $weight [regular] - Weight: `bold` or `regular`
 /// @param {Boolean} $tabular [false] - Whether to use tabular numbers or not
-/// @param {Number} $line-height [false] - Line-height, if overriding the default
+/// @param {Number} $line-height [false] - Line-height, if overriding the
+///   default
+///
+/// @throw if `$size` is not a valid point from the spacing scale (or false)
 ///
 /// @access public
 
