@@ -85,7 +85,7 @@ Open Government 3.0 licence.
 
 ## Contributing
 
-[To learn how to help us build GOV.UK Frontend, see our contribution guidelines.](https://github.com/alphagov/govuk-frontend/blob/f07569c9e7724606970c0d2764f1e9ce7fa14092/CONTRIBUTING.md)
+[To learn how to help us build GOV.UK Frontend, see our contribution guidelines.](CONTRIBUTING.md)
 
 The govuk-frontend repository is public and we welcome contributions from anyone.
 
