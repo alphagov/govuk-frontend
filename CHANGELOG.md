@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+### Deprecated features
+
+#### Remove deprecated `govuk-header__navigation--no-service-name` class in the header
+
+We've deprecated the `govuk-header__navigation--no-service-name` class, and will remove it in a future major release.
+
+This change was introduced in [pull request #2694: Deprecate `.govuk-header__navigation--no-service-name`](https://github.com/alphagov/govuk-frontend/pull/2694).
+
 ### Fixes
 
 In [pull request 2678: Replace ex units with ems for input lengths](https://github.com/alphagov/govuk-frontend/pull/2678), we changed how we define input lengths in our CSS. Browsers might now display these inputs as being slightly wider than before. The difference is usually fewer than 3 pixels.  
