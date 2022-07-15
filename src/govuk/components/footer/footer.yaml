@@ -72,6 +72,10 @@ params:
   required: false
   description: Object containing options for the content licence.
   params:
+  - name: hideOGLLogo
+    type: boolean
+    required: false
+    description: If `true`, the Open Government Licence logo will not be shown.
   - name: text
     type: string
     required: false
@@ -85,6 +89,10 @@ params:
   required: false
   description: Object containing options for the copyright notice.
   params:
+  - name: hideCrownLogo
+    type: boolean
+    required: false
+    description: If `true`, the royal arms will not be shown.
   - name: text
     type: string
     required: false
@@ -93,6 +101,10 @@ params:
     type: string
     required: false
     description: If `text` is set, this is not required. HTML to use within the disclosed part of the details element. If `html` is provided, the `text` option will be ignored. If neither are provided, Crown copyright is used.
+  - name: href
+    type: string
+    required: false
+    description: The URL that the copyright notice should link to. By default, this links to the Crown copyright page of the National Archives website. This can be set to an empty string if a link isn't needed.
 - name: containerClasses
   type: string
   required: false
@@ -150,6 +162,17 @@ examples:
       html: 'Mae’r holl gynnwys ar gael dan <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/" rel="license">Drwydded y Llywodraeth Agored v3.0</a>, ac eithrio lle nodir yn wahanol'
     copyright:
       text: © Hawlfraint y Goron
+
+- name: without OGL or Crown copyright graphics
+  description: If the page's content isn't available under the Open Government Licence or Crown copyright
+  data:
+    contentLicence: 
+      hideOGLLogo: true
+      html: 'Text is available under the <a class="govuk-footer__link" href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">Creative Commons Attribution-ShareAlike License 3.0</a>; additional terms may apply.'
+    copyright:
+      hideCrownLogo: true
+      text: © Megadodo Publications
+      href: ''
 
 - name: with meta
   description: Secondary navigation with meta information relating to the site
