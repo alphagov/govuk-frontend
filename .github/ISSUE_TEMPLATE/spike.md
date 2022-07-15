@@ -20,6 +20,7 @@ assignees: ''
 <!-- Any assumptions about this piece of work which may be helpful to document -->
 
 ## Timebox
+<!-- e.g: 2 days -->
 We should review progress after this period of time has elapsed, even [if the spike has not been 'completed'](https://docs.google.com/document/d/17W_d0aYszgh7HTgnTHZLxXDu_TJyu8zzWt_lXH8VaHA/edit#heading=h.jd56itytegn6)
 
 ## Who is working on this?
