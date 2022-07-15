@@ -67,6 +67,32 @@ params:
       type: object
       required: false
       description: HTML attributes (for example data attributes) to add to the anchor in the footer navigation section.
+- name: contentLicence
+  type: object
+  required: false
+  description: Object containing options for the content licence.
+  params:
+  - name: text
+    type: string
+    required: false
+    description: If `html` is set, this is not required. If `html` is provided, the `text` option will be ignored. If neither are provided, the text for the Open Government Licence is used.
+  - name: html
+    type: string
+    required: false
+    description: If `text` is set, this is not required. If `html` is provided, the `text` option will be ignored. If neither are provided, the text for the Open Government Licence is used. The content licence is inside a `<span>` element, so you can only add [phrasing content](https://html.spec.whatwg.org/#phrasing-content) to it.
+- name: copyright
+  type: object
+  required: false
+  description: Object containing options for the copyright notice.
+  params:
+  - name: text
+    type: string
+    required: false
+    description: If `html` is set, this is not required. If `html` is provided, the `text` option will be ignored. If neither are provided, Crown copyright is used.
+  - name: html
+    type: string
+    required: false
+    description: If `text` is set, this is not required. If `html` is provided, the `text` option will be ignored. If neither are provided, Crown copyright is used. The copyright notice is inside an `<a>` element, so you can only use text formatting elements within it.
 - name: containerClasses
   type: string
   required: false
@@ -116,6 +142,22 @@ examples:
 - name: default
   data:
     {}
+
+- name: with custom HTML content licence and copyright notice
+  description: Open Government Licence and Crown copyright notice translated into Welsh
+  data:
+    contentLicence:
+      html: 'Mae’r holl gynnwys ar gael dan <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/" rel="license">Drwydded y Llywodraeth Agored v3.0</a>, ac eithrio lle nodir yn wahanol'
+    copyright:
+      html: '<span>Hawlfraint y Goron</span>'
+
+- name: with custom text content licence and copyright notice
+  description: Open Government Licence and Crown copyright notice translated into Welsh
+  data:
+    contentLicence:
+      text: 'Mae’r holl gynnwys ar gael dan Drwydded y Llywodraeth Agored v3.0, ac eithrio lle nodir yn wahanol'
+    copyright:
+      text: '© Hawlfraint y Goron'
 
 - name: with meta
   description: Secondary navigation with meta information relating to the site
@@ -378,6 +420,13 @@ examples:
   hidden: true
   data:
     containerClasses: app-width-container
+- name: with HTML passed as text content
+  hidden: true
+  data:
+    contentLicence:
+      text: 'Mae’r holl gynnwys ar gael dan <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/" rel="license">Drwydded y Llywodraeth Agored v3.0</a>, ac eithrio lle nodir yn wahanol'
+    copyright:
+      text: '<span>Hawlfraint y Goron</span>'
 - name: with empty meta
   hidden: true
   data:
