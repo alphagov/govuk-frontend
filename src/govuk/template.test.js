@@ -76,18 +76,27 @@ describe('Template', () => {
       expect($icon.attr('href')).toEqual('/whatever/images/favicon.ico')
     })
 
-    it('uses a default assets URL of whatever assetPath is', () => {
-      const $ = renderTemplate({ assetPath: '/whatever' })
-      const $ogImage = $('meta[property="og:image"]')
+    describe('opengraph image', () => {
+      it('is not included if neither assetUrl nor opengraphImageUrl are set ', () => {
+        const $ = renderTemplate({})
+        const $ogImage = $('meta[property="og:image"]')
 
-      expect($ogImage.attr('content')).toEqual('/whatever/images/govuk-opengraph-image.png')
-    })
+        expect($ogImage.length).toBe(0)
+      })
 
-    it('can have the assets URL overridden using assetUrl', () => {
-      const $ = renderTemplate({ assetUrl: '//a.gov.uk' })
-      const $ogImage = $('meta[property="og:image"]')
+      it('is included using default path and filename if assetUrl is set', () => {
+        const $ = renderTemplate({ assetUrl: 'https://foo.com/my-assets' })
+        const $ogImage = $('meta[property="og:image"]')
 
-      expect($ogImage.attr('content')).toEqual('//a.gov.uk/images/govuk-opengraph-image.png')
+        expect($ogImage.attr('content')).toEqual('https://foo.com/my-assets/images/govuk-opengraph-image.png')
+      })
+
+      it('is included if opengraphImageUrl is set', () => {
+        const $ = renderTemplate({ opengraphImageUrl: 'https://foo.com/custom/og-image.png' })
+        const $ogImage = $('meta[property="og:image"]')
+
+        expect($ogImage.attr('content')).toEqual('https://foo.com/custom/og-image.png')
+      })
     })
 
     describe('<meta name="theme-color">', () => {
