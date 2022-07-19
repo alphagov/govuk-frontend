@@ -104,6 +104,30 @@
         ]
     },
     {
+        "name": "contentLicence",
+        "type": "string",
+        "required": false,
+        "description": "HTML or text to replace the default Open Government Licence notice with."
+    },
+    {
+        "name": "hideOpenGovernmentLicenceLogo",
+        "type": "boolean",
+        "required": false,
+        "description": "Removes the Open Government Licence logo, if the licence being used isn't the OGL."
+    },
+    {
+        "name": "copyright",
+        "type": "string",
+        "required": false,
+        "description": "Text to replace the default Crown Copyright notice with."
+    },
+    {
+        "name": "hideCrownCopyrightArms",
+        "type": "boolean",
+        "required": false,
+        "description": "Removes the Crown Copyright notice and royal coat of arms."
+    },
+    {
         "name": "containerClasses",
         "type": "string",
         "required": false,

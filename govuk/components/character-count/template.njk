@@ -26,8 +26,11 @@
     errorMessage: params.errorMessage,
     attributes: params.attributes
   }) }}
+
+  {%- set limitHintLength = params.maxlength or params.maxwords %}
+  {%- set limitHintDefault = 'You can enter up to %{count} ' + ('words' if params.maxwords else 'characters') %}
   {{ govukHint({
-    text: 'You can enter up to ' + (params.maxlength or params.maxwords) + (' words' if params.maxwords else ' characters'),
+    text: (params.limitHint or limitHintDefault) | replace('%{count}', limitHintLength),
     id: params.id + '-info',
     classes: 'govuk-character-count__message' + (' ' + params.countMessage.classes if params.countMessage.classes)
   }) }}

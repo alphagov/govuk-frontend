@@ -12,7 +12,51 @@
             "hidden": false
         },
         {
-            "name": "as page heading",
+            "name": "styled as xl text",
+            "options": {
+                "legend": {
+                    "text": "What is your address?",
+                    "classes": "govuk-fieldset__legend--xl"
+                }
+            },
+            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--xl\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n</fieldset>",
+            "hidden": false
+        },
+        {
+            "name": "styled as large text",
+            "options": {
+                "legend": {
+                    "text": "What is your address?",
+                    "classes": "govuk-fieldset__legend--l"
+                }
+            },
+            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--l\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n</fieldset>",
+            "hidden": false
+        },
+        {
+            "name": "styled as medium text",
+            "options": {
+                "legend": {
+                    "text": "What is your address?",
+                    "classes": "govuk-fieldset__legend--m"
+                }
+            },
+            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--m\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n</fieldset>",
+            "hidden": false
+        },
+        {
+            "name": "styled as small text",
+            "options": {
+                "legend": {
+                    "text": "What is your address?",
+                    "classes": "govuk-fieldset__legend--s"
+                }
+            },
+            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--s\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n</fieldset>",
+            "hidden": false
+        },
+        {
+            "name": "as page heading xl",
             "options": {
                 "legend": {
                     "text": "What is your address?",
@@ -21,6 +65,53 @@
                 }
             },
             "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--xl\">\n  \n    <h1 class=\"govuk-fieldset__heading\">\n      What is your address?\n    </h1>\n  \n  </legend>\n  \n\n</fieldset>",
+            "hidden": false
+        },
+        {
+            "name": "as page heading l",
+            "options": {
+                "legend": {
+                    "text": "What is your address?",
+                    "classes": "govuk-fieldset__legend--l",
+                    "isPageHeading": true
+                }
+            },
+            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--l\">\n  \n    <h1 class=\"govuk-fieldset__heading\">\n      What is your address?\n    </h1>\n  \n  </legend>\n  \n\n</fieldset>",
+            "hidden": false
+        },
+        {
+            "name": "as page heading m",
+            "options": {
+                "legend": {
+                    "text": "What is your address?",
+                    "classes": "govuk-fieldset__legend--m",
+                    "isPageHeading": true
+                }
+            },
+            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--m\">\n  \n    <h1 class=\"govuk-fieldset__heading\">\n      What is your address?\n    </h1>\n  \n  </legend>\n  \n\n</fieldset>",
+            "hidden": false
+        },
+        {
+            "name": "as page heading s",
+            "options": {
+                "legend": {
+                    "text": "What is your address?",
+                    "classes": "govuk-fieldset__legend--s",
+                    "isPageHeading": true
+                }
+            },
+            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--s\">\n  \n    <h1 class=\"govuk-fieldset__heading\">\n      What is your address?\n    </h1>\n  \n  </legend>\n  \n\n</fieldset>",
+            "hidden": false
+        },
+        {
+            "name": "as page heading without class",
+            "options": {
+                "legend": {
+                    "text": "What is your address?",
+                    "isPageHeading": true
+                }
+            },
+            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    <h1 class=\"govuk-fieldset__heading\">\n      What is your address?\n    </h1>\n  \n  </legend>\n  \n\n</fieldset>",
             "hidden": false
         },
         {

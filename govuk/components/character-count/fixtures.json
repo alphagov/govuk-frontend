@@ -83,10 +83,11 @@
                 "maxlength": 10,
                 "label": {
                     "text": "Full address",
+                    "classes": "govuk-label--l",
                     "isPageHeading": true
                 }
             },
-            "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  \n\n<div class=\"govuk-form-group\">\n  <h1 class=\"govuk-label-wrapper\">\n    <label class=\"govuk-label\" for=\"textarea-with-page-heading\">\n      Full address\n    </label>\n    </h1>\n\n\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"textarea-with-page-heading\" name=\"address\" rows=\"5\" aria-describedby=\"textarea-with-page-heading-info\"></textarea>\n</div>\n\n  <div id=\"textarea-with-page-heading-info\" class=\"govuk-hint govuk-character-count__message\">\n  You can enter up to 10 characters\n</div>\n\n</div>",
+            "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  \n\n<div class=\"govuk-form-group\">\n  <h1 class=\"govuk-label-wrapper\">\n    <label class=\"govuk-label govuk-label--l\" for=\"textarea-with-page-heading\">\n      Full address\n    </label>\n    </h1>\n\n\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"textarea-with-page-heading\" name=\"address\" rows=\"5\" aria-describedby=\"textarea-with-page-heading-info\"></textarea>\n</div>\n\n  <div id=\"textarea-with-page-heading-info\" class=\"govuk-hint govuk-character-count__message\">\n  You can enter up to 10 characters\n</div>\n\n</div>",
             "hidden": false
         },
         {
@@ -114,6 +115,33 @@
                 }
             },
             "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\" data-threshold=\"75\">\n  \n\n<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-threshold\">\n    Full address\n  </label>\n\n\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"with-threshold\" name=\"with-threshold\" rows=\"5\" aria-describedby=\"with-threshold-info\"></textarea>\n</div>\n\n  <div id=\"with-threshold-info\" class=\"govuk-hint govuk-character-count__message\">\n  You can enter up to 10 characters\n</div>\n\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "with very high character limit",
+            "options": {
+                "id": "with-very-high-limit",
+                "name": "with-very-high-limit",
+                "maxlength": 1280,
+                "label": {
+                    "text": "Life story"
+                }
+            },
+            "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"1280\">\n  \n\n<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-very-high-limit\">\n    Life story\n  </label>\n\n\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"with-very-high-limit\" name=\"with-very-high-limit\" rows=\"5\" aria-describedby=\"with-very-high-limit-info\"></textarea>\n</div>\n\n  <div id=\"with-very-high-limit-info\" class=\"govuk-hint govuk-character-count__message\">\n  You can enter up to 1280 characters\n</div>\n\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "with localised fallback text",
+            "options": {
+                "id": "with-localisation",
+                "name": "with-localisation",
+                "maxlength": 10,
+                "label": {
+                    "text": "Full address"
+                },
+                "limitHint": "Gallwch nodi hyd at %{count} o gymeriadau"
+            },
+            "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  \n\n<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-localisation\">\n    Full address\n  </label>\n\n\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"with-localisation\" name=\"with-localisation\" rows=\"5\" aria-describedby=\"with-localisation-info\"></textarea>\n</div>\n\n  <div id=\"with-localisation-info\" class=\"govuk-hint govuk-character-count__message\">\n  Gallwch nodi hyd at 10 o gymeriadau\n</div>\n\n</div>",
             "hidden": false
         },
         {
@@ -247,7 +275,7 @@
                 }
             },
             "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  \n\n<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"user1.profile[address]\">\n    Full address\n  </label>\n\n\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"user1.profile[address]\" name=\"address\" rows=\"5\" aria-describedby=\"user1.profile[address]-info\"></textarea>\n</div>\n\n  <div id=\"user1.profile[address]-info\" class=\"govuk-hint govuk-character-count__message\">\n  You can enter up to 10 characters\n</div>\n\n</div>",
-            "hidden": false
+            "hidden": true
         },
         {
             "name": "with textarea maxlength attribute",

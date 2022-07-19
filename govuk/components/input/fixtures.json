@@ -163,12 +163,13 @@
             "options": {
                 "label": {
                     "text": "National Insurance number",
+                    "classes": "govuk-label--l",
                     "isPageHeading": true
                 },
                 "id": "input-with-page-heading",
                 "name": "test-name"
             },
-            "html": "<div class=\"govuk-form-group\">\n  <h1 class=\"govuk-label-wrapper\">\n    <label class=\"govuk-label\" for=\"input-with-page-heading\">\n      National Insurance number\n    </label>\n    </h1>\n\n<input class=\"govuk-input\" id=\"input-with-page-heading\" name=\"test-name\" type=\"text\">\n\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <h1 class=\"govuk-label-wrapper\">\n    <label class=\"govuk-label govuk-label--l\" for=\"input-with-page-heading\">\n      National Insurance number\n    </label>\n    </h1>\n\n<input class=\"govuk-input\" id=\"input-with-page-heading\" name=\"test-name\" type=\"text\">\n\n</div>",
             "hidden": false
         },
         {

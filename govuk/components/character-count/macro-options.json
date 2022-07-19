@@ -56,6 +56,12 @@
         "isComponent": true
     },
     {
+        "name": "limitHint",
+        "type": "string",
+        "required": false,
+        "description": "Text describing the maximum number of characters or words that can be entered, which is announced to screen readers and displayed as a fallback if the character count JavaScript does not run. Instances of `%{count}` within the string will be replaced by the value of either the `maxlength` or `maxwords` parameters. By default, fallback text in English is constructed based on what other parameters are provided to the component."
+    },
+    {
         "name": "errorMessage",
         "type": "object",
         "required": false,

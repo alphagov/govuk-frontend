@@ -1,0 +1,39 @@
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
+	typeof define === 'function' && define.amd ? define('GOVUKFrontend', factory) :
+	(factory());
+}(this, (function () { 'use strict';
+
+(function(undefined) {
+
+  var detect = ('assign' in Object);
+
+  if (detect) return
+  
+  // Polyfill from https://github.com/christiansany/object-assign-polyfill/blob/master/index.js
+  Object.assign = function(target, varArgs) { // .length of function is 2
+    if (target == null) { // TypeError if undefined or null
+      throw new TypeError('Cannot convert undefined or null to object');
+    }
+  
+    var to = Object(target);
+  
+    for (var index = 1; index < arguments.length; index++) {
+      var nextSource = arguments[index];
+  
+      if (nextSource != null) { // Skip over if undefined or null
+        for (var nextKey in nextSource) {
+          // Avoid bugs when hasOwnProperty is shadowed
+          if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+            to[nextKey] = nextSource[nextKey];
+          }
+        }
+      }
+    }
+    return to;
+  };
+  
+})
+.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+})));

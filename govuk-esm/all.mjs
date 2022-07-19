@@ -1,15 +1,15 @@
-import { nodeListForEach } from './common'
-import Accordion from './components/accordion/accordion'
-import Button from './components/button/button'
-import Details from './components/details/details'
-import CharacterCount from './components/character-count/character-count'
-import Checkboxes from './components/checkboxes/checkboxes'
-import ErrorSummary from './components/error-summary/error-summary'
-import NotificationBanner from './components/notification-banner/notification-banner'
-import Header from './components/header/header'
-import Radios from './components/radios/radios'
-import SkipLink from './components/skip-link/skip-link'
-import Tabs from './components/tabs/tabs'
+import { nodeListForEach } from './common.mjs'
+import Accordion from './components/accordion/accordion.mjs'
+import Button from './components/button/button.mjs'
+import Details from './components/details/details.mjs'
+import CharacterCount from './components/character-count/character-count.mjs'
+import Checkboxes from './components/checkboxes/checkboxes.mjs'
+import ErrorSummary from './components/error-summary/error-summary.mjs'
+import NotificationBanner from './components/notification-banner/notification-banner.mjs'
+import Header from './components/header/header.mjs'
+import Radios from './components/radios/radios.mjs'
+import SkipLink from './components/skip-link/skip-link.mjs'
+import Tabs from './components/tabs/tabs.mjs'
 
 function initAll (options) {
   // Set the options to an empty object by default if no options are passed.
@@ -26,7 +26,7 @@ function initAll (options) {
 
   var $accordions = scope.querySelectorAll('[data-module="govuk-accordion"]')
   nodeListForEach($accordions, function ($accordion) {
-    new Accordion($accordion).init()
+    new Accordion($accordion, options.accordion || {}).init()
   })
 
   var $details = scope.querySelectorAll('[data-module="govuk-details"]')
@@ -36,7 +36,7 @@ function initAll (options) {
 
   var $characterCounts = scope.querySelectorAll('[data-module="govuk-character-count"]')
   nodeListForEach($characterCounts, function ($characterCount) {
-    new CharacterCount($characterCount).init()
+    new CharacterCount($characterCount, options.character_count || {}).init()
   })
 
   var $checkboxes = scope.querySelectorAll('[data-module="govuk-checkboxes"]')

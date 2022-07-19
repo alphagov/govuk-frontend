@@ -15,12 +15,28 @@
 
 */
 
-import { nodeListForEach } from '../../common'
-import '../../vendor/polyfills/Function/prototype/bind'
-import '../../vendor/polyfills/Element/prototype/classList'
+import I18n from '../../i18n.mjs'
+import { nodeListForEach } from '../../common.mjs'
+import '../../vendor/polyfills/Function/prototype/bind.mjs'
+import '../../vendor/polyfills/Element/prototype/classList.mjs'
+import '../../vendor/polyfills/Object/assign.mjs'
 
-function Accordion ($module) {
+function Accordion ($module, options) {
   this.$module = $module
+
+  var defaultOptions = {
+    i18n: {
+      translations: {
+        show_this_section: 'Show<span class="govuk-visually-hidden"> this section</span>',
+        hide_this_section: 'Hide<span class="govuk-visually-hidden"> this section</span>',
+        show_all_sections: 'Show all sections',
+        hide_all_sections: 'Hide all sections'
+      }
+    }
+  }
+  this.options = Object.assign({}, defaultOptions, options)
+  this.i18n = new I18n(this.options.i18n)
+
   this.moduleId = $module.getAttribute('id')
   this.$sections = $module.querySelectorAll('.govuk-accordion__section')
   this.$showAllButton = ''
@@ -233,15 +249,11 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
   var $icon = $section.querySelector('.' + this.upChevronIconClass)
   var $showHideText = $section.querySelector('.' + this.sectionShowHideTextClass)
   var $button = $section.querySelector('.' + this.sectionButtonClass)
-  var $newButtonText = expanded ? 'Hide' : 'Show'
-
-  // Build additional copy of "this section" for assistive technology and place inside toggle link
-  var $visuallyHiddenText = document.createElement('span')
-  $visuallyHiddenText.classList.add('govuk-visually-hidden')
-  $visuallyHiddenText.innerHTML = ' this section'
+  var $newButtonText = expanded
+    ? this.i18n.t('hide_this_section')
+    : this.i18n.t('show_this_section')
 
   $showHideText.innerHTML = $newButtonText
-  $showHideText.appendChild($visuallyHiddenText)
   $button.setAttribute('aria-expanded', expanded)
 
   // Swap icon, change class
@@ -278,7 +290,9 @@ Accordion.prototype.checkIfAllSectionsOpen = function () {
 Accordion.prototype.updateShowAllButton = function (expanded) {
   var $showAllIcon = this.$showAllButton.querySelector('.' + this.upChevronIconClass)
   var $showAllText = this.$showAllButton.querySelector('.' + this.showAllTextClass)
-  var newButtonText = expanded ? 'Hide all sections' : 'Show all sections'
+  var newButtonText = expanded
+    ? this.i18n.t('hide_all_sections')
+    : this.i18n.t('show_all_sections')
   this.$showAllButton.setAttribute('aria-expanded', expanded)
   $showAllText.innerHTML = newButtonText
 

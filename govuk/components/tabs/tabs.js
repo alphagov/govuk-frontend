@@ -805,6 +805,34 @@ if ((typeof WorkerGlobalScope === "undefined") && (typeof importScripts !== "fun
 })
 .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
+(function (undefined) {
+  var detect = (
+    'indexOf' in Array.prototype
+  );
+
+  if (detect) return
+
+  // Polyfill adapted from https://cdn.polyfill.io/v2/polyfill.js?features=Array.prototype.indexOf&flags=always
+  Array.prototype.indexOf = function (searchElement, fromIndex) {
+    fromIndex = Number(fromIndex) || 0;
+
+    if (this === undefined || this === null) {
+      throw new TypeError(this + ' is not an object')
+    }
+
+    var array = this instanceof String ? this.split('') : this;
+    var arrayLength = Math.max(Math.min(array.length, 9007199254740991), 0) || 0;
+    var loopStartIndex = (fromIndex < 0 ? Math.max(arrayLength + fromIndex, 0) : fromIndex) - 1;
+
+    for (var i = loopStartIndex; ++i < arrayLength;) {
+      if (i in array && array[i] === searchElement) {
+        return i
+      }
+    }
+    return -1
+  };
+}).call(typeof window === 'object' && window || typeof self === 'object' && self || typeof global === 'object' && global || {});
+
 (function(undefined) {
 
 // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Event/detect.js
@@ -851,20 +879,6 @@ if (detect) return
 	// However, we asssume there are no browsers with worker support that lack proper
 	// support for `Event` within the worker
 	if (typeof document === 'undefined' || typeof window === 'undefined') return;
-
-	function indexOf(array, element) {
-		var
-		index = -1,
-		length = array.length;
-
-		while (++index < length) {
-			if (index in array && array[index] === element) {
-				return index;
-			}
-		}
-
-		return -1;
-	}
 
 	var existingProto = (window.Event && window.Event.prototype) || null;
 	window.Event = Window.prototype.Event = function Event(type, eventInitDict) {
@@ -954,7 +968,7 @@ if (detect) return
 						if (index in events) {
 							eventElement = events[index];
 
-							if (indexOf(list, eventElement) !== -1 && typeof eventElement === 'function') {
+							if (list.indexOf(eventElement) !== -1 && typeof eventElement === 'function') {
 								eventElement.call(element, event);
 							}
 						}
@@ -979,7 +993,7 @@ if (detect) return
 			index;
 
 			if (element._events && element._events[type] && element._events[type].list) {
-				index = indexOf(element._events[type].list, listener);
+				index = element._events[type].list.indexOf(listener);
 
 				if (index !== -1) {
 					element._events[type].list.splice(index, 1);

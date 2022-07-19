@@ -33,7 +33,7 @@
                 "name": "selected",
                 "type": "boolean",
                 "required": false,
-                "description": "Sets the option as the selected."
+                "description": "Whether the option should be selected when the page loads. Takes precedence over the top-level `value` option."
             },
             {
                 "name": "disabled",
@@ -48,6 +48,12 @@
                 "description": "HTML attributes (for example data attributes) to add to the option."
             }
         ]
+    },
+    {
+        "name": "value",
+        "type": "string",
+        "required": false,
+        "description": "Value for the option which should be selected. Use this as an alternative to setting the `selected` option on each individual item."
     },
     {
         "name": "describedBy",

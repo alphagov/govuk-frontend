@@ -1,9 +1,30 @@
-import '../../vendor/polyfills/Function/prototype/bind'
-import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
-import '../../vendor/polyfills/Element/prototype/classList'
+import I18n from '../../i18n.mjs'
+import '../../vendor/polyfills/Function/prototype/bind.mjs'
+import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normaliziation
+import '../../vendor/polyfills/Element/prototype/classList.mjs'
+import '../../vendor/polyfills/Object/assign.mjs'
 
-function CharacterCount ($module) {
+function CharacterCount ($module, options) {
   this.$module = $module
+  this.options = options || {}
+
+  var defaultOptions = {
+    i18n: {
+      translations: {
+        characters_under_limit_one: 'You have %{count} character remaining',
+        characters_under_limit_other: 'You have %{count} characters remaining',
+        characters_over_limit_one: 'You have %{count} character too many',
+        characters_over_limit_other: 'You have %{count} characters too many',
+        words_under_limit_one: 'You have %{count} word remaining',
+        words_under_limit_other: 'You have %{count} words remaining',
+        words_over_limit_one: 'You have %{count} word too many',
+        words_over_limit_other: 'You have %{count} words too many'
+      }
+    }
+  }
+  this.options = Object.assign({}, defaultOptions, options)
+  this.i18n = new I18n(this.options.i18n)
+
   this.$textarea = $module.querySelector('.govuk-js-character-count')
   this.$visibleCountMessage = null
   this.$screenReaderCountMessage = null
@@ -192,18 +213,23 @@ CharacterCount.prototype.formattedUpdateMessage = function () {
   var options = this.options
   var remainingNumber = this.maxLength - this.count($textarea.value)
 
-  var charVerb = 'remaining'
-  var charNoun = 'character'
-  var displayNumber = remainingNumber
-  if (options.maxwords) {
-    charNoun = 'word'
+  if (options.maxwords && remainingNumber < 0) {
+    return this.i18n.t('words_over_limit', {
+      count: Math.abs(remainingNumber)
+    })
+  } else if (options.maxwords) {
+    return this.i18n.t('words_under_limit', {
+      count: remainingNumber
+    })
+  } else if (remainingNumber < 0) {
+    return this.i18n.t('characters_over_limit', {
+      count: Math.abs(remainingNumber)
+    })
+  } else {
+    return this.i18n.t('characters_under_limit', {
+      count: remainingNumber
+    })
   }
-  charNoun = charNoun + ((remainingNumber === -1 || remainingNumber === 1) ? '' : 's')
-
-  charVerb = (remainingNumber < 0) ? 'too many' : 'remaining'
-  displayNumber = Math.abs(remainingNumber)
-
-  return 'You have ' + displayNumber + ' ' + charNoun + ' ' + charVerb
 }
 
 // Checks whether the value is over the configured threshold for the input.
