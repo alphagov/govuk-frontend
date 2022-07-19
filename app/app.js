@@ -13,12 +13,9 @@ const helperFunctions = require('../lib/helper-functions')
 const fileHelper = require('../lib/file-helper')
 const configPaths = require('../config/paths.json')
 
-// Set up views
 const appViews = [
   configPaths.layouts,
   configPaths.views,
-  configPaths.examples,
-  configPaths.fullPageExamples,
   configPaths.components,
   configPaths.src,
   configPaths.node_modules
@@ -194,7 +191,7 @@ module.exports = (options) => {
   app.get('/examples/:example', function (req, res, next) {
     // Passing a random number used for the links so that they will be unique and not display as "visited"
     const randomPageHash = (Math.random() * 1000000).toFixed()
-    res.render(`${req.params.example}/index`, { randomPageHash }, function (error, html) {
+    res.render(`examples/${req.params.example}/index`, { randomPageHash }, function (error, html) {
       if (error) {
         next(error)
       } else {
