@@ -18,7 +18,7 @@ const appViews = [
   configPaths.views,
   configPaths.components,
   configPaths.src,
-  configPaths.node_modules
+  `${configPaths.node_modules}/govuk_template_jinja`
 ]
 
 module.exports = (options) => {
