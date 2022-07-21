@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+### New features
+
+#### Customise the Open Graph image URL without duplicate meta tags
+
+You can now customise the Open Graph image URL included in the `<head>` by setting the `opengraphImageUrl` Nunjucks option.
+
+Additionally, the default Open Graph image URL meta tag will now only be included if either `opengraphImageUrl` or `assetUrl` is set.
+
+This change was introduced in [pull request #2673: Allow Open Graph image URL to be customised](https://github.com/alphagov/govuk-frontend/pull/2673).
+
 ### Deprecated features
 
 #### Remove deprecated `govuk-header__navigation--no-service-name` class in the header
@@ -58,14 +68,6 @@ For example, `value: 'red'` would select the option that has a `value` of 'red'.
 You can use this option instead of setting the boolean `selected` option on each individual option.
 
 This change was introduced in [pull request #2616: Allow selecting options by passing current values](https://github.com/alphagov/govuk-frontend/pull/2616).
-
-#### Customise the Open Graph image URL without duplicate meta tags
-
-You can now customise the Open Graph image URL included in the `<head>` by setting the `opengraphImageUrl` Nunjucks option.
-
-Additionally, the default Open Graph image URL meta tag will now only be included if either `opengraphImageUrl` or `assetUrl` is set.
-
-This change was introduced in [pull request #2673: Allow Open Graph image URL to be customised](https://github.com/alphagov/govuk-frontend/pull/2673).
 
 ### Recommended changes
 
