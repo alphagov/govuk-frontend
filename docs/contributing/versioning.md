@@ -31,7 +31,7 @@ We would not make breaking changes for:
 
 This is similar to how we try to tackle most problems, by focusing on user needs first.
 
-Whenever we decide to make a breaking change we must ensure we do our best to try to first [deprecate the feature](#deprecation) and allow a [migration path](#migration).
+Whenever we decide to make a breaking change we must ensure we do our best to [manage the change](./managing-change.md).
 
 ## Proposal
 
@@ -40,40 +40,6 @@ Some breaking changes that need discussion may first be proposed in the [GOV.UK 
 This is to ensure the community can get involved with the decision.
 
 Make an active effort to involve the community, this might be in the form of presentations or meetings.
-
-## Deprecation
-
-Deprecation is the practice of communicating features in the library that should no longer be used and requires a user change behaviour in their application.
-
-Deprecating features in the library helps users migrate to the new code while still being able to run the older code.
-
-Note: Our users may not know what 'deprecation' means, so it's important to also clarify that we are no longer recommending the use of a feature.
-
-Example 1: Fixing a typo in a CSS class name.
-
-1. We discover the class name `.govuk-visually-hidden-focussable` includes the typo 'focussable'
-2. We raise a pull request that renames the class to `.govuk-visually-hidden-focusable` while keeping
-the previous class available.
-3. We add a comment to the source code that indicates this is deprecated, and raise an issue to remove it in a future breaking release.
-4. When releasing the change we include a clear summary that indicates what was the problem, what we've changed and how a user can migrate before the future breaking release.
-
-Sometimes it is not possible to deprecate code, this is OK but try to make this a last resort.
-
-### Sass doc deprecation annotations
-
-When deprecating Sass, you can use the [deprecated annotation](http://sassdoc.com/annotations/#deprecated).
-
-If there is an alias, for example if you are renaming something, you can use the [alias annotation](http://sassdoc.com/annotations/#alias).
-
-See [an example of deprecating a Sass mixin on GitHub](https://github.com/alphagov/govuk-frontend/blob/9424d87ed54764d2d8afe35d6e0077ee43d231e1/src/helpers/_grid.scss#L20-L26).
-
-## Migration
-
-Migration is the practice of a user moving from one approach to an equivalent approach.
-
-It is very important that we make it easy to migrate when we make deprecations.
-
-If possible include clear steps for users should update their code directly in the CHANGELOG entry that introduces the deprecation.
 
 ## Public API
 
@@ -109,9 +75,9 @@ Internal changes to the project that are not part of the public API do not need 
 
 These sections follow [semantic versioning](https://semver.org/), where:
 
-- `Breaking changes` corresponds to a `major` (1.X.X) change.
-- `New features` corresponds to a `minor` (X.1.X) change.
-- `Fixes` corresponds to a `patch` (X.X.1) change.
+- Breaking changes correspond to a `major` (1.X.X) change.
+- New features or deprecations correspond to a `minor` (X.1.X) change.
+- Bug fixes correspond to a `patch` (X.X.1) change.
 
 See the [`CHANGELOG_TEMPLATE.md`](/docs/contributing/CHANGELOG_TEMPLATE.md) for an example for how this looks.
 
