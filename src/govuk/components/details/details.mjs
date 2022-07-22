@@ -68,10 +68,8 @@ Details.prototype.polyfillDetails = function () {
   var openAttr = $module.getAttribute('open') !== null
   if (openAttr === true) {
     $summary.setAttribute('aria-expanded', 'true')
-    $content.setAttribute('aria-hidden', 'false')
   } else {
     $summary.setAttribute('aria-expanded', 'false')
-    $content.setAttribute('aria-hidden', 'true')
     $content.style.display = 'none'
   }
 
@@ -89,10 +87,8 @@ Details.prototype.polyfillSetAttributes = function () {
   var $content = this.$content
 
   var expanded = $summary.getAttribute('aria-expanded') === 'true'
-  var hidden = $content.getAttribute('aria-hidden') === 'true'
 
   $summary.setAttribute('aria-expanded', (expanded ? 'false' : 'true'))
-  $content.setAttribute('aria-hidden', (hidden ? 'false' : 'true'))
 
   $content.style.display = (expanded ? 'none' : '')
 

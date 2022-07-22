@@ -45,13 +45,15 @@ describe('details', () => {
       expect(summaryAriaExpanded).toBe('false')
     })
 
-    it('should present the content as hidden using aria-hidden', async () => {
+    it('should hide the content using display: none', async () => {
       await page.goto(baseUrl + '/examples/details-polyfill', { waitUntil: 'load' })
 
-      const hiddenContainerAriaHidden = await page.evaluate(() => {
-        return document.getElementById('default').querySelector('.govuk-details__text').getAttribute('aria-hidden')
+      const containerDisplay = await page.evaluate(() => {
+        const container = document.getElementById('default').querySelector('.govuk-details__text')
+        return window.getComputedStyle(container).getPropertyValue('display')
       })
-      expect(hiddenContainerAriaHidden).toBe('true')
+
+      expect(containerDisplay).toBe('none')
     })
 
     it('should indicate the open state of the content', async () => {
@@ -75,15 +77,17 @@ describe('details', () => {
         expect(summaryAriaExpanded).toBe('true')
       })
 
-      it('should indicate the visible state of the content using aria-hidden', async () => {
+      it('should make the content visible', async () => {
         await page.goto(baseUrl + '/examples/details-polyfill', { waitUntil: 'load' })
 
         await page.click('#default summary')
 
-        const hiddenContainerAriaHidden = await page.evaluate(() => {
-          return document.getElementById('default').querySelector('.govuk-details__text').getAttribute('aria-hidden')
+        const containerDisplay = await page.evaluate(() => {
+          const container = document.getElementById('default').querySelector('.govuk-details__text')
+          return window.getComputedStyle(container).getPropertyValue('display')
         })
-        expect(hiddenContainerAriaHidden).toBe('false')
+
+        expect(containerDisplay).toBe('block')
       })
 
       it('should indicate the open state of the content', async () => {
@@ -109,13 +113,15 @@ describe('details', () => {
       expect(summaryAriaExpanded).toBe('true')
     })
 
-    it('should indicate the visible state of the content using aria-hidden', async () => {
+    it('should keep the content visible', async () => {
       await page.goto(baseUrl + '/examples/details-polyfill', { waitUntil: 'load' })
 
-      const hiddenContainerAriaHidden = await page.evaluate(() => {
-        return document.getElementById('expanded').querySelector('.govuk-details__text').getAttribute('aria-hidden')
+      const containerDisplay = await page.evaluate(() => {
+        const container = document.getElementById('expanded').querySelector('.govuk-details__text')
+        return window.getComputedStyle(container).getPropertyValue('display')
       })
-      expect(hiddenContainerAriaHidden).toBe('false')
+
+      expect(containerDisplay).toBe('block')
     })
 
     it('should indicate the open state of the content', async () => {
@@ -150,15 +156,17 @@ describe('details', () => {
         expect(summaryAriaExpanded).toBe('false')
       })
 
-      it('should indicate the visible state of the content using aria-hidden', async () => {
+      it('should hide the content using display: none', async () => {
         await page.goto(baseUrl + '/examples/details-polyfill', { waitUntil: 'load' })
 
         await page.click('#expanded summary')
 
-        const hiddenContainerAriaHidden = await page.evaluate(() => {
-          return document.getElementById('expanded').querySelector('.govuk-details__text').getAttribute('aria-hidden')
+        const containerDisplay = await page.evaluate(() => {
+          const container = document.getElementById('expanded').querySelector('.govuk-details__text')
+          return window.getComputedStyle(container).getPropertyValue('display')
         })
-        expect(hiddenContainerAriaHidden).toBe('true')
+
+        expect(containerDisplay).toBe('none')
       })
 
       it('should indicate the open state of the content', async () => {
