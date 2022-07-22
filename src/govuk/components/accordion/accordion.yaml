@@ -57,10 +57,7 @@ examples:
       - heading:
           text: Section A
         content:
-          html: |
-            <p class="govuk-body">
-              We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
-            </p>
+          text: We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
       - heading:
           text: Section B
         content:

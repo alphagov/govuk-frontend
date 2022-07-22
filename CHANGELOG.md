@@ -22,12 +22,13 @@ This change was introduced in [pull request #2694: Deprecate `.govuk-header__nav
 
 ### Fixes
 
-In [pull request 2678: Replace ex units with ems for input lengths](https://github.com/alphagov/govuk-frontend/pull/2678), we changed how we define input lengths in our CSS. Browsers might now display these inputs as being slightly wider than before. The difference is usually fewer than 3 pixels.  
+In [pull request 2678: Replace ex units with ems for input lengths](https://github.com/alphagov/govuk-frontend/pull/2678), we changed how we define input lengths in our CSS. Browsers might now display these inputs as being slightly wider than before. The difference is usually fewer than 3 pixels.
 
 We’ve also made fixes in the following pull requests:
 
 - [#2668: Fix Summary List action link alignment](https://github.com/alphagov/govuk-frontend/pull/2668)
 - [#2670: Define mininimum width for select component](https://github.com/alphagov/govuk-frontend/pull/2670)
+- [#2723: Style accordion and tabs text content with `govuk-body` class](https://github.com/alphagov/govuk-frontend/pull/2723)
 
 ## 4.2.0 (Feature release)
 
