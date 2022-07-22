@@ -25,11 +25,20 @@ describe('Accordion', () => {
       expect($componentHeadingButton.html().trim()).toEqual('Section A')
     })
 
-    it('renders with content', () => {
+    it('renders with content as text, wrapped in styled paragraph', () => {
       const $ = render('accordion', examples.default)
       const $componentContent = $('.govuk-accordion__section-content').first()
 
+      expect($componentContent.find('p').hasClass('govuk-body')).toBeTruthy()
       expect($componentContent.text().trim()).toEqual('We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.')
+    })
+
+    it('renders with content as html', () => {
+      const $ = render('accordion', examples.default)
+      const $componentContent = $('.govuk-accordion__section-content').last()
+
+      expect($componentContent.find('p.gvouk-body').length).toEqual(0)
+      expect($componentContent.text().trim()).toEqual('Example item 2')
     })
 
     it('renders with id', () => {
