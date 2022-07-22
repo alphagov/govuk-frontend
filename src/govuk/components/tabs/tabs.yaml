@@ -154,34 +154,7 @@ examples:
         - label: Past year
           id: past-year
           panel:
-            html: |
-              <h2 class="govuk-heading-l">Past year</h2>
-              <table class="govuk-table">
-                <thead class="govuk-table__head">
-                  <tr class="govuk-table__row">
-                    <th class="govuk-table__header" scope="col">Case manager</th>
-                    <th class="govuk-table__header" scope="col">Cases opened</th>
-                    <th class="govuk-table__header" scope="col">Cases closed</th>
-                  </tr>
-                </thead>
-                <tbody class="govuk-table__body">
-                  <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">David Francis</td>
-                    <td class="govuk-table__cell">1380</td>
-                    <td class="govuk-table__cell">1472</td>
-                  </tr>
-                  <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">Paul Farmer</td>
-                    <td class="govuk-table__cell">1129</td>
-                    <td class="govuk-table__cell">1083</td>
-                  </tr>
-                  <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">Rita Patel</td>
-                    <td class="govuk-table__cell">1539</td>
-                    <td class="govuk-table__cell">1265</td>
-                  </tr>
-                </tbody>
-              </table>
+            text: There is no data for this year yet, check back later
 
   - name: tabs-with-anchor-in-panel
     description: Ensure that anchors that are in tab panels work correctly
