@@ -233,6 +233,7 @@ examples:
       label:
         text: Can you provide more detail?
   - name: with id with special characters
+    hidden: true
     data:
       id: user1.profile[address]
       name: address
