@@ -23,6 +23,11 @@
     }
   }
 
+  // Remove right padding from the last column in the row
+  .govuk-summary-list__row > :last-child {
+    padding-right: 0;
+  }
+
   // Provide an empty 'cell' for rows that don't have actions – otherwise the
   // bottom border is not drawn for that part of the row in some browsers.
   .govuk-summary-list__row--no-actions {
@@ -52,7 +57,7 @@
     margin-bottom: govuk-spacing(3);
     @include govuk-media-query($from: tablet) {
       width: 20%;
-      padding-right: 0;
+      padding-right: 0; // Needed for IE8
       text-align: right;
     }
   }
