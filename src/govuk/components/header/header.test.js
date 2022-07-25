@@ -25,10 +25,19 @@ describe('Header navigation', () => {
     })
 
     it('shows the navigation', async () => {
-      await expect(page).toMatchElement('.govuk-header__navigation', {
-        visible: true,
-        timeout: 1000
-      })
+      const navDisplay = await page.$eval('.govuk-header__navigation-list',
+        el => window.getComputedStyle(el).getPropertyValue('display')
+      )
+
+      expect(navDisplay).toBe('block')
+    })
+
+    it('does not show the mobile menu button', async () => {
+      const buttonDisplay = await page.$eval('.govuk-js-header-toggle',
+        el => window.getComputedStyle(el).getPropertyValue('display')
+      )
+
+      expect(buttonDisplay).toBe('none')
     })
   })
 
@@ -49,6 +58,32 @@ describe('Header navigation', () => {
         })
       })
 
+      it('reveals the menu button', async () => {
+        const hidden = await page.$eval('.govuk-js-header-toggle',
+          el => el.hasAttribute('hidden')
+        )
+
+        const buttonDisplay = await page.$eval('.govuk-js-header-toggle',
+          el => window.getComputedStyle(el).getPropertyValue('display')
+        )
+
+        expect(hidden).toBe(false)
+        expect(buttonDisplay).toBe('block')
+      })
+
+      it('hides the menu via the hidden attribute', async () => {
+        const hidden = await page.$eval('.govuk-header__navigation-list',
+          el => el.hasAttribute('hidden')
+        )
+
+        const navDisplay = await page.$eval('.govuk-header__navigation-list',
+          el => window.getComputedStyle(el).getPropertyValue('display')
+        )
+
+        expect(hidden).toBe(true)
+        expect(navDisplay).toBe('none')
+      })
+
       it('exposes the collapsed state of the menu button using aria-expanded', async () => {
         const ariaExpanded = await page.$eval('.govuk-header__menu-button',
           el => el.getAttribute('aria-expanded')
@@ -66,20 +101,17 @@ describe('Header navigation', () => {
         await page.click('.govuk-js-header-toggle')
       })
 
-      it('adds the --open modifier class to the menu, making it visible', async () => {
-        const hasOpenClass = await page.$eval('.govuk-header__navigation-list',
-          el => el.classList.contains('govuk-header__navigation-list--open')
+      it('shows the menu', async () => {
+        const hidden = await page.$eval('.govuk-header__navigation-list',
+          el => el.hasAttribute('hidden')
         )
 
-        expect(hasOpenClass).toBeTruthy()
-      })
-
-      it('adds the --open modifier class to the menu button', async () => {
-        const hasOpenClass = await page.$eval('.govuk-header__menu-button',
-          el => el.classList.contains('govuk-header__menu-button--open')
+        const navDisplay = await page.$eval('.govuk-header__navigation-list',
+          el => window.getComputedStyle(el).getPropertyValue('display')
         )
 
-        expect(hasOpenClass).toBeTruthy()
+        expect(hidden).toBe(false)
+        expect(navDisplay).toBe('block')
       })
 
       it('exposes the expanded state of the menu button using aria-expanded', async () => {
@@ -100,20 +132,17 @@ describe('Header navigation', () => {
         await page.click('.govuk-js-header-toggle')
       })
 
-      it('removes the --open modifier class from the menu, hiding it', async () => {
-        const hasOpenClass = await page.$eval('.govuk-header__navigation-list',
-          el => el.classList.contains('govuk-header__navigation-list--open')
+      it('adds the hidden attribute back to the menu, hiding it', async () => {
+        const hidden = await page.$eval('.govuk-header__navigation-list',
+          el => el.hasAttribute('hidden')
         )
 
-        expect(hasOpenClass).toBeFalsy()
-      })
-
-      it('removes the --open modifier class from the menu button', async () => {
-        const hasOpenClass = await page.$eval('.govuk-header__menu-button',
-          el => el.classList.contains('govuk-header__menu-button--open')
+        const navDisplay = await page.$eval('.govuk-header__navigation-list',
+          el => window.getComputedStyle(el).getPropertyValue('display')
         )
 
-        expect(hasOpenClass).toBeFalsy()
+        expect(hidden).toBe(true)
+        expect(navDisplay).toBe('none')
       })
 
       it('exposes the collapsed state of the menu button using aria-expanded', async () => {

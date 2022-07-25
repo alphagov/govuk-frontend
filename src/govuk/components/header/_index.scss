@@ -207,6 +207,10 @@
       margin-left: govuk-spacing(1);
     }
 
+    &[aria-expanded="true"]:after {
+      @include govuk-shape-arrow($direction: up, $base: 10px, $display: inline-block);
+    }
+
     @include govuk-media-query ($from: tablet) {
       top: govuk-spacing(3);
     }
