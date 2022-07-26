@@ -53,6 +53,12 @@ describe('Details', () => {
     expect($summary.get(0).tagName).toEqual('summary')
   })
 
+  it('renders nested components using `call`', () => {
+    const $ = render('details', {}, '<div class="app-nested-component"></div>')
+
+    expect($('.govuk-details .app-nested-component').length).toBeTruthy()
+  })
+
   it('allows text to be passed whilst escaping HTML entities', () => {
     const $ = render('details', examples['html as text'])
 
