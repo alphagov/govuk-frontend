@@ -16,9 +16,17 @@ See [Tasks](tasks.md) for details of what `npm test` does.
 
 ## SASS linting
 
+```
+npm run lint:scss
+```
+
 See [CSS Coding Standards](/docs/contributing/coding-standards/css.md#linting) for details.
 
 ## Javascript linting
+
+```
+npm run lint:js
+```
 
 See [JavaScript Coding Standards](/docs/contributing/coding-standards/js.md#formatting-and-linting) for details.
 
