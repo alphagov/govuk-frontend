@@ -65,11 +65,16 @@ You should test that your contribution works:
 
 ## 5. Run the automated tests
 
+Automated testing helps ensure that the code changes we make do not unintentionally break functionality.
+Tests are automatically run against a branch, pull request, or when the project is built for release, and will notify us if a test has failed.
+
 In your project folder, run `npm test` to run the automated tests, including linting.
 
 If a test fails, you should check your code for any errors, then update any tests you need to.
 
 ## 6. Write new tests
+
+You can [read more about the different types of tests in this project](../releasing/testing-and-linting).
 
 You should write new tests if you’ve created a new component, or changed the way a component works by:
 
