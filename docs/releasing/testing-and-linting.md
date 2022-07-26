@@ -41,7 +41,7 @@ We aim to write the description of our tests in as "natural language" as possibl
 ### Running individual tests
 You can run a subset of the test suite that only tests components by running:
 
-    `npm test -- src/govuk/components/button`
+    `npm test -- --testPathPattern=src/govuk/components/button`
 
 Note: There's a watch mode that keeps a testing session open waiting for changes that can be used with:
 
