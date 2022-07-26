@@ -12,6 +12,14 @@ Additionally, the default Open Graph image URL meta tag will now only be include
 
 This change was introduced in [pull request #2673: Allow Open Graph image URL to be customised](https://github.com/alphagov/govuk-frontend/pull/2673).
 
+#### Localise the content licence and copyright statements
+
+When using the [footer](https://design-system.service.gov.uk/components/footer/) Nunjucks macro, you can now translate the text of the Open Government Licence (OGL) and Crown copyright statements using the `contentLicence` and `copyright` parameters.
+
+Visit The National Archives' [documentation on OGL and Crown copyright](https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/open-government-licence/copyright-notices-attribution-statements/) for information on what needs to be included in these statements.
+
+This was added in [pull request #2702: Allow localisation of content licence and copyright notices in Footer](https://github.com/alphagov/govuk-frontend/pull/2702).
+
 ### Deprecated features
 
 #### Remove deprecated `govuk-header__navigation--no-service-name` class in the header
