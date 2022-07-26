@@ -24,7 +24,7 @@
   }
 
   // Remove right padding from the last column in the row
-  .govuk-summary-list__row > :last-child {
+  .govuk-summary-list__row:not(.govuk-summary-list__row--no-actions) > :last-child {
     padding-right: 0;
   }
 
