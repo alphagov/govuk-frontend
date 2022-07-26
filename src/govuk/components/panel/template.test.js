@@ -69,6 +69,12 @@ describe('Panel', () => {
       expect(panelTitle).toEqual('Application <strong>not</strong> complete')
     })
 
+    it('renders nested components using `call`', () => {
+      const $ = render('panel', {}, '<div class="app-nested-component"></div>')
+
+      expect($('.govuk-panel .app-nested-component').length).toBeTruthy()
+    })
+
     it('allows body text to be passed whilst escaping HTML entities', () => {
       const $ = render('panel', examples['body html as text'])
 
