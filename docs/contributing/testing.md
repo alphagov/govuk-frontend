@@ -84,7 +84,7 @@ You should write new tests if you’ve created a new component, or changed the w
 
 If you're new to testing, see existing test files for examples of things to do. Do not let the tests keep you from submitting your contribution! If you're not sure which tests are needed or are having trouble updating them, submit your pull request anyway. We will help you create the tests and solve problems during code review.
 
-Test files use examples from each component’s `.yaml` file, for example `src/govuk/components/button/button.yaml`. When you add or update tests, you can use the existing examples or add new ones.
+Some test files use examples from each component’s `.yaml` file, for example `src/govuk/components/button/button.yaml`. When you add or update these tests, you can use the existing examples or add new ones.
 
 Use `hidden: true` in a new example if you do not want to include the example in the review app. The example will still appear in our [test fixtures](http://frontend.design-system.service.gov.uk/testing-your-html/).
 
@@ -93,6 +93,7 @@ Use `hidden: true` in a new example if you do not want to include the example in
 Create the following files in the `src/govuk/components` folder:
 
 - `<COMPONENT>/<COMPONENT>.test.js` - to test functionality if the component uses JavaScript
+- `<COMPONENT>/<COMPONENT>.unit.test.mjs` - to unit test any JavaScript logic
 - `<COMPONENT>/template.test.js` - to test the Nunjucks macro
 
 Where `<COMPONENT>` is the name of the component you created.
@@ -104,6 +105,7 @@ You can use the existing files in the `src/govuk/components` folder as templates
 In the `src/govuk/components` folder, update or add tests to:
 
 - `<COMPONENT>/<COMPONENT>.test.js` - if you updated functionality
+- `<COMPONENT>/<COMPONENT>.unit.test.mjs` - if you updated JavaScript logic
 - `<COMPONENT>/template.test.js` - if you updated the Nunjucks macro
 
 Where `<COMPONENT>` is the name of the component you changed or added to.
