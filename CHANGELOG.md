@@ -62,6 +62,14 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
 ### New features
 
+#### Localise the navigation menu toggle button
+
+When using the [header](https://design-system.service.gov.uk/components/header/) Nunjucks macro, you can now translate the text of the mobile navigation menu toggle button by using the `menuButtonText` parameter.
+
+You should avoid lengthy values for the `menuButtonText` parameter, as the text can overflow and cause visual issues if too long. 
+
+This was added in [pull request #2720: Add parameter to localise mobile menu toggle button](https://github.com/alphagov/govuk-frontend/pull/2720).
+
 #### Customise the Open Graph image URL without duplicate meta tags
 
 You can now customise the Open Graph image URL included in the `head` by setting the `opengraphImageUrl` Nunjucks option.
