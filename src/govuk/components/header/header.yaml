@@ -51,7 +51,7 @@ params:
 - name: navigationLabel
   type: string
   required: false
-  description: Text for the `aria-label` attribute of the navigation. Defaults to 'Menu'.
+  description: Text for the `aria-label` attribute of the navigation. Defaults to the same value as `menuButtonText`.
 - name: menuButtonLabel
   type: string
   required: false
