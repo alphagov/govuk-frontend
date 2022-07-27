@@ -312,3 +312,18 @@ examples:
         active: true
       - html: <em>Navigation item 2</em>
       - html: <em>Navigation item 3</em>
+- name: with custom navigation label and custom menu button text
+  hidden: true
+  data:
+    menuButtonText: Custom menu button text
+    navigationLabel: Custom navigation label
+    navigation:
+      - href: '#1'
+        text: Navigation item 1
+        active: true
+      - href: '#2'
+        text: Navigation item 2
+      - href: '#3'
+        text: Navigation item 3
+      - href: '#4'
+        text: Navigation item 4

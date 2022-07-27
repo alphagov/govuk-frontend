@@ -136,6 +136,15 @@ describe('header', () => {
       expect($nav.attr('aria-label')).toEqual('Menu')
     })
 
+    it('renders navigation label correctly when custom menu button text is set', () => {
+      const $ = render('header', examples['with custom menu button text'])
+
+      const $component = $('.govuk-header')
+      const $nav = $component.find('nav')
+
+      expect($nav.attr('aria-label')).toEqual('Dewislen')
+    })
+
     it('allows navigation label to be customised', () => {
       const $ = render('header', examples['with custom navigation label'])
 
@@ -143,6 +152,17 @@ describe('header', () => {
       const $nav = $component.find('nav')
 
       expect($nav.attr('aria-label')).toEqual('Custom navigation label')
+    })
+
+    it('renders navigation label and menu button text when these are both set', () => {
+      const $ = render('header', examples['with custom navigation label and custom menu button text'])
+
+      const $component = $('.govuk-header')
+      const $nav = $component.find('nav')
+      const $button = $component.find('.govuk-header__menu-button')
+
+      expect($nav.attr('aria-label')).toEqual('Custom navigation label')
+      expect($button.text()).toEqual('Custom menu button text')
     })
 
     it('renders navigation with active item', () => {
