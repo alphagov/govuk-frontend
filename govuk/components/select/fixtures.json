@@ -30,6 +30,19 @@
             "hidden": false
         },
         {
+            "name": "with no items",
+            "options": {
+                "id": "select-1",
+                "name": "select-1",
+                "label": {
+                    "text": "Horse with no name"
+                },
+                "items": []
+            },
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"select-1\">\n    Horse with no name\n  </label>\n\n\n  <select class=\"govuk-select\" id=\"select-1\" name=\"select-1\">\n  \n  </select>\n</div>",
+            "hidden": false
+        },
+        {
             "name": "with selected value",
             "options": {
                 "id": "select-1",
@@ -357,6 +370,7 @@
             "name": "item selected overrides value",
             "options": {
                 "name": "colors",
+                "id": "colors",
                 "items": [
                     {
                         "value": "red",
@@ -374,7 +388,7 @@
                 ],
                 "value": "green"
             },
-            "html": "<div class=\"govuk-form-group\">\n  \n\n\n  <select class=\"govuk-select\" id=\"\" name=\"colors\">\n  \n    \n      <option value=\"red\">Red</option>\n    \n  \n    \n      <option value=\"green\">Green</option>\n    \n  \n    \n      <option value=\"blue\">Blue</option>\n    \n  \n  </select>\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  \n\n\n  <select class=\"govuk-select\" id=\"colors\" name=\"colors\">\n  \n    \n      <option value=\"red\">Red</option>\n    \n  \n    \n      <option value=\"green\">Green</option>\n    \n  \n    \n      <option value=\"blue\">Blue</option>\n    \n  \n  </select>\n</div>",
             "hidden": true
         }
     ]

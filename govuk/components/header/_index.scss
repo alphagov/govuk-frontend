@@ -260,6 +260,8 @@
     }
   }
 
+  // The govuk-header__navigation--no-service-name class is deprecated and will
+  // be removed in the next major release.
   .govuk-header__navigation--no-service-name {
     padding-top: govuk-spacing(7);
   }

@@ -987,14 +987,14 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
   var $icon = $section.querySelector('.' + this.upChevronIconClass);
   var $showHideText = $section.querySelector('.' + this.sectionShowHideTextClass);
   var $button = $section.querySelector('.' + this.sectionButtonClass);
-  var $newButtonText = expanded ? 'Hide' : 'Show';
+  var newButtonText = expanded ? 'Hide' : 'Show';
 
   // Build additional copy of "this section" for assistive technology and place inside toggle link
   var $visuallyHiddenText = document.createElement('span');
   $visuallyHiddenText.classList.add('govuk-visually-hidden');
   $visuallyHiddenText.innerHTML = ' this section';
 
-  $showHideText.innerHTML = $newButtonText;
+  $showHideText.innerHTML = newButtonText;
   $showHideText.appendChild($visuallyHiddenText);
   $button.setAttribute('aria-expanded', expanded);
 
@@ -1519,13 +1519,10 @@ Details.prototype.polyfillDetails = function () {
   $summary.tabIndex = 0;
 
   // Detect initial open state
-  var openAttr = $module.getAttribute('open') !== null;
-  if (openAttr === true) {
+  if (this.$module.hasAttribute('open')) {
     $summary.setAttribute('aria-expanded', 'true');
-    $content.setAttribute('aria-hidden', 'false');
   } else {
     $summary.setAttribute('aria-expanded', 'false');
-    $content.setAttribute('aria-hidden', 'true');
     $content.style.display = 'none';
   }
 
@@ -1538,23 +1535,14 @@ Details.prototype.polyfillDetails = function () {
 * @param {object} summary element
 */
 Details.prototype.polyfillSetAttributes = function () {
-  var $module = this.$module;
-  var $summary = this.$summary;
-  var $content = this.$content;
-
-  var expanded = $summary.getAttribute('aria-expanded') === 'true';
-  var hidden = $content.getAttribute('aria-hidden') === 'true';
-
-  $summary.setAttribute('aria-expanded', (expanded ? 'false' : 'true'));
-  $content.setAttribute('aria-hidden', (hidden ? 'false' : 'true'));
-
-  $content.style.display = (expanded ? 'none' : '');
-
-  var hasOpenAttr = $module.getAttribute('open') !== null;
-  if (!hasOpenAttr) {
-    $module.setAttribute('open', 'open');
+  if (this.$module.hasAttribute('open')) {
+    this.$module.removeAttribute('open');
+    this.$summary.setAttribute('aria-expanded', 'false');
+    this.$content.style.display = 'none';
   } else {
-    $module.removeAttribute('open');
+    this.$module.setAttribute('open', 'open');
+    this.$summary.setAttribute('aria-expanded', 'true');
+    this.$content.style.display = '';
   }
 
   return true
