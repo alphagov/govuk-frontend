@@ -32,6 +32,12 @@ describe('Inset text', () => {
       expect($component.attr('id')).toEqual('my-inset-text')
     })
 
+    it('renders nested components using `call`', () => {
+      const $ = render('inset-text', {}, '<div class="app-nested-component"></div>')
+
+      expect($('.govuk-inset-text .app-nested-component').length).toBeTruthy()
+    })
+
     it('allows text to be passed whilst escaping HTML entities', () => {
       const $ = render('inset-text', examples['html as text'])
 

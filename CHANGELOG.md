@@ -20,6 +20,20 @@ Visit The National Archives' [documentation on OGL and Crown copyright](https://
 
 This was added in [pull request #2702: Allow localisation of content licence and copyright notices in Footer](https://github.com/alphagov/govuk-frontend/pull/2702).
 
+#### Pass HTML directly into compatible components
+
+If using the Nunjucks macros, you can now pass HTML content directly into compatible components using [the Nunjucks `call` syntax](https://mozilla.github.io/nunjucks/templating.html#call). If HTML is provided through the call syntax, the `html` and `text` options will be ignored.
+
+Components that have been updated to support this syntax are:
+
+- Details
+- Error summary (mapped to `descriptionHtml` parameter)
+- Inset text
+- Notification banner
+- Panel
+
+This was added in [pull request #2734: Update various components to be callable](https://github.com/alphagov/govuk-frontend/pull/2734).
+
 ### Deprecated features
 
 #### Remove deprecated `govuk-header__navigation--no-service-name` class in the header
