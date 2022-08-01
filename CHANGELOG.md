@@ -35,7 +35,7 @@ In [pull request 2678: Replace ex units with ems for input lengths](https://gith
 We’ve also made fixes in the following pull requests:
 
 - [#2668: Fix Summary List action link alignment](https://github.com/alphagov/govuk-frontend/pull/2668)
-- [#2670: Define mininimum width for select component](https://github.com/alphagov/govuk-frontend/pull/2670)
+- [#2670: Define minimum width for select component](https://github.com/alphagov/govuk-frontend/pull/2670)
 - [#2723: Style accordion and tabs text content with `govuk-body` class](https://github.com/alphagov/govuk-frontend/pull/2723)
 - [#2724: Remove redundant `aria-hidden` attribute from the content when using the Details polyfill](https://github.com/alphagov/govuk-frontend/pull/2724)
 - [#2725: Remove padding-right from last column in summary list row](https://github.com/alphagov/govuk-frontend/pull/2725)
