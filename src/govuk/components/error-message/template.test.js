@@ -73,4 +73,11 @@ describe('Error message', () => {
     const $component = $('.govuk-error-message')
     expect($component.text().trim()).toEqual('There is an error on line 42')
   })
+
+  it('allows the visually hidden prefix to be removed and then manually added with HTML', () => {
+    const $ = render('error-message', examples.translated)
+
+    const $component = $('.govuk-error-message')
+    expect($component.html().trim()).toContain('<span class="govuk-visually-hidden">Gwall:</span> Neges gwall am yr enw llawn yn mynd yma')
+  })
 })
