@@ -34,6 +34,22 @@ Components that have been updated to support this syntax are:
 
 This was added in [pull request #2734: Update various components to be callable](https://github.com/alphagov/govuk-frontend/pull/2734).
 
+#### Use new override classes to apply static spacing
+
+You can now use static spacing override classes to apply spacing from [the static spacing scale](https://design-system.service.gov.uk/styles/spacing/#static-spacing) to elements of your design.
+
+The new classes start with: `govuk-!-static` followed by either `margin-` or `padding-`, and then a spacing unit number.
+
+To apply spacing in a single direction, include `left-`, `right-`, `top-`, or `bottom-` just before the spacing unit.
+
+For example:
+
+- `govuk-!-static-margin-9` will apply a 60px margin to all sides of the element at all screen sizes
+- `govuk-!-static-padding-right-5` will apply 25px of padding to the right side of the element at all screen sizes
+- `govuk-!-static-margin-0` will remove all margins at all screen sizes
+
+This was added in [pull request #2672: Add static spacing override classes](https://github.com/alphagov/govuk-frontend/pull/2672). Thanks to [Patrick Cartlidge](https://github.com/patrickpatrickpatrick) for this contribution.
+
 ### Deprecated features
 
 #### Remove deprecated `govuk-header__navigation--no-service-name` class in the header
