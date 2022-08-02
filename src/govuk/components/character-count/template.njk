@@ -26,8 +26,10 @@
     errorMessage: params.errorMessage,
     attributes: params.attributes
   }) }}
+  {%- set fallbackHintLength = params.maxwords or params.maxlength %}
+  {%- set fallbackHintDefault = 'You can enter up to %{count} ' + ('words' if params.maxwords else 'characters') %}
   {{ govukHint({
-    text: 'You can enter up to ' + (params.maxlength or params.maxwords) + (' words' if params.maxwords else ' characters'),
+    text: (params.fallbackHintText or fallbackHintDefault) | replace('%{count}', fallbackHintLength),
     id: params.id + '-info',
     classes: 'govuk-character-count__message' + (' ' + params.countMessage.classes if params.countMessage.classes)
   }) }}
