@@ -2,7 +2,9 @@
 
 1. At stand up, person leading the release to tell the GOV.UK Design System team we are close to releasing so we can coordinate the final cutoff date. Once the cutoff date passes, do not add any further major changes to the release. We can still add small fixes before step 7 as long as we notify the content designer and technical writer. However, we should try to avoid adding too many fixes in this way, as it requires us to repeat some of steps 4-6.
 
-2. Developers to raise new issues in the team GitHub repositories ([govuk-frontend](https://github.com/alphagov/govuk-frontend), [govuk-frontend-docs](https://github.com/alphagov/govuk-frontend-docs), [govuk-prototype-kit](https://github.com/alphagov/govuk-prototype-kit)) to:
+2. (optional step) Let the prototype kit know that we are coordinating a release. The prototype kit team have [their own release process](https://github.com/alphagov/govuk-prototype-kit/tree/main/internal_docs) and we don't need to run releases synchronously.
+
+3. Developers to raise new issues in the team GitHub repositories ([govuk-frontend](https://github.com/alphagov/govuk-frontend), [govuk-design-system](https://github.com/alphagov/govuk-design-system/issues/2024), [govuk-frontend-docs](https://github.com/alphagov/govuk-frontend-docs) to:
   - draft comms for the new release (example issue: [#2507](https://github.com/alphagov/govuk-frontend/issues/2507))
   - create release notes for the new release (example issue: [#2508](https://github.com/alphagov/govuk-frontend/issues/2508))
   - release the new version of GOV.UK Frontend to npm (example issue: [#2509](https://github.com/alphagov/govuk-frontend/issues/2509))
@@ -12,25 +14,17 @@
 
   Once the developers have created these issues, the person leading the release should add them to an epic (example issue: [#2511](https://github.com/alphagov/govuk-frontend/issues/2511)).
 
-  You should also check with the GOV.UK Prototype Kit team to see if they'll be doing a corresponding release. If they will, then the people responsible for the Kit release will need to:
+4. Person leading the release to add the issues to the [Design System kanban board](https://github.com/orgs/alphagov/projects/4).
 
-  - create release notes for the new release of GOV.UK Prototype Kit (example issue: [#958](https://github.com/alphagov/govuk-prototype-kit/issues/958))
-  - create an issue for the new release of GOV.UK Prototype Kit (example issue: [#917](https://github.com/alphagov/govuk-prototype-kit/issues/917))
-  - update the GOV.UK Prototype Kit to use the new release (example issue: [#923](https://github.com/alphagov/govuk-prototype-kit/issues/923))
-
-3. Person leading the release to add the issues to the [Design System kanban board](https://github.com/orgs/alphagov/projects/4).
-
-4. Content designer to:
-  - write announcements to post on Slack after we release:
-    - GOV.UK Frontend (for example, [draft comms for the cookie banner component](https://docs.google.com/document/d/1jVyMB7i94NOeflWaf3kE4Q4APMXGfluK3rOh74IHO08/edit))
-    - GOV.UK Prototype kit
+5. Content designer to:
+  - write announcements to post on Slack after we release GOV.UK Frontend (for example, [draft comms for the cookie banner component](https://docs.google.com/document/d/1jVyMB7i94NOeflWaf3kE4Q4APMXGfluK3rOh74IHO08/edit))
   - check who the release’s contributors are and if we have consent to include their name
 
-5. Technical writer to finalise draft of release notes and get 2i on them. If the technical writer is unavailable, ask for help in the [gds-technical-writing Slack channel](https://gds.slack.com/archives/CAD0R2NQG).
+6. Technical writer to finalise draft of release notes and get 2i on them. If the technical writer is unavailable, ask for help in the [gds-technical-writing Slack channel](https://gds.slack.com/archives/CAD0R2NQG).
 
-6. Content designer or designer to update community backlog with rationale for any decisions we made.
+7. Content designer or designer to update community backlog with rationale for any decisions we made.
 
-7. Person leading the release to coordinate the sign-off when they are ready to do the release. Once the team agrees, this confirms a code and content freeze. Use the [#design-system-team-channel](https://gds.slack.com/app_redirect?channel=design-system-team-channel) to confirm sign-off from:
+8. Person leading the release to coordinate the sign-off when they are ready to do the release. Once the team agrees, this confirms a code and content freeze. Use the [#design-system-team-channel](https://gds.slack.com/app_redirect?channel=design-system-team-channel) to confirm sign-off from:
   - content designer, technical writer and designers for guidance, examples and community backlog decision rationale
   - technical writer and developers for Nunjucks macros
   - developers for changes to GOV.UK Frontend
@@ -41,7 +35,7 @@
 
 # Publish a new version of GOV.UK Frontend
 
-Developers should pair on releases. When remote working, it can be useful to be on a call together. Likewise, to help align releases, members of the Design System and Prototype Kit teams should both join the release call.
+Developers should pair on releases. When remote working, it can be useful to be on a call together.
 
 1. Check out the **main** branch and pull the latest changes.
 
@@ -99,13 +93,10 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 # After you publish the new release
 
-1. Update the GOV.UK Design System, Prototype Kit and Frontend Docs to:
-  - use a new release of GOV.UK Frontend
-  - release a new version of the Prototype Kit
+1. Update the GOV.UK Design System and Frontend Docs to use a new release of GOV.UK Frontend
 
 2. Post announcements of the release to:
   - GOV.UK Frontend in the govuk-design-system channels on [GDS Slack](https://gds.slack.com/app_redirect?channel=govuk-design-system) and [x-gov Slack](https://ukgovernmentdigital.slack.com/app_redirect?channel=govuk-design-system)
-  - Prototype kit in the [prototype-kit channel](https://ukgovernmentdigital.slack.com/app_redirect?channel=prototype-kit) on x-gov Slack
   - let the team know they can post social comms
   - let stakeholders know the release is live
 
