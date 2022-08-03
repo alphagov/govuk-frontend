@@ -28,7 +28,7 @@ module.exports = (app) => {
       // If any of the date inputs error apply a general error.
       const expiryNamePrefix = 'expiry'
       const expiryErrors = Object.values(errors).filter(error => error.id.includes(expiryNamePrefix + '-'))
-      if (expiryErrors) {
+      if (expiryErrors.length) {
         const firstExpiryErrorId = expiryErrors[0].id
         // Get the first error message and merge it into a single error message.
         errors[expiryNamePrefix] = {
