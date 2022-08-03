@@ -68,7 +68,11 @@ You should also test component Javascript logic with unit tests, in a `[componen
 We write functional tests for checking our JavaScript exports and our global sass variables - see [all.test.js](../../src/govuk/all.test.js) for examples of global tests we run.
 
 ### Conventions
-We aim to write the description of our tests in as "natural language" as possible, for instance "back-link component fails to render if the required fields are not included".
+We aim to write the test descriptions in everyday language. For example, "back-link component fails to render if the required fields are not included".
+
+Keep all tests separate from each other. It should not matter the order or amount of tests you run from a test suite.
+
+Try and keep assertions small, so each test only checks for one thing. This makes tests more readable and makes it easier to see what's happening if a test is failing.
 
 ## Updating component snapshots
 For components, the snapshots are stored in `[component-name directory]/_snapshots_`.

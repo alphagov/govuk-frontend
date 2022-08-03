@@ -88,6 +88,8 @@ Some test files use examples from each component’s `.yaml` file, for example `
 
 Use `hidden: true` in a new example if you do not want to include the example in the review app. The example will still appear in our [test fixtures](http://frontend.design-system.service.gov.uk/testing-your-html/).
 
+All tests should try and meet [our testing conventions](../releasing/testing-and-linting#conventions)
+
 ### If you created a component
 
 Create the following files in the `src/govuk/components` folder:
