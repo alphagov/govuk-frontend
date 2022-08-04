@@ -82,6 +82,7 @@ We’ve also made fixes in the following pull requests:
 - [#2724: Remove redundant `aria-hidden` attribute from the content when using the Details polyfill](https://github.com/alphagov/govuk-frontend/pull/2724)
 - [#2725: Remove padding-right from last column in summary list row](https://github.com/alphagov/govuk-frontend/pull/2725)
 - [#2737: Avoid unnecessary spacing-related media queries](https://github.com/alphagov/govuk-frontend/pull/2737)
+- [#2747: Ensure accordion uses overriden focus colour](https://github.com/alphagov/govuk-frontend/pull/2747) - thanks @NickColley
 
 ## 4.2.0 (Feature release)
 
