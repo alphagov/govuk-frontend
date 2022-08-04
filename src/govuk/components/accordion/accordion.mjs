@@ -1,4 +1,3 @@
-
 /*
   Accordion
 
@@ -16,7 +15,7 @@
 */
 
 import I18n from '../../i18n.mjs'
-import { nodeListForEach } from '../../common.mjs'
+import { getOptions, nodeListForEach } from '../../common.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 import '../../vendor/polyfills/Object/assign.mjs'
@@ -34,7 +33,8 @@ function Accordion ($module, options) {
       }
     }
   }
-  this.options = Object.assign({}, defaultOptions, options)
+  this.options = getOptions(options, this.$module, defaultOptions)
+  console.log(this.options)
   this.i18n = new I18n(this.options.i18n)
 
   this.moduleId = $module.getAttribute('id')
