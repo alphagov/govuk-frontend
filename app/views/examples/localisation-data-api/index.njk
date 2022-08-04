@@ -4,73 +4,20 @@ scenario: >-
 ---
 
 {# Example content derived from: https://www.gov.uk/adnewyddu-trwydded-yrru #}
-{% extends "full-page-example.njk" %}
+{% extends "layout.njk" %}
 
-{% from "skip-link/macro.njk" import govukSkipLink %}
-{% from "footer/macro.njk" import govukFooter %}
-{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "button/macro.njk" import govukButton %}
+{% from "back-link/macro.njk" import govukBackLink %}
 {% from "accordion/macro.njk" import govukAccordion %}
-{% from "character-count/macro.njk" import govukCharacterCount %}
-
-{% set pageTitle = "Adnewyddu eich trwydded yrru" %}
-{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
-
-{% set htmlLang = "cy" %}
-
-{% block skipLink %}
-  {{ govukSkipLink({
-    href: '#main-content',
-    text: "Symud i'r prif gynnwys"
-  }) }}
-{% endblock %}
 
 {% block beforeContent %}
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Hafan",
-        href: "#/"
-      },
-      {
-        text: "Gyrru a chludiant",
-        href: "#/browse/driving"
-      },
-      {
-        text: "Trwyddedau gyrru",
-        href: "#/browse/driving/driving-licences"
-      }
-    ]
+  {{ govukBackLink({
+    "href": "/"
   }) }}
 {% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
-
-      <p class="govuk-body">Bydd arnoch angen pasbort y DU dilys i adnewyddu eich trwydded ar-lein gyda DVLA.</p>
-
-      <h2 class="govuk-heading-m" id="adnewyddu-ar-lein">Adnewyddu ar-lein</h2>
-
-      <p class="govuk-body">Bydd eich trwydded newydd yn ddilys o’r dyddiad y mae’ch cais yn cael ei gymeradwyo, nid o ddyddiad dod i ben eich trwydded gyfredol.</p>
-
-      {{ govukButton({
-        text: "Dechrau nawr",
-        href: "#",
-        classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
-        isStartButton: true
-      }) }}
-
-      {{ govukCharacterCount({
-        label: { text: "Enw(au) cyntaf" },
-        hint: { text: "Rhowch eich enw cyntaf ac unrhyw enwau canol." },
-        limitHint: "Ysgrifennwch hyd at %{count} o nodau",
-        id: "character-count",
-        maxlength: 20,
-        value: 'A1234567890'
-      }) }}
-
       {% set moreInformationHTML %}
         <p class="govuk-body">Mae’n rhaid ichi adnewyddu trwydded cerdyn-llun bob 10 mlynedd - byddwch yn derbyn nodyn atgoffa cyn bod eich trwydded gyfredol yn dod i ben.</p>
 
@@ -162,32 +109,60 @@ scenario: >-
           }
         ]
       }) }}
+
+      <div class="govuk-accordion" data-module="govuk-accordion" data-i18n-show-this-section="Dangoswch yr adran hon" data-i18n-hide-this-section="Cuddio'r adran hon" data-i18n-show-all-sections="Dangoswch bob adran" data-i18n-hide-all-sections="Cuddiwch bob adran" id="accordion-html">
+        <div class="govuk-accordion__section ">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-html-heading-1">
+                Rhagor o wybodaeth
+              </span>
+            </h2>
+          </div>
+          <div id="accordion-html-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-html-heading-1">
+            {{ moreInformationHTML | safe }}
+          </div>
+        </div>
+        <div class="govuk-accordion__section ">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-html-heading-2">
+                Ffyrdd eraill o wneud cais
+              </span>
+            </h2>
+          </div>
+          <div id="accordion-html-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-html-heading-2">
+            {{ otherWaysToApplyHTML | safe }}
+          </div>
+        </div>
+      </div>
     </div>
 
 
   </div>
 {% endblock %}
 
-{% block footer %}
-  {{ govukFooter({
-    contentLicence: 'Mae’r holl gynnwys ar gael dan <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/" rel="license">Drwydded y Llywodraeth Agored v3.0</a>, ac eithrio lle nodir yn wahanol',
-    copyright: '© Hawlfraint y Goron'
-  }) }}
-{% endblock %}
-
 {% block bodyEnd %}
   <script src="/public/all.js"></script>
-  <script>window.GOVUKFrontend.initAll({
-    accordion: {
+  <script>
+
+  new window.GOVUKFrontend.Accordion(
+    document.getElementById("accordion-default"), {
       i18n: {
         locale: "cy",
         translations: {
-          show_all_sections: "Show ALL THE THINGS!!!",
+          show_all_sections: "Dangoswch bob adran",
           hide_all_sections: "Cuddiwch bob adran",
           show_this_section: "Dangoswch yr adran hon",
           hide_this_section: "Cuddio'r adran hon"
         }
       }
     }
-  })</script>
+  ).init()
+
+  new window.GOVUKFrontend.Accordion(
+    document.getElementById("accordion-html"), {}
+  ).init()
+  
+  </script>
 {% endblock %}

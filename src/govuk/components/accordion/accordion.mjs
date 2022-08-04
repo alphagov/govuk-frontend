@@ -34,7 +34,6 @@ function Accordion ($module, options) {
     }
   }
   this.options = getOptions(options, this.$module, defaultOptions)
-  console.log(this.options)
   this.i18n = new I18n(this.options.i18n)
 
   this.moduleId = $module.getAttribute('id')

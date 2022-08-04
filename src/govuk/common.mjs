@@ -47,7 +47,7 @@ export function generateUniqueID () {
  * initAll(), but then data attributes/properties are used in individual macro
  * calls or HTML. I guess it's possible to keep track of where things are
  * initialised and introduce a level of precedence for initAll(), but that seems
- * like a nightmare to document for users and ensure consistency. 
+ * like a nightmare to document for users and ensure consistency.
  *
  * Since this would be common functionality across ALL components, it might make
  * sense to eventually put this in some kind of base component class which all
@@ -58,6 +58,24 @@ export function generateUniqueID () {
  * using a namespaced prefix like data-govuk for our data attributes
  */
 export function getOptions (passedOptions, moduleElement, defaultOptions) {
+  // Dataset keys are returned in PascalCase. I've also added an `i18n` prefix to
+  // them. This is a messy transformation of these keys to match the snake_case
+  // in accordion.mjs. Some more translation of dataset would be necessary for
+  // other options.
+  if (!passedOptions.i18n) {
+    const i18nTranslations = Object.keys(moduleElement.dataset)
+      .filter(key => key.includes('i18n'))
+      .reduce((currentObject, key) => {
+        const editedKey = key.substring(4).split(/(?=[A-Z])/).join('_').toLowerCase()
+        return Object.assign(currentObject, { [editedKey]: moduleElement.dataset[key] })
+      }, {})
+    if (Object.keys(i18nTranslations).length > 0) {
+      passedOptions.i18n = {
+        translations: i18nTranslations
+      }
+    }
+  }
+
   return {
     ...defaultOptions,
     ...moduleElement.dataset,
