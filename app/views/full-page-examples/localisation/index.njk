@@ -1,0 +1,193 @@
+---
+scenario: >-
+  Examples of various components translated into Welsh.
+---
+
+{# Example content derived from: https://www.gov.uk/adnewyddu-trwydded-yrru #}
+{% extends "full-page-example.njk" %}
+
+{% from "skip-link/macro.njk" import govukSkipLink %}
+{% from "footer/macro.njk" import govukFooter %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "button/macro.njk" import govukButton %}
+{% from "accordion/macro.njk" import govukAccordion %}
+{% from "character-count/macro.njk" import govukCharacterCount %}
+
+{% set pageTitle = "Adnewyddu eich trwydded yrru" %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% set htmlLang = "cy" %}
+
+{% block skipLink %}
+  {{ govukSkipLink({
+    href: '#main-content',
+    text: "Symud i'r prif gynnwys"
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Hafan",
+        href: "#/"
+      },
+      {
+        text: "Gyrru a chludiant",
+        href: "#/browse/driving"
+      },
+      {
+        text: "Trwyddedau gyrru",
+        href: "#/browse/driving/driving-licences"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
+
+      <p class="govuk-body">Bydd arnoch angen pasbort y DU dilys i adnewyddu eich trwydded ar-lein gyda DVLA.</p>
+
+      <h2 class="govuk-heading-m" id="adnewyddu-ar-lein">Adnewyddu ar-lein</h2>
+
+      <p class="govuk-body">Bydd eich trwydded newydd yn ddilys o’r dyddiad y mae’ch cais yn cael ei gymeradwyo, nid o ddyddiad dod i ben eich trwydded gyfredol.</p>
+
+      {{ govukButton({
+        text: "Dechrau nawr",
+        href: "#",
+        classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
+        isStartButton: true
+      }) }}
+
+      {{ govukCharacterCount({
+        label: { text: "Enw(au) cyntaf" },
+        hint: { text: "Rhowch eich enw cyntaf ac unrhyw enwau canol." },
+        limitHint: "Ysgrifennwch hyd at %{count} o nodau",
+        id: "character-count",
+        maxlength: 20,
+        value: 'A1234567890'
+      }) }}
+
+      {% set moreInformationHTML %}
+        <p class="govuk-body">Mae’n rhaid ichi adnewyddu trwydded cerdyn-llun bob 10 mlynedd - byddwch yn derbyn nodyn atgoffa cyn bod eich trwydded gyfredol yn dod i ben.</p>
+
+        <h2 class="govuk-heading-m">Beth sydd arnoch angen</h2>
+
+        <p class="govuk-body">I adnewyddu ar-lein, mae arnoch angen y canlynol:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>pasbort y DU dilys</li>
+          <li>bod yn breswylydd ym Mhrydain Fawr - mae gwasanaeth gwahanol i gael yng <a class="govuk-link" rel="external" href="https://www.nidirect.gov.uk/articles/renew-your-driving-licence">Ngogledd Iwerddon</a>
+        </li>
+          <li>talu £14 gyda cherdyn debyd neu gredyd Mastercard, Visa, Electron neu Delta (nid oes ffi os ydych dros 70 neu os oes gennych drwydded cyfnod byr am resymau meddygol)</li>
+          <li>cyfeiriadau lle rydych wedi byw dros y 3 blynedd diwethaf</li>
+          <li>eich trwydded yrru gyfredol (os nad oes gennych eich trwydded mae’n rhaid ichi roi’r rheswm yn eich cais)</li>
+          <li>eich rhif Yswiriant Gwladol (os ydych yn ei wybod)</li>
+          <li>peidio â bod wedi eich gwahardd rhag gyrru</li>
+        </ul>
+
+        <h2 class="govuk-heading-m">Data personol</h2>
+
+        <p class="govuk-body">Bydd DVLA yn anfon ebost cadarnhau atoch unwaith eich bod wedi gwneud cais. Efallai y gofynnir ichi gymryd rhan mewn ymchwil drwy e-bost, ond gallwch optio allan.</p>
+      {% endset %}
+
+      {% set otherWaysToApplyHTML %}
+        <h2 class="govuk-heading-m">Gwneud cais mewn Swyddfa’r Post</h2>
+
+        <p class="govuk-body">Byddwch yn cael llythyr atgoffa yn y post. Gallwch gymryd hwn i <a class="govuk-link" rel="external" href="http://www.postoffice.co.uk/branch-finder">Swyddfa’r Post</a> sy’n delio ag adnewyddu trwyddedau cerdyn-llun DVLA.</p>
+
+        <p>Bydd hefyd angen ichi gymryd:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>eich trwydded yrru cerdyn-llun os ydyw gennych</li>
+          <li>y ffi o £21.50</li>
+        </ul>
+
+        <p class="govuk-body">Os nad oes gennych lythyr atgoffa, bydd arnoch angen eich trwydded yrru cerdyn-llun i wneud cais mewn Swyddfa’r Post.</p>
+
+        <div role="note" class="govuk-inset-text">
+          <p class="govuk-body">Ni allwch wneud cais mewn Swyddfa’r Post os yw’ch enw wedi newid. Bydd angen ichi wneud cais drwy’r post.</p>
+        </div>
+
+        <h2 class="govuk-heading-m" id="gwneud-cais-drwyr-post">Gwneud cais drwy’r post</h2>
+
+        <div role="note" class="govuk-inset-text">
+          <p class="govuk-body">Mae’n cymryd yn hirach na’r arfer i brosesu ceisiadau a anfonir trwy’r post oherwydd coronafeirws (COVID-19).</p>
+        </div>
+
+        <p class="govuk-body">Gallwch gael ‘pecyn D1W’ o ffurflenni o <a class="govuk-link" rel="external" href="http://www.postoffice.co.uk/branch-finder">Swyddfa’r Post</a> sy’n delio ag adnewyddu trwyddedau cerdyn-llun neu dreth cerbyd DVLA.</p>
+
+        <p class="govuk-body">Mae angen ichi gynnwys y pethau canlynol gyda’ch ffurflenni wedi’u cwblhau:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+        <a class="govuk-link" href="/photos-for-passports">ffotograff math pasbort</a> diweddar (peidiwch â llofnodi cefn y llun)</li>
+          <li>eich trwydded cerdyn-llun gyfredol os ydyw gennych</li>
+          <li>siec neu archeb bost am £17, yn daladwy i DVLA (nid oes ffi yn daladwy os oes gennych drwydded yrru cyfnod byr am resymau meddygol neu os ydych yn 70 oed neu’n hŷn)</li>
+        </ul>
+
+        <p class="govuk-body">Mae hefyd angen ichi gynnwys <a class="govuk-link" href="/driving-licence-application-identity-documents">dogfennau adnabod</a> os ydych wedi newid eich enw.</p>
+
+        <p class="govuk-body">Anfonwch y cais i:</p>
+
+        <p class="govuk-body">DVLA
+        <br>Abertawe
+        <br>SA99 1DH
+        <br>
+        </p>
+
+        <h2 class="govuk-heading-m" id="ar-l-ichi-wneud-cais-mewn-swyddfar-post-neu-drwyr-post">Ar ôl ichi wneud cais mewn Swyddfa’r Post neu drwy’r post</h2>
+
+        <p class="govuk-body">Gallwch barhau i yrru tra rydych yn aros am eich trwydded newydd gyrraedd.</p>
+
+      {% endset %}
+
+      {{ govukAccordion({
+        id: "accordion-default",
+        items: [
+          {
+            heading: { text: "Rhagor o wybodaeth" },
+            content: {
+              html: moreInformationHTML
+            }
+          },
+          {
+            heading: { text: "Ffyrdd eraill o wneud cais" },
+            content: {
+              html: otherWaysToApplyHTML
+            }
+          }
+        ]
+      }) }}
+    </div>
+
+
+  </div>
+{% endblock %}
+
+{% block footer %}
+  {{ govukFooter({
+    contentLicence: 'Mae’r holl gynnwys ar gael dan <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/" rel="license">Drwydded y Llywodraeth Agored v3.0</a>, ac eithrio lle nodir yn wahanol',
+    copyright: '© Hawlfraint y Goron'
+  }) }}
+{% endblock %}
+
+{% block bodyEnd %}
+  <script src="/public/all.js"></script>
+  <script>window.GOVUKFrontend.initAll({
+    accordion: {
+      i18n: {
+        locale: "cy",
+        translations: {
+          show_all_sections: "Show ALL THE THINGS!!!",
+          hide_all_sections: "Cuddiwch bob adran",
+          show_this_section: "Dangoswch yr adran hon",
+          hide_this_section: "Cuddio'r adran hon"
+        }
+      }
+    }
+  })</script>
+{% endblock %}
