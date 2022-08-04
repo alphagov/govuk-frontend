@@ -58,6 +58,18 @@ We've deprecated the `govuk-header__navigation--no-service-name` class, and will
 
 This change was introduced in [pull request #2694: Deprecate `.govuk-header__navigation--no-service-name`](https://github.com/alphagov/govuk-frontend/pull/2694).
 
+### Recommended changes
+
+We've recently made some non-breaking changes to GOV.UK Frontend. Implementing these changes will make your service work better.
+
+#### Add `hidden` to the mobile menu button in the header component
+
+If you're not using the Nunjucks macros, add the `hidden` attribute to the mobile menu button (button with class `govuk-header__menu-button`) in the header component.
+
+We've changed the header's mobile menu functionality to use the `hidden` attribute over using CSS to show/hide the mobile menu. Adding `hidden` to the mobile menu button by default will ensure that it does not display for users when javascript doesn't load.
+
+This change was introduced in [pull request 2727: Make use of hidden in header navigation functionality](https://github.com/alphagov/govuk-frontend/pull/2727)
+
 ### Fixes
 
 In [pull request 2678: Replace ex units with ems for input lengths](https://github.com/alphagov/govuk-frontend/pull/2678), we changed how we define input lengths in our CSS. Browsers might now display these inputs as being slightly wider than before. The difference is usually fewer than 3 pixels.

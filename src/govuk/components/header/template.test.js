@@ -196,6 +196,13 @@ describe('header', () => {
 
         expect($button.attr('type')).toEqual('button')
       })
+      it('has a hidden attribute on load so that it does not show an unusable button without js', () => {
+        const $ = render('header', examples['with navigation'])
+
+        const $button = $('.govuk-header__menu-button')
+
+        expect($button.attr('hidden')).toBeTruthy()
+      })
       it('renders default label correctly', () => {
         const $ = render('header', examples['with navigation'])
 
