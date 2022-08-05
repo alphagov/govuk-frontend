@@ -34,7 +34,7 @@ describe('Task List', () => {
     it('associates the task name link with the status label using aria', async () => {
       const $ = render('task-list', examples.default)
 
-      const $itemLink = $('.govuk-task-list__task-link')
+      const $itemLink = $('.govuk-task-list__link')
       expect($itemLink.get(0).tagName).toEqual('a')
       expect($itemLink.attr('href')).toEqual('#')
 
@@ -70,7 +70,7 @@ describe('Task List', () => {
       const $hintText = $('.govuk-task-list__task_hint')
       expect($hintText.attr('id')).toEqual('task-list-example-3-hint')
 
-      const $itemAssociatedWithHint = $('.govuk-task-list__task-link[aria-describedby~="' + $hintText.attr('id') + '"]')
+      const $itemAssociatedWithHint = $('.govuk-task-list__link[aria-describedby~="' + $hintText.attr('id') + '"]')
       expect($itemAssociatedWithHint.text()).toContain('Business plan')
     })
   })

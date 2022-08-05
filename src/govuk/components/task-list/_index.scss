@@ -55,7 +55,7 @@
   // This adds an empty transparent box covering the whole row, including the task status and
   // any hint text. Because this is generated within the link element, this allows the whole area
   // to be clickable.
-  .govuk-task-list__task-link:after {
+  .govuk-task-list__link:after {
     content: "";
     display: block;
     position: absolute;
