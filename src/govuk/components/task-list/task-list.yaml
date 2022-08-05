@@ -52,6 +52,11 @@ params:
   type: object
   required: false
   description: HTML attributes (for example data attributes) to add to the container.
+- name: idPrefix
+  type: string
+  required: false
+  description: String to prefix ID for the status and hint for each task list item. If `idPrefix` is not passed, fallback to using the `task-list` string instead.
+
 
 examples:
   - name: default
