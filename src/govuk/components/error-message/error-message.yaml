@@ -43,6 +43,11 @@ examples:
   data:
     text: Error message about full name goes here
 
+- name: translated
+  data:
+    visuallyHiddenText: false
+    html: <span class="govuk-visually-hidden">Gwall:</span> Neges gwall am yr enw llawn yn mynd yma
+
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
 - name: id
   hidden: true

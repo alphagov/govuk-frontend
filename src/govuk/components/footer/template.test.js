@@ -207,4 +207,64 @@ describe('footer', () => {
       expect($sectionBreak.length).toBeFalsy()
     })
   })
+
+  describe('content licence', () => {
+    it('is visible', () => {
+      const $ = render('footer', examples.default)
+
+      const $licenceMessage = $('.govuk-footer__licence-description')
+      expect($licenceMessage.text()).toContain('Open Government Licence v3.0')
+    })
+
+    it('can be customised with `text` parameter', () => {
+      const $ = render('footer', examples['with custom text content licence and copyright notice'])
+
+      const $licenceMessage = $('.govuk-footer__licence-description')
+      expect($licenceMessage.text()).toContain('Drwydded y Llywodraeth Agored v3.0')
+    })
+
+    it('can be customised with `html` parameter', () => {
+      const $ = render('footer', examples['with custom HTML content licence and copyright notice'])
+
+      const $licenceMessage = $('.govuk-footer__licence-description')
+      expect($licenceMessage.html()).toContain('<a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/" rel="license">Drwydded y Llywodraeth Agored v3.0</a>')
+    })
+
+    it('escapes HTML in the `text` parameter', () => {
+      const $ = render('footer', examples['with HTML passed as text content'])
+
+      const $licenceMessage = $('.govuk-footer__licence-description')
+      expect($licenceMessage.html()).toContain('&lt;a class=&quot;govuk-footer__link&quot; href=&quot;https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/&quot; rel=&quot;license&quot;&gt;Drwydded y Llywodraeth Agored v3.0&lt;/a&gt;')
+    })
+  })
+
+  describe('crown copyright', () => {
+    it('is visible', () => {
+      const $ = render('footer', examples.default)
+
+      const $copyrightMessage = $('.govuk-footer__copyright-logo')
+      expect($copyrightMessage.text()).toContain('© Crown copyright')
+    })
+
+    it('can be customised with `text` parameter', () => {
+      const $ = render('footer', examples['with custom text content licence and copyright notice'])
+
+      const $copyrightMessage = $('.govuk-footer__copyright-logo')
+      expect($copyrightMessage.text()).toContain('© Hawlfraint y Goron')
+    })
+
+    it('can be customised with `html` parameter', () => {
+      const $ = render('footer', examples['with custom HTML content licence and copyright notice'])
+
+      const $copyrightMessage = $('.govuk-footer__copyright-logo')
+      expect($copyrightMessage.html()).toContain('<span>Hawlfraint y Goron</span>')
+    })
+
+    it('escapes HTML in the `text` parameter', () => {
+      const $ = render('footer', examples['with HTML passed as text content'])
+
+      const $copyrightMessage = $('.govuk-footer__copyright-logo')
+      expect($copyrightMessage.html()).toContain('&lt;span&gt;Hawlfraint y Goron&lt;/span&gt;')
+    })
+  })
 })

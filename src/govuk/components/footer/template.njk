@@ -68,19 +68,29 @@
           />
         </svg>
         <span class="govuk-footer__licence-description">
-          All content is available under the
-          <a
-            class="govuk-footer__link"
-            href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-            rel="license"
-          >Open Government Licence v3.0</a>, except where otherwise stated
+          {% if params.contentLicence.html or params.contentLicence.text %}
+            {{ params.contentLicence.html | safe if params.contentLicence.html else params.contentLicence.text }}
+          {% else %}
+            All content is available under the
+            <a
+              class="govuk-footer__link"
+              href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+              rel="license"
+            >Open Government Licence v3.0</a>, except where otherwise stated
+          {% endif %}
         </span>
       </div>
       <div class="govuk-footer__meta-item">
         <a
           class="govuk-footer__link govuk-footer__copyright-logo"
           href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
-        >© Crown copyright</a>
+        >
+          {%- if params.copyright.html or params.copyright.text -%}
+            {{ params.copyright.html | safe if params.copyright.html else params.copyright.text }}
+          {%- else -%}
+            © Crown copyright
+          {%- endif -%}
+        </a>
       </div>
     </div>
   </div>

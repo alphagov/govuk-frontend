@@ -137,6 +137,15 @@ describe('Summary list', () => {
         expect($actionLink.html()).toContain('Edit<span class="visually-hidden"> name</span>')
       })
 
+      it('allows the visually hidden prefix to be removed and then manually added with HTML', async () => {
+        const $ = render('summary-list', examples.translated)
+
+        const $component = $('.govuk-summary-list')
+        const $actionLink = $component.find('.govuk-summary-list__actions > a')
+
+        expect($actionLink.html()).toContain('Golygu<span class="govuk-visually-hidden"> dyddiad geni</span>')
+      })
+
       it('renders custom accessible name', async () => {
         const $ = render('summary-list', examples['with actions'])
 

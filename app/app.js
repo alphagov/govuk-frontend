@@ -13,15 +13,14 @@ const helperFunctions = require('../lib/helper-functions')
 const fileHelper = require('../lib/file-helper')
 const configPaths = require('../config/paths.json')
 
-// Set up views
+const isDeployedToHeroku = !!process.env.HEROKU_APP
+
 const appViews = [
   configPaths.layouts,
   configPaths.views,
-  configPaths.examples,
-  configPaths.fullPageExamples,
   configPaths.components,
   configPaths.src,
-  configPaths.node_modules
+  `${configPaths.node_modules}/govuk_template_jinja`
 ]
 
 module.exports = (options) => {
@@ -68,7 +67,13 @@ module.exports = (options) => {
   // Set up middleware to serve static assets
   app.use('/public', express.static(configPaths.public))
 
-  app.use('/docs', express.static(configPaths.sassdoc))
+  env.addGlobal('isDeployedToHeroku', isDeployedToHeroku)
+
+  if (isDeployedToHeroku) {
+    app.use('/docs', (req, res) => res.redirect('https://frontend.design-system.service.gov.uk/sass-api-reference/'))
+  } else {
+    app.use('/docs', express.static(configPaths.sassdoc))
+  }
 
   // serve html5-shiv from node modules
   app.use('/vendor/html5-shiv/', express.static('node_modules/html5shiv/dist/'))
@@ -194,7 +199,7 @@ module.exports = (options) => {
   app.get('/examples/:example', function (req, res, next) {
     // Passing a random number used for the links so that they will be unique and not display as "visited"
     const randomPageHash = (Math.random() * 1000000).toFixed()
-    res.render(`${req.params.example}/index`, { randomPageHash }, function (error, html) {
+    res.render(`examples/${req.params.example}/index`, { randomPageHash }, function (error, html) {
       if (error) {
         next(error)
       } else {

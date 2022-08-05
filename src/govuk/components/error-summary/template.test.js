@@ -97,6 +97,12 @@ describe('Error-summary', () => {
       expect(summaryDescription).toEqual('See <span>errors</span> below')
     })
 
+    it('renders nested components in description using `call`', () => {
+      const $ = render('error-summary', {}, '<div class="app-nested-component"></div>')
+
+      expect($('.govuk-error-summary .app-nested-component').length).toBeTruthy()
+    })
+
     it('allows additional classes to be added to the error-summary component', () => {
       const $ = render('error-summary', examples.classes)
 

@@ -145,6 +145,49 @@ examples:
               - href: '#'
                 text: Change
                 visuallyHiddenText: contact information
+  - name: translated
+    data:
+      rows:
+        - key:
+            text: Enw
+          value:
+            text: Firstname Lastname
+          actions:
+            items:
+              - href: '#'
+                html: Golygu<span class="govuk-visually-hidden"> enw</span>
+                visuallyHiddenText: false
+              - href: '#'
+                html: Dileu<span class="govuk-visually-hidden"> enw</span>
+                visuallyHiddenText: false
+        - key:
+            text: Dyddiad geni
+          value:
+            text: 13/08/1980
+          actions:
+            items:
+              - href: '#'
+                html: Golygu<span class="govuk-visually-hidden"> dyddiad geni</span>
+                visuallyHiddenText: false
+        - key:
+            text: Gwybodaeth cyswllt
+          value:
+            html: |
+              <p class="govuk-body">
+               email@email.com
+              </p>
+              <p class="govuk-body">
+                Address line 1<br>
+                Address line 2<br>
+                Address line 3<br>
+                Address line 4<br>
+                Address line 5
+              </p>
+          actions:
+            items:
+              - href: '#'
+                html: Golygu<span class="govuk-visually-hidden"> gwybodaeth cyswllt</span>
+                visuallyHiddenText: false
   - name: with some actions
     data:
       rows:

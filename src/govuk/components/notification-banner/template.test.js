@@ -150,6 +150,12 @@ describe('Notification-banner', () => {
       expect($title.html().trim()).toEqual('&lt;span&gt;Important information&lt;/span&gt;')
     })
 
+    it('renders nested components using `call`', () => {
+      const $ = render('notification-banner', {}, '<div class="app-nested-component"></div>')
+
+      expect($('.govuk-notification-banner .app-nested-component').length).toBeTruthy()
+    })
+
     it('renders title as html', () => {
       const $ = render('notification-banner', examples['title as html'])
       const $title = $('.govuk-notification-banner__title')

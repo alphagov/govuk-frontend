@@ -37,8 +37,8 @@
     </h{{ params.titleHeadingLevel | default(2) }}>
   </div>
   <div class="govuk-notification-banner__content">
-    {%- if params.html -%}
-      {{ params.html | safe }}
+    {%- if caller or params.html -%}
+      {{ caller() if caller else params.html | safe }}
     {%- elif params.text -%}
       {# Set default style for single line content #}
       <p class="govuk-notification-banner__heading">{{ params.text }}</p>

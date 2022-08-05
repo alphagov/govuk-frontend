@@ -6,9 +6,9 @@
     {{ params.titleHtml | safe if params.titleHtml else params.titleText }}
   </h2>
   <div class="govuk-error-summary__body">
-    {% if params.descriptionHtml or params.descriptionText %}
+    {% if caller or params.descriptionHtml or params.descriptionText %}
     <p>
-      {{ params.descriptionHtml | safe if params.descriptionHtml else params.descriptionText }}
+      {{ caller() if caller else (params.descriptionHtml | safe if params.descriptionHtml else params.descriptionText) }}
     </p>
     {% endif %}
     <ul class="govuk-list govuk-error-summary__list">

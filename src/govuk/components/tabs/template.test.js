@@ -119,12 +119,21 @@ describe('Tabs', () => {
       expect($firstTab.text().trim()).toEqual('Past day')
     })
 
+    it('render with panel content as text, wrapped in styled paragraph', () => {
+      const $ = render('tabs', examples.default)
+      const $component = $('.govuk-tabs')
+      const $lastTab = $component.find('.govuk-tabs__panel').last()
+
+      expect($lastTab.find('p').hasClass('govuk-body')).toBeTruthy()
+      expect($lastTab.text().trim()).toEqual('There is no data for this year yet, check back later')
+    })
+
     it('render escaped html when passed to text content', () => {
       const $ = render('tabs', examples['html as text'])
 
       const $component = $('.govuk-tabs')
 
-      const $firstPanel = $component.find('.govuk-tabs__panel')
+      const $firstPanel = $component.find('.govuk-tabs__panel .govuk-body')
       expect($firstPanel.html().trim()).toEqual('&lt;p&gt;Panel 1 content&lt;/p&gt;')
     })
 
