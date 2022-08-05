@@ -9,7 +9,7 @@
       <div class="govuk-task-list__item-container">
         <span class="govuk-task-list__task-name-and-hint">
           {% if item.href %}
-            <a class="govuk-link govuk-task-list__task-link" href="{{ item.href }}" aria-describedby="{{ hintId + " " if item.hint }}{{ statusId }}">{{ item.title.html | safe if item.title.html else item.title.text }}</a>
+            <a class="govuk-link govuk-task-list__link" href="{{ item.href }}" aria-describedby="{{ hintId + " " if item.hint }}{{ statusId }}">{{ item.title.html | safe if item.title.html else item.title.text }}</a>
           {% else %}
             <div class="govuk-task-list__task-no-link">{{ item.title.html | safe if item.title.html else item.title.text }}</div>
           {% endif %}
