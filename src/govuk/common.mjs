@@ -63,22 +63,22 @@ export function getOptions (passedOptions, moduleElement, defaultOptions) {
   // in accordion.mjs. Some more translation of dataset would be necessary for
   // other options.
   if (!passedOptions.i18n) {
-    const i18nTranslations = Object.keys(moduleElement.dataset)
-      .filter(key => key.includes('i18n'))
-      .reduce((currentObject, key) => {
-        const editedKey = key.substring(4).split(/(?=[A-Z])/).join('_').toLowerCase()
-        return Object.assign(currentObject, { [editedKey]: moduleElement.dataset[key] })
-      }, {})
-    if (Object.keys(i18nTranslations).length > 0) {
+    const dataTranslation = JSON.parse(moduleElement.dataset.translate)
+    let mergedTranslations = defaultOptions.i18n.translations
+
+    dataTranslation.forEach((translation) => {
+      mergedTranslations = Object.assign({}, mergedTranslations, translation)
+    })
+
+    if (Object.keys(mergedTranslations).length > 0) {
       passedOptions.i18n = {
-        translations: i18nTranslations
+        translations: mergedTranslations
       }
     }
   }
 
   return {
     ...defaultOptions,
-    ...moduleElement.dataset,
     ...passedOptions
   }
 }
