@@ -2,6 +2,26 @@
 
 ## Unreleased
 
+### New features
+
+#### Change the Button component background and text colour
+
+For non-GOV.UK branded websites, you can now change the Button component background and text colour.
+
+To change the Button component background colour set the `$govuk-button-background-colour` Sass variable.
+
+To change the Button component text colour set the `$govuk-button-text-colour` Sass variable.
+
+```scss
+@import "node_modules/govuk-frontend/govuk/base";
+
+$govuk-button-background-colour: govuk-colour("yellow");
+$govuk-button-text-colour: govuk-colour("black");
+@import "node_modules/govuk-frontend/govuk/components/button/index";
+```
+
+This was added in [pull request #2752: Change the Button component background and text colour](https://github.com/alphagov/govuk-frontend/pull/2752). Thanks to [Nick Colley](https://github.com/NickColley) for this contribution.
+
 ### Recommended changes
 
 #### Remove `aria-labelledby`, remove `id="error-summary-title"` from title and move `role="alert"` to child container on the error summary component
