@@ -1,25 +1,8 @@
 params:
 - name: translations
-  type: array
+  type: object
   required: false
   description: Passing translations for strings in JS
-  params:
-    - name: show_this_section
-      type: string
-      required: false
-      description: translate show_this_section
-    - name: hide_this_section
-      type: string
-      required: false
-      description: translate hide_this_section
-    - name: show_all_sections
-      type: string
-      required: false
-      description: translate show_all_sections
-    - name: hide_all_sections
-      type: string
-      required: false
-      description: translate hide_all_sections
 - name: id
   type: string
   required: true
@@ -73,9 +56,7 @@ params:
 examples:
 - name: default
   data:
-    translations:
-      - show_this_section: Dangoswch yr adran hon
-      - hide_this_section: Cuddio'r adran hon
+    translations: { show_this_section: Dangoswch yr adran hon, hide_this_section: Cuddio'r adran hon }
     id: default-example
     items:
       - heading:

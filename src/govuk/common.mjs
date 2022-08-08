@@ -66,9 +66,7 @@ export function getOptions (passedOptions, moduleElement, defaultOptions) {
     const dataTranslation = JSON.parse(moduleElement.dataset.translate)
     let mergedTranslations = defaultOptions.i18n.translations
 
-    dataTranslation.forEach((translation) => {
-      mergedTranslations = Object.assign({}, mergedTranslations, translation)
-    })
+    mergedTranslations = Object.assign({}, mergedTranslations, dataTranslation)
 
     if (Object.keys(mergedTranslations).length > 0) {
       passedOptions.i18n = {
