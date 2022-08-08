@@ -56,7 +56,7 @@ params:
 examples:
 - name: default
   data:
-    translations: { show_this_section: Dangoswch yr adran hon, hide_this_section: Cuddio'r adran hon }
+    translations: { show_this_section: Dangoswch <strong>yr</strong> adran hon, hide_this_section: Cuddio'r adran hon }
     id: default-example
     items:
       - heading:
