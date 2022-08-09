@@ -10,6 +10,15 @@
             "hidden": false
         },
         {
+            "name": "translated",
+            "options": {
+                "visuallyHiddenText": false,
+                "html": "<span class=\"govuk-visually-hidden\">Gwall:</span> Neges gwall am yr enw llawn yn mynd yma"
+            },
+            "html": "<p class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Gwall:</span> Neges gwall am yr enw llawn yn mynd yma\n</p>",
+            "hidden": false
+        },
+        {
             "name": "id",
             "options": {
                 "id": "my-error-message-id",

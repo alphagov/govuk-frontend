@@ -7,6 +7,12 @@
     @include govuk-font($size: 19, $line-height: 1.25);
 
     box-sizing: border-box; // should this be global?
+
+    // This min-width was chosen because:
+    // - it makes the Select noticeably wider than it is taller (which is what users expect)
+    // - 11.5em matches the 'length-10' variant of the input component
+    // - it fits comfortably on screens as narrow as 240px wide
+    min-width: 11.5em;
     max-width: 100%;
     height: 40px;
     @if $govuk-typography-use-rem {

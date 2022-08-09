@@ -5,9 +5,9 @@
   <h{{ headingLevel }} class="govuk-panel__title">
     {{ params.titleHtml | safe if params.titleHtml else params.titleText }}
   </h{{ headingLevel }}>
-  {% if params.html or params.text %}
+  {% if caller or params.html or params.text %}
   <div class="govuk-panel__body">
-    {{ params.html | safe if params.html else params.text }}
+    {{ caller() if caller else (params.html | safe if params.html else params.text) }}
   </div>
   {% endif %}
 </div>

@@ -60,36 +60,35 @@
     }
   }
 
-  // The ex measurements are based on the number of W's that can fit inside the input
-  // Extra space is left on the right hand side to allow for the Safari prefill icon
-  // Linear regression estimation based on visual tests: y = 1.76 + 1.81x
+  // em measurements are based on the point size of the typeface
+  // Extra space is added on the right hand side to allow for the Safari prefill icon
 
   .govuk-input--width-30 {
-    max-width: 56ex + 3ex;
+    max-width: 29.5em;
   }
 
   .govuk-input--width-20 {
-    max-width: 38ex + 3ex;
+    max-width: 20.5em;
   }
 
   .govuk-input--width-10 {
-    max-width: 20ex + 3ex;
+    max-width: 11.5em;
   }
 
   .govuk-input--width-5 {
-    max-width: 10.8ex;
+    max-width: 5.5em;
   }
 
   .govuk-input--width-4 {
-    max-width: 9ex;
+    max-width: 4.5em;
   }
 
   .govuk-input--width-3 {
-    max-width: 7.2ex;
+    max-width: 3.75em;
   }
 
   .govuk-input--width-2 {
-    max-width: 5.4ex;
+    max-width: 2.75em;
   }
 
   .govuk-input__wrapper {
