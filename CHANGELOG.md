@@ -50,7 +50,7 @@ For example:
 -   `govuk-!-static-padding-right-5` will apply 25px of padding to the right side of the element at all screen sizes    
 -   `govuk-!-static-margin-0` will remove all margins at all screen sizes
 
-This was added in [pull request #2672: Add static spacing override classes](https://github.com/alphagov/govuk-frontend/pull/2672). Thanks to [Patrick Cartlidge](https://github.com/patrickpatrickpatrick) for this contribution.
+This was added in [pull request #2672: Add static spacing override classes](https://github.com/alphagov/govuk-frontend/pull/2672). Thanks to @patrickpatrickpatrick for this contribution.
 
 ### Deprecated features
 
@@ -70,7 +70,7 @@ If you're not using the Nunjucks macros, add the `hidden` attribute to the mobil
 
 We've changed the header's mobile menu functionality to use the `hidden` attribute instead of using CSS to show/hide the mobile menu. Adding `hidden` to the mobile menu button by default will make sure that it does not display for users when javascript does not load.
 
-This was added in [pull request 2727: Make use of hidden in header navigation functionality](https://github.com/alphagov/govuk-frontend/pull/2727).
+This was added in [pull request 2727: Make use of hidden in header navigation functionality](https://github.com/alphagov/govuk-frontend/pull/2727). Thanks to @NickColley and @kr8n3r for their contributions.
 
 ### Fixes
 
@@ -78,12 +78,13 @@ In [pull request 2678: Replace ex units with ems for input lengths](https://gith
 
 We’ve also made fixes in the following pull requests:
 
--   [#2668: Fix Summary List action link alignment](https://github.com/alphagov/govuk-frontend/pull/2668)    
--   [#2670: Define minimum width for select component](https://github.com/alphagov/govuk-frontend/pull/2670)
--   [#2723: Style accordion and tabs text content with govuk-body class](https://github.com/alphagov/govuk-frontend/pull/2723)
--   [#2724: Remove redundant aria-hidden attribute from the content when using the Details polyfill](https://github.com/alphagov/govuk-frontend/pull/2724)
--   [#2725: Remove padding-right from last column in summary list row](https://github.com/alphagov/govuk-frontend/pull/2725)
--   [#2737: Avoid unnecessary spacing-related media queries](https://github.com/alphagov/govuk-frontend/pull/2737)
+- [#2668: Fix Summary List action link alignment](https://github.com/alphagov/govuk-frontend/pull/2668)
+- [#2670: Define minimum width for select component](https://github.com/alphagov/govuk-frontend/pull/2670) - thanks @Nosfistis for reporting this issue
+- [#2723: Style accordion and tabs text content with govuk-body class](https://github.com/alphagov/govuk-frontend/pull/2723)
+- [#2724: Remove redundant aria-hidden attribute from the content when using the Details polyfill](https://github.com/alphagov/govuk-frontend/pull/2724)
+- [#2725: Remove padding-right from last column in summary list row](https://github.com/alphagov/govuk-frontend/pull/2725) - thanks @edwardhorsford for reporting this issue and suggesting a fix
+- [#2737: Avoid unnecessary spacing-related media queries](https://github.com/alphagov/govuk-frontend/pull/2737)
+- [#2747: Ensure accordion uses overriden focus colour](https://github.com/alphagov/govuk-frontend/pull/2747) - thanks @NickColley for reporting this issue and suggesting a fix
 
 ## 4.2.0 (Feature release)
 
