@@ -29,11 +29,11 @@
               {{ _actionLink(row.actions.items[0]) | indent(12) | trim }}
             {% else %}
               <ul class="govuk-summary-list__actions-list">
-                {% for action in row.actions.items %}
+                {%- for action in row.actions.items -%}
                   <li class="govuk-summary-list__actions-list-item">
-                    {{ _actionLink(action) | indent(18) | trim }}
+                    {{- _actionLink(action) | indent(18) | trim -}}
                   </li>
-                {% endfor %}
+                {%- endfor -%}
               </ul>
             {% endif %}
           </dd>

@@ -972,14 +972,14 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
   var $icon = $section.querySelector('.' + this.upChevronIconClass);
   var $showHideText = $section.querySelector('.' + this.sectionShowHideTextClass);
   var $button = $section.querySelector('.' + this.sectionButtonClass);
-  var $newButtonText = expanded ? 'Hide' : 'Show';
+  var newButtonText = expanded ? 'Hide' : 'Show';
 
   // Build additional copy of "this section" for assistive technology and place inside toggle link
   var $visuallyHiddenText = document.createElement('span');
   $visuallyHiddenText.classList.add('govuk-visually-hidden');
   $visuallyHiddenText.innerHTML = ' this section';
 
-  $showHideText.innerHTML = $newButtonText;
+  $showHideText.innerHTML = newButtonText;
   $showHideText.appendChild($visuallyHiddenText);
   $button.setAttribute('aria-expanded', expanded);
 
