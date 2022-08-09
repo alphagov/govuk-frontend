@@ -987,14 +987,14 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
   var $icon = $section.querySelector('.' + this.upChevronIconClass);
   var $showHideText = $section.querySelector('.' + this.sectionShowHideTextClass);
   var $button = $section.querySelector('.' + this.sectionButtonClass);
-  var $newButtonText = expanded ? 'Hide' : 'Show';
+  var newButtonText = expanded ? 'Hide' : 'Show';
 
   // Build additional copy of "this section" for assistive technology and place inside toggle link
   var $visuallyHiddenText = document.createElement('span');
   $visuallyHiddenText.classList.add('govuk-visually-hidden');
   $visuallyHiddenText.innerHTML = ' this section';
 
-  $showHideText.innerHTML = $newButtonText;
+  $showHideText.innerHTML = newButtonText;
   $showHideText.appendChild($visuallyHiddenText);
   $button.setAttribute('aria-expanded', expanded);
 
@@ -1519,13 +1519,10 @@ Details.prototype.polyfillDetails = function () {
   $summary.tabIndex = 0;
 
   // Detect initial open state
-  var openAttr = $module.getAttribute('open') !== null;
-  if (openAttr === true) {
+  if (this.$module.hasAttribute('open')) {
     $summary.setAttribute('aria-expanded', 'true');
-    $content.setAttribute('aria-hidden', 'false');
   } else {
     $summary.setAttribute('aria-expanded', 'false');
-    $content.setAttribute('aria-hidden', 'true');
     $content.style.display = 'none';
   }
 
@@ -1538,23 +1535,14 @@ Details.prototype.polyfillDetails = function () {
 * @param {object} summary element
 */
 Details.prototype.polyfillSetAttributes = function () {
-  var $module = this.$module;
-  var $summary = this.$summary;
-  var $content = this.$content;
-
-  var expanded = $summary.getAttribute('aria-expanded') === 'true';
-  var hidden = $content.getAttribute('aria-hidden') === 'true';
-
-  $summary.setAttribute('aria-expanded', (expanded ? 'false' : 'true'));
-  $content.setAttribute('aria-hidden', (hidden ? 'false' : 'true'));
-
-  $content.style.display = (expanded ? 'none' : '');
-
-  var hasOpenAttr = $module.getAttribute('open') !== null;
-  if (!hasOpenAttr) {
-    $module.setAttribute('open', 'open');
+  if (this.$module.hasAttribute('open')) {
+    this.$module.removeAttribute('open');
+    this.$summary.setAttribute('aria-expanded', 'false');
+    this.$content.style.display = 'none';
   } else {
-    $module.removeAttribute('open');
+    this.$module.setAttribute('open', 'open');
+    this.$summary.setAttribute('aria-expanded', 'true');
+    this.$content.style.display = '';
   }
 
   return true
@@ -2269,6 +2257,17 @@ function Header ($module) {
   this.$menu = this.$menuButton && $module.querySelector(
     '#' + this.$menuButton.getAttribute('aria-controls')
   );
+
+  // Save the opened/closed state for the nav in memory so that we can
+  // accurately maintain state when the screen is changed from small to
+  // big and back to small
+  this.menuIsOpen = false;
+
+  // A global const for storing a matchMedia instance which we'll use to
+  // detect when a screen size change happens. We set this later during the
+  // init function and rely on it being null if the feature isn't available
+  // to initially apply hidden attributes
+  this.mql = null;
 }
 
 /**
@@ -2276,27 +2275,58 @@ function Header ($module) {
  *
  * Check for the presence of the header, menu and menu button – if any are
  * missing then there's nothing to do so return early.
+ * Feature sniff for and apply a matchMedia for desktop which will
+ * trigger a state sync if the browser viewport moves between states. If
+ * matchMedia isn't available, hide the menu button and present the "no js"
+ * version of the menu to the user.
  */
 Header.prototype.init = function () {
   if (!this.$module || !this.$menuButton || !this.$menu) {
     return
   }
 
-  this.syncState(this.$menu.classList.contains('govuk-header__navigation-list--open'));
-  this.$menuButton.addEventListener('click', this.handleMenuButtonClick.bind(this));
+  if ('matchMedia' in window) {
+    // Set the matchMedia to the govuk-frontend desktop breakpoint
+    this.mql = window.matchMedia('(min-width: 48.0625em)');
+
+    if ('addEventListener' in this.mql) {
+      this.mql.addEventListener('change', this.syncState.bind(this));
+    } else {
+      // addListener is a deprecated function, however addEventListener
+      // isn't supported by IE or Safari. We therefore add this in as
+      // a fallback for those browsers
+      this.mql.addListener(this.syncState.bind(this));
+    }
+
+    this.syncState();
+    this.$menuButton.addEventListener('click', this.handleMenuButtonClick.bind(this));
+  } else {
+    this.$menuButton.setAttribute('hidden', '');
+  }
 };
 
 /**
  * Sync menu state
  *
- * Sync the menu button class and the accessible state of the menu and the menu
- * button with the visible state of the menu
- *
- * @param {boolean} isVisible Whether the menu is currently visible
+ * Uses the global variable menuIsOpen to correctly set the accessible and
+ * visual states of the menu and the menu button.
+ * Additionally will force the menu to be visible and the menu button to be
+ * hidden if the matchMedia is triggered to desktop.
  */
-Header.prototype.syncState = function (isVisible) {
-  this.$menuButton.classList.toggle('govuk-header__menu-button--open', isVisible);
-  this.$menuButton.setAttribute('aria-expanded', isVisible);
+Header.prototype.syncState = function () {
+  if (this.mql.matches) {
+    this.$menu.removeAttribute('hidden');
+    this.$menuButton.setAttribute('hidden', '');
+  } else {
+    this.$menuButton.removeAttribute('hidden');
+    this.$menuButton.setAttribute('aria-expanded', this.menuIsOpen);
+
+    if (this.menuIsOpen) {
+      this.$menu.removeAttribute('hidden');
+    } else {
+      this.$menu.setAttribute('hidden', '');
+    }
+  }
 };
 
 /**
@@ -2306,8 +2336,8 @@ Header.prototype.syncState = function (isVisible) {
  * sync the accessibility state and menu button state
  */
 Header.prototype.handleMenuButtonClick = function () {
-  var isVisible = this.$menu.classList.toggle('govuk-header__navigation-list--open');
-  this.syncState(isVisible);
+  this.menuIsOpen = !this.menuIsOpen;
+  this.syncState();
 };
 
 function Radios ($module) {

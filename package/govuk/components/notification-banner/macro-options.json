@@ -12,6 +12,12 @@
         "description": "The HTML to use within the notification banner. You can use any string with this option. If you set `html`, `text` is not required and is ignored."
     },
     {
+        "name": "caller",
+        "type": "nunjucks-block",
+        "required": false,
+        "description": "Not strictly a parameter but [Nunjucks code convention](https://mozilla.github.io/nunjucks/templating.html#call). Using a `call` block enables you to call a macro with all the text inside the tag. This is helpful if you want to pass a lot of content into a macro. To use it, you will need to wrap the entire notification banner component in a `call` block."
+    },
+    {
         "name": "titleText",
         "type": "string",
         "required": false,

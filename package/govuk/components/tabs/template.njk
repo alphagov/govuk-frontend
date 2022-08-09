@@ -25,7 +25,11 @@
     {% if item %}
       {% set id = item.id if item.id else idPrefix + "-" + loop.index %}
       <div class="govuk-tabs__panel{% if loop.index > 1 %} govuk-tabs__panel--hidden{% endif %}" id="{{ id }}"{% for attribute, value in item.panel.attributes %} {{attribute}}="{{value}}"{% endfor %}>
-        {{ item.panel.html | safe if item.panel.html else item.panel.text }}
+        {% if item.panel.html %}
+          {{ item.panel.html | safe }}
+        {% elif item.panel.text %}
+          <p class="govuk-body">{{ item.panel.text }}</p>
+        {% endif %}
       </div>
     {% endif %}
   {% endfor %}

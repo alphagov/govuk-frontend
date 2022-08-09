@@ -104,6 +104,46 @@
         ]
     },
     {
+        "name": "contentLicence",
+        "type": "object",
+        "required": false,
+        "description": "Object containing options for the content licence.",
+        "params": [
+            {
+                "name": "text",
+                "type": "string",
+                "required": false,
+                "description": "If `html` is set, this is not required. If `html` is provided, the `text` option will be ignored. If neither are provided, the text for the Open Government Licence is used."
+            },
+            {
+                "name": "html",
+                "type": "string",
+                "required": false,
+                "description": "If `text` is set, this is not required. If `html` is provided, the `text` option will be ignored. If neither are provided, the text for the Open Government Licence is used. The content licence is inside a `<span>` element, so you can only add [phrasing content](https://html.spec.whatwg.org/#phrasing-content) to it."
+            }
+        ]
+    },
+    {
+        "name": "copyright",
+        "type": "object",
+        "required": false,
+        "description": "Object containing options for the copyright notice.",
+        "params": [
+            {
+                "name": "text",
+                "type": "string",
+                "required": false,
+                "description": "If `html` is set, this is not required. If `html` is provided, the `text` option will be ignored. If neither are provided, Crown copyright is used."
+            },
+            {
+                "name": "html",
+                "type": "string",
+                "required": false,
+                "description": "If `text` is set, this is not required. If `html` is provided, the `text` option will be ignored. If neither are provided, Crown copyright is used. The copyright notice is inside an `<a>` element, so you can only use text formatting elements within it."
+            }
+        ]
+    },
+    {
         "name": "containerClasses",
         "type": "string",
         "required": false,
