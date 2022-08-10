@@ -4,6 +4,15 @@
   // Generate typography override classes for each responsive font map in the
   // typography scale eg .govuk-\!-font-size-80
   @each $size in map-keys($govuk-typography-scale) {
+    // Deprecations:
+    //  govuk-!-font-size-14 aka: 14px on large screens (from tablet), 12px
+    //  on small screens (until tablet), is deprecated. Use a class referencing a
+    //  higher point on the typography scale instead.
+    //  For classes govuk-!-font-size-16 and govuk-!-font-size-19, the small screen
+    //  value (until tablet) for each of these (14px and 16px respectively) are
+    //  deprecated, meaning that both points will use the same font size across all
+    //  screen sizes in the next breaking release. Keep this in mind when designing
+    //  your service.
     .govuk-\!-font-size-#{$size} {
       @include govuk-typography-responsive($size, $important: true);
     }
