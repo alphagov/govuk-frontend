@@ -83,7 +83,7 @@ If a snapshot test fails, review the difference in the console. If the change is
 
 This will update the snapshot file. Commit this file separately with a commit message that explains you're updating the snapshot file and an explanation of what caused the change.
 
-## Visual regression testing with Percy
+## Visual regression testing with [Percy](https://percy.io/)
 
 We generate 2 screenshots for each default example of every component. One example has JavaScript enabled, the other has JavaScript disabled. Screenshots are not taken for all the different variations of each component. This tool is not a replacement for manual testing.
 
