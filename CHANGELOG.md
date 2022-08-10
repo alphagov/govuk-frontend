@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+### Recommended changes
+
+#### Remove `aria-labelledby`, remove `id="error-summary-title"` from title and move `role="alert"` to child container on the error summary component
+
+If you're not using the Nunjucks macros, you can improve the experience for screen reader users by making these changes to the error summary markup:
+
+- Remove `aria-labelledby="error-summary-title"` and `role="alert"` from the parent element (`govuk-error-summary`)
+- Add a `div` wrapper around the contents of `govuk-error-summary` with the attribute `role="alert"`
+- Remove `id="error-summary-title"` from the error summary `h2` (`govuk-error-summary__title`)
+
+This will enable screen reader users to have a better, more coherent experience with the error summary. Most notably it will ensure that users of JAWS 2022 or later will hear the entire contents of the error summary on page load and therefore have further context on why there is an error on the page they're on.
+
+This was added in [pull request #2677: Amend error summary markup to fix page load focus bug in JAWS 2022](https://github.com/alphagov/govuk-frontend/pull/2677)
+
 ## 4.3.1 (Patch release)
 
 ### Recommended changes
