@@ -109,6 +109,14 @@
 ///
 /// @param {Number} $size - Point from the spacing scale (the size as it would
 ///   appear on tablet and above)
+///   Deprecations:
+///     14 on the typography scale aka: 14px on large screens (from tablet), 12px
+///     on small screens (until tablet), is deprecated. Use a higher point on the
+///     typography scale instead.
+///     On typography scale points 16 and 19, the small screen value (until tablet)
+///     for each of these (14px and 16px respectively) are deprecated, meaning that
+///     both points will use the same font size across all screen sizes in the next
+///     breaking release. Keep this in mind when designing your service.
 /// @param {Number} $override-line-height [false] - Non responsive custom line
 ///   height. Omit to use the line height from the font map.
 /// @param {Boolean} $important [false] - Whether to mark declarations as
