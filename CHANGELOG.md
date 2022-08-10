@@ -2,6 +2,19 @@
 
 ## Unreleased
 
+### Deprecated features
+
+#### Using `14` on the font scale and `16` and `19` dropping to a different size on mobile
+
+From GOV.UK Frontend v5.0.0, you will no longer be able to use `14` as a `$size` value when doing the following:
+
+- Calling the `govuk-typography-responsive` mixin
+- Calling the `govuk-font` mixin
+
+You will also no longer be able to use the override class `govuk-!-font-size-14`.
+
+In addition, the font scale values `16` and `19` when used in the aforementioned mixins or via their associated override classes will no longer drop down to different font sizes on small screen sizes (`14px` for `16`, `16px` for `19`) and will instead retain their size across all screen sizes. Bear this in mind when designing your services.
+
 ## 4.3.0 (Feature release)
 
 ### New features
