@@ -1,7 +1,7 @@
 {% set id = params.id %}
 {% set headingLevel = params.headingLevel if params.headingLevel else 2 %}
 
-<div class="govuk-accordion {%- if params.classes %} {{ params.classes }}{% endif -%}" data-module="govuk-accordion" id="{{ id }}" data-translate="{{ params.translations | dump }}"
+<div class="govuk-accordion {%- if params.classes %} {{ params.classes }}{% endif -%}" data-module="govuk-accordion" id="{{ id }}"
 {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   {% for item in params.items %}
     {% if item %}
@@ -28,4 +28,9 @@
       </div>
     {% endif %}
   {% endfor %}
+  {% if params.translations %}
+  <script type="application/json">
+  {{ params.translations | dump | safe }}
+  </script>
+  {% endif %}
 </div>
