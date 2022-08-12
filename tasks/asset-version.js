@@ -1,6 +1,6 @@
 'use strict'
 
-const configPaths = require('../../config/paths.json')
+const configPaths = require('../config/paths.json')
 const fs = require('fs')
 const path = require('path')
 const taskArguments = require('./task-arguments')
@@ -12,7 +12,7 @@ const isDist = taskArguments.destination === 'dist' || false
 // Add all.package.json version
 // ----------------------------------
 function updateAssetsVersion (cb) {
-  const pkg = require('../../' + configPaths.package + 'package.json')
+  const pkg = require('../' + configPaths.package + 'package.json')
 
   // Write VERSION.txt file
   fs.writeFileSync(taskArguments.destination + '/VERSION.txt', pkg.version + '\r\n')
