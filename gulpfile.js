@@ -13,9 +13,9 @@ require('./tasks/gulp/nodemon.js')
 require('./tasks/gulp/watch.js')
 // new tasks
 require('./tasks/gulp/copy-to-destination.js')
-require('./tasks/gulp/sassdoc.js')
 
 // Node tasks
+const buildSassdocs = require('./tasks/sassdoc.js')
 const updateDistAssetsVersion = require('./tasks/asset-version.js')
 
 // Umbrella scripts tasks for preview ---
@@ -66,7 +66,7 @@ gulp.task('serve', gulp.parallel(
 gulp.task('dev', gulp.series(
   'clean',
   'copy-assets',
-  'sassdoc',
+  buildSassdocs,
   'serve'
 ))
 
