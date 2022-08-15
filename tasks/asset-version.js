@@ -3,34 +3,26 @@
 const configPaths = require('../config/paths.json')
 const fs = require('fs')
 const path = require('path')
-const taskArguments = require('./task-arguments')
 
-// check for the flag passed by the task
-const isDist = taskArguments.destination === 'dist' || false
-
-// Update assets' versions ----------
-// Add all.package.json version
-// ----------------------------------
-function updateAssetsVersion (cb) {
+// Update assets' version numbers
+// Uses the version number from `package/package.json` and writes it to various places
+function updateDistAssetsVersion (cb) {
+  const distFolder = 'dist'
   const pkg = require('../' + configPaths.package + 'package.json')
 
   // Write VERSION.txt file
-  fs.writeFileSync(taskArguments.destination + '/VERSION.txt', pkg.version + '\r\n')
+  fs.writeFileSync(distFolder + '/VERSION.txt', pkg.version + '\r\n')
 
   // Files to process
   const assetFiles = [
-    taskArguments.destination + '/govuk-frontend.min.css',
-    taskArguments.destination + '/govuk-frontend-ie8.min.css',
-    taskArguments.destination + '/govuk-frontend.min.js'
+    distFolder + '/govuk-frontend.min.css',
+    distFolder + '/govuk-frontend-ie8.min.css',
+    distFolder + '/govuk-frontend.min.js'
   ]
 
   // Loop through files and move them to their new locations
   assetFiles.map(srcFilename => {
-    let destFilename = srcFilename
-    if (isDist) {
-      // If this is going to dist/, rename the file to append the version number
-      destFilename = srcFilename.replace(/(govuk.*)(?=\.min)/g, '$1-' + pkg.version)
-    }
+    const destFilename = srcFilename.replace(/(govuk.*)(?=\.min)/g, '$1-' + pkg.version)
     fs.rename(
       path.resolve(srcFilename),
       path.resolve(destFilename),
@@ -41,9 +33,9 @@ function updateAssetsVersion (cb) {
     )
   })
 
-  // Required for Gulp task to complete
-  // Can be removed once this no longer runs via Gulp
+  // Required for Gulp task to complete successfully.
+  // Can be removed once this no longer runs via Gulp.
   cb()
 }
 
-module.exports = updateAssetsVersion
+module.exports = updateDistAssetsVersion

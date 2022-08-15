@@ -16,7 +16,7 @@ require('./tasks/gulp/copy-to-destination.js')
 require('./tasks/gulp/sassdoc.js')
 
 // Node tasks
-const updateAssetsVersion = require('./tasks/asset-version.js')
+const updateDistAssetsVersion = require('./tasks/asset-version.js')
 
 // Umbrella scripts tasks for preview ---
 // Runs js lint and compilation
@@ -84,7 +84,7 @@ gulp.task('build:dist', gulp.series(
   'clean',
   'copy-assets',
   'copy:assets',
-  updateAssetsVersion
+  updateDistAssetsVersion
 ))
 
 // Default task -------------------------
