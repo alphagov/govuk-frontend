@@ -9,13 +9,13 @@ const taskArguments = require('./tasks/task-arguments')
 require('./tasks/gulp/clean.js')
 require('./tasks/gulp/compile-assets.js')
 require('./tasks/gulp/lint.js')
-require('./tasks/gulp/nodemon.js')
 require('./tasks/gulp/watch.js')
 // new tasks
 require('./tasks/gulp/copy-to-destination.js')
 
 // Node tasks
 const buildSassdocs = require('./tasks/sassdoc.js')
+const runNodemon = require('./tasks/nodemon.js')
 const updateDistAssetsVersion = require('./tasks/asset-version.js')
 
 // Umbrella scripts tasks for preview ---
@@ -57,7 +57,7 @@ gulp.task('copy-assets', gulp.series(
 // --------------------------------------
 gulp.task('serve', gulp.parallel(
   'watch',
-  'nodemon'
+  runNodemon
 ))
 
 // Dev task -----------------------------
