@@ -6,7 +6,6 @@ const taskListing = require('gulp-task-listing')
 const taskArguments = require('./tasks/task-arguments')
 
 // Gulp sub-tasks
-require('./tasks/gulp/clean.js')
 require('./tasks/gulp/compile-assets.js')
 require('./tasks/gulp/lint.js')
 require('./tasks/gulp/watch.js')
@@ -17,6 +16,7 @@ require('./tasks/gulp/copy-to-destination.js')
 const buildSassdocs = require('./tasks/sassdoc.js')
 const runNodemon = require('./tasks/nodemon.js')
 const updateDistAssetsVersion = require('./tasks/asset-version.js')
+const { cleanDist, cleanPackage, cleanPublic } = require('./tasks/gulp/clean.js')
 
 // Umbrella scripts tasks for preview ---
 // Runs js lint and compilation
@@ -64,7 +64,7 @@ gulp.task('serve', gulp.parallel(
 // Runs a sequence of task on start
 // --------------------------------------
 gulp.task('dev', gulp.series(
-  'clean',
+  cleanPublic,
   'copy-assets',
   buildSassdocs,
   'serve'
@@ -74,14 +74,14 @@ gulp.task('dev', gulp.series(
 // Prepare package folder for publishing
 // -------------------------------------
 gulp.task('build:package', gulp.series(
-  'clean',
+  cleanPackage,
   'copy-files',
   'js:compile',
   'js:copy-esm'
 ))
 
 gulp.task('build:dist', gulp.series(
-  'clean',
+  cleanDist,
   'copy-assets',
   'copy:assets',
   updateDistAssetsVersion

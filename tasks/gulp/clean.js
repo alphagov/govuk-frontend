@@ -1,28 +1,32 @@
 'use strict'
 
-const gulp = require('gulp')
-const taskArguments = require('../task-arguments')
+const paths = require('../../config/paths.json')
 const del = require('del')
 
-// Clean task for a specified folder --------------------
-// Removes all old files, except for package.json
-// and README in all package
-// ------------------------------------------------------
+function cleanDist () {
+  return del([
+    `${paths.dist}**/*`
+  ])
+}
 
-gulp.task('clean', () => {
-  const destination = taskArguments.destination
+function cleanPackage () {
+  return del([
+    `${paths.package}**`,
+    `!${paths.package}`,
+    `!${paths.package}package.json`,
+    `!${paths.package}govuk-prototype-kit.config.json`,
+    `!${paths.package}README.md`
+  ])
+}
 
-  if (destination === 'package') {
-    return del([
-      `${destination}/**`,
-      `!${destination}`,
-      `!${destination}/package.json`,
-      `!${destination}/govuk-prototype-kit.config.json`,
-      `!${destination}/README.md`
-    ])
-  } else {
-    return del([
-      `${destination}/**/*`
-    ])
-  }
-})
+function cleanPublic () {
+  return del([
+    `${paths.public}**/*`
+  ])
+}
+
+module.exports = {
+  cleanDist,
+  cleanPackage,
+  cleanPublic
+}
