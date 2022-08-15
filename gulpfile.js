@@ -3,7 +3,7 @@
 const paths = require('./config/paths.json')
 const gulp = require('gulp')
 const taskListing = require('gulp-task-listing')
-const taskArguments = require('./tasks/gulp/task-arguments')
+const taskArguments = require('./tasks/task-arguments')
 
 // Gulp sub-tasks
 require('./tasks/gulp/clean.js')
@@ -13,8 +13,10 @@ require('./tasks/gulp/nodemon.js')
 require('./tasks/gulp/watch.js')
 // new tasks
 require('./tasks/gulp/copy-to-destination.js')
-require('./tasks/gulp/asset-version.js')
 require('./tasks/gulp/sassdoc.js')
+
+// Node tasks
+const updateDistAssetsVersion = require('./tasks/asset-version.js')
 
 // Umbrella scripts tasks for preview ---
 // Runs js lint and compilation
@@ -82,7 +84,7 @@ gulp.task('build:dist', gulp.series(
   'clean',
   'copy-assets',
   'copy:assets',
-  'update-assets-version'
+  updateDistAssetsVersion
 ))
 
 // Default task -------------------------
