@@ -16,7 +16,7 @@ require('./tasks/gulp/copy-to-destination.js')
 const buildSassdocs = require('./tasks/sassdoc.js')
 const runNodemon = require('./tasks/nodemon.js')
 const updateDistAssetsVersion = require('./tasks/asset-version.js')
-const { cleanDist, cleanPackage, cleanPublic } = require('./tasks/gulp/clean.js')
+const { cleanDist, cleanPackage, cleanPublic } = require('./tasks/clean.js')
 
 // Umbrella scripts tasks for preview ---
 // Runs js lint and compilation
