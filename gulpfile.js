@@ -87,6 +87,8 @@ gulp.task('build:dist', gulp.series(
   updateDistAssetsVersion
 ))
 
+gulp.task('sassdoc', buildSassdocs)
+
 // Default task -------------------------
 // Lists out available tasks.
 // --------------------------------------
