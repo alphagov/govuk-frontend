@@ -28,7 +28,7 @@ function buildSassdocs (cb) {
       'objects/layout': 'Objects / Layout'
     }
   }).then(() => {
-    console.log('Sassdoc built.')
+    console.info('Sassdoc built.')
   }, err => {
     throw err
   })

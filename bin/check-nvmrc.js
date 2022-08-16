@@ -20,7 +20,7 @@ fs.readFile(path.join(__dirname, '../.nvmrc'), 'utf8', function (error, data) {
   var nvmInstallText = 'To do this you can install nvm (https://github.com/creationix/nvm) then run `nvm install`.'
 
   if (versionMatchesMajor) {
-    console.log('' +
+    console.info('' +
       'Warning: You are using Node.js version ' + currentVersion + ' which we do not use. ' +
       '\n\n' +
       'You may encounter issues, consider installing Node.js version ' + expectedVersion + '.' +
@@ -30,7 +30,7 @@ fs.readFile(path.join(__dirname, '../.nvmrc'), 'utf8', function (error, data) {
     process.exit()
   }
 
-  console.log('' +
+  console.info('' +
     'You are using Node.js version ' + currentVersion + ' which we do not support. ' +
     '\n\n' +
     'Please install Node.js version ' + expectedVersion + ' and try again.' +

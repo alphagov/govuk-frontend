@@ -28,7 +28,7 @@ function updateDistAssetsVersion (cb) {
       path.resolve(destFilename),
       error => {
         if (error) throw error
-        console.log(`Moved ${srcFilename} to ${destFilename}.`)
+        console.info(`Moved ${srcFilename} to ${destFilename}.`)
       }
     )
   })
