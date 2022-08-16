@@ -29,12 +29,14 @@ NPM scripts are defined in `package.json`. These trigger a number of gulp tasks.
 - starts up Express
 
 **`npm run build:package` will do the following:**
+- clean the `package` folder
 - compile component nunjucks to HTML
 - copy template, macro and component.njk files for each component
 - copy Sass files, add vendor prefixes and replace path to be node_modules consumption compliant
 - runs `npm run test:build:package` (which will test the output is correct)
 
 **`npm run build:dist` will do the following:**
+- clean the `dist` folder
 - copy JS
 - copy icons
 - copy SASS and add vendor prefixes
