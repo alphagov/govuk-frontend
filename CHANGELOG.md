@@ -16,6 +16,12 @@ We've deprecated the `govuk-!-margin-static` and `govuk-!-padding-static` classe
 
 This change was introduced in [pull request #2770: Fix ordering of properties in static spacing override classes](https://github.com/alphagov/govuk-frontend/pull/2770). Thanks to @garrystewart for reporting this issue.
 
+### Fixes
+
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#2766: Remove unused `console.log` calls from accordion JavaScript](https://github.com/alphagov/govuk-frontend/pull/2766)
+
 ## 4.3.0 (Feature release)
 
 ### New features
