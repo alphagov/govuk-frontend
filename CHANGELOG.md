@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+### Recommended changes
+
+#### Replace deprecated `govuk-!-margin-static` and `govuk-!-padding-static` classes
+
+We've fixed an error in the naming convention of the static spacing override classes we'd introduced in v4.3.0. These classes should start with `govuk-!-static`, and we've now deprecated the incorrect classes.
+
+If you're using the static spacing margin override classes, replace any classes starting with `govuk-!-margin-static` with `govuk-!-static-margin`. For example: `govuk-!-margin-static-2` would become `govuk-!-static-margin-2`.
+
+If you're using the static spacing padding override classes, replace any classes starting with `govuk-!-padding-static` with `govuk-!-static-padding`. For example: `govuk-!-padding-static-2` would become `govuk-!-static-padding-2`.
+
+We've deprecated the `govuk-!-margin-static` and `govuk-!-padding-static` classes, and will remove them in a future major release.
+
+This change was introduced in [pull request #2770: Fix ordering of properties in static spacing override classes](https://github.com/alphagov/govuk-frontend/pull/2770). Thanks to @garrystewart for reporting this issue.
+
 ## 4.3.0 (Feature release)
 
 ### New features
@@ -47,7 +61,7 @@ To apply spacing in a single direction, include `left-`, `right-`, `top-`, or `b
 For example:
 
 -   `govuk-!-static-margin-9` will apply a 60px margin to all sides of the element at all screen sizes
--   `govuk-!-static-padding-right-5` will apply 25px of padding to the right side of the element at all screen sizes    
+-   `govuk-!-static-padding-right-5` will apply 25px of padding to the right side of the element at all screen sizes
 -   `govuk-!-static-margin-0` will remove all margins at all screen sizes
 
 This was added in [pull request #2672: Add static spacing override classes](https://github.com/alphagov/govuk-frontend/pull/2672). Thanks to @patrickpatrickpatrick for this contribution.
