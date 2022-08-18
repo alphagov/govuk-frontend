@@ -64,7 +64,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
 9. Create a pull request and copy the changelog text.
    When reviewing the PR, check that the version-numbers have been updated and that the compiled assets use this version-number.
 
-10. Once a reviewer approves the pull request, merge it to **main**. This will automatically create a tag in Github which you can later use to create a Github release.
+10. Once a reviewer approves the pull request, merge it to **main**.
 
 ## Publish a release to npm
 
@@ -82,6 +82,8 @@ Developers should pair on releases. When remote working, it can be useful to be 
 5. You will now be prompted to continue or cancel the release. Check the details and enter `y` to continue. If something does not look right, press `N` to cancel the release.
   
   This step will create a ZIP file containing the release in the root of your govuk-frontend git directory. You will need this file when creating the GitHub release.
+
+  It will also automatically create a tag in Github which you can use to create a Github release in the following section.
   
 6. Run `npm logout` to log out from npm.
 
