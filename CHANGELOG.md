@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 4.3.1 (Patch release)
+
 ### Recommended changes
 
 #### Replace deprecated `govuk-!-margin-static` and `govuk-!-padding-static` classes

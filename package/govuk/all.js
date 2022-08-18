@@ -1055,9 +1055,7 @@ var helper = {
       window.sessionStorage.removeItem(testString);
       return result
     } catch (exception) {
-      if ((typeof console === 'undefined' || typeof console.log === 'undefined')) {
-        console.log('Notice: sessionStorage not available.');
-      }
+      return false
     }
   }
 };
@@ -1073,14 +1071,6 @@ Accordion.prototype.storeState = function ($section) {
     if ($button) {
       var contentId = $button.getAttribute('aria-controls');
       var contentState = $button.getAttribute('aria-expanded');
-
-      if (typeof contentId === 'undefined' && (typeof console === 'undefined' || typeof console.log === 'undefined')) {
-        console.error(new Error('No aria controls present in accordion section heading.'));
-      }
-
-      if (typeof contentState === 'undefined' && (typeof console === 'undefined' || typeof console.log === 'undefined')) {
-        console.error(new Error('No aria expanded present in accordion section heading.'));
-      }
 
       // Only set the state when both `contentId` and `contentState` are taken from the DOM.
       if (contentId && contentState) {
