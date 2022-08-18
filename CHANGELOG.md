@@ -22,6 +22,14 @@ $govuk-button-text-colour: govuk-colour("black");
 
 This was added in [pull request #2752: Change the Button component background and text colour](https://github.com/alphagov/govuk-frontend/pull/2752). Thanks to [Nick Colley](https://github.com/NickColley) for this contribution.
 
+#### Localise the navigation menu toggle button
+
+When using the [header](https://design-system.service.gov.uk/components/header/) Nunjucks macro, you can now translate the text of the mobile navigation menu toggle button by using the `menuButtonText` parameter.
+
+You should avoid lengthy values for the `menuButtonText` parameter, as the text can overflow and cause visual issues if too long. 
+
+This was added in [pull request #2720: Add parameter to localise mobile menu toggle button](https://github.com/alphagov/govuk-frontend/pull/2720).
+
 ### Recommended changes
 
 #### Remove `aria-labelledby`, remove `id="error-summary-title"` from title and move `role="alert"` to child container on the error summary component
