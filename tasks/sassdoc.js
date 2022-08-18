@@ -5,6 +5,7 @@ function buildSassdocs (cb) {
   sassdoc([paths.src + '**/**/*.scss', `!${paths.src}/vendor/*`], {
     dest: paths.sassdoc,
     groups: {
+      'components/button': 'Components / Button',
       'helpers/accessibility': 'Helpers / Accessibility',
       'helpers/colour': 'Helpers / Colour',
       'helpers/layout': 'Helpers / Layout',
