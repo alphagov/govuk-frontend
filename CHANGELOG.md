@@ -44,6 +44,12 @@ This will enable screen reader users to have a better, more coherent experience 
 
 This was added in [pull request #2677: Amend error summary markup to fix page load focus bug in JAWS 2022](https://github.com/alphagov/govuk-frontend/pull/2677)
 
+### Fixes
+
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#2800: Improve Pagination component print styles](https://github.com/alphagov/govuk-frontend/pull/2800)
+
 ## 4.3.1 (Patch release)
 
 ### Recommended changes
