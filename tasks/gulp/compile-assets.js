@@ -163,9 +163,9 @@ function compileFullPageStyles (done) {
   gulp.src(compileFullPageExampleStylesheets)
     .pipe(plumber(errorHandler))
     .pipe(sass())
-    .pipe(rename(function (path) {
-      path.basename = path.dirname
-      path.dirname = ''
+    .pipe(rename(function (location) {
+      location.basename = location.dirname
+      location.dirname = ''
     }))
     .pipe(gulp.dest(taskArguments.destination + '/full-page-examples/'))
 
@@ -174,7 +174,7 @@ function compileFullPageStyles (done) {
 
 gulp.task('scss:compile', function (done) {
   // Default tasks if compiling for dist
-  var tasks = gulp.parallel(compileStyles, compileOldIE)
+  let tasks = gulp.parallel(compileStyles, compileOldIE)
 
   if (isPublic) {
     tasks = gulp.parallel(compileStyles, compileOldIE, compileLegacy, compileLegacyIE, compileFullPageStyles)
@@ -196,7 +196,7 @@ gulp.task('js:compile', (done) => {
   const srcFiles = glob.sync(fileLookup)
 
   srcFiles.forEach(function (file) {
-    // This is combined with desinationPath in gulp.dest()
+    // This is combined with destinationPath in gulp.dest()
     // so the files are output to the correct folders
     const newDirectoryPath = path.dirname(file).replace('src/govuk', '')
 
