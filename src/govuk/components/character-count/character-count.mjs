@@ -1,5 +1,5 @@
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
-import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normaliziation
+import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normalisation
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 
 function CharacterCount ($module) {
