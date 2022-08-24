@@ -10,11 +10,6 @@ function CharacterCount ($module) {
   this.lastInputTimestamp = null
 }
 
-CharacterCount.prototype.defaults = {
-  characterCountAttribute: 'data-maxlength',
-  wordCountAttribute: 'data-maxwords'
-}
-
 // Initialize component
 CharacterCount.prototype.init = function () {
   // Check that required elements are present
@@ -55,9 +50,9 @@ CharacterCount.prototype.init = function () {
   this.options = this.getDataset($module)
 
   // Determine the limit attribute (characters or words)
-  var countAttribute = this.defaults.characterCountAttribute
+  var countAttribute = 'data-maxlength'
   if (this.options.maxwords) {
-    countAttribute = this.defaults.wordCountAttribute
+    countAttribute = 'data-maxwords'
   }
 
   // Save the element limit
