@@ -79,51 +79,6 @@ CharacterCount.prototype.init = function () {
 }
 
 /**
- * Get dataset
- *
- * Get all of the data-* attributes from a given $element as map of key-value
- * pairs, with the data- prefix removed from the keys.
- *
- * This is a bit like HTMLElement.dataset, but it does not convert the keys to
- * camel case (and it works in browsers that do not support HTMLElement.dataset)
- *
- * @todo Replace with HTMLElement.dataset
- *
- * @param {HTMLElement} $element - The element to read data attributes from
- * @returns {Object} Object of key-value pairs representing the data attributes
- */
-CharacterCount.prototype.getDataset = function ($element) {
-  var dataset = {}
-  var attributes = $element.attributes
-  if (attributes) {
-    for (var i = 0; i < attributes.length; i++) {
-      var attribute = attributes[i]
-      var match = attribute.name.match(/^data-(.+)/)
-      if (match) {
-        dataset[match[1]] = attribute.value
-      }
-    }
-  }
-  return dataset
-}
-
-/**
- * Count the number of characters (or words, if `options.maxwords` is set)
- * in the given text
- *
- * @param {String} text - The text to count the characters of
- * @returns {Integer} the number of characters (or words) in the text
- */
-CharacterCount.prototype.count = function (text) {
-  if (this.options.maxwords) {
-    var tokens = text.match(/\S+/g) || [] // Matches consecutive non-whitespace chars
-    return tokens.length
-  } else {
-    return text.length
-  }
-}
-
-/**
  * Bind change events
  *
  * Set up events on the $textarea so that the counts update when the user
@@ -136,6 +91,49 @@ CharacterCount.prototype.bindChangeEvents = function () {
   // Bind focus/blur events to start/stop polling
   $textarea.addEventListener('focus', this.handleFocus.bind(this))
   $textarea.addEventListener('blur', this.handleBlur.bind(this))
+}
+
+/**
+ * Handle key up event
+ *
+ * Update the visible character counter and keep track of when the last update
+ * happened for each keypress
+ */
+CharacterCount.prototype.handleKeyUp = function () {
+  this.updateVisibleCountMessage()
+  this.lastInputTimestamp = Date.now()
+}
+
+/**
+ * Handle focus event
+ *
+ * Speech recognition software such as Dragon NaturallySpeaking will modify the
+ * fields by directly changing its `value`. These changes don't trigger events
+ * in JavaScript, so we need to poll to handle when and if they occur.
+ *
+ * Once the and a keyup event hasn't been detected for at least 1000 ms (1s),
+ * check if the textarea value has changed and update the count message if it
+ * has.
+ *
+ * This is so that the update triggered by the manual comparison doesn't
+ * conflict with debounced KeyboardEvent updates.
+ */
+CharacterCount.prototype.handleFocus = function () {
+  this.valueChecker = setInterval(function () {
+    if (!this.lastInputTimestamp || (Date.now() - 500) >= this.lastInputTimestamp) {
+      this.updateIfValueChanged()
+    }
+  }.bind(this), 1000)
+}
+
+/**
+ * Handle blur event
+ *
+ * Stop checking the textarea value once the textarea no longer has focus
+ */
+CharacterCount.prototype.handleBlur = function () {
+  // Cancel value checking on blur
+  clearInterval(this.valueChecker)
 }
 
 /**
@@ -210,6 +208,22 @@ CharacterCount.prototype.updateScreenReaderCountMessage = function () {
 }
 
 /**
+ * Count the number of characters (or words, if `options.maxwords` is set)
+ * in the given text
+ *
+ * @param {String} text - The text to count the characters of
+ * @returns {Integer} the number of characters (or words) in the text
+ */
+CharacterCount.prototype.count = function (text) {
+  if (this.options.maxwords) {
+    var tokens = text.match(/\S+/g) || [] // Matches consecutive non-whitespace chars
+    return tokens.length
+  } else {
+    return text.length
+  }
+}
+
+/**
  * Get count message
  *
  * @returns {String} Status message
@@ -259,46 +273,32 @@ CharacterCount.prototype.isOverThreshold = function () {
 }
 
 /**
- * Handle key up event
+ * Get dataset
  *
- * Update the visible character counter and keep track of when the last update
- * happened for each keypress
+ * Get all of the data-* attributes from a given $element as map of key-value
+ * pairs, with the data- prefix removed from the keys.
+ *
+ * This is a bit like HTMLElement.dataset, but it does not convert the keys to
+ * camel case (and it works in browsers that do not support HTMLElement.dataset)
+ *
+ * @todo Replace with HTMLElement.dataset
+ *
+ * @param {HTMLElement} $element - The element to read data attributes from
+ * @returns {Object} Object of key-value pairs representing the data attributes
  */
-CharacterCount.prototype.handleKeyUp = function () {
-  this.updateVisibleCountMessage()
-  this.lastInputTimestamp = Date.now()
-}
-
-/**
- * Handle focus event
- *
- * Speech recognition software such as Dragon NaturallySpeaking will modify the
- * fields by directly changing its `value`. These changes don't trigger events
- * in JavaScript, so we need to poll to handle when and if they occur.
- *
- * Once the and a keyup event hasn't been detected for at least 1000 ms (1s),
- * check if the textarea value has changed and update the count message if it
- * has.
- *
- * This is so that the update triggered by the manual comparison doesn't
- * conflict with debounced KeyboardEvent updates.
- */
-CharacterCount.prototype.handleFocus = function () {
-  this.valueChecker = setInterval(function () {
-    if (!this.lastInputTimestamp || (Date.now() - 500) >= this.lastInputTimestamp) {
-      this.updateIfValueChanged()
+CharacterCount.prototype.getDataset = function ($element) {
+  var dataset = {}
+  var attributes = $element.attributes
+  if (attributes) {
+    for (var i = 0; i < attributes.length; i++) {
+      var attribute = attributes[i]
+      var match = attribute.name.match(/^data-(.+)/)
+      if (match) {
+        dataset[match[1]] = attribute.value
+      }
     }
-  }.bind(this), 1000)
-}
-
-/**
- * Handle blur event
- *
- * Stop checking the textarea value once the textarea no longer has focus
- */
-CharacterCount.prototype.handleBlur = function () {
-  // Cancel value checking on blur
-  clearInterval(this.valueChecker)
+  }
+  return dataset
 }
 
 export default CharacterCount
