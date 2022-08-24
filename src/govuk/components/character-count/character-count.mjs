@@ -50,16 +50,11 @@ CharacterCount.prototype.init = function () {
   this.options = this.getDataset($module)
 
   // Determine the limit attribute (characters or words)
-  var countAttribute = 'data-maxlength'
   if (this.options.maxwords) {
-    countAttribute = 'data-maxwords'
-  }
-
-  // Save the element limit
-  this.maxLength = $module.getAttribute(countAttribute)
-
-  // Check for limit
-  if (!this.maxLength) {
+    this.maxLength = this.options.maxwords
+  } else if (this.options.maxlength) {
+    this.maxLength = this.options.maxlength
+  } else {
     return
   }
 
