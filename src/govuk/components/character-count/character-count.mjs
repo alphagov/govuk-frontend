@@ -11,8 +11,8 @@ function CharacterCount ($module) {
 }
 
 /**
-* Initialise component
-*/
+ * Initialise component
+ */
 CharacterCount.prototype.init = function () {
   // Check that required elements are present
   if (!this.$textarea) {
@@ -81,8 +81,8 @@ CharacterCount.prototype.init = function () {
 /**
  * Bind change events
  *
- * Set up events on the $textarea so that the counts update when the user
- * types.
+ * Set up event listeners on the $textarea so that the count messages update
+ * when the user types.
  */
 CharacterCount.prototype.bindChangeEvents = function () {
   var $textarea = this.$textarea
@@ -111,9 +111,8 @@ CharacterCount.prototype.handleKeyUp = function () {
  * fields by directly changing its `value`. These changes don't trigger events
  * in JavaScript, so we need to poll to handle when and if they occur.
  *
- * Once the and a keyup event hasn't been detected for at least 1000 ms (1s),
- * check if the textarea value has changed and update the count message if it
- * has.
+ * Once the keyup event hasn't been detected for at least 1000 ms (1s), check if
+ * the textarea value has changed and update the count message if it has.
  *
  * This is so that the update triggered by the manual comparison doesn't
  * conflict with debounced KeyboardEvent updates.
