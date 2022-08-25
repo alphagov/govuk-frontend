@@ -15,16 +15,34 @@
 
 */
 
-import { nodeListForEach } from '../../common.mjs'
+import { nodeListForEach, getModuleConfig } from '../../common.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 
-function Accordion ($module) {
+function Accordion ($module, options) {
   this.$module = $module
   this.moduleId = $module.getAttribute('id')
   this.$sections = $module.querySelectorAll('.govuk-accordion__section')
   this.$showAllButton = ''
   this.browserSupportsSessionStorage = helper.checkForSessionStorage()
+
+  var defaultOptions = {
+    i18n: {
+      hideAllSections: 'Hide all sections',
+      hideSection: 'Hide <span class="govuk-visually-hidden">this section</span>',
+      showAllSections: 'Show all sections',
+      showSection: 'Show <span class="govuk-visually-hidden">this section</span>'
+    }
+  }
+  this.config = getModuleConfig(defaultOptions, options, $module.dataset)
+
+  // DEBUGGING: IE friendly object output
+  if ('console' in window) {
+    console.log('Accordion configuration:')
+    for (var key in this.config) {
+      console.log('    ' + key + ': ' + this.config[key])
+    }
+  }
 
   this.controlsClass = 'govuk-accordion__controls'
   this.showAllClass = 'govuk-accordion__show-all'

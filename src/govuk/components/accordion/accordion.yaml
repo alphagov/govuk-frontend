@@ -169,6 +169,21 @@ examples:
         content:
           html: <a class="govuk-link" href="#">Link B</a>
 
+- name: with localisations
+  data:
+    id: with-localisations
+    items:
+    - heading:
+        text: Section A
+      content:
+        html: <a class="govuk-link" href="#">Link A</a>
+    - heading:
+        text: Section B
+      content:
+        html: <a class="govuk-link" href="#">Link B</a>
+    showAllSectionsText: Show everything
+    showSectionText: Show<span class="govuk-visually-hidden"> something</span>
+
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
 - name: classes
   hidden: true

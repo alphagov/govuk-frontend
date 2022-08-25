@@ -26,7 +26,7 @@ function initAll (options) {
 
   var $accordions = scope.querySelectorAll('[data-module="govuk-accordion"]')
   nodeListForEach($accordions, function ($accordion) {
-    new Accordion($accordion).init()
+    new Accordion($accordion, options.accordion || {}).init()
   })
 
   var $details = scope.querySelectorAll('[data-module="govuk-details"]')
