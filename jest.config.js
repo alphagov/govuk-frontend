@@ -17,7 +17,11 @@ const config = {
     },
     {
       displayName: 'JavaScript unit tests',
-      testMatch: ['./**/*.unit.test.js, ./**/*.unit.test.mjs']
+      transform: {
+        '.*.js$': 'rollup-jest'
+      },
+      moduleFileExtensions: ['js', 'mjs'],
+      testMatch: ['./**/*.unit.test.mjs', './**/*.unit.test.js']
     }
   ]
 }
