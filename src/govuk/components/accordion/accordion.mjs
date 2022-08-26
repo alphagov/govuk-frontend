@@ -19,14 +19,14 @@ import { nodeListForEach, mergeConfigs } from '../../common.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 
-function Accordion ($module, options) {
+function Accordion ($module, config) {
   this.$module = $module
   this.moduleId = $module.getAttribute('id')
   this.$sections = $module.querySelectorAll('.govuk-accordion__section')
   this.$showAllButton = ''
   this.browserSupportsSessionStorage = helper.checkForSessionStorage()
 
-  var defaultOptions = {
+  var defaultConfig = {
     i18n: {
       hideAllSections: 'Hide all sections',
       hideSection: 'Hide <span class="govuk-visually-hidden">this section</span>',
@@ -34,7 +34,7 @@ function Accordion ($module, options) {
       showSection: 'Show <span class="govuk-visually-hidden">this section</span>'
     }
   }
-  this.config = mergeConfigs(defaultOptions, options, $module.dataset)
+  this.config = mergeConfigs(defaultConfig, config, $module.dataset)
 
   // DEBUGGING: IE friendly object output
   if ('console' in window) {

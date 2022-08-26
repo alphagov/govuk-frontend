@@ -39,12 +39,12 @@ export function generateUniqueID () {
  * @param {...Object} - Any number of objects to merge together.
  * @returns {Object} - A flattened object of key-value pairs.
  */
-export function mergeConfigs () {
+export function mergeConfigs (/* ...config objects */) {
   // Function to take nested objects and flatten them to a dot-separated keyed
   // object. Doing this means we don't need to do any deep/recursive merging of
   // each of our objects, nor transform our dataset from a flat list into a
   // nested object.
-  var flattenObject = function (optionsObject) {
+  var flattenObject = function (configObject) {
     // Prepare an empty return object
     var flattenedObject = {}
 
@@ -70,12 +70,12 @@ export function mergeConfigs () {
         }
       }
     }
-    flattenLoop(optionsObject)
+    flattenLoop(configObject)
     return flattenedObject
   }
 
   // Start with an empty object as our base
-  var configObject = {}
+  var formattedConfigObject = {}
 
   // Loop through each of the remaining passed objects and push their keys
   // one-by-one into configObject. Any duplicate keys will override the existing
@@ -84,10 +84,10 @@ export function mergeConfigs () {
     var obj = flattenObject(arguments[i])
     for (var key in obj) {
       if (Object.prototype.hasOwnProperty.call(obj, key)) {
-        configObject[key] = obj[key]
+        formattedConfigObject[key] = obj[key]
       }
     }
   }
 
-  return configObject
+  return formattedConfigObject
 }
