@@ -1,5 +1,5 @@
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
-import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normaliziation
+import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normalisation
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 
 function CharacterCount ($module) {
@@ -10,12 +10,9 @@ function CharacterCount ($module) {
   this.lastInputTimestamp = null
 }
 
-CharacterCount.prototype.defaults = {
-  characterCountAttribute: 'data-maxlength',
-  wordCountAttribute: 'data-maxwords'
-}
-
-// Initialize component
+/**
+ * Initialise component
+ */
 CharacterCount.prototype.init = function () {
   // Check that required elements are present
   if (!this.$textarea) {
@@ -40,7 +37,8 @@ CharacterCount.prototype.init = function () {
   $fallbackLimitMessage.insertAdjacentElement('afterend', $screenReaderCountMessage)
 
   // Create our live-updating counter element, copying the classes from the
-  // fallback element for backwards compatibility as these may have been configured
+  // fallback element for backwards compatibility as these may have been
+  // configured
   var $visibleCountMessage = document.createElement('div')
   $visibleCountMessage.className = $fallbackLimitMessage.className
   $visibleCountMessage.classList.add('govuk-character-count__status')
@@ -55,16 +53,11 @@ CharacterCount.prototype.init = function () {
   this.options = this.getDataset($module)
 
   // Determine the limit attribute (characters or words)
-  var countAttribute = this.defaults.characterCountAttribute
   if (this.options.maxwords) {
-    countAttribute = this.defaults.wordCountAttribute
-  }
-
-  // Save the element limit
-  this.maxLength = $module.getAttribute(countAttribute)
-
-  // Check for limit
-  if (!this.maxLength) {
+    this.maxLength = this.options.maxwords
+  } else if (this.options.maxlength) {
+    this.maxLength = this.options.maxlength
+  } else {
     return
   }
 
@@ -74,9 +67,9 @@ CharacterCount.prototype.init = function () {
   this.bindChangeEvents()
 
   // When the page is restored after navigating 'back' in some browsers the
-  // state of the character count is not restored until *after* the DOMContentLoaded
-  // event is fired, so we need to manually update it after the pageshow event
-  // in browsers that support it.
+  // state of the character count is not restored until *after* the
+  // DOMContentLoaded event is fired, so we need to manually update it after the
+  // pageshow event in browsers that support it.
   if ('onpageshow' in window) {
     window.addEventListener('pageshow', this.updateCountMessage.bind(this))
   } else {
@@ -85,35 +78,12 @@ CharacterCount.prototype.init = function () {
   this.updateCountMessage()
 }
 
-// Read data attributes
-CharacterCount.prototype.getDataset = function (element) {
-  var dataset = {}
-  var attributes = element.attributes
-  if (attributes) {
-    for (var i = 0; i < attributes.length; i++) {
-      var attribute = attributes[i]
-      var match = attribute.name.match(/^data-(.+)/)
-      if (match) {
-        dataset[match[1]] = attribute.value
-      }
-    }
-  }
-  return dataset
-}
-
-// Counts characters or words in text
-CharacterCount.prototype.count = function (text) {
-  var length
-  if (this.options.maxwords) {
-    var tokens = text.match(/\S+/g) || [] // Matches consecutive non-whitespace chars
-    length = tokens.length
-  } else {
-    length = text.length
-  }
-  return length
-}
-
-// Bind input propertychange to the elements and update based on the change
+/**
+ * Bind change events
+ *
+ * Set up event listeners on the $textarea so that the count messages update
+ * when the user types.
+ */
 CharacterCount.prototype.bindChangeEvents = function () {
   var $textarea = this.$textarea
   $textarea.addEventListener('keyup', this.handleKeyUp.bind(this))
@@ -123,10 +93,52 @@ CharacterCount.prototype.bindChangeEvents = function () {
   $textarea.addEventListener('blur', this.handleBlur.bind(this))
 }
 
-// Speech recognition software such as Dragon NaturallySpeaking will modify the
-// fields by directly changing its `value`. These changes don't trigger events
-// in JavaScript, so we need to poll to handle when and if they occur.
-CharacterCount.prototype.checkIfValueChanged = function () {
+/**
+ * Handle key up event
+ *
+ * Update the visible character counter and keep track of when the last update
+ * happened for each keypress
+ */
+CharacterCount.prototype.handleKeyUp = function () {
+  this.updateVisibleCountMessage()
+  this.lastInputTimestamp = Date.now()
+}
+
+/**
+ * Handle focus event
+ *
+ * Speech recognition software such as Dragon NaturallySpeaking will modify the
+ * fields by directly changing its `value`. These changes don't trigger events
+ * in JavaScript, so we need to poll to handle when and if they occur.
+ *
+ * Once the keyup event hasn't been detected for at least 1000 ms (1s), check if
+ * the textarea value has changed and update the count message if it has.
+ *
+ * This is so that the update triggered by the manual comparison doesn't
+ * conflict with debounced KeyboardEvent updates.
+ */
+CharacterCount.prototype.handleFocus = function () {
+  this.valueChecker = setInterval(function () {
+    if (!this.lastInputTimestamp || (Date.now() - 500) >= this.lastInputTimestamp) {
+      this.updateIfValueChanged()
+    }
+  }.bind(this), 1000)
+}
+
+/**
+ * Handle blur event
+ *
+ * Stop checking the textarea value once the textarea no longer has focus
+ */
+CharacterCount.prototype.handleBlur = function () {
+  // Cancel value checking on blur
+  clearInterval(this.valueChecker)
+}
+
+/**
+ * Update count message if textarea value has changed
+ */
+CharacterCount.prototype.updateIfValueChanged = function () {
   if (!this.$textarea.oldValue) this.$textarea.oldValue = ''
   if (this.$textarea.value !== this.$textarea.oldValue) {
     this.$textarea.oldValue = this.$textarea.value
@@ -134,14 +146,20 @@ CharacterCount.prototype.checkIfValueChanged = function () {
   }
 }
 
-// Helper function to update both the visible and screen reader-specific
-// counters simultaneously (e.g. on init)
+/**
+ * Update count message
+ *
+ * Helper function to update both the visible and screen reader-specific
+ * counters simultaneously (e.g. on init)
+ */
 CharacterCount.prototype.updateCountMessage = function () {
   this.updateVisibleCountMessage()
   this.updateScreenReaderCountMessage()
 }
 
-// Update visible counter
+/**
+ * Update visible count message
+ */
 CharacterCount.prototype.updateVisibleCountMessage = function () {
   var $textarea = this.$textarea
   var $visibleCountMessage = this.$visibleCountMessage
@@ -167,10 +185,12 @@ CharacterCount.prototype.updateVisibleCountMessage = function () {
   }
 
   // Update message
-  $visibleCountMessage.innerHTML = this.formattedUpdateMessage()
+  $visibleCountMessage.innerHTML = this.getCountMessage()
 }
 
-// Update screen reader-specific counter
+/**
+ * Update screen reader count message
+ */
 CharacterCount.prototype.updateScreenReaderCountMessage = function () {
   var $screenReaderCountMessage = this.$screenReaderCountMessage
 
@@ -183,11 +203,31 @@ CharacterCount.prototype.updateScreenReaderCountMessage = function () {
   }
 
   // Update message
-  $screenReaderCountMessage.innerHTML = this.formattedUpdateMessage()
+  $screenReaderCountMessage.innerHTML = this.getCountMessage()
 }
 
-// Format update message
-CharacterCount.prototype.formattedUpdateMessage = function () {
+/**
+ * Count the number of characters (or words, if `options.maxwords` is set)
+ * in the given text
+ *
+ * @param {String} text - The text to count the characters of
+ * @returns {Integer} the number of characters (or words) in the text
+ */
+CharacterCount.prototype.count = function (text) {
+  if (this.options.maxwords) {
+    var tokens = text.match(/\S+/g) || [] // Matches consecutive non-whitespace chars
+    return tokens.length
+  } else {
+    return text.length
+  }
+}
+
+/**
+ * Get count message
+ *
+ * @returns {String} Status message
+ */
+CharacterCount.prototype.getCountMessage = function () {
   var $textarea = this.$textarea
   var options = this.options
   var remainingNumber = this.maxLength - this.count($textarea.value)
@@ -206,9 +246,16 @@ CharacterCount.prototype.formattedUpdateMessage = function () {
   return 'You have ' + displayNumber + ' ' + charNoun + ' ' + charVerb
 }
 
-// Checks whether the value is over the configured threshold for the input.
-// If there is no configured threshold, it is set to 0 and this function will
-// always return true.
+/**
+ * Check if count is over threshold
+ *
+ * Checks whether the value is over the configured threshold for the input.
+ * If there is no configured threshold, it is set to 0 and this function will
+ * always return true.
+ *
+ * @returns {Boolean} true if the current count is over the options.threshold
+ *   (or no threshold is set)
+ */
 CharacterCount.prototype.isOverThreshold = function () {
   var $textarea = this.$textarea
   var options = this.options
@@ -224,28 +271,33 @@ CharacterCount.prototype.isOverThreshold = function () {
   return (thresholdValue <= currentLength)
 }
 
-// Update the visible character counter and keep track of when the last update
-// happened for each keypress
-CharacterCount.prototype.handleKeyUp = function () {
-  this.updateVisibleCountMessage()
-  this.lastInputTimestamp = Date.now()
-}
-
-CharacterCount.prototype.handleFocus = function () {
-  // If the field is focused, and a keyup event hasn't been detected for at
-  // least 1000 ms (1 second), then run the manual change check.
-  // This is so that the update triggered by the manual comparison doesn't
-  // conflict with debounced KeyboardEvent updates.
-  this.valueChecker = setInterval(function () {
-    if (!this.lastInputTimestamp || (Date.now() - 500) >= this.lastInputTimestamp) {
-      this.checkIfValueChanged()
+/**
+ * Get dataset
+ *
+ * Get all of the data-* attributes from a given $element as map of key-value
+ * pairs, with the data- prefix removed from the keys.
+ *
+ * This is a bit like HTMLElement.dataset, but it does not convert the keys to
+ * camel case (and it works in browsers that do not support HTMLElement.dataset)
+ *
+ * @todo Replace with HTMLElement.dataset
+ *
+ * @param {HTMLElement} $element - The element to read data attributes from
+ * @returns {Object} Object of key-value pairs representing the data attributes
+ */
+CharacterCount.prototype.getDataset = function ($element) {
+  var dataset = {}
+  var attributes = $element.attributes
+  if (attributes) {
+    for (var i = 0; i < attributes.length; i++) {
+      var attribute = attributes[i]
+      var match = attribute.name.match(/^data-(.+)/)
+      if (match) {
+        dataset[match[1]] = attribute.value
+      }
     }
-  }.bind(this), 1000)
-}
-
-CharacterCount.prototype.handleBlur = function () {
-  // Cancel value checking on blur
-  clearInterval(this.valueChecker)
+  }
+  return dataset
 }
 
 export default CharacterCount
