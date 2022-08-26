@@ -15,7 +15,7 @@
 
 */
 
-import { nodeListForEach, getModuleConfig } from '../../common.mjs'
+import { nodeListForEach, mergeConfigs } from '../../common.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 
@@ -34,7 +34,7 @@ function Accordion ($module, options) {
       showSection: 'Show <span class="govuk-visually-hidden">this section</span>'
     }
   }
-  this.config = getModuleConfig(defaultOptions, options, $module.dataset)
+  this.config = mergeConfigs(defaultOptions, options, $module.dataset)
 
   // DEBUGGING: IE friendly object output
   if ('console' in window) {
