@@ -31,11 +31,11 @@ See [Tasks](tasks.md) for details of what `npm test` does.
 ### Running individual tests
 You can run a subset of the test suite that only tests components by running:
 
-    `npm test -- --testPathPattern=src/govuk/components/button`
+    `npx jest src/govuk/components/button`
 
 Note: There's a watch mode that keeps a testing session open waiting for changes that can be used with:
 
-    `npm test -- --watch src/govuk/components/button`
+    `npx jest --watch src/govuk/components/button`
 
 ### Running only SASS linting
 
