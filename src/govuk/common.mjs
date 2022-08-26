@@ -15,7 +15,7 @@ export function nodeListForEach (nodes, callback) {
 }
 
 /**
- *  Used to generate a unique string, allows multiple instances of the component without
+ * Used to generate a unique string, allows multiple instances of the component without
  * Them conflicting with each other.
  * https://stackoverflow.com/a/8809472
  */
@@ -36,8 +36,8 @@ export function generateUniqueID () {
  * namespaced key-value pairs, (e.g. {'i18n.showSection': 'Show section'}) and
  * combines them together, with greatest priority on the LAST item passed in.
  *
- * @param {...object} - Any number of objects to merge together.
- * @returns {object} - A flattened object of key-value pairs.
+ * @param {...Object} - Any number of objects to merge together.
+ * @returns {Object} - A flattened object of key-value pairs.
  */
 export function getModuleConfig () {
   // Function to take nested objects and flatten them to a dot-separated keyed
@@ -74,7 +74,7 @@ export function getModuleConfig () {
     return flattenedObject
   }
 
-  // Start with an empty  object as our base
+  // Start with an empty object as our base
   var configObject = {}
 
   // Loop through each of the remaining passed objects and push their keys
