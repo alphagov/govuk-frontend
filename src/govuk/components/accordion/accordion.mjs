@@ -21,7 +21,6 @@ import '../../vendor/polyfills/Element/prototype/classList.mjs'
 
 function Accordion ($module) {
   this.$module = $module
-  this.moduleId = $module.getAttribute('id')
   this.$sections = $module.querySelectorAll('.govuk-accordion__section')
   this.$showAllButton = ''
   this.browserSupportsSessionStorage = helper.checkForSessionStorage()
@@ -116,7 +115,7 @@ Accordion.prototype.constructHeaderMarkup = function ($headerWrapper, index) {
   // Create a button element that will replace the '.govuk-accordion__section-button' span
   var $button = document.createElement('button')
   $button.setAttribute('type', 'button')
-  $button.setAttribute('aria-controls', this.moduleId + '-content-' + (index + 1))
+  $button.setAttribute('aria-controls', this.$module.id + '-content-' + (index + 1))
 
   // Copy all attributes (https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes) from $span to $button
   for (var i = 0; i < $span.attributes.length; i++) {
