@@ -181,8 +181,8 @@ examples:
         text: Section B
       content:
         html: <a class="govuk-link" href="#">Link B</a>
-    showAllSectionsText: Show everything
-    showSectionText: Show<span class="govuk-visually-hidden"> something</span>
+    showAllSectionsHtml: Show everything
+    showSectionHtml: Show<span class="govuk-visually-hidden"> something</span>
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
 - name: classes

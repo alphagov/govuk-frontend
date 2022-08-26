@@ -5,10 +5,10 @@
   class="govuk-accordion {%- if params.classes %} {{ params.classes }}{% endif -%}"
   data-module="govuk-accordion"
   id="{{ id }}"
-  {%- if params.showAllSectionsText %} data-i18n.show-all-sections="{{ params.showAllSectionsText }}"{% endif %}
-  {%- if params.hideAllSectionsText %} data-i18n.hide-all-sections="{{ params.hideAllSectionsText }}"{% endif %}
-  {%- if params.showSectionText %} data-i18n.show-section="{{ params.showSectionText }}"{% endif %}
-  {%- if params.hideSectionText %} data-i18n.hide-section="{{ params.hideSectionText }}"{% endif %}
+  {%- if params.showAllSectionsHtml %} data-i18n.show-all-sections="{{ params.showAllSectionsHtml }}"{% endif %}
+  {%- if params.hideAllSectionsHtml %} data-i18n.hide-all-sections="{{ params.hideAllSectionsHtml }}"{% endif %}
+  {%- if params.showSectionHtml %} data-i18n.show-section="{{ params.showSectionHtml }}"{% endif %}
+  {%- if params.hideSectionHtml %} data-i18n.hide-section="{{ params.hideSectionHtml }}"{% endif %}
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   {% for item in params.items %}
     {% if item %}
