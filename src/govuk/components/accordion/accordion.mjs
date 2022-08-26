@@ -16,6 +16,7 @@
 */
 
 import { nodeListForEach } from '../../common.mjs'
+import I18n from '../../i18n.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 
@@ -24,6 +25,16 @@ function Accordion ($module) {
   this.$sections = $module.querySelectorAll('.govuk-accordion__section')
   this.$showAllButton = ''
   this.browserSupportsSessionStorage = helper.checkForSessionStorage()
+
+  var defaultConfig = {
+    i18n: {
+      hideAllSections: 'Hide all sections',
+      hideSection: 'Hide<span class="govuk-visually-hidden"> this section</span>',
+      showAllSections: 'Show all sections',
+      showSection: 'Show<span class="govuk-visually-hidden"> this section</span>'
+    }
+  }
+  this.i18n = new I18n(defaultConfig.i18n)
 
   this.controlsClass = 'govuk-accordion__controls'
   this.showAllClass = 'govuk-accordion__show-all'
@@ -232,15 +243,11 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
   var $icon = $section.querySelector('.' + this.upChevronIconClass)
   var $showHideText = $section.querySelector('.' + this.sectionShowHideTextClass)
   var $button = $section.querySelector('.' + this.sectionButtonClass)
-  var newButtonText = expanded ? 'Hide' : 'Show'
-
-  // Build additional copy of "this section" for assistive technology and place inside toggle link
-  var $visuallyHiddenText = document.createElement('span')
-  $visuallyHiddenText.classList.add('govuk-visually-hidden')
-  $visuallyHiddenText.innerHTML = ' this section'
+  var newButtonText = expanded
+    ? this.i18n.t('hideSection')
+    : this.i18n.t('showSection')
 
   $showHideText.innerHTML = newButtonText
-  $showHideText.appendChild($visuallyHiddenText)
   $button.setAttribute('aria-expanded', expanded)
 
   // Swap icon, change class
@@ -277,7 +284,9 @@ Accordion.prototype.checkIfAllSectionsOpen = function () {
 Accordion.prototype.updateShowAllButton = function (expanded) {
   var $showAllIcon = this.$showAllButton.querySelector('.' + this.upChevronIconClass)
   var $showAllText = this.$showAllButton.querySelector('.' + this.showAllTextClass)
-  var newButtonText = expanded ? 'Hide all sections' : 'Show all sections'
+  var newButtonText = expanded
+    ? this.i18n.t('hideAllSections')
+    : this.i18n.t('showAllSections')
   this.$showAllButton.setAttribute('aria-expanded', expanded)
   $showAllText.innerHTML = newButtonText
 
