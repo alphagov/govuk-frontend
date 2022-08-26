@@ -108,5 +108,8 @@
       "/package/**/*.mjs",
       "/src/govuk/vendor/polyfills/**/*.mjs"
     ]
+  },
+  "dependencies": {
+    "rollup-jest": "^3.0.0"
   }
 }
