@@ -30,6 +30,14 @@ You should avoid lengthy values for the `menuButtonText` parameter, as the text 
 
 This was added in [pull request #2720: Add parameter to localise mobile menu toggle button](https://github.com/alphagov/govuk-frontend/pull/2720).
 
+#### Localise the character count's fallback text
+
+When using the [character count](https://design-system.service.gov.uk/components/character-count/) Nunjucks macro, you can now translate the text of the fallback counter message by using the `fallbackHintText` parameter.
+
+This text is announced by screen readers when the character count input is focused. It's also displayed visually if JavaScript is not available.
+
+This was added in [pull request #2742: Add ability to customise character count fallback text](https://github.com/alphagov/govuk-frontend/pull/2742).
+
 ### Recommended changes
 
 #### Remove `aria-labelledby`, remove `id="error-summary-title"` from title and move `role="alert"` to child container on the error summary component
