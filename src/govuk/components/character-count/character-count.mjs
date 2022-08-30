@@ -211,7 +211,7 @@ CharacterCount.prototype.updateScreenReaderCountMessage = function () {
  * in the given text
  *
  * @param {String} text - The text to count the characters of
- * @returns {Integer} the number of characters (or words) in the text
+ * @returns {Number} the number of characters (or words) in the text
  */
 CharacterCount.prototype.count = function (text) {
   if (this.options.maxwords) {
