@@ -26,7 +26,7 @@ describe('Character count', () => {
       await page.setJavaScriptEnabled(true)
     })
 
-    it('shows the static message', async () => {
+    it('shows the fallback message', async () => {
       await goToExample()
       const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
 
@@ -318,6 +318,15 @@ describe('Character count', () => {
           expect(messageClasses).toContain('govuk-error-message')
         })
       })
+    })
+  })
+
+  describe('custom options', () => {
+    it('allows customisation of the fallback message', async () => {
+      await goToExample('with-custom-fallback-text')
+      const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+
+      expect(message).toEqual('Gallwch ddefnyddio hyd at 10 nod')
     })
   })
 })
