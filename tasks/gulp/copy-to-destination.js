@@ -87,7 +87,7 @@ function generateFixtures (file) {
 }
 
 gulp.task('js:copy-esm', () => {
-  return gulp.src([configPaths.src + '**/*.mjs', configPaths.src + '**/*.js', '!' + configPaths.src + '/**/*.test.js'])
+  return gulp.src([configPaths.src + '**/*.mjs', configPaths.src + '**/*.js', '!' + configPaths.src + '/**/*.test.*'])
     .pipe(gulp.dest(taskArguments.destination + '/govuk-esm/'))
 })
 

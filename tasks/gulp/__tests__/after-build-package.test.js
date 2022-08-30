@@ -40,7 +40,7 @@ describe('package/', () => {
     const expectedPackageFiles = () => {
       const filesToIgnore = [
         '.DS_Store',
-        '*.test.js',
+        '*.test.*',
         '*.yaml',
         '*.snap',
         '*/govuk/README.md'
