@@ -40,7 +40,7 @@ params:
 - name: fallbackHintText
   type: string
   required: false
-  description: Text describing the maximum number of characters or words that can be entered, which is announced to screen readers and displayed as a fallback if the character count JavaScript does not run. Instances of `%{count}` within the hint will be replaced by the value of `maxwords` if configured, otherwise it uses `maxlength`. By default, fallback text is provided in English based on what parameters are provided to the component.
+  description: Text describing the maximum number of characters you can enter, which is announced to screen readers. The text is displayed as a fallback if the character count JavaScript does not run. Depending on how you configure this component and what parameters you add, instances of `%{count}` are replaced by the value of `maxwords`. If not configured, it uses `maxlength`. By default, fallback text is provided in English.
 - name: errorMessage
   type: object
   required: false
