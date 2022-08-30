@@ -45,7 +45,7 @@ examples:
 
 - name: translated
   data:
-    visuallyHiddenText: false
+    visuallyHiddenText: ''
     html: <span class="govuk-visually-hidden">Gwall:</span> Neges gwall am yr enw llawn yn mynd yma
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
@@ -83,4 +83,4 @@ examples:
   hidden: true
   data:
     text: There is an error on line 42
-    visuallyHiddenText: false
+    visuallyHiddenText: ''
