@@ -2,7 +2,11 @@
 {% set headingLevel = params.headingLevel if params.headingLevel else 2 %}
 
 <div class="govuk-accordion {%- if params.classes %} {{ params.classes }}{% endif -%}" data-module="govuk-accordion" id="{{ id }}"
-{%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+  {%- if params.hideAllSectionsHtml %} data-i18n.hide-all-sections="{{ params.hideAllSectionsHtml | escape }}"{% endif %}
+  {%- if params.hideSectionHtml %} data-i18n.hide-section="{{ params.hideSectionHtml | escape }}"{% endif %}
+  {%- if params.showAllSectionsHtml %} data-i18n.show-all-sections="{{ params.showAllSectionsHtml | escape }}"{% endif %}
+  {%- if params.showSectionHtml %} data-i18n.show-section="{{ params.showSectionHtml | escape }}"{% endif %}
+  {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   {% for item in params.items %}
     {% if item %}
       <div class="govuk-accordion__section {% if item.expanded %}govuk-accordion__section--expanded{% endif %}">

@@ -98,5 +98,15 @@ describe('Accordion', () => {
 
       expect($items.length).toEqual(2)
     })
+
+    it('renders with localisation data attributes', () => {
+      const $ = render('accordion', examples['with translations'])
+      const $component = $('.govuk-accordion')
+
+      expect($component.attr('data-i18n.hide-all-sections')).toEqual('Collapse all sections')
+      expect($component.attr('data-i18n.show-all-sections')).toEqual('Expand all sections')
+      expect($component.attr('data-i18n.hide-section')).toEqual('Collapse <span class="govuk-visually-hidden">this section</span>')
+      expect($component.attr('data-i18n.show-section')).toEqual('Expand <span class="govuk-visually-hidden">this section</span>')
+    })
   })
 })

@@ -261,6 +261,47 @@ describe('/components/accordion', () => {
           expect(ariaLabelledByValue).toEqual(headingTextId)
         })
       })
+
+      describe('localisation', () => {
+        it('should localise "Show all sections" based on data attribute', async () => {
+          await page.goto(baseUrl + '/components/accordion/with-translations/preview', { waitUntil: 'load' })
+
+          const showAllSectionsDataAttribute = await page.evaluate(() => document.body.querySelector('.govuk-accordion').getAttribute('data-i18n.show-all-sections'))
+          const allSectionsToggleText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__show-all-text').innerHTML)
+
+          expect(allSectionsToggleText).toEqual(showAllSectionsDataAttribute)
+        })
+
+        it('should localise "Hide all sections" based on data attribute', async () => {
+          await page.goto(baseUrl + '/components/accordion/with-translations/preview', { waitUntil: 'load' })
+          await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header')
+          await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(3) .govuk-accordion__section-header')
+
+          const hideAllSectionsDataAttribute = await page.evaluate(() => document.body.querySelector('.govuk-accordion').getAttribute('data-i18n.hide-all-sections'))
+          const allSectionsToggleText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__show-all-text').innerHTML)
+
+          expect(allSectionsToggleText).toEqual(hideAllSectionsDataAttribute)
+        })
+
+        it('should localise "Show section" based on data attribute', async () => {
+          await page.goto(baseUrl + '/components/accordion/with-translations/preview', { waitUntil: 'load' })
+
+          const showSectionDataAttribute = await page.evaluate(() => document.body.querySelector('.govuk-accordion').getAttribute('data-i18n.show-section'))
+          const firstSectionToggleText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-toggle-text').innerHTML)
+
+          expect(firstSectionToggleText).toEqual(showSectionDataAttribute)
+        })
+
+        it('should localise "Hide section" based on data attribute', async () => {
+          await page.goto(baseUrl + '/components/accordion/with-translations/preview', { waitUntil: 'load' })
+          await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header')
+
+          const hideSectionDataAttribute = await page.evaluate(() => document.body.querySelector('.govuk-accordion').getAttribute('data-i18n.hide-section'))
+          const firstSectionToggleText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-toggle-text').innerHTML)
+
+          expect(firstSectionToggleText).toEqual(hideSectionDataAttribute)
+        })
+      })
     })
   })
 })
