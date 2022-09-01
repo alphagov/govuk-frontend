@@ -15,6 +15,22 @@ params:
   type: object
   required: false
   description: HTML attributes (for example data attributes) to add to the accordion.
+- name: hideAllSectionsHtml
+  type: string
+  required: false
+  description: The HTML content of the toggle at the top of the accordion when all sections are expanded. Defaults to 'Hide all sections'.
+- name: hideSectionHtml
+  type: string
+  required: false
+  description: The HTML content of the toggle within each section of the accordion, visible when the section is expanded. Defaults to 'Hide this section', with the 'this section' text only exposed to assistive technologies.
+- name: showAllSectionsHtml
+  type: string
+  required: false
+  description: The HTML content of the toggle at the top of the accordion when some or all sections are collapsed. Defaults to 'Show all sections'.
+- name: showSectionHtml
+  type: string
+  required: false
+  description: The HTML content of the toggle within each section of the accordion, visible when the section is collapsed. Defaults to 'Show this section', with the 'this section' text only exposed to assistive technologies.
 - name: items
   type: array
   required: true
@@ -168,6 +184,29 @@ examples:
           text: Section B
         content:
           html: <a class="govuk-link" href="#">Link B</a>
+
+- name: with translations
+  data:
+    id: with-translations
+    hideAllSectionsHtml: Collapse all sections
+    showAllSectionsHtml: Expand all sections
+    hideSectionHtml: |-
+      Collapse <span class="govuk-visually-hidden">this section</span>
+    showSectionHtml: |-
+      Expand <span class="govuk-visually-hidden">this section</span>
+    items:
+      - heading:
+          text: Section A
+        content:
+          text: We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+      - heading:
+          text: Section B
+        content:
+          html: |
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Example item 2</li>
+            </ul>
+    
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
 - name: classes

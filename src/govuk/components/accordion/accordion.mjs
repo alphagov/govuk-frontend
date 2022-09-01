@@ -15,7 +15,7 @@
 
 */
 
-import { nodeListForEach } from '../../common.mjs'
+import { nodeListForEach, mergeConfigs, extractConfigByNamespace } from '../../common.mjs'
 import I18n from '../../i18n.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
@@ -34,7 +34,8 @@ function Accordion ($module) {
       showSection: 'Show<span class="govuk-visually-hidden"> this section</span>'
     }
   }
-  this.i18n = new I18n(defaultConfig.i18n)
+  this.config = mergeConfigs(defaultConfig, $module.dataset)
+  this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'))
 
   this.controlsClass = 'govuk-accordion__controls'
   this.showAllClass = 'govuk-accordion__show-all'
