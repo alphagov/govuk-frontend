@@ -38,6 +38,21 @@ This text is announced by screen readers when the character count input is focus
 
 This was added in [pull request #2742: Add ability to customise character count fallback text](https://github.com/alphagov/govuk-frontend/pull/2742).
 
+#### Localise the accordion's toggle buttons
+
+You can now translate the text of the [accordion](https://design-system.service.gov.uk/components/character-count/) component's show and hide toggle buttons.
+
+When using the Nunjucks macro, you can use the new `showSectionHtml` and `hideSectionHtml` parameters to customise the text of the 'show' and 'hide' toggles in each section. You can also use `showAllSectionsHtml` and `hideAllSectionsHtml` parameters to customise the text of the toggle at the top of the accordion.
+
+If you're not using the Nunjucks macro, you can customise these using data-* attributes. Any HTML appearing within the attributes must have quotation marks and brackets converted into their HTML entity equivalents. 
+
+- `data-i18n.show-section`
+- `data-i18n.hide-section`
+- `data-i18n.show-all-sections`
+- `data-i18n.hide-all-sections`
+
+This was added in [pull request #2818: Add support for localisation via data-* attributes to Accordion component](https://github.com/alphagov/govuk-frontend/pull/2818).
+
 ### Recommended changes
 
 #### Remove `aria-labelledby`, remove `id="error-summary-title"` from title and move `role="alert"` to child container on the error summary component
@@ -50,7 +65,7 @@ If you're not using the Nunjucks macros, you can improve the experience for scre
 
 This will enable screen reader users to have a better, more coherent experience with the error summary. Most notably it will ensure that users of JAWS 2022 or later will hear the entire contents of the error summary on page load and therefore have further context on why there is an error on the page they're on.
 
-This was added in [pull request #2677: Amend error summary markup to fix page load focus bug in JAWS 2022](https://github.com/alphagov/govuk-frontend/pull/2677)
+This was added in [pull request #2677: Amend error summary markup to fix page load focus bug in JAWS 2022](https://github.com/alphagov/govuk-frontend/pull/2677).
 
 ### Fixes
 
