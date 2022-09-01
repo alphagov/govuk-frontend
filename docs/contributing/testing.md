@@ -74,7 +74,7 @@ If a test fails, you should check your code for any errors, then update any test
 
 ## 6. Write new tests
 
-You can [read more about the different types of tests in this project](../releasing/testing-and-linting).
+You can [read more about the different types of tests in this project](../releasing/testing-and-linting.md).
 
 You should write new tests if you’ve created a new component, or changed the way a component works by:
 
@@ -88,7 +88,7 @@ Some test files use examples from each component’s `.yaml` file, for example `
 
 Use `hidden: true` in a new example if you do not want to include the example in the review app. The example will still appear in our [test fixtures](http://frontend.design-system.service.gov.uk/testing-your-html/).
 
-All tests should try and meet [our testing conventions](../releasing/testing-and-linting#conventions)
+All tests should try and meet [our testing conventions](../releasing/testing-and-linting.md#conventions)
 
 ### If you created a component
 
