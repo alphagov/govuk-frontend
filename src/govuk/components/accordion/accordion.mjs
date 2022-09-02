@@ -21,7 +21,6 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 
 function Accordion ($module, config) {
-  config = config || {}
   this.$module = $module
   this.$sections = $module.querySelectorAll('.govuk-accordion__section')
   this.$showAllButton = ''
@@ -35,7 +34,7 @@ function Accordion ($module, config) {
       showSection: 'Show<span class="govuk-visually-hidden"> this section</span>'
     }
   }
-  this.config = mergeConfigs(defaultConfig, config, $module.dataset)
+  this.config = mergeConfigs(defaultConfig, config || {}, $module.dataset)
   this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'))
 
   this.controlsClass = 'govuk-accordion__controls'
