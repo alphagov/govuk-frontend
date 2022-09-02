@@ -25,6 +25,13 @@ describe('Phase banner', () => {
       expect($component.hasClass('extra-class one-more-class')).toBeTruthy()
     })
 
+    it('renders `complementary` role attribute', () => {
+      const $ = render('phase-banner', examples.attributes)
+
+      const $component = $('.govuk-phase-banner')
+      expect($component.attr('role')).toEqual('complementary')
+    })
+
     it('renders banner text', () => {
       const $ = render('phase-banner', examples.text)
       const phaseBannerText = $('.govuk-phase-banner__text').text().trim()
