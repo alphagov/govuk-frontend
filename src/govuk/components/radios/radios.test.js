@@ -43,10 +43,8 @@ describe('Radios with conditional reveals', () => {
       const $ = await goToAndGetComponent('radios', 'with-conditional-items')
       const $component = $('.govuk-radios')
 
-      const hasAriaExpanded = $component.find('.govuk-radios__input[aria-expanded]').length
       const hasAriaControls = $component.find('.govuk-radios__input[aria-controls]').length
 
-      expect(hasAriaExpanded).toBeFalsy()
       expect(hasAriaControls).toBeFalsy()
     })
 
@@ -76,18 +74,6 @@ describe('Radios with conditional reveals', () => {
 
       const isContentHidden = await waitForHiddenSelector(`[id="${uncheckedInputAriaControls}"].govuk-radios__conditional--hidden`)
       expect(isContentHidden).toBeTruthy()
-    })
-
-    it('indicates when conditional content is collapsed or revealed', async () => {
-      await goToAndGetComponent('radios', 'with-conditional-items')
-
-      const isNotExpanded = await waitForVisibleSelector('.govuk-radios__item:first-child .govuk-radios__input[aria-expanded=false]')
-      expect(isNotExpanded).toBeTruthy()
-
-      await page.click('.govuk-radios__item:first-child .govuk-radios__input')
-
-      const isExpanded = await waitForVisibleSelector('.govuk-radios__item:first-child .govuk-radios__input[aria-expanded=true]')
-      expect(isExpanded).toBeTruthy()
     })
 
     it('toggles the conditional content when clicking an input', async () => {

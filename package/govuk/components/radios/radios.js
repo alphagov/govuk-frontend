@@ -1106,7 +1106,6 @@ Radios.prototype.syncConditionalRevealWithInputState = function ($input) {
   if ($target && $target.classList.contains('govuk-radios__conditional')) {
     var inputIsChecked = $input.checked;
 
-    $input.setAttribute('aria-expanded', inputIsChecked);
     $target.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked);
   }
 };
