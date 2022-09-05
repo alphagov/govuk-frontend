@@ -67,7 +67,6 @@ describe.each(allComponents)('%s', (component) => {
 
       expect($.html()).toHTMLValidate({
         rules: {
-          'attribute-allowed-values': 'off',
           'attribute-boolean-style': 'off',
           'element-required-attributes': 'off',
           'input-attributes': 'off',
@@ -81,7 +80,19 @@ describe.each(allComponents)('%s', (component) => {
           'valid-id': 'off',
           'wcag/h30': 'off',
           'wcag/h71': 'off'
-        }
+        },
+        elements: [
+          'html5',
+          {
+            // Allow textarea autocomplete attribute to be street-address
+            // (html-validate only allows on/off in default rules)
+            textarea: {
+              attributes: {
+                autocomplete: { enum: ['on', 'off', 'street-address'] }
+              }
+            }
+          }
+        ]
       })
     })
   })
