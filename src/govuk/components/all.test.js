@@ -107,9 +107,7 @@ describe.each(allComponents)('%s', (component) => {
           //
           // Relax the rule to allow anything that is valid according to the
           // spec.
-          'valid-id': ['error', { relaxed: true }],
-
-          'wcag/h71': 'off'
+          'valid-id': ['error', { relaxed: true }]
         },
         elements: [
           'html5',
