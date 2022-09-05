@@ -101,7 +101,6 @@ describe.each(allComponents)('%s', (component) => {
           // in the cookie banner and notification banner too
           'prefer-native-element': 'off',
 
-          'text-content': 'off',
           'valid-id': 'off',
           'wcag/h30': 'off',
           'wcag/h71': 'off'

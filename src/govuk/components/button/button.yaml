@@ -229,7 +229,8 @@ examples:
     text: Submit
     element: button
     html: Start <em>now</em>
-- name: no data
+- name: no type
   hidden: true
-  data: {}
+  data:
+    text: Button!
 
