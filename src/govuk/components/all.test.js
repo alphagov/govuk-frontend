@@ -85,6 +85,7 @@ describe.each(allComponents)('%s', (component) => {
           // have partial support for HTML5 semantic elements
           'no-redundant-role': 'off',
 
+          // More hassle than it's worth 👾
           'no-trailing-whitespace': 'off',
           'prefer-button': 'off',
           'prefer-native-element': 'off',
