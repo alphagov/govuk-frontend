@@ -109,7 +109,6 @@ describe.each(allComponents)('%s', (component) => {
           // spec.
           'valid-id': ['error', { relaxed: true }],
 
-          'wcag/h30': 'off',
           'wcag/h71': 'off'
         },
         elements: [
