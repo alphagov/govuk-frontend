@@ -58,6 +58,7 @@ Checkboxes.prototype.init = function () {
   this.syncAllConditionalReveals()
 
   $module.addEventListener('click', this.handleClick.bind(this))
+  $module.addEventListener('mousedown', this.handleMousedown.bind(this))
 }
 
 /**
@@ -159,6 +160,23 @@ Checkboxes.prototype.handleClick = function (event) {
   } else {
     this.unCheckExclusiveInputs($target)
   }
+}
+
+/**
+ * Mousedown event handler
+ *
+ * An additional handler for the mousedown event. If the user clicks the label then
+ * prevent default mousedown behaviour. This is to handle a visual glitch where for
+ * the period that the label is :active (pointer is held down the label) the input
+ * focus state disappears. This is caused by focus moving away from the input due
+ * to the click on the label and the focus targeting no longer working.
+ */
+Checkboxes.prototype.handleMousedown = function (event) {
+  console.log(document.activeElement)
+  if (event.target.tagName === 'LABEL') {
+    // event.preventDefault()
+  }
+  console.log(document.activeElement)
 }
 
 export default Checkboxes
