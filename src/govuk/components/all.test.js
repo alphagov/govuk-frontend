@@ -65,7 +65,24 @@ describe.each(allComponents)('%s', (component) => {
     it.each(examples)('example "%s" outputs valid HTML', async (_, data) => {
       const $ = render(component, data)
 
-      expect($.html()).toHTMLValidate()
+      expect($.html()).toHTMLValidate({
+        rules: {
+          'attribute-allowed-values': 'off',
+          'attribute-boolean-style': 'off',
+          'element-required-attributes': 'off',
+          'input-attributes': 'off',
+          'no-conditional-comment': 'off',
+          'no-inline-style': 'off',
+          'no-redundant-role': 'off',
+          'no-trailing-whitespace': 'off',
+          'prefer-button': 'off',
+          'prefer-native-element': 'off',
+          'text-content': 'off',
+          'valid-id': 'off',
+          'wcag/h30': 'off',
+          'wcag/h71': 'off'
+        }
+      })
     })
   })
 })
