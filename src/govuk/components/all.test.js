@@ -87,6 +87,10 @@ describe.each(allComponents)('%s', (component) => {
 
           // More hassle than it's worth 👾
           'no-trailing-whitespace': 'off',
+
+          // We still support creating `input type=button` with the button
+          // component, but you have to explicitly choose to use them over
+          // buttons
           'prefer-button': 'off',
           'prefer-native-element': 'off',
           'text-content': 'off',
