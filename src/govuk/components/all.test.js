@@ -15,15 +15,17 @@ const percySnapshot = require('@percy/puppeteer')
 const nunjucks = require('nunjucks')
 
 describe('When nunjucks is configured with a different base path', () => {
+  let nunjucksEnv
+
   beforeAll(() => {
     // Create a new Nunjucks environment that uses the src directory as its
     // base path, rather than the components folder itself
-    nunjucks.configure(configPaths.src)
+    nunjucksEnv = nunjucks.configure(configPaths.src)
   })
 
   it.each(allComponents)('render(\'%s\') does not error', (component) => {
     expect(() => {
-      nunjucks.render(`components/${component}/template.njk`, {})
+      nunjucksEnv.render(`components/${component}/template.njk`, {})
     }).not.toThrow()
   })
 })
