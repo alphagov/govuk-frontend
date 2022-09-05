@@ -79,7 +79,12 @@ describe.each(allComponents)('%s', (component) => {
 
           // Allow inline styles for testing purposes
           'no-inline-style': 'off',
+
+          // Allow for explicit roles on regions that have implict roles
+          // We do this to better support AT with older versions of IE that
+          // have partial support for HTML5 semantic elements
           'no-redundant-role': 'off',
+
           'no-trailing-whitespace': 'off',
           'prefer-button': 'off',
           'prefer-native-element': 'off',
