@@ -38,25 +38,25 @@ it('_all.scss renders to CSS without errors', () => {
   })
 })
 
-it.each(allComponents)('%s.scss renders to CSS without errors', (component) => {
-  return renderSass({
-    file: `${configPaths.src}/components/${component}/_${component}.scss`
-  })
-})
-
-it.each(allComponents)('generate screenshots for Percy visual regression, with JavaScript disabled', async (component) => {
-  await page.setJavaScriptEnabled(false)
-  await page.goto(baseUrl + '/components/' + component + '/preview', { waitUntil: 'load' })
-  await percySnapshot(page, 'no-js: ' + component)
-})
-
-it.each(allComponents)('generate screenshots for Percy visual regression, with JavaScript enabled', async (component) => {
-  await page.setJavaScriptEnabled(true)
-  await page.goto(baseUrl + '/components/' + component + '/preview', { waitUntil: 'load' })
-  await percySnapshot(page, 'js: ' + component)
-})
-
 describe.each(allComponents)('%s', (component) => {
+  it(`${component}.scss renders to CSS without errors`, () => {
+    return renderSass({
+      file: `${configPaths.src}/components/${component}/_${component}.scss`
+    })
+  })
+
+  it('generate screenshots for Percy visual regression, with JavaScript disabled', async () => {
+    await page.setJavaScriptEnabled(false)
+    await page.goto(baseUrl + '/components/' + component + '/preview', { waitUntil: 'load' })
+    await percySnapshot(page, 'no-js: ' + component)
+  })
+
+  it('generate screenshots for Percy visual regression, with JavaScript enabled', async () => {
+    await page.setJavaScriptEnabled(true)
+    await page.goto(baseUrl + '/components/' + component + '/preview', { waitUntil: 'load' })
+    await percySnapshot(page, 'js: ' + component)
+  })
+
   describe('examples output valid HTML', () => {
     const examples = getComponentData(component).examples.map(function (example) {
       return [example.name, example.data]
