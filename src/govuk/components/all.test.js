@@ -92,7 +92,15 @@ describe.each(allComponents)('%s', (component) => {
           // component, but you have to explicitly choose to use them over
           // buttons
           'prefer-button': 'off',
+
+          // Allow use of roles where there are native elements that would give
+          // us that role automatically, e.g. <section> instead of
+          // <div role="region">
+          //
+          // This is mainly needed for links styled as buttons, but we do this
+          // in the cookie banner and notification banner too
           'prefer-native-element': 'off',
+
           'text-content': 'off',
           'valid-id': 'off',
           'wcag/h30': 'off',
