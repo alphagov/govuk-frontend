@@ -27,7 +27,7 @@ I18n.prototype.t = function (lookupKey, options) {
     var translationString = this.translations[lookupKey]
 
     // Check for ${} placeholders in the translation string
-    if (translationString.match(/\${(.\S+)}/)) {
+    if (translationString.match(/%{(.\S+)}/)) {
       if (!options) {
         throw new Error('i18n: cannot replace placeholders in string if no option data provided')
       }
@@ -51,7 +51,7 @@ I18n.prototype.t = function (lookupKey, options) {
  * @returns  {String}             - The translation string to output, with ${} placeholders replaced
  */
 I18n.prototype.replacePlaceholders = function (translationString, options) {
-  var placeholderRegex = RegExp(/\${(.\S+)}/, 'g')
+  var placeholderRegex = RegExp(/%{(.\S+)}/, 'g')
   var placeholderMatch
 
   // Use `exec` for fetching regex matches, as matchAll() is not supported in IE
