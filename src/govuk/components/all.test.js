@@ -1,7 +1,9 @@
 /* eslint-env jest */
 
-const { allComponents } = require('../../../lib/file-helper')
-const { renderSass } = require('../../../lib/jest-helpers')
+require('html-validate/jest')
+
+const { allComponents, getComponentData } = require('../../../lib/file-helper')
+const { renderSass, render } = require('../../../lib/jest-helpers')
 
 const configPaths = require('../../../config/paths.json')
 
@@ -52,4 +54,18 @@ it.each(allComponents)('generate screenshots for Percy visual regression, with J
   await page.setJavaScriptEnabled(true)
   await page.goto(baseUrl + '/components/' + component + '/preview', { waitUntil: 'load' })
   await percySnapshot(page, 'js: ' + component)
+})
+
+describe.each(allComponents)('%s', (component) => {
+  describe('examples output valid HTML', () => {
+    const examples = getComponentData(component).examples.map(function (example) {
+      return [example.name, example.data]
+    })
+
+    it.each(examples)('example "%s" outputs valid HTML', async (_, data) => {
+      const $ = render(component, data)
+
+      expect($.html()).toHTMLValidate()
+    })
+  })
 })

@@ -110,6 +110,7 @@
     ]
   },
   "dependencies": {
+    "html-validate": "^7.3.3",
     "rollup-jest": "^3.0.0"
   }
 }
