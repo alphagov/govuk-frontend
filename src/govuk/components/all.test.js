@@ -77,6 +77,7 @@ describe.each(allComponents)('%s', (component) => {
           // Allow for conditional comments (used in header for fallback png)
           'no-conditional-comment': 'off',
 
+          // Allow inline styles for testing purposes
           'no-inline-style': 'off',
           'no-redundant-role': 'off',
           'no-trailing-whitespace': 'off',
