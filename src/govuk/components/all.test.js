@@ -71,7 +71,6 @@ describe.each(allComponents)('%s', (component) => {
           // use disabled="disabled"
           'attribute-boolean-style': 'off',
 
-          'element-required-attributes': 'off',
           'input-attributes': 'off',
           'no-conditional-comment': 'off',
           'no-inline-style': 'off',
@@ -92,6 +91,12 @@ describe.each(allComponents)('%s', (component) => {
             textarea: {
               attributes: {
                 autocomplete: { enum: ['on', 'off', 'street-address'] }
+              }
+            },
+            // Allow buttons to omit the type attribute (defaults to 'submit')
+            button: {
+              attributes: {
+                type: { required: false }
               }
             }
           }
