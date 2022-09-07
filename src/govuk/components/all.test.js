@@ -74,7 +74,9 @@ describe.each(allComponents)('%s', (component) => {
           // Allow pattern attribute on input type="number"
           'input-attributes': 'off',
 
+          // Allow for conditional comments (used in header for fallback png)
           'no-conditional-comment': 'off',
+
           'no-inline-style': 'off',
           'no-redundant-role': 'off',
           'no-trailing-whitespace': 'off',
