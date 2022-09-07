@@ -67,7 +67,10 @@ describe.each(allComponents)('%s', (component) => {
 
       expect($.html()).toHTMLValidate({
         rules: {
+          // We don't use boolean attributes consistently – buttons currently
+          // use disabled="disabled"
           'attribute-boolean-style': 'off',
+
           'element-required-attributes': 'off',
           'input-attributes': 'off',
           'no-conditional-comment': 'off',
