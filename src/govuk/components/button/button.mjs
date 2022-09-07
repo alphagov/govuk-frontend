@@ -10,6 +10,15 @@ function Button ($module) {
 }
 
 /**
+* Initialise an event listener for keydown at document level
+* this will help listening for later inserted elements with a role="button"
+*/
+Button.prototype.init = function () {
+  this.$module.addEventListener('keydown', this.handleKeyDown)
+  this.$module.addEventListener('click', this.debounce)
+}
+
+/**
 * JavaScript 'shim' to trigger the click event of element(s) when the space key is pressed.
 *
 * Created since some Assistive Technologies (for example some Screenreaders)
@@ -50,15 +59,6 @@ Button.prototype.debounce = function (event) {
   this.debounceFormSubmitTimer = setTimeout(function () {
     this.debounceFormSubmitTimer = null
   }.bind(this), DEBOUNCE_TIMEOUT_IN_SECONDS * 1000)
-}
-
-/**
-* Initialise an event listener for keydown at document level
-* this will help listening for later inserted elements with a role="button"
-*/
-Button.prototype.init = function () {
-  this.$module.addEventListener('keydown', this.handleKeyDown)
-  this.$module.addEventListener('click', this.debounce)
 }
 
 export default Button
