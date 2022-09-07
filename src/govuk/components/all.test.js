@@ -71,7 +71,9 @@ describe.each(allComponents)('%s', (component) => {
           // use disabled="disabled"
           'attribute-boolean-style': 'off',
 
+          // Allow pattern attribute on input type="number"
           'input-attributes': 'off',
+
           'no-conditional-comment': 'off',
           'no-inline-style': 'off',
           'no-redundant-role': 'off',
