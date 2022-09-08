@@ -3,7 +3,7 @@
 require('html-validate/jest')
 
 const { allComponents, getComponentData } = require('../../../lib/file-helper')
-const { renderSass, render } = require('../../../lib/jest-helpers')
+const { renderSass, renderHtml } = require('../../../lib/jest-helpers')
 
 const configPaths = require('../../../config/paths.json')
 
@@ -63,9 +63,7 @@ describe.each(allComponents)('%s', (component) => {
     })
 
     it.each(examples)('example "%s" outputs valid HTML', async (_, data) => {
-      const $ = render(component, data)
-
-      expect($.html()).toHTMLValidate({
+      expect(renderHtml(component, data)).toHTMLValidate({
         rules: {
           // We don't use boolean attributes consistently – buttons currently
           // use disabled="disabled"
