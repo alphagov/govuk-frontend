@@ -1,9 +1,18 @@
-const outdent = require('outdent')
 
+const sass = require('node-sass')
+const outdent = require('outdent')
 const { renderSass } = require('../../../lib/jest-helpers')
 
+// Create a mock warn function that we can use to override the native @warn
+// function, that we can make assertions about post-render.
+const mockWarnFunction = jest.fn()
+  .mockReturnValue(sass.NULL)
+
 const sassConfig = {
-  outputStyle: 'nested'
+  outputStyle: 'nested',
+  functions: {
+    '@warn': mockWarnFunction
+  }
 }
 
 const sassBootstrap = `
@@ -389,6 +398,22 @@ describe('@mixin govuk-typography-responsive', () => {
               .foo {
                 font-size: 14px !important;
                 line-height: 1.42857 !important; } }`)
+      })
+    })
+
+    it('outputs a deprecation warning when set to false', async () => {
+      const sass = `
+        $govuk-typography-use-rem: false;
+        ${sassBootstrap}`
+
+      await renderSass({ data: sass, ...sassConfig }).then(() => {
+        // Expect our mocked @warn function to have been called once with a single
+        // argument, which should be the deprecation notice
+        return expect(mockWarnFunction.mock.calls[0][0].getValue())
+          .toEqual(
+            '$govuk-typography-use-rem is deprecated. ' +
+            'From version 5.0, GOV.UK Frontend will not support disabling rem font sizes'
+          )
       })
     })
   })
