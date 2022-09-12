@@ -870,3 +870,19 @@
     iconFallbackText: "Rhybudd"
   }) }}
 {% endblock %}
+
+{% block bodyEnd %}
+  <script src="/public/all.js"></script>
+  <script>
+    window.GOVUKFrontend.initAll({
+      accordion: {
+        i18n: {
+          showAllSections: "Dangos adrannau",
+          hideAllSections: "Cuddio adrannau",
+        },
+        "i18n.showSection": "Dangos<span class=\"govuk-visually-hidden\"> adran</span>",
+        "i18n.hideSection": "Cuddio<span class=\"govuk-visually-hidden\"> adran</span>",
+      }
+    })
+  </script>
+{% endblock %}

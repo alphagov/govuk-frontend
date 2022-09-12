@@ -53,6 +53,16 @@ describe('Common JS utilities', () => {
       })
     })
 
+    it('ignores empty objects when merging', () => {
+      const test1 = mergeConfigs({}, config1)
+      const test2 = mergeConfigs(config1, {}, config2)
+      const test3 = mergeConfigs(config3, {})
+
+      expect(test1).toEqual(mergeConfigs(config1))
+      expect(test2).toEqual(mergeConfigs(config1, config2))
+      expect(test3).toEqual(mergeConfigs(config3))
+    })
+
     it('prioritises the last parameter provided', () => {
       const config = mergeConfigs(config1, config2, config3, config1)
       expect(config).toEqual({

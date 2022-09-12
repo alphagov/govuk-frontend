@@ -51,7 +51,12 @@ If you're not using the Nunjucks macro, you can customise these using data-* att
 - `data-i18n.show-all-sections`
 - `data-i18n.hide-all-sections`
 
-This was added in [pull request #2818: Add support for localisation via data-* attributes to Accordion component](https://github.com/alphagov/govuk-frontend/pull/2818).
+You can also change this text for all instances of the Accordion using a JavaScript configuration object. See [our guidance on localising GOV.UK Frontend](https://design-system.service.gov.uk/get-started/localisation/) for how to do this. 
+
+This was added in pull requests:
+
+- [#2818: Add support for localisation via data-* attributes to Accordion component](https://github.com/alphagov/govuk-frontend/pull/2818)
+- [#2826: Add support for localisation via JavaScript configuration to Accordion component](https://github.com/alphagov/govuk-frontend/pull/2826)
 
 ### Recommended changes
 
