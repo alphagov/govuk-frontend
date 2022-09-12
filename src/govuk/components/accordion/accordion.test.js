@@ -293,10 +293,7 @@ describe('/components/accordion', () => {
 
         it('should localise "Hide all sections" based on JavaScript configuration', async () => {
           await page.goto(baseUrl + '/examples/translated', { waitUntil: 'load' })
-          await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header')
-          await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(3) .govuk-accordion__section-header')
-          await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(4) .govuk-accordion__section-header')
-          await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(5) .govuk-accordion__section-header')
+          await page.click('.govuk-accordion .govuk-accordion__show-all')
 
           const allSectionsToggleText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__show-all-text').innerHTML)
 
