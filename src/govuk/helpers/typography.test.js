@@ -407,9 +407,9 @@ describe('@mixin govuk-typography-responsive', () => {
         ${sassBootstrap}`
 
       await renderSass({ data: sass, ...sassConfig }).then(() => {
-        // Expect our mocked @warn function to have been called once with a single
-        // argument, which should be the deprecation notice
-        return expect(mockWarnFunction.mock.calls[0][0].getValue())
+        // Get the argument of the last @warn call, which we expect to be the
+        // deprecation notice
+        return expect(mockWarnFunction.mock.calls.at(-1)[0].getValue())
           .toEqual(
             '$govuk-typography-use-rem is deprecated. ' +
             'From version 5.0, GOV.UK Frontend will not support disabling rem font sizes'
@@ -594,6 +594,25 @@ describe('@mixin govuk-typography-responsive', () => {
       const results = await renderSass({ data: sass, ...sassConfig })
 
       expect(results.css.toString()).toContain('line-height: 1.337;')
+    })
+  })
+})
+
+describe('$govuk-font-family-tabular value is specified', () => {
+  it('outputs a deprecation warning when set', async () => {
+    const sass = `
+    $govuk-font-family-tabular: monospace;
+      ${sassBootstrap}`
+
+    await renderSass({ data: sass, ...sassConfig }).then(() => {
+      // Get the argument of the last @warn call, which we expect to be the
+      // deprecation notice
+      return expect(mockWarnFunction.mock.calls.at(-1)[0].getValue())
+        .toEqual(
+          '$govuk-font-family-tabular is deprecated. ' +
+          'From version 5.0, GOV.UK Frontend will not support using a separate ' +
+          'font-face for tabular numbers'
+        )
     })
   })
 })
