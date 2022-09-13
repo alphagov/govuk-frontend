@@ -156,10 +156,10 @@ examples:
             items:
               - href: '#'
                 html: Golygu<span class="govuk-visually-hidden"> enw</span>
-                visuallyHiddenText: false
+                visuallyHiddenText: ''
               - href: '#'
                 html: Dileu<span class="govuk-visually-hidden"> enw</span>
-                visuallyHiddenText: false
+                visuallyHiddenText: ''
         - key:
             text: Dyddiad geni
           value:
@@ -168,7 +168,7 @@ examples:
             items:
               - href: '#'
                 html: Golygu<span class="govuk-visually-hidden"> dyddiad geni</span>
-                visuallyHiddenText: false
+                visuallyHiddenText: ''
         - key:
             text: Gwybodaeth cyswllt
           value:
@@ -187,7 +187,7 @@ examples:
             items:
               - href: '#'
                 html: Golygu<span class="govuk-visually-hidden"> gwybodaeth cyswllt</span>
-                visuallyHiddenText: false
+                visuallyHiddenText: ''
   - name: with some actions
     data:
       rows:
