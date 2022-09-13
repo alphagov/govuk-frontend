@@ -10,6 +10,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
+          cache: npm
           node-version: 8 # v8 required for sass v1.0.0
       - run: |
           npm install -g sass@v1.0.0
@@ -23,6 +24,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
+          cache: npm
           node-version: 14
       - run: |
           npm install -g sass@v1
@@ -58,6 +60,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
+          cache: npm
           node-version: 14
       - run: |
           npm install -g node-sass@v7
