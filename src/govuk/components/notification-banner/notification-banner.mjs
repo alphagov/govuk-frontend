@@ -1,7 +1,17 @@
 import '../../vendor/polyfills/Event.mjs' // addEventListener
 
-function NotificationBanner ($module) {
+import { mergeConfigs, normaliseDataset } from '../../common.mjs'
+function NotificationBanner ($module, config) {
   this.$module = $module
+
+  var defaultConfig = {
+    disableAutoFocus: false
+  }
+  this.config = mergeConfigs(
+    defaultConfig,
+    config || {},
+    normaliseDataset($module.dataset)
+  )
 }
 
 /**
@@ -30,7 +40,7 @@ NotificationBanner.prototype.init = function () {
 NotificationBanner.prototype.setFocus = function () {
   var $module = this.$module
 
-  if ($module.getAttribute('data-disable-auto-focus') === 'true') {
+  if (this.config.disableAutoFocus) {
     return
   }
 
