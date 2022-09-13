@@ -26,7 +26,7 @@ describe('Skip link', () => {
     })
 
     it('renders default href', () => {
-      const $ = render('skip-link', examples['default values'])
+      const $ = render('skip-link', examples['no href'])
 
       const $component = $('.govuk-skip-link')
       expect($component.attr('href')).toEqual('#content')

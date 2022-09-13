@@ -114,6 +114,8 @@ examples:
   hidden: true
   data:
     describedBy: some-id
+    legend:
+      text: Which option?
 - name: html as text
   hidden: true
   data:
@@ -134,12 +136,18 @@ examples:
   hidden: true
   data:
     classes: app-fieldset--custom-modifier
+    legend:
+      text: Which option?
 - name: role
   hidden: true
   data:
     role: group
+    legend:
+      text: Which option?
 - name: attributes
   hidden: true
   data:
     attributes:
       data-attribute: value
+    legend:
+      text: Which option?

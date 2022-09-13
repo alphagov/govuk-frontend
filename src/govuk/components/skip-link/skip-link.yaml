@@ -34,9 +34,10 @@ examples:
       href: '#content'
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
-  - name: default values
+  - name: no href
     hidden: true
-    data: {}
+    data:
+      text: Skip to main content
   - name: custom href
     hidden: true
     data:

@@ -692,6 +692,8 @@ examples:
     name: example-name
     fieldset:
       describedBy: some-id
+      legend:
+        text: Which option?
     items:
       - value: yes
         text: Yes
