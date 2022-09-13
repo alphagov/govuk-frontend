@@ -14,7 +14,7 @@ jobs:
     # Abort if run from a fork, as token won't have write access to post comment
     if: github.event.pull_request.head.repo.full_name == github.repository
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0 # Need to also checkout the base branch to compare
       - uses: actions/setup-node@v3
