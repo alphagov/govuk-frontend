@@ -11,6 +11,17 @@ import Radios from './components/radios/radios.mjs'
 import SkipLink from './components/skip-link/skip-link.mjs'
 import Tabs from './components/tabs/tabs.mjs'
 
+/**
+ * Initialise all components
+ *
+ * Use the `data-module` attributes to find, instantiate and init all of the
+ * components provided as part of GOV.UK Frontend.
+ *
+ * @param {Object} [options]
+ * @param {HTMLElement} [options.scope=document] - scope to query for components
+ * @param {Object} [options.accordion] - accordion config
+ * @param {Object} [options.notificationBanner] - notification banner config
+ */
 function initAll (options) {
   // Set the options to an empty object by default if no options are passed.
   options = typeof options !== 'undefined' ? options : {}
