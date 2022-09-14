@@ -1,5 +1,5 @@
 /* eslint-env jest */
-const { renderHtml, getExamples } = require('../../../../lib/jest-helpers')
+const { renderAndInitialise, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('notification-banner')
 
@@ -54,22 +54,13 @@ describe('Notification banner, when type is set to "success"', () => {
 
   describe('and auto-focus is disabled using JavaScript configuration', () => {
     beforeAll(async () => {
-      await page.goto(`${baseUrl}/tests/boilerplate`, { waitUntil: 'load' })
-
-      // Render the notification banner Nunjucks template
-      const html = renderHtml('notification-banner', examples['with type as success'])
-
-      // Inject rendered HTML into the slot
-      await page.$eval('#slot', (slot, htmlForSlot) => {
-        slot.innerHTML = htmlForSlot
-      }, html)
-
-      // Run a script to init the JavaScript component
-      await page.evaluate(() => {
-        var $notificationBanner = document.querySelector('[data-module="govuk-notification-banner"]')
-        new window.GOVUKFrontend.NotificationBanner($notificationBanner, {
+      await renderAndInitialise('notification-banner', {
+        baseUrl,
+        nunjucksParams:
+          examples['with type as success'],
+        javascriptConfig: {
           disableAutoFocus: true
-        }).init()
+        }
       })
     })
 
@@ -88,23 +79,17 @@ describe('Notification banner, when type is set to "success"', () => {
 
   describe('and auto-focus is disabled using options passed to initAll', () => {
     beforeAll(async () => {
-      await page.goto(`${baseUrl}/tests/boilerplate`, { waitUntil: 'load' })
-
-      // Render the notification banner Nunjucks template
-      const html = renderHtml('notification-banner', examples['with type as success'])
-
-      // Inject rendered HTML into the slot
-      await page.$eval('#slot', (slot, htmlForSlot) => {
-        slot.innerHTML = htmlForSlot
-      }, html)
-
-      // Run a script to init the JavaScript component
-      await page.evaluate(() => {
-        window.GOVUKFrontend.initAll({
-          notificationBanner: {
-            disableAutoFocus: true
-          }
-        })
+      await renderAndInitialise('notification-banner', {
+        baseUrl,
+        nunjucksParams:
+          examples['with type as success'],
+        initialiser () {
+          window.GOVUKFrontend.initAll({
+            notificationBanner: {
+              disableAutoFocus: true
+            }
+          })
+        }
       })
     })
 
@@ -123,22 +108,12 @@ describe('Notification banner, when type is set to "success"', () => {
 
   describe('and autofocus is disabled in JS but enabled in data attributes, attributes win', () => {
     beforeAll(async () => {
-      await page.goto(`${baseUrl}/tests/boilerplate`, { waitUntil: 'load' })
-
-      // Render the notification banner Nunjucks template
-      const html = renderHtml('notification-banner', examples['auto-focus explicitly enabled, with type as success'])
-
-      // Inject rendered HTML into the slot
-      await page.$eval('#slot', (slot, htmlForSlot) => {
-        slot.innerHTML = htmlForSlot
-      }, html)
-
-      // Run a script to init the JavaScript component
-      await page.evaluate(() => {
-        var $notificationBanner = document.querySelector('[data-module="govuk-notification-banner"]')
-        new window.GOVUKFrontend.NotificationBanner($notificationBanner, {
+      await renderAndInitialise('notification-banner', {
+        baseUrl,
+        nunjucksParams: examples['auto-focus explicitly enabled, with type as success'],
+        javascriptConfig: {
           disableAutoFocus: true
-        }).init()
+        }
       })
     })
 
