@@ -31,8 +31,10 @@
     "test": "jest --color --ignoreProjects \"Gulp tasks\" --maxWorkers=50%",
     "test:screenshots": "node ./tasks/screenshot-components.mjs",
     "lint": "npm run lint:js && npm run lint:scss",
-    "lint:js": "eslint --cache --cache-location .cache/eslint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0 \"**/*.{cjs,js,mjs}\"",
-    "lint:scss": "stylelint --cache --cache-location .cache/stylelint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0 \"{app,src}/**/*.scss\""
+    "lint:js": "npm run lint:js:cli -- \"**/*.{cjs,js,mjs}\"",
+    "lint:js:cli": "eslint --cache --cache-location .cache/eslint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0",
+    "lint:scss": "npm run lint:scss:cli -- \"{app,src}/**/*.scss\"",
+    "lint:scss:cli": "stylelint --cache --cache-location .cache/stylelint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0"
   },
   "dependencies": {
     "@babel/core": "^7.20.2",
@@ -92,6 +94,7 @@
     "jest-environment-node": "^29.3.1",
     "jest-environment-puppeteer": "^6.1.1",
     "jest-serializer-html": "^7.1.0",
+    "lint-staged": "^13.0.3",
     "outdent": "^0.8.0",
     "puppeteer": "^19.2.2",
     "sass-color-helpers": "^2.1.1",
