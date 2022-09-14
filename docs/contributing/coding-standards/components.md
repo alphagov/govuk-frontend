@@ -10,7 +10,7 @@ Generally, folder and file names should be singular, for example ‘accordion’
 
 When creating your component, you should create the following files in the component’s folder:
 
-- `README.md` - Light documentation pointing to installation instructions and component documentation on <https://design-system.service.gov.uk/>
+- `README.md` - Summary documentation with links to the installation instructions and component documentation on <https://design-system.service.gov.uk/>
 - `_[component-name].scss` - An SCSS file to generate the styles just for the component, importing the variables, functions and mixins from `../../base` and the styles of the component (`./index.scss`).
 - `_index.scss` - The actual styles for the component, that can be imported either on their own by `[component-name].scss` or alongside other components in `components/_all.scss` (or by the consuming application)
 - `[component-name].yaml` - Lists the options expected by the component, used for display in the documentation. It also contains the option samples used to generate the examples in the documentation, as well as the [fixtures for testing alternative implementations of the design system](https://frontend.design-system.service.gov.uk/testing-your-html/).
