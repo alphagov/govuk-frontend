@@ -54,7 +54,7 @@ function initAll (options) {
 
   var $notificationBanners = scope.querySelectorAll('[data-module="govuk-notification-banner"]')
   nodeListForEach($notificationBanners, function ($notificationBanner) {
-    new NotificationBanner($notificationBanner).init()
+    new NotificationBanner($notificationBanner, options.notificationBanner).init()
   })
 
   var $radios = scope.querySelectorAll('[data-module="govuk-radios"]')

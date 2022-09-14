@@ -87,6 +87,41 @@ describe('components/notification-banner/auto-focus-disabled,-with-type-as-succe
       expect(activeElement).not.toBe('govuk-notification-banner')
     })
   })
+
+  describe('when auto-focus is disabled using options passed to initAll', () => {
+    beforeAll(async () => {
+      await page.goto(`${baseUrl}/tests/boilerplate`, { waitUntil: 'load' })
+
+      // Render the notification banner Nunjucks template
+      const html = renderHtml('notification-banner', examples['with type as success'])
+
+      // Inject rendered HTML into the slot
+      await page.$eval('#slot', (slot, htmlForSlot) => {
+        slot.innerHTML = htmlForSlot
+      }, html)
+
+      // Run a script to init the JavaScript component
+      await page.evaluate(() => {
+        window.GOVUKFrontend.initAll({
+          notificationBanner: {
+            disableAutoFocus: true
+          }
+        })
+      })
+    })
+
+    it('does not have a tabindex attribute', async () => {
+      const tabindex = await page.$eval('.govuk-notification-banner', el => el.getAttribute('tabindex'))
+
+      expect(tabindex).toBeNull()
+    })
+
+    it('does not focus the notification banner', async () => {
+      const activeElement = await page.evaluate(() => document.activeElement.dataset.module)
+
+      expect(activeElement).not.toBe('govuk-notification-banner')
+    })
+  })
 })
 
 describe('components/notification-banner/role=alert-overridden-to-role=region,-with-type-as-success', () => {
