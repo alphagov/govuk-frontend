@@ -49,8 +49,8 @@ function initAll (options) {
   new ErrorSummary($errorSummary).init()
 
   // Find first header module to enhance.
-  var $toggleButton = scope.querySelector('[data-module="govuk-header"]')
-  new Header($toggleButton).init()
+  var $header = scope.querySelector('[data-module="govuk-header"]')
+  new Header($header).init()
 
   var $notificationBanners = scope.querySelectorAll('[data-module="govuk-notification-banner"]')
   nodeListForEach($notificationBanners, function ($notificationBanner) {
