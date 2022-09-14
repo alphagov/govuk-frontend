@@ -19,19 +19,14 @@ function initAll (options) {
   // Defaults to the entire document if nothing is set.
   var scope = typeof options.scope !== 'undefined' ? options.scope : document
 
-  var $buttons = scope.querySelectorAll('[data-module="govuk-button"]')
-  nodeListForEach($buttons, function ($button) {
-    new Button($button).init()
-  })
-
   var $accordions = scope.querySelectorAll('[data-module="govuk-accordion"]')
   nodeListForEach($accordions, function ($accordion) {
     new Accordion($accordion, options.accordion).init()
   })
 
-  var $details = scope.querySelectorAll('[data-module="govuk-details"]')
-  nodeListForEach($details, function ($detail) {
-    new Details($detail).init()
+  var $buttons = scope.querySelectorAll('[data-module="govuk-button"]')
+  nodeListForEach($buttons, function ($button) {
+    new Button($button).init()
   })
 
   var $characterCounts = scope.querySelectorAll('[data-module="govuk-character-count"]')
@@ -42,6 +37,11 @@ function initAll (options) {
   var $checkboxes = scope.querySelectorAll('[data-module="govuk-checkboxes"]')
   nodeListForEach($checkboxes, function ($checkbox) {
     new Checkboxes($checkbox).init()
+  })
+
+  var $details = scope.querySelectorAll('[data-module="govuk-details"]')
+  nodeListForEach($details, function ($detail) {
+    new Details($detail).init()
   })
 
   // Find first error summary module to enhance.
