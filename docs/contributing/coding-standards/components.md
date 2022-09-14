@@ -14,7 +14,7 @@ When creating your component, you should create the following files in the compo
 - `_[component-name].scss` - An SCSS file to generate the styles just for the component, importing the variables, functions and mixins from `../../base` and the styles of the component (`./index.scss`).
 - `_index.scss` - The actual styles for the component, that can be imported either on their own by `[component-name].scss` or alongside other components in `components/_all.scss` (or by the consuming application)
 - `[component-name].yaml` - Lists the options expected by the component, used for display in the documentation. It also contains the option samples used to generate the examples in the documentation, as well as the [fixtures for testing alternative implementations of the design system](https://frontend.design-system.service.gov.uk/testing-your-html/).
-- `macro.njk` - The main entry point for rendering the component, provides a `govuk[ComponentName](params)` macro, delegating render to the `template.njk` file
+- `macro.njk` - The main entry point for rendering the component. It provides a `govuk[ComponentName](params)` macro, delegating render to the `template.njk` file
 - `template.njk` - The template used for rendering the component using any `params` provided to the macro
 - `template.test.js` - Tests to ensure the component renders as intended with its various options
 
