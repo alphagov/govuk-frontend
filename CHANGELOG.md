@@ -79,11 +79,6 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 - [#2807: Tidy up and refactor the Character Count JavaScript](https://github.com/alphagov/govuk-frontend/pull/2807)
 - [#2811: Use Element.id to get module id for accordion](https://github.com/alphagov/govuk-frontend/pull/2811)
 - [#2821: Avoid duplicated --error class on Character Count](https://github.com/alphagov/govuk-frontend/pull/2821)
-
-### Fixes
-
-We’ve made fixes to GOV.UK Frontend in the following pull requests:
-
 - [#2800: Improve Pagination component print styles](https://github.com/alphagov/govuk-frontend/pull/2800)
 
 ## 4.3.1 (Patch release)
