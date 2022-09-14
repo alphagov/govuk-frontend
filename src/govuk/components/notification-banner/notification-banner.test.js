@@ -106,7 +106,7 @@ describe('Notification banner, when type is set to "success"', () => {
     })
   })
 
-  describe('and autofocus is disabled in JS but enabled in data attributes, attributes win', () => {
+  describe('and autofocus is disabled in JS but enabled in data attributes', () => {
     beforeAll(async () => {
       await renderAndInitialise('notification-banner', {
         baseUrl,
