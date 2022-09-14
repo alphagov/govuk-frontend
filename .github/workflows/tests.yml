@@ -10,16 +10,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        id: npm-cache
+        with:
+          key: npm-cache-${{ hashFiles('package-lock.json') }}
+          path: node_modules
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          cache: npm
+          cache: ${{ steps.npm-cache.outputs.cache-hit != 'true' && 'npm' || '' }}
           node-version-file: .nvmrc
 
       - name: Install dependencies
+        if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm ci
 
       - name: Run tests
-        run: node_modules/.bin/percy exec -- npm test
+        run: npx percy exec -- npm test
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
