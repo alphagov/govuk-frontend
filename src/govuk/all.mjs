@@ -17,22 +17,21 @@ import Tabs from './components/tabs/tabs.mjs'
  * Use the `data-module` attributes to find, instantiate and init all of the
  * components provided as part of GOV.UK Frontend.
  *
- * @param {Object} [options]
- * @param {HTMLElement} [options.scope=document] - scope to query for components
- * @param {Object} [options.accordion] - accordion config
- * @param {Object} [options.notificationBanner] - notification banner config
+ * @param {Object} [config]
+ * @param {HTMLElement} [config.scope=document] - scope to query for components
+ * @param {Object} [config.accordion] - accordion config
+ * @param {Object} [config.notificationBanner] - notification banner config
  */
-function initAll (options) {
-  // Set the options to an empty object by default if no options are passed.
-  options = typeof options !== 'undefined' ? options : {}
+function initAll (config) {
+  config = typeof config !== 'undefined' ? config : {}
 
   // Allow the user to initialise GOV.UK Frontend in only certain sections of the page
   // Defaults to the entire document if nothing is set.
-  var $scope = typeof options.scope !== 'undefined' ? options.scope : document
+  var $scope = typeof config.scope !== 'undefined' ? config.scope : document
 
   var $accordions = $scope.querySelectorAll('[data-module="govuk-accordion"]')
   nodeListForEach($accordions, function ($accordion) {
-    new Accordion($accordion, options.accordion).init()
+    new Accordion($accordion, config.accordion).init()
   })
 
   var $buttons = $scope.querySelectorAll('[data-module="govuk-button"]')
@@ -65,7 +64,7 @@ function initAll (options) {
 
   var $notificationBanners = $scope.querySelectorAll('[data-module="govuk-notification-banner"]')
   nodeListForEach($notificationBanners, function ($notificationBanner) {
-    new NotificationBanner($notificationBanner, options.notificationBanner).init()
+    new NotificationBanner($notificationBanner, config.notificationBanner).init()
   })
 
   var $radios = $scope.querySelectorAll('[data-module="govuk-radios"]')
