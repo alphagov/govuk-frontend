@@ -21,6 +21,7 @@ import Tabs from './components/tabs/tabs.mjs'
  * @param {HTMLElement} [config.scope=document] - scope to query for components
  * @param {Object} [config.accordion] - accordion config
  * @param {Object} [config.notificationBanner] - notification banner config
+ * @param {Object} [config.errorSummary] - error summary config
  */
 function initAll (config) {
   config = typeof config !== 'undefined' ? config : {}
@@ -56,7 +57,7 @@ function initAll (config) {
 
   // Find first error summary module to enhance.
   var $errorSummary = $scope.querySelector('[data-module="govuk-error-summary"]')
-  new ErrorSummary($errorSummary).init()
+  new ErrorSummary($errorSummary, config.errorSummary).init()
 
   // Find first header module to enhance.
   var $header = $scope.querySelector('[data-module="govuk-header"]')

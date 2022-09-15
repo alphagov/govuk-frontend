@@ -87,6 +87,38 @@ describe('Error Summary', () => {
         expect(activeElement).not.toBe('govuk-error-summary')
       })
     })
+
+    describe('using `initAll`', () => {
+      beforeAll(async () => {
+        await renderAndInitialise('error-summary', {
+          baseUrl,
+          nunjucksParams: examples.default,
+          initialiser () {
+            window.GOVUKFrontend.initAll({
+              errorSummary: {
+                disableAutoFocus: true
+              }
+            })
+          }
+        })
+      })
+
+      it('does not have a tabindex attribute', async () => {
+        const tabindex = await page.$eval('.govuk-error-summary', (el) =>
+          el.getAttribute('tabindex')
+        )
+
+        expect(tabindex).toBeNull()
+      })
+
+      it('does not focus on page load', async () => {
+        const activeElement = await page.evaluate(
+          () => document.activeElement.dataset.module
+        )
+
+        expect(activeElement).not.toBe('govuk-error-summary')
+      })
+    })
   })
 
   const inputTypes = [
