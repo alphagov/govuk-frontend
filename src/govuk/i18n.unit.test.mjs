@@ -36,7 +36,7 @@ describe('I18n', () => {
 
     it('throws an error if no lookup key is provided', () => {
       const i18n = new I18n(config)
-      expect(() => i18n.t()).toThrow('i18n lookup key missing.')
+      expect(() => i18n.t()).toThrow('i18n: lookup key missing')
     })
   })
 
@@ -131,6 +131,158 @@ describe('I18n', () => {
     it('handles placeholder-style text within options values', () => {
       const i18n = new I18n(config)
       expect(i18n.t('nameString', { name: '%{name}' })).toBe('My name is %{name}')
+    })
+
+    it('formats numbers that are passed as placeholders', () => {
+      const translations = { ageString: 'I am %{age} years old' }
+      const i18nEn = new I18n(translations, { locale: 'en' })
+      const i18nDe = new I18n(translations, { locale: 'de' })
+
+      expect(i18nEn.t('ageString', { age: 2000 })).toBe('I am 2,000 years old')
+      expect(i18nDe.t('ageString', { age: 2000 })).toBe('I am 2.000 years old')
+    })
+
+    it('does not format number-like strings that are passed as placeholders', () => {
+      const i18n = new I18n({
+        yearString: 'Happy new year %{year}'
+      })
+
+      expect(i18n.t('yearString', { year: '2023' })).toBe('Happy new year 2023')
+    })
+  })
+
+  describe('pluralisation', () => {
+    it('throws an error if a required plural form is not provided ', () => {
+      const i18n = new I18n({
+        testOther: 'testing testing'
+      }, {
+        locale: 'en'
+      })
+      expect(() => { i18n.t('test', { count: 1 }) }).toThrowError('i18n: Plural form "One" is required for "en" locale')
+    })
+
+    it('interpolates the count variable into the correct plural form', () => {
+      const i18n = new I18n({
+        testOne: '%{count} test',
+        testOther: '%{count} tests'
+      }, {
+        locale: 'en'
+      })
+
+      expect(i18n.t('test', { count: 1 })).toBe('1 test')
+      expect(i18n.t('test', { count: 5 })).toBe('5 tests')
+    })
+
+    describe('fallback plural rules', () => {
+      const testNumbers = [0, 1, 2, 5, 25, 100]
+
+      it('returns the correct plural form for a given count (Arabic rules)', () => {
+        const locale = 'ar'
+        const localeNumbers = [105, 125]
+
+        const i18n = new I18n({}, { locale: locale })
+        const intl = new Intl.PluralRules(locale)
+
+        testNumbers.concat(localeNumbers).forEach(num => {
+          expect(i18n.pluralRules.arabic(num)).toBe(intl.select(num))
+        })
+      })
+
+      it('returns the correct plural form for a given count (Chinese rules)', () => {
+        const locale = 'zh'
+        const localeNumbers = []
+
+        const i18n = new I18n({}, { locale: locale })
+        const intl = new Intl.PluralRules(locale)
+
+        testNumbers.concat(localeNumbers).forEach(num => {
+          expect(i18n.pluralRules.chinese(num)).toBe(intl.select(num))
+        })
+      })
+
+      it('returns the correct plural form for a given count (French rules)', () => {
+        const locale = 'fr'
+        const localeNumbers = []
+
+        const i18n = new I18n({}, { locale: locale })
+        const intl = new Intl.PluralRules(locale)
+
+        testNumbers.concat(localeNumbers).forEach(num => {
+          expect(i18n.pluralRules.french(num)).toBe(intl.select(num))
+        })
+      })
+
+      it('returns the correct plural form for a given count (German rules)', () => {
+        const locale = 'de'
+        const localeNumbers = []
+
+        const i18n = new I18n({}, { locale: locale })
+        const intl = new Intl.PluralRules(locale)
+
+        testNumbers.concat(localeNumbers).forEach(num => {
+          expect(i18n.pluralRules.german(num)).toBe(intl.select(num))
+        })
+      })
+
+      it('returns the correct plural form for a given count (Irish rules)', () => {
+        const locale = 'ga'
+        const localeNumbers = [9]
+
+        const i18n = new I18n({}, { locale: locale })
+        const intl = new Intl.PluralRules(locale)
+
+        testNumbers.concat(localeNumbers).forEach(num => {
+          expect(i18n.pluralRules.irish(num)).toBe(intl.select(num))
+        })
+      })
+
+      it('returns the correct plural form for a given count (Russian rules)', () => {
+        const locale = 'ru'
+        const localeNumbers = [3, 13, 101]
+
+        const i18n = new I18n({}, { locale: locale })
+        const intl = new Intl.PluralRules(locale)
+
+        testNumbers.concat(localeNumbers).forEach(num => {
+          expect(i18n.pluralRules.russian(num)).toBe(intl.select(num))
+        })
+      })
+
+      it('returns the correct plural form for a given count (Scottish rules)', () => {
+        const locale = 'gd'
+        const localeNumbers = [15]
+
+        const i18n = new I18n({}, { locale: locale })
+        const intl = new Intl.PluralRules(locale)
+
+        testNumbers.concat(localeNumbers).forEach(num => {
+          expect(i18n.pluralRules.scottish(num)).toBe(intl.select(num))
+        })
+      })
+
+      it('returns the correct plural form for a given count (Spanish rules)', () => {
+        const locale = 'es'
+        const localeNumbers = [1000000, 2000000]
+
+        const i18n = new I18n({}, { locale: locale })
+        const intl = new Intl.PluralRules(locale)
+
+        testNumbers.concat(localeNumbers).forEach(num => {
+          expect(i18n.pluralRules.spanish(num)).toBe(intl.select(num))
+        })
+      })
+
+      it('returns the correct plural form for a given count (Welsh rules)', () => {
+        const locale = 'cy'
+        const localeNumbers = [3, 6]
+
+        const i18n = new I18n({}, { locale: locale })
+        const intl = new Intl.PluralRules(locale)
+
+        testNumbers.concat(localeNumbers).forEach(num => {
+          expect(i18n.pluralRules.welsh(num)).toBe(intl.select(num))
+        })
+      })
     })
   })
 })
