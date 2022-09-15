@@ -1,5 +1,3 @@
-/* eslint-env jest */
-
 const sassdoc = require('sassdoc')
 
 const configPaths = require('../../config/paths.json')

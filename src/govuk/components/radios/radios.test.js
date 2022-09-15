@@ -1,5 +1,3 @@
-/* eslint-env jest */
-
 const cheerio = require('cheerio')
 
 const configPaths = require('../../../../config/paths.json')

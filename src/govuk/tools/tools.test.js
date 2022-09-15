@@ -1,5 +1,3 @@
-/* eslint-env jest */
-
 const glob = require('glob')
 const path = require('path')
 
@@ -19,7 +17,7 @@ describe('The tools layer', () => {
   })
 
   it.each(sassFiles)('%s renders to CSS without errors', (file) => {
-    return renderSass({ file: file })
+    return renderSass({ file })
   })
 
   describe('Sass documentation', () => {

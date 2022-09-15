@@ -1,5 +1,3 @@
-/* eslint-env jest */
-
 const configPaths = require('../../../../config/paths.json')
 const PORT = configPaths.ports.test
 const baseUrl = `http://localhost:${PORT}`

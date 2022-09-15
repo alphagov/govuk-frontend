@@ -1,5 +1,3 @@
-/* eslint-env jest */
-
 const { devices } = require('puppeteer')
 const iPhone = devices['iPhone 6']
 const configPaths = require('../../../../config/paths.json')

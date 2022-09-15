@@ -1,5 +1,3 @@
-/* eslint-env jest */
-
 require('html-validate/jest')
 
 const { allComponents, getComponentData } = require('../../../lib/file-helper')

@@ -114,7 +114,7 @@ module.exports = (options) => {
     res.render('index', {
       componentsDirectory: components,
       examplesDirectory: examples,
-      fullPageExamples: fullPageExamples
+      fullPageExamples
     })
   })
 
