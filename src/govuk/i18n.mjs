@@ -88,13 +88,20 @@ I18n.prototype.replacePlaceholders = function (translationString, options) {
     var placeholderIncludingBraces = placeholderMatch[0]
     var placeholderKey = placeholderMatch[1]
     if (Object.prototype.hasOwnProperty.call(options, placeholderKey)) {
+      let placeholderValue = options[placeholderKey]
+
       // If a user has passed `false` as the value for the placeholder
       // treat it as though the value should not be displayed
-      if (options[placeholderKey] === false) {
+      if (placeholderValue === false) {
         translationString = translationString.replace(placeholderIncludingBraces, '')
       }
 
-      translationString = translationString.replace(placeholderIncludingBraces, options[placeholderKey])
+      // If the placeholder's value is a number, localise the number formatting
+      if (typeof placeholderValue === 'number' && this.hasIntlNumberFormatSupport()) {
+        placeholderValue = new Intl.NumberFormat(this.locale).format(placeholderValue)
+      }
+
+      translationString = translationString.replace(placeholderIncludingBraces, placeholderValue)
     } else {
       throw new Error('i18n: no data found to replace ' + placeholderMatch[0] + ' placeholder in string')
     }
@@ -115,6 +122,20 @@ I18n.prototype.replacePlaceholders = function (translationString, options) {
  */
 I18n.prototype.hasIntlPluralRulesSupport = function () {
   return Boolean(window.Intl && ('PluralRules' in window.Intl && Intl.PluralRules.supportedLocalesOf(this.locale).length))
+}
+
+/**
+ * Check to see if the browser supports Intl and Intl.NumberFormat.
+ *
+ * It requires all conditions to be met in order to be supported:
+ * - The browser supports the Intl class (true in IE11)
+ * - The implementation of Intl supports NumberFormat (also true in IE11)
+ * - The browser/OS has number formatting rules for the current locale (browser dependent)
+ *
+ * @returns  {boolean}  - Returns true if all conditions are met. Returns false otherwise.
+ */
+I18n.prototype.hasIntlNumberFormatSupport = function () {
+  return Boolean(window.Intl && ('NumberFormat' in window.Intl && Intl.NumberFormat.supportedLocalesOf(this.locale).length))
 }
 
 /**

@@ -132,6 +132,22 @@ describe('I18n', () => {
       const i18n = new I18n(config)
       expect(i18n.t('nameString', { name: '%{name}' })).toBe('My name is %{name}')
     })
+
+    it('formats numbers that are passed as placeholders', () => {
+      const i18n = new I18n({
+        ageString: 'I am %{age} years old'
+      })
+
+      expect(i18n.t('ageString', { age: 2000 })).toBe('I am 2,000 years old')
+    })
+
+    it('does not format number-like strings that are passed as placeholders', () => {
+      const i18n = new I18n({
+        yearString: 'Happy new year %{year}'
+      })
+
+      expect(i18n.t('yearString', { year: '2023' })).toBe('Happy new year 2023')
+    })
   })
 
   describe('pluralisation', () => {
