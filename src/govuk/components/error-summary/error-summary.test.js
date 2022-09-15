@@ -88,6 +88,29 @@ describe('Error Summary', () => {
       })
     })
 
+    describe('using JavaScript configuration, but enabled via data-attributes', () => {
+      beforeAll(async () => {
+        await renderAndInitialise('error-summary', {
+          baseUrl,
+          nunjucksParams: examples['autofocus explicitly enabled']
+        })
+      })
+
+      it('adds the tabindex attribute on page load', async () => {
+        const tabindex = await page.$eval('.govuk-error-summary', (el) =>
+          el.getAttribute('tabindex')
+        )
+        expect(tabindex).toEqual('-1')
+      })
+
+      it('is automatically focused when the page loads', async () => {
+        const moduleName = await page.evaluate(
+          () => document.activeElement.dataset.module
+        )
+        expect(moduleName).toBe('govuk-error-summary')
+      })
+    })
+
     describe('using `initAll`', () => {
       beforeAll(async () => {
         await renderAndInitialise('error-summary', {
