@@ -20,7 +20,7 @@
     "test:build:package": "jest tasks/gulp/__tests__/after-build-package.test.js",
     "test:build:dist": "jest tasks/gulp/__tests__/after-build-dist.test.js",
     "lint": "npm run lint:js && npm run lint:scss",
-    "lint:js": "standard",
+    "lint:js": "eslint --cache --cache-location .cache/eslint --cache-strategy content --color --ignore-path .gitignore \"**/*.{cjs,js,mjs}\"",
     "lint:scss": "stylelint \"app/**/*.scss\" \"src/**/*.scss\""
   },
   "devDependencies": {
@@ -98,20 +98,6 @@
     "ie 8-11",
     "iOS >= 9"
   ],
-  "standard": {
-    "globals": [
-      "page",
-      "browser",
-      "context",
-      "jestPuppeteer"
-    ],
-    "ignore": [
-      "/dist/**/*.js",
-      "/package/**/*.js",
-      "/package/**/*.mjs",
-      "/src/govuk/vendor/polyfills/**/*.mjs"
-    ]
-  },
   "dependencies": {
     "html-validate": "^7.3.3",
     "rollup-jest": "^3.0.0"
