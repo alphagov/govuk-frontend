@@ -134,11 +134,12 @@ describe('I18n', () => {
     })
 
     it('formats numbers that are passed as placeholders', () => {
-      const i18n = new I18n({
-        ageString: 'I am %{age} years old'
-      })
+      const translations = { ageString: 'I am %{age} years old' }
+      const i18nEn = new I18n(translations, { locale: 'en' })
+      const i18nDe = new I18n(translations, { locale: 'de' })
 
-      expect(i18n.t('ageString', { age: 2000 })).toBe('I am 2,000 years old')
+      expect(i18nEn.t('ageString', { age: 2000 })).toBe('I am 2,000 years old')
+      expect(i18nDe.t('ageString', { age: 2000 })).toBe('I am 2.000 years old')
     })
 
     it('does not format number-like strings that are passed as placeholders', () => {
