@@ -208,6 +208,13 @@ module.exports = (options) => {
     })
   })
 
+  // Test view for injecting rendered components
+  // and testing specific JavaScript configurations
+  // Example view
+  app.get('/tests/boilerplate', function (req, res) {
+    res.render('tests/boilerplate')
+  })
+
   // Full page example views
   require('./full-page-examples.js')(app)
 
