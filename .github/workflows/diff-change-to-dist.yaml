@@ -14,20 +14,28 @@ jobs:
     # Abort if run from a fork, as token won't have write access to post comment
     if: github.event.pull_request.head.repo.full_name == github.repository
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0 # Need to also checkout the base branch to compare
-      - uses: actions/setup-node@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          cache: npm
+          node-version-file: .nvmrc
+
       - name: Set up diff drivers
         run: |
           npm install -g js-beautify
           git config diff.minjs.textconv js-beautify
           git config diff.mincss.textconv js-beautify
+
       - name: Generate diff
         id: diff
         run: |
           git diff -M05 origin/$GITHUB_BASE_REF -- dist \
             > $GITHUB_WORKSPACE/dist.diff
+
       - name: Add comment to PR
         uses: actions/github-script@v3
         with:
