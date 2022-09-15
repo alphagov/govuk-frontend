@@ -151,7 +151,7 @@ I18n.prototype.hasIntlNumberFormatSupport = function () {
  */
 I18n.prototype.getPluralSuffix = function (count) {
   var locale = this.locale
-  var localeShort = (locale.length > 2) ? locale.substring(0, 2) : locale
+  var localeShort = locale.split('-')[0]
   var keySuffix = 'other'
 
   // Validate that the number is actually a number.
