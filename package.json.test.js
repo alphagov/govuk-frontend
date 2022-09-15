@@ -1,5 +1,3 @@
-/* eslint-env jest */
-
 const packageJson = require('./package.json')
 const packageLockJson = require('./package-lock.json')
 

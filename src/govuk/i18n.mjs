@@ -80,6 +80,7 @@ I18n.prototype.t = function (lookupKey, options) {
  * @returns  {String}             - The translation string to output, with ${} placeholders replaced
  */
 I18n.prototype.replacePlaceholders = function (translationString, options) {
+  // eslint-disable-next-line prefer-regex-literals
   var placeholderRegex = RegExp(/%{(.\S+)}/, 'g')
   var placeholderMatch
 

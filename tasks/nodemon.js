@@ -1,5 +1,3 @@
-'use strict'
-
 const nodemon = require('nodemon')
 const paths = require('../config/paths.json')
 

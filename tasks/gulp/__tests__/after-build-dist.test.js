@@ -1,4 +1,3 @@
-/* eslint-env jest */
 const path = require('path')
 const lib = require('../../../lib/file-helper')
 const configPaths = require('../../../config/paths.json')

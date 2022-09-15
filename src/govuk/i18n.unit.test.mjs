@@ -1,7 +1,6 @@
 /**
  * @jest-environment jsdom
  */
-/* eslint-env jest */
 
 import I18n from './i18n.mjs'
 

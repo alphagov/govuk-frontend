@@ -20,7 +20,7 @@
     "test:build:package": "jest tasks/gulp/__tests__/after-build-package.test.js",
     "test:build:dist": "jest tasks/gulp/__tests__/after-build-dist.test.js",
     "lint": "npm run lint:js && npm run lint:scss",
-    "lint:js": "standard",
+    "lint:js": "eslint --cache --cache-location .cache/eslint --cache-strategy content --color --ignore-path .gitignore \"**/*.{cjs,js,mjs}\"",
     "lint:scss": "stylelint \"app/**/*.scss\" \"src/**/*.scss\""
   },
   "devDependencies": {
@@ -34,7 +34,11 @@
     "cross-env": "^7.0.3",
     "cssnano": "^4.1.11",
     "del": "^6.1.1",
-    "eslint": "^6.8.0",
+    "eslint": "^8.23.1",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.5",
+    "eslint-plugin-promise": "^6.0.1",
     "express": "^4.16.4",
     "express-validator": "^6.6.1",
     "front-matter": "^4.0.2",
@@ -75,7 +79,7 @@
     "sass-color-helpers": "^2.1.1",
     "sassdoc": "^2.7.4",
     "shuffle-seed": "^1.1.6",
-    "standard": "^14.3.4",
+    "standard": "^17.0.0",
     "stylelint": "^14.6.1",
     "stylelint-config-gds": "^0.2.0",
     "stylelint-order": "^5.0.0",
@@ -94,20 +98,6 @@
     "ie 8-11",
     "iOS >= 9"
   ],
-  "standard": {
-    "globals": [
-      "page",
-      "browser",
-      "context",
-      "jestPuppeteer"
-    ],
-    "ignore": [
-      "/dist/**/*.js",
-      "/package/**/*.js",
-      "/package/**/*.mjs",
-      "/src/govuk/vendor/polyfills/**/*.mjs"
-    ]
-  },
   "dependencies": {
     "html-validate": "^7.3.3",
     "rollup-jest": "^3.0.0"

@@ -1,5 +1,3 @@
-'use strict'
-
 const nunjucks = require('nunjucks')
 const gulp = require('gulp')
 const configPaths = require('../../config/paths.json')

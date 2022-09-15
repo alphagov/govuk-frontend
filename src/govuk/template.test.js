@@ -1,5 +1,3 @@
-/* eslint-env jest */
-
 const nunjucks = require('nunjucks')
 const configPaths = require('../../config/paths.json')
 const crypto = require('crypto')

@@ -1,5 +1,3 @@
-'use strict'
-
 const configPaths = require('../config/paths.json')
 const fs = require('fs')
 const path = require('path')
@@ -21,7 +19,7 @@ function updateDistAssetsVersion (cb) {
   ]
 
   // Loop through files and move them to their new locations
-  assetFiles.map(srcFilename => {
+  assetFiles.forEach(srcFilename => {
     const destFilename = srcFilename.replace(/(govuk.*)(?=\.min)/g, '$1-' + pkg.version)
     fs.rename(
       path.resolve(srcFilename),

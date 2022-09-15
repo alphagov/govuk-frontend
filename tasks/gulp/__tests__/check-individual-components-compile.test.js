@@ -1,5 +1,3 @@
-/* eslint-env jest */
-
 const path = require('path')
 
 const { renderSass } = require('../../../lib/jest-helpers')

@@ -1,5 +1,3 @@
-'use strict'
-
 const gulp = require('gulp')
 const { spawn } = require('child_process')
 

@@ -1,5 +1,3 @@
-'use strict'
-
 const { componentNameToJavaScriptModuleName } = require('../../lib/helper-functions')
 
 const path = require('path')

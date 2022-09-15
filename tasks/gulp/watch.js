@@ -1,4 +1,3 @@
-'use strict'
 const gulp = require('gulp')
 const configPaths = require('../../config/paths.json')
 const buildSassdocs = require('../sassdoc.js')

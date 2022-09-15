@@ -1,7 +1,6 @@
 /**
  * @jest-environment jsdom
  */
-/* eslint-env jest */
 
 import { mergeConfigs, extractConfigByNamespace, normaliseString, normaliseDataset } from './common.mjs'
 

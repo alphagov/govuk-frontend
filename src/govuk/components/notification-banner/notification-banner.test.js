@@ -1,4 +1,3 @@
-/* eslint-env jest */
 const { renderAndInitialise, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('notification-banner')
