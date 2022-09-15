@@ -57,11 +57,15 @@ function initAll (config) {
 
   // Find first error summary module to enhance.
   var $errorSummary = $scope.querySelector('[data-module="govuk-error-summary"]')
-  new ErrorSummary($errorSummary, config.errorSummary).init()
+  if ($errorSummary) {
+    new ErrorSummary($errorSummary, config.errorSummary).init()
+  }
 
   // Find first header module to enhance.
   var $header = $scope.querySelector('[data-module="govuk-header"]')
-  new Header($header).init()
+  if ($header) {
+    new Header($header).init()
+  }
 
   var $notificationBanners = $scope.querySelectorAll('[data-module="govuk-notification-banner"]')
   nodeListForEach($notificationBanners, function ($notificationBanner) {
