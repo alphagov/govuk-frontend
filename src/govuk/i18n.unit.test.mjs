@@ -183,7 +183,7 @@ describe('I18n', () => {
         const intl = new Intl.PluralRules(locale)
 
         testNumbers.concat(localeNumbers).forEach(num => {
-          expect(i18n.pluralRules.arabic(num)).toEqual(intl.select(num))
+          expect(i18n.pluralRules.arabic(num)).toBe(intl.select(num))
         })
       })
 
@@ -195,7 +195,7 @@ describe('I18n', () => {
         const intl = new Intl.PluralRules(locale)
 
         testNumbers.concat(localeNumbers).forEach(num => {
-          expect(i18n.pluralRules.chinese(num)).toEqual(intl.select(num))
+          expect(i18n.pluralRules.chinese(num)).toBe(intl.select(num))
         })
       })
 
@@ -207,7 +207,7 @@ describe('I18n', () => {
         const intl = new Intl.PluralRules(locale)
 
         testNumbers.concat(localeNumbers).forEach(num => {
-          expect(i18n.pluralRules.french(num)).toEqual(intl.select(num))
+          expect(i18n.pluralRules.french(num)).toBe(intl.select(num))
         })
       })
 
@@ -219,7 +219,7 @@ describe('I18n', () => {
         const intl = new Intl.PluralRules(locale)
 
         testNumbers.concat(localeNumbers).forEach(num => {
-          expect(i18n.pluralRules.german(num)).toEqual(intl.select(num))
+          expect(i18n.pluralRules.german(num)).toBe(intl.select(num))
         })
       })
 
@@ -231,7 +231,7 @@ describe('I18n', () => {
         const intl = new Intl.PluralRules(locale)
 
         testNumbers.concat(localeNumbers).forEach(num => {
-          expect(i18n.pluralRules.irish(num)).toEqual(intl.select(num))
+          expect(i18n.pluralRules.irish(num)).toBe(intl.select(num))
         })
       })
 
@@ -243,7 +243,7 @@ describe('I18n', () => {
         const intl = new Intl.PluralRules(locale)
 
         testNumbers.concat(localeNumbers).forEach(num => {
-          expect(i18n.pluralRules.russian(num)).toEqual(intl.select(num))
+          expect(i18n.pluralRules.russian(num)).toBe(intl.select(num))
         })
       })
 
@@ -255,7 +255,7 @@ describe('I18n', () => {
         const intl = new Intl.PluralRules(locale)
 
         testNumbers.concat(localeNumbers).forEach(num => {
-          expect(i18n.pluralRules.scottish(num)).toEqual(intl.select(num))
+          expect(i18n.pluralRules.scottish(num)).toBe(intl.select(num))
         })
       })
 
@@ -267,7 +267,7 @@ describe('I18n', () => {
         const intl = new Intl.PluralRules(locale)
 
         testNumbers.concat(localeNumbers).forEach(num => {
-          expect(i18n.pluralRules.spanish(num)).toEqual(intl.select(num))
+          expect(i18n.pluralRules.spanish(num)).toBe(intl.select(num))
         })
       })
 
@@ -279,7 +279,7 @@ describe('I18n', () => {
         const intl = new Intl.PluralRules(locale)
 
         testNumbers.concat(localeNumbers).forEach(num => {
-          expect(i18n.pluralRules.welsh(num)).toEqual(intl.select(num))
+          expect(i18n.pluralRules.welsh(num)).toBe(intl.select(num))
         })
       })
     })
