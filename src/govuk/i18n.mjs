@@ -27,7 +27,7 @@ function I18n (translations, config) {
 I18n.prototype.t = function (lookupKey, options) {
   if (!lookupKey) {
     // Print a console error if no lookup key has been provided
-    throw new Error('i18n lookup key missing.')
+    throw new Error('i18n: lookup key missing')
   }
 
   // If the `count` option is set, determine which plural suffix is needed and
@@ -43,6 +43,11 @@ I18n.prototype.t = function (lookupKey, options) {
 
     // Overwrite our existing lookupKey
     lookupKey = lookupKey + pluralSuffix
+
+    // Throw an error if this new key doesn't exist
+    if (!(lookupKey in this.translations)) {
+      throw new Error('i18n: Plural form "' + pluralSuffix + '" is required for "' + this.locale + '" locale')
+    }
   }
 
   if (lookupKey in this.translations) {
@@ -250,6 +255,8 @@ I18n.prototype.pluralRules = {
     if (last === 1 && lastTwo !== 11) { return 'one' }
     if (last >= 2 && last <= 4 && !(lastTwo >= 12 && lastTwo <= 14)) { return 'few' }
     if (last === 0 || (last >= 5 && last <= 9) || (lastTwo >= 11 && lastTwo <= 14)) { return 'many' }
+    // Note: The 'other' suffix is only used by decimal numbers in Russian.
+    // We don't anticipate it being used, but it's here for consistency.
     return 'other'
   },
   scottish: function (n) {
