@@ -2,8 +2,18 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Event.mjs' // addEventListener
 import '../../vendor/polyfills/Element/prototype/closest.mjs'
 
-function ErrorSummary ($module) {
+import { mergeConfigs, normaliseDataset } from '../../common.mjs'
+function ErrorSummary ($module, config) {
   this.$module = $module
+
+  var defaultConfig = {
+    disableAutoFocus: false
+  }
+  this.config = mergeConfigs(
+    defaultConfig,
+    config || {},
+    normaliseDataset($module.dataset)
+  )
 }
 
 ErrorSummary.prototype.init = function () {
@@ -22,7 +32,7 @@ ErrorSummary.prototype.init = function () {
 ErrorSummary.prototype.setFocus = function () {
   var $module = this.$module
 
-  if ($module.getAttribute('data-disable-auto-focus') === 'true') {
+  if (this.config.disableAutoFocus) {
     return
   }
 

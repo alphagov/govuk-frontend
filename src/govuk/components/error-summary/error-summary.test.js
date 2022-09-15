@@ -1,6 +1,9 @@
 /**
  * @jest-environment puppeteer
  */
+const { renderAndInitialise, getExamples } = require('../../../../lib/jest-helpers')
+
+const examples = getExamples('error-summary')
 
 const configPaths = require('../../../../config/paths.js')
 const PORT = configPaths.ports.test
@@ -32,20 +35,57 @@ describe('Error Summary', () => {
   })
 
   describe('when auto-focus is disabled', () => {
-    it('does not have a tabindex attribute', async () => {
-      await page.goto(`${baseUrl}/components/error-summary/autofocus-disabled/preview`, { waitUntil: 'load' })
+    describe('using data-attributes', () => {
+      beforeAll(async () => {
+        await page.goto(
+          `${baseUrl}/components/error-summary/autofocus-disabled/preview`,
+          { waitUntil: 'load' }
+        )
+      })
 
-      const tabindex = await page.$eval('.govuk-error-summary', el => el.getAttribute('tabindex'))
+      it('does not have a tabindex attribute', async () => {
+        const tabindex = await page.$eval('.govuk-error-summary', (el) =>
+          el.getAttribute('tabindex')
+        )
 
-      expect(tabindex).toBeNull()
+        expect(tabindex).toBeNull()
+      })
+
+      it('does not focus on page load', async () => {
+        const activeElement = await page.evaluate(
+          () => document.activeElement.dataset.module
+        )
+
+        expect(activeElement).not.toBe('govuk-error-summary')
+      })
     })
 
-    it('does not focus on page load', async () => {
-      await page.goto(`${baseUrl}/components/error-summary/autofocus-disabled/preview`, { waitUntil: 'load' })
+    describe('using JavaScript configuration', () => {
+      beforeAll(async () => {
+        await renderAndInitialise('error-summary', {
+          baseUrl,
+          nunjucksParams: examples.default,
+          javascriptConfig: {
+            disableAutoFocus: true
+          }
+        })
+      })
 
-      const activeElement = await page.evaluate(() => document.activeElement.dataset.module)
+      it('does not have a tabindex attribute', async () => {
+        const tabindex = await page.$eval('.govuk-error-summary', (el) =>
+          el.getAttribute('tabindex')
+        )
 
-      expect(activeElement).not.toBe('govuk-error-summary')
+        expect(tabindex).toBeNull()
+      })
+
+      it('does not focus on page load', async () => {
+        const activeElement = await page.evaluate(
+          () => document.activeElement.dataset.module
+        )
+
+        expect(activeElement).not.toBe('govuk-error-summary')
+      })
     })
   })
 
