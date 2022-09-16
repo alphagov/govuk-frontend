@@ -1,6 +1,6 @@
 const path = require('path')
 const lib = require('../../../lib/file-helper')
-const configPaths = require('../../../config/paths.json')
+const configPaths = require('../../../config/paths.js')
 const recursive = require('recursive-readdir')
 
 describe('dist/', () => {

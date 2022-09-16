@@ -4,7 +4,7 @@ const path = require('path')
 const sassdoc = require('sassdoc')
 
 const { renderSass } = require('../../../lib/jest-helpers')
-const configPaths = require('../../../config/paths.json')
+const configPaths = require('../../../config/paths.js')
 
 const sassFiles = glob.sync(`${configPaths.src}/tools/**/*.scss`)
 

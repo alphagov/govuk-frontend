@@ -2,7 +2,7 @@ const { renderAndInitialise, getExamples } = require('../../../../lib/jest-helpe
 
 const examples = getExamples('notification-banner')
 
-const configPaths = require('../../../../config/paths.json')
+const configPaths = require('../../../../config/paths.js')
 const PORT = configPaths.ports.test
 
 const baseUrl = 'http://localhost:' + PORT

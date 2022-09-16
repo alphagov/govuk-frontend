@@ -5,7 +5,7 @@ const util = require('util')
 const recursive = require('recursive-readdir')
 const glob = require('glob')
 
-const configPaths = require('../../../config/paths.json')
+const configPaths = require('../../../config/paths.js')
 const lib = require('../../../lib/file-helper')
 const { componentNameToJavaScriptModuleName } = require('../../../lib/helper-functions')
 

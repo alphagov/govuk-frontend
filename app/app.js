@@ -11,7 +11,7 @@ const readdir = util.promisify(fs.readdir)
 
 const helperFunctions = require('../lib/helper-functions')
 const fileHelper = require('../lib/file-helper')
-const configPaths = require('../config/paths.json')
+const configPaths = require('../config/paths.js')
 
 const isDeployedToHeroku = !!process.env.HEROKU_APP
 

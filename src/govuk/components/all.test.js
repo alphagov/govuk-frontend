@@ -3,7 +3,7 @@ require('html-validate/jest')
 const { allComponents, getComponentData } = require('../../../lib/file-helper')
 const { renderSass, renderHtml } = require('../../../lib/jest-helpers')
 
-const configPaths = require('../../../config/paths.json')
+const configPaths = require('../../../config/paths.js')
 
 const PORT = configPaths.ports.test
 const baseUrl = 'http://localhost:' + PORT

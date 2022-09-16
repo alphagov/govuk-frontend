@@ -1,5 +1,5 @@
 const sassdoc = require('sassdoc')
-const paths = require('../config/paths.json')
+const paths = require('../config/paths.js')
 
 function buildSassdocs (cb) {
   sassdoc([paths.src + '**/**/*.scss', `!${paths.src}/vendor/*`], {

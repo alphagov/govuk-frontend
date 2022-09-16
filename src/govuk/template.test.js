@@ -1,5 +1,5 @@
 const nunjucks = require('nunjucks')
-const configPaths = require('../../config/paths.json')
+const configPaths = require('../../config/paths.js')
 const crypto = require('crypto')
 
 const { renderTemplate } = require('../../lib/jest-helpers')

@@ -1,4 +1,4 @@
-const configPaths = require('./config/paths.json')
+const configPaths = require('./config/paths.js')
 const PORT = process.env.PORT || configPaths.ports.test
 
 module.exports = {
