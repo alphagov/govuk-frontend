@@ -1,5 +1,5 @@
-const request = require('request')
 const cheerio = require('cheerio')
+const { Agent, fetch, setGlobalDispatcher } = require('undici')
 
 const configPaths = require('../config/paths.js')
 const PORT = configPaths.ports.test
@@ -21,403 +21,377 @@ const expectedPages = [
   'what-was-the-last-country-you-visited'
 ]
 
-// Returns a wrapper for `request` which applies these options by default
-const requestPath = request.defaults({
-  baseUrl: `http://localhost:${PORT}/full-page-examples/`,
-  headers: {
-    'Content-Type': 'text/plain'
-  }
-})
+// Reduce test keep-alive timeouts
+setGlobalDispatcher(new Agent({
+  keepAliveTimeout: 10,
+  keepAliveMaxTimeout: 10
+}))
+
+// Returns Fetch API wrapper which applies these options by default
+const fetchPath = (path, options) => {
+  return fetch(`http://localhost:${PORT}/full-page-examples/${path}`, options)
+}
 
 describe(`http://localhost:${PORT}/full-page-examples/`, () => {
   describe.each(expectedPages)('%s', path => {
-    it('should resolve with a http status code of 200', done => {
-      requestPath.get(path, (err, res) => {
-        expect(res.statusCode).toEqual(200)
-        done(err)
-      })
+    it('should resolve with a http status code of 200', async () => {
+      const { status } = await fetchPath(path, { method: 'HEAD' })
+      expect(status).toEqual(200)
     })
 
-    it('should resolve with a ‘Content-Type’ header of "text/html"', done => {
-      requestPath.get(path, (err, res) => {
-        expect(res.headers['content-type']).toContain('text/html')
-        done(err)
-      })
+    it('should resolve with a ‘Content-Type’ header of "text/html"', async () => {
+      const { headers } = await fetchPath(path, { method: 'HEAD' })
+      expect(headers.get('content-type')).toContain('text/html')
     })
 
-    it('should prevent search indexing', done => {
-      requestPath.get(path, (err, res) => {
-        expect(res.headers['x-robots-tag']).toEqual('none')
-        done(err)
-      })
+    it('should prevent search indexing', async () => {
+      const { headers } = await fetchPath(path, { method: 'HEAD' })
+      expect(headers.get('x-robots-tag')).toEqual('none')
     })
   })
 
   describe('/full-page-examples/', () => {
     describe('feedback', () => {
-      it('should not show errors if submit with no input', (done) => {
-        requestPath.get('feedback', (err, res) => {
-          const $ = cheerio.load(res.body)
+      it('should not show errors if submit with no input', async () => {
+        const response = await fetchPath('feedback')
+        const body = await response.text()
+        const $ = cheerio.load(body)
 
-          // Check the page responded correctly
-          expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('Send your feedback')
+        // Check the page responded correctly
+        expect(response.status).toBe(200)
+        expect($.html()).toContain('Send your feedback')
 
-          // Check that the error summary is not visible
-          const $errorSummary = $('[data-module="govuk-error-summary"]')
-          expect($errorSummary.length).toBeFalsy()
-          done(err)
-        })
+        // Check that the error summary is not visible
+        const $errorSummary = $('[data-module="govuk-error-summary"]')
+        expect($errorSummary.length).toBeFalsy()
       })
-      it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post('feedback', (err, res) => {
-          const $ = cheerio.load(res.body)
+      it('should show errors if form is submitted with no input', async () => {
+        const response = await fetchPath('feedback', { method: 'POST' })
+        const body = await response.text()
+        const $ = cheerio.load(body)
 
-          // Check the page responded correctly
-          expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('Send your feedback')
+        // Check the page responded correctly
+        expect(response.status).toBe(200)
+        expect($.html()).toContain('Send your feedback')
 
-          // Check the title has an error
-          expect($('title').text()).toContain('Error:')
+        // Check the title has an error
+        expect($('title').text()).toContain('Error:')
 
-          // Check that the error summary is visible
-          const $errorSummary = $('[data-module="govuk-error-summary"]')
-          expect($errorSummary.length).toBeTruthy()
-          done(err)
-        })
+        // Check that the error summary is visible
+        const $errorSummary = $('[data-module="govuk-error-summary"]')
+        expect($errorSummary.length).toBeTruthy()
       })
     })
 
     describe('have-you-changed-your-name', () => {
-      it('should not show errors if submit with no input', (done) => {
-        requestPath.get('have-you-changed-your-name', (err, res) => {
-          const $ = cheerio.load(res.body)
+      it('should not show errors if submit with no input', async () => {
+        const response = await fetchPath('have-you-changed-your-name')
+        const body = await response.text()
+        const $ = cheerio.load(body)
 
-          // Check the page responded correctly
-          expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('Have you changed your name?')
+        // Check the page responded correctly
+        expect(response.status).toBe(200)
+        expect($.html()).toContain('Have you changed your name?')
 
-          // Check that the error summary is not visible
-          const $errorSummary = $('[data-module="govuk-error-summary"]')
-          expect($errorSummary.length).toBeFalsy()
-          done(err)
-        })
+        // Check that the error summary is not visible
+        const $errorSummary = $('[data-module="govuk-error-summary"]')
+        expect($errorSummary.length).toBeFalsy()
       })
-      it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post('have-you-changed-your-name', (err, res) => {
-          const $ = cheerio.load(res.body)
+      it('should show errors if form is submitted with no input', async () => {
+        const response = await fetchPath('have-you-changed-your-name', { method: 'POST' })
+        const body = await response.text()
+        const $ = cheerio.load(body)
 
-          // Check the page responded correctly
-          expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('Have you changed your name?')
+        // Check the page responded correctly
+        expect(response.status).toBe(200)
+        expect($.html()).toContain('Have you changed your name?')
 
-          // Check the title has an error
-          expect($('title').text()).toContain('Error:')
+        // Check the title has an error
+        expect($('title').text()).toContain('Error:')
 
-          // Check that the error summary is visible
-          const $errorSummary = $('[data-module="govuk-error-summary"]')
-          expect($errorSummary.length).toBeTruthy()
-          done(err)
-        })
+        // Check that the error summary is visible
+        const $errorSummary = $('[data-module="govuk-error-summary"]')
+        expect($errorSummary.length).toBeTruthy()
       })
     })
 
     describe('passport-details', () => {
-      it('should not show errors if submit with no input', (done) => {
-        requestPath.get('passport-details', (err, res) => {
-          const $ = cheerio.load(res.body)
+      it('should not show errors if submit with no input', async () => {
+        const response = await fetchPath('passport-details')
+        const body = await response.text()
+        const $ = cheerio.load(body)
 
-          // Check the page responded correctly
-          expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('Passport details')
+        // Check the page responded correctly
+        expect(response.status).toBe(200)
+        expect($.html()).toContain('Passport details')
 
-          // Check that the error summary is not visible
-          const $errorSummary = $('[data-module="govuk-error-summary"]')
-          expect($errorSummary.length).toBeFalsy()
-          done(err)
-        })
+        // Check that the error summary is not visible
+        const $errorSummary = $('[data-module="govuk-error-summary"]')
+        expect($errorSummary.length).toBeFalsy()
       })
-      it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post('passport-details', (err, res) => {
-          const $ = cheerio.load(res.body)
+      it('should show errors if form is submitted with no input', async () => {
+        const response = await fetchPath('passport-details', { method: 'POST' })
+        const body = await response.text()
+        const $ = cheerio.load(body)
 
-          // Check the page responded correctly
-          expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('Passport details')
+        // Check the page responded correctly
+        expect(response.status).toBe(200)
+        expect($.html()).toContain('Passport details')
 
-          // Check the title has an error
-          expect($('title').text()).toContain('Error:')
+        // Check the title has an error
+        expect($('title').text()).toContain('Error:')
 
-          // Check that the error summary is visible
-          const $errorSummary = $('[data-module="govuk-error-summary"]')
-          expect($errorSummary.length).toBeTruthy()
-          done(err)
-        })
+        // Check that the error summary is visible
+        const $errorSummary = $('[data-module="govuk-error-summary"]')
+        expect($errorSummary.length).toBeTruthy()
       })
     })
 
     describe('update-your-account-details', () => {
-      it('should not show errors if submit with no input', (done) => {
-        requestPath.get('update-your-account-details', (err, res) => {
-          const $ = cheerio.load(res.body)
+      it('should not show errors if submit with no input', async () => {
+        const response = await fetchPath('update-your-account-details')
+        const body = await response.text()
+        const $ = cheerio.load(body)
 
-          // Check the page responded correctly
-          expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('Update your account details')
+        // Check the page responded correctly
+        expect(response.status).toBe(200)
+        expect($.html()).toContain('Update your account details')
 
-          // Check that the error summary is not visible
-          const $errorSummary = $('[data-module="govuk-error-summary"]')
-          expect($errorSummary.length).toBeFalsy()
-          done(err)
-        })
+        // Check that the error summary is not visible
+        const $errorSummary = $('[data-module="govuk-error-summary"]')
+        expect($errorSummary.length).toBeFalsy()
       })
-      it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post('update-your-account-details', (err, res) => {
-          const $ = cheerio.load(res.body)
+      it('should show errors if form is submitted with no input', async () => {
+        const response = await fetchPath('update-your-account-details', { method: 'POST' })
+        const body = await response.text()
+        const $ = cheerio.load(body)
 
-          // Check the page responded correctly
-          expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('Update your account details')
+        // Check the page responded correctly
+        expect(response.status).toBe(200)
+        expect($.html()).toContain('Update your account details')
 
-          // Check the title has an error
-          expect($('title').text()).toContain('Error:')
+        // Check the title has an error
+        expect($('title').text()).toContain('Error:')
 
-          // Check that the error summary is visible
-          const $errorSummary = $('[data-module="govuk-error-summary"]')
-          expect($errorSummary.length).toBeTruthy()
-          done(err)
-        })
+        // Check that the error summary is visible
+        const $errorSummary = $('[data-module="govuk-error-summary"]')
+        expect($errorSummary.length).toBeTruthy()
       })
     })
 
     describe('upload-your-photo', () => {
-      it('should not show errors if submit with no input', (done) => {
-        requestPath.get('upload-your-photo', (err, res) => {
-          const $ = cheerio.load(res.body)
+      it('should not show errors if submit with no input', async () => {
+        const response = await fetchPath('upload-your-photo')
+        const body = await response.text()
+        const $ = cheerio.load(body)
 
-          // Check the page responded correctly
-          expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('Upload your photo')
+        // Check the page responded correctly
+        expect(response.status).toBe(200)
+        expect($.html()).toContain('Upload your photo')
 
-          // Check that the error summary is not visible
-          const $errorSummary = $('[data-module="govuk-error-summary"]')
-          expect($errorSummary.length).toBeFalsy()
-          done(err)
-        })
+        // Check that the error summary is not visible
+        const $errorSummary = $('[data-module="govuk-error-summary"]')
+        expect($errorSummary.length).toBeFalsy()
       })
-      it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post('upload-your-photo', (err, res) => {
-          const $ = cheerio.load(res.body)
+      it('should show errors if form is submitted with no input', async () => {
+        const response = await fetchPath('upload-your-photo', { method: 'POST' })
+        const body = await response.text()
+        const $ = cheerio.load(body)
 
-          // Check the page responded correctly
-          expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('Upload your photo')
+        // Check the page responded correctly
+        expect(response.status).toBe(200)
+        expect($.html()).toContain('Upload your photo')
 
-          // Check the title has an error
-          expect($('title').text()).toContain('Error:')
+        // Check the title has an error
+        expect($('title').text()).toContain('Error:')
 
-          // Check that the error summary is visible
-          const $errorSummary = $('[data-module="govuk-error-summary"]')
-          expect($errorSummary.length).toBeTruthy()
-          done(err)
-        })
+        // Check that the error summary is visible
+        const $errorSummary = $('[data-module="govuk-error-summary"]')
+        expect($errorSummary.length).toBeTruthy()
       })
     })
 
     describe('how-do-you-want-to-sign-in', () => {
-      it('should not show errors if submit with no input', (done) => {
-        requestPath.get('how-do-you-want-to-sign-in', (err, res) => {
-          const $ = cheerio.load(res.body)
+      it('should not show errors if submit with no input', async () => {
+        const response = await fetchPath('how-do-you-want-to-sign-in')
+        const body = await response.text()
+        const $ = cheerio.load(body)
 
-          // Check the page responded correctly
-          expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('How do you want to sign in?')
+        // Check the page responded correctly
+        expect(response.status).toBe(200)
+        expect($.html()).toContain('How do you want to sign in?')
 
-          // Check that the error summary is not visible
-          const $errorSummary = $('[data-module="govuk-error-summary"]')
-          expect($errorSummary.length).toBeFalsy()
-          done(err)
-        })
+        // Check that the error summary is not visible
+        const $errorSummary = $('[data-module="govuk-error-summary"]')
+        expect($errorSummary.length).toBeFalsy()
       })
-      it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post('how-do-you-want-to-sign-in', (err, res) => {
-          const $ = cheerio.load(res.body)
+      it('should show errors if form is submitted with no input', async () => {
+        const response = await fetchPath('how-do-you-want-to-sign-in', { method: 'POST' })
+        const body = await response.text()
+        const $ = cheerio.load(body)
 
-          // Check the page responded correctly
-          expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('How do you want to sign in?')
+        // Check the page responded correctly
+        expect(response.status).toBe(200)
+        expect($.html()).toContain('How do you want to sign in?')
 
-          // Check the title has an error
-          expect($('title').text()).toContain('Error:')
+        // Check the title has an error
+        expect($('title').text()).toContain('Error:')
 
-          // Check that the error summary is visible
-          const $errorSummary = $('[data-module="govuk-error-summary"]')
-          expect($errorSummary.length).toBeTruthy()
-          done(err)
-        })
+        // Check that the error summary is visible
+        const $errorSummary = $('[data-module="govuk-error-summary"]')
+        expect($errorSummary.length).toBeTruthy()
       })
     })
 
     describe('what-is-your-nationality', () => {
-      it('should not show errors if submit with no input', (done) => {
-        requestPath.get('what-is-your-nationality', (err, res) => {
-          const $ = cheerio.load(res.body)
+      it('should not show errors if submit with no input', async () => {
+        const response = await fetchPath('what-is-your-nationality')
+        const body = await response.text()
+        const $ = cheerio.load(body)
 
-          // Check the page responded correctly
-          expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('What is your nationality?')
+        // Check the page responded correctly
+        expect(response.status).toBe(200)
+        expect($.html()).toContain('What is your nationality?')
 
-          // Check that the error summary is not visible
-          const $errorSummary = $('[data-module="govuk-error-summary"]')
-          expect($errorSummary.length).toBeFalsy()
-          done(err)
-        })
+        // Check that the error summary is not visible
+        const $errorSummary = $('[data-module="govuk-error-summary"]')
+        expect($errorSummary.length).toBeFalsy()
       })
-      it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post('what-is-your-nationality', (err, res) => {
-          const $ = cheerio.load(res.body)
+      it('should show errors if form is submitted with no input', async () => {
+        const response = await fetchPath('what-is-your-nationality', { method: 'POST' })
+        const body = await response.text()
+        const $ = cheerio.load(body)
 
-          // Check the page responded correctly
-          expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('What is your nationality?')
+        // Check the page responded correctly
+        expect(response.status).toBe(200)
+        expect($.html()).toContain('What is your nationality?')
 
-          // Check the title has an error
-          expect($('title').text()).toContain('Error:')
+        // Check the title has an error
+        expect($('title').text()).toContain('Error:')
 
-          // Check that the error summary is visible
-          const $errorSummary = $('[data-module="govuk-error-summary"]')
-          expect($errorSummary.length).toBeTruthy()
-          done(err)
-        })
+        // Check that the error summary is visible
+        const $errorSummary = $('[data-module="govuk-error-summary"]')
+        expect($errorSummary.length).toBeTruthy()
       })
     })
 
     describe('what-is-your-address', () => {
-      it('should not show errors if submit with no input', (done) => {
-        requestPath.get('what-is-your-address', (err, res) => {
-          const $ = cheerio.load(res.body)
+      it('should not show errors if submit with no input', async () => {
+        const response = await fetchPath('what-is-your-address')
+        const body = await response.text()
+        const $ = cheerio.load(body)
 
-          // Check the page responded correctly
-          expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('What is your address?')
+        // Check the page responded correctly
+        expect(response.status).toBe(200)
+        expect($.html()).toContain('What is your address?')
 
-          // Check that the error summary is not visible
-          const $errorSummary = $('[data-module="govuk-error-summary"]')
-          expect($errorSummary.length).toBeFalsy()
-          done(err)
-        })
+        // Check that the error summary is not visible
+        const $errorSummary = $('[data-module="govuk-error-summary"]')
+        expect($errorSummary.length).toBeFalsy()
       })
-      it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post('what-is-your-address', (err, res) => {
-          const $ = cheerio.load(res.body)
+      it('should show errors if form is submitted with no input', async () => {
+        const response = await fetchPath('what-is-your-address', { method: 'POST' })
+        const body = await response.text()
+        const $ = cheerio.load(body)
 
-          // Check the page responded correctly
-          expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('What is your address?')
+        // Check the page responded correctly
+        expect(response.status).toBe(200)
+        expect($.html()).toContain('What is your address?')
 
-          // Check the title has an error
-          expect($('title').text()).toContain('Error:')
+        // Check the title has an error
+        expect($('title').text()).toContain('Error:')
 
-          // Check that the error summary is visible
-          const $errorSummary = $('[data-module="govuk-error-summary"]')
-          expect($errorSummary.length).toBeTruthy()
-          done(err)
-        })
+        // Check that the error summary is visible
+        const $errorSummary = $('[data-module="govuk-error-summary"]')
+        expect($errorSummary.length).toBeTruthy()
       })
     })
 
     describe('what-is-your-postcode', () => {
-      it('should not show errors if submit with no input', (done) => {
-        requestPath.get('what-is-your-postcode', (err, res) => {
-          const $ = cheerio.load(res.body)
+      it('should not show errors if submit with no input', async () => {
+        const response = await fetchPath('what-is-your-postcode')
+        const body = await response.text()
+        const $ = cheerio.load(body)
 
-          // Check the page responded correctly
-          expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('What is your home postcode?')
+        // Check the page responded correctly
+        expect(response.status).toBe(200)
+        expect($.html()).toContain('What is your home postcode?')
 
-          // Check that the error summary is not visible
-          const $errorSummary = $('[data-module="govuk-error-summary"]')
-          expect($errorSummary.length).toBeFalsy()
-          done(err)
-        })
+        // Check that the error summary is not visible
+        const $errorSummary = $('[data-module="govuk-error-summary"]')
+        expect($errorSummary.length).toBeFalsy()
       })
-      it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post('what-is-your-postcode', (err, res) => {
-          const $ = cheerio.load(res.body)
+      it('should show errors if form is submitted with no input', async () => {
+        const response = await fetchPath('what-is-your-postcode', { method: 'POST' })
+        const body = await response.text()
+        const $ = cheerio.load(body)
 
-          // Check the page responded correctly
-          expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('What is your home postcode?')
+        // Check the page responded correctly
+        expect(response.status).toBe(200)
+        expect($.html()).toContain('What is your home postcode?')
 
-          // Check the title has an error
-          expect($('title').text()).toContain('Error:')
+        // Check the title has an error
+        expect($('title').text()).toContain('Error:')
 
-          // Check that the error summary is visible
-          const $errorSummary = $('[data-module="govuk-error-summary"]')
-          expect($errorSummary.length).toBeTruthy()
-          done(err)
-        })
+        // Check that the error summary is visible
+        const $errorSummary = $('[data-module="govuk-error-summary"]')
+        expect($errorSummary.length).toBeTruthy()
       })
     })
 
     describe('search', () => {
-      it('should show most wanted results by default', (done) => {
-        requestPath.get('search', (err, res) => {
-          const $ = cheerio.load(res.body)
-          // Check the results are correct
-          expect($.html()).toContain('822,411 results')
-          done(err)
-        })
+      it('should show most wanted results by default', async () => {
+        const response = await fetchPath('search')
+        const body = await response.text()
+        const $ = cheerio.load(body)
+        // Check the results are correct
+        expect($.html()).toContain('822,411 results')
       })
-      it('should show sorted results when selected', (done) => {
-        requestPath.get('search?order=updated-newest', (err, res) => {
-          const $ = cheerio.load(res.body)
-          // Check the results are correct
-          expect($.html()).toContain('142,218 results')
-          done(err)
-        })
+      it('should show sorted results when selected', async () => {
+        const response = await fetchPath('search?order=updated-newest')
+        const body = await response.text()
+        const $ = cheerio.load(body)
+        // Check the results are correct
+        expect($.html()).toContain('142,218 results')
       })
-      it('should show organisation results when selected', (done) => {
-        requestPath.get('search?order=updated-newest&organisation=hmrc', (err, res) => {
-          const $ = cheerio.load(res.body)
-          // Check the results are correct
-          expect($.html()).toContain('421,182 results')
-          done(err)
-        })
+      it('should show organisation results when selected', async () => {
+        const response = await fetchPath('search?order=updated-newest&organisation=hmrc')
+        const body = await response.text()
+        const $ = cheerio.load(body)
+        // Check the results are correct
+        expect($.html()).toContain('421,182 results')
       })
     })
 
     describe('what-was-the-last-country-you-visited', () => {
-      it('should not show errors if submit with no input', (done) => {
-        requestPath.get('what-was-the-last-country-you-visited', (err, res) => {
-          const $ = cheerio.load(res.body)
+      it('should not show errors if submit with no input', async () => {
+        const response = await fetchPath('what-was-the-last-country-you-visited')
+        const body = await response.text()
+        const $ = cheerio.load(body)
 
-          // Check the page responded correctly
-          expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('What was the last country you visited?')
+        // Check the page responded correctly
+        expect(response.status).toBe(200)
+        expect($.html()).toContain('What was the last country you visited?')
 
-          // Check that the error summary is not visible
-          const $errorSummary = $('[data-module="govuk-error-summary"]')
-          expect($errorSummary.length).toBeFalsy()
-          done(err)
-        })
+        // Check that the error summary is not visible
+        const $errorSummary = $('[data-module="govuk-error-summary"]')
+        expect($errorSummary.length).toBeFalsy()
       })
-      it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post('what-was-the-last-country-you-visited', (err, res) => {
-          const $ = cheerio.load(res.body)
+      it('should show errors if form is submitted with no input', async () => {
+        const response = await fetchPath('what-was-the-last-country-you-visited', { method: 'POST' })
+        const body = await response.text()
+        const $ = cheerio.load(body)
 
-          // Check the page responded correctly
-          expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('What was the last country you visited?')
+        // Check the page responded correctly
+        expect(response.status).toBe(200)
+        expect($.html()).toContain('What was the last country you visited?')
 
-          // Check the title has an error
-          expect($('title').text()).toContain('Error:')
+        // Check the title has an error
+        expect($('title').text()).toContain('Error:')
 
-          // Check that the error summary is visible
-          const $errorSummary = $('[data-module="govuk-error-summary"]')
-          expect($errorSummary.length).toBeTruthy()
-          done(err)
-        })
+        // Check that the error summary is visible
+        const $errorSummary = $('[data-module="govuk-error-summary"]')
+        expect($errorSummary.length).toBeTruthy()
       })
     })
   })
