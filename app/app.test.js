@@ -3,7 +3,7 @@ const cheerio = require('cheerio')
 
 const lib = require('../lib/file-helper')
 
-const configPaths = require('../config/paths.json')
+const configPaths = require('../config/paths.js')
 const PORT = configPaths.ports.test
 
 const expectedPages = [

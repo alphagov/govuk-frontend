@@ -3,7 +3,7 @@ const path = require('path')
 const { renderSass } = require('../../../lib/jest-helpers')
 
 const lib = require('../../../lib/file-helper')
-const configPaths = require('../../../config/paths.json')
+const configPaths = require('../../../config/paths.js')
 
 describe('Individual components', () => {
   it('should compile individual scss files without throwing exceptions', done => {

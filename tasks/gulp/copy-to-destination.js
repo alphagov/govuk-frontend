@@ -1,6 +1,6 @@
 const nunjucks = require('nunjucks')
 const gulp = require('gulp')
-const configPaths = require('../../config/paths.json')
+const configPaths = require('../../config/paths.js')
 const postcss = require('gulp-postcss')
 const autoprefixer = require('autoprefixer')
 const taskArguments = require('../task-arguments')

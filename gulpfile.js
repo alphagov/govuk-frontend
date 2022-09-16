@@ -1,4 +1,4 @@
-const paths = require('./config/paths.json')
+const paths = require('./config/paths.js')
 const gulp = require('gulp')
 const taskListing = require('gulp-task-listing')
 const taskArguments = require('./tasks/task-arguments')

@@ -1,5 +1,5 @@
 const nodemon = require('nodemon')
-const paths = require('../config/paths.json')
+const paths = require('../config/paths.js')
 
 // Nodemon task --------------------------
 // Restarts node app for changes affecting

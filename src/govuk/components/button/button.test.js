@@ -1,4 +1,4 @@
-const configPaths = require('../../../../config/paths.json')
+const configPaths = require('../../../../config/paths.js')
 const PORT = configPaths.ports.test
 
 const baseUrl = 'http://localhost:' + PORT

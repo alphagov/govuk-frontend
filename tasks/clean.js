@@ -1,4 +1,4 @@
-const paths = require('../config/paths.json')
+const paths = require('../config/paths.js')
 const del = require('del')
 
 function cleanDist () {

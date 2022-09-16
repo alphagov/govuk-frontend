@@ -1,7 +1,7 @@
 const request = require('request')
 const cheerio = require('cheerio')
 
-const configPaths = require('../config/paths.json')
+const configPaths = require('../config/paths.js')
 const PORT = configPaths.ports.test
 
 const expectedPages = [

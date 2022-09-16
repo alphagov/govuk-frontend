@@ -3,7 +3,7 @@ const { componentNameToJavaScriptModuleName } = require('../../lib/helper-functi
 const path = require('path')
 
 const gulp = require('gulp')
-const configPaths = require('../../config/paths.json')
+const configPaths = require('../../config/paths.js')
 const sass = require('gulp-sass')(require('node-sass'))
 const plumber = require('gulp-plumber')
 const postcss = require('gulp-postcss')

@@ -1,6 +1,6 @@
 const { renderSass } = require('../../../lib/jest-helpers')
 
-const configPaths = require('../../../config/paths.json')
+const configPaths = require('../../../config/paths.js')
 
 const sassConfig = {
   includePaths: [configPaths.src, 'node_modules/'],

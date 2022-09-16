@@ -75,7 +75,6 @@
     "postcss-scss": "^4.0.3",
     "puppeteer": "^9.1.1",
     "recursive-readdir": "^2.2.2",
-    "request": "^2.88.2",
     "sass-color-helpers": "^2.1.1",
     "sassdoc": "^2.7.4",
     "shuffle-seed": "^1.1.6",
@@ -83,6 +82,7 @@
     "stylelint": "^14.6.1",
     "stylelint-config-gds": "^0.2.0",
     "stylelint-order": "^5.0.0",
+    "undici": "^5.10.0",
     "yargs": "^15.4.1"
   },
   "optionalDependencies": {
