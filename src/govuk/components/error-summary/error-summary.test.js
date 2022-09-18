@@ -84,7 +84,9 @@ describe('Error Summary', () => {
         $ => $.getBoundingClientRect().top
       )
 
-      expect(legendOrLabelOffsetFromTop).toEqual(0)
+      // Allow for high DPI displays (device pixel ratio)
+      expect(legendOrLabelOffsetFromTop).toBeGreaterThanOrEqual(0)
+      expect(legendOrLabelOffsetFromTop).toBeLessThan(1)
     })
 
     it('does not include a hash in the URL', async () => {
