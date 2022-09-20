@@ -233,4 +233,13 @@ examples:
   hidden: true
   data:
     text: Button!
+- name: no data-prevent-double-click
+  hidden: true
+  data:
+    text: Submit
+- name: "don't prevent double click"
+  hidden: true
+  data:
+    text: Submit
+    preventDoubleClick: false
 
