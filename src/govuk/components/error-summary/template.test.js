@@ -154,5 +154,19 @@ describe('Error-summary', () => {
 
       expect(errorItemText).toEqual('Descriptive link to the &lt;b&gt;question&lt;/b&gt; with an error')
     })
+
+    it('allows to disable autofocus', () => {
+      const $ = render('error-summary', examples['autofocus disabled'])
+
+      const $component = $('.govuk-error-summary')
+      expect($component.attr('data-disable-auto-focus')).toBe('true')
+    })
+
+    it('allows to explicitely enable autofocus', () => {
+      const $ = render('error-summary', examples['autofocus explicitly enabled'])
+
+      const $component = $('.govuk-error-summary')
+      expect($component.attr('data-disable-auto-focus')).toBe('false')
+    })
   })
 })

@@ -196,3 +196,8 @@ examples:
   data:
     titleText: There is a problem
     disableAutoFocus: true
+- name: autofocus explicitly enabled
+  hidden: true
+  data:
+    titleText: There is a problem
+    disableAutoFocus: false  
