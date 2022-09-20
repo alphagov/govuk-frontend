@@ -17,6 +17,13 @@ jobs:
           key: npm-cache-${{ hashFiles('package-lock.json') }}
           path: node_modules
 
+      - name: Cache tasks
+        uses: actions/cache@v3
+        with:
+          key: task-cache
+          path: |
+            .cache/jest
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -27,7 +34,16 @@ jobs:
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm ci
 
-      - name: Run tests
-        run: npx percy exec -- npm test
+      - name: Build assets
+        run: npm run build:assets
+
+      - name: Run test projects
+        run: |
+          npx jest --color --selectProjects "Nunjucks macro tests"
+          npx jest --color --selectProjects "JavaScript unit tests"
+          npx jest --color --selectProjects "JavaScript behaviour tests"
+
+      - name: Send screenshots to Percy
+        run: npx percy exec -- jest --color --selectProjects "JavaScript component tests"
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}

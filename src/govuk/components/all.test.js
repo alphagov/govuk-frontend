@@ -1,3 +1,9 @@
+/**
+ * @jest-environment puppeteer
+ */
+
+const { fetch } = require('undici')
+const { WebSocket } = require('ws')
 require('html-validate/jest')
 
 const { allComponents, getComponentData } = require('../../../lib/file-helper')
@@ -7,8 +13,6 @@ const configPaths = require('../../../config/paths.js')
 
 const PORT = configPaths.ports.test
 const baseUrl = 'http://localhost:' + PORT
-
-const percySnapshot = require('@percy/puppeteer')
 
 // We can't use the render function from jest-helpers, because we need control
 // over the nunjucks environment.
@@ -37,6 +41,15 @@ it('_all.scss renders to CSS without errors', () => {
 })
 
 describe.each(allComponents)('%s', (component) => {
+  let percySnapshot
+
+  beforeAll(() => {
+    // Polyfill fetch() detection, upload via WebSocket()
+    // Fixes Percy running in a non-browser environment
+    global.window = { fetch, WebSocket }
+    percySnapshot = require('@percy/puppeteer')
+  })
+
   it(`${component}.scss renders to CSS without errors`, () => {
     return renderSass({
       file: `${configPaths.src}/components/${component}/_${component}.scss`
