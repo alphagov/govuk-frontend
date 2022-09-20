@@ -179,7 +179,7 @@ describe('I18n', () => {
         const locale = 'ar'
         const localeNumbers = [105, 125]
 
-        const i18n = new I18n({}, { locale: locale })
+        const i18n = new I18n({}, { locale })
         const intl = new Intl.PluralRules(locale)
 
         testNumbers.concat(localeNumbers).forEach(num => {
@@ -191,7 +191,7 @@ describe('I18n', () => {
         const locale = 'zh'
         const localeNumbers = []
 
-        const i18n = new I18n({}, { locale: locale })
+        const i18n = new I18n({}, { locale })
         const intl = new Intl.PluralRules(locale)
 
         testNumbers.concat(localeNumbers).forEach(num => {
@@ -203,7 +203,7 @@ describe('I18n', () => {
         const locale = 'fr'
         const localeNumbers = []
 
-        const i18n = new I18n({}, { locale: locale })
+        const i18n = new I18n({}, { locale })
         const intl = new Intl.PluralRules(locale)
 
         testNumbers.concat(localeNumbers).forEach(num => {
@@ -215,7 +215,7 @@ describe('I18n', () => {
         const locale = 'de'
         const localeNumbers = []
 
-        const i18n = new I18n({}, { locale: locale })
+        const i18n = new I18n({}, { locale })
         const intl = new Intl.PluralRules(locale)
 
         testNumbers.concat(localeNumbers).forEach(num => {
@@ -227,7 +227,7 @@ describe('I18n', () => {
         const locale = 'ga'
         const localeNumbers = [9]
 
-        const i18n = new I18n({}, { locale: locale })
+        const i18n = new I18n({}, { locale })
         const intl = new Intl.PluralRules(locale)
 
         testNumbers.concat(localeNumbers).forEach(num => {
@@ -239,7 +239,7 @@ describe('I18n', () => {
         const locale = 'ru'
         const localeNumbers = [3, 13, 101]
 
-        const i18n = new I18n({}, { locale: locale })
+        const i18n = new I18n({}, { locale })
         const intl = new Intl.PluralRules(locale)
 
         testNumbers.concat(localeNumbers).forEach(num => {
@@ -251,7 +251,7 @@ describe('I18n', () => {
         const locale = 'gd'
         const localeNumbers = [15]
 
-        const i18n = new I18n({}, { locale: locale })
+        const i18n = new I18n({}, { locale })
         const intl = new Intl.PluralRules(locale)
 
         testNumbers.concat(localeNumbers).forEach(num => {
@@ -263,7 +263,7 @@ describe('I18n', () => {
         const locale = 'es'
         const localeNumbers = [1000000, 2000000]
 
-        const i18n = new I18n({}, { locale: locale })
+        const i18n = new I18n({}, { locale })
         const intl = new Intl.PluralRules(locale)
 
         testNumbers.concat(localeNumbers).forEach(num => {
@@ -275,7 +275,7 @@ describe('I18n', () => {
         const locale = 'cy'
         const localeNumbers = [3, 6]
 
-        const i18n = new I18n({}, { locale: locale })
+        const i18n = new I18n({}, { locale })
         const intl = new Intl.PluralRules(locale)
 
         testNumbers.concat(localeNumbers).forEach(num => {
