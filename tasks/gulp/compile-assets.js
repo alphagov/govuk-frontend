@@ -14,6 +14,7 @@ const gulpif = require('gulp-if')
 const uglify = require('gulp-uglify')
 const eol = require('gulp-eol')
 const glob = require('glob')
+const merge = require('merge-stream')
 const rename = require('gulp-rename')
 const cssnano = require('cssnano')
 const postcsspseudoclasses = require('postcss-pseudo-classes')({
@@ -50,10 +51,10 @@ const errorHandler = function (error) {
   this.emit('end')
 }
 
-function compileStyles (done) {
+function compileStyles () {
   const compileStylesheet = isDist ? configPaths.src + 'all.scss' : configPaths.app + 'assets/scss/app.scss'
 
-  gulp.src(compileStylesheet)
+  return gulp.src(compileStylesheet)
     .pipe(plumber(errorHandler))
     .pipe(sass())
     // minify css add vendor prefixes and normalize to compiled css
@@ -74,14 +75,12 @@ function compileStyles (done) {
       })
     ))
     .pipe(gulp.dest(taskArguments.destination + '/'))
-
-  done()
 }
 
-function compileOldIE (done) {
+function compileOldIE () {
   const compileOldIeStylesheet = isDist ? configPaths.src + 'all-ie8.scss' : configPaths.app + 'assets/scss/app-ie8.scss'
 
-  gulp.src(compileOldIeStylesheet)
+  return gulp.src(compileOldIeStylesheet)
     .pipe(plumber(errorHandler))
     .pipe(sass())
     // minify css add vendor prefixes and normalize to compiled css
@@ -113,12 +112,10 @@ function compileOldIE (done) {
       })
     ))
     .pipe(gulp.dest(taskArguments.destination + '/'))
-
-  done()
 }
 
-function compileLegacy (done) {
-  gulp.src(path.join(configPaths.app, 'assets/scss/app-legacy.scss'))
+function compileLegacy () {
+  return gulp.src(path.join(configPaths.app, 'assets/scss/app-legacy.scss'))
     .pipe(plumber(errorHandler))
     .pipe(sass({
       includePaths: ['node_modules/govuk_frontend_toolkit/stylesheets', 'node_modules']
@@ -130,12 +127,10 @@ function compileLegacy (done) {
       postcsspseudoclasses
     ]))
     .pipe(gulp.dest(taskArguments.destination + '/'))
-
-  done()
 }
 
-function compileLegacyIE (done) {
-  gulp.src(path.join(configPaths.app, 'assets/scss/app-legacy-ie8.scss'))
+function compileLegacyIE () {
+  return gulp.src(path.join(configPaths.app, 'assets/scss/app-legacy-ie8.scss'))
     .pipe(plumber(errorHandler))
     .pipe(sass({
       includePaths: ['node_modules/govuk_frontend_toolkit/stylesheets', 'node_modules']
@@ -151,14 +146,12 @@ function compileLegacyIE (done) {
       })
     ]))
     .pipe(gulp.dest(taskArguments.destination + '/'))
-
-  done()
 }
 
-function compileFullPageStyles (done) {
+function compileFullPageStyles () {
   const compileFullPageExampleStylesheets = configPaths.fullPageExamples + '**/styles.scss'
 
-  gulp.src(compileFullPageExampleStylesheets)
+  return gulp.src(compileFullPageExampleStylesheets)
     .pipe(plumber(errorHandler))
     .pipe(sass())
     .pipe(rename(function (location) {
@@ -166,34 +159,33 @@ function compileFullPageStyles (done) {
       location.dirname = ''
     }))
     .pipe(gulp.dest(taskArguments.destination + '/full-page-examples/'))
-
-  done()
 }
 
 gulp.task('scss:compile', function (done) {
   // Default tasks if compiling for dist
-  let tasks = gulp.parallel(compileStyles, compileOldIE)
+  const tasks = [compileStyles(), compileOldIE()]
 
-  if (isPublic) {
-    tasks = gulp.parallel(compileStyles, compileOldIE, compileLegacy, compileLegacyIE, compileFullPageStyles)
-  } else if (!isDist) {
-    tasks = gulp.parallel(compileStyles, compileOldIE, compileLegacy, compileLegacyIE)
+  if (isPublic || !isDist) {
+    tasks.push(compileLegacy(), compileLegacyIE())
+
+    if (isPublic) {
+      tasks.push(compileFullPageStyles())
+    }
   }
 
-  tasks()
-  done()
+  return Promise.all(tasks)
 })
 
 // Compile js task for preview ----------
 // --------------------------------------
-gulp.task('js:compile', (done) => {
+gulp.task('js:compile', () => {
   // For dist/ folder we only want compiled 'all.js'
   const fileLookup = isDist ? configPaths.src + 'all.mjs' : configPaths.src + '**/!(*.test).mjs'
 
   // Perform a synchronous search and return an array of matching file names
   const srcFiles = glob.sync(fileLookup)
 
-  srcFiles.forEach(function (file) {
+  return merge(srcFiles.map(function (file) {
     // This is combined with destinationPath in gulp.dest()
     // so the files are output to the correct folders
     const newDirectoryPath = path.dirname(file).replace('src/govuk', '')
@@ -228,6 +220,5 @@ gulp.task('js:compile', (done) => {
       }))
       .pipe(eol())
       .pipe(gulp.dest(destinationPath() + newDirectoryPath))
-  })
-  done()
+  }))
 })

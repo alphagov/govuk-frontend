@@ -1,8 +1,8 @@
 const sassdoc = require('sassdoc')
 const paths = require('../config/paths.js')
 
-function buildSassdocs (cb) {
-  sassdoc([paths.src + '**/**/*.scss', `!${paths.src}/vendor/*`], {
+function buildSassdocs () {
+  return sassdoc([paths.src + '**/**/*.scss', `!${paths.src}/vendor/*`], {
     dest: paths.sassdoc,
     groups: {
       'components/button': 'Components / Button',
@@ -28,15 +28,7 @@ function buildSassdocs (cb) {
       objects: 'Objects',
       'objects/layout': 'Objects / Layout'
     }
-  }).then(() => {
-    console.log('Sassdoc built.')
-  }, err => {
-    throw err
   })
-
-  // Required for Gulp task to complete successfully.
-  // Can be removed once this no longer runs via Gulp.
-  cb()
 }
 
 module.exports = buildSassdocs
