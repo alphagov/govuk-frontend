@@ -20,6 +20,7 @@ import Tabs from './components/tabs/tabs.mjs'
  * @param {Object} [config]
  * @param {HTMLElement} [config.scope=document] - scope to query for components
  * @param {Object} [config.accordion] - accordion config
+ * @param {Object} [config.button] - button config
  * @param {Object} [config.notificationBanner] - notification banner config
  */
 function initAll (config) {
@@ -36,7 +37,7 @@ function initAll (config) {
 
   var $buttons = $scope.querySelectorAll('[data-module="govuk-button"]')
   nodeListForEach($buttons, function ($button) {
-    new Button($button).init()
+    new Button($button, config.button).init()
   })
 
   var $characterCounts = $scope.querySelectorAll('[data-module="govuk-character-count"]')
