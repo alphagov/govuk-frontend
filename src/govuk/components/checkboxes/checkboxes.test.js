@@ -1,3 +1,7 @@
+/**
+ * @jest-environment puppeteer
+ */
+
 const cheerio = require('cheerio')
 
 const configPaths = require('../../../../config/paths.js')
