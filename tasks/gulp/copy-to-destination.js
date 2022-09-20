@@ -5,8 +5,8 @@ const postcss = require('gulp-postcss')
 const autoprefixer = require('autoprefixer')
 const taskArguments = require('../task-arguments')
 const filter = require('gulp-filter')
-const fs = require('fs')
-const yamlToJson = require('js-yaml')
+const { readFile } = require('fs/promises')
+const yaml = require('js-yaml')
 const path = require('path')
 const map = require('map-stream')
 const rename = require('gulp-rename')
@@ -109,19 +109,20 @@ function generateMacroOptions (file) {
   }
 }
 
-function convertYamlToJson (file) {
+/**
+ * Parse YAML file content as JavaScript
+ *
+ * @param {import('vinyl')} file - Component data ${component}.yaml
+ * @returns {{ examples?: unknown[]; params?: unknown[] }} Component options
+ */
+async function convertYamlToJson (file) {
   const componentName = path.dirname(file.path).split(path.sep).slice(-1).toString()
   const componentPath = path.join(configPaths.components, componentName, `${componentName}.yaml`)
-  let yaml
 
   try {
-    yaml = fs.readFileSync(componentPath, { encoding: 'utf8', json: true })
+    return yaml.load(await readFile(componentPath, 'utf8'), { json: true })
   } catch (e) {
     console.error('ENOENT: no such file or directory: ', componentPath)
-  }
-
-  if (yaml) {
-    return yamlToJson.safeLoad(yaml)
   }
 
   return false
