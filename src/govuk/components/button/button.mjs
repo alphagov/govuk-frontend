@@ -4,7 +4,19 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
 var KEY_SPACE = 32
 var DEBOUNCE_TIMEOUT_IN_SECONDS = 1
 
-function Button ($module) {
+/**
+ * JavaScript enhancements for the Button component
+ *
+ * @class
+ * @param {HTMLElement} $module - The element this component controls
+ * @param {Object} config
+ * @param {Boolean} [config.preventDoubleClick=false] - Whether the button should prevent double clicks
+ */
+function Button ($module, config) {
+  if (!$module) {
+    return this
+  }
+
   this.$module = $module
   this.debounceFormSubmitTimer = null
 }
@@ -13,6 +25,10 @@ function Button ($module) {
  * Initialise component
  */
 Button.prototype.init = function () {
+  if (!this.$module) {
+    return
+  }
+
   this.$module.addEventListener('keydown', this.handleKeyDown)
   this.$module.addEventListener('click', this.debounce)
 }

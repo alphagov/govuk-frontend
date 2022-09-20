@@ -8,6 +8,23 @@ const PORT = configPaths.ports.test
 const baseUrl = 'http://localhost:' + PORT
 
 describe('/components/button', () => {
+  describe('mis-instantiation', () => {
+    it('does not prevent further JavaScript from running', async () => {
+      await page.goto(`${baseUrl}/tests/boilerplate`, { waitUntil: 'load' })
+
+      const result = await page.evaluate(() => {
+        // `undefined` simulates the element being missing,
+        // from an unchecked `document.querySelector` for example
+        new window.GOVUKFrontend.Button(undefined).init()
+
+        // If our component initialisation breaks, this won't run
+        return true
+      })
+
+      expect(result).toBe(true)
+    })
+  })
+
   describe('/components/button/link', () => {
     it('triggers the click event when the space key is pressed', async () => {
       await page.goto(baseUrl + '/components/button/link/preview', { waitUntil: 'load' })
