@@ -11,9 +11,9 @@ Generally, folder and file names should be singular, for example ‘accordion’
 When creating your component, you should create the following files in the component’s folder:
 
 - `README.md` - Summary documentation with links to the installation instructions and component documentation on <https://design-system.service.gov.uk/>
-- `_[component-name].scss` - An SCSS file to generate the styles just for the component, importing the variables, functions and mixins from `../../base` and the styles of the component (`./index.scss`).
+- `_[component-name].scss` - An SCSS file to generate the styles for this component only. It delegates the CSS generation to the _index.scss file.
 - `_index.scss` - The actual styles for the component, that can be imported either on their own by `[component-name].scss` or alongside other components in `components/_all.scss` (or by the consuming application)
-- `[component-name].yaml` - Lists the options expected by the component, used for display in the documentation. It also contains the option samples used to generate the examples in the documentation, as well as the [fixtures for testing alternative implementations of the design system](https://frontend.design-system.service.gov.uk/testing-your-html/).
+- `[component-name].yaml` - Lists the component's Nunjucks macro options and includes examples using these options. Both the options and examples are used to generate component documentation in the review app. The examples are also used to test component behaviour, and to generate [fixtures for testing alternative implementations of the design system](https://frontend.design-system.service.gov.uk/testing-your-html/).
 - `macro.njk` - The main entry point for rendering the component. It provides a `govuk[ComponentName](params)` macro, delegating render to the `template.njk` file
 - `template.njk` - The template used for rendering the component using any `params` provided to the macro
 - `template.test.js` - Tests to ensure the component renders as intended with its various options
@@ -21,7 +21,7 @@ When creating your component, you should create the following files in the compo
 If your component uses JavaScript, you must also create the following files in the component’s folder:
 
 - `[component-name].mjs` - A JavaScript module with the implementation of any behaviour needed by the component. See the [JavaScript documentation]('./js.md#skeleton) for a skeleton and more details on that file's structure
-- `[component-name].unit.test.mjs` - Unit tests to verify any lower-level logic used by the component individually
+- `[component-name].unit.test.mjs` - Unit tests to verify any component-specific lower-level logic.
 - `[component-name].test.js` - Functional tests to verify the behaviour of the whole component
 
 ## Building your components
