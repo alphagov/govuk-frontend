@@ -89,7 +89,7 @@ I18n.prototype.replacePlaceholders = function (translationString, options) {
     var placeholderIncludingBraces = placeholderMatch[0]
     var placeholderKey = placeholderMatch[1]
     if (Object.prototype.hasOwnProperty.call(options, placeholderKey)) {
-      let placeholderValue = options[placeholderKey]
+      var placeholderValue = options[placeholderKey]
 
       // If a user has passed `false` as the value for the placeholder
       // treat it as though the value should not be displayed
