@@ -23,7 +23,7 @@
     "test:build:dist": "npx jest --selectProjects \"Gulp tasks\" --testMatch \"**/*build-dist*\"",
     "lint": "npm run lint:js && npm run lint:scss",
     "lint:js": "eslint --cache --cache-location .cache/eslint --cache-strategy content --color --ignore-path .gitignore \"**/*.{cjs,js,mjs}\"",
-    "lint:scss": "stylelint \"app/**/*.scss\" \"src/**/*.scss\""
+    "lint:scss": "stylelint --cache --cache-location .cache/stylelint --cache-strategy content --color --ignore-path .gitignore \"{app,src}/**/*.scss\""
   },
   "devDependencies": {
     "@percy/cli": "^1.10.2",
@@ -86,7 +86,7 @@
     "sassdoc": "^2.7.4",
     "shuffle-seed": "^1.1.6",
     "standard": "^17.0.0",
-    "stylelint": "^14.6.1",
+    "stylelint": "^14.13.0",
     "stylelint-config-gds": "^0.2.0",
     "stylelint-order": "^5.0.0",
     "undici": "^5.10.0",
