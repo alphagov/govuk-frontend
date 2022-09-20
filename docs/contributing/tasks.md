@@ -31,7 +31,6 @@ NPM scripts are defined in `package.json`. These trigger a number of gulp tasks.
 **`npm run build:assets` will do the following:**
 - compiles CSS & JS
 - compiles Sass documentation
-- runs `npm run test:build:assets` (which will test the output is correct)
 
 **`npm run build:package` will do the following:**
 - clean the `package` folder
