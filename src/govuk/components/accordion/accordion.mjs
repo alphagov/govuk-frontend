@@ -1,25 +1,33 @@
-
-/*
-  Accordion
-
-  This allows a collection of sections to be collapsed by default,
-  showing only their headers. Sections can be expanded or collapsed
-  individually by clicking their headers. An "Show all sections" button is
-  also added to the top of the accordion, which switches to "Hide all sections"
-  when all the sections are expanded.
-
-  The state of each section is saved to the DOM via the `aria-expanded`
-  attribute, which also provides accessibility.
-
-  A Chevron icon has been added for extra affordance that this is an interactive element.
-
-*/
-
 import { nodeListForEach, mergeConfigs, extractConfigByNamespace, normaliseDataset } from '../../common.mjs'
 import I18n from '../../i18n.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 
+/**
+ * Accordion component
+ *
+ * This allows a collection of sections to be collapsed by default, showing only
+ * their headers. Sections can be expanded or collapsed individually by clicking
+ * their headers. A "Show all sections" button is also added to the top of the
+ * accordion, which switches to "Hide all sections" when all the sections are
+ * expanded.
+ *
+ * The state of each section is saved to the DOM via the `aria-expanded`
+ * attribute, which also provides accessibility.
+ *
+ * @class
+ * @param {HTMLElement} $module HTML element to use for accordion
+ * @param {Object} config
+ * @param {Object} config.i18n - Translations
+ * @param {String} [config.i18n.hideAllSections='Hide all sections'] - Text for
+ *   'hide all sections' button, used when at least one section is expanded
+ * @param {String} [config.i18n.hideSection='Hide<span class="govuk-visually-hidden"> this section</span>']
+ *   - Text for 'hide this section' button, used when a section is expanded
+ * @param {String} [config.i18n.showAllSections='Show all sections'] - Text for
+ *   'show all sections' button, used when all sections are collapsed
+ * @param {String} [config.i18n.showSection='Show<span class="govuk-visually-hidden"> this section</span>']
+ *   - Text for 'show this section' button, used when a section is collapsed
+ */
 function Accordion ($module, config) {
   this.$module = $module
   this.$sections = $module.querySelectorAll('.govuk-accordion__section')
