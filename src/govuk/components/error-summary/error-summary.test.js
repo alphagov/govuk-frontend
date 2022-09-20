@@ -88,6 +88,21 @@ describe('Error Summary', () => {
       })
     })
 
+    describe('using JavaScript configuration, with no elements on the page', () => {
+      it('does not prevent further JavaScript from running', async () => {
+        const result = await page.evaluate(() => {
+          // `undefined` simulates the element being missing,
+          // from an unchecked `document.querySelector` for example
+          new window.GOVUKFrontend.ErrorSummary(undefined).init()
+
+          // If our component initialisation breaks, this won't run
+          return true
+        })
+
+        expect(result).toBe(true)
+      })
+    })
+
     describe('using JavaScript configuration, but enabled via data-attributes', () => {
       beforeAll(async () => {
         await renderAndInitialise('error-summary', {

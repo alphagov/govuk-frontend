@@ -15,6 +15,19 @@ import { mergeConfigs, normaliseDataset } from '../../common.mjs'
  * @param {Boolean} [config.disableAutoFocus=false] - Whether to disable the component taking focus on initialisation
  */
 function ErrorSummary ($module, config) {
+  // Some consuming code may not be passing a module,
+  // for example if they initialise the component
+  // on their own by directly passing the result
+  // of `document.querySelector`.
+  // To avoid breaking further JavaScript initialisation
+  // we need to safeguard against this so things keep
+  // working the same now we read the elements data attributes
+  if (!$module) {
+    // Little safety in case code gets ported as-is
+    // into and ES6 class constructor, where the return value matters
+    return this
+  }
+
   this.$module = $module
 
   var defaultConfig = {
