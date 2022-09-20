@@ -3,6 +3,17 @@ import '../../vendor/polyfills/Event.mjs' // addEventListener
 import '../../vendor/polyfills/Element/prototype/closest.mjs'
 
 import { mergeConfigs, normaliseDataset } from '../../common.mjs'
+
+/**
+ * JavaScript enhancements for the ErrorSummary
+ *
+ * Takes focus on initialisation for accessible announcement, unless disabled in configuration.
+ *
+ * @class
+ * @param {HTMLElement} $module - The element this component controls
+ * @param {Object} config
+ * @param {Boolean} [config.disableAutoFocus=false] - Whether to disable the component taking focus on initialisation
+ */
 function ErrorSummary ($module, config) {
   this.$module = $module
 
