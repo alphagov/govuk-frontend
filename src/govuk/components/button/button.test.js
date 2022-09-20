@@ -1,6 +1,9 @@
 /**
  * @jest-environment puppeteer
  */
+const { renderAndInitialise, getExamples } = require('../../../../lib/jest-helpers')
+
+const examples = getExamples('button')
 
 const configPaths = require('../../../../config/paths.js')
 const PORT = configPaths.ports.test
@@ -139,6 +142,56 @@ describe('/components/button', () => {
 
         await trackClicks()
 
+        // Clone button to have two buttons on the page
+        await page.evaluate(() => {
+          const $button = document.querySelector('button')
+          const $buttonPrime = $button.cloneNode(true)
+
+          document.querySelector('form').appendChild($buttonPrime)
+        })
+
+        await page.click('button:nth-child(1)')
+        await page.click('button:nth-child(2)')
+
+        const clicksCount = await getClicksCount()
+
+        expect(clicksCount).toBe(2)
+      })
+    })
+
+    describe('using JavaScript configuration', () => {
+      // To ensure
+      beforeEach(async () => {
+        await renderAndInitialise('button', {
+          baseUrl,
+          nunjucksParams: examples.default,
+          javascriptConfig: {
+            preventDoubleClick: true
+          }
+        })
+
+        await trackClicks()
+      })
+
+      it('prevents unintentional submissions when in a form', async () => {
+        await page.click('button')
+        await page.click('button')
+
+        const clicksCount = await getClicksCount()
+
+        expect(clicksCount).toBe(1)
+      })
+
+      it('does not prevent intentional multiple clicks', async () => {
+        await page.click('button')
+        await page.click('button', { delay: 1000 })
+
+        const clicksCount = await getClicksCount()
+
+        expect(clicksCount).toBe(2)
+      })
+
+      it('does not prevent subsequent clicks on different buttons', async () => {
         // Clone button to have two buttons on the page
         await page.evaluate(() => {
           const $button = document.querySelector('button')

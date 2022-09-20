@@ -1,3 +1,4 @@
+import { mergeConfigs, normaliseDataset } from '../../common.mjs'
 import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normaliziation
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
@@ -19,6 +20,15 @@ function Button ($module, config) {
 
   this.$module = $module
   this.debounceFormSubmitTimer = null
+
+  var defaultConfig = {
+    preventDoubleClick: false
+  }
+  this.config = mergeConfigs(
+    defaultConfig,
+    config || {},
+    normaliseDataset($module.dataset)
+  )
 }
 
 /**
@@ -30,7 +40,7 @@ Button.prototype.init = function () {
   }
 
   this.$module.addEventListener('keydown', this.handleKeyDown)
-  this.$module.addEventListener('click', this.debounce)
+  this.$module.addEventListener('click', this.debounce.bind(this))
 }
 
 /**
@@ -62,10 +72,8 @@ Button.prototype.handleKeyDown = function (event) {
  * @param {MouseEvent} event
  */
 Button.prototype.debounce = function (event) {
-  var target = event.target
-
   // Check the button that was clicked has preventDoubleClick enabled
-  if (target.getAttribute('data-prevent-double-click') !== 'true') {
+  if (!this.config.preventDoubleClick) {
     return
   }
 
