@@ -85,7 +85,7 @@ describe('/components/button', () => {
     }
 
     describe('not enabled', () => {
-      it('does not prevent multiple submissions when feature', async () => {
+      it('does not prevent multiple submissions', async () => {
         await page.goto(baseUrl + '/components/button/preview', {
           waitUntil: 'load'
         })
@@ -202,6 +202,27 @@ describe('/components/button', () => {
 
         await page.click('button:nth-child(1)')
         await page.click('button:nth-child(2)')
+
+        const clicksCount = await getClicksCount()
+
+        expect(clicksCount).toBe(2)
+      })
+    })
+
+    describe('using JavaScript configuration, but cancelled by data-attributes', () => {
+      it('does not prevent multiple submissions', async () => {
+        await renderAndInitialise('button', {
+          baseUrl,
+          nunjucksParams: examples["don't prevent double click"],
+          javascriptConfig: {
+            preventDoubleClick: true
+          }
+        })
+
+        await trackClicks()
+
+        await page.click('button')
+        await page.click('button')
 
         const clicksCount = await getClicksCount()
 

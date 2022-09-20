@@ -237,7 +237,7 @@ examples:
   hidden: true
   data:
     text: Submit
-- name: "don't prevent double click"
+- name: don't prevent double click
   hidden: true
   data:
     text: Submit
