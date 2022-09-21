@@ -34,8 +34,11 @@ jobs:
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm ci
 
-      - name: Build assets
-        run: npm run build:assets
+      - name: Build
+        run: |
+          npm run build:assets
+          npm run build:package
+          npm run build:dist
 
       - name: Run test projects
         run: |

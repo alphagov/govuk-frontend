@@ -1,87 +1,105 @@
+const { basename, join } = require('path')
+
 const nunjucks = require('nunjucks')
 const gulp = require('gulp')
-const configPaths = require('../../config/paths.js')
 const postcss = require('gulp-postcss')
+const postcssScss = require('postcss-scss')
 const autoprefixer = require('autoprefixer')
-const taskArguments = require('../task-arguments')
-const filter = require('gulp-filter')
-const fs = require('fs')
-const yamlToJson = require('js-yaml')
-const path = require('path')
+const yaml = require('js-yaml')
 const map = require('map-stream')
+const merge = require('merge-stream')
 const rename = require('gulp-rename')
 
-const scssFiles = filter([configPaths.src + '**/*.scss'], { restore: true })
-const yamlFiles = filter([configPaths.components + '**/*.yaml'], { restore: true })
+const configPaths = require('../../config/paths.js')
+const taskArguments = require('../task-arguments')
 
 gulp.task('copy-files', () => {
-  return gulp.src([
-    configPaths.src + '**/*',
-    '!**/.DS_Store',
-    '!**/*.mjs',
-    '!**/*.test.*',
-    '!' + configPaths.src + 'README.md', // Don't override the existing README in /package
-    '!' + configPaths.components + '**/__snapshots__/**',
-    '!' + configPaths.components + '**/__snapshots__/'
-  ])
-    .pipe(scssFiles)
-    .pipe(postcss([
-      autoprefixer
-    ], { syntax: require('postcss-scss') }))
-    .pipe(scssFiles.restore)
-    .pipe(yamlFiles)
-    .pipe(map(function (file, done) {
-      const fixturesFile = generateFixtures(file)
-      done(null, fixturesFile)
-    }))
-    .pipe(rename(path => {
-      path.basename = 'fixtures'
-      path.extname = '.json'
-    }))
-    .pipe(yamlFiles)
-    .pipe(map(function (file, done) {
-      const macroFile = generateMacroOptions(file)
-      done(null, macroFile)
-    }))
-    .pipe(rename(path => {
-      path.basename = 'macro-options'
-      path.extname = '.json'
-    }))
-    .pipe(yamlFiles.restore)
-    .pipe(gulp.dest(taskArguments.destination + '/govuk/'))
+  return merge(
+    gulp.src([
+      `${configPaths.src}**/*`,
+
+      // Exclude files from copy
+      '!**/.DS_Store',
+      '!**/*.mjs',
+      '!**/*.test.*',
+      '!**/__snapshots__/',
+      '!**/__snapshots__/**',
+
+      // Preserve destination README when copying to ./package
+      // https://github.com/alphagov/govuk-frontend/tree/main/package#readme
+      `!${configPaths.src}README.md`,
+
+      // Exclude files from other streams
+      `!${configPaths.src}**/*.scss`,
+      `!${configPaths.components}**/*.yaml`
+    ]),
+
+    // Add CSS prefixes to Sass
+    gulp.src(`${configPaths.src}**/*.scss`)
+      .pipe(postcss([autoprefixer], { syntax: postcssScss })),
+
+    // Generate fixtures.json from ${component}.yaml
+    gulp.src(`${configPaths.components}**/*.yaml`, { base: configPaths.src })
+      .pipe(map((file, done) =>
+        generateFixtures(file)
+          .then((fixture) => done(null, fixture))
+          .catch(done)
+      ))
+      .pipe(rename({
+        basename: 'fixtures',
+        extname: '.json'
+      })),
+
+    // Generate macro-options.json from ${component}.yaml
+    gulp.src(`${configPaths.components}**/*.yaml`, { base: configPaths.src })
+      .pipe(map((file, done) =>
+        generateMacroOptions(file)
+          .then((macro) => done(null, macro))
+          .catch(done)
+      ))
+      .pipe(rename({
+        basename: 'macro-options',
+        extname: '.json'
+      }))
+  )
+    .pipe(gulp.dest(`${taskArguments.destination}/govuk/`))
 })
 
-function generateFixtures (file) {
-  const json = convertYamlToJson(file)
-  const componentName = path.dirname(file.path).split(path.sep).slice(-1).toString()
-  const componentTemplatePath = path.join(configPaths.components, componentName, 'template.njk')
+/**
+ * Replace file content with fixtures.json
+ *
+ * @param {import('vinyl')} file - Component data ${component}.yaml
+ * @returns {Promise<import('vinyl')>} Component fixtures.json
+ */
+async function generateFixtures (file) {
+  const json = await convertYamlToJson(file)
 
-  if (json) {
-    const examplesJson = json.examples
-
-    if (examplesJson) {
-      const fixtures = {
-        component: componentName,
-        fixtures: []
-      }
-
-      examplesJson.forEach(function (example) {
-        const fixture = {
-          name: example.name,
-          options: example.data,
-          html: nunjucks.render(componentTemplatePath, { params: example.data }).trim(),
-          hidden: Boolean(example.hidden)
-        }
-
-        fixtures.fixtures.push(fixture)
-      })
-
-      file.contents = Buffer.from(JSON.stringify(fixtures, null, 4))
-      return file
-    } else {
-      console.error(file.path + ' is missing "examples" and/or "params"')
-    }
+  if (!json?.examples) {
+    throw new Error(`${file.relative} is missing "examples"`)
   }
+
+  // Nunjucks template
+  const component = basename(file.dirname)
+  const template = join(configPaths.components, component, 'template.njk')
+
+  const fixtures = {
+    component,
+    fixtures: []
+  }
+
+  json.examples.forEach(function (example) {
+    const fixture = {
+      name: example.name,
+      options: example.data,
+      html: nunjucks.render(template, { params: example.data }).trim(),
+      hidden: Boolean(example.hidden)
+    }
+
+    fixtures.fixtures.push(fixture)
+  })
+
+  file.contents = Buffer.from(JSON.stringify(fixtures, null, 4))
+  return file
 }
 
 gulp.task('js:copy-esm', () => {
@@ -93,36 +111,29 @@ gulp.task('js:copy-esm', () => {
     .pipe(gulp.dest(taskArguments.destination + '/govuk-esm/'))
 })
 
-function generateMacroOptions (file) {
-  const json = convertYamlToJson(file)
-  let paramsJson
+/**
+ * Replace file content with macro-options.json
+ *
+ * @param {import('vinyl')} file - Component data ${component}.yaml
+ * @returns {Promise<import('vinyl')>} Component macro-options.json
+ */
+async function generateMacroOptions (file) {
+  const json = await convertYamlToJson(file)
 
-  if (json) {
-    paramsJson = json.params // We only want the 'params' data from component yaml
-
-    if (paramsJson) {
-      file.contents = Buffer.from(JSON.stringify(paramsJson, null, 4))
-      return file
-    } else {
-      console.error(file.path + ' is missing "params"')
-    }
+  if (!json?.params) {
+    throw new Error(`${file.relative} is missing "params"`)
   }
+
+  file.contents = Buffer.from(JSON.stringify(json.params, null, 4))
+  return file
 }
 
-function convertYamlToJson (file) {
-  const componentName = path.dirname(file.path).split(path.sep).slice(-1).toString()
-  const componentPath = path.join(configPaths.components, componentName, `${componentName}.yaml`)
-  let yaml
-
-  try {
-    yaml = fs.readFileSync(componentPath, { encoding: 'utf8', json: true })
-  } catch (e) {
-    console.error('ENOENT: no such file or directory: ', componentPath)
-  }
-
-  if (yaml) {
-    return yamlToJson.safeLoad(yaml)
-  }
-
-  return false
+/**
+ * Parse YAML file content as JavaScript
+ *
+ * @param {import('vinyl')} file - Component data ${component}.yaml
+ * @returns {Promise<{ examples?: unknown[]; params?: unknown[] }>} Component options
+ */
+async function convertYamlToJson (file) {
+  return yaml.load(file.contents.toString(), { json: true })
 }
