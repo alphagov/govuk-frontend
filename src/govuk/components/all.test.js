@@ -2,6 +2,8 @@
  * @jest-environment puppeteer
  */
 
+const fs = require('fs')
+
 const { fetch } = require('undici')
 const { WebSocket } = require('ws')
 require('html-validate/jest')
@@ -42,6 +44,9 @@ it('_all.scss renders to CSS without errors', () => {
 
 describe.each(allComponents)('%s', (component) => {
   let percySnapshot
+  const componentHasJavascript = fs.existsSync(
+    `${configPaths.src}/components/${component}/${component}.mjs`
+  )
 
   beforeAll(() => {
     // Polyfill fetch() detection, upload via WebSocket()
@@ -56,17 +61,24 @@ describe.each(allComponents)('%s', (component) => {
     })
   })
 
-  it('generate screenshots for Percy visual regression, with JavaScript disabled', async () => {
-    await page.setJavaScriptEnabled(false)
-    await page.goto(baseUrl + '/components/' + component + '/preview', { waitUntil: 'load' })
-    await percySnapshot(page, 'no-js: ' + component)
-  })
+  if (componentHasJavascript) {
+    it('generate screenshots for Percy visual regression, with JavaScript disabled', async () => {
+      await page.setJavaScriptEnabled(false)
+      await page.goto(baseUrl + '/components/' + component + '/preview', { waitUntil: 'load' })
+      await percySnapshot(page, 'no-js: ' + component)
+    })
 
-  it('generate screenshots for Percy visual regression, with JavaScript enabled', async () => {
-    await page.setJavaScriptEnabled(true)
-    await page.goto(baseUrl + '/components/' + component + '/preview', { waitUntil: 'load' })
-    await percySnapshot(page, 'js: ' + component)
-  })
+    it('generate screenshots for Percy visual regression, with JavaScript enabled', async () => {
+      await page.setJavaScriptEnabled(true)
+      await page.goto(baseUrl + '/components/' + component + '/preview', { waitUntil: 'load' })
+      await percySnapshot(page, 'js: ' + component)
+    })
+  } else {
+    it('generate screenshots for Percy visual regression', async () => {
+      await page.goto(baseUrl + '/components/' + component + '/preview', { waitUntil: 'load' })
+      await percySnapshot(page, component)
+    })
+  }
 
   describe('examples output valid HTML', () => {
     const examples = getComponentData(component).examples.map(function (example) {
