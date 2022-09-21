@@ -178,7 +178,7 @@ describe('package/', () => {
           expect(parsedData).toEqual(
             expect.objectContaining({
               component: name,
-              fixtures: expect.any(Object)
+              fixtures: expect.any(Array)
             })
           )
 

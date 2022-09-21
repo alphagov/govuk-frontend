@@ -82,21 +82,28 @@ async function generateFixtures (file) {
   const component = basename(file.dirname)
   const template = join(configPaths.components, component, 'template.njk')
 
-  const fixtures = {
-    component,
-    fixtures: []
-  }
+  // Loop examples
+  const examples = json.examples.map(async (example) => {
+    const context = { params: example.data }
 
-  json.examples.forEach(function (example) {
-    const fixture = {
+    return {
       name: example.name,
       options: example.data,
-      html: nunjucks.render(template, { params: example.data }).trim(),
-      hidden: Boolean(example.hidden)
-    }
+      hidden: Boolean(example.hidden),
 
-    fixtures.fixtures.push(fixture)
+      // Wait for render to complete
+      html: await new Promise((resolve, reject) => {
+        return nunjucks.render(template, context, (error, result) => {
+          return error ? reject(error) : resolve(result.trim())
+        })
+      })
+    }
   })
+
+  const fixtures = {
+    component: basename(file.dirname),
+    fixtures: await Promise.all(examples)
+  }
 
   file.contents = Buffer.from(JSON.stringify(fixtures, null, 4))
   return file
@@ -135,5 +142,13 @@ async function generateMacroOptions (file) {
  * @returns {Promise<{ examples?: unknown[]; params?: unknown[] }>} Component options
  */
 async function convertYamlToJson (file) {
-  return yaml.load(file.contents.toString(), { json: true })
+  const cache = convertYamlToJson.cache ??= new Map()
+
+  // Check cache for component options
+  if (!cache.has(file.relative)) {
+    cache.set(file.relative, yaml.load(file.contents.toString(), { json: true }))
+  }
+
+  // Use cached content
+  return cache.get(file.relative)
 }
