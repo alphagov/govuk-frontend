@@ -31,4 +31,8 @@ function buildSassdocs () {
   })
 }
 
-module.exports = buildSassdocs
+buildSassdocs.displayName = 'sassdoc:compile'
+
+module.exports = {
+  buildSassdocs
+}

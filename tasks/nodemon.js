@@ -16,4 +16,8 @@ function runNodemon () {
   })
 }
 
-module.exports = runNodemon
+runNodemon.displayName = 'nodemon'
+
+module.exports = {
+  runNodemon
+}

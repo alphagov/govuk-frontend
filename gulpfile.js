@@ -9,9 +9,9 @@ require('./tasks/gulp/copy-to-destination.js')
 require('./tasks/gulp/watch.js')
 
 // Node tasks
-const buildSassdocs = require('./tasks/sassdoc.js')
-const runNodemon = require('./tasks/nodemon.js')
-const updateDistAssetsVersion = require('./tasks/asset-version.js')
+const { buildSassdocs } = require('./tasks/sassdoc.js')
+const { runNodemon } = require('./tasks/nodemon.js')
+const { updateDistAssetsVersion } = require('./tasks/asset-version.js')
 const { cleanDist, cleanPackage, cleanPublic } = require('./tasks/clean.js')
 const { npmScriptTask } = require('./tasks/run.js')
 

@@ -23,6 +23,10 @@ function cleanPublic () {
   ])
 }
 
+cleanDist.displayName = 'clean:dist'
+cleanPackage.displayName = 'clean:package'
+cleanPublic.displayName = 'clean:public'
+
 module.exports = {
   cleanDist,
   cleanPackage,
