@@ -165,8 +165,8 @@ describe('header', () => {
     it('renders navigation with active item', () => {
       const $ = render('header', examples['with navigation'])
 
-      const $activeItem = $('a.govuk-header__navigation-item:first-child')
-      expect($activeItem.hasClass('govuk-header__navigation-item--active'))
+      const $activeItem = $('li.govuk-header__navigation-item:first-child')
+      expect($activeItem.hasClass('govuk-header__navigation-item--active')).toBeTruthy()
     })
 
     it('allows navigation item text to be passed whilst escaping HTML entities', () => {
