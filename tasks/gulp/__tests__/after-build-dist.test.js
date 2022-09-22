@@ -44,7 +44,7 @@ describe('dist/', () => {
 
       // Compare the expected directory listing with the files we expect
       // to be present
-      Promise.all([actualDistAssets(), expectedDistAssets()])
+      return Promise.all([actualDistAssets(), expectedDistAssets()])
         .then(results => {
           const [actualDistAssets, expectedDistAssets] = results
 

@@ -87,7 +87,7 @@ describe('package/', () => {
 
     // Compare the expected directory listing with the files we expect
     // to be present
-    Promise.all([actualPackageFiles(), expectedPackageFiles()])
+    return Promise.all([actualPackageFiles(), expectedPackageFiles()])
       .then(results => {
         const [actualPackageFiles, expectedPackageFiles] = results
 
