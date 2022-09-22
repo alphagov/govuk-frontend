@@ -18,7 +18,6 @@ gulp.task('copy-files', () => {
     // Copy source JavaScript
     gulp.src([
       `${configPaths.src}**/*.mjs`,
-      `${configPaths.src}**/*.js`,
       `!${configPaths.src}**/*.test.*`
     ]).pipe(gulp.dest(`${taskArguments.destination}/govuk-esm/`)),
 
