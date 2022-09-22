@@ -1,25 +1,25 @@
-const paths = require('../config/paths.js')
 const del = require('del')
+const configPaths = require('../config/paths.js')
 
 function cleanDist () {
   return del([
-    `${paths.dist}**/*`
+    `${configPaths.dist}**/*`
   ])
 }
 
 function cleanPackage () {
   return del([
-    `${paths.package}**`,
-    `!${paths.package}`,
-    `!${paths.package}package.json`,
-    `!${paths.package}govuk-prototype-kit.config.json`,
-    `!${paths.package}README.md`
+    `${configPaths.package}**`,
+    `!${configPaths.package}`,
+    `!${configPaths.package}package.json`,
+    `!${configPaths.package}govuk-prototype-kit.config.json`,
+    `!${configPaths.package}README.md`
   ])
 }
 
 function cleanPublic () {
   return del([
-    `${paths.public}**/*`
+    `${configPaths.public}**/*`
   ])
 }
 

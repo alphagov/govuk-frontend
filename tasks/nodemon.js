@@ -1,15 +1,16 @@
 const nodemon = require('nodemon')
-const paths = require('../config/paths.js')
+const configPaths = require('../config/paths.js')
 
-// Nodemon task --------------------------
-// Restarts node app for changes affecting
-// js and json files
-// ---------------------------------------
+/**
+ * Nodemon task
+ * Restarts Node.js app when there are changes
+ * affecting .js, .mjs and .json files
+ */
 function runNodemon () {
   return nodemon({
     watch: [
-      paths.app,
-      paths.src
+      configPaths.app,
+      configPaths.src
     ],
     script: 'app/start.js'
   })
