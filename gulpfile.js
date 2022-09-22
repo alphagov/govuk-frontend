@@ -43,12 +43,13 @@ gulp.task('copy:assets', () => {
 })
 
 /**
- * Copy assets task for local & heroku
- * Runs JavaScript and Sass compilation
+ * Compile task for local & heroku
+ * Runs JavaScript and Sass compilation, including Sass documentation
  */
-gulp.task('copy-assets', gulp.series(
+gulp.task('compile', gulp.series(
   'styles',
-  'scripts'
+  'scripts',
+  buildSassdocs
 ))
 
 /**
@@ -67,8 +68,7 @@ gulp.task('serve', gulp.parallel(
  */
 gulp.task('dev', gulp.series(
   cleanPublic,
-  'copy-assets',
-  buildSassdocs,
+  'compile',
   'serve'
 ))
 
@@ -88,15 +88,10 @@ gulp.task('build:package', gulp.series(
  */
 gulp.task('build:dist', gulp.series(
   cleanDist,
-  'copy-assets',
+  'compile',
   'copy:assets',
   updateDistAssetsVersion
 ))
-
-/**
- * Compiles Sass documentation
- */
-gulp.task('sassdoc', buildSassdocs)
 
 /**
  * Default task

@@ -10,8 +10,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
 **`npm run start` will trigger `gulp dev` that will:**
 - clean the `./public` folder
-- compile Sass and JavaScript (`gulp copy-assets`)
-- compile Sass documentation into `./sassdoc` (`gulp sassdoc`)
+- compile JavaScript and Sass, including Sass documentation (`gulp compile`)
 - compile again when `.scss` and `.mjs` files change (`gulp watch`)
 - start up Express, restarting when `.js`, `.mjs`, and `.json` files change
 
@@ -21,13 +20,12 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - run accessibility and HTML validation tests
 
 **`npm run heroku` runs on Heroku build/PR and it will:**
-- run `npm run build:assets`
+- run `npm run build:compile`
 - start up Express
 
-**`npm run build:assets` will do the following:**
+**`npm run build:compile` will do the following:**
 - output files into `./public`, or another location via the `--destination` flag
-- compile Sass and JavaScript (`gulp copy-assets`)
-- compile Sass documentation into `./sassdoc` (`gulp sassdoc`)
+- compile JavaScript and Sass, including Sass documentation (`gulp compile`)
 
 **`npm run build:package` will do the following:**
 - output files into `./package`, or another location via the `--destination` flag
@@ -41,7 +39,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 **`npm run build:dist` will do the following:**
 - output files into `./dist`, or another location via the `--destination` flag
 - clean the `./dist` folder
-- compile Sass and JavaScript (`gulp copy-assets`)
+- compile JavaScript and Sass, including Sass documentation (`gulp compile`)
 - copy fonts and images (`gulp copy:assets`)
 - append version number from `package/package.json` to compiled JavaScript and CSS files
 - runs `npm run test:build:dist` (which will test the output is correct)
@@ -74,11 +72,12 @@ This task will:
  - check JavaScript code quality via ESLint (`npm run lint:js`) (using JavaScript Standard Style)
  - compile JavaScript ESM to CommonJS (`gulp js:compile`) into `./public`, or another location via the `--destination` flag
 
-**`gulp copy-assets`**
+**`gulp compile`**
 
 This task will:
 - run `gulp styles`
 - run `gulp scripts`
+- compile Sass documentation into `./sassdoc`
 
 ## Express app only
 

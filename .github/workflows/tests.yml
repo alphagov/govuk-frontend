@@ -36,7 +36,7 @@ jobs:
 
       - name: Build
         run: |
-          npm run build:assets
+          npm run build:compile
           npm run build:package
           npm run build:dist
 
