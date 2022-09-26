@@ -1,6 +1,6 @@
 module.exports = {
   browserContext: 'incognito',
-  dumpio: true,
+  browserPerWorker: true,
   launch: {
     // we use --no-sandbox --disable-setuid-sandbox as a workaround for the
     // 'No usable sandbox! Update your kernel' error
