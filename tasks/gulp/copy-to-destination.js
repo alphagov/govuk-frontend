@@ -15,17 +15,24 @@ const taskArguments = require('../task-arguments')
 
 gulp.task('copy-files', () => {
   return merge(
-    // Copy source JavaScript
+    /**
+     * Copy files to destination with './govuk-esm' suffix
+     * Includes only source JavaScript ECMAScript (ES) modules
+     */
     gulp.src([
       `${configPaths.src}**/*.mjs`,
       `!${configPaths.src}**/*.test.*`
     ]).pipe(gulp.dest(`${taskArguments.destination}/govuk-esm/`)),
 
+    /**
+     * Copy files to destination with './govuk' suffix
+     * Includes fonts, images, polyfills, component files
+     */
     merge(
       gulp.src([
         `${configPaths.src}**/*`,
 
-        // Exclude files from copy
+        // Exclude files we don't want to publish
         '!**/.DS_Store',
         '!**/*.mjs',
         '!**/*.test.*',
@@ -36,8 +43,10 @@ gulp.task('copy-files', () => {
         // https://github.com/alphagov/govuk-frontend/tree/main/package#readme
         `!${configPaths.src}README.md`,
 
-        // Exclude files from other streams
+        // Exclude Sass files handled by PostCSS stream below
         `!${configPaths.src}**/*.scss`,
+
+        // Exclude source YAML handled by JSON streams below
         `!${configPaths.components}**/*.yaml`
       ]),
 
