@@ -51,14 +51,14 @@ describe('/components/button', () => {
 
   describe('preventing double clicks', () => {
     // Click counting is done through using the button to submit
-    // a form and counting sumbissions. It requires some bits of recurring
+    // a form and counting submissions. It requires some bits of recurring
     // logic which are wrapped in the following helpers
 
     /**
-       * Wraps the button rendered on the page in a form
-       *
-       * Examples don't do this and we need it to have something to submit
-       */
+     * Wraps the button rendered on the page in a form
+     *
+     * Examples don't do this and we need it to have something to submit
+     */
     async function trackClicks () {
       page.evaluate(() => {
         const $button = document.querySelector('button')
@@ -76,10 +76,10 @@ describe('/components/button', () => {
     }
 
     /**
-       * Gets the number of times the form was submitted
-       *
-       * @returns {Number}
-       */
+     * Gets the number of times the form was submitted
+     *
+     * @returns {Number}
+     */
     function getClicksCount () {
       return page.evaluate(() => window.__SUBMIT_EVENTS)
     }
@@ -145,9 +145,9 @@ describe('/components/button', () => {
         // Clone button to have two buttons on the page
         await page.evaluate(() => {
           const $button = document.querySelector('button')
-          const $buttonPrime = $button.cloneNode(true)
+          const $secondButton = $button.cloneNode(true)
 
-          document.querySelector('form').appendChild($buttonPrime)
+          document.querySelector('form').appendChild($secondButton)
         })
 
         await page.click('button:nth-child(1)')
@@ -195,9 +195,9 @@ describe('/components/button', () => {
         // Clone button to have two buttons on the page
         await page.evaluate(() => {
           const $button = document.querySelector('button')
-          const $buttonPrime = $button.cloneNode(true)
+          const $secondButton = $button.cloneNode(true)
 
-          document.querySelector('form').appendChild($buttonPrime)
+          document.querySelector('form').appendChild($secondButton)
         })
 
         await page.click('button:nth-child(1)')
@@ -270,9 +270,9 @@ describe('/components/button', () => {
         // Clone button to have two buttons on the page
         await page.evaluate(() => {
           const $button = document.querySelector('button')
-          const $buttonPrime = $button.cloneNode(true)
+          const $secondButton = $button.cloneNode(true)
 
-          document.querySelector('form').appendChild($buttonPrime)
+          document.querySelector('form').appendChild($secondButton)
         })
 
         await page.click('button:nth-child(1)')
