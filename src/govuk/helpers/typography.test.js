@@ -1,9 +1,18 @@
-const outdent = require('outdent')
 
+const sass = require('node-sass')
+const outdent = require('outdent')
 const { renderSass } = require('../../../lib/jest-helpers')
 
+// Create a mock warn function that we can use to override the native @warn
+// function, that we can make assertions about post-render.
+const mockWarnFunction = jest.fn()
+  .mockReturnValue(sass.NULL)
+
 const sassConfig = {
-  outputStyle: 'nested'
+  outputStyle: 'nested',
+  functions: {
+    '@warn': mockWarnFunction
+  }
 }
 
 const sassBootstrap = `
@@ -391,6 +400,22 @@ describe('@mixin govuk-typography-responsive', () => {
                 line-height: 1.42857 !important; } }`)
       })
     })
+
+    it('outputs a deprecation warning when set to false', async () => {
+      const sass = `
+        $govuk-typography-use-rem: false;
+        ${sassBootstrap}`
+
+      await renderSass({ data: sass, ...sassConfig }).then(() => {
+        // Get the argument of the last @warn call, which we expect to be the
+        // deprecation notice
+        return expect(mockWarnFunction.mock.calls.at(-1)[0].getValue())
+          .toEqual(
+            '$govuk-typography-use-rem is deprecated. ' +
+            'From version 5.0, GOV.UK Frontend will not support disabling rem font sizes'
+          )
+      })
+    })
   })
 
   describe('when compatibility mode is set', () => {
@@ -569,6 +594,25 @@ describe('@mixin govuk-typography-responsive', () => {
       const results = await renderSass({ data: sass, ...sassConfig })
 
       expect(results.css.toString()).toContain('line-height: 1.337;')
+    })
+  })
+})
+
+describe('$govuk-font-family-tabular value is specified', () => {
+  it('outputs a deprecation warning when set', async () => {
+    const sass = `
+    $govuk-font-family-tabular: monospace;
+      ${sassBootstrap}`
+
+    await renderSass({ data: sass, ...sassConfig }).then(() => {
+      // Get the argument of the last @warn call, which we expect to be the
+      // deprecation notice
+      return expect(mockWarnFunction.mock.calls.at(-1)[0].getValue())
+        .toEqual(
+          '$govuk-font-family-tabular is deprecated. ' +
+          'From version 5.0, GOV.UK Frontend will not support using a separate ' +
+          'font-face for tabular numbers'
+        )
     })
   })
 })

@@ -72,6 +72,19 @@ This will enable screen reader users to have a better, more coherent experience 
 
 This was added in [pull request #2677: Amend error summary markup to fix page load focus bug in JAWS 2022](https://github.com/alphagov/govuk-frontend/pull/2677).
 
+### Deprecated features
+
+#### Stop using settings associated with legacy codebases
+
+In GOV.UK Frontend v5.0 we will stop supporting compatibility with legacy codebases. As part of this, we are deprecating settings controlled by compatibility mode variables. This includes the `govuk-compatibility` mixin and the following settings:
+
+- `$govuk-use-legacy-palette`
+- `$govuk-use-legacy-font`
+- `$govuk-typography-use-rem`
+- `$govuk-font-family-tabular`
+
+This was introduced in [pull request #2844: Deprecate compatibility mode settings](https://github.com/alphagov/govuk-frontend/pull/2844).
+
 ### Fixes
 
 We’ve made fixes to GOV.UK Frontend in the following pull requests:

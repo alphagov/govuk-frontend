@@ -1,7 +1,16 @@
+const sass = require('node-sass')
 const { renderSass } = require('../../../lib/jest-helpers')
 
+// Create a mock warn function that we can use to override the native @warn
+// function, that we can make assertions about post-render.
+const mockWarnFunction = jest.fn()
+  .mockReturnValue(sass.NULL)
+
 const sassConfig = {
-  outputStyle: 'compact'
+  outputStyle: 'compact',
+  functions: {
+    '@warn': mockWarnFunction
+  }
 }
 
 describe('@function govuk-colour', () => {
@@ -119,6 +128,20 @@ describe('@function govuk-colour', () => {
         .toThrow(
           'Unknown colour `hooloovoo`'
         )
+    })
+
+    it('outputs a deprecation warning when set to true', async () => {
+      const sass = `${sassBootstrap}`
+
+      await renderSass({ data: sass, ...sassConfig }).then(() => {
+        // Expect our mocked @warn function to have been called once with a single
+        // argument, which should be the deprecation notice
+        return expect(mockWarnFunction.mock.calls[0][0].getValue())
+          .toEqual(
+            '$govuk-use-legacy-palette is deprecated. ' +
+            'Only the modern colour palette will be supported from v5.0'
+          )
+      })
     })
   })
 
