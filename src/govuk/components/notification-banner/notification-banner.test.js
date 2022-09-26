@@ -56,8 +56,10 @@ describe('Notification banner, when type is set to "success"', () => {
   })
 
   describe('and auto-focus is disabled using JavaScript configuration', () => {
+    let page
+
     beforeAll(async () => {
-      await renderAndInitialise('notification-banner', {
+      page = await renderAndInitialise('notification-banner', {
         baseUrl,
         nunjucksParams:
           examples['with type as success'],
@@ -81,8 +83,10 @@ describe('Notification banner, when type is set to "success"', () => {
   })
 
   describe('and auto-focus is disabled using options passed to initAll', () => {
+    let page
+
     beforeAll(async () => {
-      await renderAndInitialise('notification-banner', {
+      page = await renderAndInitialise('notification-banner', {
         baseUrl,
         nunjucksParams:
           examples['with type as success'],
@@ -110,8 +114,10 @@ describe('Notification banner, when type is set to "success"', () => {
   })
 
   describe('and autofocus is disabled in JS but enabled in data attributes', () => {
+    let page
+
     beforeAll(async () => {
-      await renderAndInitialise('notification-banner', {
+      page = await renderAndInitialise('notification-banner', {
         baseUrl,
         nunjucksParams: examples['auto-focus explicitly enabled, with type as success'],
         javascriptConfig: {
