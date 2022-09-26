@@ -77,11 +77,27 @@ describe('Button', () => {
       expect($component.html()).toContain('Start <em>now</em>')
     })
 
-    it('renders with preventDoubleClick attribute', () => {
-      const $ = render('button', examples['prevent double click'])
+    describe('preventDoubleClick', () => {
+      it('does not render the attribute if not set', () => {
+        const $ = render('button', examples['no data-prevent-double-click'])
 
-      const $component = $('.govuk-button')
-      expect($component.attr('data-prevent-double-click')).toEqual('true')
+        const $component = $('.govuk-button')
+        expect($component.attr('data-prevent-double-click')).toBeUndefined()
+      })
+
+      it('renders with preventDoubleClick attribute set to true', () => {
+        const $ = render('button', examples['prevent double click'])
+
+        const $component = $('.govuk-button')
+        expect($component.attr('data-prevent-double-click')).toEqual('true')
+      })
+
+      it('renders with preventDoubleClick attribute set to false', () => {
+        const $ = render('button', examples["don't prevent double click"])
+
+        const $component = $('.govuk-button')
+        expect($component.attr('data-prevent-double-click')).toEqual('false')
+      })
     })
   })
 

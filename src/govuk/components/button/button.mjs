@@ -1,20 +1,46 @@
+import { mergeConfigs, normaliseDataset } from '../../common.mjs'
 import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normaliziation
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
 var KEY_SPACE = 32
 var DEBOUNCE_TIMEOUT_IN_SECONDS = 1
 
-function Button ($module) {
+/**
+ * JavaScript enhancements for the Button component
+ *
+ * @class
+ * @param {HTMLElement} $module - The element this component controls
+ * @param {Object} config
+ * @param {Boolean} [config.preventDoubleClick=false] - Whether the button should prevent double clicks
+ */
+function Button ($module, config) {
+  if (!$module) {
+    return this
+  }
+
   this.$module = $module
   this.debounceFormSubmitTimer = null
+
+  var defaultConfig = {
+    preventDoubleClick: false
+  }
+  this.config = mergeConfigs(
+    defaultConfig,
+    config || {},
+    normaliseDataset($module.dataset)
+  )
 }
 
 /**
  * Initialise component
  */
 Button.prototype.init = function () {
+  if (!this.$module) {
+    return
+  }
+
   this.$module.addEventListener('keydown', this.handleKeyDown)
-  this.$module.addEventListener('click', this.debounce)
+  this.$module.addEventListener('click', this.debounce.bind(this))
 }
 
 /**
@@ -46,10 +72,8 @@ Button.prototype.handleKeyDown = function (event) {
  * @param {MouseEvent} event
  */
 Button.prototype.debounce = function (event) {
-  var target = event.target
-
   // Check the button that was clicked has preventDoubleClick enabled
-  if (target.getAttribute('data-prevent-double-click') !== 'true') {
+  if (!this.config.preventDoubleClick) {
     return
   }
 
