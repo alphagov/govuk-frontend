@@ -75,8 +75,8 @@ This task will:
 **`gulp compile`**
 
 This task will:
-- run `gulp styles`
-- run `gulp scripts`
+- run sub tasks from `gulp styles` without ESLint code quality checks
+- run sub tasks from `gulp scripts` without StyleLint code quality checks
 - compile Sass documentation into `./sassdoc`
 
 ## Express app only

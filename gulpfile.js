@@ -47,8 +47,8 @@ gulp.task('copy:assets', () => {
  * Runs JavaScript and Sass compilation, including Sass documentation
  */
 gulp.task('compile', gulp.series(
-  'styles',
-  'scripts',
+  'js:compile',
+  'scss:compile',
   buildSassdocs
 ))
 

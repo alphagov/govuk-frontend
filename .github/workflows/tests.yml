@@ -34,6 +34,9 @@ jobs:
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm ci
 
+      - name: Lint
+        run: npm run lint
+
       - name: Build
         run: |
           npm run build:compile
