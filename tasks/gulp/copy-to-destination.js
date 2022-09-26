@@ -15,54 +15,70 @@ const taskArguments = require('../task-arguments')
 
 gulp.task('copy-files', () => {
   return merge(
+    /**
+     * Copy files to destination with './govuk-esm' suffix
+     * Includes only source JavaScript ECMAScript (ES) modules
+     */
     gulp.src([
-      `${configPaths.src}**/*`,
+      `${configPaths.src}**/*.mjs`,
+      `!${configPaths.src}**/*.test.*`
+    ]).pipe(gulp.dest(`${taskArguments.destination}/govuk-esm/`)),
 
-      // Exclude files from copy
-      '!**/.DS_Store',
-      '!**/*.mjs',
-      '!**/*.test.*',
-      '!**/__snapshots__/',
-      '!**/__snapshots__/**',
+    /**
+     * Copy files to destination with './govuk' suffix
+     * Includes fonts, images, polyfills, component files
+     */
+    merge(
+      gulp.src([
+        `${configPaths.src}**/*`,
 
-      // Preserve destination README when copying to ./package
-      // https://github.com/alphagov/govuk-frontend/tree/main/package#readme
-      `!${configPaths.src}README.md`,
+        // Exclude files we don't want to publish
+        '!**/.DS_Store',
+        '!**/*.mjs',
+        '!**/*.test.*',
+        '!**/__snapshots__/',
+        '!**/__snapshots__/**',
 
-      // Exclude files from other streams
-      `!${configPaths.src}**/*.scss`,
-      `!${configPaths.components}**/*.yaml`
-    ]),
+        // Preserve destination README when copying to ./package
+        // https://github.com/alphagov/govuk-frontend/tree/main/package#readme
+        `!${configPaths.src}README.md`,
 
-    // Add CSS prefixes to Sass
-    gulp.src(`${configPaths.src}**/*.scss`)
-      .pipe(postcss([autoprefixer], { syntax: postcssScss })),
+        // Exclude Sass files handled by PostCSS stream below
+        `!${configPaths.src}**/*.scss`,
 
-    // Generate fixtures.json from ${component}.yaml
-    gulp.src(`${configPaths.components}**/*.yaml`, { base: configPaths.src })
-      .pipe(map((file, done) =>
-        generateFixtures(file)
-          .then((fixture) => done(null, fixture))
-          .catch(done)
-      ))
-      .pipe(rename({
-        basename: 'fixtures',
-        extname: '.json'
-      })),
+        // Exclude source YAML handled by JSON streams below
+        `!${configPaths.components}**/*.yaml`
+      ]),
 
-    // Generate macro-options.json from ${component}.yaml
-    gulp.src(`${configPaths.components}**/*.yaml`, { base: configPaths.src })
-      .pipe(map((file, done) =>
-        generateMacroOptions(file)
-          .then((macro) => done(null, macro))
-          .catch(done)
-      ))
-      .pipe(rename({
-        basename: 'macro-options',
-        extname: '.json'
-      }))
+      // Add CSS prefixes to Sass
+      gulp.src(`${configPaths.src}**/*.scss`)
+        .pipe(postcss([autoprefixer], { syntax: postcssScss })),
+
+      // Generate fixtures.json from ${component}.yaml
+      gulp.src(`${configPaths.components}**/*.yaml`, { base: configPaths.src })
+        .pipe(map((file, done) =>
+          generateFixtures(file)
+            .then((fixture) => done(null, fixture))
+            .catch(done)
+        ))
+        .pipe(rename({
+          basename: 'fixtures',
+          extname: '.json'
+        })),
+
+      // Generate macro-options.json from ${component}.yaml
+      gulp.src(`${configPaths.components}**/*.yaml`, { base: configPaths.src })
+        .pipe(map((file, done) =>
+          generateMacroOptions(file)
+            .then((macro) => done(null, macro))
+            .catch(done)
+        ))
+        .pipe(rename({
+          basename: 'macro-options',
+          extname: '.json'
+        }))
+    ).pipe(gulp.dest(`${taskArguments.destination}/govuk/`))
   )
-    .pipe(gulp.dest(`${taskArguments.destination}/govuk/`))
 })
 
 /**
@@ -108,15 +124,6 @@ async function generateFixtures (file) {
   file.contents = Buffer.from(JSON.stringify(fixtures, null, 4))
   return file
 }
-
-gulp.task('js:copy-esm', () => {
-  return gulp.src([
-    `${configPaths.src}**/*.mjs`,
-    `${configPaths.src}**/*.js`,
-    `!${configPaths.src}**/*.test.*`
-  ])
-    .pipe(gulp.dest(taskArguments.destination + '/govuk-esm/'))
-})
 
 /**
  * Replace file content with macro-options.json
