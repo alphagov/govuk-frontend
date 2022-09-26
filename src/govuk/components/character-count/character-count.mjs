@@ -49,14 +49,14 @@ CharacterCount.prototype.init = function () {
   // Hide the fallback limit message
   $fallbackLimitMessage.classList.add('govuk-visually-hidden')
 
-  // Read options set using dataset ('data-' values)
-  this.options = this.getDataset($module)
+  // Read config set using dataset ('data-' values)
+  this.config = this.getDataset($module)
 
   // Determine the limit attribute (characters or words)
-  if (this.options.maxwords) {
-    this.maxLength = this.options.maxwords
-  } else if (this.options.maxlength) {
-    this.maxLength = this.options.maxlength
+  if (this.config.maxwords) {
+    this.maxLength = this.config.maxwords
+  } else if (this.config.maxlength) {
+    this.maxLength = this.config.maxlength
   } else {
     return
   }
@@ -207,14 +207,14 @@ CharacterCount.prototype.updateScreenReaderCountMessage = function () {
 }
 
 /**
- * Count the number of characters (or words, if `options.maxwords` is set)
+ * Count the number of characters (or words, if `config.maxwords` is set)
  * in the given text
  *
  * @param {String} text - The text to count the characters of
  * @returns {Number} the number of characters (or words) in the text
  */
 CharacterCount.prototype.count = function (text) {
-  if (this.options.maxwords) {
+  if (this.config.maxwords) {
     var tokens = text.match(/\S+/g) || [] // Matches consecutive non-whitespace chars
     return tokens.length
   } else {
@@ -229,13 +229,13 @@ CharacterCount.prototype.count = function (text) {
  */
 CharacterCount.prototype.getCountMessage = function () {
   var $textarea = this.$textarea
-  var options = this.options
+  var config = this.config
   var remainingNumber = this.maxLength - this.count($textarea.value)
 
   var charVerb = 'remaining'
   var charNoun = 'character'
   var displayNumber = remainingNumber
-  if (options.maxwords) {
+  if (config.maxwords) {
     charNoun = 'word'
   }
   charNoun = charNoun + ((remainingNumber === -1 || remainingNumber === 1) ? '' : 's')
@@ -253,19 +253,19 @@ CharacterCount.prototype.getCountMessage = function () {
  * If there is no configured threshold, it is set to 0 and this function will
  * always return true.
  *
- * @returns {Boolean} true if the current count is over the options.threshold
+ * @returns {Boolean} true if the current count is over the config.threshold
  *   (or no threshold is set)
  */
 CharacterCount.prototype.isOverThreshold = function () {
   var $textarea = this.$textarea
-  var options = this.options
+  var config = this.config
 
   // Determine the remaining number of characters/words
   var currentLength = this.count($textarea.value)
   var maxLength = this.maxLength
 
-  // Set threshold if presented in options
-  var thresholdPercent = options.threshold ? options.threshold : 0
+  // Set threshold if presented in config
+  var thresholdPercent = config.threshold ? config.threshold : 0
   var thresholdValue = maxLength * thresholdPercent / 100
 
   return (thresholdValue <= currentLength)
