@@ -25,6 +25,10 @@ function CharacterCount ($module, config) {
     return this
   }
 
+  var defaultConfig = {
+    threshold: 0
+  }
+
   // Read config set using dataset ('data-' values)
   var datasetConfig = normaliseDataset($module.dataset)
 
@@ -42,6 +46,7 @@ function CharacterCount ($module, config) {
   }
 
   this.config = mergeConfigs(
+    defaultConfig,
     config || {},
     configOverrides,
     datasetConfig
@@ -296,16 +301,19 @@ CharacterCount.prototype.getCountMessage = function () {
  *   (or no threshold is set)
  */
 CharacterCount.prototype.isOverThreshold = function () {
+  // No threshold means we're always above threshold
+  // so we can save some computation
+  if (!this.config.threshold) {
+    return true
+  }
+
   var $textarea = this.$textarea
-  var config = this.config
 
   // Determine the remaining number of characters/words
   var currentLength = this.count($textarea.value)
   var maxLength = this.maxLength
 
-  // Set threshold if presented in config
-  var thresholdPercent = config.threshold ? config.threshold : 0
-  var thresholdValue = maxLength * thresholdPercent / 100
+  var thresholdValue = maxLength * this.config.threshold / 100
 
   return (thresholdValue <= currentLength)
 }
