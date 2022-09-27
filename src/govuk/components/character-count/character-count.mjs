@@ -11,8 +11,22 @@ function CharacterCount ($module, config) {
   // Read config set using dataset ('data-' values)
   var datasetConfig = normaliseDataset($module.dataset)
 
+  // To ensure data-attributes take complete precedence,
+  // even if they change the type of count, we need to reset
+  // the `maxlength` and `maxwords` from the JavaScript config
+  // We can't mutate `config`, though, as it may be shared across
+  // multiple components inside `initAll`
+  var configOverrides = {}
+  if ('maxwords' in datasetConfig || 'maxlength' in datasetConfig) {
+    configOverrides = {
+      maxlength: false,
+      maxwords: false
+    }
+  }
+
   this.config = mergeConfigs(
     config || {},
+    configOverrides,
     datasetConfig
   )
 
