@@ -262,3 +262,10 @@ examples:
         maxlength: 10
       label:
         text: Full address
+  - name: to configure in JavaScript
+    hidden: true
+    data:
+      id: to-configure-in-javascript
+      name: address
+      label:
+        text: Full address

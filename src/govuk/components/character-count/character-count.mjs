@@ -1,8 +1,30 @@
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normalisation
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
+import { mergeConfigs, normaliseDataset } from '../../common.mjs'
 
-function CharacterCount ($module) {
+function CharacterCount ($module, config) {
+  if (!$module) {
+    return this
+  }
+
+  // Read config set using dataset ('data-' values)
+  var datasetConfig = normaliseDataset($module.dataset)
+
+  this.config = mergeConfigs(
+    config || {},
+    datasetConfig
+  )
+
+  // Determine the limit attribute (characters or words)
+  if (this.config.maxwords) {
+    this.maxLength = this.config.maxwords
+  } else if (this.config.maxlength) {
+    this.maxLength = this.config.maxlength
+  } else {
+    return
+  }
+
   this.$module = $module
   this.$textarea = $module.querySelector('.govuk-js-character-count')
   this.$visibleCountMessage = null
@@ -19,8 +41,6 @@ CharacterCount.prototype.init = function () {
     return
   }
 
-  // Check for module
-  var $module = this.$module
   var $textarea = this.$textarea
   var $fallbackLimitMessage = document.getElementById($textarea.id + '-info')
 
@@ -48,18 +68,6 @@ CharacterCount.prototype.init = function () {
 
   // Hide the fallback limit message
   $fallbackLimitMessage.classList.add('govuk-visually-hidden')
-
-  // Read config set using dataset ('data-' values)
-  this.config = this.getDataset($module)
-
-  // Determine the limit attribute (characters or words)
-  if (this.config.maxwords) {
-    this.maxLength = this.config.maxwords
-  } else if (this.config.maxlength) {
-    this.maxLength = this.config.maxlength
-  } else {
-    return
-  }
 
   // Remove hard limit if set
   $textarea.removeAttribute('maxlength')
