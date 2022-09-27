@@ -3,6 +3,23 @@ import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target n
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 import { mergeConfigs, normaliseDataset } from '../../common.mjs'
 
+/**
+ * JavaScript enhancements for the CharacterCount component
+ *
+ * Tracks the number of characters or words in the `.govuk-js-character-count`
+ * `<textarea>` inside the element. Displays a message when the
+ *
+ * @class
+ * @param {HTMLElement} $module - The element this component controls
+ * @param {Object} config
+ * @param {Number} config.maxlength - If `maxwords` is set, this is not required.
+ * The maximum number of characters. If `maxwords` is provided, it will be ignored.
+ * @param {Number} config.maxwords - If `maxlength` is set, this is not required.
+ * The maximum number of words. If `maxwords` is provided, `maxlength` will be ignored.
+ * @param {Number} [config.threshold=0] - The percentage value of the limit at
+ * which point the count message is displayed. If this attribute is set, the
+ * count message will be hidden by default.
+ */
 function CharacterCount ($module, config) {
   if (!$module) {
     return this
