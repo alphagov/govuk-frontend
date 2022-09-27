@@ -32,4 +32,8 @@ async function updateDistAssetsVersion () {
   return Promise.all(assetTasks)
 }
 
-module.exports = updateDistAssetsVersion
+updateDistAssetsVersion.displayName = 'update-dist-assets-version'
+
+module.exports = {
+  updateDistAssetsVersion
+}

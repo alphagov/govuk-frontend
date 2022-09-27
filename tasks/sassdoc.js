@@ -1,9 +1,9 @@
 const sassdoc = require('sassdoc')
-const paths = require('../config/paths.js')
+const configPaths = require('../config/paths.js')
 
 function buildSassdocs () {
-  return sassdoc([paths.src + '**/**/*.scss', `!${paths.src}/vendor/*`], {
-    dest: paths.sassdoc,
+  return sassdoc([configPaths.src + '**/**/*.scss', `!${configPaths.src}/vendor/*`], {
+    dest: configPaths.sassdoc,
     groups: {
       'components/button': 'Components / Button',
       'helpers/accessibility': 'Helpers / Accessibility',
@@ -31,4 +31,8 @@ function buildSassdocs () {
   })
 }
 
-module.exports = buildSassdocs
+buildSassdocs.displayName = 'sassdoc:compile'
+
+module.exports = {
+  buildSassdocs
+}

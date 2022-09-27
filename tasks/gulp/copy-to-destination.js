@@ -13,7 +13,7 @@ const rename = require('gulp-rename')
 const configPaths = require('../../config/paths.js')
 const taskArguments = require('../task-arguments')
 
-gulp.task('copy-files', () => {
+gulp.task('copy:files', () => {
   return merge(
     /**
      * Copy files to destination with './govuk-esm' suffix
