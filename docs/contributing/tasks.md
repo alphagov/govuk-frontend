@@ -65,13 +65,13 @@ This task will:
 **`gulp styles`**
 
 This task will:
- - check Sass code quality via Stylelint (`gulp scss:lint`)
+ - check Sass code quality via Stylelint (`npm run lint:scss`)
  - compile Sass to CSS (`gulp scss:compile`) into `./public`, or another location via the `--destination` flag
 
 **`gulp scripts`**
 
 This task will:
- - check JavaScript code quality via ESLint (`gulp js:lint`) (using JavaScript Standard Style)
+ - check JavaScript code quality via ESLint (`npm run lint:js`) (using JavaScript Standard Style)
  - compile JavaScript ESM to CommonJS (`gulp js:compile`) into `./public`, or another location via the `--destination` flag
 
 **`gulp copy-assets`**

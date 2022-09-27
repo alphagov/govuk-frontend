@@ -5,23 +5,22 @@ const taskArguments = require('./tasks/task-arguments')
 
 // Gulp sub-tasks
 require('./tasks/gulp/compile-assets.js')
-require('./tasks/gulp/lint.js')
-require('./tasks/gulp/watch.js')
-// new tasks
 require('./tasks/gulp/copy-to-destination.js')
+require('./tasks/gulp/watch.js')
 
 // Node tasks
 const buildSassdocs = require('./tasks/sassdoc.js')
 const runNodemon = require('./tasks/nodemon.js')
 const updateDistAssetsVersion = require('./tasks/asset-version.js')
 const { cleanDist, cleanPackage, cleanPublic } = require('./tasks/clean.js')
+const { npmScriptTask } = require('./tasks/run.js')
 
 /**
  * Umbrella scripts tasks (for watch)
  * Runs JavaScript code quality checks and compilation
  */
 gulp.task('scripts', gulp.series(
-  'js:lint',
+  npmScriptTask('lint:js', ['--silent']),
   'js:compile'
 ))
 
@@ -30,7 +29,7 @@ gulp.task('scripts', gulp.series(
  * Runs Sass code quality checks and compilation
  */
 gulp.task('styles', gulp.series(
-  'scss:lint',
+  npmScriptTask('lint:scss', ['--silent']),
   'scss:compile'
 ))
 
