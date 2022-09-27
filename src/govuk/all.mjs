@@ -43,7 +43,7 @@ function initAll (config) {
 
   var $characterCounts = $scope.querySelectorAll('[data-module="govuk-character-count"]')
   nodeListForEach($characterCounts, function ($characterCount) {
-    new CharacterCount($characterCount).init()
+    new CharacterCount($characterCount, config.characterCount).init()
   })
 
   var $checkboxes = $scope.querySelectorAll('[data-module="govuk-checkboxes"]')
