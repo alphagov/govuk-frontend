@@ -59,8 +59,8 @@ describe('/components/button', () => {
      *
      * Examples don't do this and we need it to have something to submit
      */
-    async function trackClicks () {
-      page.evaluate(() => {
+    function trackClicks (page) {
+      return page.evaluate(() => {
         const $button = document.querySelector('button')
         const $form = document.createElement('form')
         $button.parentNode.appendChild($form)
@@ -80,40 +80,52 @@ describe('/components/button', () => {
      *
      * @returns {Number}
      */
-    function getClicksCount () {
+    function getClicksCount (page) {
       return page.evaluate(() => window.__SUBMIT_EVENTS)
     }
 
     describe('not enabled', () => {
+      let page
+
+      beforeEach(async () => {
+        page = await browser.newPage()
+      })
+
       it('does not prevent multiple submissions', async () => {
         await page.goto(baseUrl + '/components/button/preview', {
           waitUntil: 'load'
         })
 
-        await trackClicks()
+        await trackClicks(page)
 
         await page.click('button')
         await page.click('button')
 
-        const clicksCount = await getClicksCount()
+        const clicksCount = await getClicksCount(page)
 
         expect(clicksCount).toBe(2)
       })
     })
 
     describe('using data-attributes', () => {
+      let page
+
+      beforeEach(async () => {
+        page = await browser.newPage()
+      })
+
       it('prevents unintentional submissions when in a form', async () => {
         await page.goto(
           baseUrl + '/components/button/prevent-double-click/preview',
           { waitUntil: 'load' }
         )
 
-        await trackClicks()
+        await trackClicks(page)
 
         await page.click('button')
         await page.click('button')
 
-        const clicksCount = await getClicksCount()
+        const clicksCount = await getClicksCount(page)
 
         expect(clicksCount).toBe(1)
       })
@@ -124,12 +136,12 @@ describe('/components/button', () => {
           { waitUntil: 'load' }
         )
 
-        await trackClicks()
+        await trackClicks(page)
 
         await page.click('button')
         await page.click('button', { delay: 1000 })
 
-        const clicksCount = await getClicksCount()
+        const clicksCount = await getClicksCount(page)
 
         expect(clicksCount).toBe(2)
       })
@@ -140,7 +152,7 @@ describe('/components/button', () => {
           { waitUntil: 'load' }
         )
 
-        await trackClicks()
+        await trackClicks(page)
 
         // Clone button to have two buttons on the page
         await page.evaluate(() => {
@@ -153,16 +165,18 @@ describe('/components/button', () => {
         await page.click('button:nth-child(1)')
         await page.click('button:nth-child(2)')
 
-        const clicksCount = await getClicksCount()
+        const clicksCount = await getClicksCount(page)
 
         expect(clicksCount).toBe(2)
       })
     })
 
     describe('using JavaScript configuration', () => {
+      let page
+
       // To ensure
       beforeEach(async () => {
-        await renderAndInitialise('button', {
+        page = await renderAndInitialise('button', {
           baseUrl,
           nunjucksParams: examples.default,
           javascriptConfig: {
@@ -170,14 +184,14 @@ describe('/components/button', () => {
           }
         })
 
-        await trackClicks()
+        await trackClicks(page)
       })
 
       it('prevents unintentional submissions when in a form', async () => {
         await page.click('button')
         await page.click('button')
 
-        const clicksCount = await getClicksCount()
+        const clicksCount = await getClicksCount(page)
 
         expect(clicksCount).toBe(1)
       })
@@ -186,7 +200,7 @@ describe('/components/button', () => {
         await page.click('button')
         await page.click('button', { delay: 1000 })
 
-        const clicksCount = await getClicksCount()
+        const clicksCount = await getClicksCount(page)
 
         expect(clicksCount).toBe(2)
       })
@@ -203,15 +217,17 @@ describe('/components/button', () => {
         await page.click('button:nth-child(1)')
         await page.click('button:nth-child(2)')
 
-        const clicksCount = await getClicksCount()
+        const clicksCount = await getClicksCount(page)
 
         expect(clicksCount).toBe(2)
       })
     })
 
     describe('using JavaScript configuration, but cancelled by data-attributes', () => {
+      let page
+
       it('does not prevent multiple submissions', async () => {
-        await renderAndInitialise('button', {
+        page = await renderAndInitialise('button', {
           baseUrl,
           nunjucksParams: examples["don't prevent double click"],
           javascriptConfig: {
@@ -219,21 +235,23 @@ describe('/components/button', () => {
           }
         })
 
-        await trackClicks()
+        await trackClicks(page)
 
         await page.click('button')
         await page.click('button')
 
-        const clicksCount = await getClicksCount()
+        const clicksCount = await getClicksCount(page)
 
         expect(clicksCount).toBe(2)
       })
     })
 
     describe('using `initAll`', () => {
+      let page
+
       // To ensure
       beforeEach(async () => {
-        await renderAndInitialise('button', {
+        page = await renderAndInitialise('button', {
           baseUrl,
           nunjucksParams: examples.default,
           initialiser () {
@@ -245,14 +263,14 @@ describe('/components/button', () => {
           }
         })
 
-        await trackClicks()
+        await trackClicks(page)
       })
 
       it('prevents unintentional submissions when in a form', async () => {
         await page.click('button')
         await page.click('button')
 
-        const clicksCount = await getClicksCount()
+        const clicksCount = await getClicksCount(page)
 
         expect(clicksCount).toBe(1)
       })
@@ -261,7 +279,7 @@ describe('/components/button', () => {
         await page.click('button')
         await page.click('button', { delay: 1000 })
 
-        const clicksCount = await getClicksCount()
+        const clicksCount = await getClicksCount(page)
 
         expect(clicksCount).toBe(2)
       })
@@ -278,7 +296,7 @@ describe('/components/button', () => {
         await page.click('button:nth-child(1)')
         await page.click('button:nth-child(2)')
 
-        const clicksCount = await getClicksCount()
+        const clicksCount = await getClicksCount(page)
 
         expect(clicksCount).toBe(2)
       })

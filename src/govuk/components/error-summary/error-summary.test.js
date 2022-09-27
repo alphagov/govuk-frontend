@@ -61,8 +61,10 @@ describe('Error Summary', () => {
     })
 
     describe('using JavaScript configuration', () => {
+      let page
+
       beforeAll(async () => {
-        await renderAndInitialise('error-summary', {
+        page = await renderAndInitialise('error-summary', {
           baseUrl,
           nunjucksParams: examples.default,
           javascriptConfig: {
@@ -104,8 +106,10 @@ describe('Error Summary', () => {
     })
 
     describe('using JavaScript configuration, but enabled via data-attributes', () => {
+      let page
+
       beforeAll(async () => {
-        await renderAndInitialise('error-summary', {
+        page = await renderAndInitialise('error-summary', {
           baseUrl,
           nunjucksParams: examples['autofocus explicitly enabled']
         })
@@ -127,8 +131,10 @@ describe('Error Summary', () => {
     })
 
     describe('using `initAll`', () => {
+      let page
+
       beforeAll(async () => {
-        await renderAndInitialise('error-summary', {
+        page = await renderAndInitialise('error-summary', {
           baseUrl,
           nunjucksParams: examples.default,
           initialiser () {

@@ -1,5 +1,6 @@
 import { getServers, setup } from 'jest-dev-server'
 import waitOn from 'wait-on'
+import serverStop from './stop.mjs'
 
 import configPaths from '../../paths.js'
 const { PORT = configPaths.ports.test } = process.env
@@ -8,22 +9,26 @@ const { PORT = configPaths.ports.test } = process.env
  * Start web server
  */
 export default async function serverStart () {
-  const [server] = await getServers()
+  const servers = await getServers()
 
-  // Server already running
-  if (server) {
-    return
+  // Server start timeout
+  let timeout = 1000
+
+  // Server stopping?
+  if (servers.some(({ signalCode }) => signalCode === 'SIGTERM')) {
+    await serverStop() // Wait for server to stop
+    timeout = 0 // No need to wait for start
   }
 
-  // Wait until ready
+  // Wait until ready check
   const ready = ({ timeout = 30000 } = {}) => waitOn({
     resources: [`tcp:${PORT}`],
     timeout
   })
 
-  // Start server
+  // Wait until ready (or start up)
   try {
-    await ready({ timeout: 1000 })
+    await ready({ timeout })
   } catch (error) {
     await setup({ command: `PORT=${PORT} node app/start.js`, port: PORT })
     await ready()
