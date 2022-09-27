@@ -1,34 +1,30 @@
 const del = require('del')
-const configPaths = require('../config/paths.js')
 
-function cleanDist () {
-  return del([
-    `${configPaths.dist}**/*`
-  ])
+const { destination } = require('./task-arguments.js')
+
+function paths () {
+  const param = [`${destination}/**/*`]
+
+  // Preserve package files
+  if (destination === 'package') {
+    param.push(
+      `!${destination}/`,
+      `!${destination}/package.json`,
+      `!${destination}/govuk-prototype-kit.config.json`,
+      `!${destination}/README.md`
+    )
+  }
+
+  return param
 }
 
-function cleanPackage () {
-  return del([
-    `${configPaths.package}**`,
-    `!${configPaths.package}`,
-    `!${configPaths.package}package.json`,
-    `!${configPaths.package}govuk-prototype-kit.config.json`,
-    `!${configPaths.package}README.md`
-  ])
+function clean () {
+  return del(paths())
 }
 
-function cleanPublic () {
-  return del([
-    `${configPaths.public}**/*`
-  ])
-}
-
-cleanDist.displayName = 'clean:dist'
-cleanPackage.displayName = 'clean:package'
-cleanPublic.displayName = 'clean:public'
+clean.displayName = `clean:${destination}`
 
 module.exports = {
-  cleanDist,
-  cleanPackage,
-  cleanPublic
+  paths,
+  clean
 }

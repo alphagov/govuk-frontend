@@ -12,7 +12,7 @@ require('./tasks/gulp/watch.js')
 const { buildSassdocs } = require('./tasks/sassdoc.js')
 const { runNodemon } = require('./tasks/nodemon.js')
 const { updateDistAssetsVersion } = require('./tasks/asset-version.js')
-const { cleanDist, cleanPackage, cleanPublic } = require('./tasks/clean.js')
+const { clean } = require('./tasks/clean.js')
 const { npmScriptTask } = require('./tasks/run.js')
 
 /**
@@ -67,7 +67,7 @@ gulp.task('serve', gulp.parallel(
  * Runs a sequence of tasks on start
  */
 gulp.task('dev', gulp.series(
-  cleanPublic,
+  clean,
   'compile',
   'serve'
 ))
@@ -77,7 +77,7 @@ gulp.task('dev', gulp.series(
  * Prepare package folder for publishing
  */
 gulp.task('build:package', gulp.series(
-  cleanPackage,
+  clean,
   'copy:files',
   'js:compile'
 ))
@@ -87,7 +87,7 @@ gulp.task('build:package', gulp.series(
  * Prepare dist folder for release
  */
 gulp.task('build:dist', gulp.series(
-  cleanDist,
+  clean,
   'compile',
   'copy:assets',
   updateDistAssetsVersion
