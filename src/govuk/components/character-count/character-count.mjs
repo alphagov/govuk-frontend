@@ -318,33 +318,4 @@ CharacterCount.prototype.isOverThreshold = function () {
   return (thresholdValue <= currentLength)
 }
 
-/**
- * Get dataset
- *
- * Get all of the data-* attributes from a given $element as map of key-value
- * pairs, with the data- prefix removed from the keys.
- *
- * This is a bit like HTMLElement.dataset, but it does not convert the keys to
- * camel case (and it works in browsers that do not support HTMLElement.dataset)
- *
- * @todo Replace with HTMLElement.dataset
- *
- * @param {HTMLElement} $element - The element to read data attributes from
- * @returns {Object} Object of key-value pairs representing the data attributes
- */
-CharacterCount.prototype.getDataset = function ($element) {
-  var dataset = {}
-  var attributes = $element.attributes
-  if (attributes) {
-    for (var i = 0; i < attributes.length; i++) {
-      var attribute = attributes[i]
-      var match = attribute.name.match(/^data-(.+)/)
-      if (match) {
-        dataset[match[1]] = attribute.value
-      }
-    }
-  }
-  return dataset
-}
-
 export default CharacterCount
