@@ -278,20 +278,16 @@ CharacterCount.prototype.count = function (text) {
  * @returns {String} Status message
  */
 CharacterCount.prototype.getCountMessage = function () {
-  var $textarea = this.$textarea
-  var config = this.config
-  var remainingNumber = this.maxLength - this.count($textarea.value)
+  var remainingNumber = this.maxLength - this.count(this.$textarea.value)
 
-  var charVerb = 'remaining'
-  var charNoun = 'character'
-  var displayNumber = remainingNumber
-  if (config.maxwords) {
-    charNoun = 'word'
-  }
-  charNoun = charNoun + ((remainingNumber === -1 || remainingNumber === 1) ? '' : 's')
+  var countType = this.config.maxwords ? 'words' : 'characters'
+  return this.formatCountMessage(remainingNumber, countType)
+}
 
-  charVerb = (remainingNumber < 0) ? 'too many' : 'remaining'
-  displayNumber = Math.abs(remainingNumber)
+CharacterCount.prototype.formatCountMessage = function (remainingNumber, countType) {
+  var charVerb = (remainingNumber < 0) ? 'too many' : 'remaining'
+  var displayNumber = Math.abs(remainingNumber)
+  var charNoun = displayNumber === 1 ? countType.substring(0, countType.length - 1) : countType
 
   return 'You have ' + displayNumber + ' ' + charNoun + ' ' + charVerb
 }
