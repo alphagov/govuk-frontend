@@ -73,7 +73,7 @@ function CharacterCount ($module, config) {
     datasetConfig
   )
 
-  this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'))
+  this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'), { locale: this.config.i18nLocale })
 
   // Determine the limit attribute (characters or words)
   if (this.config.maxwords) {

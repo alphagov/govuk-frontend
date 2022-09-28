@@ -44,11 +44,16 @@ describe('CharacterCount', () => {
       it('formats word limit being met', () => {
         expect(component.formatCountMessage(0, 'words')).toEqual('You have 0 words remaining')
       })
+
+      it('formats the count', () => {
+        expect(component.formatCountMessage(10000, 'words')).toEqual('You have 10,000 words remaining')
+        expect(component.formatCountMessage(-10000, 'words')).toEqual('You have 10,000 words too many')
+      })
     })
 
     describe('i18n', () => {
       describe('JavaScript configuration', () => {
-        it('overrides the default configuration', () => {
+        it('overrides the default translation keys', () => {
           const component = new CharacterCount(createElement('div'), {
             i18n: { charactersUnderLimitOne: 'Custom text. Count: %{count}' },
             'i18n.charactersOverLimitOther': 'Different custom text. Count: %{count}'
@@ -58,10 +63,17 @@ describe('CharacterCount', () => {
           // Other keys remain untouched
           expect(component.formatCountMessage(10, 'characters')).toEqual('You have 10 characters remaining')
         })
+
+        it('overrides the default locale', () => {
+          const component = new CharacterCount(createElement('div'), {
+            i18nLocale: 'de'
+          })
+          expect(component.formatCountMessage(10000, 'words')).toEqual('You have 10.000 words remaining')
+        })
       })
 
       describe('Data attribute configuration', () => {
-        it('overrides the default configuration', () => {
+        it('overrides the default translation keys', () => {
           const $div = createElement('div', { 'data-i18n.characters-under-limit-one': 'Custom text. Count: %{count}' })
           const component = new CharacterCount($div)
           expect(component.formatCountMessage(1, 'characters')).toEqual('Custom text. Count: 1')
@@ -69,23 +81,53 @@ describe('CharacterCount', () => {
           expect(component.formatCountMessage(10, 'characters')).toEqual('You have 10 characters remaining')
         })
 
-        it('overrides the JavaScript configuration', () => {
-          const $div = createElement('div', { 'data-i18n.characters-under-limit-one': 'Custom text. Count: %{count}' })
-          const component = new CharacterCount($div, {
-            i18n: {
-              charactersUnderLimitOne: 'Different custom text. Count: %{count}'
-            }
+        it('overrides the default locale', () => {
+          const component = new CharacterCount(createElement('div', {
+            'data-i18n-locale': 'de'
+          }))
+          expect(component.formatCountMessage(10000, 'words')).toEqual('You have 10.000 words remaining')
+        })
+
+        describe('precedence over JavaScript configuration', () => {
+          it('overrides translation keys', () => {
+            const $div = createElement('div', { 'data-i18n.characters-under-limit-one': 'Custom text. Count: %{count}' })
+            const component = new CharacterCount($div, {
+              i18n: {
+                charactersUnderLimitOne: 'Different custom text. Count: %{count}'
+              }
+            })
+            expect(component.formatCountMessage(1, 'characters')).toEqual('Custom text. Count: 1')
+            // Other keys remain untouched
+            expect(component.formatCountMessage(10, 'characters')).toEqual('You have 10 characters remaining')
           })
-          expect(component.formatCountMessage(1, 'characters')).toEqual('Custom text. Count: 1')
-          // Other keys remain untouched
-          expect(component.formatCountMessage(10, 'characters')).toEqual('You have 10 characters remaining')
+
+          it('overrides the default locale', () => {
+            const $div = createElement('div', {
+              'data-i18n-locale': 'de' // Dot as thousand separator
+            })
+            const component = new CharacterCount($div, {
+              i18nLocale: 'fr' // Space as thousand separator
+            })
+            expect(component.formatCountMessage(10000, 'words')).toEqual('You have 10.000 words remaining')
+          })
         })
       })
     })
   })
 })
 
-function createElement (tagName, { ...attributes } = {}) {
+/**
+ * Creates an element with the given attributes
+ *
+ * TODO: Extract to a dom-helpers.mjs file if necessary to share
+ * TODO: Extend to allow passing props and children if necessary
+ * TODO: Make available to components once support for older browsers is dropped (add tests)
+ *
+ * @param {String} tagName
+ * @param {Object} attributes
+ * @returns HTMLElement
+ */
+function createElement (tagName, attributes = {}) {
   const el = document.createElement(tagName)
 
   Object.entries(attributes).forEach(([attributeName, attributeValue]) => {
