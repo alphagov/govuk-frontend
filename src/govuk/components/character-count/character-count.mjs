@@ -2,7 +2,8 @@ import '../../vendor/polyfills/Date/now.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normalisation
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
-import { mergeConfigs, normaliseDataset } from '../../common.mjs'
+import { extractConfigByNamespace, mergeConfigs, normaliseDataset } from '../../common.mjs'
+import { I18n } from '../../i18n.mjs'
 
 /**
  * JavaScript enhancements for the CharacterCount component
@@ -31,7 +32,21 @@ function CharacterCount ($module, config) {
   }
 
   var defaultConfig = {
-    threshold: 0
+    threshold: 0,
+    i18n: {
+      // Characters
+      charactersUnderLimitZero: 'You have %{count} characters remaining',
+      charactersUnderLimitOne: 'You have %{count} character remaining',
+      charactersUnderLimitOther: 'You have %{count} characters remaining',
+      charactersOverLimitOne: 'You have %{count} character too many',
+      charactersOverLimitOther: 'You have %{count} characters too many',
+      // Words
+      wordsUnderLimitOne: 'You have %{count} word remaining',
+      wordsUnderLimitOther: 'You have %{count} words remaining',
+      wordsAtLimitOther: 'You have 0 words remaining',
+      wordsOverLimitOne: 'You have %{count} word too many',
+      wordsOverLimitOther: 'You have %{count} words too many'
+    }
   }
 
   // Read config set using dataset ('data-' values)
@@ -57,6 +72,8 @@ function CharacterCount ($module, config) {
     configOverrides,
     datasetConfig
   )
+
+  this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'))
 
   // Determine the limit attribute (characters or words)
   if (this.config.maxwords) {
@@ -285,11 +302,10 @@ CharacterCount.prototype.getCountMessage = function () {
 }
 
 CharacterCount.prototype.formatCountMessage = function (remainingNumber, countType) {
-  var charVerb = (remainingNumber < 0) ? 'too many' : 'remaining'
-  var displayNumber = Math.abs(remainingNumber)
-  var charNoun = displayNumber === 1 ? countType.substring(0, countType.length - 1) : countType
+  var translationKeySuffix = remainingNumber < 0 ? 'OverLimit' : 'UnderLimit'
+  var translationKey = countType + translationKeySuffix
 
-  return 'You have ' + displayNumber + ' ' + charNoun + ' ' + charVerb
+  return this.i18n.t(translationKey, { count: Math.abs(remainingNumber) })
 }
 
 /**
