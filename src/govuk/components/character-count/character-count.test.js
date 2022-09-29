@@ -329,7 +329,7 @@ describe('Character count', () => {
         examples = getExamples('character-count')
       })
 
-      describe('at instanciation', () => {
+      describe('at instantiation', () => {
         it('configures the number of characters', async () => {
           await renderAndInitialise('character-count', {
             baseUrl,

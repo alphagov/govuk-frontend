@@ -7,7 +7,11 @@ import { mergeConfigs, normaliseDataset } from '../../common.mjs'
  * JavaScript enhancements for the CharacterCount component
  *
  * Tracks the number of characters or words in the `.govuk-js-character-count`
- * `<textarea>` inside the element. Displays a message when the
+ * `<textarea>` inside the element. Displays a message with the remaining number
+ * of characters/words available, or the number of characters/words in excess.
+ *
+ * You can configure the message to only appear after a certain percentage
+ * of the available characters/words has been entered.
  *
  * @class
  * @param {HTMLElement} $module - The element this component controls
@@ -32,11 +36,12 @@ function CharacterCount ($module, config) {
   // Read config set using dataset ('data-' values)
   var datasetConfig = normaliseDataset($module.dataset)
 
-  // To ensure data-attributes take complete precedence,
-  // even if they change the type of count, we need to reset
-  // the `maxlength` and `maxwords` from the JavaScript config
-  // We can't mutate `config`, though, as it may be shared across
-  // multiple components inside `initAll`
+  // To ensure data-attributes take complete precedence, even if they change the
+  // type of count, we need to reset the `maxlength` and `maxwords` from the
+  // JavaScript config.
+  //
+  // We can't mutate `config`, though, as it may be shared across multiple
+  // components inside `initAll`.
   var configOverrides = {}
   if ('maxwords' in datasetConfig || 'maxlength' in datasetConfig) {
     configOverrides = {
@@ -301,8 +306,7 @@ CharacterCount.prototype.getCountMessage = function () {
  *   (or no threshold is set)
  */
 CharacterCount.prototype.isOverThreshold = function () {
-  // No threshold means we're always above threshold
-  // so we can save some computation
+  // No threshold means we're always above threshold so save some computation
   if (!this.config.threshold) {
     return true
   }
