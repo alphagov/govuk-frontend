@@ -19,7 +19,7 @@ module.exports = {
         'jest-serializer-html'
       ],
       testMatch: [
-        '**/template.test.js'
+        '**/(*.)?template.test.js'
       ]
     },
     {
@@ -39,13 +39,13 @@ module.exports = {
       testMatch: [
         '**/*.test.js',
 
-        // Exclude unit/snapshot tests
-        '!**/template.test.js',
+        // Exclude macro/unit tests
+        '!**/(*.)?template.test.js',
         '!**/*.unit.test.{js,mjs}',
 
         // Exclude other tests
         '!**/all.test.js',
-        '!**/components/**',
+        '!**/components/*/**',
         '!**/gulp/**'
       ],
 
@@ -59,10 +59,10 @@ module.exports = {
       setupFilesAfterEnv: [require.resolve('expect-puppeteer')],
       testMatch: [
         '**/all.test.js',
-        '**/components/**/*.test.js',
+        '**/components/*/*.test.js',
 
-        // Exclude unit/snapshot tests
-        '!**/template.test.js',
+        // Exclude macro/unit tests
+        '!**/(*.)?template.test.js',
         '!**/*.unit.test.{js,mjs}'
       ],
 
