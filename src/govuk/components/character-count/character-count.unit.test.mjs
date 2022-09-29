@@ -26,7 +26,7 @@ describe('CharacterCount', () => {
         expect(component.formatCountMessage(-10, 'characters')).toEqual('You have 10 characters too many')
       })
       it('formats character limit being met', () => {
-        expect(component.formatCountMessage(0, 'characters')).toEqual('You have 0 characters remaining')
+        expect(component.formatCountMessage(0, 'characters')).toEqual('You have no characters remaining')
       })
 
       it('formats singular remaining words', () => {
@@ -42,7 +42,7 @@ describe('CharacterCount', () => {
         expect(component.formatCountMessage(-10, 'words')).toEqual('You have 10 words too many')
       })
       it('formats word limit being met', () => {
-        expect(component.formatCountMessage(0, 'words')).toEqual('You have 0 words remaining')
+        expect(component.formatCountMessage(0, 'words')).toEqual('You have no words remaining')
       })
 
       it('formats the count', () => {

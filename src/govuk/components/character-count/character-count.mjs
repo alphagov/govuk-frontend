@@ -35,15 +35,15 @@ function CharacterCount ($module, config) {
     threshold: 0,
     i18n: {
       // Characters
-      charactersUnderLimitZero: 'You have %{count} characters remaining',
       charactersUnderLimitOne: 'You have %{count} character remaining',
       charactersUnderLimitOther: 'You have %{count} characters remaining',
+      charactersAtLimit: 'You have no characters remaining',
       charactersOverLimitOne: 'You have %{count} character too many',
       charactersOverLimitOther: 'You have %{count} characters too many',
       // Words
       wordsUnderLimitOne: 'You have %{count} word remaining',
       wordsUnderLimitOther: 'You have %{count} words remaining',
-      wordsAtLimitOther: 'You have 0 words remaining',
+      wordsAtLimit: 'You have no words remaining',
       wordsOverLimitOne: 'You have %{count} word too many',
       wordsOverLimitOther: 'You have %{count} words too many'
     }
@@ -302,10 +302,13 @@ CharacterCount.prototype.getCountMessage = function () {
 }
 
 CharacterCount.prototype.formatCountMessage = function (remainingNumber, countType) {
-  var translationKeySuffix = remainingNumber < 0 ? 'OverLimit' : 'UnderLimit'
-  var translationKey = countType + translationKeySuffix
+  if (remainingNumber === 0) {
+    return this.i18n.t(countType + 'AtLimit')
+  }
 
-  return this.i18n.t(translationKey, { count: Math.abs(remainingNumber) })
+  var translationKeySuffix = remainingNumber < 0 ? 'OverLimit' : 'UnderLimit'
+
+  return this.i18n.t(countType + translationKeySuffix, { count: Math.abs(remainingNumber) })
 }
 
 /**
