@@ -5,41 +5,12 @@
 const { fetch } = require('undici')
 const { WebSocket } = require('ws')
 
-const { renderSass } = require('../../../lib/jest-helpers')
 const { allComponents } = require('../../../lib/file-helper')
 
 const configPaths = require('../../../config/paths.js')
 
 const PORT = configPaths.ports.test
 const baseUrl = 'http://localhost:' + PORT
-
-describe('Sass render', () => {
-  it('renders CSS for all components', () => {
-    const file = `${configPaths.src}/components/_all.scss`
-
-    return expect(renderSass({ file })).resolves.toEqual(
-      expect.objectContaining({
-        css: expect.any(Object),
-        stats: expect.any(Object)
-      })
-    )
-  })
-
-  it('renders CSS for each component', () => {
-    const sassTasks = allComponents.map((component) => {
-      const file = `${configPaths.src}/components/${component}/_${component}.scss`
-
-      return expect(renderSass({ file })).resolves.toEqual(
-        expect.objectContaining({
-          css: expect.any(Object),
-          stats: expect.any(Object)
-        })
-      )
-    })
-
-    return Promise.all(sassTasks)
-  })
-})
 
 describe('Visual regression via Percy', () => {
   let percySnapshot
