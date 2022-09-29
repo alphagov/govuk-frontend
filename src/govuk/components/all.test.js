@@ -72,7 +72,7 @@ describe('Sass render', () => {
   })
 })
 
-describe.each(allComponents)('%s', (component) => {
+describe('Visual regression via Percy', () => {
   let percySnapshot
 
   beforeAll(() => {
@@ -82,17 +82,21 @@ describe.each(allComponents)('%s', (component) => {
     percySnapshot = require('@percy/puppeteer')
   })
 
-  it('generate screenshots for Percy visual regression, with JavaScript disabled', async () => {
-    await page.setJavaScriptEnabled(false)
-    await page.goto(baseUrl + '/components/' + component + '/preview', { waitUntil: 'load' })
-    await percySnapshot(page, 'no-js: ' + component)
-  })
+  it('generate screenshots', async () => {
+    for (const component of allComponents) {
+      await page.setJavaScriptEnabled(true)
 
-  it('generate screenshots for Percy visual regression, with JavaScript enabled', async () => {
-    await page.setJavaScriptEnabled(true)
-    await page.goto(baseUrl + '/components/' + component + '/preview', { waitUntil: 'load' })
-    await percySnapshot(page, 'js: ' + component)
-  })
+      // Screenshot preview page (with JavaScript)
+      await page.goto(baseUrl + '/components/' + component + '/preview', { waitUntil: 'load' })
+      await percySnapshot(page, `js: ${component}`)
+
+      await page.setJavaScriptEnabled(false)
+
+      // Screenshot preview page (without JavaScript)
+      await page.reload({ waitUntil: 'load' })
+      await percySnapshot(page, `no-js: ${component}`)
+    }
+  }, 120000)
 })
 
 describe('HTML validation', () => {
