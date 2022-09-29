@@ -44,9 +44,31 @@ describe('Nunjucks render', () => {
   })
 })
 
-it('_all.scss renders to CSS without errors', () => {
-  return renderSass({
-    file: `${configPaths.src}/components/_all.scss`
+describe('Sass render', () => {
+  it('renders CSS for all components', () => {
+    const file = `${configPaths.src}/components/_all.scss`
+
+    return expect(renderSass({ file })).resolves.toEqual(
+      expect.objectContaining({
+        css: expect.any(Object),
+        stats: expect.any(Object)
+      })
+    )
+  })
+
+  it('renders CSS for each component', () => {
+    const sassTasks = allComponents.map((component) => {
+      const file = `${configPaths.src}/components/${component}/_${component}.scss`
+
+      return expect(renderSass({ file })).resolves.toEqual(
+        expect.objectContaining({
+          css: expect.any(Object),
+          stats: expect.any(Object)
+        })
+      )
+    })
+
+    return Promise.all(sassTasks)
   })
 })
 
@@ -58,12 +80,6 @@ describe.each(allComponents)('%s', (component) => {
     // Fixes Percy running in a non-browser environment
     global.window = { fetch, WebSocket }
     percySnapshot = require('@percy/puppeteer')
-  })
-
-  it(`${component}.scss renders to CSS without errors`, () => {
-    return renderSass({
-      file: `${configPaths.src}/components/${component}/_${component}.scss`
-    })
   })
 
   it('generate screenshots for Percy visual regression, with JavaScript disabled', async () => {
