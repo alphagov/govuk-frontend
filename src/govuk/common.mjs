@@ -189,9 +189,10 @@ export function normaliseDataset (dataset) {
 }
 
 /**
- * Returns the value of the `lang` attribute closest to the given element (including itself)
+ * Returns the value of the given attribute closest to the given element (including itself)
  *
  * @param {HTMLElement} $element - The element to start walking the DOM tree up
+ * @param {String} attributeName - The name of the attribute
  * @returns {String|undefined}
  */
 export function closestAttributeValue ($element, attributeName) {
