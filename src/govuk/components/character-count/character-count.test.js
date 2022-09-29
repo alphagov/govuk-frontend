@@ -2,9 +2,12 @@
  * @jest-environment puppeteer
  */
 
+const { getExamples } = require('../../../../lib/jest-helpers.js')
+const { renderAndInitialise } = require('../../../../lib/puppeteer-helpers')
+
 const configPaths = require('../../../../config/paths.js')
-const { getExamples, renderAndInitialise } = require('../../../../lib/jest-helpers.js')
 const PORT = configPaths.ports.test
+
 const baseUrl = `http://localhost:${PORT}`
 
 // The longest possible time from a keyboard user ending input and the screen

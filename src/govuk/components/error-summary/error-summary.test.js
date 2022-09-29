@@ -1,7 +1,9 @@
 /**
  * @jest-environment puppeteer
  */
-const { renderAndInitialise, getExamples } = require('../../../../lib/jest-helpers')
+
+const { getExamples } = require('../../../../lib/jest-helpers')
+const { renderAndInitialise } = require('../../../../lib/puppeteer-helpers')
 
 const examples = getExamples('error-summary')
 
