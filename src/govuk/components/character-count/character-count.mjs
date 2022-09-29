@@ -2,7 +2,7 @@ import '../../vendor/polyfills/Date/now.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normalisation
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
-import { extractConfigByNamespace, mergeConfigs, normaliseDataset } from '../../common.mjs'
+import { closestAttributeValue, extractConfigByNamespace, mergeConfigs, normaliseDataset } from '../../common.mjs'
 import { I18n } from '../../i18n.mjs'
 
 /**
@@ -73,7 +73,11 @@ function CharacterCount ($module, config) {
     datasetConfig
   )
 
-  this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'), { locale: this.config.i18nLocale })
+  console.log(this.$module)
+  this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'), {
+    // Read the fallback if necessary rather than have it set in the defaults
+    locale: this.config.i18nLocale || closestAttributeValue($module, 'lang')
+  })
 
   // Determine the limit attribute (characters or words)
   if (this.config.maxwords) {

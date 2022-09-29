@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 
+import { createElement } from '../../../../lib/dom-helpers.mjs'
 import CharacterCount from './character-count.mjs'
 
 describe('CharacterCount', () => {
@@ -72,6 +73,26 @@ describe('CharacterCount', () => {
         })
       })
 
+      describe('lang attribute configuration', () => {
+        it('overrides the locale when set on the element', () => {
+          const $div = createElement('div', {
+            lang: 'de'
+          })
+          const component = new CharacterCount($div)
+
+          expect(component.formatCountMessage(10000, 'words')).toEqual('You have 10.000 words remaining')
+        })
+
+        it('overrides the locale when set on an ancestor', () => {
+          const $parent = createElement('div', { lang: 'de' })
+          const $div = createElement('div')
+          $parent.appendChild($div)
+          const component = new CharacterCount($div)
+
+          expect(component.formatCountMessage(10000, 'words')).toEqual('You have 10.000 words remaining')
+        })
+      })
+
       describe('Data attribute configuration', () => {
         it('overrides the default translation keys', () => {
           const $div = createElement('div', { 'data-i18n.characters-under-limit-one': 'Custom text. Count: %{count}' })
@@ -110,29 +131,18 @@ describe('CharacterCount', () => {
             })
             expect(component.formatCountMessage(10000, 'words')).toEqual('You have 10.000 words remaining')
           })
+
+          it('overrides the locale in lang attribute', () => {
+            const $div = createElement('div', {
+              'data-i18n-locale': 'de',
+              lang: 'fr'
+            })
+            const component = new CharacterCount($div)
+
+            expect(component.formatCountMessage(10000, 'words')).toEqual('You have 10.000 words remaining')
+          })
         })
       })
     })
   })
 })
-
-/**
- * Creates an element with the given attributes
- *
- * TODO: Extract to a dom-helpers.mjs file if necessary to share
- * TODO: Extend to allow passing props and children if necessary
- * TODO: Make available to components once support for older browsers is dropped (add tests)
- *
- * @param {String} tagName
- * @param {Object} attributes
- * @returns HTMLElement
- */
-function createElement (tagName, attributes = {}) {
-  const el = document.createElement(tagName)
-
-  Object.entries(attributes).forEach(([attributeName, attributeValue]) => {
-    el.setAttribute(attributeName, attributeValue)
-  })
-
-  return el
-}

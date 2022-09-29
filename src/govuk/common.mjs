@@ -1,5 +1,6 @@
 import './vendor/polyfills/Element/prototype/dataset.mjs'
 import './vendor/polyfills/String/prototype/trim.mjs'
+import './vendor/polyfills/Element/prototype/closest.mjs'
 
 /**
  * TODO: Ideally this would be a NodeList.prototype.forEach polyfill
@@ -185,4 +186,17 @@ export function normaliseDataset (dataset) {
   }
 
   return out
+}
+
+/**
+ * Returns the value of the `lang` attribute closest to the given element (including itself)
+ *
+ * @param {HTMLElement} $element - The element to start walking the DOM tree up
+ * @returns {String|undefined}
+ */
+export function closestAttributeValue ($element, attributeName) {
+  var closestElementWithAttribute = $element.closest('[' + attributeName + ']')
+  if (closestElementWithAttribute) {
+    return closestElementWithAttribute.getAttribute(attributeName)
+  }
 }

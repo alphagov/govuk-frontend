@@ -2,7 +2,8 @@
  * @jest-environment jsdom
  */
 
-import { mergeConfigs, extractConfigByNamespace, normaliseString, normaliseDataset } from './common.mjs'
+import { createElement } from '../../lib/dom-helpers.mjs'
+import { mergeConfigs, extractConfigByNamespace, normaliseString, normaliseDataset, closestAttributeValue } from './common.mjs'
 
 // TODO: Write unit tests for `nodeListForEach` and `generateUniqueID`
 
@@ -214,6 +215,34 @@ describe('Common JS utilities', () => {
         aString: 'Hello!',
         anOptionalString: ''
       })
+    })
+  })
+
+  describe('closestAttributeValue', () => {
+    it('returns the value of the attribute if on the element', () => {
+      const $element = createElement('div', { lang: 'en-GB' })
+
+      expect(closestAttributeValue($element, 'lang')).toEqual('en-GB')
+    })
+
+    it('returns the value of the closest parent with the attribute if it exists', () => {
+      const $greatGrandParent = createElement('div', { lang: 'cy-GB' }) // To check that we take the value up
+      const $grandparent = createElement('div', { lang: 'en-GB' })
+      const $parent = createElement('div') // To check that we walk up the tree
+      const $element = createElement('div')
+      $greatGrandParent.appendChild($grandparent)
+      $grandparent.appendChild($parent)
+      $parent.appendChild($element)
+
+      expect(closestAttributeValue($element, 'lang')).toEqual('en-GB')
+    })
+
+    it('returns undefined if neither the element or a parent have the attribute', () => {
+      const $parent = createElement('div')
+      const $element = createElement('div')
+      $parent.appendChild($element)
+
+      expect(closestAttributeValue($element, 'lang')).toBeUndefined()
     })
   })
 })
