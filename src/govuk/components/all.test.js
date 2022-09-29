@@ -7,7 +7,7 @@ const { WebSocket } = require('ws')
 require('html-validate/jest')
 
 const { allComponents, getComponentData } = require('../../../lib/file-helper')
-const { renderSass, renderHtml } = require('../../../lib/jest-helpers')
+const { nunjucksEnv, renderSass, renderHtml } = require('../../../lib/jest-helpers')
 
 const configPaths = require('../../../config/paths.js')
 
@@ -18,19 +18,29 @@ const baseUrl = 'http://localhost:' + PORT
 // over the nunjucks environment.
 const nunjucks = require('nunjucks')
 
-describe('When nunjucks is configured with a different base path', () => {
-  let nunjucksEnv
+describe('Nunjucks render', () => {
+  let nunjucksEnvCustom
+  let nunjucksEnvDefault
 
   beforeAll(() => {
     // Create a new Nunjucks environment that uses the src directory as its
     // base path, rather than the components folder itself
-    nunjucksEnv = nunjucks.configure(configPaths.src)
+    nunjucksEnvCustom = nunjucks.configure(configPaths.src)
+    nunjucksEnvDefault = nunjucksEnv
   })
 
-  it.each(allComponents)('render(\'%s\') does not error', (component) => {
-    expect(() => {
-      nunjucksEnv.render(`components/${component}/template.njk`, {})
-    }).not.toThrow()
+  describe('Environments', () => {
+    it('renders template for each component', () => {
+      return Promise.all(allComponents.map((component) =>
+        expect(nunjucksEnvDefault.render(`${component}/template.njk`, {})).resolves
+      ))
+    })
+
+    it('renders template for each component (different base path)', () => {
+      return Promise.all(allComponents.map((component) =>
+        expect(nunjucksEnvCustom.render(`components/${component}/template.njk`, {})).resolves
+      ))
+    })
   })
 })
 
