@@ -3,6 +3,7 @@
  */
 
 const configPaths = require('../../../../config/paths.js')
+const { getExamples, renderAndInitialise } = require('../../../../lib/jest-helpers.js')
 const PORT = configPaths.ports.test
 const baseUrl = `http://localhost:${PORT}`
 
@@ -318,6 +319,207 @@ describe('Character count', () => {
         it('adds error styles to the count message', async () => {
           const messageClasses = await page.$eval('.govuk-character-count__status', el => el.className)
           expect(messageClasses).toContain('govuk-error-message')
+        })
+      })
+    })
+
+    describe('JavaScript configuration', () => {
+      let examples
+      beforeAll(() => {
+        examples = getExamples('character-count')
+      })
+
+      describe('at instantiation', () => {
+        it('configures the number of characters', async () => {
+          await renderAndInitialise('character-count', {
+            baseUrl,
+            nunjucksParams: examples['to configure in JavaScript'],
+            javascriptConfig: {
+              maxlength: 10
+            }
+          })
+
+          await page.type('.govuk-js-character-count', 'A'.repeat(11))
+
+          const message = await page.$eval(
+            '.govuk-character-count__status',
+            (el) => el.innerHTML.trim()
+          )
+          expect(message).toEqual('You have 1 character too many')
+        })
+        it('configures the number of words', async () => {
+          await renderAndInitialise('character-count', {
+            baseUrl,
+            nunjucksParams: examples['to configure in JavaScript'],
+            javascriptConfig: {
+              maxwords: 10
+            }
+          })
+
+          await page.type('.govuk-js-character-count', 'Hello '.repeat(11))
+
+          const message = await page.$eval(
+            '.govuk-character-count__status',
+            (el) => el.innerHTML.trim()
+          )
+          expect(message).toEqual('You have 1 word too many')
+        })
+        it('configures the threshold', async () => {
+          await renderAndInitialise('character-count', {
+            baseUrl,
+            nunjucksParams: examples['to configure in JavaScript'],
+            javascriptConfig: {
+              maxlength: 10,
+              threshold: 75
+            }
+          })
+
+          await page.type('.govuk-js-character-count', 'A'.repeat(8))
+
+          const visibility = await page.$eval('.govuk-character-count__status', el => window.getComputedStyle(el).visibility)
+          expect(visibility).toEqual('visible')
+        })
+      })
+
+      describe('via `initAll`', () => {
+        it('configures the number of characters', async () => {
+          await renderAndInitialise('character-count', {
+            baseUrl,
+            nunjucksParams: examples['to configure in JavaScript'],
+            initialiser () {
+              window.GOVUKFrontend.initAll({
+                characterCount: {
+                  maxlength: 10
+                }
+              })
+            }
+          })
+
+          await page.type('.govuk-js-character-count', 'A'.repeat(11))
+
+          const message = await page.$eval(
+            '.govuk-character-count__status',
+            (el) => el.innerHTML.trim()
+          )
+          expect(message).toEqual('You have 1 character too many')
+        })
+
+        it('configures the number of words', async () => {
+          await renderAndInitialise('character-count', {
+            baseUrl,
+            nunjucksParams: examples['to configure in JavaScript'],
+            initialiser () {
+              window.GOVUKFrontend.initAll({
+                characterCount: {
+                  maxwords: 10
+                }
+              })
+            }
+          })
+
+          await page.type('.govuk-js-character-count', 'Hello '.repeat(11))
+
+          const message = await page.$eval(
+            '.govuk-character-count__status',
+            (el) => el.innerHTML.trim()
+          )
+          expect(message).toEqual('You have 1 word too many')
+        })
+        it('configures the threshold', async () => {
+          await renderAndInitialise('character-count', {
+            baseUrl,
+            nunjucksParams: examples['to configure in JavaScript'],
+            initialiser () {
+              window.GOVUKFrontend.initAll({
+                characterCount: {
+                  maxlength: 10,
+                  threshold: 75
+                }
+              })
+            }
+          })
+
+          await page.type('.govuk-js-character-count', 'A'.repeat(8))
+
+          const visibility = await page.$eval(
+            '.govuk-character-count__status',
+            (el) => window.getComputedStyle(el).visibility
+          )
+          expect(visibility).toEqual('visible')
+        })
+      })
+
+      describe('when data-attributes are present', () => {
+        it('uses `maxlength` data attribute instead of the JS one', async () => {
+          await renderAndInitialise('character-count', {
+            baseUrl,
+            nunjucksParams: examples.default,
+            javascriptConfig: {
+              maxlength: 12 // JS configuration that would tell 1 character remaining
+            }
+          })
+
+          await page.type('.govuk-js-character-count', 'A'.repeat(11))
+
+          const message = await page.$eval(
+            '.govuk-character-count__status',
+            (el) => el.innerHTML.trim()
+          )
+          expect(message).toEqual('You have 1 character too many')
+        })
+
+        it("uses `maxlength` data attribute instead of JS's `maxwords`", async () => {
+          await renderAndInitialise('character-count', {
+            baseUrl,
+            nunjucksParams: examples.default, // Default example counts characters
+            javascriptConfig: {
+              maxwords: 12
+            }
+          })
+
+          await page.type('.govuk-js-character-count', 'A'.repeat(11))
+
+          const message = await page.$eval(
+            '.govuk-character-count__status',
+            (el) => el.innerHTML.trim()
+          )
+          expect(message).toEqual('You have 1 character too many')
+        })
+
+        it('uses `maxwords` data attribute instead of the JS one', async () => {
+          await renderAndInitialise('character-count', {
+            baseUrl,
+            nunjucksParams: examples['with word count'],
+            javascriptConfig: {
+              maxwords: 12 // JS configuration that would tell 1 word remaining
+            }
+          })
+
+          await page.type('.govuk-js-character-count', 'Hello '.repeat(11))
+
+          const message = await page.$eval(
+            '.govuk-character-count__status',
+            (el) => el.innerHTML.trim()
+          )
+          expect(message).toEqual('You have 1 word too many')
+        })
+
+        it("uses `maxwords` data attribute instead of the JS's `maxlength`", async () => {
+          await renderAndInitialise('character-count', {
+            baseUrl,
+            nunjucksParams: examples['with word count'],
+            javascriptConfig: {
+              maxlength: 10
+            }
+          })
+
+          await page.type('.govuk-js-character-count', 'Hello '.repeat(11))
+
+          const message = await page.$eval(
+            '.govuk-character-count__status',
+            (el) => el.innerHTML.trim()
+          )
+          expect(message).toEqual('You have 1 word too many')
         })
       })
     })

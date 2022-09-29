@@ -1,8 +1,71 @@
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normalisation
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
+import { mergeConfigs, normaliseDataset } from '../../common.mjs'
 
-function CharacterCount ($module) {
+/**
+ * JavaScript enhancements for the CharacterCount component
+ *
+ * Tracks the number of characters or words in the `.govuk-js-character-count`
+ * `<textarea>` inside the element. Displays a message with the remaining number
+ * of characters/words available, or the number of characters/words in excess.
+ *
+ * You can configure the message to only appear after a certain percentage
+ * of the available characters/words has been entered.
+ *
+ * @class
+ * @param {HTMLElement} $module - The element this component controls
+ * @param {Object} config
+ * @param {Number} config.maxlength - If `maxwords` is set, this is not required.
+ * The maximum number of characters. If `maxwords` is provided, it will be ignored.
+ * @param {Number} config.maxwords - If `maxlength` is set, this is not required.
+ * The maximum number of words. If `maxwords` is provided, `maxlength` will be ignored.
+ * @param {Number} [config.threshold=0] - The percentage value of the limit at
+ * which point the count message is displayed. If this attribute is set, the
+ * count message will be hidden by default.
+ */
+function CharacterCount ($module, config) {
+  if (!$module) {
+    return this
+  }
+
+  var defaultConfig = {
+    threshold: 0
+  }
+
+  // Read config set using dataset ('data-' values)
+  var datasetConfig = normaliseDataset($module.dataset)
+
+  // To ensure data-attributes take complete precedence, even if they change the
+  // type of count, we need to reset the `maxlength` and `maxwords` from the
+  // JavaScript config.
+  //
+  // We can't mutate `config`, though, as it may be shared across multiple
+  // components inside `initAll`.
+  var configOverrides = {}
+  if ('maxwords' in datasetConfig || 'maxlength' in datasetConfig) {
+    configOverrides = {
+      maxlength: false,
+      maxwords: false
+    }
+  }
+
+  this.config = mergeConfigs(
+    defaultConfig,
+    config || {},
+    configOverrides,
+    datasetConfig
+  )
+
+  // Determine the limit attribute (characters or words)
+  if (this.config.maxwords) {
+    this.maxLength = this.config.maxwords
+  } else if (this.config.maxlength) {
+    this.maxLength = this.config.maxlength
+  } else {
+    return
+  }
+
   this.$module = $module
   this.$textarea = $module.querySelector('.govuk-js-character-count')
   this.$visibleCountMessage = null
@@ -19,8 +82,6 @@ CharacterCount.prototype.init = function () {
     return
   }
 
-  // Check for module
-  var $module = this.$module
   var $textarea = this.$textarea
   var $fallbackLimitMessage = document.getElementById($textarea.id + '-info')
 
@@ -48,18 +109,6 @@ CharacterCount.prototype.init = function () {
 
   // Hide the fallback limit message
   $fallbackLimitMessage.classList.add('govuk-visually-hidden')
-
-  // Read options set using dataset ('data-' values)
-  this.options = this.getDataset($module)
-
-  // Determine the limit attribute (characters or words)
-  if (this.options.maxwords) {
-    this.maxLength = this.options.maxwords
-  } else if (this.options.maxlength) {
-    this.maxLength = this.options.maxlength
-  } else {
-    return
-  }
 
   // Remove hard limit if set
   $textarea.removeAttribute('maxlength')
@@ -207,14 +256,14 @@ CharacterCount.prototype.updateScreenReaderCountMessage = function () {
 }
 
 /**
- * Count the number of characters (or words, if `options.maxwords` is set)
+ * Count the number of characters (or words, if `config.maxwords` is set)
  * in the given text
  *
  * @param {String} text - The text to count the characters of
  * @returns {Number} the number of characters (or words) in the text
  */
 CharacterCount.prototype.count = function (text) {
-  if (this.options.maxwords) {
+  if (this.config.maxwords) {
     var tokens = text.match(/\S+/g) || [] // Matches consecutive non-whitespace chars
     return tokens.length
   } else {
@@ -229,13 +278,13 @@ CharacterCount.prototype.count = function (text) {
  */
 CharacterCount.prototype.getCountMessage = function () {
   var $textarea = this.$textarea
-  var options = this.options
+  var config = this.config
   var remainingNumber = this.maxLength - this.count($textarea.value)
 
   var charVerb = 'remaining'
   var charNoun = 'character'
   var displayNumber = remainingNumber
-  if (options.maxwords) {
+  if (config.maxwords) {
     charNoun = 'word'
   }
   charNoun = charNoun + ((remainingNumber === -1 || remainingNumber === 1) ? '' : 's')
@@ -253,51 +302,24 @@ CharacterCount.prototype.getCountMessage = function () {
  * If there is no configured threshold, it is set to 0 and this function will
  * always return true.
  *
- * @returns {Boolean} true if the current count is over the options.threshold
+ * @returns {Boolean} true if the current count is over the config.threshold
  *   (or no threshold is set)
  */
 CharacterCount.prototype.isOverThreshold = function () {
+  // No threshold means we're always above threshold so save some computation
+  if (!this.config.threshold) {
+    return true
+  }
+
   var $textarea = this.$textarea
-  var options = this.options
 
   // Determine the remaining number of characters/words
   var currentLength = this.count($textarea.value)
   var maxLength = this.maxLength
 
-  // Set threshold if presented in options
-  var thresholdPercent = options.threshold ? options.threshold : 0
-  var thresholdValue = maxLength * thresholdPercent / 100
+  var thresholdValue = maxLength * this.config.threshold / 100
 
   return (thresholdValue <= currentLength)
-}
-
-/**
- * Get dataset
- *
- * Get all of the data-* attributes from a given $element as map of key-value
- * pairs, with the data- prefix removed from the keys.
- *
- * This is a bit like HTMLElement.dataset, but it does not convert the keys to
- * camel case (and it works in browsers that do not support HTMLElement.dataset)
- *
- * @todo Replace with HTMLElement.dataset
- *
- * @param {HTMLElement} $element - The element to read data attributes from
- * @returns {Object} Object of key-value pairs representing the data attributes
- */
-CharacterCount.prototype.getDataset = function ($element) {
-  var dataset = {}
-  var attributes = $element.attributes
-  if (attributes) {
-    for (var i = 0; i < attributes.length; i++) {
-      var attribute = attributes[i]
-      var match = attribute.name.match(/^data-(.+)/)
-      if (match) {
-        dataset[match[1]] = attribute.value
-      }
-    }
-  }
-  return dataset
 }
 
 export default CharacterCount

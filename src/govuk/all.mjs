@@ -21,8 +21,9 @@ import Tabs from './components/tabs/tabs.mjs'
  * @param {HTMLElement} [config.scope=document] - scope to query for components
  * @param {Object} [config.accordion] - accordion config
  * @param {Object} [config.button] - button config
- * @param {Object} [config.notificationBanner] - notification banner config
+ * @param {Object} [config.characterCount] - character count config
  * @param {Object} [config.errorSummary] - error summary config
+ * @param {Object} [config.notificationBanner] - notification banner config
  */
 function initAll (config) {
   config = typeof config !== 'undefined' ? config : {}
@@ -43,7 +44,7 @@ function initAll (config) {
 
   var $characterCounts = $scope.querySelectorAll('[data-module="govuk-character-count"]')
   nodeListForEach($characterCounts, function ($characterCount) {
-    new CharacterCount($characterCount).init()
+    new CharacterCount($characterCount, config.characterCount).init()
   })
 
   var $checkboxes = $scope.querySelectorAll('[data-module="govuk-checkboxes"]')
