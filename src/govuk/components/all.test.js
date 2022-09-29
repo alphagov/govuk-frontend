@@ -5,7 +5,7 @@
 const { fetch } = require('undici')
 const { WebSocket } = require('ws')
 
-const { allComponents } = require('../../../lib/file-helper')
+const { allComponents, getFiles } = require('../../../lib/file-helper')
 
 const configPaths = require('../../../config/paths.js')
 
@@ -14,12 +14,25 @@ const baseUrl = 'http://localhost:' + PORT
 
 describe('Visual regression via Percy', () => {
   let percySnapshot
+  let componentsWithJavaScript
 
-  beforeAll(() => {
+  beforeAll(async () => {
     // Polyfill fetch() detection, upload via WebSocket()
     // Fixes Percy running in a non-browser environment
     global.window = { fetch, WebSocket }
     percySnapshot = require('@percy/puppeteer')
+
+    // Filter "JavaScript enabled" components only
+    componentsWithJavaScript = allComponents
+
+      // Get file listing per component
+      .map((component) => [component, getFiles(`${configPaths.components}${component}`)])
+
+      // Filter for "JavaScript enabled" via `${component}.mjs`
+      .filter(([component, entries]) => entries.includes(`${component}.mjs`))
+
+      // Component names only
+      .map(([component]) => component)
   })
 
   it('generate screenshots', async () => {
@@ -30,11 +43,14 @@ describe('Visual regression via Percy', () => {
       await page.goto(baseUrl + '/components/' + component + '/preview', { waitUntil: 'load' })
       await percySnapshot(page, `js: ${component}`)
 
-      await page.setJavaScriptEnabled(false)
+      // Check for "JavaScript enabled" components
+      if (componentsWithJavaScript.includes(component)) {
+        await page.setJavaScriptEnabled(false)
 
-      // Screenshot preview page (without JavaScript)
-      await page.reload({ waitUntil: 'load' })
-      await percySnapshot(page, `no-js: ${component}`)
+        // Screenshot preview page (without JavaScript)
+        await page.reload({ waitUntil: 'load' })
+        await percySnapshot(page, `no-js: ${component}`)
+      }
     }
   }, 120000)
 })
