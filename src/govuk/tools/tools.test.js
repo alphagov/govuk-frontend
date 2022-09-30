@@ -1,12 +1,10 @@
-/* eslint-env jest */
-
 const glob = require('glob')
 const path = require('path')
 
 const sassdoc = require('sassdoc')
 
 const { renderSass } = require('../../../lib/jest-helpers')
-const configPaths = require('../../../config/paths.json')
+const configPaths = require('../../../config/paths.js')
 
 const sassFiles = glob.sync(`${configPaths.src}/tools/**/*.scss`)
 
@@ -19,7 +17,7 @@ describe('The tools layer', () => {
   })
 
   it.each(sassFiles)('%s renders to CSS without errors', (file) => {
-    return renderSass({ file: file })
+    return renderSass({ file })
   })
 
   describe('Sass documentation', () => {

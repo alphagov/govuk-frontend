@@ -1,8 +1,8 @@
-/* eslint-env jest */
+const { readFile } = require('fs/promises')
 const path = require('path')
-const lib = require('../../../lib/file-helper')
-const configPaths = require('../../../config/paths.json')
 const recursive = require('recursive-readdir')
+
+const configPaths = require('../../../config/paths.js')
 
 describe('dist/', () => {
   const version = require(path.join('../../../', configPaths.package, 'package.json')).version
@@ -45,7 +45,7 @@ describe('dist/', () => {
 
       // Compare the expected directory listing with the files we expect
       // to be present
-      Promise.all([actualDistAssets(), expectedDistAssets()])
+      return Promise.all([actualDistAssets(), expectedDistAssets()])
         .then(results => {
           const [actualDistAssets, expectedDistAssets] = results
 
@@ -55,7 +55,11 @@ describe('dist/', () => {
   })
 
   describe(`govuk-frontend-${version}.min.css`, () => {
-    const stylesheet = lib.readFileContents(path.join(configPaths.dist, `govuk-frontend-${version}.min.css`))
+    let stylesheet
+
+    beforeAll(async () => {
+      stylesheet = await readFile(path.join(configPaths.dist, `govuk-frontend-${version}.min.css`), 'utf8')
+    })
 
     it('should not contain current media query displayed on body element', () => {
       expect(stylesheet).not.toMatch(/body:before{content:/)
@@ -67,7 +71,11 @@ describe('dist/', () => {
   })
 
   describe(`govuk-frontend-ie8-${version}.min.css`, () => {
-    const stylesheet = lib.readFileContents(path.join(configPaths.dist, `govuk-frontend-ie8-${version}.min.css`))
+    let stylesheet
+
+    beforeAll(async () => {
+      stylesheet = await readFile(path.join(configPaths.dist, `govuk-frontend-ie8-${version}.min.css`), 'utf8')
+    })
 
     it('should not contain current media query displayed on body element', () => {
       expect(stylesheet).not.toMatch(/body:before{content:/)
@@ -75,7 +83,11 @@ describe('dist/', () => {
   })
 
   describe(`govuk-frontend-${version}.min.js`, () => {
-    const javascript = lib.readFileContents(path.join(configPaths.dist, `govuk-frontend-${version}.min.js`))
+    let javascript
+
+    beforeAll(async () => {
+      javascript = await readFile(path.join(configPaths.dist, `govuk-frontend-${version}.min.js`), 'utf8')
+    })
 
     it('should have the correct version name', () => {
       expect(javascript).toBeTruthy()

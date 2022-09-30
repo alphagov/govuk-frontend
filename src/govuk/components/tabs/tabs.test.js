@@ -1,8 +1,10 @@
-/* eslint-env jest */
+/**
+ * @jest-environment puppeteer
+ */
 
 const { devices } = require('puppeteer')
 const iPhone = devices['iPhone 6']
-const configPaths = require('../../../../config/paths.json')
+const configPaths = require('../../../../config/paths.js')
 const PORT = configPaths.ports.test
 
 const baseUrl = 'http://localhost:' + PORT

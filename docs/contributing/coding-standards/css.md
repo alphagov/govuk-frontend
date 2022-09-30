@@ -118,7 +118,7 @@ See [testing and linting](/docs/releasing/testing-and-linting.md) for more infor
 
 ## Running the lint task
 
-You can run the linter in gulp by running `gulp scss:lint`, or use linting in [Sublime Text](https://github.com/SublimeLinter/SublimeLinter-stylelint), [Atom](https://atom.io/packages/linter-stylelint) or [other editors that support stylelint](https://stylelint.io/user-guide/integrations/editor).
+You can run the linter in Gulp by running `npm run lint:scss`, or use linting in [Sublime Text](https://github.com/SublimeLinter/SublimeLinter-stylelint), [Atom](https://atom.io/packages/linter-stylelint) or [other editors that support stylelint](https://stylelint.io/user-guide/integrations/editor).
 
 See also [testing and linting](/docs/releasing/testing-and-linting.md).
 
@@ -338,7 +338,7 @@ Good:
 }
 ```
 
-### `@if` statements should be written without surrounding brackets 
+### `@if` statements should be written without surrounding brackets
 
 Bad:
 ```

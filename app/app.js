@@ -11,7 +11,7 @@ const readdir = util.promisify(fs.readdir)
 
 const helperFunctions = require('../lib/helper-functions')
 const fileHelper = require('../lib/file-helper')
-const configPaths = require('../config/paths.json')
+const configPaths = require('../config/paths.js')
 
 const isDeployedToHeroku = !!process.env.HEROKU_APP
 
@@ -114,7 +114,7 @@ module.exports = (options) => {
     res.render('index', {
       componentsDirectory: components,
       examplesDirectory: examples,
-      fullPageExamples: fullPageExamples
+      fullPageExamples
     })
   })
 
@@ -206,6 +206,13 @@ module.exports = (options) => {
         res.send(html)
       }
     })
+  })
+
+  // Test view for injecting rendered components
+  // and testing specific JavaScript configurations
+  // Example view
+  app.get('/tests/boilerplate', function (req, res) {
+    res.render('tests/boilerplate')
   })
 
   // Full page example views

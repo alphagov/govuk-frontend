@@ -10,18 +10,19 @@ Generally, folder and file names should be singular, for example ‘accordion’
 
 When creating your component, you should create the following files in the component’s folder:
 
-      - `README.md`
-      - `_[component-name].scss`
-      - `_index.scss`
-      - `[component-name].yaml`
-      - `macro.njk`
-      - `template.njk`
-      - `template.test.js`
+- `README.md` - Summary documentation with links to the installation instructions and component documentation on <https://design-system.service.gov.uk/>
+- `_[component-name].scss` - An SCSS file to generate the styles for this component only. It delegates the CSS generation to the _index.scss file.
+- `_index.scss` - The actual styles for the component that you can import in 2 ways -  [on their own using `[component-name].scss`](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#import-specific-parts-of-the-css) or [alongside other components in `components/_all.scss`](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#import-specific-parts-of-the-css)
+- `[component-name].yaml` - Lists the component's Nunjucks macro options and includes examples using these options. Both the options and examples are used to generate component documentation in the review app. The examples are also used to test component behaviour, and to generate [fixtures for testing alternative implementations of the design system](https://frontend.design-system.service.gov.uk/testing-your-html/).
+- `macro.njk` - The main entry point for rendering the component. It provides a `govuk[ComponentName](params)` macro, delegating render to the `template.njk` file
+- `template.njk` - The template used for rendering the component using any `params` provided to the macro
+- `template.test.js` - Tests to ensure the component renders as intended with its various options
 
 If your component uses JavaScript, you must also create the following files in the component’s folder:
 
-      - `_[component-name].mjs`
-      - `_[component-name].test.js`
+- `[component-name].mjs` - A JavaScript module with the implementation of any behaviour needed by the component. See the [JavaScript documentation]('./js.md#skeleton) for a skeleton and more details on that file's structure
+- `[component-name].unit.test.mjs` - Unit tests to verify any component-specific lower-level logic.
+- `[component-name].test.js` - Functional tests to verify the behaviour of the whole component
 
 ## Building your components
 

@@ -1,11 +1,8 @@
 /**
  * @jest-environment jsdom
  */
-/* eslint-env jest */
 
-const axe = require('../../../../lib/axe-helper')
-
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('header')
 
@@ -136,6 +133,15 @@ describe('header', () => {
       expect($nav.attr('aria-label')).toEqual('Menu')
     })
 
+    it('renders navigation label correctly when custom menu button text is set', () => {
+      const $ = render('header', examples['with custom menu button text'])
+
+      const $component = $('.govuk-header')
+      const $nav = $component.find('nav')
+
+      expect($nav.attr('aria-label')).toEqual('Dewislen')
+    })
+
     it('allows navigation label to be customised', () => {
       const $ = render('header', examples['with custom navigation label'])
 
@@ -145,11 +151,22 @@ describe('header', () => {
       expect($nav.attr('aria-label')).toEqual('Custom navigation label')
     })
 
+    it('renders navigation label and menu button text when these are both set', () => {
+      const $ = render('header', examples['with custom navigation label and custom menu button text'])
+
+      const $component = $('.govuk-header')
+      const $nav = $component.find('nav')
+      const $button = $component.find('.govuk-header__menu-button')
+
+      expect($nav.attr('aria-label')).toEqual('Custom navigation label')
+      expect($button.text()).toEqual('Custom menu button text')
+    })
+
     it('renders navigation with active item', () => {
       const $ = render('header', examples['with navigation'])
 
-      const $activeItem = $('a.govuk-header__navigation-item:first-child')
-      expect($activeItem.hasClass('govuk-header__navigation-item--active'))
+      const $activeItem = $('li.govuk-header__navigation-item:first-child')
+      expect($activeItem.hasClass('govuk-header__navigation-item--active')).toBeTruthy()
     })
 
     it('allows navigation item text to be passed whilst escaping HTML entities', () => {
@@ -216,6 +233,20 @@ describe('header', () => {
         const $button = $('.govuk-header__menu-button')
 
         expect($button.attr('aria-label')).toEqual('Custom button label')
+      })
+      it('renders default text correctly', () => {
+        const $ = render('header', examples['with navigation'])
+
+        const $button = $('.govuk-header__menu-button')
+
+        expect($button.text()).toEqual('Menu')
+      })
+      it('allows text to be customised', () => {
+        const $ = render('header', examples['with custom menu button text'])
+
+        const $button = $('.govuk-header__menu-button')
+
+        expect($button.text()).toEqual('Dewislen')
       })
     })
   })

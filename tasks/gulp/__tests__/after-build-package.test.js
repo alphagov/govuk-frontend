@@ -1,13 +1,11 @@
-/* eslint-env jest */
-
 const fs = require('fs')
 const path = require('path')
 const util = require('util')
 
 const recursive = require('recursive-readdir')
-var glob = require('glob')
+const glob = require('glob')
 
-const configPaths = require('../../../config/paths.json')
+const configPaths = require('../../../config/paths.js')
 const lib = require('../../../lib/file-helper')
 const { componentNameToJavaScriptModuleName } = require('../../../lib/helper-functions')
 
@@ -40,7 +38,7 @@ describe('package/', () => {
     const expectedPackageFiles = () => {
       const filesToIgnore = [
         '.DS_Store',
-        '*.test.js',
+        '*.test.*',
         '*.yaml',
         '*.snap',
         '*/govuk/README.md'
@@ -63,12 +61,12 @@ describe('package/', () => {
           return files
             .map(file => {
               // Remove /src prefix from filenames
-              var fileWithoutSrc = file.replace(/^src\//, '')
+              const fileWithoutSrc = file.replace(/^src\//, '')
 
               // Account for govuk-esm folder
               if (fileWithoutSrc.split('.').pop() === 'mjs') {
-                var esmFile = fileWithoutSrc.replace('govuk/', 'govuk-esm/')
-                var umdFile = fileWithoutSrc.replace('.mjs', '.js')
+                const esmFile = fileWithoutSrc.replace('govuk/', 'govuk-esm/')
+                const umdFile = fileWithoutSrc.replace('.mjs', '.js')
 
                 return [umdFile, esmFile]
               } else {
@@ -89,7 +87,7 @@ describe('package/', () => {
 
     // Compare the expected directory listing with the files we expect
     // to be present
-    Promise.all([actualPackageFiles(), expectedPackageFiles()])
+    return Promise.all([actualPackageFiles(), expectedPackageFiles()])
       .then(results => {
         const [actualPackageFiles, expectedPackageFiles] = results
 
@@ -135,7 +133,7 @@ describe('package/', () => {
       const filePath = path.join(configPaths.package, 'govuk', 'components', name, 'macro-options.json')
       return readFile(filePath, 'utf8')
         .then((data) => {
-          var parsedData = JSON.parse(data)
+          const parsedData = JSON.parse(data)
 
           // We expect the component JSON to contain "name", "type", "required", "description"
           expect(parsedData).toBeInstanceOf(Array)
@@ -175,12 +173,12 @@ describe('package/', () => {
       const filePath = path.join(configPaths.package, 'govuk', 'components', name, 'fixtures.json')
       return readFile(filePath, 'utf8')
         .then((data) => {
-          var parsedData = JSON.parse(data)
+          const parsedData = JSON.parse(data)
           // We expect the component JSON to contain "component" and an array of "fixtures" with "name", "options", and "html"
           expect(parsedData).toEqual(
             expect.objectContaining({
               component: name,
-              fixtures: expect.any(Object)
+              fixtures: expect.any(Array)
             })
           )
 

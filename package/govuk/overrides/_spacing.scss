@@ -2,6 +2,8 @@
 /// @group overrides
 ////
 
+// stylelint-disable declaration-no-important
+
 /// Directions for spacing
 ///
 /// @type Map
@@ -14,25 +16,27 @@ $_spacing-directions: (
   "left"
 ) !default;
 
-/// Spacing override classes
+/// Generate responsive spacing override classes
 ///
 /// Generate spacing override classes for the given property (e.g. margin)
-/// for each point in the spacing scale.
+/// for each point in the responsive spacing scale.
 ///
 /// @param {String} $property - Property to add spacing to (e.g. 'margin')
 ///
-/// @example scss
-///   .govuk-\!-margin-0 {
-///      margin: 0;
-///   }
+/// @example css
+///  .govuk-\!-margin-4 {
+///    margin: 15px !important;
+///  }
 ///
-///  .govuk-\!-margin-top-1 {
-///     margin-top: [whatever spacing point 1 is...]
-///   }
+///  @media (min-width: 40.0625em) {
+///    .govuk-\!-margin-4 {
+///      margin: 20px !important;
+///    }
+///  }
 ///
 /// @access private
 
-@mixin _govuk-generate-spacing-overrides($property) {
+@mixin _govuk-generate-responsive-spacing-overrides($property) {
   // For each point in the spacing scale (defined in settings), create an
   // override that affects all directions...
   @each $scale-point, $scale-map in $govuk-spacing-responsive-scale {
@@ -52,7 +56,47 @@ $_spacing-directions: (
   }
 }
 
+/// Generate static spacing override classes
+///
+/// Generate spacing override classes for the given property (e.g. margin)
+/// for each point in the non-responsive spacing scale.
+///
+/// The classes in the format govuk-#{$property}-static-#{$spacing-point}
+/// and govuk-\!-#{$property}-#{$direction}-static-#{$spacing-point} are deprecated.
+/// For example: govuk-!-margin-static-2 or govuk-!-margin-top-static-2
+///
+/// Use classes in the format .govuk-\!-static-#{$property}-#{$spacing-point}
+/// and .govuk-\!-static-#{$property}-#{$direction}-#{$spacing-point} instead.
+/// For example: govuk-!-static-margin-2 or govuk-!-static-margin-top-2
+///
+/// @param {String} $property - Property to add spacing to (e.g. 'margin')
+///
+/// @example css
+///   .govuk-\!-static-margin-4 {
+///      margin: 20px !important;
+///   }
+///
+/// @access private
+@mixin _govuk-generate-static-spacing-overrides($property) {
+  @each $spacing-point in map-keys($govuk-spacing-points) {
+    .govuk-\!-#{$property}-static-#{$spacing-point},
+    .govuk-\!-static-#{$property}-#{$spacing-point} {
+      #{$property}: govuk-spacing($spacing-point) !important;
+    }
+
+    @each $direction in $_spacing-directions {
+      .govuk-\!-#{$property}-#{$direction}-static-#{$spacing-point},
+      .govuk-\!-static-#{$property}-#{$direction}-#{$spacing-point} {
+        #{$property}-#{$direction}: govuk-spacing($spacing-point) !important;
+      }
+    }
+  }
+}
+
 @include govuk-exports("govuk/overrides/spacing") {
-  @include _govuk-generate-spacing-overrides("margin");
-  @include _govuk-generate-spacing-overrides("padding");
+  @include _govuk-generate-responsive-spacing-overrides("margin");
+  @include _govuk-generate-responsive-spacing-overrides("padding");
+
+  @include _govuk-generate-static-spacing-overrides("margin");
+  @include _govuk-generate-static-spacing-overrides("padding");
 }

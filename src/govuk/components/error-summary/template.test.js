@@ -1,11 +1,8 @@
 /**
  * @jest-environment jsdom
  */
-/* eslint-env jest */
 
-const axe = require('../../../../lib/axe-helper')
-
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('error-summary')
 
@@ -18,18 +15,11 @@ describe('Error-summary', () => {
       expect(results).toHaveNoViolations()
     })
 
-    it('aria-labelledby attribute matches the title id', () => {
+    it('has a child container with the role=alert attribute', () => {
       const $ = render('error-summary', examples.default)
-      const ariaAttr = $('.govuk-error-summary').attr('aria-labelledby')
+      const childRoleAttr = $('.govuk-error-summary div:first-child').attr('role')
 
-      expect(ariaAttr).toEqual('error-summary-title')
-    })
-
-    it('has role=alert attribute', () => {
-      const $ = render('error-summary', examples.default)
-      const roleAttr = $('.govuk-error-summary').attr('role')
-
-      expect(roleAttr).toEqual('alert')
+      expect(childRoleAttr).toEqual('alert')
     })
 
     it('renders title text', () => {
@@ -163,6 +153,20 @@ describe('Error-summary', () => {
       const errorItemText = $('.govuk-error-summary .govuk-error-summary__list li a').html().trim()
 
       expect(errorItemText).toEqual('Descriptive link to the &lt;b&gt;question&lt;/b&gt; with an error')
+    })
+
+    it('allows to disable autofocus', () => {
+      const $ = render('error-summary', examples['autofocus disabled'])
+
+      const $component = $('.govuk-error-summary')
+      expect($component.attr('data-disable-auto-focus')).toBe('true')
+    })
+
+    it('allows to explicitely enable autofocus', () => {
+      const $ = render('error-summary', examples['autofocus explicitly enabled'])
+
+      const $component = $('.govuk-error-summary')
+      expect($component.attr('data-disable-auto-focus')).toBe('false')
     })
   })
 })

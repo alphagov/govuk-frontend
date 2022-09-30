@@ -1,53 +1,56 @@
-/* eslint-env jest */
+/**
+ * @jest-environment puppeteer
+ */
 
-const { allComponents } = require('../../../lib/file-helper')
-const { renderSass } = require('../../../lib/jest-helpers')
+const { fetch } = require('undici')
+const { WebSocket } = require('ws')
 
-const configPaths = require('../../../config/paths.json')
+const { allComponents, getFiles } = require('../../../lib/file-helper')
+
+const configPaths = require('../../../config/paths.js')
 
 const PORT = configPaths.ports.test
 const baseUrl = 'http://localhost:' + PORT
 
-const percySnapshot = require('@percy/puppeteer')
+describe('Visual regression via Percy', () => {
+  let percySnapshot
+  let componentsWithJavaScript
 
-// We can't use the render function from jest-helpers, because we need control
-// over the nunjucks environment.
-const nunjucks = require('nunjucks')
+  beforeAll(async () => {
+    // Polyfill fetch() detection, upload via WebSocket()
+    // Fixes Percy running in a non-browser environment
+    global.window = { fetch, WebSocket }
+    percySnapshot = require('@percy/puppeteer')
 
-describe('When nunjucks is configured with a different base path', () => {
-  beforeAll(() => {
-    // Create a new Nunjucks environment that uses the src directory as its
-    // base path, rather than the components folder itself
-    nunjucks.configure(configPaths.src)
+    // Filter "JavaScript enabled" components only
+    componentsWithJavaScript = allComponents
+
+      // Get file listing per component
+      .map((component) => [component, getFiles(`${configPaths.components}${component}`)])
+
+      // Filter for "JavaScript enabled" via `${component}.mjs`
+      .filter(([component, entries]) => entries.includes(`${component}.mjs`))
+
+      // Component names only
+      .map(([component]) => component)
   })
 
-  it.each(allComponents)('render(\'%s\') does not error', (component) => {
-    expect(() => {
-      nunjucks.render(`components/${component}/template.njk`, {})
-    }).not.toThrow()
-  })
-})
+  it('generate screenshots', async () => {
+    for (const component of allComponents) {
+      await page.setJavaScriptEnabled(true)
 
-it('_all.scss renders to CSS without errors', () => {
-  return renderSass({
-    file: `${configPaths.src}/components/_all.scss`
-  })
-})
+      // Screenshot preview page (with JavaScript)
+      await page.goto(baseUrl + '/components/' + component + '/preview', { waitUntil: 'load' })
+      await percySnapshot(page, `js: ${component}`)
 
-it.each(allComponents)('%s.scss renders to CSS without errors', (component) => {
-  return renderSass({
-    file: `${configPaths.src}/components/${component}/_${component}.scss`
-  })
-})
+      // Check for "JavaScript enabled" components
+      if (componentsWithJavaScript.includes(component)) {
+        await page.setJavaScriptEnabled(false)
 
-it.each(allComponents)('generate screenshots for Percy visual regression, with JavaScript disabled', async (component) => {
-  await page.setJavaScriptEnabled(false)
-  await page.goto(baseUrl + '/components/' + component + '/preview', { waitUntil: 'load' })
-  await percySnapshot(page, 'no-js: ' + component)
-})
-
-it.each(allComponents)('generate screenshots for Percy visual regression, with JavaScript enabled', async (component) => {
-  await page.setJavaScriptEnabled(true)
-  await page.goto(baseUrl + '/components/' + component + '/preview', { waitUntil: 'load' })
-  await percySnapshot(page, 'js: ' + component)
+        // Screenshot preview page (without JavaScript)
+        await page.reload({ waitUntil: 'load' })
+        await percySnapshot(page, `no-js: ${component}`)
+      }
+    }
+  }, 120000)
 })

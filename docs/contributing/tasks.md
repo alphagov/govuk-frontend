@@ -1,46 +1,49 @@
-# NPM and Gulp tasks
+# npm and Gulp tasks
 
-This document describes the NPM scripts that run the application, and the gulp tasks they trigger to build files, update the package, copy assets and watch for changes.
+This document describes the npm scripts that run the application, and the Gulp tasks they trigger to build files, update the package, copy assets and watch for changes.
 
 To run the application without any tasks being triggered, see [Express app only](#express-app-only).
 
-## NPM script aliases
+## npm script aliases
 
-NPM scripts are defined in `package.json`. These trigger a number of gulp tasks.
+npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
-**`npm run start` will trigger `gulp dev` that:**
-- cleans the `public` folder
-- compiles component nunjucks files to `public`
-- copies icons to `public`
-- compile sass files, add vendor prefixes and copy to `public`
-- starts up the Express server and app
-- starts up `gulp watch` task to watch for changes
+**`npm run start` will trigger `gulp dev` that will:**
+- clean the `./public` folder
+- compile JavaScript and Sass, including Sass documentation (`gulp compile`)
+- compile again when `.scss` and `.mjs` files change (`gulp watch`)
+- start up Express, restarting when `.js`, `.mjs`, and `.json` files change
 
 **`npm run test` will do the following:**
-- compile components to HTML
-- run JS tests
-- run CSS lint checker
-- run accessibility tests on HTML files
-- run tests on the review application
+- run Nunjucks macros tests
+- run JavaScript tests on the review application
+- run accessibility and HTML validation tests
 
-**`npm run heroku` runs on Heroku build/PR and it:**
-- compiles components' HTML
-- compiles CSS & JS
-- starts up Express
+**`npm run heroku` runs on Heroku build/PR and it will:**
+- run `npm run build:compile`
+- start up Express
+
+**`npm run build:compile` will do the following:**
+- output files into `./public`, or another location via the `--destination` flag
+- compile JavaScript and Sass, including Sass documentation (`gulp compile`)
 
 **`npm run build:package` will do the following:**
-- compile component nunjucks to HTML
-- copy template, macro and component.njk files for each component
-- copy Sass files, add vendor prefixes and replace path to be node_modules consumption compliant
+- output files into `./package`, or another location via the `--destination` flag
+- clean the `./package` folder
+- copy Sass files, applying Autoprefixer via PostCSS
+- copy Nunjucks component template/macro files, including JSON configs
+- copy JavaScript ESM source files
+- compile JavaScript ESM to CommonJS (`gulp js:compile`)
 - runs `npm run test:build:package` (which will test the output is correct)
 
 **`npm run build:dist` will do the following:**
-- copy JS
-- copy icons
-- copy SASS and add vendor prefixes
-- compile component nujucks files to HTML
-- take version from 'all/package.json' and append it to compiled & minified JS and CSS files
-- runs `npm run test:dist:package` (which will test the output is correct)
+- output files into `./dist`, or another location via the `--destination` flag
+- clean the `./dist` folder
+- compile JavaScript and Sass, including Sass documentation (`gulp compile`)
+- copy fonts and images (`gulp copy:assets`)
+- append version number from `package/package.json` to compiled JavaScript and CSS files
+- runs `npm run test:build:dist` (which will test the output is correct)
+
 
 ## Gulp tasks
 
@@ -51,32 +54,31 @@ Gulp tasks are defined in `gulpfile.js` and .`/tasks/gulp/` folder.
 This task will:
 - list out all available tasks
 
-**`gulp test`**
-
-This task will:
-- Run scss:lint
-
 **`gulp watch`**
 
 This task will:
-- watch for changes in .mjs, .scss and .njk files and run below tasks.
+- run `gulp styles` when `.scss` files change
+- run `gulp scripts` when `.mjs` files change
 
 **`gulp styles`**
 
 This task will:
- - run scss lint task (`gulp scss:lint`)
- - sass compilation (`gulp scss:compile`) to a destination folder that can be specified via a --destination flag
+ - check Sass code quality via Stylelint (`npm run lint:scss`)
+ - compile Sass to CSS (`gulp scss:compile`) into `./public`, or another location via the `--destination` flag
 
 **`gulp scripts`**
 
- This task will:
- - concatenate and uglify javascript (`gulp js:compile`) to a destination folder that can be specified via a --destination flag
+This task will:
+ - check JavaScript code quality via ESLint (`npm run lint:js`) (using JavaScript Standard Style)
+ - compile JavaScript ESM to CommonJS (`gulp js:compile`) into `./public`, or another location via the `--destination` flag
 
-**`gulp compile:components`**
+**`gulp compile`**
 
-  This task will:
-  - compile all `src/govuk/components/componentName/componentName.njk` files to HTML files
+This task will:
+- run sub tasks from `gulp styles` without ESLint code quality checks
+- run sub tasks from `gulp scripts` without StyleLint code quality checks
+- compile Sass documentation into `./sassdoc`
 
 ## Express app only
 
-To simply run the Express app without gulp tasks being triggered, simply run `node app/start.js`.
+To start the Express app without Gulp tasks being triggered, run `node app/start.js`.

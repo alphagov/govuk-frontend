@@ -105,6 +105,11 @@ examples:
     type: success
     disableAutoFocus: true
     text: Email sent to example@email.com
+- name: auto-focus explicitly enabled, with type as success
+  data:
+    type: success
+    disableAutoFocus: false
+    text: Email sent to example@email.com
 - name:  role=alert overridden to role=region, with type as success
   data:
     type: success

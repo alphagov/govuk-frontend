@@ -1,15 +1,29 @@
 name: Sass
 
-on: [push, pull_request]
+on:
+  pull_request:
+
+  push:
+    branches:
+      - main
+      - 'feature/**'
+      - 'support/**'
+
+  workflow_dispatch:
+
+concurrency:
+   group: sass-${{ github.head_ref || github.run_id }}
+   cancel-in-progress: true
 
 jobs:
   dart-sass:
     name: Dart Sass v1.0.0
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
+          cache: npm
           node-version: 8 # v8 required for sass v1.0.0
       - run: |
           npm install -g sass@v1.0.0
@@ -20,9 +34,10 @@ jobs:
     name: Dart Sass v1 (latest)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
+          cache: npm
           node-version: 14
       - run: |
           npm install -g sass@v1
@@ -41,7 +56,7 @@ jobs:
     name: LibSass v3.3.0 (deprecated)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 4 # v4 required for node-sass v3.4.0
@@ -55,9 +70,10 @@ jobs:
     name: LibSass v3 (latest, deprecated)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
+          cache: npm
           node-version: 14
       - run: |
           npm install -g node-sass@v7
@@ -68,7 +84,7 @@ jobs:
     name: Ruby Sass v3.4.0 (deprecated)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.1.9 # Oldest version available on ruby/setup-ruby
@@ -81,7 +97,7 @@ jobs:
     name: Ruby Sass v3 (latest, deprecated)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.6 # Latest Ruby when Ruby Sass was EOL'ed (April 2019)

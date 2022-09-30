@@ -1,11 +1,8 @@
 /**
  * @jest-environment jsdom
  */
-/* eslint-env jest */
 
-const axe = require('../../../../lib/axe-helper')
-
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('pagination')
 
@@ -29,7 +26,7 @@ describe('Pagination', () => {
       expect($previous.attr('href')).toEqual('/previous')
       expect($next.attr('href')).toEqual('/next')
       expect($firstNumber.attr('href')).toEqual('/page/1')
-      expect($secondNumber.attr('href')).toEqual('')
+      expect($secondNumber.attr('href')).toEqual('/page/2')
       expect($thirdNumber.attr('href')).toEqual('/page/3')
     })
 

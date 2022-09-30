@@ -1,91 +1,100 @@
-'use strict'
-
-const paths = require('./config/paths.json')
 const gulp = require('gulp')
 const taskListing = require('gulp-task-listing')
-const taskArguments = require('./tasks/gulp/task-arguments')
+const configPaths = require('./config/paths.js')
+const taskArguments = require('./tasks/task-arguments')
 
 // Gulp sub-tasks
-require('./tasks/gulp/clean.js')
 require('./tasks/gulp/compile-assets.js')
-require('./tasks/gulp/lint.js')
-require('./tasks/gulp/nodemon.js')
-require('./tasks/gulp/watch.js')
-// new tasks
 require('./tasks/gulp/copy-to-destination.js')
-require('./tasks/gulp/asset-version.js')
-require('./tasks/gulp/sassdoc.js')
+require('./tasks/gulp/watch.js')
 
-// Umbrella scripts tasks for preview ---
-// Runs js lint and compilation
-// --------------------------------------
+// Node tasks
+const { buildSassdocs } = require('./tasks/sassdoc.js')
+const { runNodemon } = require('./tasks/nodemon.js')
+const { updateDistAssetsVersion } = require('./tasks/asset-version.js')
+const { cleanDist, cleanPackage, cleanPublic } = require('./tasks/clean.js')
+const { npmScriptTask } = require('./tasks/run.js')
+
+/**
+ * Umbrella scripts tasks (for watch)
+ * Runs JavaScript code quality checks and compilation
+ */
 gulp.task('scripts', gulp.series(
-  'js:lint',
+  npmScriptTask('lint:js', ['--silent']),
   'js:compile'
 ))
 
-// Umbrella styles tasks for preview ----
-// Runs scss lint and compilation
-// --------------------------------------
+/**
+ * Umbrella styles tasks (for watch)
+ * Runs Sass code quality checks and compilation
+ */
 gulp.task('styles', gulp.series(
-  'scss:lint',
+  npmScriptTask('lint:scss', ['--silent']),
   'scss:compile'
 ))
 
-// Copy assets task ----------------------
-// Copies assets to taskArguments.destination (public)
-// --------------------------------------
+/**
+ * Copy assets task
+ * Copies assets to taskArguments.destination (public)
+ */
 gulp.task('copy:assets', () => {
-  return gulp.src(paths.src + 'assets/**/*')
+  return gulp.src(configPaths.src + 'assets/**/*')
     .pipe(gulp.dest(taskArguments.destination + '/assets/'))
 })
 
-// Copy assets task for local & heroku --
-// Copies files to
-// taskArguments.destination (public)
-// --------------------------------------
-gulp.task('copy-assets', gulp.series(
-  'styles',
-  'scripts'
+/**
+ * Compile task for local & heroku
+ * Runs JavaScript and Sass compilation, including Sass documentation
+ */
+gulp.task('compile', gulp.series(
+  'js:compile',
+  'scss:compile',
+  buildSassdocs
 ))
 
-// Serve task ---------------------------
-// Restarts node app when there is changed
-// affecting js, css or njk files
-// --------------------------------------
+/**
+ * Serve task
+ * Restarts Node.js app when there are changes
+ * affecting .js, .mjs and .json files
+ */
 gulp.task('serve', gulp.parallel(
   'watch',
-  'nodemon'
+  runNodemon
 ))
 
-// Dev task -----------------------------
-// Runs a sequence of task on start
-// --------------------------------------
+/**
+ * Dev task
+ * Runs a sequence of tasks on start
+ */
 gulp.task('dev', gulp.series(
-  'clean',
-  'copy-assets',
-  'sassdoc',
+  cleanPublic,
+  'compile',
   'serve'
 ))
 
-// Build package task -----------------
-// Prepare package folder for publishing
-// -------------------------------------
+/**
+ * Build package task
+ * Prepare package folder for publishing
+ */
 gulp.task('build:package', gulp.series(
-  'clean',
-  'copy-files',
-  'js:compile',
-  'js:copy-esm'
+  cleanPackage,
+  'copy:files',
+  'js:compile'
 ))
 
+/**
+ * Build dist task
+ * Prepare dist folder for release
+ */
 gulp.task('build:dist', gulp.series(
-  'clean',
-  'copy-assets',
+  cleanDist,
+  'compile',
   'copy:assets',
-  'update-assets-version'
+  updateDistAssetsVersion
 ))
 
-// Default task -------------------------
-// Lists out available tasks.
-// --------------------------------------
+/**
+ * Default task
+ * Lists out available tasks
+ */
 gulp.task('default', taskListing)

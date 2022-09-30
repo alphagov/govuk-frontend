@@ -1,0 +1,888 @@
+{% from "accordion/macro.njk" import govukAccordion %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "button/macro.njk" import govukButton %}
+{% from "character-count/macro.njk" import govukCharacterCount %}
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+{% from "cookie-banner/macro.njk" import govukCookieBanner %}
+{% from "date-input/macro.njk" import govukDateInput %}
+{% from "details/macro.njk" import govukDetails %}
+{% from "error-message/macro.njk" import govukErrorMessage %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "file-upload/macro.njk" import govukFileUpload %}
+{% from "footer/macro.njk" import govukFooter %}
+{% from "header/macro.njk" import govukHeader %}
+{% from "inset-text/macro.njk" import govukInsetText %}
+{% from "notification-banner/macro.njk" import govukNotificationBanner %}
+{% from "pagination/macro.njk" import govukPagination %}
+{% from "panel/macro.njk" import govukPanel %}
+{% from "phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "select/macro.njk" import govukSelect %}
+{% from "skip-link/macro.njk" import govukSkipLink %}
+{% from "summary-list/macro.njk" import govukSummaryList %}
+{% from "table/macro.njk" import govukTable %}
+{% from "tabs/macro.njk" import govukTabs %}
+{% from "tag/macro.njk" import govukTag %}
+{% from "input/macro.njk" import govukInput %}
+{% from "textarea/macro.njk" import govukTextarea %}
+{% from "warning-text/macro.njk" import govukWarningText %}
+
+{% extends "layout.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    "href": "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl">Translated</h1>
+
+  {{ govukAccordion({
+    id: "accordion-default",
+    items: [
+      {
+        heading: {
+          text: "Ysgrifennu'n dda ar gyfer y we"
+        },
+        content: {
+          html: "<p class='govuk-body'>Dyma'r cynnwys ar gyfer Ysgrifennu'n Dda ar gyfer y we.</p>"
+        }
+      },
+      {
+        heading: {
+          text: "Ysgrifennu'n dda ar gyfer arbenigwyr"
+        },
+        content: {
+          html: "<p class='govuk-body'>Dyma'r cynnwys ar gyfer Ysgrifennu'n Dda ar gyfer arbenigwyr.</p>"
+        }
+      },
+        {
+        heading: {
+          text: "Adnabod eich cynulleidfa"
+        },
+        content: {
+          html: "<p class='govuk-body'>Dyma'r cynnwys ar gyfer Adnabod eich cynulleidfa.</p>"
+        }
+      },
+        {
+        heading: {
+          text: "Sut mae pobl yn darllen"
+        },
+        content: {
+          html: "<p class='govuk-body'>Dyma'r cynnwys ar gyfer Sut mae pobl yn darllen.</p>"
+        }
+      }
+    ]
+  }) }}
+
+  {{ govukBackLink({
+    text: "Ol",
+    href: "#"
+  }) }}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Cartref",
+        href: "#"
+      },
+      {
+        text: "Pasbortau, teithio a byw dramor",
+        href: "#"
+      },
+      {
+        text: "Teithio dramor",
+        href: "#"
+      }
+    ]
+  }) }}
+
+  {{ govukButton({
+    text: "Cadw a pharhau",
+    classes: "govuk-!-margin-top-4"
+  }) }}
+
+  {{ govukCharacterCount({
+    name: "with-hint",
+    id: "with-hint",
+    maxlength: 200,
+    fallbackHintText: "Gallwch ddefnyddio hyd at %{count} nod",
+    label: {
+      text: "Allwch chi roi mwy o fanylion?",
+      classes: "govuk-label--l",
+      isPageHeading: true
+    },
+    hint: {
+      text: "Peidiwch â chynnwys gwybodaeth bersonol neu ariannol fel eich rhif Yswiriant Gwladol neu fanylion eich cerdyn credyd."
+    }
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "waste",
+    name: "waste",
+    fieldset: {
+      legend: {
+        text: "Pa fathau o wastraff ydych chi'n eu cludo?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    hint: {
+      text: "Dewiswch bob un sy'n berthnasol."
+    },
+    items: [
+      {
+        value: "carcasses",
+        text: "Gwastraff o garcasau anifeiliaid"
+      },
+      {
+        value: "mines",
+        text: "Gwastraff o fwyngloddiau neu chwareli"
+      },
+      {
+        value: "farm",
+        text: "Gwastraff fferm neu amaethyddol"
+      }
+    ]
+  }) }}
+
+  {% set cookieBannerHtml %}
+    <p class="govuk-body">Rydym yn defnyddio rhai cwcis hanfodol i wneud i'r gwasanaeth hwn weithio.</p>
+    <p class="govuk-body">Hoffem hefyd ddefnyddio cwcis dadansoddol fel y gallwn ddeall sut rydych yn defnyddio'r gwasanaeth a gwneud gwelliannau.</p>
+  {% endset %}
+
+  {{ govukCookieBanner({
+    classes: "govuk-!-margin-bottom-4",
+    ariaLabel: "Cwcis ar y gwasanaeth hwn",
+    messages: [
+      {
+        headingText: "Cwcis ar y gwasanaeth hwn",
+        html: cookieBannerHtml,
+        actions: [
+          {
+            text: "Derbyn cwcis dadansoddeg",
+            type: "button",
+            name: "cookies",
+            value: "accept"
+          },
+          {
+            text: "Gwrthod cwcis dadansoddeg",
+            type: "button",
+            name: "cookies",
+            value: "reject"
+          },
+          {
+            text: "Gweld cwcis",
+            href: "#"
+          }
+        ]
+      }
+    ]
+  }) }}
+
+  {% set acceptHtml %}
+    <p class="govuk-body">Rydych chi wedi derbyn cwcis ychwanegol. Gallwch <a class="govuk-link" href="#">newid eich gosodiadau cwci</a> ar unrhyw adeg.</p>
+  {% endset %}
+
+  {{ govukCookieBanner({
+    ariaLabel: "Cwcis ar y gwasanaeth hwn",
+    classes: "govuk-!-margin-bottom-4",
+    messages: [
+      {
+        html: acceptHtml,
+        actions: [
+        {
+          text: "Cuddio neges cwci",
+          href: "#",
+          type: "button"
+        }
+        ]
+      }
+    ]
+  }) }}
+
+  {{ govukDateInput({
+    id: "passport-issued",
+    namePrefix: "passport-issued",
+    fieldset: {
+      legend: {
+        text: "Pryd gafodd eich pasbort ei gyhoeddi?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    hint: {
+      text: "Er enghraifft, 27 3 2007"
+    },
+    items: [
+      {
+        name: "day",
+        label: "Dydd",
+        classes: "govuk-input--width-2",
+        autocomplete: "bday-day"
+      },
+      {
+        name: "month",
+        label: "Mis",
+        classes: "govuk-input--width-2",
+        autocomplete: "bday-month"
+      },
+      {
+        name: "year",
+        label: "Blwyddyn",
+        classes: "govuk-input--width-4",
+        autocomplete: "bday-year"
+      }
+    ]
+  }) }}
+
+  {{ govukDetails({
+    summaryText: "Help gyda chenedligrwydd",
+    text: "Mae angen i ni wybod eich cenedligrwydd fel y gallwn weithio allan pa etholiadau y mae gennych hawl i bleidleisio ynddynt. Os na allwch nodi eich cenedligrwydd, bydd yn rhaid i chi anfon copïau o ddogfennau adnabod drwy'r post."
+  }) }}
+
+  {{ govukErrorSummary({
+    titleText: "Mae yna broblem",
+    disableAutoFocus: true,
+    errorList: [
+      {
+        text: "Rhaid i'r dyddiad y cyhoeddwyd eich pasbort fod yn y gorffennol",
+        href: "#passport-issued-day"
+      },
+      {
+        text: "Rhowch god post, fel AA1 1AA",
+        href: "#postcode-input"
+      }
+    ]
+  }) }}
+
+  {{ govukFileUpload({
+    id: "file-upload-1",
+    name: "file-upload-1",
+    label: {
+      text: "Llwythwch ffeil i fyny"
+    }
+  }) }}
+
+  {{ govukFooter({
+    classes: "govuk-!-margin-bottom-4",
+    navigation: [
+      {
+        title: "Gwasanaethau a gwybodaeth",
+        width: "two-thirds",
+        columns: 2,
+        items: [
+          {
+            href: "#",
+            text: "Budd-daliadau"
+          },
+          {
+            href: "#",
+            text: "Genedigaethau, marwolaethau, priodasau a gofal"
+          },
+          {
+            href: "#",
+            text: "Busnes a hunan-gyflogedig"
+          }
+        ]
+      },
+      {
+        title: "Adrannau a pholisi",
+        width: "one-third",
+        items: [
+          {
+            href: "#",
+            text: "Sut mae llywodraeth yn gweithio"
+          },
+          {
+            href: "#",
+            text: "Adrannau"
+          },
+          {
+            href: "#",
+            text: "Ar draws y byd"
+          }
+        ]
+      }
+    ],
+    meta: {
+      visuallyHiddenTitle: "Dolenni cymorth",
+      items: [
+        {
+          href: "#",
+          text: "Cwcis"
+        },
+        {
+          href: "#",
+          text: "Cysylltwch"
+        },
+        {
+          href: "#",
+          text: "Telerau ac Amodau"
+        }
+      ],
+      html: 'Adeiladwyd gan y <a href="#" class="govuk-footer__link">Government Digital Service</a>'
+    },
+    contentLicence: {
+      html: "Mae’r holl gynnwys ar gael o dan y <a href='#' class='govuk-footer__link'>Drwydded Llywodraeth Agored v3.0</a>, ac eithrio lle nodir yn wahanol"
+    },
+    copyright: {
+      html: "<span>Hawlfraint y Goron</span>"
+    }
+  }) }}
+
+  {{ govukHeader({
+    homepageUrl: "#",
+    serviceName: "Enw gwasanaeth",
+    serviceUrl: "#",
+    menuButtonLabel: "Dangos neu guddio'r ddewislen",
+    menuButtonText: "Dewislen",
+    navigation: [
+      {
+        href: "#1",
+        text: "Eitem llywio 1",
+        active: true
+      },
+      {
+        href: "#2",
+        text: "Eitem llywio 2"
+      },
+      {
+        href: "#3",
+        text: "Eitem llywio 3"
+      },
+      {
+        href: "#4",
+        text: "Eitem llywio 4"
+      }
+    ]
+  }) }}
+
+  {{ govukInsetText({
+    text: "Gall gymryd hyd at 8 wythnos i gofrestru atwrneiaeth arhosol os nad oes unrhyw gamgymeriadau yn y cais."
+  }) }}
+
+  {% set notificationBannerHtml %}
+    <p class="govuk-notification-banner__heading">
+      Mae gennych 7 diwrnod ar ôl i anfon eich cais.
+      <a class="govuk-notification-banner__link" href="#">Gweld cais</a>.
+    </p>
+  {% endset %}
+
+  {{ govukNotificationBanner({
+    html: notificationBannerHtml,
+    titleText: "Pwysig"
+  }) }}
+
+  {{ govukPagination({
+    previous: {
+      text: "Blaenorol",
+      href: "#"
+    },
+    next: {
+      text: "Nesaf",
+      href: "#"
+    },
+    items: [
+      {
+        number: 1,
+        href: "#",
+        visuallyHiddenText: "Tudalen 1"
+      },
+      {
+        number: 2,
+        current: true,
+        href: "#",
+        visuallyHiddenText: "Tudalen 2"
+      },
+      {
+        number: 3,
+        href: "#",
+        visuallyHiddenText: "Tudalen 3"
+      }
+    ]
+  }) }}
+
+  {{ govukPanel({
+    titleText: "Cais wedi'i gwblhau",
+    html: "Eich rhif cyfeirnod<br><strong>HDJ2123F</strong>"
+  }) }}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "alpha"
+    },
+    html: "Mae hwn yn wasanaeth newydd – bydd eich <a class='govuk-link' href='#'>feedback</a> yn ein helpu i'w wella.",
+    classes: "govuk-!-margin-bottom-4"
+  }) }}
+
+  {{ govukRadios({
+    idPrefix: "where-do-you-live",
+    name: "where-do-you-live",
+    fieldset: {
+      legend: {
+        text: "Ble rydych chi'n byw?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    items: [
+      {
+        value: "england",
+        text: "Lloegr"
+      },
+      {
+        value: "scotland",
+        text: "Alban"
+      },
+      {
+        value: "wales",
+        text: "Cymru"
+      },
+      {
+        value: "northern-ireland",
+        text: "Gogledd Iwerddon"
+      }
+    ]
+  }) }}
+
+  {{ govukSelect({
+    id: "sort",
+    name: "sort",
+    label: {
+      text: "Trefnu yn ôl"
+    },
+    items: [
+      {
+        value: "published",
+        text: "Cyhoeddwyd yn ddiweddar"
+      },
+      {
+        value: "updated",
+        text: "Wedi'i ddiweddaru'n ddiweddar",
+        selected: true
+      },
+      {
+        value: "popular",
+        text: "Mwyaf poblogaidd"
+      },
+      {
+        value: "comments",
+        text: "Y rhan fwyaf o sylwadau"
+      }
+    ]
+  }) }}
+
+  {{ govukSkipLink({
+    text: "Neidio i'r prif gynnwys",
+    href: "#content"
+  }) }}
+
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Enw"
+        },
+        value: {
+          text: "Sarah Philips"
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Newid",
+              visuallyHiddenText: "enw"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Dyddiad Geni"
+        },
+        value: {
+          text: "5 January 1978"
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Newid",
+              visuallyHiddenText: "dyddiad geni"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Cyfeiriad"
+        },
+        value: {
+          html: "72 Guild Street<br>London<br>SE23 6FH"
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Newid",
+              visuallyHiddenText: "cyfeiriad"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Manylion cyswllt"
+        },
+        value: {
+          html: '<p class="govuk-body">07700 900457</p><p class="govuk-body">sarah.phillips@example.com</p>'
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Newid",
+              visuallyHiddenText: "manylion cyswllt"
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+
+
+
+  {{ govukTable({
+    caption: "Dyddiadau a symiau",
+    captionClasses: "govuk-table__caption--m",
+    firstCellIsHeader: true,
+    head: [
+      {
+        text: "Dyddiad"
+      },
+      {
+        text: "Swm"
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "Y 6 wythnos gyntaf"
+        },
+        {
+          text: "£109.80 yr wythnos"
+        }
+      ],
+      [
+        {
+          text: "33 wythnos nesaf"
+        },
+        {
+          text: "£109.80 yr wythnos"
+        }
+      ],
+      [
+        {
+          text: "Amcangyfrif o gyfanswm yr incwm"
+        },
+        {
+          text: "£4,282.20"
+        }
+      ]
+    ]
+  }) }}
+
+  {% set pastDayHtml %}
+  <h2 class="govuk-heading-l">Ddoe</h2>
+  {{ govukTable({
+    head: [
+      {
+        text: "Rheolwr achos"
+      },
+      {
+        text: "Agorwyd achosion"
+      },
+      {
+        text: "Caewyd achosion"
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "David Francis"
+        },
+        {
+          text: "3"
+        },
+        {
+          text: "0"
+        }
+      ],
+      [
+        {
+          text: "Paul Farmer"
+        },
+        {
+          text: "1"
+        },
+        {
+          text: "0"
+        }
+      ],
+      [
+        {
+          text: "Rita Patel"
+        },
+        {
+          text: "2"
+        },
+        {
+          text: "0"
+        }
+      ]
+    ]
+  }) }}
+  {% endset -%}
+
+  {% set pastWeekHtml %}
+  <h2 class="govuk-heading-l">Wythnos diwethaf</h2>
+  {{ govukTable({
+    head: [
+      {
+        text: "Rheolwr achos"
+      },
+      {
+        text: "Agorwyd achosion"
+      },
+      {
+        text: "Caewyd achosion"
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "David Francis"
+        },
+        {
+          text: "24"
+        },
+        {
+          text: "18"
+        }
+      ],
+      [
+        {
+          text: "Paul Farmer"
+        },
+        {
+          text: "16"
+        },
+        {
+          text: "20"
+        }
+      ],
+      [
+        {
+          text: "Rita Patel"
+        },
+        {
+          text: "24"
+        },
+        {
+          text: "27"
+        }
+      ]
+    ]
+  }) }}
+  {% endset -%}
+
+  {% set pastMonthHtml %}
+  <h2 class="govuk-heading-l">Mis diwethaf</h2>
+  {{ govukTable({
+    head: [
+      {
+        text: "Rheolwr achos"
+      },
+      {
+        text: "Agorwyd achosion"
+      },
+      {
+        text: "Caewyd achosion"
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "David Francis"
+        },
+        {
+          text: "98"
+        },
+        {
+          text: "95"
+        }
+      ],
+      [
+        {
+          text: "Paul Farmer"
+        },
+        {
+          text: "122"
+        },
+        {
+          text: "131"
+        }
+      ],
+      [
+        {
+          text: "Rita Patel"
+        },
+        {
+          text: "126"
+        },
+        {
+          text: "142"
+        }
+      ]
+    ]
+  }) }}
+  {% endset -%}
+
+  {% set pastYearHtml %}
+  <h2 class="govuk-heading-l">Blwyddyn diwethaf</h2>
+  {{ govukTable({
+    head: [
+      {
+        text: "Rheolwr achos"
+      },
+      {
+        text: "Agorwyd achosion"
+      },
+      {
+        text: "Caewyd achosion"
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "David Francis"
+        },
+        {
+          text: "1380"
+        },
+        {
+          text: "1472"
+        }
+      ],
+      [
+        {
+          text: "Paul Farmer"
+        },
+        {
+          text: "1129"
+        },
+        {
+          text: "1083"
+        }
+      ],
+      [
+        {
+          text: "Rita Patel"
+        },
+        {
+          text: "1539"
+        },
+        {
+          text: "1265"
+        }
+      ]
+    ]
+  }) }}
+  {% endset -%}
+
+  {{ govukTabs({
+    title: "Cynnwys",
+    items: [
+      {
+        label: "Ddoe",
+        id: "past-day",
+        panel: {
+          html: pastDayHtml
+        }
+      },
+      {
+        label: "Wythnos diwethaf",
+        id: "past-week",
+        panel: {
+          html: pastWeekHtml
+        }
+      },
+      {
+        label: "Mis diwethaf",
+        id: "past-month",
+        panel: {
+          html: pastMonthHtml
+        }
+      },
+      {
+        label: "Blwyddyn diwethaf",
+        id: "past-year",
+        panel: {
+          html: pastYearHtml
+        }
+      }
+    ]
+  }) }}
+
+  {{ govukTag({
+    text: "cyflawn",
+    classes: "govuk-!-margin-bottom-4"
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: "Beth yw enw'r digwyddiad?",
+      classes: "govuk-label--l",
+      isPageHeading: true
+    },
+    id: "event-name",
+    name: "event-name"
+  }) }}
+
+  {{ govukTextarea({
+    name: "more-detail",
+    id: "more-detail",
+    label: {
+      text: "Allwch chi roi mwy o fanylion?",
+      classes: "govuk-label--l",
+      isPageHeading: true
+    },
+    hint: {
+      text: "Peidiwch â chynnwys gwybodaeth bersonol neu ariannol, fel eich rhif Yswiriant Gwladol neu fanylion cerdyn credyd."
+    }
+  }) }}
+
+  {{ govukWarningText({
+    text: "Gallwch gael dirwy o hyd at £5,000 os na fyddwch yn cofrestru.",
+    iconFallbackText: "Rhybudd"
+  }) }}
+{% endblock %}
+
+{% block bodyEnd %}
+  <script src="/public/all.js"></script>
+  <script>
+    window.GOVUKFrontend.initAll({
+      accordion: {
+        i18n: {
+          showAllSections: "Dangos adrannau",
+          hideAllSections: "Cuddio adrannau",
+        },
+        "i18n.showSection": "Dangos<span class=\"govuk-visually-hidden\"> adran</span>",
+        "i18n.hideSection": "Cuddio<span class=\"govuk-visually-hidden\"> adran</span>",
+      }
+    })
+  </script>
+{% endblock %}

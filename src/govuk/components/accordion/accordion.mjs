@@ -1,30 +1,53 @@
-
-/*
-  Accordion
-
-  This allows a collection of sections to be collapsed by default,
-  showing only their headers. Sections can be expanded or collapsed
-  individually by clicking their headers. An "Show all sections" button is
-  also added to the top of the accordion, which switches to "Hide all sections"
-  when all the sections are expanded.
-
-  The state of each section is saved to the DOM via the `aria-expanded`
-  attribute, which also provides accessibility.
-
-  A Chevron icon has been added for extra affordance that this is an interactive element.
-
-*/
-
-import { nodeListForEach } from '../../common.mjs'
+import { nodeListForEach, mergeConfigs, extractConfigByNamespace, normaliseDataset } from '../../common.mjs'
+import I18n from '../../i18n.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 
-function Accordion ($module) {
+/**
+ * Accordion component
+ *
+ * This allows a collection of sections to be collapsed by default, showing only
+ * their headers. Sections can be expanded or collapsed individually by clicking
+ * their headers. A "Show all sections" button is also added to the top of the
+ * accordion, which switches to "Hide all sections" when all the sections are
+ * expanded.
+ *
+ * The state of each section is saved to the DOM via the `aria-expanded`
+ * attribute, which also provides accessibility.
+ *
+ * @class
+ * @param {HTMLElement} $module HTML element to use for accordion
+ * @param {Object} config
+ * @param {Object} config.i18n - Translations
+ * @param {String} [config.i18n.hideAllSections='Hide all sections'] - Text for
+ *   'hide all sections' button, used when at least one section is expanded
+ * @param {String} [config.i18n.hideSection='Hide<span class="govuk-visually-hidden"> this section</span>']
+ *   - Text for 'hide this section' button, used when a section is expanded
+ * @param {String} [config.i18n.showAllSections='Show all sections'] - Text for
+ *   'show all sections' button, used when all sections are collapsed
+ * @param {String} [config.i18n.showSection='Show<span class="govuk-visually-hidden"> this section</span>']
+ *   - Text for 'show this section' button, used when a section is collapsed
+ */
+function Accordion ($module, config) {
   this.$module = $module
-  this.moduleId = $module.getAttribute('id')
   this.$sections = $module.querySelectorAll('.govuk-accordion__section')
   this.$showAllButton = ''
   this.browserSupportsSessionStorage = helper.checkForSessionStorage()
+
+  var defaultConfig = {
+    i18n: {
+      hideAllSections: 'Hide all sections',
+      hideSection: 'Hide<span class="govuk-visually-hidden"> this section</span>',
+      showAllSections: 'Show all sections',
+      showSection: 'Show<span class="govuk-visually-hidden"> this section</span>'
+    }
+  }
+  this.config = mergeConfigs(
+    defaultConfig,
+    config || {},
+    normaliseDataset($module.dataset)
+  )
+  this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'))
 
   this.controlsClass = 'govuk-accordion__controls'
   this.showAllClass = 'govuk-accordion__show-all'
@@ -116,7 +139,7 @@ Accordion.prototype.constructHeaderMarkup = function ($headerWrapper, index) {
   // Create a button element that will replace the '.govuk-accordion__section-button' span
   var $button = document.createElement('button')
   $button.setAttribute('type', 'button')
-  $button.setAttribute('aria-controls', this.moduleId + '-content-' + (index + 1))
+  $button.setAttribute('aria-controls', this.$module.id + '-content-' + (index + 1))
 
   // Copy all attributes (https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes) from $span to $button
   for (var i = 0; i < $span.attributes.length; i++) {
@@ -233,15 +256,11 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
   var $icon = $section.querySelector('.' + this.upChevronIconClass)
   var $showHideText = $section.querySelector('.' + this.sectionShowHideTextClass)
   var $button = $section.querySelector('.' + this.sectionButtonClass)
-  var newButtonText = expanded ? 'Hide' : 'Show'
-
-  // Build additional copy of "this section" for assistive technology and place inside toggle link
-  var $visuallyHiddenText = document.createElement('span')
-  $visuallyHiddenText.classList.add('govuk-visually-hidden')
-  $visuallyHiddenText.innerHTML = ' this section'
+  var newButtonText = expanded
+    ? this.i18n.t('hideSection')
+    : this.i18n.t('showSection')
 
   $showHideText.innerHTML = newButtonText
-  $showHideText.appendChild($visuallyHiddenText)
   $button.setAttribute('aria-expanded', expanded)
 
   // Swap icon, change class
@@ -278,7 +297,9 @@ Accordion.prototype.checkIfAllSectionsOpen = function () {
 Accordion.prototype.updateShowAllButton = function (expanded) {
   var $showAllIcon = this.$showAllButton.querySelector('.' + this.upChevronIconClass)
   var $showAllText = this.$showAllButton.querySelector('.' + this.showAllTextClass)
-  var newButtonText = expanded ? 'Hide all sections' : 'Show all sections'
+  var newButtonText = expanded
+    ? this.i18n.t('hideAllSections')
+    : this.i18n.t('showAllSections')
   this.$showAllButton.setAttribute('aria-expanded', expanded)
   $showAllText.innerHTML = newButtonText
 
@@ -301,9 +322,7 @@ var helper = {
       window.sessionStorage.removeItem(testString)
       return result
     } catch (exception) {
-      if ((typeof console === 'undefined' || typeof console.log === 'undefined')) {
-        console.log('Notice: sessionStorage not available.')
-      }
+      return false
     }
   }
 }
@@ -319,14 +338,6 @@ Accordion.prototype.storeState = function ($section) {
     if ($button) {
       var contentId = $button.getAttribute('aria-controls')
       var contentState = $button.getAttribute('aria-expanded')
-
-      if (typeof contentId === 'undefined' && (typeof console === 'undefined' || typeof console.log === 'undefined')) {
-        console.error(new Error('No aria controls present in accordion section heading.'))
-      }
-
-      if (typeof contentState === 'undefined' && (typeof console === 'undefined' || typeof console.log === 'undefined')) {
-        console.error(new Error('No aria expanded present in accordion section heading.'))
-      }
 
       // Only set the state when both `contentId` and `contentState` are taken from the DOM.
       if (contentId && contentState) {

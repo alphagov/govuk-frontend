@@ -1,8 +1,6 @@
-const configPaths = require('./config/paths.json')
-const PORT = process.env.PORT || configPaths.ports.test
-
 module.exports = {
   browserContext: 'incognito',
+  browserPerWorker: true,
   launch: {
     // we use --no-sandbox --disable-setuid-sandbox as a workaround for the
     // 'No usable sandbox! Update your kernel' error
@@ -11,10 +9,5 @@ module.exports = {
       '--no-sandbox',
       '--disable-setuid-sandbox'
     ]
-  },
-  server: {
-    command: `cross-env PORT=${PORT} node app/start.js`,
-    launchTimeout: 30000, // Allow time for application to start
-    port: PORT
   }
 }

@@ -77,19 +77,26 @@ Developers should pair on releases. When remote working, it can be useful to be 
   If you're following these instructions, you're probably doing a sequential release, meaning
   the tag should be 'latest'.
 
-  Enter `y` to continue. If you think the tag should be different, enter `N` to have the option to set your own npm tag.
+4. Enter `y` to continue. If you think the tag should be different, enter `N` to have the option to set your own npm tag.
 
-4. You will now be prompted to continue or cancel the release. Check the details and enter `y` to continue. If something does not look right, press `N` to cancel the release.
+5. You will now be prompted to continue or cancel the release. Check the details and enter `y` to continue. If something does not look right, press `N` to cancel the release.
+  
+  This step will create a ZIP file containing the release in the root of your govuk-frontend git directory. You will need this file when creating the GitHub release.
 
-5. View the created tag in the [Github interface](https://github.com/alphagov/govuk-frontend/releases) as follows:
-  - select the latest tag
-  - press **Create release from tag**
-  - set 'GOV.UK Frontend v[version-number]' as the title
-  - add release notes from changelog
-  - attach the generated ZIP that has been generated at the root of this project
-  - publish release
-
+  It will also automatically create a tag in Github which you can use to create a Github release in the following section.
+  
 6. Run `npm logout` to log out from npm.
+
+## Create a release on Github
+
+You can view the tag created during step 10 of creating the new version in the [Github interface](https://github.com/alphagov/govuk-frontend/tags). To create a new Github release, do the following:
+
+1. Select the latest tag
+2. Press **Create release from tag**
+3. Set 'GOV.UK Frontend v[version-number]' as the title
+4. Add release notes from changelog
+5. Attach the ZIP file that has been generated at the root of this project during the npm publishing phase
+6. Publish release
 
 # After you publish the new release
 

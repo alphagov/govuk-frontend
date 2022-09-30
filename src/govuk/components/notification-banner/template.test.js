@@ -1,11 +1,8 @@
 /**
  * @jest-environment jsdom
  */
-/* eslint-env jest */
 
-const axe = require('../../../../lib/axe-helper')
-
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('notification-banner')
 
@@ -120,11 +117,18 @@ describe('Notification-banner', () => {
       expect(ariaAttr).toEqual('my-id')
     })
 
-    it('adds the data-disable-auto-focus attribute so component is not focused on page load', () => {
+    it('adds data-disable-auto-focus="true" if disableAutoFocus is true', () => {
       const $ = render('notification-banner', examples['auto-focus disabled, with type as success'])
 
       const $component = $('.govuk-notification-banner')
-      expect($component.attr('data-disable-auto-focus')).toBeTruthy()
+      expect($component.attr('data-disable-auto-focus')).toBe('true')
+    })
+
+    it('adds data-disable-auto-focus="false" if disableAutoFocus is false', () => {
+      const $ = render('notification-banner', examples['auto-focus explicitly enabled, with type as success'])
+
+      const $component = $('.govuk-notification-banner')
+      expect($component.attr('data-disable-auto-focus')).toBe('false')
     })
 
     it('renders classes', () => {

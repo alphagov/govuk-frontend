@@ -4,27 +4,143 @@
 
 ### New features
 
+#### Change the Button component background and text colour
+
+For non-GOV.UK branded websites, you can now change the Button component background and text colour.
+
+To change the Button component background colour set the `$govuk-button-background-colour` Sass variable.
+
+To change the Button component text colour set the `$govuk-button-text-colour` Sass variable.
+
+```scss
+@import "node_modules/govuk-frontend/govuk/base";
+
+$govuk-button-background-colour: govuk-colour("yellow");
+$govuk-button-text-colour: govuk-colour("black");
+@import "node_modules/govuk-frontend/govuk/components/button/index";
+```
+
+This was added in [pull request #2752: Change the Button component background and text colour](https://github.com/alphagov/govuk-frontend/pull/2752). Thanks to [Nick Colley](https://github.com/NickColley) for this contribution.
+
+#### Localise the navigation menu toggle button
+
+When using the [header](https://design-system.service.gov.uk/components/header/) Nunjucks macro, you can now translate the text of the mobile navigation menu toggle button by using the `menuButtonText` parameter.
+
+You should avoid lengthy values for the `menuButtonText` parameter, as the text can overflow and cause visual issues if too long. 
+
+This was added in [pull request #2720: Add parameter to localise mobile menu toggle button](https://github.com/alphagov/govuk-frontend/pull/2720).
+
+#### Localise the character count's fallback text
+
+When using the [character count](https://design-system.service.gov.uk/components/character-count/) Nunjucks macro, you can now translate the text of the fallback counter message by using the `fallbackHintText` parameter.
+
+This text is announced by screen readers when the character count input is focused. It's also displayed visually if JavaScript is not available.
+
+This was added in [pull request #2742: Add ability to customise character count fallback text](https://github.com/alphagov/govuk-frontend/pull/2742).
+
+#### Localise the accordion's toggle buttons
+
+You can now translate the text of the [accordion](https://design-system.service.gov.uk/components/character-count/) component's show and hide toggle buttons.
+
+When using the Nunjucks macro, you can use the new `showSectionHtml` and `hideSectionHtml` parameters to customise the text of the 'show' and 'hide' toggles in each section. You can also use `showAllSectionsHtml` and `hideAllSectionsHtml` parameters to customise the text of the toggle at the top of the accordion.
+
+If you're not using the Nunjucks macro, you can customise these using data-* attributes. Any HTML appearing within the attributes must have quotation marks and brackets converted into their HTML entity equivalents. 
+
+- `data-i18n.show-section`
+- `data-i18n.hide-section`
+- `data-i18n.show-all-sections`
+- `data-i18n.hide-all-sections`
+
+You can also change this text for all instances of the Accordion using a JavaScript configuration object. See [our guidance on localising GOV.UK Frontend](https://design-system.service.gov.uk/get-started/localisation/) for how to do this. 
+
+This was added in pull requests:
+
+- [#2818: Add support for localisation via data-* attributes to Accordion component](https://github.com/alphagov/govuk-frontend/pull/2818)
+- [#2826: Add support for localisation via JavaScript configuration to Accordion component](https://github.com/alphagov/govuk-frontend/pull/2826)
+
+### Recommended changes
+
+#### Remove `aria-labelledby`, remove `id="error-summary-title"` from title and move `role="alert"` to child container on the error summary component
+
+If you're not using the Nunjucks macros, you can improve the experience for screen reader users by making these changes to the error summary markup:
+
+- Remove `aria-labelledby="error-summary-title"` and `role="alert"` from the parent element (`govuk-error-summary`)
+- Add a `div` wrapper around the contents of `govuk-error-summary` with the attribute `role="alert"`
+- Remove `id="error-summary-title"` from the error summary `h2` (`govuk-error-summary__title`)
+
+This will enable screen reader users to have a better, more coherent experience with the error summary. Most notably it will ensure that users of JAWS 2022 or later will hear the entire contents of the error summary on page load and therefore have further context on why there is an error on the page they're on.
+
+This was added in [pull request #2677: Amend error summary markup to fix page load focus bug in JAWS 2022](https://github.com/alphagov/govuk-frontend/pull/2677).
+
+### Deprecated features
+
+#### Stop using settings associated with legacy codebases
+
+In GOV.UK Frontend v5.0 we will stop supporting compatibility with legacy codebases. As part of this, we are deprecating settings controlled by compatibility mode variables. This includes the `govuk-compatibility` mixin and the following settings:
+
+- `$govuk-use-legacy-palette`
+- `$govuk-use-legacy-font`
+- `$govuk-typography-use-rem`
+- `$govuk-font-family-tabular`
+
+This was introduced in [pull request #2844: Deprecate compatibility mode settings](https://github.com/alphagov/govuk-frontend/pull/2844).
+
+### Fixes
+
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#2807: Tidy up and refactor the Character Count JavaScript](https://github.com/alphagov/govuk-frontend/pull/2807)
+- [#2811: Use Element.id to get module id for accordion](https://github.com/alphagov/govuk-frontend/pull/2811)
+- [#2821: Avoid duplicated --error class on Character Count](https://github.com/alphagov/govuk-frontend/pull/2821)
+- [#2800: Improve Pagination component print styles](https://github.com/alphagov/govuk-frontend/pull/2800)
+
+## 4.3.1 (Patch release)
+
+### Recommended changes
+
+#### Replace deprecated `govuk-!-margin-static` and `govuk-!-padding-static` classes
+
+We've fixed an error in the naming convention of the static spacing override classes we'd introduced in v4.3.0. These classes should start with `govuk-!-static`, and we've now deprecated the incorrect classes.
+
+If you're using the static spacing margin override classes, replace any classes starting with `govuk-!-margin-static` with `govuk-!-static-margin`. For example: `govuk-!-margin-static-2` would become `govuk-!-static-margin-2`.
+
+If you're using the static spacing padding override classes, replace any classes starting with `govuk-!-padding-static` with `govuk-!-static-padding`. For example: `govuk-!-padding-static-2` would become `govuk-!-static-padding-2`.
+
+We've deprecated the `govuk-!-margin-static` and `govuk-!-padding-static` classes, and will remove them in a future major release.
+
+This change was introduced in [pull request #2770: Fix ordering of properties in static spacing override classes](https://github.com/alphagov/govuk-frontend/pull/2770). Thanks to @garrystewart for reporting this issue.
+
+### Fixes
+
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#2766: Remove unused `console.log` calls from accordion JavaScript](https://github.com/alphagov/govuk-frontend/pull/2766)
+
+## 4.3.0 (Feature release)
+
+### New features
+
 #### Customise the Open Graph image URL without duplicate meta tags
 
-You can now customise the Open Graph image URL included in the `<head>` by setting the `opengraphImageUrl` Nunjucks option.
+You can now customise the Open Graph image URL included in the `head` by setting the `opengraphImageUrl` Nunjucks option.
 
-Additionally, the default Open Graph image URL meta tag will now only be included if either `opengraphImageUrl` or `assetUrl` is set.
+Also, the default Open Graph image URL meta tag will now only be included if you set the either `opengraphImageUrl` or `assetUrl`.
 
-This change was introduced in [pull request #2673: Allow Open Graph image URL to be customised](https://github.com/alphagov/govuk-frontend/pull/2673).
+This was added in [pull request #2673: Allow Open Graph image URL to be customised](https://github.com/alphagov/govuk-frontend/pull/2673).
 
 #### Localise the content licence and copyright statements
 
-When using the [footer](https://design-system.service.gov.uk/components/footer/) Nunjucks macro, you can now translate the text of the Open Government Licence (OGL) and Crown copyright statements using the `contentLicence` and `copyright` parameters.
+When using the [footer Nunjucks macro](https://design-system.service.gov.uk/components/footer/#options-default-1), you can now translate the text of the Open Government Licence (OGL) and Crown copyright statements using the `contentLicence` and `copyright` parameters.
 
-Visit The National Archives' [documentation on OGL and Crown copyright](https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/open-government-licence/copyright-notices-attribution-statements/) for information on what needs to be included in these statements.
+Visit [The National Archives' documentation on OGL and Crown copyright](https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/open-government-licence/copyright-notices-attribution-statements/) for information on what you need to include in these statements.
 
 This was added in [pull request #2702: Allow localisation of content licence and copyright notices in Footer](https://github.com/alphagov/govuk-frontend/pull/2702).
 
 #### Pass HTML directly into compatible components
 
-If using the Nunjucks macros, you can now pass HTML content directly into compatible components using [the Nunjucks `call` syntax](https://mozilla.github.io/nunjucks/templating.html#call). If HTML is provided through the call syntax, the `html` and `text` options will be ignored.
+If using the Nunjucks macros, you can now pass HTML content directly into compatible components using [the Nunjucks call syntax](https://mozilla.github.io/nunjucks/templating.html#call). If HTML is provided through the call syntax, the nunjucks macro will ignore the HTML and text options.
 
-Components that have been updated to support this syntax are:
+Components updated to support this syntax are:
 
 - Details
 - Error summary (mapped to `descriptionHtml` parameter)
@@ -38,17 +154,17 @@ This was added in [pull request #2734: Update various components to be callable]
 
 You can now use static spacing override classes to apply spacing from [the static spacing scale](https://design-system.service.gov.uk/styles/spacing/#static-spacing) to elements of your design.
 
-The new classes start with: `govuk-!-static` followed by either `margin-` or `padding-`, and then a spacing unit number.
+The new classes start with: `govuk-!-static-` followed by either `margin-` or `padding-`, and then a spacing unit number.
 
 To apply spacing in a single direction, include `left-`, `right-`, `top-`, or `bottom-` just before the spacing unit.
 
 For example:
 
-- `govuk-!-static-margin-9` will apply a 60px margin to all sides of the element at all screen sizes
-- `govuk-!-static-padding-right-5` will apply 25px of padding to the right side of the element at all screen sizes
-- `govuk-!-static-margin-0` will remove all margins at all screen sizes
+-   `govuk-!-static-margin-9` will apply a 60px margin to all sides of the element at all screen sizes
+-   `govuk-!-static-padding-right-5` will apply 25px of padding to the right side of the element at all screen sizes
+-   `govuk-!-static-margin-0` will remove all margins at all screen sizes
 
-This was added in [pull request #2672: Add static spacing override classes](https://github.com/alphagov/govuk-frontend/pull/2672). Thanks to [Patrick Cartlidge](https://github.com/patrickpatrickpatrick) for this contribution.
+This was added in [pull request #2672: Add static spacing override classes](https://github.com/alphagov/govuk-frontend/pull/2672). Thanks to @patrickpatrickpatrick for this contribution.
 
 ### Deprecated features
 
@@ -56,7 +172,7 @@ This was added in [pull request #2672: Add static spacing override classes](http
 
 We've deprecated the `govuk-header__navigation--no-service-name` class, and will remove it in a future major release.
 
-This change was introduced in [pull request #2694: Deprecate `.govuk-header__navigation--no-service-name`](https://github.com/alphagov/govuk-frontend/pull/2694).
+This was added in [pull request #2694: Deprecate .govuk-header__navigation--no-service-name](https://github.com/alphagov/govuk-frontend/pull/2694).
 
 ### Recommended changes
 
@@ -64,11 +180,11 @@ We've recently made some non-breaking changes to GOV.UK Frontend. Implementing t
 
 #### Add `hidden` to the mobile menu button in the header component
 
-If you're not using the Nunjucks macros, add the `hidden` attribute to the mobile menu button (button with class `govuk-header__menu-button`) in the header component.
+If you're not using the Nunjucks macros, add the `hidden` attribute to the mobile menu button in the header component. The mobile menu button is `govuk-header__menu-button`.
 
-We've changed the header's mobile menu functionality to use the `hidden` attribute over using CSS to show/hide the mobile menu. Adding `hidden` to the mobile menu button by default will ensure that it does not display for users when javascript doesn't load.
+We've changed the header's mobile menu functionality to use the `hidden` attribute instead of using CSS to show/hide the mobile menu. Adding `hidden` to the mobile menu button by default will make sure that it does not display for users when javascript does not load.
 
-This change was introduced in [pull request 2727: Make use of hidden in header navigation functionality](https://github.com/alphagov/govuk-frontend/pull/2727)
+This was added in [pull request 2727: Make use of hidden in header navigation functionality](https://github.com/alphagov/govuk-frontend/pull/2727). Thanks to @NickColley and @kr8n3r for their contributions.
 
 ### Fixes
 
@@ -77,12 +193,12 @@ In [pull request 2678: Replace ex units with ems for input lengths](https://gith
 We’ve also made fixes in the following pull requests:
 
 - [#2668: Fix Summary List action link alignment](https://github.com/alphagov/govuk-frontend/pull/2668)
-- [#2670: Define minimum width for select component](https://github.com/alphagov/govuk-frontend/pull/2670)
-- [#2723: Style accordion and tabs text content with `govuk-body` class](https://github.com/alphagov/govuk-frontend/pull/2723)
-- [#2724: Remove redundant `aria-hidden` attribute from the content when using the Details polyfill](https://github.com/alphagov/govuk-frontend/pull/2724)
-- [#2725: Remove padding-right from last column in summary list row](https://github.com/alphagov/govuk-frontend/pull/2725)
+- [#2670: Define minimum width for select component](https://github.com/alphagov/govuk-frontend/pull/2670) - thanks @Nosfistis for reporting this issue
+- [#2723: Style accordion and tabs text content with govuk-body class](https://github.com/alphagov/govuk-frontend/pull/2723)
+- [#2724: Remove redundant aria-hidden attribute from the content when using the Details polyfill](https://github.com/alphagov/govuk-frontend/pull/2724)
+- [#2725: Remove padding-right from last column in summary list row](https://github.com/alphagov/govuk-frontend/pull/2725) - thanks @edwardhorsford for reporting this issue and suggesting a fix
 - [#2737: Avoid unnecessary spacing-related media queries](https://github.com/alphagov/govuk-frontend/pull/2737)
-- [#2747: Ensure accordion uses overriden focus colour](https://github.com/alphagov/govuk-frontend/pull/2747) - thanks @NickColley
+- [#2747: Ensure accordion uses overriden focus colour](https://github.com/alphagov/govuk-frontend/pull/2747) - thanks @NickColley for reporting this issue and suggesting a fix
 
 ## 4.2.0 (Feature release)
 

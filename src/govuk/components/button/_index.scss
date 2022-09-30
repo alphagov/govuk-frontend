@@ -1,8 +1,26 @@
+////
+/// @group components/button
+////
+
+/// Button component background colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-button-background-colour: govuk-colour("green", $legacy: #00823b) !default;
+
+/// Button component text colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-button-text-colour: govuk-colour("white") !default;
+
 @include govuk-exports("govuk/component/button") {
-  $govuk-button-colour: govuk-colour("green", $legacy: #00823b);
+  $govuk-button-colour: $govuk-button-background-colour;
   $govuk-button-hover-colour: govuk-shade($govuk-button-colour, 20%);
   $govuk-button-shadow-colour: govuk-shade($govuk-button-colour, 60%);
-  $govuk-button-text-colour: govuk-colour("white");
+  $govuk-button-text-colour: $govuk-button-text-colour;
 
   // Secondary button variables
   $govuk-secondary-button-colour: govuk-colour("light-grey", $legacy: "grey-3");
@@ -101,7 +119,7 @@
     // we need to override the text colour for that combination of selectors so
     // so that unvisited links styled as buttons do not end up with dark blue
     // text when focussed.
-    @include govuk-compatibility(govuk_template) {
+    @include _govuk-compatibility(govuk_template) {
       &:link:focus {
         color: $govuk-button-text-colour;
       }
@@ -184,7 +202,7 @@
     // we need to override the text colour for that combination of selectors so
     // so that unvisited links styled as buttons do not end up with dark blue
     // text when focussed.
-    @include govuk-compatibility(govuk_template) {
+    @include _govuk-compatibility(govuk_template) {
       &:link:focus {
         color: $govuk-secondary-button-text-colour;
       }
@@ -216,7 +234,7 @@
     // we need to override the text colour for that combination of selectors so
     // so that unvisited links styled as buttons do not end up with dark blue
     // text when focussed.
-    @include govuk-compatibility(govuk_template) {
+    @include _govuk-compatibility(govuk_template) {
       &:link:focus {
         color: $govuk-warning-button-text-colour;
       }

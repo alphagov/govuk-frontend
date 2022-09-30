@@ -1,11 +1,8 @@
 /**
  * @jest-environment jsdom
  */
-/* eslint-env jest */
 
-const axe = require('../../../../lib/axe-helper')
-
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('button')
 
@@ -80,11 +77,27 @@ describe('Button', () => {
       expect($component.html()).toContain('Start <em>now</em>')
     })
 
-    it('renders with preventDoubleClick attribute', () => {
-      const $ = render('button', examples['prevent double click'])
+    describe('preventDoubleClick', () => {
+      it('does not render the attribute if not set', () => {
+        const $ = render('button', examples['no data-prevent-double-click'])
 
-      const $component = $('.govuk-button')
-      expect($component.attr('data-prevent-double-click')).toEqual('true')
+        const $component = $('.govuk-button')
+        expect($component.attr('data-prevent-double-click')).toBeUndefined()
+      })
+
+      it('renders with preventDoubleClick attribute set to true', () => {
+        const $ = render('button', examples['prevent double click'])
+
+        const $component = $('.govuk-button')
+        expect($component.attr('data-prevent-double-click')).toEqual('true')
+      })
+
+      it('renders with preventDoubleClick attribute set to false', () => {
+        const $ = render('button', examples["don't prevent double click"])
+
+        const $component = $('.govuk-button')
+        expect($component.attr('data-prevent-double-click')).toEqual('false')
+      })
     })
   })
 
@@ -186,7 +199,7 @@ describe('Button', () => {
     })
 
     it('renders a button if you don\'t pass anything', () => {
-      const $ = render('button', examples['no data'])
+      const $ = render('button', examples['no type'])
 
       const $component = $('.govuk-button')
       expect($component.get(0).tagName).toEqual('button')

@@ -1,8 +1,10 @@
-/* eslint-env jest */
+/**
+ * @jest-environment puppeteer
+ */
 
 const { devices } = require('puppeteer')
 const iPhone = devices['iPhone 6']
-const configPaths = require('../../../../config/paths.json')
+const configPaths = require('../../../../config/paths.js')
 const PORT = configPaths.ports.test
 
 const baseUrl = 'http://localhost:' + PORT
@@ -95,9 +97,11 @@ describe('Header navigation', () => {
 
     describe('when menu button is pressed', () => {
       beforeAll(async () => {
-        await page.goto(`${baseUrl}/components/header/with-navigation/preview`, {
-          waitUntil: 'load'
-        })
+        await Promise.all([
+          page.goto(`${baseUrl}/components/header/with-navigation/preview`, { waitUntil: 'load' }),
+          page.waitForSelector('.govuk-js-header-toggle')
+        ])
+
         await page.click('.govuk-js-header-toggle')
       })
 
@@ -125,9 +129,11 @@ describe('Header navigation', () => {
 
     describe('when menu button is pressed twice', () => {
       beforeAll(async () => {
-        await page.goto(`${baseUrl}/components/header/with-navigation/preview`, {
-          waitUntil: 'load'
-        })
+        await Promise.all([
+          page.goto(`${baseUrl}/components/header/with-navigation/preview`, { waitUntil: 'load' }),
+          page.waitForSelector('.govuk-js-header-toggle')
+        ])
+
         await page.click('.govuk-js-header-toggle')
         await page.click('.govuk-js-header-toggle')
       })

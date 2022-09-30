@@ -1,5 +1,3 @@
-/* eslint-env jest */
-
 const { renderSass } = require('../../../lib/jest-helpers')
 
 const sassConfig = {
@@ -41,7 +39,7 @@ describe('@mixin govuk-link-decoration', () => {
         $govuk-new-link-styles: true;
         $govuk-link-underline-thickness: 1px;
         @import "base";
-  
+
         .foo {
           @include govuk-link-decoration;
         }`
@@ -56,7 +54,7 @@ describe('@mixin govuk-link-decoration', () => {
         $govuk-new-link-styles: true;
         $govuk-link-underline-offset: .1em;
         @import "base";
-  
+
         .foo {
           @include govuk-link-decoration;
         }`
@@ -72,7 +70,7 @@ describe('@mixin govuk-link-decoration', () => {
           $govuk-new-link-styles: true;
           $govuk-link-underline-thickness: false;
           @import "base";
-  
+
           .foo {
             @include govuk-link-decoration;
           }`
@@ -89,7 +87,7 @@ describe('@mixin govuk-link-decoration', () => {
         $govuk-new-link-styles: true;
         $govuk-link-underline-offset: false;
         @import "base";
-  
+
         .foo {
             @include govuk-link-decoration;
         }`
@@ -107,7 +105,7 @@ describe('@mixin govuk-link-hover-decoration', () => {
     it('does not set a hover state', async () => {
       const sass = `
       @import "base";
-  
+
       // The mixin shouldn't return anything, so this selector ends up empty and
       // is omitted from the CSS
       .foo:hover {
@@ -142,7 +140,7 @@ describe('@mixin govuk-link-hover-decoration', () => {
         $govuk-new-link-styles: true;
         $govuk-link-hover-underline-thickness: false;
         @import "base";
-    
+
         // The mixin shouldn't return anything, so this selector ends up empty and
         // is omitted from the CSS
         .foo:hover {

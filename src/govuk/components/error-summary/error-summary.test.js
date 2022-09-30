@@ -1,6 +1,13 @@
-/* eslint-env jest */
+/**
+ * @jest-environment puppeteer
+ */
 
-const configPaths = require('../../../../config/paths.json')
+const { getExamples } = require('../../../../lib/jest-helpers')
+const { renderAndInitialise } = require('../../../../lib/puppeteer-helpers')
+
+const examples = getExamples('error-summary')
+
+const configPaths = require('../../../../config/paths.js')
 const PORT = configPaths.ports.test
 
 const baseUrl = 'http://localhost:' + PORT
@@ -30,20 +37,133 @@ describe('Error Summary', () => {
   })
 
   describe('when auto-focus is disabled', () => {
-    it('does not have a tabindex attribute', async () => {
-      await page.goto(`${baseUrl}/components/error-summary/autofocus-disabled/preview`, { waitUntil: 'load' })
+    describe('using data-attributes', () => {
+      beforeAll(async () => {
+        await page.goto(
+          `${baseUrl}/components/error-summary/autofocus-disabled/preview`,
+          { waitUntil: 'load' }
+        )
+      })
 
-      const tabindex = await page.$eval('.govuk-error-summary', el => el.getAttribute('tabindex'))
+      it('does not have a tabindex attribute', async () => {
+        const tabindex = await page.$eval('.govuk-error-summary', (el) =>
+          el.getAttribute('tabindex')
+        )
 
-      expect(tabindex).toBeNull()
+        expect(tabindex).toBeNull()
+      })
+
+      it('does not focus on page load', async () => {
+        const activeElement = await page.evaluate(
+          () => document.activeElement.dataset.module
+        )
+
+        expect(activeElement).not.toBe('govuk-error-summary')
+      })
     })
 
-    it('does not focus on page load', async () => {
-      await page.goto(`${baseUrl}/components/error-summary/autofocus-disabled/preview`, { waitUntil: 'load' })
+    describe('using JavaScript configuration', () => {
+      let page
 
-      const activeElement = await page.evaluate(() => document.activeElement.dataset.module)
+      beforeAll(async () => {
+        page = await renderAndInitialise('error-summary', {
+          baseUrl,
+          nunjucksParams: examples.default,
+          javascriptConfig: {
+            disableAutoFocus: true
+          }
+        })
+      })
 
-      expect(activeElement).not.toBe('govuk-error-summary')
+      it('does not have a tabindex attribute', async () => {
+        const tabindex = await page.$eval('.govuk-error-summary', (el) =>
+          el.getAttribute('tabindex')
+        )
+
+        expect(tabindex).toBeNull()
+      })
+
+      it('does not focus on page load', async () => {
+        const activeElement = await page.evaluate(
+          () => document.activeElement.dataset.module
+        )
+
+        expect(activeElement).not.toBe('govuk-error-summary')
+      })
+    })
+
+    describe('using JavaScript configuration, with no elements on the page', () => {
+      it('does not prevent further JavaScript from running', async () => {
+        const result = await page.evaluate(() => {
+          // `undefined` simulates the element being missing,
+          // from an unchecked `document.querySelector` for example
+          new window.GOVUKFrontend.ErrorSummary(undefined).init()
+
+          // If our component initialisation breaks, this won't run
+          return true
+        })
+
+        expect(result).toBe(true)
+      })
+    })
+
+    describe('using JavaScript configuration, but enabled via data-attributes', () => {
+      let page
+
+      beforeAll(async () => {
+        page = await renderAndInitialise('error-summary', {
+          baseUrl,
+          nunjucksParams: examples['autofocus explicitly enabled']
+        })
+      })
+
+      it('adds the tabindex attribute on page load', async () => {
+        const tabindex = await page.$eval('.govuk-error-summary', (el) =>
+          el.getAttribute('tabindex')
+        )
+        expect(tabindex).toEqual('-1')
+      })
+
+      it('is automatically focused when the page loads', async () => {
+        const moduleName = await page.evaluate(
+          () => document.activeElement.dataset.module
+        )
+        expect(moduleName).toBe('govuk-error-summary')
+      })
+    })
+
+    describe('using `initAll`', () => {
+      let page
+
+      beforeAll(async () => {
+        page = await renderAndInitialise('error-summary', {
+          baseUrl,
+          nunjucksParams: examples.default,
+          initialiser () {
+            window.GOVUKFrontend.initAll({
+              errorSummary: {
+                disableAutoFocus: true
+              }
+            })
+          }
+        })
+      })
+
+      it('does not have a tabindex attribute', async () => {
+        const tabindex = await page.$eval('.govuk-error-summary', (el) =>
+          el.getAttribute('tabindex')
+        )
+
+        expect(tabindex).toBeNull()
+      })
+
+      it('does not focus on page load', async () => {
+        const activeElement = await page.evaluate(
+          () => document.activeElement.dataset.module
+        )
+
+        expect(activeElement).not.toBe('govuk-error-summary')
+      })
     })
   })
 
@@ -82,7 +202,9 @@ describe('Error Summary', () => {
         $ => $.getBoundingClientRect().top
       )
 
-      expect(legendOrLabelOffsetFromTop).toEqual(0)
+      // Allow for high DPI displays (device pixel ratio)
+      expect(legendOrLabelOffsetFromTop).toBeGreaterThanOrEqual(0)
+      expect(legendOrLabelOffsetFromTop).toBeLessThan(1)
     })
 
     it('does not include a hash in the URL', async () => {
