@@ -93,76 +93,88 @@ describe.each(allComponents)('%s', (component) => {
     await page.goto(baseUrl + '/components/' + component + '/preview', { waitUntil: 'load' })
     await percySnapshot(page, 'js: ' + component)
   })
+})
 
-  describe('examples output valid HTML', () => {
-    const examples = getComponentData(component).examples.map(function (example) {
-      return [example.name, example.data]
-    })
+describe('HTML validation', () => {
+  it('renders valid HTML for each component example', () => {
+    const componentTasks = allComponents.map(async (component) => {
+      const { examples } = await getComponentData(component)
 
-    it.each(examples)('example "%s" outputs valid HTML', async (_, data) => {
-      expect(renderHtml(component, data)).toHTMLValidate({
-        rules: {
-          // We don't use boolean attributes consistently – buttons currently
-          // use disabled="disabled"
-          'attribute-boolean-style': 'off',
+      // Loop through component examples
+      const exampleTasks = examples.map(async ({ data }) => {
+        const html = renderHtml(component, data)
 
-          // Allow pattern attribute on input type="number"
-          'input-attributes': 'off',
+        // Validate HTML
+        return expect(html).toHTMLValidate({
+          rules: {
+            // We don't use boolean attributes consistently – buttons currently
+            // use disabled="disabled"
+            'attribute-boolean-style': 'off',
 
-          // Allow for conditional comments (used in header for fallback png)
-          'no-conditional-comment': 'off',
+            // Allow pattern attribute on input type="number"
+            'input-attributes': 'off',
 
-          // Allow inline styles for testing purposes
-          'no-inline-style': 'off',
+            // Allow for conditional comments (used in header for fallback png)
+            'no-conditional-comment': 'off',
 
-          // Allow for explicit roles on regions that have implict roles
-          // We do this to better support AT with older versions of IE that
-          // have partial support for HTML5 semantic elements
-          'no-redundant-role': 'off',
+            // Allow inline styles for testing purposes
+            'no-inline-style': 'off',
 
-          // More hassle than it's worth 👾
-          'no-trailing-whitespace': 'off',
+            // Allow for explicit roles on regions that have implict roles
+            // We do this to better support AT with older versions of IE that
+            // have partial support for HTML5 semantic elements
+            'no-redundant-role': 'off',
 
-          // We still support creating `input type=button` with the button
-          // component, but you have to explicitly choose to use them over
-          // buttons
-          'prefer-button': 'off',
+            // More hassle than it's worth 👾
+            'no-trailing-whitespace': 'off',
 
-          // Allow use of roles where there are native elements that would give
-          // us that role automatically, e.g. <section> instead of
-          // <div role="region">
-          //
-          // This is mainly needed for links styled as buttons, but we do this
-          // in the cookie banner and notification banner too
-          'prefer-native-element': 'off',
+            // We still support creating `input type=button` with the button
+            // component, but you have to explicitly choose to use them over
+            // buttons
+            'prefer-button': 'off',
 
-          // HTML Validate is opinionated about IDs beginning with a letter and
-          // only containing letters, numbers, underscores and dashes – which is
-          // more restrictive than the spec allows.
-          //
-          // Relax the rule to allow anything that is valid according to the
-          // spec.
-          'valid-id': ['error', { relaxed: true }]
-        },
-        elements: [
-          'html5',
-          {
-            // Allow textarea autocomplete attribute to be street-address
-            // (html-validate only allows on/off in default rules)
-            textarea: {
-              attributes: {
-                autocomplete: { enum: ['on', 'off', 'street-address'] }
-              }
-            },
-            // Allow buttons to omit the type attribute (defaults to 'submit')
-            button: {
-              attributes: {
-                type: { required: false }
+            // Allow use of roles where there are native elements that would give
+            // us that role automatically, e.g. <section> instead of
+            // <div role="region">
+            //
+            // This is mainly needed for links styled as buttons, but we do this
+            // in the cookie banner and notification banner too
+            'prefer-native-element': 'off',
+
+            // HTML Validate is opinionated about IDs beginning with a letter and
+            // only containing letters, numbers, underscores and dashes – which is
+            // more restrictive than the spec allows.
+            //
+            // Relax the rule to allow anything that is valid according to the
+            // spec.
+            'valid-id': ['error', { relaxed: true }]
+          },
+          elements: [
+            'html5',
+            {
+              // Allow textarea autocomplete attribute to be street-address
+              // (html-validate only allows on/off in default rules)
+              textarea: {
+                attributes: {
+                  autocomplete: { enum: ['on', 'off', 'street-address'] }
+                }
+              },
+              // Allow buttons to omit the type attribute (defaults to 'submit')
+              button: {
+                attributes: {
+                  type: { required: false }
+                }
               }
             }
-          }
-        ]
+          ]
+        })
       })
+
+      // Validate all component examples in parallel
+      return Promise.all(exampleTasks)
     })
-  })
+
+    // Check all components in parallel
+    return Promise.all(componentTasks)
+  }, 30000)
 })
