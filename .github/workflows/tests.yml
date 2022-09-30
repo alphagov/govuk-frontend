@@ -35,7 +35,9 @@ jobs:
         with:
           key: task-cache
           path: |
+            .cache/eslint
             .cache/jest
+            .cache/stylelint
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
