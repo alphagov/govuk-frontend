@@ -1,0 +1,5 @@
+{
+  "exec": "node ./app/start.js",
+  "watch": ["app", "src/govuk"],
+  "quiet": true
+}

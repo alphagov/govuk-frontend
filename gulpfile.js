@@ -10,7 +10,6 @@ require('./tasks/gulp/watch.js')
 
 // Node tasks
 const { buildSassdocs } = require('./tasks/sassdoc.js')
-const { runNodemon } = require('./tasks/nodemon.js')
 const { updateDistAssetsVersion } = require('./tasks/asset-version.js')
 const { cleanDist, cleanPackage, cleanPublic } = require('./tasks/clean.js')
 const { npmScriptTask } = require('./tasks/run.js')
@@ -53,23 +52,14 @@ gulp.task('compile', gulp.series(
 ))
 
 /**
- * Serve task
- * Restarts Node.js app when there are changes
- * affecting .js, .mjs and .json files
- */
-gulp.task('serve', gulp.parallel(
-  'watch',
-  runNodemon
-))
-
-/**
  * Dev task
  * Runs a sequence of tasks on start
  */
 gulp.task('dev', gulp.series(
   cleanPublic,
   'compile',
-  'serve'
+  'watch',
+  npmScriptTask('serve', ['--silent'])
 ))
 
 /**
