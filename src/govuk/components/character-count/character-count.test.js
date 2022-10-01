@@ -334,8 +334,7 @@ describe('Character count', () => {
 
       describe('at instantiation', () => {
         it('configures the number of characters', async () => {
-          await renderAndInitialise('character-count', {
-            baseUrl,
+          await renderAndInitialise(page, 'character-count', {
             nunjucksParams: examples['to configure in JavaScript'],
             javascriptConfig: {
               maxlength: 10
@@ -350,9 +349,9 @@ describe('Character count', () => {
           )
           expect(message).toEqual('You have 1 character too many')
         })
+
         it('configures the number of words', async () => {
-          await renderAndInitialise('character-count', {
-            baseUrl,
+          await renderAndInitialise(page, 'character-count', {
             nunjucksParams: examples['to configure in JavaScript'],
             javascriptConfig: {
               maxwords: 10
@@ -367,9 +366,9 @@ describe('Character count', () => {
           )
           expect(message).toEqual('You have 1 word too many')
         })
+
         it('configures the threshold', async () => {
-          await renderAndInitialise('character-count', {
-            baseUrl,
+          await renderAndInitialise(page, 'character-count', {
             nunjucksParams: examples['to configure in JavaScript'],
             javascriptConfig: {
               maxlength: 10,
@@ -386,8 +385,7 @@ describe('Character count', () => {
 
       describe('via `initAll`', () => {
         it('configures the number of characters', async () => {
-          await renderAndInitialise('character-count', {
-            baseUrl,
+          await renderAndInitialise(page, 'character-count', {
             nunjucksParams: examples['to configure in JavaScript'],
             initialiser () {
               window.GOVUKFrontend.initAll({
@@ -408,8 +406,7 @@ describe('Character count', () => {
         })
 
         it('configures the number of words', async () => {
-          await renderAndInitialise('character-count', {
-            baseUrl,
+          await renderAndInitialise(page, 'character-count', {
             nunjucksParams: examples['to configure in JavaScript'],
             initialiser () {
               window.GOVUKFrontend.initAll({
@@ -428,9 +425,9 @@ describe('Character count', () => {
           )
           expect(message).toEqual('You have 1 word too many')
         })
+
         it('configures the threshold', async () => {
-          await renderAndInitialise('character-count', {
-            baseUrl,
+          await renderAndInitialise(page, 'character-count', {
             nunjucksParams: examples['to configure in JavaScript'],
             initialiser () {
               window.GOVUKFrontend.initAll({
@@ -454,8 +451,7 @@ describe('Character count', () => {
 
       describe('when data-attributes are present', () => {
         it('uses `maxlength` data attribute instead of the JS one', async () => {
-          await renderAndInitialise('character-count', {
-            baseUrl,
+          await renderAndInitialise(page, 'character-count', {
             nunjucksParams: examples.default,
             javascriptConfig: {
               maxlength: 12 // JS configuration that would tell 1 character remaining
@@ -472,8 +468,7 @@ describe('Character count', () => {
         })
 
         it("uses `maxlength` data attribute instead of JS's `maxwords`", async () => {
-          await renderAndInitialise('character-count', {
-            baseUrl,
+          await renderAndInitialise(page, 'character-count', {
             nunjucksParams: examples.default, // Default example counts characters
             javascriptConfig: {
               maxwords: 12
@@ -490,8 +485,7 @@ describe('Character count', () => {
         })
 
         it('uses `maxwords` data attribute instead of the JS one', async () => {
-          await renderAndInitialise('character-count', {
-            baseUrl,
+          await renderAndInitialise(page, 'character-count', {
             nunjucksParams: examples['with word count'],
             javascriptConfig: {
               maxwords: 12 // JS configuration that would tell 1 word remaining
@@ -508,8 +502,7 @@ describe('Character count', () => {
         })
 
         it("uses `maxwords` data attribute instead of the JS's `maxlength`", async () => {
-          await renderAndInitialise('character-count', {
-            baseUrl,
+          await renderAndInitialise(page, 'character-count', {
             nunjucksParams: examples['with word count'],
             javascriptConfig: {
               maxlength: 10

@@ -174,12 +174,8 @@ describe('/components/button', () => {
     })
 
     describe('using JavaScript configuration', () => {
-      let page
-
-      // To ensure
       beforeEach(async () => {
-        page = await renderAndInitialise('button', {
-          baseUrl,
+        await renderAndInitialise(page, 'button', {
           nunjucksParams: examples.default,
           javascriptConfig: {
             preventDoubleClick: true
@@ -226,11 +222,8 @@ describe('/components/button', () => {
     })
 
     describe('using JavaScript configuration, but cancelled by data-attributes', () => {
-      let page
-
-      it('does not prevent multiple submissions', async () => {
-        page = await renderAndInitialise('button', {
-          baseUrl,
+      beforeEach(async () => {
+        await renderAndInitialise(page, 'button', {
           nunjucksParams: examples["don't prevent double click"],
           javascriptConfig: {
             preventDoubleClick: true
@@ -238,7 +231,9 @@ describe('/components/button', () => {
         })
 
         await trackClicks(page)
+      })
 
+      it('does not prevent multiple submissions', async () => {
         await page.click('button')
         await page.click('button')
 
@@ -249,12 +244,8 @@ describe('/components/button', () => {
     })
 
     describe('using `initAll`', () => {
-      let page
-
-      // To ensure
       beforeEach(async () => {
-        page = await renderAndInitialise('button', {
-          baseUrl,
+        await renderAndInitialise(page, 'button', {
           nunjucksParams: examples.default,
           initialiser () {
             window.GOVUKFrontend.initAll({

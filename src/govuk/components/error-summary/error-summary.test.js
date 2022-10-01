@@ -63,11 +63,8 @@ describe('Error Summary', () => {
     })
 
     describe('using JavaScript configuration', () => {
-      let page
-
       beforeAll(async () => {
-        page = await renderAndInitialise('error-summary', {
-          baseUrl,
+        await renderAndInitialise(page, 'error-summary', {
           nunjucksParams: examples.default,
           javascriptConfig: {
             disableAutoFocus: true
@@ -108,11 +105,8 @@ describe('Error Summary', () => {
     })
 
     describe('using JavaScript configuration, but enabled via data-attributes', () => {
-      let page
-
       beforeAll(async () => {
-        page = await renderAndInitialise('error-summary', {
-          baseUrl,
+        await renderAndInitialise(page, 'error-summary', {
           nunjucksParams: examples['autofocus explicitly enabled']
         })
       })
@@ -133,11 +127,8 @@ describe('Error Summary', () => {
     })
 
     describe('using `initAll`', () => {
-      let page
-
       beforeAll(async () => {
-        page = await renderAndInitialise('error-summary', {
-          baseUrl,
+        await renderAndInitialise(page, 'error-summary', {
           nunjucksParams: examples.default,
           initialiser () {
             window.GOVUKFrontend.initAll({
