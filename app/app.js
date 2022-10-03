@@ -120,17 +120,17 @@ module.exports = (options) => {
 
   // Whenever the route includes a :component parameter, read the component data
   // from its YAML file
-  app.param('component', function (req, res, next, componentName) {
-    res.locals.componentData = fileHelper.getComponentData(componentName)
+  app.param('component', async function (req, res, next, componentName) {
+    res.locals.componentData = await fileHelper.getComponentData(componentName)
     next()
   })
 
   // All components view
-  app.get('/components/all', function (req, res, next) {
+  app.get('/components/all', async function (req, res, next) {
     const components = fileHelper.allComponents
 
-    res.locals.componentData = components.map(componentName => {
-      const componentData = fileHelper.getComponentData(componentName)
+    res.locals.componentsData = await Promise.all(components.map(async (componentName) => {
+      const componentData = await fileHelper.getComponentData(componentName)
       const defaultExample = componentData.examples.find(
         example => example.name === 'default'
       )
@@ -138,7 +138,8 @@ module.exports = (options) => {
         componentName,
         examples: [defaultExample]
       }
-    })
+    }))
+
     res.render('all-components', function (error, html) {
       if (error) {
         next(error)
