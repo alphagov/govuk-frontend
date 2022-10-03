@@ -19,12 +19,12 @@ describe('CharacterCount', () => {
         { number: 10, type: 'characters', expected: 'You have 10 characters remaining' },
         { number: -1, type: 'characters', expected: 'You have 1 character too many' },
         { number: -10, type: 'characters', expected: 'You have 10 characters too many' },
-        { number: 0, type: 'characters', expected: 'You have no characters remaining' },
+        { number: 0, type: 'characters', expected: 'You have 0 characters remaining' },
         { number: 1, type: 'words', expected: 'You have 1 word remaining' },
         { number: 10, type: 'words', expected: 'You have 10 words remaining' },
         { number: -1, type: 'words', expected: 'You have 1 word too many' },
         { number: -10, type: 'words', expected: 'You have 10 words too many' },
-        { number: 0, type: 'words', expected: 'You have no words remaining' }
+        { number: 0, type: 'words', expected: 'You have 0 words remaining' }
       ]
       it.each(cases)(
         'picks the relevant translation for $number $type',
@@ -50,6 +50,15 @@ describe('CharacterCount', () => {
           expect(component.formatCountMessage(-10, 'characters')).toEqual('Different custom text. Count: 10')
           // Other keys remain untouched
           expect(component.formatCountMessage(10, 'characters')).toEqual('You have 10 characters remaining')
+        })
+
+        it('uses specific keys for when limit is reached', () => {
+          const component = new CharacterCount(createElement('div'), {
+            i18n: { charactersAtLimit: 'Custom text.' },
+            'i18n.wordsAtLimit': 'Different custom text.'
+          })
+          expect(component.formatCountMessage(0, 'characters')).toEqual('Custom text.')
+          expect(component.formatCountMessage(0, 'words')).toEqual('Different custom text.')
         })
       })
 

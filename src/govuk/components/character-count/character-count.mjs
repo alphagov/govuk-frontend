@@ -58,13 +58,13 @@ function CharacterCount ($module, config) {
       // Characters
       charactersUnderLimitOne: 'You have %{count} character remaining',
       charactersUnderLimitOther: 'You have %{count} characters remaining',
-      charactersAtLimit: 'You have no characters remaining',
+      charactersAtLimit: 'You have 0 characters remaining',
       charactersOverLimitOne: 'You have %{count} character too many',
       charactersOverLimitOther: 'You have %{count} characters too many',
       // Words
       wordsUnderLimitOne: 'You have %{count} word remaining',
       wordsUnderLimitOther: 'You have %{count} words remaining',
-      wordsAtLimit: 'You have no words remaining',
+      wordsAtLimit: 'You have 0 words remaining',
       wordsOverLimitOne: 'You have %{count} word too many',
       wordsOverLimitOther: 'You have %{count} words too many'
     }
