@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { createElement } from '../../lib/dom-helpers.mjs'
+import { createElement, createFragmentFromHTML } from '../../lib/dom-helpers.mjs'
 import { mergeConfigs, extractConfigByNamespace, normaliseString, normaliseDataset, closestAttributeValue } from './common.mjs'
 
 // TODO: Write unit tests for `nodeListForEach` and `generateUniqueID`
@@ -226,13 +226,16 @@ describe('Common JS utilities', () => {
     })
 
     it('returns the value of the closest parent with the attribute if it exists', () => {
-      const $greatGrandParent = createElement('div', { lang: 'cy-GB' }) // To check that we take the value up
-      const $grandparent = createElement('div', { lang: 'en-GB' })
-      const $parent = createElement('div') // To check that we walk up the tree
-      const $element = createElement('div')
-      $greatGrandParent.appendChild($grandparent)
-      $grandparent.appendChild($parent)
-      $parent.appendChild($element)
+      const dom = createFragmentFromHTML(`
+        <div lang="cy-GB"><!-- To check that we take the first value up -->
+          <div lang="en-GB"><!-- The value we should get -->
+            <div><!-- To check that we walk up the tree -->
+              <div class="target"></div>
+            </div>
+          </div>
+        </div>
+      `)
+      const $element = dom.querySelector('.target')
 
       expect(closestAttributeValue($element, 'lang')).toEqual('en-GB')
     })
