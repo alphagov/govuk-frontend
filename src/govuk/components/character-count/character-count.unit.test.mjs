@@ -64,13 +64,6 @@ describe('CharacterCount', () => {
           // Other keys remain untouched
           expect(component.formatCountMessage(10, 'characters')).toEqual('You have 10 characters remaining')
         })
-
-        it('overrides the default locale', () => {
-          const component = new CharacterCount(createElement('div'), {
-            i18nLocale: 'de'
-          })
-          expect(component.formatCountMessage(10000, 'words')).toEqual('You have 10.000 words remaining')
-        })
       })
 
       describe('lang attribute configuration', () => {
@@ -102,13 +95,6 @@ describe('CharacterCount', () => {
           expect(component.formatCountMessage(10, 'characters')).toEqual('You have 10 characters remaining')
         })
 
-        it('overrides the default locale', () => {
-          const component = new CharacterCount(createElement('div', {
-            'data-i18n-locale': 'de'
-          }))
-          expect(component.formatCountMessage(10000, 'words')).toEqual('You have 10.000 words remaining')
-        })
-
         describe('precedence over JavaScript configuration', () => {
           it('overrides translation keys', () => {
             const $div = createElement('div', { 'data-i18n.characters-under-limit-one': 'Custom text. Count: %{count}' })
@@ -120,26 +106,6 @@ describe('CharacterCount', () => {
             expect(component.formatCountMessage(1, 'characters')).toEqual('Custom text. Count: 1')
             // Other keys remain untouched
             expect(component.formatCountMessage(10, 'characters')).toEqual('You have 10 characters remaining')
-          })
-
-          it('overrides the default locale', () => {
-            const $div = createElement('div', {
-              'data-i18n-locale': 'de' // Dot as thousand separator
-            })
-            const component = new CharacterCount($div, {
-              i18nLocale: 'fr' // Space as thousand separator
-            })
-            expect(component.formatCountMessage(10000, 'words')).toEqual('You have 10.000 words remaining')
-          })
-
-          it('overrides the locale in lang attribute', () => {
-            const $div = createElement('div', {
-              'data-i18n-locale': 'de',
-              lang: 'fr'
-            })
-            const component = new CharacterCount($div)
-
-            expect(component.formatCountMessage(10000, 'words')).toEqual('You have 10.000 words remaining')
           })
         })
       })

@@ -94,10 +94,9 @@ function CharacterCount ($module, config) {
     datasetConfig
   )
 
-  console.log(this.$module)
   this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'), {
     // Read the fallback if necessary rather than have it set in the defaults
-    locale: this.config.i18nLocale || closestAttributeValue($module, 'lang')
+    locale: closestAttributeValue($module, 'lang')
   })
 
   // Determine the limit attribute (characters or words)
