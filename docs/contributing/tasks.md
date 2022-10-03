@@ -15,7 +15,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - runs `npm run serve`
 
 **`npm run serve` will do the following:**
-- start up Express, restarting when `.js`, `.mjs`, and `.json` files change
+- start up Express, restarting when `.js` files change
 
 **`npm run test` will do the following:**
 - run Nunjucks macros tests
