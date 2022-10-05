@@ -2,12 +2,7 @@
  * @jest-environment puppeteer
  */
 
-const { goToComponent } = require('../../../../lib/puppeteer-helpers')
-
-const configPaths = require('../../../../config/paths.js')
-const PORT = configPaths.ports.test
-
-const baseUrl = 'http://localhost:' + PORT
+const { goToComponent, goToExample } = require('../../../../lib/puppeteer-helpers')
 
 describe('/components/accordion', () => {
   describe('/components/accordion/preview', () => {
@@ -289,7 +284,7 @@ describe('/components/accordion', () => {
         })
 
         it('should localise "Show all sections" based on JavaScript configuration', async () => {
-          await page.goto(baseUrl + '/examples/translated', { waitUntil: 'load' })
+          await goToExample(page, 'translated')
 
           const allSectionsToggleText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__show-all-text').innerHTML)
 
@@ -310,7 +305,7 @@ describe('/components/accordion', () => {
         })
 
         it('should localise "Hide all sections" based on JavaScript configuration', async () => {
-          await page.goto(baseUrl + '/examples/translated', { waitUntil: 'load' })
+          await goToExample(page, 'translated')
           await page.click('.govuk-accordion .govuk-accordion__show-all')
 
           const allSectionsToggleText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__show-all-text').innerHTML)
@@ -330,7 +325,7 @@ describe('/components/accordion', () => {
         })
 
         it('should localise "Show section" based on JavaScript configuration', async () => {
-          await page.goto(baseUrl + '/examples/translated', { waitUntil: 'load' })
+          await goToExample(page, 'translated')
 
           const firstSectionToggleText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-toggle-text').innerHTML)
 
@@ -350,7 +345,7 @@ describe('/components/accordion', () => {
         })
 
         it('should localise "Hide section" based on JavaScript configuration', async () => {
-          await page.goto(baseUrl + '/examples/translated', { waitUntil: 'load' })
+          await goToExample(page, 'translated')
           await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header')
 
           const firstSectionToggleText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-toggle-text').innerHTML)

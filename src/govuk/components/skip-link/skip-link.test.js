@@ -2,15 +2,12 @@
  * @jest-environment puppeteer
  */
 
-const configPaths = require('../../../../config/paths.js')
-const PORT = configPaths.ports.test
-
-const baseUrl = 'http://localhost:' + PORT
+const { goToExample } = require('../../../../lib/puppeteer-helpers.js')
 
 describe('/examples/template-default', () => {
   describe('skip link', () => {
     beforeAll(async () => {
-      await page.goto(`${baseUrl}/examples/template-default`, { waitUntil: 'load' })
+      await goToExample(page, 'template-default')
       await page.keyboard.press('Tab')
       await page.keyboard.press('Enter')
     })

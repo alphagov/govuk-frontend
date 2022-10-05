@@ -4,13 +4,10 @@
 
 const sassdoc = require('sassdoc')
 
-const { renderSass } = require('../../lib/jest-helpers')
-const { goTo } = require('../../lib/puppeteer-helpers')
-
 const configPaths = require('../../config/paths.js')
-const PORT = configPaths.ports.test
 
-const baseUrl = 'http://localhost:' + PORT
+const { renderSass } = require('../../lib/jest-helpers')
+const { goTo, goToExample } = require('../../lib/puppeteer-helpers')
 
 beforeAll(() => {
   // Capture JavaScript errors.
@@ -76,7 +73,7 @@ describe('GOV.UK Frontend', () => {
       expect(componentsWithoutInitFunctions).toEqual([])
     })
     it('can be initialised scoped to certain sections of the page', async () => {
-      await page.goto(baseUrl + '/examples/scoped-initialisation', { waitUntil: 'load' })
+      await goToExample(page, 'scoped-initialisation')
 
       // To test that certain parts of the page are scoped we have two similar components
       // that we can interact with to check if they're interactive.

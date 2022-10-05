@@ -4,12 +4,7 @@
 
 const cheerio = require('cheerio')
 
-const { goToComponent } = require('../../../../lib/puppeteer-helpers.js')
-
-const configPaths = require('../../../../config/paths.js')
-const PORT = configPaths.ports.test
-
-const baseUrl = 'http://localhost:' + PORT
+const { goToComponent, goToExample } = require('../../../../lib/puppeteer-helpers.js')
 
 const waitForHiddenSelector = async (selector) => {
   return page.waitForSelector(selector, {
@@ -233,9 +228,11 @@ describe('Checkboxes with a None checkbox and conditional reveals', () => {
 
 describe('Checkboxes with multiple groups and a None checkbox and conditional reveals', () => {
   describe('when JavaScript is available', () => {
-    it('none checkbox unchecks other checkboxes in other groups', async () => {
-      await page.goto(`${baseUrl}/examples/conditional-reveals`)
+    beforeEach(async () => {
+      await goToExample(page, 'conditional-reveals')
+    })
 
+    it('none checkbox unchecks other checkboxes in other groups', async () => {
       // Check some checkboxes in the first and second groups
       await page.click('#colour-primary-3')
       await page.click('#colour-secondary-2')
@@ -252,8 +249,6 @@ describe('Checkboxes with multiple groups and a None checkbox and conditional re
     })
 
     it('hides conditional reveals in other groups', async () => {
-      await page.goto(`${baseUrl}/examples/conditional-reveals`)
-
       // Check the second checkbox in the first group, which reveals additional content
       await page.click('#colour-primary-2')
 

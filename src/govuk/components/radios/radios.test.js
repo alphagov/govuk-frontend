@@ -4,12 +4,7 @@
 
 const cheerio = require('cheerio')
 
-const { goToComponent } = require('../../../../lib/puppeteer-helpers.js')
-
-const configPaths = require('../../../../config/paths.js')
-const PORT = configPaths.ports.test
-
-const baseUrl = 'http://localhost:' + PORT
+const { goToComponent, goToExample } = require('../../../../lib/puppeteer-helpers.js')
 
 const waitForHiddenSelector = async (selector) => {
   return page.waitForSelector(selector, {
@@ -154,9 +149,11 @@ describe('Radios with conditional reveals', () => {
     })
 
     describe('with multiple radio groups on the same page', () => {
-      it('toggles conditional reveals in other groups', async () => {
-        await page.goto(baseUrl + '/examples/multiple-radio-groups', { waitUntil: 'load' })
+      beforeEach(async () => {
+        await goToExample(page, 'multiple-radio-groups')
+      })
 
+      it('toggles conditional reveals in other groups', async () => {
         // Select red in warm colours
         await page.click('#warm')
 
@@ -168,8 +165,6 @@ describe('Radios with conditional reveals', () => {
       })
 
       it('toggles conditional reveals when not in a form', async () => {
-        await page.goto(baseUrl + '/examples/multiple-radio-groups', { waitUntil: 'load' })
-
         // Select first input in radios not in a form
         await page.click('#question-not-in-form')
 
@@ -182,9 +177,11 @@ describe('Radios with conditional reveals', () => {
 
 describe('Radios with multiple groups and conditional reveals', () => {
   describe('when JavaScript is available', () => {
-    it('hides conditional reveals in other groups', async () => {
-      await page.goto(`${baseUrl}/examples/conditional-reveals`)
+    beforeEach(async () => {
+      await goToExample(page, 'conditional-reveals')
+    })
 
+    it('hides conditional reveals in other groups', async () => {
       // Choose the second radio in the first group, which reveals additional content
       await page.click('#fave-primary-2')
 

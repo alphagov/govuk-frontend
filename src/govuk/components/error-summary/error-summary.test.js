@@ -3,14 +3,9 @@
  */
 
 const { getExamples } = require('../../../../lib/jest-helpers')
-const { goToComponent, renderAndInitialise } = require('../../../../lib/puppeteer-helpers')
+const { goToComponent, goToExample, renderAndInitialise } = require('../../../../lib/puppeteer-helpers')
 
 const examples = getExamples('error-summary')
-
-const configPaths = require('../../../../config/paths.js')
-const PORT = configPaths.ports.test
-
-const baseUrl = 'http://localhost:' + PORT
 
 describe('Error Summary', () => {
   it('adds the tabindex attribute on page load', async () => {
@@ -174,7 +169,7 @@ describe('Error Summary', () => {
 
   describe.each(inputTypes)('when linking to %s', (_, inputId, legendOrLabelSelector) => {
     beforeAll(async () => {
-      await page.goto(`${baseUrl}/examples/error-summary`, { waitUntil: 'load' })
+      await goToExample(page, 'error-summary')
       await page.click(`.govuk-error-summary a[href="#${inputId}"]`)
     })
 
