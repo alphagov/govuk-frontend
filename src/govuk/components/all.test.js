@@ -33,6 +33,10 @@ describe('Visual regression via Percy', () => {
       .map(([component]) => component)
   })
 
+  afterAll(async () => {
+    await page.setJavaScriptEnabled(true)
+  })
+
   it('generate screenshots', async () => {
     for (const component of allComponents) {
       await page.setJavaScriptEnabled(true)
