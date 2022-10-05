@@ -1,7 +1,7 @@
 const gulp = require('gulp')
 const taskListing = require('gulp-task-listing')
 const configPaths = require('./config/paths.js')
-const taskArguments = require('./tasks/task-arguments')
+const { destination } = require('./tasks/task-arguments.js')
 
 // Gulp sub-tasks
 require('./tasks/gulp/compile-assets.js')
@@ -38,8 +38,8 @@ gulp.task('styles', gulp.series(
  * Copies assets to taskArguments.destination (public)
  */
 gulp.task('copy:assets', () => {
-  return gulp.src(configPaths.src + 'assets/**/*')
-    .pipe(gulp.dest(taskArguments.destination + '/assets/'))
+  return gulp.src(`${configPaths.src}assets/**/*`)
+    .pipe(gulp.dest(`${destination}/assets/`))
 })
 
 /**

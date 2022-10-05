@@ -3,13 +3,11 @@ const { componentNameToJavaScriptModuleName } = require('../../lib/helper-functi
 const path = require('path')
 
 const gulp = require('gulp')
-const configPaths = require('../../config/paths.js')
 const sass = require('gulp-sass')(require('node-sass'))
 const plumber = require('gulp-plumber')
 const postcss = require('gulp-postcss')
 const autoprefixer = require('autoprefixer')
 const rollup = require('gulp-better-rollup')
-const taskArguments = require('../task-arguments')
 const gulpif = require('gulp-if')
 const uglify = require('gulp-uglify')
 const eol = require('gulp-eol')
@@ -23,22 +21,19 @@ const postcsspseudoclasses = require('postcss-pseudo-classes')({
   blacklist: [':not(', ':disabled)', ':first-child)', ':last-child)', ':focus)', ':active)', ':hover)']
 })
 
+const configPaths = require('../../config/paths.js')
+const { destination, isDist, isPublic } = require('../task-arguments.js')
+
 // Compile CSS and JS task --------------
 // --------------------------------------
 
-// check if destination flag is public (this is the default)
-const isPublic = taskArguments.destination === 'public' || false
-
-// check if destination flag is dist
-const isDist = taskArguments.destination === 'dist' || false
-
 // Set the destination
 const destinationPath = function () {
-  // Public & Dist directories do no need namespaced with `govuk`
-  if (taskArguments.destination === 'dist' || taskArguments.destination === 'public') {
-    return taskArguments.destination
+  // Public & Dist directories not namespaced with `govuk`
+  if (isDist || isPublic) {
+    return destination
   } else {
-    return `${taskArguments.destination}/govuk/`
+    return `${destination}/govuk/`
   }
 }
 
@@ -74,7 +69,7 @@ function compileStyles () {
         extname: '.min.css'
       })
     ))
-    .pipe(gulp.dest(taskArguments.destination + '/'))
+    .pipe(gulp.dest(`${destination}/`))
 }
 
 function compileOldIE () {
@@ -111,7 +106,7 @@ function compileOldIE () {
         extname: '.min.css'
       })
     ))
-    .pipe(gulp.dest(taskArguments.destination + '/'))
+    .pipe(gulp.dest(`${destination}/`))
 }
 
 function compileLegacy () {
@@ -126,7 +121,7 @@ function compileLegacy () {
       // :hover class you can use to simulate the hover state in the review app
       postcsspseudoclasses
     ]))
-    .pipe(gulp.dest(taskArguments.destination + '/'))
+    .pipe(gulp.dest(`${destination}/`))
 }
 
 function compileLegacyIE () {
@@ -145,7 +140,7 @@ function compileLegacyIE () {
         pseudo: { disable: true }
       })
     ]))
-    .pipe(gulp.dest(taskArguments.destination + '/'))
+    .pipe(gulp.dest(`${destination}/`))
 }
 
 function compileFullPageStyles () {
@@ -158,7 +153,7 @@ function compileFullPageStyles () {
       location.basename = location.dirname
       location.dirname = ''
     }))
-    .pipe(gulp.dest(taskArguments.destination + '/full-page-examples/'))
+    .pipe(gulp.dest(`${destination}/full-page-examples/`))
 }
 
 gulp.task('scss:compile', function (done) {
