@@ -4,18 +4,12 @@
 
 const cheerio = require('cheerio')
 
+const { goToComponent } = require('../../../../lib/puppeteer-helpers.js')
+
 const configPaths = require('../../../../config/paths.js')
 const PORT = configPaths.ports.test
 
 const baseUrl = 'http://localhost:' + PORT
-
-const goToAndGetComponent = async (name, example) => {
-  const componentPath = `${baseUrl}/components/${name}/${example}/preview`
-  await page.goto(componentPath, { waitUntil: 'load' })
-  const html = await page.evaluate(() => document.body.innerHTML)
-  const $ = cheerio.load(html)
-  return $
-}
 
 const waitForHiddenSelector = async (selector) => {
   return page.waitForSelector(selector, {
@@ -42,7 +36,11 @@ describe('Radios with conditional reveals', () => {
     })
 
     it('has no ARIA attributes applied', async () => {
-      const $ = await goToAndGetComponent('radios', 'with-conditional-items')
+      await goToComponent(page, 'radios', {
+        exampleName: 'with-conditional-items'
+      })
+
+      const $ = cheerio.load(await page.evaluate(() => document.body.innerHTML))
       const $component = $('.govuk-radios')
 
       const hasAriaExpanded = $component.find('.govuk-radios__input[aria-expanded]').length
@@ -53,7 +51,9 @@ describe('Radios with conditional reveals', () => {
     })
 
     it('falls back to making all conditional content visible', async () => {
-      await goToAndGetComponent('radios', 'with-conditional-items')
+      await goToComponent(page, 'radios', {
+        exampleName: 'with-conditional-items'
+      })
 
       const isContentVisible = await waitForVisibleSelector('.govuk-radios__conditional')
       expect(isContentVisible).toBeTruthy()
@@ -61,7 +61,11 @@ describe('Radios with conditional reveals', () => {
   })
   describe('when JavaScript is available', () => {
     it('has conditional content revealed that is associated with a checked input', async () => {
-      const $ = await goToAndGetComponent('radios', 'with-conditional-item-checked')
+      await goToComponent(page, 'radios', {
+        exampleName: 'with-conditional-item-checked'
+      })
+
+      const $ = cheerio.load(await page.evaluate(() => document.body.innerHTML))
       const $component = $('.govuk-radios')
       const $checkedInput = $component.find('.govuk-radios__input:checked')
       const inputAriaControls = $checkedInput.attr('aria-controls')
@@ -71,7 +75,11 @@ describe('Radios with conditional reveals', () => {
     })
 
     it('has no conditional content revealed that is associated with an unchecked input', async () => {
-      const $ = await goToAndGetComponent('radios', 'with-conditional-item-checked')
+      await goToComponent(page, 'radios', {
+        exampleName: 'with-conditional-item-checked'
+      })
+
+      const $ = cheerio.load(await page.evaluate(() => document.body.innerHTML))
       const $component = $('.govuk-radios')
       const $uncheckedInput = $component.find('.govuk-radios__item').last().find('.govuk-radios__input')
       const uncheckedInputAriaControls = $uncheckedInput.attr('aria-controls')
@@ -81,7 +89,9 @@ describe('Radios with conditional reveals', () => {
     })
 
     it('indicates when conditional content is collapsed or revealed', async () => {
-      await goToAndGetComponent('radios', 'with-conditional-items')
+      await goToComponent(page, 'radios', {
+        exampleName: 'with-conditional-items'
+      })
 
       const isNotExpanded = await waitForVisibleSelector('.govuk-radios__item:first-child .govuk-radios__input[aria-expanded=false]')
       expect(isNotExpanded).toBeTruthy()
@@ -93,7 +103,11 @@ describe('Radios with conditional reveals', () => {
     })
 
     it('toggles the conditional content when clicking an input', async () => {
-      const $ = await goToAndGetComponent('radios', 'with-conditional-items')
+      await goToComponent(page, 'radios', {
+        exampleName: 'with-conditional-items'
+      })
+
+      const $ = cheerio.load(await page.evaluate(() => document.body.innerHTML))
       const $component = $('.govuk-radios')
       const $firstInput = $component.find('.govuk-radios__item:first-child .govuk-radios__input')
       const firstInputAriaControls = $firstInput.attr('aria-controls')
@@ -110,7 +124,11 @@ describe('Radios with conditional reveals', () => {
     })
 
     it('toggles the conditional content when using an input with a keyboard', async () => {
-      const $ = await goToAndGetComponent('radios', 'with-conditional-items')
+      await goToComponent(page, 'radios', {
+        exampleName: 'with-conditional-items'
+      })
+
+      const $ = cheerio.load(await page.evaluate(() => document.body.innerHTML))
       const $component = $('.govuk-radios')
       const $firstInput = $component.find('.govuk-radios__item:first-child .govuk-radios__input')
       const firstInputAriaControls = $firstInput.attr('aria-controls')
@@ -129,7 +147,10 @@ describe('Radios with conditional reveals', () => {
 
     it('does not error when ID of revealed content contains special characters', async () => {
       // Errors logged to the console will cause this test to fail
-      await goToAndGetComponent('radios', 'with-conditional-items-with-special-characters')
+      await goToComponent(page, 'radios', {
+        exampleName: 'with-conditional-items-with-special-characters'
+      })
+      cheerio.load(await page.evaluate(() => document.body.innerHTML))
     })
 
     describe('with multiple radio groups on the same page', () => {

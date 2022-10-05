@@ -3,7 +3,7 @@
  */
 
 const { getExamples } = require('../../../../lib/jest-helpers')
-const { renderAndInitialise } = require('../../../../lib/puppeteer-helpers')
+const { goToComponent, renderAndInitialise } = require('../../../../lib/puppeteer-helpers')
 
 const examples = getExamples('error-summary')
 
@@ -14,22 +14,19 @@ const baseUrl = 'http://localhost:' + PORT
 
 describe('Error Summary', () => {
   it('adds the tabindex attribute on page load', async () => {
-    await page.goto(baseUrl + '/components/error-summary/preview', { waitUntil: 'load' })
-
+    await goToComponent(page, 'error-summary')
     const tabindex = await page.$eval('.govuk-error-summary', el => el.getAttribute('tabindex'))
     expect(tabindex).toEqual('-1')
   })
 
   it('is automatically focused when the page loads', async () => {
-    await page.goto(`${baseUrl}/components/error-summary/preview`, { waitUntil: 'load' })
-
+    await goToComponent(page, 'error-summary')
     const moduleName = await page.evaluate(() => document.activeElement.dataset.module)
     expect(moduleName).toBe('govuk-error-summary')
   })
 
   it('removes the tabindex attribute on blur', async () => {
-    await page.goto(baseUrl + '/components/error-summary/preview', { waitUntil: 'load' })
-
+    await goToComponent(page, 'error-summary')
     await page.$eval('.govuk-error-summary', el => el.blur())
 
     const tabindex = await page.$eval('.govuk-error-summary', el => el.getAttribute('tabindex'))
@@ -39,10 +36,9 @@ describe('Error Summary', () => {
   describe('when auto-focus is disabled', () => {
     describe('using data-attributes', () => {
       beforeAll(async () => {
-        await page.goto(
-          `${baseUrl}/components/error-summary/autofocus-disabled/preview`,
-          { waitUntil: 'load' }
-        )
+        await goToComponent(page, 'error-summary', {
+          exampleName: 'autofocus-disabled'
+        })
       })
 
       it('does not have a tabindex attribute', async () => {

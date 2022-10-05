@@ -4,18 +4,12 @@
 
 const cheerio = require('cheerio')
 
+const { goToComponent } = require('../../../../lib/puppeteer-helpers.js')
+
 const configPaths = require('../../../../config/paths.js')
 const PORT = configPaths.ports.test
 
 const baseUrl = 'http://localhost:' + PORT
-
-const goToAndGetComponent = async (name, example) => {
-  const componentPath = `${baseUrl}/components/${name}/${example}/preview`
-  await page.goto(componentPath, { waitUntil: 'load' })
-  const html = await page.evaluate(() => document.body.innerHTML)
-  const $ = cheerio.load(html)
-  return $
-}
 
 const waitForHiddenSelector = async (selector) => {
   return page.waitForSelector(selector, {
@@ -42,7 +36,11 @@ describe('Checkboxes with conditional reveals', () => {
     })
 
     it('has no ARIA attributes applied', async () => {
-      const $ = await goToAndGetComponent('checkboxes', 'with-conditional-items')
+      await goToComponent(page, 'checkboxes', {
+        exampleName: 'with-conditional-items'
+      })
+
+      const $ = cheerio.load(await page.evaluate(() => document.body.innerHTML))
       const $component = $('.govuk-checkboxes')
 
       const hasAriaExpanded = $component.find('.govuk-checkboxes__input[aria-expanded]').length
@@ -53,7 +51,9 @@ describe('Checkboxes with conditional reveals', () => {
     })
 
     it('falls back to making all conditional content visible', async () => {
-      await goToAndGetComponent('checkboxes', 'with-conditional-items')
+      await goToComponent(page, 'checkboxes', {
+        exampleName: 'with-conditional-items'
+      })
 
       const isContentVisible = await waitForVisibleSelector('.govuk-checkboxes__conditional')
       expect(isContentVisible).toBeTruthy()
@@ -62,7 +62,11 @@ describe('Checkboxes with conditional reveals', () => {
 
   describe('when JavaScript is available', () => {
     it('has conditional content revealed that is associated with a checked input', async () => {
-      const $ = await goToAndGetComponent('checkboxes', 'with-conditional-item-checked')
+      await goToComponent(page, 'checkboxes', {
+        exampleName: 'with-conditional-item-checked'
+      })
+
+      const $ = cheerio.load(await page.evaluate(() => document.body.innerHTML))
       const $component = $('.govuk-checkboxes')
       const $checkedInput = $component.find('.govuk-checkboxes__input:checked')
       const inputAriaControls = $checkedInput.attr('aria-controls')
@@ -72,7 +76,11 @@ describe('Checkboxes with conditional reveals', () => {
     })
 
     it('has no conditional content revealed that is associated with an unchecked input', async () => {
-      const $ = await goToAndGetComponent('checkboxes', 'with-conditional-item-checked')
+      await goToComponent(page, 'checkboxes', {
+        exampleName: 'with-conditional-item-checked'
+      })
+
+      const $ = cheerio.load(await page.evaluate(() => document.body.innerHTML))
       const $component = $('.govuk-checkboxes')
       const $uncheckedInput = $component.find('.govuk-checkboxes__item').last().find('.govuk-checkboxes__input')
       const uncheckedInputAriaControls = $uncheckedInput.attr('aria-controls')
@@ -82,7 +90,9 @@ describe('Checkboxes with conditional reveals', () => {
     })
 
     it('indicates when conditional content is collapsed or revealed', async () => {
-      await goToAndGetComponent('checkboxes', 'with-conditional-items')
+      await goToComponent(page, 'checkboxes', {
+        exampleName: 'with-conditional-items'
+      })
 
       const isNotExpanded = await waitForVisibleSelector('.govuk-checkboxes__item:first-child .govuk-checkboxes__input[aria-expanded=false]')
       expect(isNotExpanded).toBeTruthy()
@@ -94,7 +104,11 @@ describe('Checkboxes with conditional reveals', () => {
     })
 
     it('toggles the conditional content when clicking an input', async () => {
-      const $ = await goToAndGetComponent('checkboxes', 'with-conditional-items')
+      await goToComponent(page, 'checkboxes', {
+        exampleName: 'with-conditional-items'
+      })
+
+      const $ = cheerio.load(await page.evaluate(() => document.body.innerHTML))
       const $component = $('.govuk-checkboxes')
       const $firstInput = $component.find('.govuk-checkboxes__item:first-child .govuk-checkboxes__input')
       const firstInputAriaControls = $firstInput.attr('aria-controls')
@@ -111,7 +125,11 @@ describe('Checkboxes with conditional reveals', () => {
     })
 
     it('toggles the conditional content when using an input with a keyboard', async () => {
-      const $ = await goToAndGetComponent('checkboxes', 'with-conditional-items')
+      await goToComponent(page, 'checkboxes', {
+        exampleName: 'with-conditional-items'
+      })
+
+      const $ = cheerio.load(await page.evaluate(() => document.body.innerHTML))
       const $component = $('.govuk-checkboxes')
       const $firstInput = $component.find('.govuk-checkboxes__item:first-child .govuk-checkboxes__input')
       const firstInputAriaControls = $firstInput.attr('aria-controls')
@@ -130,16 +148,23 @@ describe('Checkboxes with conditional reveals', () => {
 
     it('does not error when ID of revealed content contains special characters', async () => {
       // Errors logged to the console will cause this test to fail
-      await goToAndGetComponent('checkboxes', 'with-conditional-items-with-special-characters')
+      await goToComponent(page, 'checkboxes', {
+        exampleName: 'with-conditional-items-with-special-characters'
+      })
+      cheerio.load(await page.evaluate(() => document.body.innerHTML))
     })
   })
 })
 
 describe('Checkboxes with a None checkbox', () => {
   describe('when JavaScript is available', () => {
-    it('unchecks other checkboxes when the None checkbox is checked', async () => {
-      await goToAndGetComponent('checkboxes', 'with-divider-and-None')
+    beforeEach(async () => {
+      await goToComponent(page, 'checkboxes', {
+        exampleName: 'with-divider-and-None'
+      })
+    })
 
+    it('unchecks other checkboxes when the None checkbox is checked', async () => {
       // Check the first 3 checkboxes
       await page.click('#with-divider-and-none')
       await page.click('#with-divider-and-none-2')
@@ -160,8 +185,6 @@ describe('Checkboxes with a None checkbox', () => {
     })
 
     it('unchecks the None checkbox when any other checkbox is checked', async () => {
-      await goToAndGetComponent('checkboxes', 'with-divider-and-None')
-
       // Check the None checkbox
       await page.click('#with-divider-and-none-5')
 
@@ -178,7 +201,11 @@ describe('Checkboxes with a None checkbox', () => {
 describe('Checkboxes with a None checkbox and conditional reveals', () => {
   describe('when JavaScript is available', () => {
     it('unchecks other checkboxes and hides conditional reveals when the None checkbox is checked', async () => {
-      const $ = await goToAndGetComponent('checkboxes', 'with-divider,-None-and-conditional-items')
+      await goToComponent(page, 'checkboxes', {
+        exampleName: 'with-divider,-None-and-conditional-items'
+      })
+
+      const $ = cheerio.load(await page.evaluate(() => document.body.innerHTML))
 
       // Check the 4th checkbox, which reveals an additional field
       await page.click('#with-divider-and-none-and-conditional-items-4')
