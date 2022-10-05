@@ -109,7 +109,7 @@ module.exports = (options) => {
   app.get('/', async function (req, res) {
     const components = fileHelper.allComponents
     const examples = await readdir(path.resolve(configPaths.examples))
-    const fullPageExamples = fileHelper.fullPageExamples()
+    const fullPageExamples = await fileHelper.getFullPageExamples()
 
     res.render('index', {
       componentsDirectory: components,
