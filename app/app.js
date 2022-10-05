@@ -5,7 +5,7 @@ const nunjucks = require('nunjucks')
 const { marked } = require('marked')
 const path = require('path')
 
-const { getDirectories, getComponentData, getComponentsData, getFullPageExamples } = require('../lib/file-helper')
+const { getDirectories, getComponentsData, getFullPageExamples } = require('../lib/file-helper')
 const helperFunctions = require('../lib/helper-functions')
 const configPaths = require('../config/paths.js')
 
@@ -19,7 +19,7 @@ const appViews = [
   `${configPaths.node_modules}/govuk_template_jinja`
 ]
 
-module.exports = (options) => {
+module.exports = async (options) => {
   const nunjucksOptions = options ? options.nunjucks : {}
 
   // Configure nunjucks
@@ -32,6 +32,14 @@ module.exports = (options) => {
     watch: true, // reload templates when they are changed. needs chokidar dependency to be installed
     ...nunjucksOptions // merge any additional options and overwrite defaults above.
   })
+
+  // Cache mapped components and examples
+  const [componentsData, componentNames, exampleNames, fullPageExamples] = await Promise.all([
+    getComponentsData(),
+    getDirectories(configPaths.components).then(listing => [...listing.keys()]),
+    getDirectories(configPaths.examples).then(listing => [...listing.keys()]),
+    getFullPageExamples()
+  ])
 
   // make the function available as a filter for all templates
   env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
@@ -103,12 +111,6 @@ module.exports = (options) => {
 
   // Index page - render the component list template
   app.get('/', async function (req, res) {
-    const [componentNames, exampleNames, fullPageExamples] = await Promise.all([
-      getDirectories(configPaths.components).then(listing => [...listing.keys()]),
-      getDirectories(configPaths.examples).then(listing => [...listing.keys()]),
-      getFullPageExamples()
-    ])
-
     res.render('index', {
       componentNames,
       exampleNames,
@@ -118,15 +120,13 @@ module.exports = (options) => {
 
   // Whenever the route includes a :componentName parameter, read the component data
   // from its YAML file
-  app.param('componentName', async function (req, res, next, componentName) {
-    res.locals.componentData = await getComponentData(componentName)
+  app.param('componentName', function (req, res, next, componentName) {
+    res.locals.componentData = componentsData.find(({ name }) => name === componentName)
     next()
   })
 
   // All components view
-  app.get('/components/all', async function (req, res, next) {
-    const componentsData = await getComponentsData()
-
+  app.get('/components/all', function (req, res, next) {
     res.locals.componentsData = componentsData.map((componentData) => {
       const defaultExample = componentData.examples.find(({ name }) => name === 'default')
 
