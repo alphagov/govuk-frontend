@@ -4,9 +4,13 @@
 
 const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
 
-const examples = getExamples('accordion')
-
 describe('Accordion', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('accordion')
+  })
+
   describe('default example', () => {
     it('passes accessibility tests', async () => {
       const $ = render('accordion', examples.default)

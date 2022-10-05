@@ -4,9 +4,13 @@
 
 const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
 
-const examples = getExamples('header')
-
 describe('header', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('header')
+  })
+
   describe('default example', () => {
     it('passes accessibility tests', async () => {
       const $ = render('header', examples.default)
@@ -252,8 +256,13 @@ describe('header', () => {
   })
 
   describe('SVG logo', () => {
-    const $ = render('header', examples.default)
-    const $svg = $('.govuk-header__logotype-crown')
+    let $
+    let $svg
+
+    beforeAll(() => {
+      $ = render('header', examples.default)
+      $svg = $('.govuk-header__logotype-crown')
+    })
 
     it('sets focusable="false" so that IE does not treat it as an interactive element', () => {
       expect($svg.attr('focusable')).toEqual('false')
@@ -264,9 +273,8 @@ describe('header', () => {
     })
 
     describe('fallback PNG', () => {
-      const $fallbackImage = $('.govuk-header__logotype-crown-fallback-image')
-
       it('is invisible to modern browsers', () => {
+        const $fallbackImage = $('.govuk-header__logotype-crown-fallback-image')
         expect($fallbackImage.length).toEqual(0)
       })
     })

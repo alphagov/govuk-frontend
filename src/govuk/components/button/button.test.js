@@ -5,9 +5,13 @@
 const { getExamples } = require('../../../../lib/jest-helpers')
 const { goTo, goToComponent, renderAndInitialise } = require('../../../../lib/puppeteer-helpers')
 
-const examples = getExamples('button')
-
 describe('/components/button', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('button')
+  })
+
   describe('mis-instantiation', () => {
     it('does not prevent further JavaScript from running', async () => {
       await goTo(page, '/tests/boilerplate')

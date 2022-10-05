@@ -4,12 +4,16 @@
 
 const { axe, render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
 
-const examples = getExamples('textarea')
-
 const WORD_BOUNDARY = '\\b'
 const WHITESPACE = '\\s'
 
 describe('Textarea', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('textarea')
+  })
+
   describe('default example', () => {
     it('passes accessibility tests', async () => {
       const $ = render('textarea', examples.default)

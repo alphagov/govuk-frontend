@@ -4,11 +4,15 @@
 
 const { axe, render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
 
-const examples = getExamples('character-count')
-
 const WORD_BOUNDARY = '\\b'
 
 describe('Character count', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('character-count')
+  })
+
   describe('default example', () => {
     it('passes accessibility tests', async () => {
       const $ = render('character-count', examples.default)

@@ -4,9 +4,13 @@
 
 const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
 
-const examples = getExamples('back-link')
-
 describe('back-link component', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('back-link')
+  })
+
   it('default example passes accessibility tests', async () => {
     const $ = render('back-link', examples.default)
 

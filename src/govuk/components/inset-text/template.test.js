@@ -4,9 +4,13 @@
 
 const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
 
-const examples = getExamples('inset-text')
-
 describe('Inset text', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('inset-text')
+  })
+
   describe('by default', () => {
     it('passes accessibility tests', async () => {
       const $ = render('inset-text', examples.default)

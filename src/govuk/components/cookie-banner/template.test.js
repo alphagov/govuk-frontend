@@ -4,9 +4,13 @@
 
 const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
 
-const examples = getExamples('cookie-banner')
-
 describe('Cookie Banner', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('cookie-banner')
+  })
+
   describe('question banner', () => {
     it('passes accessibility tests', async () => {
       const $ = render('cookie-banner', examples.default)

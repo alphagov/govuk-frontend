@@ -4,12 +4,16 @@
 
 const { axe, render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
 
-const examples = getExamples('radios')
-
 const WORD_BOUNDARY = '\\b'
 const WHITESPACE = '\\s'
 
 describe('Radios', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('radios')
+  })
+
   it('default example passes accessibility tests', async () => {
     const $ = render('radios', examples.default)
 

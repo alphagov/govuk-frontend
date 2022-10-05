@@ -5,9 +5,13 @@
 const { getExamples } = require('../../../../lib/jest-helpers')
 const { goToComponent, goToExample, renderAndInitialise } = require('../../../../lib/puppeteer-helpers')
 
-const examples = getExamples('error-summary')
-
 describe('Error Summary', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('error-summary')
+  })
+
   it('adds the tabindex attribute on page load', async () => {
     await goToComponent(page, 'error-summary')
     const tabindex = await page.$eval('.govuk-error-summary', el => el.getAttribute('tabindex'))

@@ -4,9 +4,13 @@
 
 const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
 
-const examples = getExamples('summary-list')
-
 describe('Summary list', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('summary-list')
+  })
+
   describe('default example', () => {
     it('passes accessibility tests', async () => {
       const $ = render('summary-list', examples.default)
@@ -217,8 +221,13 @@ describe('Summary list', () => {
       })
 
       describe('when only some rows have actions', () => {
-        const $ = render('summary-list', examples['with some actions'])
-        const $component = $('.govuk-summary-list')
+        let $
+        let $component
+
+        beforeAll(() => {
+          $ = render('summary-list', examples['with some actions'])
+          $component = $('.govuk-summary-list')
+        })
 
         it('passes accessibility tests', async () => {
           const results = await axe($.html())
@@ -239,8 +248,13 @@ describe('Summary list', () => {
       })
 
       describe('when no rows have actions', () => {
-        const $ = render('summary-list', examples.default)
-        const $component = $('.govuk-summary-list')
+        let $
+        let $component
+
+        beforeAll(() => {
+          $ = render('summary-list', examples.default)
+          $component = $('.govuk-summary-list')
+        })
 
         it('passes accessibility tests', async () => {
           const results = await axe($.html())
