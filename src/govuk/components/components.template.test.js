@@ -22,14 +22,14 @@ describe('Components', () => {
 
   describe('Nunjucks environment', () => {
     it('renders template for each component', () => {
-      return Promise.all(allComponents.map((component) =>
-        expect(nunjucksEnvDefault.render(`${component}/template.njk`, {})).resolves
+      return Promise.all(allComponents.map((componentName) =>
+        expect(nunjucksEnvDefault.render(`${componentName}/template.njk`, {})).resolves
       ))
     })
 
     it('renders template for each component (different base path)', () => {
-      return Promise.all(allComponents.map((component) =>
-        expect(nunjucksEnvCustom.render(`components/${component}/template.njk`, {})).resolves
+      return Promise.all(allComponents.map((componentName) =>
+        expect(nunjucksEnvCustom.render(`components/${componentName}/template.njk`, {})).resolves
       ))
     })
   })
@@ -105,16 +105,16 @@ describe('Components', () => {
     })
 
     it('renders valid HTML for each component example', () => {
-      const componentTasks = allComponents.map(async (component) => {
-        const { examples } = await getComponentData(component)
+      const componentTasks = allComponents.map(async (componentName) => {
+        const { examples } = await getComponentData(componentName)
 
-        // Loop through component examples
-        const exampleTasks = examples.map(async ({ name, data }) => {
-          const html = renderHtml(component, data)
+        // Validate component examples
+        const exampleTasks = examples.map(async ({ name: exampleName, data }) => {
+          const html = renderHtml(componentName, data)
 
           // Validate HTML
-          return expect({ component, name, report: validator.validateString(html) })
-            .toEqual({ component, name, report: expect.objectContaining({ valid: true }) })
+          return expect({ componentName, exampleName, report: validator.validateString(html) })
+            .toEqual({ componentName, exampleName, report: expect.objectContaining({ valid: true }) })
         })
 
         // Validate all component examples in parallel

@@ -24,13 +24,13 @@ describe('Visual regression via Percy', () => {
     componentsWithJavaScript = allComponents
 
       // Get file listing per component
-      .map((component) => [component, getFiles(`${configPaths.components}${component}`)])
+      .map((componentName) => [componentName, getFiles(`${configPaths.components}${componentName}`)])
 
-      // Filter for "JavaScript enabled" via `${component}.mjs`
-      .filter(([component, entries]) => entries.includes(`${component}.mjs`))
+      // Filter for "JavaScript enabled" via `${componentName}.mjs`
+      .filter(([componentName, entries]) => entries.includes(`${componentName}.mjs`))
 
       // Component names only
-      .map(([component]) => component)
+      .map(([componentName]) => componentName)
   })
 
   afterAll(async () => {
@@ -38,20 +38,20 @@ describe('Visual regression via Percy', () => {
   })
 
   it('generate screenshots', async () => {
-    for (const component of allComponents) {
+    for (const componentName of allComponents) {
       await page.setJavaScriptEnabled(true)
 
       // Screenshot preview page (with JavaScript)
-      await goToComponent(page, component)
-      await percySnapshot(page, `js: ${component}`)
+      await goToComponent(page, componentName)
+      await percySnapshot(page, `js: ${componentName}`)
 
       // Check for "JavaScript enabled" components
-      if (componentsWithJavaScript.includes(component)) {
+      if (componentsWithJavaScript.includes(componentName)) {
         await page.setJavaScriptEnabled(false)
 
         // Screenshot preview page (without JavaScript)
         await page.reload({ waitUntil: 'load' })
-        await percySnapshot(page, `no-js: ${component}`)
+        await percySnapshot(page, `no-js: ${componentName}`)
       }
     }
   }, 120000)

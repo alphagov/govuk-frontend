@@ -16,8 +16,8 @@ describe('Components', () => {
     })
 
     it('renders CSS for each component', () => {
-      const sassTasks = allComponents.map((component) => {
-        const file = `${configPaths.src}/components/${component}/_${component}.scss`
+      const sassTasks = allComponents.map((componentName) => {
+        const file = `${configPaths.src}/components/${componentName}/_${componentName}.scss`
 
         return expect(renderSass({ file })).resolves.toEqual(
           expect.objectContaining({

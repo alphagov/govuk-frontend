@@ -19,9 +19,7 @@
       All components
     </h1>
   </div>
-  {% for data in componentsData %}
-    {% set componentName = data.componentName %}
-    {% set componentNameHuman = componentName | replace("-", " ") %}
-    {{ showExamples(componentName, componentNameHuman, data, legacyQuery) }}
+  {% for componentData in componentsData %}
+    {{ showExamples(componentData, legacyQuery) }}
   {% endfor %}
 {% endblock %}

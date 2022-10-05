@@ -54,7 +54,7 @@ gulp.task('copy:files', () => {
       gulp.src(`${configPaths.src}**/*.scss`)
         .pipe(postcss([autoprefixer], { syntax: postcssScss })),
 
-      // Generate fixtures.json from ${component}.yaml
+      // Generate fixtures.json from ${componentName}.yaml
       gulp.src(`${configPaths.components}**/*.yaml`, { base: configPaths.src })
         .pipe(map((file, done) =>
           generateFixtures(file)
@@ -66,7 +66,7 @@ gulp.task('copy:files', () => {
           extname: '.json'
         })),
 
-      // Generate macro-options.json from ${component}.yaml
+      // Generate macro-options.json from ${componentName}.yaml
       gulp.src(`${configPaths.components}**/*.yaml`, { base: configPaths.src })
         .pipe(map((file, done) =>
           generateMacroOptions(file)
@@ -84,7 +84,7 @@ gulp.task('copy:files', () => {
 /**
  * Replace file content with fixtures.json
  *
- * @param {import('vinyl')} file - Component data ${component}.yaml
+ * @param {import('vinyl')} file - Component data ${componentName}.yaml
  * @returns {Promise<import('vinyl')>} Component fixtures.json
  */
 async function generateFixtures (file) {
@@ -95,8 +95,8 @@ async function generateFixtures (file) {
   }
 
   // Nunjucks template
-  const component = basename(file.dirname)
-  const template = join(configPaths.components, component, 'template.njk')
+  const componentName = basename(file.dirname)
+  const template = join(configPaths.components, componentName, 'template.njk')
 
   // Loop examples
   const examples = json.examples.map(async (example) => {
@@ -128,7 +128,7 @@ async function generateFixtures (file) {
 /**
  * Replace file content with macro-options.json
  *
- * @param {import('vinyl')} file - Component data ${component}.yaml
+ * @param {import('vinyl')} file - Component data ${componentName}.yaml
  * @returns {Promise<import('vinyl')>} Component macro-options.json
  */
 async function generateMacroOptions (file) {
@@ -145,7 +145,7 @@ async function generateMacroOptions (file) {
 /**
  * Parse YAML file content as JavaScript
  *
- * @param {import('vinyl')} file - Component data ${component}.yaml
+ * @param {import('vinyl')} file - Component data ${componentName}.yaml
  * @returns {Promise<{ examples?: unknown[]; params?: unknown[] }>} Component options
  */
 async function convertYamlToJson (file) {
