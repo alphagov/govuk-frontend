@@ -5,14 +5,15 @@
 const { fetch } = require('undici')
 const { WebSocket } = require('ws')
 
-const { allComponents, getFiles } = require('../../../lib/file-helper')
+const { getFilesByDirectory } = require('../../../lib/file-helper')
 const { goToComponent } = require('../../../lib/puppeteer-helpers')
 
 const configPaths = require('../../../config/paths.js')
 
 describe('Visual regression via Percy', () => {
   let percySnapshot
-  let componentsWithJavaScript
+
+  let componentsFiles
 
   beforeAll(async () => {
     // Polyfill fetch() detection, upload via WebSocket()
@@ -20,17 +21,8 @@ describe('Visual regression via Percy', () => {
     global.window = { fetch, WebSocket }
     percySnapshot = require('@percy/puppeteer')
 
-    // Filter "JavaScript enabled" components only
-    componentsWithJavaScript = allComponents
-
-      // Get file listing per component
-      .map((componentName) => [componentName, getFiles(`${configPaths.components}${componentName}`)])
-
-      // Filter for "JavaScript enabled" via `${componentName}.mjs`
-      .filter(([componentName, entries]) => entries.includes(`${componentName}.mjs`))
-
-      // Component names only
-      .map(([componentName]) => componentName)
+    // Component file listing
+    componentsFiles = await getFilesByDirectory(configPaths.components)
   })
 
   afterAll(async () => {
@@ -38,7 +30,7 @@ describe('Visual regression via Percy', () => {
   })
 
   it('generate screenshots', async () => {
-    for (const componentName of allComponents) {
+    for (const [componentName, files] of componentsFiles) {
       await page.setJavaScriptEnabled(true)
 
       // Screenshot preview page (with JavaScript)
@@ -46,7 +38,7 @@ describe('Visual regression via Percy', () => {
       await percySnapshot(page, `js: ${componentName}`)
 
       // Check for "JavaScript enabled" components
-      if (componentsWithJavaScript.includes(componentName)) {
+      if (files.has(`${componentName}.mjs`)) {
         await page.setJavaScriptEnabled(false)
 
         // Screenshot preview page (without JavaScript)

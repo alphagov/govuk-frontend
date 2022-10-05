@@ -3,14 +3,10 @@ const app = express()
 const bodyParser = require('body-parser')
 const nunjucks = require('nunjucks')
 const { marked } = require('marked')
-const util = require('util')
-const fs = require('fs')
 const path = require('path')
 
-const readdir = util.promisify(fs.readdir)
-
+const { getDirectories, getComponentData, getComponentsData, getFullPageExamples } = require('../lib/file-helper')
 const helperFunctions = require('../lib/helper-functions')
-const fileHelper = require('../lib/file-helper')
 const configPaths = require('../config/paths.js')
 
 const isDeployedToHeroku = !!process.env.HEROKU_APP
@@ -107,9 +103,11 @@ module.exports = (options) => {
 
   // Index page - render the component list template
   app.get('/', async function (req, res) {
-    const componentNames = fileHelper.allComponents
-    const exampleNames = await readdir(path.resolve(configPaths.examples))
-    const fullPageExamples = await fileHelper.getFullPageExamples()
+    const [componentNames, exampleNames, fullPageExamples] = await Promise.all([
+      getDirectories(configPaths.components).then(listing => [...listing.keys()]),
+      getDirectories(configPaths.examples).then(listing => [...listing.keys()]),
+      getFullPageExamples()
+    ])
 
     res.render('index', {
       componentNames,
@@ -121,24 +119,22 @@ module.exports = (options) => {
   // Whenever the route includes a :componentName parameter, read the component data
   // from its YAML file
   app.param('componentName', async function (req, res, next, componentName) {
-    res.locals.componentData = await fileHelper.getComponentData(componentName)
+    res.locals.componentData = await getComponentData(componentName)
     next()
   })
 
   // All components view
   app.get('/components/all', async function (req, res, next) {
-    const componentNames = fileHelper.allComponents
+    const componentsData = await getComponentsData()
 
-    res.locals.componentsData = await Promise.all(componentNames.map(async (componentName) => {
-      const componentData = await fileHelper.getComponentData(componentName)
-      const defaultExample = componentData.examples.find(
-        example => example.name === 'default'
-      )
+    res.locals.componentsData = componentsData.map((componentData) => {
+      const defaultExample = componentData.examples.find(({ name }) => name === 'default')
+
       return {
         ...componentData,
         examples: [defaultExample]
       }
-    }))
+    })
 
     res.render('all-components', function (error, html) {
       if (error) {

@@ -1,7 +1,7 @@
 const cheerio = require('cheerio')
 const { Agent, fetch, setGlobalDispatcher } = require('undici')
 
-const lib = require('../lib/file-helper')
+const { getDirectories } = require('../lib/file-helper')
 
 const configPaths = require('../config/paths.js')
 const PORT = configPaths.ports.test
@@ -51,10 +51,13 @@ describe(`http://localhost:${PORT}`, () => {
     it('should display the list of components', async () => {
       const response = await fetchPath('/')
       const $ = cheerio.load(await response.text())
+
+      const componentsDirectory = await getDirectories(configPaths.components)
       const componentsList = $('li a[href^="/components/"]').get()
+
       // Since we have an 'all' component link that renders the default example of all
       // components, there will always be one more expected link.
-      const expectedComponentLinks = lib.allComponents.length + 1
+      const expectedComponentLinks = componentsDirectory.size + 1
       expect(componentsList.length).toEqual(expectedComponentLinks)
     })
   })

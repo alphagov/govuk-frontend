@@ -1,21 +1,30 @@
-const fs = require('fs')
+const { readFile } = require('fs/promises')
 const path = require('path')
-const util = require('util')
-
 const recursive = require('recursive-readdir')
 const glob = require('glob')
 
 const configPaths = require('../../../config/paths.js')
-const lib = require('../../../lib/file-helper')
-const { componentNameToJavaScriptModuleName } = require('../../../lib/helper-functions')
+const { getDirectories, getFilesByDirectory } = require('../../../lib/file-helper')
+const { componentNameToJavaScriptClassName, componentNameToJavaScriptModuleName } = require('../../../lib/helper-functions')
 
 const { renderSass } = require('../../../lib/jest-helpers')
 
-const readFile = util.promisify(fs.readFile)
-const componentNames = lib.allComponents.slice()
-const componentsWithJavaScript = glob.sync(configPaths.package + 'govuk/components/' + '**/!(*.test).js')
-
 describe('package/', () => {
+  let componentsFilesSource
+  let componentsFilesPackage
+  let componentsFilesPackageESM
+
+  let componentNames
+
+  beforeAll(async () => {
+    componentsFilesSource = await getFilesByDirectory(configPaths.components)
+    componentsFilesPackage = await getFilesByDirectory(`${configPaths.package}govuk/components/`)
+    componentsFilesPackageESM = await getFilesByDirectory(`${configPaths.package}govuk-esm/components/`)
+
+    // Components list
+    componentNames = [...(await getDirectories(configPaths.components)).keys()]
+  })
+
   it('should contain the expected files', () => {
     // Build an array of the files that are present in the package directory.
     const actualPackageFiles = () => {
@@ -129,71 +138,122 @@ describe('package/', () => {
   })
 
   describe('component', () => {
-    it.each(componentNames)('\'%s\' should have macro-options.json that contains JSON', (name) => {
-      const filePath = path.join(configPaths.package, 'govuk', 'components', name, 'macro-options.json')
-      return readFile(filePath, 'utf8')
-        .then((data) => {
-          const parsedData = JSON.parse(data)
+    it('should have macro-options.json that contains JSON', () => {
+      const componentTasks = componentNames.map(async (componentName) => {
+        const componentSource = componentsFilesSource.get(componentName)
+        const componentPackage = componentsFilesPackage.get(componentName)
 
-          // We expect the component JSON to contain "name", "type", "required", "description"
-          expect(parsedData).toBeInstanceOf(Array)
-          parsedData.forEach((option) => {
-            expect(option).toEqual(
-              expect.objectContaining({
-                name: expect.any(String),
-                type: expect.any(String),
-                required: expect.any(Boolean),
-                description: expect.any(String)
-              })
-            )
+        // File not found at source
+        expect([...componentSource.keys()])
+          .toEqual(expect.not.arrayContaining(['macro-options.json']))
+
+        // File generated in package
+        expect([...componentPackage.keys()])
+          .toEqual(expect.arrayContaining(['macro-options.json']))
+
+        const { path } = componentPackage.get('macro-options.json')
+
+        // Component options
+        const options = JSON.parse(await readFile(path, 'utf8'))
+        expect(options).toBeInstanceOf(Array)
+
+        // Component options requirements
+        const optionTasks = options.map(async (option) => expect(option).toEqual(
+          expect.objectContaining({
+            name: expect.stringMatching(/^[A-Z]+$/i),
+            type: expect.stringMatching(/array|boolean|integer|string|object|nunjucks-block/),
+            required: expect.any(Boolean),
+            description: expect.any(String)
           })
-        })
-        .catch(error => {
-          throw error
-        })
+        ))
+
+        // Check all component options
+        return Promise.all(optionTasks)
+      })
+
+      // Check all component files
+      return Promise.all(componentTasks)
     })
   })
 
   describe('components with JavaScript', () => {
-    it.each(componentsWithJavaScript)('\'%s\' should have component JavaScript file with correct module name', (javaScriptFile) => {
-      const moduleName = componentNameToJavaScriptModuleName(path.parse(javaScriptFile).name)
+    beforeEach(async () => {
+      // Filter "JavaScript enabled" only
+      componentNames = [...componentsFilesSource]
+        .filter(([name, files]) => files.has(`${name}.mjs`))
+        .map(([name]) => name)
+    })
 
-      return readFile(javaScriptFile, 'utf8')
-        .then((data) => {
-          expect(data).toContain("typeof define === 'function' && define.amd ? define('" + moduleName + "', factory)")
-        })
-        .catch(error => {
-          throw error
-        })
+    it('should have component JavaScript file with correct module name', () => {
+      const componentTasks = componentNames.map(async (componentName) => {
+        const componentSource = componentsFilesSource.get(componentName)
+        const componentPackage = componentsFilesPackage.get(componentName)
+        const componentPackageESM = componentsFilesPackageESM.get(componentName)
+
+        // CommonJS module not found at source
+        expect([...componentSource.keys()])
+          .toEqual(expect.not.arrayContaining([`${componentName}.js`]))
+
+        // CommonJS generated in package
+        expect([...componentPackage.keys()])
+          .toEqual(expect.arrayContaining([`${componentName}.js`]))
+
+        // ESM module generated in package
+        expect([...componentPackageESM.keys()])
+          .toEqual(expect.arrayContaining([`${componentName}.mjs`]))
+
+        const { path: modulePath } = componentPackage.get(`${componentName}.js`)
+        const { path: modulePathESM } = componentPackageESM.get(`${componentName}.mjs`)
+
+        const moduleText = await readFile(modulePath, 'utf8')
+        const moduleTextESM = await readFile(modulePathESM, 'utf8')
+
+        expect(moduleText).toContain(`typeof define === 'function' && define.amd ? define('${componentNameToJavaScriptModuleName(componentName)}', factory)`)
+        expect(moduleTextESM).toContain(`export default ${componentNameToJavaScriptClassName(componentName)}`)
+      })
+
+      // Check all component files
+      return Promise.all(componentTasks)
     })
   })
 
   describe('fixtures', () => {
-    it.each(componentNames)('\'%s\' should have fixtures.json that contains JSON', (name) => {
-      const filePath = path.join(configPaths.package, 'govuk', 'components', name, 'fixtures.json')
-      return readFile(filePath, 'utf8')
-        .then((data) => {
-          const parsedData = JSON.parse(data)
-          // We expect the component JSON to contain "component" and an array of "fixtures" with "name", "options", and "html"
-          expect(parsedData).toEqual(
-            expect.objectContaining({
-              component: name,
-              fixtures: expect.any(Array)
-            })
-          )
+    it('should have fixtures.json that contains JSON', () => {
+      const componentTasks = componentNames.map(async (componentName) => {
+        const componentSource = componentsFilesSource.get(componentName)
+        const componentPackage = componentsFilesPackage.get(componentName)
 
-          parsedData.fixtures.forEach((fixture) => {
-            expect(fixture).toEqual({
-              name: expect.any(String),
-              options: expect.any(Object),
-              html: expect.any(String),
-              hidden: expect.any(Boolean)
-            })
+        // File not found at source
+        expect([...componentSource.keys()])
+          .toEqual(expect.not.arrayContaining(['fixtures.json']))
+
+        // File generated in package
+        expect([...componentPackage.keys()])
+          .toEqual(expect.arrayContaining(['fixtures.json']))
+
+        const { path } = componentPackage.get('fixtures.json')
+
+        // Component fixtures
+        const { component, fixtures } = JSON.parse(await readFile(path, 'utf8'))
+        expect(component).toEqual(componentName)
+        expect(fixtures).toBeInstanceOf(Array)
+
+        // Component fixtures requirements
+        const optionTasks = fixtures.map(async (fixture) => expect(fixture).toEqual(
+          expect.objectContaining({
+            name: expect.any(String),
+            options: expect.any(Object),
+            html: expect.any(String),
+            hidden: expect.any(Boolean)
           })
-        })
-        .catch(error => {
-          throw error
-        })
+        ))
+
+        // Check all component fixtures
+        return Promise.all(optionTasks)
+      })
+
+      // Check all component files
+      return Promise.all(componentTasks)
     })
   })
 })

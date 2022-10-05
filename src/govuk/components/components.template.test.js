@@ -4,7 +4,7 @@ const { HtmlValidate } = require('html-validate')
 // over the nunjucks environment.
 const nunjucks = require('nunjucks')
 
-const { allComponents, getComponentData } = require('../../../lib/file-helper')
+const { getDirectories, getComponentsData } = require('../../../lib/file-helper')
 const { nunjucksEnv, renderHtml } = require('../../../lib/jest-helpers')
 
 const configPaths = require('../../../config/paths.js')
@@ -13,22 +13,27 @@ describe('Components', () => {
   let nunjucksEnvCustom
   let nunjucksEnvDefault
 
-  beforeAll(() => {
+  let componentNames
+
+  beforeAll(async () => {
     // Create a new Nunjucks environment that uses the src directory as its
     // base path, rather than the components folder itself
     nunjucksEnvCustom = nunjucks.configure(configPaths.src)
     nunjucksEnvDefault = nunjucksEnv
+
+    // Components list
+    componentNames = [...(await getDirectories(configPaths.components)).keys()]
   })
 
   describe('Nunjucks environment', () => {
     it('renders template for each component', () => {
-      return Promise.all(allComponents.map((componentName) =>
+      return Promise.all(componentNames.map((componentName) =>
         expect(nunjucksEnvDefault.render(`${componentName}/template.njk`, {})).resolves
       ))
     })
 
     it('renders template for each component (different base path)', () => {
-      return Promise.all(allComponents.map((componentName) =>
+      return Promise.all(componentNames.map((componentName) =>
         expect(nunjucksEnvCustom.render(`components/${componentName}/template.njk`, {})).resolves
       ))
     })
@@ -104,11 +109,11 @@ describe('Components', () => {
       })
     })
 
-    it('renders valid HTML for each component example', () => {
-      const componentTasks = allComponents.map(async (componentName) => {
-        const { examples } = await getComponentData(componentName)
+    it('renders valid HTML for each component example', async () => {
+      const componentsData = await getComponentsData()
 
-        // Validate component examples
+      // Validate component examples
+      for (const { name: componentName, examples } of componentsData) {
         const exampleTasks = examples.map(async ({ name: exampleName, data }) => {
           const html = renderHtml(componentName, data)
 
@@ -118,11 +123,8 @@ describe('Components', () => {
         })
 
         // Validate all component examples in parallel
-        return Promise.all(exampleTasks)
-      })
-
-      // Check all components in parallel
-      return Promise.all(componentTasks)
+        await Promise.all(exampleTasks)
+      }
     }, 30000)
   })
 })
