@@ -1,19 +1,23 @@
-const configPaths = require('../config/paths.js')
 const { rename, writeFile } = require('fs/promises')
 const { basename, resolve } = require('path')
+
+const configPaths = require('../config/paths.js')
+const { destination, isDist } = require('./task-arguments.js')
 
 // Update assets' version numbers
 // Uses the version number from `package/package.json` and writes it to various places
 async function updateDistAssetsVersion () {
-  const distFolder = 'dist'
+  const pkg = require(`../${configPaths.package}package.json`)
 
-  const pkg = require('../' + configPaths.package + 'package.json')
+  if (!isDist) {
+    throw new Error('Asset versions can only be applied to ./dist')
+  }
 
   // Files to process
   const assetFiles = [
-    resolve(`${distFolder}/govuk-frontend.min.css`),
-    resolve(`${distFolder}/govuk-frontend-ie8.min.css`),
-    resolve(`${distFolder}/govuk-frontend.min.js`)
+    resolve(`${destination}/govuk-frontend.min.css`),
+    resolve(`${destination}/govuk-frontend-ie8.min.css`),
+    resolve(`${destination}/govuk-frontend.min.js`)
   ]
 
   // Loop through files
@@ -26,7 +30,7 @@ async function updateDistAssetsVersion () {
   })
 
   // Write VERSION.txt file
-  assetTasks.push(writeFile(resolve(`${distFolder}/VERSION.txt`), pkg.version + '\r\n'))
+  assetTasks.push(writeFile(resolve(`${destination}/VERSION.txt`), pkg.version + '\r\n'))
 
   // Resolve on completion
   return Promise.all(assetTasks)

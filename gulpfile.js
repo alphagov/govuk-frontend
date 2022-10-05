@@ -1,7 +1,7 @@
 const gulp = require('gulp')
 const taskListing = require('gulp-task-listing')
 const configPaths = require('./config/paths.js')
-const taskArguments = require('./tasks/task-arguments')
+const { destination } = require('./tasks/task-arguments.js')
 
 // Gulp sub-tasks
 require('./tasks/gulp/compile-assets.js')
@@ -12,7 +12,7 @@ require('./tasks/gulp/watch.js')
 const { buildSassdocs } = require('./tasks/sassdoc.js')
 const { runNodemon } = require('./tasks/nodemon.js')
 const { updateDistAssetsVersion } = require('./tasks/asset-version.js')
-const { cleanDist, cleanPackage, cleanPublic } = require('./tasks/clean.js')
+const { clean } = require('./tasks/clean.js')
 const { npmScriptTask } = require('./tasks/run.js')
 
 /**
@@ -38,8 +38,8 @@ gulp.task('styles', gulp.series(
  * Copies assets to taskArguments.destination (public)
  */
 gulp.task('copy:assets', () => {
-  return gulp.src(configPaths.src + 'assets/**/*')
-    .pipe(gulp.dest(taskArguments.destination + '/assets/'))
+  return gulp.src(`${configPaths.src}assets/**/*`)
+    .pipe(gulp.dest(`${destination}/assets/`))
 })
 
 /**
@@ -67,7 +67,7 @@ gulp.task('serve', gulp.parallel(
  * Runs a sequence of tasks on start
  */
 gulp.task('dev', gulp.series(
-  cleanPublic,
+  clean,
   'compile',
   'serve'
 ))
@@ -77,7 +77,7 @@ gulp.task('dev', gulp.series(
  * Prepare package folder for publishing
  */
 gulp.task('build:package', gulp.series(
-  cleanPackage,
+  clean,
   'copy:files',
   'js:compile'
 ))
@@ -87,7 +87,7 @@ gulp.task('build:package', gulp.series(
  * Prepare dist folder for release
  */
 gulp.task('build:dist', gulp.series(
-  cleanDist,
+  clean,
   'compile',
   'copy:assets',
   updateDistAssetsVersion
