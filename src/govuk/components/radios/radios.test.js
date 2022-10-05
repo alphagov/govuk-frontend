@@ -6,20 +6,6 @@ const cheerio = require('cheerio')
 
 const { goToComponent, goToExample } = require('../../../../lib/puppeteer-helpers.js')
 
-const waitForHiddenSelector = async (selector) => {
-  return page.waitForSelector(selector, {
-    hidden: true,
-    timeout: 1000
-  })
-}
-
-const waitForVisibleSelector = async (selector) => {
-  return page.waitForSelector(selector, {
-    visible: true,
-    timeout: 1000
-  })
-}
-
 describe('Radios with conditional reveals', () => {
   describe('when JavaScript is unavailable or fails', () => {
     beforeAll(async () => {
@@ -50,7 +36,7 @@ describe('Radios with conditional reveals', () => {
         exampleName: 'with-conditional-items'
       })
 
-      const isContentVisible = await waitForVisibleSelector('.govuk-radios__conditional')
+      const isContentVisible = await page.waitForSelector('.govuk-radios__conditional', { visible: true })
       expect(isContentVisible).toBeTruthy()
     })
   })
@@ -65,7 +51,7 @@ describe('Radios with conditional reveals', () => {
       const $checkedInput = $component.find('.govuk-radios__input:checked')
       const inputAriaControls = $checkedInput.attr('aria-controls')
 
-      const isContentVisible = await waitForVisibleSelector(`[id="${inputAriaControls}"]:not(.govuk-radios__conditional--hidden)`)
+      const isContentVisible = await page.waitForSelector(`[id="${inputAriaControls}"]:not(.govuk-radios__conditional--hidden)`, { visible: true })
       expect(isContentVisible).toBeTruthy()
     })
 
@@ -79,7 +65,7 @@ describe('Radios with conditional reveals', () => {
       const $uncheckedInput = $component.find('.govuk-radios__item').last().find('.govuk-radios__input')
       const uncheckedInputAriaControls = $uncheckedInput.attr('aria-controls')
 
-      const isContentHidden = await waitForHiddenSelector(`[id="${uncheckedInputAriaControls}"].govuk-radios__conditional--hidden`)
+      const isContentHidden = await page.waitForSelector(`[id="${uncheckedInputAriaControls}"].govuk-radios__conditional--hidden`, { hidden: true })
       expect(isContentHidden).toBeTruthy()
     })
 
@@ -88,12 +74,12 @@ describe('Radios with conditional reveals', () => {
         exampleName: 'with-conditional-items'
       })
 
-      const isNotExpanded = await waitForVisibleSelector('.govuk-radios__item:first-child .govuk-radios__input[aria-expanded=false]')
+      const isNotExpanded = await page.waitForSelector('.govuk-radios__item:first-child .govuk-radios__input[aria-expanded=false]', { visible: true })
       expect(isNotExpanded).toBeTruthy()
 
       await page.click('.govuk-radios__item:first-child .govuk-radios__input')
 
-      const isExpanded = await waitForVisibleSelector('.govuk-radios__item:first-child .govuk-radios__input[aria-expanded=true]')
+      const isExpanded = await page.waitForSelector('.govuk-radios__item:first-child .govuk-radios__input[aria-expanded=true]', { visible: true })
       expect(isExpanded).toBeTruthy()
     })
 
@@ -109,12 +95,12 @@ describe('Radios with conditional reveals', () => {
 
       await page.click('.govuk-radios__item:first-child .govuk-radios__input')
 
-      const isContentVisible = await waitForVisibleSelector(`[id="${firstInputAriaControls}"]`)
+      const isContentVisible = await page.waitForSelector(`[id="${firstInputAriaControls}"]`, { visible: true })
       expect(isContentVisible).toBeTruthy()
 
       await page.click('.govuk-radios__item:nth-child(3) .govuk-radios__input')
 
-      const isContentHidden = await waitForHiddenSelector(`[id="${firstInputAriaControls}"]`)
+      const isContentHidden = await page.waitForSelector(`[id="${firstInputAriaControls}"]`, { hidden: true })
       expect(isContentHidden).toBeTruthy()
     })
 
@@ -131,12 +117,12 @@ describe('Radios with conditional reveals', () => {
       await page.focus('.govuk-radios__item:first-child .govuk-radios__input')
       await page.keyboard.press('Space')
 
-      const isContentVisible = await waitForVisibleSelector(`[id="${firstInputAriaControls}"]`)
+      const isContentVisible = await page.waitForSelector(`[id="${firstInputAriaControls}"]`, { visible: true })
       expect(isContentVisible).toBeTruthy()
 
       await page.keyboard.press('ArrowRight')
 
-      const isContentHidden = await waitForHiddenSelector(`[id="${firstInputAriaControls}"]`)
+      const isContentHidden = await page.waitForSelector(`[id="${firstInputAriaControls}"]`, { hidden: true })
       expect(isContentHidden).toBeTruthy()
     })
 
@@ -160,7 +146,7 @@ describe('Radios with conditional reveals', () => {
         // Select blue in cool colours
         await page.click('#cool')
 
-        const isWarmConditionalRevealHidden = await waitForHiddenSelector('#conditional-warm')
+        const isWarmConditionalRevealHidden = await page.waitForSelector('#conditional-warm', { hidden: true })
         expect(isWarmConditionalRevealHidden).toBeTruthy()
       })
 
@@ -168,7 +154,7 @@ describe('Radios with conditional reveals', () => {
         // Select first input in radios not in a form
         await page.click('#question-not-in-form')
 
-        const isConditionalRevealVisible = await waitForVisibleSelector('#conditional-question-not-in-form')
+        const isConditionalRevealVisible = await page.waitForSelector('#conditional-question-not-in-form', { visible: true })
         expect(isConditionalRevealVisible).toBeTruthy()
       })
     })
@@ -190,14 +176,14 @@ describe('Radios with multiple groups and conditional reveals', () => {
       )
 
       // Assert conditional reveal is visible
-      const isConditionalContentVisible = await waitForVisibleSelector(`[id="${conditionalContentId}"]`)
+      const isConditionalContentVisible = await page.waitForSelector(`[id="${conditionalContentId}"]`, { visible: true })
       expect(isConditionalContentVisible).toBeTruthy()
 
       // Choose a different radio with the same name, but in a different group
       await page.click('#fave-other-3')
 
       // Expect conditional content to have been hidden
-      const isConditionalContentHidden = await waitForHiddenSelector(`[id="${conditionalContentId}"]`)
+      const isConditionalContentHidden = await page.waitForSelector(`[id="${conditionalContentId}"]`, { hidden: true })
       expect(isConditionalContentHidden).toBeTruthy()
     })
   })

@@ -6,20 +6,6 @@ const cheerio = require('cheerio')
 
 const { goToComponent, goToExample } = require('../../../../lib/puppeteer-helpers.js')
 
-const waitForHiddenSelector = async (selector) => {
-  return page.waitForSelector(selector, {
-    hidden: true,
-    timeout: 1000
-  })
-}
-
-const waitForVisibleSelector = async (selector) => {
-  return page.waitForSelector(selector, {
-    visible: true,
-    timeout: 1000
-  })
-}
-
 describe('Checkboxes with conditional reveals', () => {
   describe('when JavaScript is unavailable or fails', () => {
     beforeAll(async () => {
@@ -50,7 +36,7 @@ describe('Checkboxes with conditional reveals', () => {
         exampleName: 'with-conditional-items'
       })
 
-      const isContentVisible = await waitForVisibleSelector('.govuk-checkboxes__conditional')
+      const isContentVisible = await page.waitForSelector('.govuk-checkboxes__conditional', { visible: true })
       expect(isContentVisible).toBeTruthy()
     })
   })
@@ -66,7 +52,7 @@ describe('Checkboxes with conditional reveals', () => {
       const $checkedInput = $component.find('.govuk-checkboxes__input:checked')
       const inputAriaControls = $checkedInput.attr('aria-controls')
 
-      const isContentVisible = await waitForVisibleSelector(`[id="${inputAriaControls}"]:not(.govuk-checkboxes__conditional--hidden)`)
+      const isContentVisible = await page.waitForSelector(`[id="${inputAriaControls}"]:not(.govuk-checkboxes__conditional--hidden)`, { visible: true })
       expect(isContentVisible).toBeTruthy()
     })
 
@@ -80,7 +66,7 @@ describe('Checkboxes with conditional reveals', () => {
       const $uncheckedInput = $component.find('.govuk-checkboxes__item').last().find('.govuk-checkboxes__input')
       const uncheckedInputAriaControls = $uncheckedInput.attr('aria-controls')
 
-      const isContentHidden = await waitForHiddenSelector(`[id="${uncheckedInputAriaControls}"].govuk-checkboxes__conditional--hidden`)
+      const isContentHidden = await page.waitForSelector(`[id="${uncheckedInputAriaControls}"].govuk-checkboxes__conditional--hidden`, { hidden: true })
       expect(isContentHidden).toBeTruthy()
     })
 
@@ -89,12 +75,12 @@ describe('Checkboxes with conditional reveals', () => {
         exampleName: 'with-conditional-items'
       })
 
-      const isNotExpanded = await waitForVisibleSelector('.govuk-checkboxes__item:first-child .govuk-checkboxes__input[aria-expanded=false]')
+      const isNotExpanded = await page.waitForSelector('.govuk-checkboxes__item:first-child .govuk-checkboxes__input[aria-expanded=false]', { visible: true })
       expect(isNotExpanded).toBeTruthy()
 
       await page.click('.govuk-checkboxes__item:first-child .govuk-checkboxes__input')
 
-      const isExpanded = await waitForVisibleSelector('.govuk-checkboxes__item:first-child .govuk-checkboxes__input[aria-expanded=true]')
+      const isExpanded = await page.waitForSelector('.govuk-checkboxes__item:first-child .govuk-checkboxes__input[aria-expanded=true]', { visible: true })
       expect(isExpanded).toBeTruthy()
     })
 
@@ -110,12 +96,12 @@ describe('Checkboxes with conditional reveals', () => {
 
       await page.click('.govuk-checkboxes__item:first-child .govuk-checkboxes__input')
 
-      const isContentVisible = await waitForVisibleSelector(`[id="${firstInputAriaControls}"]`)
+      const isContentVisible = await page.waitForSelector(`[id="${firstInputAriaControls}"]`, { visible: true })
       expect(isContentVisible).toBeTruthy()
 
       await page.click('.govuk-checkboxes__item:first-child .govuk-checkboxes__input')
 
-      const isContentHidden = await waitForHiddenSelector(`[id="${firstInputAriaControls}"]`)
+      const isContentHidden = await page.waitForSelector(`[id="${firstInputAriaControls}"]`, { hidden: true })
       expect(isContentHidden).toBeTruthy()
     })
 
@@ -132,12 +118,12 @@ describe('Checkboxes with conditional reveals', () => {
       await page.focus('.govuk-checkboxes__item:first-child .govuk-checkboxes__input')
       await page.keyboard.press('Space')
 
-      const isContentVisible = await waitForVisibleSelector(`[id="${firstInputAriaControls}"]`)
+      const isContentVisible = await page.waitForSelector(`[id="${firstInputAriaControls}"]`, { visible: true })
       expect(isContentVisible).toBeTruthy()
 
       await page.keyboard.press('Space')
 
-      const isContentHidden = await waitForHiddenSelector(`[id="${firstInputAriaControls}"]`)
+      const isContentHidden = await page.waitForSelector(`[id="${firstInputAriaControls}"]`, { hidden: true })
       expect(isContentHidden).toBeTruthy()
     })
 
@@ -169,13 +155,13 @@ describe('Checkboxes with a None checkbox', () => {
       await page.click('#with-divider-and-none-5')
 
       // Expect first 3 checkboxes to have been unchecked
-      const firstCheckboxIsUnchecked = await waitForVisibleSelector('[id="with-divider-and-none"]:not(:checked)')
+      const firstCheckboxIsUnchecked = await page.waitForSelector('[id="with-divider-and-none"]:not(:checked)', { visible: true })
       expect(firstCheckboxIsUnchecked).toBeTruthy()
 
-      const secondCheckboxIsUnchecked = await waitForVisibleSelector('[id="with-divider-and-none-2"]:not(:checked)')
+      const secondCheckboxIsUnchecked = await page.waitForSelector('[id="with-divider-and-none-2"]:not(:checked)', { visible: true })
       expect(secondCheckboxIsUnchecked).toBeTruthy()
 
-      const thirdCheckboxIsUnchecked = await waitForVisibleSelector('[id="with-divider-and-none-3"]:not(:checked)')
+      const thirdCheckboxIsUnchecked = await page.waitForSelector('[id="with-divider-and-none-3"]:not(:checked)', { visible: true })
       expect(thirdCheckboxIsUnchecked).toBeTruthy()
     })
 
@@ -187,7 +173,7 @@ describe('Checkboxes with a None checkbox', () => {
       await page.click('#with-divider-and-none')
 
       // Expect the None checkbox to have been unchecked
-      const noneCheckboxIsUnchecked = await waitForVisibleSelector('[id="with-divider-and-none-5"]:not(:checked)')
+      const noneCheckboxIsUnchecked = await page.waitForSelector('[id="with-divider-and-none-5"]:not(:checked)', { visible: true })
       expect(noneCheckboxIsUnchecked).toBeTruthy()
     })
   })
@@ -209,18 +195,18 @@ describe('Checkboxes with a None checkbox and conditional reveals', () => {
       const conditionalContentId = $checkedInput.attr('aria-controls')
 
       // Expect conditional content to have been revealed
-      const isConditionalContentVisible = await waitForVisibleSelector(`[id="${conditionalContentId}"]`)
+      const isConditionalContentVisible = await page.waitForSelector(`[id="${conditionalContentId}"]`, { visible: true })
       expect(isConditionalContentVisible).toBeTruthy()
 
       // Check the None checkbox
       await page.click('#with-divider-and-none-and-conditional-items-6')
 
       // Expect the 4th checkbox to have been unchecked
-      const forthCheckboxIsUnchecked = await waitForVisibleSelector('[id="with-divider-and-none-and-conditional-items-4"]:not(:checked)')
+      const forthCheckboxIsUnchecked = await page.waitForSelector('[id="with-divider-and-none-and-conditional-items-4"]:not(:checked)', { visible: true })
       expect(forthCheckboxIsUnchecked).toBeTruthy()
 
       // Expect conditional content to have been hidden
-      const isConditionalContentHidden = await waitForHiddenSelector(`[id="${conditionalContentId}"]`)
+      const isConditionalContentHidden = await page.waitForSelector(`[id="${conditionalContentId}"]`, { hidden: true })
       expect(isConditionalContentHidden).toBeTruthy()
     })
   })
@@ -241,10 +227,10 @@ describe('Checkboxes with multiple groups and a None checkbox and conditional re
       await page.click('#colour-other-3')
 
       // Expect the checkboxes in the first and second groups to be unchecked
-      const firstCheckboxIsUnchecked = await waitForVisibleSelector('[id="colour-primary-3"]:not(:checked)')
+      const firstCheckboxIsUnchecked = await page.waitForSelector('[id="colour-primary-3"]:not(:checked)', { visible: true })
       expect(firstCheckboxIsUnchecked).toBeTruthy()
 
-      const secondCheckboxIsUnchecked = await waitForVisibleSelector('[id="colour-secondary-2"]:not(:checked)')
+      const secondCheckboxIsUnchecked = await page.waitForSelector('[id="colour-secondary-2"]:not(:checked)', { visible: true })
       expect(secondCheckboxIsUnchecked).toBeTruthy()
     })
 
@@ -257,18 +243,18 @@ describe('Checkboxes with multiple groups and a None checkbox and conditional re
       )
 
       // Assert that conditional reveal is visible
-      const isConditionalContentVisible = await waitForVisibleSelector(`[id="${conditionalContentId}"]`)
+      const isConditionalContentVisible = await page.waitForSelector(`[id="${conditionalContentId}"]`, { visible: true })
       expect(isConditionalContentVisible).toBeTruthy()
 
       // Check the None checkbox
       await page.click('#colour-other-3')
 
       // Assert that the second checkbox in the first group is unchecked
-      const otherCheckboxIsUnchecked = await waitForVisibleSelector('[id="colour-primary-2"]:not(:checked)')
+      const otherCheckboxIsUnchecked = await page.waitForSelector('[id="colour-primary-2"]:not(:checked)', { visible: true })
       expect(otherCheckboxIsUnchecked).toBeTruthy()
 
       // Expect conditional content to have been hidden
-      const isConditionalContentHidden = await waitForHiddenSelector(`[id="${conditionalContentId}"]`)
+      const isConditionalContentHidden = await page.waitForSelector(`[id="${conditionalContentId}"]`, { hidden: true })
       expect(isConditionalContentHidden).toBeTruthy()
     })
   })
