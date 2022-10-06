@@ -42,8 +42,8 @@
 /// suite of tools and settings
 
 @mixin govuk-compatibility($product) {
-  @warn "govuk-compatibility is deprecated. " +
-    "From version 5.0, GOV.UK Frontend will not support compatibility mode";
+  @include _warning(compatibility-helper, "govuk-compatibility is deprecated. " +
+  "From version 5.0, GOV.UK Frontend will not support compatibility mode.");
   @include _govuk-compatibility($product) {
     @content;
   }

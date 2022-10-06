@@ -34,8 +34,8 @@ $govuk-use-legacy-palette: if(
   $govuk-compatibility-govukfrontendtoolkit == false and
   $govuk-compatibility-govuktemplate == false and
   $govuk-compatibility-govukelements == false {
-  @warn "$govuk-use-legacy-palette is deprecated. " +
-    "Only the modern colour palette will be supported from v5.0";
+  @include _warning(legacy-palette, "$govuk-use-legacy-palette is deprecated. " +
+  "Only the modern colour palette will be supported from v5.0.");
 }
 
 /// Modern colour palette

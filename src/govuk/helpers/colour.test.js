@@ -72,6 +72,7 @@ describe('@function govuk-colour', () => {
   describe('when $govuk-use-legacy-palette is true', () => {
     beforeEach(() => {
       sassBootstrap = `
+        @import "settings/warnings";
         $govuk-use-legacy-palette: true;
         ${sassBootstrap}
       `
@@ -138,8 +139,9 @@ describe('@function govuk-colour', () => {
         // argument, which should be the deprecation notice
         return expect(mockWarnFunction.mock.calls[0][0].getValue())
           .toEqual(
-            '$govuk-use-legacy-palette is deprecated. ' +
-            'Only the modern colour palette will be supported from v5.0'
+            '$govuk-use-legacy-palette is deprecated. Only the modern colour ' +
+            'palette will be supported from v5.0. To silence this warning, ' +
+            'update $govuk-suppressed-warnings with key: "legacy-palette"'
           )
       })
     })

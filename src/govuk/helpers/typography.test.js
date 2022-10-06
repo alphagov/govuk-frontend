@@ -15,7 +15,7 @@ const sassConfig = {
   }
 }
 
-const sassBootstrap = `
+let sassBootstrap = `
   $govuk-breakpoints: (
     desktop: 30em
   );
@@ -335,6 +335,13 @@ describe('@mixin govuk-typography-responsive', () => {
   })
 
   describe('when $govuk-typography-use-rem is disabled', () => {
+    beforeEach(() => {
+      sassBootstrap = `
+        @import "settings/warnings";
+        ${sassBootstrap}
+      `
+    })
+
     it('outputs CSS with suitable media queries', async () => {
       const sass = `
         $govuk-typography-use-rem: false;
@@ -411,8 +418,10 @@ describe('@mixin govuk-typography-responsive', () => {
         // deprecation notice
         return expect(mockWarnFunction.mock.calls.at(-1)[0].getValue())
           .toEqual(
-            '$govuk-typography-use-rem is deprecated. ' +
-            'From version 5.0, GOV.UK Frontend will not support disabling rem font sizes'
+            '$govuk-typography-use-rem is deprecated. From version 5.0, ' +
+            'GOV.UK Frontend will not support disabling rem font sizes. To ' +
+            'silence this warning, update $govuk-suppressed-warnings with ' +
+            'key: "allow-not-using-rem"'
           )
       })
     })
@@ -609,9 +618,10 @@ describe('$govuk-font-family-tabular value is specified', () => {
       // deprecation notice
       return expect(mockWarnFunction.mock.calls.at(-1)[0].getValue())
         .toEqual(
-          '$govuk-font-family-tabular is deprecated. ' +
-          'From version 5.0, GOV.UK Frontend will not support using a separate ' +
-          'font-face for tabular numbers'
+          '$govuk-font-family-tabular is deprecated. From version 5.0, ' +
+          'GOV.UK Frontend will not support using a separate font-face for ' +
+          'tabular numbers. To silence this warning, update ' +
+          '$govuk-suppressed-warnings with key: "tabular-font-face"'
         )
     })
   })
