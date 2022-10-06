@@ -6,11 +6,9 @@ const { fetch } = require('undici')
 const { WebSocket } = require('ws')
 
 const { allComponents, getFiles } = require('../../../lib/file-helper')
+const { goToComponent } = require('../../../lib/puppeteer-helpers')
 
 const configPaths = require('../../../config/paths.js')
-
-const PORT = configPaths.ports.test
-const baseUrl = 'http://localhost:' + PORT
 
 describe('Visual regression via Percy', () => {
   let percySnapshot
@@ -35,12 +33,16 @@ describe('Visual regression via Percy', () => {
       .map(([component]) => component)
   })
 
+  afterAll(async () => {
+    await page.setJavaScriptEnabled(true)
+  })
+
   it('generate screenshots', async () => {
     for (const component of allComponents) {
       await page.setJavaScriptEnabled(true)
 
       // Screenshot preview page (with JavaScript)
-      await page.goto(baseUrl + '/components/' + component + '/preview', { waitUntil: 'load' })
+      await goToComponent(page, component)
       await percySnapshot(page, `js: ${component}`)
 
       // Check for "JavaScript enabled" components

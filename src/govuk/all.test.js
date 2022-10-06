@@ -5,11 +5,9 @@
 const sassdoc = require('sassdoc')
 
 const configPaths = require('../../config/paths.js')
-const PORT = configPaths.ports.test
 
 const { renderSass } = require('../../lib/jest-helpers')
-
-const baseUrl = 'http://localhost:' + PORT
+const { goTo, goToExample } = require('../../lib/puppeteer-helpers')
 
 beforeAll(() => {
   // Capture JavaScript errors.
@@ -24,21 +22,21 @@ beforeAll(() => {
 describe('GOV.UK Frontend', () => {
   describe('javascript', () => {
     it('can be accessed via `GOVUKFrontend`', async () => {
-      await page.goto(baseUrl + '/', { waitUntil: 'load' })
+      await goTo(page, '/')
 
       const GOVUKFrontendGlobal = await page.evaluate(() => window.GOVUKFrontend)
 
       expect(typeof GOVUKFrontendGlobal).toBe('object')
     })
     it('exports `initAll` function', async () => {
-      await page.goto(baseUrl + '/', { waitUntil: 'load' })
+      await goTo(page, '/')
 
       const typeofInitAll = await page.evaluate(() => typeof window.GOVUKFrontend.initAll)
 
       expect(typeofInitAll).toEqual('function')
     })
     it('exports Components', async () => {
-      await page.goto(baseUrl + '/', { waitUntil: 'load' })
+      await goTo(page, '/')
 
       const GOVUKFrontendGlobal = await page.evaluate(() => window.GOVUKFrontend)
 
@@ -60,7 +58,7 @@ describe('GOV.UK Frontend', () => {
       ])
     })
     it('exported Components have an init function', async () => {
-      await page.goto(baseUrl + '/', { waitUntil: 'load' })
+      await goTo(page, '/')
 
       var componentsWithoutInitFunctions = await page.evaluate(() => {
         var components = Object.keys(window.GOVUKFrontend)
@@ -75,7 +73,7 @@ describe('GOV.UK Frontend', () => {
       expect(componentsWithoutInitFunctions).toEqual([])
     })
     it('can be initialised scoped to certain sections of the page', async () => {
-      await page.goto(baseUrl + '/examples/scoped-initialisation', { waitUntil: 'load' })
+      await goToExample(page, 'scoped-initialisation')
 
       // To test that certain parts of the page are scoped we have two similar components
       // that we can interact with to check if they're interactive.

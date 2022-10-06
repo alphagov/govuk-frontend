@@ -4,10 +4,8 @@
 
 const { devices } = require('puppeteer')
 const iPhone = devices['iPhone 6']
-const configPaths = require('../../../../config/paths.js')
-const PORT = configPaths.ports.test
 
-const baseUrl = 'http://localhost:' + PORT
+const { goToComponent } = require('../../../../lib/puppeteer-helpers.js')
 
 describe('Header navigation', () => {
   beforeAll(async () => {
@@ -17,8 +15,9 @@ describe('Header navigation', () => {
   describe('when JavaScript is unavailable or fails', () => {
     beforeAll(async () => {
       await page.setJavaScriptEnabled(false)
-      await page.goto(`${baseUrl}/components/header/with-navigation/preview`, {
-        waitUntil: 'load'
+
+      await goToComponent(page, 'header', {
+        exampleName: 'with-navigation'
       })
     })
 
@@ -47,16 +46,14 @@ describe('Header navigation', () => {
     describe('when no navigation is present', () => {
       it('exits gracefully with no errors', async () => {
         // Errors logged to the console will cause this test to fail
-        await page.goto(`${baseUrl}/components/header/preview`, {
-          waitUntil: 'load'
-        })
+        await goToComponent(page, 'header')
       })
     })
 
     describe('on page load', () => {
       beforeAll(async () => {
-        await page.goto(`${baseUrl}/components/header/with-navigation/preview`, {
-          waitUntil: 'load'
+        await goToComponent(page, 'header', {
+          exampleName: 'with-navigation'
         })
       })
 
@@ -97,11 +94,11 @@ describe('Header navigation', () => {
 
     describe('when menu button is pressed', () => {
       beforeAll(async () => {
-        await Promise.all([
-          page.goto(`${baseUrl}/components/header/with-navigation/preview`, { waitUntil: 'load' }),
-          page.waitForSelector('.govuk-js-header-toggle')
-        ])
+        await goToComponent(page, 'header', {
+          exampleName: 'with-navigation'
+        })
 
+        await page.waitForSelector('.govuk-js-header-toggle')
         await page.click('.govuk-js-header-toggle')
       })
 
@@ -129,11 +126,11 @@ describe('Header navigation', () => {
 
     describe('when menu button is pressed twice', () => {
       beforeAll(async () => {
-        await Promise.all([
-          page.goto(`${baseUrl}/components/header/with-navigation/preview`, { waitUntil: 'load' }),
-          page.waitForSelector('.govuk-js-header-toggle')
-        ])
+        await goToComponent(page, 'header', {
+          exampleName: 'with-navigation'
+        })
 
+        await page.waitForSelector('.govuk-js-header-toggle')
         await page.click('.govuk-js-header-toggle')
         await page.click('.govuk-js-header-toggle')
       })

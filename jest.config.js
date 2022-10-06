@@ -66,6 +66,9 @@ module.exports = {
         '!**/*.unit.test.{js,mjs}'
       ],
 
+      // Browser test increased timeout (5s to 15s)
+      testTimeout: 15000,
+
       // Web server and browser required
       globalSetup: './config/jest/browser/open.mjs',
       globalTeardown: './config/jest/browser/close.mjs'
