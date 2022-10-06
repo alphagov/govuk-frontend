@@ -10,6 +10,7 @@
   "scripts": {
     "postinstall": "npm ls --depth=0",
     "start": "gulp dev",
+    "serve": "nodemon",
     "heroku": "npm run build:compile && node app/start.js",
     "build-release": "./bin/build-release.sh",
     "publish-release": "./bin/publish-release.sh",

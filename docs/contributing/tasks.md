@@ -12,7 +12,10 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - clean the `./public` folder
 - compile JavaScript and Sass, including Sass documentation (`gulp compile`)
 - compile again when `.scss` and `.mjs` files change (`gulp watch`)
-- start up Express, restarting when `.js`, `.mjs`, and `.json` files change
+- runs `npm run serve`
+
+**`npm run serve` will do the following:**
+- start up Express, restarting when `.js` files change
 
 **`npm run test` will do the following:**
 - run Nunjucks macros tests
@@ -81,4 +84,4 @@ This task will:
 
 ## Express app only
 
-To start the Express app without Gulp tasks being triggered, run `node app/start.js`.
+To start the Express app without Gulp tasks being triggered, run `npm run serve`.
