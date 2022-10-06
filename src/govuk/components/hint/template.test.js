@@ -4,9 +4,13 @@
 
 const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
 
-const examples = getExamples('hint')
-
 describe('Hint', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('hint')
+  })
+
   describe('by default', () => {
     it('passes accessibility tests', async () => {
       const $ = render('hint', examples.default)

@@ -1,8 +1,11 @@
 {% from "details/macro.njk" import govukDetails %}
 
-{% macro showExamples(componentSlug, componentName, data, legacyQuery) %}
+{% macro showExamples(componentData, legacyQuery) %}
 
-{% for example in data.examples | rejectattr('hidden') %}
+{% set componentSlug = componentData.name %}
+{% set componentName = componentData.name | replace("-", " ") %}
+
+{% for example in componentData.examples | rejectattr('hidden') %}
   {% set exampleSlug = (example.name | replace(" ", "-")) %}
   {% set iframePathQuery = legacyQuery + '&iframe=true' if legacyQuery != '' else '?iframe=true' %}
 

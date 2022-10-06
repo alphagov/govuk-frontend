@@ -4,9 +4,13 @@
 
 const { axe, render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
 
-const examples = getExamples('phase-banner')
-
 describe('Phase banner', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('phase-banner')
+  })
+
   describe('by default', () => {
     it('passes accessibility tests', async () => {
       const $ = render('phase-banner', examples.default)

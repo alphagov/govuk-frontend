@@ -2,6 +2,6 @@
   "exec": "node ./app/start.js",
   "watch": ["app", "src/govuk"],
   "ignore": ["**/*.test.*"],
-  "ext": "js,json",
+  "ext": "js,json,yaml",
   "quiet": true
 }

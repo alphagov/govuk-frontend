@@ -4,12 +4,16 @@
 
 const { axe, render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
 
-const examples = getExamples('checkboxes')
-
 const WORD_BOUNDARY = '\\b'
 const WHITESPACE = '\\s'
 
 describe('Checkboxes', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('checkboxes')
+  })
+
   it('default example passes accessibility tests', async () => {
     const $ = render('checkboxes', examples.default)
 

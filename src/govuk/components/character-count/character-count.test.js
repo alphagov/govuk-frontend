@@ -20,6 +20,12 @@ const debouncedWaitTime = headless ? 1500 : 2000
 const keyupWaitTime = headless ? 0 : 50
 
 describe('Character count', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('character-count')
+  })
+
   describe('when JavaScript is unavailable or fails', () => {
     beforeAll(async () => {
       await page.setJavaScriptEnabled(false)
@@ -372,11 +378,6 @@ describe('Character count', () => {
     })
 
     describe('JavaScript configuration', () => {
-      let examples
-      beforeAll(() => {
-        examples = getExamples('character-count')
-      })
-
       describe('at instantiation', () => {
         it('configures the number of characters', async () => {
           await renderAndInitialise(page, 'character-count', {

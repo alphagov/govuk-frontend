@@ -3,14 +3,10 @@ const app = express()
 const bodyParser = require('body-parser')
 const nunjucks = require('nunjucks')
 const { marked } = require('marked')
-const util = require('util')
-const fs = require('fs')
 const path = require('path')
 
-const readdir = util.promisify(fs.readdir)
-
+const { getDirectories, getComponentsData, getFullPageExamples } = require('../lib/file-helper')
 const helperFunctions = require('../lib/helper-functions')
-const fileHelper = require('../lib/file-helper')
 const configPaths = require('../config/paths.js')
 
 const isDeployedToHeroku = !!process.env.HEROKU_APP
@@ -23,7 +19,7 @@ const appViews = [
   `${configPaths.node_modules}/govuk_template_jinja`
 ]
 
-module.exports = (options) => {
+module.exports = async (options) => {
   const nunjucksOptions = options ? options.nunjucks : {}
 
   // Configure nunjucks
@@ -36,6 +32,14 @@ module.exports = (options) => {
     watch: true, // reload templates when they are changed. needs chokidar dependency to be installed
     ...nunjucksOptions // merge any additional options and overwrite defaults above.
   })
+
+  // Cache mapped components and examples
+  const [componentsData, componentNames, exampleNames, fullPageExamples] = await Promise.all([
+    getComponentsData(),
+    getDirectories(configPaths.components).then(listing => [...listing.keys()]),
+    getDirectories(configPaths.examples).then(listing => [...listing.keys()]),
+    getFullPageExamples()
+  ])
 
   // make the function available as a filter for all templates
   env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
@@ -107,38 +111,31 @@ module.exports = (options) => {
 
   // Index page - render the component list template
   app.get('/', async function (req, res) {
-    const components = fileHelper.allComponents
-    const examples = await readdir(path.resolve(configPaths.examples))
-    const fullPageExamples = fileHelper.fullPageExamples()
-
     res.render('index', {
-      componentsDirectory: components,
-      examplesDirectory: examples,
+      componentNames,
+      exampleNames,
       fullPageExamples
     })
   })
 
-  // Whenever the route includes a :component parameter, read the component data
+  // Whenever the route includes a :componentName parameter, read the component data
   // from its YAML file
-  app.param('component', function (req, res, next, componentName) {
-    res.locals.componentData = fileHelper.getComponentData(componentName)
+  app.param('componentName', function (req, res, next, componentName) {
+    res.locals.componentData = componentsData.find(({ name }) => name === componentName)
     next()
   })
 
   // All components view
   app.get('/components/all', function (req, res, next) {
-    const components = fileHelper.allComponents
+    res.locals.componentsData = componentsData.map((componentData) => {
+      const defaultExample = componentData.examples.find(({ name }) => name === 'default')
 
-    res.locals.componentData = components.map(componentName => {
-      const componentData = fileHelper.getComponentData(componentName)
-      const defaultExample = componentData.examples.find(
-        example => example.name === 'default'
-      )
       return {
-        componentName,
+        ...componentData,
         examples: [defaultExample]
       }
     })
+
     res.render('all-components', function (error, html) {
       if (error) {
         next(error)
@@ -149,9 +146,9 @@ module.exports = (options) => {
   })
 
   // Component 'README' page
-  app.get('/components/:component', function (req, res, next) {
+  app.get('/components/:componentName', function (req, res, next) {
     // make variables available to nunjucks template
-    res.locals.componentPath = req.params.component
+    res.locals.componentPath = req.params.componentName
 
     res.render('component', function (error, html) {
       if (error) {
@@ -163,15 +160,15 @@ module.exports = (options) => {
   })
 
   // Component example preview
-  app.get('/components/:component/:example*?/preview', function (req, res, next) {
+  app.get('/components/:componentName/:exampleName*?/preview', function (req, res, next) {
     // Find the data for the specified example (or the default example)
-    const componentName = req.params.component
-    const requestedExampleName = req.params.example || 'default'
+    const componentName = req.params.componentName
+    const exampleName = req.params.exampleName || 'default'
 
     const previewLayout = res.locals.componentData.previewLayout || 'layout'
 
     const exampleConfig = res.locals.componentData.examples.find(
-      example => example.name.replace(/ /g, '-') === requestedExampleName
+      example => example.name.replace(/ /g, '-') === exampleName
     )
 
     if (!exampleConfig) {
@@ -196,10 +193,10 @@ module.exports = (options) => {
   })
 
   // Example view
-  app.get('/examples/:example', function (req, res, next) {
+  app.get('/examples/:exampleName', function (req, res, next) {
     // Passing a random number used for the links so that they will be unique and not display as "visited"
     const randomPageHash = (Math.random() * 1000000).toFixed()
-    res.render(`examples/${req.params.example}/index`, { randomPageHash }, function (error, html) {
+    res.render(`examples/${req.params.exampleName}/index`, { randomPageHash }, function (error, html) {
       if (error) {
         next(error)
       } else {

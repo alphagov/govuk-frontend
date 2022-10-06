@@ -1,4 +1,4 @@
-const fileHelper = require('../lib/file-helper')
+const { getFullPageExamples } = require('../lib/file-helper')
 
 module.exports = (app) => {
   require('./views/full-page-examples/applicant-details')(app)
@@ -17,8 +17,8 @@ module.exports = (app) => {
   require('./views/full-page-examples/what-is-your-postcode')(app)
   require('./views/full-page-examples/what-was-the-last-country-you-visited')(app)
 
-  app.get('/full-page-examples', (req, res, next) => {
-    res.locals.examples = fileHelper.fullPageExamples()
+  app.get('/full-page-examples', async (req, res, next) => {
+    res.locals.fullPageExamples = await getFullPageExamples()
 
     res.render('full-page-examples/index', (error, html) => {
       if (error) {
@@ -30,8 +30,8 @@ module.exports = (app) => {
   })
 
   // Display full page examples index by default if not handled already
-  app.get('/full-page-examples/:example', function (req, res, next) {
-    res.render(`full-page-examples/${req.params.example}/index`, function (error, html) {
+  app.get('/full-page-examples/:exampleName', function (req, res, next) {
+    res.render(`full-page-examples/${req.params.exampleName}/index`, function (error, html) {
       if (error) {
         next(error)
       } else {

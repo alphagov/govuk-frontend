@@ -5,9 +5,13 @@
 const { getExamples } = require('../../../../lib/jest-helpers')
 const { renderAndInitialise, goToComponent } = require('../../../../lib/puppeteer-helpers')
 
-const examples = getExamples('notification-banner')
-
 describe('Notification banner, when type is set to "success"', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('notification-banner')
+  })
+
   it('has the correct tabindex attribute to be focused with JavaScript', async () => {
     await goToComponent(page, 'notification-banner', {
       exampleName: 'with-type-as-success'

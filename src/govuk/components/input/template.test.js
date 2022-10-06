@@ -4,12 +4,16 @@
 
 const { axe, render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
 
-const examples = getExamples('input')
-
 const WORD_BOUNDARY = '\\b'
 const WHITESPACE = '\\s'
 
 describe('Input', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('input')
+  })
+
   describe('default example', () => {
     it('passes accessibility tests', async () => {
       const $ = render('input', examples.default)

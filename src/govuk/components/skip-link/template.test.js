@@ -4,9 +4,13 @@
 
 const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
 
-const examples = getExamples('skip-link')
-
 describe('Skip link', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('skip-link')
+  })
+
   describe('default example', () => {
     it('passes accessibility tests', async () => {
       const $ = render('skip-link', examples.default)

@@ -12,7 +12,7 @@
 
       <ul class="govuk-list">
         <li><a href="/components/all{{ legacyQuery }}" class="govuk-link">All</a></li>
-        {% for componentName in componentsDirectory | sort %}
+        {% for componentName in componentNames | sort %}
           <li><a href="/components/{{ componentName }}{{ legacyQuery }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
         {% endfor %}
       </ul>
@@ -22,7 +22,7 @@
       <h2 class="govuk-heading-m">Examples</h2>
 
       <ul class="govuk-list">
-      {% for exampleName in examplesDirectory | sort %}
+      {% for exampleName in exampleNames | sort %}
         <li><a href="/examples/{{ exampleName }}{{ legacyQuery }}" class="govuk-link">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
       {% endfor %}
       </ul>
