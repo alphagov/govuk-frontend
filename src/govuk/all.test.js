@@ -35,12 +35,20 @@ describe('GOV.UK Frontend', () => {
 
       expect(typeofInitAll).toEqual('function')
     })
+    it('exports `I18n` function', async () => {
+      await goTo(page, '/')
+
+      const typeofI18n = await page.evaluate(() => typeof window.GOVUKFrontend.I18n)
+
+      expect(typeofI18n).toEqual('function')
+    })
     it('exports Components', async () => {
       await goTo(page, '/')
 
       const GOVUKFrontendGlobal = await page.evaluate(() => window.GOVUKFrontend)
 
-      var components = Object.keys(GOVUKFrontendGlobal).filter(method => method !== 'initAll')
+      const components = Object.keys(GOVUKFrontendGlobal)
+        .filter(method => !['initAll', 'I18n'].includes(method))
 
       // Ensure GOV.UK Frontend exports the expected components
       expect(components).toEqual([
@@ -61,8 +69,8 @@ describe('GOV.UK Frontend', () => {
       await goTo(page, '/')
 
       var componentsWithoutInitFunctions = await page.evaluate(() => {
-        var components = Object.keys(window.GOVUKFrontend)
-          .filter(method => method !== 'initAll')
+        const components = Object.keys(window.GOVUKFrontend)
+          .filter(method => !['initAll', 'I18n'].includes(method))
 
         return components.filter(component => {
           var prototype = window.GOVUKFrontend[component].prototype

@@ -1,5 +1,5 @@
 import { nodeListForEach, mergeConfigs, extractConfigByNamespace, normaliseDataset } from '../../common.mjs'
-import I18n from '../../i18n.mjs'
+import { I18n } from '../../i18n.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 
