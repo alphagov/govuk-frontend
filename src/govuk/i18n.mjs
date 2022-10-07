@@ -6,7 +6,7 @@
  * @param  {Object}  config         - Configuration options for the function.
  * @param  {String}  config.locale  - An overriding locale for the PluralRules functionality.
  */
-function I18n (translations, config) {
+export function I18n (translations, config) {
   config = config || {}
 
   // Make list of translations available throughout function
@@ -301,5 +301,3 @@ I18n.prototype.pluralRules = {
     return 'other'
   }
 }
-
-export default I18n
