@@ -6,6 +6,32 @@ import { closestAttributeValue, extractConfigByNamespace, mergeConfigs, normalis
 import { I18n } from '../../i18n.mjs'
 
 /**
+ * @type {import('../../i18n.mjs').PluralisedTranslations}
+ */
+var TRANSLATIONS_DEFAULT = {
+  // Characters
+  charactersUnderLimit: {
+    one: 'You have %{count} character remaining',
+    other: 'You have %{count} characters remaining'
+  },
+  charactersAtLimit: 'You have 0 characters remaining',
+  charactersOverLimit: {
+    one: 'You have %{count} character too many',
+    other: 'You have %{count} characters too many'
+  },
+  // Words
+  wordsUnderLimit: {
+    one: 'You have %{count} word remaining',
+    other: 'You have %{count} words remaining'
+  },
+  wordsAtLimit: 'You have 0 words remaining',
+  wordsOverLimit: {
+    one: 'You have %{count} word too many',
+    other: 'You have %{count} words too many'
+  }
+}
+
+/**
  * JavaScript enhancements for the CharacterCount component
  *
  * Tracks the number of characters or words in the `.govuk-js-character-count`
@@ -25,7 +51,7 @@ import { I18n } from '../../i18n.mjs'
  * @param {Number} [config.threshold=0] - The percentage value of the limit at
  * which point the count message is displayed. If this attribute is set, the
  * count message will be hidden by default.
- * @param {Object} [config.i18n]
+ * @param {Object} [config.i18n = DEFAULT_TRANSLATIONS]
  * @param {String} [config.i18n.charactersUnderLimitOne="You have %{count} character remaining"]
  *   Message notifying users they're 1 character under the limit
  * @param {String} [config.i18n.charactersUnderLimitOther="You have %{count} characters remaining"]
@@ -54,20 +80,7 @@ function CharacterCount ($module, config) {
 
   var defaultConfig = {
     threshold: 0,
-    i18n: {
-      // Characters
-      charactersUnderLimitOne: 'You have %{count} character remaining',
-      charactersUnderLimitOther: 'You have %{count} characters remaining',
-      charactersAtLimit: 'You have 0 characters remaining',
-      charactersOverLimitOne: 'You have %{count} character too many',
-      charactersOverLimitOther: 'You have %{count} characters too many',
-      // Words
-      wordsUnderLimitOne: 'You have %{count} word remaining',
-      wordsUnderLimitOther: 'You have %{count} words remaining',
-      wordsAtLimit: 'You have 0 words remaining',
-      wordsOverLimitOne: 'You have %{count} word too many',
-      wordsOverLimitOther: 'You have %{count} words too many'
-    }
+    i18n: TRANSLATIONS_DEFAULT
   }
 
   // Read config set using dataset ('data-' values)

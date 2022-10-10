@@ -42,8 +42,8 @@ describe('CharacterCount', () => {
       describe('JavaScript configuration', () => {
         it('overrides the default translation keys', () => {
           const component = new CharacterCount(document.createElement('div'), {
-            i18n: { charactersUnderLimitOne: 'Custom text. Count: %{count}' },
-            'i18n.charactersOverLimitOther': 'Different custom text. Count: %{count}'
+            i18n: { charactersUnderLimit: { one: 'Custom text. Count: %{count}' } },
+            'i18n.charactersOverLimit.other': 'Different custom text. Count: %{count}'
           })
 
           expect(component.formatCountMessage(1, 'characters')).toEqual('Custom text. Count: 1')
@@ -89,7 +89,7 @@ describe('CharacterCount', () => {
       describe('Data attribute configuration', () => {
         it('overrides the default translation keys', () => {
           const $div = document.createElement('div')
-          $div.setAttribute('data-i18n.characters-under-limit-one', 'Custom text. Count: %{count}')
+          $div.setAttribute('data-i18n.characters-under-limit.one', 'Custom text. Count: %{count}')
 
           const component = new CharacterCount($div)
 
@@ -101,7 +101,7 @@ describe('CharacterCount', () => {
         describe('precedence over JavaScript configuration', () => {
           it('overrides translation keys', () => {
             const $div = document.createElement('div')
-            $div.setAttribute('data-i18n.characters-under-limit-one', 'Custom text. Count: %{count}')
+            $div.setAttribute('data-i18n.characters-under-limit.one', 'Custom text. Count: %{count}')
 
             const component = new CharacterCount($div, {
               i18n: {
