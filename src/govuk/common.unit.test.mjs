@@ -20,7 +20,12 @@ describe('Common JS utilities', () => {
     const config3 = {
       b: 'bat',
       c: { o: 'cow' },
-      d: 'dog'
+      d: 'dog',
+      e: {
+        l: {
+          e: 'elephant'
+        }
+      }
     }
 
     it('flattens a single object', () => {
@@ -48,7 +53,8 @@ describe('Common JS utilities', () => {
         b: 'bat',
         'c.a': 'cat',
         'c.o': 'cow',
-        d: 'dog'
+        d: 'dog',
+        'e.l.e': 'elephant'
       })
     })
 
@@ -69,7 +75,8 @@ describe('Common JS utilities', () => {
         b: 'bat',
         'c.a': 'camel',
         'c.o': 'cow',
-        d: 'dog'
+        d: 'dog',
+        'e.l.e': 'elephant'
       })
     })
 
