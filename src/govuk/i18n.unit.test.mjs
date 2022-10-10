@@ -153,17 +153,17 @@ describe('I18n', () => {
   describe('pluralisation', () => {
     it('throws an error if a required plural form is not provided ', () => {
       const i18n = new I18n({
-        testOther: 'testing testing'
+        'test.other': 'testing testing'
       }, {
         locale: 'en'
       })
-      expect(() => { i18n.t('test', { count: 1 }) }).toThrowError('i18n: Plural form "One" is required for "en" locale')
+      expect(() => { i18n.t('test', { count: 1 }) }).toThrowError('i18n: Plural form ".one" is required for "en" locale')
     })
 
     it('interpolates the count variable into the correct plural form', () => {
       const i18n = new I18n({
-        testOne: '%{count} test',
-        testOther: '%{count} tests'
+        'test.one': '%{count} test',
+        'test.other': '%{count} tests'
       }, {
         locale: 'en'
       })

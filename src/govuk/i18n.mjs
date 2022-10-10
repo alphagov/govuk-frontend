@@ -37,16 +37,12 @@ I18n.prototype.t = function (lookupKey, options) {
     // Get the plural suffix
     var pluralSuffix = this.getPluralSuffix(options.count)
 
-    // We need to transform this to have an initial uppercase letter,
-    // as our keys are stored in camelCase
-    pluralSuffix = pluralSuffix.charAt(0).toUpperCase() + pluralSuffix.slice(1)
-
     // Overwrite our existing lookupKey
-    lookupKey = lookupKey + pluralSuffix
+    lookupKey = lookupKey + '.' + pluralSuffix
 
     // Throw an error if this new key doesn't exist
     if (!(lookupKey in this.translations)) {
-      throw new Error('i18n: Plural form "' + pluralSuffix + '" is required for "' + this.locale + '" locale')
+      throw new Error('i18n: Plural form ".' + pluralSuffix + '" is required for "' + this.locale + '" locale')
     }
   }
 
