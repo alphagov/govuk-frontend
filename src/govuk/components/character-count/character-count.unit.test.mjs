@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 
-import { createElement } from '../../../../lib/dom-helpers.mjs'
 import CharacterCount from './character-count.mjs'
 
 describe('CharacterCount', () => {
@@ -11,7 +10,7 @@ describe('CharacterCount', () => {
       let component
       beforeAll(() => {
         // The component won't initialise if we don't pass it an element
-        component = new CharacterCount(createElement('div'))
+        component = new CharacterCount(document.createElement('div'))
       })
 
       const cases = [
@@ -42,10 +41,11 @@ describe('CharacterCount', () => {
     describe('i18n', () => {
       describe('JavaScript configuration', () => {
         it('overrides the default translation keys', () => {
-          const component = new CharacterCount(createElement('div'), {
+          const component = new CharacterCount(document.createElement('div'), {
             i18n: { charactersUnderLimitOne: 'Custom text. Count: %{count}' },
             'i18n.charactersOverLimitOther': 'Different custom text. Count: %{count}'
           })
+
           expect(component.formatCountMessage(1, 'characters')).toEqual('Custom text. Count: 1')
           expect(component.formatCountMessage(-10, 'characters')).toEqual('Different custom text. Count: 10')
           // Other keys remain untouched
@@ -53,10 +53,11 @@ describe('CharacterCount', () => {
         })
 
         it('uses specific keys for when limit is reached', () => {
-          const component = new CharacterCount(createElement('div'), {
+          const component = new CharacterCount(document.createElement('div'), {
             i18n: { charactersAtLimit: 'Custom text.' },
             'i18n.wordsAtLimit': 'Different custom text.'
           })
+
           expect(component.formatCountMessage(0, 'characters')).toEqual('Custom text.')
           expect(component.formatCountMessage(0, 'words')).toEqual('Different custom text.')
         })
@@ -64,18 +65,21 @@ describe('CharacterCount', () => {
 
       describe('lang attribute configuration', () => {
         it('overrides the locale when set on the element', () => {
-          const $div = createElement('div', {
-            lang: 'de'
-          })
+          const $div = document.createElement('div')
+          $div.setAttribute('lang', 'de')
+
           const component = new CharacterCount($div)
 
           expect(component.formatCountMessage(10000, 'words')).toEqual('You have 10.000 words remaining')
         })
 
         it('overrides the locale when set on an ancestor', () => {
-          const $parent = createElement('div', { lang: 'de' })
-          const $div = createElement('div')
+          const $parent = document.createElement('div')
+          $parent.setAttribute('lang', 'de')
+
+          const $div = document.createElement('div')
           $parent.appendChild($div)
+
           const component = new CharacterCount($div)
 
           expect(component.formatCountMessage(10000, 'words')).toEqual('You have 10.000 words remaining')
@@ -84,8 +88,11 @@ describe('CharacterCount', () => {
 
       describe('Data attribute configuration', () => {
         it('overrides the default translation keys', () => {
-          const $div = createElement('div', { 'data-i18n.characters-under-limit-one': 'Custom text. Count: %{count}' })
+          const $div = document.createElement('div')
+          $div.setAttribute('data-i18n.characters-under-limit-one', 'Custom text. Count: %{count}')
+
           const component = new CharacterCount($div)
+
           expect(component.formatCountMessage(1, 'characters')).toEqual('Custom text. Count: 1')
           // Other keys remain untouched
           expect(component.formatCountMessage(10, 'characters')).toEqual('You have 10 characters remaining')
@@ -93,7 +100,9 @@ describe('CharacterCount', () => {
 
         describe('precedence over JavaScript configuration', () => {
           it('overrides translation keys', () => {
-            const $div = createElement('div', { 'data-i18n.characters-under-limit-one': 'Custom text. Count: %{count}' })
+            const $div = document.createElement('div')
+            $div.setAttribute('data-i18n.characters-under-limit-one', 'Custom text. Count: %{count}')
+
             const component = new CharacterCount($div, {
               i18n: {
                 charactersUnderLimitOne: 'Different custom text. Count: %{count}'
