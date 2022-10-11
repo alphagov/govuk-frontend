@@ -6,7 +6,7 @@ import { closestAttributeValue, extractConfigByNamespace, mergeConfigs, normalis
 import { I18n } from '../../i18n.mjs'
 
 /**
- * @type {import('../../i18n.mjs').PluralisedTranslations}
+ * @type {CharacterCountTranslations}
  */
 var TRANSLATIONS_DEFAULT = {
   // Characters
@@ -51,27 +51,7 @@ var TRANSLATIONS_DEFAULT = {
  * @param {Number} [config.threshold=0] - The percentage value of the limit at
  * which point the count message is displayed. If this attribute is set, the
  * count message will be hidden by default.
- * @param {Object} [config.i18n = DEFAULT_TRANSLATIONS]
- * @param {String} [config.i18n.charactersUnderLimitOne="You have %{count} character remaining"]
- *   Message notifying users they're 1 character under the limit
- * @param {String} [config.i18n.charactersUnderLimitOther="You have %{count} characters remaining"]
- *   Message notifying users they're any number of characters under the limit
- * @param {String} [config.i18n.charactersAtLimit="You have 0 characters remaining"]
- *   Message notifying users they've reached the limit number of characters
- * @param {String} [config.i18n.charactersOverLimitOne="You have %{count} character too many"]
- *   Message notifying users they're 1 character over the limit
- * @param {String} [config.i18n.charactersOverLimitOther="You have %{count} characters too many"]
- *   Message notifying users they're any number of characters over the limit
- * @param {String} [config.i18n.wordsUnderLimitOne="You have %{count} word remaining"]
- *   Message notifying users they're 1 word under the limit
- * @param {String} [config.i18n.wordsUnderLimitOther="You have %{count} words remaining"]
- *   Message notifying users they're any number of words under the limit
- * @param {String} [config.i18n.wordsAtLimit="You have 0 words remaining"]
- *   Message notifying users they've reached the limit number of words
- * @param {String} [config.i18n.wordsOverLimitOne="You have %{count} word too many"]
- *   Message notifying users they're 1 word over the limit
- * @param {String} [config.i18n.wordsOverLimitOther="You have %{count} words too many"]
- *   Message notifying users they're any number of words over the limit
+ * @param {CharacterCountTranslations} [config.i18n = DEFAULT_TRANSLATIONS]
  */
 function CharacterCount ($module, config) {
   if (!$module) {
@@ -384,3 +364,13 @@ CharacterCount.prototype.isOverThreshold = function () {
 }
 
 export default CharacterCount
+
+/**
+ * @typedef {object} CharacterCountTranslations
+ * @property {import('../../i18n.mjs').PluralisedTranslation} [charactersUnderLimit]
+ * @property {string} [charactersAtLimit]
+ * @property {import('../../i18n.mjs').PluralisedTranslation} [charactersOverLimit]
+ * @property {import('../../i18n.mjs').PluralisedTranslation} [wordsUnderLimit]
+ * @property {string} [wordsAtLimit]
+ * @property {import('../../i18n.mjs').PluralisedTranslation} [wordsOverLimit]
+ */

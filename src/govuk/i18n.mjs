@@ -1,19 +1,4 @@
 /**
- * Associates translated messages to plural type they correspond to.
- *
- * Allows to group pluralised messages under a single key when passing
- * translations to a component's constructor
- *
- * @typedef {object} PluralisedTranslation
- * @property {string} other
- * @property {string} [zero]
- * @property {string} [one]
- * @property {string} [two]
- * @property {string} [few]
- * @property {string} [many]
- */
-
-/**
  * i18n support initialisation function
  *
  * @constructor
@@ -312,3 +297,18 @@ I18n.prototype.pluralRules = {
     return 'other'
   }
 }
+
+/**
+ * Associates translated messages to plural type they correspond to.
+ *
+ * Allows to group pluralised messages under a single key when passing
+ * translations to a component's constructor
+ *
+ * @typedef {object} PluralisedTranslation
+ * @property {string} other
+ * @property {string} [zero]
+ * @property {string} [one]
+ * @property {string} [two]
+ * @property {string} [few]
+ * @property {string} [many]
+ */
