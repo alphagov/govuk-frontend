@@ -98,15 +98,5 @@
   },
   "optionalDependencies": {
     "fsevents": "*"
-  },
-  "browserslist": [
-    ">0.1%",
-    "last 2 Chrome versions",
-    "last 2 Firefox versions",
-    "last 2 Edge versions",
-    "last 2 Samsung versions",
-    "Safari >= 9",
-    "ie 8-11",
-    "iOS >= 9"
-  ]
+  }
 }
