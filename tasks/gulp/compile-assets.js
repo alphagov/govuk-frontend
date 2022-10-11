@@ -15,109 +15,80 @@ const merge = require('merge-stream')
 const rename = require('gulp-rename')
 
 const configPaths = require('../../config/paths.js')
-const { destination, isDist, isPublic } = require('../task-arguments.js')
+const { destination, isDist, isPackage } = require('../task-arguments.js')
 
 // Compile CSS and JS task --------------
 // --------------------------------------
 
-// Set the destination
-const destinationPath = function () {
-  // Public & Dist directories not namespaced with `govuk`
-  if (isDist || isPublic) {
-    return destination
-  } else {
-    return `${destination}/govuk/`
-  }
+// Determine destination namespace
+function destinationPath () {
+  return isPackage ? `${destination}/govuk` : destination
 }
 
-const errorHandler = function (error) {
-  // Log the error to the console
-  console.error(error.message)
+gulp.task('scss:compile', function () {
+  /**
+   * Release distribution
+   */
+  if (isDist) {
+    return merge(
+      compileStyles(
+        gulp.src(`${configPaths.src}all.scss`)
+          .pipe(rename({
+            basename: 'govuk-frontend',
+            extname: '.min.css'
+          }))),
 
-  // Ensure the task we're running exits with an error code
-  this.once('finish', () => process.exit(1))
-  this.emit('end')
-}
-
-function compileStyles () {
-  const compileStylesheet = isDist ? configPaths.src + 'all.scss' : configPaths.app + 'assets/scss/app.scss'
-
-  return gulp.src(compileStylesheet)
-    .pipe(plumber(errorHandler))
-    .pipe(sass())
-    .pipe(gulpif(isDist,
-      rename({
-        basename: 'govuk-frontend',
-        extname: '.min.css'
-      })
-    ))
-    .pipe(postcss())
-    .pipe(gulp.dest(`${destination}/`))
-}
-
-function compileOldIE () {
-  const compileOldIeStylesheet = isDist ? configPaths.src + 'all-ie8.scss' : configPaths.app + 'assets/scss/app-ie8.scss'
-
-  return gulp.src(compileOldIeStylesheet)
-    .pipe(plumber(errorHandler))
-    .pipe(sass())
-    .pipe(gulpif(isDist,
-      rename({
-        basename: 'govuk-frontend-ie8',
-        extname: '.min.css'
-      })
-    ))
-    .pipe(postcss())
-    .pipe(gulp.dest(`${destination}/`))
-}
-
-function compileLegacy () {
-  return gulp.src(path.join(configPaths.app, 'assets/scss/app-legacy.scss'))
-    .pipe(plumber(errorHandler))
-    .pipe(sass({
-      includePaths: ['node_modules/govuk_frontend_toolkit/stylesheets', 'node_modules']
-    }))
-    .pipe(postcss())
-    .pipe(gulp.dest(`${destination}/`))
-}
-
-function compileLegacyIE () {
-  return gulp.src(path.join(configPaths.app, 'assets/scss/app-legacy-ie8.scss'))
-    .pipe(plumber(errorHandler))
-    .pipe(sass({
-      includePaths: ['node_modules/govuk_frontend_toolkit/stylesheets', 'node_modules']
-    }))
-    .pipe(postcss())
-    .pipe(gulp.dest(`${destination}/`))
-}
-
-function compileFullPageStyles () {
-  const compileFullPageExampleStylesheets = configPaths.fullPageExamples + '**/styles.scss'
-
-  return gulp.src(compileFullPageExampleStylesheets)
-    .pipe(plumber(errorHandler))
-    .pipe(sass())
-    .pipe(rename(function (location) {
-      location.basename = location.dirname
-      location.dirname = ''
-    }))
-    .pipe(gulp.dest(`${destination}/full-page-examples/`))
-}
-
-gulp.task('scss:compile', function (done) {
-  // Default tasks if compiling for dist
-  const tasks = [compileStyles(), compileOldIE()]
-
-  if (isPublic || !isDist) {
-    tasks.push(compileLegacy(), compileLegacyIE())
-
-    if (isPublic) {
-      tasks.push(compileFullPageStyles())
-    }
+      compileStyles(
+        gulp.src(`${configPaths.src}all-ie8.scss`)
+          .pipe(rename({
+            basename: 'govuk-frontend-ie8',
+            extname: '.min.css'
+          })))
+    )
+      .pipe(gulp.dest(destination))
   }
 
-  return Promise.all(tasks)
+  /**
+   * Review application
+   */
+  return merge(
+    compileStyles(
+      gulp.src(`${configPaths.app}assets/scss/app?(-ie8).scss`)),
+
+    compileStyles(
+      gulp.src(`${configPaths.app}assets/scss/app-legacy?(-ie8).scss`), {
+        includePaths: ['node_modules/govuk_frontend_toolkit/stylesheets', 'node_modules']
+      }),
+
+    compileStyles(
+      gulp.src(`${configPaths.fullPageExamples}**/styles.scss`)
+        .pipe(rename((path) => {
+          path.basename = path.dirname
+          path.dirname = 'full-page-examples'
+        })))
+  )
+    .pipe(gulp.dest(destinationPath()))
 })
+
+/**
+ * Compile Sass to CSS
+ *
+ * @param {NodeJS.ReadWriteStream} stream - Input file stream
+ * @param {import('node-sass').Options} [options] - Sass options
+ * @returns {NodeJS.ReadWriteStream} Output file stream
+ */
+function compileStyles (stream, options = {}) {
+  return stream
+    .pipe(plumber((error) => {
+      console.error(error.message)
+
+      // Ensure the task we're running exits with an error code
+      this.once('finish', () => process.exit(1))
+      this.emit('end')
+    }))
+    .pipe(sass(options))
+    .pipe(postcss())
+}
 
 // Compile js task for preview ----------
 // --------------------------------------
