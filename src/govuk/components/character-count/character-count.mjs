@@ -30,7 +30,7 @@ import { I18n } from '../../i18n.mjs'
  *   Message notifying users they're 1 character under the limit
  * @param {String} [config.i18n.charactersUnderLimitOther="You have %{count} characters remaining"]
  *   Message notifying users they're any number of characters under the limit
- * @param {String} [config.i18n.charactersAtLimit="You have no characters remaining"]
+ * @param {String} [config.i18n.charactersAtLimit="You have 0 characters remaining"]
  *   Message notifying users they've reached the limit number of characters
  * @param {String} [config.i18n.charactersOverLimitOne="You have %{count} character too many"]
  *   Message notifying users they're 1 character over the limit
@@ -40,7 +40,7 @@ import { I18n } from '../../i18n.mjs'
  *   Message notifying users they're 1 word under the limit
  * @param {String} [config.i18n.wordsUnderLimitOther="You have %{count} words remaining"]
  *   Message notifying users they're any number of words under the limit
- * @param {String} [config.i18n.wordsAtLimit="You have no words remaining"]
+ * @param {String} [config.i18n.wordsAtLimit="You have 0 words remaining"]
  *   Message notifying users they've reached the limit number of words
  * @param {String} [config.i18n.wordsOverLimitOne="You have %{count} word too many"]
  *   Message notifying users they're 1 word over the limit
