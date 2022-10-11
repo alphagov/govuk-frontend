@@ -2,7 +2,8 @@ import '../../vendor/polyfills/Date/now.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normalisation
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
-import { mergeConfigs, normaliseDataset } from '../../common.mjs'
+import { closestAttributeValue, extractConfigByNamespace, mergeConfigs, normaliseDataset } from '../../common.mjs'
+import { I18n } from '../../i18n.mjs'
 
 /**
  * JavaScript enhancements for the CharacterCount component
@@ -24,6 +25,27 @@ import { mergeConfigs, normaliseDataset } from '../../common.mjs'
  * @param {Number} [config.threshold=0] - The percentage value of the limit at
  * which point the count message is displayed. If this attribute is set, the
  * count message will be hidden by default.
+ * @param {Object} [config.i18n]
+ * @param {String} [config.i18n.charactersUnderLimitOne="You have %{count} character remaining"]
+ *   Message notifying users they're 1 character under the limit
+ * @param {String} [config.i18n.charactersUnderLimitOther="You have %{count} characters remaining"]
+ *   Message notifying users they're any number of characters under the limit
+ * @param {String} [config.i18n.charactersAtLimit="You have 0 characters remaining"]
+ *   Message notifying users they've reached the limit number of characters
+ * @param {String} [config.i18n.charactersOverLimitOne="You have %{count} character too many"]
+ *   Message notifying users they're 1 character over the limit
+ * @param {String} [config.i18n.charactersOverLimitOther="You have %{count} characters too many"]
+ *   Message notifying users they're any number of characters over the limit
+ * @param {String} [config.i18n.wordsUnderLimitOne="You have %{count} word remaining"]
+ *   Message notifying users they're 1 word under the limit
+ * @param {String} [config.i18n.wordsUnderLimitOther="You have %{count} words remaining"]
+ *   Message notifying users they're any number of words under the limit
+ * @param {String} [config.i18n.wordsAtLimit="You have 0 words remaining"]
+ *   Message notifying users they've reached the limit number of words
+ * @param {String} [config.i18n.wordsOverLimitOne="You have %{count} word too many"]
+ *   Message notifying users they're 1 word over the limit
+ * @param {String} [config.i18n.wordsOverLimitOther="You have %{count} words too many"]
+ *   Message notifying users they're any number of words over the limit
  */
 function CharacterCount ($module, config) {
   if (!$module) {
@@ -31,7 +53,21 @@ function CharacterCount ($module, config) {
   }
 
   var defaultConfig = {
-    threshold: 0
+    threshold: 0,
+    i18n: {
+      // Characters
+      charactersUnderLimitOne: 'You have %{count} character remaining',
+      charactersUnderLimitOther: 'You have %{count} characters remaining',
+      charactersAtLimit: 'You have 0 characters remaining',
+      charactersOverLimitOne: 'You have %{count} character too many',
+      charactersOverLimitOther: 'You have %{count} characters too many',
+      // Words
+      wordsUnderLimitOne: 'You have %{count} word remaining',
+      wordsUnderLimitOther: 'You have %{count} words remaining',
+      wordsAtLimit: 'You have 0 words remaining',
+      wordsOverLimitOne: 'You have %{count} word too many',
+      wordsOverLimitOther: 'You have %{count} words too many'
+    }
   }
 
   // Read config set using dataset ('data-' values)
@@ -57,6 +93,11 @@ function CharacterCount ($module, config) {
     configOverrides,
     datasetConfig
   )
+
+  this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'), {
+    // Read the fallback if necessary rather than have it set in the defaults
+    locale: closestAttributeValue($module, 'lang')
+  })
 
   // Determine the limit attribute (characters or words)
   if (this.config.maxwords) {
@@ -278,22 +319,28 @@ CharacterCount.prototype.count = function (text) {
  * @returns {String} Status message
  */
 CharacterCount.prototype.getCountMessage = function () {
-  var $textarea = this.$textarea
-  var config = this.config
-  var remainingNumber = this.maxLength - this.count($textarea.value)
+  var remainingNumber = this.maxLength - this.count(this.$textarea.value)
 
-  var charVerb = 'remaining'
-  var charNoun = 'character'
-  var displayNumber = remainingNumber
-  if (config.maxwords) {
-    charNoun = 'word'
+  var countType = this.config.maxwords ? 'words' : 'characters'
+  return this.formatCountMessage(remainingNumber, countType)
+}
+
+/**
+ * Formats the message shown to users according to what's counted
+ * and how many remain
+ *
+ * @param {Number} remainingNumber - The number of words/characaters remaining
+ * @param {String} countType - "words" or "characters"
+ * @returns String
+ */
+CharacterCount.prototype.formatCountMessage = function (remainingNumber, countType) {
+  if (remainingNumber === 0) {
+    return this.i18n.t(countType + 'AtLimit')
   }
-  charNoun = charNoun + ((remainingNumber === -1 || remainingNumber === 1) ? '' : 's')
 
-  charVerb = (remainingNumber < 0) ? 'too many' : 'remaining'
-  displayNumber = Math.abs(remainingNumber)
+  var translationKeySuffix = remainingNumber < 0 ? 'OverLimit' : 'UnderLimit'
 
-  return 'You have ' + displayNumber + ' ' + charNoun + ' ' + charVerb
+  return this.i18n.t(countType + translationKeySuffix, { count: Math.abs(remainingNumber) })
 }
 
 /**
