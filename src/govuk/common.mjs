@@ -1,4 +1,5 @@
 import './vendor/polyfills/Element/prototype/dataset.mjs'
+import './vendor/polyfills/String/prototype/trim.mjs'
 
 /**
  * TODO: Ideally this would be a NodeList.prototype.forEach polyfill
