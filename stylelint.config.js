@@ -1,6 +1,12 @@
 module.exports = {
   extends: 'stylelint-config-gds/scss',
   ignoreFiles: ['src/govuk/vendor/**/*'],
+  overrides: [
+    {
+      customSyntax: 'postcss-scss',
+      files: ['**/*.scss']
+    }
+  ],
   plugins: ['stylelint-order'],
   rules: {
     /**
