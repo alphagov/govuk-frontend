@@ -8,6 +8,7 @@ const path = require('path')
 const { getDirectories, getComponentsData, getFullPageExamples } = require('../lib/file-helper')
 const helperFunctions = require('../lib/helper-functions')
 const configPaths = require('../config/paths.js')
+const middleware = require('./middleware/index.js')
 
 const { HEROKU_APP } = process.env
 
@@ -80,11 +81,8 @@ module.exports = async (options) => {
   // Set up middleware to serve static assets
   app.use('/public', express.static(configPaths.public))
 
-  if (flags.isDeployedToHeroku) {
-    app.use('/docs', (req, res) => res.redirect('https://frontend.design-system.service.gov.uk/sass-api-reference/'))
-  } else {
-    app.use('/docs', express.static(configPaths.sassdoc))
-  }
+  // Set up middleware for documentation
+  app.use('/docs', middleware.docs)
 
   // serve html5-shiv from node modules
   app.use('/vendor/html5-shiv/', express.static('node_modules/html5shiv/dist/'))
