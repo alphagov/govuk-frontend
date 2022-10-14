@@ -138,17 +138,10 @@ I18n.prototype.hasIntlNumberFormatSupport = function () {
 /**
  * Get the appropriate suffix for the plural form.
  *
- * The locale may include a regional indicator (such as en-GB), but we don't
- * usually care about this part, as pluralisation rules are usually the same
- * regardless of region. There are exceptions, however, (e.g. Portuguese) so
- * this searches by both the full and shortened locale codes, just to be sure.
- *
  * @param    {number}  count       - Number used to determine which pluralisation to use.
  * @returns  {string}              - The suffix associated with the correct pluralisation for this locale.
  */
 I18n.prototype.getPluralSuffix = function (count) {
-  var locale = this.locale
-  var localeShort = locale.split('-')[0]
   var keySuffix = 'other'
 
   // Validate that the number is actually a number.
@@ -169,20 +162,37 @@ I18n.prototype.getPluralSuffix = function (count) {
     // make sure our number is one of those.
     count = Math.abs(Math.floor(count))
 
-    // Look through the plural rules map to find which `pluralRule` is
-    // appropriate for our current `locale`.
-    for (var pluralRule in this.pluralRulesMap) {
-      if (Object.prototype.hasOwnProperty.call(this.pluralRulesMap, pluralRule)) {
-        var languages = this.pluralRulesMap[pluralRule]
-        if (languages.indexOf(locale) > -1 || languages.indexOf(localeShort) > -1) {
-          keySuffix = this.pluralRules[pluralRule](count)
-          break
-        }
-      }
-    }
+    return this.pluralRules[this.getPluralRulesForLocale()](count)
   }
 
   return keySuffix
+}
+
+/**
+ * Work out which pluralisation rules to use for the current locale
+ *
+ * The locale may include a regional indicator (such as en-GB), but we don't
+ * usually care about this part, as pluralisation rules are usually the same
+ * regardless of region. There are exceptions, however, (e.g. Portuguese) so
+ * this searches by both the full and shortened locale codes, just to be sure.
+ *
+ * @returns {string} - The name of the pluralisation rule to use (a key for one
+ *   of the functions in this.pluralRules)
+ */
+I18n.prototype.getPluralRulesForLocale = function () {
+  var locale = this.locale
+  var localeShort = locale.split('-')[0]
+
+  // Look through the plural rules map to find which `pluralRule` is
+  // appropriate for our current `locale`.
+  for (var pluralRule in this.pluralRulesMap) {
+    if (Object.prototype.hasOwnProperty.call(this.pluralRulesMap, pluralRule)) {
+      var languages = this.pluralRulesMap[pluralRule]
+      if (languages.indexOf(locale) > -1 || languages.indexOf(localeShort) > -1) {
+        return pluralRule
+      }
+    }
+  }
 }
 
 /**

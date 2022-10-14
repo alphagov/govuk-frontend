@@ -150,6 +150,26 @@ describe('I18n', () => {
     })
   })
 
+  describe('.getPluralRulesForLocale', () => {
+    it('returns the correct rules for a locale in the map', () => {
+      const locale = 'ar'
+      const i18n = new I18n({}, { locale })
+      expect(i18n.getPluralRulesForLocale()).toBe('arabic')
+    })
+
+    it('returns the correct rules for a locale in the map with regional indicator', () => {
+      const locale = 'pt-PT'
+      const i18n = new I18n({}, { locale })
+      expect(i18n.getPluralRulesForLocale()).toBe('spanish')
+    })
+
+    it('returns the correct rules for a locale allowing for no regional indicator', () => {
+      const locale = 'cy-GB'
+      const i18n = new I18n({}, { locale })
+      expect(i18n.getPluralRulesForLocale()).toBe('welsh')
+    })
+  })
+
   describe('pluralisation', () => {
     it('throws an error if a required plural form is not provided ', () => {
       const i18n = new I18n({
