@@ -4,9 +4,16 @@ const configPaths = require('../../config/paths.js')
 const router = express.Router()
 
 /**
+ * Sass docs have moved
+ */
+router.get('/', (req, res) => {
+  return res.redirect('./sass')
+})
+
+/**
  * Sass docs latest release (when deployed)
  */
-router.use('/', ({ app }, res, next) => {
+router.use('/sass', ({ app }, res, next) => {
   const { isDeployedToHeroku } = app.get('flags')
 
   if (isDeployedToHeroku) {
@@ -19,6 +26,6 @@ router.use('/', ({ app }, res, next) => {
 /**
  * Add middleware
  */
-router.use('/', express.static(configPaths.sassdoc))
+router.use('/sass', express.static(configPaths.sassdoc))
 
 module.exports = router
