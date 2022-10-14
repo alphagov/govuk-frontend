@@ -158,14 +158,33 @@ I18n.prototype.getPluralSuffix = function (count) {
     var pluralRules = new Intl.PluralRules(this.locale)
     keySuffix = pluralRules.select(count)
   } else {
-    // Currently our custom code can only handle positive integers, so let's
-    // make sure our number is one of those.
-    count = Math.abs(Math.floor(count))
-
-    return this.pluralRules[this.getPluralRulesForLocale()](count)
+    return this.selectPluralRuleFromFallback(count)
   }
 
   return keySuffix
+}
+
+/**
+ * Get the plural rule using our fallback implementation
+ *
+ * This is split out into a separate function to make it easier to test the
+ * fallback behaviour in an environment where Intl.PluralRules exists.
+ *
+ * @param {Number} count - Number used to determine which pluralisation to use.
+ * @returns {string} - The suffix associated with the correct pluralisation for this locale.
+ */
+I18n.prototype.selectPluralRuleFromFallback = function (count) {
+  // Currently our custom code can only handle positive integers, so let's
+  // make sure our number is one of those.
+  count = Math.abs(Math.floor(count))
+
+  var ruleset = this.getPluralRulesForLocale()
+
+  if (ruleset) {
+    return this.pluralRules[ruleset](count)
+  }
+
+  return 'other'
 }
 
 /**
