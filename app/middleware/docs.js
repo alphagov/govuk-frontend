@@ -27,5 +27,6 @@ router.use('/sass', ({ app }, res, next) => {
  * Add middleware
  */
 router.use('/sass', express.static(configPaths.sassdoc))
+router.use('/javascript', express.static(configPaths.jsdoc))
 
 module.exports = router
