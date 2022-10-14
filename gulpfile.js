@@ -24,10 +24,11 @@ gulp.task('scripts', gulp.series(
 
 /**
  * Umbrella styles tasks (for watch)
- * Runs Sass code quality checks and compilation
+ * Runs Sass code quality checks, documentation, compilation
  */
 gulp.task('styles', gulp.series(
   npmScriptTask('lint:scss', ['--silent']),
+  npmScriptTask('build:sassdoc', ['--silent']),
   'scss:compile'
 ))
 

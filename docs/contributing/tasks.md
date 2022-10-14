@@ -66,8 +66,9 @@ This task will:
 **`gulp styles`**
 
 This task will:
- - check Sass code quality via Stylelint (`npm run lint:scss`)
- - compile Sass to CSS (`gulp scss:compile`) into `./public`, or another location via the `--destination` flag
+- check Sass code quality via Stylelint (`npm run lint:scss`)
+- compile Sass to CSS (`gulp scss:compile`) into `./public`, or another location via the `--destination` flag
+- compile Sass documentation into `./sassdoc`
 
 **`gulp scripts`**
 
