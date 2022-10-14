@@ -138,51 +138,75 @@ I18n.prototype.hasIntlNumberFormatSupport = function () {
 /**
  * Get the appropriate suffix for the plural form.
  *
- * The locale may include a regional indicator (such as en-GB), but we don't
- * usually care about this part, as pluralisation rules are usually the same
- * regardless of region. There are exceptions, however, (e.g. Portuguese) so
- * this searches by both the full and shortened locale codes, just to be sure.
- *
  * @param    {number}  count       - Number used to determine which pluralisation to use.
  * @returns  {string}              - The suffix associated with the correct pluralisation for this locale.
  */
 I18n.prototype.getPluralSuffix = function (count) {
-  var locale = this.locale
-  var localeShort = locale.split('-')[0]
-  var keySuffix = 'other'
-
   // Validate that the number is actually a number.
   //
   // Number(count) will turn anything that can't be converted to a Number type
   // into 'NaN'. isFinite filters out NaN, as it isn't a finite number.
   count = Number(count)
-  if (!isFinite(count)) { return keySuffix }
+  if (!isFinite(count)) { return 'other' }
 
   // Check to verify that all the requirements for Intl.PluralRules are met.
   // If so, we can use that instead of our custom implementation. Otherwise,
   // use the hardcoded fallback.
   if (this.hasIntlPluralRulesSupport()) {
-    var pluralRules = new Intl.PluralRules(this.locale)
-    keySuffix = pluralRules.select(count)
+    return new Intl.PluralRules(this.locale).select(count)
   } else {
-    // Currently our custom code can only handle positive integers, so let's
-    // make sure our number is one of those.
-    count = Math.abs(Math.floor(count))
+    return this.selectPluralRuleFromFallback(count)
+  }
+}
 
-    // Look through the plural rules map to find which `pluralRule` is
-    // appropriate for our current `locale`.
-    for (var pluralRule in this.pluralRulesMap) {
-      if (Object.prototype.hasOwnProperty.call(this.pluralRulesMap, pluralRule)) {
-        var languages = this.pluralRulesMap[pluralRule]
-        if (languages.indexOf(locale) > -1 || languages.indexOf(localeShort) > -1) {
-          keySuffix = this.pluralRules[pluralRule](count)
-          break
-        }
+/**
+ * Get the plural rule using our fallback implementation
+ *
+ * This is split out into a separate function to make it easier to test the
+ * fallback behaviour in an environment where Intl.PluralRules exists.
+ *
+ * @param {Number} count - Number used to determine which pluralisation to use.
+ * @returns {string} - The suffix associated with the correct pluralisation for this locale.
+ */
+I18n.prototype.selectPluralRuleFromFallback = function (count) {
+  // Currently our custom code can only handle positive integers, so let's
+  // make sure our number is one of those.
+  count = Math.abs(Math.floor(count))
+
+  var ruleset = this.getPluralRulesForLocale()
+
+  if (ruleset) {
+    return I18n.pluralRules[ruleset](count)
+  }
+
+  return 'other'
+}
+
+/**
+ * Work out which pluralisation rules to use for the current locale
+ *
+ * The locale may include a regional indicator (such as en-GB), but we don't
+ * usually care about this part, as pluralisation rules are usually the same
+ * regardless of region. There are exceptions, however, (e.g. Portuguese) so
+ * this searches by both the full and shortened locale codes, just to be sure.
+ *
+ * @returns {string} - The name of the pluralisation rule to use (a key for one
+ *   of the functions in this.pluralRules)
+ */
+I18n.prototype.getPluralRulesForLocale = function () {
+  var locale = this.locale
+  var localeShort = locale.split('-')[0]
+
+  // Look through the plural rules map to find which `pluralRule` is
+  // appropriate for our current `locale`.
+  for (var pluralRule in I18n.pluralRulesMap) {
+    if (Object.prototype.hasOwnProperty.call(I18n.pluralRulesMap, pluralRule)) {
+      var languages = I18n.pluralRulesMap[pluralRule]
+      if (languages.indexOf(locale) > -1 || languages.indexOf(localeShort) > -1) {
+        return pluralRule
       }
     }
   }
-
-  return keySuffix
 }
 
 /**
@@ -215,7 +239,7 @@ I18n.prototype.getPluralSuffix = function (count) {
  * Spanish: European Portuguese (pt-PT), Italian (it), Spanish (es)
  * Welsh: Welsh (cy)
  */
-I18n.prototype.pluralRulesMap = {
+I18n.pluralRulesMap = {
   arabic: ['ar'],
   chinese: ['my', 'zh', 'id', 'ja', 'jv', 'ko', 'ms', 'th', 'vi'],
   french: ['hy', 'bn', 'fr', 'gu', 'hi', 'fa', 'pa', 'zu'],
@@ -242,7 +266,7 @@ I18n.prototype.pluralRulesMap = {
  * @param    {number}  n  - The `count` number being passed through. This must be a positive integer. Negative numbers and decimals aren't accounted for.
  * @returns  {string}     - The string that needs to be suffixed to the key (without separator).
  */
-I18n.prototype.pluralRules = {
+I18n.pluralRules = {
   arabic: function (n) {
     if (n === 0) { return 'zero' }
     if (n === 1) { return 'one' }
