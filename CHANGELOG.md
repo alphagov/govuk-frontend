@@ -86,6 +86,16 @@ This was added in [pull request #2677: Amend error summary markup to fix page lo
 
 ### Deprecated features
 
+#### Stop using the compatibility mode settings
+
+In GOV.UK Frontend v5.0 we will stop supporting compatibility with legacy codebases. We are therefore deprecating the compatibility mode variables associated with legacy codebases:
+
+- `$govuk-compatibility-govukfrontendtoolkit`
+- `$govuk-compatibility-govuktemplate`
+- `$govuk-compatibility-govukelements`
+
+This was introduced in [pull request #2882: Deprecate compatibility mode settings](https://github.com/alphagov/govuk-frontend/pull/2882).
+
 #### Stop using settings associated with legacy codebases
 
 In GOV.UK Frontend v5.0 we will stop supporting compatibility with legacy codebases. As part of this, we are deprecating settings controlled by compatibility mode variables. This includes the `govuk-compatibility` mixin and the following settings:
@@ -95,7 +105,7 @@ In GOV.UK Frontend v5.0 we will stop supporting compatibility with legacy codeba
 - `$govuk-typography-use-rem`
 - `$govuk-font-family-tabular`
 
-This was introduced in [pull request #2844: Deprecate compatibility mode settings](https://github.com/alphagov/govuk-frontend/pull/2844).
+This was introduced in [pull request #2844: Remove compatibility mode from govuk-frontend](https://github.com/alphagov/govuk-frontend/pull/2844).
 
 ### Fixes
 
