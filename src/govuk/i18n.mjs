@@ -142,26 +142,21 @@ I18n.prototype.hasIntlNumberFormatSupport = function () {
  * @returns  {string}              - The suffix associated with the correct pluralisation for this locale.
  */
 I18n.prototype.getPluralSuffix = function (count) {
-  var keySuffix = 'other'
-
   // Validate that the number is actually a number.
   //
   // Number(count) will turn anything that can't be converted to a Number type
   // into 'NaN'. isFinite filters out NaN, as it isn't a finite number.
   count = Number(count)
-  if (!isFinite(count)) { return keySuffix }
+  if (!isFinite(count)) { return 'other' }
 
   // Check to verify that all the requirements for Intl.PluralRules are met.
   // If so, we can use that instead of our custom implementation. Otherwise,
   // use the hardcoded fallback.
   if (this.hasIntlPluralRulesSupport()) {
-    var pluralRules = new Intl.PluralRules(this.locale)
-    keySuffix = pluralRules.select(count)
+    return new Intl.PluralRules(this.locale).select(count)
   } else {
     return this.selectPluralRuleFromFallback(count)
   }
-
-  return keySuffix
 }
 
 /**
