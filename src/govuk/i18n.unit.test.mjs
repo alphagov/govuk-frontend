@@ -150,14 +150,39 @@ describe('I18n', () => {
     })
 
     describe('pluralisation', () => {
-      it('throws an error if a required plural form is not provided ', () => {
+      it('falls back to `other` if a plural form is not provided', () => {
         const i18n = new I18n({
           'test.other': 'testing testing'
         }, {
           locale: 'en'
         })
-        expect(() => { i18n.t('test', { count: 1 }) }).toThrowError('i18n: Plural form ".one" is required for "en" locale')
+        expect(i18n.t('test', { count: 1 })).toBe('testing testing')
       })
+
+      it('logs a console warning when falling back to `other`', () => {
+        const consoleWarn = jest.spyOn(global.console, 'warn')
+        const i18n = new I18n({
+          'test.other': 'testing testing'
+        }, {
+          locale: 'en'
+        })
+
+        i18n.t('test', { count: 1 })
+
+        expect(consoleWarn).toHaveBeenCalledWith(
+          'i18n: Missing plural form ".one" for "en" locale. Falling back to ".other".'
+        )
+      })
+
+      it('throws an error if a plural form is not provided and neither is `other`', () => {
+        const i18n = new I18n({
+          'test.one': 'testing testing'
+        }, {
+          locale: 'en'
+        })
+        expect(() => { i18n.t('test', { count: 2 }) }).toThrowError('i18n: Plural form ".other" is required for "en" locale')
+      })
+
 
       it('interpolates the count variable into the correct plural form', () => {
         const i18n = new I18n({

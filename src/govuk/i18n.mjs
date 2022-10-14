@@ -37,12 +37,23 @@ I18n.prototype.t = function (lookupKey, options) {
     // Get the plural suffix
     var pluralSuffix = this.getPluralSuffix(options.count)
 
-    // Overwrite our existing lookupKey
-    lookupKey = lookupKey + '.' + pluralSuffix
+    // Use the correct plural form if provided
+    if (lookupKey + '.' + pluralSuffix in this.translations) {
+      lookupKey = lookupKey + '.' + pluralSuffix
+    // Fall back to `other` if the plural form is missing, but log a warning
+    // to the console
+    } else if (lookupKey + '.other' in this.translations) {
+      if (console && 'warn' in console) {
+        console.warn('i18n: Missing plural form ".' + pluralSuffix + '" for "' +
+          this.locale + '" locale. Falling back to ".other".')
+      }
 
-    // Throw an error if this new key doesn't exist
-    if (!(lookupKey in this.translations)) {
-      throw new Error('i18n: Plural form ".' + pluralSuffix + '" is required for "' + this.locale + '" locale')
+      lookupKey = lookupKey + '.other'
+    // If the required `other` plural form is missing, all we can do is error
+    } else {
+      throw new Error(
+        'i18n: Plural form ".other" is required for "' + this.locale + '" locale'
+      )
     }
   }
 
