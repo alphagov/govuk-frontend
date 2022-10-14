@@ -194,112 +194,27 @@ describe('I18n', () => {
   })
 
   describe('.selectPluralRuleFromFallback', () => {
-    const testNumbers = [0, 1, 2, 5, 25, 100]
+    // The locales we want to test, with numbers for any 'special cases' in
+    // those locales we want to ensure are handled correctly
+    const locales = [
+      ['ar', [105, 125]],
+      ['zh'],
+      ['fr'],
+      ['de'],
+      ['ga', [9]],
+      ['ru', [3, 13, 101]],
+      ['gd', [15]],
+      ['es', [1000000, 2000000]],
+      ['cy', [3, 6]]
+    ]
 
-    it('returns the correct plural form for a given count (Arabic rules)', () => {
-      const locale = 'ar'
-      const localeNumbers = [105, 125]
-
+    it.each(locales)('matches `Intl.PluralRules.select()` for %s locale', (locale, localeNumbers = []) => {
       const i18n = new I18n({}, { locale })
       const intl = new Intl.PluralRules(locale)
 
-      testNumbers.concat(localeNumbers).forEach(num => {
-        expect(i18n.selectPluralRuleFromFallback(num)).toBe(intl.select(num))
-      })
-    })
+      const numbersToTest = [0, 1, 2, 5, 25, 100, ...localeNumbers]
 
-    it('returns the correct plural form for a given count (Chinese rules)', () => {
-      const locale = 'zh'
-      const localeNumbers = []
-
-      const i18n = new I18n({}, { locale })
-      const intl = new Intl.PluralRules(locale)
-
-      testNumbers.concat(localeNumbers).forEach(num => {
-        expect(i18n.selectPluralRuleFromFallback(num)).toBe(intl.select(num))
-      })
-    })
-
-    it('returns the correct plural form for a given count (French rules)', () => {
-      const locale = 'fr'
-      const localeNumbers = []
-
-      const i18n = new I18n({}, { locale })
-      const intl = new Intl.PluralRules(locale)
-
-      testNumbers.concat(localeNumbers).forEach(num => {
-        expect(i18n.selectPluralRuleFromFallback(num)).toBe(intl.select(num))
-      })
-    })
-
-    it('returns the correct plural form for a given count (German rules)', () => {
-      const locale = 'de'
-      const localeNumbers = []
-
-      const i18n = new I18n({}, { locale })
-      const intl = new Intl.PluralRules(locale)
-
-      testNumbers.concat(localeNumbers).forEach(num => {
-        expect(i18n.selectPluralRuleFromFallback(num)).toBe(intl.select(num))
-      })
-    })
-
-    it('returns the correct plural form for a given count (Irish rules)', () => {
-      const locale = 'ga'
-      const localeNumbers = [9]
-
-      const i18n = new I18n({}, { locale })
-      const intl = new Intl.PluralRules(locale)
-
-      testNumbers.concat(localeNumbers).forEach(num => {
-        expect(i18n.selectPluralRuleFromFallback(num)).toBe(intl.select(num))
-      })
-    })
-
-    it('returns the correct plural form for a given count (Russian rules)', () => {
-      const locale = 'ru'
-      const localeNumbers = [3, 13, 101]
-
-      const i18n = new I18n({}, { locale })
-      const intl = new Intl.PluralRules(locale)
-
-      testNumbers.concat(localeNumbers).forEach(num => {
-        expect(i18n.selectPluralRuleFromFallback(num)).toBe(intl.select(num))
-      })
-    })
-
-    it('returns the correct plural form for a given count (Scottish rules)', () => {
-      const locale = 'gd'
-      const localeNumbers = [15]
-
-      const i18n = new I18n({}, { locale })
-      const intl = new Intl.PluralRules(locale)
-
-      testNumbers.concat(localeNumbers).forEach(num => {
-        expect(i18n.selectPluralRuleFromFallback(num)).toBe(intl.select(num))
-      })
-    })
-
-    it('returns the correct plural form for a given count (Spanish rules)', () => {
-      const locale = 'es'
-      const localeNumbers = [1000000, 2000000]
-
-      const i18n = new I18n({}, { locale })
-      const intl = new Intl.PluralRules(locale)
-
-      testNumbers.concat(localeNumbers).forEach(num => {
-        expect(i18n.selectPluralRuleFromFallback(num)).toBe(intl.select(num))
-      })
-    })
-
-    it('returns the correct plural form for a given count (Welsh rules)', () => {
-      const locale = 'cy'
-      const localeNumbers = [3, 6]
-
-      const i18n = new I18n({}, { locale })
-      const intl = new Intl.PluralRules(locale)
-
-      testNumbers.concat(localeNumbers).forEach(num => {
+      numbersToTest.forEach(num => {
         expect(i18n.selectPluralRuleFromFallback(num)).toBe(intl.select(num))
       })
     })
@@ -308,7 +223,9 @@ describe('I18n', () => {
       const locale = 'la'
       const i18n = new I18n({}, { locale })
 
-      testNumbers.forEach(num => {
+      const numbersToTest = [0, 1, 2, 5, 25, 100]
+
+      numbersToTest.forEach(num => {
         expect(i18n.selectPluralRuleFromFallback(num)).toBe('other')
       })
     })
