@@ -176,7 +176,7 @@ I18n.prototype.selectPluralRuleFromFallback = function (count) {
   var ruleset = this.getPluralRulesForLocale()
 
   if (ruleset) {
-    return this.pluralRules[ruleset](count)
+    return I18n.pluralRules[ruleset](count)
   }
 
   return 'other'
@@ -199,9 +199,9 @@ I18n.prototype.getPluralRulesForLocale = function () {
 
   // Look through the plural rules map to find which `pluralRule` is
   // appropriate for our current `locale`.
-  for (var pluralRule in this.pluralRulesMap) {
-    if (Object.prototype.hasOwnProperty.call(this.pluralRulesMap, pluralRule)) {
-      var languages = this.pluralRulesMap[pluralRule]
+  for (var pluralRule in I18n.pluralRulesMap) {
+    if (Object.prototype.hasOwnProperty.call(I18n.pluralRulesMap, pluralRule)) {
+      var languages = I18n.pluralRulesMap[pluralRule]
       if (languages.indexOf(locale) > -1 || languages.indexOf(localeShort) > -1) {
         return pluralRule
       }
@@ -239,7 +239,7 @@ I18n.prototype.getPluralRulesForLocale = function () {
  * Spanish: European Portuguese (pt-PT), Italian (it), Spanish (es)
  * Welsh: Welsh (cy)
  */
-I18n.prototype.pluralRulesMap = {
+I18n.pluralRulesMap = {
   arabic: ['ar'],
   chinese: ['my', 'zh', 'id', 'ja', 'jv', 'ko', 'ms', 'th', 'vi'],
   french: ['hy', 'bn', 'fr', 'gu', 'hi', 'fa', 'pa', 'zu'],
@@ -266,7 +266,7 @@ I18n.prototype.pluralRulesMap = {
  * @param    {number}  n  - The `count` number being passed through. This must be a positive integer. Negative numbers and decimals aren't accounted for.
  * @returns  {string}     - The string that needs to be suffixed to the key (without separator).
  */
-I18n.prototype.pluralRules = {
+I18n.pluralRules = {
   arabic: function (n) {
     if (n === 0) { return 'zero' }
     if (n === 1) { return 'one' }
