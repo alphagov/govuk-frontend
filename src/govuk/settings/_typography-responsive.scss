@@ -32,8 +32,8 @@ $govuk-typography-use-rem: if(
   $govuk-compatibility-govukfrontendtoolkit == false and
   $govuk-compatibility-govuktemplate == false and
   $govuk-compatibility-govukelements == false {
-  @warn "$govuk-typography-use-rem is deprecated. " +
-    "From version 5.0, GOV.UK Frontend will not support disabling rem font sizes";
+  @include _warning(allow-not-using-rem, "$govuk-typography-use-rem is deprecated. " +
+  "From version 5.0, GOV.UK Frontend will not support disabling rem font sizes.");
 }
 
 /// Root font size

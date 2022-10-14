@@ -58,6 +58,18 @@ This was added in pull requests:
 - [#2818: Add support for localisation via data-* attributes to Accordion component](https://github.com/alphagov/govuk-frontend/pull/2818)
 - [#2826: Add support for localisation via JavaScript configuration to Accordion component](https://github.com/alphagov/govuk-frontend/pull/2826)
 
+#### Suppress deprecation warnings
+
+You can now suppress warnings from deprecations within GOV.UK Frontend by updating the `$govuk-suppressed-warnings` map in sass. Every deprecation warning will now include a warning "key" which you can use in the following code, placed at the root of your sass project:
+
+```scss
+$govuk-suppressed-warnings: (
+  deprecated-feature
+);
+```
+
+This was added in [#2911 Add warning suppression functionality](https://github.com/alphagov/govuk-frontend/pull/2911)
+
 ### Recommended changes
 
 #### Remove `aria-labelledby`, remove `id="error-summary-title"` from title and move `role="alert"` to child container on the error summary component

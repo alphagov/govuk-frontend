@@ -32,9 +32,9 @@ $govuk-use-legacy-font: if(
   $govuk-compatibility-govukfrontendtoolkit == false and
   $govuk-compatibility-govuktemplate == false and
   $govuk-compatibility-govukelements == false {
-  @warn "$govuk-use-legacy-font is deprecated. " +
-    "From version 5.0, GOV.UK Frontend will only support the included version " +
-    "of GDS Transport";
+  @include _warning(legacy-font, "$govuk-use-legacy-font is deprecated. " +
+  "From version 5.0, GOV.UK Frontend will only support the included version " +
+  "of GDS Transport.");
 }
 
 // =========================================================
@@ -68,9 +68,9 @@ $govuk-font-family-tabular: if(
 // Only show the deprecation warning if user is setting $govuk-font-family-tabular
 // manually instead of automatically via $govuk-use-legacy-font
 @if $govuk-font-family-tabular != false and $govuk-use-legacy-font == false {
-  @warn "$govuk-font-family-tabular is deprecated. " +
-    "From version 5.0, GOV.UK Frontend will not support using a separate " +
-    "font-face for tabular numbers";
+  @include _warning(tabular-font-face, "$govuk-font-family-tabular is deprecated. " +
+  "From version 5.0, GOV.UK Frontend will not support using a separate " +
+  "font-face for tabular numbers.");
 }
 
 /// Font families to use for print media

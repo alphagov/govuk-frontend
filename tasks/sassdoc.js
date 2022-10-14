@@ -22,6 +22,7 @@ function buildSassdocs () {
       'settings/media-queries': 'Settings / Media Queries',
       'settings/spacing': 'Settings / Spacing',
       'settings/typography': 'Settings / Typography',
+      'settings/warnings': 'Settings / Warnings',
       tools: 'Tools',
       helpers: 'Helpers',
       overrides: 'Overrides',
