@@ -6,6 +6,7 @@ function HideThisPage ($module) {
   this.$button = $module.querySelector('.govuk-hide-this-page__button')
   this.$updateSpan = null
   this.$indicatorContainer = null
+  this.$overlay = null
   this.escCounter = 0
   this.escTimerActive = false
 }
@@ -65,7 +66,16 @@ HideThisPage.prototype.updateIndicator = function () {
 }
 
 HideThisPage.prototype.exitPage = function (e) {
-  // we don't do anything with this just yet
+  if (typeof e !== 'undefined' && e.target) {
+    e.preventDefault()
+  }
+
+  // Blank the page
+  this.$overlay = document.createElement('div')
+  this.$overlay.className = 'govuk-hide-this-page-overlay'
+  document.body.appendChild(this.$overlay)
+
+  window.location.href = this.firstButton.href
 }
 
 HideThisPage.prototype.handleEscKeypress = function (e) {
@@ -100,6 +110,15 @@ HideThisPage.prototype.setEscTimer = function () {
   }
 }
 
+HideThisPage.prototype.syncOverlayVisibility = function () {
+  // If there is no overlay, don't do anything
+  if (!this.$overlay) { return }
+
+  // If there is, remove the element and references to it
+  this.$overlay.remove()
+  this.$overlay = null
+}
+
 HideThisPage.prototype.init = function () {
   this.buildIndicator()
   this.initUpdateSpan()
@@ -109,6 +128,15 @@ HideThisPage.prototype.init = function () {
   if (!('govukFrontendHideThisPageEsc' in document.body.dataset)) {
     document.addEventListener('keyup', this.handleEscKeypress.bind(this), true)
     document.body.dataset.govukFrontendHideThisPageEsc = true
+  }
+  
+  // When the page is restored after navigating 'back' in some browsers the
+  // blank overlay remains present, rendering the page unusable. Here, we check
+  // to see if it's present on page (re)load, and remove it if so.
+  if ('onpageshow' in window) {
+    window.addEventListener('pageshow', this.syncOverlayVisibility.bind(this))
+  } else {
+    window.addEventListener('DOMContentLoaded', this.syncOverlayVisibility.bind(this))
   }
 }
 
