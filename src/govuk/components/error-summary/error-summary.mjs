@@ -11,8 +11,8 @@ import { mergeConfigs, normaliseDataset } from '../../common.mjs'
  *
  * @class
  * @param {HTMLElement} $module - The element this component controls
- * @param {Object} config
- * @param {Boolean} [config.disableAutoFocus=false] - Whether to disable the component taking focus on initialisation
+ * @param {object} config - Error summary config
+ * @param {boolean} [config.disableAutoFocus=false] - Whether to disable the component taking focus on initialisation
  */
 function ErrorSummary ($module, config) {
   // Some consuming code may not be passing a module,
@@ -72,10 +72,10 @@ ErrorSummary.prototype.setFocus = function () {
 }
 
 /**
-* Click event handler
-*
-* @param {MouseEvent} event - Click event
-*/
+ * Click event handler
+ *
+ * @param {MouseEvent} event - Click event
+ */
 ErrorSummary.prototype.handleClick = function (event) {
   var target = event.target
   if (this.focusTarget(target)) {

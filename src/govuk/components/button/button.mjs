@@ -10,8 +10,8 @@ var DEBOUNCE_TIMEOUT_IN_SECONDS = 1
  *
  * @class
  * @param {HTMLElement} $module - The element this component controls
- * @param {Object} config
- * @param {Boolean} [config.preventDoubleClick=false] - Whether the button should prevent double clicks
+ * @param {object} config - Button config
+ * @param {boolean} [config.preventDoubleClick=false] - Whether the button should prevent double clicks
  */
 function Button ($module, config) {
   if (!$module) {
@@ -70,6 +70,7 @@ Button.prototype.handleKeyDown = function (event) {
  * clicking buttons.
  *
  * @param {MouseEvent} event
+ * @returns {undefined | false} - Returns undefined, or false when debounced
  */
 Button.prototype.debounce = function (event) {
   // Check the button that was clicked has preventDoubleClick enabled

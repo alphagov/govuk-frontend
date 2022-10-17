@@ -63,6 +63,9 @@ describe('/components/button', () => {
      * Wraps the button rendered on the page in a form
      *
      * Examples don't do this and we need it to have something to submit
+     *
+     * @param {import('puppeteer').Page} page - Puppeteer page object
+     * @returns {undefined}
      */
     function trackClicks (page) {
       return page.evaluate(() => {
@@ -83,7 +86,7 @@ describe('/components/button', () => {
     /**
      * Gets the number of times the form was submitted
      *
-     * @returns {Number}
+     * @returns {number} Number of times the form was submitted
      */
     function getClicksCount (page) {
       return page.evaluate(() => window.__SUBMIT_EVENTS)

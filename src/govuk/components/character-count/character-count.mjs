@@ -43,12 +43,12 @@ var TRANSLATIONS_DEFAULT = {
  *
  * @class
  * @param {HTMLElement} $module - The element this component controls
- * @param {Object} config
- * @param {Number} config.maxlength - If `maxwords` is set, this is not required.
+ * @param {object} config - Character count config
+ * @param {number} config.maxlength - If `maxwords` is set, this is not required.
  * The maximum number of characters. If `maxwords` is provided, it will be ignored.
- * @param {Number} config.maxwords - If `maxlength` is set, this is not required.
+ * @param {number} config.maxwords - If `maxlength` is set, this is not required.
  * The maximum number of words. If `maxwords` is provided, `maxlength` will be ignored.
- * @param {Number} [config.threshold=0] - The percentage value of the limit at
+ * @param {number} [config.threshold=0] - The percentage value of the limit at
  * which point the count message is displayed. If this attribute is set, the
  * count message will be hidden by default.
  * @param {CharacterCountTranslations} [config.i18n = DEFAULT_TRANSLATIONS]
@@ -294,8 +294,8 @@ CharacterCount.prototype.updateScreenReaderCountMessage = function () {
  * Count the number of characters (or words, if `config.maxwords` is set)
  * in the given text
  *
- * @param {String} text - The text to count the characters of
- * @returns {Number} the number of characters (or words) in the text
+ * @param {string} text - The text to count the characters of
+ * @returns {number} the number of characters (or words) in the text
  */
 CharacterCount.prototype.count = function (text) {
   if (this.config.maxwords) {
@@ -309,7 +309,7 @@ CharacterCount.prototype.count = function (text) {
 /**
  * Get count message
  *
- * @returns {String} Status message
+ * @returns {string} Status message
  */
 CharacterCount.prototype.getCountMessage = function () {
   var remainingNumber = this.maxLength - this.count(this.$textarea.value)
@@ -322,9 +322,9 @@ CharacterCount.prototype.getCountMessage = function () {
  * Formats the message shown to users according to what's counted
  * and how many remain
  *
- * @param {Number} remainingNumber - The number of words/characaters remaining
- * @param {String} countType - "words" or "characters"
- * @returns String
+ * @param {number} remainingNumber - The number of words/characaters remaining
+ * @param {string} countType - "words" or "characters"
+ * @returns {string} Status message
  */
 CharacterCount.prototype.formatCountMessage = function (remainingNumber, countType) {
   if (remainingNumber === 0) {
@@ -343,7 +343,7 @@ CharacterCount.prototype.formatCountMessage = function (remainingNumber, countTy
  * If there is no configured threshold, it is set to 0 and this function will
  * always return true.
  *
- * @returns {Boolean} true if the current count is over the config.threshold
+ * @returns {boolean} true if the current count is over the config.threshold
  *   (or no threshold is set)
  */
 CharacterCount.prototype.isOverThreshold = function () {
@@ -367,10 +367,14 @@ export default CharacterCount
 
 /**
  * @typedef {object} CharacterCountTranslations
- * @property {import('../../i18n.mjs').PluralisedTranslation} [charactersUnderLimit]
- * @property {string} [charactersAtLimit]
- * @property {import('../../i18n.mjs').PluralisedTranslation} [charactersOverLimit]
- * @property {import('../../i18n.mjs').PluralisedTranslation} [wordsUnderLimit]
- * @property {string} [wordsAtLimit]
- * @property {import('../../i18n.mjs').PluralisedTranslation} [wordsOverLimit]
+ * @property {PluralisedTranslation} [charactersUnderLimit] - Characters under limit
+ * @property {string} [charactersAtLimit] - Characters at limit
+ * @property {PluralisedTranslation} [charactersOverLimit] - Characters over limit
+ * @property {PluralisedTranslation} [wordsUnderLimit] - Words under limit
+ * @property {string} [wordsAtLimit] - Words at limit
+ * @property {PluralisedTranslation} [wordsOverLimit] - Words over limit
+ */
+
+/**
+ * @typedef {import('../../i18n.mjs').PluralisedTranslation} PluralisedTranslation
  */
