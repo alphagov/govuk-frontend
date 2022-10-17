@@ -5,7 +5,7 @@ function HideThisPage ($module) {
   this.escCounter = 0
 }
 
-HideThisPage.prototype.openNewTab = function (e) {
+HideThisPage.prototype.exitPage = function (e) {
   var isClickEvent = typeof e !== 'undefined'
 
   if (isClickEvent) {
@@ -13,8 +13,6 @@ HideThisPage.prototype.openNewTab = function (e) {
   }
 
   var target = isClickEvent ? e.target : document.querySelector('.govuk-js-hide-this-page-button')
-
-  window.open(target.getAttribute('data-new-tab-url'), '_newtab')
   window.location.href = target.href
 }
 
@@ -22,7 +20,7 @@ HideThisPage.prototype.init = function () {
   // We put the loop here instead of in all.js because we want to have both listeners on the individual buttons for clicks
   // and a single listener for the keyboard shortcut
   nodeListForEach(this.$module, function ($button) {
-    $button.querySelector('.govuk-js-hide-this-page-button').addEventListener('click', this.openNewTab)
+    $button.querySelector('.govuk-js-hide-this-page-button').addEventListener('click', this.exitPage)
   }.bind(this))
 
   window.addEventListener('keydown', function (e) {
@@ -31,7 +29,7 @@ HideThisPage.prototype.init = function () {
 
       if (this.escCounter === 3) {
         this.escCounter = 0
-        this.openNewTab()
+        this.exitPage()
       }
 
       setTimeout(function () {
