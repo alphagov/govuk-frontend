@@ -120,6 +120,13 @@ CharacterCount.prototype.init = function () {
   var $textarea = this.$textarea
   var $fallbackLimitMessage = document.getElementById($textarea.id + '-info')
 
+  // Inject a decription for the textarea if none is present already
+  // for when the component was rendered with no maxlength, maxwords
+  // nor custom fallbackHintText
+  if ($fallbackLimitMessage.textContent.match(/^\s*$/)) {
+    $fallbackLimitMessage.textContent = this.i18n.t('fallbackHint', { count: this.maxLength })
+  }
+
   // Move the fallback count message to be immediately after the textarea
   // Kept for backwards compatibility
   $textarea.insertAdjacentElement('afterend', $fallbackLimitMessage)
@@ -373,6 +380,7 @@ export default CharacterCount
  * @property {PluralisedTranslation} [wordsUnderLimit] - Words under limit
  * @property {string} [wordsAtLimit] - Words at limit
  * @property {PluralisedTranslation} [wordsOverLimit] - Words over limit
+ * @property {PluralisedTranslation} [fallbackHint] - Fallback hint
  */
 
 /**

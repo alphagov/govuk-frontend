@@ -429,6 +429,26 @@ describe('Character count', () => {
           const visibility = await page.$eval('.govuk-character-count__status', el => window.getComputedStyle(el).visibility)
           expect(visibility).toEqual('visible')
         })
+
+        it('fills the accessible description of the textarea once the maximum is known', async () => {
+          // This tests that any fallback hint provided through data-attributes
+          // (or the Nunjucks macro) waiting for a maximum to be provided in JavaScript config
+          // will lead to the message being injected in the element holding the textarea's accessible description
+          // (and interpolated to replace `%{count}` with the maximum)
+
+          await renderAndInitialise(page, 'character-count', {
+            nunjucksParams: examples['no maximum'],
+            javascriptConfig: {
+              maxlength: 10
+            }
+          })
+
+          const message = await page.$eval(
+            '.govuk-character-count__message',
+            (el) => el.innerHTML.trim()
+          )
+          expect(message).toEqual('No more than 10 characters')
+        })
       })
 
       describe('via `initAll`', () => {
