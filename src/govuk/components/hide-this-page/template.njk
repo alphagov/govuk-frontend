@@ -1,8 +1,6 @@
 {% from "../button/macro.njk" import govukButton %}
-{% set currentTabURL = params.currentTabURL | default() -%}
-{% set newTabURL = params.newTabURL | default() -%}
+{% set redirectUrl = params.redirectUrl | default() -%}
 {% set text = params.text | default() -%}
-{% set fakePageTitle = params.fakePageTitle | default() -%}
 
 <div
   {%- if params.id %} id="{{ params.id }}"{% endif %}
@@ -12,10 +10,6 @@
   {{ govukButton({
     text: params.text,
     classes: "govuk-button--warning govuk-hide-this-page__button govuk-js-hide-this-page-button",
-    href: currentTabURL,
-    attributes: {
-      "data-new-tab-url": newTabURL,
-      "data-fake-page-title": fakePageTitle
-    }
+    href: redirectUrl
   })}}
 </div>
