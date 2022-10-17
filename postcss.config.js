@@ -9,10 +9,10 @@ const pseudoclasses = require('postcss-pseudo-classes')
  *
  * @param {object} context - PostCSS context
  * @param {string} context.env - Browserslist environment
- * @param {import('vinyl')} context.file - File object
+ * @param {string | import('vinyl')} [context.file] - File path or object
  */
-module.exports = ({ env, file }) => {
-  const { dir, name } = parse(file.path)
+module.exports = ({ env, file = '' }) => {
+  const { dir, name } = parse(typeof file === 'object' ? file.path : file)
 
   const plugins = [
     autoprefixer({ env })
