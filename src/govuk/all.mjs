@@ -18,13 +18,13 @@ import { I18n } from './i18n.mjs'
  * Use the `data-module` attributes to find, instantiate and init all of the
  * components provided as part of GOV.UK Frontend.
  *
- * @param {Object} [config]
- * @param {HTMLElement} [config.scope=document] - scope to query for components
- * @param {Object} [config.accordion] - accordion config
- * @param {Object} [config.button] - button config
- * @param {Object} [config.characterCount] - character count config
- * @param {Object} [config.errorSummary] - error summary config
- * @param {Object} [config.notificationBanner] - notification banner config
+ * @param {object} [config] - Config
+ * @param {HTMLElement} [config.scope=document] - Scope to query for components
+ * @param {object} [config.accordion] - Accordion config
+ * @param {object} [config.button] - Button config
+ * @param {object} [config.characterCount] - Character Count config
+ * @param {object} [config.errorSummary] - Error Summary config
+ * @param {object} [config.notificationBanner] - Notification Banner config
  */
 function initAll (config) {
   config = typeof config !== 'undefined' ? config : {}

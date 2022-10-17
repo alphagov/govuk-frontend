@@ -6,6 +6,10 @@ import './vendor/polyfills/Element/prototype/closest.mjs'
  * TODO: Ideally this would be a NodeList.prototype.forEach polyfill
  * This seems to fail in IE8, requires more investigation.
  * See: https://github.com/imagitama/nodelist-foreach-polyfill
+ *
+ * @param {NodeListOf<Element>} nodes - NodeList from querySelectorAll()
+ * @param {nodeListIterator} callback - Callback function to run for each node
+ * @returns {undefined}
  */
 export function nodeListForEach (nodes, callback) {
   if (window.NodeList.prototype.forEach) {
@@ -20,6 +24,8 @@ export function nodeListForEach (nodes, callback) {
  * Used to generate a unique string, allows multiple instances of the component
  * without them conflicting with each other.
  * https://stackoverflow.com/a/8809472
+ *
+ * @returns {string} Unique ID
  */
 export function generateUniqueID () {
   var d = new Date().getTime()
@@ -34,18 +40,24 @@ export function generateUniqueID () {
 }
 
 /**
- * Config flattening function. Takes any number of objects, flattens them into
- * namespaced key-value pairs, (e.g. {'i18n.showSection': 'Show section'}) and
- * combines them together, with greatest priority on the LAST item passed in.
+ * Config flattening function
  *
- * @param {...Object} - Any number of objects to merge together.
- * @returns {Object} - A flattened object of key-value pairs.
+ * Takes any number of objects, flattens them into namespaced key-value pairs,
+ * (e.g. {'i18n.showSection': 'Show section'}) and combines them together, with
+ * greatest priority on the LAST item passed in.
+ *
+ * @returns {object} A flattened object of key-value pairs.
  */
-export function mergeConfigs (/* ...config objects */) {
-  // Function to take nested objects and flatten them to a dot-separated keyed
-  // object. Doing this means we don't need to do any deep/recursive merging of
-  // each of our objects, nor transform our dataset from a flat list into a
-  // nested object.
+export function mergeConfigs (/* configObject1, configObject2, ...configObjects */) {
+  /**
+   * Function to take nested objects and flatten them to a dot-separated keyed
+   * object. Doing this means we don't need to do any deep/recursive merging of
+   * each of our objects, nor transform our dataset from a flat list into a
+   * nested object.
+   *
+   * @param {object} configObject - Deeply nested object
+   * @returns {object} Flattened object with dot-separated keys
+   */
   var flattenObject = function (configObject) {
     // Prepare an empty return object
     var flattenedObject = {}
@@ -100,9 +112,9 @@ export function mergeConfigs (/* ...config objects */) {
  * Extracts keys starting with a particular namespace from a flattened config
  * object, removing the namespace in the process.
  *
- * @param {Object} configObject  - The object to extract key-value pairs from.
- * @param {String} namespace     - The namespace to filter keys with.
- * @returns {Object}
+ * @param {object} configObject - The object to extract key-value pairs from.
+ * @param {string} namespace - The namespace to filter keys with.
+ * @returns {object} Flattened object with dot-separated key namespace removed
  */
 export function extractConfigByNamespace (configObject, namespace) {
   // Check we have what we need
@@ -143,8 +155,8 @@ export function extractConfigByNamespace (configObject, namespace) {
  * Designed to be used to convert config passed via data attributes (which are
  * always strings) into something sensible.
  *
- * @param {String} value - The value to normalise
- * @returns {(String|Boolean|Number)} Normalised data
+ * @param {string} value - The value to normalise
+ * @returns {string | boolean | number | undefined} Normalised data
  */
 export function normaliseString (value) {
   if (typeof value !== 'string') {
@@ -175,8 +187,8 @@ export function normaliseString (value) {
  *
  * Loop over an object and normalise each value using normaliseData function
  *
- * @param {DOMStringMap} dataset
- * @returns {Object} Normalised dataset
+ * @param {DOMStringMap} dataset - HTML element dataset
+ * @returns {Object<string, string | boolean | number | undefined>} Normalised dataset
  */
 export function normaliseDataset (dataset) {
   var out = {}
@@ -192,8 +204,8 @@ export function normaliseDataset (dataset) {
  * Returns the value of the given attribute closest to the given element (including itself)
  *
  * @param {HTMLElement} $element - The element to start walking the DOM tree up
- * @param {String} attributeName - The name of the attribute
- * @returns {String|undefined}
+ * @param {string} attributeName - The name of the attribute
+ * @returns {string | undefined} Attribute value
  */
 export function closestAttributeValue ($element, attributeName) {
   var closestElementWithAttribute = $element.closest('[' + attributeName + ']')
@@ -201,3 +213,11 @@ export function closestAttributeValue ($element, attributeName) {
     return closestElementWithAttribute.getAttribute(attributeName)
   }
 }
+
+/**
+ * @callback nodeListIterator
+ * @param {Element} value - The current node being iterated on
+ * @param {number} index - The current index in the iteration
+ * @param {NodeListOf<Element>} nodes - NodeList from querySelectorAll()
+ * @returns {undefined}
+ */
