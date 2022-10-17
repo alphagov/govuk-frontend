@@ -20,6 +20,7 @@
     "publish-release": "./bin/publish-release.sh",
     "pre-release": "./bin/pre-release.sh",
     "build:compile": "gulp compile",
+    "build:sassdoc": "sassdoc --config sassdoc.config.yaml ./src/govuk",
     "build:package": "gulp build:package --destination 'package' && npm run test:build:package",
     "build:dist": "gulp build:dist --destination 'dist' && npm run test:build:dist",
     "pretest": "npm run build:compile",
