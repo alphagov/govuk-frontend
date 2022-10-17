@@ -7,6 +7,10 @@
     "npm": "^8.5.0"
   },
   "license": "MIT",
+  "workspaces": [
+    "docs/examples/*",
+    "package"
+  ],
   "scripts": {
     "postinstall": "npm ls --depth=0",
     "start": "gulp dev",
