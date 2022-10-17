@@ -1,0 +1,31 @@
+@import "../button/index";
+
+@include govuk-exports("govuk/component/hide-this-page") {
+  .govuk-hide-this-page {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    @include govuk-media-query($from: tablet) {
+      display: inline-block;
+      position: sticky;
+      top: 0;
+      right: 0;
+      left: auto;
+      width: auto;
+      float: right;
+    }
+  }
+
+  .govuk-hide-this-page__button {
+    margin-bottom: 0;
+  }
+
+  @media only print {
+    .govuk-hide-this-page {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{% from "../button/macro.njk" import govukButton %}
+{% set currentTabURL = params.currentTabURL | default() -%}
+{% set newTabURL = params.newTabURL | default() -%}
+{% set text = params.text | default() -%}
+{% set fakePageTitle = params.fakePageTitle | default() -%}
+
+<div
+  {%- if params.id %} id="{{ params.id }}"{% endif %}
+  class="govuk-hide-this-page {%- if params.classes %} {{ params.classes }}{% endif %}"
+  data-module="govuk-hide-this-page" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}
+>
+  {{ govukButton({
+    text: params.text,
+    classes: "govuk-button--warning govuk-hide-this-page__button govuk-js-hide-this-page-button",
+    href: currentTabURL,
+    attributes: {
+      "data-new-tab-url": newTabURL,
+      "data-fake-page-title": fakePageTitle
+    }
+  })}}
+</div>
