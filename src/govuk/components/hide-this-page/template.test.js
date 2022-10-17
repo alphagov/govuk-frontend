@@ -3,72 +3,76 @@
  */
 /* eslint-env jest */
 
-const axe = require('../../../../lib/axe-helper')
-
-const { render, getExamples } = require('../../../../lib/jest-helpers')
-
-const examples = getExamples('hide-this-page')
+const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
 
 describe('Hide this page', () => {
-  it('default example passes accessibility tests', async () => {
-    const $ = render('hide-this-page', examples.default)
+  let examples
 
-    const results = await axe($.html())
-    expect(results).toHaveNoViolations()
+  beforeAll(async () => {
+    examples = await getExamples('hide-this-page')
   })
 
-  it('renders the default example', () => {
-    const $ = render('hide-this-page', examples.default)
-    const $button = $('.govuk-hide-this-page').find('.govuk-button')
+  describe('default example', () => {
+    it('passes accessibility tests', async () => {
+      const $ = render('hide-this-page', examples.default)
 
-    expect($button.hasClass('govuk-button--warning')).toBeTruthy()
-    expect($button.text()).toContain('Hide this page')
-    expect($button.attr('href')).toBe('https://www.gov.uk')
-    expect($button.attr('data-new-tab-url')).toBe('https://www.google.com/search?q=weather')
-    expect($button.attr('data-fake-page-title')).toBe('How to prevent the spread of Coronavirus - GOV.UK')
-  })
-})
+      const results = await axe($.html())
+      expect(results).toHaveNoViolations()
+    })
 
-describe('Custom options', () => {
-  it('renders with text', () => {
-    const $ = render('hide-this-page', examples.testing)
-    const $button = $('.govuk-hide-this-page').find('.govuk-button')
+    it('renders the default example', () => {
+      const $ = render('hide-this-page', examples.default)
+      const $button = $('.govuk-hide-this-page').find('.govuk-button')
 
-    expect($button.text()).toContain('Hide this test')
-  })
-
-  it('renders with a current tab URL', () => {
-    const $ = render('hide-this-page', examples.testing)
-    const $button = $('.govuk-hide-this-page').find('.govuk-button')
-
-    expect($button.attr('href')).toBe('https://www.test.co.uk')
+      expect($button.hasClass('govuk-button--warning')).toBeTruthy()
+      expect($button.text()).toContain('Hide this page')
+      expect($button.attr('href')).toBe('https://www.gov.uk')
+      expect($button.attr('data-new-tab-url')).toBe('https://www.google.com/search?q=weather')
+      expect($button.attr('data-fake-page-title')).toBe('How to prevent the spread of Coronavirus - GOV.UK')
+    })
   })
 
-  it('renders with a new tab URL', () => {
-    const $ = render('hide-this-page', examples.testing)
-    const $button = $('.govuk-hide-this-page').find('.govuk-button')
+  describe('Custom options', () => {
+    it('renders with text', () => {
+      const $ = render('hide-this-page', examples.testing)
+      const $button = $('.govuk-hide-this-page').find('.govuk-button')
 
-    expect($button.attr('data-new-tab-url')).toBe('https://www.google.com/search?q=test')
-  })
+      expect($button.text()).toContain('Hide this test')
+    })
 
-  it('renders with a custom id', () => {
-    const $ = render('hide-this-page', examples.testing)
-    const $component = $('.govuk-hide-this-page')
+    it('renders with a current tab URL', () => {
+      const $ = render('hide-this-page', examples.testing)
+      const $button = $('.govuk-hide-this-page').find('.govuk-button')
 
-    expect($component.attr('id')).toBe('test-id')
-  })
+      expect($button.attr('href')).toBe('https://www.test.co.uk')
+    })
 
-  it('renders with a custom class', () => {
-    const $ = render('hide-this-page', examples.testing)
-    const $component = $('.govuk-hide-this-page')
+    it('renders with a new tab URL', () => {
+      const $ = render('hide-this-page', examples.testing)
+      const $button = $('.govuk-hide-this-page').find('.govuk-button')
 
-    expect($component.hasClass('test-class')).toBeTruthy()
-  })
+      expect($button.attr('data-new-tab-url')).toBe('https://www.google.com/search?q=test')
+    })
 
-  it('renders with custom attributes', () => {
-    const $ = render('hide-this-page', examples.testing)
-    const $component = $('.govuk-hide-this-page')
+    it('renders with a custom id', () => {
+      const $ = render('hide-this-page', examples.testing)
+      const $component = $('.govuk-hide-this-page')
 
-    expect($component.attr('test-attribute')).toBe('true')
+      expect($component.attr('id')).toBe('test-id')
+    })
+
+    it('renders with a custom class', () => {
+      const $ = render('hide-this-page', examples.testing)
+      const $component = $('.govuk-hide-this-page')
+
+      expect($component.hasClass('test-class')).toBeTruthy()
+    })
+
+    it('renders with custom attributes', () => {
+      const $ = render('hide-this-page', examples.testing)
+      const $component = $('.govuk-hide-this-page')
+
+      expect($component.attr('test-attribute')).toBe('true')
+    })
   })
 })
