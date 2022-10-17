@@ -38,6 +38,7 @@ describe('GOV.UK Frontend', () => {
         'Checkboxes',
         'ErrorSummary',
         'Header',
+        'HideThisPage',
         'NotificationBanner',
         'Radios',
         'SkipLink',
