@@ -27,8 +27,6 @@ describe('Hide this page', () => {
       expect($button.hasClass('govuk-button--warning')).toBeTruthy()
       expect($button.text()).toContain('Hide this page')
       expect($button.attr('href')).toBe('https://www.gov.uk')
-      expect($button.attr('data-new-tab-url')).toBe('https://www.google.com/search?q=weather')
-      expect($button.attr('data-fake-page-title')).toBe('How to prevent the spread of Coronavirus - GOV.UK')
     })
   })
 
@@ -45,13 +43,6 @@ describe('Hide this page', () => {
       const $button = $('.govuk-hide-this-page').find('.govuk-button')
 
       expect($button.attr('href')).toBe('https://www.test.co.uk')
-    })
-
-    it('renders with a new tab URL', () => {
-      const $ = render('hide-this-page', examples.testing)
-      const $button = $('.govuk-hide-this-page').find('.govuk-button')
-
-      expect($button.attr('data-new-tab-url')).toBe('https://www.google.com/search?q=test')
     })
 
     it('renders with a custom id', () => {

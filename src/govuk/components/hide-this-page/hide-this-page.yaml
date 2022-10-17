@@ -3,18 +3,10 @@ params:
   type: string
   required: false
   description: Text for the link. Defaults to `Hide this page`.
-- name: currentTabURL
+- name: redirectUrl
   type: string
   required: false
   description: URL to redirect the current tab to. Defaults to `https://www.google.com`.
-- name: newTabURL
-  type: string
-  required: false
-  description: URL to open a new tab to. Defaults to `https://www.bbc.co.uk/weather`.
-- name: fakePageTitle
-  type: string
-  required: false
-  description: Fake title that will be passed to the original page's title attribute to mask the user's history. Defaults to `How to prevent the spread of Coronavirus - GOV.UK`.
 - name: id
   type: string
   required: false
@@ -32,9 +24,7 @@ examples:
 - name: default  
   data:
     text: Hide this page
-    currentTabURL: "https://www.gov.uk"
-    newTabURL: "https://www.google.com/search?q=weather"
-    fakePageTitle: How to prevent the spread of Coronavirus - GOV.UK
+    redirectUrl: "https://www.gov.uk"
     id: null
     classes: null
     attributes:
@@ -45,9 +35,7 @@ examples:
   hidden: true
   data:
     text: Hide this test
-    currentTabURL: "https://www.test.co.uk"
-    newTabURL: "https://www.google.com/search?q=test"
-    fakePageTitle: This is a test
+    redirectUrl: "https://www.test.co.uk"
     id: test-id
     classes: test-class
     attributes:
