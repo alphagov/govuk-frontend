@@ -1,14 +1,14 @@
-/* eslint-env jest */
+/**
+ * @jest-environment puppeteer
+ */
 
-const configPaths = require('../../../../config/paths.json')
-const PORT = configPaths.ports.test
+const { goToComponent } = require('../../../../lib/puppeteer-helpers')
 
-const baseUrl = 'http://localhost:' + PORT
 const buttonClass = '.govuk-js-hide-this-page-button'
 
 describe('/components/hide-this-page', () => {
   beforeEach(async () => {
-    await page.goto(baseUrl + '/components/hide-this-page/preview', { waitUntil: 'load' })
+    await goToComponent(page, 'hide-this-page')
   })
 
   it('navigates to the href of the button', async () => {
