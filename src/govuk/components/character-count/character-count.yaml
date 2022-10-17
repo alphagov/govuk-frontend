@@ -167,6 +167,27 @@ examples:
       label:
         text: Full address
 
+  - name: with translations
+    data:
+      id: with-translations
+      name: with-translations
+      maxlength: 10
+      charactersUnderLimitHtml:
+        other: '%{count} characters to go'
+        one: 'One character to go'
+      charactersAtLimitHtml: 'Zero characters left'
+      charactersOverLimitHtml:
+        other: '%{count} characters too many'
+        one: 'One character too many'
+      wordsUnderLimitHtml:
+        other: '%{count} words to go'
+        one: 'One word to go'
+      wordsAtLimitHtml: 'Zero words left'
+      wordsOverLimitHtml:
+        other: '%{count} words too many'
+        one: 'One word too many'
+      
+
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes
     hidden: true

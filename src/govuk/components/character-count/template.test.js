@@ -221,11 +221,34 @@ describe('Character count', () => {
   })
 
   describe('with threshold', () => {
-    it('hides the count to start with', async () => {
+    it('hides the count to start with', () => {
       const $ = render('character-count', examples['with threshold'])
 
       const $component = $('.govuk-character-count')
       expect($component.attr('data-threshold')).toEqual('75')
+    })
+  })
+
+  describe('translations', () => {
+    it('renders with translation data attributes', () => {
+      const $ = render('character-count', examples['with translations'])
+
+      const $component = $('[data-module]')
+
+      Object.entries({
+        'data-i18n.characters-under-limit.one': 'One character to go',
+        'data-i18n.characters-under-limit.other': '%{count} characters to go',
+        'data-i18n.characters-at-limit': 'Zero characters left',
+        'data-i18n.characters-over-limit.one': 'One character too many',
+        'data-i18n.characters-over-limit.other': '%{count} characters too many',
+        'data-i18n.words-under-limit.one': 'One word to go',
+        'data-i18n.words-under-limit.other': '%{count} words to go',
+        'data-i18n.words-at-limit': 'Zero words left',
+        'data-i18n.words-over-limit.one': 'One word too many',
+        'data-i18n.words-over-limit.other': '%{count} words too many'
+      }).forEach(([attributeName, expectedValue]) => {
+        expect($component.attr(attributeName)).toEqual(expectedValue)
+      })
     })
   })
 })

@@ -1,10 +1,18 @@
+{% from "../../macros/i18n.njk" import govukPluralisedI18nAttributes %}
+
 {% from "../textarea/macro.njk" import govukTextarea %}
 {% from "../hint/macro.njk" import govukHint %}
 
 <div class="govuk-character-count" data-module="govuk-character-count"
 {%- if params.maxlength %} data-maxlength="{{ params.maxlength }}"{% endif %}
 {%- if params.threshold %} data-threshold="{{ params.threshold }}"{% endif %}
-{%- if params.maxwords %} data-maxwords="{{ params.maxwords }}"{% endif %}>
+{%- if params.maxwords %} data-maxwords="{{ params.maxwords }}"{% endif %}
+{%- if params.charactersUnderLimitHtml %}{{govukPluralisedI18nAttributes('characters-under-limit', params.charactersUnderLimitHtml)}}{% endif %}
+{%- if params.charactersAtLimitHtml %} data-i18n.characters-at-limit="{{ params.charactersAtLimitHtml | escape}}"{% endif %}
+{%- if params.charactersOverLimitHtml %}{{govukPluralisedI18nAttributes('characters-over-limit', params.charactersOverLimitHtml)}}{% endif %}
+{%- if params.wordsUnderLimitHtml %}{{govukPluralisedI18nAttributes('words-under-limit', params.wordsUnderLimitHtml)}}{% endif %}
+{%- if params.wordsAtLimitHtml %} data-i18n.words-at-limit="{{ params.wordsAtLimitHtml | escape}}"{% endif %}
+{%- if params.wordsOverLimitHtml %}{{govukPluralisedI18nAttributes('words-over-limit', params.wordsOverLimitHtml)}}{% endif %}>
   {{ govukTextarea({
     id: params.id,
     name: params.name,
