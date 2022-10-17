@@ -7,6 +7,7 @@ import Checkboxes from './components/checkboxes/checkboxes.mjs'
 import ErrorSummary from './components/error-summary/error-summary.mjs'
 import NotificationBanner from './components/notification-banner/notification-banner.mjs'
 import Header from './components/header/header.mjs'
+import HideThisPage from './components/hide-this-page/hide-this-page.mjs'
 import Radios from './components/radios/radios.mjs'
 import SkipLink from './components/skip-link/skip-link.mjs'
 import Tabs from './components/tabs/tabs.mjs'
@@ -70,6 +71,9 @@ function initAll (config) {
     new Header($header).init()
   }
 
+  var $hideThisPageButtons = $scope.querySelectorAll('[data-module="govuk-hide-this-page"]')
+  new HideThisPage($hideThisPageButtons).init()
+
   var $notificationBanners = $scope.querySelectorAll('[data-module="govuk-notification-banner"]')
   nodeListForEach($notificationBanners, function ($notificationBanner) {
     new NotificationBanner($notificationBanner, config.notificationBanner).init()
@@ -99,6 +103,7 @@ export {
   Checkboxes,
   ErrorSummary,
   Header,
+  HideThisPage,
   NotificationBanner,
   Radios,
   SkipLink,

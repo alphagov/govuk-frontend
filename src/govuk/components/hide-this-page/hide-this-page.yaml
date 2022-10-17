@@ -1,0 +1,54 @@
+params:
+- name: text
+  type: string
+  required: false
+  description: Text for the link. Defaults to `Hide this page`.
+- name: currentTabURL
+  type: string
+  required: false
+  description: URL to redirect the current tab to. Defaults to `https://www.google.com`.
+- name: newTabURL
+  type: string
+  required: false
+  description: URL to open a new tab to. Defaults to `https://www.bbc.co.uk/weather`.
+- name: fakePageTitle
+  type: string
+  required: false
+  description: Fake title that will be passed to the original page's title attribute to mask the user's history. Defaults to `How to prevent the spread of Coronavirus - GOV.UK`.
+- name: id
+  type: string
+  required: false
+  description: ID attribute to add to the hide this page container.
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the hide this page container.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the hide this page container.
+
+examples:
+- name: default  
+  data:
+    text: Hide this page
+    currentTabURL: "https://www.gov.uk"
+    newTabURL: "https://www.google.com/search?q=weather"
+    fakePageTitle: How to prevent the spread of Coronavirus - GOV.UK
+    id: null
+    classes: null
+    attributes:
+      {}
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+- name: testing
+  hidden: true
+  data:
+    text: Hide this test
+    currentTabURL: "https://www.test.co.uk"
+    newTabURL: "https://www.google.com/search?q=test"
+    fakePageTitle: This is a test
+    id: test-id
+    classes: test-class
+    attributes:
+      test-attribute: true
