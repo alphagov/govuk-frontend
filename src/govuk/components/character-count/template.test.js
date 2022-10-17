@@ -256,4 +256,23 @@ describe('Character count', () => {
       })
     })
   })
+
+  describe('no maximum', () => {
+    // If the template has no maxwords or maxlength to go for
+    // it needs to pass down any fallback hint to the JavaScript
+    // so it can inject the limit it may have received at instantiation
+    it('renders the fallback hint as a data attribute', () => {
+      const $ = render('character-count', examples['no maximum'])
+
+      // Fallback hint is passed as data attribute
+      const $component = $('[data-module]')
+      expect($component.attr('data-i18n.fallback-hint.other')).toEqual('No more than %{count} characters')
+
+      // A non-breaking space is set as the count message to reserve space
+      // and prevent a layout shift when the JavaScript component
+      // initialises and fills the element with the relevant text
+      const $countMessage = $('.govuk-character-count__message')
+      expect($countMessage.html()).toContain('&nbsp;')
+    })
+  })
 })

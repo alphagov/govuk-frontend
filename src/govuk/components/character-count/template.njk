@@ -3,10 +3,14 @@
 {% from "../textarea/macro.njk" import govukTextarea %}
 {% from "../hint/macro.njk" import govukHint %}
 
+{%- set hasNoLimit = (not params.maxwords and not params.maxlength) %}
+{%- set fallbackHintText = params.fallbackHintText or 'You can enter up to %{count} ' + ('words' if params.maxwords else 'characters') %}
+
 <div class="govuk-character-count" data-module="govuk-character-count"
 {%- if params.maxlength %} data-maxlength="{{ params.maxlength }}"{% endif %}
 {%- if params.threshold %} data-threshold="{{ params.threshold }}"{% endif %}
 {%- if params.maxwords %} data-maxwords="{{ params.maxwords }}"{% endif %}
+{%- if hasNoLimit %}{{govukPluralisedI18nAttributes('fallback-hint', {other: fallbackHintText})}}{% endif %}
 {%- if params.charactersUnderLimitText %}{{govukPluralisedI18nAttributes('characters-under-limit', params.charactersUnderLimitText)}}{% endif %}
 {%- if params.charactersAtLimitText %} data-i18n.characters-at-limit="{{ params.charactersAtLimitText | escape}}"{% endif %}
 {%- if params.charactersOverLimitText %}{{govukPluralisedI18nAttributes('characters-over-limit', params.charactersOverLimitText)}}{% endif %}
@@ -35,9 +39,14 @@
     attributes: params.attributes
   }) }}
   {%- set fallbackHintLength = params.maxwords or params.maxlength %}
-  {%- set fallbackHintDefault = 'You can enter up to %{count} ' + ('words' if params.maxwords else 'characters') %}
+  {#
+    Use the fact that `html` has precedence over `text` to override content
+    when no limit is set and reserve vertical space to avoid layout shifting
+    by injecting a non-breakable space
+  #}
   {{ govukHint({
-    text: (params.fallbackHintText or fallbackHintDefault) | replace('%{count}', fallbackHintLength),
+    text: ((fallbackHintText) | replace('%{count}', fallbackHintLength) if not hasNoLimit),
+    html: ('&nbsp;' if hasNoLimit),
     id: params.id + '-info',
     classes: 'govuk-character-count__message' + (' ' + params.countMessage.classes if params.countMessage.classes)
   }) }}

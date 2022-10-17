@@ -187,7 +187,6 @@ examples:
         other: '%{count} words too many'
         one: 'One word too many'
       
-
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes
     hidden: true
@@ -290,3 +289,11 @@ examples:
       name: address
       label:
         text: Full address
+  - name: no maximum
+    hidden: true
+    data:
+      id: no-maximum
+      name: no-maximum
+      label:
+        text: Full address
+      fallbackHintText: 'No more than %{count} characters'
