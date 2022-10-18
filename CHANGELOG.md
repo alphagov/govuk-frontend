@@ -70,6 +70,43 @@ $govuk-suppressed-warnings: (
 
 This was added in [#2911 Add warning suppression functionality](https://github.com/alphagov/govuk-frontend/pull/2911)
 
+#### Configure components in JavaScript
+
+JavaScript components can get the same configuration options in 2 ways - through data attributes, as before, and now when creating an instance. These components are:
+
+- the `Button` component, for its `preventDoubleClick` option (matching `data-prevent-double-click`)
+- the `CharacterCount` component, for its `maxlength`,`maxwords` and `threshold` options (matching `data-maxlength`, `data-maxwords` and `data-threshold`, respectively)
+- the `ErrorSummary` component, for its `disableAutoFocus` option (matching `data-disable-auto-focus`)
+- the `NotificationBanner` component, for its `disableAutoFocus` option (matching `data-disable-auto-focus`)
+
+You can omit these configuration options when calling the Nunjucks macro and provide them:
+
+- at component instantiation, in a configuration object as second argument
+- when initialising components in bulk using `initAll`
+
+For example:
+
+```js
+// Creating a single instance
+var button = document.querySelector('[data-module="button"]')
+new GOVUKFrontend.Button(button, {preventDoubleClick: true})
+
+// Or initialising components in bulk
+GOVUKFrontend.initAll({
+  button: {
+    preventDoubleClick: true
+  }
+  // Or, for the other components,
+  // characterCount: {/* options */},
+  // errorSummary: {/* options */},
+  // notificationBanner: {/* options */}
+})
+```
+
+You can find more information about component configuration in [GOV.UK Frontend documentation](https://design-system.service.gov.uk/get-started/configuration/).
+
+This was added in pull requests specific for each components: [NotificationBanner – #2843](https://github.com/alphagov/govuk-frontend/pull/2843), [ErrorSumarry – #2854](https://github.com/alphagov/govuk-frontend/pull/2854), [Button – #2867](https://github.com/alphagov/govuk-frontend/pull/2867), and [CharacterCount – #2883](https://github.com/alphagov/govuk-frontend/pull/2883)
+
 ### Recommended changes
 
 #### Remove `aria-labelledby`, remove `id="error-summary-title"` from title and move `role="alert"` to child container on the error summary component
