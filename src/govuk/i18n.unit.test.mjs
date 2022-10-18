@@ -165,6 +165,50 @@ describe('I18n', () => {
   })
 
   describe('.getPluralSuffix', () => {
+    let consoleWarn
+
+    beforeEach(() => {
+      // Silence warnings in test output, and allow us to 'expect' them
+      consoleWarn = jest.spyOn(global.console, 'warn')
+        .mockImplementation(() => { /* noop */ })
+    })
+
+    afterEach(() => {
+      jest.restoreAllMocks()
+    })
+
+    it('uses `Intl.PluralRules` when available', () => {
+      const IntlPluralRulesSelect = jest.spyOn(global.Intl.PluralRules.prototype, 'select')
+        .mockImplementation(() => 'one')
+
+      const i18n = new I18n({
+        'test.one': 'test',
+        'test.other': 'test'
+      }, {
+        locale: 'en'
+      })
+
+      expect(i18n.getPluralSuffix('test', 1)).toBe('one')
+      expect(IntlPluralRulesSelect).toBeCalledWith(1)
+    })
+
+    it('falls back to internal fallback rules', () => {
+      const i18n = new I18n({
+        'test.one': 'test',
+        'test.other': 'test'
+      }, {
+        locale: 'en'
+      })
+
+      jest.spyOn(i18n, 'hasIntlPluralRulesSupport')
+        .mockImplementation(() => false)
+
+      const selectPluralFormUsingFallbackRules = jest.spyOn(i18n, 'selectPluralFormUsingFallbackRules')
+
+      i18n.getPluralSuffix('test', 1)
+      expect(selectPluralFormUsingFallbackRules).toBeCalledWith(1)
+    })
+
     it('returns the preferred plural form for the locale if a translation exists', () => {
       const i18n = new I18n({
         'test.one': 'test',
@@ -175,17 +219,22 @@ describe('I18n', () => {
       expect(i18n.getPluralSuffix('test', 1)).toBe('one')
     })
 
-    it('falls back to `other` if a translation for the plural form does not exist', () => {
+    it.each([
+      { form: 'one', count: 1 },
+      { form: 'two', count: 2 },
+      { form: 'few', count: 3 },
+      { form: 'many', count: 6 }
+    ])('`$form` falls back to `other` if preferred form `$form` is missing', ({ count }) => {
       const i18n = new I18n({
         'test.other': 'test'
       }, {
-        locale: 'en'
+        locale: 'cy'
       })
-      expect(i18n.getPluralSuffix('test', 1)).toBe('other')
+
+      expect(i18n.getPluralSuffix('test', count)).toBe('other')
     })
 
     it('logs a console warning when falling back to `other`', () => {
-      const consoleWarn = jest.spyOn(global.console, 'warn')
       const i18n = new I18n({
         'test.other': 'test'
       }, {
@@ -199,14 +248,34 @@ describe('I18n', () => {
       )
     })
 
+    it('throws an error if trying to use `other` but `other` is not provided', () => {
+      const i18n = new I18n({}, {
+        locale: 'en'
+      })
+
+      expect(() => { i18n.getPluralSuffix('test', 2) })
+        .toThrowError('i18n: Plural form ".other" is required for "en" locale')
+    })
+
     it('throws an error if a plural form is not provided and neither is `other`', () => {
       const i18n = new I18n({
         'test.one': 'test'
       }, {
         locale: 'en'
       })
+
       expect(() => { i18n.getPluralSuffix('test', 2) })
         .toThrowError('i18n: Plural form ".other" is required for "en" locale')
+    })
+
+    it('returns `other` for non-numbers', () => {
+      const i18n = new I18n({
+        'test.other': 'test'
+      }, {
+        locale: 'en'
+      })
+
+      expect(i18n.getPluralSuffix('test', 'nonsense')).toBe('other')
     })
   })
 
