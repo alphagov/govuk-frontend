@@ -15,8 +15,11 @@ const pseudoclasses = require('postcss-pseudo-classes')
 module.exports = ({ env, file = '' }) => {
   const { dir, name } = parse(typeof file === 'object' ? file.path : file)
 
+  // IE8 stylesheets
+  const isIE8 = name.endsWith('-ie8') || name.endsWith('-ie8.min')
+
   const plugins = [
-    autoprefixer({ env })
+    autoprefixer({ env: isIE8 ? 'oldie' : env })
   ]
 
   // Minify CSS
@@ -43,7 +46,7 @@ module.exports = ({ env, file = '' }) => {
   }
 
   // Transpile CSS for Internet Explorer
-  if (name.endsWith('-ie8') || name.endsWith('-ie8.min')) {
+  if (isIE8) {
     plugins.push(
       oldie({
         rgba: { filter: true },
