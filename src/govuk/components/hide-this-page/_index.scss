@@ -23,6 +23,23 @@
     margin-bottom: 0;
   }
 
+  .govuk-hide-this-page__indicator {
+    display: inline;
+  }
+
+  .govuk-hide-this-page__indicator-light {
+    display: inline-block;
+    width: .5em;
+    height: .5em;
+    margin: 0 .125em;
+    border: 1px solid currentcolor;
+    border-radius: 50%;
+  }
+
+  .govuk-hide-this-page__indicator-light--on {
+    background-color: currentcolor;
+  }
+
   @media only print {
     .govuk-hide-this-page {
       display: none;
