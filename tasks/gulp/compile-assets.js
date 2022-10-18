@@ -6,7 +6,6 @@ const gulp = require('gulp')
 const sass = require('gulp-sass')(require('node-sass'))
 const plumber = require('gulp-plumber')
 const postcss = require('gulp-postcss')
-const autoprefixer = require('autoprefixer')
 const rollup = require('gulp-better-rollup')
 const gulpif = require('gulp-if')
 const uglify = require('gulp-uglify')
@@ -14,12 +13,6 @@ const eol = require('gulp-eol')
 const glob = require('glob')
 const merge = require('merge-stream')
 const rename = require('gulp-rename')
-const cssnano = require('cssnano')
-const postcsspseudoclasses = require('postcss-pseudo-classes')({
-  // Work around a bug in pseudo classes plugin that badly transforms
-  // :not(:whatever) pseudo selectors
-  blacklist: [':not(', ':disabled)', ':first-child)', ':last-child)', ':focus)', ':active)', ':hover)']
-})
 
 const configPaths = require('../../config/paths.js')
 const { destination, isDist, isPublic } = require('../task-arguments.js')
@@ -52,23 +45,13 @@ function compileStyles () {
   return gulp.src(compileStylesheet)
     .pipe(plumber(errorHandler))
     .pipe(sass())
-    // minify css add vendor prefixes and normalize to compiled css
-    .pipe(gulpif(isDist, postcss([
-      autoprefixer,
-      cssnano
-    ])))
-    .pipe(gulpif(!isDist, postcss([
-      autoprefixer,
-      // Auto-generate 'companion' classes for pseudo-selector states - e.g. a
-      // :hover class you can use to simulate the hover state in the review app
-      postcsspseudoclasses
-    ])))
     .pipe(gulpif(isDist,
       rename({
         basename: 'govuk-frontend',
         extname: '.min.css'
       })
     ))
+    .pipe(postcss())
     .pipe(gulp.dest(`${destination}/`))
 }
 
@@ -78,34 +61,13 @@ function compileOldIE () {
   return gulp.src(compileOldIeStylesheet)
     .pipe(plumber(errorHandler))
     .pipe(sass())
-    // minify css add vendor prefixes and normalize to compiled css
-    .pipe(gulpif(isDist, postcss([
-      autoprefixer,
-      cssnano,
-      // transpile css for ie https://github.com/jonathantneal/oldie
-      require('oldie')({
-        rgba: { filter: true },
-        rem: { disable: true },
-        unmq: { disable: true },
-        pseudo: { disable: true }
-      })
-    ])))
-    .pipe(gulpif(!isDist, postcss([
-      autoprefixer,
-      require('oldie')({
-        rgba: { filter: true },
-        rem: { disable: true },
-        unmq: { disable: true },
-        pseudo: { disable: true }
-        // more rules go here
-      })
-    ])))
     .pipe(gulpif(isDist,
       rename({
         basename: 'govuk-frontend-ie8',
         extname: '.min.css'
       })
     ))
+    .pipe(postcss())
     .pipe(gulp.dest(`${destination}/`))
 }
 
@@ -115,12 +77,7 @@ function compileLegacy () {
     .pipe(sass({
       includePaths: ['node_modules/govuk_frontend_toolkit/stylesheets', 'node_modules']
     }))
-    .pipe(postcss([
-      autoprefixer,
-      // Auto-generate 'companion' classes for pseudo-selector states - e.g. a
-      // :hover class you can use to simulate the hover state in the review app
-      postcsspseudoclasses
-    ]))
+    .pipe(postcss())
     .pipe(gulp.dest(`${destination}/`))
 }
 
@@ -130,16 +87,7 @@ function compileLegacyIE () {
     .pipe(sass({
       includePaths: ['node_modules/govuk_frontend_toolkit/stylesheets', 'node_modules']
     }))
-    .pipe(postcss([
-      autoprefixer,
-      postcsspseudoclasses,
-      require('oldie')({
-        rgba: { filter: true },
-        rem: { disable: true },
-        unmq: { disable: true },
-        pseudo: { disable: true }
-      })
-    ]))
+    .pipe(postcss())
     .pipe(gulp.dest(`${destination}/`))
 }
 
