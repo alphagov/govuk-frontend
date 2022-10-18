@@ -1,5 +1,8 @@
 const config = {
-  cacheDirectory: '<rootDir>/.cache/jest/'
+  cacheDirectory: '<rootDir>/.cache/jest/',
+  transform: {
+    '^.+\\.m?js$': ['babel-jest', { rootMode: 'upward' }]
+  }
 }
 
 module.exports = {
@@ -19,16 +22,12 @@ module.exports = {
         'jest-serializer-html'
       ],
       testMatch: [
-        '**/(*.)?template.test.js'
+        '**/(*.)?template.test.{js,mjs}'
       ]
     },
     {
       ...config,
       displayName: 'JavaScript unit tests',
-      moduleFileExtensions: ['js', 'mjs'],
-      transform: {
-        '.*.js$': 'rollup-jest'
-      },
       testMatch: [
         '**/*.unit.test.{js,mjs}'
       ]
@@ -40,11 +39,11 @@ module.exports = {
         '**/*.test.js',
 
         // Exclude macro/unit tests
-        '!**/(*.)?template.test.js',
+        '!**/(*.)?template.test.{js,mjs}',
         '!**/*.unit.test.{js,mjs}',
 
         // Exclude other tests
-        '!**/all.test.js',
+        '!**/all.test.{js,mjs}',
         '!**/components/*/**',
         '!**/gulp/**'
       ],
@@ -58,11 +57,11 @@ module.exports = {
       displayName: 'JavaScript component tests',
       setupFilesAfterEnv: [require.resolve('expect-puppeteer')],
       testMatch: [
-        '**/all.test.js',
+        '**/all.test.{js,mjs}',
         '**/components/*/*.test.js',
 
         // Exclude macro/unit tests
-        '!**/(*.)?template.test.js',
+        '!**/(*.)?template.test.{js,mjs}',
         '!**/*.unit.test.{js,mjs}'
       ],
 

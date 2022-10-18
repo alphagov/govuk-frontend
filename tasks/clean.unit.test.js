@@ -28,8 +28,8 @@ describe('Clean task', () => {
         paths: ['custom/location/here/**/*']
       }
     ]
-  )('cleans destination "$destination"', async ({ destination, paths }) => {
-    jest.mock('./task-arguments.js', () => ({ destination }))
+  )('cleans destination "$destination"', async ({ destination: mockDestination, paths }) => {
+    jest.mock('./task-arguments.js', () => ({ destination: mockDestination }))
     const clean = await import('./clean.js')
     expect(clean.paths()).toEqual(paths)
   })
