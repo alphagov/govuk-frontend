@@ -229,6 +229,15 @@ describe('Character count', () => {
     })
   })
 
+  describe('with custom fallback text', () => {
+    it('allows customisation of the fallback message', () => {
+      const $ = render('character-count', examples['with custom fallback text'])
+
+      const message = $('.govuk-character-count__message').text().trim()
+      expect(message).toEqual('Gallwch ddefnyddio hyd at 10 nod')
+    })
+  })
+
   describe('translations', () => {
     it('renders with translation data attributes', () => {
       const $ = render('character-count', examples['with translations'])

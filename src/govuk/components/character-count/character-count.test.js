@@ -586,17 +586,4 @@ describe('Character count', () => {
       })
     })
   })
-
-  describe('custom options', () => {
-    beforeAll(async () => {
-      await goToComponent(page, 'character-count', {
-        exampleName: 'with-custom-fallback-text'
-      })
-    })
-
-    it('allows customisation of the fallback message', async () => {
-      const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
-      expect(message).toEqual('Gallwch ddefnyddio hyd at 10 nod')
-    })
-  })
 })
