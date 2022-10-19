@@ -581,6 +581,30 @@ describe('Character count', () => {
         })
       })
     })
+
+    describe('Cross Side Scripting prevention', () => {
+      it('injects the localised strings as text not HTML', async () => {
+        await renderAndInitialise(page, 'character-count', {
+          nunjucksParams: examples['to configure in JavaScript'],
+          javascriptConfig: {
+            maxlength: 10,
+            i18n: {
+              charactersUnderLimit: {
+                other: '<strong>%{count}</strong> characters left'
+              }
+            }
+          }
+        })
+
+        const message = await page.$eval(
+          '.govuk-character-count__status',
+          (el) => el.innerHTML.trim()
+        )
+        expect(message).toEqual(
+          '&lt;strong&gt;10&lt;/strong&gt; characters left'
+        )
+      })
+    })
   })
 
   describe('in mismatched locale', () => {

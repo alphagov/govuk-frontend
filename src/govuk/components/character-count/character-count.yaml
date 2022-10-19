@@ -172,18 +172,18 @@ examples:
       id: with-translations
       name: with-translations
       maxlength: 10
-      charactersUnderLimitHtml:
+      charactersUnderLimitText:
         other: '%{count} characters to go'
         one: 'One character to go'
-      charactersAtLimitHtml: 'Zero characters left'
-      charactersOverLimitHtml:
+      charactersAtLimitText: 'Zero characters left'
+      charactersOverLimitText:
         other: '%{count} characters too many'
         one: 'One character too many'
-      wordsUnderLimitHtml:
+      wordsUnderLimitText:
         other: '%{count} words to go'
         one: 'One word to go'
-      wordsAtLimitHtml: 'Zero words left'
-      wordsOverLimitHtml:
+      wordsAtLimitText: 'Zero words left'
+      wordsOverLimitText:
         other: '%{count} words too many'
         one: 'One word too many'
       

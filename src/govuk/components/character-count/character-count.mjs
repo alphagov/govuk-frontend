@@ -269,7 +269,7 @@ CharacterCount.prototype.updateVisibleCountMessage = function () {
   }
 
   // Update message
-  $visibleCountMessage.innerHTML = this.getCountMessage()
+  $visibleCountMessage.textContent = this.getCountMessage()
 }
 
 /**
@@ -287,7 +287,7 @@ CharacterCount.prototype.updateScreenReaderCountMessage = function () {
   }
 
   // Update message
-  $screenReaderCountMessage.innerHTML = this.getCountMessage()
+  $screenReaderCountMessage.textContent = this.getCountMessage()
 }
 
 /**
