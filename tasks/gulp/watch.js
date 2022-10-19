@@ -18,6 +18,7 @@ gulp.task('watch', () => {
     ], gulp.series('styles')),
 
     gulp.watch([
+      'jsdoc.config.js',
       `${configPaths.src}**/**/*.mjs`
     ], gulp.series('scripts'))
   ])

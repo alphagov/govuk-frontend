@@ -8,5 +8,6 @@ public/
 package/package-lock.json
 examples/**/package-lock.json
 *.zip
+jsdoc/
 sassdoc/
 .cache
