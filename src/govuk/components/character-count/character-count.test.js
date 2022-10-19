@@ -586,4 +586,41 @@ describe('Character count', () => {
       })
     })
   })
+
+  describe('in mismatched locale', () => {
+    it('does not error', async () => {
+      // Create a listener for the page error event that we can assert on later
+      const pageErrorListener = jest.fn()
+      page.on('pageerror', pageErrorListener)
+
+      await renderAndInitialise(page, 'character-count', {
+        nunjucksParams: examples.default,
+        config: {
+          // Override maxlength to 10
+          maxlength: 10
+        },
+        initialiser: function ({ config }) {
+          const $component = document.querySelector('[data-module]')
+
+          // Set locale to Welsh, which expects translations for 'one', 'two',
+          // 'few' 'many' and 'other' forms – with the default English strings
+          // provided we only have translations for 'one' and 'other'.
+          //
+          // We want to make sure we handle this gracefully in case users have
+          // an existing character count inside an incorrect locale.
+          $component.setAttribute('lang', 'cy')
+          new window.GOVUKFrontend.CharacterCount($component, config).init()
+        }
+      })
+
+      // Type 10 characters so we go 'through' all the different forms as we
+      // approach 0 characters remaining.
+      await page.type('.govuk-js-character-count', 'A'.repeat(10), {
+        delay: keyupWaitTime
+      })
+
+      // Expect the page error event not to have been fired
+      expect(pageErrorListener).not.toHaveBeenCalled()
+    })
+  })
 })
