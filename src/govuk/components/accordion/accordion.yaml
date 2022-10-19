@@ -190,10 +190,10 @@ examples:
     id: with-translations
     hideAllSectionsText: Collapse all sections
     showAllSectionsText: Expand all sections
-    hideSectionText: |-
-      Collapse <span class="govuk-visually-hidden">this section</span>
-    showSectionText: |-
-      Expand <span class="govuk-visually-hidden">this section</span>
+    hideSectionText: Collapse
+    hideSectionAriaLabelText: Collapse this section
+    showSectionText: Expand
+    showSectionAriaLabelText: Show this section
     items:
       - heading:
           text: Section A

@@ -260,7 +260,7 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
     ? this.i18n.t('hideSection')
     : this.i18n.t('showSection')
 
-  $showHideText.innerHTML = newButtonText
+  $showHideText.textContent = newButtonText
   $button.setAttribute('aria-expanded', expanded)
 
   // Update aria-label combining
@@ -322,7 +322,7 @@ Accordion.prototype.updateShowAllButton = function (expanded) {
     ? this.i18n.t('hideAllSections')
     : this.i18n.t('showAllSections')
   this.$showAllButton.setAttribute('aria-expanded', expanded)
-  $showAllText.innerHTML = newButtonText
+  $showAllText.textContent = newButtonText
 
   // Swap icon, toggle class
   if (expanded) {

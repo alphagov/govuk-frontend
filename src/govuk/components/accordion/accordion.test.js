@@ -1,4 +1,5 @@
-const { goToComponent, goToExample } = require('../../../../lib/puppeteer-helpers')
+const { getExamples } = require('../../../../lib/jest-helpers')
+const { goToComponent, goToExample, renderAndInitialise } = require('../../../../lib/puppeteer-helpers')
 
 describe('/components/accordion', () => {
   describe('/components/accordion/preview', () => {
@@ -350,7 +351,41 @@ describe('/components/accordion', () => {
 
           const firstSectionToggleText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-toggle-text').innerHTML)
 
-          expect(firstSectionToggleText).toBe('Dangos<span class="govuk-visually-hidden"> adran</span>')
+          expect(firstSectionToggleText).toBe('Dangos')
+        })
+
+        it('should localise "Show section" aria-label based on data attribute', async () => {
+          await goToComponent(page, 'accordion', {
+            exampleName: 'with-translations'
+          })
+
+          const showSectionDataAttribute = await page.evaluate(() =>
+            document.body
+              .querySelector('.govuk-accordion')
+              .getAttribute('data-i18n.show-section-aria-label')
+          )
+          const firstSectionToggleAriaLabel = await page.evaluate(
+            () =>
+              document.body.querySelector(
+                '.govuk-accordion__section-button'
+              ).getAttribute('aria-label')
+          )
+
+          expect(
+            firstSectionToggleAriaLabel.endsWith(showSectionDataAttribute)
+          ).toBeTruthy()
+        })
+
+        it('should localise "Show section" aria-label based on JavaScript configuration', async () => {
+          await goToExample(page, 'translated')
+
+          const firstSectionToggleAriaLabel = await page.evaluate(() =>
+            document.body
+              .querySelector('.govuk-accordion__section-button')
+              .getAttribute('aria-label')
+          )
+
+          expect(firstSectionToggleAriaLabel.endsWith('Dangos adran')).toBeTruthy()
         })
 
         it('should localise "Hide section" based on data attribute', async () => {
@@ -371,7 +406,84 @@ describe('/components/accordion', () => {
 
           const firstSectionToggleText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-toggle-text').innerHTML)
 
-          expect(firstSectionToggleText).toBe('Cuddio<span class="govuk-visually-hidden"> adran</span>')
+          expect(firstSectionToggleText).toBe('Cuddio')
+        })
+
+        it('should localise "Hide section" aria-label based on data attribute', async () => {
+          await goToComponent(page, 'accordion', {
+            exampleName: 'with-translations'
+          })
+          await page.click(
+            '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header'
+          )
+
+          const hideSectionDataAttribute = await page.evaluate(() =>
+            document.body
+              .querySelector('.govuk-accordion')
+              .getAttribute('data-i18n.hide-section-aria-label')
+          )
+          const firstSectionToggleAriaLabel = await page.evaluate(() =>
+            document.body
+              .querySelector('.govuk-accordion__section-button')
+              .getAttribute('aria-label')
+          )
+
+          expect(
+            firstSectionToggleAriaLabel.endsWith(hideSectionDataAttribute)
+          ).toBeTruthy()
+        })
+
+        it('should localise "Hide section" aria-label based on JavaScript configuration', async () => {
+          await goToExample(page, 'translated')
+          await page.click(
+            '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header'
+          )
+
+          const firstSectionToggleAriaLabel = await page.evaluate(() =>
+            document.body
+              .querySelector('.govuk-accordion__section-button')
+              .getAttribute('aria-label')
+          )
+
+          expect(
+            firstSectionToggleAriaLabel.endsWith('Cuddio adran')
+          ).toBeTruthy()
+        })
+
+        describe('Cross Side Scripting prevention', () => {
+          let examples
+
+          beforeAll(async () => {
+            examples = await getExamples('accordion')
+          })
+
+          it('injects the localised strings as text not HTML', async () => {
+            await renderAndInitialise(page, 'accordion', {
+              nunjucksParams: examples.default,
+              javascriptConfig: {
+                i18n: {
+                  showAllSections: 'Show <strong>all sections</strong>',
+                  showSection: 'Show <strong>this section</strong>'
+                }
+              }
+            })
+
+            const { toggleAllContent, firstSectionToggleContent } =
+              await page.$eval('[data-module]', (el) => ({
+                toggleAllContent: el
+                  .querySelector('.govuk-accordion__show-all-text')
+                  .innerHTML.trim(),
+                firstSectionToggleContent: el
+                  .querySelector('.govuk-accordion__section-toggle-text')
+                  .innerHTML.trim()
+              }))
+            expect(toggleAllContent).toEqual(
+              'Show &lt;strong&gt;all sections&lt;/strong&gt;'
+            )
+            expect(firstSectionToggleContent).toEqual(
+              'Show &lt;strong&gt;this section&lt;/strong&gt;'
+            )
+          })
         })
       })
     })
