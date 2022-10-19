@@ -1,11 +1,18 @@
 const config = {
   cacheDirectory: '<rootDir>/.cache/jest/',
+  coveragePathIgnorePatterns: [
+    '.test.(js|mjs)',
+    '.eslintrc.js',
+    'config/*',
+    'vendor/*'
+  ],
   transform: {
     '^.+\\.m?js$': ['babel-jest', { rootMode: 'upward' }]
   }
 }
 
 module.exports = {
+  collectCoverageFrom: ['./src/**/*.{js,mjs}'],
   projects: [
     {
       ...config,
