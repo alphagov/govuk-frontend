@@ -73,9 +73,9 @@ gulp.task('scss:compile', function () {
 /**
  * Compile Sass to CSS
  *
- * @param {NodeJS.ReadWriteStream} stream - Input file stream
+ * @param {import('stream').Stream} stream - Input file stream
  * @param {import('node-sass').Options} [options] - Sass options
- * @returns {NodeJS.ReadWriteStream} Output file stream
+ * @returns {import('stream').Stream} Output file stream
  */
 function compileStyles (stream, options = {}) {
   return stream

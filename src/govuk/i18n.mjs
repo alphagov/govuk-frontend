@@ -1,10 +1,10 @@
 /**
  * i18n support initialisation function
  *
- * @constructor
- * @param  {Object}  translations   - Key-value pairs of the translation strings to use.
- * @param  {Object}  config         - Configuration options for the function.
- * @param  {String}  config.locale  - An overriding locale for the PluralRules functionality.
+ * @class
+ * @param {object} translations - Key-value pairs of the translation strings to use.
+ * @param {object} config - Configuration options for the function.
+ * @param {string} config.locale - An overriding locale for the PluralRules functionality.
  */
 export function I18n (translations, config) {
   config = config || {}
@@ -20,9 +20,9 @@ export function I18n (translations, config) {
  * The most used function - takes the key for a given piece of UI text and
  * returns the appropriate string.
  *
- * @param    {String}  lookupKey  - The lookup key of the string to use.
- * @param    {Object}  options    - Any options passed with the translation string, e.g: for string interpolation.
- * @returns  {String}             - The appropriate translation string.
+ * @param {string} lookupKey - The lookup key of the string to use.
+ * @param {object} options - Any options passed with the translation string, e.g: for string interpolation.
+ * @returns {string} The appropriate translation string.
  */
 I18n.prototype.t = function (lookupKey, options) {
   if (!lookupKey) {
@@ -71,9 +71,9 @@ I18n.prototype.t = function (lookupKey, options) {
  * Takes a translation string with placeholders, and replaces the placeholders
  * with the provided data
  *
- * @param    {String}  translationString  - The translation string
- * @param    {Object}  options    - Any options passed with the translation string, e.g: for string interpolation.
- * @returns  {String}             - The translation string to output, with ${} placeholders replaced
+ * @param {string} translationString - The translation string
+ * @param {object} options - Any options passed with the translation string, e.g: for string interpolation.
+ * @returns {string} The translation string to output, with ${} placeholders replaced
  */
 I18n.prototype.replacePlaceholders = function (translationString, options) {
   // eslint-disable-next-line prefer-regex-literals
@@ -115,7 +115,7 @@ I18n.prototype.replacePlaceholders = function (translationString, options) {
  * - The implementation of Intl supports PluralRules (NOT true in IE11)
  * - The browser/OS has plural rules for the current locale (browser dependent)
  *
- * @returns  {boolean}  - Returns true if all conditions are met. Returns false otherwise.
+ * @returns {boolean} Returns true if all conditions are met. Returns false otherwise.
  */
 I18n.prototype.hasIntlPluralRulesSupport = function () {
   return Boolean(window.Intl && ('PluralRules' in window.Intl && Intl.PluralRules.supportedLocalesOf(this.locale).length))
@@ -129,7 +129,7 @@ I18n.prototype.hasIntlPluralRulesSupport = function () {
  * - The implementation of Intl supports NumberFormat (also true in IE11)
  * - The browser/OS has number formatting rules for the current locale (browser dependent)
  *
- * @returns  {boolean}  - Returns true if all conditions are met. Returns false otherwise.
+ * @returns {boolean} Returns true if all conditions are met. Returns false otherwise.
  */
 I18n.prototype.hasIntlNumberFormatSupport = function () {
   return Boolean(window.Intl && ('NumberFormat' in window.Intl && Intl.NumberFormat.supportedLocalesOf(this.locale).length))
@@ -138,8 +138,8 @@ I18n.prototype.hasIntlNumberFormatSupport = function () {
 /**
  * Get the appropriate suffix for the plural form.
  *
- * @param    {number}  count       - Number used to determine which pluralisation to use.
- * @returns  {string}              - The suffix associated with the correct pluralisation for this locale.
+ * @param {number} count - Number used to determine which pluralisation to use.
+ * @returns {PluralRule} The suffix associated with the correct pluralisation for this locale.
  */
 I18n.prototype.getPluralSuffix = function (count) {
   // Validate that the number is actually a number.
@@ -165,8 +165,8 @@ I18n.prototype.getPluralSuffix = function (count) {
  * This is split out into a separate function to make it easier to test the
  * fallback behaviour in an environment where Intl.PluralRules exists.
  *
- * @param {Number} count - Number used to determine which pluralisation to use.
- * @returns {string} - The suffix associated with the correct pluralisation for this locale.
+ * @param {number} count - Number used to determine which pluralisation to use.
+ * @returns {PluralRule} The suffix associated with the correct pluralisation for this locale.
  */
 I18n.prototype.selectPluralRuleFromFallback = function (count) {
   // Currently our custom code can only handle positive integers, so let's
@@ -190,7 +190,7 @@ I18n.prototype.selectPluralRuleFromFallback = function (count) {
  * regardless of region. There are exceptions, however, (e.g. Portuguese) so
  * this searches by both the full and shortened locale codes, just to be sure.
  *
- * @returns {string} - The name of the pluralisation rule to use (a key for one
+ * @returns {PluralRuleName | undefined} The name of the pluralisation rule to use (a key for one
  *   of the functions in this.pluralRules)
  */
 I18n.prototype.getPluralRulesForLocale = function () {
@@ -218,7 +218,7 @@ I18n.prototype.getPluralRulesForLocale = function () {
  * independently of one another.
  *
  * Code to support more languages can be found in the i18n spike:
- * https://github.com/alphagov/govuk-frontend/blob/spike-i18n-support/src/govuk/i18n.mjs
+ * {@link https://github.com/alphagov/govuk-frontend/blob/spike-i18n-support/src/govuk/i18n.mjs}
  *
  * Languages currently supported:
  *
@@ -238,6 +238,8 @@ I18n.prototype.getPluralRulesForLocale = function () {
  * Scottish: Scottish Gaelic (gd)
  * Spanish: European Portuguese (pt-PT), Italian (it), Spanish (es)
  * Welsh: Welsh (cy)
+ *
+ * @type {Object<string, string[]>}
  */
 I18n.pluralRulesMap = {
   arabic: ['ar'],
@@ -261,10 +263,11 @@ I18n.pluralRulesMap = {
  * Possible suffixes: 'zero', 'one', 'two', 'few', 'many', 'other' (the actual
  * meaning of each differs per locale). 'other' should always exist, even in
  * languages without plurals, such as Chinese.
- * https://unicode-org.github.io/cldr-staging/charts/latest/supplemental/language_plural_rules.html
+ * {@link https://cldr.unicode.org/index/cldr-spec/plural-rules}
  *
- * @param    {number}  n  - The `count` number being passed through. This must be a positive integer. Negative numbers and decimals aren't accounted for.
- * @returns  {string}     - The string that needs to be suffixed to the key (without separator).
+ * The count must be a positive integer. Negative numbers and decimals aren't accounted for
+ *
+ * @type {Object<string, function(number): PluralRule>}
  */
 I18n.pluralRules = {
   arabic: function (n) {
@@ -323,16 +326,28 @@ I18n.pluralRules = {
 }
 
 /**
+ * Supported languages for plural rules
+ *
+ * @typedef {'arabic' | 'chinese' | 'french' | 'german' | 'irish' | 'russian' | 'scottish' | 'spanish' | 'welsh'} PluralRuleName
+ */
+
+/**
+ * Plural rule category mnemonic tags
+ *
+ * @typedef {'zero' | 'one' | 'two' | 'few' | 'many' | 'other'} PluralRule
+ */
+
+/**
  * Associates translated messages to plural type they correspond to.
  *
  * Allows to group pluralised messages under a single key when passing
  * translations to a component's constructor
  *
  * @typedef {object} PluralisedTranslation
- * @property {string} other
- * @property {string} [zero]
- * @property {string} [one]
- * @property {string} [two]
- * @property {string} [few]
- * @property {string} [many]
+ * @property {string} other - General plural form
+ * @property {string} [zero] - Plural form used with 0
+ * @property {string} [one] - Plural form used with 1
+ * @property {string} [two] - Plural form used with 2
+ * @property {string} [few] - Plural form used for a few
+ * @property {string} [many] - Plural form used for many
  */

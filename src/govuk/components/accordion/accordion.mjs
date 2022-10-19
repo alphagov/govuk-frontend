@@ -16,16 +16,16 @@ import '../../vendor/polyfills/Element/prototype/classList.mjs'
  * attribute, which also provides accessibility.
  *
  * @class
- * @param {HTMLElement} $module HTML element to use for accordion
- * @param {Object} config
- * @param {Object} config.i18n - Translations
- * @param {String} [config.i18n.hideAllSections='Hide all sections'] - Text for
+ * @param {HTMLElement} $module - HTML element to use for accordion
+ * @param {object} config - Accordion config
+ * @param {object} config.i18n - Translations
+ * @param {string} [config.i18n.hideAllSections="Hide all sections"] - Text for
  *   'hide all sections' button, used when at least one section is expanded
- * @param {String} [config.i18n.hideSection='Hide<span class="govuk-visually-hidden"> this section</span>']
+ * @param {string} [config.i18n.hideSection="Hide<span class=\"govuk-visually-hidden\"> this section</span>"]
  *   - Text for 'hide this section' button, used when a section is expanded
- * @param {String} [config.i18n.showAllSections='Show all sections'] - Text for
+ * @param {string} [config.i18n.showAllSections="Show all sections"] - Text for
  *   'show all sections' button, used when all sections are collapsed
- * @param {String} [config.i18n.showSection='Show<span class="govuk-visually-hidden"> this section</span>']
+ * @param {string} [config.i18n.showSection="Show<span class=\"govuk-visually-hidden\"> this section</span>"]
  *   - Text for 'show this section' button, used when a section is collapsed
  */
 function Accordion ($module, config) {
@@ -364,17 +364,18 @@ Accordion.prototype.setInitialState = function ($section) {
 }
 
 /**
-* Create an element to improve semantics of the section button with punctuation
-* @return {object} DOM element
-*
-* Used to add pause (with a comma) for assistive technology.
-* Example: [heading]Section A ,[pause] Show this section.
-* https://accessibility.blog.gov.uk/2017/12/18/what-working-on-gov-uk-navigation-taught-us-about-accessibility/
-*
-* Adding punctuation to the button can also improve its general semantics by dividing its contents
-* into thematic chunks.
-* See https://github.com/alphagov/govuk-frontend/issues/2327#issuecomment-922957442
-*/
+ * Create an element to improve semantics of the section button with punctuation
+ *
+ * @returns {object} DOM element
+ *
+ * Used to add pause (with a comma) for assistive technology.
+ * Example: [heading]Section A ,[pause] Show this section.
+ * https://accessibility.blog.gov.uk/2017/12/18/what-working-on-gov-uk-navigation-taught-us-about-accessibility/
+ *
+ * Adding punctuation to the button can also improve its general semantics by dividing its contents
+ * into thematic chunks.
+ * See https://github.com/alphagov/govuk-frontend/issues/2327#issuecomment-922957442
+ */
 Accordion.prototype.getButtonPunctuationEl = function () {
   var $punctuationEl = document.createElement('span')
   $punctuationEl.classList.add('govuk-visually-hidden', 'govuk-accordion__section-heading-divider')

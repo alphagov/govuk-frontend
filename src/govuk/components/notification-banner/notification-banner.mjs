@@ -1,6 +1,15 @@
 import '../../vendor/polyfills/Event.mjs' // addEventListener
 
 import { mergeConfigs, normaliseDataset } from '../../common.mjs'
+
+/**
+ * Notification Banner component
+ *
+ * @class
+ * @param {HTMLElement} $module - HTML element to use for notification banner
+ * @param {object} config - Error summary config
+ * @param {boolean} [config.disableAutoFocus=false] - Whether to disable the component taking focus on initialisation
+ */
 function NotificationBanner ($module, config) {
   this.$module = $module
 
