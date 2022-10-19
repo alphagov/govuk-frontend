@@ -15,19 +15,19 @@ params:
   type: object
   required: false
   description: HTML attributes (for example data attributes) to add to the accordion.
-- name: hideAllSectionsHtml
+- name: hideAllSectionsText
   type: string
   required: false
   description: The HTML content of the toggle at the top of the accordion when all sections are expanded. Defaults to 'Hide all sections'.
-- name: hideSectionHtml
+- name: hideSectionText
   type: string
   required: false
   description: The HTML content of the toggle within each section of the accordion, visible when the section is expanded. Defaults to 'Hide this section', with the 'this section' text only exposed to assistive technologies.
-- name: showAllSectionsHtml
+- name: showAllSectionsText
   type: string
   required: false
   description: The HTML content of the toggle at the top of the accordion when some or all sections are collapsed. Defaults to 'Show all sections'.
-- name: showSectionHtml
+- name: showSectionText
   type: string
   required: false
   description: The HTML content of the toggle within each section of the accordion, visible when the section is collapsed. Defaults to 'Show this section', with the 'this section' text only exposed to assistive technologies.
@@ -188,11 +188,11 @@ examples:
 - name: with translations
   data:
     id: with-translations
-    hideAllSectionsHtml: Collapse all sections
-    showAllSectionsHtml: Expand all sections
-    hideSectionHtml: |-
+    hideAllSectionsText: Collapse all sections
+    showAllSectionsText: Expand all sections
+    hideSectionText: |-
       Collapse <span class="govuk-visually-hidden">this section</span>
-    showSectionHtml: |-
+    showSectionText: |-
       Expand <span class="govuk-visually-hidden">this section</span>
     items:
       - heading:
