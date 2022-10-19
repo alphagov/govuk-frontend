@@ -1,8 +1,10 @@
 const { parse } = require('path')
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
-const oldie = require('oldie')
 const pseudoclasses = require('postcss-pseudo-classes')
+const unmq = require('postcss-unmq')
+const unopacity = require('postcss-unopacity')
+const unrgba = require('postcss-unrgba')
 
 /**
  * PostCSS config
@@ -48,12 +50,9 @@ module.exports = ({ env, file = '' }) => {
   // Transpile CSS for Internet Explorer
   if (isIE8) {
     plugins.push(
-      oldie({
-        rgba: { filter: true },
-        rem: { disable: true },
-        unmq: { disable: true },
-        pseudo: { disable: true }
-      })
+      unmq(),
+      unopacity(),
+      unrgba({ filter: true })
     )
   }
 

@@ -104,7 +104,9 @@ describe('PostCSS config', () => {
           expect(getPluginNames(config))
             .toEqual([
               'autoprefixer',
-              'oldie'
+              'postcss-unmq',
+              'postcss-unopacity',
+              'postcss-color-rgba-fallback'
             ])
         }
       })
@@ -149,7 +151,9 @@ describe('PostCSS config', () => {
             .toEqual([
               'autoprefixer',
               'cssnano',
-              'oldie'
+              'postcss-unmq',
+              'postcss-unopacity',
+              'postcss-color-rgba-fallback'
             ])
         }
       })
@@ -194,7 +198,9 @@ describe('PostCSS config', () => {
             .toEqual([
               'autoprefixer',
               'postcss-pseudo-classes',
-              'oldie'
+              'postcss-unmq',
+              'postcss-unopacity',
+              'postcss-color-rgba-fallback'
             ])
         }
       })
