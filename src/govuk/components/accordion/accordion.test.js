@@ -173,7 +173,7 @@ describe('/components/accordion', () => {
       })
 
       describe('hidden comma', () => {
-        it('should contain hidden comma " ," after the heading text for assistive technology', async () => {
+        it('should contain hidden comma " ," after the heading text for when CSS does not load', async () => {
           await goToComponent(page, 'accordion')
 
           const commaAfterHeadingTextClassName = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-heading-text').nextElementSibling.className)
@@ -185,7 +185,7 @@ describe('/components/accordion', () => {
           expect(commaAfterHeadingTextContent).toEqual(', ')
         })
 
-        it('should contain hidden comma " ," after the summary line for assistive technology', async () => {
+        it('should contain hidden comma " ," after the summary line for when CSS does not load', async () => {
           await goToComponent(page, 'accordion', {
             exampleName: 'with-additional-descriptions'
           })
@@ -244,14 +244,39 @@ describe('/components/accordion', () => {
         expect(dataNoSnippetAttribute).toEqual('')
       })
 
-      describe('hidden text', () => {
-        it('should contain hidden text " this section" for assistive technology', async () => {
+      describe('accessible name', () => {
+        it('Should set the accessible name of the show/hide section buttons', async () => {
           await goToComponent(page, 'accordion')
 
-          const numberOfExampleSections = 2
-          const hiddenText = await page.evaluate(() => document.body.querySelectorAll('.govuk-accordion .govuk-accordion__section .govuk-accordion__section-toggle-text .govuk-visually-hidden').length)
+          const node = await page.$(
+            'aria/Section A , Show this section[role="button"]'
+          )
+          expect(node).not.toBeNull()
 
-          expect(hiddenText).toEqual(numberOfExampleSections)
+          await node.click()
+
+          const updatedNode = await page.$(
+            'aria/Section A , Hide this section[role="button"]'
+          )
+          expect(updatedNode).not.toBeNull()
+        })
+
+        it('Includes the heading summary', async () => {
+          await goToComponent(page, 'accordion', {
+            exampleName: 'with-additional-descriptions'
+          })
+
+          const node = await page.$(
+            'aria/Test , Additional description , Show this section[role="button"]'
+          )
+          expect(node).not.toBeNull()
+
+          await node.click()
+
+          const updatedNode = await page.$(
+            'aria/Test , Additional description , Hide this section[role="button"]'
+          )
+          expect(updatedNode).not.toBeNull()
         })
       })
 
