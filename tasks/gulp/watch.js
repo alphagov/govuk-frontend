@@ -10,6 +10,7 @@ const configPaths = require('../../config/paths.js')
 gulp.task('watch', () => {
   return Promise.all([
     gulp.watch([
+      'sassdoc.config.yaml',
       `${configPaths.src}**/**/*.scss`,
       `${configPaths.app}assets/scss/**/*.scss`,
       `${configPaths.fullPageExamples}**/*.scss`,

@@ -9,7 +9,6 @@ require('./tasks/gulp/copy-to-destination.js')
 require('./tasks/gulp/watch.js')
 
 // Node tasks
-const { buildSassdocs } = require('./tasks/sassdoc.js')
 const { updateDistAssetsVersion } = require('./tasks/asset-version.js')
 const { clean } = require('./tasks/clean.js')
 const { npmScriptTask } = require('./tasks/run.js')
@@ -25,10 +24,11 @@ gulp.task('scripts', gulp.series(
 
 /**
  * Umbrella styles tasks (for watch)
- * Runs Sass code quality checks and compilation
+ * Runs Sass code quality checks, documentation, compilation
  */
 gulp.task('styles', gulp.series(
   npmScriptTask('lint:scss', ['--silent']),
+  npmScriptTask('build:sassdoc', ['--silent']),
   'scss:compile'
 ))
 
@@ -48,7 +48,7 @@ gulp.task('copy:assets', () => {
 gulp.task('compile', gulp.series(
   'js:compile',
   'scss:compile',
-  buildSassdocs
+  npmScriptTask('build:sassdoc', ['--silent'])
 ))
 
 /**
