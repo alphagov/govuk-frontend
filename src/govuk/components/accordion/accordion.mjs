@@ -2,15 +2,18 @@ import { nodeListForEach, mergeConfigs, extractConfigByNamespace, normaliseDatas
 import { I18n } from '../../i18n.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
+import '../../vendor/polyfills/String/prototype/trim.mjs'
 
 /**
  * @type {AccordionTranslations}
  */
 var TRANSLATIONS_DEFAULT = {
   hideAllSections: 'Hide all sections',
-  hideSection: 'Hide<span class="govuk-visually-hidden"> this section</span>',
+  hideSection: 'Hide',
+  hideSectionAriaLabel: 'Hide this section',
   showAllSections: 'Show all sections',
-  showSection: 'Show<span class="govuk-visually-hidden"> this section</span>'
+  showSection: 'Show',
+  showSectionAriaLabel: 'Show this section'
 }
 
 /**
@@ -260,6 +263,27 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
   $showHideText.innerHTML = newButtonText
   $button.setAttribute('aria-expanded', expanded)
 
+  // Update aria-label combining
+  var $header = $section.querySelector('.' + this.sectionHeadingTextClass)
+  var ariaLabelParts = [$header.textContent.trim()]
+
+  var $summary = $section.querySelector('.' + this.sectionSummaryClass)
+  if ($summary) {
+    ariaLabelParts.push($summary.textContent.trim())
+  }
+
+  var ariaLabelMessage = expanded
+    ? this.i18n.t('hideSectionAriaLabel')
+    : this.i18n.t('showSectionAriaLabel')
+  ariaLabelParts.push(ariaLabelMessage)
+
+  /*
+   * Join with a comma to add pause for assistive technology.
+   * Example: [heading]Section A ,[pause] Show this section.
+   * https://accessibility.blog.gov.uk/2017/12/18/what-working-on-gov-uk-navigation-taught-us-about-accessibility/
+   */
+  $button.setAttribute('aria-label', ariaLabelParts.join(' , '))
+
   // Swap icon, change class
   if (expanded) {
     $section.classList.add(this.sectionExpandedClass)
@@ -363,11 +387,7 @@ Accordion.prototype.setInitialState = function ($section) {
 /**
  * Create an element to improve semantics of the section button with punctuation
  *
- * @returns {object} DOM element
- *
- * Used to add pause (with a comma) for assistive technology.
- * Example: [heading]Section A ,[pause] Show this section.
- * https://accessibility.blog.gov.uk/2017/12/18/what-working-on-gov-uk-navigation-taught-us-about-accessibility/
+ * @returns {HTMLSpanElement} DOM element
  *
  * Adding punctuation to the button can also improve its general semantics by dividing its contents
  * into thematic chunks.

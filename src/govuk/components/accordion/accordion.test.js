@@ -226,17 +226,17 @@ describe('/components/accordion', () => {
         })
       })
 
-      it('should change the (combined) Show[ this section] text to Hide[ this section ] when sections are opened', async () => {
+      it('should change the Show text to Hide when sections are opened', async () => {
         await goToComponent(page, 'accordion')
         await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header')
         await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(3) .govuk-accordion__section-header')
 
         const ShowOrHideButtonText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-toggle-text').textContent)
 
-        expect(ShowOrHideButtonText).toEqual('Hide this section')
+        expect(ShowOrHideButtonText).toEqual('Hide')
       })
 
-      it('should have a data-nosnippet attribute on the "Show / hide this section" container to hide it from search result snippets', async () => {
+      it('should have a data-nosnippet attribute on the "Show / hide" container to hide it from search result snippets', async () => {
         await goToComponent(page, 'accordion')
 
         const dataNoSnippetAttribute = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-toggle').getAttribute('data-nosnippet'))
