@@ -18,19 +18,27 @@ params:
 - name: hideAllSectionsText
   type: string
   required: false
-  description: The HTML content of the toggle at the top of the accordion when all sections are expanded. Defaults to 'Hide all sections'.
+  description: The text content of the toggle at the top of the accordion when all sections are expanded. Defaults to 'Hide all sections'.
 - name: hideSectionText
   type: string
   required: false
-  description: The HTML content of the toggle within each section of the accordion, visible when the section is expanded. Defaults to 'Hide this section', with the 'this section' text only exposed to assistive technologies.
+  description: The text content of the toggle within each section of the accordion, visible when the section is expanded. Defaults to 'Hide'.
+- name: hideSectionAriaLabelText
+  type: string
+  required: false
+  description: Text made available to assistive technologies, like screen-readers, as part of the toggle's accessible name when the section is expanded. Defaults to 'Hide this section'
 - name: showAllSectionsText
   type: string
   required: false
-  description: The HTML content of the toggle at the top of the accordion when some or all sections are collapsed. Defaults to 'Show all sections'.
+  description: The text content of the toggle at the top of the accordion when some or all sections are collapsed. Defaults to 'Show all sections'.
 - name: showSectionText
   type: string
   required: false
-  description: The HTML content of the toggle within each section of the accordion, visible when the section is collapsed. Defaults to 'Show this section', with the 'this section' text only exposed to assistive technologies.
+  description: The text content of the toggle within each section of the accordion, visible when the section is collapsed. Defaults to 'Show'.
+- name: showSectionAriaLabelText
+  type: string
+  required: false
+  description: Text made available to assistive technologies, like screen-readers, as part of the toggle's accessible name when the section is collapsed. Defaults to 'Show this section'
 - name: items
   type: array
   required: true
@@ -193,7 +201,7 @@ examples:
     hideSectionText: Collapse
     hideSectionAriaLabelText: Collapse this section
     showSectionText: Expand
-    showSectionAriaLabelText: Show this section
+    showSectionAriaLabelText: Expand this section
     items:
       - heading:
           text: Section A
