@@ -4,6 +4,16 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 
 /**
+ * @type {AccordionTranslations}
+ */
+var TRANSLATIONS_DEFAULT = {
+  hideAllSections: 'Hide all sections',
+  hideSection: 'Hide<span class="govuk-visually-hidden"> this section</span>',
+  showAllSections: 'Show all sections',
+  showSection: 'Show<span class="govuk-visually-hidden"> this section</span>'
+}
+
+/**
  * Accordion component
  *
  * This allows a collection of sections to be collapsed by default, showing only
@@ -18,15 +28,7 @@ import '../../vendor/polyfills/Element/prototype/classList.mjs'
  * @class
  * @param {HTMLElement} $module - HTML element to use for accordion
  * @param {object} config - Accordion config
- * @param {object} config.i18n - Translations
- * @param {string} [config.i18n.hideAllSections="Hide all sections"] - Text for
- *   'hide all sections' button, used when at least one section is expanded
- * @param {string} [config.i18n.hideSection="Hide<span class=\"govuk-visually-hidden\"> this section</span>"]
- *   - Text for 'hide this section' button, used when a section is expanded
- * @param {string} [config.i18n.showAllSections="Show all sections"] - Text for
- *   'show all sections' button, used when all sections are collapsed
- * @param {string} [config.i18n.showSection="Show<span class=\"govuk-visually-hidden\"> this section</span>"]
- *   - Text for 'show this section' button, used when a section is collapsed
+ * @param {AccordionTranslations} config.i18n - Translations
  */
 function Accordion ($module, config) {
   this.$module = $module
@@ -35,12 +37,7 @@ function Accordion ($module, config) {
   this.browserSupportsSessionStorage = helper.checkForSessionStorage()
 
   var defaultConfig = {
-    i18n: {
-      hideAllSections: 'Hide all sections',
-      hideSection: 'Hide<span class="govuk-visually-hidden"> this section</span>',
-      showAllSections: 'Show all sections',
-      showSection: 'Show<span class="govuk-visually-hidden"> this section</span>'
-    }
+    i18n: TRANSLATIONS_DEFAULT
   }
   this.config = mergeConfigs(
     defaultConfig,
@@ -384,3 +381,15 @@ Accordion.prototype.getButtonPunctuationEl = function () {
 }
 
 export default Accordion
+
+/**
+ * @typedef {object} AccordionTranslations
+ * @property {string} [hideAllSections] - Text for 'hide all sections' button,
+ *   used when at least one section is expanded
+ * @property {string} [hideSection] - Text for 'hide this section' button, used
+ * when a section is expanded
+ * @property {string} [showAllSections] - Text for 'show all sections' button,
+ *   used when all sections are collapsed
+ * @property {string} [showSection] - Text for 'show this section' button, used
+ * when a section is collapsed
+ */
