@@ -4,6 +4,7 @@ npm-debug.log
 preview/
 tmp/
 axeReports/
+coverage/
 public/
 package/package-lock.json
 examples/**/package-lock.json

@@ -1,11 +1,18 @@
 const config = {
   cacheDirectory: '<rootDir>/.cache/jest/',
+  coveragePathIgnorePatterns: [
+    '.test.(js|mjs)',
+    '.eslintrc.js',
+    'config/*',
+    'vendor/*'
+  ],
   transform: {
     '^.+\\.m?js$': ['babel-jest', { rootMode: 'upward' }]
   }
 }
 
 module.exports = {
+  collectCoverageFrom: ['./src/**/*.{js,mjs}'],
   projects: [
     {
       ...config,
@@ -72,5 +79,6 @@ module.exports = {
       globalSetup: './config/jest/browser/open.mjs',
       globalTeardown: './config/jest/browser/close.mjs'
     }
-  ]
+  ],
+  reporters: ['default', 'github-actions']
 }

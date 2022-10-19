@@ -61,10 +61,17 @@ jobs:
       - name: Run test projects
         run: |
           npx jest --color --selectProjects "Nunjucks macro tests"
-          npx jest --color --selectProjects "JavaScript unit tests"
+          npx jest --color --selectProjects "JavaScript unit tests" --coverage --testLocationInResults
           npx jest --color --selectProjects "JavaScript behaviour tests"
 
       - name: Send screenshots to Percy
         run: npx percy exec -- jest --color --selectProjects "JavaScript component tests"
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+
+      - name: Save test coverage
+        uses: actions/upload-artifact@v3
+        with:
+          name: Test coverage
+          path: coverage
+          if-no-files-found: ignore
