@@ -10,6 +10,7 @@ module.exports = {
   node_modules: 'node_modules/',
   package: 'package/',
   public: 'public/',
+  jsdoc: 'jsdoc/',
   sassdoc: 'sassdoc/',
   src: 'src/govuk/',
   components: 'src/govuk/components/',

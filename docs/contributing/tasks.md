@@ -10,7 +10,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
 **`npm run start` will trigger `gulp dev` that will:**
 - clean the `./public` folder
-- compile JavaScript and Sass, including Sass documentation (`gulp compile`)
+- compile JavaScript and Sass, including documentation (`gulp compile`)
 - compile again when `.scss` and `.mjs` files change (`gulp watch`)
 - runs `npm run serve`
 
@@ -28,7 +28,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
 **`npm run build:compile` will do the following:**
 - output files into `./public`, or another location via the `--destination` flag
-- compile JavaScript and Sass, including Sass documentation (`gulp compile`)
+- compile JavaScript and Sass, including documentation (`gulp compile`)
 
 **`npm run build:package` will do the following:**
 - output files into `./package`, or another location via the `--destination` flag
@@ -42,7 +42,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 **`npm run build:dist` will do the following:**
 - output files into `./dist`, or another location via the `--destination` flag
 - clean the `./dist` folder
-- compile JavaScript and Sass, including Sass documentation (`gulp compile`)
+- compile JavaScript and Sass, including documentation (`gulp compile`)
 - copy fonts and images (`gulp copy:assets`)
 - append version number from `package/package.json` to compiled JavaScript and CSS files
 - runs `npm run test:build:dist` (which will test the output is correct)
@@ -73,8 +73,9 @@ This task will:
 **`gulp scripts`**
 
 This task will:
- - check JavaScript code quality via ESLint (`npm run lint:js`) (using JavaScript Standard Style)
- - compile JavaScript ESM to CommonJS (`gulp js:compile`) into `./public`, or another location via the `--destination` flag
+- check JavaScript code quality via ESLint (`npm run lint:js`) (using JavaScript Standard Style)
+- compile JavaScript ESM to CommonJS (`gulp js:compile`) into `./public`, or another location via the `--destination` flag
+- compile JavaScript documentation into `./jsdoc`
 
 **`gulp compile`**
 
@@ -82,6 +83,7 @@ This task will:
 - run sub tasks from `gulp styles` without ESLint code quality checks
 - run sub tasks from `gulp scripts` without StyleLint code quality checks
 - compile Sass documentation into `./sassdoc`
+- compile JavaScript documentation into `./jsdoc`
 
 ## Express app only
 

@@ -8,8 +8,9 @@ const path = require('path')
 const { getDirectories, getComponentsData, getFullPageExamples } = require('../lib/file-helper')
 const helperFunctions = require('../lib/helper-functions')
 const configPaths = require('../config/paths.js')
+const middleware = require('./middleware/index.js')
 
-const isDeployedToHeroku = !!process.env.HEROKU_APP
+const { HEROKU_APP } = process.env
 
 const appViews = [
   configPaths.layouts,
@@ -41,6 +42,15 @@ module.exports = async (options) => {
     getFullPageExamples()
   ])
 
+  // Feature flags
+  const flags = {
+    isDeployedToHeroku: !!HEROKU_APP
+  }
+
+  // Share feature flags with middleware
+  env.addGlobal('flags', flags)
+  app.set('flags', flags)
+
   // make the function available as a filter for all templates
   env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
   env.addGlobal('markdown', marked)
@@ -71,13 +81,8 @@ module.exports = async (options) => {
   // Set up middleware to serve static assets
   app.use('/public', express.static(configPaths.public))
 
-  env.addGlobal('isDeployedToHeroku', isDeployedToHeroku)
-
-  if (isDeployedToHeroku) {
-    app.use('/docs', (req, res) => res.redirect('https://frontend.design-system.service.gov.uk/sass-api-reference/'))
-  } else {
-    app.use('/docs', express.static(configPaths.sassdoc))
-  }
+  // Set up middleware for documentation
+  app.use('/docs', middleware.docs)
 
   // serve html5-shiv from node modules
   app.use('/vendor/html5-shiv/', express.static('node_modules/html5shiv/dist/'))

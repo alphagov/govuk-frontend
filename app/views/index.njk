@@ -42,9 +42,14 @@
       <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Sass documentation</h3>
       <ul class="govuk-list">
         <li><a href="https://frontend.design-system.service.gov.uk/sass-api-reference/" class="govuk-link">Latest release</a></li>
-        {% if not isDeployedToHeroku %}
-        <li><a href="/docs" class="govuk-link">Local version</a></li>
+        {% if not flags.isDeployedToHeroku %}
+        <li><a href="/docs/sass" class="govuk-link">Local version</a></li>
         {% endif %}
+      </ul>
+
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">JavaScript documentation</h3>
+      <ul class="govuk-list">
+        <li><a href="/docs/javascript" class="govuk-link">Local version</a></li>
       </ul>
     </div>
   </div>

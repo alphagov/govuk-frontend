@@ -15,10 +15,11 @@ const { npmScriptTask } = require('./tasks/run.js')
 
 /**
  * Umbrella scripts tasks (for watch)
- * Runs JavaScript code quality checks and compilation
+ * Runs JavaScript code quality checks, documentation, compilation
  */
 gulp.task('scripts', gulp.series(
   npmScriptTask('lint:js', ['--silent']),
+  npmScriptTask('build:jsdoc', ['--silent']),
   'js:compile'
 ))
 
@@ -43,11 +44,12 @@ gulp.task('copy:assets', () => {
 
 /**
  * Compile task for local & heroku
- * Runs JavaScript and Sass compilation, including Sass documentation
+ * Runs JavaScript and Sass compilation, including documentation
  */
 gulp.task('compile', gulp.series(
   'js:compile',
   'scss:compile',
+  npmScriptTask('build:jsdoc', ['--silent']),
   npmScriptTask('build:sassdoc', ['--silent'])
 ))
 
