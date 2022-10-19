@@ -102,8 +102,8 @@ describe('Accordion', () => {
 
       expect($component.attr('data-i18n.hide-all-sections')).toEqual('Collapse all sections')
       expect($component.attr('data-i18n.show-all-sections')).toEqual('Expand all sections')
-      expect($component.attr('data-i18n.hide-section')).toEqual('Collapse <span class="govuk-visually-hidden">this section</span>')
-      expect($component.attr('data-i18n.show-section')).toEqual('Expand <span class="govuk-visually-hidden">this section</span>')
+      expect($component.attr('data-i18n.hide-section')).toEqual('Collapse')
+      expect($component.attr('data-i18n.show-section')).toEqual('Expand')
     })
   })
 })
