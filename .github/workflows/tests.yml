@@ -61,7 +61,7 @@ jobs:
       - name: Run test projects
         run: |
           npx jest --color --selectProjects "Nunjucks macro tests"
-          npx jest --color --selectProjects "JavaScript unit tests" --coverage
+          npx jest --color --selectProjects "JavaScript unit tests" --coverage --testLocationInResults
           npx jest --color --selectProjects "JavaScript behaviour tests"
 
       - name: Send screenshots to Percy

@@ -79,5 +79,6 @@ module.exports = {
       globalSetup: './config/jest/browser/open.mjs',
       globalTeardown: './config/jest/browser/close.mjs'
     }
-  ]
+  ],
+  reporters: ['default', 'github-actions']
 }
