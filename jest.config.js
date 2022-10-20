@@ -36,6 +36,7 @@ module.exports = {
     {
       ...config,
       displayName: 'JavaScript unit tests',
+      testEnvironment: './config/jest/environment/jsdom.mjs',
       testMatch: [
         '**/*.unit.test.{js,mjs}'
       ]
