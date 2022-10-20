@@ -223,8 +223,10 @@ I18n.prototype.getPluralRulesForLocale = function () {
   for (var pluralRule in I18n.pluralRulesMap) {
     if (Object.prototype.hasOwnProperty.call(I18n.pluralRulesMap, pluralRule)) {
       var languages = I18n.pluralRulesMap[pluralRule]
-      if (languages.indexOf(locale) > -1 || languages.indexOf(localeShort) > -1) {
-        return pluralRule
+      for (var i = 0; i < languages.length; i++) {
+        if (languages[i] === locale || languages[i] === localeShort) {
+          return pluralRule
+        }
       }
     }
   }
