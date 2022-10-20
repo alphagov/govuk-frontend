@@ -3,10 +3,22 @@ import { nodeListForEach } from '../../common.mjs'
 function HideThisPage ($module) {
   this.$module = $module
   this.escCounter = 0
+  this.escTimerActive = false
 }
 
 HideThisPage.prototype.exitPage = function (e) {
   // Doesn't do anything right now
+}
+
+HideThisPage.prototype.setEscTimer = function () {
+  if (!this.escTimerActive) {
+    this.escTimerActive = true
+
+    setTimeout(function () {
+      this.escCounter = 0
+      this.escTimerActive = false
+    }.bind(this), 2000)
+  }
 }
 
 HideThisPage.prototype.init = function () {
@@ -19,16 +31,15 @@ HideThisPage.prototype.init = function () {
   }) // must remember to bind once we've got an event handler ready
 
   window.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' || e.keyCode === 27 || e.which === 27) {
+    if (e.key === 'Alt' || e.keyCode === 18 || e.which === 18) {
       this.escCounter += 1
 
       if (this.escCounter >= 3) {
+        this.escCounter = 0
         document.querySelector('.govuk-js-hide-this-page-button').click()
       }
 
-      setTimeout(function () {
-        this.escCounter = 0
-      }.bind(this), 2000)
+      this.setEscTimer()
     }
   }.bind(this))
 }
