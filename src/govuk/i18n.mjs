@@ -35,15 +35,7 @@ I18n.prototype.t = function (lookupKey, options) {
   // falsy, as this could legitimately be 0.
   if (options && typeof options.count !== 'undefined') {
     // Get the plural suffix
-    var pluralSuffix = this.getPluralSuffix(options.count)
-
-    // Overwrite our existing lookupKey
-    lookupKey = lookupKey + '.' + pluralSuffix
-
-    // Throw an error if this new key doesn't exist
-    if (!(lookupKey in this.translations)) {
-      throw new Error('i18n: Plural form ".' + pluralSuffix + '" is required for "' + this.locale + '" locale')
-    }
+    lookupKey = lookupKey + '.' + this.getPluralSuffix(lookupKey, options.count)
   }
 
   if (lookupKey in this.translations) {
@@ -138,10 +130,18 @@ I18n.prototype.hasIntlNumberFormatSupport = function () {
 /**
  * Get the appropriate suffix for the plural form.
  *
+ * Uses Intl.PluralRules (or our own fallback implementation) to get the
+ * 'preferred' form to use for the given count.
+ *
+ * Checks that a translation has been provided for that plural form – if it
+ * hasn't, it'll fall back to the 'other' plural form (unless that doesn't exist
+ * either, in which case an error will be thrown)
+ *
+ * @param {string} lookupKey - The lookup key of the string to use.
  * @param {number} count - Number used to determine which pluralisation to use.
  * @returns {PluralRule} The suffix associated with the correct pluralisation for this locale.
  */
-I18n.prototype.getPluralSuffix = function (count) {
+I18n.prototype.getPluralSuffix = function (lookupKey, count) {
   // Validate that the number is actually a number.
   //
   // Number(count) will turn anything that can't be converted to a Number type
@@ -149,26 +149,47 @@ I18n.prototype.getPluralSuffix = function (count) {
   count = Number(count)
   if (!isFinite(count)) { return 'other' }
 
+  var preferredForm
+
   // Check to verify that all the requirements for Intl.PluralRules are met.
   // If so, we can use that instead of our custom implementation. Otherwise,
   // use the hardcoded fallback.
   if (this.hasIntlPluralRulesSupport()) {
-    return new Intl.PluralRules(this.locale).select(count)
+    preferredForm = new Intl.PluralRules(this.locale).select(count)
   } else {
-    return this.selectPluralRuleFromFallback(count)
+    preferredForm = this.selectPluralFormUsingFallbackRules(count)
+  }
+
+  // Use the correct plural form if provided
+  if (lookupKey + '.' + preferredForm in this.translations) {
+    return preferredForm
+  // Fall back to `other` if the plural form is missing, but log a warning
+  // to the console
+  } else if (lookupKey + '.other' in this.translations) {
+    if (console && 'warn' in console) {
+      console.warn('i18n: Missing plural form ".' + preferredForm + '" for "' +
+        this.locale + '" locale. Falling back to ".other".')
+    }
+
+    return 'other'
+  // If the required `other` plural form is missing, all we can do is error
+  } else {
+    throw new Error(
+      'i18n: Plural form ".other" is required for "' + this.locale + '" locale'
+    )
   }
 }
 
 /**
- * Get the plural rule using our fallback implementation
+ * Get the plural form using our fallback implementation
  *
  * This is split out into a separate function to make it easier to test the
  * fallback behaviour in an environment where Intl.PluralRules exists.
  *
  * @param {number} count - Number used to determine which pluralisation to use.
- * @returns {PluralRule} The suffix associated with the correct pluralisation for this locale.
+ * @returns {PluralRule} The pluralisation form for count in this locale.
  */
-I18n.prototype.selectPluralRuleFromFallback = function (count) {
+I18n.prototype.selectPluralFormUsingFallbackRules = function (count) {
   // Currently our custom code can only handle positive integers, so let's
   // make sure our number is one of those.
   count = Math.abs(Math.floor(count))
