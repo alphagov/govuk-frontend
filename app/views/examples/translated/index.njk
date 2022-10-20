@@ -32,6 +32,8 @@
 
 {% extends "layout.njk" %}
 
+{% block pageTitle %}Translated examples - GOV.UK Frontend{% endblock %}
+
 {% block beforeContent %}
   {{ govukBackLink({
     "href": "/"
@@ -39,7 +41,23 @@
 {% endblock %}
 
 {% block content %}
-  <h1 class="govuk-heading-xl">Translated</h1>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Translated examples</h1>
+
+      <p class="govuk-body-l">
+        These examples only illustrate how our components display translated text.
+        We do not guarantee that they are accurate.
+      </p>
+
+      {{ govukWarningText({
+        text: "Please do not use these translations directly in your application.",
+        iconFallbackText: "Warning"
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--xl">
+    </div>
+  </div>
 
   {{ govukAccordion({
     id: "accordion-default",
