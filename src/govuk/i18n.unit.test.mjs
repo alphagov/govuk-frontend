@@ -230,7 +230,7 @@ describe('I18n', () => {
     })
   })
 
-  describe('.selectPluralRuleFromFallback', () => {
+  describe('.selectPluralFormUsingFallbackRules', () => {
     // The locales we want to test, with numbers for any 'special cases' in
     // those locales we want to ensure are handled correctly
     const locales = [
@@ -252,7 +252,7 @@ describe('I18n', () => {
       const numbersToTest = [0, 1, 2, 5, 25, 100, ...localeNumbers]
 
       numbersToTest.forEach(num => {
-        expect(i18n.selectPluralRuleFromFallback(num)).toBe(intl.select(num))
+        expect(i18n.selectPluralFormUsingFallbackRules(num)).toBe(intl.select(num))
       })
     })
 
@@ -263,7 +263,7 @@ describe('I18n', () => {
       const numbersToTest = [0, 1, 2, 5, 25, 100]
 
       numbersToTest.forEach(num => {
-        expect(i18n.selectPluralRuleFromFallback(num)).toBe('other')
+        expect(i18n.selectPluralFormUsingFallbackRules(num)).toBe('other')
       })
     })
   })

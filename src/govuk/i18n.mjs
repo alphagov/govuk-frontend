@@ -157,7 +157,7 @@ I18n.prototype.getPluralSuffix = function (lookupKey, count) {
   if (this.hasIntlPluralRulesSupport()) {
     preferredForm = new Intl.PluralRules(this.locale).select(count)
   } else {
-    preferredForm = this.selectPluralRuleFromFallback(count)
+    preferredForm = this.selectPluralFormUsingFallbackRules(count)
   }
 
   // Use the correct plural form if provided
@@ -181,15 +181,15 @@ I18n.prototype.getPluralSuffix = function (lookupKey, count) {
 }
 
 /**
- * Get the plural rule using our fallback implementation
+ * Get the plural form using our fallback implementation
  *
  * This is split out into a separate function to make it easier to test the
  * fallback behaviour in an environment where Intl.PluralRules exists.
  *
  * @param {number} count - Number used to determine which pluralisation to use.
- * @returns {PluralRule} The suffix associated with the correct pluralisation for this locale.
+ * @returns {PluralRule} The pluralisation form for count in this locale.
  */
-I18n.prototype.selectPluralRuleFromFallback = function (count) {
+I18n.prototype.selectPluralFormUsingFallbackRules = function (count) {
   // Currently our custom code can only handle positive integers, so let's
   // make sure our number is one of those.
   count = Math.abs(Math.floor(count))
