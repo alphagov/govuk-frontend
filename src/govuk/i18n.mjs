@@ -69,7 +69,7 @@ I18n.prototype.t = function (lookupKey, options) {
  */
 I18n.prototype.replacePlaceholders = function (translationString, options) {
   // eslint-disable-next-line prefer-regex-literals
-  var placeholderRegex = RegExp(/%{(.\S+)}/, 'g')
+  var placeholderRegex = /%{(.\S+)}/g
   var placeholderMatch
 
   // Use `exec` for fetching regex matches, as matchAll() is not supported in IE
