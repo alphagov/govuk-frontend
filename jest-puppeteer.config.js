@@ -1,6 +1,10 @@
 module.exports = {
   browserContext: 'incognito',
   browserPerWorker: true,
+
+  /**
+   * @type {import('puppeteer').PuppeteerLaunchOptions}
+   */
   launch: {
     args: [
       /**
