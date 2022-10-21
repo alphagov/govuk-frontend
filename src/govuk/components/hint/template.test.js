@@ -51,7 +51,7 @@ describe('Hint', () => {
       const $ = render('hint', examples['with html'])
 
       const content = $('.govuk-hint').html().trim()
-      expect(content).toEqual('It&apos;s on your National Insurance card, benefit letter, payslip or <a class="govuk-link" href="#">P60</a>.\nFor example, &apos;QQ 12 34 56 C&apos;.')
+      expect(content).toEqual('It\'s on your National Insurance card, benefit letter, payslip or <a class="govuk-link" href="#">P60</a>.\nFor example, \'QQ 12 34 56 C\'.')
     })
 
     it('renders with attributes', () => {

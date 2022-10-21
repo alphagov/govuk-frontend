@@ -81,7 +81,7 @@ describe('Error-summary', () => {
       const $ = render('error-summary', examples['html as descriptionText'])
 
       const summaryDescription = $('.govuk-error-summary__body p').html().trim()
-      expect(summaryDescription).toEqual('See errors below (&#x25BC;)')
+      expect(summaryDescription).toEqual('See errors below (&gt;)')
     })
 
     it('allows description HTML to be passed un-escaped', () => {

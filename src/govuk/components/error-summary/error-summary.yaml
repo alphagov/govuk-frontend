@@ -120,7 +120,7 @@ examples:
   hidden: true
   data:
     titleText: There is a problem
-    descriptionText: See errors below (▼)
+    descriptionText: See errors below (>)
     errorList:
       -
         text: Invalid username or password
@@ -200,4 +200,4 @@ examples:
   hidden: true
   data:
     titleText: There is a problem
-    disableAutoFocus: false  
+    disableAutoFocus: false
