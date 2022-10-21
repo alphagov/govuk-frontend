@@ -1,7 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-
 const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
 
 describe('back-link component', () => {

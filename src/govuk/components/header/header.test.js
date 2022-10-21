@@ -1,7 +1,3 @@
-/**
- * @jest-environment puppeteer
- */
-
 const { devices } = require('puppeteer')
 const iPhone = devices['iPhone 6']
 

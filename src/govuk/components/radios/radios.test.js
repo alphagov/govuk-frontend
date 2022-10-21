@@ -1,7 +1,3 @@
-/**
- * @jest-environment puppeteer
- */
-
 const { goToComponent, goToExample, getProperty, getAttribute, isVisible } = require('../../../../lib/puppeteer-helpers.js')
 
 describe('Radios with conditional reveals', () => {

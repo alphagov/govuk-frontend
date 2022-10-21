@@ -28,6 +28,7 @@ module.exports = {
       snapshotSerializers: [
         'jest-serializer-html'
       ],
+      testEnvironment: require.resolve('jest-environment-jsdom'),
       testMatch: [
         '**/(*.)?template.test.{js,mjs}'
       ]
@@ -62,6 +63,7 @@ module.exports = {
     {
       ...config,
       displayName: 'JavaScript component tests',
+      testEnvironment: require.resolve('jest-environment-puppeteer'),
       testMatch: [
         '**/all.test.{js,mjs}',
         '**/components/*/*.test.js',

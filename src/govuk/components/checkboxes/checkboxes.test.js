@@ -1,7 +1,3 @@
-/**
- * @jest-environment puppeteer
- */
-
 const { goToComponent, goToExample, getAttribute, getProperty, isVisible } = require('../../../../lib/puppeteer-helpers.js')
 
 describe('Checkboxes with conditional reveals', () => {

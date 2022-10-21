@@ -1,7 +1,3 @@
-/**
- * @jest-environment puppeteer
- */
-
 const { goToComponent, goToExample } = require('../../../../lib/puppeteer-helpers')
 
 describe('/components/accordion', () => {

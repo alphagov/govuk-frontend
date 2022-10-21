@@ -1,7 +1,3 @@
-/**
- * @jest-environment puppeteer
- */
-
 const { getExamples } = require('../../../../lib/jest-helpers')
 const { goTo, goToComponent, renderAndInitialise } = require('../../../../lib/puppeteer-helpers')
 
