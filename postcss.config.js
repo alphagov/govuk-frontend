@@ -1,8 +1,10 @@
 const { parse } = require('path')
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
-const oldie = require('oldie')
 const pseudoclasses = require('postcss-pseudo-classes')
+const unmq = require('postcss-unmq')
+const unopacity = require('postcss-unopacity')
+const unrgba = require('postcss-unrgba')
 
 /**
  * PostCSS config
@@ -15,8 +17,11 @@ const pseudoclasses = require('postcss-pseudo-classes')
 module.exports = ({ env, file = '' }) => {
   const { dir, name } = parse(typeof file === 'object' ? file.path : file)
 
+  // IE8 stylesheets
+  const isIE8 = name.endsWith('-ie8') || name.endsWith('-ie8.min')
+
   const plugins = [
-    autoprefixer({ env })
+    autoprefixer({ env: isIE8 ? 'oldie' : env })
   ]
 
   // Minify CSS
@@ -28,29 +33,22 @@ module.exports = ({ env, file = '' }) => {
   // For example ':hover' and ':focus' classes to simulate form label states
   if (dir.endsWith('app/assets/scss') && (name === 'app' || name.startsWith('app-'))) {
     plugins.push(pseudoclasses({
-      // Work around a bug in pseudo classes plugin that badly transforms
-      // :not(:whatever) pseudo selectors
-      blacklist: [
-        ':not(',
-        ':disabled)',
-        ':first-child)',
-        ':last-child)',
-        ':focus)',
-        ':active)',
-        ':hover)'
+      restrictTo: [
+        ':link',
+        ':visited',
+        ':hover',
+        ':active',
+        ':focus'
       ]
     }))
   }
 
   // Transpile CSS for Internet Explorer
-  if (name.endsWith('-ie8') || name.endsWith('-ie8.min')) {
+  if (isIE8) {
     plugins.push(
-      oldie({
-        rgba: { filter: true },
-        rem: { disable: true },
-        unmq: { disable: true },
-        pseudo: { disable: true }
-      })
+      unmq(),
+      unopacity({ browsers: 'ie 8' }),
+      unrgba({ filter: true })
     )
   }
 
