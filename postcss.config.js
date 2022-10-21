@@ -33,16 +33,12 @@ module.exports = ({ env, file = '' }) => {
   // For example ':hover' and ':focus' classes to simulate form label states
   if (dir.endsWith('app/assets/scss') && (name === 'app' || name.startsWith('app-'))) {
     plugins.push(pseudoclasses({
-      // Work around a bug in pseudo classes plugin that badly transforms
-      // :not(:whatever) pseudo selectors
-      blacklist: [
-        ':not(',
-        ':disabled)',
-        ':first-child)',
-        ':last-child)',
-        ':focus)',
-        ':active)',
-        ':hover)'
+      restrictTo: [
+        ':link',
+        ':visited',
+        ':hover',
+        ':active',
+        ':focus'
       ]
     }))
   }
