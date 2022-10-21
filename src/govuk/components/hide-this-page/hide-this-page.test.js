@@ -27,9 +27,9 @@ describe('/components/hide-this-page', () => {
     const href = await page.evaluate((buttonClass) => document.querySelector(buttonClass).href, buttonClass)
 
     await Promise.all([
-      await page.keyboard.press('Alt'),
-      await page.keyboard.press('Alt'),
-      await page.keyboard.press('Alt'),
+      await page.keyboard.press('Esc'),
+      await page.keyboard.press('Esc'),
+      await page.keyboard.press('Esc'),
       await page.waitForNavigation()
     ])
 
