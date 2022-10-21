@@ -51,7 +51,7 @@ module.exports = ({ env, file = '' }) => {
   if (isIE8) {
     plugins.push(
       unmq(),
-      unopacity(),
+      unopacity({ browsers: 'ie 8' }),
       unrgba({ filter: true })
     )
   }
