@@ -119,6 +119,13 @@ describe('I18n', () => {
         expect(i18n.t('nameString', { number: 50, name: 'Andrew', otherName: 'Vic', age: 22 })).toBe('Their name is Andrew. Andrew is 22 years old')
       })
 
+      it('replaces very long placeholders', () => {
+        const i18n = new I18n({
+          nameString: 'Hi %{aVeryLongPlaceholderName}. %{aVeryLongPlaceholderName}, it sure is nice to meet you.'
+        })
+        expect(i18n.t('nameString', { aVeryLongPlaceholderName: 'Bob' })).toBe('Hi Bob. Bob, it sure is nice to meet you.')
+      })
+
       it('nested placeholder only resolves with a matching key', () => {
         const i18n = new I18n({
           nameString: 'Their name is %{name%{age}}'

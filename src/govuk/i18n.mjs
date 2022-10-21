@@ -68,35 +68,32 @@ I18n.prototype.t = function (lookupKey, options) {
  * @returns {string} The translation string to output, with ${} placeholders replaced
  */
 I18n.prototype.replacePlaceholders = function (translationString, options) {
-  // eslint-disable-next-line prefer-regex-literals
-  var placeholderRegex = /%{(.\S+)}/g
-  var placeholderMatch
+  var formatter
 
-  // Use `exec` for fetching regex matches, as matchAll() is not supported in IE
-  while ((placeholderMatch = placeholderRegex.exec(translationString)) !== null) {
-    var placeholderIncludingBraces = placeholderMatch[0]
-    var placeholderKey = placeholderMatch[1]
+  if (this.hasIntlNumberFormatSupport()) {
+    formatter = new Intl.NumberFormat(this.locale)
+  }
+
+  return translationString.replace(/%{(.\S+)}/g, function (placeholderWithBraces, placeholderKey) {
     if (Object.prototype.hasOwnProperty.call(options, placeholderKey)) {
       var placeholderValue = options[placeholderKey]
 
       // If a user has passed `false` as the value for the placeholder
       // treat it as though the value should not be displayed
       if (placeholderValue === false) {
-        translationString = translationString.replace(placeholderIncludingBraces, '')
+        return ''
       }
 
       // If the placeholder's value is a number, localise the number formatting
-      if (typeof placeholderValue === 'number' && this.hasIntlNumberFormatSupport()) {
-        placeholderValue = new Intl.NumberFormat(this.locale).format(placeholderValue)
+      if (typeof placeholderValue === 'number' && formatter) {
+        return formatter.format(placeholderValue)
       }
 
-      translationString = translationString.replace(placeholderIncludingBraces, placeholderValue)
+      return placeholderValue
     } else {
-      throw new Error('i18n: no data found to replace ' + placeholderMatch[0] + ' placeholder in string')
+      throw new Error('i18n: no data found to replace ' + placeholderWithBraces + ' placeholder in string')
     }
-  }
-
-  return translationString
+  })
 }
 
 /**
