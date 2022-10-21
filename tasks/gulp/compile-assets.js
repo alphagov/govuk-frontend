@@ -83,8 +83,8 @@ function compileStyles (stream, options = {}) {
       console.error(error.message)
 
       // Ensure the task we're running exits with an error code
-      this.once('finish', () => process.exit(1))
-      this.emit('end')
+      stream.once('finish', () => process.exit(1))
+      stream.emit('end')
     }))
     .pipe(sass(options))
     .pipe(postcss())
