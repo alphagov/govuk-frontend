@@ -69,7 +69,7 @@ I18n.prototype.t = function (lookupKey, options) {
  */
 I18n.prototype.replacePlaceholders = function (translationString, options) {
   // eslint-disable-next-line prefer-regex-literals
-  var placeholderRegex = RegExp(/%{(.\S+)}/, 'g')
+  var placeholderRegex = /%{(.\S+)}/g
   var placeholderMatch
 
   // Use `exec` for fetching regex matches, as matchAll() is not supported in IE
@@ -223,8 +223,10 @@ I18n.prototype.getPluralRulesForLocale = function () {
   for (var pluralRule in I18n.pluralRulesMap) {
     if (Object.prototype.hasOwnProperty.call(I18n.pluralRulesMap, pluralRule)) {
       var languages = I18n.pluralRulesMap[pluralRule]
-      if (languages.indexOf(locale) > -1 || languages.indexOf(localeShort) > -1) {
-        return pluralRule
+      for (var i = 0; i < languages.length; i++) {
+        if (languages[i] === locale || languages[i] === localeShort) {
+          return pluralRule
+        }
       }
     }
   }
