@@ -1,5 +1,5 @@
 const { getExamples } = require('../../../../lib/jest-helpers')
-const { goToComponent, goToExample, renderAndInitialise } = require('../../../../lib/puppeteer-helpers')
+const { goToComponent, goToExample, renderAndInitialise, getAccessibleName } = require('../../../../lib/puppeteer-helpers')
 
 describe('/components/accordion', () => {
   describe('/components/accordion/preview', () => {
@@ -249,17 +249,17 @@ describe('/components/accordion', () => {
         it('Should set the accessible name of the show/hide section buttons', async () => {
           await goToComponent(page, 'accordion')
 
-          const node = await page.$(
-            'aria/Section A , Show this section[role="button"]'
-          )
-          expect(node).not.toBeNull()
+          const $element = await page.$('.govuk-accordion__section-button')
 
-          await node.click()
-
-          const updatedNode = await page.$(
-            'aria/Section A , Hide this section[role="button"]'
+          expect(getAccessibleName($element)).resolves.toBe(
+            'Section A , Show this section'
           )
-          expect(updatedNode).not.toBeNull()
+
+          await $element.click()
+
+          expect(getAccessibleName($element)).resolves.toBe(
+            'Section A , Hide this section'
+          )
         })
 
         it('Includes the heading summary', async () => {
@@ -267,17 +267,17 @@ describe('/components/accordion', () => {
             exampleName: 'with-additional-descriptions'
           })
 
-          const node = await page.$(
-            'aria/Test , Additional description , Show this section[role="button"]'
-          )
-          expect(node).not.toBeNull()
+          const $element = await page.$('.govuk-accordion__section-button')
 
-          await node.click()
-
-          const updatedNode = await page.$(
-            'aria/Test , Additional description , Hide this section[role="button"]'
+          expect(getAccessibleName($element)).resolves.toBe(
+            'Test , Additional description , Show this section'
           )
-          expect(updatedNode).not.toBeNull()
+
+          await $element.click()
+
+          expect(getAccessibleName($element)).resolves.toBe(
+            'Test , Additional description , Hide this section'
+          )
         })
       })
 
