@@ -10,7 +10,6 @@ import Header from './components/header/header.mjs'
 import Radios from './components/radios/radios.mjs'
 import SkipLink from './components/skip-link/skip-link.mjs'
 import Tabs from './components/tabs/tabs.mjs'
-import { I18n } from './i18n.mjs'
 
 /**
  * Initialise all components
@@ -102,6 +101,5 @@ export {
   NotificationBanner,
   Radios,
   SkipLink,
-  Tabs,
-  I18n
+  Tabs
 }
