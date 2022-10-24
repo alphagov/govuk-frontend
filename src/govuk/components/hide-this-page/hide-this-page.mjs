@@ -35,7 +35,8 @@ HideThisPage.prototype.handleEscKeypress = function (e) {
 
     if (this.escCounter >= 3) {
       this.escCounter = 0
-      this.firstButton.click()
+      this.updateSpan.innerText = 'Exit this page activated'
+      window.location.href = this.firstButton.href
     } else {
       this.updateSpan.innerText = 'Exit this Page key press ' + this.escCounter + ' of 3'
     }
@@ -59,7 +60,7 @@ HideThisPage.prototype.setEscTimer = function () {
 HideThisPage.prototype.init = function () {
   this.initUpdateSpan()
   this.initButtonClickHandler()
-  document.addEventListener('keydown', this.handleEscKeypress.bind(this), true)
+  document.addEventListener('keyup', this.handleEscKeypress.bind(this), true)
 }
 
 export default HideThisPage
