@@ -62,7 +62,6 @@ module.exports = {
     {
       ...config,
       displayName: 'JavaScript component tests',
-      setupFilesAfterEnv: [require.resolve('expect-puppeteer')],
       testMatch: [
         '**/all.test.{js,mjs}',
         '**/components/*/*.test.js',

@@ -51,7 +51,6 @@
     "eslint-plugin-jsdoc": "^39.3.23",
     "eslint-plugin-n": "^15.3.0",
     "eslint-plugin-promise": "^6.1.1",
-    "expect-puppeteer": "^6.1.1",
     "express": "^4.18.2",
     "express-validator": "^6.14.2",
     "front-matter": "^4.0.2",
