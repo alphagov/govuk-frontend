@@ -6,6 +6,7 @@ const config = {
     'config/*',
     'vendor/*'
   ],
+  testEnvironment: './config/jest/environment/node.mjs',
   transform: {
     '^.+\\.m?js$': ['babel-jest', { rootMode: 'upward' }]
   }
