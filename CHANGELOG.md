@@ -79,10 +79,10 @@ JavaScript components can get the same configuration options in 2 ways - through
 - the `ErrorSummary` component, for its `disableAutoFocus` option (matching `data-disable-auto-focus`)
 - the `NotificationBanner` component, for its `disableAutoFocus` option (matching `data-disable-auto-focus`)
 
-You can omit these configuration options when calling the Nunjucks macro and provide them:
+You can leave out these configuration options when using the Nunjucks macro and provide configuration when:
 
-- at component instantiation, in a configuration object as second argument
-- when initialising components in bulk using `initAll`
+- creating a component, in a configuration object as second argument
+- initialising components in bulk using `initAll`
 
 For example:
 
