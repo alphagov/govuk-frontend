@@ -1,7 +1,9 @@
 /**
- * i18n support initialisation function
+ * Internal support for selecting messages to render, with placeholder
+ * interpolation and locale-aware number formatting and pluralisation
  *
  * @class
+ * @private
  * @param {object} translations - Key-value pairs of the translation strings to use.
  * @param {object} config - Configuration options for the function.
  * @param {string} config.locale - An overriding locale for the PluralRules functionality.
