@@ -1,7 +1,3 @@
-/**
- * @jest-environment puppeteer
- */
-
 const { fetch } = require('undici')
 const { WebSocket } = require('ws')
 

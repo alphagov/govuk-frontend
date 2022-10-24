@@ -1,7 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-
 import { mergeConfigs, extractConfigByNamespace, normaliseString, normaliseDataset, closestAttributeValue } from './common.mjs'
 
 // TODO: Write unit tests for `nodeListForEach` and `generateUniqueID`

@@ -1,23 +1,9 @@
-/**
- * @jest-environment puppeteer
- */
-
 const sassdoc = require('sassdoc')
 
 const configPaths = require('../../config/paths.js')
 
 const { renderSass } = require('../../lib/jest-helpers')
 const { goTo, goToExample } = require('../../lib/puppeteer-helpers')
-
-beforeAll(() => {
-  // Capture JavaScript errors.
-  page.on('pageerror', error => {
-    // If the stack trace includes 'all.js' then we want to fail these tests.
-    if (error.stack.includes('all.js')) {
-      throw error
-    }
-  })
-})
 
 describe('GOV.UK Frontend', () => {
   describe('javascript', () => {

@@ -1,7 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-
 import { I18n } from './i18n.mjs'
 
 describe('I18n', () => {

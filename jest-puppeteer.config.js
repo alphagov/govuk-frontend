@@ -3,6 +3,12 @@ module.exports = {
   browserPerWorker: true,
 
   /**
+   * Workaround for jest-environment-puppeteer 'uncaughtException'
+   * see error handling in ./config/jest/environment/puppeteer.mjs
+   */
+  exitOnPageError: false,
+
+  /**
    * @type {import('puppeteer').PuppeteerLaunchOptions}
    */
   launch: {

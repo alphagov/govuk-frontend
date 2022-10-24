@@ -1,7 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-
 import CharacterCount from './character-count.mjs'
 
 describe('CharacterCount', () => {

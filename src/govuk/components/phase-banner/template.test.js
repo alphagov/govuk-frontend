@@ -1,7 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-
 const { axe, render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
 
 describe('Phase banner', () => {
