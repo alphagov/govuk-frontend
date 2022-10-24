@@ -97,6 +97,7 @@
     "postcss-unrgba": "^1.1.1",
     "puppeteer": "^19.1.0",
     "recursive-readdir": "^2.2.2",
+    "rollup": "0.56.5",
     "sass-color-helpers": "^2.1.1",
     "sassdoc": "^2.7.4",
     "shuffle-seed": "^1.1.6",
