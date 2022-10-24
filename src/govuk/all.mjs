@@ -65,7 +65,9 @@ function initAll (config) {
   }
 
   var $hideThisPageButtons = $scope.querySelectorAll('[data-module="govuk-hide-this-page"]')
-  new HideThisPage($hideThisPageButtons).init()
+  if ($hideThisPageButtons.length > 0) {
+    new HideThisPage($hideThisPageButtons).init()
+  }
 
   var $notificationBanners = $scope.querySelectorAll('[data-module="govuk-notification-banner"]')
   nodeListForEach($notificationBanners, function ($notificationBanner) {
