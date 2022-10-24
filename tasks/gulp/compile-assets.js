@@ -9,7 +9,6 @@ const postcss = require('gulp-postcss')
 const rollup = require('gulp-better-rollup')
 const gulpif = require('gulp-if')
 const uglify = require('gulp-uglify')
-const eol = require('gulp-eol')
 const glob = require('glob')
 const merge = require('merge-stream')
 const rename = require('gulp-rename')
@@ -132,7 +131,6 @@ gulp.task('js:compile', () => {
       .pipe(rename({
         extname: '.js'
       }))
-      .pipe(eol())
       .pipe(gulp.dest(destinationPath() + newDirectoryPath))
   }))
 })
