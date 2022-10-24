@@ -310,7 +310,7 @@ describe('Input', () => {
 
       const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
 
-      expect($prefix.html()).toEqual('&#xA3;')
+      expect($prefix.html()).toEqual('£')
     })
 
     it('allows prefix text to be passed whilst escaping HTML entities', () => {
@@ -318,7 +318,7 @@ describe('Input', () => {
 
       const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
 
-      expect($prefix.html()).toEqual('&lt;span&gt;&#xA3;&lt;/span&gt;')
+      expect($prefix.html()).toEqual('&lt;span&gt;£&lt;/span&gt;')
     })
 
     it('allows prefix HTML to be passed un-escaped', () => {
@@ -326,7 +326,7 @@ describe('Input', () => {
 
       const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
 
-      expect($prefix.html()).toEqual('<span>&#xA3;</span>')
+      expect($prefix.html()).toEqual('<span>£</span>')
     })
 
     it('hides the prefix from screen readers using the aria-hidden attribute', () => {
@@ -371,7 +371,7 @@ describe('Input', () => {
 
       const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
 
-      expect($prefix.html()).toEqual('&#xA3;')
+      expect($prefix.html()).toEqual('£')
     })
 
     it('allows suffix text to be passed whilst escaping HTML entities', () => {

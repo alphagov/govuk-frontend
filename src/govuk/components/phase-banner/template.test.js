@@ -37,7 +37,7 @@ describe('Phase banner', () => {
       const $ = render('phase-banner', examples['html as text'])
 
       const phaseBannerText = $('.govuk-phase-banner__text').html().trim()
-      expect(phaseBannerText).toEqual('This is a new service - your &lt;a href=&quot;#&quot; class=&quot;govuk-link&quot;&gt;feedback&lt;/a&gt; will help us to improve it.')
+      expect(phaseBannerText).toEqual('This is a new service - your &lt;a href="#" class="govuk-link"&gt;feedback&lt;/a&gt; will help us to improve it.')
     })
 
     it('allows body HTML to be passed un-escaped', () => {
