@@ -1,6 +1,7 @@
 const { parse } = require('path')
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
+const slash = require('slash')
 const pseudoclasses = require('postcss-pseudo-classes')
 const unmq = require('postcss-unmq')
 const unopacity = require('postcss-unopacity')
@@ -15,7 +16,10 @@ const unrgba = require('postcss-unrgba')
  * @returns {{ plugins: import('postcss').Transformer[] }} PostCSS config
  */
 module.exports = ({ env, file = '' }) => {
-  const { dir, name } = parse(typeof file === 'object' ? file.path : file)
+  const { dir, name } = parse(
+    // Normalise to string path with forward slashes
+    slash(typeof file === 'object' ? file.path : file)
+  )
 
   // IE8 stylesheets
   const isIE8 = name.endsWith('-ie8') || name.endsWith('-ie8.min')
