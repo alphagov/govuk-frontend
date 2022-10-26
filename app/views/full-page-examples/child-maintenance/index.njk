@@ -24,6 +24,7 @@ scenario: >-
 {% from "inset-text/macro.njk" import govukInsetText %}
 {% from "details/macro.njk" import govukDetails %}
 {% from "button/macro.njk" import govukButton %}
+{% from "input/macro.njk" import govukInput %}
 
 {% set pageTitle = "Child maintenance" %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
@@ -48,7 +49,21 @@ scenario: >-
         <li>making your own arrangement</li>
         <li>using the Child Maintenance Service</li>
       </ul>
-      
+
+      {{ govukInput({
+        id: 'input',
+        name: 'input',
+        value: data['input'],
+        label: {
+          html: 'Test',
+          isPageHeading: false
+        },
+        hint: {
+          html: 'Hint text'
+        },
+        spellcheck: false
+      }) }}
+
       <p class="govuk-body-m">
         <a class="govuk-link" href="contact-child-maintenance-choices">Contact Child Maintenance Choices if you live in Northern Ireland</a>
       </p>
