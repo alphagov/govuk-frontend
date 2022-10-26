@@ -4,7 +4,7 @@ const recursive = require('recursive-readdir')
 const glob = require('glob')
 
 const configPaths = require('../../../config/paths.js')
-const { getDirectories, getFilesByDirectory } = require('../../../lib/file-helper')
+const { getDirectories, getListing } = require('../../../lib/file-helper')
 const { componentNameToJavaScriptClassName, componentNameToJavaScriptModuleName } = require('../../../lib/helper-functions')
 
 const { renderSass } = require('../../../lib/jest-helpers')
@@ -17,9 +17,9 @@ describe('package/', () => {
   let componentNames
 
   beforeAll(async () => {
-    componentsFilesSource = await getFilesByDirectory(configPaths.components)
-    componentsFilesPackage = await getFilesByDirectory(`${configPaths.package}govuk/components/`)
-    componentsFilesPackageESM = await getFilesByDirectory(`${configPaths.package}govuk-esm/components/`)
+    componentsFilesSource = await getListing(configPaths.components)
+    componentsFilesPackage = await getListing(`${configPaths.package}govuk/components/`)
+    componentsFilesPackageESM = await getListing(`${configPaths.package}govuk-esm/components/`)
 
     // Components list
     componentNames = [...(await getDirectories(configPaths.components)).keys()]
@@ -140,8 +140,8 @@ describe('package/', () => {
   describe('component', () => {
     it('should have macro-options.json that contains JSON', () => {
       const componentTasks = componentNames.map(async (componentName) => {
-        const componentSource = componentsFilesSource.get(componentName)
-        const componentPackage = componentsFilesPackage.get(componentName)
+        const componentSource = componentsFilesSource.get(componentName).entries
+        const componentPackage = componentsFilesPackage.get(componentName).entries
 
         // File not found at source
         expect([...componentSource.keys()])
@@ -180,15 +180,15 @@ describe('package/', () => {
     beforeEach(async () => {
       // Filter "JavaScript enabled" only
       componentNames = [...componentsFilesSource]
-        .filter(([name, files]) => files.has(`${name}.mjs`))
+        .filter(([name, { listing }]) => listing?.has(`${name}.mjs`))
         .map(([name]) => name)
     })
 
     it('should have component JavaScript file with correct module name', () => {
       const componentTasks = componentNames.map(async (componentName) => {
-        const componentSource = componentsFilesSource.get(componentName)
-        const componentPackage = componentsFilesPackage.get(componentName)
-        const componentPackageESM = componentsFilesPackageESM.get(componentName)
+        const componentSource = componentsFilesSource.get(componentName).entries
+        const componentPackage = componentsFilesPackage.get(componentName).entries
+        const componentPackageESM = componentsFilesPackageESM.get(componentName).entries
 
         // CommonJS module not found at source
         expect([...componentSource.keys()])
@@ -220,8 +220,8 @@ describe('package/', () => {
   describe('fixtures', () => {
     it('should have fixtures.json that contains JSON', () => {
       const componentTasks = componentNames.map(async (componentName) => {
-        const componentSource = componentsFilesSource.get(componentName)
-        const componentPackage = componentsFilesPackage.get(componentName)
+        const componentSource = componentsFilesSource.get(componentName).entries
+        const componentPackage = componentsFilesPackage.get(componentName).entries
 
         // File not found at source
         expect([...componentSource.keys()])

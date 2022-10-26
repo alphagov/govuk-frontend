@@ -1,4 +1,4 @@
-const { getFilesByDirectory } = require('../../../lib/file-helper')
+const { getDirectories } = require('../../../lib/file-helper')
 const { renderSass } = require('../../../lib/jest-helpers')
 const configPaths = require('../../../config/paths.js')
 
@@ -6,7 +6,8 @@ describe('Components', () => {
   let componentsFiles
 
   beforeAll(async () => {
-    componentsFiles = await getFilesByDirectory(configPaths.components)
+    // Component directory listing (with contents)
+    componentsFiles = await getDirectories(configPaths.components)
   })
 
   describe('Sass render', () => {
@@ -22,8 +23,8 @@ describe('Components', () => {
     })
 
     it('renders CSS for each component', () => {
-      const sassTasks = [...componentsFiles].map(([componentName, files]) => {
-        const file = files.get(`_${componentName}.scss`)?.path
+      const sassTasks = [...componentsFiles].map(([componentName, { entries }]) => {
+        const file = entries?.get(`_${componentName}.scss`)?.path
 
         return expect(renderSass({ file })).resolves.toEqual(
           expect.objectContaining({
