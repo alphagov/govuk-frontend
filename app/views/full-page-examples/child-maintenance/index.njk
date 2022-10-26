@@ -1,0 +1,133 @@
+---
+scenario: >-
+  You are a user looking for information on child maintenance.
+  There is a chance that as a user of this service, you are a victim of domestic
+  abuse, therefore this page includes an Exit this Page component.
+
+  Things to try:
+
+  1. Activate the Exit this Page button by clicking it
+  
+  2. Activate the Exit this Page button by pressing the Esc key 3 times
+
+  3. Activating the Exit this Page button on a small screen view
+
+  4. Scoll down the page to see if the Exit this Page button remains sticky
+
+  5. Tabbing through the page to find the Exit this Page "skip link" at the top
+  of the accessibility tree
+---
+
+{% extends "full-page-example.njk" %}
+
+{% from "hide-this-page/macro.njk" import govukHideThisPage %}
+{% from "inset-text/macro.njk" import govukInsetText %}
+{% from "details/macro.njk" import govukDetails %}
+{% from "button/macro.njk" import govukButton %}
+
+{% set pageTitle = "Child maintenance" %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block skipLink %}
+  {{ super() }}
+  {{ govukSkipLink({
+    href: 'https://www.google.com/',
+    text: 'Hide this page',
+    classes: 'govuk-js-hide-this-page-button'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Get help arranging child maintenance</h1>
+
+      <p class="govuk-body-m">This service will give you information about the different options available to make a child maintenance arrangement. These are:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>making your own arrangement</li>
+        <li>using the Child Maintenance Service</li>
+      </ul>
+      
+      <p class="govuk-body-m">
+        <a class="govuk-link" href="contact-child-maintenance-choices">Contact Child Maintenance Choices if you live in Northern Ireland</a>
+      </p>
+
+      <h2 class="govuk-heading-m">Using the Child Maintenance Service</h2>
+      <h3 class="govuk-heading-s">If you already have an active case</h3>
+      <p class="govuk-body-m">If you have a case with the same parent you should <a href="https://www.gov.uk/child-maintenance-service/change-of-circumstances" class="govuk-link"> report a change of circumstances </a>instead of making a new arrangement. You can use this service if you want to set up a new arrangement with a different parent.</p>
+      
+      <h3 class="govuk-heading-s">Fees</h3>
+      <p class="govuk-body-m">If you decide to use the Child Maintenance Service the application fee is £20 and cannot be refunded. You’ll need a debit or credit card to pay this. It does not guarantee an arrangement.</p>
+      <p class="govuk-body-m">You will not have to pay the application fee if you:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>are under 19 years old</li>
+        <li>have experienced domestic abuse</li>
+      </ul>
+      <p class="govuk-body-m">
+        <a class="govuk-link" href="https://www.gov.uk/guidance/domestic-abuse-how-to-get-help">Get help if you have experienced domestic abuse</a>
+      </p>
+      
+      <h3 class="govuk-heading-s">If you’re worried about contacting the other parent</h3>
+      <p class="govuk-body-m">If you decide to use the Child Maintenance Service, we will try to contact the other parent about setting up child maintenance – you do not need to.</p>
+      <p class="govuk-body-m">We will share the following details with the other parent:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>your name</li>
+        <li>your child’s name and date of birth</li>
+        <li>the number of days your child stays with the parent who will be making payments - the other parent will need to confirm this</li>
+      </ul>
+
+      <p class="govuk-body-m">If you are the parent who will be paying child maintenance, we will also share the following details with the other parent:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>your income information</li>
+        <li>whether any additional children are taken into account in the calculation - we will not share identifying details about these children, only how many have been taken into account</li>
+      </ul>
+
+      {{ govukInsetText({
+        text: "We will not share any other information with the other parent as a part of your application."
+      }) }}
+
+      {% set doIHaveAnActiveCase %}
+        You will need to <a href="/get-help-arranging-child-maintenance/contact-child-maintenance-service" target="_blank" class="govuk-link">contact child maintenance (opens in new tab)</a>.
+      {% endset %}
+
+      {% set payingToRecieving %}
+        <p class="govuk-body">You will need to close your existing Child Maintenance case and open a new one.</p>
+        <p class="govuk-body">If you were the original applicant, you can close your case in <a href="https://childmaintenanceservice.direct.gov.uk/onlinerevive/public/landing-screen" target="blank" class="govuk-link">MCMC</a> , or you can <a href="/get-help-arranging-child-maintenance/contact-child-maintenance-service" target="blank" class="govuk-link">contact child maintenance (opens in new tab)</a>.</p>
+        <p class="govuk-body">If you were not the original applicant, you will need to <a href="/get-help-arranging-child-maintenance/contact-child-maintenance-service" target="_blank" class="govuk-link">contact child maintenance (opens in new tab)</a>.</p>
+      {% endset %}
+
+      {% set recievingToPaying %}
+        <p class="govuk-body">You will need to close your existing Child Maintenance case and open a new one.</p>
+        <p class="govuk-body">If you were the original applicant, you can close your case in <a href="https://childmaintenanceservice.direct.gov.uk/onlinerevive/public/landing-screen" target="blank" class="govuk-link">MCMC</a> , or you can <a href="/get-help-arranging-child-maintenance/contact-child-maintenance-service" target="blank" class="govuk-link">contact child maintenance (opens in new tab)</a>.</p>
+        <p class="govuk-body">If you were not the original applicant, you will need to <a href="/get-help-arranging-child-maintenance/contact-child-maintenance-service" target="_blank" class="govuk-link">contact child maintenance (opens in new tab)</a>.</p>
+      {% endset %}
+
+      {{ govukDetails({
+        summaryText: 'I do not know if I have an active case',
+        html: doIHaveAnActiveCase
+      }) }}
+
+      {{ govukDetails({
+        summaryText: 'I need to change from paying to receiving child maintenance',
+        html: payingToRecieving
+      }) }}
+
+      {{ govukDetails({
+        summaryText: 'I need to change from receiving to paying child maintenance',
+        html: recievingToPaying
+      }) }}
+
+      {{ govukButton({
+        text: "Start now",
+        href: "#",
+        isStartButton: true
+      }) }}
+    </div>
+
+    {{ govukHideThisPage({
+      text: "Exit this page",
+      redirectUrl: "https://www.google.com/"
+    }) }}
+  </div>
+{% endblock %}
