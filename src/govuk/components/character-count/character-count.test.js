@@ -437,7 +437,8 @@ describe('Character count', () => {
           // (and interpolated to replace `%{count}` with the maximum)
 
           await renderAndInitialise(page, 'character-count', {
-            nunjucksParams: examples['no maximum'],
+            nunjucksParams:
+              examples['when neither maxlength nor maxwords are set'],
             javascriptConfig: {
               maxlength: 10
             }

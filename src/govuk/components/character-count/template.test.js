@@ -257,12 +257,12 @@ describe('Character count', () => {
     })
   })
 
-  describe('no maximum', () => {
+  describe('when neither maxlength nor maxwords are set', () => {
     // If the template has no maxwords or maxlength to go for
     // it needs to pass down any fallback hint to the JavaScript
     // so it can inject the limit it may have received at instantiation
     it('renders the fallback hint as a data attribute', () => {
-      const $ = render('character-count', examples['no maximum'])
+      const $ = render('character-count', examples['when neither maxlength nor maxwords are set'])
 
       // Fallback hint is passed as data attribute
       const $component = $('[data-module]')

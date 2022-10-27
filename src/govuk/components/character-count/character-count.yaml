@@ -289,7 +289,7 @@ examples:
       name: address
       label:
         text: Full address
-  - name: no maximum
+  - name: when neither maxlength nor maxwords are set
     hidden: true
     data:
       id: no-maximum
@@ -297,3 +297,10 @@ examples:
       label:
         text: Full address
       fallbackHintText: 'No more than %{count} characters'
+  - name: no maximum no fallback hint
+    hidden: true
+    data:
+      id: no-maximum
+      name: no-maximum
+      label:
+        text: Full address
