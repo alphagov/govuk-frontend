@@ -258,21 +258,35 @@ describe('Character count', () => {
   })
 
   describe('when neither maxlength nor maxwords are set', () => {
-    // If the template has no maxwords or maxlength to go for
-    // it needs to pass down any fallback hint to the JavaScript
-    // so it can inject the limit it may have received at instantiation
-    it('renders the fallback hint as a data attribute', () => {
-      const $ = render('character-count', examples['when neither maxlength nor maxwords are set'])
+    describe('with fallback hint set', () => {
+      // If the template has no maxwords or maxlength to go for
+      // it needs to pass down any fallback hint to the JavaScript
+      // so it can inject the limit it may have received at instantiation
+      it('renders the fallback hint as a data attribute', () => {
+        const $ = render('character-count', examples['when neither maxlength nor maxwords are set'])
 
-      // Fallback hint is passed as data attribute
-      const $component = $('[data-module]')
-      expect($component.attr('data-i18n.fallback-hint.other')).toEqual('No more than %{count} characters')
+        // Fallback hint is passed as data attribute
+        const $component = $('[data-module]')
+        expect($component.attr('data-i18n.fallback-hint.other')).toEqual('No more than %{count} characters')
 
-      // A non-breaking space is set as the count message to reserve space
-      // and prevent a layout shift when the JavaScript component
-      // initialises and fills the element with the relevant text
-      const $countMessage = $('.govuk-character-count__message')
-      expect($countMessage.html()).toContain('&nbsp;')
+        // A non-breaking space is set as the count message to reserve space
+        // and prevent a layout shift when the JavaScript component
+        // initialises and fills the element with the relevant text
+        const $countMessage = $('.govuk-character-count__message')
+        expect($countMessage.html()).toContain('&nbsp;')
+      })
+    })
+
+    describe('without fallback hint', () => {
+      it('does not render a fallback hint data attribute', () => {
+        const $ = render(
+          'character-count',
+          examples['when neither maxlength/maxwords nor fallback hint are set']
+        )
+
+        const $component = $('[data-module]')
+        expect($component.attr('data-i18n.fallback-hint.other')).toBeFalsy()
+      })
     })
   })
 })

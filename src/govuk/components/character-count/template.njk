@@ -4,13 +4,17 @@
 {% from "../hint/macro.njk" import govukHint %}
 
 {%- set hasNoLimit = (not params.maxwords and not params.maxlength) %}
-{%- set fallbackHintText = params.fallbackHintText or 'You can enter up to %{count} ' + ('words' if params.maxwords else 'characters') %}
 
 <div class="govuk-character-count" data-module="govuk-character-count"
 {%- if params.maxlength %} data-maxlength="{{ params.maxlength }}"{% endif %}
 {%- if params.threshold %} data-threshold="{{ params.threshold }}"{% endif %}
 {%- if params.maxwords %} data-maxwords="{{ params.maxwords }}"{% endif %}
-{%- if hasNoLimit %}{{govukPluralisedI18nAttributes('fallback-hint', {other: fallbackHintText})}}{% endif %}
+{#
+  Without maxlength or maxwords, we can't guess if the component will count words or characters.
+  This means we can't compute a default fallback message (also used as the textarea accessible
+  description) to be interpolated in JavaScript once the maximum gets configured there
+#}
+{%- if hasNoLimit and params.fallbackHintText %}{{govukPluralisedI18nAttributes('fallback-hint', {other: params.fallbackHintText})}}{% endif %}
 {%- if params.charactersUnderLimitText %}{{govukPluralisedI18nAttributes('characters-under-limit', params.charactersUnderLimitText)}}{% endif %}
 {%- if params.charactersAtLimitText %} data-i18n.characters-at-limit="{{ params.charactersAtLimitText | escape}}"{% endif %}
 {%- if params.charactersOverLimitText %}{{govukPluralisedI18nAttributes('characters-over-limit', params.charactersOverLimitText)}}{% endif %}
@@ -39,6 +43,7 @@
     attributes: params.attributes
   }) }}
   {%- set fallbackHintLength = params.maxwords or params.maxlength %}
+  {%- set fallbackHintText = params.fallbackHintText or 'You can enter up to %{count} ' + ('words' if params.maxwords else 'characters') %}
   {#
     Use the fact that `html` has precedence over `text` to override content
     when no limit is set and reserve vertical space to avoid layout shifting

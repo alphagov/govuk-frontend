@@ -438,9 +438,16 @@ describe('Character count', () => {
 
           await renderAndInitialise(page, 'character-count', {
             nunjucksParams:
-              examples['when neither maxlength nor maxwords are set'],
+              examples[
+                'when neither maxlength/maxwords nor fallback hint are set'
+              ],
             javascriptConfig: {
-              maxlength: 10
+              maxlength: 10,
+              i18n: {
+                fallbackHint: {
+                  other: 'No more than %{count} characters'
+                }
+              }
             }
           })
 
@@ -599,6 +606,27 @@ describe('Character count', () => {
             (el) => el.innerHTML.trim()
           )
           expect(message).toEqual('You have 1 word too many')
+        })
+
+        it('fills interpolates the fallback hint in data attributes with the maximum set in JavaScript', async () => {
+          // This tests that any fallback hint provided through data-attributes
+          // (or the Nunjucks macro) waiting for a maximum to be provided in JavaScript config
+          // will lead to the message being injected in the element holding the textarea's accessible description
+          // (and interpolated to replace `%{count}` with the maximum)
+
+          await renderAndInitialise(page, 'character-count', {
+            nunjucksParams:
+              examples['when neither maxlength nor maxwords are set'],
+            javascriptConfig: {
+              maxlength: 10
+            }
+          })
+
+          const message = await page.$eval(
+            '.govuk-character-count__message',
+            (el) => el.innerHTML.trim()
+          )
+          expect(message).toEqual('No more than 10 characters')
         })
       })
     })

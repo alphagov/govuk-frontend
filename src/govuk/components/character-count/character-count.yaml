@@ -297,7 +297,7 @@ examples:
       label:
         text: Full address
       fallbackHintText: 'No more than %{count} characters'
-  - name: no maximum no fallback hint
+  - name: when neither maxlength/maxwords nor fallback hint are set
     hidden: true
     data:
       id: no-maximum

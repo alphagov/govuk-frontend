@@ -28,6 +28,9 @@ var TRANSLATIONS_DEFAULT = {
   wordsOverLimit: {
     one: 'You have %{count} word too many',
     other: 'You have %{count} words too many'
+  },
+  fallbackHint: {
+    other: ''
   }
 }
 
