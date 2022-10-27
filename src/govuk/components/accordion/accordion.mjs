@@ -404,12 +404,16 @@ export default Accordion
 
 /**
  * @typedef {object} AccordionTranslations
- * @property {string} [hideAllSections] - Text for 'hide all sections' button,
+ * @property {string} [hideAllSections] - Text for 'Hide all sections' button,
  *   used when at least one section is expanded
- * @property {string} [hideSection] - Text for 'hide this section' button, used
- * when a section is expanded
- * @property {string} [showAllSections] - Text for 'show all sections' button,
+ * @property {string} [hideSection] - Text for 'Hide' button, used when a
+ * section is expanded
+ * @property {string} [hideSectionAriaLabel] - Text appended to the 'Hide'
+ * button's accessible name when a section is expanded
+ * @property {string} [showAllSections] - Text for 'Show all sections' button,
  *   used when all sections are collapsed
- * @property {string} [showSection] - Text for 'show this section' button, used
- * when a section is collapsed
+ * @property {string} [showSection] - Text for 'Show' button, used when a
+ * section is collapsed
+ * @property {string} [showSectionAriaLabel] - Text appended to the 'Show'
+ * button's accessible name when a section is collapsed
  */
