@@ -45,13 +45,12 @@
   {%- set fallbackHintLength = params.maxwords or params.maxlength %}
   {%- set fallbackHintText = params.fallbackHintText or 'You can enter up to %{count} ' + ('words' if params.maxwords else 'characters') %}
   {#
-    Use the fact that `html` has precedence over `text` to override content
-    when no limit is set and reserve vertical space to avoid layout shifting
-    by injecting a non-breakable space
+    If the limit is set in JavaScript, we won't be able to interpolate the message
+    until JavaScript, so we only set a text if the `maxlength` or `maxwords` options
+    were provided to the macro.
   #}
   {{ govukHint({
     text: ((fallbackHintText) | replace('%{count}', fallbackHintLength) if not hasNoLimit),
-    html: ('&nbsp;' if hasNoLimit),
     id: params.id + '-info',
     classes: 'govuk-character-count__message' + (' ' + params.countMessage.classes if params.countMessage.classes)
   }) }}

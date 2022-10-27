@@ -430,11 +430,9 @@ describe('Character count', () => {
           expect(visibility).toEqual('visible')
         })
 
-        it('fills the accessible description of the textarea once the maximum is known', async () => {
-          // This tests that any fallback hint provided through data-attributes
-          // (or the Nunjucks macro) waiting for a maximum to be provided in JavaScript config
-          // will lead to the message being injected in the element holding the textarea's accessible description
-          // (and interpolated to replace `%{count}` with the maximum)
+        it('configures the description of the textarea', async () => {
+          // This tests that a description can be provided through JavaScript attributes
+          // and interpolated with the limit provided to the character count in JS.
 
           await renderAndInitialise(page, 'character-count', {
             nunjucksParams:
@@ -608,10 +606,11 @@ describe('Character count', () => {
           expect(message).toEqual('You have 1 word too many')
         })
 
-        it('fills interpolates the fallback hint in data attributes with the maximum set in JavaScript', async () => {
+        it('interpolates the fallback hint in data attributes with the maximum set in JavaScript', async () => {
           // This tests that any fallback hint provided through data-attributes
-          // (or the Nunjucks macro) waiting for a maximum to be provided in JavaScript config
-          // will lead to the message being injected in the element holding the textarea's accessible description
+          // (or the Nunjucks macro), waiting for a maximum to be provided in
+          // JavaScript config, will lead to the message being injected in the
+          // element holding the textarea's accessible description
           // (and interpolated to replace `%{count}` with the maximum)
 
           await renderAndInitialise(page, 'character-count', {

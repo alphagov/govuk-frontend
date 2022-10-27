@@ -269,11 +269,10 @@ describe('Character count', () => {
         const $component = $('[data-module]')
         expect($component.attr('data-i18n.fallback-hint.other')).toEqual('No more than %{count} characters')
 
-        // A non-breaking space is set as the count message to reserve space
-        // and prevent a layout shift when the JavaScript component
-        // initialises and fills the element with the relevant text
+        // No content is set as the accessible description cannot be interpolated on the backend
+        // It'll be up to the JavaScript to fill it in
         const $countMessage = $('.govuk-character-count__message')
-        expect($countMessage.html()).toContain('&nbsp;')
+        expect($countMessage.html()).toMatch(/^\s*$/) // The macro outputs linebreaks around the hint itself
       })
     })
 
