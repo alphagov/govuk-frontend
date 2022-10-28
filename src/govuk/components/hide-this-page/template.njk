@@ -1,6 +1,5 @@
 {% from "../button/macro.njk" import govukButton %}
 {% set redirectUrl = params.redirectUrl | default() -%}
-{% set text = params.text | default() -%}
 
 <div
   {%- if params.id %} id="{{ params.id }}"{% endif %}
