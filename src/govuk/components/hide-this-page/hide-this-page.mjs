@@ -88,7 +88,7 @@ HideThisPage.prototype.handleEscKeypress = function (e) {
     if (this.escCounter >= 3) {
       this.escCounter = 0
       this.$updateSpan.innerText = 'Exit this page activated'
-      window.location.href = this.$button.href
+      this.exitPage()
     } else {
       this.$updateSpan.innerText = 'Exit this Page key press ' + this.escCounter + ' of 3'
     }
