@@ -22,5 +22,7 @@ runs:
     - name: Install dependencies
       id: install-node
 
+      # Skip install when dependencies are cached
+      if: steps.npm-install-cache.outputs.cache-hit != 'true'
       shell: bash
       run: npm ci
