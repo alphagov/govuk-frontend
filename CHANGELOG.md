@@ -42,17 +42,17 @@ This was added in [pull request #2742: Add ability to customise character count 
 
 You can now translate the text shown by the [character count](https://design-system.service.gov.uk/components/character-count/) component to inform users of:
 
-- when they reached the maximum number of characters or words
-- the number of characters or words over or under that maximum
+- when they have reached the maximum number of characters or words
+- the number of characters or words over or under the allowed maximum
 
 The Nunjucks macro accepts new options to let you customise each message:
 
-- You can use `charactersAtLimitText` or `wordsAtLimitText` to provide the text to show when users reached the limit.
+- Use `charactersAtLimitText` or `wordsAtLimitText` to provide the text that shows when users have reached the limit.
 - When users are under or over the limit, the component will pluralise the message according to the number of characters or words remaining, and the configured locale. You can pass `charactersUnderLimitText` or `wordsUnderLimitText` (when under the limit) and `charactersOverLimitText` or `wordsOverLimitText` (when over the limit) an object with the different plural forms expected by your locale. You'll find guidance about [the plural forms in our documentation about localising GOV.UK Frontend](https://design-system.service.gov.uk/get-started/localisation/#pluralisation). The component will replace `%{count}` with the number of characters over or under the limit.
 
-If you're not using Nunjucks macro, you can use data-* attributes to provide these translations. Any HTML appearing within the attributes must have quotation marks and brackets converted into their [HTML entity equivalents](https://developer.mozilla.org/en-US/docs/Glossary/Entity#reserved_characters).
+If you're not using Nunjucks macros, you can use data-* attributes to provide these translations. Any HTML appearing within the attributes must have quotation marks and brackets converted into their [HTML entity equivalents](https://developer.mozilla.org/en-US/docs/Glossary/Entity#reserved_characters).
 
-- `data-i18n.characters-at-limit` or `data-i18n.words-at-limit` for when users are at the limit
+- Use `data-i18n.characters-at-limit` or `data-i18n.words-at-limit` for when users are at the limit
 - `data-i18n.characters-under-limit.{other,many,few,two,one,zero}` or `data-i18n.words-under-limit.{other,many,few,two,one,zero}`, one suffix per plural form required by your locale, for when users are under the limit
 - `data-i18n.characters-over-limit.{other,many,few,two,one,zero}` or `data-i18n.words-over-limit.{other,many,few,two,one,zero}`, one suffix per plural form required by your locale, for when users are under the limit
 
