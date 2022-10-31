@@ -24,6 +24,8 @@ runs:
     - name: Build
       id: build
 
+      # Skip build when we’ve built this SHA before
+      if: steps.build-cache.outputs.cache-hit != 'true'
       shell: bash
       run: |
         npm run build:compile
