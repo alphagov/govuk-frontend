@@ -18,13 +18,13 @@ Visual regression tests help us check for any unintended visual changes to our c
 
 ### Running all tests locally
 
-To check the whole codebase, run:
+To test the whole codebase, run:
 
 ```
 npm test
 ```
 
-This will trigger [standard](https://github.com/standard/standard) and [stylelint](https://github.com/stylelint/stylelint) for linting, and [Jest](https://github.com/facebook/jest) for our testing.
+This will compile JavaScript and Sass, including documentation, then trigger [Jest](https://github.com/facebook/jest) for our testing.
 
 See [Tasks](../contributing/tasks.md) for details of what `npm test` does.
 
@@ -36,6 +36,18 @@ You can run a subset of the test suite that only tests components by running:
 Note: There's a watch mode that keeps a testing session open waiting for changes that can be used with:
 
     `npx jest --watch src/govuk/components/button`
+
+### Running all linting checks locally
+
+To lint the whole codebase, run:
+
+```
+npm run lint
+```
+
+This will trigger [ESLint](https://eslint.org) (using [JavaScript Standard Style](https://standardjs.com)) and [Stylelint](https://stylelint.io) for linting.
+
+See [Tasks](../contributing/tasks.md) for details of what `npm run lint` does.
 
 ### Running only Sass linting
 

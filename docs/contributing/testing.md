@@ -15,7 +15,7 @@ Let us know in your pull request or [contact us](https://design-system.service.g
 
 ## 1. Fix any CSS or JavaScript style errors
 
-In your project folder, run `npm test`.
+In your project folder, run `npm run lint`.
 
 Fix any CSS or JavaScript style errors that the linting tests report.
 
