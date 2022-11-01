@@ -2,6 +2,19 @@ import { nodeListForEach, mergeConfigs, extractConfigByNamespace, normaliseDatas
 import { I18n } from '../../i18n.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
+import '../../vendor/polyfills/String/prototype/trim.mjs'
+
+/**
+ * @type {AccordionTranslations}
+ */
+var TRANSLATIONS_DEFAULT = {
+  hideAllSections: 'Hide all sections',
+  hideSection: 'Hide',
+  hideSectionAriaLabel: 'Hide this section',
+  showAllSections: 'Show all sections',
+  showSection: 'Show',
+  showSectionAriaLabel: 'Show this section'
+}
 
 /**
  * Accordion component
@@ -18,15 +31,7 @@ import '../../vendor/polyfills/Element/prototype/classList.mjs'
  * @class
  * @param {HTMLElement} $module - HTML element to use for accordion
  * @param {object} config - Accordion config
- * @param {object} config.i18n - Translations
- * @param {string} [config.i18n.hideAllSections="Hide all sections"] - Text for
- *   'hide all sections' button, used when at least one section is expanded
- * @param {string} [config.i18n.hideSection="Hide<span class=\"govuk-visually-hidden\"> this section</span>"]
- *   - Text for 'hide this section' button, used when a section is expanded
- * @param {string} [config.i18n.showAllSections="Show all sections"] - Text for
- *   'show all sections' button, used when all sections are collapsed
- * @param {string} [config.i18n.showSection="Show<span class=\"govuk-visually-hidden\"> this section</span>"]
- *   - Text for 'show this section' button, used when a section is collapsed
+ * @param {AccordionTranslations} config.i18n - Translations
  */
 function Accordion ($module, config) {
   this.$module = $module
@@ -35,12 +40,7 @@ function Accordion ($module, config) {
   this.browserSupportsSessionStorage = helper.checkForSessionStorage()
 
   var defaultConfig = {
-    i18n: {
-      hideAllSections: 'Hide all sections',
-      hideSection: 'Hide<span class="govuk-visually-hidden"> this section</span>',
-      showAllSections: 'Show all sections',
-      showSection: 'Show<span class="govuk-visually-hidden"> this section</span>'
-    }
+    i18n: TRANSLATIONS_DEFAULT
   }
   this.config = mergeConfigs(
     defaultConfig,
@@ -260,8 +260,29 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
     ? this.i18n.t('hideSection')
     : this.i18n.t('showSection')
 
-  $showHideText.innerHTML = newButtonText
+  $showHideText.textContent = newButtonText
   $button.setAttribute('aria-expanded', expanded)
+
+  // Update aria-label combining
+  var $header = $section.querySelector('.' + this.sectionHeadingTextClass)
+  var ariaLabelParts = [$header.textContent.trim()]
+
+  var $summary = $section.querySelector('.' + this.sectionSummaryClass)
+  if ($summary) {
+    ariaLabelParts.push($summary.textContent.trim())
+  }
+
+  var ariaLabelMessage = expanded
+    ? this.i18n.t('hideSectionAriaLabel')
+    : this.i18n.t('showSectionAriaLabel')
+  ariaLabelParts.push(ariaLabelMessage)
+
+  /*
+   * Join with a comma to add pause for assistive technology.
+   * Example: [heading]Section A ,[pause] Show this section.
+   * https://accessibility.blog.gov.uk/2017/12/18/what-working-on-gov-uk-navigation-taught-us-about-accessibility/
+   */
+  $button.setAttribute('aria-label', ariaLabelParts.join(' , '))
 
   // Swap icon, change class
   if (expanded) {
@@ -301,7 +322,7 @@ Accordion.prototype.updateShowAllButton = function (expanded) {
     ? this.i18n.t('hideAllSections')
     : this.i18n.t('showAllSections')
   this.$showAllButton.setAttribute('aria-expanded', expanded)
-  $showAllText.innerHTML = newButtonText
+  $showAllText.textContent = newButtonText
 
   // Swap icon, toggle class
   if (expanded) {
@@ -366,11 +387,7 @@ Accordion.prototype.setInitialState = function ($section) {
 /**
  * Create an element to improve semantics of the section button with punctuation
  *
- * @returns {object} DOM element
- *
- * Used to add pause (with a comma) for assistive technology.
- * Example: [heading]Section A ,[pause] Show this section.
- * https://accessibility.blog.gov.uk/2017/12/18/what-working-on-gov-uk-navigation-taught-us-about-accessibility/
+ * @returns {HTMLSpanElement} DOM element
  *
  * Adding punctuation to the button can also improve its general semantics by dividing its contents
  * into thematic chunks.
@@ -384,3 +401,19 @@ Accordion.prototype.getButtonPunctuationEl = function () {
 }
 
 export default Accordion
+
+/**
+ * @typedef {object} AccordionTranslations
+ * @property {string} [hideAllSections] - Text for 'Hide all sections' button,
+ *   used when at least one section is expanded
+ * @property {string} [hideSection] - Text for 'Hide' button, used when a
+ * section is expanded
+ * @property {string} [hideSectionAriaLabel] - Text appended to the 'Hide'
+ * button's accessible name when a section is expanded
+ * @property {string} [showAllSections] - Text for 'Show all sections' button,
+ *   used when all sections are collapsed
+ * @property {string} [showSection] - Text for 'Show' button, used when a
+ * section is collapsed
+ * @property {string} [showSectionAriaLabel] - Text appended to the 'Show'
+ * button's accessible name when a section is collapsed
+ */

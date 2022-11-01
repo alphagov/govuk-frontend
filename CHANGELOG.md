@@ -70,7 +70,7 @@ This was added in the following pull requests:
 
 You can now translate the text of the [accordion](https://design-system.service.gov.uk/components/character-count/) component's show and hide toggle buttons.
 
-When using the Nunjucks macro, you can use the new `showSectionHtml` and `hideSectionHtml` parameters to customise the text of the 'show' and 'hide' toggles in each section. You can also use `showAllSectionsHtml` and `hideAllSectionsHtml` parameters to customise the text of the toggle at the top of the accordion.
+When using the Nunjucks macro, you can use the new `showSectionText` and `hideSectionText` parameters to customise the text of the 'show' and 'hide' toggles in each section. You can also use `showAllSectionsText` and `hideAllSectionsText` parameters to customise the text of the toggle at the top of the accordion.
 
 If you're not using the Nunjucks macro, you can customise these using data-* attributes. Any HTML appearing within the attributes must have quotation marks and brackets converted into their [HTML entity equivalents](https://developer.mozilla.org/en-US/docs/Glossary/Entity#reserved_characters).
 
