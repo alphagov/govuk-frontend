@@ -45,10 +45,13 @@ You can now translate the text shown by the [character count](https://design-sys
 - when they have reached the maximum number of characters or words
 - the number of characters or words over or under the allowed maximum
 
-The Nunjucks macro accepts new options to let you customise each message:
+The Nunjucks macro accepts new options so you can customise each message:
 
 - Use `charactersAtLimitText` or `wordsAtLimitText` to provide the text that shows when users have reached the limit.
-- When users are under or over the limit, the component will pluralise the message according to the number of characters or words remaining, and the configured locale. You can pass `charactersUnderLimitText` or `wordsUnderLimitText` (when under the limit) and `charactersOverLimitText` or `wordsOverLimitText` (when over the limit) an object with the different plural forms expected by your locale. You'll find guidance about [the plural forms in our documentation about localising GOV.UK Frontend](https://design-system.service.gov.uk/get-started/localisation/#pluralisation). The component will replace `%{count}` with the number of characters over or under the limit.
+- Use `charactersUnderLimitText` or `wordsUnderLimitText` to provide the text that shows when users are under the limit. The component will pluralise the message according to the configured locale and the number of characters or words remaining.
+- Use `charactersOverLimitText` or `wordsOverLimitText` to provide the text that shows when users are over the limit. The component will pluralise the message according to the configured locale and the number of characters or words remaining.  
+
+You'll find guidance about [the plural forms in our documentation about localising GOV.UK Frontend](https://design-system.service.gov.uk/get-started/localisation/#pluralisation). The component will replace `%{count}` with the number of characters over or under the limit.
 
 If you're not using Nunjucks macros, you can use data-* attributes to provide these translations. Any HTML appearing within the attributes must have quotation marks and brackets converted into their [HTML entity equivalents](https://developer.mozilla.org/en-US/docs/Glossary/Entity#reserved_characters).
 
