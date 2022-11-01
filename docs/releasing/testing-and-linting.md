@@ -1,6 +1,6 @@
 # Testing and linting
 
-GitHub Actions lints SASS and JavaScript, runs unit and functional tests with Node, and generates snapshots for [visual regression testing](https://www.browserstack.com/percy/visual-testing).
+GitHub Actions lints Sass and JavaScript, runs unit and functional tests with Node, and generates snapshots for [visual regression testing](https://www.browserstack.com/percy/visual-testing).
 
 ## Testing terminology
 
@@ -37,7 +37,7 @@ Note: There's a watch mode that keeps a testing session open waiting for changes
 
     `npx jest --watch src/govuk/components/button`
 
-### Running only SASS linting
+### Running only Sass linting
 
 ```
 npm run lint:scss
