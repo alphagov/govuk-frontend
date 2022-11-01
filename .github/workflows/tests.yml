@@ -91,7 +91,7 @@ jobs:
 
           - description: JavaScript unit tests
             name: test-unit
-            run: npx jest --color --selectProjects "JavaScript unit tests" --coverage --testLocationInResults
+            run: npx jest --color --maxWorkers=2 --selectProjects "JavaScript unit tests" --coverage --testLocationInResults
 
     steps:
       - name: Checkout
@@ -136,7 +136,7 @@ jobs:
 
           - description: JavaScript behaviour tests
             name: test-behaviour
-            run: npx jest --color --selectProjects "JavaScript behaviour tests"
+            run: npx jest --color --maxWorkers=2 --selectProjects "JavaScript behaviour tests"
 
           - description: JavaScript component tests
             name: test-component
