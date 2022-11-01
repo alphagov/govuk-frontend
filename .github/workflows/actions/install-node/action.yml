@@ -19,6 +19,10 @@ runs:
       uses: ./.github/workflows/actions/setup-node
       id: setup-node
 
+      with:
+        # Restore global `~/.npm` cache (unless lockfile changes)
+        use-cache: ${{ steps.npm-install-cache.outputs.cache-hit != 'true' }}
+
     - name: Install dependencies
       id: install-node
 
