@@ -43,7 +43,7 @@
     "cheerio": "^1.0.0-rc.12",
     "cookie-parser": "^1.4.6",
     "cross-env": "^7.0.3",
-    "cssnano": "^4.1.11",
+    "cssnano": "^5.1.14",
     "del": "^6.1.1",
     "eslint": "^8.26.0",
     "eslint-config-standard": "^17.0.0",
