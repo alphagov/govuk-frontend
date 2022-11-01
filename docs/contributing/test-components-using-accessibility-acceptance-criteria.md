@@ -7,7 +7,7 @@ This page will help you if you are:
 - contributing a new component to the [GOV.UK Design System](https://design-system.service.gov.uk/)
 - iterating an existing component
 
-Your component or iteration should meet: 
+Your component or iteration should meet:
 
 - [the GOV.UK Design System’s accessibility acceptance criteria](#govuk-design-system---accessibility-acceptance-criteria)
 - [custom accessibility acceptance criteria that you need to write specifically for your component or iteration](#writing-custom-accessibility-acceptance-criteria-for-your-component)
@@ -99,7 +99,7 @@ Interactive elements should be actionable with at least:
 - voice
 
 To make sure users can operate interactive elements, those elements should:
- 
+
 - be large enough to tap with one finger
 - change appearance when focused - [learn more about GOV.UK Design System focus states](https://design-system.service.gov.uk/get-started/focus-states/)
 - change in appearance when users hover their mouse over them
@@ -116,7 +116,7 @@ All form elements should:
 - if appropriate, [use the fieldset and legend elements to group related form fields](https://accessibility.blog.gov.uk/2016/07/22/using-the-fieldset-and-legend-elements/)
 - if appropriate, use the [autocomplete attribute](https://design-system.service.gov.uk/components/text-input/#use-the-autocomplete-attribute)
 
-## Writing custom accessibility acceptance criteria for your component 
+## Writing custom accessibility acceptance criteria for your component
 
 Your component should meet the GOV.UK Design System criteria described elsewhere on this page. However, you might also need to write, and test against, accessibility acceptance criteria that apply specifically to your component.
 
@@ -126,7 +126,7 @@ A non-exhaustive list of points to consider when writing your own criteria:
 
 - screen readers should announce HTML elements such as buttons and headings - for example, they should announce a button as a button, an h2 as a heading level 2, and so on
 - screen readers should announce the text content of elements, such as headings
-- for interactive components, check if the screen reader gives users instructions on how to interact with them - for example, "To activate, press **Enter**", if this is the native behaviour of the screen reader for that particular element 
+- for interactive components, check if the screen reader gives users instructions on how to interact with them - for example, "To activate, press **Enter**", if this is the native behaviour of the screen reader for that particular element
 - check if users get feedback about any changes to the state of the element - for example, if the element expands or collapses ([see our accessibility workshop slides for an example of when a screen reader did not announce changes, and how we solved the problem](https://docs.google.com/presentation/d/1tPocE9yr6VyE33Y_xzeV4jsHbU6z3vla3IJT1Gqwyoc/edit#slide=id.ge310af9263_0_88))
 
 ### Use existing resources when you write your own criteria
@@ -138,7 +138,7 @@ Here are some useful resources to help you write your own accessibility acceptan
 
 ## Include your own criteria in your pull request
 
-Make sure you include your own accessibility acceptance criteria in the description for your pull request. 
+Make sure you include your own accessibility acceptance criteria in the description for your pull request.
 
 Including criteria in your pull request allows us to:
 
