@@ -12,6 +12,20 @@ updates:
     allow:
       - dependency-type: all
 
+    ignore:
+      # Ignore major updates (breaks IE8 PostCSS plugins)
+      - dependency-name: autoprefixer
+        update-types: ['version-update:semver-major']
+
+      # Ignore major updates (breaks IE8 PostCSS plugins)
+      - dependency-name: cssnano
+        update-types: ['version-update:semver-major']
+
+      # Always ignore legacy packages
+      - dependency-name: gulp-better-rollup
+      - dependency-name: jquery
+      - dependency-name: rollup
+
   # Update GitHub Actions
   - package-ecosystem: github-actions
     directory: /
