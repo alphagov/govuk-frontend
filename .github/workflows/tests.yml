@@ -16,10 +16,6 @@ concurrency:
    cancel-in-progress: true
 
 env:
-  INSTALL_CACHE_DIR: |
-    .cache/puppeteer
-    node_modules
-
   TASK_CACHE_DIR: |
     .cache/eslint
     .cache/jest
@@ -33,12 +29,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        id: npm-cache
-        with:
-          key: npm-cache-${{ hashFiles('package-lock.json') }}
-          path: ${{ env.INSTALL_CACHE_DIR }}
+      - name: Build
+        uses: ./.github/workflows/actions/build
 
       - name: Cache tasks
         uses: actions/cache@v3
@@ -46,24 +38,8 @@ jobs:
           key: task-cache
           path: ${{ env.TASK_CACHE_DIR }}
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          cache: ${{ steps.npm-cache.outputs.cache-hit != 'true' && 'npm' || '' }}
-          node-version-file: .nvmrc
-
-      - name: Install dependencies
-        if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: npm ci
-
       - name: Lint
         run: npm run lint
-
-      - name: Build
-        run: |
-          npm run build:compile
-          npm run build:package
-          npm run build:dist
 
       - name: Run test projects
         run: |

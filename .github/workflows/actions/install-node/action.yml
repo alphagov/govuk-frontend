@@ -1,0 +1,26 @@
+name: Install dependencies
+
+runs:
+  using: composite
+
+  steps:
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      id: npm-install-cache
+
+      with:
+        # Restore `node_modules` cache (unless lockfile changes)
+        key: npm-install-cache-${{ hashFiles('package-lock.json') }}
+        path: |
+          .cache/puppeteer
+          node_modules
+
+    - name: Setup Node.js
+      uses: ./.github/workflows/actions/setup-node
+      id: setup-node
+
+    - name: Install dependencies
+      id: install-node
+
+      shell: bash
+      run: npm ci

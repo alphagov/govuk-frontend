@@ -1,0 +1,31 @@
+name: Build
+
+runs:
+  using: composite
+
+  steps:
+    - name: Cache build
+      uses: actions/cache@v3
+      id: build-cache
+
+      with:
+        # Restore build cache (unless commit SHA changes)
+        key: build-cache-${{ github.sha }}
+        path: |
+          dist
+          jsdoc
+          package
+          public
+          sassdoc
+
+    - name: Install dependencies
+      uses: ./.github/workflows/actions/install-node
+
+    - name: Build
+      id: build
+
+      shell: bash
+      run: |
+        npm run build:compile
+        npm run build:package
+        npm run build:dist

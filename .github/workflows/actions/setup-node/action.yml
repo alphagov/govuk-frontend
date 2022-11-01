@@ -1,0 +1,14 @@
+name: Setup
+
+runs:
+  using: composite
+
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      id: setup-node
+
+      with:
+        # Restore global `~/.npm` cache (unless lockfile changes)
+        cache: npm
+        node-version-file: .nvmrc
