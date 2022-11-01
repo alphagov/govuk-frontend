@@ -38,20 +38,48 @@ This text is announced by screen readers when the character count input is focus
 
 This was added in [pull request #2742: Add ability to customise character count fallback text](https://github.com/alphagov/govuk-frontend/pull/2742).
 
+#### Localise the character count's counter message
+
+You can now translate the text shown by the [character count](https://design-system.service.gov.uk/components/character-count/) component to inform users of:
+
+- when they have reached the maximum number of characters or words
+- the number of characters or words over or under the allowed maximum
+
+The Nunjucks macro accepts new options so you can customise each message:
+
+- Use `charactersAtLimitText` or `wordsAtLimitText` to provide the text that shows when users have reached the limit.
+- Use `charactersUnderLimitText` or `wordsUnderLimitText` to provide the text that shows when users are under the limit. The component will pluralise the message according to the configured locale and the number of characters or words remaining.
+- Use `charactersOverLimitText` or `wordsOverLimitText` to provide the text that shows when users are over the limit. The component will pluralise the message according to the configured locale and the number of characters or words remaining.  
+
+You'll find guidance about [the plural forms in our documentation about localising GOV.UK Frontend](https://design-system.service.gov.uk/get-started/localisation/#pluralisation). The component will replace `%{count}` with the number of characters over or under the limit.
+
+If you're not using Nunjucks macros, you can use data-* attributes to provide these translations. Any HTML appearing within the attributes must have quotation marks and brackets converted into their [HTML entity equivalents](https://developer.mozilla.org/en-US/docs/Glossary/Entity#reserved_characters).
+
+- Use `data-i18n.characters-at-limit` or `data-i18n.words-at-limit` for when users are at the limit
+- To configure the text that informs the end user they are under the character or word limit, use `data-i18n.characters-under-limit.{other,many,few,two,one,zero}` or `data-i18n.words-under-limit.{other,many,few,two,one,zero}`, with one suffix per plural form required by your locale
+- To configure the text that informs the end user they are over the character or word limit, use `data-i18n.characters-over-limit.{other,many,few,two,one,zero}` or `data-i18n.words-over-limit.{other,many,few,two,one,zero}`, with one suffix per plural form required by your locale
+
+You can also provide these messages using a JavaScript configuration object when creating an instance of the component or initialising all components.
+See [our guidance on localising GOV.UK Frontend](https://design-system.service.gov.uk/get-started/localisation/) for how to do this.
+
+This was added in the following pull requests:
+[#2895 Add macro options to configure CharacterCount translations](https://github.com/alphagov/govuk-frontend/pull/2895)
+[#2887 Allow CharacterCount component to receive i18n config via JS](https://github.com/alphagov/govuk-frontend/pull/2887)
+
 #### Localise the accordion's toggle buttons
 
 You can now translate the text of the [accordion](https://design-system.service.gov.uk/components/character-count/) component's show and hide toggle buttons.
 
 When using the Nunjucks macro, you can use the new `showSectionHtml` and `hideSectionHtml` parameters to customise the text of the 'show' and 'hide' toggles in each section. You can also use `showAllSectionsHtml` and `hideAllSectionsHtml` parameters to customise the text of the toggle at the top of the accordion.
 
-If you're not using the Nunjucks macro, you can customise these using data-* attributes. Any HTML appearing within the attributes must have quotation marks and brackets converted into their HTML entity equivalents. 
+If you're not using the Nunjucks macro, you can customise these using data-* attributes. Any HTML appearing within the attributes must have quotation marks and brackets converted into their [HTML entity equivalents](https://developer.mozilla.org/en-US/docs/Glossary/Entity#reserved_characters).
 
 - `data-i18n.show-section`
 - `data-i18n.hide-section`
 - `data-i18n.show-all-sections`
 - `data-i18n.hide-all-sections`
 
-You can also change this text for all instances of the Accordion using a JavaScript configuration object. See [our guidance on localising GOV.UK Frontend](https://design-system.service.gov.uk/get-started/localisation/) for how to do this. 
+You can also change this text for all instances of the Accordion using a JavaScript configuration object. See [our guidance on localising GOV.UK Frontend](https://design-system.service.gov.uk/get-started/localisation/) for how to do this.
 
 This was added in pull requests:
 
