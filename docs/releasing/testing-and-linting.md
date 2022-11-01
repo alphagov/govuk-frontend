@@ -26,7 +26,7 @@ npm test
 
 This will trigger [standard](https://github.com/standard/standard) and [stylelint](https://github.com/stylelint/stylelint) for linting, and [Jest](https://github.com/facebook/jest) for our testing.
 
-See [Tasks](tasks.md) for details of what `npm test` does.
+See [Tasks](../contributing/tasks.md) for details of what `npm test` does.
 
 ### Running individual tests
 You can run a subset of the test suite that only tests components by running:

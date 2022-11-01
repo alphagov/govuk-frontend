@@ -71,7 +71,7 @@ To allow users to make adjustments on their device, components should work when:
 - JavaScript fails to load, but stylesheets load
 - stylesheets fail to load, but JavaScript loads
 - both JavaScript and stylesheets fail to load
-- [users enlarge the text](https://github.com/alphagov/govuk-frontend/blob/main/docs/contributing/resize-text-in-browsers.md)
+- [users enlarge the text](resize-text-in-browsers.md)
 - users zoom to 400%
 
 ### Accessibility acceptance criteria for headings
