@@ -8,19 +8,19 @@ To run the application without any tasks being triggered, see [Express app only]
 
 npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
-**`npm run start` will trigger `gulp dev` that will:**
+**`npm start` will trigger `gulp dev` that will:**
 - clean the `./public` folder
 - compile JavaScript and Sass, including documentation (`gulp compile`)
 - compile again when `.scss` and `.mjs` files change (`gulp watch`)
 - runs `npm run serve`
 
-**`npm run serve` will do the following:**
-- start up Express, restarting when `.js` files change
-
-**`npm run test` will do the following:**
+**`npm test` will do the following:**
 - run Nunjucks macros tests
 - run JavaScript tests on the review application
 - run accessibility and HTML validation tests
+
+**`npm run serve` will do the following:**
+- start up Express, restarting when `.js` files change
 
 **`npm run heroku` runs on Heroku build/PR and it will:**
 - run `npm run build:compile`
