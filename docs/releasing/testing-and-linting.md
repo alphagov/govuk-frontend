@@ -1,6 +1,6 @@
 # Testing and linting
 
-The CI lints SASS and JavaScript, runs unit and functional tests with Node, and generates snapshots for [visual regression testing](https://www.browserstack.com/percy/visual-testing).
+GitHub Actions lints SASS and JavaScript, runs unit and functional tests with Node, and generates snapshots for [visual regression testing](https://www.browserstack.com/percy/visual-testing).
 
 ## Testing terminology
 
