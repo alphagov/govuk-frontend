@@ -56,8 +56,8 @@ You'll find guidance about [the plural forms in our documentation about localisi
 If you're not using Nunjucks macros, you can use data-* attributes to provide these translations. Any HTML appearing within the attributes must have quotation marks and brackets converted into their [HTML entity equivalents](https://developer.mozilla.org/en-US/docs/Glossary/Entity#reserved_characters).
 
 - Use `data-i18n.characters-at-limit` or `data-i18n.words-at-limit` for when users are at the limit
-- `data-i18n.characters-under-limit.{other,many,few,two,one,zero}` or `data-i18n.words-under-limit.{other,many,few,two,one,zero}`, one suffix per plural form required by your locale, for when users are under the limit
-- `data-i18n.characters-over-limit.{other,many,few,two,one,zero}` or `data-i18n.words-over-limit.{other,many,few,two,one,zero}`, one suffix per plural form required by your locale, for when users are under the limit
+- To configure the text that informs the end user they are under the character or word limit, use `data-i18n.characters-under-limit.{other,many,few,two,one,zero}` or `data-i18n.words-under-limit.{other,many,few,two,one,zero}`, with one suffix per plural form required by your locale
+- To configure the text that informs the end user they are over the character or word limit, use `data-i18n.characters-over-limit.{other,many,few,two,one,zero}` or `data-i18n.words-over-limit.{other,many,few,two,one,zero}`, with one suffix per plural form required by your locale
 
 You can also provide these messages using a JavaScript configuration object when creating an instance of the component or initialising all components.
 See [our guidance on localising GOV.UK Frontend](https://design-system.service.gov.uk/get-started/localisation/) for how to do this.
