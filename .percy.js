@@ -7,5 +7,8 @@ module.exports = {
       executable: executablePath()
     }
   },
+  percy: {
+    deferUploads: true
+  },
   version: 2
 }
