@@ -1,15 +1,18 @@
 const { readFile } = require('fs/promises')
-const path = require('path')
-const recursive = require('recursive-readdir')
-const glob = require('glob')
+const { join, normalize, parse } = require('path')
+const minimatch = require('minimatch')
+const slash = require('slash')
 
 const configPaths = require('../../../config/paths.js')
-const { getDirectories, getListing } = require('../../../lib/file-helper')
+const { getDirectories, getListing, listingToArray } = require('../../../lib/file-helper')
 const { componentNameToJavaScriptClassName, componentNameToJavaScriptModuleName } = require('../../../lib/helper-functions')
 
 const { renderSass } = require('../../../lib/jest-helpers')
 
 describe('package/', () => {
+  let listingSource
+  let listingPackage
+
   let componentsFilesSource
   let componentsFilesPackage
   let componentsFilesPackageESM
@@ -17,6 +20,9 @@ describe('package/', () => {
   let componentNames
 
   beforeAll(async () => {
+    listingSource = await getListing(configPaths.src)
+    listingPackage = await getListing(configPaths.package)
+
     componentsFilesSource = await getListing(configPaths.components)
     componentsFilesPackage = await getListing(`${configPaths.package}govuk/components/`)
     componentsFilesPackageESM = await getListing(`${configPaths.package}govuk-esm/components/`)
@@ -25,88 +31,82 @@ describe('package/', () => {
     componentNames = [...(await getDirectories(configPaths.components)).keys()]
   })
 
-  it('should contain the expected files', () => {
-    // Build an array of the files that are present in the package directory.
-    const actualPackageFiles = () => {
-      return recursive(configPaths.package).then(
-        files => {
-          return files
-            // Remove /package prefix from filenames
-            .map(file => file.replace(/^package\//, ''))
-            // Sort to make comparison easier
-            .sort()
-        },
-        error => {
-          console.error('Unable to get package files', error)
+  it('should contain the expected files', async () => {
+    const filterPatterns = [
+      '!**/.DS_Store',
+      '!**/*.test.*',
+      '!**/__snapshots__/',
+      '!**/__snapshots__/**',
+      `!${configPaths.src}README.md`
+    ]
+
+    // Build array of expected output files
+    const filesExpected = [...listingSource]
+      .flatMap(listingToArray)
+
+      // Apply filters
+      .filter((entryPath) => filterPatterns
+        .every((pattern) => minimatch(entryPath, pattern, { matchBase: true })))
+
+      // Each component '*.mjs' compiled to '*.js'
+      .flatMap((entryPath) => {
+        const isMatch = minimatch(entryPath, '**/*.mjs')
+
+        if (isMatch) {
+          const { dir: requirePath, name } = parse(entryPath)
+          const importPath = normalize(slash(requirePath).replace('src/govuk', 'src/govuk-esm'))
+
+          return [
+            join(importPath, `${name}.mjs`),
+            join(requirePath, `${name}.js`)
+          ]
         }
-      )
-    }
 
-    // Build an array of files we expect to be found in the package directory,
-    // based on the contents of the src directory.
-    const expectedPackageFiles = () => {
-      const filesToIgnore = [
-        '.DS_Store',
-        '*.test.*',
-        '*.yaml',
-        '*.snap',
-        '*/govuk/README.md'
-      ]
-
-      const additionalFilesNotInSrc = [
-        'package.json',
-        'govuk-prototype-kit.config.json',
-        '**/macro-options.json',
-        '**/fixtures.json',
-        'README.md'
-      ]
-
-      return recursive(configPaths.src, filesToIgnore).then(
-        files => {
-          let filesNotInSrc = files
-          // Use glob to generate an array of files that accounts for wildcards in filenames
-          filesNotInSrc = glob.sync('{' + additionalFilesNotInSrc.join(',') + '}', { cwd: 'package' })
-
-          return files
-            .map(file => {
-              // Remove /src prefix from filenames
-              const fileWithoutSrc = file.replace(/^src\//, '')
-
-              // Account for govuk-esm folder
-              if (fileWithoutSrc.split('.').pop() === 'mjs') {
-                const esmFile = fileWithoutSrc.replace('govuk/', 'govuk-esm/')
-                const umdFile = fileWithoutSrc.replace('.mjs', '.js')
-
-                return [umdFile, esmFile]
-              } else {
-                return fileWithoutSrc
-              }
-            })
-            // Allow for additional files that are not in src
-            .concat(filesNotInSrc)
-            .flat()
-            // Sort to make comparison easier
-            .sort()
-        },
-        error => {
-          console.error('Unable to get package files', error)
-        }
-      )
-    }
-
-    // Compare the expected directory listing with the files we expect
-    // to be present
-    return Promise.all([actualPackageFiles(), expectedPackageFiles()])
-      .then(results => {
-        const [actualPackageFiles, expectedPackageFiles] = results
-
-        expect(actualPackageFiles).toEqual(expectedPackageFiles)
+        return entryPath
       })
+
+      // Each component '*.yaml' output to '*.json'
+      .flatMap((entryPath) => {
+        const isMatch = minimatch(entryPath, `${configPaths.components}**/*.yaml`)
+
+        if (isMatch) {
+          const { dir } = parse(entryPath)
+
+          return [
+            join(dir, 'fixtures.json'),
+            join(dir, 'macro-options.json')
+          ]
+        }
+
+        return entryPath
+      })
+
+      // Files output from 'src' to 'package'
+      .map((file) => normalize(slash(file).replace(/^src\//, 'package/')))
+
+      // Files already present in 'package'
+      .concat(...[
+        normalize('package/govuk-prototype-kit.config.json'),
+        normalize('package/package.json'),
+        normalize('package/README.md')
+      ])
+      .sort()
+
+    // Build array of actual output files
+    const filesActual = [...listingPackage]
+      .flatMap(listingToArray)
+      .sort()
+
+      // Apply filters
+      .filter((entryPath) => filterPatterns
+        .every((pattern) => minimatch(entryPath, pattern, { matchBase: true })))
+
+    expect(filesActual).toEqual(filesExpected)
   })
 
   describe('README.md', () => {
     it('is not overwritten', () => {
-      return readFile(path.join(configPaths.package, 'README.md'), 'utf8')
+      return readFile(join(configPaths.package, 'README.md'), 'utf8')
         .then(contents => {
           // Look for H1 matching 'GOV.UK Frontend' from existing README
           expect(contents).toMatch(/^# GOV.UK Frontend/)
@@ -118,14 +118,14 @@ describe('package/', () => {
 
   describe('all.scss', () => {
     it('should compile without throwing an exception', async () => {
-      const allScssFile = path.join(configPaths.package, 'govuk', 'all.scss')
+      const allScssFile = join(configPaths.package, 'govuk', 'all.scss')
       await renderSass({ file: allScssFile })
     })
   })
 
   describe('all.js', () => {
     it('should have correct module name', async () => {
-      const allJsFile = path.join(configPaths.package, 'govuk', 'all.js')
+      const allJsFile = join(configPaths.package, 'govuk', 'all.js')
 
       return readFile(allJsFile, 'utf8')
         .then((data) => {

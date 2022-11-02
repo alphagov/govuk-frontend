@@ -1,64 +1,61 @@
 const { readFile } = require('fs/promises')
-const path = require('path')
-const recursive = require('recursive-readdir')
+const { join, parse } = require('path')
+const { cwd } = require('process')
+const minimatch = require('minimatch')
+const slash = require('slash')
 
 const configPaths = require('../../../config/paths.js')
+const { getListing, listingToArray } = require('../../../lib/file-helper')
 
 describe('dist/', () => {
-  const version = require(path.join('../../../', configPaths.package, 'package.json')).version
+  const pkg = require(join(cwd(), configPaths.package, 'package.json'))
+
+  let listingSourceAssets
+  let listingDistAssets
+
+  beforeAll(async () => {
+    listingSourceAssets = await getListing(join(configPaths.src, 'assets'))
+    listingDistAssets = await getListing(join(configPaths.dist, 'assets'))
+  })
 
   describe('assets/', () => {
     it('should include the same files as in src/assets', () => {
-      // Build an array of the assets that are present in the src directory.
-      const expectedDistAssets = () => {
-        const filesToIgnore = [
-          '.DS_Store'
-        ]
-        return recursive(path.join(configPaths.src, 'assets'), filesToIgnore).then(
-          files => {
-            return files
-              // Remove /package prefix from filenames
-              .map(file => file.replace(/^src\/govuk\/assets\//, ''))
-              // Sort to make comparison easier
-              .sort()
-          },
-          error => {
-            console.error('Unable to get asset files from src', error)
-          }
-        )
-      }
+      const filterPatterns = [
+        '!**/.DS_Store'
+      ]
 
-      const actualDistAssets = () => {
-        return recursive(path.join(configPaths.dist, 'assets')).then(
-          files => {
-            return files
-              // Remove /package prefix from filenames
-              .map(file => file.replace(/^dist\/assets\//, ''))
-              // Sort to make comparison easier
-              .sort()
-          },
-          error => {
-            console.error('Unable to get asset files from dist', error)
-          }
-        )
-      }
+      // Build array of expected output files
+      const filesExpected = [...listingSourceAssets]
+        .flatMap(listingToArray)
+        .map(slash)
+        .sort()
 
-      // Compare the expected directory listing with the files we expect
-      // to be present
-      return Promise.all([actualDistAssets(), expectedDistAssets()])
-        .then(results => {
-          const [actualDistAssets, expectedDistAssets] = results
+        // Apply filters
+        .filter((entryPath) => filterPatterns
+          .every((pattern) => minimatch(entryPath, pattern, { matchBase: true })))
 
-          expect(actualDistAssets).toEqual(expectedDistAssets)
-        })
+        // Files output from 'src/govuk' to 'dist'
+        .map((file) => file.replace(/^src\/govuk\//, 'dist/'))
+
+      // Build array of actual output files
+      const filesActual = [...listingDistAssets]
+        .flatMap(listingToArray)
+        .map(slash)
+        .sort()
+
+        // Apply filters
+        .filter((entryPath) => filterPatterns
+          .every((pattern) => minimatch(entryPath, pattern, { matchBase: true })))
+
+      expect(filesActual).toEqual(filesExpected)
     })
   })
 
-  describe(`govuk-frontend-${version}.min.css`, () => {
+  describe(`govuk-frontend-${pkg.version}.min.css`, () => {
     let stylesheet
 
     beforeAll(async () => {
-      stylesheet = await readFile(path.join(configPaths.dist, `govuk-frontend-${version}.min.css`), 'utf8')
+      stylesheet = await readFile(join(configPaths.dist, `govuk-frontend-${pkg.version}.min.css`), 'utf8')
     })
 
     it('should not contain current media query displayed on body element', () => {
@@ -70,11 +67,11 @@ describe('dist/', () => {
     })
   })
 
-  describe(`govuk-frontend-ie8-${version}.min.css`, () => {
+  describe(`govuk-frontend-ie8-${pkg.version}.min.css`, () => {
     let stylesheet
 
     beforeAll(async () => {
-      stylesheet = await readFile(path.join(configPaths.dist, `govuk-frontend-ie8-${version}.min.css`), 'utf8')
+      stylesheet = await readFile(join(configPaths.dist, `govuk-frontend-ie8-${pkg.version}.min.css`), 'utf8')
     })
 
     it('should not contain current media query displayed on body element', () => {
@@ -82,11 +79,11 @@ describe('dist/', () => {
     })
   })
 
-  describe(`govuk-frontend-${version}.min.js`, () => {
+  describe(`govuk-frontend-${pkg.version}.min.js`, () => {
     let javascript
 
     beforeAll(async () => {
-      javascript = await readFile(path.join(configPaths.dist, `govuk-frontend-${version}.min.js`), 'utf8')
+      javascript = await readFile(join(configPaths.dist, `govuk-frontend-${pkg.version}.min.js`), 'utf8')
     })
 
     it('should have the correct version name', () => {
