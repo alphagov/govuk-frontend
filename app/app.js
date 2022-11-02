@@ -37,8 +37,8 @@ module.exports = async (options) => {
   // Cache mapped components and examples
   const [componentsData, componentNames, exampleNames, fullPageExamples] = await Promise.all([
     getComponentsData(),
-    getDirectories(configPaths.components).then(listing => [...listing.keys()]),
-    getDirectories(configPaths.examples).then(listing => [...listing.keys()]),
+    getDirectories(configPaths.components),
+    getDirectories(configPaths.examples),
     getFullPageExamples()
   ])
 

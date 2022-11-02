@@ -1,10 +1,9 @@
 const { readFile } = require('fs/promises')
 const { join } = require('path')
 const { cwd } = require('process')
-const slash = require('slash')
 
 const configPaths = require('../../../config/paths.js')
-const { filterPath, getListing, listingToArray } = require('../../../lib/file-helper')
+const { getListing } = require('../../../lib/file-helper')
 
 describe('dist/', () => {
   const pkg = require(join(cwd(), configPaths.package, 'package.json'))
@@ -19,32 +18,7 @@ describe('dist/', () => {
 
   describe('assets/', () => {
     it('should include the same files as in src/assets', () => {
-      const filterPatterns = [
-        '!**/.DS_Store'
-      ]
-
-      // Build array of expected output files
-      const filesExpected = [...listingSourceAssets]
-        .flatMap(listingToArray)
-        .map(slash)
-        .sort()
-
-        // Only include files matching filter patterns
-        .filter(filterPath(filterPatterns))
-
-        // Files output from 'src/govuk' to 'dist'
-        .map((file) => file.replace(/^src\/govuk\//, 'dist/'))
-
-      // Build array of actual output files
-      const filesActual = [...listingDistAssets]
-        .flatMap(listingToArray)
-        .map(slash)
-        .sort()
-
-        // Only include files matching filter patterns
-        .filter(filterPath(filterPatterns))
-
-      expect(filesActual).toEqual(filesExpected)
+      expect(listingDistAssets).toEqual(listingSourceAssets)
     })
   })
 
