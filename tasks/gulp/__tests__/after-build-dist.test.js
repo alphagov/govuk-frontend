@@ -1,11 +1,10 @@
 const { readFile } = require('fs/promises')
-const { join, parse } = require('path')
+const { join } = require('path')
 const { cwd } = require('process')
-const minimatch = require('minimatch')
 const slash = require('slash')
 
 const configPaths = require('../../../config/paths.js')
-const { getListing, listingToArray } = require('../../../lib/file-helper')
+const { filterPath, getListing, listingToArray } = require('../../../lib/file-helper')
 
 describe('dist/', () => {
   const pkg = require(join(cwd(), configPaths.package, 'package.json'))
@@ -30,9 +29,8 @@ describe('dist/', () => {
         .map(slash)
         .sort()
 
-        // Apply filters
-        .filter((entryPath) => filterPatterns
-          .every((pattern) => minimatch(entryPath, pattern, { matchBase: true })))
+        // Only include files matching filter patterns
+        .filter(filterPath(filterPatterns))
 
         // Files output from 'src/govuk' to 'dist'
         .map((file) => file.replace(/^src\/govuk\//, 'dist/'))
@@ -43,9 +41,8 @@ describe('dist/', () => {
         .map(slash)
         .sort()
 
-        // Apply filters
-        .filter((entryPath) => filterPatterns
-          .every((pattern) => minimatch(entryPath, pattern, { matchBase: true })))
+        // Only include files matching filter patterns
+        .filter(filterPath(filterPatterns))
 
       expect(filesActual).toEqual(filesExpected)
     })

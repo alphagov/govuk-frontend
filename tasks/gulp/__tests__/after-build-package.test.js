@@ -1,10 +1,9 @@
 const { readFile } = require('fs/promises')
-const { join, normalize, parse } = require('path')
-const minimatch = require('minimatch')
+const { join, normalize } = require('path')
 const slash = require('slash')
 
 const configPaths = require('../../../config/paths.js')
-const { getDirectories, getListing, listingToArray } = require('../../../lib/file-helper')
+const { filterPath, getDirectories, getListing, listingToArray, mapPathTo } = require('../../../lib/file-helper')
 const { componentNameToJavaScriptClassName, componentNameToJavaScriptModuleName } = require('../../../lib/helper-functions')
 
 const { renderSass } = require('../../../lib/jest-helpers')
@@ -43,43 +42,27 @@ describe('package/', () => {
     // Build array of expected output files
     const filesExpected = [...listingSource]
       .flatMap(listingToArray)
+      .filter(filterPath(filterPatterns))
 
-      // Apply filters
-      .filter((entryPath) => filterPatterns
-        .every((pattern) => minimatch(entryPath, pattern, { matchBase: true })))
+      // Replaces source component '*.mjs' with:
+      // - `*.mjs` file copied to `govuk-esm`
+      // - `*.js` file compiled to `govuk`
+      .flatMap(mapPathTo(['**/*.mjs'], ({ dir: requirePath, name }) => {
+        const importPath = normalize(slash(requirePath).replace('src/govuk', 'src/govuk-esm'))
 
-      // Each component '*.mjs' compiled to '*.js'
-      .flatMap((entryPath) => {
-        const isMatch = minimatch(entryPath, '**/*.mjs')
+        return [
+          join(importPath, `${name}.mjs`),
+          join(requirePath, `${name}.js`)
+        ]
+      }))
 
-        if (isMatch) {
-          const { dir: requirePath, name } = parse(entryPath)
-          const importPath = normalize(slash(requirePath).replace('src/govuk', 'src/govuk-esm'))
-
-          return [
-            join(importPath, `${name}.mjs`),
-            join(requirePath, `${name}.js`)
-          ]
-        }
-
-        return entryPath
-      })
-
-      // Each component '*.yaml' output to '*.json'
-      .flatMap((entryPath) => {
-        const isMatch = minimatch(entryPath, `${configPaths.components}**/*.yaml`)
-
-        if (isMatch) {
-          const { dir } = parse(entryPath)
-
-          return [
-            join(dir, 'fixtures.json'),
-            join(dir, 'macro-options.json')
-          ]
-        }
-
-        return entryPath
-      })
+      // Replaces source component '*.yaml' with:
+      // - `fixtures.json` fixtures for tests
+      // - `macro-options.json` component options
+      .flatMap(mapPathTo([`${configPaths.components}**/*.yaml`], ({ dir }) => [
+        join(dir, 'fixtures.json'),
+        join(dir, 'macro-options.json')
+      ]))
 
       // Files output from 'src' to 'package'
       .map((file) => normalize(slash(file).replace(/^src\//, 'package/')))
@@ -95,11 +78,8 @@ describe('package/', () => {
     // Build array of actual output files
     const filesActual = [...listingPackage]
       .flatMap(listingToArray)
+      .filter(filterPath(filterPatterns))
       .sort()
-
-      // Apply filters
-      .filter((entryPath) => filterPatterns
-        .every((pattern) => minimatch(entryPath, pattern, { matchBase: true })))
 
     expect(filesActual).toEqual(filesExpected)
   })
