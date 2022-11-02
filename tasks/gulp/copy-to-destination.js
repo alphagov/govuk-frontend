@@ -9,6 +9,7 @@ const yaml = require('js-yaml')
 const map = require('map-stream')
 const merge = require('merge-stream')
 const rename = require('gulp-rename')
+const slash = require('slash')
 
 const configPaths = require('../../config/paths.js')
 const { destination } = require('../task-arguments.js')
@@ -22,7 +23,7 @@ gulp.task('copy:files', () => {
     gulp.src([
       `${configPaths.src}**/*.mjs`,
       `!${configPaths.src}**/*.test.*`
-    ]).pipe(gulp.dest(`${destination}/govuk-esm/`)),
+    ]).pipe(gulp.dest(slash(join(destination, 'govuk-esm')))),
 
     /**
      * Copy files to destination with './govuk' suffix
@@ -77,7 +78,7 @@ gulp.task('copy:files', () => {
           basename: 'macro-options',
           extname: '.json'
         }))
-    ).pipe(gulp.dest(`${destination}/govuk/`))
+    ).pipe(gulp.dest(slash(join(destination, 'govuk'))))
   )
 })
 

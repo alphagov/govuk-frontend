@@ -1,5 +1,6 @@
 const { rename, writeFile } = require('fs/promises')
-const { basename, join, normalize } = require('path')
+const { basename, join } = require('path')
+const { EOL } = require('os')
 const { cwd } = require('process')
 
 const configPaths = require('../config/paths.js')
@@ -16,9 +17,9 @@ async function updateDistAssetsVersion () {
 
   // Files to process
   const assetFiles = [
-    normalize(`${destination}/govuk-frontend.min.css`),
-    normalize(`${destination}/govuk-frontend-ie8.min.css`),
-    normalize(`${destination}/govuk-frontend.min.js`)
+    join(destination, 'govuk-frontend.min.css'),
+    join(destination, 'govuk-frontend-ie8.min.css'),
+    join(destination, 'govuk-frontend.min.js')
   ]
 
   // Loop through files
@@ -31,7 +32,7 @@ async function updateDistAssetsVersion () {
   })
 
   // Write VERSION.txt file
-  assetTasks.push(writeFile(normalize(`${destination}/VERSION.txt`), pkg.version + '\r\n'))
+  assetTasks.push(writeFile(join(destination, 'VERSION.txt'), pkg.version + EOL))
 
   // Resolve on completion
   return Promise.all(assetTasks)
