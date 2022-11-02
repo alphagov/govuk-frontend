@@ -2,8 +2,9 @@ import '../../vendor/polyfills/Date/now.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normalisation
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
-import { closestAttributeValue, extractConfigByNamespace, mergeConfigs, normaliseDataset } from '../../common.mjs'
+import { closestAttributeValue, extractConfigByNamespace, mergeConfigs } from '../../common.mjs'
 import { I18n } from '../../i18n.mjs'
+import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 
 /**
  * @type {CharacterCountTranslations}

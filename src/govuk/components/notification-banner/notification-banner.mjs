@@ -1,6 +1,7 @@
 import '../../vendor/polyfills/Event.mjs' // addEventListener
 
-import { mergeConfigs, normaliseDataset } from '../../common.mjs'
+import { mergeConfigs } from '../../common.mjs'
+import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 
 /**
  * Notification Banner component
