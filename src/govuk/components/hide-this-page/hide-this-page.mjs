@@ -37,7 +37,7 @@ HideThisPage.prototype.buildIndicator = function () {
   }
 
   // Append it all to the module
-  this.$button.appendChild(this.$indicatorContainer)
+  this.$module.appendChild(this.$indicatorContainer)
 }
 
 HideThisPage.prototype.updateIndicator = function () {
