@@ -1,5 +1,4 @@
 import './vendor/polyfills/Element/prototype/dataset.mjs'
-import './vendor/polyfills/Element/prototype/closest.mjs'
 
 /**
  * TODO: Ideally this would be a NodeList.prototype.forEach polyfill
@@ -141,20 +140,6 @@ export function extractConfigByNamespace (configObject, namespace) {
     }
   }
   return newObject
-}
-
-/**
- * Returns the value of the given attribute closest to the given element (including itself)
- *
- * @param {HTMLElement} $element - The element to start walking the DOM tree up
- * @param {string} attributeName - The name of the attribute
- * @returns {string | undefined} Attribute value
- */
-export function closestAttributeValue ($element, attributeName) {
-  var closestElementWithAttribute = $element.closest('[' + attributeName + ']')
-  if (closestElementWithAttribute) {
-    return closestElementWithAttribute.getAttribute(attributeName)
-  }
 }
 
 /**
