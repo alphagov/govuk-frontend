@@ -1,0 +1,32 @@
+name: Build
+
+runs:
+  using: composite
+
+  steps:
+    - name: Cache build
+      uses: actions/cache@v3
+      id: build-cache
+
+      with:
+        # Restore build cache (unless commit SHA changes)
+        key: build-cache-${{ github.sha }}
+        path: |
+          jsdoc
+          public
+          sassdoc
+
+    - name: Install dependencies
+      uses: ./.github/workflows/actions/install-node
+
+      # Skip install when build is already cached
+      if: steps.build-cache.outputs.cache-hit != 'true'
+
+    - name: Build
+      id: build
+
+      # Skip build when we’ve built this SHA before
+      if: steps.build-cache.outputs.cache-hit != 'true'
+      shell: bash
+
+      run: npm run build:compile

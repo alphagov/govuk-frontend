@@ -1,0 +1,18 @@
+name: Setup
+
+inputs:
+  use-cache:
+    description: Restore global `~/.npm` cache (unless lockfile changes)
+    required: false
+
+runs:
+  using: composite
+
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      id: setup-node
+
+      with:
+        cache: ${{ inputs.use-cache != 'false' && 'npm' || '' }}
+        node-version-file: .nvmrc
