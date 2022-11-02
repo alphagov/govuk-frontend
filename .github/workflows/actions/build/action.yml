@@ -12,9 +12,7 @@ runs:
         # Restore build cache (unless commit SHA changes)
         key: build-cache-${{ github.sha }}
         path: |
-          dist
           jsdoc
-          package
           public
           sassdoc
 
@@ -30,7 +28,5 @@ runs:
       # Skip build when we’ve built this SHA before
       if: steps.build-cache.outputs.cache-hit != 'true'
       shell: bash
-      run: |
-        npm run build:compile
-        npm run build:package
-        npm run build:dist
+
+      run: npm run build:compile

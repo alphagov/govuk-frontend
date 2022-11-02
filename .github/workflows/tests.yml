@@ -126,6 +126,14 @@ jobs:
 
       matrix:
         include:
+          - description: Verify package build
+            name: test-build-package
+            run: npm run build:package
+
+          - description: Verify distribution build
+            name: test-build-dist
+            run: npm run build:dist
+
           - description: JavaScript behaviour tests
             name: test-behaviour
             run: npx jest --color --selectProjects "JavaScript behaviour tests"
