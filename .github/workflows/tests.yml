@@ -15,46 +15,142 @@ concurrency:
    group: tests-${{ github.head_ref || github.run_id }}
    cancel-in-progress: true
 
-env:
-  TASK_CACHE_DIR: |
-    .cache/eslint
-    .cache/jest
-    .cache/stylelint
-
 jobs:
-  run-tests:
-    name: Run tests
+  install:
+    name: Install
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        uses: ./.github/workflows/actions/install-node
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: [install]
+
+    steps:
+      - name: Checkout
         uses: actions/checkout@v3
 
       - name: Build
         uses: ./.github/workflows/actions/build
 
-      - name: Cache tasks
+  lint:
+    name: ${{ matrix.description }}
+    runs-on: ubuntu-latest
+    needs: [install]
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        include:
+          - description: Lint Sass
+            name: lint-scss
+            run: npm run lint:scss
+            cache: .cache/stylelint
+
+          - description: Lint JavaScript
+            name: lint-js
+            run: npm run lint:js
+            cache: .cache/eslint
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Restore dependencies
+        uses: ./.github/workflows/actions/install-node
+
+      - name: Cache linter
         uses: actions/cache@v3
         with:
-          key: task-cache
-          path: ${{ env.TASK_CACHE_DIR }}
+          key: ${{ matrix.name }}-cache
+          path: ${{ matrix.cache }}
 
-      - name: Lint
-        run: npm run lint
+      - name: Run lint task
+        run: ${{ matrix.run }}
 
-      - name: Run test projects
-        run: |
-          npx jest --color --selectProjects "Nunjucks macro tests"
-          npx jest --color --selectProjects "JavaScript unit tests" --coverage --testLocationInResults
-          npx jest --color --selectProjects "JavaScript behaviour tests"
+  test:
+    name: ${{ matrix.description }}
+    runs-on: ubuntu-latest
+    needs: [install]
 
-      - name: Send screenshots to Percy
-        run: npx percy exec -- jest --color --selectProjects "JavaScript component tests"
-        env:
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+    strategy:
+      fail-fast: false
+
+      matrix:
+        include:
+          - description: Nunjucks macro tests
+            name: test-macro
+            run: npx jest --color --selectProjects "Nunjucks macro tests"
+
+          - description: JavaScript unit tests
+            name: test-unit
+            run: npx jest --color --selectProjects "JavaScript unit tests" --coverage --testLocationInResults
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Restore dependencies
+        uses: ./.github/workflows/actions/install-node
+
+      - name: Cache Jest
+        uses: actions/cache@v3
+        with:
+          key: ${{ matrix.name }}-cache
+          path: .cache/jest
+
+      - name: Run test task
+        run: ${{ matrix.run }}
 
       - name: Save test coverage
         uses: actions/upload-artifact@v3
         with:
-          name: Test coverage
+          name: ${{ matrix.description }} coverage
           path: coverage
           if-no-files-found: ignore
+
+  verify:
+    name: ${{ matrix.description }}
+    runs-on: ubuntu-latest
+    needs: [install, build]
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        include:
+          - description: JavaScript behaviour tests
+            name: test-behaviour
+            run: npx jest --color --selectProjects "JavaScript behaviour tests"
+
+          - description: JavaScript component tests
+            name: test-component
+            run: npx percy exec -- jest --color --selectProjects "JavaScript component tests"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Restore dependencies
+        uses: ./.github/workflows/actions/install-node
+
+      - name: Restore build
+        uses: ./.github/workflows/actions/build
+
+      - name: Cache Jest
+        uses: actions/cache@v3
+        with:
+          key: ${{ matrix.name }}-cache
+          path: .cache/jest
+
+      - name: Run verify task
+        run: ${{ matrix.run }}
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
