@@ -31,7 +31,7 @@ describe('Character count', () => {
       await page.setJavaScriptEnabled(true)
     })
 
-    it('shows the fallback message', async () => {
+    it('shows the textarea description', async () => {
       await goToComponent(page, 'character-count')
       const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
 
@@ -55,7 +55,7 @@ describe('Character count', () => {
         expect(srMessage).toBeTruthy()
       })
 
-      it('hides the fallback hint', async () => {
+      it('hides the textarea description', async () => {
         const messageClasses = await page.$eval('.govuk-character-count__message', el => el.className)
         expect(messageClasses).toContain('govuk-visually-hidden')
       })
@@ -429,6 +429,32 @@ describe('Character count', () => {
           const visibility = await page.$eval('.govuk-character-count__status', el => window.getComputedStyle(el).visibility)
           expect(visibility).toEqual('visible')
         })
+
+        it('configures the description of the textarea', async () => {
+          // This tests that a description can be provided through JavaScript attributes
+          // and interpolated with the limit provided to the character count in JS.
+
+          await renderAndInitialise(page, 'character-count', {
+            nunjucksParams:
+              examples[
+                'when neither maxlength/maxwords nor textarea description are set'
+              ],
+            javascriptConfig: {
+              maxlength: 10,
+              i18n: {
+                textareaDescription: {
+                  other: 'No more than %{count} characters'
+                }
+              }
+            }
+          })
+
+          const message = await page.$eval(
+            '.govuk-character-count__message',
+            (el) => el.innerHTML.trim()
+          )
+          expect(message).toEqual('No more than 10 characters')
+        })
       })
 
       describe('via `initAll`', () => {
@@ -578,6 +604,28 @@ describe('Character count', () => {
             (el) => el.innerHTML.trim()
           )
           expect(message).toEqual('You have 1 word too many')
+        })
+
+        it('interpolates the textarea description in data attributes with the maximum set in JavaScript', async () => {
+          // This tests that any textarea description provided through data-attributes
+          // (or the Nunjucks macro), waiting for a maximum to be provided in
+          // JavaScript config, will lead to the message being injected in the
+          // element holding the textarea's accessible description
+          // (and interpolated to replace `%{count}` with the maximum)
+
+          await renderAndInitialise(page, 'character-count', {
+            nunjucksParams:
+              examples['when neither maxlength nor maxwords are set'],
+            javascriptConfig: {
+              maxlength: 10
+            }
+          })
+
+          const message = await page.$eval(
+            '.govuk-character-count__message',
+            (el) => el.innerHTML.trim()
+          )
+          expect(message).toEqual('No more than 10 characters')
         })
       })
     })
