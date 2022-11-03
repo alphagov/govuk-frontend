@@ -30,7 +30,11 @@ export default async function serverStart () {
   try {
     await ready({ timeout })
   } catch (error) {
-    await setup({ command: `PORT=${PORT} node app/start.js`, port: PORT })
+    await setup({
+      // Ensure PORT works (on Windows) + SIGINT/SIGTERM signal events
+      command: `cross-env-shell PORT=${PORT} node app/start.js`,
+      port: PORT
+    })
     await ready()
   }
 }
