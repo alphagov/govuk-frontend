@@ -12,6 +12,7 @@ require('./tasks/gulp/watch.js')
 
 // Node tasks
 const { updateDistAssetsVersion } = require('./tasks/asset-version.js')
+const { updatePrototypeKitConfig } = require('./tasks/prototype-kit-config.js')
 const { clean } = require('./tasks/clean.js')
 const { npmScriptTask } = require('./tasks/run.js')
 
@@ -73,7 +74,8 @@ gulp.task('dev', gulp.series(
 gulp.task('build:package', gulp.series(
   clean,
   'copy:files',
-  'js:compile'
+  'js:compile',
+  updatePrototypeKitConfig
 ))
 
 /**

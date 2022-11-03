@@ -9,4 +9,4 @@ $govuk-assets-path: if(
 $govuk-global-styles: true !default;
 $govuk-new-link-styles: true !default;
 
-@import "all";
+@import "../govuk/all";

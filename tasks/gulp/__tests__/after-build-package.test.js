@@ -42,6 +42,11 @@ describe('package/', () => {
     const listingExpected = listingSource
       .filter(filterPath(filterPatterns))
 
+      // Replaces GOV.UK Prototype kit config with JSON
+      .flatMap(mapPathTo(['**/govuk-prototype-kit.config.mjs'], ({ dir: requirePath, name }) => [
+        join(requirePath, '../', `${name}.json`)
+      ]))
+
       // Replaces all source '*.mjs' files
       .flatMap(mapPathTo(['**/*.mjs'], ({ dir: requirePath, name }) => {
         const importFilter = /^govuk(?!-)/
@@ -67,7 +72,6 @@ describe('package/', () => {
 
       // Files already present in 'package'
       .concat(...[
-        'govuk-prototype-kit.config.json',
         'package.json',
         'README.md'
       ])

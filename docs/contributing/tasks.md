@@ -35,6 +35,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - clean the `./package` folder
 - copy Sass files, applying Autoprefixer via PostCSS
 - copy Nunjucks component template/macro files, including JSON configs
+- copy GOV.UK Prototype Kit config files
 - copy JavaScript ESM source files
 - compile JavaScript ESM to CommonJS (`gulp js:compile`)
 - runs `npm run test:build:package` (which will test the output is correct)
