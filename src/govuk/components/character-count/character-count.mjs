@@ -29,7 +29,7 @@ var TRANSLATIONS_DEFAULT = {
     one: 'You have %{count} word too many',
     other: 'You have %{count} words too many'
   },
-  fallbackHint: {
+  textareaDescription: {
     other: ''
   }
 }
@@ -125,9 +125,9 @@ CharacterCount.prototype.init = function () {
 
   // Inject a decription for the textarea if none is present already
   // for when the component was rendered with no maxlength, maxwords
-  // nor custom fallbackHintText
+  // nor custom textareaDescriptionText
   if ($fallbackLimitMessage.textContent.match(/^\s*$/)) {
-    $fallbackLimitMessage.textContent = this.i18n.t('fallbackHint', { count: this.maxLength })
+    $fallbackLimitMessage.textContent = this.i18n.t('textareaDescription', { count: this.maxLength })
   }
 
   // Move the fallback count message to be immediately after the textarea
@@ -383,7 +383,7 @@ export default CharacterCount
  * @property {PluralisedTranslation} [wordsUnderLimit] - Words under limit
  * @property {string} [wordsAtLimit] - Words at limit
  * @property {PluralisedTranslation} [wordsOverLimit] - Words over limit
- * @property {PluralisedTranslation} [fallbackHint] - Fallback hint
+ * @property {PluralisedTranslation} [textareaDescription] - Fallback hint
  */
 
 /**

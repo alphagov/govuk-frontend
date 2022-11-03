@@ -267,7 +267,7 @@ describe('Character count', () => {
 
         // Fallback hint is passed as data attribute
         const $component = $('[data-module]')
-        expect($component.attr('data-i18n.fallback-hint.other')).toEqual('No more than %{count} characters')
+        expect($component.attr('data-i18n.textarea-description.other')).toEqual('No more than %{count} characters')
 
         // No content is set as the accessible description cannot be interpolated on the backend
         // It'll be up to the JavaScript to fill it in
@@ -284,7 +284,7 @@ describe('Character count', () => {
         )
 
         const $component = $('[data-module]')
-        expect($component.attr('data-i18n.fallback-hint.other')).toBeFalsy()
+        expect($component.attr('data-i18n.textarea-description.other')).toBeFalsy()
       })
     })
   })

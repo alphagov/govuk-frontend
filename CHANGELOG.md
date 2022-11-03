@@ -30,13 +30,13 @@ You should avoid lengthy values for the `menuButtonText` parameter, as the text 
 
 This was added in [pull request #2720: Add parameter to localise mobile menu toggle button](https://github.com/alphagov/govuk-frontend/pull/2720).
 
-#### Localise the character count's fallback text
+#### Localise the character count's textarea description/fallback text
 
-When using the [character count](https://design-system.service.gov.uk/components/character-count/) Nunjucks macro, you can now translate the text of the fallback counter message by using the `fallbackHintText` parameter.
+When using the [character count](https://design-system.service.gov.uk/components/character-count/) Nunjucks macro, you can now translate the description of textarea by using the `textareaDescriptionText` option.
 
-This text is announced by screen readers when the character count input is focused. It's also displayed visually if JavaScript is not available.
+This text is announced by screen readers when the character count input is focused. It's also displayed visually as a fallback if JavaScript is not available.
 
-This was added in [pull request #2742: Add ability to customise character count fallback text](https://github.com/alphagov/govuk-frontend/pull/2742).
+This was added in [pull request #2742: Add ability to customise character count fallback text](https://github.com/alphagov/govuk-frontend/pull/2742), and the option renamed to `textareaDescriptionText` in [pull request #2915](https://github.com/alphagov/govuk-frontend/pull/2915).
 
 #### Localise the character count's counter message
 
@@ -70,7 +70,7 @@ This was added in the following pull requests:
 
 When configuring the character count's limit in JavaScript, you can customise the description provided to assistive technologies when users focus the input (so it indicates the overall limit of characters or words).
 
-You can pass the description in the HTML, using `data-i18n.fallback-hint.{other,many,few,two,one,zero}` attribute on the element, depending on the [plural form required by your locale](https://design-system.service.gov.uk/get-started/localisation/#pluralisation), to provide the text to set as the description.
+You can pass the description in the HTML, using `data-i18n.textarea-description.{other,many,few,two,one,zero}` attribute on the element, depending on the [plural form required by your locale](https://design-system.service.gov.uk/get-started/localisation/#pluralisation), to provide the text to set as the description.
 
 You can also provide these messages using a JavaScript configuration object when creating an instance of the component or initialising all components.
 See [our guidance on localising GOV.UK Frontend](https://design-system.service.gov.uk/get-started/localisation/) for how to do this.

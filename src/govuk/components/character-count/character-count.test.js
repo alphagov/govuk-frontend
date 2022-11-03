@@ -442,7 +442,7 @@ describe('Character count', () => {
             javascriptConfig: {
               maxlength: 10,
               i18n: {
-                fallbackHint: {
+                textareaDescription: {
                   other: 'No more than %{count} characters'
                 }
               }

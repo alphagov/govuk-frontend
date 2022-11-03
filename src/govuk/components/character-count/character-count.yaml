@@ -37,7 +37,7 @@ params:
   required: false
   description: Options for the hint component.
   isComponent: true
-- name: fallbackHintText
+- name: textareaDescriptionText
   type: string
   required: false
   description: Text describing the maximum number of characters you can enter, which is announced to screen readers. The text is displayed as a fallback if the character count JavaScript does not run. Depending on how you configure this component and what parameters you add, instances of `%{count}` are replaced by the value of `maxwords`. If not configured, it uses `maxlength`. By default, fallback text is provided in English.
@@ -92,7 +92,7 @@ examples:
       name: custom-fallback
       id: custom-fallback
       maxlength: 10
-      fallbackHintText: Gallwch ddefnyddio hyd at %{count} nod
+      textareaDescriptionText: Gallwch ddefnyddio hyd at %{count} nod
 
   - name: with hint
     data:
@@ -296,7 +296,7 @@ examples:
       name: no-maximum
       label:
         text: Full address
-      fallbackHintText: 'No more than %{count} characters'
+      textareaDescriptionText: 'No more than %{count} characters'
   - name: when neither maxlength/maxwords nor fallback hint are set
     hidden: true
     data:
