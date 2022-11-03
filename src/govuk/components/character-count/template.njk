@@ -11,8 +11,9 @@
 {%- if params.maxwords %} data-maxwords="{{ params.maxwords }}"{% endif %}
 {#
   Without maxlength or maxwords, we can't guess if the component will count words or characters.
-  This means we can't compute a default fallback message (also used as the textarea accessible
-  description) to be interpolated in JavaScript once the maximum gets configured there
+  We can't guess a default textarea description to be interpolated in JavaScript
+  once the maximum gets configured there.
+  So we only add the attribute if a textarea description was explicitely provided.
 #}
 {%- if hasNoLimit and params.textareaDescriptionText %}{{govukPluralisedI18nAttributes('textarea-description', {other: params.textareaDescriptionText})}}{% endif %}
 {%- if params.charactersUnderLimitText %}{{govukPluralisedI18nAttributes('characters-under-limit', params.charactersUnderLimitText)}}{% endif %}

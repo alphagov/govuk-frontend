@@ -121,18 +121,18 @@ CharacterCount.prototype.init = function () {
   }
 
   var $textarea = this.$textarea
-  var $fallbackLimitMessage = document.getElementById($textarea.id + '-info')
+  var $textareaDescription = document.getElementById($textarea.id + '-info')
 
   // Inject a decription for the textarea if none is present already
   // for when the component was rendered with no maxlength, maxwords
   // nor custom textareaDescriptionText
-  if ($fallbackLimitMessage.textContent.match(/^\s*$/)) {
-    $fallbackLimitMessage.textContent = this.i18n.t('textareaDescription', { count: this.maxLength })
+  if ($textareaDescription.textContent.match(/^\s*$/)) {
+    $textareaDescription.textContent = this.i18n.t('textareaDescription', { count: this.maxLength })
   }
 
-  // Move the fallback count message to be immediately after the textarea
+  // Move the textarea description to be immediately after the textarea
   // Kept for backwards compatibility
-  $textarea.insertAdjacentElement('afterend', $fallbackLimitMessage)
+  $textarea.insertAdjacentElement('afterend', $textareaDescription)
 
   // Create the *screen reader* specific live-updating counter
   // This doesn't need any styling classes, as it is never visible
@@ -140,20 +140,20 @@ CharacterCount.prototype.init = function () {
   $screenReaderCountMessage.className = 'govuk-character-count__sr-status govuk-visually-hidden'
   $screenReaderCountMessage.setAttribute('aria-live', 'polite')
   this.$screenReaderCountMessage = $screenReaderCountMessage
-  $fallbackLimitMessage.insertAdjacentElement('afterend', $screenReaderCountMessage)
+  $textareaDescription.insertAdjacentElement('afterend', $screenReaderCountMessage)
 
   // Create our live-updating counter element, copying the classes from the
-  // fallback element for backwards compatibility as these may have been
+  // textarea description for backwards compatibility as these may have been
   // configured
   var $visibleCountMessage = document.createElement('div')
-  $visibleCountMessage.className = $fallbackLimitMessage.className
+  $visibleCountMessage.className = $textareaDescription.className
   $visibleCountMessage.classList.add('govuk-character-count__status')
   $visibleCountMessage.setAttribute('aria-hidden', 'true')
   this.$visibleCountMessage = $visibleCountMessage
-  $fallbackLimitMessage.insertAdjacentElement('afterend', $visibleCountMessage)
+  $textareaDescription.insertAdjacentElement('afterend', $visibleCountMessage)
 
-  // Hide the fallback limit message
-  $fallbackLimitMessage.classList.add('govuk-visually-hidden')
+  // Hide the textarea description
+  $textareaDescription.classList.add('govuk-visually-hidden')
 
   // Remove hard limit if set
   $textarea.removeAttribute('maxlength')

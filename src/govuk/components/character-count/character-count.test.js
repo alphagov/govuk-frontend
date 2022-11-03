@@ -31,7 +31,7 @@ describe('Character count', () => {
       await page.setJavaScriptEnabled(true)
     })
 
-    it('shows the fallback message', async () => {
+    it('shows the textarea description', async () => {
       await goToComponent(page, 'character-count')
       const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
 
@@ -55,7 +55,7 @@ describe('Character count', () => {
         expect(srMessage).toBeTruthy()
       })
 
-      it('hides the fallback hint', async () => {
+      it('hides the textarea description', async () => {
         const messageClasses = await page.$eval('.govuk-character-count__message', el => el.className)
         expect(messageClasses).toContain('govuk-visually-hidden')
       })
@@ -437,7 +437,7 @@ describe('Character count', () => {
           await renderAndInitialise(page, 'character-count', {
             nunjucksParams:
               examples[
-                'when neither maxlength/maxwords nor fallback hint are set'
+                'when neither maxlength/maxwords nor textarea description are set'
               ],
             javascriptConfig: {
               maxlength: 10,
@@ -606,8 +606,8 @@ describe('Character count', () => {
           expect(message).toEqual('You have 1 word too many')
         })
 
-        it('interpolates the fallback hint in data attributes with the maximum set in JavaScript', async () => {
-          // This tests that any fallback hint provided through data-attributes
+        it('interpolates the textarea description in data attributes with the maximum set in JavaScript', async () => {
+          // This tests that any textarea description provided through data-attributes
           // (or the Nunjucks macro), waiting for a maximum to be provided in
           // JavaScript config, will lead to the message being injected in the
           // element holding the textarea's accessible description

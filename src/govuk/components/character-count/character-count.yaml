@@ -40,7 +40,7 @@ params:
 - name: textareaDescriptionText
   type: string
   required: false
-  description: Text describing the maximum number of characters you can enter, which is announced to screen readers. The text is displayed as a fallback if the character count JavaScript does not run. Depending on how you configure this component and what parameters you add, instances of `%{count}` are replaced by the value of `maxwords`. If not configured, it uses `maxlength`. By default, fallback text is provided in English.
+  description: Text describing the maximum number of characters you can enter, which is announced to screen readers. The text is displayed as a fallback if the character count JavaScript does not run. Depending on how you configure this component and what parameters you add, instances of `%{count}` are replaced by the value of `maxwords`. If not configured, it uses `maxlength`. By default, textarea description is provided in English.
 - name: errorMessage
   type: object
   required: false
@@ -86,11 +86,11 @@ examples:
       label:
         text: Can you provide more detail?
   
-  - name: with custom fallback text
-    description: with no-js fallback text translated into Welsh
+  - name: with custom textarea description
+    description: with textarea description translated into Welsh
     data:
-      name: custom-fallback
-      id: custom-fallback
+      name: custom-textarea-description
+      id: custom-textarea-description
       maxlength: 10
       textareaDescriptionText: Gallwch ddefnyddio hyd at %{count} nod
 
@@ -297,7 +297,7 @@ examples:
       label:
         text: Full address
       textareaDescriptionText: 'No more than %{count} characters'
-  - name: when neither maxlength/maxwords nor fallback hint are set
+  - name: when neither maxlength/maxwords nor textarea description are set
     hidden: true
     data:
       id: no-maximum

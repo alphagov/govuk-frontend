@@ -225,9 +225,9 @@ describe('Character count', () => {
     })
   })
 
-  describe('with custom fallback text', () => {
-    it('allows customisation of the fallback message', () => {
-      const $ = render('character-count', examples['with custom fallback text'])
+  describe('with custom textarea description', () => {
+    it('allows customisation of the textarea description', () => {
+      const $ = render('character-count', examples['with custom textarea description'])
 
       const message = $('.govuk-character-count__message').text().trim()
       expect(message).toEqual('Gallwch ddefnyddio hyd at 10 nod')
@@ -258,11 +258,11 @@ describe('Character count', () => {
   })
 
   describe('when neither maxlength nor maxwords are set', () => {
-    describe('with fallback hint set', () => {
+    describe('with textarea description set', () => {
       // If the template has no maxwords or maxlength to go for
-      // it needs to pass down any fallback hint to the JavaScript
+      // it needs to pass down any textarea description to the JavaScript
       // so it can inject the limit it may have received at instantiation
-      it('renders the fallback hint as a data attribute', () => {
+      it('renders the textarea description as a data attribute', () => {
         const $ = render('character-count', examples['when neither maxlength nor maxwords are set'])
 
         // Fallback hint is passed as data attribute
@@ -276,11 +276,11 @@ describe('Character count', () => {
       })
     })
 
-    describe('without fallback hint', () => {
-      it('does not render a fallback hint data attribute', () => {
+    describe('without textarea description', () => {
+      it('does not render a textarea description data attribute', () => {
         const $ = render(
           'character-count',
-          examples['when neither maxlength/maxwords nor fallback hint are set']
+          examples['when neither maxlength/maxwords nor textarea description are set']
         )
 
         const $component = $('[data-module]')
