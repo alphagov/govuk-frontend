@@ -52,12 +52,12 @@ describe(`http://localhost:${PORT}`, () => {
       const response = await fetchPath('/')
       const $ = cheerio.load(await response.text())
 
-      const componentsDirectory = await getDirectories(configPaths.components)
+      const componentNames = await getDirectories(configPaths.components)
       const componentsList = $('li a[href^="/components/"]').get()
 
       // Since we have an 'all' component link that renders the default example of all
       // components, there will always be one more expected link.
-      const expectedComponentLinks = componentsDirectory.size + 1
+      const expectedComponentLinks = componentNames.length + 1
       expect(componentsList.length).toEqual(expectedComponentLinks)
     })
   })

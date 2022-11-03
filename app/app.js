@@ -3,7 +3,7 @@ const app = express()
 const bodyParser = require('body-parser')
 const nunjucks = require('nunjucks')
 const { marked } = require('marked')
-const path = require('path')
+const { join } = require('path')
 
 const { getDirectories, getComponentsData, getFullPageExamples } = require('../lib/file-helper')
 const helperFunctions = require('../lib/helper-functions')
@@ -17,7 +17,7 @@ const appViews = [
   configPaths.views,
   configPaths.components,
   configPaths.src,
-  `${configPaths.node_modules}/govuk_template_jinja`
+  join(configPaths.node_modules, 'govuk_template_jinja')
 ]
 
 module.exports = async (options) => {
@@ -37,8 +37,8 @@ module.exports = async (options) => {
   // Cache mapped components and examples
   const [componentsData, componentNames, exampleNames, fullPageExamples] = await Promise.all([
     getComponentsData(),
-    getDirectories(configPaths.components).then(listing => [...listing.keys()]),
-    getDirectories(configPaths.examples).then(listing => [...listing.keys()]),
+    getDirectories(configPaths.components),
+    getDirectories(configPaths.examples),
     getFullPageExamples()
   ])
 
@@ -93,7 +93,7 @@ module.exports = async (options) => {
   app.use('/vendor/govuk_frontend_toolkit/', express.static('node_modules/govuk_frontend_toolkit/javascripts/govuk/'))
   app.use('/vendor/jquery/', express.static('node_modules/jquery/dist'))
 
-  app.use('/assets', express.static(path.join(configPaths.src, 'assets')))
+  app.use('/assets', express.static(join(configPaths.src, 'assets')))
 
   // Turn form POSTs into data that can be used for validation.
   app.use(bodyParser.urlencoded({ extended: true }))

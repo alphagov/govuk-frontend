@@ -1,7 +1,9 @@
+const { join } = require('path')
 const gulp = require('gulp')
 const taskListing = require('gulp-task-listing')
 const configPaths = require('./config/paths.js')
 const { destination } = require('./tasks/task-arguments.js')
+const slash = require('slash')
 
 // Gulp sub-tasks
 require('./tasks/gulp/compile-assets.js')
@@ -39,7 +41,7 @@ gulp.task('styles', gulp.series(
  */
 gulp.task('copy:assets', () => {
   return gulp.src(`${configPaths.src}assets/**/*`)
-    .pipe(gulp.dest(`${destination}/assets/`))
+    .pipe(gulp.dest(slash(join(destination, 'assets'))))
 })
 
 /**

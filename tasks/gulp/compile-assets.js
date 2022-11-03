@@ -1,6 +1,7 @@
+const { getListing } = require('../../lib/file-helper')
 const { componentNameToJavaScriptModuleName } = require('../../lib/helper-functions')
 
-const path = require('path')
+const { join, parse } = require('path')
 
 const gulp = require('gulp')
 const sass = require('gulp-sass')(require('node-sass'))
@@ -9,25 +10,23 @@ const postcss = require('gulp-postcss')
 const rollup = require('gulp-better-rollup')
 const gulpif = require('gulp-if')
 const uglify = require('gulp-uglify')
-const glob = require('glob')
+const minimatch = require('minimatch')
 const merge = require('merge-stream')
 const rename = require('gulp-rename')
+const slash = require('slash')
 
 const configPaths = require('../../config/paths.js')
 const { destination, isDist, isPackage } = require('../task-arguments.js')
 
-// Compile CSS and JS task --------------
-// --------------------------------------
-
-// Determine destination namespace
-function destinationPath () {
-  return isPackage ? `${destination}/govuk` : destination
-}
-
+/**
+ * Compile Sass to CSS task
+ */
 gulp.task('scss:compile', function () {
-  /**
-   * Release distribution
-   */
+  const destPath = isPackage
+    ? join(destination, 'govuk')
+    : destination
+
+  // Release distribution
   if (isDist) {
     return merge(
       compileStyles(
@@ -44,12 +43,10 @@ gulp.task('scss:compile', function () {
             extname: '.min.css'
           })))
     )
-      .pipe(gulp.dest(destination))
+      .pipe(gulp.dest(slash(destPath)))
   }
 
-  /**
-   * Review application
-   */
+  // Review application
   return merge(
     compileStyles(
       gulp.src(`${configPaths.app}assets/scss/app?(-ie8).scss`)),
@@ -66,11 +63,11 @@ gulp.task('scss:compile', function () {
           path.dirname = 'full-page-examples'
         })))
   )
-    .pipe(gulp.dest(destinationPath()))
+    .pipe(gulp.dest(slash(destPath)))
 })
 
 /**
- * Compile Sass to CSS
+ * Compile Sass to CSS helper
  *
  * @param {import('stream').Stream} stream - Input file stream
  * @param {import('node-sass').Options} [options] - Sass options
@@ -89,27 +86,33 @@ function compileStyles (stream, options = {}) {
     .pipe(postcss())
 }
 
-// Compile js task for preview ----------
-// --------------------------------------
-gulp.task('js:compile', () => {
+/**
+ * Compile JavaScript ESM to CommonJS task
+ */
+gulp.task('js:compile', async () => {
+  const destPath = isPackage
+    ? join(destination, 'govuk')
+    : destination
+
   // For dist/ folder we only want compiled 'all.js'
-  const fileLookup = isDist ? configPaths.src + 'all.mjs' : configPaths.src + '**/!(*.test).mjs'
+  const fileLookup = isDist ? 'all.mjs' : '**/!(*.test).mjs'
 
-  // Perform a synchronous search and return an array of matching file names
-  const srcFiles = glob.sync(fileLookup)
+  // Perform a search and return an array of matching file names
+  const srcFiles = await getListing(configPaths.src, fileLookup)
 
-  return merge(srcFiles.map(function (file) {
-    // This is combined with destinationPath in gulp.dest()
+  return merge(srcFiles.map((file) => {
+    const { dir: srcPath, name } = parse(file)
+
+    // This is combined with destPath in gulp.dest()
     // so the files are output to the correct folders
-    const newDirectoryPath = path.dirname(file).replace('src/govuk', '')
+    const modulePath = slash(srcPath).replace(/^govuk/, '')
 
     // We only want to give component JavaScript a unique module name
-    let moduleName = 'GOVUKFrontend'
-    if (path.dirname(file).includes('/components/')) {
-      moduleName = componentNameToJavaScriptModuleName(path.parse(file).name)
-    }
+    const moduleName = minimatch(srcPath, 'components/**')
+      ? componentNameToJavaScriptModuleName(name)
+      : 'GOVUKFrontend'
 
-    return gulp.src(file)
+    return gulp.src(slash(join(configPaths.src, file)))
       .pipe(rollup({
         // Used to set the `window` global and UMD/AMD export name
         // Component JavaScript is given a unique name to aid individual imports, e.g GOVUKFrontend.Accordion
@@ -131,6 +134,6 @@ gulp.task('js:compile', () => {
       .pipe(rename({
         extname: '.js'
       }))
-      .pipe(gulp.dest(destinationPath() + newDirectoryPath))
+      .pipe(gulp.dest(slash(join(destPath, modulePath))))
   }))
 })

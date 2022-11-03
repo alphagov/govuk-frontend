@@ -1,15 +1,16 @@
 const { readFile } = require('fs/promises')
-const path = require('path')
-const recursive = require('recursive-readdir')
-const glob = require('glob')
+const { join } = require('path')
 
 const configPaths = require('../../../config/paths.js')
-const { getDirectories, getFilesByDirectory } = require('../../../lib/file-helper')
+const { filterPath, getDirectories, getListing, mapPathTo } = require('../../../lib/file-helper')
 const { componentNameToJavaScriptClassName, componentNameToJavaScriptModuleName } = require('../../../lib/helper-functions')
 
 const { renderSass } = require('../../../lib/jest-helpers')
 
 describe('package/', () => {
+  let listingSource
+  let listingPackage
+
   let componentsFilesSource
   let componentsFilesPackage
   let componentsFilesPackageESM
@@ -17,96 +18,65 @@ describe('package/', () => {
   let componentNames
 
   beforeAll(async () => {
-    componentsFilesSource = await getFilesByDirectory(configPaths.components)
-    componentsFilesPackage = await getFilesByDirectory(`${configPaths.package}govuk/components/`)
-    componentsFilesPackageESM = await getFilesByDirectory(`${configPaths.package}govuk-esm/components/`)
+    listingSource = await getListing(join(configPaths.src, '../'))
+    listingPackage = await getListing(configPaths.package)
+
+    componentsFilesSource = await getListing(configPaths.components)
+    componentsFilesPackage = await getListing(join(configPaths.package, 'govuk/components'))
+    componentsFilesPackageESM = await getListing(join(configPaths.package, 'govuk-esm/components'))
 
     // Components list
-    componentNames = [...(await getDirectories(configPaths.components)).keys()]
+    componentNames = await getDirectories(configPaths.components)
   })
 
-  it('should contain the expected files', () => {
-    // Build an array of the files that are present in the package directory.
-    const actualPackageFiles = () => {
-      return recursive(configPaths.package).then(
-        files => {
-          return files
-            // Remove /package prefix from filenames
-            .map(file => file.replace(/^package\//, ''))
-            // Sort to make comparison easier
-            .sort()
-        },
-        error => {
-          console.error('Unable to get package files', error)
-        }
-      )
-    }
+  it('should contain the expected files', async () => {
+    const filterPatterns = [
+      '!**/.DS_Store',
+      '!**/*.test.*',
+      '!**/__snapshots__/',
+      '!**/__snapshots__/**',
+      '!govuk/README.md'
+    ]
 
-    // Build an array of files we expect to be found in the package directory,
-    // based on the contents of the src directory.
-    const expectedPackageFiles = () => {
-      const filesToIgnore = [
-        '.DS_Store',
-        '*.test.*',
-        '*.yaml',
-        '*.snap',
-        '*/govuk/README.md'
-      ]
+    // Build array of expected output files
+    const listingExpected = listingSource
+      .filter(filterPath(filterPatterns))
 
-      const additionalFilesNotInSrc = [
-        'package.json',
+      // Replaces source component '*.mjs' with:
+      // - `*.mjs` file copied to `govuk-esm`
+      // - `*.js` file compiled to `govuk`
+      .flatMap(mapPathTo(['**/*.mjs'], ({ dir: requirePath, name }) => {
+        const importPath = requirePath.replace(/^govuk/, 'govuk-esm')
+
+        return [
+          join(importPath, `${name}.mjs`),
+          join(requirePath, `${name}.js`)
+        ]
+      }))
+
+      // Replaces source component '*.yaml' with:
+      // - `fixtures.json` fixtures for tests
+      // - `macro-options.json` component options
+      .flatMap(mapPathTo(['**/*.yaml'], ({ dir }) => [
+        join(dir, 'fixtures.json'),
+        join(dir, 'macro-options.json')
+      ]))
+
+      // Files already present in 'package'
+      .concat(...[
         'govuk-prototype-kit.config.json',
-        '**/macro-options.json',
-        '**/fixtures.json',
+        'package.json',
         'README.md'
-      ]
+      ])
+      .sort()
 
-      return recursive(configPaths.src, filesToIgnore).then(
-        files => {
-          let filesNotInSrc = files
-          // Use glob to generate an array of files that accounts for wildcards in filenames
-          filesNotInSrc = glob.sync('{' + additionalFilesNotInSrc.join(',') + '}', { cwd: 'package' })
-
-          return files
-            .map(file => {
-              // Remove /src prefix from filenames
-              const fileWithoutSrc = file.replace(/^src\//, '')
-
-              // Account for govuk-esm folder
-              if (fileWithoutSrc.split('.').pop() === 'mjs') {
-                const esmFile = fileWithoutSrc.replace('govuk/', 'govuk-esm/')
-                const umdFile = fileWithoutSrc.replace('.mjs', '.js')
-
-                return [umdFile, esmFile]
-              } else {
-                return fileWithoutSrc
-              }
-            })
-            // Allow for additional files that are not in src
-            .concat(filesNotInSrc)
-            .flat()
-            // Sort to make comparison easier
-            .sort()
-        },
-        error => {
-          console.error('Unable to get package files', error)
-        }
-      )
-    }
-
-    // Compare the expected directory listing with the files we expect
-    // to be present
-    return Promise.all([actualPackageFiles(), expectedPackageFiles()])
-      .then(results => {
-        const [actualPackageFiles, expectedPackageFiles] = results
-
-        expect(actualPackageFiles).toEqual(expectedPackageFiles)
-      })
+    // Compare array of actual output files
+    expect(listingPackage).toEqual(listingExpected)
   })
 
   describe('README.md', () => {
     it('is not overwritten', () => {
-      return readFile(path.join(configPaths.package, 'README.md'), 'utf8')
+      return readFile(join(configPaths.package, 'README.md'), 'utf8')
         .then(contents => {
           // Look for H1 matching 'GOV.UK Frontend' from existing README
           expect(contents).toMatch(/^# GOV.UK Frontend/)
@@ -118,14 +88,14 @@ describe('package/', () => {
 
   describe('all.scss', () => {
     it('should compile without throwing an exception', async () => {
-      const allScssFile = path.join(configPaths.package, 'govuk', 'all.scss')
+      const allScssFile = join(configPaths.package, 'govuk', 'all.scss')
       await renderSass({ file: allScssFile })
     })
   })
 
   describe('all.js', () => {
     it('should have correct module name', async () => {
-      const allJsFile = path.join(configPaths.package, 'govuk', 'all.js')
+      const allJsFile = join(configPaths.package, 'govuk', 'all.js')
 
       return readFile(allJsFile, 'utf8')
         .then((data) => {
@@ -140,21 +110,24 @@ describe('package/', () => {
   describe('component', () => {
     it('should have macro-options.json that contains JSON', () => {
       const componentTasks = componentNames.map(async (componentName) => {
-        const componentSource = componentsFilesSource.get(componentName)
-        const componentPackage = componentsFilesPackage.get(componentName)
+        const componentFilter = filterPath([`${componentName}/**`])
+
+        const componentSource = componentsFilesSource.filter(componentFilter)
+        const componentPackage = componentsFilesPackage.filter(componentFilter)
 
         // File not found at source
-        expect([...componentSource.keys()])
-          .toEqual(expect.not.arrayContaining(['macro-options.json']))
+        expect(componentSource)
+          .toEqual(expect.not.arrayContaining([join(componentName, 'macro-options.json')]))
 
         // File generated in package
-        expect([...componentPackage.keys()])
-          .toEqual(expect.arrayContaining(['macro-options.json']))
+        expect(componentPackage)
+          .toEqual(expect.arrayContaining([join(componentName, 'macro-options.json')]))
 
-        const { path } = componentPackage.get('macro-options.json')
+        const [optionsPath] = componentPackage
+          .filter(filterPath(['**/macro-options.json']))
 
         // Component options
-        const options = JSON.parse(await readFile(path, 'utf8'))
+        const options = JSON.parse(await readFile(join(configPaths.package, 'govuk/components', optionsPath), 'utf8'))
         expect(options).toBeInstanceOf(Array)
 
         // Component options requirements
@@ -177,36 +150,42 @@ describe('package/', () => {
   })
 
   describe('components with JavaScript', () => {
-    beforeEach(async () => {
-      // Filter "JavaScript enabled" only
-      componentNames = [...componentsFilesSource]
-        .filter(([name, files]) => files.has(`${name}.mjs`))
-        .map(([name]) => name)
+    let componentNamesWithJavaScript
+
+    beforeAll(async () => {
+      // Components list (with JavaScript only)
+      componentNamesWithJavaScript = componentNames
+        .filter((componentName) => componentsFilesSource.includes(join(componentName, `${componentName}.mjs`)))
     })
 
     it('should have component JavaScript file with correct module name', () => {
-      const componentTasks = componentNames.map(async (componentName) => {
-        const componentSource = componentsFilesSource.get(componentName)
-        const componentPackage = componentsFilesPackage.get(componentName)
-        const componentPackageESM = componentsFilesPackageESM.get(componentName)
+      const componentTasks = componentNamesWithJavaScript.map(async (componentName) => {
+        const componentFilter = filterPath([`${componentName}/**`])
+
+        const componentSource = componentsFilesSource.filter(componentFilter)
+        const componentPackage = componentsFilesPackage.filter(componentFilter)
+        const componentPackageESM = componentsFilesPackageESM.filter(componentFilter)
 
         // CommonJS module not found at source
-        expect([...componentSource.keys()])
-          .toEqual(expect.not.arrayContaining([`${componentName}.js`]))
+        expect(componentSource)
+          .toEqual(expect.not.arrayContaining([join(componentName, `${componentName}.js`)]))
 
         // CommonJS generated in package
-        expect([...componentPackage.keys()])
-          .toEqual(expect.arrayContaining([`${componentName}.js`]))
+        expect(componentPackage)
+          .toEqual(expect.arrayContaining([join(componentName, `${componentName}.js`)]))
 
         // ESM module generated in package
-        expect([...componentPackageESM.keys()])
-          .toEqual(expect.arrayContaining([`${componentName}.mjs`]))
+        expect(componentsFilesPackageESM)
+          .toEqual(expect.arrayContaining([join(componentName, `${componentName}.mjs`)]))
 
-        const { path: modulePath } = componentPackage.get(`${componentName}.js`)
-        const { path: modulePathESM } = componentPackageESM.get(`${componentName}.mjs`)
+        const [modulePath] = componentPackage
+          .filter(filterPath([`**/${componentName}.js`]))
 
-        const moduleText = await readFile(modulePath, 'utf8')
-        const moduleTextESM = await readFile(modulePathESM, 'utf8')
+        const [modulePathESM] = componentPackageESM
+          .filter(filterPath([`**/${componentName}.mjs`]))
+
+        const moduleText = await readFile(join(configPaths.package, 'govuk/components', modulePath), 'utf8')
+        const moduleTextESM = await readFile(join(configPaths.package, 'govuk-esm/components', modulePathESM), 'utf8')
 
         expect(moduleText).toContain(`typeof define === 'function' && define.amd ? define('${componentNameToJavaScriptModuleName(componentName)}', factory)`)
         expect(moduleTextESM).toContain(`export default ${componentNameToJavaScriptClassName(componentName)}`)
@@ -220,21 +199,24 @@ describe('package/', () => {
   describe('fixtures', () => {
     it('should have fixtures.json that contains JSON', () => {
       const componentTasks = componentNames.map(async (componentName) => {
-        const componentSource = componentsFilesSource.get(componentName)
-        const componentPackage = componentsFilesPackage.get(componentName)
+        const componentFilter = filterPath([`${componentName}/**`])
+
+        const componentSource = componentsFilesSource.filter(componentFilter)
+        const componentPackage = componentsFilesPackage.filter(componentFilter)
 
         // File not found at source
-        expect([...componentSource.keys()])
-          .toEqual(expect.not.arrayContaining(['fixtures.json']))
+        expect(componentSource)
+          .toEqual(expect.not.arrayContaining([join(componentName, 'fixtures.json')]))
 
         // File generated in package
-        expect([...componentPackage.keys()])
-          .toEqual(expect.arrayContaining(['fixtures.json']))
+        expect(componentPackage)
+          .toEqual(expect.arrayContaining([join(componentName, 'fixtures.json')]))
 
-        const { path } = componentPackage.get('fixtures.json')
+        const [fixturesPath] = componentPackage
+          .filter(filterPath([`${componentName}/fixtures.json`]))
 
         // Component fixtures
-        const { component, fixtures } = JSON.parse(await readFile(path, 'utf8'))
+        const { component, fixtures } = JSON.parse(await readFile(join(configPaths.package, 'govuk/components', fixturesPath), 'utf8'))
         expect(component).toEqual(componentName)
         expect(fixtures).toBeInstanceOf(Array)
 
