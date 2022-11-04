@@ -11,7 +11,7 @@ describe('dist/', () => {
   let listingDistAssets
 
   beforeAll(async () => {
-    listingSourceAssets = await getListing(join(configPaths.src, 'govuk/assets'))
+    listingSourceAssets = await getListing(configPaths.assets)
     listingDistAssets = await getListing(join(configPaths.dist, 'assets'))
   })
 

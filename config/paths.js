@@ -30,6 +30,7 @@ module.exports = {
   ...configPaths,
 
   // Source paths
+  assets: join(configPaths.src, 'govuk/assets'),
   components: join(configPaths.src, 'govuk/components'),
 
   // Review application views
