@@ -1,13 +1,15 @@
+const crypto = require('crypto')
+const { join } = require('path')
+
 const nunjucks = require('nunjucks')
 const configPaths = require('../../config/paths.js')
-const crypto = require('crypto')
 
 const { renderTemplate } = require('../../lib/jest-helpers')
 
 describe('Template', () => {
   describe('with default nunjucks configuration', () => {
     it('should not have any whitespace before the doctype', () => {
-      nunjucks.configure(configPaths.src)
+      nunjucks.configure(join(configPaths.src, 'govuk'))
       const output = nunjucks.render('./template.njk')
       expect(output.charAt(0)).toEqual('<')
     })
@@ -15,7 +17,7 @@ describe('Template', () => {
 
   describe('with nunjucks block trimming enabled', () => {
     it('should not have any whitespace before the doctype', () => {
-      nunjucks.configure(configPaths.src, {
+      nunjucks.configure(join(configPaths.src, 'govuk'), {
         trimBlocks: true,
         lstripBlocks: true
       })

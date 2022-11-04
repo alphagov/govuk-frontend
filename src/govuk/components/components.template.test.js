@@ -1,3 +1,4 @@
+const { join } = require('path')
 const { HtmlValidate } = require('html-validate')
 
 // We can't use the render function from jest-helpers, because we need control
@@ -18,7 +19,7 @@ describe('Components', () => {
   beforeAll(async () => {
     // Create a new Nunjucks environment that uses the src directory as its
     // base path, rather than the components folder itself
-    nunjucksEnvCustom = nunjucks.configure(configPaths.src)
+    nunjucksEnvCustom = nunjucks.configure(join(configPaths.src, 'govuk'))
     nunjucksEnvDefault = nunjucksEnv
 
     // Components list

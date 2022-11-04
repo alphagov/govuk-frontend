@@ -10,13 +10,13 @@ describe('The helpers layer', () => {
   let sassFiles
 
   beforeAll(async () => {
-    sassFiles = await getListing(configPaths.src, 'helpers/**/*.scss', {
+    sassFiles = await getListing(configPaths.src, 'govuk/helpers/**/*.scss', {
       ignore: ['**/_all.scss']
     })
   })
 
   it('should not output any CSS', async () => {
-    const helpers = join(configPaths.src, 'helpers', '_all.scss')
+    const helpers = join(configPaths.src, 'govuk/helpers/_all.scss')
 
     const output = await renderSass({ file: helpers })
     expect(output.css.toString()).toEqual('')
@@ -39,7 +39,7 @@ describe('The helpers layer', () => {
 
   describe('Sass documentation', () => {
     it('associates everything with a "helpers" group', async () => {
-      const docs = await sassdoc.parse(join(configPaths.src, 'helpers', '*.scss'))
+      const docs = await sassdoc.parse(join(configPaths.src, 'govuk/helpers/**/*.scss'))
 
       for (const doc of docs) {
         expect(doc).toMatchObject({

@@ -30,14 +30,14 @@ gulp.task('scss:compile', function () {
   if (isDist) {
     return merge(
       compileStyles(
-        gulp.src(`${slash(configPaths.src)}/all.scss`)
+        gulp.src(`${slash(configPaths.src)}/govuk/all.scss`)
           .pipe(rename({
             basename: 'govuk-frontend',
             extname: '.min.css'
           }))),
 
       compileStyles(
-        gulp.src(`${slash(configPaths.src)}/all-ie8.scss`)
+        gulp.src(`${slash(configPaths.src)}/govuk/all-ie8.scss`)
           .pipe(rename({
             basename: 'govuk-frontend-ie8',
             extname: '.min.css'
@@ -95,7 +95,7 @@ gulp.task('js:compile', async () => {
     : destination
 
   // For dist/ folder we only want compiled 'all.js'
-  const fileLookup = isDist ? 'all.mjs' : '**/!(*.test).mjs'
+  const fileLookup = isDist ? 'govuk/all.mjs' : 'govuk/**/!(*.test).mjs'
 
   // Perform a search and return an array of matching file names
   const srcFiles = await getListing(configPaths.src, fileLookup)

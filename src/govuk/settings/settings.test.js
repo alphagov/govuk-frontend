@@ -10,13 +10,13 @@ describe('The settings layer', () => {
   let sassFiles
 
   beforeAll(async () => {
-    sassFiles = await getListing(configPaths.src, 'settings/**/*.scss', {
+    sassFiles = await getListing(configPaths.src, 'govuk/settings/**/*.scss', {
       ignore: ['**/_all.scss']
     })
   })
 
   it('should not output any CSS', async () => {
-    const settings = join(configPaths.src, 'settings', '_all.scss')
+    const settings = join(configPaths.src, 'govuk/settings/_all.scss')
 
     const output = await renderSass({ file: settings })
     expect(output.css.toString()).toEqual('')
@@ -39,7 +39,7 @@ describe('The settings layer', () => {
 
   describe('Sass documentation', () => {
     it('associates everything with a "settings" group', async () => {
-      const docs = await sassdoc.parse(join(configPaths.src, 'settings', '*.scss'))
+      const docs = await sassdoc.parse(join(configPaths.src, 'govuk/settings/**/*.scss'))
 
       for (const doc of docs) {
         expect(doc).toMatchObject({

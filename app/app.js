@@ -16,7 +16,7 @@ const appViews = [
   configPaths.layouts,
   configPaths.views,
   configPaths.components,
-  configPaths.src,
+  join(configPaths.src, 'govuk'),
   join(configPaths.node_modules, 'govuk_template_jinja')
 ]
 

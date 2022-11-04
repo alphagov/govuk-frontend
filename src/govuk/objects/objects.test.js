@@ -10,7 +10,7 @@ describe('The objects layer', () => {
   let sassFiles
 
   beforeAll(async () => {
-    sassFiles = await getListing(configPaths.src, 'objects/**/*.scss', {
+    sassFiles = await getListing(configPaths.src, 'govuk/objects/**/*.scss', {
       ignore: ['**/_all.scss']
     })
   })
@@ -32,7 +32,7 @@ describe('The objects layer', () => {
 
   describe('Sass documentation', () => {
     it('associates everything with a "objects" group', async () => {
-      const docs = await sassdoc.parse(join(configPaths.src, 'objects', '*.scss'))
+      const docs = await sassdoc.parse(join(configPaths.src, 'govuk/objects/**/*.scss'))
 
       for (const doc of docs) {
         expect(doc).toMatchObject({

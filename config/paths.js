@@ -7,7 +7,7 @@ const rootPath = dirname(__dirname)
  * Config root paths
  */
 const configPaths = {
-  src: join(rootPath, 'src/govuk'),
+  src: join(rootPath, 'src'),
   config: join(rootPath, 'config'),
   node_modules: join(rootPath, 'node_modules'),
 
