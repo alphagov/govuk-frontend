@@ -37,7 +37,6 @@ module.exports = {
   views: join(configPaths.app, 'views'),
   examples: join(configPaths.app, 'views/examples'),
   fullPageExamples: join(configPaths.app, 'views/full-page-examples'),
-  partials: join(configPaths.app, 'views/partials'),
   layouts: join(configPaths.app, 'views/layouts'),
 
   // Review application ports
