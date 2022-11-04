@@ -42,29 +42,36 @@ describe('package/', () => {
     const listingExpected = listingSource
       .filter(filterPath(filterPatterns))
 
-      // Replaces source component '*.mjs' with:
-      // - `*.mjs` file copied to `govuk-esm`
-      // - `*.js` file compiled to `govuk`
-      .flatMap(mapPathTo(['**/*.mjs'], ({ dir: requirePath, name }) => {
-        const importPath = requirePath.replace(/^govuk/, 'govuk-esm')
+      // Replaces GOV.UK Prototype kit config with JSON
+      .flatMap(mapPathTo(['**/govuk-prototype-kit.config.mjs'], ({ dir: requirePath, name }) => [
+        join(requirePath, '../', `${name}.json`)
+      ]))
 
-        return [
-          join(importPath, `${name}.mjs`),
-          join(requirePath, `${name}.js`)
-        ]
+      // Replaces all source '*.mjs' files
+      .flatMap(mapPathTo(['**/*.mjs'], ({ dir: requirePath, name }) => {
+        const importFilter = /^govuk(?!-)/
+
+        // All source `**/*.mjs` files compiled to `**/*.js`
+        const output = [join(requirePath, `${name}.js`)]
+
+        // Only source `./govuk/**/*.mjs` files copied to `./govuk-esm/**/*.mjs`
+        if (importFilter.test(requirePath)) {
+          output.push(join(requirePath.replace(importFilter, 'govuk-esm'), `${name}.mjs`))
+        }
+
+        return output
       }))
 
       // Replaces source component '*.yaml' with:
       // - `fixtures.json` fixtures for tests
       // - `macro-options.json` component options
-      .flatMap(mapPathTo(['**/*.yaml'], ({ dir }) => [
-        join(dir, 'fixtures.json'),
-        join(dir, 'macro-options.json')
+      .flatMap(mapPathTo(['**/*.yaml'], ({ dir: requirePath }) => [
+        join(requirePath, 'fixtures.json'),
+        join(requirePath, 'macro-options.json')
       ]))
 
       // Files already present in 'package'
       .concat(...[
-        'govuk-prototype-kit.config.json',
         'package.json',
         'README.md'
       ])
