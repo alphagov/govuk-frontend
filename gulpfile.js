@@ -41,7 +41,7 @@ gulp.task('styles', gulp.series(
  * Copies assets to taskArguments.destination (public)
  */
 gulp.task('copy:assets', () => {
-  return gulp.src(`${configPaths.src}assets/**/*`)
+  return gulp.src(slash(join(configPaths.src, 'assets/**/*')))
     .pipe(gulp.dest(slash(join(destination, 'assets'))))
 })
 

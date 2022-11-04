@@ -30,14 +30,14 @@ gulp.task('scss:compile', function () {
   if (isDist) {
     return merge(
       compileStyles(
-        gulp.src(`${configPaths.src}all.scss`)
+        gulp.src(`${slash(configPaths.src)}/all.scss`)
           .pipe(rename({
             basename: 'govuk-frontend',
             extname: '.min.css'
           }))),
 
       compileStyles(
-        gulp.src(`${configPaths.src}all-ie8.scss`)
+        gulp.src(`${slash(configPaths.src)}/all-ie8.scss`)
           .pipe(rename({
             basename: 'govuk-frontend-ie8',
             extname: '.min.css'
@@ -49,15 +49,15 @@ gulp.task('scss:compile', function () {
   // Review application
   return merge(
     compileStyles(
-      gulp.src(`${configPaths.app}assets/scss/app?(-ie8).scss`)),
+      gulp.src(`${slash(configPaths.app)}/assets/scss/app?(-ie8).scss`)),
 
     compileStyles(
-      gulp.src(`${configPaths.app}assets/scss/app-legacy?(-ie8).scss`), {
+      gulp.src(`${slash(configPaths.app)}/assets/scss/app-legacy?(-ie8).scss`), {
         includePaths: ['node_modules/govuk_frontend_toolkit/stylesheets', 'node_modules']
       }),
 
     compileStyles(
-      gulp.src(`${configPaths.fullPageExamples}**/styles.scss`)
+      gulp.src(`${slash(configPaths.fullPageExamples)}/**/styles.scss`)
         .pipe(rename((path) => {
           path.basename = path.dirname
           path.dirname = 'full-page-examples'
@@ -105,10 +105,10 @@ gulp.task('js:compile', async () => {
 
     // This is combined with destPath in gulp.dest()
     // so the files are output to the correct folders
-    const modulePath = slash(srcPath).replace(/^govuk/, '')
+    const modulePath = slash(srcPath).replace(/^govuk\/?/, '')
 
     // We only want to give component JavaScript a unique module name
-    const moduleName = minimatch(srcPath, 'components/**')
+    const moduleName = minimatch(srcPath, '**/components/**')
       ? componentNameToJavaScriptModuleName(name)
       : 'GOVUKFrontend'
 

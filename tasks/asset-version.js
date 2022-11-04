@@ -1,7 +1,6 @@
 const { rename, writeFile } = require('fs/promises')
 const { basename, join } = require('path')
 const { EOL } = require('os')
-const { cwd } = require('process')
 
 const configPaths = require('../config/paths.js')
 const { destination, isDist } = require('./task-arguments.js')
@@ -9,7 +8,7 @@ const { destination, isDist } = require('./task-arguments.js')
 // Update assets' version numbers
 // Uses the version number from `package/package.json` and writes it to various places
 async function updateDistAssetsVersion () {
-  const pkg = require(join(cwd(), configPaths.package, 'package.json'))
+  const pkg = require(join(configPaths.package, 'package.json'))
 
   if (!isDist) {
     throw new Error('Asset versions can only be applied to ./dist')
