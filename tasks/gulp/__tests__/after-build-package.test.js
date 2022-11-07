@@ -18,7 +18,7 @@ describe('package/', () => {
   let componentNames
 
   beforeAll(async () => {
-    listingSource = await getListing(join(configPaths.src, '../'))
+    listingSource = await getListing(configPaths.src)
     listingPackage = await getListing(configPaths.package)
 
     componentsFilesSource = await getListing(configPaths.components)

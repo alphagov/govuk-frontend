@@ -18,11 +18,8 @@ export default async () => {
       const [macroPath] = componentsFiles
         .filter(filterPath([`${componentName}/macro.njk`]))
 
-      // Relative path to src without 'govuk'
-      const rootPath = join(configPaths.src, '../')
-
       return {
-        importFrom: slash(relative(rootPath, join(configPaths.components, macroPath))),
+        importFrom: slash(relative(configPaths.src, join(configPaths.components, macroPath))),
         macroName: componentNameToMacroName(componentName)
       }
     })

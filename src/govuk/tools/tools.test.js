@@ -10,13 +10,13 @@ describe('The tools layer', () => {
   let sassFiles
 
   beforeAll(async () => {
-    sassFiles = await getListing(configPaths.src, 'tools/**/*.scss', {
+    sassFiles = await getListing(configPaths.src, 'govuk/tools/**/*.scss', {
       ignore: ['**/_all.scss']
     })
   })
 
   it('should not output any CSS', async () => {
-    const tools = join(configPaths.src, 'tools', '_all.scss')
+    const tools = join(configPaths.src, 'govuk/tools/_all.scss')
 
     const output = await renderSass({ file: tools })
     expect(output.css.toString()).toEqual('')
@@ -39,7 +39,7 @@ describe('The tools layer', () => {
 
   describe('Sass documentation', () => {
     it('associates everything with a "tools" group', async () => {
-      const docs = await sassdoc.parse(join(configPaths.src, 'tools', '*.scss'))
+      const docs = await sassdoc.parse(join(configPaths.src, 'govuk/tools/**/*.scss'))
 
       for (const doc of docs) {
         expect(doc).toMatchObject({

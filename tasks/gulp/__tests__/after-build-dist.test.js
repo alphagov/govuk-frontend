@@ -1,18 +1,17 @@
 const { readFile } = require('fs/promises')
 const { join } = require('path')
-const { cwd } = require('process')
 
 const configPaths = require('../../../config/paths.js')
 const { getListing } = require('../../../lib/file-helper')
 
 describe('dist/', () => {
-  const pkg = require(join(cwd(), configPaths.package, 'package.json'))
+  const pkg = require(join(configPaths.package, 'package.json'))
 
   let listingSourceAssets
   let listingDistAssets
 
   beforeAll(async () => {
-    listingSourceAssets = await getListing(join(configPaths.src, 'assets'))
+    listingSourceAssets = await getListing(configPaths.assets)
     listingDistAssets = await getListing(join(configPaths.dist, 'assets'))
   })
 

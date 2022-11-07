@@ -1,4 +1,4 @@
-const { dirname, relative, resolve } = require('path')
+const { dirname, resolve } = require('path')
 
 const slash = require('slash')
 const { argv } = require('yargs')
@@ -23,13 +23,13 @@ const destination = argv.destination || (destinations
   .filter(({ task }) => tasks.includes(task))[0]?.destination ?? 'public')
 
 const rootPath = dirname(__dirname)
-const destPath = resolve(rootPath, destination)
+const destPath = resolve(rootPath, slash(destination))
 
 module.exports = {
   argv,
 
-  // Normalise slashes (Windows) for gulp.src
-  destination: slash(relative(rootPath, destPath)),
+  // Absolute path to destination
+  destination: destPath,
 
   // Check destination flags
   isPackage: destination === 'package',

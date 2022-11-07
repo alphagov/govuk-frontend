@@ -1,8 +1,8 @@
 const { copyFile, mkdir, writeFile } = require('fs/promises')
 const { EOL } = require('os')
 const { dirname, join } = require('path')
-const { cwd } = require('process')
 
+const configPaths = require('../config/paths.js')
 const { destination } = require('./task-arguments.js')
 
 /**
@@ -21,8 +21,8 @@ async function updatePrototypeKitConfig () {
 
   // Copy files to destination
   const configTasks = copyFiles.map(async (file) => {
-    const fileSource = join(cwd(), 'src', file)
-    const fileTarget = join(cwd(), destination, file)
+    const fileSource = join(configPaths.src, file)
+    const fileTarget = join(destination, file)
 
     // Create destination directory
     await mkdir(dirname(fileTarget), { recursive: true })

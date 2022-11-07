@@ -1,19 +1,45 @@
+const { dirname, join } = require('path')
+
+// Repository root directory
+const rootPath = dirname(__dirname)
+
+/**
+ * Config root paths
+ */
+const configPaths = {
+  src: join(rootPath, 'src'),
+  config: join(rootPath, 'config'),
+  node_modules: join(rootPath, 'node_modules'),
+
+  // Build: Release distribution
+  dist: join(rootPath, 'dist'),
+
+  // Build: Package for npm publish
+  package: join(rootPath, 'package'),
+
+  // Review application
+  app: join(rootPath, 'app'),
+  public: join(rootPath, 'public'),
+
+  // Documentation
+  jsdoc: join(rootPath, 'jsdoc'),
+  sassdoc: join(rootPath, 'sassdoc')
+}
+
 module.exports = {
-  app: 'app/',
-  views: 'app/views/',
-  examples: 'app/views/examples/',
-  fullPageExamples: 'app/views/full-page-examples/',
-  partials: 'app/views/partials/',
-  layouts: 'app/views/layouts/',
-  config: 'config/',
-  dist: 'dist/',
-  node_modules: 'node_modules/',
-  package: 'package/',
-  public: 'public/',
-  jsdoc: 'jsdoc/',
-  sassdoc: 'sassdoc/',
-  src: 'src/govuk/',
-  components: 'src/govuk/components/',
+  ...configPaths,
+
+  // Source paths
+  assets: join(configPaths.src, 'govuk/assets'),
+  components: join(configPaths.src, 'govuk/components'),
+
+  // Review application views
+  views: join(configPaths.app, 'views'),
+  examples: join(configPaths.app, 'views/examples'),
+  fullPageExamples: join(configPaths.app, 'views/full-page-examples'),
+  layouts: join(configPaths.app, 'views/layouts'),
+
+  // Review application ports
   ports: {
     app: 3000,
     test: 8888

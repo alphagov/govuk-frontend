@@ -21,8 +21,8 @@ gulp.task('copy:files', () => {
      * Includes only source JavaScript ECMAScript (ES) modules
      */
     gulp.src([
-      `${configPaths.src}**/*.mjs`,
-      `!${configPaths.src}**/*.test.*`
+      `${slash(configPaths.src)}/govuk/**/*.mjs`,
+      `!${slash(configPaths.src)}/govuk/**/*.test.*`
     ]).pipe(gulp.dest(slash(join(destination, 'govuk-esm')))),
 
     /**
@@ -31,7 +31,7 @@ gulp.task('copy:files', () => {
      */
     merge(
       gulp.src([
-        `${configPaths.src}**/*`,
+        `${slash(configPaths.src)}/govuk/**/*`,
 
         // Exclude files we don't want to publish
         '!**/.DS_Store',
@@ -42,21 +42,23 @@ gulp.task('copy:files', () => {
 
         // Preserve destination README when copying to ./package
         // https://github.com/alphagov/govuk-frontend/tree/main/package#readme
-        `!${configPaths.src}README.md`,
+        `!${slash(configPaths.src)}/govuk/README.md`,
 
         // Exclude Sass files handled by PostCSS stream below
-        `!${configPaths.src}**/*.scss`,
+        `!${slash(configPaths.src)}/govuk/**/*.scss`,
 
         // Exclude source YAML handled by JSON streams below
-        `!${configPaths.components}**/*.yaml`
+        `!${slash(configPaths.components)}/**/*.yaml`
       ]),
 
       // Add CSS prefixes to Sass
-      gulp.src(`${configPaths.src}**/*.scss`)
+      gulp.src(`${slash(configPaths.src)}/govuk/**/*.scss`)
         .pipe(postcss([autoprefixer], { syntax: postcssScss })),
 
       // Generate fixtures.json from ${componentName}.yaml
-      gulp.src(`${configPaths.components}**/*.yaml`, { base: configPaths.src })
+      gulp.src(`${slash(configPaths.components)}/**/*.yaml`, {
+        base: slash(`${configPaths.src}/govuk`)
+      })
         .pipe(map((file, done) =>
           generateFixtures(file)
             .then((fixture) => done(null, fixture))
@@ -68,7 +70,9 @@ gulp.task('copy:files', () => {
         })),
 
       // Generate macro-options.json from ${componentName}.yaml
-      gulp.src(`${configPaths.components}**/*.yaml`, { base: configPaths.src })
+      gulp.src(`${slash(configPaths.components)}/**/*.yaml`, {
+        base: slash(`${configPaths.src}/govuk`)
+      })
         .pipe(map((file, done) =>
           generateMacroOptions(file)
             .then((macro) => done(null, macro))
