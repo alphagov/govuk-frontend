@@ -52,6 +52,13 @@ HideThisPage.prototype.updateIndicator = function () {
     this.$indicatorContainer.classList.remove('govuk-hide-this-page__indicator--visible')
   }
 
+  // Show or hide the indicator container depending on escCounter value
+  if (this.escCounter > 0) {
+    this.$indicatorContainer.classList.add('govuk-hide-this-page__indicator--visible')
+  } else {
+    this.$indicatorContainer.classList.remove('govuk-hide-this-page__indicator--visible')
+  }
+
   // Turn out all the lights
   var $lightsOn = this.$indicatorContainer.querySelectorAll('.govuk-hide-this-page__indicator-light--on')
   nodeListForEach($lightsOn, function ($light) {

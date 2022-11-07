@@ -47,17 +47,10 @@
     margin: 0 .125em;
     border: 2px solid govuk-colour("white");
     border-radius: 50%;
-    opacity: 0;
-    background-color: govuk-colour("white");
   }
 
   .govuk-hide-this-page__indicator-light--on {
     background-color: govuk-colour("white");
-  }
-
-  .govuk-hide-this-page__indicator-light--on,
-  .govuk-hide-this-page__indicator-light--on ~ .govuk-hide-this-page__indicator-light {
-    opacity: 1;
   }
 
   @media only print {
