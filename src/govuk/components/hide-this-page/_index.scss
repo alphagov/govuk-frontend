@@ -24,10 +24,20 @@
   }
 
   .govuk-hide-this-page__indicator {
-    @include govuk-responsive-padding(1);
+    @include govuk-responsive-padding(2);
     display: block;
+    border: 1px solid $govuk-border-colour;
+    border-top: none;
+    opacity: 0;
+    color: $govuk-text-colour;
+    background-color: $govuk-body-background-colour;
+    line-height: 0; // removes extra negative space below the indicators
     text-align: center;
     pointer-events: none;
+  }
+
+  .govuk-hide-this-page__indicator--visible {
+    opacity: 1;
   }
 
   .govuk-hide-this-page__indicator-light {
@@ -37,17 +47,10 @@
     margin: 0 .125em;
     border: 2px solid currentcolor;
     border-radius: 50%;
-    opacity: 0;
-    background-color: govuk-colour("white");
   }
 
   .govuk-hide-this-page__indicator-light--on {
     background-color: currentcolor;
-  }
-
-  .govuk-hide-this-page__indicator-light--on,
-  .govuk-hide-this-page__indicator-light--on ~ .govuk-hide-this-page__indicator-light {
-    opacity: 1;
   }
 
   @media only print {
