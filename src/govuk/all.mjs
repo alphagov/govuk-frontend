@@ -1,4 +1,4 @@
-import { nodeListForEach } from './common.mjs'
+import { nodeListForEach } from './common/index.mjs'
 import Accordion from './components/accordion/accordion.mjs'
 import Button from './components/button/button.mjs'
 import Details from './components/details/details.mjs'

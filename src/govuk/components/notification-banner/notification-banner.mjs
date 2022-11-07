@@ -1,6 +1,6 @@
 import '../../vendor/polyfills/Event.mjs' // addEventListener
 
-import { mergeConfigs } from '../../common.mjs'
+import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 
 /**

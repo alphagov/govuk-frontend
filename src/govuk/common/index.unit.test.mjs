@@ -1,4 +1,4 @@
-import { mergeConfigs, extractConfigByNamespace } from './common.mjs'
+import { mergeConfigs, extractConfigByNamespace } from './index.mjs'
 
 // TODO: Write unit tests for `nodeListForEach` and `generateUniqueID`
 

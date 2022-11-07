@@ -1,4 +1,4 @@
-import { mergeConfigs } from '../../common.mjs'
+import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normaliziation
 import '../../vendor/polyfills/Function/prototype/bind.mjs'

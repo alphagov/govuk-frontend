@@ -6,7 +6,7 @@
  */
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normaliziation
-import { generateUniqueID } from '../../common.mjs'
+import { generateUniqueID } from '../../common/index.mjs'
 
 var KEY_ENTER = 13
 var KEY_SPACE = 32

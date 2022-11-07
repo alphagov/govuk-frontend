@@ -1,4 +1,4 @@
-import { nodeListForEach, mergeConfigs, extractConfigByNamespace } from '../../common.mjs'
+import { nodeListForEach, mergeConfigs, extractConfigByNamespace } from '../../common/index.mjs'
 import { I18n } from '../../i18n.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
