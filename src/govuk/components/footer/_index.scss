@@ -121,7 +121,6 @@
     @include govuk-device-pixel-ratio {
       background-image: govuk-image-url("govuk-crest-2x.png");
     }
-    background-repeat: no-repeat;
     background-size: contain;
 
     @supports (mask-image: url("")) {
@@ -132,7 +131,6 @@
       @include govuk-device-pixel-ratio {
         mask-image: govuk-image-url("govuk-crest-2x.png");
       }
-      mask-repeat: no-repeat;
       mask-size: contain;
     }
   }
