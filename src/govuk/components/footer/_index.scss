@@ -106,17 +106,35 @@
 
   .govuk-footer__copyright-logo {
     display: inline-block;
-    min-width: $govuk-footer-crest-image-width;
-    padding-top: ($govuk-footer-crest-image-height + govuk-spacing(2));
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .govuk-footer__copyright-logo:before {
+    content: "";
+    display: block;
+    width: $govuk-footer-crest-image-width;
+    height: $govuk-footer-crest-image-height;
+    margin: auto;
+    margin-bottom: govuk-spacing(2);
     background-image: govuk-image-url("govuk-crest.png");
     @include govuk-device-pixel-ratio {
       background-image: govuk-image-url("govuk-crest-2x.png");
     }
     background-repeat: no-repeat;
-    background-position: 50% 0%;
-    background-size: $govuk-footer-crest-image-width $govuk-footer-crest-image-height;
-    text-align: center;
-    white-space: nowrap;
+    background-size: contain;
+
+    @supports (mask-image: url("")) {
+      // Use masks to change the colour of the crest to match the current text color
+      // to increase the contrast of the logo
+      background: currentcolor;
+      mask-image: govuk-image-url("govuk-crest.png");
+      @include govuk-device-pixel-ratio {
+        mask-image: govuk-image-url("govuk-crest-2x.png");
+      }
+      mask-repeat: no-repeat;
+      mask-size: contain;
+    }
   }
 
   .govuk-footer__inline-list {
