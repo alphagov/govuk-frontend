@@ -9,7 +9,11 @@ import { normaliseDataset } from '../../common/normalise-dataset.mjs'
  * @class
  * @param {HTMLElement} $module - HTML element to use for notification banner
  * @param {object} config - Error summary config
- * @param {boolean} [config.disableAutoFocus=false] - Whether to disable the component taking focus on initialisation
+ * @param {boolean} [config.disableAutoFocus=false] -
+ *   If set to `true` the notification banner will not be focussed when the page
+ *   loads. This only applies if the component has a `role` of `alert` – in
+ *   other cases the component will not be focused on page load, regardless of
+ *   this option.
  */
 function NotificationBanner ($module, config) {
   this.$module = $module
