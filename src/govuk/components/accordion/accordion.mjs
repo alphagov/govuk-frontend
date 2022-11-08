@@ -405,16 +405,20 @@ export default Accordion
 
 /**
  * @typedef {object} AccordionTranslations
- * @property {string} [hideAllSections] - Text for 'Hide all sections' button,
- *   used when at least one section is expanded
- * @property {string} [hideSection] - Text for 'Hide' button, used when a
- * section is expanded
- * @property {string} [hideSectionAriaLabel] - Text appended to the 'Hide'
- * button's accessible name when a section is expanded
- * @property {string} [showAllSections] - Text for 'Show all sections' button,
- *   used when all sections are collapsed
- * @property {string} [showSection] - Text for 'Show' button, used when a
- * section is collapsed
- * @property {string} [showSectionAriaLabel] - Text appended to the 'Show'
- * button's accessible name when a section is collapsed
+ *
+ * Messages used by the component for the labels of its buttons. This includes
+ * the visible text shown on screen, and text to help assistive technology users
+ * for the buttons toggling each section.
+ * @property {string} [hideAllSections] - The text content for the 'Hide all
+ * sections' button, used when at least one section is expanded.
+ * @property {string} [hideSection] - The text content for the 'Hide'
+ * button, used when a section is expanded.
+ * @property {string} [hideSectionAriaLabel] - The text content appended to the
+ * 'Hide' button's accessible name when a section is expanded.
+ * @property {string} [showAllSections] - The text content for the 'Show all
+ * sections' button, used when all sections are collapsed.
+ * @property {string} [showSection] - The text content for the 'Show'
+ * button, used when a section is collapsed.
+ * @property {string} [showSectionAriaLabel] - The text content appended to the
+ * 'Show' button's accessible name when a section is expanded.
  */
