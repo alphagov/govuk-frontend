@@ -1,4 +1,5 @@
 import { nodeListForEach } from '../../common.mjs'
+import '../../vendor/polyfills/Element/prototype/dataset.mjs'
 
 function HideThisPage ($module) {
   this.$module = $module
