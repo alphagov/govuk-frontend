@@ -1,3 +1,4 @@
+import '../vendor/polyfills/Element/prototype/dataset.mjs'
 import '../vendor/polyfills/String/prototype/trim.mjs'
 
 /**
