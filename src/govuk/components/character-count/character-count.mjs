@@ -128,8 +128,8 @@ CharacterCount.prototype.init = function () {
   // Inject a decription for the textarea if none is present already
   // for when the component was rendered with no maxlength, maxwords
   // nor custom textareaDescriptionText
-  if ($textareaDescription.textContent.match(/^\s*$/)) {
-    $textareaDescription.textContent = this.i18n.t('textareaDescription', { count: this.maxLength })
+  if ($textareaDescription.innerText.match(/^\s*$/)) {
+    $textareaDescription.innerText = this.i18n.t('textareaDescription', { count: this.maxLength })
   }
 
   // Move the textarea description to be immediately after the textarea
@@ -281,7 +281,7 @@ CharacterCount.prototype.updateVisibleCountMessage = function () {
   }
 
   // Update message
-  $visibleCountMessage.textContent = this.getCountMessage()
+  $visibleCountMessage.innerText = this.getCountMessage()
 }
 
 /**
@@ -299,7 +299,7 @@ CharacterCount.prototype.updateScreenReaderCountMessage = function () {
   }
 
   // Update message
-  $screenReaderCountMessage.textContent = this.getCountMessage()
+  $screenReaderCountMessage.innerText = this.getCountMessage()
 }
 
 /**

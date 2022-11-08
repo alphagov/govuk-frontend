@@ -261,16 +261,16 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
     ? this.i18n.t('hideSection')
     : this.i18n.t('showSection')
 
-  $showHideText.textContent = newButtonText
+  $showHideText.innerText = newButtonText
   $button.setAttribute('aria-expanded', expanded)
 
   // Update aria-label combining
   var $header = $section.querySelector('.' + this.sectionHeadingTextClass)
-  var ariaLabelParts = [$header.textContent.trim()]
+  var ariaLabelParts = [$header.innerText.trim()]
 
   var $summary = $section.querySelector('.' + this.sectionSummaryClass)
   if ($summary) {
-    ariaLabelParts.push($summary.textContent.trim())
+    ariaLabelParts.push($summary.innerText.trim())
   }
 
   var ariaLabelMessage = expanded
@@ -323,7 +323,7 @@ Accordion.prototype.updateShowAllButton = function (expanded) {
     ? this.i18n.t('hideAllSections')
     : this.i18n.t('showAllSections')
   this.$showAllButton.setAttribute('aria-expanded', expanded)
-  $showAllText.textContent = newButtonText
+  $showAllText.innerText = newButtonText
 
   // Swap icon, toggle class
   if (expanded) {
