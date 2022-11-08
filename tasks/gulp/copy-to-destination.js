@@ -31,7 +31,7 @@ gulp.task('copy:files', () => {
      */
     merge(
       gulp.src([
-        `${slash(configPaths.src)}/govuk/**/*`,
+        `${slash(configPaths.src)}/**/*`,
 
         // Exclude files we don't want to publish
         '!**/.DS_Store',
@@ -45,19 +45,19 @@ gulp.task('copy:files', () => {
         `!${slash(configPaths.src)}/govuk/README.md`,
 
         // Exclude Sass files handled by PostCSS stream below
-        `!${slash(configPaths.src)}/govuk/**/*.scss`,
+        `!${slash(configPaths.src)}/**/*.scss`,
 
         // Exclude source YAML handled by JSON streams below
         `!${slash(configPaths.components)}/**/*.yaml`
       ]),
 
       // Add CSS prefixes to Sass
-      gulp.src(`${slash(configPaths.src)}/govuk/**/*.scss`)
+      gulp.src(`${slash(configPaths.src)}/**/*.scss`)
         .pipe(postcss([autoprefixer], { syntax: postcssScss })),
 
       // Generate fixtures.json from ${componentName}.yaml
       gulp.src(`${slash(configPaths.components)}/**/*.yaml`, {
-        base: slash(`${configPaths.src}/govuk`)
+        base: slash(configPaths.src)
       })
         .pipe(map((file, done) =>
           generateFixtures(file)
@@ -71,7 +71,7 @@ gulp.task('copy:files', () => {
 
       // Generate macro-options.json from ${componentName}.yaml
       gulp.src(`${slash(configPaths.components)}/**/*.yaml`, {
-        base: slash(`${configPaths.src}/govuk`)
+        base: slash(configPaths.src)
       })
         .pipe(map((file, done) =>
           generateMacroOptions(file)
@@ -82,7 +82,7 @@ gulp.task('copy:files', () => {
           basename: 'macro-options',
           extname: '.json'
         }))
-    ).pipe(gulp.dest(slash(join(destination, 'govuk'))))
+    ).pipe(gulp.dest(slash(destination)))
   )
 })
 
