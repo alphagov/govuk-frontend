@@ -1,7 +1,7 @@
 const { parse } = require('path')
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
-const slash = require('slash')
+const minimatch = require('minimatch')
 const pseudoclasses = require('postcss-pseudo-classes')
 const unmq = require('postcss-unmq')
 const unopacity = require('postcss-unopacity')
@@ -16,9 +16,9 @@ const unrgba = require('postcss-unrgba')
  * @returns {{ plugins: import('postcss').Transformer[] }} PostCSS config
  */
 module.exports = ({ env, file = '' }) => {
-  const { dir, name } = parse(
-    // Normalise to string path with forward slashes
-    slash(typeof file === 'object' ? file.path : file)
+  const { dir, name } = parse(typeof file === 'object'
+    ? file.path // Normalise to string path
+    : file
   )
 
   // IE8 stylesheets
@@ -35,7 +35,7 @@ module.exports = ({ env, file = '' }) => {
 
   // Add review app auto-generated 'companion' classes for each pseudo-class
   // For example ':hover' and ':focus' classes to simulate form label states
-  if (dir.endsWith('app/assets/scss') && (name === 'app' || name.startsWith('app-'))) {
+  if (minimatch(dir, '**/app/assets/scss') && (name === 'app' || name.startsWith('app-'))) {
     plugins.push(pseudoclasses({
       restrictTo: [
         ':link',
