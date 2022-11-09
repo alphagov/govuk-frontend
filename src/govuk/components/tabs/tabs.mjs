@@ -111,7 +111,7 @@ Tabs.prototype.teardown = function () {
   $tabList.removeAttribute('role')
 
   nodeListForEach($tabListItems, function ($item) {
-    $item.removeAttribute('role', 'presentation')
+    $item.removeAttribute('role')
   })
 
   nodeListForEach($tabs, function ($tab) {
