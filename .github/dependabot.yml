@@ -9,6 +9,8 @@ updates:
       - alphagov/design-system-developers
     schedule:
       interval: daily
+    versioning-strategy: increase
+
     allow:
       - dependency-type: all
 
