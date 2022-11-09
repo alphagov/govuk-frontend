@@ -1,4 +1,4 @@
-import TestEnvironment from 'jest-environment-node'
+import { TestEnvironment } from 'jest-environment-node'
 
 import { globals } from '../globals.mjs'
 
