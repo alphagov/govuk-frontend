@@ -87,12 +87,12 @@ SkipLink.prototype.removeFocusProperties = function () {
  * Extract the fragment (everything after the hash symbol) from a URL, but not including
  * the symbol.
  *
- * @returns {string} Fragment from URL, without the hash symbol
+ * @returns {string | null} Fragment from URL, without the hash symbol
  */
 SkipLink.prototype.getFragmentFromUrl = function () {
   // Bail if the anchor link doesn't have a hash
   if (!this.$module.hash) {
-    return false
+    return null
   }
 
   return this.$module.hash.split('#').pop()
