@@ -663,7 +663,7 @@ describe('Character count', () => {
 
       await renderAndInitialise(page, 'character-count', {
         nunjucksParams: examples.default,
-        config: {
+        javascriptConfig: {
           // Override maxlength to 10
           maxlength: 10
         },

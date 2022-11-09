@@ -37,7 +37,6 @@ var TRANSLATIONS_DEFAULT = {
 function Accordion ($module, config) {
   this.$module = $module
   this.$sections = $module.querySelectorAll('.govuk-accordion__section')
-  this.$showAllButton = ''
   this.browserSupportsSessionStorage = helper.checkForSessionStorage()
 
   var defaultConfig = {

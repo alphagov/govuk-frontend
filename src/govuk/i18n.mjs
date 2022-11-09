@@ -9,13 +9,11 @@
  * @param {string} config.locale - An overriding locale for the PluralRules functionality.
  */
 export function I18n (translations, config) {
-  config = config || {}
-
   // Make list of translations available throughout function
   this.translations = translations || {}
 
   // The locale to use for PluralRules and NumberFormat
-  this.locale = config.locale || document.documentElement.lang || 'en'
+  this.locale = (config && config.locale) || document.documentElement.lang || 'en'
 }
 
 /**
