@@ -6,7 +6,12 @@ const config = {
     'config/*',
     'vendor/*'
   ],
+
+  // Default test environment
   testEnvironment: './config/jest/environment/node.mjs',
+
+  // Enable Babel transforms until Jest supports ESM
+  // See: https://jestjs.io/docs/ecmascript-modules
   transform: {
     '^.+\\.m?js$': ['babel-jest', { rootMode: 'upward' }]
   }
@@ -75,13 +80,15 @@ module.exports = {
         '!**/*.unit.test.{js,mjs}'
       ],
 
-      // Browser test increased timeout (5s to 15s)
-      testTimeout: 15000,
-
       // Web server and browser required
       globalSetup: './config/jest/browser/open.mjs',
       globalTeardown: './config/jest/browser/close.mjs'
     }
   ],
-  reporters: ['default', 'github-actions']
+
+  // Enable GitHub Actions reporter UI
+  reporters: ['default', 'github-actions'],
+
+  // Browser test increased timeout (5s to 15s)
+  testTimeout: 15000
 }
