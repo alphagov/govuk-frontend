@@ -12,7 +12,9 @@ var DEBOUNCE_TIMEOUT_IN_SECONDS = 1
  * @class
  * @param {HTMLElement} $module - The element this component controls
  * @param {object} config - Button config
- * @param {boolean} [config.preventDoubleClick=false] - Whether the button should prevent double clicks
+ * @param {boolean} [config.preventDoubleClick=false] -
+ *  Prevent accidental double clicks on submit buttons from submitting forms
+ *  multiple times.
  */
 function Button ($module, config) {
   if (!$module) {

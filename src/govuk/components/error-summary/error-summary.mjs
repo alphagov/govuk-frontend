@@ -13,7 +13,7 @@ import { normaliseDataset } from '../../common/normalise-dataset.mjs'
  * @class
  * @param {HTMLElement} $module - The element this component controls
  * @param {object} config - Error summary config
- * @param {boolean} [config.disableAutoFocus=false] - Whether to disable the component taking focus on initialisation
+ * @param {boolean} [config.disableAutoFocus=false] - If set to `true` the error summary will not be focussed when the page loads.
  */
 function ErrorSummary ($module, config) {
   // Some consuming code may not be passing a module,

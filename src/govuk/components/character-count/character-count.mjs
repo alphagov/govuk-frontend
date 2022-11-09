@@ -49,10 +49,8 @@ var TRANSLATIONS_DEFAULT = {
  * @class
  * @param {HTMLElement} $module - The element this component controls
  * @param {object} config - Character count config
- * @param {number} config.maxlength - If `maxwords` is set, this is not required.
- * The maximum number of characters. If `maxwords` is provided, it will be ignored.
- * @param {number} config.maxwords - If `maxlength` is set, this is not required.
- * The maximum number of words. If `maxwords` is provided, `maxlength` will be ignored.
+ * @param {number} config.maxlength - The maximum number of characters. If maxwords is provided, the maxlength option will be ignored.
+ * @param {number} config.maxwords - The maximum number of words. If maxwords is provided, the maxlength option will be ignored.
  * @param {number} [config.threshold=0] - The percentage value of the limit at
  * which point the count message is displayed. If this attribute is set, the
  * count message will be hidden by default.
@@ -379,13 +377,46 @@ export default CharacterCount
 
 /**
  * @typedef {object} CharacterCountTranslations
- * @property {PluralisedTranslation} [charactersUnderLimit] - Characters under limit
- * @property {string} [charactersAtLimit] - Characters at limit
- * @property {PluralisedTranslation} [charactersOverLimit] - Characters over limit
- * @property {PluralisedTranslation} [wordsUnderLimit] - Words under limit
- * @property {string} [wordsAtLimit] - Words at limit
- * @property {PluralisedTranslation} [wordsOverLimit] - Words over limit
- * @property {PluralisedTranslation} [textareaDescription] - Fallback hint
+ *
+ * Messages shown to users as they type. It provides feedback on how many words
+ * or characters they have remaining or if they are over the limit. This also
+ * includes a message used as an accessible description for the textarea.
+ * @property {PluralisedTranslation} [charactersUnderLimit] - Message displayed
+ *   when the number of characters is under the configured maximum, `maxlength`.
+ *   This message is displayed visually and through assistive technologies. The
+ *   component will replace the `%{count}` placeholder with the number of
+ *   remaining characters. This is a [pluralised list of
+ *   messages](https://frontend.design-system.service.gov.uk/localise-govuk-frontend).
+ * @property {string} [charactersAtLimit] - Message displayed when the number of
+ *   characters reaches the configured maximum, `maxlength`. This message is
+ *   displayed visually and through assistive technologies.
+ * @property {PluralisedTranslation} [charactersOverLimit] - Message displayed
+ *   when the number of characters is over the configured maximum, `maxlength`.
+ *   This message is displayed visually and through assistive technologies. The
+ *   component will replace the `%{count}` placeholder with the number of
+ *   remaining characters. This is a [pluralised list of
+ *   messages](https://frontend.design-system.service.gov.uk/localise-govuk-frontend).
+ * @property {PluralisedTranslation} [wordsUnderLimit] - Message displayed when
+ *   the number of words is under the configured maximum, `maxlength`. This
+ *   message is displayed visually and through assistive technologies. The
+ *   component will replace the `%{count}` placeholder with the number of
+ *   remaining words. This is a [pluralised list of
+ *   messages](https://frontend.design-system.service.gov.uk/localise-govuk-frontend).
+ * @property {string} [wordsAtLimit] - Message displayed when the number of
+ *   words reaches the configured maximum, `maxlength`. This message is
+ *   displayed visually and through assistive technologies.
+ * @property {PluralisedTranslation} [wordsOverLimit] - Message displayed when
+ *   the number of words is over the configured maximum, `maxlength`. This
+ *   message is displayed visually and through assistive technologies. The
+ *   component will replace the `%{count}` placeholder with the number of
+ *   remaining words. This is a [pluralised list of
+ *   messages](https://frontend.design-system.service.gov.uk/localise-govuk-frontend).
+ * @property {PluralisedTranslation} [textareaDescription] - Message made
+ *   available to assistive technologies, if none is already present in the
+ *   HTML, to describe that the component accepts only a limited amount of
+ *   content. It is visible on the page when JavaScript is unavailable. The
+ *   component will replace the `%{count}` placeholder with the value of the
+ *   `maxlength` or `maxwords` parameter.
  */
 
 /**
