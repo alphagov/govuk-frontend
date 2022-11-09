@@ -185,6 +185,8 @@ This was introduced in [pull request #2844: Remove compatibility mode from govuk
 
 ### Fixes
 
+In [pull request 2851: Support Prototype Kit v13](https://github.com/alphagov/govuk-frontend/pull/2851) we introduced support for the plugins system included in the upcoming Prototype Kit v13.
+
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#2807: Tidy up and refactor the Character Count JavaScript](https://github.com/alphagov/govuk-frontend/pull/2807)
