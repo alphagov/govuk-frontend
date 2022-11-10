@@ -8,9 +8,12 @@ import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
 
 /**
+ * @constant
  * @type {CharacterCountTranslations}
+ * @see Default value for {@link CharacterCountConfig.i18n}
+ * @default
  */
-var TRANSLATIONS_DEFAULT = {
+var CHARACTER_COUNT_TRANSLATIONS = {
   // Characters
   charactersUnderLimit: {
     one: 'You have %{count} character remaining',
@@ -57,7 +60,7 @@ function CharacterCount ($module, config) {
 
   var defaultConfig = {
     threshold: 0,
-    i18n: TRANSLATIONS_DEFAULT
+    i18n: CHARACTER_COUNT_TRANSLATIONS
   }
 
   // Read config set using dataset ('data-' values)
@@ -384,7 +387,7 @@ export default CharacterCount
  * @property {number} [threshold = 0] - The percentage value of the limit at
  *  which point the count message is displayed. If this attribute is set, the
  *  count message will be hidden by default.
- * @property {CharacterCountTranslations} [i18n = DEFAULT_TRANSLATIONS] - Character count translations
+ * @property {CharacterCountTranslations} [i18n = CHARACTER_COUNT_TRANSLATIONS] - See constant {@link CHARACTER_COUNT_TRANSLATIONS}
  */
 
 /**
@@ -396,7 +399,7 @@ export default CharacterCount
  * @property {number} [threshold = 0] - The percentage value of the limit at
  *  which point the count message is displayed. If this attribute is set, the
  *  count message will be hidden by default.
- * @property {CharacterCountTranslations} [i18n = DEFAULT_TRANSLATIONS] - Character count translations
+ * @property {CharacterCountTranslations} [i18n = CHARACTER_COUNT_TRANSLATIONS] - See constant {@link CHARACTER_COUNT_TRANSLATIONS}
  */
 
 /**

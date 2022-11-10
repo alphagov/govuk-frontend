@@ -6,9 +6,12 @@ import '../../vendor/polyfills/String/prototype/trim.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 
 /**
+ * @constant
  * @type {AccordionTranslations}
+ * @see Default value for {@link AccordionConfig.i18n}
+ * @default
  */
-var TRANSLATIONS_DEFAULT = {
+var ACCORDION_TRANSLATIONS = {
   hideAllSections: 'Hide all sections',
   hideSection: 'Hide',
   hideSectionAriaLabel: 'Hide this section',
@@ -39,7 +42,7 @@ function Accordion ($module, config) {
   this.browserSupportsSessionStorage = helper.checkForSessionStorage()
 
   var defaultConfig = {
-    i18n: TRANSLATIONS_DEFAULT
+    i18n: ACCORDION_TRANSLATIONS
   }
   this.config = mergeConfigs(
     defaultConfig,
@@ -405,7 +408,7 @@ export default Accordion
  * Accordion config
  *
  * @typedef {object} AccordionConfig
- * @property {AccordionTranslations} [i18n = TRANSLATIONS_DEFAULT] - Accordion translations
+ * @property {AccordionTranslations} [i18n = ACCORDION_TRANSLATIONS] - See constant {@link ACCORDION_TRANSLATIONS}
  */
 
 /**
