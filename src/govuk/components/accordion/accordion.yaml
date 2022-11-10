@@ -18,7 +18,7 @@ params:
 - name: hideAllSectionsText
   type: string
   required: false
-  description: The text content of the 'Hide all sections' button at the top of the accordion when at least one section is expanded.
+  description: The text content of the 'Hide all sections' button at the top of the accordion when all sections are expanded.
 - name: hideSectionText
   type: string
   required: false
@@ -30,7 +30,7 @@ params:
 - name: showAllSectionsText
   type: string
   required: false
-  description: The text content of the 'Show all sections' button at the top of the accordion when all sections are collapsed.
+  description: The text content of the 'Show all sections' button at the top of the accordion when at least one section is collapsed.
 - name: showSectionText
   type: string
   required: false
