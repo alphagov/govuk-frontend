@@ -6,9 +6,12 @@ import '../../vendor/polyfills/String/prototype/trim.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 
 /**
+ * @constant
  * @type {AccordionTranslations}
+ * @see Default value for {@link AccordionConfig.i18n}
+ * @default
  */
-var TRANSLATIONS_DEFAULT = {
+var ACCORDION_TRANSLATIONS = {
   hideAllSections: 'Hide all sections',
   hideSection: 'Hide',
   hideSectionAriaLabel: 'Hide this section',
@@ -31,17 +34,15 @@ var TRANSLATIONS_DEFAULT = {
  *
  * @class
  * @param {HTMLElement} $module - HTML element to use for accordion
- * @param {object} config - Accordion config
- * @param {AccordionTranslations} config.i18n - Translations
+ * @param {AccordionConfig} [config] - Accordion config
  */
 function Accordion ($module, config) {
   this.$module = $module
   this.$sections = $module.querySelectorAll('.govuk-accordion__section')
-  this.$showAllButton = ''
   this.browserSupportsSessionStorage = helper.checkForSessionStorage()
 
   var defaultConfig = {
-    i18n: TRANSLATIONS_DEFAULT
+    i18n: ACCORDION_TRANSLATIONS
   }
   this.config = mergeConfigs(
     defaultConfig,
@@ -404,6 +405,15 @@ Accordion.prototype.getButtonPunctuationEl = function () {
 export default Accordion
 
 /**
+ * Accordion config
+ *
+ * @typedef {object} AccordionConfig
+ * @property {AccordionTranslations} [i18n = ACCORDION_TRANSLATIONS] - See constant {@link ACCORDION_TRANSLATIONS}
+ */
+
+/**
+ * Accordion translations
+ *
  * @typedef {object} AccordionTranslations
  *
  * Messages used by the component for the labels of its buttons. This includes

@@ -8,9 +8,12 @@ import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
 
 /**
+ * @constant
  * @type {CharacterCountTranslations}
+ * @see Default value for {@link CharacterCountConfig.i18n}
+ * @default
  */
-var TRANSLATIONS_DEFAULT = {
+var CHARACTER_COUNT_TRANSLATIONS = {
   // Characters
   charactersUnderLimit: {
     one: 'You have %{count} character remaining',
@@ -48,13 +51,7 @@ var TRANSLATIONS_DEFAULT = {
  *
  * @class
  * @param {HTMLElement} $module - The element this component controls
- * @param {object} config - Character count config
- * @param {number} config.maxlength - The maximum number of characters. If maxwords is provided, the maxlength option will be ignored.
- * @param {number} config.maxwords - The maximum number of words. If maxwords is provided, the maxlength option will be ignored.
- * @param {number} [config.threshold=0] - The percentage value of the limit at
- * which point the count message is displayed. If this attribute is set, the
- * count message will be hidden by default.
- * @param {CharacterCountTranslations} [config.i18n = DEFAULT_TRANSLATIONS]
+ * @param {CharacterCountConfig} [config] - Character count config
  */
 function CharacterCount ($module, config) {
   if (!$module) {
@@ -63,7 +60,7 @@ function CharacterCount ($module, config) {
 
   var defaultConfig = {
     threshold: 0,
-    i18n: TRANSLATIONS_DEFAULT
+    i18n: CHARACTER_COUNT_TRANSLATIONS
   }
 
   // Read config set using dataset ('data-' values)
@@ -376,12 +373,44 @@ CharacterCount.prototype.isOverThreshold = function () {
 export default CharacterCount
 
 /**
+ * Character count config
+ *
+ * @typedef {CharacterCountConfigWithMaxLength | CharacterCountConfigWithMaxWords} CharacterCountConfig
+ */
+
+/**
+ * Character count config (with maximum number of characters)
+ *
+ * @typedef {object} CharacterCountConfigWithMaxLength
+ * @property {number} [maxlength] - The maximum number of characters.
+ *  If maxwords is provided, the maxlength option will be ignored.
+ * @property {number} [threshold = 0] - The percentage value of the limit at
+ *  which point the count message is displayed. If this attribute is set, the
+ *  count message will be hidden by default.
+ * @property {CharacterCountTranslations} [i18n = CHARACTER_COUNT_TRANSLATIONS] - See constant {@link CHARACTER_COUNT_TRANSLATIONS}
+ */
+
+/**
+ * Character count config (with maximum number of words)
+ *
+ * @typedef {object} CharacterCountConfigWithMaxWords
+ * @property {number} [maxwords] - The maximum number of words. If maxwords is
+ *  provided, the maxlength option will be ignored.
+ * @property {number} [threshold = 0] - The percentage value of the limit at
+ *  which point the count message is displayed. If this attribute is set, the
+ *  count message will be hidden by default.
+ * @property {CharacterCountTranslations} [i18n = CHARACTER_COUNT_TRANSLATIONS] - See constant {@link CHARACTER_COUNT_TRANSLATIONS}
+ */
+
+/**
+ * Character count translations
+ *
  * @typedef {object} CharacterCountTranslations
  *
  * Messages shown to users as they type. It provides feedback on how many words
  * or characters they have remaining or if they are over the limit. This also
  * includes a message used as an accessible description for the textarea.
- * @property {PluralisedTranslation} [charactersUnderLimit] - Message displayed
+ * @property {TranslationPluralForms} [charactersUnderLimit] - Message displayed
  *   when the number of characters is under the configured maximum, `maxlength`.
  *   This message is displayed visually and through assistive technologies. The
  *   component will replace the `%{count}` placeholder with the number of
@@ -390,13 +419,13 @@ export default CharacterCount
  * @property {string} [charactersAtLimit] - Message displayed when the number of
  *   characters reaches the configured maximum, `maxlength`. This message is
  *   displayed visually and through assistive technologies.
- * @property {PluralisedTranslation} [charactersOverLimit] - Message displayed
+ * @property {TranslationPluralForms} [charactersOverLimit] - Message displayed
  *   when the number of characters is over the configured maximum, `maxlength`.
  *   This message is displayed visually and through assistive technologies. The
  *   component will replace the `%{count}` placeholder with the number of
  *   remaining characters. This is a [pluralised list of
  *   messages](https://frontend.design-system.service.gov.uk/localise-govuk-frontend).
- * @property {PluralisedTranslation} [wordsUnderLimit] - Message displayed when
+ * @property {TranslationPluralForms} [wordsUnderLimit] - Message displayed when
  *   the number of words is under the configured maximum, `maxlength`. This
  *   message is displayed visually and through assistive technologies. The
  *   component will replace the `%{count}` placeholder with the number of
@@ -405,13 +434,13 @@ export default CharacterCount
  * @property {string} [wordsAtLimit] - Message displayed when the number of
  *   words reaches the configured maximum, `maxlength`. This message is
  *   displayed visually and through assistive technologies.
- * @property {PluralisedTranslation} [wordsOverLimit] - Message displayed when
+ * @property {TranslationPluralForms} [wordsOverLimit] - Message displayed when
  *   the number of words is over the configured maximum, `maxlength`. This
  *   message is displayed visually and through assistive technologies. The
  *   component will replace the `%{count}` placeholder with the number of
  *   remaining words. This is a [pluralised list of
  *   messages](https://frontend.design-system.service.gov.uk/localise-govuk-frontend).
- * @property {PluralisedTranslation} [textareaDescription] - Message made
+ * @property {TranslationPluralForms} [textareaDescription] - Message made
  *   available to assistive technologies, if none is already present in the
  *   HTML, to describe that the component accepts only a limited amount of
  *   content. It is visible on the page when JavaScript is unavailable. The
@@ -420,5 +449,5 @@ export default CharacterCount
  */
 
 /**
- * @typedef {import('../../i18n.mjs').PluralisedTranslation} PluralisedTranslation
+ * @typedef {import('../../i18n.mjs').TranslationPluralForms} TranslationPluralForms
  */
