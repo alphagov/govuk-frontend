@@ -706,8 +706,262 @@ if (detect) return
 
 }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-function ErrorSummary ($module) {
+/**
+ * Common helpers which do not require polyfill.
+ *
+ * IMPORTANT: If a helper require a polyfill, please isolate it in its own module
+ * so that the polyfill can be properly tree-shaken and does not burden
+ * the components that do not need that helper
+ *
+ * @module common/index
+ */
+
+/**
+ * Config flattening function
+ *
+ * Takes any number of objects, flattens them into namespaced key-value pairs,
+ * (e.g. {'i18n.showSection': 'Show section'}) and combines them together, with
+ * greatest priority on the LAST item passed in.
+ *
+ * @returns {object} A flattened object of key-value pairs.
+ */
+function mergeConfigs (/* configObject1, configObject2, ...configObjects */) {
+  /**
+   * Function to take nested objects and flatten them to a dot-separated keyed
+   * object. Doing this means we don't need to do any deep/recursive merging of
+   * each of our objects, nor transform our dataset from a flat list into a
+   * nested object.
+   *
+   * @param {object} configObject - Deeply nested object
+   * @returns {object} Flattened object with dot-separated keys
+   */
+  var flattenObject = function (configObject) {
+    // Prepare an empty return object
+    var flattenedObject = {};
+
+    // Our flattening function, this is called recursively for each level of
+    // depth in the object. At each level we prepend the previous level names to
+    // the key using `prefix`.
+    var flattenLoop = function (obj, prefix) {
+      // Loop through keys...
+      for (var key in obj) {
+        // Check to see if this is a prototypical key/value,
+        // if it is, skip it.
+        if (!Object.prototype.hasOwnProperty.call(obj, key)) {
+          continue
+        }
+        var value = obj[key];
+        var prefixedKey = prefix ? prefix + '.' + key : key;
+        if (typeof value === 'object') {
+          // If the value is a nested object, recurse over that too
+          flattenLoop(value, prefixedKey);
+        } else {
+          // Otherwise, add this value to our return object
+          flattenedObject[prefixedKey] = value;
+        }
+      }
+    };
+
+    // Kick off the recursive loop
+    flattenLoop(configObject);
+    return flattenedObject
+  };
+
+  // Start with an empty object as our base
+  var formattedConfigObject = {};
+
+  // Loop through each of the remaining passed objects and push their keys
+  // one-by-one into configObject. Any duplicate keys will override the existing
+  // key with the new value.
+  for (var i = 0; i < arguments.length; i++) {
+    var obj = flattenObject(arguments[i]);
+    for (var key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        formattedConfigObject[key] = obj[key];
+      }
+    }
+  }
+
+  return formattedConfigObject
+}
+
+/**
+ * @callback nodeListIterator
+ * @param {Element} value - The current node being iterated on
+ * @param {number} index - The current index in the iteration
+ * @param {NodeListOf<Element>} nodes - NodeList from querySelectorAll()
+ * @returns {undefined}
+ */
+
+(function(undefined) {
+
+  // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-library/13cf7c340974d128d557580b5e2dafcd1b1192d1/polyfills/Element/prototype/dataset/detect.js
+  var detect = (function(){
+    if (!document.documentElement.dataset) {
+      return false;
+    }
+    var el = document.createElement('div');
+    el.setAttribute("data-a-b", "c");
+    return el.dataset && el.dataset.aB == "c";
+  }());
+
+  if (detect) return
+
+  // Polyfill derived from  https://raw.githubusercontent.com/Financial-Times/polyfill-library/13cf7c340974d128d557580b5e2dafcd1b1192d1/polyfills/Element/prototype/dataset/polyfill.js
+  Object.defineProperty(Element.prototype, 'dataset', {
+    get: function() {
+      var element = this;
+      var attributes = this.attributes;
+      var map = {};
+  
+      for (var i = 0; i < attributes.length; i++) {
+        var attribute = attributes[i];
+  
+        // This regex has been edited from the original polyfill, to add
+        // support for period (.) separators in data-* attribute names. These
+        // are allowed in the HTML spec, but were not covered by the original
+        // polyfill's regex. We use periods in our i18n implementation.
+        if (attribute && attribute.name && (/^data-\w[.\w-]*$/).test(attribute.name)) {
+          var name = attribute.name;
+          var value = attribute.value;
+  
+          var propName = name.substr(5).replace(/-./g, function (prop) {
+            return prop.charAt(1).toUpperCase();
+          });
+          
+          // If this browser supports __defineGetter__ and __defineSetter__,
+          // continue using defineProperty. If not (like IE 8 and below), we use
+          // a hacky fallback which at least gives an object in the right format
+          if ('__defineGetter__' in Object.prototype && '__defineSetter__' in Object.prototype) {
+            Object.defineProperty(map, propName, {
+              enumerable: true,
+              get: function() {
+                return this.value;
+              }.bind({value: value || ''}),
+              set: function setter(name, value) {
+                if (typeof value !== 'undefined') {
+                  this.setAttribute(name, value);
+                } else {
+                  this.removeAttribute(name);
+                }
+              }.bind(element, name)
+            });
+          } else {
+            map[propName] = value;
+          }
+
+        }
+      }
+  
+      return map;
+    }
+  });
+
+}).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+(function(undefined) {
+
+    // Detection from https://github.com/mdn/content/blob/cf607d68522cd35ee7670782d3ee3a361eaef2e4/files/en-us/web/javascript/reference/global_objects/string/trim/index.md#polyfill
+    var detect = ('trim' in String.prototype);
+    
+    if (detect) return
+
+    // Polyfill from https://github.com/mdn/content/blob/cf607d68522cd35ee7670782d3ee3a361eaef2e4/files/en-us/web/javascript/reference/global_objects/string/trim/index.md#polyfill
+    String.prototype.trim = function () {
+        return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+    };
+
+}).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+/**
+ * Normalise string
+ *
+ * 'If it looks like a duck, and it quacks like a duck…' 🦆
+ *
+ * If the passed value looks like a boolean or a number, convert it to a boolean
+ * or number.
+ *
+ * Designed to be used to convert config passed via data attributes (which are
+ * always strings) into something sensible.
+ *
+ * @param {string} value - The value to normalise
+ * @returns {string | boolean | number | undefined} Normalised data
+ */
+function normaliseString (value) {
+  if (typeof value !== 'string') {
+    return value
+  }
+
+  var trimmedValue = value.trim();
+
+  if (trimmedValue === 'true') {
+    return true
+  }
+
+  if (trimmedValue === 'false') {
+    return false
+  }
+
+  // Empty / whitespace-only strings are considered finite so we need to check
+  // the length of the trimmed string as well
+  if (trimmedValue.length > 0 && isFinite(trimmedValue)) {
+    return Number(trimmedValue)
+  }
+
+  return value
+}
+
+/**
+ * Normalise dataset
+ *
+ * Loop over an object and normalise each value using normaliseData function
+ *
+ * @param {DOMStringMap} dataset - HTML element dataset
+ * @returns {Object<string, string | boolean | number | undefined>} Normalised dataset
+ */
+function normaliseDataset (dataset) {
+  var out = {};
+
+  for (var key in dataset) {
+    out[key] = normaliseString(dataset[key]);
+  }
+
+  return out
+}
+
+/**
+ * JavaScript enhancements for the ErrorSummary
+ *
+ * Takes focus on initialisation for accessible announcement, unless disabled in configuration.
+ *
+ * @class
+ * @param {HTMLElement} $module - The element this component controls
+ * @param {ErrorSummaryConfig} config - Error summary config
+ */
+function ErrorSummary ($module, config) {
+  // Some consuming code may not be passing a module,
+  // for example if they initialise the component
+  // on their own by directly passing the result
+  // of `document.querySelector`.
+  // To avoid breaking further JavaScript initialisation
+  // we need to safeguard against this so things keep
+  // working the same now we read the elements data attributes
+  if (!$module) {
+    // Little safety in case code gets ported as-is
+    // into and ES6 class constructor, where the return value matters
+    return this
+  }
+
   this.$module = $module;
+
+  var defaultConfig = {
+    disableAutoFocus: false
+  };
+  this.config = mergeConfigs(
+    defaultConfig,
+    config || {},
+    normaliseDataset($module.dataset)
+  );
 }
 
 ErrorSummary.prototype.init = function () {
@@ -726,7 +980,7 @@ ErrorSummary.prototype.init = function () {
 ErrorSummary.prototype.setFocus = function () {
   var $module = this.$module;
 
-  if ($module.getAttribute('data-disable-auto-focus') === 'true') {
+  if (this.config.disableAutoFocus) {
     return
   }
 
@@ -742,10 +996,10 @@ ErrorSummary.prototype.setFocus = function () {
 };
 
 /**
-* Click event handler
-*
-* @param {MouseEvent} event - Click event
-*/
+ * Click event handler
+ *
+ * @param {MouseEvent} event - Click event
+ */
 ErrorSummary.prototype.handleClick = function (event) {
   var target = event.target;
   if (this.focusTarget(target)) {
@@ -868,6 +1122,14 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
   return document.querySelector("label[for='" + $input.getAttribute('id') + "']") ||
     $input.closest('label')
 };
+
+/**
+ * Error summary config
+ *
+ * @typedef {object} ErrorSummaryConfig
+ * @property {boolean} [disableAutoFocus = false] -
+ *  If set to `true` the error summary will not be focussed when the page loads.
+ */
 
 return ErrorSummary;
 

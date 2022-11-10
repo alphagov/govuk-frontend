@@ -2,6 +2,20 @@
 /// @group tools/compatibility-mode
 ////
 
+/// Temporary private version of govuk-compatibility to avoid deprecation warnings
+///
+/// @access private
+
+@mixin _govuk-compatibility($product) {
+  @if map-has-key($_govuk-compatibility, $product) {
+    @if map-get($_govuk-compatibility, $product) == true {
+      @content;
+    }
+  } @else {
+    @error "Non existent product '#{$product}'";
+  }
+}
+
 /// Conditional Compatibility Mixin
 ///
 /// Selectively output a block (available to the mixin as @content) if a given
@@ -24,13 +38,13 @@
 ///   this product
 /// @throw Errors if product name is not recognised
 /// @access public
+/// @deprecated Will be removed in v5.0 with the rest of the compatibility mode
+/// suite of tools and settings
 
 @mixin govuk-compatibility($product) {
-  @if map-has-key($_govuk-compatibility, $product) {
-    @if map-get($_govuk-compatibility, $product) == true {
-      @content;
-    }
-  } @else {
-    @error "Non existent product '#{$product}'";
+  @include _warning(compatibility-helper, "govuk-compatibility is deprecated. " +
+  "From version 5.0, GOV.UK Frontend will not support compatibility mode.");
+  @include _govuk-compatibility($product) {
+    @content;
   }
 }

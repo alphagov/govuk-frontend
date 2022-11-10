@@ -6,7 +6,7 @@
 
     // fix double-width section break and forced visible section break
     // when combined with styles from alphagov/elements
-    @include govuk-compatibility(govuk_elements) {
+    @include _govuk-compatibility(govuk_elements) {
       height: 0;
     }
   }

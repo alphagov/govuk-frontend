@@ -21,7 +21,7 @@
     vertical-align: top;
     // GOV.UK Elements sets the font-size and line-height for all headers and cells
     // in tables.
-    @include govuk-compatibility(govuk_elements) {
+    @include _govuk-compatibility(govuk_elements) {
       font-size: inherit;
       line-height: inherit;
     }

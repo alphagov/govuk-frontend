@@ -2,7 +2,13 @@
 {% set headingLevel = params.headingLevel if params.headingLevel else 2 %}
 
 <div class="govuk-accordion {%- if params.classes %} {{ params.classes }}{% endif -%}" data-module="govuk-accordion" id="{{ id }}"
-{%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+  {%- if params.hideAllSectionsText %} data-i18n.hide-all-sections="{{ params.hideAllSectionsText | escape }}"{% endif %}
+  {%- if params.hideSectionText %} data-i18n.hide-section="{{ params.hideSectionText | escape }}"{% endif %}
+  {%- if params.hideSectionAriaLabelText %} data-i18n.hide-section-aria-label="{{ params.hideSectionAriaLabelText | escape }}"{% endif %}
+  {%- if params.showAllSectionsText %} data-i18n.show-all-sections="{{ params.showAllSectionsText | escape }}"{% endif %}
+  {%- if params.showSectionText %} data-i18n.show-section="{{ params.showSectionText | escape }}"{% endif %}
+  {%- if params.showSectionAriaLabelText %} data-i18n.show-section-aria-label="{{ params.showSectionAriaLabelText | escape }}"{% endif %}
+  {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   {% for item in params.items %}
     {% if item %}
       <div class="govuk-accordion__section {% if item.expanded %}govuk-accordion__section--expanded{% endif %}">

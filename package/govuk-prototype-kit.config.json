@@ -1,16 +1,13 @@
 {
-  "nunjucksPaths": [
-    "/"
-  ],
-  "scripts": [
-    "/govuk/all.js",
-    "/govuk/_govuk-prototype-kit-init.js"
-  ],
   "assets": [
     "/govuk/assets"
   ],
   "sass": [
-    "/govuk/_govuk-prototype-kit.scss"
+    "/govuk-prototype-kit/init.scss"
+  ],
+  "scripts": [
+    "/govuk/all.js",
+    "/govuk-prototype-kit/init.js"
   ],
   "nunjucksMacros": [
     {
@@ -66,12 +63,28 @@
       "macroName": "govukFileUpload"
     },
     {
+      "importFrom": "govuk/components/footer/macro.njk",
+      "macroName": "govukFooter"
+    },
+    {
+      "importFrom": "govuk/components/header/macro.njk",
+      "macroName": "govukHeader"
+    },
+    {
+      "importFrom": "govuk/components/hint/macro.njk",
+      "macroName": "govukHint"
+    },
+    {
       "importFrom": "govuk/components/input/macro.njk",
       "macroName": "govukInput"
     },
     {
       "importFrom": "govuk/components/inset-text/macro.njk",
       "macroName": "govukInsetText"
+    },
+    {
+      "importFrom": "govuk/components/label/macro.njk",
+      "macroName": "govukLabel"
     },
     {
       "importFrom": "govuk/components/notification-banner/macro.njk",
@@ -125,5 +138,8 @@
       "importFrom": "govuk/components/warning-text/macro.njk",
       "macroName": "govukWarningText"
     }
+  ],
+  "nunjucksPaths": [
+    "/"
   ]
 }

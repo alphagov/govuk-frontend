@@ -1,3 +1,5 @@
+{% set menuButtonText = params.menuButtonText if params.menuButtonText else 'Menu' %}
+
 <header class="govuk-header {{ params.classes if params.classes }}" role="banner" data-module="govuk-header"
         {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   <div class="govuk-header__container {{ params.containerClasses | default('govuk-width-container') }}">
@@ -60,8 +62,8 @@
     {% endif %}
     {% endif %}
     {% if params.navigation %}
-    <nav aria-label="{{ params.navigationLabel | default('Menu') }}" class="govuk-header__navigation {{ params.navigationClasses if params.navigationClasses }}">
-      <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="{{ params.menuButtonLabel | default('Show or hide menu') }}" hidden>Menu</button>
+    <nav aria-label="{{ params.navigationLabel | default(menuButtonText) }}" class="govuk-header__navigation {{ params.navigationClasses if params.navigationClasses }}">
+      <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="{{ params.menuButtonLabel | default('Show or hide menu') }}" hidden>{{ menuButtonText }}</button>
 
       <ul id="navigation" class="govuk-header__navigation-list">
         {% for item in params.navigation %}
