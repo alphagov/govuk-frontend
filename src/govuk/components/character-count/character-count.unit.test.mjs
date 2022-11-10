@@ -38,20 +38,20 @@ describe('CharacterCount', () => {
       describe('JavaScript configuration', () => {
         it('overrides the default translation keys', () => {
           const component = new CharacterCount(document.createElement('div'), {
-            i18n: { charactersUnderLimit: { one: 'Custom text. Count: %{count}' } },
-            'i18n.charactersOverLimit.other': 'Different custom text. Count: %{count}'
+            i18n: { charactersUnderLimit: { one: 'Custom text. Count: %{count}' } }
           })
 
           expect(component.formatCountMessage(1, 'characters')).toEqual('Custom text. Count: 1')
-          expect(component.formatCountMessage(-10, 'characters')).toEqual('Different custom text. Count: 10')
           // Other keys remain untouched
           expect(component.formatCountMessage(10, 'characters')).toEqual('You have 10 characters remaining')
         })
 
         it('uses specific keys for when limit is reached', () => {
           const component = new CharacterCount(document.createElement('div'), {
-            i18n: { charactersAtLimit: 'Custom text.' },
-            'i18n.wordsAtLimit': 'Different custom text.'
+            i18n: {
+              charactersAtLimit: 'Custom text.',
+              wordsAtLimit: 'Different custom text.'
+            }
           })
 
           expect(component.formatCountMessage(0, 'characters')).toEqual('Custom text.')
@@ -101,12 +101,17 @@ describe('CharacterCount', () => {
 
             const component = new CharacterCount($div, {
               i18n: {
-                charactersUnderLimitOne: 'Different custom text. Count: %{count}'
+                charactersUnderLimit: {
+                  one: 'Different custom text. Count: %{count}',
+                  other: 'Different custom text. Count: %{count}'
+                }
               }
             })
             expect(component.formatCountMessage(1, 'characters')).toEqual('Custom text. Count: 1')
+            expect(component.formatCountMessage(10, 'characters')).toEqual('Different custom text. Count: 10')
             // Other keys remain untouched
-            expect(component.formatCountMessage(10, 'characters')).toEqual('You have 10 characters remaining')
+            expect(component.formatCountMessage(-10, 'characters')).toEqual('You have 10 characters too many')
+            expect(component.formatCountMessage(0, 'characters')).toEqual('You have 0 characters remaining')
           })
         })
       })
