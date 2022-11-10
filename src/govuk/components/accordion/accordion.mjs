@@ -31,8 +31,7 @@ var TRANSLATIONS_DEFAULT = {
  *
  * @class
  * @param {HTMLElement} $module - HTML element to use for accordion
- * @param {object} config - Accordion config
- * @param {AccordionTranslations} config.i18n - Translations
+ * @param {AccordionConfig} [config] - Accordion config
  */
 function Accordion ($module, config) {
   this.$module = $module
@@ -403,6 +402,15 @@ Accordion.prototype.getButtonPunctuationEl = function () {
 export default Accordion
 
 /**
+ * Accordion config
+ *
+ * @typedef {object} AccordionConfig
+ * @property {AccordionTranslations} [i18n = TRANSLATIONS_DEFAULT] - Accordion translations
+ */
+
+/**
+ * Accordion translations
+ *
  * @typedef {object} AccordionTranslations
  *
  * Messages used by the component for the labels of its buttons. This includes

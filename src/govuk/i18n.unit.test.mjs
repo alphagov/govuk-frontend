@@ -2,55 +2,57 @@ import { I18n } from './i18n.mjs'
 
 describe('I18n', () => {
   describe('.t', () => {
-    let config = {}
+    /** @type {import('./i18n.mjs').TranslationsFlattened} */
+    let translations = {}
 
     beforeEach(() => {
-      config = {
+      translations = {
         textString: 'Hello world',
         htmlString: 'Hello<span class="govuk-visually-hidden"> world</span>'
       }
     })
 
     it('returns the text for a given lookup key', () => {
-      const i18n = new I18n(config)
+      const i18n = new I18n(translations)
       const returnString = i18n.t('textString')
       expect(returnString).toBe('Hello world')
     })
 
     it('returns the HTML for a given lookup key', () => {
-      const i18n = new I18n(config)
+      const i18n = new I18n(translations)
       const returnString = i18n.t('htmlString')
       expect(returnString).toBe('Hello<span class="govuk-visually-hidden"> world</span>')
     })
 
     it('returns the lookup key if no translation is defined', () => {
-      const i18n = new I18n(config)
+      const i18n = new I18n(translations)
       const returnString = i18n.t('missingString')
       expect(returnString).toBe('missingString')
     })
 
     it('throws an error if no lookup key is provided', () => {
-      const i18n = new I18n(config)
+      const i18n = new I18n(translations)
       expect(() => i18n.t()).toThrow('i18n: lookup key missing')
     })
 
     describe('string interpolation', () => {
-      const config = {
+      /** @type {import('./i18n.mjs').TranslationsFlattened} */
+      const translations = {
         nameString: 'My name is %{name}'
       }
 
       it('throws an error if the options data is not present', () => {
-        const i18n = new I18n(config)
+        const i18n = new I18n(translations)
         expect(() => { i18n.t('nameString') }).toThrowError('i18n: cannot replace placeholders in string if no option data provided')
       })
 
       it('throws an error if the options object is empty', () => {
-        const i18n = new I18n(config)
+        const i18n = new I18n(translations)
         expect(() => { i18n.t('nameString', {}) }).toThrowError('i18n: no data found to replace %{name} placeholder in string')
       })
 
       it('throws an error if the options object does not have a matching key', () => {
-        const i18n = new I18n(config)
+        const i18n = new I18n(translations)
         expect(() => { i18n.t('nameString', { unrelatedThing: 'hello' }) }).toThrowError('i18n: no data found to replace %{name} placeholder in string')
       })
 
@@ -83,7 +85,7 @@ describe('I18n', () => {
       })
 
       it('replaces the placeholder with the provided data', () => {
-        const i18n = new I18n(config)
+        const i18n = new I18n(translations)
         expect(i18n.t('nameString', { name: 'John' })).toBe('My name is John')
       })
 
@@ -104,7 +106,7 @@ describe('I18n', () => {
       })
 
       it('selects the correct data to replace in the string', () => {
-        const i18n = new I18n(config)
+        const i18n = new I18n(translations)
         expect(i18n.t('nameString', { number: 50, name: 'Claire', otherName: 'Zoe' })).toBe('My name is Claire')
       })
 
@@ -130,12 +132,14 @@ describe('I18n', () => {
       })
 
       it('handles placeholder-style text within options values', () => {
-        const i18n = new I18n(config)
+        const i18n = new I18n(translations)
         expect(i18n.t('nameString', { name: '%{name}' })).toBe('My name is %{name}')
       })
 
       it('formats numbers that are passed as placeholders', () => {
+        /** @type {import('./i18n.mjs').TranslationsFlattened} */
         const translations = { ageString: 'I am %{age} years old' }
+
         const i18nEn = new I18n(translations, { locale: 'en' })
         const i18nDe = new I18n(translations, { locale: 'de' })
 

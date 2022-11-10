@@ -4,8 +4,8 @@
  *
  * @class
  * @private
- * @param {object} translations - Key-value pairs of the translation strings to use.
- * @param {object} config - Configuration options for the function.
+ * @param {TranslationsFlattened} translations - Key-value pairs of the translation strings to use.
+ * @param {object} [config] - Configuration options for the function.
  * @param {string} config.locale - An overriding locale for the PluralRules functionality.
  */
 export function I18n (translations, config) {
@@ -259,7 +259,7 @@ I18n.prototype.getPluralRulesForLocale = function () {
  * Spanish: European Portuguese (pt-PT), Italian (it), Spanish (es)
  * Welsh: Welsh (cy)
  *
- * @type {Object<string, string[]>}
+ * @type {Object<PluralRuleName, string[]>}
  */
 I18n.pluralRulesMap = {
   arabic: ['ar'],
@@ -358,16 +358,23 @@ I18n.pluralRules = {
  */
 
 /**
- * Associates translated messages to plural type they correspond to.
+ * Translated message by plural rule they correspond to.
  *
  * Allows to group pluralised messages under a single key when passing
  * translations to a component's constructor
  *
- * @typedef {object} PluralisedTranslation
+ * @typedef {object} TranslationPluralForms
  * @property {string} other - General plural form
  * @property {string} [zero] - Plural form used with 0
  * @property {string} [one] - Plural form used with 1
  * @property {string} [two] - Plural form used with 2
  * @property {string} [few] - Plural form used for a few
  * @property {string} [many] - Plural form used for many
+ */
+
+/**
+ * Translated messages (flattened)
+ *
+ * @private
+ * @typedef {Object<string, string> | {}} TranslationsFlattened
  */

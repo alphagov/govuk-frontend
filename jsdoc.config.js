@@ -10,5 +10,8 @@ module.exports = {
   source: {
     includePattern: '.+\\.m?js$',
     excludePattern: '.+\\.test.m?js$'
+  },
+  templates: {
+    cleverLinks: true
   }
 }
