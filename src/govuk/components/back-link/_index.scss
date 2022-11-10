@@ -1,10 +1,10 @@
 @include govuk-exports("govuk/component/back-link") {
 
   // Size of chevron (excluding border)
-  $chevron-size: 7px;
+  $chevron-size: .4375em;
 
   // Size of chevron border
-  $chevron-border-width: 1px;
+  $chevron-border-width: .0625em;
 
   // Colour of chevron
   $chevron-border-colour: $govuk-secondary-text-colour;
@@ -21,7 +21,7 @@
     margin-bottom: govuk-spacing(3);
 
     // Allow space for the arrow
-    padding-left: 14px;
+    padding-left: .875em;
   }
 
   // Prepend left pointing chevron
