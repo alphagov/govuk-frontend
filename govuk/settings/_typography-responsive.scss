@@ -13,6 +13,8 @@
 ///
 /// @type Boolean
 /// @access public
+/// @deprecated Will be removed in v5.0 with the rest of the compatibility mode
+/// suite of tools and settings
 
 $govuk-typography-use-rem: if(
   (
@@ -23,6 +25,16 @@ $govuk-typography-use-rem: if(
   false,
   true
 ) !default;
+
+// Only show the deprecation warning if user is setting $govuk-typography-use-rem
+// manually instead of automatically via compatibility variables
+@if $govuk-typography-use-rem == false and
+  $govuk-compatibility-govukfrontendtoolkit == false and
+  $govuk-compatibility-govuktemplate == false and
+  $govuk-compatibility-govukelements == false {
+  @include _warning(allow-not-using-rem, "$govuk-typography-use-rem is deprecated. " +
+  "From version 5.0, GOV.UK Frontend will not support disabling rem font sizes.");
+}
 
 /// Root font size
 ///

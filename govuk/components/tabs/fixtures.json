@@ -35,8 +35,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#past-day\">\n            Past day\n          </a>\n        </li>\n      \n    \n      \n        \n        <li class=\"govuk-tabs__list-item\">\n          <a class=\"govuk-tabs__tab\" href=\"#past-week\">\n            Past week\n          </a>\n        </li>\n      \n    \n      \n        \n        <li class=\"govuk-tabs__list-item\">\n          <a class=\"govuk-tabs__tab\" href=\"#past-month\">\n            Past month\n          </a>\n        </li>\n      \n    \n      \n        \n        <li class=\"govuk-tabs__list-item\">\n          <a class=\"govuk-tabs__tab\" href=\"#past-year\">\n            Past year\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"past-day\">\n        \n          <h2 class=\"govuk-heading-l\">Past day</h2>\n<table class=\"govuk-table\">\n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n      <th class=\"govuk-table__header\" scope=\"col\">Case manager</th>\n      <th class=\"govuk-table__header\" scope=\"col\">Cases opened</th>\n      <th class=\"govuk-table__header\" scope=\"col\">Cases closed</th>\n    </tr>\n  </thead>\n  <tbody class=\"govuk-table__body\">\n    <tr class=\"govuk-table__row\">\n      <td class=\"govuk-table__cell\">David Francis</td>\n      <td class=\"govuk-table__cell\">3</td>\n      <td class=\"govuk-table__cell\">0</td>\n    </tr>\n    <tr class=\"govuk-table__row\">\n      <td class=\"govuk-table__cell\">Paul Farmer</td>\n      <td class=\"govuk-table__cell\">1</td>\n      <td class=\"govuk-table__cell\">0</td>\n    </tr>\n    <tr class=\"govuk-table__row\">\n      <td class=\"govuk-table__cell\">Rita Patel</td>\n      <td class=\"govuk-table__cell\">2</td>\n      <td class=\"govuk-table__cell\">0</td>\n    </tr>\n  </tbody>\n</table>\n\n        \n      </div>\n    \n  \n    \n      \n      <div class=\"govuk-tabs__panel govuk-tabs__panel--hidden\" id=\"past-week\">\n        \n          <h2 class=\"govuk-heading-l\">Past week</h2>\n<table class=\"govuk-table\">\n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n      <th class=\"govuk-table__header\" scope=\"col\">Case manager</th>\n      <th class=\"govuk-table__header\" scope=\"col\">Cases opened</th>\n      <th class=\"govuk-table__header\" scope=\"col\">Cases closed</th>\n    </tr>\n  </thead>\n  <tbody class=\"govuk-table__body\">\n    <tr class=\"govuk-table__row\">\n      <td class=\"govuk-table__cell\">David Francis</td>\n      <td class=\"govuk-table__cell\">24</td>\n      <td class=\"govuk-table__cell\">18</td>\n    </tr>\n    <tr class=\"govuk-table__row\">\n      <td class=\"govuk-table__cell\">Paul Farmer</td>\n      <td class=\"govuk-table__cell\">16</td>\n      <td class=\"govuk-table__cell\">20</td>\n    </tr>\n    <tr class=\"govuk-table__row\">\n      <td class=\"govuk-table__cell\">Rita Patel</td>\n      <td class=\"govuk-table__cell\">24</td>\n      <td class=\"govuk-table__cell\">27</td>\n    </tr>\n  </tbody>\n</table>\n\n        \n      </div>\n    \n  \n    \n      \n      <div class=\"govuk-tabs__panel govuk-tabs__panel--hidden\" id=\"past-month\">\n        \n          <h2 class=\"govuk-heading-l\">Past month</h2>\n<table class=\"govuk-table\">\n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n      <th class=\"govuk-table__header\" scope=\"col\">Case manager</th>\n      <th class=\"govuk-table__header\" scope=\"col\">Cases opened</th>\n      <th class=\"govuk-table__header\" scope=\"col\">Cases closed</th>\n    </tr>\n  </thead>\n  <tbody class=\"govuk-table__body\">\n    <tr class=\"govuk-table__row\">\n      <td class=\"govuk-table__cell\">David Francis</td>\n      <td class=\"govuk-table__cell\">98</td>\n      <td class=\"govuk-table__cell\">95</td>\n    </tr>\n    <tr class=\"govuk-table__row\">\n      <td class=\"govuk-table__cell\">Paul Farmer</td>\n      <td class=\"govuk-table__cell\">122</td>\n      <td class=\"govuk-table__cell\">131</td>\n    </tr>\n    <tr class=\"govuk-table__row\">\n      <td class=\"govuk-table__cell\">Rita Patel</td>\n      <td class=\"govuk-table__cell\">126</td>\n      <td class=\"govuk-table__cell\">142</td>\n    </tr>\n  </tbody>\n</table>\n\n        \n      </div>\n    \n  \n    \n      \n      <div class=\"govuk-tabs__panel govuk-tabs__panel--hidden\" id=\"past-year\">\n        \n          <p class=\"govuk-body\">There is no data for this year yet, check back later</p>\n        \n      </div>\n    \n  \n</div>",
-            "hidden": false
+            "hidden": false,
+            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#past-day\">\n            Past day\n          </a>\n        </li>\n      \n    \n      \n        \n        <li class=\"govuk-tabs__list-item\">\n          <a class=\"govuk-tabs__tab\" href=\"#past-week\">\n            Past week\n          </a>\n        </li>\n      \n    \n      \n        \n        <li class=\"govuk-tabs__list-item\">\n          <a class=\"govuk-tabs__tab\" href=\"#past-month\">\n            Past month\n          </a>\n        </li>\n      \n    \n      \n        \n        <li class=\"govuk-tabs__list-item\">\n          <a class=\"govuk-tabs__tab\" href=\"#past-year\">\n            Past year\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"past-day\">\n        \n          <h2 class=\"govuk-heading-l\">Past day</h2>\n<table class=\"govuk-table\">\n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n      <th class=\"govuk-table__header\" scope=\"col\">Case manager</th>\n      <th class=\"govuk-table__header\" scope=\"col\">Cases opened</th>\n      <th class=\"govuk-table__header\" scope=\"col\">Cases closed</th>\n    </tr>\n  </thead>\n  <tbody class=\"govuk-table__body\">\n    <tr class=\"govuk-table__row\">\n      <td class=\"govuk-table__cell\">David Francis</td>\n      <td class=\"govuk-table__cell\">3</td>\n      <td class=\"govuk-table__cell\">0</td>\n    </tr>\n    <tr class=\"govuk-table__row\">\n      <td class=\"govuk-table__cell\">Paul Farmer</td>\n      <td class=\"govuk-table__cell\">1</td>\n      <td class=\"govuk-table__cell\">0</td>\n    </tr>\n    <tr class=\"govuk-table__row\">\n      <td class=\"govuk-table__cell\">Rita Patel</td>\n      <td class=\"govuk-table__cell\">2</td>\n      <td class=\"govuk-table__cell\">0</td>\n    </tr>\n  </tbody>\n</table>\n\n        \n      </div>\n    \n  \n    \n      \n      <div class=\"govuk-tabs__panel govuk-tabs__panel--hidden\" id=\"past-week\">\n        \n          <h2 class=\"govuk-heading-l\">Past week</h2>\n<table class=\"govuk-table\">\n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n      <th class=\"govuk-table__header\" scope=\"col\">Case manager</th>\n      <th class=\"govuk-table__header\" scope=\"col\">Cases opened</th>\n      <th class=\"govuk-table__header\" scope=\"col\">Cases closed</th>\n    </tr>\n  </thead>\n  <tbody class=\"govuk-table__body\">\n    <tr class=\"govuk-table__row\">\n      <td class=\"govuk-table__cell\">David Francis</td>\n      <td class=\"govuk-table__cell\">24</td>\n      <td class=\"govuk-table__cell\">18</td>\n    </tr>\n    <tr class=\"govuk-table__row\">\n      <td class=\"govuk-table__cell\">Paul Farmer</td>\n      <td class=\"govuk-table__cell\">16</td>\n      <td class=\"govuk-table__cell\">20</td>\n    </tr>\n    <tr class=\"govuk-table__row\">\n      <td class=\"govuk-table__cell\">Rita Patel</td>\n      <td class=\"govuk-table__cell\">24</td>\n      <td class=\"govuk-table__cell\">27</td>\n    </tr>\n  </tbody>\n</table>\n\n        \n      </div>\n    \n  \n    \n      \n      <div class=\"govuk-tabs__panel govuk-tabs__panel--hidden\" id=\"past-month\">\n        \n          <h2 class=\"govuk-heading-l\">Past month</h2>\n<table class=\"govuk-table\">\n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n      <th class=\"govuk-table__header\" scope=\"col\">Case manager</th>\n      <th class=\"govuk-table__header\" scope=\"col\">Cases opened</th>\n      <th class=\"govuk-table__header\" scope=\"col\">Cases closed</th>\n    </tr>\n  </thead>\n  <tbody class=\"govuk-table__body\">\n    <tr class=\"govuk-table__row\">\n      <td class=\"govuk-table__cell\">David Francis</td>\n      <td class=\"govuk-table__cell\">98</td>\n      <td class=\"govuk-table__cell\">95</td>\n    </tr>\n    <tr class=\"govuk-table__row\">\n      <td class=\"govuk-table__cell\">Paul Farmer</td>\n      <td class=\"govuk-table__cell\">122</td>\n      <td class=\"govuk-table__cell\">131</td>\n    </tr>\n    <tr class=\"govuk-table__row\">\n      <td class=\"govuk-table__cell\">Rita Patel</td>\n      <td class=\"govuk-table__cell\">126</td>\n      <td class=\"govuk-table__cell\">142</td>\n    </tr>\n  </tbody>\n</table>\n\n        \n      </div>\n    \n  \n    \n      \n      <div class=\"govuk-tabs__panel govuk-tabs__panel--hidden\" id=\"past-year\">\n        \n          <p class=\"govuk-body\">There is no data for this year yet, check back later</p>\n        \n      </div>\n    \n  \n</div>"
         },
         {
             "name": "tabs-with-anchor-in-panel",
@@ -46,7 +46,7 @@
                         "label": "Tab 1",
                         "id": "tab-1",
                         "panel": {
-                            "html": "<h2 class=\"govuk-heading-l\">Tab 1</h2>\n<p class=\"govuk-body\">Testing that when you click the anchor it moves to the anchor point successfully</p>\n<p class=\"govuk-body\"><a class=\"govuk-link\" href=\"#anchor\">Anchor</a></p>\n<p class=\"govuk-body\"><a id=\"anchor\" tabIndex=\"0\">Anchor Point</a></p>\n"
+                            "html": "<h2 class=\"govuk-heading-l\">Tab 1</h2>\n<p class=\"govuk-body\">Testing that when you click the anchor it moves to the anchor point successfully</p>\n<p class=\"govuk-body\"><a class=\"govuk-link\" href=\"#anchor\">Anchor</a></p>\n<p class=\"govuk-body\"><a id=\"anchor\" tabindex=\"0\">Anchor Point</a></p>\n"
                         }
                     },
                     {
@@ -58,8 +58,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n      \n        \n        <li class=\"govuk-tabs__list-item\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-2\">\n            Tab 2\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        \n          <h2 class=\"govuk-heading-l\">Tab 1</h2>\n<p class=\"govuk-body\">Testing that when you click the anchor it moves to the anchor point successfully</p>\n<p class=\"govuk-body\"><a class=\"govuk-link\" href=\"#anchor\">Anchor</a></p>\n<p class=\"govuk-body\"><a id=\"anchor\" tabIndex=\"0\">Anchor Point</a></p>\n\n        \n      </div>\n    \n  \n    \n      \n      <div class=\"govuk-tabs__panel govuk-tabs__panel--hidden\" id=\"tab-2\">\n        \n          <h2 class=\"govuk-heading-l\">Tab 2</h2>\n\n        \n      </div>\n    \n  \n</div>",
-            "hidden": false
+            "hidden": false,
+            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n      \n        \n        <li class=\"govuk-tabs__list-item\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-2\">\n            Tab 2\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        \n          <h2 class=\"govuk-heading-l\">Tab 1</h2>\n<p class=\"govuk-body\">Testing that when you click the anchor it moves to the anchor point successfully</p>\n<p class=\"govuk-body\"><a class=\"govuk-link\" href=\"#anchor\">Anchor</a></p>\n<p class=\"govuk-body\"><a id=\"anchor\" tabindex=\"0\">Anchor Point</a></p>\n\n        \n      </div>\n    \n  \n    \n      \n      <div class=\"govuk-tabs__panel govuk-tabs__panel--hidden\" id=\"tab-2\">\n        \n          <h2 class=\"govuk-heading-l\">Tab 2</h2>\n\n        \n      </div>\n    \n  \n</div>"
         },
         {
             "name": "classes",
@@ -75,8 +75,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-tabs app-tabs--custom-modifier\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        \n          <p class=\"govuk-body\">Information about tabs</p>\n        \n      </div>\n    \n  \n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-tabs app-tabs--custom-modifier\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        \n          <p class=\"govuk-body\">Information about tabs</p>\n        \n      </div>\n    \n  \n</div>"
         },
         {
             "name": "id",
@@ -92,8 +92,8 @@
                     }
                 ]
             },
-            "html": "<div id=\"my-tabs\" class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        \n          <p class=\"govuk-body\">Information about tabs</p>\n        \n      </div>\n    \n  \n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div id=\"my-tabs\" class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        \n          <p class=\"govuk-body\">Information about tabs</p>\n        \n      </div>\n    \n  \n</div>"
         },
         {
             "name": "title",
@@ -109,8 +109,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Custom title for Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        \n          <p class=\"govuk-body\">Information about tabs</p>\n        \n      </div>\n    \n  \n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Custom title for Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        \n          <p class=\"govuk-body\">Information about tabs</p>\n        \n      </div>\n    \n  \n</div>"
         },
         {
             "name": "attributes",
@@ -128,8 +128,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-tabs\" data-attribute=\"my data value\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        \n          <p class=\"govuk-body\">Information about tabs</p>\n        \n      </div>\n    \n  \n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-tabs\" data-attribute=\"my data value\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        \n          <p class=\"govuk-body\">Information about tabs</p>\n        \n      </div>\n    \n  \n</div>"
         },
         {
             "name": "item with attributes",
@@ -148,8 +148,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\" data-attribute=\"my-attribute\" data-attribute-2=\"my-attribute-2\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        \n          <p class=\"govuk-body\">Information about tabs</p>\n        \n      </div>\n    \n  \n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\" data-attribute=\"my-attribute\" data-attribute-2=\"my-attribute-2\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        \n          <p class=\"govuk-body\">Information about tabs</p>\n        \n      </div>\n    \n  \n</div>"
         },
         {
             "name": "panel with attributes",
@@ -168,8 +168,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\" data-attribute=\"my-attribute\" data-attribute-2=\"my-attribute-2\">\n        \n          <p class=\"govuk-body\">Panel text</p>\n        \n      </div>\n    \n  \n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\" data-attribute=\"my-attribute\" data-attribute-2=\"my-attribute-2\">\n        \n          <p class=\"govuk-body\">Panel text</p>\n        \n      </div>\n    \n  \n</div>"
         },
         {
             "name": "no item list",
@@ -177,16 +177,16 @@
                 "id": "my-tabs",
                 "classes": "app-tabs--custom-modifier"
             },
-            "html": "<div id=\"my-tabs\" class=\"govuk-tabs app-tabs--custom-modifier\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  \n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div id=\"my-tabs\" class=\"govuk-tabs app-tabs--custom-modifier\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  \n</div>"
         },
         {
             "name": "empty item list",
             "options": {
                 "items": []
             },
-            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  \n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  \n</div>"
         },
         {
             "name": "with falsey values",
@@ -211,8 +211,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n      \n    \n      \n    \n      \n    \n      \n        \n        <li class=\"govuk-tabs__list-item\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-2\">\n            Tab 2\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        \n          <p class=\"govuk-body\">Panel 1 content</p>\n        \n      </div>\n    \n  \n    \n  \n    \n  \n    \n  \n    \n      \n      <div class=\"govuk-tabs__panel govuk-tabs__panel--hidden\" id=\"tab-2\">\n        \n          <p class=\"govuk-body\">Panel 2 content</p>\n        \n      </div>\n    \n  \n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n      \n    \n      \n    \n      \n    \n      \n        \n        <li class=\"govuk-tabs__list-item\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-2\">\n            Tab 2\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        \n          <p class=\"govuk-body\">Panel 1 content</p>\n        \n      </div>\n    \n  \n    \n  \n    \n  \n    \n  \n    \n      \n      <div class=\"govuk-tabs__panel govuk-tabs__panel--hidden\" id=\"tab-2\">\n        \n          <p class=\"govuk-body\">Panel 2 content</p>\n        \n      </div>\n    \n  \n</div>"
         },
         {
             "name": "idPrefix",
@@ -233,8 +233,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#custom-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n      \n        \n        <li class=\"govuk-tabs__list-item\">\n          <a class=\"govuk-tabs__tab\" href=\"#custom-2\">\n            Tab 2\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"custom-1\">\n        \n          <p class=\"govuk-body\">Panel 1 content</p>\n        \n      </div>\n    \n  \n    \n      \n      <div class=\"govuk-tabs__panel govuk-tabs__panel--hidden\" id=\"custom-2\">\n        \n          <p class=\"govuk-body\">Panel 2 content</p>\n        \n      </div>\n    \n  \n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#custom-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n      \n        \n        <li class=\"govuk-tabs__list-item\">\n          <a class=\"govuk-tabs__tab\" href=\"#custom-2\">\n            Tab 2\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"custom-1\">\n        \n          <p class=\"govuk-body\">Panel 1 content</p>\n        \n      </div>\n    \n  \n    \n      \n      <div class=\"govuk-tabs__panel govuk-tabs__panel--hidden\" id=\"custom-2\">\n        \n          <p class=\"govuk-body\">Panel 2 content</p>\n        \n      </div>\n    \n  \n</div>"
         },
         {
             "name": "html as text",
@@ -256,8 +256,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n      \n        \n        <li class=\"govuk-tabs__list-item\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-2\">\n            Tab 2\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        \n          <p class=\"govuk-body\">&lt;p&gt;Panel 1 content&lt;/p&gt;</p>\n        \n      </div>\n    \n  \n    \n      \n      <div class=\"govuk-tabs__panel govuk-tabs__panel--hidden\" id=\"tab-2\">\n        \n          <p class=\"govuk-body\">&lt;p&gt;Panel 2 content&lt;/p&gt;</p>\n        \n      </div>\n    \n  \n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n      \n        \n        <li class=\"govuk-tabs__list-item\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-2\">\n            Tab 2\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        \n          <p class=\"govuk-body\">&lt;p&gt;Panel 1 content&lt;/p&gt;</p>\n        \n      </div>\n    \n  \n    \n      \n      <div class=\"govuk-tabs__panel govuk-tabs__panel--hidden\" id=\"tab-2\">\n        \n          <p class=\"govuk-body\">&lt;p&gt;Panel 2 content&lt;/p&gt;</p>\n        \n      </div>\n    \n  \n</div>"
         },
         {
             "name": "html",
@@ -279,8 +279,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n      \n        \n        <li class=\"govuk-tabs__list-item\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-2\">\n            Tab 2\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        \n          <p>Panel 1 content</p>\n        \n      </div>\n    \n  \n    \n      \n      <div class=\"govuk-tabs__panel govuk-tabs__panel--hidden\" id=\"tab-2\">\n        \n          <p>Panel 2 content</p>\n        \n      </div>\n    \n  \n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n      \n        \n        <li class=\"govuk-tabs__list-item\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-2\">\n            Tab 2\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        \n          <p>Panel 1 content</p>\n        \n      </div>\n    \n  \n    \n      \n      <div class=\"govuk-tabs__panel govuk-tabs__panel--hidden\" id=\"tab-2\">\n        \n          <p>Panel 2 content</p>\n        \n      </div>\n    \n  \n</div>"
         }
     ]
 }

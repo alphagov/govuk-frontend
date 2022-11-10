@@ -15,6 +15,8 @@
 ///
 /// @type Boolean
 /// @access public
+/// @deprecated Will be removed in v5.0 with the rest of the compatibility mode
+/// suite of tools and settings
 
 $govuk-use-legacy-palette: if(
   (
@@ -25,6 +27,16 @@ $govuk-use-legacy-palette: if(
   true,
   false
 ) !default;
+
+// Only show the deprecation warning if user is setting $govuk-use-legacy-palette
+// manually instead of automatically via compatibility variables
+@if $govuk-use-legacy-palette == true and
+  $govuk-compatibility-govukfrontendtoolkit == false and
+  $govuk-compatibility-govuktemplate == false and
+  $govuk-compatibility-govukelements == false {
+  @include _warning(legacy-palette, "$govuk-use-legacy-palette is deprecated. " +
+  "Only the modern colour palette will be supported from v5.0.");
+}
 
 /// Modern colour palette
 ///

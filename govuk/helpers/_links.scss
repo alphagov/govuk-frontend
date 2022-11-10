@@ -104,7 +104,7 @@
   // we need to override the text colour for that combination of selectors so
   // so that unvisited links styled as buttons do not end up with dark blue
   // text when focussed.
-  @include govuk-compatibility(govuk_template) {
+  @include _govuk-compatibility(govuk_template) {
     &:link:focus {
       color: $govuk-focus-text-colour;
     }
@@ -152,7 +152,7 @@
   // we need to override the text colour for that combination of selectors so
   // so that unvisited links styled as buttons do not end up with dark blue
   // text when focussed.
-  @include govuk-compatibility(govuk_template) {
+  @include _govuk-compatibility(govuk_template) {
     &:link:focus {
       color: $govuk-focus-text-colour;
     }
@@ -200,7 +200,7 @@
   // we need to override the text colour for that combination of selectors so
   // so that unvisited links styled as buttons do not end up with dark blue
   // text when focussed.
-  @include govuk-compatibility(govuk_template) {
+  @include _govuk-compatibility(govuk_template) {
     &:link:focus {
       color: $govuk-focus-text-colour;
     }
@@ -243,7 +243,7 @@
   // alphagov/govuk_template includes a specific a:link:focus selector designed
   // to make unvisited links a slightly darker blue when focussed, so we need to
   // override the text colour for that combination of selectors.
-  @include govuk-compatibility(govuk_template) {
+  @include _govuk-compatibility(govuk_template) {
     &:link:focus {
       @include govuk-text-colour;
     }
@@ -288,7 +288,7 @@
   // alphagov/govuk_template includes a specific a:link:focus selector designed
   // to make unvisited links a slightly darker blue when focussed, so we need to
   // override the text colour for that combination of selectors.
-  @include govuk-compatibility(govuk_template) {
+  @include _govuk-compatibility(govuk_template) {
     &:link:focus {
       @include govuk-text-colour;
     }
@@ -331,7 +331,7 @@
   // alphagov/govuk_template includes a specific a:link:focus selector designed
   // to make unvisited links a slightly darker blue when focussed, so we need to
   // override the text colour for that combination of selectors.
-  @include govuk-compatibility(govuk_template) {
+  @include _govuk-compatibility(govuk_template) {
     &:link:focus {
       color: $govuk-focus-text-colour;
     }

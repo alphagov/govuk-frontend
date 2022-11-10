@@ -660,14 +660,22 @@ if (detect) return
 .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
 /**
- * TODO: Ideally this would be a NodeList.prototype.forEach polyfill
- * This seems to fail in IE8, requires more investigation.
- * See: https://github.com/imagitama/nodelist-foreach-polyfill
+ * Common helpers which do not require polyfill.
+ *
+ * IMPORTANT: If a helper require a polyfill, please isolate it in its own module
+ * so that the polyfill can be properly tree-shaken and does not burden
+ * the components that do not need that helper
+ *
+ * @module common/index
  */
 
-// Used to generate a unique string, allows multiple instances of the component without
-// Them conflicting with each other.
-// https://stackoverflow.com/a/8809472
+/**
+ * Used to generate a unique string, allows multiple instances of the component
+ * without them conflicting with each other.
+ * https://stackoverflow.com/a/8809472
+ *
+ * @returns {string} Unique ID
+ */
 function generateUniqueID () {
   var d = new Date().getTime();
   if (typeof window.performance !== 'undefined' && typeof window.performance.now === 'function') {
@@ -681,6 +689,14 @@ function generateUniqueID () {
 }
 
 /**
+ * @callback nodeListIterator
+ * @param {Element} value - The current node being iterated on
+ * @param {number} index - The current index in the iteration
+ * @param {NodeListOf<Element>} nodes - NodeList from querySelectorAll()
+ * @returns {undefined}
+ */
+
+/**
  * JavaScript 'polyfill' for HTML5's <details> and <summary> elements
  * and 'shim' to add accessiblity enhancements for all browsers
  *
@@ -690,6 +706,12 @@ function generateUniqueID () {
 var KEY_ENTER = 13;
 var KEY_SPACE = 32;
 
+/**
+ * Details component
+ *
+ * @class
+ * @param {HTMLElement} $module - HTML element to use for details
+ */
 function Details ($module) {
   this.$module = $module;
 }
@@ -756,9 +778,10 @@ Details.prototype.polyfillDetails = function () {
 };
 
 /**
-* Define a statechange function that updates aria-expanded and style.display
-* @param {object} summary element
-*/
+ * Define a statechange function that updates aria-expanded and style.display
+ *
+ * @returns {boolean} Returns true
+ */
 Details.prototype.polyfillSetAttributes = function () {
   if (this.$module.hasAttribute('open')) {
     this.$module.removeAttribute('open');
@@ -774,10 +797,11 @@ Details.prototype.polyfillSetAttributes = function () {
 };
 
 /**
-* Handle cross-modal click events
-* @param {object} node element
-* @param {function} callback function
-*/
+ * Handle cross-modal click events
+ *
+ * @param {object} node - element
+ * @param {polyfillHandleInputsCallback} callback - function
+ */
 Details.prototype.polyfillHandleInputs = function (node, callback) {
   node.addEventListener('keypress', function (event) {
     var target = event.target;
@@ -810,6 +834,12 @@ Details.prototype.polyfillHandleInputs = function (node, callback) {
 
   node.addEventListener('click', callback);
 };
+
+/**
+ * @callback polyfillHandleInputsCallback
+ * @param {KeyboardEvent} event - Keyboard event
+ * @returns {undefined}
+ */
 
 return Details;
 

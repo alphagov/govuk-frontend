@@ -1055,9 +1055,23 @@ if (detect) return
 .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
 /**
+ * Common helpers which do not require polyfill.
+ *
+ * IMPORTANT: If a helper require a polyfill, please isolate it in its own module
+ * so that the polyfill can be properly tree-shaken and does not burden
+ * the components that do not need that helper
+ *
+ * @module common/index
+ */
+
+/**
  * TODO: Ideally this would be a NodeList.prototype.forEach polyfill
  * This seems to fail in IE8, requires more investigation.
  * See: https://github.com/imagitama/nodelist-foreach-polyfill
+ *
+ * @param {NodeListOf<Element>} nodes - NodeList from querySelectorAll()
+ * @param {nodeListIterator} callback - Callback function to run for each node
+ * @returns {undefined}
  */
 function nodeListForEach (nodes, callback) {
   if (window.NodeList.prototype.forEach) {
@@ -1068,6 +1082,20 @@ function nodeListForEach (nodes, callback) {
   }
 }
 
+/**
+ * @callback nodeListIterator
+ * @param {Element} value - The current node being iterated on
+ * @param {number} index - The current index in the iteration
+ * @param {NodeListOf<Element>} nodes - NodeList from querySelectorAll()
+ * @returns {undefined}
+ */
+
+/**
+ * Tabs component
+ *
+ * @class
+ * @param {HTMLElement} $module - HTML element to use for tabs
+ */
 function Tabs ($module) {
   this.$module = $module;
   this.$tabs = $module.querySelectorAll('.govuk-tabs__tab');

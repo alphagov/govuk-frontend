@@ -24,6 +24,42 @@
         "description": "HTML attributes (for example data attributes) to add to the accordion."
     },
     {
+        "name": "hideAllSectionsText",
+        "type": "string",
+        "required": false,
+        "description": "The text content of the 'Hide all sections' button at the top of the accordion when all sections are expanded."
+    },
+    {
+        "name": "hideSectionText",
+        "type": "string",
+        "required": false,
+        "description": "The text content of the 'Hide' button within each section of the accordion, which is visible when the section is expanded."
+    },
+    {
+        "name": "hideSectionAriaLabelText",
+        "type": "string",
+        "required": false,
+        "description": "Text made available to assistive technologies, like screen-readers, as the final part of the toggle's accessible name when the section is expanded. Defaults to 'Hide this section'."
+    },
+    {
+        "name": "showAllSectionsText",
+        "type": "string",
+        "required": false,
+        "description": "The text content of the 'Show all sections' button at the top of the accordion when at least one section is collapsed."
+    },
+    {
+        "name": "showSectionText",
+        "type": "string",
+        "required": false,
+        "description": "The text content of the 'Show' button within each section of the accordion, which is visible when the section is collapsed."
+    },
+    {
+        "name": "showSectionAriaLabelText",
+        "type": "string",
+        "required": false,
+        "description": "Text made available to assistive technologies, like screen-readers, as the final part of the toggle's accessible name when the section is collapsed. Defaults to 'Show this section'."
+    },
+    {
         "name": "items",
         "type": "array",
         "required": true,
