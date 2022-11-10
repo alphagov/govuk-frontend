@@ -364,7 +364,7 @@ I18n.pluralRules = {
  * translations to a component's constructor
  *
  * @typedef {object} TranslationPluralForms
- * @property {string} other - General plural form
+ * @property {string} [other] - General plural form
  * @property {string} [zero] - Plural form used with 0
  * @property {string} [one] - Plural form used with 1
  * @property {string} [two] - Plural form used with 2

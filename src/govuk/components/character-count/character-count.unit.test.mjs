@@ -102,13 +102,11 @@ describe('CharacterCount', () => {
             const component = new CharacterCount($div, {
               i18n: {
                 charactersUnderLimit: {
-                  one: 'Different custom text. Count: %{count}',
-                  other: 'Different custom text. Count: %{count}'
+                  one: 'Different custom text. Count: %{count}'
                 }
               }
             })
             expect(component.formatCountMessage(1, 'characters')).toEqual('Custom text. Count: 1')
-            expect(component.formatCountMessage(10, 'characters')).toEqual('Different custom text. Count: 10')
             // Other keys remain untouched
             expect(component.formatCountMessage(-10, 'characters')).toEqual('You have 10 characters too many')
             expect(component.formatCountMessage(0, 'characters')).toEqual('You have 0 characters remaining')
