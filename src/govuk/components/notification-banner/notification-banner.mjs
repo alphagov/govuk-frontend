@@ -8,12 +8,7 @@ import { normaliseDataset } from '../../common/normalise-dataset.mjs'
  *
  * @class
  * @param {HTMLElement} $module - HTML element to use for notification banner
- * @param {object} config - Error summary config
- * @param {boolean} [config.disableAutoFocus=false] -
- *   If set to `true` the notification banner will not be focussed when the page
- *   loads. This only applies if the component has a `role` of `alert` – in
- *   other cases the component will not be focused on page load, regardless of
- *   this option.
+ * @param {NotificationBannerConfig} config - Notification banner config
  */
 function NotificationBanner ($module, config) {
   this.$module = $module
@@ -77,3 +72,14 @@ NotificationBanner.prototype.setFocus = function () {
 }
 
 export default NotificationBanner
+
+/**
+ * Notification banner config
+ *
+ * @typedef {object} NotificationBannerConfig
+ * @property {boolean} [disableAutoFocus = false] -
+ *   If set to `true` the notification banner will not be focussed when the page
+ *   loads. This only applies if the component has a `role` of `alert` – in
+ *   other cases the component will not be focused on page load, regardless of
+ *   this option.
+ */

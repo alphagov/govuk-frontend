@@ -12,8 +12,7 @@ import { normaliseDataset } from '../../common/normalise-dataset.mjs'
  *
  * @class
  * @param {HTMLElement} $module - The element this component controls
- * @param {object} config - Error summary config
- * @param {boolean} [config.disableAutoFocus=false] - If set to `true` the error summary will not be focussed when the page loads.
+ * @param {ErrorSummaryConfig} config - Error summary config
  */
 function ErrorSummary ($module, config) {
   // Some consuming code may not be passing a module,
@@ -201,3 +200,11 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
 }
 
 export default ErrorSummary
+
+/**
+ * Error summary config
+ *
+ * @typedef {object} ErrorSummaryConfig
+ * @property {boolean} [disableAutoFocus = false] -
+ *  If set to `true` the error summary will not be focussed when the page loads.
+ */

@@ -17,13 +17,7 @@ import Tabs from './components/tabs/tabs.mjs'
  * Use the `data-module` attributes to find, instantiate and init all of the
  * components provided as part of GOV.UK Frontend.
  *
- * @param {object} [config] - Config
- * @param {HTMLElement} [config.scope=document] - Scope to query for components
- * @param {object} [config.accordion] - Accordion config
- * @param {object} [config.button] - Button config
- * @param {object} [config.characterCount] - Character Count config
- * @param {object} [config.errorSummary] - Error Summary config
- * @param {object} [config.notificationBanner] - Notification Banner config
+ * @param {Config} [config] - Config for all components
  */
 function initAll (config) {
   config = typeof config !== 'undefined' ? config : {}
@@ -103,3 +97,15 @@ export {
   SkipLink,
   Tabs
 }
+
+/**
+ * Config for all components
+ *
+ * @typedef {object} Config
+ * @property {HTMLElement} [scope=document] - Scope to query for components
+ * @property {import('./components/accordion/accordion.mjs').AccordionConfig} [accordion] - Accordion config
+ * @property {import('./components/button/button.mjs').ButtonConfig} [button] - Button config
+ * @property {import('./components/character-count/character-count.mjs').CharacterCountConfig} [characterCount] - Character Count config
+ * @property {import('./components/error-summary/error-summary.mjs').ErrorSummaryConfig} [errorSummary] - Error Summary config
+ * @property {import('./components/notification-banner/notification-banner.mjs').NotificationBannerConfig} [notificationBanner] - Notification Banner config
+ */
