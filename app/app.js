@@ -78,10 +78,8 @@ module.exports = async (options) => {
     res.send('User-agent: *\nAllow: /')
   })
 
-  // Set up middleware to serve static assets
-  app.use('/public', express.static(configPaths.public))
-
-  // Set up middleware for documentation
+  // Set up middleware
+  app.use(middleware.assets)
   app.use('/docs', middleware.docs)
 
   // serve html5-shiv from node modules
@@ -92,8 +90,6 @@ module.exports = async (options) => {
   app.use('/vendor/govuk_frontend_toolkit/assets', express.static('node_modules/govuk_frontend_toolkit/images'))
   app.use('/vendor/govuk_frontend_toolkit/', express.static('node_modules/govuk_frontend_toolkit/javascripts/govuk/'))
   app.use('/vendor/jquery/', express.static('node_modules/jquery/dist'))
-
-  app.use('/assets', express.static(configPaths.assets))
 
   // Turn form POSTs into data that can be used for validation.
   app.use(bodyParser.urlencoded({ extended: true }))
