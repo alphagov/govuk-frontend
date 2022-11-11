@@ -7,8 +7,6 @@
   $chevron-size: govuk-em(7px, $font-size);
 
   // Size of chevron border
-  // Awkward syntax hack to ensure we're using the CSS max() function and not
-  // the Sass one. This can be called normally once we're using Sass modules.
   $chevron-border-width: govuk-em(1px, $font-size);
 
   // Colour of chevron
