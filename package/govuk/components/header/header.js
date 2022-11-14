@@ -1014,6 +1014,12 @@ if (detect) return
 })
 .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
+/**
+ * Header component
+ *
+ * @class
+ * @param {HTMLElement} $module - HTML element to use for header
+ */
 function Header ($module) {
   this.$module = $module;
   this.$menuButton = $module && $module.querySelector('.govuk-js-header-toggle');

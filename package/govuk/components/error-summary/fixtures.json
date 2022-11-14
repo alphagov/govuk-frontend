@@ -16,8 +16,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-error-summary\" aria-labelledby=\"error-summary-title\" role=\"alert\" data-module=\"govuk-error-summary\">\n  <h2 class=\"govuk-error-summary__title\" id=\"error-summary-title\">\n    There is a problem\n  </h2>\n  <div class=\"govuk-error-summary__body\">\n    \n    <ul class=\"govuk-list govuk-error-summary__list\">\n    \n      <li>\n      \n        <a href=\"#example-error-1\">The date your passport was issued must be in the past</a>\n      \n      </li>\n    \n      <li>\n      \n        <a href=\"#example-error-2\">Enter a postcode, like AA1 1AA</a>\n      \n      </li>\n    \n    </ul>\n  </div>\n</div>",
-            "hidden": false
+            "hidden": false,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  \n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      \n      <ul class=\"govuk-list govuk-error-summary__list\">\n        \n          <li>\n          \n            <a href=\"#example-error-1\">The date your passport was issued must be in the past</a>\n          \n          </li>\n        \n          <li>\n          \n            <a href=\"#example-error-2\">Enter a postcode, like AA1 1AA</a>\n          \n          </li>\n        \n      </ul>\n    </div>\n  </div>\n</div>"
         },
         {
             "name": "without links",
@@ -29,8 +29,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-error-summary\" aria-labelledby=\"error-summary-title\" role=\"alert\" data-module=\"govuk-error-summary\">\n  <h2 class=\"govuk-error-summary__title\" id=\"error-summary-title\">\n    There is a problem\n  </h2>\n  <div class=\"govuk-error-summary__body\">\n    \n    <ul class=\"govuk-list govuk-error-summary__list\">\n    \n      <li>\n      \n        Invalid username or password\n      \n      </li>\n    \n    </ul>\n  </div>\n</div>",
-            "hidden": false
+            "hidden": false,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  \n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      \n      <ul class=\"govuk-list govuk-error-summary__list\">\n        \n          <li>\n          \n            Invalid username or password\n          \n          </li>\n        \n      </ul>\n    </div>\n  </div>\n</div>"
         },
         {
             "name": "mixed with and without links",
@@ -46,8 +46,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-error-summary\" aria-labelledby=\"error-summary-title\" role=\"alert\" data-module=\"govuk-error-summary\">\n  <h2 class=\"govuk-error-summary__title\" id=\"error-summary-title\">\n    There is a problem\n  </h2>\n  <div class=\"govuk-error-summary__body\">\n    \n    <ul class=\"govuk-list govuk-error-summary__list\">\n    \n      <li>\n      \n        Invalid username or password\n      \n      </li>\n    \n      <li>\n      \n        <a href=\"#example-error-1\">Agree to the terms of service to log in</a>\n      \n      </li>\n    \n    </ul>\n  </div>\n</div>",
-            "hidden": false
+            "hidden": false,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  \n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      \n      <ul class=\"govuk-list govuk-error-summary__list\">\n        \n          <li>\n          \n            Invalid username or password\n          \n          </li>\n        \n          <li>\n          \n            <a href=\"#example-error-1\">Agree to the terms of service to log in</a>\n          \n          </li>\n        \n      </ul>\n    </div>\n  </div>\n</div>"
         },
         {
             "name": "with everything",
@@ -64,8 +64,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-error-summary\" aria-labelledby=\"error-summary-title\" role=\"alert\" data-module=\"govuk-error-summary\">\n  <h2 class=\"govuk-error-summary__title\" id=\"error-summary-title\">\n    There is a problem\n  </h2>\n  <div class=\"govuk-error-summary__body\">\n    \n    <p>\n      Please fix the errors below.\n    </p>\n    \n    <ul class=\"govuk-list govuk-error-summary__list\">\n    \n      <li>\n      \n        Invalid username or password\n      \n      </li>\n    \n      <li>\n      \n        <a href=\"#example-error-1\">Agree to the terms of service to log in</a>\n      \n      </li>\n    \n    </ul>\n  </div>\n</div>",
-            "hidden": false
+            "hidden": false,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  \n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      \n        <p>\n          Please fix the errors below.\n        </p>\n      \n      <ul class=\"govuk-list govuk-error-summary__list\">\n        \n          <li>\n          \n            Invalid username or password\n          \n          </li>\n        \n          <li>\n          \n            <a href=\"#example-error-1\">Agree to the terms of service to log in</a>\n          \n          </li>\n        \n      </ul>\n    </div>\n  </div>\n</div>"
         },
         {
             "name": "html as titleText",
@@ -77,8 +77,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-error-summary\" aria-labelledby=\"error-summary-title\" role=\"alert\" data-module=\"govuk-error-summary\">\n  <h2 class=\"govuk-error-summary__title\" id=\"error-summary-title\">\n    Alert, &lt;em&gt;alert&lt;/em&gt;\n  </h2>\n  <div class=\"govuk-error-summary__body\">\n    \n    <ul class=\"govuk-list govuk-error-summary__list\">\n    \n      <li>\n      \n        Invalid username or password\n      \n      </li>\n    \n    </ul>\n  </div>\n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  \n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      Alert, &lt;em&gt;alert&lt;/em&gt;\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      \n      <ul class=\"govuk-list govuk-error-summary__list\">\n        \n          <li>\n          \n            Invalid username or password\n          \n          </li>\n        \n      </ul>\n    </div>\n  </div>\n</div>"
         },
         {
             "name": "title html",
@@ -90,8 +90,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-error-summary\" aria-labelledby=\"error-summary-title\" role=\"alert\" data-module=\"govuk-error-summary\">\n  <h2 class=\"govuk-error-summary__title\" id=\"error-summary-title\">\n    Alert, <em>alert</em>\n  </h2>\n  <div class=\"govuk-error-summary__body\">\n    \n    <ul class=\"govuk-list govuk-error-summary__list\">\n    \n      <li>\n      \n        Invalid username or password\n      \n      </li>\n    \n    </ul>\n  </div>\n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  \n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      Alert, <em>alert</em>\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      \n      <ul class=\"govuk-list govuk-error-summary__list\">\n        \n          <li>\n          \n            Invalid username or password\n          \n          </li>\n        \n      </ul>\n    </div>\n  </div>\n</div>"
         },
         {
             "name": "description",
@@ -104,22 +104,22 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-error-summary\" aria-labelledby=\"error-summary-title\" role=\"alert\" data-module=\"govuk-error-summary\">\n  <h2 class=\"govuk-error-summary__title\" id=\"error-summary-title\">\n    There is a problem\n  </h2>\n  <div class=\"govuk-error-summary__body\">\n    \n    <p>\n      Lorem ipsum\n    </p>\n    \n    <ul class=\"govuk-list govuk-error-summary__list\">\n    \n      <li>\n      \n        Invalid username or password\n      \n      </li>\n    \n    </ul>\n  </div>\n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  \n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      \n        <p>\n          Lorem ipsum\n        </p>\n      \n      <ul class=\"govuk-list govuk-error-summary__list\">\n        \n          <li>\n          \n            Invalid username or password\n          \n          </li>\n        \n      </ul>\n    </div>\n  </div>\n</div>"
         },
         {
             "name": "html as descriptionText",
             "options": {
                 "titleText": "There is a problem",
-                "descriptionText": "See errors below (▼)",
+                "descriptionText": "See errors below (>)",
                 "errorList": [
                     {
                         "text": "Invalid username or password"
                     }
                 ]
             },
-            "html": "<div class=\"govuk-error-summary\" aria-labelledby=\"error-summary-title\" role=\"alert\" data-module=\"govuk-error-summary\">\n  <h2 class=\"govuk-error-summary__title\" id=\"error-summary-title\">\n    There is a problem\n  </h2>\n  <div class=\"govuk-error-summary__body\">\n    \n    <p>\n      See errors below (▼)\n    </p>\n    \n    <ul class=\"govuk-list govuk-error-summary__list\">\n    \n      <li>\n      \n        Invalid username or password\n      \n      </li>\n    \n    </ul>\n  </div>\n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  \n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      \n        <p>\n          See errors below (&gt;)\n        </p>\n      \n      <ul class=\"govuk-list govuk-error-summary__list\">\n        \n          <li>\n          \n            Invalid username or password\n          \n          </li>\n        \n      </ul>\n    </div>\n  </div>\n</div>"
         },
         {
             "name": "description html",
@@ -132,8 +132,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-error-summary\" aria-labelledby=\"error-summary-title\" role=\"alert\" data-module=\"govuk-error-summary\">\n  <h2 class=\"govuk-error-summary__title\" id=\"error-summary-title\">\n    There is a problem\n  </h2>\n  <div class=\"govuk-error-summary__body\">\n    \n    <p>\n      See <span>errors</span> below\n    </p>\n    \n    <ul class=\"govuk-list govuk-error-summary__list\">\n    \n      <li>\n      \n        Invalid username or password\n      \n      </li>\n    \n    </ul>\n  </div>\n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  \n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      \n        <p>\n          See <span>errors</span> below\n        </p>\n      \n      <ul class=\"govuk-list govuk-error-summary__list\">\n        \n          <li>\n          \n            Invalid username or password\n          \n          </li>\n        \n      </ul>\n    </div>\n  </div>\n</div>"
         },
         {
             "name": "classes",
@@ -146,8 +146,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-error-summary extra-class one-more-class\" aria-labelledby=\"error-summary-title\" role=\"alert\" data-module=\"govuk-error-summary\">\n  <h2 class=\"govuk-error-summary__title\" id=\"error-summary-title\">\n    There is a problem\n  </h2>\n  <div class=\"govuk-error-summary__body\">\n    \n    <ul class=\"govuk-list govuk-error-summary__list\">\n    \n      <li>\n      \n        Invalid username or password\n      \n      </li>\n    \n    </ul>\n  </div>\n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-error-summary extra-class one-more-class\" data-module=\"govuk-error-summary\">\n  \n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      \n      <ul class=\"govuk-list govuk-error-summary__list\">\n        \n          <li>\n          \n            Invalid username or password\n          \n          </li>\n        \n      </ul>\n    </div>\n  </div>\n</div>"
         },
         {
             "name": "attributes",
@@ -163,8 +163,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-error-summary\" aria-labelledby=\"error-summary-title\" role=\"alert\" first-attribute=\"foo\" second-attribute=\"bar\" data-module=\"govuk-error-summary\">\n  <h2 class=\"govuk-error-summary__title\" id=\"error-summary-title\">\n    There is a problem\n  </h2>\n  <div class=\"govuk-error-summary__body\">\n    \n    <ul class=\"govuk-list govuk-error-summary__list\">\n    \n      <li>\n      \n        Invalid username or password\n      \n      </li>\n    \n    </ul>\n  </div>\n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-error-summary\" first-attribute=\"foo\" second-attribute=\"bar\" data-module=\"govuk-error-summary\">\n  \n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      \n      <ul class=\"govuk-list govuk-error-summary__list\">\n        \n          <li>\n          \n            Invalid username or password\n          \n          </li>\n        \n      </ul>\n    </div>\n  </div>\n</div>"
         },
         {
             "name": "error list with attributes",
@@ -181,8 +181,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-error-summary\" aria-labelledby=\"error-summary-title\" role=\"alert\" data-module=\"govuk-error-summary\">\n  <h2 class=\"govuk-error-summary__title\" id=\"error-summary-title\">\n    There is a problem\n  </h2>\n  <div class=\"govuk-error-summary__body\">\n    \n    <ul class=\"govuk-list govuk-error-summary__list\">\n    \n      <li>\n      \n        <a href=\"#item\" data-attribute=\"my-attribute\" data-attribute-2=\"my-attribute-2\">Error-1</a>\n      \n      </li>\n    \n    </ul>\n  </div>\n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  \n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      \n      <ul class=\"govuk-list govuk-error-summary__list\">\n        \n          <li>\n          \n            <a href=\"#item\" data-attribute=\"my-attribute\" data-attribute-2=\"my-attribute-2\">Error-1</a>\n          \n          </li>\n        \n      </ul>\n    </div>\n  </div>\n</div>"
         },
         {
             "name": "error list with html as text",
@@ -194,8 +194,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-error-summary\" aria-labelledby=\"error-summary-title\" role=\"alert\" data-module=\"govuk-error-summary\">\n  <h2 class=\"govuk-error-summary__title\" id=\"error-summary-title\">\n    There is a problem\n  </h2>\n  <div class=\"govuk-error-summary__body\">\n    \n    <ul class=\"govuk-list govuk-error-summary__list\">\n    \n      <li>\n      \n        Descriptive link to the &lt;b&gt;question&lt;/b&gt; with an error\n      \n      </li>\n    \n    </ul>\n  </div>\n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  \n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      \n      <ul class=\"govuk-list govuk-error-summary__list\">\n        \n          <li>\n          \n            Descriptive link to the &lt;b&gt;question&lt;/b&gt; with an error\n          \n          </li>\n        \n      </ul>\n    </div>\n  </div>\n</div>"
         },
         {
             "name": "error list with html",
@@ -207,8 +207,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-error-summary\" aria-labelledby=\"error-summary-title\" role=\"alert\" data-module=\"govuk-error-summary\">\n  <h2 class=\"govuk-error-summary__title\" id=\"error-summary-title\">\n    There is a problem\n  </h2>\n  <div class=\"govuk-error-summary__body\">\n    \n    <ul class=\"govuk-list govuk-error-summary__list\">\n    \n      <li>\n      \n        The date your passport was issued <b>must</b> be in the past\n      \n      </li>\n    \n    </ul>\n  </div>\n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  \n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      \n      <ul class=\"govuk-list govuk-error-summary__list\">\n        \n          <li>\n          \n            The date your passport was issued <b>must</b> be in the past\n          \n          </li>\n        \n      </ul>\n    </div>\n  </div>\n</div>"
         },
         {
             "name": "error list with html link",
@@ -221,8 +221,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-error-summary\" aria-labelledby=\"error-summary-title\" role=\"alert\" data-module=\"govuk-error-summary\">\n  <h2 class=\"govuk-error-summary__title\" id=\"error-summary-title\">\n    There is a problem\n  </h2>\n  <div class=\"govuk-error-summary__body\">\n    \n    <ul class=\"govuk-list govuk-error-summary__list\">\n    \n      <li>\n      \n        <a href=\"#error-1\">Descriptive link to the <b>question</b> with an error</a>\n      \n      </li>\n    \n    </ul>\n  </div>\n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  \n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      \n      <ul class=\"govuk-list govuk-error-summary__list\">\n        \n          <li>\n          \n            <a href=\"#error-1\">Descriptive link to the <b>question</b> with an error</a>\n          \n          </li>\n        \n      </ul>\n    </div>\n  </div>\n</div>"
         },
         {
             "name": "error list with html as text link",
@@ -235,8 +235,8 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-error-summary\" aria-labelledby=\"error-summary-title\" role=\"alert\" data-module=\"govuk-error-summary\">\n  <h2 class=\"govuk-error-summary__title\" id=\"error-summary-title\">\n    There is a problem\n  </h2>\n  <div class=\"govuk-error-summary__body\">\n    \n    <ul class=\"govuk-list govuk-error-summary__list\">\n    \n      <li>\n      \n        <a href=\"#error-1\">Descriptive link to the &lt;b&gt;question&lt;/b&gt; with an error</a>\n      \n      </li>\n    \n    </ul>\n  </div>\n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-error-summary\" data-module=\"govuk-error-summary\">\n  \n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      \n      <ul class=\"govuk-list govuk-error-summary__list\">\n        \n          <li>\n          \n            <a href=\"#error-1\">Descriptive link to the &lt;b&gt;question&lt;/b&gt; with an error</a>\n          \n          </li>\n        \n      </ul>\n    </div>\n  </div>\n</div>"
         },
         {
             "name": "autofocus disabled",
@@ -244,8 +244,17 @@
                 "titleText": "There is a problem",
                 "disableAutoFocus": true
             },
-            "html": "<div class=\"govuk-error-summary\" aria-labelledby=\"error-summary-title\" role=\"alert\" data-disable-auto-focus=\"true\" data-module=\"govuk-error-summary\">\n  <h2 class=\"govuk-error-summary__title\" id=\"error-summary-title\">\n    There is a problem\n  </h2>\n  <div class=\"govuk-error-summary__body\">\n    \n    <ul class=\"govuk-list govuk-error-summary__list\">\n    \n    </ul>\n  </div>\n</div>",
-            "hidden": true
+            "hidden": true,
+            "html": "<div class=\"govuk-error-summary\" data-disable-auto-focus=\"true\" data-module=\"govuk-error-summary\">\n  \n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      \n      <ul class=\"govuk-list govuk-error-summary__list\">\n        \n      </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "autofocus explicitly enabled",
+            "options": {
+                "titleText": "There is a problem",
+                "disableAutoFocus": false
+            },
+            "hidden": true,
+            "html": "<div class=\"govuk-error-summary\" data-disable-auto-focus=\"false\" data-module=\"govuk-error-summary\">\n  \n  <div role=\"alert\">\n    <h2 class=\"govuk-error-summary__title\">\n      There is a problem\n    </h2>\n    <div class=\"govuk-error-summary__body\">\n      \n      <ul class=\"govuk-list govuk-error-summary__list\">\n        \n      </ul>\n    </div>\n  </div>\n</div>"
         }
     ]
 }

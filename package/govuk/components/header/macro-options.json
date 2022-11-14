@@ -77,13 +77,19 @@
         "name": "navigationLabel",
         "type": "string",
         "required": false,
-        "description": "Text for the `aria-label` attribute of the navigation. Defaults to 'Menu'."
+        "description": "Text for the `aria-label` attribute of the navigation. Defaults to the same value as `menuButtonText`."
     },
     {
         "name": "menuButtonLabel",
         "type": "string",
         "required": false,
-        "description": "Text for the `aria-label` attribute of the button that toggles the navigation. Defaults to 'Show or hide menu'."
+        "description": "Text for the `aria-label` attribute of the button that opens the mobile navigation, if there is a mobile navigation menu. Defaults to 'Show or hide menu'."
+    },
+    {
+        "name": "menuButtonText",
+        "type": "string",
+        "required": false,
+        "description": "Text of the button that opens the mobile navigation menu, if there is a mobile navigation menu. There is no enforced character limit, but there is a limited display space so keep text as short as possible. By default, this is set to 'Menu'."
     },
     {
         "name": "containerClasses",

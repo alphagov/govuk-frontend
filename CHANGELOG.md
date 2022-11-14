@@ -2,15 +2,17 @@
 
 ## Unreleased
 
+## 4.4.0 (Feature release)
+
 ### New features
 
-#### Change the Button component background and text colour
+#### Change the Button component's background and text colour
 
 For non-GOV.UK branded websites, you can now change the Button component background and text colour.
 
-To change the Button component background colour set the `$govuk-button-background-colour` Sass variable.
+To change the Button component background colour, set the `$govuk-button-background-colour` Sass variable.
 
-To change the Button component text colour set the `$govuk-button-text-colour` Sass variable.
+To change the Button component text colour, set the `$govuk-button-text-colour` Sass variable.
 
 ```scss
 @import "node_modules/govuk-frontend/govuk/base";
@@ -26,7 +28,7 @@ This was added in [pull request #2752: Change the Button component background an
 
 When using the [header](https://design-system.service.gov.uk/components/header/) Nunjucks macro, you can now translate the text of the mobile navigation menu toggle button by using the `menuButtonText` parameter.
 
-You should avoid lengthy values for the `menuButtonText` parameter, as the text can overflow and cause visual issues if too long.
+You should avoid lengthy values for the `menuButtonText` parameter. If the text is too long it can overflow and cause visual issues.
 
 This was added in [pull request #2720: Add parameter to localise mobile menu toggle button](https://github.com/alphagov/govuk-frontend/pull/2720).
 
@@ -45,52 +47,57 @@ You can now translate the text shown by the [character count](https://design-sys
 - when they have reached the maximum number of characters or words
 - the number of characters or words over or under the allowed maximum
 
-The Nunjucks macro accepts new options so you can customise each message:
+The Nunjucks macro accepts new options so you can customise each message. You can:
 
 - Use `charactersAtLimitText` or `wordsAtLimitText` to provide the text that shows when users have reached the limit.
 - Use `charactersUnderLimitText` or `wordsUnderLimitText` to provide the text that shows when users are under the limit. The component will pluralise the message according to the configured locale and the number of characters or words remaining.
-- Use `charactersOverLimitText` or `wordsOverLimitText` to provide the text that shows when users are over the limit. The component will pluralise the message according to the configured locale and the number of characters or words remaining.  
+- Use `charactersOverLimitText` or `wordsOverLimitText` to provide the text that shows when users are over the limit. The component will pluralise the message according to the configured locale and the number of characters or words remaining.
 
-You'll find guidance about [the plural forms in our documentation about localising GOV.UK Frontend](https://design-system.service.gov.uk/get-started/localisation/#pluralisation). The component will replace `%{count}` with the number of characters over or under the limit.
+You'll find guidance about [the plural forms in our documentation about localising GOV.UK Frontend](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/). The component will replace `%{count}` with the number of characters over or under the limit.
 
-If you're not using Nunjucks macros, you can use data-* attributes to provide these translations. Any HTML appearing within the attributes must have quotation marks and brackets converted into their [HTML entity equivalents](https://developer.mozilla.org/en-US/docs/Glossary/Entity#reserved_characters).
+If you're not using Nunjucks macros, you can use data-* attributes to provide these translations. Within the attribute value, any [quotation marks or other characters reserved by HTML](https://developer.mozilla.org/en-US/docs/Glossary/Entity#reserved_characters) needs to be converted into their HTML entity equivalents.
 
-- Use `data-i18n.characters-at-limit` or `data-i18n.words-at-limit` for when users are at the limit
-- To configure the text that informs the end user they are under the character or word limit, use `data-i18n.characters-under-limit.{other,many,few,two,one,zero}` or `data-i18n.words-under-limit.{other,many,few,two,one,zero}`, with one suffix per plural form required by your locale
-- To configure the text that informs the end user they are over the character or word limit, use `data-i18n.characters-over-limit.{other,many,few,two,one,zero}` or `data-i18n.words-over-limit.{other,many,few,two,one,zero}`, with one suffix per plural form required by your locale
+You can:
 
-You can also provide these messages using a JavaScript configuration object when creating an instance of the component or initialising all components.
-See [our guidance on localising GOV.UK Frontend](https://design-system.service.gov.uk/get-started/localisation/) for how to do this.
+- use `data-i18n.characters-at-limit` or `data-i18n.words-at-limit` for when users are at the limit
+- configure the text that informs the end user they are under the character or word limit, by using `data-i18n.characters-under-limit.{other,many,few,two,one,zero}` or `data-i18n.words-under-limit.{other,many,few,two,one,zero}`, with one suffix for each plural form required by your locale
+- configure the text that informs the end user they are over the character or word limit, by using `data-i18n.characters-over-limit.{other,many,few,two,one,zero}` or `data-i18n.words-over-limit.{other,many,few,two,one,zero}`, with one suffix for each plural form required by your locale
+
+You can also provide these messages using a JavaScript configuration object when creating an instance of the component or initialising all components. See [our guidance on localising GOV.UK Frontend](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/) for how to do this.
 
 This was added in the following pull requests:
-[#2895 Add macro options to configure CharacterCount translations](https://github.com/alphagov/govuk-frontend/pull/2895)
-[#2887 Allow CharacterCount component to receive i18n config via JS](https://github.com/alphagov/govuk-frontend/pull/2887)
 
-####  Localise the character count's input description for assistive technologies
+- [#2895 Add macro options to configure CharacterCount translations](https://github.com/alphagov/govuk-frontend/pull/2895)
+- [#2887 Allow CharacterCount component to receive i18n config via JS](https://github.com/alphagov/govuk-frontend/pull/2887)
+
+#### Localise the character count's input description for assistive technologies
 
 When configuring the character count's limit in JavaScript, you can customise the description provided to assistive technologies when users focus the input (so it indicates the overall limit of characters or words).
 
-You can pass the description in the HTML, using `data-i18n.textarea-description.{other,many,few,two,one,zero}` attribute on the element, depending on the [plural form required by your locale](https://design-system.service.gov.uk/get-started/localisation/#pluralisation), to provide the text to set as the description.
+Depending on the [plural form required by your locale](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/#understanding-pluralisation-rules), you can pass the description in the HTML using the `data-i18n.textarea-description.{other,many,few,two,one,zero}` attribute on the element to provide the text to set as the description.
 
-You can also provide these messages using a JavaScript configuration object when creating an instance of the component or initialising all components.
-See [our guidance on localising GOV.UK Frontend](https://design-system.service.gov.uk/get-started/localisation/) for how to do this.
+You can also provide these messages using a JavaScript configuration object when creating an instance of the component or initialising all components. See [our guidance on localising GOV.UK Frontend](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/) for how to do this.
 
 This was added in [pull request #2915](https://github.com/alphagov/govuk-frontend/pull/2915).
 
 #### Localise the accordion's toggle buttons
 
-You can now translate the text of the [accordion](https://design-system.service.gov.uk/components/character-count/) component's show and hide toggle buttons.
+You can now translate the text of the [accordion](https://design-system.service.gov.uk/components/accordion/) component's show and hide toggle buttons.
 
-When using the Nunjucks macro, you can use the new `showSectionText` and `hideSectionText` parameters to customise the text of the 'show' and 'hide' toggles in each section. You can also use `showAllSectionsText` and `hideAllSectionsText` parameters to customise the text of the toggle at the top of the accordion.
+When using the Nunjucks macro, you can use the new `showSectionText` and `hideSectionText` parameters to customise the text of the 'show' and 'hide' toggles in each section.
 
-If you're not using the Nunjucks macro, you can customise these using data-* attributes. Any HTML appearing within the attributes must have quotation marks and brackets converted into their [HTML entity equivalents](https://developer.mozilla.org/en-US/docs/Glossary/Entity#reserved_characters).
+You can also use `showAllSectionsText` and `hideAllSectionsText` parameters to customise the text of the toggle at the top of the accordion.
+
+If you're not using the Nunjucks macro, you can customise these using data-* attributes. Within the attribute value, any [quotation marks or other characters reserved by HTML](https://developer.mozilla.org/en-US/docs/Glossary/Entity#reserved_characters) needs to be converted into their HTML entity equivalents.
 
 - `data-i18n.show-section`
+- `data-i18n.show-section-aria-label`
 - `data-i18n.hide-section`
+- `data-i18n.hide-section-aria-label`
 - `data-i18n.show-all-sections`
 - `data-i18n.hide-all-sections`
 
-You can also change this text for all instances of the Accordion using a JavaScript configuration object. See [our guidance on localising GOV.UK Frontend](https://design-system.service.gov.uk/get-started/localisation/) for how to do this.
+You can also change this text for all instances of the Accordion using a JavaScript configuration object. See [our guidance on localising GOV.UK Frontend](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/) for how to do this.
 
 This was added in pull requests:
 
@@ -99,7 +106,7 @@ This was added in pull requests:
 
 #### Suppress deprecation warnings
 
-You can now suppress warnings from deprecations within GOV.UK Frontend by updating the `$govuk-suppressed-warnings` map in sass. Every deprecation warning will now include a warning "key" which you can use in the following code, placed at the root of your sass project:
+You can now suppress warnings from deprecations within GOV.UK Frontend by updating the `$govuk-suppressed-warnings` map in Sass. Every deprecation warning will now include a warning "key" which you can use in the following code, placed at the root of your sass project:
 
 ```scss
 $govuk-suppressed-warnings: (
@@ -114,7 +121,7 @@ This was added in [#2911 Add warning suppression functionality](https://github.c
 JavaScript components can get the same configuration options in 2 ways - through data attributes, as before, and now when creating an instance. These components are:
 
 - the `Button` component, for its `preventDoubleClick` option (matching `data-prevent-double-click`)
-- the `CharacterCount` component, for its `maxlength`,`maxwords` and `threshold` options (matching `data-maxlength`, `data-maxwords` and `data-threshold`, respectively)
+- the `CharacterCount` component, for its `maxlength`, `maxwords` and `threshold` options (matching `data-maxlength`, `data-maxwords` and `data-threshold`, respectively)
 - the `ErrorSummary` component, for its `disableAutoFocus` option (matching `data-disable-auto-focus`)
 - the `NotificationBanner` component, for its `disableAutoFocus` option (matching `data-disable-auto-focus`)
 
@@ -142,13 +149,18 @@ GOVUKFrontend.initAll({
 })
 ```
 
-You can find more information about component configuration in [GOV.UK Frontend documentation](https://design-system.service.gov.uk/get-started/configuration/).
+You can find more information about component configuration in [GOV.UK Frontend documentation](https://frontend.design-system.service.gov.uk/configure-components-with-javascript/).
 
-This was added in pull requests specific for each components: [NotificationBanner – #2843](https://github.com/alphagov/govuk-frontend/pull/2843), [ErrorSumarry – #2854](https://github.com/alphagov/govuk-frontend/pull/2854), [Button – #2867](https://github.com/alphagov/govuk-frontend/pull/2867), and [CharacterCount – #2883](https://github.com/alphagov/govuk-frontend/pull/2883)
+This was added in pull requests specific for each components:
+
+- [NotificationBanner – #2843](https://github.com/alphagov/govuk-frontend/pull/2843)
+- [ErrorSummary – #2854](https://github.com/alphagov/govuk-frontend/pull/2854)
+- [Button – #2867](https://github.com/alphagov/govuk-frontend/pull/2867)
+- [CharacterCount – #2883](https://github.com/alphagov/govuk-frontend/pull/2883)
 
 ### Recommended changes
 
-#### Remove `aria-labelledby`, remove `id="error-summary-title"` from title and move `role="alert"` to child container on the error summary component
+#### Update the HTML for the error summary
 
 If you're not using the Nunjucks macros, you can improve the experience for screen reader users by making these changes to the error summary markup:
 
@@ -156,7 +168,7 @@ If you're not using the Nunjucks macros, you can improve the experience for scre
 - Add a `div` wrapper around the contents of `govuk-error-summary` with the attribute `role="alert"`
 - Remove `id="error-summary-title"` from the error summary `h2` (`govuk-error-summary__title`)
 
-This will enable screen reader users to have a better, more coherent experience with the error summary. Most notably it will ensure that users of JAWS 2022 or later will hear the entire contents of the error summary on page load and therefore have further context on why there is an error on the page they're on.
+This will enable screen reader users to have a better, more coherent experience with the error summary. It will make sure users of JAWS 2022 or later will hear the entire contents of the error summary on page load and therefore have further context on why there is an error on the page they're on.
 
 This was added in [pull request #2677: Amend error summary markup to fix page load focus bug in JAWS 2022](https://github.com/alphagov/govuk-frontend/pull/2677).
 
@@ -174,7 +186,7 @@ This was introduced in [pull request #2882: Deprecate compatibility mode setting
 
 #### Stop using settings associated with legacy codebases
 
-In GOV.UK Frontend v5.0 we will stop supporting compatibility with legacy codebases. As part of this, we are deprecating settings controlled by compatibility mode variables. This includes the `govuk-compatibility` mixin and the following settings:
+In GOV.UK Frontend v5.0 we will stop supporting compatibility with legacy codebases. As part of this, we're deprecating settings controlled by compatibility mode variables. This includes the `govuk-compatibility` mixin and the following settings:
 
 - `$govuk-use-legacy-palette`
 - `$govuk-use-legacy-font`
@@ -185,9 +197,9 @@ This was introduced in [pull request #2844: Remove compatibility mode from govuk
 
 ### Fixes
 
-In [pull request 2851: Support Prototype Kit v13](https://github.com/alphagov/govuk-frontend/pull/2851) we introduced support for the plugins system included in the upcoming Prototype Kit v13.
+In [pull request 2851: Support Prototype Kit v13](https://github.com/alphagov/govuk-frontend/pull/2851) we've introduced support for the plugins system included in the upcoming Prototype Kit v13.
 
-We’ve made fixes to GOV.UK Frontend in the following pull requests:
+We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#2807: Tidy up and refactor the Character Count JavaScript](https://github.com/alphagov/govuk-frontend/pull/2807)
 - [#2811: Use Element.id to get module id for accordion](https://github.com/alphagov/govuk-frontend/pull/2811)

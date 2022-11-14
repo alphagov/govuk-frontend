@@ -2,8 +2,14 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
 // addEventListener, event.target normalization and DOMContentLoaded
 import '../../vendor/polyfills/Event.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
-import { nodeListForEach } from '../../common.mjs'
+import { nodeListForEach } from '../../common/index.mjs'
 
+/**
+ * Checkboxes component
+ *
+ * @class
+ * @param {HTMLElement} $module - HTML element to use for checkboxes
+ */
 function Checkboxes ($module) {
   this.$module = $module
   this.$inputs = $module.querySelectorAll('input[type="checkbox"]')
@@ -73,7 +79,7 @@ Checkboxes.prototype.syncAllConditionalReveals = function () {
  * Synchronise the visibility of the conditional reveal, and its accessible
  * state, with the input's checked state.
  *
- * @param {HTMLInputElement} $input Checkbox input
+ * @param {HTMLInputElement} $input - Checkbox input
  */
 Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
   var $target = document.getElementById($input.getAttribute('aria-controls'))
@@ -131,7 +137,7 @@ Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
  * Handle a click within the $module – if the click occurred on a checkbox, sync
  * the state of any associated conditional reveal with the checkbox state.
  *
- * @param {MouseEvent} event Click event
+ * @param {MouseEvent} event - Click event
  */
 Checkboxes.prototype.handleClick = function (event) {
   var $target = event.target

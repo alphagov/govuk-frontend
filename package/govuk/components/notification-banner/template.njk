@@ -29,7 +29,7 @@
 <div class="govuk-notification-banner{% if typeClass %} {{ typeClass }}{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}" role="{{ role }}"
   aria-labelledby="{{ params.titleId | default('govuk-notification-banner-title')}}"
   data-module="govuk-notification-banner"
-  {%- if params.disableAutoFocus %} data-disable-auto-focus="true"{% endif %}
+  {%- if params.disableAutoFocus !== undefined %} data-disable-auto-focus="{{ params.disableAutoFocus }}"{% endif %}
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   <div class="govuk-notification-banner__header">
     <h{{ params.titleHeadingLevel | default(2) }} class="govuk-notification-banner__title" id="{{ params.titleId | default('govuk-notification-banner-title') }}" >
