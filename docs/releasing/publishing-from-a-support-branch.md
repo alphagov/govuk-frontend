@@ -107,7 +107,7 @@ Note: Before you go on annual leave, tell the delivery manager who will be looki
 
 1. Check out `support/<MAJOR VERSION NUMBER>.x` and pull the latest changes.
 
-2. Sign in to npm (`npm login`), using the npm/govuk-patterns-and-tools team [credentials](https://github.com/alphagov/design-system-team-credentials/tree/main/npm/govuk-patterns-and-tools).
+2. Sign in to npm (`npm login`), using the credentials for the govuk-patterns-and-tools npm user from Bitwarden.
 
 3. Run `npm run publish-release`, which will prompt you to check whether the npm tag looks as expected.
 
