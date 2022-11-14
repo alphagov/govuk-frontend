@@ -70,7 +70,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 1. Check out the **main** branch and pull the latest changes.
 
-2. Sign in to npm (`npm login`), using the npm/govuk-patterns-and-tools team [credentials](https://github.com/alphagov/design-system-team-credentials/tree/main/npm/govuk-patterns-and-tools).
+2. Sign in to npm (`npm login`), using the credentials for the govuk-patterns-and-tools npm user from Bitwarden.
 
 3. Run `npm run publish-release`, which will prompt you to check whether the npm tag looks as expected.
 
