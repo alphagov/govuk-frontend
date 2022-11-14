@@ -1,13 +1,13 @@
 @include govuk-exports("govuk/component/breadcrumbs") {
   // Component font-size on the Frontend (used for calculations)
-  $font-scale-size: 16;
-  $font-size: $font-scale-size * 1px;
+  $font-size: 16;
 
   // Size of chevron (excluding border)
   $chevron-size: govuk-em(7px, $font-size);
 
   // Size of chevron border
-  $chevron-border-width: govuk-em(1px, $font-size);
+  $chevron-border-min-width: 1px;
+  $chevron-border-width: govuk-em($chevron-border-min-width, $font-size);
 
   // Colour of chevron
   $chevron-border-colour: $govuk-secondary-text-colour;
@@ -19,7 +19,7 @@
   $chevron-altitude-calculated: govuk-em(5.655px, $font-size);
 
   .govuk-breadcrumbs {
-    @include govuk-font($size: $font-scale-size);
+    @include govuk-font($size: $font-size);
     @include govuk-text-colour;
 
     margin-top: govuk-spacing(3);
@@ -78,8 +78,12 @@
       transform: rotate(45deg);
 
       border: solid;
-      border-width: $chevron-border-width $chevron-border-width 0 0;
+      border-width: $chevron-border-min-width $chevron-border-min-width 0 0;
       border-color: $chevron-border-colour;
+
+      @supports (border-width: unquote("max(0px)")) {
+        border-width: unquote("max(#{$chevron-border-min-width}, #{$chevron-border-width}) max(#{$chevron-border-min-width}, #{$chevron-border-width})") 0 0;
+      }
 
       // Fall back to a greater than sign for IE8
       @include govuk-if-ie8 {
