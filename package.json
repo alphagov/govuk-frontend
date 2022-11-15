@@ -100,7 +100,7 @@
     "shuffle-seed": "^1.1.6",
     "slash": "^3.0.0",
     "standard": "^17.0.0",
-    "stylelint": "^14.14.1",
+    "stylelint": "^14.15.0",
     "stylelint-config-gds": "^0.2.0",
     "stylelint-order": "^5.0.0",
     "undici": "^5.12.0",
