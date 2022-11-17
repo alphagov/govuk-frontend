@@ -5,6 +5,7 @@
 ### Fixes
 
 - [#2998: Refactor back link and breadcrumb chevrons to use ems](https://github.com/alphagov/govuk-frontend/pull/2998)
+- [#3021 Printing style for current page link in header](https://github.com/alphagov/govuk-frontend/pull/3021) - thanks to [Malcolm Butler](https://github.com/MalcolmVonMoJ) for the contribution
 
 ## 4.4.0 (Feature release)
 
