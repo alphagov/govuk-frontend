@@ -5,7 +5,7 @@
   "env": {
     "HEROKU_APP": "REVIEW"
   },
-  "stack": "heroku-20",
+  "stack": "heroku-22",
   "formation": {
   },
   "addons": [
