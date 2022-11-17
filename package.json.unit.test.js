@@ -4,7 +4,7 @@ const packageLockJson = require('./package-lock.json')
 describe('because rollup 0.60 drops support for Internet Explorer 8', () => {
   describe('gulp-better-rollup', () => {
     it('should be pinned to 3.1.0 in package.json', () => {
-      expect(packageJson.devDependencies['gulp-better-rollup']).toEqual('3.1.0')
+      expect(packageJson.dependencies['gulp-better-rollup']).toEqual('3.1.0')
     })
   })
 
