@@ -3,8 +3,7 @@
   "scripts": {
   },
   "env": {
-    "HEROKU_APP": "REVIEW",
-    "NPM_CONFIG_PRODUCTION": "false"
+    "HEROKU_APP": "REVIEW"
   },
   "stack": "heroku-20",
   "formation": {
