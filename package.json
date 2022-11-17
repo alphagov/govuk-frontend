@@ -58,7 +58,7 @@
     "map-stream": "^0.0.7",
     "merge-stream": "^2.0.0",
     "minimatch": "^5.1.0",
-    "node-sass": "^7.0.3",
+    "node-sass": "^8.0.0",
     "nunjucks": "^3.2.3",
     "postcss": "^8.4.19",
     "postcss-pseudo-classes": "^0.2.1",
