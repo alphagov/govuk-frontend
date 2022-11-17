@@ -4,8 +4,7 @@
   },
   "env": {
     "HEROKU_APP": "REVIEW",
-    "NPM_CONFIG_PRODUCTION": "false",
-    "NODE_MODULES_CACHE": "false"
+    "NPM_CONFIG_PRODUCTION": "false"
   },
   "stack": "heroku-20",
   "formation": {
