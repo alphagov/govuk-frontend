@@ -64,7 +64,7 @@ gulp.task('dev', gulp.series(
   clean,
   'compile',
   'watch',
-  npmScriptTask('serve', ['--silent'])
+  npmScriptTask('serve', ['--silent', '--workspace', 'app'])
 ))
 
 /**
