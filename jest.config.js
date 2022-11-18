@@ -51,7 +51,7 @@ module.exports = {
       ...config,
       displayName: 'JavaScript behaviour tests',
       testMatch: [
-        '**/*.test.js',
+        '**/*.test.{js,mjs}',
 
         // Exclude macro/unit tests
         '!**/(*.)?template.test.{js,mjs}',
@@ -73,7 +73,7 @@ module.exports = {
       testEnvironment: './config/jest/environment/puppeteer.mjs',
       testMatch: [
         '**/all.test.{js,mjs}',
-        '**/components/*/*.test.js',
+        '**/components/*/*.test.{js,mjs}',
 
         // Exclude macro/unit tests
         '!**/(*.)?template.test.{js,mjs}',
