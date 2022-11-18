@@ -14,9 +14,8 @@
   <!--[if lte IE 8]>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/ie8.polyfils.min.js"></script>
   <![endif]-->
-  <script type="text/javascript">
-    var domReady = function(a,b,c){b=document,c='addEventListener';b[c]?b[c]('DOMContentLoaded',a):window.attachEvent('onload',a)}
-    domReady(iFrameResize({}, '.js-component-preview'))
+  <script>
+    window.iFrameResize({}, '.js-component-preview')
   </script>
   {% block scripts %}{% endblock %}
 {% endblock %}
