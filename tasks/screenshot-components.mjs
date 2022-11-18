@@ -19,9 +19,16 @@ export async function screenshotComponents () {
   const browser = await launch(configPuppeteer.launch)
   const componentNames = await getDirectories(configPaths.components)
 
-  // Screenshot each component in sequence
-  for (const componentName of componentNames) {
-    await screenshotComponent(await browser.newPage(), componentName)
+  // Screenshot each component
+  const input = [...componentNames]
+
+  // Screenshot 4x components concurrently
+  while (input.length) {
+    const batch = input.splice(0, 4)
+
+    await Promise.all(batch
+      .map(async (componentName) => screenshotComponent(await browser.newPage(), componentName))
+    )
   }
 
   // Close browser
