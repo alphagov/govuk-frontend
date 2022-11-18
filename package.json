@@ -29,6 +29,7 @@
     "postbuild:dist": "jest --color --selectProjects \"Gulp tasks\" --testMatch \"**/*build-dist*\"",
     "pretest": "npm run build:compile",
     "test": "jest --color --ignoreProjects \"Gulp tasks\" --maxWorkers=50%",
+    "test:screenshots": "node ./tasks/screenshot-components.mjs",
     "lint": "npm run lint:js && npm run lint:scss",
     "lint:js": "eslint --cache --cache-location .cache/eslint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0 \"**/*.{cjs,js,mjs}\"",
     "lint:scss": "stylelint --cache --cache-location .cache/stylelint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0 \"{app,src}/**/*.scss\""
@@ -44,6 +45,7 @@
     "glob": "^8.0.3",
     "gulp": "^4.0.2",
     "gulp-better-rollup": "3.1.0",
+    "gulp-cli": "^2.3.0",
     "gulp-if": "^3.0.0",
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^9.0.1",
@@ -51,7 +53,6 @@
     "gulp-sass": "^5.1.0",
     "gulp-task-listing": "^1.1.1",
     "gulp-uglify": "^3.0.2",
-    "gulp-cli": "^2.3.0",
     "js-yaml": "^4.1.0",
     "jsdoc": "^4.0.0",
     "jsdoc-tsimport-plugin": "^1.0.5",
@@ -95,7 +96,6 @@
     "stylelint": "^14.15.0",
     "stylelint-config-gds": "^0.2.0",
     "stylelint-order": "^5.0.0",
-    "wait-on": "^6.0.1",
-    "ws": "^8.11.0"
+    "wait-on": "^6.0.1"
   }
 }

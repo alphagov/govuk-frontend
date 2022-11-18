@@ -140,7 +140,7 @@ jobs:
 
           - description: JavaScript component tests
             name: test-component
-            run: npx percy exec -- jest --color --selectProjects "JavaScript component tests"
+            run: npx jest --color --maxWorkers=2 --selectProjects "JavaScript component tests"
 
     steps:
       - name: Checkout
@@ -160,5 +160,28 @@ jobs:
 
       - name: Run verify task
         run: ${{ matrix.run }}
-        env:
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+
+  regression:
+    name: Send screenshots to Percy
+    runs-on: ubuntu-latest
+    needs: [install, build]
+
+    env:
+      PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+      PORT: 8888
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Restore dependencies
+        uses: ./.github/workflows/actions/install-node
+
+      - name: Restore build
+        uses: ./.github/workflows/actions/build
+
+      - name: Start review application
+        run: npm run serve &
+
+      - name: Send screenshots to Percy
+        run: npx percy exec -- npm run test:screenshots
