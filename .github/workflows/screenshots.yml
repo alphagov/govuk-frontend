@@ -1,0 +1,34 @@
+name: Percy screenshots
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+concurrency:
+   group: screenshots-${{ github.head_ref || github.run_id }}
+   cancel-in-progress: true
+
+jobs:
+  screenshots:
+    name: Send screenshots
+    runs-on: ubuntu-latest
+
+    env:
+      PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+      PORT: 8888
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        uses: ./.github/workflows/actions/install-node
+
+      - name: Build
+        uses: ./.github/workflows/actions/build
+
+      - name: Start review application
+        run: npm run serve &
+
+      - name: Send screenshots to Percy
+        run: npx percy exec -- npm run test:screenshots
