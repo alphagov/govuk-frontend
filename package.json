@@ -43,7 +43,7 @@
     "autoprefixer": "^9.8.8",
     "cross-env": "^7.0.3",
     "cssnano": "^4.1.11",
-    "del": "^6.1.1",
+    "del": "^7.0.0",
     "front-matter": "^4.0.2",
     "glob": "^8.0.3",
     "gulp": "^4.0.2",
@@ -73,7 +73,7 @@
     "postcss-unrgba": "^1.1.1",
     "rollup": "0.56.5",
     "sassdoc": "^2.7.4",
-    "slash": "^3.0.0",
+    "slash": "^5.0.0",
     "yargs-parser": "^21.1.1"
   },
   "devDependencies": {
