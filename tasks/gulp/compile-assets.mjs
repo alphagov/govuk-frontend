@@ -1,27 +1,32 @@
-const { getListing } = require('../../lib/file-helper')
-const { componentNameToJavaScriptModuleName } = require('../../lib/helper-functions')
+import { getListing } from '../../lib/file-helper.js'
+import { componentNameToJavaScriptModuleName } from '../../lib/helper-functions.js'
 
-const { join, parse } = require('path')
+import { join, parse } from 'path'
 
-const gulp = require('gulp')
-const sass = require('gulp-sass')(require('node-sass'))
-const plumber = require('gulp-plumber')
-const postcss = require('gulp-postcss')
-const rollup = require('gulp-better-rollup')
-const gulpif = require('gulp-if')
-const uglify = require('gulp-uglify')
-const minimatch = require('minimatch')
-const merge = require('merge-stream')
-const rename = require('gulp-rename')
-const slash = require('slash')
+import gulp from 'gulp'
+import gulpSass from 'gulp-sass'
+import nodeSass from 'node-sass'
+import plumber from 'gulp-plumber'
+import postcss from 'gulp-postcss'
+import rollup from 'gulp-better-rollup'
+import gulpif from 'gulp-if'
+import uglify from 'gulp-uglify'
+import minimatch from 'minimatch'
+import merge from 'merge-stream'
+import rename from 'gulp-rename'
+import slash from 'slash'
 
-const configPaths = require('../../config/paths.js')
-const { destination, isDist, isPackage } = require('../task-arguments.js')
+import configPaths from '../../config/paths.js'
+import { destination, isDist, isPackage } from '../task-arguments.mjs'
+
+const sass = gulpSass(nodeSass)
 
 /**
  * Compile Sass to CSS task
+ *
+ * @returns {import('stream').Stream} Output file stream
  */
-gulp.task('scss:compile', function () {
+export function compileStylesheets () {
   const destPath = isPackage
     ? join(destination, 'govuk')
     : destination
@@ -29,14 +34,14 @@ gulp.task('scss:compile', function () {
   // Release distribution
   if (isDist) {
     return merge(
-      compileStyles(
+      compileStylesheet(
         gulp.src(`${slash(configPaths.src)}/govuk/all.scss`)
           .pipe(rename({
             basename: 'govuk-frontend',
             extname: '.min.css'
           }))),
 
-      compileStyles(
+      compileStylesheet(
         gulp.src(`${slash(configPaths.src)}/govuk/all-ie8.scss`)
           .pipe(rename({
             basename: 'govuk-frontend-ie8',
@@ -48,15 +53,15 @@ gulp.task('scss:compile', function () {
 
   // Review application
   return merge(
-    compileStyles(
+    compileStylesheet(
       gulp.src(`${slash(configPaths.app)}/assets/scss/app?(-ie8).scss`)),
 
-    compileStyles(
+    compileStylesheet(
       gulp.src(`${slash(configPaths.app)}/assets/scss/app-legacy?(-ie8).scss`), {
         includePaths: ['node_modules/govuk_frontend_toolkit/stylesheets', 'node_modules']
       }),
 
-    compileStyles(
+    compileStylesheet(
       gulp.src(`${slash(configPaths.fullPageExamples)}/**/styles.scss`)
         .pipe(rename((path) => {
           path.basename = path.dirname
@@ -64,7 +69,9 @@ gulp.task('scss:compile', function () {
         })))
   )
     .pipe(gulp.dest(slash(destPath)))
-})
+}
+
+compileStylesheets.displayName = 'compile:scss'
 
 /**
  * Compile Sass to CSS helper
@@ -73,7 +80,7 @@ gulp.task('scss:compile', function () {
  * @param {import('node-sass').Options} [options] - Sass options
  * @returns {import('stream').Stream} Output file stream
  */
-function compileStyles (stream, options = {}) {
+function compileStylesheet (stream, options = {}) {
   return stream
     .pipe(plumber((error) => {
       console.error(error.message)
@@ -88,8 +95,10 @@ function compileStyles (stream, options = {}) {
 
 /**
  * Compile JavaScript ESM to CommonJS task
+ *
+ * @returns {Promise<import('stream').Stream>} Output file stream
  */
-gulp.task('js:compile', async () => {
+export async function compileJavaScripts () {
   const destPath = isPackage
     ? join(destination, 'govuk')
     : destination
@@ -136,4 +145,6 @@ gulp.task('js:compile', async () => {
       }))
       .pipe(gulp.dest(slash(join(destPath, modulePath))))
   }))
-})
+}
+
+compileJavaScripts.displayName = 'compile:js'

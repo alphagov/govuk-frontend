@@ -1,20 +1,39 @@
-const { basename, join } = require('path')
+import { basename, join } from 'path'
 
-const nunjucks = require('nunjucks')
-const gulp = require('gulp')
-const postcss = require('gulp-postcss')
-const postcssScss = require('postcss-scss')
-const autoprefixer = require('autoprefixer')
-const yaml = require('js-yaml')
-const map = require('map-stream')
-const merge = require('merge-stream')
-const rename = require('gulp-rename')
-const slash = require('slash')
+import nunjucks from 'nunjucks'
+import gulp from 'gulp'
+import postcss from 'gulp-postcss'
+import postcssScss from 'postcss-scss'
+import autoprefixer from 'autoprefixer'
+import yaml from 'js-yaml'
+import map from 'map-stream'
+import merge from 'merge-stream'
+import rename from 'gulp-rename'
+import slash from 'slash'
 
-const configPaths = require('../../config/paths.js')
-const { destination } = require('../task-arguments.js')
+import configPaths from '../../config/paths.js'
+import { destination } from '../task-arguments.mjs'
 
-gulp.task('copy:files', () => {
+/**
+ * Copy assets task
+ * Copies assets to destination
+ *
+ * @returns {import('stream').Stream} Output file stream
+ */
+export function copyAssets () {
+  return gulp.src(`${slash(configPaths.assets)}/**/*`)
+    .pipe(gulp.dest(slash(join(destination, 'assets'))))
+}
+
+copyAssets.displayName = 'copy:assets'
+
+/**
+ * Copy files task
+ * Copies files to destination
+ *
+ * @returns {import('stream').Stream} Output file stream
+ */
+export function copyFiles () {
   return merge(
     /**
      * Copy files to destination with './govuk-esm' suffix
@@ -84,7 +103,9 @@ gulp.task('copy:files', () => {
         }))
     ).pipe(gulp.dest(slash(destination)))
   )
-})
+}
+
+copyFiles.displayName = 'copy:files'
 
 /**
  * Replace file content with fixtures.json

@@ -1,8 +1,8 @@
-const { readFile } = require('fs/promises')
-const { join } = require('path')
+import { readFile } from 'fs/promises'
+import { join } from 'path'
 
-const configPaths = require('../../../config/paths.js')
-const { getListing } = require('../../../lib/file-helper')
+import configPaths from '../../../config/paths.js'
+import { getListing } from '../../../lib/file-helper.js'
 
 describe('dist/', () => {
   const pkg = require(join(configPaths.package, 'package.json'))
