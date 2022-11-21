@@ -1,7 +1,9 @@
 const { dirname, resolve } = require('path')
 
+const parser = require('yargs-parser')
 const slash = require('slash')
-const { argv } = require('yargs')
+
+const argv = parser(process.argv)
 
 // Defaults for known tasks
 const destinations = [
