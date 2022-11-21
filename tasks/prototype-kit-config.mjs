@@ -1,15 +1,15 @@
-const { writeFile } = require('fs/promises')
-const { EOL } = require('os')
-const { join } = require('path')
+import { writeFile } from 'fs/promises'
+import { EOL } from 'os'
+import { join } from 'path'
 
-const { destination } = require('./task-arguments.js')
+import { destination } from './task-arguments.mjs'
 
 /**
  * Write GOV.UK Prototype Kit config
  *
  * @returns {Promise<void>}
  */
-async function updatePrototypeKitConfig () {
+export async function updatePrototypeKitConfig () {
   const { default: configFn } = await import('../src/govuk-prototype-kit/govuk-prototype-kit.config.mjs')
 
   // JSON config file path + contents
@@ -21,7 +21,3 @@ async function updatePrototypeKitConfig () {
 }
 
 updatePrototypeKitConfig.displayName = 'update-prototype-kit-config'
-
-module.exports = {
-  updatePrototypeKitConfig
-}

@@ -1,11 +1,11 @@
-const { readFile } = require('fs/promises')
-const { join } = require('path')
+import { readFile } from 'fs/promises'
+import { join } from 'path'
 
-const configPaths = require('../../../config/paths.js')
-const { filterPath, getDirectories, getListing, mapPathTo } = require('../../../lib/file-helper')
-const { componentNameToJavaScriptClassName, componentNameToJavaScriptModuleName } = require('../../../lib/helper-functions')
+import configPaths from '../../../config/paths.js'
+import { filterPath, getDirectories, getListing, mapPathTo } from '../../../lib/file-helper.js'
+import { componentNameToJavaScriptClassName, componentNameToJavaScriptModuleName } from '../../../lib/helper-functions.js'
 
-const { renderSass } = require('../../../lib/jest-helpers')
+import { renderSass } from '../../../lib/jest-helpers.js'
 
 describe('package/', () => {
   let listingSource

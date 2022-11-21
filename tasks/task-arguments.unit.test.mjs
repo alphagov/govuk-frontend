@@ -1,7 +1,7 @@
-const { cwd } = require('process')
-const { join } = require('path')
+import { cwd } from 'process'
+import { join } from 'path'
 
-const configPaths = require('../config/paths.js')
+import configPaths from '../config/paths.js'
 
 describe('Task arguments', () => {
   let args
@@ -32,28 +32,28 @@ describe('Task arguments', () => {
         it('defaults to ./public', async () => {
           process.argv = [...argv]
 
-          const { destination } = await import('./task-arguments.js')
+          const { destination } = await import('./task-arguments.mjs')
           expect(destination).toEqual(configPaths.public)
         })
 
         it('defaults to ./public for "gulp build:compile"', async () => {
           process.argv = [...argv, 'build:compile']
 
-          const { destination } = await import('./task-arguments.js')
+          const { destination } = await import('./task-arguments.mjs')
           expect(destination).toEqual(configPaths.public)
         })
 
         it('defaults to ./package for "gulp build:package"', async () => {
           process.argv = [...argv, 'build:package']
 
-          const { destination } = await import('./task-arguments.js')
+          const { destination } = await import('./task-arguments.mjs')
           expect(destination).toEqual(configPaths.package)
         })
 
         it('defaults to ./dist for "gulp build:dist"', async () => {
           process.argv = [...argv, 'build:dist']
 
-          const { destination } = await import('./task-arguments.js')
+          const { destination } = await import('./task-arguments.mjs')
           expect(destination).toEqual(configPaths.dist)
         })
       })
@@ -81,28 +81,28 @@ describe('Task arguments', () => {
         it('uses flag by default', async () => {
           process.argv = [...argv, '--destination', flag]
 
-          const { destination } = await import('./task-arguments.js')
+          const { destination } = await import('./task-arguments.mjs')
           expect(destination).toEqual(expected)
         })
 
         it('uses flag for "gulp build:compile"', async () => {
           process.argv = [...argv, 'build:compile', '--destination', flag]
 
-          const { destination } = await import('./task-arguments.js')
+          const { destination } = await import('./task-arguments.mjs')
           expect(destination).toEqual(expected)
         })
 
         it('uses flag for "gulp build:package"', async () => {
           process.argv = [...argv, 'build:package', '--destination', flag]
 
-          const { destination } = await import('./task-arguments.js')
+          const { destination } = await import('./task-arguments.mjs')
           expect(destination).toEqual(expected)
         })
 
         it('uses flag for "gulp build:dist"', async () => {
           process.argv = [...argv, 'build:dist', '--destination', flag]
 
-          const { destination } = await import('./task-arguments.js')
+          const { destination } = await import('./task-arguments.mjs')
           expect(destination).toEqual(expected)
         })
       })

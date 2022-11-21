@@ -11,7 +11,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 **`npm start` will trigger `gulp dev` that will:**
 - clean the `./public` folder
 - compile JavaScript and Sass, including documentation (`gulp compile`)
-- compile again when `.scss` and `.mjs` files change (`gulp watch`)
+- compile again when `.scss` and `.mjs` files change
 - runs `npm run serve`
 
 **`npm test` will do the following:**
@@ -37,14 +37,14 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - copy Nunjucks component template/macro files, including JSON configs
 - copy GOV.UK Prototype Kit config files
 - copy JavaScript ESM source files
-- compile JavaScript ESM to CommonJS (`gulp js:compile`)
+- compile JavaScript ESM to CommonJS
 - runs `npm run test:build:package` (which will test the output is correct)
 
 **`npm run build:dist` will do the following:**
 - output files into `./dist`, or another location via the `--destination` flag
 - clean the `./dist` folder
 - compile JavaScript and Sass, including documentation (`gulp compile`)
-- copy fonts and images (`gulp copy:assets`)
+- copy fonts and images
 - append version number from `package/package.json` to compiled JavaScript and CSS files
 - runs `npm run test:build:dist` (which will test the output is correct)
 
@@ -58,24 +58,18 @@ Gulp tasks are defined in `gulpfile.js` and .`/tasks/gulp/` folder.
 This task will:
 - list out all available tasks
 
-**`gulp watch`**
-
-This task will:
-- run `gulp styles` when `.scss` files change
-- run `gulp scripts` when `.mjs` files change
-
 **`gulp styles`**
 
 This task will:
 - check Sass code quality via Stylelint (`npm run lint:scss`)
-- compile Sass to CSS (`gulp scss:compile`) into `./public`, or another location via the `--destination` flag
+- compile Sass to CSS into `./public`, or another location via the `--destination` flag
 - compile Sass documentation into `./sassdoc`
 
 **`gulp scripts`**
 
 This task will:
 - check JavaScript code quality via ESLint (`npm run lint:js`) (using JavaScript Standard Style)
-- compile JavaScript ESM to CommonJS (`gulp js:compile`) into `./public`, or another location via the `--destination` flag
+- compile JavaScript ESM to CommonJS into `./public`, or another location via the `--destination` flag
 - compile JavaScript documentation into `./jsdoc`
 
 **`gulp compile`**

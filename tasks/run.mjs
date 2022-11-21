@@ -1,4 +1,4 @@
-const { spawn } = require('child_process')
+import { spawn } from 'child_process'
 
 /**
  * Spawns Node.js child process for npm script
@@ -8,7 +8,7 @@ const { spawn } = require('child_process')
  * @param {string[]} [args] - npm script arguments
  * @returns {Promise<number>} Exit code
  */
-async function npmScript (name, args = []) {
+export async function npmScript (name, args = []) {
   const command = process.platform === 'win32' ? 'npm.cmd' : 'npm'
 
   return new Promise((resolve, reject) => {
@@ -17,10 +17,10 @@ async function npmScript (name, args = []) {
     script.stdout.on('data', (data) => console.log(data.toString()))
     script.stderr.on('data', (data) => console.error(data.toString()))
 
-    // Reject on actual script errors to exit `gulp watch`
+    // Reject on actual script errors to exit `gulp dev`
     script.on('error', reject)
 
-    // Resolve all exit codes to continue `gulp watch`
+    // Resolve all exit codes to continue `gulp dev`
     script.on('close', resolve)
   })
 }
@@ -32,7 +32,7 @@ async function npmScript (name, args = []) {
  * @param {string[]} [args] - npm script arguments
  * @returns {() => Promise<number>} Exit code
  */
-const npmScriptTask = (name, args = []) => {
+export function npmScriptTask (name, args = []) {
   const task = () => npmScript(name, args)
 
   // Add task alias
@@ -40,9 +40,4 @@ const npmScriptTask = (name, args = []) => {
   task.displayName = `npm run ${name} ${args.join(' ')}`.trim()
 
   return task
-}
-
-module.exports = {
-  npmScript,
-  npmScriptTask
 }

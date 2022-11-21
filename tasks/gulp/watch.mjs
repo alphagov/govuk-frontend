@@ -1,15 +1,17 @@
-const gulp = require('gulp')
-const slash = require('slash')
+import gulp from 'gulp'
+import slash from 'slash'
 
-const configPaths = require('../../config/paths.js')
+import configPaths from '../../config/paths.js'
 
 /**
  * Watch task
  * During development, this task will:
  * - run `gulp styles` when `.scss` files change
  * - run `gulp scripts` when `.mjs` files change
+ *
+ * @returns {Promise<import('fs').FSWatcher[]>} Array from file system watcher objects
  */
-gulp.task('watch', () => {
+export function watch () {
   return Promise.all([
     gulp.watch([
       'sassdoc.config.yaml',
@@ -24,4 +26,6 @@ gulp.task('watch', () => {
       `${slash(configPaths.src)}/govuk/**/*.mjs`
     ], gulp.series('scripts'))
   ])
-})
+}
+
+watch.displayName = 'watch'

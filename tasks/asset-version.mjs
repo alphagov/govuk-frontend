@@ -1,14 +1,14 @@
-const { rename, writeFile } = require('fs/promises')
-const { basename, join } = require('path')
-const { EOL } = require('os')
+import { readFile, rename, writeFile } from 'fs/promises'
+import { basename, join } from 'path'
+import { EOL } from 'os'
 
-const configPaths = require('../config/paths.js')
-const { destination, isDist } = require('./task-arguments.js')
+import configPaths from '../config/paths.js'
+import { destination, isDist } from './task-arguments.mjs'
 
 // Update assets' version numbers
 // Uses the version number from `package/package.json` and writes it to various places
-async function updateDistAssetsVersion () {
-  const pkg = require(join(configPaths.package, 'package.json'))
+export async function updateDistAssetsVersion () {
+  const pkg = JSON.parse(await readFile(join(configPaths.package, 'package.json'), 'utf8'))
 
   if (!isDist) {
     throw new Error('Asset versions can only be applied to ./dist')
@@ -38,7 +38,3 @@ async function updateDistAssetsVersion () {
 }
 
 updateDistAssetsVersion.displayName = 'update-dist-assets-version'
-
-module.exports = {
-  updateDistAssetsVersion
-}

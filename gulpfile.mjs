@@ -1,20 +1,16 @@
-const { join } = require('path')
-const gulp = require('gulp')
-const taskListing = require('gulp-task-listing')
-const configPaths = require('./config/paths.js')
-const { destination } = require('./tasks/task-arguments.js')
-const slash = require('slash')
+import gulp from 'gulp'
+import taskListing from 'gulp-task-listing'
 
 // Gulp sub-tasks
-require('./tasks/gulp/compile-assets.js')
-require('./tasks/gulp/copy-to-destination.js')
-require('./tasks/gulp/watch.js')
+import { compileJavaScripts, compileStylesheets } from './tasks/gulp/compile-assets.mjs'
+import { copyAssets, copyFiles } from './tasks/gulp/copy-to-destination.mjs'
+import { watch } from './tasks/gulp/watch.mjs'
 
 // Node tasks
-const { updateDistAssetsVersion } = require('./tasks/asset-version.js')
-const { updatePrototypeKitConfig } = require('./tasks/prototype-kit-config.js')
-const { clean } = require('./tasks/clean.js')
-const { npmScriptTask } = require('./tasks/run.js')
+import { updateDistAssetsVersion } from './tasks/asset-version.mjs'
+import { updatePrototypeKitConfig } from './tasks/prototype-kit-config.mjs'
+import { clean } from './tasks/clean.mjs'
+import { npmScriptTask } from './tasks/run.mjs'
 
 /**
  * Umbrella scripts tasks (for watch)
@@ -23,7 +19,7 @@ const { npmScriptTask } = require('./tasks/run.js')
 gulp.task('scripts', gulp.series(
   npmScriptTask('lint:js', ['--silent']),
   npmScriptTask('build:jsdoc', ['--silent']),
-  'js:compile'
+  compileJavaScripts
 ))
 
 /**
@@ -33,25 +29,16 @@ gulp.task('scripts', gulp.series(
 gulp.task('styles', gulp.series(
   npmScriptTask('lint:scss', ['--silent']),
   npmScriptTask('build:sassdoc', ['--silent']),
-  'scss:compile'
+  compileStylesheets
 ))
-
-/**
- * Copy assets task
- * Copies assets to taskArguments.destination (dist)
- */
-gulp.task('copy:assets', () => {
-  return gulp.src(slash(join(configPaths.assets, '**/*')))
-    .pipe(gulp.dest(slash(join(destination, 'assets'))))
-})
 
 /**
  * Compile task for local & heroku
  * Runs JavaScript and Sass compilation, including documentation
  */
 gulp.task('compile', gulp.series(
-  'js:compile',
-  'scss:compile',
+  compileJavaScripts,
+  compileStylesheets,
   npmScriptTask('build:jsdoc', ['--silent']),
   npmScriptTask('build:sassdoc', ['--silent'])
 ))
@@ -63,7 +50,7 @@ gulp.task('compile', gulp.series(
 gulp.task('dev', gulp.series(
   clean,
   'compile',
-  'watch',
+  watch,
   npmScriptTask('serve', ['--silent', '--workspace', 'app'])
 ))
 
@@ -73,8 +60,8 @@ gulp.task('dev', gulp.series(
  */
 gulp.task('build:package', gulp.series(
   clean,
-  'copy:files',
-  'js:compile',
+  copyFiles,
+  compileJavaScripts,
   updatePrototypeKitConfig
 ))
 
@@ -85,7 +72,7 @@ gulp.task('build:package', gulp.series(
 gulp.task('build:dist', gulp.series(
   clean,
   'compile',
-  'copy:assets',
+  copyAssets,
   updateDistAssetsVersion
 ))
 

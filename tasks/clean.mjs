@@ -1,11 +1,12 @@
-const { basename, join } = require('path')
-const del = require('del')
-const slash = require('slash')
+import { basename, join } from 'path'
+import del from 'del'
+import slash from 'slash'
 
-const { destination } = require('./task-arguments.js')
+import { destination } from './task-arguments.mjs'
+
 const cleanPath = slash(destination)
 
-function paths () {
+export function paths (cleanPath) {
   const param = [slash(join(cleanPath, '**/*'))]
 
   // Preserve package files
@@ -21,13 +22,8 @@ function paths () {
   return param
 }
 
-function clean () {
-  return del(paths())
+export function clean () {
+  return del(paths(cleanPath))
 }
 
 clean.displayName = `clean:${basename(cleanPath)}`
-
-module.exports = {
-  paths,
-  clean
-}
