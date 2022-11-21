@@ -162,26 +162,13 @@ jobs:
         run: ${{ matrix.run }}
 
   regression:
-    name: Send screenshots to Percy
-    runs-on: ubuntu-latest
+    name: Percy
     needs: [install, build]
 
-    env:
-      PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-      PORT: 8888
+    # Run existing "Percy screenshots" workflow
+    # (after install and build have been cached)
+    uses: ./.github/workflows/screenshots.yml
+    secrets: inherit
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Restore dependencies
-        uses: ./.github/workflows/actions/install-node
-
-      - name: Restore build
-        uses: ./.github/workflows/actions/build
-
-      - name: Start review application
-        run: npm run serve &
-
-      - name: Send screenshots to Percy
-        run: npx percy exec -- npm run test:screenshots
+    # Skip when secrets are unavailable on forks
+    if: ${{ github.repository_owner == 'alphagov' }}
