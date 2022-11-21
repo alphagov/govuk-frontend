@@ -32,12 +32,10 @@ npm install
 ### Fixing errors after upgrading Node.js
 If you've previously installed `govuk-frontend` locally using Node.js v14 or earlier, you may see `node-sass`-related errors when updating to a newer Node.js LTS release.
 
-To get rid of these errors, delete the `node_modules` folder, then run:
+To get rid of these errors, download the Sass binary again using:
 
 ```
-nvm use
-npm uninstall node-sass -g && npm cache clean -force && npm install node-sass
-npm install
+npm rebuild node-sass
 ```
 
 ## 5. Start a local server
