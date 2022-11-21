@@ -10,12 +10,13 @@
 
 {% block bodyEnd %}
   {{ super() }}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/iframeResizer.min.js" integrity="sha256-NZjCYaMfryuJQRMgekHuC02c/Wv4sMRzHG2zyhrVwKU=" crossorigin="anonymous"></script>
-  <!--[if lte IE 8]>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/ie8.polyfils.min.js"></script>
-  <![endif]-->
-  <script>
-    window.iFrameResize({}, '.js-component-preview')
-  </script>
-  {% block scripts %}{% endblock %}
+  {% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/iframeResizer.min.js" integrity="sha256-NZjCYaMfryuJQRMgekHuC02c/Wv4sMRzHG2zyhrVwKU=" crossorigin="anonymous"></script>
+    <!--[if lte IE 8]>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/ie8.polyfils.min.js"></script>
+    <![endif]-->
+    <script>
+      window.iFrameResize({}, '.js-component-preview')
+    </script>
+  {% endblock %}
 {% endblock %}
