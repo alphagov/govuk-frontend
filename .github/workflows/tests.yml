@@ -169,3 +169,6 @@ jobs:
     # (after install and build have been cached)
     uses: ./.github/workflows/screenshots.yml
     secrets: inherit
+
+    # Skip when secrets are unavailable on forks
+    if: ${{ github.repository_owner == 'alphagov' }}
