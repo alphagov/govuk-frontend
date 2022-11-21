@@ -29,8 +29,8 @@ We use [npm](https://docs.npmjs.com/getting-started/what-is-npm) to manage the d
 npm install
 ```
 
-### Fixing Node 16+ errors
-If you've previously installed `govuk-frontend` locally using Node v14 or earlier, you may see `node-sass`-related errors when updating to Node v16.
+### Fixing errors after upgrading Node.js
+If you've previously installed `govuk-frontend` locally using Node.js v14 or earlier, you may see `node-sass`-related errors when updating to a newer Node.js LTS release.
 
 To get rid of these errors, delete the `node_modules` folder, then run:
 
