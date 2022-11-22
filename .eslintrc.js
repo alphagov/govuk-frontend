@@ -29,6 +29,16 @@ module.exports = {
         'promise'
       ],
       rules: {
+        // Check import or require statements are A-Z ordered
+        'import/order': [
+          'error',
+          {
+            alphabetize: { order: 'asc' },
+            'newlines-between': 'always',
+            warnOnUnassignedImports: true
+          }
+        ],
+
         // JSDoc blocks are optional
         'jsdoc/require-jsdoc': 'off',
         'jsdoc/require-param-description': 'off',
