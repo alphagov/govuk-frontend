@@ -82,13 +82,7 @@ compileStylesheets.displayName = 'compile:scss'
  */
 function compileStylesheet (stream, options = {}) {
   return stream
-    .pipe(plumber((error) => {
-      console.error(error.message)
-
-      // Ensure the task we're running exits with an error code
-      stream.once('finish', () => process.exit(1))
-      stream.emit('end')
-    }))
+    .pipe(plumber())
     .pipe(sass(options))
     .pipe(postcss())
 }
