@@ -1,15 +1,12 @@
 import gulp from 'gulp'
 import taskListing from 'gulp-task-listing'
 
-// Gulp sub-tasks
+import { updateDistAssetsVersion } from './tasks/asset-version.mjs'
+import { clean } from './tasks/clean.mjs'
 import { compileJavaScripts, compileStylesheets } from './tasks/gulp/compile-assets.mjs'
 import { copyAssets, copyFiles } from './tasks/gulp/copy-to-destination.mjs'
 import { watch } from './tasks/gulp/watch.mjs'
-
-// Node tasks
-import { updateDistAssetsVersion } from './tasks/asset-version.mjs'
 import { updatePrototypeKitConfig } from './tasks/prototype-kit-config.mjs'
-import { clean } from './tasks/clean.mjs'
 import { npmScriptTask } from './tasks/run.mjs'
 
 /**

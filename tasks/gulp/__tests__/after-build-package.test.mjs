@@ -4,7 +4,6 @@ import { join } from 'path'
 import configPaths from '../../../config/paths.js'
 import { filterPath, getDirectories, getListing, mapPathTo } from '../../../lib/file-helper.js'
 import { componentNameToJavaScriptClassName, componentNameToJavaScriptModuleName } from '../../../lib/helper-functions.js'
-
 import { renderSass } from '../../../lib/jest-helpers.js'
 
 describe('package/', () => {

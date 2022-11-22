@@ -1,13 +1,15 @@
-const express = require('express')
-const app = express()
-const bodyParser = require('body-parser')
-const nunjucks = require('nunjucks')
-const { marked } = require('marked')
 const { join } = require('path')
 
+const bodyParser = require('body-parser')
+const express = require('express')
+const app = express()
+const { marked } = require('marked')
+const nunjucks = require('nunjucks')
+
+const configPaths = require('../config/paths')
 const { getDirectories, getComponentsData, getFullPageExamples } = require('../lib/file-helper')
 const helperFunctions = require('../lib/helper-functions')
-const configPaths = require('../config/paths')
+
 const middleware = require('./middleware/index')
 
 const { HEROKU_APP } = process.env

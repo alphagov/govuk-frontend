@@ -4,9 +4,9 @@
  *
  * http://caniuse.com/#feat=details
  */
-import '../../vendor/polyfills/Function/prototype/bind.mjs'
-import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normaliziation
 import { generateUniqueID } from '../../common/index.mjs'
+import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target normalization and DOMContentLoaded
+import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
 var KEY_ENTER = 13
 var KEY_SPACE = 32

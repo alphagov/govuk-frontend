@@ -34,8 +34,7 @@ module.exports = {
           'error',
           {
             alphabetize: { order: 'asc' },
-            'newlines-between': 'always',
-            warnOnUnassignedImports: true
+            'newlines-between': 'always'
           }
         ],
 

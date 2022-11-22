@@ -1,12 +1,12 @@
 import { join } from 'path'
-import { launch } from 'puppeteer'
+
 import percySnapshot from '@percy/puppeteer'
 import { isPercyEnabled } from '@percy/sdk-utils'
-
-import { getDirectories, getListing } from '../lib/file-helper.js'
-import { goToComponent } from '../lib/puppeteer-helpers.js'
+import { launch } from 'puppeteer'
 
 import configPaths from '../config/paths.js'
+import { getDirectories, getListing } from '../lib/file-helper.js'
+import { goToComponent } from '../lib/puppeteer-helpers.js'
 import configPuppeteer from '../puppeteer.config.js'
 
 /**

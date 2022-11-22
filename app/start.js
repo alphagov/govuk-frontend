@@ -1,5 +1,6 @@
-const app = require('./app')
 const configPaths = require('../config/paths')
+
+const app = require('./app')
 
 const PORT = process.env.PORT || configPaths.ports.app
 

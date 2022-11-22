@@ -1,8 +1,8 @@
 const { join } = require('path')
 
+const configPaths = require('../../../config/paths')
 const { getListing } = require('../../../lib/file-helper')
 const { renderSass } = require('../../../lib/jest-helpers')
-const configPaths = require('../../../config/paths')
 
 describe('Components', () => {
   let sassFiles

@@ -1,4 +1,5 @@
 const Vinyl = require('vinyl')
+
 const configFn = require('./postcss.config')
 
 describe('PostCSS config', () => {

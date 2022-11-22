@@ -1,9 +1,9 @@
-import '../../vendor/polyfills/Function/prototype/bind.mjs'
+import { nodeListForEach } from '../../common/index.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 import '../../vendor/polyfills/Element/prototype/nextElementSibling.mjs'
 import '../../vendor/polyfills/Element/prototype/previousElementSibling.mjs'
-import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normaliziation
-import { nodeListForEach } from '../../common/index.mjs'
+import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target normalization and DOMContentLoaded
+import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
 /**
  * Tabs component

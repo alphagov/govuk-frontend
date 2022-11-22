@@ -2,7 +2,6 @@ const sassdoc = require('sassdoc')
 const slash = require('slash')
 
 const configPaths = require('../../config/paths')
-
 const { renderSass } = require('../../lib/jest-helpers')
 const { goTo, goToExample } = require('../../lib/puppeteer-helpers')
 

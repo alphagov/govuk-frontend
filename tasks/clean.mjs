@@ -1,4 +1,5 @@
 import { basename, join } from 'path'
+
 import del from 'del'
 import slash from 'slash'
 

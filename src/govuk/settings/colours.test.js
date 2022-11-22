@@ -1,7 +1,7 @@
 const { join } = require('path')
 
-const { renderSass } = require('../../../lib/jest-helpers')
 const configPaths = require('../../../config/paths')
+const { renderSass } = require('../../../lib/jest-helpers')
 
 const sassConfig = {
   includePaths: [join(configPaths.src, 'govuk'), 'node_modules/'],

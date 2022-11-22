@@ -1,14 +1,14 @@
 import { basename, join } from 'path'
 
-import nunjucks from 'nunjucks'
+import autoprefixer from 'autoprefixer'
 import gulp from 'gulp'
 import postcss from 'gulp-postcss'
-import postcssScss from 'postcss-scss'
-import autoprefixer from 'autoprefixer'
+import rename from 'gulp-rename'
 import yaml from 'js-yaml'
 import map from 'map-stream'
 import merge from 'merge-stream'
-import rename from 'gulp-rename'
+import nunjucks from 'nunjucks'
+import postcssScss from 'postcss-scss'
 import slash from 'slash'
 
 import configPaths from '../../config/paths.js'

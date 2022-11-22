@@ -1,4 +1,5 @@
 const sass = require('node-sass')
+
 const { renderSass } = require('../../../lib/jest-helpers')
 
 // Create a mock warn function that we can use to override the native @warn
