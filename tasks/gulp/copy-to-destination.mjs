@@ -78,11 +78,13 @@ export function copyFiles () {
       gulp.src(`${slash(configPaths.components)}/**/*.yaml`, {
         base: slash(configPaths.src)
       })
-        .pipe(map((file, done) =>
-          generateFixtures(file)
-            .then((fixture) => done(null, fixture))
-            .catch(done)
-        ))
+        .pipe(map(async (file, done) => {
+          try {
+            done(null, await generateFixtures(file))
+          } catch (error) {
+            done(error)
+          }
+        }))
         .pipe(rename({
           basename: 'fixtures',
           extname: '.json'
@@ -92,11 +94,13 @@ export function copyFiles () {
       gulp.src(`${slash(configPaths.components)}/**/*.yaml`, {
         base: slash(configPaths.src)
       })
-        .pipe(map((file, done) =>
-          generateMacroOptions(file)
-            .then((macro) => done(null, macro))
-            .catch(done)
-        ))
+        .pipe(map(async (file, done) => {
+          try {
+            done(null, await generateMacroOptions(file))
+          } catch (error) {
+            done(error)
+          }
+        }))
         .pipe(rename({
           basename: 'macro-options',
           extname: '.json'
