@@ -15,7 +15,8 @@ module.exports = {
       extends: [
         'plugin:import/recommended',
         'plugin:jsdoc/recommended',
-        'plugin:n/recommended'
+        'plugin:n/recommended',
+        'plugin:promise/recommended'
       ],
       files: ['**/*.{cjs,js,mjs}'],
       parserOptions: {
@@ -24,7 +25,8 @@ module.exports = {
       plugins: [
         'import',
         'jsdoc',
-        'n'
+        'n',
+        'promise'
       ],
       rules: {
         // JSDoc blocks are optional
