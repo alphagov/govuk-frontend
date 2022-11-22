@@ -13,6 +13,7 @@ module.exports = {
   overrides: [
     {
       extends: [
+        'eslint:recommended',
         'plugin:import/recommended',
         'plugin:jsdoc/recommended',
         'plugin:n/recommended',
