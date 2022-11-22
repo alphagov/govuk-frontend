@@ -74,9 +74,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           cache: npm
-          node-version: 14
+          node-version: 18
       - run: |
-          npm install -g node-sass@v7
+          npm install -g node-sass@v8
           node-sass --version
       - run: time node-sass src/govuk/all.scss > /dev/null
 
