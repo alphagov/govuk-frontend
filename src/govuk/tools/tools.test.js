@@ -4,7 +4,7 @@ const sassdoc = require('sassdoc')
 
 const { getListing } = require('../../../lib/file-helper')
 const { renderSass } = require('../../../lib/jest-helpers')
-const configPaths = require('../../../config/paths.js')
+const configPaths = require('../../../config/paths')
 
 describe('The tools layer', () => {
   let sassFiles

@@ -7,8 +7,8 @@ const { join } = require('path')
 
 const { getDirectories, getComponentsData, getFullPageExamples } = require('../lib/file-helper')
 const helperFunctions = require('../lib/helper-functions')
-const configPaths = require('../config/paths.js')
-const middleware = require('./middleware/index.js')
+const configPaths = require('../config/paths')
+const middleware = require('./middleware/index')
 
 const { HEROKU_APP } = process.env
 
@@ -87,7 +87,7 @@ module.exports = async (options) => {
   app.use(bodyParser.urlencoded({ extended: true }))
 
   // Handle the banner component serverside.
-  require('./banner.js')(app)
+  require('./banner')(app)
 
   // Define middleware for all routes
   app.use('*', function (request, response, next) {
@@ -206,7 +206,7 @@ module.exports = async (options) => {
   })
 
   // Full page example views
-  require('./full-page-examples.js')(app)
+  require('./full-page-examples')(app)
 
   return app
 }

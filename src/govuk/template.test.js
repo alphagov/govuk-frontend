@@ -2,7 +2,7 @@ const crypto = require('crypto')
 const { join } = require('path')
 
 const nunjucks = require('nunjucks')
-const configPaths = require('../../config/paths.js')
+const configPaths = require('../../config/paths')
 
 const { renderTemplate } = require('../../lib/jest-helpers')
 

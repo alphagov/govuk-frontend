@@ -8,7 +8,7 @@ const nunjucks = require('nunjucks')
 const { getDirectories, getComponentsData } = require('../../../lib/file-helper')
 const { nunjucksEnv, renderHtml } = require('../../../lib/jest-helpers')
 
-const configPaths = require('../../../config/paths.js')
+const configPaths = require('../../../config/paths')
 
 describe('Components', () => {
   let nunjucksEnvCustom

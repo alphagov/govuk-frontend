@@ -3,7 +3,7 @@ const { Agent, fetch, setGlobalDispatcher } = require('undici')
 
 const { getDirectories } = require('../lib/file-helper')
 
-const configPaths = require('../config/paths.js')
+const configPaths = require('../config/paths')
 const PORT = configPaths.ports.test
 
 const expectedPages = [
