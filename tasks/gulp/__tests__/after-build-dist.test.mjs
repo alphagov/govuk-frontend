@@ -5,12 +5,12 @@ import configPaths from '../../../config/paths.js'
 import { getListing } from '../../../lib/file-helper.js'
 
 describe('dist/', () => {
-  const pkg = require(join(configPaths.package, 'package.json'))
-
+  let pkg
   let listingSourceAssets
   let listingDistAssets
 
   beforeAll(async () => {
+    pkg = JSON.parse(await readFile(join(configPaths.package, 'package.json'), 'utf8'))
     listingSourceAssets = await getListing(configPaths.assets)
     listingDistAssets = await getListing(join(configPaths.dist, 'assets'))
   })
@@ -21,7 +21,7 @@ describe('dist/', () => {
     })
   })
 
-  describe(`govuk-frontend-${pkg.version}.min.css`, () => {
+  describe('govuk-frontend-[version].min.css', () => {
     let stylesheet
 
     beforeAll(async () => {
@@ -37,7 +37,7 @@ describe('dist/', () => {
     })
   })
 
-  describe(`govuk-frontend-ie8-${pkg.version}.min.css`, () => {
+  describe('govuk-frontend-ie8-[version].min.css', () => {
     let stylesheet
 
     beforeAll(async () => {
@@ -49,7 +49,7 @@ describe('dist/', () => {
     })
   })
 
-  describe(`govuk-frontend-${pkg.version}.min.js`, () => {
+  describe('govuk-frontend-[version].min.js', () => {
     let javascript
 
     beforeAll(async () => {
