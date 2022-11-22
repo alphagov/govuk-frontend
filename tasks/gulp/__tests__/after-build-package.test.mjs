@@ -82,14 +82,11 @@ describe('package/', () => {
   })
 
   describe('README.md', () => {
-    it('is not overwritten', () => {
-      return readFile(join(configPaths.package, 'README.md'), 'utf8')
-        .then(contents => {
-          // Look for H1 matching 'GOV.UK Frontend' from existing README
-          expect(contents).toMatch(/^# GOV.UK Frontend/)
-        }).catch(error => {
-          throw error
-        })
+    it('is not overwritten', async () => {
+      const contents = await readFile(join(configPaths.package, 'README.md'), 'utf8')
+
+      // Look for H1 matching 'GOV.UK Frontend' from existing README
+      expect(contents).toMatch(/^# GOV.UK Frontend/)
     })
   })
 
@@ -102,15 +99,10 @@ describe('package/', () => {
 
   describe('all.js', () => {
     it('should have correct module name', async () => {
-      const allJsFile = join(configPaths.package, 'govuk', 'all.js')
+      const contents = await readFile(join(configPaths.package, 'govuk', 'all.js'), 'utf8')
 
-      return readFile(allJsFile, 'utf8')
-        .then((data) => {
-          expect(data).toContain("typeof define === 'function' && define.amd ? define('GOVUKFrontend', ['exports'], factory)")
-        })
-        .catch(error => {
-          throw error
-        })
+      // Look for AMD module definition for 'GOVUKFrontend'
+      expect(contents).toContain("typeof define === 'function' && define.amd ? define('GOVUKFrontend', ['exports'], factory)")
     })
   })
 
