@@ -13,6 +13,7 @@ module.exports = {
   overrides: [
     {
       extends: [
+        'plugin:import/recommended',
         'plugin:jsdoc/recommended',
         'plugin:n/recommended'
       ],
@@ -21,6 +22,7 @@ module.exports = {
         ecmaVersion: 'latest'
       },
       plugins: [
+        'import',
         'jsdoc',
         'n'
       ],
@@ -57,6 +59,24 @@ module.exports = {
           // Allows us to use type declarations that exist in our dependencies
           mode: 'typescript'
         }
+      }
+    },
+    {
+      // Extensions required for ESM import
+      files: ['**/*.mjs'],
+      rules: {
+        'import/extensions': [
+          'error',
+          'always',
+          {
+            ignorePackages: true,
+            pattern: {
+              cjs: 'always',
+              js: 'always',
+              mjs: 'always'
+            }
+          }
+        ]
       }
     },
     {
