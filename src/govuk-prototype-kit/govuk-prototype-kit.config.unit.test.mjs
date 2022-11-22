@@ -86,6 +86,10 @@ describe('GOV.UK Prototype Kit config', () => {
           macroName: 'govukHeader'
         },
         {
+          importFrom: 'govuk/components/hide-this-page/macro.njk',
+          macroName: 'govukHideThisPage'
+        },
+        {
           importFrom: 'govuk/components/hint/macro.njk',
           macroName: 'govukHint'
         },
