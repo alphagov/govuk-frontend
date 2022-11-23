@@ -1,5 +1,5 @@
-import { cwd } from 'process'
 import { join } from 'path'
+import { cwd } from 'process'
 
 import configPaths from '../config/paths.js'
 

@@ -1,5 +1,5 @@
-import configPaths from '../paths.js'
 import { getDirectories, getComponentsData } from '../../lib/file-helper.js'
+import configPaths from '../paths.js'
 
 /**
  * Cache store

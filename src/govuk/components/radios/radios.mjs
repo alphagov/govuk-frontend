@@ -1,8 +1,7 @@
-import '../../vendor/polyfills/Function/prototype/bind.mjs'
-// addEventListener, event.target normalization and DOMContentLoaded
-import '../../vendor/polyfills/Event.mjs'
-import '../../vendor/polyfills/Element/prototype/classList.mjs'
 import { nodeListForEach } from '../../common/index.mjs'
+import '../../vendor/polyfills/Element/prototype/classList.mjs'
+import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target normalization and DOMContentLoaded
+import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
 /**
  * Radios component

@@ -1,5 +1,6 @@
 const { body, validationResult } = require('express-validator')
-const { formatValidationErrors } = require('../../../utils.js')
+
+const { formatValidationErrors } = require('../../../utils')
 
 module.exports = (app) => {
   app.post(

@@ -1,8 +1,10 @@
 import { getServers, setup } from 'jest-dev-server'
 import waitOn from 'wait-on'
-import serverStop from './stop.mjs'
 
 import configPaths from '../../paths.js'
+
+import serverStop from './stop.mjs'
+
 const { PORT = configPaths.ports.test } = process.env
 
 /**

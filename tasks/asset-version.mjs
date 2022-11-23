@@ -1,8 +1,9 @@
 import { readFile, rename, writeFile } from 'fs/promises'
-import { basename, join } from 'path'
 import { EOL } from 'os'
+import { basename, join } from 'path'
 
 import configPaths from '../config/paths.js'
+
 import { destination, isDist } from './task-arguments.mjs'
 
 // Update assets' version numbers

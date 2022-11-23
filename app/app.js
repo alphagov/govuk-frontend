@@ -1,14 +1,16 @@
-const express = require('express')
-const app = express()
-const bodyParser = require('body-parser')
-const nunjucks = require('nunjucks')
-const { marked } = require('marked')
 const { join } = require('path')
 
+const bodyParser = require('body-parser')
+const express = require('express')
+const app = express()
+const { marked } = require('marked')
+const nunjucks = require('nunjucks')
+
+const configPaths = require('../config/paths')
 const { getDirectories, getComponentsData, getFullPageExamples } = require('../lib/file-helper')
 const helperFunctions = require('../lib/helper-functions')
-const configPaths = require('../config/paths.js')
-const middleware = require('./middleware/index.js')
+
+const middleware = require('./middleware/index')
 
 const { HEROKU_APP } = process.env
 
@@ -87,7 +89,7 @@ module.exports = async (options) => {
   app.use(bodyParser.urlencoded({ extended: true }))
 
   // Handle the banner component serverside.
-  require('./banner.js')(app)
+  require('./banner')(app)
 
   // Define middleware for all routes
   app.use('*', function (request, response, next) {
@@ -206,7 +208,7 @@ module.exports = async (options) => {
   })
 
   // Full page example views
-  require('./full-page-examples.js')(app)
+  require('./full-page-examples')(app)
 
   return app
 }

@@ -1,9 +1,8 @@
-import '../../vendor/polyfills/Function/prototype/bind.mjs'
-import '../../vendor/polyfills/Event.mjs' // addEventListener
-import '../../vendor/polyfills/Element/prototype/closest.mjs'
-
 import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import '../../vendor/polyfills/Element/prototype/closest.mjs'
+import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target normalization and DOMContentLoaded
+import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
 /**
  * JavaScript enhancements for the ErrorSummary

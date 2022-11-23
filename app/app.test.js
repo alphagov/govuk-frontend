@@ -1,9 +1,9 @@
 const cheerio = require('cheerio')
 const { Agent, fetch, setGlobalDispatcher } = require('undici')
 
+const configPaths = require('../config/paths')
 const { getDirectories } = require('../lib/file-helper')
 
-const configPaths = require('../config/paths.js')
 const PORT = configPaths.ports.test
 
 const expectedPages = [

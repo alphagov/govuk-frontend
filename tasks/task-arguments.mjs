@@ -1,7 +1,7 @@
 import { resolve } from 'path'
 
-import parser from 'yargs-parser'
 import slash from 'slash'
+import parser from 'yargs-parser'
 
 import configPaths from '../config/paths.js'
 

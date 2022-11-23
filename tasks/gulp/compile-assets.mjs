@@ -1,22 +1,22 @@
-import { getListing } from '../../lib/file-helper.js'
-import { componentNameToJavaScriptModuleName } from '../../lib/helper-functions.js'
 
 import { join, parse } from 'path'
 
 import gulp from 'gulp'
-import gulpSass from 'gulp-sass'
-import nodeSass from 'node-sass'
-import plumber from 'gulp-plumber'
-import postcss from 'gulp-postcss'
 import rollup from 'gulp-better-rollup'
 import gulpif from 'gulp-if'
-import uglify from 'gulp-uglify'
-import minimatch from 'minimatch'
-import merge from 'merge-stream'
+import plumber from 'gulp-plumber'
+import postcss from 'gulp-postcss'
 import rename from 'gulp-rename'
+import gulpSass from 'gulp-sass'
+import uglify from 'gulp-uglify'
+import merge from 'merge-stream'
+import minimatch from 'minimatch'
+import nodeSass from 'node-sass'
 import slash from 'slash'
 
 import configPaths from '../../config/paths.js'
+import { getListing } from '../../lib/file-helper.js'
+import { componentNameToJavaScriptModuleName } from '../../lib/helper-functions.js'
 import { destination, isDist, isPackage } from '../task-arguments.mjs'
 
 const sass = gulpSass(nodeSass)
@@ -82,13 +82,7 @@ compileStylesheets.displayName = 'compile:scss'
  */
 function compileStylesheet (stream, options = {}) {
   return stream
-    .pipe(plumber((error) => {
-      console.error(error.message)
-
-      // Ensure the task we're running exits with an error code
-      stream.once('finish', () => process.exit(1))
-      stream.emit('end')
-    }))
+    .pipe(plumber())
     .pipe(sass(options))
     .pipe(postcss())
 }

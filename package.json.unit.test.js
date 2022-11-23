@@ -1,5 +1,5 @@
-const packageJson = require('./package.json')
 const packageLockJson = require('./package-lock.json')
+const packageJson = require('./package.json')
 
 describe('because rollup 0.60 drops support for Internet Explorer 8', () => {
   describe('gulp-better-rollup', () => {

@@ -1,5 +1,6 @@
-import serverStart from '../server/start.mjs'
 import { setup } from 'jest-environment-puppeteer'
+
+import serverStart from '../server/start.mjs'
 
 /**
  * Open browser

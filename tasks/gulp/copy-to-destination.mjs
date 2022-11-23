@@ -1,14 +1,14 @@
 import { basename, join } from 'path'
 
-import nunjucks from 'nunjucks'
+import autoprefixer from 'autoprefixer'
 import gulp from 'gulp'
 import postcss from 'gulp-postcss'
-import postcssScss from 'postcss-scss'
-import autoprefixer from 'autoprefixer'
+import rename from 'gulp-rename'
 import yaml from 'js-yaml'
 import map from 'map-stream'
 import merge from 'merge-stream'
-import rename from 'gulp-rename'
+import nunjucks from 'nunjucks'
+import postcssScss from 'postcss-scss'
 import slash from 'slash'
 
 import configPaths from '../../config/paths.js'
@@ -78,11 +78,13 @@ export function copyFiles () {
       gulp.src(`${slash(configPaths.components)}/**/*.yaml`, {
         base: slash(configPaths.src)
       })
-        .pipe(map((file, done) =>
-          generateFixtures(file)
-            .then((fixture) => done(null, fixture))
-            .catch(done)
-        ))
+        .pipe(map(async (file, done) => {
+          try {
+            done(null, await generateFixtures(file))
+          } catch (error) {
+            done(error)
+          }
+        }))
         .pipe(rename({
           basename: 'fixtures',
           extname: '.json'
@@ -92,11 +94,13 @@ export function copyFiles () {
       gulp.src(`${slash(configPaths.components)}/**/*.yaml`, {
         base: slash(configPaths.src)
       })
-        .pipe(map((file, done) =>
-          generateMacroOptions(file)
-            .then((macro) => done(null, macro))
-            .catch(done)
-        ))
+        .pipe(map(async (file, done) => {
+          try {
+            done(null, await generateMacroOptions(file))
+          } catch (error) {
+            done(error)
+          }
+        }))
         .pipe(rename({
           basename: 'macro-options',
           extname: '.json'

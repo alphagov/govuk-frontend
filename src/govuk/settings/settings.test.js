@@ -2,9 +2,9 @@ const { join } = require('path')
 
 const sassdoc = require('sassdoc')
 
+const configPaths = require('../../../config/paths')
 const { getListing } = require('../../../lib/file-helper')
 const { renderSass } = require('../../../lib/jest-helpers')
-const configPaths = require('../../../config/paths.js')
 
 describe('The settings layer', () => {
   let sassFiles

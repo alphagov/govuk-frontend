@@ -1,9 +1,10 @@
 import { join, relative } from 'path'
+
 import slash from 'slash'
 
+import configPaths from '../../config/paths.js'
 import { filterPath, getDirectories, getListing } from '../../lib/file-helper.js'
 import { componentNameToMacroName } from '../../lib/helper-functions.js'
-import configPaths from '../../config/paths.js'
 
 /**
  * GOV.UK Prototype Kit config builder

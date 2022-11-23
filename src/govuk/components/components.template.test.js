@@ -1,14 +1,13 @@
 const { join } = require('path')
-const { HtmlValidate } = require('html-validate')
 
+const { HtmlValidate } = require('html-validate')
 // We can't use the render function from jest-helpers, because we need control
 // over the nunjucks environment.
 const nunjucks = require('nunjucks')
 
+const configPaths = require('../../../config/paths')
 const { getDirectories, getComponentsData } = require('../../../lib/file-helper')
 const { nunjucksEnv, renderHtml } = require('../../../lib/jest-helpers')
-
-const configPaths = require('../../../config/paths.js')
 
 describe('Components', () => {
   let nunjucksEnvCustom

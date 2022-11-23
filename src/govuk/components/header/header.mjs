@@ -1,5 +1,5 @@
-import '../../vendor/polyfills/Event.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
+import '../../vendor/polyfills/Event.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
 /**
