@@ -51,7 +51,10 @@ describe('package/', () => {
         const importFilter = /^govuk(?!-)/
 
         // All source `**/*.mjs` files compiled to `**/*.js`
-        const output = [join(requirePath, `${name}.js`)]
+        const output = [
+          join(requirePath, `${name}.js`),
+          join(requirePath, `${name}.js.map`) // with source map
+        ]
 
         // Only source `./govuk/**/*.mjs` files copied to `./govuk-esm/**/*.mjs`
         if (importFilter.test(requirePath)) {

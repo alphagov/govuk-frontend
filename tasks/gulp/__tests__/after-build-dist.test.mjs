@@ -50,14 +50,20 @@ describe('dist/', () => {
   })
 
   describe('govuk-frontend-[version].min.js', () => {
+    let filename
     let javascript
 
     beforeAll(async () => {
-      javascript = await readFile(join(configPaths.dist, `govuk-frontend-${pkg.version}.min.js`), 'utf8')
+      filename = `govuk-frontend-${pkg.version}.min.js`
+      javascript = await readFile(join(configPaths.dist, filename), 'utf8')
     })
 
     it('should have the correct version name', () => {
       expect(javascript).toBeTruthy()
+    })
+
+    it('should contain source mapping URL', () => {
+      expect(javascript).toMatch(new RegExp(`//# sourceMappingURL=${filename}.map$`))
     })
   })
 })

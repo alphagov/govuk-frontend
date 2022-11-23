@@ -121,8 +121,12 @@ export async function compileJavaScripts () {
       ? componentNameToJavaScriptModuleName(name)
       : 'GOVUKFrontend'
 
-    return compileJavaScript(gulp.src(slash(join(configPaths.src, file))), moduleName)
-      .pipe(gulp.dest(slash(join(destPath, modulePath))))
+    return compileJavaScript(gulp.src(slash(join(configPaths.src, file)), {
+      sourcemaps: true
+    }), moduleName)
+      .pipe(gulp.dest(slash(join(destPath, modulePath)), {
+        sourcemaps: '.'
+      }))
   }))
 }
 
