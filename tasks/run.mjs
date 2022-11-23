@@ -14,14 +14,33 @@ export async function npmScript (name, args = []) {
   return new Promise((resolve, reject) => {
     const script = spawn(command, ['run', name, '--silent', ...args])
 
+    // Send output to console
     script.stdout.on('data', (data) => console.log(data.toString()))
-    script.stderr.on('data', (data) => console.error(data.toString()))
+
+    // Emit errors to error listener
+    script.stderr.on('data', (data) => {
+      script.emit('error', new Error(data.toString()))
+    })
 
     // Reject on actual script errors to exit `gulp dev`
     script.on('error', reject)
 
-    // Resolve all exit codes to continue `gulp dev`
-    script.on('close', resolve)
+    // Check for exit codes or continue `gulp dev`
+    script.on('close', (code) => {
+      let error
+
+      // Closed with errors
+      if (code > 0) {
+        error = new Error(`Task for npm script '${name}' exit code ${code}`)
+
+        // Hide error info (already written to `stderr`)
+        error.showProperties = false
+        error.showStack = false
+      }
+
+      // Reject on errors
+      error ? reject(error) : resolve(code)
+    })
   })
 }
 
