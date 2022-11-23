@@ -38,7 +38,9 @@ export function compileStylesheets () {
   if (isDist) {
     return merge(
       compileStylesheet(
-        gulp.src(`${slash(configPaths.src)}/govuk/all.scss`)
+        gulp.src(`${slash(configPaths.src)}/govuk/all.scss`, {
+          sourcemaps: true
+        })
           .pipe(rename({
             basename: 'govuk-frontend',
             suffix: `-${pkg.version}.min`,
@@ -46,34 +48,49 @@ export function compileStylesheets () {
           }))),
 
       compileStylesheet(
-        gulp.src(`${slash(configPaths.src)}/govuk/all-ie8.scss`)
+        gulp.src(`${slash(configPaths.src)}/govuk/all-ie8.scss`, {
+          sourcemaps: true
+        })
           .pipe(rename({
             basename: 'govuk-frontend-ie8',
             suffix: `-${pkg.version}.min`,
             extname: '.css'
           })))
     )
-      .pipe(gulp.dest(slash(destPath)))
+      .pipe(gulp.dest(slash(destPath), {
+        sourcemaps: '.'
+      }))
   }
 
   // Review application
   return merge(
     compileStylesheet(
-      gulp.src(`${slash(configPaths.app)}/assets/scss/app?(-ie8).scss`)),
+      gulp.src(`${slash(configPaths.app)}/assets/scss/app?(-ie8).scss`, {
+        sourcemaps: true
+      })),
 
     compileStylesheet(
-      gulp.src(`${slash(configPaths.app)}/assets/scss/app-legacy?(-ie8).scss`), {
-        includePaths: ['node_modules/govuk_frontend_toolkit/stylesheets', 'node_modules']
+      gulp.src(`${slash(configPaths.app)}/assets/scss/app-legacy?(-ie8).scss`, {
+        sourcemaps: true
+      }), {
+        includePaths: [
+          'node_modules/govuk_frontend_toolkit/stylesheets',
+          'node_modules'
+        ]
       }),
 
     compileStylesheet(
-      gulp.src(`${slash(configPaths.fullPageExamples)}/**/styles.scss`)
+      gulp.src(`${slash(configPaths.fullPageExamples)}/**/styles.scss`, {
+        sourcemaps: true
+      })
         .pipe(rename((path) => {
           path.basename = path.dirname
           path.dirname = 'full-page-examples'
         })))
   )
-    .pipe(gulp.dest(slash(destPath)))
+    .pipe(gulp.dest(slash(destPath), {
+      sourcemaps: '.'
+    }))
 }
 
 compileStylesheets.displayName = 'compile:scss'

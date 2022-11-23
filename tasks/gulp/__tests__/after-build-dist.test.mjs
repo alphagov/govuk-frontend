@@ -22,10 +22,12 @@ describe('dist/', () => {
   })
 
   describe('govuk-frontend-[version].min.css', () => {
+    let filename
     let stylesheet
 
     beforeAll(async () => {
-      stylesheet = await readFile(join(configPaths.dist, `govuk-frontend-${pkg.version}.min.css`), 'utf8')
+      filename = `govuk-frontend-${pkg.version}.min.css`
+      stylesheet = await readFile(join(configPaths.dist, filename), 'utf8')
     })
 
     it('should not contain current media query displayed on body element', () => {
@@ -35,17 +37,27 @@ describe('dist/', () => {
     it('should contain the copyright notice', () => {
       expect(stylesheet).toContain('/*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */')
     })
+
+    it('should contain source mapping URL', () => {
+      expect(stylesheet).toMatch(new RegExp(`/\\*# sourceMappingURL=${filename}.map \\*/$`))
+    })
   })
 
   describe('govuk-frontend-ie8-[version].min.css', () => {
+    let filename
     let stylesheet
 
     beforeAll(async () => {
-      stylesheet = await readFile(join(configPaths.dist, `govuk-frontend-ie8-${pkg.version}.min.css`), 'utf8')
+      filename = `govuk-frontend-ie8-${pkg.version}.min.css`
+      stylesheet = await readFile(join(configPaths.dist, filename), 'utf8')
     })
 
     it('should not contain current media query displayed on body element', () => {
       expect(stylesheet).not.toMatch(/body:before{content:/)
+    })
+
+    it('should contain source mapping URL', () => {
+      expect(stylesheet).toMatch(new RegExp(`/\\*# sourceMappingURL=${filename}.map \\*/$`))
     })
   })
 
