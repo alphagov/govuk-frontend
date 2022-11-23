@@ -25,18 +25,18 @@
 
   .govuk-hide-this-page__indicator {
     @include govuk-responsive-padding(2);
-    display: block;
-    border: 1px solid $govuk-border-colour;
-    border-top: none;
+    display: none;
+    padding-bottom: 0;
     opacity: 0;
-    color: $govuk-text-colour;
-    background-color: $govuk-body-background-colour;
+    color: govuk-colour("white");
+    background-color: govuk-colour("red");
     line-height: 0; // removes extra negative space below the indicators
     text-align: center;
     pointer-events: none;
   }
 
   .govuk-hide-this-page__indicator--visible {
+    display: block;
     opacity: 1;
   }
 

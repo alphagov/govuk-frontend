@@ -15,7 +15,7 @@ HideThisPage.prototype.initUpdateSpan = function () {
   this.$updateSpan.setAttribute('aria-live', 'polite')
   this.$updateSpan.setAttribute('class', 'govuk-visually-hidden')
 
-  this.$module.appendChild(this.$updateSpan)
+  this.$button.appendChild(this.$updateSpan)
 }
 
 HideThisPage.prototype.initButtonClickHandler = function () {
@@ -38,7 +38,7 @@ HideThisPage.prototype.buildIndicator = function () {
   }
 
   // Append it all to the module
-  this.$module.appendChild(this.$indicatorContainer)
+  this.$button.appendChild(this.$indicatorContainer)
 }
 
 HideThisPage.prototype.updateIndicator = function () {
