@@ -1,4 +1,5 @@
 
+import { readFile } from 'fs/promises'
 import { join, parse } from 'path'
 
 import gulp from 'gulp'
@@ -21,6 +22,7 @@ import { componentNameToJavaScriptModuleName } from '../../lib/helper-functions.
 import { destination, isDev, isDist, isPackage } from '../task-arguments.mjs'
 
 const sass = gulpSass(nodeSass)
+const pkg = JSON.parse(await readFile(join(configPaths.package, 'package.json'), 'utf8'))
 
 /**
  * Compile Sass to CSS task
@@ -39,14 +41,16 @@ export function compileStylesheets () {
         gulp.src(`${slash(configPaths.src)}/govuk/all.scss`)
           .pipe(rename({
             basename: 'govuk-frontend',
-            extname: '.min.css'
+            suffix: `-${pkg.version}.min`,
+            extname: '.css'
           }))),
 
       compileStylesheet(
         gulp.src(`${slash(configPaths.src)}/govuk/all-ie8.scss`)
           .pipe(rename({
             basename: 'govuk-frontend-ie8',
-            extname: '.min.css'
+            suffix: `-${pkg.version}.min`,
+            extname: '.css'
           })))
     )
       .pipe(gulp.dest(slash(destPath)))
@@ -157,7 +161,7 @@ function compileJavaScript (stream, moduleName) {
     .pipe(gulpif(isDist,
       rename({
         basename: 'govuk-frontend',
-        extname: '.min.js'
+        suffix: `-${pkg.version}.min`
       })
     ))
     .pipe(rename({
