@@ -12,7 +12,7 @@ export async function npmScript (name, args = []) {
   const command = process.platform === 'win32' ? 'npm.cmd' : 'npm'
 
   return new Promise((resolve, reject) => {
-    const script = spawn(command, ['run', name, ...args])
+    const script = spawn(command, ['run', name, '--silent', ...args])
 
     script.stdout.on('data', (data) => console.log(data.toString()))
     script.stderr.on('data', (data) => console.error(data.toString()))
