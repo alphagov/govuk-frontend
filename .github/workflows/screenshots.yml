@@ -31,4 +31,7 @@ jobs:
         run: npm run serve &
 
       - name: Send screenshots to Percy
-        run: npx percy exec -- npm run test:screenshots
+        run: npx percy exec --parallel -- npm run test:screenshots
+
+      - name: Finalise Percy build
+        run: npx percy build:finalize
