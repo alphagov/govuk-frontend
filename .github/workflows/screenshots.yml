@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
+      PERCY_PARALLEL_NONCE: ${{ github.run_id }}-${{ github.run_attempt }}
       PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
       PORT: 8888
 
