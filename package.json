@@ -75,7 +75,7 @@
   "devDependencies": {
     "@percy/cli": "^1.15.0",
     "@percy/puppeteer": "^2.0.2",
-    "@percy/sdk-utils": "^1.14.0",
+    "@percy/sdk-utils": "^1.15.0",
     "babel-jest": "^29.3.1",
     "cheerio": "^1.0.0-rc.12",
     "eslint": "^8.28.0",
