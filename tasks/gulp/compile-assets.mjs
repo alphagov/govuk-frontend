@@ -12,12 +12,13 @@ import uglify from 'gulp-uglify'
 import merge from 'merge-stream'
 import minimatch from 'minimatch'
 import nodeSass from 'node-sass'
+import PluginError from 'plugin-error'
 import slash from 'slash'
 
 import configPaths from '../../config/paths.js'
 import { getListing } from '../../lib/file-helper.js'
 import { componentNameToJavaScriptModuleName } from '../../lib/helper-functions.js'
-import { destination, isDist, isPackage } from '../task-arguments.mjs'
+import { destination, isDev, isDist, isPackage } from '../task-arguments.mjs'
 
 const sass = gulpSass(nodeSass)
 
@@ -82,9 +83,22 @@ compileStylesheets.displayName = 'compile:scss'
  */
 function compileStylesheet (stream, options = {}) {
   return stream
-    .pipe(plumber())
+    .pipe(plumber(function (cause) {
+      const error = new PluginError('compile:scss', cause.messageFormatted)
+      error.showProperties = false
+
+      // Gulp continue (watch)
+      if (isDev) {
+        console.error(error.toString())
+        return this.emit('end')
+      }
+
+      // Gulp exit with error
+      return stream.emit('error', error)
+    }))
     .pipe(sass(options))
     .pipe(postcss())
+    .pipe(plumber.stop())
 }
 
 /**

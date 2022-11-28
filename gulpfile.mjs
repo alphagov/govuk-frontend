@@ -25,8 +25,8 @@ gulp.task('scripts', gulp.series(
  */
 gulp.task('styles', gulp.series(
   npmScriptTask('lint:scss'),
-  npmScriptTask('build:sassdoc'),
-  compileStylesheets
+  compileStylesheets,
+  npmScriptTask('build:sassdoc')
 ))
 
 /**
