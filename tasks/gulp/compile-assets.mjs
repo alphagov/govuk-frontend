@@ -145,6 +145,20 @@ compileJavaScripts.displayName = 'compile:js'
  */
 function compileJavaScript (stream, moduleName) {
   return stream
+    .pipe(plumber(function (cause) {
+      const error = new PluginError('compile:js', cause)
+      console.error(error.toString())
+
+      // Gulp continue (watch)
+      if (isDev) {
+        return this.emit('end')
+      }
+
+      // Gulp exit with error
+      return stream.emit('error', error)
+    }))
+
+    // Compile JavaScript ESM to CommonJS
     .pipe(rollup({
       // Used to set the `window` global and UMD/AMD export name
       // Component JavaScript is given a unique name to aid individual imports, e.g GOVUKFrontend.Accordion
@@ -159,6 +173,8 @@ function compileJavaScript (stream, moduleName) {
     .pipe(gulpif(isDist, uglify({
       ie8: true
     })))
+
+    .pipe(plumber.stop())
 
     // Rename
     .pipe(gulpif(isDist,
