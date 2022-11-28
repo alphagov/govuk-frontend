@@ -31,7 +31,6 @@
     "shuffle-seed": "^1.1.6"
   },
   "devDependencies": {
-    "cheerio": "^1.0.0-rc.12",
-    "undici": "^5.12.0"
+    "cheerio": "^1.0.0-rc.12"
   }
 }
