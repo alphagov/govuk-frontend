@@ -73,7 +73,7 @@
     "yargs-parser": "^21.1.1"
   },
   "devDependencies": {
-    "@percy/cli": "^1.15.0",
+    "@percy/cli": "^1.16.0",
     "@percy/puppeteer": "^2.0.2",
     "@percy/sdk-utils": "^1.16.0",
     "babel-jest": "^29.3.1",
