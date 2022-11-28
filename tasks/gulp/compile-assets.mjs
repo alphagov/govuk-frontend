@@ -83,19 +83,7 @@ compileStylesheets.displayName = 'compile:scss'
  */
 function compileStylesheet (stream, options = {}) {
   return stream
-    .pipe(plumber(function (cause) {
-      const error = new PluginError('compile:scss', cause.messageFormatted)
-      error.showProperties = false
-
-      // Gulp continue (watch)
-      if (isDev) {
-        console.error(error.toString())
-        return this.emit('end')
-      }
-
-      // Gulp exit with error
-      return stream.emit('error', error)
-    }))
+    .pipe(plumber(errorHandler(stream, 'compile:scss')))
     .pipe(sass(options))
     .pipe(postcss())
     .pipe(plumber.stop())
@@ -129,30 +117,79 @@ export async function compileJavaScripts () {
       ? componentNameToJavaScriptModuleName(name)
       : 'GOVUKFrontend'
 
-    return gulp.src(slash(join(configPaths.src, file)))
-      .pipe(rollup({
-        // Used to set the `window` global and UMD/AMD export name
-        // Component JavaScript is given a unique name to aid individual imports, e.g GOVUKFrontend.Accordion
-        name: moduleName,
-        // Legacy mode is required for IE8 support
-        legacy: true,
-        // UMD allows the published bundle to work in CommonJS and in the browser.
-        format: 'umd'
-      }))
-      .pipe(gulpif(isDist, uglify({
-        ie8: true
-      })))
-      .pipe(gulpif(isDist,
-        rename({
-          basename: 'govuk-frontend',
-          extname: '.min.js'
-        })
-      ))
-      .pipe(rename({
-        extname: '.js'
-      }))
+    return compileJavaScript(gulp.src(slash(join(configPaths.src, file))), moduleName)
       .pipe(gulp.dest(slash(join(destPath, modulePath))))
   }))
 }
 
 compileJavaScripts.displayName = 'compile:js'
+
+/**
+ * Compile JavaScript ESM to CommonJS helper
+ *
+ * @param {import('stream').Stream} stream - Input file stream
+ * @param {string} moduleName - Rollup module name
+ * @returns {import('stream').Stream} Output file stream
+ */
+function compileJavaScript (stream, moduleName) {
+  return stream
+    .pipe(plumber(errorHandler(stream, 'compile:js')))
+
+    // Compile JavaScript ESM to CommonJS
+    .pipe(rollup({
+      // Used to set the `window` global and UMD/AMD export name
+      // Component JavaScript is given a unique name to aid individual imports, e.g GOVUKFrontend.Accordion
+      name: moduleName,
+      // Legacy mode is required for IE8 support
+      legacy: true,
+      // UMD allows the published bundle to work in CommonJS and in the browser.
+      format: 'umd'
+    }))
+
+    // Minify
+    .pipe(gulpif(isDist, uglify({
+      ie8: true
+    })))
+
+    .pipe(plumber.stop())
+
+    // Rename
+    .pipe(gulpif(isDist,
+      rename({
+        basename: 'govuk-frontend',
+        extname: '.min.js'
+      })
+    ))
+    .pipe(rename({
+      extname: '.js'
+    }))
+}
+
+/**
+ * Compiler error handler
+ *
+ * Sets up Gulp plumber to suppress errors during development
+ * and logs custom errors from Gulp plugins where available
+ *
+ * @param {import('stream').Stream} stream - Input file stream
+ * @returns {import('stream').Stream} Output file stream
+ */
+function errorHandler (stream, name) {
+  return function (cause) {
+    const error = new PluginError(cause.plugin || name, cause.messageFormatted || cause)
+
+    // Gulp plugin logging in development
+    // unless already formatted and logged
+    if (isDev || !cause.messageFormatted) {
+      console.error(error.toString())
+    }
+
+    // Gulp continue (watch)
+    if (isDev) {
+      return this.emit('end')
+    }
+
+    // Gulp exit with error
+    return stream.emit('error', error)
+  }
+}

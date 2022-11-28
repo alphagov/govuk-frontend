@@ -15,8 +15,8 @@ import { npmScriptTask } from './tasks/run.mjs'
  */
 gulp.task('scripts', gulp.series(
   npmScriptTask('lint:js'),
-  npmScriptTask('build:jsdoc'),
-  compileJavaScripts
+  compileJavaScripts,
+  npmScriptTask('build:jsdoc')
 ))
 
 /**
