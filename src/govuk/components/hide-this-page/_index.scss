@@ -23,6 +23,36 @@
     margin-bottom: 0;
   }
 
+  .govuk-hide-this-page__indicator {
+    @include govuk-responsive-padding(2);
+    display: none;
+    padding-bottom: 0;
+    opacity: 0;
+    color: govuk-colour("white");
+    background-color: govuk-colour("red");
+    line-height: 0; // removes extra negative space below the indicators
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .govuk-hide-this-page__indicator--visible {
+    display: block;
+    opacity: 1;
+  }
+
+  .govuk-hide-this-page__indicator-light {
+    display: inline-block;
+    width: .5em;
+    height: .5em;
+    margin: 0 .125em;
+    border: 2px solid currentcolor;
+    border-radius: 50%;
+  }
+
+  .govuk-hide-this-page__indicator-light--on {
+    background-color: currentcolor;
+  }
+
   @media only print {
     .govuk-hide-this-page {
       display: none;
