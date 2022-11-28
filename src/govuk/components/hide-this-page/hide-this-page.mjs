@@ -72,7 +72,7 @@ HideThisPage.prototype.exitPage = function (e) {
 
   // Blank the page
   this.$overlay = document.createElement('div')
-  this.$overlay.className = 'govuk-hide-this-page-overlay'
+  this.$overlay.className = 'govuk-hide-this-page__overlay'
   document.body.appendChild(this.$overlay)
 
   window.location.href = this.$button.href
