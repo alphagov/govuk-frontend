@@ -75,7 +75,7 @@ HideThisPage.prototype.exitPage = function (e) {
   this.$overlay.className = 'govuk-hide-this-page-overlay'
   document.body.appendChild(this.$overlay)
 
-  window.location.href = this.firstButton.href
+  window.location.href = this.$button.href
 }
 
 HideThisPage.prototype.handleEscKeypress = function (e) {
@@ -129,7 +129,7 @@ HideThisPage.prototype.init = function () {
     document.addEventListener('keyup', this.handleEscKeypress.bind(this), true)
     document.body.dataset.govukFrontendHideThisPageEsc = true
   }
-  
+
   // When the page is restored after navigating 'back' in some browsers the
   // blank overlay remains present, rendering the page unusable. Here, we check
   // to see if it's present on page (re)load, and remove it if so.
