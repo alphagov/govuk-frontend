@@ -35,3 +35,4 @@ export const destination = destPath
 export const isPackage = target === 'package'
 export const isPublic = target === 'public'
 export const isDist = target === 'dist'
+export const isDev = isPublic && tasks.includes('dev')
