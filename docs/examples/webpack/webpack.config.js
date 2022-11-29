@@ -43,7 +43,7 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
         generator: {
           outputPath: 'assets/stylesheets',
           publicPath: '/assets/stylesheets',
-          filename: '[name].css'
+          filename: '[name].min.css'
         },
         test: /\.scss$/,
         type: 'asset',
@@ -77,7 +77,7 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
 
   output: {
     clean: true,
-    filename: 'assets/javascripts/[name].js',
+    filename: 'assets/javascripts/[name].min.js',
     library: { type: 'umd' },
     path: resolve(__dirname, './public'),
     publicPath: '/'
