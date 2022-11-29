@@ -3,6 +3,7 @@ import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { I18n } from '../../i18n.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
+import '../../vendor/polyfills/Element/prototype/closest.mjs'
 import '../../vendor/polyfills/String/prototype/trim.mjs'
 
 /**
@@ -55,6 +56,7 @@ function Accordion ($module, config) {
   this.showAllClass = 'govuk-accordion__show-all'
   this.showAllTextClass = 'govuk-accordion__show-all-text'
 
+  this.sectionClass = 'govuk-accordion__section'
   this.sectionExpandedClass = 'govuk-accordion__section--expanded'
   this.sectionButtonClass = 'govuk-accordion__section-button'
   this.sectionHeaderClass = 'govuk-accordion__section-header'
@@ -70,6 +72,7 @@ function Accordion ($module, config) {
 
   this.sectionSummaryClass = 'govuk-accordion__section-summary'
   this.sectionSummaryFocusClass = 'govuk-accordion__section-summary-focus'
+  this.sectionContentClass = 'govuk-accordion__section-content'
 }
 
 // Initialize component
@@ -113,6 +116,11 @@ Accordion.prototype.initControls = function () {
 
   // Handle click events on the show/hide all button
   this.$showAllButton.addEventListener('click', this.onShowOrHideAllToggle.bind(this))
+
+  // Handle 'beforematch' events, if the user agent supports them
+  if ('onbeforematch' in document) {
+    document.addEventListener('beforematch', this.onBeforeMatch.bind(this))
+  }
 }
 
 // Initialise section headers
@@ -229,6 +237,14 @@ Accordion.prototype.constructHeaderMarkup = function ($headerWrapper, index) {
   $heading.appendChild($button)
 }
 
+// When a section is opened by the user agent via the 'beforematch' event
+Accordion.prototype.onBeforeMatch = function (event) {
+  var $section = event.target.closest('.' + this.sectionClass)
+  if ($section) {
+    this.setExpanded(true, $section)
+  }
+}
+
 // When section toggled, set and store state
 Accordion.prototype.onSectionToggle = function ($section) {
   var expanded = this.isExpanded($section)
@@ -258,6 +274,8 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
   var $icon = $section.querySelector('.' + this.upChevronIconClass)
   var $showHideText = $section.querySelector('.' + this.sectionShowHideTextClass)
   var $button = $section.querySelector('.' + this.sectionButtonClass)
+  var $sectionContent = $section.querySelector('.' + this.sectionContentClass)
+
   var newButtonText = expanded
     ? this.i18n.t('hideSection')
     : this.i18n.t('showSection')
@@ -288,9 +306,11 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
 
   // Swap icon, change class
   if (expanded) {
+    $sectionContent.removeAttribute('hidden')
     $section.classList.add(this.sectionExpandedClass)
     $icon.classList.remove(this.downChevronIconClass)
   } else {
+    $sectionContent.setAttribute('hidden', 'until-found')
     $section.classList.remove(this.sectionExpandedClass)
     $icon.classList.add(this.downChevronIconClass)
   }

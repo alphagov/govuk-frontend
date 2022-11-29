@@ -47,15 +47,9 @@
     }
 
     // Hide the body of collapsed sections
-    .govuk-accordion__section-content {
-      display: none;
+    .govuk-accordion__section--expanded .govuk-accordion__section-content {
       @include govuk-responsive-padding(8, "bottom");
       @include govuk-responsive-padding(3, "top");
-    }
-
-    // Show the body of expanded sections
-    .govuk-accordion__section--expanded .govuk-accordion__section-content {
-      display: block;
     }
 
     .govuk-accordion__show-all {
