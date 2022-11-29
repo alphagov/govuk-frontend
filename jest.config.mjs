@@ -14,10 +14,19 @@ const config = {
   // See: https://jestjs.io/docs/ecmascript-modules
   transform: {
     '^.+\\.m?js$': ['babel-jest', { rootMode: 'upward' }]
-  }
+  },
+
+  // Enable Babel transforms for ESM-only node_modules
+  // See: https://jestjs.io/docs/ecmascript-modules
+  transformIgnorePatterns: [
+    `<rootDir>/node_modules/(?!${[
+      'del',
+      'slash'
+    ].join('|')}/)`
+  ]
 }
 
-module.exports = {
+export default {
   collectCoverageFrom: ['./src/**/*.{js,mjs}'],
   projects: [
     {
