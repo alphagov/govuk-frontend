@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixes
+
+- [#2998: Refactor back link and breadcrumb chevrons to use ems](https://github.com/alphagov/govuk-frontend/pull/2998)
+
 ## 4.4.0 (Feature release)
 
 ### New features
@@ -206,7 +210,6 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 - [#2821: Avoid duplicated --error class on Character Count](https://github.com/alphagov/govuk-frontend/pull/2821)
 - [#2800: Improve Pagination component print styles](https://github.com/alphagov/govuk-frontend/pull/2800)
 - [#2909: Fix JavaScript errors when entering text into the Character Count in IE8](https://github.com/alphagov/govuk-frontend/pull/2909)
-- [#2998: Change back link arrow measurements to use ems](https://github.com/alphagov/govuk-frontend/pull/2998)
 
 ## 4.3.1 (Patch release)
 
