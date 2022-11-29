@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixes
+
+- [#2998: Refactor back link and breadcrumb chevrons to use ems](https://github.com/alphagov/govuk-frontend/pull/2998)
+
 ## 4.4.0 (Feature release)
 
 ### New features
