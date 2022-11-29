@@ -35,9 +35,9 @@ export function compileStylesheets () {
         })
           .pipe(rename({
             basename: 'govuk-frontend',
-            suffix: `-${pkg.version}.min`,
-            extname: '.css'
-          }))),
+            suffix: `-${pkg.version}`
+          }))
+      ),
 
       compileStylesheet(
         gulp.src(`${slash(paths.src)}/govuk/all-ie8.scss`, {
@@ -45,9 +45,9 @@ export function compileStylesheets () {
         })
           .pipe(rename({
             basename: 'govuk-frontend-ie8',
-            suffix: `-${pkg.version}.min`,
-            extname: '.css'
-          })))
+            suffix: `-${pkg.version}`
+          }))
+      )
     )
       .pipe(gulp.dest(slash(destPath), {
         sourcemaps: '.'
@@ -78,7 +78,8 @@ export function compileStylesheets () {
         .pipe(rename((path) => {
           path.basename = path.dirname
           path.dirname = 'full-page-examples'
-        })))
+        }))
+    )
   )
     .pipe(gulp.dest(slash(destPath), {
       sourcemaps: '.'
@@ -98,6 +99,9 @@ function compileStylesheet (stream, options = {}) {
   return stream
     .pipe(plumber(errorHandler(stream, 'compile:scss')))
     .pipe(sass(options))
+    .pipe(rename({
+      extname: '.min.css'
+    }))
     .pipe(postcss())
     .pipe(plumber.stop())
 }
