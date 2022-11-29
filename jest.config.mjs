@@ -14,10 +14,19 @@ const config = {
   // See: https://jestjs.io/docs/ecmascript-modules
   transform: {
     '^.+\\.m?js$': ['babel-jest', { rootMode: 'upward' }]
-  }
+  },
+
+  // Enable Babel transforms for ESM-only node_modules
+  // See: https://jestjs.io/docs/ecmascript-modules
+  transformIgnorePatterns: [
+    `<rootDir>/node_modules/(?!${[
+      'del',
+      'slash'
+    ].join('|')}/)`
+  ]
 }
 
-module.exports = {
+export default {
   collectCoverageFrom: ['./src/**/*.{js,mjs}'],
   projects: [
     {
@@ -51,7 +60,7 @@ module.exports = {
       ...config,
       displayName: 'JavaScript behaviour tests',
       testMatch: [
-        '**/*.test.js',
+        '**/*.test.{js,mjs}',
 
         // Exclude macro/unit tests
         '!**/(*.)?template.test.{js,mjs}',
@@ -73,7 +82,7 @@ module.exports = {
       testEnvironment: './config/jest/environment/puppeteer.mjs',
       testMatch: [
         '**/all.test.{js,mjs}',
-        '**/components/*/*.test.js',
+        '**/components/*/*.test.{js,mjs}',
 
         // Exclude macro/unit tests
         '!**/(*.)?template.test.{js,mjs}',

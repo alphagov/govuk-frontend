@@ -1,6 +1,6 @@
 import { basename, join } from 'path'
 
-import del from 'del'
+import { deleteAsync } from 'del'
 import slash from 'slash'
 
 import { destination } from './task-arguments.mjs'
@@ -24,7 +24,7 @@ export function paths (cleanPath) {
 }
 
 export function clean () {
-  return del(paths(cleanPath))
+  return deleteAsync(paths(cleanPath))
 }
 
 clean.displayName = `clean:${basename(cleanPath)}`

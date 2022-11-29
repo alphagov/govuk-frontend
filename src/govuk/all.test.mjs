@@ -1,9 +1,9 @@
-const sassdoc = require('sassdoc')
-const slash = require('slash')
+import sassdoc from 'sassdoc'
+import slash from 'slash'
 
-const configPaths = require('../../config/paths')
-const { renderSass } = require('../../lib/jest-helpers')
-const { goTo, goToExample } = require('../../lib/puppeteer-helpers')
+import configPaths from '../../config/paths.js'
+import { renderSass } from '../../lib/jest-helpers.js'
+import { goTo, goToExample } from '../../lib/puppeteer-helpers.js'
 
 describe('GOV.UK Frontend', () => {
   describe('javascript', () => {
