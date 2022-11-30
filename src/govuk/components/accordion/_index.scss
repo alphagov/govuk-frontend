@@ -46,7 +46,18 @@
       padding-top: 0;
     }
 
-    // Hide the body of collapsed sections
+    // Manually apply display: none to browsers that don't have a user agent
+    // style for it, but override it with content-visibility if the browser
+    // supports that instead.
+    .govuk-accordion__section-content[hidden] {
+      display: none;
+      @supports (content-visibility: hidden) {
+        content-visibility: hidden;
+        display: inherit;
+      }
+    }
+
+    // Hide the padding of collapsed sections
     .govuk-accordion__section--expanded .govuk-accordion__section-content {
       @include govuk-responsive-padding(8, "bottom");
       @include govuk-responsive-padding(3, "top");
