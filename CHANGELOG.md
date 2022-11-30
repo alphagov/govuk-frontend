@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+### New features
+
+#### Search within accordion content on supporting browsers
+
+We've updated the Accordion component to use the new [`hidden="until-found"` attribute value](https://developer.chrome.com/articles/hidden-until-found/).
+
+This allows the browser's native 'find in page' functionality to search within and automatically open sections of the accordion. Currently, this functionality is only supported by recent versions of Google Chrome, Microsoft Edge and Samsung Internet.
+
+This was added in [pull request #3053: Enhance the Accordion component with `hidden='until-found'`](https://github.com/alphagov/govuk-frontend/pull/3053). 
+
 ### Fixes
 
 - [#2998: Refactor back link and breadcrumb chevrons to use ems](https://github.com/alphagov/govuk-frontend/pull/2998)
