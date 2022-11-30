@@ -2,7 +2,7 @@
 
 @include govuk-exports("govuk/component/hide-this-page") {
   .govuk-hide-this-page {
-    position: fixed;
+    position: sticky;
     z-index: 1000;
     top: 0;
     left: 0;
