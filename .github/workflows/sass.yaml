@@ -145,7 +145,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.6 # Latest Ruby when Ruby Sass was EOL'ed (April 2019)
+          ruby-version: 3.1 # Ruby 3.1 supported by Ruby Sass v3
 
       - name: Install gem
         run: |
