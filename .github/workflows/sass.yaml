@@ -50,7 +50,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           cache: npm
-          node-version: 14 # Node.js 14 supported by Dart Sass v1
+          node-version: 18 # Node.js 18 supported by Dart Sass v1
 
       - name: Install package
         run: |
