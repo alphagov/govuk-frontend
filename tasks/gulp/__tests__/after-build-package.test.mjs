@@ -31,7 +31,7 @@ describe('package/', () => {
   it('should contain the expected files', async () => {
     const filterPatterns = [
       '!**/.DS_Store',
-      '!**/*.test.*',
+      '!**/*.+(test|spec).*',
       '!**/__snapshots__/',
       '!**/__snapshots__/**',
       '!govuk/README.md'

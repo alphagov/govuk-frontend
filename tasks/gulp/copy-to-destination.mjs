@@ -41,7 +41,7 @@ export function copyFiles () {
      */
     gulp.src([
       `${slash(configPaths.src)}/govuk/**/*.mjs`,
-      `!${slash(configPaths.src)}/govuk/**/*.test.*`
+      `!${slash(configPaths.src)}/govuk/**/*.+(test|spec).*`
     ]).pipe(gulp.dest(slash(join(destination, 'govuk-esm')))),
 
     /**

@@ -121,7 +121,9 @@ export async function compileJavaScripts () {
     : destination
 
   // For dist/ folder we only want compiled 'all.js'
-  const fileLookup = isDist ? 'govuk/all.mjs' : 'govuk/**/!(*.test).mjs'
+  // For non dist/ folder we want to exclude test and spec files
+  // See https://github.com/micromatch/micromatch#extglobs for extglobs matching syntax
+  const fileLookup = isDist ? 'govuk/all.mjs' : 'govuk/**/!(*.+(test|spec)).mjs'
 
   // Perform a search and return an array of matching file names
   const srcFiles = await getListing(configPaths.src, fileLookup)
