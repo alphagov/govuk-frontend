@@ -12,3 +12,6 @@ examples/**/package-lock.json
 jsdoc/
 sassdoc/
 .cache
+/test-results/
+/playwright-report/
+/playwright/.cache/

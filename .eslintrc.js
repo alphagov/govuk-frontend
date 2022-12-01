@@ -23,12 +23,7 @@ module.exports = {
       parserOptions: {
         ecmaVersion: 'latest'
       },
-      plugins: [
-        'import',
-        'jsdoc',
-        'n',
-        'promise'
-      ],
+      plugins: ['import', 'jsdoc', 'n', 'promise'],
       rules: {
         // Check import or require statements are A-Z ordered
         'import/order': [
@@ -54,14 +49,16 @@ module.exports = {
 
         // Add unknown @jest-environment tag name
         'jsdoc/check-tag-names': [
-          'warn', {
+          'warn',
+          {
             definedTags: ['jest-environment']
           }
         ],
 
         // Add missing .querySelectorAll() type
         'jsdoc/no-undefined-types': [
-          'error', {
+          'error',
+          {
             definedTypes: ['NodeListOf']
           }
         ]
@@ -103,6 +100,12 @@ module.exports = {
       files: ['**/*.test.{cjs,js,mjs}'],
       env: {
         jest: true
+      }
+    },
+    {
+      files: ['**/*.spec.{cjs,js,mjs}'],
+      parserOptions: {
+        ecmaVersion: 'latest'
       }
     }
   ]
