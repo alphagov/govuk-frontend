@@ -61,7 +61,7 @@
     "jsdoc-tsimport-plugin": "^1.0.5",
     "map-stream": "^0.0.7",
     "merge-stream": "^2.0.0",
-    "minimatch": "^5.1.0",
+    "minimatch": "^5.1.1",
     "node-sass": "^8.0.0",
     "nunjucks": "^3.2.3",
     "plugin-error": "^2.0.0",
