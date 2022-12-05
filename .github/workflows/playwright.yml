@@ -5,6 +5,19 @@ on:
 
 jobs:
   test:
+    name: Browser test
+    strategy:
+      matrix:
+        include:
+          - description: Chromium
+            name: chromium
+
+          - description: Firefox
+            name: firefox
+
+          - description: Webkit
+            name: webkit
+
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
@@ -21,7 +34,7 @@ jobs:
       run: npx playwright install --with-deps
 
     - name: Run Playwright tests
-      run: npx playwright test
+      run: npx playwright test --project ${{ matrix.name }}
 
     - uses: actions/upload-artifact@v3
       if: always()
