@@ -390,7 +390,19 @@ Accordion.prototype.updateShowAllButton = function (expanded) {
     ? this.i18n.t('hideAllSections')
     : this.i18n.t('showAllSections')
 
+  var newButtonAriaLabelText
+  if (expanded) {
+    newButtonAriaLabelText = Object.prototype.hasOwnProperty.call(this.config, 'i18n.hideAllSectionsAriaLabel')
+      ? this.i18n.t('hideAllSectionsAriaLabel')
+      : this.i18n.t('hideAllSections')
+  } else {
+    newButtonAriaLabelText = Object.prototype.hasOwnProperty.call(this.config, 'i18n.showAllSectionsAriaLabel')
+      ? this.i18n.t('showAllSectionsAriaLabel')
+      : this.i18n.t('showAllSections')
+  }
+
   this.$showAllButton.setAttribute('aria-expanded', expanded)
+  this.$showAllButton.setAttribute('aria-label', newButtonAriaLabelText)
   this.$showAllText.innerText = newButtonText
 
   // Swap icon, toggle class
@@ -500,12 +512,18 @@ export default Accordion
  * for the buttons toggling each section.
  * @property {string} [hideAllSections] - The text content for the 'Hide all
  * sections' button, used when at least one section is expanded.
+ * @property {string} [hideAllSectionsAriaLabel] - The text content for the
+ * 'Hide all sections' to be made available to assistive technologies such as
+ * screen readers.
  * @property {string} [hideSection] - The text content for the 'Hide'
  * button, used when a section is expanded.
  * @property {string} [hideSectionAriaLabel] - The text content appended to the
  * 'Hide' button's accessible name when a section is expanded.
  * @property {string} [showAllSections] - The text content for the 'Show all
  * sections' button, used when all sections are collapsed.
+ * @property {string} [showAllSectionsAriaLabel] - The text content for the
+ * 'Show all sections' to be made available to assistive technologies such as
+ * screen readers.
  * @property {string} [showSection] - The text content for the 'Show'
  * button, used when a section is collapsed.
  * @property {string} [showSectionAriaLabel] - The text content appended to the

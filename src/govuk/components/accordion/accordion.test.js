@@ -313,6 +313,40 @@ describe('/components/accordion', () => {
           expect(allSectionsToggleText).toBe('Dangos adrannau')
         })
 
+        it('should localise "Show all sections" aria-label based on data attribute', async () => {
+          await goToComponent(page, 'accordion', {
+            exampleName: 'with-translations'
+          })
+
+          const showAllSectionsDataAttribute = await page.evaluate(() =>
+            document.body
+              .querySelector('.govuk-accordion')
+              .getAttribute('data-i18n.show-all-sections-aria-label')
+          )
+
+          const allSectionsToggleAriaLabel = await page.evaluate(
+            () =>
+              document.body.querySelector(
+                '.govuk-accordion__show-all'
+              ).getAttribute('aria-label')
+          )
+
+          expect(allSectionsToggleAriaLabel).toBe(showAllSectionsDataAttribute)
+        })
+
+        it('should localise "Show all sections" aria-label based on JavaScript configuration', async () => {
+          await goToExample(page, 'translated')
+
+          const allSectionsToggleAriaLabel = await page.evaluate(
+            () =>
+              document.body.querySelector(
+                '.govuk-accordion__show-all'
+              ).getAttribute('aria-label')
+          )
+
+          expect(allSectionsToggleAriaLabel).toBe('Dangos rhannau o’r acordion hwn')
+        })
+
         it('should localise "Hide all sections" based on data attribute', async () => {
           await goToComponent(page, 'accordion', {
             exampleName: 'with-translations'
@@ -333,6 +367,45 @@ describe('/components/accordion', () => {
           const allSectionsToggleText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__show-all-text').innerHTML)
 
           expect(allSectionsToggleText).toBe('Cuddio adrannau')
+        })
+
+        it('should localise "Hide all sections" aria-label based on data attribute', async () => {
+          await goToComponent(page, 'accordion', {
+            exampleName: 'with-translations'
+          })
+          await page.click(
+            '.govuk-accordion .govuk-accordion__show-all-text'
+          )
+
+          const hideAllSectionsDataAttribute = await page.evaluate(() =>
+            document.body
+              .querySelector('.govuk-accordion')
+              .getAttribute('data-i18n.hide-all-sections-aria-label')
+          )
+
+          const allSectionsToggleAriaLabel = await page.evaluate(
+            () => document.body.querySelector(
+              '.govuk-accordion__show-all'
+            ).getAttribute('aria-label')
+          )
+
+          expect(allSectionsToggleAriaLabel).toBe(hideAllSectionsDataAttribute)
+        })
+
+        it('should localise "Hide all sections" aria-label based on JavaScript configuration, falling back to non aria attribute when not set', async () => {
+          await goToExample(page, 'translated')
+          await page.click(
+            '.govuk-accordion .govuk-accordion__show-all-text'
+          )
+
+          const allSectionsToggleAriaLabel = await page.evaluate(
+            () =>
+              document.body.querySelector(
+                '.govuk-accordion__show-all'
+              ).getAttribute('aria-label')
+          )
+
+          expect(allSectionsToggleAriaLabel).toBe('Cuddio adrannau')
         })
 
         it('should localise "Show section" based on data attribute', async () => {

@@ -19,6 +19,10 @@ params:
   type: string
   required: false
   description: The text content of the 'Hide all sections' button at the top of the accordion when all sections are expanded.
+- name: hideAllSectionsAriaLabelText
+  type: string
+  required: false
+  description: Text made available to assistive technologies, like screen-readers, as the all sections toggle's accessible name when all sections are collapsed. Defaults to the value for `hideAllSectionsText`.
 - name: hideSectionText
   type: string
   required: false
@@ -31,6 +35,10 @@ params:
   type: string
   required: false
   description: The text content of the 'Show all sections' button at the top of the accordion when at least one section is collapsed.
+- name: showAllSectionsAriaLabelText
+  type: string
+  required: false
+  description: Text made available to assistive technologies, like screen-readers, as the all sections toggle's accessible name when at least one section is collapsed. Defaults to the value for `showAllSectionsText`.
 - name: showSectionText
   type: string
   required: false
@@ -197,7 +205,9 @@ examples:
   data:
     id: with-translations
     hideAllSectionsText: Collapse all sections
+    hideAllSectionsAriaLabelText: Collapse all sections of this accordion
     showAllSectionsText: Expand all sections
+    showAllSectionsAriaLabelText: Expand all sections of this accordion
     hideSectionText: Collapse
     hideSectionAriaLabelText: Collapse this section
     showSectionText: Expand
