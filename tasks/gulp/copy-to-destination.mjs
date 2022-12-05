@@ -55,6 +55,7 @@ export function copyFiles () {
         '!**/*.test.*',
         '!**/__snapshots__/',
         '!**/__snapshots__/**',
+        '!**/tsconfig.json',
 
         // Preserve destination README when copying to ./package
         // https://github.com/alphagov/govuk-frontend/tree/main/package#readme

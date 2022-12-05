@@ -79,6 +79,7 @@
     "@percy/cli": "^1.20.0",
     "@percy/puppeteer": "^2.0.2",
     "@percy/sdk-utils": "^1.20.0",
+    "@types/node": "^18.11.18",
     "cheerio": "^1.0.0-rc.12",
     "editorconfig-checker": "^5.0.1",
     "eslint": "^8.34.0",
@@ -105,7 +106,8 @@
     "standard": "^17.0.0",
     "stylelint": "^14.16.1",
     "stylelint-config-gds": "^0.2.0",
-    "stylelint-order": "^6.0.2"
+    "stylelint-order": "^6.0.2",
+    "typescript": "^4.9.5"
   },
   "overrides": {
     "chokidar@^2": {
