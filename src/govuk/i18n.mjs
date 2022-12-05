@@ -88,8 +88,8 @@ I18n.prototype.replacePlaceholders = function (translationString, options) {
       }
 
       // If the placeholder's value is a number, localise the number formatting
-      if (typeof placeholderValue === 'number' && formatter) {
-        return formatter.format(placeholderValue)
+      if (typeof placeholderValue === 'number') {
+        return formatter ? formatter.format(placeholderValue) : placeholderValue.toString()
       }
 
       return placeholderValue
