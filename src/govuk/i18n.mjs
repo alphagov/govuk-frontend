@@ -212,7 +212,7 @@ I18n.prototype.selectPluralFormUsingFallbackRules = function (count) {
  * regardless of region. There are exceptions, however, (e.g. Portuguese) so
  * this searches by both the full and shortened locale codes, just to be sure.
  *
- * @returns {PluralRuleName | undefined} The name of the pluralisation rule to use (a key for one
+ * @returns {string | undefined} The name of the pluralisation rule to use (a key for one
  *   of the functions in this.pluralRules)
  */
 I18n.prototype.getPluralRulesForLocale = function () {
@@ -263,7 +263,7 @@ I18n.prototype.getPluralRulesForLocale = function () {
  * Spanish: European Portuguese (pt-PT), Italian (it), Spanish (es)
  * Welsh: Welsh (cy)
  *
- * @type {Object<PluralRuleName, string[]>}
+ * @type {Object<string, string[]>}
  */
 I18n.pluralRulesMap = {
   arabic: ['ar'],
