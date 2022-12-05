@@ -102,7 +102,7 @@
     "puppeteer": "^19.3.0",
     "sass-color-helpers": "^2.1.1",
     "standard": "^17.0.0",
-    "stylelint": "^14.15.0",
+    "stylelint": "^14.16.0",
     "stylelint-config-gds": "^0.2.0",
     "stylelint-order": "^5.0.0",
     "vinyl": "^3.0.0",
