@@ -55,14 +55,14 @@ Header.prototype.init = function () {
     // Set the matchMedia to the govuk-frontend desktop breakpoint
     this.mql = window.matchMedia('(min-width: 48.0625em)')
 
-    if ('addEventListener' in this.mql) {
-      this.mql.addEventListener('change', this.syncState.bind(this))
-    } else {
-      // addListener is a deprecated function, however addEventListener
-      // isn't supported by IE or Safari. We therefore add this in as
-      // a fallback for those browsers
-      this.mql.addListener(this.syncState.bind(this))
-    }
+    var listenerMethod = 'addEventListener' in this.mql
+      ? 'addEventListener'
+      : 'addListener'
+
+    // addListener is a deprecated function, however addEventListener
+    // isn't supported by IE or Safari. We therefore add this in as
+    // a fallback for those browsers
+    this.mql[listenerMethod]('change', this.syncState.bind(this))
 
     this.syncState()
     this.$menuButton.addEventListener('click', this.handleMenuButtonClick.bind(this))

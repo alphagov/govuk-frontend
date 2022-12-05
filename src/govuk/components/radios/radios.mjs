@@ -77,11 +77,10 @@ Radios.prototype.init = function () {
   // state of form controls is not restored until *after* the DOMContentLoaded
   // event is fired, so we need to sync after the pageshow event in browsers
   // that support it.
-  if ('onpageshow' in window) {
-    window.addEventListener('pageshow', this.syncAllConditionalReveals.bind(this))
-  } else {
-    window.addEventListener('DOMContentLoaded', this.syncAllConditionalReveals.bind(this))
-  }
+  window.addEventListener(
+    'onpageshow' in window ? 'pageshow' : 'DOMContentLoaded',
+    this.syncAllConditionalReveals.bind(this)
+  )
 
   // Although we've set up handlers to sync state on the pageshow or
   // DOMContentLoaded event, init could be called after those events have fired,
