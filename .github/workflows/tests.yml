@@ -161,6 +161,12 @@ jobs:
       - name: Run verify task
         run: ${{ matrix.run }}
 
+  playwright:
+    name: Playwright
+    needs: [install, build]
+
+    uses: ./.github/workflows/playwright.yml
+
   regression:
     name: Percy
     needs: [install, build]
