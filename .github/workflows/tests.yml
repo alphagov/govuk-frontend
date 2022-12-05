@@ -161,11 +161,23 @@ jobs:
       - name: Run verify task
         run: ${{ matrix.run }}
 
-  playwright:
-    name: Playwright
+  playwright-bulk:
+    name: Playwright - Bulk
     needs: [install, build]
 
-    uses: ./.github/workflows/playwright.yml
+    uses: ./.github/workflows/playwright-bulk.yml
+
+  playwright-matrix:
+    name: Playwright - Matrix
+    needs: [install, build]
+
+    uses: ./.github/workflows/playwright-matrix.yml
+
+  jest-puppeteer:
+    name: Puppeteer comparison
+    needs: [install, build]
+
+    uses: ./.github/workflows/puppeteer-comparison.yml
 
   regression:
     name: Percy

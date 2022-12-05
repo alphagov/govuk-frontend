@@ -1,0 +1,38 @@
+name: Puppeteer comparison
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Browser test
+
+    strategy:
+      matrix:
+        suite:
+          - test: character-count/character-count
+          - test: checkboxes/template
+          - test: "character-count/character-count checkboxes/template"
+
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      uses: ./.github/workflows/actions/install-node
+
+    - name: Build
+      uses: ./.github/workflows/actions/build
+
+    - name: Test
+      run: npx jest --color --maxWorkers=2 --testLocationInResults ${{matrix.suite.test}}
+
+    - name: Save test coverage
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${{ matrix.description }} coverage
+        path: coverage
+        if-no-files-found: ignore

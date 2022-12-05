@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: Playwright Matrix
 on:
   workflow_call:
   workflow_dispatch:
@@ -8,15 +8,14 @@ jobs:
     name: Browser test
     strategy:
       matrix:
-        include:
-          - description: Chromium
-            name: chromium
-
-          - description: Firefox
-            name: firefox
-
-          - description: Webkit
-            name: webkit
+        suite:
+          - test: character-count/character-count
+          - test: checkboxes/template
+          - test: ""
+        browser:
+          - name: chromium
+          - name: firefox
+          - name: webkit
 
     timeout-minutes: 60
     runs-on: ubuntu-latest
@@ -34,7 +33,7 @@ jobs:
       run: npx playwright install --with-deps
 
     - name: Run Playwright tests
-      run: npx playwright test --project ${{ matrix.name }}
+      run: npx playwright test --project=${{ matrix.browser.name }} ${{matrix.suite.test}}
 
     - uses: actions/upload-artifact@v3
       if: always()
