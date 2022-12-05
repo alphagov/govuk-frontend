@@ -33,9 +33,9 @@ I18n.prototype.t = function (lookupKey, options) {
   }
 
   // If the `count` option is set, determine which plural suffix is needed and
-  // change the lookupKey to match. We check to see if it's undefined instead of
+  // change the lookupKey to match. We check to see if it's numeric instead of
   // falsy, as this could legitimately be 0.
-  if (options && typeof options.count !== 'undefined') {
+  if (options && typeof options.count === 'number') {
     // Get the plural suffix
     lookupKey = lookupKey + '.' + this.getPluralSuffix(lookupKey, options.count)
   }
@@ -87,8 +87,8 @@ I18n.prototype.replacePlaceholders = function (translationString, options) {
       }
 
       // If the placeholder's value is a number, localise the number formatting
-      if (typeof placeholderValue === 'number' && formatter) {
-        return formatter.format(placeholderValue)
+      if (typeof placeholderValue === 'number') {
+        return formatter ? formatter.format(placeholderValue) : placeholderValue.toString()
       }
 
       return placeholderValue
