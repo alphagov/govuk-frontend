@@ -29,349 +29,223 @@ test.describe('Checkboxes', () => {
     expect(result.violations).toEqual([])
   })
 
-  test('render example with minimum required name and items', async () => {
-    await renderAndInitialise(page, 'checkboxes', {nunjucksParams: examples.default })
-    const $ = render('checkboxes', examples.default)
+  test('render example with minimum required name and items', async ({ page }) => {
+    await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples.default })
 
-    const $component = $('.govuk-checkboxes')
+    const component = page.locator('#slot > *').first()
+    const firstInput = component.getByRole('checkbox', { name: 'British' })
+    await expect(firstInput).toHaveValue('british')
+    await expect(firstInput).toHaveAttribute('name', 'nationality')
 
-    const $firstInput = $component.find(
-      '.govuk-checkboxes__item:first-child input'
-    )
-    const $firstLabel = $component.find(
-      '.govuk-checkboxes__item:first-child label'
-    )
-    expect($firstInput.attr('name')).toEqual('nationality')
-    expect($firstInput.val()).toEqual('british')
-    expect($firstLabel.text()).toContain('British')
-
-    const $lastInput = $component.find(
-      '.govuk-checkboxes__item:last-child input'
-    )
-    const $lastLabel = $component.find(
-      '.govuk-checkboxes__item:last-child label'
-    )
-    expect($lastInput.attr('name')).toEqual('nationality')
-    expect($lastInput.val()).toEqual('other')
-    expect($lastLabel.text()).toContain('Citizen of another country')
+    const lastInput = component.getByRole('checkbox', { name: 'Citizen of another country' })
+    await expect(lastInput).toHaveValue('other')
+    await expect(lastInput).toHaveAttribute('name', 'nationality')
   })
 
-  test('render example without falsely values', () => {
-    const $ = render('checkboxes', examples['with falsey values'])
+  test('render example without falsely values', async ({ page }) => {
+    await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with falsey values'] })
+    const component = page.locator('#slot > *').first()
 
-    const $component = $('.govuk-checkboxes')
-    const $items = $component.find('.govuk-checkboxes__item')
-
-    expect($items.length).toEqual(2)
+    await expect(component.getByRole('checkbox')).toHaveCount(2)
   })
 
-  test('render example with a divider and ‘None’ checkbox with exclusive behaviour', () => {
-    const $ = render('checkboxes', examples['with divider and None'])
+  test('render example with a divider and ‘None’ checkbox with exclusive behaviour', async ({ page }) => {
+    await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with divider and None'] })
+    const component = page.locator('#slot > *').first()
 
-    const $component = $('.govuk-checkboxes')
+    await expect(component.getByText('or', { exact: true })).toHaveClass(/govuk-checkboxes__divider/)
 
-    const $divider = $component.find('.govuk-checkboxes__divider').first()
-    expect($divider.text().trim()).toEqual('or')
-
-    const $items = $component.find('.govuk-checkboxes__item')
-    expect($items.length).toEqual(4)
-
-    const $orItemInput = $items.last().find('input').first()
-    expect($orItemInput.attr('data-behaviour')).toEqual('exclusive')
+    const checkboxes = component.getByRole('checkbox')
+    await expect(checkboxes).toHaveCount(4)
+    await expect(checkboxes.last()).toHaveAttribute('data-behaviour', 'exclusive')
   })
 
-  test('render additional label classes', () => {
-    const $ = render('checkboxes', examples['with label classes'])
+  test('render additional label classes', async ({ page }) => {
+    await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with label classes'] })
+    const component = page.locator('#slot > *').first()
 
-    const $component = $('.govuk-checkboxes')
-    const $label = $component.find('.govuk-checkboxes__item label')
-    expect($label.hasClass('bold')).toBeTruthy()
+    await expect(component.locator('.govuk-checkboxes__item label')).toHaveClass(/bold/)
   })
 
-  test('render classes', () => {
-    const $ = render('checkboxes', examples.classes)
+  test('render classes', async ({ page }) => {
+    await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples.classes })
+    const component = page.locator('#slot > *').first()
 
-    const $component = $('.govuk-checkboxes')
-
-    expect($component.hasClass('app-checkboxes--custom-modifier')).toBeTruthy()
+    await expect(component.locator('.govuk-checkboxes')).toHaveClass(/app-checkboxes--custom-modifier/)
   })
 
-  test('renders initial aria-describedby on fieldset', () => {
-    const $ = render('checkboxes', examples['with fieldset describedBy'])
+  test('renders initial aria-describedby on fieldset', async ({ page }) => {
+    await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with fieldset describedBy'] })
+    const component = page.locator('#slot > *').first()
 
-    const $fieldset = $('.govuk-fieldset')
-    expect($fieldset.attr('aria-describedby')).toMatch('some-id')
+    await expect(component.locator('.govuk-fieldset')).toHaveAttribute('aria-describedby', /some-id/)
   })
 
-  test('render attributes', () => {
-    const $ = render('checkboxes', examples.attributes)
+  test('render attributes', async ({ page }) => {
+    await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples.attributes })
+    const component = page.locator('#slot > *').first()
 
-    const $component = $('.govuk-checkboxes')
-
-    expect($component.attr('data-attribute')).toEqual('value')
-    expect($component.attr('data-second-attribute')).toEqual('second-value')
+    const checkboxesWrapper = component.locator('.govuk-checkboxes')
+    await expect(checkboxesWrapper).toHaveAttribute('data-attribute', 'value')
+    await expect(checkboxesWrapper).toHaveAttribute('data-second-attribute', 'second-value')
   })
 
-  test('renders with a form group wrapper', () => {
-    const $ = render('checkboxes', examples.default)
+  test('renders with a form group wrapper', async ({ page }) => {
+    await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples.default })
+    const component = page.locator('#slot > *').first()
 
-    const $formGroup = $('.govuk-form-group')
-    expect($formGroup.length).toBeTruthy()
+    await expect(component).toHaveClass(/govuk-form-group/)
   })
 
-  test('render a custom class on the form group', () => {
-    const $ = render(
-      'checkboxes',
-      examples['with optional form-group classes showing group error']
-    )
+  test('render a custom class on the form group', async ({ page }) => {
+    await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with optional form-group classes showing group error'] })
+    const component = page.locator('#slot > *').first()
 
-    const $formGroup = $('.govuk-form-group')
-    expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
+    await expect(component).toHaveClass(/govuk-form-group govuk-form-group--error/)
   })
 
   test.describe('items', () => {
-    test('render a matching label and input using name by default', () => {
-      const $ = render('checkboxes', examples.default)
+    test('render a matching label and input using name by default', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples.default })
+      const component = page.locator('#slot > *').first()
 
-      const $component = $('.govuk-checkboxes')
-
-      const $firstInput = $component.find(
-        '.govuk-checkboxes__item:first-child input'
-      )
-      const $firstLabel = $component.find(
-        '.govuk-checkboxes__item:first-child label'
-      )
-      expect($firstInput.attr('id')).toEqual('nationality')
-      expect($firstLabel.attr('for')).toEqual('nationality')
-
-      const $lastInput = $component.find(
-        '.govuk-checkboxes__item:last-child input'
-      )
-      const $lastLabel = $component.find(
-        '.govuk-checkboxes__item:last-child label'
-      )
-      expect($lastInput.attr('id')).toEqual('nationality-3')
-      expect($lastLabel.attr('for')).toEqual('nationality-3')
+      await expect(component.getByRole('checkbox', { name: 'British' })).toHaveId('nationality')
+      await expect(component.getByRole('checkbox', { name: 'Citizen of another country' })).toHaveId('nationality-3')
     })
 
-    test('render a matching label and input using custom idPrefix', () => {
-      const $ = render('checkboxes', examples['with idPrefix'])
+    test('render a matching label and input using custom idPrefix', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with idPrefix'] })
+      const component = page.locator('#slot > *').first()
 
-      const $component = $('.govuk-checkboxes')
-
-      const $firstInput = $component.find(
-        '.govuk-checkboxes__item:first-child input'
-      )
-      const $firstLabel = $component.find(
-        '.govuk-checkboxes__item:first-child label'
-      )
-      expect($firstInput.attr('id')).toEqual('nationality')
-      expect($firstLabel.attr('for')).toEqual('nationality')
-
-      const $lastInput = $component.find(
-        '.govuk-checkboxes__item:last-child input'
-      )
-      const $lastLabel = $component.find(
-        '.govuk-checkboxes__item:last-child label'
-      )
-      expect($lastInput.attr('id')).toEqual('nationality-2')
-      expect($lastLabel.attr('for')).toEqual('nationality-2')
+      await expect(component.getByRole('checkbox', { name: 'Option 1' })).toHaveId('nationality')
+      await expect(component.getByRole('checkbox', { name: 'Option 2' })).toHaveId('nationality-2')
     })
 
-    test('render explicitly passed item ids', () => {
-      const $ = render('checkboxes', examples['with id and name'])
+    test('render explicitly passed item ids', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with id and name'] })
+      const component = page.locator('#slot > *').first()
 
-      const $component = $('.govuk-checkboxes')
-
-      const $lastInput = $component.find(
-        '.govuk-checkboxes__item:last-child input'
-      )
-      expect($lastInput.attr('id')).toBe('with-id-and-name-3')
-
-      const $firstInput = $component.find(
-        '.govuk-checkboxes__item:first-child input'
-      )
-      const $firstLabel = $component.find(
-        '.govuk-checkboxes__item:first-child label'
-      )
-      expect($firstInput.attr('id')).toBe('item_british')
-      expect($firstLabel.attr('for')).toEqual('item_british')
+      // First checkbox gets its ID from the id options in the item
+      await expect(component.getByRole('checkbox', { name: 'British' })).toHaveId('item_british')
+      // Last one doesn't have anything specified so gets its ID generated automatically
+      await expect(component.getByRole('checkbox', { name: 'Scottish' })).toHaveId('with-id-and-name-3')
     })
 
-    test('render explicitly passed item names', () => {
-      const $ = render('checkboxes', examples['with id and name'])
+    test('render explicitly passed item names', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with id and name'] })
+      const component = page.locator('#slot > *').first()
 
-      const $component = $('.govuk-checkboxes')
-
-      const $lastInput = $component.find(
-        '.govuk-checkboxes__item:last-child input'
-      )
-      expect($lastInput.attr('name')).toBe('custom-name-scottish')
+      // Last one doesn't have anything specified so gets its ID generated automatically
+      await expect(component.getByRole('checkbox', { name: 'Scottish' })).toHaveAttribute('name', 'custom-name-scottish')
     })
 
-    test('render disabled', () => {
-      const $ = render('checkboxes', examples['with disabled item'])
+    test('render disabled', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with disabled item'] })
+      const component = page.locator('#slot > *').first()
 
-      const $component = $('.govuk-checkboxes')
-
-      const $disabledInput = $component.find(
-        '.govuk-checkboxes__item:last-child input'
-      )
-      expect($disabledInput.attr('disabled')).toEqual('disabled')
+      await expect(component.getByRole('checkbox', { name: 'Sign in with GOV.UK Verify' })).toBeDisabled()
     })
 
-    test('render checked', () => {
-      const $ = render('checkboxes', examples['with checked item'])
+    test('render checked', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with checked item'] })
+      const component = page.locator('#slot > *').first()
 
-      const $component = $('.govuk-checkboxes')
-      const $secondInput = $component.find(
-        '.govuk-checkboxes__item:nth-child(2) input'
-      )
-      const $lastInput = $component.find(
-        '.govuk-checkboxes__item:last-child input'
-      )
-      expect($secondInput.attr('checked')).toEqual('checked')
-      expect($lastInput.attr('checked')).toEqual('checked')
+      await expect(component.getByRole('checkbox', { name: 'Option 1' })).not.toBeChecked()
+      await expect(component.getByRole('checkbox', { name: 'Option 2' })).toBeChecked()
+      await expect(component.getByRole('checkbox', { name: 'Option 3' })).toBeChecked()
     })
 
-    test('checks the checkboxes in values', () => {
-      const $ = render('checkboxes', examples['with pre-checked values'])
+    test('checks the checkboxes in values', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with pre-checked values'] })
+      const component = page.locator('#slot > *').first()
 
-      const $component = $('.govuk-checkboxes')
-      const $british = $component.find('input[value="british"]')
-      expect($british.attr('checked')).toEqual('checked')
-
-      const $other = $component.find('input[value="other"]')
-      expect($other.attr('checked')).toEqual('checked')
+      await expect(component.getByRole('checkbox', { name: 'British' })).toBeChecked()
+      await expect(component.getByRole('checkbox', { name: 'Other' })).toBeChecked()
     })
 
-    test('allows item.checked to override values', () => {
-      const $ = render('checkboxes', examples['item checked overrides values'])
+    test('allows item.checked to override values', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['item checked overrides values'] })
+      const component = page.locator('#slot > *').first()
 
-      const $green = $('.govuk-checkboxes').find('input[value="green"]')
-      expect($green.attr('checked')).toBeUndefined()
+      // Despite green being part of the values, the item is marked with
+      // `checked: false` so shouldn't render checked
+      await expect(component.getByRole('checkbox', { name: 'Green' })).not.toBeChecked()
     })
 
     test.describe('when they include attributes', () => {
-      test('it renders the attributes', () => {
-        const $ = render('checkboxes', examples['items with attributes'])
+      test('it renders the attributes', async ({ page }) => {
+        await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['items with attributes'] })
+        const component = page.locator('#slot > *').first()
 
-        const $component = $('.govuk-checkboxes')
+        const firstOption = component.getByRole('checkbox', { name: 'Option 1' })
+        await expect(firstOption).toHaveAttribute('data-attribute', 'ABC')
+        await expect(firstOption).toHaveAttribute('data-second-attribute', 'DEF')
 
-        const $firstInput = $component.find(
-          '.govuk-checkboxes__item:first-child input'
-        )
-        expect($firstInput.attr('data-attribute')).toEqual('ABC')
-        expect($firstInput.attr('data-second-attribute')).toEqual('DEF')
-
-        const $lastInput = $component.find(
-          '.govuk-checkboxes__item:last-child input'
-        )
-        expect($lastInput.attr('data-attribute')).toEqual('GHI')
-        expect($lastInput.attr('data-second-attribute')).toEqual('JKL')
+        const secondOption = component.getByRole('checkbox', { name: 'Option 2' })
+        await expect(secondOption).toHaveAttribute('data-attribute', 'GHI')
+        await expect(secondOption).toHaveAttribute('data-second-attribute', 'JKL')
       })
     })
   })
 
   test.describe('when they include a hint', () => {
-    test('it renders the hint text', () => {
-      const $ = render('checkboxes', examples['with hints on items'])
+    test('it renders the hint text', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with hints on items'] })
+      const component = page.locator('#slot > *').first()
 
-      const $firstHint = $('.govuk-checkboxes__hint').first()
-      expect($firstHint.text().trim()).toContain(
-        "You'll have a user ID if you've registered for Self Assessment or filed a tax return online before."
-      )
-    })
+      const descriptionId = await component.getByRole('checkbox', { name: 'Sign in with Government Gateway' }).getAttribute('aria-describedby')
+      const description = component.locator(`#${descriptionId}`)
 
-    test('it renders the correct id attribute for the hint', () => {
-      const $ = render('checkboxes', examples['with hints on items'])
-
-      expect($('.govuk-checkboxes__hint').attr('id')).toBe(
-        'government-gateway-item-hint'
-      )
-    })
-
-    test('the input describedBy attribute matches the item hint id', () => {
-      const $ = render('checkboxes', examples['with hints on items'])
-
-      expect($('.govuk-checkboxes__input').attr('aria-describedby')).toBe(
-        'government-gateway-item-hint'
-      )
+      await expect(description).toHaveText("You'll have a user ID if you've registered for Self Assessment or filed a tax return online before.")
     })
   })
 
   test.describe('render conditionals', () => {
-    test('hidden by default when not checked', () => {
-      const $ = render('checkboxes', examples['with conditional items'])
+    test('hidden by default when not checked', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with conditional items'] })
+      const component = page.locator('#slot > *').first()
 
-      const $component = $('.govuk-checkboxes')
-
-      const $firstConditional = $component
-        .find('.govuk-checkboxes__conditional')
-        .first()
-      expect($firstConditional.text().trim()).toContain('Email address')
-      expect(
-        $firstConditional.hasClass('govuk-checkboxes__conditional--hidden')
-      ).toBeTruthy()
+      const firstConditional = component.locator('.govuk-checkboxes__conditional').first()
+      await expect(firstConditional).toHaveText('Email address')
+      await expect(firstConditional).not.toBeVisible()
     })
-    test('visible by default when checked', () => {
-      const $ = render('checkboxes', examples['with conditional item checked'])
+    test('visible by default when checked', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with conditional item checked'] })
+      const component = page.locator('#slot > *').first()
 
-      const $component = $('.govuk-checkboxes')
-
-      const $firstConditional = $component
-        .find('.govuk-checkboxes__conditional')
-        .first()
-      expect($firstConditional.text().trim()).toContain('Email address')
-      expect(
-        $firstConditional.hasClass('govuk-checkboxes__conditional--hidden')
-      ).toBeFalsy()
+      const firstConditional = component.locator('.govuk-checkboxes__conditional').first()
+      await expect(firstConditional).toHaveText('Email address')
+      await expect(firstConditional).toBeVisible()
     })
 
-    test('visible when checked with pre-checked values', () => {
-      const $ = render('checkboxes', examples['with pre-checked values'])
+    test('visible when checked with pre-checked values', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with pre-checked values'] })
+      const component = page.locator('#slot > *').first()
 
-      const $component = $('.govuk-checkboxes')
-
-      const $firstConditional = $component
-        .find('.govuk-checkboxes__conditional')
-        .first()
-      expect($firstConditional.text().trim()).toContain('Country')
-      expect(
-        $firstConditional.hasClass('govuk-checkboxes__conditional--hidden')
-      ).toBeFalsy()
+      const firstConditional = component.locator('.govuk-checkboxes__conditional').first()
+      await expect(firstConditional).toHaveText('Country')
+      await expect(firstConditional).toBeVisible()
     })
 
-    test('with association to the input they are controlled by', () => {
-      const $ = render('checkboxes', examples['with conditional items'])
+    test('with association to the input they are controlled by', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with conditional items'] })
+      const component = page.locator('#slot > *').first()
 
-      const $component = $('.govuk-checkboxes')
+      const checkbox = component.getByRole('checkbox', { name: 'Text message' })
+      // Move to `aria-controls` as the JavaScript is running for this test
+      const conditionalId = await checkbox.getAttribute('aria-controls')
+      const conditional = component.locator(`#${conditionalId}`)
 
-      const $lastInput = $component.find('.govuk-checkboxes__input').last()
-      const $lastConditional = $component
-        .find('.govuk-checkboxes__conditional')
-        .last()
-
-      expect($lastInput.attr('data-aria-controls')).toBe(
-        'conditional-how-contacted-3'
-      )
-      expect($lastConditional.attr('id')).toBe('conditional-how-contacted-3')
+      expect(conditionalId).toEqual('conditional-how-contacted-3')
+      await expect(conditional).toHaveCount(1)
     })
 
-    test('omits empty conditionals', () => {
-      const $ = render('checkboxes', examples['empty conditional'])
+    test('omits empty conditionals', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['empty conditional'] })
+      const component = page.locator('#slot > *').first()
 
-      const $component = $('.govuk-checkboxes')
-      expect($component.find('.govuk-checkboxes__conditional').length).toEqual(
-        0
-      )
-    })
-
-    test('does not associate checkboxes with empty conditionals', () => {
-      const $ = render('checkboxes', examples['empty conditional'])
-
-      const $input = $('.govuk-checkboxes__input').first()
-      expect($input.attr('data-aria-controls')).toBeFalsy()
+      await expect(component.locator('.govuk-checkboxes__conditional')).toHaveCount(0)
+      await expect(component.locator('input:is([aria-controls],[data-aria-controls])')).toHaveCount(0)
     })
   })
 
@@ -382,82 +256,70 @@ test.describe('Checkboxes', () => {
       expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
     })
 
-    test('uses the idPrefix for the error message id if provided', () => {
-      const $ = render('checkboxes', examples['with error and idPrefix'])
+    test('uses the idPrefix for the error message id if provided', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with error and idPrefix'] })
+      const component = page.locator('#slot > *').first()
 
-      const $errorMessage = $('.govuk-error-message')
-
-      expect($errorMessage.attr('id')).toEqual('id-prefix-error')
+      await expect(component.locator('.govuk-error-message')).toHaveId('id-prefix-error')
     })
 
-    test('falls back to using the name for the error message id', () => {
-      const $ = render('checkboxes', examples['with error message'])
+    test('falls back to using the name for the error message id', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with error message'] })
+      const component = page.locator('#slot > *').first()
 
-      const $errorMessage = $('.govuk-error-message')
-
-      expect($errorMessage.attr('id')).toEqual('waste-error')
+      await expect(component.locator('.govuk-error-message')).toHaveId('waste-error')
     })
 
-    test('associates the fieldset as "described by" the error message', () => {
-      const $ = render(
-        'checkboxes',
-        examples['with fieldset and error message']
+    test('associates the fieldset as "described by" the error message', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with fieldset and error message'] })
+      const component = page.locator('#slot > *').first()
+
+      // A `toHaveDescription` matcher would be pretty useful here
+      const errorMessageId = await component.locator('.govuk-error-message').getAttribute('id')
+      const expectedAriaDescribedby = new RegExp(
+        WORD_BOUNDARY + errorMessageId + WORD_BOUNDARY
       )
 
-      const $fieldset = $('.govuk-fieldset')
-      const $errorMessage = $('.govuk-error-message')
-
-      const errorMessageId = new RegExp(
-        WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
-      )
-
-      expect($fieldset.attr('aria-describedby')).toMatch(errorMessageId)
+      await expect(component.locator('.govuk-fieldset')).toHaveAttribute('aria-describedby', expectedAriaDescribedby)
     })
 
-    test('associates the fieldset as "described by" the error message and parent fieldset', () => {
-      const $ = render(
-        'checkboxes',
-        examples['with error message and fieldset describedBy']
-      )
+    test('associates the fieldset as "described by" the error message and parent fieldset', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with error message and fieldset describedBy'] })
+      const component = page.locator('#slot > *').first()
 
-      const $fieldset = $('.govuk-fieldset')
-      const $errorMessage = $('.govuk-error-message')
-
-      const errorMessageId = new RegExp(
+      const errorMessageId = await component.locator('.govuk-error-message').getAttribute('id')
+      const expectedAriaDescribedby = new RegExp(
         WORD_BOUNDARY +
-          'some-id' +
-          WHITESPACE +
-          $errorMessage.attr('id') +
-          WORD_BOUNDARY
+        'some-id' +
+        WHITESPACE +
+        errorMessageId +
+        WORD_BOUNDARY
       )
 
-      expect($fieldset.attr('aria-describedby')).toMatch(errorMessageId)
+      await expect(component.locator('.govuk-fieldset')).toHaveAttribute('aria-describedby', expectedAriaDescribedby)
     })
 
-    test('does not associate each input as "described by" the error message', () => {
-      const $ = render(
-        'checkboxes',
-        examples['with error message and hints on items']
-      )
+    test('does not associate each input as "described by" the error message', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with error message and hints on items'] })
+      const component = page.locator('#slot > *').first()
 
-      const $inputs = $('input')
+      const checkboxes = component.getByRole('checkbox')
+      const ariaDescribedbyValues = await checkboxes.evaluateAll(inputs => inputs.map(element => element.getAttribute('aria-describedby')))
 
-      $inputs.each((index, input) => {
-        let expectedDescribedById = `waste-${index + 1}-item-hint`
-        if (index === 0) {
-          expectedDescribedById = 'waste-item-hint'
+      ariaDescribedbyValues.forEach((ariaDescribedbyValue, index) => {
+        if (index) {
+          expect(ariaDescribedbyValue).toEqual(`waste-${index + 1}-item-hint`)
+        } else {
+          expect(ariaDescribedbyValue).toEqual('waste-item-hint')
         }
-        expect($(input).attr('aria-describedby')).toEqual(
-          expectedDescribedById
-        )
       })
     })
 
-    test('renders with a form group wrapper that has an error state', () => {
-      const $ = render('checkboxes', examples['with error message'])
+    test('renders with a form group wrapper that has an error state', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with error message'] })
+      const component = page.locator('#slot > *').first()
 
-      const $formGroup = $('.govuk-form-group')
-      expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
+      await expect(component).toHaveClass(/govuk-form-group--error/)
     })
   })
 
@@ -468,62 +330,60 @@ test.describe('Checkboxes', () => {
       expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
     })
 
-    test('associates the fieldset as "described by" the hint', () => {
-      const $ = render('checkboxes', examples['with id and name'])
+    test('associates the fieldset as "described by" the hint', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with id and name'] })
+      const component = page.locator('#slot > *').first()
 
-      const $fieldset = $('.govuk-fieldset')
-      const $hint = $('.govuk-hint')
-
-      const hintId = new RegExp(
-        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
+      // A `toHaveDescription` matcher would be pretty useful here
+      const errorMessageId = await component.locator('.govuk-hint').getAttribute('id')
+      const expectedAriaDescribedby = new RegExp(
+        WORD_BOUNDARY + errorMessageId + WORD_BOUNDARY
       )
 
-      expect($fieldset.attr('aria-describedby')).toMatch(hintId)
+      await expect(component.locator('.govuk-fieldset')).toHaveAttribute('aria-describedby', expectedAriaDescribedby)
     })
 
-    test('associates the fieldset as "described by" the hint and parent fieldset', () => {
-      const $ = render('checkboxes', examples['with fieldset describedBy'])
-      const $fieldset = $('.govuk-fieldset')
-      const $hint = $('.govuk-hint')
+    test('associates the fieldset as "described by" the hint and parent fieldset', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with fieldset describedBy'] })
+      const component = page.locator('#slot > *').first()
 
-      const hintId = new RegExp(
+      // A `toHaveDescription` matcher would be pretty useful here
+      const errorMessageId = await component.locator('.govuk-hint').getAttribute('id')
+      const expectedAriaDescribedby = new RegExp(
         WORD_BOUNDARY +
           'some-id' +
           WHITESPACE +
-          $hint.attr('id') +
+          errorMessageId +
           WORD_BOUNDARY
       )
 
-      expect($fieldset.attr('aria-describedby')).toMatch(hintId)
+      await expect(component.locator('.govuk-fieldset')).toHaveAttribute('aria-describedby', expectedAriaDescribedby)
     })
   })
 
   test.describe('when they include both a hint and an error message', () => {
-    test('associates the fieldset as described by both the hint and the error message', () => {
-      const $ = render('checkboxes', examples['with error message and hint'])
+    test('associates the fieldset as described by both the hint and the error message', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with error message and hint'] })
+      const component = page.locator('#slot > *').first()
 
-      const $fieldset = $('.govuk-fieldset')
-      const errorMessageId = $('.govuk-error-message').attr('id')
-      const hintId = $('.govuk-hint').attr('id')
+      const errorMessageId = await component.locator('.govuk-error-message').getAttribute('id')
+      const hintId = await component.locator('.govuk-hint').getAttribute('id')
 
-      const combinedIds = new RegExp(
+      const expectedAriaDescribedby = new RegExp(
         WORD_BOUNDARY + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
       )
 
-      expect($fieldset.attr('aria-describedby')).toMatch(combinedIds)
+      await expect(component.locator('.govuk-fieldset')).toHaveAttribute('aria-describedby', expectedAriaDescribedby)
     })
 
-    test('associates the fieldset as described by the hint, error message and parent fieldset', () => {
-      const $ = render(
-        'checkboxes',
-        examples['with error, hint and fieldset describedBy']
-      )
+    test('associates the fieldset as described by the hint, error message and parent fieldset', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['with error, hint and fieldset describedBy'] })
+      const component = page.locator('#slot > *').first()
 
-      const $fieldset = $('.govuk-fieldset')
-      const errorMessageId = $('.govuk-error-message').attr('id')
-      const hintId = $('.govuk-hint').attr('id')
+      const errorMessageId = await component.locator('.govuk-error-message').getAttribute('id')
+      const hintId = await component.locator('.govuk-hint').getAttribute('id')
 
-      const combinedIds = new RegExp(
+      const expectedAriaDescribedby = new RegExp(
         WORD_BOUNDARY +
           'some-id' +
           WHITESPACE +
@@ -533,18 +393,15 @@ test.describe('Checkboxes', () => {
           WORD_BOUNDARY
       )
 
-      expect($fieldset.attr('aria-describedby')).toMatch(combinedIds)
+      await expect(component.locator('.govuk-fieldset')).toHaveAttribute('aria-describedby', expectedAriaDescribedby)
     })
   })
 
   test.describe('nested dependant components', () => {
-    test('have correct nesting order', () => {
-      const $ = render('checkboxes', examples['fieldset params'])
+    test('have correct nesting order', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', { nunjucksParams: examples['fieldset params'] })
 
-      const $component = $(
-        '.govuk-form-group > .govuk-fieldset > .govuk-checkboxes'
-      )
-      expect($component.length).toBeTruthy()
+      await expect(page.locator('.govuk-form-group > .govuk-fieldset > .govuk-checkboxes')).toBeVisible()
     })
 
     test('passes through label params without breaking', () => {
@@ -569,54 +426,42 @@ test.describe('Checkboxes', () => {
   })
 
   test.describe('single checkbox without a fieldset', () => {
-    test('adds aria-describedby to input if there is an error', () => {
-      const $ = render(
-        'checkboxes',
-        examples["with single option set 'aria-describedby' on input"]
-      )
-      const $input = $('input')
-      expect($input.attr('aria-describedby')).toMatch('t-and-c-error')
+    test('adds aria-describedby to input if there is an error', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', {
+        nunjucksParams: examples["with single option set 'aria-describedby' on input"]
+      })
+      const component = page.locator('#slot > *').first()
+
+      await expect(component.getByRole('checkbox')).toHaveAttribute('aria-describedby', 't-and-c-error')
     })
 
-    test('adds aria-describedby to input if there is an error and parent fieldset', () => {
-      const $ = render(
-        'checkboxes',
-        examples[
-          "with single option set 'aria-describedby' on input, and describedBy"
-        ]
-      )
-      const $input = $('input')
+    test('adds aria-describedby to input if there is an error and parent fieldset', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', {
+        nunjucksParams: examples["with single option set 'aria-describedby' on input, and describedBy"]
+      })
+      const component = page.locator('#slot > *').first()
 
-      expect($input.attr('aria-describedby')).toMatch('some-id t-and-c-error')
+      await expect(component.getByRole('checkbox')).toHaveAttribute('aria-describedby', 'some-id t-and-c-error')
     })
   })
 
   test.describe('single checkbox (with hint) without a fieldset', () => {
-    test('adds aria-describedby to input if there is an error and a hint', () => {
-      const $ = render(
-        'checkboxes',
-        examples[
-          "with single option (and hint) set 'aria-describedby' on input"
-        ]
-      )
-      const $input = $('input')
-      expect($input.attr('aria-describedby')).toMatch(
-        't-and-c-with-hint-error t-and-c-with-hint-item-hint'
-      )
+    test('adds aria-describedby to input if there is an error and a hint', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', {
+        nunjucksParams: examples["with single option (and hint) set 'aria-describedby' on input"]
+      })
+      const component = page.locator('#slot > *').first()
+
+      await expect(component.getByRole('checkbox')).toHaveAttribute('aria-describedby', 't-and-c-with-hint-error t-and-c-with-hint-item-hint')
     })
 
-    test('adds aria-describedby to input if there is an error, hint and parent fieldset', () => {
-      const $ = render(
-        'checkboxes',
-        examples[
-          "with single option (and hint) set 'aria-describedby' on input, and describedBy"
-        ]
-      )
-      const $input = $('input')
+    test('adds aria-describedby to input if there is an error, hint and parent fieldset', async ({ page }) => {
+      await renderAndInitialise(page, 'checkboxes', {
+        nunjucksParams: examples["with single option (and hint) set 'aria-describedby' on input, and describedBy"]
+      })
+      const component = page.locator('#slot > *').first()
 
-      expect($input.attr('aria-describedby')).toMatch(
-        'some-id t-and-c-with-hint-error t-and-c-with-hint-item-hint'
-      )
+      await expect(component.getByRole('checkbox')).toHaveAttribute('aria-describedby', 'some-id t-and-c-with-hint-error t-and-c-with-hint-item-hint')
     })
   })
 })
