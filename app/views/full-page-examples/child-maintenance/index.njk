@@ -20,6 +20,8 @@ scenario: >-
 
 {% extends "full-page-example.njk" %}
 
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "phase-banner/macro.njk" import govukPhaseBanner %}
 {% from "hide-this-page/macro.njk" import govukHideThisPage %}
 {% from "inset-text/macro.njk" import govukInsetText %}
 {% from "details/macro.njk" import govukDetails %}
@@ -38,13 +40,40 @@ scenario: >-
 {% endblock %}
 
 {% block beforeContent %}
-  {{ govukHideThisPage({
-    text: "Exit this page",
-    redirectUrl: "https://www.google.com/"
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBreadcrumbs({
+    classes: '',
+    collapseOnMobile: true,
+    items: [
+      {
+        html: 'Home',
+        href: '/'
+      },
+      {
+        html: ' Births, deaths, marriages and care',
+        href: '/'
+      },
+      {
+        html: 'Having a child, parenting and adoption',
+        href: '/'
+      }
+    ]
   }) }}
 {% endblock %}
 
 {% block content %}
+  {{ govukHideThisPage({
+    text: "Exit this page",
+    redirectUrl: "https://www.google.com/"
+  }) }}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">Get help arranging child maintenance</h1>
@@ -130,6 +159,10 @@ scenario: >-
         href: "#",
         isStartButton: true
       }) }}
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <p class="govuk-body">There could be other content here.</p>
+      <p class="govuk-body">In ea ex nulla veniam commodo Lorem labore dolor et ea in deserunt qui. Enim adipisicing dolore est amet magna. Cupidatat adipisicing labore consectetur exercitation Lorem dolor ipsum et deserunt est. Sit laborum dolore sit id eiusmod.</p>
     </div>
   </div>
 {% endblock %}
