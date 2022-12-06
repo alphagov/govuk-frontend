@@ -13,6 +13,9 @@ jobs:
     name: Send screenshots
     runs-on: ubuntu-latest
 
+    # Skip when secrets are unavailable on forks
+    if: github.repository == 'alphagov/govuk-frontend'
+
     env:
       PERCY_PARALLEL_NONCE: ${{ github.run_id }}-${{ github.run_attempt }}
       PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
