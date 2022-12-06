@@ -29,6 +29,11 @@ function Tabs ($module) {
 
   this.keys = { left: 37, right: 39, up: 38, down: 40 }
   this.jsHiddenClass = 'govuk-tabs__panel--hidden'
+
+  // Save bounded functions to use when removing event listeners during teardown
+  this.boundTabClick = this.onTabClick.bind(this)
+  this.boundTabKeydown = this.onTabKeydown.bind(this)
+  this.boundOnHashChange = this.onHashChange.bind(this)
 }
 
 /**
@@ -105,13 +110,9 @@ Tabs.prototype.setup = function () {
       // Set HTML attributes
       this.setAttributes($tab)
 
-      // Save bounded functions to use when removing event listeners during teardown
-      $tab.boundTabClick = this.onTabClick.bind(this)
-      $tab.boundTabKeydown = this.onTabKeydown.bind(this)
-
       // Handle events
-      $tab.addEventListener('click', $tab.boundTabClick, true)
-      $tab.addEventListener('keydown', $tab.boundTabKeydown, true)
+      $tab.addEventListener('click', this.boundTabClick, true)
+      $tab.addEventListener('keydown', this.boundTabKeydown, true)
 
       // Remove old active panels
       this.hideTab($tab)
@@ -125,8 +126,7 @@ Tabs.prototype.setup = function () {
     this.showTab($activeTab)
 
     // Handle hashchange events
-    $module.boundOnHashChange = this.onHashChange.bind(this)
-    window.addEventListener('hashchange', $module.boundOnHashChange, true)
+    window.addEventListener('hashchange', this.boundOnHashChange, true)
   }
 }
 
@@ -160,8 +160,8 @@ Tabs.prototype.teardown = function () {
      */
     function ($tab) {
       // Remove events
-      $tab.removeEventListener('click', $tab.boundTabClick, true)
-      $tab.removeEventListener('keydown', $tab.boundTabKeydown, true)
+      $tab.removeEventListener('click', this.boundTabClick, true)
+      $tab.removeEventListener('keydown', this.boundTabKeydown, true)
 
       // Unset HTML attributes
       this.unsetAttributes($tab)
@@ -169,7 +169,7 @@ Tabs.prototype.teardown = function () {
   )
 
   // Remove hashchange event handler
-  window.removeEventListener('hashchange', $module.boundOnHashChange, true)
+  window.removeEventListener('hashchange', this.boundOnHashChange, true)
 }
 
 /**
