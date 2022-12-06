@@ -2,7 +2,7 @@ name: Setup
 
 inputs:
   use-cache:
-    description: Restore global `~/.npm` cache (unless lockfile changes)
+    description: Restore global `~/.npm` cache
     required: false
 
 runs:

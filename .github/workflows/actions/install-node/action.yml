@@ -9,8 +9,8 @@ runs:
       id: npm-install-cache
 
       with:
-        # Restore `node_modules` cache (unless lockfile changes)
-        key: npm-install-cache-${{ hashFiles('package-lock.json') }}
+        # Restore `node_modules` cache (unless packages change)
+        key: npm-install-cache-${{ hashFiles('package-lock.json', '**/package.json') }}
         path: |
           .cache/puppeteer
           node_modules
@@ -20,7 +20,7 @@ runs:
       id: setup-node
 
       with:
-        # Restore global `~/.npm` cache (unless lockfile changes)
+        # Restore global `~/.npm` cache (unless packages change)
         use-cache: ${{ steps.npm-install-cache.outputs.cache-hit != 'true' }}
 
     - name: Install dependencies
