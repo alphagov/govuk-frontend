@@ -14,6 +14,7 @@ const { devices } = require('@playwright/test')
 const config = {
   testDir: '.',
   testMatch: '**/*.spec.{cjs,js,mjs}',
+  snapshotPathTemplate: '{testFileDir}/__pw_snapshots__/{testFileName}/{arg}{ext}',
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
   expect: {

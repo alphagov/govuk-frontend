@@ -1,0 +1,3 @@
+<p id="waste-error" class="govuk-error-message">
+   Please select an option
+  </p>

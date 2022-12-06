@@ -1,0 +1,3 @@
+<label class="govuk-label govuk-checkboxes__label" data-attribute="value" data-second-attribute="second-value" for="example-name">
+        <b>Option 1</b>
+      </label>

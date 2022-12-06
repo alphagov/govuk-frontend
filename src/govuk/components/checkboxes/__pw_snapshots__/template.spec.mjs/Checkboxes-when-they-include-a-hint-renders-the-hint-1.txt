@@ -1,0 +1,7 @@
+<div id="example-multiple-hints-hint" class="govuk-hint">
+    If you have dual nationality, select all options that are relevant to you.
+  </div><div id="example-multiple-hints-item-hint" class="govuk-hint govuk-checkboxes__hint">
+        Hint for british option here
+      </div><div id="example-multiple-hints-3-item-hint" class="govuk-hint govuk-checkboxes__hint">
+        Hint for other option here
+      </div>
