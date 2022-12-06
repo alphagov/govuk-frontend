@@ -14,7 +14,8 @@ const { devices } = require('@playwright/test')
 const config = {
   testDir: '.',
   testMatch: '**/*.spec.{cjs,js,mjs}',
-  snapshotPathTemplate: '{testFileDir}/__pw_snapshots__/{testFileName}/{arg}{ext}',
+  snapshotPathTemplate:
+    '{testFileDir}/__pw_snapshots__/{testFileName}/{arg}{ext}',
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
   expect: {
@@ -103,7 +104,8 @@ const config = {
   /* Run your local dev server before starting the tests */
   webServer: {
     command: 'npm start',
-    port: 3000
+    port: 3000,
+    reuseExistingServer: !process.env.CI
   }
 }
 
