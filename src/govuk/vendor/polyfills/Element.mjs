@@ -1,3 +1,4 @@
+// @ts-nocheck
 import './Document.mjs'
 
 (function(undefined) {

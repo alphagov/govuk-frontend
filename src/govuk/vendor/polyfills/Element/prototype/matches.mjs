@@ -1,4 +1,5 @@
-(function(undefined) {
+// @ts-nocheck
+(function (undefined) {
 
   // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/matches/detect.js
   var detect = (
