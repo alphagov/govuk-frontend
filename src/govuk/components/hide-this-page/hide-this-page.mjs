@@ -1,4 +1,5 @@
 import { nodeListForEach } from '../../common.mjs'
+import '../../vendor/polyfills/Element/prototype/classList.mjs'
 import '../../vendor/polyfills/Element/prototype/dataset.mjs'
 
 function HideThisPage ($module) {
@@ -56,10 +57,12 @@ HideThisPage.prototype.updateIndicator = function () {
   })
 
   // Turn on the ones we want on
-  var $lightsQueried = this.$indicatorContainer.querySelectorAll('.govuk-hide-this-page__indicator-light:nth-child(-n+' + this.escCounter + ')')
-  nodeListForEach($lightsQueried, function ($light) {
-    $light.classList.add('govuk-hide-this-page__indicator-light--on')
-  })
+  var $lightsQueried = this.$indicatorContainer.querySelectorAll('.govuk-hide-this-page__indicator-light')
+  nodeListForEach($lightsQueried, function ($light, index) {
+    if (index < this.escCounter) {
+      $light.classList.add('govuk-hide-this-page__indicator-light--on')
+    }
+  }.bind(this))
 }
 
 HideThisPage.prototype.exitPage = function (e) {
