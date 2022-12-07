@@ -1,5 +1,7 @@
 import { spawn } from 'child_process'
 
+import { isDev } from './task-arguments.mjs'
+
 /**
  * Spawns Node.js child process for npm script
  * rather than using Gulp
@@ -19,7 +21,12 @@ export async function npmScript (name, args = []) {
 
     // Emit errors to error listener
     script.stderr.on('data', (data) => {
-      script.emit('error', new Error(data.toString()))
+      const error = new Error(data.toString())
+
+      // Log errors (without rejection) in development
+      return isDev
+        ? console.error(error)
+        : script.emit('error', error)
     })
 
     // Reject on actual script errors to exit `gulp dev`
