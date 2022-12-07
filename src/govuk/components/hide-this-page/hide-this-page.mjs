@@ -79,7 +79,14 @@ HideThisPage.prototype.exitPage = function (e) {
 }
 
 HideThisPage.prototype.handleEscKeypress = function (e) {
-  if (e.key === 'Esc' || e.keyCode === 27 || e.which === 27) {
+  // Detect if the 'Shift' key has been pressed. This only detects if pressed by
+  // itself and not in a combination with another key (otherwise that key would
+  // be e.key, and e.shiftKey would be true instead.)
+  //
+  // Little bit janky as when using Shift as a combinator (e.g. Shift + A) it
+  // will fire TWO events, one for A (with e.shiftKey) and the other for Shift
+  // (without e.shiftKey).
+  if (e.key === 'Shift' || e.keyCode === 16 || e.which === 16) {
     this.escCounter += 1
 
     // Update the indicator before the below if statement can reset it back to 0
@@ -94,6 +101,10 @@ HideThisPage.prototype.handleEscKeypress = function (e) {
     }
 
     this.setEscTimer()
+  } else if (this.escTimerActive) {
+    // If the user pressed any key other than 'Shift', after having pressed
+    // 'Shift' and activating the timer, stop and reset the timer.
+    this.resetEscTimer()
   }
 }
 
@@ -102,12 +113,16 @@ HideThisPage.prototype.setEscTimer = function () {
     this.escTimerActive = true
 
     setTimeout(function () {
-      this.escCounter = 0
-      this.escTimerActive = false
-      this.$updateSpan.innerText = ''
-      this.updateIndicator()
+      this.resetEscTimer()
     }.bind(this), 2000)
   }
+}
+
+HideThisPage.prototype.resetEscTimer = function () {
+  this.escCounter = 0
+  this.escTimerActive = false
+  this.$updateSpan.innerText = ''
+  this.updateIndicator()
 }
 
 HideThisPage.prototype.syncOverlayVisibility = function () {
