@@ -64,7 +64,7 @@
     "minimatch": "^5.1.1",
     "node-sass": "^8.0.0",
     "nunjucks": "^3.2.3",
-    "plugin-error": "^2.0.0",
+    "plugin-error": "^2.0.1",
     "postcss": "^8.4.19",
     "postcss-pseudo-classes": "^0.2.1",
     "postcss-scss": "^4.0.6",
