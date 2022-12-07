@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
+      PERCY_PARALLEL_NONCE: ${{ github.run_id }}-${{ github.run_attempt }}
       PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
       PORT: 8888
 
@@ -31,4 +32,7 @@ jobs:
         run: npm run serve &
 
       - name: Send screenshots to Percy
-        run: npx percy exec -- npm run test:screenshots
+        run: npx percy exec --parallel -- npm run test:screenshots
+
+      - name: Finalise Percy build
+        run: npx percy build:finalize
