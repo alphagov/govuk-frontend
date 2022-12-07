@@ -28,7 +28,6 @@ HideThisPage.prototype.buildIndicator = function () {
   // Putting `aria-hidden` on it as it won't contain any readable information
   this.$indicatorContainer = document.createElement('div')
   this.$indicatorContainer.className = 'govuk-hide-this-page__indicator'
-  this.$indicatorContainer.setAttribute('data-status', '0')
   this.$indicatorContainer.setAttribute('aria-hidden', 'true')
 
   // Create three 'lights' and place them within the container
@@ -43,8 +42,6 @@ HideThisPage.prototype.buildIndicator = function () {
 }
 
 HideThisPage.prototype.updateIndicator = function () {
-  console.log(this.escCounter)
-
   // Show or hide the indicator container depending on escCounter value
   if (this.escCounter > 0) {
     this.$indicatorContainer.classList.add('govuk-hide-this-page__indicator--visible')
