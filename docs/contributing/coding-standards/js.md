@@ -19,7 +19,7 @@ import '../../vendor/polyfills/Element.mjs'
  * Component name
  *
  * @class
- * @param {HTMLElement} $module - HTML element to use for component
+ * @param {Element} $module - HTML element to use for component
  */
 function Example ($module) {
   if (!($module instanceof HTMLElement)) {
@@ -78,7 +78,7 @@ Use `/** ... */` for multi-line comments. Include a description, and specify typ
 /**
  * Get the first descendent (child) of an HTML element that matches a given tag name
  *
- * @param {HTMLElement} $element - HTML element
+ * @param {Element} $element - HTML element
  * @param {string} tagName - Tag name (for example 'div')
  * @returns {Element} Ancestor element
  */

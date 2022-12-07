@@ -7,7 +7,7 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * Checkboxes component
  *
  * @class
- * @param {HTMLElement} $module - HTML element to use for checkboxes
+ * @param {Element} $module - HTML element to use for checkboxes
  */
 function Checkboxes ($module) {
   if (!($module instanceof HTMLElement)) {
@@ -56,7 +56,7 @@ Checkboxes.prototype.init = function () {
     /**
      * Loop through checkboxes
      *
-     * @param {HTMLInputElement} $input - Checkbox input
+     * @param {Element} $input - Checkbox input
      */
     function ($input) {
       var targetId = $input.getAttribute('data-aria-controls')
@@ -109,9 +109,13 @@ Checkboxes.prototype.syncAllConditionalReveals = function () {
  * Synchronise the visibility of the conditional reveal, and its accessible
  * state, with the input's checked state.
  *
- * @param {HTMLInputElement} $input - Checkbox input
+ * @param {Element} $input - Checkbox input
  */
 Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
+  if (!($input instanceof HTMLInputElement)) {
+    return
+  }
+
   var targetId = $input.getAttribute('aria-controls')
   if (!targetId) {
     return
@@ -132,9 +136,13 @@ Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
  * Find any other checkbox inputs with the same name value, and uncheck them.
  * This is useful for when a “None of these" checkbox is checked.
  *
- * @param {HTMLElement} $input - Checkbox input
+ * @param {Element} $input - Checkbox input
  */
 Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
+  if (!($input instanceof HTMLInputElement)) {
+    return
+  }
+
   var allInputsWithSameName = document.querySelectorAll('input[type="checkbox"][name="' + $input.name + '"]')
 
   nodeListForEach(
@@ -143,10 +151,14 @@ Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
     /**
      * Loop through checkboxes
      *
-     * @param {HTMLInputElement} $inputWithSameName - Checkbox input
+     * @param {Element} $inputWithSameName - Checkbox input
      * @this {Checkboxes}
      */
     function ($inputWithSameName) {
+      if (!($inputWithSameName instanceof HTMLInputElement)) {
+        return
+      }
+
       var hasSameFormOwner = ($input.form === $inputWithSameName.form)
       if (hasSameFormOwner && $inputWithSameName !== $input) {
         $inputWithSameName.checked = false
@@ -163,9 +175,13 @@ Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
  * and uncheck them. This helps prevent someone checking both a regular checkbox and a
  * "None of these" checkbox in the same fieldset.
  *
- * @param {HTMLInputElement} $input - Checkbox input
+ * @param {Element} $input - Checkbox input
  */
 Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
+  if (!($input instanceof HTMLInputElement)) {
+    return
+  }
+
   var allInputsWithSameNameAndExclusiveBehaviour = document.querySelectorAll(
     'input[data-behaviour="exclusive"][type="checkbox"][name="' + $input.name + '"]'
   )
@@ -176,10 +192,14 @@ Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
     /**
      * Loop through checkboxes
      *
-     * @param {HTMLInputElement} $exclusiveInput - Checkbox input
+     * @param {Element} $exclusiveInput - Checkbox input
      * @this {Checkboxes}
      */
     function ($exclusiveInput) {
+      if (!($exclusiveInput instanceof HTMLInputElement)) {
+        return
+      }
+
       var hasSameFormOwner = ($input.form === $exclusiveInput.form)
       if (hasSameFormOwner) {
         $exclusiveInput.checked = false

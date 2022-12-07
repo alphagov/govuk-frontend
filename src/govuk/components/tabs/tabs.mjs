@@ -9,7 +9,7 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * Tabs component
  *
  * @class
- * @param {HTMLElement} $module - HTML element to use for tabs
+ * @param {Element} $module - HTML element to use for tabs
  */
 function Tabs ($module) {
   if (!($module instanceof HTMLElement)) {
@@ -102,10 +102,14 @@ Tabs.prototype.setup = function () {
     /**
      * Loop through tab links
      *
-     * @param {HTMLAnchorElement} $tab - Tab link
+     * @param {Element} $tab - Tab link
      * @this {Tabs}
      */
     function ($tab) {
+      if (!($tab instanceof HTMLAnchorElement)) {
+        return
+      }
+
       // Set HTML attributes
       this.setAttributes($tab)
 
@@ -154,10 +158,14 @@ Tabs.prototype.teardown = function () {
     /**
      * Loop through tab links
      *
-     * @param {HTMLAnchorElement} $tab - Tab link
+     * @param {Element} $tab - Tab link
      * @this {Tabs}
      */
     function ($tab) {
+      if (!($tab instanceof HTMLAnchorElement)) {
+        return
+      }
+
       // Remove events
       $tab.removeEventListener('click', this.boundTabClick, true)
       $tab.removeEventListener('keydown', this.boundTabKeydown, true)
@@ -407,11 +415,15 @@ Tabs.prototype.activatePreviousTab = function () {
  * Get tab panel for tab link
  *
  * @param {HTMLAnchorElement} $tab - Tab link
- * @returns {HTMLElement | null} Tab panel
+ * @returns {Element | undefined} Tab panel
  */
 Tabs.prototype.getPanel = function ($tab) {
   var $panel = this.$module.querySelector(this.getHref($tab))
-  return $panel instanceof HTMLElement ? $panel : null
+  if (!$panel) {
+    return
+  }
+
+  return $panel
 }
 
 /**

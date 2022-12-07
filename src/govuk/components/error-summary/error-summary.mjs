@@ -10,7 +10,7 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * Takes focus on initialisation for accessible announcement, unless disabled in configuration.
  *
  * @class
- * @param {HTMLElement} $module - HTML element to use for error summary
+ * @param {Element} $module - HTML element to use for error summary
  * @param {ErrorSummaryConfig} [config] - Error summary config
  */
 function ErrorSummary ($module, config) {
@@ -170,8 +170,8 @@ ErrorSummary.prototype.getFragmentFromUrl = function (url) {
  * - The first `<label>` that is associated with the input using for="inputId"
  * - The closest parent `<label>`
  *
- * @param {HTMLElement} $input - The input
- * @returns {HTMLElement | null} Associated legend or label, or null if no associated
+ * @param {Element} $input - The input
+ * @returns {Element | null} Associated legend or label, or null if no associated
  *   legend or label can be found
  */
 ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
