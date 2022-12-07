@@ -10,7 +10,7 @@ var DEBOUNCE_TIMEOUT_IN_SECONDS = 1
  * JavaScript enhancements for the Button component
  *
  * @class
- * @param {HTMLElement} $module - HTML element to use for button
+ * @param {Element} $module - HTML element to use for button
  * @param {ButtonConfig} [config] - Button config
  * @this {Button}
  */

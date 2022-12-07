@@ -6,7 +6,7 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * Header component
  *
  * @class
- * @param {HTMLElement} $module - HTML element to use for header
+ * @param {Element} $module - HTML element to use for header
  * @this {Header}
  */
 function Header ($module) {

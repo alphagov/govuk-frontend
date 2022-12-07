@@ -34,7 +34,7 @@ var ACCORDION_TRANSLATIONS = {
  * attribute, which also provides accessibility.
  *
  * @class
- * @param {HTMLElement} $module - HTML element to use for accordion
+ * @param {Element} $module - HTML element to use for accordion
  * @param {AccordionConfig} [config] - Accordion config
  * @this {Accordion}
  */
@@ -158,13 +158,13 @@ Accordion.prototype.initSectionHeaders = function () {
     /**
      * Loop through section headers
      *
-     * @param {HTMLElement} $section - Section element
+     * @param {Element} $section - Section element
      * @param {number} index - Section index
      * @this {Accordion}
      */
     function ($section, index) {
       var $header = $section.querySelector('.' + this.sectionHeaderClass)
-      if (!($header instanceof HTMLElement)) {
+      if (!$header) {
         return
       }
 
@@ -185,7 +185,7 @@ Accordion.prototype.initSectionHeaders = function () {
 /**
  * Construct section header
  *
- * @param {HTMLElement} $header - Section header
+ * @param {Element} $header - Section header
  * @param {number} index - Section index
  */
 Accordion.prototype.constructHeaderMarkup = function ($header, index) {
@@ -193,8 +193,7 @@ Accordion.prototype.constructHeaderMarkup = function ($header, index) {
   var $heading = $header.querySelector('.' + this.sectionHeadingClass)
   var $summary = $header.querySelector('.' + this.sectionSummaryClass)
 
-  if (!($span instanceof HTMLElement) ||
-    !($heading instanceof HTMLElement)) {
+  if (!$span || !$heading) {
     return
   }
 
@@ -255,7 +254,7 @@ Accordion.prototype.constructHeaderMarkup = function ($header, index) {
   $button.appendChild(this.getButtonPunctuationEl())
 
   // If summary content exists add to DOM in correct order
-  if ($summary instanceof HTMLElement) {
+  if ($summary) {
     // Create a new `span` element and copy the summary line content from the original `div` to the
     // new `span`
     // This is because the summary line text is now inside a button element, which can only contain
@@ -298,13 +297,13 @@ Accordion.prototype.onBeforeMatch = function (event) {
   var $fragment = event.target
 
   // Handle elements with `.closest()` support only
-  if (!($fragment instanceof HTMLElement)) {
+  if (!($fragment instanceof Element)) {
     return
   }
 
   // Handle when fragment is inside section
   var $section = $fragment.closest('.' + this.sectionClass)
-  if ($section instanceof HTMLElement) {
+  if ($section) {
     this.setExpanded(true, $section)
   }
 }
@@ -312,7 +311,7 @@ Accordion.prototype.onBeforeMatch = function (event) {
 /**
  * When section toggled, set and store state
  *
- * @param {HTMLElement} $section - Section element
+ * @param {Element} $section - Section element
  */
 Accordion.prototype.onSectionToggle = function ($section) {
   var expanded = this.isExpanded($section)
@@ -335,7 +334,7 @@ Accordion.prototype.onShowOrHideAllToggle = function () {
     /**
      * Loop through section headers
      *
-     * @param {HTMLElement} $section - Section element
+     * @param {Element} $section - Section element
      * @this {Accordion}
      */
     function ($section) {
@@ -352,7 +351,7 @@ Accordion.prototype.onShowOrHideAllToggle = function () {
  * Set section attributes when opened/closed
  *
  * @param {boolean} expanded - Section expanded
- * @param {HTMLElement} $section - Section element
+ * @param {Element} $section - Section element
  */
 Accordion.prototype.setExpanded = function (expanded, $section) {
   var $icon = $section.querySelector('.' + this.upChevronIconClass)
@@ -360,10 +359,7 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
   var $button = $section.querySelector('.' + this.sectionButtonClass)
   var $sectionContent = $section.querySelector('.' + this.sectionContentClass)
 
-  if (!($icon instanceof HTMLElement) ||
-    !($showHideText instanceof HTMLElement) ||
-    !($button instanceof HTMLElement) ||
-    !($sectionContent instanceof HTMLElement)) {
+  if (!$icon || !$button || !$sectionContent || !($showHideText instanceof HTMLElement)) {
     return
   }
 
@@ -418,7 +414,7 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
 /**
  * Get state of section
  *
- * @param {HTMLElement} $section - Section element
+ * @param {Element} $section - Section element
  * @returns {boolean} True if expanded
  */
 Accordion.prototype.isExpanded = function ($section) {
@@ -449,8 +445,7 @@ Accordion.prototype.updateShowAllButton = function (expanded) {
   var $showAllIcon = this.$showAllButton.querySelector('.' + this.upChevronIconClass)
   var $showAllText = this.$showAllButton.querySelector('.' + this.showAllTextClass)
 
-  if (!($showAllIcon instanceof HTMLElement) ||
-    !($showAllText instanceof HTMLElement)) {
+  if (!$showAllIcon || !($showAllText instanceof HTMLElement)) {
     return
   }
 
@@ -492,7 +487,7 @@ var helper = {
 /**
  * Set the state of the accordions in sessionStorage
  *
- * @param {HTMLElement} $section - Section element
+ * @param {Element} $section - Section element
  */
 Accordion.prototype.storeState = function ($section) {
   if (this.browserSupportsSessionStorage) {
@@ -501,7 +496,7 @@ Accordion.prototype.storeState = function ($section) {
     // `id` can be safely used.
     var $button = $section.querySelector('.' + this.sectionButtonClass)
 
-    if ($button instanceof HTMLElement) {
+    if ($button) {
       var contentId = $button.getAttribute('aria-controls')
       var contentState = $button.getAttribute('aria-expanded')
 
@@ -516,13 +511,13 @@ Accordion.prototype.storeState = function ($section) {
 /**
  * Read the state of the accordions from sessionStorage
  *
- * @param {HTMLElement} $section - Section element
+ * @param {Element} $section - Section element
  */
 Accordion.prototype.setInitialState = function ($section) {
   if (this.browserSupportsSessionStorage) {
     var $button = $section.querySelector('.' + this.sectionButtonClass)
 
-    if ($button instanceof HTMLElement) {
+    if ($button) {
       var contentId = $button.getAttribute('aria-controls')
       var contentState = contentId ? window.sessionStorage.getItem(contentId) : null
 
@@ -540,7 +535,7 @@ Accordion.prototype.setInitialState = function ($section) {
  * into thematic chunks.
  * See https://github.com/alphagov/govuk-frontend/issues/2327#issuecomment-922957442
  *
- * @returns {HTMLElement} DOM element
+ * @returns {Element} DOM element
  */
 Accordion.prototype.getButtonPunctuationEl = function () {
   var $punctuationEl = document.createElement('span')

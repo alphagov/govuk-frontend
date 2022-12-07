@@ -6,7 +6,7 @@ import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target norm
  * Notification Banner component
  *
  * @class
- * @param {HTMLElement} $module - HTML element to use for notification banner
+ * @param {Element} $module - HTML element to use for notification banner
  * @param {NotificationBannerConfig} [config] - Notification banner config
  * @this {NotificationBanner}
  */

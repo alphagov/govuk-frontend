@@ -6,7 +6,7 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * Skip link component
  *
  * @class
- * @param {HTMLAnchorElement} $module - HTML element to use for skip link
+ * @param {Element} $module - HTML element to use for skip link
  * @this {SkipLink}
  */
 function SkipLink ($module) {
@@ -33,7 +33,7 @@ SkipLink.prototype.init = function () {
   }
 
   var $linkedElement = this.getLinkedElement()
-  if (!($linkedElement instanceof HTMLElement)) {
+  if (!($linkedElement)) {
     return this
   }
 

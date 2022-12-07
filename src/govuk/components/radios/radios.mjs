@@ -7,7 +7,7 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * Radios component
  *
  * @class
- * @param {HTMLElement} $module - HTML element to use for radios
+ * @param {Element} $module - HTML element to use for radios
  * @this {Radios}
  */
 function Radios ($module) {
@@ -57,7 +57,7 @@ Radios.prototype.init = function () {
     /**
      * Loop through radios
      *
-     * @param {HTMLInputElement} $input - Radio input
+     * @param {Element} $input - Radio input
      */
     function ($input) {
       var targetId = $input.getAttribute('data-aria-controls')
@@ -109,9 +109,13 @@ Radios.prototype.syncAllConditionalReveals = function () {
  * Synchronise the visibility of the conditional reveal, and its accessible
  * state, with the input's checked state.
  *
- * @param {HTMLInputElement} $input - Radio input
+ * @param {Element} $input - Radio input
  */
 Radios.prototype.syncConditionalRevealWithInputState = function ($input) {
+  if (!($input instanceof HTMLInputElement)) {
+    return
+  }
+
   var targetId = $input.getAttribute('aria-controls')
   if (!targetId) {
     return
@@ -157,10 +161,14 @@ Radios.prototype.handleClick = function (event) {
     /**
      * Loop through radios
      *
-     * @param {HTMLInputElement} $input - Radio input
+     * @param {Element} $input - Radio input
      * @this {Radios}
      */
     function ($input) {
+      if (!($input instanceof HTMLInputElement)) {
+        return
+      }
+
       var hasSameFormOwner = $input.form === $clickedInputForm
       var hasSameName = $input.name === $clickedInputName
 

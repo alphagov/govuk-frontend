@@ -15,7 +15,7 @@ var KEY_SPACE = 32
  * Details component
  *
  * @class
- * @param {HTMLElement} $module - HTML element to use for details
+ * @param {Element} $module - HTML element to use for details
  * @this {Details}
  */
 function Details ($module) {
