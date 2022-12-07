@@ -43,12 +43,12 @@
     width: .5em;
     height: .5em;
     margin: 0 .125em;
-    border: 2px solid currentcolor;
+    border: 2px solid govuk-colour("white");
     border-radius: 50%;
   }
 
   .govuk-hide-this-page__indicator-light--on {
-    background-color: currentcolor;
+    background-color: govuk-colour("white");
   }
 
   @media only print {
