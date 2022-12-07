@@ -27,7 +27,6 @@
     @include govuk-responsive-padding(2);
     display: none;
     padding-bottom: 0;
-    opacity: 0;
     color: govuk-colour("white");
     background-color: govuk-colour("red");
     line-height: 0; // removes extra negative space below the indicators
@@ -37,7 +36,6 @@
 
   .govuk-hide-this-page__indicator--visible {
     display: block;
-    opacity: 1;
   }
 
   .govuk-hide-this-page__indicator-light {
