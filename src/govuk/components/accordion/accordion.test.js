@@ -256,6 +256,7 @@ describe('/components/accordion', () => {
           )
 
           await $element.click()
+          await page.waitForTimeout(100)
 
           await expect(getAccessibleName(page, $element)).resolves.toBe(
             'Section A , Hide this section'
@@ -274,6 +275,7 @@ describe('/components/accordion', () => {
           )
 
           await $element.click()
+          await page.waitForTimeout(100)
 
           await expect(getAccessibleName(page, $element)).resolves.toBe(
             'Test , Additional description , Hide this section'
