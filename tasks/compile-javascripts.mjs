@@ -30,6 +30,11 @@ export async function compileJavaScripts () {
   } catch (cause) {
     throw new PluginError('compile:js', cause)
   }
+
+  // Write VERSION.txt file
+  if (isDist) {
+    await writeFile(join(destination, 'VERSION.txt'), pkg.version + EOL)
+  }
 }
 
 compileJavaScripts.displayName = 'compile:js'
