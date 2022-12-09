@@ -34,6 +34,7 @@ gulp.task('styles', gulp.series(
  * Runs JavaScript and Sass compilation, including documentation
  */
 gulp.task('compile', gulp.series(
+  clean,
   compileJavaScripts,
   compileStylesheets,
   npmScriptTask('build:jsdoc'),
@@ -45,7 +46,6 @@ gulp.task('compile', gulp.series(
  * Runs a sequence of tasks on start
  */
 gulp.task('dev', gulp.series(
-  clean,
   'compile',
   watch,
   npmScriptTask('serve', ['--workspace', 'app'])
@@ -67,7 +67,6 @@ gulp.task('build:package', gulp.series(
  * Prepare dist folder for release
  */
 gulp.task('build:dist', gulp.series(
-  clean,
   'compile',
   copyAssets,
   updateAssetsVersion
