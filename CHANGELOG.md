@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#3107: Fix focus styles for links split over multiple lines in Chromium 108+ (Chrome 108+, Edge 108+, Opera 94+)](https://github.com/alphagov/govuk-frontend/pull/3107)
+
 ## 4.4.0 (Feature release)
 
 ### New features
