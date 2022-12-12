@@ -10,6 +10,7 @@ function HideThisPage ($module) {
   this.$overlay = null
   this.escCounter = 0
   this.escTimerActive = false
+  this.timeout = 5000 // milliseconds
 }
 
 HideThisPage.prototype.initUpdateSpan = function () {
@@ -114,7 +115,7 @@ HideThisPage.prototype.setEscTimer = function () {
 
     setTimeout(function () {
       this.resetEscTimer()
-    }.bind(this), 2000)
+    }.bind(this), this.timeout)
   }
 }
 
