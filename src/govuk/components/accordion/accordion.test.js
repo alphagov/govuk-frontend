@@ -251,13 +251,14 @@ describe('/components/accordion', () => {
 
           const $element = await page.$('.govuk-accordion__section-button')
 
-          expect(getAccessibleName($element)).resolves.toBe(
+          await expect(getAccessibleName(page, $element)).resolves.toBe(
             'Section A , Show this section'
           )
 
           await $element.click()
+          await page.waitForTimeout(100)
 
-          expect(getAccessibleName($element)).resolves.toBe(
+          await expect(getAccessibleName(page, $element)).resolves.toBe(
             'Section A , Hide this section'
           )
         })
@@ -269,13 +270,14 @@ describe('/components/accordion', () => {
 
           const $element = await page.$('.govuk-accordion__section-button')
 
-          expect(getAccessibleName($element)).resolves.toBe(
+          await expect(getAccessibleName(page, $element)).resolves.toBe(
             'Test , Additional description , Show this section'
           )
 
           await $element.click()
+          await page.waitForTimeout(100)
 
-          expect(getAccessibleName($element)).resolves.toBe(
+          await expect(getAccessibleName(page, $element)).resolves.toBe(
             'Test , Additional description , Hide this section'
           )
         })
