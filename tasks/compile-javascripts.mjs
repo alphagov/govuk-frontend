@@ -4,6 +4,7 @@ import { basename, dirname, join, parse } from 'path'
 
 import PluginError from 'plugin-error'
 import { rollup } from 'rollup'
+import { minify } from 'uglify-js'
 
 import configPaths from '../config/paths.js'
 import { getListing } from '../lib/file-helper.js'
@@ -38,7 +39,7 @@ compileJavaScripts.displayName = 'compile:js'
  *
  * @param {ModuleEntry} moduleEntry - Module entry
  */
-export async function compileJavaScript ([modulePath, { srcPath, destPath }]) {
+export async function compileJavaScript ([modulePath, { srcPath, destPath, minify }]) {
   const { dir, name } = parse(modulePath)
 
   // Adjust file path by destination
@@ -53,7 +54,7 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath }]) {
   })
 
   // Compile JavaScript ESM to CommonJS
-  const result = await bundle.generate({
+  let result = await bundle.generate({
     file: filePath,
     sourcemapFile: filePath,
     sourcemap: true,
@@ -71,6 +72,11 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath }]) {
     name: componentPathToModuleName(modulePath)
   })
 
+  // Minify bundle
+  if (minify) {
+    result = minifyJavaScript(modulePath, result)
+  }
+
   // Append source map URL
   result.code += `${EOL}//# sourceMappingURL=${basename(filePath)}.map`
 
@@ -82,6 +88,32 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath }]) {
     writeFile(filePath, result.code),
     writeFile(`${filePath}.map`, result.map.toString())
   ])
+}
+
+/**
+ * Minify JavaScript ESM to CommonJS helper
+ *
+ * @param {string} modulePath - Relative path to module
+ * @param {object} result - Generated bundle
+ * @param {string} result.code - Source code
+ * @param {import('magic-string').SourceMap} result.map - Source map
+ * @returns {import('uglify-js').MinifyOutput} Minifier result
+ */
+export function minifyJavaScript (modulePath, result) {
+  const minified = minify({ [modulePath]: result.code }, {
+    ie8: true,
+    sourceMap: {
+      content: result.map,
+      filename: result.map.file,
+      includeSources: true
+    }
+  })
+
+  if (minified.error) {
+    throw minified.error
+  }
+
+  return minified
 }
 
 /**
@@ -103,7 +135,8 @@ export async function getModuleEntries () {
   return modulePaths
     .map((modulePath) => ([modulePath, {
       srcPath,
-      destPath
+      destPath,
+      minify: isDist
     }]))
 }
 
@@ -119,4 +152,5 @@ export async function getModuleEntries () {
  * @typedef {object} ModuleOptions
  * @property {string} srcPath - Input directory
  * @property {string} destPath - Output directory
+ * @property {boolean} minify - Minifier enabled
  */
