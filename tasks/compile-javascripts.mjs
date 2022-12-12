@@ -120,10 +120,10 @@ export async function getModuleEntries () {
   const destPath = isPackage ? join(destination, 'govuk') : destination
 
   // Perform a search and return an array of matching file names
-  // but for 'dist' we only want compiled 'all.js'
-  const modulePaths = await getListing(srcPath, isDist
-    ? 'all.mjs'
-    : '**/!(*.test).mjs'
+  // but for 'dist' and 'public' we only want compiled 'all.js'
+  const modulePaths = await getListing(srcPath, isPackage
+    ? '**/!(*.test).mjs'
+    : 'all.mjs'
   )
 
   return modulePaths
