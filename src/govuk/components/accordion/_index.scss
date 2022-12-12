@@ -79,7 +79,7 @@
       cursor: pointer;
       -webkit-appearance: none;
 
-      @include govuk-media-query ($from: desktop) {
+      @include govuk-media-query ($from: tablet) {
         margin-bottom: 14px;
       }
 
@@ -274,7 +274,7 @@
       padding-bottom: govuk-spacing(3);
       border-bottom: 0;
 
-      @include govuk-media-query ($from: desktop) {
+      @include govuk-media-query ($from: tablet) {
         padding-bottom: govuk-spacing(4);
       }
     }
