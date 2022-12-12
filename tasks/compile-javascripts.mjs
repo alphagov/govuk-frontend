@@ -1,7 +1,9 @@
-import { join, parse } from 'path'
+import { mkdir, writeFile } from 'fs/promises'
+import { dirname, join, parse } from 'path'
 
 import PluginError from 'plugin-error'
 import { rollup } from 'rollup'
+import { minify } from 'uglify-js'
 
 import { paths, pkg } from '../config/index.js'
 import { getListing } from '../lib/file-helper.js'
@@ -31,14 +33,16 @@ compileJavaScripts.displayName = 'compile:js'
  *
  * @param {ModuleEntry} moduleEntry - Module entry
  */
-export async function compileJavaScript ([modulePath, { srcPath, destPath }]) {
-  const { dir, name } = parse(modulePath)
+export async function compileJavaScript ([modulePath, { srcPath, destPath, minify }]) {
+  let { dir, name } = parse(modulePath)
 
   // Adjust file path by destination
-  const filePath = join(destPath, dir, isDist
-    ? `${pkg.name}-${pkg.version}.min.js`
-    : `${name}.js`
-  )
+  name = isDist ? `${pkg.name}-${pkg.version}` : name
+
+  // Adjust file path for minification
+  const filePath = join(destPath, dir, minify
+    ? `${name}.min.js`
+    : `${name}.js`)
 
   // Create Rollup bundle
   const bundle = await rollup({
@@ -46,7 +50,7 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath }]) {
   })
 
   // Compile JavaScript ESM to CommonJS
-  return bundle.write({
+  let result = await bundle[minify ? 'generate' : 'write']({
     file: filePath,
     sourcemapFile: filePath,
     sourcemap: true,
@@ -63,6 +67,47 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath }]) {
     amd: { id: componentPathToModuleName(modulePath) },
     name: componentPathToModuleName(modulePath)
   })
+
+  // Minify bundle
+  if (minify) {
+    result = minifyJavaScript(modulePath, result)
+
+    // Create directories
+    await mkdir(dirname(filePath), { recursive: true })
+
+    // Write to files
+    await Promise.all([
+      writeFile(filePath, result.code),
+      writeFile(`${filePath}.map`, result.map.toString())
+    ])
+  }
+}
+
+/**
+ * Minify JavaScript ESM to CommonJS helper
+ *
+ * @param {string} modulePath - Relative path to module
+ * @param {object} result - Generated bundle
+ * @param {string} result.code - Source code
+ * @param {import('magic-string').SourceMap} result.map - Source map
+ * @returns {import('uglify-js').MinifyOutput} Minifier result
+ */
+export function minifyJavaScript (modulePath, result) {
+  const minified = minify({ [modulePath]: result.code }, {
+    ie8: true,
+    sourceMap: {
+      content: result.map,
+      filename: result.map.file,
+      url: `${result.map.file}.map`,
+      includeSources: true
+    }
+  })
+
+  if (minified.error) {
+    throw minified.error
+  }
+
+  return minified
 }
 
 /**
@@ -84,7 +129,8 @@ export async function getModuleEntries () {
   return modulePaths
     .map((modulePath) => ([modulePath, {
       srcPath,
-      destPath
+      destPath,
+      minify: isDist
     }]))
 }
 
@@ -100,4 +146,5 @@ export async function getModuleEntries () {
  * @typedef {object} ModuleOptions
  * @property {string} srcPath - Input directory
  * @property {string} destPath - Output directory
+ * @property {boolean} minify - Minifier enabled
  */
