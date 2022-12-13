@@ -12,6 +12,12 @@ This allows the browser's native 'find in page' functionality to search within a
 
 This was added in [pull request #3053: Enhance the Accordion component with `hidden='until-found'`](https://github.com/alphagov/govuk-frontend/pull/3053). 
 
+#### Source maps for precompiled files
+
+You can now use [source maps](https://firefox-source-docs.mozilla.org/devtools-user/debugger/how_to/use_a_source_map/index.html) to help identify errors and console messages that come from GOV.UK Frontend precompiled files.
+
+This was added in [pull request #3023: Add source maps to compiled JavaScript and CSS](https://github.com/alphagov/govuk-frontend/pull/3023).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
