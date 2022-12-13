@@ -109,13 +109,9 @@ Checkboxes.prototype.syncAllConditionalReveals = function () {
  * Synchronise the visibility of the conditional reveal, and its accessible
  * state, with the input's checked state.
  *
- * @param {Element} $input - Checkbox input
+ * @param {HTMLInputElement} $input - Checkbox input
  */
 Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
-  if (!($input instanceof HTMLInputElement)) {
-    return
-  }
-
   var targetId = $input.getAttribute('aria-controls')
   if (!targetId) {
     return
@@ -136,13 +132,9 @@ Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
  * Find any other checkbox inputs with the same name value, and uncheck them.
  * This is useful for when a “None of these" checkbox is checked.
  *
- * @param {Element} $input - Checkbox input
+ * @param {HTMLInputElement} $input - Checkbox input
  */
 Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
-  if (!($input instanceof HTMLInputElement)) {
-    return
-  }
-
   var allInputsWithSameName = document.querySelectorAll('input[type="checkbox"][name="' + $input.name + '"]')
 
   nodeListForEach(
@@ -175,13 +167,9 @@ Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
  * and uncheck them. This helps prevent someone checking both a regular checkbox and a
  * "None of these" checkbox in the same fieldset.
  *
- * @param {Element} $input - Checkbox input
+ * @param {HTMLInputElement} $input - Checkbox input
  */
 Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
-  if (!($input instanceof HTMLInputElement)) {
-    return
-  }
-
   var allInputsWithSameNameAndExclusiveBehaviour = document.querySelectorAll(
     'input[data-behaviour="exclusive"][type="checkbox"][name="' + $input.name + '"]'
   )

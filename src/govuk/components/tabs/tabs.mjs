@@ -18,7 +18,7 @@ function Tabs ($module) {
     return this
   }
 
-  var $tabs = $module.querySelectorAll('.govuk-tabs__tab')
+  var $tabs = $module.querySelectorAll('a.govuk-tabs__tab')
   if (!$tabs.length) {
     return this
   }
@@ -102,14 +102,10 @@ Tabs.prototype.setup = function () {
     /**
      * Loop through tab links
      *
-     * @param {Element} $tab - Tab link
+     * @param {HTMLAnchorElement} $tab - Tab link
      * @this {Tabs}
      */
     function ($tab) {
-      if (!($tab instanceof HTMLAnchorElement)) {
-        return
-      }
-
       // Set HTML attributes
       this.setAttributes($tab)
 
@@ -140,7 +136,7 @@ Tabs.prototype.teardown = function () {
   var $module = this.$module
   var $tabs = this.$tabs
   var $tabList = $module.querySelector('.govuk-tabs__list')
-  var $tabListItems = $module.querySelectorAll('.govuk-tabs__list-item')
+  var $tabListItems = $module.querySelectorAll('a.govuk-tabs__list-item')
 
   if (!$tabs || !$tabList || !$tabListItems) {
     return
@@ -158,14 +154,10 @@ Tabs.prototype.teardown = function () {
     /**
      * Loop through tab links
      *
-     * @param {Element} $tab - Tab link
+     * @param {HTMLAnchorElement} $tab - Tab link
      * @this {Tabs}
      */
     function ($tab) {
-      if (!($tab instanceof HTMLAnchorElement)) {
-        return
-      }
-
       // Remove events
       $tab.removeEventListener('click', this.boundTabClick, true)
       $tab.removeEventListener('keydown', this.boundTabKeydown, true)

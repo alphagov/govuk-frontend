@@ -160,14 +160,10 @@ Radios.prototype.handleClick = function (event) {
     /**
      * Loop through radios
      *
-     * @param {Element} $input - Radio input
+     * @param {HTMLInputElement} $input - Radio input
      * @this {Radios}
      */
     function ($input) {
-      if (!($input instanceof HTMLInputElement)) {
-        return
-      }
-
       var hasSameFormOwner = $input.form === $clickedInputForm
       var hasSameName = $input.name === $clickedInputName
 
