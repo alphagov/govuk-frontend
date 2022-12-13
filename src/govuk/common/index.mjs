@@ -13,8 +13,9 @@
  * This seems to fail in IE8, requires more investigation.
  * See: https://github.com/imagitama/nodelist-foreach-polyfill
  *
- * @param {NodeListOf<Element>} nodes - NodeList from querySelectorAll()
- * @param {nodeListIterator} callback - Callback function to run for each node
+ * @template {Node} ElementType
+ * @param {NodeListOf<ElementType>} nodes - NodeList from querySelectorAll()
+ * @param {nodeListIterator<ElementType>} callback - Callback function to run for each node
  * @returns {void}
  */
 export function nodeListForEach (nodes, callback) {
@@ -164,9 +165,10 @@ export function extractConfigByNamespace (configObject, namespace) {
 }
 
 /**
+ * @template {Node} ElementType
  * @callback nodeListIterator
- * @param {Element} value - The current node being iterated on
+ * @param {ElementType} value - The current node being iterated on
  * @param {number} index - The current index in the iteration
- * @param {NodeListOf<Element>} nodes - NodeList from querySelectorAll()
+ * @param {NodeListOf<ElementType>} nodes - NodeList from querySelectorAll()
  * @returns {void}
  */
