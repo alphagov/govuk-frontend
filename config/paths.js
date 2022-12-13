@@ -1,5 +1,7 @@
 const { dirname, join } = require('path')
 
+const pkg = require('../package/package.json')
+
 // Repository root directory
 const rootPath = dirname(__dirname)
 
@@ -44,5 +46,8 @@ module.exports = {
   ports: {
     app: 3000,
     test: 8888
-  }
+  },
+
+  // GOV.UK Frontend package
+  pkg
 }
