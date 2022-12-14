@@ -106,7 +106,7 @@ ErrorSummary.prototype.handleClick = function (event) {
  */
 ErrorSummary.prototype.focusTarget = function ($target) {
   // If the element that was clicked was not a link, return early
-  if ($target.tagName !== 'A' || $target.href === false) {
+  if (!($target instanceof HTMLAnchorElement)) {
     return false
   }
 

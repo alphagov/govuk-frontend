@@ -70,21 +70,31 @@ Tabs.prototype.setup = function () {
     $item.setAttribute('role', 'presentation')
   })
 
-  nodeListForEach($tabs, function ($tab) {
-    // Set HTML attributes
-    this.setAttributes($tab)
+  nodeListForEach(
+    $tabs,
 
-    // Save bounded functions to use when removing event listeners during teardown
-    $tab.boundTabClick = this.onTabClick.bind(this)
-    $tab.boundTabKeydown = this.onTabKeydown.bind(this)
+    /**
+     * Loop through tab links
+     *
+     * @param {HTMLAnchorElement} $tab - Tab link
+     * @this {Tabs}
+     */
+    function ($tab) {
+      // Set HTML attributes
+      this.setAttributes($tab)
 
-    // Handle events
-    $tab.addEventListener('click', $tab.boundTabClick, true)
-    $tab.addEventListener('keydown', $tab.boundTabKeydown, true)
+      // Save bounded functions to use when removing event listeners during teardown
+      $tab.boundTabClick = this.onTabClick.bind(this)
+      $tab.boundTabKeydown = this.onTabKeydown.bind(this)
 
-    // Remove old active panels
-    this.hideTab($tab)
-  }.bind(this))
+      // Handle events
+      $tab.addEventListener('click', $tab.boundTabClick, true)
+      $tab.addEventListener('keydown', $tab.boundTabKeydown, true)
+
+      // Remove old active panels
+      this.hideTab($tab)
+    }.bind(this)
+  )
 
   // Show either the active tab according to the URL's hash or the first tab
   var $activeTab = this.getTab(window.location.hash) || this.$tabs[0]
@@ -114,14 +124,24 @@ Tabs.prototype.teardown = function () {
     $item.removeAttribute('role')
   })
 
-  nodeListForEach($tabs, function ($tab) {
-    // Remove events
-    $tab.removeEventListener('click', $tab.boundTabClick, true)
-    $tab.removeEventListener('keydown', $tab.boundTabKeydown, true)
+  nodeListForEach(
+    $tabs,
 
-    // Unset HTML attributes
-    this.unsetAttributes($tab)
-  }.bind(this))
+    /**
+     * Loop through tab links
+     *
+     * @param {HTMLAnchorElement} $tab - Tab link
+     * @this {Tabs}
+     */
+    function ($tab) {
+      // Remove events
+      $tab.removeEventListener('click', $tab.boundTabClick, true)
+      $tab.removeEventListener('keydown', $tab.boundTabKeydown, true)
+
+      // Unset HTML attributes
+      this.unsetAttributes($tab)
+    }.bind(this)
+  )
 
   // Remove hashchange event handler
   window.removeEventListener('hashchange', $module.boundOnHashChange, true)
@@ -292,7 +312,7 @@ Tabs.prototype.onTabKeydown = function (event) {
  */
 Tabs.prototype.activateNextTab = function () {
   var currentTab = this.getCurrentTab()
-  var nextTabListItem = currentTab.parentNode.nextElementSibling
+  var nextTabListItem = currentTab.parentElement.nextElementSibling
   if (nextTabListItem) {
     var nextTab = nextTabListItem.querySelector('.govuk-tabs__tab')
   }
@@ -309,7 +329,7 @@ Tabs.prototype.activateNextTab = function () {
  */
 Tabs.prototype.activatePreviousTab = function () {
   var currentTab = this.getCurrentTab()
-  var previousTabListItem = currentTab.parentNode.previousElementSibling
+  var previousTabListItem = currentTab.parentElement.previousElementSibling
   if (previousTabListItem) {
     var previousTab = previousTabListItem.querySelector('.govuk-tabs__tab')
   }
@@ -359,7 +379,7 @@ Tabs.prototype.hidePanel = function ($tab) {
  */
 Tabs.prototype.unhighlightTab = function ($tab) {
   $tab.setAttribute('aria-selected', 'false')
-  $tab.parentNode.classList.remove('govuk-tabs__list-item--selected')
+  $tab.parentElement.classList.remove('govuk-tabs__list-item--selected')
   $tab.setAttribute('tabindex', '-1')
 }
 
@@ -370,7 +390,7 @@ Tabs.prototype.unhighlightTab = function ($tab) {
  */
 Tabs.prototype.highlightTab = function ($tab) {
   $tab.setAttribute('aria-selected', 'true')
-  $tab.parentNode.classList.add('govuk-tabs__list-item--selected')
+  $tab.parentElement.classList.add('govuk-tabs__list-item--selected')
   $tab.setAttribute('tabindex', '0')
 }
 

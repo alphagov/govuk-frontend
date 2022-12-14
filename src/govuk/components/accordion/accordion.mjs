@@ -132,20 +132,30 @@ Accordion.prototype.initControls = function () {
  * Initialise section headers
  */
 Accordion.prototype.initSectionHeaders = function () {
-  // Loop through section headers
-  nodeListForEach(this.$sections, function ($section, i) {
-    // Set header attributes
-    var $header = $section.querySelector('.' + this.sectionHeaderClass)
-    this.constructHeaderMarkup($header, i)
-    this.setExpanded(this.isExpanded($section), $section)
+  nodeListForEach(
+    this.$sections,
 
-    // Handle events
-    $header.addEventListener('click', this.onSectionToggle.bind(this, $section))
+    /**
+     * Loop through section headers
+     *
+     * @param {HTMLDivElement} $section - Section element
+     * @param {number} index - Section index
+     * @this {Accordion}
+     */
+    function ($section, index) {
+      // Set header attributes
+      var $header = $section.querySelector('.' + this.sectionHeaderClass)
+      this.constructHeaderMarkup($header, index)
+      this.setExpanded(this.isExpanded($section), $section)
 
-    // See if there is any state stored in sessionStorage and set the sections to
-    // open or closed.
-    this.setInitialState($section)
-  }.bind(this))
+      // Handle events
+      $header.addEventListener('click', this.onSectionToggle.bind(this, $section))
+
+      // See if there is any state stored in sessionStorage and set the sections to
+      // open or closed.
+      this.setInitialState($section)
+    }.bind(this)
+  )
 }
 
 /**
@@ -279,17 +289,26 @@ Accordion.prototype.onSectionToggle = function ($section) {
  * When Open/Close All toggled, set and store state
  */
 Accordion.prototype.onShowOrHideAllToggle = function () {
-  var $module = this
   var $sections = this.$sections
   var nowExpanded = !this.checkIfAllSectionsOpen()
 
-  nodeListForEach($sections, function ($section) {
-    $module.setExpanded(nowExpanded, $section)
-    // Store the state in sessionStorage when a change is triggered
-    $module.storeState($section)
-  })
+  nodeListForEach(
+    $sections,
 
-  $module.updateShowAllButton(nowExpanded)
+    /**
+     * Loop through section headers
+     *
+     * @param {HTMLElement} $section - Section element
+     * @this {Accordion}
+     */
+    function ($section) {
+      this.setExpanded(nowExpanded, $section)
+      // Store the state in sessionStorage when a change is triggered
+      this.storeState($section)
+    }.bind(this)
+  )
+
+  this.updateShowAllButton(nowExpanded)
 }
 
 /**

@@ -33,20 +33,28 @@ Radios.prototype.init = function () {
   var $module = this.$module
   var $inputs = this.$inputs
 
-  nodeListForEach($inputs, function ($input) {
-    var target = $input.getAttribute('data-aria-controls')
+  nodeListForEach(
+    $inputs,
 
-    // Skip radios without data-aria-controls attributes, or where the
-    // target element does not exist.
-    if (!target || !document.getElementById(target)) {
-      return
-    }
+    /**
+     * Loop through radios
+     *
+     * @param {HTMLInputElement} $input - Radio input
+     */
+    function ($input) {
+      var target = $input.getAttribute('data-aria-controls')
 
-    // Promote the data-aria-controls attribute to a aria-controls attribute
-    // so that the relationship is exposed in the AOM
-    $input.setAttribute('aria-controls', target)
-    $input.removeAttribute('data-aria-controls')
-  })
+      // Skip radios without data-aria-controls attributes, or where the
+      // target element does not exist.
+      if (!target || !document.getElementById(target)) {
+        return
+      }
+
+      // Promote the data-aria-controls attribute to a aria-controls attribute
+      // so that the relationship is exposed in the AOM
+      $input.setAttribute('aria-controls', target)
+      $input.removeAttribute('data-aria-controls')
+    })
 
   // When the page is restored after navigating 'back' in some browsers the
   // state of form controls is not restored until *after* the DOMContentLoaded
@@ -107,7 +115,7 @@ Radios.prototype.handleClick = function (event) {
   var $clickedInput = event.target
 
   // Ignore clicks on things that aren't radio buttons
-  if ($clickedInput.type !== 'radio') {
+  if (!($clickedInput instanceof HTMLInputElement) || $clickedInput.type !== 'radio') {
     return
   }
 
@@ -115,14 +123,27 @@ Radios.prototype.handleClick = function (event) {
   // aria-controls attributes.
   var $allInputs = document.querySelectorAll('input[type="radio"][aria-controls]')
 
-  nodeListForEach($allInputs, function ($input) {
-    var hasSameFormOwner = ($input.form === $clickedInput.form)
-    var hasSameName = ($input.name === $clickedInput.name)
+  var $clickedInputForm = $clickedInput.form
+  var $clickedInputName = $clickedInput.name
 
-    if (hasSameName && hasSameFormOwner) {
-      this.syncConditionalRevealWithInputState($input)
-    }
-  }.bind(this))
+  nodeListForEach(
+    $allInputs,
+
+    /**
+     * Loop through radios
+     *
+     * @param {HTMLInputElement} $input - Radio input
+     * @this {Radios}
+     */
+    function ($input) {
+      var hasSameFormOwner = $input.form === $clickedInputForm
+      var hasSameName = $input.name === $clickedInputName
+
+      if (hasSameName && hasSameFormOwner) {
+        this.syncConditionalRevealWithInputState($input)
+      }
+    }.bind(this)
+  )
 }
 
 export default Radios

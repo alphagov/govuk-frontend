@@ -33,20 +33,29 @@ Checkboxes.prototype.init = function () {
   var $module = this.$module
   var $inputs = this.$inputs
 
-  nodeListForEach($inputs, function ($input) {
-    var target = $input.getAttribute('data-aria-controls')
+  nodeListForEach(
+    $inputs,
 
-    // Skip checkboxes without data-aria-controls attributes, or where the
-    // target element does not exist.
-    if (!target || !document.getElementById(target)) {
-      return
+    /**
+     * Loop through checkboxes
+     *
+     * @param {HTMLInputElement} $input - Checkbox input
+     */
+    function ($input) {
+      var target = $input.getAttribute('data-aria-controls')
+
+      // Skip checkboxes without data-aria-controls attributes, or where the
+      // target element does not exist.
+      if (!target || !document.getElementById(target)) {
+        return
+      }
+
+      // Promote the data-aria-controls attribute to a aria-controls attribute
+      // so that the relationship is exposed in the AOM
+      $input.setAttribute('aria-controls', target)
+      $input.removeAttribute('data-aria-controls')
     }
-
-    // Promote the data-aria-controls attribute to a aria-controls attribute
-    // so that the relationship is exposed in the AOM
-    $input.setAttribute('aria-controls', target)
-    $input.removeAttribute('data-aria-controls')
-  })
+  )
 
   // When the page is restored after navigating 'back' in some browsers the
   // state of form controls is not restored until *after* the DOMContentLoaded
@@ -104,13 +113,23 @@ Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
 Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
   var allInputsWithSameName = document.querySelectorAll('input[type="checkbox"][name="' + $input.name + '"]')
 
-  nodeListForEach(allInputsWithSameName, function ($inputWithSameName) {
-    var hasSameFormOwner = ($input.form === $inputWithSameName.form)
-    if (hasSameFormOwner && $inputWithSameName !== $input) {
-      $inputWithSameName.checked = false
-      this.syncConditionalRevealWithInputState($inputWithSameName)
-    }
-  }.bind(this))
+  nodeListForEach(
+    allInputsWithSameName,
+
+    /**
+     * Loop through checkboxes
+     *
+     * @param {HTMLInputElement} $inputWithSameName - Checkbox input
+     * @this {Checkboxes}
+     */
+    function ($inputWithSameName) {
+      var hasSameFormOwner = ($input.form === $inputWithSameName.form)
+      if (hasSameFormOwner && $inputWithSameName !== $input) {
+        $inputWithSameName.checked = false
+        this.syncConditionalRevealWithInputState($inputWithSameName)
+      }
+    }.bind(this)
+  )
 }
 
 /**
@@ -127,13 +146,23 @@ Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
     'input[data-behaviour="exclusive"][type="checkbox"][name="' + $input.name + '"]'
   )
 
-  nodeListForEach(allInputsWithSameNameAndExclusiveBehaviour, function ($exclusiveInput) {
-    var hasSameFormOwner = ($input.form === $exclusiveInput.form)
-    if (hasSameFormOwner) {
-      $exclusiveInput.checked = false
-      this.syncConditionalRevealWithInputState($exclusiveInput)
-    }
-  }.bind(this))
+  nodeListForEach(
+    allInputsWithSameNameAndExclusiveBehaviour,
+
+    /**
+     * Loop through checkboxes
+     *
+     * @param {HTMLInputElement} $exclusiveInput - Checkbox input
+     * @this {Checkboxes}
+     */
+    function ($exclusiveInput) {
+      var hasSameFormOwner = ($input.form === $exclusiveInput.form)
+      if (hasSameFormOwner) {
+        $exclusiveInput.checked = false
+        this.syncConditionalRevealWithInputState($exclusiveInput)
+      }
+    }.bind(this)
+  )
 }
 
 /**
@@ -148,7 +177,7 @@ Checkboxes.prototype.handleClick = function (event) {
   var $target = event.target
 
   // Ignore clicks on things that aren't checkbox inputs
-  if ($target.type !== 'checkbox') {
+  if (!($target instanceof HTMLInputElement) || $target.type !== 'checkbox') {
     return
   }
 
