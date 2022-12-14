@@ -134,10 +134,13 @@ export function extractConfigByNamespace (configObject, namespace) {
   if (!configObject || typeof configObject !== 'object') {
     throw new Error('Provide a `configObject` of type "object".')
   }
+
   if (!namespace || typeof namespace !== 'string') {
     throw new Error('Provide a `namespace` of type "string" to filter the `configObject` by.')
   }
+
   var newObject = {}
+
   for (var key in configObject) {
     // Split the key into parts, using . as our namespace separator
     var keyParts = key.split('.')

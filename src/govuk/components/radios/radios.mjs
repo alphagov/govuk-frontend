@@ -11,8 +11,19 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * @this {Radios}
  */
 function Radios ($module) {
+  if (!($module instanceof HTMLElement)) {
+    // Return instance for method chaining
+    // using `new Radios($module).init()`
+    return this
+  }
+
+  var $inputs = $module.querySelectorAll('input[type="radio"]')
+  if (!$inputs.length) {
+    return this
+  }
+
   this.$module = $module
-  this.$inputs = $module.querySelectorAll('input[type="radio"]')
+  this.$inputs = $inputs
 }
 
 /**
@@ -28,8 +39,15 @@ function Radios ($module) {
  * We also need to restore the state of any conditional reveals on the page (for
  * example if the user has navigated back), and set up event handlers to keep
  * the reveal in sync with the radio state.
+ *
+ * @returns {Radios} Radios component
  */
 Radios.prototype.init = function () {
+  // Check that required elements are present
+  if (!this.$module || !this.$inputs) {
+    return this
+  }
+
   var $module = this.$module
   var $inputs = this.$inputs
 
@@ -73,6 +91,10 @@ Radios.prototype.init = function () {
 
   // Handle events
   $module.addEventListener('click', this.handleClick.bind(this))
+
+  // Return instance for assignment
+  // `var myRadios = new Radios($module).init()`
+  return this
 }
 
 /**
@@ -91,8 +113,12 @@ Radios.prototype.syncAllConditionalReveals = function () {
  * @param {HTMLInputElement} $input - Radio input
  */
 Radios.prototype.syncConditionalRevealWithInputState = function ($input) {
-  var $target = document.getElementById($input.getAttribute('aria-controls'))
+  var targetId = $input.getAttribute('aria-controls')
+  if (!targetId) {
+    return
+  }
 
+  var $target = document.getElementById(targetId)
   if ($target && $target.classList.contains('govuk-radios__conditional')) {
     var inputIsChecked = $input.checked
 

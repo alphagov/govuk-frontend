@@ -11,11 +11,18 @@ import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target norm
  * @this {NotificationBanner}
  */
 function NotificationBanner ($module, config) {
+  if (!($module instanceof HTMLElement)) {
+    // Return instance for method chaining
+    // using `new NotificationBanner($module).init()`
+    return this
+  }
+
   this.$module = $module
 
   var defaultConfig = {
     disableAutoFocus: false
   }
+
   this.config = mergeConfigs(
     defaultConfig,
     config || {},
@@ -25,15 +32,20 @@ function NotificationBanner ($module, config) {
 
 /**
  * Initialise component
+ *
+ * @returns {NotificationBanner} Notification banner component
  */
 NotificationBanner.prototype.init = function () {
-  var $module = this.$module
-  // Check for module
-  if (!$module) {
-    return
+  // Check that required elements are present
+  if (!this.$module) {
+    return this
   }
 
   this.setFocus()
+
+  // Return instance for assignment
+  // `var myNotificationBanner = new NotificationBanner($module).init()`
+  return this
 }
 
 /**

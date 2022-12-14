@@ -13,8 +13,19 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * @this {Tabs}
  */
 function Tabs ($module) {
+  if (!($module instanceof HTMLElement)) {
+    // Return instance for method chaining
+    // using `new Tabs($module).init()`
+    return this
+  }
+
+  var $tabs = $module.querySelectorAll('.govuk-tabs__tab')
+  if (!$tabs.length) {
+    return this
+  }
+
   this.$module = $module
-  this.$tabs = $module.querySelectorAll('.govuk-tabs__tab')
+  this.$tabs = $tabs
 
   this.keys = { left: 37, right: 39, up: 38, down: 40 }
   this.jsHiddenClass = 'govuk-tabs__panel--hidden'
@@ -22,13 +33,24 @@ function Tabs ($module) {
 
 /**
  * Initialise component
+ *
+ * @returns {Tabs} Tabs component
  */
 Tabs.prototype.init = function () {
+  // Check that required elements are present
+  if (!this.$module || !this.$tabs) {
+    return this
+  }
+
   if (typeof window.matchMedia === 'function') {
     this.setupResponsiveChecks()
   } else {
     this.setup()
   }
+
+  // Return instance for assignment
+  // `var myTabs = new Tabs($module).init()`
+  return this
 }
 
 /**
@@ -98,11 +120,14 @@ Tabs.prototype.setup = function () {
 
   // Show either the active tab according to the URL's hash or the first tab
   var $activeTab = this.getTab(window.location.hash) || this.$tabs[0]
-  this.showTab($activeTab)
 
-  // Handle hashchange events
-  $module.boundOnHashChange = this.onHashChange.bind(this)
-  window.addEventListener('hashchange', $module.boundOnHashChange, true)
+  if ($activeTab instanceof HTMLAnchorElement) {
+    this.showTab($activeTab)
+
+    // Handle hashchange events
+    $module.boundOnHashChange = this.onHashChange.bind(this)
+    window.addEventListener('hashchange', $module.boundOnHashChange, true)
+  }
 }
 
 /**
@@ -168,6 +193,9 @@ Tabs.prototype.onHashChange = function (event) {
 
   // Show either the active tab according to the URL's hash or the first tab
   var $previousTab = this.getCurrentTab()
+  if (!$previousTab) {
+    return
+  }
 
   this.hideTab($previousTab)
   this.showTab($tabWithHash)
@@ -198,10 +226,15 @@ Tabs.prototype.showTab = function ($tab) {
  * Get tab link by hash
  *
  * @param {string} hash - Hash fragment including #
- * @returns {HTMLAnchorElement | null} Tab link
+ * @returns {HTMLAnchorElement | undefined} Tab link
  */
 Tabs.prototype.getTab = function (hash) {
-  return this.$module.querySelector('.govuk-tabs__tab[href="' + hash + '"]')
+  var $tab = this.$module.querySelector('.govuk-tabs__tab[href="' + hash + '"]')
+  if (!($tab instanceof HTMLAnchorElement)) {
+    return
+  }
+
+  return $tab
 }
 
 /**
@@ -220,6 +253,10 @@ Tabs.prototype.setAttributes = function ($tab) {
 
   // set panel attributes
   var $panel = this.getPanel($tab)
+  if (!$panel) {
+    return
+  }
+
   $panel.setAttribute('role', 'tabpanel')
   $panel.setAttribute('aria-labelledby', $tab.id)
   $panel.classList.add(this.jsHiddenClass)
@@ -240,6 +277,10 @@ Tabs.prototype.unsetAttributes = function ($tab) {
 
   // unset panel attributes
   var $panel = this.getPanel($tab)
+  if (!$panel) {
+    return
+  }
+
   $panel.removeAttribute('role')
   $panel.removeAttribute('aria-labelledby')
   $panel.classList.remove(this.jsHiddenClass)
@@ -252,16 +293,21 @@ Tabs.prototype.unsetAttributes = function ($tab) {
  * @returns {void | false} Returns void, or false within tab link
  */
 Tabs.prototype.onTabClick = function (event) {
-  if (!event.target.classList.contains('govuk-tabs__tab')) {
-    // Allow events on child DOM elements to bubble up to tab parent
-    return false
-  }
-  event.preventDefault()
-  var $newTab = event.target
   var $currentTab = this.getCurrentTab()
-  this.hideTab($currentTab)
-  this.showTab($newTab)
-  this.createHistoryEntry($newTab)
+  var $nextTab = event.target
+
+  if ($currentTab && $nextTab instanceof HTMLAnchorElement) {
+    // Allow events on child DOM elements to bubble up to tab parent
+    if (!$nextTab.classList.contains('govuk-tabs__tab')) {
+      return false
+    }
+
+    event.preventDefault()
+
+    this.hideTab($currentTab)
+    this.showTab($nextTab)
+    this.createHistoryEntry($nextTab)
+  }
 }
 
 /**
@@ -274,6 +320,9 @@ Tabs.prototype.onTabClick = function (event) {
  */
 Tabs.prototype.createHistoryEntry = function ($tab) {
   var $panel = this.getPanel($tab)
+  if (!$panel) {
+    return
+  }
 
   // Save and restore the id
   // so the page doesn't jump when a user clicks a tab (which changes the hash)
@@ -312,6 +361,10 @@ Tabs.prototype.onTabKeydown = function (event) {
  */
 Tabs.prototype.activateNextTab = function () {
   var $currentTab = this.getCurrentTab()
+  if (!$currentTab || !$currentTab.parentElement) {
+    return
+  }
+
   var $nextTab
 
   var $nextTabListItem = $currentTab.parentElement.nextElementSibling
@@ -319,7 +372,7 @@ Tabs.prototype.activateNextTab = function () {
     $nextTab = $nextTabListItem.querySelector('.govuk-tabs__tab')
   }
 
-  if ($nextTab) {
+  if ($nextTab instanceof HTMLAnchorElement) {
     this.hideTab($currentTab)
     this.showTab($nextTab)
     $nextTab.focus()
@@ -332,6 +385,10 @@ Tabs.prototype.activateNextTab = function () {
  */
 Tabs.prototype.activatePreviousTab = function () {
   var $currentTab = this.getCurrentTab()
+  if (!$currentTab || !$currentTab.parentElement) {
+    return
+  }
+
   var $previousTab
 
   var $previousTabListItem = $currentTab.parentElement.previousElementSibling
@@ -339,7 +396,7 @@ Tabs.prototype.activatePreviousTab = function () {
     $previousTab = $previousTabListItem.querySelector('.govuk-tabs__tab')
   }
 
-  if ($previousTab) {
+  if ($previousTab instanceof HTMLAnchorElement) {
     this.hideTab($currentTab)
     this.showTab($previousTab)
     $previousTab.focus()
@@ -351,11 +408,11 @@ Tabs.prototype.activatePreviousTab = function () {
  * Get tab panel for tab link
  *
  * @param {HTMLAnchorElement} $tab - Tab link
- * @returns {HTMLDivElement} Tab panel
+ * @returns {HTMLElement | null} Tab panel
  */
 Tabs.prototype.getPanel = function ($tab) {
   var $panel = this.$module.querySelector(this.getHref($tab))
-  return $panel
+  return $panel instanceof HTMLElement ? $panel : null
 }
 
 /**
@@ -365,6 +422,10 @@ Tabs.prototype.getPanel = function ($tab) {
  */
 Tabs.prototype.showPanel = function ($tab) {
   var $panel = this.getPanel($tab)
+  if (!$panel) {
+    return
+  }
+
   $panel.classList.remove(this.jsHiddenClass)
 }
 
@@ -375,6 +436,10 @@ Tabs.prototype.showPanel = function ($tab) {
  */
 Tabs.prototype.hidePanel = function ($tab) {
   var $panel = this.getPanel($tab)
+  if (!$panel) {
+    return
+  }
+
   $panel.classList.add(this.jsHiddenClass)
 }
 
@@ -384,6 +449,10 @@ Tabs.prototype.hidePanel = function ($tab) {
  * @param {HTMLAnchorElement} $tab - Tab link
  */
 Tabs.prototype.unhighlightTab = function ($tab) {
+  if (!$tab.parentElement) {
+    return
+  }
+
   $tab.setAttribute('aria-selected', 'false')
   $tab.parentElement.classList.remove('govuk-tabs__list-item--selected')
   $tab.setAttribute('tabindex', '-1')
@@ -395,6 +464,10 @@ Tabs.prototype.unhighlightTab = function ($tab) {
  * @param {HTMLAnchorElement} $tab - Tab link
  */
 Tabs.prototype.highlightTab = function ($tab) {
+  if (!$tab.parentElement) {
+    return
+  }
+
   $tab.setAttribute('aria-selected', 'true')
   $tab.parentElement.classList.add('govuk-tabs__list-item--selected')
   $tab.setAttribute('tabindex', '0')
@@ -406,7 +479,12 @@ Tabs.prototype.highlightTab = function ($tab) {
  * @returns {HTMLAnchorElement | undefined} Tab link
  */
 Tabs.prototype.getCurrentTab = function () {
-  return this.$module.querySelector('.govuk-tabs__list-item--selected .govuk-tabs__tab')
+  var $tab = this.$module.querySelector('.govuk-tabs__list-item--selected .govuk-tabs__tab')
+  if (!($tab instanceof HTMLAnchorElement)) {
+    return
+  }
+
+  return $tab
 }
 
 /**

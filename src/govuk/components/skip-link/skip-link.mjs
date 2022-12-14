@@ -10,6 +10,12 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * @this {SkipLink}
  */
 function SkipLink ($module) {
+  if (!($module instanceof HTMLAnchorElement)) {
+    // Return instance for method chaining
+    // using `new SkipLink($module).init()`
+    return this
+  }
+
   this.$module = $module
   this.$linkedElement = null
   this.linkedElementListener = false
@@ -17,20 +23,26 @@ function SkipLink ($module) {
 
 /**
  * Initialise component
+ *
+ * @returns {SkipLink} Skip link component
  */
 SkipLink.prototype.init = function () {
-  // Check for module
+  // Check that required elements are present
   if (!this.$module) {
-    return
+    return this
   }
 
-  // Check for linked element
-  this.$linkedElement = this.getLinkedElement()
-  if (!this.$linkedElement) {
-    return
+  var $linkedElement = this.getLinkedElement()
+  if (!($linkedElement instanceof HTMLElement)) {
+    return this
   }
 
+  this.$linkedElement = $linkedElement
   this.$module.addEventListener('click', this.focusLinkedElement.bind(this))
+
+  // Return instance for assignment
+  // `var mySkipLink = new SkipLink($module).init()`
+  return this
 }
 
 /**
@@ -67,6 +79,7 @@ SkipLink.prototype.focusLinkedElement = function () {
       this.linkedElementListener = true
     }
   }
+
   $linkedElement.focus()
 }
 
@@ -87,12 +100,12 @@ SkipLink.prototype.removeFocusProperties = function () {
  * Extract the fragment (everything after the hash symbol) from a URL, but not including
  * the symbol.
  *
- * @returns {string | null} Fragment from URL, without the hash symbol
+ * @returns {string | undefined} Fragment from URL, without the hash symbol
  */
 SkipLink.prototype.getFragmentFromUrl = function () {
   // Bail if the anchor link doesn't have a hash
   if (!this.$module.hash) {
-    return null
+    return
   }
 
   return this.$module.hash.split('#').pop()

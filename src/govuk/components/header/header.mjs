@@ -10,8 +10,14 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * @this {Header}
  */
 function Header ($module) {
+  if (!($module instanceof HTMLElement)) {
+    // Return instance for method chaining
+    // using `new Header($module).init()`
+    return this
+  }
+
   this.$module = $module
-  this.$menuButton = $module && $module.querySelector('.govuk-js-header-toggle')
+  this.$menuButton = $module.querySelector('.govuk-js-header-toggle')
   this.$menu = this.$menuButton && $module.querySelector(
     '#' + this.$menuButton.getAttribute('aria-controls')
   )
@@ -37,10 +43,13 @@ function Header ($module) {
  * trigger a state sync if the browser viewport moves between states. If
  * matchMedia isn't available, hide the menu button and present the "no js"
  * version of the menu to the user.
+ *
+ * @returns {Header} Header component
  */
 Header.prototype.init = function () {
+  // Check that required elements are present
   if (!this.$module || !this.$menuButton || !this.$menu) {
-    return
+    return this
   }
 
   if ('matchMedia' in window) {
@@ -61,6 +70,10 @@ Header.prototype.init = function () {
   } else {
     this.$menuButton.setAttribute('hidden', '')
   }
+
+  // Return instance for assignment
+  // `var myHeader = new Header($module).init()`
+  return this
 }
 
 /**

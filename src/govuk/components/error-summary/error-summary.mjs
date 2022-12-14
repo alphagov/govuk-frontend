@@ -15,16 +15,9 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * @this {ErrorSummary}
  */
 function ErrorSummary ($module, config) {
-  // Some consuming code may not be passing a module,
-  // for example if they initialise the component
-  // on their own by directly passing the result
-  // of `document.querySelector`.
-  // To avoid breaking further JavaScript initialisation
-  // we need to safeguard against this so things keep
-  // working the same now we read the elements data attributes
-  if (!$module) {
-    // Little safety in case code gets ported as-is
-    // into and ES6 class constructor, where the return value matters
+  if (!($module instanceof HTMLElement)) {
+    // Return instance for method chaining
+    // using `new ErrorSummary($module).init()`
     return this
   }
 
@@ -33,6 +26,7 @@ function ErrorSummary ($module, config) {
   var defaultConfig = {
     disableAutoFocus: false
   }
+
   this.config = mergeConfigs(
     defaultConfig,
     config || {},
@@ -42,15 +36,23 @@ function ErrorSummary ($module, config) {
 
 /**
  * Initialise component
+ *
+ * @returns {ErrorSummary} Error summary component
  */
 ErrorSummary.prototype.init = function () {
-  var $module = this.$module
-  if (!$module) {
-    return
+  // Check that required elements are present
+  if (!this.$module) {
+    return this
   }
+
+  var $module = this.$module
 
   this.setFocus()
   $module.addEventListener('click', this.handleClick.bind(this))
+
+  // Return instance for assignment
+  // `var myErrorSummary = new ErrorSummary($module).init()`
+  return this
 }
 
 /**
@@ -141,7 +143,7 @@ ErrorSummary.prototype.focusTarget = function ($target) {
  * the hash.
  *
  * @param {string} url - URL
- * @returns {string | null} Fragment from URL, without the hash
+ * @returns {string | undefined} Fragment from URL, without the hash
  */
 ErrorSummary.prototype.getFragmentFromUrl = function (url) {
   var fragment
@@ -154,7 +156,7 @@ ErrorSummary.prototype.getFragmentFromUrl = function (url) {
     fragment = parts.pop()
   }
 
-  return fragment || null
+  return fragment
 }
 
 /**
@@ -183,7 +185,7 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
 
       // If the input type is radio or checkbox, always use the legend if there
       // is one.
-      if ($input.type === 'checkbox' || $input.type === 'radio') {
+      if ($input instanceof HTMLInputElement && ($input.type === 'checkbox' || $input.type === 'radio')) {
         return $candidateLegend
       }
 
