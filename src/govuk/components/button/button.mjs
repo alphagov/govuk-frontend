@@ -10,8 +10,9 @@ var DEBOUNCE_TIMEOUT_IN_SECONDS = 1
  * JavaScript enhancements for the Button component
  *
  * @class
- * @param {HTMLElement} $module - The element this component controls
- * @param {ButtonConfig} config - Button config
+ * @param {HTMLElement} $module - HTML element to use for button
+ * @param {ButtonConfig} [config] - Button config
+ * @this {Button}
  */
 function Button ($module, config) {
   if (!$module) {
@@ -51,7 +52,7 @@ Button.prototype.init = function () {
  *
  * See https://github.com/alphagov/govuk_elements/pull/272#issuecomment-233028270
  *
- * @param {KeyboardEvent} event
+ * @param {KeyboardEvent} event - Keydown event
  */
 Button.prototype.handleKeyDown = function (event) {
   var target = event.target
@@ -69,8 +70,8 @@ Button.prototype.handleKeyDown = function (event) {
  * stops people accidentally causing multiple form submissions by double
  * clicking buttons.
  *
- * @param {MouseEvent} event
- * @returns {undefined | false} - Returns undefined, or false when debounced
+ * @param {MouseEvent} event - Mouse click event
+ * @returns {undefined | false} Returns undefined, or false when debounced
  */
 Button.prototype.debounce = function (event) {
   // Check the button that was clicked has preventDoubleClick enabled

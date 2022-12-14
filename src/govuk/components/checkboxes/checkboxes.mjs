@@ -8,6 +8,7 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  *
  * @class
  * @param {HTMLElement} $module - HTML element to use for checkboxes
+ * @this {Checkboxes}
  */
 function Checkboxes ($module) {
   this.$module = $module
@@ -15,7 +16,7 @@ function Checkboxes ($module) {
 }
 
 /**
- * Initialise Checkboxes
+ * Initialise component
  *
  * Checkboxes can be associated with a 'conditionally revealed' content block –
  * for example, a checkbox for 'Phone' could reveal an additional form field for
@@ -62,11 +63,12 @@ Checkboxes.prototype.init = function () {
   // for example if they are added to the page dynamically, so sync now too.
   this.syncAllConditionalReveals()
 
+  // Handle events
   $module.addEventListener('click', this.handleClick.bind(this))
 }
 
 /**
- * Sync the conditional reveal states for all inputs in this $module.
+ * Sync the conditional reveal states for all checkboxes in this $module.
  */
 Checkboxes.prototype.syncAllConditionalReveals = function () {
   nodeListForEach(this.$inputs, this.syncConditionalRevealWithInputState.bind(this))
@@ -96,6 +98,8 @@ Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
  *
  * Find any other checkbox inputs with the same name value, and uncheck them.
  * This is useful for when a “None of these" checkbox is checked.
+ *
+ * @param {HTMLElement} $input - Checkbox input
  */
 Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
   var allInputsWithSameName = document.querySelectorAll('input[type="checkbox"][name="' + $input.name + '"]')
@@ -110,11 +114,13 @@ Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
 }
 
 /**
- * Uncheck exclusive inputs
+ * Uncheck exclusive checkboxes
  *
  * Find any checkbox inputs with the same name value and the 'exclusive' behaviour,
  * and uncheck them. This helps prevent someone checking both a regular checkbox and a
  * "None of these" checkbox in the same fieldset.
+ *
+ * @param {HTMLInputElement} $input - Checkbox input
  */
 Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
   var allInputsWithSameNameAndExclusiveBehaviour = document.querySelectorAll(

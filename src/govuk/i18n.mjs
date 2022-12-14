@@ -6,7 +6,8 @@
  * @private
  * @param {TranslationsFlattened} translations - Key-value pairs of the translation strings to use.
  * @param {object} [config] - Configuration options for the function.
- * @param {string} config.locale - An overriding locale for the PluralRules functionality.
+ * @param {string} [config.locale] - An overriding locale for the PluralRules functionality.
+ * @this {I18n}
  */
 export function I18n (translations, config) {
   // Make list of translations available throughout function
@@ -21,8 +22,10 @@ export function I18n (translations, config) {
  * returns the appropriate string.
  *
  * @param {string} lookupKey - The lookup key of the string to use.
- * @param {object} options - Any options passed with the translation string, e.g: for string interpolation.
+ * @param {Object<string, string | number | false>} [options] - Any options passed with the translation string, e.g: for string interpolation.
  * @returns {string} The appropriate translation string.
+ * @throws {Error} Lookup key required
+ * @throws {Error} Options required for `${}` placeholders
  */
 I18n.prototype.t = function (lookupKey, options) {
   if (!lookupKey) {
@@ -64,7 +67,7 @@ I18n.prototype.t = function (lookupKey, options) {
  * with the provided data
  *
  * @param {string} translationString - The translation string
- * @param {object} options - Any options passed with the translation string, e.g: for string interpolation.
+ * @param {Object<string, string | number | false>} options - Any options passed with the translation string, e.g: for string interpolation.
  * @returns {string} The translation string to output, with ${} placeholders replaced
  */
 I18n.prototype.replacePlaceholders = function (translationString, options) {
@@ -137,6 +140,7 @@ I18n.prototype.hasIntlNumberFormatSupport = function () {
  * @param {string} lookupKey - The lookup key of the string to use.
  * @param {number} count - Number used to determine which pluralisation to use.
  * @returns {PluralRule} The suffix associated with the correct pluralisation for this locale.
+ * @throws {Error} Plural form `.other` required when preferred plural form is missing
  */
 I18n.prototype.getPluralSuffix = function (lookupKey, count) {
   // Validate that the number is actually a number.
@@ -376,5 +380,5 @@ I18n.pluralRules = {
  * Translated messages (flattened)
  *
  * @private
- * @typedef {Object<string, string> | {}} TranslationsFlattened
+ * @typedef {Object<string, string>} TranslationsFlattened
  */

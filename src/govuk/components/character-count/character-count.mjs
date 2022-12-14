@@ -50,8 +50,9 @@ var CHARACTER_COUNT_TRANSLATIONS = {
  * of the available characters/words has been entered.
  *
  * @class
- * @param {HTMLElement} $module - The element this component controls
+ * @param {HTMLElement} $module - HTML element to use for character count
  * @param {CharacterCountConfig} [config] - Character count config
+ * @this {CharacterCount}
  */
 function CharacterCount ($module, config) {
   if (!$module) {

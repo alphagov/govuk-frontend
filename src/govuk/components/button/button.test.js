@@ -61,7 +61,7 @@ describe('/components/button', () => {
      * Examples don't do this and we need it to have something to submit
      *
      * @param {import('puppeteer').Page} page - Puppeteer page object
-     * @returns {undefined}
+     * @returns {Promise<undefined>}
      */
     function trackClicks (page) {
       return page.evaluate(() => {
@@ -82,6 +82,7 @@ describe('/components/button', () => {
     /**
      * Gets the number of times the form was submitted
      *
+     * @param {import('puppeteer').Page} page - Puppeteer page object
      * @returns {number} Number of times the form was submitted
      */
     function getClicksCount (page) {

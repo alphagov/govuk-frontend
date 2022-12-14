@@ -36,6 +36,7 @@ var ACCORDION_TRANSLATIONS = {
  * @class
  * @param {HTMLElement} $module - HTML element to use for accordion
  * @param {AccordionConfig} [config] - Accordion config
+ * @this {Accordion}
  */
 function Accordion ($module, config) {
   this.$module = $module
@@ -75,7 +76,9 @@ function Accordion ($module, config) {
   this.sectionContentClass = 'govuk-accordion__section-content'
 }
 
-// Initialize component
+/**
+ * Initialise component
+ */
 Accordion.prototype.init = function () {
   // Check for module
   if (!this.$module) {
@@ -90,7 +93,9 @@ Accordion.prototype.init = function () {
   this.updateShowAllButton(areAllSectionsOpen)
 }
 
-// Initialise controls and set attributes
+/**
+ * Initialise controls and set attributes
+ */
 Accordion.prototype.initControls = function () {
   // Create "Show all" button and set attributes
   this.$showAllButton = document.createElement('button')
@@ -123,7 +128,9 @@ Accordion.prototype.initControls = function () {
   }
 }
 
-// Initialise section headers
+/**
+ * Initialise section headers
+ */
 Accordion.prototype.initSectionHeaders = function () {
   // Loop through section headers
   nodeListForEach(this.$sections, function ($section, i) {
@@ -141,6 +148,12 @@ Accordion.prototype.initSectionHeaders = function () {
   }.bind(this))
 }
 
+/**
+ * Construct section header
+ *
+ * @param {HTMLDivElement} $headerWrapper - Section header wrapper
+ * @param {number} index - Section index
+ */
 Accordion.prototype.constructHeaderMarkup = function ($headerWrapper, index) {
   var $span = $headerWrapper.querySelector('.' + this.sectionButtonClass)
   var $heading = $headerWrapper.querySelector('.' + this.sectionHeadingClass)
@@ -237,7 +250,11 @@ Accordion.prototype.constructHeaderMarkup = function ($headerWrapper, index) {
   $heading.appendChild($button)
 }
 
-// When a section is opened by the user agent via the 'beforematch' event
+/**
+ * When a section is opened by the user agent via the 'beforematch' event
+ *
+ * @param {Event} event - Generic event
+ */
 Accordion.prototype.onBeforeMatch = function (event) {
   var $section = event.target.closest('.' + this.sectionClass)
   if ($section) {
@@ -245,7 +262,11 @@ Accordion.prototype.onBeforeMatch = function (event) {
   }
 }
 
-// When section toggled, set and store state
+/**
+ * When section toggled, set and store state
+ *
+ * @param {HTMLElement} $section - Section element
+ */
 Accordion.prototype.onSectionToggle = function ($section) {
   var expanded = this.isExpanded($section)
   this.setExpanded(!expanded, $section)
@@ -254,7 +275,9 @@ Accordion.prototype.onSectionToggle = function ($section) {
   this.storeState($section)
 }
 
-// When Open/Close All toggled, set and store state
+/**
+ * When Open/Close All toggled, set and store state
+ */
 Accordion.prototype.onShowOrHideAllToggle = function () {
   var $module = this
   var $sections = this.$sections
@@ -269,7 +292,12 @@ Accordion.prototype.onShowOrHideAllToggle = function () {
   $module.updateShowAllButton(nowExpanded)
 }
 
-// Set section attributes when opened/closed
+/**
+ * Set section attributes when opened/closed
+ *
+ * @param {boolean} expanded - Section expanded
+ * @param {HTMLElement} $section - Section element
+ */
 Accordion.prototype.setExpanded = function (expanded, $section) {
   var $icon = $section.querySelector('.' + this.upChevronIconClass)
   var $showHideText = $section.querySelector('.' + this.sectionShowHideTextClass)
@@ -320,12 +348,21 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
   this.updateShowAllButton(areAllSectionsOpen)
 }
 
-// Get state of section
+/**
+ * Get state of section
+ *
+ * @param {HTMLElement} $section - Section element
+ * @returns {boolean} True if expanded
+ */
 Accordion.prototype.isExpanded = function ($section) {
   return $section.classList.contains(this.sectionExpandedClass)
 }
 
-// Check if all sections are open
+/**
+ * Check if all sections are open
+ *
+ * @returns {boolean} True if all sections are open
+ */
 Accordion.prototype.checkIfAllSectionsOpen = function () {
   // Get a count of all the Accordion sections
   var sectionsCount = this.$sections.length
@@ -336,7 +373,11 @@ Accordion.prototype.checkIfAllSectionsOpen = function () {
   return areAllSectionsOpen
 }
 
-// Update "Show all sections" button
+/**
+ * Update "Show all sections" button
+ *
+ * @param {boolean} expanded - Section expanded
+ */
 Accordion.prototype.updateShowAllButton = function (expanded) {
   var $showAllIcon = this.$showAllButton.querySelector('.' + this.upChevronIconClass)
   var $showAllText = this.$showAllButton.querySelector('.' + this.showAllTextClass)
@@ -354,8 +395,12 @@ Accordion.prototype.updateShowAllButton = function (expanded) {
   }
 }
 
-// Check for `window.sessionStorage`, and that it actually works.
 var helper = {
+  /**
+   * Check for `window.sessionStorage`, and that it actually works.
+   *
+   * @returns {boolean} True if session storage is available
+   */
   checkForSessionStorage: function () {
     var testString = 'this is the test string'
     var result
@@ -370,7 +415,11 @@ var helper = {
   }
 }
 
-// Set the state of the accordions in sessionStorage
+/**
+ * Set the state of the accordions in sessionStorage
+ *
+ * @param {HTMLElement} $section - Section element
+ */
 Accordion.prototype.storeState = function ($section) {
   if (this.browserSupportsSessionStorage) {
     // We need a unique way of identifying each content in the Accordion. Since
@@ -390,7 +439,11 @@ Accordion.prototype.storeState = function ($section) {
   }
 }
 
-// Read the state of the accordions from sessionStorage
+/**
+ * Read the state of the accordions from sessionStorage
+ *
+ * @param {HTMLElement} $section - Section element
+ */
 Accordion.prototype.setInitialState = function ($section) {
   if (this.browserSupportsSessionStorage) {
     var $button = $section.querySelector('.' + this.sectionButtonClass)
@@ -409,11 +462,11 @@ Accordion.prototype.setInitialState = function ($section) {
 /**
  * Create an element to improve semantics of the section button with punctuation
  *
- * @returns {HTMLSpanElement} DOM element
- *
  * Adding punctuation to the button can also improve its general semantics by dividing its contents
  * into thematic chunks.
  * See https://github.com/alphagov/govuk-frontend/issues/2327#issuecomment-922957442
+ *
+ * @returns {HTMLElement} DOM element
  */
 Accordion.prototype.getButtonPunctuationEl = function () {
   var $punctuationEl = document.createElement('span')

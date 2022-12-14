@@ -7,7 +7,8 @@ import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target norm
  *
  * @class
  * @param {HTMLElement} $module - HTML element to use for notification banner
- * @param {NotificationBannerConfig} config - Notification banner config
+ * @param {NotificationBannerConfig} [config] - Notification banner config
+ * @this {NotificationBanner}
  */
 function NotificationBanner ($module, config) {
   this.$module = $module
@@ -23,7 +24,7 @@ function NotificationBanner ($module, config) {
 }
 
 /**
- * Initialise the component
+ * Initialise component
  */
 NotificationBanner.prototype.init = function () {
   var $module = this.$module

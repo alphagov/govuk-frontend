@@ -7,6 +7,7 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  *
  * @class
  * @param {HTMLElement} $module - HTML element to use for header
+ * @this {Header}
  */
 function Header ($module) {
   this.$module = $module
@@ -28,7 +29,7 @@ function Header ($module) {
 }
 
 /**
- * Initialise header
+ * Initialise component
  *
  * Check for the presence of the header, menu and menu button – if any are
  * missing then there's nothing to do so return early.
