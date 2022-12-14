@@ -155,18 +155,18 @@ module.exports = async (options) => {
   })
 
   // Component example preview
-  app.get('/components/:componentName/:exampleName*?/preview', function (req, res, next) {
+  app.get('/components/:componentName/:exampleName?/preview', function (req, res, next) {
     // Find the data for the specified example (or the default example)
     const componentName = req.params.componentName
     const exampleName = req.params.exampleName || 'default'
 
-    const previewLayout = res.locals.componentData.previewLayout || 'layout'
+    const previewLayout = res.locals.componentData?.previewLayout || 'layout'
 
-    const exampleConfig = res.locals.componentData.examples.find(
+    const exampleConfig = res.locals.componentData?.examples.find(
       example => example.name.replace(/ /g, '-') === exampleName
     )
 
-    if (!exampleConfig) {
+    if (!exampleConfig || !componentName) {
       next()
     }
 
