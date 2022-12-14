@@ -41,8 +41,8 @@ module.exports = {
 
         // JSDoc blocks are optional
         'jsdoc/require-jsdoc': 'off',
-        'jsdoc/require-param-description': 'off',
-        'jsdoc/require-param': 'off',
+        'jsdoc/require-param-description': 'warn',
+        'jsdoc/require-param': 'warn',
 
         // Require hyphens before param description
         // Aligns with TSDoc style: https://tsdoc.org/pages/tags/param/
