@@ -7,7 +7,21 @@ module.exports = {
         browser: true
       },
       rules: {
-        'no-var': 'off'
+        'no-var': 'off',
+
+        // JSDoc blocks are mandatory
+        'jsdoc/require-jsdoc': [
+          'error', {
+            require: {
+              ClassDeclaration: true,
+              ClassExpression: true,
+              FunctionExpression: true,
+              MethodDefinition: true
+            }
+          }
+        ],
+        'jsdoc/require-param-description': 'warn',
+        'jsdoc/require-param': 'warn'
       }
     },
     {
