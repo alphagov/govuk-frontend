@@ -23,13 +23,13 @@ describe('/components/hide-this-page', () => {
     expect(url).toBe(href)
   })
 
-  it('activates the button functionality when the shift key is pressed 3 times', async () => {
+  it('activates the button functionality when the Ctrl key is pressed 3 times', async () => {
     const href = await page.evaluate((buttonClass) => document.querySelector(buttonClass).href, buttonClass)
 
     await Promise.all([
-      page.keyboard.press('Shift'),
-      page.keyboard.press('Shift'),
-      page.keyboard.press('Shift'),
+      page.keyboard.press('Control'),
+      page.keyboard.press('Control'),
+      page.keyboard.press('Control'),
       page.waitForNavigation()
     ])
 
