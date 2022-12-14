@@ -80,8 +80,8 @@ ErrorSummary.prototype.setFocus = function () {
  * @param {MouseEvent} event - Click event
  */
 ErrorSummary.prototype.handleClick = function (event) {
-  var target = event.target
-  if (this.focusTarget(target)) {
+  var $target = event.target
+  if (this.focusTarget($target)) {
     event.preventDefault()
   }
 }
@@ -170,10 +170,10 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
   var $fieldset = $input.closest('fieldset')
 
   if ($fieldset) {
-    var legends = $fieldset.getElementsByTagName('legend')
+    var $legends = $fieldset.getElementsByTagName('legend')
 
-    if (legends.length) {
-      var $candidateLegend = legends[0]
+    if ($legends.length) {
+      var $candidateLegend = $legends[0]
 
       // If the input type is radio or checkbox, always use the legend if there
       // is one.
