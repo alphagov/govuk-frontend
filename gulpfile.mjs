@@ -14,8 +14,10 @@ import { npmScriptTask } from './tasks/run.mjs'
  * Runs JavaScript code quality checks, documentation, compilation
  */
 gulp.task('scripts', gulp.series(
-  npmScriptTask('lint:js'),
-  compileJavaScripts,
+  gulp.parallel(
+    npmScriptTask('lint:js'),
+    compileJavaScripts
+  ),
   npmScriptTask('build:jsdoc')
 ))
 
@@ -24,8 +26,10 @@ gulp.task('scripts', gulp.series(
  * Runs Sass code quality checks, documentation, compilation
  */
 gulp.task('styles', gulp.series(
-  npmScriptTask('lint:scss'),
-  compileStylesheets,
+  gulp.parallel(
+    npmScriptTask('lint:scss'),
+    compileStylesheets
+  ),
   npmScriptTask('build:sassdoc')
 ))
 
