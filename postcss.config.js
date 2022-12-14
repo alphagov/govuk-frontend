@@ -14,7 +14,7 @@ const unrgba = require('postcss-unrgba')
  * @param {object} context - PostCSS context
  * @param {string} context.env - Browserslist environment
  * @param {string | import('vinyl')} [context.file] - File path or object
- * @returns {{ plugins: import('postcss').Transformer[] }} PostCSS config
+ * @returns {import('postcss-load-config').Config} PostCSS config
  */
 module.exports = ({ env, file = '' }) => {
   const { dir, name } = parse(typeof file === 'object'
