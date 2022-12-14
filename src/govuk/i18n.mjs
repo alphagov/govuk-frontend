@@ -40,10 +40,10 @@ I18n.prototype.t = function (lookupKey, options) {
     lookupKey = lookupKey + '.' + this.getPluralSuffix(lookupKey, options.count)
   }
 
-  if (lookupKey in this.translations) {
-    // Fetch the translation string for that lookup key
-    var translationString = this.translations[lookupKey]
+  // Fetch the translation string for that lookup key
+  var translationString = this.translations[lookupKey]
 
+  if (typeof translationString === 'string') {
     // Check for ${} placeholders in the translation string
     if (translationString.match(/%{(.\S+)}/)) {
       if (!options) {

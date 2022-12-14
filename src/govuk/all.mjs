@@ -28,58 +28,76 @@ function initAll (config) {
 
   var $accordions = $scope.querySelectorAll('[data-module="govuk-accordion"]')
   nodeListForEach($accordions, function ($accordion) {
-    new Accordion($accordion, config.accordion).init()
+    if ($accordion instanceof HTMLElement) {
+      new Accordion($accordion, config.accordion).init()
+    }
   })
 
   var $buttons = $scope.querySelectorAll('[data-module="govuk-button"]')
   nodeListForEach($buttons, function ($button) {
-    new Button($button, config.button).init()
+    if ($button instanceof HTMLElement) {
+      new Button($button, config.button).init()
+    }
   })
 
   var $characterCounts = $scope.querySelectorAll('[data-module="govuk-character-count"]')
   nodeListForEach($characterCounts, function ($characterCount) {
-    new CharacterCount($characterCount, config.characterCount).init()
+    if ($characterCount instanceof HTMLElement) {
+      new CharacterCount($characterCount, config.characterCount).init()
+    }
   })
 
   var $checkboxes = $scope.querySelectorAll('[data-module="govuk-checkboxes"]')
   nodeListForEach($checkboxes, function ($checkbox) {
-    new Checkboxes($checkbox).init()
+    if ($checkbox instanceof HTMLElement) {
+      new Checkboxes($checkbox).init()
+    }
   })
 
   var $details = $scope.querySelectorAll('[data-module="govuk-details"]')
   nodeListForEach($details, function ($detail) {
-    new Details($detail).init()
+    if ($detail instanceof HTMLElement) {
+      new Details($detail).init()
+    }
   })
 
   // Find first error summary module to enhance.
   var $errorSummary = $scope.querySelector('[data-module="govuk-error-summary"]')
-  if ($errorSummary) {
+  if ($errorSummary instanceof HTMLElement) {
     new ErrorSummary($errorSummary, config.errorSummary).init()
   }
 
   // Find first header module to enhance.
   var $header = $scope.querySelector('[data-module="govuk-header"]')
-  if ($header) {
+  if ($header instanceof HTMLElement) {
     new Header($header).init()
   }
 
   var $notificationBanners = $scope.querySelectorAll('[data-module="govuk-notification-banner"]')
   nodeListForEach($notificationBanners, function ($notificationBanner) {
-    new NotificationBanner($notificationBanner, config.notificationBanner).init()
+    if ($notificationBanner instanceof HTMLElement) {
+      new NotificationBanner($notificationBanner, config.notificationBanner).init()
+    }
   })
 
   var $radios = $scope.querySelectorAll('[data-module="govuk-radios"]')
   nodeListForEach($radios, function ($radio) {
-    new Radios($radio).init()
+    if ($radio instanceof HTMLElement) {
+      new Radios($radio).init()
+    }
   })
 
   // Find first skip link module to enhance.
   var $skipLink = $scope.querySelector('[data-module="govuk-skip-link"]')
-  new SkipLink($skipLink).init()
+  if ($skipLink instanceof HTMLAnchorElement) {
+    new SkipLink($skipLink).init()
+  }
 
   var $tabs = $scope.querySelectorAll('[data-module="govuk-tabs"]')
   nodeListForEach($tabs, function ($tabs) {
-    new Tabs($tabs).init()
+    if ($tabs instanceof HTMLElement) {
+      new Tabs($tabs).init()
+    }
   })
 }
 

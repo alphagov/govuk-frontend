@@ -133,7 +133,7 @@ describe('/components/tabs', () => {
         const currentTabAriaSelected = await page.evaluate(() => document.body.querySelector('.govuk-tabs__tab[href="#past-week"]').getAttribute('aria-selected'))
         expect(currentTabAriaSelected).toEqual('true')
 
-        const currentTabClasses = await page.evaluate(() => document.body.querySelector('.govuk-tabs__tab[href="#past-week"]').parentNode.className)
+        const currentTabClasses = await page.evaluate(() => document.body.querySelector('.govuk-tabs__tab[href="#past-week"]').parentElement.className)
         expect(currentTabClasses).toContain('govuk-tabs__list-item--selected')
 
         const currentTabPanelIsHidden = await page.evaluate(() => document.getElementById('past-week').classList.contains('govuk-tabs__panel--hidden'))
