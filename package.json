@@ -36,7 +36,7 @@
     "lint:scss": "npm run lint:scss:cli -- \"{app,src}/**/*.scss\"",
     "lint:scss:cli": "stylelint --cache --cache-location .cache/stylelint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0",
     "prepare": "node -e \"try { require('husky').install() } catch (e) {if (e.code !== 'MODULE_NOT_FOUND') throw e}\"",
-    "size": "npm run build:dist && size-limit"
+    "size": "npm run build:dist && size-limit --why"
   },
   "dependencies": {
     "@babel/core": "^7.20.5",
@@ -81,9 +81,8 @@
     "@percy/cli": "^1.16.0",
     "@percy/puppeteer": "^2.0.2",
     "@percy/sdk-utils": "^1.16.0",
-    "@size-limit/esbuild": "8.1.0",
-    "@size-limit/file": "8.1.0",
-    "@size-limit/time": "8.1.0",
+    "@size-limit/preset-big-lib": "^8.1.0",
+    "@size-limit/webpack-why": "^8.1.0",
     "babel-jest": "^29.3.1",
     "cheerio": "^1.0.0-rc.12",
     "eslint": "^8.29.0",
