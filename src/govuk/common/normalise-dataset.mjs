@@ -48,6 +48,7 @@ export function normaliseString (value) {
  * @returns {Object<string, string | boolean | number | undefined>} Normalised dataset
  */
 export function normaliseDataset (dataset) {
+  /** @type {Object<string, string | boolean | number | undefined>} */
   var out = {}
 
   for (var key in dataset) {
