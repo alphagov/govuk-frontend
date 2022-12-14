@@ -59,6 +59,10 @@ jobs:
             run: npm run lint:js
             cache: .cache/eslint
 
+          - description: Lint type declarations
+            name: lint-types
+            run: npm run lint:types
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -67,6 +71,7 @@ jobs:
         uses: ./.github/workflows/actions/install-node
 
       - name: Cache linter
+        if: ${{ matrix.cache }}
         uses: actions/cache@v3
         with:
           key: ${{ matrix.name }}-cache
