@@ -9,7 +9,11 @@ import '../vendor/polyfills/Element/prototype/closest.mjs'
  */
 export function closestAttributeValue ($element, attributeName) {
   var $closestElement = $element.closest('[' + attributeName + ']')
+  var attributeValue
+
   if ($closestElement) {
-    return $closestElement.getAttribute(attributeName)
+    attributeValue = $closestElement.getAttribute(attributeName)
   }
+
+  return attributeValue || undefined
 }

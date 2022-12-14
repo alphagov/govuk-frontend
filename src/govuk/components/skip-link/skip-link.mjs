@@ -36,13 +36,13 @@ SkipLink.prototype.init = function () {
 /**
  * Get linked element
  *
- * @returns {HTMLElement} $linkedElement - DOM element linked to from the skip link
+ * @returns {HTMLElement | null} $linkedElement - DOM element linked to from the skip link
  */
 SkipLink.prototype.getLinkedElement = function () {
   var linkedElementId = this.getFragmentFromUrl()
 
   if (!linkedElementId) {
-    return false
+    return null
   }
 
   return document.getElementById(linkedElementId)

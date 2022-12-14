@@ -34,9 +34,9 @@ I18n.prototype.t = function (lookupKey, options) {
   }
 
   // If the `count` option is set, determine which plural suffix is needed and
-  // change the lookupKey to match. We check to see if it's undefined instead of
+  // change the lookupKey to match. We check to see if it's numeric instead of
   // falsy, as this could legitimately be 0.
-  if (options && typeof options.count !== 'undefined') {
+  if (options && typeof options.count === 'number') {
     // Get the plural suffix
     lookupKey = lookupKey + '.' + this.getPluralSuffix(lookupKey, options.count)
   }
