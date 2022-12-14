@@ -7,7 +7,7 @@ scenario: >-
   Things to try:
 
   1. Activate the Exit this Page button by clicking it
-  
+
   2. Activate the Exit this Page button by pressing the Esc key 3 times
 
   3. Activating the Exit this Page button on a small screen view
@@ -20,6 +20,8 @@ scenario: >-
 
 {% extends "full-page-example.njk" %}
 
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "phase-banner/macro.njk" import govukPhaseBanner %}
 {% from "hide-this-page/macro.njk" import govukHideThisPage %}
 {% from "inset-text/macro.njk" import govukInsetText %}
 {% from "details/macro.njk" import govukDetails %}
@@ -37,7 +39,41 @@ scenario: >-
   }) }}
 {% endblock %}
 
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBreadcrumbs({
+    classes: '',
+    collapseOnMobile: true,
+    items: [
+      {
+        html: 'Home',
+        href: '/'
+      },
+      {
+        html: ' Births, deaths, marriages and care',
+        href: '/'
+      },
+      {
+        html: 'Having a child, parenting and adoption',
+        href: '/'
+      }
+    ]
+  }) }}
+{% endblock %}
+
 {% block content %}
+  {{ govukHideThisPage({
+    text: "Exit this page",
+    redirectUrl: "https://www.google.com/"
+  }) }}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">Get help arranging child maintenance</h1>
@@ -48,7 +84,7 @@ scenario: >-
         <li>making your own arrangement</li>
         <li>using the Child Maintenance Service</li>
       </ul>
-      
+
       <p class="govuk-body-m">
         <a class="govuk-link" href="contact-child-maintenance-choices">Contact Child Maintenance Choices if you live in Northern Ireland</a>
       </p>
@@ -56,7 +92,7 @@ scenario: >-
       <h2 class="govuk-heading-m">Using the Child Maintenance Service</h2>
       <h3 class="govuk-heading-s">If you already have an active case</h3>
       <p class="govuk-body-m">If you have a case with the same parent you should <a href="https://www.gov.uk/child-maintenance-service/change-of-circumstances" class="govuk-link"> report a change of circumstances </a>instead of making a new arrangement. You can use this service if you want to set up a new arrangement with a different parent.</p>
-      
+
       <h3 class="govuk-heading-s">Fees</h3>
       <p class="govuk-body-m">If you decide to use the Child Maintenance Service the application fee is £20 and cannot be refunded. You’ll need a debit or credit card to pay this. It does not guarantee an arrangement.</p>
       <p class="govuk-body-m">You will not have to pay the application fee if you:</p>
@@ -67,7 +103,7 @@ scenario: >-
       <p class="govuk-body-m">
         <a class="govuk-link" href="https://www.gov.uk/guidance/domestic-abuse-how-to-get-help">Get help if you have experienced domestic abuse</a>
       </p>
-      
+
       <h3 class="govuk-heading-s">If you’re worried about contacting the other parent</h3>
       <p class="govuk-body-m">If you decide to use the Child Maintenance Service, we will try to contact the other parent about setting up child maintenance – you do not need to.</p>
       <p class="govuk-body-m">We will share the following details with the other parent:</p>
@@ -124,10 +160,9 @@ scenario: >-
         isStartButton: true
       }) }}
     </div>
-
-    {{ govukHideThisPage({
-      text: "Exit this page",
-      redirectUrl: "https://www.google.com/"
-    }) }}
+    <div class="govuk-grid-column-one-third">
+      <p class="govuk-body">There could be other content here.</p>
+      <p class="govuk-body">In ea ex nulla veniam commodo Lorem labore dolor et ea in deserunt qui. Enim adipisicing dolore est amet magna. Cupidatat adipisicing labore consectetur exercitation Lorem dolor ipsum et deserunt est. Sit laborum dolore sit id eiusmod.</p>
+    </div>
   </div>
 {% endblock %}
