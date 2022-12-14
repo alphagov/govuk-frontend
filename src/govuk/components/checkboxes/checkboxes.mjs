@@ -173,30 +173,30 @@ Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
  * @param {MouseEvent} event - Click event
  */
 Checkboxes.prototype.handleClick = function (event) {
-  var $target = event.target
+  var $clickedInput = event.target
 
   // Ignore clicks on things that aren't checkbox inputs
-  if (!($target instanceof HTMLInputElement) || $target.type !== 'checkbox') {
+  if (!($clickedInput instanceof HTMLInputElement) || $clickedInput.type !== 'checkbox') {
     return
   }
 
   // If the checkbox conditionally-reveals some content, sync the state
-  var hasAriaControls = $target.getAttribute('aria-controls')
+  var hasAriaControls = $clickedInput.getAttribute('aria-controls')
   if (hasAriaControls) {
-    this.syncConditionalRevealWithInputState($target)
+    this.syncConditionalRevealWithInputState($clickedInput)
   }
 
   // No further behaviour needed for unchecking
-  if (!$target.checked) {
+  if (!$clickedInput.checked) {
     return
   }
 
   // Handle 'exclusive' checkbox behaviour (ie "None of these")
-  var hasBehaviourExclusive = ($target.getAttribute('data-behaviour') === 'exclusive')
+  var hasBehaviourExclusive = ($clickedInput.getAttribute('data-behaviour') === 'exclusive')
   if (hasBehaviourExclusive) {
-    this.unCheckAllInputsExcept($target)
+    this.unCheckAllInputsExcept($clickedInput)
   } else {
-    this.unCheckExclusiveInputs($target)
+    this.unCheckExclusiveInputs($clickedInput)
   }
 }
 
