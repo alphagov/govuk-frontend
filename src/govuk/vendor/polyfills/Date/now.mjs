@@ -1,4 +1,5 @@
-(function(undefined) {
+// @ts-nocheck
+(function (undefined) {
 
     // Detection from https://github.com/Financial-Times/polyfill-library/blob/v3.111.0/polyfills/Date/now/detect.js
     var detect = ('Date' in self && 'now' in self.Date && 'getTime' in self.Date.prototype)
