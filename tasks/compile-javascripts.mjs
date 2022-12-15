@@ -69,7 +69,7 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, minif
     format: 'umd',
 
     // Legacy mode is required for IE8 support
-    legacy: true,
+    // legacy: true,
 
     // Used to set the `window` global for 'iife' and 'umd' bundles
     // Components are given unique names (e.g GOVUKFrontend.Accordion)
@@ -90,8 +90,8 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, minif
 
   // Write to bundle
   await Promise.all([
-    writeFile(filePath, result.code),
-    writeFile(`${filePath}.map`, result.map.toString())
+    writeFile(filePath, result.output[0].code),
+    writeFile(`${filePath}.map`, result.output[0].map.toString())
   ])
 }
 
