@@ -1,4 +1,5 @@
-(function(undefined) {
+// @ts-nocheck
+(function (undefined) {
 
 // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Object/defineProperty/detect.js
 var detect = (
