@@ -8,8 +8,16 @@ import '../vendor/polyfills/Element/prototype/closest.mjs'
  * @returns {string | undefined} Attribute value
  */
 export function closestAttributeValue ($element, attributeName) {
-  var closestElementWithAttribute = $element.closest('[' + attributeName + ']')
-  if (closestElementWithAttribute) {
-    return closestElementWithAttribute.getAttribute(attributeName)
+  var $closestElement = $element.closest('[' + attributeName + ']')
+  var closestAttributeValue
+
+  if ($closestElement) {
+    var attributeValue = $closestElement.getAttribute(attributeName)
+
+    if (attributeValue) {
+      closestAttributeValue = attributeValue
+    }
   }
+
+  return closestAttributeValue
 }

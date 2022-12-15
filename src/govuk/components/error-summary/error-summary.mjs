@@ -140,14 +140,20 @@ ErrorSummary.prototype.focusTarget = function ($target) {
  * the hash.
  *
  * @param {string} url - URL
- * @returns {string | null} Fragment from URL, without the hash
+ * @returns {string | undefined} Fragment from URL, without the hash
  */
 ErrorSummary.prototype.getFragmentFromUrl = function (url) {
-  if (url.indexOf('#') === -1) {
-    return null
+  var fragment
+
+  // Split URL at hash
+  var parts = url.split('#')
+
+  // Check for hash fragment
+  if (parts.length > 1) {
+    fragment = parts.pop()
   }
 
-  return url.split('#').pop()
+  return fragment
 }
 
 /**
@@ -162,8 +168,8 @@ ErrorSummary.prototype.getFragmentFromUrl = function (url) {
  * - The closest parent `<label>`
  *
  * @param {HTMLElement} $input - The input
- * @returns {HTMLElement} Associated legend or label, or null if no associated
- *                        legend or label can be found
+ * @returns {HTMLElement | null} Associated legend or label, or null if no associated
+ *   legend or label can be found
  */
 ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
   var $fieldset = $input.closest('fieldset')
