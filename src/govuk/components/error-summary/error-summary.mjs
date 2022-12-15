@@ -26,6 +26,7 @@ function ErrorSummary ($module, config) {
     disableAutoFocus: false
   }
 
+  /** @type {ErrorSummaryConfig} */
   this.config = mergeConfigs(
     defaultConfig,
     config || {},

@@ -22,6 +22,7 @@ function NotificationBanner ($module, config) {
     disableAutoFocus: false
   }
 
+  /** @type {NotificationBannerConfig} */
   this.config = mergeConfigs(
     defaultConfig,
     config || {},

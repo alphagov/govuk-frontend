@@ -57,6 +57,7 @@ function Accordion ($module, config) {
     i18n: ACCORDION_TRANSLATIONS
   }
 
+  /** @type {AccordionConfig} */
   this.config = mergeConfigs(
     defaultConfig,
     config || {},

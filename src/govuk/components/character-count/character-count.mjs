@@ -87,6 +87,7 @@ function CharacterCount ($module, config) {
     }
   }
 
+  /** @type {CharacterCountConfig} */
   this.config = mergeConfigs(
     defaultConfig,
     config || {},

@@ -70,6 +70,7 @@ I18n.prototype.t = function (lookupKey, options) {
  * @returns {string} The translation string to output, with ${} placeholders replaced
  */
 I18n.prototype.replacePlaceholders = function (translationString, options) {
+  /** @type {Intl.NumberFormat | undefined} */
   var formatter
 
   if (this.hasIntlNumberFormatSupport()) {

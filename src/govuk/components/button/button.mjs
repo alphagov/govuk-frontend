@@ -27,6 +27,7 @@ function Button ($module, config) {
     preventDoubleClick: false
   }
 
+  /** @type {ButtonConfig} */
   this.config = mergeConfigs(
     defaultConfig,
     config || {},
