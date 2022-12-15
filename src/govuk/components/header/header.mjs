@@ -76,7 +76,7 @@ Header.prototype.syncState = function () {
     this.$menuButton.setAttribute('hidden', '')
   } else {
     this.$menuButton.removeAttribute('hidden')
-    this.$menuButton.setAttribute('aria-expanded', this.menuIsOpen)
+    this.$menuButton.setAttribute('aria-expanded', this.menuIsOpen.toString())
 
     if (this.menuIsOpen) {
       this.$menu.removeAttribute('hidden')

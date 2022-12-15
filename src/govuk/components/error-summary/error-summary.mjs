@@ -110,6 +110,10 @@ ErrorSummary.prototype.focusTarget = function ($target) {
   }
 
   var inputId = this.getFragmentFromUrl($target.href)
+  if (!inputId) {
+    return false
+  }
+
   var $input = document.getElementById(inputId)
   if (!$input) {
     return false
@@ -136,11 +140,11 @@ ErrorSummary.prototype.focusTarget = function ($target) {
  * the hash.
  *
  * @param {string} url - URL
- * @returns {string} Fragment from URL, without the hash
+ * @returns {string | null} Fragment from URL, without the hash
  */
 ErrorSummary.prototype.getFragmentFromUrl = function (url) {
   if (url.indexOf('#') === -1) {
-    return false
+    return null
   }
 
   return url.split('#').pop()
