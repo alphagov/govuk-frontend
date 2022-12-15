@@ -14,16 +14,9 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * @param {ErrorSummaryConfig} [config] - Error summary config
  */
 function ErrorSummary ($module, config) {
-  // Some consuming code may not be passing a module,
-  // for example if they initialise the component
-  // on their own by directly passing the result
-  // of `document.querySelector`.
-  // To avoid breaking further JavaScript initialisation
-  // we need to safeguard against this so things keep
-  // working the same now we read the elements data attributes
-  if (!$module) {
-    // Little safety in case code gets ported as-is
-    // into and ES6 class constructor, where the return value matters
+  if (!($module instanceof HTMLElement)) {
+    // Return instance for method chaining
+    // using `new ErrorSummary($module).init()`
     return this
   }
 
@@ -32,6 +25,7 @@ function ErrorSummary ($module, config) {
   var defaultConfig = {
     disableAutoFocus: false
   }
+
   this.config = mergeConfigs(
     defaultConfig,
     config || {},
@@ -41,15 +35,23 @@ function ErrorSummary ($module, config) {
 
 /**
  * Initialise component
+ *
+ * @returns {ErrorSummary} Error summary component
  */
 ErrorSummary.prototype.init = function () {
-  var $module = this.$module
-  if (!$module) {
-    return
+  // Check that required elements are present
+  if (!this.$module) {
+    return this
   }
+
+  var $module = this.$module
 
   this.setFocus()
   $module.addEventListener('click', this.handleClick.bind(this))
+
+  // Return instance for assignment
+  // `var myErrorSummary = new ErrorSummary($module).init()`
+  return this
 }
 
 /**
@@ -182,7 +184,7 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
 
       // If the input type is radio or checkbox, always use the legend if there
       // is one.
-      if ($input.type === 'checkbox' || $input.type === 'radio') {
+      if ($input instanceof HTMLInputElement && ($input.type === 'checkbox' || $input.type === 'radio')) {
         return $candidateLegend
       }
 

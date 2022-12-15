@@ -28,37 +28,27 @@ function initAll (config) {
 
   var $accordions = $scope.querySelectorAll('[data-module="govuk-accordion"]')
   nodeListForEach($accordions, function ($accordion) {
-    if ($accordion instanceof HTMLElement) {
-      new Accordion($accordion, config.accordion).init()
-    }
+    new Accordion($accordion, config.accordion).init()
   })
 
   var $buttons = $scope.querySelectorAll('[data-module="govuk-button"]')
   nodeListForEach($buttons, function ($button) {
-    if ($button instanceof HTMLElement) {
-      new Button($button, config.button).init()
-    }
+    new Button($button, config.button).init()
   })
 
   var $characterCounts = $scope.querySelectorAll('[data-module="govuk-character-count"]')
   nodeListForEach($characterCounts, function ($characterCount) {
-    if ($characterCount instanceof HTMLElement) {
-      new CharacterCount($characterCount, config.characterCount).init()
-    }
+    new CharacterCount($characterCount, config.characterCount).init()
   })
 
   var $checkboxes = $scope.querySelectorAll('[data-module="govuk-checkboxes"]')
   nodeListForEach($checkboxes, function ($checkbox) {
-    if ($checkbox instanceof HTMLElement) {
-      new Checkboxes($checkbox).init()
-    }
+    new Checkboxes($checkbox).init()
   })
 
   var $details = $scope.querySelectorAll('[data-module="govuk-details"]')
   nodeListForEach($details, function ($detail) {
-    if ($detail instanceof HTMLElement) {
-      new Details($detail).init()
-    }
+    new Details($detail).init()
   })
 
   // Find first error summary module to enhance.
@@ -75,16 +65,12 @@ function initAll (config) {
 
   var $notificationBanners = $scope.querySelectorAll('[data-module="govuk-notification-banner"]')
   nodeListForEach($notificationBanners, function ($notificationBanner) {
-    if ($notificationBanner instanceof HTMLElement) {
-      new NotificationBanner($notificationBanner, config.notificationBanner).init()
-    }
+    new NotificationBanner($notificationBanner, config.notificationBanner).init()
   })
 
   var $radios = $scope.querySelectorAll('[data-module="govuk-radios"]')
   nodeListForEach($radios, function ($radio) {
-    if ($radio instanceof HTMLElement) {
-      new Radios($radio).init()
-    }
+    new Radios($radio).init()
   })
 
   // Find first skip link module to enhance.
@@ -95,9 +81,7 @@ function initAll (config) {
 
   var $tabs = $scope.querySelectorAll('[data-module="govuk-tabs"]')
   nodeListForEach($tabs, function ($tabs) {
-    if ($tabs instanceof HTMLElement) {
-      new Tabs($tabs).init()
-    }
+    new Tabs($tabs).init()
   })
 }
 

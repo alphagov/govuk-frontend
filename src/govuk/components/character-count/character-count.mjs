@@ -54,7 +54,14 @@ var CHARACTER_COUNT_TRANSLATIONS = {
  * @param {CharacterCountConfig} [config] - Character count config
  */
 function CharacterCount ($module, config) {
-  if (!$module) {
+  if (!($module instanceof HTMLElement)) {
+    // Return instance for method chaining
+    // using `new CharacterCount($module).init()`
+    return this
+  }
+
+  var $textarea = $module.querySelector('.govuk-js-character-count')
+  if (!($textarea instanceof HTMLTextAreaElement)) {
     return this
   }
 
@@ -98,11 +105,11 @@ function CharacterCount ($module, config) {
   } else if ('maxlength' in this.config && this.config.maxlength) {
     this.maxLength = this.config.maxlength
   } else {
-    return
+    return this
   }
 
   this.$module = $module
-  this.$textarea = $module.querySelector('.govuk-js-character-count')
+  this.$textarea = $textarea
   this.$visibleCountMessage = null
   this.$screenReaderCountMessage = null
 
@@ -112,15 +119,21 @@ function CharacterCount ($module, config) {
 
 /**
  * Initialise component
+ *
+ * @returns {CharacterCount} Character count component
  */
 CharacterCount.prototype.init = function () {
   // Check that required elements are present
-  if (!this.$textarea) {
-    return
+  if (!this.$module || !this.$textarea) {
+    return this
   }
 
   var $textarea = this.$textarea
   var $textareaDescription = document.getElementById($textarea.id + '-info')
+
+  if (!($textareaDescription instanceof HTMLElement)) {
+    return this
+  }
 
   // Inject a decription for the textarea if none is present already
   // for when the component was rendered with no maxlength, maxwords
@@ -169,6 +182,10 @@ CharacterCount.prototype.init = function () {
     window.addEventListener('DOMContentLoaded', this.updateCountMessage.bind(this))
   }
   this.updateCountMessage()
+
+  // Return instance for assignment
+  // `var myCharacterCount = new CharacterCount($module).init()`
+  return this
 }
 
 /**

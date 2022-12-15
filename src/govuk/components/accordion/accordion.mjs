@@ -38,18 +38,31 @@ var ACCORDION_TRANSLATIONS = {
  * @param {AccordionConfig} [config] - Accordion config
  */
 function Accordion ($module, config) {
+  if (!($module instanceof HTMLElement)) {
+    // Return instance for method chaining
+    // using `new Accordion($module).init()`
+    return this
+  }
+
+  var $sections = $module.querySelectorAll('.govuk-accordion__section')
+  if (!$sections.length) {
+    return this
+  }
+
   this.$module = $module
-  this.$sections = $module.querySelectorAll('.govuk-accordion__section')
+  this.$sections = $sections
   this.browserSupportsSessionStorage = helper.checkForSessionStorage()
 
   var defaultConfig = {
     i18n: ACCORDION_TRANSLATIONS
   }
+
   this.config = mergeConfigs(
     defaultConfig,
     config || {},
     normaliseDataset($module.dataset)
   )
+
   this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'))
 
   this.controlsClass = 'govuk-accordion__controls'
@@ -77,11 +90,13 @@ function Accordion ($module, config) {
 
 /**
  * Initialise component
+ *
+ * @returns {Accordion} Accordion component
  */
 Accordion.prototype.init = function () {
-  // Check for module
-  if (!this.$module) {
-    return
+  // Check that required elements are present
+  if (!this.$module || !this.$sections) {
+    return this
   }
 
   this.initControls()
@@ -90,6 +105,10 @@ Accordion.prototype.init = function () {
   // See if "Show all sections" button text should be updated
   var areAllSectionsOpen = this.checkIfAllSectionsOpen()
   this.updateShowAllButton(areAllSectionsOpen)
+
+  // Return instance for assignment
+  // `var myAccordion = new Accordion($module).init()`
+  return this
 }
 
 /**
@@ -137,13 +156,17 @@ Accordion.prototype.initSectionHeaders = function () {
     /**
      * Loop through section headers
      *
-     * @param {HTMLDivElement} $section - Section element
+     * @param {HTMLElement} $section - Section element
      * @param {number} index - Section index
      * @this {Accordion}
      */
     function ($section, index) {
-      // Set header attributes
       var $header = $section.querySelector('.' + this.sectionHeaderClass)
+      if (!($header instanceof HTMLElement)) {
+        return
+      }
+
+      // Set header attributes
       this.constructHeaderMarkup($header, index)
       this.setExpanded(this.isExpanded($section), $section)
 
@@ -160,13 +183,18 @@ Accordion.prototype.initSectionHeaders = function () {
 /**
  * Construct section header
  *
- * @param {HTMLDivElement} $headerWrapper - Section header wrapper
+ * @param {HTMLElement} $header - Section header
  * @param {number} index - Section index
  */
-Accordion.prototype.constructHeaderMarkup = function ($headerWrapper, index) {
-  var $span = $headerWrapper.querySelector('.' + this.sectionButtonClass)
-  var $heading = $headerWrapper.querySelector('.' + this.sectionHeadingClass)
-  var $summary = $headerWrapper.querySelector('.' + this.sectionSummaryClass)
+Accordion.prototype.constructHeaderMarkup = function ($header, index) {
+  var $span = $header.querySelector('.' + this.sectionButtonClass)
+  var $heading = $header.querySelector('.' + this.sectionHeadingClass)
+  var $summary = $header.querySelector('.' + this.sectionSummaryClass)
+
+  if (!($span instanceof HTMLElement) ||
+    !($heading instanceof HTMLElement)) {
+    return
+  }
 
   // Create a button element that will replace the '.govuk-accordion__section-button' span
   var $button = document.createElement('button')
@@ -225,7 +253,7 @@ Accordion.prototype.constructHeaderMarkup = function ($headerWrapper, index) {
   $button.appendChild(this.getButtonPunctuationEl())
 
   // If summary content exists add to DOM in correct order
-  if (typeof ($summary) !== 'undefined' && $summary !== null) {
+  if ($summary instanceof HTMLElement) {
     // Create a new `span` element and copy the summary line content from the original `div` to the
     // new `span`
     // This is because the summary line text is now inside a button element, which can only contain
@@ -265,8 +293,16 @@ Accordion.prototype.constructHeaderMarkup = function ($headerWrapper, index) {
  * @param {Event} event - Generic event
  */
 Accordion.prototype.onBeforeMatch = function (event) {
-  var $section = event.target.closest('.' + this.sectionClass)
-  if ($section) {
+  var $fragment = event.target
+
+  // Handle elements with `.closest()` support only
+  if (!($fragment instanceof HTMLElement)) {
+    return
+  }
+
+  // Handle when fragment is inside section
+  var $section = $fragment.closest('.' + this.sectionClass)
+  if ($section instanceof HTMLElement) {
     this.setExpanded(true, $section)
   }
 }
@@ -322,6 +358,13 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
   var $button = $section.querySelector('.' + this.sectionButtonClass)
   var $sectionContent = $section.querySelector('.' + this.sectionContentClass)
 
+  if (!($icon instanceof HTMLElement) ||
+    !($showHideText instanceof HTMLElement) ||
+    !($button instanceof HTMLElement) ||
+    !($sectionContent instanceof HTMLElement)) {
+    return
+  }
+
   var newButtonText = expanded
     ? this.i18n.t('hideSection')
     : this.i18n.t('showSection')
@@ -330,11 +373,15 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
   $button.setAttribute('aria-expanded', expanded.toString())
 
   // Update aria-label combining
-  var $header = $section.querySelector('.' + this.sectionHeadingTextClass)
-  var ariaLabelParts = [$header.innerText.trim()]
+  var ariaLabelParts = []
+
+  var $headingText = $section.querySelector('.' + this.sectionHeadingTextClass)
+  if ($headingText instanceof HTMLElement) {
+    ariaLabelParts.push($headingText.innerText.trim())
+  }
 
   var $summary = $section.querySelector('.' + this.sectionSummaryClass)
-  if ($summary) {
+  if ($summary instanceof HTMLElement) {
     ariaLabelParts.push($summary.innerText.trim())
   }
 
@@ -399,9 +446,16 @@ Accordion.prototype.checkIfAllSectionsOpen = function () {
 Accordion.prototype.updateShowAllButton = function (expanded) {
   var $showAllIcon = this.$showAllButton.querySelector('.' + this.upChevronIconClass)
   var $showAllText = this.$showAllButton.querySelector('.' + this.showAllTextClass)
+
+  if (!($showAllIcon instanceof HTMLElement) ||
+    !($showAllText instanceof HTMLElement)) {
+    return
+  }
+
   var newButtonText = expanded
     ? this.i18n.t('hideAllSections')
     : this.i18n.t('showAllSections')
+
   this.$showAllButton.setAttribute('aria-expanded', expanded.toString())
   $showAllText.innerText = newButtonText
 
@@ -445,7 +499,7 @@ Accordion.prototype.storeState = function ($section) {
     // `id` can be safely used.
     var $button = $section.querySelector('.' + this.sectionButtonClass)
 
-    if ($button) {
+    if ($button instanceof HTMLElement) {
       var contentId = $button.getAttribute('aria-controls')
       var contentState = $button.getAttribute('aria-expanded')
 
@@ -466,7 +520,7 @@ Accordion.prototype.setInitialState = function ($section) {
   if (this.browserSupportsSessionStorage) {
     var $button = $section.querySelector('.' + this.sectionButtonClass)
 
-    if ($button) {
+    if ($button instanceof HTMLElement) {
       var contentId = $button.getAttribute('aria-controls')
       var contentState = contentId ? window.sessionStorage.getItem(contentId) : null
 
