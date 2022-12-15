@@ -14,7 +14,7 @@ class BrowserVirtualEnvironment extends TestEnvironment {
     const { virtualConsole } = this.dom
 
     // Ensure test fails for browser exceptions
-    virtualConsole.on('jsdomError', (error) => process.emit('error', error))
+    virtualConsole.on('jsdomError', (error) => process.emit('uncaughtException', error))
 
     // Add shared test globals
     // componentsData, componentsDirectory, examplesDirectory
