@@ -1,7 +1,5 @@
 {
   "name": "govuk-frontend",
-  "scripts": {
-  },
   "env": {
     "HEROKU_APP": "REVIEW"
   },
@@ -10,5 +8,21 @@
     {
       "url": "heroku/nodejs"
     }
-  ]
+  ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "environments": {
+    "review": {
+      "formation": {
+        "web": {
+          "quantity": 1,
+          "size": "eco"
+        }
+      }
+    }
+  }
 }
