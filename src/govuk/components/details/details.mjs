@@ -21,6 +21,9 @@ function Details ($module) {
   this.$module = $module
 }
 
+/**
+ * Initialise component
+ */
 Details.prototype.init = function () {
   if (!this.$module) {
     return
@@ -36,6 +39,9 @@ Details.prototype.init = function () {
   this.polyfillDetails()
 }
 
+/**
+ * Polyfill component in older browsers
+ */
 Details.prototype.polyfillDetails = function () {
   var $module = this.$module
 
@@ -144,6 +150,6 @@ export default Details
 
 /**
  * @callback polyfillHandleInputsCallback
- * @param {KeyboardEvent} event - Keyboard event
- * @returns {undefined}
+ * @param {UIEvent} event - Keyboard or mouse event
+ * @returns {void}
  */

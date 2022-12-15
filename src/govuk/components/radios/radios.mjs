@@ -15,7 +15,7 @@ function Radios ($module) {
 }
 
 /**
- * Initialise Radios
+ * Initialise component
  *
  * Radios can be associated with a 'conditionally revealed' content block – for
  * example, a radio for 'Phone' could reveal an additional form field for the
@@ -67,7 +67,7 @@ Radios.prototype.init = function () {
 }
 
 /**
- * Sync the conditional reveal states for all inputs in this $module.
+ * Sync the conditional reveal states for all radio buttons in this $module.
  */
 Radios.prototype.syncAllConditionalReveals = function () {
   nodeListForEach(this.$inputs, this.syncConditionalRevealWithInputState.bind(this))

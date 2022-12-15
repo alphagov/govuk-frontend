@@ -15,7 +15,7 @@ function SkipLink ($module) {
 }
 
 /**
- * Initialise the component
+ * Initialise component
  */
 SkipLink.prototype.init = function () {
   // Check for module

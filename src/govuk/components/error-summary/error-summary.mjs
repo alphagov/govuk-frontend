@@ -10,8 +10,8 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * Takes focus on initialisation for accessible announcement, unless disabled in configuration.
  *
  * @class
- * @param {HTMLElement} $module - The element this component controls
- * @param {ErrorSummaryConfig} config - Error summary config
+ * @param {HTMLElement} $module - HTML element to use for error summary
+ * @param {ErrorSummaryConfig} [config] - Error summary config
  */
 function ErrorSummary ($module, config) {
   // Some consuming code may not be passing a module,
@@ -39,6 +39,9 @@ function ErrorSummary ($module, config) {
   )
 }
 
+/**
+ * Initialise component
+ */
 ErrorSummary.prototype.init = function () {
   var $module = this.$module
   if (!$module) {
@@ -97,7 +100,7 @@ ErrorSummary.prototype.handleClick = function (event) {
  * NVDA (as tested in 2018.3.2) - without this only the field type is announced
  * (e.g. "Edit, has autocomplete").
  *
- * @param {HTMLElement} $target - Event target
+ * @param {EventTarget} $target - Event target
  * @returns {boolean} True if the target was able to be focussed
  */
 ErrorSummary.prototype.focusTarget = function ($target) {
