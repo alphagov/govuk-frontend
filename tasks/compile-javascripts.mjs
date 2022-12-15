@@ -70,8 +70,10 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, minif
           ? 'json'
           : template === 'list' ? 'txt' : 'html'
 
+        const infix = name === 'all' ? '' : `-${name}`
+
         return visualizer.default({
-          filename: `public/stats-${template}.${extension}`,
+          filename: `public/stats${infix}-${template}.${extension}`,
           title: `"${template}" stats for GOV.UK Frontend`,
           template
         })
