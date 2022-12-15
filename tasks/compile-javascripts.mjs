@@ -4,6 +4,7 @@ import { basename, dirname, join, parse } from 'path'
 
 import PluginError from 'plugin-error'
 import { rollup } from 'rollup'
+import visualizer from 'rollup-plugin-visualizer'
 import { minify } from 'uglify-js'
 
 import configPaths from '../config/paths.js'
@@ -63,6 +64,18 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, minif
     file: filePath,
     sourcemapFile: filePath,
     sourcemap: true,
+    plugins:
+      ['sunburst', 'treemap', 'network', 'raw-data', 'list'].map(template => {
+        const extension = template === 'raw-data'
+          ? 'json'
+          : template === 'list' ? 'txt' : 'html'
+
+        return visualizer.default({
+          filename: `public/stats-${template}.${extension}`,
+          title: `"${template}" stats for GOV.UK Frontend`,
+          template
+        })
+      }),
 
     // Universal Module Definition (UMD)
     // for browser + Node.js compatibility
