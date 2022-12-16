@@ -256,11 +256,11 @@ Tabs.prototype.createHistoryEntry = function ($tab) {
 
   // Save and restore the id
   // so the page doesn't jump when a user clicks a tab (which changes the hash)
-  var id = $panel.id
+  var panelId = $panel.id
   $panel.id = ''
   this.changingHash = true
   window.location.hash = this.getHref($tab).slice(1)
-  $panel.id = id
+  $panel.id = panelId
 }
 
 /**

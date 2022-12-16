@@ -33,17 +33,17 @@ Checkboxes.prototype.init = function () {
   var $inputs = this.$inputs
 
   nodeListForEach($inputs, function ($input) {
-    var target = $input.getAttribute('data-aria-controls')
+    var targetId = $input.getAttribute('data-aria-controls')
 
     // Skip checkboxes without data-aria-controls attributes, or where the
     // target element does not exist.
-    if (!target || !document.getElementById(target)) {
+    if (!targetId || !document.getElementById(targetId)) {
       return
     }
 
     // Promote the data-aria-controls attribute to a aria-controls attribute
     // so that the relationship is exposed in the AOM
-    $input.setAttribute('aria-controls', target)
+    $input.setAttribute('aria-controls', targetId)
     $input.removeAttribute('data-aria-controls')
   })
 
