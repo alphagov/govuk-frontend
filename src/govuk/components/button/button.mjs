@@ -54,11 +54,11 @@ Button.prototype.init = function () {
  * @param {KeyboardEvent} event - Keydown event
  */
 Button.prototype.handleKeyDown = function (event) {
-  var target = event.target
+  var $target = event.target
 
-  if (target.getAttribute('role') === 'button' && event.keyCode === KEY_SPACE) {
+  if ($target.getAttribute('role') === 'button' && event.keyCode === KEY_SPACE) {
     event.preventDefault() // prevent the page from scrolling
-    target.click()
+    $target.click()
   }
 }
 
