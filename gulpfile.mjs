@@ -1,7 +1,7 @@
 import gulp from 'gulp'
 import taskListing from 'gulp-task-listing'
 
-import { updateDistAssetsVersion } from './tasks/asset-version.mjs'
+import { updateAssetsVersion } from './tasks/asset-version.mjs'
 import { clean } from './tasks/clean.mjs'
 import { compileJavaScripts, compileStylesheets } from './tasks/gulp/compile-assets.mjs'
 import { copyAssets, copyFiles } from './tasks/gulp/copy-to-destination.mjs'
@@ -70,7 +70,7 @@ gulp.task('build:dist', gulp.series(
   clean,
   'compile',
   copyAssets,
-  updateDistAssetsVersion
+  updateAssetsVersion
 ))
 
 /**

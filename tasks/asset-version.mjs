@@ -4,7 +4,7 @@ import { join } from 'path'
 
 import { pkg } from '../config/index.js'
 
-import { destination, isDist } from './task-arguments.mjs'
+import { destination } from './task-arguments.mjs'
 
 /**
  * Write VERSION.txt
@@ -12,13 +12,8 @@ import { destination, isDist } from './task-arguments.mjs'
  *
  * @returns {Promise<void>}
  */
-export async function updateDistAssetsVersion () {
-  if (!isDist) {
-    throw new Error('Asset version can only be applied to ./dist')
-  }
-
-  // Write VERSION.txt file
+export async function updateAssetsVersion () {
   return writeFile(join(destination, 'VERSION.txt'), pkg.version + EOL)
 }
 
-updateDistAssetsVersion.displayName = 'update-dist-assets-version'
+updateAssetsVersion.displayName = 'update-assets-version'
