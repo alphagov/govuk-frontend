@@ -1,3 +1,5 @@
+const pkg = require('../package/package.json')
+
 /**
  * Config
  */
@@ -6,5 +8,6 @@ const ports = require('./ports')
 
 module.exports = {
   paths,
+  pkg,
   ports
 }

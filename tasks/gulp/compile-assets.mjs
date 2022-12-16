@@ -1,5 +1,4 @@
 
-import { readFile } from 'fs/promises'
 import { join, parse } from 'path'
 
 import gulp from 'gulp'
@@ -16,13 +15,12 @@ import nodeSass from 'node-sass'
 import PluginError from 'plugin-error'
 import slash from 'slash'
 
-import { paths } from '../../config/index.js'
+import { paths, pkg } from '../../config/index.js'
 import { getListing } from '../../lib/file-helper.js'
 import { componentNameToJavaScriptModuleName } from '../../lib/helper-functions.js'
 import { destination, isDev, isDist, isPackage } from '../task-arguments.mjs'
 
 const sass = gulpSass(nodeSass)
-const pkg = JSON.parse(await readFile(join(paths.package, 'package.json'), 'utf8'))
 
 /**
  * Compile Sass to CSS task

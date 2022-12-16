@@ -1,16 +1,14 @@
 import { readFile } from 'fs/promises'
 import { join } from 'path'
 
-import { paths } from '../../../config/index.js'
+import { paths, pkg } from '../../../config/index.js'
 import { getListing } from '../../../lib/file-helper.js'
 
 describe('dist/', () => {
-  let pkg
   let listingSourceAssets
   let listingDistAssets
 
   beforeAll(async () => {
-    pkg = JSON.parse(await readFile(join(paths.package, 'package.json'), 'utf8'))
     listingSourceAssets = await getListing(paths.assets)
     listingDistAssets = await getListing(join(paths.dist, 'assets'))
   })
