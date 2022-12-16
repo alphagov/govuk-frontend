@@ -2,7 +2,7 @@ import { readFile, writeFile } from 'fs/promises'
 import { EOL } from 'os'
 import { join } from 'path'
 
-import configPaths from '../config/paths.js'
+import { paths } from '../config/index.js'
 
 import { destination, isDist } from './task-arguments.mjs'
 
@@ -13,7 +13,7 @@ import { destination, isDist } from './task-arguments.mjs'
  * @returns {Promise<void>}
  */
 export async function updateDistAssetsVersion () {
-  const pkg = JSON.parse(await readFile(join(configPaths.package, 'package.json'), 'utf8'))
+  const pkg = JSON.parse(await readFile(join(paths.package, 'package.json'), 'utf8'))
 
   if (!isDist) {
     throw new Error('Asset version can only be applied to ./dist')
