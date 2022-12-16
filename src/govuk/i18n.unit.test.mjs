@@ -2,7 +2,7 @@ import { I18n } from './i18n.mjs'
 
 describe('I18n', () => {
   describe('.t', () => {
-    /** @type {import('./i18n.mjs').TranslationsFlattened} */
+    /** @type {Object<string, unknown>} */
     let translations = {}
 
     beforeEach(() => {
@@ -36,7 +36,7 @@ describe('I18n', () => {
     })
 
     describe('string interpolation', () => {
-      /** @type {import('./i18n.mjs').TranslationsFlattened} */
+      /** @type {Object<string, unknown>} */
       const translations = {
         nameString: 'My name is %{name}'
       }
@@ -137,7 +137,7 @@ describe('I18n', () => {
       })
 
       it('formats numbers that are passed as placeholders', () => {
-        /** @type {import('./i18n.mjs').TranslationsFlattened} */
+        /** @type {Object<string, unknown>} */
         const translations = { ageString: 'I am %{age} years old' }
 
         const i18nEn = new I18n(translations, { locale: 'en' })

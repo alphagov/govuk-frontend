@@ -197,6 +197,7 @@ function compileJavaScript (stream, moduleName) {
  * and logs custom errors from Gulp plugins where available
  *
  * @param {import('stream').Stream} stream - Input file stream
+ * @param {string} name - Task name for non-plugin error logging
  * @returns {import('stream').Stream} Output file stream
  */
 function errorHandler (stream, name) {

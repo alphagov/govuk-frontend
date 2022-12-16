@@ -15,7 +15,7 @@
  *
  * @param {NodeListOf<Element>} nodes - NodeList from querySelectorAll()
  * @param {nodeListIterator} callback - Callback function to run for each node
- * @returns {undefined}
+ * @returns {void}
  */
 export function nodeListForEach (nodes, callback) {
   if (window.NodeList.prototype.forEach) {
@@ -52,7 +52,7 @@ export function generateUniqueID () {
  * (e.g. {'i18n.showSection': 'Show section'}) and combines them together, with
  * greatest priority on the LAST item passed in.
  *
- * @returns {object} A flattened object of key-value pairs.
+ * @returns {Object<string, unknown>} A flattened object of key-value pairs.
  */
 export function mergeConfigs (/* configObject1, configObject2, ...configObjects */) {
   /**
@@ -61,16 +61,21 @@ export function mergeConfigs (/* configObject1, configObject2, ...configObjects 
    * each of our objects, nor transform our dataset from a flat list into a
    * nested object.
    *
-   * @param {object} configObject - Deeply nested object
-   * @returns {object} Flattened object with dot-separated keys
+   * @param {Object<string, unknown>} configObject - Deeply nested object
+   * @returns {Object<string, unknown>} Flattened object with dot-separated keys
    */
   var flattenObject = function (configObject) {
     // Prepare an empty return object
     var flattenedObject = {}
 
-    // Our flattening function, this is called recursively for each level of
-    // depth in the object. At each level we prepend the previous level names to
-    // the key using `prefix`.
+    /**
+     * Our flattening function, this is called recursively for each level of
+     * depth in the object. At each level we prepend the previous level names to
+     * the key using `prefix`.
+     *
+     * @param {Partial<Object<string, unknown>>} obj - Object to flatten
+     * @param {string} [prefix] - Optional dot-separated prefix
+     */
     var flattenLoop = function (obj, prefix) {
       // Loop through keys...
       for (var key in obj) {
@@ -118,9 +123,11 @@ export function mergeConfigs (/* configObject1, configObject2, ...configObjects 
  * Extracts keys starting with a particular namespace from a flattened config
  * object, removing the namespace in the process.
  *
- * @param {object} configObject - The object to extract key-value pairs from.
+ * @param {Object<string, unknown>} configObject - The object to extract key-value pairs from.
  * @param {string} namespace - The namespace to filter keys with.
- * @returns {object} Flattened object with dot-separated key namespace removed
+ * @returns {Object<string, unknown>} Flattened object with dot-separated key namespace removed
+ * @throws {Error} Config object required
+ * @throws {Error} Namespace string required
  */
 export function extractConfigByNamespace (configObject, namespace) {
   // Check we have what we need
@@ -155,5 +162,5 @@ export function extractConfigByNamespace (configObject, namespace) {
  * @param {Element} value - The current node being iterated on
  * @param {number} index - The current index in the iteration
  * @param {NodeListOf<Element>} nodes - NodeList from querySelectorAll()
- * @returns {undefined}
+ * @returns {void}
  */
