@@ -256,11 +256,11 @@ Tabs.prototype.createHistoryEntry = function ($tab) {
 
   // Save and restore the id
   // so the page doesn't jump when a user clicks a tab (which changes the hash)
-  var id = $panel.id
+  var panelId = $panel.id
   $panel.id = ''
   this.changingHash = true
   window.location.hash = this.getHref($tab).slice(1)
-  $panel.id = id
+  $panel.id = panelId
 }
 
 /**
@@ -290,16 +290,22 @@ Tabs.prototype.onTabKeydown = function (event) {
  * Activate next tab
  */
 Tabs.prototype.activateNextTab = function () {
-  var currentTab = this.getCurrentTab()
-  var nextTabListItem = currentTab.parentNode.nextElementSibling
-  if (nextTabListItem) {
-    var nextTab = nextTabListItem.querySelector('.govuk-tabs__tab')
+  var $currentTab = this.getCurrentTab()
+  if (!$currentTab) {
+    return
   }
-  if (nextTab) {
-    this.hideTab(currentTab)
-    this.showTab(nextTab)
-    nextTab.focus()
-    this.createHistoryEntry(nextTab)
+
+  var $nextTabListItem = $currentTab.parentElement.nextElementSibling
+  if (!$nextTabListItem) {
+    return
+  }
+
+  var $nextTab = $nextTabListItem.querySelector('.govuk-tabs__tab')
+  if ($nextTab) {
+    this.hideTab($currentTab)
+    this.showTab($nextTab)
+    $nextTab.focus()
+    this.createHistoryEntry($nextTab)
   }
 }
 
@@ -307,16 +313,22 @@ Tabs.prototype.activateNextTab = function () {
  * Activate previous tab
  */
 Tabs.prototype.activatePreviousTab = function () {
-  var currentTab = this.getCurrentTab()
-  var previousTabListItem = currentTab.parentNode.previousElementSibling
-  if (previousTabListItem) {
-    var previousTab = previousTabListItem.querySelector('.govuk-tabs__tab')
+  var $currentTab = this.getCurrentTab()
+  if (!$currentTab) {
+    return
   }
-  if (previousTab) {
-    this.hideTab(currentTab)
-    this.showTab(previousTab)
-    previousTab.focus()
-    this.createHistoryEntry(previousTab)
+
+  var $previousTabListItem = $currentTab.parentElement.previousElementSibling
+  if (!$previousTabListItem) {
+    return
+  }
+
+  var $previousTab = $previousTabListItem.querySelector('.govuk-tabs__tab')
+  if ($previousTab) {
+    this.hideTab($currentTab)
+    this.showTab($previousTab)
+    $previousTab.focus()
+    this.createHistoryEntry($previousTab)
   }
 }
 

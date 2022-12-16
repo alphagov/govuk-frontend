@@ -33,17 +33,17 @@ Checkboxes.prototype.init = function () {
   var $inputs = this.$inputs
 
   nodeListForEach($inputs, function ($input) {
-    var target = $input.getAttribute('data-aria-controls')
+    var targetId = $input.getAttribute('data-aria-controls')
 
     // Skip checkboxes without data-aria-controls attributes, or where the
     // target element does not exist.
-    if (!target || !document.getElementById(target)) {
+    if (!targetId || !document.getElementById(targetId)) {
       return
     }
 
     // Promote the data-aria-controls attribute to a aria-controls attribute
     // so that the relationship is exposed in the AOM
-    $input.setAttribute('aria-controls', target)
+    $input.setAttribute('aria-controls', targetId)
     $input.removeAttribute('data-aria-controls')
   })
 
@@ -144,30 +144,30 @@ Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
  * @param {MouseEvent} event - Click event
  */
 Checkboxes.prototype.handleClick = function (event) {
-  var $target = event.target
+  var $clickedInput = event.target
 
   // Ignore clicks on things that aren't checkbox inputs
-  if ($target.type !== 'checkbox') {
+  if ($clickedInput.type !== 'checkbox') {
     return
   }
 
   // If the checkbox conditionally-reveals some content, sync the state
-  var hasAriaControls = $target.getAttribute('aria-controls')
+  var hasAriaControls = $clickedInput.getAttribute('aria-controls')
   if (hasAriaControls) {
-    this.syncConditionalRevealWithInputState($target)
+    this.syncConditionalRevealWithInputState($clickedInput)
   }
 
   // No further behaviour needed for unchecking
-  if (!$target.checked) {
+  if (!$clickedInput.checked) {
     return
   }
 
   // Handle 'exclusive' checkbox behaviour (ie "None of these")
-  var hasBehaviourExclusive = ($target.getAttribute('data-behaviour') === 'exclusive')
+  var hasBehaviourExclusive = ($clickedInput.getAttribute('data-behaviour') === 'exclusive')
   if (hasBehaviourExclusive) {
-    this.unCheckAllInputsExcept($target)
+    this.unCheckAllInputsExcept($clickedInput)
   } else {
-    this.unCheckExclusiveInputs($target)
+    this.unCheckExclusiveInputs($clickedInput)
   }
 }
 
