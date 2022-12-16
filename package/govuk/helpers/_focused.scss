@@ -25,4 +25,9 @@
   // When link is focussed, hide the default underline since the
   // box shadow adds the "underline"
   text-decoration: none;
+
+  // When a focused box is broken by e.g. a line break, ensure that the
+  // box-shadow is applied to each fragment independently.
+  -webkit-box-decoration-break: clone;
+          box-decoration-break: clone;
 }
