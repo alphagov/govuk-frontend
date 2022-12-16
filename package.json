@@ -10,7 +10,8 @@
   "workspaces": [
     "app",
     "docs/examples/*",
-    "package"
+    "package",
+    "stats"
   ],
   "scripts": {
     "postinstall": "npm ls --depth=0",

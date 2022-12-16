@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "name": "govuk-frontend-stats",
+  "scripts": {
+    "start": "rollup -c './rollup.config.js'"
+  },
+  "dependencies": {
+    "@rollup/plugin-virtual": "^3.0.1",
+    "rollup": "^3.7.4",
+    "rollup-plugin-visualizer": "^5.8.3",
+    "@rollup/plugin-node-resolve": "^15.0.1"
+  }
+}
