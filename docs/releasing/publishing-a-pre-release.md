@@ -6,9 +6,9 @@ Before you publish a pre-release, you need to have committed a code change to GO
 
 Use pre-releases when you:
 - [work on developing a component or pattern](https://design-system.service.gov.uk/community/develop-a-component-or-pattern/) for the GOV.UK Design System
-- want to trial an experimental feature (guidance on trialling experimental features is in development)
+- want to trial an experimental feature (guidance on trialing experimental features is in development)
 
-> :warning:Your projects should never depend on a pre-released GOV.UK Frontend package. This is because someone could remove the GitHub branch containing the pre-release package at any time. For this reason, never use a pre-released package in a production setting.
+:warning: Your projects should never depend on a pre-released GOV.UK Frontend package. This is because someone could remove the GitHub branch containing the pre-release package at any time. For this reason, never use a pre-released package in a production setting.
 
 ## What happens when you pre-release GOV.UK Frontend
 
