@@ -32,6 +32,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#3087: Fix focus styles for links split over multiple lines in Chromium 108+ (Chrome 108+, Edge 108+, Opera 94+)](https://github.com/alphagov/govuk-frontend/pull/3087)
+- [#3112: Remove unused `classList` polyfill from header component JavaScript](https://github.com/alphagov/govuk-frontend/pull/3112)
 
 ## 4.4.0 (Feature release)
 
