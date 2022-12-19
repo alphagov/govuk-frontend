@@ -8,9 +8,13 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * Skip link component
  *
  * @class
- * @param {HTMLAnchorElement} $module - HTML element to use for skip link
+ * @param {Element} $module - HTML element to use for skip link
  */
 function SkipLink ($module) {
+  if (!$module) {
+    return this
+  }
+
   this.$module = $module
   this.$linkedElement = null
   this.linkedElementListener = false
@@ -20,17 +24,18 @@ function SkipLink ($module) {
  * Initialise component
  */
 SkipLink.prototype.init = function () {
-  // Check for module
+  // Check that required elements are present
   if (!this.$module) {
     return
   }
 
   // Check for linked element
-  this.$linkedElement = this.getLinkedElement()
-  if (!this.$linkedElement) {
+  var $linkedElement = this.getLinkedElement()
+  if (!$linkedElement) {
     return
   }
 
+  this.$linkedElement = $linkedElement
   this.$module.addEventListener('click', this.focusLinkedElement.bind(this))
 }
 
@@ -67,6 +72,7 @@ SkipLink.prototype.focusLinkedElement = function () {
       this.linkedElementListener = true
     }
   }
+
   $linkedElement.focus()
 }
 

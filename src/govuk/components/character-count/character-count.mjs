@@ -53,11 +53,16 @@ var CHARACTER_COUNT_TRANSLATIONS = {
  * of the available characters/words has been entered.
  *
  * @class
- * @param {HTMLElement} $module - HTML element to use for character count
+ * @param {Element} $module - HTML element to use for character count
  * @param {CharacterCountConfig} [config] - Character count config
  */
 function CharacterCount ($module, config) {
   if (!$module) {
+    return this
+  }
+
+  var $textarea = $module.querySelector('.govuk-js-character-count')
+  if (!$textarea) {
     return this
   }
 
@@ -105,7 +110,7 @@ function CharacterCount ($module, config) {
   }
 
   this.$module = $module
-  this.$textarea = $module.querySelector('.govuk-js-character-count')
+  this.$textarea = $textarea
   this.$visibleCountMessage = null
   this.$screenReaderCountMessage = null
 
@@ -118,12 +123,15 @@ function CharacterCount ($module, config) {
  */
 CharacterCount.prototype.init = function () {
   // Check that required elements are present
-  if (!this.$textarea) {
+  if (!this.$module || !this.$textarea) {
     return
   }
 
   var $textarea = this.$textarea
   var $textareaDescription = document.getElementById($textarea.id + '-info')
+  if (!$textareaDescription) {
+    return
+  }
 
   // Inject a decription for the textarea if none is present already
   // for when the component was rendered with no maxlength, maxwords

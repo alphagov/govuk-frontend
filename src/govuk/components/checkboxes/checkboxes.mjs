@@ -9,11 +9,20 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * Checkboxes component
  *
  * @class
- * @param {HTMLElement} $module - HTML element to use for checkboxes
+ * @param {Element} $module - HTML element to use for checkboxes
  */
 function Checkboxes ($module) {
+  if (!$module) {
+    return this
+  }
+
+  var $inputs = $module.querySelectorAll('input[type="checkbox"]')
+  if (!$inputs.length) {
+    return this
+  }
+
   this.$module = $module
-  this.$inputs = $module.querySelectorAll('input[type="checkbox"]')
+  this.$inputs = $inputs
 }
 
 /**
@@ -31,6 +40,11 @@ function Checkboxes ($module) {
  * the reveal in sync with the checkbox state.
  */
 Checkboxes.prototype.init = function () {
+  // Check that required elements are present
+  if (!this.$module || !this.$inputs) {
+    return
+  }
+
   var $module = this.$module
   var $inputs = this.$inputs
 
@@ -83,8 +97,12 @@ Checkboxes.prototype.syncAllConditionalReveals = function () {
  * @param {HTMLInputElement} $input - Checkbox input
  */
 Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
-  var $target = document.getElementById($input.getAttribute('aria-controls'))
+  var targetId = $input.getAttribute('aria-controls')
+  if (!targetId) {
+    return
+  }
 
+  var $target = document.getElementById(targetId)
   if ($target && $target.classList.contains('govuk-checkboxes__conditional')) {
     var inputIsChecked = $input.checked
 
@@ -99,7 +117,7 @@ Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
  * Find any other checkbox inputs with the same name value, and uncheck them.
  * This is useful for when a “None of these" checkbox is checked.
  *
- * @param {HTMLElement} $input - Checkbox input
+ * @param {HTMLInputElement} $input - Checkbox input
  */
 Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
   var $component = this

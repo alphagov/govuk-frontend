@@ -7,11 +7,15 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * Header component
  *
  * @class
- * @param {HTMLElement} $module - HTML element to use for header
+ * @param {Element} $module - HTML element to use for header
  */
 function Header ($module) {
+  if (!$module) {
+    return this
+  }
+
   this.$module = $module
-  this.$menuButton = $module && $module.querySelector('.govuk-js-header-toggle')
+  this.$menuButton = $module.querySelector('.govuk-js-header-toggle')
   this.$menu = this.$menuButton && $module.querySelector(
     '#' + this.$menuButton.getAttribute('aria-controls')
   )
@@ -39,6 +43,7 @@ function Header ($module) {
  * version of the menu to the user.
  */
 Header.prototype.init = function () {
+  // Check that required elements are present
   if (!this.$module || !this.$menuButton || !this.$menu) {
     return
   }

@@ -11,11 +11,20 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * Tabs component
  *
  * @class
- * @param {HTMLElement} $module - HTML element to use for tabs
+ * @param {Element} $module - HTML element to use for tabs
  */
 function Tabs ($module) {
+  if (!$module) {
+    return this
+  }
+
+  var $tabs = $module.querySelectorAll('.govuk-tabs__tab')
+  if (!$tabs.length) {
+    return this
+  }
+
   this.$module = $module
-  this.$tabs = $module.querySelectorAll('.govuk-tabs__tab')
+  this.$tabs = $tabs
 
   this.keys = { left: 37, right: 39, up: 38, down: 40 }
   this.jsHiddenClass = 'govuk-tabs__panel--hidden'
@@ -30,6 +39,11 @@ function Tabs ($module) {
  * Initialise component
  */
 Tabs.prototype.init = function () {
+  // Check that required elements are present
+  if (!this.$module || !this.$tabs) {
+    return
+  }
+
   if (typeof window.matchMedia === 'function') {
     this.setupResponsiveChecks()
   } else {
@@ -91,6 +105,10 @@ Tabs.prototype.setup = function () {
 
   // Show either the active tab according to the URL's hash or the first tab
   var $activeTab = this.getTab(window.location.hash) || this.$tabs[0]
+  if (!$activeTab) {
+    return
+  }
+
   this.showTab($activeTab)
 
   // Handle hashchange events
@@ -150,6 +168,9 @@ Tabs.prototype.onHashChange = function () {
 
   // Show either the active tab according to the URL's hash or the first tab
   var $previousTab = this.getCurrentTab()
+  if (!$previousTab) {
+    return
+  }
 
   this.hideTab($previousTab)
   this.showTab($tabWithHash)
@@ -202,6 +223,10 @@ Tabs.prototype.setAttributes = function ($tab) {
 
   // set panel attributes
   var $panel = this.getPanel($tab)
+  if (!$panel) {
+    return
+  }
+
   $panel.setAttribute('role', 'tabpanel')
   $panel.setAttribute('aria-labelledby', $tab.id)
   $panel.classList.add(this.jsHiddenClass)
@@ -222,6 +247,10 @@ Tabs.prototype.unsetAttributes = function ($tab) {
 
   // unset panel attributes
   var $panel = this.getPanel($tab)
+  if (!$panel) {
+    return
+  }
+
   $panel.removeAttribute('role')
   $panel.removeAttribute('aria-labelledby')
   $panel.classList.remove(this.jsHiddenClass)
@@ -234,16 +263,23 @@ Tabs.prototype.unsetAttributes = function ($tab) {
  * @returns {void | false} Returns void, or false within tab link
  */
 Tabs.prototype.onTabClick = function (event) {
-  if (!event.target.classList.contains('govuk-tabs__tab')) {
-    // Allow events on child DOM elements to bubble up to tab parent
+  var $currentTab = this.getCurrentTab()
+  var $nextTab = event.target
+
+  if (!$currentTab || !$nextTab) {
+    return
+  }
+
+  // Allow events on child DOM elements to bubble up to tab parent
+  if (!$nextTab.classList.contains('govuk-tabs__tab')) {
     return false
   }
+
   event.preventDefault()
-  var $newTab = event.target
-  var $currentTab = this.getCurrentTab()
+
   this.hideTab($currentTab)
-  this.showTab($newTab)
-  this.createHistoryEntry($newTab)
+  this.showTab($nextTab)
+  this.createHistoryEntry($nextTab)
 }
 
 /**
@@ -256,6 +292,9 @@ Tabs.prototype.onTabClick = function (event) {
  */
 Tabs.prototype.createHistoryEntry = function ($tab) {
   var $panel = this.getPanel($tab)
+  if (!$panel) {
+    return
+  }
 
   // Save and restore the id
   // so the page doesn't jump when a user clicks a tab (which changes the hash)
@@ -294,7 +333,7 @@ Tabs.prototype.onTabKeydown = function (event) {
  */
 Tabs.prototype.activateNextTab = function () {
   var $currentTab = this.getCurrentTab()
-  if (!$currentTab) {
+  if (!$currentTab || !$currentTab.parentElement) {
     return
   }
 
@@ -304,12 +343,14 @@ Tabs.prototype.activateNextTab = function () {
   }
 
   var $nextTab = $nextTabListItem.querySelector('.govuk-tabs__tab')
-  if ($nextTab) {
-    this.hideTab($currentTab)
-    this.showTab($nextTab)
-    $nextTab.focus()
-    this.createHistoryEntry($nextTab)
+  if (!$nextTab) {
+    return
   }
+
+  this.hideTab($currentTab)
+  this.showTab($nextTab)
+  $nextTab.focus()
+  this.createHistoryEntry($nextTab)
 }
 
 /**
@@ -317,7 +358,7 @@ Tabs.prototype.activateNextTab = function () {
  */
 Tabs.prototype.activatePreviousTab = function () {
   var $currentTab = this.getCurrentTab()
-  if (!$currentTab) {
+  if (!$currentTab || !$currentTab.parentElement) {
     return
   }
 
@@ -327,19 +368,21 @@ Tabs.prototype.activatePreviousTab = function () {
   }
 
   var $previousTab = $previousTabListItem.querySelector('.govuk-tabs__tab')
-  if ($previousTab) {
-    this.hideTab($currentTab)
-    this.showTab($previousTab)
-    $previousTab.focus()
-    this.createHistoryEntry($previousTab)
+  if (!$previousTab) {
+    return
   }
+
+  this.hideTab($currentTab)
+  this.showTab($previousTab)
+  $previousTab.focus()
+  this.createHistoryEntry($previousTab)
 }
 
 /**
  * Get tab panel for tab link
  *
  * @param {HTMLAnchorElement} $tab - Tab link
- * @returns {HTMLElement | null} Tab panel
+ * @returns {Element | null} Tab panel
  */
 Tabs.prototype.getPanel = function ($tab) {
   return this.$module.querySelector(this.getHref($tab))
@@ -352,6 +395,10 @@ Tabs.prototype.getPanel = function ($tab) {
  */
 Tabs.prototype.showPanel = function ($tab) {
   var $panel = this.getPanel($tab)
+  if (!$panel) {
+    return
+  }
+
   $panel.classList.remove(this.jsHiddenClass)
 }
 
@@ -362,6 +409,10 @@ Tabs.prototype.showPanel = function ($tab) {
  */
 Tabs.prototype.hidePanel = function ($tab) {
   var $panel = this.getPanel($tab)
+  if (!$panel) {
+    return
+  }
+
   $panel.classList.add(this.jsHiddenClass)
 }
 
@@ -371,6 +422,10 @@ Tabs.prototype.hidePanel = function ($tab) {
  * @param {HTMLAnchorElement} $tab - Tab link
  */
 Tabs.prototype.unhighlightTab = function ($tab) {
+  if (!$tab.parentElement) {
+    return
+  }
+
   $tab.setAttribute('aria-selected', 'false')
   $tab.parentElement.classList.remove('govuk-tabs__list-item--selected')
   $tab.setAttribute('tabindex', '-1')
@@ -382,6 +437,10 @@ Tabs.prototype.unhighlightTab = function ($tab) {
  * @param {HTMLAnchorElement} $tab - Tab link
  */
 Tabs.prototype.highlightTab = function ($tab) {
+  if (!$tab.parentElement) {
+    return
+  }
+
   $tab.setAttribute('aria-selected', 'true')
   $tab.parentElement.classList.add('govuk-tabs__list-item--selected')
   $tab.setAttribute('tabindex', '0')

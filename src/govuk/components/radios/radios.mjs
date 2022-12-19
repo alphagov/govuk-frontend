@@ -9,11 +9,20 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * Radios component
  *
  * @class
- * @param {HTMLElement} $module - HTML element to use for radios
+ * @param {Element} $module - HTML element to use for radios
  */
 function Radios ($module) {
+  if (!$module) {
+    return this
+  }
+
+  var $inputs = $module.querySelectorAll('input[type="radio"]')
+  if (!$inputs.length) {
+    return this
+  }
+
   this.$module = $module
-  this.$inputs = $module.querySelectorAll('input[type="radio"]')
+  this.$inputs = $inputs
 }
 
 /**
@@ -31,6 +40,11 @@ function Radios ($module) {
  * the reveal in sync with the radio state.
  */
 Radios.prototype.init = function () {
+  // Check that required elements are present
+  if (!this.$module || !this.$inputs) {
+    return
+  }
+
   var $module = this.$module
   var $inputs = this.$inputs
 
@@ -83,8 +97,12 @@ Radios.prototype.syncAllConditionalReveals = function () {
  * @param {HTMLInputElement} $input - Radio input
  */
 Radios.prototype.syncConditionalRevealWithInputState = function ($input) {
-  var $target = document.getElementById($input.getAttribute('aria-controls'))
+  var targetId = $input.getAttribute('aria-controls')
+  if (!targetId) {
+    return
+  }
 
+  var $target = document.getElementById(targetId)
   if ($target && $target.classList.contains('govuk-radios__conditional')) {
     var inputIsChecked = $input.checked
 

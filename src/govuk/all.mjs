@@ -104,7 +104,7 @@ export {
  * Config for all components
  *
  * @typedef {object} Config
- * @property {HTMLElement} [scope=document] - Scope to query for components
+ * @property {Element} [scope=document] - Scope to query for components
  * @property {import('./components/accordion/accordion.mjs').AccordionConfig} [accordion] - Accordion config
  * @property {import('./components/button/button.mjs').ButtonConfig} [button] - Button config
  * @property {import('./components/character-count/character-count.mjs').CharacterCountConfig} [characterCount] - Character Count config
