@@ -107,9 +107,9 @@ Accordion.prototype.initControls = function () {
   this.$showAllButton.setAttribute('aria-expanded', 'false')
 
   // Create icon, add to element
-  var $icon = document.createElement('span')
-  $icon.classList.add(this.upChevronIconClass)
-  this.$showAllButton.appendChild($icon)
+  this.$showAllIcon = document.createElement('span')
+  this.$showAllIcon.classList.add(this.upChevronIconClass)
+  this.$showAllButton.appendChild(this.$showAllIcon)
 
   // Create control wrapper and add controls to it
   var $accordionControls = document.createElement('div')
@@ -118,9 +118,9 @@ Accordion.prototype.initControls = function () {
   this.$module.insertBefore($accordionControls, this.$module.firstChild)
 
   // Build additional wrapper for Show all toggle text and place after icon
-  var $wrappershowAllText = document.createElement('span')
-  $wrappershowAllText.classList.add(this.showAllTextClass)
-  this.$showAllButton.appendChild($wrappershowAllText)
+  this.$showAllText = document.createElement('span')
+  this.$showAllText.classList.add(this.showAllTextClass)
+  this.$showAllButton.appendChild(this.$showAllText)
 
   // Handle click events on the show/hide all button
   this.$showAllButton.addEventListener('click', this.onShowOrHideAllToggle.bind(this))
@@ -382,19 +382,18 @@ Accordion.prototype.checkIfAllSectionsOpen = function () {
  * @param {boolean} expanded - Section expanded
  */
 Accordion.prototype.updateShowAllButton = function (expanded) {
-  var $showAllIcon = this.$showAllButton.querySelector('.' + this.upChevronIconClass)
-  var $showAllText = this.$showAllButton.querySelector('.' + this.showAllTextClass)
   var newButtonText = expanded
     ? this.i18n.t('hideAllSections')
     : this.i18n.t('showAllSections')
+
   this.$showAllButton.setAttribute('aria-expanded', expanded)
-  $showAllText.innerText = newButtonText
+  this.$showAllText.innerText = newButtonText
 
   // Swap icon, toggle class
   if (expanded) {
-    $showAllIcon.classList.remove(this.downChevronIconClass)
+    this.$showAllIcon.classList.remove(this.downChevronIconClass)
   } else {
-    $showAllIcon.classList.add(this.downChevronIconClass)
+    this.$showAllIcon.classList.add(this.downChevronIconClass)
   }
 }
 
