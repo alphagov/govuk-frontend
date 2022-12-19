@@ -82,7 +82,10 @@ I18n.prototype.replacePlaceholders = function (translationString, options) {
 
       // If a user has passed `false` as the value for the placeholder
       // treat it as though the value should not be displayed
-      if (placeholderValue === false) {
+      if (placeholderValue === false || (
+        typeof placeholderValue !== 'number' &&
+        typeof placeholderValue !== 'string')
+      ) {
         return ''
       }
 
