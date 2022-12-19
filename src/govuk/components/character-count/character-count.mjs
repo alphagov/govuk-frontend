@@ -294,7 +294,7 @@ CharacterCount.prototype.updateScreenReaderCountMessage = function () {
   if (this.isOverThreshold()) {
     $screenReaderCountMessage.removeAttribute('aria-hidden')
   } else {
-    $screenReaderCountMessage.setAttribute('aria-hidden', true)
+    $screenReaderCountMessage.setAttribute('aria-hidden', 'true')
   }
 
   // Update message

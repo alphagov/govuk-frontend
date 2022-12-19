@@ -89,7 +89,7 @@ Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
   if ($target && $target.classList.contains('govuk-checkboxes__conditional')) {
     var inputIsChecked = $input.checked
 
-    $input.setAttribute('aria-expanded', inputIsChecked)
+    $input.setAttribute('aria-expanded', inputIsChecked.toString())
     $target.classList.toggle('govuk-checkboxes__conditional--hidden', !inputIsChecked)
   }
 }
