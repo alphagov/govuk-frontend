@@ -192,23 +192,23 @@ Accordion.prototype.constructHeaderMarkup = function ($header, index) {
   $headingTextFocus.innerHTML = $span.innerHTML
 
   // Create container for show / hide icons and text.
-  var $showToggle = document.createElement('span')
-  $showToggle.classList.add(this.sectionShowHideToggleClass)
+  var $showHideToggle = document.createElement('span')
+  $showHideToggle.classList.add(this.sectionShowHideToggleClass)
   // Tell Google not to index the 'show' text as part of the heading
   // For the snippet to work with JavaScript, it must be added before adding the page element to the
   // page's DOM. See https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#data-nosnippet-attr
-  $showToggle.setAttribute('data-nosnippet', '')
+  $showHideToggle.setAttribute('data-nosnippet', '')
   // Create an inner container to limit the width of the focus state
-  var $showToggleFocus = document.createElement('span')
-  $showToggleFocus.classList.add(this.sectionShowHideToggleFocusClass)
-  $showToggle.appendChild($showToggleFocus)
+  var $showHideToggleFocus = document.createElement('span')
+  $showHideToggleFocus.classList.add(this.sectionShowHideToggleFocusClass)
+  $showHideToggle.appendChild($showHideToggleFocus)
   // Create wrapper for the show / hide text. Append text after the show/hide icon
-  var $showToggleText = document.createElement('span')
-  var $icon = document.createElement('span')
-  $icon.classList.add(this.upChevronIconClass)
-  $showToggleFocus.appendChild($icon)
-  $showToggleText.classList.add(this.sectionShowHideTextClass)
-  $showToggleFocus.appendChild($showToggleText)
+  var $showHideText = document.createElement('span')
+  var $showHideIcon = document.createElement('span')
+  $showHideIcon.classList.add(this.upChevronIconClass)
+  $showHideToggleFocus.appendChild($showHideIcon)
+  $showHideText.classList.add(this.sectionShowHideTextClass)
+  $showHideToggleFocus.appendChild($showHideText)
 
   // Append elements to the button:
   // 1. Heading text
@@ -247,7 +247,7 @@ Accordion.prototype.constructHeaderMarkup = function ($header, index) {
     $button.appendChild(this.getButtonPunctuationEl())
   }
 
-  $button.appendChild($showToggle)
+  $button.appendChild($showHideToggle)
 
   $heading.removeChild($span)
   $heading.appendChild($button)
@@ -302,10 +302,10 @@ Accordion.prototype.onShowOrHideAllToggle = function () {
  * @param {HTMLElement} $section - Section element
  */
 Accordion.prototype.setExpanded = function (expanded, $section) {
-  var $icon = $section.querySelector('.' + this.upChevronIconClass)
+  var $showHideIcon = $section.querySelector('.' + this.upChevronIconClass)
   var $showHideText = $section.querySelector('.' + this.sectionShowHideTextClass)
   var $button = $section.querySelector('.' + this.sectionButtonClass)
-  var $sectionContent = $section.querySelector('.' + this.sectionContentClass)
+  var $content = $section.querySelector('.' + this.sectionContentClass)
 
   var newButtonText = expanded
     ? this.i18n.t('hideSection')
@@ -341,13 +341,13 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
 
   // Swap icon, change class
   if (expanded) {
-    $sectionContent.removeAttribute('hidden')
+    $content.removeAttribute('hidden')
     $section.classList.add(this.sectionExpandedClass)
-    $icon.classList.remove(this.downChevronIconClass)
+    $showHideIcon.classList.remove(this.downChevronIconClass)
   } else {
-    $sectionContent.setAttribute('hidden', 'until-found')
+    $content.setAttribute('hidden', 'until-found')
     $section.classList.remove(this.sectionExpandedClass)
-    $icon.classList.add(this.downChevronIconClass)
+    $showHideIcon.classList.add(this.downChevronIconClass)
   }
 
   // See if "Show all sections" button text should be updated
