@@ -61,6 +61,7 @@ function Accordion ($module, config) {
   this.sectionButtonClass = 'govuk-accordion__section-button'
   this.sectionHeaderClass = 'govuk-accordion__section-header'
   this.sectionHeadingClass = 'govuk-accordion__section-heading'
+  this.sectionHeadingDividerClass = 'govuk-accordion__section-heading-divider'
   this.sectionHeadingTextClass = 'govuk-accordion__section-heading-text'
   this.sectionHeadingTextFocusClass = 'govuk-accordion__section-heading-text-focus'
 
@@ -472,7 +473,7 @@ Accordion.prototype.setInitialState = function ($section) {
  */
 Accordion.prototype.getButtonPunctuationEl = function () {
   var $punctuationEl = document.createElement('span')
-  $punctuationEl.classList.add('govuk-visually-hidden', 'govuk-accordion__section-heading-divider')
+  $punctuationEl.classList.add('govuk-visually-hidden', this.sectionHeadingDividerClass)
   $punctuationEl.innerHTML = ', '
   return $punctuationEl
 }
