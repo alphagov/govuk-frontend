@@ -154,13 +154,13 @@ Accordion.prototype.initSectionHeaders = function () {
 /**
  * Construct section header
  *
- * @param {HTMLDivElement} $headerWrapper - Section header wrapper
+ * @param {HTMLDivElement} $header - Section header
  * @param {number} index - Section index
  */
-Accordion.prototype.constructHeaderMarkup = function ($headerWrapper, index) {
-  var $span = $headerWrapper.querySelector('.' + this.sectionButtonClass)
-  var $heading = $headerWrapper.querySelector('.' + this.sectionHeadingClass)
-  var $summary = $headerWrapper.querySelector('.' + this.sectionSummaryClass)
+Accordion.prototype.constructHeaderMarkup = function ($header, index) {
+  var $span = $header.querySelector('.' + this.sectionButtonClass)
+  var $heading = $header.querySelector('.' + this.sectionHeadingClass)
+  var $summary = $header.querySelector('.' + this.sectionSummaryClass)
 
   // Create a button element that will replace the '.govuk-accordion__section-button' span
   var $button = document.createElement('button')
