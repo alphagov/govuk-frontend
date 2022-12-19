@@ -39,17 +39,17 @@ var ACCORDION_TRANSLATIONS = {
  */
 function Accordion ($module, config) {
   this.$module = $module
-  this.$sections = $module.querySelectorAll('.govuk-accordion__section')
-  this.browserSupportsSessionStorage = helper.checkForSessionStorage()
 
   var defaultConfig = {
     i18n: ACCORDION_TRANSLATIONS
   }
+
   this.config = mergeConfigs(
     defaultConfig,
     config || {},
     normaliseDataset($module.dataset)
   )
+
   this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'))
 
   this.controlsClass = 'govuk-accordion__controls'
@@ -73,6 +73,9 @@ function Accordion ($module, config) {
   this.sectionSummaryClass = 'govuk-accordion__section-summary'
   this.sectionSummaryFocusClass = 'govuk-accordion__section-summary-focus'
   this.sectionContentClass = 'govuk-accordion__section-content'
+
+  this.$sections = this.$module.querySelectorAll('.' + this.sectionClass)
+  this.browserSupportsSessionStorage = helper.checkForSessionStorage()
 }
 
 /**
