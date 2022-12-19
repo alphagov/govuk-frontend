@@ -122,6 +122,7 @@ Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
 Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
   var $component = this
 
+  /** @type {NodeListOf<HTMLInputElement>} */
   var allInputsWithSameName = document.querySelectorAll(
     'input[type="checkbox"][name="' + $input.name + '"]'
   )
@@ -147,6 +148,7 @@ Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
 Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
   var $component = this
 
+  /** @type {NodeListOf<HTMLInputElement>} */
   var allInputsWithSameNameAndExclusiveBehaviour = document.querySelectorAll(
     'input[data-behaviour="exclusive"][type="checkbox"][name="' + $input.name + '"]'
   )
