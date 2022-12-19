@@ -315,8 +315,12 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
   $button.setAttribute('aria-expanded', expanded)
 
   // Update aria-label combining
-  var $header = $section.querySelector('.' + this.sectionHeadingTextClass)
-  var ariaLabelParts = [$header.innerText.trim()]
+  var ariaLabelParts = []
+
+  var $headingText = $section.querySelector('.' + this.sectionHeadingTextClass)
+  if ($headingText) {
+    ariaLabelParts.push($headingText.innerText.trim())
+  }
 
   var $summary = $section.querySelector('.' + this.sectionSummaryClass)
   if ($summary) {
