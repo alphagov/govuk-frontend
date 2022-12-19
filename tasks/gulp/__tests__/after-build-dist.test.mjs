@@ -1,4 +1,5 @@
 import { readFile } from 'fs/promises'
+import { EOL } from 'os'
 import { join } from 'path'
 
 import { paths, pkg } from '../../../config/index.js'
@@ -74,6 +75,20 @@ describe('dist/', () => {
 
     it('should contain source mapping URL', () => {
       expect(javascript).toMatch(new RegExp(`//# sourceMappingURL=${filename}.map$`))
+    })
+  })
+
+  describe('VERSION.txt', () => {
+    let filename
+    let version
+
+    beforeAll(async () => {
+      filename = 'VERSION.txt'
+      version = await readFile(join(paths.dist, filename), 'utf8')
+    })
+
+    it('should contain the correct version', () => {
+      expect(version).toEqual(pkg.version + EOL)
     })
   })
 })
