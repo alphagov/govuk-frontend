@@ -1,5 +1,4 @@
 
-import { readFile } from 'fs/promises'
 import { join, parse } from 'path'
 
 import gulp from 'gulp'
@@ -16,13 +15,12 @@ import nodeSass from 'node-sass'
 import PluginError from 'plugin-error'
 import slash from 'slash'
 
-import configPaths from '../../config/paths.js'
+import { paths, pkg } from '../../config/index.js'
 import { getListing } from '../../lib/file-helper.js'
 import { componentNameToJavaScriptModuleName } from '../../lib/helper-functions.js'
 import { destination, isDev, isDist, isPackage } from '../task-arguments.mjs'
 
 const sass = gulpSass(nodeSass)
-const pkg = JSON.parse(await readFile(join(configPaths.package, 'package.json'), 'utf8'))
 
 /**
  * Compile Sass to CSS task
@@ -38,7 +36,7 @@ export function compileStylesheets () {
   if (isDist) {
     return merge(
       compileStylesheet(
-        gulp.src(`${slash(configPaths.src)}/govuk/all.scss`, {
+        gulp.src(`${slash(paths.src)}/govuk/all.scss`, {
           sourcemaps: true
         })
           .pipe(rename({
@@ -48,7 +46,7 @@ export function compileStylesheets () {
           }))),
 
       compileStylesheet(
-        gulp.src(`${slash(configPaths.src)}/govuk/all-ie8.scss`, {
+        gulp.src(`${slash(paths.src)}/govuk/all-ie8.scss`, {
           sourcemaps: true
         })
           .pipe(rename({
@@ -65,12 +63,12 @@ export function compileStylesheets () {
   // Review application
   return merge(
     compileStylesheet(
-      gulp.src(`${slash(configPaths.app)}/assets/scss/app?(-ie8).scss`, {
+      gulp.src(`${slash(paths.app)}/assets/scss/app?(-ie8).scss`, {
         sourcemaps: true
       })),
 
     compileStylesheet(
-      gulp.src(`${slash(configPaths.app)}/assets/scss/app-legacy?(-ie8).scss`, {
+      gulp.src(`${slash(paths.app)}/assets/scss/app-legacy?(-ie8).scss`, {
         sourcemaps: true
       }), {
         includePaths: [
@@ -80,7 +78,7 @@ export function compileStylesheets () {
       }),
 
     compileStylesheet(
-      gulp.src(`${slash(configPaths.fullPageExamples)}/**/styles.scss`, {
+      gulp.src(`${slash(paths.fullPageExamples)}/**/styles.scss`, {
         sourcemaps: true
       })
         .pipe(rename((path) => {
@@ -124,7 +122,7 @@ export async function compileJavaScripts () {
   const fileLookup = isDist ? 'govuk/all.mjs' : 'govuk/**/!(*.test).mjs'
 
   // Perform a search and return an array of matching file names
-  const srcFiles = await getListing(configPaths.src, fileLookup)
+  const srcFiles = await getListing(paths.src, fileLookup)
 
   return merge(srcFiles.map((file) => {
     const { dir: srcPath, name } = parse(file)
@@ -138,7 +136,7 @@ export async function compileJavaScripts () {
       ? componentNameToJavaScriptModuleName(name)
       : 'GOVUKFrontend'
 
-    return compileJavaScript(gulp.src(slash(join(configPaths.src, file)), {
+    return compileJavaScript(gulp.src(slash(join(paths.src, file)), {
       sourcemaps: true
     }), moduleName)
       .pipe(gulp.dest(slash(join(destPath, modulePath)), {

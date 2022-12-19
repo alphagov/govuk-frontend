@@ -1,7 +1,7 @@
 const cheerio = require('cheerio')
 
-const configPaths = require('../config/paths')
-const PORT = configPaths.ports.test
+const config = require('../config')
+const PORT = config.ports.test
 
 const expectedPages = [
   'bank-holidays',
