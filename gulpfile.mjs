@@ -3,7 +3,8 @@ import taskListing from 'gulp-task-listing'
 
 import { updateAssetsVersion } from './tasks/asset-version.mjs'
 import { clean } from './tasks/clean.mjs'
-import { compileJavaScripts, compileStylesheets } from './tasks/gulp/compile-assets.mjs'
+import { compileJavaScripts } from './tasks/compile-javascripts.mjs'
+import { compileStylesheets } from './tasks/gulp/compile-assets.mjs'
 import { copyAssets, copyFiles } from './tasks/gulp/copy-to-destination.mjs'
 import { watch } from './tasks/gulp/watch.mjs'
 import { updatePrototypeKitConfig } from './tasks/prototype-kit-config.mjs'
@@ -34,6 +35,7 @@ gulp.task('styles', gulp.series(
  * Runs JavaScript and Sass compilation, including documentation
  */
 gulp.task('compile', gulp.series(
+  clean,
   compileJavaScripts,
   compileStylesheets,
   npmScriptTask('build:jsdoc'),
@@ -45,7 +47,6 @@ gulp.task('compile', gulp.series(
  * Runs a sequence of tasks on start
  */
 gulp.task('dev', gulp.series(
-  clean,
   'compile',
   watch,
   npmScriptTask('serve', ['--workspace', 'app'])
@@ -67,7 +68,6 @@ gulp.task('build:package', gulp.series(
  * Prepare dist folder for release
  */
 gulp.task('build:dist', gulp.series(
-  clean,
   'compile',
   copyAssets,
   updateAssetsVersion

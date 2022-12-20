@@ -24,7 +24,6 @@ updates:
         update-types: ['version-update:semver-major']
 
       # Always ignore legacy packages
-      - dependency-name: gulp-better-rollup
       - dependency-name: jquery
       - dependency-name: rollup
 
