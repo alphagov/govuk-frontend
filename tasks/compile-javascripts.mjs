@@ -14,6 +14,9 @@ import { destination, isDist, isPackage } from './task-arguments.mjs'
 /**
  * Compile JavaScript ESM to CommonJS task
  *
+ * The 'all-in-one' JavaScript bundle (all.mjs)
+ * will be minified by default for 'dist' and 'public'
+ *
  * @returns {Promise<void>}
  */
 export async function compileJavaScripts () {
@@ -130,7 +133,7 @@ export async function getModuleEntries () {
     .map((modulePath) => ([modulePath, {
       srcPath,
       destPath,
-      minify: isDist
+      minify: !isPackage
     }]))
 }
 
