@@ -7,12 +7,11 @@ import plumber from 'gulp-plumber'
 import rename from 'gulp-rename'
 import uglify from 'gulp-uglify'
 import merge from 'merge-stream'
-import minimatch from 'minimatch'
 import slash from 'slash'
 
 import config from '../config/index.js'
 import { getListing } from '../lib/file-helper.js'
-import { componentNameToJavaScriptModuleName } from '../lib/helper-functions.js'
+import { componentPathToModuleName } from '../lib/helper-functions.js'
 
 import { errorHandler } from './gulp/compile-assets.mjs'
 import { destination, isDist, isPackage } from './task-arguments.mjs'
@@ -34,16 +33,14 @@ export async function compileJavaScripts () {
   const srcFiles = await getListing(config.paths.src, fileLookup)
 
   return merge(srcFiles.map((file) => {
-    const { dir: srcPath, name } = parse(file)
+    const { dir: srcPath } = parse(file)
 
     // This is combined with destPath in gulp.dest()
     // so the files are output to the correct folders
     const modulePath = slash(srcPath).replace(/^govuk\/?/, '')
 
     // We only want to give component JavaScript a unique module name
-    const moduleName = minimatch(srcPath, '**/components/**')
-      ? componentNameToJavaScriptModuleName(name)
-      : 'GOVUKFrontend'
+    const moduleName = componentPathToModuleName(file)
 
     return compileJavaScript(gulp.src(slash(join(config.paths.src, file)), {
       sourcemaps: true

@@ -3,7 +3,7 @@ import { join } from 'path'
 
 import configPaths from '../../../config/paths.js'
 import { filterPath, getDirectories, getListing, mapPathTo } from '../../../lib/file-helper.js'
-import { componentNameToJavaScriptClassName, componentNameToJavaScriptModuleName } from '../../../lib/helper-functions.js'
+import { componentNameToClassName, componentPathToModuleName } from '../../../lib/helper-functions.js'
 import { renderSass } from '../../../lib/jest-helpers.js'
 
 describe('package/', () => {
@@ -185,11 +185,12 @@ describe('package/', () => {
         const [modulePathESM] = componentPackageESM
           .filter(filterPath([`**/${componentName}.mjs`]))
 
+        const moduleName = componentPathToModuleName(join(configPaths.components, modulePath))
         const moduleText = await readFile(join(configPaths.package, 'govuk/components', modulePath), 'utf8')
         const moduleTextESM = await readFile(join(configPaths.package, 'govuk-esm/components', modulePathESM), 'utf8')
 
-        expect(moduleText).toContain(`typeof define === 'function' && define.amd ? define('${componentNameToJavaScriptModuleName(componentName)}', factory)`)
-        expect(moduleTextESM).toContain(`export default ${componentNameToJavaScriptClassName(componentName)}`)
+        expect(moduleText).toContain(`typeof define === 'function' && define.amd ? define('${moduleName}', factory)`)
+        expect(moduleTextESM).toContain(`export default ${componentNameToClassName(componentName)}`)
       })
 
       // Check all component files
