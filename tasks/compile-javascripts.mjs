@@ -1,54 +1,27 @@
 import { join, parse } from 'path'
 
-import gulp from 'gulp'
-import rollup from 'gulp-better-rollup'
-import gulpif from 'gulp-if'
-import plumber from 'gulp-plumber'
-import rename from 'gulp-rename'
-import uglify from 'gulp-uglify'
-import merge from 'merge-stream'
-import slash from 'slash'
+import PluginError from 'plugin-error'
+import { rollup } from 'rollup'
 
-import config from '../config/index.js'
+import { paths, pkg } from '../config/index.js'
 import { getListing } from '../lib/file-helper.js'
 import { componentPathToModuleName } from '../lib/helper-functions.js'
 
-import { errorHandler } from './gulp/compile-assets.mjs'
 import { destination, isDist, isPackage } from './task-arguments.mjs'
 
 /**
  * Compile JavaScript ESM to CommonJS task
  *
- * @returns {Promise<import('stream').Stream>} Output file stream
+ * @returns {Promise<void>}
  */
 export async function compileJavaScripts () {
-  const destPath = isPackage
-    ? join(destination, 'govuk')
-    : destination
+  const moduleEntries = await getModuleEntries()
 
-  // For dist/ folder we only want compiled 'all.js'
-  const fileLookup = isDist ? 'govuk/all.mjs' : 'govuk/**/!(*.test).mjs'
-
-  // Perform a search and return an array of matching file names
-  const srcFiles = await getListing(config.paths.src, fileLookup)
-
-  return merge(srcFiles.map((file) => {
-    const { dir: srcPath } = parse(file)
-
-    // This is combined with destPath in gulp.dest()
-    // so the files are output to the correct folders
-    const modulePath = slash(srcPath).replace(/^govuk\/?/, '')
-
-    // We only want to give component JavaScript a unique module name
-    const moduleName = componentPathToModuleName(file)
-
-    return compileJavaScript(gulp.src(slash(join(config.paths.src, file)), {
-      sourcemaps: true
-    }), moduleName)
-      .pipe(gulp.dest(slash(join(destPath, modulePath)), {
-        sourcemaps: '.'
-      }))
-  }))
+  try {
+    await Promise.all(moduleEntries.map(compileJavaScript))
+  } catch (cause) {
+    throw new PluginError('compile:js', cause)
+  }
 }
 
 compileJavaScripts.displayName = 'compile:js'
@@ -56,40 +29,75 @@ compileJavaScripts.displayName = 'compile:js'
 /**
  * Compile JavaScript ESM to CommonJS helper
  *
- * @param {import('stream').Stream} stream - Input file stream
- * @param {string} moduleName - Rollup module name
- * @returns {import('stream').Stream} Output file stream
+ * @param {ModuleEntry} moduleEntry - Module entry
  */
-function compileJavaScript (stream, moduleName) {
-  return stream
-    .pipe(plumber(errorHandler(stream, 'compile:js')))
+export async function compileJavaScript ([modulePath, { srcPath, destPath }]) {
+  const { dir, name } = parse(modulePath)
 
-    // Compile JavaScript ESM to CommonJS
-    .pipe(rollup({
-      // Used to set the `window` global and UMD/AMD export name
-      // Component JavaScript is given a unique name to aid individual imports, e.g GOVUKFrontend.Accordion
-      name: moduleName,
-      // Legacy mode is required for IE8 support
-      legacy: true,
-      // UMD allows the published bundle to work in CommonJS and in the browser.
-      format: 'umd'
-    }))
+  // Adjust file path by destination
+  const filePath = join(destPath, dir, isDist
+    ? `${pkg.name}-${pkg.version}.min.js`
+    : `${name}.js`
+  )
 
-    // Minify
-    .pipe(gulpif(isDist, uglify({
-      ie8: true
-    })))
+  // Create Rollup bundle
+  const bundle = await rollup({
+    input: join(srcPath, modulePath)
+  })
 
-    .pipe(plumber.stop())
+  // Compile JavaScript ESM to CommonJS
+  return bundle.write({
+    file: filePath,
+    sourcemapFile: filePath,
+    sourcemap: true,
 
-    // Rename
-    .pipe(gulpif(isDist,
-      rename({
-        basename: 'govuk-frontend',
-        suffix: `-${config.pkg.version}.min`
-      })
-    ))
-    .pipe(rename({
-      extname: '.js'
-    }))
+    // Universal Module Definition (UMD)
+    // for browser + Node.js compatibility
+    format: 'umd',
+
+    // Legacy mode is required for IE8 support
+    legacy: true,
+
+    // Used to set the `window` global for 'iife' and 'umd' bundles
+    // Components are given unique names (e.g GOVUKFrontend.Accordion)
+    amd: { id: componentPathToModuleName(modulePath) },
+    name: componentPathToModuleName(modulePath)
+  })
 }
+
+/**
+ * JavaScript modules to compile
+ *
+ * @returns {Promise<ModuleEntry[]>} Module entries
+ */
+export async function getModuleEntries () {
+  const srcPath = join(paths.src, 'govuk')
+  const destPath = isPackage ? join(destination, 'govuk') : destination
+
+  // Perform a search and return an array of matching file names
+  // but for 'dist' we only want compiled 'all.js'
+  const modulePaths = await getListing(srcPath, isDist
+    ? 'all.mjs'
+    : '**/!(*.test).mjs'
+  )
+
+  return modulePaths
+    .map((modulePath) => ([modulePath, {
+      srcPath,
+      destPath
+    }]))
+}
+
+/**
+ * Module entry path with options
+ *
+ * @typedef {[string, ModuleOptions]} ModuleEntry
+ */
+
+/**
+ * Module options
+ *
+ * @typedef {object} ModuleOptions
+ * @property {string} srcPath - Input directory
+ * @property {string} destPath - Output directory
+ */
