@@ -68,7 +68,7 @@
     "postcss-unmq": "^1.0.2",
     "postcss-unopacity": "^2.0.0",
     "postcss-unrgba": "^1.1.1",
-    "rollup": "0.56.5",
+    "rollup": "0.59.4",
     "sassdoc": "^2.7.4",
     "slash": "^5.0.0",
     "uglify-js": "^3.17.4",
