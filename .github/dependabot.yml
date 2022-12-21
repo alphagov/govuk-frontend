@@ -12,7 +12,7 @@ updates:
     versioning-strategy: increase
 
     allow:
-      - dependency-type: all
+      - dependency-type: direct
 
     ignore:
       # Ignore major updates (breaks IE8 PostCSS plugins)
