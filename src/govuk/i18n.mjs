@@ -293,6 +293,7 @@ I18n.pluralRulesMap = {
  * @type {Object<string, function(number): PluralRule>}
  */
 I18n.pluralRules = {
+  /* eslint-disable jsdoc/require-jsdoc */
   arabic: function (n) {
     if (n === 0) { return 'zero' }
     if (n === 1) { return 'one' }
@@ -346,6 +347,7 @@ I18n.pluralRules = {
     if (n === 6) { return 'many' }
     return 'other'
   }
+  /* eslint-enable jsdoc/require-jsdoc */
 }
 
 /**

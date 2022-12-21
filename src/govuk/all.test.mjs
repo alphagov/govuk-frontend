@@ -47,12 +47,12 @@ describe('GOV.UK Frontend', () => {
     it('exported Components have an init function', async () => {
       await goTo(page, '/')
 
-      var componentsWithoutInitFunctions = await page.evaluate(() => {
+      const componentsWithoutInitFunctions = await page.evaluate(() => {
         const components = Object.keys(window.GOVUKFrontend)
           .filter(method => !['initAll'].includes(method))
 
         return components.filter(component => {
-          var prototype = window.GOVUKFrontend[component].prototype
+          const prototype = window.GOVUKFrontend[component].prototype
           return typeof prototype.init !== 'function'
         })
       })
