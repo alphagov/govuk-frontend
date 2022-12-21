@@ -18,7 +18,14 @@ jobs:
       PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
       PORT: 8888
 
+    # Skip when secrets are unavailable on forks
+    if: ${{ !github.event.pull_request.head.repo.fork }}
+
     steps:
+      - name: Check secrets
+        if: ${{ !env.PERCY_TOKEN }}
+        run: echo "::warning title=GitHub Actions secrets::Workflow requires 'PERCY_TOKEN' secret"
+
       - name: Checkout
         uses: actions/checkout@v3
 
