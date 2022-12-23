@@ -97,13 +97,18 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, minif
  */
 export function minifyJavaScript (modulePath, result) {
   const minified = minify({ [modulePath]: result.code }, {
-    ie8: true,
     sourceMap: {
       content: result.map,
       filename: result.map.file,
       url: `${result.map.file}.map`,
       includeSources: true
-    }
+    },
+
+    // Compatibility workarounds
+    ie8: true,
+    module: false,
+    v8: true,
+    webkit: true
   })
 
   if (minified.error) {
