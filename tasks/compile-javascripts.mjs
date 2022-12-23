@@ -104,6 +104,12 @@ export function minifyJavaScript (modulePath, result) {
       includeSources: true
     },
 
+    // Prevent unsafe polyfill changes
+    // https://github.com/mishoo/UglifyJS#compress-options
+    compress: {
+      inline: 2
+    },
+
     // Compatibility workarounds
     ie8: true,
     module: false,
