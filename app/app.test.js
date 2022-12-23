@@ -125,7 +125,7 @@ describe(`http://localhost:${PORT}`, () => {
       const response = await fetchPath(templatePath)
       const $ = cheerio.load(await response.text())
 
-      const $appStylesheet = $('link[href="/public/app.css"]')
+      const $appStylesheet = $('link[href="/public/app.min.css"]')
       expect($appStylesheet.length).toBe(1)
     })
 

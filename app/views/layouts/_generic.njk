@@ -12,17 +12,17 @@
     <link rel="stylesheet" media="print" href="/vendor/govuk_template/stylesheets/govuk-template-print.css">
     <link rel="stylesheet" media="all" href="/vendor/govuk_template/stylesheets/fonts.css"/>
     <!--[if !IE 8]><!-->
-      <link rel="stylesheet" href="/public/app-legacy.css">
+      <link rel="stylesheet" href="/public/app-legacy.min.css">
     <!--<![endif]-->
     <!--[if IE 8]>
-      <link rel="stylesheet" href="/public/app-legacy-ie8.css">
+      <link rel="stylesheet" href="/public/app-legacy-ie8.min.css">
     <![endif]-->
   {% else %}
     <!--[if !IE 8]><!-->
-      <link rel="stylesheet" href="/public/app.css">
+      <link rel="stylesheet" href="/public/app.min.css">
     <!--<![endif]-->
     <!--[if IE 8]>
-      <link rel="stylesheet" href="/public/app-ie8.css">
+      <link rel="stylesheet" href="/public/app-ie8.min.css">
     <![endif]-->
   {% endif %}
 
@@ -31,7 +31,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js" integrity="sha256-Zb9yKJ/cfs+jG/zIOFL0QEuXr2CDKF7FR5YBJY3No+c=" crossorigin="anonymous"></script>
   <!--<![endif]-->
   <!--[if lt IE 9]>
-    <script src="/vendor/html5-shiv/html5shiv.js"></script>
+    <script src="/vendor/html5-shiv/html5shiv.min.js"></script>
   <![endif]-->
 
   {% block styles %}{% endblock %}
@@ -50,6 +50,6 @@
     {% include "partials/legacyJavaScript.njk" %}
   {% endif %}
 
-  <script src="/public/all.js"></script>
+  <script src="/public/all.min.js"></script>
   <script>window.GOVUKFrontend.initAll()</script>
 {% endblock %}
