@@ -6,7 +6,7 @@
   .govuk-task-list {
     @include govuk-font($size: 19);
     margin-top: 0;
-    margin-bottom: 0;
+    @include govuk-responsive-margin(6, "bottom");
     padding: 0;
     list-style-type: none;
     @include govuk-media-query($from: tablet) {
