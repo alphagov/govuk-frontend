@@ -1,21 +1,28 @@
 {
   "name": "govuk-frontend",
-  "scripts": {
-  },
   "env": {
-    "HEROKU_APP": "REVIEW",
-    "NPM_CONFIG_PRODUCTION": "false",
-    "NODE_MODULES_CACHE": "false"
+    "HEROKU_APP": "REVIEW"
   },
-  "stack": "heroku-20",
-  "formation": {
-  },
-  "addons": [
-
-  ],
+  "stack": "heroku-22",
   "buildpacks": [
     {
       "url": "heroku/nodejs"
     }
-  ]
+  ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "environments": {
+    "review": {
+      "formation": {
+        "web": {
+          "quantity": 1,
+          "size": "eco"
+        }
+      }
+    }
+  }
 }

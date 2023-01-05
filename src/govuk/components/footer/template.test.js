@@ -1,12 +1,12 @@
-/**
- * @jest-environment jsdom
- */
-
 const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
 
-const examples = getExamples('footer')
-
 describe('footer', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('footer')
+  })
+
   it('default example passes accessibility tests', async () => {
     const $ = render('footer', examples.default)
 
@@ -231,7 +231,7 @@ describe('footer', () => {
       const $ = render('footer', examples['with HTML passed as text content'])
 
       const $licenceMessage = $('.govuk-footer__licence-description')
-      expect($licenceMessage.html()).toContain('&lt;a class=&quot;govuk-footer__link&quot; href=&quot;https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/&quot; rel=&quot;license&quot;&gt;Drwydded y Llywodraeth Agored v3.0&lt;/a&gt;')
+      expect($licenceMessage.html()).toContain('&lt;a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/" rel="license"&gt;Drwydded y Llywodraeth Agored v3.0&lt;/a&gt;')
     })
   })
 

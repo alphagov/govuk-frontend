@@ -1,7 +1,43 @@
-import '../../vendor/polyfills/Function/prototype/bind.mjs'
-import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normalisation
+import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
+import { extractConfigByNamespace, mergeConfigs } from '../../common/index.mjs'
+import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { I18n } from '../../i18n.mjs'
+import '../../vendor/polyfills/Date/now.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
-import { mergeConfigs, normaliseDataset } from '../../common.mjs'
+import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target normalization and DOMContentLoaded
+import '../../vendor/polyfills/Function/prototype/bind.mjs'
+
+/**
+ * @constant
+ * @type {CharacterCountTranslations}
+ * @see Default value for {@link CharacterCountConfig.i18n}
+ * @default
+ */
+var CHARACTER_COUNT_TRANSLATIONS = {
+  // Characters
+  charactersUnderLimit: {
+    one: 'You have %{count} character remaining',
+    other: 'You have %{count} characters remaining'
+  },
+  charactersAtLimit: 'You have 0 characters remaining',
+  charactersOverLimit: {
+    one: 'You have %{count} character too many',
+    other: 'You have %{count} characters too many'
+  },
+  // Words
+  wordsUnderLimit: {
+    one: 'You have %{count} word remaining',
+    other: 'You have %{count} words remaining'
+  },
+  wordsAtLimit: 'You have 0 words remaining',
+  wordsOverLimit: {
+    one: 'You have %{count} word too many',
+    other: 'You have %{count} words too many'
+  },
+  textareaDescription: {
+    other: ''
+  }
+}
 
 /**
  * JavaScript enhancements for the CharacterCount component
@@ -14,15 +50,8 @@ import { mergeConfigs, normaliseDataset } from '../../common.mjs'
  * of the available characters/words has been entered.
  *
  * @class
- * @param {HTMLElement} $module - The element this component controls
- * @param {Object} config
- * @param {Number} config.maxlength - If `maxwords` is set, this is not required.
- * The maximum number of characters. If `maxwords` is provided, it will be ignored.
- * @param {Number} config.maxwords - If `maxlength` is set, this is not required.
- * The maximum number of words. If `maxwords` is provided, `maxlength` will be ignored.
- * @param {Number} [config.threshold=0] - The percentage value of the limit at
- * which point the count message is displayed. If this attribute is set, the
- * count message will be hidden by default.
+ * @param {HTMLElement} $module - HTML element to use for character count
+ * @param {CharacterCountConfig} [config] - Character count config
  */
 function CharacterCount ($module, config) {
   if (!$module) {
@@ -30,7 +59,8 @@ function CharacterCount ($module, config) {
   }
 
   var defaultConfig = {
-    threshold: 0
+    threshold: 0,
+    i18n: CHARACTER_COUNT_TRANSLATIONS
   }
 
   // Read config set using dataset ('data-' values)
@@ -56,6 +86,11 @@ function CharacterCount ($module, config) {
     configOverrides,
     datasetConfig
   )
+
+  this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'), {
+    // Read the fallback if necessary rather than have it set in the defaults
+    locale: closestAttributeValue($module, 'lang')
+  })
 
   // Determine the limit attribute (characters or words)
   if (this.config.maxwords) {
@@ -83,11 +118,18 @@ CharacterCount.prototype.init = function () {
   }
 
   var $textarea = this.$textarea
-  var $fallbackLimitMessage = document.getElementById($textarea.id + '-info')
+  var $textareaDescription = document.getElementById($textarea.id + '-info')
 
-  // Move the fallback count message to be immediately after the textarea
+  // Inject a decription for the textarea if none is present already
+  // for when the component was rendered with no maxlength, maxwords
+  // nor custom textareaDescriptionText
+  if ($textareaDescription.innerText.match(/^\s*$/)) {
+    $textareaDescription.innerText = this.i18n.t('textareaDescription', { count: this.maxLength })
+  }
+
+  // Move the textarea description to be immediately after the textarea
   // Kept for backwards compatibility
-  $textarea.insertAdjacentElement('afterend', $fallbackLimitMessage)
+  $textarea.insertAdjacentElement('afterend', $textareaDescription)
 
   // Create the *screen reader* specific live-updating counter
   // This doesn't need any styling classes, as it is never visible
@@ -95,20 +137,20 @@ CharacterCount.prototype.init = function () {
   $screenReaderCountMessage.className = 'govuk-character-count__sr-status govuk-visually-hidden'
   $screenReaderCountMessage.setAttribute('aria-live', 'polite')
   this.$screenReaderCountMessage = $screenReaderCountMessage
-  $fallbackLimitMessage.insertAdjacentElement('afterend', $screenReaderCountMessage)
+  $textareaDescription.insertAdjacentElement('afterend', $screenReaderCountMessage)
 
   // Create our live-updating counter element, copying the classes from the
-  // fallback element for backwards compatibility as these may have been
+  // textarea description for backwards compatibility as these may have been
   // configured
   var $visibleCountMessage = document.createElement('div')
-  $visibleCountMessage.className = $fallbackLimitMessage.className
+  $visibleCountMessage.className = $textareaDescription.className
   $visibleCountMessage.classList.add('govuk-character-count__status')
   $visibleCountMessage.setAttribute('aria-hidden', 'true')
   this.$visibleCountMessage = $visibleCountMessage
-  $fallbackLimitMessage.insertAdjacentElement('afterend', $visibleCountMessage)
+  $textareaDescription.insertAdjacentElement('afterend', $visibleCountMessage)
 
-  // Hide the fallback limit message
-  $fallbackLimitMessage.classList.add('govuk-visually-hidden')
+  // Hide the textarea description
+  $textareaDescription.classList.add('govuk-visually-hidden')
 
   // Remove hard limit if set
   $textarea.removeAttribute('maxlength')
@@ -234,7 +276,7 @@ CharacterCount.prototype.updateVisibleCountMessage = function () {
   }
 
   // Update message
-  $visibleCountMessage.innerHTML = this.getCountMessage()
+  $visibleCountMessage.innerText = this.getCountMessage()
 }
 
 /**
@@ -252,15 +294,15 @@ CharacterCount.prototype.updateScreenReaderCountMessage = function () {
   }
 
   // Update message
-  $screenReaderCountMessage.innerHTML = this.getCountMessage()
+  $screenReaderCountMessage.innerText = this.getCountMessage()
 }
 
 /**
  * Count the number of characters (or words, if `config.maxwords` is set)
  * in the given text
  *
- * @param {String} text - The text to count the characters of
- * @returns {Number} the number of characters (or words) in the text
+ * @param {string} text - The text to count the characters of
+ * @returns {number} the number of characters (or words) in the text
  */
 CharacterCount.prototype.count = function (text) {
   if (this.config.maxwords) {
@@ -274,25 +316,31 @@ CharacterCount.prototype.count = function (text) {
 /**
  * Get count message
  *
- * @returns {String} Status message
+ * @returns {string} Status message
  */
 CharacterCount.prototype.getCountMessage = function () {
-  var $textarea = this.$textarea
-  var config = this.config
-  var remainingNumber = this.maxLength - this.count($textarea.value)
+  var remainingNumber = this.maxLength - this.count(this.$textarea.value)
 
-  var charVerb = 'remaining'
-  var charNoun = 'character'
-  var displayNumber = remainingNumber
-  if (config.maxwords) {
-    charNoun = 'word'
+  var countType = this.config.maxwords ? 'words' : 'characters'
+  return this.formatCountMessage(remainingNumber, countType)
+}
+
+/**
+ * Formats the message shown to users according to what's counted
+ * and how many remain
+ *
+ * @param {number} remainingNumber - The number of words/characaters remaining
+ * @param {string} countType - "words" or "characters"
+ * @returns {string} Status message
+ */
+CharacterCount.prototype.formatCountMessage = function (remainingNumber, countType) {
+  if (remainingNumber === 0) {
+    return this.i18n.t(countType + 'AtLimit')
   }
-  charNoun = charNoun + ((remainingNumber === -1 || remainingNumber === 1) ? '' : 's')
 
-  charVerb = (remainingNumber < 0) ? 'too many' : 'remaining'
-  displayNumber = Math.abs(remainingNumber)
+  var translationKeySuffix = remainingNumber < 0 ? 'OverLimit' : 'UnderLimit'
 
-  return 'You have ' + displayNumber + ' ' + charNoun + ' ' + charVerb
+  return this.i18n.t(countType + translationKeySuffix, { count: Math.abs(remainingNumber) })
 }
 
 /**
@@ -302,7 +350,7 @@ CharacterCount.prototype.getCountMessage = function () {
  * If there is no configured threshold, it is set to 0 and this function will
  * always return true.
  *
- * @returns {Boolean} true if the current count is over the config.threshold
+ * @returns {boolean} true if the current count is over the config.threshold
  *   (or no threshold is set)
  */
 CharacterCount.prototype.isOverThreshold = function () {
@@ -323,3 +371,83 @@ CharacterCount.prototype.isOverThreshold = function () {
 }
 
 export default CharacterCount
+
+/**
+ * Character count config
+ *
+ * @typedef {CharacterCountConfigWithMaxLength | CharacterCountConfigWithMaxWords} CharacterCountConfig
+ */
+
+/**
+ * Character count config (with maximum number of characters)
+ *
+ * @typedef {object} CharacterCountConfigWithMaxLength
+ * @property {number} [maxlength] - The maximum number of characters.
+ *  If maxwords is provided, the maxlength option will be ignored.
+ * @property {number} [threshold = 0] - The percentage value of the limit at
+ *  which point the count message is displayed. If this attribute is set, the
+ *  count message will be hidden by default.
+ * @property {CharacterCountTranslations} [i18n = CHARACTER_COUNT_TRANSLATIONS] - See constant {@link CHARACTER_COUNT_TRANSLATIONS}
+ */
+
+/**
+ * Character count config (with maximum number of words)
+ *
+ * @typedef {object} CharacterCountConfigWithMaxWords
+ * @property {number} [maxwords] - The maximum number of words. If maxwords is
+ *  provided, the maxlength option will be ignored.
+ * @property {number} [threshold = 0] - The percentage value of the limit at
+ *  which point the count message is displayed. If this attribute is set, the
+ *  count message will be hidden by default.
+ * @property {CharacterCountTranslations} [i18n = CHARACTER_COUNT_TRANSLATIONS] - See constant {@link CHARACTER_COUNT_TRANSLATIONS}
+ */
+
+/**
+ * Character count translations
+ *
+ * @typedef {object} CharacterCountTranslations
+ *
+ * Messages shown to users as they type. It provides feedback on how many words
+ * or characters they have remaining or if they are over the limit. This also
+ * includes a message used as an accessible description for the textarea.
+ * @property {TranslationPluralForms} [charactersUnderLimit] - Message displayed
+ *   when the number of characters is under the configured maximum, `maxlength`.
+ *   This message is displayed visually and through assistive technologies. The
+ *   component will replace the `%{count}` placeholder with the number of
+ *   remaining characters. This is a [pluralised list of
+ *   messages](https://frontend.design-system.service.gov.uk/localise-govuk-frontend).
+ * @property {string} [charactersAtLimit] - Message displayed when the number of
+ *   characters reaches the configured maximum, `maxlength`. This message is
+ *   displayed visually and through assistive technologies.
+ * @property {TranslationPluralForms} [charactersOverLimit] - Message displayed
+ *   when the number of characters is over the configured maximum, `maxlength`.
+ *   This message is displayed visually and through assistive technologies. The
+ *   component will replace the `%{count}` placeholder with the number of
+ *   remaining characters. This is a [pluralised list of
+ *   messages](https://frontend.design-system.service.gov.uk/localise-govuk-frontend).
+ * @property {TranslationPluralForms} [wordsUnderLimit] - Message displayed when
+ *   the number of words is under the configured maximum, `maxlength`. This
+ *   message is displayed visually and through assistive technologies. The
+ *   component will replace the `%{count}` placeholder with the number of
+ *   remaining words. This is a [pluralised list of
+ *   messages](https://frontend.design-system.service.gov.uk/localise-govuk-frontend).
+ * @property {string} [wordsAtLimit] - Message displayed when the number of
+ *   words reaches the configured maximum, `maxlength`. This message is
+ *   displayed visually and through assistive technologies.
+ * @property {TranslationPluralForms} [wordsOverLimit] - Message displayed when
+ *   the number of words is over the configured maximum, `maxlength`. This
+ *   message is displayed visually and through assistive technologies. The
+ *   component will replace the `%{count}` placeholder with the number of
+ *   remaining words. This is a [pluralised list of
+ *   messages](https://frontend.design-system.service.gov.uk/localise-govuk-frontend).
+ * @property {TranslationPluralForms} [textareaDescription] - Message made
+ *   available to assistive technologies, if none is already present in the
+ *   HTML, to describe that the component accepts only a limited amount of
+ *   content. It is visible on the page when JavaScript is unavailable. The
+ *   component will replace the `%{count}` placeholder with the value of the
+ *   `maxlength` or `maxwords` parameter.
+ */
+
+/**
+ * @typedef {import('../../i18n.mjs').TranslationPluralForms} TranslationPluralForms
+ */

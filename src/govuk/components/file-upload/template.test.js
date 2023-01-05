@@ -1,15 +1,15 @@
-/**
- * @jest-environment jsdom
- */
-
 const { axe, render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
-
-const examples = getExamples('file-upload')
 
 const WORD_BOUNDARY = '\\b'
 const WHITESPACE = '\\s'
 
 describe('File upload', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('file-upload')
+  })
+
   describe('default example', () => {
     it('passes accessibility tests', async () => {
       const $ = render('file-upload', examples.default)

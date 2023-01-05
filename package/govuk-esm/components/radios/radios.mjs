@@ -2,8 +2,14 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
 // addEventListener, event.target normalization and DOMContentLoaded
 import '../../vendor/polyfills/Event.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
-import { nodeListForEach } from '../../common.mjs'
+import { nodeListForEach } from '../../common/index.mjs'
 
+/**
+ * Radios component
+ *
+ * @class
+ * @param {HTMLElement} $module - HTML element to use for radios
+ */
 function Radios ($module) {
   this.$module = $module
   this.$inputs = $module.querySelectorAll('input[type="radio"]')
@@ -74,7 +80,7 @@ Radios.prototype.syncAllConditionalReveals = function () {
  * Synchronise the visibility of the conditional reveal, and its accessible
  * state, with the input's checked state.
  *
- * @param {HTMLInputElement} $input Radio input
+ * @param {HTMLInputElement} $input - Radio input
  */
 Radios.prototype.syncConditionalRevealWithInputState = function ($input) {
   var $target = document.getElementById($input.getAttribute('aria-controls'))
@@ -95,7 +101,7 @@ Radios.prototype.syncConditionalRevealWithInputState = function ($input) {
  * with the same name (because checking one radio could have un-checked a radio
  * in another $module)
  *
- * @param {MouseEvent} event Click event
+ * @param {MouseEvent} event - Click event
  */
 Radios.prototype.handleClick = function (event) {
   var $clickedInput = event.target

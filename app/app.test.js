@@ -1,10 +1,9 @@
 const cheerio = require('cheerio')
-const { Agent, fetch, setGlobalDispatcher } = require('undici')
 
-const lib = require('../lib/file-helper')
+const config = require('../config')
+const { getDirectories } = require('../lib/file-helper')
 
-const configPaths = require('../config/paths.js')
-const PORT = configPaths.ports.test
+const PORT = config.ports.test
 
 const expectedPages = [
   '/',
@@ -17,12 +16,6 @@ const expectedPages = [
   '/examples/template-default',
   '/examples/template-custom'
 ]
-
-// Reduce test keep-alive
-setGlobalDispatcher(new Agent({
-  keepAliveTimeout: 10,
-  keepAliveMaxTimeout: 10
-}))
 
 // Returns Fetch API wrapper which applies these options by default
 const fetchPath = (path, options) => {
@@ -51,10 +44,13 @@ describe(`http://localhost:${PORT}`, () => {
     it('should display the list of components', async () => {
       const response = await fetchPath('/')
       const $ = cheerio.load(await response.text())
+
+      const componentNames = await getDirectories(config.paths.components)
       const componentsList = $('li a[href^="/components/"]').get()
+
       // Since we have an 'all' component link that renders the default example of all
       // components, there will always be one more expected link.
-      const expectedComponentLinks = lib.allComponents.length + 1
+      const expectedComponentLinks = componentNames.length + 1
       expect(componentsList.length).toEqual(expectedComponentLinks)
     })
   })
@@ -122,14 +118,14 @@ describe(`http://localhost:${PORT}`, () => {
       const $ = cheerio.load(await response.text())
 
       const $title = $('title')
-      expect($title.html()).toBe('GOV.UK - Le meilleur endroit pour trouver des services gouvernementaux et de l&apos;information')
+      expect($title.html()).toBe("GOV.UK - Le meilleur endroit pour trouver des services gouvernementaux et de l'information")
     })
 
     it('should have an application stylesheet', async () => {
       const response = await fetchPath(templatePath)
       const $ = cheerio.load(await response.text())
 
-      const $appStylesheet = $('link[href="/public/app.css"]')
+      const $appStylesheet = $('link[href="/public/app.min.css"]')
       expect($appStylesheet.length).toBe(1)
     })
 
@@ -158,7 +154,7 @@ describe(`http://localhost:${PORT}`, () => {
       const $phaseBanner = $('.govuk-phase-banner')
       const $text = $phaseBanner.find('.govuk-phase-banner__text')
 
-      expect($text.html()).toContain('C&apos;est un nouveau service - vos <a class="govuk-link" href="#">commentaires</a> nous aideront &#xE0; l&apos;am&#xE9;liorer.')
+      expect($text.html()).toContain("C'est un nouveau service - vos <a class=\"govuk-link\" href=\"#\">commentaires</a> nous aideront à l'améliorer.")
     })
 
     it('should have a custom Footer component', async () => {

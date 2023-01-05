@@ -1,0 +1,32 @@
+exclude:
+  - vendor/*
+
+groups:
+  components/button: Components / Button
+  helpers/accessibility: Helpers / Accessibility
+  helpers/colour: Helpers / Colour
+  helpers/layout: Helpers / Layout
+  helpers/links: Helpers / Links
+  helpers/shapes: Helpers / Shapes
+  helpers/spacing: Helpers / Spacing
+  helpers/typography: Helpers / Typography
+  settings/assets: Settings / Assets
+  settings/colours: Settings / Colours
+  settings/compatibility: Settings / Compatibility
+  settings/global-styles: Settings / Global Styles
+  settings/internet-explorer-8: Settings / IE8
+  settings/links: Settings / Links
+  settings/measurements: Settings / Measurements
+  settings/media-queries: Settings / Media Queries
+  settings/spacing: Settings / Spacing
+  settings/typography: Settings / Typography
+  settings/warnings: Settings / Warnings
+  tools: Tools
+  tools/assets: Tools / Assets
+  tools/compatibility-mode: Tools / Compatibility Mode
+  tools/internet-explorer-8: Tools / IE8
+  tools/unit-conversion: Tools / Unit Conversion
+  helpers: Helpers
+  overrides: Overrides
+  objects: Objects
+  objects/layout: Objects / Layout

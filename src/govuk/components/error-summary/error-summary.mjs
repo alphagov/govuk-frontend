@@ -1,8 +1,8 @@
-import '../../vendor/polyfills/Function/prototype/bind.mjs'
-import '../../vendor/polyfills/Event.mjs' // addEventListener
+import { mergeConfigs } from '../../common/index.mjs'
+import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import '../../vendor/polyfills/Element/prototype/closest.mjs'
-
-import { mergeConfigs, normaliseDataset } from '../../common.mjs'
+import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target normalization and DOMContentLoaded
+import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
 /**
  * JavaScript enhancements for the ErrorSummary
@@ -10,9 +10,8 @@ import { mergeConfigs, normaliseDataset } from '../../common.mjs'
  * Takes focus on initialisation for accessible announcement, unless disabled in configuration.
  *
  * @class
- * @param {HTMLElement} $module - The element this component controls
- * @param {Object} config
- * @param {Boolean} [config.disableAutoFocus=false] - Whether to disable the component taking focus on initialisation
+ * @param {HTMLElement} $module - HTML element to use for error summary
+ * @param {ErrorSummaryConfig} [config] - Error summary config
  */
 function ErrorSummary ($module, config) {
   // Some consuming code may not be passing a module,
@@ -40,6 +39,9 @@ function ErrorSummary ($module, config) {
   )
 }
 
+/**
+ * Initialise component
+ */
 ErrorSummary.prototype.init = function () {
   var $module = this.$module
   if (!$module) {
@@ -72,13 +74,13 @@ ErrorSummary.prototype.setFocus = function () {
 }
 
 /**
-* Click event handler
-*
-* @param {MouseEvent} event - Click event
-*/
+ * Click event handler
+ *
+ * @param {MouseEvent} event - Click event
+ */
 ErrorSummary.prototype.handleClick = function (event) {
-  var target = event.target
-  if (this.focusTarget(target)) {
+  var $target = event.target
+  if (this.focusTarget($target)) {
     event.preventDefault()
   }
 }
@@ -98,7 +100,7 @@ ErrorSummary.prototype.handleClick = function (event) {
  * NVDA (as tested in 2018.3.2) - without this only the field type is announced
  * (e.g. "Edit, has autocomplete").
  *
- * @param {HTMLElement} $target - Event target
+ * @param {EventTarget} $target - Event target
  * @returns {boolean} True if the target was able to be focussed
  */
 ErrorSummary.prototype.focusTarget = function ($target) {
@@ -163,10 +165,10 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
   var $fieldset = $input.closest('fieldset')
 
   if ($fieldset) {
-    var legends = $fieldset.getElementsByTagName('legend')
+    var $legends = $fieldset.getElementsByTagName('legend')
 
-    if (legends.length) {
-      var $candidateLegend = legends[0]
+    if ($legends.length) {
+      var $candidateLegend = $legends[0]
 
       // If the input type is radio or checkbox, always use the legend if there
       // is one.
@@ -200,3 +202,11 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
 }
 
 export default ErrorSummary
+
+/**
+ * Error summary config
+ *
+ * @typedef {object} ErrorSummaryConfig
+ * @property {boolean} [disableAutoFocus = false] -
+ *  If set to `true` the error summary will not be focussed when the page loads.
+ */

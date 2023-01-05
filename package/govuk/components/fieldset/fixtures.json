@@ -8,8 +8,8 @@
                     "text": "What is your address?"
                 }
             },
-            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n</fieldset>",
-            "hidden": false
+            "hidden": false,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n</fieldset>"
         },
         {
             "name": "styled as xl text",
@@ -19,8 +19,8 @@
                     "classes": "govuk-fieldset__legend--xl"
                 }
             },
-            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--xl\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n</fieldset>",
-            "hidden": false
+            "hidden": false,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--xl\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n</fieldset>"
         },
         {
             "name": "styled as large text",
@@ -30,8 +30,8 @@
                     "classes": "govuk-fieldset__legend--l"
                 }
             },
-            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--l\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n</fieldset>",
-            "hidden": false
+            "hidden": false,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--l\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n</fieldset>"
         },
         {
             "name": "styled as medium text",
@@ -41,8 +41,8 @@
                     "classes": "govuk-fieldset__legend--m"
                 }
             },
-            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--m\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n</fieldset>",
-            "hidden": false
+            "hidden": false,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--m\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n</fieldset>"
         },
         {
             "name": "styled as small text",
@@ -52,8 +52,8 @@
                     "classes": "govuk-fieldset__legend--s"
                 }
             },
-            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--s\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n</fieldset>",
-            "hidden": false
+            "hidden": false,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--s\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n</fieldset>"
         },
         {
             "name": "as page heading xl",
@@ -64,8 +64,8 @@
                     "isPageHeading": true
                 }
             },
-            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--xl\">\n  \n    <h1 class=\"govuk-fieldset__heading\">\n      What is your address?\n    </h1>\n  \n  </legend>\n  \n\n</fieldset>",
-            "hidden": false
+            "hidden": false,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--xl\">\n  \n    <h1 class=\"govuk-fieldset__heading\">\n      What is your address?\n    </h1>\n  \n  </legend>\n  \n\n</fieldset>"
         },
         {
             "name": "as page heading l",
@@ -76,8 +76,8 @@
                     "isPageHeading": true
                 }
             },
-            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--l\">\n  \n    <h1 class=\"govuk-fieldset__heading\">\n      What is your address?\n    </h1>\n  \n  </legend>\n  \n\n</fieldset>",
-            "hidden": false
+            "hidden": false,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--l\">\n  \n    <h1 class=\"govuk-fieldset__heading\">\n      What is your address?\n    </h1>\n  \n  </legend>\n  \n\n</fieldset>"
         },
         {
             "name": "as page heading m",
@@ -88,8 +88,8 @@
                     "isPageHeading": true
                 }
             },
-            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--m\">\n  \n    <h1 class=\"govuk-fieldset__heading\">\n      What is your address?\n    </h1>\n  \n  </legend>\n  \n\n</fieldset>",
-            "hidden": false
+            "hidden": false,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--m\">\n  \n    <h1 class=\"govuk-fieldset__heading\">\n      What is your address?\n    </h1>\n  \n  </legend>\n  \n\n</fieldset>"
         },
         {
             "name": "as page heading s",
@@ -100,8 +100,8 @@
                     "isPageHeading": true
                 }
             },
-            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--s\">\n  \n    <h1 class=\"govuk-fieldset__heading\">\n      What is your address?\n    </h1>\n  \n  </legend>\n  \n\n</fieldset>",
-            "hidden": false
+            "hidden": false,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--s\">\n  \n    <h1 class=\"govuk-fieldset__heading\">\n      What is your address?\n    </h1>\n  \n  </legend>\n  \n\n</fieldset>"
         },
         {
             "name": "as page heading without class",
@@ -111,8 +111,8 @@
                     "isPageHeading": true
                 }
             },
-            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    <h1 class=\"govuk-fieldset__heading\">\n      What is your address?\n    </h1>\n  \n  </legend>\n  \n\n</fieldset>",
-            "hidden": false
+            "hidden": false,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    <h1 class=\"govuk-fieldset__heading\">\n      What is your address?\n    </h1>\n  \n  </legend>\n  \n\n</fieldset>"
         },
         {
             "name": "html fieldset content",
@@ -122,16 +122,19 @@
                 },
                 "html": "<div class=\"my-content\">\n  <p>This is some content to put inside the fieldset</p>\n</div>\n"
             },
-            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n  <div class=\"my-content\">\n  <p>This is some content to put inside the fieldset</p>\n</div>\n\n\n</fieldset>",
-            "hidden": true
+            "hidden": true,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n  <div class=\"my-content\">\n  <p>This is some content to put inside the fieldset</p>\n</div>\n\n\n</fieldset>"
         },
         {
             "name": "with describedBy",
             "options": {
-                "describedBy": "some-id"
+                "describedBy": "some-id",
+                "legend": {
+                    "text": "Which option?"
+                }
             },
-            "html": "<fieldset class=\"govuk-fieldset\" aria-describedby=\"some-id\">\n  \n\n</fieldset>",
-            "hidden": true
+            "hidden": true,
+            "html": "<fieldset class=\"govuk-fieldset\" aria-describedby=\"some-id\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    Which option?\n  \n  </legend>\n  \n\n</fieldset>"
         },
         {
             "name": "html as text",
@@ -140,8 +143,8 @@
                     "text": "What is <b>your</b> address?"
                 }
             },
-            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is &lt;b&gt;your&lt;/b&gt; address?\n  \n  </legend>\n  \n\n</fieldset>",
-            "hidden": true
+            "hidden": true,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is &lt;b&gt;your&lt;/b&gt; address?\n  \n  </legend>\n  \n\n</fieldset>"
         },
         {
             "name": "html",
@@ -150,8 +153,8 @@
                     "html": "What is <b>your</b> address?"
                 }
             },
-            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is <b>your</b> address?\n  \n  </legend>\n  \n\n</fieldset>",
-            "hidden": true
+            "hidden": true,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is <b>your</b> address?\n  \n  </legend>\n  \n\n</fieldset>"
         },
         {
             "name": "legend classes",
@@ -161,34 +164,43 @@
                     "classes": "my-custom-class"
                 }
             },
-            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend my-custom-class\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n</fieldset>",
-            "hidden": true
+            "hidden": true,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend my-custom-class\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n</fieldset>"
         },
         {
             "name": "classes",
             "options": {
-                "classes": "app-fieldset--custom-modifier"
+                "classes": "app-fieldset--custom-modifier",
+                "legend": {
+                    "text": "Which option?"
+                }
             },
-            "html": "<fieldset class=\"govuk-fieldset app-fieldset--custom-modifier\">\n  \n\n</fieldset>",
-            "hidden": true
+            "hidden": true,
+            "html": "<fieldset class=\"govuk-fieldset app-fieldset--custom-modifier\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    Which option?\n  \n  </legend>\n  \n\n</fieldset>"
         },
         {
             "name": "role",
             "options": {
-                "role": "group"
+                "role": "group",
+                "legend": {
+                    "text": "Which option?"
+                }
             },
-            "html": "<fieldset class=\"govuk-fieldset\" role=\"group\">\n  \n\n</fieldset>",
-            "hidden": true
+            "hidden": true,
+            "html": "<fieldset class=\"govuk-fieldset\" role=\"group\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    Which option?\n  \n  </legend>\n  \n\n</fieldset>"
         },
         {
             "name": "attributes",
             "options": {
                 "attributes": {
                     "data-attribute": "value"
+                },
+                "legend": {
+                    "text": "Which option?"
                 }
             },
-            "html": "<fieldset class=\"govuk-fieldset\" data-attribute=\"value\">\n  \n\n</fieldset>",
-            "hidden": true
+            "hidden": true,
+            "html": "<fieldset class=\"govuk-fieldset\" data-attribute=\"value\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    Which option?\n  \n  </legend>\n  \n\n</fieldset>"
         }
     ]
 }

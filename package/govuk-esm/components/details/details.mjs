@@ -6,11 +6,17 @@
  */
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normaliziation
-import { generateUniqueID } from '../../common.mjs'
+import { generateUniqueID } from '../../common/index.mjs'
 
 var KEY_ENTER = 13
 var KEY_SPACE = 32
 
+/**
+ * Details component
+ *
+ * @class
+ * @param {HTMLElement} $module - HTML element to use for details
+ */
 function Details ($module) {
   this.$module = $module
 }
@@ -77,9 +83,10 @@ Details.prototype.polyfillDetails = function () {
 }
 
 /**
-* Define a statechange function that updates aria-expanded and style.display
-* @param {object} summary element
-*/
+ * Define a statechange function that updates aria-expanded and style.display
+ *
+ * @returns {boolean} Returns true
+ */
 Details.prototype.polyfillSetAttributes = function () {
   if (this.$module.hasAttribute('open')) {
     this.$module.removeAttribute('open')
@@ -95,10 +102,11 @@ Details.prototype.polyfillSetAttributes = function () {
 }
 
 /**
-* Handle cross-modal click events
-* @param {object} node element
-* @param {function} callback function
-*/
+ * Handle cross-modal click events
+ *
+ * @param {object} node - element
+ * @param {polyfillHandleInputsCallback} callback - function
+ */
 Details.prototype.polyfillHandleInputs = function (node, callback) {
   node.addEventListener('keypress', function (event) {
     var target = event.target
@@ -133,3 +141,9 @@ Details.prototype.polyfillHandleInputs = function (node, callback) {
 }
 
 export default Details
+
+/**
+ * @callback polyfillHandleInputsCallback
+ * @param {KeyboardEvent} event - Keyboard event
+ * @returns {undefined}
+ */

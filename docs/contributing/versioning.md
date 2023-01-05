@@ -71,7 +71,7 @@ If you open a GitHub pull request on this repo, please update `CHANGELOG` to ref
 
 Add your entry under `Unreleased` as `Breaking changes`, `New features`, `Fixes`.
 
-Internal changes to the project that are not part of the public API do not need changelog entries, for example fixing the CI build server.
+Internal changes to the project that are not part of the public API do not need changelog entries, for example fixing GitHub Actions workflows.
 
 These sections follow [semantic versioning](https://semver.org/), where:
 

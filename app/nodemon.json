@@ -1,0 +1,7 @@
+{
+  "exec": "node start.js",
+  "watch": [".", "../src/govuk"],
+  "ignore": ["**/*.test.*"],
+  "ext": "js,json,yaml",
+  "quiet": true
+}

@@ -1,16 +1,21 @@
-import '../../vendor/polyfills/Function/prototype/bind.mjs'
-// addEventListener, event.target normalization and DOMContentLoaded
-import '../../vendor/polyfills/Event.mjs'
+import { nodeListForEach } from '../../common/index.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
-import { nodeListForEach } from '../../common.mjs'
+import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target normalization and DOMContentLoaded
+import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
+/**
+ * Radios component
+ *
+ * @class
+ * @param {HTMLElement} $module - HTML element to use for radios
+ */
 function Radios ($module) {
   this.$module = $module
   this.$inputs = $module.querySelectorAll('input[type="radio"]')
 }
 
 /**
- * Initialise Radios
+ * Initialise component
  *
  * Radios can be associated with a 'conditionally revealed' content block – for
  * example, a radio for 'Phone' could reveal an additional form field for the
@@ -28,17 +33,17 @@ Radios.prototype.init = function () {
   var $inputs = this.$inputs
 
   nodeListForEach($inputs, function ($input) {
-    var target = $input.getAttribute('data-aria-controls')
+    var targetId = $input.getAttribute('data-aria-controls')
 
     // Skip radios without data-aria-controls attributes, or where the
     // target element does not exist.
-    if (!target || !document.getElementById(target)) {
+    if (!targetId || !document.getElementById(targetId)) {
       return
     }
 
     // Promote the data-aria-controls attribute to a aria-controls attribute
     // so that the relationship is exposed in the AOM
-    $input.setAttribute('aria-controls', target)
+    $input.setAttribute('aria-controls', targetId)
     $input.removeAttribute('data-aria-controls')
   })
 
@@ -62,7 +67,7 @@ Radios.prototype.init = function () {
 }
 
 /**
- * Sync the conditional reveal states for all inputs in this $module.
+ * Sync the conditional reveal states for all radio buttons in this $module.
  */
 Radios.prototype.syncAllConditionalReveals = function () {
   nodeListForEach(this.$inputs, this.syncConditionalRevealWithInputState.bind(this))
@@ -74,7 +79,7 @@ Radios.prototype.syncAllConditionalReveals = function () {
  * Synchronise the visibility of the conditional reveal, and its accessible
  * state, with the input's checked state.
  *
- * @param {HTMLInputElement} $input Radio input
+ * @param {HTMLInputElement} $input - Radio input
  */
 Radios.prototype.syncConditionalRevealWithInputState = function ($input) {
   var $target = document.getElementById($input.getAttribute('aria-controls'))
@@ -95,7 +100,7 @@ Radios.prototype.syncConditionalRevealWithInputState = function ($input) {
  * with the same name (because checking one radio could have un-checked a radio
  * in another $module)
  *
- * @param {MouseEvent} event Click event
+ * @param {MouseEvent} event - Click event
  */
 Radios.prototype.handleClick = function (event) {
   var $clickedInput = event.target

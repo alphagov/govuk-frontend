@@ -1014,6 +1014,12 @@ if (detect) return
 })
 .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
+/**
+ * Skip link component
+ *
+ * @class
+ * @param {HTMLElement} $module - HTML element to use for skip link
+ */
 function SkipLink ($module) {
   this.$module = $module;
   this.$linkedElement = null;
@@ -1039,10 +1045,10 @@ SkipLink.prototype.init = function () {
 };
 
 /**
-* Get linked element
-*
-* @returns {HTMLElement} $linkedElement - DOM element linked to from the skip link
-*/
+ * Get linked element
+ *
+ * @returns {HTMLElement} $linkedElement - DOM element linked to from the skip link
+ */
 SkipLink.prototype.getLinkedElement = function () {
   var linkedElementId = this.getFragmentFromUrl();
 

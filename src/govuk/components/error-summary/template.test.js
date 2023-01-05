@@ -1,12 +1,12 @@
-/**
- * @jest-environment jsdom
- */
-
 const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
 
-const examples = getExamples('error-summary')
-
 describe('Error-summary', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('error-summary')
+  })
+
   describe('default example', () => {
     it('passes accessibility tests', async () => {
       const $ = render('error-summary', examples.default)
@@ -77,7 +77,7 @@ describe('Error-summary', () => {
       const $ = render('error-summary', examples['html as descriptionText'])
 
       const summaryDescription = $('.govuk-error-summary__body p').html().trim()
-      expect(summaryDescription).toEqual('See errors below (&#x25BC;)')
+      expect(summaryDescription).toEqual('See errors below (&gt;)')
     })
 
     it('allows description HTML to be passed un-escaped', () => {

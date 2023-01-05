@@ -12,96 +12,145 @@ on:
   workflow_dispatch:
 
 concurrency:
-   group: sass-${{ github.head_ref || github.run_id }}
-   cancel-in-progress: true
+  group: sass-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
 
 jobs:
   dart-sass:
     name: Dart Sass v1.0.0
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           cache: npm
-          node-version: 8 # v8 required for sass v1.0.0
-      - run: |
+          node-version: 8 # Node.js 8 supported by Dart Sass v1.0.0
+
+      - name: Install package
+        run: |
           npm install -g sass@v1.0.0
           sass --version
-      - run: time sass src/govuk/all.scss > /dev/null
+
+      - name: Run command
+        run: time sass src/govuk/all.scss > /dev/null
 
   dart-sass-latest:
     name: Dart Sass v1 (latest)
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           cache: npm
-          node-version: 14
-      - run: |
+          node-version: 18 # Node.js 18 supported by Dart Sass v1
+
+      - name: Install package
+        run: |
           npm install -g sass@v1
           sass --version
-      # Treat GOV.UK Frontend as a dependency by importing it via load paths,
-      # allowing us to mimic the way we recommend our users silence deprecation
-      # warnings using the `quiet-deps` flag.
-      #
-      # Run the command through a shell to ensure `time` measures the time
-      # taken by the entire pipeline, as we are now piping input into `sass`.
-      - run: time sh -c 'echo "@import "\""govuk/all"\"";" | sass --stdin --quiet-deps --load-path=src > /dev/null'
+
+        # Treat GOV.UK Frontend as a dependency by importing it via load paths,
+        # allowing us to mimic the way we recommend our users silence deprecation
+        # warnings using the `quiet-deps` flag.
+        #
+        # Run the command through a shell to ensure `time` measures the time
+        # taken by the entire pipeline, as we are now piping input into `sass`.
+      - name: Run command
+        run: time sh -c 'echo "@import "\""govuk/all"\"";" | sass --stdin --quiet-deps --load-path=src > /dev/null'
 
 
   # Node Sass v3.4.0 = LibSass v3.3.0
   lib-sass:
     name: LibSass v3.3.0 (deprecated)
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 4 # v4 required for node-sass v3.4.0
-      - run: |
+          cache: npm
+          node-version: 4 # Node.js 4 supported by Node Sass v3.4.0
+
+      - name: Install package
+        run: |
           npm install -g node-sass@v3.4.0
           node-sass --version
-      - run: time node-sass src/govuk/all.scss > /dev/null
 
-  # Node Sass v7.x = LibSass v3 latest
+      - name: Run command
+        run: time node-sass src/govuk/all.scss > /dev/null
+
+  # Node Sass v8.x = LibSass v3 latest
   lib-sass-latest:
     name: LibSass v3 (latest, deprecated)
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           cache: npm
-          node-version: 14
-      - run: |
-          npm install -g node-sass@v7
+          node-version: 18 # Node.js 18 supported by Node Sass v8.x
+
+      - name: Install package
+        run: |
+          npm install -g node-sass@v8
           node-sass --version
-      - run: time node-sass src/govuk/all.scss > /dev/null
+
+      - name: Run command
+        run: time node-sass src/govuk/all.scss > /dev/null
 
   ruby-sass:
     name: Ruby Sass v3.4.0 (deprecated)
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: ruby/setup-ruby@v1
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.1.9 # Oldest version available on ruby/setup-ruby
-      - run: |
+
+      - name: Install gem
+        run: |
           gem install sass -v 3.4.0
           sass --version
-      - run: time sass src/govuk/all.scss > /dev/null
+
+      - name: Run command
+        run: time sass src/govuk/all.scss > /dev/null
 
   ruby-sass-latest:
     name: Ruby Sass v3 (latest, deprecated)
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: ruby/setup-ruby@v1
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.6 # Latest Ruby when Ruby Sass was EOL'ed (April 2019)
-      - run: |
+          ruby-version: 3.1 # Ruby 3.1 supported by Ruby Sass v3
+
+      - name: Install gem
+        run: |
           gem install sass -v '~> 3.0'
           sass --version
-      - run: time sass src/govuk/all.scss > /dev/null
+
+      - name: Run command
+        run: time sass src/govuk/all.scss > /dev/null

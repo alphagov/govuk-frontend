@@ -1,9 +1,10 @@
+const { join } = require('path')
+
+const configPaths = require('../../../config/paths')
 const { renderSass } = require('../../../lib/jest-helpers')
 
-const configPaths = require('../../../config/paths.js')
-
 const sassConfig = {
-  includePaths: [configPaths.src, 'node_modules/'],
+  includePaths: [join(configPaths.src, 'govuk'), 'node_modules/'],
   outputStyle: 'compressed'
 }
 

@@ -1,5 +1,6 @@
-import serverStop from '../server/stop.mjs'
 import { teardown } from 'jest-environment-puppeteer'
+
+import serverStop from '../server/stop.mjs'
 
 /**
  * Close browser

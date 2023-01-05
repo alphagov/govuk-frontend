@@ -114,13 +114,16 @@
     display: block;
     min-width: govuk-spacing(3);
 
-    &:after {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+    // Increase the touch area for the link to the parent element.
+    @media screen {
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
     }
 
     // Add link hover decoration to prev/next text if no label present on prev/next only mode

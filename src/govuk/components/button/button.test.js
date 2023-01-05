@@ -1,21 +1,16 @@
-/**
- * @jest-environment puppeteer
- */
-
 const { getExamples } = require('../../../../lib/jest-helpers')
-const { renderAndInitialise } = require('../../../../lib/puppeteer-helpers')
-
-const examples = getExamples('button')
-
-const configPaths = require('../../../../config/paths.js')
-const PORT = configPaths.ports.test
-
-const baseUrl = 'http://localhost:' + PORT
+const { goTo, goToComponent, renderAndInitialise } = require('../../../../lib/puppeteer-helpers')
 
 describe('/components/button', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('button')
+  })
+
   describe('mis-instantiation', () => {
     it('does not prevent further JavaScript from running', async () => {
-      await page.goto(`${baseUrl}/tests/boilerplate`, { waitUntil: 'load' })
+      await goTo(page, '/tests/boilerplate')
 
       const result = await page.evaluate(() => {
         // `undefined` simulates the element being missing,
@@ -31,10 +26,14 @@ describe('/components/button', () => {
   })
 
   describe('/components/button/link', () => {
-    it('triggers the click event when the space key is pressed', async () => {
-      await page.goto(baseUrl + '/components/button/link/preview', { waitUntil: 'load' })
+    beforeAll(async () => {
+      await goToComponent(page, 'button', {
+        exampleName: 'link'
+      })
+    })
 
-      const href = await page.evaluate(() => document.body.getElementsByTagName('a')[0].getAttribute('href'))
+    it('triggers the click event when the space key is pressed', async () => {
+      const pathname = await page.evaluate(() => document.body.getElementsByTagName('a')[0].getAttribute('href'))
 
       await page.focus('a[role="button"]')
 
@@ -46,8 +45,8 @@ describe('/components/button', () => {
         page.keyboard.press('Space')
       ])
 
-      const url = await page.url()
-      expect(url).toBe(baseUrl + href)
+      const url = new URL(await page.url())
+      expect(url.pathname).toBe(pathname)
     })
   })
 
@@ -60,6 +59,9 @@ describe('/components/button', () => {
      * Wraps the button rendered on the page in a form
      *
      * Examples don't do this and we need it to have something to submit
+     *
+     * @param {import('puppeteer').Page} page - Puppeteer page object
+     * @returns {Promise<undefined>}
      */
     function trackClicks (page) {
       return page.evaluate(() => {
@@ -80,26 +82,20 @@ describe('/components/button', () => {
     /**
      * Gets the number of times the form was submitted
      *
-     * @returns {Number}
+     * @param {import('puppeteer').Page} page - Puppeteer page object
+     * @returns {number} Number of times the form was submitted
      */
     function getClicksCount (page) {
       return page.evaluate(() => window.__SUBMIT_EVENTS)
     }
 
     describe('not enabled', () => {
-      let page
-
       beforeEach(async () => {
-        page = await browser.newPage()
+        await goToComponent(page, 'button')
+        await trackClicks(page)
       })
 
       it('does not prevent multiple submissions', async () => {
-        await page.goto(baseUrl + '/components/button/preview', {
-          waitUntil: 'load'
-        })
-
-        await trackClicks(page)
-
         await page.click('button')
         await page.click('button')
 
@@ -110,20 +106,14 @@ describe('/components/button', () => {
     })
 
     describe('using data-attributes', () => {
-      let page
-
       beforeEach(async () => {
-        page = await browser.newPage()
+        await goToComponent(page, 'button', {
+          exampleName: 'prevent-double-click'
+        })
+        await trackClicks(page)
       })
 
       it('prevents unintentional submissions when in a form', async () => {
-        await page.goto(
-          baseUrl + '/components/button/prevent-double-click/preview',
-          { waitUntil: 'load' }
-        )
-
-        await trackClicks(page)
-
         await page.click('button')
         await page.click('button')
 
@@ -133,13 +123,6 @@ describe('/components/button', () => {
       })
 
       it('does not prevent intentional multiple clicks', async () => {
-        await page.goto(
-          baseUrl + '/components/button/prevent-double-click/preview',
-          { waitUntil: 'load' }
-        )
-
-        await trackClicks(page)
-
         await page.click('button')
         await page.click('button', { delay: 1000 })
 
@@ -149,13 +132,6 @@ describe('/components/button', () => {
       })
 
       it('does not prevent subsequent clicks on different buttons', async () => {
-        await page.goto(
-          baseUrl + '/components/button/prevent-double-click/preview',
-          { waitUntil: 'load' }
-        )
-
-        await trackClicks(page)
-
         // Clone button to have two buttons on the page
         await page.evaluate(() => {
           const $button = document.querySelector('button')
@@ -174,12 +150,8 @@ describe('/components/button', () => {
     })
 
     describe('using JavaScript configuration', () => {
-      let page
-
-      // To ensure
       beforeEach(async () => {
-        page = await renderAndInitialise('button', {
-          baseUrl,
+        await renderAndInitialise(page, 'button', {
           nunjucksParams: examples.default,
           javascriptConfig: {
             preventDoubleClick: true
@@ -226,11 +198,8 @@ describe('/components/button', () => {
     })
 
     describe('using JavaScript configuration, but cancelled by data-attributes', () => {
-      let page
-
-      it('does not prevent multiple submissions', async () => {
-        page = await renderAndInitialise('button', {
-          baseUrl,
+      beforeEach(async () => {
+        await renderAndInitialise(page, 'button', {
           nunjucksParams: examples["don't prevent double click"],
           javascriptConfig: {
             preventDoubleClick: true
@@ -238,7 +207,9 @@ describe('/components/button', () => {
         })
 
         await trackClicks(page)
+      })
 
+      it('does not prevent multiple submissions', async () => {
         await page.click('button')
         await page.click('button')
 
@@ -249,12 +220,8 @@ describe('/components/button', () => {
     })
 
     describe('using `initAll`', () => {
-      let page
-
-      // To ensure
       beforeEach(async () => {
-        page = await renderAndInitialise('button', {
-          baseUrl,
+        await renderAndInitialise(page, 'button', {
           nunjucksParams: examples.default,
           initialiser () {
             window.GOVUKFrontend.initAll({

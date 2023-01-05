@@ -1,12 +1,12 @@
-/**
- * @jest-environment jsdom
- */
-
 const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
 
-const examples = getExamples('hint')
-
 describe('Hint', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('hint')
+  })
+
   describe('by default', () => {
     it('passes accessibility tests', async () => {
       const $ = render('hint', examples.default)
@@ -47,7 +47,7 @@ describe('Hint', () => {
       const $ = render('hint', examples['with html'])
 
       const content = $('.govuk-hint').html().trim()
-      expect(content).toEqual('It&apos;s on your National Insurance card, benefit letter, payslip or <a class="govuk-link" href="#">P60</a>.\nFor example, &apos;QQ 12 34 56 C&apos;.')
+      expect(content).toEqual('It\'s on your National Insurance card, benefit letter, payslip or <a class="govuk-link" href="#">P60</a>.\nFor example, \'QQ 12 34 56 C\'.')
     })
 
     it('renders with attributes', () => {

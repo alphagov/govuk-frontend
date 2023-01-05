@@ -70,7 +70,7 @@ params:
 - name: contentLicence
   type: object
   required: false
-  description: Object containing options for the content licence.
+  description: The content licence information. Defaults to Open Government Licence (OGL) v3 licence.
   params:
   - name: text
     type: string
@@ -83,7 +83,7 @@ params:
 - name: copyright
   type: object
   required: false
-  description: Object containing options for the copyright notice.
+  description: The copyright information, this defaults to Crown Copyright.
   params:
   - name: text
     type: string

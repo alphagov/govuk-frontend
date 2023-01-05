@@ -1,28 +1,27 @@
-/**
- * @jest-environment puppeteer
- */
+const jestPuppeteerConfig = require('../../../../jest-puppeteer.config')
+const { getExamples } = require('../../../../lib/jest-helpers')
+const { goToComponent, renderAndInitialise } = require('../../../../lib/puppeteer-helpers')
 
-const { getExamples } = require('../../../../lib/jest-helpers.js')
-const { renderAndInitialise } = require('../../../../lib/puppeteer-helpers')
-
-const configPaths = require('../../../../config/paths.js')
-const PORT = configPaths.ports.test
-
-const baseUrl = `http://localhost:${PORT}`
+// Detect when browser has been launched headless
+const { headless = true } = jestPuppeteerConfig.launch
 
 // The longest possible time from a keyboard user ending input and the screen
 // reader counter being updated: handleFocus interval time + last input wait time
-const debouncedWaitTime = 1500
+// but raised to the nearest whole second when browser is not headless as timers
+// in background pages will be aligned, clamped or throttled
+const debouncedWaitTime = headless ? 1500 : 2000
 
-const goToExample = (exampleName = false) => {
-  const url = exampleName
-    ? `${baseUrl}/components/character-count/${exampleName}/preview`
-    : `${baseUrl}/components/character-count/preview`
-
-  return page.goto(url, { waitUntil: 'load' })
-}
+// When headless, keydown-to-keyup time appears to affect event throttling,
+// affecting `lastInputTimestamp` and screen reader status message updates
+const keyupWaitTime = headless ? 0 : 50
 
 describe('Character count', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('character-count')
+  })
+
   describe('when JavaScript is unavailable or fails', () => {
     beforeAll(async () => {
       await page.setJavaScriptEnabled(false)
@@ -32,8 +31,8 @@ describe('Character count', () => {
       await page.setJavaScriptEnabled(true)
     })
 
-    it('shows the fallback message', async () => {
-      await goToExample()
+    it('shows the textarea description', async () => {
+      await goToComponent(page, 'character-count')
       const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
 
       expect(message).toEqual('You can enter up to 10 characters')
@@ -43,7 +42,7 @@ describe('Character count', () => {
   describe('when JavaScript is available', () => {
     describe('on page load', () => {
       beforeAll(async () => {
-        await goToExample()
+        await goToComponent(page, 'character-count')
       })
 
       it('injects the visual counter', async () => {
@@ -56,7 +55,7 @@ describe('Character count', () => {
         expect(srMessage).toBeTruthy()
       })
 
-      it('hides the fallback hint', async () => {
+      it('hides the textarea description', async () => {
         const messageClasses = await page.$eval('.govuk-character-count__message', el => el.className)
         expect(messageClasses).toContain('govuk-visually-hidden')
       })
@@ -64,7 +63,7 @@ describe('Character count', () => {
 
     describe('when counting characters', () => {
       it('shows the dynamic message', async () => {
-        await goToExample()
+        await goToComponent(page, 'character-count')
 
         const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
         expect(message).toEqual('You have 10 characters remaining')
@@ -74,7 +73,9 @@ describe('Character count', () => {
       })
 
       it('shows the characters remaining if the field is pre-filled', async () => {
-        await goToExample('with-default-value')
+        await goToComponent(page, 'character-count', {
+          exampleName: 'with-default-value'
+        })
 
         const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
         expect(message).toEqual('You have 67 characters remaining')
@@ -84,8 +85,11 @@ describe('Character count', () => {
       })
 
       it('counts down to the character limit', async () => {
-        await goToExample()
-        await page.type('.govuk-js-character-count', 'A')
+        await goToComponent(page, 'character-count')
+
+        await page.type('.govuk-js-character-count', 'A', {
+          delay: keyupWaitTime
+        })
 
         const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
         expect(message).toEqual('You have 9 characters remaining')
@@ -98,8 +102,11 @@ describe('Character count', () => {
       })
 
       it('uses the singular when there is only one character remaining', async () => {
-        await goToExample()
-        await page.type('.govuk-js-character-count', 'A'.repeat(9))
+        await goToComponent(page, 'character-count')
+
+        await page.type('.govuk-js-character-count', 'A'.repeat(9), {
+          delay: keyupWaitTime
+        })
 
         const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
         expect(message).toEqual('You have 1 character remaining')
@@ -113,8 +120,11 @@ describe('Character count', () => {
 
       describe('when the character limit is exceeded', () => {
         beforeAll(async () => {
-          await goToExample()
-          await page.type('.govuk-js-character-count', 'A'.repeat(11))
+          await goToComponent(page, 'character-count')
+
+          await page.type('.govuk-js-character-count', 'A'.repeat(11), {
+            delay: keyupWaitTime
+          })
         })
 
         it('shows the number of characters over the limit', async () => {
@@ -129,7 +139,9 @@ describe('Character count', () => {
         })
 
         it('uses the plural when the limit is exceeded by 2 or more', async () => {
-          await page.type('.govuk-js-character-count', 'A')
+          await page.type('.govuk-js-character-count', 'A', {
+            delay: keyupWaitTime
+          })
 
           const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
           expect(message).toEqual('You have 2 characters too many')
@@ -154,7 +166,9 @@ describe('Character count', () => {
 
       describe('when the character limit is exceeded on page load', () => {
         beforeAll(async () => {
-          await goToExample('with-default-value-exceeding-limit')
+          await goToComponent(page, 'character-count', {
+            exampleName: 'with-default-value-exceeding-limit'
+          })
         })
 
         it('shows the number of characters over the limit', async () => {
@@ -178,7 +192,9 @@ describe('Character count', () => {
 
       describe('when a threshold is set', () => {
         beforeAll(async () => {
-          await goToExample('with-threshold')
+          await goToComponent(page, 'character-count', {
+            exampleName: 'with-threshold'
+          })
         })
 
         it('does not show the limit until the threshold is reached', async () => {
@@ -194,7 +210,9 @@ describe('Character count', () => {
         })
 
         it('becomes visible once the threshold is reached', async () => {
-          await page.type('.govuk-js-character-count', 'A'.repeat(8))
+          await page.type('.govuk-js-character-count', 'A'.repeat(8), {
+            delay: keyupWaitTime
+          })
 
           const visibility = await page.$eval('.govuk-character-count__status', el => window.getComputedStyle(el).visibility)
           expect(visibility).toEqual('visible')
@@ -210,9 +228,13 @@ describe('Character count', () => {
 
       // Errors logged to the console will cause these tests to fail
       describe('when the textarea ID starts with a number', () => {
-        it('still works correctly', async () => {
-          await goToExample('with-id-starting-with-number')
+        beforeAll(async () => {
+          await goToComponent(page, 'character-count', {
+            exampleName: 'with-id-starting-with-number'
+          })
+        })
 
+        it('still works correctly', async () => {
           const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
           expect(message).toEqual('You have 10 characters remaining')
 
@@ -222,9 +244,13 @@ describe('Character count', () => {
       })
 
       describe('when the textarea ID contains CSS syntax characters', () => {
-        it('still works correctly', async () => {
-          await goToExample('with-id-with-special-characters')
+        beforeAll(async () => {
+          await goToComponent(page, 'character-count', {
+            exampleName: 'with-id-with-special-characters'
+          })
+        })
 
+        it('still works correctly', async () => {
           const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
           expect(message).toEqual('You have 10 characters remaining')
 
@@ -235,7 +261,9 @@ describe('Character count', () => {
 
       describe('when a maxlength attribute is specified on the textarea', () => {
         beforeAll(async () => {
-          await goToExample('with-textarea-maxlength-attribute')
+          await goToComponent(page, 'character-count', {
+            exampleName: 'with-textarea-maxlength-attribute'
+          })
         })
 
         it('should not have a maxlength attribute once the JS has run', async () => {
@@ -247,7 +275,9 @@ describe('Character count', () => {
 
     describe('when counting words', () => {
       it('shows the dynamic message', async () => {
-        await goToExample('with-word-count')
+        await goToComponent(page, 'character-count', {
+          exampleName: 'with-word-count'
+        })
 
         const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
         expect(message).toEqual('You have 10 words remaining')
@@ -257,8 +287,13 @@ describe('Character count', () => {
       })
 
       it('counts down to the word limit', async () => {
-        await goToExample('with-word-count')
-        await page.type('.govuk-js-character-count', 'Hello world')
+        await goToComponent(page, 'character-count', {
+          exampleName: 'with-word-count'
+        })
+
+        await page.type('.govuk-js-character-count', 'Hello world', {
+          delay: keyupWaitTime
+        })
 
         const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
         expect(message).toEqual('You have 8 words remaining')
@@ -271,8 +306,13 @@ describe('Character count', () => {
       })
 
       it('uses the singular when there is only one word remaining', async () => {
-        await goToExample('with-word-count')
-        await page.type('.govuk-js-character-count', 'Hello '.repeat(9))
+        await goToComponent(page, 'character-count', {
+          exampleName: 'with-word-count'
+        })
+
+        await page.type('.govuk-js-character-count', 'Hello '.repeat(9), {
+          delay: keyupWaitTime
+        })
 
         const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
         expect(message).toEqual('You have 1 word remaining')
@@ -286,8 +326,13 @@ describe('Character count', () => {
 
       describe('when the word limit is exceeded', () => {
         beforeAll(async () => {
-          await goToExample('with-word-count')
-          await page.type('.govuk-js-character-count', 'Hello '.repeat(11))
+          await goToComponent(page, 'character-count', {
+            exampleName: 'with-word-count'
+          })
+
+          await page.type('.govuk-js-character-count', 'Hello '.repeat(11), {
+            delay: keyupWaitTime
+          })
         })
 
         it('shows the number of words over the limit', async () => {
@@ -302,7 +347,9 @@ describe('Character count', () => {
         })
 
         it('uses the plural when the limit is exceeded by 2 or more', async () => {
-          await page.type('.govuk-js-character-count', 'World')
+          await page.type('.govuk-js-character-count', 'World', {
+            delay: keyupWaitTime
+          })
 
           const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
           expect(message).toEqual('You have 2 words too many')
@@ -327,22 +374,18 @@ describe('Character count', () => {
     })
 
     describe('JavaScript configuration', () => {
-      let examples
-      beforeAll(() => {
-        examples = getExamples('character-count')
-      })
-
       describe('at instantiation', () => {
         it('configures the number of characters', async () => {
-          await renderAndInitialise('character-count', {
-            baseUrl,
+          await renderAndInitialise(page, 'character-count', {
             nunjucksParams: examples['to configure in JavaScript'],
             javascriptConfig: {
               maxlength: 10
             }
           })
 
-          await page.type('.govuk-js-character-count', 'A'.repeat(11))
+          await page.type('.govuk-js-character-count', 'A'.repeat(11), {
+            delay: keyupWaitTime
+          })
 
           const message = await page.$eval(
             '.govuk-character-count__status',
@@ -350,16 +393,18 @@ describe('Character count', () => {
           )
           expect(message).toEqual('You have 1 character too many')
         })
+
         it('configures the number of words', async () => {
-          await renderAndInitialise('character-count', {
-            baseUrl,
+          await renderAndInitialise(page, 'character-count', {
             nunjucksParams: examples['to configure in JavaScript'],
             javascriptConfig: {
               maxwords: 10
             }
           })
 
-          await page.type('.govuk-js-character-count', 'Hello '.repeat(11))
+          await page.type('.govuk-js-character-count', 'Hello '.repeat(11), {
+            delay: keyupWaitTime
+          })
 
           const message = await page.$eval(
             '.govuk-character-count__status',
@@ -367,9 +412,9 @@ describe('Character count', () => {
           )
           expect(message).toEqual('You have 1 word too many')
         })
+
         it('configures the threshold', async () => {
-          await renderAndInitialise('character-count', {
-            baseUrl,
+          await renderAndInitialise(page, 'character-count', {
             nunjucksParams: examples['to configure in JavaScript'],
             javascriptConfig: {
               maxlength: 10,
@@ -377,17 +422,44 @@ describe('Character count', () => {
             }
           })
 
-          await page.type('.govuk-js-character-count', 'A'.repeat(8))
+          await page.type('.govuk-js-character-count', 'A'.repeat(8), {
+            delay: keyupWaitTime
+          })
 
           const visibility = await page.$eval('.govuk-character-count__status', el => window.getComputedStyle(el).visibility)
           expect(visibility).toEqual('visible')
+        })
+
+        it('configures the description of the textarea', async () => {
+          // This tests that a description can be provided through JavaScript attributes
+          // and interpolated with the limit provided to the character count in JS.
+
+          await renderAndInitialise(page, 'character-count', {
+            nunjucksParams:
+              examples[
+                'when neither maxlength/maxwords nor textarea description are set'
+              ],
+            javascriptConfig: {
+              maxlength: 10,
+              i18n: {
+                textareaDescription: {
+                  other: 'No more than %{count} characters'
+                }
+              }
+            }
+          })
+
+          const message = await page.$eval(
+            '.govuk-character-count__message',
+            (el) => el.innerHTML.trim()
+          )
+          expect(message).toEqual('No more than 10 characters')
         })
       })
 
       describe('via `initAll`', () => {
         it('configures the number of characters', async () => {
-          await renderAndInitialise('character-count', {
-            baseUrl,
+          await renderAndInitialise(page, 'character-count', {
             nunjucksParams: examples['to configure in JavaScript'],
             initialiser () {
               window.GOVUKFrontend.initAll({
@@ -398,7 +470,9 @@ describe('Character count', () => {
             }
           })
 
-          await page.type('.govuk-js-character-count', 'A'.repeat(11))
+          await page.type('.govuk-js-character-count', 'A'.repeat(11), {
+            delay: keyupWaitTime
+          })
 
           const message = await page.$eval(
             '.govuk-character-count__status',
@@ -408,8 +482,7 @@ describe('Character count', () => {
         })
 
         it('configures the number of words', async () => {
-          await renderAndInitialise('character-count', {
-            baseUrl,
+          await renderAndInitialise(page, 'character-count', {
             nunjucksParams: examples['to configure in JavaScript'],
             initialiser () {
               window.GOVUKFrontend.initAll({
@@ -420,7 +493,9 @@ describe('Character count', () => {
             }
           })
 
-          await page.type('.govuk-js-character-count', 'Hello '.repeat(11))
+          await page.type('.govuk-js-character-count', 'Hello '.repeat(11), {
+            delay: keyupWaitTime
+          })
 
           const message = await page.$eval(
             '.govuk-character-count__status',
@@ -428,9 +503,9 @@ describe('Character count', () => {
           )
           expect(message).toEqual('You have 1 word too many')
         })
+
         it('configures the threshold', async () => {
-          await renderAndInitialise('character-count', {
-            baseUrl,
+          await renderAndInitialise(page, 'character-count', {
             nunjucksParams: examples['to configure in JavaScript'],
             initialiser () {
               window.GOVUKFrontend.initAll({
@@ -442,7 +517,9 @@ describe('Character count', () => {
             }
           })
 
-          await page.type('.govuk-js-character-count', 'A'.repeat(8))
+          await page.type('.govuk-js-character-count', 'A'.repeat(8), {
+            delay: keyupWaitTime
+          })
 
           const visibility = await page.$eval(
             '.govuk-character-count__status',
@@ -454,15 +531,16 @@ describe('Character count', () => {
 
       describe('when data-attributes are present', () => {
         it('uses `maxlength` data attribute instead of the JS one', async () => {
-          await renderAndInitialise('character-count', {
-            baseUrl,
+          await renderAndInitialise(page, 'character-count', {
             nunjucksParams: examples.default,
             javascriptConfig: {
               maxlength: 12 // JS configuration that would tell 1 character remaining
             }
           })
 
-          await page.type('.govuk-js-character-count', 'A'.repeat(11))
+          await page.type('.govuk-js-character-count', 'A'.repeat(11), {
+            delay: keyupWaitTime
+          })
 
           const message = await page.$eval(
             '.govuk-character-count__status',
@@ -472,15 +550,16 @@ describe('Character count', () => {
         })
 
         it("uses `maxlength` data attribute instead of JS's `maxwords`", async () => {
-          await renderAndInitialise('character-count', {
-            baseUrl,
+          await renderAndInitialise(page, 'character-count', {
             nunjucksParams: examples.default, // Default example counts characters
             javascriptConfig: {
               maxwords: 12
             }
           })
 
-          await page.type('.govuk-js-character-count', 'A'.repeat(11))
+          await page.type('.govuk-js-character-count', 'A'.repeat(11), {
+            delay: keyupWaitTime
+          })
 
           const message = await page.$eval(
             '.govuk-character-count__status',
@@ -490,15 +569,16 @@ describe('Character count', () => {
         })
 
         it('uses `maxwords` data attribute instead of the JS one', async () => {
-          await renderAndInitialise('character-count', {
-            baseUrl,
+          await renderAndInitialise(page, 'character-count', {
             nunjucksParams: examples['with word count'],
             javascriptConfig: {
               maxwords: 12 // JS configuration that would tell 1 word remaining
             }
           })
 
-          await page.type('.govuk-js-character-count', 'Hello '.repeat(11))
+          await page.type('.govuk-js-character-count', 'Hello '.repeat(11), {
+            delay: keyupWaitTime
+          })
 
           const message = await page.$eval(
             '.govuk-character-count__status',
@@ -508,15 +588,16 @@ describe('Character count', () => {
         })
 
         it("uses `maxwords` data attribute instead of the JS's `maxlength`", async () => {
-          await renderAndInitialise('character-count', {
-            baseUrl,
+          await renderAndInitialise(page, 'character-count', {
             nunjucksParams: examples['with word count'],
             javascriptConfig: {
               maxlength: 10
             }
           })
 
-          await page.type('.govuk-js-character-count', 'Hello '.repeat(11))
+          await page.type('.govuk-js-character-count', 'Hello '.repeat(11), {
+            delay: keyupWaitTime
+          })
 
           const message = await page.$eval(
             '.govuk-character-count__status',
@@ -524,16 +605,90 @@ describe('Character count', () => {
           )
           expect(message).toEqual('You have 1 word too many')
         })
+
+        it('interpolates the textarea description in data attributes with the maximum set in JavaScript', async () => {
+          // This tests that any textarea description provided through data-attributes
+          // (or the Nunjucks macro), waiting for a maximum to be provided in
+          // JavaScript config, will lead to the message being injected in the
+          // element holding the textarea's accessible description
+          // (and interpolated to replace `%{count}` with the maximum)
+
+          await renderAndInitialise(page, 'character-count', {
+            nunjucksParams:
+              examples['when neither maxlength nor maxwords are set'],
+            javascriptConfig: {
+              maxlength: 10
+            }
+          })
+
+          const message = await page.$eval(
+            '.govuk-character-count__message',
+            (el) => el.innerHTML.trim()
+          )
+          expect(message).toEqual('No more than 10 characters')
+        })
+      })
+    })
+
+    describe('Cross Side Scripting prevention', () => {
+      it('injects the localised strings as text not HTML', async () => {
+        await renderAndInitialise(page, 'character-count', {
+          nunjucksParams: examples['to configure in JavaScript'],
+          javascriptConfig: {
+            maxlength: 10,
+            i18n: {
+              charactersUnderLimit: {
+                other: '<strong>%{count}</strong> characters left'
+              }
+            }
+          }
+        })
+
+        const message = await page.$eval(
+          '.govuk-character-count__status',
+          (el) => el.innerHTML.trim()
+        )
+        expect(message).toEqual(
+          '&lt;strong&gt;10&lt;/strong&gt; characters left'
+        )
       })
     })
   })
 
-  describe('custom options', () => {
-    it('allows customisation of the fallback message', async () => {
-      await goToExample('with-custom-fallback-text')
-      const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+  describe('in mismatched locale', () => {
+    it('does not error', async () => {
+      // Create a listener for the page error event that we can assert on later
+      const pageErrorListener = jest.fn()
+      page.on('pageerror', pageErrorListener)
 
-      expect(message).toEqual('Gallwch ddefnyddio hyd at 10 nod')
+      await renderAndInitialise(page, 'character-count', {
+        nunjucksParams: examples.default,
+        javascriptConfig: {
+          // Override maxlength to 10
+          maxlength: 10
+        },
+        initialiser: function ({ config }) {
+          const $component = document.querySelector('[data-module]')
+
+          // Set locale to Welsh, which expects translations for 'one', 'two',
+          // 'few' 'many' and 'other' forms – with the default English strings
+          // provided we only have translations for 'one' and 'other'.
+          //
+          // We want to make sure we handle this gracefully in case users have
+          // an existing character count inside an incorrect locale.
+          $component.setAttribute('lang', 'cy')
+          new window.GOVUKFrontend.CharacterCount($component, config).init()
+        }
+      })
+
+      // Type 10 characters so we go 'through' all the different forms as we
+      // approach 0 characters remaining.
+      await page.type('.govuk-js-character-count', 'A'.repeat(10), {
+        delay: keyupWaitTime
+      })
+
+      // Expect the page error event not to have been fired
+      expect(pageErrorListener).not.toHaveBeenCalled()
     })
   })
 })

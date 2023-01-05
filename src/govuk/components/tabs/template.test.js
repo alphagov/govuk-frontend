@@ -1,12 +1,12 @@
-/**
- * @jest-environment jsdom
- */
-
 const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
 
-const examples = getExamples('tabs')
-
 describe('Tabs', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('tabs')
+  })
+
   describe('default example', () => {
     it('passes accessibility tests', async () => {
       const $ = render('tabs', examples.default)

@@ -1,14 +1,14 @@
-/**
- * @jest-environment jsdom
- */
-
 const { axe, render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
-
-const examples = getExamples('character-count')
 
 const WORD_BOUNDARY = '\\b'
 
 describe('Character count', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('character-count')
+  })
+
   describe('default example', () => {
     it('passes accessibility tests', async () => {
       const $ = render('character-count', examples.default)
@@ -217,11 +217,75 @@ describe('Character count', () => {
   })
 
   describe('with threshold', () => {
-    it('hides the count to start with', async () => {
+    it('hides the count to start with', () => {
       const $ = render('character-count', examples['with threshold'])
 
       const $component = $('.govuk-character-count')
       expect($component.attr('data-threshold')).toEqual('75')
+    })
+  })
+
+  describe('with custom textarea description', () => {
+    it('allows customisation of the textarea description', () => {
+      const $ = render('character-count', examples['with custom textarea description'])
+
+      const message = $('.govuk-character-count__message').text().trim()
+      expect(message).toEqual('Gallwch ddefnyddio hyd at 10 nod')
+    })
+  })
+
+  describe('translations', () => {
+    it('renders with translation data attributes', () => {
+      const $ = render('character-count', examples['with translations'])
+
+      const $component = $('[data-module]')
+
+      Object.entries({
+        'data-i18n.characters-under-limit.one': 'One character to go',
+        'data-i18n.characters-under-limit.other': '%{count} characters to go',
+        'data-i18n.characters-at-limit': 'Zero characters left',
+        'data-i18n.characters-over-limit.one': 'One character too many',
+        'data-i18n.characters-over-limit.other': '%{count} characters too many',
+        'data-i18n.words-under-limit.one': 'One word to go',
+        'data-i18n.words-under-limit.other': '%{count} words to go',
+        'data-i18n.words-at-limit': 'Zero words left',
+        'data-i18n.words-over-limit.one': 'One word too many',
+        'data-i18n.words-over-limit.other': '%{count} words too many'
+      }).forEach(([attributeName, expectedValue]) => {
+        expect($component.attr(attributeName)).toEqual(expectedValue)
+      })
+    })
+  })
+
+  describe('when neither maxlength nor maxwords are set', () => {
+    describe('with textarea description set', () => {
+      // If the template has no maxwords or maxlength to go for
+      // it needs to pass down any textarea description to the JavaScript
+      // so it can inject the limit it may have received at instantiation
+      it('renders the textarea description as a data attribute', () => {
+        const $ = render('character-count', examples['when neither maxlength nor maxwords are set'])
+
+        // Fallback hint is passed as data attribute
+        const $component = $('[data-module]')
+        expect($component.attr('data-i18n.textarea-description.other')).toEqual('No more than %{count} characters')
+
+        // No content is set as the accessible description cannot be interpolated on the backend
+        // It'll be up to the JavaScript to fill it in
+        const $countMessage = $('.govuk-character-count__message')
+        expect($countMessage.html()).toMatch(/^\s*$/) // The macro outputs linebreaks around the hint itself
+      })
+    })
+
+    describe('without textarea description', () => {
+      it('does not render a textarea description data attribute', () => {
+        const $ = render(
+          'character-count',
+          examples['when neither maxlength/maxwords nor textarea description are set']
+        )
+
+        const $component = $('[data-module]')
+        expect($component.attr('data-i18n.textarea-description.other')).toBeFalsy()
+      })
     })
   })
 })

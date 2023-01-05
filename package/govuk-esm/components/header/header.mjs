@@ -2,6 +2,12 @@ import '../../vendor/polyfills/Event.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
+/**
+ * Header component
+ *
+ * @class
+ * @param {HTMLElement} $module - HTML element to use for header
+ */
 function Header ($module) {
   this.$module = $module
   this.$menuButton = $module && $module.querySelector('.govuk-js-header-toggle')

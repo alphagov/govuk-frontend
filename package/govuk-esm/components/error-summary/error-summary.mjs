@@ -2,8 +2,42 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Event.mjs' // addEventListener
 import '../../vendor/polyfills/Element/prototype/closest.mjs'
 
-function ErrorSummary ($module) {
+import { mergeConfigs } from '../../common/index.mjs'
+import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+
+/**
+ * JavaScript enhancements for the ErrorSummary
+ *
+ * Takes focus on initialisation for accessible announcement, unless disabled in configuration.
+ *
+ * @class
+ * @param {HTMLElement} $module - The element this component controls
+ * @param {ErrorSummaryConfig} config - Error summary config
+ */
+function ErrorSummary ($module, config) {
+  // Some consuming code may not be passing a module,
+  // for example if they initialise the component
+  // on their own by directly passing the result
+  // of `document.querySelector`.
+  // To avoid breaking further JavaScript initialisation
+  // we need to safeguard against this so things keep
+  // working the same now we read the elements data attributes
+  if (!$module) {
+    // Little safety in case code gets ported as-is
+    // into and ES6 class constructor, where the return value matters
+    return this
+  }
+
   this.$module = $module
+
+  var defaultConfig = {
+    disableAutoFocus: false
+  }
+  this.config = mergeConfigs(
+    defaultConfig,
+    config || {},
+    normaliseDataset($module.dataset)
+  )
 }
 
 ErrorSummary.prototype.init = function () {
@@ -22,7 +56,7 @@ ErrorSummary.prototype.init = function () {
 ErrorSummary.prototype.setFocus = function () {
   var $module = this.$module
 
-  if ($module.getAttribute('data-disable-auto-focus') === 'true') {
+  if (this.config.disableAutoFocus) {
     return
   }
 
@@ -38,10 +72,10 @@ ErrorSummary.prototype.setFocus = function () {
 }
 
 /**
-* Click event handler
-*
-* @param {MouseEvent} event - Click event
-*/
+ * Click event handler
+ *
+ * @param {MouseEvent} event - Click event
+ */
 ErrorSummary.prototype.handleClick = function (event) {
   var target = event.target
   if (this.focusTarget(target)) {
@@ -166,3 +200,11 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
 }
 
 export default ErrorSummary
+
+/**
+ * Error summary config
+ *
+ * @typedef {object} ErrorSummaryConfig
+ * @property {boolean} [disableAutoFocus = false] -
+ *  If set to `true` the error summary will not be focussed when the page loads.
+ */

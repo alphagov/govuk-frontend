@@ -46,16 +46,25 @@
       padding-top: 0;
     }
 
-    // Hide the body of collapsed sections
     .govuk-accordion__section-content {
-      display: none;
-      @include govuk-responsive-padding(8, "bottom");
       @include govuk-responsive-padding(3, "top");
+      @include govuk-responsive-padding(8, "bottom");
     }
 
-    // Show the body of expanded sections
-    .govuk-accordion__section--expanded .govuk-accordion__section-content {
-      display: block;
+    // Manually apply display: none to browsers that don't have a user agent
+    // style for it, but override it with content-visibility if the browser
+    // supports that instead.
+    .govuk-accordion__section-content[hidden] {
+      display: none;
+
+      @supports (content-visibility: hidden) {
+        content-visibility: hidden;
+        display: inherit;
+      }
+
+      // Hide the padding of collapsed sections
+      padding-top: 0;
+      padding-bottom: 0;
     }
 
     .govuk-accordion__show-all {
@@ -74,7 +83,7 @@
       cursor: pointer;
       -webkit-appearance: none;
 
-      @include govuk-media-query ($from: desktop) {
+      @include govuk-media-query ($from: tablet) {
         margin-bottom: 14px;
       }
 
@@ -266,8 +275,12 @@
     // relates to the content below. Adjust padding to maintain the height of the element.
     // See https://github.com/alphagov/govuk-frontend/pull/2257#issuecomment-951920798
     .govuk-accordion__section--expanded .govuk-accordion__section-button {
-      padding-bottom: govuk-spacing(4);
+      padding-bottom: govuk-spacing(3);
       border-bottom: 0;
+
+      @include govuk-media-query ($from: tablet) {
+        padding-bottom: govuk-spacing(4);
+      }
     }
 
     // As Chevron icon is vertically aligned it overlaps with the focus state bottom border

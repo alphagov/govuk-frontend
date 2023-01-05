@@ -8,6 +8,11 @@ $govuk-compatibility-govukfrontendtoolkit: true;
 $govuk-compatibility-govuktemplate: true;
 $govuk-compatibility-govukelements: true;
 
+// Suppress compatibility mode deprecation warnings locally
+$govuk-suppressed-warnings: (
+  "compatibility-mode"
+);
+
 // Set Elements assets path
 $path: "/vendor/govuk_frontend_toolkit/assets/";
 

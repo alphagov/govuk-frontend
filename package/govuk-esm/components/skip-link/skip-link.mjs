@@ -2,6 +2,12 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normalization
 
+/**
+ * Skip link component
+ *
+ * @class
+ * @param {HTMLElement} $module - HTML element to use for skip link
+ */
 function SkipLink ($module) {
   this.$module = $module
   this.$linkedElement = null
@@ -27,10 +33,10 @@ SkipLink.prototype.init = function () {
 }
 
 /**
-* Get linked element
-*
-* @returns {HTMLElement} $linkedElement - DOM element linked to from the skip link
-*/
+ * Get linked element
+ *
+ * @returns {HTMLElement} $linkedElement - DOM element linked to from the skip link
+ */
 SkipLink.prototype.getLinkedElement = function () {
   var linkedElementId = this.getFragmentFromUrl()
 

@@ -1,0 +1,45 @@
+name: Percy screenshots
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+concurrency:
+  group: screenshots-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  screenshots:
+    name: Send screenshots
+    runs-on: ubuntu-latest
+
+    env:
+      PERCY_PARALLEL_NONCE: ${{ github.run_id }}-${{ github.run_attempt }}
+      PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+      PORT: 8888
+
+    # Skip when secrets are unavailable on forks
+    if: ${{ !github.event.pull_request.head.repo.fork }}
+
+    steps:
+      - name: Check secrets
+        if: ${{ !env.PERCY_TOKEN }}
+        run: echo "::warning title=GitHub Actions secrets::Workflow requires 'PERCY_TOKEN' secret"
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        uses: ./.github/workflows/actions/install-node
+
+      - name: Build
+        uses: ./.github/workflows/actions/build
+
+      - name: Start review application
+        run: npm run serve &
+
+      - name: Send screenshots to Percy
+        run: npx percy exec --parallel -- npm run test:screenshots
+
+      - name: Finalise Percy build
+        run: npx percy build:finalize

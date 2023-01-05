@@ -1,10 +1,11 @@
-import serverStart from '../server/start.mjs'
 import { setup } from 'jest-environment-puppeteer'
+
+import serverStart from '../server/start.mjs'
 
 /**
  * Open browser
  *
- * @param {import('jest').Config} jestConfig
+ * @param {import('jest').Config} jestConfig - Jest config
  */
 export default async function browserOpen (jestConfig) {
   const { maxWorkers } = jestConfig

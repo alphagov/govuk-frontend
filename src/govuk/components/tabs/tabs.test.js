@@ -1,19 +1,14 @@
-/**
- * @jest-environment puppeteer
- */
-
 const { devices } = require('puppeteer')
 const iPhone = devices['iPhone 6']
-const configPaths = require('../../../../config/paths.js')
-const PORT = configPaths.ports.test
 
-const baseUrl = 'http://localhost:' + PORT
+const { goTo, goToComponent } = require('../../../../lib/puppeteer-helpers')
 
 describe('/components/tabs', () => {
   describe('/components/tabs/preview', () => {
     describe('when JavaScript is unavailable or fails', () => {
       beforeAll(async () => {
         await page.setJavaScriptEnabled(false)
+        await goToComponent(page, 'tabs')
       })
 
       afterAll(async () => {
@@ -21,16 +16,17 @@ describe('/components/tabs', () => {
       })
 
       it('falls back to making all tab containers visible', async () => {
-        await page.goto(baseUrl + '/components/tabs/preview', { waitUntil: 'load' })
         const isContentVisible = await page.waitForSelector('.govuk-tabs__panel', { visible: true, timeout: 1000 })
         expect(isContentVisible).toBeTruthy()
       })
     })
 
     describe('when JavaScript is available', () => {
-      it('should indicate the open state of the first tab', async () => {
-        await page.goto(baseUrl + '/components/tabs/preview', { waitUntil: 'load' })
+      beforeAll(async () => {
+        await goToComponent(page, 'tabs')
+      })
 
+      it('should indicate the open state of the first tab', async () => {
         const firstTabAriaSelected = await page.evaluate(() => document.body.querySelector('.govuk-tabs__list-item:first-child .govuk-tabs__tab').getAttribute('aria-selected'))
         expect(firstTabAriaSelected).toEqual('true')
 
@@ -39,24 +35,22 @@ describe('/components/tabs', () => {
       })
 
       it('should display the first tab panel', async () => {
-        await page.goto(baseUrl + '/components/tabs/preview', { waitUntil: 'load' })
-
         const tabPanelIsHidden = await page.evaluate(() => document.body.querySelector('.govuk-tabs > .govuk-tabs__panel').classList.contains('govuk-tabs__panel--hidden'))
         expect(tabPanelIsHidden).toBeFalsy()
       })
 
       it('should hide all the tab panels except for the first one', async () => {
-        await page.goto(baseUrl + '/components/tabs/preview', { waitUntil: 'load' })
-
         const tabPanelIsHidden = await page.evaluate(() => document.body.querySelector('.govuk-tabs > .govuk-tabs__panel ~ .govuk-tabs__panel').classList.contains('govuk-tabs__panel--hidden'))
         expect(tabPanelIsHidden).toBeTruthy()
       })
     })
 
     describe('when a tab is pressed', () => {
-      it('should indicate the open state of the pressed tab', async () => {
-        await page.goto(baseUrl + '/components/tabs/preview', { waitUntil: 'load' })
+      beforeEach(async () => {
+        await goToComponent(page, 'tabs')
+      })
 
+      it('should indicate the open state of the pressed tab', async () => {
         // Click the second tab
         await page.click('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab')
 
@@ -68,8 +62,6 @@ describe('/components/tabs', () => {
       })
 
       it('should display the tab panel associated with the selected tab', async () => {
-        await page.goto(baseUrl + '/components/tabs/preview', { waitUntil: 'load' })
-
         // Click the second tab
         await page.click('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab')
 
@@ -81,9 +73,11 @@ describe('/components/tabs', () => {
       })
 
       describe('when the tab contains a DOM element', () => {
-        it('should display the tab panel associated with the selected tab', async () => {
-          await page.goto(baseUrl + '/components/tabs/preview', { waitUntil: 'load' })
+        beforeAll(async () => {
+          await goToComponent(page, 'tabs')
+        })
 
+        it('should display the tab panel associated with the selected tab', async () => {
           await page.evaluate(() => {
             // Replace contents of second tab with a DOM element
             const secondTab = document.body.querySelector('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab')
@@ -103,9 +97,11 @@ describe('/components/tabs', () => {
     })
 
     describe('when first tab is focused and the right arrow key is pressed', () => {
-      it('should indicate the open state of the next tab', async () => {
-        await page.goto(baseUrl + '/components/tabs/preview', { waitUntil: 'load' })
+      beforeEach(async () => {
+        await goToComponent(page, 'tabs')
+      })
 
+      it('should indicate the open state of the next tab', async () => {
         // Press right arrow when focused on the first tab
         await page.focus('.govuk-tabs__list-item:first-child .govuk-tabs__tab')
         await page.keyboard.press('ArrowRight')
@@ -118,8 +114,6 @@ describe('/components/tabs', () => {
       })
 
       it('should display the tab panel associated with the selected tab', async () => {
-        await page.goto(baseUrl + '/components/tabs/preview', { waitUntil: 'load' })
-
         // Press right arrow
         await page.focus('.govuk-tabs__list-item:first-child .govuk-tabs__tab')
         await page.keyboard.down('ArrowRight')
@@ -134,7 +128,7 @@ describe('/components/tabs', () => {
 
     describe('when a hash associated with a tab panel is passed in the URL', () => {
       it('should indicate the open state of the associated tab', async () => {
-        await page.goto(baseUrl + '/components/tabs/preview/#past-week', { waitUntil: 'load' })
+        await goTo(page, '/components/tabs/preview/#past-week')
 
         const currentTabAriaSelected = await page.evaluate(() => document.body.querySelector('.govuk-tabs__tab[href="#past-week"]').getAttribute('aria-selected'))
         expect(currentTabAriaSelected).toEqual('true')
@@ -145,8 +139,11 @@ describe('/components/tabs', () => {
         const currentTabPanelIsHidden = await page.evaluate(() => document.getElementById('past-week').classList.contains('govuk-tabs__panel--hidden'))
         expect(currentTabPanelIsHidden).toBeFalsy()
       })
+
       it('should only update based on hashes that are tabs', async () => {
-        await page.goto(baseUrl + '/components/tabs/tabs-with-anchor-in-panel/preview', { waitUntil: 'load' })
+        await goToComponent(page, 'tabs', {
+          exampleName: 'tabs-with-anchor-in-panel'
+        })
 
         await page.click('[href="#anchor"]')
 
@@ -158,7 +155,7 @@ describe('/components/tabs', () => {
     describe('when rendered on a small device', () => {
       it('falls back to making the all tab containers visible', async () => {
         await page.emulate(iPhone)
-        await page.goto(baseUrl + '/components/tabs/preview', { waitUntil: 'load' })
+        await goToComponent(page, 'tabs')
         const isContentVisible = await page.waitForSelector('.govuk-tabs__panel', { visible: true, timeout: 1000 })
         expect(isContentVisible).toBeTruthy()
       })

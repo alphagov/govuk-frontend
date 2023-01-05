@@ -18,37 +18,7 @@ However, this approach has risks. For example, it creates a messy commit history
 
 ## Before you publish GOV.UK Frontend
 
-1. At stand-up, person leading the release (usually a developer) to tell the GOV.UK Design System team we are close to releasing.
-
-2. Developers to raise new issues in the team GitHub repositories ([govuk-frontend](https://github.com/alphagov/govuk-frontend), [govuk-frontend-docs](https://github.com/alphagov/govuk-frontend-docs), [govuk-prototype-kit](https://github.com/alphagov/govuk-prototype-kit)) to:
-    - create announcement draft for the new release (example issue: [#2108](https://github.com/alphagov/govuk-frontend/issues/2108))
-    - create release notes for the new release (example issue: [#1986](https://github.com/alphagov/govuk-frontend/issues/1986))
-    - create release notes for the new release of GOV.UK Prototype Kit (example issue: [#958](https://github.com/alphagov/govuk-prototype-kit/issues/958))
-    - create an issue for the new release of GOV.UK Frontend (example issue: [#1987](https://github.com/alphagov/govuk-frontend/issues/1987))
-    - update the GOV.UK Design System to use the new release of GOV.UK Frontend (example issue: [#1347](https://github.com/alphagov/govuk-design-system/issues/1347))
-    - create an issue for the new release of GOV.UK Prototype Kit (example issue: [#917](https://github.com/alphagov/govuk-prototype-kit/issues/917))
-    - update the GOV.UK Prototype Kit to use the new release (example issue: [#923](https://github.com/alphagov/govuk-prototype-kit/issues/923))
-
-3. Person leading the release to add the issues to the [Design System sprint board](https://github.com/orgs/alphagov/projects/4).
-
-4. Content designer to:
-    - write announcements to post on Slack after we release:
-      - GOV.UK Frontend (for example, [draft comms for the cookie banner component](https://docs.google.com/document/d/1jVyMB7i94NOeflWaf3kE4Q4APMXGfluK3rOh74IHO08/edit))
-      - GOV.UK Prototype kit
-    - check who the release’s contributors are and if we have consent to include their name
-
-5. Technical writer to finalise draft of release notes and get 2i on them.
-
-6. Content designer or designer to update community backlog with rationale for any decisions we made.
-
-7. Person leading the release to coordinate the sign-off when they are ready to do the release. Once the team agrees, this confirms a code and content freeze. Use the [#design-system-team-channel](https://gds.slack.com/app_redirect?channel=design-system-team-channel) to confirm sign-off from:
-    - content designer, technical writer and designers for guidance, examples and community backlog decision rationale
-    - technical writer and developers for Nunjucks macros
-    - developers for changes to GOV.UK Frontend
-    - technical writer for release notes
-    - content designer, community manager or technical writer for announcements and engagement activities
-
-Note: Before you go on annual leave, tell the delivery manager who will be looking after your work. This will help us to complete sign-off.
+Read the docs for [what to do before publishing a release](/docs/releasing/before-publishing-a-release.md) to ensure you are prepared to publish.
 
 ## Publish a new version of GOV.UK Frontend from the support branch
 
@@ -107,7 +77,7 @@ Note: Before you go on annual leave, tell the delivery manager who will be looki
 
 1. Check out `support/<MAJOR VERSION NUMBER>.x` and pull the latest changes.
 
-2. Sign in to npm (`npm login`), using the npm/govuk-patterns-and-tools team [credentials](https://github.com/alphagov/design-system-team-credentials/tree/main/npm/govuk-patterns-and-tools).
+2. Sign in to npm (`npm login`), using the credentials for the govuk-patterns-and-tools npm user from Bitwarden.
 
 3. Run `npm run publish-release`, which will prompt you to check whether the npm tag looks as expected.
 
@@ -130,12 +100,7 @@ Note: Before you go on annual leave, tell the delivery manager who will be looki
 
 ## After you publish the new release
 
-1. Once you've updated the GOV.UK Design System, Prototype Kit and Frontend Docs, [post a short summary of the release in the cross-government and GDS #govuk-design-system Slack channels](https://github.com/alphagov/govuk-frontend/issues/2363).
-
-2. On the [Design System Kanban Board](https://github.com/orgs/alphagov/projects/4):
-
-    - move any relevant issues from the 'Ready to Release' column to 'Done'
-    - close any associated milestones
+Read the docs for [what to do after publishing a release](/docs/releasing/after-publishing-a-release.md).
 
 ## Update the `main` branch (optional)
 

@@ -4,13 +4,47 @@
 
 ### New features
 
-#### Change the Button component background and text colour
+#### Search within accordion content on supporting browsers
+
+We've updated the Accordion component to use the new [`hidden="until-found"` attribute value](https://developer.chrome.com/articles/hidden-until-found/).
+
+This allows the browser's native 'find in page' functionality to search within and automatically open sections of the accordion. Currently, this functionality is only supported by recent versions of Google Chrome, Microsoft Edge and Samsung Internet.
+
+This was added in [pull request #3053: Enhance the Accordion component with `hidden='until-found'`](https://github.com/alphagov/govuk-frontend/pull/3053). 
+
+#### Source maps for precompiled files
+
+You can now use [source maps](https://firefox-source-docs.mozilla.org/devtools-user/debugger/how_to/use_a_source_map/index.html) to help identify errors and console messages that come from GOV.UK Frontend precompiled files.
+
+This was added in [pull request #3023: Add source maps to compiled JavaScript and CSS](https://github.com/alphagov/govuk-frontend/pull/3023).
+
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#2998: Refactor back link and breadcrumb chevrons to use ems](https://github.com/alphagov/govuk-frontend/pull/2998)
+- [#3021: Printing style for current page link in header](https://github.com/alphagov/govuk-frontend/pull/3021) - thanks to [Malcolm Butler](https://github.com/MalcolmVonMoJ) for the contribution
+- [#3112: Remove unused `classList` polyfill from header component JavaScript](https://github.com/alphagov/govuk-frontend/pull/3112)
+
+## 4.4.1 (Fix release)
+
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#3087: Fix focus styles for links split over multiple lines in Chromium 108+ (Chrome 108+, Edge 108+, Opera 94+)](https://github.com/alphagov/govuk-frontend/pull/3087)
+
+## 4.4.0 (Feature release)
+
+### New features
+
+#### Change the Button component's background and text colour
 
 For non-GOV.UK branded websites, you can now change the Button component background and text colour.
 
-To change the Button component background colour set the `$govuk-button-background-colour` Sass variable.
+To change the Button component background colour, set the `$govuk-button-background-colour` Sass variable.
 
-To change the Button component text colour set the `$govuk-button-text-colour` Sass variable.
+To change the Button component text colour, set the `$govuk-button-text-colour` Sass variable.
 
 ```scss
 @import "node_modules/govuk-frontend/govuk/base";
@@ -26,41 +60,139 @@ This was added in [pull request #2752: Change the Button component background an
 
 When using the [header](https://design-system.service.gov.uk/components/header/) Nunjucks macro, you can now translate the text of the mobile navigation menu toggle button by using the `menuButtonText` parameter.
 
-You should avoid lengthy values for the `menuButtonText` parameter, as the text can overflow and cause visual issues if too long. 
+You should avoid lengthy values for the `menuButtonText` parameter. If the text is too long it can overflow and cause visual issues.
 
 This was added in [pull request #2720: Add parameter to localise mobile menu toggle button](https://github.com/alphagov/govuk-frontend/pull/2720).
 
-#### Localise the character count's fallback text
+#### Localise the character count's textarea description/fallback text
 
-When using the [character count](https://design-system.service.gov.uk/components/character-count/) Nunjucks macro, you can now translate the text of the fallback counter message by using the `fallbackHintText` parameter.
+When using the [character count](https://design-system.service.gov.uk/components/character-count/) Nunjucks macro, you can now translate the description of textarea by using the `textareaDescriptionText` option.
 
-This text is announced by screen readers when the character count input is focused. It's also displayed visually if JavaScript is not available.
+This text is announced by screen readers when the character count input is focused. It's also displayed visually as a fallback if JavaScript is not available.
 
-This was added in [pull request #2742: Add ability to customise character count fallback text](https://github.com/alphagov/govuk-frontend/pull/2742).
+This was added in [pull request #2742: Add ability to customise character count fallback text](https://github.com/alphagov/govuk-frontend/pull/2742), and the option renamed to `textareaDescriptionText` in [pull request #2915](https://github.com/alphagov/govuk-frontend/pull/2915).
+
+#### Localise the character count's counter message
+
+You can now translate the text shown by the [character count](https://design-system.service.gov.uk/components/character-count/) component to inform users of:
+
+- when they have reached the maximum number of characters or words
+- the number of characters or words over or under the allowed maximum
+
+The Nunjucks macro accepts new options so you can customise each message. You can:
+
+- Use `charactersAtLimitText` or `wordsAtLimitText` to provide the text that shows when users have reached the limit.
+- Use `charactersUnderLimitText` or `wordsUnderLimitText` to provide the text that shows when users are under the limit. The component will pluralise the message according to the configured locale and the number of characters or words remaining.
+- Use `charactersOverLimitText` or `wordsOverLimitText` to provide the text that shows when users are over the limit. The component will pluralise the message according to the configured locale and the number of characters or words remaining.
+
+You'll find guidance about [the plural forms in our documentation about localising GOV.UK Frontend](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/). The component will replace `%{count}` with the number of characters over or under the limit.
+
+If you're not using Nunjucks macros, you can use data-* attributes to provide these translations. Within the attribute value, any [quotation marks or other characters reserved by HTML](https://developer.mozilla.org/en-US/docs/Glossary/Entity#reserved_characters) needs to be converted into their HTML entity equivalents.
+
+You can:
+
+- use `data-i18n.characters-at-limit` or `data-i18n.words-at-limit` for when users are at the limit
+- configure the text that informs the end user they are under the character or word limit, by using `data-i18n.characters-under-limit.{other,many,few,two,one,zero}` or `data-i18n.words-under-limit.{other,many,few,two,one,zero}`, with one suffix for each plural form required by your locale
+- configure the text that informs the end user they are over the character or word limit, by using `data-i18n.characters-over-limit.{other,many,few,two,one,zero}` or `data-i18n.words-over-limit.{other,many,few,two,one,zero}`, with one suffix for each plural form required by your locale
+
+You can also provide these messages using a JavaScript configuration object when creating an instance of the component or initialising all components. See [our guidance on localising GOV.UK Frontend](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/) for how to do this.
+
+This was added in the following pull requests:
+
+- [#2895 Add macro options to configure CharacterCount translations](https://github.com/alphagov/govuk-frontend/pull/2895)
+- [#2887 Allow CharacterCount component to receive i18n config via JS](https://github.com/alphagov/govuk-frontend/pull/2887)
+
+#### Localise the character count's input description for assistive technologies
+
+When configuring the character count's limit in JavaScript, you can customise the description provided to assistive technologies when users focus the input (so it indicates the overall limit of characters or words).
+
+Depending on the [plural form required by your locale](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/#understanding-pluralisation-rules), you can pass the description in the HTML using the `data-i18n.textarea-description.{other,many,few,two,one,zero}` attribute on the element to provide the text to set as the description.
+
+You can also provide these messages using a JavaScript configuration object when creating an instance of the component or initialising all components. See [our guidance on localising GOV.UK Frontend](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/) for how to do this.
+
+This was added in [pull request #2915](https://github.com/alphagov/govuk-frontend/pull/2915).
 
 #### Localise the accordion's toggle buttons
 
-You can now translate the text of the [accordion](https://design-system.service.gov.uk/components/character-count/) component's show and hide toggle buttons.
+You can now translate the text of the [accordion](https://design-system.service.gov.uk/components/accordion/) component's show and hide toggle buttons.
 
-When using the Nunjucks macro, you can use the new `showSectionHtml` and `hideSectionHtml` parameters to customise the text of the 'show' and 'hide' toggles in each section. You can also use `showAllSectionsHtml` and `hideAllSectionsHtml` parameters to customise the text of the toggle at the top of the accordion.
+When using the Nunjucks macro, you can use the new `showSectionText` and `hideSectionText` parameters to customise the text of the 'show' and 'hide' toggles in each section.
 
-If you're not using the Nunjucks macro, you can customise these using data-* attributes. Any HTML appearing within the attributes must have quotation marks and brackets converted into their HTML entity equivalents. 
+You can also use `showAllSectionsText` and `hideAllSectionsText` parameters to customise the text of the toggle at the top of the accordion.
+
+If you're not using the Nunjucks macro, you can customise these using data-* attributes. Within the attribute value, any [quotation marks or other characters reserved by HTML](https://developer.mozilla.org/en-US/docs/Glossary/Entity#reserved_characters) needs to be converted into their HTML entity equivalents.
 
 - `data-i18n.show-section`
+- `data-i18n.show-section-aria-label`
 - `data-i18n.hide-section`
+- `data-i18n.hide-section-aria-label`
 - `data-i18n.show-all-sections`
 - `data-i18n.hide-all-sections`
 
-You can also change this text for all instances of the Accordion using a JavaScript configuration object. See [our guidance on localising GOV.UK Frontend](https://design-system.service.gov.uk/get-started/localisation/) for how to do this. 
+You can also change this text for all instances of the Accordion using a JavaScript configuration object. See [our guidance on localising GOV.UK Frontend](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/) for how to do this.
 
 This was added in pull requests:
 
 - [#2818: Add support for localisation via data-* attributes to Accordion component](https://github.com/alphagov/govuk-frontend/pull/2818)
 - [#2826: Add support for localisation via JavaScript configuration to Accordion component](https://github.com/alphagov/govuk-frontend/pull/2826)
 
+#### Suppress deprecation warnings
+
+You can now suppress warnings from deprecations within GOV.UK Frontend by updating the `$govuk-suppressed-warnings` map in Sass. Every deprecation warning will now include a warning "key" which you can use in the following code, placed at the root of your sass project:
+
+```scss
+$govuk-suppressed-warnings: (
+  deprecated-feature
+);
+```
+
+This was added in [#2911 Add warning suppression functionality](https://github.com/alphagov/govuk-frontend/pull/2911)
+
+#### Configure components in JavaScript
+
+JavaScript components can get the same configuration options in 2 ways - through data attributes, as before, and now when creating an instance. These components are:
+
+- the `Button` component, for its `preventDoubleClick` option (matching `data-prevent-double-click`)
+- the `CharacterCount` component, for its `maxlength`, `maxwords` and `threshold` options (matching `data-maxlength`, `data-maxwords` and `data-threshold`, respectively)
+- the `ErrorSummary` component, for its `disableAutoFocus` option (matching `data-disable-auto-focus`)
+- the `NotificationBanner` component, for its `disableAutoFocus` option (matching `data-disable-auto-focus`)
+
+You can leave out these configuration options when using the Nunjucks macro and provide configuration when:
+
+- creating a component, in a configuration object as second argument
+- initialising components in bulk using `initAll`
+
+For example:
+
+```js
+// Creating a single instance
+var button = document.querySelector('[data-module="button"]')
+new GOVUKFrontend.Button(button, {preventDoubleClick: true})
+
+// Or initialising components in bulk
+GOVUKFrontend.initAll({
+  button: {
+    preventDoubleClick: true
+  }
+  // Or, for the other components,
+  // characterCount: {/* options */},
+  // errorSummary: {/* options */},
+  // notificationBanner: {/* options */}
+})
+```
+
+You can find more information about component configuration in [GOV.UK Frontend documentation](https://frontend.design-system.service.gov.uk/configure-components-with-javascript/).
+
+This was added in pull requests specific for each components:
+
+- [NotificationBanner – #2843](https://github.com/alphagov/govuk-frontend/pull/2843)
+- [ErrorSummary – #2854](https://github.com/alphagov/govuk-frontend/pull/2854)
+- [Button – #2867](https://github.com/alphagov/govuk-frontend/pull/2867)
+- [CharacterCount – #2883](https://github.com/alphagov/govuk-frontend/pull/2883)
+
 ### Recommended changes
 
-#### Remove `aria-labelledby`, remove `id="error-summary-title"` from title and move `role="alert"` to child container on the error summary component
+#### Update the HTML for the error summary
 
 If you're not using the Nunjucks macros, you can improve the experience for screen reader users by making these changes to the error summary markup:
 
@@ -68,31 +200,44 @@ If you're not using the Nunjucks macros, you can improve the experience for scre
 - Add a `div` wrapper around the contents of `govuk-error-summary` with the attribute `role="alert"`
 - Remove `id="error-summary-title"` from the error summary `h2` (`govuk-error-summary__title`)
 
-This will enable screen reader users to have a better, more coherent experience with the error summary. Most notably it will ensure that users of JAWS 2022 or later will hear the entire contents of the error summary on page load and therefore have further context on why there is an error on the page they're on.
+This will enable screen reader users to have a better, more coherent experience with the error summary. It will make sure users of JAWS 2022 or later will hear the entire contents of the error summary on page load and therefore have further context on why there is an error on the page they're on.
 
 This was added in [pull request #2677: Amend error summary markup to fix page load focus bug in JAWS 2022](https://github.com/alphagov/govuk-frontend/pull/2677).
 
 ### Deprecated features
 
+#### Stop using the compatibility mode settings
+
+In GOV.UK Frontend v5.0 we will stop supporting compatibility with legacy codebases. We are therefore deprecating the compatibility mode variables associated with legacy codebases:
+
+- `$govuk-compatibility-govukfrontendtoolkit`
+- `$govuk-compatibility-govuktemplate`
+- `$govuk-compatibility-govukelements`
+
+This was introduced in [pull request #2882: Deprecate compatibility mode settings](https://github.com/alphagov/govuk-frontend/pull/2882).
+
 #### Stop using settings associated with legacy codebases
 
-In GOV.UK Frontend v5.0 we will stop supporting compatibility with legacy codebases. As part of this, we are deprecating settings controlled by compatibility mode variables. This includes the `govuk-compatibility` mixin and the following settings:
+In GOV.UK Frontend v5.0 we will stop supporting compatibility with legacy codebases. As part of this, we're deprecating settings controlled by compatibility mode variables. This includes the `govuk-compatibility` mixin and the following settings:
 
 - `$govuk-use-legacy-palette`
 - `$govuk-use-legacy-font`
 - `$govuk-typography-use-rem`
 - `$govuk-font-family-tabular`
 
-This was introduced in [pull request #2844: Deprecate compatibility mode settings](https://github.com/alphagov/govuk-frontend/pull/2844).
+This was introduced in [pull request #2844: Remove compatibility mode from govuk-frontend](https://github.com/alphagov/govuk-frontend/pull/2844).
 
 ### Fixes
 
-We’ve made fixes to GOV.UK Frontend in the following pull requests:
+In [pull request 2851: Support Prototype Kit v13](https://github.com/alphagov/govuk-frontend/pull/2851) we've introduced support for the plugins system included in the upcoming Prototype Kit v13.
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#2807: Tidy up and refactor the Character Count JavaScript](https://github.com/alphagov/govuk-frontend/pull/2807)
 - [#2811: Use Element.id to get module id for accordion](https://github.com/alphagov/govuk-frontend/pull/2811)
 - [#2821: Avoid duplicated --error class on Character Count](https://github.com/alphagov/govuk-frontend/pull/2821)
 - [#2800: Improve Pagination component print styles](https://github.com/alphagov/govuk-frontend/pull/2800)
+- [#2909: Fix JavaScript errors when entering text into the Character Count in IE8](https://github.com/alphagov/govuk-frontend/pull/2909)
 
 ## 4.3.1 (Patch release)
 
@@ -160,9 +305,9 @@ To apply spacing in a single direction, include `left-`, `right-`, `top-`, or `b
 
 For example:
 
--   `govuk-!-static-margin-9` will apply a 60px margin to all sides of the element at all screen sizes
--   `govuk-!-static-padding-right-5` will apply 25px of padding to the right side of the element at all screen sizes
--   `govuk-!-static-margin-0` will remove all margins at all screen sizes
+- `govuk-!-static-margin-9` will apply a 60px margin to all sides of the element at all screen sizes
+- `govuk-!-static-padding-right-5` will apply 25px of padding to the right side of the element at all screen sizes
+- `govuk-!-static-margin-0` will remove all margins at all screen sizes
 
 This was added in [pull request #2672: Add static spacing override classes](https://github.com/alphagov/govuk-frontend/pull/2672). Thanks to @patrickpatrickpatrick for this contribution.
 
@@ -372,6 +517,7 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 ## 4.0.0 (Breaking release)
 
 ### Breaking changes
+
 This release contains a lot of breaking changes, but we expect many of them will only affect a small number of users. However, to make sure your service still works after you upgrade, you should read the release notes and make any required changes.
 
 #### Check your accordions still display as expected
@@ -750,6 +896,7 @@ This was added in [pull request #2183: Updates to link styles and link hover sta
 #### Style links to remove underlines
 
 You can now remove underlines from links by using either the:
+
 - [`govuk-link-style-no-underline` mixin](http://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-link-style-no-underline) in your Sass, or
 - [`govuk-link--no-underline` class](https://design-system.service.gov.uk/styles/typography/#links-without-underlines) in your HTML
 
@@ -760,6 +907,7 @@ This was added in [pull request #2214: Add no-underline mixin and modifier class
 #### Style links on dark backgrounds
 
 You can now style links on dark backgrounds to use white text colour by using either the:
+
 - [`govuk-link-style-inverse` mixin](http://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-link-style-inverse) in your Sass, or
 - [`govuk-link--inverse` class](https://design-system.service.gov.uk/styles/typography/#links-on-dark-backgrounds) in your HTML
 
@@ -1080,7 +1228,6 @@ The [back link](https://design-system.service.gov.uk/components/back-link/) comp
 
 This was added in [pull request #1753: Make back link arrow consistent with breadcrumb component](https://github.com/alphagov/govuk-frontend/pull/1753). Thanks to [@vanitabarrett](https://github.com/vanitabarrett) and [@miaallers](https://github.com/miaallers).
 
-
 ### Deprecated features
 
 #### Importing from the `core` and `overrides` layers without `base`
@@ -1098,7 +1245,6 @@ If you do not import `node_modules/govuk-frontend/govuk/base` first, your servic
 
 This was added in [pull request #1807: Warn if importing core, overrides without dependencies](https://github.com/alphagov/govuk-frontend/pull/1807).
 
-
 ### Fixes
 
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
@@ -1106,7 +1252,6 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 - [#1778: Fix accordion underline hover state being removed when hovering plus/minus symbol](https://github.com/alphagov/govuk-frontend/pull/1778)
 - [#1765: Import textarea from character count](https://github.com/alphagov/govuk-frontend/pull/1765)
 - [#1796: Standardise accordion section headings font size (reduce height of section headings on mobile)](https://github.com/alphagov/govuk-frontend/pull/1796)
-
 
 ## 3.6.0 (Feature release)
 
@@ -1207,7 +1352,7 @@ You can now add attributes to the `<body>` element of a page, by using the [`bod
 
 - [Pull request #1594: Refactor handling of count message in character count JavaScript](https://github.com/alphagov/govuk-frontend/pull/1594).
 - [Pull request #1609: Update hex value for secondary text to improve contrast](https://github.com/alphagov/govuk-frontend/pull/1609).
-- [Pull request #1620: Only add underline to back link when href exists ](https://github.com/alphagov/govuk-frontend/pull/1620).
+- [Pull request #1620: Only add underline to back link when href exists](https://github.com/alphagov/govuk-frontend/pull/1620).
 - [Pull request #1631: Fix classes on character count when in error state](https://github.com/alphagov/govuk-frontend/pull/1631).
 
 ## 3.3.0 (Feature release)
@@ -1235,6 +1380,7 @@ Align ‘Warning text’ icon with first line of the content fixing [#1352](http
 - [Pull request #1578: Change position and spacing relationship of warning text icon](https://github.com/alphagov/govuk-frontend/pull/1578)
 
 ### Fixes
+
 - [Pull request #1574: Make form elements scale correctly when text resized by user](https://github.com/alphagov/govuk-frontend/pull/1574).
 - [Pull request #1584: Fix text resize issue with warning text icon](https://github.com/alphagov/govuk-frontend/pull/1584)
 - [Pull request #1570: Prevent inputs ending up off screen or obscured by keyboards when linking from the error summary to inputs within a large fieldset](https://github.com/alphagov/govuk-frontend/pull/1570)
@@ -1295,7 +1441,6 @@ govukInput({
 
 - [Pull request #1527: Add inputmode option to the input component](https://github.com/alphagov/govuk-frontend/pull/1527)
 
-
 ### Fixes
 
 - [Pull request #1523: Improve accessibility of details component by polyfilling only where the native element is not available](https://github.com/alphagov/govuk-frontend/pull/1523).
@@ -1306,9 +1451,11 @@ govukInput({
 ## 3.0.0 (Breaking release)
 
 ### Breaking changes
+
 You must make the following changes when you migrate to this release, or your service may break.
 
 #### Update file paths, attributes and class names
+
 To make sure GOV.UK Frontend's files do not conflict with your code, we've moved our package files into a directory called `govuk`.
 
 ##### If you’re using Sass
@@ -1320,13 +1467,14 @@ For example:
 ```scss
 @import "node_modules/govuk-frontend/govuk/all";
 ```
+
 If you’ve [added `node_modules/govuk-frontend` as a Sass include path](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-with-npm.md#optional-resolving-scss-import-paths), add `govuk/` to your `@import` paths:
 
 ```scss
 @import "govuk/all";
 ```
 
-#####  If you’re using Javascript
+##### If you’re using Javascript
 
 You must do the following.
 
@@ -1411,6 +1559,7 @@ If your code uses Express.js, you must also use the following code in your confi
 ```javascript
 app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/assets')))
 ```
+
 Pull requests:
 
 - [#1458: Namespace nunjucks and components](https://github.com/alphagov/govuk-frontend/pull/1458)
@@ -1443,7 +1592,6 @@ Pull requests:
 - [#1324: Update accordion to use new WCAG 2.1 compliant focus style](https://github.com/alphagov/govuk-frontend/pull/1324)
 - [#1326: Update tabs component to WCAG 2.1 compliant focus style](https://github.com/alphagov/govuk-frontend/pull/1326)
 - [#1361: Remove `govuk-focusable`, `govuk-focusable-fill` mixins, introduce `govuk-focus-text` mixin](https://github.com/alphagov/govuk-frontend/pull/1361)
-
 
 #### Update colours
 
@@ -1608,7 +1756,6 @@ If you use Sass and you’ve extended or created components that use the border 
 You can now add attributes like classes, rowspan and colspan to table row headers.
 
 [Pull request #1367: Allow for classes, rowspan, colspan and attributes on row headers](https://github.com/alphagov/govuk-frontend/pull/1367). Thanks to [edwardhorsford](https://github.com/edwardhorsford).
-
 
 #### Use page wrapper auto spacing
 
@@ -1849,10 +1996,9 @@ If you're using your own components that rely on the overflow state of the docum
   may add scroll bars causing the page to jump horizontally in position.
 
   To avoid this, re-introduce fix from GOV.UK Template:
-  https://github.com/alphagov/govuk-frontend/issues/1204
+  <https://github.com/alphagov/govuk-frontend/issues/1204>
 
   ([PR #1230](https://github.com/alphagov/govuk-frontend/pull/1230))
-
 
 - Accommodate camera notches on new devices (iPhone X, Google Pixel 3 etc)
 
@@ -1860,16 +2006,14 @@ If you're using your own components that rely on the overflow state of the docum
   landscape orientation (known as pillarboxing) so content isn't obscured.
 
   To avoid this, support has been added for `viewport-fit=cover` as shown here:
-  https://webkit.org/blog/7929/designing-websites-for-iphone-x/
+  <https://webkit.org/blog/7929/designing-websites-for-iphone-x/>
 
   ([PR #1176](https://github.com/alphagov/govuk-frontend/pull/1176))
-
 
 - Prefix error messages with a visually hidden "Error:", to make it clearer to
   users of assistive technologies
 
   ([PR #1221](https://github.com/alphagov/govuk-frontend/pull/1221))
-
 
 - Prevent accidental multiple submissions of forms
 
@@ -1895,7 +2039,6 @@ If you're using your own components that rely on the overflow state of the docum
 
   ([PR #1018](https://github.com/alphagov/govuk-frontend/pull/1018))
 
-
 🔧 Fixes:
 
 - Ensure that files within the core, objects and overrides layers can be
@@ -1914,13 +2057,11 @@ If you're using your own components that rely on the overflow state of the docum
 
   ([PR #1235](https://github.com/alphagov/govuk-frontend/pull/1235))
 
-
 - Ensure inset component does not misalign nested components
 
   Thanks to [Paul Hayes](https://github.com/fofr) for raising this issue.
 
   ([PR #1232](https://github.com/alphagov/govuk-frontend/pull/1232))
-
 
 - Improve word wrapping in summary list component
 
@@ -1929,7 +2070,6 @@ If you're using your own components that rely on the overflow state of the docum
   Also thanks to [Malcolm Butler](https://github.com/MoJ-Longbeard) for exploring a [previous version of this fix](https://github.com/alphagov/govuk-frontend/pull/1185).
 
   ([PR #1220](https://github.com/alphagov/govuk-frontend/pull/1220))
-
 
 ## 2.7.0 (Feature release)
 
@@ -2181,7 +2321,6 @@ If you're using your own components that rely on the overflow state of the docum
 
   ([PR #959](https://github.com/alphagov/govuk-frontend/pull/959))
 
-
 🔧 Fixes:
 
 - Apply max-width to the `<select>` element
@@ -2374,6 +2513,7 @@ If you're using your own components that rely on the overflow state of the docum
   $govuk-compatibility-govukelements: true;
   @import "govuk-frontend/all";
   ```
+
   ([PR #981](https://github.com/alphagov/govuk-frontend/pull/981))
 
 - Turn on relative typography (rem) by default
@@ -2385,11 +2525,13 @@ If you're using your own components that rely on the overflow state of the docum
   If you need to change this setting for compatibility with [GOV.UK Elements](https://github.com/alphagov/govuk_elements), [GOV.UK Template](https://github.com/alphagov/govuk_template), [GOV.UK Frontend Toolkit](https://github.com/alphagov/govuk_frontend_toolkit) consider enabling [compatibility mode](./docs/installation/installing-with-npm.md#compatibility-mode).
 
   Otherwise, set `$govuk-typography-use-rem` to `false` before importing GOV.UK Frontend styles into your app:
+
   ```SCSS
   // application.scss
   $govuk-typography-use-rem: false;
   @import "govuk-frontend/all";
   ```
+
   ([PR #981](https://github.com/alphagov/govuk-frontend/pull/981))
 
 - Remove anchor styling in govuk-lists
@@ -2590,10 +2732,9 @@ If you're using your own components that rely on the overflow state of the docum
   that use alphagov/govuk_template this should be 10px.
 
   The intention is to enable this by default in the next major version:
-  https://github.com/alphagov/govuk-frontend/issues/868
+  <https://github.com/alphagov/govuk-frontend/issues/868>
 
   ([PR #858](https://github.com/alphagov/govuk-frontend/pull/858))
-
 
 🔧 Fixes:
 
@@ -2713,7 +2854,6 @@ If you're using your own components that rely on the overflow state of the docum
   `<label>` or `<label class="govuk-label--s">`.
   ([PR #806](https://github.com/alphagov/govuk-frontend/pull/806))
 
-
 🏠 Internal:
 
 - Remove instructions to login with npm, which is no longer required
@@ -2751,16 +2891,20 @@ If you're using your own components that rely on the overflow state of the docum
   This allows you to initialize only the components you need, and gives you finer control over when the JavaScript for GOV.UK Frontend runs.
 
   To migrate your project you need to change
+
   ```html
     <script src="{path-to-govuk-frontend}/all.js"></script>
   ```
+
   to
+
   ```html
     <script src="{path-to-govuk-frontend}/all.js"></script>
     <script>window.GOVUKFrontend.initAll()</script>
   ```
 
   Now, if you only want to initialize a specific component you can now do so by:
+
   ```html
     <script src="{path-to-govuk-frontend}/all.js"></script>
     <script>
@@ -2775,13 +2919,16 @@ If you're using your own components that rely on the overflow state of the docum
 - Consistently structure the Details and Button component, so that they can be instantiated the same as the other components.
 
   If you're using `GOVUKFrontend.initAll()` you do not need to make any changes, otherwise you need to change
+
   ```html
     <script>
       new Button().init()
       new Details().init()
     </script>
   ```
+
   to
+
   ```html
     <script>
       new Button(document).init()
@@ -2792,6 +2939,7 @@ If you're using your own components that rely on the overflow state of the docum
       })
     </script>
   ```
+
   ([PR #761](https://github.com/alphagov/govuk-frontend/pull/761))
 
 - All sass-mq settings have now been made private. We are now exposing new
@@ -2818,25 +2966,33 @@ If you're using your own components that rely on the overflow state of the docum
 - Spacing has been refactored. You will need to update Sass that currently uses GOV.UK Frontend spacing:
 
   - Instead of
+
   ``` css
   $govuk-spacing-scale-*
   ```
+
   use
+
   ``` css
   govuk-spacing(*)
   ```
+
   where `*` is the number on the spacing scale. The scale itself has remained the same so that `$govuk-spacing-scale-3` corresponds to `govuk-spacing(3)`. This change allows us to control the error messaging when incorrect values are used and to deprecate variables. The values of spacing variables can also be overridden by consumers.
 
   - Instead of:
+
   ``` css
   @include govuk-responsive-margin($govuk-spacing-responsive-2, "bottom");
   @include govuk-responsive-padding($govuk-spacing-responsive-2, "bottom");
   ```
+
   use
+
   ``` css
   @include govuk-responsive-margin(2, "bottom");
   @include govuk-responsive-padding(2, "bottom");
   ```
+
   This change, again, allows us to control the error messaging since spacing variables are not exposed directly. Also, the spacing scale itself has not changed so that `$govuk-spacing-responsive-2` corresponds to `2` when passed to the padding and margin mixins.
 
   This PR also updates tests and sass-docs of spacing variables and helpers.
@@ -2984,17 +3140,18 @@ If you're using your own components that rely on the overflow state of the docum
 - Add explicit dependency on colour maps
   ([PR #790](https://github.com/alphagov/govuk-frontend/pull/790))
 
-
 🆕 New features:
 
 - Components are now available to use from the `GOVUKFrontend` global.
 You can now initialize individual components like so:
+
 ```html
   <script>
     var Radios = window.GOVUKFrontend.Radios
     new Radios(document).init()
   </script>
 ```
+
 ([PR #759](https://github.com/alphagov/govuk-frontend/pull/759))
 
 - Add `beforeContent` block to the template, for content that does not belong inside `<main>` element.
@@ -3010,7 +3167,6 @@ You can now initialize individual components like so:
 - Most of the settings can now be overridden in your application (they are now
   marked as !default)
   ([PR #748](https://github.com/alphagov/govuk-frontend/pull/748))
-
 
 🏠 Internal:
 
@@ -3041,7 +3197,6 @@ You can now initialize individual components like so:
   own styles you will need to update your code to use the new variable name.
   ([PR #726](https://github.com/alphagov/govuk-frontend/pull/726))
 
-
 🔧 Fixes:
 
 - Namespacing SCSS exports with 'govuk' prefix to avoid clashes with
@@ -3050,7 +3205,7 @@ You can now initialize individual components like so:
 
 - Fixes a bug whereby print styles were being 'rasterized' into the screen
   styles when generating the IE8 stylesheet (this is a bug in sass-mq, and has
-  also been raised upstream – https://github.com/sass-mq/sass-mq/pull/111).
+  also been raised upstream – <https://github.com/sass-mq/sass-mq/pull/111>).
   ([PR #726](https://github.com/alphagov/govuk-frontend/pull/726))
 
 - Removed some duplicated CSS rules from the outputted CSS
@@ -3060,7 +3215,6 @@ You can now initialize individual components like so:
   rendering the shadow using a border for IE8 specifically – IE8 does not
   support box-shadow
   ([PR #737](https://github.com/alphagov/govuk-frontend/pull/737))
-
 
 🆕 New features:
 
@@ -3254,14 +3408,12 @@ You can now initialize individual components like so:
 
   ([PR #684](https://github.com/alphagov/govuk-frontend/pull/684))
 
-
 - Added new modifier classes for labels to allow you to create a label that
   visually corresponds to the equivalent heading class (for example, a
   `.govuk-label--xl` will have the same font size and weight as a
   `.govuk-heading-xl`)
 
   ([PR #684](https://github.com/alphagov/govuk-frontend/pull/684))
-
 
 - The arguments for a fieldset's legend have been rolled up into an object. For
   example, the following macro call:
@@ -3289,7 +3441,6 @@ You can now initialize individual components like so:
 
   ([PR #684](https://github.com/alphagov/govuk-frontend/pull/684))
 
-
 - The fieldset component has a new parameter legend.isPageHeading, which defines
   whether the legend text should be wrapped in an h1:
 
@@ -3304,7 +3455,6 @@ You can now initialize individual components like so:
   its styling.
 
   ([PR #684](https://github.com/alphagov/govuk-frontend/pull/684))
-
 
 - Added new modifier classes for legends to allow you to create a legend that
   visually corresponds to the equivalent heading class (for example, a
@@ -3326,6 +3476,7 @@ You can now initialize individual components like so:
   - Remove -o, -c and -h prefixes from class names in your markup
 
   For example, change:
+
   ```HTML
   <button class="govuk-c-button">Save and continue</button>
   ```
@@ -3345,6 +3496,7 @@ You can now initialize individual components like so:
   - Change grid class names in your markup
 
   For example, change:
+
   ```HTML
   <div class="govuk-o-grid">
     <div class="govuk-o-grid__item govuk-o-grid__item--two-thirds">
@@ -3374,7 +3526,6 @@ You can now initialize individual components like so:
   see original pull request for usage.
 
   ([PR #665](https://github.com/alphagov/govuk-frontend/pull/665))
-
 
 🔧 Fixes:
 
@@ -3440,6 +3591,7 @@ You can now initialize individual components like so:
 
 Fixes incomplete release from `packages/` and `dist/` in 0.0.27-alpha release.
 Missing files were:
+
 - `globals/tools/_compatibility.scss`
 - `globals/tools/_ie8.scss`
 - `globals/settings/_compatibility.scss`
@@ -3471,6 +3623,7 @@ Missing files were:
 - Rename captionSize table argument to captionClasses ([PR #643](https://github.com/alphagov/govuk-frontend/pull/643))
 
 🔧 Fixes:
+
 - Link styles, as well as links within the  back-link, breadcrumbs, button,
   error summary, footer and skip link components defend against the
   `a:link:focus` selector in GOV.UK Template, which was overriding focussed
@@ -3480,6 +3633,7 @@ Missing files were:
   (PR [#633](https://github.com/alphagov/govuk-frontend/pull/633))
 
 🆕 New features:
+
 - Add `govuk-main-wrapper--l` a variant of the main page wrapper to use when a
   design does not include back links, breadcrumbs or phase banners
   (PR [#602](https://github.com/alphagov/govuk-frontend/pull/602))
@@ -3504,6 +3658,7 @@ Missing files were:
  Note: Our JavaScript work is ongoing. In the next release of GOV.UK Frontend both of our script will be modularised and split into common functions. This will allow you to use the polyfills in your bundler/build pipeline. For this reason, you might want to wait until the next release before adding these polyfill scripts into your project.
 
 🏠 Internal:
+
 - Update check script for new components and tweak docs
   (PR [#589](https://github.com/alphagov/govuk-frontend/pull/589))
 - Listen for development server on different port for tests
@@ -3568,6 +3723,7 @@ Missing files were:
   type="text" (PR [#568](https://github.com/alphagov/govuk-frontend/pull/568))
 
 🔧 Fixes:
+
 - The transparent outline has been removed from the button, as it already has
   a transparent border which is visible when overriding colours in the browser
   (PR [#552](https://github.com/alphagov/govuk-frontend/pull/552))
@@ -3582,6 +3738,7 @@ Missing files were:
   (PR [#568](https://github.com/alphagov/govuk-frontend/pull/568))
 
 🏠 Internal:
+
 - The logic to determine button text colour automatically has been removed and
   replaced with a new variable $govuk-button-text-colour
   (PR [#552](https://github.com/alphagov/govuk-frontend/pull/552))
@@ -3614,6 +3771,7 @@ gulp tasks (PR [#545](https://github.com/alphagov/govuk-frontend/pull/545))
   (PR [#551](https://github.com/alphagov/govuk-frontend/pull/551))
 
 🔧 Fixes:
+
 - Removes media query display on body from compiled CSS
   (PR [#560](https://github.com/alphagov/govuk-frontend/pull/560))
 
@@ -3774,6 +3932,7 @@ border for errors and a bottom margin. Add example of form errors to preview app
 - Remove readme content from review app (PR [#482](https://github.com/alphagov/govuk-frontend/pull/482))
 
 ## 0.0.21-alpha (Breaking release)
+
 Skipped 0.0.20-alpha due to difficulties with publishing.
 
 💥 Breaking changes:

@@ -1,14 +1,7 @@
 const cheerio = require('cheerio')
-const { Agent, fetch, setGlobalDispatcher } = require('undici')
 
-const configPaths = require('../config/paths.js')
-const PORT = configPaths.ports.test
-
-// Reduce test keep-alive timeouts
-setGlobalDispatcher(new Agent({
-  keepAliveTimeout: 10,
-  keepAliveMaxTimeout: 10
-}))
+const config = require('../config')
+const PORT = config.ports.test
 
 // Returns Fetch API wrapper which applies these options by default
 const fetchPath = (path, options) => {

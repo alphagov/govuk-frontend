@@ -1,0 +1,15 @@
+{#
+ # Renders the data attributes for the different plural forms
+ # of the given translation key.
+ #
+ # Helps reduce the boilerplate in component templates as they're quite verbose
+ #
+ # @private
+ # @param {string} translationKey - The kebab-cased name of the translation key
+ # @param {object} pluralForms
+ #   An object associating translation messages to the plural form they correspond to
+ #   http://unicode.org/reports/tr35/tr35-numbers.html#Language_Plural_Rules
+ #}
+{% macro govukPluralisedI18nAttributes(translationKey, pluralForms) %}
+  {% for pluralType, message in pluralForms %} data-i18n.{{translationKey}}.{{pluralType}}="{{message | escape}}"{% endfor %}
+{% endmacro %}

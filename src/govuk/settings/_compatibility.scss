@@ -23,8 +23,16 @@
 ///
 /// @type Boolean
 /// @access public
+/// @deprecated Will be removed in v5.0 with the rest of the compatibility mode
+/// suite of tools and settings
 
 $govuk-compatibility-govukfrontendtoolkit: false !default;
+
+@if $govuk-compatibility-govukfrontendtoolkit == true {
+  @include _warning("compatibility-mode", "$govuk-compatibility-govukfrontendtoolkit " +
+  "is deprecated. From version 5.0, GOV.UK Frontend will remove compatibility " +
+  "with the legacy library govuk_frontend_toolkit.");
+}
 
 /// Compatibility Mode: alphagov/govuk_template
 ///
@@ -41,8 +49,16 @@ $govuk-compatibility-govukfrontendtoolkit: false !default;
 ///
 /// @type Boolean
 /// @access public
+/// @deprecated Will be removed in v5.0 with the rest of the compatibility mode
+/// suite of tools and settings
 
 $govuk-compatibility-govuktemplate: false !default;
+
+@if $govuk-compatibility-govuktemplate == true {
+  @include _warning("compatibility-mode", "$govuk-compatibility-govuktemplate " +
+  "is deprecated. From version 5.0, GOV.UK Frontend will remove " +
+  "compatibility with the legacy library govuk_template.");
+}
 
 /// Compatibility Mode: alphagov/govuk_elements
 ///
@@ -56,8 +72,16 @@ $govuk-compatibility-govuktemplate: false !default;
 ///
 /// @type Boolean
 /// @access public
+/// @deprecated Will be removed in v5.0 with the rest of the compatibility mode
+/// suite of tools and settings
 
 $govuk-compatibility-govukelements: false !default;
+
+@if $govuk-compatibility-govukelements == true {
+  @include _warning("compatibility-mode", "$govuk-compatibility-govukelements " +
+  "is deprecated. From version 5.0, GOV.UK Frontend will remove compatibility " +
+  "with the legacy library govuk_elements.");
+}
 
 /// Compatibility Product Map
 ///
@@ -66,6 +90,8 @@ $govuk-compatibility-govukelements: false !default;
 ///
 /// @type Map
 /// @access private
+/// @deprecated Will be removed in v5.0 with the rest of the compatibility mode
+/// suite of tools and settings
 
 $_govuk-compatibility: (
   govuk_frontend_toolkit: $govuk-compatibility-govukfrontendtoolkit,
