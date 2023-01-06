@@ -4,9 +4,14 @@
 /* eslint-env jest */
 
 const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
-const examples = getExamples('task-list')
 
 describe('Task List', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('task-list')
+  })
+
   describe('default example', () => {
     it('renders the default example', () => {
       const $ = render('task-list', examples.default)
