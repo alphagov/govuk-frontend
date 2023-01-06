@@ -3,10 +3,7 @@
  */
 /* eslint-env jest */
 
-const axe = require('../../../../lib/axe-helper')
-
-const { render, getExamples } = require('../../../../lib/jest-helpers')
-
+const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
 const examples = getExamples('task-list')
 
 describe('Task List', () => {
