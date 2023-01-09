@@ -1,6 +1,5 @@
 module.exports = {
   browserContext: 'incognito',
-  browserPerWorker: true,
 
   /**
    * Workaround for jest-environment-puppeteer 'uncaughtException'
