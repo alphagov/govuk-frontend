@@ -25,6 +25,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 - [#2998: Refactor back link and breadcrumb chevrons to use ems](https://github.com/alphagov/govuk-frontend/pull/2998)
 - [#3021: Printing style for current page link in header](https://github.com/alphagov/govuk-frontend/pull/3021) - thanks to [Malcolm Butler](https://github.com/MalcolmVonMoJ) for the contribution
 - [#3112: Remove unused `classList` polyfill from header component JavaScript](https://github.com/alphagov/govuk-frontend/pull/3112)
+- [#3150: Add missing `Event` polyfill to accordion component JavaScript](https://github.com/alphagov/govuk-frontend/pull/3150)
 
 ## 4.4.1 (Fix release)
 
