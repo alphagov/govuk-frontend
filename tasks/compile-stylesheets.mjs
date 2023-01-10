@@ -11,8 +11,9 @@ import nodeSass from 'node-sass'
 import PluginError from 'plugin-error'
 import slash from 'slash'
 
-import { paths, pkg } from '../../config/index.js'
-import { destination, isDev, isDist, isPackage } from '../task-arguments.mjs'
+import { paths, pkg } from '../config/index.js'
+
+import { destination, isDev, isDist, isPackage } from './task-arguments.mjs'
 
 const sass = gulpSass(nodeSass)
 
