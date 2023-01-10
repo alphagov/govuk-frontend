@@ -72,7 +72,7 @@ jobs:
       - name: Cache linter
         uses: actions/cache@v3
         with:
-          key: ${{ matrix.name }}-cache
+          key: ${{ matrix.name }}-cache-${{ runner.os }}
           path: ${{ matrix.cache }}
 
       - name: Run lint task
@@ -109,7 +109,7 @@ jobs:
         if: ${{ matrix.cache }}
         uses: actions/cache@v3
         with:
-          key: ${{ matrix.name }}-cache
+          key: ${{ matrix.name }}-cache-${{ runner.os }}
           path: ${{ matrix.cache }}
 
       - name: Run test task
@@ -166,7 +166,7 @@ jobs:
         if: ${{ matrix.cache }}
         uses: actions/cache@v3
         with:
-          key: ${{ matrix.name }}-cache
+          key: ${{ matrix.name }}-cache-${{ runner.os }}
           path: ${{ matrix.cache }}
 
       - name: Run verify task

@@ -10,7 +10,7 @@ runs:
 
       with:
         # Restore `node_modules` cache (unless packages change)
-        key: npm-install-cache-${{ hashFiles('package-lock.json', '**/package.json') }}
+        key: npm-install-cache-${{ runner.os }}-${{ hashFiles('package-lock.json', '**/package.json') }}
         path: node_modules
 
     - name: Setup Node.js
