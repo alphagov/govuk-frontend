@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- [Correcting incorrect closing double quotes in pagination Nunjucks](https://github.com/alphagov/govuk-frontend/pull/3156)
+
 ### New features
 
 #### Search within accordion content on supporting browsers
