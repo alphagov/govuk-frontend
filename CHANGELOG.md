@@ -2,8 +2,6 @@
 
 ## Unreleased
 
-- [Correcting incorrect closing double quotes in pagination Nunjucks](https://github.com/alphagov/govuk-frontend/pull/3156)
-
 ### New features
 
 #### Search within accordion content on supporting browsers
@@ -28,6 +26,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 - [#3021: Printing style for current page link in header](https://github.com/alphagov/govuk-frontend/pull/3021) - thanks to [Malcolm Butler](https://github.com/MalcolmVonMoJ) for the contribution
 - [#3112: Remove unused `classList` polyfill from header component JavaScript](https://github.com/alphagov/govuk-frontend/pull/3112)
 - [#3150: Add missing `Event` polyfill to accordion component JavaScript](https://github.com/alphagov/govuk-frontend/pull/3150)
+- [Correcting incorrect closing double quotes in pagination Nunjucks](https://github.com/alphagov/govuk-frontend/pull/3156)
 
 ## 4.4.1 (Fix release)
 
