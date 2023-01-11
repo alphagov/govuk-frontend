@@ -159,4 +159,20 @@ describe('Pagination', () => {
       expect($decoratedNextLinkTitle).toBeTruthy()
     })
   })
+
+  describe('custom classes and attributes', () => {
+    it('renders with custom additional classes', () => {
+      const $ = render('pagination', examples['with custom classes'])
+
+      expect($('.govuk-pagination').hasClass('my-custom-class')).toBeTruthy()
+    })
+
+    it('renders with custom attributes', () => {
+      const $ = render('pagination', examples['with custom attributes'])
+      const $nav = $('.govuk-pagination')
+
+      expect($nav.attr('data-attribute-1')).toEqual('value-1')
+      expect($nav.attr('data-attribute-2')).toEqual('value-2')
+    })
+  })
 })
