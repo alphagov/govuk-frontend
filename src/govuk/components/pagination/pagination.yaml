@@ -238,3 +238,38 @@ examples:
   data:
     next:
       href: '/next'
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+- name: with custom classes
+  hidden: true
+  data:
+    classes: my-custom-class
+    previous:
+      href: '/previous'
+    next:
+      href: '/next'
+    items:
+    - number: 1
+      href: '/page/1'
+    - number: 2
+      href: '/page/2'
+      current: true
+    - number: 3
+      href: '/page/3'
+- name: with custom attributes
+  hidden: true
+  data:
+    attributes:
+      data-attribute-1: value-1
+      data-attribute-2: value-2
+    previous:
+      href: '/previous'
+    next:
+      href: '/next'
+    items:
+    - number: 1
+      href: '/page/1'
+    - number: 2
+      href: '/page/2'
+      current: true
+    - number: 3
+      href: '/page/3'
