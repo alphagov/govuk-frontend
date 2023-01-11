@@ -173,7 +173,7 @@ Accordion.prototype.constructHeaderMarkup = function ($header, index) {
   // Create a button element that will replace the '.govuk-accordion__section-button' span
   var $button = document.createElement('button')
   $button.setAttribute('type', 'button')
-  $button.setAttribute('aria-controls', this.$module.id + '-content-' + (index + 1))
+  $button.setAttribute('aria-controls', this.$module.id + '-content-' + (index + 1).toString())
 
   // Copy all attributes (https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes) from $span to $button
   for (var i = 0; i < $span.attributes.length; i++) {
