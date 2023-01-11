@@ -104,6 +104,14 @@ module.exports = {
       env: {
         jest: true
       }
+    },
+    {
+      files: ['**/*.e2e.{cjs,js,mjs}'],
+      env: {
+        jasmine: true
+      },
+      plugins: ['wdio'],
+      extends: ['plugin:wdio/recommended']
     }
   ],
   root: true
