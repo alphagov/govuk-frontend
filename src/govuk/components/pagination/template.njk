@@ -1,6 +1,6 @@
 {% set blockLevel = not params.items and (params.next or params.previous) %}
 
-<nav class="govuk-pagination {{- ' ' + params.classes if params.classes }} {{- ' govuk-pagination--block' if blockLevel }}" role="navigation" aria-label="{{ params.landmarkLabel | default("results") }} {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}" {%- endfor -%}">
+<nav class="govuk-pagination {{- ' ' + params.classes if params.classes }} {{- ' govuk-pagination--block' if blockLevel }}" role="navigation" aria-label="{{ params.landmarkLabel | default("results") }}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}" {%- endfor -%}>
   {%- if params.previous and params.previous.href -%}
     <div class="govuk-pagination__prev">
       <a class="govuk-link govuk-pagination__link" href="{{ params.previous.href }}" rel="prev" {%- for attribute, value in params.previous.attributes %} {{ attribute }}="{{ value }}" {%- endfor -%}>
