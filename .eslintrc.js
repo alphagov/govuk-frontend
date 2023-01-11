@@ -93,7 +93,7 @@ module.exports = {
     },
     {
       files: ['**/govuk/components/**/*.{cjs,js,mjs}'],
-      excludedFiles: ['**/govuk/components/**/*.test.{cjs,js,mjs}'],
+      excludedFiles: ['**/govuk/components/**/*.{test,e2e}.{cjs,js,mjs}'],
       parserOptions: {
         // Note: Allow ES6 for import/export syntax (although our code is ES3 for legacy browsers)
         ecmaVersion: '2015'
