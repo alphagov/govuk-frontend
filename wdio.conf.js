@@ -1,3 +1,5 @@
+const dns = require('node:dns')
+
 const IS_DEBUG = !!process.env.DEBUG
 const IS_INSPECT = process.env.DEBUG === 'inspect'
 
@@ -175,7 +177,7 @@ exports.config = {
     expectationResultHandler: function (passed, assertion) {
       // do something
     }
-  }
+  },
 
   //
   // =====
@@ -218,14 +220,11 @@ exports.config = {
   /**
    * Gets executed just before initialising the webdriver session and test framework. It allows you
    * to manipulate configurations depending on the capability or spec.
-   *
-   * @param {object} config - wdio configuration object
-   * @param {Array.<object>} capabilities - list of capabilities details
-   * @param {Array.<string>} specs - List of spec file paths that are to be run
-   * @param {string} cid - worker id (e.g. 0-0)
    */
-  // beforeSession: function (config, capabilities, specs, cid) {
-  // },
+  beforeSession () {
+    // https://github.com/webdriverio/webdriverio/issues/8279#issuecomment-1295996734
+    dns.setDefaultResultOrder('ipv4first')
+  }
   /**
    * Gets executed before test execution begins. At this point you can access to all global
    * variables like `browser`. It is the perfect place to define custom commands.
