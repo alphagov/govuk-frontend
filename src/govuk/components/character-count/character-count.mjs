@@ -1,3 +1,6 @@
+/* eslint-disable es-x/no-date-now -- Polyfill imported */
+/* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
+
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
 import { extractConfigByNamespace, mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
