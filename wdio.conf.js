@@ -1,3 +1,6 @@
+const IS_DEBUG = !!process.env.DEBUG
+const IS_INSPECT = process.env.DEBUG === 'inspect'
+
 exports.config = {
   //
   // ====================
@@ -28,6 +31,10 @@ exports.config = {
     // 'path/to/excluded/files'
   ],
   //
+  // Allow devtools to connect to the process
+  //
+  execArgv: IS_INSPECT ? ['--inspect-brk'] : [],
+  //
   // ============
   // Capabilities
   // ============
@@ -43,7 +50,7 @@ exports.config = {
   // and 30 processes will get spawned. The property handles how many capabilities
   // from the same test should run tests.
   //
-  maxInstances: 10,
+  maxInstances: IS_DEBUG ? 1 : 10,
   //
   // If you have trouble getting all important capabilities together, check out the
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -62,24 +69,26 @@ exports.config = {
       // it is possible to configure which logTypes to include/exclude.
       // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
       // excludeDriverLogs: ['bugreport', 'server'],
-      'goog:chromeOptions': {
-        args: [
-          '--headless',
+      'goog:chromeOptions': IS_DEBUG
+        ? {}
+        : {
+            args: [
+              '--headless',
 
-          /**
-           * Workaround for 'No usable sandbox! Update your kernel' error
-           * see more https://github.com/Googlechrome/puppeteer/issues/290
-           */
-          '--no-sandbox',
-          '--disable-setuid-sandbox',
+              /**
+               * Workaround for 'No usable sandbox! Update your kernel' error
+               * see more https://github.com/Googlechrome/puppeteer/issues/290
+               */
+              '--no-sandbox',
+              '--disable-setuid-sandbox',
 
-          /**
-           * Prevent empty Chromium startup window
-           * Tests use their own `browser.newPage()` instead
-           */
-          '--no-startup-window'
-        ]
-      }
+              /**
+               * Prevent empty Chromium startup window
+               * Tests use their own `browser.newPage()` instead
+               */
+              '--no-startup-window'
+            ].filter(Boolean)
+          }
     }
   ],
   //
@@ -157,7 +166,8 @@ exports.config = {
   // Options to be passed to Jasmine.
   jasmineOpts: {
     // Jasmine default timeout
-    defaultTimeoutInterval: 60000,
+    // Increased to a whole day if we're debugging
+    defaultTimeoutInterval: IS_DEBUG ? 24 * 60 * 60 * 1000 : 60000,
     //
     // The Jasmine framework allows interception of each assertion in order to log the state of the application
     // or website depending on the result. For example, it is pretty handy to take a screenshot every time
