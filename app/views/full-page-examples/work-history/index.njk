@@ -1,0 +1,274 @@
+---
+scenario: >-
+  As part of an online service, you are providing information about previous jobs
+  in the form of multiple job records. You are provided a page to check the records
+  you've entered so far, add more or continue with the service.
+
+  Things to try:
+
+  1. You would like to change your answer for one of the questions for one of the records.
+  2. You would like to delete a record
+  3. You would like to add a new record
+
+notes: The links to change your answers are not functional.
+---
+
+{# This example is based of the  "Check your answers before sending your application" example: https://design-system.service.gov.uk/patterns/check-answers/default/index.html #}
+{% extends "full-page-example.njk" %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "summary-list/macro.njk" import govukSummaryList %}
+{% from "button/macro.njk" import govukButton %}
+
+{% set pageTitle = "Work history" %}
+{% set serviceName = "Apply for teacher training" %}
+
+{% block pageTitle %}{{ pageTitle }} - {{ serviceName }} - GOV.UK{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceName: serviceName
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    <h1 class="govuk-heading-xl">Work history</h1>
+
+    {{ govukSummaryList({
+      card: {
+        title: {
+          text: "Undergraduate teaching assistant"
+        },
+        actions: {
+          items: [
+            {
+              href: "#/delete",
+              text: "Delete work history"
+            }
+          ]
+        }
+      },
+      rows: [
+        {
+          key: {
+            text: "Job title"
+          },
+          value: {
+            text: "Undergraduate teaching assistant"
+          },
+          actions: {
+            items: [
+              {
+                href: "#/job",
+                text: "Change",
+                visuallyHiddenText: "job title"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Employer"
+          },
+          value: {
+            text: "Minnesota State University"
+          },
+          actions: {
+            items: [
+              {
+                href: "#/employer",
+                text: "Change",
+                visuallyHiddenText: "employer"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Dates"
+          },
+          value: {
+            html: "January 2010 - May 2013"
+          },
+          actions: {
+            items: [
+              {
+                href: "#/dates",
+                text: "Change",
+                visuallyHiddenText: "dates"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+    {{ govukSummaryList({
+      card: {
+        title: {
+          text: "Summer intern"
+        },
+        actions: {
+          items: [
+            {
+              href: "#/delete",
+              text: "Delete work history"
+            }
+          ]
+        }
+      },
+      rows: [
+        {
+          key: {
+            text: "Job title"
+          },
+          value: {
+            text: "Summer intern"
+          },
+          actions: {
+            items: [
+              {
+                href: "#/job",
+                text: "Change",
+                visuallyHiddenText: "job title"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Employer"
+          },
+          value: {
+            text: "American Association of Variable Star Observers"
+          },
+          actions: {
+            items: [
+              {
+                href: "#/employer",
+                text: "Change",
+                visuallyHiddenText: "employer"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Dates"
+          },
+          value: {
+            html: "June 2013 - August 2013"
+          },
+          actions: {
+            items: [
+              {
+                href: "#/dates",
+                text: "Change",
+                visuallyHiddenText: "dates"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+    {{ govukSummaryList({
+      card: {
+        title: {
+          text: "Graduate teaching assistant"
+        },
+        actions: {
+          items: [
+            {
+              href: "#/delete",
+              text: "Delete work history"
+            }
+          ]
+        }
+      },
+      rows: [
+        {
+          key: {
+            text: "Job title"
+          },
+          value: {
+            text: "Graduate teaching assistant"
+          },
+          actions: {
+            items: [
+              {
+                href: "#/job",
+                text: "Change",
+                visuallyHiddenText: "job title"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Employer"
+          },
+          value: {
+            text: "Creighton University"
+          },
+          actions: {
+            items: [
+              {
+                href: "#/employer",
+                text: "Change",
+                visuallyHiddenText: "employer"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Dates"
+          },
+          value: {
+            html: "August 2013 - November 2016"
+          },
+          actions: {
+            items: [
+              {
+                href: "#/dates",
+                text: "Change",
+                visuallyHiddenText: "dates"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+    <form action="/full-page-examples/work-history" method="post">
+
+      <input type="hidden" name="answers-checked" value="true">
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          "text": "Submit work history"
+        }) }}
+
+        {{ govukButton({
+          text: "Add new work history",
+          href: "/full-page-examples/work-history",
+          classes: "govuk-button--secondary"
+        }) }}
+      </div>
+
+    </form>
+
+  </div>
+</div>
+{% endblock %}
