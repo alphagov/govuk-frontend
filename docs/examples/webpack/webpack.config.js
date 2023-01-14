@@ -23,8 +23,7 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
 
   entry: [
     './assets/javascripts/main.mjs',
-    './assets/stylesheets/app.scss',
-    './assets/stylesheets/app-ie8.scss'
+    './assets/stylesheets/app.scss'
   ],
 
   module: {
