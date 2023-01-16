@@ -1,4 +1,4 @@
-const dns = require('node:dns')
+// const dns = require('node:dns')
 
 const IS_DEBUG = !!process.env.DEBUG
 const IS_INSPECT = process.env.DEBUG === 'inspect'
@@ -53,6 +53,11 @@ exports.config = {
   // from the same test should run tests.
   //
   maxInstances: IS_DEBUG ? 1 : 10,
+  // Use 'devtools' protocol for running in watch mode
+  // This avoids running into a "FetchError: Failed to fetch browser webSocket URL" error
+  // without resorting to [the workaround in this thread](https://github.com/webdriverio/webdriverio/issues/8279#issuecomment-1295996734)
+  // This still leaves an error in the logs, for which an issue will be raised to the repository
+  automationProtocol: 'devtools',
   //
   // If you have trouble getting all important capabilities together, check out the
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -177,7 +182,7 @@ exports.config = {
     expectationResultHandler: function (passed, assertion) {
       // do something
     }
-  },
+  }
 
   //
   // =====
@@ -221,10 +226,10 @@ exports.config = {
    * Gets executed just before initialising the webdriver session and test framework. It allows you
    * to manipulate configurations depending on the capability or spec.
    */
-  beforeSession () {
-    // https://github.com/webdriverio/webdriverio/issues/8279#issuecomment-1295996734
-    dns.setDefaultResultOrder('ipv4first')
-  }
+  // beforeSession () {
+  //   // https://github.com/webdriverio/webdriverio/issues/8279#issuecomment-1295996734
+  //   dns.setDefaultResultOrder('ipv4first')
+  // }
   /**
    * Gets executed before test execution begins. At this point you can access to all global
    * variables like `browser`. It is the perfect place to define custom commands.
