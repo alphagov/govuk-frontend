@@ -50,6 +50,10 @@ describe('Components', () => {
           // use disabled="disabled"
           'attribute-boolean-style': 'off',
 
+          // Allow for multiple buttons in the same form to have the same name
+          // (as in the cookie banner examples)
+          'form-dup-name': ['error', { shared: ['radio', 'checkbox', 'submit'] }],
+
           // Allow pattern attribute on input type="number"
           'input-attributes': 'off',
 

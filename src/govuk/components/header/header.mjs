@@ -1,4 +1,3 @@
-import '../../vendor/polyfills/Element/prototype/classList.mjs'
 import '../../vendor/polyfills/Event.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
@@ -28,7 +27,7 @@ function Header ($module) {
 }
 
 /**
- * Initialise header
+ * Initialise component
  *
  * Check for the presence of the header, menu and menu button – if any are
  * missing then there's nothing to do so return early.

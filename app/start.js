@@ -1,8 +1,8 @@
-const configPaths = require('../config/paths')
+const config = require('../config')
 
 const app = require('./app')
 
-const PORT = process.env.PORT || configPaths.ports.app
+const PORT = process.env.PORT || config.ports.app
 
 app()
   .then(server => server.listen(PORT, () =>

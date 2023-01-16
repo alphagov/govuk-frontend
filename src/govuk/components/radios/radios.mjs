@@ -15,7 +15,7 @@ function Radios ($module) {
 }
 
 /**
- * Initialise Radios
+ * Initialise component
  *
  * Radios can be associated with a 'conditionally revealed' content block – for
  * example, a radio for 'Phone' could reveal an additional form field for the
@@ -33,17 +33,17 @@ Radios.prototype.init = function () {
   var $inputs = this.$inputs
 
   nodeListForEach($inputs, function ($input) {
-    var target = $input.getAttribute('data-aria-controls')
+    var targetId = $input.getAttribute('data-aria-controls')
 
     // Skip radios without data-aria-controls attributes, or where the
     // target element does not exist.
-    if (!target || !document.getElementById(target)) {
+    if (!targetId || !document.getElementById(targetId)) {
       return
     }
 
     // Promote the data-aria-controls attribute to a aria-controls attribute
     // so that the relationship is exposed in the AOM
-    $input.setAttribute('aria-controls', target)
+    $input.setAttribute('aria-controls', targetId)
     $input.removeAttribute('data-aria-controls')
   })
 
@@ -67,7 +67,7 @@ Radios.prototype.init = function () {
 }
 
 /**
- * Sync the conditional reveal states for all inputs in this $module.
+ * Sync the conditional reveal states for all radio buttons in this $module.
  */
 Radios.prototype.syncAllConditionalReveals = function () {
   nodeListForEach(this.$inputs, this.syncConditionalRevealWithInputState.bind(this))

@@ -1,18 +1,17 @@
 import { readFile } from 'fs/promises'
+import { EOL } from 'os'
 import { join } from 'path'
 
-import configPaths from '../../../config/paths.js'
+import { paths, pkg } from '../../../config/index.js'
 import { getListing } from '../../../lib/file-helper.js'
 
 describe('dist/', () => {
-  let pkg
   let listingSourceAssets
   let listingDistAssets
 
   beforeAll(async () => {
-    pkg = JSON.parse(await readFile(join(configPaths.package, 'package.json'), 'utf8'))
-    listingSourceAssets = await getListing(configPaths.assets)
-    listingDistAssets = await getListing(join(configPaths.dist, 'assets'))
+    listingSourceAssets = await getListing(paths.assets)
+    listingDistAssets = await getListing(join(paths.dist, 'assets'))
   })
 
   describe('assets/', () => {
@@ -27,7 +26,7 @@ describe('dist/', () => {
 
     beforeAll(async () => {
       filename = `govuk-frontend-${pkg.version}.min.css`
-      stylesheet = await readFile(join(configPaths.dist, filename), 'utf8')
+      stylesheet = await readFile(join(paths.dist, filename), 'utf8')
     })
 
     it('should not contain current media query displayed on body element', () => {
@@ -49,7 +48,7 @@ describe('dist/', () => {
 
     beforeAll(async () => {
       filename = `govuk-frontend-ie8-${pkg.version}.min.css`
-      stylesheet = await readFile(join(configPaths.dist, filename), 'utf8')
+      stylesheet = await readFile(join(paths.dist, filename), 'utf8')
     })
 
     it('should not contain current media query displayed on body element', () => {
@@ -67,7 +66,7 @@ describe('dist/', () => {
 
     beforeAll(async () => {
       filename = `govuk-frontend-${pkg.version}.min.js`
-      javascript = await readFile(join(configPaths.dist, filename), 'utf8')
+      javascript = await readFile(join(paths.dist, filename), 'utf8')
     })
 
     it('should have the correct version name', () => {
@@ -76,6 +75,20 @@ describe('dist/', () => {
 
     it('should contain source mapping URL', () => {
       expect(javascript).toMatch(new RegExp(`//# sourceMappingURL=${filename}.map$`))
+    })
+  })
+
+  describe('VERSION.txt', () => {
+    let filename
+    let version
+
+    beforeAll(async () => {
+      filename = 'VERSION.txt'
+      version = await readFile(join(paths.dist, filename), 'utf8')
+    })
+
+    it('should contain the correct version', () => {
+      expect(version).toEqual(pkg.version + EOL)
     })
   })
 })

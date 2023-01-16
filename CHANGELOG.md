@@ -2,9 +2,38 @@
 
 ## Unreleased
 
+### New features
+
+#### Search within accordion content on supporting browsers
+
+We've updated the Accordion component to use the new [`hidden="until-found"` attribute value](https://developer.chrome.com/articles/hidden-until-found/).
+
+This allows the browser's native 'find in page' functionality to search within and automatically open sections of the accordion. Currently, this functionality is only supported by recent versions of Google Chrome, Microsoft Edge and Samsung Internet.
+
+This was added in [pull request #3053: Enhance the Accordion component with `hidden='until-found'`](https://github.com/alphagov/govuk-frontend/pull/3053). 
+
+#### Source maps for precompiled files
+
+You can now use [source maps](https://firefox-source-docs.mozilla.org/devtools-user/debugger/how_to/use_a_source_map/index.html) to help identify errors and console messages that come from GOV.UK Frontend precompiled files.
+
+This was added in [pull request #3023: Add source maps to compiled JavaScript and CSS](https://github.com/alphagov/govuk-frontend/pull/3023).
+
 ### Fixes
 
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
 - [#2998: Refactor back link and breadcrumb chevrons to use ems](https://github.com/alphagov/govuk-frontend/pull/2998)
+- [#3021: Printing style for current page link in header](https://github.com/alphagov/govuk-frontend/pull/3021) - thanks to [Malcolm Butler](https://github.com/MalcolmVonMoJ) for the contribution
+- [#3112: Remove unused `classList` polyfill from header component JavaScript](https://github.com/alphagov/govuk-frontend/pull/3112)
+- [#3150: Add missing `Event` polyfill to accordion component JavaScript](https://github.com/alphagov/govuk-frontend/pull/3150)
+
+## 4.4.1 (Fix release)
+
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#3087: Fix focus styles for links split over multiple lines in Chromium 108+ (Chrome 108+, Edge 108+, Opera 94+)](https://github.com/alphagov/govuk-frontend/pull/3087)
 
 ## 4.4.0 (Feature release)
 

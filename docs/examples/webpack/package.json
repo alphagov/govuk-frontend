@@ -10,16 +10,16 @@
     "govuk-frontend": "*"
   },
   "devDependencies": {
-    "babel-loader": "^9.1.0",
+    "babel-loader": "^9.1.2",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "html5shiv": "^3.7.3",
     "postcss-loader": "^7.0.2",
-    "sass": "^1.56.1",
+    "sass": "^1.57.1",
     "sass-loader": "^13.2.0",
     "terser-webpack-plugin": "^5.3.6",
     "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.0",
+    "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1"
   }
 }

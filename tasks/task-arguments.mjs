@@ -5,10 +5,16 @@ import parser from 'yargs-parser'
 
 import configPaths from '../config/paths.js'
 
-export const argv = parser(process.argv)
+export const argv = parser(process.argv, {
+  string: ['destination']
+})
 
 // Defaults for known tasks
 const destinations = [
+  {
+    task: 'compile',
+    destination: 'public'
+  },
   {
     task: 'build:package',
     destination: 'package'

@@ -105,5 +105,6 @@ module.exports = {
         jest: true
       }
     }
-  ]
+  ],
+  root: true
 }

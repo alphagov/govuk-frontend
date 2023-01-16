@@ -7,6 +7,12 @@ import { destination } from './task-arguments.mjs'
 
 const cleanPath = slash(destination)
 
+/**
+ * List path globs to clean for a given destination
+ *
+ * @param {string} cleanPath - Destination path to clean
+ * @returns {string[]} Path globs to clean
+ */
 export function paths (cleanPath) {
   const param = [slash(join(cleanPath, '**/*'))]
 

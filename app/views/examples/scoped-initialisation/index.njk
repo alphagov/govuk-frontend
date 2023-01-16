@@ -4,13 +4,13 @@
 
 {% block head %}
   <!--[if !IE 8]><!-->
-    <link rel="stylesheet" href="/public/app.css">
+    <link rel="stylesheet" href="/public/app.min.css">
   <!--<![endif]-->
   <!--[if IE 8]>
-    <link rel="stylesheet" href="/public/app-ie8.css">
+    <link rel="stylesheet" href="/public/app-ie8.min.css">
   <![endif]-->
   <!--[if lt IE 9]>
-    <script src="/vendor/html5-shiv/html5shiv.js"></script>
+    <script src="/vendor/html5-shiv/html5shiv.min.js"></script>
   <![endif]-->
 {% endblock %}
 
@@ -53,7 +53,7 @@
 {% endblock %}
 
 {% block bodyEnd %}
-  <script src="/public/all.js"></script>
+  <script src="/public/all.min.js"></script>
   <script>
     var $scope = document.getElementById('scoped')
     window.GOVUKFrontend.initAll({

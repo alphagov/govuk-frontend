@@ -1,9 +1,9 @@
 const cheerio = require('cheerio')
 
-const configPaths = require('../config/paths')
+const config = require('../config')
 const { getDirectories } = require('../lib/file-helper')
 
-const PORT = configPaths.ports.test
+const PORT = config.ports.test
 
 const expectedPages = [
   '/',
@@ -45,7 +45,7 @@ describe(`http://localhost:${PORT}`, () => {
       const response = await fetchPath('/')
       const $ = cheerio.load(await response.text())
 
-      const componentNames = await getDirectories(configPaths.components)
+      const componentNames = await getDirectories(config.paths.components)
       const componentsList = $('li a[href^="/components/"]').get()
 
       // Since we have an 'all' component link that renders the default example of all
@@ -125,7 +125,7 @@ describe(`http://localhost:${PORT}`, () => {
       const response = await fetchPath(templatePath)
       const $ = cheerio.load(await response.text())
 
-      const $appStylesheet = $('link[href="/public/app.css"]')
+      const $appStylesheet = $('link[href="/public/app.min.css"]')
       expect($appStylesheet.length).toBe(1)
     })
 
