@@ -1,12 +1,15 @@
-import { TestEnvironment } from 'jest-environment-node'
+import SingleContextNodeEnvironment from 'jest-environment-node-single-context'
 
 import { globals } from '../globals.mjs'
 
 /**
- * Default Node.js environment
- * Adds shared test globals
+ * Single context Node.js environment
+ * Adds real Node.js test globals for Dart Sass
+ *
+ * {@link https://github.com/sass/dart-sass#using-sass-with-jest}
+ * {@link https://github.com/facebook/jest/issues/2549}
  */
-class NodeEnvironment extends TestEnvironment {
+class NodeEnvironment extends SingleContextNodeEnvironment {
   async setup () {
     await super.setup()
 
