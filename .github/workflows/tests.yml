@@ -88,10 +88,12 @@ jobs:
           - description: Nunjucks macro tests
             name: test-macro
             run: npx jest --color --selectProjects "Nunjucks macro tests"
+            cache: .cache/jest
 
           - description: JavaScript unit tests
             name: test-unit
             run: npx jest --color --maxWorkers=2 --selectProjects "JavaScript unit tests" --coverage --testLocationInResults
+            cache: .cache/jest
 
     steps:
       - name: Checkout
@@ -100,11 +102,12 @@ jobs:
       - name: Restore dependencies
         uses: ./.github/workflows/actions/install-node
 
-      - name: Cache Jest
+      - name: Cache task
+        if: ${{ matrix.cache }}
         uses: actions/cache@v3
         with:
           key: ${{ matrix.name }}-cache
-          path: .cache/jest
+          path: ${{ matrix.cache }}
 
       - name: Run test task
         run: ${{ matrix.run }}
@@ -137,10 +140,12 @@ jobs:
           - description: JavaScript behaviour tests
             name: test-behaviour
             run: npx jest --color --maxWorkers=2 --selectProjects "JavaScript behaviour tests"
+            cache: .cache/jest
 
           - description: JavaScript component tests
             name: test-component
             run: npx jest --color --maxWorkers=2 --selectProjects "JavaScript component tests"
+            cache: .cache/jest
 
     steps:
       - name: Checkout
@@ -152,11 +157,12 @@ jobs:
       - name: Restore build
         uses: ./.github/workflows/actions/build
 
-      - name: Cache Jest
+      - name: Cache task
+        if: ${{ matrix.cache }}
         uses: actions/cache@v3
         with:
           key: ${{ matrix.name }}-cache
-          path: .cache/jest
+          path: ${{ matrix.cache }}
 
       - name: Run verify task
         run: ${{ matrix.run }}
