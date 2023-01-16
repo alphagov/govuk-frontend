@@ -45,7 +45,7 @@
     "cssnano": "^4.1.11",
     "del": "^7.0.0",
     "front-matter": "^4.0.2",
-    "glob": "^8.0.3",
+    "glob": "^8.1.0",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
     "gulp-plumber": "^1.2.1",
