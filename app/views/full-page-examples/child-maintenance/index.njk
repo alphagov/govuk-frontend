@@ -22,7 +22,7 @@ scenario: >-
 
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "phase-banner/macro.njk" import govukPhaseBanner %}
-{% from "hide-this-page/macro.njk" import govukHideThisPage %}
+{% from "exit-this-page/macro.njk" import govukExitThisPage %}
 {% from "inset-text/macro.njk" import govukInsetText %}
 {% from "details/macro.njk" import govukDetails %}
 {% from "button/macro.njk" import govukButton %}
@@ -34,8 +34,8 @@ scenario: >-
   {{ super() }}
   {{ govukSkipLink({
     href: 'https://www.google.com/',
-    text: 'Hide this page',
-    classes: 'govuk-js-hide-this-page-button'
+    text: 'Exit this page',
+    classes: 'govuk-js-exit-this-page-button'
   }) }}
 {% endblock %}
 
@@ -69,7 +69,7 @@ scenario: >-
 {% endblock %}
 
 {% block content %}
-  {{ govukHideThisPage({
+  {{ govukExitThisPage({
     text: "Exit this page",
     redirectUrl: "https://www.google.com/"
   }) }}

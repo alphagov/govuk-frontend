@@ -1,4 +1,4 @@
-# Hide this page
+# Exit this page
 
 ## Installation
 

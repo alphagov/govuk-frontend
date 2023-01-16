@@ -5,8 +5,8 @@ import CharacterCount from './components/character-count/character-count.mjs'
 import Checkboxes from './components/checkboxes/checkboxes.mjs'
 import Details from './components/details/details.mjs'
 import ErrorSummary from './components/error-summary/error-summary.mjs'
+import ExitThisPage from './components/exit-this-page/exit-this-page.mjs'
 import Header from './components/header/header.mjs'
-import HideThisPage from './components/hide-this-page/hide-this-page.mjs'
 import NotificationBanner from './components/notification-banner/notification-banner.mjs'
 import Radios from './components/radios/radios.mjs'
 import SkipLink from './components/skip-link/skip-link.mjs'
@@ -64,10 +64,10 @@ function initAll (config) {
     new Header($header).init()
   }
 
-  var $hideThisPageButtons = $scope.querySelectorAll('[data-module="govuk-hide-this-page"]')
-  if ($hideThisPageButtons.length > 0) {
-    nodeListForEach($hideThisPageButtons, function ($button) {
-      new HideThisPage($button).init()
+  var $exitThisPageButtons = $scope.querySelectorAll('[data-module="govuk-exit-this-page"]')
+  if ($exitThisPageButtons.length > 0) {
+    nodeListForEach($exitThisPageButtons, function ($button) {
+      new ExitThisPage($button).init()
     })
   }
 
@@ -99,8 +99,8 @@ export {
   CharacterCount,
   Checkboxes,
   ErrorSummary,
+  ExitThisPage,
   Header,
-  HideThisPage,
   NotificationBanner,
   Radios,
   SkipLink,
