@@ -23,6 +23,11 @@ This was added in [pull request #3023: Add source maps to compiled JavaScript an
 
 ### Fixes
 
+We've fixed errors in IE8 caused by updates to our precompiled JavaScript. The issue prevented some polyfills from running but was limited to the `release-v4.4.1.zip` and `release-v4.4.0.zip` assets on [GitHub releases](https://github.com/alphagov/govuk-frontend/releases):
+
+- [#3137: Enable UglifyJS compatibility workarounds](https://github.com/alphagov/govuk-frontend/pull/3137)
+- [#3013: Swap JavaScript minifier from UglifyJS to terser](https://github.com/alphagov/govuk-frontend/pull/3013)
+
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#2998: Refactor back link and breadcrumb chevrons to use ems](https://github.com/alphagov/govuk-frontend/pull/2998)
