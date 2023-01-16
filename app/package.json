@@ -17,7 +17,7 @@
     "express": "^4.18.2",
     "express-validator": "^6.14.2",
     "front-matter": "^4.0.2",
-    "glob": "^8.0.3",
+    "glob": "^8.1.0",
     "govuk_frontend_toolkit": "^9.0.1",
     "govuk_template_jinja": "^0.26.0",
     "govuk-elements-sass": "3.1.3",
