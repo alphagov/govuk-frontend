@@ -24,7 +24,7 @@
     "html5shiv": "^3.7.3",
     "jquery": "1.12.4",
     "js-yaml": "^4.1.0",
-    "marked": "^4.2.5",
+    "marked": "^4.2.12",
     "minimatch": "^5.1.2",
     "nodemon": "^2.0.20",
     "nunjucks": "^3.2.3",
