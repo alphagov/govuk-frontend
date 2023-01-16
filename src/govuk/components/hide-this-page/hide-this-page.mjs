@@ -2,6 +2,12 @@ import { nodeListForEach } from '../../common.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 import '../../vendor/polyfills/Element/prototype/dataset.mjs'
 
+/**
+ * JavaScript functionality for the Exit this Page component
+ *
+ * @class
+ * @param {HTMLElement} $module - HTML element that wraps the EtP button
+ */
 function HideThisPage ($module) {
   this.$module = $module
   this.$button = $module.querySelector('.govuk-hide-this-page__button')
@@ -14,6 +20,9 @@ function HideThisPage ($module) {
   this.timeout = 5000 // milliseconds
 }
 
+/**
+ * Create the <span> we use for screen reader announcements.
+ */
 HideThisPage.prototype.initUpdateSpan = function () {
   this.$updateSpan = document.createElement('span')
   this.$updateSpan.setAttribute('aria-live', 'polite')
@@ -22,10 +31,16 @@ HideThisPage.prototype.initUpdateSpan = function () {
   this.$button.appendChild(this.$updateSpan)
 }
 
+/**
+ * Create button click handler.
+ */
 HideThisPage.prototype.initButtonClickHandler = function () {
   this.$button.addEventListener('click', this.exitPage.bind(this))
 }
 
+/**
+ * Create the HTML for the 'three lights' indicator on the button.
+ */
 HideThisPage.prototype.buildIndicator = function () {
   // Build container
   // Putting `aria-hidden` on it as it won't contain any readable information
@@ -44,6 +59,10 @@ HideThisPage.prototype.buildIndicator = function () {
   this.$button.appendChild(this.$indicatorContainer)
 }
 
+/**
+ * Update whether the lights are visible and which ones are lit up depending on
+ * the value of `escCounter`.
+ */
 HideThisPage.prototype.updateIndicator = function () {
   // Show or hide the indicator container depending on escCounter value
   if (this.escCounter > 0) {
@@ -67,6 +86,14 @@ HideThisPage.prototype.updateIndicator = function () {
   }.bind(this))
 }
 
+/**
+ * Initiates the redirection away from the current page.
+ * Includes the 'ghost page' functionality, which covers the current page with a
+ * white overlay so that the contents are not visible during the loading
+ * process. This is particularly important on slow network connections.
+ *
+ * @param {MouseEvent} [e] - mouse click event
+ */
 HideThisPage.prototype.exitPage = function (e) {
   if (typeof e !== 'undefined' && e.target) {
     e.preventDefault()
@@ -80,6 +107,12 @@ HideThisPage.prototype.exitPage = function (e) {
   window.location.href = this.$button.href
 }
 
+/**
+ * Logic for the 'quick escape' keyboard sequence functionality (pressing the
+ * Shift key three times without interruption, within a time limit).
+ *
+ * @param {KeyboardEvent} e - keyup event
+ */
 HideThisPage.prototype.handleEscKeypress = function (e) {
   // Detect if the 'Shift' key has been pressed. We want to only do things if it
   // was pressed by itself and not in a combination with another key—so we keep
@@ -117,6 +150,9 @@ HideThisPage.prototype.handleEscKeypress = function (e) {
   this.lastKeyWasModified = e.shiftKey
 }
 
+/**
+ * Starts the 'quick escape' keyboard sequence timer.
+ */
 HideThisPage.prototype.setEscTimer = function () {
   if (!this.escTimerActive) {
     this.escTimerActive = true
@@ -127,6 +163,9 @@ HideThisPage.prototype.setEscTimer = function () {
   }
 }
 
+/**
+ * Stops and resets the 'quick escape' keyboard sequence timer.
+ */
 HideThisPage.prototype.resetEscTimer = function () {
   this.escCounter = 0
   this.escTimerActive = false
@@ -134,6 +173,17 @@ HideThisPage.prototype.resetEscTimer = function () {
   this.updateIndicator()
 }
 
+/**
+ * If a 'ghost page' overlay present, remove it.
+ *
+ * We use this in situations where a user may re-enter a page using the browser
+ * back button. In these cases, the browser can choose to restore the state of
+ * the page as it was previously, including restoring the 'ghost page' overlay,
+ * leaving the page in an unusable state.
+ *
+ * By running this check when the page is shown, we can programatically remove
+ * the restored overlay.
+ */
 HideThisPage.prototype.syncOverlayVisibility = function () {
   // If there is no overlay, don't do anything
   if (!this.$overlay) { return }
@@ -143,6 +193,9 @@ HideThisPage.prototype.syncOverlayVisibility = function () {
   this.$overlay = null
 }
 
+/**
+ * Initialise component
+ */
 HideThisPage.prototype.init = function () {
   this.buildIndicator()
   this.initUpdateSpan()
