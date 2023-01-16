@@ -10,7 +10,10 @@ We've updated the Accordion component to use the new [`hidden="until-found"` att
 
 This allows the browser's native 'find in page' functionality to search within and automatically open sections of the accordion. Currently, this functionality is only supported by recent versions of Google Chrome, Microsoft Edge and Samsung Internet.
 
-This was added in [pull request #3053: Enhance the Accordion component with `hidden='until-found'`](https://github.com/alphagov/govuk-frontend/pull/3053). 
+This was added in pull requests:
+
+- [#3053: Enhance the Accordion component with `hidden='until-found'`](https://github.com/alphagov/govuk-frontend/pull/3053)
+- [#3095: Hide Accordion content (again) during `.js-enabled` page load](https://github.com/alphagov/govuk-frontend/pull/3095)
 
 #### Source maps for precompiled files
 
@@ -25,6 +28,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 - [#2998: Refactor back link and breadcrumb chevrons to use ems](https://github.com/alphagov/govuk-frontend/pull/2998)
 - [#3021: Printing style for current page link in header](https://github.com/alphagov/govuk-frontend/pull/3021) - thanks to [Malcolm Butler](https://github.com/MalcolmVonMoJ) for the contribution
 - [#3112: Remove unused `classList` polyfill from header component JavaScript](https://github.com/alphagov/govuk-frontend/pull/3112)
+- [#3094: Fix Accordion margin/padding inconsistencies](https://github.com/alphagov/govuk-frontend/pull/3094)
 - [#3150: Add missing `Event` polyfill to accordion component JavaScript](https://github.com/alphagov/govuk-frontend/pull/3150)
 - [Correcting incorrect closing double quotes in pagination Nunjucks](https://github.com/alphagov/govuk-frontend/pull/3156)
 

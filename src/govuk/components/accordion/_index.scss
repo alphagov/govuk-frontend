@@ -46,17 +46,18 @@
       padding-top: 0;
     }
 
+    // Hide the body of collapsed sections by default for browsers that lack
+    // support for `content-visibility` paired with [hidden=until-found]
     .govuk-accordion__section-content {
+      display: none;
+
       @include govuk-responsive-padding(3, "top");
       @include govuk-responsive-padding(8, "bottom");
     }
 
-    // Manually apply display: none to browsers that don't have a user agent
-    // style for it, but override it with content-visibility if the browser
-    // supports that instead.
+    // Hide the body of collapsed sections using `content-visibility` to enable
+    // page search within [hidden=until-found] regions where browser supported
     .govuk-accordion__section-content[hidden] {
-      display: none;
-
       @supports (content-visibility: hidden) {
         content-visibility: hidden;
         display: inherit;
@@ -65,6 +66,11 @@
       // Hide the padding of collapsed sections
       padding-top: 0;
       padding-bottom: 0;
+    }
+
+    // Show the body of expanded sections
+    .govuk-accordion__section--expanded .govuk-accordion__section-content {
+      display: block;
     }
 
     .govuk-accordion__show-all {
