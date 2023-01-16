@@ -1,7 +1,7 @@
 @import "../button/index";
 
-@include govuk-exports("govuk/component/hide-this-page") {
-  .govuk-hide-this-page {
+@include govuk-exports("govuk/component/exit-this-page") {
+  .govuk-exit-this-page {
     position: fixed;
     z-index: 1000;
     top: 0;
@@ -21,11 +21,11 @@
     }
   }
 
-  .govuk-hide-this-page__button {
+  .govuk-exit-this-page__button {
     margin-bottom: 0;
   }
 
-  .govuk-hide-this-page__indicator {
+  .govuk-exit-this-page__indicator {
     @include govuk-responsive-padding(2);
     display: none;
     padding-bottom: 0;
@@ -36,11 +36,11 @@
     pointer-events: none;
   }
 
-  .govuk-hide-this-page__indicator--visible {
+  .govuk-exit-this-page__indicator--visible {
     display: block;
   }
 
-  .govuk-hide-this-page__indicator-light {
+  .govuk-exit-this-page__indicator-light {
     display: inline-block;
     width: .5em;
     height: .5em;
@@ -49,17 +49,17 @@
     border-radius: 50%;
   }
 
-  .govuk-hide-this-page__indicator-light--on {
+  .govuk-exit-this-page__indicator-light--on {
     background-color: govuk-colour("white");
   }
 
   @media only print {
-    .govuk-hide-this-page {
+    .govuk-exit-this-page {
       display: none;
     }
   }
 
-  .govuk-hide-this-page__overlay {
+  .govuk-exit-this-page__overlay {
     position: fixed;
     z-index: 9999;
     top: 0;

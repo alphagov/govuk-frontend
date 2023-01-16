@@ -10,20 +10,20 @@ params:
 - name: id
   type: string
   required: false
-  description: ID attribute to add to the hide this page container.
+  description: ID attribute to add to the exit this page container.
 - name: classes
   type: string
   required: false
-  description: Classes to add to the hide this page container.
+  description: Classes to add to the exit this page container.
 - name: attributes
   type: object
   required: false
-  description: HTML attributes (for example data attributes) to add to the hide this page container.
+  description: HTML attributes (for example data attributes) to add to the exit this page container.
 
 examples:
 - name: default  
   data:
-    text: Hide this page
+    text: Exit this page
     redirectUrl: "https://www.gov.uk"
     id: null
     classes: null
@@ -34,7 +34,7 @@ examples:
 - name: testing
   hidden: true
   data:
-    text: Hide this test
+    text: Exit this test
     redirectUrl: "https://www.test.co.uk"
     id: test-id
     classes: test-class

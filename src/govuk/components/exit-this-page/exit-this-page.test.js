@@ -4,11 +4,11 @@
 
 const { goToComponent } = require('../../../../lib/puppeteer-helpers')
 
-const buttonClass = '.govuk-js-hide-this-page-button'
+const buttonClass = '.govuk-js-exit-this-page-button'
 
-describe('/components/hide-this-page', () => {
+describe('/components/exit-this-page', () => {
   beforeEach(async () => {
-    await goToComponent(page, 'hide-this-page')
+    await goToComponent(page, 'exit-this-page')
   })
 
   it('navigates to the href of the button', async () => {

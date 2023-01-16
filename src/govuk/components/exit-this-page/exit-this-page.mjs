@@ -9,9 +9,9 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * @class
  * @param {HTMLElement} $module - HTML element that wraps the EtP button
  */
-function HideThisPage ($module) {
+function ExitThisPage ($module) {
   this.$module = $module
-  this.$button = $module.querySelector('.govuk-hide-this-page__button')
+  this.$button = $module.querySelector('.govuk-exit-this-page__button')
   this.$updateSpan = null
   this.$indicatorContainer = null
   this.$overlay = null
@@ -24,7 +24,7 @@ function HideThisPage ($module) {
 /**
  * Create the <span> we use for screen reader announcements.
  */
-HideThisPage.prototype.initUpdateSpan = function () {
+ExitThisPage.prototype.initUpdateSpan = function () {
   this.$updateSpan = document.createElement('span')
   this.$updateSpan.setAttribute('aria-live', 'polite')
   this.$updateSpan.setAttribute('class', 'govuk-visually-hidden')
@@ -35,24 +35,24 @@ HideThisPage.prototype.initUpdateSpan = function () {
 /**
  * Create button click handler.
  */
-HideThisPage.prototype.initButtonClickHandler = function () {
+ExitThisPage.prototype.initButtonClickHandler = function () {
   this.$button.addEventListener('click', this.exitPage.bind(this))
 }
 
 /**
  * Create the HTML for the 'three lights' indicator on the button.
  */
-HideThisPage.prototype.buildIndicator = function () {
+ExitThisPage.prototype.buildIndicator = function () {
   // Build container
   // Putting `aria-hidden` on it as it won't contain any readable information
   this.$indicatorContainer = document.createElement('div')
-  this.$indicatorContainer.className = 'govuk-hide-this-page__indicator'
+  this.$indicatorContainer.className = 'govuk-exit-this-page__indicator'
   this.$indicatorContainer.setAttribute('aria-hidden', 'true')
 
   // Create three 'lights' and place them within the container
   for (var i = 0; i < 3; i++) {
     var $indicator = document.createElement('div')
-    $indicator.className = 'govuk-hide-this-page__indicator-light'
+    $indicator.className = 'govuk-exit-this-page__indicator-light'
     this.$indicatorContainer.appendChild($indicator)
   }
 
@@ -64,12 +64,12 @@ HideThisPage.prototype.buildIndicator = function () {
  * Update whether the lights are visible and which ones are lit up depending on
  * the value of `escCounter`.
  */
-HideThisPage.prototype.updateIndicator = function () {
+ExitThisPage.prototype.updateIndicator = function () {
   // Show or hide the indicator container depending on escCounter value
   if (this.escCounter > 0) {
-    this.$indicatorContainer.classList.add('govuk-hide-this-page__indicator--visible')
+    this.$indicatorContainer.classList.add('govuk-exit-this-page__indicator--visible')
   } else {
-    this.$indicatorContainer.classList.remove('govuk-hide-this-page__indicator--visible')
+    this.$indicatorContainer.classList.remove('govuk-exit-this-page__indicator--visible')
   }
 
   // Show or hide the indicator container depending on escCounter value
@@ -80,16 +80,16 @@ HideThisPage.prototype.updateIndicator = function () {
   }
 
   // Turn out all the lights
-  var $lightsOn = this.$indicatorContainer.querySelectorAll('.govuk-hide-this-page__indicator-light--on')
+  var $lightsOn = this.$indicatorContainer.querySelectorAll('.govuk-exit-this-page__indicator-light--on')
   nodeListForEach($lightsOn, function ($light) {
-    $light.classList.remove('govuk-hide-this-page__indicator-light--on')
+    $light.classList.remove('govuk-exit-this-page__indicator-light--on')
   })
 
   // Turn on the ones we want on
-  var $lightsQueried = this.$indicatorContainer.querySelectorAll('.govuk-hide-this-page__indicator-light')
+  var $lightsQueried = this.$indicatorContainer.querySelectorAll('.govuk-exit-this-page__indicator-light')
   nodeListForEach($lightsQueried, function ($light, index) {
     if (index < this.escCounter) {
-      $light.classList.add('govuk-hide-this-page__indicator-light--on')
+      $light.classList.add('govuk-exit-this-page__indicator-light--on')
     }
   }.bind(this))
 }
@@ -102,14 +102,14 @@ HideThisPage.prototype.updateIndicator = function () {
  *
  * @param {MouseEvent} [e] - mouse click event
  */
-HideThisPage.prototype.exitPage = function (e) {
+ExitThisPage.prototype.exitPage = function (e) {
   if (typeof e !== 'undefined' && e.target) {
     e.preventDefault()
   }
 
   // Blank the page
   this.$overlay = document.createElement('div')
-  this.$overlay.className = 'govuk-hide-this-page__overlay'
+  this.$overlay.className = 'govuk-exit-this-page__overlay'
   document.body.appendChild(this.$overlay)
 
   window.location.href = this.$button.href
@@ -121,7 +121,7 @@ HideThisPage.prototype.exitPage = function (e) {
  *
  * @param {KeyboardEvent} e - keyup event
  */
-HideThisPage.prototype.handleEscKeypress = function (e) {
+ExitThisPage.prototype.handleEscKeypress = function (e) {
   // Detect if the 'Shift' key has been pressed. We want to only do things if it
   // was pressed by itself and not in a combination with another key—so we keep
   // track of whether the preceding keyup had shiftKey: true on it, and if it
@@ -161,7 +161,7 @@ HideThisPage.prototype.handleEscKeypress = function (e) {
 /**
  * Starts the 'quick escape' keyboard sequence timer.
  */
-HideThisPage.prototype.setEscTimer = function () {
+ExitThisPage.prototype.setEscTimer = function () {
   if (!this.escTimerActive) {
     this.escTimerActive = true
 
@@ -174,7 +174,7 @@ HideThisPage.prototype.setEscTimer = function () {
 /**
  * Stops and resets the 'quick escape' keyboard sequence timer.
  */
-HideThisPage.prototype.resetEscTimer = function () {
+ExitThisPage.prototype.resetEscTimer = function () {
   this.escCounter = 0
   this.escTimerActive = false
   this.$updateSpan.innerText = ''
@@ -192,7 +192,7 @@ HideThisPage.prototype.resetEscTimer = function () {
  * By running this check when the page is shown, we can programatically remove
  * the restored overlay.
  */
-HideThisPage.prototype.syncOverlayVisibility = function () {
+ExitThisPage.prototype.syncOverlayVisibility = function () {
   // If there is no overlay, don't do anything
   if (!this.$overlay) { return }
 
@@ -204,15 +204,15 @@ HideThisPage.prototype.syncOverlayVisibility = function () {
 /**
  * Initialise component
  */
-HideThisPage.prototype.init = function () {
+ExitThisPage.prototype.init = function () {
   this.buildIndicator()
   this.initUpdateSpan()
   this.initButtonClickHandler()
 
-  // Check to see if this has already been done by a previous initialisation of HideThisPage
-  if (!('govukFrontendHideThisPageEsc' in document.body.dataset)) {
+  // Check to see if this has already been done by a previous initialisation of ExitThisPage
+  if (!('govukFrontendExitThisPageEsc' in document.body.dataset)) {
     document.addEventListener('keyup', this.handleEscKeypress.bind(this), true)
-    document.body.dataset.govukFrontendHideThisPageEsc = true
+    document.body.dataset.govukFrontendExitThisPageEsc = true
   }
 
   // When the page is restored after navigating 'back' in some browsers the
@@ -225,4 +225,4 @@ HideThisPage.prototype.init = function () {
   }
 }
 
-export default HideThisPage
+export default ExitThisPage
