@@ -1,6 +1,7 @@
 import { nodeListForEach } from '../../common.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 import '../../vendor/polyfills/Element/prototype/dataset.mjs'
+import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
 /**
  * JavaScript functionality for the Exit this Page component
