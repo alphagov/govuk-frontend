@@ -269,7 +269,7 @@ describe('@mixin govuk-typography-responsive', () => {
             .foo {
               font-size: 14px;
               font-size: 0.875rem;
-              line-height: 1.42857;
+              line-height: 1.4285714286;
             }
           }
         `
@@ -310,14 +310,14 @@ describe('@mixin govuk-typography-responsive', () => {
       ${sassBootstrap}
 
       .foo {
-        @include govuk-typography-responsive(3.14159265359)
+        @include govuk-typography-responsive(3.1415926536)
       }
     `
 
     await expect(compileSassString(sass, sassConfig))
       .rejects
       .toThrow(
-        'Unknown font size `3.14159` - expected a point from the typography scale.'
+        'Unknown font size `3.1415926536` - expected a point from the typography scale.'
       )
   })
 
@@ -345,7 +345,7 @@ describe('@mixin govuk-typography-responsive', () => {
               .foo {
                 font-size: 14px !important;
                 font-size: 0.875rem !important;
-                line-height: 1.42857 !important;
+                line-height: 1.4285714286 !important;
               }
             }
           `
@@ -444,7 +444,7 @@ describe('@mixin govuk-typography-responsive', () => {
             @media (min-width: 30em) {
               .foo {
                 font-size: 14px;
-                line-height: 1.42857;
+                line-height: 1.4285714286;
               }
             }
           `
@@ -474,7 +474,7 @@ describe('@mixin govuk-typography-responsive', () => {
             @media (min-width: 30em) {
               .foo {
                 font-size: 14px;
-                line-height: 1.42857;
+                line-height: 1.4285714286;
               }
             }
           `
@@ -504,7 +504,7 @@ describe('@mixin govuk-typography-responsive', () => {
               @media (min-width: 30em) {
                 .foo {
                   font-size: 14px !important;
-                  line-height: 1.42857 !important;
+                  line-height: 1.4285714286 !important;
                 }
               }
             `
@@ -555,7 +555,7 @@ describe('@mixin govuk-typography-responsive', () => {
             @media (min-width: 30em) {
               .foo {
                 font-size: 14px;
-                line-height: 1.42857;
+                line-height: 1.4285714286;
               }
             }
           `
@@ -599,7 +599,7 @@ describe('@mixin govuk-typography-responsive', () => {
               .foo {
                 font-size: 14px;
                 font-size: 0.875rem;
-                line-height: 1.42857;
+                line-height: 1.4285714286;
               }
             }
           `

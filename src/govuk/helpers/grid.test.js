@@ -100,7 +100,7 @@ describe('grid system', () => {
 
             @media (min-width: 40.0625em) {
               .govuk-grid-column-two-thirds {
-                width: 66.66667%;
+                width: 66.6666666667%;
                 float: left;
               }
             }
