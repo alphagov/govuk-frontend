@@ -10,6 +10,8 @@ function HideThisPage ($module) {
   this.$overlay = null
   this.escCounter = 0
   this.escTimerActive = false
+  this.lastKeyWasModified = false
+  this.timeout = 5000 // milliseconds
 }
 
 HideThisPage.prototype.initUpdateSpan = function () {
@@ -79,7 +81,18 @@ HideThisPage.prototype.exitPage = function (e) {
 }
 
 HideThisPage.prototype.handleEscKeypress = function (e) {
-  if (e.key === 'Esc' || e.keyCode === 27 || e.which === 27) {
+  // Detect if the 'Shift' key has been pressed. We want to only do things if it
+  // was pressed by itself and not in a combination with another key—so we keep
+  // track of whether the preceding keyup had shiftKey: true on it, and if it
+  // did, we ignore the next Shift keyup event.
+  //
+  // This works because using Shift as a modifier key (e.g. pressing Shift + A)
+  // will fire TWO keyup events, one for A (with e.shiftKey: true) and the other
+  // for Shift (with e.shiftKey: false).
+  if (
+    (e.key === 'Shift' || e.keyCode === 16 || e.which === 16) &&
+    !this.lastKeyWasModified
+  ) {
     this.escCounter += 1
 
     // Update the indicator before the below if statement can reset it back to 0
@@ -94,7 +107,14 @@ HideThisPage.prototype.handleEscKeypress = function (e) {
     }
 
     this.setEscTimer()
+  } else if (this.escTimerActive) {
+    // If the user pressed any key other than 'Shift', after having pressed
+    // 'Shift' and activating the timer, stop and reset the timer.
+    this.resetEscTimer()
   }
+
+  // Keep track of whether the Shift modifier key was held during this keypress
+  this.lastKeyWasModified = e.shiftKey
 }
 
 HideThisPage.prototype.setEscTimer = function () {
@@ -102,12 +122,16 @@ HideThisPage.prototype.setEscTimer = function () {
     this.escTimerActive = true
 
     setTimeout(function () {
-      this.escCounter = 0
-      this.escTimerActive = false
-      this.$updateSpan.innerText = ''
-      this.updateIndicator()
-    }.bind(this), 2000)
+      this.resetEscTimer()
+    }.bind(this), this.timeout)
   }
+}
+
+HideThisPage.prototype.resetEscTimer = function () {
+  this.escCounter = 0
+  this.escTimerActive = false
+  this.$updateSpan.innerText = ''
+  this.updateIndicator()
 }
 
 HideThisPage.prototype.syncOverlayVisibility = function () {
