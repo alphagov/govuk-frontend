@@ -2,7 +2,7 @@ const { parse } = require('path')
 
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
-const minimatch = require('minimatch')
+const { minimatch } = require('minimatch')
 const pseudoclasses = require('postcss-pseudo-classes')
 const unmq = require('postcss-unmq')
 const unopacity = require('postcss-unopacity')
