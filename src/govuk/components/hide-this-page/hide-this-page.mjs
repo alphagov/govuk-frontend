@@ -81,16 +81,16 @@ HideThisPage.prototype.exitPage = function (e) {
 }
 
 HideThisPage.prototype.handleEscKeypress = function (e) {
-  // Detect if the 'Ctrl' key has been pressed. We want to only do things if it
+  // Detect if the 'Shift' key has been pressed. We want to only do things if it
   // was pressed by itself and not in a combination with another key—so we keep
-  // track of whether the preceding keyup had ctrlKey: true on it, and if it
-  // did, we ignore the next Ctrl keyup event.
+  // track of whether the preceding keyup had shiftKey: true on it, and if it
+  // did, we ignore the next Shift keyup event.
   //
-  // This works because using Ctrl as a modifier key (e.g. pressing Ctrl + A)
-  // will fire TWO keyup events, one for A (with e.ctrlKey: true) and the other
-  // for Ctrl (with e.ctrlKey: false).
+  // This works because using Shift as a modifier key (e.g. pressing Shift + A)
+  // will fire TWO keyup events, one for A (with e.shiftKey: true) and the other
+  // for Shift (with e.shiftKey: false).
   if (
-    (e.key === 'Control' || e.keyCode === 17 || e.which === 17) &&
+    (e.key === 'Shift' || e.keyCode === 16 || e.which === 16) &&
     !this.lastKeyWasModified
   ) {
     this.escCounter += 1
@@ -108,13 +108,13 @@ HideThisPage.prototype.handleEscKeypress = function (e) {
 
     this.setEscTimer()
   } else if (this.escTimerActive) {
-    // If the user pressed any key other than 'Ctrl', after having pressed
-    // 'Ctrl' and activating the timer, stop and reset the timer.
+    // If the user pressed any key other than 'Shift', after having pressed
+    // 'Shift' and activating the timer, stop and reset the timer.
     this.resetEscTimer()
   }
 
-  // Keep track of whether the Ctrl modifier key was held during this keypress
-  this.lastKeyWasModified = e.ctrlKey
+  // Keep track of whether the Shift modifier key was held during this keypress
+  this.lastKeyWasModified = e.shiftKey
 }
 
 HideThisPage.prototype.setEscTimer = function () {
