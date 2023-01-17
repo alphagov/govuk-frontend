@@ -3,7 +3,7 @@ import { dirname, join, parse } from 'path'
 
 import PluginError from 'plugin-error'
 import { rollup } from 'rollup'
-import { minify } from 'uglify-js'
+import { minify } from 'terser'
 
 import { paths, pkg } from '../config/index.js'
 import { getListing } from '../lib/file-helper.js'
@@ -73,7 +73,7 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, minif
 
   // Minify bundle
   if (minify) {
-    result = minifyJavaScript(modulePath, result)
+    result = await minifyJavaScript(modulePath, result)
 
     // Create directories
     await mkdir(dirname(filePath), { recursive: true })
@@ -93,10 +93,13 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, minif
  * @param {object} result - Generated bundle
  * @param {string} result.code - Source code
  * @param {import('magic-string').SourceMap} result.map - Source map
- * @returns {import('uglify-js').MinifyOutput} Minifier result
+ * @returns {Promise<import('terser').MinifyOutput>} Minifier result
  */
 export function minifyJavaScript (modulePath, result) {
   const minified = minify({ [modulePath]: result.code }, {
+    format: { comments: false },
+
+    // Include source maps
     sourceMap: {
       content: result.map,
       filename: result.map.file,
@@ -104,22 +107,11 @@ export function minifyJavaScript (modulePath, result) {
       includeSources: true
     },
 
-    // Prevent unsafe polyfill changes
-    // https://github.com/mishoo/UglifyJS#compress-options
-    compress: {
-      inline: 2
-    },
-
     // Compatibility workarounds
+    ecma: 5,
     ie8: true,
-    module: false,
-    v8: true,
-    webkit: true
+    safari10: true
   })
-
-  if (minified.error) {
-    throw minified.error
-  }
 
   return minified
 }

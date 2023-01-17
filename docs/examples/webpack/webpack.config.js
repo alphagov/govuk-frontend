@@ -67,8 +67,10 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
     minimizer: [new TerserPlugin({
       extractComments: true,
       terserOptions: {
-        ecma: 5,
         format: { comments: false },
+
+        // Compatibility workarounds
+        ecma: 5,
         ie8: true,
         safari10: true
       }
