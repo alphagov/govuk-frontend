@@ -11,9 +11,7 @@ runs:
       with:
         # Restore `node_modules` cache (unless packages change)
         key: npm-install-cache-${{ hashFiles('package-lock.json', '**/package.json') }}
-        path: |
-          .cache/puppeteer
-          node_modules
+        path: node_modules
 
     - name: Setup Node.js
       uses: ./.github/workflows/actions/setup-node

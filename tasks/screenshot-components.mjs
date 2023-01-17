@@ -3,6 +3,7 @@ import { join } from 'path'
 import percySnapshot from '@percy/puppeteer'
 import { isPercyEnabled } from '@percy/sdk-utils'
 import { launch } from 'puppeteer'
+import { downloadBrowser } from 'puppeteer/lib/esm/puppeteer/node/install.js'
 
 import configPaths from '../config/paths.js'
 import { getDirectories, getListing } from '../lib/file-helper.js'
@@ -67,4 +68,5 @@ if (!await isPercyEnabled()) {
   throw new Error('Percy healthcheck failed')
 }
 
+await downloadBrowser()
 await screenshotComponents()

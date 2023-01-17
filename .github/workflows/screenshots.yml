@@ -32,6 +32,12 @@ jobs:
       - name: Install dependencies
         uses: ./.github/workflows/actions/install-node
 
+      - name: Cache browser download
+        uses: actions/cache@v3
+        with:
+          key: puppeteer-cache-${{ runner.os }}
+          path: .cache/puppeteer
+
       - name: Build
         uses: ./.github/workflows/actions/build
 

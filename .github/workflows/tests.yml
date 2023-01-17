@@ -20,6 +20,9 @@ jobs:
     name: Install
     runs-on: ubuntu-latest
 
+    env:
+      PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -145,7 +148,9 @@ jobs:
           - description: JavaScript component tests
             name: test-component
             run: npx jest --color --maxWorkers=2 --selectProjects "JavaScript component tests"
-            cache: .cache/jest
+            cache: |
+              .cache/jest
+              .cache/puppeteer
 
     steps:
       - name: Checkout
