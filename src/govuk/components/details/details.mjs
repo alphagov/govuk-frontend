@@ -1,3 +1,5 @@
+/* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
+
 /**
  * JavaScript 'polyfill' for HTML5's <details> and <summary> elements
  * and 'shim' to add accessiblity enhancements for all browsers
