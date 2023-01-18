@@ -29,8 +29,8 @@ module.exports = {
       parserOptions: {
         // Note: Allow ES6 for import/export syntax (although our code is ES3 for legacy browsers)
         ecmaVersion: '2022'
-      }
-      // plugins: ['es-x'],
+      },
+      plugins: ['es-x']
       // extends: ['plugin:es-x/restrict-to-es3'],
       // rules: {
       //   // Rollup transpiles modules to AMD export/define

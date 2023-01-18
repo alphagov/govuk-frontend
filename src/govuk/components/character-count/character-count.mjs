@@ -1,14 +1,51 @@
 /* eslint-disable es-x/no-date-now -- Polyfill imported */
 /* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
 
-import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
-import Config from '../../common/config.mjs'
-import { I18n } from '../../i18n.mjs'
+import { withConfiguration } from '../../common/class/mixins/withConfiguration.mjs'
+import { withI18n } from '../../common/class/mixins/withI18n.mjs'
+import { mixOnto } from '../../common/class/mixins.mjs'
 import '../../vendor/polyfills/Date/now.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target normalization and DOMContentLoaded
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import BaseComponent from '../base-component.mjs'
+
+/**
+ * @constant
+ * @type {CharacterCountTranslations}
+ * @see Default value for {@link CharacterCountConfig.i18n}
+ * @default
+ */
+const TRANSLATIONS = {
+  // Characters
+  charactersUnderLimit: {
+    one: 'You have %{count} character remaining',
+    other: 'You have %{count} characters remaining'
+  },
+  charactersAtLimit: 'You have 0 characters remaining',
+  charactersOverLimit: {
+    one: 'You have %{count} character too many',
+    other: 'You have %{count} characters too many'
+  },
+  // Words
+  wordsUnderLimit: {
+    one: 'You have %{count} word remaining',
+    other: 'You have %{count} words remaining'
+  },
+  wordsAtLimit: 'You have 0 words remaining',
+  wordsOverLimit: {
+    one: 'You have %{count} word too many',
+    other: 'You have %{count} words too many'
+  },
+  textareaDescription: {
+    other: ''
+  }
+}
+
+const DEFAULT_CONFIGURATION = {
+  threshold: 0,
+  i18n: TRANSLATIONS
+}
 
 /**
  * JavaScript enhancements for the CharacterCount component
@@ -22,44 +59,7 @@ import BaseComponent from '../base-component.mjs'
  *
  * @class
  */
-class CharacterCount extends BaseComponent {
-  /**
-   * @constant
-   * @type {CharacterCountTranslations}
-   * @see Default value for {@link CharacterCountConfig.i18n}
-   * @default
-   */
-  static TRANSLATIONS = {
-    // Characters
-    charactersUnderLimit: {
-      one: 'You have %{count} character remaining',
-      other: 'You have %{count} characters remaining'
-    },
-    charactersAtLimit: 'You have 0 characters remaining',
-    charactersOverLimit: {
-      one: 'You have %{count} character too many',
-      other: 'You have %{count} characters too many'
-    },
-    // Words
-    wordsUnderLimit: {
-      one: 'You have %{count} word remaining',
-      other: 'You have %{count} words remaining'
-    },
-    wordsAtLimit: 'You have 0 words remaining',
-    wordsOverLimit: {
-      one: 'You have %{count} word too many',
-      other: 'You have %{count} words too many'
-    },
-    textareaDescription: {
-      other: ''
-    }
-  }
-
-  static defaultConfig = {
-    threshold: 0,
-    i18n: CharacterCount.TRANSLATIONS
-  }
-
+class CharacterCount extends mixOnto(BaseComponent, withConfiguration(DEFAULT_CONFIGURATION), withI18n) {
   static selector = 'govuk-character-count'
 
   /**
@@ -69,38 +69,7 @@ class CharacterCount extends BaseComponent {
    * @param {CharacterCountConfig} [config] - Character count config
    */
   constructor ($module, config) {
-    super($module)
-
-    // Read config set using dataset ('data-' values)
-    var datasetConfig = Config.normaliseDataset($module.dataset)
-
-    // To ensure data-attributes take complete precedence, even if they change the
-    // type of count, we need to reset the `maxlength` and `maxwords` from the
-    // JavaScript config.
-    //
-    // We can't mutate `config`, though, as it may be shared across multiple
-    // components inside `initAll`.
-    var configOverrides = {}
-    if ('maxwords' in datasetConfig || 'maxlength' in datasetConfig) {
-      configOverrides = {
-        maxlength: false,
-        maxwords: false
-      }
-    }
-
-    this.config = new Config(
-      CharacterCount.defaultConfig,
-      config || {},
-      configOverrides,
-      datasetConfig
-    )
-
-    console.log(this.config)
-
-    this.i18n = new I18n(this.config.byNamespace('i18n'), {
-      // Read the fallback if necessary rather than have it set in the defaults
-      locale: closestAttributeValue($module, 'lang')
-    })
+    super($module, config)
 
     // Determine the limit attribute (characters or words)
     if (this.config.maxwords) {
@@ -111,13 +80,50 @@ class CharacterCount extends BaseComponent {
       return
     }
 
-    this.$module = $module
+    // this.$module = $module
     this.$textarea = $module.querySelector('.govuk-js-character-count')
     this.$visibleCountMessage = null
     this.$screenReaderCountMessage = null
     this.lastInputTimestamp = null
 
     this.init()
+  }
+
+  /**
+   * To ensure data-attributes take complete precedence, even if they change the
+   * type of count, we need to reset the `maxlength` and `maxwords` from the
+   * JavaScript config.
+   *
+   * We can't mutate `javascriptConfiguration`, though, as it may be shared across multiple
+   * components inside `initAll`.
+   *
+   * @override
+   */
+  gatherConfigurations (javascriptConfiguration) {
+    return [
+      this.defaultConfiguration,
+      javascriptConfiguration,
+      this.getConfigurationOverrides(),
+      this.elementConfiguration
+    ]
+  }
+
+  /**
+   * Creates as configuration that resets `maxlength` and `maxwords`
+   * if they're present in the dataset configuration
+   *
+   * @returns {Object<string,any>} A configration to reset `maxlenght` and `maxwords`
+   */
+  getConfigurationOverrides () {
+    const datasetConfiguration = this.datasetConfiguration
+    if ('maxwords' in datasetConfiguration || 'maxlength' in datasetConfiguration) {
+      return {
+        maxlength: false,
+        maxwords: false
+      }
+    }
+
+    return {}
   }
 
   /**

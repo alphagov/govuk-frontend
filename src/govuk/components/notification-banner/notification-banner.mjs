@@ -1,6 +1,11 @@
-import { mergeConfigs } from '../../common/index.mjs'
-import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { withConfiguration } from '../../common/class/mixins/withConfiguration.mjs'
+import { mixOnto } from '../../common/class/mixins.mjs'
 import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target normalization and DOMContentLoaded
+import BaseComponent from '../base-component.mjs'
+
+const DEFAULT_CONFIGURATION = {
+  disableAutoFocus: false
+}
 
 /**
  * Notification Banner component
@@ -9,68 +14,53 @@ import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target norm
  * @param {HTMLElement} $module - HTML element to use for notification banner
  * @param {NotificationBannerConfig} [config] - Notification banner config
  */
-function NotificationBanner ($module, config) {
-  this.$module = $module
+export default class NotificationBanner extends mixOnto(BaseComponent, withConfiguration(DEFAULT_CONFIGURATION)) {
+  /**
+   * Initialise component
+   */
+  init () {
+    if (!this.$module) {
+      return
+    }
 
-  var defaultConfig = {
-    disableAutoFocus: false
+    this.setFocus()
   }
-  this.config = mergeConfigs(
-    defaultConfig,
-    config || {},
-    normaliseDataset($module.dataset)
-  )
+
+  /**
+   * Focus the element
+   *
+   * If `role="alert"` is set, focus the element to help some assistive technologies
+   * prioritise announcing it.
+   *
+   * You can turn off the auto-focus functionality by setting `data-disable-auto-focus="true"` in the
+   * component HTML. You might wish to do this based on user research findings, or to avoid a clash
+   * with another element which should be focused when the page loads.
+   */
+  setFocus () {
+    var $module = this.$module
+
+    if (this.config.disableAutoFocus) {
+      return
+    }
+
+    if ($module.getAttribute('role') !== 'alert') {
+      return
+    }
+
+    // Set tabindex to -1 to make the element focusable with JavaScript.
+    // Remove the tabindex on blur as the component doesn't need to be focusable after the page has
+    // loaded.
+    if (!$module.getAttribute('tabindex')) {
+      $module.setAttribute('tabindex', '-1')
+
+      $module.addEventListener('blur', function () {
+        $module.removeAttribute('tabindex')
+      })
+    }
+
+    $module.focus()
+  }
 }
-
-/**
- * Initialise component
- */
-NotificationBanner.prototype.init = function () {
-  var $module = this.$module
-  // Check for module
-  if (!$module) {
-    return
-  }
-
-  this.setFocus()
-}
-
-/**
- * Focus the element
- *
- * If `role="alert"` is set, focus the element to help some assistive technologies
- * prioritise announcing it.
- *
- * You can turn off the auto-focus functionality by setting `data-disable-auto-focus="true"` in the
- * component HTML. You might wish to do this based on user research findings, or to avoid a clash
- * with another element which should be focused when the page loads.
- */
-NotificationBanner.prototype.setFocus = function () {
-  var $module = this.$module
-
-  if (this.config.disableAutoFocus) {
-    return
-  }
-
-  if ($module.getAttribute('role') !== 'alert') {
-    return
-  }
-
-  // Set tabindex to -1 to make the element focusable with JavaScript.
-  // Remove the tabindex on blur as the component doesn't need to be focusable after the page has
-  // loaded.
-  if (!$module.getAttribute('tabindex')) {
-    $module.setAttribute('tabindex', '-1')
-
-    $module.addEventListener('blur', function () {
-      $module.removeAttribute('tabindex')
-    })
-  }
-
-  $module.focus()
-}
-
-export default NotificationBanner
 
 /**
  * Notification banner config
