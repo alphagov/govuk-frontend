@@ -28,16 +28,16 @@ module.exports = {
       excludedFiles: ['**/*.test.mjs'],
       parserOptions: {
         // Note: Allow ES6 for import/export syntax (although our code is ES3 for legacy browsers)
-        ecmaVersion: '2015'
-      },
-      plugins: ['es-x'],
-      extends: ['plugin:es-x/restrict-to-es3'],
-      rules: {
-        // Rollup transpiles modules to AMD export/define
-        'es-x/no-modules': 'off',
-        // Rollup plays fine with `export * from`
-        'es-x/no-export-ns-from': 'off'
+        ecmaVersion: '2022'
       }
+      // plugins: ['es-x'],
+      // extends: ['plugin:es-x/restrict-to-es3'],
+      // rules: {
+      //   // Rollup transpiles modules to AMD export/define
+      //   'es-x/no-modules': 'off',
+      //   // Rollup plays fine with `export * from`
+      //   'es-x/no-export-ns-from': 'off'
+      // }
     },
     {
       // Matches 'JavaScript component tests' in jest.config.mjs

@@ -63,7 +63,6 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, minif
     format: 'umd',
 
     // Legacy mode is required for IE8 support
-    legacy: true,
 
     // Used to set the `window` global for 'iife' and 'umd' bundles
     // Components are given unique names (e.g GOVUKFrontend.Accordion)
@@ -100,12 +99,12 @@ export function minifyJavaScript (modulePath, result) {
     format: { comments: false },
 
     // Include source maps
-    sourceMap: {
-      content: result.map,
-      filename: result.map.file,
-      url: `${result.map.file}.map`,
-      includeSources: true
-    },
+    // sourceMap: {
+    //   content: result.map,
+    //   filename: result.map.file,
+    //   url: `${result.map.file}.map`,
+    //   includeSources: true
+    // },
 
     // Compatibility workarounds
     ecma: 5,
@@ -136,7 +135,7 @@ export async function getModuleEntries () {
     .map((modulePath) => ([modulePath, {
       srcPath,
       destPath,
-      minify: !isPackage
+      minify: false
     }]))
 }
 

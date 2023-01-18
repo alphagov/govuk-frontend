@@ -1,4 +1,5 @@
 import { nodeListForEach } from './common/index.mjs'
+import ComponentRegistry from './component-registry.mjs'
 import Accordion from './components/accordion/accordion.mjs'
 import Button from './components/button/button.mjs'
 import CharacterCount from './components/character-count/character-count.mjs'
@@ -31,15 +32,8 @@ function initAll (config) {
     new Accordion($accordion, config.accordion).init()
   })
 
-  var $buttons = $scope.querySelectorAll('[data-module="govuk-button"]')
-  nodeListForEach($buttons, function ($button) {
-    new Button($button, config.button).init()
-  })
-
-  var $characterCounts = $scope.querySelectorAll('[data-module="govuk-character-count"]')
-  nodeListForEach($characterCounts, function ($characterCount) {
-    new CharacterCount($characterCount, config.characterCount).init()
-  })
+  Button.createAll($scope, config.button)
+  CharacterCount.createAll($scope, config.characterCount)
 
   var $checkboxes = $scope.querySelectorAll('[data-module="govuk-checkboxes"]')
   nodeListForEach($checkboxes, function ($checkbox) {
@@ -87,6 +81,7 @@ export {
   initAll,
   Accordion,
   Button,
+  ComponentRegistry,
   Details,
   CharacterCount,
   Checkboxes,

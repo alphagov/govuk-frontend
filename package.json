@@ -68,7 +68,7 @@
     "postcss-unmq": "^1.0.2",
     "postcss-unopacity": "^2.0.0",
     "postcss-unrgba": "^1.1.1",
-    "rollup": "0.59.4",
+    "rollup": "^3.9.1",
     "sassdoc": "^2.7.4",
     "slash": "^5.0.0",
     "terser": "^5.16.1",
