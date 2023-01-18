@@ -9,7 +9,7 @@ params:
   description: If `text` is set, this is not required. HTML to use within the phase banner. If `html` is provided, the `text` option will be ignored.
 - name: tag
   type: object
-  required: false
+  required: true
   description: Options for the tag component.
   isComponent: true
 - name: classes
