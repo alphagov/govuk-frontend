@@ -163,8 +163,8 @@ describe('PostCSS config', () => {
     describe('Review app only', () => {
       it.each(
         [
-          { path: 'app/assets/scss/app.scss' },
-          { path: 'app/assets/scss/app-legacy.scss' }
+          { path: 'app/assets/scss/app.css' },
+          { path: 'app/assets/scss/app-legacy.css' }
         ]
       )('Adds plugins for $path', ({ path }) => {
         const input = new Vinyl({ path })
@@ -180,13 +180,30 @@ describe('PostCSS config', () => {
             ])
         }
       })
+
+      it.each(
+        [
+          { path: 'app/views/full-page-examples/campaign-page/styles.css' },
+          { path: 'app/views/full-page-examples/search/styles.css' }
+        ]
+      )("Skips plugin 'pseudo-classes' for $path", ({ path }) => {
+        const input = new Vinyl({ path })
+
+        // Confirm plugin skipped for both file object and path
+        for (const file of [input, input.path]) {
+          const config = configFn({ env, file })
+
+          expect(getPluginNames(config))
+            .not.toContain('postcss-pseudo-classes')
+        }
+      })
     })
 
     describe('Review app only + IE8', () => {
       it.each(
         [
-          { path: 'app/assets/scss/app-ie8.scss' },
-          { path: 'app/assets/scss/app-legacy-ie8.scss' }
+          { path: 'app/assets/scss/app-ie8.css' },
+          { path: 'app/assets/scss/app-legacy-ie8.css' }
         ]
       )('Adds plugins for $path', ({ path }) => {
         const input = new Vinyl({ path })
