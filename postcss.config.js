@@ -38,6 +38,7 @@ module.exports = ({ env, file = '' }) => {
   // For example ':hover' and ':focus' classes to simulate form label states
   if (minimatch(dir, '**/app/assets/scss')) {
     plugins.push(pseudoclasses({
+      allCombinations: true,
       restrictTo: [
         ':link',
         ':visited',
