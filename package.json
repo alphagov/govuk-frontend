@@ -84,7 +84,7 @@
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-es-x": "^5.4.0",
     "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jsdoc": "^39.6.4",
+    "eslint-plugin-jsdoc": "^39.6.6",
     "eslint-plugin-n": "^15.6.1",
     "eslint-plugin-promise": "^6.1.1",
     "html-validate": "7.13.1",
