@@ -1,8 +1,33 @@
 {% extends "layout.njk" %}
 
 {% from "back-link/macro.njk" import govukBackLink %}
-{% from "checkboxes/macro.njk" import govukCheckboxes %}
-{% from "radios/macro.njk" import govukRadios %}
+{% from "file-upload/macro.njk" import govukFileUpload %}
+{% from "input/macro.njk" import govukInput %}
+{% from "select/macro.njk" import govukSelect %}
+{% from "textarea/macro.njk" import govukTextarea %}
+
+{% set examples = [
+  { name: "Initial" },
+  { name: "Hover", classes: ":hover" },
+  { name: "Focus", classes: ":focus" },
+  { name: "Hover, Focus", classes: ":hover :focus" },
+  { name: "Disabled", attributes: { "disabled": "disabled" } },
+  { name: "Disabled, Hover", classes: ":hover", attributes: { "disabled": "disabled" } },
+  { name: "Error", error: true },
+  { name: "Error, Hover", error: true, classes: ":hover" },
+  { name: "Error, Focus", error: true, classes: ":focus" },
+  { name: "Error, Hover, Focus", error: true, classes: ":hover :focus" }
+] %}
+
+{% set examplesTextInputs = examples.concat([
+  { name: "Readonly",attributes: { "readonly": "readonly" } },
+  { name: "Readonly, Hover", classes: ":hover", attributes: { "readonly": "readonly" } },
+  { name: "Readonly, Focus", classes: ":focus", attributes: { "readonly": "readonly" } },
+  { name: "Readonly, Hover, Focus", classes: ":hover :focus", attributes: { "readonly": "readonly" } },
+  { name: "X-Ray", xray: true }
+]) %}
+
+{% set examples = examples.concat([{ name: "X-Ray", xray: true }]) %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -16,7 +41,9 @@
   box-shadow: 0 0 0 3px rgba(175, 175, 175, 0.5);
 }
 
-.x-ray input {
+.x-ray input,
+.x-ray select,
+.x-ray textarea {
   opacity: 1 !important;
   box-shadow: 0 0 0 3px rgba(0, 0, 255, 0.5);
   -webkit-appearance: none;
@@ -26,6 +53,50 @@
   box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.5);
 }
 </style>
+
+<div class="govuk-grid-row">
+  {% for hasValue in [false, true] %}
+    <div class="govuk-grid-column-one-half">
+      {% for item in examplesTextInputs %}
+        {{ govukInput({
+          id: 'input-' + loop.index,
+          value: 'Bats are mammals of the order Chiroptera' if hasValue else '',
+          classes: item.classes if item.classes else '',
+          label: {
+            text: item.name
+          },
+          formGroup: { classes: 'x-ray' if item.xray else '' },
+          attributes: item.attributes if item.attributes else {},
+          errorMessage: item.error
+        }) }}
+      {% endfor %}
+    </div>
+  {% endfor %}
+</div>
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+<div class="govuk-grid-row">
+  {% for hasValue in [false, true] %}
+    <div class="govuk-grid-column-one-half">
+      {% for item in examplesTextInputs %}
+        {{ govukTextarea({
+          id: 'textarea-' + loop.index,
+          value: "With their forelimbs adapted as wings, they are the only mammals capable of true and sustained flight. Bats are more agile in flight than most birds, flying with their very long spread-out digits covered with a thin membrane or patagium. The smallest bat, and arguably the smallest extant mammal, is Kitti's hog-nosed bat, which is 29–34 millimetres in length, 150 mm  across the wings and 2–2.6 g in mass. The largest bats are the flying foxes, with the giant golden-crowned flying fox, reaching a weight of 1.6 kg and having a wingspan of 1.7 m." if hasValue else '',
+          classes: item.classes if item.classes else '',
+          label: {
+            text: item.name
+          },
+          formGroup: { classes: 'x-ray' if item.xray else '' },
+          attributes: item.attributes if item.attributes else {},
+          errorMessage: item.error
+        }) }}
+      {% endfor %}
+    </div>
+  {% endfor %}
+</div>
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-one-half">
@@ -304,6 +375,53 @@
         </label>
       </div>
     </div>
+  </div>
+</div>
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    {% for item in examples %}
+      {{ govukSelect({
+        id: 'select-' + loop.index,
+        items: [
+          { value: 'Aethalops aequalis', text: 'Borneo fruit bat' },
+          { value: 'Pteropus mariannus mariannus', text: 'Guam Mariana fruit bat' },
+          { value: 'Ectophylla alba', text: 'Honduran white bat', selected: true },
+          { value: 'Pteropus medius', text: 'Indian flying fox' },
+          { value: 'Megaerops kusnotoi', text: 'Javan tailless fruit bat' },
+          { value: 'Pteropus rufus', text: 'Madagascan flying fox' },
+          { value: 'Myzopoda aurita', text: 'Madagascar sucker-footed bat' },
+          { value: 'Miniopterus mossambicus', text: 'Mozambique long-fingered bat' },
+          { value: 'Miniopterus paululus', text: 'Philippine long-fingered bat' },
+          { value: 'Myonycteris brachycephala', text: 'São Tomé collared fruit bat' },
+          { value: 'Pteropus seychellensis', text: 'Seychelles fruit bat' },
+          { value: 'Harpyionycteris celebensis', text: 'Sulawesi harpy fruit bat' }
+        ],
+        classes: item.classes if item.classes else '',
+        label: {
+          text: item.name
+        },
+        formGroup: { classes: 'x-ray' if item.xray else '' },
+        attributes: item.attributes if item.attributes else {},
+        errorMessage: item.error
+      }) }}
+    {% endfor %}
+  </div>
+  <div class="govuk-grid-column-one-half">
+    {% for item in examples %}
+      {{ govukFileUpload({
+        id: 'file-upload-' + loop.index,
+        classes: item.classes if item.classes else '',
+        label: {
+          text: item.name
+        },
+        formGroup: { classes: 'x-ray' if item.xray else '' },
+        attributes: item.attributes if item.attributes else {},
+        errorMessage: item.error
+      }) }}
+    {% endfor %}
   </div>
 </div>
 
