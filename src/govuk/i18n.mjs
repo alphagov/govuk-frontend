@@ -76,29 +76,39 @@ I18n.prototype.replacePlaceholders = function (translationString, options) {
     formatter = new Intl.NumberFormat(this.locale)
   }
 
-  return translationString.replace(/%{(.\S+)}/g, function (placeholderWithBraces, placeholderKey) {
-    if (Object.prototype.hasOwnProperty.call(options, placeholderKey)) {
-      var placeholderValue = options[placeholderKey]
+  return translationString.replace(
+    /%{(.\S+)}/g,
 
-      // If a user has passed `false` as the value for the placeholder
-      // treat it as though the value should not be displayed
-      if (placeholderValue === false || (
-        typeof placeholderValue !== 'number' &&
-        typeof placeholderValue !== 'string')
-      ) {
-        return ''
+    /**
+     * Replace translation string placeholders
+     *
+     * @param {string} placeholderWithBraces - Placeholder with braces
+     * @param {string} placeholderKey - Placeholder key
+     * @returns {string} Placeholder value
+     */
+    function (placeholderWithBraces, placeholderKey) {
+      if (Object.prototype.hasOwnProperty.call(options, placeholderKey)) {
+        var placeholderValue = options[placeholderKey]
+
+        // If a user has passed `false` as the value for the placeholder
+        // treat it as though the value should not be displayed
+        if (placeholderValue === false || (
+          typeof placeholderValue !== 'number' &&
+          typeof placeholderValue !== 'string')
+        ) {
+          return ''
+        }
+
+        // If the placeholder's value is a number, localise the number formatting
+        if (typeof placeholderValue === 'number') {
+          return formatter ? formatter.format(placeholderValue) : placeholderValue.toString()
+        }
+
+        return placeholderValue
+      } else {
+        throw new Error('i18n: no data found to replace ' + placeholderWithBraces + ' placeholder in string')
       }
-
-      // If the placeholder's value is a number, localise the number formatting
-      if (typeof placeholderValue === 'number') {
-        return formatter ? formatter.format(placeholderValue) : placeholderValue.toString()
-      }
-
-      return placeholderValue
-    } else {
-      throw new Error('i18n: no data found to replace ' + placeholderWithBraces + ' placeholder in string')
-    }
-  })
+    })
 }
 
 /**

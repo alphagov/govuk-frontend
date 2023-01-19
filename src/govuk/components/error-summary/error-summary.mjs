@@ -112,6 +112,10 @@ ErrorSummary.prototype.focusTarget = function ($target) {
   }
 
   var inputId = this.getFragmentFromUrl($target.href)
+  if (!inputId) {
+    return false
+  }
+
   var $input = document.getElementById(inputId)
   if (!$input) {
     return false
@@ -138,11 +142,11 @@ ErrorSummary.prototype.focusTarget = function ($target) {
  * the hash.
  *
  * @param {string} url - URL
- * @returns {string} Fragment from URL, without the hash
+ * @returns {string | undefined} Fragment from URL, without the hash
  */
 ErrorSummary.prototype.getFragmentFromUrl = function (url) {
   if (url.indexOf('#') === -1) {
-    return false
+    return undefined
   }
 
   return url.split('#').pop()
@@ -160,7 +164,7 @@ ErrorSummary.prototype.getFragmentFromUrl = function (url) {
  * - The closest parent `<label>`
  *
  * @param {HTMLElement} $input - The input
- * @returns {HTMLElement} Associated legend or label, or null if no associated
+ * @returns {HTMLElement | null} Associated legend or label, or null if no associated
  *   legend or label can be found
  */
 ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {

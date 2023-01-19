@@ -25,11 +25,11 @@ describe('closestAttributeValue', () => {
     expect(closestAttributeValue($element, 'lang')).toEqual('en-GB')
   })
 
-  it('returns undefined if neither the element or a parent have the attribute', () => {
+  it('returns null if neither the element or a parent have the attribute', () => {
     const $parent = document.createElement('div')
     const $element = document.createElement('div')
     $parent.appendChild($element)
 
-    expect(closestAttributeValue($element, 'lang')).toBeUndefined()
+    expect(closestAttributeValue($element, 'lang')).toBeNull()
   })
 })

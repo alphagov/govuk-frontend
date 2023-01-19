@@ -37,13 +37,12 @@ SkipLink.prototype.init = function () {
 /**
  * Get linked element
  *
- * @returns {HTMLElement} $linkedElement - DOM element linked to from the skip link
+ * @returns {HTMLElement | null} $linkedElement - DOM element linked to from the skip link
  */
 SkipLink.prototype.getLinkedElement = function () {
   var linkedElementId = this.getFragmentFromUrl()
-
   if (!linkedElementId) {
-    return false
+    return null
   }
 
   return document.getElementById(linkedElementId)
@@ -88,12 +87,12 @@ SkipLink.prototype.removeFocusProperties = function () {
  * Extract the fragment (everything after the hash symbol) from a URL, but not including
  * the symbol.
  *
- * @returns {string} Fragment from URL, without the hash symbol
+ * @returns {string | undefined} Fragment from URL, without the hash symbol
  */
 SkipLink.prototype.getFragmentFromUrl = function () {
   // Bail if the anchor link doesn't have a hash
   if (!this.$module.hash) {
-    return false
+    return
   }
 
   return this.$module.hash.split('#').pop()

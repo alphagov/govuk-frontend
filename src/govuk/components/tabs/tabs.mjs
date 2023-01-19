@@ -133,10 +133,9 @@ Tabs.prototype.teardown = function () {
 /**
  * Handle hashchange event
  *
- * @param {HashChangeEvent} event - Hash change event
  * @returns {void | undefined} Returns void, or undefined when prevented
  */
-Tabs.prototype.onHashChange = function (event) {
+Tabs.prototype.onHashChange = function () {
   var hash = window.location.hash
   var $tabWithHash = this.getTab(hash)
   if (!$tabWithHash) {
@@ -340,11 +339,10 @@ Tabs.prototype.activatePreviousTab = function () {
  * Get tab panel for tab link
  *
  * @param {HTMLAnchorElement} $tab - Tab link
- * @returns {HTMLDivElement} Tab panel
+ * @returns {HTMLElement | null} Tab panel
  */
 Tabs.prototype.getPanel = function ($tab) {
-  var $panel = this.$module.querySelector(this.getHref($tab))
-  return $panel
+  return this.$module.querySelector(this.getHref($tab))
 }
 
 /**
@@ -392,7 +390,7 @@ Tabs.prototype.highlightTab = function ($tab) {
 /**
  * Get current tab link
  *
- * @returns {HTMLAnchorElement | undefined} Tab link
+ * @returns {HTMLAnchorElement | null} Tab link
  */
 Tabs.prototype.getCurrentTab = function () {
   return this.$module.querySelector('.govuk-tabs__list-item--selected .govuk-tabs__tab')
