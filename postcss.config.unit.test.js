@@ -84,7 +84,10 @@ describe('PostCSS config', () => {
           const config = configFn({ env, file })
 
           expect(getPluginNames(config))
-            .toEqual(['autoprefixer'])
+            .toEqual([
+              'autoprefixer',
+              'cssnano'
+            ])
         }
       })
     })
@@ -107,54 +110,8 @@ describe('PostCSS config', () => {
               'autoprefixer',
               'postcss-unmq',
               'postcss-unopacity',
-              'postcss-color-rgba-fallback'
-            ])
-        }
-      })
-    })
-
-    describe('Default + Minification', () => {
-      it.each(
-        [
-          { path: 'example.min.css' },
-          { path: 'example.min.scss' }
-        ]
-      )('Adds plugins for $path', ({ path }) => {
-        const input = new Vinyl({ path })
-
-        // Confirm plugins for both file object and path
-        for (const file of [input, input.path]) {
-          const config = configFn({ env, file })
-
-          expect(getPluginNames(config))
-            .toEqual([
-              'autoprefixer',
+              'postcss-color-rgba-fallback',
               'cssnano'
-            ])
-        }
-      })
-    })
-
-    describe('Default + Minification + IE8', () => {
-      it.each(
-        [
-          { path: 'example-ie8.min.css' },
-          { path: 'example-ie8.min.scss' }
-        ]
-      )('Adds plugins for $path', ({ path }) => {
-        const input = new Vinyl({ path })
-
-        // Confirm plugins for both file object and path
-        for (const file of [input, input.path]) {
-          const config = configFn({ env, file })
-
-          expect(getPluginNames(config))
-            .toEqual([
-              'autoprefixer',
-              'cssnano',
-              'postcss-unmq',
-              'postcss-unopacity',
-              'postcss-color-rgba-fallback'
             ])
         }
       })
@@ -163,8 +120,8 @@ describe('PostCSS config', () => {
     describe('Review app only', () => {
       it.each(
         [
-          { path: 'app/assets/scss/app.scss' },
-          { path: 'app/assets/scss/app-legacy.scss' }
+          { path: 'app/assets/scss/app.css' },
+          { path: 'app/assets/scss/app-legacy.css' }
         ]
       )('Adds plugins for $path', ({ path }) => {
         const input = new Vinyl({ path })
@@ -176,8 +133,26 @@ describe('PostCSS config', () => {
           expect(getPluginNames(config))
             .toEqual([
               'autoprefixer',
-              'postcss-pseudo-classes'
+              'postcss-pseudo-classes',
+              'cssnano'
             ])
+        }
+      })
+
+      it.each(
+        [
+          { path: 'app/views/full-page-examples/campaign-page/styles.css' },
+          { path: 'app/views/full-page-examples/search/styles.css' }
+        ]
+      )("Skips plugin 'pseudo-classes' for $path", ({ path }) => {
+        const input = new Vinyl({ path })
+
+        // Confirm plugin skipped for both file object and path
+        for (const file of [input, input.path]) {
+          const config = configFn({ env, file })
+
+          expect(getPluginNames(config))
+            .not.toContain('postcss-pseudo-classes')
         }
       })
     })
@@ -185,8 +160,8 @@ describe('PostCSS config', () => {
     describe('Review app only + IE8', () => {
       it.each(
         [
-          { path: 'app/assets/scss/app-ie8.scss' },
-          { path: 'app/assets/scss/app-legacy-ie8.scss' }
+          { path: 'app/assets/scss/app-ie8.css' },
+          { path: 'app/assets/scss/app-legacy-ie8.css' }
         ]
       )('Adds plugins for $path', ({ path }) => {
         const input = new Vinyl({ path })
@@ -201,7 +176,8 @@ describe('PostCSS config', () => {
               'postcss-pseudo-classes',
               'postcss-unmq',
               'postcss-unopacity',
-              'postcss-color-rgba-fallback'
+              'postcss-color-rgba-fallback',
+              'cssnano'
             ])
         }
       })
