@@ -29,11 +29,6 @@ module.exports = ({ env, file = '' }) => {
     autoprefixer({ env: isIE8 ? 'oldie' : env })
   ]
 
-  // Minify CSS
-  if (name.endsWith('.min')) {
-    plugins.push(cssnano())
-  }
-
   // Add review app auto-generated 'companion' classes for each pseudo-class
   // For example ':hover' and ':focus' classes to simulate form label states
   if (minimatch(dir, '**/app/assets/scss')) {
@@ -57,6 +52,9 @@ module.exports = ({ env, file = '' }) => {
       unrgba({ filter: true })
     )
   }
+
+  // Always minify CSS
+  plugins.push(cssnano())
 
   return {
     plugins

@@ -84,7 +84,10 @@ describe('PostCSS config', () => {
           const config = configFn({ env, file })
 
           expect(getPluginNames(config))
-            .toEqual(['autoprefixer'])
+            .toEqual([
+              'autoprefixer',
+              'cssnano'
+            ])
         }
       })
     })
@@ -107,54 +110,8 @@ describe('PostCSS config', () => {
               'autoprefixer',
               'postcss-unmq',
               'postcss-unopacity',
-              'postcss-color-rgba-fallback'
-            ])
-        }
-      })
-    })
-
-    describe('Default + Minification', () => {
-      it.each(
-        [
-          { path: 'example.min.css' },
-          { path: 'example.min.scss' }
-        ]
-      )('Adds plugins for $path', ({ path }) => {
-        const input = new Vinyl({ path })
-
-        // Confirm plugins for both file object and path
-        for (const file of [input, input.path]) {
-          const config = configFn({ env, file })
-
-          expect(getPluginNames(config))
-            .toEqual([
-              'autoprefixer',
+              'postcss-color-rgba-fallback',
               'cssnano'
-            ])
-        }
-      })
-    })
-
-    describe('Default + Minification + IE8', () => {
-      it.each(
-        [
-          { path: 'example-ie8.min.css' },
-          { path: 'example-ie8.min.scss' }
-        ]
-      )('Adds plugins for $path', ({ path }) => {
-        const input = new Vinyl({ path })
-
-        // Confirm plugins for both file object and path
-        for (const file of [input, input.path]) {
-          const config = configFn({ env, file })
-
-          expect(getPluginNames(config))
-            .toEqual([
-              'autoprefixer',
-              'cssnano',
-              'postcss-unmq',
-              'postcss-unopacity',
-              'postcss-color-rgba-fallback'
             ])
         }
       })
@@ -176,7 +133,8 @@ describe('PostCSS config', () => {
           expect(getPluginNames(config))
             .toEqual([
               'autoprefixer',
-              'postcss-pseudo-classes'
+              'postcss-pseudo-classes',
+              'cssnano'
             ])
         }
       })
@@ -218,7 +176,8 @@ describe('PostCSS config', () => {
               'postcss-pseudo-classes',
               'postcss-unmq',
               'postcss-unopacity',
-              'postcss-color-rgba-fallback'
+              'postcss-color-rgba-fallback',
+              'cssnano'
             ])
         }
       })
