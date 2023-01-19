@@ -56,6 +56,7 @@ Tabs.prototype.checkMode = function () {
  * Setup tab component
  */
 Tabs.prototype.setup = function () {
+  var $component = this
   var $module = this.$module
   var $tabs = this.$tabs
   var $tabList = $module.querySelector('.govuk-tabs__list')
@@ -73,19 +74,19 @@ Tabs.prototype.setup = function () {
 
   nodeListForEach($tabs, function ($tab) {
     // Set HTML attributes
-    this.setAttributes($tab)
+    $component.setAttributes($tab)
 
     // Save bounded functions to use when removing event listeners during teardown
-    $tab.boundTabClick = this.onTabClick.bind(this)
-    $tab.boundTabKeydown = this.onTabKeydown.bind(this)
+    $tab.boundTabClick = $component.onTabClick.bind($component)
+    $tab.boundTabKeydown = $component.onTabKeydown.bind($component)
 
     // Handle events
     $tab.addEventListener('click', $tab.boundTabClick, true)
     $tab.addEventListener('keydown', $tab.boundTabKeydown, true)
 
     // Remove old active panels
-    this.hideTab($tab)
-  }.bind(this))
+    $component.hideTab($tab)
+  })
 
   // Show either the active tab according to the URL's hash or the first tab
   var $activeTab = this.getTab(window.location.hash) || this.$tabs[0]
@@ -100,6 +101,7 @@ Tabs.prototype.setup = function () {
  * Teardown tab component
  */
 Tabs.prototype.teardown = function () {
+  var $component = this
   var $module = this.$module
   var $tabs = this.$tabs
   var $tabList = $module.querySelector('.govuk-tabs__list')
@@ -121,8 +123,8 @@ Tabs.prototype.teardown = function () {
     $tab.removeEventListener('keydown', $tab.boundTabKeydown, true)
 
     // Unset HTML attributes
-    this.unsetAttributes($tab)
-  }.bind(this))
+    $component.unsetAttributes($tab)
+  })
 
   // Remove hashchange event handler
   window.removeEventListener('hashchange', $module.boundOnHashChange, true)
@@ -372,7 +374,7 @@ Tabs.prototype.hidePanel = function ($tab) {
  */
 Tabs.prototype.unhighlightTab = function ($tab) {
   $tab.setAttribute('aria-selected', 'false')
-  $tab.parentNode.classList.remove('govuk-tabs__list-item--selected')
+  $tab.parentElement.classList.remove('govuk-tabs__list-item--selected')
   $tab.setAttribute('tabindex', '-1')
 }
 
@@ -383,7 +385,7 @@ Tabs.prototype.unhighlightTab = function ($tab) {
  */
 Tabs.prototype.highlightTab = function ($tab) {
   $tab.setAttribute('aria-selected', 'true')
-  $tab.parentNode.classList.add('govuk-tabs__list-item--selected')
+  $tab.parentElement.classList.add('govuk-tabs__list-item--selected')
   $tab.setAttribute('tabindex', '0')
 }
 

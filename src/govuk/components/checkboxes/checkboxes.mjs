@@ -103,15 +103,19 @@ Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
  * @param {HTMLElement} $input - Checkbox input
  */
 Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
-  var allInputsWithSameName = document.querySelectorAll('input[type="checkbox"][name="' + $input.name + '"]')
+  var $component = this
+
+  var allInputsWithSameName = document.querySelectorAll(
+    'input[type="checkbox"][name="' + $input.name + '"]'
+  )
 
   nodeListForEach(allInputsWithSameName, function ($inputWithSameName) {
     var hasSameFormOwner = ($input.form === $inputWithSameName.form)
     if (hasSameFormOwner && $inputWithSameName !== $input) {
       $inputWithSameName.checked = false
-      this.syncConditionalRevealWithInputState($inputWithSameName)
+      $component.syncConditionalRevealWithInputState($inputWithSameName)
     }
-  }.bind(this))
+  })
 }
 
 /**
@@ -124,6 +128,8 @@ Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
  * @param {HTMLInputElement} $input - Checkbox input
  */
 Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
+  var $component = this
+
   var allInputsWithSameNameAndExclusiveBehaviour = document.querySelectorAll(
     'input[data-behaviour="exclusive"][type="checkbox"][name="' + $input.name + '"]'
   )
@@ -132,9 +138,9 @@ Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
     var hasSameFormOwner = ($input.form === $exclusiveInput.form)
     if (hasSameFormOwner) {
       $exclusiveInput.checked = false
-      this.syncConditionalRevealWithInputState($exclusiveInput)
+      $component.syncConditionalRevealWithInputState($exclusiveInput)
     }
-  }.bind(this))
+  })
 }
 
 /**
@@ -149,7 +155,7 @@ Checkboxes.prototype.handleClick = function (event) {
   var $clickedInput = event.target
 
   // Ignore clicks on things that aren't checkbox inputs
-  if ($clickedInput.type !== 'checkbox') {
+  if (!($clickedInput instanceof HTMLInputElement) || $clickedInput.type !== 'checkbox') {
     return
   }
 

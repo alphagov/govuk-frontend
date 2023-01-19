@@ -139,26 +139,30 @@ Accordion.prototype.initControls = function () {
  * Initialise section headers
  */
 Accordion.prototype.initSectionHeaders = function () {
-  // Loop through section headers
-  nodeListForEach(this.$sections, function ($section, i) {
+  var $component = this
+  var $sections = this.$sections
+
+  // Loop through sections
+  nodeListForEach($sections, function ($section, i) {
+    var $header = $section.querySelector('.' + $component.sectionHeaderClass)
+
     // Set header attributes
-    var $header = $section.querySelector('.' + this.sectionHeaderClass)
-    this.constructHeaderMarkup($header, i)
-    this.setExpanded(this.isExpanded($section), $section)
+    $component.constructHeaderMarkup($header, i)
+    $component.setExpanded($component.isExpanded($section), $section)
 
     // Handle events
-    $header.addEventListener('click', this.onSectionToggle.bind(this, $section))
+    $header.addEventListener('click', $component.onSectionToggle.bind($component, $section))
 
     // See if there is any state stored in sessionStorage and set the sections to
     // open or closed.
-    this.setInitialState($section)
-  }.bind(this))
+    $component.setInitialState($section)
+  })
 }
 
 /**
  * Construct section header
  *
- * @param {HTMLDivElement} $header - Section header
+ * @param {HTMLElement} $header - Section header
  * @param {number} index - Section index
  */
 Accordion.prototype.constructHeaderMarkup = function ($header, index) {
@@ -286,17 +290,19 @@ Accordion.prototype.onSectionToggle = function ($section) {
  * When Open/Close All toggled, set and store state
  */
 Accordion.prototype.onShowOrHideAllToggle = function () {
-  var $module = this
+  var $component = this
   var $sections = this.$sections
+
   var nowExpanded = !this.checkIfAllSectionsOpen()
 
+  // Loop through sections
   nodeListForEach($sections, function ($section) {
-    $module.setExpanded(nowExpanded, $section)
+    $component.setExpanded(nowExpanded, $section)
     // Store the state in sessionStorage when a change is triggered
-    $module.storeState($section)
+    $component.storeState($section)
   })
 
-  $module.updateShowAllButton(nowExpanded)
+  $component.updateShowAllButton(nowExpanded)
 }
 
 /**

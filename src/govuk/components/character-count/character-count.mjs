@@ -96,9 +96,9 @@ function CharacterCount ($module, config) {
   })
 
   // Determine the limit attribute (characters or words)
-  if (this.config.maxwords) {
+  if ('maxwords' in this.config && this.config.maxwords) {
     this.maxLength = this.config.maxwords
-  } else if (this.config.maxlength) {
+  } else if ('maxlength' in this.config && this.config.maxlength) {
     this.maxLength = this.config.maxlength
   } else {
     return
@@ -108,7 +108,9 @@ function CharacterCount ($module, config) {
   this.$textarea = $module.querySelector('.govuk-js-character-count')
   this.$visibleCountMessage = null
   this.$screenReaderCountMessage = null
+
   this.lastInputTimestamp = null
+  this.lastInputValue = ''
 }
 
 /**
@@ -233,9 +235,8 @@ CharacterCount.prototype.handleBlur = function () {
  * Update count message if textarea value has changed
  */
 CharacterCount.prototype.updateIfValueChanged = function () {
-  if (!this.$textarea.oldValue) this.$textarea.oldValue = ''
-  if (this.$textarea.value !== this.$textarea.oldValue) {
-    this.$textarea.oldValue = this.$textarea.value
+  if (this.$textarea.value !== this.lastInputValue) {
+    this.lastInputValue = this.$textarea.value
     this.updateCountMessage()
   }
 }
@@ -308,7 +309,7 @@ CharacterCount.prototype.updateScreenReaderCountMessage = function () {
  * @returns {number} the number of characters (or words) in the text
  */
 CharacterCount.prototype.count = function (text) {
-  if (this.config.maxwords) {
+  if ('maxwords' in this.config && this.config.maxwords) {
     var tokens = text.match(/\S+/g) || [] // Matches consecutive non-whitespace chars
     return tokens.length
   } else {
@@ -324,7 +325,7 @@ CharacterCount.prototype.count = function (text) {
 CharacterCount.prototype.getCountMessage = function () {
   var remainingNumber = this.maxLength - this.count(this.$textarea.value)
 
-  var countType = this.config.maxwords ? 'words' : 'characters'
+  var countType = 'maxwords' in this.config && this.config.maxwords ? 'words' : 'characters'
   return this.formatCountMessage(remainingNumber, countType)
 }
 

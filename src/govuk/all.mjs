@@ -75,7 +75,9 @@ function initAll (config) {
 
   // Find first skip link module to enhance.
   var $skipLink = $scope.querySelector('[data-module="govuk-skip-link"]')
-  new SkipLink($skipLink).init()
+  if ($skipLink) {
+    new SkipLink($skipLink).init()
+  }
 
   var $tabs = $scope.querySelectorAll('[data-module="govuk-tabs"]')
   nodeListForEach($tabs, function ($tabs) {

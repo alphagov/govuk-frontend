@@ -105,10 +105,11 @@ Radios.prototype.syncConditionalRevealWithInputState = function ($input) {
  * @param {MouseEvent} event - Click event
  */
 Radios.prototype.handleClick = function (event) {
+  var $component = this
   var $clickedInput = event.target
 
   // Ignore clicks on things that aren't radio buttons
-  if ($clickedInput.type !== 'radio') {
+  if (!($clickedInput instanceof HTMLInputElement) || $clickedInput.type !== 'radio') {
     return
   }
 
@@ -116,14 +117,17 @@ Radios.prototype.handleClick = function (event) {
   // aria-controls attributes.
   var $allInputs = document.querySelectorAll('input[type="radio"][aria-controls]')
 
+  var $clickedInputForm = $clickedInput.form
+  var $clickedInputName = $clickedInput.name
+
   nodeListForEach($allInputs, function ($input) {
-    var hasSameFormOwner = ($input.form === $clickedInput.form)
-    var hasSameName = ($input.name === $clickedInput.name)
+    var hasSameFormOwner = $input.form === $clickedInputForm
+    var hasSameName = $input.name === $clickedInputName
 
     if (hasSameName && hasSameFormOwner) {
-      this.syncConditionalRevealWithInputState($input)
+      $component.syncConditionalRevealWithInputState($input)
     }
-  }.bind(this))
+  })
 }
 
 export default Radios

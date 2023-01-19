@@ -8,7 +8,7 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * Skip link component
  *
  * @class
- * @param {HTMLElement} $module - HTML element to use for skip link
+ * @param {HTMLAnchorElement} $module - HTML element to use for skip link
  */
 function SkipLink ($module) {
   this.$module = $module
