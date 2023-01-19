@@ -46,5 +46,9 @@
 
       box-shadow: inset 0 0 0 4px $govuk-input-border-colour;
     }
+
+    &:disabled {
+      opacity: .5;
+    }
   }
 }
