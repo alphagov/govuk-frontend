@@ -123,6 +123,7 @@ Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
   var $component = this
 
   /** @type {NodeListOf<HTMLInputElement>} */
+  // @ts-expect-error `NodeListOf<HTMLInputElement>` type expected
   var allInputsWithSameName = document.querySelectorAll(
     'input[type="checkbox"][name="' + $input.name + '"]'
   )
@@ -149,6 +150,7 @@ Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
   var $component = this
 
   /** @type {NodeListOf<HTMLInputElement>} */
+  // @ts-expect-error `NodeListOf<HTMLInputElement>` type expected
   var allInputsWithSameNameAndExclusiveBehaviour = document.querySelectorAll(
     'input[data-behaviour="exclusive"][type="checkbox"][name="' + $input.name + '"]'
   )
