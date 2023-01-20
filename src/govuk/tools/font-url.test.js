@@ -27,6 +27,7 @@ describe('@function font-url', () => {
     const sass = `
       @import "tools/font-url";
 
+      $govuk-fonts-path: '/path/to/fonts/';
       $govuk-font-url-function: 'to_upper_case';
 
       @font-face {
