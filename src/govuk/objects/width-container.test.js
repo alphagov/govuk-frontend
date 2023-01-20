@@ -2,10 +2,6 @@ const { outdent } = require('outdent')
 
 const { renderSass } = require('../../../lib/jest-helpers')
 
-const sassConfig = {
-  outputStyle: 'nested'
-}
-
 describe('@mixin govuk-width-container', () => {
   it('allows different widths to be specified using $width', async () => {
     const sass = `
@@ -15,7 +11,7 @@ describe('@mixin govuk-width-container', () => {
         @include govuk-width-container(1200px);
       }
     `
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass })
 
     expect(results.css
       .toString()

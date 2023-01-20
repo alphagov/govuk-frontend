@@ -10,7 +10,6 @@ const mockWarnFunction = jest.fn()
   .mockReturnValue(sass.NULL)
 
 const sassConfig = {
-  outputStyle: 'nested',
   functions: {
     '@warn': mockWarnFunction
   }

@@ -2,10 +2,6 @@ const { outdent } = require('outdent')
 
 const { renderSass } = require('../../../lib/jest-helpers')
 
-const sassConfig = {
-  outputStyle: 'nested'
-}
-
 const sassBootstrap = `
   @import "settings/media-queries";
   @import "settings/ie8";
@@ -43,7 +39,7 @@ describe('@function govuk-spacing', () => {
         top: govuk-spacing($spacing-point)
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass })
 
     expect(results.css.toString().trim()).toBe(outdent`
       .foo {
@@ -58,7 +54,7 @@ describe('@function govuk-spacing', () => {
         top: govuk-spacing(-2)
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass })
 
     expect(results.css.toString().trim()).toBe(outdent`
       .foo {
@@ -73,7 +69,7 @@ describe('@function govuk-spacing', () => {
         top: govuk-spacing('margin')
       }`
 
-    await expect(renderSass({ data: sass, ...sassConfig }))
+    await expect(renderSass({ data: sass }))
       .rejects
       .toThrow(
         'Expected a number (integer), but got a string.'
@@ -88,7 +84,7 @@ describe('@function govuk-spacing', () => {
         top: govuk-spacing(999)
       }`
 
-    await expect(renderSass({ data: sass, ...sassConfig }))
+    await expect(renderSass({ data: sass }))
       .rejects
       .toThrow(
         'Unknown spacing variable `999`. Make sure you are using a point from the spacing scale in `_settings/spacing.scss`.'
@@ -103,7 +99,7 @@ describe('@function govuk-spacing', () => {
         top: govuk-spacing(-999)
       }`
 
-    await expect(renderSass({ data: sass, ...sassConfig }))
+    await expect(renderSass({ data: sass }))
       .rejects
       .toThrow(
         'Unknown spacing variable `999`. Make sure you are using a point from the spacing scale in `_settings/spacing.scss`.'
@@ -118,7 +114,7 @@ describe('@function govuk-spacing', () => {
         top: govuk-spacing(-0)
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass })
 
     expect(results.css.toString().trim()).toBe(outdent`
       .foo {
@@ -135,7 +131,7 @@ describe('@mixin _govuk-responsive-spacing', () => {
         @include _govuk-responsive-spacing($spacing-point, 'margin')
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass })
 
     expect(results.css.toString().trim()).toBe(outdent`
       .foo {
@@ -153,7 +149,7 @@ describe('@mixin _govuk-responsive-spacing', () => {
         @include _govuk-responsive-spacing($spacing-point, 'padding', 'top');
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass })
 
     expect(results.css.toString().trim()).toBe(outdent`
       .foo {
@@ -171,7 +167,7 @@ describe('@mixin _govuk-responsive-spacing', () => {
         @include _govuk-responsive-spacing(14px, 'margin')
       }`
 
-    await expect(renderSass({ data: sass, ...sassConfig }))
+    await expect(renderSass({ data: sass }))
       .rejects
       .toThrow(
         'Unknown spacing point `14px`. Make sure you are using a point from the responsive spacing scale in `_settings/spacing.scss`.'
@@ -191,7 +187,7 @@ describe('@mixin _govuk-responsive-spacing', () => {
           )
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSass({ data: sass })
 
       expect(results.css.toString().trim()).toBe(outdent`
         .foo {
@@ -214,7 +210,7 @@ describe('@mixin _govuk-responsive-spacing', () => {
           )
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSass({ data: sass })
 
       expect(results.css.toString().trim()).toBe(outdent`
         .foo {
@@ -238,7 +234,7 @@ describe('@mixin _govuk-responsive-spacing', () => {
           )
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSass({ data: sass })
 
       expect(results.css.toString().trim()).toBe(outdent`
         .foo {
@@ -261,7 +257,7 @@ describe('@mixin _govuk-responsive-spacing', () => {
           )
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSass({ data: sass })
 
       expect(results.css.toString().trim()).toBe(outdent`
         .foo {
@@ -282,7 +278,7 @@ describe('@mixin govuk-responsive-margin', () => {
           @include govuk-responsive-margin($spacing-point)
         }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass })
 
     expect(results.css.toString().trim()).toBe(outdent`
         .foo {
@@ -305,7 +301,7 @@ describe('@mixin govuk-responsive-margin', () => {
           )
         }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass })
 
     expect(results.css.toString().trim()).toBe(outdent`
         .foo {
@@ -325,7 +321,7 @@ describe('@mixin govuk-responsive-padding', () => {
           @include govuk-responsive-padding($spacing-point)
         }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass })
 
     expect(results.css.toString().trim()).toBe(outdent`
         .foo {
@@ -348,7 +344,7 @@ describe('@mixin govuk-responsive-padding', () => {
           )
         }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass })
 
     expect(results.css.toString().trim()).toBe(outdent`
         .foo {
