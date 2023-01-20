@@ -1,5 +1,6 @@
 const config = {
   cacheDirectory: '<rootDir>/.cache/jest/',
+  clearMocks: true,
   coveragePathIgnorePatterns: [
     '.test.(js|mjs)',
     '.eslintrc.js',

@@ -17,10 +17,6 @@ const sassConfig = {
 describe('Warnings mixin', () => {
   const sassBootstrap = '@import "settings/warnings";'
 
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
-
   it('Fires a @warn with the message plus the key suffix text', async () => {
     const sass = `
     ${sassBootstrap}
