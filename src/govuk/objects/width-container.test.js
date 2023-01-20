@@ -1,6 +1,6 @@
 const { outdent } = require('outdent')
 
-const { renderSass } = require('../../../lib/jest-helpers')
+const { compileSassString } = require('../../../lib/jest-helpers')
 
 describe('@mixin govuk-width-container', () => {
   it('allows different widths to be specified using $width', async () => {
@@ -11,7 +11,7 @@ describe('@mixin govuk-width-container', () => {
         @include govuk-width-container(1200px);
       }
     `
-    const results = await renderSass({ data: sass })
+    const results = await compileSassString(sass)
 
     expect(results.css
       .toString()

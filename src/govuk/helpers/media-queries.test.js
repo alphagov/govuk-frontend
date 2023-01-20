@@ -1,4 +1,4 @@
-const { renderSass } = require('../../../lib/jest-helpers')
+const { compileSassString } = require('../../../lib/jest-helpers')
 
 const sassConfig = {
   outputStyle: 'compressed'
@@ -24,7 +24,7 @@ describe('@mixin govuk-media-query', () => {
         }
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await compileSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toBe('@media (min-width: 20em){.foo{color:red}}')
   })
@@ -40,7 +40,7 @@ describe('@mixin govuk-media-query', () => {
         }
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await compileSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toBe('@media (min-width: 20em){.foo{color:red}}')
   })
@@ -55,7 +55,7 @@ describe('@mixin govuk-media-query', () => {
         }
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await compileSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toBe('@media (max-width: 20em){.foo{color:red}}')
   })
@@ -71,7 +71,7 @@ describe('@mixin govuk-media-query', () => {
         }
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await compileSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toBe('@media (max-width: 61.24em){.foo{color:red}}')
   })
@@ -86,7 +86,7 @@ describe('@mixin govuk-media-query', () => {
         }
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await compileSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toBe('@media (min-width: 20em) and (max-width: 40em){.foo{color:red}}')
   })
@@ -102,7 +102,7 @@ describe('@mixin govuk-media-query', () => {
         }
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await compileSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toBe('@media (min-width: 20em) and (max-width: 46.24em){.foo{color:red}}')
   })
@@ -117,7 +117,7 @@ describe('@mixin govuk-media-query', () => {
         }
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await compileSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toBe('@media (max-width: 40em) and (orientation: landscape){.foo{color:red}}')
   })
@@ -132,7 +132,7 @@ describe('@mixin govuk-media-query', () => {
         }
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await compileSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toBe('@media aural and (max-width: 40em){.foo{color:red}}')
   })
@@ -160,7 +160,7 @@ describe('@mixin govuk-media-query', () => {
           }
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await compileSassString(sass, sassConfig)
 
       expect(results.css.toString().trim()).toBe('.foo{color:forestgreen}')
     })
@@ -179,7 +179,7 @@ describe('@mixin govuk-media-query', () => {
           }
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await compileSassString(sass, sassConfig)
 
       expect(results.css.toString().trim()).toBe('.foo{color:blue}')
     })

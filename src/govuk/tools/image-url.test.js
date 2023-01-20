@@ -1,4 +1,4 @@
-const { renderSass } = require('../../../lib/jest-helpers')
+const { compileSassString } = require('../../../lib/jest-helpers')
 
 const sassConfig = {
   outputStyle: 'compressed'
@@ -15,7 +15,7 @@ describe('@function image-url', () => {
         background-image: govuk-image-url("baz.png");
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await compileSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toEqual(
       '.foo{background-image:url("/path/to/images/baz.png")}'
@@ -32,7 +32,7 @@ describe('@function image-url', () => {
         background-image: govuk-image-url("baz.png");
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await compileSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toEqual(
       '.foo{background-image:"BAZ.PNG"}'
@@ -54,7 +54,7 @@ describe('@function image-url', () => {
         background-image: govuk-image-url("baz.png");
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await compileSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toEqual(
       '.foo{background-image:url("/custom/baz.png")}'

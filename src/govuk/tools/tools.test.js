@@ -4,7 +4,7 @@ const sassdoc = require('sassdoc')
 
 const configPaths = require('../../../config/paths')
 const { getListing } = require('../../../lib/file-helper')
-const { renderSass } = require('../../../lib/jest-helpers')
+const { compileSassFile } = require('../../../lib/jest-helpers')
 
 describe('The tools layer', () => {
   let sassFiles
@@ -16,22 +16,20 @@ describe('The tools layer', () => {
   })
 
   it('should not output any CSS', async () => {
-    const tools = join(configPaths.src, 'govuk/tools/_all.scss')
+    const file = join(configPaths.src, 'govuk/tools/_all.scss')
 
-    const output = await renderSass({ file: tools })
-    expect(output.css.toString()).toEqual('')
+    const results = await compileSassFile(file)
+    expect(results.css.toString()).toEqual('')
   })
 
   it('renders CSS for all tools', () => {
     const sassTasks = sassFiles.map((sassFilePath) => {
       const file = join(configPaths.src, sassFilePath)
 
-      return expect(renderSass({ file })).resolves.toEqual(
-        expect.objectContaining({
-          css: expect.any(Object),
-          stats: expect.any(Object)
-        })
-      )
+      return expect(compileSassFile(file)).resolves.toMatchObject({
+        css: expect.any(Object),
+        stats: expect.any(Object)
+      })
     })
 
     return Promise.all(sassTasks)

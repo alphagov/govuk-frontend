@@ -1,6 +1,6 @@
 const sass = require('node-sass')
 
-const { renderSass } = require('../../../lib/jest-helpers')
+const { compileSassString } = require('../../../lib/jest-helpers')
 
 // Create a mock warn function that we can use to override the native @warn
 // function, that we can make assertions about post-render.
@@ -32,7 +32,7 @@ describe('@mixin govuk-compatibility', () => {
         }
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await compileSassString(sass, sassConfig)
 
     expect(results.css.toString()).toEqual('')
   })
@@ -50,7 +50,7 @@ describe('@mixin govuk-compatibility', () => {
         }
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await compileSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toBe('.foo{color:red}')
   })
@@ -68,7 +68,7 @@ describe('@mixin govuk-compatibility', () => {
         }
       }`
 
-    await expect(renderSass({ data: sass, ...sassConfig }))
+    await expect(compileSassString(sass, sassConfig))
       .rejects
       .toThrow('Non existent product \'non_existent_app\'')
   })
@@ -86,7 +86,7 @@ describe('@mixin govuk-compatibility', () => {
         }
       }`
 
-    await renderSass({ data: sass, ...sassConfig }).then(() => {
+    await compileSassString(sass, sassConfig).then(() => {
       // Expect our mocked @warn function to have been called once with a single
       // argument, which should be the deprecation notice
       return expect(mockWarnFunction.mock.calls[0][0].getValue())

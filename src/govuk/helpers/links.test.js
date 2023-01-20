@@ -1,4 +1,4 @@
-const { renderSass } = require('../../../lib/jest-helpers')
+const { compileSassString } = require('../../../lib/jest-helpers')
 
 const sassConfig = {
   outputStyle: 'compact'
@@ -14,7 +14,7 @@ describe('@mixin govuk-link-decoration', () => {
           @include govuk-link-decoration;
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await compileSassString(sass, sassConfig)
 
       expect(results.css.toString()).not.toContain('text-decoration-thickness')
     })
@@ -27,7 +27,7 @@ describe('@mixin govuk-link-decoration', () => {
           @include govuk-link-decoration;
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await compileSassString(sass, sassConfig)
 
       expect(results.css.toString()).not.toContain('text-underline-offset')
     })
@@ -44,7 +44,7 @@ describe('@mixin govuk-link-decoration', () => {
           @include govuk-link-decoration;
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await compileSassString(sass, sassConfig)
 
       expect(results.css.toString()).toContain('text-decoration-thickness: 1px;')
     })
@@ -59,7 +59,7 @@ describe('@mixin govuk-link-decoration', () => {
           @include govuk-link-decoration;
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await compileSassString(sass, sassConfig)
 
       expect(results.css.toString()).toContain('text-underline-offset: 0.1em;')
     })
@@ -75,7 +75,7 @@ describe('@mixin govuk-link-decoration', () => {
             @include govuk-link-decoration;
           }`
 
-        const results = await renderSass({ data: sass, ...sassConfig })
+        const results = await compileSassString(sass, sassConfig)
 
         expect(results.css.toString()).not.toContain('text-decoration-thickness')
       })
@@ -92,7 +92,7 @@ describe('@mixin govuk-link-decoration', () => {
             @include govuk-link-decoration;
         }`
 
-        const results = await renderSass({ data: sass, ...sassConfig })
+        const results = await compileSassString(sass, sassConfig)
 
         expect(results.css.toString()).not.toContain('text-underline-offset')
       })
@@ -112,7 +112,7 @@ describe('@mixin govuk-link-hover-decoration', () => {
           @include govuk-link-hover-decoration;
       }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await compileSassString(sass, sassConfig)
 
       expect(results.css.toString()).not.toContain('.foo:hover')
     })
@@ -129,7 +129,7 @@ describe('@mixin govuk-link-hover-decoration', () => {
           @include govuk-link-hover-decoration;
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await compileSassString(sass, sassConfig)
 
       expect(results.css.toString()).toContain('.foo:hover')
     })
@@ -147,7 +147,7 @@ describe('@mixin govuk-link-hover-decoration', () => {
             @include govuk-link-hover-decoration;
         }`
 
-        const results = await renderSass({ data: sass, ...sassConfig })
+        const results = await compileSassString(sass, sassConfig)
 
         expect(results.css.toString()).not.toContain('.foo:hover')
       })
@@ -166,7 +166,7 @@ describe('@mixin govuk-link-style-text', () => {
             @include govuk-link-style-text;
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await compileSassString(sass, sassConfig)
 
       expect(results.css.toString()).toContain(':hover')
       expect(results.css.toString()).toContain('color:')
@@ -184,7 +184,7 @@ describe('@mixin govuk-link-style-text', () => {
             @include govuk-link-style-text;
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await compileSassString(sass, sassConfig)
 
       expect(results.css.toString()).not.toContain('rgba(')
     })

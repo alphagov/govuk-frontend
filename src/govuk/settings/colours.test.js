@@ -1,4 +1,4 @@
-const { renderSass } = require('../../../lib/jest-helpers')
+const { compileSassString } = require('../../../lib/jest-helpers')
 
 const sassConfig = {
   outputStyle: 'compressed'
@@ -29,6 +29,6 @@ describe('Organisation colours', () => {
         }
       }`
 
-    await renderSass({ data: sass, ...sassConfig })
+    await compileSassString(sass, sassConfig)
   })
 })

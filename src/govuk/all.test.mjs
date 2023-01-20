@@ -2,7 +2,7 @@ import sassdoc from 'sassdoc'
 import slash from 'slash'
 
 import configPaths from '../../config/paths.js'
-import { renderSass } from '../../lib/jest-helpers.js'
+import { compileSassString } from '../../lib/jest-helpers.js'
 
 describe('GOV.UK Frontend', () => {
   describe('global styles', () => {
@@ -10,7 +10,7 @@ describe('GOV.UK Frontend', () => {
       const sass = `
         @import "all";
       `
-      const results = await renderSass({ data: sass })
+      const results = await compileSassString(sass)
       expect(results.css.toString()).not.toContain(', a {')
       expect(results.css.toString()).not.toContain(', p {')
     })
@@ -19,7 +19,7 @@ describe('GOV.UK Frontend', () => {
         $govuk-global-styles: true;
         @import "all";
       `
-      const results = await renderSass({ data: sass })
+      const results = await compileSassString(sass)
       expect(results.css.toString()).toContain(', a {')
       expect(results.css.toString()).toContain(', p {')
     })
@@ -58,7 +58,7 @@ describe('GOV.UK Frontend', () => {
   it('does not contain any unexpected govuk- function calls', async () => {
     const sass = '@import "all"'
 
-    const results = await renderSass({ data: sass })
+    const results = await compileSassString(sass)
     const css = results.css.toString()
 
     const functionCalls = css.match(/_?govuk-[\w-]+\(.*?\)/g)

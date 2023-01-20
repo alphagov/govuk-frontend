@@ -4,7 +4,7 @@ import { join } from 'path'
 import configPaths from '../../../config/paths.js'
 import { filterPath, getDirectories, getListing, mapPathTo } from '../../../lib/file-helper.js'
 import { componentNameToClassName, componentPathToModuleName } from '../../../lib/helper-functions.js'
-import { renderSass } from '../../../lib/jest-helpers.js'
+import { compileSassFile } from '../../../lib/jest-helpers.js'
 
 describe('package/', () => {
   let listingSource
@@ -94,8 +94,8 @@ describe('package/', () => {
 
   describe('all.scss', () => {
     it('should compile without throwing an exception', async () => {
-      const allScssFile = join(configPaths.package, 'govuk', 'all.scss')
-      await renderSass({ file: allScssFile })
+      const file = join(configPaths.package, 'govuk', 'all.scss')
+      await compileSassFile(file)
     })
   })
 

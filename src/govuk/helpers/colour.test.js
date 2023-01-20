@@ -1,6 +1,6 @@
 const sass = require('node-sass')
 
-const { renderSass } = require('../../../lib/jest-helpers')
+const { compileSassString } = require('../../../lib/jest-helpers')
 
 // Create a mock warn function that we can use to override the native @warn
 // function, that we can make assertions about post-render.
@@ -37,7 +37,7 @@ describe('@function govuk-colour', () => {
         color: govuk-colour('red');
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await compileSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toBe('.foo { color: #ff0000; }')
   })
@@ -50,7 +50,7 @@ describe('@function govuk-colour', () => {
         color: govuk-colour(red);
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await compileSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toBe('.foo { color: #ff0000; }')
   })
@@ -63,7 +63,7 @@ describe('@function govuk-colour', () => {
         color: govuk-colour('hooloovoo');
       }`
 
-    await expect(renderSass({ data: sass, ...sassConfig }))
+    await expect(compileSassString(sass, sassConfig))
       .rejects
       .toThrow(
         'Unknown colour `hooloovoo`'
@@ -87,7 +87,7 @@ describe('@function govuk-colour', () => {
           color: govuk-colour('red', $legacy: 'blue');
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await compileSassString(sass, sassConfig)
 
       expect(results.css.toString().trim()).toBe('.foo { color: #0000ff; }')
     })
@@ -100,7 +100,7 @@ describe('@function govuk-colour', () => {
           color: govuk-colour('red', $legacy: #BADA55);
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await compileSassString(sass, sassConfig)
 
       expect(results.css.toString().trim()).toBe('.foo { color: #BADA55; }')
     })
@@ -113,7 +113,7 @@ describe('@function govuk-colour', () => {
           color: govuk-colour('hooloovoo', $legacy: 'blue');
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await compileSassString(sass, sassConfig)
 
       expect(results.css.toString().trim()).toBe('.foo { color: #0000ff; }')
     })
@@ -125,7 +125,7 @@ describe('@function govuk-colour', () => {
           color: govuk-colour('red', $legacy: 'hooloovoo');
         }`
 
-      await expect(renderSass({ data: sass, ...sassConfig }))
+      await expect(compileSassString(sass, sassConfig))
         .rejects
         .toThrow(
           'Unknown colour `hooloovoo`'
@@ -135,7 +135,7 @@ describe('@function govuk-colour', () => {
     it('outputs a deprecation warning when set to true', async () => {
       const sass = `${sassBootstrap}`
 
-      await renderSass({ data: sass, ...sassConfig }).then(() => {
+      await compileSassString(sass, sassConfig).then(() => {
         // Expect our mocked @warn function to have been called once with a single
         // argument, which should be the deprecation notice
         return expect(mockWarnFunction.mock.calls[0][0].getValue())
@@ -164,7 +164,7 @@ describe('@function govuk-colour', () => {
           color: govuk-colour('red', $legacy: 'blue');
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await compileSassString(sass, sassConfig)
 
       expect(results.css.toString().trim()).toBe('.foo { color: #ff0000; }')
     })
@@ -177,7 +177,7 @@ describe('@function govuk-colour', () => {
           color: govuk-colour('red', $legacy: #BADA55);
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await compileSassString(sass, sassConfig)
 
       expect(results.css.toString().trim()).toBe('.foo { color: #ff0000; }')
     })
@@ -190,7 +190,7 @@ describe('@function govuk-colour', () => {
           color: govuk-colour('hooloovoo', $legacy: 'blue');
         }`
 
-      await expect(renderSass({ data: sass, ...sassConfig }))
+      await expect(compileSassString(sass, sassConfig))
         .rejects
         .toThrow(
           'Unknown colour `hooloovoo`'
@@ -205,7 +205,7 @@ describe('@function govuk-colour', () => {
           color: govuk-colour('red', $legacy: 'hooloovoo');
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await compileSassString(sass, sassConfig)
 
       expect(results.css.toString().trim()).toBe('.foo { color: #ff0000; }')
     })
@@ -235,7 +235,7 @@ describe('@function govuk-organisation-colour', () => {
         color: govuk-organisation-colour('floo-network-authority');
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await compileSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toBe('.foo { color: #9A00A8; }')
   })
@@ -248,7 +248,7 @@ describe('@function govuk-organisation-colour', () => {
         color: govuk-organisation-colour('broom-regulatory-control');
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await compileSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toBe('.foo { color: #A81223; }')
   })
@@ -261,7 +261,7 @@ describe('@function govuk-organisation-colour', () => {
         border-color: govuk-organisation-colour('floo-network-authority', $websafe: false);
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await compileSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toBe('.foo { border-color: #EC22FF; }')
   })
@@ -274,7 +274,7 @@ describe('@function govuk-organisation-colour', () => {
         color: govuk-organisation-colour('muggle-born-registration-commission');
       }`
 
-    await expect(renderSass({ data: sass, ...sassConfig }))
+    await expect(compileSassString(sass, sassConfig))
       .rejects
       .toThrow(
         'Unknown organisation `muggle-born-registration-commission`'

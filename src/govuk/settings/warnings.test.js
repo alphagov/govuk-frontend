@@ -1,6 +1,6 @@
 const sass = require('node-sass')
 
-const { renderSass } = require('../../../lib/jest-helpers')
+const { compileSassString } = require('../../../lib/jest-helpers')
 
 // Create a mock warn function that we can use to override the native @warn
 // function, that we can make assertions about post-render.
@@ -22,7 +22,7 @@ describe('Warnings mixin', () => {
     ${sassBootstrap}
     @include _warning('test', 'This is a warning.');`
 
-    await renderSass({ data: sass, ...sassConfig }).then(() => {
+    await compileSassString(sass, sassConfig).then(() => {
       // Expect our mocked @warn function to have been called once with a single
       // argument, which should be the test message
       return expect(mockWarnFunction.mock.calls[0][0].getValue())
@@ -39,7 +39,7 @@ describe('Warnings mixin', () => {
     @include _warning('test', 'This is a warning.');
     @include _warning('test', 'This is a warning.');`
 
-    await renderSass({ data: sass, ...sassConfig }).then(() => {
+    await compileSassString(sass, sassConfig).then(() => {
       // Expect our mocked @warn function to have been called once with a single
       // argument, which should be the test message
       return expect(mockWarnFunction.mock.calls.length).toEqual(1)
@@ -53,7 +53,7 @@ describe('Warnings mixin', () => {
     $govuk-suppressed-warnings: append($govuk-suppressed-warnings, 'test');
     @include _warning('test', 'This is a warning.');`
 
-    await renderSass({ data: sass, ...sassConfig }).then(() => {
+    await compileSassString(sass, sassConfig).then(() => {
       return expect(mockWarnFunction).not.toHaveBeenCalled()
     })
   })
