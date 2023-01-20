@@ -35,11 +35,14 @@ describe('@function govuk-colour', () => {
 
       .foo {
         color: govuk-colour('red');
-      }`
+      }
+    `
 
-    const results = await compileSassString(sass, sassConfig)
-
-    expect(results.css.toString().trim()).toBe('.foo { color: #ff0000; }')
+    await expect(compileSassString(sass, sassConfig))
+      .resolves
+      .toMatchObject({
+        css: '.foo { color: #ff0000; }'
+      })
   })
 
   it('works with unquoted strings', async () => {
@@ -48,11 +51,14 @@ describe('@function govuk-colour', () => {
 
       .foo {
         color: govuk-colour(red);
-      }`
+      }
+    `
 
-    const results = await compileSassString(sass, sassConfig)
-
-    expect(results.css.toString().trim()).toBe('.foo { color: #ff0000; }')
+    await expect(compileSassString(sass, sassConfig))
+      .resolves
+      .toMatchObject({
+        css: '.foo { color: #ff0000; }'
+      })
   })
 
   it('throws an error if a non-existent colour is requested', async () => {
@@ -61,7 +67,8 @@ describe('@function govuk-colour', () => {
 
       .foo {
         color: govuk-colour('hooloovoo');
-      }`
+      }
+    `
 
     await expect(compileSassString(sass, sassConfig))
       .rejects
@@ -85,11 +92,14 @@ describe('@function govuk-colour', () => {
 
         .foo {
           color: govuk-colour('red', $legacy: 'blue');
-        }`
+        }
+      `
 
-      const results = await compileSassString(sass, sassConfig)
-
-      expect(results.css.toString().trim()).toBe('.foo { color: #0000ff; }')
+      await expect(compileSassString(sass, sassConfig))
+        .resolves
+        .toMatchObject({
+          css: '.foo { color: #0000ff; }'
+        })
     })
 
     it('returns the legacy literal if specified', async () => {
@@ -98,11 +108,14 @@ describe('@function govuk-colour', () => {
 
         .foo {
           color: govuk-colour('red', $legacy: #BADA55);
-        }`
+        }
+      `
 
-      const results = await compileSassString(sass, sassConfig)
-
-      expect(results.css.toString().trim()).toBe('.foo { color: #BADA55; }')
+      await expect(compileSassString(sass, sassConfig))
+        .resolves
+        .toMatchObject({
+          css: '.foo { color: #BADA55; }'
+        })
     })
 
     it('does not error if the non-legacy colour does not exist', async () => {
@@ -111,11 +124,14 @@ describe('@function govuk-colour', () => {
 
         .foo {
           color: govuk-colour('hooloovoo', $legacy: 'blue');
-        }`
+        }
+      `
 
-      const results = await compileSassString(sass, sassConfig)
-
-      expect(results.css.toString().trim()).toBe('.foo { color: #0000ff; }')
+      await expect(compileSassString(sass, sassConfig))
+        .resolves
+        .toMatchObject({
+          css: '.foo { color: #0000ff; }'
+        })
     })
 
     it('throws an error if the legacy colour does not exist', async () => {
@@ -123,7 +139,8 @@ describe('@function govuk-colour', () => {
         ${sassBootstrap}
         .foo {
           color: govuk-colour('red', $legacy: 'hooloovoo');
-        }`
+        }
+      `
 
       await expect(compileSassString(sass, sassConfig))
         .rejects
@@ -135,16 +152,16 @@ describe('@function govuk-colour', () => {
     it('outputs a deprecation warning when set to true', async () => {
       const sass = `${sassBootstrap}`
 
-      await compileSassString(sass, sassConfig).then(() => {
-        // Expect our mocked @warn function to have been called once with a single
-        // argument, which should be the deprecation notice
-        return expect(mockWarnFunction.mock.calls[0][0].getValue())
-          .toEqual(
-            '$govuk-use-legacy-palette is deprecated. Only the modern colour ' +
+      await compileSassString(sass, sassConfig)
+
+      // Expect our mocked @warn function to have been called once with a single
+      // argument, which should be the deprecation notice
+      expect(mockWarnFunction.mock.calls[0][0].getValue())
+        .toEqual(
+          '$govuk-use-legacy-palette is deprecated. Only the modern colour ' +
             'palette will be supported from v5.0. To silence this warning, ' +
             'update $govuk-suppressed-warnings with key: "legacy-palette"'
-          )
-      })
+        )
     })
   })
 
@@ -162,11 +179,14 @@ describe('@function govuk-colour', () => {
 
         .foo {
           color: govuk-colour('red', $legacy: 'blue');
-        }`
+        }
+      `
 
-      const results = await compileSassString(sass, sassConfig)
-
-      expect(results.css.toString().trim()).toBe('.foo { color: #ff0000; }')
+      await expect(compileSassString(sass, sassConfig))
+        .resolves
+        .toMatchObject({
+          css: '.foo { color: #ff0000; }'
+        })
     })
 
     it('does not returns the legacy literal when specified', async () => {
@@ -175,11 +195,14 @@ describe('@function govuk-colour', () => {
 
         .foo {
           color: govuk-colour('red', $legacy: #BADA55);
-        }`
+        }
+      `
 
-      const results = await compileSassString(sass, sassConfig)
-
-      expect(results.css.toString().trim()).toBe('.foo { color: #ff0000; }')
+      await expect(compileSassString(sass, sassConfig))
+        .resolves
+        .toMatchObject({
+          css: '.foo { color: #ff0000; }'
+        })
     })
 
     it('throws an error if the non-legacy colour does not exist', async () => {
@@ -188,7 +211,8 @@ describe('@function govuk-colour', () => {
 
         .foo {
           color: govuk-colour('hooloovoo', $legacy: 'blue');
-        }`
+        }
+      `
 
       await expect(compileSassString(sass, sassConfig))
         .rejects
@@ -203,11 +227,14 @@ describe('@function govuk-colour', () => {
 
         .foo {
           color: govuk-colour('red', $legacy: 'hooloovoo');
-        }`
+        }
+      `
 
-      const results = await compileSassString(sass, sassConfig)
-
-      expect(results.css.toString().trim()).toBe('.foo { color: #ff0000; }')
+      await expect(compileSassString(sass, sassConfig))
+        .resolves
+        .toMatchObject({
+          css: '.foo { color: #ff0000; }'
+        })
     })
   })
 })
@@ -233,11 +260,14 @@ describe('@function govuk-organisation-colour', () => {
 
       .foo {
         color: govuk-organisation-colour('floo-network-authority');
-      }`
+      }
+    `
 
-    const results = await compileSassString(sass, sassConfig)
-
-    expect(results.css.toString().trim()).toBe('.foo { color: #9A00A8; }')
+    await expect(compileSassString(sass, sassConfig))
+      .resolves
+      .toMatchObject({
+        css: '.foo { color: #9A00A8; }'
+      })
   })
 
   it('falls back to the default colour if a websafe colour is not explicitly defined', async () => {
@@ -246,11 +276,14 @@ describe('@function govuk-organisation-colour', () => {
 
       .foo {
         color: govuk-organisation-colour('broom-regulatory-control');
-      }`
+      }
+    `
 
-    const results = await compileSassString(sass, sassConfig)
-
-    expect(results.css.toString().trim()).toBe('.foo { color: #A81223; }')
+    await expect(compileSassString(sass, sassConfig))
+      .resolves
+      .toMatchObject({
+        css: '.foo { color: #A81223; }'
+      })
   })
 
   it('can be overridden to return the non-websafe colour', async () => {
@@ -259,11 +292,14 @@ describe('@function govuk-organisation-colour', () => {
 
       .foo {
         border-color: govuk-organisation-colour('floo-network-authority', $websafe: false);
-      }`
+      }
+    `
 
-    const results = await compileSassString(sass, sassConfig)
-
-    expect(results.css.toString().trim()).toBe('.foo { border-color: #EC22FF; }')
+    await expect(compileSassString(sass, sassConfig))
+      .resolves
+      .toMatchObject({
+        css: '.foo { border-color: #EC22FF; }'
+      })
   })
 
   it('throws an error if a non-existent organisation is requested', async () => {
@@ -272,7 +308,8 @@ describe('@function govuk-organisation-colour', () => {
 
       .foo {
         color: govuk-organisation-colour('muggle-born-registration-commission');
-      }`
+      }
+    `
 
     await expect(compileSassString(sass, sassConfig))
       .rejects

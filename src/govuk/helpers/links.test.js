@@ -12,11 +12,12 @@ describe('@mixin govuk-link-decoration', () => {
 
         .foo {
           @include govuk-link-decoration;
-        }`
+        }
+      `
 
-      const results = await compileSassString(sass, sassConfig)
-
-      expect(results.css.toString()).not.toContain('text-decoration-thickness')
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: expect.not.stringContaining('text-decoration-thickness')
+      })
     })
 
     it('does not set text-underline-offset', async () => {
@@ -25,11 +26,12 @@ describe('@mixin govuk-link-decoration', () => {
 
         .foo {
           @include govuk-link-decoration;
-        }`
+        }
+      `
 
-      const results = await compileSassString(sass, sassConfig)
-
-      expect(results.css.toString()).not.toContain('text-underline-offset')
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: expect.not.stringContaining('text-underline-offset')
+      })
     })
   })
 
@@ -42,11 +44,12 @@ describe('@mixin govuk-link-decoration', () => {
 
         .foo {
           @include govuk-link-decoration;
-        }`
+        }
+      `
 
-      const results = await compileSassString(sass, sassConfig)
-
-      expect(results.css.toString()).toContain('text-decoration-thickness: 1px;')
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: expect.stringContaining('text-decoration-thickness: 1px;')
+      })
     })
 
     it('sets text-underline-offset', async () => {
@@ -57,11 +60,12 @@ describe('@mixin govuk-link-decoration', () => {
 
         .foo {
           @include govuk-link-decoration;
-        }`
+        }
+      `
 
-      const results = await compileSassString(sass, sassConfig)
-
-      expect(results.css.toString()).toContain('text-underline-offset: 0.1em;')
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: expect.stringContaining('text-underline-offset: 0.1em;')
+      })
     })
 
     describe('when $govuk-link-underline-thickness is falsey', () => {
@@ -73,11 +77,12 @@ describe('@mixin govuk-link-decoration', () => {
 
           .foo {
             @include govuk-link-decoration;
-          }`
+          }
+        `
 
-        const results = await compileSassString(sass, sassConfig)
-
-        expect(results.css.toString()).not.toContain('text-decoration-thickness')
+        await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+          css: expect.not.stringContaining('text-decoration-thickness')
+        })
       })
     })
 
@@ -90,11 +95,12 @@ describe('@mixin govuk-link-decoration', () => {
 
         .foo {
             @include govuk-link-decoration;
-        }`
+        }
+      `
 
-        const results = await compileSassString(sass, sassConfig)
-
-        expect(results.css.toString()).not.toContain('text-underline-offset')
+        await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+          css: expect.not.stringContaining('text-underline-offset')
+        })
       })
     })
   })
@@ -110,11 +116,12 @@ describe('@mixin govuk-link-hover-decoration', () => {
       // is omitted from the CSS
       .foo:hover {
           @include govuk-link-hover-decoration;
-      }`
+      }
+    `
 
-      const results = await compileSassString(sass, sassConfig)
-
-      expect(results.css.toString()).not.toContain('.foo:hover')
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: expect.not.stringContaining('.foo:hover')
+      })
     })
   })
 
@@ -127,11 +134,12 @@ describe('@mixin govuk-link-hover-decoration', () => {
 
         .foo:hover {
           @include govuk-link-hover-decoration;
-        }`
+        }
+      `
 
-      const results = await compileSassString(sass, sassConfig)
-
-      expect(results.css.toString()).toContain('.foo:hover')
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: expect.stringContaining('.foo:hover')
+      })
     })
 
     describe('when $govuk-link-hover-underline-thickness is falsey', () => {
@@ -145,11 +153,12 @@ describe('@mixin govuk-link-hover-decoration', () => {
         // is omitted from the CSS
         .foo:hover {
             @include govuk-link-hover-decoration;
-        }`
+        }
+      `
 
-        const results = await compileSassString(sass, sassConfig)
-
-        expect(results.css.toString()).not.toContain('.foo:hover')
+        await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+          css: expect.not.stringContaining('.foo:hover')
+        })
       })
     })
   })
@@ -164,13 +173,22 @@ describe('@mixin govuk-link-style-text', () => {
 
         a {
             @include govuk-link-style-text;
-        }`
+        }
+      `
 
-      const results = await compileSassString(sass, sassConfig)
+      const results = compileSassString(sass, sassConfig)
 
-      expect(results.css.toString()).toContain(':hover')
-      expect(results.css.toString()).toContain('color:')
-      expect(results.css.toString()).toContain('rgba(')
+      await expect(results).resolves.toMatchObject({
+        css: expect.stringContaining(':hover')
+      })
+
+      await expect(results).resolves.toMatchObject({
+        css: expect.stringContaining('color:')
+      })
+
+      await expect(results).resolves.toMatchObject({
+        css: expect.stringContaining('rgba(')
+      })
     })
   })
 
@@ -182,11 +200,12 @@ describe('@mixin govuk-link-style-text', () => {
 
         a {
             @include govuk-link-style-text;
-        }`
+        }
+      `
 
-      const results = await compileSassString(sass, sassConfig)
-
-      expect(results.css.toString()).not.toContain('rgba(')
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: expect.not.stringContaining('rgba(')
+      })
     })
   })
 })

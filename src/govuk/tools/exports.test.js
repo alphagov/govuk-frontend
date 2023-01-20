@@ -19,11 +19,14 @@ describe('@mixin govuk-exports', () => {
         .foo {
           color: blue;
         }
-      }`
+      }
+    `
 
-    const results = await compileSassString(sass, sassConfig)
-
-    expect(results.css.toString().trim()).toEqual('.foo{color:red}')
+    await expect(compileSassString(sass, sassConfig))
+      .resolves
+      .toMatchObject({
+        css: '.foo{color:red}'
+      })
   })
 
   it('will export differently named sections', async () => {
@@ -40,11 +43,13 @@ describe('@mixin govuk-exports', () => {
         .bar {
           color: blue;
         }
-      }`
+      }
+    `
 
-    const results = await compileSassString(sass, sassConfig)
-
-    expect(results.css.toString().trim())
-      .toEqual('.foo{color:red}.bar{color:blue}')
+    await expect(compileSassString(sass, sassConfig))
+      .resolves
+      .toMatchObject({
+        css: '.foo{color:red}.bar{color:blue}'
+      })
   })
 })

@@ -17,9 +17,7 @@ describe('The tools layer', () => {
 
   it('should not output any CSS', async () => {
     const file = join(configPaths.src, 'govuk/tools/_all.scss')
-
-    const results = await compileSassFile(file)
-    expect(results.css.toString()).toEqual('')
+    await expect(compileSassFile(file)).resolves.toMatchObject({ css: '' })
   })
 
   it('renders CSS for all tools', () => {
@@ -27,7 +25,7 @@ describe('The tools layer', () => {
       const file = join(configPaths.src, sassFilePath)
 
       return expect(compileSassFile(file)).resolves.toMatchObject({
-        css: expect.any(Object),
+        css: expect.any(String),
         stats: expect.any(Object)
       })
     })

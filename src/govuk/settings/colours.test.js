@@ -27,8 +27,9 @@ describe('Organisation colours', () => {
           + " #{$colour} on #{$govuk-body-background-colour} has a contrast of: #{$contrast}."
           + " Must be higher than #{$minimum-contrast} for WCAG AA support.";
         }
-      }`
+      }
+    `
 
-    await compileSassString(sass, sassConfig)
+    await expect(compileSassString(sass, sassConfig)).resolves
   })
 })

@@ -21,7 +21,7 @@ describe('Components', () => {
       const file = join(configPaths.components, '_all.scss')
 
       return expect(compileSassFile(file)).resolves.toMatchObject({
-        css: expect.any(Object),
+        css: expect.any(String),
         stats: expect.any(Object)
       })
     })
@@ -31,7 +31,7 @@ describe('Components', () => {
         const file = join(configPaths.components, sassFilePath)
 
         return expect(compileSassFile(file)).resolves.toMatchObject({
-          css: expect.any(Object),
+          css: expect.any(String),
           stats: expect.any(Object)
         })
       })

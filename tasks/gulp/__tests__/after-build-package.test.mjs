@@ -95,7 +95,7 @@ describe('package/', () => {
   describe('all.scss', () => {
     it('should compile without throwing an exception', async () => {
       const file = join(configPaths.package, 'govuk', 'all.scss')
-      await compileSassFile(file)
+      await expect(compileSassFile(file)).resolves
     })
   })
 

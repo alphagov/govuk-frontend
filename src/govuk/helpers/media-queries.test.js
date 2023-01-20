@@ -22,11 +22,14 @@ describe('@mixin govuk-media-query', () => {
         @include govuk-media-query($from: 20em) {
           color: red;
         }
-      }`
+      }
+    `
 
-    const results = await compileSassString(sass, sassConfig)
-
-    expect(results.css.toString().trim()).toBe('@media (min-width: 20em){.foo{color:red}}')
+    await expect(compileSassString(sass, sassConfig))
+      .resolves
+      .toMatchObject({
+        css: '@media (min-width: 20em){.foo{color:red}}'
+      })
   })
 
   it('allows you to target min-width using a predefined breakpoint', async () => {
@@ -38,11 +41,14 @@ describe('@mixin govuk-media-query', () => {
         @include govuk-media-query($from: mobile) {
           color: red;
         }
-      }`
+      }
+    `
 
-    const results = await compileSassString(sass, sassConfig)
-
-    expect(results.css.toString().trim()).toBe('@media (min-width: 20em){.foo{color:red}}')
+    await expect(compileSassString(sass, sassConfig))
+      .resolves
+      .toMatchObject({
+        css: '@media (min-width: 20em){.foo{color:red}}'
+      })
   })
 
   it('allows you to target max-width using a numeric value', async () => {
@@ -53,11 +59,13 @@ describe('@mixin govuk-media-query', () => {
         @include govuk-media-query($until: 20em) {
           color: red;
         }
-      }`
-
-    const results = await compileSassString(sass, sassConfig)
-
-    expect(results.css.toString().trim()).toBe('@media (max-width: 20em){.foo{color:red}}')
+      }
+    `
+    await expect(compileSassString(sass, sassConfig))
+      .resolves
+      .toMatchObject({
+        css: '@media (max-width: 20em){.foo{color:red}}'
+      })
   })
 
   it('allows you to target max-width using a predefined breakpoint', async () => {
@@ -69,11 +77,14 @@ describe('@mixin govuk-media-query', () => {
         @include govuk-media-query($until: desktop) {
           color: red;
         }
-      }`
+      }
+    `
 
-    const results = await compileSassString(sass, sassConfig)
-
-    expect(results.css.toString().trim()).toBe('@media (max-width: 61.24em){.foo{color:red}}')
+    await expect(compileSassString(sass, sassConfig))
+      .resolves
+      .toMatchObject({
+        css: '@media (max-width: 61.24em){.foo{color:red}}'
+      })
   })
 
   it('allows you to target combined min-width and max-width using numeric values', async () => {
@@ -84,11 +95,14 @@ describe('@mixin govuk-media-query', () => {
         @include govuk-media-query($from: 20em, $until: 40em) {
           color: red;
         }
-      }`
+      }
+    `
 
-    const results = await compileSassString(sass, sassConfig)
-
-    expect(results.css.toString().trim()).toBe('@media (min-width: 20em) and (max-width: 40em){.foo{color:red}}')
+    await expect(compileSassString(sass, sassConfig))
+      .resolves
+      .toMatchObject({
+        css: '@media (min-width: 20em) and (max-width: 40em){.foo{color:red}}'
+      })
   })
 
   it('allows you to target combined min-width and max-width using predefined breakpoints', async () => {
@@ -100,11 +114,14 @@ describe('@mixin govuk-media-query', () => {
         @include govuk-media-query($from: mobile, $until: tablet) {
           color: red;
         }
-      }`
+      }
+    `
 
-    const results = await compileSassString(sass, sassConfig)
-
-    expect(results.css.toString().trim()).toBe('@media (min-width: 20em) and (max-width: 46.24em){.foo{color:red}}')
+    await expect(compileSassString(sass, sassConfig))
+      .resolves
+      .toMatchObject({
+        css: '@media (min-width: 20em) and (max-width: 46.24em){.foo{color:red}}'
+      })
   })
 
   it('allows you to target using custom directives', async () => {
@@ -115,11 +132,14 @@ describe('@mixin govuk-media-query', () => {
         @include govuk-media-query($until: 40em, $and: '(orientation: landscape)') {
           color: red;
         }
-      }`
+      }
+    `
 
-    const results = await compileSassString(sass, sassConfig)
-
-    expect(results.css.toString().trim()).toBe('@media (max-width: 40em) and (orientation: landscape){.foo{color:red}}')
+    await expect(compileSassString(sass, sassConfig))
+      .resolves
+      .toMatchObject({
+        css: '@media (max-width: 40em) and (orientation: landscape){.foo{color:red}}'
+      })
   })
 
   it('allows you to target particular media types', async () => {
@@ -130,11 +150,14 @@ describe('@mixin govuk-media-query', () => {
         @include govuk-media-query($until: 40em, $media-type: 'aural') {
           color: red;
         }
-      }`
+      }
+    `
 
-    const results = await compileSassString(sass, sassConfig)
-
-    expect(results.css.toString().trim()).toBe('@media aural and (max-width: 40em){.foo{color:red}}')
+    await expect(compileSassString(sass, sassConfig))
+      .resolves
+      .toMatchObject({
+        css: '@media aural and (max-width: 40em){.foo{color:red}}'
+      })
   })
 
   describe('when compiling a rasterized stylesheet for IE8', () => {
@@ -158,11 +181,14 @@ describe('@mixin govuk-media-query', () => {
           @include govuk-media-query($from: desktop) {
               color: forestgreen;
           }
-        }`
+        }
+      `
 
-      const results = await compileSassString(sass, sassConfig)
-
-      expect(results.css.toString().trim()).toBe('.foo{color:forestgreen}')
+      await expect(compileSassString(sass, sassConfig))
+        .resolves
+        .toMatchObject({
+          css: '.foo{color:forestgreen}'
+        })
     })
 
     it('does not rasterize print queries', async () => {
@@ -177,11 +203,14 @@ describe('@mixin govuk-media-query', () => {
           @include govuk-media-query($media-type: 'print') {
             color: red;
           }
-        }`
+        }
+      `
 
-      const results = await compileSassString(sass, sassConfig)
-
-      expect(results.css.toString().trim()).toBe('.foo{color:blue}')
+      await expect(compileSassString(sass, sassConfig))
+        .resolves
+        .toMatchObject({
+          css: '.foo{color:blue}'
+        })
     })
   })
 })

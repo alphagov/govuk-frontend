@@ -20,7 +20,7 @@ describe('The objects layer', () => {
       const file = join(configPaths.src, sassFilePath)
 
       return expect(compileSassFile(file)).resolves.toMatchObject({
-        css: expect.any(Object),
+        css: expect.any(String),
         stats: expect.any(Object)
       })
     })

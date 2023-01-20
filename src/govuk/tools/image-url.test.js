@@ -13,13 +13,14 @@ describe('@function image-url', () => {
 
       .foo {
         background-image: govuk-image-url("baz.png");
-      }`
+      }
+    `
 
-    const results = await compileSassString(sass, sassConfig)
-
-    expect(results.css.toString().trim()).toEqual(
-      '.foo{background-image:url("/path/to/images/baz.png")}'
-    )
+    await expect(compileSassString(sass, sassConfig))
+      .resolves
+      .toMatchObject({
+        css: '.foo{background-image:url("/path/to/images/baz.png")}'
+      })
   })
 
   it('can be overridden to use a defined Sass function', async () => {
@@ -30,13 +31,14 @@ describe('@function image-url', () => {
 
       .foo {
         background-image: govuk-image-url("baz.png");
-      }`
+      }
+    `
 
-    const results = await compileSassString(sass, sassConfig)
-
-    expect(results.css.toString().trim()).toEqual(
-      '.foo{background-image:"BAZ.PNG"}'
-    )
+    await expect(compileSassString(sass, sassConfig))
+      .resolves
+      .toMatchObject({
+        css: '.foo{background-image:"BAZ.PNG"}'
+      })
   })
 
   it('can be overridden to use a custom function', async () => {
@@ -52,12 +54,13 @@ describe('@function image-url', () => {
 
       .foo {
         background-image: govuk-image-url("baz.png");
-      }`
+      }
+    `
 
-    const results = await compileSassString(sass, sassConfig)
-
-    expect(results.css.toString().trim()).toEqual(
-      '.foo{background-image:url("/custom/baz.png")}'
-    )
+    await expect(compileSassString(sass, sassConfig))
+      .resolves
+      .toMatchObject({
+        css: '.foo{background-image:url("/custom/baz.png")}'
+      })
   })
 })

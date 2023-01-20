@@ -14,13 +14,14 @@ describe('@function font-url', () => {
       @font-face {
         font-family: "whatever";
         src: govuk-font-url("whatever.woff2");
-      }`
+      }
+    `
 
-    const results = await compileSassString(sass, sassConfig)
-
-    expect(results.css.toString().trim()).toEqual(
-      '@font-face{font-family:"whatever";src:url("/path/to/fonts/whatever.woff2")}'
-    )
+    await expect(compileSassString(sass, sassConfig))
+      .resolves
+      .toMatchObject({
+        css: '@font-face{font-family:"whatever";src:url("/path/to/fonts/whatever.woff2")}'
+      })
   })
 
   it('can be overridden to use a defined Sass function', async () => {
@@ -33,13 +34,14 @@ describe('@function font-url', () => {
       @font-face {
         font-family: "whatever";
         src: govuk-font-url("whatever.woff2");
-      }`
+      }
+    `
 
-    const results = await compileSassString(sass, sassConfig)
-
-    expect(results.css.toString().trim()).toEqual(
-      '@font-face{font-family:"whatever";src:"WHATEVER.WOFF2"}'
-    )
+    await expect(compileSassString(sass, sassConfig))
+      .resolves
+      .toMatchObject({
+        css: '@font-face{font-family:"whatever";src:"WHATEVER.WOFF2"}'
+      })
   })
 
   it('can be overridden to use a custom function', async () => {
@@ -56,12 +58,13 @@ describe('@function font-url', () => {
       @font-face {
         font-family: "whatever";
         src: govuk-font-url("whatever.woff2");
-      }`
+      }
+    `
 
-    const results = await compileSassString(sass, sassConfig)
-
-    expect(results.css.toString().trim()).toEqual(
-      '@font-face{font-family:"whatever";src:url("/custom/whatever.woff2")}'
-    )
+    await expect(compileSassString(sass, sassConfig))
+      .resolves
+      .toMatchObject({
+        css: '@font-face{font-family:"whatever";src:url("/custom/whatever.woff2")}'
+      })
   })
 })
