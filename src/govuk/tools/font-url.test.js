@@ -32,7 +32,7 @@ describe('@function font-url', () => {
       @import "tools/font-url";
 
       $govuk-fonts-path: '/path/to/fonts/';
-      $govuk-font-url-function: 'to_upper_case';
+      $govuk-font-url-function: 'to-upper-case';
 
       @font-face {
         font-family: "whatever";

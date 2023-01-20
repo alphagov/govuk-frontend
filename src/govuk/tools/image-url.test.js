@@ -29,7 +29,7 @@ describe('@function image-url', () => {
     const sass = `
       @import "tools/image-url";
 
-      $govuk-image-url-function: 'to_upper_case';
+      $govuk-image-url-function: 'to-upper-case';
 
       .foo {
         background-image: govuk-image-url("baz.png");
