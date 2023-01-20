@@ -1,8 +1,6 @@
-const { compileSassString } = require('../../../lib/jest-helpers')
+const outdent = require('outdent')
 
-const sassConfig = {
-  outputStyle: 'compressed'
-}
+const { compileSassString } = require('../../../lib/jest-helpers')
 
 describe('@function image-url', () => {
   it('by default concatenates the image path and the filename', async () => {
@@ -16,10 +14,14 @@ describe('@function image-url', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
+    await expect(compileSassString(sass))
       .resolves
       .toMatchObject({
-        css: '.foo{background-image:url("/path/to/images/baz.png")}'
+        css: outdent`
+          .foo {
+            background-image: url("/path/to/images/baz.png");
+          }
+        `
       })
   })
 
@@ -34,10 +36,14 @@ describe('@function image-url', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
+    await expect(compileSassString(sass))
       .resolves
       .toMatchObject({
-        css: '.foo{background-image:"BAZ.PNG"}'
+        css: outdent`
+          .foo {
+            background-image: "BAZ.PNG";
+          }
+        `
       })
   })
 
@@ -57,10 +63,14 @@ describe('@function image-url', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
+    await expect(compileSassString(sass))
       .resolves
       .toMatchObject({
-        css: '.foo{background-image:url("/custom/baz.png")}'
+        css: outdent`
+          .foo {
+            background-image: url("/custom/baz.png");
+          }
+        `
       })
   })
 })

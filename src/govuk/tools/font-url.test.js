@@ -1,8 +1,6 @@
-const { compileSassString } = require('../../../lib/jest-helpers')
+const outdent = require('outdent')
 
-const sassConfig = {
-  outputStyle: 'compressed'
-}
+const { compileSassString } = require('../../../lib/jest-helpers')
 
 describe('@function font-url', () => {
   it('by default concatenates the font path and the filename', async () => {
@@ -17,10 +15,15 @@ describe('@function font-url', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
+    await expect(compileSassString(sass))
       .resolves
       .toMatchObject({
-        css: '@font-face{font-family:"whatever";src:url("/path/to/fonts/whatever.woff2")}'
+        css: outdent`
+          @font-face {
+            font-family: "whatever";
+            src: url("/path/to/fonts/whatever.woff2");
+          }
+        `
       })
   })
 
@@ -37,10 +40,15 @@ describe('@function font-url', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
+    await expect(compileSassString(sass))
       .resolves
       .toMatchObject({
-        css: '@font-face{font-family:"whatever";src:"WHATEVER.WOFF2"}'
+        css: outdent`
+          @font-face {
+            font-family: "whatever";
+            src: "WHATEVER.WOFF2";
+          }
+        `
       })
   })
 
@@ -61,10 +69,15 @@ describe('@function font-url', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
+    await expect(compileSassString(sass))
       .resolves
       .toMatchObject({
-        css: '@font-face{font-family:"whatever";src:url("/custom/whatever.woff2")}'
+        css: outdent`
+          @font-face {
+            font-family: "whatever";
+            src: url("/custom/whatever.woff2");
+          }
+        `
       })
   })
 })

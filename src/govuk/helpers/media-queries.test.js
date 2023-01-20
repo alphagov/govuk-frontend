@@ -1,8 +1,6 @@
-const { compileSassString } = require('../../../lib/jest-helpers')
+const outdent = require('outdent')
 
-const sassConfig = {
-  outputStyle: 'compressed'
-}
+const { compileSassString } = require('../../../lib/jest-helpers')
 
 const sassBootstrap = `
   $govuk-breakpoints: (
@@ -25,10 +23,16 @@ describe('@mixin govuk-media-query', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
+    await expect(compileSassString(sass))
       .resolves
       .toMatchObject({
-        css: '@media (min-width: 20em){.foo{color:red}}'
+        css: outdent`
+          @media (min-width: 20em) {
+            .foo {
+              color: red;
+            }
+          }
+        `
       })
   })
 
@@ -44,10 +48,16 @@ describe('@mixin govuk-media-query', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
+    await expect(compileSassString(sass))
       .resolves
       .toMatchObject({
-        css: '@media (min-width: 20em){.foo{color:red}}'
+        css: outdent`
+          @media (min-width: 20em) {
+            .foo {
+              color: red;
+            }
+          }
+        `
       })
   })
 
@@ -61,10 +71,16 @@ describe('@mixin govuk-media-query', () => {
         }
       }
     `
-    await expect(compileSassString(sass, sassConfig))
+    await expect(compileSassString(sass))
       .resolves
       .toMatchObject({
-        css: '@media (max-width: 20em){.foo{color:red}}'
+        css: outdent`
+          @media (max-width: 20em) {
+            .foo {
+              color: red;
+            }
+          }
+        `
       })
   })
 
@@ -80,10 +96,16 @@ describe('@mixin govuk-media-query', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
+    await expect(compileSassString(sass))
       .resolves
       .toMatchObject({
-        css: '@media (max-width: 61.24em){.foo{color:red}}'
+        css: outdent`
+          @media (max-width: 61.24em) {
+            .foo {
+              color: red;
+            }
+          }
+        `
       })
   })
 
@@ -98,10 +120,16 @@ describe('@mixin govuk-media-query', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
+    await expect(compileSassString(sass))
       .resolves
       .toMatchObject({
-        css: '@media (min-width: 20em) and (max-width: 40em){.foo{color:red}}'
+        css: outdent`
+          @media (min-width: 20em) and (max-width: 40em) {
+            .foo {
+              color: red;
+            }
+          }
+        `
       })
   })
 
@@ -117,10 +145,16 @@ describe('@mixin govuk-media-query', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
+    await expect(compileSassString(sass))
       .resolves
       .toMatchObject({
-        css: '@media (min-width: 20em) and (max-width: 46.24em){.foo{color:red}}'
+        css: outdent`
+          @media (min-width: 20em) and (max-width: 46.24em) {
+            .foo {
+              color: red;
+            }
+          }
+        `
       })
   })
 
@@ -135,10 +169,16 @@ describe('@mixin govuk-media-query', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
+    await expect(compileSassString(sass))
       .resolves
       .toMatchObject({
-        css: '@media (max-width: 40em) and (orientation: landscape){.foo{color:red}}'
+        css: outdent`
+          @media (max-width: 40em) and (orientation: landscape) {
+            .foo {
+              color: red;
+            }
+          }
+        `
       })
   })
 
@@ -153,10 +193,16 @@ describe('@mixin govuk-media-query', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
+    await expect(compileSassString(sass))
       .resolves
       .toMatchObject({
-        css: '@media aural and (max-width: 40em){.foo{color:red}}'
+        css: outdent`
+          @media aural and (max-width: 40em) {
+            .foo {
+              color: red;
+            }
+          }
+        `
       })
   })
 
@@ -184,10 +230,14 @@ describe('@mixin govuk-media-query', () => {
         }
       `
 
-      await expect(compileSassString(sass, sassConfig))
+      await expect(compileSassString(sass))
         .resolves
         .toMatchObject({
-          css: '.foo{color:forestgreen}'
+          css: outdent`
+            .foo {
+              color: forestgreen;
+            }
+          `
         })
     })
 
@@ -206,10 +256,14 @@ describe('@mixin govuk-media-query', () => {
         }
       `
 
-      await expect(compileSassString(sass, sassConfig))
+      await expect(compileSassString(sass))
         .resolves
         .toMatchObject({
-          css: '.foo{color:blue}'
+          css: outdent`
+            .foo {
+              color: blue;
+            }
+          `
         })
     })
   })

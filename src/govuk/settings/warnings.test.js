@@ -8,7 +8,6 @@ const mockWarnFunction = jest.fn()
   .mockReturnValue(sass.NULL)
 
 const sassConfig = {
-  outputStyle: 'compressed',
   functions: {
     '@warn': mockWarnFunction
   }

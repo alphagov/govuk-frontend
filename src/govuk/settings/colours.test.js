@@ -1,9 +1,5 @@
 const { compileSassString } = require('../../../lib/jest-helpers')
 
-const sassConfig = {
-  outputStyle: 'compressed'
-}
-
 describe('Organisation colours', () => {
   it('should define websafe colours that meet contrast requirements', async () => {
     const sass = `
@@ -30,6 +26,6 @@ describe('Organisation colours', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig)).resolves
+    await expect(compileSassString(sass)).resolves
   })
 })

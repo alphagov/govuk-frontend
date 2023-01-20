@@ -45,7 +45,8 @@ describe('@function govuk-spacing', () => {
       .toMatchObject({
         css: outdent`
           .foo {
-            top: 15px; }
+            top: 15px;
+          }
         `
       })
   })
@@ -64,7 +65,8 @@ describe('@function govuk-spacing', () => {
       .toMatchObject({
         css: outdent`
           .foo {
-            top: -15px; }
+            top: -15px;
+          }
         `
       })
   })
@@ -131,7 +133,8 @@ describe('@function govuk-spacing', () => {
       .toMatchObject({
         css: outdent`
           .foo {
-            top: 0; }
+            top: 0;
+          }
         `
       })
   })
@@ -152,10 +155,14 @@ describe('@mixin _govuk-responsive-spacing', () => {
       .toMatchObject({
         css: outdent`
           .foo {
-            margin: 15px; }
-            @media (min-width: 30em) {
-              .foo {
-                margin: 25px; } }
+            margin: 15px;
+          }
+
+          @media (min-width: 30em) {
+            .foo {
+              margin: 25px;
+            }
+          }
         `
       })
   })
@@ -174,10 +181,14 @@ describe('@mixin _govuk-responsive-spacing', () => {
       .toMatchObject({
         css: outdent`
           .foo {
-            padding-top: 15px; }
-            @media (min-width: 30em) {
-              .foo {
-                padding-top: 25px; } }
+            padding-top: 15px;
+          }
+
+          @media (min-width: 30em) {
+            .foo {
+              padding-top: 25px;
+            }
+          }
         `
       })
   })
@@ -217,10 +228,14 @@ describe('@mixin _govuk-responsive-spacing', () => {
         .toMatchObject({
           css: outdent`
             .foo {
-              margin: 15px !important; }
-              @media (min-width: 30em) {
-                .foo {
-                  margin: 25px !important; } }
+              margin: 15px !important;
+            }
+
+            @media (min-width: 30em) {
+              .foo {
+                margin: 25px !important;
+              }
+            }
           `
         })
     })
@@ -244,10 +259,14 @@ describe('@mixin _govuk-responsive-spacing', () => {
         .toMatchObject({
           css: outdent`
             .foo {
-              margin-top: 15px !important; }
-              @media (min-width: 30em) {
-                .foo {
-                  margin-top: 25px !important; } }
+              margin-top: 15px !important;
+            }
+
+            @media (min-width: 30em) {
+              .foo {
+                margin-top: 25px !important;
+              }
+            }
           `
         })
     })
@@ -272,10 +291,14 @@ describe('@mixin _govuk-responsive-spacing', () => {
         .toMatchObject({
           css: outdent`
             .foo {
-              margin: 17px; }
-              @media (min-width: 30em) {
-                .foo {
-                  margin: 27px; } }
+              margin: 17px;
+            }
+
+            @media (min-width: 30em) {
+              .foo {
+                margin: 27px;
+              }
+            }
           `
         })
     })
@@ -299,10 +322,14 @@ describe('@mixin _govuk-responsive-spacing', () => {
         .toMatchObject({
           css: outdent`
             .foo {
-              margin-top: 17px; }
-              @media (min-width: 30em) {
-                .foo {
-                  margin-top: 27px; } }
+              margin-top: 17px;
+            }
+
+            @media (min-width: 30em) {
+              .foo {
+                margin-top: 27px;
+              }
+            }
           `
         })
     })
@@ -324,10 +351,14 @@ describe('@mixin govuk-responsive-margin', () => {
       .toMatchObject({
         css: outdent`
           .foo {
-            margin: 15px; }
-            @media (min-width: 30em) {
-              .foo {
-                margin: 25px; } }
+            margin: 15px;
+          }
+
+          @media (min-width: 30em) {
+            .foo {
+              margin: 25px;
+            }
+          }
         `
       })
   })
@@ -351,10 +382,14 @@ describe('@mixin govuk-responsive-margin', () => {
       .toMatchObject({
         css: outdent`
           .foo {
-            margin-top: 17px !important; }
-            @media (min-width: 30em) {
-              .foo {
-                margin-top: 27px !important; } }
+            margin-top: 17px !important;
+          }
+
+          @media (min-width: 30em) {
+            .foo {
+              margin-top: 27px !important;
+            }
+          }
         `
       })
   })
@@ -375,10 +410,14 @@ describe('@mixin govuk-responsive-padding', () => {
       .toMatchObject({
         css: outdent`
           .foo {
-            padding: 15px; }
-            @media (min-width: 30em) {
-              .foo {
-                padding: 25px; } }
+            padding: 15px;
+          }
+
+          @media (min-width: 30em) {
+            .foo {
+              padding: 25px;
+            }
+          }
         `
       })
   })
@@ -402,10 +441,14 @@ describe('@mixin govuk-responsive-padding', () => {
       .toMatchObject({
         css: outdent`
           .foo {
-            padding-top: 17px !important; }
-            @media (min-width: 30em) {
-              .foo {
-                padding-top: 27px !important; } }
+            padding-top: 17px !important;
+          }
+
+          @media (min-width: 30em) {
+            .foo {
+              padding-top: 27px !important;
+            }
+          }
         `
       })
   })

@@ -198,7 +198,8 @@ describe('@function _govuk-line-height', () => {
       .toMatchObject({
         css: outdent`
           .foo {
-            line-height: 3.141; }
+            line-height: 3.141;
+          }
         `
       })
   })
@@ -217,7 +218,8 @@ describe('@function _govuk-line-height', () => {
       .toMatchObject({
         css: outdent`
           .foo {
-            line-height: 2em; }
+            line-height: 2em;
+          }
         `
       })
   })
@@ -236,7 +238,8 @@ describe('@function _govuk-line-height', () => {
       .toMatchObject({
         css: outdent`
           .foo {
-            line-height: 1.5; }
+            line-height: 1.5;
+          }
         `
       })
   })
@@ -259,12 +262,16 @@ describe('@mixin govuk-typography-responsive', () => {
           .foo {
             font-size: 12px;
             font-size: 0.75rem;
-            line-height: 1.25; }
-            @media (min-width: 30em) {
-              .foo {
-                font-size: 14px;
-                font-size: 0.875rem;
-                line-height: 1.42857; } }
+            line-height: 1.25;
+          }
+
+          @media (min-width: 30em) {
+            .foo {
+              font-size: 14px;
+              font-size: 0.875rem;
+              line-height: 1.42857;
+            }
+          }
         `
       })
   })
@@ -285,11 +292,15 @@ describe('@mixin govuk-typography-responsive', () => {
           .foo {
             font-size: 12px;
             font-size: 0.75rem;
-            line-height: 1.25; }
-            @media print {
-              .foo {
-                font-size: 14pt;
-                line-height: 1.5; } }
+            line-height: 1.25;
+          }
+
+          @media print {
+            .foo {
+              font-size: 14pt;
+              line-height: 1.5;
+            }
+          }
         `
       })
   })
@@ -327,12 +338,16 @@ describe('@mixin govuk-typography-responsive', () => {
             .foo {
               font-size: 12px !important;
               font-size: 0.75rem !important;
-              line-height: 1.25 !important; }
-              @media (min-width: 30em) {
-                .foo {
-                  font-size: 14px !important;
-                  font-size: 0.875rem !important;
-                  line-height: 1.42857 !important; } }
+              line-height: 1.25 !important;
+            }
+
+            @media (min-width: 30em) {
+              .foo {
+                font-size: 14px !important;
+                font-size: 0.875rem !important;
+                line-height: 1.42857 !important;
+              }
+            }
           `
         })
     })
@@ -353,11 +368,15 @@ describe('@mixin govuk-typography-responsive', () => {
             .foo {
               font-size: 12px !important;
               font-size: 0.75rem !important;
-              line-height: 1.25 !important; }
-              @media print {
-                .foo {
-                  font-size: 14pt !important;
-                  line-height: 1.5 !important; } }
+              line-height: 1.25 !important;
+            }
+
+            @media print {
+              .foo {
+                font-size: 14pt !important;
+                line-height: 1.5 !important;
+              }
+            }
           `
         })
     })
@@ -380,12 +399,16 @@ describe('@mixin govuk-typography-responsive', () => {
             .foo {
               font-size: 12px;
               font-size: 0.75rem;
-              line-height: 1.75; }
-              @media (min-width: 30em) {
-                .foo {
-                  font-size: 14px;
-                  font-size: 0.875rem;
-                  line-height: 1.5; } }
+              line-height: 1.75;
+            }
+
+            @media (min-width: 30em) {
+              .foo {
+                font-size: 14px;
+                font-size: 0.875rem;
+                line-height: 1.5;
+              }
+            }
           `
         })
     })
@@ -415,11 +438,15 @@ describe('@mixin govuk-typography-responsive', () => {
           css: outdent`
             .foo {
               font-size: 12px;
-              line-height: 1.25; }
-              @media (min-width: 30em) {
-                .foo {
-                  font-size: 14px;
-                  line-height: 1.42857; } }
+              line-height: 1.25;
+            }
+
+            @media (min-width: 30em) {
+              .foo {
+                font-size: 14px;
+                line-height: 1.42857;
+              }
+            }
           `
         })
     })
@@ -441,11 +468,15 @@ describe('@mixin govuk-typography-responsive', () => {
           css: outdent`
             .foo {
               font-size: 12px;
-              line-height: 1.25; }
-              @media (min-width: 30em) {
-                .foo {
-                  font-size: 14px;
-                  line-height: 1.42857; } }
+              line-height: 1.25;
+            }
+
+            @media (min-width: 30em) {
+              .foo {
+                font-size: 14px;
+                line-height: 1.42857;
+              }
+            }
           `
         })
     })
@@ -467,11 +498,15 @@ describe('@mixin govuk-typography-responsive', () => {
             css: outdent`
               .foo {
                 font-size: 12px !important;
-                line-height: 1.25 !important; }
-                @media (min-width: 30em) {
-                  .foo {
-                    font-size: 14px !important;
-                    line-height: 1.42857 !important; } }
+                line-height: 1.25 !important;
+              }
+
+              @media (min-width: 30em) {
+                .foo {
+                  font-size: 14px !important;
+                  line-height: 1.42857 !important;
+                }
+              }
             `
           })
       })
@@ -514,11 +549,15 @@ describe('@mixin govuk-typography-responsive', () => {
           css: outdent`
             .foo {
               font-size: 12px;
-              line-height: 1.25; }
-              @media (min-width: 30em) {
-                .foo {
-                  font-size: 14px;
-                  line-height: 1.42857; } }
+              line-height: 1.25;
+            }
+
+            @media (min-width: 30em) {
+              .foo {
+                font-size: 14px;
+                line-height: 1.42857;
+              }
+            }
           `
         })
     })
@@ -547,15 +586,22 @@ describe('@mixin govuk-typography-responsive', () => {
               font-weight: 400;
               font-size: 12px;
               font-size: 0.75rem;
-              line-height: 1.25; }
-              @media print {
-                .foo {
-                  font-family: sans-serif; } }
-              @media (min-width: 30em) {
-                .foo {
-                  font-size: 14px;
-                  font-size: 0.875rem;
-                  line-height: 1.42857; } }
+              line-height: 1.25;
+            }
+
+            @media print {
+              .foo {
+                font-family: sans-serif;
+              }
+            }
+
+            @media (min-width: 30em) {
+              .foo {
+                font-size: 14px;
+                font-size: 0.875rem;
+                line-height: 1.42857;
+              }
+            }
           `
         })
     })
@@ -578,9 +624,11 @@ describe('@mixin govuk-typography-responsive', () => {
       await expect(results).resolves.toMatchObject({
         css: expect.stringContaining(outdent`
           @supports (font-variant-numeric: tabular-nums) {
-              .foo {
-                font-feature-settings: normal;
-                font-variant-numeric: tabular-nums; } }
+            .foo {
+              font-feature-settings: normal;
+              font-variant-numeric: tabular-nums;
+            }
+          }
         `)
       })
     })

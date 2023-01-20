@@ -9,7 +9,6 @@ const mockWarnFunction = jest.fn()
   .mockReturnValue(sass.NULL)
 
 const sassConfig = {
-  outputStyle: 'compressed',
   functions: {
     '@warn': mockWarnFunction
   }
@@ -58,7 +57,8 @@ describe('@mixin govuk-compatibility', () => {
       .toMatchObject({
         css: outdent`
           .foo {
-            color: red; }
+            color: red;
+          }
         `
       })
   })

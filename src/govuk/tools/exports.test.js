@@ -1,8 +1,6 @@
-const { compileSassString } = require('../../../lib/jest-helpers')
+const outdent = require('outdent')
 
-const sassConfig = {
-  outputStyle: 'compressed'
-}
+const { compileSassString } = require('../../../lib/jest-helpers')
 
 describe('@mixin govuk-exports', () => {
   it('will only output a named section once', async () => {
@@ -22,10 +20,14 @@ describe('@mixin govuk-exports', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
+    await expect(compileSassString(sass))
       .resolves
       .toMatchObject({
-        css: '.foo{color:red}'
+        css: outdent`
+          .foo {
+            color: red;
+          }
+        `
       })
   })
 
@@ -46,10 +48,18 @@ describe('@mixin govuk-exports', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
+    await expect(compileSassString(sass))
       .resolves
       .toMatchObject({
-        css: '.foo{color:red}.bar{color:blue}'
+        css: outdent`
+          .foo {
+            color: red;
+          }
+
+          .bar {
+            color: blue;
+          }
+        `
       })
   })
 })

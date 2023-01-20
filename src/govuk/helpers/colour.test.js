@@ -1,4 +1,5 @@
 const sass = require('node-sass')
+const outdent = require('outdent')
 
 const { compileSassString } = require('../../../lib/jest-helpers')
 
@@ -8,7 +9,6 @@ const mockWarnFunction = jest.fn()
   .mockReturnValue(sass.NULL)
 
 const sassConfig = {
-  outputStyle: 'compact',
   functions: {
     '@warn': mockWarnFunction
   }
@@ -41,7 +41,11 @@ describe('@function govuk-colour', () => {
     await expect(compileSassString(sass, sassConfig))
       .resolves
       .toMatchObject({
-        css: '.foo { color: #ff0000; }'
+        css: outdent`
+          .foo {
+            color: #ff0000;
+          }
+        `
       })
   })
 
@@ -57,7 +61,11 @@ describe('@function govuk-colour', () => {
     await expect(compileSassString(sass, sassConfig))
       .resolves
       .toMatchObject({
-        css: '.foo { color: #ff0000; }'
+        css: outdent`
+          .foo {
+            color: #ff0000;
+          }
+        `
       })
   })
 
@@ -98,7 +106,11 @@ describe('@function govuk-colour', () => {
       await expect(compileSassString(sass, sassConfig))
         .resolves
         .toMatchObject({
-          css: '.foo { color: #0000ff; }'
+          css: outdent`
+            .foo {
+              color: #0000ff;
+            }
+          `
         })
     })
 
@@ -114,7 +126,11 @@ describe('@function govuk-colour', () => {
       await expect(compileSassString(sass, sassConfig))
         .resolves
         .toMatchObject({
-          css: '.foo { color: #BADA55; }'
+          css: outdent`
+            .foo {
+              color: #BADA55;
+            }
+          `
         })
     })
 
@@ -130,7 +146,11 @@ describe('@function govuk-colour', () => {
       await expect(compileSassString(sass, sassConfig))
         .resolves
         .toMatchObject({
-          css: '.foo { color: #0000ff; }'
+          css: outdent`
+            .foo {
+              color: #0000ff;
+            }
+          `
         })
     })
 
@@ -185,7 +205,11 @@ describe('@function govuk-colour', () => {
       await expect(compileSassString(sass, sassConfig))
         .resolves
         .toMatchObject({
-          css: '.foo { color: #ff0000; }'
+          css: outdent`
+            .foo {
+              color: #ff0000;
+            }
+          `
         })
     })
 
@@ -201,7 +225,11 @@ describe('@function govuk-colour', () => {
       await expect(compileSassString(sass, sassConfig))
         .resolves
         .toMatchObject({
-          css: '.foo { color: #ff0000; }'
+          css: outdent`
+            .foo {
+              color: #ff0000;
+            }
+          `
         })
     })
 
@@ -233,7 +261,11 @@ describe('@function govuk-colour', () => {
       await expect(compileSassString(sass, sassConfig))
         .resolves
         .toMatchObject({
-          css: '.foo { color: #ff0000; }'
+          css: outdent`
+            .foo {
+              color: #ff0000;
+            }
+          `
         })
     })
   })
@@ -266,7 +298,11 @@ describe('@function govuk-organisation-colour', () => {
     await expect(compileSassString(sass, sassConfig))
       .resolves
       .toMatchObject({
-        css: '.foo { color: #9A00A8; }'
+        css: outdent`
+          .foo {
+            color: #9A00A8;
+          }
+        `
       })
   })
 
@@ -282,7 +318,11 @@ describe('@function govuk-organisation-colour', () => {
     await expect(compileSassString(sass, sassConfig))
       .resolves
       .toMatchObject({
-        css: '.foo { color: #A81223; }'
+        css: outdent`
+          .foo {
+            color: #A81223;
+          }
+        `
       })
   })
 
@@ -298,7 +338,11 @@ describe('@function govuk-organisation-colour', () => {
     await expect(compileSassString(sass, sassConfig))
       .resolves
       .toMatchObject({
-        css: '.foo { border-color: #EC22FF; }'
+        css: outdent`
+          .foo {
+            border-color: #EC22FF;
+          }
+        `
       })
   })
 
