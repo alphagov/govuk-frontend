@@ -15,7 +15,7 @@ module.exports = {
     const filesToLint = await removeESLintIgnoredFiles(files)
     return [`npm run lint:js:cli -- --fix ${filesToLint}`]
   },
-  '*.json': 'npm run lint:docs:cli -- --write',
+  '*.{json,md}': 'npm run lint:docs:cli -- --write',
   '*.scss': ['npm run lint:scss:cli -- --fix']
 }
 
