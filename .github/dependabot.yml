@@ -1,7 +1,6 @@
 version: 2
 
 updates:
-
   # Update npm packages
   - package-ecosystem: npm
     directory: /

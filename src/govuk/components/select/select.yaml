@@ -1,77 +1,77 @@
 params:
-- name: id
-  type: string
-  required: true
-  description: ID for each select box.
-- name: name
-  type: string
-  required: true
-  description: Name property for the select.
-- name: items
-  type: array
-  required: true
-  description: Array of option items for the select.
-  params:
+  - name: id
+    type: string
+    required: true
+    description: ID for each select box.
+  - name: name
+    type: string
+    required: true
+    description: Name property for the select.
+  - name: items
+    type: array
+    required: true
+    description: Array of option items for the select.
+    params:
+      - name: value
+        type: string
+        required: false
+        description: Value for the option item. Defaults to an empty string.
+      - name: text
+        type: string
+        required: true
+        description: Text for the option item.
+      - name: selected
+        type: boolean
+        required: false
+        description: Whether the option should be selected when the page loads. Takes precedence over the top-level `value` option.
+      - name: disabled
+        type: boolean
+        required: false
+        description: Sets the option item as disabled.
+      - name: attributes
+        type: object
+        required: false
+        description: HTML attributes (for example data attributes) to add to the option.
   - name: value
     type: string
     required: false
-    description: Value for the option item. Defaults to an empty string.
-  - name: text
+    description: Value for the option which should be selected. Use this as an alternative to setting the `selected` option on each individual item.
+  - name: describedBy
     type: string
-    required: true
-    description: Text for the option item.
-  - name: selected
-    type: boolean
     required: false
-    description: Whether the option should be selected when the page loads. Takes precedence over the top-level `value` option.
-  - name: disabled
-    type: boolean
-    required: false
-    description: Sets the option item as disabled.
-  - name: attributes
+    description: One or more element IDs to add to the `aria-describedby` attribute, used to provide additional descriptive information for screenreader users.
+  - name: label
     type: object
     required: false
-    description: HTML attributes (for example data attributes) to add to the option.
-- name: value
-  type: string
-  required: false
-  description: Value for the option which should be selected. Use this as an alternative to setting the `selected` option on each individual item.
-- name: describedBy
-  type: string
-  required: false
-  description: One or more element IDs to add to the `aria-describedby` attribute, used to provide additional descriptive information for screenreader users.
-- name: label
-  type: object
-  required: false
-  description: Label text or HTML by specifying value for either text or html keys.
-  isComponent: true
-- name: hint
-  type: object
-  required: false
-  description: Options for the hint component.
-  isComponent: true
-- name: errorMessage
-  type: object
-  required: false
-  description: Options for the error message component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.
-  isComponent: true
-- name: formGroup
-  type: object
-  required: false
-  description: Options for the form-group wrapper.
-  params:
+    description: Label text or HTML by specifying value for either text or html keys.
+    isComponent: true
+  - name: hint
+    type: object
+    required: false
+    description: Options for the hint component.
+    isComponent: true
+  - name: errorMessage
+    type: object
+    required: false
+    description: Options for the error message component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.
+    isComponent: true
+  - name: formGroup
+    type: object
+    required: false
+    description: Options for the form-group wrapper.
+    params:
+      - name: classes
+        type: string
+        required: false
+        description: Classes to add to the form group (for example to show error state for the whole group).
   - name: classes
     type: string
     required: false
-    description: Classes to add to the form group (for example to show error state for the whole group).
-- name: classes
-  type: string
-  required: false
-  description: Classes to add to the select.
-- name: attributes
-  type: object
-  required: false
-  description: HTML attributes (for example data attributes) to add to the select.
+    description: Classes to add to the select.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the select.
 
 examples:
   - name: default
@@ -81,15 +81,12 @@ examples:
       label:
         text: Label text goes here
       items:
-        -
-          value: 1
+        - value: 1
           text: GOV.UK frontend option 1
-        -
-          value: 2
+        - value: 2
           text: GOV.UK frontend option 2
           selected: true
-        -
-          value: 3
+        - value: 3
           text: GOV.UK frontend option 3
           disabled: true
   - name: with no items
@@ -106,15 +103,12 @@ examples:
       label:
         text: Label text goes here
       items:
-        -
-          value: 1
+        - value: 1
           text: GOV.UK frontend option 1
-        -
-          value: 2
+        - value: 2
           text: GOV.UK frontend option 2
           selected: true
-        -
-          value: 3
+        - value: 3
           text: GOV.UK frontend option 3
           disabled: true
       value: 3
@@ -129,14 +123,11 @@ examples:
       errorMessage:
         text: Error message goes here
       items:
-        -
-          value: 1
+        - value: 1
           text: GOV.UK frontend option 1
-        -
-          value: 2
+        - value: 2
           text: GOV.UK frontend option 2
-        -
-          value: 3
+        - value: 3
           text: GOV.UK frontend option 3
   - name: with label as page heading
     data:
@@ -147,15 +138,12 @@ examples:
         classes: govuk-label--l
         isPageHeading: true
       items:
-        -
-          value: 1
+        - value: 1
           text: GOV.UK frontend option 1
-        -
-          value: 2
+        - value: 2
           text: GOV.UK frontend option 2
           selected: true
-        -
-          value: 3
+        - value: 3
           text: GOV.UK frontend option 3
           disabled: true
   - name: with full width override
@@ -166,15 +154,12 @@ examples:
       label:
         text: Label text goes here
       items:
-        -
-          value: 1
+        - value: 1
           text: GOV.UK frontend option 1
-        -
-          value: 2
+        - value: 2
           text: GOV.UK frontend option 2
           selected: true
-        -
-          value: 3
+        - value: 3
           text: GOV.UK frontend option 3
           disabled: true
   - name: with optional form-group classes
@@ -187,30 +172,25 @@ examples:
       formGroup:
         classes: extra-class
       items:
-        -
-          value: 1
+        - value: 1
           text: GOV.UK frontend option 1
-        -
-          value: 2
+        - value: 2
           text: GOV.UK frontend option 2
           selected: true
-        -
-          value: 3
+        - value: 3
           text: GOV.UK frontend option 3
           disabled: true
 
-# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: with describedBy
     hidden: true
     data:
       id: with-describedby
       name: with-describedby
       items:
-        -
-          value: 1
+        - value: 1
           text: GOV.UK frontend option 1
-        -
-          value: 2
+        - value: 2
           text: GOV.UK frontend option 2
       describedBy: some-id
   - name: attributes
@@ -219,11 +199,9 @@ examples:
       id: with-attributes
       name: with-attributes
       items:
-        -
-          value: 1
+        - value: 1
           text: GOV.UK frontend option 1
-        -
-          value: 2
+        - value: 2
           text: GOV.UK frontend option 2
       attributes:
         data-attribute: my data value
@@ -234,14 +212,12 @@ examples:
       name: with-item-attributes
       value: 2
       items:
-        -
-          text: Option 1
+        - text: Option 1
           value: 1
           attributes:
             data-attribute: ABC
             data-second-attribute: DEF
-        -
-          text: Option 2
+        - text: Option 2
           value: 2
           attributes:
             data-attribute: GHI
@@ -252,14 +228,12 @@ examples:
       id: with-falsey-values
       name: with-falsey-values
       items:
-        -
-          text: Option 1
+        - text: Option 1
           value: 1
         - null
         - false
-        - ""
-        -
-          text: Options 2
+        - ''
+        - text: Options 2
           value: 2
   - name: hint
     hidden: true
@@ -277,11 +251,9 @@ examples:
       hint:
         text: Hint text goes here
       items:
-        -
-          value: 1
+        - value: 1
           text: GOV.UK frontend option 1
-        -
-          value: 2
+        - value: 2
           text: GOV.UK frontend option 2
   - name: error
     hidden: true
@@ -291,11 +263,9 @@ examples:
       errorMessage:
         text: Error message
       items:
-        -
-          value: 1
+        - value: 1
           text: GOV.UK frontend option 1
-        -
-          value: 2
+        - value: 2
           text: GOV.UK frontend option 2
   - name: error and describedBy
     hidden: true
@@ -306,11 +276,9 @@ examples:
       errorMessage:
         text: Error message
       items:
-        -
-          value: 1
+        - value: 1
           text: GOV.UK frontend option 1
-        -
-          value: 2
+        - value: 2
           text: GOV.UK frontend option 2
 
   - name: item selected overrides value
