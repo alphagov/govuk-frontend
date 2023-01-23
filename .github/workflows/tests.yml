@@ -8,9 +8,11 @@ on:
       - main
       - 'feature/**'
       - 'support/**'
-      - 'rollup-plugin-visualiser-gh-action'
 
   workflow_dispatch:
+
+permissions:
+  pull-requests: write
 
 concurrency:
   group: tests-${{ github.head_ref || github.run_id }}
@@ -188,6 +190,21 @@ jobs:
 
       - name: Collects stats
         run: npm start --workspace stats
+
+      - name: Add comment to PR
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const commentText = 'Test comment'
+
+            github.rest.issues.createComment({
+              issue_number: context.payload.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: commentText
+            })
+        if: github.event_name == 'pull_request'
 
       - name: Save test coverage
         uses: actions/upload-artifact@v3
