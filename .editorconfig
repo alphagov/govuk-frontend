@@ -114,10 +114,10 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 
 [**vendor**]
-indent_size =
-indent_style =
-charset =
-end_of_line =
-insert_final_newline =
-trim_trailing_whitespace =
-max_line_length =
+indent_size = unset
+indent_style = unset
+charset = unset
+end_of_line = unset
+insert_final_newline = unset
+trim_trailing_whitespace = unset
+max_line_length = unset
