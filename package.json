@@ -35,7 +35,7 @@
     "lint:editorconfig:cli": "editorconfig-checker",
     "lint:js": "npm run lint:js:cli -- \"**/*.{cjs,js,mjs}\"",
     "lint:js:cli": "eslint --cache --cache-location .cache/eslint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0",
-    "lint:prettier": "npm run lint:prettier:cli -- \"**/*.json\"",
+    "lint:prettier": "npm run lint:prettier:cli -- \"**/*.{json,md}\"",
     "lint:prettier:cli": "prettier --cache --cache-location .cache/prettier --cache-strategy content --check",
     "lint:scss": "npm run lint:scss:cli -- \"{app,src}/**/*.scss\"",
     "lint:scss:cli": "stylelint --cache --cache-location .cache/stylelint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0",
