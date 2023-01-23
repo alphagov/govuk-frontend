@@ -9,7 +9,7 @@ You can use resources such as [caniuse.com](https://caniuse.com/) and [developer
 In this example we’ve looked at [caniuse addEventListener](https://caniuse.com/#search=addEventListener) and seen that it’s not supported in IE8.
 
 2. Use polyfill.io service to generate the polyfill required
-You can [use the library](https://github.com/Financial-Times/polyfill-library) to do this or [use their CDN](https://cdn.polyfill.io/v2/polyfill.js?features=Event&flags=always) directly: `https://cdn.polyfill.io/v2/polyfill.js?features=Event&flags=always`
+   You can [use the library](https://github.com/Financial-Times/polyfill-library) to do this or [use their CDN](https://cdn.polyfill.io/v2/polyfill.js?features=Event&flags=always) directly: `https://cdn.polyfill.io/v2/polyfill.js?features=Event&flags=always`
 
 Then save this in the same structure that is used in the main project (https://github.com/Financial-Times/polyfill-library/tree/master/polyfills)
 

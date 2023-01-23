@@ -36,9 +36,9 @@ imports) if you want to override GOV.UK Frontend with your own styles.
 
 To import add the below to your Sass file:
 
-  ```scss
-  @import "node_modules/govuk-frontend/govuk/all";
-  ```
+```scss
+@import "node_modules/govuk-frontend/govuk/all";
+```
 
 [More details on importing styles](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#css)
 
@@ -53,6 +53,7 @@ You can include Javascript for all components either by copying the `all.js` fro
 ```html
 <script src="<path-to-govuk-frontend-all-file>/all.js"></script>
 ```
+
 Next you need to initialise the script by adding:
 
 ```html
@@ -61,13 +62,11 @@ Next you need to initialise the script by adding:
 
 [More details on importing Javascript and advanced options](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#javascript)
 
-
 ## Importing assets
 
 In order to import GOV.UK Frontend images and fonts to your project, you should configure your application to reference or copy the relevant GOV.UK Frontend assets.
 
 [More details on importing assets](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#font-and-image-assets)
-
 
 ## Getting updates
 

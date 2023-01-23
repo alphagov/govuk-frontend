@@ -39,13 +39,13 @@ You can resize text in Firefox in 2 ways.
 
 ## Resize text in Chrome or Firefox for Android
 
-1. Select **Settings**. 
+1. Select **Settings**.
 2. Select **Accessibility**.
 3. Drag the **Text scaling** slider until you're happy with the size of the example text.
 
 ## Resize text in Internet Explorer versions 8 to 11
 
-1. Press **Alt** to display the menu bar. 
+1. Press **Alt** to display the menu bar.
 2. On the menu bar, select **View**.
 3. Select **Text size** to display resizing options.
 
@@ -64,7 +64,7 @@ You can resize text in Firefox in 2 ways.
 
 ## Known issue: no text resizing in iOS
 
-You cannot resize the text for GOV.UK Design System styles in iOS. 
+You cannot resize the text for GOV.UK Design System styles in iOS.
 
 Due to iOS constraints, our styles do not support adjusting the base font size on iOS devices.
 

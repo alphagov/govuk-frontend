@@ -15,8 +15,9 @@ Developers should pair on releases. When remote working, it can be useful to be 
 4. Create and check out a new branch (`release-[version-number]`). See the [versioning documentation](/docs/contributing/versioning.md) for more information.
 
 5. Update the [`CHANGELOG.md`](../../CHANGELOG.md) by:
-  - changing the 'Unreleased' heading to the new version-number and release-type - for example, '3.11.0 (Feature release)'
-  - adding a new 'Unreleased' heading above the new version-number and release-type, so users will know where to add PRs to the changelog
+
+- changing the 'Unreleased' heading to the new version-number and release-type - for example, '3.11.0 (Feature release)'
+- adding a new 'Unreleased' heading above the new version-number and release-type, so users will know where to add PRs to the changelog
 
 6. Update [`package/package.json`](../../package/package.json) version with the new version-number.
 
@@ -43,17 +44,17 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 3. Run `npm run publish-release`, which will prompt you to check whether the npm tag looks as expected.
 
-  If you're following these instructions, you're probably doing a sequential release, meaning
-  the tag should be 'latest'.
+If you're following these instructions, you're probably doing a sequential release, meaning
+the tag should be 'latest'.
 
 4. Enter `y` to continue. If you think the tag should be different, enter `N` to have the option to set your own npm tag.
 
 5. You will now be prompted to continue or cancel the release. Check the details and enter `y` to continue. If something does not look right, press `N` to cancel the release.
-  
-  This step will create a ZIP file containing the release in the root of your govuk-frontend git directory. You will need this file when creating the GitHub release.
 
-  It will also automatically create a tag in Github which you can use to create a Github release in the following section.
-  
+This step will create a ZIP file containing the release in the root of your govuk-frontend git directory. You will need this file when creating the GitHub release.
+
+It will also automatically create a tag in Github which you can use to create a Github release in the following section.
+
 6. Run `npm logout` to log out from npm.
 
 ## Create a release on Github

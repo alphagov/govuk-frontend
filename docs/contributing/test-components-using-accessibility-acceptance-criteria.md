@@ -30,7 +30,7 @@ We recommend you test your component by putting it inside a realistic page. For 
 
 Check if the desired behaviour happens when testing. For example, whether [screen readers announce the headings](https://www.gov.uk/service-manual/technology/testing-with-assistive-technologies#how-to-test). As you test, take notes about whether the component or iteration met the criteria, or if there were issues you need to investigate further.
 
-We have created a [template for capturing findings from accessibility tests](https://docs.google.com/spreadsheets/d/1O0rWoH3ah_rj2iJ2We9VfyHNOr0gOVItXRy3vKzuYSw/edit). If it could help you, download it or make your own copy. If you cannot access the spreadsheet, [contact us]( https://design-system.service.gov.uk/#support) and we will make sure you get a copy.
+We have created a [template for capturing findings from accessibility tests](https://docs.google.com/spreadsheets/d/1O0rWoH3ah_rj2iJ2We9VfyHNOr0gOVItXRy3vKzuYSw/edit). If it could help you, download it or make your own copy. If you cannot access the spreadsheet, [contact us](https://design-system.service.gov.uk/#support) and we will make sure you get a copy.
 
 ## GOV.UK Design System - accessibility acceptance criteria
 
@@ -88,7 +88,7 @@ Users should be able to interact with elements using at least:
 
 - a keyboard
 - a screen reader in focus or form mode
-- screen reader shortcuts - [learn more about screen reader shortcuts]( https://dequeuniversity.com/screenreaders/)
+- screen reader shortcuts - [learn more about screen reader shortcuts](https://dequeuniversity.com/screenreaders/)
 - voice
 
 Interactive elements should be actionable with at least:
@@ -151,4 +151,4 @@ Components that you iterate may already have accessibility acceptance criteria. 
 
 If you're only making a small change to a component, then you only need to test against the criteria relevant to the change. For example, if you change a heading level, you will probably only need to test against the heading criteria.
 
-If you cannot find criteria in the [GOV.UK Design System Community Backlog](https://design-system.service.gov.uk/community/backlog/), then [ask the GOV.UK Design System team]( https://design-system.service.gov.uk/#support).
+If you cannot find criteria in the [GOV.UK Design System Community Backlog](https://design-system.service.gov.uk/community/backlog/), then [ask the GOV.UK Design System team](https://design-system.service.gov.uk/#support).

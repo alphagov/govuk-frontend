@@ -48,6 +48,7 @@ The [Semantic Versioning specification](https://semver.org/) requires a public A
 > For this system to work, you first need to declare a public API. This may consist of documentation or be enforced by the code itself.
 
 ### Design System Website
+
 One of ways users interact with GOV.UK Frontend is through the [GOV.UK Design System website](https://design-system.service.gov.uk/).
 
 This includes:
@@ -57,6 +58,7 @@ This includes:
 - SCSS - for example [colours variables](https://design-system.service.gov.uk/styles/colour/)
 
 ### npm package
+
 The other primary way is through what is [published to npm](/package).
 
 This includes:
@@ -84,11 +86,12 @@ See the [`CHANGELOG_TEMPLATE.md`](/docs/contributing/CHANGELOG_TEMPLATE.md) for 
 Include the modified `CHANGELOG` in the PR.
 
 ## Accidental breaking changes
+
 If a backward-incompatible change is released unintentionally, we will follow the process outlined on semver.org: https://semver.org/#what-do-i-do-if-i-accidentally-release-a-backwards-incompatible-change-as-a-minor-version
 
 > As soon as you realize that you’ve broken the Semantic Versioning spec, fix the problem and release a new minor version that corrects the problem and restores backwards compatibility. Even under this circumstance, it is unacceptable to modify versioned releases. If it’s appropriate, document the offending version and inform your users of the problem so that they are aware of the offending version.
 
-If appropriate, you can set up an incident review that allows the team to  see if there are
+If appropriate, you can set up an incident review that allows the team to see if there are
 any steps to avoid this happening again in the future.
 
 Communicate any actions as a result of an incident review, this will ensure our users will see that we take incidents seriously and can avoid some loss of trust.

@@ -42,9 +42,9 @@ For example:
 
 ### Further reading:
 
-* [Get BEM](http://getbem.com/introduction/)
-* [BEM Resources](https://github.com/sturobson/BEM-resources)
-* [Harry Roberts - BEMIT: Taking the BEM Naming Convention a Step Further](https://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/)
+- [Get BEM](http://getbem.com/introduction/)
+- [BEM Resources](https://github.com/sturobson/BEM-resources)
+- [Harry Roberts - BEMIT: Taking the BEM Naming Convention a Step Further](https://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/)
 
 ## Nesting
 
@@ -131,11 +131,13 @@ We use the following rules when linting files:
 ### Write each property on its own line
 
 Bad:
+
 ```
 .selector {padding: 0; border: 0;}
 ```
 
 Good:
+
 ```
 .selector {
   padding: 0;
@@ -146,6 +148,7 @@ Good:
 ### Use variables for colours not HEX values in selectors rules, unless in variables.
 
 Bad:
+
 ```
 .selector {
   color: #005ea5;
@@ -153,6 +156,7 @@ Bad:
 ```
 
 Good:
+
 ```
 .selector {
   color: $govuk-blue;
@@ -162,11 +166,13 @@ Good:
 ### Colours defined as variables should be in lowercase and in full length
 
 Bad:
+
 ```
 $white: #FFF;
 ```
 
 Good:
+
 ```
 $white: #ffffff;
 ```
@@ -174,6 +180,7 @@ $white: #ffffff;
 ### Avoid using ID selectors
 
 Bad:
+
 ```
 #content {
   ...
@@ -181,6 +188,7 @@ Bad:
 ```
 
 Good:
+
 ```
 .govuk-wrapper {
   ...
@@ -192,6 +200,7 @@ Good:
 This is to ensure compatibility with Internet Explorer 8, which doesn't support the double colon syntax.
 
 Bad:
+
 ```
 .selector::before {
   content: "foo";
@@ -199,6 +208,7 @@ Bad:
 ```
 
 Good:
+
 ```
 .selector:before {
   content: "foo";
@@ -208,6 +218,7 @@ Good:
 ### Separate rule, function, and mixin declarations with empty lines
 
 Bad:
+
 ```
 p {
   margin: 0;
@@ -221,6 +232,7 @@ a {
 ```
 
 Good:
+
 ```
 p {
   margin: 0;
@@ -238,6 +250,7 @@ a {
 ### Use no more than 3 levels of nesting
 
 Bad:
+
 ```
 .govuk-breadcrumb {
   ...
@@ -248,6 +261,7 @@ Bad:
 ```
 
 Good:
+
 ```
 .govuk-breadcrumb {
   ...
@@ -261,11 +275,13 @@ Good:
 ### Don't use extends, use mixins
 
 Bad:
+
 ```
 @extend %contain-floats;
 ```
 
 Good:
+
 ```
 @include clearfix;
 ```
@@ -273,11 +289,13 @@ Good:
 ### Allow max 3-rule property shorthand if possible
 
 Bad:
+
 ```
 margin: 1px 2px 3px 2px;
 ```
 
 Good:
+
 ```
 margin: 1px 2px 3px;
 ```
@@ -285,6 +303,7 @@ margin: 1px 2px 3px;
 ### Strings should always use double quotes
 
 Bad:
+
 ```
 @import 'foo';
 
@@ -296,6 +315,7 @@ $govuk-font-family-gds-transport: 'GDS Transport', arial, sans-serif;
 ```
 
 Good:
+
 ```
 @import "foo";
 
@@ -311,12 +331,14 @@ $govuk-font-family-gds-transport: "GDS Transport", arial, sans-serif;
 ### The basenames of `@import`ed SCSS partials should not begin with an underscore and should not include the filename extension
 
 Bad:
+
 ```
 @import "_foo.scss";
 @import "_bar/foo.scss";
 ```
 
 Good:
+
 ```
 @import "foo";
 @import "bar/foo";
@@ -325,6 +347,7 @@ Good:
 ### Properties should be formatted with a single space separating the colon from the property's value
 
 Bad:
+
 ```
 .foo {
   content:"bar";
@@ -332,6 +355,7 @@ Bad:
 ```
 
 Good:
+
 ```
 .foo {
   content: "bar";
@@ -341,6 +365,7 @@ Good:
 ### `@if` statements should be written without surrounding brackets
 
 Bad:
+
 ```
 @if ($foo == $bar) {
   $baz: 1;
@@ -348,6 +373,7 @@ Bad:
 ```
 
 Good:
+
 ```
 @if $foo == $bar {
   $baz: 1;
@@ -357,6 +383,7 @@ Good:
 ### `@if` statements comparing against `null` values should use `not`
 
 Bad:
+
 ```
 @if $foo == null {
   $baz: 1;
@@ -364,6 +391,7 @@ Bad:
 ```
 
 Good:
+
 ```
 @if not $foo {
   $baz: 1;
@@ -373,6 +401,7 @@ Good:
 ### Operators should be formatted with a single space on both sides of an infix operator. These include `+, -, *, /, %, ==, !=, >, >=, <,` and `<=`
 
 Bad:
+
 ```
 .selector {
   margin: 5px+15px;
@@ -398,6 +427,7 @@ $bar: 2-1;
 ```
 
 Good:
+
 ```
 .selector {
   margin: 5px + 15px;
@@ -425,6 +455,7 @@ $bar: 2 - 1;
 ### Functions, mixins, variables, and placeholders should be declared with all lowercase letters and hyphens instead of underscores
 
 Bad:
+
 ```
 @mixin FONT_STACK() {
   font-family: $govuk-font-stack;
@@ -432,6 +463,7 @@ Bad:
 ```
 
 Good:
+
 ```
 @mixin font-stack() {
   font-family: $govuk-font-stack;
@@ -441,6 +473,7 @@ Good:
 ### Omit length units on zero values
 
 Bad:
+
 ```
 .selector {
   margin: 0px;
@@ -448,6 +481,7 @@ Bad:
 ```
 
 Good:
+
 ```
 .selector {
   margin: 0;
@@ -457,6 +491,7 @@ Good:
 ### Property values and variable declarations should always end with a semicolon
 
 Bad:
+
 ```
 .selector {
   margin: 0
@@ -466,6 +501,7 @@ $my-example-var: value
 ```
 
 Good:
+
 ```
 .selector {
   margin: 0;
@@ -477,6 +513,7 @@ $my-example-var: value;
 ### Don't write leading or trailing zeroes for numeric values with a decimal point
 
 Bad:
+
 ```
 .selector {
   font-size: 0.50em;
@@ -484,6 +521,7 @@ Bad:
 ```
 
 Good:
+
 ```
 .selector {
   font-size: .5em;

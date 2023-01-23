@@ -32,7 +32,6 @@
 
   Configuration files for the preview app and [Jest](https://github.com/facebook/jest).
 
-
 - `dist/` **contains auto-generated files**
 
   Standalone builds of govuk-frontend. Provides a way to consume govuk-frontend without using npm.
@@ -57,7 +56,6 @@
 - `tasks/`
 
   Application modules and helpers. See [tasks](tasks.md) for more information about the tasks.
-
 
 ### Auto-generated directories
 
