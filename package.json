@@ -32,9 +32,9 @@
     "test:screenshots": "node ./tasks/screenshot-components.mjs",
     "lint": "npm run lint:js && npm run lint:scss",
     "lint:js": "npm run lint:js:cli -- \"**/*.{cjs,js,mjs}\"",
-    "lint:js:cli": "eslint --cache --cache-location .cache/eslint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0",
+    "lint:js:cli": "eslint --cache --cache-location .cache/eslint --cache-strategy content --color --ignore-path .lintignore --max-warnings 0",
     "lint:scss": "npm run lint:scss:cli -- \"{app,src}/**/*.scss\"",
-    "lint:scss:cli": "stylelint --cache --cache-location .cache/stylelint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0",
+    "lint:scss:cli": "stylelint --cache --cache-location .cache/stylelint --cache-strategy content --color --ignore-path .lintignore --max-warnings 0",
     "prepare": "node -e \"try { require('husky').install() } catch (e) {if (e.code !== 'MODULE_NOT_FOUND') throw e}\""
   },
   "dependencies": {
