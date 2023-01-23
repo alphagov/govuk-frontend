@@ -265,4 +265,81 @@ describe('Summary list', () => {
       })
     })
   })
+
+  describe('summary card', () => {
+    it('passes accessibility tests', async () => {
+      const $ = render('summary-list', examples['as a summary card with a text header'])
+
+      const results = await axe($.html())
+      expect(results).toHaveNoViolations()
+    })
+
+    // We only test if the actions are present in the summary card and if the logic
+    // for single actions works, not the function of the actions themselves.
+    // This is because the card actions use the same _actionLink macro that the
+    // list actions do.
+    // This is already tested in depth in the 'actions' describe above.
+    describe('actions', () => {
+      it('renders actions', () => {
+        const $ = render('summary-list', examples['as a summary card with actions'])
+
+        const $actionItems = $('.govuk-summary-card__action')
+        expect($actionItems.length).toBe(2)
+      })
+
+      it('does not render a list if only one action is present', () => {
+        const $ = render('summary-list', examples['summary card with only 1 action'])
+
+        const $singleAction = $('.govuk-summary-card__actions > a')
+        const $actionItems = $('.govuk-summary-card__action')
+        expect($actionItems.length).toBe(0)
+        expect($singleAction.text().trim()).toBe('My lonely action')
+      })
+    })
+
+    describe('title', () => {
+      it('renders with a text title', () => {
+        const $ = render('summary-list', examples['as a summary card with a text header'])
+
+        const $title = $('.govuk-summary-card__title')
+        expect($title.text()).toContain('Undergraduate teaching assistant')
+      })
+
+      it('renders with a html title', () => {
+        const $ = render('summary-list', examples['as a summary card with a html header'])
+
+        const $title = $('.govuk-summary-card__title')
+        expect($title.html()).toContain('<em>Undergraduate teaching assistant</em>')
+      })
+
+      it('renders with a custom heading level', () => {
+        const $ = render('summary-list', examples['as a summary card with a custom header level'])
+
+        const $title = $('.govuk-summary-card__title')
+        expect($title.get(0).tagName).toEqual('h3')
+      })
+    })
+
+    describe('custom options', () => {
+      it('renders custom classes on the summary card', () => {
+        const $ = render('summary-list', examples['summary card with custom classes'])
+
+        const $list = $('.govuk-summary-list')
+        const $card = $('.govuk-summary-card')
+        expect($list.hasClass('custom-class')).toBeFalsy()
+        expect($card.hasClass('custom-class')).toBeTruthy()
+      })
+
+      it('renders with attributes on the summary card', () => {
+        const $ = render('summary-list', examples['summary card with custom attributes'])
+
+        const $list = $('.govuk-summary-list')
+        const $card = $('.govuk-summary-card')
+        expect($list.attr('data-attribute-1')).toBeFalsy()
+        expect($list.attr('data-attribute-2')).toBeFalsy()
+        expect($card.attr('data-attribute-1')).toEqual('value-1')
+        expect($card.attr('data-attribute-2')).toEqual('value-2')
+      })
+    })
+  })
 })
