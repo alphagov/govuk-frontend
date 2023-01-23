@@ -1,14 +1,17 @@
+# Temporary cache
+.cache/
+
+# Node.js modules
 node_modules/
-npm-debug.log
-.DS_Store
-preview/
-tmp/
-axeReports/
+
+# Test coverage
 coverage/
-public/
-package/package-lock.json
-examples/**/package-lock.json
-*.zip
+
+# Build output
 jsdoc/
+public/
 sassdoc/
-.cache
+
+# Files to ignore
+.DS_Store
+npm-debug.log
