@@ -1,133 +1,141 @@
 params:
-- name: rows
-  type: array
-  required: true
-  description: Array of row item objects.
-  params:
-  - name: classes
-    type: string
-    required: false
-    description: Classes to add to the row `div`.
-  - name: key.text
-    type: string
-    required: true
-    description: If `html` is set, this is not required. Text to use within the each key. If `html` is provided, the `text` option will be ignored.
-  - name: key.html
-    type: string
-    required: true
-  - name: key.classes
-    type: string
-    required: false
-    description: Classes to add to the key wrapper.
-  - name: value.text
-    type: string
-    required: true
-    description: If `html` is set, this is not required. Text to use within the each value. If `html` is provided, the `text` option will be ignored.
-  - name: value.html
-    type: string
-    required: true
-    description: If `text` is set, this is not required. HTML to use within the each value. If `html` is provided, the `text` option will be ignored.
-  - name: value.classes
-    type: string
-    required: false
-    description: Classes to add to the value wrapper.
-  - name: actions.classes
-    type: string
-    required: false
-    description: Classes to add to the actions wrapper.
-  - name: actions.items
+  - name: rows
     type: array
-    required: false
-    description: Array of action item objects.
+    required: true
+    description: Array of row item objects.
     params:
-    - name: href
-      type: string
-      required: true
-      description: The value of the link's `href` attribute for an action item.
-    - name: text
-      type: string
-      required: true
-      description: If `html` is set, this is not required. Text to use within each action item. If `html` is provided, the `text` option will be ignored.
-    - name: html
-      type: string
-      required: true
-      description: If `text` is set, this is not required. HTML to use within the each action item. If `html` is provided, the `text` option will be ignored.
-    - name: visuallyHiddenText
-      type: string
-      required: false
-      description: Actions rely on context from the surrounding content so may require additional accessible text. Text supplied to this option is appended to the end. Use `html` for more complicated scenarios.
-    - name: classes
-      type: string
-      required: false
-      description: Classes to add to the action item.
-    - name: attributes
-      type: object
-      required: false
-      description: HTML attributes (for example data attributes) to add to the action item.
-- name: card
-  type: object
-  required: false
-  description: Options for the summary card. If any of these options are present, a summary card will wrap around the summary list.
-  params:
-  - name: title
-    type: object
-    required: false
-    description: Data for the summary card header.
-    params:
-    - name: text
-      type: string
-      required: false
-      description: Text to use within the each title. If `html` is provided, the `text` option will be ignored.
-    - name: html
-      type: string
-      required: false
-      description: Text to use within the each title. If `html` is provided, the `text` option will be ignored.
-    - name: headingLevel
-      type: integer
-      required: false
-      description: Heading level, from `1` to `6`. Default is `2`.
-    - name: classes
-      type: string
-      required: false
-      description: Classes to add to the title wrapper.
-  - name: actions
-    type: object
-    required: false
-    description: Data for the summary card actions
-    params:
-    - name: items
-      type: array
-      required: false
-      description: Array of action item objects.
-      params:
-      - name: href
-        type: string
-        required: true
-        description: The value of the link's `href` attribute for an action item.
-      - name: text
-        type: string
-        required: true
-        description: If `html` is set, this is not required. Text to use within each action item. If `html` is provided, the `text` option will be ignored.
-      - name: html
-        type: string
-        required: true
-        description: If `text` is set, this is not required. HTML to use within the each action item. If `html` is provided, the `text` option will be ignored.
-      - name: visuallyHiddenText
-        type: string
-        required: false
-        description: Actions rely on context from the surrounding content so may require additional accessible text. Text supplied to this option is appended to the end. Use `html` for more complicated scenarios.
       - name: classes
         type: string
         required: false
-        description: Classes to add to the action item.
+        description: Classes to add to the row `div`.
+      - name: key.text
+        type: string
+        required: true
+        description: If `html` is set, this is not required. Text to use within the each key. If `html` is provided, the `text` option will be ignored.
+      - name: key.html
+        type: string
+        required: true
+      - name: key.classes
+        type: string
+        required: false
+        description: Classes to add to the key wrapper.
+      - name: value.text
+        type: string
+        required: true
+        description: If `html` is set, this is not required. Text to use within the each value. If `html` is provided, the `text` option will be ignored.
+      - name: value.html
+        type: string
+        required: true
+        description: If `text` is set, this is not required. HTML to use within the each value. If `html` is provided, the `text` option will be ignored.
+      - name: value.classes
+        type: string
+        required: false
+        description: Classes to add to the value wrapper.
+      - name: actions.classes
+        type: string
+        required: false
+        description: Classes to add to the actions wrapper.
+      - name: actions.items
+        type: array
+        required: false
+        description: Array of action item objects.
+        params:
+          - name: href
+            type: string
+            required: true
+            description: The value of the link's `href` attribute for an action item.
+          - name: text
+            type: string
+            required: true
+            description: If `html` is set, this is not required. Text to use within each action item. If `html` is provided, the `text` option will be ignored.
+          - name: html
+            type: string
+            required: true
+            description: If `text` is set, this is not required. HTML to use within the each action item. If `html` is provided, the `text` option will be ignored.
+          - name: visuallyHiddenText
+            type: string
+            required: false
+            description: Actions rely on context from the surrounding content so may require additional accessible text. Text supplied to this option is appended to the end. Use `html` for more complicated scenarios.
+          - name: classes
+            type: string
+            required: false
+            description: Classes to add to the action item.
+          - name: attributes
+            type: object
+            required: false
+            description: HTML attributes (for example data attributes) to add to the action item.
+  - name: card
+    type: object
+    required: false
+    description: Options for the summary card. If any of these options are present, a summary card will wrap around the summary list.
+    params:
+      - name: title
+        type: object
+        required: false
+        description: Data for the summary card header.
+        params:
+          - name: text
+            type: string
+            required: false
+            description: Text to use within the each title. If `html` is provided, the `text` option will be ignored.
+          - name: html
+            type: string
+            required: false
+            description: Text to use within the each title. If `html` is provided, the `text` option will be ignored.
+          - name: headingLevel
+            type: integer
+            required: false
+            description: Heading level, from `1` to `6`. Default is `2`.
+          - name: classes
+            type: string
+            required: false
+            description: Classes to add to the title wrapper.
+      - name: actions
+        type: object
+        required: false
+        description: Data for the summary card actions
+        params:
+          - name: items
+            type: array
+            required: false
+            description: Array of action item objects.
+            params:
+              - name: href
+                type: string
+                required: true
+                description: The value of the link's `href` attribute for an action item.
+              - name: text
+                type: string
+                required: true
+                description: If `html` is set, this is not required. Text to use within each action item. If `html` is provided, the `text` option will be ignored.
+              - name: html
+                type: string
+                required: true
+                description: If `text` is set, this is not required. HTML to use within the each action item. If `html` is provided, the `text` option will be ignored.
+              - name: visuallyHiddenText
+                type: string
+                required: false
+                description: Actions rely on context from the surrounding content so may require additional accessible text. Text supplied to this option is appended to the end. Use `html` for more complicated scenarios.
+              - name: classes
+                type: string
+                required: false
+                description: Classes to add to the action item.
+              - name: attributes
+                type: object
+                required: false
+                description: HTML attributes (for example data attributes) to add to the action item.
+          - name: classes
+            type: string
+            required: false
+            description: Classes to add to the actions wrapper.
+      - name: classes
+        type: string
+        required: false
+        description: Classes to add to the container.
       - name: attributes
         type: object
         required: false
-        description: HTML attributes (for example data attributes) to add to the action item.
-    - name: classes
-      type: string
-      required: false
-      description: Classes to add to the actions wrapper.
+        description: HTML attributes (for example data attributes) to add to the container.
   - name: classes
     type: string
     required: false
@@ -136,14 +144,6 @@ params:
     type: object
     required: false
     description: HTML attributes (for example data attributes) to add to the container.
-- name: classes
-  type: string
-  required: false
-  description: Classes to add to the container.
-- name: attributes
-  type: object
-  required: false
-  description: HTML attributes (for example data attributes) to add to the container.
 
 examples:
   - name: default
@@ -200,7 +200,7 @@ examples:
           value:
             html: |
               <p class="govuk-body">
-               email@email.com
+                email@email.com
               </p>
               <p class="govuk-body">
                 Address line 1<br>
@@ -246,7 +246,7 @@ examples:
           value:
             html: |
               <p class="govuk-body">
-               email@email.com
+                email@email.com
               </p>
               <p class="govuk-body">
                 Address line 1<br>
@@ -306,9 +306,9 @@ examples:
             text: 5 January 1978
           actions:
             items:
-            - href: '#'
-              text: Change
-              visuallyHiddenText: date of birth
+              - href: '#'
+                text: Change
+                visuallyHiddenText: date of birth
         - key:
             text: Address
           value:
@@ -462,9 +462,9 @@ examples:
             text: 5 January 1978
           actions:
             items:
-            - href: '#'
-              text: Change
-              visuallyHiddenText: date of birth
+              - href: '#'
+                text: Change
+                visuallyHiddenText: date of birth
         - key:
             text: Address
           value:
@@ -785,28 +785,28 @@ examples:
             - text: Withdraw job history
               href: '#'
       rows:
-      - key:
-          text: Name
-        value:
-          text: Firstname Lastname
-        actions:
-          items:
-            - href: '#'
-              text: Edit
-              visuallyHiddenText: name
-            - href: '#'
-              text: Delete
-              visuallyHiddenText: name
-      - key:
-          text: Date of birth
-        value:
-          text: 13/08/1980
-        actions:
-          items:
-            - href: '#'
-              text: Change
-              visuallyHiddenText: date of birth
-# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+        - key:
+            text: Name
+          value:
+            text: Firstname Lastname
+          actions:
+            items:
+              - href: '#'
+                text: Edit
+                visuallyHiddenText: name
+              - href: '#'
+                text: Delete
+                visuallyHiddenText: name
+        - key:
+            text: Date of birth
+          value:
+            text: 13/08/1980
+          actions:
+            items:
+              - href: '#'
+                text: Change
+                visuallyHiddenText: date of birth
+  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: attributes
     hidden: true
     data:
@@ -828,7 +828,7 @@ examples:
             text: Firstname Lastname
         - null
         - false
-        - ""
+        - ''
         - key:
             text: Name 2
           value:
@@ -881,7 +881,7 @@ examples:
           actions:
             items:
               - html: Edit<span class="visually-hidden"> name</span>
-                href: "#"
+                href: '#'
   - name: actions with classes
     hidden: true
     data:
@@ -894,7 +894,7 @@ examples:
             classes: app-custom-class
             items:
               - text: Edit
-                href: "/edit"
+                href: '/edit'
   - name: actions with attributes
     hidden: true
     data:
