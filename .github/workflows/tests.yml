@@ -8,6 +8,7 @@ on:
       - main
       - 'feature/**'
       - 'support/**'
+      - 'rollup-plugin-visualiser-gh-action'
 
   workflow_dispatch:
 
@@ -172,3 +173,25 @@ jobs:
 
     # Skip when secrets are unavailable on forks
     if: ${{ github.repository_owner == 'alphagov' }}
+
+  stats:
+    name: Stats
+    needs: [install, build]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Restore dependencies
+        uses: ./.github/workflows/actions/install-node
+
+      - name: Collects stats
+        run: npm start --workspace stats
+
+      - name: Save test coverage
+        uses: actions/upload-artifact@v3
+        with:
+          name: File stats
+          path: stats/public/all/stats-sunburst.html
+          if-no-files-found: ignore

@@ -13,7 +13,7 @@ runs:
         key: npm-install-cache-${{ hashFiles('package-lock.json', '**/package.json') }}
         path: |
           .cache/puppeteer
-          node_modules
+          **/node_modules
 
     - name: Setup Node.js
       uses: ./.github/workflows/actions/setup-node
