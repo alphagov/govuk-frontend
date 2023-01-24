@@ -42,6 +42,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 - [#3094: Fix Accordion margin/padding inconsistencies](https://github.com/alphagov/govuk-frontend/pull/3094)
 - [#3150: Add missing `Event` polyfill to accordion component JavaScript](https://github.com/alphagov/govuk-frontend/pull/3150)
 - [Correcting incorrect closing double quotes in pagination Nunjucks](https://github.com/alphagov/govuk-frontend/pull/3156)
+- [#3199: Fix Sass rounding issues with width of grid columns](https://github.com/alphagov/govuk-frontend/pull/3199)
 
 ## 4.4.1 (Fix release)
 
