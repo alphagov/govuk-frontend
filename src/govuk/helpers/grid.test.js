@@ -93,7 +93,7 @@ describe('grid system', () => {
           padding: 0 15px; }
           @media (min-width: 40.0625em) {
             .govuk-grid-column-two-thirds {
-              width: 66.6666%;
+              width: 66.66667%;
               float: left; } }
         `)
     })
