@@ -15,6 +15,7 @@ We now need to update or comms channels.
 The team should send out an email with the release comms drafted before publishing.
 
 The release email should:
+
 - give a summary of the update
 - explain on why teams should update
 - components or styles affected (if possible)
@@ -36,7 +37,7 @@ The message we send on Slack is usually a shorter version of the email.
 
 ### Design System website
 
-We should update the "what's new" section on the homepage of the website. The content for this section can be found in [/views/partials/_whats-new.njk](https://github.com/alphagov/govuk-design-system/blob/main/views/partials/_whats-new.njk).
+We should update the "what's new" section on the homepage of the website. The content for this section can be found in [/views/partials/\_whats-new.njk](https://github.com/alphagov/govuk-design-system/blob/main/views/partials/_whats-new.njk).
 
 ## Clear the decks
 

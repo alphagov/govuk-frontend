@@ -33,4 +33,5 @@ This was added in `[pull request #xxxx: PULL-REQUEST-TITLE](LINK-TO-PULL-REQUEST
 ### Fixes
 
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
 - `[pull request #xxxx: PULL-REQUEST-TITLE](LINK-TO-PULL-REQUEST)` - (optional) thanks to `[@GITHUB-NAME](LINK-TO-CONTRIBUTOR-GITHUB-PAGE)` for reporting this issue/contributing this change

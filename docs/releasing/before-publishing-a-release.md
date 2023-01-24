@@ -33,6 +33,7 @@ Once the developers have created these issues, the person leading the release sh
 ## Draft comms and release notes for the community
 
 A content designer and/or tech writer should do the following:
+
 - write announcements for slack posts, email and to go on the design system website after we release GOV.UK Frontend (for example, [draft comms for the cookie banner component](https://docs.google.com/document/d/1jVyMB7i94NOeflWaf3kE4Q4APMXGfluK3rOh74IHO08/edit))
 - check who the release’s contributors are and if we have consent to include their name
 

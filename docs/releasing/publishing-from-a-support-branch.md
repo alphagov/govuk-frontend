@@ -26,8 +26,8 @@ Read the docs for [what to do before publishing a release](/docs/releasing/befor
 
 1. Find out which major version this release will be targeting, for example, if you're releasing v4.x.x, the major version is version 4. To check out the support branch for that major version, run `git checkout support/<MAJOR VERSION NUMBER>.x`. If the branch does not exist, follow these steps to create it:
 
-    - make sure you have all tags locally by running `git fetch --all --tags --prune`
-    - run `git checkout tags/v<LAST RELEASED VERSION NUMBER> -b support/<CURRENT MAJOR VERSION NUMBER>.x` - for example, `git checkout tags/v3.9.1 -b support/3.x`
+   - make sure you have all tags locally by running `git fetch --all --tags --prune`
+   - run `git checkout tags/v<LAST RELEASED VERSION NUMBER> -b support/<CURRENT MAJOR VERSION NUMBER>.x` - for example, `git checkout tags/v3.9.1 -b support/3.x`
 
 2. Run `nvm use` to make sure you’re using the right version of Node.js and npm.
 
@@ -81,22 +81,22 @@ Read the docs for [what to do before publishing a release](/docs/releasing/befor
 
 3. Run `npm run publish-release`, which will prompt you to check whether the npm tag looks as expected.
 
-  If you're publishing a release for a previous major version, do not tag this release as the 'latest' release on npm. Instead, give the tag the format `latest-[major-version-number]`, for example, `latest-4`.
+   If you're publishing a release for a previous major version, do not tag this release as the 'latest' release on npm. Instead, give the tag the format `latest-[major-version-number]`, for example, `latest-4`.
 
-  Enter `y` to continue. If you think the tag should be different, enter `N` to have the option to set your own npm tag.
+   Enter `y` to continue. If you think the tag should be different, enter `N` to have the option to set your own npm tag.
 
 4. You will now be prompted to continue or cancel the release. Check the details and enter `y` to continue. If something does not look right, press `N` to cancel the release.
 
-4. View the created tag in the [GitHub interface](https://github.com/alphagov/govuk-frontend/releases) as follows:
+5. View the created tag in the [GitHub interface](https://github.com/alphagov/govuk-frontend/releases) as follows:
 
-    - select the most recent tag
-    - press **Edit tag**
-    - set ‘GOV.UK Frontend v[version-number]’ as the title
-    - add release notes from changelog
-    - attach the generated ZIP that has been generated at the root of this project
-    - publish release
+   - select the most recent tag
+   - press **Edit tag**
+   - set ‘GOV.UK Frontend v[version-number]’ as the title
+   - add release notes from changelog
+   - attach the generated ZIP that has been generated at the root of this project
+   - publish release
 
-5. Run `npm logout` to sign out from npm.
+6. Run `npm logout` to sign out from npm.
 
 ## After you publish the new release
 
