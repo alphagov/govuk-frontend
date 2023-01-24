@@ -1,23 +1,23 @@
+const generateStatsMessage = require('./generate-stats-message.js')
+
+const DOWNLOAD_LINK_TEXT =
+  "Interactive visualisation can be downloaded from the build's artifacts"
+
+const COMMENT_MARKER = `[${DOWNLOAD_LINK_TEXT}]`
+
 module.exports = async function ({ github, context }) {
-  const DOWNLOAD_LINK_TEXT =
-    "Interactive visualisation can be downloaded from the build's artifacts"
-
-  const COMMENT_MARKER = `[${DOWNLOAD_LINK_TEXT}]`
-
   const issueParameters = {
     issue_number: context.payload.pull_request.number,
     owner: context.repo.owner,
     repo: context.repo.repo
   }
 
-  let body = 'TODO: Fill this section with actual stats!'
+  const body = `${generateStatsMessage()}
 
-  body += `\n[${DOWNLOAD_LINK_TEXT}](${githubActionArtifactsUrl(
-    context.runId
-  )})`
+[${DOWNLOAD_LINK_TEXT}](${githubActionArtifactsUrl(context.runId)})`
 
   const comment = await findFirstIssueCommentMatching(
-    comment => comment.body.includes(COMMENT_MARKER),
+    (comment) => comment.body.includes(COMMENT_MARKER),
     {
       github,
       issueParameters
@@ -63,7 +63,10 @@ function githubActionArtifactsUrl (runId) {
  * @returns {object | undefined} -- Found comment or underfined if no comment satisfying the matcher is found
  */
 // Based on https://github.com/peter-evans/find-comment/blob/main/src/find.ts
-async function findFirstIssueCommentMatching (matcher, { github, issueParameters }) {
+async function findFirstIssueCommentMatching (
+  matcher,
+  { github, issueParameters }
+) {
   for await (const { data: comments } of github.paginate.iterator(
     github.rest.issues.listComments,
     issueParameters

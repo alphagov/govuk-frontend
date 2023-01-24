@@ -8,9 +8,10 @@
     "start": "rollup -c './rollup.config.js'"
   },
   "dependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-virtual": "^3.0.1",
+    "filesize": "^10.0.6",
     "rollup": "^3.7.4",
-    "rollup-plugin-visualizer": "^5.8.3",
-    "@rollup/plugin-node-resolve": "^15.0.1"
+    "rollup-plugin-visualizer": "^5.8.3"
   }
 }
