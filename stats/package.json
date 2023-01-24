@@ -1,6 +1,9 @@
 {
   "private": true,
   "name": "govuk-frontend-stats",
+  "engines": {
+    "node": "^18.12.0"
+  },
   "scripts": {
     "start": "rollup -c './rollup.config.js'"
   },
