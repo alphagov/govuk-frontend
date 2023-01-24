@@ -191,19 +191,51 @@ jobs:
       - name: Collects stats
         run: npm start --workspace stats
 
+      # TODO: Cache comment ID in a `.stats-comment-id` file
+      # If the cached file is present
+
       - name: Add comment to PR
         uses: actions/github-script@v6
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const commentText = 'Test comment'
 
-            github.rest.issues.createComment({
+            const COMMENT_MARKER = "\n File stats"
+
+            const issueParameters = {
               issue_number: context.payload.pull_request.number,
               owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: commentText
-            })
+              repo: context.repo.repo
+            }
+
+            const commentText = 'Test comment '+ new Date().toISOString()
+
+            const commentId = await findStatsCommentId()
+
+            if (commentId) {
+              github.rest.issues.updateComment({
+                ...issueParameters,
+                comment_id: commentId,
+                body: commentText + COMMENT_MARKER
+              })
+            } else {
+              github.rest.issues.createComment({
+                ...issueParameters,
+                body: commentText + COMMENT_MARKER
+              })
+            }
+
+            // Based on https://github.com/peter-evans/find-comment/blob/main/src/find.ts
+            async function findStatsCommentId() {
+              for await (const {data: comments} of github.paginate.iterator(
+                github.rest.issues.listComments,
+                issueParameters
+              )) {
+                const comment = comments.find(comment => comment.body.includes(COMMENT_MARKER))
+
+                if (comment) return comment.id;
+              }
+            }
         if: github.event_name == 'pull_request'
 
       - name: Save test coverage
