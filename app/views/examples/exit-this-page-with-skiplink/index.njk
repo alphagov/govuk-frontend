@@ -1,0 +1,20 @@
+{% extends "layout.njk" %}
+
+{% from "exit-this-page/macro.njk" import govukExitThisPage %}
+{% from "skip-link/macro.njk" import govukSkipLink %}
+
+{% block skipLink %}
+  {{ super() }}
+  {{ govukSkipLink({
+    href: "#",
+    text: "Exit this page",
+    classes: "govuk-js-exit-this-page-skiplink"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  {{ govukExitThisPage({
+    text: "Exit this page",
+    redirectUrl: "#"
+  }) }}
+{% endblock %}
