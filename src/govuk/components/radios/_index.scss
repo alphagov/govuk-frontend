@@ -145,7 +145,7 @@
   // Disabled state
   .govuk-radios__input:disabled,
   .govuk-radios__input:disabled + .govuk-radios__label {
-    cursor: default;
+    cursor: not-allowed;
   }
 
   .govuk-radios__input:disabled + .govuk-radios__label,

@@ -173,7 +173,7 @@ $govuk-button-text-colour: govuk-colour("white") !default;
 
     &:hover {
       background-color: $govuk-button-colour;
-      cursor: default;
+      cursor: not-allowed;
     }
 
     &:active {
