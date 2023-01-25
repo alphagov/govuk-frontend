@@ -1,3 +1,5 @@
+/* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
+
 import { nodeListForEach } from '../../common.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 import '../../vendor/polyfills/Element/prototype/dataset.mjs'
