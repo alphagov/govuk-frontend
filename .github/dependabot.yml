@@ -24,6 +24,7 @@ updates:
         update-types: ['version-update:semver-major']
 
       # Always ignore legacy packages
+      - dependency-name: iframe-resizer
       - dependency-name: jquery
       - dependency-name: rollup
 
