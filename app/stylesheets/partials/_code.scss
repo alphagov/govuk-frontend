@@ -1,0 +1,21 @@
+@import "highlight.js/scss/github";
+
+.app-code {
+  @include govuk-responsive-margin(6, "bottom");
+}
+
+.app-code__container {
+  display: block;
+  margin: 0;
+  padding: govuk-spacing(4);
+  overflow-x: auto;
+  border: $govuk-focus-width solid transparent;
+  outline: 1px solid transparent;
+  background-color: govuk-colour("light-grey", $legacy: "grey-3");
+  @include govuk-responsive-margin(4, "bottom");
+
+  &:focus {
+    border: $govuk-focus-width solid $govuk-input-border-colour;
+    outline: $govuk-focus-width solid $govuk-focus-colour;
+  }
+}

@@ -31,7 +31,6 @@
     "nodemon": "^2.0.20",
     "nunjucks": "^3.2.3",
     "outdent": "^0.8.0",
-    "prismjs": "^1.29.0",
     "shuffle-seed": "^1.1.6"
   },
   "devDependencies": {

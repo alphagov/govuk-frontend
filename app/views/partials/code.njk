@@ -1,9 +1,9 @@
 <h4 class="govuk-heading-s">Markup</h4>
-<pre><code class="govuk-!-font-size-16">
-  {{- getHTMLCode(componentSlug, example.data) | safe -}}
+<pre class="app-code"><code tabindex="0" class="app-code__container hljs language-html">
+  {{- getHTMLCode(componentSlug, example.data) | highlight("html") | safe -}}
 </code></pre>
 
 <h4 class="govuk-heading-s">Macro</h4>
-<pre class="govuk-!-margin-bottom-0 govuk-!-font-size-16"><code>
-  {{- getNunjucksCode(componentSlug, example.data) | safe -}}
+<pre class="app-code"><code tabindex="0" class="app-code__container hljs language-js">
+  {{- getNunjucksCode(componentSlug, example.data) | highlight("js") | safe -}}
 </code></pre>

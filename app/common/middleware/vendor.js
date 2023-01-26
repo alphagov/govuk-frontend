@@ -19,6 +19,5 @@ router.use('/govuk_frontend_toolkit/assets', express.static(packageNameToPath('g
 router.use('/govuk_frontend_toolkit/', express.static(packageNameToPath('govuk_frontend_toolkit', 'javascripts/govuk')))
 router.use('/iframe-resizer/', express.static(packageNameToPath('iframe-resizer', 'js')))
 router.use('/jquery/', express.static(packageNameToPath('jquery', 'dist')))
-router.use('/prismjs/', express.static(packageNameToPath('prismjs')))
 
 module.exports = router
