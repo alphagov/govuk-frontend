@@ -18,9 +18,14 @@ function ExitThisPage ($module) {
   this.$indicatorContainer = null
   this.$overlay = null
   this.escCounter = 0
-  this.escTimerActive = false
   this.lastKeyWasModified = false
-  this.timeout = 5000 // milliseconds
+  this.timeoutTime = 5000 // milliseconds
+
+  // Store the timeout events so that we can clear them to avoid user keypresses overlapping
+  // setTimeout returns an id that we can use to clear it with clearTimeout,
+  // hence the 'Id' suffix
+  this.keypressTimeoutId = null
+  this.timeoutMessageId = null
 }
 
 /**
@@ -28,10 +33,10 @@ function ExitThisPage ($module) {
  */
 ExitThisPage.prototype.initUpdateSpan = function () {
   this.$updateSpan = document.createElement('span')
-  this.$updateSpan.setAttribute('aria-live', 'polite')
-  this.$updateSpan.setAttribute('class', 'govuk-visually-hidden')
+  this.$updateSpan.setAttribute('role', 'status')
+  this.$updateSpan.className = 'govuk-visually-hidden'
 
-  this.$button.appendChild(this.$updateSpan)
+  this.$module.appendChild(this.$updateSpan)
 }
 
 /**
@@ -141,16 +146,31 @@ ExitThisPage.prototype.handleEscKeypress = function (e) {
     // Update the indicator before the below if statement can reset it back to 0
     this.updateIndicator()
 
+    // Clear the timeout for the keypress timeout message clearing itself
+    if (this.timeoutMessageId !== null) {
+      clearTimeout(this.timeoutMessageId)
+      this.timeoutMessageId = null
+    }
+
     if (this.escCounter >= 3) {
       this.escCounter = 0
-      this.$updateSpan.innerText = 'Exit this page activated'
+      clearTimeout(this.keypressTimeoutId)
+      this.keypressTimeoutId = null
+
+      this.$updateSpan.setAttribute('role', 'alert')
+      this.$updateSpan.innerText = 'Exiting page'
+
       this.exitPage()
     } else {
-      this.$updateSpan.innerText = 'Exit this Page key press ' + this.escCounter + ' of 3'
+      if (this.escCounter === 1) {
+        this.$updateSpan.innerText = 'Shift, press 2 more times to exit.'
+      } else {
+        this.$updateSpan.innerText = 'Shift, press 1 more time to exit.'
+      }
     }
 
     this.setEscTimer()
-  } else if (this.escTimerActive) {
+  } else if (this.keypressTimeoutId !== null) {
     // If the user pressed any key other than 'Shift', after having pressed
     // 'Shift' and activating the timer, stop and reset the timer.
     this.resetEscTimer()
@@ -164,12 +184,10 @@ ExitThisPage.prototype.handleEscKeypress = function (e) {
  * Starts the 'quick escape' keyboard sequence timer.
  */
 ExitThisPage.prototype.setEscTimer = function () {
-  if (!this.escTimerActive) {
-    this.escTimerActive = true
-
-    setTimeout(function () {
+  if (this.keypressTimeoutId === null) {
+    this.keypressTimeoutId = setTimeout(function () {
       this.resetEscTimer()
-    }.bind(this), this.timeout)
+    }.bind(this), this.timeoutTime)
   }
 }
 
@@ -177,30 +195,53 @@ ExitThisPage.prototype.setEscTimer = function () {
  * Stops and resets the 'quick escape' keyboard sequence timer.
  */
 ExitThisPage.prototype.resetEscTimer = function () {
+  clearTimeout(this.keypressTimeoutId)
+  this.keypressTimeoutId = null
+
   this.escCounter = 0
-  this.escTimerActive = false
-  this.$updateSpan.innerText = ''
+  this.$updateSpan.innerText = 'Exit this page expired'
+
+  this.timeoutMessageId = setTimeout(function () {
+    this.$updateSpan.innerText = ''
+  }.bind(this), this.timeoutTime)
+
   this.updateIndicator()
 }
 
 /**
- * If a 'ghost page' overlay present, remove it.
+ * Reset the page using the EtP button
  *
  * We use this in situations where a user may re-enter a page using the browser
  * back button. In these cases, the browser can choose to restore the state of
  * the page as it was previously, including restoring the 'ghost page' overlay,
- * leaving the page in an unusable state.
+ * the announcement span having it's role set to "alert" and the keypress
+ * indicator still active, leaving the page in an unusable state.
  *
- * By running this check when the page is shown, we can programatically remove
- * the restored overlay.
+ * By running this check when the page is shown, we can programatically restore
+ * the page and the component to a "default" state
  */
-ExitThisPage.prototype.syncOverlayVisibility = function () {
-  // If there is no overlay, don't do anything
-  if (!this.$overlay) { return }
+ExitThisPage.prototype.resetPage = function () {
+  // If an overlay is set, remove it and reset the value
+  if (this.$overlay) {
+    this.$overlay.remove()
+    this.$overlay = null
+  }
 
-  // If there is, remove the element and references to it
-  this.$overlay.remove()
-  this.$overlay = null
+  // Ensure the announcement span's role is status, not alert and clear any text
+  this.$updateSpan.setAttribute('role', 'status')
+  this.$updateSpan.innerText = ''
+
+  // Sync the keypress indicator lights
+  this.updateIndicator()
+
+  // If the timeouts are active, clear them
+  if (this.keypressTimeoutId) {
+    clearTimeout(this.keypressTimeoutId)
+  }
+
+  if (this.timeoutMessageId) {
+    clearTimeout(this.timeoutMessageId)
+  }
 }
 
 /**
@@ -221,9 +262,9 @@ ExitThisPage.prototype.init = function () {
   // blank overlay remains present, rendering the page unusable. Here, we check
   // to see if it's present on page (re)load, and remove it if so.
   if ('onpageshow' in window) {
-    window.addEventListener('pageshow', this.syncOverlayVisibility.bind(this))
+    window.addEventListener('pageshow', this.resetPage.bind(this))
   } else {
-    window.addEventListener('DOMContentLoaded', this.syncOverlayVisibility.bind(this))
+    window.addEventListener('DOMContentLoaded', this.resetPage.bind(this))
   }
 }
 
