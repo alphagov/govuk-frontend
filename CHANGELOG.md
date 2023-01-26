@@ -1,12 +1,16 @@
 # Changelog
 
-## Unreleased
+## 4.5.0 (Feature release)
 
 ### New features
 
-#### Visually separate multiple summary lists on a single page with summary cards
+#### Use summary cards to visually separate multiple summary lists on a single page
 
-You can now use the [summary card](https://design-system.service.gov.uk/components/summary-list#summary-cards) to help you design and build pages with multiple summary lists to help you visually distinguish them and to allow users to use actions that apply to entire lists.
+You can now use the [summary card](https://design-system.service.gov.uk/components/summary-list#summary-cards). This new variant of the Summary list component can help you:
+
+- design and build pages with multiple summary lists
+- show visual dividers between summary lists
+- allow users to apply actions to entire lists
 
 This was added in [pull request #2931: Add summary card enhancement to summary list](https://github.com/alphagov/govuk-frontend/pull/2931).
 
@@ -23,13 +27,13 @@ This was added in pull requests:
 
 #### Source maps for precompiled files
 
-You can now use [source maps](https://firefox-source-docs.mozilla.org/devtools-user/debugger/how_to/use_a_source_map/index.html) to help identify errors and console messages that come from GOV.UK Frontend precompiled files.
+You can now use [source maps](https://firefox-source-docs.mozilla.org/devtools-user/debugger/how_to/use_a_source_map/index.html) to help identify errors and console messages from GOV.UK Frontend precompiled files.
 
 This was added in [pull request #3023: Add source maps to compiled JavaScript and CSS](https://github.com/alphagov/govuk-frontend/pull/3023).
 
 ### Fixes
 
-We've fixed errors in IE8 caused by updates to our precompiled JavaScript. The issue prevented some polyfills from running but was limited to the `release-v4.4.1.zip` and `release-v4.4.0.zip` assets on [GitHub releases](https://github.com/alphagov/govuk-frontend/releases):
+We've fixed errors in IE8 caused by updates to our precompiled JavaScript. The issue prevented some polyfills from running, but was limited to the `release-v4.4.1.zip` and `release-v4.4.0.zip` assets on [GitHub releases](https://github.com/alphagov/govuk-frontend/releases):
 
 - [#3137: Enable UglifyJS compatibility workarounds](https://github.com/alphagov/govuk-frontend/pull/3137)
 - [#3013: Swap JavaScript minifier from UglifyJS to terser](https://github.com/alphagov/govuk-frontend/pull/3013)
@@ -37,11 +41,11 @@ We've fixed errors in IE8 caused by updates to our precompiled JavaScript. The i
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#2998: Refactor back link and breadcrumb chevrons to use ems](https://github.com/alphagov/govuk-frontend/pull/2998)
-- [#3021: Printing style for current page link in header](https://github.com/alphagov/govuk-frontend/pull/3021) - thanks to [Malcolm Butler](https://github.com/MalcolmVonMoJ) for the contribution
+- [#3021: Change colour for current page link in the header to improve contrast when printing](https://github.com/alphagov/govuk-frontend/pull/3021) - thanks to [Malcolm Butler](https://github.com/MalcolmVonMoJ) for the contribution
 - [#3094: Fix Accordion margin/padding inconsistencies](https://github.com/alphagov/govuk-frontend/pull/3094)
 - [#3112: Remove unused `classList` polyfill from header component JavaScript](https://github.com/alphagov/govuk-frontend/pull/3112)
 - [#3150: Add missing `Event` polyfill to accordion component JavaScript](https://github.com/alphagov/govuk-frontend/pull/3150)
-- [#3156: Correcting incorrect closing double quotes in pagination Nunjucks](https://github.com/alphagov/govuk-frontend/pull/3156)
+- [#3156: Correct the closing double quotes in pagination Nunjucks](https://github.com/alphagov/govuk-frontend/pull/3156) - thanks to [Joanna Pinto Paul](https://github.com/JoPintoPaul) for the contribution
 - [#3199: Fix Sass rounding issues with width of grid columns](https://github.com/alphagov/govuk-frontend/pull/3199)
 
 ## 4.4.1 (Fix release)
