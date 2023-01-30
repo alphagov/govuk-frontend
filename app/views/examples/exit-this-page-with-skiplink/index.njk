@@ -6,7 +6,7 @@
 {% block skipLink %}
   {{ super() }}
   {{ govukSkipLink({
-    href: "#",
+    href: "https://www.gov.uk/",
     text: "Exit this page",
     classes: "govuk-js-exit-this-page-skiplink"
   }) }}
@@ -15,6 +15,6 @@
 {% block content %}
   {{ govukExitThisPage({
     text: "Exit this page",
-    redirectUrl: "#"
+    redirectUrl: "https://www.gov.uk/"
   }) }}
 {% endblock %}
