@@ -14,6 +14,10 @@ module.exports = async function ({ github, context }) {
 
   const body = `${generateStatsMessage()}
 
+[View stats on the review app](${reviewAppUrl(
+    context.payload.pull_request.number
+  )})
+
 [${DOWNLOAD_LINK_TEXT}](${githubActionArtifactsUrl(context.runId)})`
 
   const comment = await findFirstIssueCommentMatching(
@@ -36,6 +40,10 @@ module.exports = async function ({ github, context }) {
       body
     })
   }
+}
+
+function reviewAppUrl (prNumber) {
+  return `https://govuk-frontend-pr-${prNumber}.herokuapp.com/stats/`
 }
 
 /**
