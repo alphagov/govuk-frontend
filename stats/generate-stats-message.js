@@ -59,22 +59,26 @@ module.exports = function generateStatsMessage () {
         })
       }
 
-      return `## ${statsTitle(modulePath, statsExport)}: ${filesize(totalSize, { base: 2 })}, ${Object.keys(partsLength).length} modules` +
-        '\n\n' +
-        `
-|Module Path|Size|Percentage|
-|-----------|----|----------|` + '\n' +
-      Object.entries(partsLength).map(([modulePath, renderedLength]) => {
-        // Ignore the virtual entry
-        if (renderedLength) {
-          const shortPath = relative(process.cwd(), modulePath)
-          return `| ${shortPath} | ${filesize(renderedLength, { base: 2 })} | ${(renderedLength / totalSize * 100).toFixed(2)}% |`
-        }
+      return `<details><summary><strong>${statsTitle(modulePath, statsExport)}: ${filesize(totalSize, { base: 2 })}, ${Object.keys(partsLength).length} modules</strong></summary>
 
-        return ''
-      }).join('\n')
+|Module Path|Size|Percentage|
+|-----------|----|----------|
+${tableRows(partsLength, totalSize)}
+
+</details>`
     })
     .join('\n\n')
+}
+
+function tableRows (partsLength, totalSize) {
+  return Object.entries(partsLength)
+    .filter(([modulePath, renderedLength]) => !!renderedLength)
+    .map(([modulePath, renderedLength]) => {
+      // Ignore the virtual entry
+      const shortPath = relative(process.cwd(), modulePath)
+      return `|${shortPath}|${filesize(renderedLength, { base: 2 })}|${((renderedLength / totalSize) * 100).toFixed(2)}%|`
+    })
+    .join('\n')
 }
 
 function traverse (node, callback) {
