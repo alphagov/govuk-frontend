@@ -84,6 +84,7 @@ module.exports = async (options) => {
   app.use(middleware.assets)
   app.use('/docs', middleware.docs)
   app.use('/vendor', middleware.vendor)
+  app.use('/stats', middleware.stats)
 
   // Turn form POSTs into data that can be used for validation.
   app.use(bodyParser.urlencoded({ extended: true }))

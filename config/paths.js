@@ -24,7 +24,10 @@ const configPaths = {
 
   // Documentation
   jsdoc: join(rootPath, 'jsdoc'),
-  sassdoc: join(rootPath, 'sassdoc')
+  sassdoc: join(rootPath, 'sassdoc'),
+
+  // Performance
+  stats: join(rootPath, 'stats', 'public')
 }
 
 module.exports = {

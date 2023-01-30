@@ -17,7 +17,7 @@
     "postinstall": "npm ls --depth=0",
     "start": "gulp dev",
     "serve": "npm run serve --workspace app",
-    "heroku": "npm run build:compile && npm start --workspace app",
+    "heroku": "npm run build:compile && npm start --workspace stats && npm start --workspace app",
     "build-release": "./bin/build-release.sh",
     "publish-release": "./bin/publish-release.sh",
     "pre-release": "./bin/pre-release.sh",
