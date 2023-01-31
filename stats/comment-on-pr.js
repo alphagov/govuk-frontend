@@ -12,7 +12,7 @@ module.exports = async function ({ github, context }) {
     repo: context.repo.repo
   }
 
-  const body = `${generateStatsMessage()}
+  const body = `${await generateStatsMessage()}
 
 [View stats on the review app](${reviewAppUrl(
     context.payload.pull_request.number
