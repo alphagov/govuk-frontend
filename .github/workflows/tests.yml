@@ -129,14 +129,6 @@ jobs:
 
       matrix:
         include:
-          - description: Verify package build
-            name: test-build-package
-            run: npm run build:package
-
-          - description: Verify distribution build
-            name: test-build-dist
-            run: npm run build:dist
-
           - description: JavaScript behaviour tests
             name: test-behaviour
             run: npx jest --color --maxWorkers=2 --selectProjects "JavaScript behaviour tests"
@@ -176,9 +168,9 @@ jobs:
     # Skip when secrets are unavailable on forks
     if: ${{ github.repository_owner == 'alphagov' }}
 
-  stats:
-    name: Stats
-    needs: [install, build]
+  build_dist:
+    name: Build dist
+    needs: [install]
     runs-on: ubuntu-latest
 
     steps:
@@ -188,13 +180,46 @@ jobs:
       - name: Restore dependencies
         uses: ./.github/workflows/actions/install-node
 
+      - name: Build dist
+        uses: ./.github/workflows/actions/build-dist
+
+  build_package:
+    name: Build package
+    needs: [install]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Restore dependencies
+        uses: ./.github/workflows/actions/install-node
+
+      - name: Build package
+        uses: ./.github/workflows/actions/build-package
+
+  stats:
+    name: Stats
+    needs: [build_dist,build_package]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Restore dependencies
+        uses: ./.github/workflows/actions/install-node
+
+      - name: Restore dist
+        uses: ./.github/workflows/actions/build-dist
+
+      - name: Restore package
+        uses: ./.github/workflows/actions/build-package
+
       - name: Collects stats
         run: npm start --workspace stats
 
-      # TODO: Cache comment ID in a `.stats-comment-id` file
-      # If the cached file is present
-
-      - name: Save test coverage
+      - name: Save stats
         uses: actions/upload-artifact@v3
         with:
           name: File stats
