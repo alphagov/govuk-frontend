@@ -1,12 +1,14 @@
+/* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
+
 /**
  * JavaScript 'polyfill' for HTML5's <details> and <summary> elements
  * and 'shim' to add accessiblity enhancements for all browsers
  *
  * http://caniuse.com/#feat=details
  */
-import '../../vendor/polyfills/Function/prototype/bind.mjs'
-import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normaliziation
 import { generateUniqueID } from '../../common/index.mjs'
+import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target normalization and DOMContentLoaded
+import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
 var KEY_ENTER = 13
 var KEY_SPACE = 32
@@ -21,6 +23,9 @@ function Details ($module) {
   this.$module = $module
 }
 
+/**
+ * Initialise component
+ */
 Details.prototype.init = function () {
   if (!this.$module) {
     return
@@ -36,6 +41,9 @@ Details.prototype.init = function () {
   this.polyfillDetails()
 }
 
+/**
+ * Polyfill component in older browsers
+ */
 Details.prototype.polyfillDetails = function () {
   var $module = this.$module
 
@@ -79,7 +87,7 @@ Details.prototype.polyfillDetails = function () {
   }
 
   // Bind an event to handle summary elements
-  this.polyfillHandleInputs($summary, this.polyfillSetAttributes.bind(this))
+  this.polyfillHandleInputs(this.polyfillSetAttributes.bind(this))
 }
 
 /**
@@ -104,21 +112,20 @@ Details.prototype.polyfillSetAttributes = function () {
 /**
  * Handle cross-modal click events
  *
- * @param {object} node - element
  * @param {polyfillHandleInputsCallback} callback - function
  */
-Details.prototype.polyfillHandleInputs = function (node, callback) {
-  node.addEventListener('keypress', function (event) {
-    var target = event.target
+Details.prototype.polyfillHandleInputs = function (callback) {
+  this.$summary.addEventListener('keypress', function (event) {
+    var $target = event.target
     // When the key gets pressed - check if it is enter or space
     if (event.keyCode === KEY_ENTER || event.keyCode === KEY_SPACE) {
-      if (target.nodeName.toLowerCase() === 'summary') {
+      if ($target.nodeName.toLowerCase() === 'summary') {
         // Prevent space from scrolling the page
         // and enter from submitting a form
         event.preventDefault()
         // Click to let the click event do all the necessary action
-        if (target.click) {
-          target.click()
+        if ($target.click) {
+          $target.click()
         } else {
           // except Safari 5.1 and under don't support .click() here
           callback(event)
@@ -128,22 +135,22 @@ Details.prototype.polyfillHandleInputs = function (node, callback) {
   })
 
   // Prevent keyup to prevent clicking twice in Firefox when using space key
-  node.addEventListener('keyup', function (event) {
-    var target = event.target
+  this.$summary.addEventListener('keyup', function (event) {
+    var $target = event.target
     if (event.keyCode === KEY_SPACE) {
-      if (target.nodeName.toLowerCase() === 'summary') {
+      if ($target.nodeName.toLowerCase() === 'summary') {
         event.preventDefault()
       }
     }
   })
 
-  node.addEventListener('click', callback)
+  this.$summary.addEventListener('click', callback)
 }
 
 export default Details
 
 /**
  * @callback polyfillHandleInputsCallback
- * @param {KeyboardEvent} event - Keyboard event
- * @returns {undefined}
+ * @param {UIEvent} event - Keyboard or mouse event
+ * @returns {void}
  */

@@ -12,7 +12,7 @@
 
     <div class="{{classNames}}" {%- if message.role %} role="{{message.role}}"{% endif %}
     {%- for attribute, value in message.attributes %} {{attribute}}="{{value}}"{% endfor %}
-    {% if message.hidden %} hidden{% endif %}>
+    {%- if message.hidden %} hidden{% endif %}>
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">

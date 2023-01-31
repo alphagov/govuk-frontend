@@ -1,11 +1,14 @@
-import '../../vendor/polyfills/Date/now.mjs'
-import '../../vendor/polyfills/Function/prototype/bind.mjs'
-import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normalisation
-import '../../vendor/polyfills/Element/prototype/classList.mjs'
-import { extractConfigByNamespace, mergeConfigs } from '../../common/index.mjs'
-import { I18n } from '../../i18n.mjs'
-import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+/* eslint-disable es-x/no-date-now -- Polyfill imported */
+/* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
+
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
+import { extractConfigByNamespace, mergeConfigs } from '../../common/index.mjs'
+import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { I18n } from '../../i18n.mjs'
+import '../../vendor/polyfills/Date/now.mjs'
+import '../../vendor/polyfills/Element/prototype/classList.mjs'
+import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target normalization and DOMContentLoaded
+import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
 /**
  * @constant
@@ -50,7 +53,7 @@ var CHARACTER_COUNT_TRANSLATIONS = {
  * of the available characters/words has been entered.
  *
  * @class
- * @param {HTMLElement} $module - The element this component controls
+ * @param {HTMLElement} $module - HTML element to use for character count
  * @param {CharacterCountConfig} [config] - Character count config
  */
 function CharacterCount ($module, config) {

@@ -1,6 +1,8 @@
+/* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
+
 import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
-import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normaliziation
+import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target normalization and DOMContentLoaded
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
 var KEY_SPACE = 32
@@ -10,8 +12,8 @@ var DEBOUNCE_TIMEOUT_IN_SECONDS = 1
  * JavaScript enhancements for the Button component
  *
  * @class
- * @param {HTMLElement} $module - The element this component controls
- * @param {ButtonConfig} config - Button config
+ * @param {HTMLElement} $module - HTML element to use for button
+ * @param {ButtonConfig} [config] - Button config
  */
 function Button ($module, config) {
   if (!$module) {
@@ -51,14 +53,14 @@ Button.prototype.init = function () {
  *
  * See https://github.com/alphagov/govuk_elements/pull/272#issuecomment-233028270
  *
- * @param {KeyboardEvent} event
+ * @param {KeyboardEvent} event - Keydown event
  */
 Button.prototype.handleKeyDown = function (event) {
-  var target = event.target
+  var $target = event.target
 
-  if (target.getAttribute('role') === 'button' && event.keyCode === KEY_SPACE) {
+  if ($target.getAttribute('role') === 'button' && event.keyCode === KEY_SPACE) {
     event.preventDefault() // prevent the page from scrolling
-    target.click()
+    $target.click()
   }
 }
 
@@ -69,8 +71,8 @@ Button.prototype.handleKeyDown = function (event) {
  * stops people accidentally causing multiple form submissions by double
  * clicking buttons.
  *
- * @param {MouseEvent} event
- * @returns {undefined | false} - Returns undefined, or false when debounced
+ * @param {MouseEvent} event - Mouse click event
+ * @returns {undefined | false} Returns undefined, or false when debounced
  */
 Button.prototype.debounce = function (event) {
   // Check the button that was clicked has preventDoubleClick enabled

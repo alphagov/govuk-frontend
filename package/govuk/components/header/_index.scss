@@ -282,6 +282,12 @@
         color: $govuk-header-link-active;
       }
 
+      // When printing, use the normal blue as this contrasts better with the
+      // white printing header
+      @include govuk-media-query($media-type: print) {
+        color: $govuk-brand-colour;
+      }
+
       // When focussed, the text colour needs to be darker to ensure that colour
       // contrast is still acceptable
       &:focus {
