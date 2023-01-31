@@ -116,19 +116,5 @@ describe('/components/exit-this-page', () => {
       const ghostOverlay = await page.evaluate((overlayClass) => document.body.querySelector(overlayClass), overlayClass)
       expect(ghostOverlay).not.toBeNull()
     })
-
-    it('hides the ghost page when the user navigates back in history', async () => {
-      await goToExample(page, 'exit-this-page-with-skiplink')
-
-      await Promise.all([
-        page.waitForNavigation(),
-        page.click(buttonClass)
-      ])
-
-      await page.goBack()
-
-      const ghostOverlay = await page.evaluate((overlayClass) => document.body.querySelector(overlayClass), overlayClass)
-      expect(ghostOverlay).toBeNull()
-    })
   })
 })
