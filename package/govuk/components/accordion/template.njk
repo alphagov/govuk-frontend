@@ -11,7 +11,7 @@
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   {% for item in params.items %}
     {% if item %}
-      <div class="govuk-accordion__section {% if item.expanded %}govuk-accordion__section--expanded{% endif %}">
+      <div class="govuk-accordion__section {%- if item.expanded %} govuk-accordion__section--expanded{% endif %}">
         <div class="govuk-accordion__section-header">
           <h{{ headingLevel }} class="govuk-accordion__section-heading">
             <span class="govuk-accordion__section-button" id="{{ id }}-heading-{{ loop.index }}">

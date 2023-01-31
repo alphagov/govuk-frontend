@@ -19,11 +19,11 @@ $govuk-page-width: 960px !default;
 /// @access public
 
 $govuk-grid-widths: (
-  one-quarter: 25%,
-  one-third: 33.3333%,
-  one-half: 50%,
-  two-thirds: 66.6666%,
-  three-quarters: 75%,
+  one-quarter: (100% / 4),
+  one-third: (100% / 3),
+  one-half: (100% / 2),
+  two-thirds: (200% / 3),
+  three-quarters: (300% / 4),
   full: 100%
 ) !default;
 

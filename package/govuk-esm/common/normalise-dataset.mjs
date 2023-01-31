@@ -1,3 +1,5 @@
+/* eslint-disable es-x/no-string-prototype-trim -- Polyfill imported */
+
 import '../vendor/polyfills/Element/prototype/dataset.mjs'
 import '../vendor/polyfills/String/prototype/trim.mjs'
 
@@ -45,7 +47,7 @@ export function normaliseString (value) {
  * Loop over an object and normalise each value using normaliseData function
  *
  * @param {DOMStringMap} dataset - HTML element dataset
- * @returns {Object<string, string | boolean | number | undefined>} Normalised dataset
+ * @returns {Object<string, unknown>} Normalised dataset
  */
 export function normaliseDataset (dataset) {
   var out = {}

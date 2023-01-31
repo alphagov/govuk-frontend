@@ -1,10 +1,13 @@
 @include govuk-exports("govuk/component/breadcrumbs") {
+  // Component font-size on the Frontend (used for calculations)
+  $font-size: 16;
 
   // Size of chevron (excluding border)
-  $chevron-size: 7px;
+  $chevron-size: govuk-em(7px, $font-size);
 
   // Size of chevron border
-  $chevron-border-width: 1px;
+  $chevron-border-min-width: 1px;
+  $chevron-border-width: govuk-em($chevron-border-min-width, $font-size);
 
   // Colour of chevron
   $chevron-border-colour: $govuk-secondary-text-colour;
@@ -13,10 +16,10 @@
   // of length 8 (7px + 1px border):
   //
   // √(8² + 8²) * 0.5 ≅ 5.655
-  $chevron-altitude-calculated: 5.655px;
+  $chevron-altitude-calculated: govuk-em(5.655px, $font-size);
 
   .govuk-breadcrumbs {
-    @include govuk-font($size: 16);
+    @include govuk-font($size: $font-size);
     @include govuk-text-colour;
 
     margin-top: govuk-spacing(3);
@@ -40,8 +43,8 @@
 
     // Add both margin and padding such that the chevron appears centrally
     // between each breadcrumb item
-    margin-left: govuk-spacing(2);
-    padding-left: govuk-spacing(2) + $chevron-altitude-calculated;
+    margin-left: govuk-em(govuk-spacing(2), $font-size);
+    padding-left: govuk-em(govuk-spacing(2), $font-size) + $chevron-altitude-calculated;
 
     float: left;
 
@@ -55,8 +58,9 @@
       @if $govuk-use-legacy-font {
         // Begin adjustments for font baseline offset
         // These should be removed when legacy font support is dropped
-        top: -1px;
-        bottom: 1px;
+        $offset: govuk-em(1px, $font-size);
+        top: $offset * -1;
+        bottom: $offset;
       } @else {
         top: 0;
         bottom: 0;
@@ -78,8 +82,15 @@
               transform: rotate(45deg);
 
       border: solid;
-      border-width: $chevron-border-width $chevron-border-width 0 0;
+      border-width: $chevron-border-min-width $chevron-border-min-width 0 0;
       border-color: $chevron-border-colour;
+
+      @supports (border-width: unquote("max(0px)")) {
+        border-width: unquote("max(#{$chevron-border-min-width}, #{$chevron-border-width}) max(#{$chevron-border-min-width}, #{$chevron-border-width})") 0 0;
+
+        // Ensure that the chevron never gets smaller than 16px
+        font-size: unquote("max(#{$font-size * 1px}, 1em)");
+      }
 
       // Fall back to a greater than sign for IE8
       @include govuk-if-ie8 {
@@ -122,7 +133,7 @@
         }
 
         &:before {
-          top: 6px;
+          top: govuk-em(6px, $font-size);
           margin: 0;
         }
       }

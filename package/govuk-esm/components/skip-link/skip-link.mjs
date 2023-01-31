@@ -1,6 +1,8 @@
-import '../../vendor/polyfills/Function/prototype/bind.mjs'
+/* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
+
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
-import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normalization
+import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target normalization and DOMContentLoaded
+import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
 /**
  * Skip link component
@@ -15,7 +17,7 @@ function SkipLink ($module) {
 }
 
 /**
- * Initialise the component
+ * Initialise component
  */
 SkipLink.prototype.init = function () {
   // Check for module

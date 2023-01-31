@@ -14,7 +14,7 @@
     {
         "name": "tag",
         "type": "object",
-        "required": false,
+        "required": true,
         "description": "Options for the tag component.",
         "isComponent": true
     },

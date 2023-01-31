@@ -1,5 +1,7 @@
 # Changelog
 
+## Unreleased
+
 ## 4.5.0 (Feature release)
 
 ### New features

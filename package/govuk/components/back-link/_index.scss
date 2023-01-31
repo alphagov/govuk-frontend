@@ -1,16 +1,19 @@
 @include govuk-exports("govuk/component/back-link") {
+  // Component font-size on the Frontend (used for calculations)
+  $font-size: 16;
 
   // Size of chevron (excluding border)
-  $chevron-size: 7px;
+  $chevron-size: govuk-em(7px, $font-size);
 
   // Size of chevron border
-  $chevron-border-width: 1px;
+  $chevron-border-min-width: 1px;
+  $chevron-border-width: govuk-em($chevron-border-min-width, $font-size);
 
   // Colour of chevron
   $chevron-border-colour: $govuk-secondary-text-colour;
 
   .govuk-back-link {
-    @include govuk-typography-responsive($size: 16);
+    @include govuk-typography-responsive($size: $font-size);
     @include govuk-link-common;
     @include govuk-link-style-text;
 
@@ -21,7 +24,7 @@
     margin-bottom: govuk-spacing(3);
 
     // Allow space for the arrow
-    padding-left: 14px;
+    padding-left: govuk-em(14px, $font-size);
   }
 
   // Prepend left pointing chevron
@@ -35,14 +38,15 @@
     @if $govuk-use-legacy-font {
       // Begin adjustments for font baseline offset
       // These should be removed when legacy font support is dropped
-      top: -1px;
-      bottom: 1px;
+      $offset: govuk-em(1px, $font-size);
+      top: $offset * -1;
+      bottom: $offset;
     } @else {
       top: 0;
       bottom: 0;
     }
 
-    left: 3px;
+    left: govuk-em(3px, $font-size);
 
     width: $chevron-size;
     height: $chevron-size;
@@ -56,8 +60,15 @@
             transform: rotate(225deg);
 
     border: solid;
-    border-width: $chevron-border-width $chevron-border-width 0 0;
+    border-width: $chevron-border-min-width $chevron-border-min-width 0 0;
     border-color: $chevron-border-colour;
+
+    @supports (border-width: unquote("max(0px)")) {
+      border-width: unquote("max(#{$chevron-border-min-width}, #{$chevron-border-width}) max(#{$chevron-border-min-width}, #{$chevron-border-width})") 0 0;
+
+      // Ensure that the chevron never gets smaller than 16px
+      font-size: unquote("max(#{$font-size * 1px}, 1em)");
+    }
 
     // Fall back to a less than sign for IE8
     @include govuk-if-ie8 {
@@ -84,16 +95,5 @@
     right: 0;
     bottom: -14px;
     left: 0;
-  }
-
-  @if $govuk-use-legacy-font {
-    // Begin adjustments for font baseline offset
-    // These should be removed when legacy font support is dropped
-    .govuk-back-link:before {
-      $offset: 1px;
-
-      top: $offset * -1;
-      bottom: $offset;
-    }
   }
 }
