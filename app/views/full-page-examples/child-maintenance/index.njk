@@ -33,9 +33,9 @@ scenario: >-
 {% block skipLink %}
   {{ super() }}
   {{ govukSkipLink({
-    href: 'https://www.google.com/',
+    href: 'https://bbc.co.uk/weather/',
     text: 'Exit this page',
-    classes: 'govuk-js-exit-this-page-button'
+    classes: 'govuk-js-exit-this-page-skiplink'
   }) }}
 {% endblock %}
 

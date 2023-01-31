@@ -14,6 +14,7 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
 function ExitThisPage ($module) {
   this.$module = $module
   this.$button = $module.querySelector('.govuk-exit-this-page__button')
+  this.$skiplinkButton = document.querySelector('.govuk-js-exit-this-page-skiplink')
   this.$updateSpan = null
   this.$indicatorContainer = null
   this.$overlay = null
@@ -35,10 +36,16 @@ ExitThisPage.prototype.initUpdateSpan = function () {
 }
 
 /**
- * Create button click handler.
+ * Create button click handlers.
  */
 ExitThisPage.prototype.initButtonClickHandler = function () {
+  // Main EtP button
   this.$button.addEventListener('click', this.exitPage.bind(this))
+
+  // EtP skiplink
+  if (this.$skiplinkButton) {
+    this.$skiplinkButton.addEventListener('click', this.exitPage.bind(this))
+  }
 }
 
 /**
@@ -105,8 +112,11 @@ ExitThisPage.prototype.updateIndicator = function () {
  * @param {MouseEvent} [e] - mouse click event
  */
 ExitThisPage.prototype.exitPage = function (e) {
+  var redirectUrl = this.$button.href
+
   if (typeof e !== 'undefined' && e.target) {
     e.preventDefault()
+    redirectUrl = e.target.href
   }
 
   // Blank the page
@@ -114,7 +124,7 @@ ExitThisPage.prototype.exitPage = function (e) {
   this.$overlay.className = 'govuk-exit-this-page__overlay'
   document.body.appendChild(this.$overlay)
 
-  window.location.href = this.$button.href
+  window.location.href = redirectUrl
 }
 
 /**
