@@ -1,6 +1,5 @@
 const { dirname, resolve } = require('path')
 
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 
@@ -100,9 +99,6 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
           to: './assets/javascripts'
         }
       ]
-    }),
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ['**/*', '!**/{fonts,images}/**']
     })
   ],
 
