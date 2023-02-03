@@ -107,5 +107,16 @@
     "stylelint-order": "^6.0.1",
     "vinyl": "^3.0.0",
     "wait-on": "^7.0.1"
+  },
+  "overrides": {
+    "postcss-unmq": {
+      "postcss": "^7"
+    },
+    "postcss-unopacity": {
+      "postcss": "^7"
+    },
+    "postcss-unrgba": {
+      "postcss": "^7"
+    }
   }
 }
