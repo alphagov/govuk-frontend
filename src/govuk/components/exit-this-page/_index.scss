@@ -1,6 +1,8 @@
 @import "../button/index";
 
 @include govuk-exports("govuk/component/exit-this-page") {
+  $indicator-size: .75em;
+
   .govuk-exit-this-page {
     z-index: 1000;
     top: 0;
@@ -39,9 +41,10 @@
   }
 
   .govuk-exit-this-page__indicator-light {
+    box-sizing: border-box;
     display: inline-block;
-    width: .5em;
-    height: .5em;
+    width: $indicator-size;
+    height: $indicator-size;
     margin: 0 .125em;
     border-width: 2px;
     border-style: solid;
@@ -57,13 +60,7 @@
   }
 
   .govuk-exit-this-page__indicator-light--on {
-    @include govuk-not-ie8 {
-      background-color: currentcolor;
-    }
-
-    @include govuk-if-ie8 {
-      background-color: govuk-colour("white");
-    }
+    border-width: $indicator-size / 2;
   }
 
   @media only print {
