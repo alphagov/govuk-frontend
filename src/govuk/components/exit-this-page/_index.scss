@@ -28,8 +28,7 @@
     @include govuk-responsive-padding(2);
     display: none;
     padding-bottom: 0;
-    color: govuk-colour("white");
-    background-color: govuk-colour("red");
+    color: inherit;
     line-height: 0; // removes extra negative space below the indicators
     text-align: center;
     pointer-events: none;
@@ -44,12 +43,27 @@
     width: .5em;
     height: .5em;
     margin: 0 .125em;
-    border: 2px solid govuk-colour("white");
+    border-width: 2px;
+    border-style: solid;
     border-radius: 50%;
+
+    @include govuk-not-ie8 {
+      border-color: currentcolor;
+    }
+
+    @include govuk-if-ie8 {
+      border-color: govuk-colour("white");
+    }
   }
 
   .govuk-exit-this-page__indicator-light--on {
-    background-color: govuk-colour("white");
+    @include govuk-not-ie8 {
+      background-color: currentcolor;
+    }
+
+    @include govuk-if-ie8 {
+      background-color: govuk-colour("white");
+    }
   }
 
   @media only print {
