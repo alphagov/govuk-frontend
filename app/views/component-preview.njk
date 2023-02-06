@@ -16,5 +16,8 @@
 {% endblock %}
 
 {% block scripts %}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/iframeResizer.contentWindow.min.js" integrity="sha256-4pHiLAYReL+uT1xGu9u8Afg9jkaV0vrdu/Dd0ax9Ak8=" crossorigin="anonymous"></script>
+  <!--[if lt IE 9]>
+    <script src="/vendor/iframe-resizer/ie8.polyfils.min.js"></script>
+  <![endif]-->
+  <script src="/vendor/iframe-resizer/iframeResizer.contentWindow.min.js"></script>
 {% endblock %}
