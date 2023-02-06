@@ -1,5 +1,6 @@
 const config = {
   cacheDirectory: '<rootDir>/.cache/jest/',
+  clearMocks: true,
   coveragePathIgnorePatterns: [
     '.test.(js|mjs)',
     '.eslintrc.js',
@@ -67,7 +68,7 @@ export default {
         '!**/*.unit.test.{js,mjs}',
 
         // Exclude other tests
-        '!**/all.test.{js,mjs}',
+        '!**/components/globals.test.mjs',
         '!**/components/*/**',
         '!**/gulp/**'
       ],
@@ -81,7 +82,7 @@ export default {
       displayName: 'JavaScript component tests',
       testEnvironment: './config/jest/environment/puppeteer.mjs',
       testMatch: [
-        '**/all.test.{js,mjs}',
+        '**/components/globals.test.mjs',
         '**/components/*/*.test.{js,mjs}',
 
         // Exclude macro/unit tests

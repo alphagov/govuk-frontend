@@ -43,7 +43,7 @@ module.exports = {
       // Matches 'JavaScript component tests' in jest.config.mjs
       // to ignore unknown 'page' and 'browser' Puppeteer globals
       files: [
-        '**/all.test.{js,mjs}',
+        '**/components/globals.test.mjs',
         '**/components/*/*.test.{js,mjs}'
       ],
       excludedFiles: [
