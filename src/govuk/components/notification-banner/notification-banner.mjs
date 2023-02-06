@@ -76,9 +76,8 @@ export default NotificationBanner
  * Notification banner config
  *
  * @typedef {object} NotificationBannerConfig
- * @property {boolean} [disableAutoFocus = false] -
- *   If set to `true` the notification banner will not be focussed when the page
- *   loads. This only applies if the component has a `role` of `alert` – in
- *   other cases the component will not be focused on page load, regardless of
- *   this option.
+ * @property {boolean} [disableAutoFocus = false] - If set to `true` the
+ *   notification banner will not be focussed when the page loads. This only
+ *   applies if the component has a `role` of `alert` – in other cases the
+ *   component will not be focused on page load, regardless of this option.
  */
