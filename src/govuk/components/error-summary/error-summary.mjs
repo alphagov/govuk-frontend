@@ -161,7 +161,7 @@ ErrorSummary.prototype.getFragmentFromUrl = function (url) {
  *
  * @param {HTMLElement} $input - The input
  * @returns {HTMLElement} Associated legend or label, or null if no associated
- *                        legend or label can be found
+ *   legend or label can be found
  */
 ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
   var $fieldset = $input.closest('fieldset')
@@ -209,6 +209,6 @@ export default ErrorSummary
  * Error summary config
  *
  * @typedef {object} ErrorSummaryConfig
- * @property {boolean} [disableAutoFocus = false] -
- *  If set to `true` the error summary will not be focussed when the page loads.
+ * @property {boolean} [disableAutoFocus = false] - If set to `true` the error
+ *   summary will not be focussed when the page loads.
  */

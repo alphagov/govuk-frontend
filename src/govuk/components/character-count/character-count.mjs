@@ -386,10 +386,10 @@ export default CharacterCount
  *
  * @typedef {object} CharacterCountConfigWithMaxLength
  * @property {number} [maxlength] - The maximum number of characters.
- *  If maxwords is provided, the maxlength option will be ignored.
+ *   If maxwords is provided, the maxlength option will be ignored.
  * @property {number} [threshold = 0] - The percentage value of the limit at
- *  which point the count message is displayed. If this attribute is set, the
- *  count message will be hidden by default.
+ *   which point the count message is displayed. If this attribute is set, the
+ *   count message will be hidden by default.
  * @property {CharacterCountTranslations} [i18n = CHARACTER_COUNT_TRANSLATIONS] - See constant {@link CHARACTER_COUNT_TRANSLATIONS}
  */
 
@@ -398,10 +398,10 @@ export default CharacterCount
  *
  * @typedef {object} CharacterCountConfigWithMaxWords
  * @property {number} [maxwords] - The maximum number of words. If maxwords is
- *  provided, the maxlength option will be ignored.
+ *   provided, the maxlength option will be ignored.
  * @property {number} [threshold = 0] - The percentage value of the limit at
- *  which point the count message is displayed. If this attribute is set, the
- *  count message will be hidden by default.
+ *   which point the count message is displayed. If this attribute is set, the
+ *   count message will be hidden by default.
  * @property {CharacterCountTranslations} [i18n = CHARACTER_COUNT_TRANSLATIONS] - See constant {@link CHARACTER_COUNT_TRANSLATIONS}
  */
 
