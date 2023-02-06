@@ -12,7 +12,7 @@ module.exports = {
   //
   // https://github.com/okonet/lint-staged#how-can-i-ignore-files-from-eslintignore
   '*.{cjs,js,mjs}': filterTask('npm run lint:js:cli -- --fix'),
-  '*.scss': filterTask('npm run lint:scss:cli -- --fix')
+  '*.scss': 'npm run lint:scss:cli -- --fix --allow-empty-input'
 }
 
 // Configure paths to ignore
