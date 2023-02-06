@@ -8,9 +8,13 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * Skip link component
  *
  * @class
- * @param {HTMLElement} $module - HTML element to use for skip link
+ * @param {Element} $module - HTML element to use for skip link
  */
 function SkipLink ($module) {
+  if (!$module) {
+    return this
+  }
+
   this.$module = $module
   this.$linkedElement = null
   this.linkedElementListener = false
@@ -20,30 +24,30 @@ function SkipLink ($module) {
  * Initialise component
  */
 SkipLink.prototype.init = function () {
-  // Check for module
+  // Check that required elements are present
   if (!this.$module) {
     return
   }
 
   // Check for linked element
-  this.$linkedElement = this.getLinkedElement()
-  if (!this.$linkedElement) {
+  var $linkedElement = this.getLinkedElement()
+  if (!$linkedElement) {
     return
   }
 
+  this.$linkedElement = $linkedElement
   this.$module.addEventListener('click', this.focusLinkedElement.bind(this))
 }
 
 /**
  * Get linked element
  *
- * @returns {HTMLElement} $linkedElement - DOM element linked to from the skip link
+ * @returns {HTMLElement | null} $linkedElement - DOM element linked to from the skip link
  */
 SkipLink.prototype.getLinkedElement = function () {
   var linkedElementId = this.getFragmentFromUrl()
-
   if (!linkedElementId) {
-    return false
+    return null
   }
 
   return document.getElementById(linkedElementId)
@@ -68,6 +72,7 @@ SkipLink.prototype.focusLinkedElement = function () {
       this.linkedElementListener = true
     }
   }
+
   $linkedElement.focus()
 }
 
@@ -88,12 +93,12 @@ SkipLink.prototype.removeFocusProperties = function () {
  * Extract the fragment (everything after the hash symbol) from a URL, but not including
  * the symbol.
  *
- * @returns {string} Fragment from URL, without the hash symbol
+ * @returns {string | undefined} Fragment from URL, without the hash symbol
  */
 SkipLink.prototype.getFragmentFromUrl = function () {
   // Bail if the anchor link doesn't have a hash
   if (!this.$module.hash) {
-    return false
+    return
   }
 
   return this.$module.hash.split('#').pop()

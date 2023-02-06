@@ -8,7 +8,6 @@ import { downloadBrowser } from 'puppeteer/lib/esm/puppeteer/node/install.js'
 import configPaths from '../config/paths.js'
 import { getDirectories, getListing } from '../lib/file-helper.js'
 import { goToComponent } from '../lib/puppeteer-helpers.js'
-import configPuppeteer from '../puppeteer.config.js'
 
 /**
  * Send all component screenshots to Percy
@@ -17,7 +16,7 @@ import configPuppeteer from '../puppeteer.config.js'
  * @returns {Promise<void>}
  */
 export async function screenshotComponents () {
-  const browser = await launch(configPuppeteer.launch)
+  const browser = await launch()
   const componentNames = await getDirectories(configPaths.components)
 
   // Screenshot each component

@@ -6,15 +6,20 @@ import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target norm
  * Notification Banner component
  *
  * @class
- * @param {HTMLElement} $module - HTML element to use for notification banner
+ * @param {Element} $module - HTML element to use for notification banner
  * @param {NotificationBannerConfig} [config] - Notification banner config
  */
 function NotificationBanner ($module, config) {
+  if (!$module) {
+    return this
+  }
+
   this.$module = $module
 
   var defaultConfig = {
     disableAutoFocus: false
   }
+
   this.config = mergeConfigs(
     defaultConfig,
     config || {},
@@ -26,9 +31,8 @@ function NotificationBanner ($module, config) {
  * Initialise component
  */
 NotificationBanner.prototype.init = function () {
-  var $module = this.$module
-  // Check for module
-  if (!$module) {
+  // Check that required elements are present
+  if (!this.$module) {
     return
   }
 

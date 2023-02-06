@@ -19,7 +19,7 @@ class BrowserAutomationEnvironment extends PuppeteerEnvironment {
       delete error.stack
 
       // Ensure test fails
-      process.emit('error', error)
+      process.emit('uncaughtException', error)
     })
 
     // Add shared test globals

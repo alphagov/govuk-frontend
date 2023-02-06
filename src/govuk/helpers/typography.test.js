@@ -1,6 +1,6 @@
 
 const sass = require('node-sass')
-const outdent = require('outdent')
+const { outdent } = require('outdent')
 
 const { renderSass } = require('../../../lib/jest-helpers')
 

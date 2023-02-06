@@ -1,12 +1,25 @@
 import CharacterCount from './character-count.mjs'
 
 describe('CharacterCount', () => {
+  let $container
+  let $textarea
+
+  beforeAll(() => {
+    $container = document.createElement('div')
+    $textarea = document.createElement('textarea')
+
+    // Component checks that required elements are present
+    $textarea.classList.add('govuk-js-character-count')
+    $container.appendChild($textarea)
+  })
+
   describe('formatCountMessage', () => {
     describe('default configuration', () => {
       let component
+
       beforeAll(() => {
-        // The component won't initialise if we don't pass it an element
-        component = new CharacterCount(document.createElement('div'))
+        const $div = $container.cloneNode(true)
+        component = new CharacterCount($div)
       })
 
       const cases = [
@@ -37,7 +50,8 @@ describe('CharacterCount', () => {
     describe('i18n', () => {
       describe('JavaScript configuration', () => {
         it('overrides the default translation keys', () => {
-          const component = new CharacterCount(document.createElement('div'), {
+          const $div = $container.cloneNode(true)
+          const component = new CharacterCount($div, {
             i18n: { charactersUnderLimit: { one: 'Custom text. Count: %{count}' } }
           })
 
@@ -47,7 +61,8 @@ describe('CharacterCount', () => {
         })
 
         it('uses specific keys for when limit is reached', () => {
-          const component = new CharacterCount(document.createElement('div'), {
+          const $div = $container.cloneNode(true)
+          const component = new CharacterCount($div, {
             i18n: {
               charactersAtLimit: 'Custom text.',
               wordsAtLimit: 'Different custom text.'
@@ -61,7 +76,7 @@ describe('CharacterCount', () => {
 
       describe('lang attribute configuration', () => {
         it('overrides the locale when set on the element', () => {
-          const $div = document.createElement('div')
+          const $div = $container.cloneNode(true)
           $div.setAttribute('lang', 'de')
 
           const component = new CharacterCount($div)
@@ -73,7 +88,7 @@ describe('CharacterCount', () => {
           const $parent = document.createElement('div')
           $parent.setAttribute('lang', 'de')
 
-          const $div = document.createElement('div')
+          const $div = $container.cloneNode(true)
           $parent.appendChild($div)
 
           const component = new CharacterCount($div)
@@ -84,7 +99,7 @@ describe('CharacterCount', () => {
 
       describe('Data attribute configuration', () => {
         it('overrides the default translation keys', () => {
-          const $div = document.createElement('div')
+          const $div = $container.cloneNode(true)
           $div.setAttribute('data-i18n.characters-under-limit.one', 'Custom text. Count: %{count}')
 
           const component = new CharacterCount($div)
@@ -96,7 +111,7 @@ describe('CharacterCount', () => {
 
         describe('precedence over JavaScript configuration', () => {
           it('overrides translation keys', () => {
-            const $div = document.createElement('div')
+            const $div = $container.cloneNode(true)
             $div.setAttribute('data-i18n.characters-under-limit.one', 'Custom text. Count: %{count}')
 
             const component = new CharacterCount($div, {

@@ -9,11 +9,20 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * Checkboxes component
  *
  * @class
- * @param {HTMLElement} $module - HTML element to use for checkboxes
+ * @param {Element} $module - HTML element to use for checkboxes
  */
 function Checkboxes ($module) {
+  if (!$module) {
+    return this
+  }
+
+  var $inputs = $module.querySelectorAll('input[type="checkbox"]')
+  if (!$inputs.length) {
+    return this
+  }
+
   this.$module = $module
-  this.$inputs = $module.querySelectorAll('input[type="checkbox"]')
+  this.$inputs = $inputs
 }
 
 /**
@@ -31,6 +40,11 @@ function Checkboxes ($module) {
  * the reveal in sync with the checkbox state.
  */
 Checkboxes.prototype.init = function () {
+  // Check that required elements are present
+  if (!this.$module || !this.$inputs) {
+    return
+  }
+
   var $module = this.$module
   var $inputs = this.$inputs
 
@@ -53,11 +67,10 @@ Checkboxes.prototype.init = function () {
   // state of form controls is not restored until *after* the DOMContentLoaded
   // event is fired, so we need to sync after the pageshow event in browsers
   // that support it.
-  if ('onpageshow' in window) {
-    window.addEventListener('pageshow', this.syncAllConditionalReveals.bind(this))
-  } else {
-    window.addEventListener('DOMContentLoaded', this.syncAllConditionalReveals.bind(this))
-  }
+  window.addEventListener(
+    'onpageshow' in window ? 'pageshow' : 'DOMContentLoaded',
+    this.syncAllConditionalReveals.bind(this)
+  )
 
   // Although we've set up handlers to sync state on the pageshow or
   // DOMContentLoaded event, init could be called after those events have fired,
@@ -84,12 +97,16 @@ Checkboxes.prototype.syncAllConditionalReveals = function () {
  * @param {HTMLInputElement} $input - Checkbox input
  */
 Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
-  var $target = document.getElementById($input.getAttribute('aria-controls'))
+  var targetId = $input.getAttribute('aria-controls')
+  if (!targetId) {
+    return
+  }
 
+  var $target = document.getElementById(targetId)
   if ($target && $target.classList.contains('govuk-checkboxes__conditional')) {
     var inputIsChecked = $input.checked
 
-    $input.setAttribute('aria-expanded', inputIsChecked)
+    $input.setAttribute('aria-expanded', inputIsChecked.toString())
     $target.classList.toggle('govuk-checkboxes__conditional--hidden', !inputIsChecked)
   }
 }
@@ -100,18 +117,22 @@ Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
  * Find any other checkbox inputs with the same name value, and uncheck them.
  * This is useful for when a “None of these" checkbox is checked.
  *
- * @param {HTMLElement} $input - Checkbox input
+ * @param {HTMLInputElement} $input - Checkbox input
  */
 Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
-  var allInputsWithSameName = document.querySelectorAll('input[type="checkbox"][name="' + $input.name + '"]')
+  var $component = this
+
+  var allInputsWithSameName = document.querySelectorAll(
+    'input[type="checkbox"][name="' + $input.name + '"]'
+  )
 
   nodeListForEach(allInputsWithSameName, function ($inputWithSameName) {
     var hasSameFormOwner = ($input.form === $inputWithSameName.form)
     if (hasSameFormOwner && $inputWithSameName !== $input) {
       $inputWithSameName.checked = false
-      this.syncConditionalRevealWithInputState($inputWithSameName)
+      $component.syncConditionalRevealWithInputState($inputWithSameName)
     }
-  }.bind(this))
+  })
 }
 
 /**
@@ -124,6 +145,8 @@ Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
  * @param {HTMLInputElement} $input - Checkbox input
  */
 Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
+  var $component = this
+
   var allInputsWithSameNameAndExclusiveBehaviour = document.querySelectorAll(
     'input[data-behaviour="exclusive"][type="checkbox"][name="' + $input.name + '"]'
   )
@@ -132,9 +155,9 @@ Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
     var hasSameFormOwner = ($input.form === $exclusiveInput.form)
     if (hasSameFormOwner) {
       $exclusiveInput.checked = false
-      this.syncConditionalRevealWithInputState($exclusiveInput)
+      $component.syncConditionalRevealWithInputState($exclusiveInput)
     }
-  }.bind(this))
+  })
 }
 
 /**
@@ -149,7 +172,7 @@ Checkboxes.prototype.handleClick = function (event) {
   var $clickedInput = event.target
 
   // Ignore clicks on things that aren't checkbox inputs
-  if ($clickedInput.type !== 'checkbox') {
+  if (!($clickedInput instanceof HTMLInputElement) || $clickedInput.type !== 'checkbox') {
     return
   }
 

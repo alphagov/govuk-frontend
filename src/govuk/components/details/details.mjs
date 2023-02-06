@@ -17,9 +17,13 @@ var KEY_SPACE = 32
  * Details component
  *
  * @class
- * @param {HTMLElement} $module - HTML element to use for details
+ * @param {Element} $module - HTML element to use for details
  */
 function Details ($module) {
+  if (!$module) {
+    return this
+  }
+
   this.$module = $module
 }
 
@@ -27,6 +31,7 @@ function Details ($module) {
  * Initialise component
  */
 Details.prototype.init = function () {
+  // Check that required elements are present
   if (!this.$module) {
     return
   }
@@ -34,11 +39,9 @@ Details.prototype.init = function () {
   // If there is native details support, we want to avoid running code to polyfill native behaviour.
   var hasNativeDetails = typeof this.$module.open === 'boolean'
 
-  if (hasNativeDetails) {
-    return
+  if (!hasNativeDetails) {
+    this.polyfillDetails()
   }
-
-  this.polyfillDetails()
 }
 
 /**

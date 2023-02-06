@@ -5,25 +5,45 @@
 JavaScript files have the same name as the component's folder name. Test files have a `.test` suffix placed before the file extension.
 
 ```
-checkboxes
-├── checkboxes.mjs
-└── checkboxes.test.js
+component
+├── component.mjs
+└── component.test.js
 ```
 
 ## Skeleton
 
 ```js
-import { nodeListForEach } from '../vendor/common.mjs'
+import '../../vendor/polyfills/Element.mjs'
 
-function Checkboxes ($module) {
-  // code goes here
+/**
+ * Component name
+ *
+ * @class
+ * @param {Element} $module - HTML element to use for component
+ */
+function Example ($module) {
+  if (!$module) {
+    return this
+  }
+
+  this.$module = $module
+
+  // Code goes here
 }
 
-Checkboxes.prototype.init = function () {
-  // code goes here
+/**
+ * Initialise component
+ */
+Example.prototype.init = function () {
+  // Check that required elements are present
+  if (!this.$module) {
+    return
+  }
+
+  // Code goes here
 }
 
-export default Checkboxes
+export default Example
 ```
 
 ## Use data attributes to initialise component JavaScript
@@ -48,15 +68,15 @@ Use `/** ... */` for multi-line comments. Include a description, and specify typ
 
 ```js
 /**
-* Get the nearest ancestor element of a node that matches a given tag name
-* @param {object} node element
-* @param {string} match tag name (e.g. div)
-* @return {object} ancestor element
-*/
-
-function (node, match) {
-  // code goes here
-  return ancestor
+ * Get the first descendent (child) of an HTML element that matches a given tag name
+ *
+ * @param {Element} $element - HTML element
+ * @param {string} tagName - Tag name (for example 'div')
+ * @returns {Element} Ancestor element
+ */
+function ($element, tagName) {
+  // Code goes here
+  return $element.querySelector(tagName)
 }
 ```
 
@@ -73,52 +93,54 @@ Use the prototype design pattern to structure your code.
 Create a constructor and define any variables that the object needs.
 
 ```js
-function Checkboxes ($module) {
-  // code goes here
+function Example ($module) {
+  // Code goes here
 }
 ```
 
 Assign methods to the prototype object. Do not overwrite the prototype with a new object as this makes inheritance impossible.
 
 ```js
-// bad
-Checkboxes.prototype = {
+// Bad
+Example.prototype = {
   init: function () {
-    // code goes here
+    // Code goes here
   }
 }
 
-// good
-Checkboxes.prototype.init = function () {
-  // code goes here
+// Good
+Example.prototype.init = function () {
+  // Code goes here
 }
 ```
 
 When initialising an object, use the `new` keyword.
 
 ```js
-// bad
-var myCheckbox = Checkbox().init()
+// Bad
+var myExample = Example()
 
-// good
-var myCheckbox = new Checkbox().init()
+// Good
+var myExample = new Example()
 ```
 
 ## Modules
 
-Use ES6 modules (`import`/`export`) over a non-standard module system. You can always transpile to your preferred module system.
+Use ECMAScript modules (`import`/`export`) over CommonJS and other formats. You can always transpile to your preferred module system.
 
 ```js
-import { nodeListForEach } from '../vendor/common.mjs'
-// code goes here
-export default Checkboxes
+import { closestAttributeValue } from '../common/index.mjs'
+
+// Code goes here
+export function exampleHelper1 () {}
+export function exampleHelper2 () {}
 ```
 
-Avoid using wildcard (`import * as nodeListForEach`) imports.
+You must specify the file extension when using the import keyword.
 
-You must specify the file extension for a file when importing it.
+Avoid using namespace imports (`import * as namespace`) in code transpiled to CommonJS (or AMD) bundled code as this can prevent "tree shaking" optimisations.
 
-Use default export over named export.
+Prefer named exports over default exports to avoid compatibility issues with transpiler "synthetic default" as discussed in: https://github.com/alphagov/govuk-frontend/issues/2829
 
 ## Polyfilling
 

@@ -34,7 +34,7 @@ export function normaliseString (value) {
 
   // Empty / whitespace-only strings are considered finite so we need to check
   // the length of the trimmed string as well
-  if (trimmedValue.length > 0 && isFinite(trimmedValue)) {
+  if (trimmedValue.length > 0 && isFinite(Number(trimmedValue))) {
     return Number(trimmedValue)
   }
 

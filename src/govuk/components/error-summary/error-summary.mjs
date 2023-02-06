@@ -12,7 +12,7 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * Takes focus on initialisation for accessible announcement, unless disabled in configuration.
  *
  * @class
- * @param {HTMLElement} $module - HTML element to use for error summary
+ * @param {Element} $module - HTML element to use for error summary
  * @param {ErrorSummaryConfig} [config] - Error summary config
  */
 function ErrorSummary ($module, config) {
@@ -34,6 +34,7 @@ function ErrorSummary ($module, config) {
   var defaultConfig = {
     disableAutoFocus: false
   }
+
   this.config = mergeConfigs(
     defaultConfig,
     config || {},
@@ -45,10 +46,12 @@ function ErrorSummary ($module, config) {
  * Initialise component
  */
 ErrorSummary.prototype.init = function () {
-  var $module = this.$module
-  if (!$module) {
+  // Check that required elements are present
+  if (!this.$module) {
     return
   }
+
+  var $module = this.$module
 
   this.setFocus()
   $module.addEventListener('click', this.handleClick.bind(this))
@@ -107,11 +110,15 @@ ErrorSummary.prototype.handleClick = function (event) {
  */
 ErrorSummary.prototype.focusTarget = function ($target) {
   // If the element that was clicked was not a link, return early
-  if ($target.tagName !== 'A' || $target.href === false) {
+  if (!($target instanceof HTMLAnchorElement)) {
     return false
   }
 
   var inputId = this.getFragmentFromUrl($target.href)
+  if (!inputId) {
+    return false
+  }
+
   var $input = document.getElementById(inputId)
   if (!$input) {
     return false
@@ -138,11 +145,11 @@ ErrorSummary.prototype.focusTarget = function ($target) {
  * the hash.
  *
  * @param {string} url - URL
- * @returns {string} Fragment from URL, without the hash
+ * @returns {string | undefined} Fragment from URL, without the hash
  */
 ErrorSummary.prototype.getFragmentFromUrl = function (url) {
   if (url.indexOf('#') === -1) {
-    return false
+    return undefined
   }
 
   return url.split('#').pop()
@@ -159,8 +166,8 @@ ErrorSummary.prototype.getFragmentFromUrl = function (url) {
  * - The first `<label>` that is associated with the input using for="inputId"
  * - The closest parent `<label>`
  *
- * @param {HTMLElement} $input - The input
- * @returns {HTMLElement} Associated legend or label, or null if no associated
+ * @param {Element} $input - The input
+ * @returns {Element | null} Associated legend or label, or null if no associated
  *   legend or label can be found
  */
 ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
