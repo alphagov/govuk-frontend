@@ -11,27 +11,32 @@ module.exports = {
   // as recommended by lint-staged.
   //
   // https://github.com/okonet/lint-staged#how-can-i-ignore-files-from-eslintignore
-  '*.{cjs,js,mjs}': async (files) => {
-    const filesToLint = await removeESLintIgnoredFiles(files)
-    return [`npm run lint:js:cli -- --fix ${filesToLint}`]
-  },
-  '*.scss': ['npm run lint:scss:cli -- --fix']
+  '*.{cjs,js,mjs}': filterTask('npm run lint:js:cli -- --fix'),
+  '*.scss': filterTask('npm run lint:scss:cli -- --fix')
 }
+
+// Configure paths to ignore
+const eslint = new ESLint()
 
 /**
  * Removes files ignored by ESLint from a list of files provided by lint-staged
  *
- * @param {Array<string>} files - The list of files lint-staged wants to lint
- * @returns {Array<string>} - The list without any of the files ignored by ESLint
+ * @param {string} task - The task `lint-staged` wants to execute
+ * @returns {Promise<function(string[]): string[]>} Tasks to run with files argument
  */
-async function removeESLintIgnoredFiles (files) {
-  const eslint = new ESLint()
-  const isIgnored = await Promise.all(
-    files.map((file) => {
-      return eslint.isPathIgnored(file)
-    })
-  )
-  const filteredFiles = files.filter((_, i) => !isIgnored[i])
-  // Wrap file in quotes in case it contains a space
-  return filteredFiles.map(file => `"${file}"`).join(' ')
+function filterTask (task) {
+  return async (files) => {
+    const isIgnored = await Promise.all(
+      files.map((file) => eslint.isPathIgnored(file))
+    )
+
+    // Wrap files in quotes in case they contains a space
+    const paths = files
+      .filter((_, i) => !isIgnored[i])
+      .map(file => `"${file}"`)
+
+    return paths.length
+      ? [`${task} ${paths.join(' ')}`]
+      : []
+  }
 }
