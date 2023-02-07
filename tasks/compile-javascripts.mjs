@@ -37,15 +37,7 @@ compileJavaScripts.displayName = 'compile:js'
  * @param {AssetEntry} assetEntry - Asset entry
  */
 export async function compileJavaScript ([modulePath, { srcPath, destPath }]) {
-  let { dir, name } = parse(modulePath)
-
-  // Adjust file path by destination
-  name = isDist ? `${pkg.name}-${pkg.version}` : name
-
-  // Adjust file path for minification
-  const filePath = join(destPath, dir, !isPackage
-    ? `${name}.min.js`
-    : `${name}.js`)
+  const moduleDestPath = join(destPath, getPathByDestination(modulePath))
 
   // Create Rollup bundle
   const bundle = await rollup({
@@ -54,8 +46,8 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath }]) {
 
   // Compile JavaScript ESM to CommonJS
   let result = await bundle[!isPackage ? 'generate' : 'write']({
-    file: filePath,
-    sourcemapFile: filePath,
+    file: moduleDestPath,
+    sourcemapFile: moduleDestPath,
     sourcemap: true,
 
     // Universal Module Definition (UMD)
@@ -76,7 +68,7 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath }]) {
     result = await minifyJavaScript(modulePath, result)
 
     // Write to files
-    return writeAsset(filePath, result)
+    return writeAsset(moduleDestPath, result)
   }
 }
 
@@ -129,6 +121,24 @@ export async function getModuleEntries () {
       srcPath,
       destPath
     }]))
+}
+
+/**
+ * JavaScript module name by destination
+ *
+ * @param {AssetEntry[0]} filePath - File path
+ * @returns {AssetEntry[0]} File path adjusted by destination
+ */
+export function getPathByDestination (filePath) {
+  let { dir, name } = parse(filePath)
+
+  // Adjust file path by destination
+  name = isDist ? `${name.replace(/^all/, pkg.name)}-${pkg.version}` : name
+
+  // Adjust file path for minification
+  return join(dir, !isPackage
+    ? `${name}.min.js`
+    : `${name}.js`)
 }
 
 /**
