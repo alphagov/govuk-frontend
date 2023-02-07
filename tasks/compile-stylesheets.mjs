@@ -1,77 +1,31 @@
+import { join, parse } from 'path'
+import { promisify } from 'util'
 
-import { join } from 'path'
-
-import gulp from 'gulp'
-import plumber from 'gulp-plumber'
-import postcss from 'gulp-postcss'
-import rename from 'gulp-rename'
-import gulpSass from 'gulp-sass'
-import merge from 'merge-stream'
-import nodeSass from 'node-sass'
+import { render } from 'node-sass'
 import PluginError from 'plugin-error'
-import slash from 'slash'
 
 import { paths, pkg } from '../config/index.js'
+import { getListing } from '../lib/file-helper.js'
 
-import { destination, isDev, isDist, isPackage } from './task-arguments.mjs'
+import { writeAsset } from './compile-assets.mjs'
+import { destination, isDist, isPackage, isPublic } from './task-arguments.mjs'
 
-const sass = gulpSass(nodeSass)
+// Sass renderer
+const sassRender = promisify(render)
 
 /**
  * Compile Sass to CSS task
  *
- * @returns {import('stream').Stream} Output file stream
+ * @returns {Promise<void>}
  */
-export function compileStylesheets () {
-  const destPath = isPackage
-    ? join(destination, 'govuk')
-    : destination
+export async function compileStylesheets () {
+  const importEntries = await getImportEntries()
 
-  // Release distribution
-  if (isDist) {
-    return merge(
-      compileStylesheet(
-        gulp.src(`${slash(paths.src)}/govuk/all.scss`, {
-          sourcemaps: true
-        })
-      )
-        .pipe(rename({
-          basename: 'govuk-frontend'
-        })),
-
-      compileStylesheet(
-        gulp.src(`${slash(paths.src)}/govuk/all-ie8.scss`, {
-          sourcemaps: true
-        })
-      )
-        .pipe(rename({
-          basename: 'govuk-frontend-ie8'
-        }))
-    )
-      .pipe(rename({
-        suffix: `-${pkg.version}`,
-        extname: '.min.css'
-      }))
-
-      .pipe(gulp.dest(slash(destPath), {
-        sourcemaps: '.'
-      }))
+  try {
+    await Promise.all(importEntries.map(compileStylesheet))
+  } catch (cause) {
+    throw new PluginError('compile:scss', cause)
   }
-
-  // Review application
-  return merge(
-    compileStylesheet(
-      gulp.src(`${slash(paths.app)}/**/[!_]*.scss`, {
-        sourcemaps: true
-      }))
-  )
-    .pipe(rename({
-      extname: '.min.css'
-    }))
-
-    .pipe(gulp.dest(slash(destPath), {
-      sourcemaps: '.'
-    }))
 }
 
 compileStylesheets.displayName = 'compile:scss'
@@ -79,52 +33,70 @@ compileStylesheets.displayName = 'compile:scss'
 /**
  * Compile Sass to CSS helper
  *
- * @param {import('stream').Stream} stream - Input file stream
- * @param {import('node-sass').Options} [options] - Sass options
- * @returns {import('stream').Stream} Output file stream
+ * @param {AssetEntry} assetEntry - Asset entry
  */
-function compileStylesheet (stream, options = {}) {
-  return stream
-    .pipe(plumber(errorHandler(stream, 'compile:scss')))
-    .pipe(sass({
-      ...options,
+export async function compileStylesheet ([modulePath, { srcPath, destPath }]) {
+  const moduleSrcPath = join(srcPath, modulePath)
+  const moduleDestPath = join(destPath, getPathByDestination(modulePath))
 
-      // Resolve @imports via
-      includePaths: [
-        join(paths.node_modules, 'govuk_frontend_toolkit/stylesheets'),
-        paths.node_modules
-      ]
-    }))
-    .pipe(postcss())
-    .pipe(plumber.stop())
+  // Render Sass
+  const result = await sassRender({
+    file: moduleSrcPath,
+    outFile: moduleDestPath,
+
+    // Enable source maps
+    sourceMap: true,
+    sourceMapContents: true,
+
+    // Resolve @imports via
+    includePaths: [
+      join(paths.node_modules, 'govuk_frontend_toolkit/stylesheets'),
+      paths.node_modules
+    ]
+  })
+
+  // Write to files
+  return writeAsset(moduleDestPath, result)
 }
 
 /**
- * Compiler error handler
+ * Stylesheet imports to compile
  *
- * Sets up Gulp plumber to suppress errors during development
- * and logs custom errors from Gulp plugins where available
- *
- * @param {import('stream').Stream} stream - Input file stream
- * @param {string} name - Task name for non-plugin error logging
- * @returns {import('stream').Stream} Output file stream
+ * @returns {Promise<AssetEntry[]>} Import entries
  */
-export function errorHandler (stream, name) {
-  return function (cause) {
-    const error = new PluginError(cause.plugin || name, cause.messageFormatted || cause)
+export async function getImportEntries () {
+  const srcPath = isPublic ? paths.app : join(paths.src, 'govuk')
+  const destPath = isPackage ? join(destination, 'govuk') : destination
 
-    // Gulp plugin logging in development
-    // unless already formatted and logged
-    if (isDev || !cause.messageFormatted) {
-      console.error(error.toString())
-    }
+  // Source stylesheets
+  const importPaths = await getListing(srcPath, '[!_]*.scss')
 
-    // Gulp continue (watch)
-    if (isDev) {
-      return this.emit('end')
-    }
-
-    // Gulp exit with error
-    return stream.emit('error', error)
-  }
+  return importPaths
+    .map((modulePath) => ([modulePath, {
+      srcPath,
+      destPath
+    }]))
 }
+
+/**
+ * Stylesheet path by destination
+ *
+ * @param {AssetEntry[0]} filePath - File path
+ * @returns {AssetEntry[0]} File path adjusted by destination
+ */
+export function getPathByDestination (filePath) {
+  let { dir, name } = parse(filePath)
+
+  // Adjust file path by destination
+  name = isDist ? `${name.replace(/^all/, pkg.name)}-${pkg.version}` : name
+
+  // Adjust file path for minification
+  return join(dir, !isPackage
+    ? `${name}.min.css`
+    : `${name}.scss`)
+}
+
+/**
+ * @typedef {import('./compile-assets.mjs').AssetEntry} AssetEntry
+ * @typedef {import('./compile-assets.mjs').AssetOutput} AssetOutput
+ */
