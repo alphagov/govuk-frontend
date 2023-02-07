@@ -1,5 +1,4 @@
-import { mkdir, writeFile } from 'fs/promises'
-import { dirname, join, parse } from 'path'
+import { join, parse } from 'path'
 
 import PluginError from 'plugin-error'
 import { rollup } from 'rollup'
@@ -9,6 +8,7 @@ import { paths, pkg } from '../config/index.js'
 import { getListing } from '../lib/file-helper.js'
 import { componentPathToModuleName } from '../lib/helper-functions.js'
 
+import { writeAsset } from './compile-assets.mjs'
 import { destination, isDist, isPackage } from './task-arguments.mjs'
 
 /**
@@ -34,7 +34,7 @@ compileJavaScripts.displayName = 'compile:js'
 /**
  * Compile JavaScript ESM to CommonJS helper
  *
- * @param {ModuleEntry} moduleEntry - Module entry
+ * @param {AssetEntry} assetEntry - Asset entry
  */
 export async function compileJavaScript ([modulePath, { srcPath, destPath, minify }]) {
   let { dir, name } = parse(modulePath)
@@ -75,14 +75,8 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, minif
   if (minify) {
     result = await minifyJavaScript(modulePath, result)
 
-    // Create directories
-    await mkdir(dirname(filePath), { recursive: true })
-
     // Write to files
-    await Promise.all([
-      writeFile(filePath, result.code),
-      writeFile(`${filePath}.map`, result.map.toString())
-    ])
+    return writeAsset(filePath, result)
   }
 }
 
@@ -119,7 +113,7 @@ export function minifyJavaScript (modulePath, result) {
 /**
  * JavaScript modules to compile
  *
- * @returns {Promise<ModuleEntry[]>} Module entries
+ * @returns {Promise<AssetEntry[]>} Module entries
  */
 export async function getModuleEntries () {
   const srcPath = join(paths.src, 'govuk')
@@ -141,16 +135,6 @@ export async function getModuleEntries () {
 }
 
 /**
- * Module entry path with options
- *
- * @typedef {[string, ModuleOptions]} ModuleEntry
- */
-
-/**
- * Module options
- *
- * @typedef {object} ModuleOptions
- * @property {string} srcPath - Input directory
- * @property {string} destPath - Output directory
- * @property {boolean} minify - Minifier enabled
+ * @typedef {import('./compile-assets.mjs').AssetEntry} AssetEntry
+ * @typedef {import('./compile-assets.mjs').AssetOutput} AssetOutput
  */
