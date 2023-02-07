@@ -40,7 +40,6 @@ export async function writeAsset (filePath, result) {
  * @typedef {object} AssetOptions
  * @property {string} srcPath - Input directory
  * @property {string} destPath - Output directory
- * @property {boolean} minify - Minifier enabled
  */
 
 /**

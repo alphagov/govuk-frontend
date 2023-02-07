@@ -36,14 +36,14 @@ compileJavaScripts.displayName = 'compile:js'
  *
  * @param {AssetEntry} assetEntry - Asset entry
  */
-export async function compileJavaScript ([modulePath, { srcPath, destPath, minify }]) {
+export async function compileJavaScript ([modulePath, { srcPath, destPath }]) {
   let { dir, name } = parse(modulePath)
 
   // Adjust file path by destination
   name = isDist ? `${pkg.name}-${pkg.version}` : name
 
   // Adjust file path for minification
-  const filePath = join(destPath, dir, minify
+  const filePath = join(destPath, dir, !isPackage
     ? `${name}.min.js`
     : `${name}.js`)
 
@@ -53,7 +53,7 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, minif
   })
 
   // Compile JavaScript ESM to CommonJS
-  let result = await bundle[minify ? 'generate' : 'write']({
+  let result = await bundle[!isPackage ? 'generate' : 'write']({
     file: filePath,
     sourcemapFile: filePath,
     sourcemap: true,
@@ -72,7 +72,7 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, minif
   })
 
   // Minify bundle
-  if (minify) {
+  if (!isPackage) {
     result = await minifyJavaScript(modulePath, result)
 
     // Write to files
@@ -84,9 +84,7 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, minif
  * Minify JavaScript ESM to CommonJS helper
  *
  * @param {string} modulePath - Relative path to module
- * @param {object} result - Generated bundle
- * @param {string} result.code - Source code
- * @param {import('magic-string').SourceMap} result.map - Source map
+ * @param {import('rollup').OutputChunk} result - Generated bundle
  * @returns {Promise<import('terser').MinifyOutput>} Minifier result
  */
 export function minifyJavaScript (modulePath, result) {
@@ -129,8 +127,7 @@ export async function getModuleEntries () {
   return modulePaths
     .map((modulePath) => ([modulePath, {
       srcPath,
-      destPath,
-      minify: !isPackage
+      destPath
     }]))
 }
 
