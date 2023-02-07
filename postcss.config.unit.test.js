@@ -159,6 +159,22 @@ describe('PostCSS config', () => {
       })
     })
 
+    describe('Sass syntax parser', () => {
+      it.each([
+        {
+          from: 'src/govuk/components/accordion/_accordion.scss',
+          to: 'package/govuk/components/accordion/_accordion.scss'
+        }
+      ])('Adds plugins for $from', ({ from, to }) => {
+        const config = configFn({ env, from, to })
+
+        expect(getPluginNames(config))
+          .toEqual([
+            'autoprefixer'
+          ])
+      })
+    })
+
     describe('Review app only', () => {
       it.each([
         {

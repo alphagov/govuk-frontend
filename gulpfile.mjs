@@ -65,6 +65,7 @@ gulp.task('build:package', gulp.series(
   clean,
   copyFiles,
   compileJavaScripts,
+  compileStylesheets,
   updatePrototypeKitConfig
 ))
 

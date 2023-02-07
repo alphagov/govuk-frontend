@@ -4,7 +4,9 @@ const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
 const cssnanoPresetDefault = require('cssnano-preset-default')
 const { minimatch } = require('minimatch')
+const postcss = require('postcss')
 const pseudoclasses = require('postcss-pseudo-classes')
+const scss = require('postcss-scss')
 const unmq = require('postcss-unmq')
 const unopacity = require('postcss-unopacity')
 const unrgba = require('postcss-unrgba')
@@ -17,6 +19,7 @@ const unrgba = require('postcss-unrgba')
  */
 module.exports = (ctx) => {
   const plugins = []
+  const syntax = ctx.to?.endsWith('.scss') ? scss : postcss
 
   // PostCSS 'from' (or webpack 'file') source path
   // https://github.com/postcss/postcss-load-config#options
@@ -55,15 +58,18 @@ module.exports = (ctx) => {
   }
 
   // Always minify CSS
-  plugins.push(cssnano({
-    preset: [cssnanoPresetDefault, {
-      // Sorted CSS is smaller when gzipped, but we sort using Stylelint
-      // https://cssnano.co/docs/optimisations/cssdeclarationsorter/
-      cssDeclarationSorter: false
-    }]
-  }))
+  if (syntax !== scss) {
+    plugins.push(cssnano({
+      preset: [cssnanoPresetDefault, {
+        // Sorted CSS is smaller when gzipped, but we sort using Stylelint
+        // https://cssnano.co/docs/optimisations/cssdeclarationsorter/
+        cssDeclarationSorter: false
+      }]
+    }))
+  }
 
   return {
+    syntax,
     plugins
   }
 }

@@ -1,14 +1,11 @@
 import { basename, join } from 'path'
 
-import autoprefixer from 'autoprefixer'
 import gulp from 'gulp'
-import postcss from 'gulp-postcss'
 import rename from 'gulp-rename'
 import yaml from 'js-yaml'
 import map from 'map-stream'
 import merge from 'merge-stream'
 import nunjucks from 'nunjucks'
-import postcssScss from 'postcss-scss'
 import slash from 'slash'
 
 import configPaths from '../../config/paths.js'
@@ -63,16 +60,12 @@ export function copyFiles () {
         // https://github.com/alphagov/govuk-frontend/tree/main/package#readme
         `!${slash(configPaths.src)}/govuk/README.md`,
 
-        // Exclude Sass files handled by PostCSS stream below
+        // Exclude Sass files handled by Gulp 'compile:scss'
         `!${slash(configPaths.src)}/**/*.scss`,
 
         // Exclude source YAML handled by JSON streams below
         `!${slash(configPaths.components)}/**/*.yaml`
       ]),
-
-      // Add CSS prefixes to Sass
-      gulp.src(`${slash(configPaths.src)}/**/*.scss`)
-        .pipe(postcss([autoprefixer], { syntax: postcssScss })),
 
       // Generate fixtures.json from ${componentName}.yaml
       gulp.src(`${slash(configPaths.components)}/**/*.yaml`, {

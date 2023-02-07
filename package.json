@@ -53,7 +53,6 @@
     "glob": "^8.1.0",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
-    "gulp-postcss": "^9.0.1",
     "gulp-rename": "^2.0.0",
     "gulp-task-listing": "^1.1.1",
     "js-yaml": "^4.1.0",
