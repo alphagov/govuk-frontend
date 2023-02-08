@@ -126,6 +126,9 @@
     },
     "postcss-unrgba": {
       "postcss": "^7"
+    },
+    "sass-convert": {
+      "semver-regex": "^3"
     }
   }
 }
