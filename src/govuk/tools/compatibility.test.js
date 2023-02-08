@@ -1,6 +1,7 @@
 const sass = require('node-sass')
+const outdent = require('outdent')
 
-const { renderSass } = require('../../../lib/jest-helpers')
+const { compileSassString } = require('../../../lib/jest-helpers')
 
 // Create a mock warn function that we can use to override the native @warn
 // function, that we can make assertions about post-render.
@@ -8,7 +9,6 @@ const mockWarnFunction = jest.fn()
   .mockReturnValue(sass.NULL)
 
 const sassConfig = {
-  outputStyle: 'compressed',
   functions: {
     '@warn': mockWarnFunction
   }
@@ -30,11 +30,12 @@ describe('@mixin govuk-compatibility', () => {
         .foo {
           color: red;
         }
-      }`
+      }
+    `
 
-    const results = await renderSass({ data: sass, ...sassConfig })
-
-    expect(results.css.toString()).toEqual('')
+    await expect(compileSassString(sass))
+      .resolves
+      .toMatchObject({ css: '' })
   })
 
   it('outputs if the app is not marked as included', async () => {
@@ -48,11 +49,18 @@ describe('@mixin govuk-compatibility', () => {
         .foo {
           color: red;
         }
-      }`
+      }
+    `
 
-    const results = await renderSass({ data: sass, ...sassConfig })
-
-    expect(results.css.toString().trim()).toBe('.foo{color:red}')
+    await expect(compileSassString(sass))
+      .resolves
+      .toMatchObject({
+        css: outdent`
+          .foo {
+            color: red;
+          }
+        `
+      })
   })
 
   it('throws an exception if the app is not recognised', async () => {
@@ -66,9 +74,10 @@ describe('@mixin govuk-compatibility', () => {
         .foo {
           color: red;
         }
-      }`
+      }
+    `
 
-    await expect(renderSass({ data: sass, ...sassConfig }))
+    await expect(compileSassString(sass, sassConfig))
       .rejects
       .toThrow('Non existent product \'non_existent_app\'')
   })
@@ -84,17 +93,18 @@ describe('@mixin govuk-compatibility', () => {
         .foo {
           color: red;
         }
-      }`
+      }
+    `
 
-    await renderSass({ data: sass, ...sassConfig }).then(() => {
-      // Expect our mocked @warn function to have been called once with a single
-      // argument, which should be the deprecation notice
-      return expect(mockWarnFunction.mock.calls[0][0].getValue())
-        .toEqual(
-          'govuk-compatibility is deprecated. From version 5.0, GOV.UK Frontend ' +
-          'will not support compatibility mode. To silence this warning, ' +
-          'update $govuk-suppressed-warnings with key: "compatibility-helper"'
-        )
-    })
+    await compileSassString(sass, sassConfig)
+
+    // Expect our mocked @warn function to have been called once with a single
+    // argument, which should be the deprecation notice
+    expect(mockWarnFunction.mock.calls[0][0].getValue())
+      .toEqual(
+        'govuk-compatibility is deprecated. From version 5.0, GOV.UK Frontend ' +
+        'will not support compatibility mode. To silence this warning, ' +
+        'update $govuk-suppressed-warnings with key: "compatibility-helper"'
+      )
   })
 })

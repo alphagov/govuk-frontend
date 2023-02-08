@@ -1,8 +1,6 @@
-const { renderSass } = require('../../../lib/jest-helpers')
+const outdent = require('outdent')
 
-const sassConfig = {
-  outputStyle: 'compressed'
-}
+const { compileSassString } = require('../../../lib/jest-helpers')
 
 describe('@mixin govuk-exports', () => {
   it('will only output a named section once', async () => {
@@ -19,11 +17,18 @@ describe('@mixin govuk-exports', () => {
         .foo {
           color: blue;
         }
-      }`
+      }
+    `
 
-    const results = await renderSass({ data: sass, ...sassConfig })
-
-    expect(results.css.toString().trim()).toEqual('.foo{color:red}')
+    await expect(compileSassString(sass))
+      .resolves
+      .toMatchObject({
+        css: outdent`
+          .foo {
+            color: red;
+          }
+        `
+      })
   })
 
   it('will export differently named sections', async () => {
@@ -40,11 +45,21 @@ describe('@mixin govuk-exports', () => {
         .bar {
           color: blue;
         }
-      }`
+      }
+    `
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    await expect(compileSassString(sass))
+      .resolves
+      .toMatchObject({
+        css: outdent`
+          .foo {
+            color: red;
+          }
 
-    expect(results.css.toString().trim())
-      .toEqual('.foo{color:red}.bar{color:blue}')
+          .bar {
+            color: blue;
+          }
+        `
+      })
   })
 })

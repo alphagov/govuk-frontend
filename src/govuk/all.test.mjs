@@ -2,7 +2,7 @@ import sassdoc from 'sassdoc'
 import slash from 'slash'
 
 import configPaths from '../../config/paths.js'
-import { renderSass } from '../../lib/jest-helpers.js'
+import { compileSassString } from '../../lib/jest-helpers.js'
 
 describe('GOV.UK Frontend', () => {
   describe('global styles', () => {
@@ -10,18 +10,32 @@ describe('GOV.UK Frontend', () => {
       const sass = `
         @import "all";
       `
-      const results = await renderSass({ data: sass })
-      expect(results.css.toString()).not.toContain(', a {')
-      expect(results.css.toString()).not.toContain(', p {')
+      const results = compileSassString(sass)
+
+      await expect(results).resolves.toMatchObject({
+        css: expect.not.stringContaining('.govuk-link, a {')
+      })
+
+      await expect(results).resolves.toMatchObject({
+        css: expect.not.stringContaining('.govuk-body-m, .govuk-body, p {')
+      })
     })
+
     it('are enabled if $global-styles variable is set to true', async () => {
       const sass = `
         $govuk-global-styles: true;
         @import "all";
       `
-      const results = await renderSass({ data: sass })
-      expect(results.css.toString()).toContain(', a {')
-      expect(results.css.toString()).toContain(', p {')
+
+      const results = compileSassString(sass)
+
+      await expect(results).resolves.toMatchObject({
+        css: expect.stringContaining('.govuk-link, a {')
+      })
+
+      await expect(results).resolves.toMatchObject({
+        css: expect.stringContaining('.govuk-body-m, .govuk-body, p {')
+      })
     })
   })
 
@@ -58,12 +72,9 @@ describe('GOV.UK Frontend', () => {
   it('does not contain any unexpected govuk- function calls', async () => {
     const sass = '@import "all"'
 
-    const results = await renderSass({ data: sass })
-    const css = results.css.toString()
-
-    const functionCalls = css.match(/_?govuk-[\w-]+\(.*?\)/g)
-
-    expect(functionCalls).toBeNull()
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: expect.not.stringMatching(/_?govuk-[\w-]+\(.*?\)/g)
+    })
   })
 
   describe('Sass documentation', () => {

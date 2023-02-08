@@ -1,10 +1,6 @@
 const { outdent } = require('outdent')
 
-const { renderSass } = require('../../../lib/jest-helpers')
-
-const sassConfig = {
-  outputStyle: 'nested'
-}
+const { compileSassString } = require('../../../lib/jest-helpers')
 
 const sassBootstrap = `
   @import "settings/media-queries";
@@ -41,13 +37,18 @@ describe('@function govuk-spacing', () => {
 
       .foo {
         top: govuk-spacing($spacing-point)
-      }`
+      }
+    `
 
-    const results = await renderSass({ data: sass, ...sassConfig })
-
-    expect(results.css.toString().trim()).toBe(outdent`
-      .foo {
-        top: 15px; }`)
+    await expect(compileSassString(sass))
+      .resolves
+      .toMatchObject({
+        css: outdent`
+          .foo {
+            top: 15px;
+          }
+        `
+      })
   })
 
   it('returns CSS for a property based on a negative spacing point', async () => {
@@ -56,13 +57,18 @@ describe('@function govuk-spacing', () => {
 
       .foo {
         top: govuk-spacing(-2)
-      }`
+      }
+    `
 
-    const results = await renderSass({ data: sass, ...sassConfig })
-
-    expect(results.css.toString().trim()).toBe(outdent`
-      .foo {
-        top: -15px; }`)
+    await expect(compileSassString(sass))
+      .resolves
+      .toMatchObject({
+        css: outdent`
+          .foo {
+            top: -15px;
+          }
+        `
+      })
   })
 
   it('throws an error when passed anything other than a number', async () => {
@@ -71,9 +77,10 @@ describe('@function govuk-spacing', () => {
 
       .foo {
         top: govuk-spacing('margin')
-      }`
+      }
+    `
 
-    await expect(renderSass({ data: sass, ...sassConfig }))
+    await expect(compileSassString(sass))
       .rejects
       .toThrow(
         'Expected a number (integer), but got a string.'
@@ -86,9 +93,10 @@ describe('@function govuk-spacing', () => {
 
       .foo {
         top: govuk-spacing(999)
-      }`
+      }
+    `
 
-    await expect(renderSass({ data: sass, ...sassConfig }))
+    await expect(compileSassString(sass))
       .rejects
       .toThrow(
         'Unknown spacing variable `999`. Make sure you are using a point from the spacing scale in `_settings/spacing.scss`.'
@@ -101,9 +109,10 @@ describe('@function govuk-spacing', () => {
 
       .foo {
         top: govuk-spacing(-999)
-      }`
+      }
+    `
 
-    await expect(renderSass({ data: sass, ...sassConfig }))
+    await expect(compileSassString(sass))
       .rejects
       .toThrow(
         'Unknown spacing variable `999`. Make sure you are using a point from the spacing scale in `_settings/spacing.scss`.'
@@ -116,13 +125,18 @@ describe('@function govuk-spacing', () => {
 
       .foo {
         top: govuk-spacing(-0)
-      }`
+      }
+    `
 
-    const results = await renderSass({ data: sass, ...sassConfig })
-
-    expect(results.css.toString().trim()).toBe(outdent`
-      .foo {
-        top: 0; }`)
+    await expect(compileSassString(sass))
+      .resolves
+      .toMatchObject({
+        css: outdent`
+          .foo {
+            top: 0;
+          }
+        `
+      })
   })
 })
 
@@ -133,16 +147,24 @@ describe('@mixin _govuk-responsive-spacing', () => {
 
       .foo {
         @include _govuk-responsive-spacing($spacing-point, 'margin')
-      }`
+      }
+    `
 
-    const results = await renderSass({ data: sass, ...sassConfig })
-
-    expect(results.css.toString().trim()).toBe(outdent`
-      .foo {
-        margin: 15px; }
-        @media (min-width: 30em) {
+    await expect(compileSassString(sass))
+      .resolves
+      .toMatchObject({
+        css: outdent`
           .foo {
-            margin: 25px; } }`)
+            margin: 15px;
+          }
+
+          @media (min-width: 30em) {
+            .foo {
+              margin: 25px;
+            }
+          }
+        `
+      })
   })
 
   it('outputs CSS for a property and direction based on the spacing map', async () => {
@@ -151,16 +173,24 @@ describe('@mixin _govuk-responsive-spacing', () => {
 
       .foo {
         @include _govuk-responsive-spacing($spacing-point, 'padding', 'top');
-      }`
+      }
+    `
 
-    const results = await renderSass({ data: sass, ...sassConfig })
-
-    expect(results.css.toString().trim()).toBe(outdent`
-      .foo {
-        padding-top: 15px; }
-        @media (min-width: 30em) {
+    await expect(compileSassString(sass))
+      .resolves
+      .toMatchObject({
+        css: outdent`
           .foo {
-            padding-top: 25px; } }`)
+            padding-top: 15px;
+          }
+
+          @media (min-width: 30em) {
+            .foo {
+              padding-top: 25px;
+            }
+          }
+        `
+      })
   })
 
   it('throws an exception when passed a non-existent point', async () => {
@@ -169,9 +199,10 @@ describe('@mixin _govuk-responsive-spacing', () => {
 
       .foo {
         @include _govuk-responsive-spacing(14px, 'margin')
-      }`
+      }
+    `
 
-    await expect(renderSass({ data: sass, ...sassConfig }))
+    await expect(compileSassString(sass))
       .rejects
       .toThrow(
         'Unknown spacing point `14px`. Make sure you are using a point from the responsive spacing scale in `_settings/spacing.scss`.'
@@ -189,16 +220,24 @@ describe('@mixin _govuk-responsive-spacing', () => {
             'margin',
             $important: true
           )
-        }`
+        }
+      `
 
-      const results = await renderSass({ data: sass, ...sassConfig })
-
-      expect(results.css.toString().trim()).toBe(outdent`
-        .foo {
-          margin: 15px !important; }
-          @media (min-width: 30em) {
+      await expect(compileSassString(sass))
+        .resolves
+        .toMatchObject({
+          css: outdent`
             .foo {
-              margin: 25px !important; } }`)
+              margin: 15px !important;
+            }
+
+            @media (min-width: 30em) {
+              .foo {
+                margin: 25px !important;
+              }
+            }
+          `
+        })
     })
 
     it('marks the rule as important for the property and direction', async () => {
@@ -212,16 +251,24 @@ describe('@mixin _govuk-responsive-spacing', () => {
             'top',
             $important: true
           )
-        }`
+        }
+      `
 
-      const results = await renderSass({ data: sass, ...sassConfig })
-
-      expect(results.css.toString().trim()).toBe(outdent`
-        .foo {
-          margin-top: 15px !important; }
-          @media (min-width: 30em) {
+      await expect(compileSassString(sass))
+        .resolves
+        .toMatchObject({
+          css: outdent`
             .foo {
-              margin-top: 25px !important; } }`)
+              margin-top: 15px !important;
+            }
+
+            @media (min-width: 30em) {
+              .foo {
+                margin-top: 25px !important;
+              }
+            }
+          `
+        })
     })
   })
 
@@ -236,16 +283,24 @@ describe('@mixin _govuk-responsive-spacing', () => {
             'margin',
             $adjustment: 2px
           )
-        }`
+        }
+      `
 
-      const results = await renderSass({ data: sass, ...sassConfig })
-
-      expect(results.css.toString().trim()).toBe(outdent`
-        .foo {
-          margin: 17px; }
-          @media (min-width: 30em) {
+      await expect(compileSassString(sass))
+        .resolves
+        .toMatchObject({
+          css: outdent`
             .foo {
-              margin: 27px; } }`)
+              margin: 17px;
+            }
+
+            @media (min-width: 30em) {
+              .foo {
+                margin: 27px;
+              }
+            }
+          `
+        })
     })
 
     it('adjusts the value for the property and direction', async () => {
@@ -259,16 +314,24 @@ describe('@mixin _govuk-responsive-spacing', () => {
             'top',
             $adjustment: 2px
           )
-        }`
+        }
+      `
 
-      const results = await renderSass({ data: sass, ...sassConfig })
-
-      expect(results.css.toString().trim()).toBe(outdent`
-        .foo {
-          margin-top: 17px; }
-          @media (min-width: 30em) {
+      await expect(compileSassString(sass))
+        .resolves
+        .toMatchObject({
+          css: outdent`
             .foo {
-              margin-top: 27px; } }`)
+              margin-top: 17px;
+            }
+
+            @media (min-width: 30em) {
+              .foo {
+                margin-top: 27px;
+              }
+            }
+          `
+        })
     })
   })
 })
@@ -280,16 +343,24 @@ describe('@mixin govuk-responsive-margin', () => {
 
         .foo {
           @include govuk-responsive-margin($spacing-point)
-        }`
+        }
+      `
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    await expect(compileSassString(sass))
+      .resolves
+      .toMatchObject({
+        css: outdent`
+          .foo {
+            margin: 15px;
+          }
 
-    expect(results.css.toString().trim()).toBe(outdent`
-        .foo {
-          margin: 15px; }
           @media (min-width: 30em) {
             .foo {
-              margin: 25px; } }`)
+              margin: 25px;
+            }
+          }
+        `
+      })
   })
 
   it('outputs extreme responsive margins', async () => {
@@ -303,16 +374,24 @@ describe('@mixin govuk-responsive-margin', () => {
             $important: true,
             $adjustment: 2px
           )
-        }`
+        }
+      `
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    await expect(compileSassString(sass))
+      .resolves
+      .toMatchObject({
+        css: outdent`
+          .foo {
+            margin-top: 17px !important;
+          }
 
-    expect(results.css.toString().trim()).toBe(outdent`
-        .foo {
-          margin-top: 17px !important; }
           @media (min-width: 30em) {
             .foo {
-              margin-top: 27px !important; } }`)
+              margin-top: 27px !important;
+            }
+          }
+        `
+      })
   })
 })
 
@@ -323,16 +402,24 @@ describe('@mixin govuk-responsive-padding', () => {
 
         .foo {
           @include govuk-responsive-padding($spacing-point)
-        }`
+        }
+      `
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    await expect(compileSassString(sass))
+      .resolves
+      .toMatchObject({
+        css: outdent`
+          .foo {
+            padding: 15px;
+          }
 
-    expect(results.css.toString().trim()).toBe(outdent`
-        .foo {
-          padding: 15px; }
           @media (min-width: 30em) {
             .foo {
-              padding: 25px; } }`)
+              padding: 25px;
+            }
+          }
+        `
+      })
   })
 
   it('outputs extreme responsive padding', async () => {
@@ -346,15 +433,23 @@ describe('@mixin govuk-responsive-padding', () => {
             $important: true,
             $adjustment: 2px
           )
-        }`
+        }
+      `
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    await expect(compileSassString(sass))
+      .resolves
+      .toMatchObject({
+        css: outdent`
+          .foo {
+            padding-top: 17px !important;
+          }
 
-    expect(results.css.toString().trim()).toBe(outdent`
-        .foo {
-          padding-top: 17px !important; }
           @media (min-width: 30em) {
             .foo {
-              padding-top: 27px !important; } }`)
+              padding-top: 27px !important;
+            }
+          }
+        `
+      })
   })
 })

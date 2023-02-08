@@ -4,7 +4,7 @@ const sassdoc = require('sassdoc')
 
 const configPaths = require('../../../config/paths')
 const { getListing } = require('../../../lib/file-helper')
-const { renderSass } = require('../../../lib/jest-helpers')
+const { compileSassFile } = require('../../../lib/jest-helpers')
 
 describe('The objects layer', () => {
   let sassFiles
@@ -19,12 +19,10 @@ describe('The objects layer', () => {
     const sassTasks = sassFiles.map((sassFilePath) => {
       const file = join(configPaths.src, sassFilePath)
 
-      return expect(renderSass({ file })).resolves.toEqual(
-        expect.objectContaining({
-          css: expect.any(Object),
-          stats: expect.any(Object)
-        })
-      )
+      return expect(compileSassFile(file)).resolves.toMatchObject({
+        css: expect.any(String),
+        stats: expect.any(Object)
+      })
     })
 
     return Promise.all(sassTasks)

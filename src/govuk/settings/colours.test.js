@@ -1,8 +1,4 @@
-const { renderSass } = require('../../../lib/jest-helpers')
-
-const sassConfig = {
-  outputStyle: 'compressed'
-}
+const { compileSassString } = require('../../../lib/jest-helpers')
 
 describe('Organisation colours', () => {
   it('should define websafe colours that meet contrast requirements', async () => {
@@ -27,8 +23,9 @@ describe('Organisation colours', () => {
           + " #{$colour} on #{$govuk-body-background-colour} has a contrast of: #{$contrast}."
           + " Must be higher than #{$minimum-contrast} for WCAG AA support.";
         }
-      }`
+      }
+    `
 
-    await renderSass({ data: sass, ...sassConfig })
+    await expect(compileSassString(sass)).resolves
   })
 })

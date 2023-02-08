@@ -1,8 +1,6 @@
-const { renderSass } = require('../../../lib/jest-helpers')
+const outdent = require('outdent')
 
-const sassConfig = {
-  outputStyle: 'compressed'
-}
+const { compileSassString } = require('../../../lib/jest-helpers')
 
 describe('@function font-url', () => {
   it('by default concatenates the font path and the filename', async () => {
@@ -14,31 +12,44 @@ describe('@function font-url', () => {
       @font-face {
         font-family: "whatever";
         src: govuk-font-url("whatever.woff2");
-      }`
+      }
+    `
 
-    const results = await renderSass({ data: sass, ...sassConfig })
-
-    expect(results.css.toString().trim()).toEqual(
-      '@font-face{font-family:"whatever";src:url("/path/to/fonts/whatever.woff2")}'
-    )
+    await expect(compileSassString(sass))
+      .resolves
+      .toMatchObject({
+        css: outdent`
+          @font-face {
+            font-family: "whatever";
+            src: url("/path/to/fonts/whatever.woff2");
+          }
+        `
+      })
   })
 
   it('can be overridden to use a defined Sass function', async () => {
     const sass = `
       @import "tools/font-url";
 
+      $govuk-fonts-path: '/path/to/fonts/';
       $govuk-font-url-function: 'to_upper_case';
 
       @font-face {
         font-family: "whatever";
         src: govuk-font-url("whatever.woff2");
-      }`
+      }
+    `
 
-    const results = await renderSass({ data: sass, ...sassConfig })
-
-    expect(results.css.toString().trim()).toEqual(
-      '@font-face{font-family:"whatever";src:"WHATEVER.WOFF2"}'
-    )
+    await expect(compileSassString(sass))
+      .resolves
+      .toMatchObject({
+        css: outdent`
+          @font-face {
+            font-family: "whatever";
+            src: "WHATEVER.WOFF2";
+          }
+        `
+      })
   })
 
   it('can be overridden to use a custom function', async () => {
@@ -55,12 +66,18 @@ describe('@function font-url', () => {
       @font-face {
         font-family: "whatever";
         src: govuk-font-url("whatever.woff2");
-      }`
+      }
+    `
 
-    const results = await renderSass({ data: sass, ...sassConfig })
-
-    expect(results.css.toString().trim()).toEqual(
-      '@font-face{font-family:"whatever";src:url("/custom/whatever.woff2")}'
-    )
+    await expect(compileSassString(sass))
+      .resolves
+      .toMatchObject({
+        css: outdent`
+          @font-face {
+            font-family: "whatever";
+            src: url("/custom/whatever.woff2");
+          }
+        `
+      })
   })
 })
