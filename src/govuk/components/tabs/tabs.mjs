@@ -14,7 +14,7 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * @param {Element} $module - HTML element to use for tabs
  */
 function Tabs ($module) {
-  if (!$module) {
+  if (!($module instanceof HTMLElement)) {
     return this
   }
 
@@ -266,7 +266,7 @@ Tabs.prototype.onTabClick = function (event) {
   var $currentTab = this.getCurrentTab()
   var $nextTab = event.currentTarget
 
-  if (!$currentTab || !$nextTab) {
+  if (!$currentTab || !($nextTab instanceof HTMLAnchorElement)) {
     return
   }
 

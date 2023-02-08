@@ -12,7 +12,7 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * @param {Element} $module - HTML element to use for radios
  */
 function Radios ($module) {
-  if (!$module) {
+  if (!($module instanceof HTMLElement)) {
     return this
   }
 

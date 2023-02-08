@@ -23,7 +23,7 @@ function ErrorSummary ($module, config) {
   // To avoid breaking further JavaScript initialisation
   // we need to safeguard against this so things keep
   // working the same now we read the elements data attributes
-  if (!$module) {
+  if (!($module instanceof HTMLElement)) {
     // Little safety in case code gets ported as-is
     // into and ES6 class constructor, where the return value matters
     return this
@@ -181,7 +181,7 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
 
       // If the input type is radio or checkbox, always use the legend if there
       // is one.
-      if ($input.type === 'checkbox' || $input.type === 'radio') {
+      if ($input instanceof HTMLInputElement && ($input.type === 'checkbox' || $input.type === 'radio')) {
         return $candidateLegend
       }
 

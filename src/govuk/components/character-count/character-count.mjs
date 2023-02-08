@@ -57,12 +57,12 @@ var CHARACTER_COUNT_TRANSLATIONS = {
  * @param {CharacterCountConfig} [config] - Character count config
  */
 function CharacterCount ($module, config) {
-  if (!$module) {
+  if (!($module instanceof HTMLElement)) {
     return this
   }
 
   var $textarea = $module.querySelector('.govuk-js-character-count')
-  if (!$textarea) {
+  if (!($textarea instanceof HTMLTextAreaElement || $textarea instanceof HTMLInputElement)) {
     return this
   }
 

@@ -16,7 +16,7 @@ var DEBOUNCE_TIMEOUT_IN_SECONDS = 1
  * @param {ButtonConfig} [config] - Button config
  */
 function Button ($module, config) {
-  if (!$module) {
+  if (!($module instanceof HTMLElement)) {
     return this
   }
 
@@ -66,7 +66,7 @@ Button.prototype.handleKeyDown = function (event) {
   }
 
   // Handle elements with [role="button"] only
-  if ($target.getAttribute('role') === 'button') {
+  if ($target instanceof HTMLElement && $target.getAttribute('role') === 'button') {
     event.preventDefault() // prevent the page from scrolling
     $target.click()
   }

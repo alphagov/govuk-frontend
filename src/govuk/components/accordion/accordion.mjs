@@ -42,7 +42,7 @@ var ACCORDION_TRANSLATIONS = {
  * @param {AccordionConfig} [config] - Accordion config
  */
 function Accordion ($module, config) {
-  if (!$module) {
+  if (!($module instanceof HTMLElement)) {
     return this
   }
 
@@ -284,7 +284,9 @@ Accordion.prototype.constructHeaderMarkup = function ($header, index) {
  */
 Accordion.prototype.onBeforeMatch = function (event) {
   var $fragment = event.target
-  if (!$fragment) {
+
+  // Handle elements with `.closest()` support only
+  if (!($fragment instanceof Element)) {
     return
   }
 
@@ -340,7 +342,7 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
   var $content = $section.querySelector('.' + this.sectionContentClass)
 
   if (!$showHideIcon ||
-    !$showHideText ||
+    !($showHideText instanceof HTMLElement) ||
     !$button ||
     !$content) {
     return
@@ -357,12 +359,12 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
   var ariaLabelParts = []
 
   var $headingText = $section.querySelector('.' + this.sectionHeadingTextClass)
-  if ($headingText) {
+  if ($headingText instanceof HTMLElement) {
     ariaLabelParts.push($headingText.innerText.trim())
   }
 
   var $summary = $section.querySelector('.' + this.sectionSummaryClass)
-  if ($summary) {
+  if ($summary instanceof HTMLElement) {
     ariaLabelParts.push($summary.innerText.trim())
   }
 
