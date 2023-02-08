@@ -129,6 +129,9 @@
     },
     "sass-convert": {
       "semver-regex": "^3"
+    },
+    "sassdoc-extras@^2": {
+      "marked": "^0.8.2"
     }
   }
 }
