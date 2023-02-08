@@ -260,19 +260,14 @@ Tabs.prototype.unsetAttributes = function ($tab) {
  * Handle tab link clicks
  *
  * @param {MouseEvent} event - Mouse click event
- * @returns {void | false} Returns void, or false within tab link
+ * @returns {void} Returns void
  */
 Tabs.prototype.onTabClick = function (event) {
   var $currentTab = this.getCurrentTab()
-  var $nextTab = event.target
+  var $nextTab = event.currentTarget
 
   if (!$currentTab || !$nextTab) {
     return
-  }
-
-  // Allow events on child DOM elements to bubble up to tab parent
-  if (!$nextTab.classList.contains('govuk-tabs__tab')) {
-    return false
   }
 
   event.preventDefault()
