@@ -1,6 +1,5 @@
 const { join } = require('path')
 
-const bodyParser = require('body-parser')
 const express = require('express')
 const app = express()
 const { marked } = require('marked')
@@ -86,7 +85,7 @@ module.exports = async (options) => {
   app.use('/vendor', middleware.vendor)
 
   // Turn form POSTs into data that can be used for validation.
-  app.use(bodyParser.urlencoded({ extended: true }))
+  app.use(express.urlencoded({ extended: true }))
 
   // Handle the banner component serverside.
   require('./banner')(app)
