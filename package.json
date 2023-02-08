@@ -115,6 +115,9 @@
     "glob-stream@^6": {
       "glob-parent": "^5"
     },
+    "latest-version@^5": {
+      "package-json": "^7"
+    },
     "postcss-unmq": {
       "postcss": "^7"
     },
