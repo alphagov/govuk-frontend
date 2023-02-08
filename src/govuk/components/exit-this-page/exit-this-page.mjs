@@ -1,21 +1,50 @@
 /* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
 
-import { nodeListForEach } from '../../common.mjs'
+import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { nodeListForEach, mergeConfigs, extractConfigByNamespace } from '../../common.mjs'
+import { I18n } from '../../i18n.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 import '../../vendor/polyfills/Element/prototype/dataset.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
+
+/**
+ * @constant
+ * @type {ExitThisPageTranslations}
+ * @see Default value for {@link ExitThisPageConfig.i18n}
+ * @default
+ */
+var EXIT_THIS_PAGE_TRANSLATIONS = {
+  keypressProgress: 'Exit this Page key press %{press} of 3',
+  keypressComplete: 'Exit this page activated',
+  helpText: 'press <kbd>Shift</kbd> 3 times<span class="govuk-visually-hidden"> to exit the page</span>'
+}
 
 /**
  * JavaScript functionality for the Exit this Page component
  *
  * @class
  * @param {HTMLElement} $module - HTML element that wraps the EtP button
+ * @param {ExitThisPageConfig} [config] - Exit this Page config
  */
-function ExitThisPage ($module) {
+function ExitThisPage ($module, config) {
   this.$module = $module
+
+  var defaultConfig = {
+    i18n: EXIT_THIS_PAGE_TRANSLATIONS
+  }
+
+  this.config = mergeConfigs(
+    defaultConfig,
+    config || {},
+    normaliseDataset($module.dataset)
+  )
+
+  this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'))
+
   this.$button = $module.querySelector('.govuk-exit-this-page__button')
   this.$skiplinkButton = document.querySelector('.govuk-js-exit-this-page-skiplink')
   this.$updateSpan = null
+  this.$helpTextSpan = null
   this.$indicatorContainer = null
   this.$overlay = null
   this.escCounter = 0
@@ -29,10 +58,21 @@ function ExitThisPage ($module) {
  */
 ExitThisPage.prototype.initUpdateSpan = function () {
   this.$updateSpan = document.createElement('span')
+  this.$updateSpan.className = 'govuk-visually-hidden'
   this.$updateSpan.setAttribute('aria-live', 'polite')
-  this.$updateSpan.setAttribute('class', 'govuk-visually-hidden')
 
   this.$button.appendChild(this.$updateSpan)
+}
+
+/**
+ * Create the <span> and text advising the user of the keyboard shortcut.
+ */
+ExitThisPage.prototype.initHelpText = function () {
+  this.$helpTextSpan = document.createElement('div')
+  this.$helpTextSpan.className = 'govuk-exit-this-page__help'
+  this.$helpTextSpan.innerHTML = this.i18n.t('helpText')
+
+  this.$module.appendChild(this.$helpTextSpan)
 }
 
 /**
@@ -146,10 +186,12 @@ ExitThisPage.prototype.handleEscKeypress = function (e) {
 
     if (this.escCounter >= 3) {
       this.escCounter = 0
-      this.$updateSpan.innerText = 'Exit this page activated'
+      this.$updateSpan.innerText = this.i18n.t('keypressComplete')
       this.exitPage()
     } else {
-      this.$updateSpan.innerText = 'Exit this Page key press ' + this.escCounter + ' of 3'
+      this.$updateSpan.innerText = this.i18n.t('keypressProgress', {
+        press: this.escCounter
+      })
     }
 
     this.setEscTimer()
@@ -211,6 +253,7 @@ ExitThisPage.prototype.syncOverlayVisibility = function () {
  */
 ExitThisPage.prototype.init = function () {
   this.buildIndicator()
+  this.initHelpText()
   this.initUpdateSpan()
   this.initButtonClickHandler()
 
@@ -231,3 +274,25 @@ ExitThisPage.prototype.init = function () {
 }
 
 export default ExitThisPage
+
+/**
+ * Exit this Page config
+ *
+ * @typedef {object} ExitThisPageConfig
+ * @property {ExitThisPageTranslations} [i18n = EXIT_THIS_PAGE_TRANSLATIONS] - See constant {@link EXIT_THIS_PAGE_TRANSLATIONS}
+ */
+
+/**
+ * Exit this Page translations
+ *
+ * @typedef {object} ExitThisPageTranslations
+ *
+ * Messages used by the component programatically inserted text, including help
+ * text and screen reader announcements.
+ * @property {string} [helpText] - The text content for the keyboard help text
+ * displayed beneath the button.
+ * @property {string} [keypressProgress] - The text announced by screen readers
+ * when the user activates each step of the keyboard shortcut.
+ * @property {string} [keypressComplete] - The text announced by screen readers
+ * when the user completes the keyboard shortcut.
+ */

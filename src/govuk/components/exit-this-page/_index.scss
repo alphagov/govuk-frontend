@@ -13,6 +13,8 @@
 
     @include govuk-media-query($from: tablet) {
       display: inline-block;
+      display: inline-flex;
+      flex-direction: column;
       right: 0;
       left: auto;
       width: auto;
@@ -63,6 +65,28 @@
 
     @include govuk-if-ie8 {
       background-color: govuk-colour("white");
+    }
+  }
+
+  .govuk-exit-this-page__help {
+    @include govuk-responsive-padding(2);
+    @include govuk-font($size: 16);
+    display: none;
+    border: 1px solid $govuk-border-colour;
+    border-top: none;
+    background-color: govuk-colour("white");
+    text-align: center;
+
+    kbd {
+      @include govuk-font($size: 16);
+      display: inline-block;
+      padding: 0 govuk-spacing(1);
+      border: 1px solid $govuk-border-colour;
+      border-radius: 4px;
+    }
+
+    @include mq($from: tablet) {
+      display: block;
     }
   }
 
