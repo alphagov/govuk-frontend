@@ -109,6 +109,12 @@
     "wait-on": "^7.0.1"
   },
   "overrides": {
+    "chokidar@^2": {
+      "glob-parent": "^5"
+    },
+    "glob-stream@^6": {
+      "glob-parent": "^5"
+    },
     "postcss-unmq": {
       "postcss": "^7"
     },
