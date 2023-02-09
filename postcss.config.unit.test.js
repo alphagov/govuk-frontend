@@ -117,7 +117,6 @@ describe('PostCSS config', () => {
               'postcss-merge-rules',
               'postcss-discard-empty',
               'postcss-unique-selectors',
-              'css-declaration-sorter',
               'cssnano-util-raw-cache'
             ])
         }
@@ -170,7 +169,6 @@ describe('PostCSS config', () => {
               'postcss-merge-rules',
               'postcss-discard-empty',
               'postcss-unique-selectors',
-              'css-declaration-sorter',
               'cssnano-util-raw-cache'
             ])
         }
@@ -221,7 +219,6 @@ describe('PostCSS config', () => {
               'postcss-merge-rules',
               'postcss-discard-empty',
               'postcss-unique-selectors',
-              'css-declaration-sorter',
               'cssnano-util-raw-cache'
             ])
         }
@@ -292,7 +289,6 @@ describe('PostCSS config', () => {
               'postcss-merge-rules',
               'postcss-discard-empty',
               'postcss-unique-selectors',
-              'css-declaration-sorter',
               'cssnano-util-raw-cache'
             ])
         }

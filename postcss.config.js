@@ -2,6 +2,7 @@ const { parse } = require('path')
 
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
+const cssnanoPresetDefault = require('cssnano-preset-default')
 const { minimatch } = require('minimatch')
 const pseudoclasses = require('postcss-pseudo-classes')
 const unmq = require('postcss-unmq')
@@ -54,7 +55,13 @@ module.exports = ({ env, file = '' }) => {
   }
 
   // Always minify CSS
-  plugins.push(cssnano())
+  plugins.push(cssnano({
+    preset: [cssnanoPresetDefault, {
+      // Sorted CSS is smaller when gzipped, but we sort using Stylelint
+      // https://cssnano.co/docs/optimisations/cssdeclarationsorter/
+      cssDeclarationSorter: false
+    }]
+  }))
 
   return {
     plugins
