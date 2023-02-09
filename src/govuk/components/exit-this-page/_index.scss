@@ -2,27 +2,26 @@
 
 @include govuk-exports("govuk/component/exit-this-page") {
   .govuk-exit-this-page {
+    @include govuk-responsive-padding(8, "bottom");
     z-index: 1000;
     top: 0;
     left: 0;
     width: 100%;
-    @supports (position: sticky) {
-      @include govuk-responsive-padding(8, "bottom");
-      position: sticky;
-    }
 
     @include govuk-media-query($from: tablet) {
-      display: inline-block;
-      display: inline-flex;
-      flex-direction: column;
       right: 0;
       left: auto;
       width: auto;
       float: right;
     }
+
+    @supports (position: sticky) {
+      position: sticky;
+    }
   }
 
   .govuk-exit-this-page__button {
+    width: 100%;
     margin-bottom: 0;
   }
 
@@ -85,7 +84,7 @@
       border-radius: 4px;
     }
 
-    @include mq($from: tablet) {
+    @include govuk-media-query($from: tablet) {
       display: block;
     }
   }
