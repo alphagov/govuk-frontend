@@ -107,5 +107,31 @@
     "stylelint-order": "^6.0.1",
     "vinyl": "^3.0.0",
     "wait-on": "^7.0.1"
+  },
+  "overrides": {
+    "chokidar@^2": {
+      "glob-parent": "^5"
+    },
+    "glob-stream@^6": {
+      "glob-parent": "^5"
+    },
+    "latest-version@^5": {
+      "package-json": "^7"
+    },
+    "postcss-unmq": {
+      "postcss": "^7"
+    },
+    "postcss-unopacity": {
+      "postcss": "^7"
+    },
+    "postcss-unrgba": {
+      "postcss": "^7"
+    },
+    "sass-convert": {
+      "semver-regex": "^3"
+    },
+    "sassdoc-extras@^2": {
+      "marked": "^0.8.2"
+    }
   }
 }
