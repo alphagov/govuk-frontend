@@ -47,6 +47,7 @@ notes: >-
 {% endblock %}
 
 {% block content %}
+<form method="get" novalidate>
   <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
 
   {{ govukInput({
@@ -96,7 +97,7 @@ notes: >-
         }) }}
 
         {{ govukButton({
-            text: "Update filters"
+          text: "Update filters"
         }) }}
       </form>
     </div>
@@ -190,4 +191,5 @@ notes: >-
       }) }}
     </div>
   </div>
+</form>
 {% endblock %}
