@@ -6,12 +6,14 @@ module.exports = function (app) {
   // Detect if banner should be shown based on cookies set
   app.use(cookieParser())
   app.use(function (request, response, next) {
-    if ('hide-banner' in request.query) {
+    const { query, cookies } = request
+
+    if (query.has('hide-banner')) {
       app.locals.shouldShowAppBanner = false
       return next()
     }
 
-    const cookie = request.cookies[BANNER_COOKIE_NAME]
+    const cookie = cookies[BANNER_COOKIE_NAME]
 
     if (cookie === 'yes') {
       app.locals.shouldShowAppBanner = false

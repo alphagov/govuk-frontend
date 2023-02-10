@@ -50,13 +50,14 @@ module.exports = async (options) => {
 
   // Share feature flags with middleware
   env.addGlobal('flags', flags)
-  app.set('flags', flags)
 
   // make the function available as a filter for all templates
   env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
   env.addGlobal('markdown', marked)
 
-  // Set view engine
+  // Set up Express.js
+  app.set('flags', flags)
+  app.set('query parser', (query) => new URLSearchParams(query))
   app.set('view engine', 'njk')
 
   // Disallow search index indexing
@@ -92,12 +93,11 @@ module.exports = async (options) => {
 
   // Define middleware for all routes
   app.use('*', function (request, response, next) {
-    response.locals.legacy = (request.query.legacy === '1' || request.query.legacy === 'true')
-    if (response.locals.legacy) {
-      response.locals.legacyQuery = '?legacy=' + request.query.legacy
-    } else {
-      response.locals.legacyQuery = ''
-    }
+    const { query } = request
+
+    response.locals.legacy = ['1', 'true'].includes(query.get('legacy'))
+    response.locals.legacyQuery = response.locals.legacy ? '?legacy=true' : ''
+
     next()
   })
 
@@ -179,7 +179,7 @@ module.exports = async (options) => {
     )
 
     let bodyClasses = ''
-    if (req.query.iframe) {
+    if (req.query.has('iframe')) {
       bodyClasses = 'app-iframe-in-component-preview'
     }
 
