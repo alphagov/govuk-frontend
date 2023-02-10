@@ -64,21 +64,12 @@ module.exports = async (options) => {
   app.use('/docs', middleware.docs)
   app.use('/vendor', middleware.vendor)
   app.use(middleware.assets)
+  app.use(middleware.legacy)
   app.use(middleware.request)
   app.use(middleware.robots)
 
   // Handle the banner component serverside.
   require('./banner')(app)
-
-  // Define middleware for all routes
-  app.use('*', function (request, response, next) {
-    const { query } = request
-
-    response.locals.legacy = ['1', 'true'].includes(query.get('legacy'))
-    response.locals.legacyQuery = response.locals.legacy ? '?legacy=true' : ''
-
-    next()
-  })
 
   // Define routes
 
