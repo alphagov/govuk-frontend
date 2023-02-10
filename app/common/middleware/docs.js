@@ -1,6 +1,6 @@
 const express = require('express')
 
-const configPaths = require('../../config/paths')
+const configPaths = require('../../../config/paths')
 const router = express.Router()
 
 /**

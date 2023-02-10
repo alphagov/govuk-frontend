@@ -9,7 +9,7 @@ const configPaths = require('../config/paths')
 const { getDirectories, getComponentsData, getFullPageExamples } = require('../lib/file-helper')
 const helperFunctions = require('../lib/helper-functions')
 
-const middleware = require('./middleware/index')
+const middleware = require('./common/middleware/index')
 
 const { HEROKU_APP } = process.env
 
@@ -80,9 +80,9 @@ module.exports = async (options) => {
   })
 
   // Set up middleware
-  app.use(middleware.assets)
   app.use('/docs', middleware.docs)
   app.use('/vendor', middleware.vendor)
+  app.use(middleware.assets)
 
   // Turn form POSTs into data that can be used for validation.
   app.use(express.urlencoded({ extended: true }))

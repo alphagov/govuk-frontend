@@ -1,6 +1,6 @@
 const express = require('express')
 
-const { packageNameToPath } = require('../../lib/helper-functions')
+const { packageNameToPath } = require('../../../lib/helper-functions')
 
 const router = express.Router()
 
