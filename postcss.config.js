@@ -18,15 +18,9 @@ const unrgba = require('postcss-unrgba')
 module.exports = (ctx) => {
   const plugins = []
 
-  // PostCSS 'from' source path
+  // PostCSS 'from' (or webpack 'file') source path
   // https://github.com/postcss/postcss-load-config#options
-  const file = ctx.from || ctx.file || ''
-
-  // Handle non-standard `file` source path
-  const { dir, name } = parse(typeof file === 'object'
-    ? file.path // Vinyl file object (Gulp)
-    : file
-  )
+  const { dir, name } = parse(ctx.from || ctx.file || '')
 
   // IE8 stylesheets
   const isIE8 = name?.endsWith('-ie8') || name?.endsWith('-ie8.min')

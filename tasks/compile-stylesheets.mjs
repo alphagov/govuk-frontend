@@ -3,6 +3,9 @@ import { promisify } from 'util'
 
 import { render } from 'node-sass'
 import PluginError from 'plugin-error'
+import postcss from 'postcss'
+// eslint-disable-next-line import/default
+import postcssrc from 'postcss-load-config'
 
 import { paths, pkg } from '../config/index.js'
 import { getListing } from '../lib/file-helper.js'
@@ -40,7 +43,7 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath }]) {
   const moduleDestPath = join(destPath, getPathByDestination(modulePath))
 
   // Render Sass
-  const result = await sassRender({
+  const { css, map } = await sassRender({
     file: moduleSrcPath,
     outFile: moduleDestPath,
 
@@ -54,6 +57,19 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath }]) {
       paths.node_modules
     ]
   })
+
+  const options = {
+    from: moduleSrcPath,
+    to: moduleDestPath,
+    map: {
+      inline: false,
+      prev: map.toString()
+    }
+  }
+
+  // Transform with PostCSS
+  const config = await postcssrc(options)
+  const result = await postcss(config.plugins).process(css, options)
 
   // Write to files
   return writeAsset(moduleDestPath, result)
