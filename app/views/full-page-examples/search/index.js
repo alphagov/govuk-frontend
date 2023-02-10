@@ -16,15 +16,17 @@ module.exports = (app) => {
       const shuffledDocuments = shuffleSeed.shuffle(documents, seed)
 
       const total = '128124'
+
       // Shuffle the total based on the query string
       const randomizedTotal = shuffleSeed.shuffle(total.split(''), seed).join('')
-      // Make the total more readable
-      const formattedTotal = randomizedTotal.substring(0, 3) + ',' + randomizedTotal.substring(3)
 
       response.render('./full-page-examples/search/index', {
-        total: formattedTotal,
         documents: shuffledDocuments,
         order: query.get('order'),
+
+        // Make the total more readable
+        total: Number(randomizedTotal)
+          .toLocaleString('en', { useGrouping: true }),
 
         // In production this should be sanitized
         values: Object.fromEntries(query)
