@@ -60,31 +60,12 @@ module.exports = async (options) => {
   app.set('query parser', (query) => new URLSearchParams(query))
   app.set('view engine', 'njk')
 
-  // Disallow search index indexing
-  app.use(function (req, res, next) {
-    // none - Equivalent to noindex, nofollow
-    // noindex - Do not show this page in search results and do not show a
-    //   "Cached" link in search results.
-    // nofollow - Do not follow the links on this page
-    res.setHeader('X-Robots-Tag', 'none')
-    next()
-  })
-
-  // Ensure robots are still able to crawl the pages.
-  //
-  // This might seem like a mistake, but it's not. If a page is blocked by
-  // robots.txt, the crawler will never see the noindex directive, and so the
-  // page can still appear in search results.
-  app.get('/robots.txt', function (req, res) {
-    res.type('text/plain')
-    res.send('User-agent: *\nAllow: /')
-  })
-
   // Set up middleware
   app.use('/docs', middleware.docs)
   app.use('/vendor', middleware.vendor)
   app.use(middleware.assets)
   app.use(middleware.request)
+  app.use(middleware.robots)
 
   // Handle the banner component serverside.
   require('./banner')(app)
