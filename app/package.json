@@ -32,6 +32,7 @@
     "shuffle-seed": "^1.1.6"
   },
   "devDependencies": {
-    "cheerio": "^1.0.0-rc.12"
+    "cheerio": "^1.0.0-rc.12",
+    "supertest": "^6.3.3"
   }
 }

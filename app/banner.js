@@ -1,10 +1,7 @@
-const cookieParser = require('cookie-parser')
-
 const BANNER_COOKIE_NAME = 'dismissed-app-banner'
 
 module.exports = function (app) {
   // Detect if banner should be shown based on cookies set
-  app.use(cookieParser())
   app.use(function (request, response, next) {
     const { query, cookies } = request
 

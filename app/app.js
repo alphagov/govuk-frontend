@@ -84,9 +84,7 @@ module.exports = async (options) => {
   app.use('/docs', middleware.docs)
   app.use('/vendor', middleware.vendor)
   app.use(middleware.assets)
-
-  // Turn form POSTs into data that can be used for validation.
-  app.use(express.urlencoded({ extended: true }))
+  app.use(middleware.request)
 
   // Handle the banner component serverside.
   require('./banner')(app)
