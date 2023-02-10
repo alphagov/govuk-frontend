@@ -47,6 +47,7 @@ notes: >-
 {% endblock %}
 
 {% block content %}
+<form method="get" novalidate>
   <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
 
   {{ govukInput({
@@ -57,7 +58,7 @@ notes: >-
     id: "search",
     name: "search",
     classes: "govuk-!-width-two-thirds",
-    value: "driving"
+    value: values.search
   }) }}
 
   <div class="govuk-grid-row">
@@ -81,24 +82,22 @@ notes: >-
           items: [
             {
               value: "hmrc",
-              text: "HM Revenue and Customs (HMRC)",
-              checked: values["organisation"]|length and "hmrc" in values["organisation"]
+              text: "HM Revenue and Customs (HMRC)"
             },
             {
               value: "employment-tribunal",
-              text: "Employment Tribunal",
-              checked: values["organisation"]|length and "employment-tribunal" in values["organisation"]
+              text: "Employment Tribunal"
             },
             {
               value: "mod",
-              text: "Ministry of Defence",
-              checked: values["organisation"]|length and "mod" in values["organisation"]
+              text: "Ministry of Defence"
             }
-          ]
+          ],
+          values: values["organisation"]
         }) }}
 
         {{ govukButton({
-            text: "Update filters"
+          text: "Update filters"
         }) }}
       </form>
     </div>
@@ -110,24 +109,28 @@ notes: >-
       <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-3">
       <div class="app-search-result-sort">
         {{ govukSelect({
-          id: "sort",
-          name: "sort",
+          id: "order",
+          name: "order",
+          value: values.order,
           classes: "app-search-result-sort",
           label: {
             text: "Sort by"
           },
           items: [
             {
+              value: "most-viewed",
+              text: "Most viewed"
+            },
+            {
               value: "relevance",
               text: "Relevance"
             },
             {
-              value: "updated-new",
-              text: "Updated (newest)",
-              selected: true
+              value: "updated-newest",
+              text: "Updated (newest)"
             },
             {
-              value: "updated-old",
+              value: "updated-oldest",
               text: "Updated (oldest)"
             }
           ]
@@ -188,4 +191,5 @@ notes: >-
       }) }}
     </div>
   </div>
+</form>
 {% endblock %}

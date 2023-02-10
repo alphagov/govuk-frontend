@@ -338,21 +338,21 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
         const body = await response.text()
         const $ = cheerio.load(body)
         // Check the results are correct
-        expect($.html()).toContain('822,411 results')
+        expect($.html()).toContain('121,842 results')
       })
       it('should show sorted results when selected', async () => {
         const response = await fetchPath('search?order=updated-newest')
         const body = await response.text()
         const $ = cheerio.load(body)
         // Check the results are correct
-        expect($.html()).toContain('142,218 results')
+        expect($.html()).toContain('821,124 results')
       })
       it('should show organisation results when selected', async () => {
         const response = await fetchPath('search?order=updated-newest&organisation=hmrc')
         const body = await response.text()
         const $ = cheerio.load(body)
         // Check the results are correct
-        expect($.html()).toContain('421,182 results')
+        expect($.html()).toContain('212,418 results')
       })
     })
 

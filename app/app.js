@@ -1,6 +1,5 @@
 const { join } = require('path')
 
-const bodyParser = require('body-parser')
 const express = require('express')
 const app = express()
 const { marked } = require('marked')
@@ -10,7 +9,7 @@ const configPaths = require('../config/paths')
 const { getDirectories, getComponentsData, getFullPageExamples } = require('../lib/file-helper')
 const helperFunctions = require('../lib/helper-functions')
 
-const middleware = require('./middleware/index')
+const middleware = require('./common/middleware/index')
 
 const { HEROKU_APP } = process.env
 
@@ -51,56 +50,26 @@ module.exports = async (options) => {
 
   // Share feature flags with middleware
   env.addGlobal('flags', flags)
-  app.set('flags', flags)
 
   // make the function available as a filter for all templates
   env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
   env.addGlobal('markdown', marked)
 
-  // Set view engine
+  // Set up Express.js
+  app.set('flags', flags)
+  app.set('query parser', (query) => new URLSearchParams(query))
   app.set('view engine', 'njk')
 
-  // Disallow search index indexing
-  app.use(function (req, res, next) {
-    // none - Equivalent to noindex, nofollow
-    // noindex - Do not show this page in search results and do not show a
-    //   "Cached" link in search results.
-    // nofollow - Do not follow the links on this page
-    res.setHeader('X-Robots-Tag', 'none')
-    next()
-  })
-
-  // Ensure robots are still able to crawl the pages.
-  //
-  // This might seem like a mistake, but it's not. If a page is blocked by
-  // robots.txt, the crawler will never see the noindex directive, and so the
-  // page can still appear in search results.
-  app.get('/robots.txt', function (req, res) {
-    res.type('text/plain')
-    res.send('User-agent: *\nAllow: /')
-  })
-
   // Set up middleware
-  app.use(middleware.assets)
   app.use('/docs', middleware.docs)
   app.use('/vendor', middleware.vendor)
-
-  // Turn form POSTs into data that can be used for validation.
-  app.use(bodyParser.urlencoded({ extended: true }))
+  app.use(middleware.assets)
+  app.use(middleware.legacy)
+  app.use(middleware.request)
+  app.use(middleware.robots)
 
   // Handle the banner component serverside.
   require('./banner')(app)
-
-  // Define middleware for all routes
-  app.use('*', function (request, response, next) {
-    response.locals.legacy = (request.query.legacy === '1' || request.query.legacy === 'true')
-    if (response.locals.legacy) {
-      response.locals.legacyQuery = '?legacy=' + request.query.legacy
-    } else {
-      response.locals.legacyQuery = ''
-    }
-    next()
-  })
 
   // Define routes
 
@@ -180,7 +149,7 @@ module.exports = async (options) => {
     )
 
     let bodyClasses = ''
-    if (req.query.iframe) {
+    if (req.query.has('iframe')) {
       bodyClasses = 'app-iframe-in-component-preview'
     }
 
