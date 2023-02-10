@@ -12,23 +12,29 @@ const unrgba = require('postcss-unrgba')
 /**
  * PostCSS config
  *
- * @param {object} context - PostCSS context
- * @param {string} context.env - Browserslist environment
- * @param {string | import('vinyl')} [context.file] - File path or object
+ * @param {import('postcss-load-config').ConfigContext} ctx - PostCSS context
  * @returns {import('postcss-load-config').Config} PostCSS config
  */
-module.exports = ({ env, file = '' }) => {
+module.exports = (ctx) => {
+  const plugins = []
+
+  // PostCSS 'from' source path
+  // https://github.com/postcss/postcss-load-config#options
+  const file = ctx.from || ctx.file || ''
+
+  // Handle non-standard `file` source path
   const { dir, name } = parse(typeof file === 'object'
-    ? file.path // Normalise to string path
+    ? file.path // Vinyl file object (Gulp)
     : file
   )
 
   // IE8 stylesheets
-  const isIE8 = name.endsWith('-ie8') || name.endsWith('-ie8.min')
+  const isIE8 = name?.endsWith('-ie8') || name?.endsWith('-ie8.min')
 
-  const plugins = [
-    autoprefixer({ env: isIE8 ? 'oldie' : env })
-  ]
+  // Add vendor prefixes
+  plugins.push(autoprefixer({
+    env: isIE8 ? 'oldie' : ctx.env
+  }))
 
   // Add review app auto-generated 'companion' classes for each pseudo-class
   // For example ':hover' and ':focus' classes to simulate form label states
