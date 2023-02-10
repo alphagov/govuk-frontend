@@ -25,14 +25,14 @@ You can mention the warnings in the release notes to help users understand if th
 For example:
 
 > If you import specific files from the core or overrides layers, you’ll now see a deprecation warning when compiling Sass if you do not import `node_modules/govuk-frontend/govuk/base` first.
-> 
+>
 > To fix the warning, import `node_modules/govuk-frontend/govuk/base` first. For example:
-> 
+>
 > ```scss
 > @import "node_modules/govuk-frontend/govuk/base";
 > @import "node_modules/govuk-frontend/core/typography";
 > ```
-> 
+>
 > If you do not import `node_modules/govuk-frontend/govuk/base` first, your service will no longer work from GOV.UK Frontend v4.0.0.
 
 ### Make sure we remember to remove the deprecated feature

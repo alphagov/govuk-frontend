@@ -1,0 +1,24 @@
+# Temporary only
+.cache/
+.tmp/
+
+# Node.js modules
+node_modules/
+
+# Test coverage
+coverage/
+
+# Build output
+jsdoc/
+public/
+sassdoc/
+
+# Build output (committed)
+dist/
+package/
+
+# 3rd party vendor code
+vendor/
+
+# Files to ignore
+package-lock.json

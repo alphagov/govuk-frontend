@@ -12,6 +12,7 @@ module.exports = {
   //
   // https://github.com/okonet/lint-staged#how-can-i-ignore-files-from-eslintignore
   '*.{cjs,js,mjs}': filterTask('npm run lint:js:cli -- --fix'),
+  '*.{json,md,yaml,yml}': 'npm run lint:prettier:cli -- --write',
   '*.scss': 'npm run lint:scss:cli -- --fix --allow-empty-input'
 }
 

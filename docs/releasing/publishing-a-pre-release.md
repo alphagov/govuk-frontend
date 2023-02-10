@@ -5,6 +5,7 @@ This pre-release guidance is aimed at Design System team members. If you're an e
 Before you publish a pre-release, you need to have committed a code change to GOV.UK Frontend. Then follow these instructions.
 
 Use pre-releases when you:
+
 - [work on developing a component or pattern](https://design-system.service.gov.uk/community/develop-a-component-or-pattern/) for the GOV.UK Design System
 - want to trial an experimental feature (guidance on trialing experimental features is in development)
 
