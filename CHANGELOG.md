@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Fixes
+
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#3272: Add empty alt attribute to logo IE8 fallback PNG](https://github.com/alphagov/govuk-frontend/pull/3272)
+
 ## 4.5.0 (Feature release)
 
 ### New features
