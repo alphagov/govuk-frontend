@@ -10,7 +10,7 @@ import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target norm
  * @param {NotificationBannerConfig} [config] - Notification banner config
  */
 function NotificationBanner ($module, config) {
-  if (!$module) {
+  if (!($module instanceof HTMLElement)) {
     return this
   }
 
@@ -20,6 +20,7 @@ function NotificationBanner ($module, config) {
     disableAutoFocus: false
   }
 
+  /** @type {NotificationBannerConfig} */
   this.config = mergeConfigs(
     defaultConfig,
     config || {},

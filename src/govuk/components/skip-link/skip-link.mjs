@@ -11,7 +11,7 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * @param {Element} $module - HTML element to use for skip link
  */
 function SkipLink ($module) {
-  if (!$module) {
+  if (!($module instanceof HTMLAnchorElement)) {
     return this
   }
 

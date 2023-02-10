@@ -14,11 +14,11 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * @param {Element} $module - HTML element to use for tabs
  */
 function Tabs ($module) {
-  if (!$module) {
+  if (!($module instanceof HTMLElement)) {
     return this
   }
 
-  var $tabs = $module.querySelectorAll('.govuk-tabs__tab')
+  var $tabs = $module.querySelectorAll('a.govuk-tabs__tab')
   if (!$tabs.length) {
     return this
   }
@@ -123,7 +123,7 @@ Tabs.prototype.teardown = function () {
   var $module = this.$module
   var $tabs = this.$tabs
   var $tabList = $module.querySelector('.govuk-tabs__list')
-  var $tabListItems = $module.querySelectorAll('.govuk-tabs__list-item')
+  var $tabListItems = $module.querySelectorAll('a.govuk-tabs__list-item')
 
   if (!$tabs || !$tabList || !$tabListItems) {
     return
@@ -204,7 +204,7 @@ Tabs.prototype.showTab = function ($tab) {
  * @returns {HTMLAnchorElement | null} Tab link
  */
 Tabs.prototype.getTab = function (hash) {
-  return this.$module.querySelector('.govuk-tabs__tab[href="' + hash + '"]')
+  return this.$module.querySelector('a.govuk-tabs__tab[href="' + hash + '"]')
 }
 
 /**
@@ -266,7 +266,7 @@ Tabs.prototype.onTabClick = function (event) {
   var $currentTab = this.getCurrentTab()
   var $nextTab = event.currentTarget
 
-  if (!$currentTab || !$nextTab) {
+  if (!$currentTab || !($nextTab instanceof HTMLAnchorElement)) {
     return
   }
 
@@ -337,7 +337,7 @@ Tabs.prototype.activateNextTab = function () {
     return
   }
 
-  var $nextTab = $nextTabListItem.querySelector('.govuk-tabs__tab')
+  var $nextTab = $nextTabListItem.querySelector('a.govuk-tabs__tab')
   if (!$nextTab) {
     return
   }
@@ -362,7 +362,7 @@ Tabs.prototype.activatePreviousTab = function () {
     return
   }
 
-  var $previousTab = $previousTabListItem.querySelector('.govuk-tabs__tab')
+  var $previousTab = $previousTabListItem.querySelector('a.govuk-tabs__tab')
   if (!$previousTab) {
     return
   }
@@ -447,7 +447,7 @@ Tabs.prototype.highlightTab = function ($tab) {
  * @returns {HTMLAnchorElement | null} Tab link
  */
 Tabs.prototype.getCurrentTab = function () {
-  return this.$module.querySelector('.govuk-tabs__list-item--selected .govuk-tabs__tab')
+  return this.$module.querySelector('.govuk-tabs__list-item--selected a.govuk-tabs__tab')
 }
 
 /**

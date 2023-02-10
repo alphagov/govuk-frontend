@@ -22,7 +22,7 @@ import '../../vendor/polyfills/Element.mjs'
  * @param {Element} $module - HTML element to use for component
  */
 function Example ($module) {
-  if (!$module) {
+  if (!($module instanceof HTMLElement)) {
     return this
   }
 

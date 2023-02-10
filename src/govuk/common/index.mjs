@@ -67,6 +67,7 @@ export function mergeConfigs (/* configObject1, configObject2, ...configObjects 
    */
   var flattenObject = function (configObject) {
     // Prepare an empty return object
+    /** @type {Object<string, unknown>} */
     var flattenedObject = {}
 
     /**
@@ -103,6 +104,7 @@ export function mergeConfigs (/* configObject1, configObject2, ...configObjects 
   }
 
   // Start with an empty object as our base
+  /** @type {Object<string, unknown>} */
   var formattedConfigObject = {}
 
   // Loop through each of the remaining passed objects and push their keys
@@ -140,6 +142,7 @@ export function extractConfigByNamespace (configObject, namespace) {
     throw new Error('Provide a `namespace` of type "string" to filter the `configObject` by.')
   }
 
+  /** @type {Object<string, unknown>} */
   var newObject = {}
 
   for (var key in configObject) {
