@@ -6,7 +6,11 @@ describe('PostCSS config', () => {
   let env
 
   function getPluginNames ({ plugins }) {
-    return plugins.map(({ postcssPlugin }) => postcssPlugin)
+    return plugins.flatMap(getPluginName)
+  }
+
+  function getPluginName ({ plugins, postcssPlugin }) {
+    return plugins ? getPluginNames({ plugins }) : postcssPlugin
   }
 
   beforeAll(() => {
@@ -86,7 +90,34 @@ describe('PostCSS config', () => {
           expect(getPluginNames(config))
             .toEqual([
               'autoprefixer',
-              'cssnano'
+              'postcss-discard-comments',
+              'postcss-minify-gradients',
+              'postcss-reduce-initial',
+              'postcss-svgo',
+              'postcss-normalize-display-values',
+              'postcss-reduce-transforms',
+              'postcss-colormin',
+              'postcss-normalize-timing-functions',
+              'postcss-calc',
+              'postcss-convert-values',
+              'postcss-ordered-values',
+              'postcss-minify-selectors',
+              'postcss-minify-params',
+              'postcss-normalize-charset',
+              'postcss-discard-overridden',
+              'postcss-normalize-string',
+              'postcss-normalize-unicode',
+              'postcss-minify-font-values',
+              'postcss-normalize-url',
+              'postcss-normalize-repeat-style',
+              'postcss-normalize-positions',
+              'postcss-normalize-whitespace',
+              'postcss-merge-longhand',
+              'postcss-discard-duplicates',
+              'postcss-merge-rules',
+              'postcss-discard-empty',
+              'postcss-unique-selectors',
+              'cssnano-util-raw-cache'
             ])
         }
       })
@@ -111,7 +142,34 @@ describe('PostCSS config', () => {
               'postcss-unmq',
               'postcss-unopacity',
               'postcss-color-rgba-fallback',
-              'cssnano'
+              'postcss-discard-comments',
+              'postcss-minify-gradients',
+              'postcss-reduce-initial',
+              'postcss-svgo',
+              'postcss-normalize-display-values',
+              'postcss-reduce-transforms',
+              'postcss-colormin',
+              'postcss-normalize-timing-functions',
+              'postcss-calc',
+              'postcss-convert-values',
+              'postcss-ordered-values',
+              'postcss-minify-selectors',
+              'postcss-minify-params',
+              'postcss-normalize-charset',
+              'postcss-discard-overridden',
+              'postcss-normalize-string',
+              'postcss-normalize-unicode',
+              'postcss-minify-font-values',
+              'postcss-normalize-url',
+              'postcss-normalize-repeat-style',
+              'postcss-normalize-positions',
+              'postcss-normalize-whitespace',
+              'postcss-merge-longhand',
+              'postcss-discard-duplicates',
+              'postcss-merge-rules',
+              'postcss-discard-empty',
+              'postcss-unique-selectors',
+              'cssnano-util-raw-cache'
             ])
         }
       })
@@ -134,7 +192,34 @@ describe('PostCSS config', () => {
             .toEqual([
               'autoprefixer',
               'postcss-pseudo-classes',
-              'cssnano'
+              'postcss-discard-comments',
+              'postcss-minify-gradients',
+              'postcss-reduce-initial',
+              'postcss-svgo',
+              'postcss-normalize-display-values',
+              'postcss-reduce-transforms',
+              'postcss-colormin',
+              'postcss-normalize-timing-functions',
+              'postcss-calc',
+              'postcss-convert-values',
+              'postcss-ordered-values',
+              'postcss-minify-selectors',
+              'postcss-minify-params',
+              'postcss-normalize-charset',
+              'postcss-discard-overridden',
+              'postcss-normalize-string',
+              'postcss-normalize-unicode',
+              'postcss-minify-font-values',
+              'postcss-normalize-url',
+              'postcss-normalize-repeat-style',
+              'postcss-normalize-positions',
+              'postcss-normalize-whitespace',
+              'postcss-merge-longhand',
+              'postcss-discard-duplicates',
+              'postcss-merge-rules',
+              'postcss-discard-empty',
+              'postcss-unique-selectors',
+              'cssnano-util-raw-cache'
             ])
         }
       })
@@ -177,7 +262,34 @@ describe('PostCSS config', () => {
               'postcss-unmq',
               'postcss-unopacity',
               'postcss-color-rgba-fallback',
-              'cssnano'
+              'postcss-discard-comments',
+              'postcss-minify-gradients',
+              'postcss-reduce-initial',
+              'postcss-svgo',
+              'postcss-normalize-display-values',
+              'postcss-reduce-transforms',
+              'postcss-colormin',
+              'postcss-normalize-timing-functions',
+              'postcss-calc',
+              'postcss-convert-values',
+              'postcss-ordered-values',
+              'postcss-minify-selectors',
+              'postcss-minify-params',
+              'postcss-normalize-charset',
+              'postcss-discard-overridden',
+              'postcss-normalize-string',
+              'postcss-normalize-unicode',
+              'postcss-minify-font-values',
+              'postcss-normalize-url',
+              'postcss-normalize-repeat-style',
+              'postcss-normalize-positions',
+              'postcss-normalize-whitespace',
+              'postcss-merge-longhand',
+              'postcss-discard-duplicates',
+              'postcss-merge-rules',
+              'postcss-discard-empty',
+              'postcss-unique-selectors',
+              'cssnano-util-raw-cache'
             ])
         }
       })
