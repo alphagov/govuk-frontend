@@ -25,7 +25,7 @@ notes: >-
           text: "Back"
         }) }}
 
-       {% if errorSummary.length > 0 %}
+        {% if errorSummary.length > 0 %}
           <div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
             <h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
               There is a problem
@@ -46,7 +46,7 @@ notes: >-
         {% endif %}
 
         <h1 class="heading-xlarge">
-         {{ page_title }}
+          {{ page_title }}
         </h1>
 
         <form method="post" novalidate>
@@ -60,8 +60,8 @@ notes: >-
             </label>
             {% if errors["full-name"] %}
               <span class="error-message">
-               Enter your full name
-             </span>
+                Enter your full name
+              </span>
             {% endif %}
             <input class="form-control {%- if errors["full-name"] %} form-control-error {% endif %}" id="full-name" type="text" name="full-name" value="{{ values['full-name'] }}" autocomplete="name">
           </div>

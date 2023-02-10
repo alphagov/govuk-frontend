@@ -1,28 +1,28 @@
 params:
-- name: text
-  type: string
-  required: true
-  description: If `html` is set, this is not required. Text to use within the error message. If `html` is provided, the `text` option will be ignored.
-- name: html
-  type: string
-  required: true
-  description: If `text` is set, this is not required. HTML to use within the error message. If `html` is provided, the `text` option will be ignored.
-- name: id
-  type: string
-  required: false
-  description: ID attribute to add to the error message span tag.
-- name: classes
-  type: string
-  required: false
-  description: Classes to add to the error message span tag.
-- name: attributes
-  type: object
-  required: false
-  description: HTML attributes (for example data attributes) to add to the error message span tag.
-- name: visuallyHiddenText
-  type: string
-  required: false
-  description: A visually hidden prefix used before the error message. Defaults to 'Error'.
+  - name: text
+    type: string
+    required: true
+    description: If `html` is set, this is not required. Text to use within the error message. If `html` is provided, the `text` option will be ignored.
+  - name: html
+    type: string
+    required: true
+    description: If `text` is set, this is not required. HTML to use within the error message. If `html` is provided, the `text` option will be ignored.
+  - name: id
+    type: string
+    required: false
+    description: ID attribute to add to the error message span tag.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the error message span tag.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the error message span tag.
+  - name: visuallyHiddenText
+    type: string
+    required: false
+    description: A visually hidden prefix used before the error message. Defaults to 'Error'.
 
 accessibilityCriteria: |
   When used with a single input, the error message MUST:
@@ -39,48 +39,48 @@ accessibilityCriteria: |
   - be announced every time for each individual input
 
 examples:
-- name: default
-  data:
-    text: Error message about full name goes here
+  - name: default
+    data:
+      text: Error message about full name goes here
 
-- name: translated
-  data:
-    visuallyHiddenText: ''
-    html: <span class="govuk-visually-hidden">Gwall:</span> Neges gwall am yr enw llawn yn mynd yma
+  - name: translated
+    data:
+      visuallyHiddenText: ''
+      html: <span class="govuk-visually-hidden">Gwall:</span> Neges gwall am yr enw llawn yn mynd yma
 
-# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
-- name: id
-  hidden: true
-  data:
-    id: my-error-message-id
-    text: This is an error message
-- name: classes
-  hidden: true
-  data:
-    classes: custom-class
-    text: This is an error message
-- name: html as text
-  hidden: true
-  data:
-    text: Unexpected > in body
-- name: html
-  hidden: true
-  data:
-    html: Unexpected <b>bold text</b> in body copy
-- name: attributes
-  hidden: true
-  data:
-    text: This is an error message
-    attributes:
-      data-test: attribute
-      id: my-error-message
-- name: with visually hidden text
-  hidden: true
-  data:
-    text: Rhowch eich enw llawn
-    visuallyHiddenText: Gwall
-- name: visually hidden text removed
-  hidden: true
-  data:
-    text: There is an error on line 42
-    visuallyHiddenText: ''
+  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: id
+    hidden: true
+    data:
+      id: my-error-message-id
+      text: This is an error message
+  - name: classes
+    hidden: true
+    data:
+      classes: custom-class
+      text: This is an error message
+  - name: html as text
+    hidden: true
+    data:
+      text: Unexpected > in body
+  - name: html
+    hidden: true
+    data:
+      html: Unexpected <b>bold text</b> in body copy
+  - name: attributes
+    hidden: true
+    data:
+      text: This is an error message
+      attributes:
+        data-test: attribute
+        id: my-error-message
+  - name: with visually hidden text
+    hidden: true
+    data:
+      text: Rhowch eich enw llawn
+      visuallyHiddenText: Gwall
+  - name: visually hidden text removed
+    hidden: true
+    data:
+      text: There is an error on line 42
+      visuallyHiddenText: ''
