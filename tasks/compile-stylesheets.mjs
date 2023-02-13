@@ -76,7 +76,13 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath }]) {
       ],
 
       // Sass custom logger
-      logger: logger(),
+      logger: logger({
+        suppressed: [
+          'Using / for division is deprecated and will be removed in Dart Sass 2.0.0.',
+          'Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.'
+        ]
+      }),
+
       verbose: true
     }))
 
@@ -145,11 +151,17 @@ export function getPathByDestination (filePath) {
 /**
  * Sass custom logger
  *
+ * @param {{ suppressed: string[] }} config - Logger config
  * @returns {import('sass-embedded').Logger} Sass logger
  */
-export const logger = () => ({
+export const logger = (config) => ({
   warn (message, options) {
     let log = `${message}\n`
+
+    // Silence Sass suppressed warnings
+    if (config.suppressed.some((warning) => log.includes(warning))) {
+      return
+    }
 
     // Check for code snippet
     if (options.span) {
