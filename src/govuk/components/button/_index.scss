@@ -39,6 +39,7 @@ $govuk-button-text-colour: govuk-colour("white") !default;
   // increase the bottom margin to include it (s2).
   $button-shadow-size: $govuk-border-width-form-element;
 
+  %govuk-button,
   .govuk-button {
     @include govuk-font($size: 19, $line-height: 19px);
 
@@ -185,6 +186,7 @@ $govuk-button-text-colour: govuk-colour("white") !default;
     }
   }
 
+  %govuk-button--secondary,
   .govuk-button--secondary {
     background-color: $govuk-secondary-button-colour;
     box-shadow: 0 $button-shadow-size 0 $govuk-secondary-button-shadow-colour;

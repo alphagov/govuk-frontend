@@ -1,3 +1,4 @@
+@import "../button/index";
 @import "../error-message/index";
 @import "../hint/index";
 @import "../label/index";
@@ -17,10 +18,22 @@
     // to `button` to drop out of the native appearance so the
     // font-size is set to 19px
     // https://bugs.webkit.org/show_bug.cgi?id=224746
+    //
+    // Affects Safari 3.0  to Safari 16.3
     &::-webkit-file-upload-button {
       -webkit-appearance: button;
       color: inherit;
       font: inherit;
+    }
+
+    // Restyle file upload button to match our secondary button style
+    // Affects Safari 14.1+
+    &::file-selector-button {
+      @extend %govuk-button;
+      @extend %govuk-button--secondary;
+      margin-right: govuk-spacing(2);
+      margin-bottom: 0;
+      vertical-align: baseline;
     }
 
     &:focus {
