@@ -1,6 +1,7 @@
 import { readFile } from 'fs/promises'
 import { join, parse } from 'path'
 
+import chalk from 'chalk'
 import PluginError from 'plugin-error'
 import postcss from 'postcss'
 // eslint-disable-next-line import/default
@@ -59,6 +60,8 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath }]) {
   // Render Sass
   if (!isPackage) {
     ({ css, sourceMap: map } = await compileAsync(moduleSrcPath, {
+      alertColor: true,
+
       // Turn off dependency warnings
       quietDeps: true,
 
@@ -70,7 +73,11 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath }]) {
       loadPaths: [
         join(paths.node_modules, 'govuk_frontend_toolkit/stylesheets'),
         paths.node_modules
-      ]
+      ],
+
+      // Sass custom logger
+      logger: logger(),
+      verbose: true
     }))
 
     // Pass source maps to PostCSS
@@ -134,6 +141,48 @@ export function getPathByDestination (filePath) {
     ? `${name}.min.css`
     : `${name}.scss`)
 }
+
+/**
+ * Sass custom logger
+ *
+ * @returns {import('sass-embedded').Logger} Sass logger
+ */
+export const logger = () => ({
+  warn (message, options) {
+    let log = `${message}\n`
+
+    // Check for code snippet
+    if (options.span) {
+      const { context, start, text } = options.span
+
+      // Line number with column width
+      const number = start.line + 1
+      const column = ' '.repeat(`${number}`.length)
+
+      // Source code warning arrows
+      const arrows = '^'.repeat(text.length)
+        .padStart(context.indexOf(text) + text.length)
+
+      // Source code snippet showing warning in red
+      log += '\n\n'
+      log += `${chalk.blue(`${column} ╷`)}\n`
+      log += `${chalk.blue(`${number} │`)} ${context.replace(text, chalk.red(text))}`
+      log += `${chalk.blue(`${column} │`)} ${chalk.red(arrows)}\n`
+      log += `${chalk.blue(`${column} ╵`)}\n`
+    }
+
+    // Check for stack trace
+    options.stack?.trim().split('\n').forEach((line) => {
+      log += `    ${line}\n`
+    })
+
+    const title = chalk.bold.yellow(options.deprecation
+      ? 'Deprecation Warning'
+      : 'Warning')
+
+    console.warn(`${title}: ${log}`)
+  }
+})
 
 /**
  * @typedef {import('./compile-assets.mjs').AssetEntry} AssetEntry
