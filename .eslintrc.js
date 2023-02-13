@@ -50,7 +50,12 @@ module.exports = {
         'jsdoc/require-hyphen-before-param-description': 'warn',
 
         // Check for valid formatting
-        'jsdoc/check-line-alignment': 'warn',
+        'jsdoc/check-line-alignment': [
+          'warn',
+          'never', {
+            wrapIndent: '  '
+          }
+        ],
         'jsdoc/check-syntax': 'error',
 
         // Add unknown @jest-environment tag name
