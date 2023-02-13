@@ -541,15 +541,15 @@ export default Accordion
  * the visible text shown on screen, and text to help assistive technology users
  * for the buttons toggling each section.
  * @property {string} [hideAllSections] - The text content for the 'Hide all
- * sections' button, used when at least one section is expanded.
+ *   sections' button, used when at least one section is expanded.
  * @property {string} [hideSection] - The text content for the 'Hide'
- * button, used when a section is expanded.
+ *   button, used when a section is expanded.
  * @property {string} [hideSectionAriaLabel] - The text content appended to the
- * 'Hide' button's accessible name when a section is expanded.
+ *   'Hide' button's accessible name when a section is expanded.
  * @property {string} [showAllSections] - The text content for the 'Show all
- * sections' button, used when all sections are collapsed.
+ *   sections' button, used when all sections are collapsed.
  * @property {string} [showSection] - The text content for the 'Show'
- * button, used when a section is collapsed.
+ *   button, used when a section is collapsed.
  * @property {string} [showSectionAriaLabel] - The text content appended to the
- * 'Show' button's accessible name when a section is expanded.
+ *   'Show' button's accessible name when a section is expanded.
  */
