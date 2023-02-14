@@ -149,6 +149,8 @@ module.exports = async (options) => {
     )
 
     let bodyClasses = ''
+
+    // @ts-expect-error `URLSearchParams` as 'query parser'
     if (req.query.has('iframe')) {
       bodyClasses = 'app-iframe-in-component-preview'
     }
