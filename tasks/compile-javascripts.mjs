@@ -1,5 +1,4 @@
-import { mkdir, writeFile } from 'fs/promises'
-import { dirname, join, parse } from 'path'
+import { join, parse } from 'path'
 
 import PluginError from 'plugin-error'
 import { rollup } from 'rollup'
@@ -9,6 +8,7 @@ import { paths, pkg } from '../config/index.js'
 import { getListing } from '../lib/file-helper.js'
 import { componentPathToModuleName } from '../lib/helper-functions.js'
 
+import { writeAsset } from './compile-assets.mjs'
 import { destination, isDist, isPackage } from './task-arguments.mjs'
 
 /**
@@ -34,18 +34,10 @@ compileJavaScripts.displayName = 'compile:js'
 /**
  * Compile JavaScript ESM to CommonJS helper
  *
- * @param {ModuleEntry} moduleEntry - Module entry
+ * @param {AssetEntry} assetEntry - Asset entry
  */
-export async function compileJavaScript ([modulePath, { srcPath, destPath, minify }]) {
-  let { dir, name } = parse(modulePath)
-
-  // Adjust file path by destination
-  name = isDist ? `${pkg.name}-${pkg.version}` : name
-
-  // Adjust file path for minification
-  const filePath = join(destPath, dir, minify
-    ? `${name}.min.js`
-    : `${name}.js`)
+export async function compileJavaScript ([modulePath, { srcPath, destPath }]) {
+  const moduleDestPath = join(destPath, getPathByDestination(modulePath))
 
   // Create Rollup bundle
   const bundle = await rollup({
@@ -53,9 +45,9 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, minif
   })
 
   // Compile JavaScript ESM to CommonJS
-  let result = await bundle[minify ? 'generate' : 'write']({
-    file: filePath,
-    sourcemapFile: filePath,
+  let result = await bundle[!isPackage ? 'generate' : 'write']({
+    file: moduleDestPath,
+    sourcemapFile: moduleDestPath,
     sourcemap: true,
 
     // Universal Module Definition (UMD)
@@ -72,17 +64,11 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, minif
   })
 
   // Minify bundle
-  if (minify) {
+  if (!isPackage) {
     result = await minifyJavaScript(modulePath, result)
 
-    // Create directories
-    await mkdir(dirname(filePath), { recursive: true })
-
     // Write to files
-    await Promise.all([
-      writeFile(filePath, result.code),
-      writeFile(`${filePath}.map`, result.map.toString())
-    ])
+    return writeAsset(moduleDestPath, result)
   }
 }
 
@@ -90,9 +76,7 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, minif
  * Minify JavaScript ESM to CommonJS helper
  *
  * @param {string} modulePath - Relative path to module
- * @param {object} result - Generated bundle
- * @param {string} result.code - Source code
- * @param {import('magic-string').SourceMap} result.map - Source map
+ * @param {import('rollup').OutputChunk} result - Generated bundle
  * @returns {Promise<import('terser').MinifyOutput>} Minifier result
  */
 export function minifyJavaScript (modulePath, result) {
@@ -119,7 +103,7 @@ export function minifyJavaScript (modulePath, result) {
 /**
  * JavaScript modules to compile
  *
- * @returns {Promise<ModuleEntry[]>} Module entries
+ * @returns {Promise<AssetEntry[]>} Module entries
  */
 export async function getModuleEntries () {
   const srcPath = join(paths.src, 'govuk')
@@ -135,22 +119,29 @@ export async function getModuleEntries () {
   return modulePaths
     .map((modulePath) => ([modulePath, {
       srcPath,
-      destPath,
-      minify: !isPackage
+      destPath
     }]))
 }
 
 /**
- * Module entry path with options
+ * JavaScript module name by destination
  *
- * @typedef {[string, ModuleOptions]} ModuleEntry
+ * @param {AssetEntry[0]} filePath - File path
+ * @returns {AssetEntry[0]} File path adjusted by destination
  */
+export function getPathByDestination (filePath) {
+  let { dir, name } = parse(filePath)
+
+  // Adjust file path by destination
+  name = isDist ? `${name.replace(/^all/, pkg.name)}-${pkg.version}` : name
+
+  // Adjust file path for minification
+  return join(dir, !isPackage
+    ? `${name}.min.js`
+    : `${name}.js`)
+}
 
 /**
- * Module options
- *
- * @typedef {object} ModuleOptions
- * @property {string} srcPath - Input directory
- * @property {string} destPath - Output directory
- * @property {boolean} minify - Minifier enabled
+ * @typedef {import('./compile-assets.mjs').AssetEntry} AssetEntry
+ * @typedef {import('./compile-assets.mjs').AssetOutput} AssetOutput
  */
