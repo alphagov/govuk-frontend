@@ -11,7 +11,8 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 **`npm start` will trigger `gulp dev` that will:**
 
 - clean the `./public` folder
-- compile JavaScript and Sass, including documentation (`gulp compile`)
+- copy fonts and images
+- compile JavaScript and Sass, including documentation
 - compile again when `.scss` and `.mjs` files change
 - runs `npm run serve`
 
@@ -33,7 +34,8 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 **`npm run build:compile` will do the following:**
 
 - output files into `./public`, or another location via the `--destination` flag
-- compile JavaScript and Sass, including documentation (`gulp compile`)
+- copy fonts and images
+- compile JavaScript and Sass, including documentation
 
 **`npm run build:package` will do the following:**
 
@@ -50,8 +52,8 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
 - output files into `./dist`, or another location via the `--destination` flag
 - clean the `./dist` folder
-- compile JavaScript and Sass, including documentation (`gulp compile`)
 - copy fonts and images
+- compile JavaScript and Sass, including documentation
 - append version number from `package/package.json` to compiled JavaScript and CSS files
 - runs `npm run test:build:dist` (which will test the output is correct)
 
@@ -85,6 +87,7 @@ This task will:
 
 This task will:
 
+- copy fonts and images
 - run sub tasks from `gulp styles` without ESLint code quality checks
 - run sub tasks from `gulp scripts` without StyleLint code quality checks
 - compile Sass documentation into `./sassdoc`

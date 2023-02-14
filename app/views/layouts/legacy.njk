@@ -9,10 +9,10 @@
 
 {% block head %}
   <!--[if !IE 8]><!-->
-    <link rel="stylesheet" href="/public/app-legacy.min.css">
+    <link rel="stylesheet" href="/stylesheets/app-legacy.min.css">
   <!--<![endif]-->
   <!--[if IE 8]>
-    <link rel="stylesheet" href="/public/app-legacy-ie8.min.css">
+    <link rel="stylesheet" href="/stylesheets/app-legacy-ie8.min.css">
   <![endif]-->
 {% endblock %}
 
@@ -22,6 +22,6 @@
 
 {% block body_end %}
   {% include "partials/legacyJavaScript.njk" %}
-  <script src="/public/all.min.js"></script>
+  <script src="/javascripts/all.min.js"></script>
   <script>window.GOVUKFrontend.initAll()</script>
 {% endblock %}

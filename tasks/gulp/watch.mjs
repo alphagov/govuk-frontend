@@ -15,9 +15,8 @@ export function watch () {
   return Promise.all([
     gulp.watch([
       'sassdoc.config.yaml',
-      `${slash(configPaths.src)}/govuk/**/**/*.scss`,
-      `${slash(configPaths.app)}/assets/scss/**/*.scss`,
-      `${slash(configPaths.fullPageExamples)}/**/*.scss`,
+      `${slash(configPaths.app)}/**/*.scss`,
+      `${slash(configPaths.src)}/govuk/**/*.scss`,
       `!${slash(configPaths.src)}/govuk/vendor/*`
     ], gulp.series('styles')),
 
