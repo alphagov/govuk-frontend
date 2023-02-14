@@ -16,7 +16,7 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
 var EXIT_THIS_PAGE_TRANSLATIONS = {
   keypressProgress: 'Exit this Page key press %{press} of 3',
   keypressComplete: 'Exit this page activated',
-  helpText: 'press <kbd>Shift</kbd> 3 times <span class="govuk-visually-hidden">to exit the page</span>'
+  helpText: 'Or press <kbd>&#8679; Shift</kbd> key 3 times <span class="govuk-visually-hidden">to exit the page</span>'
 }
 
 /**
