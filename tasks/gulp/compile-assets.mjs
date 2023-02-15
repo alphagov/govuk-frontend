@@ -60,28 +60,8 @@ export function compileStylesheets () {
   // Review application
   return merge(
     compileStylesheet(
-      gulp.src(`${slash(paths.app)}/assets/scss/app?(-ie8).scss`, {
+      gulp.src(`${slash(paths.app)}/**/[!_]*.scss`, {
         sourcemaps: true
-      })),
-
-    compileStylesheet(
-      gulp.src(`${slash(paths.app)}/assets/scss/app-legacy?(-ie8).scss`, {
-        sourcemaps: true
-      }), {
-        includePaths: [
-          'node_modules/govuk_frontend_toolkit/stylesheets',
-          'node_modules'
-        ]
-      }),
-
-    compileStylesheet(
-      gulp.src(`${slash(paths.fullPageExamples)}/**/styles.scss`, {
-        sourcemaps: true
-      })
-    )
-      .pipe(rename((path) => {
-        path.basename = path.dirname
-        path.dirname = 'full-page-examples'
       }))
   )
     .pipe(rename({
@@ -105,7 +85,15 @@ compileStylesheets.displayName = 'compile:scss'
 function compileStylesheet (stream, options = {}) {
   return stream
     .pipe(plumber(errorHandler(stream, 'compile:scss')))
-    .pipe(sass(options))
+    .pipe(sass({
+      ...options,
+
+      // Resolve @imports via
+      includePaths: [
+        join(paths.node_modules, 'govuk_frontend_toolkit/stylesheets'),
+        paths.node_modules
+      ]
+    }))
     .pipe(postcss())
     .pipe(plumber.stop())
 }

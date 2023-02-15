@@ -12,17 +12,17 @@
     <link rel="stylesheet" media="print" href="/vendor/govuk_template/stylesheets/govuk-template-print.css">
     <link rel="stylesheet" media="all" href="/vendor/govuk_template/stylesheets/fonts.css"/>
     <!--[if !IE 8]><!-->
-      <link rel="stylesheet" href="/public/app-legacy.min.css">
+      <link rel="stylesheet" href="/stylesheets/app-legacy.min.css">
     <!--<![endif]-->
     <!--[if IE 8]>
-      <link rel="stylesheet" href="/public/app-legacy-ie8.min.css">
+      <link rel="stylesheet" href="/stylesheets/app-legacy-ie8.min.css">
     <![endif]-->
   {% else %}
     <!--[if !IE 8]><!-->
-      <link rel="stylesheet" href="/public/app.min.css">
+      <link rel="stylesheet" href="/stylesheets/app.min.css">
     <!--<![endif]-->
     <!--[if IE 8]>
-      <link rel="stylesheet" href="/public/app-ie8.min.css">
+      <link rel="stylesheet" href="/stylesheets/app-ie8.min.css">
     <![endif]-->
   {% endif %}
 
@@ -51,6 +51,6 @@
     {% include "partials/legacyJavaScript.njk" %}
   {% endif %}
 
-  <script src="/public/all.min.js"></script>
+  <script src="/javascripts/all.min.js"></script>
   <script>window.GOVUKFrontend.initAll()</script>
 {% endblock %}

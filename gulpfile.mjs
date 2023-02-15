@@ -40,6 +40,7 @@ gulp.task('styles', gulp.series(
  */
 gulp.task('compile', gulp.series(
   clean,
+  copyAssets,
   compileJavaScripts,
   compileStylesheets,
   npmScriptTask('build:jsdoc'),
@@ -73,7 +74,6 @@ gulp.task('build:package', gulp.series(
  */
 gulp.task('build:dist', gulp.series(
   'compile',
-  copyAssets,
   updateAssetsVersion
 ))
 

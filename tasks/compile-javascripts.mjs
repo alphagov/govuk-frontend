@@ -9,7 +9,7 @@ import { getListing } from '../lib/file-helper.js'
 import { componentPathToModuleName } from '../lib/helper-functions.js'
 
 import { writeAsset } from './compile-assets.mjs'
-import { destination, isDist, isPackage } from './task-arguments.mjs'
+import { destination, isDist, isPackage, isPublic } from './task-arguments.mjs'
 
 /**
  * Compile JavaScript ESM to CommonJS task
@@ -133,6 +133,7 @@ export function getPathByDestination (filePath) {
   let { dir, name } = parse(filePath)
 
   // Adjust file path by destination
+  dir = isPublic ? 'javascripts' : dir
   name = isDist ? `${name.replace(/^all/, pkg.name)}-${pkg.version}` : name
 
   // Adjust file path for minification
