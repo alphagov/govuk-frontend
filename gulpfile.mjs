@@ -4,7 +4,7 @@ import taskListing from 'gulp-task-listing'
 import { updateAssetsVersion } from './tasks/asset-version.mjs'
 import { clean } from './tasks/clean.mjs'
 import { compileJavaScripts } from './tasks/compile-javascripts.mjs'
-import { compileStylesheets } from './tasks/gulp/compile-assets.mjs'
+import { compileStylesheets } from './tasks/compile-stylesheets.mjs'
 import { copyAssets, copyFiles } from './tasks/gulp/copy-to-destination.mjs'
 import { watch } from './tasks/gulp/watch.mjs'
 import { updatePrototypeKitConfig } from './tasks/prototype-kit-config.mjs'
@@ -65,6 +65,7 @@ gulp.task('build:package', gulp.series(
   clean,
   copyFiles,
   compileJavaScripts,
+  compileStylesheets,
   updatePrototypeKitConfig
 ))
 
