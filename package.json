@@ -98,7 +98,7 @@
     "jest-dev-server": "^7.0.0",
     "jest-environment-jsdom": "^29.4.3",
     "jest-environment-node-single-context": "^29.0.0",
-    "jest-environment-puppeteer": "^7.0.0",
+    "jest-environment-puppeteer": "^7.0.1",
     "jest-serializer-html": "^7.1.0",
     "lint-staged": "^13.1.2",
     "outdent": "^0.8.0",
