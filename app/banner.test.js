@@ -1,11 +1,10 @@
 const cheerio = require('cheerio')
 
-const config = require('../config')
-const PORT = config.ports.test
+const { ports } = require('../config')
 
 // Returns Fetch API wrapper which applies these options by default
 const fetchPath = (path, options) => {
-  return fetch(`http://localhost:${PORT}${path}`, options)
+  return fetch(`http://localhost:${ports.app}${path}`, options)
 }
 
 describe('Banner', () => {

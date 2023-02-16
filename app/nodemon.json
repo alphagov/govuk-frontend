@@ -1,5 +1,5 @@
 {
-  "exec": "node start.js",
+  "exec": "node start.mjs",
   "watch": [".", "../src/govuk"],
   "ignore": ["**/*.test.*"],
   "ext": "js,json,yaml",

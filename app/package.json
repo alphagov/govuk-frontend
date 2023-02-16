@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "serve": "nodemon",
-    "start": "node start.js"
+    "start": "node start.mjs"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",
