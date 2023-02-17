@@ -25,6 +25,7 @@
     "build:jsdoc": "jsdoc --configure jsdoc.config.js ./src/govuk",
     "build:package": "gulp build:package --destination \"package\"",
     "build:dist": "gulp build:dist --destination \"dist\"",
+    "build:types": "tsc --build",
     "postbuild:package": "jest --color --selectProjects \"Gulp tasks\" --testMatch \"**/*build-package*\"",
     "postbuild:dist": "jest --color --selectProjects \"Gulp tasks\" --testMatch \"**/*build-dist*\"",
     "pretest": "npm run build:compile",
