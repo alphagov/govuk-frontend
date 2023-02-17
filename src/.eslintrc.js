@@ -1,3 +1,5 @@
+const { resolve } = require('path')
+
 module.exports = {
   overrides: [
     {
@@ -26,17 +28,20 @@ module.exports = {
     {
       files: ['govuk/**/*.mjs'],
       excludedFiles: ['**/*.test.mjs'],
+      parser: '@typescript-eslint/parser',
       parserOptions: {
         // Note: Allow ES6 for import/export syntax (although our code is ES3 for legacy browsers)
-        ecmaVersion: '2015'
+        ecmaVersion: '2015',
+        project: [resolve(__dirname, 'tsconfig.json')]
       },
-      plugins: ['es-x'],
+      plugins: [
+        '@typescript-eslint',
+        'es-x'
+      ],
       extends: ['plugin:es-x/restrict-to-es3'],
       rules: {
         // Rollup transpiles modules to AMD export/define
-        'es-x/no-modules': 'off',
-        // Rollup plays fine with `export * from`
-        'es-x/no-export-ns-from': 'off'
+        'es-x/no-modules': 'off'
       }
     },
     {
