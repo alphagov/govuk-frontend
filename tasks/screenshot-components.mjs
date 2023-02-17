@@ -3,11 +3,12 @@ import { join } from 'path'
 import percySnapshot from '@percy/puppeteer'
 import { isPercyEnabled } from '@percy/sdk-utils'
 import { launch } from 'puppeteer'
-import { downloadBrowser } from 'puppeteer/lib/esm/puppeteer/node/install.js'
 
 import configPaths from '../config/paths.js'
 import { getDirectories, getListing } from '../lib/file-helper.js'
 import { goToComponent } from '../lib/puppeteer-helpers.js'
+
+import { download } from './browser/download.mjs'
 
 /**
  * Send all component screenshots to Percy
@@ -67,5 +68,5 @@ if (!await isPercyEnabled()) {
   throw new Error('Percy healthcheck failed')
 }
 
-await downloadBrowser()
+await download() // Download browser
 await screenshotComponents()

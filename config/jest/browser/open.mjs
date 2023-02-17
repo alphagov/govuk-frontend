@@ -1,6 +1,6 @@
 import { setup } from 'jest-environment-puppeteer'
-import { downloadBrowser } from 'puppeteer/lib/esm/puppeteer/node/install.js'
 
+import { download } from '../../../tasks/browser/download.mjs'
 import serverStart from '../server/start.mjs'
 
 /**
@@ -19,7 +19,7 @@ export default async function browserOpen (jestConfig) {
     process.setMaxListeners(1 + maxWorkers)
   }
 
-  await downloadBrowser() // Download browser
+  await download() // Download browser
   await serverStart() // Wait for web server
   await setup(jestConfig) // Open browser
 }
