@@ -6,7 +6,7 @@ const { goToComponent, goToExample } = require('../../../../lib/puppeteer-helper
 
 const buttonClass = '.govuk-js-exit-this-page-button'
 const skiplinkClass = '.govuk-js-exit-this-page-skiplink'
-const overlayClass = '.govuk-exit-this-page__overlay'
+const overlayClass = '.govuk-exit-this-page-overlay'
 
 describe('/components/exit-this-page', () => {
   describe('when JavaScript is unavailable or fails', () => {
@@ -147,8 +147,8 @@ describe('/components/exit-this-page', () => {
         await page.keyboard.press('Shift')
         await page.keyboard.press('Shift')
 
-        const message = await page.evaluate((buttonClass) => document.querySelector(buttonClass).nextElementSibling.innerText, buttonClass)
-        expect(message).toBe('Exiting page.')
+        const message = await page.evaluate((overlayClass) => document.querySelector(overlayClass).innerText, overlayClass)
+        expect(message).toBe('Loading.')
       })
 
       it('announces when the keyboard shortcut has timed out', async () => {
@@ -156,8 +156,8 @@ describe('/components/exit-this-page', () => {
 
         await page.keyboard.press('Shift')
 
-        // Wait for 5 seconds
-        await new Promise((resolve) => setTimeout(resolve, 5000))
+        // Wait for 6 seconds (one full second over the 5 second limit)
+        await new Promise((resolve) => setTimeout(resolve, 6000))
 
         const message = await page.evaluate((buttonClass) => document.querySelector(buttonClass).nextElementSibling.innerText, buttonClass)
         expect(message).toBe('Exit this page expired.')

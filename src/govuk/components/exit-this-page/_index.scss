@@ -67,7 +67,7 @@
     }
   }
 
-  .govuk-exit-this-page__overlay {
+  .govuk-exit-this-page-overlay {
     position: fixed;
     z-index: 9999;
     top: 0;
@@ -75,5 +75,22 @@
     bottom: 0;
     left: 0;
     background-color: govuk-colour("white");
+  }
+
+  // This class is added to the body when the Exit This Page button is activated
+  // in addition to the overlay to both block the entire screen and hide everything
+  // underneath it.
+  //
+  // We do this to ensure that users don't risk interacting with the page underneath
+  // the overlay between activating the button and navigating to the next page.
+  .govuk-exit-this-page-hide-content {
+    // stylelint-disable declaration-no-important
+    * {
+      display: none !important;
+    }
+
+    .govuk-exit-this-page-overlay {
+      display: block !important;
+    }
   }
 }

@@ -14,7 +14,7 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * @default
  */
 var EXIT_THIS_PAGE_TRANSLATIONS = {
-  activated: 'Exiting page.',
+  activated: 'Loading.',
   timedOut: 'Exit this page expired.',
   pressTwoMoreTimes: 'Shift, press 2 more times to exit.',
   pressOneMoreTime: 'Shift, press 1 more time to exit.'
@@ -132,7 +132,7 @@ ExitThisPage.prototype.updateIndicator = function () {
 
 /**
  * Initiates the redirection away from the current page.
- * Includes the 'ghost page' functionality, which covers the current page with a
+ * Includes the loading overlay functionality, which covers the current page with a
  * white overlay so that the contents are not visible during the loading
  * process. This is particularly important on slow network connections.
  *
@@ -146,10 +146,19 @@ ExitThisPage.prototype.exitPage = function (e) {
     redirectUrl = e.target.href
   }
 
+  this.$updateSpan.innerText = ''
+
   // Blank the page
+  // As well as creating an overlay with text, we also set the body to hidden
+  // to prevent screen reader and sequential navigation users potentially
+  // navigating through the page behind the overlay during loading
+  document.body.classList.add('govuk-exit-this-page-hide-content')
   this.$overlay = document.createElement('div')
-  this.$overlay.className = 'govuk-exit-this-page__overlay'
+  this.$overlay.className = 'govuk-exit-this-page-overlay'
+  this.$overlay.setAttribute('role', 'alert')
+
   document.body.appendChild(this.$overlay)
+  this.$overlay.innerText = this.i18n.t('activated')
 
   window.location.href = redirectUrl
 }
@@ -186,11 +195,9 @@ ExitThisPage.prototype.handleEscKeypress = function (e) {
 
     if (this.escCounter >= 3) {
       this.escCounter = 0
+
       clearTimeout(this.keypressTimeoutId)
       this.keypressTimeoutId = null
-
-      this.$updateSpan.setAttribute('role', 'alert')
-      this.$updateSpan.innerText = this.i18n.t('activated')
 
       this.exitPage()
     } else {
@@ -254,6 +261,8 @@ ExitThisPage.prototype.resetEscTimer = function () {
  */
 ExitThisPage.prototype.resetPage = function () {
   // If an overlay is set, remove it and reset the value
+  document.body.classList.remove('govuk-exit-this-page-hide-content')
+
   if (this.$overlay) {
     this.$overlay.remove()
     this.$overlay = null
