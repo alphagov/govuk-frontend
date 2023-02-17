@@ -1,16 +1,16 @@
-const sass = require('node-sass')
 const outdent = require('outdent')
+const { sassNull } = require('sass-embedded')
 
 const { compileSassString } = require('../../../lib/jest-helpers')
 
 // Create a mock warn function that we can use to override the native @warn
 // function, that we can make assertions about post-render.
 const mockWarnFunction = jest.fn()
-  .mockReturnValue(sass.NULL)
+  .mockReturnValue(sassNull)
 
 const sassConfig = {
-  functions: {
-    '@warn': mockWarnFunction
+  logger: {
+    warn: mockWarnFunction
   }
 }
 
@@ -100,11 +100,11 @@ describe('@mixin govuk-compatibility', () => {
 
     // Expect our mocked @warn function to have been called once with a single
     // argument, which should be the deprecation notice
-    expect(mockWarnFunction.mock.calls[0][0].getValue())
-      .toEqual(
+    expect(mockWarnFunction.mock.calls[0])
+      .toEqual(expect.arrayContaining([
         'govuk-compatibility is deprecated. From version 5.0, GOV.UK Frontend ' +
         'will not support compatibility mode. To silence this warning, ' +
         'update $govuk-suppressed-warnings with key: "compatibility-helper"'
-      )
+      ]))
   })
 })

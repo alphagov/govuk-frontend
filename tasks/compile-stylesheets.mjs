@@ -2,11 +2,11 @@ import { readFile } from 'fs/promises'
 import { join, parse } from 'path'
 import { promisify } from 'util'
 
-import { render } from 'node-sass'
 import PluginError from 'plugin-error'
 import postcss from 'postcss'
 // eslint-disable-next-line import/default
 import postcssrc from 'postcss-load-config'
+import { render } from 'sass-embedded'
 
 import { paths, pkg } from '../config/index.js'
 import { getListing } from '../lib/file-helper.js'

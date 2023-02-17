@@ -19,14 +19,12 @@ describe('@mixin govuk-width-container', () => {
           margin-right: 15px;
           margin-left: 15px;
         }
-
         @supports (margin: max(calc(0px))) {
           .app-width-container--wide {
             margin-right: max(15px, calc(15px + env(safe-area-inset-right)));
             margin-left: max(15px, calc(15px + env(safe-area-inset-left)));
           }
         }
-
         @media (min-width: 40.0625em) {
           .app-width-container--wide {
             margin-right: 30px;
@@ -39,7 +37,6 @@ describe('@mixin govuk-width-container', () => {
             }
           }
         }
-
         @media (min-width: 1260px) {
           .app-width-container--wide {
             margin-right: auto;

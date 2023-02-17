@@ -68,7 +68,6 @@ describe('grid system', () => {
               width: 100%;
               padding: 0 15px;
             }
-
             @media (min-width: 40.0625em) {
               .govuk-grid-column-full {
                 width: 100%;
@@ -97,7 +96,6 @@ describe('grid system', () => {
               width: 100%;
               padding: 0 15px;
             }
-
             @media (min-width: 40.0625em) {
               .govuk-grid-column-two-thirds {
                 width: 66.6666666667%;
@@ -124,7 +122,6 @@ describe('grid system', () => {
               box-sizing: border-box;
               padding: 0 15px;
             }
-
             @media (min-width: 48.0625em) {
               .govuk-grid-column-one-quarter-at-desktop {
                 width: 25%;
@@ -153,7 +150,6 @@ describe('grid system', () => {
               width: 100%;
               padding: 0 15px;
             }
-
             @media (min-width: 31.25em) {
               .govuk-grid-column-one-quarter-at-500px {
                 width: 25%;
@@ -182,7 +178,6 @@ describe('grid system', () => {
               width: 100%;
               padding: 0 15px;
             }
-
             @media (min-width: 40.0625em) {
               .govuk-grid-column-one-half-right {
                 width: 50%;
