@@ -9,8 +9,8 @@ params:
     description: If `text` is set, this is not required. HTML to use within the warning text component. If `html` is provided, the `text` option will be ignored.
   - name: iconFallbackText
     type: string
-    required: true
-    description: The fallback text for the icon.
+    required: false
+    description: The fallback text for the icon. Defaults to 'Warning'
   - name: classes
     type: string
     required: false
@@ -35,7 +35,6 @@ examples:
     hidden: true
     data:
       text: You can be fined up to £5,000 if you don’t register.
-      iconFallbackText: Warning
       attributes:
         id: my-warning-text
         data-test: attribute
@@ -43,20 +42,21 @@ examples:
     hidden: true
     data:
       text: Warning text
-      iconFallbackText: Warning
       classes: govuk-warning-text--custom-class
   - name: html
     hidden: true
     data:
       text: You can be fined up to £5,000 if you don’t register.
-      iconFallbackText: Warning
       html: <span>Some custom warning text</span>
   - name: html as text
     hidden: true
     data:
-      iconFallbackText: Warning
       text: <span>Some custom warning text</span>
   - name: icon fallback text only
     hidden: true
     data:
       iconFallbackText: Some custom fallback text
+  - name: no icon fallback text
+    hidden: true
+    data:
+      text: This is a warning
