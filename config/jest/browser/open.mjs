@@ -19,5 +19,5 @@ export default async function browserOpen (jestConfig) {
   }
 
   await download() // Download browser
-  await setup(jestConfig) // Open browser, start server
+  return setup(jestConfig) // Open browser, start server
 }
