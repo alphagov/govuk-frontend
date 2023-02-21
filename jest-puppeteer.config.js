@@ -1,3 +1,5 @@
+const devServerOptions = require('./jest-dev-server.config.js')
+
 module.exports = {
   browserContext: 'incognito',
   browserPerWorker: true,
@@ -9,6 +11,8 @@ module.exports = {
   exitOnPageError: false,
 
   /**
+   * Puppeteer launch options
+   *
    * @type {import('puppeteer').PuppeteerLaunchOptions}
    */
   launch: {
@@ -27,5 +31,10 @@ module.exports = {
       '--no-startup-window'
     ],
     waitForInitialPage: false
-  }
+  },
+
+  /**
+   * Development server options
+   */
+  server: devServerOptions
 }
