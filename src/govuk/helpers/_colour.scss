@@ -8,7 +8,7 @@
 
 /// Get colour
 ///
-/// @param {String} $colour - Name of colour from the colour palette
+/// @param {String | Colour} $colour - Name of colour from the colour palette
 ///   (`$govuk-colours`)
 /// @param {String} $legacy - Either the name of colour from the legacy palette
 ///   or a colour literal, to return instead when in 'legacy mode' - matching
@@ -36,7 +36,10 @@
     $colour: $legacy;
   }
 
-  $colour: quote($colour);
+  @if type-of($colour) == "color" {
+    // stylelint-disable-next-line scss/function-quote-no-quoted-strings-inside
+    $colour: quote("#{$colour}");
+  }
 
   @if not map-has-key($govuk-colours, $colour) {
     @error "Unknown colour `#{$colour}`";

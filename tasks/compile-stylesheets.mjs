@@ -66,6 +66,9 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath }]) {
       file: moduleSrcPath,
       outFile: moduleDestPath,
 
+      // Turn off dependency warnings
+      quietDeps: true,
+
       // Enable source maps
       sourceMap: true,
       sourceMapContents: true,

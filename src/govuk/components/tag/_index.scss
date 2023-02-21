@@ -35,47 +35,47 @@
   }
 
   .govuk-tag--grey {
-    color: govuk-shade(govuk-colour("dark-grey", $legacy: "grey-1"), 30);
-    background: govuk-tint(govuk-colour("dark-grey", $legacy: "grey-1"), 90);
+    color: govuk-shade(govuk-colour("dark-grey", $legacy: "grey-1"), 30%);
+    background: govuk-tint(govuk-colour("dark-grey", $legacy: "grey-1"), 90%);
   }
 
   .govuk-tag--purple {
-    color: govuk-shade(govuk-colour("purple"), 20);
-    background: govuk-tint(govuk-colour("purple"), 80);
+    color: govuk-shade(govuk-colour("purple"), 20%);
+    background: govuk-tint(govuk-colour("purple"), 80%);
   }
 
   .govuk-tag--turquoise {
-    color: govuk-shade(govuk-colour("turquoise"), 60);
-    background: govuk-tint(govuk-colour("turquoise"), 70);
+    color: govuk-shade(govuk-colour("turquoise"), 60%);
+    background: govuk-tint(govuk-colour("turquoise"), 70%);
   }
 
   .govuk-tag--blue {
-    color: govuk-shade(govuk-colour("blue"), 30);
-    background: govuk-tint(govuk-colour("blue"), 80);
+    color: govuk-shade(govuk-colour("blue"), 30%);
+    background: govuk-tint(govuk-colour("blue"), 80%);
   }
 
   .govuk-tag--yellow {
-    color: govuk-shade(govuk-colour("yellow"), 65);
-    background: govuk-tint(govuk-colour("yellow"), 75);
+    color: govuk-shade(govuk-colour("yellow"), 65%);
+    background: govuk-tint(govuk-colour("yellow"), 75%);
   }
 
   .govuk-tag--orange {
-    color: govuk-shade(govuk-colour("orange"), 55);
-    background: govuk-tint(govuk-colour("orange"), 70);
+    color: govuk-shade(govuk-colour("orange"), 55%);
+    background: govuk-tint(govuk-colour("orange"), 70%);
   }
 
   .govuk-tag--red {
-    color: govuk-shade(govuk-colour("red"), 30);
-    background: govuk-tint(govuk-colour("red"), 80);
+    color: govuk-shade(govuk-colour("red"), 30%);
+    background: govuk-tint(govuk-colour("red"), 80%);
   }
 
   .govuk-tag--pink {
-    color: govuk-shade(govuk-colour("pink"), 40);
-    background: govuk-tint(govuk-colour("pink"), 80);
+    color: govuk-shade(govuk-colour("pink"), 40%);
+    background: govuk-tint(govuk-colour("pink"), 80%);
   }
 
   .govuk-tag--green {
-    color: govuk-shade(govuk-colour("green"), 20);
-    background: govuk-tint(govuk-colour("green"), 80);
+    color: govuk-shade(govuk-colour("green"), 20%);
+    background: govuk-tint(govuk-colour("green"), 80%);
   }
 }
