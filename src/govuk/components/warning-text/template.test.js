@@ -22,7 +22,7 @@ describe('Warning text', () => {
       expect($component.text()).toContain('You can be fined up to £5,000 if you don’t register.')
     })
 
-    it('renders with assistive text', () => {
+    it('renders with default assistive text', () => {
       const $ = render('warning-text', examples.default)
 
       const $assistiveText = $('.govuk-warning-text__assistive')

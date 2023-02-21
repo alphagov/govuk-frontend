@@ -8,6 +8,7 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#3272: Add empty alt attribute to logo IE8 fallback PNG](https://github.com/alphagov/govuk-frontend/pull/3272)
 - [#3306: Re-enable complete hover link styles on the footer](https://github.com/alphagov/govuk-frontend/pull/3306)
+- [#3312: Add default value for warning text icon fallback attribute](https://github.com/alphagov/govuk-frontend/pull/3312)
 
 ## 4.5.0 (Feature release)
 
