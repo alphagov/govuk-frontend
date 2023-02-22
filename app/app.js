@@ -1,39 +1,14 @@
-const { join } = require('path')
-
 const express = require('express')
-const app = express()
-const { marked } = require('marked')
-const nunjucks = require('nunjucks')
 
 const configPaths = require('../config/paths')
 const { getDirectories, getComponentsData, getFullPageExamples } = require('../lib/file-helper')
 const helperFunctions = require('../lib/helper-functions')
 
 const middleware = require('./common/middleware/index')
-
-const { HEROKU_APP } = process.env
-
-const appViews = [
-  configPaths.layouts,
-  configPaths.views,
-  configPaths.components,
-  join(configPaths.src, 'govuk'),
-  join(configPaths.node_modules, 'govuk_template_jinja')
-]
+const nunjucks = require('./common/nunjucks/index')
 
 module.exports = async (options) => {
-  const nunjucksOptions = options ? options.nunjucks : {}
-
-  // Configure nunjucks
-  const env = nunjucks.configure(appViews, {
-    autoescape: true, // output with dangerous characters are escaped automatically
-    express: app, // the express app that nunjucks should install to
-    noCache: true, // never use a cache and recompile templates each time
-    trimBlocks: true, // automatically remove trailing newlines from a block/tag
-    lstripBlocks: true, // automatically remove leading whitespace from a block/tag
-    watch: true, // reload templates when they are changed. needs chokidar dependency to be installed
-    ...nunjucksOptions // merge any additional options and overwrite defaults above.
-  })
+  const app = express()
 
   // Cache mapped components and examples
   const [componentsData, componentNames, exampleNames, fullPageExamples] = await Promise.all([
@@ -45,20 +20,12 @@ module.exports = async (options) => {
 
   // Feature flags
   const flags = {
-    isDeployedToHeroku: !!HEROKU_APP
+    isDeployedToHeroku: !!process.env.HEROKU_APP
   }
-
-  // Share feature flags with middleware
-  env.addGlobal('flags', flags)
-
-  // make the function available as a filter for all templates
-  env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
-  env.addGlobal('markdown', marked)
 
   // Set up Express.js
   app.set('flags', flags)
   app.set('query parser', (query) => new URLSearchParams(query))
-  app.set('view engine', 'njk')
 
   // Set up middleware
   app.use('/docs', middleware.docs)
@@ -70,6 +37,9 @@ module.exports = async (options) => {
 
   // Handle the banner component serverside.
   require('./banner')(app)
+
+  // Configure nunjucks
+  const env = nunjucks.renderer(app)
 
   // Define routes
 
