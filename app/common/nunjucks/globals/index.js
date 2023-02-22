@@ -1,8 +1,13 @@
+const markdown = require('marked')
+
 /**
  * Nunjucks globals
  */
-const markdown = require('marked')
+const getHTMLCode = require('./get-html-code.js')
+const getNunjucksCode = require('./get-nunjucks-code.js')
 
 module.exports = {
+  getHTMLCode,
+  getNunjucksCode,
   markdown
 }
