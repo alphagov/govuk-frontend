@@ -24,7 +24,7 @@ function initAll (config) {
 
   // Allow the user to initialise GOV.UK Frontend in only certain sections of the page
   // Defaults to the entire document if nothing is set.
-  var $scope = typeof config.scope !== 'undefined' ? config.scope : document
+  var $scope = config.scope instanceof HTMLElement ? config.scope : document
 
   var $accordions = $scope.querySelectorAll('[data-module="govuk-accordion"]')
   nodeListForEach($accordions, function ($accordion) {

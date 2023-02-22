@@ -204,6 +204,7 @@ Tabs.prototype.showTab = function ($tab) {
  * @returns {HTMLAnchorElement | null} Tab link
  */
 Tabs.prototype.getTab = function (hash) {
+  // @ts-expect-error `HTMLAnchorElement` type expected
   return this.$module.querySelector('a.govuk-tabs__tab[href="' + hash + '"]')
 }
 

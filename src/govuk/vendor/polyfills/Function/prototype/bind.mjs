@@ -1,3 +1,4 @@
+// @ts-nocheck
 import '../../Object/defineProperty.mjs'
 
 (function(undefined) {
