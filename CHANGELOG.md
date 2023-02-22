@@ -2,6 +2,35 @@
 
 ## Unreleased
 
+### New features
+
+#### Updated the appearance of disabled form controls
+
+The disabled state of Text Input, Textarea, Select and File Upload components has been updated to appear consistent across browsers and devices. They also now consistent with the existing disabled styles for Buttons, Checkboxes, and Radios.
+
+Disabled form controls appear with their opacity reduced by 50% and with an alternative cursor appearance when hovered over.
+
+This was added in [pull request #3187: Add disabled styles for form controls](https://github.com/alphagov/govuk-frontend/pull/3187).
+
+#### Added a top-level `disabled` parameter to form controls
+
+The Nunjucks macros for Text Input, Textarea, Select and File Upload components have been updated to include a top-level `disabled` parameter, making it easier to enable the disabled state for these controls.
+
+```nunjucks
+{{ govukInput({
+  id: "disabled-input",
+  name: "disabled-input",
+  value: "Unchangeable value",
+  disabled: true
+}) }}
+```
+
+Disabled form controls have poor contrast and can confuse some users, so avoid them if possible.
+
+Only use disabled form controls if research shows it makes the user interface easier to understand.
+
+This was added in [pull request #3187: Add disabled styles for form controls](https://github.com/alphagov/govuk-frontend/pull/3187).
+
 ### Fixes
 
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
