@@ -31,6 +31,18 @@ Only use disabled form controls if research shows it makes the user interface ea
 
 This was added in [pull request #3187: Add disabled styles for form controls](https://github.com/alphagov/govuk-frontend/pull/3187).
 
+### Deprecated features
+
+#### Stop using the `govuk-button--disabled` class on buttons
+
+The `govuk-button--disabled` class is deprecated and will be removed in the next major release.
+
+If a [Button](https://design-system.service.gov.uk/components/button/) uses a `<button>` or `<input>` element, use the `disabled` HTML attribute instead. You will not need to make any changes if you're using the `govukButton` Nunjucks macro.
+
+Disabling links that are styled to look like buttons will not be supported by future releases.
+
+This was added in [pull request #3326: Deprecate `govuk-button--disabled` class](https://github.com/alphagov/govuk-frontend/pull/3326).
+
 ### Fixes
 
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
