@@ -1,0 +1,21 @@
+name: Triage pull requests
+
+on:
+  pull_request:
+    types:
+      - labeled
+      - opened
+
+jobs:
+  add-to-project:
+    name: Triage pull requests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add to project
+        uses: actions/add-to-project@v0.4.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+          # Add to 'Design System Sprint Board'
+          project-url: https://github.com/orgs/alphagov/projects/53
+          labeled: dependabot
