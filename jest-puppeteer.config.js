@@ -2,7 +2,6 @@ const devServerOptions = require('./jest-dev-server.config.js')
 
 module.exports = {
   browserContext: 'incognito',
-  browserPerWorker: true,
 
   /**
    * Workaround for jest-environment-puppeteer 'uncaughtException'
