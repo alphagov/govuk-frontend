@@ -1,7 +1,6 @@
 const cheerio = require('cheerio')
 
-const config = require('../config')
-const PORT = config.ports.test
+const { ports } = require('../config')
 
 const expectedPages = [
   'bank-holidays',
@@ -22,10 +21,10 @@ const expectedPages = [
 
 // Returns Fetch API wrapper which applies these options by default
 const fetchPath = (path, options) => {
-  return fetch(`http://localhost:${PORT}/full-page-examples/${path}`, options)
+  return fetch(`http://localhost:${ports.app}/full-page-examples/${path}`, options)
 }
 
-describe(`http://localhost:${PORT}/full-page-examples/`, () => {
+describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
   describe.each(expectedPages)('%s', path => {
     it('should resolve with a http status code of 200', async () => {
       const { status } = await fetchPath(path, { method: 'HEAD' })

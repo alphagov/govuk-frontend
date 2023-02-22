@@ -1,9 +1,7 @@
 const cheerio = require('cheerio')
 
-const config = require('../config')
+const { paths, ports } = require('../config')
 const { getDirectories } = require('../lib/file-helper')
-
-const PORT = config.ports.test
 
 const expectedPages = [
   '/',
@@ -19,10 +17,10 @@ const expectedPages = [
 
 // Returns Fetch API wrapper which applies these options by default
 const fetchPath = (path, options) => {
-  return fetch(`http://localhost:${PORT}${path}`, options)
+  return fetch(`http://localhost:${ports.app}${path}`, options)
 }
 
-describe(`http://localhost:${PORT}`, () => {
+describe(`http://localhost:${ports.app}`, () => {
   describe.each(expectedPages)('%s', path => {
     it('should resolve with a http status code of 200', async () => {
       const { status } = await fetchPath(path, { method: 'HEAD' })
@@ -45,7 +43,7 @@ describe(`http://localhost:${PORT}`, () => {
       const response = await fetchPath('/')
       const $ = cheerio.load(await response.text())
 
-      const componentNames = await getDirectories(config.paths.components)
+      const componentNames = await getDirectories(paths.components)
       const componentsList = $('li a[href^="/components/"]').get()
 
       // Since we have an 'all' component link that renders the default example of all

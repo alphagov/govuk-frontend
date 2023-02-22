@@ -2,6 +2,5 @@
  * Review application ports
  */
 module.exports = {
-  app: 3000,
-  test: 8888
+  app: process.env.PORT || 3000
 }
