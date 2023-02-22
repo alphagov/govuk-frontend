@@ -147,7 +147,7 @@
   // Disabled state
   .govuk-checkboxes__input:disabled,
   .govuk-checkboxes__input:disabled + .govuk-checkboxes__label {
-    cursor: default;
+    cursor: not-allowed;
   }
 
   .govuk-checkboxes__input:disabled + .govuk-checkboxes__label,

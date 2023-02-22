@@ -41,6 +41,12 @@
         border-width: $govuk-border-width-form-element * 2;
       }
     }
+
+    &:disabled {
+      opacity: .5;
+      color: inherit;
+      cursor: not-allowed;
+    }
   }
 
   .govuk-select option:active,
