@@ -1,35 +1,43 @@
-import { join } from 'path'
-
 import percySnapshot from '@percy/puppeteer'
 import { isPercyEnabled } from '@percy/sdk-utils'
 import { launch } from 'puppeteer'
 
 import configPaths from '../config/paths.js'
-import { getDirectories, getListing } from '../lib/file-helper.js'
-import { goToComponent } from '../lib/puppeteer-helpers.js'
+import { filterPath, getDirectories, getListing } from '../lib/file-helper.js'
+import { goToComponent, goToExample } from '../lib/puppeteer-helpers.js'
 
 import { download } from './browser/download.mjs'
 
 /**
- * Send all component screenshots to Percy
+ * Send screenshots in concurrent batches to Percy
  * for visual regression testing
  *
  * @returns {Promise<void>}
  */
-export async function screenshotComponents () {
+export async function screenshots () {
   const browser = await launch()
-  const componentNames = await getDirectories(configPaths.components)
 
-  // Screenshot each component
-  const input = [...componentNames]
+  // Screenshot stack
+  const input = []
 
-  // Screenshot 4x components concurrently
+  // Add components to screenshot
+  input.push(...componentNames.map((screenshotName) =>
+    /** @type {const} */ ([screenshotComponent, screenshotName])))
+
+  // Add examples to screenshot
+  input.push(...exampleNames.map((screenshotName) =>
+    /** @type {const} */ ([screenshotExample, screenshotName])))
+
+  // Batch 4x concurrent screenshots
   while (input.length) {
     const batch = input.splice(0, 4)
 
-    await Promise.all(batch
-      .map(async (componentName) => screenshotComponent(await browser.newPage(), componentName))
-    )
+    // Take screenshots
+    const screenshotTasks = batch.map(async ([screenshotFn, screenshotName]) =>
+      screenshotFn(await browser.newPage(), screenshotName))
+
+    // Wait until batch finishes
+    await Promise.all(screenshotTasks)
   }
 
   // Close browser
@@ -45,14 +53,13 @@ export async function screenshotComponents () {
  * @returns {Promise<void>}
  */
 export async function screenshotComponent (page, componentName) {
-  const componentFiles = await getListing(configPaths.components, `**/${componentName}/**`)
+  await goToComponent(page, componentName)
 
   // Screenshot preview page (with JavaScript)
-  await goToComponent(page, componentName)
   await percySnapshot(page, `js: ${componentName}`)
 
   // Check for "JavaScript enabled" components
-  if (componentFiles.includes(join(componentName, `${componentName}.mjs`))) {
+  if (componentsFiles.some(filterPath([`**/${componentName}.mjs`]))) {
     await page.setJavaScriptEnabled(false)
 
     // Screenshot preview page (without JavaScript)
@@ -64,9 +71,45 @@ export async function screenshotComponent (page, componentName) {
   return page.close()
 }
 
+/**
+ * Send single example screenshot to Percy
+ * for visual regression testing
+ *
+ * @param {import('puppeteer').Page} page - Puppeteer page object
+ * @param {string} exampleName - Component name
+ * @returns {Promise<void>}
+ */
+export async function screenshotExample (page, exampleName) {
+  await goToExample(page, exampleName)
+
+  // Dismiss app banner
+  await page.setCookie({
+    name: 'dismissed-app-banner',
+    value: 'yes',
+    url: page.url()
+  })
+
+  // Screenshot preview page
+  await page.reload({ waitUntil: 'load' })
+  await percySnapshot(page, `js: ${exampleName} (example)`)
+
+  // Close page
+  return page.close()
+}
+
 if (!await isPercyEnabled()) {
   throw new Error('Percy healthcheck failed')
 }
 
-await download() // Download browser
-await screenshotComponents()
+const [componentNames, componentsFiles] = await Promise.all([
+  getDirectories(configPaths.components),
+  getListing(configPaths.components),
+  download() // Download browser
+])
+
+const exampleNames = [
+  'text-alignment',
+  'typography'
+]
+
+await screenshots() // Take screenshots
