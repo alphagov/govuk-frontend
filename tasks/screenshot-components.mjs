@@ -82,7 +82,15 @@ export async function screenshotComponent (page, componentName) {
 export async function screenshotExample (page, exampleName) {
   await goToExample(page, exampleName)
 
+  // Dismiss app banner
+  await page.setCookie({
+    name: 'dismissed-app-banner',
+    value: 'yes',
+    url: page.url()
+  })
+
   // Screenshot preview page
+  await page.reload({ waitUntil: 'load' })
   await percySnapshot(page, `js: ${exampleName} (example)`)
 
   // Close page
