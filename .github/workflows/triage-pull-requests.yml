@@ -18,4 +18,4 @@ jobs:
 
           # Add to 'Design System Sprint Board'
           project-url: https://github.com/orgs/alphagov/projects/53
-          labeled: dependabot
+          labeled: dependencies
