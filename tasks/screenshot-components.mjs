@@ -9,24 +9,31 @@ import { goToComponent } from '../lib/puppeteer-helpers.js'
 import { download } from './browser/download.mjs'
 
 /**
- * Send all component screenshots to Percy
+ * Send screenshots in concurrent batches to Percy
  * for visual regression testing
  *
  * @returns {Promise<void>}
  */
-export async function screenshotComponents () {
+export async function screenshots () {
   const browser = await launch()
 
-  // Screenshot each component
-  const input = [...componentNames]
+  // Screenshot stack
+  const input = []
 
-  // Screenshot 4x components concurrently
+  // Add components to screenshot
+  input.push(...componentNames.map((screenshotName) =>
+    /** @type {const} */ ([screenshotComponent, screenshotName])))
+
+  // Batch 4x concurrent screenshots
   while (input.length) {
     const batch = input.splice(0, 4)
 
-    await Promise.all(batch
-      .map(async (componentName) => screenshotComponent(await browser.newPage(), componentName))
-    )
+    // Take screenshots
+    const screenshotTasks = batch.map(async ([screenshotFn, screenshotName]) =>
+      screenshotFn(await browser.newPage(), screenshotName))
+
+    // Wait until batch finishes
+    await Promise.all(screenshotTasks)
   }
 
   // Close browser
@@ -42,8 +49,9 @@ export async function screenshotComponents () {
  * @returns {Promise<void>}
  */
 export async function screenshotComponent (page, componentName) {
-  // Screenshot preview page (with JavaScript)
   await goToComponent(page, componentName)
+
+  // Screenshot preview page (with JavaScript)
   await percySnapshot(page, `js: ${componentName}`)
 
   // Check for "JavaScript enabled" components
@@ -69,4 +77,4 @@ const [componentNames, componentsFiles] = await Promise.all([
   download() // Download browser
 ])
 
-await screenshotComponents()
+await screenshots() // Take screenshots
