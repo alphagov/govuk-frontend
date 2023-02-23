@@ -111,11 +111,10 @@ examples:
           text: GOV.UK frontend option 1
         - value: 2
           text: GOV.UK frontend option 2
-          selected: true
         - value: 3
           text: GOV.UK frontend option 3
           disabled: true
-      value: 3
+      value: 2
   - name: with hint text and error message
     data:
       id: select-2
