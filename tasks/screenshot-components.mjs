@@ -1,11 +1,9 @@
-import { join } from 'path'
-
 import percySnapshot from '@percy/puppeteer'
 import { isPercyEnabled } from '@percy/sdk-utils'
 import { launch } from 'puppeteer'
 
 import configPaths from '../config/paths.js'
-import { getDirectories, getListing } from '../lib/file-helper.js'
+import { filterPath, getDirectories, getListing } from '../lib/file-helper.js'
 import { goToComponent } from '../lib/puppeteer-helpers.js'
 
 import { download } from './browser/download.mjs'
@@ -18,7 +16,6 @@ import { download } from './browser/download.mjs'
  */
 export async function screenshotComponents () {
   const browser = await launch()
-  const componentNames = await getDirectories(configPaths.components)
 
   // Screenshot each component
   const input = [...componentNames]
@@ -45,14 +42,12 @@ export async function screenshotComponents () {
  * @returns {Promise<void>}
  */
 export async function screenshotComponent (page, componentName) {
-  const componentFiles = await getListing(configPaths.components, `**/${componentName}/**`)
-
   // Screenshot preview page (with JavaScript)
   await goToComponent(page, componentName)
   await percySnapshot(page, `js: ${componentName}`)
 
   // Check for "JavaScript enabled" components
-  if (componentFiles.includes(join(componentName, `${componentName}.mjs`))) {
+  if (componentsFiles.some(filterPath([`**/${componentName}.mjs`]))) {
     await page.setJavaScriptEnabled(false)
 
     // Screenshot preview page (without JavaScript)
@@ -68,5 +63,10 @@ if (!await isPercyEnabled()) {
   throw new Error('Percy healthcheck failed')
 }
 
-await download() // Download browser
+const [componentNames, componentsFiles] = await Promise.all([
+  getDirectories(configPaths.components),
+  getListing(configPaths.components),
+  download() // Download browser
+])
+
 await screenshotComponents()
