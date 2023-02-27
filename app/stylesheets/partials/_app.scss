@@ -23,7 +23,7 @@
     clear: both;
     box-shadow: 0 0 0 5px $app-preview-border-colour;
 
-    @include govuk-if-ie8 {
+    @include _govuk-if-ie8 {
       outline: 5px solid $app-preview-border-colour;
     }
   }

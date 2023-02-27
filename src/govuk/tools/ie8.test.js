@@ -1,6 +1,18 @@
+const sass = require('node-sass')
 const outdent = require('outdent')
 
 const { compileSassString } = require('../../../lib/jest-helpers')
+
+// Create a mock warn function that we can use to override the native @warn
+// function, that we can make assertions about post-render.
+const mockWarnFunction = jest.fn()
+  .mockReturnValue(sass.NULL)
+
+const sassConfig = {
+  functions: {
+    '@warn': mockWarnFunction
+  }
+}
 
 describe('@mixin govuk-if-ie8', () => {
   it('outputs @content when $govuk-is-ie8 is true', async () => {
@@ -15,7 +27,7 @@ describe('@mixin govuk-if-ie8', () => {
       }
     `
 
-    await expect(compileSassString(sass))
+    await expect(compileSassString(sass, sassConfig))
       .resolves
       .toMatchObject({
         css: outdent`
@@ -38,9 +50,32 @@ describe('@mixin govuk-if-ie8', () => {
       }
     `
 
-    await expect(compileSassString(sass))
+    await expect(compileSassString(sass, sassConfig))
       .resolves
       .toMatchObject({ css: '' })
+  })
+
+  it('emits a deprecation warning when called', async () => {
+    const sass = `
+      @import "settings/ie8";
+      @import "tools/ie8";
+
+      @include govuk-if-ie8 {
+        .foo {
+          color: red;
+        }
+      }
+    `
+
+    await compileSassString(sass, sassConfig)
+
+    // Expect our mocked @warn function to have been called once with a single
+    // argument, which should be the deprecation notice
+    expect(mockWarnFunction.mock.calls[0][0].getValue())
+      .toEqual(
+        'The govuk-if-ie8 mixin is deprecated and will be removed in v5.0. To ' +
+        'silence this warning, update $govuk-suppressed-warnings with key: "ie8"'
+      )
   })
 })
 
@@ -57,7 +92,7 @@ describe('@mixin govuk-not-ie8', () => {
       }
     `
 
-    await expect(compileSassString(sass))
+    await expect(compileSassString(sass, sassConfig))
       .resolves
       .toMatchObject({
         css: outdent`
@@ -80,8 +115,31 @@ describe('@mixin govuk-not-ie8', () => {
       }
     `
 
-    await expect(compileSassString(sass))
+    await expect(compileSassString(sass, sassConfig))
       .resolves
       .toMatchObject({ css: '' })
+  })
+
+  it('emits a deprecation warning when called', async () => {
+    const sass = `
+      @import "settings/ie8";
+      @import "tools/ie8";
+
+      @include govuk-not-ie8 {
+        .foo {
+          color: red;
+        }
+      }
+    `
+
+    await compileSassString(sass, sassConfig)
+
+    // Expect our mocked @warn function to have been called once with a single
+    // argument, which should be the deprecation notice
+    expect(mockWarnFunction.mock.calls[0][0].getValue())
+      .toEqual(
+        'The govuk-not-ie8 mixin is deprecated and will be removed in v5.0. To ' +
+        'silence this warning, update $govuk-suppressed-warnings with key: "ie8"'
+      )
   })
 })

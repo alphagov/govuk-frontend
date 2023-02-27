@@ -68,7 +68,7 @@
     }
   }
 
-  @include govuk-if-ie8 {
+  @include _govuk-if-ie8 {
     width: $width;
     // Since media queries are not supported in IE8,
     // we need to duplicate this margin that centers the page.
