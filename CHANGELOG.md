@@ -31,6 +31,16 @@ Only use disabled form controls if research shows it makes the user interface ea
 
 This was added in [pull request #3187: Add disabled styles for form controls](https://github.com/alphagov/govuk-frontend/pull/3187).
 
+#### Configure whether the Accordion remembers and restores sessions
+
+By default, when a user leaves a page, the [Accordion](https://design-system.service.gov.uk/components/accordion/) will remember the layout of expanded and collapsed sections selected by the user. If the user returns to the page, this layout will be restored and override any sections manually set as `expanded` in code.
+
+You can now disable this functionality by using the `rememberExpanded` option in the `govukAccordion` Nunjucks macro.
+
+If you're not using the Nunjucks macro, you can disable it using the `data-remember-expanded` HTML attribute.
+
+This was added in [pull request #3342: Add option to disable sessionState in Accordion](https://github.com/alphagov/govuk-frontend/pull/3342).
+
 ### Deprecated features
 
 #### Stop using the `govuk-button--disabled` class on buttons

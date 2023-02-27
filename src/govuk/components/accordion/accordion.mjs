@@ -49,8 +49,8 @@ function Accordion ($module, config) {
   this.$module = $module
 
   var defaultConfig = {
-    rememberExpanded: true,
-    i18n: ACCORDION_TRANSLATIONS
+    i18n: ACCORDION_TRANSLATIONS,
+    rememberExpanded: true
   }
 
   /** @type {AccordionConfig} */
@@ -531,8 +531,8 @@ export default Accordion
  *
  * @typedef {object} AccordionConfig
  * @property {AccordionTranslations} [i18n = ACCORDION_TRANSLATIONS] - See constant {@link ACCORDION_TRANSLATIONS}
- * @property {boolean} [rememberExpanded] - Whether to remember the expanded and
- *   collapsed state of each section is remembered and restored when navigating.
+ * @property {boolean} [rememberExpanded] - Whether the expanded and collapsed
+ *   state of each section is remembered and restored when navigating.
  */
 
 /**
