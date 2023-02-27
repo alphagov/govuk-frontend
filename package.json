@@ -72,7 +72,7 @@
     "rollup": "0.59.4",
     "sassdoc": "^2.7.4",
     "slash": "^5.0.0",
-    "terser": "^5.16.4",
+    "terser": "^5.16.5",
     "yargs-parser": "^21.1.1"
   },
   "devDependencies": {
