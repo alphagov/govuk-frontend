@@ -26,7 +26,7 @@ describe('The settings layer', () => {
 
       return expect(compileSassFile(file)).resolves.toMatchObject({
         css: expect.any(String),
-        stats: expect.any(Object)
+        loadedUrls: expect.arrayContaining([expect.any(URL)])
       })
     })
 

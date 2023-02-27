@@ -1,21 +1,17 @@
 import { readFile } from 'fs/promises'
 import { join, parse } from 'path'
-import { promisify } from 'util'
 
 import PluginError from 'plugin-error'
 import postcss from 'postcss'
 // eslint-disable-next-line import/default
 import postcssrc from 'postcss-load-config'
-import { render } from 'sass-embedded'
+import { compileAsync } from 'sass-embedded'
 
 import { paths, pkg } from '../config/index.js'
 import { getListing } from '../lib/file-helper.js'
 
 import { writeAsset } from './compile-assets.mjs'
 import { destination, isDist, isPackage, isPublic } from './task-arguments.mjs'
-
-// Sass renderer
-const sassRender = promisify(render)
 
 /**
  * Compile Sass to CSS task
@@ -62,19 +58,16 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath }]) {
 
   // Render Sass
   if (!isPackage) {
-    ({ css, map } = await sassRender({
-      file: moduleSrcPath,
-      outFile: moduleDestPath,
-
+    ({ css, sourceMap: map } = await compileAsync(moduleSrcPath, {
       // Turn off dependency warnings
       quietDeps: true,
 
       // Enable source maps
       sourceMap: true,
-      sourceMapContents: true,
+      sourceMapIncludeSources: true,
 
       // Resolve @imports via
-      includePaths: [
+      loadPaths: [
         join(paths.node_modules, 'govuk_frontend_toolkit/stylesheets'),
         paths.node_modules
       ]
@@ -82,8 +75,9 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath }]) {
 
     // Pass source maps to PostCSS
     options.map = {
+      annotation: true,
       inline: false,
-      prev: map.toString()
+      prev: map
     }
   }
 
