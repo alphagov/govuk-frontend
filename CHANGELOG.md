@@ -43,6 +43,19 @@ Disabling links that are styled to look like buttons will not be supported by fu
 
 This was added in [pull request #3326: Deprecate `govuk-button--disabled` class](https://github.com/alphagov/govuk-frontend/pull/3326).
 
+#### Stop using the deprecated IE8 mixins and settings
+
+The next major version of GOV.UK Frontend will remove support for Internet Explorer 8 (IE8). In preparation for this, we've deprecated the settings and mixins used when [generating IE8 specific stylesheets](https://frontend.design-system.service.gov.uk/supporting-ie8/#2-generate-an-ie8-specific-stylesheet).
+
+You'll start seeing deprecation warnings if you're:
+
+- using the [`govuk-if-ie8`](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-if-ie8) and [`govuk-not-ie8`](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-not-ie8) mixins in your own Sass code (for example `@include govuk-if-ie8`)
+- changing the [`$govuk-is-ie8`](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-is-ie8) and [`$govuk-ie8-breakpoint`](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-ie8-breakpoint) settings to anything other than their default values
+
+If you no longer need to support IE8, we recommend you stop generating an IE8 specific stylesheet and remove references to the IE8 mixins from your code.
+
+You can also silence these deprecation warnings by adding `ie8` to the [$govuk-suppressed-warnings](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-suppressed-warnings) setting, but once v5.0 has been released you will need to address them as part of the upgrade process.
+
 ### Fixes
 
 We’ve made fixes to GOV.UK Frontend in the following pull requests:

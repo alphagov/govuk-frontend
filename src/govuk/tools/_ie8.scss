@@ -1,6 +1,19 @@
+@import "../settings/warnings";
+
 ////
 /// @group tools/internet-explorer-8
 ////
+
+/// A private version of the govuk-if-ie8 mixin to avoid deprecation
+/// warnings where we use it internally
+///
+/// @access private
+
+@mixin _govuk-if-ie8 {
+  @if $govuk-is-ie8 {
+    @content;
+  }
+}
 
 /// Conditionally include rules only for IE8
 ///
@@ -18,9 +31,26 @@
 ///   }
 ///
 /// @access public
+/// @deprecated Will be removed in v5.0
 
 @mixin govuk-if-ie8 {
-  @if $govuk-is-ie8 {
+  @include _warning(
+    ie8,
+    "The govuk-if-ie8 mixin is deprecated and will be removed in v5.0."
+  );
+
+  @include _govuk-if-ie8 {
+    @content;
+  }
+}
+
+/// A private version of the govuk-not-ie8 mixin to avoid deprecation
+/// warnings where we use it internally
+///
+/// @access private
+
+@mixin _govuk-not-ie8 {
+  @if not $govuk-is-ie8 {
     @content;
   }
 }
@@ -43,9 +73,15 @@
 ///   }
 ///
 /// @access public
+/// @deprecated Will be removed in v5.0
 
 @mixin govuk-not-ie8 {
-  @if not $govuk-is-ie8 {
+  @include _warning(
+    ie8,
+    "The govuk-not-ie8 mixin is deprecated and will be removed in v5.0."
+  );
+
+  @include _govuk-not-ie8 {
     @content;
   }
 }
