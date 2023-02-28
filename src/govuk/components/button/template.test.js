@@ -56,6 +56,13 @@ describe('Button', () => {
       expect($component.attr('name')).toEqual('start-now')
     })
 
+    it('renders with id', () => {
+      const $ = render('button', examples.id)
+
+      const $component = $('.govuk-button')
+      expect($component.attr('id')).toEqual('submit')
+    })
+
     it('renders with value', () => {
       const $ = render('button', examples.value)
 
