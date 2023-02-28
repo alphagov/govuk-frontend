@@ -7,7 +7,11 @@ updates:
     reviewers:
       - alphagov/design-system-developers
     schedule:
-      interval: daily
+      # Defaults to weekly on Monday
+      interval: weekly
+      time: '10:30'
+      # Setting a timezone so we let dependabot worry about BST
+      timezone: 'Europe/London'
     versioning-strategy: increase
 
     allow:
@@ -29,4 +33,8 @@ updates:
     reviewers:
       - alphagov/design-system-developers
     schedule:
-      interval: daily
+      # Defaults to weekly on Monday
+      interval: weekly
+      time: '10:30'
+      # Setting a timezone so we let dependabot worry about BST
+      timezone: 'Europe/London'
