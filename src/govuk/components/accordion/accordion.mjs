@@ -49,7 +49,8 @@ function Accordion ($module, config) {
   this.$module = $module
 
   var defaultConfig = {
-    i18n: ACCORDION_TRANSLATIONS
+    i18n: ACCORDION_TRANSLATIONS,
+    rememberExpanded: true
   }
 
   /** @type {AccordionConfig} */
@@ -469,7 +470,7 @@ var helper = {
  * @param {Element} $section - Section element
  */
 Accordion.prototype.storeState = function ($section) {
-  if (this.browserSupportsSessionStorage) {
+  if (this.browserSupportsSessionStorage && this.config.rememberExpanded) {
     // We need a unique way of identifying each content in the Accordion. Since
     // an `#id` should be unique and an `id` is required for `aria-` attributes
     // `id` can be safely used.
@@ -493,7 +494,7 @@ Accordion.prototype.storeState = function ($section) {
  * @param {Element} $section - Section element
  */
 Accordion.prototype.setInitialState = function ($section) {
-  if (this.browserSupportsSessionStorage) {
+  if (this.browserSupportsSessionStorage && this.config.rememberExpanded) {
     var $button = $section.querySelector('.' + this.sectionButtonClass)
 
     if ($button) {
@@ -530,6 +531,8 @@ export default Accordion
  *
  * @typedef {object} AccordionConfig
  * @property {AccordionTranslations} [i18n = ACCORDION_TRANSLATIONS] - See constant {@link ACCORDION_TRANSLATIONS}
+ * @property {boolean} [rememberExpanded] - Whether the expanded and collapsed
+ *   state of each section is remembered and restored when navigating.
  */
 
 /**
