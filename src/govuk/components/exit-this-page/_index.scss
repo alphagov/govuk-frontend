@@ -4,14 +4,12 @@
   $indicator-size: .75em;
 
   .govuk-exit-this-page {
+    @include govuk-responsive-margin(8, "bottom");
+    position: sticky;
     z-index: 1000;
     top: 0;
     left: 0;
     width: 100%;
-    @supports (position: sticky) {
-      @include govuk-responsive-padding(8, "bottom");
-      position: sticky;
-    }
 
     @include govuk-media-query($from: tablet) {
       display: inline-block;
