@@ -31,6 +31,16 @@ Only use disabled form controls if research shows it makes the user interface ea
 
 This was added in [pull request #3187: Add disabled styles for form controls](https://github.com/alphagov/govuk-frontend/pull/3187).
 
+#### Configure whether the Accordion remembers and restores sessions
+
+By default, when a user leaves a page, the [Accordion](https://design-system.service.gov.uk/components/accordion/) will remember the layout of expanded and collapsed sections selected by the user. If the user returns to the page, this layout will be restored and override any sections manually set as `expanded` in code.
+
+You can now disable this functionality by using the `rememberExpanded` option in the `govukAccordion` Nunjucks macro.
+
+If you're not using the Nunjucks macro, you can disable it using the `data-remember-expanded` HTML attribute.
+
+This was added in [pull request #3342: Add option to disable sessionState in Accordion](https://github.com/alphagov/govuk-frontend/pull/3342).
+
 ### Deprecated features
 
 #### Stop using the `govuk-button--disabled` class on buttons
@@ -42,6 +52,19 @@ If a [Button](https://design-system.service.gov.uk/components/button/) uses a `<
 Disabling links that are styled to look like buttons will not be supported by future releases.
 
 This was added in [pull request #3326: Deprecate `govuk-button--disabled` class](https://github.com/alphagov/govuk-frontend/pull/3326).
+
+#### Stop using the deprecated IE8 mixins and settings
+
+The next major version of GOV.UK Frontend will remove support for Internet Explorer 8 (IE8). In preparation for this, we've deprecated the settings and mixins used when [generating IE8 specific stylesheets](https://frontend.design-system.service.gov.uk/supporting-ie8/#2-generate-an-ie8-specific-stylesheet).
+
+You'll start seeing deprecation warnings if you're:
+
+- using the [`govuk-if-ie8`](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-if-ie8) and [`govuk-not-ie8`](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-not-ie8) mixins in your own Sass code (for example `@include govuk-if-ie8`)
+- changing the [`$govuk-is-ie8`](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-is-ie8) and [`$govuk-ie8-breakpoint`](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-ie8-breakpoint) settings to anything other than their default values
+
+If you no longer need to support IE8, we recommend you stop generating an IE8 specific stylesheet and remove references to the IE8 mixins from your code.
+
+You can also silence these deprecation warnings by adding `ie8` to the [$govuk-suppressed-warnings](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-suppressed-warnings) setting, but once v5.0 has been released you will need to address them as part of the upgrade process.
 
 ### Fixes
 

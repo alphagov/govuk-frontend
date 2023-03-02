@@ -120,6 +120,29 @@ describe('/components/accordion', () => {
         expect(expandedState).toEqual(expandedStateAfterRefresh)
       })
 
+      it('should not maintain the expanded state after a page refresh, if configured', async () => {
+        const sectionHeaderButton = '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-button'
+
+        await goToComponent(page, 'accordion', {
+          exampleName: 'with-remember-expanded-off'
+        })
+        await page.click(sectionHeaderButton)
+
+        const expandedState = await page.evaluate((sectionHeaderButton) => {
+          return document.body.querySelector(sectionHeaderButton).getAttribute('aria-expanded')
+        }, sectionHeaderButton)
+
+        await page.reload({
+          waitUntil: 'load'
+        })
+
+        const expandedStateAfterRefresh = await page.evaluate((sectionHeaderButton) => {
+          return document.body.querySelector(sectionHeaderButton).getAttribute('aria-expanded')
+        }, sectionHeaderButton)
+
+        expect(expandedState).not.toEqual(expandedStateAfterRefresh)
+      })
+
       it('should transform the button span to <button>', async () => {
         await goToComponent(page, 'accordion')
 

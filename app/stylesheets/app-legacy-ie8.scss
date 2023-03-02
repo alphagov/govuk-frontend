@@ -10,7 +10,8 @@ $govuk-compatibility-govukelements: true;
 
 // Suppress compatibility mode deprecation warnings locally
 $govuk-suppressed-warnings: (
-  "compatibility-mode"
+  "compatibility-mode",
+  "ie8"
 );
 
 // Set Elements assets path

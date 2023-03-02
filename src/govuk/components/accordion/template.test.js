@@ -107,5 +107,12 @@ describe('Accordion', () => {
       expect($component.attr('data-i18n.show-section')).toEqual('Expand')
       expect($component.attr('data-i18n.show-section-aria-label')).toEqual('Expand this section')
     })
+
+    it('renders with remember expanded data attribute', () => {
+      const $ = render('accordion', examples['with remember expanded off'])
+      const $component = $('.govuk-accordion')
+
+      expect($component.attr('data-remember-expanded')).toEqual('false')
+    })
   })
 })
