@@ -157,7 +157,6 @@ describe('@mixin _govuk-responsive-spacing', () => {
           .foo {
             margin: 15px;
           }
-
           @media (min-width: 30em) {
             .foo {
               margin: 25px;
@@ -183,7 +182,6 @@ describe('@mixin _govuk-responsive-spacing', () => {
           .foo {
             padding-top: 15px;
           }
-
           @media (min-width: 30em) {
             .foo {
               padding-top: 25px;
@@ -230,7 +228,6 @@ describe('@mixin _govuk-responsive-spacing', () => {
             .foo {
               margin: 15px !important;
             }
-
             @media (min-width: 30em) {
               .foo {
                 margin: 25px !important;
@@ -261,7 +258,6 @@ describe('@mixin _govuk-responsive-spacing', () => {
             .foo {
               margin-top: 15px !important;
             }
-
             @media (min-width: 30em) {
               .foo {
                 margin-top: 25px !important;
@@ -293,7 +289,6 @@ describe('@mixin _govuk-responsive-spacing', () => {
             .foo {
               margin: 17px;
             }
-
             @media (min-width: 30em) {
               .foo {
                 margin: 27px;
@@ -324,7 +319,6 @@ describe('@mixin _govuk-responsive-spacing', () => {
             .foo {
               margin-top: 17px;
             }
-
             @media (min-width: 30em) {
               .foo {
                 margin-top: 27px;
@@ -353,7 +347,6 @@ describe('@mixin govuk-responsive-margin', () => {
           .foo {
             margin: 15px;
           }
-
           @media (min-width: 30em) {
             .foo {
               margin: 25px;
@@ -384,7 +377,6 @@ describe('@mixin govuk-responsive-margin', () => {
           .foo {
             margin-top: 17px !important;
           }
-
           @media (min-width: 30em) {
             .foo {
               margin-top: 27px !important;
@@ -412,7 +404,6 @@ describe('@mixin govuk-responsive-padding', () => {
           .foo {
             padding: 15px;
           }
-
           @media (min-width: 30em) {
             .foo {
               padding: 25px;
@@ -443,7 +434,6 @@ describe('@mixin govuk-responsive-padding', () => {
           .foo {
             padding-top: 17px !important;
           }
-
           @media (min-width: 30em) {
             .foo {
               padding-top: 27px !important;

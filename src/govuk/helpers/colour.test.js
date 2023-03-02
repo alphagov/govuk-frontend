@@ -1,16 +1,16 @@
-const sass = require('node-sass')
 const outdent = require('outdent')
+const { sassNull } = require('sass-embedded')
 
 const { compileSassString } = require('../../../lib/jest-helpers')
 
 // Create a mock warn function that we can use to override the native @warn
 // function, that we can make assertions about post-render.
 const mockWarnFunction = jest.fn()
-  .mockReturnValue(sass.NULL)
+  .mockReturnValue(sassNull)
 
 const sassConfig = {
-  functions: {
-    '@warn': mockWarnFunction
+  logger: {
+    warn: mockWarnFunction
   }
 }
 
@@ -176,12 +176,12 @@ describe('@function govuk-colour', () => {
 
       // Expect our mocked @warn function to have been called once with a single
       // argument, which should be the deprecation notice
-      expect(mockWarnFunction.mock.calls[0][0].getValue())
-        .toEqual(
+      expect(mockWarnFunction.mock.calls[0])
+        .toEqual(expect.arrayContaining([
           '$govuk-use-legacy-palette is deprecated. Only the modern colour ' +
             'palette will be supported from v5.0. To silence this warning, ' +
             'update $govuk-suppressed-warnings with key: "legacy-palette"'
-        )
+        ]))
     })
   })
 

@@ -1,16 +1,16 @@
-const sass = require('node-sass')
 const { outdent } = require('outdent')
+const { sassNull } = require('sass-embedded')
 
 const { compileSassString } = require('../../../lib/jest-helpers')
 
 // Create a mock warn function that we can use to override the native @warn
 // function, that we can make assertions about post-render.
 const mockWarnFunction = jest.fn()
-  .mockReturnValue(sass.NULL)
+  .mockReturnValue(sassNull)
 
 const sassConfig = {
-  functions: {
-    '@warn': mockWarnFunction
+  logger: {
+    warn: mockWarnFunction
   }
 }
 
@@ -264,12 +264,11 @@ describe('@mixin govuk-typography-responsive', () => {
             font-size: 0.75rem;
             line-height: 1.25;
           }
-
           @media (min-width: 30em) {
             .foo {
               font-size: 14px;
               font-size: 0.875rem;
-              line-height: 1.42857;
+              line-height: 1.4285714286;
             }
           }
         `
@@ -294,7 +293,6 @@ describe('@mixin govuk-typography-responsive', () => {
             font-size: 0.75rem;
             line-height: 1.25;
           }
-
           @media print {
             .foo {
               font-size: 14pt;
@@ -310,14 +308,14 @@ describe('@mixin govuk-typography-responsive', () => {
       ${sassBootstrap}
 
       .foo {
-        @include govuk-typography-responsive(3.14159265359)
+        @include govuk-typography-responsive(3.1415926536)
       }
     `
 
     await expect(compileSassString(sass, sassConfig))
       .rejects
       .toThrow(
-        'Unknown font size `3.14159` - expected a point from the typography scale.'
+        'Unknown font size `3.1415926536` - expected a point from the typography scale.'
       )
   })
 
@@ -340,12 +338,11 @@ describe('@mixin govuk-typography-responsive', () => {
               font-size: 0.75rem !important;
               line-height: 1.25 !important;
             }
-
             @media (min-width: 30em) {
               .foo {
                 font-size: 14px !important;
                 font-size: 0.875rem !important;
-                line-height: 1.42857 !important;
+                line-height: 1.4285714286 !important;
               }
             }
           `
@@ -370,7 +367,6 @@ describe('@mixin govuk-typography-responsive', () => {
               font-size: 0.75rem !important;
               line-height: 1.25 !important;
             }
-
             @media print {
               .foo {
                 font-size: 14pt !important;
@@ -401,7 +397,6 @@ describe('@mixin govuk-typography-responsive', () => {
               font-size: 0.75rem;
               line-height: 1.75;
             }
-
             @media (min-width: 30em) {
               .foo {
                 font-size: 14px;
@@ -440,11 +435,10 @@ describe('@mixin govuk-typography-responsive', () => {
               font-size: 12px;
               line-height: 1.25;
             }
-
             @media (min-width: 30em) {
               .foo {
                 font-size: 14px;
-                line-height: 1.42857;
+                line-height: 1.4285714286;
               }
             }
           `
@@ -470,11 +464,10 @@ describe('@mixin govuk-typography-responsive', () => {
               font-size: 12px;
               line-height: 1.25;
             }
-
             @media (min-width: 30em) {
               .foo {
                 font-size: 14px;
-                line-height: 1.42857;
+                line-height: 1.4285714286;
               }
             }
           `
@@ -500,11 +493,10 @@ describe('@mixin govuk-typography-responsive', () => {
                 font-size: 12px !important;
                 line-height: 1.25 !important;
               }
-
               @media (min-width: 30em) {
                 .foo {
                   font-size: 14px !important;
-                  line-height: 1.42857 !important;
+                  line-height: 1.4285714286 !important;
                 }
               }
             `
@@ -522,13 +514,13 @@ describe('@mixin govuk-typography-responsive', () => {
 
       // Get the argument of the last @warn call, which we expect to be the
       // deprecation notice
-      return expect(mockWarnFunction.mock.calls.at(-1)[0].getValue())
-        .toEqual(
+      return expect(mockWarnFunction.mock.calls.at(-1))
+        .toEqual(expect.arrayContaining([
           '$govuk-typography-use-rem is deprecated. From version 5.0, ' +
           'GOV.UK Frontend will not support disabling rem font sizes. To ' +
           'silence this warning, update $govuk-suppressed-warnings with ' +
           'key: "allow-not-using-rem"'
-        )
+        ]))
     })
   })
 
@@ -551,11 +543,10 @@ describe('@mixin govuk-typography-responsive', () => {
               font-size: 12px;
               line-height: 1.25;
             }
-
             @media (min-width: 30em) {
               .foo {
                 font-size: 14px;
-                line-height: 1.42857;
+                line-height: 1.4285714286;
               }
             }
           `
@@ -588,18 +579,16 @@ describe('@mixin govuk-typography-responsive', () => {
               font-size: 0.75rem;
               line-height: 1.25;
             }
-
             @media print {
               .foo {
                 font-family: sans-serif;
               }
             }
-
             @media (min-width: 30em) {
               .foo {
                 font-size: 14px;
                 font-size: 0.875rem;
-                line-height: 1.42857;
+                line-height: 1.4285714286;
               }
             }
           `
@@ -765,12 +754,12 @@ describe('$govuk-font-family-tabular value is specified', () => {
 
     // Get the argument of the last @warn call, which we expect to be the
     // deprecation notice
-    expect(mockWarnFunction.mock.calls.at(-1)[0].getValue())
-      .toEqual(
+    expect(mockWarnFunction.mock.calls.at(-1))
+      .toEqual(expect.arrayContaining([
         '$govuk-font-family-tabular is deprecated. From version 5.0, ' +
         'GOV.UK Frontend will not support using a separate font-face for ' +
         'tabular numbers. To silence this warning, update ' +
         '$govuk-suppressed-warnings with key: "tabular-font-face"'
-      )
+      ]))
   })
 })

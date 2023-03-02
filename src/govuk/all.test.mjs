@@ -13,11 +13,11 @@ describe('GOV.UK Frontend', () => {
       const results = compileSassString(sass)
 
       await expect(results).resolves.toMatchObject({
-        css: expect.not.stringContaining('.govuk-link, a {')
+        css: expect.not.stringContaining('a, .govuk-link {')
       })
 
       await expect(results).resolves.toMatchObject({
-        css: expect.not.stringContaining('.govuk-body-m, .govuk-body, p {')
+        css: expect.not.stringContaining('p, .govuk-body, .govuk-body-m {')
       })
     })
 
@@ -30,11 +30,11 @@ describe('GOV.UK Frontend', () => {
       const results = compileSassString(sass)
 
       await expect(results).resolves.toMatchObject({
-        css: expect.stringContaining('.govuk-link, a {')
+        css: expect.stringContaining('a, .govuk-link {')
       })
 
       await expect(results).resolves.toMatchObject({
-        css: expect.stringContaining('.govuk-body-m, .govuk-body, p {')
+        css: expect.stringContaining('p, .govuk-body, .govuk-body-m {')
       })
     })
   })
