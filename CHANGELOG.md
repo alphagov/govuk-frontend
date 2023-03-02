@@ -83,6 +83,7 @@ You can also silence these deprecation warnings by adding `ie8` to the [$govuk-s
 
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
+- [#3255: Including the JavaScript source map in the prototype kit config](https://github.com/alphagov/govuk-frontend/pull/3255)
 - [#3272: Add empty alt attribute to logo IE8 fallback PNG](https://github.com/alphagov/govuk-frontend/pull/3272)
 - [#3306: Re-enable complete hover link styles on the footer](https://github.com/alphagov/govuk-frontend/pull/3306)
 - [#3312: Add default value for warning text icon fallback attribute](https://github.com/alphagov/govuk-frontend/pull/3312)

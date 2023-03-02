@@ -27,7 +27,8 @@ export default async () => {
 
   return {
     assets: [
-      '/govuk/assets'
+      '/govuk/assets',
+      '/govuk/all.js.map'
     ],
     sass: [
       '/govuk-prototype-kit/init.scss'
