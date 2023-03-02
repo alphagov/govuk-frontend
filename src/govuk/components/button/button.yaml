@@ -47,6 +47,10 @@ params:
     type: boolean
     required: false
     description: Use for the main call to action on your service's start page.
+  - name: id
+    type: string
+    required: false
+    description: The ID of the button.
 
 examples:
   - name: default
@@ -242,3 +246,9 @@ examples:
     data:
       text: Submit
       preventDoubleClick: false
+  - name: id
+    hidden: true
+    data:
+      text: Submit
+      element: input
+      id: submit
