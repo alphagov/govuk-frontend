@@ -148,7 +148,7 @@ describe('/components/exit-this-page', () => {
         await page.keyboard.press('Shift')
 
         const message = await page.evaluate((buttonClass) => document.querySelector(buttonClass).nextElementSibling.innerText, buttonClass)
-        expect(message).toBe('Exiting page')
+        expect(message).toBe('Exiting page.')
       })
 
       it('announces when the keyboard shortcut has timed out', async () => {
@@ -160,7 +160,7 @@ describe('/components/exit-this-page', () => {
         await new Promise((resolve) => setTimeout(resolve, 5000))
 
         const message = await page.evaluate((buttonClass) => document.querySelector(buttonClass).nextElementSibling.innerText, buttonClass)
-        expect(message).toBe('Exit this page expired')
+        expect(message).toBe('Exit this page expired.')
       })
     })
   })
