@@ -10,9 +10,7 @@ describe('GOV.UK Prototype Kit config', () => {
   it('includes paths for assets, scripts, sass', () => {
     expect(config.assets).toEqual([
       '/govuk/assets',
-      '/govuk-prototype-kit/init.js.map',
-      '/govuk-prototype-kit/common.js.map',
-      '/govuk-prototype-kit/i18n.js.map'
+      '/govuk/all.js.map'
     ])
 
     expect(config.sass).toEqual([
