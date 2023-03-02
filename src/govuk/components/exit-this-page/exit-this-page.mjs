@@ -1,18 +1,47 @@
 /* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
 
-import { nodeListForEach } from '../../common.mjs'
+import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { nodeListForEach, mergeConfigs, extractConfigByNamespace } from '../../common.mjs'
+import { I18n } from '../../i18n.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 import '../../vendor/polyfills/Element/prototype/dataset.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
+
+/**
+ * @constant
+ * @type {ExitThisPageTranslations}
+ * @see Default value for {@link ExitThisPageConfig.i18n}
+ * @default
+ */
+var EXIT_THIS_PAGE_TRANSLATIONS = {
+  activated: 'Exiting page.',
+  timedOut: 'Exit this page expired.',
+  pressTwoMoreTimes: 'Shift, press 2 more times to exit.',
+  pressOneMoreTime: 'Shift, press 1 more time to exit.'
+}
 
 /**
  * JavaScript functionality for the Exit this Page component
  *
  * @class
  * @param {HTMLElement} $module - HTML element that wraps the EtP button
+ * @param {ExitThisPageConfig} [config] - Exit this Page config
  */
-function ExitThisPage ($module) {
+function ExitThisPage ($module, config) {
   this.$module = $module
+
+  var defaultConfig = {
+    i18n: EXIT_THIS_PAGE_TRANSLATIONS
+  }
+
+  this.config = mergeConfigs(
+    defaultConfig,
+    config || {},
+    normaliseDataset($module.dataset)
+  )
+
+  this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'))
+
   this.$button = $module.querySelector('.govuk-exit-this-page__button')
   this.$skiplinkButton = document.querySelector('.govuk-js-exit-this-page-skiplink')
   this.$updateSpan = null
@@ -161,14 +190,14 @@ ExitThisPage.prototype.handleEscKeypress = function (e) {
       this.keypressTimeoutId = null
 
       this.$updateSpan.setAttribute('role', 'alert')
-      this.$updateSpan.innerText = 'Exiting page'
+      this.$updateSpan.innerText = this.i18n.t('activated')
 
       this.exitPage()
     } else {
       if (this.escCounter === 1) {
-        this.$updateSpan.innerText = 'Shift, press 2 more times to exit.'
+        this.$updateSpan.innerText = this.i18n.t('pressTwoMoreTimes')
       } else {
-        this.$updateSpan.innerText = 'Shift, press 1 more time to exit.'
+        this.$updateSpan.innerText = this.i18n.t('pressOneMoreTime')
       }
     }
 
@@ -202,7 +231,7 @@ ExitThisPage.prototype.resetEscTimer = function () {
   this.keypressTimeoutId = null
 
   this.escCounter = 0
-  this.$updateSpan.innerText = 'Exit this page expired'
+  this.$updateSpan.innerText = this.i18n.t('timedOut')
 
   this.timeoutMessageId = setTimeout(function () {
     this.$updateSpan.innerText = ''
@@ -272,3 +301,27 @@ ExitThisPage.prototype.init = function () {
 }
 
 export default ExitThisPage
+
+/**
+ * Exit this Page config
+ *
+ * @typedef {object} ExitThisPageConfig
+ * @property {ExitThisPageTranslations} [i18n = EXIT_THIS_PAGE_TRANSLATIONS] - See constant {@link EXIT_THIS_PAGE_TRANSLATIONS}
+ */
+
+/**
+ * Exit this Page translations
+ *
+ * @typedef {object} ExitThisPageTranslations
+ *
+ * Messages used by the component programatically inserted text, including
+ * overlay text and screen reader announcements.
+ * @property {string} [activated] - Screen reader announcement for when EtP
+ *   keypress functionality has been successfully activated.
+ * @property {string} [timedOut] - Screen reader announcement for when the EtP
+ *   keypress functionality has timed out.
+ * @property {string} [pressTwoMoreTimes] - Screen reader announcement informing
+ *   the user they must press the activation key two more times.
+ * @property {string} [pressOneMoreTime] - Screen reader announcement informing
+ *   the user they must press the activation key one more time.
+ */

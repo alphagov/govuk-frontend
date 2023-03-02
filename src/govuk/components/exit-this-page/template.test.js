@@ -66,4 +66,16 @@ describe('Exit this page', () => {
       expect($component.attr('test-attribute')).toBe('true')
     })
   })
+
+  describe('Translated', () => {
+    it('renders with translation data attributes', () => {
+      const $ = render('exit-this-page', examples.translated)
+      const $component = $('.govuk-exit-this-page')
+
+      expect($component.attr('data-i18n.activated')).toBe('Tudalen ymadael')
+      expect($component.attr('data-i18n.timed-out')).toBe("Wedi'i amseru")
+      expect($component.attr('data-i18n.press-two-more-times')).toBe("Pwyswch 'Shift' 2 gwaith arall")
+      expect($component.attr('data-i18n.press-one-more-time')).toBe("Pwyswch 'Shift' 1 mwy o amser")
+    })
+  })
 })

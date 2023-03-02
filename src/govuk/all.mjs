@@ -58,17 +58,17 @@ function initAll (config) {
     new ErrorSummary($errorSummary, config.errorSummary).init()
   }
 
+  var $exitThisPageButtons = $scope.querySelectorAll('[data-module="govuk-exit-this-page"]')
+  if ($exitThisPageButtons.length > 0) {
+    nodeListForEach($exitThisPageButtons, function ($button) {
+      new ExitThisPage($button, config.exitThisPage).init()
+    })
+  }
+
   // Find first header module to enhance.
   var $header = $scope.querySelector('[data-module="govuk-header"]')
   if ($header) {
     new Header($header).init()
-  }
-
-  var $exitThisPageButtons = $scope.querySelectorAll('[data-module="govuk-exit-this-page"]')
-  if ($exitThisPageButtons.length > 0) {
-    nodeListForEach($exitThisPageButtons, function ($button) {
-      new ExitThisPage($button).init()
-    })
   }
 
   var $notificationBanners = $scope.querySelectorAll('[data-module="govuk-notification-banner"]')
