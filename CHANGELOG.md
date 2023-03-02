@@ -41,6 +41,19 @@ If you're not using the Nunjucks macro, you can disable it using the `data-remem
 
 This was added in [pull request #3342: Add option to disable sessionState in Accordion](https://github.com/alphagov/govuk-frontend/pull/3342).
 
+#### Added id parameter to button
+
+The nunjucks macro for button has been updated to include an optional parameter ID. 
+
+```nunjucks
+  {{ govukButton({
+    text: "Save and continue",
+    id: "continue-button"
+  }) }}
+```
+
+This was added in [pull request #3344: Adding optional id attribute to button component](https://github.com/alphagov/govuk-frontend/pull/3344).
+
 ### Deprecated features
 
 #### Stop using the `govuk-button--disabled` class on buttons
