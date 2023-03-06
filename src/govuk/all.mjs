@@ -125,9 +125,11 @@ export {
  * @param {string} actionName
  * @param {Object<string,any>} detail
  * @param {Function} callback
- * @returns {any} Whatever the callback returns
+ * @returns {Promise<any>} Whatever the callback returns
  */
-function withEvents ($element, actionName, detail, callback) {
+async function withEvents ($element, actionName, detail, callback) {
+  const promises = []
+
   // Create a cancellable event that allows other scripts to cancel
   // the initialisation of GOVUK Frontend (eg. if it's starting in a browser they don't want to run our components in)
   // Those scripts can call `event.preventDefault()` to let us know
@@ -135,9 +137,23 @@ function withEvents ($element, actionName, detail, callback) {
   var beforeEvent = new CustomEvent('govuk-frontend:before-' + actionName, {
     bubbles: true,
     cancelable: true,
-    detail
+    detail: {
+      ...detail,
+      /**
+       * Adds a promise to wait for before continuing to initialise
+       *
+       * @param {Promise} promise
+       */
+      waitFor (promise) {
+        promises.push(promise)
+      }
+    }
   })
   $element.dispatchEvent(beforeEvent)
+
+  if (promises.length) {
+    await Promise.all(promises)
+  }
 
   // Break if users prevented default
   if (beforeEvent.defaultPrevented) {

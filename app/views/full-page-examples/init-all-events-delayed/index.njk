@@ -1,0 +1,53 @@
+---
+scenario: >-
+  Initialises GOV.UK Frontend without preventing initialisation
+
+notes: Open the console to visualise the events dispatched during initalisation
+---
+{% from "character-count/macro.njk" import govukCharacterCount %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+{% extends "full-page-example.njk" %}
+
+{% block pageTitle %}Delayed `initAll` events - GOV.UK{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-xl">Delayed<code>`initAll`</code> events</h1>
+
+<p>The CharacterCount component on this page will be set up after 5s, then update live as you type</p>
+<p>Open your console (and maybe add the timestamps) to witness which events were dispatched during the initialisation of GOV.UK Frontend:</p>
+<ol>
+  <li><code>govuk-frontend:before-init</code>
+  <li><code>govuk-frontend:init</code>
+  <li><code>govuk-frontend:after-init</code>
+</ol>
+
+{{ govukCharacterCount({
+    name: "what-were-you-trying-to-do",
+    id: "what-were-you-trying-to-do",
+    maxlength: 100,
+    rows: 5,
+    label: {
+        text: "What were you trying to do?"
+    }
+}) }}
+<script>
+  document.addEventListener('govuk-frontend:before-init', function(event) {
+    // Delay initialisation by 5 seconds
+    event.detail.waitFor(new Promise(function(resolve) {
+      setTimeout(resolve, 5000);
+    }))
+    console.log(event)
+  })
+  document.addEventListener('govuk-frontend:prevented-init', console.log)
+  document.addEventListener('govuk-frontend:init', console.log)
+  document.addEventListener('govuk-frontend:after-init', console.log)
+</script>
+{%endblock%}
