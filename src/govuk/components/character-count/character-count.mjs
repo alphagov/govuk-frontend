@@ -134,7 +134,7 @@ CharacterCount.prototype.init = function () {
     return
   }
 
-  // Inject a decription for the textarea if none is present already
+  // Inject a description for the textarea if none is present already
   // for when the component was rendered with no maxlength, maxwords
   // nor custom textareaDescriptionText
   if ($textareaDescription.innerText.match(/^\s*$/)) {
