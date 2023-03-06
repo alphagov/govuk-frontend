@@ -26,6 +26,39 @@ function initAll (config) {
   // Defaults to the entire document if nothing is set.
   var $scope = config.scope instanceof HTMLElement ? config.scope : document
 
+  // Create a cancellable event that allows other scripts to cancel
+  // the initialisation of GOVUK Frontend (eg. if it's starting in a browser they don't want to run our components in)
+  // Those scripts can call `event.preventDefault()` to let us know
+  // they don't want the initialisation to carry on
+  var beforeEvent = new CustomEvent('govuk-frontend:before-init', {
+    bubbles: true,
+    cancelable: true,
+    detail: {
+      $scope,
+      config
+    }
+  })
+  $scope.dispatchEvent(beforeEvent)
+
+  // Break if users prevented default
+  if (beforeEvent.defaultPrevented) {
+    var preventedEvent = new CustomEvent('govuk-frontend:prevented-init', {
+      bubbles: true,
+      cancelable: false
+    })
+    $scope.dispatchEvent(preventedEvent)
+
+    return
+  }
+
+  // Dispatch an event to notify other scripts that GOV.UK Frontend
+  // is actually initialising
+  var event = new CustomEvent('govuk-frontend:init', {
+    bubbles: true,
+    cancelable: false
+  })
+  $scope.dispatchEvent(event)
+
   var $accordions = $scope.querySelectorAll('[data-module="govuk-accordion"]')
   nodeListForEach($accordions, function ($accordion) {
     new Accordion($accordion, config.accordion).init()
@@ -83,6 +116,12 @@ function initAll (config) {
   nodeListForEach($tabs, function ($tabs) {
     new Tabs($tabs).init()
   })
+
+  var afterEvent = new CustomEvent('govuk-frontend:after-init', {
+    bubbles: true,
+    cancelable: true
+  })
+  $scope.dispatchEvent(afterEvent)
 }
 
 export {
