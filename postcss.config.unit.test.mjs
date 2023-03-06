@@ -1,4 +1,4 @@
-const configFn = require('./postcss.config')
+import configFn from './postcss.config.mjs'
 
 describe('PostCSS config', () => {
   let env

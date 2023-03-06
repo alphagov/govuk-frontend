@@ -1,15 +1,15 @@
-const { parse } = require('path')
+import { parse } from 'path'
 
-const autoprefixer = require('autoprefixer')
-const cssnano = require('cssnano')
-const cssnanoPresetDefault = require('cssnano-preset-default')
-const { minimatch } = require('minimatch')
-const postcss = require('postcss')
-const pseudoclasses = require('postcss-pseudo-classes')
-const scss = require('postcss-scss')
-const unmq = require('postcss-unmq')
-const unopacity = require('postcss-unopacity')
-const unrgba = require('postcss-unrgba')
+import autoprefixer from 'autoprefixer'
+import cssnano from 'cssnano'
+import cssnanoPresetDefault from 'cssnano-preset-default'
+import { minimatch } from 'minimatch'
+import postcss from 'postcss'
+import pseudoclasses from 'postcss-pseudo-classes'
+import scss from 'postcss-scss'
+import unmq from 'postcss-unmq'
+import unopacity from 'postcss-unopacity'
+import unrgba from 'postcss-unrgba'
 
 /**
  * PostCSS config
@@ -17,7 +17,7 @@ const unrgba = require('postcss-unrgba')
  * @param {import('postcss-load-config').ConfigContext} ctx - PostCSS context
  * @returns {import('postcss-load-config').Config} PostCSS config
  */
-module.exports = (ctx) => {
+export default (ctx) => {
   const plugins = []
   const syntax = ctx.to?.endsWith('.scss') ? scss : postcss
 
