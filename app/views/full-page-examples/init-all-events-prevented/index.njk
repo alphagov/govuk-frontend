@@ -1,0 +1,54 @@
+---
+scenario: >-
+  Initialises GOV.UK Frontend without preventing initialisation
+
+notes: Open the console to visualise the events dispatched during initalisation
+---
+
+{% from "character-count/macro.njk" import govukCharacterCount %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+{% extends "full-page-example.njk" %}
+
+{% block pageTitle %}Prevented `initAll` events - GOV.UK{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-xl">Prevented <code>initAll</code> events</h1>
+
+<p>The CharacterCount component on this page should <strong>not</strong> have been set up and update live as you type</p>
+
+<p>
+  Open your console to witness which events were dispatched during the initialisation of GOV.UK Frontend,
+  when service code prevents initialisation:
+</p>
+<ol>
+  <li><code>govuk-frontend:before-init</code>
+  <li><code>govuk-frontend:prevented-init</code>
+</ol>
+
+{{ govukCharacterCount({
+    name: "what-were-you-trying-to-do",
+    id: "what-were-you-trying-to-do",
+    maxlength: 100,
+    rows: 5,
+    label: {
+        text: "What were you trying to do?"
+    }
+}) }}
+<script>
+  document.addEventListener('govuk-frontend:before-init', function(event) {
+    event.preventDefault()
+    console.log(event)
+  })
+  document.addEventListener('govuk-frontend:prevented-init', console.log)
+  document.addEventListener('govuk-frontend:init', console.log)
+  document.addEventListener('govuk-frontend:after-init', console.log)
+</script>
+{%endblock%}
