@@ -28,7 +28,7 @@
     "js-yaml": "^4.1.0",
     "marked": "^4.2.12",
     "minimatch": "^7.3.0",
-    "nodemon": "^2.0.20",
+    "nodemon": "^2.0.21",
     "nunjucks": "^3.2.3",
     "outdent": "^0.8.0",
     "shuffle-seed": "^1.1.6"
