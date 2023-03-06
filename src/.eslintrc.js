@@ -38,7 +38,7 @@ module.exports = {
         '@typescript-eslint',
         'es-x'
       ],
-      extends: ['plugin:es-x/restrict-to-es3'],
+      // extends: ['plugin:es-x/restrict-to-es3'],
       rules: {
         // Rollup transpiles modules to AMD export/define
         'es-x/no-modules': 'off'
