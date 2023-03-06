@@ -40,6 +40,8 @@ module.exports = {
       ],
       extends: ['plugin:es-x/restrict-to-es3'],
       rules: {
+        // Object shorthands are not available in ES3
+        'object-shorthand': 'off',
         // Rollup transpiles modules to AMD export/define
         'es-x/no-modules': 'off'
       }
