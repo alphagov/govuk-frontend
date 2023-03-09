@@ -57,7 +57,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - clean the `./dist` folder
 - output files into `./dist`, or another location via the `--destination` flag
 - copy fonts and images
-- compile JavaScript and Sass, including documentation
+- compile JavaScript and Sass
 - append version number from `package/package.json` to compiled JavaScript and CSS files
 - runs `npm run test:build:dist` (which will test the output is correct)
 

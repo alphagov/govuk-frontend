@@ -64,7 +64,10 @@ gulp.task('build:package', gulp.series(
  * Prepare dist folder for release
  */
 gulp.task('build:dist', gulp.series(
-  'build:app',
+  clean,
+  copyAssets,
+  compileJavaScripts,
+  compileStylesheets,
   updateAssetsVersion
 ))
 
