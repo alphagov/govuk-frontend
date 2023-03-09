@@ -53,7 +53,13 @@ gulp.task('styles', gulp.series(
  */
 gulp.task('build:app', gulp.series(
   clean,
-  copyAssets,
+
+  // Copy GOV.UK Frontend static assets
+  copyAssets('**/*', {
+    srcPath: join(paths.src, 'govuk/assets'),
+    destPath: join(paths.public, 'assets')
+  }),
+
   'scripts',
   'styles'
 ))
@@ -64,7 +70,12 @@ gulp.task('build:app', gulp.series(
  */
 gulp.task('build:package', gulp.series(
   clean,
-  copyFiles,
+
+  // Copy GOV.UK Frontend files
+  copyFiles({
+    srcPath: paths.src,
+    destPath: paths.package
+  }),
 
   // Compile GOV.UK Frontend JavaScript
   compileJavaScripts('**/!(*.test).mjs', {
@@ -105,7 +116,12 @@ gulp.task('build:package', gulp.series(
  */
 gulp.task('build:dist', gulp.series(
   clean,
-  copyAssets,
+
+  // Copy GOV.UK Frontend static assets
+  copyAssets('*/**', {
+    srcPath: join(paths.src, 'govuk/assets'),
+    destPath: join(paths.dist, 'assets')
+  }),
 
   // Compile GOV.UK Frontend JavaScript
   compileJavaScripts('all.mjs', {
