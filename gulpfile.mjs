@@ -52,7 +52,9 @@ gulp.task('styles', gulp.series(
  * Prepare public folder for review app
  */
 gulp.task('build:app', gulp.series(
-  clean,
+  clean('**/*', {
+    destPath: paths.public
+  }),
 
   // Copy GOV.UK Frontend static assets
   copyAssets('**/*', {
@@ -69,7 +71,13 @@ gulp.task('build:app', gulp.series(
  * Prepare package folder for publishing
  */
 gulp.task('build:package', gulp.series(
-  clean,
+  clean('**/*', {
+    destPath: paths.package,
+    ignore: [
+      '**/package.json',
+      '**/README.md'
+    ]
+  }),
 
   // Copy GOV.UK Frontend files
   copyFiles({
@@ -129,7 +137,9 @@ gulp.task('build:package', gulp.series(
  * Prepare dist folder for release
  */
 gulp.task('build:dist', gulp.series(
-  clean,
+  clean('**/*', {
+    destPath: paths.dist
+  }),
 
   // Copy GOV.UK Frontend static assets
   copyAssets('*/**', {

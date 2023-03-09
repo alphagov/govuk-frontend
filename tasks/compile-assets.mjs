@@ -41,6 +41,7 @@ export async function writeAsset (filePath, result) {
  * @property {string} [srcPath] - Input directory
  * @property {string} [destPath] - Output directory
  * @property {AssetFormatter} [filePath] - File path formatter
+ * @property {string[]} [ignore] - File path patterns to ignore
  */
 
 /**
