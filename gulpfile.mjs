@@ -77,7 +77,13 @@ gulp.task('build:package', gulp.series(
     destPath: paths.package
   }),
 
-  // Compile GOV.UK Frontend JavaScript
+  // Copy GOV.UK Frontend JavaScript (ES modules)
+  copyAssets('**/!(*.test).mjs', {
+    srcPath: join(paths.src, 'govuk'),
+    destPath: join(paths.package, 'govuk-esm')
+  }),
+
+  // Compile GOV.UK Frontend JavaScript (AMD modules)
   compileJavaScripts('**/!(*.test).mjs', {
     srcPath: join(paths.src, 'govuk'),
     destPath: join(paths.package, 'govuk'),

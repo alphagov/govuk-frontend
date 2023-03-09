@@ -29,80 +29,69 @@ export function copyAssets (pattern, { srcPath, destPath }) {
 
 /**
  * Copy files task
- * Copies files to destination
+ *
+ * Copies files to destination with './govuk' suffix
+ * Includes fonts, images, polyfills, component files
  *
  * @param {AssetEntry[1]} options - Asset options
  * @returns {() => import('stream').Stream} Output file stream
  */
 export function copyFiles ({ srcPath, destPath }) {
   const task = () => merge(
-    /**
-     * Copy files to destination with './govuk-esm' suffix
-     * Includes only source JavaScript ECMAScript (ES) modules
-     */
-    gulp.src(`${slash(srcPath)}/govuk/**/!(*.test).mjs`)
-      .pipe(gulp.dest(slash(join(destPath, 'govuk-esm')))),
+    gulp.src([
+      `${slash(srcPath)}/**/*`,
 
-    /**
-     * Copy files to destination with './govuk' suffix
-     * Includes fonts, images, polyfills, component files
-     */
-    merge(
-      gulp.src([
-        `${slash(srcPath)}/**/*`,
+      // Exclude files we don't want to publish
+      '!**/.DS_Store',
+      '!**/*.mjs',
+      '!**/*.test.*',
+      '!**/__snapshots__/',
+      '!**/__snapshots__/**',
+      '!**/tsconfig.json',
 
-        // Exclude files we don't want to publish
-        '!**/.DS_Store',
-        '!**/*.mjs',
-        '!**/*.test.*',
-        '!**/__snapshots__/',
-        '!**/__snapshots__/**',
-        '!**/tsconfig.json',
+      // Preserve destination README when copying to ./package
+      // https://github.com/alphagov/govuk-frontend/tree/main/package#readme
+      `!${slash(srcPath)}/govuk/README.md`,
 
-        // Preserve destination README when copying to ./package
-        // https://github.com/alphagov/govuk-frontend/tree/main/package#readme
-        `!${slash(srcPath)}/govuk/README.md`,
+      // Exclude Sass files handled by Gulp 'compile:scss'
+      `!${slash(srcPath)}/**/*.scss`,
 
-        // Exclude Sass files handled by Gulp 'compile:scss'
-        `!${slash(srcPath)}/**/*.scss`,
+      // Exclude source YAML handled by JSON streams below
+      `!${slash(srcPath)}/govuk/components/**/*.yaml`
+    ]),
 
-        // Exclude source YAML handled by JSON streams below
-        `!${slash(srcPath)}/govuk/components/**/*.yaml`
-      ]),
+    // Generate fixtures.json from ${componentName}.yaml
+    gulp.src(`${slash(srcPath)}/govuk/components/**/*.yaml`, {
+      base: slash(srcPath)
+    })
+      .pipe(map(async (file, done) => {
+        try {
+          done(null, await generateFixtures(file))
+        } catch (error) {
+          done(error)
+        }
+      }))
+      .pipe(rename({
+        basename: 'fixtures',
+        extname: '.json'
+      })),
 
-      // Generate fixtures.json from ${componentName}.yaml
-      gulp.src(`${slash(srcPath)}/govuk/components/**/*.yaml`, {
-        base: slash(srcPath)
-      })
-        .pipe(map(async (file, done) => {
-          try {
-            done(null, await generateFixtures(file))
-          } catch (error) {
-            done(error)
-          }
-        }))
-        .pipe(rename({
-          basename: 'fixtures',
-          extname: '.json'
-        })),
-
-      // Generate macro-options.json from ${componentName}.yaml
-      gulp.src(`${slash(srcPath)}/govuk/components/**/*.yaml`, {
-        base: slash(srcPath)
-      })
-        .pipe(map(async (file, done) => {
-          try {
-            done(null, await generateMacroOptions(file))
-          } catch (error) {
-            done(error)
-          }
-        }))
-        .pipe(rename({
-          basename: 'macro-options',
-          extname: '.json'
-        }))
-    ).pipe(gulp.dest(slash(destPath)))
-  )
+    // Generate macro-options.json from ${componentName}.yaml
+    gulp.src(`${slash(srcPath)}/govuk/components/**/*.yaml`, {
+      base: slash(srcPath)
+    })
+      .pipe(map(async (file, done) => {
+        try {
+          done(null, await generateMacroOptions(file))
+        } catch (error) {
+          done(error)
+        }
+      }))
+      .pipe(rename({
+        basename: 'macro-options',
+        extname: '.json'
+      }))
+  ).pipe(gulp.dest(slash(destPath)))
 
   task.displayName = 'copy:files'
 
