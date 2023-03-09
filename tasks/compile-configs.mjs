@@ -1,23 +1,30 @@
+
 import { writeFile } from 'fs/promises'
 import { EOL } from 'os'
-import { join } from 'path'
-
-import { destination } from './task-arguments.mjs'
+import { basename, parse, join } from 'path'
 
 /**
- * Write GOV.UK Prototype Kit config
+ * Write config to JSON
  *
- * @returns {Promise<void>}
+ * @param {AssetEntry[0]} modulePath - File path to config
+ * @param {AssetEntry[1]} options - Asset options
+ * @returns {() => Promise<void>} Prepared compile task
  */
-export async function updatePrototypeKitConfig () {
-  const { default: configFn } = await import('../src/govuk-prototype-kit/govuk-prototype-kit.config.mjs')
+export function compileConfig (modulePath, { srcPath, destPath, filePath }) {
+  const configPath = join(destPath, filePath ? filePath(parse(modulePath)) : modulePath)
 
-  // JSON config file path + contents
-  const configPath = join(destination, 'govuk-prototype-kit.config.json')
-  const configJSON = JSON.stringify(await configFn(), null, 2) + EOL
+  const task = async () => {
+    const { default: configFn } = await import(join(srcPath, modulePath))
 
-  // Write JSON config file
-  return writeFile(configPath, configJSON)
+    // Write JSON config file
+    return writeFile(configPath, JSON.stringify(await configFn(), null, 2) + EOL)
+  }
+
+  task.displayName = `compile:config ${basename(configPath)}`
+
+  return task
 }
 
-updatePrototypeKitConfig.displayName = 'update-prototype-kit-config'
+/**
+ * @typedef {import('./compile-assets.mjs').AssetEntry} AssetEntry
+ */

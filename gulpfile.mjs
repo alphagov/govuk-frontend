@@ -6,7 +6,7 @@ import taskListing from 'gulp-task-listing'
 import { paths, pkg } from './config/index.js'
 import { updateAssetsVersion } from './tasks/asset-version.mjs'
 import { clean } from './tasks/clean.mjs'
-import { updatePrototypeKitConfig } from './tasks/compile-configs.mjs'
+import { compileConfig } from './tasks/compile-configs.mjs'
 import { compileJavaScripts } from './tasks/compile-javascripts.mjs'
 import { compileStylesheets } from './tasks/compile-stylesheets.mjs'
 import { copyAssets, copyFiles } from './tasks/gulp/copy-to-destination.mjs'
@@ -113,7 +113,15 @@ gulp.task('build:package', gulp.series(
     }
   }),
 
-  updatePrototypeKitConfig
+  // Compile GOV.UK Prototype Kit config
+  compileConfig('govuk-prototype-kit.config.mjs', {
+    srcPath: join(paths.src, 'govuk-prototype-kit'),
+    destPath: paths.package,
+
+    filePath (file) {
+      return join(file.dir, `${file.name}.json`)
+    }
+  })
 ))
 
 /**
