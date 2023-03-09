@@ -2,7 +2,7 @@ import { join } from 'path'
 
 import slash from 'slash'
 
-import configPaths from '../../config/paths.js'
+import { paths } from '../../config/index.js'
 import { filterPath, getDirectories, getListing } from '../../lib/file-helper.js'
 import { componentNameToMacroName } from '../../lib/helper-functions.js'
 
@@ -10,8 +10,8 @@ import { componentNameToMacroName } from '../../lib/helper-functions.js'
  * GOV.UK Prototype Kit config builder
  */
 export default async () => {
-  const componentsFiles = await getListing(join(configPaths.src, 'govuk/components'))
-  const componentNames = await getDirectories(join(configPaths.src, 'govuk/components'))
+  const componentsFiles = await getListing(join(paths.src, 'govuk/components'))
+  const componentNames = await getDirectories(join(paths.src, 'govuk/components'))
 
   // Build array of macros
   const nunjucksMacros = componentNames

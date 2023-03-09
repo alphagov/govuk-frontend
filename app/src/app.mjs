@@ -2,7 +2,7 @@ import { join } from 'path'
 
 import express from 'express'
 
-import configPaths from '../../config/paths.js'
+import { paths } from '../../config/index.js'
 import { getDirectories, getComponentsData, getFullPageExamples } from '../../lib/file-helper.js'
 import { componentNameToMacroName } from '../../lib/helper-functions.js'
 
@@ -16,8 +16,8 @@ export default async () => {
   // Cache mapped components and examples
   const [componentsData, componentNames, exampleNames, fullPageExamples] = await Promise.all([
     getComponentsData(),
-    getDirectories(join(configPaths.src, 'govuk/components')),
-    getDirectories(join(configPaths.app, 'src/views/examples')),
+    getDirectories(join(paths.src, 'govuk/components')),
+    getDirectories(join(paths.app, 'src/views/examples')),
     getFullPageExamples()
   ])
 

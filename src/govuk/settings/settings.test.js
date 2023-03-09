@@ -2,7 +2,7 @@ const { join } = require('path')
 
 const sassdoc = require('sassdoc')
 
-const configPaths = require('../../../config/paths')
+const { paths } = require('../../../config')
 const { getListing } = require('../../../lib/file-helper')
 const { compileSassFile } = require('../../../lib/jest-helpers')
 
@@ -10,19 +10,19 @@ describe('The settings layer', () => {
   let sassFiles
 
   beforeAll(async () => {
-    sassFiles = await getListing(configPaths.src, 'govuk/settings/**/*.scss', {
+    sassFiles = await getListing(paths.src, 'govuk/settings/**/*.scss', {
       ignore: ['**/_all.scss']
     })
   })
 
   it('should not output any CSS', async () => {
-    const file = join(configPaths.src, 'govuk/settings/_all.scss')
+    const file = join(paths.src, 'govuk/settings/_all.scss')
     await expect(compileSassFile(file)).resolves.toMatchObject({ css: '' })
   })
 
   it('renders CSS for all settings', () => {
     const sassTasks = sassFiles.map((sassFilePath) => {
-      const file = join(configPaths.src, sassFilePath)
+      const file = join(paths.src, sassFilePath)
 
       return expect(compileSassFile(file)).resolves.toMatchObject({
         css: expect.any(String),
@@ -35,7 +35,7 @@ describe('The settings layer', () => {
 
   describe('Sass documentation', () => {
     it('associates everything with a "settings" group', async () => {
-      const docs = await sassdoc.parse(join(configPaths.src, 'govuk/settings/**/*.scss'))
+      const docs = await sassdoc.parse(join(paths.src, 'govuk/settings/**/*.scss'))
 
       for (const doc of docs) {
         expect(doc).toMatchObject({

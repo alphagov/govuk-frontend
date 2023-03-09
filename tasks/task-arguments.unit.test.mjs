@@ -1,7 +1,7 @@
 import { join } from 'path'
 import { cwd } from 'process'
 
-import configPaths from '../config/paths.js'
+import { paths } from '../config/index.js'
 
 describe('Task arguments', () => {
   let args
@@ -33,44 +33,44 @@ describe('Task arguments', () => {
           process.argv = [...argv]
 
           const { destination } = await import('./task-arguments.mjs')
-          expect(destination).toEqual(configPaths.public)
+          expect(destination).toEqual(paths.public)
         })
 
         it('defaults to ./public for "gulp build:compile"', async () => {
           process.argv = [...argv, 'build:compile']
 
           const { destination } = await import('./task-arguments.mjs')
-          expect(destination).toEqual(configPaths.public)
+          expect(destination).toEqual(paths.public)
         })
 
         it('defaults to ./package for "gulp build:package"', async () => {
           process.argv = [...argv, 'build:package']
 
           const { destination } = await import('./task-arguments.mjs')
-          expect(destination).toEqual(configPaths.package)
+          expect(destination).toEqual(paths.package)
         })
 
         it('defaults to ./dist for "gulp build:dist"', async () => {
           process.argv = [...argv, 'build:dist']
 
           const { destination } = await import('./task-arguments.mjs')
-          expect(destination).toEqual(configPaths.dist)
+          expect(destination).toEqual(paths.dist)
         })
       })
 
       describe.each(
         [
           // Override to public
-          { flag: 'public', destination: configPaths.public },
-          { flag: './public', destination: configPaths.public },
+          { flag: 'public', destination: paths.public },
+          { flag: './public', destination: paths.public },
 
           // Override to package
-          { flag: 'package', destination: configPaths.package },
-          { flag: './package', destination: configPaths.package },
+          { flag: 'package', destination: paths.package },
+          { flag: './package', destination: paths.package },
 
           // Override to dist
-          { flag: 'dist', destination: configPaths.dist },
-          { flag: './dist', destination: configPaths.dist },
+          { flag: 'dist', destination: paths.dist },
+          { flag: './dist', destination: paths.dist },
 
           // Override to custom
           { flag: 'custom/location/here', destination: join(cwd(), 'custom/location/here') },

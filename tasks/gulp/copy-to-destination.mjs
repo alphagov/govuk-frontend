@@ -8,7 +8,7 @@ import merge from 'merge-stream'
 import nunjucks from 'nunjucks'
 import slash from 'slash'
 
-import configPaths from '../../config/paths.js'
+import { paths } from '../../config/index.js'
 import { destination } from '../task-arguments.mjs'
 
 /**
@@ -18,7 +18,7 @@ import { destination } from '../task-arguments.mjs'
  * @returns {import('stream').Stream} Output file stream
  */
 export function copyAssets () {
-  return gulp.src(`${slash(configPaths.src)}/govuk/assets/**/*`)
+  return gulp.src(`${slash(paths.src)}/govuk/assets/**/*`)
     .pipe(gulp.dest(slash(join(destination, 'assets'))))
 }
 
@@ -37,8 +37,8 @@ export function copyFiles () {
      * Includes only source JavaScript ECMAScript (ES) modules
      */
     gulp.src([
-      `${slash(configPaths.src)}/govuk/**/*.mjs`,
-      `!${slash(configPaths.src)}/govuk/**/*.test.*`
+      `${slash(paths.src)}/govuk/**/*.mjs`,
+      `!${slash(paths.src)}/govuk/**/*.test.*`
     ]).pipe(gulp.dest(slash(join(destination, 'govuk-esm')))),
 
     /**
@@ -47,7 +47,7 @@ export function copyFiles () {
      */
     merge(
       gulp.src([
-        `${slash(configPaths.src)}/**/*`,
+        `${slash(paths.src)}/**/*`,
 
         // Exclude files we don't want to publish
         '!**/.DS_Store',
@@ -59,18 +59,18 @@ export function copyFiles () {
 
         // Preserve destination README when copying to ./package
         // https://github.com/alphagov/govuk-frontend/tree/main/package#readme
-        `!${slash(configPaths.src)}/govuk/README.md`,
+        `!${slash(paths.src)}/govuk/README.md`,
 
         // Exclude Sass files handled by Gulp 'compile:scss'
-        `!${slash(configPaths.src)}/**/*.scss`,
+        `!${slash(paths.src)}/**/*.scss`,
 
         // Exclude source YAML handled by JSON streams below
-        `!${slash(configPaths.src)}/govuk/components/**/*.yaml`
+        `!${slash(paths.src)}/govuk/components/**/*.yaml`
       ]),
 
       // Generate fixtures.json from ${componentName}.yaml
-      gulp.src(`${slash(configPaths.src)}/govuk/components/**/*.yaml`, {
-        base: slash(configPaths.src)
+      gulp.src(`${slash(paths.src)}/govuk/components/**/*.yaml`, {
+        base: slash(paths.src)
       })
         .pipe(map(async (file, done) => {
           try {
@@ -85,8 +85,8 @@ export function copyFiles () {
         })),
 
       // Generate macro-options.json from ${componentName}.yaml
-      gulp.src(`${slash(configPaths.src)}/govuk/components/**/*.yaml`, {
-        base: slash(configPaths.src)
+      gulp.src(`${slash(paths.src)}/govuk/components/**/*.yaml`, {
+        base: slash(paths.src)
       })
         .pipe(map(async (file, done) => {
           try {
@@ -120,7 +120,7 @@ async function generateFixtures (file) {
 
   // Nunjucks template
   const componentName = basename(file.dirname)
-  const template = join(configPaths.src, 'govuk/components', componentName, 'template.njk')
+  const template = join(paths.src, 'govuk/components', componentName, 'template.njk')
 
   // Loop examples
   const examples = json.examples.map(async (example) => {

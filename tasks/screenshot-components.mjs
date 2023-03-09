@@ -4,7 +4,7 @@ import percySnapshot from '@percy/puppeteer'
 import { isPercyEnabled } from '@percy/sdk-utils'
 import { launch } from 'puppeteer'
 
-import configPaths from '../config/paths.js'
+import { paths } from '../config/index.js'
 import { filterPath, getDirectories, getListing } from '../lib/file-helper.js'
 import { goToComponent, goToExample } from '../lib/puppeteer-helpers.js'
 
@@ -104,8 +104,8 @@ if (!await isPercyEnabled()) {
 }
 
 const [componentNames, componentsFiles] = await Promise.all([
-  getDirectories(join(configPaths.src, 'govuk/components')),
-  getListing(join(configPaths.src, 'govuk/components')),
+  getDirectories(join(paths.src, 'govuk/components')),
+  getListing(join(paths.src, 'govuk/components')),
   download() // Download browser
 ])
 
