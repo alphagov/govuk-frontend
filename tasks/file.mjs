@@ -1,19 +1,24 @@
 import { writeFile } from 'fs/promises'
 import { EOL } from 'os'
-import { join } from 'path'
+import { basename, join } from 'path'
 
 import { pkg } from '../config/index.js'
 
-import { destination } from './task-arguments.mjs'
-
 /**
- * Write VERSION.txt
- * with `package/package.json` version
+ * Write `package/package.json` version to file
  *
- * @returns {Promise<void>}
+ * @param {AssetEntry[0]} assetPath - File path to asset
+ * @param {AssetEntry[1]} options - Asset options
+ * @returns {() => Promise<void>} Prepared compile task
  */
-export async function updateAssetsVersion () {
-  return writeFile(join(destination, 'VERSION.txt'), pkg.version + EOL)
+export function version (assetPath, { destPath }) {
+  const task = () => writeFile(join(destPath, assetPath), pkg.version + EOL)
+
+  task.displayName = `file:version ${basename(assetPath)}`
+
+  return task
 }
 
-updateAssetsVersion.displayName = 'update-assets-version'
+/**
+ * @typedef {import('./compile-assets.mjs').AssetEntry} AssetEntry
+ */

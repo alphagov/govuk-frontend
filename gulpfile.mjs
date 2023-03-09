@@ -4,11 +4,11 @@ import gulp from 'gulp'
 import taskListing from 'gulp-task-listing'
 
 import { paths, pkg } from './config/index.js'
-import { updateAssetsVersion } from './tasks/asset-version.mjs'
 import { clean } from './tasks/clean.mjs'
 import { compileConfig } from './tasks/compile-configs.mjs'
 import { compileJavaScripts } from './tasks/compile-javascripts.mjs'
 import { compileStylesheets } from './tasks/compile-stylesheets.mjs'
+import { version } from './tasks/file.mjs'
 import { copyAssets, copyFiles } from './tasks/gulp/copy-to-destination.mjs'
 import { watch } from './tasks/gulp/watch.mjs'
 import { npmScriptTask } from './tasks/run.mjs'
@@ -157,7 +157,10 @@ gulp.task('build:dist', gulp.series(
     }
   }),
 
-  updateAssetsVersion
+  // Update GOV.UK Frontend version
+  version('VERSION.txt', {
+    destPath: paths.dist
+  })
 ))
 
 /**
