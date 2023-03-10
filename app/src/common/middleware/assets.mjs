@@ -2,7 +2,7 @@ import { join } from 'path'
 
 import express from 'express'
 
-import configPaths from '../../../config/paths.js'
+import configPaths from '../../../../config/paths.js'
 
 const router = express.Router()
 

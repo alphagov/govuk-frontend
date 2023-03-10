@@ -1,8 +1,8 @@
 import express from 'express'
 
-import configPaths from '../config/paths.js'
-import { getDirectories, getComponentsData, getFullPageExamples } from '../lib/file-helper.js'
-import { componentNameToMacroName } from '../lib/helper-functions.js'
+import configPaths from '../../config/paths.js'
+import { getDirectories, getComponentsData, getFullPageExamples } from '../../lib/file-helper.js'
+import { componentNameToMacroName } from '../../lib/helper-functions.js'
 
 import * as middleware from './common/middleware/index.mjs'
 import * as nunjucks from './common/nunjucks/index.mjs'

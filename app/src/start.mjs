@@ -1,4 +1,4 @@
-import { ports } from '../config/index.js'
+import { ports } from '../../config/index.js'
 
 import app from './app.mjs'
 

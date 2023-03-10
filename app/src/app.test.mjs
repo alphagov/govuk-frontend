@@ -1,7 +1,7 @@
 import { load } from 'cheerio'
 
-import { paths, ports } from '../config/index.js'
-import { getDirectories } from '../lib/file-helper.js'
+import { paths, ports } from '../../config/index.js'
+import { getDirectories } from '../../lib/file-helper.js'
 
 const expectedPages = [
   '/',

@@ -1,6 +1,6 @@
 import { load } from 'cheerio'
 
-import { ports } from '../../config/index.js'
+import { ports } from '../../../config/index.js'
 
 const expectedPages = [
   'bank-holidays',

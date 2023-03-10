@@ -2,7 +2,7 @@ import { join } from 'path'
 
 import beautify from 'js-beautify'
 
-import { paths } from '../../../../config/index.js'
+import { paths } from '../../../../../config/index.js'
 
 /**
  * Component HTML code (formatted)

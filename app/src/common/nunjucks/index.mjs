@@ -3,7 +3,7 @@ import { join } from 'path'
 
 import nunjucks from 'nunjucks'
 
-import { paths } from '../../../config/index.js'
+import { paths } from '../../../../config/index.js'
 
 import * as filters from './filters/index.mjs'
 import * as globals from './globals/index.mjs'
