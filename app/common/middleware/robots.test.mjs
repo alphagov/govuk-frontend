@@ -1,7 +1,7 @@
 import express from 'express'
 import supertest from 'supertest'
 
-import middleware from './robots.js'
+import middleware from './robots.mjs'
 
 describe('Middleware: Search engines (robots.txt)', () => {
   let app

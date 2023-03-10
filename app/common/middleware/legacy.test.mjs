@@ -1,7 +1,7 @@
 import express from 'express'
 import supertest from 'supertest'
 
-import middleware from './legacy.js'
+import middleware from './legacy.mjs'
 
 describe('Middleware: Legacy mode', () => {
   let app

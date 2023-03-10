@@ -1,7 +1,7 @@
 import express from 'express'
 import supertest from 'supertest'
 
-import middleware from './request.js'
+import middleware from './request.mjs'
 
 describe('Middleware: Request handling', () => {
   let app

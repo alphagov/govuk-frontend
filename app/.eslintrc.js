@@ -3,10 +3,9 @@ const { join } = require('path')
 module.exports = {
   overrides: [
     {
-      files: ['**/*.js'],
+      files: ['**/*.mjs'],
       excludedFiles: [
-        '**/.eslintrc.js',
-        '**/*.test.js'
+        '**/*.test.mjs'
       ],
       parser: '@typescript-eslint/parser',
       parserOptions: {
