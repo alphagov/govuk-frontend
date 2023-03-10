@@ -311,6 +311,13 @@ examples:
         text: £
       suffix:
         text: per item
+  - name: with extra letter spacing
+    data:
+      id: input-with-extra-letter-spacing
+      label:
+        text: National insurance number
+      classes: govuk-input--width-30 govuk-input--extra-letter-spacing
+      value: QQ 12 34 56 C
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes

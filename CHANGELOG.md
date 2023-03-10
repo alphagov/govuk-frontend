@@ -54,6 +54,14 @@ The [Button](https://design-system.service.gov.uk/components/button/) Nunjucks m
 
 This was added in [pull request #3344: Adding optional id attribute to button component](https://github.com/alphagov/govuk-frontend/pull/3344). Thanks to [Tom Billington](https://github.com/TomBillingtonUK) for this contribution.
 
+### Added a modifier for text input styles that accept sequences of digits
+
+We've added a new `.govuk-input--extra-letter-spacing` class for [Text Input](https://design-system.service.gov.uk/components/text-input/). This increases readability of text inputs that receive sequences of digits (like security codes, references or phone numbers).
+
+You can add it through the `classes` option when using Nunjucks, or directly in the `class` attribute of the `<input>` when using HTML.
+
+This was added in [pull request #2230: Add extra letter spacing modifier for inputs](https://github.com/alphagov/govuk-frontend/pull/2230)
+
 ### Deprecated features
 
 #### Stop using the `govuk-button--disabled` class on buttons
