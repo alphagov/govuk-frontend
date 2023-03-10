@@ -1,5 +1,7 @@
 import { spawn } from 'child_process'
 
+import PluginError from 'plugin-error'
+
 import { isDev } from './task-arguments.mjs'
 
 /**
@@ -35,14 +37,17 @@ export async function npmScript (name, args = []) {
     // Check for exit codes or continue `gulp dev`
     script.on('close', (code) => {
       let error
+      let cause
 
       // Closed with errors
       if (code > 0) {
-        error = new Error(`Task for npm script '${name}' exit code ${code}`)
+        cause = new Error(`Task for npm script '${name}' exit code ${code}`)
 
-        // Hide error info (already written to `stderr`)
-        error.showProperties = false
-        error.showStack = false
+        // Hide cause info (already written to `stderr`)
+        error = new PluginError(`npm run ${name}`, cause, {
+          showProperties: false,
+          showStack: false
+        })
       }
 
       // Reject on errors
