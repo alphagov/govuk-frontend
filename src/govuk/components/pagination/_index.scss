@@ -23,7 +23,7 @@
   .govuk-pagination__item,
   .govuk-pagination__next,
   .govuk-pagination__prev {
-    @include govuk-font(19);
+    @include govuk-font(24);
     box-sizing: border-box;
     position: relative;
     min-width: 45px;
@@ -52,13 +52,14 @@
 
   .govuk-pagination__prev,
   .govuk-pagination__next {
-    @include govuk-typography-weight-bold;
+    // @include govuk-typography-weight-bold;
 
     // Use flex to get around a whitespace issue between the arrow svg and the link text
     // without having to rely on whitespace control from backend tooling
     .govuk-pagination__link {
       display: flex;
       align-items: center;
+      text-decoration: none;
     }
   }
 

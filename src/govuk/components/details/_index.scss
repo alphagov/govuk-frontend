@@ -2,7 +2,7 @@
   .govuk-details {
     @include govuk-font($size: 19);
     @include govuk-text-colour;
-    @include govuk-responsive-margin(6, "bottom");
+    @include govuk-responsive-margin(4, "bottom");
 
     display: block;
   }
@@ -17,7 +17,7 @@
     margin-bottom: govuk-spacing(1);
 
     // Allow for absolutely positioned marker and align with disclosed text
-    padding-left: govuk-spacing(4) + $govuk-border-width;
+    padding-left: govuk-spacing(4);
 
     // Style the summary to look like a link...
     color: $govuk-link-colour;

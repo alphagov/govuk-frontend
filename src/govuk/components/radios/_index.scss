@@ -8,10 +8,13 @@
   $govuk-touch-target-size: 44px;
   $govuk-radios-size: 40px;
   $govuk-small-radios-size: 24px;
-  $govuk-radios-label-padding-left-right: govuk-spacing(3);
+  $govuk-radios-label-padding-left-right: calc(govuk-spacing(3) - 4px);
   // When the default focus width is used on a curved edge it looks visually smaller.
   // So for the circular radios we bump the default to make it look visually consistent.
   $govuk-radios-focus-width: $govuk-focus-width + 1px;
+  $govuk-radios-color: govuk-colour("dark-grey", $legacy: "grey-1");
+  $govuk-radios-color-focused: govuk-colour("black");
+  $govuk-radios-check-size: $govuk-radios-size / 4;
 
   .govuk-radios__item {
     @include govuk-font($size: 19);
@@ -86,7 +89,7 @@
     width: $govuk-radios-size;
     height: $govuk-radios-size;
 
-    border: $govuk-border-width-form-element solid currentcolor;
+    border: $govuk-border-width-form-element solid $govuk-radios-color;
     border-radius: 50%;
     background: transparent;
   }
@@ -99,13 +102,13 @@
     content: "";
 
     position: absolute;
-    top: govuk-spacing(2);
-    left: govuk-spacing(2);
+    top: $govuk-radios-check-size;
+    left: $govuk-radios-check-size;
 
     width: 0;
     height: 0;
 
-    border: govuk-spacing(2) solid currentcolor;
+    border: $govuk-radios-check-size solid;
     border-radius: 50%;
     opacity: 0;
     background: currentcolor;
@@ -120,7 +123,7 @@
   // Focused state
   .govuk-radios__input:focus + .govuk-radios__label:before {
     border-width: 4px;
-
+    border-color: $govuk-radios-color-focused;
     // When colours are overridden, the yellow box-shadow becomes invisible
     // which means the focus state is less obvious. By adding a transparent
     // outline, which becomes solid (text-coloured) in that context, we ensure

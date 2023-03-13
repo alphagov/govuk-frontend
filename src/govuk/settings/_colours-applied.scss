@@ -30,7 +30,7 @@ $govuk-text-colour: govuk-colour("black") !default;
 /// @type Colour
 /// @access public
 
-$govuk-canvas-background-colour: govuk-colour("light-grey", $legacy: "grey-3") !default;
+$govuk-canvas-background-colour: govuk-colour("lighter-grey", $legacy: "grey-3") !default;
 
 /// Body background colour
 ///
@@ -102,7 +102,7 @@ $govuk-success-colour: govuk-colour("green") !default;
 /// @type Colour
 /// @access public
 
-$govuk-border-colour: govuk-colour("mid-grey", $legacy: "grey-2");
+$govuk-border-colour: govuk-colour("lighter-grey", $legacy: "grey-3");
 
 /// Input border colour
 ///
@@ -111,7 +111,7 @@ $govuk-border-colour: govuk-colour("mid-grey", $legacy: "grey-2");
 /// @type Colour
 /// @access public
 
-$govuk-input-border-colour: govuk-colour("black") !default;
+$govuk-input-border-colour: govuk-colour("dark-grey", $legacy: "grey-1") !default;
 
 /// Input hover colour
 ///

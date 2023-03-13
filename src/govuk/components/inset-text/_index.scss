@@ -1,16 +1,18 @@
 @include govuk-exports("govuk/component/inset-text") {
+  $govuk-inset-text-border-colour: govuk-colour("blue", $legacy: "blue");
+
   .govuk-inset-text {
     @include govuk-font($size: 19);
     @include govuk-text-colour;
-    padding: govuk-spacing(3);
+    padding: govuk-spacing(4);
     // Margin top intended to collapse
     // This adds an additional 10px to the paragraph above
-    @include govuk-responsive-margin(6, "top");
-    @include govuk-responsive-margin(6, "bottom");
+    @include govuk-responsive-margin(7, "top");
+    @include govuk-responsive-margin(7, "bottom");
 
     clear: both;
 
-    border-left: $govuk-border-width-wide solid $govuk-border-colour;
+    border-left: $govuk-border-width-wide solid  $govuk-inset-text-border-colour;
 
     > :first-child {
       margin-top: 0;

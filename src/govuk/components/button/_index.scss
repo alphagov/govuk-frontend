@@ -23,7 +23,7 @@ $govuk-button-text-colour: govuk-colour("white") !default;
   $govuk-button-text-colour: $govuk-button-text-colour;
 
   // Secondary button variables
-  $govuk-secondary-button-colour: govuk-colour("light-grey", $legacy: "grey-3");
+  $govuk-secondary-button-colour: govuk-colour("dark-grey", $legacy: "grey-3");
   $govuk-secondary-button-hover-colour: govuk-shade($govuk-secondary-button-colour, 10%);
   $govuk-secondary-button-shadow-colour: govuk-shade($govuk-secondary-button-colour, 40%);
   $govuk-secondary-button-text-colour: govuk-colour("black");
@@ -37,10 +37,10 @@ $govuk-button-text-colour: govuk-colour("white") !default;
   // Because the shadow (s0) is visually 'part of' the button, we need to reduce
   // the height of the button to compensate by adjusting its padding (s1) and
   // increase the bottom margin to include it (s2).
-  $button-shadow-size: $govuk-border-width-form-element;
+  $button-shadow-size: $govuk-border-width-form-element * 2;
 
   .govuk-button {
-    @include govuk-font($size: 19, $line-height: 19px);
+    @include govuk-font($size: 19, $weight: bold);
 
     box-sizing: border-box;
     display: inline-block;
@@ -50,9 +50,9 @@ $govuk-button-text-colour: govuk-colour("white") !default;
     margin-right: 0;
     margin-left: 0;
     @include govuk-responsive-margin(6, "bottom", $adjustment: $button-shadow-size); // s2
-    padding: (govuk-spacing(2) - $govuk-border-width-form-element) govuk-spacing(2) (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2)); // s1
+    padding: 12px 16px;
     border: $govuk-border-width-form-element solid transparent;
-    border-radius: 0;
+    border-radius: 4px;
     color: $govuk-button-text-colour;
     background-color: $govuk-button-colour;
     box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
@@ -111,7 +111,7 @@ $govuk-button-text-colour: govuk-colour("white") !default;
         color: $govuk-focus-text-colour;
         background-color: $govuk-focus-colour;
       }
-      box-shadow: inset 0 0 0 1px $govuk-focus-colour;
+      box-shadow: 0 4px 0 #212b32;
     }
 
     // alphagov/govuk_template includes a specific a:link:focus selector
@@ -129,7 +129,7 @@ $govuk-button-text-colour: govuk-colour("white") !default;
       border-color: $govuk-focus-colour;
       color: $govuk-focus-text-colour;
       background-color: $govuk-focus-colour;
-      box-shadow: 0 2px 0 $govuk-focus-text-colour;
+      box-shadow: 0 4px 0 $govuk-focus-text-colour; // to add variable
     }
 
     // The following adjustments do not work for <input type="button"> as
@@ -196,7 +196,7 @@ $govuk-button-text-colour: govuk-colour("white") !default;
     &:visited,
     &:active,
     &:hover {
-      color: $govuk-secondary-button-text-colour;
+      color: $govuk-button-text-colour;
     }
 
     // alphagov/govuk_template includes a specific a:link:focus selector

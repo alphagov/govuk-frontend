@@ -47,22 +47,23 @@ $govuk-use-legacy-palette: if(
 /// @access private
 
 $_govuk-colour-palette-modern: (
-  "red": #d4351c,
-  "yellow": #ffdd00,
-  "green": #00703c,
-  "blue": #1d70b8,
+  "red": #d5281b,
+  "yellow": #ffeb3b,
+  "green": #007f3b,
+  "blue": #005eb8,
   "dark-blue": #003078,
   "light-blue": #5694ca,
-  "purple": #4c2c92,
+  "purple": #330072,
 
-  "black": #0b0c0c,
-  "dark-grey": #505a5f,
-  "mid-grey": #b1b4b6,
-  "light-grey": #f3f2f1,
+  "black": 	#212b32,
+  "dark-grey": 	#4c6272,
+  "mid-grey": #aeb7bd,
+  "lighter-grey": #d8dde0,
+  "light-grey": #f0f4f5,
   "white": #ffffff,
 
   "light-purple": #6f72af,
-  "bright-purple": #912b88,
+  "bright-purple": 	#7c2855,
   "pink": #d53880,
   "light-pink": #f499be,
   "orange": #f47738,
@@ -97,9 +98,9 @@ $_govuk-colour-palette-legacy: (
   "blue": #005ea5,
 
   "black": #0b0c0c,
-  "grey-1": #6f777b,
+  "grey-1": #4c6272,
   "grey-2": #bfc1c3,
-  "grey-3": #dee0e2,
+  "grey-3": #4c6272,
   "grey-4": #f8f8f8,
   "white": #ffffff
 );

@@ -8,7 +8,7 @@
   $govuk-touch-target-size: 44px;
   $govuk-checkboxes-size: 40px;
   $govuk-small-checkboxes-size: 24px;
-  $govuk-checkboxes-label-padding-left-right: govuk-spacing(3);
+  $govuk-checkboxes-label-padding-left-right: calc(govuk-spacing(3) - 4px);
 
   .govuk-checkboxes__item {
     @include govuk-font($size: 19);
@@ -82,7 +82,7 @@
       left: 0;
       width: $govuk-checkboxes-size;
       height: $govuk-checkboxes-size;
-      border: $govuk-border-width-form-element solid currentcolor;
+      border: $govuk-border-width-form-element solid govuk-colour("dark-grey", $legacy: "grey-1");
       background: transparent;
     }
 
@@ -142,6 +142,10 @@
   // Selected state
   .govuk-checkboxes__input:checked + .govuk-checkboxes__label:after {
     opacity: 1;
+  }
+
+  .govuk-checkboxes__input:checked + .govuk-checkboxes__label:before {
+    border-color: govuk-colour("black");
   }
 
   // Disabled state

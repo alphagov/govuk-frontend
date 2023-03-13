@@ -4,8 +4,8 @@
   $govuk-footer-border: $govuk-border-colour;
   // This variable can be removed entirely once the legacy palette goes away,
   // as it'll just be the same as $govuk-footer-border.
-  $govuk-footer-border-top: $govuk-border-colour;
-  $govuk-footer-text: $govuk-text-colour;
+  $govuk-footer-border-top: govuk-colour("blue");
+  $govuk-footer-text: govuk-colour("dark-grey", "grey-1");
   $govuk-footer-link-hover-colour: null; // Only used with the legacy palette
 
   @if $govuk-use-legacy-palette {
@@ -27,7 +27,7 @@
     @include govuk-responsive-padding(7, "top");
     @include govuk-responsive-padding(5, "bottom");
 
-    border-top: 1px solid $govuk-footer-border-top;
+    border-top: 4px solid $govuk-footer-border-top;
     color: $govuk-footer-text;
     background: $govuk-footer-background;
   }

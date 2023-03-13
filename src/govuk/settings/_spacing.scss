@@ -10,15 +10,15 @@
 
 $govuk-spacing-points: (
   0: 0,
-  1: 5px,
-  2: 10px,
-  3: 15px,
-  4: 20px,
-  5: 25px,
-  6: 30px,
-  7: 40px,
-  8: 50px,
-  9: 60px
+  1: 4px,
+  2: 8px,
+  3: 16px,
+  4: 24px,
+  5: 32px,
+  6: 40px,
+  7: 48px,
+  8: 56px,
+  9: 64px
 ) !default;
 
 /// Responsive spacing maps
@@ -41,36 +41,36 @@ $govuk-spacing-responsive-scale: (
     null: 0
   ),
   1: (
-    null: 5px
+    null: 4px
   ),
   2: (
-    null: 10px
+    null: 8px
   ),
   3: (
-    null: 15px
+    null: 8px
   ),
   4: (
-    null: 15px,
-    tablet: 20px
+    null: 16px,
+    tablet: 24px
   ),
   5: (
-    null: 15px,
-    tablet: 25px
+    null: 24px,
+    tablet: 32px
   ),
   6: (
-    null: 20px,
-    tablet: 30px
-  ),
-  7: (
-    null: 25px,
+    null: 32px,
     tablet: 40px
   ),
+  7: (
+    null: 40px,
+    tablet: 48px
+  ),
   8: (
-    null: 30px,
-    tablet: 50px
+    null: 48px,
+    tablet: 56px
   ),
   9: (
-    null: 40px,
-    tablet: 60px
+    null: 56px,
+    tablet: 64px
   )
 ) !default;
