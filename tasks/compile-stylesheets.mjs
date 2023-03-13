@@ -113,7 +113,7 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath }]) {
  * @returns {Promise<AssetEntry[]>} Import entries
  */
 export async function getImportEntries () {
-  const srcPath = isPublic ? paths.app : join(paths.src, 'govuk')
+  const srcPath = isPublic ? join(paths.app, 'src') : join(paths.src, 'govuk')
   const destPath = isPackage ? join(destination, 'govuk') : destination
 
   // Perform a search and return an array of matching file names

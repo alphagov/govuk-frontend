@@ -35,8 +35,8 @@ module.exports = {
   components: join(configPaths.src, 'govuk/components'),
 
   // Review application views
-  views: join(configPaths.app, 'views'),
-  examples: join(configPaths.app, 'views/examples'),
-  fullPageExamples: join(configPaths.app, 'views/full-page-examples'),
-  layouts: join(configPaths.app, 'views/layouts')
+  views: join(configPaths.app, 'src/views'),
+  examples: join(configPaths.app, 'src/views/examples'),
+  fullPageExamples: join(configPaths.app, 'src/views/full-page-examples'),
+  layouts: join(configPaths.app, 'src/views/layouts')
 }

@@ -1,7 +1,6 @@
 {
-  "exec": "node start.mjs",
-  "watch": [".", "../src/govuk"],
+  "watch": ["./src", "../src/govuk"],
   "ignore": ["**/*.test.*"],
-  "ext": "js,json,yaml",
+  "ext": "mjs,json,yaml",
   "quiet": true
 }

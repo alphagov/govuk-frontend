@@ -1,0 +1,73 @@
+@import "../../../../src/govuk/base";
+$govuk-new-link-styles: true;
+@import "../../../../src/govuk/core/all";
+
+.app-header--campaign {
+  padding-bottom: govuk-spacing(2);
+  border-bottom: $govuk-border-width-wide solid #fff500;
+}
+
+.app-header--campaign .govuk-header__container {
+  border-bottom: none;
+}
+
+.app-covid-banner-top {
+  padding-bottom: govuk-spacing(4);
+  background-color: govuk-colour("black");
+}
+
+.app-covid-banner-top .govuk-heading-xl {
+  padding-top: govuk-spacing(2);
+  color: govuk-colour("white");
+}
+
+.app-covid-banner-bottom {
+  margin-bottom: govuk-spacing(6);
+  padding: govuk-spacing(3) 0 govuk-spacing(1);
+  background-color: #272828;
+}
+
+.app-covid-banner-bottom .govuk-body,
+.app-covid-banner-bottom .govuk-heading-m {
+  color: govuk-colour("white");
+}
+
+.app-covid-banner-top .govuk-breadcrumbs__link {
+  @include govuk-link-style-inverse;
+}
+
+.app-cta-link {
+  @include govuk-font($size: 19, $weight: bold);
+}
+
+.app-section {
+  padding: govuk-spacing(3) 0;
+  border-top: 2px solid govuk-colour("black");
+}
+
+.app-updates {
+  margin-bottom: govuk-spacing(8);
+  padding: govuk-spacing(4) govuk-spacing(4) govuk-spacing(2);
+  border: 1px solid $govuk-border-colour;
+  background-color: govuk-colour("light-grey");
+}
+
+.app-nhs-box {
+  margin-bottom: govuk-spacing(4);
+  padding: govuk-spacing(4);
+  border: $govuk-border-width solid govuk-colour("black");
+}
+
+.app-danger-box {
+  padding: govuk-spacing(6) govuk-spacing(5);
+  border-left: solid #fff500;
+  border-width: 0 0 0 10px;
+  border-image: repeating-linear-gradient(25deg, transparent 0, #fff500 1px, #fff500 10px, transparent 11px, transparent 20px) 25;
+  color: govuk-colour("white");
+  background-color: #272828;
+}
+
+.app-danger-box .govuk-body,
+.app-danger-box .govuk-heading-m {
+  color: govuk-colour("white");
+}
