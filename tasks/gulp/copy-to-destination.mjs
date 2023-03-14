@@ -11,23 +11,6 @@ import slash from 'slash'
 import { paths } from '../../config/index.js'
 
 /**
- * Copy assets task
- * Copies assets to destination
- *
- * @param {string} pattern - Minimatch pattern
- * @param {AssetEntry[1]} options - Asset options
- * @returns {() => import('stream').Stream} Output file stream
- */
-export function copyAssets (pattern, { srcPath, destPath }) {
-  const task = () => gulp.src(`${slash(join(srcPath, pattern))}`)
-    .pipe(gulp.dest(slash(destPath)))
-
-  task.displayName = 'copy:assets'
-
-  return task
-}
-
-/**
  * Copy files task
  *
  * Copies files to destination with './govuk' suffix
