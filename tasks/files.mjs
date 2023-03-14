@@ -2,8 +2,8 @@ import { writeFile } from 'fs/promises'
 import { EOL } from 'os'
 import { basename, join } from 'path'
 
+import cpy from 'cpy'
 import { deleteAsync } from 'del'
-import gulp from 'gulp'
 import slash from 'slash'
 
 import { pkg } from '../config/index.js'
@@ -39,19 +39,19 @@ export function version (assetPath, { destPath }) {
 }
 
 /**
- * Copy assets task
- * Copies assets to destination
+ * Copy files task
+ * Copies files to destination
  *
  * @param {string} pattern - Minimatch pattern
  * @param {AssetEntry[1]} options - Asset options
- * @returns {() => import('stream').Stream} Output file stream
+ * @returns {() => Promise<string[]>} Prepared copy task
  */
-export function copyAssets (pattern, { srcPath, destPath }) {
-  const task = () => gulp.src(`${slash(join(srcPath, pattern))}`)
-    .pipe(gulp.dest(slash(destPath)))
+export function copy (pattern, { srcPath, destPath, ignore = [] }) {
+  const srcPatterns = [slash(join(srcPath, pattern))]
+    .concat(ignore.map((pattern) => `!${pattern}`))
 
-  task.displayName = 'copy:assets'
-
+  const task = async () => cpy(srcPatterns, destPath, { cwd: srcPath })
+  task.displayName = `copy:${basename(destPath)}`
   return task
 }
 

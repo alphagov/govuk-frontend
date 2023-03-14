@@ -47,6 +47,7 @@
     "@babel/preset-env": "^7.20.2",
     "autoprefixer": "^9.8.8",
     "chalk": "^5.2.0",
+    "cpy": "^9.0.1",
     "cssnano": "^5.1.15",
     "cssnano-preset-default": "^5.2.13",
     "del": "^7.0.0",

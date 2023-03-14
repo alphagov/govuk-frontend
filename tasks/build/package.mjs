@@ -27,7 +27,7 @@ export default () => gulp.series(
   }),
 
   // Copy GOV.UK Frontend JavaScript (ES modules)
-  files.copyAssets('**/!(*.test).mjs', {
+  files.copy('**/!(*.test).mjs', {
     srcPath: join(paths.src, 'govuk'),
     destPath: join(paths.package, 'govuk-esm')
   }),
