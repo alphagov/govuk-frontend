@@ -24,7 +24,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
 **`npm run serve` will do the following:**
 
-- start up Express, restarting when `.js` files change
+- start up Express, restarting when `.mjs`, `.json` or `.yaml` files change
 
 **`npm run heroku` runs on Heroku build/PR and it will:**
 
