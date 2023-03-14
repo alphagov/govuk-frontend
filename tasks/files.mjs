@@ -56,7 +56,7 @@ export function copy (pattern, { srcPath, destPath, ignore = [] }) {
 }
 
 // Include Gulp legacy file tasks
-export { copyFiles } from './gulp/copy-to-destination.mjs'
+export { generateFixtures, generateMacroOptions } from './gulp/copy-to-destination.mjs'
 export { watch } from './gulp/watch.mjs'
 
 /**
