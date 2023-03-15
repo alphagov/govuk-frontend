@@ -3,7 +3,7 @@ import { join } from 'path'
 import gulp from 'gulp'
 import taskListing from 'gulp-task-listing'
 
-import { paths } from './config/index.js'
+import { paths, pkg } from './config/index.js'
 import { updateAssetsVersion } from './tasks/asset-version.mjs'
 import { clean } from './tasks/clean.mjs'
 import { compileJavaScripts } from './tasks/compile-javascripts.mjs'
@@ -20,7 +20,11 @@ import { npmScriptTask } from './tasks/run.mjs'
 gulp.task('scripts', gulp.series(
   compileJavaScripts('all.mjs', {
     srcPath: join(paths.src, 'govuk'),
-    destPath: paths.public
+    destPath: join(paths.public, 'javascripts'),
+
+    filePath (file) {
+      return join(file.dir, `${file.name}.min.js`)
+    }
   }),
 
   npmScriptTask('build:jsdoc')
@@ -32,8 +36,12 @@ gulp.task('scripts', gulp.series(
  */
 gulp.task('styles', gulp.series(
   compileStylesheets('**/[!_]*.scss', {
-    srcPath: join(paths.app, 'src'),
-    destPath: paths.public
+    srcPath: join(paths.app, 'src/stylesheets'),
+    destPath: join(paths.public, 'stylesheets'),
+
+    filePath (file) {
+      return join(file.dir, `${file.name}.min.css`)
+    }
   }),
 
   npmScriptTask('build:sassdoc')
@@ -61,19 +69,31 @@ gulp.task('build:package', gulp.series(
   // Compile GOV.UK Frontend JavaScript
   compileJavaScripts('**/!(*.test).mjs', {
     srcPath: join(paths.src, 'govuk'),
-    destPath: join(paths.package, 'govuk')
+    destPath: join(paths.package, 'govuk'),
+
+    filePath (file) {
+      return join(file.dir, `${file.name}.js`)
+    }
   }),
 
   // Apply CSS prefixes to GOV.UK Frontend Sass
   compileStylesheets('**/*.scss', {
     srcPath: join(paths.src, 'govuk'),
-    destPath: join(paths.package, 'govuk')
+    destPath: join(paths.package, 'govuk'),
+
+    filePath (file) {
+      return join(file.dir, `${file.name}.scss`)
+    }
   }),
 
   // Apply CSS prefixes to GOV.UK Prototype Kit Sass
   compileStylesheets('init.scss', {
     srcPath: join(paths.src, 'govuk-prototype-kit'),
-    destPath: join(paths.package, 'govuk-prototype-kit')
+    destPath: join(paths.package, 'govuk-prototype-kit'),
+
+    filePath (file) {
+      return join(file.dir, `${file.name}.scss`)
+    }
   }),
 
   updatePrototypeKitConfig
@@ -90,13 +110,21 @@ gulp.task('build:dist', gulp.series(
   // Compile GOV.UK Frontend JavaScript
   compileJavaScripts('all.mjs', {
     srcPath: join(paths.src, 'govuk'),
-    destPath: paths.dist
+    destPath: paths.dist,
+
+    filePath (file) {
+      return join(file.dir, `${file.name.replace(/^all/, pkg.name)}-${pkg.version}.min.js`)
+    }
   }),
 
   // Compile GOV.UK Frontend Sass
   compileStylesheets('**/[!_]*.scss', {
     srcPath: join(paths.src, 'govuk'),
-    destPath: paths.dist
+    destPath: paths.dist,
+
+    filePath (file) {
+      return join(file.dir, `${file.name.replace(/^all/, pkg.name)}-${pkg.version}.min.css`)
+    }
   }),
 
   updateAssetsVersion

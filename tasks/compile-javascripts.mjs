@@ -4,12 +4,10 @@ import PluginError from 'plugin-error'
 import { rollup } from 'rollup'
 import { minify } from 'terser'
 
-import { pkg } from '../config/index.js'
 import { getListing } from '../lib/file-helper.js'
 import { componentPathToModuleName } from '../lib/helper-functions.js'
 
 import { writeAsset } from './compile-assets.mjs'
-import { isDist, isPackage, isPublic } from './task-arguments.mjs'
 
 /**
  * Compile JavaScript ESM to CommonJS task
@@ -42,16 +40,17 @@ export function compileJavaScripts (pattern, options) {
  *
  * @param {AssetEntry} assetEntry - Asset entry
  */
-export async function compileJavaScript ([modulePath, { srcPath, destPath }]) {
-  const moduleDestPath = join(destPath, getPathByDestination(modulePath))
+export async function compileJavaScript ([modulePath, { srcPath, destPath, filePath }]) {
+  const moduleSrcPath = join(srcPath, modulePath)
+  const moduleDestPath = join(destPath, filePath ? filePath(parse(modulePath)) : modulePath)
 
   // Create Rollup bundle
   const bundle = await rollup({
-    input: join(srcPath, modulePath)
+    input: moduleSrcPath
   })
 
   // Compile JavaScript ESM to CommonJS
-  const bundled = await bundle[!isPackage ? 'generate' : 'write']({
+  const bundled = await bundle[moduleDestPath.endsWith('.min.js') ? 'generate' : 'write']({
     file: moduleDestPath,
     sourcemapFile: moduleDestPath,
     sourcemap: true,
@@ -70,7 +69,7 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath }]) {
   })
 
   // Minify bundle
-  if (!isPackage) {
+  if (moduleDestPath.endsWith('.min.js')) {
     const minified = await minifyJavaScript(modulePath, bundled)
 
     // Write to files
@@ -104,25 +103,6 @@ export function minifyJavaScript (modulePath, result) {
   })
 
   return minified
-}
-
-/**
- * JavaScript module name by destination
- *
- * @param {AssetEntry[0]} filePath - File path
- * @returns {AssetEntry[0]} File path adjusted by destination
- */
-export function getPathByDestination (filePath) {
-  let { dir, name } = parse(filePath)
-
-  // Adjust file path by destination
-  dir = isPublic ? 'javascripts' : dir
-  name = isDist ? `${name.replace(/^all/, pkg.name)}-${pkg.version}` : name
-
-  // Adjust file path for minification
-  return join(dir, !isPackage
-    ? `${name}.min.js`
-    : `${name}.js`)
 }
 
 /**

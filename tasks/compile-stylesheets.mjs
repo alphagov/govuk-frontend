@@ -8,11 +8,10 @@ import postcss from 'postcss'
 import postcssrc from 'postcss-load-config'
 import { compileAsync } from 'sass-embedded'
 
-import { paths, pkg } from '../config/index.js'
+import { paths } from '../config/index.js'
 import { getListing } from '../lib/file-helper.js'
 
 import { writeAsset } from './compile-assets.mjs'
-import { isDist, isPackage } from './task-arguments.mjs'
 
 /**
  * Compile Sass to CSS task
@@ -45,9 +44,9 @@ export function compileStylesheets (pattern, options) {
  *
  * @param {AssetEntry} assetEntry - Asset entry
  */
-export async function compileStylesheet ([modulePath, { srcPath, destPath }]) {
+export async function compileStylesheet ([modulePath, { srcPath, destPath, filePath }]) {
   const moduleSrcPath = join(srcPath, modulePath)
-  const moduleDestPath = join(destPath, getPathByDestination(modulePath))
+  const moduleDestPath = join(destPath, filePath ? filePath(parse(modulePath)) : modulePath)
 
   let css
   let map
@@ -58,8 +57,8 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath }]) {
     to: moduleDestPath
   }
 
-  // Render Sass
-  if (!isPackage) {
+  // Compile Sass to CSS
+  if (moduleDestPath.endsWith('.css')) {
     ({ css, sourceMap: map } = await compileAsync(moduleSrcPath, {
       alertColor: true,
 
@@ -109,24 +108,6 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath }]) {
 
   // Write to files
   return writeAsset(moduleDestPath, result)
-}
-
-/**
- * Stylesheet path by destination
- *
- * @param {AssetEntry[0]} filePath - File path
- * @returns {AssetEntry[0]} File path adjusted by destination
- */
-export function getPathByDestination (filePath) {
-  let { dir, name } = parse(filePath)
-
-  // Adjust file path by destination
-  name = isDist ? `${name.replace(/^all/, pkg.name)}-${pkg.version}` : name
-
-  // Adjust file path for minification
-  return join(dir, !isPackage
-    ? `${name}.min.css`
-    : `${name}.scss`)
 }
 
 /**
