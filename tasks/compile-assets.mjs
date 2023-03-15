@@ -25,7 +25,7 @@ export async function writeAsset (filePath, result) {
     writeTasks.push(writeFile(`${filePath}.map`, map))
   }
 
-  return Promise.all(writeTasks)
+  await Promise.all(writeTasks)
 }
 
 /**

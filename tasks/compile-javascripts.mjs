@@ -45,7 +45,7 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath }]) {
   })
 
   // Compile JavaScript ESM to CommonJS
-  let result = await bundle[!isPackage ? 'generate' : 'write']({
+  const bundled = await bundle[!isPackage ? 'generate' : 'write']({
     file: moduleDestPath,
     sourcemapFile: moduleDestPath,
     sourcemap: true,
@@ -65,10 +65,10 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath }]) {
 
   // Minify bundle
   if (!isPackage) {
-    result = await minifyJavaScript(modulePath, result)
+    const minified = await minifyJavaScript(modulePath, bundled)
 
     // Write to files
-    return writeAsset(moduleDestPath, result)
+    return writeAsset(moduleDestPath, minified)
   }
 }
 
