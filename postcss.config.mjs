@@ -1,5 +1,3 @@
-import { parse } from 'path'
-
 import autoprefixer from 'autoprefixer'
 import cssnano from 'cssnano'
 import cssnanoPresetDefault from 'cssnano-preset-default'
@@ -14,29 +12,32 @@ import unrgba from 'postcss-unrgba'
 /**
  * PostCSS config
  *
- * @param {import('postcss-load-config').ConfigContext} ctx - PostCSS context
- * @returns {import('postcss-load-config').Config} PostCSS config
+ * @type {import('postcss-load-config').ConfigFn}
  */
-export default (ctx) => {
-  const plugins = []
-  const syntax = ctx.to?.endsWith('.scss') ? scss : postcss
+export default ({ from = '', to = '', env = 'production' }) => {
+  /** @type {import('postcss-load-config').Config} */
+  const config = {
+    plugins: [],
+    syntax: postcss
+  }
 
-  // PostCSS 'from' (or webpack 'file') source path
-  // https://github.com/postcss/postcss-load-config#options
-  const { dir, name } = parse(ctx.from || ctx.file || '')
+  // Browserslist IE8 environment
+  if (from.includes('-ie8')) {
+    env = 'oldie'
+  }
 
-  // IE8 stylesheets
-  const isIE8 = name?.endsWith('-ie8') || name?.endsWith('-ie8.min')
+  // Sass syntax support
+  if (to.endsWith('.scss')) {
+    config.syntax = scss
+  }
 
   // Add vendor prefixes
-  plugins.push(autoprefixer({
-    env: isIE8 ? 'oldie' : ctx.env
-  }))
+  config.plugins.push(autoprefixer({ env }))
 
   // Add review app auto-generated 'companion' classes for each pseudo-class
   // For example ':hover' and ':focus' classes to simulate form label states
-  if (minimatch(dir, '**/app/stylesheets')) {
-    plugins.push(pseudoclasses({
+  if (minimatch(from, '**/app/stylesheets/*')) {
+    config.plugins.push(pseudoclasses({
       allCombinations: true,
       restrictTo: [
         ':link',
@@ -49,8 +50,8 @@ export default (ctx) => {
   }
 
   // Transpile CSS for Internet Explorer
-  if (isIE8) {
-    plugins.push(
+  if (env === 'oldie') {
+    config.plugins.push(
       unmq(),
       unopacity({ browsers: 'ie 8' }),
       unrgba({ filter: true })
@@ -58,8 +59,8 @@ export default (ctx) => {
   }
 
   // Always minify CSS
-  if (syntax !== scss) {
-    plugins.push(cssnano({
+  if (config.syntax !== scss) {
+    config.plugins.push(cssnano({
       preset: [cssnanoPresetDefault, {
         // Sorted CSS is smaller when gzipped, but we sort using Stylelint
         // https://cssnano.co/docs/optimisations/cssdeclarationsorter/
@@ -68,8 +69,5 @@ export default (ctx) => {
     }))
   }
 
-  return {
-    syntax,
-    plugins
-  }
+  return config
 }
