@@ -14,7 +14,7 @@ export async function writeAsset (filePath, result) {
   const writeTasks = []
 
   // Files to write
-  const code = result.code || result.css?.toString()
+  const code = 'css' in result ? result.css : result.code
   const map = result.map?.toString()
 
   // 1. Write code (example.js)
@@ -49,5 +49,5 @@ export async function writeAsset (filePath, result) {
  * 2. Terser minified bundle
  * 3. Sass compiler result
  *
- * @typedef {import('rollup').OutputChunk | import('terser').MinifyOutput | import('node-sass').Result} AssetOutput
+ * @typedef {import('rollup').OutputChunk | import('terser').MinifyOutput | import('postcss').Result} AssetOutput
  */
