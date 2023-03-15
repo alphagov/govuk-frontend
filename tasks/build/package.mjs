@@ -56,9 +56,9 @@ export default gulp.series(
     })
   ),
 
-  // Copy GOV.UK Frontend JavaScript (ES modules)
-  task.name('copy:mjs', () =>
-    files.copy('**/!(*.test).mjs', {
+  // Compile GOV.UK Frontend JavaScript (ES modules)
+  task.name('compile:mjs', () =>
+    scripts.compile('!(*.test).mjs', {
       srcPath: join(paths.src, 'govuk'),
       destPath: join(paths.package, 'govuk-esm')
     })
