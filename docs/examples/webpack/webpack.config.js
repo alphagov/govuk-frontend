@@ -5,7 +5,6 @@ const TerserPlugin = require('terser-webpack-plugin')
 
 // Module resolution
 const frontendPath = dirname(require.resolve('govuk-frontend'))
-const html5shivPath = dirname(require.resolve('html5shiv'))
 
 module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
   devServer: {
@@ -20,8 +19,7 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
 
   entry: [
     './assets/javascripts/main.mjs',
-    './assets/stylesheets/app.scss',
-    './assets/stylesheets/app-ie8.scss'
+    './assets/stylesheets/app.scss'
   ],
 
   module: {
@@ -68,7 +66,6 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
 
         // Compatibility workarounds
         ecma: 5,
-        ie8: true,
         safari10: true
       }
     })]
@@ -90,11 +87,6 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
           context: resolve(frontendPath, './assets'),
           from: '{fonts,images}/**',
           to: './assets'
-        },
-        {
-          context: html5shivPath,
-          from: 'html5shiv.min.js',
-          to: './assets/javascripts'
         }
       ]
     })
