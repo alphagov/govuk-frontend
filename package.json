@@ -80,9 +80,9 @@
     "@percy/cli": "^1.20.0",
     "@percy/puppeteer": "^2.0.2",
     "@percy/sdk-utils": "^1.20.0",
-    "@types/node": "^18.14.2",
-    "@typescript-eslint/eslint-plugin": "^5.54.0",
-    "@typescript-eslint/parser": "^5.54.0",
+    "@types/node": "^18.15.3",
+    "@typescript-eslint/eslint-plugin": "^5.55.0",
+    "@typescript-eslint/parser": "^5.55.0",
     "cheerio": "^1.0.0-rc.12",
     "editorconfig-checker": "^5.0.1",
     "eslint": "^8.35.0",
@@ -110,8 +110,8 @@
     "stylelint": "^14.16.1",
     "stylelint-config-gds": "^0.2.0",
     "stylelint-order": "^6.0.2",
-    "typed-query-selector": "^2.9.1",
-    "typescript": "^4.9.5",
+    "typed-query-selector": "^2.9.2",
+    "typescript": "^5.0.2",
     "vinyl": "^3.0.0"
   },
   "overrides": {
