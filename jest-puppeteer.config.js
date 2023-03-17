@@ -1,5 +1,8 @@
 const devServerOptions = require('./jest-dev-server.config.js')
 
+/**
+ * @type {import('jest-environment-puppeteer').JestPuppeteerConfig}
+ */
 module.exports = {
   browserContext: 'incognito',
 
@@ -11,8 +14,6 @@ module.exports = {
 
   /**
    * Puppeteer launch options
-   *
-   * @type {import('puppeteer').PuppeteerLaunchOptions}
    */
   launch: {
     args: [

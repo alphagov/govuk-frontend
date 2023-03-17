@@ -170,7 +170,7 @@ async function generateMacroOptions (file) {
  * Parse YAML file content as JavaScript
  *
  * @param {import('vinyl')} file - Component data ${componentName}.yaml
- * @returns {Promise<{ examples?: unknown[]; params?: unknown[] }>} Component options
+ * @returns {Promise<{ examples?: Record<string, unknown>[]; params?: Record<string, unknown>[] }>} Component options
  */
 async function convertYamlToJson (file) {
   const cache = convertYamlToJson.cache ??= new Map()
