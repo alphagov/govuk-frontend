@@ -20,12 +20,12 @@ describe('package/', () => {
     listingSource = await getListing(configPaths.src)
     listingPackage = await getListing(configPaths.package)
 
-    componentsFilesSource = await getListing(configPaths.components)
+    componentsFilesSource = await getListing(join(configPaths.src, 'govuk/components'))
     componentsFilesPackage = await getListing(join(configPaths.package, 'govuk/components'))
     componentsFilesPackageESM = await getListing(join(configPaths.package, 'govuk-esm/components'))
 
     // Components list
-    componentNames = await getDirectories(configPaths.components)
+    componentNames = await getDirectories(join(configPaths.src, 'govuk/components'))
   })
 
   it('should contain the expected files', async () => {
@@ -186,7 +186,7 @@ describe('package/', () => {
         const [modulePathESM] = componentPackageESM
           .filter(filterPath([`**/${componentName}.mjs`]))
 
-        const moduleName = componentPathToModuleName(join(configPaths.components, modulePath))
+        const moduleName = componentPathToModuleName(join(join(configPaths.src, 'govuk/components'), modulePath))
         const moduleText = await readFile(join(configPaths.package, 'govuk/components', modulePath), 'utf8')
         const moduleTextESM = await readFile(join(configPaths.package, 'govuk-esm/components', modulePathESM), 'utf8')
 

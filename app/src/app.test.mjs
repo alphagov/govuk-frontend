@@ -1,3 +1,5 @@
+import { join } from 'path'
+
 import { load } from 'cheerio'
 
 import { paths, ports } from '../../config/index.js'
@@ -45,7 +47,7 @@ describe(`http://localhost:${ports.app}`, () => {
       const response = await fetchPath('/')
       const $ = load(await response.text())
 
-      const componentNames = await getDirectories(paths.components)
+      const componentNames = await getDirectories(join(paths.src, 'govuk/components'))
       const componentsList = $('li a[href^="/components/"]').get()
 
       // Since we have an 'all' component link that renders the default example of all

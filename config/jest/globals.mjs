@@ -1,3 +1,5 @@
+import { join } from 'path'
+
 import { getDirectories, getComponentsData } from '../../lib/file-helper.js'
 import configPaths from '../paths.js'
 
@@ -9,10 +11,10 @@ const store = new Map()
 /**
  * Cache frequently used paths
  */
-const paths = [
-  configPaths.components,
-  configPaths.examples,
-  configPaths.fullPageExamples
+const cachePaths = [
+  join(configPaths.src, 'govuk/components'),
+  join(configPaths.app, 'src/views/examples'),
+  join(configPaths.app, 'src/views/full-page-examples')
 ]
 
 /**
@@ -23,7 +25,7 @@ export async function globals () {
     const componentsData = await getComponentsData()
 
     // Run directory lookups
-    const directoryEntries = await Promise.all(paths.map(
+    const directoryEntries = await Promise.all(cachePaths.map(
       async (path) => [path, await getDirectories(path)]
     ))
 

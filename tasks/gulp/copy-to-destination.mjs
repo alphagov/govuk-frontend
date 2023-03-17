@@ -18,7 +18,7 @@ import { destination } from '../task-arguments.mjs'
  * @returns {import('stream').Stream} Output file stream
  */
 export function copyAssets () {
-  return gulp.src(`${slash(configPaths.assets)}/**/*`)
+  return gulp.src(`${slash(configPaths.src)}/govuk/assets/**/*`)
     .pipe(gulp.dest(slash(join(destination, 'assets'))))
 }
 
@@ -65,11 +65,11 @@ export function copyFiles () {
         `!${slash(configPaths.src)}/**/*.scss`,
 
         // Exclude source YAML handled by JSON streams below
-        `!${slash(configPaths.components)}/**/*.yaml`
+        `!${slash(configPaths.src)}/govuk/components/**/*.yaml`
       ]),
 
       // Generate fixtures.json from ${componentName}.yaml
-      gulp.src(`${slash(configPaths.components)}/**/*.yaml`, {
+      gulp.src(`${slash(configPaths.src)}/govuk/components/**/*.yaml`, {
         base: slash(configPaths.src)
       })
         .pipe(map(async (file, done) => {
@@ -85,7 +85,7 @@ export function copyFiles () {
         })),
 
       // Generate macro-options.json from ${componentName}.yaml
-      gulp.src(`${slash(configPaths.components)}/**/*.yaml`, {
+      gulp.src(`${slash(configPaths.src)}/govuk/components/**/*.yaml`, {
         base: slash(configPaths.src)
       })
         .pipe(map(async (file, done) => {
@@ -120,7 +120,7 @@ async function generateFixtures (file) {
 
   // Nunjucks template
   const componentName = basename(file.dirname)
-  const template = join(configPaths.components, componentName, 'template.njk')
+  const template = join(configPaths.src, 'govuk/components', componentName, 'template.njk')
 
   // Loop examples
   const examples = json.examples.map(async (example) => {

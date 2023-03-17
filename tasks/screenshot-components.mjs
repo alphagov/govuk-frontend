@@ -1,3 +1,5 @@
+import { join } from 'path'
+
 import percySnapshot from '@percy/puppeteer'
 import { isPercyEnabled } from '@percy/sdk-utils'
 import { launch } from 'puppeteer'
@@ -102,8 +104,8 @@ if (!await isPercyEnabled()) {
 }
 
 const [componentNames, componentsFiles] = await Promise.all([
-  getDirectories(configPaths.components),
-  getListing(configPaths.components),
+  getDirectories(join(configPaths.src, 'govuk/components')),
+  getListing(join(configPaths.src, 'govuk/components')),
   download() // Download browser
 ])
 

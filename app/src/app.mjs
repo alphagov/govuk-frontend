@@ -1,3 +1,5 @@
+import { join } from 'path'
+
 import express from 'express'
 
 import configPaths from '../../config/paths.js'
@@ -14,8 +16,8 @@ export default async () => {
   // Cache mapped components and examples
   const [componentsData, componentNames, exampleNames, fullPageExamples] = await Promise.all([
     getComponentsData(),
-    getDirectories(configPaths.components),
-    getDirectories(configPaths.examples),
+    getDirectories(join(configPaths.src, 'govuk/components')),
+    getDirectories(join(configPaths.app, 'src/views/examples')),
     getFullPageExamples()
   ])
 

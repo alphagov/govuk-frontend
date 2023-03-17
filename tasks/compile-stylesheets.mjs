@@ -71,8 +71,8 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath }]) {
 
       // Resolve @imports via
       loadPaths: [
-        join(paths.node_modules, 'govuk_frontend_toolkit/stylesheets'),
-        paths.node_modules
+        join(paths.root, 'node_modules/govuk_frontend_toolkit/stylesheets'),
+        join(paths.root, 'node_modules')
       ],
 
       // Sass custom logger

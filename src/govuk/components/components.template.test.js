@@ -22,7 +22,7 @@ describe('Components', () => {
     nunjucksEnvDefault = nunjucksEnv
 
     // Components list
-    componentNames = await getDirectories(configPaths.components)
+    componentNames = await getDirectories(join(configPaths.src, 'govuk/components'))
   })
 
   describe('Nunjucks environment', () => {
