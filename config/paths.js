@@ -4,13 +4,11 @@ const { dirname, join } = require('path')
 const rootPath = dirname(__dirname)
 
 /**
- * Config root paths
+ * Config paths
  */
-const configPaths = {
+module.exports = {
   root: rootPath,
   src: join(rootPath, 'src'),
-  config: join(rootPath, 'config'),
-  node_modules: join(rootPath, 'node_modules'),
 
   // Build: Release distribution
   dist: join(rootPath, 'dist'),
@@ -25,18 +23,4 @@ const configPaths = {
   // Documentation
   jsdoc: join(rootPath, 'jsdoc'),
   sassdoc: join(rootPath, 'sassdoc')
-}
-
-module.exports = {
-  ...configPaths,
-
-  // Source paths
-  assets: join(configPaths.src, 'govuk/assets'),
-  components: join(configPaths.src, 'govuk/components'),
-
-  // Review application views
-  views: join(configPaths.app, 'src/views'),
-  examples: join(configPaths.app, 'src/views/examples'),
-  fullPageExamples: join(configPaths.app, 'src/views/full-page-examples'),
-  layouts: join(configPaths.app, 'src/views/layouts')
 }

@@ -10,11 +10,11 @@ import * as globals from './globals/index.mjs'
 
 export function renderer (app) {
   const appViews = [
-    paths.layouts,
-    paths.views,
-    paths.components,
+    join(paths.app, 'src/views/layouts'),
+    join(paths.app, 'src/views'),
+    join(paths.src, 'govuk/components'),
     join(paths.src, 'govuk'),
-    join(paths.node_modules, 'govuk_template_jinja')
+    join(paths.root, 'node_modules/govuk_template_jinja')
   ]
 
   // Initialise nunjucks environment

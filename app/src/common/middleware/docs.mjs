@@ -1,6 +1,6 @@
 import express from 'express'
 
-import configPaths from '../../../../config/paths.js'
+import { paths } from '../../../../config/index.js'
 
 const router = express.Router()
 
@@ -27,7 +27,7 @@ router.use('/sass', ({ app }, res, next) => {
 /**
  * Add middleware
  */
-router.use('/sass', express.static(configPaths.sassdoc))
-router.use('/javascript', express.static(configPaths.jsdoc))
+router.use('/sass', express.static(paths.sassdoc))
+router.use('/javascript', express.static(paths.jsdoc))
 
 export default router

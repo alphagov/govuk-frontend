@@ -5,7 +5,7 @@ const { HtmlValidate } = require('html-validate')
 // over the nunjucks environment.
 const nunjucks = require('nunjucks')
 
-const configPaths = require('../../../config/paths')
+const { paths } = require('../../../config')
 const { getDirectories, getComponentsData } = require('../../../lib/file-helper')
 const { nunjucksEnv, renderHtml } = require('../../../lib/jest-helpers')
 
@@ -18,11 +18,11 @@ describe('Components', () => {
   beforeAll(async () => {
     // Create a new Nunjucks environment that uses the src directory as its
     // base path, rather than the components folder itself
-    nunjucksEnvCustom = nunjucks.configure(join(configPaths.src, 'govuk'))
+    nunjucksEnvCustom = nunjucks.configure(join(paths.src, 'govuk'))
     nunjucksEnvDefault = nunjucksEnv
 
     // Components list
-    componentNames = await getDirectories(configPaths.components)
+    componentNames = await getDirectories(join(paths.src, 'govuk/components'))
   })
 
   describe('Nunjucks environment', () => {

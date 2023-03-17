@@ -3,13 +3,13 @@ const { join } = require('path')
 
 const nunjucks = require('nunjucks')
 
-const configPaths = require('../../config/paths')
+const { paths } = require('../../config')
 const { renderTemplate } = require('../../lib/jest-helpers')
 
 describe('Template', () => {
   describe('with default nunjucks configuration', () => {
     it('should not have any whitespace before the doctype', () => {
-      nunjucks.configure(join(configPaths.src, 'govuk'))
+      nunjucks.configure(join(paths.src, 'govuk'))
       const output = nunjucks.render('./template.njk')
       expect(output.charAt(0)).toEqual('<')
     })
@@ -17,7 +17,7 @@ describe('Template', () => {
 
   describe('with nunjucks block trimming enabled', () => {
     it('should not have any whitespace before the doctype', () => {
-      nunjucks.configure(join(configPaths.src, 'govuk'), {
+      nunjucks.configure(join(paths.src, 'govuk'), {
         trimBlocks: true,
         lstripBlocks: true
       })

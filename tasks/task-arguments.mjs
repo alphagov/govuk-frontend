@@ -3,7 +3,7 @@ import { resolve } from 'path'
 import slash from 'slash'
 import parser from 'yargs-parser'
 
-import configPaths from '../config/paths.js'
+import { paths } from '../config/index.js'
 
 export const argv = parser(process.argv, {
   string: ['destination']
@@ -32,7 +32,7 @@ const { _: tasks } = argv
 const target = argv.destination || (destinations
   .filter(({ task }) => tasks.includes(task))[0]?.destination ?? 'public')
 
-const destPath = resolve(configPaths.root, slash(target))
+const destPath = resolve(paths.root, slash(target))
 
 // Absolute path to destination
 export const destination = destPath
