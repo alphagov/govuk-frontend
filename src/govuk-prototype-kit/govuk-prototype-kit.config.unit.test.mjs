@@ -71,6 +71,10 @@ describe('GOV.UK Prototype Kit config', () => {
           macroName: 'govukErrorSummary'
         },
         {
+          importFrom: 'govuk/components/exit-this-page/macro.njk',
+          macroName: 'govukExitThisPage'
+        },
+        {
           importFrom: 'govuk/components/fieldset/macro.njk',
           macroName: 'govukFieldset'
         },
