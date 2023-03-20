@@ -1,0 +1,19 @@
+{% extends "layout.njk" %}
+
+{% from "exit-this-page/macro.njk" import govukExitThisPage %}
+{% from "skip-link/macro.njk" import govukSkipLink %}
+
+{% block skipLink %}
+  {{ super() }}
+  {{ govukSkipLink({
+    href: "https://www.gov.uk/",
+    text: "Exit this page",
+    classes: "govuk-js-exit-this-page-skiplink"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  {{ govukExitThisPage({
+    redirectUrl: "https://www.gov.uk/"
+  }) }}
+{% endblock %}
