@@ -9,6 +9,7 @@ import { pkg } from '../config/index.js'
 import { getListing } from '../lib/file-helper.js'
 import { componentPathToModuleName } from '../lib/helper-functions.js'
 
+import { isDev } from './helpers/task-arguments.mjs'
 import { assets } from './index.mjs'
 
 /**
@@ -41,14 +42,16 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, fileP
   const moduleDestPath = join(destPath, filePath ? filePath(parse(modulePath)) : modulePath)
 
   // Rollup plugins
-  const plugins = [
+  const plugins = []
+
+  if (!isDev) {
     // Add GOV.UK Frontend release version
     // @ts-expect-error "This expression is not callable" due to incorrect types
-    replace({
+    plugins.push(replace({
       include: join(srcPath, 'common/govuk-frontend-version.mjs'),
       values: { development: pkg.version }
-    })
-  ]
+    }))
+  }
 
   // Option 1: Rollup bundle set (multiple files)
   // - Module imports are preserved, not concatenated
