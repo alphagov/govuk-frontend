@@ -95,7 +95,7 @@ jobs:
         uses: ./.github/workflows/actions/install-node
 
       - name: Cache linter
-        if: ${{ matrix.cache }}
+        if: ${{ matrix.task.cache }}
         uses: actions/cache@v3
         with:
           key: ${{ matrix.task.name }}-cache-${{ runner.os }}
