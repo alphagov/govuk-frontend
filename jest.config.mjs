@@ -8,8 +8,14 @@ const config = {
     'vendor/*'
   ],
 
-  // Default test environment
-  testEnvironment: './config/jest/environment/node.mjs',
+  /**
+   * Default single context Node.js environment
+   * Supports Node.js globals for Dart Sass tests
+   *
+   * {@link https://github.com/sass/dart-sass#using-sass-with-jest}
+   * {@link https://github.com/facebook/jest/issues/2549}
+   */
+  testEnvironment: 'jest-environment-node-single-context',
 
   // Enable Babel transforms until Jest supports ESM
   // See: https://jestjs.io/docs/ecmascript-modules

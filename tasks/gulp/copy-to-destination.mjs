@@ -173,13 +173,5 @@ async function generateMacroOptions (file) {
  * @returns {Promise<{ examples?: Record<string, unknown>[]; params?: Record<string, unknown>[] }>} Component options
  */
 async function convertYamlToJson (file) {
-  const cache = convertYamlToJson.cache ??= new Map()
-
-  // Check cache for component options
-  if (!cache.has(file.relative)) {
-    cache.set(file.relative, yaml.load(file.contents.toString(), { json: true }))
-  }
-
-  // Use cached content
-  return cache.get(file.relative)
+  return yaml.load(file.contents.toString(), { json: true })
 }
