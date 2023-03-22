@@ -1,7 +1,5 @@
 import PuppeteerEnvironment from 'jest-environment-puppeteer'
 
-import { globals } from '../globals.mjs'
-
 /**
  * Automation browser environment
  * Adds Puppeteer page/browser globals, shared test globals
@@ -21,10 +19,6 @@ class BrowserAutomationEnvironment extends PuppeteerEnvironment {
       // Ensure test fails
       process.emit('uncaughtException', error)
     })
-
-    // Add shared test globals
-    // componentsData, componentsDirectory, examplesDirectory
-    this.global.cache ??= await globals()
   }
 }
 
