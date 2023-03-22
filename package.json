@@ -43,6 +43,8 @@
     "prepare": "node -e \"try { require('husky').install() } catch (e) {if (e.code !== 'MODULE_NOT_FOUND') throw e}\""
   },
   "dependencies": {
+    "@babel/core": "^7.21.3",
+    "@babel/preset-env": "^7.20.2",
     "autoprefixer": "^9.8.8",
     "chalk": "^5.2.0",
     "cssnano": "^5.1.15",
