@@ -3,11 +3,10 @@ import { join } from 'path'
 import gulp from 'gulp'
 
 import { paths } from '../../config/index.js'
-import { clean } from '../clean.mjs'
-import { compileConfig } from '../compile-configs.mjs'
-import { compileJavaScripts } from '../compile-javascripts.mjs'
-import { compileStylesheets } from '../compile-stylesheets.mjs'
-import { copyAssets, copyFiles } from '../gulp/copy-to-destination.mjs'
+import * as configs from '../configs.mjs'
+import * as files from '../files.mjs'
+import * as scripts from '../scripts.mjs'
+import * as styles from '../styles.mjs'
 
 /**
  * Build package task
@@ -16,7 +15,7 @@ import { copyAssets, copyFiles } from '../gulp/copy-to-destination.mjs'
  * @returns {() => import('gulp').TaskFunction} Task function
  */
 export default () => gulp.series(
-  clean('**/*', {
+  files.clean('**/*', {
     destPath: paths.package,
     ignore: [
       '**/package.json',
@@ -25,19 +24,19 @@ export default () => gulp.series(
   }),
 
   // Copy GOV.UK Frontend files
-  copyFiles({
+  files.copyFiles({
     srcPath: paths.src,
     destPath: paths.package
   }),
 
   // Copy GOV.UK Frontend JavaScript (ES modules)
-  copyAssets('**/!(*.test).mjs', {
+  files.copyAssets('**/!(*.test).mjs', {
     srcPath: join(paths.src, 'govuk'),
     destPath: join(paths.package, 'govuk-esm')
   }),
 
   // Compile GOV.UK Frontend JavaScript (AMD modules)
-  compileJavaScripts('**/!(*.test).mjs', {
+  scripts.compile('**/!(*.test).mjs', {
     srcPath: join(paths.src, 'govuk'),
     destPath: join(paths.package, 'govuk'),
 
@@ -47,7 +46,7 @@ export default () => gulp.series(
   }),
 
   // Apply CSS prefixes to GOV.UK Frontend Sass
-  compileStylesheets('**/*.scss', {
+  styles.compile('**/*.scss', {
     srcPath: join(paths.src, 'govuk'),
     destPath: join(paths.package, 'govuk'),
 
@@ -57,7 +56,7 @@ export default () => gulp.series(
   }),
 
   // Apply CSS prefixes to GOV.UK Prototype Kit Sass
-  compileStylesheets('init.scss', {
+  styles.compile('init.scss', {
     srcPath: join(paths.src, 'govuk-prototype-kit'),
     destPath: join(paths.package, 'govuk-prototype-kit'),
 
@@ -67,7 +66,7 @@ export default () => gulp.series(
   }),
 
   // Compile GOV.UK Prototype Kit config
-  compileConfig('govuk-prototype-kit.config.mjs', {
+  configs.compile('govuk-prototype-kit.config.mjs', {
     srcPath: join(paths.src, 'govuk-prototype-kit'),
     destPath: paths.package,
 

@@ -3,19 +3,15 @@ import { join } from 'path'
 import gulp from 'gulp'
 
 import { paths } from './config/index.js'
-import { screenshots } from './tasks/browser.mjs'
 import * as build from './tasks/build/index.mjs'
-import { compileJavaScripts } from './tasks/compile-javascripts.mjs'
-import { compileStylesheets } from './tasks/compile-stylesheets.mjs'
-import { watch } from './tasks/gulp/watch.mjs'
-import { npmScriptTask } from './tasks/run.mjs'
+import { browser, files, scripts, styles, npm } from './tasks/index.mjs'
 
 /**
  * Umbrella scripts tasks (for watch)
  * Runs JavaScript code quality checks, documentation, compilation
  */
 gulp.task('scripts', gulp.series(
-  compileJavaScripts('all.mjs', {
+  scripts.compile('all.mjs', {
     srcPath: join(paths.src, 'govuk'),
     destPath: join(paths.public, 'javascripts'),
 
@@ -24,7 +20,7 @@ gulp.task('scripts', gulp.series(
     }
   }),
 
-  npmScriptTask('build:jsdoc')
+  npm.run('build:jsdoc')
 ))
 
 /**
@@ -32,7 +28,7 @@ gulp.task('scripts', gulp.series(
  * Runs Sass code quality checks, documentation, compilation
  */
 gulp.task('styles', gulp.series(
-  compileStylesheets('**/[!_]*.scss', {
+  styles.compile('**/[!_]*.scss', {
     srcPath: join(paths.app, 'src/stylesheets'),
     destPath: join(paths.public, 'stylesheets'),
 
@@ -41,7 +37,7 @@ gulp.task('styles', gulp.series(
     }
   }),
 
-  npmScriptTask('build:sassdoc')
+  npm.run('build:sassdoc')
 ))
 
 /**
@@ -57,12 +53,12 @@ gulp.task('build:dist', build.dist())
  */
 gulp.task('dev', gulp.series(
   'build:app',
-  watch,
-  npmScriptTask('serve', ['--workspace', 'app'])
+  files.watch,
+  npm.run('serve', ['--workspace', 'app'])
 ))
 
 /**
  * Screenshots task
  * Sends screenshots to Percy for visual regression testing
  */
-gulp.task('screenshots', screenshots)
+gulp.task('screenshots', browser.screenshots)

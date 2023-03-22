@@ -3,11 +3,9 @@ import { join } from 'path'
 import gulp from 'gulp'
 
 import { paths, pkg } from '../../config/index.js'
-import { clean } from '../clean.mjs'
-import { compileJavaScripts } from '../compile-javascripts.mjs'
-import { compileStylesheets } from '../compile-stylesheets.mjs'
-import { version } from '../file.mjs'
-import { copyAssets } from '../gulp/copy-to-destination.mjs'
+import * as files from '../files.mjs'
+import * as scripts from '../scripts.mjs'
+import * as styles from '../styles.mjs'
 
 /**
  * Build dist task
@@ -16,18 +14,18 @@ import { copyAssets } from '../gulp/copy-to-destination.mjs'
  * @returns {() => import('gulp').TaskFunction} Task function
  */
 export default () => gulp.series(
-  clean('**/*', {
+  files.clean('**/*', {
     destPath: paths.dist
   }),
 
   // Copy GOV.UK Frontend static assets
-  copyAssets('*/**', {
+  files.copyAssets('*/**', {
     srcPath: join(paths.src, 'govuk/assets'),
     destPath: join(paths.dist, 'assets')
   }),
 
   // Compile GOV.UK Frontend JavaScript
-  compileJavaScripts('all.mjs', {
+  scripts.compile('all.mjs', {
     srcPath: join(paths.src, 'govuk'),
     destPath: paths.dist,
 
@@ -37,7 +35,7 @@ export default () => gulp.series(
   }),
 
   // Compile GOV.UK Frontend Sass
-  compileStylesheets('**/[!_]*.scss', {
+  styles.compile('**/[!_]*.scss', {
     srcPath: join(paths.src, 'govuk'),
     destPath: paths.dist,
 
@@ -47,7 +45,7 @@ export default () => gulp.series(
   }),
 
   // Update GOV.UK Frontend version
-  version('VERSION.txt', {
+  files.version('VERSION.txt', {
     destPath: paths.dist
   })
 )

@@ -3,8 +3,7 @@ import { join } from 'path'
 import gulp from 'gulp'
 
 import { paths } from '../../config/index.js'
-import { clean } from '../clean.mjs'
-import { copyAssets } from '../gulp/copy-to-destination.mjs'
+import * as files from '../files.mjs'
 
 /**
  * Build review app task
@@ -13,12 +12,12 @@ import { copyAssets } from '../gulp/copy-to-destination.mjs'
  * @returns {() => import('gulp').TaskFunction} Task function
  */
 export default () => gulp.series(
-  clean('**/*', {
+  files.clean('**/*', {
     destPath: paths.public
   }),
 
   // Copy GOV.UK Frontend static assets
-  copyAssets('**/*', {
+  files.copyAssets('**/*', {
     srcPath: join(paths.src, 'govuk/assets'),
     destPath: join(paths.public, 'assets')
   }),

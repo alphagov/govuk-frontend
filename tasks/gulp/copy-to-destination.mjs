@@ -170,5 +170,5 @@ async function convertYamlToJson (file) {
 }
 
 /**
- * @typedef {import('../compile-assets.mjs').AssetEntry} AssetEntry
+ * @typedef {import('../assets.mjs').AssetEntry} AssetEntry
  */

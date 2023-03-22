@@ -7,7 +7,7 @@ import { minify } from 'terser'
 import { getListing } from '../lib/file-helper.js'
 import { componentPathToModuleName } from '../lib/helper-functions.js'
 
-import { writeAsset } from './compile-assets.mjs'
+import * as assets from './assets.mjs'
 
 /**
  * Compile JavaScript ESM to CommonJS task
@@ -16,7 +16,7 @@ import { writeAsset } from './compile-assets.mjs'
  * @param {AssetEntry[1]} [options] - Asset options
  * @returns {() => Promise<void>} Prepared compile task
  */
-export function compileJavaScripts (pattern, options) {
+export function compile (pattern, options) {
   const task = async () => {
     const modulePaths = await getListing(options.srcPath, pattern)
 
@@ -73,7 +73,7 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, fileP
     const minified = await minifyJavaScript(modulePath, bundled)
 
     // Write to files
-    return writeAsset(moduleDestPath, minified)
+    return assets.write(moduleDestPath, minified)
   }
 }
 
@@ -106,6 +106,6 @@ export function minifyJavaScript (modulePath, result) {
 }
 
 /**
- * @typedef {import('./compile-assets.mjs').AssetEntry} AssetEntry
- * @typedef {import('./compile-assets.mjs').AssetOutput} AssetOutput
+ * @typedef {import('./assets.mjs').AssetEntry} AssetEntry
+ * @typedef {import('./assets.mjs').AssetOutput} AssetOutput
  */
