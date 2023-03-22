@@ -15,10 +15,7 @@ import { npmScriptTask } from './tasks/run.mjs'
  * Runs JavaScript code quality checks, documentation, compilation
  */
 gulp.task('scripts', gulp.series(
-  gulp.parallel(
-    npmScriptTask('lint:js'),
-    compileJavaScripts
-  ),
+  compileJavaScripts,
   npmScriptTask('build:jsdoc')
 ))
 
@@ -27,34 +24,19 @@ gulp.task('scripts', gulp.series(
  * Runs Sass code quality checks, documentation, compilation
  */
 gulp.task('styles', gulp.series(
-  gulp.parallel(
-    npmScriptTask('lint:scss'),
-    compileStylesheets
-  ),
+  compileStylesheets,
   npmScriptTask('build:sassdoc')
 ))
 
 /**
- * Compile task for local & heroku
- * Runs JavaScript and Sass compilation, including documentation
+ * Build review app task
+ * Prepare public folder for review app
  */
-gulp.task('compile', gulp.series(
+gulp.task('build:app', gulp.series(
   clean,
   copyAssets,
-  compileJavaScripts,
-  compileStylesheets,
-  npmScriptTask('build:jsdoc'),
-  npmScriptTask('build:sassdoc')
-))
-
-/**
- * Dev task
- * Runs a sequence of tasks on start
- */
-gulp.task('dev', gulp.series(
-  'compile',
-  watch,
-  npmScriptTask('serve', ['--workspace', 'app'])
+  'scripts',
+  'styles'
 ))
 
 /**
@@ -74,8 +56,21 @@ gulp.task('build:package', gulp.series(
  * Prepare dist folder for release
  */
 gulp.task('build:dist', gulp.series(
-  'compile',
+  clean,
+  copyAssets,
+  compileJavaScripts,
+  compileStylesheets,
   updateAssetsVersion
+))
+
+/**
+ * Dev task
+ * Runs a sequence of tasks on start
+ */
+gulp.task('dev', gulp.series(
+  'build:app',
+  watch,
+  npmScriptTask('serve', ['--workspace', 'app'])
 ))
 
 /**

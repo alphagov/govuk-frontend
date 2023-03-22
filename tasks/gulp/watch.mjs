@@ -2,12 +2,13 @@ import gulp from 'gulp'
 import slash from 'slash'
 
 import { paths } from '../../config/index.js'
+import { npmScriptTask } from '../run.mjs'
 
 /**
  * Watch task
  * During development, this task will:
- * - run `gulp styles` when `.scss` files change
- * - run `gulp scripts` when `.mjs` files change
+ * - lint and run `gulp styles` when `.scss` files change
+ * - lint and run `gulp scripts` when `.mjs` files change
  *
  * @returns {Promise<import('fs').FSWatcher[]>} Array from file system watcher objects
  */
@@ -18,12 +19,18 @@ export function watch () {
       `${slash(paths.app)}/src/**/*.scss`,
       `${slash(paths.src)}/govuk/**/*.scss`,
       `!${slash(paths.src)}/govuk/vendor/*`
-    ], gulp.series('styles')),
+    ], gulp.parallel(
+      npmScriptTask('lint:scss'),
+      'styles'
+    )),
 
     gulp.watch([
       'jsdoc.config.js',
       `${slash(paths.src)}/govuk/**/*.mjs`
-    ], gulp.series('scripts'))
+    ], gulp.parallel(
+      npmScriptTask('lint:js'),
+      'scripts'
+    ))
   ])
 }
 

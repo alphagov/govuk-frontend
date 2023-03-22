@@ -36,8 +36,8 @@ describe('Task arguments', () => {
           expect(destination).toEqual(paths.public)
         })
 
-        it('defaults to ./public for "gulp build:compile"', async () => {
-          process.argv = [...argv, 'build:compile']
+        it('defaults to ./public for "gulp build:app"', async () => {
+          process.argv = [...argv, 'build:app']
 
           const { destination } = await import('./task-arguments.mjs')
           expect(destination).toEqual(paths.public)
@@ -85,8 +85,8 @@ describe('Task arguments', () => {
           expect(destination).toEqual(expected)
         })
 
-        it('uses flag for "gulp build:compile"', async () => {
-          process.argv = [...argv, 'build:compile', '--destination', flag]
+        it('uses flag for "gulp build:app"', async () => {
+          process.argv = [...argv, 'build:app', '--destination', flag]
 
           const { destination } = await import('./task-arguments.mjs')
           expect(destination).toEqual(expected)

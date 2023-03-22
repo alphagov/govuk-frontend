@@ -28,19 +28,23 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
 **`npm run heroku` runs on Heroku build/PR and it will:**
 
-- run `npm run build:compile`
+- run `npm run build:app`
 - start up Express
 
-**`npm run build:compile` will do the following:**
+**`npm run build:app` will do the following:**
 
+- clean the `./public` folder
 - output files into `./public`, or another location via the `--destination` flag
 - copy fonts and images
-- compile JavaScript and Sass, including documentation
+- run sub tasks from `gulp styles` without StyleLint code quality checks
+- run sub tasks from `gulp scripts` without ESLint code quality checks
+- compile Sass documentation into `./sassdoc`
+- compile JavaScript documentation into `./jsdoc`
 
 **`npm run build:package` will do the following:**
 
-- output files into `./package`, or another location via the `--destination` flag
 - clean the `./package` folder
+- output files into `./package`, or another location via the `--destination` flag
 - copy Sass files, applying Autoprefixer via PostCSS
 - copy Nunjucks component template/macro files, including JSON configs
 - copy GOV.UK Prototype Kit config files
@@ -50,10 +54,10 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
 **`npm run build:dist` will do the following:**
 
-- output files into `./dist`, or another location via the `--destination` flag
 - clean the `./dist` folder
+- output files into `./dist`, or another location via the `--destination` flag
 - copy fonts and images
-- compile JavaScript and Sass, including documentation
+- compile JavaScript and Sass
 - append version number from `package/package.json` to compiled JavaScript and CSS files
 - runs `npm run test:build:dist` (which will test the output is correct)
 
@@ -81,16 +85,6 @@ This task will:
 
 - check JavaScript code quality via ESLint (`npm run lint:js`) (using JavaScript Standard Style)
 - compile JavaScript ESM to CommonJS into `./public`, or another location via the `--destination` flag
-- compile JavaScript documentation into `./jsdoc`
-
-**`gulp compile`**
-
-This task will:
-
-- copy fonts and images
-- run sub tasks from `gulp styles` without ESLint code quality checks
-- run sub tasks from `gulp scripts` without StyleLint code quality checks
-- compile Sass documentation into `./sassdoc`
 - compile JavaScript documentation into `./jsdoc`
 
 ## Express app only
