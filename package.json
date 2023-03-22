@@ -72,7 +72,7 @@
     "postcss-unopacity": "^2.0.0",
     "postcss-unrgba": "^1.1.1",
     "rollup": "0.59.4",
-    "sass-embedded": "^1.58.3",
+    "sass-embedded": "^1.59.3",
     "sassdoc": "^2.7.4",
     "slash": "^5.0.0",
     "terser": "^5.16.5",
