@@ -38,8 +38,8 @@ export async function writeAsset (filePath, result) {
  * Asset options
  *
  * @typedef {object} AssetOptions
- * @property {string} srcPath - Input directory
- * @property {string} destPath - Output directory
+ * @property {string} [srcPath] - Input directory
+ * @property {string} [destPath] - Output directory
  */
 
 /**

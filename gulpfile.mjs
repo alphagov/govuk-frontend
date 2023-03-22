@@ -1,6 +1,9 @@
+import { join } from 'path'
+
 import gulp from 'gulp'
 import taskListing from 'gulp-task-listing'
 
+import { paths } from './config/index.js'
 import { updateAssetsVersion } from './tasks/asset-version.mjs'
 import { clean } from './tasks/clean.mjs'
 import { compileJavaScripts } from './tasks/compile-javascripts.mjs'
@@ -15,7 +18,11 @@ import { npmScriptTask } from './tasks/run.mjs'
  * Runs JavaScript code quality checks, documentation, compilation
  */
 gulp.task('scripts', gulp.series(
-  compileJavaScripts,
+  compileJavaScripts('all.mjs', {
+    srcPath: join(paths.src, 'govuk'),
+    destPath: paths.public
+  }),
+
   npmScriptTask('build:jsdoc')
 ))
 
@@ -24,7 +31,11 @@ gulp.task('scripts', gulp.series(
  * Runs Sass code quality checks, documentation, compilation
  */
 gulp.task('styles', gulp.series(
-  compileStylesheets,
+  compileStylesheets('**/[!_]*.scss', {
+    srcPath: join(paths.app, 'src'),
+    destPath: paths.public
+  }),
+
   npmScriptTask('build:sassdoc')
 ))
 
@@ -46,8 +57,25 @@ gulp.task('build:app', gulp.series(
 gulp.task('build:package', gulp.series(
   clean,
   copyFiles,
-  compileJavaScripts,
-  compileStylesheets,
+
+  // Compile GOV.UK Frontend JavaScript
+  compileJavaScripts('**/!(*.test).mjs', {
+    srcPath: join(paths.src, 'govuk'),
+    destPath: join(paths.package, 'govuk')
+  }),
+
+  // Apply CSS prefixes to GOV.UK Frontend Sass
+  compileStylesheets('**/*.scss', {
+    srcPath: join(paths.src, 'govuk'),
+    destPath: join(paths.package, 'govuk')
+  }),
+
+  // Apply CSS prefixes to GOV.UK Prototype Kit Sass
+  compileStylesheets('init.scss', {
+    srcPath: join(paths.src, 'govuk-prototype-kit'),
+    destPath: join(paths.package, 'govuk-prototype-kit')
+  }),
+
   updatePrototypeKitConfig
 ))
 
@@ -58,8 +86,19 @@ gulp.task('build:package', gulp.series(
 gulp.task('build:dist', gulp.series(
   clean,
   copyAssets,
-  compileJavaScripts,
-  compileStylesheets,
+
+  // Compile GOV.UK Frontend JavaScript
+  compileJavaScripts('all.mjs', {
+    srcPath: join(paths.src, 'govuk'),
+    destPath: paths.dist
+  }),
+
+  // Compile GOV.UK Frontend Sass
+  compileStylesheets('**/[!_]*.scss', {
+    srcPath: join(paths.src, 'govuk'),
+    destPath: paths.dist
+  }),
+
   updateAssetsVersion
 ))
 

@@ -4,32 +4,38 @@ import PluginError from 'plugin-error'
 import { rollup } from 'rollup'
 import { minify } from 'terser'
 
-import { paths, pkg } from '../config/index.js'
+import { pkg } from '../config/index.js'
 import { getListing } from '../lib/file-helper.js'
 import { componentPathToModuleName } from '../lib/helper-functions.js'
 
 import { writeAsset } from './compile-assets.mjs'
-import { destination, isDist, isPackage, isPublic } from './task-arguments.mjs'
+import { isDist, isPackage, isPublic } from './task-arguments.mjs'
 
 /**
  * Compile JavaScript ESM to CommonJS task
  *
- * The 'all-in-one' JavaScript bundle (all.mjs)
- * will be minified by default for 'dist' and 'public'
- *
- * @returns {Promise<void>}
+ * @param {string} pattern - Minimatch pattern
+ * @param {AssetEntry[1]} [options] - Asset options
+ * @returns {() => Promise<void>} Prepared compile task
  */
-export async function compileJavaScripts () {
-  const moduleEntries = await getModuleEntries()
+export function compileJavaScripts (pattern, options) {
+  const task = async () => {
+    const modulePaths = await getListing(options.srcPath, pattern)
 
-  try {
-    await Promise.all(moduleEntries.map(compileJavaScript))
-  } catch (cause) {
-    throw new PluginError('compile:js', cause)
+    try {
+      const compileTasks = modulePaths
+        .map((modulePath) => compileJavaScript([modulePath, options]))
+
+      await Promise.all(compileTasks)
+    } catch (cause) {
+      throw new PluginError('compile:js', cause)
+    }
   }
-}
 
-compileJavaScripts.displayName = 'compile:js'
+  task.displayName = 'compile:js'
+
+  return task
+}
 
 /**
  * Compile JavaScript ESM to CommonJS helper
@@ -98,29 +104,6 @@ export function minifyJavaScript (modulePath, result) {
   })
 
   return minified
-}
-
-/**
- * JavaScript modules to compile
- *
- * @returns {Promise<AssetEntry[]>} Module entries
- */
-export async function getModuleEntries () {
-  const srcPath = join(paths.src, 'govuk')
-  const destPath = isPackage ? join(destination, 'govuk') : destination
-
-  // Perform a search and return an array of matching file names
-  // but for 'dist' and 'public' we only want compiled 'all.js'
-  const modulePaths = await getListing(srcPath, isPackage
-    ? '**/!(*.test).mjs'
-    : 'all.mjs'
-  )
-
-  return modulePaths
-    .map((modulePath) => ([modulePath, {
-      srcPath,
-      destPath
-    }]))
 }
 
 /**
