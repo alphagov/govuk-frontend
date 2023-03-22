@@ -35,26 +35,16 @@ gulp.task('styles', gulp.series(
 ))
 
 /**
- * Compile task for local & heroku
- * Runs JavaScript and Sass compilation, including documentation
+ * Build review app task
+ * Prepare public folder for review app
  */
-gulp.task('compile', gulp.series(
+gulp.task('build:app', gulp.series(
   clean,
   copyAssets,
   compileJavaScripts,
   compileStylesheets,
   npmScriptTask('build:jsdoc'),
   npmScriptTask('build:sassdoc')
-))
-
-/**
- * Dev task
- * Runs a sequence of tasks on start
- */
-gulp.task('dev', gulp.series(
-  'compile',
-  watch,
-  npmScriptTask('serve', ['--workspace', 'app'])
 ))
 
 /**
@@ -74,8 +64,18 @@ gulp.task('build:package', gulp.series(
  * Prepare dist folder for release
  */
 gulp.task('build:dist', gulp.series(
-  'compile',
+  'build:app',
   updateAssetsVersion
+))
+
+/**
+ * Dev task
+ * Runs a sequence of tasks on start
+ */
+gulp.task('dev', gulp.series(
+  'build:app',
+  watch,
+  npmScriptTask('serve', ['--workspace', 'app'])
 ))
 
 /**

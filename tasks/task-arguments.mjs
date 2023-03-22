@@ -12,7 +12,7 @@ export const argv = parser(process.argv, {
 // Defaults for known tasks
 const destinations = [
   {
-    task: 'compile',
+    task: 'build:app',
     destination: 'public'
   },
   {

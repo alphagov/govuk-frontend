@@ -83,7 +83,7 @@ This task will:
 - compile JavaScript ESM to CommonJS into `./public`, or another location via the `--destination` flag
 - compile JavaScript documentation into `./jsdoc`
 
-**`gulp compile`**
+**`gulp build:app`**
 
 This task will:
 

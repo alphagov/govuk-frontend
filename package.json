@@ -20,7 +20,7 @@
     "build-release": "./bin/build-release.sh",
     "publish-release": "./bin/publish-release.sh",
     "pre-release": "./bin/pre-release.sh",
-    "build:compile": "gulp compile",
+    "build:compile": "gulp build:app",
     "build:sassdoc": "sassdoc --config sassdoc.config.yaml ./src/govuk",
     "build:jsdoc": "jsdoc --configure jsdoc.config.js ./src/govuk",
     "build:package": "gulp build:package --destination \"package\"",
