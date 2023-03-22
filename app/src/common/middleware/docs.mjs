@@ -1,3 +1,5 @@
+import { join } from 'path'
+
 import express from 'express'
 
 import { paths } from '../../../../config/index.js'
@@ -27,7 +29,7 @@ router.use('/sass', ({ app }, res, next) => {
 /**
  * Add middleware
  */
-router.use('/sass', express.static(paths.sassdoc))
-router.use('/javascript', express.static(paths.jsdoc))
+router.use('/sass', express.static(join(paths.app, 'dist/docs/sassdoc')))
+router.use('/javascript', express.static(join(paths.app, 'dist/docs/jsdoc')))
 
 export default router

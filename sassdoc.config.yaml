@@ -1,3 +1,4 @@
+dest: app/dist/docs/sassdoc
 exclude:
   - vendor/*
 

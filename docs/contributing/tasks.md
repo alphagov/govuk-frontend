@@ -38,8 +38,8 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - copy fonts and images
 - run sub tasks from `gulp styles` without StyleLint code quality checks
 - run sub tasks from `gulp scripts` without ESLint code quality checks
-- compile Sass documentation into `./sassdoc`
-- compile JavaScript documentation into `./jsdoc`
+- compile Sass documentation into `./app/dist/docs/sassdoc`
+- compile JavaScript documentation into `./app/dist/docs/jsdoc`
 
 **`npm run build:package` will do the following:**
 
@@ -77,7 +77,7 @@ This task will:
 
 - check Sass code quality via Stylelint (`npm run lint:scss`)
 - compile Sass to CSS into `./app/dist/stylesheets`
-- compile Sass documentation into `./sassdoc`
+- compile Sass documentation into `./app/dist/docs/sassdoc`
 
 **`gulp scripts`**
 
@@ -85,7 +85,7 @@ This task will:
 
 - check JavaScript code quality via ESLint (`npm run lint:js`) (using JavaScript Standard Style)
 - compile JavaScript ESM to CommonJS into `./app/dist/javascripts`
-- compile JavaScript documentation into `./jsdoc`
+- compile JavaScript documentation into `./app/dist/docs/jsdoc`
 
 ## Express app only
 

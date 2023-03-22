@@ -10,8 +10,6 @@ coverage/
 
 # Build output
 dist/
-jsdoc/
-sassdoc/
 
 # Build output (committed)
 !/dist
