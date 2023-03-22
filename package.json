@@ -30,7 +30,7 @@
     "postbuild:dist": "jest --color --selectProjects \"Build tasks\" --testMatch \"**/*dist.test*\"",
     "pretest": "npm run build:app",
     "test": "jest --color --ignoreProjects \"Build tasks\" --maxWorkers=50%",
-    "test:screenshots": "node ./tasks/screenshot-components.mjs",
+    "test:screenshots": "gulp screenshots",
     "lint": "npm run lint:editorconfig && npm run lint:prettier && npm run lint:js && npm run lint:scss",
     "lint:editorconfig": "npm run lint:editorconfig:cli",
     "lint:editorconfig:cli": "editorconfig-checker",

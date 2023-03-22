@@ -1,6 +1,6 @@
 import setup from 'jest-environment-puppeteer/setup'
 
-import { download } from '../../../tasks/browser/download.mjs'
+import { download } from '../../../tasks/browser.mjs'
 
 /**
  * Open browser

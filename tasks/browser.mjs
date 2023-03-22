@@ -2,13 +2,44 @@ import { join } from 'path'
 
 import percySnapshot from '@percy/puppeteer'
 import { isPercyEnabled } from '@percy/sdk-utils'
-import { launch } from 'puppeteer'
+import puppeteer from 'puppeteer'
 
 import { paths } from '../config/index.js'
 import { filterPath, getDirectories, getListing } from '../lib/file-helper.js'
 import { goToComponent, goToExample } from '../lib/puppeteer-helpers.js'
+import configPuppeteer from '../puppeteer.config.js'
 
-import { download } from './browser/download.mjs'
+/**
+ * Puppeteer browser downloader
+ */
+export async function download () {
+  const fetcher = puppeteer.createBrowserFetcher({
+    path: join(configPuppeteer.cacheDirectory, 'chrome')
+  })
+
+  // Downloaded versions
+  const versions = fetcher.localRevisions()
+
+  // Download latest browser (unless cached)
+  if (!versions.includes(puppeteer.defaultBrowserRevision)) {
+    await fetcher.download(puppeteer.defaultBrowserRevision)
+
+    // Remove outdated browser versions
+    for (const version of versions) {
+      await fetcher.remove(version)
+    }
+  }
+}
+
+/**
+ * Puppeteer browser launcher
+ */
+export async function launch () {
+  await download()
+
+  // Open browser
+  return puppeteer.launch()
+}
 
 /**
  * Send screenshots in concurrent batches to Percy
@@ -17,7 +48,13 @@ import { download } from './browser/download.mjs'
  * @returns {Promise<void>}
  */
 export async function screenshots () {
+  if (!await isPercyEnabled()) {
+    throw new Error('Percy healthcheck failed')
+  }
+
   const browser = await launch()
+  const componentNames = await getDirectories(join(paths.src, 'govuk/components'))
+  const exampleNames = ['text-alignment', 'typography']
 
   // Screenshot stack
   const input = []
@@ -55,13 +92,16 @@ export async function screenshots () {
  * @returns {Promise<void>}
  */
 export async function screenshotComponent (page, componentName) {
+  const componentFiles = await getListing(join(paths.src, 'govuk/components', componentName))
+
+  // Navigate to component
   await goToComponent(page, componentName)
 
   // Screenshot preview page (with JavaScript)
   await percySnapshot(page, `js: ${componentName}`)
 
   // Check for "JavaScript enabled" components
-  if (componentsFiles.some(filterPath([`**/${componentName}.mjs`]))) {
+  if (componentFiles.some(filterPath([`**/${componentName}.mjs`]))) {
     await page.setJavaScriptEnabled(false)
 
     // Screenshot preview page (without JavaScript)
@@ -98,20 +138,3 @@ export async function screenshotExample (page, exampleName) {
   // Close page
   return page.close()
 }
-
-if (!await isPercyEnabled()) {
-  throw new Error('Percy healthcheck failed')
-}
-
-const [componentNames, componentsFiles] = await Promise.all([
-  getDirectories(join(paths.src, 'govuk/components')),
-  getListing(join(paths.src, 'govuk/components')),
-  download() // Download browser
-])
-
-const exampleNames = [
-  'text-alignment',
-  'typography'
-]
-
-await screenshots() // Take screenshots
