@@ -10,7 +10,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
 **`npm start` will trigger `gulp dev` that will:**
 
-- clean the `./public` folder
+- clean the `./app/dist` folder
 - copy fonts and images
 - compile JavaScript and Sass, including documentation
 - compile again when `.scss` and `.mjs` files change
@@ -33,8 +33,8 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
 **`npm run build:app` will do the following:**
 
-- clean the `./public` folder
-- output files into `./public`
+- clean the `./app/dist` folder
+- output files into `./app/dist`
 - copy fonts and images
 - run sub tasks from `gulp styles` without StyleLint code quality checks
 - run sub tasks from `gulp scripts` without ESLint code quality checks
@@ -76,7 +76,7 @@ This task will:
 This task will:
 
 - check Sass code quality via Stylelint (`npm run lint:scss`)
-- compile Sass to CSS into `./public`
+- compile Sass to CSS into `./app/dist/stylesheets`
 - compile Sass documentation into `./sassdoc`
 
 **`gulp scripts`**
@@ -84,7 +84,7 @@ This task will:
 This task will:
 
 - check JavaScript code quality via ESLint (`npm run lint:js`) (using JavaScript Standard Style)
-- compile JavaScript ESM to CommonJS into `./public`
+- compile JavaScript ESM to CommonJS into `./app/dist/javascripts`
 - compile JavaScript documentation into `./jsdoc`
 
 ## Express app only

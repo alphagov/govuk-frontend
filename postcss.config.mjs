@@ -36,7 +36,7 @@ export default ({ from = '', to = '', env = 'production' }) => {
 
   // Add review app auto-generated 'companion' classes for each pseudo-class
   // For example ':hover' and ':focus' classes to simulate form label states
-  if (minimatch(from, '**/app/stylesheets/*')) {
+  if (minimatch(from, '**/app/src/stylesheets/*')) {
     config.plugins.push(pseudoclasses({
       allCombinations: true,
       restrictTo: [

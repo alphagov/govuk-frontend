@@ -9,9 +9,12 @@ node_modules/
 coverage/
 
 # Build output
+dist/
 jsdoc/
-public/
 sassdoc/
+
+# Build output (committed)
+!/dist
 
 # Files to ignore
 .DS_Store

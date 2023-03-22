@@ -3,7 +3,6 @@ module.exports = {
   ignoreFiles: [
     '**/dist/**',
     '**/package/**',
-    '**/public/**',
     '**/vendor/**',
 
     // Ignore CSS-in-JS (including dotfiles)

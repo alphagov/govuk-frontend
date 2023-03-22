@@ -7,19 +7,19 @@ import { files } from '../index.mjs'
 
 /**
  * Build review app task
- * Prepare public folder for review app
+ * Prepare dist folder for review app
  *
  * @returns {() => import('gulp').TaskFunction} Task function
  */
 export default () => gulp.series(
   files.clean('**/*', {
-    destPath: paths.public
+    destPath: join(paths.app, 'dist')
   }),
 
   // Copy GOV.UK Frontend static assets
   files.copy('**/*', {
     srcPath: join(paths.src, 'govuk/assets'),
-    destPath: join(paths.public, 'assets')
+    destPath: join(paths.app, 'dist/assets')
   }),
 
   'scripts',

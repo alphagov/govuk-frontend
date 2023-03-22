@@ -13,7 +13,7 @@ import { browser, files, scripts, styles, npm } from './tasks/index.mjs'
 gulp.task('scripts', gulp.series(
   scripts.compile('all.mjs', {
     srcPath: join(paths.src, 'govuk'),
-    destPath: join(paths.public, 'javascripts'),
+    destPath: join(paths.app, 'dist/javascripts'),
 
     filePath (file) {
       return join(file.dir, `${file.name}.min.js`)
@@ -30,7 +30,7 @@ gulp.task('scripts', gulp.series(
 gulp.task('styles', gulp.series(
   styles.compile('**/[!_]*.scss', {
     srcPath: join(paths.app, 'src/stylesheets'),
-    destPath: join(paths.public, 'stylesheets'),
+    destPath: join(paths.app, 'dist/stylesheets'),
 
     filePath (file) {
       return join(file.dir, `${file.name}.min.css`)

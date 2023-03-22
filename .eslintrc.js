@@ -3,7 +3,6 @@ module.exports = {
   ignorePatterns: [
     '**/dist/**',
     '**/package/**',
-    '**/public/**',
     '**/vendor/**',
 
     // Enable dotfile linting

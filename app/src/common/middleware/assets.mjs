@@ -9,8 +9,8 @@ const router = express.Router()
 /**
  * Add middleware to serve static assets
  */
-router.use('/assets', express.static(join(paths.public, 'assets')))
-router.use('/javascripts', express.static(join(paths.public, 'javascripts')))
-router.use('/stylesheets', express.static(join(paths.public, 'stylesheets')))
+router.use('/assets', express.static(join(paths.app, 'dist/assets')))
+router.use('/javascripts', express.static(join(paths.app, 'dist/javascripts')))
+router.use('/stylesheets', express.static(join(paths.app, 'dist/stylesheets')))
 
 export default router

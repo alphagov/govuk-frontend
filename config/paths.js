@@ -18,7 +18,6 @@ module.exports = {
 
   // Review application
   app: join(rootPath, 'app'),
-  public: join(rootPath, 'public'),
 
   // Documentation
   jsdoc: join(rootPath, 'jsdoc'),
