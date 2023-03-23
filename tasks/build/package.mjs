@@ -20,14 +20,36 @@ export default () => gulp.series(
     ]
   }),
 
-  // Copy GOV.UK Frontend files
-  files.copyFiles({
+  // Copy GOV.UK Frontend template files
+  files.copy('**/*.{md,njk}', {
+    srcPath: join(paths.src, 'govuk'),
+    destPath: join(paths.package, 'govuk'),
+
+    // Preserve paths.package README when copying to ./package
+    // https://github.com/alphagov/govuk-frontend/tree/main/package#readme
+    ignore: ['**/govuk/README.md']
+  }),
+
+  // Copy GOV.UK Frontend static assets
+  files.copy('**/*', {
+    srcPath: join(paths.src, 'govuk/assets'),
+    destPath: join(paths.package, 'govuk/assets')
+  }),
+
+  // Generate GOV.UK Frontend fixtures.json from ${componentName}.yaml
+  files.generateFixtures({
+    srcPath: paths.src,
+    destPath: paths.package
+  }),
+
+  // Generate GOV.UK Frontend macro-options.json from ${componentName}.yaml
+  files.generateMacroOptions({
     srcPath: paths.src,
     destPath: paths.package
   }),
 
   // Copy GOV.UK Frontend JavaScript (ES modules)
-  files.copyAssets('**/!(*.test).mjs', {
+  files.copy('**/!(*.test).mjs', {
     srcPath: join(paths.src, 'govuk'),
     destPath: join(paths.package, 'govuk-esm')
   }),
@@ -70,5 +92,11 @@ export default () => gulp.series(
     filePath (file) {
       return join(file.dir, `${file.name}.json`)
     }
+  }),
+
+  // Copy GOV.UK Prototype Kit JavaScript
+  files.copy('**/*.js', {
+    srcPath: join(paths.src, 'govuk-prototype-kit'),
+    destPath: join(paths.package, 'govuk-prototype-kit')
   })
 )

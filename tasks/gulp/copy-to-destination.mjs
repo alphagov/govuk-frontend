@@ -4,96 +4,63 @@ import gulp from 'gulp'
 import rename from 'gulp-rename'
 import yaml from 'js-yaml'
 import map from 'map-stream'
-import merge from 'merge-stream'
 import nunjucks from 'nunjucks'
 import slash from 'slash'
 
 import { paths } from '../../config/index.js'
 
 /**
- * Copy assets task
- * Copies assets to destination
+ * Generate fixtures.json from ${componentName}.yaml
  *
- * @param {string} pattern - Minimatch pattern
  * @param {AssetEntry[1]} options - Asset options
  * @returns {() => import('stream').Stream} Output file stream
  */
-export function copyAssets (pattern, { srcPath, destPath }) {
-  const task = () => gulp.src(`${slash(join(srcPath, pattern))}`)
+export function generateFixtures ({ srcPath, destPath }) {
+  const task = () => gulp.src(`${slash(srcPath)}/govuk/components/**/*.yaml`, {
+    base: slash(srcPath)
+  })
+    .pipe(map(async (file, done) => {
+      try {
+        done(null, await generateFixture(file))
+      } catch (error) {
+        done(error)
+      }
+    }))
+    .pipe(rename({
+      basename: 'fixtures',
+      extname: '.json'
+    }))
     .pipe(gulp.dest(slash(destPath)))
 
-  task.displayName = 'copy:assets'
+  task.displayName = 'copy:fixtures'
 
   return task
 }
 
 /**
- * Copy files task
- *
- * Copies files to destination with './govuk' suffix
- * Includes fonts, images, polyfills, component files
+ * Generate macro-options.json from ${componentName}.yaml
  *
  * @param {AssetEntry[1]} options - Asset options
  * @returns {() => import('stream').Stream} Output file stream
  */
-export function copyFiles ({ srcPath, destPath }) {
-  const task = () => merge(
-    gulp.src([
-      `${slash(srcPath)}/**/*`,
+export function generateMacroOptions ({ srcPath, destPath }) {
+  const task = () => gulp.src(`${slash(srcPath)}/govuk/components/**/*.yaml`, {
+    base: slash(srcPath)
+  })
+    .pipe(map(async (file, done) => {
+      try {
+        done(null, await generateMacroOption(file))
+      } catch (error) {
+        done(error)
+      }
+    }))
+    .pipe(rename({
+      basename: 'macro-options',
+      extname: '.json'
+    }))
+    .pipe(gulp.dest(slash(destPath)))
 
-      // Exclude files we don't want to publish
-      '!**/.DS_Store',
-      '!**/*.mjs',
-      '!**/*.test.*',
-      '!**/__snapshots__/',
-      '!**/__snapshots__/**',
-      '!**/tsconfig.json',
-
-      // Preserve destination README when copying to ./package
-      // https://github.com/alphagov/govuk-frontend/tree/main/package#readme
-      `!${slash(srcPath)}/govuk/README.md`,
-
-      // Exclude Sass files handled by Gulp 'compile:scss'
-      `!${slash(srcPath)}/**/*.scss`,
-
-      // Exclude source YAML handled by JSON streams below
-      `!${slash(srcPath)}/govuk/components/**/*.yaml`
-    ]),
-
-    // Generate fixtures.json from ${componentName}.yaml
-    gulp.src(`${slash(srcPath)}/govuk/components/**/*.yaml`, {
-      base: slash(srcPath)
-    })
-      .pipe(map(async (file, done) => {
-        try {
-          done(null, await generateFixtures(file))
-        } catch (error) {
-          done(error)
-        }
-      }))
-      .pipe(rename({
-        basename: 'fixtures',
-        extname: '.json'
-      })),
-
-    // Generate macro-options.json from ${componentName}.yaml
-    gulp.src(`${slash(srcPath)}/govuk/components/**/*.yaml`, {
-      base: slash(srcPath)
-    })
-      .pipe(map(async (file, done) => {
-        try {
-          done(null, await generateMacroOptions(file))
-        } catch (error) {
-          done(error)
-        }
-      }))
-      .pipe(rename({
-        basename: 'macro-options',
-        extname: '.json'
-      }))
-  ).pipe(gulp.dest(slash(destPath)))
-
-  task.displayName = 'copy:files'
+  task.displayName = 'copy:macro-options'
 
   return task
 }
@@ -104,7 +71,7 @@ export function copyFiles ({ srcPath, destPath }) {
  * @param {import('vinyl')} file - Component data ${componentName}.yaml
  * @returns {Promise<import('vinyl')>} Component fixtures.json
  */
-async function generateFixtures (file) {
+async function generateFixture (file) {
   const json = await convertYamlToJson(file)
 
   if (!json?.examples) {
@@ -148,7 +115,7 @@ async function generateFixtures (file) {
  * @param {import('vinyl')} file - Component data ${componentName}.yaml
  * @returns {Promise<import('vinyl')>} Component macro-options.json
  */
-async function generateMacroOptions (file) {
+async function generateMacroOption (file) {
   const json = await convertYamlToJson(file)
 
   if (!json?.params) {

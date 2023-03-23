@@ -17,7 +17,7 @@ export default () => gulp.series(
   }),
 
   // Copy GOV.UK Frontend static assets
-  files.copyAssets('**/*', {
+  files.copy('**/*', {
     srcPath: join(paths.src, 'govuk/assets'),
     destPath: join(paths.public, 'assets')
   }),
