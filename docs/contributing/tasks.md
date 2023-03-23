@@ -26,15 +26,13 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
 - start up Express, restarting when `.mjs`, `.json` or `.yaml` files change
 
-**`npm run build:app` will do the following:**
+**`npm run build:app` will trigger `npm run build --workspace app` that will:**
 
 - clean the `./app/dist` folder
 - output files into `./app/dist`
 - copy fonts and images
-- run sub tasks from `gulp styles` without StyleLint code quality checks
-- run sub tasks from `gulp scripts` without ESLint code quality checks
-- compile Sass documentation into `./app/dist/docs/sassdoc`
-- compile JavaScript documentation into `./app/dist/docs/jsdoc`
+- compile Sass to CSS, including documentation
+- compile JavaScript ESM to CommonJS, including documentation
 
 **`npm run build:package` will do the following:**
 
@@ -58,7 +56,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
 ## Gulp tasks
 
-Gulp tasks are defined in `gulpfile.mjs` and .`/tasks/` folder.
+Project Gulp tasks are defined in [`gulpfile.mjs`](../../gulpfile.mjs) and the [`tasks/`](../../tasks) folder.
 
 **`gulp --tasks`**
 
@@ -66,7 +64,11 @@ This task will:
 
 - list out all available tasks
 
-**`gulp styles`**
+Review app Gulp tasks are defined in [`app/gulpfile.mjs`](../../app/gulpfile.mjs) and the [`app/tasks/`](../../app/tasks) folder.
+
+Gulp tasks from npm workspaces (such as the review app) can be run as shown:
+
+**`npx --workspace app -- gulp styles`**
 
 This task will:
 
@@ -74,7 +76,7 @@ This task will:
 - compile Sass to CSS into `./app/dist/stylesheets`
 - compile Sass documentation into `./app/dist/docs/sassdoc`
 
-**`gulp scripts`**
+**`npx --workspace app -- gulp scripts`**
 
 This task will:
 
