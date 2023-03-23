@@ -3,6 +3,7 @@ import { join } from 'path'
 import gulp from 'gulp'
 
 import { paths } from './config/index.js'
+import { screenshots } from './tasks/browser.mjs'
 import * as build from './tasks/build/index.mjs'
 import { compileJavaScripts } from './tasks/compile-javascripts.mjs'
 import { compileStylesheets } from './tasks/compile-stylesheets.mjs'
@@ -59,3 +60,9 @@ gulp.task('dev', gulp.series(
   watch,
   npmScriptTask('serve', ['--workspace', 'app'])
 ))
+
+/**
+ * Screenshots task
+ * Sends screenshots to Percy for visual regression testing
+ */
+gulp.task('screenshots', screenshots)
