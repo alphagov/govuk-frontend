@@ -10,7 +10,7 @@ import { basename, parse, join } from 'path'
  * @param {AssetEntry[1]} options - Asset options
  * @returns {() => Promise<void>} Prepared compile task
  */
-export function compileConfig (modulePath, { srcPath, destPath, filePath }) {
+export function compile (modulePath, { srcPath, destPath, filePath }) {
   const configPath = join(destPath, filePath ? filePath(parse(modulePath)) : modulePath)
 
   const task = async () => {
@@ -26,5 +26,5 @@ export function compileConfig (modulePath, { srcPath, destPath, filePath }) {
 }
 
 /**
- * @typedef {import('./compile-assets.mjs').AssetEntry} AssetEntry
+ * @typedef {import('./assets.mjs').AssetEntry} AssetEntry
  */

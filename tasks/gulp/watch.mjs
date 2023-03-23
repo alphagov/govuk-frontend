@@ -2,7 +2,7 @@ import gulp from 'gulp'
 import slash from 'slash'
 
 import { paths } from '../../config/index.js'
-import { npmScriptTask } from '../run.mjs'
+import { npm } from '../index.mjs'
 
 /**
  * Watch task
@@ -20,7 +20,7 @@ export function watch () {
       `${slash(paths.src)}/govuk/**/*.scss`,
       `!${slash(paths.src)}/govuk/vendor/*`
     ], gulp.parallel(
-      npmScriptTask('lint:scss'),
+      npm.run('lint:scss'),
       'styles'
     )),
 
@@ -28,7 +28,7 @@ export function watch () {
       'jsdoc.config.js',
       `${slash(paths.src)}/govuk/**/*.mjs`
     ], gulp.parallel(
-      npmScriptTask('lint:js'),
+      npm.run('lint:js'),
       'scripts'
     ))
   ])

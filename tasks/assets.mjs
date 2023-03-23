@@ -8,7 +8,7 @@ import { dirname } from 'path'
  * @param {AssetOutput} result - Generated or minified bundle
  * @returns {Promise<void>}
  */
-export async function writeAsset (filePath, result) {
+export async function write (filePath, result) {
   await mkdir(dirname(filePath), { recursive: true })
 
   const writeTasks = []

@@ -11,7 +11,7 @@ import { compileAsync } from 'sass-embedded'
 import { paths } from '../config/index.js'
 import { getListing } from '../lib/file-helper.js'
 
-import { writeAsset } from './compile-assets.mjs'
+import { assets } from './index.mjs'
 
 /**
  * Compile Sass to CSS task
@@ -20,7 +20,7 @@ import { writeAsset } from './compile-assets.mjs'
  * @param {AssetEntry[1]} [options] - Asset options
  * @returns {() => Promise<void>} Prepared compile task
  */
-export function compileStylesheets (pattern, options) {
+export function compile (pattern, options) {
   const task = async () => {
     const modulePaths = await getListing(options.srcPath, pattern)
 
@@ -107,7 +107,7 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath, fileP
     .process(css, { ...options, ...config.options })
 
   // Write to files
-  return writeAsset(moduleDestPath, result)
+  return assets.write(moduleDestPath, result)
 }
 
 /**
@@ -159,6 +159,6 @@ export const logger = (config) => ({
 })
 
 /**
- * @typedef {import('./compile-assets.mjs').AssetEntry} AssetEntry
- * @typedef {import('./compile-assets.mjs').AssetOutput} AssetOutput
+ * @typedef {import('./assets.mjs').AssetEntry} AssetEntry
+ * @typedef {import('./assets.mjs').AssetOutput} AssetOutput
  */

@@ -2,7 +2,7 @@ import { spawn } from 'child_process'
 
 import PluginError from 'plugin-error'
 
-import { isDev } from './task-arguments.mjs'
+import { isDev } from './helpers/task-arguments.mjs'
 
 /**
  * Spawns Node.js child process for npm script
@@ -12,7 +12,7 @@ import { isDev } from './task-arguments.mjs'
  * @param {string[]} [args] - npm script arguments
  * @returns {Promise<number>} Exit code
  */
-export async function npmScript (name, args = []) {
+export async function script (name, args = []) {
   const command = process.platform === 'win32' ? 'npm.cmd' : 'npm'
 
   return new Promise((resolve, reject) => {
@@ -57,14 +57,14 @@ export async function npmScript (name, args = []) {
 }
 
 /**
- * Creates a Gulp task for npmScript()
+ * Creates a Gulp task for script()
  *
  * @param {string} name - npm script name
  * @param {string[]} [args] - npm script arguments
  * @returns {() => Promise<number>} Exit code
  */
-export function npmScriptTask (name, args = []) {
-  const task = () => npmScript(name, args)
+export function run (name, args = []) {
+  const task = () => script(name, args)
 
   // Add task alias
   // https://gulpjs.com/docs/en/api/task#task-metadata
