@@ -9,101 +9,94 @@ import nunjucks from 'nunjucks'
 import slash from 'slash'
 
 import { paths } from '../../config/index.js'
-import { destination } from '../task-arguments.mjs'
 
 /**
  * Copy assets task
  * Copies assets to destination
  *
- * @returns {import('stream').Stream} Output file stream
+ * @param {string} pattern - Minimatch pattern
+ * @param {AssetEntry[1]} options - Asset options
+ * @returns {() => import('stream').Stream} Output file stream
  */
-export function copyAssets () {
-  return gulp.src(`${slash(paths.src)}/govuk/assets/**/*`)
-    .pipe(gulp.dest(slash(join(destination, 'assets'))))
-}
+export function copyAssets (pattern, { srcPath, destPath }) {
+  const task = () => gulp.src(`${slash(join(srcPath, pattern))}`)
+    .pipe(gulp.dest(slash(destPath)))
 
-copyAssets.displayName = 'copy:assets'
+  task.displayName = 'copy:assets'
+
+  return task
+}
 
 /**
  * Copy files task
- * Copies files to destination
  *
- * @returns {import('stream').Stream} Output file stream
+ * Copies files to destination with './govuk' suffix
+ * Includes fonts, images, polyfills, component files
+ *
+ * @param {AssetEntry[1]} options - Asset options
+ * @returns {() => import('stream').Stream} Output file stream
  */
-export function copyFiles () {
-  return merge(
-    /**
-     * Copy files to destination with './govuk-esm' suffix
-     * Includes only source JavaScript ECMAScript (ES) modules
-     */
+export function copyFiles ({ srcPath, destPath }) {
+  const task = () => merge(
     gulp.src([
-      `${slash(paths.src)}/govuk/**/*.mjs`,
-      `!${slash(paths.src)}/govuk/**/*.test.*`
-    ]).pipe(gulp.dest(slash(join(destination, 'govuk-esm')))),
+      `${slash(srcPath)}/**/*`,
 
-    /**
-     * Copy files to destination with './govuk' suffix
-     * Includes fonts, images, polyfills, component files
-     */
-    merge(
-      gulp.src([
-        `${slash(paths.src)}/**/*`,
+      // Exclude files we don't want to publish
+      '!**/.DS_Store',
+      '!**/*.mjs',
+      '!**/*.test.*',
+      '!**/__snapshots__/',
+      '!**/__snapshots__/**',
+      '!**/tsconfig.json',
 
-        // Exclude files we don't want to publish
-        '!**/.DS_Store',
-        '!**/*.mjs',
-        '!**/*.test.*',
-        '!**/__snapshots__/',
-        '!**/__snapshots__/**',
-        '!**/tsconfig.json',
+      // Preserve destination README when copying to ./package
+      // https://github.com/alphagov/govuk-frontend/tree/main/package#readme
+      `!${slash(srcPath)}/govuk/README.md`,
 
-        // Preserve destination README when copying to ./package
-        // https://github.com/alphagov/govuk-frontend/tree/main/package#readme
-        `!${slash(paths.src)}/govuk/README.md`,
+      // Exclude Sass files handled by Gulp 'compile:scss'
+      `!${slash(srcPath)}/**/*.scss`,
 
-        // Exclude Sass files handled by Gulp 'compile:scss'
-        `!${slash(paths.src)}/**/*.scss`,
+      // Exclude source YAML handled by JSON streams below
+      `!${slash(srcPath)}/govuk/components/**/*.yaml`
+    ]),
 
-        // Exclude source YAML handled by JSON streams below
-        `!${slash(paths.src)}/govuk/components/**/*.yaml`
-      ]),
+    // Generate fixtures.json from ${componentName}.yaml
+    gulp.src(`${slash(srcPath)}/govuk/components/**/*.yaml`, {
+      base: slash(srcPath)
+    })
+      .pipe(map(async (file, done) => {
+        try {
+          done(null, await generateFixtures(file))
+        } catch (error) {
+          done(error)
+        }
+      }))
+      .pipe(rename({
+        basename: 'fixtures',
+        extname: '.json'
+      })),
 
-      // Generate fixtures.json from ${componentName}.yaml
-      gulp.src(`${slash(paths.src)}/govuk/components/**/*.yaml`, {
-        base: slash(paths.src)
-      })
-        .pipe(map(async (file, done) => {
-          try {
-            done(null, await generateFixtures(file))
-          } catch (error) {
-            done(error)
-          }
-        }))
-        .pipe(rename({
-          basename: 'fixtures',
-          extname: '.json'
-        })),
+    // Generate macro-options.json from ${componentName}.yaml
+    gulp.src(`${slash(srcPath)}/govuk/components/**/*.yaml`, {
+      base: slash(srcPath)
+    })
+      .pipe(map(async (file, done) => {
+        try {
+          done(null, await generateMacroOptions(file))
+        } catch (error) {
+          done(error)
+        }
+      }))
+      .pipe(rename({
+        basename: 'macro-options',
+        extname: '.json'
+      }))
+  ).pipe(gulp.dest(slash(destPath)))
 
-      // Generate macro-options.json from ${componentName}.yaml
-      gulp.src(`${slash(paths.src)}/govuk/components/**/*.yaml`, {
-        base: slash(paths.src)
-      })
-        .pipe(map(async (file, done) => {
-          try {
-            done(null, await generateMacroOptions(file))
-          } catch (error) {
-            done(error)
-          }
-        }))
-        .pipe(rename({
-          basename: 'macro-options',
-          extname: '.json'
-        }))
-    ).pipe(gulp.dest(slash(destination)))
-  )
+  task.displayName = 'copy:files'
+
+  return task
 }
-
-copyFiles.displayName = 'copy:files'
 
 /**
  * Replace file content with fixtures.json
@@ -175,3 +168,7 @@ async function generateMacroOptions (file) {
 async function convertYamlToJson (file) {
   return yaml.load(file.contents.toString(), { json: true })
 }
+
+/**
+ * @typedef {import('../compile-assets.mjs').AssetEntry} AssetEntry
+ */

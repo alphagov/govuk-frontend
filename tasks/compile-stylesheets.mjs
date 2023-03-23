@@ -8,45 +8,45 @@ import postcss from 'postcss'
 import postcssrc from 'postcss-load-config'
 import { compileAsync } from 'sass-embedded'
 
-import { paths, pkg } from '../config/index.js'
+import { paths } from '../config/index.js'
 import { getListing } from '../lib/file-helper.js'
 
 import { writeAsset } from './compile-assets.mjs'
-import { destination, isDist, isPackage, isPublic } from './task-arguments.mjs'
 
 /**
  * Compile Sass to CSS task
  *
- * @returns {Promise<void>}
+ * @param {string} pattern - Minimatch pattern
+ * @param {AssetEntry[1]} [options] - Asset options
+ * @returns {() => Promise<void>} Prepared compile task
  */
-export async function compileStylesheets () {
-  const importEntries = await getImportEntries()
+export function compileStylesheets (pattern, options) {
+  const task = async () => {
+    const modulePaths = await getListing(options.srcPath, pattern)
 
-  // Manually add GOV.UK Prototype kit stylesheet
-  if (isPackage) {
-    importEntries.push(['init.scss', {
-      srcPath: join(paths.src, 'govuk-prototype-kit'),
-      destPath: join(paths.package, 'govuk-prototype-kit')
-    }])
+    try {
+      const compileTasks = modulePaths
+        .map((modulePath) => compileStylesheet([modulePath, options]))
+
+      await Promise.all(compileTasks)
+    } catch (cause) {
+      throw new PluginError('compile:scss', cause)
+    }
   }
 
-  try {
-    await Promise.all(importEntries.map(compileStylesheet))
-  } catch (cause) {
-    throw new PluginError('compile:scss', cause)
-  }
+  task.displayName = 'compile:scss'
+
+  return task
 }
-
-compileStylesheets.displayName = 'compile:scss'
 
 /**
  * Compile Sass to CSS helper
  *
  * @param {AssetEntry} assetEntry - Asset entry
  */
-export async function compileStylesheet ([modulePath, { srcPath, destPath }]) {
+export async function compileStylesheet ([modulePath, { srcPath, destPath, filePath }]) {
   const moduleSrcPath = join(srcPath, modulePath)
-  const moduleDestPath = join(destPath, getPathByDestination(modulePath))
+  const moduleDestPath = join(destPath, filePath ? filePath(parse(modulePath)) : modulePath)
 
   let css
   let map
@@ -57,8 +57,8 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath }]) {
     to: moduleDestPath
   }
 
-  // Render Sass
-  if (!isPackage) {
+  // Compile Sass to CSS
+  if (moduleDestPath.endsWith('.css')) {
     ({ css, sourceMap: map } = await compileAsync(moduleSrcPath, {
       alertColor: true,
 
@@ -108,47 +108,6 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath }]) {
 
   // Write to files
   return writeAsset(moduleDestPath, result)
-}
-
-/**
- * Stylesheet imports to compile
- *
- * @returns {Promise<AssetEntry[]>} Import entries
- */
-export async function getImportEntries () {
-  const srcPath = isPublic ? join(paths.app, 'src') : join(paths.src, 'govuk')
-  const destPath = isPackage ? join(destination, 'govuk') : destination
-
-  // Perform a search and return an array of matching file names
-  // but for 'dist' and 'public' we only want top-level stylesheets
-  const importPaths = await getListing(srcPath, isPackage
-    ? '**/*.scss'
-    : '[!_]*.scss'
-  )
-
-  return importPaths
-    .map((modulePath) => ([modulePath, {
-      srcPath,
-      destPath
-    }]))
-}
-
-/**
- * Stylesheet path by destination
- *
- * @param {AssetEntry[0]} filePath - File path
- * @returns {AssetEntry[0]} File path adjusted by destination
- */
-export function getPathByDestination (filePath) {
-  let { dir, name } = parse(filePath)
-
-  // Adjust file path by destination
-  name = isDist ? `${name.replace(/^all/, pkg.name)}-${pkg.version}` : name
-
-  // Adjust file path for minification
-  return join(dir, !isPackage
-    ? `${name}.min.css`
-    : `${name}.scss`)
 }
 
 /**

@@ -38,8 +38,18 @@ export async function writeAsset (filePath, result) {
  * Asset options
  *
  * @typedef {object} AssetOptions
- * @property {string} srcPath - Input directory
- * @property {string} destPath - Output directory
+ * @property {string} [srcPath] - Input directory
+ * @property {string} [destPath] - Output directory
+ * @property {AssetFormatter} [filePath] - File path formatter
+ * @property {string[]} [ignore] - File path patterns to ignore
+ */
+
+/**
+ * Asset path formatter
+ *
+ * @callback AssetFormatter
+ * @param {import('path').ParsedPath} file - Parsed file path
+ * @returns {string} Formatted file path
  */
 
 /**

@@ -3,34 +3,21 @@ import { basename, join } from 'path'
 import { deleteAsync } from 'del'
 import slash from 'slash'
 
-import { destination } from './task-arguments.mjs'
+/**
+ * Delete path globs for a given destination
+ *
+ * @param {string} pattern - Pattern to remove
+ * @param {AssetEntry[1]} options - Asset options
+ * @returns {() => Promise<string[]>} Prepared compile task
+ */
+export function clean (pattern, { destPath, ignore }) {
+  const task = () => deleteAsync(slash(join(destPath, pattern)), { ignore })
 
-const cleanPath = slash(destination)
+  task.displayName = `clean:${basename(destPath)}`
+
+  return task
+}
 
 /**
- * List path globs to clean for a given destination
- *
- * @param {string} cleanPath - Destination path to clean
- * @returns {string[]} Path globs to clean
+ * @typedef {import('./compile-assets.mjs').AssetEntry} AssetEntry
  */
-export function paths (cleanPath) {
-  const param = [slash(join(cleanPath, '**/*'))]
-
-  // Preserve package files
-  if (basename(cleanPath) === 'package') {
-    param.push(
-      `!${cleanPath}/`,
-      `!${cleanPath}/package.json`,
-      `!${cleanPath}/govuk-prototype-kit.config.json`,
-      `!${cleanPath}/README.md`
-    )
-  }
-
-  return param
-}
-
-export function clean () {
-  return deleteAsync(paths(cleanPath))
-}
-
-clean.displayName = `clean:${basename(cleanPath)}`

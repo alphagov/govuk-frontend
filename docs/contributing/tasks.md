@@ -34,7 +34,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 **`npm run build:app` will do the following:**
 
 - clean the `./public` folder
-- output files into `./public`, or another location via the `--destination` flag
+- output files into `./public`
 - copy fonts and images
 - run sub tasks from `gulp styles` without StyleLint code quality checks
 - run sub tasks from `gulp scripts` without ESLint code quality checks
@@ -44,7 +44,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 **`npm run build:package` will do the following:**
 
 - clean the `./package` folder
-- output files into `./package`, or another location via the `--destination` flag
+- output files into `./package`
 - copy Sass files, applying Autoprefixer via PostCSS
 - copy Nunjucks component template/macro files, including JSON configs
 - copy GOV.UK Prototype Kit config files
@@ -55,7 +55,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 **`npm run build:dist` will do the following:**
 
 - clean the `./dist` folder
-- output files into `./dist`, or another location via the `--destination` flag
+- output files into `./dist`
 - copy fonts and images
 - compile JavaScript and Sass
 - append version number from `package/package.json` to compiled JavaScript and CSS files
@@ -76,7 +76,7 @@ This task will:
 This task will:
 
 - check Sass code quality via Stylelint (`npm run lint:scss`)
-- compile Sass to CSS into `./public`, or another location via the `--destination` flag
+- compile Sass to CSS into `./public`
 - compile Sass documentation into `./sassdoc`
 
 **`gulp scripts`**
@@ -84,7 +84,7 @@ This task will:
 This task will:
 
 - check JavaScript code quality via ESLint (`npm run lint:js`) (using JavaScript Standard Style)
-- compile JavaScript ESM to CommonJS into `./public`, or another location via the `--destination` flag
+- compile JavaScript ESM to CommonJS into `./public`
 - compile JavaScript documentation into `./jsdoc`
 
 ## Express app only
