@@ -38,9 +38,9 @@ export default {
   projects: [
     {
       ...config,
-      displayName: 'Gulp tasks',
+      displayName: 'Build tasks',
       testMatch: [
-        '**/gulp/**/*.test.{js,mjs}'
+        '**/tasks/build/*.test.{js,mjs}'
       ]
     },
     {
@@ -76,7 +76,7 @@ export default {
         // Exclude other tests
         '!**/components/globals.test.mjs',
         '!**/components/*/**',
-        '!**/gulp/**'
+        '!**/tasks/build/**'
       ],
 
       // Web server required

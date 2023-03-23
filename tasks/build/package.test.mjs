@@ -1,10 +1,10 @@
 import { readFile } from 'fs/promises'
 import { join } from 'path'
 
-import { paths } from '../../../config/index.js'
-import { filterPath, getDirectories, getListing, mapPathTo } from '../../../lib/file-helper.js'
-import { componentNameToClassName, componentPathToModuleName } from '../../../lib/helper-functions.js'
-import { compileSassFile } from '../../../lib/jest-helpers.js'
+import { paths } from '../../config/index.js'
+import { filterPath, getDirectories, getListing, mapPathTo } from '../../lib/file-helper.js'
+import { componentNameToClassName, componentPathToModuleName } from '../../lib/helper-functions.js'
+import { compileSassFile } from '../../lib/jest-helpers.js'
 
 describe('package/', () => {
   let listingSource
