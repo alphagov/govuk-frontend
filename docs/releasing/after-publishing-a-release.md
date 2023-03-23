@@ -4,7 +4,7 @@ Once we've published a new release of GOV.UK Frontend there are a number of thin
 
 ## Update our repos to use the new release
 
-Developers should update [govuk-design-system](https://github.com/alphagov/govuk-design-system/issues/2024) and [govuk-frontend-docs](https://github.com/alphagov/govuk-frontend-docs) to use the new release. When updating the design system, you should also test any new or updated guidance that relate to the new release and publish them along with the version update.
+Developers should update [govuk-design-system](https://github.com/alphagov/govuk-design-system) and [govuk-frontend-docs](https://github.com/alphagov/govuk-frontend-docs) to use the new release. When updating the design system, you should also test any new or updated guidance that relate to the new release and publish them along with the version update.
 
 ## Let the community know about the new release
 
