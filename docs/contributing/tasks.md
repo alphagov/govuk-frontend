@@ -45,7 +45,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - copy GOV.UK Prototype Kit config files
 - copy JavaScript ESM source files
 - compile JavaScript ESM to CommonJS
-- runs `npm run test:build:package` (which will test the output is correct)
+- runs `npm run postbuild:package` (which will test the output is correct)
 
 **`npm run build:dist` will do the following:**
 
@@ -54,7 +54,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - copy fonts and images
 - compile JavaScript and Sass
 - append version number from `package/package.json` to compiled JavaScript and CSS files
-- runs `npm run test:build:dist` (which will test the output is correct)
+- runs `npm run postbuild:dist` (which will test the output is correct)
 
 ## Gulp tasks
 
