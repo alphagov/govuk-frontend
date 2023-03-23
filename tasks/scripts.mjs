@@ -7,7 +7,7 @@ import { minify } from 'terser'
 import { getListing } from '../lib/file-helper.js'
 import { componentPathToModuleName } from '../lib/helper-functions.js'
 
-import * as assets from './assets.mjs'
+import { assets } from './index.mjs'
 
 /**
  * Compile JavaScript ESM to CommonJS task

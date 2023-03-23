@@ -3,10 +3,7 @@ import { join } from 'path'
 import gulp from 'gulp'
 
 import { paths } from '../../config/index.js'
-import * as configs from '../configs.mjs'
-import * as files from '../files.mjs'
-import * as scripts from '../scripts.mjs'
-import * as styles from '../styles.mjs'
+import { configs, files, scripts, styles } from '../index.mjs'
 
 /**
  * Build package task

@@ -11,7 +11,7 @@ import { compileAsync } from 'sass-embedded'
 import { paths } from '../config/index.js'
 import { getListing } from '../lib/file-helper.js'
 
-import * as assets from './assets.mjs'
+import { assets } from './index.mjs'
 
 /**
  * Compile Sass to CSS task

@@ -3,7 +3,7 @@ import { join } from 'path'
 import gulp from 'gulp'
 
 import { paths } from '../../config/index.js'
-import * as files from '../files.mjs'
+import { files } from '../index.mjs'
 
 /**
  * Build review app task

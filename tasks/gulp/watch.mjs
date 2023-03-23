@@ -2,7 +2,7 @@ import gulp from 'gulp'
 import slash from 'slash'
 
 import { paths } from '../../config/index.js'
-import * as npm from '../npm.mjs'
+import { npm } from '../index.mjs'
 
 /**
  * Watch task
