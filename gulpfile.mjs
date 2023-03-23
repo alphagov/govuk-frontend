@@ -1,7 +1,6 @@
 import { join } from 'path'
 
 import gulp from 'gulp'
-import taskListing from 'gulp-task-listing'
 
 import { paths, pkg } from './config/index.js'
 import { clean } from './tasks/clean.mjs'
@@ -182,9 +181,3 @@ gulp.task('dev', gulp.series(
   watch,
   npmScriptTask('serve', ['--workspace', 'app'])
 ))
-
-/**
- * Default task
- * Lists out available tasks
- */
-gulp.task('default', taskListing)
