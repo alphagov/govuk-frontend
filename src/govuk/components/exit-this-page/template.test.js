@@ -1,9 +1,8 @@
-/**
- * @jest-environment jsdom
- */
-/* eslint-env jest */
+const cheerio = require('cheerio')
 
-const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
+const { getExamples } = require('../../../../lib/file-helper')
+const { axe } = require('../../../../lib/jest-helpers')
+const { render } = require('../../../../lib/nunjucks-helpers')
 
 describe('Exit this page', () => {
   let examples
@@ -14,14 +13,14 @@ describe('Exit this page', () => {
 
   describe('default example', () => {
     it('passes accessibility tests', async () => {
-      const $ = render('exit-this-page', examples.default)
+      const $ = cheerio.load(render('exit-this-page', examples.default))
 
       const results = await axe($.html())
       expect(results).toHaveNoViolations()
     })
 
     it('renders the default example', () => {
-      const $ = render('exit-this-page', examples.default)
+      const $ = cheerio.load(render('exit-this-page', examples.default))
       const $button = $('.govuk-exit-this-page').find('.govuk-button')
 
       expect($button.hasClass('govuk-button--warning')).toBeTruthy()
@@ -32,35 +31,35 @@ describe('Exit this page', () => {
 
   describe('Custom options', () => {
     it('renders with text', () => {
-      const $ = render('exit-this-page', examples.testing)
+      const $ = cheerio.load(render('exit-this-page', examples.testing))
       const $button = $('.govuk-exit-this-page').find('.govuk-button')
 
       expect($button.text()).toContain('Exit this test')
     })
 
     it('renders with a current tab URL', () => {
-      const $ = render('exit-this-page', examples.testing)
+      const $ = cheerio.load(render('exit-this-page', examples.testing))
       const $button = $('.govuk-exit-this-page').find('.govuk-button')
 
       expect($button.attr('href')).toBe('https://www.test.co.uk')
     })
 
     it('renders with a custom id', () => {
-      const $ = render('exit-this-page', examples.testing)
+      const $ = cheerio.load(render('exit-this-page', examples.testing))
       const $component = $('.govuk-exit-this-page')
 
       expect($component.attr('id')).toBe('test-id')
     })
 
     it('renders with a custom class', () => {
-      const $ = render('exit-this-page', examples.testing)
+      const $ = cheerio.load(render('exit-this-page', examples.testing))
       const $component = $('.govuk-exit-this-page')
 
       expect($component.hasClass('test-class')).toBeTruthy()
     })
 
     it('renders with custom attributes', () => {
-      const $ = render('exit-this-page', examples.testing)
+      const $ = cheerio.load(render('exit-this-page', examples.testing))
       const $component = $('.govuk-exit-this-page')
 
       expect($component.attr('test-attribute')).toBe('true')
@@ -69,7 +68,7 @@ describe('Exit this page', () => {
 
   describe('Translated', () => {
     it('renders with translation data attributes', () => {
-      const $ = render('exit-this-page', examples.translated)
+      const $ = cheerio.load(render('exit-this-page', examples.translated))
       const $component = $('.govuk-exit-this-page')
 
       expect($component.attr('data-i18n.activated')).toBe('Tudalen ymadael')
