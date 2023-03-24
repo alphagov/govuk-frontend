@@ -3,13 +3,15 @@ import { join } from 'path'
 import gulp from 'gulp'
 
 import { paths } from '../../config/index.js'
-import { npm, scripts, task } from '../../tasks/index.mjs'
+import { files, npm, scripts, task } from '../../tasks/index.mjs'
 
 /**
  * JavaScripts task (for watch)
  * Compilation, documentation
  */
 export const compile = gulp.series(
+  files.updateFrontendVersionJavaScript,
+
   task.name('compile:js', () =>
     scripts.compile('all.mjs', {
       srcPath: join(paths.src, 'govuk'),
