@@ -64,7 +64,7 @@
     "jsdoc": "^4.0.2",
     "jsdoc-tsimport-plugin": "^1.0.5",
     "map-stream": "^0.0.7",
-    "minimatch": "^7.3.0",
+    "minimatch": "^7.4.3",
     "nunjucks": "^3.2.3",
     "outdent": "^0.8.0",
     "plugin-error": "^2.0.1",

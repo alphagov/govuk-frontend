@@ -28,7 +28,7 @@
     "js-beautify": "^1.14.7",
     "js-yaml": "^4.1.0",
     "marked": "^4.2.12",
-    "minimatch": "^7.3.0",
+    "minimatch": "^7.4.3",
     "nodemon": "^2.0.21",
     "nunjucks": "^3.2.3",
     "outdent": "^0.8.0",
