@@ -74,7 +74,7 @@
     "sass-embedded": "^1.58.3",
     "sassdoc": "^2.7.4",
     "slash": "^5.0.0",
-    "terser": "^5.16.5",
+    "terser": "^5.16.6",
     "yargs-parser": "^21.1.1"
   },
   "devDependencies": {
