@@ -9,13 +9,10 @@ node_modules/
 coverage/
 
 # Build output
-jsdoc/
-public/
-sassdoc/
+dist/
 
 # Build output (committed)
-dist/
-package/
+/package
 
 # 3rd party vendor code
 vendor/

@@ -178,8 +178,8 @@ describe('PostCSS config', () => {
     describe('Review app only', () => {
       it.each([
         {
-          from: 'app/stylesheets/app.scss',
-          to: 'public/stylesheets/app.min.css'
+          from: 'app/src/stylesheets/app.scss',
+          to: 'app/dist/stylesheets/app.min.css'
         }
       ])('Adds plugins for $from', ({ from, to }) => {
         const config = configFn({ env, from, to })
@@ -221,12 +221,12 @@ describe('PostCSS config', () => {
 
       it.each([
         {
-          from: 'app/stylesheets/full-page-examples/campaign-page.scss',
-          to: 'public/stylesheets/full-page-examples/campaign-page.min.css'
+          from: 'app/src/stylesheets/full-page-examples/campaign-page.scss',
+          to: 'app/dist/stylesheets/full-page-examples/campaign-page.min.css'
         },
         {
-          from: 'app/stylesheets/full-page-examples/search.scss',
-          to: 'public/stylesheets/full-page-examples/search.min.css'
+          from: 'app/src/stylesheets/full-page-examples/search.scss',
+          to: 'app/dist/stylesheets/full-page-examples/search.min.css'
         }
       ])("Skips plugin 'pseudo-classes' for $from", ({ from, to }) => {
         const config = configFn({ env, from, to })
@@ -239,12 +239,12 @@ describe('PostCSS config', () => {
     describe('Review app only + IE8', () => {
       it.each([
         {
-          from: 'app/stylesheets/app-ie8.scss',
-          to: 'public/stylesheets/app-ie8.min.css'
+          from: 'app/src/stylesheets/app-ie8.scss',
+          to: 'app/dist/stylesheets/app-ie8.min.css'
         },
         {
-          from: 'app/stylesheets/app-legacy-ie8.scss',
-          to: 'public/stylesheets/app-legacy-ie8.min.css'
+          from: 'app/src/stylesheets/app-legacy-ie8.scss',
+          to: 'app/dist/stylesheets/app-legacy-ie8.min.css'
         }
       ])('Adds plugins for $from', ({ from, to }) => {
         const config = configFn({ env, from, to })

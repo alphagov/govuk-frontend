@@ -17,10 +17,5 @@ module.exports = {
   package: join(rootPath, 'package'),
 
   // Review application
-  app: join(rootPath, 'app'),
-  public: join(rootPath, 'public'),
-
-  // Documentation
-  jsdoc: join(rootPath, 'jsdoc'),
-  sassdoc: join(rootPath, 'sassdoc')
+  app: join(rootPath, 'app')
 }

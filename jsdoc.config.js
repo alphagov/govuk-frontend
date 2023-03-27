@@ -1,6 +1,6 @@
 module.exports = {
   opts: {
-    destination: './jsdoc',
+    destination: './app/dist/docs/jsdoc',
     recurse: true
   },
   plugins: [
