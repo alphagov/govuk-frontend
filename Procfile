@@ -1,1 +1,1 @@
-web: npm run heroku
+web: npm start --workspace app

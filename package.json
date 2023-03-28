@@ -15,7 +15,6 @@
   "scripts": {
     "postinstall": "npm ls --depth=0",
     "start": "npm run dev --workspace app",
-    "heroku": "npm run build:app && npm start --workspace app",
     "build-release": "./bin/build-release.sh",
     "publish-release": "./bin/publish-release.sh",
     "pre-release": "./bin/pre-release.sh",
