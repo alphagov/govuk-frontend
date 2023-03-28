@@ -3,7 +3,7 @@ import { join } from 'path'
 import gulp from 'gulp'
 
 import { paths } from '../../config/index.js'
-import { files } from '../index.mjs'
+import { files, task } from '../index.mjs'
 
 /**
  * Build review app task
@@ -12,15 +12,15 @@ import { files } from '../index.mjs'
  * @returns {() => import('gulp').TaskFunction} Task function
  */
 export default () => gulp.series(
-  files.clean('**/*', {
+  task.name('clean', () => files.clean('**/*', {
     destPath: join(paths.app, 'dist')
-  }),
+  })),
 
   // Copy GOV.UK Frontend static assets
-  files.copy('**/*', {
+  task.name('copy:assets', () => files.copy('**/*', {
     srcPath: join(paths.src, 'govuk/assets'),
     destPath: join(paths.app, 'dist/assets')
-  }),
+  })),
 
   'scripts',
   'styles'

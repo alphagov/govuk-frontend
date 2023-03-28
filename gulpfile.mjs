@@ -4,23 +4,25 @@ import gulp from 'gulp'
 
 import { paths } from './config/index.js'
 import * as build from './tasks/build/index.mjs'
-import { browser, files, scripts, styles, npm } from './tasks/index.mjs'
+import { browser, files, npm, scripts, styles, task } from './tasks/index.mjs'
 
 /**
  * Umbrella scripts tasks (for watch)
  * Runs JavaScript code quality checks, documentation, compilation
  */
 gulp.task('scripts', gulp.series(
-  scripts.compile('all.mjs', {
-    srcPath: join(paths.src, 'govuk'),
-    destPath: join(paths.app, 'dist/javascripts'),
+  task.name('compile:js', () =>
+    scripts.compile('all.mjs', {
+      srcPath: join(paths.src, 'govuk'),
+      destPath: join(paths.app, 'dist/javascripts'),
 
-    filePath (file) {
-      return join(file.dir, `${file.name}.min.js`)
-    }
-  }),
+      filePath (file) {
+        return join(file.dir, `${file.name}.min.js`)
+      }
+    })
+  ),
 
-  npm.run('build:jsdoc')
+  npm.script('build:jsdoc')
 ))
 
 /**
@@ -28,16 +30,18 @@ gulp.task('scripts', gulp.series(
  * Runs Sass code quality checks, documentation, compilation
  */
 gulp.task('styles', gulp.series(
-  styles.compile('**/[!_]*.scss', {
-    srcPath: join(paths.app, 'src/stylesheets'),
-    destPath: join(paths.app, 'dist/stylesheets'),
+  task.name('compile:scss', () =>
+    styles.compile('**/[!_]*.scss', {
+      srcPath: join(paths.app, 'src/stylesheets'),
+      destPath: join(paths.app, 'dist/stylesheets'),
 
-    filePath (file) {
-      return join(file.dir, `${file.name}.min.css`)
-    }
-  }),
+      filePath (file) {
+        return join(file.dir, `${file.name}.min.css`)
+      }
+    })
+  ),
 
-  npm.run('build:sassdoc')
+  npm.script('build:sassdoc')
 ))
 
 /**
@@ -52,9 +56,9 @@ gulp.task('build:dist', build.dist())
  * Runs a sequence of tasks on start
  */
 gulp.task('dev', gulp.series(
-  'build:app',
+  build.app(),
   files.watch,
-  npm.run('serve', paths.app)
+  npm.script('serve', paths.app)
 ))
 
 /**

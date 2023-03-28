@@ -13,10 +13,10 @@ import { paths } from '../../config/index.js'
  * Generate fixtures.json from ${componentName}.yaml
  *
  * @param {AssetEntry[1]} options - Asset options
- * @returns {() => import('stream').Stream} Output file stream
+ * @returns {import('stream').Stream} Output file stream
  */
 export function generateFixtures ({ srcPath, destPath }) {
-  const task = () => gulp.src(`${slash(srcPath)}/govuk/components/**/*.yaml`, {
+  return gulp.src(`${slash(srcPath)}/govuk/components/**/*.yaml`, {
     base: slash(srcPath)
   })
     .pipe(map(async (file, done) => {
@@ -31,20 +31,16 @@ export function generateFixtures ({ srcPath, destPath }) {
       extname: '.json'
     }))
     .pipe(gulp.dest(slash(destPath)))
-
-  task.displayName = 'copy:fixtures'
-
-  return task
 }
 
 /**
  * Generate macro-options.json from ${componentName}.yaml
  *
  * @param {AssetEntry[1]} options - Asset options
- * @returns {() => import('stream').Stream} Output file stream
+ * @returns {import('stream').Stream} Output file stream
  */
 export function generateMacroOptions ({ srcPath, destPath }) {
-  const task = () => gulp.src(`${slash(srcPath)}/govuk/components/**/*.yaml`, {
+  return gulp.src(`${slash(srcPath)}/govuk/components/**/*.yaml`, {
     base: slash(srcPath)
   })
     .pipe(map(async (file, done) => {
@@ -59,10 +55,6 @@ export function generateMacroOptions ({ srcPath, destPath }) {
       extname: '.json'
     }))
     .pipe(gulp.dest(slash(destPath)))
-
-  task.displayName = 'copy:macro-options'
-
-  return task
 }
 
 /**

@@ -20,7 +20,7 @@ export function watch () {
       `${slash(paths.src)}/govuk/**/*.scss`,
       `!${slash(paths.src)}/govuk/vendor/*`
     ], gulp.parallel(
-      npm.run('lint:scss'),
+      npm.script('lint:scss'),
       'styles'
     )),
 
@@ -28,10 +28,8 @@ export function watch () {
       'jsdoc.config.js',
       `${slash(paths.src)}/govuk/**/*.mjs`
     ], gulp.parallel(
-      npm.run('lint:js'),
+      npm.script('lint:js'),
       'scripts'
     ))
   ])
 }
-
-watch.displayName = 'watch'
