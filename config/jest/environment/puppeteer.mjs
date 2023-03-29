@@ -1,10 +1,10 @@
-import PuppeteerEnvironment from 'jest-environment-puppeteer'
+import { TestEnvironment } from 'jest-environment-puppeteer'
 
 /**
  * Automation browser environment
  * Adds Puppeteer page/browser globals, shared test globals
  */
-class BrowserAutomationEnvironment extends PuppeteerEnvironment {
+class BrowserAutomationEnvironment extends TestEnvironment {
   async setup () {
     await super.setup()
 
