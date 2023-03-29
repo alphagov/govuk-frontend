@@ -54,7 +54,7 @@ gulp.task('build:dist', build.dist())
 gulp.task('dev', gulp.series(
   'build:app',
   files.watch,
-  npm.run('serve', ['--workspace', 'app'])
+  npm.run('serve', paths.app)
 ))
 
 /**

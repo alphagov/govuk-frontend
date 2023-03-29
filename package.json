@@ -45,6 +45,7 @@
   "dependencies": {
     "@babel/core": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
+    "@npmcli/run-script": "^6.0.0",
     "@percy/puppeteer": "^2.0.2",
     "@percy/sdk-utils": "^1.21.0",
     "autoprefixer": "^9.8.8",
