@@ -8,10 +8,8 @@ import { files, scripts, styles, task } from '../index.mjs'
 /**
  * Build dist task
  * Prepare dist folder for release
- *
- * @returns {() => import('gulp').TaskFunction} Task function
  */
-export default () => gulp.series(
+export default gulp.series(
   task.name('clean', () =>
     files.clean('**/*', {
       destPath: paths.dist

@@ -6,8 +6,8 @@ import { browser } from './tasks/index.mjs'
 /**
  * Build target tasks
  */
-gulp.task('build:package', build.package())
-gulp.task('build:dist', build.dist())
+gulp.task('build:package', build.package)
+gulp.task('build:dist', build.dist)
 
 /**
  * Screenshots task

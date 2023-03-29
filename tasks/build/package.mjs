@@ -8,10 +8,8 @@ import { configs, files, scripts, styles, task } from '../index.mjs'
 /**
  * Build package task
  * Prepare package folder for publishing
- *
- * @returns {() => import('gulp').TaskFunction} Task function
  */
-export default () => gulp.series(
+export default gulp.series(
   task.name('clean', () =>
     files.clean('**/*', {
       destPath: paths.package,

@@ -4,6 +4,8 @@ import slash from 'slash'
 import { paths } from '../../config/index.js'
 import { npm } from '../../tasks/index.mjs'
 
+import { scripts, styles } from './index.mjs'
+
 /**
  * Watch task
  * During development, this task will:
@@ -21,7 +23,7 @@ export function watch () {
       `!${slash(paths.src)}/govuk/vendor/*`
     ], gulp.parallel(
       npm.script('lint:scss'),
-      'styles'
+      styles
     )),
 
     gulp.watch([
@@ -29,7 +31,7 @@ export function watch () {
       `${slash(paths.src)}/govuk/**/*.mjs`
     ], gulp.parallel(
       npm.script('lint:js'),
-      'scripts'
+      scripts
     ))
   ])
 }
