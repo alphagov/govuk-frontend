@@ -94,7 +94,7 @@
     "eslint-plugin-es-x": "^6.0.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsdoc": "^40.1.0",
-    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-n": "^15.7.0",
     "eslint-plugin-promise": "^6.1.1",
     "html-validate": "7.14.0",
     "husky": "^8.0.3",
