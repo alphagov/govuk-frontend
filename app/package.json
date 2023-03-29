@@ -27,7 +27,7 @@
     "jquery": "1.12.4",
     "js-beautify": "^1.14.7",
     "js-yaml": "^4.1.0",
-    "marked": "^4.2.12",
+    "marked": "^4.3.0",
     "minimatch": "^7.4.3",
     "nodemon": "^2.0.21",
     "nunjucks": "^3.2.3",
