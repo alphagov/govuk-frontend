@@ -51,7 +51,7 @@
     "chalk": "^5.2.0",
     "cheerio": "^1.0.0-rc.12",
     "cpy": "^9.0.1",
-    "cssnano": "^5.1.15",
+    "cssnano": "^6.0.0",
     "cssnano-preset-default": "^5.2.13",
     "del": "^7.0.0",
     "front-matter": "^4.0.2",
