@@ -85,7 +85,7 @@
   },
   "devDependencies": {
     "@percy/cli": "^1.21.0",
-    "@types/node": "^18.15.7",
+    "@types/node": "^18.15.11",
     "@typescript-eslint/eslint-plugin": "^5.55.0",
     "@typescript-eslint/parser": "^5.57.0",
     "editorconfig-checker": "^5.0.1",
