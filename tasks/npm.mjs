@@ -4,6 +4,7 @@ import PluginError from 'plugin-error'
 import { paths } from '../config/index.js'
 
 import { isDev } from './helpers/task-arguments.mjs'
+import { task } from './index.mjs'
 
 /**
  * Spawns Node.js child process for npm script
@@ -42,11 +43,5 @@ export async function script (name, pkgPath = paths.root) {
  * @returns {() => Promise<void>} Script run
  */
 export function run (name, pkgPath) {
-  const task = () => script(name, pkgPath)
-
-  // Add task alias
-  // https://gulpjs.com/docs/en/api/task#task-metadata
-  task.displayName = `npm run ${name}`
-
-  return task
+  return task.name(`npm run ${name}`, () => run(name, pkgPath))
 }
