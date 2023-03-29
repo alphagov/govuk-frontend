@@ -6,7 +6,7 @@ import cpy from 'cpy'
 import { deleteAsync } from 'del'
 import slash from 'slash'
 
-import { pkg, paths } from '../config/index.js'
+import { pkg } from '../config/index.js'
 
 /**
  * Delete path globs for a given destination
@@ -26,22 +26,6 @@ export async function clean (pattern, { destPath, ignore }) {
  */
 export async function version (assetPath, { destPath }) {
   await writeFile(join(destPath, assetPath), pkg.version + EOL)
-}
-
-/**
- * Write govuk-frontend-version.mjs
- * with `package/package.json` version
- */
-export async function updateFrontendVersionJavaScript () {
-  return writeFile(join(`${paths.src}/govuk/common/`, 'govuk-frontend-version.mjs'), `export var version = '${pkg.version}'${EOL}`)
-}
-
-/**
- * Write _govuk-frontend-version.scss
- * with `package/package.json` version
- */
-export async function updateFrontendVersionSass () {
-  return writeFile(join(`${paths.src}/govuk/core/`, '_govuk-frontend-version.scss'), `:root {\n  --govuk-frontend-version: "${pkg.version}";\n}${EOL}`)
 }
 
 /**

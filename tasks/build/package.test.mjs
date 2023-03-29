@@ -1,7 +1,7 @@
 import { readFile } from 'fs/promises'
 import { join } from 'path'
 
-import { paths } from '../../config/index.js'
+import { paths, pkg } from '../../config/index.js'
 import { filterPath, getDirectories, getListing, mapPathTo } from '../../lib/file-helper.js'
 import { componentNameToClassName, componentPathToModuleName } from '../../lib/helper-functions.js'
 import { compileSassFile } from '../../lib/jest-helpers.js'
@@ -111,6 +111,14 @@ describe('package/', () => {
 
       // Look for AMD module definition for 'GOVUKFrontend'
       expect(contents).toContain("typeof define === 'function' && define.amd ? define('GOVUKFrontend', ['exports'], factory)")
+    })
+
+    it('should have correct version number', async () => {
+      const contents = await readFile(join(paths.package, 'govuk', 'all.js'), 'utf8')
+
+      // Look for AMD module export 'GOVUKFrontend.version'
+      expect(contents).toContain(`var version = '${pkg.version}';`)
+      expect(contents).toContain('exports.version = version;')
     })
   })
 

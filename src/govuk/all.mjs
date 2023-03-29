@@ -89,6 +89,8 @@ function initAll (config) {
 export {
   initAll,
   version,
+
+  // Components
   Accordion,
   Button,
   Details,

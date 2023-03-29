@@ -40,6 +40,10 @@ describe('dist/', () => {
     it('should contain source mapping URL', () => {
       expect(stylesheet).toMatch(new RegExp(`/\\*# sourceMappingURL=${filename}.map \\*/$`))
     })
+
+    it('should contain version number custom property', () => {
+      expect(stylesheet).toContain(`--govuk-frontend-version:"${pkg.version}"`)
+    })
   })
 
   describe('govuk-frontend-ie8-[version].min.css', () => {
@@ -71,6 +75,10 @@ describe('dist/', () => {
 
     it('should have the correct version name', () => {
       expect(javascript).toBeTruthy()
+    })
+
+    it('should contain correct version number', () => {
+      expect(javascript).toContain(`.version="${pkg.version}",`)
     })
 
     it('should contain source mapping URL', () => {

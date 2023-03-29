@@ -24,8 +24,6 @@ export default gulp.series(
     })
   ),
 
-  files.updateFrontendVersionJavaScript,
-
   // Compile GOV.UK Frontend JavaScript
   task.name('compile:js', () =>
     scripts.compile('all.mjs', {
@@ -37,8 +35,6 @@ export default gulp.series(
       }
     })
   ),
-
-  files.updateFrontendVersionSass,
 
   // Compile GOV.UK Frontend Sass
   task.name('compile:scss', () =>
