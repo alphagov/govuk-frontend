@@ -54,7 +54,7 @@ The [Button](https://design-system.service.gov.uk/components/button/) Nunjucks m
 
 This was added in [pull request #3344: Adding optional id attribute to button component](https://github.com/alphagov/govuk-frontend/pull/3344). Thanks to [Tom Billington](https://github.com/TomBillingtonUK) for this contribution.
 
-### Added a modifier for text input styles that accept sequences of digits
+#### Added a modifier for text input styles that accept sequences of digits
 
 We've added a new `.govuk-input--extra-letter-spacing` class for [Text Input](https://design-system.service.gov.uk/components/text-input/). This increases readability of text inputs that receive sequences of digits (like security codes, references or phone numbers).
 
@@ -96,6 +96,7 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 - [#3306: Re-enable complete hover link styles on the footer](https://github.com/alphagov/govuk-frontend/pull/3306)
 - [#3312: Add default value for warning text icon fallback attribute](https://github.com/alphagov/govuk-frontend/pull/3312)
 - [#3426: Add organisation brand colour for Department for Business & Trade](https://github.com/alphagov/govuk-frontend/pull/3426) - thanks to [Barbara Slawinska](https://github.com/baisa) for contributing this change
+- [#3454: Update default link underline offset setting](https://github.com/alphagov/govuk-frontend/pull/3454)
 
 ## 4.5.0 (Feature release)
 
