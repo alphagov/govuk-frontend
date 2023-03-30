@@ -145,7 +145,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.1 # Ruby 3.1 supported by Ruby Sass v3
+          ruby-version: 3.2 # Ruby 3.2 supported by Ruby Sass v3
 
       - name: Install gem
         run: |
