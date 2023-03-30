@@ -1,78 +1,95 @@
-import { basename, join } from 'path'
+import { readFile } from 'fs/promises'
+import { basename, dirname, join } from 'path'
 
-import gulp from 'gulp'
-import rename from 'gulp-rename'
 import yaml from 'js-yaml'
-import map from 'map-stream'
 import nunjucks from 'nunjucks'
-import slash from 'slash'
 
-import { paths } from '../config/index.js'
+import { getListing } from '../lib/file-helper.js'
+
+import { files } from './index.mjs'
 
 /**
- * Generate fixtures.json from ${componentName}.yaml
+ * Generate fixtures.json from component data
  *
+ * @param {AssetEntry[0]} pattern - Path to ${componentName}.yaml
  * @param {AssetEntry[1]} options - Asset options
- * @returns {import('stream').Stream} Output file stream
  */
-export function generateFixtures ({ srcPath, destPath }) {
-  return gulp.src(`${slash(srcPath)}/govuk/components/**/*.yaml`, {
-    base: slash(srcPath)
-  })
-    .pipe(map(async (file, done) => {
-      try {
-        done(null, await generateFixture(file))
-      } catch (error) {
-        done(error)
+export async function generateFixtures (pattern, { srcPath, destPath }) {
+  const componentDataPaths = await getListing(srcPath, pattern)
+
+  // Loop component data paths
+  const fixtures = componentDataPaths.map(async (componentDataPath) => {
+    const fixture = await generateFixture(join(srcPath, componentDataPath))
+
+    // Write to destination
+    await files.write(componentDataPath, {
+      srcPath,
+      destPath,
+
+      // Rename to fixtures.json
+      filePath ({ dir }) {
+        return join(dir, 'fixtures.json')
+      },
+
+      // Replace contents with JSON
+      async fileContents () {
+        return JSON.stringify(fixture, null, 4)
       }
-    }))
-    .pipe(rename({
-      basename: 'fixtures',
-      extname: '.json'
-    }))
-    .pipe(gulp.dest(slash(destPath)))
+    })
+  })
+
+  await Promise.all(fixtures)
 }
 
 /**
- * Generate macro-options.json from ${componentName}.yaml
+ * Generate macro-options.json from component data
  *
+ * @param {AssetEntry[0]} pattern - Path to ${componentName}.yaml
  * @param {AssetEntry[1]} options - Asset options
- * @returns {import('stream').Stream} Output file stream
  */
-export function generateMacroOptions ({ srcPath, destPath }) {
-  return gulp.src(`${slash(srcPath)}/govuk/components/**/*.yaml`, {
-    base: slash(srcPath)
-  })
-    .pipe(map(async (file, done) => {
-      try {
-        done(null, await generateMacroOption(file))
-      } catch (error) {
-        done(error)
+export async function generateMacroOptions (pattern, { srcPath, destPath }) {
+  const componentDataPaths = await getListing(srcPath, pattern)
+
+  // Loop component data paths
+  const macroOptions = componentDataPaths.map(async (componentDataPath) => {
+    const macroOption = await generateMacroOption(join(srcPath, componentDataPath))
+
+    // Write to destination
+    await files.write(componentDataPath, {
+      srcPath,
+      destPath,
+
+      // Rename to 'macro-options.json'
+      filePath ({ dir }) {
+        return join(dir, 'macro-options.json')
+      },
+
+      // Replace contents with JSON
+      async fileContents () {
+        return JSON.stringify(macroOption, null, 4)
       }
-    }))
-    .pipe(rename({
-      basename: 'macro-options',
-      extname: '.json'
-    }))
-    .pipe(gulp.dest(slash(destPath)))
+    })
+  })
+
+  await Promise.all(macroOptions)
 }
 
 /**
- * Replace file content with fixtures.json
+ * Component fixtures YAML to JSON
  *
- * @param {import('vinyl')} file - Component data ${componentName}.yaml
- * @returns {Promise<import('vinyl')>} Component fixtures.json
+ * @param {string} componentDataPath - Path to ${componentName}.yaml
+ * @returns {Promise<{ component: string; fixtures: Record<string, unknown>[] }>} Component fixtures object
  */
-async function generateFixture (file) {
-  const json = await convertYamlToJson(file)
+async function generateFixture (componentDataPath) {
+  const json = await yaml.load(await readFile(componentDataPath, 'utf8'), { json: true })
 
   if (!json?.examples) {
-    throw new Error(`${file.relative} is missing "examples"`)
+    throw new Error(`${componentDataPath} is missing "examples"`)
   }
 
   // Nunjucks template
-  const componentName = basename(file.dirname)
-  const template = join(paths.src, 'govuk/components', componentName, 'template.njk')
+  const template = join(dirname(componentDataPath), 'template.njk')
+  const componentName = basename(dirname(componentDataPath))
 
   // Loop examples
   const examples = json.examples.map(async (example) => {
@@ -92,40 +109,26 @@ async function generateFixture (file) {
     }
   })
 
-  const fixtures = {
-    component: basename(file.dirname),
+  return {
+    component: componentName,
     fixtures: await Promise.all(examples)
   }
-
-  file.contents = Buffer.from(JSON.stringify(fixtures, null, 4))
-  return file
 }
 
 /**
- * Replace file content with macro-options.json
+ * Macro options YAML to JSON
  *
- * @param {import('vinyl')} file - Component data ${componentName}.yaml
- * @returns {Promise<import('vinyl')>} Component macro-options.json
+ * @param {string} componentDataPath - Path to ${componentName}.yaml
+ * @returns {Promise<Record<string, unknown>[]>} Component macro options
  */
-async function generateMacroOption (file) {
-  const json = await convertYamlToJson(file)
+async function generateMacroOption (componentDataPath) {
+  const json = await yaml.load(await readFile(componentDataPath, 'utf8'), { json: true })
 
   if (!json?.params) {
-    throw new Error(`${file.relative} is missing "params"`)
+    throw new Error(`${componentDataPath} is missing "params"`)
   }
 
-  file.contents = Buffer.from(JSON.stringify(json.params, null, 4))
-  return file
-}
-
-/**
- * Parse YAML file content as JavaScript
- *
- * @param {import('vinyl')} file - Component data ${componentName}.yaml
- * @returns {Promise<{ examples?: Record<string, unknown>[]; params?: Record<string, unknown>[] }>} Component options
- */
-async function convertYamlToJson (file) {
-  return yaml.load(file.contents.toString(), { json: true })
+  return json.params
 }
 
 /**

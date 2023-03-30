@@ -41,18 +41,18 @@ export default gulp.series(
   ),
 
   // Generate GOV.UK Frontend fixtures.json from ${componentName}.yaml
-  task.name('copy:fixtures', () =>
-    components.generateFixtures({
-      srcPath: paths.src,
-      destPath: paths.package
+  task.name('compile:fixtures', () =>
+    components.generateFixtures('**/*.yaml', {
+      srcPath: join(paths.src, 'govuk/components'),
+      destPath: join(paths.package, 'govuk/components')
     })
   ),
 
   // Generate GOV.UK Frontend macro-options.json from ${componentName}.yaml
-  task.name('copy:macro-options', () =>
-    components.generateMacroOptions({
-      srcPath: paths.src,
-      destPath: paths.package
+  task.name('compile:macro-options', () =>
+    components.generateMacroOptions('**/*.yaml', {
+      srcPath: join(paths.src, 'govuk/components'),
+      destPath: join(paths.package, 'govuk/components')
     })
   ),
 
