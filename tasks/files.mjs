@@ -1,6 +1,6 @@
 import { writeFile } from 'fs/promises'
 import { EOL } from 'os'
-import { join } from 'path'
+import { join, parse } from 'path'
 
 import cpy from 'cpy'
 import { deleteAsync } from 'del'
@@ -24,8 +24,30 @@ export async function clean (pattern, { destPath, ignore }) {
  * @param {AssetEntry[0]} assetPath - File path to asset
  * @param {AssetEntry[1]} options - Asset options
  */
-export async function version (assetPath, { destPath }) {
-  await writeFile(join(destPath, assetPath), pkg.version + EOL)
+export async function version (assetPath, options) {
+  return write(assetPath, {
+    ...options,
+
+    async fileContents () {
+      return pkg.version
+    }
+  })
+}
+
+/**
+ * Write file task
+ *
+ * @param {AssetEntry[0]} assetPath - File path to asset
+ * @param {AssetEntry[1]} options - Asset options
+ */
+export async function write (assetPath, { destPath, filePath, fileContents }) {
+  const assetDestPath = join(destPath, filePath ? filePath(parse(assetPath)) : assetPath)
+
+  if (!fileContents) {
+    throw new Error("Option 'fileContents' required")
+  }
+
+  return writeFile(assetDestPath, await fileContents() + EOL)
 }
 
 /**
