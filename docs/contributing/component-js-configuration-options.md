@@ -2,7 +2,7 @@
 
 Configuration options allow developers to pass additional information into a component's JavaScript. This allows them to change how the component might work or appear without needing to create their own fork.
 
-Configuration options straddle the line between Nunjucks, HTML and JavaScript.
+Configuration options can be configured using Nunjucks, HTML or JavaScript, but only JavaScript will use the options.
 
 ## Preparing the component's JavaScript
 
@@ -145,7 +145,6 @@ We can now call the Accordion's Nunjucks macro with our new `rememberExpanded` p
 }) }}
 ```
 
-And that's pretty much it!
 
 ## Naming configuration options
 
