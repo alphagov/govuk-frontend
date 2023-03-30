@@ -52,7 +52,7 @@
     "cheerio": "^1.0.0-rc.12",
     "cpy": "^9.0.1",
     "cssnano": "^6.0.0",
-    "cssnano-preset-default": "^5.2.13",
+    "cssnano-preset-default": "^6.0.0",
     "del": "^7.0.0",
     "front-matter": "^4.0.2",
     "glob": "^9.3.2",
