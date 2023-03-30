@@ -38,12 +38,16 @@ $govuk-link-underline-thickness: unquote("max(1px, .0625rem)") !default;
 
 /// Offset of link underlines from text baseline
 ///
+/// The default is 3px expressed as ems, as calculated against the default body
+/// font size (on desktop) of 19px.
+/// 3 ÷ 19 = 0.1578
+///
 /// Set this variable to `false` to avoid setting an offset.
 ///
 /// @type Number
 /// @access public
 
-$govuk-link-underline-offset: .1em !default;
+$govuk-link-underline-offset: .1578em !default;
 
 /// Thickness of link underlines in hover state
 ///
