@@ -46,7 +46,7 @@
     "@babel/core": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
     "@percy/puppeteer": "^2.0.2",
-    "@percy/sdk-utils": "^1.20.0",
+    "@percy/sdk-utils": "^1.21.0",
     "autoprefixer": "^9.8.8",
     "chalk": "^5.2.0",
     "cheerio": "^1.0.0-rc.12",
