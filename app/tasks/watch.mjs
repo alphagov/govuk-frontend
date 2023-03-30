@@ -2,7 +2,9 @@ import gulp from 'gulp'
 import slash from 'slash'
 
 import { paths } from '../../config/index.js'
-import { npm } from '../index.mjs'
+import { npm } from '../../tasks/index.mjs'
+
+import { scripts, styles } from './index.mjs'
 
 /**
  * Watch task
@@ -15,23 +17,21 @@ import { npm } from '../index.mjs'
 export function watch () {
   return Promise.all([
     gulp.watch([
-      'sassdoc.config.yaml',
+      `${slash(paths.root)}/sassdoc.config.yaml`,
       `${slash(paths.app)}/src/**/*.scss`,
       `${slash(paths.src)}/govuk/**/*.scss`,
       `!${slash(paths.src)}/govuk/vendor/*`
     ], gulp.parallel(
-      npm.run('lint:scss'),
-      'styles'
+      npm.script('lint:scss'),
+      styles
     )),
 
     gulp.watch([
-      'jsdoc.config.js',
+      `${slash(paths.root)}/jsdoc.config.js`,
       `${slash(paths.src)}/govuk/**/*.mjs`
     ], gulp.parallel(
-      npm.run('lint:js'),
-      'scripts'
+      npm.script('lint:js'),
+      scripts
     ))
   ])
 }
-
-watch.displayName = 'watch'

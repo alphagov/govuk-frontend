@@ -14,25 +14,19 @@ import { assets } from './index.mjs'
  *
  * @param {string} pattern - Minimatch pattern
  * @param {AssetEntry[1]} [options] - Asset options
- * @returns {() => Promise<void>} Prepared compile task
+ * @returns {Promise<void>}
  */
-export function compile (pattern, options) {
-  const task = async () => {
-    const modulePaths = await getListing(options.srcPath, pattern)
+export async function compile (pattern, options) {
+  const modulePaths = await getListing(options.srcPath, pattern)
 
-    try {
-      const compileTasks = modulePaths
-        .map((modulePath) => compileJavaScript([modulePath, options]))
+  try {
+    const compileTasks = modulePaths
+      .map((modulePath) => compileJavaScript([modulePath, options]))
 
-      await Promise.all(compileTasks)
-    } catch (cause) {
-      throw new PluginError('compile:js', cause)
-    }
+    await Promise.all(compileTasks)
+  } catch (cause) {
+    throw new PluginError('compile:js', cause)
   }
-
-  task.displayName = 'compile:js'
-
-  return task
 }
 
 /**

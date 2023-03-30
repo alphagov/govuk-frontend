@@ -8,13 +8,13 @@ To run the application without any tasks being triggered, see [Express app only]
 
 npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
-**`npm start` will trigger `gulp dev` that will:**
+**`npm start` will trigger `npm run dev --workspace app` that will:**
 
 - clean the `./app/dist` folder
 - copy fonts and images
 - compile JavaScript and Sass, including documentation
 - compile again when `.scss` and `.mjs` files change
-- runs `npm run serve`
+- runs `npm run serve --workspace app`
 
 **`npm test` will do the following:**
 
@@ -22,24 +22,17 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - run JavaScript tests on the review application
 - run accessibility and HTML validation tests
 
-**`npm run serve` will do the following:**
+**`npm run serve --workspace app` will do the following:**
 
-- start up Express, restarting when `.js` files change
+- start up Express, restarting when `.mjs`, `.json` or `.yaml` files change
 
-**`npm run heroku` runs on Heroku build/PR and it will:**
-
-- run `npm run build:app`
-- start up Express
-
-**`npm run build:app` will do the following:**
+**`npm run build:app` will trigger `npm run build --workspace app` that will:**
 
 - clean the `./app/dist` folder
 - output files into `./app/dist`
 - copy fonts and images
-- run sub tasks from `gulp styles` without StyleLint code quality checks
-- run sub tasks from `gulp scripts` without ESLint code quality checks
-- compile Sass documentation into `./app/dist/docs/sassdoc`
-- compile JavaScript documentation into `./app/dist/docs/jsdoc`
+- compile Sass to CSS, including documentation
+- compile JavaScript ESM to CommonJS, including documentation
 
 **`npm run build:package` will do the following:**
 
@@ -50,7 +43,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - copy GOV.UK Prototype Kit config files
 - copy JavaScript ESM source files
 - compile JavaScript ESM to CommonJS
-- runs `npm run test:build:package` (which will test the output is correct)
+- runs `npm run postbuild:package` (which will test the output is correct)
 
 **`npm run build:dist` will do the following:**
 
@@ -59,11 +52,11 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - copy fonts and images
 - compile JavaScript and Sass
 - append version number from `package/package.json` to compiled JavaScript and CSS files
-- runs `npm run test:build:dist` (which will test the output is correct)
+- runs `npm run postbuild:dist` (which will test the output is correct)
 
 ## Gulp tasks
 
-Gulp tasks are defined in `gulpfile.mjs` and .`/tasks/` folder.
+Project Gulp tasks are defined in [`gulpfile.mjs`](../../gulpfile.mjs) and the [`tasks/`](../../tasks) folder.
 
 **`gulp --tasks`**
 
@@ -71,7 +64,11 @@ This task will:
 
 - list out all available tasks
 
-**`gulp styles`**
+Review app Gulp tasks are defined in [`app/gulpfile.mjs`](../../app/gulpfile.mjs) and the [`app/tasks/`](../../app/tasks) folder.
+
+Gulp tasks from npm workspaces (such as the review app) can be run as shown:
+
+**`npx --workspace app -- gulp styles`**
 
 This task will:
 
@@ -79,7 +76,7 @@ This task will:
 - compile Sass to CSS into `./app/dist/stylesheets`
 - compile Sass documentation into `./app/dist/docs/sassdoc`
 
-**`gulp scripts`**
+**`npx --workspace app -- gulp scripts`**
 
 This task will:
 
