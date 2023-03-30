@@ -8,13 +8,13 @@ To run the application without any tasks being triggered, see [Express app only]
 
 npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
-**`npm start` will trigger `gulp dev` that will:**
+**`npm start` will trigger `npm run dev --workspace app` that will:**
 
 - clean the `./app/dist` folder
 - copy fonts and images
 - compile JavaScript and Sass, including documentation
 - compile again when `.scss` and `.mjs` files change
-- runs `npm run serve`
+- runs `npm run serve --workspace app`
 
 **`npm test` will do the following:**
 
@@ -22,7 +22,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - run JavaScript tests on the review application
 - run accessibility and HTML validation tests
 
-**`npm run serve` will do the following:**
+**`npm run serve --workspace app` will do the following:**
 
 - start up Express, restarting when `.mjs`, `.json` or `.yaml` files change
 

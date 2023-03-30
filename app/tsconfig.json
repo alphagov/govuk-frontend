@@ -1,7 +1,7 @@
 {
   "extends": "../tsconfig.base.json",
-  "include": ["./src/**/*.mjs", "./src/**/*.json"],
-  "exclude": ["./src/**/*.test.*"],
+  "include": ["**/*.mjs", "**/*.json"],
+  "exclude": ["**/*.test.*", "./dist/**"],
   "compilerOptions": {
     "resolveJsonModule": true
   }

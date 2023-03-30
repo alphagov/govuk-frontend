@@ -44,7 +44,6 @@ export async function copy (pattern, { srcPath, destPath, ignore = [] }) {
 
 // Include Gulp legacy file tasks
 export { generateFixtures, generateMacroOptions } from './gulp/copy-to-destination.mjs'
-export { watch } from './gulp/watch.mjs'
 
 /**
  * @typedef {import('./assets.mjs').AssetEntry} AssetEntry
