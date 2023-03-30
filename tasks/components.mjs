@@ -7,7 +7,7 @@ import map from 'map-stream'
 import nunjucks from 'nunjucks'
 import slash from 'slash'
 
-import { paths } from '../../config/index.js'
+import { paths } from '../config/index.js'
 
 /**
  * Generate fixtures.json from ${componentName}.yaml
@@ -129,5 +129,5 @@ async function convertYamlToJson (file) {
 }
 
 /**
- * @typedef {import('../assets.mjs').AssetEntry} AssetEntry
+ * @typedef {import('./assets.mjs').AssetEntry} AssetEntry
  */
