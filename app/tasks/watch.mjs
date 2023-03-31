@@ -1,4 +1,5 @@
 import chokidar from 'chokidar'
+import gulp from 'gulp'
 import slash from 'slash'
 
 import { paths } from '../../config/index.js'
@@ -22,22 +23,18 @@ export function watch () {
       `${slash(paths.root)}/sassdoc.config.yaml`,
       `${slash(paths.app)}/src/**/*.scss`,
       `${slash(paths.src)}/govuk/**/*.scss`
-    ], { ignored, ignoreInitial: true }, async function watch () {
-      await Promise.all([
-        npm.run('lint:scss'),
-        styles
-      ])
-    }),
+    ], { ignored, ignoreInitial: true }, gulp.parallel(
+      npm.script('lint:scss'),
+      styles
+    )),
 
     onEvent([
       `${slash(paths.root)}/jsdoc.config.js`,
       `${slash(paths.src)}/govuk/**/*.mjs`
-    ], { ignored, ignoreInitial: true }, async function watch () {
-      await Promise.all([
-        npm.run('lint:js'),
-        scripts
-      ])
-    })
+    ], { ignored, ignoreInitial: true }, gulp.parallel(
+      npm.script('lint:js'),
+      scripts
+    ))
   ])
 }
 
@@ -46,7 +43,7 @@ export function watch () {
  *
  * @param {string[]} paths - Paths to watch
  * @param {import('chokidar').WatchOptions} options
- * @param {() => Promise<void>} taskFn - File event callback
+ * @param {import('gulp').TaskFunction} taskFn - Task function
  * @returns {import('chokidar').FSWatcher} File system watcher
  */
 function onEvent (paths, options, taskFn) {
@@ -63,16 +60,13 @@ function onEvent (paths, options, taskFn) {
   }
 
   // 2. Task runs are ignored when running
-  async function throttle () {
+  function throttle () {
     if (running) {
       return
     }
 
     running = true
-
-    await taskFn()
-      .then(complete)
-      .catch(complete)
+    taskFn(complete)
   }
 
   // 3. Task runs can resume when complete
