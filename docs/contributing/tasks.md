@@ -10,11 +10,9 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
 **`npm start` will trigger `npm run dev --workspace app` that will:**
 
-- clean the `./app/dist` folder
-- copy fonts and images
-- compile JavaScript and Sass, including documentation
-- compile again when `.scss` and `.mjs` files change
-- runs `npm run serve --workspace app`
+- runs tasks from `npm run build:app`
+- starts up Express, restarting when `.mjs`, `.json` or `.yaml` files change
+- compile again when frontend `.mjs` and `.scss` files change
 
 **`npm test` will do the following:**
 
@@ -31,8 +29,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - clean the `./app/dist` folder
 - output files into `./app/dist`
 - copy fonts and images
-- compile Sass to CSS, including documentation
-- compile JavaScript ESM to CommonJS, including documentation
+- compile JavaScript and Sass, including documentation
 
 **`npm run build:package` will do the following:**
 
@@ -41,8 +38,8 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - copy Sass files, applying Autoprefixer via PostCSS
 - copy Nunjucks component template/macro files, including JSON configs
 - copy GOV.UK Prototype Kit config files
-- copy JavaScript ESM source files
-- compile JavaScript ESM to CommonJS
+- compile JavaScript to ECMAScript Modules (ESM)
+- compile JavaScript to Universal Module Definition (UMD)
 - runs `npm run postbuild:package` (which will test the output is correct)
 
 **`npm run build:dist` will do the following:**
@@ -81,7 +78,7 @@ This task will:
 This task will:
 
 - check JavaScript code quality via ESLint (`npm run lint:js`) (using JavaScript Standard Style)
-- compile JavaScript ESM to CommonJS into `./app/dist/javascripts`
+- compile JavaScript to Universal Module Definition (UMD) into `./app/dist/javascripts`
 - compile JavaScript documentation into `./app/dist/docs/jsdoc`
 
 ## Express app only

@@ -173,15 +173,15 @@ describe('package/', () => {
         const componentPackage = componentsFilesPackage.filter(componentFilter)
         const componentPackageESM = componentsFilesPackageESM.filter(componentFilter)
 
-        // CommonJS module not found at source
+        // UMD module not found at source
         expect(componentSource)
           .toEqual(expect.not.arrayContaining([join(componentName, `${componentName}.js`)]))
 
-        // CommonJS generated in package
+        // UMD module generated in package
         expect(componentPackage)
           .toEqual(expect.arrayContaining([join(componentName, `${componentName}.js`)]))
 
-        // ESM module generated in package
+        // ES module generated in package
         expect(componentsFilesPackageESM)
           .toEqual(expect.arrayContaining([join(componentName, `${componentName}.mjs`)]))
 
