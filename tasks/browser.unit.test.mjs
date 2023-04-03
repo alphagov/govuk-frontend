@@ -18,11 +18,11 @@ describe('Browser tasks: Puppeteer browser downloader', () => {
     }
 
     // Mock browser version
+    // @ts-expect-error 'defaultBrowserRevision' is marked @internal
     puppeteer.defaultBrowserRevision = 'new-version'
 
     // Mock browser fetcher
-    puppeteer.createBrowserFetcher
-      .mockReturnValue(browserFetcher)
+    puppeteer.createBrowserFetcher = jest.fn(() => browserFetcher)
   })
 
   it('downloads by default', async () => {

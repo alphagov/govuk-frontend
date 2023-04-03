@@ -46,7 +46,6 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, fileP
 
   if (!isDev) {
     // Add GOV.UK Frontend release version
-    // @ts-expect-error "This expression is not callable" due to incorrect types
     plugins.push(replace({
       include: join(srcPath, 'common/govuk-frontend-version.mjs'),
       values: { development: pkg.version }
@@ -113,7 +112,7 @@ export function minifyJavaScript (modulePath, result) {
 
     // Include source maps
     sourceMap: {
-      content: result.map,
+      content: result.map.toString(),
       filename: result.map.file,
       url: `${result.map.file}.map`,
       includeSources: true
