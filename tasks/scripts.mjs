@@ -2,11 +2,14 @@ import { join, parse } from 'path'
 
 import PluginError from 'plugin-error'
 import { rollup } from 'rollup'
+import replace from 'rollup-plugin-replace'
 import { minify } from 'terser'
 
+import { pkg } from '../config/index.js'
 import { getListing } from '../lib/file-helper.js'
 import { componentPathToModuleName } from '../lib/helper-functions.js'
 
+import { isDev } from './helpers/task-arguments.mjs'
 import { assets } from './index.mjs'
 
 /**
@@ -38,10 +41,22 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, fileP
   const moduleSrcPath = join(srcPath, modulePath)
   const moduleDestPath = join(destPath, filePath ? filePath(parse(modulePath)) : modulePath)
 
+  // Rollup plugins
+  const plugins = []
+
+  if (!isDev) {
+    // Add GOV.UK Frontend release version
+    // @ts-expect-error "This expression is not callable" due to incorrect types
+    plugins.push(replace({
+      include: join(srcPath, 'common/govuk-frontend-version.mjs'),
+      values: { development: pkg.version }
+    }))
+  }
+
   // Option 1: Rollup bundle set (multiple files)
   // - Module imports are preserved, not concatenated
   if (moduleDestPath.endsWith('.mjs')) {
-    const bundle = await rollup({ input: [moduleSrcPath], experimentalPreserveModules: true })
+    const bundle = await rollup({ input: [moduleSrcPath], plugins, experimentalPreserveModules: true })
 
     // Compile JavaScript to ES modules
     await bundle.write({
@@ -55,7 +70,7 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, fileP
 
   // Option 1: Rollup bundle (single file)
   // - Universal Module Definition (UMD) bundle
-  const bundle = await rollup({ input: moduleSrcPath })
+  const bundle = await rollup({ input: moduleSrcPath, plugins })
 
   // Compile JavaScript to output format
   const bundled = await bundle[moduleDestPath.endsWith('.min.js') ? 'generate' : 'write']({

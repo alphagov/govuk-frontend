@@ -9,6 +9,9 @@ import unmq from 'postcss-unmq'
 import unopacity from 'postcss-unopacity'
 import unrgba from 'postcss-unrgba'
 
+import { pkg } from './config/index.js'
+import { isDev } from './tasks/helpers/task-arguments.mjs'
+
 /**
  * PostCSS config
  *
@@ -56,6 +59,21 @@ export default ({ from = '', to = '', env = 'production' }) => {
       unopacity({ browsers: 'ie 8' }),
       unrgba({ filter: true })
     )
+  }
+
+  // Add GOV.UK Frontend release version
+  if (!isDev) {
+    config.plugins.push({
+      postcssPlugin: 'govuk-frontend-version',
+      Declaration: {
+        // Find CSS declaration for version, update value
+        // https://github.com/postcss/postcss/blob/main/docs/writing-a-plugin.md
+        // https://postcss.org/api/#declaration
+        '--govuk-frontend-version': (decl) => {
+          decl.value = `"${pkg.version}"`
+        }
+      }
+    })
   }
 
   // Always minify CSS

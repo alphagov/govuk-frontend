@@ -1,3 +1,4 @@
+import { version } from './common/govuk-frontend-version.mjs'
 import { nodeListForEach } from './common/index.mjs'
 import Accordion from './components/accordion/accordion.mjs'
 import Button from './components/button/button.mjs'
@@ -87,6 +88,9 @@ function initAll (config) {
 
 export {
   initAll,
+  version,
+
+  // Components
   Accordion,
   Button,
   Details,

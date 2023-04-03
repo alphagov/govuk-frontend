@@ -80,6 +80,7 @@ describe('PostCSS config', () => {
         expect(getPluginNames(config))
           .toEqual([
             'autoprefixer',
+            'govuk-frontend-version',
             'postcss-discard-comments',
             'postcss-minify-gradients',
             'postcss-reduce-initial',
@@ -127,6 +128,7 @@ describe('PostCSS config', () => {
             'postcss-unmq',
             'postcss-unopacity',
             'postcss-color-rgba-fallback',
+            'govuk-frontend-version',
             'postcss-discard-comments',
             'postcss-minify-gradients',
             'postcss-reduce-initial',
@@ -170,7 +172,8 @@ describe('PostCSS config', () => {
 
         expect(getPluginNames(config))
           .toEqual([
-            'autoprefixer'
+            'autoprefixer',
+            'govuk-frontend-version'
           ])
       })
     })
@@ -188,6 +191,7 @@ describe('PostCSS config', () => {
           .toEqual([
             'autoprefixer',
             'postcss-pseudo-classes',
+            'govuk-frontend-version',
             'postcss-discard-comments',
             'postcss-minify-gradients',
             'postcss-reduce-initial',
@@ -256,6 +260,7 @@ describe('PostCSS config', () => {
             'postcss-unmq',
             'postcss-unopacity',
             'postcss-color-rgba-fallback',
+            'govuk-frontend-version',
             'postcss-discard-comments',
             'postcss-minify-gradients',
             'postcss-reduce-initial',
