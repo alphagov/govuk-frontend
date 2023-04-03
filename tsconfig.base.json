@@ -2,8 +2,9 @@
   "compilerOptions": {
     "allowJs": true,
     "checkJs": true,
-    "lib": ["ESNext"],
-    "module": "NodeNext",
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "noEmit": true,
     "strict": false,
     "strictBindCallApply": true,
