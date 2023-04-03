@@ -12,7 +12,15 @@ Optionally, we can also let the prototype kit know that we are coordinating a re
 
 ## Raise release issues
 
-Those leading on the release should then raise new issues in the team GitHub repositories ([govuk-frontend](https://github.com/alphagov/govuk-frontend), [govuk-design-system](https://github.com/alphagov/govuk-design-system/issues/2024), [govuk-frontend-docs](https://github.com/alphagov/govuk-frontend-docs) to track the following:
+Release issues should be created in the team GitHub repositories: [govuk-frontend](https://github.com/alphagov/govuk-frontend), [govuk-design-system](https://github.com/alphagov/govuk-design-system/) and [govuk-frontend-docs](https://github.com/alphagov/govuk-frontend-docs).
+
+All these issues should be:
+
+- added to the [Design System sprint board](https://github.com/orgs/alphagov/projects/53) backlog
+- added to that release's milestone
+- tagged with the '🚀 release' label
+
+Those leading on the release should raise new issues to track the following:
 
 - draft comms for the new release (example issue: [#2507](https://github.com/alphagov/govuk-frontend/issues/2507))
 - create release notes for the new release (example issue: [#2508](https://github.com/alphagov/govuk-frontend/issues/2508))
@@ -28,7 +36,7 @@ Those leading on the release should then raise new issues in the team GitHub rep
   - merge any other documentation PRs specific to the release
 - post the comms and do tidy-up tasks (example issue: [#2510](https://github.com/alphagov/govuk-frontend/issues/2510))
 
-Once the developers have created these issues, the person leading the release should add them to an epic (example issue: [#2511](https://github.com/alphagov/govuk-frontend/issues/2511)). All these issues should be added to the [Design System sprint board](https://github.com/orgs/alphagov/projects/4).
+Once the developers have created these issues, the person leading the release should add them to an epic (example issue: [#2511](https://github.com/alphagov/govuk-frontend/issues/2511)).
 
 ## Draft comms and release notes for the community
 
