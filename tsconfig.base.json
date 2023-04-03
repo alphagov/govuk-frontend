@@ -10,6 +10,6 @@
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
     "target": "ESNext",
-    "types": ["node"]
+    "types": ["jest", "jest-axe", "jest-puppeteer", "node"]
   }
 }

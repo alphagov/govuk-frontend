@@ -83,8 +83,6 @@
   },
   "devDependencies": {
     "@percy/cli": "^1.21.0",
-    "@types/gulp": "^4.0.10",
-    "@types/node": "^18.15.11",
     "@typescript-eslint/eslint-plugin": "^5.57.0",
     "@typescript-eslint/parser": "^5.57.1",
     "editorconfig-checker": "^5.0.1",
@@ -102,6 +100,7 @@
     "jest-environment-jsdom": "^29.5.0",
     "jest-environment-node-single-context": "^29.0.0",
     "jest-environment-puppeteer": "^8.0.6",
+    "jest-puppeteer": "^8.0.6",
     "jest-serializer-html": "^7.1.0",
     "lint-staged": "^13.2.0",
     "prettier": "^2.8.7",
@@ -112,6 +111,13 @@
     "stylelint-order": "^6.0.3",
     "typed-query-selector": "^2.9.2",
     "typescript": "^5.0.3"
+  },
+  "optionalDependencies": {
+    "@jest/environment": "^29.5.0",
+    "@types/gulp": "^4.0.10",
+    "@types/jest": "^29.5.0",
+    "@types/jest-axe": "^3.5.5",
+    "@types/node": "^18.15.11"
   },
   "overrides": {
     "chokidar@^2": {

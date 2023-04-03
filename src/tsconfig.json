@@ -6,6 +6,12 @@
     "lib": ["ESNext", "DOM"],
     "resolveJsonModule": true,
     "target": "ES2015",
-    "types": ["node", "typed-query-selector"]
+    "types": [
+      "jest",
+      "jest-axe",
+      "jest-puppeteer",
+      "node",
+      "typed-query-selector"
+    ]
   }
 }
