@@ -10,7 +10,7 @@ import { componentPathToModuleName } from '../lib/helper-functions.js'
 import { assets } from './index.mjs'
 
 /**
- * Compile JavaScript ESM to CommonJS task
+ * Compile JavaScript task
  *
  * @param {string} pattern - Minimatch pattern
  * @param {AssetEntry[1]} [options] - Asset options
@@ -30,7 +30,7 @@ export async function compile (pattern, options) {
 }
 
 /**
- * Compile JavaScript ESM to CommonJS helper
+ * Compile JavaScript helper
  *
  * @param {AssetEntry} assetEntry - Asset entry
  */
@@ -38,12 +38,26 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, fileP
   const moduleSrcPath = join(srcPath, modulePath)
   const moduleDestPath = join(destPath, filePath ? filePath(parse(modulePath)) : modulePath)
 
-  // Create Rollup bundle
-  const bundle = await rollup({
-    input: moduleSrcPath
-  })
+  // Option 1: Rollup bundle set (multiple files)
+  // - Module imports are preserved, not concatenated
+  if (moduleDestPath.endsWith('.mjs')) {
+    const bundle = await rollup({ input: [moduleSrcPath], experimentalPreserveModules: true })
 
-  // Compile JavaScript ESM to CommonJS
+    // Compile JavaScript to ES modules
+    await bundle.write({
+      dir: destPath,
+      format: 'es',
+      sourcemap: true
+    })
+
+    return
+  }
+
+  // Option 1: Rollup bundle (single file)
+  // - Universal Module Definition (UMD) bundle
+  const bundle = await rollup({ input: moduleSrcPath })
+
+  // Compile JavaScript to output format
   const bundled = await bundle[moduleDestPath.endsWith('.min.js') ? 'generate' : 'write']({
     file: moduleDestPath,
     sourcemapFile: moduleDestPath,
@@ -72,7 +86,7 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, fileP
 }
 
 /**
- * Minify JavaScript ESM to CommonJS helper
+ * Minify JavaScript helper
  *
  * @param {string} modulePath - Relative path to module
  * @param {import('rollup').OutputChunk} result - Generated bundle

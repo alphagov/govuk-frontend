@@ -57,9 +57,14 @@ describe('package/', () => {
           join(requirePath, `${name}.js.map`) // with source map
         ]
 
-        // Only source `./govuk/**/*.mjs` files copied to `./govuk-esm/**/*.mjs`
+        // Only source `./govuk/**/*.mjs` files compiled to `./govuk-esm/**/*.mjs`
         if (importFilter.test(requirePath)) {
-          output.push(join(requirePath.replace(importFilter, 'govuk-esm'), `${name}.mjs`))
+          const importPath = requirePath.replace(importFilter, 'govuk-esm')
+
+          output.push(...[
+            join(importPath, `${name}.mjs`),
+            join(importPath, `${name}.mjs.map`) // with source map
+          ])
         }
 
         return output
@@ -168,15 +173,15 @@ describe('package/', () => {
         const componentPackage = componentsFilesPackage.filter(componentFilter)
         const componentPackageESM = componentsFilesPackageESM.filter(componentFilter)
 
-        // CommonJS module not found at source
+        // UMD module not found at source
         expect(componentSource)
           .toEqual(expect.not.arrayContaining([join(componentName, `${componentName}.js`)]))
 
-        // CommonJS generated in package
+        // UMD module generated in package
         expect(componentPackage)
           .toEqual(expect.arrayContaining([join(componentName, `${componentName}.js`)]))
 
-        // ESM module generated in package
+        // ES module generated in package
         expect(componentsFilesPackageESM)
           .toEqual(expect.arrayContaining([join(componentName, `${componentName}.mjs`)]))
 
