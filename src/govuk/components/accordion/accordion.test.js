@@ -482,8 +482,8 @@ describe('/components/accordion', () => {
 
           it('injects the localised strings as text not HTML', async () => {
             await renderAndInitialise(page, 'accordion', {
-              nunjucksParams: examples.default,
-              javascriptConfig: {
+              params: examples.default,
+              config: {
                 i18n: {
                   showAllSections: 'Show <strong>all sections</strong>',
                   showSection: 'Show <strong>this section</strong>'

@@ -12,14 +12,18 @@ describe('/components/button', () => {
     it('does not prevent further JavaScript from running', async () => {
       await goTo(page, '/tests/boilerplate')
 
-      const result = await page.evaluate(() => {
+      const result = await page.evaluate((component) => {
+        const namespace = 'GOVUKFrontend' in window
+          ? window.GOVUKFrontend
+          : {}
+
         // `undefined` simulates the element being missing,
         // from an unchecked `document.querySelector` for example
-        new window.GOVUKFrontend.Button(undefined).init()
+        new namespace[component](undefined).init()
 
         // If our component initialisation breaks, this won't run
         return true
-      })
+      }, 'Button')
 
       expect(result).toBe(true)
     })
@@ -152,8 +156,8 @@ describe('/components/button', () => {
     describe('using JavaScript configuration', () => {
       beforeEach(async () => {
         await renderAndInitialise(page, 'button', {
-          nunjucksParams: examples.default,
-          javascriptConfig: {
+          params: examples.default,
+          config: {
             preventDoubleClick: true
           }
         })
@@ -200,8 +204,8 @@ describe('/components/button', () => {
     describe('using JavaScript configuration, but cancelled by data-attributes', () => {
       beforeEach(async () => {
         await renderAndInitialise(page, 'button', {
-          nunjucksParams: examples["don't prevent double click"],
-          javascriptConfig: {
+          params: examples["don't prevent double click"],
+          config: {
             preventDoubleClick: true
           }
         })
@@ -222,13 +226,9 @@ describe('/components/button', () => {
     describe('using `initAll`', () => {
       beforeEach(async () => {
         await renderAndInitialise(page, 'button', {
-          nunjucksParams: examples.default,
-          initialiser () {
-            window.GOVUKFrontend.initAll({
-              button: {
-                preventDoubleClick: true
-              }
-            })
+          params: examples.default,
+          config: {
+            preventDoubleClick: true
           }
         })
 

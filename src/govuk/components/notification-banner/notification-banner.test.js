@@ -62,8 +62,8 @@ describe('Notification banner, when type is set to "success"', () => {
   describe('and auto-focus is disabled using JavaScript configuration', () => {
     beforeAll(async () => {
       await renderAndInitialise(page, 'notification-banner', {
-        nunjucksParams: examples['with type as success'],
-        javascriptConfig: {
+        params: examples['with type as success'],
+        config: {
           disableAutoFocus: true
         }
       })
@@ -85,13 +85,9 @@ describe('Notification banner, when type is set to "success"', () => {
   describe('and auto-focus is disabled using options passed to initAll', () => {
     beforeAll(async () => {
       await renderAndInitialise(page, 'notification-banner', {
-        nunjucksParams: examples['with type as success'],
-        initialiser () {
-          window.GOVUKFrontend.initAll({
-            notificationBanner: {
-              disableAutoFocus: true
-            }
-          })
+        params: examples['with type as success'],
+        config: {
+          disableAutoFocus: true
         }
       })
     })
@@ -112,8 +108,8 @@ describe('Notification banner, when type is set to "success"', () => {
   describe('and autofocus is disabled in JS but enabled in data attributes', () => {
     beforeAll(async () => {
       await renderAndInitialise(page, 'notification-banner', {
-        nunjucksParams: examples['auto-focus explicitly enabled, with type as success'],
-        javascriptConfig: {
+        params: examples['auto-focus explicitly enabled, with type as success'],
+        config: {
           disableAutoFocus: true
         }
       })

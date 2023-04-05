@@ -56,8 +56,8 @@ describe('Error Summary', () => {
     describe('using JavaScript configuration', () => {
       beforeAll(async () => {
         await renderAndInitialise(page, 'error-summary', {
-          nunjucksParams: examples.default,
-          javascriptConfig: {
+          params: examples.default,
+          config: {
             disableAutoFocus: true
           }
         })
@@ -82,14 +82,18 @@ describe('Error Summary', () => {
 
     describe('using JavaScript configuration, with no elements on the page', () => {
       it('does not prevent further JavaScript from running', async () => {
-        const result = await page.evaluate(() => {
+        const result = await page.evaluate((component) => {
+          const namespace = 'GOVUKFrontend' in window
+            ? window.GOVUKFrontend
+            : {}
+
           // `undefined` simulates the element being missing,
           // from an unchecked `document.querySelector` for example
-          new window.GOVUKFrontend.ErrorSummary(undefined).init()
+          new namespace[component](undefined).init()
 
           // If our component initialisation breaks, this won't run
           return true
-        })
+        }, 'ErrorSummary')
 
         expect(result).toBe(true)
       })
@@ -98,7 +102,7 @@ describe('Error Summary', () => {
     describe('using JavaScript configuration, but enabled via data-attributes', () => {
       beforeAll(async () => {
         await renderAndInitialise(page, 'error-summary', {
-          nunjucksParams: examples['autofocus explicitly enabled']
+          params: examples['autofocus explicitly enabled']
         })
       })
 
@@ -120,13 +124,9 @@ describe('Error Summary', () => {
     describe('using `initAll`', () => {
       beforeAll(async () => {
         await renderAndInitialise(page, 'error-summary', {
-          nunjucksParams: examples.default,
-          initialiser () {
-            window.GOVUKFrontend.initAll({
-              errorSummary: {
-                disableAutoFocus: true
-              }
-            })
+          params: examples.default,
+          config: {
+            disableAutoFocus: true
           }
         })
       })
