@@ -61,7 +61,7 @@ describe('/components/button', () => {
      * Examples don't do this and we need it to have something to submit
      *
      * @param {import('puppeteer').Page} page - Puppeteer page object
-     * @returns {Promise<undefined>}
+     * @returns {Promise<void>}
      */
     function trackClicks (page) {
       return page.evaluate(() => {
@@ -70,9 +70,9 @@ describe('/components/button', () => {
         $button.parentNode.appendChild($form)
         $form.appendChild($button)
 
-        window.__SUBMIT_EVENTS = 0
+        globalThis.__SUBMIT_EVENTS = 0
         $form.addEventListener('submit', (event) => {
-          window.__SUBMIT_EVENTS++
+          globalThis.__SUBMIT_EVENTS++
           // Don't refresh the page, which will destroy the context to test against.
           event.preventDefault()
         })
@@ -83,10 +83,10 @@ describe('/components/button', () => {
      * Gets the number of times the form was submitted
      *
      * @param {import('puppeteer').Page} page - Puppeteer page object
-     * @returns {number} Number of times the form was submitted
+     * @returns {Promise<number>} Number of times the form was submitted
      */
     function getClicksCount (page) {
-      return page.evaluate(() => window.__SUBMIT_EVENTS)
+      return page.evaluate(() => globalThis.__SUBMIT_EVENTS)
     }
 
     describe('not enabled', () => {

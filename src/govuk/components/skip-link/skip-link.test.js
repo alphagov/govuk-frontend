@@ -27,7 +27,7 @@ describe('/examples/template-default', () => {
     })
 
     it('removes the tabindex attribute from the linked element on blur', async () => {
-      await page.$eval('.govuk-main-wrapper', el => el.blur())
+      await page.$eval('.govuk-main-wrapper', el => el instanceof window.HTMLElement && el.blur())
 
       const tabindex = await page.$eval('.govuk-main-wrapper', el => el.getAttribute('tabindex'))
 
@@ -35,7 +35,7 @@ describe('/examples/template-default', () => {
     })
 
     it('removes the class for removing the native focus style from the linked element on blur', async () => {
-      await page.$eval('.govuk-main-wrapper', el => el.blur())
+      await page.$eval('.govuk-main-wrapper', el => el instanceof window.HTMLElement && el.blur())
 
       const cssClass = await page.$eval('.govuk-main-wrapper', el => el.getAttribute('class'))
 

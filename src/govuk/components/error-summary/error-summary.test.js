@@ -16,13 +16,13 @@ describe('Error Summary', () => {
 
   it('is automatically focused when the page loads', async () => {
     await goToComponent(page, 'error-summary')
-    const moduleName = await page.evaluate(() => document.activeElement.dataset.module)
+    const moduleName = await page.evaluate(() => document.activeElement.getAttribute('data-module'))
     expect(moduleName).toBe('govuk-error-summary')
   })
 
   it('removes the tabindex attribute on blur', async () => {
     await goToComponent(page, 'error-summary')
-    await page.$eval('.govuk-error-summary', el => el.blur())
+    await page.$eval('.govuk-error-summary', el => el instanceof window.HTMLElement && el.blur())
 
     const tabindex = await page.$eval('.govuk-error-summary', el => el.getAttribute('tabindex'))
     expect(tabindex).toBeNull()
@@ -46,7 +46,7 @@ describe('Error Summary', () => {
 
       it('does not focus on page load', async () => {
         const activeElement = await page.evaluate(
-          () => document.activeElement.dataset.module
+          () => document.activeElement.getAttribute('data-module')
         )
 
         expect(activeElement).not.toBe('govuk-error-summary')
@@ -73,7 +73,7 @@ describe('Error Summary', () => {
 
       it('does not focus on page load', async () => {
         const activeElement = await page.evaluate(
-          () => document.activeElement.dataset.module
+          () => document.activeElement.getAttribute('data-module')
         )
 
         expect(activeElement).not.toBe('govuk-error-summary')
@@ -111,7 +111,7 @@ describe('Error Summary', () => {
 
       it('is automatically focused when the page loads', async () => {
         const moduleName = await page.evaluate(
-          () => document.activeElement.dataset.module
+          () => document.activeElement.getAttribute('data-module')
         )
         expect(moduleName).toBe('govuk-error-summary')
       })
@@ -141,7 +141,7 @@ describe('Error Summary', () => {
 
       it('does not focus on page load', async () => {
         const activeElement = await page.evaluate(
-          () => document.activeElement.dataset.module
+          () => document.activeElement.getAttribute('data-module')
         )
 
         expect(activeElement).not.toBe('govuk-error-summary')

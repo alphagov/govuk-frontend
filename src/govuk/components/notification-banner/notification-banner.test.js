@@ -23,7 +23,7 @@ describe('Notification banner, when type is set to "success"', () => {
       exampleName: 'with-type-as-success'
     })
 
-    const activeElement = await page.evaluate(() => document.activeElement.dataset.module)
+    const activeElement = await page.evaluate(() => document.activeElement.getAttribute('data-module'))
 
     expect(activeElement).toBe('govuk-notification-banner')
   })
@@ -33,7 +33,7 @@ describe('Notification banner, when type is set to "success"', () => {
       exampleName: 'with-type-as-success'
     })
 
-    await page.$eval('.govuk-notification-banner', el => el.blur())
+    await page.$eval('.govuk-notification-banner', el => el instanceof window.HTMLElement && el.blur())
 
     const tabindex = await page.$eval('.govuk-notification-banner', el => el.getAttribute('tabindex'))
     expect(tabindex).toBeNull()
@@ -53,7 +53,7 @@ describe('Notification banner, when type is set to "success"', () => {
     })
 
     it('does not focus the notification banner', async () => {
-      const activeElement = await page.evaluate(() => document.activeElement.dataset.module)
+      const activeElement = await page.evaluate(() => document.activeElement.getAttribute('data-module'))
 
       expect(activeElement).not.toBe('govuk-notification-banner')
     })
@@ -76,7 +76,7 @@ describe('Notification banner, when type is set to "success"', () => {
     })
 
     it('does not focus the notification banner', async () => {
-      const activeElement = await page.evaluate(() => document.activeElement.dataset.module)
+      const activeElement = await page.evaluate(() => document.activeElement.getAttribute('data-module'))
 
       expect(activeElement).not.toBe('govuk-notification-banner')
     })
@@ -103,7 +103,7 @@ describe('Notification banner, when type is set to "success"', () => {
     })
 
     it('does not focus the notification banner', async () => {
-      const activeElement = await page.evaluate(() => document.activeElement.dataset.module)
+      const activeElement = await page.evaluate(() => document.activeElement.getAttribute('data-module'))
 
       expect(activeElement).not.toBe('govuk-notification-banner')
     })
@@ -126,7 +126,7 @@ describe('Notification banner, when type is set to "success"', () => {
     })
 
     it('is automatically focused when the page loads', async () => {
-      const activeElement = await page.evaluate(() => document.activeElement.dataset.module)
+      const activeElement = await page.evaluate(() => document.activeElement.getAttribute('data-module'))
 
       expect(activeElement).toBe('govuk-notification-banner')
     })
@@ -146,7 +146,7 @@ describe('Notification banner, when type is set to "success"', () => {
     })
 
     it('does not focus the notification banner', async () => {
-      const activeElement = await page.evaluate(() => document.activeElement.dataset.module)
+      const activeElement = await page.evaluate(() => document.activeElement.getAttribute('data-module'))
 
       expect(activeElement).not.toBe('govuk-notification-banner')
     })
@@ -160,7 +160,7 @@ describe('Notification banner, when type is set to "success"', () => {
     })
 
     it('does not remove the tabindex attribute on blur', async () => {
-      await page.$eval('.govuk-notification-banner', el => el.blur())
+      await page.$eval('.govuk-notification-banner', el => el instanceof window.HTMLElement && el.blur())
 
       const tabindex = await page.$eval('.govuk-notification-banner', el => el.getAttribute('tabindex'))
       expect(tabindex).toEqual('2')

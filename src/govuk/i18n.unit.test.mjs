@@ -312,11 +312,12 @@ describe('I18n', () => {
   describe('.selectPluralFormUsingFallbackRules', () => {
     // The locales we want to test, with numbers for any 'special cases' in
     // those locales we want to ensure are handled correctly
+    /** @type {[string, number[]][]} */
     const locales = [
       ['ar', [105, 125]],
-      ['zh'],
-      ['fr'],
-      ['de'],
+      ['zh', []],
+      ['fr', []],
+      ['de', []],
       ['ga', [9]],
       ['ru', [3, 13, 101]],
       ['gd', [15]],
@@ -324,7 +325,7 @@ describe('I18n', () => {
       ['cy', [3, 6]]
     ]
 
-    it.each(locales)('matches `Intl.PluralRules.select()` for %s locale', (locale, localeNumbers = []) => {
+    it.each(locales)('matches `Intl.PluralRules.select()` for %s locale', (locale, localeNumbers) => {
       const i18n = new I18n({}, { locale })
       const intl = new Intl.PluralRules(locale)
 
