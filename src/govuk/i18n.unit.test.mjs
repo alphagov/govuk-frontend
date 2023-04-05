@@ -32,6 +32,8 @@ describe('I18n', () => {
 
     it('throws an error if no lookup key is provided', () => {
       const i18n = new I18n(translations)
+
+      // @ts-expect-error Parameter 'lookupKey' not provided
       expect(() => i18n.t()).toThrow('i18n: lookup key missing')
     })
 
@@ -282,6 +284,7 @@ describe('I18n', () => {
         locale: 'en'
       })
 
+      // @ts-expect-error Parameter 'count' not a number
       expect(i18n.getPluralSuffix('test', 'nonsense')).toBe('other')
     })
   })
