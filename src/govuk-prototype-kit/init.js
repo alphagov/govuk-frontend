@@ -1,3 +1,4 @@
+// @ts-nocheck
 if (window.GOVUKPrototypeKit &&
   window.GOVUKPrototypeKit.documentReady &&
   window.GOVUKPrototypeKit.majorVersion >= 13) {

@@ -6,6 +6,7 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "noEmit": true,
+    "resolveJsonModule": true,
     "strict": false,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,

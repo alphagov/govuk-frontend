@@ -6,7 +6,16 @@
       "path": "./app"
     },
     {
+      "path": "./config"
+    },
+    {
+      "path": "./lib"
+    },
+    {
       "path": "./src"
+    },
+    {
+      "path": "./tasks"
     }
   ]
 }

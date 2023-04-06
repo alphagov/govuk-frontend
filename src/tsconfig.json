@@ -1,9 +1,8 @@
 {
   "extends": "../tsconfig.base.json",
-  "include": ["**/*.mjs"],
+  "include": ["**/*.js", "**/*.mjs", "../config", "../lib"],
   "compilerOptions": {
     "lib": ["ESNext", "DOM"],
-    "resolveJsonModule": true,
     "target": "ES2015",
     "types": [
       "jest",
