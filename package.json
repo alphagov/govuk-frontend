@@ -9,11 +9,9 @@
   "license": "MIT",
   "workspaces": [
     "app",
-    "config",
     "docs/examples/*",
-    "lib",
     "package",
-    "tasks"
+    "shared/*"
   ],
   "scripts": {
     "postinstall": "npm ls --depth=0",

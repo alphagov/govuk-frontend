@@ -1,7 +1,7 @@
-const { dirname, join } = require('path')
+const { join, resolve } = require('path')
 
 // Repository root directory
-const rootPath = dirname(__dirname)
+const rootPath = resolve(__dirname, '../../')
 
 /**
  * Config paths

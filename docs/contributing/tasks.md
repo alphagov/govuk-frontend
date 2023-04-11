@@ -53,7 +53,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
 ## Gulp tasks
 
-Project Gulp tasks are defined in [`gulpfile.mjs`](../../gulpfile.mjs) and the [`tasks/`](../../tasks) folder.
+Project Gulp tasks are defined in [`gulpfile.mjs`](../../gulpfile.mjs) and the [`tasks/`](../../shared/tasks) folder.
 
 **`gulp --tasks`**
 

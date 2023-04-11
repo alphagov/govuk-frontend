@@ -6,16 +6,16 @@
       "path": "./app"
     },
     {
-      "path": "./config"
+      "path": "./shared/config"
     },
     {
-      "path": "./lib"
+      "path": "./shared/lib"
+    },
+    {
+      "path": "./shared/tasks"
     },
     {
       "path": "./src"
-    },
-    {
-      "path": "./tasks"
     }
   ]
 }
