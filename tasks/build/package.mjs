@@ -3,7 +3,7 @@ import { join } from 'path'
 import gulp from 'gulp'
 
 import { paths } from '../../config/index.js'
-import { configs, files, scripts, styles, task } from '../index.mjs'
+import { components, configs, files, scripts, styles, task } from '../index.mjs'
 
 /**
  * Build package task
@@ -41,18 +41,18 @@ export default gulp.series(
   ),
 
   // Generate GOV.UK Frontend fixtures.json from ${componentName}.yaml
-  task.name('copy:fixtures', () =>
-    files.generateFixtures({
-      srcPath: paths.src,
-      destPath: paths.package
+  task.name('compile:fixtures', () =>
+    components.generateFixtures('**/*.yaml', {
+      srcPath: join(paths.src, 'govuk/components'),
+      destPath: join(paths.package, 'govuk/components')
     })
   ),
 
   // Generate GOV.UK Frontend macro-options.json from ${componentName}.yaml
-  task.name('copy:macro-options', () =>
-    files.generateMacroOptions({
-      srcPath: paths.src,
-      destPath: paths.package
+  task.name('compile:macro-options', () =>
+    components.generateMacroOptions('**/*.yaml', {
+      srcPath: join(paths.src, 'govuk/components'),
+      destPath: join(paths.package, 'govuk/components')
     })
   ),
 

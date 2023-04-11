@@ -57,12 +57,10 @@
     "glob": "^10.0.0",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
-    "gulp-rename": "^2.0.0",
     "jest-axe": "^7.0.1",
     "js-yaml": "^4.1.0",
     "jsdoc": "^4.0.2",
     "jsdoc-tsimport-plugin": "^1.0.5",
-    "map-stream": "^0.0.7",
     "minimatch": "^8.0.3",
     "nunjucks": "^3.2.3",
     "outdent": "^0.8.0",
@@ -113,8 +111,7 @@
     "stylelint-config-gds": "^0.2.0",
     "stylelint-order": "^6.0.3",
     "typed-query-selector": "^2.9.2",
-    "typescript": "^5.0.3",
-    "vinyl": "^3.0.0"
+    "typescript": "^5.0.3"
   },
   "overrides": {
     "chokidar@^2": {
