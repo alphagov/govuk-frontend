@@ -95,7 +95,6 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath, fileP
   const config = await postcssrc(options)
 
   // Transform with PostCSS
-  // @ts-expect-error "This expression is not callable" due to incorrect types
   const result = await postcss(config.plugins)
     .process(css, { ...options, ...config.options })
 

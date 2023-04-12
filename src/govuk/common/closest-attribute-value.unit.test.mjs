@@ -19,9 +19,8 @@ describe('closestAttributeValue', () => {
           </div>
         </div>
       `
-    const dom = template.content.cloneNode(true)
-    const $element = dom.querySelector('.target')
 
+    const $element = template.content.querySelector('.target')
     expect(closestAttributeValue($element, 'lang')).toEqual('en-GB')
   })
 

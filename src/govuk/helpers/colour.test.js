@@ -1,4 +1,4 @@
-const outdent = require('outdent')
+const { outdent } = require('outdent')
 const { sassNull } = require('sass-embedded')
 
 const { compileSassString } = require('../../../lib/jest-helpers')

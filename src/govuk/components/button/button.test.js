@@ -12,14 +12,18 @@ describe('/components/button', () => {
     it('does not prevent further JavaScript from running', async () => {
       await goTo(page, '/tests/boilerplate')
 
-      const result = await page.evaluate(() => {
+      const result = await page.evaluate((component) => {
+        const namespace = 'GOVUKFrontend' in window
+          ? window.GOVUKFrontend
+          : {}
+
         // `undefined` simulates the element being missing,
         // from an unchecked `document.querySelector` for example
-        new window.GOVUKFrontend.Button(undefined).init()
+        new namespace[component](undefined).init()
 
         // If our component initialisation breaks, this won't run
         return true
-      })
+      }, 'Button')
 
       expect(result).toBe(true)
     })
@@ -61,7 +65,7 @@ describe('/components/button', () => {
      * Examples don't do this and we need it to have something to submit
      *
      * @param {import('puppeteer').Page} page - Puppeteer page object
-     * @returns {Promise<undefined>}
+     * @returns {Promise<void>}
      */
     function trackClicks (page) {
       return page.evaluate(() => {
@@ -70,9 +74,9 @@ describe('/components/button', () => {
         $button.parentNode.appendChild($form)
         $form.appendChild($button)
 
-        window.__SUBMIT_EVENTS = 0
+        globalThis.__SUBMIT_EVENTS = 0
         $form.addEventListener('submit', (event) => {
-          window.__SUBMIT_EVENTS++
+          globalThis.__SUBMIT_EVENTS++
           // Don't refresh the page, which will destroy the context to test against.
           event.preventDefault()
         })
@@ -83,10 +87,10 @@ describe('/components/button', () => {
      * Gets the number of times the form was submitted
      *
      * @param {import('puppeteer').Page} page - Puppeteer page object
-     * @returns {number} Number of times the form was submitted
+     * @returns {Promise<number>} Number of times the form was submitted
      */
     function getClicksCount (page) {
-      return page.evaluate(() => window.__SUBMIT_EVENTS)
+      return page.evaluate(() => globalThis.__SUBMIT_EVENTS)
     }
 
     describe('not enabled', () => {
@@ -152,8 +156,8 @@ describe('/components/button', () => {
     describe('using JavaScript configuration', () => {
       beforeEach(async () => {
         await renderAndInitialise(page, 'button', {
-          nunjucksParams: examples.default,
-          javascriptConfig: {
+          params: examples.default,
+          config: {
             preventDoubleClick: true
           }
         })
@@ -200,8 +204,8 @@ describe('/components/button', () => {
     describe('using JavaScript configuration, but cancelled by data-attributes', () => {
       beforeEach(async () => {
         await renderAndInitialise(page, 'button', {
-          nunjucksParams: examples["don't prevent double click"],
-          javascriptConfig: {
+          params: examples["don't prevent double click"],
+          config: {
             preventDoubleClick: true
           }
         })
@@ -222,13 +226,9 @@ describe('/components/button', () => {
     describe('using `initAll`', () => {
       beforeEach(async () => {
         await renderAndInitialise(page, 'button', {
-          nunjucksParams: examples.default,
-          initialiser () {
-            window.GOVUKFrontend.initAll({
-              button: {
-                preventDoubleClick: true
-              }
-            })
+          params: examples.default,
+          config: {
+            preventDoubleClick: true
           }
         })
 

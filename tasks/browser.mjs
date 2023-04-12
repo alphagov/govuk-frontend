@@ -17,12 +17,14 @@ export async function download () {
     path: join(configPuppeteer.cacheDirectory, 'chrome')
   })
 
-  // Downloaded versions
+  // Available versions
+  // @ts-expect-error 'defaultBrowserRevision' is marked @internal
+  const latest = puppeteer.defaultBrowserRevision
   const versions = fetcher.localRevisions()
 
   // Download latest browser (unless cached)
-  if (!versions.includes(puppeteer.defaultBrowserRevision)) {
-    await fetcher.download(puppeteer.defaultBrowserRevision)
+  if (!versions.includes(latest)) {
+    await fetcher.download(latest)
 
     // Remove outdated browser versions
     for (const version of versions) {
