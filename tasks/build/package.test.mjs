@@ -34,7 +34,7 @@ describe('package/', () => {
       '!**/*.test.*',
       '!**/__snapshots__/',
       '!**/__snapshots__/**',
-      '!**/tsconfig.json',
+      '!**/tsconfig?(.build).json',
       '!govuk/README.md'
     ]
 
