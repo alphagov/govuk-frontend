@@ -1,10 +1,9 @@
 import { join } from 'path'
 
 import { paths } from 'govuk-frontend-config'
+import { filterPath, getDirectories, getListing } from 'govuk-frontend-lib/file-helper.js'
+import { componentNameToMacroName } from 'govuk-frontend-lib/helper-functions.js'
 import slash from 'slash'
-
-import { filterPath, getDirectories, getListing } from '../../lib/file-helper.js'
-import { componentNameToMacroName } from '../../lib/helper-functions.js'
 
 /**
  * GOV.UK Prototype Kit config builder

@@ -2,8 +2,7 @@ import { join } from 'path'
 
 import { load } from 'cheerio'
 import { paths, ports } from 'govuk-frontend-config'
-
-import { getDirectories } from '../../lib/file-helper.js'
+import { getDirectories } from 'govuk-frontend-lib/file-helper.js'
 
 const expectedPages = [
   '/',

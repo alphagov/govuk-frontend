@@ -1,6 +1,5 @@
+const { compileSassString } = require('govuk-frontend-lib/jest-helpers')
 const { outdent } = require('outdent')
-
-const { compileSassString } = require('../../../lib/jest-helpers')
 
 const sassBootstrap = `
   $govuk-breakpoints: (

@@ -1,5 +1,5 @@
-const { getExamples } = require('../../../../lib/file-helper')
-const { goToComponent, goToExample, renderAndInitialise, getAccessibleName } = require('../../../../lib/puppeteer-helpers')
+const { getExamples } = require('govuk-frontend-lib/file-helper')
+const { goToComponent, goToExample, renderAndInitialise, getAccessibleName } = require('govuk-frontend-lib/puppeteer-helpers')
 
 describe('/components/accordion', () => {
   describe('/components/accordion/preview', () => {

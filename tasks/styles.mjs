@@ -3,13 +3,12 @@ import { join, parse } from 'path'
 
 import chalk from 'chalk'
 import { paths } from 'govuk-frontend-config'
+import { getListing } from 'govuk-frontend-lib/file-helper.js'
 import PluginError from 'plugin-error'
 import postcss from 'postcss'
 // eslint-disable-next-line import/default
 import postcssrc from 'postcss-load-config'
 import { compileAsync } from 'sass-embedded'
-
-import { getListing } from '../lib/file-helper.js'
 
 import { assets } from './index.mjs'
 

@@ -4,10 +4,9 @@ import percySnapshot from '@percy/puppeteer'
 import { isPercyEnabled } from '@percy/sdk-utils'
 import { paths } from 'govuk-frontend-config'
 import { download } from 'govuk-frontend-config/jest/browser/download.mjs'
+import { filterPath, getDirectories, getListing } from 'govuk-frontend-lib/file-helper.js'
+import { goToComponent, goToExample } from 'govuk-frontend-lib/puppeteer-helpers.js'
 import puppeteer from 'puppeteer'
-
-import { filterPath, getDirectories, getListing } from '../lib/file-helper.js'
-import { goToComponent, goToExample } from '../lib/puppeteer-helpers.js'
 
 /**
  * Puppeteer browser launcher

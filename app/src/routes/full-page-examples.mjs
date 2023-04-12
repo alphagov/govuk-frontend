@@ -1,4 +1,5 @@
-import { getFullPageExamples } from '../../../lib/file-helper.js'
+import { getFullPageExamples } from 'govuk-frontend-lib/file-helper.js'
+
 import * as routes from '../views/full-page-examples/index.mjs'
 
 export default (app) => {

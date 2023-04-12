@@ -1,6 +1,5 @@
 import express from 'express'
-
-import { packageNameToPath } from '../../../../lib/helper-functions.js'
+import { packageNameToPath } from 'govuk-frontend-lib/helper-functions.js'
 
 const router = express.Router()
 

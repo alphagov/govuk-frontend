@@ -1,4 +1,4 @@
-const { compileSassString } = require('../../../lib/jest-helpers')
+const { compileSassString } = require('govuk-frontend-lib/jest-helpers')
 
 describe('@mixin govuk-link-decoration', () => {
   describe('by default', () => {

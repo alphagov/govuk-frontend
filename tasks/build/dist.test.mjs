@@ -3,8 +3,7 @@ import { EOL } from 'os'
 import { join } from 'path'
 
 import { paths, pkg } from 'govuk-frontend-config'
-
-import { getListing } from '../../lib/file-helper.js'
+import { getListing } from 'govuk-frontend-lib/file-helper.js'
 
 describe('dist/', () => {
   let listingSourceAssets

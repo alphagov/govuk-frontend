@@ -1,9 +1,8 @@
 const { join } = require('path')
 
 const { paths } = require('govuk-frontend-config')
-
-const { getListing } = require('../../../lib/file-helper')
-const { compileSassFile } = require('../../../lib/jest-helpers')
+const { getListing } = require('govuk-frontend-lib/file-helper')
+const { compileSassFile } = require('govuk-frontend-lib/jest-helpers')
 
 describe('Components', () => {
   let sassFiles

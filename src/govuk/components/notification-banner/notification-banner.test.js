@@ -1,5 +1,5 @@
-const { getExamples } = require('../../../../lib/file-helper')
-const { renderAndInitialise, goToComponent } = require('../../../../lib/puppeteer-helpers')
+const { getExamples } = require('govuk-frontend-lib/file-helper')
+const { renderAndInitialise, goToComponent } = require('govuk-frontend-lib/puppeteer-helpers')
 
 describe('Notification banner, when type is set to "success"', () => {
   let examples

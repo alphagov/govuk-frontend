@@ -1,4 +1,4 @@
-const { goToComponent, goToExample } = require('../../../../lib/puppeteer-helpers')
+const { goToComponent, goToExample } = require('govuk-frontend-lib/puppeteer-helpers')
 
 describe('details', () => {
   it('should not polyfill when details element is available', async () => {

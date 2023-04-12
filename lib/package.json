@@ -1,0 +1,26 @@
+{
+  "private": true,
+  "name": "govuk-frontend-lib",
+  "description": "GOV.UK Frontend shared library",
+  "main": "index.js",
+  "engines": {
+    "node": "^18.12.0",
+    "npm": "^8.1.0 || ^9.1.0"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "front-matter": "^4.0.2",
+    "glob": "^10.0.0",
+    "govuk-frontend-config": "*",
+    "jest-axe": "^7.0.1",
+    "js-yaml": "^4.1.0",
+    "minimatch": "^9.0.0",
+    "nunjucks": "^3.2.3",
+    "outdent": "^0.8.0",
+    "sass-embedded": "^1.60.0"
+  },
+  "devDependencies": {
+    "puppeteer": "^19.8.2"
+  }
+}

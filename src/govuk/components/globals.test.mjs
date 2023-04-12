@@ -1,4 +1,4 @@
-import { goTo, goToExample } from '../../../lib/puppeteer-helpers.js'
+import { goTo, goToExample } from 'govuk-frontend-lib/puppeteer-helpers.js'
 
 describe('GOV.UK Frontend', () => {
   describe('javascript', () => {

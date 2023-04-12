@@ -2,10 +2,9 @@ import { readFile } from 'fs/promises'
 import { join } from 'path'
 
 import { paths, pkg } from 'govuk-frontend-config'
-
-import { filterPath, getDirectories, getListing, mapPathTo } from '../../lib/file-helper.js'
-import { componentNameToClassName, componentPathToModuleName } from '../../lib/helper-functions.js'
-import { compileSassFile } from '../../lib/jest-helpers.js'
+import { filterPath, getDirectories, getListing, mapPathTo } from 'govuk-frontend-lib/file-helper.js'
+import { componentNameToClassName, componentPathToModuleName } from 'govuk-frontend-lib/helper-functions.js'
+import { compileSassFile } from 'govuk-frontend-lib/jest-helpers.js'
 
 describe('package/', () => {
   let listingSource

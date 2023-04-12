@@ -2,9 +2,8 @@ import { join } from 'path'
 
 import express from 'express'
 import { paths } from 'govuk-frontend-config'
-
-import { getDirectories, getComponentsData, getFullPageExamples } from '../../lib/file-helper.js'
-import { componentNameToMacroName } from '../../lib/helper-functions.js'
+import { getDirectories, getComponentsData, getFullPageExamples } from 'govuk-frontend-lib/file-helper.js'
+import { componentNameToMacroName } from 'govuk-frontend-lib/helper-functions.js'
 
 import * as middleware from './common/middleware/index.mjs'
 import * as nunjucks from './common/nunjucks/index.mjs'

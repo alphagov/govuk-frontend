@@ -17,6 +17,7 @@
     "cpy": "^9.0.1",
     "del": "^7.0.0",
     "govuk-frontend-config": "*",
+    "govuk-frontend-lib": "*",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
     "js-yaml": "^4.1.0",
