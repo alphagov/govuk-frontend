@@ -76,6 +76,8 @@ Header.prototype.init = function () {
  * visual states of the menu and the menu button.
  * Additionally will force the menu to be visible and the menu button to be
  * hidden if the matchMedia is triggered to desktop.
+ *
+ * @deprecated Will be made private in v5.0
  */
 Header.prototype.syncState = function () {
   if (this.mql.matches) {
@@ -98,6 +100,8 @@ Header.prototype.syncState = function () {
  *
  * When the menu button is clicked, change the visibility of the menu and then
  * sync the accessibility state and menu button state
+ *
+ * @deprecated Will be made private in v5.0
  */
 Header.prototype.handleMenuButtonClick = function () {
   this.menuIsOpen = !this.menuIsOpen

@@ -83,6 +83,8 @@ Radios.prototype.init = function () {
 
 /**
  * Sync the conditional reveal states for all radio buttons in this $module.
+ *
+ * @deprecated Will be made private in v5.0
  */
 Radios.prototype.syncAllConditionalReveals = function () {
   nodeListForEach(this.$inputs, this.syncConditionalRevealWithInputState.bind(this))
@@ -94,6 +96,7 @@ Radios.prototype.syncAllConditionalReveals = function () {
  * Synchronise the visibility of the conditional reveal, and its accessible
  * state, with the input's checked state.
  *
+ * @deprecated Will be made private in v5.0
  * @param {HTMLInputElement} $input - Radio input
  */
 Radios.prototype.syncConditionalRevealWithInputState = function ($input) {
@@ -119,6 +122,7 @@ Radios.prototype.syncConditionalRevealWithInputState = function ($input) {
  * with the same name (because checking one radio could have un-checked a radio
  * in another $module)
  *
+ * @deprecated Will be made private in v5.0
  * @param {MouseEvent} event - Click event
  */
 Radios.prototype.handleClick = function (event) {

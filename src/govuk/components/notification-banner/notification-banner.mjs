@@ -49,6 +49,8 @@ NotificationBanner.prototype.init = function () {
  * You can turn off the auto-focus functionality by setting `data-disable-auto-focus="true"` in the
  * component HTML. You might wish to do this based on user research findings, or to avoid a clash
  * with another element which should be focused when the page loads.
+ *
+ * @deprecated Will be made private in v5.0
  */
 NotificationBanner.prototype.setFocus = function () {
   var $module = this.$module

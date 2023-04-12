@@ -188,6 +188,8 @@ CharacterCount.prototype.init = function () {
  *
  * Set up event listeners on the $textarea so that the count messages update
  * when the user types.
+ *
+ * @deprecated Will be made private in v5.0
  */
 CharacterCount.prototype.bindChangeEvents = function () {
   var $textarea = this.$textarea
@@ -203,6 +205,8 @@ CharacterCount.prototype.bindChangeEvents = function () {
  *
  * Update the visible character counter and keep track of when the last update
  * happened for each keypress
+ *
+ * @deprecated Will be made private in v5.0
  */
 CharacterCount.prototype.handleKeyUp = function () {
   this.updateVisibleCountMessage()
@@ -221,6 +225,8 @@ CharacterCount.prototype.handleKeyUp = function () {
  *
  * This is so that the update triggered by the manual comparison doesn't
  * conflict with debounced KeyboardEvent updates.
+ *
+ * @deprecated Will be made private in v5.0
  */
 CharacterCount.prototype.handleFocus = function () {
   this.valueChecker = setInterval(function () {
@@ -234,6 +240,8 @@ CharacterCount.prototype.handleFocus = function () {
  * Handle blur event
  *
  * Stop checking the textarea value once the textarea no longer has focus
+ *
+ * @deprecated Will be made private in v5.0
  */
 CharacterCount.prototype.handleBlur = function () {
   // Cancel value checking on blur
@@ -242,6 +250,8 @@ CharacterCount.prototype.handleBlur = function () {
 
 /**
  * Update count message if textarea value has changed
+ *
+ * @deprecated Will be made private in v5.0
  */
 CharacterCount.prototype.updateIfValueChanged = function () {
   if (this.$textarea.value !== this.lastInputValue) {
@@ -255,6 +265,8 @@ CharacterCount.prototype.updateIfValueChanged = function () {
  *
  * Helper function to update both the visible and screen reader-specific
  * counters simultaneously (e.g. on init)
+ *
+ * @deprecated Will be made private in v5.0
  */
 CharacterCount.prototype.updateCountMessage = function () {
   this.updateVisibleCountMessage()
@@ -263,6 +275,8 @@ CharacterCount.prototype.updateCountMessage = function () {
 
 /**
  * Update visible count message
+ *
+ * @deprecated Will be made private in v5.0
  */
 CharacterCount.prototype.updateVisibleCountMessage = function () {
   var $textarea = this.$textarea
@@ -294,6 +308,8 @@ CharacterCount.prototype.updateVisibleCountMessage = function () {
 
 /**
  * Update screen reader count message
+ *
+ * @deprecated Will be made private in v5.0
  */
 CharacterCount.prototype.updateScreenReaderCountMessage = function () {
   var $screenReaderCountMessage = this.$screenReaderCountMessage
@@ -314,6 +330,7 @@ CharacterCount.prototype.updateScreenReaderCountMessage = function () {
  * Count the number of characters (or words, if `config.maxwords` is set)
  * in the given text
  *
+ * @deprecated Will be made private in v5.0
  * @param {string} text - The text to count the characters of
  * @returns {number} the number of characters (or words) in the text
  */
@@ -329,6 +346,7 @@ CharacterCount.prototype.count = function (text) {
 /**
  * Get count message
  *
+ * @deprecated Will be made private in v5.0
  * @returns {string} Status message
  */
 CharacterCount.prototype.getCountMessage = function () {
@@ -342,6 +360,7 @@ CharacterCount.prototype.getCountMessage = function () {
  * Formats the message shown to users according to what's counted
  * and how many remain
  *
+ * @deprecated Will be made private in v5.0
  * @param {number} remainingNumber - The number of words/characaters remaining
  * @param {string} countType - "words" or "characters"
  * @returns {string} Status message
@@ -363,6 +382,7 @@ CharacterCount.prototype.formatCountMessage = function (remainingNumber, countTy
  * If there is no configured threshold, it is set to 0 and this function will
  * always return true.
  *
+ * @deprecated Will be made private in v5.0
  * @returns {boolean} true if the current count is over the config.threshold
  *   (or no threshold is set)
  */

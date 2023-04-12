@@ -113,6 +113,8 @@ Accordion.prototype.init = function () {
 
 /**
  * Initialise controls and set attributes
+ *
+ * @deprecated Will be made private in v5.0
  */
 Accordion.prototype.initControls = function () {
   // Create "Show all" button and set attributes
@@ -148,6 +150,8 @@ Accordion.prototype.initControls = function () {
 
 /**
  * Initialise section headers
+ *
+ * @deprecated Will be made private in v5.0
  */
 Accordion.prototype.initSectionHeaders = function () {
   var $component = this
@@ -176,6 +180,7 @@ Accordion.prototype.initSectionHeaders = function () {
 /**
  * Construct section header
  *
+ * @deprecated Will be made private in v5.0
  * @param {Element} $header - Section header
  * @param {number} index - Section index
  */
@@ -282,6 +287,7 @@ Accordion.prototype.constructHeaderMarkup = function ($header, index) {
 /**
  * When a section is opened by the user agent via the 'beforematch' event
  *
+ * @deprecated Will be made private in v5.0
  * @param {Event} event - Generic event
  */
 Accordion.prototype.onBeforeMatch = function (event) {
@@ -302,6 +308,7 @@ Accordion.prototype.onBeforeMatch = function (event) {
 /**
  * When section toggled, set and store state
  *
+ * @deprecated Will be made private in v5.0
  * @param {Element} $section - Section element
  */
 Accordion.prototype.onSectionToggle = function ($section) {
@@ -314,6 +321,8 @@ Accordion.prototype.onSectionToggle = function ($section) {
 
 /**
  * When Open/Close All toggled, set and store state
+ *
+ * @deprecated Will be made private in v5.0
  */
 Accordion.prototype.onShowOrHideAllToggle = function () {
   var $component = this
@@ -334,6 +343,7 @@ Accordion.prototype.onShowOrHideAllToggle = function () {
 /**
  * Set section attributes when opened/closed
  *
+ * @deprecated Will be made private in v5.0
  * @param {boolean} expanded - Section expanded
  * @param {Element} $section - Section element
  */
@@ -401,6 +411,7 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
 /**
  * Get state of section
  *
+ * @deprecated Will be made private in v5.0
  * @param {Element} $section - Section element
  * @returns {boolean} True if expanded
  */
@@ -411,6 +422,7 @@ Accordion.prototype.isExpanded = function ($section) {
 /**
  * Check if all sections are open
  *
+ * @deprecated Will be made private in v5.0
  * @returns {boolean} True if all sections are open
  */
 Accordion.prototype.checkIfAllSectionsOpen = function () {
@@ -426,6 +438,7 @@ Accordion.prototype.checkIfAllSectionsOpen = function () {
 /**
  * Update "Show all sections" button
  *
+ * @deprecated Will be made private in v5.0
  * @param {boolean} expanded - Section expanded
  */
 Accordion.prototype.updateShowAllButton = function (expanded) {
@@ -467,6 +480,7 @@ var helper = {
 /**
  * Set the state of the accordions in sessionStorage
  *
+ * @deprecated Will be made private in v5.0
  * @param {Element} $section - Section element
  */
 Accordion.prototype.storeState = function ($section) {
@@ -491,6 +505,7 @@ Accordion.prototype.storeState = function ($section) {
 /**
  * Read the state of the accordions from sessionStorage
  *
+ * @deprecated Will be made private in v5.0
  * @param {Element} $section - Section element
  */
 Accordion.prototype.setInitialState = function ($section) {
@@ -515,6 +530,7 @@ Accordion.prototype.setInitialState = function ($section) {
  * into thematic chunks.
  * See https://github.com/alphagov/govuk-frontend/issues/2327#issuecomment-922957442
  *
+ * @deprecated Will be made private in v5.0
  * @returns {Element} DOM element
  */
 Accordion.prototype.getButtonPunctuationEl = function () {
