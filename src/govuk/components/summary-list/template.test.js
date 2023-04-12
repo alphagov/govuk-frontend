@@ -1,4 +1,8 @@
-const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
+const cheerio = require('cheerio')
+
+const { getExamples } = require('../../../../lib/file-helper')
+const { axe } = require('../../../../lib/jest-helpers')
+const { render } = require('../../../../lib/nunjucks-helpers')
 
 describe('Summary list', () => {
   let examples
@@ -9,7 +13,7 @@ describe('Summary list', () => {
 
   describe('default example', () => {
     it('passes accessibility tests', async () => {
-      const $ = render('summary-list', examples.default)
+      const $ = cheerio.load(render('summary-list', examples.default))
 
       const results = await axe($.html())
       expect(results).toHaveNoViolations()
@@ -18,14 +22,14 @@ describe('Summary list', () => {
 
   describe('custom options', () => {
     it('renders classes', async () => {
-      const $ = render('summary-list', examples['no-border'])
+      const $ = cheerio.load(render('summary-list', examples['no-border']))
 
       const $component = $('.govuk-summary-list')
       expect($component.hasClass('govuk-summary-list--no-border')).toBeTruthy()
     })
 
     it('renders with attributes', () => {
-      const $ = render('summary-list', examples.attributes)
+      const $ = cheerio.load(render('summary-list', examples.attributes))
 
       const $component = $('.govuk-summary-list')
       expect($component.attr('data-attribute-1')).toEqual('value-1')
@@ -35,7 +39,7 @@ describe('Summary list', () => {
 
   describe('rows', () => {
     it('renders list without falsely values', async () => {
-      const $ = render('summary-list', examples['with falsey values'])
+      const $ = cheerio.load(render('summary-list', examples['with falsey values']))
 
       const $component = $('.govuk-summary-list')
       const $row = $component.find('.govuk-summary-list__row')
@@ -43,7 +47,7 @@ describe('Summary list', () => {
     })
 
     it('renders classes', async () => {
-      const $ = render('summary-list', examples['rows with classes'])
+      const $ = cheerio.load(render('summary-list', examples['rows with classes']))
 
       const $component = $('.govuk-summary-list')
       const $row = $component.find('.govuk-summary-list__row')
@@ -52,7 +56,7 @@ describe('Summary list', () => {
 
     describe('keys', () => {
       it('renders text', async () => {
-        const $ = render('summary-list', examples.default)
+        const $ = cheerio.load(render('summary-list', examples.default))
 
         const $component = $('.govuk-summary-list')
         const $key = $component.find('dt.govuk-summary-list__key')
@@ -61,7 +65,7 @@ describe('Summary list', () => {
       })
 
       it('renders html', async () => {
-        const $ = render('summary-list', examples['key with html'])
+        const $ = cheerio.load(render('summary-list', examples['key with html']))
 
         const $component = $('.govuk-summary-list')
         const $key = $component.find('dt.govuk-summary-list__key')
@@ -70,7 +74,7 @@ describe('Summary list', () => {
       })
 
       it('renders classes', async () => {
-        const $ = render('summary-list', examples['key with classes'])
+        const $ = cheerio.load(render('summary-list', examples['key with classes']))
 
         const $component = $('.govuk-summary-list')
         const $key = $component.find('dt.govuk-summary-list__key')
@@ -80,7 +84,7 @@ describe('Summary list', () => {
 
     describe('values', () => {
       it('renders text', async () => {
-        const $ = render('summary-list', examples.default)
+        const $ = cheerio.load(render('summary-list', examples.default))
 
         const $component = $('.govuk-summary-list')
         const $value = $component.find('dd.govuk-summary-list__value')
@@ -89,7 +93,7 @@ describe('Summary list', () => {
       })
 
       it('renders html', async () => {
-        const $ = render('summary-list', examples['value with html'])
+        const $ = cheerio.load(render('summary-list', examples['value with html']))
 
         const $component = $('.govuk-summary-list')
         const $value = $component.find('dd.govuk-summary-list__value')
@@ -98,7 +102,7 @@ describe('Summary list', () => {
       })
 
       it('renders classes', async () => {
-        const $ = render('summary-list', examples['overridden-widths'])
+        const $ = cheerio.load(render('summary-list', examples['overridden-widths']))
 
         const $component = $('.govuk-summary-list')
         const $value = $component.find('dd.govuk-summary-list__value')
@@ -108,7 +112,7 @@ describe('Summary list', () => {
 
     describe('actions', () => {
       it('renders href', async () => {
-        const $ = render('summary-list', examples['actions href'])
+        const $ = cheerio.load(render('summary-list', examples['actions href']))
 
         const $component = $('.govuk-summary-list')
         const $actionLink = $component.find('.govuk-summary-list__actions > a')
@@ -117,7 +121,7 @@ describe('Summary list', () => {
       })
 
       it('renders text', async () => {
-        const $ = render('summary-list', examples['with actions'])
+        const $ = cheerio.load(render('summary-list', examples['with actions']))
 
         const $component = $('.govuk-summary-list')
         const $actionLink = $component.find('.govuk-summary-list__actions > a')
@@ -126,7 +130,7 @@ describe('Summary list', () => {
       })
 
       it('renders html', async () => {
-        const $ = render('summary-list', examples['actions with html'])
+        const $ = cheerio.load(render('summary-list', examples['actions with html']))
 
         const $component = $('.govuk-summary-list')
         const $actionLink = $component.find('.govuk-summary-list__actions > a')
@@ -135,7 +139,7 @@ describe('Summary list', () => {
       })
 
       it('allows the visually hidden prefix to be removed and then manually added with HTML', async () => {
-        const $ = render('summary-list', examples.translated)
+        const $ = cheerio.load(render('summary-list', examples.translated))
 
         const $component = $('.govuk-summary-list')
         const $actionLink = $component.find('.govuk-summary-list__actions > a')
@@ -144,7 +148,7 @@ describe('Summary list', () => {
       })
 
       it('renders custom accessible name', async () => {
-        const $ = render('summary-list', examples['with actions'])
+        const $ = cheerio.load(render('summary-list', examples['with actions']))
 
         const $component = $('.govuk-summary-list')
         const $actionLink = $component.find('.govuk-summary-list__actions > a')
@@ -152,7 +156,7 @@ describe('Summary list', () => {
       })
 
       it('renders classes', async () => {
-        const $ = render('summary-list', examples['actions with classes'])
+        const $ = cheerio.load(render('summary-list', examples['actions with classes']))
 
         const $component = $('.govuk-summary-list')
         const $actionList = $component.find('.govuk-summary-list__actions')
@@ -161,7 +165,7 @@ describe('Summary list', () => {
       })
 
       it('renders attributes', async () => {
-        const $ = render('summary-list', examples['actions with attributes'])
+        const $ = cheerio.load(render('summary-list', examples['actions with attributes']))
 
         const $component = $('.govuk-summary-list')
         const $actionLink = $component.find('.govuk-summary-list__actions > a')
@@ -171,7 +175,7 @@ describe('Summary list', () => {
       })
 
       it('renders a single anchor with one action', async () => {
-        const $ = render('summary-list', examples['single action with anchor'])
+        const $ = cheerio.load(render('summary-list', examples['single action with anchor']))
 
         const $component = $('.govuk-summary-list')
         const $action = $component.find('.govuk-summary-list__actions > a')
@@ -180,7 +184,7 @@ describe('Summary list', () => {
       })
 
       it('renders a list with mutliple actions', async () => {
-        const $ = render('summary-list', examples['with some actions'])
+        const $ = cheerio.load(render('summary-list', examples['with some actions']))
 
         const $component = $('.govuk-summary-list')
         const $actionList = $component.find('.govuk-summary-list__actions')
@@ -190,7 +194,7 @@ describe('Summary list', () => {
       })
 
       it('renders classes on actions', async () => {
-        const $ = render('summary-list', examples['classes on items'])
+        const $ = cheerio.load(render('summary-list', examples['classes on items']))
 
         const $component = $('.govuk-summary-list')
         const $action = $component.find('.govuk-summary-list__actions > a')
@@ -199,7 +203,7 @@ describe('Summary list', () => {
       })
 
       it('skips the action column when no array is provided', async () => {
-        const $ = render('summary-list', examples.default)
+        const $ = cheerio.load(render('summary-list', examples.default))
 
         const $component = $('.govuk-summary-list')
         const $action = $component.find('.govuk-summary-list__actions')
@@ -208,7 +212,7 @@ describe('Summary list', () => {
       })
 
       it('skips the action column when no items are in the array provided', async () => {
-        const $ = render('summary-list', examples['empty items array'])
+        const $ = cheerio.load(render('summary-list', examples['empty items array']))
 
         const $component = $('.govuk-summary-list')
         const $action = $component.find('.govuk-summary-list__actions')
@@ -221,7 +225,7 @@ describe('Summary list', () => {
         let $component
 
         beforeAll(() => {
-          $ = render('summary-list', examples['with some actions'])
+          $ = cheerio.load(render('summary-list', examples['with some actions']))
           $component = $('.govuk-summary-list')
         })
 
@@ -248,7 +252,7 @@ describe('Summary list', () => {
         let $component
 
         beforeAll(() => {
-          $ = render('summary-list', examples.default)
+          $ = cheerio.load(render('summary-list', examples.default))
           $component = $('.govuk-summary-list')
         })
 
@@ -268,7 +272,7 @@ describe('Summary list', () => {
 
   describe('summary card', () => {
     it('passes accessibility tests', async () => {
-      const $ = render('summary-list', examples['as a summary card with a text header'])
+      const $ = cheerio.load(render('summary-list', examples['as a summary card with a text header']))
 
       const results = await axe($.html())
       expect(results).toHaveNoViolations()
@@ -281,14 +285,14 @@ describe('Summary list', () => {
     // This is already tested in depth in the 'actions' describe above.
     describe('actions', () => {
       it('renders actions', () => {
-        const $ = render('summary-list', examples['as a summary card with actions'])
+        const $ = cheerio.load(render('summary-list', examples['as a summary card with actions']))
 
         const $actionItems = $('.govuk-summary-card__action')
         expect($actionItems.length).toBe(2)
       })
 
       it('does not render a list if only one action is present', () => {
-        const $ = render('summary-list', examples['summary card with only 1 action'])
+        const $ = cheerio.load(render('summary-list', examples['summary card with only 1 action']))
 
         const $singleAction = $('.govuk-summary-card__actions > a')
         const $actionItems = $('.govuk-summary-card__action')
@@ -299,21 +303,21 @@ describe('Summary list', () => {
 
     describe('title', () => {
       it('renders with a text title', () => {
-        const $ = render('summary-list', examples['as a summary card with a text header'])
+        const $ = cheerio.load(render('summary-list', examples['as a summary card with a text header']))
 
         const $title = $('.govuk-summary-card__title')
         expect($title.text()).toContain('Undergraduate teaching assistant')
       })
 
       it('renders with a html title', () => {
-        const $ = render('summary-list', examples['as a summary card with a html header'])
+        const $ = cheerio.load(render('summary-list', examples['as a summary card with a html header']))
 
         const $title = $('.govuk-summary-card__title')
         expect($title.html()).toContain('<em>Undergraduate teaching assistant</em>')
       })
 
       it('renders with a custom heading level', () => {
-        const $ = render('summary-list', examples['as a summary card with a custom header level'])
+        const $ = cheerio.load(render('summary-list', examples['as a summary card with a custom header level']))
 
         const $title = $('.govuk-summary-card__title')
         expect($title.get(0).tagName).toEqual('h3')
@@ -322,7 +326,7 @@ describe('Summary list', () => {
 
     describe('custom options', () => {
       it('renders custom classes on the summary card', () => {
-        const $ = render('summary-list', examples['summary card with custom classes'])
+        const $ = cheerio.load(render('summary-list', examples['summary card with custom classes']))
 
         const $list = $('.govuk-summary-list')
         const $card = $('.govuk-summary-card')
@@ -331,7 +335,7 @@ describe('Summary list', () => {
       })
 
       it('renders with attributes on the summary card', () => {
-        const $ = render('summary-list', examples['summary card with custom attributes'])
+        const $ = cheerio.load(render('summary-list', examples['summary card with custom attributes']))
 
         const $list = $('.govuk-summary-list')
         const $card = $('.govuk-summary-card')

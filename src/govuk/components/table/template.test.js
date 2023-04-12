@@ -1,4 +1,8 @@
-const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
+const cheerio = require('cheerio')
+
+const { getExamples } = require('../../../../lib/file-helper')
+const { axe } = require('../../../../lib/jest-helpers')
+const { render } = require('../../../../lib/nunjucks-helpers')
 
 describe('Table', () => {
   let examples
@@ -8,20 +12,20 @@ describe('Table', () => {
   })
 
   it('passes basic accessibility tests', async () => {
-    const $ = render('table', examples.default)
+    const $ = cheerio.load(render('table', examples.default))
 
     const results = await axe($.html())
     expect(results).toHaveNoViolations()
   })
 
   it('can have additional classes', () => {
-    const $ = render('table', examples.classes)
+    const $ = cheerio.load(render('table', examples.classes))
 
     expect($('.govuk-table').hasClass('custom-class-goes-here')).toBeTruthy()
   })
 
   it('can have additional attributes', () => {
-    const $ = render('table', examples.attributes)
+    const $ = cheerio.load(render('table', examples.attributes))
 
     expect($('.govuk-table').attr('data-foo')).toEqual('bar')
   })
@@ -32,14 +36,14 @@ describe('Table', () => {
 
   describe('captions', () => {
     it('can have custom text', () => {
-      const $ = render('table', examples['table with head and caption'])
+      const $ = cheerio.load(render('table', examples['table with head and caption']))
       const $caption = $('.govuk-table__caption')
 
       expect($caption.text()).toBe('Caption 1: Months and rates')
     })
 
     it('can have additional classes', () => {
-      const $ = render('table', examples['table with head and caption'])
+      const $ = cheerio.load(render('table', examples['table with head and caption']))
       const $caption = $('.govuk-table__caption')
 
       expect($caption.hasClass('govuk-heading-m')).toBeTruthy()
@@ -53,7 +57,7 @@ describe('Table', () => {
   describe('column headers', () => {
     it('can be specified', () => {
       const args = examples['table with head']
-      const $ = render('table', args)
+      const $ = cheerio.load(render('table', args))
 
       const headings = $('.govuk-table').find('thead tr th')
         .map((_, e) => $(e).text())
@@ -67,7 +71,7 @@ describe('Table', () => {
     })
 
     it('have HTML escaped when passed as text', () => {
-      const $ = render('table', examples['html as text'])
+      const $ = cheerio.load(render('table', examples['html as text']))
 
       const $th = $('.govuk-table thead tr th')
 
@@ -75,7 +79,7 @@ describe('Table', () => {
     })
 
     it('allow HTML when passed as HTML', () => {
-      const $ = render('table', examples.html)
+      const $ = cheerio.load(render('table', examples.html))
 
       const $th = $('.govuk-table thead tr th')
 
@@ -83,7 +87,7 @@ describe('Table', () => {
     })
 
     it('can have a format specified', () => {
-      const $ = render('table', examples['table with head'])
+      const $ = cheerio.load(render('table', examples['table with head']))
 
       const $th = $('.govuk-table thead tr th')
 
@@ -91,7 +95,7 @@ describe('Table', () => {
     })
 
     it('can have additional classes', () => {
-      const $ = render('table', examples['head with classes'])
+      const $ = cheerio.load(render('table', examples['head with classes']))
 
       const $th = $('.govuk-table thead tr th')
 
@@ -99,7 +103,7 @@ describe('Table', () => {
     })
 
     it('can have rowspan specified', () => {
-      const $ = render('table', examples['head with rowspan and colspan'])
+      const $ = cheerio.load(render('table', examples['head with rowspan and colspan']))
 
       const $th = $('.govuk-table thead tr th')
 
@@ -107,7 +111,7 @@ describe('Table', () => {
     })
 
     it('can have colspan specified', () => {
-      const $ = render('table', examples['head with rowspan and colspan'])
+      const $ = cheerio.load(render('table', examples['head with rowspan and colspan']))
 
       const $th = $('.govuk-table thead tr th')
 
@@ -115,7 +119,7 @@ describe('Table', () => {
     })
 
     it('can have additional attributes', () => {
-      const $ = render('table', examples['head with attributes'])
+      const $ = cheerio.load(render('table', examples['head with attributes']))
 
       const $th = $('.govuk-table thead tr th')
 
@@ -130,7 +134,7 @@ describe('Table', () => {
   describe('row headers', () => {
     describe('when firstCellIsHeader is false', () => {
       it('are not included', () => {
-        const $ = render('table', examples.default)
+        const $ = cheerio.load(render('table', examples.default))
 
         const cells = $('.govuk-table').find('tbody tr td')
           .map((_, e) => $(e).text())
@@ -144,7 +148,7 @@ describe('Table', () => {
 
     describe('when firstCellIsHeader is true', () => {
       it('are included', () => {
-        const $ = render('table', examples['with firstCellIsHeader true'])
+        const $ = cheerio.load(render('table', examples['with firstCellIsHeader true']))
 
         const headings = $('.govuk-table').find('tbody tr th')
           .map((_, e) => $(e).text())
@@ -154,7 +158,7 @@ describe('Table', () => {
       })
 
       it('have HTML escaped when passed as text', () => {
-        const $ = render('table', examples['firstCellIsHeader with html as text'])
+        const $ = cheerio.load(render('table', examples['firstCellIsHeader with html as text']))
 
         const $th = $('.govuk-table tbody tr th')
 
@@ -162,7 +166,7 @@ describe('Table', () => {
       })
 
       it('allow HTML when passed as HTML', () => {
-        const $ = render('table', examples['firstCellIsHeader with html'])
+        const $ = cheerio.load(render('table', examples['firstCellIsHeader with html']))
 
         const $th = $('.govuk-table tbody tr th')
 
@@ -170,7 +174,7 @@ describe('Table', () => {
       })
 
       it('are associated with their rows using scope="row"', () => {
-        const $ = render('table', examples['with firstCellIsHeader true'])
+        const $ = cheerio.load(render('table', examples['with firstCellIsHeader true']))
 
         const $th = $('.govuk-table').find('tbody tr th')
 
@@ -178,7 +182,7 @@ describe('Table', () => {
       })
 
       it('have the govuk-table__header class', () => {
-        const $ = render('table', examples['with firstCellIsHeader true'])
+        const $ = cheerio.load(render('table', examples['with firstCellIsHeader true']))
 
         const $th = $('.govuk-table').find('tbody tr th')
 
@@ -186,7 +190,7 @@ describe('Table', () => {
       })
 
       it('can have additional classes', () => {
-        const $ = render('table', examples['firstCellIsHeader with classes'])
+        const $ = cheerio.load(render('table', examples['firstCellIsHeader with classes']))
 
         const $th = $('.govuk-table').find('tbody tr th')
 
@@ -194,7 +198,7 @@ describe('Table', () => {
       })
 
       it('can have rowspan specified', () => {
-        const $ = render('table', examples['firstCellIsHeader with rowspan and colspan'])
+        const $ = cheerio.load(render('table', examples['firstCellIsHeader with rowspan and colspan']))
 
         const $th = $('.govuk-table').find('tbody tr th')
 
@@ -202,7 +206,7 @@ describe('Table', () => {
       })
 
       it('can have colspan specified', () => {
-        const $ = render('table', examples['firstCellIsHeader with rowspan and colspan'])
+        const $ = cheerio.load(render('table', examples['firstCellIsHeader with rowspan and colspan']))
 
         const $th = $('.govuk-table').find('tbody tr th')
 
@@ -210,7 +214,7 @@ describe('Table', () => {
       })
 
       it('can have additional attributes', () => {
-        const $ = render('table', examples['firstCellIsHeader with attributes'])
+        const $ = cheerio.load(render('table', examples['firstCellIsHeader with attributes']))
 
         const $th = $('.govuk-table').find('tbody tr th')
 
@@ -225,7 +229,7 @@ describe('Table', () => {
 
   describe('cells', () => {
     it('can be specified', () => {
-      const $ = render('table', examples.default)
+      const $ = cheerio.load(render('table', examples.default))
 
       const cells = $('.govuk-table').find('tbody tr')
         .map((_, tr) => {
@@ -241,7 +245,7 @@ describe('Table', () => {
     })
 
     it('can be skipped when falsely', () => {
-      const $ = render('table', examples['with falsey items'])
+      const $ = cheerio.load(render('table', examples['with falsey items']))
 
       const cells = $('.govuk-table').find('tbody tr')
         .map((_, tr) => {
@@ -257,7 +261,7 @@ describe('Table', () => {
     })
 
     it('have HTML escaped when passed as text', () => {
-      const $ = render('table', examples['html as text'])
+      const $ = cheerio.load(render('table', examples['html as text']))
 
       const $td = $('.govuk-table td')
 
@@ -265,7 +269,7 @@ describe('Table', () => {
     })
 
     it('allow HTML when passed as HTML', () => {
-      const $ = render('table', examples.html)
+      const $ = cheerio.load(render('table', examples.html))
 
       const $td = $('.govuk-table td')
 
@@ -273,7 +277,7 @@ describe('Table', () => {
     })
 
     it('can have a format specified', () => {
-      const $ = render('table', examples.default)
+      const $ = cheerio.load(render('table', examples.default))
 
       const $td = $('.govuk-table td')
 
@@ -281,7 +285,7 @@ describe('Table', () => {
     })
 
     it('can have additional classes', () => {
-      const $ = render('table', examples['rows with classes'])
+      const $ = cheerio.load(render('table', examples['rows with classes']))
 
       const $td = $('.govuk-table td')
 
@@ -289,7 +293,7 @@ describe('Table', () => {
     })
 
     it('can have rowspan specified', () => {
-      const $ = render('table', examples['rows with rowspan and colspan'])
+      const $ = cheerio.load(render('table', examples['rows with rowspan and colspan']))
 
       const $td = $('.govuk-table td')
 
@@ -297,7 +301,7 @@ describe('Table', () => {
     })
 
     it('can have colspan specified', () => {
-      const $ = render('table', examples['rows with rowspan and colspan'])
+      const $ = cheerio.load(render('table', examples['rows with rowspan and colspan']))
 
       const $td = $('.govuk-table td')
 
@@ -305,7 +309,7 @@ describe('Table', () => {
     })
 
     it('can have additional attributes', () => {
-      const $ = render('table', examples['rows with attributes'])
+      const $ = cheerio.load(render('table', examples['rows with attributes']))
 
       const $td = $('.govuk-table td')
 

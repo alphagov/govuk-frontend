@@ -1,4 +1,8 @@
-const { axe, render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
+const cheerio = require('cheerio')
+
+const { getExamples } = require('../../../../lib/file-helper')
+const { axe, htmlWithClassName } = require('../../../../lib/jest-helpers')
+const { render } = require('../../../../lib/nunjucks-helpers')
 
 const WORD_BOUNDARY = '\\b'
 const WHITESPACE = '\\s'
@@ -12,90 +16,90 @@ describe('Select', () => {
 
   describe('by default', () => {
     it('passes accessibility tests', async () => {
-      const $ = render('select', examples.default)
+      const $ = cheerio.load(render('select', examples.default))
 
       const results = await axe($.html())
       expect(results).toHaveNoViolations()
     })
 
     it('renders with id', () => {
-      const $ = render('select', examples.default)
+      const $ = cheerio.load(render('select', examples.default))
 
       const $component = $('.govuk-select')
       expect($component.attr('id')).toEqual('select-1')
     })
 
     it('renders with name', () => {
-      const $ = render('select', examples.default)
+      const $ = cheerio.load(render('select', examples.default))
 
       const $component = $('.govuk-select')
       expect($component.attr('name')).toEqual('select-1')
     })
 
     it('renders with items', () => {
-      const $ = render('select', examples.default)
+      const $ = cheerio.load(render('select', examples.default))
       const $items = $('.govuk-select option')
       expect($items.length).toEqual(3)
     })
 
     it('renders item with value', () => {
-      const $ = render('select', examples.default)
+      const $ = cheerio.load(render('select', examples.default))
 
       const $firstItem = $('.govuk-select option:first-child')
       expect($firstItem.attr('value')).toEqual('1')
     })
 
     it('renders item with text', () => {
-      const $ = render('select', examples.default)
+      const $ = cheerio.load(render('select', examples.default))
 
       const $firstItem = $('.govuk-select option:first-child')
       expect($firstItem.text()).toEqual('GOV.UK frontend option 1')
     })
 
     it('renders item with selected', () => {
-      const $ = render('select', examples.default)
+      const $ = cheerio.load(render('select', examples.default))
 
       const $selectedItem = $('.govuk-select option:nth-child(2)')
       expect($selectedItem.attr('selected')).toBeTruthy()
     })
 
     it('selects options using selected value', () => {
-      const $ = render('select', examples['with selected value'])
+      const $ = cheerio.load(render('select', examples['with selected value']))
 
       const $selectedItem = $('option[value="2"]')
       expect($selectedItem.attr('selected')).toBeTruthy()
     })
 
     it('allows item.selected to override value', () => {
-      const $ = render('select', examples['item selected overrides value'])
+      const $ = cheerio.load(render('select', examples['item selected overrides value']))
 
       const $selectedItem = $('option[value="green"]')
       expect($selectedItem.attr('selected')).toBeUndefined()
     })
 
     it('renders item with disabled', () => {
-      const $ = render('select', examples.default)
+      const $ = cheerio.load(render('select', examples.default))
 
       const $disabledItem = $('.govuk-select option:last-child')
       expect($disabledItem.attr('disabled')).toBeTruthy()
     })
 
     it('renders with a form group wrapper', () => {
-      const $ = render('select', examples.default)
+      const $ = cheerio.load(render('select', examples.default))
 
       const $formGroup = $('.govuk-form-group')
       expect($formGroup.length).toBeTruthy()
     })
 
     it('renders with a form group wrapper that has extra classes', () => {
-      const $ = render('select', examples['with optional form-group classes'])
+      const $ = cheerio.load(render('select', examples['with optional form-group classes']))
 
       const $formGroup = $('.govuk-form-group')
       expect($formGroup.hasClass('extra-class')).toBeTruthy()
     })
 
     it('renders without falsely items', () => {
-      const $ = render('select', examples['with falsey values'])
+      const $ = cheerio.load(render('select', examples['with falsey values']))
 
       const $items = $('.govuk-select option')
       expect($items.length).toEqual(2)
@@ -104,28 +108,28 @@ describe('Select', () => {
 
   describe('custom options', () => {
     it('renders with classes', () => {
-      const $ = render('select', examples['with full width override'])
+      const $ = cheerio.load(render('select', examples['with full width override']))
 
       const $component = $('.govuk-select')
       expect($component.hasClass('govuk-!-width-full')).toBeTruthy()
     })
 
     it('renders with aria-describedby', () => {
-      const $ = render('select', examples['with describedBy'])
+      const $ = cheerio.load(render('select', examples['with describedBy']))
 
       const $component = $('.govuk-select')
       expect($component.attr('aria-describedby')).toMatch('some-id')
     })
 
     it('renders with attributes', () => {
-      const $ = render('select', examples.attributes)
+      const $ = cheerio.load(render('select', examples.attributes))
 
       const $component = $('.govuk-select')
       expect($component.attr('data-attribute')).toEqual('my data value')
     })
 
     it('renders with attributes on items', () => {
-      const $ = render('select', examples['attributes on items'])
+      const $ = cheerio.load(render('select', examples['attributes on items']))
 
       const $component = $('.govuk-select')
 
@@ -141,13 +145,13 @@ describe('Select', () => {
 
   describe('when it includes a hint', () => {
     it('renders the hint', () => {
-      const $ = render('select', examples.hint)
+      const $ = cheerio.load(render('select', examples.hint))
 
       expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
     })
 
     it('associates the select as "described by" the hint', () => {
-      const $ = render('select', examples.hint)
+      const $ = cheerio.load(render('select', examples.hint))
 
       const $select = $('.govuk-select')
       const $hint = $('.govuk-hint')
@@ -161,7 +165,7 @@ describe('Select', () => {
     })
 
     it('associates the select as "described by" the hint and parent fieldset', () => {
-      const $ = render('select', examples['hint and describedBy'])
+      const $ = cheerio.load(render('select', examples['hint and describedBy']))
 
       const $select = $('.govuk-select')
 
@@ -172,13 +176,13 @@ describe('Select', () => {
 
   describe('when it includes an error message', () => {
     it('renders with error message', () => {
-      const $ = render('select', examples.error)
+      const $ = cheerio.load(render('select', examples.error))
 
       expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
     })
 
     it('associates the select as "described by" the error message', () => {
-      const $ = render('select', examples.error)
+      const $ = cheerio.load(render('select', examples.error))
 
       const $input = $('.govuk-select')
       const $errorMessage = $('.govuk-error-message')
@@ -192,7 +196,7 @@ describe('Select', () => {
     })
 
     it('associates the select as "described by" the error message and parent fieldset', () => {
-      const $ = render('select', examples['error and describedBy'])
+      const $ = cheerio.load(render('select', examples['error and describedBy']))
 
       const $input = $('.govuk-select')
 
@@ -201,14 +205,14 @@ describe('Select', () => {
     })
 
     it('adds the error class to the select', () => {
-      const $ = render('select', examples.error)
+      const $ = cheerio.load(render('select', examples.error))
 
       const $component = $('.govuk-select')
       expect($component.hasClass('govuk-select--error')).toBeTruthy()
     })
 
     it('renders with a form group wrapper that has an error state', () => {
-      const $ = render('select', examples.error)
+      const $ = cheerio.load(render('select', examples.error))
 
       const $formGroup = $('.govuk-form-group')
       expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
@@ -217,7 +221,7 @@ describe('Select', () => {
 
   describe('when it includes both a hint and an error message', () => {
     it('associates the select as described by both the hint and the error message', () => {
-      const $ = render('select', examples['with hint text and error message'])
+      const $ = cheerio.load(render('select', examples['with hint text and error message']))
 
       const $component = $('.govuk-select')
       const errorMessageId = $('.govuk-error-message').attr('id')
@@ -232,7 +236,7 @@ describe('Select', () => {
     })
 
     it('associates the select as described by the hint, error message and parent fieldset', () => {
-      const $ = render('select', examples['with hint text and error message'])
+      const $ = cheerio.load(render('select', examples['with hint text and error message']))
 
       const $component = $('.govuk-select')
 
@@ -243,20 +247,20 @@ describe('Select', () => {
 
   describe('with dependant components', () => {
     it('have correct nesting order', () => {
-      const $ = render('select', examples['with hint text and error message'])
+      const $ = cheerio.load(render('select', examples['with hint text and error message']))
 
       const $component = $('.govuk-form-group > .govuk-select')
       expect($component.length).toBeTruthy()
     })
 
     it('renders with label', () => {
-      const $ = render('select', examples.default)
+      const $ = cheerio.load(render('select', examples.default))
 
       expect(htmlWithClassName($, '.govuk-label')).toMatchSnapshot()
     })
 
     it('renders label with "for" attribute reffering the select "id"', () => {
-      const $ = render('select', examples.default)
+      const $ = cheerio.load(render('select', examples.default))
 
       const $label = $('.govuk-label')
       expect($label.attr('for')).toEqual('select-1')

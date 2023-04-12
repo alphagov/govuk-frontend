@@ -1,10 +1,11 @@
 const crypto = require('crypto')
 const { join } = require('path')
 
+const cheerio = require('cheerio')
 const nunjucks = require('nunjucks')
 
 const { paths } = require('../../config')
-const { renderTemplate } = require('../../lib/jest-helpers')
+const { renderTemplate } = require('../../lib/nunjucks-helpers')
 
 describe('Template', () => {
   describe('with default nunjucks configuration', () => {
@@ -28,17 +29,17 @@ describe('Template', () => {
 
   describe('<html>', () => {
     it('defaults to lang="en"', () => {
-      const $ = renderTemplate()
+      const $ = cheerio.load(renderTemplate())
       expect($('html').attr('lang')).toEqual('en')
     })
 
     it('can have a custom lang set using htmlLang', () => {
-      const $ = renderTemplate({ htmlLang: 'zu' })
+      const $ = cheerio.load(renderTemplate({ htmlLang: 'zu' }))
       expect($('html').attr('lang')).toEqual('zu')
     })
 
     it('can have custom classes added using htmlClasses', () => {
-      const $ = renderTemplate({ htmlClasses: 'my-custom-class' })
+      const $ = cheerio.load(renderTemplate({ htmlClasses: 'my-custom-class' }))
       expect($('html').hasClass('my-custom-class')).toBeTruthy()
     })
   })
@@ -47,7 +48,7 @@ describe('Template', () => {
     it('can have custom social media icons specified using the headIcons block', () => {
       const headIcons = '<link rel="govuk-icon" href="/images/ytf-icon.png">'
 
-      const $ = renderTemplate({}, { headIcons })
+      const $ = cheerio.load(renderTemplate({}, { headIcons }))
 
       // Build a list of the rel values of all links with a rel ending 'icon'
       const icons = $('link[rel$="icon"]').map((_, link) => $(link).attr('rel')).get()
@@ -57,20 +58,20 @@ describe('Template', () => {
     it('can have additional content added to the <head> using the head block', () => {
       const head = '<meta property="foo" content="bar">'
 
-      const $ = renderTemplate({}, { head })
+      const $ = cheerio.load(renderTemplate({}, { head }))
 
       expect($('head meta[property="foo"]').attr('content')).toEqual('bar')
     })
 
     it('uses a default assets path of /assets', () => {
-      const $ = renderTemplate()
+      const $ = cheerio.load(renderTemplate())
       const $icon = $('link[rel="shortcut icon"]')
 
       expect($icon.attr('href')).toEqual('/assets/images/favicon.ico')
     })
 
     it('can have the assets path overridden using assetPath', () => {
-      const $ = renderTemplate({ assetPath: '/whatever' })
+      const $ = cheerio.load(renderTemplate({ assetPath: '/whatever' }))
       const $icon = $('link[rel="shortcut icon"]')
 
       expect($icon.attr('href')).toEqual('/whatever/images/favicon.ico')
@@ -78,21 +79,21 @@ describe('Template', () => {
 
     describe('opengraph image', () => {
       it('is not included if neither assetUrl nor opengraphImageUrl are set ', () => {
-        const $ = renderTemplate({})
+        const $ = cheerio.load(renderTemplate({}))
         const $ogImage = $('meta[property="og:image"]')
 
         expect($ogImage.length).toBe(0)
       })
 
       it('is included using default path and filename if assetUrl is set', () => {
-        const $ = renderTemplate({ assetUrl: 'https://foo.com/my-assets' })
+        const $ = cheerio.load(renderTemplate({ assetUrl: 'https://foo.com/my-assets' }))
         const $ogImage = $('meta[property="og:image"]')
 
         expect($ogImage.attr('content')).toEqual('https://foo.com/my-assets/images/govuk-opengraph-image.png')
       })
 
       it('is included if opengraphImageUrl is set', () => {
-        const $ = renderTemplate({ opengraphImageUrl: 'https://foo.com/custom/og-image.png' })
+        const $ = cheerio.load(renderTemplate({ opengraphImageUrl: 'https://foo.com/custom/og-image.png' }))
         const $ogImage = $('meta[property="og:image"]')
 
         expect($ogImage.attr('content')).toEqual('https://foo.com/custom/og-image.png')
@@ -101,12 +102,12 @@ describe('Template', () => {
 
     describe('<meta name="theme-color">', () => {
       it('has a default content of #0b0c0c', () => {
-        const $ = renderTemplate()
+        const $ = cheerio.load(renderTemplate())
         expect($('meta[name="theme-color"]').attr('content')).toEqual('#0b0c0c')
       })
 
       it('can be overridden using themeColor', () => {
-        const $ = renderTemplate({ themeColor: '#ff69b4' })
+        const $ = cheerio.load(renderTemplate({ themeColor: '#ff69b4' }))
         expect($('meta[name="theme-color"]').attr('content')).toEqual('#ff69b4')
       })
     })
@@ -114,22 +115,22 @@ describe('Template', () => {
     describe('<title>', () => {
       const expectedTitle = 'GOV.UK - The best place to find government services and information'
       it(`defaults to '${expectedTitle}'`, () => {
-        const $ = renderTemplate()
+        const $ = cheerio.load(renderTemplate())
         expect($('title').text()).toEqual(expectedTitle)
       })
 
       it('can be overridden using the pageTitle block', () => {
-        const $ = renderTemplate({}, { pageTitle: 'Foo' })
+        const $ = cheerio.load(renderTemplate({}, { pageTitle: 'Foo' }))
         expect($('title').text()).toEqual('Foo')
       })
 
       it('does not have a lang attribute by default', () => {
-        const $ = renderTemplate()
+        const $ = cheerio.load(renderTemplate())
         expect($('title').attr('lang')).toBeUndefined()
       })
 
       it('can have a lang attribute specified using pageTitleLang', () => {
-        const $ = renderTemplate({ pageTitleLang: 'zu' })
+        const $ = cheerio.load(renderTemplate({ pageTitleLang: 'zu' }))
         expect($('title').attr('lang')).toEqual('zu')
       })
     })
@@ -137,19 +138,19 @@ describe('Template', () => {
 
   describe('<body>', () => {
     it('can have custom classes added using bodyClasses', () => {
-      const $ = renderTemplate({ bodyClasses: 'custom-body-class' })
+      const $ = cheerio.load(renderTemplate({ bodyClasses: 'custom-body-class' }))
       expect($('body').hasClass('custom-body-class')).toBeTruthy()
     })
 
     it('can have custom attributes added using bodyAttributes', () => {
-      const $ = renderTemplate({ bodyAttributes: { 'data-foo': 'bar' } })
+      const $ = cheerio.load(renderTemplate({ bodyAttributes: { 'data-foo': 'bar' } }))
       expect($('body').attr('data-foo')).toEqual('bar')
     })
 
     it('can have additional content added after the opening tag using bodyStart block', () => {
       const bodyStart = '<div>bodyStart</div>'
 
-      const $ = renderTemplate({}, { bodyStart })
+      const $ = cheerio.load(renderTemplate({}, { bodyStart }))
 
       expect($('body > div:first-of-type').text()).toEqual('bodyStart')
     })
@@ -157,14 +158,14 @@ describe('Template', () => {
     it('can have additional content added before the closing tag using bodyEnd block', () => {
       const bodyEnd = '<div>bodyEnd</div>'
 
-      const $ = renderTemplate({}, { bodyEnd })
+      const $ = cheerio.load(renderTemplate({}, { bodyEnd }))
 
       expect($('body > div:last-of-type').text()).toEqual('bodyEnd')
     })
 
     describe('inline script that adds "js-enabled" class', () => {
       it('should match the hash published in docs', () => {
-        const $ = renderTemplate()
+        const $ = cheerio.load(renderTemplate())
         const script = $('body > script').first().html()
 
         // Create a base64 encoded hash of the contents of the script tag
@@ -175,13 +176,13 @@ describe('Template', () => {
         expect('sha256-' + hash).toEqual('sha256-+6WnXIl4mbFTCARd8N3COQmT3bJJmo32N8q8ZSQAIcU=')
       })
       it('should not have a nonce attribute by default', () => {
-        const $ = renderTemplate()
+        const $ = cheerio.load(renderTemplate())
         const scriptTag = $('body > script').first()
 
         expect(scriptTag.attr('nonce')).toEqual(undefined)
       })
       it('should have a nonce attribute when nonce is provided', () => {
-        const $ = renderTemplate({ cspNonce: 'abcdef' })
+        const $ = cheerio.load(renderTemplate({ cspNonce: 'abcdef' }))
         const scriptTag = $('body > script').first()
 
         expect(scriptTag.attr('nonce')).toEqual('abcdef')
@@ -192,7 +193,7 @@ describe('Template', () => {
       it('can be overridden using the skipLink block', () => {
         const skipLink = '<div class="my-skip-link">skipLink</div>'
 
-        const $ = renderTemplate({}, { skipLink })
+        const $ = cheerio.load(renderTemplate({}, { skipLink }))
 
         expect($('.my-skip-link').length).toEqual(1)
         expect($('.govuk-skip-link').length).toEqual(0)
@@ -203,7 +204,7 @@ describe('Template', () => {
       it('can be overridden using the header block', () => {
         const header = '<div class="my-header">header</div>'
 
-        const $ = renderTemplate({}, { header })
+        const $ = cheerio.load(renderTemplate({}, { header }))
 
         expect($('.my-header').length).toEqual(1)
         expect($('.govuk-header').length).toEqual(0)
@@ -212,29 +213,29 @@ describe('Template', () => {
 
     describe('<main>', () => {
       it('has role="main", supporting browsers that do not natively support HTML5 elements', () => {
-        const $ = renderTemplate()
+        const $ = cheerio.load(renderTemplate())
         expect($('main').attr('role')).toEqual('main')
       })
 
       it('can have custom classes added using mainClasses', () => {
-        const $ = renderTemplate({ mainClasses: 'custom-main-class' })
+        const $ = cheerio.load(renderTemplate({ mainClasses: 'custom-main-class' }))
         expect($('main').hasClass('custom-main-class')).toBeTruthy()
       })
 
       it('does not have a lang attribute by default', () => {
-        const $ = renderTemplate()
+        const $ = cheerio.load(renderTemplate())
         expect($('main').attr('lang')).toBeUndefined()
       })
 
       it('can have a lang attribute specified using mainLang', () => {
-        const $ = renderTemplate({ mainLang: 'zu' })
+        const $ = cheerio.load(renderTemplate({ mainLang: 'zu' }))
         expect($('main').attr('lang')).toEqual('zu')
       })
 
       it('can be overridden using the main block', () => {
         const main = '<main class="my-main">header</main>'
 
-        const $ = renderTemplate({}, { main })
+        const $ = cheerio.load(renderTemplate({}, { main }))
 
         expect($('main').length).toEqual(1)
         expect($('main').hasClass('my-main')).toBe(true)
@@ -243,7 +244,7 @@ describe('Template', () => {
       it('can have content injected before it using the beforeContent block', () => {
         const beforeContent = '<div class="before-content">beforeContent</div>'
 
-        const $ = renderTemplate({}, { beforeContent })
+        const $ = cheerio.load(renderTemplate({}, { beforeContent }))
 
         expect($('.before-content').next().is('main')).toBe(true)
       })
@@ -251,7 +252,7 @@ describe('Template', () => {
       it('can have content specified using the content block', () => {
         const content = 'Foo'
 
-        const $ = renderTemplate({}, { content })
+        const $ = cheerio.load(renderTemplate({}, { content }))
 
         expect($('main').text().trim()).toEqual('Foo')
       })
@@ -261,7 +262,7 @@ describe('Template', () => {
       it('can be overridden using the footer block', () => {
         const footer = '<div class="my-footer">footer</div>'
 
-        const $ = renderTemplate({}, { footer })
+        const $ = cheerio.load(renderTemplate({}, { footer }))
 
         expect($('.my-footer').length).toEqual(1)
         expect($('.govuk-footer').length).toEqual(0)

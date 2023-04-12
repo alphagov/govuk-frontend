@@ -1,4 +1,4 @@
-import { callMacro } from '../../../lib/jest-helpers.js'
+import { callMacro } from '../../../lib/nunjucks-helpers.js'
 
 describe('i18n.njk', () => {
   describe('govukPluralisedI18nAttributes', () => {

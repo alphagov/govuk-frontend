@@ -7,7 +7,7 @@ const nunjucks = require('nunjucks')
 
 const { paths } = require('../../../config')
 const { getDirectories, getComponentsData } = require('../../../lib/file-helper')
-const { nunjucksEnv, renderHtml } = require('../../../lib/jest-helpers')
+const { nunjucksEnv, render } = require('../../../lib/nunjucks-helpers')
 
 describe('Components', () => {
   let nunjucksEnvCustom
@@ -119,7 +119,7 @@ describe('Components', () => {
       // Validate component examples
       for (const { name: componentName, examples } of componentsData) {
         const exampleTasks = examples.map(async ({ name: exampleName, data }) => {
-          const html = renderHtml(componentName, data)
+          const html = render(componentName, data)
 
           // Validate HTML
           return expect({ componentName, exampleName, report: validator.validateString(html) })

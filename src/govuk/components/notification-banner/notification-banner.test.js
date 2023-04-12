@@ -1,4 +1,4 @@
-const { getExamples } = require('../../../../lib/jest-helpers')
+const { getExamples } = require('../../../../lib/file-helper')
 const { renderAndInitialise, goToComponent } = require('../../../../lib/puppeteer-helpers')
 
 describe('Notification banner, when type is set to "success"', () => {
