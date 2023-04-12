@@ -29,13 +29,17 @@ function ErrorSummary ($module, config) {
     return this
   }
 
+  /** @deprecated Will be made private in v5.0 */
   this.$module = $module
 
   var defaultConfig = {
     disableAutoFocus: false
   }
 
-  /** @type {ErrorSummaryConfig} */
+  /**
+   * @deprecated Will be made private in v5.0
+   * @type {ErrorSummaryConfig}
+   */
   this.config = mergeConfigs(
     defaultConfig,
     config || {},

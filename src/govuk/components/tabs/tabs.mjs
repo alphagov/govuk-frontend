@@ -23,15 +23,27 @@ function Tabs ($module) {
     return this
   }
 
+  /** @deprecated Will be made private in v5.0 */
   this.$module = $module
+
+  /** @deprecated Will be made private in v5.0 */
   this.$tabs = $tabs
 
+  /** @deprecated Will be made private in v5.0 */
   this.keys = { left: 37, right: 39, up: 38, down: 40 }
+
+  /** @deprecated Will be made private in v5.0 */
   this.jsHiddenClass = 'govuk-tabs__panel--hidden'
 
   // Save bounded functions to use when removing event listeners during teardown
+
+  /** @deprecated Will be made private in v5.0 */
   this.boundTabClick = this.onTabClick.bind(this)
+
+  /** @deprecated Will be made private in v5.0 */
   this.boundTabKeydown = this.onTabKeydown.bind(this)
+
+  /** @deprecated Will be made private in v5.0 */
   this.boundOnHashChange = this.onHashChange.bind(this)
 }
 
@@ -57,6 +69,7 @@ Tabs.prototype.init = function () {
  * @deprecated Will be made private in v5.0
  */
 Tabs.prototype.setupResponsiveChecks = function () {
+  /** @deprecated Will be made private in v5.0 */
   this.mql = window.matchMedia('(min-width: 40.0625em)')
   this.mql.addListener(this.checkMode.bind(this))
   this.checkMode()

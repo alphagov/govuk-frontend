@@ -21,7 +21,10 @@ function Checkboxes ($module) {
     return this
   }
 
+  /** @deprecated Will be made private in v5.0 */
   this.$module = $module
+
+  /** @deprecated Will be made private in v5.0 */
   this.$inputs = $inputs
 }
 

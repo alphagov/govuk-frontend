@@ -15,8 +15,13 @@ function SkipLink ($module) {
     return this
   }
 
+  /** @deprecated Will be made private in v5.0 */
   this.$module = $module
+
+  /** @deprecated Will be made private in v5.0 */
   this.$linkedElement = null
+
+  /** @deprecated Will be made private in v5.0 */
   this.linkedElementListener = false
 }
 

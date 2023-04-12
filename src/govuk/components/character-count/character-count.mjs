@@ -88,7 +88,10 @@ function CharacterCount ($module, config) {
     }
   }
 
-  /** @type {CharacterCountConfig} */
+  /**
+   * @deprecated Will be made private in v5.0
+   * @type {CharacterCountConfig}
+   */
   this.config = mergeConfigs(
     defaultConfig,
     config || {},
@@ -96,6 +99,7 @@ function CharacterCount ($module, config) {
     datasetConfig
   )
 
+  /** @deprecated Will be made private in v5.0 */
   this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'), {
     // Read the fallback if necessary rather than have it set in the defaults
     locale: closestAttributeValue($module, 'lang')
@@ -110,12 +114,22 @@ function CharacterCount ($module, config) {
     return
   }
 
+  /** @deprecated Will be made private in v5.0 */
   this.$module = $module
+
+  /** @deprecated Will be made private in v5.0 */
   this.$textarea = $textarea
+
+  /** @deprecated Will be made private in v5.0 */
   this.$visibleCountMessage = null
+
+  /** @deprecated Will be made private in v5.0 */
   this.$screenReaderCountMessage = null
 
+  /** @deprecated Will be made private in v5.0 */
   this.lastInputTimestamp = null
+
+  /** @deprecated Will be made private in v5.0 */
   this.lastInputValue = ''
 }
 

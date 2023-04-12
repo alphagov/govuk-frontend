@@ -20,14 +20,20 @@ function Button ($module, config) {
     return this
   }
 
+  /** @deprecated Will be made private in v5.0 */
   this.$module = $module
+
+  /** @deprecated Will be made private in v5.0 */
   this.debounceFormSubmitTimer = null
 
   var defaultConfig = {
     preventDoubleClick: false
   }
 
-  /** @type {ButtonConfig} */
+  /**
+   * @deprecated Will be made private in v5.0
+   * @type {ButtonConfig}
+   */
   this.config = mergeConfigs(
     defaultConfig,
     config || {},

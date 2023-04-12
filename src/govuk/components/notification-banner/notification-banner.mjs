@@ -14,13 +14,17 @@ function NotificationBanner ($module, config) {
     return this
   }
 
+  /** @deprecated Will be made private in v5.0 */
   this.$module = $module
 
   var defaultConfig = {
     disableAutoFocus: false
   }
 
-  /** @type {NotificationBannerConfig} */
+  /**
+   * @deprecated Will be made private in v5.0
+   * @type {NotificationBannerConfig}
+   */
   this.config = mergeConfigs(
     defaultConfig,
     config || {},
