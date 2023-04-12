@@ -1,5 +1,7 @@
-const { compileSassString } = require('govuk-frontend-lib/jest-helpers')
+const { helpers } = require('govuk-frontend-lib')
 const { outdent } = require('outdent')
+
+const { compileSassString } = helpers.tests
 
 describe('@mixin govuk-width-container', () => {
   it('allows different widths to be specified using $width', async () => {

@@ -1,11 +1,13 @@
 import { readFile } from 'fs/promises'
 import { basename, dirname, join } from 'path'
 
-import { getListing } from 'govuk-frontend-lib/file-helper.js'
+import { helpers } from 'govuk-frontend-lib'
 import yaml from 'js-yaml'
 import nunjucks from 'nunjucks'
 
 import { files } from './index.mjs'
+
+const { getListing } = helpers.files
 
 /**
  * Generate fixtures.json from component data

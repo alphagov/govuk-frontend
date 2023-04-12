@@ -1,5 +1,7 @@
-const { compileSassString } = require('govuk-frontend-lib/jest-helpers')
+const { helpers } = require('govuk-frontend-lib')
 const { outdent } = require('outdent')
+
+const { compileSassString } = helpers.tests
 
 const sassBootstrap = `
   @import "settings/media-queries";

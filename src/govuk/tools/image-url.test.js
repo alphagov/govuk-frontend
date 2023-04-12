@@ -1,5 +1,7 @@
-const { compileSassString } = require('govuk-frontend-lib/jest-helpers')
+const { helpers } = require('govuk-frontend-lib')
 const { outdent } = require('outdent')
+
+const { compileSassString } = helpers.tests
 
 describe('@function image-url', () => {
   it('by default concatenates the image path and the filename', async () => {

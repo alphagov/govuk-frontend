@@ -1,7 +1,9 @@
 const cheerio = require('cheerio')
-const { getExamples } = require('govuk-frontend-lib/file-helper')
-const { axe } = require('govuk-frontend-lib/jest-helpers')
-const { render } = require('govuk-frontend-lib/nunjucks-helpers')
+const { helpers } = require('govuk-frontend-lib')
+
+const { getExamples } = helpers.files
+const { render } = helpers.nunjucks
+const { axe } = helpers.tests
 
 describe('Label', () => {
   let examples

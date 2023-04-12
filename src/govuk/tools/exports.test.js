@@ -1,5 +1,7 @@
-const { compileSassString } = require('govuk-frontend-lib/jest-helpers')
+const { helpers } = require('govuk-frontend-lib')
 const { outdent } = require('outdent')
+
+const { compileSassString } = helpers.tests
 
 describe('@mixin govuk-exports', () => {
   it('will only output a named section once', async () => {

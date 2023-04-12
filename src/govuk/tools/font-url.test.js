@@ -1,5 +1,7 @@
-const { compileSassString } = require('govuk-frontend-lib/jest-helpers')
+const { helpers } = require('govuk-frontend-lib')
 const { outdent } = require('outdent')
+
+const { compileSassString } = helpers.tests
 
 describe('@function font-url', () => {
   it('by default concatenates the font path and the filename', async () => {

@@ -1,4 +1,6 @@
-const { goToExample } = require('govuk-frontend-lib/puppeteer-helpers')
+const { helpers } = require('govuk-frontend-lib')
+
+const { goToExample } = helpers.puppeteer
 
 describe('/examples/template-default', () => {
   describe('skip link', () => {
