@@ -64,6 +64,14 @@ This was added in [pull request #2230: Add extra letter spacing modifier for inp
 
 ### Deprecated features
 
+#### Stop using JavaScript API properties other than the `init` method
+
+We have deprecated all of the JavaScript properties in the API, except for the `init` method for each component. We will make all of the deprecated JavaScript properties private in v5.0.
+
+Please [let us know if you're using parts of the API other than the `init` method by filling in this form](https://docs.google.com/forms/d/e/1FAIpQLSfmH2AitMeouXqB0FWC5p5e6y1TSiFCjmJ8DrVuwfmpRGCaWw/viewform?usp=sf_link). We'll use this information when prioritising future additions to the public API.
+
+This was added in [pull request #3499: Deprecate all JavaScript instance properties the except `init` method](https://github.com/alphagov/govuk-frontend/pull/3499).
+
 #### Stop using the `govuk-button--disabled` class on buttons
 
 The `govuk-button--disabled` class is deprecated and will be removed in the next major release.
