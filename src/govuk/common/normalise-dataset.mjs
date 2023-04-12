@@ -14,6 +14,7 @@ import '../vendor/polyfills/String/prototype/trim.mjs'
  * Designed to be used to convert config passed via data attributes (which are
  * always strings) into something sensible.
  *
+ * @deprecated Will be made private in v5.0
  * @param {string} value - The value to normalise
  * @returns {string | boolean | number | undefined} Normalised data
  */
@@ -46,6 +47,7 @@ export function normaliseString (value) {
  *
  * Loop over an object and normalise each value using normaliseData function
  *
+ * @deprecated Will be made private in v5.0
  * @param {DOMStringMap} dataset - HTML element dataset
  * @returns {Object<string, unknown>} Normalised dataset
  */
