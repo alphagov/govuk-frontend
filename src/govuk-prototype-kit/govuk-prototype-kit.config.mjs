@@ -1,8 +1,8 @@
 import { join } from 'path'
 
+import { paths } from 'govuk-frontend-config'
 import slash from 'slash'
 
-import { paths } from '../../config/index.js'
 import { filterPath, getDirectories, getListing } from '../../lib/file-helper.js'
 import { componentNameToMacroName } from '../../lib/helper-functions.js'
 

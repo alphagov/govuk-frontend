@@ -1,9 +1,8 @@
 import { join } from 'path'
 
+import { paths } from 'govuk-frontend-config'
 import { npm, scripts, task } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
-
-import { paths } from '../../config/index.js'
 
 /**
  * JavaScripts task (for watch)

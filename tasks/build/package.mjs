@@ -1,8 +1,8 @@
 import { join } from 'path'
 
+import { paths } from 'govuk-frontend-config'
 import gulp from 'gulp'
 
-import { paths } from '../../config/index.js'
 import { components, configs, files, scripts, styles, task } from '../index.mjs'
 
 /**

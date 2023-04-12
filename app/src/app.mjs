@@ -1,8 +1,8 @@
 import { join } from 'path'
 
 import express from 'express'
+import { paths } from 'govuk-frontend-config'
 
-import { paths } from '../../config/index.js'
 import { getDirectories, getComponentsData, getFullPageExamples } from '../../lib/file-helper.js'
 import { componentNameToMacroName } from '../../lib/helper-functions.js'
 

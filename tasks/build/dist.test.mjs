@@ -2,7 +2,8 @@ import { readFile } from 'fs/promises'
 import { EOL } from 'os'
 import { join } from 'path'
 
-import { paths, pkg } from '../../config/index.js'
+import { paths, pkg } from 'govuk-frontend-config'
+
 import { getListing } from '../../lib/file-helper.js'
 
 describe('dist/', () => {

@@ -1,11 +1,11 @@
 import { join, parse } from 'path'
 
+import { pkg } from 'govuk-frontend-config'
 import PluginError from 'plugin-error'
 import { rollup } from 'rollup'
 import replace from 'rollup-plugin-replace'
 import { minify } from 'terser'
 
-import { pkg } from '../config/index.js'
 import { getListing } from '../lib/file-helper.js'
 import { componentPathToModuleName } from '../lib/helper-functions.js'
 

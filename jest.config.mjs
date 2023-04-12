@@ -1,3 +1,6 @@
+/**
+ * @type {import('jest').Config}
+ */
 const config = {
   cacheDirectory: '<rootDir>/.cache/jest/',
   clearMocks: true,
@@ -33,6 +36,9 @@ const config = {
   ]
 }
 
+/**
+ * @type {import('jest').Config}
+ */
 export default {
   collectCoverageFrom: ['./src/**/*.{js,mjs}'],
   projects: [
@@ -46,11 +52,11 @@ export default {
     {
       ...config,
       displayName: 'Nunjucks macro tests',
-      setupFilesAfterEnv: ['./config/jest/matchers.js'],
+      setupFilesAfterEnv: ['govuk-frontend-config/jest/matchers.js'],
       snapshotSerializers: [
         'jest-serializer-html'
       ],
-      testEnvironment: './config/jest/environment/jsdom.mjs',
+      testEnvironment: 'govuk-frontend-config/jest/environment/jsdom.mjs',
       testMatch: [
         '**/(*.)?template.test.{js,mjs}'
       ]
@@ -58,7 +64,7 @@ export default {
     {
       ...config,
       displayName: 'JavaScript unit tests',
-      testEnvironment: './config/jest/environment/jsdom.mjs',
+      testEnvironment: 'govuk-frontend-config/jest/environment/jsdom.mjs',
       testMatch: [
         '**/*.unit.test.{js,mjs}'
       ]
@@ -80,13 +86,13 @@ export default {
       ],
 
       // Web server required
-      globalSetup: './config/jest/server/start.mjs',
-      globalTeardown: './config/jest/server/stop.mjs'
+      globalSetup: 'govuk-frontend-config/jest/server/start.mjs',
+      globalTeardown: 'govuk-frontend-config/jest/server/stop.mjs'
     },
     {
       ...config,
       displayName: 'JavaScript component tests',
-      testEnvironment: './config/jest/environment/puppeteer.mjs',
+      testEnvironment: 'govuk-frontend-config/jest/environment/puppeteer.mjs',
       testMatch: [
         '**/components/globals.test.mjs',
         '**/components/*/*.test.{js,mjs}',
@@ -97,8 +103,8 @@ export default {
       ],
 
       // Web server and browser required
-      globalSetup: './config/jest/browser/open.mjs',
-      globalTeardown: './config/jest/browser/close.mjs'
+      globalSetup: 'govuk-frontend-config/jest/browser/open.mjs',
+      globalTeardown: 'govuk-frontend-config/jest/browser/close.mjs'
     }
   ],
 

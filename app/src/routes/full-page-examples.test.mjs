@@ -1,6 +1,5 @@
 import { load } from 'cheerio'
-
-import { ports } from '../../../config/index.js'
+import { ports } from 'govuk-frontend-config'
 
 const expectedPages = [
   'bank-holidays',

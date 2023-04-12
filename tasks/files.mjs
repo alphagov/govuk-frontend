@@ -4,9 +4,8 @@ import { join, parse } from 'path'
 
 import cpy from 'cpy'
 import { deleteAsync } from 'del'
+import { pkg } from 'govuk-frontend-config'
 import slash from 'slash'
-
-import { pkg } from '../config/index.js'
 
 /**
  * Delete path globs for a given destination

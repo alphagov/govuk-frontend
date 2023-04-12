@@ -2,36 +2,12 @@ import { join } from 'path'
 
 import percySnapshot from '@percy/puppeteer'
 import { isPercyEnabled } from '@percy/sdk-utils'
+import { paths } from 'govuk-frontend-config'
+import { download } from 'govuk-frontend-config/jest/browser/download.mjs'
 import puppeteer from 'puppeteer'
 
-import { paths } from '../config/index.js'
 import { filterPath, getDirectories, getListing } from '../lib/file-helper.js'
 import { goToComponent, goToExample } from '../lib/puppeteer-helpers.js'
-import configPuppeteer from '../puppeteer.config.js'
-
-/**
- * Puppeteer browser downloader
- */
-export async function download () {
-  const fetcher = puppeteer.createBrowserFetcher({
-    path: join(configPuppeteer.cacheDirectory, 'chrome')
-  })
-
-  // Available versions
-  // @ts-expect-error 'defaultBrowserRevision' is marked @internal
-  const latest = puppeteer.defaultBrowserRevision
-  const versions = fetcher.localRevisions()
-
-  // Download latest browser (unless cached)
-  if (!versions.includes(latest)) {
-    await fetcher.download(latest)
-
-    // Remove outdated browser versions
-    for (const version of versions) {
-      await fetcher.remove(version)
-    }
-  }
-}
 
 /**
  * Puppeteer browser launcher

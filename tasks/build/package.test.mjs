@@ -1,7 +1,8 @@
 import { readFile } from 'fs/promises'
 import { join } from 'path'
 
-import { paths, pkg } from '../../config/index.js'
+import { paths, pkg } from 'govuk-frontend-config'
+
 import { filterPath, getDirectories, getListing, mapPathTo } from '../../lib/file-helper.js'
 import { componentNameToClassName, componentPathToModuleName } from '../../lib/helper-functions.js'
 import { compileSassFile } from '../../lib/jest-helpers.js'

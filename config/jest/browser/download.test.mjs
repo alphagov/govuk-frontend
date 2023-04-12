@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer'
 
-import { download } from './browser.mjs'
+import { download } from './download.mjs'
 
 jest.mock('puppeteer')
 

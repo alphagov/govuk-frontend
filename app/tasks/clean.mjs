@@ -1,8 +1,7 @@
 import { join } from 'path'
 
+import { paths } from 'govuk-frontend-config'
 import { files } from 'govuk-frontend-tasks'
-
-import { paths } from '../../config/index.js'
 
 /**
  * Clean task

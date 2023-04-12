@@ -1,6 +1,7 @@
 import autoprefixer from 'autoprefixer'
 import cssnano from 'cssnano'
 import cssnanoPresetDefault from 'cssnano-preset-default'
+import { pkg } from 'govuk-frontend-config'
 import { isDev } from 'govuk-frontend-tasks/helpers/task-arguments.mjs'
 import { minimatch } from 'minimatch'
 import postcss from 'postcss'
@@ -9,8 +10,6 @@ import scss from 'postcss-scss'
 import unmq from 'postcss-unmq'
 import unopacity from 'postcss-unopacity'
 import unrgba from 'postcss-unrgba'
-
-import { pkg } from './config/index.js'
 
 /**
  * PostCSS config
