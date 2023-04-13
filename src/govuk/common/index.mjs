@@ -13,6 +13,7 @@
  * This seems to fail in IE8, requires more investigation.
  * See: https://github.com/imagitama/nodelist-foreach-polyfill
  *
+ * @deprecated Will be made private in v5.0
  * @template {Node} ElementType
  * @param {NodeListOf<ElementType>} nodes - NodeList from querySelectorAll()
  * @param {nodeListIterator<ElementType>} callback - Callback function to run for each node
@@ -32,6 +33,7 @@ export function nodeListForEach (nodes, callback) {
  * without them conflicting with each other.
  * https://stackoverflow.com/a/8809472
  *
+ * @deprecated Will be made private in v5.0
  * @returns {string} Unique ID
  */
 export function generateUniqueID () {
@@ -53,6 +55,7 @@ export function generateUniqueID () {
  * (e.g. {'i18n.showSection': 'Show section'}) and combines them together, with
  * greatest priority on the LAST item passed in.
  *
+ * @deprecated Will be made private in v5.0
  * @returns {Object<string, unknown>} A flattened object of key-value pairs.
  */
 export function mergeConfigs (/* configObject1, configObject2, ...configObjects */) {
@@ -126,6 +129,7 @@ export function mergeConfigs (/* configObject1, configObject2, ...configObjects 
  * Extracts keys starting with a particular namespace from a flattened config
  * object, removing the namespace in the process.
  *
+ * @deprecated Will be made private in v5.0
  * @param {Object<string, unknown>} configObject - The object to extract key-value pairs from.
  * @param {string} namespace - The namespace to filter keys with.
  * @returns {Object<string, unknown>} Flattened object with dot-separated key namespace removed

@@ -21,7 +21,10 @@ function Checkboxes ($module) {
     return this
   }
 
+  /** @deprecated Will be made private in v5.0 */
   this.$module = $module
+
+  /** @deprecated Will be made private in v5.0 */
   this.$inputs = $inputs
 }
 
@@ -83,6 +86,8 @@ Checkboxes.prototype.init = function () {
 
 /**
  * Sync the conditional reveal states for all checkboxes in this $module.
+ *
+ * @deprecated Will be made private in v5.0
  */
 Checkboxes.prototype.syncAllConditionalReveals = function () {
   nodeListForEach(this.$inputs, this.syncConditionalRevealWithInputState.bind(this))
@@ -94,6 +99,7 @@ Checkboxes.prototype.syncAllConditionalReveals = function () {
  * Synchronise the visibility of the conditional reveal, and its accessible
  * state, with the input's checked state.
  *
+ * @deprecated Will be made private in v5.0
  * @param {HTMLInputElement} $input - Checkbox input
  */
 Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
@@ -117,6 +123,7 @@ Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
  * Find any other checkbox inputs with the same name value, and uncheck them.
  * This is useful for when a “None of these" checkbox is checked.
  *
+ * @deprecated Will be made private in v5.0
  * @param {HTMLInputElement} $input - Checkbox input
  */
 Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
@@ -144,6 +151,7 @@ Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
  * and uncheck them. This helps prevent someone checking both a regular checkbox and a
  * "None of these" checkbox in the same fieldset.
  *
+ * @deprecated Will be made private in v5.0
  * @param {HTMLInputElement} $input - Checkbox input
  */
 Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
@@ -170,6 +178,7 @@ Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
  * Handle a click within the $module – if the click occurred on a checkbox, sync
  * the state of any associated conditional reveal with the checkbox state.
  *
+ * @deprecated Will be made private in v5.0
  * @param {MouseEvent} event - Click event
  */
 Checkboxes.prototype.handleClick = function (event) {

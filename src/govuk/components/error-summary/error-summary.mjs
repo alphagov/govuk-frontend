@@ -29,13 +29,17 @@ function ErrorSummary ($module, config) {
     return this
   }
 
+  /** @deprecated Will be made private in v5.0 */
   this.$module = $module
 
   var defaultConfig = {
     disableAutoFocus: false
   }
 
-  /** @type {ErrorSummaryConfig} */
+  /**
+   * @deprecated Will be made private in v5.0
+   * @type {ErrorSummaryConfig}
+   */
   this.config = mergeConfigs(
     defaultConfig,
     config || {},
@@ -60,6 +64,8 @@ ErrorSummary.prototype.init = function () {
 
 /**
  * Focus the error summary
+ *
+ * @deprecated Will be made private in v5.0
  */
 ErrorSummary.prototype.setFocus = function () {
   var $module = this.$module
@@ -82,6 +88,7 @@ ErrorSummary.prototype.setFocus = function () {
 /**
  * Click event handler
  *
+ * @deprecated Will be made private in v5.0
  * @param {MouseEvent} event - Click event
  */
 ErrorSummary.prototype.handleClick = function (event) {
@@ -106,6 +113,7 @@ ErrorSummary.prototype.handleClick = function (event) {
  * NVDA (as tested in 2018.3.2) - without this only the field type is announced
  * (e.g. "Edit, has autocomplete").
  *
+ * @deprecated Will be made private in v5.0
  * @param {EventTarget} $target - Event target
  * @returns {boolean} True if the target was able to be focussed
  */
@@ -145,6 +153,7 @@ ErrorSummary.prototype.focusTarget = function ($target) {
  * Extract the fragment (everything after the hash) from a URL, but not including
  * the hash.
  *
+ * @deprecated Will be made private in v5.0
  * @param {string} url - URL
  * @returns {string | undefined} Fragment from URL, without the hash
  */
@@ -167,6 +176,7 @@ ErrorSummary.prototype.getFragmentFromUrl = function (url) {
  * - The first `<label>` that is associated with the input using for="inputId"
  * - The closest parent `<label>`
  *
+ * @deprecated Will be made private in v5.0
  * @param {Element} $input - The input
  * @returns {Element | null} Associated legend or label, or null if no associated
  *   legend or label can be found
