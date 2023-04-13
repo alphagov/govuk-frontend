@@ -1,5 +1,5 @@
 const jestPuppeteerConfig = require('../../../../jest-puppeteer.config')
-const { getExamples } = require('../../../../lib/jest-helpers')
+const { getExamples } = require('../../../../lib/file-helper')
 const { goToComponent, renderAndInitialise } = require('../../../../lib/puppeteer-helpers')
 
 // Detect when browser has been launched headless

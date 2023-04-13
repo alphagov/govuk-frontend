@@ -1,4 +1,8 @@
-const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
+const cheerio = require('cheerio')
+
+const { getExamples } = require('../../../../lib/file-helper')
+const { axe } = require('../../../../lib/jest-helpers')
+const { render } = require('../../../../lib/nunjucks-helpers')
 
 describe('Tabs', () => {
   let examples
@@ -9,21 +13,21 @@ describe('Tabs', () => {
 
   describe('default example', () => {
     it('passes accessibility tests', async () => {
-      const $ = render('tabs', examples.default)
+      const $ = cheerio.load(render('tabs', examples.default))
 
       const results = await axe($.html())
       expect(results).toHaveNoViolations()
     })
 
     it('renders the first tab selected', () => {
-      const $ = render('tabs', examples.default)
+      const $ = cheerio.load(render('tabs', examples.default))
 
       const $tab = $('[href="#past-day"]').parent()
       expect($tab.hasClass('govuk-tabs__list-item--selected')).toBeTruthy()
     })
 
     it('hides all but the first panel', () => {
-      const $ = render('tabs', examples.default)
+      const $ = cheerio.load(render('tabs', examples.default))
 
       expect($('#past-week').hasClass('govuk-tabs__panel--hidden')).toBeTruthy()
       expect($('#past-month').hasClass('govuk-tabs__panel--hidden')).toBeTruthy()
@@ -33,28 +37,28 @@ describe('Tabs', () => {
 
   describe('custom options', () => {
     it('renders with classes', () => {
-      const $ = render('tabs', examples.classes)
+      const $ = cheerio.load(render('tabs', examples.classes))
 
       const $component = $('.govuk-tabs')
       expect($component.hasClass('app-tabs--custom-modifier')).toBeTruthy()
     })
 
     it('renders with id', () => {
-      const $ = render('tabs', examples.id)
+      const $ = cheerio.load(render('tabs', examples.id))
 
       const $component = $('.govuk-tabs')
       expect($component.attr('id')).toEqual('my-tabs')
     })
 
     it('allows custom title text to be passed', () => {
-      const $ = render('tabs', examples.title)
+      const $ = cheerio.load(render('tabs', examples.title))
 
       const content = $('.govuk-tabs__title').html().trim()
       expect(content).toEqual('Custom title for Contents')
     })
 
     it('renders with attributes', () => {
-      const $ = render('tabs', examples.attributes)
+      const $ = cheerio.load(render('tabs', examples.attributes))
 
       const $component = $('.govuk-tabs')
       expect($component.attr('data-attribute')).toEqual('my data value')
@@ -63,21 +67,21 @@ describe('Tabs', () => {
 
   describe('items', () => {
     it('doesn\'t render a list if items is not defined', () => {
-      const $ = render('tabs', examples['no item list'])
+      const $ = cheerio.load(render('tabs', examples['no item list']))
 
       const $component = $('.govuk-tabs')
       expect($component.find('.govuk-tabs__list').length).toEqual(0)
     })
 
     it('doesn\'t render a list if items is empty', () => {
-      const $ = render('tabs', examples['empty item list'])
+      const $ = cheerio.load(render('tabs', examples['empty item list']))
 
       const $component = $('.govuk-tabs')
       expect($component.find('.govuk-tabs__list').length).toEqual(0)
     })
 
     it('render a matching tab and panel using item id', () => {
-      const $ = render('tabs', examples.default)
+      const $ = cheerio.load(render('tabs', examples.default))
 
       const $component = $('.govuk-tabs')
 
@@ -88,7 +92,7 @@ describe('Tabs', () => {
     })
 
     it('render without falsey values', () => {
-      const $ = render('tabs', examples['with falsey values'])
+      const $ = cheerio.load(render('tabs', examples['with falsey values']))
 
       const $component = $('.govuk-tabs')
 
@@ -97,7 +101,7 @@ describe('Tabs', () => {
     })
 
     it('render a matching tab and panel using custom idPrefix', () => {
-      const $ = render('tabs', examples.idPrefix)
+      const $ = cheerio.load(render('tabs', examples.idPrefix))
 
       const $component = $('.govuk-tabs')
 
@@ -108,7 +112,7 @@ describe('Tabs', () => {
     })
 
     it('render the label', () => {
-      const $ = render('tabs', examples.default)
+      const $ = cheerio.load(render('tabs', examples.default))
 
       const $component = $('.govuk-tabs')
 
@@ -117,7 +121,7 @@ describe('Tabs', () => {
     })
 
     it('render with panel content as text, wrapped in styled paragraph', () => {
-      const $ = render('tabs', examples.default)
+      const $ = cheerio.load(render('tabs', examples.default))
       const $component = $('.govuk-tabs')
       const $lastTab = $component.find('.govuk-tabs__panel').last()
 
@@ -126,7 +130,7 @@ describe('Tabs', () => {
     })
 
     it('render escaped html when passed to text content', () => {
-      const $ = render('tabs', examples['html as text'])
+      const $ = cheerio.load(render('tabs', examples['html as text']))
 
       const $component = $('.govuk-tabs')
 
@@ -135,7 +139,7 @@ describe('Tabs', () => {
     })
 
     it('render html when passed to content', () => {
-      const $ = render('tabs', examples.html)
+      const $ = cheerio.load(render('tabs', examples.html))
 
       const $component = $('.govuk-tabs')
 
@@ -144,7 +148,7 @@ describe('Tabs', () => {
     })
 
     it('render a tab anchor with attributes', () => {
-      const $ = render('tabs', examples['item with attributes'])
+      const $ = cheerio.load(render('tabs', examples['item with attributes']))
 
       const $tabItemLink = $('.govuk-tabs__tab')
       expect($tabItemLink.attr('data-attribute')).toEqual('my-attribute')
@@ -152,7 +156,7 @@ describe('Tabs', () => {
     })
 
     it('render a tab panel with attributes', () => {
-      const $ = render('tabs', examples['panel with attributes'])
+      const $ = cheerio.load(render('tabs', examples['panel with attributes']))
 
       const $tabPanelItems = $('.govuk-tabs__panel')
       expect($tabPanelItems.attr('data-attribute')).toEqual('my-attribute')

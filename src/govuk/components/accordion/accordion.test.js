@@ -1,4 +1,4 @@
-const { getExamples } = require('../../../../lib/jest-helpers')
+const { getExamples } = require('../../../../lib/file-helper')
 const { goToComponent, goToExample, renderAndInitialise, getAccessibleName } = require('../../../../lib/puppeteer-helpers')
 
 describe('/components/accordion', () => {
