@@ -7,10 +7,9 @@ scenario: >-
 
   1. Do not answer the question
 
-hidden: true
 ---
 
-{# This example is based of the  "What is your home postcode?" example: https://design-system.service.gov.uk/patterns/question-pages/postcode/index.html #}
+{# This example is based of the  "What is your national insurance number?" example: https://design-system.service.gov.uk/patterns/national-insurance-numbers/default/index.html #}
 {% extends "full-page-example.njk" %}
 
 {% from "back-link/macro.njk" import govukBackLink %}
@@ -18,7 +17,7 @@ hidden: true
 {% from "error-summary/macro.njk" import govukErrorSummary %}
 {% from "input/macro.njk" import govukInput %}
 
-{% set pageTitle = "What is your home postcode?" %}
+{% set pageTitle = "What is your national insurance number?" %}
 {% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}
@@ -40,15 +39,16 @@ hidden: true
 
     {{ govukInput({
       label: {
-        text: pageTitle,
-        classes: "govuk-label--xl",
-        isPageHeading: true
+        text: "National Insurance number"
+      },
+      hint: {
+        text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
       },
       classes: "govuk-input--width-10",
-      id: "address-postcode",
-      name: "address-postcode",
-      autocomplete: "postal-code",
-      errorMessage: errors["address-postcode"]
+      id: "national-insurance-number",
+      name: "national-insurance-number",
+      spellcheck: false,
+      errorMessage: errors["national-insurance-number"]
     }) }}
 
     {{ govukButton({

@@ -14,7 +14,11 @@ export default (app) => {
   routes.uploadYourPhoto(app)
   routes.uploadYourPhotoSuccess(app)
   routes.whatIsYourAddress(app)
+  routes.whatAreYourBankDetails(app)
+  routes.whatIsYourDateOfBirth(app)
+  routes.whatIsYourNationalInsuranceNumber(app)
   routes.whatIsYourNationality(app)
+  routes.whatIsYourTelephoneNumber(app)
   routes.whatIsYourPostcode(app)
   routes.whatWasTheLastCountryYouVisited(app)
 
