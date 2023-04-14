@@ -8,7 +8,7 @@ export default (app) => {
   app.use(function (request, response, next) {
     const { query, cookies } = request
 
-    if (query.has('hide-banner')) {
+    if ('hide-banner' in query) {
       app.locals.shouldShowAppBanner = false
       return next()
     }
