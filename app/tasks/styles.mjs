@@ -1,9 +1,9 @@
 import { join } from 'path'
 
+import { npm, styles, task } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
 
 import { paths } from '../../config/index.js'
-import { npm, styles, task } from '../../tasks/index.mjs'
 
 /**
  * Stylesheets task (for watch)

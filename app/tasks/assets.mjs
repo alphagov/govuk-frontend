@@ -1,7 +1,8 @@
 import { join } from 'path'
 
+import { files } from 'govuk-frontend-tasks'
+
 import { paths } from '../../config/index.js'
-import { files } from '../../tasks/index.mjs'
 
 /**
  * Copy GOV.UK Frontend static assets

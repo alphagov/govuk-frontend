@@ -1,7 +1,7 @@
+import { npm } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
 
 import { paths } from '../../../config/index.js'
-import { npm } from '../../../tasks/index.mjs'
 import { watch } from '../index.mjs'
 
 import dist from './dist.mjs'

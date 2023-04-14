@@ -1,6 +1,5 @@
+import { download } from 'govuk-frontend-tasks/browser.mjs'
 import setup from 'jest-environment-puppeteer/setup'
-
-import { download } from '../../../tasks/browser.mjs'
 
 /**
  * Open browser

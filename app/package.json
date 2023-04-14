@@ -37,11 +37,12 @@
     "nodemon": "^2.0.22",
     "nunjucks": "^3.2.3",
     "outdent": "^0.8.0",
-    "shuffle-seed": "^1.1.6",
-    "slash": "^5.0.0"
+    "shuffle-seed": "^1.1.6"
   },
   "devDependencies": {
     "cheerio": "^1.0.0-rc.12",
+    "govuk-frontend-tasks": "*",
+    "slash": "^5.0.0",
     "supertest": "^6.3.3"
   }
 }
