@@ -1,5 +1,6 @@
 const { join } = require('path')
 
+const cheerio = require('cheerio')
 const { paths } = require('govuk-frontend-config')
 const { componentNameToMacroName } = require('govuk-frontend-lib/names')
 const nunjucks = require('nunjucks')
@@ -16,7 +17,7 @@ const nunjucksEnv = nunjucks.configure(nunjucksPaths, {
 })
 
 /**
- * Render the raw HTML for a component
+ * Render component HTML
  *
  * @param {string} componentName - Component name
  * @param {object} options - options to pass to the component macro
@@ -24,11 +25,24 @@ const nunjucksEnv = nunjucks.configure(nunjucksPaths, {
  *   Nunjucks call tag, with the callBlock passed as the contents of the block
  * @returns {string} HTML rendered by the macro
  */
-function render (componentName, options, callBlock) {
+function renderHTML (componentName, options, callBlock) {
   const macroName = componentNameToMacroName(componentName)
   const macroPath = `${componentName}/macro.njk`
 
   return callMacro(macroName, macroPath, [options], callBlock)
+}
+
+/**
+ * Render component HTML into cheerio
+ *
+ * @param {string} componentName - Component name
+ * @param {object} options - options to pass to the component macro
+ * @param {string} [callBlock] - if provided, the macro is called using the
+ *   Nunjucks call tag, with the callBlock passed as the contents of the block
+ * @returns {import('cheerio').CheerioAPI} HTML rendered by the macro
+ */
+function render (componentName, options, callBlock) {
+  return cheerio.load(renderHTML(componentName, options, callBlock))
 }
 
 /**
@@ -53,15 +67,15 @@ function callMacro (macroName, macroPath, params = [], callBlock) {
     macroString += `{{- ${macroName}(${macroParams}) -}}`
   }
 
-  return nunjucksEnv.renderString(macroString)
+  return nunjucksEnv.renderString(macroString, {})
 }
 
 /**
- * Render Nunjucks template
+ * Render Nunjucks template HTML into cheerio
  *
  * @param {object} [context] - Nunjucks context
  * @param {Object<string, string>} [blocks] - Nunjucks blocks
- * @returns {string} Nunjucks template output
+ * @returns {import('cheerio').CheerioAPI} Nunjucks template output
  */
 function renderTemplate (context = {}, blocks = {}) {
   let viewString = '{% extends "template.njk" %}'
@@ -74,12 +88,13 @@ function renderTemplate (context = {}, blocks = {}) {
       {%- endblock %}`
   }
 
-  return nunjucksEnv.renderString(viewString, context)
+  return cheerio.load(nunjucksEnv.renderString(viewString, context))
 }
 
 module.exports = {
   nunjucksEnv,
   callMacro,
   render,
+  renderHTML,
   renderTemplate
 }

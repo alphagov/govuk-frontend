@@ -1,4 +1,3 @@
-const cheerio = require('cheerio')
 const { render } = require('govuk-frontend-helpers/nunjucks')
 const { axe, htmlWithClassName } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
@@ -14,14 +13,14 @@ describe('Checkboxes', () => {
   })
 
   it('default example passes accessibility tests', async () => {
-    const $ = cheerio.load(render('checkboxes', examples.default))
+    const $ = render('checkboxes', examples.default)
 
     const results = await axe($.html())
     expect(results).toHaveNoViolations()
   })
 
   it('render example with minimum required name and items', () => {
-    const $ = cheerio.load(render('checkboxes', examples.default))
+    const $ = render('checkboxes', examples.default)
 
     const $component = $('.govuk-checkboxes')
 
@@ -39,7 +38,7 @@ describe('Checkboxes', () => {
   })
 
   it('render example without falsely values', () => {
-    const $ = cheerio.load(render('checkboxes', examples['with falsey values']))
+    const $ = render('checkboxes', examples['with falsey values'])
 
     const $component = $('.govuk-checkboxes')
     const $items = $component.find('.govuk-checkboxes__item')
@@ -48,7 +47,7 @@ describe('Checkboxes', () => {
   })
 
   it('render example with a divider and ‘None’ checkbox with exclusive behaviour', () => {
-    const $ = cheerio.load(render('checkboxes', examples['with divider and None']))
+    const $ = render('checkboxes', examples['with divider and None'])
 
     const $component = $('.govuk-checkboxes')
 
@@ -63,7 +62,7 @@ describe('Checkboxes', () => {
   })
 
   it('render additional label classes', () => {
-    const $ = cheerio.load(render('checkboxes', examples['with label classes']))
+    const $ = render('checkboxes', examples['with label classes'])
 
     const $component = $('.govuk-checkboxes')
     const $label = $component.find('.govuk-checkboxes__item label')
@@ -71,7 +70,7 @@ describe('Checkboxes', () => {
   })
 
   it('render classes', () => {
-    const $ = cheerio.load(render('checkboxes', examples.classes))
+    const $ = render('checkboxes', examples.classes)
 
     const $component = $('.govuk-checkboxes')
 
@@ -79,14 +78,14 @@ describe('Checkboxes', () => {
   })
 
   it('renders initial aria-describedby on fieldset', () => {
-    const $ = cheerio.load(render('checkboxes', examples['with fieldset describedBy']))
+    const $ = render('checkboxes', examples['with fieldset describedBy'])
 
     const $fieldset = $('.govuk-fieldset')
     expect($fieldset.attr('aria-describedby')).toMatch('some-id')
   })
 
   it('render attributes', () => {
-    const $ = cheerio.load(render('checkboxes', examples.attributes))
+    const $ = render('checkboxes', examples.attributes)
 
     const $component = $('.govuk-checkboxes')
 
@@ -95,14 +94,14 @@ describe('Checkboxes', () => {
   })
 
   it('renders with a form group wrapper', () => {
-    const $ = cheerio.load(render('checkboxes', examples.default))
+    const $ = render('checkboxes', examples.default)
 
     const $formGroup = $('.govuk-form-group')
     expect($formGroup.length).toBeTruthy()
   })
 
   it('render a custom class on the form group', () => {
-    const $ = cheerio.load(render('checkboxes', examples['with optional form-group classes showing group error']))
+    const $ = render('checkboxes', examples['with optional form-group classes showing group error'])
 
     const $formGroup = $('.govuk-form-group')
     expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
@@ -110,7 +109,7 @@ describe('Checkboxes', () => {
 
   describe('items', () => {
     it('render a matching label and input using name by default', () => {
-      const $ = cheerio.load(render('checkboxes', examples.default))
+      const $ = render('checkboxes', examples.default)
 
       const $component = $('.govuk-checkboxes')
 
@@ -126,7 +125,7 @@ describe('Checkboxes', () => {
     })
 
     it('render a matching label and input using custom idPrefix', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with idPrefix']))
+      const $ = render('checkboxes', examples['with idPrefix'])
 
       const $component = $('.govuk-checkboxes')
 
@@ -142,7 +141,7 @@ describe('Checkboxes', () => {
     })
 
     it('render explicitly passed item ids', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with id and name']))
+      const $ = render('checkboxes', examples['with id and name'])
 
       const $component = $('.govuk-checkboxes')
 
@@ -156,7 +155,7 @@ describe('Checkboxes', () => {
     })
 
     it('render explicitly passed item names', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with id and name']))
+      const $ = render('checkboxes', examples['with id and name'])
 
       const $component = $('.govuk-checkboxes')
 
@@ -165,7 +164,7 @@ describe('Checkboxes', () => {
     })
 
     it('render disabled', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with disabled item']))
+      const $ = render('checkboxes', examples['with disabled item'])
 
       const $component = $('.govuk-checkboxes')
 
@@ -174,7 +173,7 @@ describe('Checkboxes', () => {
     })
 
     it('render checked', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with checked item']))
+      const $ = render('checkboxes', examples['with checked item'])
 
       const $component = $('.govuk-checkboxes')
       const $secondInput = $component.find('.govuk-checkboxes__item:nth-child(2) input')
@@ -184,7 +183,7 @@ describe('Checkboxes', () => {
     })
 
     it('checks the checkboxes in values', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with pre-checked values']))
+      const $ = render('checkboxes', examples['with pre-checked values'])
 
       const $component = $('.govuk-checkboxes')
       const $british = $component.find('input[value="british"]')
@@ -195,7 +194,7 @@ describe('Checkboxes', () => {
     })
 
     it('allows item.checked to override values', () => {
-      const $ = cheerio.load(render('checkboxes', examples['item checked overrides values']))
+      const $ = render('checkboxes', examples['item checked overrides values'])
 
       const $green = $('.govuk-checkboxes').find('input[value="green"]')
       expect($green.attr('checked')).toBeUndefined()
@@ -203,7 +202,7 @@ describe('Checkboxes', () => {
 
     describe('when they include attributes', () => {
       it('it renders the attributes', () => {
-        const $ = cheerio.load(render('checkboxes', examples['items with attributes']))
+        const $ = render('checkboxes', examples['items with attributes'])
 
         const $component = $('.govuk-checkboxes')
 
@@ -220,20 +219,20 @@ describe('Checkboxes', () => {
 
   describe('when they include a hint', () => {
     it('it renders the hint text', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with hints on items']))
+      const $ = render('checkboxes', examples['with hints on items'])
 
       const $firstHint = $('.govuk-checkboxes__hint').first()
       expect($firstHint.text().trim()).toContain('You\'ll have a user ID if you\'ve registered for Self Assessment or filed a tax return online before.')
     })
 
     it('it renders the correct id attribute for the hint', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with hints on items']))
+      const $ = render('checkboxes', examples['with hints on items'])
 
       expect($('.govuk-checkboxes__hint').attr('id')).toBe('government-gateway-item-hint')
     })
 
     it('the input describedBy attribute matches the item hint id', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with hints on items']))
+      const $ = render('checkboxes', examples['with hints on items'])
 
       expect($('.govuk-checkboxes__input').attr('aria-describedby')).toBe('government-gateway-item-hint')
     })
@@ -241,7 +240,7 @@ describe('Checkboxes', () => {
 
   describe('render conditionals', () => {
     it('hidden by default when not checked', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with conditional items']))
+      const $ = render('checkboxes', examples['with conditional items'])
 
       const $component = $('.govuk-checkboxes')
 
@@ -250,7 +249,7 @@ describe('Checkboxes', () => {
       expect($firstConditional.hasClass('govuk-checkboxes__conditional--hidden')).toBeTruthy()
     })
     it('visible by default when checked', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with conditional item checked']))
+      const $ = render('checkboxes', examples['with conditional item checked'])
 
       const $component = $('.govuk-checkboxes')
 
@@ -260,7 +259,7 @@ describe('Checkboxes', () => {
     })
 
     it('visible when checked with pre-checked values', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with pre-checked values']))
+      const $ = render('checkboxes', examples['with pre-checked values'])
 
       const $component = $('.govuk-checkboxes')
 
@@ -270,7 +269,7 @@ describe('Checkboxes', () => {
     })
 
     it('with association to the input they are controlled by', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with conditional items']))
+      const $ = render('checkboxes', examples['with conditional items'])
 
       const $component = $('.govuk-checkboxes')
 
@@ -282,14 +281,14 @@ describe('Checkboxes', () => {
     })
 
     it('omits empty conditionals', () => {
-      const $ = cheerio.load(render('checkboxes', examples['empty conditional']))
+      const $ = render('checkboxes', examples['empty conditional'])
 
       const $component = $('.govuk-checkboxes')
       expect($component.find('.govuk-checkboxes__conditional').length).toEqual(0)
     })
 
     it('does not associate checkboxes with empty conditionals', () => {
-      const $ = cheerio.load(render('checkboxes', examples['empty conditional']))
+      const $ = render('checkboxes', examples['empty conditional'])
 
       const $input = $('.govuk-checkboxes__input').first()
       expect($input.attr('data-aria-controls')).toBeFalsy()
@@ -298,13 +297,13 @@ describe('Checkboxes', () => {
 
   describe('when they include an error message', () => {
     it('renders the error message', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with error message']))
+      const $ = render('checkboxes', examples['with error message'])
 
       expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
     })
 
     it('uses the idPrefix for the error message id if provided', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with error and idPrefix']))
+      const $ = render('checkboxes', examples['with error and idPrefix'])
 
       const $errorMessage = $('.govuk-error-message')
 
@@ -312,7 +311,7 @@ describe('Checkboxes', () => {
     })
 
     it('falls back to using the name for the error message id', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with error message']))
+      const $ = render('checkboxes', examples['with error message'])
 
       const $errorMessage = $('.govuk-error-message')
 
@@ -320,7 +319,7 @@ describe('Checkboxes', () => {
     })
 
     it('associates the fieldset as "described by" the error message', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with fieldset and error message']))
+      const $ = render('checkboxes', examples['with fieldset and error message'])
 
       const $fieldset = $('.govuk-fieldset')
       const $errorMessage = $('.govuk-error-message')
@@ -334,7 +333,7 @@ describe('Checkboxes', () => {
     })
 
     it('associates the fieldset as "described by" the error message and parent fieldset', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with error message and fieldset describedBy']))
+      const $ = render('checkboxes', examples['with error message and fieldset describedBy'])
 
       const $fieldset = $('.govuk-fieldset')
       const $errorMessage = $('.govuk-error-message')
@@ -348,7 +347,7 @@ describe('Checkboxes', () => {
     })
 
     it('does not associate each input as "described by" the error message', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with error message and hints on items']))
+      const $ = render('checkboxes', examples['with error message and hints on items'])
 
       const $inputs = $('input')
 
@@ -362,7 +361,7 @@ describe('Checkboxes', () => {
     })
 
     it('renders with a form group wrapper that has an error state', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with error message']))
+      const $ = render('checkboxes', examples['with error message'])
 
       const $formGroup = $('.govuk-form-group')
       expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
@@ -371,13 +370,13 @@ describe('Checkboxes', () => {
 
   describe('when they include a hint', () => {
     it('renders the hint', () => {
-      const $ = cheerio.load(render('checkboxes', examples['multiple hints']))
+      const $ = render('checkboxes', examples['multiple hints'])
 
       expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
     })
 
     it('associates the fieldset as "described by" the hint', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with id and name']))
+      const $ = render('checkboxes', examples['with id and name'])
 
       const $fieldset = $('.govuk-fieldset')
       const $hint = $('.govuk-hint')
@@ -390,7 +389,7 @@ describe('Checkboxes', () => {
     })
 
     it('associates the fieldset as "described by" the hint and parent fieldset', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with fieldset describedBy']))
+      const $ = render('checkboxes', examples['with fieldset describedBy'])
       const $fieldset = $('.govuk-fieldset')
       const $hint = $('.govuk-hint')
 
@@ -404,7 +403,7 @@ describe('Checkboxes', () => {
 
   describe('when they include both a hint and an error message', () => {
     it('associates the fieldset as described by both the hint and the error message', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with error message and hint']))
+      const $ = render('checkboxes', examples['with error message and hint'])
 
       const $fieldset = $('.govuk-fieldset')
       const errorMessageId = $('.govuk-error-message').attr('id')
@@ -419,7 +418,7 @@ describe('Checkboxes', () => {
     })
 
     it('associates the fieldset as described by the hint, error message and parent fieldset', () => {
-      const $ = cheerio.load(render('checkboxes', examples['with error, hint and fieldset describedBy']))
+      const $ = render('checkboxes', examples['with error, hint and fieldset describedBy'])
 
       const $fieldset = $('.govuk-fieldset')
       const errorMessageId = $('.govuk-error-message').attr('id')
@@ -436,26 +435,26 @@ describe('Checkboxes', () => {
 
   describe('nested dependant components', () => {
     it('have correct nesting order', () => {
-      const $ = cheerio.load(render('checkboxes', examples['fieldset params']))
+      const $ = render('checkboxes', examples['fieldset params'])
 
       const $component = $('.govuk-form-group > .govuk-fieldset > .govuk-checkboxes')
       expect($component.length).toBeTruthy()
     })
 
     it('passes through label params without breaking', () => {
-      const $ = cheerio.load(render('checkboxes', examples['label with attributes']))
+      const $ = render('checkboxes', examples['label with attributes'])
 
       expect(htmlWithClassName($, '.govuk-checkboxes__label')).toMatchSnapshot()
     })
 
     it('passes through fieldset params without breaking', () => {
-      const $ = cheerio.load(render('checkboxes', examples['fieldset params']))
+      const $ = render('checkboxes', examples['fieldset params'])
 
       expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
     })
 
     it('passes through html fieldset params without breaking', () => {
-      const $ = cheerio.load(render('checkboxes', examples['fieldset html params']))
+      const $ = render('checkboxes', examples['fieldset html params'])
 
       expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
     })
@@ -463,13 +462,13 @@ describe('Checkboxes', () => {
 
   describe('single checkbox without a fieldset', () => {
     it('adds aria-describedby to input if there is an error', () => {
-      const $ = cheerio.load(render('checkboxes', examples["with single option set 'aria-describedby' on input"]))
+      const $ = render('checkboxes', examples["with single option set 'aria-describedby' on input"])
       const $input = $('input')
       expect($input.attr('aria-describedby')).toMatch('t-and-c-error')
     })
 
     it('adds aria-describedby to input if there is an error and parent fieldset', () => {
-      const $ = cheerio.load(render('checkboxes', examples["with single option set 'aria-describedby' on input, and describedBy"]))
+      const $ = render('checkboxes', examples["with single option set 'aria-describedby' on input, and describedBy"])
       const $input = $('input')
 
       expect($input.attr('aria-describedby'))
@@ -479,13 +478,13 @@ describe('Checkboxes', () => {
 
   describe('single checkbox (with hint) without a fieldset', () => {
     it('adds aria-describedby to input if there is an error and a hint', () => {
-      const $ = cheerio.load(render('checkboxes', examples["with single option (and hint) set 'aria-describedby' on input"]))
+      const $ = render('checkboxes', examples["with single option (and hint) set 'aria-describedby' on input"])
       const $input = $('input')
       expect($input.attr('aria-describedby')).toMatch('t-and-c-with-hint-error t-and-c-with-hint-item-hint')
     })
 
     it('adds aria-describedby to input if there is an error, hint and parent fieldset', () => {
-      const $ = cheerio.load(render('checkboxes', examples["with single option (and hint) set 'aria-describedby' on input, and describedBy"]))
+      const $ = render('checkboxes', examples["with single option (and hint) set 'aria-describedby' on input, and describedBy"])
       const $input = $('input')
 
       expect($input.attr('aria-describedby'))

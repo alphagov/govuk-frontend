@@ -1,4 +1,3 @@
-const cheerio = require('cheerio')
 const { render } = require('govuk-frontend-helpers/nunjucks')
 const { axe, htmlWithClassName } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
@@ -14,14 +13,14 @@ describe('Radios', () => {
   })
 
   it('default example passes accessibility tests', async () => {
-    const $ = cheerio.load(render('radios', examples.default))
+    const $ = render('radios', examples.default)
 
     const results = await axe($.html())
     expect(results).toHaveNoViolations()
   })
 
   it('render example with minimum required name and items', () => {
-    const $ = cheerio.load(render('radios', examples.default))
+    const $ = render('radios', examples.default)
 
     const $component = $('.govuk-radios')
 
@@ -39,7 +38,7 @@ describe('Radios', () => {
   })
 
   it('renders without falsely items', () => {
-    const $ = cheerio.load(render('radios', examples['with falsey items']))
+    const $ = render('radios', examples['with falsey items'])
 
     const $component = $('.govuk-radios')
     const $items = $component.find('.govuk-radios__item input')
@@ -47,7 +46,7 @@ describe('Radios', () => {
   })
 
   it('render classes', () => {
-    const $ = cheerio.load(render('radios', examples.inline))
+    const $ = render('radios', examples.inline)
 
     const $component = $('.govuk-radios')
 
@@ -57,14 +56,14 @@ describe('Radios', () => {
   it('renders initial aria-describedby on fieldset', () => {
     const describedById = 'some-id'
 
-    const $ = cheerio.load(render('radios', examples['fieldset with describedBy']))
+    const $ = render('radios', examples['fieldset with describedBy'])
 
     const $fieldset = $('.govuk-fieldset')
     expect($fieldset.attr('aria-describedby')).toMatch(describedById)
   })
 
   it('render attributes', () => {
-    const $ = cheerio.load(render('radios', examples.attributes))
+    const $ = render('radios', examples.attributes)
 
     const $component = $('.govuk-radios')
 
@@ -73,7 +72,7 @@ describe('Radios', () => {
   })
 
   it('render a custom class on the form group', () => {
-    const $ = cheerio.load(render('radios', examples['with optional form-group classes showing group error']))
+    const $ = render('radios', examples['with optional form-group classes showing group error'])
 
     const $formGroup = $('.govuk-form-group')
     expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
@@ -81,7 +80,7 @@ describe('Radios', () => {
 
   describe('items', () => {
     it('render a matching label and input using name by default', () => {
-      const $ = cheerio.load(render('radios', examples.default))
+      const $ = render('radios', examples.default)
 
       const $component = $('.govuk-radios')
 
@@ -97,7 +96,7 @@ describe('Radios', () => {
     })
 
     it('render a matching label and input using custom idPrefix', () => {
-      const $ = cheerio.load(render('radios', examples['with idPrefix']))
+      const $ = render('radios', examples['with idPrefix'])
 
       const $component = $('.govuk-radios')
 
@@ -113,7 +112,7 @@ describe('Radios', () => {
     })
 
     it('render disabled', () => {
-      const $ = cheerio.load(render('radios', examples['with disabled']))
+      const $ = render('radios', examples['with disabled'])
 
       const $component = $('.govuk-radios')
 
@@ -122,7 +121,7 @@ describe('Radios', () => {
     })
 
     it('render checked', () => {
-      const $ = cheerio.load(render('radios', examples.prechecked))
+      const $ = render('radios', examples.prechecked)
 
       const $component = $('.govuk-radios')
       const $lastInput = $component.find('.govuk-radios__item:last-child input')
@@ -130,7 +129,7 @@ describe('Radios', () => {
     })
 
     it('checks the radio that matches value', () => {
-      const $ = cheerio.load(render('radios', examples['prechecked using value']))
+      const $ = render('radios', examples['prechecked using value'])
 
       const $component = $('.govuk-radios')
       const $lastInput = $component.find('input[value="no"]')
@@ -138,7 +137,7 @@ describe('Radios', () => {
     })
 
     it('allows item.checked to override value', () => {
-      const $ = cheerio.load(render('radios', examples['item checked overrides value']))
+      const $ = render('radios', examples['item checked overrides value'])
 
       const $green = $('.govuk-radios').find('input[value="green"]')
       expect($green.attr('checked')).toBeUndefined()
@@ -146,7 +145,7 @@ describe('Radios', () => {
 
     describe('when they include attributes', () => {
       it('it renders the attributes', () => {
-        const $ = cheerio.load(render('radios', examples['items with attributes']))
+        const $ = render('radios', examples['items with attributes'])
 
         const $component = $('.govuk-radios')
 
@@ -162,20 +161,20 @@ describe('Radios', () => {
 
     describe('when they include a hint', () => {
       it('it renders the hint text', () => {
-        const $ = cheerio.load(render('radios', examples['with hints on items']))
+        const $ = render('radios', examples['with hints on items'])
 
         expect($('.govuk-radios__hint').text())
           .toContain('You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.')
       })
 
       it('it renders the correct id attribute for the hint', () => {
-        const $ = cheerio.load(render('radios', examples['with hints on items']))
+        const $ = render('radios', examples['with hints on items'])
 
         expect($('.govuk-radios__hint').attr('id')).toBe('gateway-item-hint')
       })
 
       it('the input describedBy attribute matches the item hint id', () => {
-        const $ = cheerio.load(render('radios', examples['with hints on items']))
+        const $ = render('radios', examples['with hints on items'])
 
         expect($('.govuk-radios__input').attr('aria-describedby')).toBe('gateway-item-hint')
       })
@@ -183,7 +182,7 @@ describe('Radios', () => {
 
     describe('render conditionals', () => {
       it('hidden by default when not checked', () => {
-        const $ = cheerio.load(render('radios', examples['with conditional items']))
+        const $ = render('radios', examples['with conditional items'])
 
         const $component = $('.govuk-radios')
 
@@ -193,7 +192,7 @@ describe('Radios', () => {
       })
 
       it('visible when checked because of checkedValue', () => {
-        const $ = cheerio.load(render('radios', examples['with conditional items and pre-checked value']))
+        const $ = render('radios', examples['with conditional items and pre-checked value'])
 
         const $conditional = $('.govuk-radios__conditional').last()
         expect($conditional.text()).toContain('Mobile phone number')
@@ -201,7 +200,7 @@ describe('Radios', () => {
       })
 
       it('visible by default when checked', () => {
-        const $ = cheerio.load(render('radios', examples['with conditional item checked']))
+        const $ = render('radios', examples['with conditional item checked'])
 
         const $component = $('.govuk-radios')
 
@@ -211,7 +210,7 @@ describe('Radios', () => {
       })
 
       it('with association to the input they are controlled by', () => {
-        const $ = cheerio.load(render('radios', examples['with conditional items']))
+        const $ = render('radios', examples['with conditional items'])
 
         const $component = $('.govuk-radios')
 
@@ -223,14 +222,14 @@ describe('Radios', () => {
       })
 
       it('omits empty conditionals', () => {
-        const $ = cheerio.load(render('radios', examples['with empty conditional']))
+        const $ = render('radios', examples['with empty conditional'])
 
         const $component = $('.govuk-radios')
         expect($component.find('.govuk-radios__conditional').length).toEqual(0)
       })
 
       it('does not associate radios with empty conditionals', () => {
-        const $ = cheerio.load(render('radios', examples['with empty conditional']))
+        const $ = render('radios', examples['with empty conditional'])
 
         const $input = $('.govuk-radios__input').first()
         expect($input.attr('data-aria-controls')).toBeFalsy()
@@ -238,7 +237,7 @@ describe('Radios', () => {
     })
 
     it('render divider', () => {
-      const $ = cheerio.load(render('radios', examples['with a divider']))
+      const $ = render('radios', examples['with a divider'])
 
       const $component = $('.govuk-radios')
       const $divider = $component.find('.govuk-radios__divider')
@@ -246,7 +245,7 @@ describe('Radios', () => {
     })
 
     it('render additional label classes', () => {
-      const $ = cheerio.load(render('radios', examples['label with classes']))
+      const $ = render('radios', examples['label with classes'])
 
       const $component = $('.govuk-radios')
       const $label = $component.find('.govuk-radios__item label')
@@ -254,7 +253,7 @@ describe('Radios', () => {
     })
 
     it('renders with a form group wrapper', () => {
-      const $ = cheerio.load(render('radios', examples.default))
+      const $ = render('radios', examples.default)
 
       const $formGroup = $('.govuk-form-group')
       expect($formGroup.length).toBeTruthy()
@@ -263,13 +262,13 @@ describe('Radios', () => {
 
   describe('when they include a hint', () => {
     it('renders the hint', () => {
-      const $ = cheerio.load(render('radios', examples['with hints on parent and items']))
+      const $ = render('radios', examples['with hints on parent and items'])
 
       expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
     })
 
     it('associates the fieldset as "described by" the hint', () => {
-      const $ = cheerio.load(render('radios', examples['with hints on parent and items']))
+      const $ = render('radios', examples['with hints on parent and items'])
 
       const $fieldset = $('.govuk-fieldset')
 
@@ -277,7 +276,7 @@ describe('Radios', () => {
     })
 
     it('associates the fieldset as "described by" the hint and parent fieldset', () => {
-      const $ = cheerio.load(render('radios', examples['with describedBy and hint']))
+      const $ = render('radios', examples['with describedBy and hint'])
       const $fieldset = $('.govuk-fieldset')
 
       expect($fieldset.attr('aria-describedby')).toMatch('some-id')
@@ -286,20 +285,20 @@ describe('Radios', () => {
 
   describe('when they include an error message', () => {
     it('renders the error message', () => {
-      const $ = cheerio.load(render('radios', examples['with error message']))
+      const $ = render('radios', examples['with error message'])
 
       expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
     })
 
     it('uses the idPrefix for the error message id if provided', () => {
-      const $ = cheerio.load(render('radios', examples['with error message and idPrefix']))
+      const $ = render('radios', examples['with error message and idPrefix'])
       const $errorMessage = $('.govuk-error-message')
 
       expect($errorMessage.attr('id')).toEqual('id-prefix-error')
     })
 
     it('falls back to using the name for the error message id', () => {
-      const $ = cheerio.load(render('radios', examples['with error message']))
+      const $ = render('radios', examples['with error message'])
 
       const $errorMessage = $('.govuk-error-message')
 
@@ -307,7 +306,7 @@ describe('Radios', () => {
     })
 
     it('associates the fieldset as "described by" the error message', () => {
-      const $ = cheerio.load(render('radios', examples['with fieldset and error message']))
+      const $ = render('radios', examples['with fieldset and error message'])
 
       const $fieldset = $('.govuk-fieldset')
       const $errorMessage = $('.govuk-error-message')
@@ -321,7 +320,7 @@ describe('Radios', () => {
     })
 
     it('associates the fieldset as "described by" the error message and parent fieldset', () => {
-      const $ = cheerio.load(render('radios', examples['with fieldset, error message and describedBy']))
+      const $ = render('radios', examples['with fieldset, error message and describedBy'])
 
       const $fieldset = $('.govuk-fieldset')
       const $errorMessage = $('.govuk-error-message')
@@ -335,7 +334,7 @@ describe('Radios', () => {
     })
 
     it('renders with a form group wrapper that has an error state', () => {
-      const $ = cheerio.load(render('radios', examples['with error message']))
+      const $ = render('radios', examples['with error message'])
 
       const $formGroup = $('.govuk-form-group')
       expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
@@ -344,7 +343,7 @@ describe('Radios', () => {
 
   describe('when they include both a hint and an error message', () => {
     it('associates the fieldset as described by both the hint and the error message', () => {
-      const $ = cheerio.load(render('radios', examples['with hint and error message']))
+      const $ = render('radios', examples['with hint and error message'])
 
       const $fieldset = $('.govuk-fieldset')
       const errorMessageId = $('.govuk-error-message').attr('id')
@@ -359,7 +358,7 @@ describe('Radios', () => {
     })
 
     it('associates the fieldset as described by the hint, error message and parent fieldset', () => {
-      const $ = cheerio.load(render('radios', examples['with hint, error message and describedBy']))
+      const $ = render('radios', examples['with hint, error message and describedBy'])
 
       const $fieldset = $('.govuk-fieldset')
       const errorMessageId = $('.govuk-error-message').attr('id')
@@ -376,26 +375,26 @@ describe('Radios', () => {
 
   describe('nested dependant components', () => {
     it('have correct nesting order', () => {
-      const $ = cheerio.load(render('radios', examples.inline))
+      const $ = render('radios', examples.inline)
 
       const $component = $('.govuk-form-group > .govuk-fieldset > .govuk-radios')
       expect($component.length).toBeTruthy()
     })
 
     it('passes through label params without breaking', () => {
-      const $ = cheerio.load(render('radios', examples['label with attributes']))
+      const $ = render('radios', examples['label with attributes'])
 
       expect(htmlWithClassName($, '.govuk-radios__label')).toMatchSnapshot()
     })
 
     it('passes through fieldset params without breaking', () => {
-      const $ = cheerio.load(render('radios', examples['fieldset params']))
+      const $ = render('radios', examples['fieldset params'])
 
       expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
     })
 
     it('passes through html fieldset params without breaking', () => {
-      const $ = cheerio.load(render('radios', examples['fieldset with html']))
+      const $ = render('radios', examples['fieldset with html'])
 
       expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
     })
