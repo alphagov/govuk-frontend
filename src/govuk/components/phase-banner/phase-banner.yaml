@@ -25,7 +25,7 @@ examples:
   - name: default
     data:
       tag:
-        text: alpha
+        text: Alpha
       html: This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
@@ -54,11 +54,11 @@ examples:
     data:
       text: This is a new service – your feedback will help us to improve it
       tag:
-        html: <em>alpha</em>
+        html: <em>Alpha</em>
   - name: tag classes
     hidden: true
     data:
       text: This is a new service – your feedback will help us to improve it
       tag:
         classes: govuk-tag--grey
-        text: alpha
+        text: Alpha
