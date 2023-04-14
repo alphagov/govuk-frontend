@@ -1,0 +1,104 @@
+---
+scenario: >-
+  As part of an online service, you are asked to provide your address.
+
+
+  Things to try:
+
+  1. Intentionally avoid answering the questions before continuing to the next
+      page.
+---
+
+{# This example is based of the  "What is your home address?" example: https://design-system.service.gov.uk/patterns/addresses/multiple/index.html #}
+{% extends "full-page-example.njk" %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "fieldset/macro.njk" import govukFieldset %}
+{% from "input/macro.njk" import govukInput %}
+{% from "button/macro.njk" import govukButton %}
+
+{% set pageTitle = "What are your bank details?" %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" novalidate>
+        {% if errorSummary.length > 0 %}
+            {{ govukErrorSummary({
+                titleText: "There is a problem",
+                errorList: errorSummary
+            }) }}
+        {% endif %}
+
+        <h1 class="govuk-heading-l">What are your bank or building society account details?</h1>
+
+        {{ govukInput({
+          label: {
+            text: "Name on the account"
+          },
+          id: "name-on-the-account",
+          name: "name-on-the-account",
+          errorMessage: errors["name-on-the-account"],
+          autocomplete: "name",
+          spellcheck: false
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Sort code"
+          },
+          classes: "govuk-input--width-5",
+          hint: {
+            text: "Must be 6 digits long"
+          },
+          id: "sort-code",
+          name: "sort-code",
+          errorMessage: errors["sort-code"],
+          inputmode: "numeric",
+          spellcheck: false
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Account number"
+          },
+          classes: "govuk-input--width-10",
+          hint: {
+            text: "Must be between 6 and 8 digits long"
+          },
+          id: "account-number",
+          name: "account-number",
+          errorMessage: errors["account-number"],
+          inputmode: "numeric",
+          spellcheck: false
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Building society roll number (if you have one)"
+          },
+          classes: "govuk-input--width-10",
+          hint: {
+            text: "You can find it on your card, statement or passbook"
+          },
+          id: "roll-number",
+          name: "roll-number",
+          spellcheck: false
+        }) }}
+
+        {{ govukButton({
+            text: "Continue"
+          }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

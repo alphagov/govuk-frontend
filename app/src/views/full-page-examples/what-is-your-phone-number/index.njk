@@ -1,16 +1,15 @@
 ---
 scenario: >-
-  As part of an online service, you are asked to provide your postcode.
+  As part of an online service, you are asked to provide your phone number.
 
 
   Prompts:
 
   1. Do not answer the question
-
-hidden: true
+  
 ---
 
-{# This example is based of the  "What is your home postcode?" example: https://design-system.service.gov.uk/patterns/question-pages/postcode/index.html #}
+{# This example is based of the  "What is your telephone number?" example: https://design-system.service.gov.uk/patterns/telephone-numbers/international/index.html #}
 {% extends "full-page-example.njk" %}
 
 {% from "back-link/macro.njk" import govukBackLink %}
@@ -18,7 +17,7 @@ hidden: true
 {% from "error-summary/macro.njk" import govukErrorSummary %}
 {% from "input/macro.njk" import govukInput %}
 
-{% set pageTitle = "What is your home postcode?" %}
+{% set pageTitle = "What is your telephone number?" %}
 {% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}
@@ -44,12 +43,17 @@ hidden: true
         classes: "govuk-label--xl",
         isPageHeading: true
       },
-      classes: "govuk-input--width-10",
-      id: "address-postcode",
-      name: "address-postcode",
-      autocomplete: "postal-code",
-      errorMessage: errors["address-postcode"]
+      hint: {
+        text: "For international numbers include the country code"
+      },
+      classes: "govuk-input--width-20",
+      id: "telephone-number",
+      name: "telephone-number",
+      type: "tel",
+      autocomplete: "tel",
+      errorMessage: errors["telephone-number"]
     }) }}
+
 
     {{ govukButton({
         text: "Continue"

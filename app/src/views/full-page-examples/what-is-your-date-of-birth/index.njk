@@ -1,0 +1,78 @@
+---
+scenario: >-
+  As part of an online service, you are asked to provide your date of birth.
+
+
+  Prompts:
+
+  1. Do not answer the question
+
+---
+
+{# This example is based of the  "What is your date of birth?" example: https://design-system.service.gov.uk/patterns/equality-information/date-of-birth/index.html #}
+{% extends "full-page-example.njk" %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "date-input/macro.njk" import govukDateInput %}
+
+{% set pageTitle = "What is your date of birth?" %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <form method="post" novalidate>
+    {% if errorSummary.length > 0 %}
+        {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: errorSummary
+        }) }}
+    {% endif %}
+
+    {{ govukDateInput({
+      id: "date-of-birth",
+      namePrefix: "date-of-birth",
+      fieldset: {
+        legend: {
+          text: "What is your date of birth?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      errorMessage: errors["date-of-birth"],
+      hint: {
+        text: "For example, 31 3 1980. If you prefer not to say, continue without entering any information."
+      },
+      items: [
+        {
+          name: "day",
+          classes: "govuk-input--width-2",
+          autocomplete: "bday-day"
+        },
+        {
+          name: "month",
+          classes: "govuk-input--width-2",
+          autocomplete: "bday-month"
+        },
+        {
+          name: "year",
+          classes: "govuk-input--width-4",
+          autocomplete: "bday-year"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+        text: "Continue"
+      }) }}
+  </form>
+
+{% endblock %}
