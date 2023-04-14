@@ -19,11 +19,7 @@ params:
 examples:
   - name: default
     data:
-      text: alpha
-  - name: inactive
-    data:
-      text: alpha
-      classes: govuk-tag--grey
+      text: Alpha
   - name: grey
     data:
       text: Grey
@@ -32,6 +28,10 @@ examples:
     data:
       text: Blue
       classes: govuk-tag--blue
+  - name: light blue
+    data:
+      text: Light blue
+      classes: govuk-tag--light-blue
   - name: turquoise
     data:
       text: Turquoise
@@ -72,8 +72,8 @@ examples:
   - name: html as text
     hidden: true
     data:
-      text: <span>alpha</span>
+      text: <span>Alpha</span>
   - name: html
     hidden: true
     data:
-      html: <span>alpha</span>
+      html: <span>Alpha</span>
