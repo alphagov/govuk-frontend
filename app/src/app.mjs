@@ -4,6 +4,7 @@ import express from 'express'
 import { paths } from 'govuk-frontend-config'
 import { getDirectories, getComponentsData, getFullPageExamples } from 'govuk-frontend-lib/files'
 import { componentNameToMacroName } from 'govuk-frontend-lib/names'
+import { outdent } from 'outdent'
 
 import * as middleware from './common/middleware/index.mjs'
 import * as nunjucks from './common/nunjucks/index.mjs'
@@ -115,10 +116,10 @@ export default async () => {
     const macroName = componentNameToMacroName(componentName)
     const macroParameters = JSON.stringify(exampleConfig.data, null, '\t')
 
-    res.locals.componentView = env.renderString(
-      `{% from '${componentName}/macro.njk' import ${macroName} %}
-      {{ ${macroName}(${macroParameters}) }}`
-    )
+    res.locals.componentView = env.renderString(outdent`
+      {% from '${componentName}/macro.njk' import ${macroName} %}
+      {{ ${macroName}(${macroParameters}) }}
+    `, {})
 
     let bodyClasses = ''
 
