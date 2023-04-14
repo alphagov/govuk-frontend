@@ -30,7 +30,7 @@
     "jquery": "1.12.4",
     "js-beautify": "^1.14.7",
     "marked": "^4.3.0",
-    "nunjucks": "^3.2.3",
+    "nunjucks": "^3.2.4",
     "outdent": "^0.8.0",
     "shuffle-seed": "^1.1.6"
   },

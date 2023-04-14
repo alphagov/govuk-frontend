@@ -3,8 +3,8 @@ import { join } from 'path'
 import percySnapshot from '@percy/puppeteer'
 import { isPercyEnabled } from '@percy/sdk-utils'
 import { paths } from 'govuk-frontend-config'
-import { download } from 'govuk-frontend-config/jest/browser/download.mjs'
-import { helpers } from 'govuk-frontend-lib'
+import helpers from 'govuk-frontend-helpers'
+import { download } from 'govuk-frontend-helpers/jest/browser/download.mjs'
 import puppeteer from 'puppeteer'
 
 const { filterPath, getDirectories, getListing } = helpers.files

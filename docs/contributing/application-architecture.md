@@ -27,7 +27,11 @@
 
   - `config/`
 
-    Configuration files for common paths, port numbers and [Jest](https://github.com/facebook/jest).
+    Configuration files for common paths and port numbers.
+
+  - `helpers/`
+
+    [Jest](https://github.com/facebook/jest) and development helpers.
 
   - `lib/`
 

@@ -1,5 +1,5 @@
-const files = require('./files')
-const names = require('./names')
+const { files, names } = require('govuk-frontend-lib')
+
 const nunjucks = require('./nunjucks')
 const puppeteer = require('./puppeteer')
 const tests = require('./tests')

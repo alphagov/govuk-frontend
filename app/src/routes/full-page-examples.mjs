@@ -1,8 +1,8 @@
-import { helpers } from 'govuk-frontend-lib'
+import { files } from 'govuk-frontend-lib'
 
 import * as routes from '../views/full-page-examples/index.mjs'
 
-const { getFullPageExamples } = helpers.files
+const { getFullPageExamples } = files
 
 export default (app) => {
   routes.applicantDetails(app)

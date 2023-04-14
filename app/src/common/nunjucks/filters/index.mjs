@@ -1,7 +1,7 @@
-import { helpers } from 'govuk-frontend-lib'
+import { names } from 'govuk-frontend-lib'
 
 /**
  * Nunjucks filters
  */
-export const { componentNameToMacroName } = helpers.names
+export const { componentNameToMacroName } = names
 export { highlight } from './highlight.mjs'

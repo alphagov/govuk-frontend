@@ -1,4 +1,4 @@
-const { helpers } = require('govuk-frontend-lib')
+const helpers = require('govuk-frontend-helpers')
 const { sassNull } = require('sass-embedded')
 
 const { compileSassString } = helpers.tests

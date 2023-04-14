@@ -2,7 +2,7 @@ import { readFile } from 'fs/promises'
 import { join } from 'path'
 
 import { paths, pkg } from 'govuk-frontend-config'
-import { helpers } from 'govuk-frontend-lib'
+import helpers from 'govuk-frontend-helpers'
 
 const { filterPath, getDirectories, getListing, mapPathTo } = helpers.files
 const { componentNameToClassName, componentPathToModuleName } = helpers.names

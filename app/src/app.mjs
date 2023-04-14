@@ -2,14 +2,14 @@ import { join } from 'path'
 
 import express from 'express'
 import { paths } from 'govuk-frontend-config'
-import { helpers } from 'govuk-frontend-lib'
+import { files, names } from 'govuk-frontend-lib'
 
 import * as middleware from './common/middleware/index.mjs'
 import * as nunjucks from './common/nunjucks/index.mjs'
 import * as routes from './routes/index.mjs'
 
-const { getDirectories, getComponentsData, getFullPageExamples } = helpers.files
-const { componentNameToMacroName } = helpers.names
+const { getDirectories, getComponentsData, getFullPageExamples } = files
+const { componentNameToMacroName } = names
 
 export default async () => {
   const app = express()

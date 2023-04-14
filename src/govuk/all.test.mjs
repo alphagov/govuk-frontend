@@ -1,5 +1,5 @@
 import { paths } from 'govuk-frontend-config'
-import { helpers } from 'govuk-frontend-lib'
+import helpers from 'govuk-frontend-helpers'
 import sassdoc from 'sassdoc'
 import slash from 'slash'
 

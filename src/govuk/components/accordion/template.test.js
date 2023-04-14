@@ -1,5 +1,5 @@
 const cheerio = require('cheerio')
-const { helpers } = require('govuk-frontend-lib')
+const helpers = require('govuk-frontend-helpers')
 
 const { getExamples } = helpers.files
 const { render } = helpers.nunjucks

@@ -3,7 +3,7 @@ import { join, parse } from 'path'
 
 import chalk from 'chalk'
 import { paths } from 'govuk-frontend-config'
-import { helpers } from 'govuk-frontend-lib'
+import helpers from 'govuk-frontend-helpers'
 import PluginError from 'plugin-error'
 import postcss from 'postcss'
 // eslint-disable-next-line import/default

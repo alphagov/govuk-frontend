@@ -1,10 +1,11 @@
 const { join } = require('path')
 
 const { paths } = require('govuk-frontend-config')
+const { names } = require('govuk-frontend-lib')
 const nunjucks = require('nunjucks')
 const { outdent } = require('outdent')
 
-const { componentNameToMacroName } = require('./names')
+const { componentNameToMacroName } = names
 
 const nunjucksPaths = [
   join(paths.src, 'govuk'),

@@ -1,7 +1,7 @@
 import { join, parse } from 'path'
 
 import { pkg } from 'govuk-frontend-config'
-import { helpers } from 'govuk-frontend-lib'
+import helpers from 'govuk-frontend-helpers'
 import PluginError from 'plugin-error'
 import { rollup } from 'rollup'
 import replace from 'rollup-plugin-replace'

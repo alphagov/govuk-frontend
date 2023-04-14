@@ -1,7 +1,7 @@
 import express from 'express'
-import { helpers } from 'govuk-frontend-lib'
+import { names } from 'govuk-frontend-lib'
 
-const { packageNameToPath } = helpers.names
+const { packageNameToPath } = names
 const router = express.Router()
 
 /**

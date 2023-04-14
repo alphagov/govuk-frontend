@@ -1,8 +1,10 @@
-const helpers = require('./helpers')
+const files = require('./files')
+const names = require('./names')
 
 /**
  * Shared library
  */
 module.exports = {
-  helpers
+  files,
+  names
 }

@@ -52,11 +52,11 @@ export default {
     {
       ...config,
       displayName: 'Nunjucks macro tests',
-      setupFilesAfterEnv: ['govuk-frontend-config/jest/matchers.js'],
+      setupFilesAfterEnv: ['govuk-frontend-helpers/jest/matchers.js'],
       snapshotSerializers: [
         'jest-serializer-html'
       ],
-      testEnvironment: 'govuk-frontend-config/jest/environment/jsdom.mjs',
+      testEnvironment: 'govuk-frontend-helpers/jest/environment/jsdom.mjs',
       testMatch: [
         '**/(*.)?template.test.{js,mjs}'
       ]
@@ -64,7 +64,7 @@ export default {
     {
       ...config,
       displayName: 'JavaScript unit tests',
-      testEnvironment: 'govuk-frontend-config/jest/environment/jsdom.mjs',
+      testEnvironment: 'govuk-frontend-helpers/jest/environment/jsdom.mjs',
       testMatch: [
         '**/*.unit.test.{js,mjs}'
       ]
@@ -86,13 +86,13 @@ export default {
       ],
 
       // Web server required
-      globalSetup: 'govuk-frontend-config/jest/server/start.mjs',
-      globalTeardown: 'govuk-frontend-config/jest/server/stop.mjs'
+      globalSetup: 'govuk-frontend-helpers/jest/server/start.mjs',
+      globalTeardown: 'govuk-frontend-helpers/jest/server/stop.mjs'
     },
     {
       ...config,
       displayName: 'JavaScript component tests',
-      testEnvironment: 'govuk-frontend-config/jest/environment/puppeteer.mjs',
+      testEnvironment: 'govuk-frontend-helpers/jest/environment/puppeteer.mjs',
       testMatch: [
         '**/components/globals.test.mjs',
         '**/components/*/*.test.{js,mjs}',
@@ -103,8 +103,8 @@ export default {
       ],
 
       // Web server and browser required
-      globalSetup: 'govuk-frontend-config/jest/browser/open.mjs',
-      globalTeardown: 'govuk-frontend-config/jest/browser/close.mjs'
+      globalSetup: 'govuk-frontend-helpers/jest/browser/open.mjs',
+      globalTeardown: 'govuk-frontend-helpers/jest/browser/close.mjs'
     }
   ],
 

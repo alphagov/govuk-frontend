@@ -1,7 +1,7 @@
 import { readFile } from 'fs/promises'
 import { basename, dirname, join } from 'path'
 
-import { helpers } from 'govuk-frontend-lib'
+import helpers from 'govuk-frontend-helpers'
 import yaml from 'js-yaml'
 import nunjucks from 'nunjucks'
 

@@ -1,7 +1,7 @@
 import { join } from 'path'
 
 import { paths } from 'govuk-frontend-config'
-import { helpers } from 'govuk-frontend-lib'
+import helpers from 'govuk-frontend-helpers'
 import slash from 'slash'
 
 const { filterPath, getDirectories, getListing } = helpers.files

@@ -1,4 +1,4 @@
-const { helpers } = require('govuk-frontend-lib')
+const helpers = require('govuk-frontend-helpers')
 const { devices } = require('puppeteer')
 
 const { goToComponent } = helpers.puppeteer

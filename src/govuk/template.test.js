@@ -3,7 +3,7 @@ const { join } = require('path')
 
 const cheerio = require('cheerio')
 const { paths } = require('govuk-frontend-config')
-const { helpers } = require('govuk-frontend-lib')
+const helpers = require('govuk-frontend-helpers')
 const nunjucks = require('nunjucks')
 
 const { renderTemplate } = helpers.nunjucks

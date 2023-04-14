@@ -1,8 +1,7 @@
 import { join } from 'path'
 
+import { paths } from 'govuk-frontend-config'
 import puppeteer from 'puppeteer'
-
-import { paths } from '../../index.js'
 
 /**
  * Puppeteer browser downloader

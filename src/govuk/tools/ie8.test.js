@@ -1,4 +1,4 @@
-const { helpers } = require('govuk-frontend-lib')
+const helpers = require('govuk-frontend-helpers')
 const { outdent } = require('outdent')
 const { sassNull } = require('sass-embedded')
 

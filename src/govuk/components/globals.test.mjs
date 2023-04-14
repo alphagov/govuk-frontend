@@ -1,4 +1,4 @@
-import { helpers } from 'govuk-frontend-lib'
+import helpers from 'govuk-frontend-helpers'
 
 const { goTo, goToExample } = helpers.puppeteer
 

@@ -3,7 +3,7 @@ import { EOL } from 'os'
 import { join } from 'path'
 
 import { paths, pkg } from 'govuk-frontend-config'
-import { helpers } from 'govuk-frontend-lib'
+import helpers from 'govuk-frontend-helpers'
 
 const { getListing } = helpers.files
 

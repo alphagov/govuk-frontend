@@ -8,7 +8,7 @@ module.exports = {
 
   /**
    * Workaround for jest-environment-puppeteer 'uncaughtException'
-   * see error handling in 'govuk-frontend-config/jest/environment/puppeteer.mjs'
+   * see error handling in 'govuk-frontend-helpers/jest/environment/puppeteer.mjs'
    */
   exitOnPageError: false,
 
