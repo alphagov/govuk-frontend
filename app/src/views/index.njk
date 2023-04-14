@@ -2,55 +2,35 @@
 
 {% block content %}
   <h1 class="govuk-heading-xl">
-    GOV.UK Frontend
+    GOV.UK Frontend for DAC Audit 2023
   </h1>
 
   <div class="govuk-grid-row">
 
-    <div class="govuk-grid-column-one-third">
-      <h2 class="govuk-heading-m">Components</h2>
 
-      <ul class="govuk-list">
-        <li><a href="/components/all{{ legacyQuery }}" class="govuk-link">All</a></li>
-        {% for componentName in componentNames | sort %}
-          <li><a href="/components/{{ componentName }}{{ legacyQuery }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
-        {% endfor %}
-      </ul>
-    </div>
 
-    <div class="govuk-grid-column-one-third">
-      <h2 class="govuk-heading-m">Examples</h2>
 
-      <ul class="govuk-list">
-      {% for exampleName in exampleNames | sort %}
-        <li><a href="/examples/{{ exampleName }}{{ legacyQuery }}" class="govuk-link">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
-      {% endfor %}
-      </ul>
-    </div>
 
-    <div class="govuk-grid-column-one-third">
+    <div class="govuk-grid-column-two-thirds">
       <h2 class="govuk-heading-m"><a href="/full-page-examples" class="govuk-link">Full page examples</a></h2>
 
-      <ul class="govuk-list">
+      <div class="govuk-list">
       {% for example in fullPageExamples %}
-        <li><a href="/full-page-examples/{{ example.path }}{{ legacyQuery }}" class="govuk-link">{{ example.name | replace("-", " ") | capitalize }}</a></li>
-      {% endfor %}
-      </ul>
-
-      <h2 class="govuk-heading-m">Documentation</h2>
-
-      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Sass documentation</h3>
-      <ul class="govuk-list">
-        <li><a href="https://frontend.design-system.service.gov.uk/sass-api-reference/" class="govuk-link">Latest release</a></li>
-        {% if not flags.isDeployedToHeroku %}
-        <li><a href="/docs/sass" class="govuk-link">Local version</a></li>
+        {% if not example.hidden %}
+          <li><a href="/full-page-examples/{{ example.path }}{{ legacyQuery }}" class="govuk-link">{{ example.name | replace("-", " ") | capitalize }}</a></li>
         {% endif %}
-      </ul>
+      {% endfor %}
+      </div>
 
-      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">JavaScript documentation</h3>
-      <ul class="govuk-list">
-        <li><a href="/docs/javascript" class="govuk-link">Local version</a></li>
-      </ul>
+      <h2 class="govuk-heading-m">Other examples</h2>
+
+      <div class="govuk-list">
+        <li><a href="https://design-system.service.gov.uk/patterns/cookies-page/" class="govuk-link">GOV.UK Design System cookie page</a></li>
+        <li><a href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/income-tax-enquiries-for-individuals-pensioners-and-employees" class="govuk-link">Contact a department or service team example</a></li>
+        <li><a href="https://alphagov.github.io/accessible-autocomplete/examples/" class="govuk-link">Accessible autocomplete example</a></li>
+      </div>
+
+      
     </div>
   </div>
 {% endblock %}
