@@ -1,7 +1,5 @@
-const helpers = require('govuk-frontend-helpers')
+const { compileSassString } = require('govuk-frontend-helpers/tests')
 const { sassNull } = require('sass-embedded')
-
-const { compileSassString } = helpers.tests
 
 // Create a mock warn function that we can use to override the native @warn
 // function, that we can make assertions about post-render.

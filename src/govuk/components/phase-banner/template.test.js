@@ -1,9 +1,7 @@
 const cheerio = require('cheerio')
-const helpers = require('govuk-frontend-helpers')
-
-const { getExamples } = helpers.files
-const { render } = helpers.nunjucks
-const { axe, htmlWithClassName } = helpers.tests
+const { render } = require('govuk-frontend-helpers/nunjucks')
+const { axe, htmlWithClassName } = require('govuk-frontend-helpers/tests')
+const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('Phase banner', () => {
   let examples

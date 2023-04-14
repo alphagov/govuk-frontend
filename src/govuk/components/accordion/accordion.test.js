@@ -1,7 +1,5 @@
-const helpers = require('govuk-frontend-helpers')
-
-const { getExamples } = helpers.files
-const { goToComponent, goToExample, renderAndInitialise, getAccessibleName } = helpers.puppeteer
+const { goToComponent, goToExample, renderAndInitialise, getAccessibleName } = require('govuk-frontend-helpers/puppeteer')
+const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('/components/accordion', () => {
   describe('/components/accordion/preview', () => {

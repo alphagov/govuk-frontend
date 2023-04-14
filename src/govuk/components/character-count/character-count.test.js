@@ -1,7 +1,5 @@
-const helpers = require('govuk-frontend-helpers')
-
-const { getExamples } = helpers.files
-const { goToComponent, renderAndInitialise } = helpers.puppeteer
+const { goToComponent, renderAndInitialise } = require('govuk-frontend-helpers/puppeteer')
+const { getExamples } = require('govuk-frontend-lib/files')
 
 const jestPuppeteerConfig = require('../../../../jest-puppeteer.config')
 

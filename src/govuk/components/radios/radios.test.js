@@ -1,6 +1,4 @@
-const helpers = require('govuk-frontend-helpers')
-
-const { goToComponent, goToExample, getProperty, getAttribute, isVisible } = helpers.puppeteer
+const { goToComponent, goToExample, getProperty, getAttribute, isVisible } = require('govuk-frontend-helpers/puppeteer')
 
 describe('Radios with conditional reveals', () => {
   describe('when JavaScript is unavailable or fails', () => {

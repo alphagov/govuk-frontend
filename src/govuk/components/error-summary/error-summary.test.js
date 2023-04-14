@@ -1,7 +1,5 @@
-const helpers = require('govuk-frontend-helpers')
-
-const { getExamples } = helpers.files
-const { goToComponent, goToExample, renderAndInitialise } = helpers.puppeteer
+const { goToComponent, goToExample, renderAndInitialise } = require('govuk-frontend-helpers/puppeteer')
+const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('Error Summary', () => {
   let examples

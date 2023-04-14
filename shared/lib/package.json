@@ -3,6 +3,10 @@
   "name": "govuk-frontend-lib",
   "description": "GOV.UK Frontend shared library",
   "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./*": "./*.js"
+  },
   "engines": {
     "node": "^18.12.0",
     "npm": "^8.1.0 || ^9.1.0"

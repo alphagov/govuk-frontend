@@ -1,14 +1,12 @@
 const { join } = require('path')
 
 const { paths } = require('govuk-frontend-config')
-const helpers = require('govuk-frontend-helpers')
+const { nunjucksEnv, render } = require('govuk-frontend-helpers/nunjucks')
+const { getDirectories, getComponentsData } = require('govuk-frontend-lib/files')
 const { HtmlValidate } = require('html-validate')
 // We can't use the render function from jest-helpers, because we need control
 // over the nunjucks environment.
 const nunjucks = require('nunjucks')
-
-const { getDirectories, getComponentsData } = helpers.files
-const { nunjucksEnv, render } = helpers.nunjucks
 
 describe('Components', () => {
   let nunjucksEnvCustom

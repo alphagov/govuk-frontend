@@ -1,9 +1,7 @@
 const { ports } = require('govuk-frontend-config')
-const { names } = require('govuk-frontend-lib')
+const { componentNameToClassName } = require('govuk-frontend-lib/names')
 
 const { render } = require('./nunjucks')
-
-const { componentNameToClassName } = names
 
 /**
  * Render and initialise a component within test boilerplate HTML

@@ -1,9 +1,7 @@
 import { paths } from 'govuk-frontend-config'
-import helpers from 'govuk-frontend-helpers'
+import { compileSassString } from 'govuk-frontend-helpers/tests'
 import sassdoc from 'sassdoc'
 import slash from 'slash'
-
-const { compileSassString } = helpers.tests
 
 describe('GOV.UK Frontend', () => {
   describe('global styles', () => {

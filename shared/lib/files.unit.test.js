@@ -1,6 +1,4 @@
-const { files } = require('.')
-
-const { getComponentData, getFullPageExamples } = files
+const { getComponentData, getFullPageExamples } = require('./files.js')
 
 describe('getComponentData', () => {
   it('rejects if unable to load component data', async () => {

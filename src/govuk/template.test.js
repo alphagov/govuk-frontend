@@ -3,10 +3,8 @@ const { join } = require('path')
 
 const cheerio = require('cheerio')
 const { paths } = require('govuk-frontend-config')
-const helpers = require('govuk-frontend-helpers')
+const { renderTemplate } = require('govuk-frontend-helpers/nunjucks')
 const nunjucks = require('nunjucks')
-
-const { renderTemplate } = helpers.nunjucks
 
 describe('Template', () => {
   describe('with default nunjucks configuration', () => {

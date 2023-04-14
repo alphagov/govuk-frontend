@@ -1,7 +1,6 @@
-const helpers = require('govuk-frontend-helpers')
+const { goToComponent } = require('govuk-frontend-helpers/puppeteer')
 const { devices } = require('puppeteer')
 
-const { goToComponent } = helpers.puppeteer
 const iPhone = devices['iPhone 6']
 
 describe('Header navigation', () => {

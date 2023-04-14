@@ -1,7 +1,8 @@
 import { join, parse } from 'path'
 
 import { pkg } from 'govuk-frontend-config'
-import helpers from 'govuk-frontend-helpers'
+import { getListing } from 'govuk-frontend-lib/files'
+import { componentPathToModuleName } from 'govuk-frontend-lib/names'
 import PluginError from 'plugin-error'
 import { rollup } from 'rollup'
 import replace from 'rollup-plugin-replace'
@@ -9,9 +10,6 @@ import { minify } from 'terser'
 
 import { isDev } from './helpers/task-arguments.mjs'
 import { assets } from './index.mjs'
-
-const { getListing } = helpers.files
-const { componentPathToModuleName } = helpers.names
 
 /**
  * Compile JavaScript task

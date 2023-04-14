@@ -3,7 +3,7 @@ import { join, parse } from 'path'
 
 import chalk from 'chalk'
 import { paths } from 'govuk-frontend-config'
-import helpers from 'govuk-frontend-helpers'
+import { getListing } from 'govuk-frontend-lib/files'
 import PluginError from 'plugin-error'
 import postcss from 'postcss'
 // eslint-disable-next-line import/default
@@ -11,8 +11,6 @@ import postcssrc from 'postcss-load-config'
 import { compileAsync } from 'sass-embedded'
 
 import { assets } from './index.mjs'
-
-const { getListing } = helpers.files
 
 /**
  * Compile Sass to CSS task

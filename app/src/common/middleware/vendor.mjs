@@ -1,7 +1,6 @@
 import express from 'express'
-import { names } from 'govuk-frontend-lib'
+import { packageNameToPath } from 'govuk-frontend-lib/names'
 
-const { packageNameToPath } = names
 const router = express.Router()
 
 /**

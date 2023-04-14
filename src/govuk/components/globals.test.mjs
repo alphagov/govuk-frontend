@@ -1,6 +1,4 @@
-import helpers from 'govuk-frontend-helpers'
-
-const { goTo, goToExample } = helpers.puppeteer
+import { goTo, goToExample } from 'govuk-frontend-helpers/puppeteer'
 
 describe('GOV.UK Frontend', () => {
   describe('javascript', () => {

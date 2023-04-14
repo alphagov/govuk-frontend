@@ -1,7 +1,5 @@
-const helpers = require('govuk-frontend-helpers')
+const { compileSassString } = require('govuk-frontend-helpers/tests')
 const { outdent } = require('outdent')
-
-const { compileSassString } = helpers.tests
 
 describe('grid system', () => {
   const sassImports = `

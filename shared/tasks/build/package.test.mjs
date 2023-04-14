@@ -2,11 +2,9 @@ import { readFile } from 'fs/promises'
 import { join } from 'path'
 
 import { paths, pkg } from 'govuk-frontend-config'
-import helpers from 'govuk-frontend-helpers'
-
-const { filterPath, getDirectories, getListing, mapPathTo } = helpers.files
-const { componentNameToClassName, componentPathToModuleName } = helpers.names
-const { compileSassFile } = helpers.tests
+import { compileSassFile } from 'govuk-frontend-helpers/tests'
+import { filterPath, getDirectories, getListing, mapPathTo } from 'govuk-frontend-lib/files'
+import { componentNameToClassName, componentPathToModuleName } from 'govuk-frontend-lib/names'
 
 describe('package/', () => {
   let listingSource

@@ -1,6 +1,4 @@
-const helpers = require('govuk-frontend-helpers')
-
-const { compileSassString } = helpers.tests
+const { compileSassString } = require('govuk-frontend-helpers/tests')
 
 describe('@mixin govuk-link-decoration', () => {
   describe('by default', () => {
