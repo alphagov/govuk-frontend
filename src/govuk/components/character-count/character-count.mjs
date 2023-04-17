@@ -62,7 +62,12 @@ function CharacterCount ($module, config) {
   }
 
   var $textarea = $module.querySelector('.govuk-js-character-count')
-  if (!($textarea instanceof HTMLTextAreaElement || $textarea instanceof HTMLInputElement)) {
+  if (
+    !(
+      $textarea instanceof HTMLTextAreaElement ||
+      $textarea instanceof HTMLInputElement
+    )
+  ) {
     return this
   }
 
@@ -105,6 +110,8 @@ function CharacterCount ($module, config) {
     locale: closestAttributeValue($module, 'lang')
   })
 
+  /** @deprecated Will be made private in v5.0 */
+  this.maxLength = Infinity
   // Determine the limit attribute (characters or words)
   if ('maxwords' in this.config && this.config.maxwords) {
     this.maxLength = this.config.maxwords
@@ -131,6 +138,9 @@ function CharacterCount ($module, config) {
 
   /** @deprecated Will be made private in v5.0 */
   this.lastInputValue = ''
+
+  /** @deprecated Will be made private in v5.0 */
+  this.valueChecker = null
 }
 
 /**
