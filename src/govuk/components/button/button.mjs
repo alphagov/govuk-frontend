@@ -114,6 +114,6 @@ export default Button
  * Button config
  *
  * @typedef {object} ButtonConfig
- * @property {boolean} [preventDoubleClick = false] - Prevent accidental double
+ * @property {boolean} [preventDoubleClick=false] - Prevent accidental double
  *   clicks on submit buttons from submitting forms multiple times.
  */

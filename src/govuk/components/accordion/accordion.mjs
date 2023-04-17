@@ -597,7 +597,7 @@ export default Accordion
  * Accordion config
  *
  * @typedef {object} AccordionConfig
- * @property {AccordionTranslations} [i18n = ACCORDION_TRANSLATIONS] - See constant {@link ACCORDION_TRANSLATIONS}
+ * @property {AccordionTranslations} [i18n=ACCORDION_TRANSLATIONS] - See constant {@link ACCORDION_TRANSLATIONS}
  * @property {boolean} [rememberExpanded] - Whether the expanded and collapsed
  *   state of each section is remembered and restored when navigating.
  */

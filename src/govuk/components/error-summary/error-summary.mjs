@@ -227,6 +227,6 @@ export default ErrorSummary
  * Error summary config
  *
  * @typedef {object} ErrorSummaryConfig
- * @property {boolean} [disableAutoFocus = false] - If set to `true` the error
+ * @property {boolean} [disableAutoFocus=false] - If set to `true` the error
  *   summary will not be focussed when the page loads.
  */
