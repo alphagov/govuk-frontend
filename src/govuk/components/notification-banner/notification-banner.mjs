@@ -17,6 +17,7 @@ function NotificationBanner ($module, config) {
   /** @deprecated Will be made private in v5.0 */
   this.$module = $module
 
+  /** @type {NotificationBannerConfig} */
   var defaultConfig = {
     disableAutoFocus: false
   }

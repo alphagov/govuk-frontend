@@ -32,6 +32,7 @@ function ErrorSummary ($module, config) {
   /** @deprecated Will be made private in v5.0 */
   this.$module = $module
 
+  /** @type {ErrorSummaryConfig} */
   var defaultConfig = {
     disableAutoFocus: false
   }

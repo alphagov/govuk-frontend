@@ -51,6 +51,7 @@ function Accordion ($module, config) {
   /** @deprecated Will be made private in v5.0 */
   this.$module = $module
 
+  /** @type {AccordionConfig} */
   var defaultConfig = {
     i18n: ACCORDION_TRANSLATIONS,
     rememberExpanded: true

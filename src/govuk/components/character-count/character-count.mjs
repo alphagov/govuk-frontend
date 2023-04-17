@@ -73,6 +73,7 @@ function CharacterCount ($module, config) {
     return this
   }
 
+  /** @type {CharacterCountConfig} */
   var defaultConfig = {
     threshold: 0,
     i18n: CHARACTER_COUNT_TRANSLATIONS
@@ -87,6 +88,7 @@ function CharacterCount ($module, config) {
   //
   // We can't mutate `config`, though, as it may be shared across multiple
   // components inside `initAll`.
+  /** @type {CharacterCountConfig} */
   var configOverrides = {}
   if ('maxwords' in datasetConfig || 'maxlength' in datasetConfig) {
     configOverrides = {

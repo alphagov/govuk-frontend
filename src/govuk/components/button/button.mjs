@@ -26,6 +26,7 @@ function Button ($module, config) {
   /** @deprecated Will be made private in v5.0 */
   this.debounceFormSubmitTimer = null
 
+  /** @type {ButtonConfig} */
   var defaultConfig = {
     preventDoubleClick: false
   }
