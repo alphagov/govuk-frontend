@@ -11,10 +11,12 @@ import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target norm
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
 /**
+ * Character count translation defaults
+ *
+ * @see {@link CharacterCountConfig.i18n}
  * @constant
- * @type {CharacterCountTranslations}
- * @see Default value for {@link CharacterCountConfig.i18n}
  * @default
+ * @type {CharacterCountTranslations}
  */
 var CHARACTER_COUNT_TRANSLATIONS = {
   // Characters
@@ -444,7 +446,7 @@ export default CharacterCount
  * @property {number} [threshold=0] - The percentage value of the limit at
  *   which point the count message is displayed. If this attribute is set, the
  *   count message will be hidden by default.
- * @property {CharacterCountTranslations} [i18n=CHARACTER_COUNT_TRANSLATIONS] - See constant {@link CHARACTER_COUNT_TRANSLATIONS}
+ * @property {CharacterCountTranslations} [i18n=CHARACTER_COUNT_TRANSLATIONS] - Character count translations
  */
 
 /**
@@ -456,12 +458,13 @@ export default CharacterCount
  * @property {number} [threshold=0] - The percentage value of the limit at
  *   which point the count message is displayed. If this attribute is set, the
  *   count message will be hidden by default.
- * @property {CharacterCountTranslations} [i18n=CHARACTER_COUNT_TRANSLATIONS] - See constant {@link CHARACTER_COUNT_TRANSLATIONS}
+ * @property {CharacterCountTranslations} [i18n=CHARACTER_COUNT_TRANSLATIONS] - Character count translations
  */
 
 /**
  * Character count translations
  *
+ * @see {@link CHARACTER_COUNT_TRANSLATIONS}
  * @typedef {object} CharacterCountTranslations
  *
  * Messages shown to users as they type. It provides feedback on how many words

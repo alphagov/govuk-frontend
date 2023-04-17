@@ -11,10 +11,12 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/String/prototype/trim.mjs'
 
 /**
+ * Accordion translation defaults
+ *
+ * @see {@link AccordionConfig.i18n}
  * @constant
- * @type {AccordionTranslations}
- * @see Default value for {@link AccordionConfig.i18n}
  * @default
+ * @type {AccordionTranslations}
  */
 var ACCORDION_TRANSLATIONS = {
   hideAllSections: 'Hide all sections',
@@ -597,7 +599,7 @@ export default Accordion
  * Accordion config
  *
  * @typedef {object} AccordionConfig
- * @property {AccordionTranslations} [i18n=ACCORDION_TRANSLATIONS] - See constant {@link ACCORDION_TRANSLATIONS}
+ * @property {AccordionTranslations} [i18n=ACCORDION_TRANSLATIONS] - Accordion translations
  * @property {boolean} [rememberExpanded] - Whether the expanded and collapsed
  *   state of each section is remembered and restored when navigating.
  */
@@ -605,6 +607,7 @@ export default Accordion
 /**
  * Accordion translations
  *
+ * @see {@link ACCORDION_TRANSLATIONS}
  * @typedef {object} AccordionTranslations
  *
  * Messages used by the component for the labels of its buttons. This includes
