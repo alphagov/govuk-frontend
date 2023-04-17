@@ -76,7 +76,7 @@ async function axe (page, overrides = {}) {
  * @param {object} options - Render and initialise options
  * @param {object} options.params - Nunjucks macro params
  * @param {object} [options.config] - Component instantiation config
- * @param {initialiseCallback} [options.initialiser] - A function that'll run in the
+ * @param {(context: { config?: object, namespace: object }) => void} [options.initialiser] - A function that'll run in the
  *   browser to execute arbitrary initialisation. Receives an object with the
  *   passed configuration as `config` and the GOVUKFrontend global as `namespace`
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
@@ -219,8 +219,3 @@ module.exports = {
   getAccessibleName,
   isVisible
 }
-
-/**
- * @callback initialiseCallback
- * @param {{ config: object, namespace: object }} context - Initialiser context
- */

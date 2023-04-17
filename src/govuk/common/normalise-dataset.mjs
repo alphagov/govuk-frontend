@@ -49,10 +49,10 @@ export function normaliseString (value) {
  *
  * @deprecated Will be made private in v5.0
  * @param {DOMStringMap} dataset - HTML element dataset
- * @returns {Object<string, unknown>} Normalised dataset
+ * @returns {{ [key: string]: unknown }} Normalised dataset
  */
 export function normaliseDataset (dataset) {
-  /** @type {Object<string, unknown>} */
+  /** @type {{ [key: string]: unknown }} */
   var out = {}
 
   for (var key in dataset) {
