@@ -110,7 +110,7 @@
     "stylelint-config-gds": "^0.2.0",
     "stylelint-order": "^6.0.3",
     "typed-query-selector": "^2.9.2",
-    "typescript": "^5.0.3"
+    "typescript": "^5.0.4"
   },
   "optionalDependencies": {
     "@jest/environment": "^29.5.0",
