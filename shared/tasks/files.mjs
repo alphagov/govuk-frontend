@@ -24,7 +24,7 @@ export async function clean (pattern, { destPath, ignore }) {
  * @param {AssetEntry[1]} options - Asset options
  */
 export async function version (assetPath, options) {
-  return write(assetPath, {
+  await write(assetPath, {
     ...options,
 
     async fileContents () {
@@ -46,7 +46,7 @@ export async function write (assetPath, { destPath, filePath, fileContents }) {
     throw new Error("Option 'fileContents' required")
   }
 
-  return writeFile(assetDestPath, await fileContents() + EOL)
+  await writeFile(assetDestPath, await fileContents() + EOL)
 }
 
 /**

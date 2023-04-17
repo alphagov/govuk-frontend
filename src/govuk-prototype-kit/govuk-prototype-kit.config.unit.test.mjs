@@ -1,6 +1,7 @@
 import configFn from './govuk-prototype-kit.config.mjs'
 
 describe('GOV.UK Prototype Kit config', () => {
+  /** @type {import('./govuk-prototype-kit.config.mjs').PrototypeKitConfig} */
   let config
 
   beforeAll(async () => {
