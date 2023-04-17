@@ -45,7 +45,7 @@
     "@babel/preset-env": "^7.21.4",
     "@npmcli/run-script": "^6.0.0",
     "@percy/puppeteer": "^2.0.2",
-    "@percy/sdk-utils": "^1.21.0",
+    "@percy/sdk-utils": "^1.23.0",
     "autoprefixer": "^9.8.8",
     "chalk": "^5.2.0",
     "cpy": "^9.0.1",
