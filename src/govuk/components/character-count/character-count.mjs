@@ -90,8 +90,8 @@ function CharacterCount ($module, config) {
   var configOverrides = {}
   if ('maxwords' in datasetConfig || 'maxlength' in datasetConfig) {
     configOverrides = {
-      maxlength: false,
-      maxwords: false
+      maxlength: undefined,
+      maxwords: undefined
     }
   }
 
