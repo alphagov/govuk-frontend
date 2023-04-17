@@ -26,7 +26,7 @@ export function watch () {
     )),
 
     gulp.watch([
-      `${slash(paths.root)}/jsdoc.config.js`,
+      `${slash(paths.root)}/typedoc.config.js`,
       `${slash(paths.src)}/govuk/**/*.mjs`
     ], gulp.parallel(
       npm.script('lint:js'),
