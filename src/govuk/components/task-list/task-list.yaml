@@ -1,0 +1,212 @@
+params:
+- name: items
+  type: array
+  required: true
+  description: Array of item objects.
+  params:
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the item `div`
+  - name: title.text
+    type: string
+    required: true
+    description: If `html` is set, this is not required. Text to use within the title. If `html` is provided, the `text` argument will be ignored.
+  - name: title.html
+    type: string
+    required: true
+    description: If `text` is set, this is not required.
+  - name: title.classes
+    type: string
+    required: false
+    description: Classes to add to the title wrapper
+  - name: status.text
+    type: string
+    required: true
+    description: If `html` is set, this is not required. Text to use within the value. If `html` is provided, the `text` argument will be ignored.
+  - name: status.html
+    type: string
+    required: true
+    description: If `text` is set, this is not required. HTML to use within the value. If `html` is provided, the `text` argument will be ignored.
+  - name: status.classes
+    type: string
+    required: false
+    description: Classes to add to the status wrapper
+  - name: url.text
+    type: string
+    required: false
+    description: If `html` is set, this is not required. Text to use within the title. If `html` is provided, the `text` argument will be ignored.
+  - name: url.html
+    type: string
+    required: false
+    description: If `text` is set, this is not required. HTML to use within the value. If `html` is provided, the `text` argument will be ignored.
+  - name: url.classes
+    type: string
+    required: false
+    description: Classes to add to the actions wrapper
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the container.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the container.
+- name: idPrefix
+  type: string
+  required: false
+  description: String to prefix ID for the status and hint for each task list item. If `idPrefix` is not passed, fallback to using the `task-list` string instead.
+
+
+examples:
+  - name: default
+    data:
+      idPrefix: "task-list-example"
+      items:
+        - title:
+            text: Company Directors
+          href: '#'
+          status:
+            text: Completed
+            classes: govuk-task-list__status--black
+
+        - title:
+            text: Registered company details
+          href: '#'
+          status:
+            text: Incomplete
+            classes: govuk-task-list__status--blue
+
+        - title:
+            text: Business plan
+          href: '#'
+          status:
+            text: Incomplete
+            classes: govuk-task-list__status--blue
+
+
+  - name: example with 3 states
+    data:
+      idPrefix: "task-list-example"
+      items:
+        - title:
+            text: Company Directors
+          href: '#'
+          status:
+            text: Completed
+            classes: govuk-task-list__status--black
+        - title:
+            text: Registered company details
+          href: '#'
+          status:
+            text: Not started
+            classes: govuk-task-list__status--light-blue
+        - title:
+            text: Business plan
+          href: '#'
+          status:
+            text: In progress
+            classes: govuk-task-list__status--blue
+        - title:
+            text: Documentation
+          href: '#'
+          status:
+            text: Not started
+            classes: govuk-task-list__status--light-blue
+
+  - name: example with hint text and additional states
+    data:
+      idPrefix: "task-list-example"
+      items:
+        - title:
+            text: Company Directors
+          href: '#'
+          status:
+            text: Completed
+            classes: govuk-task-list__status--black
+        - title:
+            text: Registered company details
+          href: '#'
+          status:
+            text: Not started
+            classes: govuk-task-list__status--light-blue
+        - title:
+            text: Business plan
+          href: '#'
+          hint:
+            text: Ensure the plan covers objectives, strategies, sales, marketing and financial forecasts.
+          status:
+            text: Review
+            classes: govuk-task-list__status--pink
+        - title:
+            text: Documentation
+          href: '#'
+          status:
+            text: In progress
+            classes: govuk-task-list__status--blue
+        - title:
+            text: Charitable status
+          href: '#'
+          status:
+            text: Error
+            classes: govuk-task-list__status--error
+        - title:
+            text: Payment
+          hint:
+            text: It will cost between £15 and £75
+          status:
+            text: Cannot start yet
+            classes: govuk-task-list__status--secondary-text-colour
+
+  - name: example with all possible colours
+    data:
+      idPrefix: "task-list-example"
+      items:
+        - title:
+            text: Task A
+          href: '#'
+          status:
+            text: Text colour
+            classes: govuk-task-list__status--text-colour
+        - title:
+            text: Task B
+          href: '#'
+          status:
+            text: Secondary text colour
+            classes: govuk-task-list__status--secondary-text-colour
+        - title:
+            text: Task C
+          href: '#'
+          status:
+            text: Light blue
+            classes: govuk-task-list__status--light-blue
+        - title:
+            text: Task D
+          href: '#'
+          status:
+            text: Blue
+            classes: govuk-task-list__status--blue
+        - title:
+            text: Task E
+          href: '#'
+          status:
+            text: Grey
+            classes: govuk-task-list__status--grey
+        - title:
+            text: Task F
+          href: '#'
+          status:
+            text: Pink
+            classes: govuk-task-list__status--pink
+        - title:
+            text: Task G
+          href: '#'
+          status:
+            text: Purple
+            classes: govuk-task-list__status--purple
+        - title:
+            text: Task H
+          href: '#'
+          status:
+            text: Error
+            classes: govuk-task-list__status--error
