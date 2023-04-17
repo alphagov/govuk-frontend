@@ -1,6 +1,9 @@
 const BANNER_COOKIE_NAME = 'dismissed-app-banner'
 
-export default function (app) {
+/**
+ * @param {import('express').Application} app
+ */
+export default (app) => {
   // Detect if banner should be shown based on cookies set
   app.use(function (request, response, next) {
     const { query, cookies } = request

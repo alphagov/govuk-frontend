@@ -1,5 +1,9 @@
 /**
  * Legacy query handling
+ *
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ * @param {import('express').NextFunction} next
  */
 const legacy = (req, res, next) => {
   const { query } = req

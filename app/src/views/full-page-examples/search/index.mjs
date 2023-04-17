@@ -4,9 +4,17 @@ import shuffleSeed from 'shuffle-seed'
 
 const { documents } = JSON.parse(await readFile(new URL('data.json', import.meta.url), 'utf8'))
 
+/**
+ * @param {import('express').Application} app
+ */
 export default (app) => {
   app.get(
     '/full-page-examples/search',
+
+    /**
+     * @param {import('express').Request} request
+     * @param {import('express').Response} response
+     */
     (request, response) => {
       const { query } = request
 
