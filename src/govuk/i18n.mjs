@@ -67,7 +67,7 @@ I18n.prototype.t = function (lookupKey, options) {
  *
  * @param {string} translationString - The translation string
  * @param {Object<string, unknown>} options - Any options passed with the translation string, e.g: for string interpolation.
- * @returns {string} The translation string to output, with ${} placeholders replaced
+ * @returns {string} The translation string to output, with $\{\} placeholders replaced
  */
 I18n.prototype.replacePlaceholders = function (translationString, options) {
   /** @type {Intl.NumberFormat | undefined} */

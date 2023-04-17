@@ -52,7 +52,7 @@ export function generateUniqueID () {
  * Config flattening function
  *
  * Takes any number of objects, flattens them into namespaced key-value pairs,
- * (e.g. {'i18n.showSection': 'Show section'}) and combines them together, with
+ * (e.g. \{'i18n.showSection': 'Show section'\}) and combines them together, with
  * greatest priority on the LAST item passed in.
  *
  * @deprecated Will be made private in v5.0
