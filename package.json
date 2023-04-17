@@ -57,7 +57,7 @@
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-es-x": "^6.1.0",
     "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jsdoc": "^40.3.0",
+    "eslint-plugin-jsdoc": "^41.1.2",
     "eslint-plugin-n": "^15.7.0",
     "eslint-plugin-promise": "^6.1.1",
     "govuk-frontend-config": "*",
