@@ -134,6 +134,15 @@ function Accordion ($module, config) {
 
   /** @deprecated Will be made private in v5.0 */
   this.browserSupportsSessionStorage = helper.checkForSessionStorage()
+
+  /** @deprecated Will be made private in v5.0 */
+  this.$showAllButton = null
+
+  /** @deprecated Will be made private in v5.0 */
+  this.$showAllIcon = null
+
+  /** @deprecated Will be made private in v5.0 */
+  this.$showAllText = null
 }
 
 /**

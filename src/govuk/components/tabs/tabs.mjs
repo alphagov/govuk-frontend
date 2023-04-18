@@ -45,6 +45,9 @@ function Tabs ($module) {
 
   /** @deprecated Will be made private in v5.0 */
   this.boundOnHashChange = this.onHashChange.bind(this)
+
+  /** @deprecated Will be made private in v5.0 */
+  this.changingHash = false
 }
 
 /**
