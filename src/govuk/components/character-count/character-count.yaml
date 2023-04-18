@@ -116,6 +116,8 @@ examples:
       name: custom-textarea-description
       id: custom-textarea-description
       maxlength: 10
+      label:
+        text: Can you provide more detail?
       textareaDescriptionText: Gallwch ddefnyddio hyd at %{count} nod
 
   - name: with hint
@@ -196,6 +198,8 @@ examples:
       id: with-translations
       name: with-translations
       maxlength: 10
+      label:
+        text: Full address
       charactersUnderLimitText:
         other: '%{count} characters to go'
         one: 'One character to go'
