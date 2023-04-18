@@ -4,6 +4,10 @@
 
 ### New features
 
+#### Add new brand colour for Department for Science, Innovation and Technology (DSIT)
+
+This was added in [pull request #3523: Add new brand colour for DSIT](https://github.com/alphagov/govuk-frontend/pull/3523).
+
 #### Added inverse modifier for buttons on dark backgrounds
 
 You can now style buttons on dark backgrounds to have a white background colour by adding the `govuk-button--inverse` class.
