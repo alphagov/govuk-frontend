@@ -30,6 +30,11 @@ async function axe (page, overrides = {}) {
       'wcag22aa'
     ])
 
+  // Ignore colour contrast for 'inactive' components
+  if (page.url().includes('-disabled')) {
+    overrides['color-contrast'] = { enabled: false }
+  }
+
   // Create report
   const report = await reporter
     .options({ rules: overrides })
