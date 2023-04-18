@@ -18,6 +18,9 @@ function getErrors (errorsInstance) {
   return formattedErrors
 }
 
+/**
+ * @param {import('express').Application} app
+ */
 export default (app) => {
   app.post(
     '/full-page-examples/update-your-account-details',
@@ -30,6 +33,12 @@ export default (app) => {
         .exists()
         .not().isEmpty().withMessage('Enter your password')
     ],
+
+    /**
+     * @param {import('express').Request} request
+     * @param {import('express').Response} response
+     * @returns {void}
+     */
     (request, response) => {
       const errors = getErrors(validationResult(request))
 

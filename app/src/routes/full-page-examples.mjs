@@ -2,6 +2,9 @@ import { getFullPageExamples } from 'govuk-frontend-lib/files'
 
 import * as routes from '../views/full-page-examples/index.mjs'
 
+/**
+ * @param {import('express').Application} app
+ */
 export default (app) => {
   routes.applicantDetails(app)
   routes.cookieBannerEssentialCookies(app)

@@ -27,7 +27,7 @@ export default async () => {
 
   // Set up Express.js
   app.set('flags', flags)
-  app.set('query parser', (query) => new URLSearchParams(query))
+  app.set('query parser', 'simple')
 
   // Set up middleware
   app.use('/docs', middleware.docs)
@@ -122,8 +122,7 @@ export default async () => {
 
     let bodyClasses = ''
 
-    // @ts-expect-error `URLSearchParams` as 'query parser'
-    if (req.query.has('iframe')) {
+    if ('iframe' in req.query) {
       bodyClasses = 'app-iframe-in-component-preview'
     }
 
