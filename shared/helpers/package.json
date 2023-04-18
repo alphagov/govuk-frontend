@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "name": "govuk-frontend-helpers",
+  "description": "GOV.UK Frontend shared helpers",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./jest/*": "./jest/*",
+    "./*": "./*.js"
+  },
+  "engines": {
+    "node": "^18.12.0",
+    "npm": "^8.1.0 || ^9.1.0"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "govuk-frontend-config": "*",
+    "govuk-frontend-lib": "*",
+    "jest-axe": "^7.0.1",
+    "jest-dev-server": "^8.0.5",
+    "jest-environment-jsdom": "^29.5.0",
+    "jest-environment-node-single-context": "^29.0.0",
+    "jest-environment-puppeteer": "^8.0.6",
+    "nunjucks": "^3.2.4",
+    "outdent": "^0.8.0",
+    "puppeteer": "^19.9.0",
+    "sass-embedded": "^1.60.0"
+  }
+}

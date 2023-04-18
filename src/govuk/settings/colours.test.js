@@ -1,4 +1,4 @@
-const { compileSassString } = require('../../../lib/jest-helpers')
+const { compileSassString } = require('govuk-frontend-helpers/tests')
 
 describe('Organisation colours', () => {
   it('should define websafe colours that meet contrast requirements', async () => {

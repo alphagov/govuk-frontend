@@ -1,8 +1,7 @@
 const cheerio = require('cheerio')
-
-const { getExamples } = require('../../../../lib/file-helper')
-const { axe } = require('../../../../lib/jest-helpers')
-const { render } = require('../../../../lib/nunjucks-helpers')
+const { render } = require('govuk-frontend-helpers/nunjucks')
+const { axe } = require('govuk-frontend-helpers/tests')
+const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('Hint', () => {
   let examples

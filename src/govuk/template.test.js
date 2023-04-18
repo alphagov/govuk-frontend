@@ -2,10 +2,9 @@ const crypto = require('crypto')
 const { join } = require('path')
 
 const cheerio = require('cheerio')
+const { paths } = require('govuk-frontend-config')
+const { renderTemplate } = require('govuk-frontend-helpers/nunjucks')
 const nunjucks = require('nunjucks')
-
-const { paths } = require('../../config')
-const { renderTemplate } = require('../../lib/nunjucks-helpers')
 
 describe('Template', () => {
   describe('with default nunjucks configuration', () => {

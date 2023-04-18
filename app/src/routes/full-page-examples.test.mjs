@@ -1,6 +1,5 @@
 import { load } from 'cheerio'
-
-import { ports } from '../../../config/index.js'
+import { ports } from 'govuk-frontend-config'
 
 const expectedPages = [
   'bank-holidays',
@@ -337,21 +336,21 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         const body = await response.text()
         const $ = load(body)
         // Check the results are correct
-        expect($.html()).toContain('121,842 results')
+        expect($.html()).toContain('482,211 results')
       })
       it('should show sorted results when selected', async () => {
         const response = await fetchPath('search?order=updated-newest')
         const body = await response.text()
         const $ = load(body)
         // Check the results are correct
-        expect($.html()).toContain('821,124 results')
+        expect($.html()).toContain('241,128 results')
       })
       it('should show organisation results when selected', async () => {
         const response = await fetchPath('search?order=updated-newest&organisation=hmrc')
         const body = await response.text()
         const $ = load(body)
         // Check the results are correct
-        expect($.html()).toContain('212,418 results')
+        expect($.html()).toContain('814,221 results')
       })
     })
 

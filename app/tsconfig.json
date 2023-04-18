@@ -1,5 +1,11 @@
 {
   "extends": "../tsconfig.base.json",
-  "include": ["**/*.js", "**/*.mjs", "../config", "../lib", "../tasks"],
+  "include": [
+    "**/*.js",
+    "**/*.mjs",
+    "../shared/config",
+    "../shared/lib",
+    "../shared/tasks"
+  ],
   "exclude": ["./dist/**"]
 }

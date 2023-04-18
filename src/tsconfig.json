@@ -1,6 +1,12 @@
 {
   "extends": "../tsconfig.base.json",
-  "include": ["**/*.js", "**/*.mjs", "../config", "../lib"],
+  "include": [
+    "**/*.js",
+    "**/*.mjs",
+    "../shared/config",
+    "../shared/helpers",
+    "../shared/lib"
+  ],
   "compilerOptions": {
     "lib": ["ESNext", "DOM"],
     "target": "ES2015",

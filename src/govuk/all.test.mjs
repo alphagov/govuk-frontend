@@ -1,8 +1,7 @@
+import { paths } from 'govuk-frontend-config'
+import { compileSassString } from 'govuk-frontend-helpers/tests'
 import sassdoc from 'sassdoc'
 import slash from 'slash'
-
-import { paths } from '../../config/index.js'
-import { compileSassString } from '../../lib/jest-helpers.js'
 
 describe('GOV.UK Frontend', () => {
   describe('global styles', () => {

@@ -1,9 +1,8 @@
 
 import { join } from 'path'
 
+import { paths } from 'govuk-frontend-config'
 import nunjucks from 'nunjucks'
-
-import { paths } from '../../../../config/index.js'
 
 import * as filters from './filters/index.mjs'
 import * as globals from './globals/index.mjs'

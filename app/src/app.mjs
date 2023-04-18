@@ -1,10 +1,9 @@
 import { join } from 'path'
 
 import express from 'express'
-
-import { paths } from '../../config/index.js'
-import { getDirectories, getComponentsData, getFullPageExamples } from '../../lib/file-helper.js'
-import { componentNameToMacroName } from '../../lib/helper-functions.js'
+import { paths } from 'govuk-frontend-config'
+import { getDirectories, getComponentsData, getFullPageExamples } from 'govuk-frontend-lib/files'
+import { componentNameToMacroName } from 'govuk-frontend-lib/names'
 
 import * as middleware from './common/middleware/index.mjs'
 import * as nunjucks from './common/nunjucks/index.mjs'
@@ -28,7 +27,7 @@ export default async () => {
 
   // Set up Express.js
   app.set('flags', flags)
-  app.set('query parser', (query) => new URLSearchParams(query))
+  app.set('query parser', 'simple')
 
   // Set up middleware
   app.use('/docs', middleware.docs)
@@ -123,8 +122,7 @@ export default async () => {
 
     let bodyClasses = ''
 
-    // @ts-expect-error `URLSearchParams` as 'query parser'
-    if (req.query.has('iframe')) {
+    if ('iframe' in req.query) {
       bodyClasses = 'app-iframe-in-component-preview'
     }
 

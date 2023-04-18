@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "name": "govuk-frontend-config",
+  "description": "GOV.UK Frontend shared config",
+  "main": "index.js",
+  "engines": {
+    "node": "^18.12.0",
+    "npm": "^8.1.0 || ^9.1.0"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "govuk-frontend": "*"
+  }
+}

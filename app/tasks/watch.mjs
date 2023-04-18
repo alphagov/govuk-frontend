@@ -1,8 +1,7 @@
+import { paths } from 'govuk-frontend-config'
+import { npm } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
 import slash from 'slash'
-
-import { paths } from '../../config/index.js'
-import { npm } from '../../tasks/index.mjs'
 
 import { scripts, styles } from './index.mjs'
 

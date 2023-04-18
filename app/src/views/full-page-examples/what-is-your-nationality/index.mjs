@@ -2,6 +2,9 @@ import { body, validationResult } from 'express-validator'
 
 import { formatValidationErrors } from '../../../utils.mjs'
 
+/**
+ * @param {import('express').Application} app
+ */
 export default (app) => {
   app.post(
     '/full-page-examples/what-is-your-nationality',
@@ -34,6 +37,12 @@ export default (app) => {
           return true
         })
     ],
+
+    /**
+     * @param {import('express').Request} request
+     * @param {import('express').Response} response
+     * @returns {void}
+     */
     (request, response) => {
       const errors = formatValidationErrors(validationResult(request))
       if (errors) {

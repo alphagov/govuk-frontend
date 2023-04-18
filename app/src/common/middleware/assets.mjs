@@ -1,8 +1,7 @@
 import { join } from 'path'
 
 import express from 'express'
-
-import { paths } from '../../../../config/index.js'
+import { paths } from 'govuk-frontend-config'
 
 const router = express.Router()
 

@@ -1,10 +1,9 @@
 const { join } = require('path')
 
+const { paths } = require('govuk-frontend-config')
+const { compileSassFile } = require('govuk-frontend-helpers/tests')
+const { getListing } = require('govuk-frontend-lib/files')
 const sassdoc = require('sassdoc')
-
-const { paths } = require('../../../config')
-const { getListing } = require('../../../lib/file-helper')
-const { compileSassFile } = require('../../../lib/jest-helpers')
 
 describe('The helpers layer', () => {
   let sassFiles
