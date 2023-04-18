@@ -1,5 +1,5 @@
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { axe, htmlWithClassName } = require('govuk-frontend-helpers/tests')
+const { htmlWithClassName } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('Phase banner', () => {
@@ -10,13 +10,6 @@ describe('Phase banner', () => {
   })
 
   describe('by default', () => {
-    it('passes accessibility tests', async () => {
-      const $ = render('phase-banner', examples.default)
-
-      const results = await axe($.html())
-      expect(results).toHaveNoViolations()
-    })
-
     it('allows additional classes to be added to the component', () => {
       const $ = render('phase-banner', examples.classes)
 

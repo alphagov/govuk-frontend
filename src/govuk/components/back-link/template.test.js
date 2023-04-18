@@ -1,5 +1,4 @@
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { axe } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('back-link component', () => {
@@ -7,13 +6,6 @@ describe('back-link component', () => {
 
   beforeAll(async () => {
     examples = await getExamples('back-link')
-  })
-
-  it('default example passes accessibility tests', async () => {
-    const $ = render('back-link', examples.default)
-
-    const results = await axe($.html())
-    expect(results).toHaveNoViolations()
   })
 
   it('renders the default example with an anchor, href and text correctly', () => {

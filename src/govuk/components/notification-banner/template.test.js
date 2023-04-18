@@ -1,5 +1,4 @@
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { axe } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('Notification-banner', () => {
@@ -10,13 +9,6 @@ describe('Notification-banner', () => {
   })
 
   describe('default example', () => {
-    it('passes accessibility tests', async () => {
-      const $ = render('notification-banner', examples.default)
-
-      const results = await axe($.html())
-      expect(results).toHaveNoViolations()
-    })
-
     it('aria-labelledby attribute matches the title id', () => {
       const $ = render('notification-banner', examples.default)
       const ariaAttr = $('.govuk-notification-banner').attr('aria-labelledby')

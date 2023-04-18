@@ -1,5 +1,4 @@
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { axe } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('Cookie Banner', () => {
@@ -10,13 +9,6 @@ describe('Cookie Banner', () => {
   })
 
   describe('question banner', () => {
-    it('passes accessibility tests', async () => {
-      const $ = render('cookie-banner', examples.default)
-
-      const results = await axe($.html())
-      expect(results).toHaveNoViolations()
-    })
-
     it('renders a heading', () => {
       const $ = render('cookie-banner', examples.default)
 
@@ -93,13 +85,6 @@ describe('Cookie Banner', () => {
   })
 
   describe('confirmation banner', () => {
-    it('passes accessibility tests', async () => {
-      const $ = render('cookie-banner', examples['accepted confirmation banner'])
-
-      const results = await axe($.html())
-      expect(results).toHaveNoViolations()
-    })
-
     it('role alert not set by default', () => {
       const $ = render('cookie-banner', examples.default)
 

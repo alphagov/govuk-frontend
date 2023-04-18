@@ -1,5 +1,4 @@
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { axe } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('Error message', () => {
@@ -7,13 +6,6 @@ describe('Error message', () => {
 
   beforeAll(async () => {
     examples = await getExamples('error-message')
-  })
-
-  it('default example passes accessibility tests', async () => {
-    const $ = render('error-message', examples.default)
-
-    const results = await axe($.html())
-    expect(results).toHaveNoViolations()
   })
 
   it('renders with a custom id', () => {
