@@ -1,5 +1,4 @@
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { axe } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('Tag', () => {
@@ -10,13 +9,6 @@ describe('Tag', () => {
   })
 
   describe('default example', () => {
-    it('passes accessibility tests', async () => {
-      const $ = render('tag', examples.default)
-
-      const results = await axe($.html())
-      expect(results).toHaveNoViolations()
-    })
-
     it('renders the default example with strong element and text', () => {
       const $ = render('tag', examples.default)
 

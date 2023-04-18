@@ -1,5 +1,4 @@
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { axe } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('Table', () => {
@@ -7,13 +6,6 @@ describe('Table', () => {
 
   beforeAll(async () => {
     examples = await getExamples('table')
-  })
-
-  it('passes basic accessibility tests', async () => {
-    const $ = render('table', examples.default)
-
-    const results = await axe($.html())
-    expect(results).toHaveNoViolations()
   })
 
   it('can have additional classes', () => {

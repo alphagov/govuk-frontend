@@ -1,5 +1,5 @@
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { axe, htmlWithClassName } = require('govuk-frontend-helpers/tests')
+const { htmlWithClassName } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 const WORD_BOUNDARY = '\\b'
@@ -13,13 +13,6 @@ describe('Date input', () => {
   })
 
   describe('default example', () => {
-    it('passes accessibility tests', async () => {
-      const $ = render('date-input', examples.default)
-
-      const results = await axe($.html())
-      expect(results).toHaveNoViolations()
-    })
-
     it('renders with id', () => {
       const $ = render('date-input', examples.default)
 

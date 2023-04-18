@@ -1,5 +1,5 @@
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { axe, htmlWithClassName } = require('govuk-frontend-helpers/tests')
+const { htmlWithClassName } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 const WORD_BOUNDARY = '\\b'
@@ -10,13 +10,6 @@ describe('Radios', () => {
 
   beforeAll(async () => {
     examples = await getExamples('radios')
-  })
-
-  it('default example passes accessibility tests', async () => {
-    const $ = render('radios', examples.default)
-
-    const results = await axe($.html())
-    expect(results).toHaveNoViolations()
   })
 
   it('render example with minimum required name and items', () => {

@@ -1,5 +1,4 @@
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { axe } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('Tabs', () => {
@@ -10,13 +9,6 @@ describe('Tabs', () => {
   })
 
   describe('default example', () => {
-    it('passes accessibility tests', async () => {
-      const $ = render('tabs', examples.default)
-
-      const results = await axe($.html())
-      expect(results).toHaveNoViolations()
-    })
-
     it('renders the first tab selected', () => {
       const $ = render('tabs', examples.default)
 

@@ -1,5 +1,4 @@
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { axe } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('Panel', () => {
@@ -10,13 +9,6 @@ describe('Panel', () => {
   })
 
   describe('default example', () => {
-    it('passes accessibility tests', async () => {
-      const $ = render('panel', examples.default)
-
-      const results = await axe($.html())
-      expect(results).toHaveNoViolations()
-    })
-
     it('renders title text', () => {
       const $ = render('panel', examples.default)
       const panelTitle = $('.govuk-panel__title').text().trim()

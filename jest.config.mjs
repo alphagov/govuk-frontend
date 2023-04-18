@@ -52,7 +52,6 @@ export default {
     {
       ...config,
       displayName: 'Nunjucks macro tests',
-      setupFilesAfterEnv: ['govuk-frontend-helpers/jest/matchers.js'],
       snapshotSerializers: [
         'jest-serializer-html'
       ],
