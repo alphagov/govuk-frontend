@@ -210,7 +210,8 @@ examples:
     hidden: true
     data:
       head:
-        - attributes:
+        - text: Foo
+          attributes:
             data-fizz: buzz
       rows:
         - - text: Jan
