@@ -88,7 +88,7 @@
     "prettier": "^2.8.7",
     "puppeteer": "^19.9.0",
     "sass-color-helpers": "^2.1.1",
-    "sass-embedded": "^1.60.0",
+    "sass-embedded": "^1.62.0",
     "sassdoc": "^2.7.4",
     "slash": "^5.0.0",
     "standard": "^17.0.0",

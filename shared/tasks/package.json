@@ -29,7 +29,7 @@
     "puppeteer": "^19.9.0",
     "rollup": "0.59.4",
     "rollup-plugin-replace": "^2.2.0",
-    "sass-embedded": "^1.60.0",
+    "sass-embedded": "^1.62.0",
     "slash": "^5.0.0",
     "terser": "^5.16.8",
     "yargs-parser": "^21.1.1"
