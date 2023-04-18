@@ -1,7 +1,47 @@
+const { AxePuppeteer } = require('@axe-core/puppeteer')
 const { ports } = require('govuk-frontend-config')
 const { componentNameToClassName } = require('govuk-frontend-lib/names')
 
 const { renderHTML } = require('./nunjucks')
+
+/**
+ * Axe Puppeteer reporter
+ *
+ * @param {import('puppeteer').Page} page - Puppeteer page object
+ * @param {import('axe-core').RuleObject} [overrides] - Axe rule overrides
+ * @returns {Promise<import('axe-core').AxeResults>} Axe Puppeteer instance
+ */
+async function axe (page, overrides = {}) {
+  const reporter = new AxePuppeteer(page)
+    .include('body')
+    .withRules([
+      'best-practice',
+
+      // WCAG 2.x
+      'wcag2a',
+      'wcag2aa',
+      'wcag2aaa',
+
+      // WCAG 2.1
+      'wcag21a',
+      'wcag21aa',
+
+      // WCAG 2.2
+      'wcag22aa'
+    ])
+
+  // Create report
+  const report = await reporter
+    .options({ rules: overrides })
+    .analyze()
+
+  // Add preview URL to report violations
+  report.violations.forEach((violation) => {
+    violation.helpUrl = `${violation.helpUrl}\n${page.url()}`
+  })
+
+  return report
+}
 
 /**
  * Render and initialise a component within test boilerplate HTML
@@ -153,6 +193,7 @@ async function isVisible ($element) {
 }
 
 module.exports = {
+  axe,
   renderAndInitialise,
   goTo,
   goToComponent,

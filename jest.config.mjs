@@ -1,5 +1,7 @@
 /**
- * @type {import('jest').Config}
+ * Jest project config defaults
+ *
+ * @type {import('@jest/types').Config.ProjectConfig}
  */
 const config = {
   cacheDirectory: '<rootDir>/.cache/jest/',
@@ -37,10 +39,22 @@ const config = {
 }
 
 /**
- * @type {import('jest').Config}
+ * Jest config
+ *
+ * @type {import('@jest/types').Config.InitialOptions}
+ * @example
+ * ```console
+ * npx jest --selectProjects "Nunjucks macro tests"
+ * npx jest --selectProjects "JavaScript unit tests"
+ * ```
  */
 export default {
   collectCoverageFrom: ['./src/**/*.{js,mjs}'],
+
+  // Reduce CPU usage during project test runs
+  // Note: Matches Jest default (50%) via `--watch`
+  maxWorkers: '50%',
+
   projects: [
     {
       ...config,
@@ -96,10 +110,22 @@ export default {
         '**/components/globals.test.mjs',
         '**/components/*/*.test.{js,mjs}',
 
-        // Exclude macro/unit tests
+        // Exclude accessibility/macro/unit tests
+        '!**/*/accessibility.test.{js,mjs}',
         '!**/(*.)?template.test.{js,mjs}',
         '!**/*.unit.test.{js,mjs}'
       ],
+
+      // Web server and browser required
+      globalSetup: 'govuk-frontend-helpers/jest/browser/open.mjs',
+      globalTeardown: 'govuk-frontend-helpers/jest/browser/close.mjs'
+    },
+    {
+      ...config,
+      displayName: 'Accessibility tests',
+      setupFilesAfterEnv: ['govuk-frontend-helpers/jest/matchers.js'],
+      testEnvironment: 'govuk-frontend-helpers/jest/environment/puppeteer.mjs',
+      testMatch: ['**/*/accessibility.test.{js,mjs}'],
 
       // Web server and browser required
       globalSetup: 'govuk-frontend-helpers/jest/browser/open.mjs',
