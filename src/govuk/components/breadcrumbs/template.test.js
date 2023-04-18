@@ -1,4 +1,3 @@
-const cheerio = require('cheerio')
 const { render } = require('govuk-frontend-helpers/nunjucks')
 const { axe } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
@@ -12,27 +11,27 @@ describe('Breadcrumbs', () => {
 
   describe('default example', () => {
     it('passes accessibility tests', async () => {
-      const $ = cheerio.load(render('breadcrumbs', examples.default))
+      const $ = render('breadcrumbs', examples.default)
 
       const results = await axe($.html())
       expect(results).toHaveNoViolations()
     })
 
     it('renders with items', () => {
-      const $ = cheerio.load(render('breadcrumbs', examples.default))
+      const $ = render('breadcrumbs', examples.default)
 
       const $items = $('.govuk-breadcrumbs__list-item')
       expect($items.length).toEqual(2)
     })
 
     it('renders 2 items', () => {
-      const $ = cheerio.load(render('breadcrumbs', examples.default))
+      const $ = render('breadcrumbs', examples.default)
       const $items = $('.govuk-breadcrumbs__list-item')
       expect($items.length).toEqual(2)
     })
 
     it('renders item with anchor', () => {
-      const $ = cheerio.load(render('breadcrumbs', examples.default))
+      const $ = render('breadcrumbs', examples.default)
 
       const $anchor = $('.govuk-breadcrumbs__list-item a').first()
       expect($anchor.get(0).tagName).toEqual('a')
@@ -44,35 +43,35 @@ describe('Breadcrumbs', () => {
 
   describe('custom options', () => {
     it('renders item with text', () => {
-      const $ = cheerio.load(render('breadcrumbs', examples['with last breadcrumb as current page']))
+      const $ = render('breadcrumbs', examples['with last breadcrumb as current page'])
 
       const $item = $('.govuk-breadcrumbs__list-item').last()
       expect($item.text()).toEqual('Travel abroad')
     })
 
     it('renders item with escaped entities in text', () => {
-      const $ = cheerio.load(render('breadcrumbs', examples['html as text']))
+      const $ = render('breadcrumbs', examples['html as text'])
 
       const $item = $('.govuk-breadcrumbs__list-item')
       expect($item.html()).toEqual('&lt;span&gt;Section 1&lt;/span&gt;')
     })
 
     it('renders item with html', () => {
-      const $ = cheerio.load(render('breadcrumbs', examples.html))
+      const $ = render('breadcrumbs', examples.html)
 
       const $item = $('.govuk-breadcrumbs__list-item').first()
       expect($item.html()).toEqual('<em>Section 1</em>')
     })
 
     it('renders item with html inside anchor', () => {
-      const $ = cheerio.load(render('breadcrumbs', examples.html))
+      const $ = render('breadcrumbs', examples.html)
 
       const $anchor = $('.govuk-breadcrumbs__list-item a').last()
       expect($anchor.html()).toEqual('<em>Section 2</em>')
     })
 
     it('renders item anchor with attributes', () => {
-      const $ = cheerio.load(render('breadcrumbs', examples['item attributes']))
+      const $ = render('breadcrumbs', examples['item attributes'])
 
       const $breadcrumbLink = $('.govuk-breadcrumbs__link')
       expect($breadcrumbLink.attr('data-attribute')).toEqual('my-attribute')
@@ -80,14 +79,14 @@ describe('Breadcrumbs', () => {
     })
 
     it('renders with classes', () => {
-      const $ = cheerio.load(render('breadcrumbs', examples.classes))
+      const $ = render('breadcrumbs', examples.classes)
 
       const $component = $('.govuk-breadcrumbs')
       expect($component.hasClass('app-breadcrumbs--custom-modifier')).toBeTruthy()
     })
 
     it('renders with attributes', () => {
-      const $ = cheerio.load(render('breadcrumbs', examples.attributes))
+      const $ = render('breadcrumbs', examples.attributes)
 
       const $component = $('.govuk-breadcrumbs')
       expect($component.attr('id')).toEqual('my-navigation')
@@ -95,7 +94,7 @@ describe('Breadcrumbs', () => {
     })
 
     it('renders item as collapse on mobile if specified', () => {
-      const $ = cheerio.load(render('breadcrumbs', examples['with collapse on mobile']))
+      const $ = render('breadcrumbs', examples['with collapse on mobile'])
 
       const $component = $('.govuk-breadcrumbs')
       expect($component.hasClass('govuk-breadcrumbs--collapse-on-mobile')).toBeTruthy()

@@ -1,7 +1,7 @@
 const { ports } = require('govuk-frontend-config')
 const { componentNameToClassName } = require('govuk-frontend-lib/names')
 
-const { render } = require('./nunjucks')
+const { renderHTML } = require('./nunjucks')
 
 /**
  * Render and initialise a component within test boilerplate HTML
@@ -28,7 +28,7 @@ const { render } = require('./nunjucks')
 async function renderAndInitialise (page, componentName, options) {
   await goTo(page, '/tests/boilerplate')
 
-  const html = render(componentName, options.params)
+  const html = renderHTML(componentName, options.params)
 
   // Inject rendered HTML into the page
   await page.$eval('#slot', (slot, htmlForSlot) => {

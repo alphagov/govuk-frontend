@@ -1,4 +1,3 @@
-const cheerio = require('cheerio')
 const { render } = require('govuk-frontend-helpers/nunjucks')
 const { axe } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
@@ -12,14 +11,14 @@ describe('Pagination', () => {
 
   describe('default examples', () => {
     it('passes accessibility tests', async () => {
-      const $ = cheerio.load(render('pagination', examples.default))
+      const $ = render('pagination', examples.default)
 
       const results = await axe($.html())
       expect(results).toHaveNoViolations()
     })
 
     it('renders the correct URLs for each link', () => {
-      const $ = cheerio.load(render('pagination', examples.default))
+      const $ = render('pagination', examples.default)
       const $previous = $('.govuk-pagination__prev .govuk-pagination__link')
       const $next = $('.govuk-pagination__next .govuk-pagination__link')
       const $firstNumber = $('.govuk-pagination__item:first-child .govuk-pagination__link')
@@ -34,7 +33,7 @@ describe('Pagination', () => {
     })
 
     it('renders the correct number within each pagination item', () => {
-      const $ = cheerio.load(render('pagination', examples.default))
+      const $ = render('pagination', examples.default)
       const $firstNumber = $('.govuk-pagination__item:first-child')
       const $secondNumber = $('.govuk-pagination__item:nth-child(2)')
       const $thirdNumber = $('.govuk-pagination__item:last-child')
@@ -48,7 +47,7 @@ describe('Pagination', () => {
     // Instead of the aria-label solution used for the links in the pagination because of issues caused
     // by aria-label on non-interactive elements like li's
     it('marks up the current item correctly', () => {
-      const $ = cheerio.load(render('pagination', examples.default))
+      const $ = render('pagination', examples.default)
       const $currentNumber = $('.govuk-pagination__item--current')
       const $currentNumberLink = $currentNumber.find('.govuk-pagination__link')
 
@@ -56,7 +55,7 @@ describe('Pagination', () => {
     })
 
     it('marks up pagination items as ellipses when specified', () => {
-      const $ = cheerio.load(render('pagination', examples['with many pages']))
+      const $ = render('pagination', examples['with many pages'])
       const $firstEllipsis = $('.govuk-pagination__item:nth-child(2).govuk-pagination__item--ellipses')
 
       expect($firstEllipsis).toBeTruthy()
@@ -67,14 +66,14 @@ describe('Pagination', () => {
 
   describe('with custom text, labels and landmarks', () => {
     it('renders a custom navigation landmark', () => {
-      const $ = cheerio.load(render('pagination', examples['with custom navigation landmark']))
+      const $ = render('pagination', examples['with custom navigation landmark'])
       const $nav = $('.govuk-pagination')
 
       expect($nav.attr('aria-label')).toEqual('search')
     })
 
     it('renders custom pagination item and prev/next link text', () => {
-      const $ = cheerio.load(render('pagination', examples['with custom link and item text']))
+      const $ = render('pagination', examples['with custom link and item text'])
       const $previous = $('.govuk-pagination__prev')
       const $next = $('.govuk-pagination__next')
       const $firstNumber = $('.govuk-pagination__item:first-child')
@@ -89,7 +88,7 @@ describe('Pagination', () => {
     })
 
     it('renders custom accessible labels for pagination items', () => {
-      const $ = cheerio.load(render('pagination', examples['with custom accessible labels on item links']))
+      const $ = render('pagination', examples['with custom accessible labels on item links'])
       const $firstNumber = $('.govuk-pagination__item:first-child .govuk-pagination__link')
       const $secondNumber = $('.govuk-pagination__item:nth-child(2) .govuk-pagination__link')
       const $thirdNumber = $('.govuk-pagination__item:last-child .govuk-pagination__link')
@@ -102,7 +101,7 @@ describe('Pagination', () => {
 
   describe('previous and next links', () => {
     it('applies the correct rel attribute to each link so that they communicate to search engines the intent of the links', () => {
-      const $ = cheerio.load(render('pagination', examples.default))
+      const $ = render('pagination', examples.default)
       const $previous = $('.govuk-pagination__prev .govuk-pagination__link')
       const $next = $('.govuk-pagination__next .govuk-pagination__link')
 
@@ -111,7 +110,7 @@ describe('Pagination', () => {
     })
 
     it('sets aria-hidden="true" to each link so that they are ignored by assistive technology', () => {
-      const $ = cheerio.load(render('pagination', examples.default))
+      const $ = render('pagination', examples.default)
       const $previousSvg = $('.govuk-pagination__icon--prev')
       const $nextSvg = $('.govuk-pagination__icon--next')
 
@@ -120,7 +119,7 @@ describe('Pagination', () => {
     })
 
     it('sets focusable="false" so that IE does not treat it as an interactive element', () => {
-      const $ = cheerio.load(render('pagination', examples.default))
+      const $ = render('pagination', examples.default)
       const $previousSvg = $('.govuk-pagination__icon--prev')
       const $nextSvg = $('.govuk-pagination__icon--next')
 
@@ -131,7 +130,7 @@ describe('Pagination', () => {
 
   describe('prev/next only view', () => {
     it('changes the display to prev/next only if no items are provided', () => {
-      const $ = cheerio.load(render('pagination', examples['with prev and next only']))
+      const $ = render('pagination', examples['with prev and next only'])
       const $blockNav = $('.govuk-pagination--block')
       const $previous = $('.govuk-pagination__prev')
       const $next = $('.govuk-pagination__next')
@@ -142,7 +141,7 @@ describe('Pagination', () => {
     })
 
     it('applies labels when provided', () => {
-      const $ = cheerio.load(render('pagination', examples['with prev and next only and labels']))
+      const $ = render('pagination', examples['with prev and next only and labels'])
       const $prevLabel = $('.govuk-pagination__prev .govuk-pagination__link-label')
       const $nextLabel = $('.govuk-pagination__next .govuk-pagination__link-label')
 
@@ -154,7 +153,7 @@ describe('Pagination', () => {
     // We apply a decoration class and add a hover state to the main link text instead
     // of the label so that there's a clear underline hover state on the link
     it('adds the decoration class to the link title if no label is present', () => {
-      const $ = cheerio.load(render('pagination', examples['with prev and next only']))
+      const $ = render('pagination', examples['with prev and next only'])
       const $decoratedPreviousLinkTitle = $('.govuk-pagination__prev .govuk-pagination__link-title--decorated')
       const $decoratedNextLinkTitle = $('.govuk-pagination__next .govuk-pagination__link-title--decorated')
 
@@ -165,13 +164,13 @@ describe('Pagination', () => {
 
   describe('custom classes and attributes', () => {
     it('renders with custom additional classes', () => {
-      const $ = cheerio.load(render('pagination', examples['with custom classes']))
+      const $ = render('pagination', examples['with custom classes'])
 
       expect($('.govuk-pagination').hasClass('my-custom-class')).toBeTruthy()
     })
 
     it('renders with custom attributes', () => {
-      const $ = cheerio.load(render('pagination', examples['with custom attributes']))
+      const $ = render('pagination', examples['with custom attributes'])
       const $nav = $('.govuk-pagination')
 
       expect($nav.attr('data-attribute-1')).toEqual('value-1')

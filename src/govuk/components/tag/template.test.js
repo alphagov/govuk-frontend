@@ -1,4 +1,3 @@
-const cheerio = require('cheerio')
 const { render } = require('govuk-frontend-helpers/nunjucks')
 const { axe } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
@@ -12,14 +11,14 @@ describe('Tag', () => {
 
   describe('default example', () => {
     it('passes accessibility tests', async () => {
-      const $ = cheerio.load(render('tag', examples.default))
+      const $ = render('tag', examples.default)
 
       const results = await axe($.html())
       expect(results).toHaveNoViolations()
     })
 
     it('renders the default example with strong element and text', () => {
-      const $ = cheerio.load(render('tag', examples.default))
+      const $ = render('tag', examples.default)
 
       const $component = $('.govuk-tag')
       expect($component.get(0).tagName).toEqual('strong')
@@ -27,7 +26,7 @@ describe('Tag', () => {
     })
 
     it('renders classes', () => {
-      const $ = cheerio.load(render('tag', examples.inactive))
+      const $ = render('tag', examples.inactive)
 
       const $component = $('.govuk-tag')
       expect($component.hasClass('govuk-tag--grey')).toBeTruthy()
@@ -36,14 +35,14 @@ describe('Tag', () => {
 
   describe('custom options', () => {
     it('renders custom text', () => {
-      const $ = cheerio.load(render('tag', examples.grey))
+      const $ = render('tag', examples.grey)
 
       const $component = $('.govuk-tag')
       expect($component.html()).toContain('Grey')
     })
 
     it('renders attributes', () => {
-      const $ = cheerio.load(render('tag', examples.attributes))
+      const $ = render('tag', examples.attributes)
 
       const $component = $('.govuk-tag')
       expect($component.attr('data-test')).toEqual('attribute')
@@ -53,14 +52,14 @@ describe('Tag', () => {
 
   describe('html', () => {
     it('renders escaped html when passed to text', () => {
-      const $ = cheerio.load(render('tag', examples['html as text']))
+      const $ = render('tag', examples['html as text'])
 
       const $component = $('.govuk-tag')
       expect($component.html()).toContain('&lt;span&gt;alpha&lt;/span&gt;')
     })
 
     it('renders html', () => {
-      const $ = cheerio.load(render('tag', examples.html))
+      const $ = render('tag', examples.html)
 
       const $component = $('.govuk-tag')
       expect($component.html()).toContain('<span>alpha</span>')

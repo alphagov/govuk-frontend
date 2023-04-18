@@ -1,4 +1,3 @@
-const cheerio = require('cheerio')
 const { render } = require('govuk-frontend-helpers/nunjucks')
 const { axe } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
@@ -12,14 +11,14 @@ describe('header', () => {
 
   describe('default example', () => {
     it('passes accessibility tests', async () => {
-      const $ = cheerio.load(render('header', examples.default))
+      const $ = render('header', examples.default)
 
       const results = await axe($.html())
       expect(results).toHaveNoViolations()
     })
 
     it('has a role of `banner`', () => {
-      const $ = cheerio.load(render('header', examples.default))
+      const $ = render('header', examples.default)
 
       const $component = $('.govuk-header')
       expect($component.attr('role')).toEqual('banner')
@@ -28,7 +27,7 @@ describe('header', () => {
 
   describe('custom options', () => {
     it('renders attributes correctly', () => {
-      const $ = cheerio.load(render('header', examples.attributes))
+      const $ = render('header', examples.attributes)
 
       const $component = $('.govuk-header')
       expect($component.attr('data-test-attribute')).toEqual('value')
@@ -36,14 +35,14 @@ describe('header', () => {
     })
 
     it('renders classes', () => {
-      const $ = cheerio.load(render('header', examples.classes))
+      const $ = render('header', examples.classes)
 
       const $component = $('.govuk-header')
       expect($component.hasClass('app-header--custom-modifier')).toBeTruthy()
     })
 
     it('renders custom container classes', () => {
-      const $ = cheerio.load(render('header', examples['full width']))
+      const $ = render('header', examples['full width'])
 
       const $component = $('.govuk-header')
       const $container = $component.find('.govuk-header__container')
@@ -52,7 +51,7 @@ describe('header', () => {
     })
 
     it('renders custom navigation classes', () => {
-      const $ = cheerio.load(render('header', examples['full width with navigation']))
+      const $ = render('header', examples['full width with navigation'])
 
       const $component = $('.govuk-header')
       const $container = $component.find('.govuk-header__navigation')
@@ -61,7 +60,7 @@ describe('header', () => {
     })
 
     it('renders home page URL', () => {
-      const $ = cheerio.load(render('header', examples['custom homepage url']))
+      const $ = render('header', examples['custom homepage url'])
 
       const $component = $('.govuk-header')
       const $homepageLink = $component.find('.govuk-header__link--homepage')
@@ -71,7 +70,7 @@ describe('header', () => {
 
   describe('with product name', () => {
     it('renders product name', () => {
-      const $ = cheerio.load(render('header', examples['with product name']))
+      const $ = render('header', examples['with product name'])
 
       const $component = $('.govuk-header')
       const $productName = $component.find('.govuk-header__product-name')
@@ -81,7 +80,7 @@ describe('header', () => {
 
   describe('with service name', () => {
     it('renders service name', () => {
-      const $ = cheerio.load(render('header', examples['with service name']))
+      const $ = render('header', examples['with service name'])
 
       const $component = $('.govuk-header')
       const $serviceName = $component.find('.govuk-header__service-name')
@@ -89,7 +88,7 @@ describe('header', () => {
     })
 
     it('wraps the service name with a link when a url is provided', () => {
-      const $ = cheerio.load(render('header', examples['with service name']))
+      const $ = render('header', examples['with service name'])
 
       const $component = $('.govuk-header')
       const $serviceName = $component.find('.govuk-header__service-name')
@@ -98,7 +97,7 @@ describe('header', () => {
     })
 
     it('does not use a link when no service url is provided', () => {
-      const $ = cheerio.load(render('header', examples['with service name but no service url']))
+      const $ = render('header', examples['with service name but no service url'])
 
       const $component = $('.govuk-header')
       const $serviceName = $component.find('.govuk-header__service-name')
@@ -109,14 +108,14 @@ describe('header', () => {
 
   describe('with navigation', () => {
     it('passes accessibility tests', async () => {
-      const $ = cheerio.load(render('header', examples['with navigation']))
+      const $ = render('header', examples['with navigation'])
 
       const results = await axe($.html())
       expect(results).toHaveNoViolations()
     })
 
     it('renders navigation', () => {
-      const $ = cheerio.load(render('header', examples['with navigation']))
+      const $ = render('header', examples['with navigation'])
 
       const $component = $('.govuk-header')
       const $list = $component.find('ul.govuk-header__navigation-list')
@@ -128,7 +127,7 @@ describe('header', () => {
     })
 
     it('renders navigation default label correctly', () => {
-      const $ = cheerio.load(render('header', examples['with navigation']))
+      const $ = render('header', examples['with navigation'])
 
       const $component = $('.govuk-header')
       const $nav = $component.find('nav')
@@ -137,7 +136,7 @@ describe('header', () => {
     })
 
     it('renders navigation label correctly when custom menu button text is set', () => {
-      const $ = cheerio.load(render('header', examples['with custom menu button text']))
+      const $ = render('header', examples['with custom menu button text'])
 
       const $component = $('.govuk-header')
       const $nav = $component.find('nav')
@@ -146,7 +145,7 @@ describe('header', () => {
     })
 
     it('allows navigation label to be customised', () => {
-      const $ = cheerio.load(render('header', examples['with custom navigation label']))
+      const $ = render('header', examples['with custom navigation label'])
 
       const $component = $('.govuk-header')
       const $nav = $component.find('nav')
@@ -155,7 +154,7 @@ describe('header', () => {
     })
 
     it('renders navigation label and menu button text when these are both set', () => {
-      const $ = cheerio.load(render('header', examples['with custom navigation label and custom menu button text']))
+      const $ = render('header', examples['with custom navigation label and custom menu button text'])
 
       const $component = $('.govuk-header')
       const $nav = $component.find('nav')
@@ -166,42 +165,42 @@ describe('header', () => {
     })
 
     it('renders navigation with active item', () => {
-      const $ = cheerio.load(render('header', examples['with navigation']))
+      const $ = render('header', examples['with navigation'])
 
       const $activeItem = $('li.govuk-header__navigation-item:first-child')
       expect($activeItem.hasClass('govuk-header__navigation-item--active')).toBeTruthy()
     })
 
     it('allows navigation item text to be passed whilst escaping HTML entities', () => {
-      const $ = cheerio.load(render('header', examples['navigation item with html as text']))
+      const $ = render('header', examples['navigation item with html as text'])
 
       const $navigationLink = $('.govuk-header__navigation-item a')
       expect($navigationLink.html()).toContain('&lt;em&gt;Navigation item 1&lt;/em&gt;')
     })
 
     it('allows navigation item HTML to be passed un-escaped', () => {
-      const $ = cheerio.load(render('header', examples['navigation item with html']))
+      const $ = render('header', examples['navigation item with html'])
 
       const $navigationLink = $('.govuk-header__navigation-item a')
       expect($navigationLink.html()).toContain('<em>Navigation item 1</em>')
     })
 
     it('renders navigation item with text without a link', () => {
-      const $ = cheerio.load(render('header', examples['navigation item with text without link']))
+      const $ = render('header', examples['navigation item with text without link'])
 
       const $navigationItem = $('.govuk-header__navigation-item')
       expect($navigationItem.html().trim()).toEqual('Navigation item 1')
     })
 
     it('renders navigation item with html without a link', () => {
-      const $ = cheerio.load(render('header', examples['navigation item with html without link']))
+      const $ = render('header', examples['navigation item with html without link'])
 
       const $navigationItem = $('.govuk-header__navigation-item')
       expect($navigationItem.html()).toContain('<em>Navigation item 1</em>')
     })
 
     it('renders navigation item anchor with attributes', () => {
-      const $ = cheerio.load(render('header', examples['navigation item with attributes']))
+      const $ = render('header', examples['navigation item with attributes'])
 
       const $navigationLink = $('.govuk-header__navigation-item a')
       expect($navigationLink.attr('data-attribute')).toEqual('my-attribute')
@@ -210,42 +209,42 @@ describe('header', () => {
 
     describe('menu button', () => {
       it('has an explicit type="button" so it does not act as a submit button', () => {
-        const $ = cheerio.load(render('header', examples['with navigation']))
+        const $ = render('header', examples['with navigation'])
 
         const $button = $('.govuk-header__menu-button')
 
         expect($button.attr('type')).toEqual('button')
       })
       it('has a hidden attribute on load so that it does not show an unusable button without js', () => {
-        const $ = cheerio.load(render('header', examples['with navigation']))
+        const $ = render('header', examples['with navigation'])
 
         const $button = $('.govuk-header__menu-button')
 
         expect($button.attr('hidden')).toBeTruthy()
       })
       it('renders default label correctly', () => {
-        const $ = cheerio.load(render('header', examples['with navigation']))
+        const $ = render('header', examples['with navigation'])
 
         const $button = $('.govuk-header__menu-button')
 
         expect($button.attr('aria-label')).toEqual('Show or hide menu')
       })
       it('allows label to be customised', () => {
-        const $ = cheerio.load(render('header', examples['with custom menu button label']))
+        const $ = render('header', examples['with custom menu button label'])
 
         const $button = $('.govuk-header__menu-button')
 
         expect($button.attr('aria-label')).toEqual('Custom button label')
       })
       it('renders default text correctly', () => {
-        const $ = cheerio.load(render('header', examples['with navigation']))
+        const $ = render('header', examples['with navigation'])
 
         const $button = $('.govuk-header__menu-button')
 
         expect($button.text()).toEqual('Menu')
       })
       it('allows text to be customised', () => {
-        const $ = cheerio.load(render('header', examples['with custom menu button text']))
+        const $ = render('header', examples['with custom menu button text'])
 
         const $button = $('.govuk-header__menu-button')
 
@@ -259,7 +258,7 @@ describe('header', () => {
     let $svg
 
     beforeAll(() => {
-      $ = cheerio.load(render('header', examples.default))
+      $ = render('header', examples.default)
       $svg = $('.govuk-header__logotype-crown')
     })
 

@@ -1,7 +1,7 @@
 const { join } = require('path')
 
 const { paths } = require('govuk-frontend-config')
-const { nunjucksEnv, render } = require('govuk-frontend-helpers/nunjucks')
+const { nunjucksEnv, renderHTML } = require('govuk-frontend-helpers/nunjucks')
 const { getDirectories, getComponentsData } = require('govuk-frontend-lib/files')
 const { HtmlValidate } = require('html-validate')
 // We can't use the render function from jest-helpers, because we need control
@@ -118,7 +118,7 @@ describe('Components', () => {
       // Validate component examples
       for (const { name: componentName, examples } of componentsData) {
         const exampleTasks = examples.map(async ({ name: exampleName, data }) => {
-          const html = render(componentName, data)
+          const html = renderHTML(componentName, data)
 
           // Validate HTML
           return expect({ componentName, exampleName, report: validator.validateString(html) })
