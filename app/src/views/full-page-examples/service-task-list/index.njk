@@ -1,0 +1,130 @@
+---
+scenario: >-
+  A service with a series of tasks that need to be completed.
+
+notes: The links to change your answers are not functional.
+
+---
+
+{# This example is based of the community contribution to create a Task list component and replace "Task list pages" example: https://design-system.service.gov.uk/patterns/task-list-pages/ #}
+{% extends "full-page-example.njk" %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "task-list/macro.njk" import govukTaskList %}
+{% from "button/macro.njk" import govukButton %}
+
+{% set pageTitle = "Service Task List" %}
+{% set serviceName = "Service name goes here" %}
+
+{% block pageTitle %}{{ pageTitle }} - {{ serviceName }} - GOV.UK{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
+
+    <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application incomplete</h2>
+
+    <p class="govuk-body govuk-!-margin-bottom-7">You have completed 1 of 8 sections.</p>
+
+
+      {{ govukTaskList({
+        "idPrefix": "task-list-example",
+        "items": [
+          {
+            "title": {
+              "text": "Check eligibility"
+            },
+            "href": "#",
+            "status": {
+              "text": "Completed",
+              "classes": "govuk-task-list__status--text-colour"
+            }
+          },
+          {
+            "title": {
+              "text": "Read declaration"
+            },
+            "href": "#",
+            "status": {
+              "text": "Not started",
+              "classes": "govuk-task-list__status--light-blue"
+            }
+          },
+          {
+            "title": {
+              "text": "Company information"
+            },
+            "href": "#",
+            "status": {
+              "text": "In progress",
+              "classes": "govuk-task-list__status--blue"
+            }
+          },
+          {
+            "title": {
+              "text": "Your contact details"
+            },
+            "href": "#",
+            "status": {
+              "text": "Pre-populated",
+              "classes": "govuk-task-list__status--grey"
+            }
+          },
+          {
+            "title": {
+              "text": "List convictions"
+            },
+            "href": "#",
+            "status": {
+              "text": "Review",
+              "classes": "govuk-task-list__status--pink"
+            }
+          },
+          {
+            "title": {
+              "text": "Provide financial evidence"
+            },
+            "href": "#",
+            "status": {
+              "text": "Update required",
+              "classes": "govuk-task-list__status--purple"
+            }
+          },
+          {
+            "title": {
+              "text": "Give medical information"
+            },
+            "href": "#",
+            "status": {
+              "text": "Error",
+              "classes": "govuk-task-list__status--error"
+            }
+          },
+          {
+            "title": {
+              "text": "Submit and pay"
+            },
+            "hint": {
+              "text": "It will cost between £15 and £75"
+            },
+            "href": "#",
+            "status": {
+              "text": "Cannot start yet",
+              "classes": "govuk-task-list__status--secondary-text-colour"
+            }
+          }
+        ]
+      }) }}
+
+  </div>
+</div>
+{% endblock %}

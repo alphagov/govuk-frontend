@@ -1,67 +1,66 @@
 params:
-- name: items
-  type: array
-  required: true
-  description: Array of item objects.
-  params:
+  - name: items
+    type: array
+    required: true
+    description: Array of item objects.
+    params:
+      - name: classes
+        type: string
+        required: false
+        description: Classes to add to the item `div`
+      - name: title.text
+        type: string
+        required: true
+        description: If `html` is set, this is not required. Text to use within the title. If `html` is provided, the `text` argument will be ignored.
+      - name: title.html
+        type: string
+        required: true
+        description: If `text` is set, this is not required.
+      - name: title.classes
+        type: string
+        required: false
+        description: Classes to add to the title wrapper
+      - name: status.text
+        type: string
+        required: true
+        description: If `html` is set, this is not required. Text to use within the value. If `html` is provided, the `text` argument will be ignored.
+      - name: status.html
+        type: string
+        required: true
+        description: If `text` is set, this is not required. HTML to use within the value. If `html` is provided, the `text` argument will be ignored.
+      - name: status.classes
+        type: string
+        required: false
+        description: Classes to add to the status wrapper
+      - name: url.text
+        type: string
+        required: false
+        description: If `html` is set, this is not required. Text to use within the title. If `html` is provided, the `text` argument will be ignored.
+      - name: url.html
+        type: string
+        required: false
+        description: If `text` is set, this is not required. HTML to use within the value. If `html` is provided, the `text` argument will be ignored.
+      - name: url.classes
+        type: string
+        required: false
+        description: Classes to add to the actions wrapper
   - name: classes
     type: string
     required: false
-    description: Classes to add to the item `div`
-  - name: title.text
-    type: string
-    required: true
-    description: If `html` is set, this is not required. Text to use within the title. If `html` is provided, the `text` argument will be ignored.
-  - name: title.html
-    type: string
-    required: true
-    description: If `text` is set, this is not required.
-  - name: title.classes
+    description: Classes to add to the container.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the container.
+  - name: idPrefix
     type: string
     required: false
-    description: Classes to add to the title wrapper
-  - name: status.text
-    type: string
-    required: true
-    description: If `html` is set, this is not required. Text to use within the value. If `html` is provided, the `text` argument will be ignored.
-  - name: status.html
-    type: string
-    required: true
-    description: If `text` is set, this is not required. HTML to use within the value. If `html` is provided, the `text` argument will be ignored.
-  - name: status.classes
-    type: string
-    required: false
-    description: Classes to add to the status wrapper
-  - name: url.text
-    type: string
-    required: false
-    description: If `html` is set, this is not required. Text to use within the title. If `html` is provided, the `text` argument will be ignored.
-  - name: url.html
-    type: string
-    required: false
-    description: If `text` is set, this is not required. HTML to use within the value. If `html` is provided, the `text` argument will be ignored.
-  - name: url.classes
-    type: string
-    required: false
-    description: Classes to add to the actions wrapper
-- name: classes
-  type: string
-  required: false
-  description: Classes to add to the container.
-- name: attributes
-  type: object
-  required: false
-  description: HTML attributes (for example data attributes) to add to the container.
-- name: idPrefix
-  type: string
-  required: false
-  description: String to prefix ID for the status and hint for each task list item. If `idPrefix` is not passed, fallback to using the `task-list` string instead.
-
+    description: String to prefix ID for the status and hint for each task list item. If `idPrefix` is not passed, fallback to using the `task-list` string instead.
 
 examples:
   - name: default
     data:
-      idPrefix: "task-list-example"
+      idPrefix: 'task-list-example'
       items:
         - title:
             text: Company Directors
@@ -84,10 +83,9 @@ examples:
             text: Incomplete
             classes: govuk-task-list__status--blue
 
-
   - name: example with 3 states
     data:
-      idPrefix: "task-list-example"
+      idPrefix: 'task-list-example'
       items:
         - title:
             text: Company Directors
@@ -116,7 +114,7 @@ examples:
 
   - name: example with hint text and additional states
     data:
-      idPrefix: "task-list-example"
+      idPrefix: 'task-list-example'
       items:
         - title:
             text: Company Directors
@@ -160,7 +158,7 @@ examples:
 
   - name: example with all possible colours
     data:
-      idPrefix: "task-list-example"
+      idPrefix: 'task-list-example'
       items:
         - title:
             text: Task A
