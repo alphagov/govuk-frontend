@@ -21,6 +21,7 @@ export default (app) => {
   routes.whatIsYourTelephoneNumber(app)
   routes.whatIsYourPostcode(app)
   routes.whatWasTheLastCountryYouVisited(app)
+  routes.willYouBeTravellingTo(app)
 
   app.get('/full-page-examples', async (req, res, next) => {
     res.locals.fullPageExamples = await getFullPageExamples()

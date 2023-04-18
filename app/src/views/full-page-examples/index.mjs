@@ -20,3 +20,4 @@ export { default as whatIsYourNationality } from './what-is-your-nationality/ind
 export { default as whatIsYourTelephoneNumber } from './what-is-your-phone-number/index.mjs'
 export { default as whatIsYourPostcode } from './what-is-your-postcode/index.mjs'
 export { default as whatWasTheLastCountryYouVisited } from './what-was-the-last-country-you-visited/index.mjs'
+export { default as willYouBeTravellingTo } from './will-you-be-travelling-to-any-of-these-countries/index.mjs'

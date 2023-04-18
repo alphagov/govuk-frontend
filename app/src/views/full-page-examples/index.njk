@@ -21,20 +21,23 @@
     <hr class="govuk-section-break govuk-section-break--l" />
 
     {% for example in fullPageExamples %}
+      {% if not example.hidden %}
 
-      <h2 class="govuk-heading-m"><a href="/full-page-examples/{{ example.path }}" class="govuk-link">{{ example.name | replace("-", " ") | capitalize }}</a></h2>
+        <h2 class="govuk-heading-m"><a href="/full-page-examples/{{ example.path }}" class="govuk-link">{{ example.name | replace("-", " ") | capitalize }}</a></h2>
 
-      {% if example.scenario %}
-      <div class="app-prose-scope">
-        {{ markdown(example.scenario) | safe }}
-      </div>
+        {% if example.scenario %}
+        <div class="app-prose-scope">
+          {{ markdown(example.scenario) | safe }}
+        </div>
+        {% endif %}
+
+        {% if example.notes %}
+          <p class="govuk-body govuk-!-font-size-16">{{ example.notes }}</p>
+        {% endif %}
+
+        <hr class="govuk-section-break govuk-section-break--l" />
+        
       {% endif %}
-
-      {% if example.notes %}
-        <p class="govuk-body govuk-!-font-size-16">{{ example.notes }}</p>
-      {% endif %}
-
-      <hr class="govuk-section-break govuk-section-break--l" />
 
     {% endfor %}
   </div>
