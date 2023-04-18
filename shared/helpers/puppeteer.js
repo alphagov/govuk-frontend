@@ -35,9 +35,19 @@ async function axe (page, overrides = {}) {
     overrides['color-contrast'] = { enabled: false }
   }
 
+  // Shared rules for GOV.UK Frontend
+  const rules = {
+    /**
+     * Ignore 'Some page content is not contained by landmarks'
+     * {@link https://github.com/alphagov/govuk-frontend/issues/1604}
+     */
+    region: { enabled: false },
+    ...overrides
+  }
+
   // Create report
   const report = await reporter
-    .options({ rules: overrides })
+    .options({ rules })
     .analyze()
 
   // Add preview URL to report violations
