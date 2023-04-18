@@ -1,0 +1,87 @@
+---
+scenario: >-
+  As part of an online service, you are asked to provide the last country you visited.
+
+
+  Things to try:
+
+  1. Intentionally avoid answering the question before continuing to the next page.
+
+---
+
+{% extends "full-page-example.njk" %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+{% from "input/macro.njk" import govukInput %}
+{% from "button/macro.njk" import govukButton %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{% set pageTitle = "Will you be travelling to any of these countries?" %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" novalidate>
+          {% if errorSummary.length > 0 %}
+              {{ govukErrorSummary({
+                  titleText: "There is a problem",
+                  errorList: errorSummary
+              }) }}
+          {% endif %}
+
+        {{ govukCheckboxes({
+          id: "countries",
+          name: "countries",
+          fieldset: {
+            legend: {
+              text: "Will you be travelling to any of these countries?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Select all countries that apply"
+          },
+          items: [
+            {
+              value: "france",
+              text: "France"
+            },
+            {
+              value: "portugal",
+              text: "Portugal"
+            },
+            {
+              value: "spain",
+              text: "Spain"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "none",
+              text: "No, I will not be travelling to any of these countries",
+              behaviour: "exclusive"
+            }
+          ],
+          errorMessage: errors["countries"]
+          
+        }) }}
+
+      {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}
