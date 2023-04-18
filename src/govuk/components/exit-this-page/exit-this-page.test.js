@@ -2,7 +2,7 @@
  * @jest-environment puppeteer
  */
 
-const { goToComponent, goToExample } = require('../../../../lib/puppeteer-helpers')
+const { goToComponent, goToExample } = require('govuk-frontend-helpers/puppeteer')
 
 const buttonClass = '.govuk-js-exit-this-page-button'
 const skiplinkClass = '.govuk-js-exit-this-page-skiplink'
