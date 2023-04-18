@@ -146,7 +146,7 @@ examples:
           conditional:
             html: |
               <div class="govuk-form-group">
-                <label class="govuk-label" for="input-example">
+                <label class="govuk-label" for="other-country">
                   Country
                 </label>
               <input class="govuk-input" id="other-country" name="other-country" type="text" value="Ravka">
@@ -777,6 +777,7 @@ examples:
         - value: irish
           text: Irish
         - value: other
+          text: Citizen of another country
           hint:
             text: Hint for other option here
   - name: with error message and hint
