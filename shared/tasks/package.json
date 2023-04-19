@@ -24,7 +24,7 @@
     "js-yaml": "^4.1.0",
     "nunjucks": "^3.2.4",
     "plugin-error": "^2.0.1",
-    "postcss": "^8.4.21",
+    "postcss": "^8.4.22",
     "postcss-load-config": "^4.0.1",
     "puppeteer": "^19.9.0",
     "rollup": "0.59.4",
