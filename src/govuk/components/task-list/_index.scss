@@ -81,13 +81,13 @@
   }
 
   .govuk-task-list__status--light-blue {
-    color: govuk-shade(govuk-colour("blue"), 60);
-    background-color: govuk-tint(govuk-colour("blue"), 90);
+    color: govuk-shade(govuk-colour("blue"), 60%);
+    background-color: govuk-tint(govuk-colour("blue"), 90%);
   }
 
   .govuk-task-list__status--blue {
-    color: govuk-shade(govuk-colour("blue"), 60);
-    background-color: govuk-tint(govuk-colour("blue"), 75);
+    color: govuk-shade(govuk-colour("blue"), 60%);
+    background-color: govuk-tint(govuk-colour("blue"), 75%);
   }
 
   .govuk-task-list__status--text-colour {
@@ -99,22 +99,22 @@
   }
 
   .govuk-task-list__status--purple {
-    color: govuk-shade(govuk-colour("bright-purple"), 50);
-    background-color: govuk-tint(govuk-colour("bright-purple"), 85);
+    color: govuk-shade(govuk-colour("bright-purple"), 50%);
+    background-color: govuk-tint(govuk-colour("bright-purple"), 85%);
   }
 
   .govuk-task-list__status--grey {
-    color: govuk-shade(govuk-colour("dark-grey", $legacy: "grey-1"), 50);
-    background-color: govuk-tint(govuk-colour("dark-grey", $legacy: "grey-1"), 85);
+    color: govuk-shade(govuk-colour("dark-grey", $legacy: "grey-1"), 50%);
+    background-color: govuk-tint(govuk-colour("dark-grey", $legacy: "grey-1"), 85%);
   }
 
   .govuk-task-list__status--pink {
-    color: govuk-shade(govuk-colour("pink"), 50);
-    background-color: govuk-tint(govuk-colour("pink"), 85);
+    color: govuk-shade(govuk-colour("pink"), 50%);
+    background-color: govuk-tint(govuk-colour("pink"), 85%);
   }
 
   .govuk-task-list__status--error {
-    color: govuk-shade($govuk-error-colour, 80);
-    background-color: govuk-tint($govuk-error-colour, 75);
+    color: govuk-shade($govuk-error-colour, 80%);
+    background-color: govuk-tint($govuk-error-colour, 75%);
   }
 }
