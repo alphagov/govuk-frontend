@@ -14,15 +14,16 @@ export async function write (filePath, result) {
   const writeTasks = []
 
   // Files to write
+  /** @type {SourceMap | undefined} */
+  const map = result.map ? JSON.parse(result.map.toString()) : undefined
   const code = 'css' in result ? result.css : result.code
-  const map = result.map?.toString()
 
   // 1. Write code (example.js)
   writeTasks.push(writeFile(filePath, code))
 
   // 2. Write source map (example.js.map)
   if (map) {
-    writeTasks.push(writeFile(`${filePath}.map`, map))
+    writeTasks.push(writeFile(`${filePath}.map`, JSON.stringify(map)))
   }
 
   await Promise.all(writeTasks)
@@ -69,4 +70,12 @@ export async function write (filePath, result) {
  * 3. Sass compiler result
  *
  * @typedef {import('rollup').OutputChunk | import('terser').MinifyOutput | import('postcss').Result} AssetOutput
+ */
+
+/**
+ * Asset source maps
+ *
+ * {@link https://github.com/source-map/source-map-spec}
+ *
+ * @typedef {import('@jridgewell/source-map').DecodedSourceMap | import('@jridgewell/source-map').EncodedSourceMap} SourceMap
  */
