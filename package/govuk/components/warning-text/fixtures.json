@@ -23,7 +23,6 @@
             "name": "attributes",
             "options": {
                 "text": "You can be fined up to £5,000 if you don’t register.",
-                "iconFallbackText": "Warning",
                 "attributes": {
                     "id": "my-warning-text",
                     "data-test": "attribute"
@@ -36,7 +35,6 @@
             "name": "classes",
             "options": {
                 "text": "Warning text",
-                "iconFallbackText": "Warning",
                 "classes": "govuk-warning-text--custom-class"
             },
             "hidden": true,
@@ -46,7 +44,6 @@
             "name": "html",
             "options": {
                 "text": "You can be fined up to £5,000 if you don’t register.",
-                "iconFallbackText": "Warning",
                 "html": "<span>Some custom warning text</span>"
             },
             "hidden": true,
@@ -55,7 +52,6 @@
         {
             "name": "html as text",
             "options": {
-                "iconFallbackText": "Warning",
                 "text": "<span>Some custom warning text</span>"
             },
             "hidden": true,
@@ -68,6 +64,14 @@
             },
             "hidden": true,
             "html": "<div class=\"govuk-warning-text\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-warning-text__assistive\">Some custom fallback text</span>\n    \n  </strong>\n</div>"
+        },
+        {
+            "name": "no icon fallback text",
+            "options": {
+                "text": "This is a warning"
+            },
+            "hidden": true,
+            "html": "<div class=\"govuk-warning-text\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-warning-text__assistive\">Warning</span>\n    This is a warning\n  </strong>\n</div>"
         }
     ]
 }

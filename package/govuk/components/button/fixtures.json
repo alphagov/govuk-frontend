@@ -341,6 +341,16 @@
             },
             "hidden": true,
             "html": "<button data-prevent-double-click=\"false\" class=\"govuk-button\" data-module=\"govuk-button\">\n  Submit\n</button>"
+        },
+        {
+            "name": "id",
+            "options": {
+                "text": "Submit",
+                "element": "input",
+                "id": "submit"
+            },
+            "hidden": true,
+            "html": "<input value=\"Submit\" type=\"submit\" class=\"govuk-button\" data-module=\"govuk-button\" id=\"submit\">"
         }
     ]
 }

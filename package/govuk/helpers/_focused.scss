@@ -16,7 +16,7 @@
 
   // Since Internet Explorer 8 does not support box-shadow, we want to force the
   // user-agent outlines
-  @include govuk-not-ie8 {
+  @include _govuk-not-ie8 {
     outline: $govuk-focus-width solid transparent;
   }
   color: $govuk-focus-text-colour;

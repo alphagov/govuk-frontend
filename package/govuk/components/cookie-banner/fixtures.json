@@ -30,7 +30,7 @@
                 ]
             },
             "hidden": false,
-            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n        <h2 class=\"govuk-cookie-banner__heading govuk-heading-m\">Cookies on this government service</h2>\n        \n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">We use analytics cookies to help understand how users use our service.</p></div>\n      </div>\n    </div>\n\n      \n      <div class=\"govuk-button-group\">\n        \n          \n            <button value=\"accept\" type=\"submit\" name=\"cookies\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Accept analytics cookies\n            </button>\n          \n        \n          \n            <button value=\"reject\" type=\"submit\" name=\"cookies\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Reject analytics cookies\n            </button>\n          \n        \n          \n            \n              \n              \n              <a class=\"govuk-link\" href=\"/cookie-preferences\">View cookie preferences</a>\n            \n          \n        \n      </div>\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        <h2 class=\"govuk-cookie-banner__heading govuk-heading-m\">Cookies on this government service</h2>\n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">We use analytics cookies to help understand how users use our service.</p></div>\n      </div>\n    </div>\n\n      <div class=\"govuk-button-group\">\n            <button value=\"accept\" type=\"submit\" name=\"cookies\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Accept analytics cookies\n            </button>\n            <button value=\"reject\" type=\"submit\" name=\"cookies\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Reject analytics cookies\n            </button>\n              <a class=\"govuk-link\" href=\"/cookie-preferences\">View cookie preferences</a>\n      </div>\n    </div>\n</div>"
         },
         {
             "name": "accepted confirmation banner",
@@ -49,7 +49,7 @@
                 ]
             },
             "hidden": false,
-            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\" role=\"alert\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">Your cookie preferences have been saved. You have accepted cookies.</p></div>\n      </div>\n    </div>\n\n      \n      <div class=\"govuk-button-group\">\n        \n          \n            <button type=\"button\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Hide cookie message\n            </button>\n          \n        \n      </div>\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container\" role=\"alert\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">Your cookie preferences have been saved. You have accepted cookies.</p></div>\n      </div>\n    </div>\n\n      <div class=\"govuk-button-group\">\n            <button type=\"button\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Hide cookie message\n            </button>\n      </div>\n    </div>\n</div>"
         },
         {
             "name": "rejected confirmation banner",
@@ -68,7 +68,7 @@
                 ]
             },
             "hidden": false,
-            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\" role=\"alert\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">Your cookie preferences have been saved. You have rejected cookies.</p></div>\n      </div>\n    </div>\n\n      \n      <div class=\"govuk-button-group\">\n        \n          \n            <button type=\"button\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Hide cookie message\n            </button>\n          \n        \n      </div>\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container\" role=\"alert\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">Your cookie preferences have been saved. You have rejected cookies.</p></div>\n      </div>\n    </div>\n\n      <div class=\"govuk-button-group\">\n            <button type=\"button\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Hide cookie message\n            </button>\n      </div>\n    </div>\n</div>"
         },
         {
             "name": "client-side implementation",
@@ -121,7 +121,7 @@
                 ]
             },
             "hidden": false,
-            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n        <h2 class=\"govuk-cookie-banner__heading govuk-heading-m\">Cookies on this service</h2>\n        \n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">We use cookies to help understand how users use our service.</p></div>\n      </div>\n    </div>\n\n      \n      <div class=\"govuk-button-group\">\n        \n          \n            <button value=\"accept\" type=\"submit\" name=\"cookies\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Accept analytics cookies\n            </button>\n          \n        \n          \n            <button value=\"reject\" type=\"submit\" name=\"cookies\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Reject analytics cookies\n            </button>\n          \n        \n          \n            \n              \n              \n              <a class=\"govuk-link\" href=\"/cookie-preferences\">View cookie preferences</a>\n            \n          \n        \n      </div>\n      \n    </div>\n  \n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\" role=\"alert\" hidden>\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">Your cookie preferences have been saved. You have accepted cookies.</p></div>\n      </div>\n    </div>\n\n      \n      <div class=\"govuk-button-group\">\n        \n          \n            <button type=\"button\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Hide cookie message\n            </button>\n          \n        \n      </div>\n      \n    </div>\n  \n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\" role=\"alert\" hidden>\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">Your cookie preferences have been saved. You have rejected cookies.</p></div>\n      </div>\n    </div>\n\n      \n      <div class=\"govuk-button-group\">\n        \n          \n            <button type=\"button\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Hide cookie message\n            </button>\n          \n        \n      </div>\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        <h2 class=\"govuk-cookie-banner__heading govuk-heading-m\">Cookies on this service</h2>\n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">We use cookies to help understand how users use our service.</p></div>\n      </div>\n    </div>\n\n      <div class=\"govuk-button-group\">\n            <button value=\"accept\" type=\"submit\" name=\"cookies\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Accept analytics cookies\n            </button>\n            <button value=\"reject\" type=\"submit\" name=\"cookies\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Reject analytics cookies\n            </button>\n              <a class=\"govuk-link\" href=\"/cookie-preferences\">View cookie preferences</a>\n      </div>\n    </div>\n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\" role=\"alert\" hidden>\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">Your cookie preferences have been saved. You have accepted cookies.</p></div>\n      </div>\n    </div>\n\n      <div class=\"govuk-button-group\">\n            <button type=\"button\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Hide cookie message\n            </button>\n      </div>\n    </div>\n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\" role=\"alert\" hidden>\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">Your cookie preferences have been saved. You have rejected cookies.</p></div>\n      </div>\n    </div>\n\n      <div class=\"govuk-button-group\">\n            <button type=\"button\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Hide cookie message\n            </button>\n      </div>\n    </div>\n</div>"
         },
         {
             "name": "with html",
@@ -152,7 +152,7 @@
                 ]
             },
             "hidden": false,
-            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n        <h2 class=\"govuk-cookie-banner__heading govuk-heading-m\">Cookies on <span>my service</span></h2>\n        \n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">We use cookies in <span>our service</span>.</p><p class=\"govuk-body\">We’d like to use analytics cookies so we can understand how you use the Design System and make improvements.</p></div>\n      </div>\n    </div>\n\n      \n      <div class=\"govuk-button-group\">\n        \n          \n            <button value=\"accept\" type=\"submit\" name=\"cookies\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Accept analytics cookies\n            </button>\n          \n        \n          \n            <button value=\"reject\" type=\"submit\" name=\"cookies\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Reject analytics cookies\n            </button>\n          \n        \n          \n            \n              \n              \n              <a class=\"govuk-link\" href=\"/cookie-preferences\">View cookie preferences</a>\n            \n          \n        \n      </div>\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        <h2 class=\"govuk-cookie-banner__heading govuk-heading-m\">Cookies on <span>my service</span></h2>\n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">We use cookies in <span>our service</span>.</p><p class=\"govuk-body\">We’d like to use analytics cookies so we can understand how you use the Design System and make improvements.</p></div>\n      </div>\n    </div>\n\n      <div class=\"govuk-button-group\">\n            <button value=\"accept\" type=\"submit\" name=\"cookies\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Accept analytics cookies\n            </button>\n            <button value=\"reject\" type=\"submit\" name=\"cookies\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Reject analytics cookies\n            </button>\n              <a class=\"govuk-link\" href=\"/cookie-preferences\">View cookie preferences</a>\n      </div>\n    </div>\n</div>"
         },
         {
             "name": "heading html",
@@ -164,7 +164,7 @@
                 ]
             },
             "hidden": true,
-            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n        <h2 class=\"govuk-cookie-banner__heading govuk-heading-m\">Cookies on <span>my service</span></h2>\n        \n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        <h2 class=\"govuk-cookie-banner__heading govuk-heading-m\">Cookies on <span>my service</span></h2>\n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n    </div>\n</div>"
         },
         {
             "name": "heading html as text",
@@ -176,7 +176,7 @@
                 ]
             },
             "hidden": true,
-            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n        <h2 class=\"govuk-cookie-banner__heading govuk-heading-m\">Cookies on &lt;span&gt;my service&lt;/span&gt;</h2>\n        \n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        <h2 class=\"govuk-cookie-banner__heading govuk-heading-m\">Cookies on &lt;span&gt;my service&lt;/span&gt;</h2>\n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n    </div>\n</div>"
         },
         {
             "name": "html",
@@ -188,7 +188,7 @@
                 ]
             },
             "hidden": true,
-            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">We use cookies in <span>our service</span>.</p></div>\n      </div>\n    </div>\n\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">We use cookies in <span>our service</span>.</p></div>\n      </div>\n    </div>\n\n    </div>\n</div>"
         },
         {
             "name": "classes",
@@ -200,7 +200,7 @@
                 ]
             },
             "hidden": true,
-            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    \n    \n      \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container app-my-class\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container app-my-class\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n    </div>\n</div>"
         },
         {
             "name": "attributes",
@@ -214,7 +214,7 @@
                 ]
             },
             "hidden": true,
-            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\" data-attribute=\"my-value\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container\" data-attribute=\"my-value\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n    </div>\n</div>"
         },
         {
             "name": "custom aria label",
@@ -227,7 +227,7 @@
                 ]
             },
             "hidden": true,
-            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookies on GOV.UK\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">We use cookies on GOV.UK</p></div>\n      </div>\n    </div>\n\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookies on GOV.UK\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">We use cookies on GOV.UK</p></div>\n      </div>\n    </div>\n\n    </div>\n</div>"
         },
         {
             "name": "hidden",
@@ -239,7 +239,7 @@
                 ]
             },
             "hidden": true,
-            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\" hidden>\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container\" hidden>\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n    </div>\n</div>"
         },
         {
             "name": "hidden false",
@@ -251,7 +251,7 @@
                 ]
             },
             "hidden": true,
-            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n    </div>\n</div>"
         },
         {
             "name": "default action",
@@ -267,7 +267,7 @@
                 ]
             },
             "hidden": true,
-            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      \n      <div class=\"govuk-button-group\">\n        \n          \n            <button class=\"govuk-button\" data-module=\"govuk-button\">\n              This is a button\n            </button>\n          \n        \n      </div>\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      <div class=\"govuk-button-group\">\n            <button class=\"govuk-button\" data-module=\"govuk-button\">\n              This is a button\n            </button>\n      </div>\n    </div>\n</div>"
         },
         {
             "name": "link",
@@ -284,7 +284,7 @@
                 ]
             },
             "hidden": true,
-            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      \n      <div class=\"govuk-button-group\">\n        \n          \n            \n              \n              \n              <a class=\"govuk-link\" href=\"/link\">This is a link</a>\n            \n          \n        \n      </div>\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      <div class=\"govuk-button-group\">\n              <a class=\"govuk-link\" href=\"/link\">This is a link</a>\n      </div>\n    </div>\n</div>"
         },
         {
             "name": "link with false button options",
@@ -303,7 +303,7 @@
                 ]
             },
             "hidden": true,
-            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      \n      <div class=\"govuk-button-group\">\n        \n          \n            \n              \n              \n              <a class=\"govuk-link\" href=\"/link\">This is a link</a>\n            \n          \n        \n      </div>\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      <div class=\"govuk-button-group\">\n              <a class=\"govuk-link\" href=\"/link\">This is a link</a>\n      </div>\n    </div>\n</div>"
         },
         {
             "name": "link as a button",
@@ -321,7 +321,7 @@
                 ]
             },
             "hidden": true,
-            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      \n      <div class=\"govuk-button-group\">\n        \n          \n            \n              <a href=\"/link\" role=\"button\" draggable=\"false\" class=\"govuk-button\" data-module=\"govuk-button\">\n              This is a link\n            </a>\n            \n          \n        \n      </div>\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      <div class=\"govuk-button-group\">\n              <a href=\"/link\" role=\"button\" draggable=\"false\" class=\"govuk-button\" data-module=\"govuk-button\">\n              This is a link\n            </a>\n      </div>\n    </div>\n</div>"
         },
         {
             "name": "type",
@@ -338,7 +338,7 @@
                 ]
             },
             "hidden": true,
-            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      \n      <div class=\"govuk-button-group\">\n        \n          \n            <button type=\"button\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Button\n            </button>\n          \n        \n      </div>\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      <div class=\"govuk-button-group\">\n            <button type=\"button\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Button\n            </button>\n      </div>\n    </div>\n</div>"
         },
         {
             "name": "button classes",
@@ -355,7 +355,7 @@
                 ]
             },
             "hidden": true,
-            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      \n      <div class=\"govuk-button-group\">\n        \n          \n            <button class=\"govuk-button my-button-class app-button-class\" data-module=\"govuk-button\">\n              Button with custom classes\n            </button>\n          \n        \n      </div>\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      <div class=\"govuk-button-group\">\n            <button class=\"govuk-button my-button-class app-button-class\" data-module=\"govuk-button\">\n              Button with custom classes\n            </button>\n      </div>\n    </div>\n</div>"
         },
         {
             "name": "button attributes",
@@ -374,7 +374,7 @@
                 ]
             },
             "hidden": true,
-            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      \n      <div class=\"govuk-button-group\">\n        \n          \n            <button class=\"govuk-button\" data-module=\"govuk-button\" data-button-attribute=\"my-value\">\n              Button with attributes\n            </button>\n          \n        \n      </div>\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      <div class=\"govuk-button-group\">\n            <button class=\"govuk-button\" data-module=\"govuk-button\" data-button-attribute=\"my-value\">\n              Button with attributes\n            </button>\n      </div>\n    </div>\n</div>"
         },
         {
             "name": "link classes",
@@ -392,7 +392,7 @@
                 ]
             },
             "hidden": true,
-            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      \n      <div class=\"govuk-button-group\">\n        \n          \n            \n              \n              \n                \n              \n              <a class=\"govuk-link my-link-class app-link-class\" href=\"/my-link\">Link with custom classes</a>\n            \n          \n        \n      </div>\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      <div class=\"govuk-button-group\">\n              <a class=\"govuk-link my-link-class app-link-class\" href=\"/my-link\">Link with custom classes</a>\n      </div>\n    </div>\n</div>"
         },
         {
             "name": "link attributes",
@@ -412,7 +412,7 @@
                 ]
             },
             "hidden": true,
-            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      \n      <div class=\"govuk-button-group\">\n        \n          \n            \n              \n              \n              <a class=\"govuk-link\" href=\"/link\" data-link-attribute=\"my-value\">Link with attributes</a>\n            \n          \n        \n      </div>\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n\n        <div class=\"govuk-cookie-banner__content\"></div>\n      </div>\n    </div>\n\n      <div class=\"govuk-button-group\">\n              <a class=\"govuk-link\" href=\"/link\" data-link-attribute=\"my-value\">Link with attributes</a>\n      </div>\n    </div>\n</div>"
         },
         {
             "name": "full banner hidden",
@@ -468,7 +468,7 @@
                 ]
             },
             "hidden": true,
-            "html": "<div class=\"govuk-cookie-banner hide-cookie-banner\" data-nosnippet role=\"region\" aria-label=\"Cookie banner\" hidden data-hide-cookie-banner=\"true\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n        <h2 class=\"govuk-cookie-banner__heading govuk-heading-m\">Cookies on this service</h2>\n        \n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">We use cookies to help understand how users use our service.</p></div>\n      </div>\n    </div>\n\n      \n      <div class=\"govuk-button-group\">\n        \n          \n            <button value=\"accept\" type=\"submit\" name=\"cookies\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Accept analytics cookies\n            </button>\n          \n        \n          \n            <button value=\"reject\" type=\"submit\" name=\"cookies\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Reject analytics cookies\n            </button>\n          \n        \n          \n            \n              \n              \n              <a class=\"govuk-link\" href=\"/cookie-preferences\">View cookie preferences</a>\n            \n          \n        \n      </div>\n      \n    </div>\n  \n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\" role=\"alert\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">Your cookie preferences have been saved. You have accepted cookies.</p></div>\n      </div>\n    </div>\n\n      \n      <div class=\"govuk-button-group\">\n        \n          \n            <button type=\"button\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Hide cookie message\n            </button>\n          \n        \n      </div>\n      \n    </div>\n  \n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\" role=\"alert\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">Your cookie preferences have been saved. You have rejected cookies.</p></div>\n      </div>\n    </div>\n\n      \n      <div class=\"govuk-button-group\">\n        \n          \n            <button type=\"button\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Hide cookie message\n            </button>\n          \n        \n      </div>\n      \n    </div>\n  \n</div>"
+            "html": "<div class=\"govuk-cookie-banner hide-cookie-banner\" data-nosnippet role=\"region\" aria-label=\"Cookie banner\" hidden data-hide-cookie-banner=\"true\">\n    <div class=\"govuk-cookie-banner__message govuk-width-container\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        <h2 class=\"govuk-cookie-banner__heading govuk-heading-m\">Cookies on this service</h2>\n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">We use cookies to help understand how users use our service.</p></div>\n      </div>\n    </div>\n\n      <div class=\"govuk-button-group\">\n            <button value=\"accept\" type=\"submit\" name=\"cookies\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Accept analytics cookies\n            </button>\n            <button value=\"reject\" type=\"submit\" name=\"cookies\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Reject analytics cookies\n            </button>\n              <a class=\"govuk-link\" href=\"/cookie-preferences\">View cookie preferences</a>\n      </div>\n    </div>\n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\" role=\"alert\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">Your cookie preferences have been saved. You have accepted cookies.</p></div>\n      </div>\n    </div>\n\n      <div class=\"govuk-button-group\">\n            <button type=\"button\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Hide cookie message\n            </button>\n      </div>\n    </div>\n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\" role=\"alert\">\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">Your cookie preferences have been saved. You have rejected cookies.</p></div>\n      </div>\n    </div>\n\n      <div class=\"govuk-button-group\">\n            <button type=\"button\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Hide cookie message\n            </button>\n      </div>\n    </div>\n</div>"
         }
     ]
 }

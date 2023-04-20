@@ -1,8 +1,10 @@
-import '../../Object/defineProperty.mjs'
+import '../../Object/defineProperty.mjs';
+
+// @ts-nocheck
 
 (function(undefined) {
   // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Function/prototype/bind/detect.js
-  var detect = 'bind' in Function.prototype
+  var detect = 'bind' in Function.prototype;
 
   if (detect) return
 
@@ -157,3 +159,4 @@ import '../../Object/defineProperty.mjs'
   });
 })
 .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+//# sourceMappingURL=vendor/polyfills/Function/prototype/bind.mjs.map

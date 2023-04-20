@@ -30,7 +30,7 @@
       // yellow focus state.
       box-shadow: inset 0 0 0 4px $govuk-input-border-colour;
 
-      @include govuk-if-ie8 {
+      @include _govuk-if-ie8 {
         // IE8 doesn't support `box-shadow` so add an actual border
         border: 4px solid $govuk-input-border-colour;
       }
@@ -45,6 +45,11 @@
       outline: $govuk-focus-width solid $govuk-focus-colour;
 
       box-shadow: inset 0 0 0 4px $govuk-input-border-colour;
+    }
+
+    &:disabled {
+      opacity: .5;
+      cursor: not-allowed;
     }
   }
 }

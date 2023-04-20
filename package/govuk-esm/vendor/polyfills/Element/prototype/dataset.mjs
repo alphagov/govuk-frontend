@@ -1,5 +1,7 @@
-import '../../Object/defineProperty.mjs'
-import '../../Element.mjs'
+import '../../Object/defineProperty.mjs';
+import '../../Element.mjs';
+
+// @ts-nocheck
 
 (function(undefined) {
 
@@ -11,7 +13,7 @@ import '../../Element.mjs'
     var el = document.createElement('div');
     el.setAttribute("data-a-b", "c");
     return el.dataset && el.dataset.aB == "c";
-  }())
+  }());
 
   if (detect) return
 
@@ -21,10 +23,10 @@ import '../../Element.mjs'
       var element = this;
       var attributes = this.attributes;
       var map = {};
-  
+
       for (var i = 0; i < attributes.length; i++) {
         var attribute = attributes[i];
-  
+
         // This regex has been edited from the original polyfill, to add
         // support for period (.) separators in data-* attribute names. These
         // are allowed in the HTML spec, but were not covered by the original
@@ -32,11 +34,11 @@ import '../../Element.mjs'
         if (attribute && attribute.name && (/^data-\w[.\w-]*$/).test(attribute.name)) {
           var name = attribute.name;
           var value = attribute.value;
-  
+
           var propName = name.substr(5).replace(/-./g, function (prop) {
             return prop.charAt(1).toUpperCase();
           });
-          
+
           // If this browser supports __defineGetter__ and __defineSetter__,
           // continue using defineProperty. If not (like IE 8 and below), we use
           // a hacky fallback which at least gives an object in the right format
@@ -55,14 +57,15 @@ import '../../Element.mjs'
               }.bind(element, name)
             });
           } else {
-            map[propName] = value
+            map[propName] = value;
           }
 
         }
       }
-  
+
       return map;
     }
   });
 
 }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+//# sourceMappingURL=vendor/polyfills/Element/prototype/dataset.mjs.map

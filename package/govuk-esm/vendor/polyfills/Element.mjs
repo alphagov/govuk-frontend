@@ -1,9 +1,11 @@
-import './Document.mjs'
+import './Document.mjs';
+
+// @ts-nocheck
 
 (function(undefined) {
 
 // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Element/detect.js
-var detect = ('Element' in this && 'HTMLElement' in this)
+var detect = ('Element' in this && 'HTMLElement' in this);
 
 if (detect) return
 
@@ -112,3 +114,4 @@ if (detect) return
 
 })
 .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+//# sourceMappingURL=vendor/polyfills/Element.mjs.map

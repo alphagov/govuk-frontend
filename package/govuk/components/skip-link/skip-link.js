@@ -4,7 +4,8 @@
 	(global.GOVUKFrontend = global.GOVUKFrontend || {}, global.GOVUKFrontend.SkipLink = factory());
 }(this, (function () { 'use strict';
 
-	(function(undefined) {
+	// @ts-nocheck
+	(function (undefined) {
 
 	// Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Object/defineProperty/detect.js
 	var detect = (
@@ -91,7 +92,8 @@
 	})
 	.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-	(function(undefined) {
+	// @ts-nocheck
+	(function (undefined) {
 
 	    // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/master/packages/polyfill-library/polyfills/DOMTokenList/detect.js
 	    var detect = (
@@ -356,7 +358,8 @@
 
 	}).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-	(function(undefined) {
+	// @ts-nocheck
+	(function (undefined) {
 
 	// Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Document/detect.js
 	var detect = ("Document" in this);
@@ -382,6 +385,8 @@
 
 	})
 	.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+	// @ts-nocheck
 
 	(function(undefined) {
 
@@ -496,6 +501,8 @@
 	})
 	.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
+	// @ts-nocheck
+
 	(function(undefined) {
 
 	    // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/8717a9e04ac7aff99b4980fbedead98036b0929a/packages/polyfill-library/polyfills/Element/prototype/classList/detect.js
@@ -586,7 +593,8 @@
 
 	}).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-	(function(undefined) {
+	// @ts-nocheck
+	(function (undefined) {
 
 	// Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Window/detect.js
 	var detect = ('Window' in this);
@@ -606,6 +614,8 @@
 
 	})
 	.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+	// @ts-nocheck
 
 	(function(undefined) {
 
@@ -856,6 +866,8 @@
 	})
 	.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
+	// @ts-nocheck
+
 	(function(undefined) {
 	  // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Function/prototype/bind/detect.js
 	  var detect = 'bind' in Function.prototype;
@@ -1020,11 +1032,20 @@
 	 * Skip link component
 	 *
 	 * @class
-	 * @param {HTMLElement} $module - HTML element to use for skip link
+	 * @param {Element} $module - HTML element to use for skip link
 	 */
 	function SkipLink ($module) {
+	  if (!($module instanceof HTMLAnchorElement)) {
+	    return this
+	  }
+
+	  /** @deprecated Will be made private in v5.0 */
 	  this.$module = $module;
+
+	  /** @deprecated Will be made private in v5.0 */
 	  this.$linkedElement = null;
+
+	  /** @deprecated Will be made private in v5.0 */
 	  this.linkedElementListener = false;
 	}
 
@@ -1032,30 +1053,31 @@
 	 * Initialise component
 	 */
 	SkipLink.prototype.init = function () {
-	  // Check for module
+	  // Check that required elements are present
 	  if (!this.$module) {
 	    return
 	  }
 
 	  // Check for linked element
-	  this.$linkedElement = this.getLinkedElement();
-	  if (!this.$linkedElement) {
+	  var $linkedElement = this.getLinkedElement();
+	  if (!$linkedElement) {
 	    return
 	  }
 
+	  this.$linkedElement = $linkedElement;
 	  this.$module.addEventListener('click', this.focusLinkedElement.bind(this));
 	};
 
 	/**
 	 * Get linked element
 	 *
-	 * @returns {HTMLElement} $linkedElement - DOM element linked to from the skip link
+	 * @deprecated Will be made private in v5.0
+	 * @returns {HTMLElement | null} $linkedElement - DOM element linked to from the skip link
 	 */
 	SkipLink.prototype.getLinkedElement = function () {
 	  var linkedElementId = this.getFragmentFromUrl();
-
 	  if (!linkedElementId) {
-	    return false
+	    return null
 	  }
 
 	  return document.getElementById(linkedElementId)
@@ -1065,6 +1087,8 @@
 	 * Focus the linked element
 	 *
 	 * Set tabindex and helper CSS class. Set listener to remove them on blur.
+	 *
+	 * @deprecated Will be made private in v5.0
 	 */
 	SkipLink.prototype.focusLinkedElement = function () {
 	  var $linkedElement = this.$linkedElement;
@@ -1080,6 +1104,7 @@
 	      this.linkedElementListener = true;
 	    }
 	  }
+
 	  $linkedElement.focus();
 	};
 
@@ -1088,6 +1113,8 @@
 	 * focusable until it has received programmatic focus and a screen reader has announced it.
 	 *
 	 * Remove the CSS class that removes the native focus styles.
+	 *
+	 * @deprecated Will be made private in v5.0
 	 */
 	SkipLink.prototype.removeFocusProperties = function () {
 	  this.$linkedElement.removeAttribute('tabindex');
@@ -1100,12 +1127,13 @@
 	 * Extract the fragment (everything after the hash symbol) from a URL, but not including
 	 * the symbol.
 	 *
-	 * @returns {string} Fragment from URL, without the hash symbol
+	 * @deprecated Will be made private in v5.0
+	 * @returns {string | undefined} Fragment from URL, without the hash symbol
 	 */
 	SkipLink.prototype.getFragmentFromUrl = function () {
 	  // Bail if the anchor link doesn't have a hash
 	  if (!this.$module.hash) {
-	    return false
+	    return
 	  }
 
 	  return this.$module.hash.split('#').pop()

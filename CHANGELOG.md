@@ -2,19 +2,21 @@
 
 ## Unreleased
 
+## 4.6.0 (Feature release)
+
 ### New features
 
 #### Updated the appearance of disabled form controls
 
-The disabled state of Text Input, Textarea, Select and File Upload components has been updated to appear consistent across browsers and devices. They also now consistent with the existing disabled styles for Buttons, Checkboxes, and Radios.
+We’ve updated the disabled state of Text Input, Textarea, Select and File Upload components so it is consistent across browsers and devices. They’re also now consistent with the existing disabled styles for Buttons, Checkboxes, and Radios.
 
-Disabled form controls appear with their opacity reduced by 50% and with an alternative cursor appearance when hovered over.
+Disabled form controls appear at 50% opacity and with an alternative cursor appearance when hovered over.
 
 This was added in [pull request #3187: Add disabled styles for form controls](https://github.com/alphagov/govuk-frontend/pull/3187).
 
 #### Added a top-level `disabled` parameter to form controls
 
-The Nunjucks macros for Text Input, Textarea, Select and File Upload components have been updated to include a top-level `disabled` parameter, making it easier to enable the disabled state for these controls.
+We’ve updated the Nunjucks macros for Text Input, Textarea, Select and File Upload components to include a top-level `disabled` parameter. This will make it easier to enable the disabled state for these controls.
 
 ```nunjucks
 {{ govukInput({
@@ -33,7 +35,7 @@ This was added in [pull request #3187: Add disabled styles for form controls](ht
 
 #### Configure whether the Accordion remembers and restores sessions
 
-By default, when a user leaves a page, the [Accordion](https://design-system.service.gov.uk/components/accordion/) will remember the layout of expanded and collapsed sections selected by the user. If the user returns to the page, this layout will be restored and override any sections manually set as `expanded` in code.
+By default, when a user leaves a page, the [Accordion](https://design-system.service.gov.uk/components/accordion/) will remember the layout of expanded and collapsed sections selected by the user. If the user returns to the page, this layout will be restored and override any sections manually set as expanded in code.
 
 You can now disable this functionality by using the `rememberExpanded` option in the `govukAccordion` Nunjucks macro.
 
@@ -43,7 +45,7 @@ This was added in [pull request #3342: Add option to disable sessionState in Acc
 
 #### Added `id` parameter to Buttons
 
-The [Button](https://design-system.service.gov.uk/components/button/) Nunjucks macro has been updated to include an optional `id` parameter.
+We’ve updated the [Button](https://design-system.service.gov.uk/components/button/) Nunjucks macro to include an optional `id` parameter.
 
 ```nunjucks
 {{ govukButton({
@@ -52,7 +54,9 @@ The [Button](https://design-system.service.gov.uk/components/button/) Nunjucks m
 }) }}
 ```
 
-This was added in [pull request #3344: Adding optional id attribute to button component](https://github.com/alphagov/govuk-frontend/pull/3344). Thanks to [Tom Billington](https://github.com/TomBillingtonUK) for this contribution.
+This was added in [pull request #3344: Adding optional ‘id’ attribute to button component](https://github.com/alphagov/govuk-frontend/pull/3344).
+
+Thanks to [Tom Billington](https://github.com/TomBillingtonUK) for this contribution.
 
 #### Added a modifier for text input styles that accept sequences of digits
 
@@ -66,25 +70,27 @@ This was added in [pull request #2230: Add extra letter spacing modifier for inp
 
 #### Stop using JavaScript API properties other than the `init` method
 
-We have deprecated all of the JavaScript properties in the API, except for the `init` method for each component. We will make all of the deprecated JavaScript properties private in v5.0.
+We have deprecated all of the JavaScript properties in the API, except for the `init` method for each component. We'll make all of the deprecated JavaScript properties private in [our next main release](https://github.com/alphagov/govuk-frontend/milestone/46).
 
 Please [let us know if you're using parts of the API other than the `init` method by filling in this form](https://docs.google.com/forms/d/e/1FAIpQLSfmH2AitMeouXqB0FWC5p5e6y1TSiFCjmJ8DrVuwfmpRGCaWw/viewform?usp=sf_link). We'll use this information when prioritising future additions to the public API.
 
 This was added in [pull request #3499: Deprecate all JavaScript instance properties the except `init` method](https://github.com/alphagov/govuk-frontend/pull/3499).
 
-#### Stop using the `govuk-button--disabled` class on buttons
+#### Stop using the `.govuk-button--disabled` class on buttons
 
-The `govuk-button--disabled` class is deprecated and will be removed in the next major release.
+We have deprecated the `.govuk-button--disabled` class and will remove it in the next major release.
 
-If a [Button](https://design-system.service.gov.uk/components/button/) uses a `<button>` or `<input>` element, use the `disabled` HTML attribute instead. You will not need to make any changes if you're using the `govukButton` Nunjucks macro.
+If a [Button](https://design-system.service.gov.uk/components/button/) uses a `<button>` or `<input>` element, use the disabled HTML attribute instead.
+
+You will not need to make any changes if you're using the `govukButton` Nunjucks macro.
 
 Disabling links that are styled to look like buttons will not be supported by future releases.
 
 This was added in [pull request #3326: Deprecate `govuk-button--disabled` class](https://github.com/alphagov/govuk-frontend/pull/3326).
 
-#### Stop using the deprecated IE8 mixins and settings
+#### Stop using the deprecated Internet Explorer 8 mixins and settings
 
-The next major version of GOV.UK Frontend will remove support for Internet Explorer 8 (IE8). In preparation for this, we've deprecated the settings and mixins used when [generating IE8 specific stylesheets](https://frontend.design-system.service.gov.uk/supporting-ie8/#2-generate-an-ie8-specific-stylesheet).
+The next main release of GOV.UK Frontend will remove support for Internet Explorer 8 (IE8). In preparation for this, we've deprecated the settings and mixins used when [generating IE8 specific stylesheets](https://frontend.design-system.service.gov.uk/supporting-ie8/#2-generate-an-ie8-specific-stylesheet).
 
 You'll start seeing deprecation warnings if you're:
 
@@ -93,7 +99,7 @@ You'll start seeing deprecation warnings if you're:
 
 If you no longer need to support IE8, we recommend you stop generating an IE8 specific stylesheet and remove references to the IE8 mixins from your code.
 
-You can also silence these deprecation warnings by adding `ie8` to the [$govuk-suppressed-warnings](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-suppressed-warnings) setting, but once v5.0 has been released you will need to address them as part of the upgrade process.
+You can also silence these deprecation warnings by adding `ie8` to the [`$govuk-suppressed-warnings`](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-suppressed-warnings) setting, but once we’ve released v5.0 you will need to address them as part of the upgrade process.
 
 ### Fixes
 

@@ -127,7 +127,7 @@
         "description": "Message displayed when the number of characters reaches the configured maximum, `maxlength`. This message is displayed visually and through assistive technologies."
     },
     {
-        "name": "charactersUnderLimitText",
+        "name": "charactersOverLimitText",
         "type": "object",
         "required": false,
         "description": "Message displayed when the number of characters is over the configured maximum, `maxlength`. This message is displayed visually and through assistive technologies. The component will replace the `%{count}` placeholder with the number of characters above the maximum. This is a [pluralised list of messages](https://frontend.design-system.service.gov.uk/localise-govuk-frontend)."
@@ -145,7 +145,7 @@
         "description": "Message displayed when the number of words reaches the configured maximum, `maxwords`. This message is displayed visually and through assistive technologies."
     },
     {
-        "name": "wordsUnderLimitText",
+        "name": "wordsOverLimitText",
         "type": "object",
         "required": false,
         "description": "Message displayed when the number of words is over the configured maximum, `maxwords`. This message is displayed visually and through assistive technologies. The component will replace the `%{count}` placeholder with the number of characters above the maximum. This is a [pluralised list of messages](https://frontend.design-system.service.gov.uk/localise-govuk-frontend)."

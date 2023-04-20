@@ -19,8 +19,10 @@
    * This seems to fail in IE8, requires more investigation.
    * See: https://github.com/imagitama/nodelist-foreach-polyfill
    *
-   * @param {NodeListOf<Element>} nodes - NodeList from querySelectorAll()
-   * @param {nodeListIterator} callback - Callback function to run for each node
+   * @deprecated Will be made private in v5.0
+   * @template {Node} ElementType
+   * @param {NodeListOf<ElementType>} nodes - NodeList from querySelectorAll()
+   * @param {nodeListIterator<ElementType>} callback - Callback function to run for each node
    * @returns {void}
    */
   function nodeListForEach (nodes, callback) {
@@ -33,14 +35,16 @@
   }
 
   /**
+   * @template {Node} ElementType
    * @callback nodeListIterator
-   * @param {Element} value - The current node being iterated on
+   * @param {ElementType} value - The current node being iterated on
    * @param {number} index - The current index in the iteration
-   * @param {NodeListOf<Element>} nodes - NodeList from querySelectorAll()
+   * @param {NodeListOf<ElementType>} nodes - NodeList from querySelectorAll()
    * @returns {void}
    */
 
-  (function(undefined) {
+  // @ts-nocheck
+  (function (undefined) {
 
   // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Object/defineProperty/detect.js
   var detect = (
@@ -127,7 +131,8 @@
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-  (function(undefined) {
+  // @ts-nocheck
+  (function (undefined) {
 
       // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/master/packages/polyfill-library/polyfills/DOMTokenList/detect.js
       var detect = (
@@ -392,7 +397,8 @@
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-  (function(undefined) {
+  // @ts-nocheck
+  (function (undefined) {
 
   // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Document/detect.js
   var detect = ("Document" in this);
@@ -418,6 +424,8 @@
 
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+  // @ts-nocheck
 
   (function(undefined) {
 
@@ -532,6 +540,8 @@
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
+  // @ts-nocheck
+
   (function(undefined) {
 
       // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/8717a9e04ac7aff99b4980fbedead98036b0929a/packages/polyfill-library/polyfills/Element/prototype/classList/detect.js
@@ -622,7 +632,8 @@
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-  (function(undefined) {
+  // @ts-nocheck
+  (function (undefined) {
 
   // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Window/detect.js
   var detect = ('Window' in this);
@@ -642,6 +653,8 @@
 
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+  // @ts-nocheck
 
   (function(undefined) {
 
@@ -892,6 +905,8 @@
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
+  // @ts-nocheck
+
   (function(undefined) {
     // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Function/prototype/bind/detect.js
     var detect = 'bind' in Function.prototype;
@@ -1056,11 +1071,23 @@
    * Radios component
    *
    * @class
-   * @param {HTMLElement} $module - HTML element to use for radios
+   * @param {Element} $module - HTML element to use for radios
    */
   function Radios ($module) {
+    if (!($module instanceof HTMLElement)) {
+      return this
+    }
+
+    var $inputs = $module.querySelectorAll('input[type="radio"]');
+    if (!$inputs.length) {
+      return this
+    }
+
+    /** @deprecated Will be made private in v5.0 */
     this.$module = $module;
-    this.$inputs = $module.querySelectorAll('input[type="radio"]');
+
+    /** @deprecated Will be made private in v5.0 */
+    this.$inputs = $inputs;
   }
 
   /**
@@ -1078,6 +1105,11 @@
    * the reveal in sync with the radio state.
    */
   Radios.prototype.init = function () {
+    // Check that required elements are present
+    if (!this.$module || !this.$inputs) {
+      return
+    }
+
     var $module = this.$module;
     var $inputs = this.$inputs;
 
@@ -1100,11 +1132,10 @@
     // state of form controls is not restored until *after* the DOMContentLoaded
     // event is fired, so we need to sync after the pageshow event in browsers
     // that support it.
-    if ('onpageshow' in window) {
-      window.addEventListener('pageshow', this.syncAllConditionalReveals.bind(this));
-    } else {
-      window.addEventListener('DOMContentLoaded', this.syncAllConditionalReveals.bind(this));
-    }
+    window.addEventListener(
+      'onpageshow' in window ? 'pageshow' : 'DOMContentLoaded',
+      this.syncAllConditionalReveals.bind(this)
+    );
 
     // Although we've set up handlers to sync state on the pageshow or
     // DOMContentLoaded event, init could be called after those events have fired,
@@ -1117,6 +1148,8 @@
 
   /**
    * Sync the conditional reveal states for all radio buttons in this $module.
+   *
+   * @deprecated Will be made private in v5.0
    */
   Radios.prototype.syncAllConditionalReveals = function () {
     nodeListForEach(this.$inputs, this.syncConditionalRevealWithInputState.bind(this));
@@ -1128,15 +1161,20 @@
    * Synchronise the visibility of the conditional reveal, and its accessible
    * state, with the input's checked state.
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLInputElement} $input - Radio input
    */
   Radios.prototype.syncConditionalRevealWithInputState = function ($input) {
-    var $target = document.getElementById($input.getAttribute('aria-controls'));
+    var targetId = $input.getAttribute('aria-controls');
+    if (!targetId) {
+      return
+    }
 
+    var $target = document.getElementById(targetId);
     if ($target && $target.classList.contains('govuk-radios__conditional')) {
       var inputIsChecked = $input.checked;
 
-      $input.setAttribute('aria-expanded', inputIsChecked);
+      $input.setAttribute('aria-expanded', inputIsChecked.toString());
       $target.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked);
     }
   };
@@ -1149,13 +1187,15 @@
    * with the same name (because checking one radio could have un-checked a radio
    * in another $module)
    *
+   * @deprecated Will be made private in v5.0
    * @param {MouseEvent} event - Click event
    */
   Radios.prototype.handleClick = function (event) {
+    var $component = this;
     var $clickedInput = event.target;
 
     // Ignore clicks on things that aren't radio buttons
-    if ($clickedInput.type !== 'radio') {
+    if (!($clickedInput instanceof HTMLInputElement) || $clickedInput.type !== 'radio') {
       return
     }
 
@@ -1163,14 +1203,17 @@
     // aria-controls attributes.
     var $allInputs = document.querySelectorAll('input[type="radio"][aria-controls]');
 
+    var $clickedInputForm = $clickedInput.form;
+    var $clickedInputName = $clickedInput.name;
+
     nodeListForEach($allInputs, function ($input) {
-      var hasSameFormOwner = ($input.form === $clickedInput.form);
-      var hasSameName = ($input.name === $clickedInput.name);
+      var hasSameFormOwner = $input.form === $clickedInputForm;
+      var hasSameName = $input.name === $clickedInputName;
 
       if (hasSameName && hasSameFormOwner) {
-        this.syncConditionalRevealWithInputState($input);
+        $component.syncConditionalRevealWithInputState($input);
       }
-    }.bind(this));
+    });
   };
 
   return Radios;

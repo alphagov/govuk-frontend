@@ -30,6 +30,12 @@
         "description": "Optional initial value of the input."
     },
     {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": "If `true`, input will be disabled."
+    },
+    {
         "name": "describedBy",
         "type": "string",
         "required": false,

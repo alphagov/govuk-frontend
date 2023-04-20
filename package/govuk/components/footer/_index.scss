@@ -169,13 +169,6 @@
     list-style: none;
     -webkit-column-gap: $govuk-gutter;
             column-gap: $govuk-gutter; // Support: Columns
-
-    // Disable thicker underlines on hover because of a bug in Chromium
-    // affecting links within columns
-    // https://bugs.chromium.org/p/chromium/issues/detail?id=1190987
-    .govuk-footer__link:hover {
-      text-decoration-thickness: auto;
-    }
   }
 
   @include govuk-media-query ($from: desktop) {

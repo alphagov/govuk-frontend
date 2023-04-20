@@ -4,7 +4,8 @@
 	(factory());
 }(this, (function () { 'use strict';
 
-	(function(undefined) {
+	// @ts-nocheck
+	(function (undefined) {
 
 	// Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Document/detect.js
 	var detect = ("Document" in this);
@@ -30,6 +31,8 @@
 
 	})
 	.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+	// @ts-nocheck
 
 	(function(undefined) {
 

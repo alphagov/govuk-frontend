@@ -4,7 +4,8 @@
 	(factory());
 }(this, (function () { 'use strict';
 
-	(function(undefined) {
+	// @ts-nocheck
+	(function (undefined) {
 
 	// Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Window/detect.js
 	var detect = ('Window' in this);
@@ -25,7 +26,8 @@
 	})
 	.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-	(function(undefined) {
+	// @ts-nocheck
+	(function (undefined) {
 
 	// Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Document/detect.js
 	var detect = ("Document" in this);
@@ -51,6 +53,8 @@
 
 	})
 	.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+	// @ts-nocheck
 
 	(function(undefined) {
 
@@ -165,7 +169,8 @@
 	})
 	.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-	(function(undefined) {
+	// @ts-nocheck
+	(function (undefined) {
 
 	// Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Object/defineProperty/detect.js
 	var detect = (
@@ -251,6 +256,8 @@
 	}(Object.defineProperty));
 	})
 	.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+	// @ts-nocheck
 
 	(function(undefined) {
 
