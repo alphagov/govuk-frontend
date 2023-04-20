@@ -1,5 +1,5 @@
 import { mkdir, writeFile } from 'fs/promises'
-import { dirname } from 'path'
+import { dirname, relative } from 'path'
 
 /**
  * Write asset helper
@@ -22,7 +22,18 @@ export async function write (filePath, result) {
   writeTasks.push(writeFile(filePath, code))
 
   // 2. Write source map (example.js.map)
-  if (map) {
+  if (map && 'sources' in map) {
+    map.sources = map.sources
+
+      /**
+       * Make source file:// paths relative (e.g. for Dart Sass)
+       * {@link https://sass-lang.com/documentation/js-api/interfaces/CompileResult#sourceMap}
+       */
+      .map((path) => path.startsWith('file://')
+        ? relative(dirname(filePath), new URL(path).pathname)
+        : path
+      )
+
     writeTasks.push(writeFile(`${filePath}.map`, JSON.stringify(map)))
   }
 
