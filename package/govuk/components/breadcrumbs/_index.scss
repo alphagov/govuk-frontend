@@ -93,7 +93,7 @@
       }
 
       // Fall back to a greater than sign for IE8
-      @include govuk-if-ie8 {
+      @include _govuk-if-ie8 {
         content: "\003e"; // Greater than sign (>)
         width: auto;
         height: auto;

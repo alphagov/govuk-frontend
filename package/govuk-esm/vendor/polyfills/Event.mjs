@@ -1,6 +1,8 @@
-import './Window.mjs'
-import './Element.mjs'
-import './Object/defineProperty.mjs'
+import './Window.mjs';
+import './Element.mjs';
+import './Object/defineProperty.mjs';
+
+// @ts-nocheck
 
 (function(undefined) {
 
@@ -20,7 +22,7 @@ var detect = (
   		return false;
   	}
   }(this))
-)
+);
 
 if (detect) return
 
@@ -250,3 +252,4 @@ if (detect) return
 
 })
 .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+//# sourceMappingURL=vendor/polyfills/Event.mjs.map

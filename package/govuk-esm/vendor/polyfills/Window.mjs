@@ -1,7 +1,8 @@
-(function(undefined) {
+// @ts-nocheck
+(function (undefined) {
 
 // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Window/detect.js
-var detect = ('Window' in this)
+var detect = ('Window' in this);
 
 if (detect) return
 
@@ -18,3 +19,4 @@ if ((typeof WorkerGlobalScope === "undefined") && (typeof importScripts !== "fun
 
 })
 .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+//# sourceMappingURL=vendor/polyfills/Window.mjs.map

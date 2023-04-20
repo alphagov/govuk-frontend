@@ -30,6 +30,12 @@
         "description": "Optional initial value of the textarea."
     },
     {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": "If `true`, textarea will be disabled."
+    },
+    {
         "name": "describedBy",
         "type": "string",
         "required": false,

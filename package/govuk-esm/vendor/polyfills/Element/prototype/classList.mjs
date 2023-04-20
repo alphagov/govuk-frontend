@@ -1,6 +1,8 @@
-import '../../Object/defineProperty.mjs'
-import '../../DOMTokenList.mjs'
-import '../../Element.mjs'
+import '../../Object/defineProperty.mjs';
+import '../../DOMTokenList.mjs';
+import '../../Element.mjs';
+
+// @ts-nocheck
 
 (function(undefined) {
 
@@ -11,7 +13,7 @@ import '../../Element.mjs'
         e.classList.add('a', 'b');
         return e.classList.contains('b');
       }())
-    )
+    );
 
     if (detect) return
 
@@ -91,3 +93,4 @@ import '../../Element.mjs'
     }(this));
 
 }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+//# sourceMappingURL=vendor/polyfills/Element/prototype/classList.mjs.map

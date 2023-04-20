@@ -4,11 +4,11 @@
 {% from "../label/macro.njk" import govukLabel %}
 
 {#- If an id 'prefix' is not passed, fall back to using the name attribute
-   instead. We need this for error messages and hints as well -#}
+  instead. We need this for error messages and hints as well -#}
 {% set idPrefix = params.idPrefix if params.idPrefix else params.name %}
 
 {#- a record of other elements that we need to associate with the input using
-   aria-describedby – for example hints or error messages -#}
+  aria-describedby – for example hints or error messages -#}
 {% set describedBy = params.fieldset.describedBy if params.fieldset.describedBy else "" %}
 
 {#- Capture the HTML so we can optionally nest it in a fieldset -#}

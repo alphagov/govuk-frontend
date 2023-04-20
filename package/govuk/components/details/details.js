@@ -19,6 +19,7 @@
    * without them conflicting with each other.
    * https://stackoverflow.com/a/8809472
    *
+   * @deprecated Will be made private in v5.0
    * @returns {string} Unique ID
    */
   function generateUniqueID () {
@@ -34,14 +35,16 @@
   }
 
   /**
+   * @template {Node} ElementType
    * @callback nodeListIterator
-   * @param {Element} value - The current node being iterated on
+   * @param {ElementType} value - The current node being iterated on
    * @param {number} index - The current index in the iteration
-   * @param {NodeListOf<Element>} nodes - NodeList from querySelectorAll()
+   * @param {NodeListOf<ElementType>} nodes - NodeList from querySelectorAll()
    * @returns {void}
    */
 
-  (function(undefined) {
+  // @ts-nocheck
+  (function (undefined) {
 
   // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Window/detect.js
   var detect = ('Window' in this);
@@ -62,7 +65,8 @@
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-  (function(undefined) {
+  // @ts-nocheck
+  (function (undefined) {
 
   // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Document/detect.js
   var detect = ("Document" in this);
@@ -88,6 +92,8 @@
 
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+  // @ts-nocheck
 
   (function(undefined) {
 
@@ -202,7 +208,8 @@
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-  (function(undefined) {
+  // @ts-nocheck
+  (function (undefined) {
 
   // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Object/defineProperty/detect.js
   var detect = (
@@ -288,6 +295,8 @@
   }(Object.defineProperty));
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+  // @ts-nocheck
 
   (function(undefined) {
 
@@ -538,6 +547,8 @@
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
+  // @ts-nocheck
+
   (function(undefined) {
     // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Function/prototype/bind/detect.js
     var detect = 'bind' in Function.prototype;
@@ -705,32 +716,45 @@
    * Details component
    *
    * @class
-   * @param {HTMLElement} $module - HTML element to use for details
+   * @param {Element} $module - HTML element to use for details
    */
   function Details ($module) {
+    if (!($module instanceof HTMLElement)) {
+      return this
+    }
+
+    /** @deprecated Will be made private in v5.0 */
     this.$module = $module;
+
+    /** @deprecated Will be made private in v5.0 */
+    this.$summary = null;
+
+    /** @deprecated Will be made private in v5.0 */
+    this.$content = null;
   }
 
   /**
    * Initialise component
    */
   Details.prototype.init = function () {
+    // Check that required elements are present
     if (!this.$module) {
       return
     }
 
     // If there is native details support, we want to avoid running code to polyfill native behaviour.
-    var hasNativeDetails = typeof this.$module.open === 'boolean';
+    var hasNativeDetails = 'HTMLDetailsElement' in window &&
+      this.$module instanceof HTMLDetailsElement;
 
-    if (hasNativeDetails) {
-      return
+    if (!hasNativeDetails) {
+      this.polyfillDetails();
     }
-
-    this.polyfillDetails();
   };
 
   /**
    * Polyfill component in older browsers
+   *
+   * @deprecated Will be made private in v5.0
    */
   Details.prototype.polyfillDetails = function () {
     var $module = this.$module;
@@ -781,6 +805,7 @@
   /**
    * Define a statechange function that updates aria-expanded and style.display
    *
+   * @deprecated Will be made private in v5.0
    * @returns {boolean} Returns true
    */
   Details.prototype.polyfillSetAttributes = function () {
@@ -800,6 +825,7 @@
   /**
    * Handle cross-modal click events
    *
+   * @deprecated Will be made private in v5.0
    * @param {polyfillHandleInputsCallback} callback - function
    */
   Details.prototype.polyfillHandleInputs = function (callback) {
@@ -807,7 +833,7 @@
       var $target = event.target;
       // When the key gets pressed - check if it is enter or space
       if (event.keyCode === KEY_ENTER || event.keyCode === KEY_SPACE) {
-        if ($target.nodeName.toLowerCase() === 'summary') {
+        if ($target instanceof HTMLElement && $target.nodeName.toLowerCase() === 'summary') {
           // Prevent space from scrolling the page
           // and enter from submitting a form
           event.preventDefault();
@@ -826,7 +852,7 @@
     this.$summary.addEventListener('keyup', function (event) {
       var $target = event.target;
       if (event.keyCode === KEY_SPACE) {
-        if ($target.nodeName.toLowerCase() === 'summary') {
+        if ($target instanceof HTMLElement && $target.nodeName.toLowerCase() === 'summary') {
           event.preventDefault();
         }
       }

@@ -39,17 +39,17 @@
     }
 
     // If the `count` option is set, determine which plural suffix is needed and
-    // change the lookupKey to match. We check to see if it's undefined instead of
+    // change the lookupKey to match. We check to see if it's numeric instead of
     // falsy, as this could legitimately be 0.
-    if (options && typeof options.count !== 'undefined') {
+    if (options && typeof options.count === 'number') {
       // Get the plural suffix
       lookupKey = lookupKey + '.' + this.getPluralSuffix(lookupKey, options.count);
     }
 
-    if (lookupKey in this.translations) {
-      // Fetch the translation string for that lookup key
-      var translationString = this.translations[lookupKey];
+    // Fetch the translation string for that lookup key
+    var translationString = this.translations[lookupKey];
 
+    if (typeof translationString === 'string') {
       // Check for ${} placeholders in the translation string
       if (translationString.match(/%{(.\S+)}/)) {
         if (!options) {
@@ -76,32 +76,46 @@
    * @returns {string} The translation string to output, with ${} placeholders replaced
    */
   I18n.prototype.replacePlaceholders = function (translationString, options) {
+    /** @type {Intl.NumberFormat | undefined} */
     var formatter;
 
     if (this.hasIntlNumberFormatSupport()) {
       formatter = new Intl.NumberFormat(this.locale);
     }
 
-    return translationString.replace(/%{(.\S+)}/g, function (placeholderWithBraces, placeholderKey) {
-      if (Object.prototype.hasOwnProperty.call(options, placeholderKey)) {
-        var placeholderValue = options[placeholderKey];
+    return translationString.replace(
+      /%{(.\S+)}/g,
 
-        // If a user has passed `false` as the value for the placeholder
-        // treat it as though the value should not be displayed
-        if (placeholderValue === false) {
-          return ''
+      /**
+       * Replace translation string placeholders
+       *
+       * @param {string} placeholderWithBraces - Placeholder with braces
+       * @param {string} placeholderKey - Placeholder key
+       * @returns {string} Placeholder value
+       */
+      function (placeholderWithBraces, placeholderKey) {
+        if (Object.prototype.hasOwnProperty.call(options, placeholderKey)) {
+          var placeholderValue = options[placeholderKey];
+
+          // If a user has passed `false` as the value for the placeholder
+          // treat it as though the value should not be displayed
+          if (placeholderValue === false || (
+            typeof placeholderValue !== 'number' &&
+            typeof placeholderValue !== 'string')
+          ) {
+            return ''
+          }
+
+          // If the placeholder's value is a number, localise the number formatting
+          if (typeof placeholderValue === 'number') {
+            return formatter ? formatter.format(placeholderValue) : placeholderValue.toString()
+          }
+
+          return placeholderValue
+        } else {
+          throw new Error('i18n: no data found to replace ' + placeholderWithBraces + ' placeholder in string')
         }
-
-        // If the placeholder's value is a number, localise the number formatting
-        if (typeof placeholderValue === 'number' && formatter) {
-          return formatter.format(placeholderValue)
-        }
-
-        return placeholderValue
-      } else {
-        throw new Error('i18n: no data found to replace ' + placeholderWithBraces + ' placeholder in string')
-      }
-    })
+      })
   };
 
   /**
@@ -217,7 +231,7 @@
    * regardless of region. There are exceptions, however, (e.g. Portuguese) so
    * this searches by both the full and shortened locale codes, just to be sure.
    *
-   * @returns {PluralRuleName | undefined} The name of the pluralisation rule to use (a key for one
+   * @returns {string | undefined} The name of the pluralisation rule to use (a key for one
    *   of the functions in this.pluralRules)
    */
   I18n.prototype.getPluralRulesForLocale = function () {
@@ -268,7 +282,7 @@
    * Spanish: European Portuguese (pt-PT), Italian (it), Spanish (es)
    * Welsh: Welsh (cy)
    *
-   * @type {Object<PluralRuleName, string[]>}
+   * @type {Object<string, string[]>}
    */
   I18n.pluralRulesMap = {
     arabic: ['ar'],
@@ -355,12 +369,6 @@
     }
     /* eslint-enable jsdoc/require-jsdoc */
   };
-
-  /**
-   * Supported languages for plural rules
-   *
-   * @typedef {'arabic' | 'chinese' | 'french' | 'german' | 'irish' | 'russian' | 'scottish' | 'spanish' | 'welsh'} PluralRuleName
-   */
 
   /**
    * Plural rule category mnemonic tags

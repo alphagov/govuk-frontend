@@ -4,7 +4,8 @@
 	(factory());
 }(this, (function () { 'use strict';
 
-	(function(undefined) {
+	// @ts-nocheck
+	(function (undefined) {
 
 	// Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Object/defineProperty/detect.js
 	var detect = (
@@ -91,7 +92,8 @@
 	})
 	.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-	(function(undefined) {
+	// @ts-nocheck
+	(function (undefined) {
 
 	// Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Document/detect.js
 	var detect = ("Document" in this);
@@ -117,6 +119,8 @@
 
 	})
 	.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+	// @ts-nocheck
 
 	(function(undefined) {
 
@@ -231,6 +235,8 @@
 	})
 	.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
+	// @ts-nocheck
+
 	(function(undefined) {
 
 	  // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-library/13cf7c340974d128d557580b5e2dafcd1b1192d1/polyfills/Element/prototype/dataset/detect.js
@@ -251,10 +257,10 @@
 	      var element = this;
 	      var attributes = this.attributes;
 	      var map = {};
-	  
+
 	      for (var i = 0; i < attributes.length; i++) {
 	        var attribute = attributes[i];
-	  
+
 	        // This regex has been edited from the original polyfill, to add
 	        // support for period (.) separators in data-* attribute names. These
 	        // are allowed in the HTML spec, but were not covered by the original
@@ -262,11 +268,11 @@
 	        if (attribute && attribute.name && (/^data-\w[.\w-]*$/).test(attribute.name)) {
 	          var name = attribute.name;
 	          var value = attribute.value;
-	  
+
 	          var propName = name.substr(5).replace(/-./g, function (prop) {
 	            return prop.charAt(1).toUpperCase();
 	          });
-	          
+
 	          // If this browser supports __defineGetter__ and __defineSetter__,
 	          // continue using defineProperty. If not (like IE 8 and below), we use
 	          // a hacky fallback which at least gives an object in the right format
@@ -290,7 +296,7 @@
 
 	        }
 	      }
-	  
+
 	      return map;
 	    }
 	  });

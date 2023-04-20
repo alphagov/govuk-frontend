@@ -35,11 +35,17 @@
       // since `outline` is already used for the yellow focus state.
       box-shadow: inset 0 0 0 $govuk-border-width-form-element;
 
-      @include govuk-if-ie8 {
+      @include _govuk-if-ie8 {
         // IE8 doesn't support `box-shadow` so double the border with
         // `border-width`.
         border-width: $govuk-border-width-form-element * 2;
       }
+    }
+
+    &:disabled {
+      opacity: .5;
+      color: inherit;
+      cursor: not-allowed;
     }
   }
 

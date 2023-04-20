@@ -1,8 +1,9 @@
-(function(undefined) {
+// @ts-nocheck
+(function (undefined) {
 
     // Detection from https://github.com/mdn/content/blob/cf607d68522cd35ee7670782d3ee3a361eaef2e4/files/en-us/web/javascript/reference/global_objects/string/trim/index.md#polyfill
-    var detect = ('trim' in String.prototype)
-    
+    var detect = ('trim' in String.prototype);
+
     if (detect) return
 
     // Polyfill from https://github.com/mdn/content/blob/cf607d68522cd35ee7670782d3ee3a361eaef2e4/files/en-us/web/javascript/reference/global_objects/string/trim/index.md#polyfill
@@ -11,3 +12,4 @@
     };
 
 }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+//# sourceMappingURL=vendor/polyfills/String/prototype/trim.mjs.map

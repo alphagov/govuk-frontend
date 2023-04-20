@@ -39,7 +39,7 @@
 
     // IE8 doesn’t support pseudo-elements, so we don’t want to hide native
     // elements there.
-    @include govuk-not-ie8 {
+    @include _govuk-not-ie8 {
       position: absolute;
 
       z-index: 1;
@@ -53,7 +53,7 @@
       opacity: 0;
     }
 
-    @include govuk-if-ie8 {
+    @include _govuk-if-ie8 {
       margin-top: 10px;
       margin-right: $govuk-radios-size / -2;
       margin-left: $govuk-radios-size / -2;
@@ -146,7 +146,7 @@
   // Disabled state
   .govuk-radios__input:disabled,
   .govuk-radios__input:disabled + .govuk-radios__label {
-    cursor: default;
+    cursor: not-allowed;
   }
 
   .govuk-radios__input:disabled + .govuk-radios__label,
@@ -239,11 +239,11 @@
     //  ▲┆└─ Radio pseudo element, aligned with margin
     //  └─── Touch target (invisible input), shifted into the margin
     .govuk-radios__input {
-      @include govuk-not-ie8 {
+      @include _govuk-not-ie8 {
         left: $input-offset * -1;
       }
 
-      @include govuk-if-ie8 {
+      @include _govuk-if-ie8 {
         margin-left: $govuk-small-radios-size * -1;
       }
     }

@@ -1,15 +1,19 @@
-import '../vendor/polyfills/Element/prototype/closest.mjs'
+import '../vendor/polyfills/Element/prototype/closest.mjs';
 
 /**
  * Returns the value of the given attribute closest to the given element (including itself)
  *
- * @param {HTMLElement} $element - The element to start walking the DOM tree up
+ * @deprecated Will be made private in v5.0
+ * @param {Element} $element - The element to start walking the DOM tree up
  * @param {string} attributeName - The name of the attribute
- * @returns {string | undefined} Attribute value
+ * @returns {string | null} Attribute value
  */
-export function closestAttributeValue ($element, attributeName) {
-  var closestElementWithAttribute = $element.closest('[' + attributeName + ']')
-  if (closestElementWithAttribute) {
-    return closestElementWithAttribute.getAttribute(attributeName)
-  }
+function closestAttributeValue ($element, attributeName) {
+  var $closestElementWithAttribute = $element.closest('[' + attributeName + ']');
+  return $closestElementWithAttribute
+    ? $closestElementWithAttribute.getAttribute(attributeName)
+    : null
 }
+
+export { closestAttributeValue };
+//# sourceMappingURL=common/closest-attribute-value.mjs.map

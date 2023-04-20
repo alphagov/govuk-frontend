@@ -8,6 +8,7 @@
   {%- if params.showAllSectionsText %} data-i18n.show-all-sections="{{ params.showAllSectionsText | escape }}"{% endif %}
   {%- if params.showSectionText %} data-i18n.show-section="{{ params.showSectionText | escape }}"{% endif %}
   {%- if params.showSectionAriaLabelText %} data-i18n.show-section-aria-label="{{ params.showSectionAriaLabelText | escape }}"{% endif %}
+  {%- if params.rememberExpanded !== undefined %} data-remember-expanded="{{ params.rememberExpanded | escape }}"{% endif %}
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   {% for item in params.items %}
     {% if item %}

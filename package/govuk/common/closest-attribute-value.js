@@ -4,7 +4,8 @@
   (factory((global.GOVUKFrontend = {})));
 }(this, (function (exports) { 'use strict';
 
-  (function(undefined) {
+  // @ts-nocheck
+  (function (undefined) {
 
     // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/matches/detect.js
     var detect = (
@@ -27,6 +28,8 @@
     };
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+  // @ts-nocheck
 
   (function(undefined) {
 
@@ -54,15 +57,16 @@
   /**
    * Returns the value of the given attribute closest to the given element (including itself)
    *
-   * @param {HTMLElement} $element - The element to start walking the DOM tree up
+   * @deprecated Will be made private in v5.0
+   * @param {Element} $element - The element to start walking the DOM tree up
    * @param {string} attributeName - The name of the attribute
-   * @returns {string | undefined} Attribute value
+   * @returns {string | null} Attribute value
    */
   function closestAttributeValue ($element, attributeName) {
-    var closestElementWithAttribute = $element.closest('[' + attributeName + ']');
-    if (closestElementWithAttribute) {
-      return closestElementWithAttribute.getAttribute(attributeName)
-    }
+    var $closestElementWithAttribute = $element.closest('[' + attributeName + ']');
+    return $closestElementWithAttribute
+      ? $closestElementWithAttribute.getAttribute(attributeName)
+      : null
   }
 
   exports.closestAttributeValue = closestAttributeValue;

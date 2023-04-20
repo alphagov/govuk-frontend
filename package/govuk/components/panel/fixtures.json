@@ -8,7 +8,7 @@
                 "text": "Your reference number: HDJ2123F"
             },
             "hidden": false,
-            "html": "<div class=\"govuk-panel govuk-panel--confirmation\">\n  <h1 class=\"govuk-panel__title\">\n    Application complete\n  </h1>\n  \n  <div class=\"govuk-panel__body\">\n    Your reference number: HDJ2123F\n  </div>\n  \n</div>"
+            "html": "<div class=\"govuk-panel govuk-panel--confirmation\">\n  <h1 class=\"govuk-panel__title\">\n    Application complete\n  </h1>\n  <div class=\"govuk-panel__body\">\n    Your reference number: HDJ2123F\n  </div>\n</div>"
         },
         {
             "name": "custom heading level",
@@ -18,7 +18,7 @@
                 "text": "Your reference number: HDJ2123F"
             },
             "hidden": false,
-            "html": "<div class=\"govuk-panel govuk-panel--confirmation\">\n  <h2 class=\"govuk-panel__title\">\n    Application complete\n  </h2>\n  \n  <div class=\"govuk-panel__body\">\n    Your reference number: HDJ2123F\n  </div>\n  \n</div>"
+            "html": "<div class=\"govuk-panel govuk-panel--confirmation\">\n  <h2 class=\"govuk-panel__title\">\n    Application complete\n  </h2>\n  <div class=\"govuk-panel__body\">\n    Your reference number: HDJ2123F\n  </div>\n</div>"
         },
         {
             "name": "title html as text",
@@ -27,7 +27,7 @@
                 "text": "Please complete form 1"
             },
             "hidden": true,
-            "html": "<div class=\"govuk-panel govuk-panel--confirmation\">\n  <h1 class=\"govuk-panel__title\">\n    Application &lt;strong&gt;not&lt;/strong&gt; complete\n  </h1>\n  \n  <div class=\"govuk-panel__body\">\n    Please complete form 1\n  </div>\n  \n</div>"
+            "html": "<div class=\"govuk-panel govuk-panel--confirmation\">\n  <h1 class=\"govuk-panel__title\">\n    Application &lt;strong&gt;not&lt;/strong&gt; complete\n  </h1>\n  <div class=\"govuk-panel__body\">\n    Please complete form 1\n  </div>\n</div>"
         },
         {
             "name": "title html",
@@ -36,7 +36,7 @@
                 "html": "Please complete <strong>form 1</strong>"
             },
             "hidden": true,
-            "html": "<div class=\"govuk-panel govuk-panel--confirmation\">\n  <h1 class=\"govuk-panel__title\">\n    Application <strong>not</strong> complete\n  </h1>\n  \n  <div class=\"govuk-panel__body\">\n    Please complete <strong>form 1</strong>\n  </div>\n  \n</div>"
+            "html": "<div class=\"govuk-panel govuk-panel--confirmation\">\n  <h1 class=\"govuk-panel__title\">\n    Application <strong>not</strong> complete\n  </h1>\n  <div class=\"govuk-panel__body\">\n    Please complete <strong>form 1</strong>\n  </div>\n</div>"
         },
         {
             "name": "body html as text",
@@ -45,7 +45,7 @@
                 "text": "Your reference number<br><strong>HDJ2123F</strong>"
             },
             "hidden": true,
-            "html": "<div class=\"govuk-panel govuk-panel--confirmation\">\n  <h1 class=\"govuk-panel__title\">\n    Application complete\n  </h1>\n  \n  <div class=\"govuk-panel__body\">\n    Your reference number&lt;br&gt;&lt;strong&gt;HDJ2123F&lt;/strong&gt;\n  </div>\n  \n</div>"
+            "html": "<div class=\"govuk-panel govuk-panel--confirmation\">\n  <h1 class=\"govuk-panel__title\">\n    Application complete\n  </h1>\n  <div class=\"govuk-panel__body\">\n    Your reference number&lt;br&gt;&lt;strong&gt;HDJ2123F&lt;/strong&gt;\n  </div>\n</div>"
         },
         {
             "name": "body html",
@@ -54,7 +54,7 @@
                 "html": "Your reference number<br><strong>HDJ2123F</strong>"
             },
             "hidden": true,
-            "html": "<div class=\"govuk-panel govuk-panel--confirmation\">\n  <h1 class=\"govuk-panel__title\">\n    Application complete\n  </h1>\n  \n  <div class=\"govuk-panel__body\">\n    Your reference number<br><strong>HDJ2123F</strong>\n  </div>\n  \n</div>"
+            "html": "<div class=\"govuk-panel govuk-panel--confirmation\">\n  <h1 class=\"govuk-panel__title\">\n    Application complete\n  </h1>\n  <div class=\"govuk-panel__body\">\n    Your reference number<br><strong>HDJ2123F</strong>\n  </div>\n</div>"
         },
         {
             "name": "classes",
@@ -64,7 +64,7 @@
                 "classes": "extra-class one-more-class"
             },
             "hidden": true,
-            "html": "<div class=\"govuk-panel govuk-panel--confirmation extra-class one-more-class\">\n  <h1 class=\"govuk-panel__title\">\n    Application complete\n  </h1>\n  \n  <div class=\"govuk-panel__body\">\n    Your reference number is HDJ2123F\n  </div>\n  \n</div>"
+            "html": "<div class=\"govuk-panel govuk-panel--confirmation extra-class one-more-class\">\n  <h1 class=\"govuk-panel__title\">\n    Application complete\n  </h1>\n  <div class=\"govuk-panel__body\">\n    Your reference number is HDJ2123F\n  </div>\n</div>"
         },
         {
             "name": "attributes",
@@ -77,7 +77,7 @@
                 }
             },
             "hidden": true,
-            "html": "<div class=\"govuk-panel govuk-panel--confirmation\" first-attribute=\"foo\" second-attribute=\"bar\">\n  <h1 class=\"govuk-panel__title\">\n    Application complete\n  </h1>\n  \n  <div class=\"govuk-panel__body\">\n    Your reference number is HDJ2123F\n  </div>\n  \n</div>"
+            "html": "<div class=\"govuk-panel govuk-panel--confirmation\" first-attribute=\"foo\" second-attribute=\"bar\">\n  <h1 class=\"govuk-panel__title\">\n    Application complete\n  </h1>\n  <div class=\"govuk-panel__body\">\n    Your reference number is HDJ2123F\n  </div>\n</div>"
         },
         {
             "name": "title with no body text",
@@ -85,7 +85,7 @@
                 "titleText": "Application complete"
             },
             "hidden": true,
-            "html": "<div class=\"govuk-panel govuk-panel--confirmation\">\n  <h1 class=\"govuk-panel__title\">\n    Application complete\n  </h1>\n  \n</div>"
+            "html": "<div class=\"govuk-panel govuk-panel--confirmation\">\n  <h1 class=\"govuk-panel__title\">\n    Application complete\n  </h1>\n</div>"
         }
     ]
 }

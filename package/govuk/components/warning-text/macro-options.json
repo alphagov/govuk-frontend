@@ -14,8 +14,8 @@
     {
         "name": "iconFallbackText",
         "type": "string",
-        "required": true,
-        "description": "The fallback text for the icon."
+        "required": false,
+        "description": "The fallback text for the icon. Defaults to 'Warning'"
     },
     {
         "name": "classes",

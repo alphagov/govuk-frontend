@@ -19,8 +19,10 @@
    * This seems to fail in IE8, requires more investigation.
    * See: https://github.com/imagitama/nodelist-foreach-polyfill
    *
-   * @param {NodeListOf<Element>} nodes - NodeList from querySelectorAll()
-   * @param {nodeListIterator} callback - Callback function to run for each node
+   * @deprecated Will be made private in v5.0
+   * @template {Node} ElementType
+   * @param {NodeListOf<ElementType>} nodes - NodeList from querySelectorAll()
+   * @param {nodeListIterator<ElementType>} callback - Callback function to run for each node
    * @returns {void}
    */
   function nodeListForEach (nodes, callback) {
@@ -33,14 +35,16 @@
   }
 
   /**
+   * @template {Node} ElementType
    * @callback nodeListIterator
-   * @param {Element} value - The current node being iterated on
+   * @param {ElementType} value - The current node being iterated on
    * @param {number} index - The current index in the iteration
-   * @param {NodeListOf<Element>} nodes - NodeList from querySelectorAll()
+   * @param {NodeListOf<ElementType>} nodes - NodeList from querySelectorAll()
    * @returns {void}
    */
 
-  (function(undefined) {
+  // @ts-nocheck
+  (function (undefined) {
 
   // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Object/defineProperty/detect.js
   var detect = (
@@ -127,7 +131,8 @@
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-  (function(undefined) {
+  // @ts-nocheck
+  (function (undefined) {
 
       // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/master/packages/polyfill-library/polyfills/DOMTokenList/detect.js
       var detect = (
@@ -392,7 +397,8 @@
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-  (function(undefined) {
+  // @ts-nocheck
+  (function (undefined) {
 
   // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Document/detect.js
   var detect = ("Document" in this);
@@ -418,6 +424,8 @@
 
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+  // @ts-nocheck
 
   (function(undefined) {
 
@@ -532,6 +540,8 @@
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
+  // @ts-nocheck
+
   (function(undefined) {
 
       // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/8717a9e04ac7aff99b4980fbedead98036b0929a/packages/polyfill-library/polyfills/Element/prototype/classList/detect.js
@@ -622,6 +632,8 @@
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
+  // @ts-nocheck
+
   (function(undefined) {
 
       // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-library/master/polyfills/Element/prototype/nextElementSibling/detect.js
@@ -641,6 +653,8 @@
       });
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+  // @ts-nocheck
 
   (function(undefined) {
 
@@ -662,7 +676,8 @@
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-  (function(undefined) {
+  // @ts-nocheck
+  (function (undefined) {
 
   // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Window/detect.js
   var detect = ('Window' in this);
@@ -682,6 +697,8 @@
 
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+  // @ts-nocheck
 
   (function(undefined) {
 
@@ -932,6 +949,8 @@
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
+  // @ts-nocheck
+
   (function(undefined) {
     // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Function/prototype/bind/detect.js
     var detect = 'bind' in Function.prototype;
@@ -1096,20 +1115,54 @@
    * Tabs component
    *
    * @class
-   * @param {HTMLElement} $module - HTML element to use for tabs
+   * @param {Element} $module - HTML element to use for tabs
    */
   function Tabs ($module) {
-    this.$module = $module;
-    this.$tabs = $module.querySelectorAll('.govuk-tabs__tab');
+    if (!($module instanceof HTMLElement)) {
+      return this
+    }
 
+    var $tabs = $module.querySelectorAll('a.govuk-tabs__tab');
+    if (!$tabs.length) {
+      return this
+    }
+
+    /** @deprecated Will be made private in v5.0 */
+    this.$module = $module;
+
+    /** @deprecated Will be made private in v5.0 */
+    this.$tabs = $tabs;
+
+    /** @deprecated Will be made private in v5.0 */
     this.keys = { left: 37, right: 39, up: 38, down: 40 };
+
+    /** @deprecated Will be made private in v5.0 */
     this.jsHiddenClass = 'govuk-tabs__panel--hidden';
+
+    // Save bounded functions to use when removing event listeners during teardown
+
+    /** @deprecated Will be made private in v5.0 */
+    this.boundTabClick = this.onTabClick.bind(this);
+
+    /** @deprecated Will be made private in v5.0 */
+    this.boundTabKeydown = this.onTabKeydown.bind(this);
+
+    /** @deprecated Will be made private in v5.0 */
+    this.boundOnHashChange = this.onHashChange.bind(this);
+
+    /** @deprecated Will be made private in v5.0 */
+    this.changingHash = false;
   }
 
   /**
    * Initialise component
    */
   Tabs.prototype.init = function () {
+    // Check that required elements are present
+    if (!this.$module || !this.$tabs) {
+      return
+    }
+
     if (typeof window.matchMedia === 'function') {
       this.setupResponsiveChecks();
     } else {
@@ -1119,8 +1172,11 @@
 
   /**
    * Setup viewport resize check
+   *
+   * @deprecated Will be made private in v5.0
    */
   Tabs.prototype.setupResponsiveChecks = function () {
+    /** @deprecated Will be made private in v5.0 */
     this.mql = window.matchMedia('(min-width: 40.0625em)');
     this.mql.addListener(this.checkMode.bind(this));
     this.checkMode();
@@ -1128,6 +1184,8 @@
 
   /**
    * Setup or teardown handler for viewport resize check
+   *
+   * @deprecated Will be made private in v5.0
    */
   Tabs.prototype.checkMode = function () {
     if (this.mql.matches) {
@@ -1139,8 +1197,11 @@
 
   /**
    * Setup tab component
+   *
+   * @deprecated Will be made private in v5.0
    */
   Tabs.prototype.setup = function () {
+    var $component = this;
     var $module = this.$module;
     var $tabs = this.$tabs;
     var $tabList = $module.querySelector('.govuk-tabs__list');
@@ -1158,37 +1219,39 @@
 
     nodeListForEach($tabs, function ($tab) {
       // Set HTML attributes
-      this.setAttributes($tab);
-
-      // Save bounded functions to use when removing event listeners during teardown
-      $tab.boundTabClick = this.onTabClick.bind(this);
-      $tab.boundTabKeydown = this.onTabKeydown.bind(this);
+      $component.setAttributes($tab);
 
       // Handle events
-      $tab.addEventListener('click', $tab.boundTabClick, true);
-      $tab.addEventListener('keydown', $tab.boundTabKeydown, true);
+      $tab.addEventListener('click', $component.boundTabClick, true);
+      $tab.addEventListener('keydown', $component.boundTabKeydown, true);
 
       // Remove old active panels
-      this.hideTab($tab);
-    }.bind(this));
+      $component.hideTab($tab);
+    });
 
     // Show either the active tab according to the URL's hash or the first tab
     var $activeTab = this.getTab(window.location.hash) || this.$tabs[0];
+    if (!$activeTab) {
+      return
+    }
+
     this.showTab($activeTab);
 
     // Handle hashchange events
-    $module.boundOnHashChange = this.onHashChange.bind(this);
-    window.addEventListener('hashchange', $module.boundOnHashChange, true);
+    window.addEventListener('hashchange', this.boundOnHashChange, true);
   };
 
   /**
    * Teardown tab component
+   *
+   * @deprecated Will be made private in v5.0
    */
   Tabs.prototype.teardown = function () {
+    var $component = this;
     var $module = this.$module;
     var $tabs = this.$tabs;
     var $tabList = $module.querySelector('.govuk-tabs__list');
-    var $tabListItems = $module.querySelectorAll('.govuk-tabs__list-item');
+    var $tabListItems = $module.querySelectorAll('a.govuk-tabs__list-item');
 
     if (!$tabs || !$tabList || !$tabListItems) {
       return
@@ -1197,29 +1260,29 @@
     $tabList.removeAttribute('role');
 
     nodeListForEach($tabListItems, function ($item) {
-      $item.removeAttribute('role', 'presentation');
+      $item.removeAttribute('role');
     });
 
     nodeListForEach($tabs, function ($tab) {
       // Remove events
-      $tab.removeEventListener('click', $tab.boundTabClick, true);
-      $tab.removeEventListener('keydown', $tab.boundTabKeydown, true);
+      $tab.removeEventListener('click', $component.boundTabClick, true);
+      $tab.removeEventListener('keydown', $component.boundTabKeydown, true);
 
       // Unset HTML attributes
-      this.unsetAttributes($tab);
-    }.bind(this));
+      $component.unsetAttributes($tab);
+    });
 
     // Remove hashchange event handler
-    window.removeEventListener('hashchange', $module.boundOnHashChange, true);
+    window.removeEventListener('hashchange', this.boundOnHashChange, true);
   };
 
   /**
    * Handle hashchange event
    *
-   * @param {HashChangeEvent} event - Hash change event
+   * @deprecated Will be made private in v5.0
    * @returns {void | undefined} Returns void, or undefined when prevented
    */
-  Tabs.prototype.onHashChange = function (event) {
+  Tabs.prototype.onHashChange = function () {
     var hash = window.location.hash;
     var $tabWithHash = this.getTab(hash);
     if (!$tabWithHash) {
@@ -1234,6 +1297,9 @@
 
     // Show either the active tab according to the URL's hash or the first tab
     var $previousTab = this.getCurrentTab();
+    if (!$previousTab) {
+      return
+    }
 
     this.hideTab($previousTab);
     this.showTab($tabWithHash);
@@ -1243,6 +1309,7 @@
   /**
    * Hide panel for tab link
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   Tabs.prototype.hideTab = function ($tab) {
@@ -1253,6 +1320,7 @@
   /**
    * Show panel for tab link
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   Tabs.prototype.showTab = function ($tab) {
@@ -1263,16 +1331,19 @@
   /**
    * Get tab link by hash
    *
+   * @deprecated Will be made private in v5.0
    * @param {string} hash - Hash fragment including #
    * @returns {HTMLAnchorElement | null} Tab link
    */
   Tabs.prototype.getTab = function (hash) {
-    return this.$module.querySelector('.govuk-tabs__tab[href="' + hash + '"]')
+    // @ts-expect-error `HTMLAnchorElement` type expected
+    return this.$module.querySelector('a.govuk-tabs__tab[href="' + hash + '"]')
   };
 
   /**
    * Set tab link and panel attributes
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   Tabs.prototype.setAttributes = function ($tab) {
@@ -1286,6 +1357,10 @@
 
     // set panel attributes
     var $panel = this.getPanel($tab);
+    if (!$panel) {
+      return
+    }
+
     $panel.setAttribute('role', 'tabpanel');
     $panel.setAttribute('aria-labelledby', $tab.id);
     $panel.classList.add(this.jsHiddenClass);
@@ -1294,6 +1369,7 @@
   /**
    * Unset tab link and panel attributes
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   Tabs.prototype.unsetAttributes = function ($tab) {
@@ -1306,6 +1382,10 @@
 
     // unset panel attributes
     var $panel = this.getPanel($tab);
+    if (!$panel) {
+      return
+    }
+
     $panel.removeAttribute('role');
     $panel.removeAttribute('aria-labelledby');
     $panel.classList.remove(this.jsHiddenClass);
@@ -1314,20 +1394,23 @@
   /**
    * Handle tab link clicks
    *
+   * @deprecated Will be made private in v5.0
    * @param {MouseEvent} event - Mouse click event
-   * @returns {void | false} Returns void, or false within tab link
+   * @returns {void} Returns void
    */
   Tabs.prototype.onTabClick = function (event) {
-    if (!event.target.classList.contains('govuk-tabs__tab')) {
-      // Allow events on child DOM elements to bubble up to tab parent
-      return false
-    }
-    event.preventDefault();
-    var $newTab = event.target;
     var $currentTab = this.getCurrentTab();
+    var $nextTab = event.currentTarget;
+
+    if (!$currentTab || !($nextTab instanceof HTMLAnchorElement)) {
+      return
+    }
+
+    event.preventDefault();
+
     this.hideTab($currentTab);
-    this.showTab($newTab);
-    this.createHistoryEntry($newTab);
+    this.showTab($nextTab);
+    this.createHistoryEntry($nextTab);
   };
 
   /**
@@ -1336,10 +1419,14 @@
    * - Allows back/forward to navigate tabs
    * - Avoids page jump when hash changes
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   Tabs.prototype.createHistoryEntry = function ($tab) {
     var $panel = this.getPanel($tab);
+    if (!$panel) {
+      return
+    }
 
     // Save and restore the id
     // so the page doesn't jump when a user clicks a tab (which changes the hash)
@@ -1356,6 +1443,7 @@
    * - Press right/down arrow for next tab
    * - Press left/up arrow for previous tab
    *
+   * @deprecated Will be made private in v5.0
    * @param {KeyboardEvent} event - Keydown event
    */
   Tabs.prototype.onTabKeydown = function (event) {
@@ -1375,10 +1463,12 @@
 
   /**
    * Activate next tab
+   *
+   * @deprecated Will be made private in v5.0
    */
   Tabs.prototype.activateNextTab = function () {
     var $currentTab = this.getCurrentTab();
-    if (!$currentTab) {
+    if (!$currentTab || !$currentTab.parentElement) {
       return
     }
 
@@ -1387,21 +1477,25 @@
       return
     }
 
-    var $nextTab = $nextTabListItem.querySelector('.govuk-tabs__tab');
-    if ($nextTab) {
-      this.hideTab($currentTab);
-      this.showTab($nextTab);
-      $nextTab.focus();
-      this.createHistoryEntry($nextTab);
+    var $nextTab = $nextTabListItem.querySelector('a.govuk-tabs__tab');
+    if (!$nextTab) {
+      return
     }
+
+    this.hideTab($currentTab);
+    this.showTab($nextTab);
+    $nextTab.focus();
+    this.createHistoryEntry($nextTab);
   };
 
   /**
    * Activate previous tab
+   *
+   * @deprecated Will be made private in v5.0
    */
   Tabs.prototype.activatePreviousTab = function () {
     var $currentTab = this.getCurrentTab();
-    if (!$currentTab) {
+    if (!$currentTab || !$currentTab.parentElement) {
       return
     }
 
@@ -1410,75 +1504,98 @@
       return
     }
 
-    var $previousTab = $previousTabListItem.querySelector('.govuk-tabs__tab');
-    if ($previousTab) {
-      this.hideTab($currentTab);
-      this.showTab($previousTab);
-      $previousTab.focus();
-      this.createHistoryEntry($previousTab);
+    var $previousTab = $previousTabListItem.querySelector('a.govuk-tabs__tab');
+    if (!$previousTab) {
+      return
     }
+
+    this.hideTab($currentTab);
+    this.showTab($previousTab);
+    $previousTab.focus();
+    this.createHistoryEntry($previousTab);
   };
 
   /**
    * Get tab panel for tab link
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLAnchorElement} $tab - Tab link
-   * @returns {HTMLDivElement} Tab panel
+   * @returns {Element | null} Tab panel
    */
   Tabs.prototype.getPanel = function ($tab) {
-    var $panel = this.$module.querySelector(this.getHref($tab));
-    return $panel
+    return this.$module.querySelector(this.getHref($tab))
   };
 
   /**
    * Show tab panel for tab link
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   Tabs.prototype.showPanel = function ($tab) {
     var $panel = this.getPanel($tab);
+    if (!$panel) {
+      return
+    }
+
     $panel.classList.remove(this.jsHiddenClass);
   };
 
   /**
    * Hide tab panel for tab link
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   Tabs.prototype.hidePanel = function ($tab) {
     var $panel = this.getPanel($tab);
+    if (!$panel) {
+      return
+    }
+
     $panel.classList.add(this.jsHiddenClass);
   };
 
   /**
    * Unset 'selected' state for tab link
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   Tabs.prototype.unhighlightTab = function ($tab) {
+    if (!$tab.parentElement) {
+      return
+    }
+
     $tab.setAttribute('aria-selected', 'false');
-    $tab.parentNode.classList.remove('govuk-tabs__list-item--selected');
+    $tab.parentElement.classList.remove('govuk-tabs__list-item--selected');
     $tab.setAttribute('tabindex', '-1');
   };
 
   /**
    * Set 'selected' state for tab link
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   Tabs.prototype.highlightTab = function ($tab) {
+    if (!$tab.parentElement) {
+      return
+    }
+
     $tab.setAttribute('aria-selected', 'true');
-    $tab.parentNode.classList.add('govuk-tabs__list-item--selected');
+    $tab.parentElement.classList.add('govuk-tabs__list-item--selected');
     $tab.setAttribute('tabindex', '0');
   };
 
   /**
    * Get current tab link
    *
-   * @returns {HTMLAnchorElement | undefined} Tab link
+   * @deprecated Will be made private in v5.0
+   * @returns {HTMLAnchorElement | null} Tab link
    */
   Tabs.prototype.getCurrentTab = function () {
-    return this.$module.querySelector('.govuk-tabs__list-item--selected .govuk-tabs__tab')
+    return this.$module.querySelector('.govuk-tabs__list-item--selected a.govuk-tabs__tab')
   };
 
   /**
@@ -1488,6 +1605,7 @@
    * should be a utility function most prob
    * {@link http://labs.thesedays.com/blog/2010/01/08/getting-the-href-value-with-jquery-in-ie/}
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLAnchorElement} $tab - Tab link
    * @returns {string} Hash fragment including #
    */

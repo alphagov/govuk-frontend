@@ -70,5 +70,11 @@
         "type": "boolean",
         "required": false,
         "description": "Use for the main call to action on your service's start page."
+    },
+    {
+        "name": "id",
+        "type": "string",
+        "required": false,
+        "description": "The ID of the button."
     }
 ]

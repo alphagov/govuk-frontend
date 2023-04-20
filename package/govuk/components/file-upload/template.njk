@@ -3,7 +3,7 @@
 {% from "../label/macro.njk" import govukLabel %}
 
 {#- a record of other elements that we need to associate with the input using
-   aria-describedby – for example hints or error messages -#}
+  aria-describedby – for example hints or error messages -#}
 {% set describedBy = params.describedBy if params.describedBy else "" %}
 <div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}">
   {{ govukLabel({
@@ -39,6 +39,7 @@
 {% endif %}
   <input class="govuk-file-upload {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-file-upload--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="file"
   {%- if params.value %} value="{{ params.value }}"{% endif %}
+  {%- if params.disabled %} disabled{% endif %}
   {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
 </div>

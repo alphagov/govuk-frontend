@@ -4,7 +4,8 @@
     (factory());
 }(this, (function () { 'use strict';
 
-    (function(undefined) {
+    // @ts-nocheck
+    (function (undefined) {
 
         // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/master/packages/polyfill-library/polyfills/DOMTokenList/detect.js
         var detect = (

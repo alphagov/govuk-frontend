@@ -71,7 +71,7 @@
     }
 
     // Fall back to a less than sign for IE8
-    @include govuk-if-ie8 {
+    @include _govuk-if-ie8 {
       content: "\003c"; // Less than sign (<)
       width: auto;
       height: auto;

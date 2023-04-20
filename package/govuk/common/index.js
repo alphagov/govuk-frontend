@@ -19,8 +19,10 @@
    * This seems to fail in IE8, requires more investigation.
    * See: https://github.com/imagitama/nodelist-foreach-polyfill
    *
-   * @param {NodeListOf<Element>} nodes - NodeList from querySelectorAll()
-   * @param {nodeListIterator} callback - Callback function to run for each node
+   * @deprecated Will be made private in v5.0
+   * @template {Node} ElementType
+   * @param {NodeListOf<ElementType>} nodes - NodeList from querySelectorAll()
+   * @param {nodeListIterator<ElementType>} callback - Callback function to run for each node
    * @returns {void}
    */
   function nodeListForEach (nodes, callback) {
@@ -37,6 +39,7 @@
    * without them conflicting with each other.
    * https://stackoverflow.com/a/8809472
    *
+   * @deprecated Will be made private in v5.0
    * @returns {string} Unique ID
    */
   function generateUniqueID () {
@@ -58,6 +61,7 @@
    * (e.g. {'i18n.showSection': 'Show section'}) and combines them together, with
    * greatest priority on the LAST item passed in.
    *
+   * @deprecated Will be made private in v5.0
    * @returns {Object<string, unknown>} A flattened object of key-value pairs.
    */
   function mergeConfigs (/* configObject1, configObject2, ...configObjects */) {
@@ -72,6 +76,7 @@
      */
     var flattenObject = function (configObject) {
       // Prepare an empty return object
+      /** @type {Object<string, unknown>} */
       var flattenedObject = {};
 
       /**
@@ -108,6 +113,7 @@
     };
 
     // Start with an empty object as our base
+    /** @type {Object<string, unknown>} */
     var formattedConfigObject = {};
 
     // Loop through each of the remaining passed objects and push their keys
@@ -129,6 +135,7 @@
    * Extracts keys starting with a particular namespace from a flattened config
    * object, removing the namespace in the process.
    *
+   * @deprecated Will be made private in v5.0
    * @param {Object<string, unknown>} configObject - The object to extract key-value pairs from.
    * @param {string} namespace - The namespace to filter keys with.
    * @returns {Object<string, unknown>} Flattened object with dot-separated key namespace removed
@@ -140,10 +147,14 @@
     if (!configObject || typeof configObject !== 'object') {
       throw new Error('Provide a `configObject` of type "object".')
     }
+
     if (!namespace || typeof namespace !== 'string') {
       throw new Error('Provide a `namespace` of type "string" to filter the `configObject` by.')
     }
+
+    /** @type {Object<string, unknown>} */
     var newObject = {};
+
     for (var key in configObject) {
       // Split the key into parts, using . as our namespace separator
       var keyParts = key.split('.');
@@ -164,10 +175,11 @@
   }
 
   /**
+   * @template {Node} ElementType
    * @callback nodeListIterator
-   * @param {Element} value - The current node being iterated on
+   * @param {ElementType} value - The current node being iterated on
    * @param {number} index - The current index in the iteration
-   * @param {NodeListOf<Element>} nodes - NodeList from querySelectorAll()
+   * @param {NodeListOf<ElementType>} nodes - NodeList from querySelectorAll()
    * @returns {void}
    */
 

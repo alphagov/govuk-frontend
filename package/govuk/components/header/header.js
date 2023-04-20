@@ -4,7 +4,8 @@
 	(global.GOVUKFrontend = global.GOVUKFrontend || {}, global.GOVUKFrontend.Header = factory());
 }(this, (function () { 'use strict';
 
-	(function(undefined) {
+	// @ts-nocheck
+	(function (undefined) {
 
 	// Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Window/detect.js
 	var detect = ('Window' in this);
@@ -25,7 +26,8 @@
 	})
 	.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-	(function(undefined) {
+	// @ts-nocheck
+	(function (undefined) {
 
 	// Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Document/detect.js
 	var detect = ("Document" in this);
@@ -51,6 +53,8 @@
 
 	})
 	.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+	// @ts-nocheck
 
 	(function(undefined) {
 
@@ -165,7 +169,8 @@
 	})
 	.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-	(function(undefined) {
+	// @ts-nocheck
+	(function (undefined) {
 
 	// Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Object/defineProperty/detect.js
 	var detect = (
@@ -251,6 +256,8 @@
 	}(Object.defineProperty));
 	})
 	.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+	// @ts-nocheck
 
 	(function(undefined) {
 
@@ -501,6 +508,8 @@
 	})
 	.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
+	// @ts-nocheck
+
 	(function(undefined) {
 	  // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Function/prototype/bind/detect.js
 	  var detect = 'bind' in Function.prototype;
@@ -665,24 +674,41 @@
 	 * Header component
 	 *
 	 * @class
-	 * @param {HTMLElement} $module - HTML element to use for header
+	 * @param {Element} $module - HTML element to use for header
 	 */
 	function Header ($module) {
+	  if (!($module instanceof HTMLElement)) {
+	    return this
+	  }
+
+	  /** @deprecated Will be made private in v5.0 */
 	  this.$module = $module;
-	  this.$menuButton = $module && $module.querySelector('.govuk-js-header-toggle');
+
+	  /** @deprecated Will be made private in v5.0 */
+	  this.$menuButton = $module.querySelector('.govuk-js-header-toggle');
+
+	  /** @deprecated Will be made private in v5.0 */
 	  this.$menu = this.$menuButton && $module.querySelector(
 	    '#' + this.$menuButton.getAttribute('aria-controls')
 	  );
 
-	  // Save the opened/closed state for the nav in memory so that we can
-	  // accurately maintain state when the screen is changed from small to
-	  // big and back to small
+	  /**
+	   * Save the opened/closed state for the nav in memory so that we can
+	   * accurately maintain state when the screen is changed from small to
+	   * big and back to small
+	   *
+	   * @deprecated Will be made private in v5.0
+	   */
 	  this.menuIsOpen = false;
 
-	  // A global const for storing a matchMedia instance which we'll use to
-	  // detect when a screen size change happens. We set this later during the
-	  // init function and rely on it being null if the feature isn't available
-	  // to initially apply hidden attributes
+	  /**
+	   * A global const for storing a matchMedia instance which we'll use to
+	   * detect when a screen size change happens. We set this later during the
+	   * init function and rely on it being null if the feature isn't available
+	   * to initially apply hidden attributes
+	   *
+	   * @deprecated Will be made private in v5.0
+	   */
 	  this.mql = null;
 	}
 
@@ -697,6 +723,7 @@
 	 * version of the menu to the user.
 	 */
 	Header.prototype.init = function () {
+	  // Check that required elements are present
 	  if (!this.$module || !this.$menuButton || !this.$menu) {
 	    return
 	  }
@@ -709,8 +736,9 @@
 	      this.mql.addEventListener('change', this.syncState.bind(this));
 	    } else {
 	      // addListener is a deprecated function, however addEventListener
-	      // isn't supported by IE or Safari. We therefore add this in as
+	      // isn't supported by IE or Safari < 14. We therefore add this in as
 	      // a fallback for those browsers
+	      // @ts-expect-error Property 'addListener' does not exist
 	      this.mql.addListener(this.syncState.bind(this));
 	    }
 
@@ -728,6 +756,8 @@
 	 * visual states of the menu and the menu button.
 	 * Additionally will force the menu to be visible and the menu button to be
 	 * hidden if the matchMedia is triggered to desktop.
+	 *
+	 * @deprecated Will be made private in v5.0
 	 */
 	Header.prototype.syncState = function () {
 	  if (this.mql.matches) {
@@ -735,7 +765,7 @@
 	    this.$menuButton.setAttribute('hidden', '');
 	  } else {
 	    this.$menuButton.removeAttribute('hidden');
-	    this.$menuButton.setAttribute('aria-expanded', this.menuIsOpen);
+	    this.$menuButton.setAttribute('aria-expanded', this.menuIsOpen.toString());
 
 	    if (this.menuIsOpen) {
 	      this.$menu.removeAttribute('hidden');
@@ -750,6 +780,8 @@
 	 *
 	 * When the menu button is clicked, change the visibility of the menu and then
 	 * sync the accessibility state and menu button state
+	 *
+	 * @deprecated Will be made private in v5.0
 	 */
 	Header.prototype.handleMenuButtonClick = function () {
 	  this.menuIsOpen = !this.menuIsOpen;

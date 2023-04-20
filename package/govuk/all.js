@@ -4,6 +4,13 @@
   (factory((global.GOVUKFrontend = {})));
 }(this, (function (exports) { 'use strict';
 
+  /*
+   * This variable is automatically overwritten during builds and releases.
+   * It doesn't need to be updated manually.
+   */
+
+  var version = '4.6.0';
+
   /**
    * Common helpers which do not require polyfill.
    *
@@ -19,8 +26,10 @@
    * This seems to fail in IE8, requires more investigation.
    * See: https://github.com/imagitama/nodelist-foreach-polyfill
    *
-   * @param {NodeListOf<Element>} nodes - NodeList from querySelectorAll()
-   * @param {nodeListIterator} callback - Callback function to run for each node
+   * @deprecated Will be made private in v5.0
+   * @template {Node} ElementType
+   * @param {NodeListOf<ElementType>} nodes - NodeList from querySelectorAll()
+   * @param {nodeListIterator<ElementType>} callback - Callback function to run for each node
    * @returns {void}
    */
   function nodeListForEach (nodes, callback) {
@@ -37,6 +46,7 @@
    * without them conflicting with each other.
    * https://stackoverflow.com/a/8809472
    *
+   * @deprecated Will be made private in v5.0
    * @returns {string} Unique ID
    */
   function generateUniqueID () {
@@ -58,6 +68,7 @@
    * (e.g. {'i18n.showSection': 'Show section'}) and combines them together, with
    * greatest priority on the LAST item passed in.
    *
+   * @deprecated Will be made private in v5.0
    * @returns {Object<string, unknown>} A flattened object of key-value pairs.
    */
   function mergeConfigs (/* configObject1, configObject2, ...configObjects */) {
@@ -72,6 +83,7 @@
      */
     var flattenObject = function (configObject) {
       // Prepare an empty return object
+      /** @type {Object<string, unknown>} */
       var flattenedObject = {};
 
       /**
@@ -108,6 +120,7 @@
     };
 
     // Start with an empty object as our base
+    /** @type {Object<string, unknown>} */
     var formattedConfigObject = {};
 
     // Loop through each of the remaining passed objects and push their keys
@@ -129,6 +142,7 @@
    * Extracts keys starting with a particular namespace from a flattened config
    * object, removing the namespace in the process.
    *
+   * @deprecated Will be made private in v5.0
    * @param {Object<string, unknown>} configObject - The object to extract key-value pairs from.
    * @param {string} namespace - The namespace to filter keys with.
    * @returns {Object<string, unknown>} Flattened object with dot-separated key namespace removed
@@ -140,10 +154,14 @@
     if (!configObject || typeof configObject !== 'object') {
       throw new Error('Provide a `configObject` of type "object".')
     }
+
     if (!namespace || typeof namespace !== 'string') {
       throw new Error('Provide a `namespace` of type "string" to filter the `configObject` by.')
     }
+
+    /** @type {Object<string, unknown>} */
     var newObject = {};
+
     for (var key in configObject) {
       // Split the key into parts, using . as our namespace separator
       var keyParts = key.split('.');
@@ -164,14 +182,16 @@
   }
 
   /**
+   * @template {Node} ElementType
    * @callback nodeListIterator
-   * @param {Element} value - The current node being iterated on
+   * @param {ElementType} value - The current node being iterated on
    * @param {number} index - The current index in the iteration
-   * @param {NodeListOf<Element>} nodes - NodeList from querySelectorAll()
+   * @param {NodeListOf<ElementType>} nodes - NodeList from querySelectorAll()
    * @returns {void}
    */
 
-  (function(undefined) {
+  // @ts-nocheck
+  (function (undefined) {
 
   // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Object/defineProperty/detect.js
   var detect = (
@@ -258,7 +278,8 @@
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-  (function(undefined) {
+  // @ts-nocheck
+  (function (undefined) {
 
   // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Document/detect.js
   var detect = ("Document" in this);
@@ -284,6 +305,8 @@
 
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+  // @ts-nocheck
 
   (function(undefined) {
 
@@ -398,6 +421,8 @@
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
+  // @ts-nocheck
+
   (function(undefined) {
 
     // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-library/13cf7c340974d128d557580b5e2dafcd1b1192d1/polyfills/Element/prototype/dataset/detect.js
@@ -418,10 +443,10 @@
         var element = this;
         var attributes = this.attributes;
         var map = {};
-    
+
         for (var i = 0; i < attributes.length; i++) {
           var attribute = attributes[i];
-    
+
           // This regex has been edited from the original polyfill, to add
           // support for period (.) separators in data-* attribute names. These
           // are allowed in the HTML spec, but were not covered by the original
@@ -429,11 +454,11 @@
           if (attribute && attribute.name && (/^data-\w[.\w-]*$/).test(attribute.name)) {
             var name = attribute.name;
             var value = attribute.value;
-    
+
             var propName = name.substr(5).replace(/-./g, function (prop) {
               return prop.charAt(1).toUpperCase();
             });
-            
+
             // If this browser supports __defineGetter__ and __defineSetter__,
             // continue using defineProperty. If not (like IE 8 and below), we use
             // a hacky fallback which at least gives an object in the right format
@@ -457,18 +482,19 @@
 
           }
         }
-    
+
         return map;
       }
     });
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-  (function(undefined) {
+  // @ts-nocheck
+  (function (undefined) {
 
       // Detection from https://github.com/mdn/content/blob/cf607d68522cd35ee7670782d3ee3a361eaef2e4/files/en-us/web/javascript/reference/global_objects/string/trim/index.md#polyfill
       var detect = ('trim' in String.prototype);
-      
+
       if (detect) return
 
       // Polyfill from https://github.com/mdn/content/blob/cf607d68522cd35ee7670782d3ee3a361eaef2e4/files/en-us/web/javascript/reference/global_objects/string/trim/index.md#polyfill
@@ -491,6 +517,7 @@
    * Designed to be used to convert config passed via data attributes (which are
    * always strings) into something sensible.
    *
+   * @deprecated Will be made private in v5.0
    * @param {string} value - The value to normalise
    * @returns {string | boolean | number | undefined} Normalised data
    */
@@ -511,7 +538,7 @@
 
     // Empty / whitespace-only strings are considered finite so we need to check
     // the length of the trimmed string as well
-    if (trimmedValue.length > 0 && isFinite(trimmedValue)) {
+    if (trimmedValue.length > 0 && isFinite(Number(trimmedValue))) {
       return Number(trimmedValue)
     }
 
@@ -523,10 +550,12 @@
    *
    * Loop over an object and normalise each value using normaliseData function
    *
+   * @deprecated Will be made private in v5.0
    * @param {DOMStringMap} dataset - HTML element dataset
    * @returns {Object<string, unknown>} Normalised dataset
    */
   function normaliseDataset (dataset) {
+    /** @type {Object<string, unknown>} */
     var out = {};
 
     for (var key in dataset) {
@@ -571,17 +600,17 @@
     }
 
     // If the `count` option is set, determine which plural suffix is needed and
-    // change the lookupKey to match. We check to see if it's undefined instead of
+    // change the lookupKey to match. We check to see if it's numeric instead of
     // falsy, as this could legitimately be 0.
-    if (options && typeof options.count !== 'undefined') {
+    if (options && typeof options.count === 'number') {
       // Get the plural suffix
       lookupKey = lookupKey + '.' + this.getPluralSuffix(lookupKey, options.count);
     }
 
-    if (lookupKey in this.translations) {
-      // Fetch the translation string for that lookup key
-      var translationString = this.translations[lookupKey];
+    // Fetch the translation string for that lookup key
+    var translationString = this.translations[lookupKey];
 
+    if (typeof translationString === 'string') {
       // Check for ${} placeholders in the translation string
       if (translationString.match(/%{(.\S+)}/)) {
         if (!options) {
@@ -608,32 +637,46 @@
    * @returns {string} The translation string to output, with ${} placeholders replaced
    */
   I18n.prototype.replacePlaceholders = function (translationString, options) {
+    /** @type {Intl.NumberFormat | undefined} */
     var formatter;
 
     if (this.hasIntlNumberFormatSupport()) {
       formatter = new Intl.NumberFormat(this.locale);
     }
 
-    return translationString.replace(/%{(.\S+)}/g, function (placeholderWithBraces, placeholderKey) {
-      if (Object.prototype.hasOwnProperty.call(options, placeholderKey)) {
-        var placeholderValue = options[placeholderKey];
+    return translationString.replace(
+      /%{(.\S+)}/g,
 
-        // If a user has passed `false` as the value for the placeholder
-        // treat it as though the value should not be displayed
-        if (placeholderValue === false) {
-          return ''
+      /**
+       * Replace translation string placeholders
+       *
+       * @param {string} placeholderWithBraces - Placeholder with braces
+       * @param {string} placeholderKey - Placeholder key
+       * @returns {string} Placeholder value
+       */
+      function (placeholderWithBraces, placeholderKey) {
+        if (Object.prototype.hasOwnProperty.call(options, placeholderKey)) {
+          var placeholderValue = options[placeholderKey];
+
+          // If a user has passed `false` as the value for the placeholder
+          // treat it as though the value should not be displayed
+          if (placeholderValue === false || (
+            typeof placeholderValue !== 'number' &&
+            typeof placeholderValue !== 'string')
+          ) {
+            return ''
+          }
+
+          // If the placeholder's value is a number, localise the number formatting
+          if (typeof placeholderValue === 'number') {
+            return formatter ? formatter.format(placeholderValue) : placeholderValue.toString()
+          }
+
+          return placeholderValue
+        } else {
+          throw new Error('i18n: no data found to replace ' + placeholderWithBraces + ' placeholder in string')
         }
-
-        // If the placeholder's value is a number, localise the number formatting
-        if (typeof placeholderValue === 'number' && formatter) {
-          return formatter.format(placeholderValue)
-        }
-
-        return placeholderValue
-      } else {
-        throw new Error('i18n: no data found to replace ' + placeholderWithBraces + ' placeholder in string')
-      }
-    })
+      })
   };
 
   /**
@@ -749,7 +792,7 @@
    * regardless of region. There are exceptions, however, (e.g. Portuguese) so
    * this searches by both the full and shortened locale codes, just to be sure.
    *
-   * @returns {PluralRuleName | undefined} The name of the pluralisation rule to use (a key for one
+   * @returns {string | undefined} The name of the pluralisation rule to use (a key for one
    *   of the functions in this.pluralRules)
    */
   I18n.prototype.getPluralRulesForLocale = function () {
@@ -800,7 +843,7 @@
    * Spanish: European Portuguese (pt-PT), Italian (it), Spanish (es)
    * Welsh: Welsh (cy)
    *
-   * @type {Object<PluralRuleName, string[]>}
+   * @type {Object<string, string[]>}
    */
   I18n.pluralRulesMap = {
     arabic: ['ar'],
@@ -889,12 +932,6 @@
   };
 
   /**
-   * Supported languages for plural rules
-   *
-   * @typedef {'arabic' | 'chinese' | 'french' | 'german' | 'irish' | 'russian' | 'scottish' | 'spanish' | 'welsh'} PluralRuleName
-   */
-
-  /**
    * Plural rule category mnemonic tags
    *
    * @typedef {'zero' | 'one' | 'two' | 'few' | 'many' | 'other'} PluralRule
@@ -915,7 +952,8 @@
    * @property {string} [many] - Plural form used for many
    */
 
-  (function(undefined) {
+  // @ts-nocheck
+  (function (undefined) {
 
       // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/master/packages/polyfill-library/polyfills/DOMTokenList/detect.js
       var detect = (
@@ -1180,6 +1218,8 @@
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
+  // @ts-nocheck
+
   (function(undefined) {
 
       // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/8717a9e04ac7aff99b4980fbedead98036b0929a/packages/polyfill-library/polyfills/Element/prototype/classList/detect.js
@@ -1270,7 +1310,8 @@
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-  (function(undefined) {
+  // @ts-nocheck
+  (function (undefined) {
 
     // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/matches/detect.js
     var detect = (
@@ -1293,6 +1334,8 @@
     };
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+  // @ts-nocheck
 
   (function(undefined) {
 
@@ -1317,7 +1360,8 @@
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-  (function(undefined) {
+  // @ts-nocheck
+  (function (undefined) {
 
   // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Window/detect.js
   var detect = ('Window' in this);
@@ -1337,6 +1381,8 @@
 
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+  // @ts-nocheck
 
   (function(undefined) {
 
@@ -1587,6 +1633,8 @@
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
+  // @ts-nocheck
+
   (function(undefined) {
     // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Function/prototype/bind/detect.js
     var detect = 'bind' in Function.prototype;
@@ -1775,57 +1823,119 @@
    * attribute, which also provides accessibility.
    *
    * @class
-   * @param {HTMLElement} $module - HTML element to use for accordion
+   * @param {Element} $module - HTML element to use for accordion
    * @param {AccordionConfig} [config] - Accordion config
    */
   function Accordion ($module, config) {
+    if (!($module instanceof HTMLElement)) {
+      return this
+    }
+
+    /** @deprecated Will be made private in v5.0 */
     this.$module = $module;
 
     var defaultConfig = {
-      i18n: ACCORDION_TRANSLATIONS
+      i18n: ACCORDION_TRANSLATIONS,
+      rememberExpanded: true
     };
 
+    /**
+     * @deprecated Will be made private in v5.0
+     * @type {AccordionConfig}
+     */
     this.config = mergeConfigs(
       defaultConfig,
       config || {},
       normaliseDataset($module.dataset)
     );
 
+    /** @deprecated Will be made private in v5.0 */
     this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'));
 
+    /** @deprecated Will be made private in v5.0 */
     this.controlsClass = 'govuk-accordion__controls';
+
+    /** @deprecated Will be made private in v5.0 */
     this.showAllClass = 'govuk-accordion__show-all';
+
+    /** @deprecated Will be made private in v5.0 */
     this.showAllTextClass = 'govuk-accordion__show-all-text';
 
+    /** @deprecated Will be made private in v5.0 */
     this.sectionClass = 'govuk-accordion__section';
+
+    /** @deprecated Will be made private in v5.0 */
     this.sectionExpandedClass = 'govuk-accordion__section--expanded';
+
+    /** @deprecated Will be made private in v5.0 */
     this.sectionButtonClass = 'govuk-accordion__section-button';
+
+    /** @deprecated Will be made private in v5.0 */
     this.sectionHeaderClass = 'govuk-accordion__section-header';
+
+    /** @deprecated Will be made private in v5.0 */
     this.sectionHeadingClass = 'govuk-accordion__section-heading';
+
+    /** @deprecated Will be made private in v5.0 */
     this.sectionHeadingDividerClass = 'govuk-accordion__section-heading-divider';
+
+    /** @deprecated Will be made private in v5.0 */
     this.sectionHeadingTextClass = 'govuk-accordion__section-heading-text';
+
+    /** @deprecated Will be made private in v5.0 */
     this.sectionHeadingTextFocusClass = 'govuk-accordion__section-heading-text-focus';
 
+    /** @deprecated Will be made private in v5.0 */
     this.sectionShowHideToggleClass = 'govuk-accordion__section-toggle';
+
+    /** @deprecated Will be made private in v5.0 */
     this.sectionShowHideToggleFocusClass = 'govuk-accordion__section-toggle-focus';
+
+    /** @deprecated Will be made private in v5.0 */
     this.sectionShowHideTextClass = 'govuk-accordion__section-toggle-text';
+
+    /** @deprecated Will be made private in v5.0 */
     this.upChevronIconClass = 'govuk-accordion-nav__chevron';
+
+    /** @deprecated Will be made private in v5.0 */
     this.downChevronIconClass = 'govuk-accordion-nav__chevron--down';
 
+    /** @deprecated Will be made private in v5.0 */
     this.sectionSummaryClass = 'govuk-accordion__section-summary';
+
+    /** @deprecated Will be made private in v5.0 */
     this.sectionSummaryFocusClass = 'govuk-accordion__section-summary-focus';
+
+    /** @deprecated Will be made private in v5.0 */
     this.sectionContentClass = 'govuk-accordion__section-content';
 
-    this.$sections = this.$module.querySelectorAll('.' + this.sectionClass);
+    var $sections = this.$module.querySelectorAll('.' + this.sectionClass);
+    if (!$sections.length) {
+      return this
+    }
+
+    /** @deprecated Will be made private in v5.0 */
+    this.$sections = $sections;
+
+    /** @deprecated Will be made private in v5.0 */
     this.browserSupportsSessionStorage = helper.checkForSessionStorage();
+
+    /** @deprecated Will be made private in v5.0 */
+    this.$showAllButton = null;
+
+    /** @deprecated Will be made private in v5.0 */
+    this.$showAllIcon = null;
+
+    /** @deprecated Will be made private in v5.0 */
+    this.$showAllText = null;
   }
 
   /**
    * Initialise component
    */
   Accordion.prototype.init = function () {
-    // Check for module
-    if (!this.$module) {
+    // Check that required elements are present
+    if (!this.$module || !this.$sections) {
       return
     }
 
@@ -1839,6 +1949,8 @@
 
   /**
    * Initialise controls and set attributes
+   *
+   * @deprecated Will be made private in v5.0
    */
   Accordion.prototype.initControls = function () {
     // Create "Show all" button and set attributes
@@ -1874,28 +1986,38 @@
 
   /**
    * Initialise section headers
+   *
+   * @deprecated Will be made private in v5.0
    */
   Accordion.prototype.initSectionHeaders = function () {
-    // Loop through section headers
-    nodeListForEach(this.$sections, function ($section, i) {
+    var $component = this;
+    var $sections = this.$sections;
+
+    // Loop through sections
+    nodeListForEach($sections, function ($section, i) {
+      var $header = $section.querySelector('.' + $component.sectionHeaderClass);
+      if (!$header) {
+        return
+      }
+
       // Set header attributes
-      var $header = $section.querySelector('.' + this.sectionHeaderClass);
-      this.constructHeaderMarkup($header, i);
-      this.setExpanded(this.isExpanded($section), $section);
+      $component.constructHeaderMarkup($header, i);
+      $component.setExpanded($component.isExpanded($section), $section);
 
       // Handle events
-      $header.addEventListener('click', this.onSectionToggle.bind(this, $section));
+      $header.addEventListener('click', $component.onSectionToggle.bind($component, $section));
 
       // See if there is any state stored in sessionStorage and set the sections to
       // open or closed.
-      this.setInitialState($section);
-    }.bind(this));
+      $component.setInitialState($section);
+    });
   };
 
   /**
    * Construct section header
    *
-   * @param {HTMLDivElement} $header - Section header
+   * @deprecated Will be made private in v5.0
+   * @param {Element} $header - Section header
    * @param {number} index - Section index
    */
   Accordion.prototype.constructHeaderMarkup = function ($header, index) {
@@ -1903,10 +2025,14 @@
     var $heading = $header.querySelector('.' + this.sectionHeadingClass);
     var $summary = $header.querySelector('.' + this.sectionSummaryClass);
 
+    if (!$span || !$heading) {
+      return
+    }
+
     // Create a button element that will replace the '.govuk-accordion__section-button' span
     var $button = document.createElement('button');
     $button.setAttribute('type', 'button');
-    $button.setAttribute('aria-controls', this.$module.id + '-content-' + (index + 1));
+    $button.setAttribute('aria-controls', this.$module.id + '-content-' + (index + 1).toString());
 
     // Copy all attributes (https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes) from $span to $button
     for (var i = 0; i < $span.attributes.length; i++) {
@@ -1960,7 +2086,7 @@
     $button.appendChild(this.getButtonPunctuationEl());
 
     // If summary content exists add to DOM in correct order
-    if (typeof ($summary) !== 'undefined' && $summary !== null) {
+    if ($summary) {
       // Create a new `span` element and copy the summary line content from the original `div` to the
       // new `span`
       // This is because the summary line text is now inside a button element, which can only contain
@@ -1997,10 +2123,19 @@
   /**
    * When a section is opened by the user agent via the 'beforematch' event
    *
+   * @deprecated Will be made private in v5.0
    * @param {Event} event - Generic event
    */
   Accordion.prototype.onBeforeMatch = function (event) {
-    var $section = event.target.closest('.' + this.sectionClass);
+    var $fragment = event.target;
+
+    // Handle elements with `.closest()` support only
+    if (!($fragment instanceof Element)) {
+      return
+    }
+
+    // Handle when fragment is inside section
+    var $section = $fragment.closest('.' + this.sectionClass);
     if ($section) {
       this.setExpanded(true, $section);
     }
@@ -2009,7 +2144,8 @@
   /**
    * When section toggled, set and store state
    *
-   * @param {HTMLElement} $section - Section element
+   * @deprecated Will be made private in v5.0
+   * @param {Element} $section - Section element
    */
   Accordion.prototype.onSectionToggle = function ($section) {
     var expanded = this.isExpanded($section);
@@ -2021,26 +2157,31 @@
 
   /**
    * When Open/Close All toggled, set and store state
+   *
+   * @deprecated Will be made private in v5.0
    */
   Accordion.prototype.onShowOrHideAllToggle = function () {
-    var $module = this;
+    var $component = this;
     var $sections = this.$sections;
+
     var nowExpanded = !this.checkIfAllSectionsOpen();
 
+    // Loop through sections
     nodeListForEach($sections, function ($section) {
-      $module.setExpanded(nowExpanded, $section);
+      $component.setExpanded(nowExpanded, $section);
       // Store the state in sessionStorage when a change is triggered
-      $module.storeState($section);
+      $component.storeState($section);
     });
 
-    $module.updateShowAllButton(nowExpanded);
+    $component.updateShowAllButton(nowExpanded);
   };
 
   /**
    * Set section attributes when opened/closed
    *
+   * @deprecated Will be made private in v5.0
    * @param {boolean} expanded - Section expanded
-   * @param {HTMLElement} $section - Section element
+   * @param {Element} $section - Section element
    */
   Accordion.prototype.setExpanded = function (expanded, $section) {
     var $showHideIcon = $section.querySelector('.' + this.upChevronIconClass);
@@ -2048,23 +2189,30 @@
     var $button = $section.querySelector('.' + this.sectionButtonClass);
     var $content = $section.querySelector('.' + this.sectionContentClass);
 
+    if (!$showHideIcon ||
+      !($showHideText instanceof HTMLElement) ||
+      !$button ||
+      !$content) {
+      return
+    }
+
     var newButtonText = expanded
       ? this.i18n.t('hideSection')
       : this.i18n.t('showSection');
 
     $showHideText.innerText = newButtonText;
-    $button.setAttribute('aria-expanded', expanded);
+    $button.setAttribute('aria-expanded', expanded.toString());
 
     // Update aria-label combining
     var ariaLabelParts = [];
 
     var $headingText = $section.querySelector('.' + this.sectionHeadingTextClass);
-    if ($headingText) {
+    if ($headingText instanceof HTMLElement) {
       ariaLabelParts.push($headingText.innerText.trim());
     }
 
     var $summary = $section.querySelector('.' + this.sectionSummaryClass);
-    if ($summary) {
+    if ($summary instanceof HTMLElement) {
       ariaLabelParts.push($summary.innerText.trim());
     }
 
@@ -2099,7 +2247,8 @@
   /**
    * Get state of section
    *
-   * @param {HTMLElement} $section - Section element
+   * @deprecated Will be made private in v5.0
+   * @param {Element} $section - Section element
    * @returns {boolean} True if expanded
    */
   Accordion.prototype.isExpanded = function ($section) {
@@ -2109,6 +2258,7 @@
   /**
    * Check if all sections are open
    *
+   * @deprecated Will be made private in v5.0
    * @returns {boolean} True if all sections are open
    */
   Accordion.prototype.checkIfAllSectionsOpen = function () {
@@ -2124,6 +2274,7 @@
   /**
    * Update "Show all sections" button
    *
+   * @deprecated Will be made private in v5.0
    * @param {boolean} expanded - Section expanded
    */
   Accordion.prototype.updateShowAllButton = function (expanded) {
@@ -2131,7 +2282,7 @@
       ? this.i18n.t('hideAllSections')
       : this.i18n.t('showAllSections');
 
-    this.$showAllButton.setAttribute('aria-expanded', expanded);
+    this.$showAllButton.setAttribute('aria-expanded', expanded.toString());
     this.$showAllText.innerText = newButtonText;
 
     // Swap icon, toggle class
@@ -2165,10 +2316,11 @@
   /**
    * Set the state of the accordions in sessionStorage
    *
-   * @param {HTMLElement} $section - Section element
+   * @deprecated Will be made private in v5.0
+   * @param {Element} $section - Section element
    */
   Accordion.prototype.storeState = function ($section) {
-    if (this.browserSupportsSessionStorage) {
+    if (this.browserSupportsSessionStorage && this.config.rememberExpanded) {
       // We need a unique way of identifying each content in the Accordion. Since
       // an `#id` should be unique and an `id` is required for `aria-` attributes
       // `id` can be safely used.
@@ -2189,10 +2341,11 @@
   /**
    * Read the state of the accordions from sessionStorage
    *
-   * @param {HTMLElement} $section - Section element
+   * @deprecated Will be made private in v5.0
+   * @param {Element} $section - Section element
    */
   Accordion.prototype.setInitialState = function ($section) {
-    if (this.browserSupportsSessionStorage) {
+    if (this.browserSupportsSessionStorage && this.config.rememberExpanded) {
       var $button = $section.querySelector('.' + this.sectionButtonClass);
 
       if ($button) {
@@ -2213,7 +2366,8 @@
    * into thematic chunks.
    * See https://github.com/alphagov/govuk-frontend/issues/2327#issuecomment-922957442
    *
-   * @returns {HTMLElement} DOM element
+   * @deprecated Will be made private in v5.0
+   * @returns {Element} DOM element
    */
   Accordion.prototype.getButtonPunctuationEl = function () {
     var $punctuationEl = document.createElement('span');
@@ -2227,6 +2381,8 @@
    *
    * @typedef {object} AccordionConfig
    * @property {AccordionTranslations} [i18n = ACCORDION_TRANSLATIONS] - See constant {@link ACCORDION_TRANSLATIONS}
+   * @property {boolean} [rememberExpanded] - Whether the expanded and collapsed
+   *   state of each section is remembered and restored when navigating.
    */
 
   /**
@@ -2238,17 +2394,17 @@
    * the visible text shown on screen, and text to help assistive technology users
    * for the buttons toggling each section.
    * @property {string} [hideAllSections] - The text content for the 'Hide all
-   * sections' button, used when at least one section is expanded.
+   *   sections' button, used when at least one section is expanded.
    * @property {string} [hideSection] - The text content for the 'Hide'
-   * button, used when a section is expanded.
+   *   button, used when a section is expanded.
    * @property {string} [hideSectionAriaLabel] - The text content appended to the
-   * 'Hide' button's accessible name when a section is expanded.
+   *   'Hide' button's accessible name when a section is expanded.
    * @property {string} [showAllSections] - The text content for the 'Show all
-   * sections' button, used when all sections are collapsed.
+   *   sections' button, used when all sections are collapsed.
    * @property {string} [showSection] - The text content for the 'Show'
-   * button, used when a section is collapsed.
+   *   button, used when a section is collapsed.
    * @property {string} [showSectionAriaLabel] - The text content appended to the
-   * 'Show' button's accessible name when a section is expanded.
+   *   'Show' button's accessible name when a section is expanded.
    */
 
   /* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
@@ -2260,20 +2416,28 @@
    * JavaScript enhancements for the Button component
    *
    * @class
-   * @param {HTMLElement} $module - HTML element to use for button
+   * @param {Element} $module - HTML element to use for button
    * @param {ButtonConfig} [config] - Button config
    */
   function Button ($module, config) {
-    if (!$module) {
+    if (!($module instanceof HTMLElement)) {
       return this
     }
 
+    /** @deprecated Will be made private in v5.0 */
     this.$module = $module;
+
+    /** @deprecated Will be made private in v5.0 */
     this.debounceFormSubmitTimer = null;
 
     var defaultConfig = {
       preventDoubleClick: false
     };
+
+    /**
+     * @deprecated Will be made private in v5.0
+     * @type {ButtonConfig}
+     */
     this.config = mergeConfigs(
       defaultConfig,
       config || {},
@@ -2285,6 +2449,7 @@
    * Initialise component
    */
   Button.prototype.init = function () {
+    // Check that required elements are present
     if (!this.$module) {
       return
     }
@@ -2301,12 +2466,19 @@
    *
    * See https://github.com/alphagov/govuk_elements/pull/272#issuecomment-233028270
    *
+   * @deprecated Will be made private in v5.0
    * @param {KeyboardEvent} event - Keydown event
    */
   Button.prototype.handleKeyDown = function (event) {
     var $target = event.target;
 
-    if ($target.getAttribute('role') === 'button' && event.keyCode === KEY_SPACE) {
+    // Handle space bar only
+    if (event.keyCode !== KEY_SPACE) {
+      return
+    }
+
+    // Handle elements with [role="button"] only
+    if ($target instanceof HTMLElement && $target.getAttribute('role') === 'button') {
       event.preventDefault(); // prevent the page from scrolling
       $target.click();
     }
@@ -2319,6 +2491,7 @@
    * stops people accidentally causing multiple form submissions by double
    * clicking buttons.
    *
+   * @deprecated Will be made private in v5.0
    * @param {MouseEvent} event - Mouse click event
    * @returns {undefined | false} Returns undefined, or false when debounced
    */
@@ -2343,26 +2516,27 @@
    * Button config
    *
    * @typedef {object} ButtonConfig
-   * @property {boolean} [preventDoubleClick = false] -
-   *  Prevent accidental double clicks on submit buttons from submitting forms
-   *  multiple times.
+   * @property {boolean} [preventDoubleClick = false] - Prevent accidental double
+   *   clicks on submit buttons from submitting forms multiple times.
    */
 
   /**
    * Returns the value of the given attribute closest to the given element (including itself)
    *
-   * @param {HTMLElement} $element - The element to start walking the DOM tree up
+   * @deprecated Will be made private in v5.0
+   * @param {Element} $element - The element to start walking the DOM tree up
    * @param {string} attributeName - The name of the attribute
-   * @returns {string | undefined} Attribute value
+   * @returns {string | null} Attribute value
    */
   function closestAttributeValue ($element, attributeName) {
-    var closestElementWithAttribute = $element.closest('[' + attributeName + ']');
-    if (closestElementWithAttribute) {
-      return closestElementWithAttribute.getAttribute(attributeName)
-    }
+    var $closestElementWithAttribute = $element.closest('[' + attributeName + ']');
+    return $closestElementWithAttribute
+      ? $closestElementWithAttribute.getAttribute(attributeName)
+      : null
   }
 
-  (function(undefined) {
+  // @ts-nocheck
+  (function (undefined) {
 
       // Detection from https://github.com/Financial-Times/polyfill-library/blob/v3.111.0/polyfills/Date/now/detect.js
       var detect = ('Date' in self && 'now' in self.Date && 'getTime' in self.Date.prototype);
@@ -2421,11 +2595,21 @@
    * of the available characters/words has been entered.
    *
    * @class
-   * @param {HTMLElement} $module - HTML element to use for character count
+   * @param {Element} $module - HTML element to use for character count
    * @param {CharacterCountConfig} [config] - Character count config
    */
   function CharacterCount ($module, config) {
-    if (!$module) {
+    if (!($module instanceof HTMLElement)) {
+      return this
+    }
+
+    var $textarea = $module.querySelector('.govuk-js-character-count');
+    if (
+      !(
+        $textarea instanceof HTMLTextAreaElement ||
+        $textarea instanceof HTMLInputElement
+      )
+    ) {
       return this
     }
 
@@ -2451,6 +2635,10 @@
       };
     }
 
+    /**
+     * @deprecated Will be made private in v5.0
+     * @type {CharacterCountConfig}
+     */
     this.config = mergeConfigs(
       defaultConfig,
       config || {},
@@ -2458,25 +2646,43 @@
       datasetConfig
     );
 
+    /** @deprecated Will be made private in v5.0 */
     this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'), {
       // Read the fallback if necessary rather than have it set in the defaults
       locale: closestAttributeValue($module, 'lang')
     });
 
+    /** @deprecated Will be made private in v5.0 */
+    this.maxLength = Infinity;
     // Determine the limit attribute (characters or words)
-    if (this.config.maxwords) {
+    if ('maxwords' in this.config && this.config.maxwords) {
       this.maxLength = this.config.maxwords;
-    } else if (this.config.maxlength) {
+    } else if ('maxlength' in this.config && this.config.maxlength) {
       this.maxLength = this.config.maxlength;
     } else {
       return
     }
 
+    /** @deprecated Will be made private in v5.0 */
     this.$module = $module;
-    this.$textarea = $module.querySelector('.govuk-js-character-count');
+
+    /** @deprecated Will be made private in v5.0 */
+    this.$textarea = $textarea;
+
+    /** @deprecated Will be made private in v5.0 */
     this.$visibleCountMessage = null;
+
+    /** @deprecated Will be made private in v5.0 */
     this.$screenReaderCountMessage = null;
+
+    /** @deprecated Will be made private in v5.0 */
     this.lastInputTimestamp = null;
+
+    /** @deprecated Will be made private in v5.0 */
+    this.lastInputValue = '';
+
+    /** @deprecated Will be made private in v5.0 */
+    this.valueChecker = null;
   }
 
   /**
@@ -2484,14 +2690,17 @@
    */
   CharacterCount.prototype.init = function () {
     // Check that required elements are present
-    if (!this.$textarea) {
+    if (!this.$module || !this.$textarea) {
       return
     }
 
     var $textarea = this.$textarea;
     var $textareaDescription = document.getElementById($textarea.id + '-info');
+    if (!$textareaDescription) {
+      return
+    }
 
-    // Inject a decription for the textarea if none is present already
+    // Inject a description for the textarea if none is present already
     // for when the component was rendered with no maxlength, maxwords
     // nor custom textareaDescriptionText
     if ($textareaDescription.innerText.match(/^\s*$/)) {
@@ -2532,11 +2741,11 @@
     // state of the character count is not restored until *after* the
     // DOMContentLoaded event is fired, so we need to manually update it after the
     // pageshow event in browsers that support it.
-    if ('onpageshow' in window) {
-      window.addEventListener('pageshow', this.updateCountMessage.bind(this));
-    } else {
-      window.addEventListener('DOMContentLoaded', this.updateCountMessage.bind(this));
-    }
+    window.addEventListener(
+      'onpageshow' in window ? 'pageshow' : 'DOMContentLoaded',
+      this.updateCountMessage.bind(this)
+    );
+
     this.updateCountMessage();
   };
 
@@ -2545,6 +2754,8 @@
    *
    * Set up event listeners on the $textarea so that the count messages update
    * when the user types.
+   *
+   * @deprecated Will be made private in v5.0
    */
   CharacterCount.prototype.bindChangeEvents = function () {
     var $textarea = this.$textarea;
@@ -2560,6 +2771,8 @@
    *
    * Update the visible character counter and keep track of when the last update
    * happened for each keypress
+   *
+   * @deprecated Will be made private in v5.0
    */
   CharacterCount.prototype.handleKeyUp = function () {
     this.updateVisibleCountMessage();
@@ -2578,6 +2791,8 @@
    *
    * This is so that the update triggered by the manual comparison doesn't
    * conflict with debounced KeyboardEvent updates.
+   *
+   * @deprecated Will be made private in v5.0
    */
   CharacterCount.prototype.handleFocus = function () {
     this.valueChecker = setInterval(function () {
@@ -2591,6 +2806,8 @@
    * Handle blur event
    *
    * Stop checking the textarea value once the textarea no longer has focus
+   *
+   * @deprecated Will be made private in v5.0
    */
   CharacterCount.prototype.handleBlur = function () {
     // Cancel value checking on blur
@@ -2599,11 +2816,12 @@
 
   /**
    * Update count message if textarea value has changed
+   *
+   * @deprecated Will be made private in v5.0
    */
   CharacterCount.prototype.updateIfValueChanged = function () {
-    if (!this.$textarea.oldValue) this.$textarea.oldValue = '';
-    if (this.$textarea.value !== this.$textarea.oldValue) {
-      this.$textarea.oldValue = this.$textarea.value;
+    if (this.$textarea.value !== this.lastInputValue) {
+      this.lastInputValue = this.$textarea.value;
       this.updateCountMessage();
     }
   };
@@ -2613,6 +2831,8 @@
    *
    * Helper function to update both the visible and screen reader-specific
    * counters simultaneously (e.g. on init)
+   *
+   * @deprecated Will be made private in v5.0
    */
   CharacterCount.prototype.updateCountMessage = function () {
     this.updateVisibleCountMessage();
@@ -2621,6 +2841,8 @@
 
   /**
    * Update visible count message
+   *
+   * @deprecated Will be made private in v5.0
    */
   CharacterCount.prototype.updateVisibleCountMessage = function () {
     var $textarea = this.$textarea;
@@ -2652,6 +2874,8 @@
 
   /**
    * Update screen reader count message
+   *
+   * @deprecated Will be made private in v5.0
    */
   CharacterCount.prototype.updateScreenReaderCountMessage = function () {
     var $screenReaderCountMessage = this.$screenReaderCountMessage;
@@ -2661,7 +2885,7 @@
     if (this.isOverThreshold()) {
       $screenReaderCountMessage.removeAttribute('aria-hidden');
     } else {
-      $screenReaderCountMessage.setAttribute('aria-hidden', true);
+      $screenReaderCountMessage.setAttribute('aria-hidden', 'true');
     }
 
     // Update message
@@ -2672,11 +2896,12 @@
    * Count the number of characters (or words, if `config.maxwords` is set)
    * in the given text
    *
+   * @deprecated Will be made private in v5.0
    * @param {string} text - The text to count the characters of
    * @returns {number} the number of characters (or words) in the text
    */
   CharacterCount.prototype.count = function (text) {
-    if (this.config.maxwords) {
+    if ('maxwords' in this.config && this.config.maxwords) {
       var tokens = text.match(/\S+/g) || []; // Matches consecutive non-whitespace chars
       return tokens.length
     } else {
@@ -2687,12 +2912,13 @@
   /**
    * Get count message
    *
+   * @deprecated Will be made private in v5.0
    * @returns {string} Status message
    */
   CharacterCount.prototype.getCountMessage = function () {
     var remainingNumber = this.maxLength - this.count(this.$textarea.value);
 
-    var countType = this.config.maxwords ? 'words' : 'characters';
+    var countType = 'maxwords' in this.config && this.config.maxwords ? 'words' : 'characters';
     return this.formatCountMessage(remainingNumber, countType)
   };
 
@@ -2700,6 +2926,7 @@
    * Formats the message shown to users according to what's counted
    * and how many remain
    *
+   * @deprecated Will be made private in v5.0
    * @param {number} remainingNumber - The number of words/characaters remaining
    * @param {string} countType - "words" or "characters"
    * @returns {string} Status message
@@ -2721,6 +2948,7 @@
    * If there is no configured threshold, it is set to 0 and this function will
    * always return true.
    *
+   * @deprecated Will be made private in v5.0
    * @returns {boolean} true if the current count is over the config.threshold
    *   (or no threshold is set)
    */
@@ -2752,10 +2980,10 @@
    *
    * @typedef {object} CharacterCountConfigWithMaxLength
    * @property {number} [maxlength] - The maximum number of characters.
-   *  If maxwords is provided, the maxlength option will be ignored.
+   *   If maxwords is provided, the maxlength option will be ignored.
    * @property {number} [threshold = 0] - The percentage value of the limit at
-   *  which point the count message is displayed. If this attribute is set, the
-   *  count message will be hidden by default.
+   *   which point the count message is displayed. If this attribute is set, the
+   *   count message will be hidden by default.
    * @property {CharacterCountTranslations} [i18n = CHARACTER_COUNT_TRANSLATIONS] - See constant {@link CHARACTER_COUNT_TRANSLATIONS}
    */
 
@@ -2764,10 +2992,10 @@
    *
    * @typedef {object} CharacterCountConfigWithMaxWords
    * @property {number} [maxwords] - The maximum number of words. If maxwords is
-   *  provided, the maxlength option will be ignored.
+   *   provided, the maxlength option will be ignored.
    * @property {number} [threshold = 0] - The percentage value of the limit at
-   *  which point the count message is displayed. If this attribute is set, the
-   *  count message will be hidden by default.
+   *   which point the count message is displayed. If this attribute is set, the
+   *   count message will be hidden by default.
    * @property {CharacterCountTranslations} [i18n = CHARACTER_COUNT_TRANSLATIONS] - See constant {@link CHARACTER_COUNT_TRANSLATIONS}
    */
 
@@ -2827,11 +3055,23 @@
    * Checkboxes component
    *
    * @class
-   * @param {HTMLElement} $module - HTML element to use for checkboxes
+   * @param {Element} $module - HTML element to use for checkboxes
    */
   function Checkboxes ($module) {
+    if (!($module instanceof HTMLElement)) {
+      return this
+    }
+
+    var $inputs = $module.querySelectorAll('input[type="checkbox"]');
+    if (!$inputs.length) {
+      return this
+    }
+
+    /** @deprecated Will be made private in v5.0 */
     this.$module = $module;
-    this.$inputs = $module.querySelectorAll('input[type="checkbox"]');
+
+    /** @deprecated Will be made private in v5.0 */
+    this.$inputs = $inputs;
   }
 
   /**
@@ -2849,6 +3089,11 @@
    * the reveal in sync with the checkbox state.
    */
   Checkboxes.prototype.init = function () {
+    // Check that required elements are present
+    if (!this.$module || !this.$inputs) {
+      return
+    }
+
     var $module = this.$module;
     var $inputs = this.$inputs;
 
@@ -2871,11 +3116,10 @@
     // state of form controls is not restored until *after* the DOMContentLoaded
     // event is fired, so we need to sync after the pageshow event in browsers
     // that support it.
-    if ('onpageshow' in window) {
-      window.addEventListener('pageshow', this.syncAllConditionalReveals.bind(this));
-    } else {
-      window.addEventListener('DOMContentLoaded', this.syncAllConditionalReveals.bind(this));
-    }
+    window.addEventListener(
+      'onpageshow' in window ? 'pageshow' : 'DOMContentLoaded',
+      this.syncAllConditionalReveals.bind(this)
+    );
 
     // Although we've set up handlers to sync state on the pageshow or
     // DOMContentLoaded event, init could be called after those events have fired,
@@ -2888,6 +3132,8 @@
 
   /**
    * Sync the conditional reveal states for all checkboxes in this $module.
+   *
+   * @deprecated Will be made private in v5.0
    */
   Checkboxes.prototype.syncAllConditionalReveals = function () {
     nodeListForEach(this.$inputs, this.syncConditionalRevealWithInputState.bind(this));
@@ -2899,15 +3145,20 @@
    * Synchronise the visibility of the conditional reveal, and its accessible
    * state, with the input's checked state.
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLInputElement} $input - Checkbox input
    */
   Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
-    var $target = document.getElementById($input.getAttribute('aria-controls'));
+    var targetId = $input.getAttribute('aria-controls');
+    if (!targetId) {
+      return
+    }
 
+    var $target = document.getElementById(targetId);
     if ($target && $target.classList.contains('govuk-checkboxes__conditional')) {
       var inputIsChecked = $input.checked;
 
-      $input.setAttribute('aria-expanded', inputIsChecked);
+      $input.setAttribute('aria-expanded', inputIsChecked.toString());
       $target.classList.toggle('govuk-checkboxes__conditional--hidden', !inputIsChecked);
     }
   };
@@ -2918,18 +3169,25 @@
    * Find any other checkbox inputs with the same name value, and uncheck them.
    * This is useful for when a “None of these" checkbox is checked.
    *
-   * @param {HTMLElement} $input - Checkbox input
+   * @deprecated Will be made private in v5.0
+   * @param {HTMLInputElement} $input - Checkbox input
    */
   Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
-    var allInputsWithSameName = document.querySelectorAll('input[type="checkbox"][name="' + $input.name + '"]');
+    var $component = this;
+
+    /** @type {NodeListOf<HTMLInputElement>} */
+    // @ts-expect-error `NodeListOf<HTMLInputElement>` type expected
+    var allInputsWithSameName = document.querySelectorAll(
+      'input[type="checkbox"][name="' + $input.name + '"]'
+    );
 
     nodeListForEach(allInputsWithSameName, function ($inputWithSameName) {
       var hasSameFormOwner = ($input.form === $inputWithSameName.form);
       if (hasSameFormOwner && $inputWithSameName !== $input) {
         $inputWithSameName.checked = false;
-        this.syncConditionalRevealWithInputState($inputWithSameName);
+        $component.syncConditionalRevealWithInputState($inputWithSameName);
       }
-    }.bind(this));
+    });
   };
 
   /**
@@ -2939,9 +3197,14 @@
    * and uncheck them. This helps prevent someone checking both a regular checkbox and a
    * "None of these" checkbox in the same fieldset.
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLInputElement} $input - Checkbox input
    */
   Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
+    var $component = this;
+
+    /** @type {NodeListOf<HTMLInputElement>} */
+    // @ts-expect-error `NodeListOf<HTMLInputElement>` type expected
     var allInputsWithSameNameAndExclusiveBehaviour = document.querySelectorAll(
       'input[data-behaviour="exclusive"][type="checkbox"][name="' + $input.name + '"]'
     );
@@ -2950,9 +3213,9 @@
       var hasSameFormOwner = ($input.form === $exclusiveInput.form);
       if (hasSameFormOwner) {
         $exclusiveInput.checked = false;
-        this.syncConditionalRevealWithInputState($exclusiveInput);
+        $component.syncConditionalRevealWithInputState($exclusiveInput);
       }
-    }.bind(this));
+    });
   };
 
   /**
@@ -2961,13 +3224,14 @@
    * Handle a click within the $module – if the click occurred on a checkbox, sync
    * the state of any associated conditional reveal with the checkbox state.
    *
+   * @deprecated Will be made private in v5.0
    * @param {MouseEvent} event - Click event
    */
   Checkboxes.prototype.handleClick = function (event) {
     var $clickedInput = event.target;
 
     // Ignore clicks on things that aren't checkbox inputs
-    if ($clickedInput.type !== 'checkbox') {
+    if (!($clickedInput instanceof HTMLInputElement) || $clickedInput.type !== 'checkbox') {
       return
     }
 
@@ -3000,32 +3264,45 @@
    * Details component
    *
    * @class
-   * @param {HTMLElement} $module - HTML element to use for details
+   * @param {Element} $module - HTML element to use for details
    */
   function Details ($module) {
+    if (!($module instanceof HTMLElement)) {
+      return this
+    }
+
+    /** @deprecated Will be made private in v5.0 */
     this.$module = $module;
+
+    /** @deprecated Will be made private in v5.0 */
+    this.$summary = null;
+
+    /** @deprecated Will be made private in v5.0 */
+    this.$content = null;
   }
 
   /**
    * Initialise component
    */
   Details.prototype.init = function () {
+    // Check that required elements are present
     if (!this.$module) {
       return
     }
 
     // If there is native details support, we want to avoid running code to polyfill native behaviour.
-    var hasNativeDetails = typeof this.$module.open === 'boolean';
+    var hasNativeDetails = 'HTMLDetailsElement' in window &&
+      this.$module instanceof HTMLDetailsElement;
 
-    if (hasNativeDetails) {
-      return
+    if (!hasNativeDetails) {
+      this.polyfillDetails();
     }
-
-    this.polyfillDetails();
   };
 
   /**
    * Polyfill component in older browsers
+   *
+   * @deprecated Will be made private in v5.0
    */
   Details.prototype.polyfillDetails = function () {
     var $module = this.$module;
@@ -3076,6 +3353,7 @@
   /**
    * Define a statechange function that updates aria-expanded and style.display
    *
+   * @deprecated Will be made private in v5.0
    * @returns {boolean} Returns true
    */
   Details.prototype.polyfillSetAttributes = function () {
@@ -3095,6 +3373,7 @@
   /**
    * Handle cross-modal click events
    *
+   * @deprecated Will be made private in v5.0
    * @param {polyfillHandleInputsCallback} callback - function
    */
   Details.prototype.polyfillHandleInputs = function (callback) {
@@ -3102,7 +3381,7 @@
       var $target = event.target;
       // When the key gets pressed - check if it is enter or space
       if (event.keyCode === KEY_ENTER || event.keyCode === KEY_SPACE$1) {
-        if ($target.nodeName.toLowerCase() === 'summary') {
+        if ($target instanceof HTMLElement && $target.nodeName.toLowerCase() === 'summary') {
           // Prevent space from scrolling the page
           // and enter from submitting a form
           event.preventDefault();
@@ -3121,7 +3400,7 @@
     this.$summary.addEventListener('keyup', function (event) {
       var $target = event.target;
       if (event.keyCode === KEY_SPACE$1) {
-        if ($target.nodeName.toLowerCase() === 'summary') {
+        if ($target instanceof HTMLElement && $target.nodeName.toLowerCase() === 'summary') {
           event.preventDefault();
         }
       }
@@ -3144,7 +3423,7 @@
    * Takes focus on initialisation for accessible announcement, unless disabled in configuration.
    *
    * @class
-   * @param {HTMLElement} $module - HTML element to use for error summary
+   * @param {Element} $module - HTML element to use for error summary
    * @param {ErrorSummaryConfig} [config] - Error summary config
    */
   function ErrorSummary ($module, config) {
@@ -3155,17 +3434,23 @@
     // To avoid breaking further JavaScript initialisation
     // we need to safeguard against this so things keep
     // working the same now we read the elements data attributes
-    if (!$module) {
+    if (!($module instanceof HTMLElement)) {
       // Little safety in case code gets ported as-is
       // into and ES6 class constructor, where the return value matters
       return this
     }
 
+    /** @deprecated Will be made private in v5.0 */
     this.$module = $module;
 
     var defaultConfig = {
       disableAutoFocus: false
     };
+
+    /**
+     * @deprecated Will be made private in v5.0
+     * @type {ErrorSummaryConfig}
+     */
     this.config = mergeConfigs(
       defaultConfig,
       config || {},
@@ -3177,10 +3462,12 @@
    * Initialise component
    */
   ErrorSummary.prototype.init = function () {
-    var $module = this.$module;
-    if (!$module) {
+    // Check that required elements are present
+    if (!this.$module) {
       return
     }
+
+    var $module = this.$module;
 
     this.setFocus();
     $module.addEventListener('click', this.handleClick.bind(this));
@@ -3188,6 +3475,8 @@
 
   /**
    * Focus the error summary
+   *
+   * @deprecated Will be made private in v5.0
    */
   ErrorSummary.prototype.setFocus = function () {
     var $module = this.$module;
@@ -3210,6 +3499,7 @@
   /**
    * Click event handler
    *
+   * @deprecated Will be made private in v5.0
    * @param {MouseEvent} event - Click event
    */
   ErrorSummary.prototype.handleClick = function (event) {
@@ -3234,16 +3524,21 @@
    * NVDA (as tested in 2018.3.2) - without this only the field type is announced
    * (e.g. "Edit, has autocomplete").
    *
+   * @deprecated Will be made private in v5.0
    * @param {EventTarget} $target - Event target
    * @returns {boolean} True if the target was able to be focussed
    */
   ErrorSummary.prototype.focusTarget = function ($target) {
     // If the element that was clicked was not a link, return early
-    if ($target.tagName !== 'A' || $target.href === false) {
+    if (!($target instanceof HTMLAnchorElement)) {
       return false
     }
 
     var inputId = this.getFragmentFromUrl($target.href);
+    if (!inputId) {
+      return false
+    }
+
     var $input = document.getElementById(inputId);
     if (!$input) {
       return false
@@ -3269,12 +3564,13 @@
    * Extract the fragment (everything after the hash) from a URL, but not including
    * the hash.
    *
+   * @deprecated Will be made private in v5.0
    * @param {string} url - URL
-   * @returns {string} Fragment from URL, without the hash
+   * @returns {string | undefined} Fragment from URL, without the hash
    */
   ErrorSummary.prototype.getFragmentFromUrl = function (url) {
     if (url.indexOf('#') === -1) {
-      return false
+      return undefined
     }
 
     return url.split('#').pop()
@@ -3291,9 +3587,10 @@
    * - The first `<label>` that is associated with the input using for="inputId"
    * - The closest parent `<label>`
    *
-   * @param {HTMLElement} $input - The input
-   * @returns {HTMLElement} Associated legend or label, or null if no associated
-   *                        legend or label can be found
+   * @deprecated Will be made private in v5.0
+   * @param {Element} $input - The input
+   * @returns {Element | null} Associated legend or label, or null if no associated
+   *   legend or label can be found
    */
   ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
     var $fieldset = $input.closest('fieldset');
@@ -3306,7 +3603,7 @@
 
         // If the input type is radio or checkbox, always use the legend if there
         // is one.
-        if ($input.type === 'checkbox' || $input.type === 'radio') {
+        if ($input instanceof HTMLInputElement && ($input.type === 'checkbox' || $input.type === 'radio')) {
           return $candidateLegend
         }
 
@@ -3339,8 +3636,8 @@
    * Error summary config
    *
    * @typedef {object} ErrorSummaryConfig
-   * @property {boolean} [disableAutoFocus = false] -
-   *  If set to `true` the error summary will not be focussed when the page loads.
+   * @property {boolean} [disableAutoFocus = false] - If set to `true` the error
+   *   summary will not be focussed when the page loads.
    */
 
   /* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
@@ -3349,24 +3646,41 @@
    * Header component
    *
    * @class
-   * @param {HTMLElement} $module - HTML element to use for header
+   * @param {Element} $module - HTML element to use for header
    */
   function Header ($module) {
+    if (!($module instanceof HTMLElement)) {
+      return this
+    }
+
+    /** @deprecated Will be made private in v5.0 */
     this.$module = $module;
-    this.$menuButton = $module && $module.querySelector('.govuk-js-header-toggle');
+
+    /** @deprecated Will be made private in v5.0 */
+    this.$menuButton = $module.querySelector('.govuk-js-header-toggle');
+
+    /** @deprecated Will be made private in v5.0 */
     this.$menu = this.$menuButton && $module.querySelector(
       '#' + this.$menuButton.getAttribute('aria-controls')
     );
 
-    // Save the opened/closed state for the nav in memory so that we can
-    // accurately maintain state when the screen is changed from small to
-    // big and back to small
+    /**
+     * Save the opened/closed state for the nav in memory so that we can
+     * accurately maintain state when the screen is changed from small to
+     * big and back to small
+     *
+     * @deprecated Will be made private in v5.0
+     */
     this.menuIsOpen = false;
 
-    // A global const for storing a matchMedia instance which we'll use to
-    // detect when a screen size change happens. We set this later during the
-    // init function and rely on it being null if the feature isn't available
-    // to initially apply hidden attributes
+    /**
+     * A global const for storing a matchMedia instance which we'll use to
+     * detect when a screen size change happens. We set this later during the
+     * init function and rely on it being null if the feature isn't available
+     * to initially apply hidden attributes
+     *
+     * @deprecated Will be made private in v5.0
+     */
     this.mql = null;
   }
 
@@ -3381,6 +3695,7 @@
    * version of the menu to the user.
    */
   Header.prototype.init = function () {
+    // Check that required elements are present
     if (!this.$module || !this.$menuButton || !this.$menu) {
       return
     }
@@ -3393,8 +3708,9 @@
         this.mql.addEventListener('change', this.syncState.bind(this));
       } else {
         // addListener is a deprecated function, however addEventListener
-        // isn't supported by IE or Safari. We therefore add this in as
+        // isn't supported by IE or Safari < 14. We therefore add this in as
         // a fallback for those browsers
+        // @ts-expect-error Property 'addListener' does not exist
         this.mql.addListener(this.syncState.bind(this));
       }
 
@@ -3412,6 +3728,8 @@
    * visual states of the menu and the menu button.
    * Additionally will force the menu to be visible and the menu button to be
    * hidden if the matchMedia is triggered to desktop.
+   *
+   * @deprecated Will be made private in v5.0
    */
   Header.prototype.syncState = function () {
     if (this.mql.matches) {
@@ -3419,7 +3737,7 @@
       this.$menuButton.setAttribute('hidden', '');
     } else {
       this.$menuButton.removeAttribute('hidden');
-      this.$menuButton.setAttribute('aria-expanded', this.menuIsOpen);
+      this.$menuButton.setAttribute('aria-expanded', this.menuIsOpen.toString());
 
       if (this.menuIsOpen) {
         this.$menu.removeAttribute('hidden');
@@ -3434,6 +3752,8 @@
    *
    * When the menu button is clicked, change the visibility of the menu and then
    * sync the accessibility state and menu button state
+   *
+   * @deprecated Will be made private in v5.0
    */
   Header.prototype.handleMenuButtonClick = function () {
     this.menuIsOpen = !this.menuIsOpen;
@@ -3444,15 +3764,25 @@
    * Notification Banner component
    *
    * @class
-   * @param {HTMLElement} $module - HTML element to use for notification banner
+   * @param {Element} $module - HTML element to use for notification banner
    * @param {NotificationBannerConfig} [config] - Notification banner config
    */
   function NotificationBanner ($module, config) {
+    if (!($module instanceof HTMLElement)) {
+      return this
+    }
+
+    /** @deprecated Will be made private in v5.0 */
     this.$module = $module;
 
     var defaultConfig = {
       disableAutoFocus: false
     };
+
+    /**
+     * @deprecated Will be made private in v5.0
+     * @type {NotificationBannerConfig}
+     */
     this.config = mergeConfigs(
       defaultConfig,
       config || {},
@@ -3464,9 +3794,8 @@
    * Initialise component
    */
   NotificationBanner.prototype.init = function () {
-    var $module = this.$module;
-    // Check for module
-    if (!$module) {
+    // Check that required elements are present
+    if (!this.$module) {
       return
     }
 
@@ -3482,6 +3811,8 @@
    * You can turn off the auto-focus functionality by setting `data-disable-auto-focus="true"` in the
    * component HTML. You might wish to do this based on user research findings, or to avoid a clash
    * with another element which should be focused when the page loads.
+   *
+   * @deprecated Will be made private in v5.0
    */
   NotificationBanner.prototype.setFocus = function () {
     var $module = this.$module;
@@ -3512,11 +3843,10 @@
    * Notification banner config
    *
    * @typedef {object} NotificationBannerConfig
-   * @property {boolean} [disableAutoFocus = false] -
-   *   If set to `true` the notification banner will not be focussed when the page
-   *   loads. This only applies if the component has a `role` of `alert` – in
-   *   other cases the component will not be focused on page load, regardless of
-   *   this option.
+   * @property {boolean} [disableAutoFocus = false] - If set to `true` the
+   *   notification banner will not be focussed when the page loads. This only
+   *   applies if the component has a `role` of `alert` – in other cases the
+   *   component will not be focused on page load, regardless of this option.
    */
 
   /* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
@@ -3525,11 +3855,23 @@
    * Radios component
    *
    * @class
-   * @param {HTMLElement} $module - HTML element to use for radios
+   * @param {Element} $module - HTML element to use for radios
    */
   function Radios ($module) {
+    if (!($module instanceof HTMLElement)) {
+      return this
+    }
+
+    var $inputs = $module.querySelectorAll('input[type="radio"]');
+    if (!$inputs.length) {
+      return this
+    }
+
+    /** @deprecated Will be made private in v5.0 */
     this.$module = $module;
-    this.$inputs = $module.querySelectorAll('input[type="radio"]');
+
+    /** @deprecated Will be made private in v5.0 */
+    this.$inputs = $inputs;
   }
 
   /**
@@ -3547,6 +3889,11 @@
    * the reveal in sync with the radio state.
    */
   Radios.prototype.init = function () {
+    // Check that required elements are present
+    if (!this.$module || !this.$inputs) {
+      return
+    }
+
     var $module = this.$module;
     var $inputs = this.$inputs;
 
@@ -3569,11 +3916,10 @@
     // state of form controls is not restored until *after* the DOMContentLoaded
     // event is fired, so we need to sync after the pageshow event in browsers
     // that support it.
-    if ('onpageshow' in window) {
-      window.addEventListener('pageshow', this.syncAllConditionalReveals.bind(this));
-    } else {
-      window.addEventListener('DOMContentLoaded', this.syncAllConditionalReveals.bind(this));
-    }
+    window.addEventListener(
+      'onpageshow' in window ? 'pageshow' : 'DOMContentLoaded',
+      this.syncAllConditionalReveals.bind(this)
+    );
 
     // Although we've set up handlers to sync state on the pageshow or
     // DOMContentLoaded event, init could be called after those events have fired,
@@ -3586,6 +3932,8 @@
 
   /**
    * Sync the conditional reveal states for all radio buttons in this $module.
+   *
+   * @deprecated Will be made private in v5.0
    */
   Radios.prototype.syncAllConditionalReveals = function () {
     nodeListForEach(this.$inputs, this.syncConditionalRevealWithInputState.bind(this));
@@ -3597,15 +3945,20 @@
    * Synchronise the visibility of the conditional reveal, and its accessible
    * state, with the input's checked state.
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLInputElement} $input - Radio input
    */
   Radios.prototype.syncConditionalRevealWithInputState = function ($input) {
-    var $target = document.getElementById($input.getAttribute('aria-controls'));
+    var targetId = $input.getAttribute('aria-controls');
+    if (!targetId) {
+      return
+    }
 
+    var $target = document.getElementById(targetId);
     if ($target && $target.classList.contains('govuk-radios__conditional')) {
       var inputIsChecked = $input.checked;
 
-      $input.setAttribute('aria-expanded', inputIsChecked);
+      $input.setAttribute('aria-expanded', inputIsChecked.toString());
       $target.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked);
     }
   };
@@ -3618,13 +3971,15 @@
    * with the same name (because checking one radio could have un-checked a radio
    * in another $module)
    *
+   * @deprecated Will be made private in v5.0
    * @param {MouseEvent} event - Click event
    */
   Radios.prototype.handleClick = function (event) {
+    var $component = this;
     var $clickedInput = event.target;
 
     // Ignore clicks on things that aren't radio buttons
-    if ($clickedInput.type !== 'radio') {
+    if (!($clickedInput instanceof HTMLInputElement) || $clickedInput.type !== 'radio') {
       return
     }
 
@@ -3632,14 +3987,17 @@
     // aria-controls attributes.
     var $allInputs = document.querySelectorAll('input[type="radio"][aria-controls]');
 
+    var $clickedInputForm = $clickedInput.form;
+    var $clickedInputName = $clickedInput.name;
+
     nodeListForEach($allInputs, function ($input) {
-      var hasSameFormOwner = ($input.form === $clickedInput.form);
-      var hasSameName = ($input.name === $clickedInput.name);
+      var hasSameFormOwner = $input.form === $clickedInputForm;
+      var hasSameName = $input.name === $clickedInputName;
 
       if (hasSameName && hasSameFormOwner) {
-        this.syncConditionalRevealWithInputState($input);
+        $component.syncConditionalRevealWithInputState($input);
       }
-    }.bind(this));
+    });
   };
 
   /* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
@@ -3648,11 +4006,20 @@
    * Skip link component
    *
    * @class
-   * @param {HTMLElement} $module - HTML element to use for skip link
+   * @param {Element} $module - HTML element to use for skip link
    */
   function SkipLink ($module) {
+    if (!($module instanceof HTMLAnchorElement)) {
+      return this
+    }
+
+    /** @deprecated Will be made private in v5.0 */
     this.$module = $module;
+
+    /** @deprecated Will be made private in v5.0 */
     this.$linkedElement = null;
+
+    /** @deprecated Will be made private in v5.0 */
     this.linkedElementListener = false;
   }
 
@@ -3660,30 +4027,31 @@
    * Initialise component
    */
   SkipLink.prototype.init = function () {
-    // Check for module
+    // Check that required elements are present
     if (!this.$module) {
       return
     }
 
     // Check for linked element
-    this.$linkedElement = this.getLinkedElement();
-    if (!this.$linkedElement) {
+    var $linkedElement = this.getLinkedElement();
+    if (!$linkedElement) {
       return
     }
 
+    this.$linkedElement = $linkedElement;
     this.$module.addEventListener('click', this.focusLinkedElement.bind(this));
   };
 
   /**
    * Get linked element
    *
-   * @returns {HTMLElement} $linkedElement - DOM element linked to from the skip link
+   * @deprecated Will be made private in v5.0
+   * @returns {HTMLElement | null} $linkedElement - DOM element linked to from the skip link
    */
   SkipLink.prototype.getLinkedElement = function () {
     var linkedElementId = this.getFragmentFromUrl();
-
     if (!linkedElementId) {
-      return false
+      return null
     }
 
     return document.getElementById(linkedElementId)
@@ -3693,6 +4061,8 @@
    * Focus the linked element
    *
    * Set tabindex and helper CSS class. Set listener to remove them on blur.
+   *
+   * @deprecated Will be made private in v5.0
    */
   SkipLink.prototype.focusLinkedElement = function () {
     var $linkedElement = this.$linkedElement;
@@ -3708,6 +4078,7 @@
         this.linkedElementListener = true;
       }
     }
+
     $linkedElement.focus();
   };
 
@@ -3716,6 +4087,8 @@
    * focusable until it has received programmatic focus and a screen reader has announced it.
    *
    * Remove the CSS class that removes the native focus styles.
+   *
+   * @deprecated Will be made private in v5.0
    */
   SkipLink.prototype.removeFocusProperties = function () {
     this.$linkedElement.removeAttribute('tabindex');
@@ -3728,16 +4101,19 @@
    * Extract the fragment (everything after the hash symbol) from a URL, but not including
    * the symbol.
    *
-   * @returns {string} Fragment from URL, without the hash symbol
+   * @deprecated Will be made private in v5.0
+   * @returns {string | undefined} Fragment from URL, without the hash symbol
    */
   SkipLink.prototype.getFragmentFromUrl = function () {
     // Bail if the anchor link doesn't have a hash
     if (!this.$module.hash) {
-      return false
+      return
     }
 
     return this.$module.hash.split('#').pop()
   };
+
+  // @ts-nocheck
 
   (function(undefined) {
 
@@ -3758,6 +4134,8 @@
       });
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+  // @ts-nocheck
 
   (function(undefined) {
 
@@ -3785,20 +4163,54 @@
    * Tabs component
    *
    * @class
-   * @param {HTMLElement} $module - HTML element to use for tabs
+   * @param {Element} $module - HTML element to use for tabs
    */
   function Tabs ($module) {
-    this.$module = $module;
-    this.$tabs = $module.querySelectorAll('.govuk-tabs__tab');
+    if (!($module instanceof HTMLElement)) {
+      return this
+    }
 
+    var $tabs = $module.querySelectorAll('a.govuk-tabs__tab');
+    if (!$tabs.length) {
+      return this
+    }
+
+    /** @deprecated Will be made private in v5.0 */
+    this.$module = $module;
+
+    /** @deprecated Will be made private in v5.0 */
+    this.$tabs = $tabs;
+
+    /** @deprecated Will be made private in v5.0 */
     this.keys = { left: 37, right: 39, up: 38, down: 40 };
+
+    /** @deprecated Will be made private in v5.0 */
     this.jsHiddenClass = 'govuk-tabs__panel--hidden';
+
+    // Save bounded functions to use when removing event listeners during teardown
+
+    /** @deprecated Will be made private in v5.0 */
+    this.boundTabClick = this.onTabClick.bind(this);
+
+    /** @deprecated Will be made private in v5.0 */
+    this.boundTabKeydown = this.onTabKeydown.bind(this);
+
+    /** @deprecated Will be made private in v5.0 */
+    this.boundOnHashChange = this.onHashChange.bind(this);
+
+    /** @deprecated Will be made private in v5.0 */
+    this.changingHash = false;
   }
 
   /**
    * Initialise component
    */
   Tabs.prototype.init = function () {
+    // Check that required elements are present
+    if (!this.$module || !this.$tabs) {
+      return
+    }
+
     if (typeof window.matchMedia === 'function') {
       this.setupResponsiveChecks();
     } else {
@@ -3808,8 +4220,11 @@
 
   /**
    * Setup viewport resize check
+   *
+   * @deprecated Will be made private in v5.0
    */
   Tabs.prototype.setupResponsiveChecks = function () {
+    /** @deprecated Will be made private in v5.0 */
     this.mql = window.matchMedia('(min-width: 40.0625em)');
     this.mql.addListener(this.checkMode.bind(this));
     this.checkMode();
@@ -3817,6 +4232,8 @@
 
   /**
    * Setup or teardown handler for viewport resize check
+   *
+   * @deprecated Will be made private in v5.0
    */
   Tabs.prototype.checkMode = function () {
     if (this.mql.matches) {
@@ -3828,8 +4245,11 @@
 
   /**
    * Setup tab component
+   *
+   * @deprecated Will be made private in v5.0
    */
   Tabs.prototype.setup = function () {
+    var $component = this;
     var $module = this.$module;
     var $tabs = this.$tabs;
     var $tabList = $module.querySelector('.govuk-tabs__list');
@@ -3847,37 +4267,39 @@
 
     nodeListForEach($tabs, function ($tab) {
       // Set HTML attributes
-      this.setAttributes($tab);
-
-      // Save bounded functions to use when removing event listeners during teardown
-      $tab.boundTabClick = this.onTabClick.bind(this);
-      $tab.boundTabKeydown = this.onTabKeydown.bind(this);
+      $component.setAttributes($tab);
 
       // Handle events
-      $tab.addEventListener('click', $tab.boundTabClick, true);
-      $tab.addEventListener('keydown', $tab.boundTabKeydown, true);
+      $tab.addEventListener('click', $component.boundTabClick, true);
+      $tab.addEventListener('keydown', $component.boundTabKeydown, true);
 
       // Remove old active panels
-      this.hideTab($tab);
-    }.bind(this));
+      $component.hideTab($tab);
+    });
 
     // Show either the active tab according to the URL's hash or the first tab
     var $activeTab = this.getTab(window.location.hash) || this.$tabs[0];
+    if (!$activeTab) {
+      return
+    }
+
     this.showTab($activeTab);
 
     // Handle hashchange events
-    $module.boundOnHashChange = this.onHashChange.bind(this);
-    window.addEventListener('hashchange', $module.boundOnHashChange, true);
+    window.addEventListener('hashchange', this.boundOnHashChange, true);
   };
 
   /**
    * Teardown tab component
+   *
+   * @deprecated Will be made private in v5.0
    */
   Tabs.prototype.teardown = function () {
+    var $component = this;
     var $module = this.$module;
     var $tabs = this.$tabs;
     var $tabList = $module.querySelector('.govuk-tabs__list');
-    var $tabListItems = $module.querySelectorAll('.govuk-tabs__list-item');
+    var $tabListItems = $module.querySelectorAll('a.govuk-tabs__list-item');
 
     if (!$tabs || !$tabList || !$tabListItems) {
       return
@@ -3886,29 +4308,29 @@
     $tabList.removeAttribute('role');
 
     nodeListForEach($tabListItems, function ($item) {
-      $item.removeAttribute('role', 'presentation');
+      $item.removeAttribute('role');
     });
 
     nodeListForEach($tabs, function ($tab) {
       // Remove events
-      $tab.removeEventListener('click', $tab.boundTabClick, true);
-      $tab.removeEventListener('keydown', $tab.boundTabKeydown, true);
+      $tab.removeEventListener('click', $component.boundTabClick, true);
+      $tab.removeEventListener('keydown', $component.boundTabKeydown, true);
 
       // Unset HTML attributes
-      this.unsetAttributes($tab);
-    }.bind(this));
+      $component.unsetAttributes($tab);
+    });
 
     // Remove hashchange event handler
-    window.removeEventListener('hashchange', $module.boundOnHashChange, true);
+    window.removeEventListener('hashchange', this.boundOnHashChange, true);
   };
 
   /**
    * Handle hashchange event
    *
-   * @param {HashChangeEvent} event - Hash change event
+   * @deprecated Will be made private in v5.0
    * @returns {void | undefined} Returns void, or undefined when prevented
    */
-  Tabs.prototype.onHashChange = function (event) {
+  Tabs.prototype.onHashChange = function () {
     var hash = window.location.hash;
     var $tabWithHash = this.getTab(hash);
     if (!$tabWithHash) {
@@ -3923,6 +4345,9 @@
 
     // Show either the active tab according to the URL's hash or the first tab
     var $previousTab = this.getCurrentTab();
+    if (!$previousTab) {
+      return
+    }
 
     this.hideTab($previousTab);
     this.showTab($tabWithHash);
@@ -3932,6 +4357,7 @@
   /**
    * Hide panel for tab link
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   Tabs.prototype.hideTab = function ($tab) {
@@ -3942,6 +4368,7 @@
   /**
    * Show panel for tab link
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   Tabs.prototype.showTab = function ($tab) {
@@ -3952,16 +4379,19 @@
   /**
    * Get tab link by hash
    *
+   * @deprecated Will be made private in v5.0
    * @param {string} hash - Hash fragment including #
    * @returns {HTMLAnchorElement | null} Tab link
    */
   Tabs.prototype.getTab = function (hash) {
-    return this.$module.querySelector('.govuk-tabs__tab[href="' + hash + '"]')
+    // @ts-expect-error `HTMLAnchorElement` type expected
+    return this.$module.querySelector('a.govuk-tabs__tab[href="' + hash + '"]')
   };
 
   /**
    * Set tab link and panel attributes
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   Tabs.prototype.setAttributes = function ($tab) {
@@ -3975,6 +4405,10 @@
 
     // set panel attributes
     var $panel = this.getPanel($tab);
+    if (!$panel) {
+      return
+    }
+
     $panel.setAttribute('role', 'tabpanel');
     $panel.setAttribute('aria-labelledby', $tab.id);
     $panel.classList.add(this.jsHiddenClass);
@@ -3983,6 +4417,7 @@
   /**
    * Unset tab link and panel attributes
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   Tabs.prototype.unsetAttributes = function ($tab) {
@@ -3995,6 +4430,10 @@
 
     // unset panel attributes
     var $panel = this.getPanel($tab);
+    if (!$panel) {
+      return
+    }
+
     $panel.removeAttribute('role');
     $panel.removeAttribute('aria-labelledby');
     $panel.classList.remove(this.jsHiddenClass);
@@ -4003,20 +4442,23 @@
   /**
    * Handle tab link clicks
    *
+   * @deprecated Will be made private in v5.0
    * @param {MouseEvent} event - Mouse click event
-   * @returns {void | false} Returns void, or false within tab link
+   * @returns {void} Returns void
    */
   Tabs.prototype.onTabClick = function (event) {
-    if (!event.target.classList.contains('govuk-tabs__tab')) {
-      // Allow events on child DOM elements to bubble up to tab parent
-      return false
-    }
-    event.preventDefault();
-    var $newTab = event.target;
     var $currentTab = this.getCurrentTab();
+    var $nextTab = event.currentTarget;
+
+    if (!$currentTab || !($nextTab instanceof HTMLAnchorElement)) {
+      return
+    }
+
+    event.preventDefault();
+
     this.hideTab($currentTab);
-    this.showTab($newTab);
-    this.createHistoryEntry($newTab);
+    this.showTab($nextTab);
+    this.createHistoryEntry($nextTab);
   };
 
   /**
@@ -4025,10 +4467,14 @@
    * - Allows back/forward to navigate tabs
    * - Avoids page jump when hash changes
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   Tabs.prototype.createHistoryEntry = function ($tab) {
     var $panel = this.getPanel($tab);
+    if (!$panel) {
+      return
+    }
 
     // Save and restore the id
     // so the page doesn't jump when a user clicks a tab (which changes the hash)
@@ -4045,6 +4491,7 @@
    * - Press right/down arrow for next tab
    * - Press left/up arrow for previous tab
    *
+   * @deprecated Will be made private in v5.0
    * @param {KeyboardEvent} event - Keydown event
    */
   Tabs.prototype.onTabKeydown = function (event) {
@@ -4064,10 +4511,12 @@
 
   /**
    * Activate next tab
+   *
+   * @deprecated Will be made private in v5.0
    */
   Tabs.prototype.activateNextTab = function () {
     var $currentTab = this.getCurrentTab();
-    if (!$currentTab) {
+    if (!$currentTab || !$currentTab.parentElement) {
       return
     }
 
@@ -4076,21 +4525,25 @@
       return
     }
 
-    var $nextTab = $nextTabListItem.querySelector('.govuk-tabs__tab');
-    if ($nextTab) {
-      this.hideTab($currentTab);
-      this.showTab($nextTab);
-      $nextTab.focus();
-      this.createHistoryEntry($nextTab);
+    var $nextTab = $nextTabListItem.querySelector('a.govuk-tabs__tab');
+    if (!$nextTab) {
+      return
     }
+
+    this.hideTab($currentTab);
+    this.showTab($nextTab);
+    $nextTab.focus();
+    this.createHistoryEntry($nextTab);
   };
 
   /**
    * Activate previous tab
+   *
+   * @deprecated Will be made private in v5.0
    */
   Tabs.prototype.activatePreviousTab = function () {
     var $currentTab = this.getCurrentTab();
-    if (!$currentTab) {
+    if (!$currentTab || !$currentTab.parentElement) {
       return
     }
 
@@ -4099,75 +4552,98 @@
       return
     }
 
-    var $previousTab = $previousTabListItem.querySelector('.govuk-tabs__tab');
-    if ($previousTab) {
-      this.hideTab($currentTab);
-      this.showTab($previousTab);
-      $previousTab.focus();
-      this.createHistoryEntry($previousTab);
+    var $previousTab = $previousTabListItem.querySelector('a.govuk-tabs__tab');
+    if (!$previousTab) {
+      return
     }
+
+    this.hideTab($currentTab);
+    this.showTab($previousTab);
+    $previousTab.focus();
+    this.createHistoryEntry($previousTab);
   };
 
   /**
    * Get tab panel for tab link
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLAnchorElement} $tab - Tab link
-   * @returns {HTMLDivElement} Tab panel
+   * @returns {Element | null} Tab panel
    */
   Tabs.prototype.getPanel = function ($tab) {
-    var $panel = this.$module.querySelector(this.getHref($tab));
-    return $panel
+    return this.$module.querySelector(this.getHref($tab))
   };
 
   /**
    * Show tab panel for tab link
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   Tabs.prototype.showPanel = function ($tab) {
     var $panel = this.getPanel($tab);
+    if (!$panel) {
+      return
+    }
+
     $panel.classList.remove(this.jsHiddenClass);
   };
 
   /**
    * Hide tab panel for tab link
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   Tabs.prototype.hidePanel = function ($tab) {
     var $panel = this.getPanel($tab);
+    if (!$panel) {
+      return
+    }
+
     $panel.classList.add(this.jsHiddenClass);
   };
 
   /**
    * Unset 'selected' state for tab link
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   Tabs.prototype.unhighlightTab = function ($tab) {
+    if (!$tab.parentElement) {
+      return
+    }
+
     $tab.setAttribute('aria-selected', 'false');
-    $tab.parentNode.classList.remove('govuk-tabs__list-item--selected');
+    $tab.parentElement.classList.remove('govuk-tabs__list-item--selected');
     $tab.setAttribute('tabindex', '-1');
   };
 
   /**
    * Set 'selected' state for tab link
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   Tabs.prototype.highlightTab = function ($tab) {
+    if (!$tab.parentElement) {
+      return
+    }
+
     $tab.setAttribute('aria-selected', 'true');
-    $tab.parentNode.classList.add('govuk-tabs__list-item--selected');
+    $tab.parentElement.classList.add('govuk-tabs__list-item--selected');
     $tab.setAttribute('tabindex', '0');
   };
 
   /**
    * Get current tab link
    *
-   * @returns {HTMLAnchorElement | undefined} Tab link
+   * @deprecated Will be made private in v5.0
+   * @returns {HTMLAnchorElement | null} Tab link
    */
   Tabs.prototype.getCurrentTab = function () {
-    return this.$module.querySelector('.govuk-tabs__list-item--selected .govuk-tabs__tab')
+    return this.$module.querySelector('.govuk-tabs__list-item--selected a.govuk-tabs__tab')
   };
 
   /**
@@ -4177,6 +4653,7 @@
    * should be a utility function most prob
    * {@link http://labs.thesedays.com/blog/2010/01/08/getting-the-href-value-with-jquery-in-ie/}
    *
+   * @deprecated Will be made private in v5.0
    * @param {HTMLAnchorElement} $tab - Tab link
    * @returns {string} Hash fragment including #
    */
@@ -4199,7 +4676,7 @@
 
     // Allow the user to initialise GOV.UK Frontend in only certain sections of the page
     // Defaults to the entire document if nothing is set.
-    var $scope = typeof config.scope !== 'undefined' ? config.scope : document;
+    var $scope = config.scope instanceof HTMLElement ? config.scope : document;
 
     var $accordions = $scope.querySelectorAll('[data-module="govuk-accordion"]');
     nodeListForEach($accordions, function ($accordion) {
@@ -4250,7 +4727,9 @@
 
     // Find first skip link module to enhance.
     var $skipLink = $scope.querySelector('[data-module="govuk-skip-link"]');
-    new SkipLink($skipLink).init();
+    if ($skipLink) {
+      new SkipLink($skipLink).init();
+    }
 
     var $tabs = $scope.querySelectorAll('[data-module="govuk-tabs"]');
     nodeListForEach($tabs, function ($tabs) {
@@ -4262,7 +4741,7 @@
    * Config for all components
    *
    * @typedef {object} Config
-   * @property {HTMLElement} [scope=document] - Scope to query for components
+   * @property {Element} [scope=document] - Scope to query for components
    * @property {import('./components/accordion/accordion.mjs').AccordionConfig} [accordion] - Accordion config
    * @property {import('./components/button/button.mjs').ButtonConfig} [button] - Button config
    * @property {import('./components/character-count/character-count.mjs').CharacterCountConfig} [characterCount] - Character Count config
@@ -4271,6 +4750,7 @@
    */
 
   exports.initAll = initAll;
+  exports.version = version;
   exports.Accordion = Accordion;
   exports.Button = Button;
   exports.Details = Details;

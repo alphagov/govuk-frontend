@@ -1,11 +1,13 @@
-import './matches.mjs'
+import './matches.mjs';
+
+// @ts-nocheck
 
 (function(undefined) {
 
   // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/closest/detect.js
   var detect = (
     'document' in this && "closest" in document.documentElement
-  )
+  );
 
   if (detect) return
 
@@ -22,3 +24,4 @@ import './matches.mjs'
   };
 
 }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+//# sourceMappingURL=vendor/polyfills/Element/prototype/closest.mjs.map

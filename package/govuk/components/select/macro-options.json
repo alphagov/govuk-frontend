@@ -56,6 +56,12 @@
         "description": "Value for the option which should be selected. Use this as an alternative to setting the `selected` option on each individual item."
     },
     {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": "If `true`, select box will be disabled. Use the `disabled` option on each individual item to only disable certain options."
+    },
+    {
         "name": "describedBy",
         "type": "string",
         "required": false,
