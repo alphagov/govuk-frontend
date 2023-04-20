@@ -70,6 +70,12 @@ describe('package/', () => {
         return output
       }))
 
+      // Add Autoprefixer prefixes to all source '*.scss' files
+      .flatMap(mapPathTo(['**/*.scss'], ({ dir: requirePath, name }) => [
+        join(requirePath, `${name}.scss`),
+        join(requirePath, `${name}.scss.map`) // with source map
+      ]))
+
       // Replaces source component '*.yaml' with:
       // - `fixtures.json` fixtures for tests
       // - `macro-options.json` component options
