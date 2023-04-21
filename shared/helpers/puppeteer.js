@@ -13,6 +13,7 @@ const { renderHTML } = require('./nunjucks')
  */
 async function axe (page, overrides = {}) {
   const reporter = new AxePuppeteer(page)
+    .setLegacyMode(true) // Share single page via iframe
     .include('body')
     .withRules([
       'best-practice',

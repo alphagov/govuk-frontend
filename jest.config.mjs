@@ -1,3 +1,8 @@
+import jestPuppeteerConfig from './jest-puppeteer.config.js'
+
+// Detect when browser has been launched headless
+const { headless = true } = jestPuppeteerConfig.launch
+
 /**
  * Jest project config defaults
  *
@@ -52,8 +57,9 @@ export default {
   collectCoverageFrom: ['./src/**/*.{js,mjs}'],
 
   // Reduce CPU usage during project test runs
-  // Note: Matches Jest default (50%) via `--watch`
-  maxWorkers: '50%',
+  maxWorkers: headless
+    ? '50%' // Matches Jest default (50%) via `--watch`
+    : 1, // Use only 1x browser window when headless
 
   projects: [
     {
