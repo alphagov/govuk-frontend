@@ -16,7 +16,7 @@
     "js-yaml": "^4.1.0",
     "front-matter": "^4.0.2",
     "govuk-frontend-config": "*",
-    "glob": "^10.0.0",
+    "glob": "^10.2.1",
     "minimatch": "^9.0.0"
   }
 }
