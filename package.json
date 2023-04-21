@@ -78,7 +78,7 @@
     "minimatch": "^9.0.0",
     "nunjucks": "^3.2.4",
     "outdent": "^0.8.0",
-    "postcss": "^8.4.21",
+    "postcss": "^8.4.23",
     "postcss-load-config": "^4.0.1",
     "postcss-pseudo-classes": "^0.2.1",
     "postcss-scss": "^4.0.6",
