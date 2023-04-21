@@ -43,10 +43,25 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath, fileP
   let css
   let map
 
-  // Configure PostCSS
+  /**
+   * Configure PostCSS
+   *
+   * @type {import('postcss').ProcessOptions}
+   */
   const options = {
     from: moduleSrcPath,
-    to: moduleDestPath
+    to: moduleDestPath,
+
+    /**
+     * Always generate source maps for either:
+     *
+     * 1. PostCSS on Sass compiler result
+     * 2. PostCSS on Sass sources (Autoprefixer only)
+     */
+    map: {
+      annotation: true,
+      inline: false
+    }
   }
 
   // Compile Sass to CSS
@@ -79,10 +94,8 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath, fileP
     }))
 
     // Pass source maps to PostCSS
-    options.map = {
-      annotation: true,
-      inline: false,
-      prev: map
+    if (typeof options.map === 'object') {
+      options.map.prev = map
     }
   }
 
