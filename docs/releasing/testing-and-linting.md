@@ -76,6 +76,12 @@ We write functional tests for every component to check the output of our Nunjuck
 
 If a component uses JavaScript, we also write functional tests in a `[component name].test.js` file, for example [checkboxes.test.js](../../src/govuk/components/checkboxes/checkboxes.test.js). These component tests check that interactions, such as a mouse click, have the expected result.
 
+If you want to inspect a test that's running in the browser, configure Jest Puppeteer in non-headless mode with the environment variable `HEADLESS=false` and then use [Jest Puppeteer's debug mode](https://github.com/argos-ci/jest-puppeteer/blob/main/README.md#debug-mode) to pause the test execution.
+
+```
+HEADLESS=false npx jest --watch src/govuk/components/tag/accessibility.test.mjs
+```
+
 You should also test component Javascript logic with unit tests, in a `[component name].unit.test.mjs` file. These tests are better suited for testing behind-the-scenes logic, or in cases where the final output of some logic is not a change to the component markup.
 
 ### Global tests
