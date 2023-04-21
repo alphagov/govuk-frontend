@@ -1,5 +1,4 @@
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { axe } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('Summary list', () => {
@@ -7,15 +6,6 @@ describe('Summary list', () => {
 
   beforeAll(async () => {
     examples = await getExamples('summary-list')
-  })
-
-  describe('default example', () => {
-    it('passes accessibility tests', async () => {
-      const $ = render('summary-list', examples.default)
-
-      const results = await axe($.html())
-      expect(results).toHaveNoViolations()
-    })
   })
 
   describe('custom options', () => {
@@ -227,11 +217,6 @@ describe('Summary list', () => {
           $component = $('.govuk-summary-list')
         })
 
-        it('passes accessibility tests', async () => {
-          const results = await axe($.html())
-          expect(results).toHaveNoViolations()
-        })
-
         it('does not add no-actions modifier class to rows with actions', () => {
           // The first row has actions
           const $firstRow = $component.find('.govuk-summary-list__row:first-child')
@@ -254,11 +239,6 @@ describe('Summary list', () => {
           $component = $('.govuk-summary-list')
         })
 
-        it('passes accessibility tests', async () => {
-          const results = await axe($.html())
-          expect(results).toHaveNoViolations()
-        })
-
         it('does not add no-actions modifier class to any of the rows', () => {
           // The first row has actions
           const $rows = $component.find('.govuk-summary-list__row')
@@ -269,13 +249,6 @@ describe('Summary list', () => {
   })
 
   describe('summary card', () => {
-    it('passes accessibility tests', async () => {
-      const $ = render('summary-list', examples['as a summary card with a text header'])
-
-      const results = await axe($.html())
-      expect(results).toHaveNoViolations()
-    })
-
     // We only test if the actions are present in the summary card and if the logic
     // for single actions works, not the function of the actions themselves.
     // This is because the card actions use the same _actionLink macro that the

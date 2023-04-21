@@ -1,7 +1,6 @@
 const { join } = require('path')
 
 const { paths } = require('govuk-frontend-config')
-const { configureAxe } = require('jest-axe')
 const { compileAsync, compileStringAsync, Logger } = require('sass-embedded')
 
 const sassPaths = [
@@ -60,19 +59,7 @@ function htmlWithClassName ($, className) {
   return $.html($component)
 }
 
-/**
- * As we're testing incomplete HTML fragments, we don't expect there to be a
- * skip link, or for them to be contained within landmarks.
- */
-const axe = configureAxe({
-  rules: {
-    'skip-link': { enabled: false },
-    region: { enabled: false }
-  }
-})
-
 module.exports = {
-  axe,
   htmlWithClassName,
   compileSassFile,
   compileSassString

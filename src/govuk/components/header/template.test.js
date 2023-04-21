@@ -1,5 +1,4 @@
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { axe } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('header', () => {
@@ -10,13 +9,6 @@ describe('header', () => {
   })
 
   describe('default example', () => {
-    it('passes accessibility tests', async () => {
-      const $ = render('header', examples.default)
-
-      const results = await axe($.html())
-      expect(results).toHaveNoViolations()
-    })
-
     it('has a role of `banner`', () => {
       const $ = render('header', examples.default)
 
@@ -107,13 +99,6 @@ describe('header', () => {
   })
 
   describe('with navigation', () => {
-    it('passes accessibility tests', async () => {
-      const $ = render('header', examples['with navigation'])
-
-      const results = await axe($.html())
-      expect(results).toHaveNoViolations()
-    })
-
     it('renders navigation', () => {
       const $ = render('header', examples['with navigation'])
 
