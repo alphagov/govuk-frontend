@@ -26,6 +26,6 @@
     "nunjucks": "^3.2.4",
     "outdent": "^0.8.0",
     "puppeteer": "^19.11.0",
-    "sass-embedded": "^1.60.0"
+    "sass-embedded": "^1.62.0"
   }
 }
