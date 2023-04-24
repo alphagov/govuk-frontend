@@ -6,9 +6,9 @@ export function formatValidationErrors (errorsInstance) {
   const errors = errorsInstance.array()
   const formattedErrors = {}
   errors.forEach(error => {
-    formattedErrors[error.param] = {
-      id: error.param,
-      href: '#' + error.param,
+    formattedErrors[error.path] = {
+      id: error.path,
+      href: '#' + error.path,
       value: error.value,
       text: error.msg
     }
