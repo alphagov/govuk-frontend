@@ -28,7 +28,7 @@ fi
 
 npm run test
 npm run build:package
-npm run build:dist
+npm run build:release
 
 ALL_PACKAGE_VERSION=$(node -p "require('./package/dist/package.json').version")
 TAG="v$ALL_PACKAGE_VERSION"

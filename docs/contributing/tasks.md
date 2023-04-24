@@ -42,14 +42,14 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - compile JavaScript to Universal Module Definition (UMD)
 - runs `npm run postbuild:package` (which will test the output is correct)
 
-**`npm run build:dist` will do the following:**
+**`npm run build:release` will do the following:**
 
 - clean the `./dist` folder
 - output files into `./dist`
 - copy fonts and images
 - compile JavaScript and Sass
 - append version number from `package/dist/package.json` to compiled JavaScript and CSS files
-- runs `npm run postbuild:dist` (which will test the output is correct)
+- runs `npm run postbuild:release` (which will test the output is correct)
 
 ## Gulp tasks
 
