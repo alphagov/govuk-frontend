@@ -11,10 +11,12 @@ import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target norm
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
 /**
+ * Character count translation defaults
+ *
+ * @see {@link CharacterCountConfig.i18n}
  * @constant
- * @type {CharacterCountTranslations}
- * @see Default value for {@link CharacterCountConfig.i18n}
  * @default
+ * @type {CharacterCountTranslations}
  */
 var CHARACTER_COUNT_TRANSLATIONS = {
   // Characters
@@ -71,6 +73,7 @@ function CharacterCount ($module, config) {
     return this
   }
 
+  /** @type {CharacterCountConfig} */
   var defaultConfig = {
     threshold: 0,
     i18n: CHARACTER_COUNT_TRANSLATIONS
@@ -85,11 +88,12 @@ function CharacterCount ($module, config) {
   //
   // We can't mutate `config`, though, as it may be shared across multiple
   // components inside `initAll`.
+  /** @type {CharacterCountConfig} */
   var configOverrides = {}
   if ('maxwords' in datasetConfig || 'maxlength' in datasetConfig) {
     configOverrides = {
-      maxlength: false,
-      maxwords: false
+      maxlength: undefined,
+      maxwords: undefined
     }
   }
 
@@ -441,10 +445,10 @@ export default CharacterCount
  * @typedef {object} CharacterCountConfigWithMaxLength
  * @property {number} [maxlength] - The maximum number of characters.
  *   If maxwords is provided, the maxlength option will be ignored.
- * @property {number} [threshold = 0] - The percentage value of the limit at
+ * @property {number} [threshold=0] - The percentage value of the limit at
  *   which point the count message is displayed. If this attribute is set, the
  *   count message will be hidden by default.
- * @property {CharacterCountTranslations} [i18n = CHARACTER_COUNT_TRANSLATIONS] - See constant {@link CHARACTER_COUNT_TRANSLATIONS}
+ * @property {CharacterCountTranslations} [i18n=CHARACTER_COUNT_TRANSLATIONS] - Character count translations
  */
 
 /**
@@ -453,15 +457,16 @@ export default CharacterCount
  * @typedef {object} CharacterCountConfigWithMaxWords
  * @property {number} [maxwords] - The maximum number of words. If maxwords is
  *   provided, the maxlength option will be ignored.
- * @property {number} [threshold = 0] - The percentage value of the limit at
+ * @property {number} [threshold=0] - The percentage value of the limit at
  *   which point the count message is displayed. If this attribute is set, the
  *   count message will be hidden by default.
- * @property {CharacterCountTranslations} [i18n = CHARACTER_COUNT_TRANSLATIONS] - See constant {@link CHARACTER_COUNT_TRANSLATIONS}
+ * @property {CharacterCountTranslations} [i18n=CHARACTER_COUNT_TRANSLATIONS] - Character count translations
  */
 
 /**
  * Character count translations
  *
+ * @see {@link CHARACTER_COUNT_TRANSLATIONS}
  * @typedef {object} CharacterCountTranslations
  *
  * Messages shown to users as they type. It provides feedback on how many words

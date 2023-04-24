@@ -74,7 +74,7 @@ function callMacro (macroName, macroPath, params = [], callBlock) {
  * Render Nunjucks template HTML into cheerio
  *
  * @param {object} [context] - Nunjucks context
- * @param {Object<string, string>} [blocks] - Nunjucks blocks
+ * @param {{ [blockName: string]: string }} [blocks] - Nunjucks blocks
  * @returns {import('cheerio').CheerioAPI} Nunjucks template output
  */
 function renderTemplate (context = {}, blocks = {}) {

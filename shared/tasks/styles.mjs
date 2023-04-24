@@ -111,7 +111,7 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath, fileP
     .process(css, { ...options, ...config.options })
 
   // Write to files
-  return assets.write(moduleDestPath, result)
+  await assets.write(moduleDestPath, result)
 }
 
 /**

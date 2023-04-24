@@ -7,6 +7,8 @@ import slash from 'slash'
 
 /**
  * GOV.UK Prototype Kit config builder
+ *
+ * @returns {Promise<PrototypeKitConfig>} GOV.UK Prototype Kit config
  */
 export default async () => {
   const componentsFiles = await getListing(join(paths.src, 'govuk/components'))
@@ -40,3 +42,14 @@ export default async () => {
     nunjucksPaths: ['/']
   }
 }
+
+/**
+ * GOV.UK Prototype Kit config
+ *
+ * @typedef {object} PrototypeKitConfig
+ * @property {string[]} assets - Static asset paths
+ * @property {string[]} sass - Sass stylesheets to compile
+ * @property {string[] | { path: string, type?: string }[]} scripts - JavaScripts to serve
+ * @property {{ importFrom: string, macroName: string }[]} nunjucksMacros - Nunjucks macros to include
+ * @property {string[]} nunjucksPaths - Nunjucks paths
+ */

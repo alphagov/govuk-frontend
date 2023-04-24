@@ -44,7 +44,7 @@ const getDirectories = (directoryPath) => {
  * Returns true for files matching every pattern
  *
  * @param {string[]} patterns - Minimatch patterns
- * @returns {function(string): boolean} Returns true for files matching every pattern
+ * @returns {(entryPath: string) => boolean} Returns true for files matching every pattern
  */
 const filterPath = (patterns) => (entryPath) => {
   return patterns.every(
@@ -59,8 +59,8 @@ const filterPath = (patterns) => (entryPath) => {
  * Runs callback for files matching every pattern
  *
  * @param {string[]} patterns - Minimatch patterns
- * @param {mapPathToCallback} callback - Runs on files matching every pattern
- * @returns {function(string): string | string[]} Returns path (or array of paths)
+ * @param {(file: import('path').ParsedPath) => string | string[]} callback - Runs on files matching every pattern
+ * @returns {(entryPath: string) => string | string[]} Returns path (or array of paths)
  */
 const mapPathTo = (patterns, callback) => (entryPath) => {
   const isMatch = filterPath(patterns)
@@ -101,12 +101,12 @@ const getComponentsData = async () => {
  * Get examples from a component's metadata file
  *
  * @param {string} componentName - Component name
- * @returns {Promise<Object<string, ComponentExample['data']>>} returns object that includes all examples at once
+ * @returns {Promise<{ [name: string]: ComponentExample['data'] }>} returns object that includes all examples at once
  */
 async function getExamples (componentName) {
   const componentData = await getComponentData(componentName)
 
-  /** @type {Object<string, ComponentExample['data']>} */
+  /** @type {{ [name: string]: ComponentExample['data'] }} */
   const examples = {}
 
   for (const example of componentData?.examples || []) {
@@ -156,14 +156,6 @@ module.exports = {
   getListing,
   mapPathTo
 }
-
-/**
- * Directory entry path mapper callback
- *
- * @callback mapPathToCallback
- * @param {import('path').ParsedPath} file - Parsed file
- * @returns {string[]} Returns path (or array of paths)
- */
 
 /**
  * Component data from YAML

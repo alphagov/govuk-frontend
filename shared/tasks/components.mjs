@@ -77,7 +77,7 @@ export async function generateMacroOptions (pattern, { srcPath, destPath }) {
  * Component fixtures YAML to JSON
  *
  * @param {string} componentDataPath - Path to ${componentName}.yaml
- * @returns {Promise<{ component: string; fixtures: Record<string, unknown>[] }>} Component fixtures object
+ * @returns {Promise<{ component: string; fixtures: { [key: string]: unknown }[] }>} Component fixtures object
  */
 async function generateFixture (componentDataPath) {
   const json = await yaml.load(await readFile(componentDataPath, 'utf8'), { json: true })
@@ -118,7 +118,7 @@ async function generateFixture (componentDataPath) {
  * Macro options YAML to JSON
  *
  * @param {string} componentDataPath - Path to ${componentName}.yaml
- * @returns {Promise<Record<string, unknown>[]>} Component macro options
+ * @returns {Promise<{ [key: string]: unknown }>} Component macro options
  */
 async function generateMacroOption (componentDataPath) {
   const json = await yaml.load(await readFile(componentDataPath, 'utf8'), { json: true })

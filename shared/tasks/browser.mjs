@@ -10,6 +10,8 @@ import puppeteer from 'puppeteer'
 
 /**
  * Puppeteer browser launcher
+ *
+ * @returns {Promise<import('puppeteer').Browser>} Puppeteer browser object
  */
 export async function launch () {
   await download()

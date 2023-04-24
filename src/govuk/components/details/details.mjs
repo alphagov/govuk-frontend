@@ -127,7 +127,7 @@ Details.prototype.polyfillSetAttributes = function () {
  * Handle cross-modal click events
  *
  * @deprecated Will be made private in v5.0
- * @param {polyfillHandleInputsCallback} callback - function
+ * @param {(event: UIEvent) => void} callback - function
  */
 Details.prototype.polyfillHandleInputs = function (callback) {
   this.$summary.addEventListener('keypress', function (event) {
@@ -163,9 +163,3 @@ Details.prototype.polyfillHandleInputs = function (callback) {
 }
 
 export default Details
-
-/**
- * @callback polyfillHandleInputsCallback
- * @param {UIEvent} event - Keyboard or mouse event
- * @returns {void}
- */

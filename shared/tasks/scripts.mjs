@@ -94,7 +94,7 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, fileP
     const minified = await minifyJavaScript(modulePath, bundled)
 
     // Write to files
-    return assets.write(moduleDestPath, minified)
+    await assets.write(moduleDestPath, minified)
   }
 }
 
