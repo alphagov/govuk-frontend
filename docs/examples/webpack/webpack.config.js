@@ -1,10 +1,10 @@
-const { dirname, join } = require('path')
+const { dirname, join, resolve } = require('path')
 
 const CopyPlugin = require('copy-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 
 // Module resolution
-const frontendPath = dirname(require.resolve('govuk-frontend'))
+const frontendPath = resolve(dirname(require.resolve('govuk-frontend')), '../')
 
 // Build paths
 const srcPath = join(__dirname, 'src')
@@ -58,6 +58,7 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
             loader: 'sass-loader',
             options: {
               sassOptions: {
+                includePaths: [frontendPath],
                 quietDeps: true
               }
             }
@@ -94,7 +95,7 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
       patterns: [
         join(srcPath, 'index.html'),
         {
-          context: join(frontendPath, 'assets'),
+          context: join(frontendPath, './govuk/assets'),
           from: '{fonts,images}/**',
           to: 'assets'
         }
