@@ -1,7 +1,7 @@
 $govuk-show-breakpoints: true;
 $govuk-new-link-styles: true;
 
-@import "../../../package/src/govuk/all";
+@import "govuk/all";
 @import "partials/app";
 @import "partials/code";
 @import "partials/banner";
