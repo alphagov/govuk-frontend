@@ -1,4 +1,6 @@
-const { axe, render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
+const { render } = require('govuk-frontend-helpers/nunjucks')
+const { axe, htmlWithClassName } = require('govuk-frontend-helpers/tests')
+const { getExamples } = require('govuk-frontend-lib/files')
 
 const WORD_BOUNDARY = '\\b'
 const WHITESPACE = '\\s'

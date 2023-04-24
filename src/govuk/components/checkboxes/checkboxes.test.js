@@ -1,4 +1,4 @@
-const { goToComponent, goToExample, getAttribute, getProperty, isVisible } = require('../../../../lib/puppeteer-helpers')
+const { goToComponent, goToExample, getAttribute, getProperty, isVisible } = require('govuk-frontend-helpers/puppeteer')
 
 describe('Checkboxes with conditional reveals', () => {
   describe('when JavaScript is unavailable or fails', () => {

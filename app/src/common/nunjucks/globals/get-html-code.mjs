@@ -1,8 +1,7 @@
 import { join } from 'path'
 
+import { paths } from 'govuk-frontend-config'
 import beautify from 'js-beautify'
-
-import { paths } from '../../../../../config/index.js'
 
 /**
  * Component HTML code (formatted)

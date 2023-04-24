@@ -1,5 +1,5 @@
-const { getExamples } = require('../../../../lib/jest-helpers')
-const { renderAndInitialise, goToComponent } = require('../../../../lib/puppeteer-helpers')
+const { renderAndInitialise, goToComponent } = require('govuk-frontend-helpers/puppeteer')
+const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('Notification banner, when type is set to "success"', () => {
   let examples
@@ -23,7 +23,7 @@ describe('Notification banner, when type is set to "success"', () => {
       exampleName: 'with-type-as-success'
     })
 
-    const activeElement = await page.evaluate(() => document.activeElement.dataset.module)
+    const activeElement = await page.evaluate(() => document.activeElement.getAttribute('data-module'))
 
     expect(activeElement).toBe('govuk-notification-banner')
   })
@@ -33,7 +33,7 @@ describe('Notification banner, when type is set to "success"', () => {
       exampleName: 'with-type-as-success'
     })
 
-    await page.$eval('.govuk-notification-banner', el => el.blur())
+    await page.$eval('.govuk-notification-banner', el => el instanceof window.HTMLElement && el.blur())
 
     const tabindex = await page.$eval('.govuk-notification-banner', el => el.getAttribute('tabindex'))
     expect(tabindex).toBeNull()
@@ -53,7 +53,7 @@ describe('Notification banner, when type is set to "success"', () => {
     })
 
     it('does not focus the notification banner', async () => {
-      const activeElement = await page.evaluate(() => document.activeElement.dataset.module)
+      const activeElement = await page.evaluate(() => document.activeElement.getAttribute('data-module'))
 
       expect(activeElement).not.toBe('govuk-notification-banner')
     })
@@ -62,8 +62,8 @@ describe('Notification banner, when type is set to "success"', () => {
   describe('and auto-focus is disabled using JavaScript configuration', () => {
     beforeAll(async () => {
       await renderAndInitialise(page, 'notification-banner', {
-        nunjucksParams: examples['with type as success'],
-        javascriptConfig: {
+        params: examples['with type as success'],
+        config: {
           disableAutoFocus: true
         }
       })
@@ -76,7 +76,7 @@ describe('Notification banner, when type is set to "success"', () => {
     })
 
     it('does not focus the notification banner', async () => {
-      const activeElement = await page.evaluate(() => document.activeElement.dataset.module)
+      const activeElement = await page.evaluate(() => document.activeElement.getAttribute('data-module'))
 
       expect(activeElement).not.toBe('govuk-notification-banner')
     })
@@ -85,13 +85,9 @@ describe('Notification banner, when type is set to "success"', () => {
   describe('and auto-focus is disabled using options passed to initAll', () => {
     beforeAll(async () => {
       await renderAndInitialise(page, 'notification-banner', {
-        nunjucksParams: examples['with type as success'],
-        initialiser () {
-          window.GOVUKFrontend.initAll({
-            notificationBanner: {
-              disableAutoFocus: true
-            }
-          })
+        params: examples['with type as success'],
+        config: {
+          disableAutoFocus: true
         }
       })
     })
@@ -103,7 +99,7 @@ describe('Notification banner, when type is set to "success"', () => {
     })
 
     it('does not focus the notification banner', async () => {
-      const activeElement = await page.evaluate(() => document.activeElement.dataset.module)
+      const activeElement = await page.evaluate(() => document.activeElement.getAttribute('data-module'))
 
       expect(activeElement).not.toBe('govuk-notification-banner')
     })
@@ -112,8 +108,8 @@ describe('Notification banner, when type is set to "success"', () => {
   describe('and autofocus is disabled in JS but enabled in data attributes', () => {
     beforeAll(async () => {
       await renderAndInitialise(page, 'notification-banner', {
-        nunjucksParams: examples['auto-focus explicitly enabled, with type as success'],
-        javascriptConfig: {
+        params: examples['auto-focus explicitly enabled, with type as success'],
+        config: {
           disableAutoFocus: true
         }
       })
@@ -126,7 +122,7 @@ describe('Notification banner, when type is set to "success"', () => {
     })
 
     it('is automatically focused when the page loads', async () => {
-      const activeElement = await page.evaluate(() => document.activeElement.dataset.module)
+      const activeElement = await page.evaluate(() => document.activeElement.getAttribute('data-module'))
 
       expect(activeElement).toBe('govuk-notification-banner')
     })
@@ -146,7 +142,7 @@ describe('Notification banner, when type is set to "success"', () => {
     })
 
     it('does not focus the notification banner', async () => {
-      const activeElement = await page.evaluate(() => document.activeElement.dataset.module)
+      const activeElement = await page.evaluate(() => document.activeElement.getAttribute('data-module'))
 
       expect(activeElement).not.toBe('govuk-notification-banner')
     })
@@ -160,7 +156,7 @@ describe('Notification banner, when type is set to "success"', () => {
     })
 
     it('does not remove the tabindex attribute on blur', async () => {
-      await page.$eval('.govuk-notification-banner', el => el.blur())
+      await page.$eval('.govuk-notification-banner', el => el instanceof window.HTMLElement && el.blur())
 
       const tabindex = await page.$eval('.govuk-notification-banner', el => el.getAttribute('tabindex'))
       expect(tabindex).toEqual('2')

@@ -1,5 +1,5 @@
-const { getExamples } = require('../../../../lib/jest-helpers')
-const { goToComponent, goToExample, renderAndInitialise } = require('../../../../lib/puppeteer-helpers')
+const { goToComponent, goToExample, renderAndInitialise } = require('govuk-frontend-helpers/puppeteer')
+const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('Error Summary', () => {
   let examples
@@ -16,13 +16,13 @@ describe('Error Summary', () => {
 
   it('is automatically focused when the page loads', async () => {
     await goToComponent(page, 'error-summary')
-    const moduleName = await page.evaluate(() => document.activeElement.dataset.module)
+    const moduleName = await page.evaluate(() => document.activeElement.getAttribute('data-module'))
     expect(moduleName).toBe('govuk-error-summary')
   })
 
   it('removes the tabindex attribute on blur', async () => {
     await goToComponent(page, 'error-summary')
-    await page.$eval('.govuk-error-summary', el => el.blur())
+    await page.$eval('.govuk-error-summary', el => el instanceof window.HTMLElement && el.blur())
 
     const tabindex = await page.$eval('.govuk-error-summary', el => el.getAttribute('tabindex'))
     expect(tabindex).toBeNull()
@@ -46,7 +46,7 @@ describe('Error Summary', () => {
 
       it('does not focus on page load', async () => {
         const activeElement = await page.evaluate(
-          () => document.activeElement.dataset.module
+          () => document.activeElement.getAttribute('data-module')
         )
 
         expect(activeElement).not.toBe('govuk-error-summary')
@@ -56,8 +56,8 @@ describe('Error Summary', () => {
     describe('using JavaScript configuration', () => {
       beforeAll(async () => {
         await renderAndInitialise(page, 'error-summary', {
-          nunjucksParams: examples.default,
-          javascriptConfig: {
+          params: examples.default,
+          config: {
             disableAutoFocus: true
           }
         })
@@ -73,7 +73,7 @@ describe('Error Summary', () => {
 
       it('does not focus on page load', async () => {
         const activeElement = await page.evaluate(
-          () => document.activeElement.dataset.module
+          () => document.activeElement.getAttribute('data-module')
         )
 
         expect(activeElement).not.toBe('govuk-error-summary')
@@ -82,14 +82,18 @@ describe('Error Summary', () => {
 
     describe('using JavaScript configuration, with no elements on the page', () => {
       it('does not prevent further JavaScript from running', async () => {
-        const result = await page.evaluate(() => {
+        const result = await page.evaluate((component) => {
+          const namespace = 'GOVUKFrontend' in window
+            ? window.GOVUKFrontend
+            : {}
+
           // `undefined` simulates the element being missing,
           // from an unchecked `document.querySelector` for example
-          new window.GOVUKFrontend.ErrorSummary(undefined).init()
+          new namespace[component](undefined).init()
 
           // If our component initialisation breaks, this won't run
           return true
-        })
+        }, 'ErrorSummary')
 
         expect(result).toBe(true)
       })
@@ -98,7 +102,7 @@ describe('Error Summary', () => {
     describe('using JavaScript configuration, but enabled via data-attributes', () => {
       beforeAll(async () => {
         await renderAndInitialise(page, 'error-summary', {
-          nunjucksParams: examples['autofocus explicitly enabled']
+          params: examples['autofocus explicitly enabled']
         })
       })
 
@@ -111,7 +115,7 @@ describe('Error Summary', () => {
 
       it('is automatically focused when the page loads', async () => {
         const moduleName = await page.evaluate(
-          () => document.activeElement.dataset.module
+          () => document.activeElement.getAttribute('data-module')
         )
         expect(moduleName).toBe('govuk-error-summary')
       })
@@ -120,13 +124,9 @@ describe('Error Summary', () => {
     describe('using `initAll`', () => {
       beforeAll(async () => {
         await renderAndInitialise(page, 'error-summary', {
-          nunjucksParams: examples.default,
-          initialiser () {
-            window.GOVUKFrontend.initAll({
-              errorSummary: {
-                disableAutoFocus: true
-              }
-            })
+          params: examples.default,
+          config: {
+            disableAutoFocus: true
           }
         })
       })
@@ -141,7 +141,7 @@ describe('Error Summary', () => {
 
       it('does not focus on page load', async () => {
         const activeElement = await page.evaluate(
-          () => document.activeElement.dataset.module
+          () => document.activeElement.getAttribute('data-module')
         )
 
         expect(activeElement).not.toBe('govuk-error-summary')

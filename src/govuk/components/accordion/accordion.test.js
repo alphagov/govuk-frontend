@@ -1,5 +1,5 @@
-const { getExamples } = require('../../../../lib/jest-helpers')
-const { goToComponent, goToExample, renderAndInitialise, getAccessibleName } = require('../../../../lib/puppeteer-helpers')
+const { goToComponent, goToExample, renderAndInitialise, getAccessibleName } = require('govuk-frontend-helpers/puppeteer')
+const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('/components/accordion', () => {
   describe('/components/accordion/preview', () => {
@@ -482,8 +482,8 @@ describe('/components/accordion', () => {
 
           it('injects the localised strings as text not HTML', async () => {
             await renderAndInitialise(page, 'accordion', {
-              nunjucksParams: examples.default,
-              javascriptConfig: {
+              params: examples.default,
+              config: {
                 i18n: {
                   showAllSections: 'Show <strong>all sections</strong>',
                   showSection: 'Show <strong>this section</strong>'

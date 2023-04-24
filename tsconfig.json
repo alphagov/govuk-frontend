@@ -6,6 +6,18 @@
       "path": "./app"
     },
     {
+      "path": "./shared/config"
+    },
+    {
+      "path": "./shared/helpers"
+    },
+    {
+      "path": "./shared/lib"
+    },
+    {
+      "path": "./shared/tasks"
+    },
+    {
       "path": "./src"
     }
   ]

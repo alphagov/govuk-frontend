@@ -15,8 +15,13 @@ function SkipLink ($module) {
     return this
   }
 
+  /** @deprecated Will be made private in v5.0 */
   this.$module = $module
+
+  /** @deprecated Will be made private in v5.0 */
   this.$linkedElement = null
+
+  /** @deprecated Will be made private in v5.0 */
   this.linkedElementListener = false
 }
 
@@ -42,6 +47,7 @@ SkipLink.prototype.init = function () {
 /**
  * Get linked element
  *
+ * @deprecated Will be made private in v5.0
  * @returns {HTMLElement | null} $linkedElement - DOM element linked to from the skip link
  */
 SkipLink.prototype.getLinkedElement = function () {
@@ -57,6 +63,8 @@ SkipLink.prototype.getLinkedElement = function () {
  * Focus the linked element
  *
  * Set tabindex and helper CSS class. Set listener to remove them on blur.
+ *
+ * @deprecated Will be made private in v5.0
  */
 SkipLink.prototype.focusLinkedElement = function () {
   var $linkedElement = this.$linkedElement
@@ -81,6 +89,8 @@ SkipLink.prototype.focusLinkedElement = function () {
  * focusable until it has received programmatic focus and a screen reader has announced it.
  *
  * Remove the CSS class that removes the native focus styles.
+ *
+ * @deprecated Will be made private in v5.0
  */
 SkipLink.prototype.removeFocusProperties = function () {
   this.$linkedElement.removeAttribute('tabindex')
@@ -93,6 +103,7 @@ SkipLink.prototype.removeFocusProperties = function () {
  * Extract the fragment (everything after the hash symbol) from a URL, but not including
  * the symbol.
  *
+ * @deprecated Will be made private in v5.0
  * @returns {string | undefined} Fragment from URL, without the hash symbol
  */
 SkipLink.prototype.getFragmentFromUrl = function () {

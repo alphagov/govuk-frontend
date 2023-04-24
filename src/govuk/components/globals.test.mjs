@@ -1,29 +1,35 @@
-import { goTo, goToExample } from '../../../lib/puppeteer-helpers.js'
+import { goTo, goToExample } from 'govuk-frontend-helpers/puppeteer'
 
 describe('GOV.UK Frontend', () => {
   describe('javascript', () => {
-    it('can be accessed via `GOVUKFrontend`', async () => {
+    let exported
+
+    beforeEach(async () => {
       await goTo(page, '/')
 
-      const GOVUKFrontendGlobal = await page.evaluate(() => window.GOVUKFrontend)
-
-      expect(typeof GOVUKFrontendGlobal).toBe('object')
+      // Exported via global (e.g GOVUKFrontend.initAll)
+      exported = await page.evaluate(() => 'GOVUKFrontend' in window
+        ? Object.keys(window.GOVUKFrontend)
+        : undefined
+      )
     })
 
     it('exports `initAll` function', async () => {
       await goTo(page, '/')
 
-      const typeofInitAll = await page.evaluate(() => typeof window.GOVUKFrontend.initAll)
+      const typeofInitAll = await page.evaluate((utility) => {
+        const namespace = 'GOVUKFrontend' in window
+          ? window.GOVUKFrontend
+          : {}
+
+        return typeof namespace[utility]
+      }, 'initAll')
 
       expect(typeofInitAll).toEqual('function')
     })
 
     it('exports Components', async () => {
-      await goTo(page, '/')
-
-      const GOVUKFrontendGlobal = await page.evaluate(() => window.GOVUKFrontend)
-
-      const components = Object.keys(GOVUKFrontendGlobal)
+      const components = exported
         .filter(method => !['initAll', 'version'].includes(method))
 
       // Ensure GOV.UK Frontend exports the expected components
@@ -44,20 +50,23 @@ describe('GOV.UK Frontend', () => {
     })
 
     it('exported Components have an init function', async () => {
-      await goTo(page, '/')
+      const components = exported
+        .filter(method => !['initAll', 'version'].includes(method))
 
-      const componentsWithoutInitFunctions = await page.evaluate(() => {
-        const components = Object.keys(window.GOVUKFrontend)
-          .filter(method => !['initAll', 'version'].includes(method))
+      const componentsWithoutInitFunctions = await page.evaluate((components) => {
+        const namespace = 'GOVUKFrontend' in window
+          ? window.GOVUKFrontend
+          : {}
 
         return components.filter(component => {
-          const prototype = window.GOVUKFrontend[component].prototype
+          const prototype = namespace[component].prototype
           return typeof prototype.init !== 'function'
         })
-      })
+      }, components)
 
       expect(componentsWithoutInitFunctions).toEqual([])
     })
+
     it('can be initialised scoped to certain sections of the page', async () => {
       await goToExample(page, 'scoped-initialisation')
 

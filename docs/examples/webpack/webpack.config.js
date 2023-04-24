@@ -1,4 +1,4 @@
-const { dirname, resolve } = require('path')
+const { dirname, join } = require('path')
 
 const CopyPlugin = require('copy-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
@@ -6,10 +6,20 @@ const TerserPlugin = require('terser-webpack-plugin')
 // Module resolution
 const frontendPath = dirname(require.resolve('govuk-frontend'))
 
+// Build paths
+const srcPath = join(__dirname, 'src')
+const destPath = join(__dirname, 'dist')
+
+/**
+ * @type {() => import('webpack-dev-server').WebpackConfiguration}
+ */
 module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
   devServer: {
     watchFiles: {
       paths: ['**/*.html']
+    },
+    static: {
+      directory: destPath
     }
   },
 
@@ -18,8 +28,8 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
     : 'source-map',
 
   entry: [
-    './assets/javascripts/main.mjs',
-    './assets/stylesheets/app.scss'
+    join(srcPath, 'assets/javascripts/main.mjs'),
+    join(srcPath, 'assets/stylesheets/app.scss')
   ],
 
   module: {
@@ -75,18 +85,18 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
     clean: true,
     filename: 'assets/javascripts/[name].min.js',
     library: { type: 'umd' },
-    path: resolve(__dirname, './public'),
+    path: destPath,
     publicPath: '/'
   },
 
   plugins: [
     new CopyPlugin({
       patterns: [
-        resolve(__dirname, 'index.html'),
+        join(srcPath, 'index.html'),
         {
-          context: resolve(frontendPath, './assets'),
+          context: join(frontendPath, 'assets'),
           from: '{fonts,images}/**',
-          to: './assets'
+          to: 'assets'
         }
       ]
     })

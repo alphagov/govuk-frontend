@@ -24,7 +24,14 @@ function Details ($module) {
     return this
   }
 
+  /** @deprecated Will be made private in v5.0 */
   this.$module = $module
+
+  /** @deprecated Will be made private in v5.0 */
+  this.$summary = null
+
+  /** @deprecated Will be made private in v5.0 */
+  this.$content = null
 }
 
 /**
@@ -47,6 +54,8 @@ Details.prototype.init = function () {
 
 /**
  * Polyfill component in older browsers
+ *
+ * @deprecated Will be made private in v5.0
  */
 Details.prototype.polyfillDetails = function () {
   var $module = this.$module
@@ -97,6 +106,7 @@ Details.prototype.polyfillDetails = function () {
 /**
  * Define a statechange function that updates aria-expanded and style.display
  *
+ * @deprecated Will be made private in v5.0
  * @returns {boolean} Returns true
  */
 Details.prototype.polyfillSetAttributes = function () {
@@ -116,6 +126,7 @@ Details.prototype.polyfillSetAttributes = function () {
 /**
  * Handle cross-modal click events
  *
+ * @deprecated Will be made private in v5.0
  * @param {polyfillHandleInputsCallback} callback - function
  */
 Details.prototype.polyfillHandleInputs = function (callback) {

@@ -1,9 +1,6 @@
-/**
- * @jest-environment jsdom
- */
-/* eslint-env jest */
-
-const { axe, render, getExamples } = require('../../../../lib/jest-helpers')
+const { render } = require('govuk-frontend-helpers/nunjucks')
+const { axe } = require('govuk-frontend-helpers/tests')
+const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('Task List', () => {
   let examples

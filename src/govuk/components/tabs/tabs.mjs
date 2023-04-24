@@ -23,16 +23,31 @@ function Tabs ($module) {
     return this
   }
 
+  /** @deprecated Will be made private in v5.0 */
   this.$module = $module
+
+  /** @deprecated Will be made private in v5.0 */
   this.$tabs = $tabs
 
+  /** @deprecated Will be made private in v5.0 */
   this.keys = { left: 37, right: 39, up: 38, down: 40 }
+
+  /** @deprecated Will be made private in v5.0 */
   this.jsHiddenClass = 'govuk-tabs__panel--hidden'
 
   // Save bounded functions to use when removing event listeners during teardown
+
+  /** @deprecated Will be made private in v5.0 */
   this.boundTabClick = this.onTabClick.bind(this)
+
+  /** @deprecated Will be made private in v5.0 */
   this.boundTabKeydown = this.onTabKeydown.bind(this)
+
+  /** @deprecated Will be made private in v5.0 */
   this.boundOnHashChange = this.onHashChange.bind(this)
+
+  /** @deprecated Will be made private in v5.0 */
+  this.changingHash = false
 }
 
 /**
@@ -53,8 +68,11 @@ Tabs.prototype.init = function () {
 
 /**
  * Setup viewport resize check
+ *
+ * @deprecated Will be made private in v5.0
  */
 Tabs.prototype.setupResponsiveChecks = function () {
+  /** @deprecated Will be made private in v5.0 */
   this.mql = window.matchMedia('(min-width: 40.0625em)')
   this.mql.addListener(this.checkMode.bind(this))
   this.checkMode()
@@ -62,6 +80,8 @@ Tabs.prototype.setupResponsiveChecks = function () {
 
 /**
  * Setup or teardown handler for viewport resize check
+ *
+ * @deprecated Will be made private in v5.0
  */
 Tabs.prototype.checkMode = function () {
   if (this.mql.matches) {
@@ -73,6 +93,8 @@ Tabs.prototype.checkMode = function () {
 
 /**
  * Setup tab component
+ *
+ * @deprecated Will be made private in v5.0
  */
 Tabs.prototype.setup = function () {
   var $component = this
@@ -117,6 +139,8 @@ Tabs.prototype.setup = function () {
 
 /**
  * Teardown tab component
+ *
+ * @deprecated Will be made private in v5.0
  */
 Tabs.prototype.teardown = function () {
   var $component = this
@@ -151,6 +175,7 @@ Tabs.prototype.teardown = function () {
 /**
  * Handle hashchange event
  *
+ * @deprecated Will be made private in v5.0
  * @returns {void | undefined} Returns void, or undefined when prevented
  */
 Tabs.prototype.onHashChange = function () {
@@ -180,6 +205,7 @@ Tabs.prototype.onHashChange = function () {
 /**
  * Hide panel for tab link
  *
+ * @deprecated Will be made private in v5.0
  * @param {HTMLAnchorElement} $tab - Tab link
  */
 Tabs.prototype.hideTab = function ($tab) {
@@ -190,6 +216,7 @@ Tabs.prototype.hideTab = function ($tab) {
 /**
  * Show panel for tab link
  *
+ * @deprecated Will be made private in v5.0
  * @param {HTMLAnchorElement} $tab - Tab link
  */
 Tabs.prototype.showTab = function ($tab) {
@@ -200,6 +227,7 @@ Tabs.prototype.showTab = function ($tab) {
 /**
  * Get tab link by hash
  *
+ * @deprecated Will be made private in v5.0
  * @param {string} hash - Hash fragment including #
  * @returns {HTMLAnchorElement | null} Tab link
  */
@@ -211,6 +239,7 @@ Tabs.prototype.getTab = function (hash) {
 /**
  * Set tab link and panel attributes
  *
+ * @deprecated Will be made private in v5.0
  * @param {HTMLAnchorElement} $tab - Tab link
  */
 Tabs.prototype.setAttributes = function ($tab) {
@@ -236,6 +265,7 @@ Tabs.prototype.setAttributes = function ($tab) {
 /**
  * Unset tab link and panel attributes
  *
+ * @deprecated Will be made private in v5.0
  * @param {HTMLAnchorElement} $tab - Tab link
  */
 Tabs.prototype.unsetAttributes = function ($tab) {
@@ -260,6 +290,7 @@ Tabs.prototype.unsetAttributes = function ($tab) {
 /**
  * Handle tab link clicks
  *
+ * @deprecated Will be made private in v5.0
  * @param {MouseEvent} event - Mouse click event
  * @returns {void} Returns void
  */
@@ -284,6 +315,7 @@ Tabs.prototype.onTabClick = function (event) {
  * - Allows back/forward to navigate tabs
  * - Avoids page jump when hash changes
  *
+ * @deprecated Will be made private in v5.0
  * @param {HTMLAnchorElement} $tab - Tab link
  */
 Tabs.prototype.createHistoryEntry = function ($tab) {
@@ -307,6 +339,7 @@ Tabs.prototype.createHistoryEntry = function ($tab) {
  * - Press right/down arrow for next tab
  * - Press left/up arrow for previous tab
  *
+ * @deprecated Will be made private in v5.0
  * @param {KeyboardEvent} event - Keydown event
  */
 Tabs.prototype.onTabKeydown = function (event) {
@@ -326,6 +359,8 @@ Tabs.prototype.onTabKeydown = function (event) {
 
 /**
  * Activate next tab
+ *
+ * @deprecated Will be made private in v5.0
  */
 Tabs.prototype.activateNextTab = function () {
   var $currentTab = this.getCurrentTab()
@@ -351,6 +386,8 @@ Tabs.prototype.activateNextTab = function () {
 
 /**
  * Activate previous tab
+ *
+ * @deprecated Will be made private in v5.0
  */
 Tabs.prototype.activatePreviousTab = function () {
   var $currentTab = this.getCurrentTab()
@@ -377,6 +414,7 @@ Tabs.prototype.activatePreviousTab = function () {
 /**
  * Get tab panel for tab link
  *
+ * @deprecated Will be made private in v5.0
  * @param {HTMLAnchorElement} $tab - Tab link
  * @returns {Element | null} Tab panel
  */
@@ -387,6 +425,7 @@ Tabs.prototype.getPanel = function ($tab) {
 /**
  * Show tab panel for tab link
  *
+ * @deprecated Will be made private in v5.0
  * @param {HTMLAnchorElement} $tab - Tab link
  */
 Tabs.prototype.showPanel = function ($tab) {
@@ -401,6 +440,7 @@ Tabs.prototype.showPanel = function ($tab) {
 /**
  * Hide tab panel for tab link
  *
+ * @deprecated Will be made private in v5.0
  * @param {HTMLAnchorElement} $tab - Tab link
  */
 Tabs.prototype.hidePanel = function ($tab) {
@@ -415,6 +455,7 @@ Tabs.prototype.hidePanel = function ($tab) {
 /**
  * Unset 'selected' state for tab link
  *
+ * @deprecated Will be made private in v5.0
  * @param {HTMLAnchorElement} $tab - Tab link
  */
 Tabs.prototype.unhighlightTab = function ($tab) {
@@ -430,6 +471,7 @@ Tabs.prototype.unhighlightTab = function ($tab) {
 /**
  * Set 'selected' state for tab link
  *
+ * @deprecated Will be made private in v5.0
  * @param {HTMLAnchorElement} $tab - Tab link
  */
 Tabs.prototype.highlightTab = function ($tab) {
@@ -445,6 +487,7 @@ Tabs.prototype.highlightTab = function ($tab) {
 /**
  * Get current tab link
  *
+ * @deprecated Will be made private in v5.0
  * @returns {HTMLAnchorElement | null} Tab link
  */
 Tabs.prototype.getCurrentTab = function () {
@@ -458,6 +501,7 @@ Tabs.prototype.getCurrentTab = function () {
  * should be a utility function most prob
  * {@link http://labs.thesedays.com/blog/2010/01/08/getting-the-href-value-with-jquery-in-ie/}
  *
+ * @deprecated Will be made private in v5.0
  * @param {HTMLAnchorElement} $tab - Tab link
  * @returns {string} Hash fragment including #
  */

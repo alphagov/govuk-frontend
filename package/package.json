@@ -11,7 +11,8 @@
       "require": "./govuk/all.js"
     },
     "./govuk/": "./govuk/",
-    "./govuk-esm/": "./govuk-esm/"
+    "./govuk-esm/": "./govuk-esm/",
+    "./package.json": "./package.json"
   },
   "sideEffects": [
     "govuk-esm/vendor/**"

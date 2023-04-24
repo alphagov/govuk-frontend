@@ -2,6 +2,9 @@ import { body, validationResult } from 'express-validator'
 
 import { formatValidationErrors } from '../../../utils.mjs'
 
+/**
+ * @param {import('express').Application} app
+ */
 export default (app) => {
   app.post(
     '/full-page-examples/how-do-you-want-to-sign-in',
@@ -10,6 +13,12 @@ export default (app) => {
         .exists()
         .not().isEmpty().withMessage('Select how you want to sign in')
     ],
+
+    /**
+     * @param {import('express').Request} request
+     * @param {import('express').Response} response
+     * @returns {void}
+     */
     (request, response) => {
       const errors = formatValidationErrors(validationResult(request))
       if (errors) {

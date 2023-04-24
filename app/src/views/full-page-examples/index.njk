@@ -30,11 +30,20 @@
           {{ markdown(example.scenario) | safe }}
         </div>
         {% endif %}
+        {% if example.scenario %}
+        <div class="app-prose-scope">
+          {{ markdown(example.scenario) | safe }}
+        </div>
+        {% endif %}
 
         {% if example.notes %}
           <p class="govuk-body govuk-!-font-size-16">{{ example.notes }}</p>
         {% endif %}
+        {% if example.notes %}
+          <p class="govuk-body govuk-!-font-size-16">{{ example.notes }}</p>
+        {% endif %}
 
+        <hr class="govuk-section-break govuk-section-break--l" />
         <hr class="govuk-section-break govuk-section-break--l" />
 
       {% endif %}

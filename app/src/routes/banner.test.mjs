@@ -1,6 +1,5 @@
 import { load } from 'cheerio'
-
-import { ports } from '../../../config/index.js'
+import { ports } from 'govuk-frontend-config'
 
 // Returns Fetch API wrapper which applies these options by default
 const fetchPath = (path, options) => {

@@ -20,14 +20,20 @@ function Button ($module, config) {
     return this
   }
 
+  /** @deprecated Will be made private in v5.0 */
   this.$module = $module
+
+  /** @deprecated Will be made private in v5.0 */
   this.debounceFormSubmitTimer = null
 
   var defaultConfig = {
     preventDoubleClick: false
   }
 
-  /** @type {ButtonConfig} */
+  /**
+   * @deprecated Will be made private in v5.0
+   * @type {ButtonConfig}
+   */
   this.config = mergeConfigs(
     defaultConfig,
     config || {},
@@ -56,6 +62,7 @@ Button.prototype.init = function () {
  *
  * See https://github.com/alphagov/govuk_elements/pull/272#issuecomment-233028270
  *
+ * @deprecated Will be made private in v5.0
  * @param {KeyboardEvent} event - Keydown event
  */
 Button.prototype.handleKeyDown = function (event) {
@@ -80,6 +87,7 @@ Button.prototype.handleKeyDown = function (event) {
  * stops people accidentally causing multiple form submissions by double
  * clicking buttons.
  *
+ * @deprecated Will be made private in v5.0
  * @param {MouseEvent} event - Mouse click event
  * @returns {undefined | false} Returns undefined, or false when debounced
  */

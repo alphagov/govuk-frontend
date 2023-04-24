@@ -1,6 +1,7 @@
+const { goToComponent, renderAndInitialise } = require('govuk-frontend-helpers/puppeteer')
+const { getExamples } = require('govuk-frontend-lib/files')
+
 const jestPuppeteerConfig = require('../../../../jest-puppeteer.config')
-const { getExamples } = require('../../../../lib/jest-helpers')
-const { goToComponent, renderAndInitialise } = require('../../../../lib/puppeteer-helpers')
 
 // Detect when browser has been launched headless
 const { headless = true } = jestPuppeteerConfig.launch
@@ -377,8 +378,8 @@ describe('Character count', () => {
       describe('at instantiation', () => {
         it('configures the number of characters', async () => {
           await renderAndInitialise(page, 'character-count', {
-            nunjucksParams: examples['to configure in JavaScript'],
-            javascriptConfig: {
+            params: examples['to configure in JavaScript'],
+            config: {
               maxlength: 10
             }
           })
@@ -396,8 +397,8 @@ describe('Character count', () => {
 
         it('configures the number of words', async () => {
           await renderAndInitialise(page, 'character-count', {
-            nunjucksParams: examples['to configure in JavaScript'],
-            javascriptConfig: {
+            params: examples['to configure in JavaScript'],
+            config: {
               maxwords: 10
             }
           })
@@ -415,8 +416,8 @@ describe('Character count', () => {
 
         it('configures the threshold', async () => {
           await renderAndInitialise(page, 'character-count', {
-            nunjucksParams: examples['to configure in JavaScript'],
-            javascriptConfig: {
+            params: examples['to configure in JavaScript'],
+            config: {
               maxlength: 10,
               threshold: 75
             }
@@ -435,11 +436,11 @@ describe('Character count', () => {
           // and interpolated with the limit provided to the character count in JS.
 
           await renderAndInitialise(page, 'character-count', {
-            nunjucksParams:
+            params:
               examples[
                 'when neither maxlength/maxwords nor textarea description are set'
               ],
-            javascriptConfig: {
+            config: {
               maxlength: 10,
               i18n: {
                 textareaDescription: {
@@ -460,13 +461,9 @@ describe('Character count', () => {
       describe('via `initAll`', () => {
         it('configures the number of characters', async () => {
           await renderAndInitialise(page, 'character-count', {
-            nunjucksParams: examples['to configure in JavaScript'],
-            initialiser () {
-              window.GOVUKFrontend.initAll({
-                characterCount: {
-                  maxlength: 10
-                }
-              })
+            params: examples['to configure in JavaScript'],
+            config: {
+              maxlength: 10
             }
           })
 
@@ -483,13 +480,9 @@ describe('Character count', () => {
 
         it('configures the number of words', async () => {
           await renderAndInitialise(page, 'character-count', {
-            nunjucksParams: examples['to configure in JavaScript'],
-            initialiser () {
-              window.GOVUKFrontend.initAll({
-                characterCount: {
-                  maxwords: 10
-                }
-              })
+            params: examples['to configure in JavaScript'],
+            config: {
+              maxwords: 10
             }
           })
 
@@ -506,14 +499,10 @@ describe('Character count', () => {
 
         it('configures the threshold', async () => {
           await renderAndInitialise(page, 'character-count', {
-            nunjucksParams: examples['to configure in JavaScript'],
-            initialiser () {
-              window.GOVUKFrontend.initAll({
-                characterCount: {
-                  maxlength: 10,
-                  threshold: 75
-                }
-              })
+            params: examples['to configure in JavaScript'],
+            config: {
+              maxlength: 10,
+              threshold: 75
             }
           })
 
@@ -532,8 +521,8 @@ describe('Character count', () => {
       describe('when data-attributes are present', () => {
         it('uses `maxlength` data attribute instead of the JS one', async () => {
           await renderAndInitialise(page, 'character-count', {
-            nunjucksParams: examples.default,
-            javascriptConfig: {
+            params: examples.default,
+            config: {
               maxlength: 12 // JS configuration that would tell 1 character remaining
             }
           })
@@ -551,8 +540,8 @@ describe('Character count', () => {
 
         it("uses `maxlength` data attribute instead of JS's `maxwords`", async () => {
           await renderAndInitialise(page, 'character-count', {
-            nunjucksParams: examples.default, // Default example counts characters
-            javascriptConfig: {
+            params: examples.default, // Default example counts characters
+            config: {
               maxwords: 12
             }
           })
@@ -570,8 +559,8 @@ describe('Character count', () => {
 
         it('uses `maxwords` data attribute instead of the JS one', async () => {
           await renderAndInitialise(page, 'character-count', {
-            nunjucksParams: examples['with word count'],
-            javascriptConfig: {
+            params: examples['with word count'],
+            config: {
               maxwords: 12 // JS configuration that would tell 1 word remaining
             }
           })
@@ -589,8 +578,8 @@ describe('Character count', () => {
 
         it("uses `maxwords` data attribute instead of the JS's `maxlength`", async () => {
           await renderAndInitialise(page, 'character-count', {
-            nunjucksParams: examples['with word count'],
-            javascriptConfig: {
+            params: examples['with word count'],
+            config: {
               maxlength: 10
             }
           })
@@ -614,9 +603,9 @@ describe('Character count', () => {
           // (and interpolated to replace `%{count}` with the maximum)
 
           await renderAndInitialise(page, 'character-count', {
-            nunjucksParams:
+            params:
               examples['when neither maxlength nor maxwords are set'],
-            javascriptConfig: {
+            config: {
               maxlength: 10
             }
           })
@@ -633,8 +622,8 @@ describe('Character count', () => {
     describe('Cross Side Scripting prevention', () => {
       it('injects the localised strings as text not HTML', async () => {
         await renderAndInitialise(page, 'character-count', {
-          nunjucksParams: examples['to configure in JavaScript'],
-          javascriptConfig: {
+          params: examples['to configure in JavaScript'],
+          config: {
             maxlength: 10,
             i18n: {
               charactersUnderLimit: {
@@ -662,12 +651,12 @@ describe('Character count', () => {
       page.on('pageerror', pageErrorListener)
 
       await renderAndInitialise(page, 'character-count', {
-        nunjucksParams: examples.default,
-        javascriptConfig: {
+        params: examples.default,
+        config: {
           // Override maxlength to 10
           maxlength: 10
         },
-        initialiser: function ({ config }) {
+        initialiser ({ config, namespace }) {
           const $component = document.querySelector('[data-module]')
 
           // Set locale to Welsh, which expects translations for 'one', 'two',
@@ -677,7 +666,7 @@ describe('Character count', () => {
           // We want to make sure we handle this gracefully in case users have
           // an existing character count inside an incorrect locale.
           $component.setAttribute('lang', 'cy')
-          new window.GOVUKFrontend.CharacterCount($component, config).init()
+          new namespace.CharacterCount($component, config).init()
         }
       })
 

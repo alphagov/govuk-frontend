@@ -13,7 +13,7 @@ describe('Middleware: Legacy mode', () => {
     agent = supertest.agent(app)
 
     // Add query parser + middleware
-    app.set('query parser', (query) => new URLSearchParams(query))
+    app.set('query parser', 'simple')
     app.use(middleware)
 
     // Add test router

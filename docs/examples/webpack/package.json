@@ -16,7 +16,7 @@
     "babel-loader": "^9.1.2",
     "copy-webpack-plugin": "^11.0.0",
     "postcss-loader": "^7.2.4",
-    "sass-embedded": "^1.60.0",
+    "sass-embedded": "^1.62.0",
     "sass-loader": "^13.2.2",
     "terser-webpack-plugin": "^5.3.7",
     "webpack": "^5.77.0",

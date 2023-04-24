@@ -1,8 +1,11 @@
 {
   "extends": "../tsconfig.base.json",
-  "include": ["**/*.mjs", "**/*.json"],
-  "exclude": ["**/*.test.*", "./dist/**"],
-  "compilerOptions": {
-    "resolveJsonModule": true
-  }
+  "include": [
+    "**/*.js",
+    "**/*.mjs",
+    "../shared/config",
+    "../shared/lib",
+    "../shared/tasks"
+  ],
+  "exclude": ["./dist/**"]
 }

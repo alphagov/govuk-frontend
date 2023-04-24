@@ -14,21 +14,34 @@ function Header ($module) {
     return this
   }
 
+  /** @deprecated Will be made private in v5.0 */
   this.$module = $module
+
+  /** @deprecated Will be made private in v5.0 */
   this.$menuButton = $module.querySelector('.govuk-js-header-toggle')
+
+  /** @deprecated Will be made private in v5.0 */
   this.$menu = this.$menuButton && $module.querySelector(
     '#' + this.$menuButton.getAttribute('aria-controls')
   )
 
-  // Save the opened/closed state for the nav in memory so that we can
-  // accurately maintain state when the screen is changed from small to
-  // big and back to small
+  /**
+   * Save the opened/closed state for the nav in memory so that we can
+   * accurately maintain state when the screen is changed from small to
+   * big and back to small
+   *
+   * @deprecated Will be made private in v5.0
+   */
   this.menuIsOpen = false
 
-  // A global const for storing a matchMedia instance which we'll use to
-  // detect when a screen size change happens. We set this later during the
-  // init function and rely on it being null if the feature isn't available
-  // to initially apply hidden attributes
+  /**
+   * A global const for storing a matchMedia instance which we'll use to
+   * detect when a screen size change happens. We set this later during the
+   * init function and rely on it being null if the feature isn't available
+   * to initially apply hidden attributes
+   *
+   * @deprecated Will be made private in v5.0
+   */
   this.mql = null
 }
 
@@ -76,6 +89,8 @@ Header.prototype.init = function () {
  * visual states of the menu and the menu button.
  * Additionally will force the menu to be visible and the menu button to be
  * hidden if the matchMedia is triggered to desktop.
+ *
+ * @deprecated Will be made private in v5.0
  */
 Header.prototype.syncState = function () {
   if (this.mql.matches) {
@@ -98,6 +113,8 @@ Header.prototype.syncState = function () {
  *
  * When the menu button is clicked, change the visibility of the menu and then
  * sync the accessibility state and menu button state
+ *
+ * @deprecated Will be made private in v5.0
  */
 Header.prototype.handleMenuButtonClick = function () {
   this.menuIsOpen = !this.menuIsOpen

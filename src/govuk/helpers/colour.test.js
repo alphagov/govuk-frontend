@@ -1,7 +1,6 @@
-const outdent = require('outdent')
+const { compileSassString } = require('govuk-frontend-helpers/tests')
+const { outdent } = require('outdent')
 const { sassNull } = require('sass-embedded')
-
-const { compileSassString } = require('../../../lib/jest-helpers')
 
 // Create a mock warn function that we can use to override the native @warn
 // function, that we can make assertions about post-render.

@@ -1,0 +1,37 @@
+{
+  "private": true,
+  "name": "govuk-frontend-tasks",
+  "description": "GOV.UK Frontend shared tasks",
+  "main": "index.mjs",
+  "engines": {
+    "node": "^18.12.0",
+    "npm": "^8.1.0 || ^9.1.0"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@npmcli/run-script": "^6.0.0",
+    "@percy/cli": "^1.23.0",
+    "@percy/puppeteer": "^2.0.2",
+    "@percy/sdk-utils": "^1.23.0",
+    "chalk": "^5.2.0",
+    "cpy": "^9.0.1",
+    "del": "^7.0.0",
+    "govuk-frontend-config": "*",
+    "govuk-frontend-helpers": "*",
+    "govuk-frontend-lib": "*",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
+    "js-yaml": "^4.1.0",
+    "nunjucks": "^3.2.4",
+    "plugin-error": "^2.0.1",
+    "postcss": "^8.4.21",
+    "postcss-load-config": "^4.0.1",
+    "puppeteer": "^19.9.0",
+    "rollup": "0.59.4",
+    "rollup-plugin-replace": "^2.2.0",
+    "sass-embedded": "^1.62.0",
+    "slash": "^5.0.0",
+    "terser": "^5.16.8",
+    "yargs-parser": "^21.1.1"
+  }
+}
