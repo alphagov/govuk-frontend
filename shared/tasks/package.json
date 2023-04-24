@@ -12,7 +12,7 @@
     "@npmcli/run-script": "^6.0.0",
     "@percy/cli": "^1.23.0",
     "@percy/puppeteer": "^2.0.2",
-    "@percy/sdk-utils": "^1.23.0",
+    "@percy/sdk-utils": "^1.24.0",
     "chalk": "^5.2.0",
     "cpy": "^9.0.1",
     "del": "^7.0.0",
