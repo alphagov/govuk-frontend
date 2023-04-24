@@ -225,11 +225,9 @@ examples:
       previous:
         text: 'précédente'
         href: '/previous'
-        visuallyHiddenText: 'Page précédente'
       next:
         text: 'suivante'
         href: '/next'
-        visuallyHiddenText: 'Page suivante'
   - name: with previous only
     data:
       previous:
