@@ -93,7 +93,7 @@
     "stylelint": "^14.16.1",
     "stylelint-config-gds": "^0.2.0",
     "stylelint-order": "^6.0.3",
-    "typed-query-selector": "^2.9.2",
+    "typed-query-selector": "^2.10.1",
     "typedoc": "^0.24.6",
     "typescript": "^5.0.4"
   },
@@ -101,9 +101,9 @@
     "@jest/environment": "^29.5.0",
     "@types/express": "^4.17.17",
     "@types/gulp": "^4.0.10",
-    "@types/jest": "^29.5.0",
+    "@types/jest": "^29.5.1",
     "@types/jest-axe": "^3.5.5",
-    "@types/node": "^18.15.11",
+    "@types/node": "^18.16.0",
     "@types/nunjucks": "^3.2.2"
   },
   "overrides": {
