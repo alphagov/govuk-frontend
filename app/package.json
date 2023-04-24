@@ -12,7 +12,8 @@
     "build": "gulp build",
     "dev": "gulp dev",
     "serve": "nodemon",
-    "start": "node src/start.mjs"
+    "start": "node src/start.mjs",
+    "test:screenshots": "gulp screenshots"
   },
   "dependencies": {
     "chokidar": "^3.5.3",

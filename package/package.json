@@ -27,8 +27,7 @@
   "license": "MIT",
   "scripts": {
     "build:package": "gulp build:package",
-    "build:dist": "gulp build:dist",
-    "test:screenshots": "gulp screenshots"
+    "build:dist": "gulp build:dist"
   },
   "devDependencies": {
     "govuk-frontend-config": "*",

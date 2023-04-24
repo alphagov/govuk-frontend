@@ -1,3 +1,4 @@
+import { browser } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
 
 import * as build from './tasks/build/index.mjs'
@@ -14,3 +15,9 @@ gulp.task('dev', build.dev)
  */
 gulp.task('scripts', scripts)
 gulp.task('styles', styles)
+
+/**
+ * Screenshots task
+ * Sends screenshots to Percy for visual regression testing
+ */
+gulp.task('screenshots', browser.screenshots)
