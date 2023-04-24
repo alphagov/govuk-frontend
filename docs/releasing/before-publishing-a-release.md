@@ -37,7 +37,7 @@ A content designer and/or tech writer should do the following:
 - write announcements for slack posts, email and to go on the design system website after we release GOV.UK Frontend (for example, [draft comms for the cookie banner component](https://docs.google.com/document/d/1jVyMB7i94NOeflWaf3kE4Q4APMXGfluK3rOh74IHO08/edit))
 - check who the release’s contributors are and if we have consent to include their name
 
-A technical writer should finalise draft of release notes. Release notes will require a 2i review by another technical writer, make sure the technical writer has time to coordinate this.
+A technical writer should finalise draft of release notes. Release notes will require a 2i review by another technical writer, make sure the technical writer has time to coordinate this. When ready, open a pull request to update the [CHANGELOG.md](https://github.com/alphagov/govuk-frontend/blob/main/CHANGELOG.md) file with the updated release notes.
 
 If the technical writer is unavailable, ask for help in the [gds-technical-writing Slack channel](https://gds.slack.com/archives/CAD0R2NQG) or confer with a content designer.
 
