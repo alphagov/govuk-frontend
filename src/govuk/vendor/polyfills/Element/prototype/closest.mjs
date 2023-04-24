@@ -1,4 +1,3 @@
-// @ts-nocheck
 import './matches.mjs'
 
 (function(undefined) {
@@ -16,6 +15,7 @@ import './matches.mjs'
 
     while (node) {
       if (node.matches(selector)) return node;
+      // @ts-expect-error Ignore mismatch between Element and ParentNode types
       else node = 'SVGElement' in window && node instanceof SVGElement ? node.parentNode : node.parentElement;
     }
 

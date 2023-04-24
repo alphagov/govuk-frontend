@@ -1,4 +1,3 @@
-// @ts-nocheck
 (function (undefined) {
 
 // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Object/defineProperty/detect.js
@@ -56,6 +55,7 @@ if (detect) return
 			if (hasValueOrWritable) {
 				throw new TypeError(ERR_VALUE_ACCESSORS);
 			}
+			// @ts-expect-error Ignore unknown '__defineGetter__' on ObjectConstructor
 			Object.__defineGetter__.call(object, propertyString, descriptor.get);
 		} else {
 			object[propertyString] = descriptor.value;
@@ -72,6 +72,7 @@ if (detect) return
 			if (hasValueOrWritable) {
 				throw new TypeError(ERR_VALUE_ACCESSORS);
 			}
+			// @ts-expect-error Ignore unknown '__defineSetter__' on ObjectConstructor
 			Object.__defineSetter__.call(object, propertyString, descriptor.set);
 		}
 

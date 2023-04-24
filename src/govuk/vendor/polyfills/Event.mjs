@@ -1,4 +1,3 @@
-// @ts-nocheck
 import './Window.mjs'
 import './Element.mjs'
 import './Object/defineProperty.mjs'
@@ -65,6 +64,7 @@ if (detect) return
 	}
 
 	var existingProto = (window.Event && window.Event.prototype) || null;
+	// @ts-expect-error Ignore window global override
 	window.Event = Window.prototype.Event = function Event(type, eventInitDict) {
 		if (!type) {
 			throw new Error('Not enough arguments');
@@ -82,6 +82,7 @@ if (detect) return
 			return event;
 		}
 
+		// @ts-expect-error Ignore 'createEventObject()' for Internet Explorer
 		event = document.createEventObject();
 
 		event.type = type;
@@ -106,17 +107,23 @@ if (detect) return
 			type = arguments[0],
 			listener = arguments[1];
 
+			// @ts-expect-error Ignore mismatch between window types
 			if (element === window && type in unlistenableWindowEvents) {
 				throw new Error('In IE8 the event: ' + type + ' is not available on the window object. Please see https://github.com/Financial-Times/polyfill-service/issues/317 for more information.');
 			}
 
+			// @ts-expect-error Ignore unknown '_events' property on Element
 			if (!element._events) {
+				// @ts-ignore
 				element._events = {};
 			}
 
+			// @ts-expect-error Ignore unknown '_events' property on Element
 			if (!element._events[type]) {
+				// @ts-ignore
 				element._events[type] = function (event) {
 					var
+					// @ts-ignore
 					list = element._events[event.type].list,
 					events = list.slice(),
 					index = -1,
@@ -159,13 +166,17 @@ if (detect) return
 					}
 				};
 
+				// @ts-expect-error Ignore unknown '_events' property on Element
 				element._events[type].list = [];
 
+				// @ts-expect-error Ignore 'attachEvent()' for Internet Explorer
 				if (element.attachEvent) {
+					// @ts-ignore
 					element.attachEvent('on' + type, element._events[type]);
 				}
 			}
 
+			// @ts-expect-error Ignore unknown '_events' property on Element
 			element._events[type].list.push(listener);
 		};
 
@@ -176,16 +187,23 @@ if (detect) return
 			listener = arguments[1],
 			index;
 
+			// @ts-expect-error Ignore unknown '_events' property on Element
 			if (element._events && element._events[type] && element._events[type].list) {
+				// @ts-ignore
 				index = indexOf(element._events[type].list, listener);
 
 				if (index !== -1) {
+					// @ts-ignore
 					element._events[type].list.splice(index, 1);
 
+					// @ts-ignore
 					if (!element._events[type].list.length) {
+						// @ts-ignore
 						if (element.detachEvent) {
+							// @ts-ignore
 							element.detachEvent('on' + type, element._events[type]);
 						}
+						// @ts-ignore
 						delete element._events[type];
 					}
 				}
@@ -210,12 +228,15 @@ if (detect) return
 					var cancelBubbleEvent = function (event) {
 						event.cancelBubble = true;
 
+						// @ts-expect-error Ignore 'detachEvent()' for Internet Explorer
 						(element || window).detachEvent('on' + type, cancelBubbleEvent);
 					};
 
+					// @ts-expect-error Ignore 'attachEvent()' for Internet Explorer
 					this.attachEvent('on' + type, cancelBubbleEvent);
 				}
 
+				// @ts-expect-error Ignore 'fireEvent()' for Internet Explorer
 				this.fireEvent('on' + type, event);
 			} catch (error) {
 				event.target = element;
@@ -231,6 +252,7 @@ if (detect) return
 						element['on' + type].call(element, event);
 					}
 
+					// @ts-expect-error Ignore unknown 'parentWindow' on Element
 					element = element.nodeType === 9 ? element.parentWindow : element.parentNode;
 				} while (element && !event.cancelBubble);
 			}
@@ -239,6 +261,7 @@ if (detect) return
 		};
 
 		// Add the DOMContentLoaded Event
+		// @ts-expect-error Ignore 'attachEvent()' for Internet Explorer
 		document.attachEvent('onreadystatechange', function() {
 			if (document.readyState === 'complete') {
 				document.dispatchEvent(new Event('DOMContentLoaded', {
