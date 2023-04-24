@@ -1,4 +1,3 @@
-// @ts-nocheck
 (function (undefined) {
 
 // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Document/detect.js
@@ -7,6 +6,7 @@ var detect = ("Document" in this)
 if (detect) return
 
 // Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Document&flags=always
+// @ts-expect-error Ignore unknown globals from Web Workers API
 if ((typeof WorkerGlobalScope === "undefined") && (typeof importScripts !== "function")) {
 
 	if (this.HTMLDocument) { // IE8

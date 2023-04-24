@@ -1,4 +1,3 @@
-// @ts-nocheck
 import './Document.mjs'
 
 (function(undefined) {
@@ -13,6 +12,7 @@ if (detect) return
 
 	// IE8
 	if (window.Element && !window.HTMLElement) {
+		// @ts-expect-error Ignore window global override
 		window.HTMLElement = window.Element;
 		return;
 	}
@@ -57,6 +57,7 @@ if (detect) return
 	var interval;
 	var loopLimit = 100;
 
+	// @ts-expect-error Ignore 'attachEvent()' for Internet Explorer
 	prototype.attachEvent('onpropertychange', function (event) {
 		var
 		propertyName = event.propertyName,
@@ -89,9 +90,12 @@ if (detect) return
 	// Apply Element prototype to the pre-existing DOM as soon as the body element appears.
 	function bodyCheck() {
 		if (!(loopLimit--)) clearTimeout(interval);
+		// @ts-expect-error Ignore unknown 'prototype' on HTMLElement
 		if (document.body && !document.body.prototype && /(complete|interactive)/.test(document.readyState)) {
 			shiv(document, true);
+			// @ts-ignore
 			if (interval && document.body.prototype) clearTimeout(interval);
+			// @ts-ignore
 			return (!!document.body.prototype);
 		}
 		return false;

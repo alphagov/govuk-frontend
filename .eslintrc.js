@@ -69,6 +69,14 @@ module.exports = {
           'error', {
             definedTypes: ['NodeListOf']
           }
+        ],
+
+        // Maintain new line after description
+        'jsdoc/tag-lines': [
+          'warn',
+          'never', {
+            startLines: 1
+          }
         ]
       },
       settings: {

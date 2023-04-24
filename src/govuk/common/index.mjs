@@ -114,6 +114,7 @@ export function mergeConfigs (/* configObject1, configObject2, ...configObjects 
   // one-by-one into configObject. Any duplicate keys will override the existing
   // key with the new value.
   for (var i = 0; i < arguments.length; i++) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- Ignore mismatch between arguments types
     var obj = flattenObject(arguments[i])
     for (var key in obj) {
       if (Object.prototype.hasOwnProperty.call(obj, key)) {

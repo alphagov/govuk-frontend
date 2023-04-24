@@ -38,8 +38,18 @@ module.exports = {
         '@typescript-eslint',
         'es-x'
       ],
-      extends: ['plugin:es-x/restrict-to-es3'],
+      extends: [
+        'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        'plugin:es-x/restrict-to-es3'
+      ],
       rules: {
+        // Allow unknown `.prototype` members until ES6 classes
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+
+        // Allow `this` alias until arrow functions supported
+        '@typescript-eslint/no-this-alias': 'off',
+
         // Rollup transpiles modules to AMD export/define
         'es-x/no-modules': 'off'
       }

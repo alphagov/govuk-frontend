@@ -1,4 +1,3 @@
-// @ts-nocheck
 import '../../Object/defineProperty.mjs'
 import '../../Element.mjs'
 

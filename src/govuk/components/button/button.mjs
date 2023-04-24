@@ -104,7 +104,7 @@ Button.prototype.debounce = function (event) {
     return false
   }
 
-  this.debounceFormSubmitTimer = setTimeout(function () {
+  this.debounceFormSubmitTimer = setTimeout(/** @this {Button} */ function () {
     this.debounceFormSubmitTimer = null
   }.bind(this), DEBOUNCE_TIMEOUT_IN_SECONDS * 1000)
 }

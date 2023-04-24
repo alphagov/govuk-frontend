@@ -71,7 +71,9 @@ Header.prototype.init = function () {
       // addListener is a deprecated function, however addEventListener
       // isn't supported by IE or Safari < 14. We therefore add this in as
       // a fallback for those browsers
+
       // @ts-expect-error Property 'addListener' does not exist
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       this.mql.addListener(this.syncState.bind(this))
     }
 
