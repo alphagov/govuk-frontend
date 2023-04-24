@@ -2,41 +2,38 @@ import { join, parse } from 'path'
 
 import PluginError from 'plugin-error'
 import { rollup } from 'rollup'
+import replace from 'rollup-plugin-replace'
 import { minify } from 'terser'
 
+import { pkg } from '../config/index.js'
 import { getListing } from '../lib/file-helper.js'
 import { componentPathToModuleName } from '../lib/helper-functions.js'
 
+import { isDev } from './helpers/task-arguments.mjs'
 import { assets } from './index.mjs'
 
 /**
- * Compile JavaScript ESM to CommonJS task
+ * Compile JavaScript task
  *
  * @param {string} pattern - Minimatch pattern
  * @param {AssetEntry[1]} [options] - Asset options
- * @returns {() => Promise<void>} Prepared compile task
+ * @returns {Promise<void>}
  */
-export function compile (pattern, options) {
-  const task = async () => {
-    const modulePaths = await getListing(options.srcPath, pattern)
+export async function compile (pattern, options) {
+  const modulePaths = await getListing(options.srcPath, pattern)
 
-    try {
-      const compileTasks = modulePaths
-        .map((modulePath) => compileJavaScript([modulePath, options]))
+  try {
+    const compileTasks = modulePaths
+      .map((modulePath) => compileJavaScript([modulePath, options]))
 
-      await Promise.all(compileTasks)
-    } catch (cause) {
-      throw new PluginError('compile:js', cause)
-    }
+    await Promise.all(compileTasks)
+  } catch (cause) {
+    throw new PluginError('compile:js', cause)
   }
-
-  task.displayName = 'compile:js'
-
-  return task
 }
 
 /**
- * Compile JavaScript ESM to CommonJS helper
+ * Compile JavaScript helper
  *
  * @param {AssetEntry} assetEntry - Asset entry
  */
@@ -44,12 +41,38 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, fileP
   const moduleSrcPath = join(srcPath, modulePath)
   const moduleDestPath = join(destPath, filePath ? filePath(parse(modulePath)) : modulePath)
 
-  // Create Rollup bundle
-  const bundle = await rollup({
-    input: moduleSrcPath
-  })
+  // Rollup plugins
+  const plugins = []
 
-  // Compile JavaScript ESM to CommonJS
+  if (!isDev) {
+    // Add GOV.UK Frontend release version
+    // @ts-expect-error "This expression is not callable" due to incorrect types
+    plugins.push(replace({
+      include: join(srcPath, 'common/govuk-frontend-version.mjs'),
+      values: { development: pkg.version }
+    }))
+  }
+
+  // Option 1: Rollup bundle set (multiple files)
+  // - Module imports are preserved, not concatenated
+  if (moduleDestPath.endsWith('.mjs')) {
+    const bundle = await rollup({ input: [moduleSrcPath], plugins, experimentalPreserveModules: true })
+
+    // Compile JavaScript to ES modules
+    await bundle.write({
+      dir: destPath,
+      format: 'es',
+      sourcemap: true
+    })
+
+    return
+  }
+
+  // Option 1: Rollup bundle (single file)
+  // - Universal Module Definition (UMD) bundle
+  const bundle = await rollup({ input: moduleSrcPath, plugins })
+
+  // Compile JavaScript to output format
   const bundled = await bundle[moduleDestPath.endsWith('.min.js') ? 'generate' : 'write']({
     file: moduleDestPath,
     sourcemapFile: moduleDestPath,
@@ -78,7 +101,7 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, fileP
 }
 
 /**
- * Minify JavaScript ESM to CommonJS helper
+ * Minify JavaScript helper
  *
  * @param {string} modulePath - Relative path to module
  * @param {import('rollup').OutputChunk} result - Generated bundle

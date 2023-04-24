@@ -1,6 +1,6 @@
 ---
 scenario: >-
-  As part of an online service, you are asked to provide your postcode.
+  As part of an online service, you are asked to provide your national insurance number.
 
 
   Prompts:
@@ -39,7 +39,8 @@ scenario: >-
 
     {{ govukInput({
       label: {
-        text: "National Insurance number"
+        text: "What is your National Insurance number?",
+        classes: "govuk-label--l"
       },
       hint: {
         text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."

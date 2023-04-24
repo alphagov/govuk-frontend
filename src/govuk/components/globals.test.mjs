@@ -24,7 +24,7 @@ describe('GOV.UK Frontend', () => {
       const GOVUKFrontendGlobal = await page.evaluate(() => window.GOVUKFrontend)
 
       const components = Object.keys(GOVUKFrontendGlobal)
-        .filter(method => !['initAll'].includes(method))
+        .filter(method => !['initAll', 'version'].includes(method))
 
       // Ensure GOV.UK Frontend exports the expected components
       expect(components).toEqual([
@@ -48,7 +48,7 @@ describe('GOV.UK Frontend', () => {
 
       const componentsWithoutInitFunctions = await page.evaluate(() => {
         const components = Object.keys(window.GOVUKFrontend)
-          .filter(method => !['initAll'].includes(method))
+          .filter(method => !['initAll', 'version'].includes(method))
 
         return components.filter(component => {
           const prototype = window.GOVUKFrontend[component].prototype

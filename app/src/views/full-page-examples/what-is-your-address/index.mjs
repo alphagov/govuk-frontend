@@ -12,9 +12,6 @@ export default (app) => {
       body('address-town')
         .exists()
         .not().isEmpty().withMessage('Enter your town and city'),
-      body('address-county')
-        .exists()
-        .not().isEmpty().withMessage('Enter your county'),
       body('address-postcode')
         .exists()
         .not().isEmpty().withMessage('Enter your postcode')

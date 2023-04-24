@@ -1,9 +1,6 @@
-import { join } from 'path'
-
 import { load } from 'cheerio'
 
-import { paths, ports } from '../../config/index.js'
-import { getDirectories } from '../../lib/file-helper.js'
+import { ports } from '../../config/index.js'
 
 const expectedPages = [
   '/',
@@ -39,21 +36,6 @@ describe(`http://localhost:${ports.app}`, () => {
     it('should prevent search indexing', async () => {
       const { headers } = await fetchPath(path, { method: 'HEAD' })
       expect(headers.get('x-robots-tag')).toEqual('none')
-    })
-  })
-
-  describe('/', () => {
-    it('should display the list of components', async () => {
-      const response = await fetchPath('/')
-      const $ = load(await response.text())
-
-      const componentNames = await getDirectories(join(paths.src, 'govuk/components'))
-      const componentsList = $('li a[href^="/components/"]').get()
-
-      // Since we have an 'all' component link that renders the default example of all
-      // components, there will always be one more expected link.
-      const expectedComponentLinks = componentNames.length + 1
-      expect(componentsList.length).toEqual(expectedComponentLinks)
     })
   })
 

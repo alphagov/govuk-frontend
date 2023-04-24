@@ -3,7 +3,6 @@ scenario: >-
   A service with a series of tasks that need to be completed.
 
 notes: The links to change your answers are not functional.
-
 ---
 
 {# This example is based of the community contribution to create a Task list component and replace "Task list pages" example: https://design-system.service.gov.uk/patterns/task-list-pages/ #}
@@ -12,11 +11,35 @@ notes: The links to change your answers are not functional.
 {% from "back-link/macro.njk" import govukBackLink %}
 {% from "task-list/macro.njk" import govukTaskList %}
 {% from "button/macro.njk" import govukButton %}
+{% from "header/macro.njk" import govukHeader %}
 
-{% set pageTitle = "Service Task List" %}
-{% set serviceName = "Service name goes here" %}
+
+{% set pageTitle = "Task List" %}
 
 {% block pageTitle %}{{ pageTitle }} - {{ serviceName }} - GOV.UK{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "#",
+    serviceName: "Apply for something",
+    serviceUrl: "#",
+    navigation: [
+      {
+        href: "#",
+        text: "Application tasks",
+        active: true
+      },
+      {
+        href: "#",
+        text: "Further information"
+      },
+      {
+        href: "#",
+        text: "Support"
+      }
+    ]
+  }) }}
+{% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -124,9 +147,6 @@ notes: The links to change your answers are not functional.
           }
         ]
       }) }}
-
-   
-
 
   </div>
 </div>

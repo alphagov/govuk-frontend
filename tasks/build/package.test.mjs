@@ -1,7 +1,7 @@
 import { readFile } from 'fs/promises'
 import { join } from 'path'
 
-import { paths } from '../../config/index.js'
+import { paths, pkg } from '../../config/index.js'
 import { filterPath, getDirectories, getListing, mapPathTo } from '../../lib/file-helper.js'
 import { componentNameToClassName, componentPathToModuleName } from '../../lib/helper-functions.js'
 import { compileSassFile } from '../../lib/jest-helpers.js'
@@ -57,9 +57,14 @@ describe('package/', () => {
           join(requirePath, `${name}.js.map`) // with source map
         ]
 
-        // Only source `./govuk/**/*.mjs` files copied to `./govuk-esm/**/*.mjs`
+        // Only source `./govuk/**/*.mjs` files compiled to `./govuk-esm/**/*.mjs`
         if (importFilter.test(requirePath)) {
-          output.push(join(requirePath.replace(importFilter, 'govuk-esm'), `${name}.mjs`))
+          const importPath = requirePath.replace(importFilter, 'govuk-esm')
+
+          output.push(...[
+            join(importPath, `${name}.mjs`),
+            join(importPath, `${name}.mjs.map`) // with source map
+          ])
         }
 
         return output
@@ -106,6 +111,14 @@ describe('package/', () => {
 
       // Look for AMD module definition for 'GOVUKFrontend'
       expect(contents).toContain("typeof define === 'function' && define.amd ? define('GOVUKFrontend', ['exports'], factory)")
+    })
+
+    it('should have correct version number', async () => {
+      const contents = await readFile(join(paths.package, 'govuk', 'all.js'), 'utf8')
+
+      // Look for AMD module export 'GOVUKFrontend.version'
+      expect(contents).toContain(`var version = '${pkg.version}';`)
+      expect(contents).toContain('exports.version = version;')
     })
   })
 
@@ -168,15 +181,15 @@ describe('package/', () => {
         const componentPackage = componentsFilesPackage.filter(componentFilter)
         const componentPackageESM = componentsFilesPackageESM.filter(componentFilter)
 
-        // CommonJS module not found at source
+        // UMD module not found at source
         expect(componentSource)
           .toEqual(expect.not.arrayContaining([join(componentName, `${componentName}.js`)]))
 
-        // CommonJS generated in package
+        // UMD module generated in package
         expect(componentPackage)
           .toEqual(expect.arrayContaining([join(componentName, `${componentName}.js`)]))
 
-        // ESM module generated in package
+        // ES module generated in package
         expect(componentsFilesPackageESM)
           .toEqual(expect.arrayContaining([join(componentName, `${componentName}.mjs`)]))
 

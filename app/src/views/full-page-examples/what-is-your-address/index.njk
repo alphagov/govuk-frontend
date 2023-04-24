@@ -46,10 +46,10 @@ scenario: >-
             isPageHeading: true
           }
         }) %}
-
+        
           {{ govukInput({
             label: {
-              html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+              text: 'Address line 1'
             },
             id: "address-line-1",
             name: "address-line-1",
@@ -60,7 +60,7 @@ scenario: >-
 
           {{ govukInput({
             label: {
-              html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+              text: 'Address line 2 (optional)'
             },
             id: "address-line-2",
             name: "address-line-2",
@@ -76,18 +76,17 @@ scenario: >-
             id: "address-town",
             name: "address-town",
             value: values["address-town"],
-            errorMessage: errors["address-town"]
+            errorMessage: errors["address-town"],
+            autocomplete: "address-level2"
           }) }}
 
           {{ govukInput({
             label: {
-              text: "County"
+              text: "County (optional)"
             },
             classes: "govuk-!-width-two-thirds",
             id: "address-county",
-            name: "address-county",
-            value: values["address-county"],
-            errorMessage: errors["address-county"]
+            name: "address-county"
           }) }}
 
           {{ govukInput({

@@ -16,8 +16,6 @@ notes: >-
   of the sort of interactions that you would find on a search page.
 
   This example merges features seen on GOV.UK news and communication finders and search pages.
-
-hidden: true
 ---
 
 {% extends "full-page-example.njk" %}
@@ -25,6 +23,7 @@ hidden: true
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "input/macro.njk" import govukInput %}
 {% from "select/macro.njk" import govukSelect %}
+{% from "radios/macro.njk" import govukRadios %}
 {% from "checkboxes/macro.njk" import govukCheckboxes %}
 {% from "button/macro.njk" import govukButton %}
 {% from "pagination/macro.njk" import govukPagination %}
@@ -66,42 +65,68 @@ hidden: true
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-third">
       <ul class="govuk-list govuk-list--spaced app-filter">
-        <li><a class="govuk-link" href="#">Topic</a></li>
+        <li>
+          {{ govukRadios({
+            classes: "govuk-radios--small",
+            name: "topic",
+            formGroup: {
+              classes: "govuk-!-margin-bottom-0"
+            },
+            fieldset: {
+              legend: {
+                html: "<a class='govuk-link' href=''>Topic</a>",
+                classes: "app-open-fieldset govuk-fieldset__legend--s"
+              }
+            },
+            items: [
+              {
+                value: "transport",
+                text: "Transport"
+              },
+              {
+                value: "work",
+                text: "Work"
+              }
+            ]
+          }) }}
+        </li>
         <li><a class="govuk-link" href="#">Content type</a></li>
         <li><a class="govuk-link" href="#">Updated</a></li>
-      </ul>
-      <form method="get" novalidate>
-        {{ govukCheckboxes({
-          idPrefix: "organisation",
-          name: "organisation",
-          classes: "govuk-checkboxes--small",
-          fieldset: {
-            legend: {
-              html: "<a class='govuk-link' href=''>Organisation</a>",
-              classes: "app-open-fieldset govuk-fieldset__legend--s"
-            }
-          },
-          items: [
-            {
-              value: "hmrc",
-              text: "HM Revenue and Customs (HMRC)"
+        <li>
+        <form method="get" novalidate>
+          {{ govukCheckboxes({
+            idPrefix: "organisation",
+            name: "organisation",
+            classes: "govuk-checkboxes--small",
+            fieldset: {
+              legend: {
+                html: "<a class='govuk-link' href=''>Organisation</a>",
+                classes: "app-open-fieldset govuk-fieldset__legend--s"
+              }
             },
-            {
-              value: "employment-tribunal",
-              text: "Employment Tribunal"
-            },
-            {
-              value: "mod",
-              text: "Ministry of Defence"
-            }
-          ],
-          values: values["organisation"]
-        }) }}
+            items: [
+              {
+                value: "hmrc",
+                text: "HM Revenue and Customs (HMRC)"
+              },
+              {
+                value: "employment-tribunal",
+                text: "Employment Tribunal"
+              },
+              {
+                value: "mod",
+                text: "Ministry of Defence"
+              }
+            ],
+            values: values["organisation"]
+          }) }}
 
-        {{ govukButton({
-          text: "Update filters"
-        }) }}
-      </form>
+          {{ govukButton({
+            text: "Update filters"
+          }) }}
+        </form>
+        </li>
+      </ul>
     </div>
     <div class="govuk-grid-column-two-thirds">
       <div class="app-search-results-summary">
@@ -142,19 +167,19 @@ hidden: true
           {% for document in documents %}
               {% set document = document.document %}
               <li>
-                  <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+                  <h3 class="govuk-heading-s govuk-!-bottom-2">
                     <a class="govuk-link govuk-link--no-underline" href="https://gov.uk{{ document.link }}">
                       {{ document.title }}
                     </a>
                   </h3>
-                  <p class="govuk-body-s govuk-!-margin-bottom-4">
+                  <p class="govuk-body-s govuk-!-bottom-4">
                       {{ document.summary }}
                   </p>
                   {% if document.children %}
                     <ul class="govuk-list app-search-result-list__children">
                       {% for child in document.children %}
                         <li>
-                          <h4 class="govuk-heading-xs govuk-!-margin-bottom-1 govuk-!-margin-top-1">
+                          <h4 class="govuk-heading-xs govuk-!-bottom-1 govuk-!-top-1">
                             <a class="govuk-link govuk-link--no-underline" href="#">
                               {{ child.title }}
                             </a>
@@ -185,11 +210,41 @@ hidden: true
       </ul>
 
       {{ govukPagination({
+        previous: {
+          href: "#"
+        },
         next: {
-          text: 'Next page',
-          href: '#',
-          labelText: '2 of 2939'
-        }
+          href: "#"
+        },
+        items: [
+          {
+            number: 1,
+            href: "#"
+          },
+          {
+            ellipsis: true
+          },
+          {
+            number: 6,
+            href: "#"
+          },
+          {
+            number: 7,
+            current: true,
+            href: "#"
+          },
+          {
+            number: 8,
+            href: "#"
+          },
+          {
+            ellipsis: true
+          },
+          {
+            number: 42,
+            href: "#"
+          }
+        ]
       }) }}
     </div>
   </div>

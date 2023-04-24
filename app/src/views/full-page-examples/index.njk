@@ -23,7 +23,7 @@
     {% for example in fullPageExamples %}
       {% if not example.hidden %}
 
-        <h2 class="govuk-heading-m"><a href="/full-page-examples/{{ example.path }}" class="govuk-link">{{ example.name | replace("-", " ") | capitalize }}</a></h2>
+        <h3 class="govuk-heading-m"><a href="/full-page-examples/{{ example.path }}" class="govuk-link">{{ example.name | replace("-", " ") | capitalize }}</a></h3>
 
         {% if example.scenario %}
         <div class="app-prose-scope">
@@ -36,10 +36,29 @@
         {% endif %}
 
         <hr class="govuk-section-break govuk-section-break--l" />
-        
+
       {% endif %}
 
     {% endfor %}
+
+    <h2 class="govuk-heading-l">Other examples</h2>
+
+    <p class="govuk-body">Examples of GOV.UK Frontend code and GOV.UK Design System patterns in other places.</p>
+
+    <h3 class="govuk-heading-m"><a href="https://alphagov.github.io/accessible-autocomplete/examples/" class="govuk-link">Accessible autocomplete example</a></h3>
+
+    <h3 class="govuk-heading-m"><a href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/income-tax-enquiries-for-individuals-pensioners-and-employees" class="govuk-link">Contact a department or service team example</a></h3>
+
+    <h3 class="govuk-heading-m"><a href="http://gov.uk/account" class="govuk-link">GOV.UK Account</a></h3>
+
+    <div class="app-prose-scope"><p>As part of an online service, you are required to create an account.</p></div>
+
+    <p class="govuk-body govuk-!-font-size-16">The account will be confirmed using a mobile telephone.</p>
+
+    <h3 class="govuk-heading-m"><a href="https://design-system.service.gov.uk/patterns/cookies-page/" class="govuk-link">GOV.UK Design System cookie page</a></h3>
+
+    <h3 class="govuk-heading-m"><a href="https://govuk-formats.herokuapp.com/document-types/step-by-step-nav" class="govuk-link">Step-by-step navigation example</a></h3>
+
   </div>
 </div>
 {% endblock %}

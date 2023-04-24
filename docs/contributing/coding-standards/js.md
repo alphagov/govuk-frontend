@@ -138,7 +138,7 @@ export function exampleHelper2 () {}
 
 You must specify the file extension when using the import keyword.
 
-Avoid using namespace imports (`import * as namespace`) in code transpiled to CommonJS (or AMD) bundled code as this can prevent "tree shaking" optimisations.
+Avoid using namespace imports (`import * as namespace`) in code transpiled to UMD (or AMD, CommonJS) bundled code as this can prevent "tree shaking" optimisations.
 
 Prefer named exports over default exports to avoid compatibility issues with transpiler "synthetic default" as discussed in: https://github.com/alphagov/govuk-frontend/issues/2829
 

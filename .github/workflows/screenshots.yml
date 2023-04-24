@@ -41,7 +41,10 @@ jobs:
         uses: ./.github/workflows/actions/build
 
       - name: Start review application
-        run: npm run serve &
+
+        # Review app is already built (or restored from cache) so
+        # start with `--ignore-scripts` to prevent "prestart" build
+        run: npm start --ignore-scripts --workspace app &
 
       - name: Send screenshots to Percy
         run: npx percy exec --parallel -- npm run test:screenshots

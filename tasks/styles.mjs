@@ -18,25 +18,18 @@ import { assets } from './index.mjs'
  *
  * @param {string} pattern - Minimatch pattern
  * @param {AssetEntry[1]} [options] - Asset options
- * @returns {() => Promise<void>} Prepared compile task
  */
-export function compile (pattern, options) {
-  const task = async () => {
-    const modulePaths = await getListing(options.srcPath, pattern)
+export async function compile (pattern, options) {
+  const modulePaths = await getListing(options.srcPath, pattern)
 
-    try {
-      const compileTasks = modulePaths
-        .map((modulePath) => compileStylesheet([modulePath, options]))
+  try {
+    const compileTasks = modulePaths
+      .map((modulePath) => compileStylesheet([modulePath, options]))
 
-      await Promise.all(compileTasks)
-    } catch (cause) {
-      throw new PluginError('compile:scss', cause)
-    }
+    await Promise.all(compileTasks)
+  } catch (cause) {
+    throw new PluginError('compile:scss', cause)
   }
-
-  task.displayName = 'compile:scss'
-
-  return task
 }
 
 /**
