@@ -30,7 +30,18 @@ module.exports = {
        */
       '--no-startup-window'
     ],
-    headless: process.env.HEADLESS !== 'false',
+
+    /**
+     * Allow headless mode switching using `HEADLESS=false`
+     * but default to `1` to skip deprecation warning
+     *
+     * {@link https://developer.chrome.com/articles/new-headless/}
+     */
+    headless: process.env.HEADLESS !== 'false'
+      ? 1
+      : false,
+
+    // See launch arg '--no-startup-window'
     waitForInitialPage: false
   },
 
