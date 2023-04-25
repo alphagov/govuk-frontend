@@ -9,22 +9,22 @@ import gulp from 'gulp'
  * Prepare dist folder for release
  */
 export default gulp.series(
-  task.name('clean', () =>
-    files.clean('**/*', {
+  task.name('clean:release', () =>
+    files.clean('*', {
       destPath: paths.dist
     })
   ),
 
   // Copy GOV.UK Frontend static assets
-  task.name('copy:assets', () =>
+  task.name("copy:release 'assets'", () =>
     files.copy('*/**', {
       srcPath: join(paths.package, 'src/govuk/assets'),
       destPath: join(paths.dist, 'assets')
     })
   ),
 
-  // Compile GOV.UK Frontend JavaScript
-  task.name('compile:js', () =>
+  // Compile GOV.UK Frontend JavaScript to Universal Module Definition (UMD)
+  task.name('scripts:release', () =>
     scripts.compile('all.mjs', {
       srcPath: join(paths.package, 'src/govuk'),
       destPath: paths.dist,
@@ -36,7 +36,7 @@ export default gulp.series(
   ),
 
   // Compile GOV.UK Frontend Sass
-  task.name('compile:scss', () =>
+  task.name('styles:release', () =>
     styles.compile('**/[!_]*.scss', {
       srcPath: join(paths.package, 'src/govuk'),
       destPath: paths.dist,
@@ -48,7 +48,7 @@ export default gulp.series(
   ),
 
   // Update GOV.UK Frontend version
-  task.name("file:version 'VERSION.txt'", () =>
+  task.name("version:release 'VERSION.txt'", () =>
     files.version('VERSION.txt', {
       destPath: paths.dist
     })
