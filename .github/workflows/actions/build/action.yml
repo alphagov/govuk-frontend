@@ -11,7 +11,9 @@ runs:
       with:
         # Restore build cache (unless commit SHA changes)
         key: build-cache-${{ runner.os }}-${{ github.sha }}
-        path: app/dist
+        path: |
+          app/dist
+          package/dist
 
     - name: Install dependencies
       uses: ./.github/workflows/actions/install-node
@@ -26,4 +28,4 @@ runs:
       if: steps.build-cache.outputs.cache-hit != 'true'
       shell: bash
 
-      run: npm run build:app
+      run: npm run build --workspaces --if-present
