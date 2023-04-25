@@ -4,7 +4,7 @@ const { getExamples } = require('govuk-frontend-lib/files')
 const jestPuppeteerConfig = require('../../../../../../jest-puppeteer.config')
 
 // Detect when browser has been launched headless
-const { headless = true } = jestPuppeteerConfig.launch
+const { headless = 'new' } = jestPuppeteerConfig.launch
 
 // The longest possible time from a keyboard user ending input and the screen
 // reader counter being updated: handleFocus interval time + last input wait time
