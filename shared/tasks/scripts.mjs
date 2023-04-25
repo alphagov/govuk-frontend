@@ -5,6 +5,7 @@ import { getListing } from 'govuk-frontend-lib/files'
 import { componentPathToModuleName } from 'govuk-frontend-lib/names'
 import PluginError from 'plugin-error'
 import { rollup } from 'rollup'
+import resolve from 'rollup-plugin-node-resolve'
 import replace from 'rollup-plugin-replace'
 import { minify } from 'terser'
 
@@ -41,7 +42,7 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, fileP
   const moduleDestPath = join(destPath, filePath ? filePath(parse(modulePath)) : modulePath)
 
   // Rollup plugins
-  const plugins = []
+  const plugins = [resolve()]
 
   if (!isDev) {
     // Add GOV.UK Frontend release version
