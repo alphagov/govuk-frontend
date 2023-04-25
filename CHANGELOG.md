@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+### Breaking changes
+
+#### Check that disabled buttons work as expected
+
+The `disabled` attribute on disabled buttons created using our Nunjucks macros no longer includes a value.
+
+If you are using `$button.getAttribute('disabled')` to check for the disabled attribute in JavaScript, this will now return an empty string. This may cause unexpected behaviour if you are relying on the return value being the string 'disabled' or being [truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy).
+
+Instead we recommend checking for the disabled attribute using [`$button.hasAttribute('disabled')`](https://developer.mozilla.org/en-US/docs/Web/API/Element/hasAttribute) or the [`$button.disabled` IDL attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/disabled).
+
+This change was made in [pull request #2830: Set the boolean disabled attribute consistently in the button component](https://github.com/alphagov/govuk-frontend/pull/2830).
+
 ## 4.6.0 (Feature release)
 
 ### New features
