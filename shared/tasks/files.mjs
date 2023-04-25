@@ -4,7 +4,7 @@ import { join, parse } from 'path'
 
 import cpy from 'cpy'
 import { deleteAsync } from 'del'
-import { pkg } from 'govuk-frontend-config'
+import { paths, pkg } from 'govuk-frontend-config'
 import slash from 'slash'
 
 /**
@@ -14,7 +14,10 @@ import slash from 'slash'
  * @param {AssetEntry[1]} options - Asset options
  */
 export async function clean (pattern, { destPath, ignore }) {
-  await deleteAsync(slash(join(destPath, pattern)), { ignore })
+  await deleteAsync(slash(join(destPath, pattern)), {
+    cwd: paths.root,
+    ignore
+  })
 }
 
 /**

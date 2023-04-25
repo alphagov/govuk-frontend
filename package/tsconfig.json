@@ -5,7 +5,8 @@
     "**/*.mjs",
     "../shared/config",
     "../shared/helpers",
-    "../shared/lib"
+    "../shared/lib",
+    "../shared/tasks"
   ],
   "compilerOptions": {
     "lib": ["ESNext", "DOM"],

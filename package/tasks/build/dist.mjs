@@ -1,9 +1,8 @@
 import { join } from 'path'
 
 import { paths, pkg } from 'govuk-frontend-config'
+import { files, scripts, styles, task } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
-
-import { files, scripts, styles, task } from '../index.mjs'
 
 /**
  * Build dist task

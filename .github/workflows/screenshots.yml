@@ -44,7 +44,7 @@ jobs:
         run: npm start --workspace app &
 
       - name: Send screenshots to Percy
-        run: npx percy exec --parallel -- npm run test:screenshots
+        run: npx percy exec --parallel -- npm run test:screenshots --workspace package
 
       - name: Finalise Percy build
         run: npx percy build:finalize

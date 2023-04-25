@@ -3,7 +3,7 @@ const { resolve } = require('path')
 module.exports = {
   overrides: [
     {
-      files: ['**/*.{cjs,js,mjs}'],
+      files: ['src/**/*.{cjs,js,mjs}'],
       excludedFiles: ['**/*.test.{cjs,js,mjs}'],
       env: {
         browser: true

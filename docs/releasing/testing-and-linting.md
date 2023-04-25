@@ -112,7 +112,7 @@ We generate 2 screenshots for each default example of every component. One examp
 
 The screenshots are public, so you can check them without logging in. A BrowserStack account is needed to approve or reject any changes (if you don't have access, ask your tech lead for help). If you're the reviewer of the pull request code, it's your responsibility to approve or request changes for any visual changes Percy highlights.
 
-When you run the tests locally (for example, using `npm run test:screenshots`), Percy commands are ignored and Percy does not generate any screenshots. You will see the following message in your command line output: `[percy] Percy is not running, disabling snapshots`.
+When you run the tests locally (for example, using `npm run test:screenshots --workspace package`), Percy commands are ignored and Percy does not generate any screenshots. You will see the following message in your command line output: `[percy] Percy is not running, disabling snapshots`.
 
 ### PRs from forks
 
