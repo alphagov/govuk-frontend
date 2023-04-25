@@ -164,7 +164,7 @@ describe('PostCSS config', () => {
     describe('Sass syntax parser', () => {
       it.each([
         {
-          from: 'src/govuk/components/accordion/_accordion.scss',
+          from: 'package/src/govuk/components/accordion/_accordion.scss',
           to: 'package/dist/govuk/components/accordion/_accordion.scss'
         }
       ])('Adds plugins for $from', ({ from, to }) => {

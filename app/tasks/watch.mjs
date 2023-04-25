@@ -18,8 +18,8 @@ export function watch () {
     gulp.watch([
       `${slash(paths.root)}/sassdoc.config.yaml`,
       `${slash(paths.app)}/src/**/*.scss`,
-      `${slash(paths.src)}/govuk/**/*.scss`,
-      `!${slash(paths.src)}/govuk/vendor/*`
+      `${slash(paths.package)}/src/govuk/**/*.scss`,
+      `!${slash(paths.package)}/src/govuk/vendor/*`
     ], gulp.parallel(
       npm.script('lint:scss'),
       styles
@@ -27,7 +27,7 @@ export function watch () {
 
     gulp.watch([
       `${slash(paths.root)}/typedoc.config.js`,
-      `${slash(paths.src)}/govuk/**/*.mjs`
+      `${slash(paths.package)}/src/govuk/**/*.mjs`
     ], gulp.parallel(
       npm.script('lint:js'),
       scripts

@@ -17,11 +17,11 @@ describe('Components', () => {
   beforeAll(async () => {
     // Create a new Nunjucks environment that uses the src directory as its
     // base path, rather than the components folder itself
-    nunjucksEnvCustom = nunjucks.configure(join(paths.src, 'govuk'))
+    nunjucksEnvCustom = nunjucks.configure(join(paths.package, 'src/govuk'))
     nunjucksEnvDefault = nunjucksEnv
 
     // Components list
-    componentNames = await getDirectories(join(paths.src, 'govuk/components'))
+    componentNames = await getDirectories(join(paths.package, 'src/govuk/components'))
   })
 
   describe('Nunjucks environment', () => {

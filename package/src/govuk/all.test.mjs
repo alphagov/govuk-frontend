@@ -79,8 +79,8 @@ describe('GOV.UK Frontend', () => {
   describe('Sass documentation', () => {
     it('associates everything with a group', async () => {
       return sassdoc.parse([
-        `${slash(paths.src)}/govuk/**/*.scss`,
-        `!${slash(paths.src)}/govuk/vendor/*.scss`
+        `${slash(paths.package)}/src/govuk/**/*.scss`,
+        `!${slash(paths.package)}/src/govuk/vendor/*.scss`
       ])
         .then(docs => docs.forEach(doc => {
           return expect(doc).toMatchObject({

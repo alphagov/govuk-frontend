@@ -78,7 +78,7 @@ const mapPathTo = (patterns, callback) => (entryPath) => {
  * @returns {Promise<ComponentData>} Component data
  */
 const getComponentData = async (componentName) => {
-  const yamlPath = join(paths.src, 'govuk/components', componentName, `${componentName}.yaml`)
+  const yamlPath = join(paths.package, 'src/govuk/components', componentName, `${componentName}.yaml`)
   const yamlData = yaml.load(await readFile(yamlPath, 'utf8'), { json: true })
 
   return {
@@ -93,7 +93,7 @@ const getComponentData = async (componentName) => {
  * @returns {Promise<ComponentData[]>} Components' data
  */
 const getComponentsData = async () => {
-  const componentNames = await getDirectories(join(paths.src, 'govuk/components'))
+  const componentNames = await getDirectories(join(paths.package, 'src/govuk/components'))
   return Promise.all(componentNames.map(getComponentData))
 }
 

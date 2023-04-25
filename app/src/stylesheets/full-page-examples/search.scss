@@ -1,6 +1,6 @@
-@import "../../../../src/govuk/base";
+@import "../../../../package/src/govuk/base";
 $govuk-new-link-styles: true;
-@import "../../../../src/govuk/core/all";
+@import "../../../../package/src/govuk/core/all";
 
 .app-document-list > li {
   padding-top: govuk-spacing(4);

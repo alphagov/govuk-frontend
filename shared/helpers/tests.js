@@ -4,7 +4,7 @@ const { paths } = require('govuk-frontend-config')
 const { compileAsync, compileStringAsync, Logger } = require('sass-embedded')
 
 const sassPaths = [
-  join(paths.src, 'govuk'),
+  join(paths.package, 'src/govuk'),
   join(paths.root, 'node_modules')
 ]
 

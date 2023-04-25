@@ -8,7 +8,7 @@ import { files } from 'govuk-frontend-tasks'
  */
 export async function assets () {
   await files.copy('**/*', {
-    srcPath: join(paths.src, 'govuk/assets'),
+    srcPath: join(paths.package, 'src/govuk/assets'),
     destPath: join(paths.app, 'dist/assets')
   })
 }

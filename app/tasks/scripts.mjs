@@ -11,7 +11,7 @@ import gulp from 'gulp'
 export const compile = gulp.series(
   task.name('compile:js', () =>
     scripts.compile('all.mjs', {
-      srcPath: join(paths.src, 'govuk'),
+      srcPath: join(paths.package, 'src/govuk'),
       destPath: join(paths.app, 'dist/javascripts'),
 
       filePath (file) {

@@ -176,6 +176,6 @@ Keep the old name in the selector list, and mark it as deprecated.
 
 In the above examples we've used `@include _warning(...)` instead of the native sass `@warn` at-rule. We use this instead of `@warn` because it gives users the option to suppress deprecation warnings by interacting with the `$govuk-suppressed-warnings` map.
 
-You can read more about how `$govuk-suppressed-warnings` and `_warning` work by reading their respective sassdocs in `/src/govuk/settings/warnings.scss`.
+You can read more about how `$govuk-suppressed-warnings` and `_warning` work by reading their respective sassdocs in `package/src/govuk/settings/warnings.scss`.
 
 We make this option available for users because they can not always action deprecation warnings or upgrade their codebase beyond a specific version of GOV.UK Frontend. For example, a legacy codebase that does not have the resource to upgrade to the latest breaking change where a deprecated feature will be removed. This feature allows those users to continue to operate their codebase without having to repeatedly see non-actionable deprecation warnings in their testing.

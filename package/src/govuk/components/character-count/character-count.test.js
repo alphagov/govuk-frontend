@@ -1,7 +1,7 @@
 const { goToComponent, renderAndInitialise } = require('govuk-frontend-helpers/puppeteer')
 const { getExamples } = require('govuk-frontend-lib/files')
 
-const jestPuppeteerConfig = require('../../../../jest-puppeteer.config')
+const jestPuppeteerConfig = require('../../../../../jest-puppeteer.config')
 
 // Detect when browser has been launched headless
 const { headless = true } = jestPuppeteerConfig.launch

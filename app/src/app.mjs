@@ -16,7 +16,7 @@ export default async () => {
   // Cache mapped components and examples
   const [componentsData, componentNames, exampleNames, fullPageExamples] = await Promise.all([
     getComponentsData(),
-    getDirectories(join(paths.src, 'govuk/components')),
+    getDirectories(join(paths.package, 'src/govuk/components')),
     getDirectories(join(paths.app, 'src/views/examples')),
     getFullPageExamples()
   ])
