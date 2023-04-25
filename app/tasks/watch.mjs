@@ -15,7 +15,16 @@ import { scripts, styles } from './index.mjs'
  */
 export const watch = (options) => gulp.parallel(
   /**
-   * Stylesheets lint + build watcher
+   * Stylesheets lint watcher
+   */
+  task.name('lint:scss watch', () =>
+    gulp.watch([
+      `${slash(paths.app)}/src/**/*.scss`
+    ], npm.script('lint:scss', options))
+  ),
+
+  /**
+   * Stylesheets build watcher
    */
   task.name('compile:scss watch', () =>
     gulp.watch([
@@ -23,23 +32,26 @@ export const watch = (options) => gulp.parallel(
       `${slash(paths.app)}/src/**/*.scss`,
       `${slash(paths.package)}/src/govuk/**/*.scss`,
       `!${slash(paths.package)}/src/govuk/vendor/*`
-    ], gulp.parallel(
-      npm.script('lint:scss'),
-      styles(options)
-    ))
+    ], styles(options))
   ),
 
   /**
-   * JavaScripts lint + build watcher
+   * JavaScripts lint watcher
+   */
+  task.name('lint:js watch', () =>
+    gulp.watch([
+      `${slash(paths.app)}/src/javascripts/**/*.mjs`
+    ], npm.script('lint:js', options))
+  ),
+
+  /**
+   * JavaScripts build watcher
    */
   task.name('compile:js watch', () =>
     gulp.watch([
       `${slash(paths.root)}/typedoc.config.js`,
       `${slash(paths.app)}/src/javascripts/**/*.mjs`,
       `${slash(paths.package)}/src/govuk/**/*.mjs`
-    ], gulp.parallel(
-      npm.script('lint:js'),
-      scripts(options)
-    ))
+    ], scripts(options))
   )
 )
