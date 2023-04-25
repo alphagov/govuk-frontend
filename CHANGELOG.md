@@ -23,6 +23,61 @@ This change was made in [pull request #3599: Enable new link styles by default](
 
 ### Breaking changes
 
+You must make the following changes when you migrate to this release, or your service might break.
+
+#### Update package file paths
+
+In preparation for additional build targets, we've moved our package files into a directory called `dist`.
+
+##### Node.js and other bundlers
+
+Replace `govuk-frontend/govuk` with `govuk-frontend/dist/govuk` in any JavaScript `require()` or `import` file paths.
+
+For example using `require()`:
+
+```js
+const Button = require('govuk-frontend/dist/govuk/components/button/button')
+```
+
+For example using `import`:
+
+```js
+import Button from 'govuk-frontend/dist/govuk-esm/components/button/button.mjs'
+```
+
+##### If you’re using Sass
+
+Replace `govuk-frontend/govuk` with `govuk-frontend/dist/govuk` in any [Sass](https://sass-lang.com/) `@import` paths.
+
+For example:
+
+```scss
+@import "node_modules/govuk-frontend/dist/govuk/all";
+```
+
+If you’ve [added `node_modules/govuk-frontend` as a Sass import path](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#simplify-sass-import-paths), update it with the `/dist` suffix:
+
+```js
+loadPaths: [
+  'node_modules/govuk-frontend/dist'
+]
+```
+
+##### If you’re using Nunjucks
+
+Replace `govuk-frontend` with `govuk-frontend/dist` in any [`nunjucks.configure()`](https://mozilla.github.io/nunjucks/api.html#configure) search paths:
+
+```js
+nunjucks.configure([
+  'node_modules/govuk-frontend/dist'
+])
+```
+
+These changes were made in the following pull requests:
+
+- [#3491: Update Review app to import `govuk-frontend` via local package](https://github.com/alphagov/govuk-frontend/pull/3491)
+- [#3498: Remove built `dist` and `package` from source](https://github.com/alphagov/govuk-frontend/pull/3498)
+
 #### "Compatibility mode" features are no longer supported
 
 GOV.UK Frontend no longer supports compatibility with [our old frameworks](https://frontend.design-system.service.gov.uk/migrating-from-legacy-products/#migrate-from-our-old-frameworks): GOV.UK Elements, GOV.UK Template and GOV.UK Frontend Toolkit. You can no longer incrementally add GOV.UK Frontend to an existing service using one of these previous frameworks. We have removed the following Sass variables and one mixin which controlled compatibility mode:
