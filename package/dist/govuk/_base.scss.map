@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../src/govuk/_base.scss"],"names":[],"mappings":"AAAA,sBAAsB;AACtB,mBAAmB;AACnB,qBAAqB","file":"_base.scss","sourcesContent":["@import \"settings/all\";\n@import \"tools/all\";\n@import \"helpers/all\";\n"]}

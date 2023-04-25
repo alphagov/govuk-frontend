@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../src/govuk/components/fieldset/_fieldset.scss"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,iBAAiB","file":"_fieldset.scss","sourcesContent":["@import \"../../base\";\n@import \"./index\";\n"]}

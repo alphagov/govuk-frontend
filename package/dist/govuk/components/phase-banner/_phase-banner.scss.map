@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../src/govuk/components/phase-banner/_phase-banner.scss"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,iBAAiB","file":"_phase-banner.scss","sourcesContent":["@import \"../../base\";\n@import \"./index\";\n"]}

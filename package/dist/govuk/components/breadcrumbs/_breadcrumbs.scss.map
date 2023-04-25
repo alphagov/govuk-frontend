@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../src/govuk/components/breadcrumbs/_breadcrumbs.scss"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,iBAAiB","file":"_breadcrumbs.scss","sourcesContent":["@import \"../../base\";\n@import \"./index\";\n"]}

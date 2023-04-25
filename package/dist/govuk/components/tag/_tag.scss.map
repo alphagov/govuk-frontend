@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../src/govuk/components/tag/_tag.scss"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,iBAAiB","file":"_tag.scss","sourcesContent":["@import \"../../base\";\n@import \"./index\";\n"]}

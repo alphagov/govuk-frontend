@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../src/govuk/utilities/_clearfix.scss"],"names":[],"mappings":"AAAA;EACE;IACE,uBAAuB;EACzB;AACF","file":"_clearfix.scss","sourcesContent":["@include govuk-exports(\"govuk/utilities/clearfix\") {\n  .govuk-clearfix {\n    @include govuk-clearfix;\n  }\n}\n"]}
