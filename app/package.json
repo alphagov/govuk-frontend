@@ -9,11 +9,11 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "gulp build",
-    "dev": "gulp dev",
+    "build": "gulp build --color",
+    "dev": "gulp dev --color",
     "serve": "nodemon",
     "start": "node src/start.mjs",
-    "test:screenshots": "gulp screenshots"
+    "test:screenshots": "gulp screenshots --color"
   },
   "dependencies": {
     "chokidar": "^3.5.3",
