@@ -2,24 +2,23 @@
   "private": true,
   "name": "govuk-frontend",
   "description": "Used only for the development of GOV.UK Frontend, see `package/dist/package.json` for the published `package.json`",
-  "main": "src/govuk/all.mjs",
+  "main": "dist/govuk/all.js",
   "files": [
-    "src",
     "dist",
     "package.json",
     "README.md"
   ],
   "exports": {
     ".": {
-      "sass": "./src/govuk/all.scss",
-      "import": "./src/govuk/all.mjs",
-      "default": "./src/govuk/all.mjs"
+      "sass": "./dist/govuk/all.scss",
+      "import": "./dist/govuk-esm/all.mjs",
+      "require": "./dist/govuk/all.js"
     },
     "./dist/*": "./dist/*",
     "./package.json": "./dist/package.json",
     "./*": "./src/*"
   },
-  "sass": "src/govuk/all.scss",
+  "sass": "dist/govuk/all.scss",
   "engines": {
     "node": "^18.12.0",
     "npm": "^8.1.0 || ^9.1.0"
