@@ -4,6 +4,41 @@
 
 ### Breaking changes
 
+You must make the following changes when you migrate to this release, or your service may break.
+
+#### Update package file paths
+
+To support package dependencies, we’ve moved our source files from `src` into `package/src`. In preparation for additional build targets, our package is now compiled into `package/dist`.
+
+##### Node.js and other bundlers
+
+Depending on the bundler you use, you may also need to make changes to your configuration file or assets paths to replace `node_modules/govuk-frontend` with `node_modules/govuk-frontend/dist`.
+
+This is typically where Node.js v12.19.0+ [`package.json` subpath patterns](https://nodejs.org/docs/latest-v18.x/api/packages.html#subpath-patterns) are not supported.
+
+##### If you’re using Sass
+
+Replace `govuk-frontend/govuk` with `govuk-frontend/govuk/dist` in any [Sass](https://sass-lang.com/) `@import` paths.
+
+For example:
+
+```scss
+@import "node_modules/govuk-frontend/dist/govuk/all";
+```
+
+If you’ve [added `node_modules/govuk-frontend` as a Sass import path](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#simplify-sass-import-paths), update it with the `/dist` suffix:
+
+```js
+loadPaths: [
+  'node_modules/govuk-frontend/dist'
+]
+```
+
+These changes were made in the following pull requests:
+
+- [#3491: Update Review app to import `govuk-frontend` via local package](https://github.com/alphagov/govuk-frontend/pull/3491)
+- [#3498: Remove built `dist` and `package` from source](https://github.com/alphagov/govuk-frontend/pull/3498)
+
 #### Check that disabled buttons work as expected
 
 The `disabled` attribute on disabled buttons created using our Nunjucks macros no longer includes a value.
