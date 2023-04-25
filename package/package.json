@@ -26,8 +26,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "build:package": "gulp build:package",
-    "build:release": "gulp build:release"
+    "build:package": "gulp build:package --color",
+    "build:release": "gulp build:release --color"
   },
   "devDependencies": {
     "govuk-frontend-config": "*",
