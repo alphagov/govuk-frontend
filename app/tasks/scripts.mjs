@@ -9,7 +9,7 @@ import gulp from 'gulp'
  * Compilation, documentation
  */
 export const compile = gulp.series(
-  task.name('compile:js', () =>
+  task.name('scripts:app', () =>
     scripts.compile('all.mjs', {
       srcPath: join(paths.app, 'src/javascripts'),
       destPath: join(paths.app, 'dist/javascripts'),

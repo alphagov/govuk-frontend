@@ -9,7 +9,7 @@ import gulp from 'gulp'
  * Compilation, documentation
  */
 export const compile = gulp.series(
-  task.name('compile:scss', () =>
+  task.name('styles:app', () =>
     styles.compile('**/[!_]*.scss', {
       srcPath: join(paths.app, 'src/stylesheets'),
       destPath: join(paths.app, 'dist/stylesheets'),

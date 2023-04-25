@@ -1,5 +1,5 @@
 import { paths } from 'govuk-frontend-config'
-import { npm } from 'govuk-frontend-tasks'
+import { npm, task } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
 import slash from 'slash'
 
@@ -10,11 +10,9 @@ import { scripts, styles } from './index.mjs'
  * During development, this task will:
  * - lint and run `gulp styles` when `.scss` files change
  * - lint and run `gulp scripts` when `.mjs` files change
- *
- * @returns {Promise<import('fs').FSWatcher[]>} Array from file system watcher objects
  */
-export function watch () {
-  return Promise.all([
+export const watch = task.name('watch:app', async () => {
+  await Promise.all([
     /**
      * Stylesheets lint watcher
      */
@@ -47,4 +45,4 @@ export function watch () {
       `${slash(paths.package)}/src/govuk-esm/**/*.mjs`
     ], scripts)
   ])
-}
+})
