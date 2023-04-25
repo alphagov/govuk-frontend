@@ -1,3 +1,5 @@
+import { relative } from 'path'
+
 import runScript from '@npmcli/run-script'
 import { paths } from 'govuk-frontend-config'
 import PluginError from 'plugin-error'
@@ -41,5 +43,12 @@ export async function run (name, pkgPath = paths.root) {
  * @returns {() => Promise<void>} Script run
  */
 export function script (name, pkgPath) {
-  return task.name(`npm run ${name}`, () => run(name, pkgPath))
+  let displayName = `npm run ${name}`
+
+  // Log workspace directory
+  if (pkgPath) {
+    displayName = `${displayName} --workspace ${relative(paths.root, pkgPath)}`
+  }
+
+  return task.name(displayName, () => run(name, pkgPath))
 }
