@@ -15,23 +15,36 @@ import { scripts, styles } from './index.mjs'
  */
 export function watch () {
   return Promise.all([
+    /**
+     * Stylesheets lint watcher
+     */
+    gulp.watch([
+      `${slash(paths.app)}/src/**/*.scss`
+    ], npm.script('lint:scss', paths.app)),
+
+    /**
+     * Stylesheets build watcher
+     */
     gulp.watch([
       `${slash(paths.root)}/sassdoc.config.yaml`,
       `${slash(paths.app)}/src/**/*.scss`,
-      `${slash(paths.package)}/src/govuk/**/*.scss`,
-      `!${slash(paths.package)}/src/govuk/vendor/*`
-    ], gulp.parallel(
-      npm.script('lint:scss'),
-      styles
-    )),
+      `${slash(paths.package)}/src/govuk/**/*.scss`
+    ], styles),
 
+    /**
+     * JavaScripts lint watcher
+     */
+    gulp.watch([
+      `${slash(paths.app)}/src/javascripts/**/*.mjs`
+    ], npm.script('lint:js', paths.app)),
+
+    /**
+     * JavaScripts build watcher
+     */
     gulp.watch([
       `${slash(paths.root)}/typedoc.config.js`,
       `${slash(paths.app)}/src/javascripts/**/*.mjs`,
-      `${slash(paths.package)}/src/govuk/**/*.mjs`
-    ], gulp.parallel(
-      npm.script('lint:js'),
-      scripts
-    ))
+      `${slash(paths.package)}/src/govuk-esm/**/*.mjs`
+    ], scripts)
   ])
 }
