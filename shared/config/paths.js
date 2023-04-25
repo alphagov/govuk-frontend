@@ -14,7 +14,7 @@ module.exports = {
   dist: join(rootPath, 'dist'),
 
   // Build: Package for npm publish
-  package: join(rootPath, 'package'),
+  package: join(rootPath, 'package/dist'),
 
   // Review application
   app: join(rootPath, 'app')

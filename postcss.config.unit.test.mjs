@@ -165,7 +165,7 @@ describe('PostCSS config', () => {
       it.each([
         {
           from: 'src/govuk/components/accordion/_accordion.scss',
-          to: 'package/govuk/components/accordion/_accordion.scss'
+          to: 'package/dist/govuk/components/accordion/_accordion.scss'
         }
       ])('Adds plugins for $from', ({ from, to }) => {
         const config = configFn({ env, from, to })

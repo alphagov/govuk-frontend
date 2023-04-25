@@ -6,23 +6,23 @@ import { compileSassFile } from 'govuk-frontend-helpers/tests'
 import { filterPath, getDirectories, getListing, mapPathTo } from 'govuk-frontend-lib/files'
 import { componentNameToClassName, componentPathToModuleName } from 'govuk-frontend-lib/names'
 
-describe('package/', () => {
+describe('package/dist/', () => {
   let listingSource
-  let listingPackage
+  let listingDist
 
   let componentsFilesSource
-  let componentsFilesPackage
-  let componentsFilesPackageESM
+  let componentsFilesDist
+  let componentsFilesDistESM
 
   let componentNames
 
   beforeAll(async () => {
     listingSource = await getListing(paths.src)
-    listingPackage = await getListing(paths.package)
+    listingDist = await getListing(join(paths.package, 'dist'))
 
     componentsFilesSource = await getListing(join(paths.src, 'govuk/components'))
-    componentsFilesPackage = await getListing(join(paths.package, 'govuk/components'))
-    componentsFilesPackageESM = await getListing(join(paths.package, 'govuk-esm/components'))
+    componentsFilesDist = await getListing(join(paths.package, 'dist/govuk/components'))
+    componentsFilesDistESM = await getListing(join(paths.package, 'dist/govuk-esm/components'))
 
     // Components list
     componentNames = await getDirectories(join(paths.src, 'govuk/components'))
@@ -84,7 +84,7 @@ describe('package/', () => {
         join(requirePath, 'macro-options.json')
       ]))
 
-      // Files already present in 'package'
+      // Files already present in 'package/dist'
       .concat(...[
         'package.json',
         'README.md'
@@ -92,12 +92,12 @@ describe('package/', () => {
       .sort()
 
     // Compare array of actual output files
-    expect(listingPackage).toEqual(listingExpected)
+    expect(listingDist).toEqual(listingExpected)
   })
 
   describe('README.md', () => {
     it('is not overwritten', async () => {
-      const contents = await readFile(join(paths.package, 'README.md'), 'utf8')
+      const contents = await readFile(join(paths.package, 'dist/README.md'), 'utf8')
 
       // Look for H1 matching 'GOV.UK Frontend' from existing README
       expect(contents).toMatch(/^# GOV.UK Frontend/)
@@ -106,21 +106,21 @@ describe('package/', () => {
 
   describe('all.scss', () => {
     it('should compile without throwing an exception', async () => {
-      const file = join(paths.package, 'govuk', 'all.scss')
+      const file = join(paths.package, 'dist/govuk/all.scss')
       await expect(compileSassFile(file)).resolves
     })
   })
 
   describe('all.js', () => {
     it('should have correct module name', async () => {
-      const contents = await readFile(join(paths.package, 'govuk', 'all.js'), 'utf8')
+      const contents = await readFile(join(paths.package, 'dist/govuk/all.js'), 'utf8')
 
       // Look for AMD module definition for 'GOVUKFrontend'
       expect(contents).toContain("typeof define === 'function' && define.amd ? define('GOVUKFrontend', ['exports'], factory)")
     })
 
     it('should have correct version number', async () => {
-      const contents = await readFile(join(paths.package, 'govuk', 'all.js'), 'utf8')
+      const contents = await readFile(join(paths.package, 'dist/govuk/all.js'), 'utf8')
 
       // Look for AMD module export 'GOVUKFrontend.version'
       expect(contents).toContain(`var version = '${pkg.version}';`)
@@ -134,21 +134,21 @@ describe('package/', () => {
         const componentFilter = filterPath([`${componentName}/**`])
 
         const componentSource = componentsFilesSource.filter(componentFilter)
-        const componentPackage = componentsFilesPackage.filter(componentFilter)
+        const componentDist = componentsFilesDist.filter(componentFilter)
 
         // File not found at source
         expect(componentSource)
           .toEqual(expect.not.arrayContaining([join(componentName, 'macro-options.json')]))
 
         // File generated in package
-        expect(componentPackage)
+        expect(componentDist)
           .toEqual(expect.arrayContaining([join(componentName, 'macro-options.json')]))
 
-        const [optionsPath] = componentPackage
+        const [optionsPath] = componentDist
           .filter(filterPath(['**/macro-options.json']))
 
         // Component options
-        const options = JSON.parse(await readFile(join(paths.package, 'govuk/components', optionsPath), 'utf8'))
+        const options = JSON.parse(await readFile(join(paths.package, 'dist/govuk/components', optionsPath), 'utf8'))
         expect(options).toBeInstanceOf(Array)
 
         // Component options requirements
@@ -184,30 +184,30 @@ describe('package/', () => {
         const componentFilter = filterPath([`${componentName}/**`])
 
         const componentSource = componentsFilesSource.filter(componentFilter)
-        const componentPackage = componentsFilesPackage.filter(componentFilter)
-        const componentPackageESM = componentsFilesPackageESM.filter(componentFilter)
+        const componentDist = componentsFilesDist.filter(componentFilter)
+        const componentDistESM = componentsFilesDistESM.filter(componentFilter)
 
         // UMD module not found at source
         expect(componentSource)
           .toEqual(expect.not.arrayContaining([join(componentName, `${componentName}.js`)]))
 
         // UMD module generated in package
-        expect(componentPackage)
+        expect(componentDist)
           .toEqual(expect.arrayContaining([join(componentName, `${componentName}.js`)]))
 
         // ES module generated in package
-        expect(componentsFilesPackageESM)
+        expect(componentsFilesDistESM)
           .toEqual(expect.arrayContaining([join(componentName, `${componentName}.mjs`)]))
 
-        const [modulePath] = componentPackage
+        const [modulePath] = componentDist
           .filter(filterPath([`**/${componentName}.js`]))
 
-        const [modulePathESM] = componentPackageESM
+        const [modulePathESM] = componentDistESM
           .filter(filterPath([`**/${componentName}.mjs`]))
 
-        const moduleName = componentPathToModuleName(join(join(paths.src, 'govuk/components'), modulePath))
-        const moduleText = await readFile(join(paths.package, 'govuk/components', modulePath), 'utf8')
-        const moduleTextESM = await readFile(join(paths.package, 'govuk-esm/components', modulePathESM), 'utf8')
+        const moduleName = componentPathToModuleName(join(paths.src, 'govuk/components', modulePath))
+        const moduleText = await readFile(join(paths.package, 'dist/govuk/components', modulePath), 'utf8')
+        const moduleTextESM = await readFile(join(paths.package, 'dist/govuk-esm/components', modulePathESM), 'utf8')
 
         expect(moduleText).toContain(`typeof define === 'function' && define.amd ? define('${moduleName}', factory)`)
         expect(moduleTextESM).toContain(`export default ${componentNameToClassName(componentName)}`)
@@ -224,21 +224,21 @@ describe('package/', () => {
         const componentFilter = filterPath([`${componentName}/**`])
 
         const componentSource = componentsFilesSource.filter(componentFilter)
-        const componentPackage = componentsFilesPackage.filter(componentFilter)
+        const componentDist = componentsFilesDist.filter(componentFilter)
 
         // File not found at source
         expect(componentSource)
           .toEqual(expect.not.arrayContaining([join(componentName, 'fixtures.json')]))
 
         // File generated in package
-        expect(componentPackage)
+        expect(componentDist)
           .toEqual(expect.arrayContaining([join(componentName, 'fixtures.json')]))
 
-        const [fixturesPath] = componentPackage
+        const [fixturesPath] = componentDist
           .filter(filterPath([`${componentName}/fixtures.json`]))
 
         // Component fixtures
-        const { component, fixtures } = JSON.parse(await readFile(join(paths.package, 'govuk/components', fixturesPath), 'utf8'))
+        const { component, fixtures } = JSON.parse(await readFile(join(paths.package, 'dist/govuk/components', fixturesPath), 'utf8'))
         expect(component).toEqual(componentName)
         expect(fixtures).toBeInstanceOf(Array)
 
