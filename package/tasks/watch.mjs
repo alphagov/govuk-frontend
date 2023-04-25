@@ -3,6 +3,8 @@ import { npm, task } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
 import slash from 'slash'
 
+import { scripts, styles } from './index.mjs'
+
 /**
  * Watch task
  * During development, this task will:
@@ -20,10 +22,25 @@ export const watch = task.name('watch:app', async () => {
     ], npm.script('lint:scss', paths.package)),
 
     /**
+     * Stylesheets build watcher
+     */
+    gulp.watch([
+      `${slash(paths.package)}/src/govuk/**/*.scss`,
+      `!${slash(paths.package)}/src/govuk/vendor/*`
+    ], styles),
+
+    /**
      * JavaScripts lint watcher
      */
     gulp.watch([
       `${slash(paths.package)}/src/govuk/**/*.mjs`
-    ], npm.script('lint:js', paths.package))
+    ], npm.script('lint:js', paths.package)),
+
+    /**
+     * JavaScripts build watcher
+     */
+    gulp.watch([
+      `${slash(paths.package)}/src/govuk/**/*.mjs`
+    ], scripts)
   ])
 })

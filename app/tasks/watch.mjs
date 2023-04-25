@@ -26,8 +26,11 @@ export const watch = task.name('watch:app', async () => {
     gulp.watch([
       `${slash(paths.root)}/sassdoc.config.yaml`,
       `${slash(paths.app)}/src/**/*.scss`,
-      `${slash(paths.package)}/src/govuk/**/*.scss`
-    ], styles),
+      `${slash(paths.package)}/dist/govuk/**/*.scss`
+    ], {
+      // @ts-expect-error Unknown events option (skips 'unlink')
+      events: ['add', 'change']
+    }, styles),
 
     /**
      * JavaScripts lint watcher
@@ -42,7 +45,10 @@ export const watch = task.name('watch:app', async () => {
     gulp.watch([
       `${slash(paths.root)}/typedoc.config.js`,
       `${slash(paths.app)}/src/javascripts/**/*.mjs`,
-      `${slash(paths.package)}/src/govuk-esm/**/*.mjs`
-    ], scripts)
+      `${slash(paths.package)}/dist/govuk-esm/**/*.mjs`
+    ], {
+      // @ts-expect-error Unknown events option (skips 'unlink')
+      events: ['add', 'change']
+    }, scripts)
   ])
 })
