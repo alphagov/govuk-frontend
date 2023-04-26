@@ -7,6 +7,7 @@ export { default as cookieBannerServerSide } from './cookie-banner-server-side/i
 export { default as haveYouChangedYourName } from './have-you-changed-your-name/index.mjs'
 export { default as feedback } from './feedback/index.mjs'
 export { default as howDoYouWantToSignIn } from './how-do-you-want-to-sign-in/index.mjs'
+export { default as makeAPayment } from './make-a-payment/index.mjs'
 export { default as search } from './search/index.mjs'
 export { default as passportDetails } from './passport-details/index.mjs'
 export { default as updateYourAccountDetails } from './update-your-account-details/index.mjs'

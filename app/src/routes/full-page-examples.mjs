@@ -12,6 +12,7 @@ export default (app) => {
   routes.haveYouChangedYourName(app)
   routes.feedback(app)
   routes.howDoYouWantToSignIn(app)
+  routes.makeAPayment(app)
   routes.search(app)
   routes.passportDetails(app)
   routes.updateYourAccountDetails(app)

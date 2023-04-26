@@ -1,0 +1,56 @@
+---
+scenario: >-
+  As part of an online service, you are asked to make a payment.
+---
+
+{# This example is based of the  prefix/suffix example: https://design-system.service.gov.uk/components/text-input/input-prefix-suffix/index.html #}
+{% extends "full-page-example.njk" %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "input/macro.njk" import govukInput %}
+
+{% set pageTitle = "Make a payment" %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <form method="post" novalidate>
+    {% if errorSummary.length > 0 %}
+        {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: errorSummary
+        }) }}
+    {% endif %}
+
+    {{ govukInput({
+      label: {
+        text: 'Make a payment today, in pounds',
+        classes: "govuk-label--l",
+        isPageHeading: true
+      },
+      prefix: {
+        text: "£"
+      },
+      classes: "govuk-input--width-20 govuk-input--extra-letter-spacing",
+      id: "payment-amount",
+      name: "payment-amount",
+      spellcheck: false,
+      errorMessage: errors["payment-amount"]
+    }) }}
+
+
+    {{ govukButton({
+        text: "Continue"
+      }) }}
+  </form>
+
+{% endblock %}
