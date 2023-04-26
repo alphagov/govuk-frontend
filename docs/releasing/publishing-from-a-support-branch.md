@@ -35,7 +35,7 @@ Read the docs for [what to do before publishing a release](/docs/releasing/befor
 
 4. Create a new branch for your code changes (for example, `git checkout -b fix-the-thing`) from the `support/<MAJOR VERSION NUMBER>.x` branch.
 
-5. Run `npm install` to make sure you have the latest dependencies installed.
+5. Run `npm ci` to make sure you have the exact dependencies installed.
 
 6. Make your code changes, and test them following our [standard testing requirements](/docs/contributing/testing.md).
 
@@ -53,21 +53,24 @@ Read the docs for [what to do before publishing a release](/docs/releasing/befor
 
 3. Run `nvm use` to make sure you’re using the right version of Node.js and npm.
 
-4. Run `npm install` to make sure you have the latest dependencies installed.
+4. Run `npm ci` to make sure you have the exact dependencies installed.
 
-5. In the CHANGELOG.md, replace the 'Unreleased' heading with the new version number and its release type. For example, '3.14.1 (Fix release)'. Also add a new 'Unreleased' heading above this new heading, so people raising new pull requests know where to add them in the changelog.
+5. Update the [`CHANGELOG.md`](../../CHANGELOG.md) by:
 
-6. Update the `package/package.json` version with the new version number.
+   - changing the 'Unreleased' heading to the new version number and its release type. For example, '3.14.1 (Fix release)'
+   - adding a new 'Unreleased' heading above the new version number and release type, so users will know where to add PRs to the changelog
+
+6. Update [`package/package.json`](../../package/package.json) version with the new version number.
 
 7. Save the changes. Do not commit.
 
 8. Run `npm run build-release` to:
 
-- build GOV.UK Frontend into the `/package` and `/dist` directories
-- commit the changes
-- push a branch to GitHub
+   - build GOV.UK Frontend into the `/package` and `/dist` directories
+   - commit the changes
+   - push a branch to GitHub
 
-  You will now be prompted to continue or cancel.
+   You will now be prompted to continue or cancel.
 
 9. Raise a pull request, with `support/<MAJOR VERSION NUMBER>.x` as the base branch to merge into.
 
@@ -106,7 +109,7 @@ Read the docs for [what to do after publishing a release](/docs/releasing/after-
 
 1. Check out the `main` branch and pull the latest changes.
 
-2. Run `nvm use` and `npm install` to make sure you have the latest dependencies installed.
+2. Run `nvm use` and `npm ci` to make sure you have the exact dependencies installed.
 
 3. Make the same changes as in the patch fix pull request, and test them using our [standard testing requirements](/docs/contributing/testing.md). Remember that `main` will contain changes the support branch did not have, which might affect the code changes you’ll need to make.
 

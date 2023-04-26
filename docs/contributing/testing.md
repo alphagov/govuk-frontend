@@ -139,7 +139,7 @@ To make sure your changes work in the Design System, use `npm link` to test befo
 cd ../govuk-design-system
 git checkout main
 git pull
-npm install # note running `npm install` after `npm link` will destroy the link.
+npm ci # note running `npm ci` after `npm link` will destroy the link.
 npm link ../govuk-frontend/package/
 ```
 
