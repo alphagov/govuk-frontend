@@ -8,9 +8,10 @@
   },
   "license": "MIT",
   "workspaces": [
-    "packages/*",
-    "docs/examples/*",
-    "shared/*"
+    "shared/*",
+    "packages/govuk-frontend",
+    "packages/govuk-frontend-review",
+    "docs/examples/*"
   ],
   "scripts": {
     "postinstall": "npm ls --depth=0",
