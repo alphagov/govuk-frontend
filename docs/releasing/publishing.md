@@ -30,7 +30,15 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
    Do not commit the changes.
 
-7. Run `npm run build-release` to:
+7. Update browser data from ["Can I use"](https://caniuse.com) by running:
+
+   ```
+   npx update-browserslist-db@latest
+   ```
+
+   This step will update the project `package-lock.json` file if updates are found.
+
+8. Run `npm run build-release` to:
 
    - build GOV.UK Frontend into the `/package` and `/dist` directories
    - commit the changes
@@ -38,10 +46,10 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
    You will now be prompted to continue or cancel.
 
-8. Create a pull request and copy the changelog text.
+9. Create a pull request and copy the changelog text.
    When reviewing the PR, check that the version numbers have been updated and that the compiled assets use this version number.
 
-9. Once a reviewer approves the pull request, merge it to **main**.
+10. Once a reviewer approves the pull request, merge it to **main**.
 
 ## Publish a release to npm
 
