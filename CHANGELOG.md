@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+### New features
+
+#### Added inverse modifier for buttons on dark backgrounds
+
+You can now style buttons on dark backgrounds to have a white background colour by adding the `govuk-button--inverse` class.
+
+This change was made in [pull request #3556: Add inverse button styles](https://github.com/alphagov/govuk-frontend/pull/3556).
+
 ### Breaking changes
 
 #### Check that disabled buttons work as expected
