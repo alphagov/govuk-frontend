@@ -26,4 +26,4 @@ runs:
       if: steps.build-cache.outputs.cache-hit != 'true'
       shell: bash
 
-      run: npm run build:app
+      run: npm run build --workspaces --if-present
