@@ -221,13 +221,21 @@ ExitThisPage.prototype.handleKeypress = function (e) {
 
 /**
  * Starts the 'quick escape' keyboard sequence timer.
+ *
+ * This can be invoked several times. We want this to be possible so that the
+ * timer is restarted each time the shortcut key is pressed (e.g. the user has
+ * up to n seconds between each keypress, rather than n seconds to invoke the
+ * entire sequence.)
  */
 ExitThisPage.prototype.setKeypressTimer = function () {
-  if (this.keypressTimeoutId === null) {
-    this.keypressTimeoutId = setTimeout(function () {
-      this.resetKeypressTimer()
-    }.bind(this), this.timeoutTime)
-  }
+  // Clear any existing timeout. This is so only one timer is running even if
+  // there are multiple keypresses in quick succession.
+  clearTimeout(this.keypressTimeoutId)
+
+  // Set a fresh timeout
+  this.keypressTimeoutId = setTimeout(function () {
+    this.resetKeypressTimer()
+  }.bind(this), this.timeoutTime)
 }
 
 /**

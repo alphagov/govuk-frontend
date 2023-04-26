@@ -14,6 +14,7 @@ export default (app) => {
   routes.howDoYouWantToSignIn(app)
   routes.makeAPayment(app)
   routes.search(app)
+  routes.searchThree(app)
   routes.passportDetails(app)
   routes.updateYourAccountDetails(app)
   routes.uploadYourPhoto(app)

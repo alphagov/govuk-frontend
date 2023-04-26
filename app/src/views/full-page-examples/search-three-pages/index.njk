@@ -211,40 +211,13 @@ notes: >-
 
       {{ govukPagination({
         previous: {
+          labelText: "1 of 3",
           href: "#"
         },
         next: {
+          labelText: "3 of 3",
           href: "#"
-        },
-        items: [
-          {
-            number: 1,
-            href: "#"
-          },
-          {
-            ellipsis: true
-          },
-          {
-            number: 6,
-            href: "#"
-          },
-          {
-            number: 7,
-            current: true,
-            href: "#"
-          },
-          {
-            number: 8,
-            href: "#"
-          },
-          {
-            ellipsis: true
-          },
-          {
-            number: 42,
-            href: "#"
-          }
-        ]
+        }
       }) }}
     </div>
   </div>
