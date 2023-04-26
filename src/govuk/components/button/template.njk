@@ -4,9 +4,6 @@
 {%- if params.classes %}
   {% set classNames = classNames + " " + params.classes %}
 {% endif %}
-{% if params.disabled %}
-  {% set classNames = classNames + " govuk-button--disabled" %}
-{% endif -%}
 
 {# Determine type of element to use, if not explicitly set #}
 {%- if params.element %}
