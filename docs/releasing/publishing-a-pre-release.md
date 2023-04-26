@@ -25,7 +25,7 @@ Projects can point to this branch in their package.json, instead of to the publi
 
 3. Run `nvm use` to make sure you’re using the right version of Node.js and npm.
 
-4. Run `npm ci` to make sure you have the correct dependencies installed.
+4. Run `npm ci` to make sure you have the exact dependencies installed.
 
 5. Run `npm run pre-release` to create and push a new branch that contains your changes. This process may take a few moments and will display a `Success!` message.
 
