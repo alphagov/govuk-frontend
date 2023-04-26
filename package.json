@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "govuk-frontend-repository",
-  "description": "Used only for the development of GOV.UK Frontend, see `package/dist/package.json` for the published `package.json`",
+  "description": "Used only for the development of GOV.UK Frontend, see `package/package.json` for the published `package.json`",
   "engines": {
     "node": "^18.12.0",
     "npm": "^8.1.0 || ^9.1.0"

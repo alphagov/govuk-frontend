@@ -1,8 +1,0 @@
-# Build output
-dist/*
-
-# Maintain separate files for publishing, including package.json
-# without `dist/` on package exports for backwards compatibility
-!dist/
-!dist/package.json
-!dist/README.md

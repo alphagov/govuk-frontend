@@ -13,19 +13,15 @@ import { scripts, styles } from '../index.mjs'
 export default gulp.series(
   task.name('clean:package', () =>
     files.clean('*', {
-      destPath: join(paths.package, 'dist'),
-      ignore: [
-        '**/package.json',
-        '**/README.md'
-      ]
+      destPath: join(paths.package, 'dist')
     })
   ),
 
   // Copy GOV.UK Frontend template files
   task.name("copy:package 'templates'", () =>
     files.copy('**/*.{md,njk}', {
-      srcPath: join(paths.package, 'src/govuk'),
-      destPath: join(paths.package, 'dist/govuk')
+      srcPath: join(paths.package, 'src'),
+      destPath: join(paths.package, 'dist')
     })
   ),
 

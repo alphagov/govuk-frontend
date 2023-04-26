@@ -13,7 +13,6 @@ dist/
 
 # Build output (committed)
 !/dist
-!/package/dist
 
 # Files to ignore
 .DS_Store

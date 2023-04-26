@@ -57,7 +57,7 @@ Read the docs for [what to do before publishing a release](/docs/releasing/befor
 
 5. In the CHANGELOG.md, replace the 'Unreleased' heading with the new version number and its release type. For example, '3.14.1 (Fix release)'. Also add a new 'Unreleased' heading above this new heading, so people raising new pull requests know where to add them in the changelog.
 
-6. Update the `package/dist/package.json` version with the new version number.
+6. Update the `package/package.json` version with the new version number.
 
 7. Save the changes. Do not commit.
 

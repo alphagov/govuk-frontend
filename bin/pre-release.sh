@@ -22,24 +22,17 @@ git checkout -b $BRANCH_NAME
 # Build the package as normal
 npm run build:package
 
-# Check if the new built package has anything new to commit
-if [[ -n $(git status --porcelain) ]]; then
-  echo "✍️ Commiting changed package"
-  git add package/dist/
+echo "✍️ Commiting status"
+git commit --allow-empty -m "Release GOV.UK Frontend to '$BRANCH_NAME' for testing"
 
-  git commit -m "Release GOV.UK Frontend to '$BRANCH_NAME' for testing"
+# Create a local branch containing the package directory
+echo "✨ Filter the branch to only the package/ directory..."
+git filter-branch --force --subdirectory-filter package
 
-  # Create a local branch containing the package/dist directory
-  echo "✨ Filter the branch to only the package/dist/ directory..."
-  git filter-branch --force --subdirectory-filter package/dist
+# Force the push of the branch to the remote Github origin
+git push origin $BRANCH_NAME:$BRANCH_NAME --force
 
-  # Force the push of the branch to the remote Github origin
-  git push origin $BRANCH_NAME:$BRANCH_NAME --force
-
-  echo "⚠️ Branch pushed to '$BRANCH_NAME', do not edit this by hand."
-else
-  echo "⚠️ No new changes to the package."
-fi
+echo "⚠️ Branch pushed to '$BRANCH_NAME', do not edit this by hand."
 
 git checkout -
 

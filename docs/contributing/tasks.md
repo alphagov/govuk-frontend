@@ -49,7 +49,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - output files into `./dist`
 - copy fonts and images
 - compile JavaScript and Sass
-- append version number from `package/dist/package.json` to compiled JavaScript and CSS files
+- append version number from `package/package.json` to compiled JavaScript and CSS files
 - runs `npm run postbuild:release` (which will test the output is correct)
 
 ## Gulp tasks

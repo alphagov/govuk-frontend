@@ -53,8 +53,8 @@ cd package/dist
 echo "🗒 Package published!"
 cd ..
 
-# Extract tag version from ./package/dist/package.json
-ALL_PACKAGE_VERSION=$(node -p "require('./package/dist/package.json').version")
+# Extract tag version from ./package/package.json
+ALL_PACKAGE_VERSION=$(node -p "require('./package/package.json').version")
 TAG="v$ALL_PACKAGE_VERSION"
 
 if [ $(git tag -l "$TAG") ]; then

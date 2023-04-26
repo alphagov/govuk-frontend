@@ -4,6 +4,11 @@
   "version": "4.6.0",
   "main": "govuk/all.js",
   "module": "govuk-esm/all.mjs",
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
   "exports": {
     ".": {
       "sass": "./govuk/all.scss",
@@ -39,5 +44,28 @@
     "design system",
     "template"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run build:package",
+    "build:package": "gulp build:package --color",
+    "build:release": "gulp build:release --color",
+    "dev": "gulp dev --color"
+  },
+  "devDependencies": {
+    "govuk-frontend-config": "*",
+    "govuk-frontend-helpers": "*",
+    "govuk-frontend-lib": "*",
+    "govuk-frontend-tasks": "*",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
+    "nunjucks": "^3.2.4",
+    "outdent": "^0.8.0",
+    "sass-color-helpers": "^2.1.1",
+    "sass-embedded": "^1.62.0",
+    "sassdoc": "^2.7.4",
+    "slash": "^5.0.0",
+    "html-validate": "7.15.1",
+    "puppeteer": "^19.11.0",
+    "typed-query-selector": "^2.10.1"
+  }
 }

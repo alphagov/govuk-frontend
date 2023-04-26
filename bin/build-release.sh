@@ -3,7 +3,7 @@ set -e
 
 # Check if there are unexpected changes. Changes to CHANGELOG.md and the
 # package.json file are expected as part of the normal release process.
-changes="$(git status --porcelain -- ':!CHANGELOG.md' ':!package/dist/package.json')"
+changes="$(git status --porcelain -- ':!CHANGELOG.md' ':!package/package.json')"
 if [[ -n $changes ]]; then
   echo "⚠ Unexpected changes in your working directory:"
   echo "$changes"
@@ -30,12 +30,12 @@ npm run test
 npm run build:package
 npm run build:release
 
-ALL_PACKAGE_VERSION=$(node -p "require('./package/dist/package.json').version")
+ALL_PACKAGE_VERSION=$(node -p "require('./package/package.json').version")
 TAG="v$ALL_PACKAGE_VERSION"
 CURRENT_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 
 if [ $(git tag -l "$TAG") ]; then
-    echo "⚠️ Git tag $TAG already exists. Check you have updated the version in package/dist/package.json correctly."
+    echo "⚠️ Git tag $TAG already exists. Check you have updated the version in package/package.json correctly."
     exit 1;
 else
     git add .
