@@ -13,9 +13,8 @@ runs:
         key: npm-install-cache-${{ runner.os }}-${{ hashFiles('package-lock.json', '**/package.json') }}
         path: |
           node_modules
-          app/node_modules
           docs/examples/*/node_modules
-          package/node_modules
+          packages/*/node_modules
           shared/*/node_modules
 
     - name: Setup Node.js

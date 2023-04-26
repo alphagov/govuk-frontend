@@ -1,9 +1,9 @@
 {
-  "extends": "../tsconfig.base.json",
+  "extends": "../../tsconfig.base.json",
   "include": [
     "**/*.js",
     "**/*.mjs",
-    "../package",
+    "../packages/govuk-frontend",
     "../shared/config",
     "../shared/lib",
     "../shared/tasks"

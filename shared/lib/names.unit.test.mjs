@@ -97,12 +97,12 @@ describe('componentPathToModuleName', () => {
     const pathRelativeToSource = relative(srcPath, pathAbsolute)
 
     // Absolute path
-    // For example `/path/to/project/package/src/govuk/components/button/button.mjs`
+    // For example `/path/to/project/packages/govuk-frontend/src/govuk/components/button/button.mjs`
     expect(componentPathToModuleName(pathAbsolute))
       .toBe(moduleName)
 
     // Relative path (to project)
-    // For example `package/src/govuk/components/button/button.mjs`
+    // For example `packages/govuk-frontend/src/govuk/components/button/button.mjs`
     expect(componentPathToModuleName(pathRelativeToRoot))
       .toBe(moduleName)
 

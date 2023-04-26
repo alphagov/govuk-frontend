@@ -8,7 +8,7 @@ import { scripts, styles } from '../index.mjs'
 
 /**
  * Build package task
- * Prepare package/dist folder for npm publish
+ * Prepare packages/govuk-frontend/dist folder for npm publish
  */
 export default gulp.series(
   task.name('clean:package', () =>

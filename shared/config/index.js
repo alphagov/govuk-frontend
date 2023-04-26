@@ -1,4 +1,4 @@
-const pkg = require('govuk-frontend/package.json')
+const pkg = require('../../packages/govuk-frontend/package.json')
 
 /**
  * Config

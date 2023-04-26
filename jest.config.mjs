@@ -20,7 +20,7 @@ const config = {
 
   modulePathIgnorePatterns: [
     '<rootDir>/dist/',
-    '<rootDir>/package/dist/'
+    '<rootDir>/packages/govuk-frontend/dist/'
   ],
 
   /**
@@ -59,7 +59,7 @@ const config = {
  * ```
  */
 export default {
-  collectCoverageFrom: ['./package/src/**/*.{js,mjs}'],
+  collectCoverageFrom: ['./packages/govuk-frontend/src/**/*.{js,mjs}'],
 
   // Reduce CPU usage during project test runs
   maxWorkers: headless

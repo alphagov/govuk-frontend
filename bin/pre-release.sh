@@ -25,9 +25,9 @@ npm run build:package
 echo "✍️ Commiting status"
 git commit --allow-empty -m "Release GOV.UK Frontend to '$BRANCH_NAME' for testing"
 
-# Create a local branch containing the package directory
-echo "✨ Filter the branch to only the package/ directory..."
-git filter-branch --force --subdirectory-filter package
+# Create a local branch containing the packages/govuk-frontend directory
+echo "✨ Filter the branch to only the packages/govuk-frontend/ directory..."
+git filter-branch --force --subdirectory-filter packages/govuk-frontend
 
 # Force the push of the branch to the remote Github origin
 git push origin $BRANCH_NAME:$BRANCH_NAME --force

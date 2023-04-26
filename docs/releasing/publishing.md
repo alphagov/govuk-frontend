@@ -19,13 +19,13 @@ Developers should pair on releases. When remote working, it can be useful to be 
    - changing the 'Unreleased' heading to the new version-number and release-type - for example, '3.11.0 (Feature release)'
    - adding a new 'Unreleased' heading above the new version-number and release-type, so users will know where to add PRs to the changelog
 
-6. Update [`package/package.json`](../../package/package.json) version with the new version-number.
+6. Update [`packages/govuk-frontend/package.json`](../../packages/govuk-frontend/package.json) version with the new version-number.
 
 7. Save the changes. Do not commit.
 
 8. Run `npm run build-release` to:
 
-   - build GOV.UK Frontend into the `/package/dist` and `/dist` directories
+   - build GOV.UK Frontend into the `/packages/govuk-frontend/dist` and `/dist` directories
    - commit the changes
    - push a branch to GitHub
 

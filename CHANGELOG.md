@@ -8,17 +8,29 @@ You must make the following changes when you migrate to this release, or your se
 
 #### Update package file paths
 
-To support package dependencies, we’ve moved our source files from `src` into `package/src`. In preparation for additional build targets, our package is now compiled into `package/dist`.
+To support package dependencies, we’ve moved our source files from `src` into `packages/govuk-frontend/src`. In preparation for additional build targets, our package is now compiled into `packages/govuk-frontend/dist`.
 
-##### Node.js and other bundlers
+##### Node.js, Express.js and bundlers
 
-Depending on the bundler you use, you may also need to make changes to your configuration file or assets paths to replace `node_modules/govuk-frontend` with `node_modules/govuk-frontend/dist`.
+Depending on tools you use to consume GOV.UK Frontend, you may need to make changes to your configuration file or assets paths to replace `node_modules/govuk-frontend` with `node_modules/govuk-frontend/dist`.
 
 This is typically where Node.js v12.19.0+ [`package.json` subpath patterns](https://nodejs.org/docs/latest-v18.x/api/packages.html#subpath-patterns) are not supported.
 
+If your code uses Express.js, updated paths to GOV.UK Frontend assets look like:
+
+```javascript
+app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/dist/govuk/assets')))
+```
+
+Alternatively Node.js can locate `govuk-frontend` for you:
+
+```javascript
+app.use('/assets', express.static(path.join(path.dirname(require.resolve('govuk-frontend')), 'assets')))
+```
+
 ##### If you’re using Sass
 
-Replace `govuk-frontend/govuk` with `govuk-frontend/govuk/dist` in any [Sass](https://sass-lang.com/) `@import` paths.
+Replace `govuk-frontend/govuk` with `govuk-frontend/govuk/dist` in [Sass `loadPaths`](https://sass-lang.com/documentation/js-api/interfaces/Options#loadPaths) (previously [`includePaths` in Node Sass](https://sass-lang.com/documentation/js-api/interfaces/LegacyStringOptions#includePaths)).
 
 For example:
 
@@ -28,10 +40,20 @@ For example:
 
 If you’ve [added `node_modules/govuk-frontend` as a Sass import path](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#simplify-sass-import-paths), update it with the `/dist` suffix:
 
-```js
+```javascript
 loadPaths: [
   'node_modules/govuk-frontend/dist'
 ]
+```
+
+##### If you’re using Nunjucks
+
+Replace `govuk-frontend/govuk` with `govuk-frontend/govuk/dist` in the search paths passed to [`nunjucks.configure()`](https://mozilla.github.io/nunjucks/api.html#configure).
+
+```javascript
+nunjucks.configure([
+  'node_modules/govuk-frontend/dist'
+])
 ```
 
 These changes were made in the following pull requests:

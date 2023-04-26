@@ -56,8 +56,8 @@ describe('dist/', () => {
     })
 
     it('should contain relative paths to sources', () => {
-      expect(sourcemap.sources).toContain('../package/src/govuk/all.scss')
-      expect(sourcemap.sources).toContain('../package/src/govuk/core/_govuk-frontend-version.scss')
+      expect(sourcemap.sources).toContain('../packages/govuk-frontend/src/govuk/all.scss')
+      expect(sourcemap.sources).toContain('../packages/govuk-frontend/src/govuk/core/_govuk-frontend-version.scss')
     })
   })
 
@@ -89,8 +89,8 @@ describe('dist/', () => {
     })
 
     it('should contain relative paths to sources', () => {
-      expect(sourcemap.sources).toContain('../package/src/govuk/all-ie8.scss')
-      expect(sourcemap.sources).toContain('../package/src/govuk/core/_govuk-frontend-version.scss')
+      expect(sourcemap.sources).toContain('../packages/govuk-frontend/src/govuk/all-ie8.scss')
+      expect(sourcemap.sources).toContain('../packages/govuk-frontend/src/govuk/core/_govuk-frontend-version.scss')
     })
   })
 
@@ -126,8 +126,8 @@ describe('dist/', () => {
     })
 
     it('should contain relative paths to sources', () => {
-      expect(sourcemap.sources).toContain('../package/src/govuk/all.mjs')
-      expect(sourcemap.sources).toContain('../package/src/govuk/common/govuk-frontend-version.mjs')
+      expect(sourcemap.sources).toContain('../packages/govuk-frontend/src/govuk/all.mjs')
+      expect(sourcemap.sources).toContain('../packages/govuk-frontend/src/govuk/common/govuk-frontend-version.mjs')
     })
   })
 
