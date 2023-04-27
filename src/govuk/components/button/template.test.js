@@ -40,7 +40,6 @@ describe('Button', () => {
       const $component = $('.govuk-button')
       expect($component.attr('aria-disabled')).toEqual('true')
       expect($component.attr('disabled')).toEqual('disabled')
-      expect($component.hasClass('govuk-button--disabled')).toBeTruthy()
     })
 
     it('renders with name', () => {
@@ -134,13 +133,6 @@ describe('Button', () => {
       const $component = $('.govuk-button')
       expect($component.hasClass('app-button--custom-modifier')).toBeTruthy()
     })
-
-    it('renders with disabled', () => {
-      const $ = render('button', examples['link disabled'])
-
-      const $component = $('.govuk-button')
-      expect($component.hasClass('govuk-button--disabled')).toBeTruthy()
-    })
   })
 
   describe('with explicit input button set by "element"', () => {
@@ -173,7 +165,6 @@ describe('Button', () => {
       const $component = $('.govuk-button')
       expect($component.attr('aria-disabled')).toEqual('true')
       expect($component.attr('disabled')).toEqual('disabled')
-      expect($component.hasClass('govuk-button--disabled')).toBeTruthy()
     })
 
     it('renders with name', () => {

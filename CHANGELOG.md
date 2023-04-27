@@ -20,7 +20,17 @@ If you are using `$button.getAttribute('disabled')` to check for the disabled at
 
 Instead we recommend checking for the disabled attribute using [`$button.hasAttribute('disabled')`](https://developer.mozilla.org/en-US/docs/Web/API/Element/hasAttribute) or the [`$button.disabled` IDL attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/disabled).
 
-This change was made in [pull request #2830: Set the boolean disabled attribute consistently in the button component](https://github.com/alphagov/govuk-frontend/pull/2830).
+This change was introduced in [pull request #2830: Set the boolean disabled attribute consistently in the button component](https://github.com/alphagov/govuk-frontend/pull/2830).
+
+#### Remove deprecated `.govuk-button--disabled` class
+
+We've removed the `.govuk-button--disabled` class that we deprecated in [GOV.UK Frontend v4.6.0](https://github.com/alphagov/govuk-frontend/releases/tag/v4.6.0).
+
+Use the `disabled` attribute to mark `<button>` and `<input>` elements as being disabled instead.
+
+We no longer support link buttons being disabled or using disabled styles.
+
+This change was introduced in [pull request #3557: Remove deprecated `.govuk-button--disabled` class](https://github.com/alphagov/govuk-frontend/pull/3557).
 
 ## 4.6.0 (Feature release)
 

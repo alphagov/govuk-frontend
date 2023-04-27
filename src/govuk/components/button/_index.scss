@@ -172,10 +172,6 @@ $govuk-button-text-colour: govuk-colour("white") !default;
     }
   }
 
-  // @deprecated Disabling buttons using the .govuk-button--disabled class is
-  // deprecated and will be removed in the next major version.
-  .govuk-button--disabled,
-  .govuk-button[disabled="disabled"],
   .govuk-button[disabled] {
     opacity: (.5);
 
