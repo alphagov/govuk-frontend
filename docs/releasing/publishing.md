@@ -18,12 +18,19 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
    - changing the 'Unreleased' heading to the new version number and release type. For example, '3.11.0 (Feature release)'
    - adding a new 'Unreleased' heading above the new version number and release type, so users will know where to add PRs to the changelog
+   - saving your changes
 
-6. Update [`package/package.json`](../../package/package.json) version with the new version number.
+6. Apply the new version number by running:
 
-7. Save the changes. Do not commit.
+   ```
+   npm version <NEW VERSION NUMBER> --no-git-tag-version --workspace package
+   ```
 
-8. Run `npm run build-release` to:
+   This step will update the `package.json` and project `package-lock.json` files.
+
+   Do not commit the changes.
+
+7. Run `npm run build-release` to:
 
    - build GOV.UK Frontend into the `/package` and `/dist` directories
    - commit the changes
@@ -31,10 +38,10 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
    You will now be prompted to continue or cancel.
 
-9. Create a pull request and copy the changelog text.
+8. Create a pull request and copy the changelog text.
    When reviewing the PR, check that the version numbers have been updated and that the compiled assets use this version number.
 
-10. Once a reviewer approves the pull request, merge it to **main**.
+9. Once a reviewer approves the pull request, merge it to **main**.
 
 ## Publish a release to npm
 
