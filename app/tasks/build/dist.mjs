@@ -4,7 +4,7 @@ import { paths } from 'govuk-frontend-config'
 import { files, task } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
 
-import { assets, scripts, styles } from '../index.mjs'
+import { scripts, styles } from '../index.mjs'
 
 /**
  * Build review app task
@@ -18,7 +18,6 @@ export default gulp.series(
   ),
 
   gulp.parallel(
-    assets,
     scripts,
     styles
   )
