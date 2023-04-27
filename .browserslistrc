@@ -10,8 +10,5 @@ Safari >= 9
 ie 9-11
 iOS >= 9
 
-[oldie]
-ie 8
-
 [node]
 node 18
