@@ -3,7 +3,6 @@ const { outdent } = require('outdent')
 
 describe('grid system', () => {
   const sassImports = `
-    @import "settings/ie8";
     @import "settings/media-queries";
     @import "settings/spacing";
     @import "settings/measurements";
