@@ -1,6 +1,5 @@
 import { join } from 'path'
 
-import { paths } from 'govuk-frontend-config'
 import { npm, scripts, task } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
 
@@ -13,9 +12,7 @@ import gulp from 'gulp'
 export const compile = (options) => gulp.series(
   task.name('compile:js', () =>
     scripts.compile('all.mjs', {
-      // TODO: Review app should use `options.srcPath` to
-      // import scripts from its own `javascripts` directory
-      srcPath: join(paths.package, 'src/govuk'),
+      srcPath: join(options.srcPath, 'javascripts'),
       destPath: join(options.destPath, 'javascripts'),
 
       filePath (file) {

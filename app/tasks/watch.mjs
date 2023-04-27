@@ -35,6 +35,7 @@ export const watch = (options) => gulp.parallel(
   task.name('compile:js watch', () =>
     gulp.watch([
       `${slash(paths.root)}/typedoc.config.js`,
+      `${slash(paths.app)}/src/javascripts/**/*.mjs`,
       `${slash(paths.package)}/src/govuk/**/*.mjs`
     ], gulp.parallel(
       npm.script('lint:js'),
