@@ -1,9 +1,9 @@
 #!/bin/sh
 set -e
 
-# Check if there are unexpected changes. Changes to CHANGELOG.md and the
-# package.json file are expected as part of the normal release process.
-changes="$(git status --porcelain -- ':!CHANGELOG.md' ':!package/package.json')"
+# Check if there are unexpected changes. Changes to CHANGELOG.md, package.json
+# and package-lock.json files are expected as part of the normal release process.
+changes="$(git status --porcelain -- ':!CHANGELOG.md' ':!package/package.json' ':!package-lock.json')"
 if [[ -n $changes ]]; then
   echo "⚠ Unexpected changes in your working directory:"
   echo "$changes"
@@ -35,7 +35,7 @@ TAG="v$ALL_PACKAGE_VERSION"
 CURRENT_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 
 if [ $(git tag -l "$TAG") ]; then
-    echo "⚠️ Git tag $TAG already exists. Check you have updated the version in package/package.json correctly."
+    echo "⚠️ Git tag $TAG already exists. Check you have run `npm version` correctly."
     exit 1;
 else
     git add .
