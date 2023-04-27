@@ -59,12 +59,19 @@ Read the docs for [what to do before publishing a release](/docs/releasing/befor
 
    - changing the 'Unreleased' heading to the new version number and its release type. For example, '3.14.1 (Fix release)'
    - adding a new 'Unreleased' heading above the new version number and release type, so users will know where to add PRs to the changelog
+   - saving your changes
 
-6. Update [`package/package.json`](../../package/package.json) version with the new version number.
+6. Apply the new version number by running:
 
-7. Save the changes. Do not commit.
+   ```
+   npm version <NEW VERSION NUMBER> --no-git-tag-version --workspace package
+   ```
 
-8. Run `npm run build-release` to:
+   This step will update the `package.json` and project `package-lock.json` files.
+
+   Do not commit the changes.
+
+7. Run `npm run build-release` to:
 
    - build GOV.UK Frontend into the `/package` and `/dist` directories
    - commit the changes
@@ -72,9 +79,9 @@ Read the docs for [what to do before publishing a release](/docs/releasing/befor
 
    You will now be prompted to continue or cancel.
 
-9. Raise a pull request, with `support/<MAJOR VERSION NUMBER>.x` as the base branch to merge into.
+8. Raise a pull request, with `support/<MAJOR VERSION NUMBER>.x` as the base branch to merge into.
 
-10. Once a developer approves the pull request, merge it into `support/<MAJOR VERSION NUMBER>.x`.
+9. Once a developer approves the pull request, merge it into `support/<MAJOR VERSION NUMBER>.x`.
 
 ### Publish the release to npm
 

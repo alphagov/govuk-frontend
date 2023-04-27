@@ -10,7 +10,7 @@ CURRENT_VERSION=$(node -p "require('./package/package.json').version")
 function version() { echo "$@" | awk -F. '{ printf("%d%03d%03d\n", $1,$2,$3); }'; }
 
 if [ $CURRENT_VERSION == $HIGHEST_PUBLISHED_VERSION ]; then
-  echo "⚠️ Git tag $TAG already exists. Check you have updated the version in package/package.json correctly."
+  echo "⚠️ Git tag $TAG already exists. Check you have run `npm version` correctly."
   exit 1
 elif [ $(version $CURRENT_VERSION) -ge $(version $HIGHEST_PUBLISHED_VERSION) ]; then
   NPM_TAG="latest"
