@@ -16,6 +16,7 @@ function Radios ($module) {
     return this
   }
 
+  /** @satisfies {NodeListOf<HTMLInputElement>} */
   var $inputs = $module.querySelectorAll('input[type="radio"]')
   if (!$inputs.length) {
     return this
@@ -139,6 +140,7 @@ Radios.prototype.handleClick = function (event) {
 
   // We only need to consider radios with conditional reveals, which will have
   // aria-controls attributes.
+  /** @satisfies {NodeListOf<HTMLInputElement>} */
   var $allInputs = document.querySelectorAll('input[type="radio"][aria-controls]')
 
   var $clickedInputForm = $clickedInput.form
