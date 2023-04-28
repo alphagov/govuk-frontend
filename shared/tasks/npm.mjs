@@ -14,13 +14,18 @@ import { task } from './index.mjs'
  */
 export async function run (name, pkgPath = paths.root) {
   try {
-    await runScript({
+    const task = await runScript({
       event: name,
       path: pkgPath,
       stdio: 'inherit'
     })
+
+    // Throw on missing npm script
+    if (!task.cmd) {
+      throw new Error(`Task '${name}' not found in '${pkgPath}'`)
+    }
   } catch (cause) {
-    const error = new Error(`Task for npm script '${name}' exit code ${cause.code}`, { cause })
+    const error = new Error(`Task for npm script '${name}' failed`, { cause })
 
     if (!isDev) {
       throw new PluginError(`npm run ${name}`, error, {
