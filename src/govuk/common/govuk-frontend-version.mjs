@@ -3,4 +3,9 @@
  * It doesn't need to be updated manually.
  */
 
+/**
+ * GOV.UK Frontend release version
+ *
+ * {@link https://github.com/alphagov/govuk-frontend/releases}
+ */
 export var version = 'development'
