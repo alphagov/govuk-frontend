@@ -5,4 +5,4 @@ import gulp from 'gulp'
  * Build target tasks
  */
 gulp.task('build:package', build.package)
-gulp.task('build:dist', build.dist)
+gulp.task('build:release', build.release)

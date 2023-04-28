@@ -11,7 +11,7 @@ describe('dist/', () => {
 
   beforeAll(async () => {
     listingSourceAssets = await getListing(join(paths.src, 'govuk/assets'))
-    listingDistAssets = await getListing(join(paths.dist, 'assets'))
+    listingDistAssets = await getListing(join(paths.root, 'dist/assets'))
   })
 
   describe('assets/', () => {
@@ -26,7 +26,7 @@ describe('dist/', () => {
 
     beforeAll(async () => {
       filename = `govuk-frontend-${pkg.version}.min.css`
-      stylesheet = await readFile(join(paths.dist, filename), 'utf8')
+      stylesheet = await readFile(join(paths.root, `dist/${filename}`), 'utf8')
     })
 
     it('should not contain current media query displayed on body element', () => {
@@ -52,7 +52,7 @@ describe('dist/', () => {
 
     beforeAll(async () => {
       filename = `govuk-frontend-${pkg.version}.min.css.map`
-      sourcemap = JSON.parse(await readFile(join(paths.dist, filename), 'utf8'))
+      sourcemap = JSON.parse(await readFile(join(paths.root, `dist/${filename}`), 'utf8'))
     })
 
     it('should contain relative paths to sources', () => {
@@ -67,7 +67,7 @@ describe('dist/', () => {
 
     beforeAll(async () => {
       filename = `govuk-frontend-ie8-${pkg.version}.min.css`
-      stylesheet = await readFile(join(paths.dist, filename), 'utf8')
+      stylesheet = await readFile(join(paths.root, `dist/${filename}`), 'utf8')
     })
 
     it('should not contain current media query displayed on body element', () => {
@@ -85,7 +85,7 @@ describe('dist/', () => {
 
     beforeAll(async () => {
       filename = `govuk-frontend-ie8-${pkg.version}.min.css.map`
-      sourcemap = JSON.parse(await readFile(join(paths.dist, filename), 'utf8'))
+      sourcemap = JSON.parse(await readFile(join(paths.root, `dist/${filename}`), 'utf8'))
     })
 
     it('should contain relative paths to sources', () => {
@@ -100,7 +100,7 @@ describe('dist/', () => {
 
     beforeAll(async () => {
       filename = `govuk-frontend-${pkg.version}.min.js`
-      javascript = await readFile(join(paths.dist, filename), 'utf8')
+      javascript = await readFile(join(paths.root, `dist/${filename}`), 'utf8')
     })
 
     it('should have the correct version name', () => {
@@ -122,7 +122,7 @@ describe('dist/', () => {
 
     beforeAll(async () => {
       filename = `govuk-frontend-${pkg.version}.min.js.map`
-      sourcemap = JSON.parse(await readFile(join(paths.dist, filename), 'utf8'))
+      sourcemap = JSON.parse(await readFile(join(paths.root, `dist/${filename}`), 'utf8'))
     })
 
     it('should contain relative paths to sources', () => {
@@ -137,7 +137,7 @@ describe('dist/', () => {
 
     beforeAll(async () => {
       filename = 'VERSION.txt'
-      version = await readFile(join(paths.dist, filename), 'utf8')
+      version = await readFile(join(paths.root, `dist/${filename}`), 'utf8')
     })
 
     it('should contain the correct version', () => {

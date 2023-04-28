@@ -12,7 +12,7 @@ import { files, scripts, styles, task } from '../index.mjs'
 export default gulp.series(
   task.name('clean', () =>
     files.clean('**/*', {
-      destPath: paths.dist
+      destPath: join(paths.root, 'dist')
     })
   ),
 
@@ -20,7 +20,7 @@ export default gulp.series(
   task.name('copy:assets', () =>
     files.copy('*/**', {
       srcPath: join(paths.src, 'govuk/assets'),
-      destPath: join(paths.dist, 'assets')
+      destPath: join(paths.root, 'dist/assets')
     })
   ),
 
@@ -28,7 +28,7 @@ export default gulp.series(
   task.name('compile:js', () =>
     scripts.compile('all.mjs', {
       srcPath: join(paths.src, 'govuk'),
-      destPath: paths.dist,
+      destPath: join(paths.root, 'dist'),
 
       filePath (file) {
         return join(file.dir, `${file.name.replace(/^all/, pkg.name)}-${pkg.version}.min.js`)
@@ -40,7 +40,7 @@ export default gulp.series(
   task.name('compile:scss', () =>
     styles.compile('**/[!_]*.scss', {
       srcPath: join(paths.src, 'govuk'),
-      destPath: paths.dist,
+      destPath: join(paths.root, 'dist'),
 
       filePath (file) {
         return join(file.dir, `${file.name.replace(/^all/, pkg.name)}-${pkg.version}.min.css`)
@@ -51,7 +51,7 @@ export default gulp.series(
   // Update GOV.UK Frontend version
   task.name("file:version 'VERSION.txt'", () =>
     files.version('VERSION.txt', {
-      destPath: paths.dist
+      destPath: join(paths.root, 'dist')
     })
   )
 )

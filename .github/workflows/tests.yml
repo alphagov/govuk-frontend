@@ -159,8 +159,8 @@ jobs:
             run: npm run build:package
 
           - description: Verify distribution build
-            name: test-build-dist
-            run: npm run build:dist
+            name: test-build-release
+            run: npm run build:release
 
           - description: JavaScript behaviour tests
             name: test-behaviour

@@ -44,8 +44,8 @@ describe('Task arguments', () => {
         expect(isDev).toBe(false)
       })
 
-      it("is flagged false for 'gulp build:dist'", async () => {
-        process.argv = [...argv, 'build:dist']
+      it("is flagged false for 'gulp build:release'", async () => {
+        process.argv = [...argv, 'build:release']
 
         const { isDev } = await import('./task-arguments.mjs')
         expect(isDev).toBe(false)

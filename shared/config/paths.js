@@ -10,9 +10,6 @@ module.exports = {
   root: rootPath,
   src: join(rootPath, 'src'),
 
-  // Build: Release distribution
-  dist: join(rootPath, 'dist'),
-
   // Build: Package for npm publish
   package: join(rootPath, 'package'),
 
