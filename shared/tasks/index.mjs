@@ -10,3 +10,10 @@ export * as npm from './npm.mjs'
 export * as scripts from './scripts.mjs'
 export * as styles from './styles.mjs'
 export * as task from './task.mjs'
+
+/**
+ * Types for tasks
+ *
+ * @typedef {Required<import('./assets.mjs').AssetPathOptions>} TaskOptions
+ * @typedef {(options: TaskOptions) => import('gulp').TaskFunction} TaskFunction
+ */

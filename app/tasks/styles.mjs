@@ -1,18 +1,19 @@
 import { join } from 'path'
 
-import { paths } from 'govuk-frontend-config'
 import { npm, styles, task } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
 
 /**
  * Stylesheets task (for watch)
  * Compilation, documentation
+ *
+ * @type {import('govuk-frontend-tasks').TaskFunction}
  */
-export const compile = gulp.series(
+export const compile = (options) => gulp.series(
   task.name('compile:scss', () =>
     styles.compile('**/[!_]*.scss', {
-      srcPath: join(paths.app, 'src/stylesheets'),
-      destPath: join(paths.app, 'dist/stylesheets'),
+      srcPath: join(options.srcPath, 'stylesheets'),
+      destPath: join(options.destPath, 'stylesheets'),
 
       filePath (file) {
         return join(file.dir, `${file.name}.min.css`)

@@ -1,6 +1,3 @@
-import { join } from 'path'
-
-import { paths } from 'govuk-frontend-config'
 import { files, task } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
 
@@ -9,16 +6,16 @@ import { scripts, styles } from '../index.mjs'
 /**
  * Build review app task
  * Prepare dist folder for review app
+ *
+ * @type {import('govuk-frontend-tasks').TaskFunction}
  */
-export default gulp.series(
+export default (options) => gulp.series(
   task.name('clean', () =>
-    files.clean('**/*', {
-      destPath: join(paths.app, 'dist')
-    })
+    files.clean('**/*', options)
   ),
 
   gulp.parallel(
-    scripts,
-    styles
+    scripts(options),
+    styles(options)
   )
 )

@@ -3,7 +3,7 @@
  *
  * {@link https://gulpjs.com/docs/en/api/task#task-metadata}
  *
- * @template {(() => Promise<void>) & { displayName?: string }} TaskFunction
+ * @template {import('gulp').TaskFunction} TaskFunction
  * @param {string} displayName - Task name for Gulp CLI
  * @param {TaskFunction} taskFn - Task function to wrap
  * @returns {TaskFunction} Script run
