@@ -1,5 +1,6 @@
-import { mkdir, writeFile } from 'fs/promises'
-import { dirname, relative } from 'path'
+import { dirname, parse, relative } from 'path'
+
+import { files } from './index.mjs'
 
 /**
  * Write asset helper
@@ -9,7 +10,7 @@ import { dirname, relative } from 'path'
  * @returns {Promise<void>}
  */
 export async function write (filePath, result) {
-  await mkdir(dirname(filePath), { recursive: true })
+  const { base, dir } = parse(filePath)
 
   const writeTasks = []
 
@@ -19,7 +20,13 @@ export async function write (filePath, result) {
   const code = 'css' in result ? result.css : result.code
 
   // 1. Write code (example.js)
-  writeTasks.push(writeFile(filePath, code))
+  writeTasks.push(files.write(base, {
+    destPath: dir,
+
+    async fileContents () {
+      return code
+    }
+  }))
 
   // 2. Write source map (example.js.map)
   if (map && 'sources' in map) {
@@ -34,7 +41,13 @@ export async function write (filePath, result) {
         : path
       )
 
-    writeTasks.push(writeFile(`${filePath}.map`, JSON.stringify(map)))
+    writeTasks.push(files.write(`${base}.map`, {
+      destPath: dir,
+
+      async fileContents () {
+        return JSON.stringify(map)
+      }
+    }))
   }
 
   await Promise.all(writeTasks)

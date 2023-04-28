@@ -38,7 +38,7 @@ describe('dist/', () => {
     })
 
     it('should contain source mapping URL', () => {
-      expect(stylesheet).toMatch(new RegExp(`/\\*# sourceMappingURL=${filename}.map \\*/$`))
+      expect(stylesheet).toMatch(new RegExp(`/\\*# sourceMappingURL=${filename}.map \\*/${EOL}$`))
     })
 
     it('should contain version number custom property', () => {
@@ -75,7 +75,7 @@ describe('dist/', () => {
     })
 
     it('should contain source mapping URL', () => {
-      expect(stylesheet).toMatch(new RegExp(`/\\*# sourceMappingURL=${filename}.map \\*/$`))
+      expect(stylesheet).toMatch(new RegExp(`/\\*# sourceMappingURL=${filename}.map \\*/${EOL}$`))
     })
   })
 
@@ -112,7 +112,7 @@ describe('dist/', () => {
     })
 
     it('should contain source mapping URL', () => {
-      expect(javascript).toMatch(new RegExp(`//# sourceMappingURL=${filename}.map$`))
+      expect(javascript).toMatch(new RegExp(`//# sourceMappingURL=${filename}.map${EOL}$`))
     })
   })
 
