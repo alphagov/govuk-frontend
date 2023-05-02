@@ -1,6 +1,3 @@
-import '../../Object/defineProperty.mjs'
-import '../../Element.mjs'
-
 (function(undefined) {
 
   // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-library/13cf7c340974d128d557580b5e2dafcd1b1192d1/polyfills/Element/prototype/dataset/detect.js

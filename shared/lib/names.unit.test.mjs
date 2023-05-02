@@ -84,8 +84,7 @@ describe('componentPathToModuleName', () => {
   const others = [
     'common/index.mjs',
     'common/normalise-dataset.mjs',
-    'vendor/polyfills/Document.mjs',
-    'vendor/polyfills/Function/prototype/bind.mjs'
+    'vendor/polyfills/Element/prototype/closest.mjs'
   ]
 
   it.each(components)("transforms '$path' to '$moduleName'", ({ path, moduleName }) => {
