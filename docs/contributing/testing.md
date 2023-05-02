@@ -116,7 +116,7 @@ Where `<COMPONENT>` is the name of the component you changed or added to.
 
 Update or add tests in the `.test.js` file that matches the name of the `.scss` file you created or updated. Create the `.test.js` file if it does not exist.
 
-For example, if you updated a mixin in `src/govuk/helpers/_colour.scss`, update or add tests in `src/govuk/helpers/_colour.test.js`.
+For example, if you updated a mixin in [`src/govuk/helpers/_colour.scss`](/src/govuk/helpers/_colour.scss), update or add tests in [`src/govuk/helpers/colour.test.js`](/src/govuk/helpers/colour.test.js).
 
 ## 7. Update the snapshot tests
 

@@ -86,7 +86,7 @@ You should also test component Javascript logic with unit tests, in a `[componen
 
 ### Global tests
 
-We write functional tests for checking our JavaScript exports and our global sass variables - see [all.test.js](../../src/govuk/all.test.js) for examples of global tests we run.
+We write functional tests for checking our JavaScript exports and our global sass variables - see [all.test.mjs](/src/govuk/all.test.mjs) and [components/globals.test.mjs](/src/govuk/components/globals.test.mjs) for examples of global tests we run.
 
 ### Conventions
 

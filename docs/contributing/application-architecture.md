@@ -43,4 +43,4 @@
 
 - `src/`
 
-  Source files. See README.md in the src directory for details.
+  Source files. See [README.md](/src/govuk/README.md) in the src directory for details.
