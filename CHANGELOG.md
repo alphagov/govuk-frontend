@@ -32,6 +32,14 @@ We no longer support link buttons being disabled or using disabled styles.
 
 This change was introduced in [pull request #3557: Remove deprecated `.govuk-button--disabled` class](https://github.com/alphagov/govuk-frontend/pull/3557).
 
+#### Update the HTML for warning text
+
+We've removed the `.govuk-warning-text__assistive` class and its styles from GOV.UK Frontend. This class is unnecessary, as it duplicates the functionality of the `.govuk-visually-hidden` class already present in Frontend.
+
+If you’re not using Nunjucks macros, update your warning text HTML to replace the `govuk-warning-text__assistive` class with the `govuk-visually-hidden` class.
+
+This change was introduced in [pull request #3569: Remove unnecesary class from Warning Text component](https://github.com/alphagov/govuk-frontend/pull/3569).
+
 ## 4.6.0 (Feature release)
 
 ### New features
