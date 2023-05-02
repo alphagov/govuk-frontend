@@ -1,33 +1,35 @@
 import { join } from 'path'
 
-import { paths, pkg } from 'govuk-frontend-config'
+import { pkg } from 'govuk-frontend-config'
 import { files, scripts, styles, task } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
 
 /**
  * Build dist task
  * Prepare dist folder for release
+ *
+ * @type {import('govuk-frontend-tasks').TaskFunction}
  */
-export default gulp.series(
+export default (options) => gulp.series(
   task.name('clean', () =>
     files.clean('*', {
-      destPath: join(paths.root, 'dist')
+      destPath: options.destPath
     })
   ),
 
   // Copy GOV.UK Frontend static assets
   task.name('copy:assets', () =>
     files.copy('*/**', {
-      srcPath: join(paths.package, 'src/govuk/assets'),
-      destPath: join(paths.root, 'dist/assets')
+      srcPath: join(options.srcPath, 'govuk/assets'),
+      destPath: join(options.destPath, 'assets')
     })
   ),
 
   // Compile GOV.UK Frontend JavaScript
   task.name('compile:js', () =>
     scripts.compile('all.mjs', {
-      srcPath: join(paths.package, 'src/govuk'),
-      destPath: join(paths.root, 'dist'),
+      srcPath: join(options.srcPath, 'govuk'),
+      destPath: options.destPath,
 
       filePath (file) {
         return join(file.dir, `${file.name.replace(/^all/, pkg.name)}-${pkg.version}.min.js`)
@@ -38,8 +40,8 @@ export default gulp.series(
   // Compile GOV.UK Frontend Sass
   task.name('compile:scss', () =>
     styles.compile('**/[!_]*.scss', {
-      srcPath: join(paths.package, 'src/govuk'),
-      destPath: join(paths.root, 'dist'),
+      srcPath: join(options.srcPath, 'govuk'),
+      destPath: options.destPath,
 
       filePath (file) {
         return join(file.dir, `${file.name.replace(/^all/, pkg.name)}-${pkg.version}.min.css`)
@@ -50,7 +52,7 @@ export default gulp.series(
   // Update GOV.UK Frontend version
   task.name("file:version 'VERSION.txt'", () =>
     files.version('VERSION.txt', {
-      destPath: join(paths.root, 'dist')
+      destPath: options.destPath
     })
   )
 )
