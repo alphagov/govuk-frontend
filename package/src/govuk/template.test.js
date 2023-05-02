@@ -8,7 +8,7 @@ const nunjucks = require('nunjucks')
 describe('Template', () => {
   describe('with default nunjucks configuration', () => {
     it('should not have any whitespace before the doctype', () => {
-      nunjucks.configure(join(paths.src, 'govuk'))
+      nunjucks.configure(join(paths.package, 'src/govuk'))
       const output = nunjucks.render('./template.njk')
       expect(output.charAt(0)).toEqual('<')
     })
@@ -16,7 +16,7 @@ describe('Template', () => {
 
   describe('with nunjucks block trimming enabled', () => {
     it('should not have any whitespace before the doctype', () => {
-      nunjucks.configure(join(paths.src, 'govuk'), {
+      nunjucks.configure(join(paths.package, 'src/govuk'), {
         trimBlocks: true,
         lstripBlocks: true
       })

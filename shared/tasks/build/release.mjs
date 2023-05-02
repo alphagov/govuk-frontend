@@ -19,7 +19,7 @@ export default gulp.series(
   // Copy GOV.UK Frontend static assets
   task.name('copy:assets', () =>
     files.copy('*/**', {
-      srcPath: join(paths.src, 'govuk/assets'),
+      srcPath: join(paths.package, 'src/govuk/assets'),
       destPath: join(paths.root, 'dist/assets')
     })
   ),
@@ -27,7 +27,7 @@ export default gulp.series(
   // Compile GOV.UK Frontend JavaScript
   task.name('compile:js', () =>
     scripts.compile('all.mjs', {
-      srcPath: join(paths.src, 'govuk'),
+      srcPath: join(paths.package, 'src/govuk'),
       destPath: join(paths.root, 'dist'),
 
       filePath (file) {
@@ -39,7 +39,7 @@ export default gulp.series(
   // Compile GOV.UK Frontend Sass
   task.name('compile:scss', () =>
     styles.compile('**/[!_]*.scss', {
-      srcPath: join(paths.src, 'govuk'),
+      srcPath: join(paths.package, 'src/govuk'),
       destPath: join(paths.root, 'dist'),
 
       filePath (file) {

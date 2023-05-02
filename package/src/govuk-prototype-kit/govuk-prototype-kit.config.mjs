@@ -11,8 +11,8 @@ import slash from 'slash'
  * @returns {Promise<PrototypeKitConfig>} GOV.UK Prototype Kit config
  */
 export default async () => {
-  const componentsFiles = await getListing(join(paths.src, 'govuk/components'))
-  const componentNames = await getDirectories(join(paths.src, 'govuk/components'))
+  const componentsFiles = await getListing(join(paths.package, 'src/govuk/components'))
+  const componentNames = await getDirectories(join(paths.package, 'src/govuk/components'))
 
   // Build array of macros
   const nunjucksMacros = componentNames

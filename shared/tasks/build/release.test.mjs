@@ -10,7 +10,7 @@ describe('dist/', () => {
   let listingDistAssets
 
   beforeAll(async () => {
-    listingSourceAssets = await getListing(join(paths.src, 'govuk/assets'))
+    listingSourceAssets = await getListing(join(paths.package, 'src/govuk/assets'))
     listingDistAssets = await getListing(join(paths.root, 'dist/assets'))
   })
 
@@ -56,8 +56,8 @@ describe('dist/', () => {
     })
 
     it('should contain relative paths to sources', () => {
-      expect(sourcemap.sources).toContain('../src/govuk/all.scss')
-      expect(sourcemap.sources).toContain('../src/govuk/core/_govuk-frontend-version.scss')
+      expect(sourcemap.sources).toContain('../package/src/govuk/all.scss')
+      expect(sourcemap.sources).toContain('../package/src/govuk/core/_govuk-frontend-version.scss')
     })
   })
 
@@ -89,8 +89,8 @@ describe('dist/', () => {
     })
 
     it('should contain relative paths to sources', () => {
-      expect(sourcemap.sources).toContain('../src/govuk/all-ie8.scss')
-      expect(sourcemap.sources).toContain('../src/govuk/core/_govuk-frontend-version.scss')
+      expect(sourcemap.sources).toContain('../package/src/govuk/all-ie8.scss')
+      expect(sourcemap.sources).toContain('../package/src/govuk/core/_govuk-frontend-version.scss')
     })
   })
 
@@ -126,8 +126,8 @@ describe('dist/', () => {
     })
 
     it('should contain relative paths to sources', () => {
-      expect(sourcemap.sources).toContain('../src/govuk/all.mjs')
-      expect(sourcemap.sources).toContain('../src/govuk/common/govuk-frontend-version.mjs')
+      expect(sourcemap.sources).toContain('../package/src/govuk/all.mjs')
+      expect(sourcemap.sources).toContain('../package/src/govuk/common/govuk-frontend-version.mjs')
     })
   })
 

@@ -15,7 +15,7 @@ export const compile = (options) => gulp.series(
     scripts.compile('all.mjs', {
       // TODO: Review app should use `options.srcPath` to
       // import scripts from its own `javascripts` directory
-      srcPath: join(paths.src, 'govuk'),
+      srcPath: join(paths.package, 'src/govuk'),
       destPath: join(options.destPath, 'javascripts'),
 
       filePath (file) {
