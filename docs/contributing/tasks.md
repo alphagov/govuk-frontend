@@ -65,6 +65,18 @@ Review app Gulp tasks are defined in [`app/gulpfile.mjs`](/app/gulpfile.mjs) and
 
 Gulp tasks from npm workspaces (such as the review app) can be run as shown:
 
+**`npx --workspace package -- gulp --tasks`**
+
+This will list out all available tasks for the GOV.UK Frontend package.
+
+GOV.UK Frontend package build Gulp tasks are defined in [`package/gulpfile.mjs`](/package/gulpfile.mjs) and the [`package/tasks/`](/package/tasks) folder.
+
+**`npx --workspace app -- gulp --tasks`**
+
+This will list out all available tasks for the Review app.
+
+Review app Gulp tasks are defined in [`app/gulpfile.mjs`](../../app/gulpfile.mjs) and the [`app/tasks/`](../../app/tasks) folder.
+
 **`npx --workspace app -- gulp styles`**
 
 This task will:
