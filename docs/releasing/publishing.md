@@ -14,7 +14,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 4. Create and check out a new branch (`release-[version-number]`). See the [versioning documentation](/docs/contributing/versioning.md) for more information.
 
-5. Update the [`CHANGELOG.md`](../../CHANGELOG.md) by:
+5. Update the [`CHANGELOG.md`](/CHANGELOG.md) by:
 
    - changing the 'Unreleased' heading to the new version number and release type. For example, '3.11.0 (Feature release)'
    - adding a new 'Unreleased' heading above the new version number and release type, so users will know where to add PRs to the changelog
@@ -26,7 +26,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
    npm version <NEW VERSION NUMBER> --no-git-tag-version --workspace package
    ```
 
-   This step will update the `package.json` and project `package-lock.json` files.
+   This step will update the [`package.json`](/package.json) and project [`package-lock.json`](/package-lock.json) files.
 
    Do not commit the changes.
 
@@ -36,11 +36,11 @@ Developers should pair on releases. When remote working, it can be useful to be 
    npx update-browserslist-db@latest
    ```
 
-   This step will update the project `package-lock.json` file if updates are found.
+   This step will update the project [`package-lock.json`](/package-lock.json) file if updates are found.
 
 8. Run `npm run build-release` to:
 
-   - build GOV.UK Frontend into the `/package` and `/dist` directories
+   - build GOV.UK Frontend into the [`/package`](/package) and [`/dist`](/dist) directories
    - commit the changes
    - push a branch to GitHub
 

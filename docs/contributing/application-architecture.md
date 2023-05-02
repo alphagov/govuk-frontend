@@ -23,7 +23,7 @@
 
 - `shared/`
 
-  Shared packages used by tests, build tools and the [review app](../../app).
+  Shared packages used by tests, build tools and the [review app](/app).
 
   - `config/`
 

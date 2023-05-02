@@ -53,7 +53,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
 ## Gulp tasks
 
-Project Gulp tasks are defined in [`gulpfile.mjs`](../../gulpfile.mjs) and the [`tasks/`](../../shared/tasks) folder.
+Project Gulp tasks are defined in [`gulpfile.mjs`](/gulpfile.mjs) and the [`tasks/`](/shared/tasks) folder.
 
 **`gulp --tasks`**
 
@@ -61,7 +61,7 @@ This task will:
 
 - list out all available tasks
 
-Review app Gulp tasks are defined in [`app/gulpfile.mjs`](../../app/gulpfile.mjs) and the [`app/tasks/`](../../app/tasks) folder.
+Review app Gulp tasks are defined in [`app/gulpfile.mjs`](/app/gulpfile.mjs) and the [`app/tasks/`](/app/tasks) folder.
 
 Gulp tasks from npm workspaces (such as the review app) can be run as shown:
 
