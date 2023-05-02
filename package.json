@@ -84,7 +84,7 @@
     "postcss-unopacity": "^2.0.0",
     "postcss-unrgba": "^1.1.1",
     "prettier": "^2.8.7",
-    "puppeteer": "^19.11.0",
+    "puppeteer": "^19.11.1",
     "sass-color-helpers": "^2.1.1",
     "sass-embedded": "^1.62.0",
     "sassdoc": "^2.7.4",
