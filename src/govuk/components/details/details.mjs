@@ -1,5 +1,3 @@
-/* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
-
 /**
  * JavaScript 'polyfill' for HTML5's <details> and <summary> elements
  * and 'shim' to add accessiblity enhancements for all browsers
@@ -7,8 +5,6 @@
  * http://caniuse.com/#feat=details
  */
 import { generateUniqueID } from '../../common/index.mjs'
-import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target normalization and DOMContentLoaded
-import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
 var KEY_ENTER = 13
 var KEY_SPACE = 32

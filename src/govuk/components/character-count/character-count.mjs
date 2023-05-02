@@ -1,14 +1,8 @@
-/* eslint-disable es-x/no-date-now -- Polyfill imported */
-/* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
-
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
 import { extractConfigByNamespace, mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { I18n } from '../../i18n.mjs'
-import '../../vendor/polyfills/Date/now.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
-import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target normalization and DOMContentLoaded
-import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
 /**
  * Character count translation defaults

@@ -1,9 +1,5 @@
-/* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
-
 import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
-import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target normalization and DOMContentLoaded
-import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
 var KEY_SPACE = 32
 var DEBOUNCE_TIMEOUT_IN_SECONDS = 1
