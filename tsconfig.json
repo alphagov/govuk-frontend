@@ -3,10 +3,10 @@
   "files": [],
   "references": [
     {
-      "path": "./app"
+      "path": "./packages/govuk-frontend-review"
     },
     {
-      "path": "./package"
+      "path": "./packages/govuk-frontend"
     },
     {
       "path": "./shared/config"

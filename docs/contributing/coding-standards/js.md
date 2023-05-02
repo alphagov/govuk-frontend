@@ -144,7 +144,7 @@ Prefer named exports over default exports to avoid compatibility issues with tra
 
 ## Polyfilling
 
-If you need to support older browsers, import the necessary [polyfills](/package/src/govuk/vendor/polyfills) and they will be added to the environment when the feature is not supported.
+If you need to support older browsers, import the necessary [polyfills](/packages/govuk-frontend/src/govuk/vendor/polyfills) and they will be added to the environment when the feature is not supported.
 
 For example, if you want to polyfill `addEventListener` for IE8, import the Event polyfills.
 

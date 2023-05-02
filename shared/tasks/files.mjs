@@ -21,7 +21,7 @@ export async function clean (pattern, { destPath, ignore }) {
 }
 
 /**
- * Write `package/dist/package.json` version to file
+ * Write `packages/govuk-frontend/dist/package.json` version to file
  *
  * @param {AssetEntry[0]} assetPath - File path to asset
  * @param {AssetEntry[1]} options - Asset options

@@ -10,8 +10,8 @@ module.exports = {
   root: rootPath,
 
   // Package for npm publish
-  package: join(rootPath, 'package'),
+  package: join(rootPath, 'packages/govuk-frontend'),
 
   // Review application
-  app: join(rootPath, 'app')
+  app: join(rootPath, 'packages/govuk-frontend-review')
 }

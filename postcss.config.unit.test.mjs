@@ -164,8 +164,8 @@ describe('PostCSS config', () => {
     describe('Sass syntax parser', () => {
       it.each([
         {
-          from: 'package/src/govuk/components/accordion/_accordion.scss',
-          to: 'package/dist/govuk/components/accordion/_accordion.scss'
+          from: 'packages/govuk-frontend/src/govuk/components/accordion/_accordion.scss',
+          to: 'packages/govuk-frontend/dist/govuk/components/accordion/_accordion.scss'
         }
       ])('Adds plugins for $from', ({ from, to }) => {
         const config = configFn({ env, from, to })
@@ -181,8 +181,8 @@ describe('PostCSS config', () => {
     describe('Review app only', () => {
       it.each([
         {
-          from: 'app/src/stylesheets/app.scss',
-          to: 'app/dist/stylesheets/app.min.css'
+          from: 'packages/govuk-frontend-review/src/stylesheets/app.scss',
+          to: 'packages/govuk-frontend-review/dist/stylesheets/app.min.css'
         }
       ])('Adds plugins for $from', ({ from, to }) => {
         const config = configFn({ env, from, to })
@@ -225,12 +225,12 @@ describe('PostCSS config', () => {
 
       it.each([
         {
-          from: 'app/src/stylesheets/full-page-examples/campaign-page.scss',
-          to: 'app/dist/stylesheets/full-page-examples/campaign-page.min.css'
+          from: 'packages/govuk-frontend-review/src/stylesheets/full-page-examples/campaign-page.scss',
+          to: 'packages/govuk-frontend-review/dist/stylesheets/full-page-examples/campaign-page.min.css'
         },
         {
-          from: 'app/src/stylesheets/full-page-examples/search.scss',
-          to: 'app/dist/stylesheets/full-page-examples/search.min.css'
+          from: 'packages/govuk-frontend-review/src/stylesheets/full-page-examples/search.scss',
+          to: 'packages/govuk-frontend-review/dist/stylesheets/full-page-examples/search.min.css'
         }
       ])("Skips plugin 'pseudo-classes' for $from", ({ from, to }) => {
         const config = configFn({ env, from, to })
@@ -243,12 +243,12 @@ describe('PostCSS config', () => {
     describe('Review app only + IE8', () => {
       it.each([
         {
-          from: 'app/src/stylesheets/app-ie8.scss',
-          to: 'app/dist/stylesheets/app-ie8.min.css'
+          from: 'packages/govuk-frontend-review/src/stylesheets/app-ie8.scss',
+          to: 'packages/govuk-frontend-review/dist/stylesheets/app-ie8.min.css'
         },
         {
-          from: 'app/src/stylesheets/app-legacy-ie8.scss',
-          to: 'app/dist/stylesheets/app-legacy-ie8.min.css'
+          from: 'packages/govuk-frontend-review/src/stylesheets/app-legacy-ie8.scss',
+          to: 'packages/govuk-frontend-review/dist/stylesheets/app-legacy-ie8.min.css'
         }
       ])('Adds plugins for $from', ({ from, to }) => {
         const config = configFn({ env, from, to })
