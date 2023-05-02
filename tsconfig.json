@@ -6,6 +6,9 @@
       "path": "./app"
     },
     {
+      "path": "./package"
+    },
+    {
       "path": "./shared/config"
     },
     {
@@ -16,9 +19,6 @@
     },
     {
       "path": "./shared/tasks"
-    },
-    {
-      "path": "./src"
     }
   ]
 }

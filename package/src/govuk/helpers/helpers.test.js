@@ -5,23 +5,23 @@ const { compileSassFile } = require('govuk-frontend-helpers/tests')
 const { getListing } = require('govuk-frontend-lib/files')
 const sassdoc = require('sassdoc')
 
-describe('The settings layer', () => {
+describe('The helpers layer', () => {
   let sassFiles
 
   beforeAll(async () => {
-    sassFiles = await getListing(paths.src, 'govuk/settings/**/*.scss', {
+    sassFiles = await getListing(paths.package, 'src/govuk/helpers/**/*.scss', {
       ignore: ['**/_all.scss']
     })
   })
 
   it('should not output any CSS', async () => {
-    const file = join(paths.src, 'govuk/settings/_all.scss')
+    const file = join(paths.package, 'src/govuk/helpers/_all.scss')
     await expect(compileSassFile(file)).resolves.toMatchObject({ css: '' })
   })
 
-  it('renders CSS for all settings', () => {
+  it('renders CSS for all helpers', () => {
     const sassTasks = sassFiles.map((sassFilePath) => {
-      const file = join(paths.src, sassFilePath)
+      const file = join(paths.package, sassFilePath)
 
       return expect(compileSassFile(file)).resolves.toMatchObject({
         css: expect.any(String),
@@ -33,8 +33,8 @@ describe('The settings layer', () => {
   })
 
   describe('Sass documentation', () => {
-    it('associates everything with a "settings" group', async () => {
-      const docs = await sassdoc.parse(join(paths.src, 'govuk/settings/**/*.scss'))
+    it('associates everything with a "helpers" group', async () => {
+      const docs = await sassdoc.parse(join(paths.package, 'src/govuk/helpers/**/*.scss'))
 
       for (const doc of docs) {
         expect(doc).toMatchObject({
@@ -44,7 +44,7 @@ describe('The settings layer', () => {
             name: doc.context.name
           },
           group: [
-            expect.stringMatching(/^settings/)
+            expect.stringMatching(/^helpers/)
           ]
         })
       }

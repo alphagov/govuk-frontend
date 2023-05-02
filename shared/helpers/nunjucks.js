@@ -7,8 +7,8 @@ const nunjucks = require('nunjucks')
 const { outdent } = require('outdent')
 
 const nunjucksPaths = [
-  join(paths.src, 'govuk'),
-  join(paths.src, 'govuk/components')
+  join(paths.package, 'src/govuk'),
+  join(paths.package, 'src/govuk/components')
 ]
 
 const nunjucksEnv = nunjucks.configure(nunjucksPaths, {

@@ -11,7 +11,7 @@ import beautify from 'js-beautify'
  * @returns {string} Nunjucks code
  */
 export function getHTMLCode (componentName, params) {
-  const templatePath = join(paths.src, 'govuk/components', componentName, 'template.njk')
+  const templatePath = join(paths.package, 'src/govuk/components', componentName, 'template.njk')
 
   // Render to HTML
   const html = this.env.render(templatePath, { params }).trim()

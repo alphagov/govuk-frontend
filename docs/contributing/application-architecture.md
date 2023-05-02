@@ -25,6 +25,10 @@
 
     Builds of govuk-frontend published and exported from the npm package.
 
+  - `src/`
+
+    Source files. See [README.md](/package/src/README.md) in the src directory for details.
+
 - `shared/`
 
   Shared packages used by tests, build tools and the [review app](/app).
@@ -44,7 +48,3 @@
   - `tasks/`
 
     See [tasks](tasks.md) for more information about the tasks.
-
-- `src/`
-
-  Source files. See [README.md](/src/govuk/README.md) in the src directory for details.

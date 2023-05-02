@@ -32,7 +32,7 @@ export async function screenshots () {
   }
 
   const browser = await launch()
-  const componentNames = await getDirectories(join(paths.src, 'govuk/components'))
+  const componentNames = await getDirectories(join(paths.package, 'src/govuk/components'))
   const exampleNames = ['text-alignment', 'typography']
 
   // Screenshot stack
@@ -71,7 +71,7 @@ export async function screenshots () {
  * @returns {Promise<void>}
  */
 export async function screenshotComponent (page, componentName) {
-  const componentFiles = await getListing(join(paths.src, 'govuk/components', componentName))
+  const componentFiles = await getListing(join(paths.package, 'src/govuk/components', componentName))
 
   // Navigate to component
   await goToComponent(page, componentName)

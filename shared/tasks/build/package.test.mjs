@@ -17,15 +17,15 @@ describe('package/dist/', () => {
   let componentNames
 
   beforeAll(async () => {
-    listingSource = await getListing(paths.src)
+    listingSource = await getListing(join(paths.package, 'src'))
     listingDist = await getListing(join(paths.package, 'dist'))
 
-    componentsFilesSource = await getListing(join(paths.src, 'govuk/components'))
+    componentsFilesSource = await getListing(join(paths.package, 'src/govuk/components'))
     componentsFilesDist = await getListing(join(paths.package, 'dist/govuk/components'))
     componentsFilesDistESM = await getListing(join(paths.package, 'dist/govuk-esm/components'))
 
     // Components list
-    componentNames = await getDirectories(join(paths.src, 'govuk/components'))
+    componentNames = await getDirectories(join(paths.package, 'src/govuk/components'))
   })
 
   it('should contain the expected files', async () => {
@@ -34,8 +34,7 @@ describe('package/dist/', () => {
       '!**/*.test.*',
       '!**/__snapshots__/',
       '!**/__snapshots__/**',
-      '!**/tsconfig?(.build).json',
-      '!govuk/README.md'
+      '!**/tsconfig?(.build).json'
     ]
 
     // Build array of expected output files
@@ -85,10 +84,7 @@ describe('package/dist/', () => {
       ]))
 
       // Files already present in 'package/dist'
-      .concat(...[
-        'package.json',
-        'README.md'
-      ])
+      .concat(['package.json'])
       .sort()
 
     // Compare array of actual output files
@@ -140,7 +136,7 @@ describe('package/dist/', () => {
         expect(componentSource)
           .toEqual(expect.not.arrayContaining([join(componentName, 'macro-options.json')]))
 
-        // File generated in package
+        // File generated in dist
         expect(componentDist)
           .toEqual(expect.arrayContaining([join(componentName, 'macro-options.json')]))
 
@@ -191,11 +187,11 @@ describe('package/dist/', () => {
         expect(componentSource)
           .toEqual(expect.not.arrayContaining([join(componentName, `${componentName}.js`)]))
 
-        // UMD module generated in package
+        // UMD module generated in dist
         expect(componentDist)
           .toEqual(expect.arrayContaining([join(componentName, `${componentName}.js`)]))
 
-        // ES module generated in package
+        // ES module generated in dist
         expect(componentsFilesDistESM)
           .toEqual(expect.arrayContaining([join(componentName, `${componentName}.mjs`)]))
 
@@ -205,7 +201,7 @@ describe('package/dist/', () => {
         const [modulePathESM] = componentDistESM
           .filter(filterPath([`**/${componentName}.mjs`]))
 
-        const moduleName = componentPathToModuleName(join(paths.src, 'govuk/components', modulePath))
+        const moduleName = componentPathToModuleName(join(paths.package, 'src/govuk/components', modulePath))
         const moduleText = await readFile(join(paths.package, 'dist/govuk/components', modulePath), 'utf8')
         const moduleTextESM = await readFile(join(paths.package, 'dist/govuk-esm/components', modulePathESM), 'utf8')
 
@@ -230,7 +226,7 @@ describe('package/dist/', () => {
         expect(componentSource)
           .toEqual(expect.not.arrayContaining([join(componentName, 'fixtures.json')]))
 
-        // File generated in package
+        // File generated in dist
         expect(componentDist)
           .toEqual(expect.arrayContaining([join(componentName, 'fixtures.json')]))
 
