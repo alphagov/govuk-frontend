@@ -3,6 +3,7 @@
   "include": [
     "**/*.js",
     "**/*.mjs",
+    "../package",
     "../shared/config",
     "../shared/lib",
     "../shared/tasks"
