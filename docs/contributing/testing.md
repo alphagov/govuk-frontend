@@ -140,13 +140,13 @@ cd ../govuk-design-system
 git checkout main
 git pull
 npm ci # note running `npm ci` after `npm link` will destroy the link.
-npm link ../govuk-frontend/package/
+npm link ../govuk-frontend/package/dist/
 ```
 
 When you've finished testing, run this command to unlink the package:
 
 ```bash
-npm unlink ../govuk-frontend/package/
+npm unlink ../govuk-frontend/package/dist/
 ```
 
 ## 9. Tell us what you’ve tested and checked
