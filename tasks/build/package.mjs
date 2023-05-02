@@ -16,8 +16,7 @@ export default (options) => gulp.series(
     files.clean('*', {
       destPath: options.destPath,
       ignore: [
-        '**/package.json',
-        '**/README.md'
+        '**/package.json'
       ]
     })
   ),
