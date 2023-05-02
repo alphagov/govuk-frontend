@@ -1,5 +1,6 @@
-import * as build from 'govuk-frontend-tasks/build/index.mjs'
 import gulp from 'gulp'
+
+import * as build from './tasks/build/index.mjs'
 
 /**
  * Build target tasks

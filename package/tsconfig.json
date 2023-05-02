@@ -5,7 +5,8 @@
     "./src/**/*.mjs",
     "../shared/config",
     "../shared/helpers",
-    "../shared/lib"
+    "../shared/lib",
+    "../shared/tasks"
   ],
   "exclude": ["./dist/**"],
   "compilerOptions": {
