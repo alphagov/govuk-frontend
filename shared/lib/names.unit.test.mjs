@@ -130,10 +130,6 @@ describe('componentPathToModuleName', () => {
 describe('packageNameToPath', () => {
   const packages = [
     {
-      name: 'html5shiv',
-      path: join(paths.root, 'node_modules/html5shiv')
-    },
-    {
       name: 'govuk_template_jinja',
       path: join(paths.root, 'node_modules/govuk_template_jinja')
     },
