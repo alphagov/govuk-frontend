@@ -131,7 +131,7 @@ describe('package/', () => {
   describe('component', () => {
     it('should have macro-options.json that contains JSON', () => {
       const componentTasks = componentNames.map(async (componentName) => {
-        const componentFilter = filterPath([`${componentName}/**`])
+        const componentFilter = filterPath([`**/${componentName}/**`])
 
         const componentSource = componentsFilesSource.filter(componentFilter)
         const componentPackage = componentsFilesPackage.filter(componentFilter)
@@ -181,7 +181,7 @@ describe('package/', () => {
 
     it('should have component JavaScript file with correct module name', () => {
       const componentTasks = componentNamesWithJavaScript.map(async (componentName) => {
-        const componentFilter = filterPath([`${componentName}/**`])
+        const componentFilter = filterPath([`**/${componentName}/**`])
 
         const componentSource = componentsFilesSource.filter(componentFilter)
         const componentPackage = componentsFilesPackage.filter(componentFilter)
@@ -221,7 +221,7 @@ describe('package/', () => {
   describe('fixtures', () => {
     it('should have fixtures.json that contains JSON', () => {
       const componentTasks = componentNames.map(async (componentName) => {
-        const componentFilter = filterPath([`${componentName}/**`])
+        const componentFilter = filterPath([`**/${componentName}/**`])
 
         const componentSource = componentsFilesSource.filter(componentFilter)
         const componentPackage = componentsFilesPackage.filter(componentFilter)
@@ -235,7 +235,7 @@ describe('package/', () => {
           .toEqual(expect.arrayContaining([join(componentName, 'fixtures.json')]))
 
         const [fixturesPath] = componentPackage
-          .filter(filterPath([`${componentName}/fixtures.json`]))
+          .filter(filterPath([`**/${componentName}/fixtures.json`]))
 
         // Component fixtures
         const { component, fixtures } = JSON.parse(await readFile(join(paths.package, 'govuk/components', fixturesPath), 'utf8'))

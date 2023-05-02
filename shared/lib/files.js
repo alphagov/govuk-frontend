@@ -48,9 +48,7 @@ const getDirectories = (directoryPath) => {
  */
 const filterPath = (patterns) => (entryPath) => {
   return patterns.every(
-    (pattern) => minimatch(entryPath, pattern, {
-      matchBase: true
-    })
+    (pattern) => minimatch(entryPath, pattern)
   )
 }
 

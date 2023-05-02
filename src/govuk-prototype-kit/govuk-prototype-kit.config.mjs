@@ -18,7 +18,7 @@ export default async () => {
   const nunjucksMacros = componentNames
     .map((componentName) => {
       const [macroPath] = componentsFiles
-        .filter(filterPath([`${componentName}/macro.njk`]))
+        .filter(filterPath([`**/${componentName}/macro.njk`]))
 
       return {
         importFrom: slash(join('govuk/components', macroPath)),
