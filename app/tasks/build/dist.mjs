@@ -11,7 +11,7 @@ import { scripts, styles } from '../index.mjs'
  */
 export default (options) => gulp.series(
   task.name('clean', () =>
-    files.clean('**/*', options)
+    files.clean('*', options)
   ),
 
   gulp.parallel(
