@@ -1,8 +1,7 @@
 import { join } from 'path'
 
-import { paths } from 'govuk-frontend-config'
 import { filterPath, getDirectories, getListing } from 'govuk-frontend-lib/files'
-import { componentNameToMacroName } from 'govuk-frontend-lib/names'
+import { componentNameToMacroName, packageNameToPath } from 'govuk-frontend-lib/names'
 import slash from 'slash'
 
 /**
@@ -11,8 +10,8 @@ import slash from 'slash'
  * @returns {Promise<PrototypeKitConfig>} GOV.UK Prototype Kit config
  */
 export default async () => {
-  const componentsFiles = await getListing(join(paths.package, 'src/govuk/components'))
-  const componentNames = await getDirectories(join(paths.package, 'src/govuk/components'))
+  const componentsFiles = await getListing(packageNameToPath('govuk-frontend', 'src/govuk/components'))
+  const componentNames = await getDirectories(packageNameToPath('govuk-frontend', 'src/govuk/components'))
 
   // Build array of macros
   const nunjucksMacros = componentNames

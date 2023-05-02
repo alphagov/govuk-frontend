@@ -58,7 +58,7 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
             loader: 'sass-loader',
             options: {
               sassOptions: {
-                includePaths: [frontendPath],
+                includePaths: [`${frontendPath}/src`],
                 quietDeps: true
               }
             }
@@ -95,7 +95,7 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
       patterns: [
         join(srcPath, 'index.html'),
         {
-          context: join(frontendPath, './govuk/assets'),
+          context: join(frontendPath, './src/govuk/assets'),
           from: '{fonts,images}/**',
           to: 'assets'
         }

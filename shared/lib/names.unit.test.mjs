@@ -142,6 +142,10 @@ describe('packageNameToPath', () => {
       path: join(paths.root, 'node_modules/govuk_frontend_toolkit')
     },
     {
+      name: 'govuk-frontend',
+      path: paths.package
+    },
+    {
       name: 'jquery',
       path: join(paths.root, 'node_modules/jquery')
     }
