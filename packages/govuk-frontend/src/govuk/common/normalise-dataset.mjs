@@ -1,5 +1,3 @@
-import '../vendor/polyfills/Element/prototype/dataset.mjs'
-
 /**
  * Normalise string
  *
