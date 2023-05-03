@@ -57,7 +57,7 @@
   }
 
   // [ ] Check box
-  .govuk-checkboxes__label:before {
+  .govuk-checkboxes__label::before {
     content: "";
     box-sizing: border-box;
     position: absolute;
@@ -73,7 +73,7 @@
   //
   // The check mark is a box with a border on the left and bottom side (└──),
   // rotated 45 degrees
-  .govuk-checkboxes__label:after {
+  .govuk-checkboxes__label::after {
     content: "";
     box-sizing: border-box;
 
@@ -102,7 +102,7 @@
   }
 
   // Focused state
-  .govuk-checkboxes__input:focus + .govuk-checkboxes__label:before {
+  .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
     border-width: 4px;
 
     // When colours are overridden, the yellow box-shadow becomes invisible
@@ -122,7 +122,7 @@
   }
 
   // Selected state
-  .govuk-checkboxes__input:checked + .govuk-checkboxes__label:after {
+  .govuk-checkboxes__input:checked + .govuk-checkboxes__label::after {
     opacity: 1;
   }
 
@@ -228,7 +228,7 @@
     //
     // Reduce the size of the check box [1], vertically center it within the
     // touch target [2]
-    .govuk-checkboxes__label:before {
+    .govuk-checkboxes__label::before {
       top: $input-offset - $govuk-border-width-form-element; // 2
       width: $govuk-small-checkboxes-size; // 1
       height: $govuk-small-checkboxes-size; // 1
@@ -237,7 +237,7 @@
     // ✔ Check mark
     //
     // Reduce the size of the check mark and re-align within the checkbox
-    .govuk-checkboxes__label:after {
+    .govuk-checkboxes__label::after {
       top: 15px;
       left: 6px;
       width: 12px;
@@ -272,7 +272,7 @@
     // is so much larger than their visible size, and so we need to provide
     // feedback to the user as to which checkbox they will select when their
     // cursor is outside of the visible area.
-    .govuk-checkboxes__item:hover .govuk-checkboxes__input:not(:disabled) + .govuk-checkboxes__label:before {
+    .govuk-checkboxes__item:hover .govuk-checkboxes__input:not(:disabled) + .govuk-checkboxes__label::before {
       box-shadow: 0 0 0 $govuk-hover-width $govuk-hover-colour;
     }
 
@@ -281,7 +281,7 @@
     //
     // We use two box shadows, one that restores the original focus state [1]
     // and another that then applies the hover state [2].
-    .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label:before {
+    .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
       box-shadow:
         0 0 0 $govuk-focus-width $govuk-focus-colour, // 1
         0 0 0 $govuk-hover-width $govuk-hover-colour; // 2
@@ -294,11 +294,11 @@
     // state in browsers that don't support `@media (hover)` (like Internet
     // Explorer) – so we have to 'undo' the hover state instead.
     @media (hover: none), (pointer: coarse) {
-      .govuk-checkboxes__item:hover .govuk-checkboxes__input:not(:disabled) + .govuk-checkboxes__label:before {
+      .govuk-checkboxes__item:hover .govuk-checkboxes__input:not(:disabled) + .govuk-checkboxes__label::before {
         box-shadow: initial;
       }
 
-      .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label:before {
+      .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
         box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
       }
     }

@@ -116,7 +116,7 @@
           background: $govuk-accordion-base-colour;
         }
 
-        .govuk-accordion-nav__chevron:after {
+        .govuk-accordion-nav__chevron::after {
           color: $govuk-accordion-hover-colour;
         }
       }
@@ -128,7 +128,7 @@
           background: $govuk-accordion-base-colour;
         }
 
-        .govuk-accordion-nav__chevron:after {
+        .govuk-accordion-nav__chevron::after {
           color: $govuk-accordion-icon-focus-colour;
         }
       }
@@ -155,7 +155,7 @@
       vertical-align: middle;
 
       // Create inner chevron arrow
-      &:after {
+      &::after {
         content: "";
         box-sizing: border-box;
         display: block;
@@ -222,7 +222,7 @@
           background: $govuk-accordion-base-colour;
         }
 
-        .govuk-accordion-nav__chevron:after {
+        .govuk-accordion-nav__chevron::after {
           color: $govuk-accordion-hover-colour;
         }
       }
@@ -243,7 +243,7 @@
           background: $govuk-accordion-base-colour;
         }
 
-        .govuk-accordion-nav__chevron:after {
+        .govuk-accordion-nav__chevron::after {
           color: $govuk-accordion-icon-focus-colour;
         }
       }

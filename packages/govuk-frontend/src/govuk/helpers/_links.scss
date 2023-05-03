@@ -412,7 +412,7 @@
     &[href^="/"],
     &[href^="http://"],
     &[href^="https://"] {
-      &:after {
+      &::after {
         content: " (" attr(href) ")";
         font-size: 90%;
 

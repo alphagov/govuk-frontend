@@ -32,7 +32,7 @@
   // bottom border is not drawn for that part of the row in some browsers.
   .govuk-summary-list__row--no-actions {
     @include govuk-media-query($from: tablet) {
-      &:after {
+      &::after {
         content: "";
         display: table-cell;
         width: 20%;

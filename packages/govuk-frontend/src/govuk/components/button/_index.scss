@@ -124,7 +124,7 @@ $govuk-button-text-colour: govuk-colour("white") !default;
 
     // Use a pseudo element to expand the click target area to include the
     // button's shadow as well, in case users try to click it.
-    &:before {
+    &::before {
       content: "";
       display: block;
 
@@ -148,7 +148,7 @@ $govuk-button-text-colour: govuk-colour("white") !default;
     // the click event is still fired.
     //
     // 🎉
-    &:active:before {
+    &:active::before {
       top: -($govuk-border-width-form-element + $button-shadow-size);
     }
   }
