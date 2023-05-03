@@ -28,7 +28,7 @@
   }
 
   // Prepend left pointing chevron
-  .govuk-back-link:before {
+  .govuk-back-link::before {
     content: "";
     display: block;
 
@@ -67,11 +67,11 @@
     }
   }
 
-  .govuk-back-link:focus:before {
+  .govuk-back-link:focus::before {
     border-color: $govuk-focus-text-colour;
   }
 
-  .govuk-back-link:after {
+  .govuk-back-link::after {
     content: "";
     position: absolute;
     top: -14px;

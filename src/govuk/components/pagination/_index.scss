@@ -108,7 +108,7 @@
 
     // Increase the touch area for the link to the parent element.
     @media screen {
-      &:after {
+      &::after {
         content: "";
         position: absolute;
         top: 0;
@@ -210,7 +210,7 @@
     // as block level whilst programmatically being inline
     // We do this to get around an NVDA quirk where adjacent block level
     // elements are always read out separately
-    .govuk-pagination__link-title:after {
+    .govuk-pagination__link-title::after {
       content: "";
       display: block;
     }
