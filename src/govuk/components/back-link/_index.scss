@@ -65,19 +65,6 @@
       // Ensure that the chevron never gets smaller than 16px
       font-size: unquote("max(#{$font-size * 1px}, 1em)");
     }
-
-    // Fall back to a less than sign for IE8
-    @include _govuk-if-ie8 {
-      content: "\003c"; // Less than sign (<)
-      width: auto;
-      height: auto;
-      border: 0;
-      color: $chevron-border-colour;
-
-      // IE8 doesn't seem to like rendering pseudo-elements using @font-faces,
-      // so fall back to using another sans-serif font to render the chevron.
-      font-family: Arial, sans-serif;
-    }
   }
 
   .govuk-back-link:focus:before {
