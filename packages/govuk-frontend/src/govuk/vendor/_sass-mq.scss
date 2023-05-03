@@ -319,7 +319,7 @@ $mq-media-type: all !default;
 ///  // Show breakpoints using custom settings
 ///  @include mq-show-breakpoints((L, XL), (S: 300px, L: 800px, XL: 1200px));
 @mixin mq-show-breakpoints($show-breakpoints: $mq-show-breakpoints, $breakpoints: $mq-breakpoints) {
-    body:before {
+    body::before {
         background-color: #FCF8E3;
         border-bottom: 1px solid #FBEED5;
         border-left: 1px solid #FBEED5;

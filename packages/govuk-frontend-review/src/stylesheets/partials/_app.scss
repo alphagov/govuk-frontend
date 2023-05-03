@@ -26,7 +26,7 @@
 }
 
 // Removes the breakpoint sass-mq debug display
-.app-iframe-in-component-preview:before {
+.app-iframe-in-component-preview::before {
   display: none;
 }
 

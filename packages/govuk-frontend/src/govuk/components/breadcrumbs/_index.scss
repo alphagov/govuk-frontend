@@ -49,7 +49,7 @@
     float: left;
 
     // Create a chevron using a box with borders on two sides, rotated 45deg.
-    &:before {
+    &::before {
       content: "";
       display: block;
 
@@ -93,7 +93,7 @@
       margin-left: 0;
       padding-left: 0;
 
-      &:before {
+      &::before {
         content: none;
         display: none;
       }
@@ -115,7 +115,7 @@
           display: inline-block;
         }
 
-        &:before {
+        &::before {
           top: govuk-em(6px, $font-size);
           margin: 0;
         }

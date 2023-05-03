@@ -199,13 +199,13 @@
       @include govuk-focused-text;
     }
 
-    &:after {
+    &::after {
       @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
       content: "";
       margin-left: govuk-spacing(1);
     }
 
-    &[aria-expanded="true"]:after {
+    &[aria-expanded="true"]::after {
       @include govuk-shape-arrow($direction: up, $base: 10px, $display: inline-block);
     }
 
@@ -317,7 +317,7 @@
       }
 
       // Do not append link href to GOV.UK link when printing (e.g. '(/)')
-      &:after {
+      &::after {
         display: none;
       }
     }
