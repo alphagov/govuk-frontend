@@ -14,9 +14,13 @@
       Full page examples
     </h1>
 
-    <p class="govuk-body-l">These examples are designed to test the styles, components and patterns from GOV.UK Frontend in a realistic context.</p>
+    <p class="govuk-body-l">These examples are designed to test the styles, components and patterns from GOV.UK Frontend in a realistic context. This index page does not need to be audited.</p>
 
-    <p class="govuk-body">Your responses to any questions asked in the examples will not be recorded.</p>
+    <p class="govuk-body">Examples within this first section will only be one page unless otherwise stated. These examples will have links and buttons that won’t do anything, or will lead to unexpected errors.</p> 
+
+    <p class="govuk-body">The examples that have multiple pages will have some links and buttons that work as well as use some rudimentary validation. They will usually only have 1 error message example per input.</p>
+
+    <p class="govuk-body">To navigate to the next example you will have to use the browsers back button and not the back links provided in the examples.</p>
 
     <hr class="govuk-section-break govuk-section-break--l" />
 
@@ -43,25 +47,74 @@
 
     <h2 class="govuk-heading-l">Other examples</h2>
 
-    <p class="govuk-body">Examples of GOV.UK Frontend code and GOV.UK Design System patterns in other places.</p>
+    <p class="govuk-body">Examples of GOV.UK Frontend code and GOV.UK Design System patterns in other places. These examples might have journeys that are more than two pages long. We will state for each example when the audit journey ends.</p>
 
-    <h3 class="govuk-heading-m"><a href="https://alphagov.github.io/accessible-autocomplete/examples/" class="govuk-link">Accessible autocomplete example</a></h3>
+    <h3 class="govuk-heading-m"><a href="https://alphagov.github.io/accessible-autocomplete/examples/form.html" class="govuk-link">Accessible autocomplete example</a></h3>
+
+    <div class="app-prose-scope">
+      <p>This is an example of an autocomplete input, things to try:</p>
+      <ol>
+        <li>Select the last location you visited.</li>
+        <li>Select a location on a passport.</li>
+      </ol>
+    </div>
+
+    <p class="govuk-body">The journey is completed when each input has been interacted with. This example doesn't have many of the usual elements that make up a webpage.</p>
+
+    <hr class="govuk-section-break govuk-section-break--l" />
 
     <h3 class="govuk-heading-m"><a href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/income-tax-enquiries-for-individuals-pensioners-and-employees" class="govuk-link">Contact a department or service team example</a></h3>
 
+    <div class="app-prose-scope">
+      <p>This is an example of how to contact a service team. Things to try:</p>
+      <ol>
+        <li>Find out how to contact the service by phone.</li>
+        <li>Check if the service can only be contacted during opening hours.</li>
+        <li>See how long it will take for the service to provide a response.</li>
+      </ol>
+    </div>
+
+    <p class="govuk-body govuk-!-font-size-16">The journey is completed once the page has been navigated. We only care about testing the body content, not about the header, footer or navigation.</p>
+
+    <hr class="govuk-section-break govuk-section-break--l" />
+
     <h3 class="govuk-heading-m"><a href="http://gov.uk/account" class="govuk-link">GOV.UK Account</a></h3>
 
-    <div class="app-prose-scope"><p>As part of an online service, you are required to create an account.</p></div>
+    <div class="app-prose-scope">
+      <p>As part of an online service, you must create an account. Things to try:</p>
+      <ol>
+        <li>Create an account.</li>
+        <li>Confirm the account using a mobile telephone.</li>
+      </ol>
+    </div>
 
-    <p class="govuk-body govuk-!-font-size-16">The account will be confirmed using a mobile telephone.</p>
+    <p class="govuk-body govuk-!-font-size-16">The journey is completed once the account has been confirmed by mobile telephone. You might wish to delete the account at the end of the audit.</p>
+
+    <hr class="govuk-section-break govuk-section-break--l" />
 
     <h3 class="govuk-heading-m"><a href="https://design-system.service.gov.uk/cookies/" class="govuk-link">GOV.UK Design System cookie page</a></h3>
 
-    <div class="app-prose-scope"><p>The GOV.UK Design system is an example of how our cookie page pattern can be implmented in a service.</p></div>
+    <div class="app-prose-scope">
+      <p>The GOV.UK Design system is an example of how the Cookie page pattern can be implemented in a service. Things to try:</p>
+      <ol>
+        <li>Change and save the cookie settings.</li>
+      </ol>
+    </div>
 
-    <p class="govuk-body govuk-!-font-size-16">We need the cookie settings to be changed or set in order to audit how we notify our users of the change.</p>
+    <p class="govuk-body govuk-!-font-size-16">The journey is completed after confirmation that the cookie preferences have been set.</p>
 
-    <h3 class="govuk-heading-m"><a href="https://govuk-formats.herokuapp.com/document-types/step-by-step-nav" class="govuk-link">Step-by-step navigation example</a></h3>
+    <hr class="govuk-section-break govuk-section-break--l" />
+
+    <h3 class="govuk-heading-m"><a href="https://www.gov.uk/visit-uk-business-trip" class="govuk-link">Step-by-step navigation example</a></h3>
+    
+    <div class="app-prose-scope">
+      <p>This is an example of Step-by-step navigation used to help visitors entering the UK on a business trip.</p>
+      <ol>
+        <li>Check if you can bring an animal with you.</li>
+      </ol>
+    </div>
+
+    <p class="govuk-body govuk-!-font-size-16">The journey is completed when one of the expandable elements has been expanded. The links to additional resources on other pages do not need auditing.</p>
 
   </div>
 </div>
