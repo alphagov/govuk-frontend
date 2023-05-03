@@ -1,5 +1,4 @@
 import { version } from './common/govuk-frontend-version.mjs'
-import { nodeListForEach } from './common/index.mjs'
 import Accordion from './components/accordion/accordion.mjs'
 import Button from './components/button/button.mjs'
 import CharacterCount from './components/character-count/character-count.mjs'
@@ -28,27 +27,27 @@ function initAll (config) {
   var $scope = config.scope instanceof HTMLElement ? config.scope : document
 
   var $accordions = $scope.querySelectorAll('[data-module="govuk-accordion"]')
-  nodeListForEach($accordions, function ($accordion) {
+  $accordions.forEach(function ($accordion) {
     new Accordion($accordion, config.accordion).init()
   })
 
   var $buttons = $scope.querySelectorAll('[data-module="govuk-button"]')
-  nodeListForEach($buttons, function ($button) {
+  $buttons.forEach(function ($button) {
     new Button($button, config.button).init()
   })
 
   var $characterCounts = $scope.querySelectorAll('[data-module="govuk-character-count"]')
-  nodeListForEach($characterCounts, function ($characterCount) {
+  $characterCounts.forEach(function ($characterCount) {
     new CharacterCount($characterCount, config.characterCount).init()
   })
 
   var $checkboxes = $scope.querySelectorAll('[data-module="govuk-checkboxes"]')
-  nodeListForEach($checkboxes, function ($checkbox) {
+  $checkboxes.forEach(function ($checkbox) {
     new Checkboxes($checkbox).init()
   })
 
   var $details = $scope.querySelectorAll('[data-module="govuk-details"]')
-  nodeListForEach($details, function ($detail) {
+  $details.forEach(function ($detail) {
     new Details($detail).init()
   })
 
@@ -65,12 +64,12 @@ function initAll (config) {
   }
 
   var $notificationBanners = $scope.querySelectorAll('[data-module="govuk-notification-banner"]')
-  nodeListForEach($notificationBanners, function ($notificationBanner) {
+  $notificationBanners.forEach(function ($notificationBanner) {
     new NotificationBanner($notificationBanner, config.notificationBanner).init()
   })
 
   var $radios = $scope.querySelectorAll('[data-module="govuk-radios"]')
-  nodeListForEach($radios, function ($radio) {
+  $radios.forEach(function ($radio) {
     new Radios($radio).init()
   })
 
@@ -81,7 +80,7 @@ function initAll (config) {
   }
 
   var $tabs = $scope.querySelectorAll('[data-module="govuk-tabs"]')
-  nodeListForEach($tabs, function ($tabs) {
+  $tabs.forEach(function ($tabs) {
     new Tabs($tabs).init()
   })
 }

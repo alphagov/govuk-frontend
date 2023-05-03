@@ -9,26 +9,6 @@
  */
 
 /**
- * TODO: Ideally this would be a NodeList.prototype.forEach polyfill
- * This seems to fail in IE8, requires more investigation.
- * See: https://github.com/imagitama/nodelist-foreach-polyfill
- *
- * @deprecated Will be made private in v5.0
- * @template {Node} ElementType
- * @param {NodeListOf<ElementType>} nodes - NodeList from querySelectorAll()
- * @param {(value: ElementType, index: number, nodes: NodeListOf<ElementType>) => void} callback - Callback function to run for each node
- * @returns {void}
- */
-export function nodeListForEach (nodes, callback) {
-  if (window.NodeList.prototype.forEach) {
-    return nodes.forEach(callback)
-  }
-  for (var i = 0; i < nodes.length; i++) {
-    callback.call(window, nodes[i], i, nodes)
-  }
-}
-
-/**
  * Used to generate a unique string, allows multiple instances of the component
  * without them conflicting with each other.
  * https://stackoverflow.com/a/8809472
