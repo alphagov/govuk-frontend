@@ -175,17 +175,6 @@ module.exports = {
       'src',
       'cursor',
       '-webkit-appearance'
-    ],
-
-    /**
-     * We no longer need to use single colon pseudo-selectors, as we've dropped
-     * support for Internet Explorer 8.  Override the
-     * `selector-pseudo-element-colon-notation` value until the upstream
-     * Stylelint config has been updated.
-     *
-     * https://github.com/alphagov/stylelint-config-gds/pull/36
-     * https://stylelint.io/user-guide/rules/list/selector-pseudo-element-colon-notation/
-     */
-    'selector-pseudo-element-colon-notation': 'double'
+    ]
   }
 }

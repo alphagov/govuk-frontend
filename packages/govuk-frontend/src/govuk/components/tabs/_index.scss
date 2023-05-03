@@ -21,7 +21,7 @@
     @include govuk-font($size: 19);
     margin-left: govuk-spacing(5);
 
-    &::before {
+    &:before {
       @include govuk-text-colour;
       content: "\2014 "; // "— "
       margin-left: govuk-spacing(-5);
@@ -67,7 +67,7 @@
         background-color: govuk-colour("light-grey", $legacy: "grey-4");
         text-align: center;
 
-        &::before {
+        &:before {
           content: none;
         }
       }
@@ -101,7 +101,7 @@
 
         margin-bottom: 0;
 
-        &::after {
+        &:after {
           content: "";
           position: absolute;
           top: 0;

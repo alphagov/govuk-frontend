@@ -19,7 +19,7 @@ describe('Warning text', () => {
     it('renders with default assistive text', () => {
       const $ = render('warning-text', examples.default)
 
-      const $assistiveText = $('.govuk-visually-hidden')
+      const $assistiveText = $('.govuk-warning-text__assistive')
       expect($assistiveText.text()).toEqual('Warning')
     })
 
@@ -42,7 +42,7 @@ describe('Warning text', () => {
     it('renders custom assistive text', () => {
       const $ = render('warning-text', examples['icon fallback text only'])
 
-      const $assistiveText = $('.govuk-visually-hidden')
+      const $assistiveText = $('.govuk-warning-text__assistive')
       expect($assistiveText.html()).toContain('Some custom fallback text')
     })
 

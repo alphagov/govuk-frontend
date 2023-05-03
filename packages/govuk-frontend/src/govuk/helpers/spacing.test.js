@@ -3,6 +3,7 @@ const { outdent } = require('outdent')
 
 const sassBootstrap = `
   @import "settings/media-queries";
+  @import "settings/ie8";
 
   $spacing-point: 2;
 

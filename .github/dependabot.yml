@@ -18,6 +18,10 @@ updates:
       - dependency-type: direct
 
     ignore:
+      # Ignore major updates (breaks IE8 PostCSS plugins)
+      - dependency-name: autoprefixer
+        update-types: ['version-update:semver-major']
+
       # Always ignore legacy packages
       - dependency-name: iframe-resizer
       - dependency-name: jquery

@@ -204,4 +204,66 @@ describe('@mixin govuk-media-query', () => {
         `
       })
   })
+
+  describe('when compiling a rasterized stylesheet for IE8', () => {
+    it('only outputs static breakpoint styles', async () => {
+      const sass = `
+        $govuk-is-ie8: true;
+
+        $govuk-breakpoints: (
+          mobile:  320px,
+          tablet:  740px,
+          desktop: 980px,
+          wide:    1300px
+        );
+
+        @import "helpers/media-queries";
+
+        .foo {
+          @include govuk-media-query($until: tablet) {
+            color: lawngreen;
+          }
+          @include govuk-media-query($from: desktop) {
+              color: forestgreen;
+          }
+        }
+      `
+
+      await expect(compileSassString(sass))
+        .resolves
+        .toMatchObject({
+          css: outdent`
+            .foo {
+              color: forestgreen;
+            }
+          `
+        })
+    })
+
+    it('does not rasterize print queries', async () => {
+      const sass = `
+        ${sassBootstrap}
+        $govuk-is-ie8: true;
+
+        @import "helpers/media-queries";
+
+        .foo {
+          color: blue;
+          @include govuk-media-query($media-type: 'print') {
+            color: red;
+          }
+        }
+      `
+
+      await expect(compileSassString(sass))
+        .resolves
+        .toMatchObject({
+          css: outdent`
+            .foo {
+              color: blue;
+            }
+          `
+        })
+    })
+  })
 })

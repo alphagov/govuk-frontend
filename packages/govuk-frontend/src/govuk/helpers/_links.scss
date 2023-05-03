@@ -383,7 +383,8 @@
 /// Remove underline from links
 ///
 /// Remove underlines from links unless the link is active or a user hovers
-/// their cursor over it.
+/// their cursor over it. This has no effect in Internet Explorer 8 (IE8),
+/// because IE8 does not support `:not`.
 ///
 /// @example scss
 ///   .govuk-component__link {
@@ -412,7 +413,7 @@
     &[href^="/"],
     &[href^="http://"],
     &[href^="https://"] {
-      &::after {
+      &:after {
         content: " (" attr(href) ")";
         font-size: 90%;
 

@@ -61,6 +61,39 @@ describe('dist/', () => {
     })
   })
 
+  describe('govuk-frontend-ie8-[version].min.css', () => {
+    let filename
+    let stylesheet
+
+    beforeAll(async () => {
+      filename = `govuk-frontend-ie8-${pkg.version}.min.css`
+      stylesheet = await readFile(join(paths.root, `dist/${filename}`), 'utf8')
+    })
+
+    it('should not contain current media query displayed on body element', () => {
+      expect(stylesheet).not.toMatch(/body:before{content:/)
+    })
+
+    it('should contain source mapping URL', () => {
+      expect(stylesheet).toMatch(new RegExp(`/\\*# sourceMappingURL=${filename}.map \\*/${EOL}$`))
+    })
+  })
+
+  describe('govuk-frontend-ie8-[version].min.css.map', () => {
+    let filename
+    let sourcemap
+
+    beforeAll(async () => {
+      filename = `govuk-frontend-ie8-${pkg.version}.min.css.map`
+      sourcemap = JSON.parse(await readFile(join(paths.root, `dist/${filename}`), 'utf8'))
+    })
+
+    it('should contain relative paths to sources', () => {
+      expect(sourcemap.sources).toContain('../packages/govuk-frontend/src/govuk/all-ie8.scss')
+      expect(sourcemap.sources).toContain('../packages/govuk-frontend/src/govuk/core/_govuk-frontend-version.scss')
+    })
+  })
+
   describe('govuk-frontend-[version].min.js', () => {
     let filename
     let javascript

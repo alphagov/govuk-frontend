@@ -7,6 +7,9 @@ import { minimatch } from 'minimatch'
 import postcss from 'postcss'
 import pseudoclasses from 'postcss-pseudo-classes'
 import scss from 'postcss-scss'
+import unmq from 'postcss-unmq'
+import unopacity from 'postcss-unopacity'
+import unrgba from 'postcss-unrgba'
 
 /**
  * PostCSS config
@@ -18,6 +21,11 @@ export default ({ from = '', to = '', env = 'production' }) => {
   const config = {
     plugins: [],
     syntax: postcss
+  }
+
+  // Browserslist IE8 environment
+  if (from.includes('-ie8')) {
+    env = 'oldie'
   }
 
   // Sass syntax support
@@ -41,6 +49,15 @@ export default ({ from = '', to = '', env = 'production' }) => {
         ':focus'
       ]
     }))
+  }
+
+  // Transpile CSS for Internet Explorer
+  if (env === 'oldie') {
+    config.plugins.push(
+      unmq(),
+      unopacity({ browsers: 'ie 8' }),
+      unrgba({ filter: true })
+    )
   }
 
   // Add GOV.UK Frontend release version

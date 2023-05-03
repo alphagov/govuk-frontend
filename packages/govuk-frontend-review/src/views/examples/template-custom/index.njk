@@ -25,7 +25,12 @@
 
 {% block head %}
   <!-- block:head -->
-  <link rel="stylesheet" href="/stylesheets/app.min.css">
+  <!--[if !IE 8]><!-->
+    <link rel="stylesheet" href="/stylesheets/app.min.css">
+  <!--<![endif]-->
+  <!--[if IE 8]>
+    <link rel="stylesheet" href="/stylesheets/app-ie8.min.css">
+  <![endif]-->
   <!--[if lt IE 9]>
     <script src="/vendor/html5-shiv/html5shiv.min.js"></script>
   <![endif]-->

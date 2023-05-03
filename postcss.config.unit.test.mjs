@@ -46,6 +46,25 @@ describe('PostCSS config', () => {
           ]))
       })
     })
+
+    describe('IE8 only environment', () => {
+      it.each([
+        {
+          from: 'example-ie8.scss',
+          to: 'example-ie8.min.css'
+        }
+      ])("Uses 'oldie' environment for $from", ({ from, to }) => {
+        const config = configFn({ env, from, to })
+
+        expect(config.plugins)
+          .toEqual(expect.arrayContaining([
+            expect.objectContaining({
+              postcssPlugin: 'autoprefixer',
+              options: { env: 'oldie' }
+            })
+          ]))
+      })
+    })
   })
 
   describe('Plugins', () => {
@@ -61,6 +80,54 @@ describe('PostCSS config', () => {
         expect(getPluginNames(config))
           .toEqual([
             'autoprefixer',
+            'govuk-frontend-version',
+            'postcss-discard-comments',
+            'postcss-minify-gradients',
+            'postcss-reduce-initial',
+            'postcss-svgo',
+            'postcss-normalize-display-values',
+            'postcss-reduce-transforms',
+            'postcss-colormin',
+            'postcss-normalize-timing-functions',
+            'postcss-calc',
+            'postcss-convert-values',
+            'postcss-ordered-values',
+            'postcss-minify-selectors',
+            'postcss-minify-params',
+            'postcss-normalize-charset',
+            'postcss-discard-overridden',
+            'postcss-normalize-string',
+            'postcss-normalize-unicode',
+            'postcss-minify-font-values',
+            'postcss-normalize-url',
+            'postcss-normalize-repeat-style',
+            'postcss-normalize-positions',
+            'postcss-normalize-whitespace',
+            'postcss-merge-longhand',
+            'postcss-discard-duplicates',
+            'postcss-merge-rules',
+            'postcss-discard-empty',
+            'postcss-unique-selectors',
+            'cssnano-util-raw-cache'
+          ])
+      })
+    })
+
+    describe('Default + IE8', () => {
+      it.each([
+        {
+          from: 'example-ie8.scss',
+          to: 'example-ie8.min.css'
+        }
+      ])('Adds plugins for $from', ({ from, to }) => {
+        const config = configFn({ env, from, to })
+
+        expect(getPluginNames(config))
+          .toEqual([
+            'autoprefixer',
+            'postcss-unmq',
+            'postcss-unopacity',
+            'postcss-color-rgba-fallback',
             'govuk-frontend-version',
             'postcss-discard-comments',
             'postcss-minify-gradients',
@@ -170,6 +237,59 @@ describe('PostCSS config', () => {
 
         expect(getPluginNames(config))
           .not.toContain('postcss-pseudo-classes')
+      })
+    })
+
+    describe('Review app only + IE8', () => {
+      it.each([
+        {
+          from: 'packages/govuk-frontend-review/src/stylesheets/app-ie8.scss',
+          to: 'packages/govuk-frontend-review/dist/stylesheets/app-ie8.min.css'
+        },
+        {
+          from: 'packages/govuk-frontend-review/src/stylesheets/app-legacy-ie8.scss',
+          to: 'packages/govuk-frontend-review/dist/stylesheets/app-legacy-ie8.min.css'
+        }
+      ])('Adds plugins for $from', ({ from, to }) => {
+        const config = configFn({ env, from, to })
+
+        expect(getPluginNames(config))
+          .toEqual([
+            'autoprefixer',
+            'postcss-pseudo-classes',
+            'postcss-unmq',
+            'postcss-unopacity',
+            'postcss-color-rgba-fallback',
+            'govuk-frontend-version',
+            'postcss-discard-comments',
+            'postcss-minify-gradients',
+            'postcss-reduce-initial',
+            'postcss-svgo',
+            'postcss-normalize-display-values',
+            'postcss-reduce-transforms',
+            'postcss-colormin',
+            'postcss-normalize-timing-functions',
+            'postcss-calc',
+            'postcss-convert-values',
+            'postcss-ordered-values',
+            'postcss-minify-selectors',
+            'postcss-minify-params',
+            'postcss-normalize-charset',
+            'postcss-discard-overridden',
+            'postcss-normalize-string',
+            'postcss-normalize-unicode',
+            'postcss-minify-font-values',
+            'postcss-normalize-url',
+            'postcss-normalize-repeat-style',
+            'postcss-normalize-positions',
+            'postcss-normalize-whitespace',
+            'postcss-merge-longhand',
+            'postcss-discard-duplicates',
+            'postcss-merge-rules',
+            'postcss-discard-empty',
+            'postcss-unique-selectors',
+            'cssnano-util-raw-cache'
+          ])
       })
     })
   })

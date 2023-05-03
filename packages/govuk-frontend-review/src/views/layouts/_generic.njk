@@ -11,9 +11,19 @@
     <![endif]-->
     <link rel="stylesheet" media="print" href="/vendor/govuk_template/stylesheets/govuk-template-print.css">
     <link rel="stylesheet" media="all" href="/vendor/govuk_template/stylesheets/fonts.css"/>
-    <link rel="stylesheet" href="/stylesheets/app-legacy.min.css">
+    <!--[if !IE 8]><!-->
+      <link rel="stylesheet" href="/stylesheets/app-legacy.min.css">
+    <!--<![endif]-->
+    <!--[if IE 8]>
+      <link rel="stylesheet" href="/stylesheets/app-legacy-ie8.min.css">
+    <![endif]-->
   {% else %}
-    <link rel="stylesheet" href="/stylesheets/app.min.css">
+    <!--[if !IE 8]><!-->
+      <link rel="stylesheet" href="/stylesheets/app.min.css">
+    <!--<![endif]-->
+    <!--[if IE 8]>
+      <link rel="stylesheet" href="/stylesheets/app-ie8.min.css">
+    <![endif]-->
   {% endif %}
 
   {% block styles %}{% endblock %}

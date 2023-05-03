@@ -22,11 +22,15 @@
     width: 100%;
     clear: both;
     box-shadow: 0 0 0 5px $app-preview-border-colour;
+
+    @include _govuk-if-ie8 {
+      outline: 5px solid $app-preview-border-colour;
+    }
   }
 }
 
 // Removes the breakpoint sass-mq debug display
-.app-iframe-in-component-preview::before {
+.app-iframe-in-component-preview:before {
   display: none;
 }
 
