@@ -147,10 +147,7 @@
     $line-height: $line-height if($important, !important, null);
 
     @if not $breakpoint {
-      font-size: $font-size;
-      @if $govuk-typography-use-rem {
-        font-size: $font-size-rem;
-      }
+      font-size: $font-size-rem;
       line-height: $line-height;
     } @else if $breakpoint == "print" {
       @include govuk-media-query($media-type: print) {
@@ -159,10 +156,7 @@
       }
     } @else {
       @include govuk-media-query($from: $breakpoint) {
-        font-size: $font-size;
-        @if $govuk-typography-use-rem {
-          font-size: $font-size-rem;
-        }
+        font-size: $font-size-rem;
         line-height: $line-height;
       }
     }
