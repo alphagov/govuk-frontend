@@ -154,13 +154,6 @@
 
       vertical-align: middle;
 
-      // IE8 fallback of icon
-      @include _govuk-if-ie8 {
-        display: inline-block;
-        max-height: 20px;
-        line-height: 1;
-      }
-
       // Create inner chevron arrow
       &:after {
         content: "";
@@ -178,27 +171,12 @@
 
         border-top: govuk-px-to-rem(2px) solid;
         border-right: govuk-px-to-rem(2px) solid;
-
-        // IE8 fallback of icon with HTML symbol
-        @include _govuk-if-ie8 {
-          content: "\25B2"; // "▲"
-          position: relative;
-          border: 0;
-        }
       }
     }
 
     // Rotate icon to create "Down" version
     .govuk-accordion-nav__chevron--down {
       transform: rotate(180deg);
-
-      // IE8 fallback of arrow icon
-      @include _govuk-if-ie8 {
-        &:after {
-          content: "\25BC"; // "▼"
-          transform: none;
-        }
-      }
     }
 
     .govuk-accordion__section-button {
