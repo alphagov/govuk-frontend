@@ -2,6 +2,7 @@
 import { join } from 'path'
 
 import { paths } from 'govuk-frontend-config'
+import { packageNameToPath } from 'govuk-frontend-lib/names'
 import nunjucks from 'nunjucks'
 
 import * as filters from './filters/index.mjs'
@@ -11,9 +12,9 @@ export function renderer (app) {
   const appViews = [
     join(paths.app, 'src/views/layouts'),
     join(paths.app, 'src/views'),
-    join(paths.package, 'src/govuk/components'),
-    join(paths.package, 'src/govuk'),
-    join(paths.root, 'node_modules/govuk_template_jinja')
+    packageNameToPath('govuk-frontend', 'src/govuk/components'),
+    packageNameToPath('govuk-frontend', 'src/govuk'),
+    packageNameToPath('govuk_template_jinja')
   ]
 
   // Initialise nunjucks environment

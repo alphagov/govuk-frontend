@@ -7,6 +7,7 @@
     "../shared/helpers",
     "../shared/lib"
   ],
+  "exclude": ["./dist/**"],
   "compilerOptions": {
     "lib": ["ESNext", "DOM"],
     "target": "ES2015",

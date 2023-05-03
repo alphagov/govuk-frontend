@@ -1,0 +1,41 @@
+{
+  "private": true,
+  "name": "govuk-frontend",
+  "description": "Used only for the development of GOV.UK Frontend, see `package/dist/package.json` for the published `package.json`",
+  "main": "src/govuk/all.mjs",
+  "files": [
+    "src",
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "sass": "./src/govuk/all.scss",
+      "import": "./src/govuk/all.mjs",
+      "default": "./src/govuk/all.mjs"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json",
+    "./*": "./src/*"
+  },
+  "sass": "src/govuk/all.scss",
+  "engines": {
+    "node": "^18.12.0",
+    "npm": "^8.1.0 || ^9.1.0"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "govuk-frontend-config": "*",
+    "govuk-frontend-helpers": "*",
+    "govuk-frontend-lib": "*",
+    "html-validate": "7.15.1",
+    "nunjucks": "^3.2.4",
+    "outdent": "^0.8.0",
+    "puppeteer": "^19.11.1",
+    "sass-color-helpers": "^2.1.1",
+    "sass-embedded": "^1.62.0",
+    "sassdoc": "^2.7.4",
+    "slash": "^5.0.0"
+  }
+}

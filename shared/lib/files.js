@@ -7,6 +7,8 @@ const { paths } = require('govuk-frontend-config')
 const yaml = require('js-yaml')
 const { minimatch } = require('minimatch')
 
+const { packageNameToPath } = require('./names')
+
 /**
  * Directory listing for path
  *
@@ -76,7 +78,7 @@ const mapPathTo = (patterns, callback) => (entryPath) => {
  * @returns {Promise<ComponentData>} Component data
  */
 const getComponentData = async (componentName) => {
-  const yamlPath = join(paths.package, 'src/govuk/components', componentName, `${componentName}.yaml`)
+  const yamlPath = packageNameToPath('govuk-frontend', `src/govuk/components/${componentName}/${componentName}.yaml`)
   const yamlData = yaml.load(await readFile(yamlPath, 'utf8'), { json: true })
 
   return {
@@ -91,7 +93,7 @@ const getComponentData = async (componentName) => {
  * @returns {Promise<ComponentData[]>} Components' data
  */
 const getComponentsData = async () => {
-  const componentNames = await getDirectories(join(paths.package, 'src/govuk/components'))
+  const componentNames = await getDirectories(packageNameToPath('govuk-frontend', 'src/govuk/components'))
   return Promise.all(componentNames.map(getComponentData))
 }
 

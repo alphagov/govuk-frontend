@@ -8,5 +8,5 @@
     "../shared/lib",
     "../shared/tasks"
   ],
-  "exclude": ["./dist/**"]
+  "exclude": ["./dist/**", "../package/dist/**"]
 }
