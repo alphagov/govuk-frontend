@@ -22,6 +22,14 @@ Instead we recommend checking for the disabled attribute using [`$button.hasAttr
 
 This change was introduced in [pull request #2830: Set the boolean disabled attribute consistently in the button component](https://github.com/alphagov/govuk-frontend/pull/2830).
 
+#### Remove Internet Explorer 8 stylesheets, settings and mixins
+
+We no longer support Internet Explorer 8 (IE8) in GOV.UK Frontend and no longer provide dedicated stylesheets for the browser. Remove any references to these stylesheets from your HTML.
+
+We've removed the `govuk-if-ie8` and `govuk-not-ie8` mixins, and the `$govuk-is-ie8` and `$govuk-ie8-breakpoint` settings, that were deprecated in [GOV.UK Frontend v4.6.0](https://github.com/alphagov/govuk-frontend/releases/tag/v4.6.0).
+
+This change was introduced in [pull request #3559: Remove IE8-related Sass and CSS build tasks](https://github.com/alphagov/govuk-frontend/pull/3559).
+
 #### Remove deprecated `.govuk-button--disabled` class
 
 We've removed the `.govuk-button--disabled` class that we deprecated in [GOV.UK Frontend v4.6.0](https://github.com/alphagov/govuk-frontend/releases/tag/v4.6.0).
@@ -31,6 +39,14 @@ Use the `disabled` attribute to mark `<button>` and `<input>` elements as being 
 We no longer support link buttons being disabled or using disabled styles.
 
 This change was introduced in [pull request #3557: Remove deprecated `.govuk-button--disabled` class](https://github.com/alphagov/govuk-frontend/pull/3557).
+
+#### Update the HTML for warning text
+
+We've removed the `.govuk-warning-text__assistive` class and its styles from GOV.UK Frontend. This class is unnecessary, as it duplicates the functionality of the `.govuk-visually-hidden` class already present in Frontend.
+
+If you’re not using Nunjucks macros, update your warning text HTML to replace the `govuk-warning-text__assistive` class with the `govuk-visually-hidden` class.
+
+This change was introduced in [pull request #3569: Remove unnecesary class from Warning Text component](https://github.com/alphagov/govuk-frontend/pull/3569).
 
 ## 4.6.0 (Feature release)
 

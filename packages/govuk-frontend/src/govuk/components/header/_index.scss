@@ -130,8 +130,6 @@
     &:active {
       // Negate the added border
       margin-bottom: $govuk-header-link-underline-thickness * -1;
-      // Omitting colour will use default value of currentColor – if we
-      // specified currentColor explicitly IE8 would ignore this rule.
       border-bottom: $govuk-header-link-underline-thickness solid;
     }
 
@@ -201,13 +199,13 @@
       @include govuk-focused-text;
     }
 
-    &:after {
+    &::after {
       @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
       content: "";
       margin-left: govuk-spacing(1);
     }
 
-    &[aria-expanded="true"]:after {
+    &[aria-expanded="true"]::after {
       @include govuk-shape-arrow($direction: up, $base: 10px, $display: inline-block);
     }
 
@@ -319,7 +317,7 @@
       }
 
       // Do not append link href to GOV.UK link when printing (e.g. '(/)')
-      &:after {
+      &::after {
         display: none;
       }
     }
