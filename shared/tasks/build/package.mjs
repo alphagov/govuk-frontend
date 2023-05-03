@@ -11,7 +11,7 @@ import { components, configs, files, scripts, styles, task } from '../index.mjs'
  */
 export default gulp.series(
   task.name('clean', () =>
-    files.clean('**/*', {
+    files.clean('*', {
       destPath: paths.package,
       ignore: [
         '**/package.json',

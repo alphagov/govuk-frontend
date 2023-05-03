@@ -1,6 +1,6 @@
-import { writeFile } from 'fs/promises'
+import { mkdir, writeFile } from 'fs/promises'
 import { EOL } from 'os'
-import { join, parse } from 'path'
+import { dirname, join, parse } from 'path'
 
 import cpy from 'cpy'
 import { deleteAsync } from 'del'
@@ -46,6 +46,7 @@ export async function write (assetPath, { destPath, filePath, fileContents }) {
     throw new Error("Option 'fileContents' required")
   }
 
+  await mkdir(dirname(assetDestPath), { recursive: true })
   await writeFile(assetDestPath, await fileContents() + EOL)
 }
 

@@ -112,7 +112,7 @@ This makes it easier to keep track of different contexts.
 # Linting
 
 To ensure code quality and consistency in our Sass files we check that certain
-style rules are followed. These rules are based on [stylelint-config-gds](https://github.com/alphagov/stylelint-config-gds/blob/main/scss.js), but we also add our own custom rules with a project [config file](../../../stylelint.config.js).
+style rules are followed. These rules are based on [stylelint-config-gds](https://github.com/alphagov/stylelint-config-gds/blob/main/scss.js), but we also add our own custom rules with a project [config file](/stylelint.config.js).
 
 See [testing and linting](/docs/releasing/testing-and-linting.md) for more information.
 
@@ -548,4 +548,4 @@ The SassDoc comments are used to generate the [Sass API reference in the GOV.UK 
 
 For SassDoc comments, use 3 slashes (`///`) at the start of the line.
 
-See [colour.scss](../../../src/govuk/helpers/_colour.scss) for an example of SassDoc syntax.
+See [`_colour.scss`](/src/govuk/helpers/_colour.scss) for an example of SassDoc syntax.

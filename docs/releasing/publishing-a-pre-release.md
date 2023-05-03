@@ -13,7 +13,7 @@ Use pre-releases when you:
 
 ## What happens when you pre-release GOV.UK Frontend
 
-When you pre-release GOV.UK Frontend, this creates a GitHub branch. This branch contains the GOV.UK Frontend `/package` directory with your trial changes.
+When you pre-release GOV.UK Frontend, this creates a GitHub branch. This branch contains the GOV.UK Frontend [`/package`](/package) directory with your trial changes.
 
 Projects can point to this branch in their package.json, instead of to the published [GOV.UK Frontend npm package](https://www.npmjs.com/package/govuk-frontend). No changes are published to the GOV.UK Frontend npm package as part of this process.
 

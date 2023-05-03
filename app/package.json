@@ -9,10 +9,12 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "gulp build",
-    "dev": "gulp dev",
+    "predev": "npm run build",
+    "dev": "gulp dev --color",
+    "build": "gulp build --color",
     "serve": "nodemon",
-    "start": "node src/start.mjs"
+    "start": "node src/start.mjs",
+    "test:screenshots": "gulp screenshots --color"
   },
   "dependencies": {
     "chokidar": "^3.5.3",

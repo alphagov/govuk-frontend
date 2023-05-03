@@ -55,7 +55,7 @@ Read the docs for [what to do before publishing a release](/docs/releasing/befor
 
 4. Run `npm ci` to make sure you have the exact dependencies installed.
 
-5. Update the [`CHANGELOG.md`](../../CHANGELOG.md) by:
+5. Update the [`CHANGELOG.md`](/CHANGELOG.md) by:
 
    - changing the 'Unreleased' heading to the new version number and its release type. For example, '3.14.1 (Fix release)'
    - adding a new 'Unreleased' heading above the new version number and release type, so users will know where to add PRs to the changelog
@@ -67,13 +67,13 @@ Read the docs for [what to do before publishing a release](/docs/releasing/befor
    npm version <NEW VERSION NUMBER> --no-git-tag-version --workspace package
    ```
 
-   This step will update the `package.json` and project `package-lock.json` files.
+   This step will update the [`package.json`](/package.json) and project [`package-lock.json`](/package-lock.json) files.
 
    Do not commit the changes.
 
 7. Run `npm run build-release` to:
 
-   - build GOV.UK Frontend into the `/package` and `/dist` directories
+   - build GOV.UK Frontend into the [`/package`](/package) and [`/dist`](/dist) directories
    - commit the changes
    - push a branch to GitHub
 

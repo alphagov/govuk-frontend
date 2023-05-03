@@ -74,7 +74,7 @@ We use [Jest](https://jestjs.io/), an automated testing platform with an asserti
 
 We write functional tests for every component to check the output of our Nunjucks code. These are found in `template.test.js` files in each component directory. These Nunjucks tests render the component examples defined in the component yaml files, and assert that the HTML tags, attributes and classes are as expected. For example: checking that when you pass in an `id` to the component using the Nunjucks macro, it outputs the component with an `id` attribute equal to that value.
 
-If a component uses JavaScript, we also write functional tests in a `[component name].test.js` file, for example [checkboxes.test.js](../../src/govuk/components/checkboxes/checkboxes.test.js). These component tests check that interactions, such as a mouse click, have the expected result.
+If a component uses JavaScript, we also write functional tests in a `[component name].test.js` file, for example [checkboxes.test.js](/src/govuk/components/checkboxes/checkboxes.test.js). These component tests check that interactions, such as a mouse click, have the expected result.
 
 If you want to inspect a test that's running in the browser, configure Jest Puppeteer in non-headless mode with the environment variable `HEADLESS=false` and then use [Jest Puppeteer's debug mode](https://github.com/argos-ci/jest-puppeteer/blob/main/README.md#debug-mode) to pause the test execution.
 
@@ -86,7 +86,7 @@ You should also test component Javascript logic with unit tests, in a `[componen
 
 ### Global tests
 
-We write functional tests for checking our JavaScript exports and our global sass variables - see [all.test.js](../../src/govuk/all.test.js) for examples of global tests we run.
+We write functional tests for checking our JavaScript exports and our global sass variables - see [all.test.mjs](/src/govuk/all.test.mjs) and [components/globals.test.mjs](/src/govuk/components/globals.test.mjs) for examples of global tests we run.
 
 ### Conventions
 
@@ -112,7 +112,7 @@ We generate 2 screenshots for each default example of every component. One examp
 
 The screenshots are public, so you can check them without logging in. A BrowserStack account is needed to approve or reject any changes (if you don't have access, ask your tech lead for help). If you're the reviewer of the pull request code, it's your responsibility to approve or request changes for any visual changes Percy highlights.
 
-When you run the tests locally (for example, using `npm run test:screenshots`), Percy commands are ignored and Percy does not generate any screenshots. You will see the following message in your command line output: `[percy] Percy is not running, disabling snapshots`.
+When you run the tests locally (for example, using `npm run test:screenshots --workspace app`), Percy commands are ignored and Percy does not generate any screenshots. You will see the following message in your command line output: `[percy] Percy is not running, disabling snapshots`.
 
 ### PRs from forks
 
