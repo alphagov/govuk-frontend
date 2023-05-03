@@ -81,7 +81,8 @@ scenario: >-
                         text: "Name"
                     },
                     value: values["name"],
-                    errorMessage: errors["name"]
+                    errorMessage: errors["name"],
+                    autocomplete: "name"
                 }) }}
 
                 {{ govukInput({
@@ -95,7 +96,8 @@ scenario: >-
                         text: "We’ll only use this to reply to your message."
                     },
                     value: values["email"],
-                    errorMessage: errors["email"]
+                    errorMessage: errors["email"],
+                    autocomplete: "email"
                 }) }}
 
                 <p class="govuk-body govuk-!-margin-top-6">By sending this message, you consent to us using your information as detailed in the privacy notice.</p>
