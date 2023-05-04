@@ -13,7 +13,7 @@ const sassConfig = {
   }
 }
 
-let sassBootstrap = `
+const sassBootstrap = `
   $govuk-breakpoints: (
     desktop: 30em
   );
@@ -231,13 +231,11 @@ describe('@mixin govuk-typography-responsive', () => {
       .toMatchObject({
         css: outdent`
           .foo {
-            font-size: 12px;
             font-size: 0.75rem;
             line-height: 1.25;
           }
           @media (min-width: 30em) {
             .foo {
-              font-size: 14px;
               font-size: 0.875rem;
               line-height: 1.4285714286;
             }
@@ -260,7 +258,6 @@ describe('@mixin govuk-typography-responsive', () => {
       .toMatchObject({
         css: outdent`
           .foo {
-            font-size: 12px;
             font-size: 0.75rem;
             line-height: 1.25;
           }
@@ -305,13 +302,11 @@ describe('@mixin govuk-typography-responsive', () => {
         .toMatchObject({
           css: outdent`
             .foo {
-              font-size: 12px !important;
               font-size: 0.75rem !important;
               line-height: 1.25 !important;
             }
             @media (min-width: 30em) {
               .foo {
-                font-size: 14px !important;
                 font-size: 0.875rem !important;
                 line-height: 1.4285714286 !important;
               }
@@ -334,7 +329,6 @@ describe('@mixin govuk-typography-responsive', () => {
         .toMatchObject({
           css: outdent`
             .foo {
-              font-size: 12px !important;
               font-size: 0.75rem !important;
               line-height: 1.25 !important;
             }
@@ -364,160 +358,13 @@ describe('@mixin govuk-typography-responsive', () => {
         .toMatchObject({
           css: outdent`
             .foo {
-              font-size: 12px;
               font-size: 0.75rem;
               line-height: 1.75;
             }
             @media (min-width: 30em) {
               .foo {
-                font-size: 14px;
                 font-size: 0.875rem;
                 line-height: 1.5;
-              }
-            }
-          `
-        })
-    })
-  })
-
-  describe('when $govuk-typography-use-rem is disabled', () => {
-    beforeEach(() => {
-      sassBootstrap = `
-        @import "settings/warnings";
-        ${sassBootstrap}
-      `
-    })
-
-    it('outputs CSS with suitable media queries', async () => {
-      const sass = `
-        $govuk-typography-use-rem: false;
-        ${sassBootstrap}
-
-        .foo {
-          @include govuk-typography-responsive($size: 14)
-        }
-      `
-
-      await expect(compileSassString(sass))
-        .resolves
-        .toMatchObject({
-          css: outdent`
-            .foo {
-              font-size: 12px;
-              line-height: 1.25;
-            }
-            @media (min-width: 30em) {
-              .foo {
-                font-size: 14px;
-                line-height: 1.4285714286;
-              }
-            }
-          `
-        })
-    })
-
-    it('adjusts rem values based on root font size', async () => {
-      const sass = `
-        $govuk-typography-use-rem: false;
-        $govuk-root-font-size: 10px;
-        ${sassBootstrap}
-
-        .foo {
-          @include govuk-typography-responsive($size: 14)
-        }
-      `
-
-      await expect(compileSassString(sass))
-        .resolves
-        .toMatchObject({
-          css: outdent`
-            .foo {
-              font-size: 12px;
-              line-height: 1.25;
-            }
-            @media (min-width: 30em) {
-              .foo {
-                font-size: 14px;
-                line-height: 1.4285714286;
-              }
-            }
-          `
-        })
-    })
-
-    describe('and $important is set to true', () => {
-      it('marks font size and line height as important', async () => {
-        const sass = `
-          $govuk-typography-use-rem: false;
-          ${sassBootstrap}
-
-          .foo {
-            @include govuk-typography-responsive($size: 14, $important: true);
-          }
-        `
-
-        await expect(compileSassString(sass))
-          .resolves
-          .toMatchObject({
-            css: outdent`
-              .foo {
-                font-size: 12px !important;
-                line-height: 1.25 !important;
-              }
-              @media (min-width: 30em) {
-                .foo {
-                  font-size: 14px !important;
-                  line-height: 1.4285714286 !important;
-                }
-              }
-            `
-          })
-      })
-    })
-
-    it('outputs a deprecation warning when set to false', async () => {
-      const sass = `
-        $govuk-typography-use-rem: false;
-        ${sassBootstrap}
-      `
-
-      await compileSassString(sass, sassConfig)
-
-      // Get the argument of the last @warn call, which we expect to be the
-      // deprecation notice
-      return expect(mockWarnFunction.mock.calls.at(-1))
-        .toEqual(expect.arrayContaining([
-          '$govuk-typography-use-rem is deprecated. From version 5.0, ' +
-          'GOV.UK Frontend will not support disabling rem font sizes. To ' +
-          'silence this warning, update $govuk-suppressed-warnings with ' +
-          'key: "allow-not-using-rem"'
-        ]))
-    })
-  })
-
-  describe('when compatibility mode is set', () => {
-    it('$govuk-typography-use-rem is disabled by default', async () => {
-      const sass = `
-        $govuk-compatibility-govuktemplate: true;
-        ${sassBootstrap}
-
-        .foo {
-          @include govuk-typography-responsive($size: 14)
-        }
-      `
-
-      await expect(compileSassString(sass))
-        .resolves
-        .toMatchObject({
-          css: outdent`
-            .foo {
-              font-size: 12px;
-              line-height: 1.25;
-            }
-            @media (min-width: 30em) {
-              .foo {
-                font-size: 14px;
-                line-height: 1.4285714286;
               }
             }
           `
@@ -546,7 +393,6 @@ describe('@mixin govuk-typography-responsive', () => {
               -webkit-font-smoothing: antialiased;
               -moz-osx-font-smoothing: grayscale;
               font-weight: 400;
-              font-size: 12px;
               font-size: 0.75rem;
               line-height: 1.25;
             }
@@ -557,7 +403,6 @@ describe('@mixin govuk-typography-responsive', () => {
             }
             @media (min-width: 30em) {
               .foo {
-                font-size: 14px;
                 font-size: 0.875rem;
                 line-height: 1.4285714286;
               }
@@ -626,11 +471,11 @@ describe('@mixin govuk-typography-responsive', () => {
       const results = compileSassString(sass)
 
       await expect(results).resolves.toMatchObject({
-        css: expect.stringContaining('font-size: 12px')
+        css: expect.stringContaining('font-size: 0.75rem')
       })
 
       await expect(results).resolves.toMatchObject({
-        css: expect.not.stringContaining('font-size: 14px')
+        css: expect.not.stringContaining('font-size: 0.875rem')
       })
     })
 
