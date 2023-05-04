@@ -21,21 +21,21 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - run JavaScript tests on the review application
 - run accessibility and HTML validation tests
 
-**`npm run serve --workspace app` will do the following:**
+**`npm run serve --workspace govuk-frontend-review` will do the following:**
 
 - start up Express, restarting when `.mjs`, `.json` or `.yaml` files change
 
-**`npm run build:app` will trigger `npm run build --workspace app` that will:**
+**`npm run build:app` will trigger `npm run build --workspace govuk-frontend-review` that will:**
 
-- clean the `./app/dist` folder
-- output files into `./app/dist`
+- clean the `./packages/govuk-frontend-review/dist` folder
+- output files into `./packages/govuk-frontend-review/dist`
 - copy fonts and images
 - compile JavaScript and Sass, including documentation
 
 **`npm run build:package` will do the following:**
 
-- clean the `./package/dist` folder
-- output files into `./package/dist`
+- clean the `./packages/govuk-frontend/dist` folder
+- output files into `./packages/govuk-frontend/dist`
 - copy Sass files, applying Autoprefixer via PostCSS
 - copy Nunjucks component template/macro files, including JSON configs
 - copy GOV.UK Prototype Kit config files
@@ -49,7 +49,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - output files into `./dist`
 - copy fonts and images
 - compile JavaScript and Sass
-- append version number from `package/dist/package.json` to compiled JavaScript and CSS files
+- append version number from `packages/govuk-frontend/dist/package.json` to compiled JavaScript and CSS files
 - runs `npm run postbuild:release` (which will test the output is correct)
 
 ## Gulp tasks
@@ -66,33 +66,33 @@ Review app Gulp tasks are defined in [`app/gulpfile.mjs`](/app/gulpfile.mjs) and
 
 Gulp tasks from npm workspaces (such as the review app) can be run as shown:
 
-**`npx --workspace package -- gulp --tasks`**
+**`npx --workspace govuk-frontend-review -- gulp --tasks`**
 
 This will list out all available tasks for the GOV.UK Frontend package.
 
-GOV.UK Frontend package build Gulp tasks are defined in [`package/gulpfile.mjs`](/package/gulpfile.mjs) and the [`package/tasks/`](/package/tasks) folder.
+GOV.UK Frontend package build Gulp tasks are defined in [`packages/govuk-frontend/gulpfile.mjs`](/packages/govuk-frontend/gulpfile.mjs) and the [`packages/govuk-frontend/tasks/`](/packages/govuk-frontend/tasks) folder.
 
-**`npx --workspace app -- gulp --tasks`**
+**`npx --workspace govuk-frontend -- gulp --tasks`**
 
 This will list out all available tasks for the Review app.
 
-Review app Gulp tasks are defined in [`app/gulpfile.mjs`](../../app/gulpfile.mjs) and the [`app/tasks/`](../../app/tasks) folder.
+Review app Gulp tasks are defined in [`packages/govuk-frontend-review/gulpfile.mjs`](/packages/govuk-frontend-review/gulpfile.mjs) and the [`packages/govuk-frontend-review/tasks/`](/packages/govuk-frontend-review/tasks) folder.
 
-**`npx --workspace app -- gulp styles`**
+**`npx --workspace govuk-frontend-review -- gulp styles`**
 
 This task will:
 
 - check Sass code quality via Stylelint (`npm run lint:scss`)
-- compile Sass to CSS into `./app/dist/stylesheets`
-- compile Sass documentation into `./app/dist/docs/sassdoc`
+- compile Sass to CSS into `./packages/govuk-frontend-review/dist/stylesheets`
+- compile Sass documentation into `./packages/govuk-frontend-review/dist/docs/sassdoc`
 
-**`npx --workspace app -- gulp scripts`**
+**`npx --workspace govuk-frontend-review -- gulp scripts`**
 
 This task will:
 
 - check JavaScript code quality via ESLint (`npm run lint:js`) (using JavaScript Standard Style)
-- compile JavaScript to Universal Module Definition (UMD) into `./app/dist/javascripts`
-- compile JavaScript documentation into `./app/dist/docs/jsdoc`
+- compile JavaScript to Universal Module Definition (UMD) into `./packages/govuk-frontend-review/dist/javascripts`
+- compile JavaScript documentation into `./packages/govuk-frontend-review/dist/docs/jsdoc`
 
 ## Express app only
 

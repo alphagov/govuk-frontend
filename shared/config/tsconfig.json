@@ -1,5 +1,5 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["**/*.js", "**/*.mjs", "../../package"],
-  "exclude": ["../../package/dist/**"]
+  "include": ["**/*.js", "**/*.mjs", "../../packages/govuk-frontend"],
+  "exclude": ["../../packages/govuk-frontend/dist/**"]
 }

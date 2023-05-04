@@ -1,9 +1,5 @@
 ## Application architecture
 
-- `app/`
-
-  [Express](https://github.com/expressjs/express) application to preview components; also referred to as the _review app_.
-
 - `bin/`
 
   Binary/executable files (i.e. bash scripts) mainly used in the [publishing process](/docs/releasing/publishing.md).
@@ -16,22 +12,28 @@
 
   Documentation files.
 
-- `package/`
+- `packages/`
 
-  Package published on npm.
-  Consume all of govuk-frontend through a single package.
+  - `govuk-frontend-review/`
 
-  - `dist/` **contains auto-generated files**
+    [Express](https://github.com/expressjs/express) application to preview components; also referred to as the _review app_.
 
-    Builds of govuk-frontend published and exported from the npm package.
+  - `govuk-frontend/`
 
-  - `src/`
+    Package published on npm.
+    Consume all of govuk-frontend through a single package.
 
-    Source files. See [README.md](/package/src/README.md) in the src directory for details.
+    - `dist/` **contains auto-generated files**
+
+      Builds of govuk-frontend published and exported from the npm package.
+
+    - `src/`
+
+    Source files. See [README.md](/packages/govuk-frontend/src/README.md) in the src directory for details.
 
 - `shared/`
 
-  Shared packages used by tests, build tools and the [review app](/app).
+  Shared packages used by tests, build tools and the [review app](/packages/govuk-frontend-review).
 
   - `config/`
 

@@ -1,6 +1,6 @@
 # Components
 
-You can find components in `package/src/govuk/components`.
+You can find components in `packages/govuk-frontend/src/govuk/components`.
 
 ## Name your components
 

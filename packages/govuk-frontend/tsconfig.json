@@ -1,12 +1,12 @@
 {
-  "extends": "../tsconfig.base.json",
+  "extends": "../../tsconfig.base.json",
   "include": [
     "./src/**/*.js",
     "./src/**/*.mjs",
-    "../shared/config",
-    "../shared/helpers",
-    "../shared/lib",
-    "../shared/tasks"
+    "../../shared/config",
+    "../../shared/helpers",
+    "../../shared/lib",
+    "../../shared/tasks"
   ],
   "exclude": ["./dist/**"],
   "compilerOptions": {

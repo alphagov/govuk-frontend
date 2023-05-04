@@ -36,7 +36,7 @@ jobs:
           sass --version
 
       - name: Run command
-        run: time sass package/src/govuk/all.scss > /dev/null
+        run: time sass packages/govuk-frontend/src/govuk/all.scss > /dev/null
 
   dart-sass-latest:
     name: Dart Sass v1 (latest)
@@ -64,7 +64,7 @@ jobs:
         # Run the command through a shell to ensure `time` measures the time
         # taken by the entire pipeline, as we are now piping input into `sass`.
       - name: Run command
-        run: time sh -c 'echo "@import "\""govuk/all"\"";" | sass --stdin --quiet-deps --load-path=package/src > /dev/null'
+        run: time sh -c 'echo "@import "\""govuk/all"\"";" | sass --stdin --quiet-deps --load-path=packages/govuk-frontend/src > /dev/null'
 
   # Node Sass v3.4.0 = LibSass v3.3.0
   lib-sass:
@@ -87,7 +87,7 @@ jobs:
           node-sass --version
 
       - name: Run command
-        run: time node-sass package/src/govuk/all.scss > /dev/null
+        run: time node-sass packages/govuk-frontend/src/govuk/all.scss > /dev/null
 
   # Node Sass v8.x = LibSass v3 latest
   lib-sass-latest:
@@ -110,7 +110,7 @@ jobs:
           node-sass --version
 
       - name: Run command
-        run: time node-sass package/src/govuk/all.scss > /dev/null
+        run: time node-sass packages/govuk-frontend/src/govuk/all.scss > /dev/null
 
   ruby-sass:
     name: Ruby Sass v3.4.0 (deprecated)
@@ -131,7 +131,7 @@ jobs:
           sass --version
 
       - name: Run command
-        run: time sass package/src/govuk/all.scss > /dev/null
+        run: time sass packages/govuk-frontend/src/govuk/all.scss > /dev/null
 
   ruby-sass-latest:
     name: Ruby Sass v3 (latest, deprecated)
@@ -152,4 +152,4 @@ jobs:
           sass --version
 
       - name: Run command
-        run: time sass package/src/govuk/all.scss > /dev/null
+        run: time sass packages/govuk-frontend/src/govuk/all.scss > /dev/null

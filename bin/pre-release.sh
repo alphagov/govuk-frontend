@@ -25,13 +25,13 @@ npm run build:package
 # Check if the new built package has anything new to commit
 if [[ -n $(git status --porcelain) ]]; then
   echo "✍️ Commiting changed package"
-  git add package/dist/
+  git add packages/govuk-frontend/dist/
 
   git commit -m "Release GOV.UK Frontend to '$BRANCH_NAME' for testing"
 
-  # Create a local branch containing the package/dist directory
-  echo "✨ Filter the branch to only the package/dist/ directory..."
-  git filter-branch --force --subdirectory-filter package/dist
+  # Create a local branch containing the packages/govuk-frontend/dist directory
+  echo "✨ Filter the branch to only the packages/govuk-frontend/dist/ directory..."
+  git filter-branch --force --subdirectory-filter packages/govuk-frontend/dist
 
   # Force the push of the branch to the remote Github origin
   git push origin $BRANCH_NAME:$BRANCH_NAME --force

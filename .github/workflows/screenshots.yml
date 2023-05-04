@@ -41,10 +41,10 @@ jobs:
         uses: ./.github/workflows/actions/build
 
       - name: Start review application
-        run: npm start --workspace app &
+        run: npm start --workspace govuk-frontend-review &
 
       - name: Send screenshots to Percy
-        run: npx percy exec --parallel -- npm run test:screenshots --workspace app
+        run: npx percy exec --parallel -- npm run test:screenshots --workspace govuk-frontend-review
 
       - name: Finalise Percy build
         run: npx percy build:finalize

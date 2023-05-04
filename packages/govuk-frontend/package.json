@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "govuk-frontend",
-  "description": "Used only for the development of GOV.UK Frontend, see `package/dist/package.json` for the published `package.json`",
+  "description": "Used only for the development of GOV.UK Frontend, see `dist/package.json` for the published `package.json`",
   "main": "src/govuk/all.mjs",
   "files": [
     "src",

@@ -7,7 +7,7 @@ import { fixtures, scripts, styles, templates } from '../index.mjs'
 
 /**
  * Build package task
- * Prepare package/dist folder for publishing
+ * Prepare packages/govuk-frontend/dist folder for publishing
  *
  * @type {import('govuk-frontend-tasks').TaskFunction}
  */

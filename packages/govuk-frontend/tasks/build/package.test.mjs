@@ -6,7 +6,7 @@ import { compileSassFile } from 'govuk-frontend-helpers/tests'
 import { filterPath, getDirectories, getListing, mapPathTo } from 'govuk-frontend-lib/files'
 import { componentNameToClassName, componentPathToModuleName } from 'govuk-frontend-lib/names'
 
-describe('package/dist/', () => {
+describe('packages/govuk-frontend/dist/', () => {
   let listingSource
   let listingDist
 

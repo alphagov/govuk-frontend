@@ -1,7 +1,7 @@
 const { ESLint } = require('eslint')
 
 module.exports = {
-  // ESLint's configuration makes it ignore built files in `dist` or `package/dist`
+  // ESLint's configuration makes it ignore built files in `dist` or `packages/govuk-frontend/dist`
   // that we want left alone, as well as the polyfills.
   // The glob used by lint-staged to trigger the linting on commit isn't aware
   // of that ignore list, so will ask ESLint to lint those files.
