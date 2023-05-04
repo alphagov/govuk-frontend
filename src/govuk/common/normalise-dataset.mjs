@@ -1,8 +1,3 @@
-/* eslint-disable es-x/no-string-prototype-trim -- Polyfill imported */
-
-import '../vendor/polyfills/Element/prototype/dataset.mjs'
-import '../vendor/polyfills/String/prototype/trim.mjs'
-
 /**
  * Normalise string
  *

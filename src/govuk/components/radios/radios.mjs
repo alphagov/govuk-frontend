@@ -1,9 +1,4 @@
-/* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
-
-import { nodeListForEach } from '../../common/index.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
-import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target normalization and DOMContentLoaded
-import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
 /**
  * Radios component
@@ -52,7 +47,7 @@ Radios.prototype.init = function () {
   var $module = this.$module
   var $inputs = this.$inputs
 
-  nodeListForEach($inputs, function ($input) {
+  $inputs.forEach(function ($input) {
     var targetId = $input.getAttribute('data-aria-controls')
 
     // Skip radios without data-aria-controls attributes, or where the
@@ -91,7 +86,7 @@ Radios.prototype.init = function () {
  * @deprecated Will be made private in v5.0
  */
 Radios.prototype.syncAllConditionalReveals = function () {
-  nodeListForEach(this.$inputs, this.syncConditionalRevealWithInputState.bind(this))
+  this.$inputs.forEach(this.syncConditionalRevealWithInputState.bind(this))
 }
 
 /**
@@ -146,7 +141,7 @@ Radios.prototype.handleClick = function (event) {
   var $clickedInputForm = $clickedInput.form
   var $clickedInputName = $clickedInput.name
 
-  nodeListForEach($allInputs, function ($input) {
+  $allInputs.forEach(function ($input) {
     var hasSameFormOwner = $input.form === $clickedInputForm
     var hasSameName = $input.name === $clickedInputName
 
