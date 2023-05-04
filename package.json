@@ -83,7 +83,7 @@
     "sassdoc": "^2.7.4",
     "standard": "^17.0.0",
     "stylelint": "^14.16.1",
-    "stylelint-config-gds": "^0.2.0",
+    "stylelint-config-gds": "^0.3.0",
     "stylelint-order": "^6.0.3",
     "typedoc": "^0.24.6",
     "typescript": "^5.0.4"
