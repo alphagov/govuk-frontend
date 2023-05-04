@@ -18,6 +18,7 @@ function Tabs ($module) {
     return this
   }
 
+  /** @satisfies {NodeListOf<HTMLAnchorElement>} */
   var $tabs = $module.querySelectorAll('a.govuk-tabs__tab')
   if (!$tabs.length) {
     return this
@@ -232,7 +233,6 @@ Tabs.prototype.showTab = function ($tab) {
  * @returns {HTMLAnchorElement | null} Tab link
  */
 Tabs.prototype.getTab = function (hash) {
-  // @ts-expect-error `HTMLAnchorElement` type expected
   return this.$module.querySelector('a.govuk-tabs__tab[href="' + hash + '"]')
 }
 
@@ -373,6 +373,7 @@ Tabs.prototype.activateNextTab = function () {
     return
   }
 
+  /** @satisfies {HTMLAnchorElement} */
   var $nextTab = $nextTabListItem.querySelector('a.govuk-tabs__tab')
   if (!$nextTab) {
     return
@@ -400,6 +401,7 @@ Tabs.prototype.activatePreviousTab = function () {
     return
   }
 
+  /** @satisfies {HTMLAnchorElement} */
   var $previousTab = $previousTabListItem.querySelector('a.govuk-tabs__tab')
   if (!$previousTab) {
     return

@@ -5,6 +5,6 @@
   "compilerOptions": {
     "lib": ["ESNext", "DOM"],
     "target": "ES2015",
-    "types": ["node", "typed-query-selector"]
+    "types": ["node"]
   }
 }

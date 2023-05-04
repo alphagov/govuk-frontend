@@ -16,6 +16,7 @@ function Checkboxes ($module) {
     return this
   }
 
+  /** @satisfies {NodeListOf<HTMLInputElement>} */
   var $inputs = $module.querySelectorAll('input[type="checkbox"]')
   if (!$inputs.length) {
     return this
@@ -129,8 +130,7 @@ Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
 Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
   var $component = this
 
-  /** @type {NodeListOf<HTMLInputElement>} */
-  // @ts-expect-error `NodeListOf<HTMLInputElement>` type expected
+  /** @satisfies {NodeListOf<HTMLInputElement>} */
   var allInputsWithSameName = document.querySelectorAll(
     'input[type="checkbox"][name="' + $input.name + '"]'
   )
@@ -157,8 +157,7 @@ Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
 Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
   var $component = this
 
-  /** @type {NodeListOf<HTMLInputElement>} */
-  // @ts-expect-error `NodeListOf<HTMLInputElement>` type expected
+  /** @satisfies {NodeListOf<HTMLInputElement>} */
   var allInputsWithSameNameAndExclusiveBehaviour = document.querySelectorAll(
     'input[data-behaviour="exclusive"][type="checkbox"][name="' + $input.name + '"]'
   )

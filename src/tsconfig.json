@@ -10,12 +10,6 @@
   "compilerOptions": {
     "lib": ["ESNext", "DOM"],
     "target": "ES2015",
-    "types": [
-      "jest",
-      "jest-axe",
-      "jest-puppeteer",
-      "node",
-      "typed-query-selector"
-    ]
+    "types": ["jest", "jest-axe", "jest-puppeteer", "node"]
   }
 }
