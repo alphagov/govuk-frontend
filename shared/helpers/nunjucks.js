@@ -1,14 +1,11 @@
-const { join } = require('path')
-
 const cheerio = require('cheerio')
-const { paths } = require('govuk-frontend-config')
-const { componentNameToMacroName } = require('govuk-frontend-lib/names')
+const { componentNameToMacroName, packageNameToPath } = require('govuk-frontend-lib/names')
 const nunjucks = require('nunjucks')
 const { outdent } = require('outdent')
 
 const nunjucksPaths = [
-  join(paths.src, 'govuk'),
-  join(paths.src, 'govuk/components')
+  packageNameToPath('govuk-frontend', 'src/govuk'),
+  packageNameToPath('govuk-frontend', 'src/govuk/components')
 ]
 
 const nunjucksEnv = nunjucks.configure(nunjucksPaths, {

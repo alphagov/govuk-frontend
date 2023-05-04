@@ -2,7 +2,6 @@ module.exports = {
   extends: 'stylelint-config-gds/scss',
   ignoreFiles: [
     '**/dist/**',
-    '**/package/**',
     '**/vendor/**',
 
     // Ignore CSS-in-JS (including dotfiles)

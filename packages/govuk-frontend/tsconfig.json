@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "./src/**/*.js",
+    "./src/**/*.mjs",
+    "../../shared/config",
+    "../../shared/helpers",
+    "../../shared/lib",
+    "../../shared/tasks"
+  ],
+  "exclude": ["./dist/**"],
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM"],
+    "target": "ES2015",
+    "types": ["jest", "jest-axe", "jest-puppeteer", "node"]
+  }
+}

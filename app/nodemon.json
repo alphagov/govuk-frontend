@@ -1,6 +1,0 @@
-{
-  "watch": ["./src", "../src/govuk/**/*.{json,yaml}"],
-  "ignore": ["**/*.test.*"],
-  "ext": "mjs,json,yaml",
-  "quiet": true
-}

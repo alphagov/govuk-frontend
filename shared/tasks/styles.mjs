@@ -4,6 +4,7 @@ import { join, parse } from 'path'
 import chalk from 'chalk'
 import { paths } from 'govuk-frontend-config'
 import { getListing } from 'govuk-frontend-lib/files'
+import { packageNameToPath } from 'govuk-frontend-lib/names'
 import PluginError from 'plugin-error'
 import postcss from 'postcss'
 // eslint-disable-next-line import/default
@@ -78,8 +79,8 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath, fileP
 
       // Resolve @imports via
       loadPaths: [
-        paths.src,
-        join(paths.root, 'node_modules/govuk_frontend_toolkit/stylesheets'),
+        packageNameToPath('govuk-frontend', 'src'),
+        packageNameToPath('govuk_frontend_toolkit', 'stylesheets'),
         join(paths.root, 'node_modules')
       ],
 

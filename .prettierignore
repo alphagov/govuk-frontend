@@ -11,9 +11,6 @@ coverage/
 # Build output
 dist/
 
-# Build output (committed)
-/package
-
 # 3rd party vendor code
 vendor/
 

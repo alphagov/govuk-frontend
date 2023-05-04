@@ -48,13 +48,13 @@ fi
 echo "📦  Publishing package..."
 
 # Try publishing
-cd package
+cd packages/govuk-frontend/dist
 [ $NPM_TAG = "latest" ] && npm publish || npm publish --tag $NPM_TAG
 echo "🗒 Package published!"
 cd ..
 
-# Extract tag version from ./package/package.json
-ALL_PACKAGE_VERSION=$(node -p "require('./package/package.json').version")
+# Extract tag version from ./packages/govuk-frontend/dist/package.json
+ALL_PACKAGE_VERSION=$(node -p "require('./packages/govuk-frontend/dist/package.json').version")
 TAG="v$ALL_PACKAGE_VERSION"
 
 if [ $(git tag -l "$TAG") ]; then

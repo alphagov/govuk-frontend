@@ -49,10 +49,10 @@ Check that:
 
 You should add an example to the review app if the existing examples do not reflect the changes you've made.
 
-1. Open `src/govuk/components/<COMPONENT>/<COMPONENT>.yaml`, where `<COMPONENT>` is the component you've changed.
+1. Open `packages/govuk-frontend/src/govuk/components/<COMPONENT>/<COMPONENT>.yaml`, where `<COMPONENT>` is the component you've changed.
 2. Add or update examples in the `examples` list.
 
-If you've created a new component, create a new `src/govuk/<COMPONENT>/<COMPONENT>.yaml` file instead, where `<COMPONENT>` is the name of the component you've created.
+If you've created a new component, create a new `packages/govuk-frontend/src/govuk/<COMPONENT>/<COMPONENT>.yaml` file instead, where `<COMPONENT>` is the name of the component you've created.
 
 ## 4. Test in supported browsers and assistive technology
 
@@ -84,7 +84,7 @@ You should write new tests if you’ve created a new component, or changed the w
 
 If you're new to testing, see existing test files for examples of things to do. Do not let the tests keep you from submitting your contribution! If you're not sure which tests are needed or are having trouble updating them, submit your pull request anyway. We will help you create the tests and solve problems during code review.
 
-Some test files use examples from each component’s `.yaml` file, for example `src/govuk/components/button/button.yaml`. When you add or update these tests, you can use the existing examples or add new ones.
+Some test files use examples from each component’s `.yaml` file, for example `packages/govuk-frontend/src/govuk/components/button/button.yaml`. When you add or update these tests, you can use the existing examples or add new ones.
 
 Use `hidden: true` in a new example if you do not want to include the example in the review app. The example will still appear in our [test fixtures](http://frontend.design-system.service.gov.uk/testing-your-html/).
 
@@ -92,7 +92,7 @@ All tests should try and meet [our testing conventions](../releasing/testing-and
 
 ### If you created a component
 
-Create the following files in the `src/govuk/components` folder:
+Create the following files in the `packages/govuk-frontend/src/govuk/components` folder:
 
 - `<COMPONENT>/<COMPONENT>.test.js` - to test functionality if the component uses JavaScript
 - `<COMPONENT>/<COMPONENT>.unit.test.mjs` - to unit test any JavaScript logic
@@ -100,11 +100,11 @@ Create the following files in the `src/govuk/components` folder:
 
 Where `<COMPONENT>` is the name of the component you created.
 
-You can use the existing files in the `src/govuk/components` folder as templates for your new files.
+You can use the existing files in the `packages/govuk-frontend/src/govuk/components` folder as templates for your new files.
 
 ### If you changed or added to a component
 
-In the `src/govuk/components` folder, update or add tests to:
+In the `packages/govuk-frontend/src/govuk/components` folder, update or add tests to:
 
 - `<COMPONENT>/<COMPONENT>.test.js` - if you updated functionality
 - `<COMPONENT>/<COMPONENT>.unit.test.mjs` - if you updated JavaScript logic
@@ -116,7 +116,7 @@ Where `<COMPONENT>` is the name of the component you changed or added to.
 
 Update or add tests in the `.test.js` file that matches the name of the `.scss` file you created or updated. Create the `.test.js` file if it does not exist.
 
-For example, if you updated a mixin in [`src/govuk/helpers/_colour.scss`](/src/govuk/helpers/_colour.scss), update or add tests in [`src/govuk/helpers/colour.test.js`](/src/govuk/helpers/colour.test.js).
+For example, if you updated a mixin in [`packages/govuk-frontend/src/govuk/helpers/_colour.scss`](/packages/govuk-frontend/src/govuk/helpers/_colour.scss), update or add tests in [`packages/govuk-frontend/src/govuk/helpers/colour.test.js`](/packages/govuk-frontend/src/govuk/helpers/colour.test.js).
 
 ## 7. Update the snapshot tests
 
@@ -125,8 +125,8 @@ If your component uses another component, one of the [Jest snapshot tests](https
 If a snapshot test fails, follow these steps.
 
 1. Check that the component's new markup is correct.
-2. Run `npm test -- -u src/govuk/components/<COMPONENT>` to update the snapshot test with the new markup.
-3. Commit the updated file in the `/src/govuk/components/<COMPONENT>/__snapshots__/` folder.
+2. Run `npm test -- -u packages/govuk-frontend/src/govuk/components/<COMPONENT>` to update the snapshot test with the new markup.
+3. Commit the updated file in the `/packages/govuk-frontend/src/govuk/components/<COMPONENT>/__snapshots__/` folder.
 4. In the commit message, tell us you're updating the snapshot file and why.
 
 Where `<COMPONENT>` is the name of the component you've changed.
@@ -140,13 +140,13 @@ cd ../govuk-design-system
 git checkout main
 git pull
 npm ci # note running `npm ci` after `npm link` will destroy the link.
-npm link ../govuk-frontend/package/
+npm link ../govuk-frontend/packages/govuk-frontend/dist/
 ```
 
 When you've finished testing, run this command to unlink the package:
 
 ```bash
-npm unlink ../govuk-frontend/package/
+npm unlink ../govuk-frontend/packages/govuk-frontend/dist/
 ```
 
 ## 9. Tell us what you’ve tested and checked

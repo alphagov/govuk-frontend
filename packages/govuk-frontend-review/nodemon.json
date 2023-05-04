@@ -1,0 +1,6 @@
+{
+  "watch": ["./src", "../packages/govuk-frontend/src/govuk/**/*.{json,yaml}"],
+  "ignore": ["./src/javascripts/**", "**/*.test.*"],
+  "ext": "mjs,json,yaml",
+  "quiet": true
+}

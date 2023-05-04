@@ -18,6 +18,11 @@ const config = {
     'vendor/*'
   ],
 
+  modulePathIgnorePatterns: [
+    '<rootDir>/dist/',
+    '<rootDir>/packages/govuk-frontend/dist/'
+  ],
+
   /**
    * Default single context Node.js environment
    * Supports Node.js globals for Dart Sass tests
@@ -54,7 +59,7 @@ const config = {
  * ```
  */
 export default {
-  collectCoverageFrom: ['./src/**/*.{js,mjs}'],
+  collectCoverageFrom: ['./packages/govuk-frontend/src/**/*.{js,mjs}'],
 
   // Reduce CPU usage during project test runs
   maxWorkers: headless

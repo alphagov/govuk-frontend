@@ -89,7 +89,7 @@ describe('componentPathToModuleName', () => {
   ]
 
   it.each(components)("transforms '$path' to '$moduleName'", ({ path, moduleName }) => {
-    const srcPath = join(paths.src, 'govuk')
+    const srcPath = join(paths.package, 'src/govuk')
 
     // Path variations
     const pathAbsolute = join(srcPath, path)
@@ -97,12 +97,12 @@ describe('componentPathToModuleName', () => {
     const pathRelativeToSource = relative(srcPath, pathAbsolute)
 
     // Absolute path
-    // For example `/path/to/project/src/govuk/components/button/button.mjs`
+    // For example `/path/to/project/packages/govuk-frontend/src/govuk/components/button/button.mjs`
     expect(componentPathToModuleName(pathAbsolute))
       .toBe(moduleName)
 
     // Relative path (to project)
-    // For example `src/govuk/components/button/button.mjs`
+    // For example `packages/govuk-frontend/src/govuk/components/button/button.mjs`
     expect(componentPathToModuleName(pathRelativeToRoot))
       .toBe(moduleName)
 
@@ -113,7 +113,7 @@ describe('componentPathToModuleName', () => {
   })
 
   it.each(others)("transforms unknown components to 'GOVUKFrontend'", (path) => {
-    const srcPath = join(paths.src, 'govuk')
+    const srcPath = join(paths.package, 'src/govuk')
 
     // Path variations
     const pathAbsolute = join(srcPath, path)
@@ -140,6 +140,10 @@ describe('packageNameToPath', () => {
     {
       name: 'govuk_frontend_toolkit',
       path: join(paths.root, 'node_modules/govuk_frontend_toolkit')
+    },
+    {
+      name: 'govuk-frontend',
+      path: paths.package
     },
     {
       name: 'jquery',

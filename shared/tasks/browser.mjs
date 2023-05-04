@@ -1,11 +1,9 @@
-import { join } from 'path'
-
 import percySnapshot from '@percy/puppeteer'
 import { isPercyEnabled } from '@percy/sdk-utils'
-import { paths } from 'govuk-frontend-config'
 import { download } from 'govuk-frontend-helpers/jest/browser/download.mjs'
 import { goToComponent, goToExample } from 'govuk-frontend-helpers/puppeteer'
 import { filterPath, getDirectories, getListing } from 'govuk-frontend-lib/files'
+import { packageNameToPath } from 'govuk-frontend-lib/names'
 import puppeteer from 'puppeteer'
 
 /**
@@ -32,7 +30,7 @@ export async function screenshots () {
   }
 
   const browser = await launch()
-  const componentNames = await getDirectories(join(paths.src, 'govuk/components'))
+  const componentNames = await getDirectories(packageNameToPath('govuk-frontend', 'src/govuk/components'))
   const exampleNames = ['text-alignment', 'typography']
 
   // Screenshot stack
@@ -71,7 +69,7 @@ export async function screenshots () {
  * @returns {Promise<void>}
  */
 export async function screenshotComponent (page, componentName) {
-  const componentFiles = await getListing(join(paths.src, 'govuk/components', componentName))
+  const componentFiles = await getListing(packageNameToPath('govuk-frontend', `src/govuk/components/${componentName}`))
 
   // Navigate to component
   await goToComponent(page, componentName)
