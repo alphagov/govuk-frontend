@@ -16,10 +16,14 @@
 
   Documentation files.
 
-- `package/` **contains auto-generated files**
+- `package/`
 
   Package published on npm.
   Consume all of govuk-frontend through a single package.
+
+  - `dist/` **contains auto-generated files**
+
+    Builds of govuk-frontend published and exported from the npm package.
 
 - `shared/`
 

@@ -33,8 +33,8 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
 **`npm run build:package` will do the following:**
 
-- clean the `./package` folder
-- output files into `./package`
+- clean the `./package/dist` folder
+- output files into `./package/dist`
 - copy Sass files, applying Autoprefixer via PostCSS
 - copy Nunjucks component template/macro files, including JSON configs
 - copy GOV.UK Prototype Kit config files
@@ -48,7 +48,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - output files into `./dist`
 - copy fonts and images
 - compile JavaScript and Sass
-- append version number from `package/package.json` to compiled JavaScript and CSS files
+- append version number from `package/dist/package.json` to compiled JavaScript and CSS files
 - runs `npm run postbuild:release` (which will test the output is correct)
 
 ## Gulp tasks
