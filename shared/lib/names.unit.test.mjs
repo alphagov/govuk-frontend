@@ -84,8 +84,7 @@ describe('componentPathToModuleName', () => {
   const others = [
     'common/index.mjs',
     'common/normalise-dataset.mjs',
-    'vendor/polyfills/Document.mjs',
-    'vendor/polyfills/Function/prototype/bind.mjs'
+    'vendor/polyfills/Element/prototype/closest.mjs'
   ]
 
   it.each(components)("transforms '$path' to '$moduleName'", ({ path, moduleName }) => {
@@ -129,10 +128,6 @@ describe('componentPathToModuleName', () => {
 
 describe('packageNameToPath', () => {
   const packages = [
-    {
-      name: 'html5shiv',
-      path: join(paths.root, 'node_modules/html5shiv')
-    },
     {
       name: 'govuk_template_jinja',
       path: join(paths.root, 'node_modules/govuk_template_jinja')

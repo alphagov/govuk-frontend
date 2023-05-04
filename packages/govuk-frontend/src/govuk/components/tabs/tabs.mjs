@@ -1,11 +1,4 @@
-/* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
-
-import { nodeListForEach } from '../../common/index.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
-import '../../vendor/polyfills/Element/prototype/nextElementSibling.mjs'
-import '../../vendor/polyfills/Element/prototype/previousElementSibling.mjs'
-import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target normalization and DOMContentLoaded
-import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
 /**
  * Tabs component
@@ -110,11 +103,11 @@ Tabs.prototype.setup = function () {
 
   $tabList.setAttribute('role', 'tablist')
 
-  nodeListForEach($tabListItems, function ($item) {
+  $tabListItems.forEach(function ($item) {
     $item.setAttribute('role', 'presentation')
   })
 
-  nodeListForEach($tabs, function ($tab) {
+  $tabs.forEach(function ($tab) {
     // Set HTML attributes
     $component.setAttributes($tab)
 
@@ -156,11 +149,11 @@ Tabs.prototype.teardown = function () {
 
   $tabList.removeAttribute('role')
 
-  nodeListForEach($tabListItems, function ($item) {
+  $tabListItems.forEach(function ($item) {
     $item.removeAttribute('role')
   })
 
-  nodeListForEach($tabs, function ($tab) {
+  $tabs.forEach(function ($tab) {
     // Remove events
     $tab.removeEventListener('click', $component.boundTabClick, true)
     $tab.removeEventListener('keydown', $component.boundTabKeydown, true)

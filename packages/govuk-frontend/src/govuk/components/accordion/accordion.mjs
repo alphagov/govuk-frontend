@@ -1,14 +1,8 @@
-/* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
-/* eslint-disable es-x/no-string-prototype-trim -- Polyfill imported */
-
-import { nodeListForEach, mergeConfigs, extractConfigByNamespace } from '../../common/index.mjs'
+import { mergeConfigs, extractConfigByNamespace } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { I18n } from '../../i18n.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 import '../../vendor/polyfills/Element/prototype/closest.mjs'
-import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target normalization and DOMContentLoaded
-import '../../vendor/polyfills/Function/prototype/bind.mjs'
-import '../../vendor/polyfills/String/prototype/trim.mjs'
 
 /**
  * Accordion translation defaults
@@ -212,7 +206,7 @@ Accordion.prototype.initSectionHeaders = function () {
   var $sections = this.$sections
 
   // Loop through sections
-  nodeListForEach($sections, function ($section, i) {
+  $sections.forEach(function ($section, i) {
     var $header = $section.querySelector('.' + $component.sectionHeaderClass)
     if (!$header) {
       return
@@ -385,7 +379,7 @@ Accordion.prototype.onShowOrHideAllToggle = function () {
   var nowExpanded = !this.checkIfAllSectionsOpen()
 
   // Loop through sections
-  nodeListForEach($sections, function ($section) {
+  $sections.forEach(function ($section) {
     $component.setExpanded(nowExpanded, $section)
     // Store the state in sessionStorage when a change is triggered
     $component.storeState($section)

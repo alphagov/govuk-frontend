@@ -30,7 +30,7 @@ module.exports = {
       excludedFiles: ['**/*.test.mjs'],
       parser: '@typescript-eslint/parser',
       parserOptions: {
-        // Note: Allow ES6 for import/export syntax (although our code is ES3 for legacy browsers)
+        // Note: Allow ES6 for import/export syntax
         ecmaVersion: '2015',
         project: [resolve(__dirname, 'tsconfig.json')]
       },
@@ -41,7 +41,7 @@ module.exports = {
       extends: [
         'plugin:@typescript-eslint/recommended',
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
-        'plugin:es-x/restrict-to-es3'
+        'plugin:es-x/restrict-to-es5'
       ],
       rules: {
         // Allow unknown `.prototype` members until ES6 classes

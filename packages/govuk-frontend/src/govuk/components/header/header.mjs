@@ -1,8 +1,3 @@
-/* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
-
-import '../../vendor/polyfills/Event.mjs'
-import '../../vendor/polyfills/Function/prototype/bind.mjs'
-
 /**
  * Header component
  *

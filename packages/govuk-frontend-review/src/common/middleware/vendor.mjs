@@ -4,12 +4,6 @@ import { packageNameToPath } from 'govuk-frontend-lib/names'
 const router = express.Router()
 
 /**
- * Add middleware to serve HTML5 Shiv
- * from node_modules
- */
-router.use('/html5-shiv/', express.static(packageNameToPath('html5shiv', 'dist')))
-
-/**
  * Add middleware to serve legacy code
  * from node_modules
  */

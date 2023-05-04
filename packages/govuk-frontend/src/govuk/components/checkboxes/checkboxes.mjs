@@ -1,9 +1,4 @@
-/* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
-
-import { nodeListForEach } from '../../common/index.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
-import '../../vendor/polyfills/Event.mjs' // addEventListener, event.target normalization and DOMContentLoaded
-import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
 /**
  * Checkboxes component
@@ -52,7 +47,7 @@ Checkboxes.prototype.init = function () {
   var $module = this.$module
   var $inputs = this.$inputs
 
-  nodeListForEach($inputs, function ($input) {
+  $inputs.forEach(function ($input) {
     var targetId = $input.getAttribute('data-aria-controls')
 
     // Skip checkboxes without data-aria-controls attributes, or where the
@@ -91,7 +86,7 @@ Checkboxes.prototype.init = function () {
  * @deprecated Will be made private in v5.0
  */
 Checkboxes.prototype.syncAllConditionalReveals = function () {
-  nodeListForEach(this.$inputs, this.syncConditionalRevealWithInputState.bind(this))
+  this.$inputs.forEach(this.syncConditionalRevealWithInputState.bind(this))
 }
 
 /**
@@ -135,7 +130,7 @@ Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
     'input[type="checkbox"][name="' + $input.name + '"]'
   )
 
-  nodeListForEach(allInputsWithSameName, function ($inputWithSameName) {
+  allInputsWithSameName.forEach(function ($inputWithSameName) {
     var hasSameFormOwner = ($input.form === $inputWithSameName.form)
     if (hasSameFormOwner && $inputWithSameName !== $input) {
       $inputWithSameName.checked = false
@@ -162,7 +157,7 @@ Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
     'input[data-behaviour="exclusive"][type="checkbox"][name="' + $input.name + '"]'
   )
 
-  nodeListForEach(allInputsWithSameNameAndExclusiveBehaviour, function ($exclusiveInput) {
+  allInputsWithSameNameAndExclusiveBehaviour.forEach(function ($exclusiveInput) {
     var hasSameFormOwner = ($input.form === $exclusiveInput.form)
     if (hasSameFormOwner) {
       $exclusiveInput.checked = false

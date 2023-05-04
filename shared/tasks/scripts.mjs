@@ -81,9 +81,6 @@ export async function compileJavaScript ([modulePath, { srcPath, destPath, fileP
     // for browser + Node.js compatibility
     format: 'umd',
 
-    // Legacy mode is required for IE8 support
-    legacy: true,
-
     // Used to set the `window` global for 'iife' and 'umd' bundles
     // Components are given unique names (e.g GOVUKFrontend.Accordion)
     amd: { id: componentPathToModuleName(modulePath) },
@@ -120,7 +117,6 @@ export function minifyJavaScript (modulePath, result) {
 
     // Compatibility workarounds
     ecma: 5,
-    ie8: true,
     safari10: true
   })
 

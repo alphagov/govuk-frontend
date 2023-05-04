@@ -11,9 +11,6 @@
 {% block bodyEnd %}
   {{ super() }}
   {% block scripts %}
-    <!--[if lt IE 9]>
-      <script src="/vendor/iframe-resizer/ie8.polyfils.min.js"></script>
-    <![endif]-->
     <script src="/vendor/iframe-resizer/iframeResizer.min.js"></script>
     <script>
       window.iFrameResize({}, '.js-component-preview')

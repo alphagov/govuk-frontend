@@ -17,12 +17,6 @@ updates:
     allow:
       - dependency-type: direct
 
-    ignore:
-      # Always ignore legacy packages
-      - dependency-name: iframe-resizer
-      - dependency-name: jquery
-      - dependency-name: rollup
-
   # Update GitHub Actions
   - package-ecosystem: github-actions
     directory: /

@@ -1,6 +1,6 @@
 import { mergeConfigs, extractConfigByNamespace } from './index.mjs'
 
-// TODO: Write unit tests for `nodeListForEach` and `generateUniqueID`
+// TODO: Write unit tests for `generateUniqueID`
 
 describe('Common JS utilities', () => {
   describe('mergeConfigs', () => {
