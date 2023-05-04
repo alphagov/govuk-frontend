@@ -49,7 +49,6 @@ describe('@mixin govuk-typography-common', () => {
     const sass = `
       @import "settings/all";
       @import "helpers/all";
-      @import "tools/ie8";
 
       :root {
         @include govuk-typography-common;
@@ -134,33 +133,6 @@ describe('@mixin govuk-typography-common', () => {
       $govuk-include-default-font-face: false;
       @import "settings/all";
       @import "helpers/all";
-
-      :root {
-        @include govuk-typography-common;
-      }
-      :root {
-        @include govuk-typography-common($font-family: $govuk-font-family-tabular);
-      }
-    `
-
-    const results = compileSassString(sass)
-
-    await expect(results).resolves.toMatchObject({
-      css: expect.not.stringContaining('@font-face')
-    })
-
-    await expect(results).resolves.toMatchObject({
-      css: expect.stringContaining('font-family: "GDS Transport"')
-    })
-  })
-
-  it('should not output a @font-face declaration when the browser is IE8', async () => {
-    const sass = `
-      $govuk-is-ie8: true;
-
-      @import "settings/all";
-      @import "helpers/all";
-      @import "tools/ie8";
 
       :root {
         @include govuk-typography-common;

@@ -78,9 +78,6 @@
     "postcss-load-config": "^4.0.1",
     "postcss-pseudo-classes": "^0.2.1",
     "postcss-scss": "^4.0.6",
-    "postcss-unmq": "^1.0.2",
-    "postcss-unopacity": "^2.0.0",
-    "postcss-unrgba": "^1.1.1",
     "prettier": "^2.8.8",
     "puppeteer": "^19.11.1",
     "sassdoc": "^2.7.4",
@@ -109,15 +106,6 @@
     },
     "latest-version@^5": {
       "package-json": "^7"
-    },
-    "postcss-unmq": {
-      "postcss": "^7"
-    },
-    "postcss-unopacity": {
-      "postcss": "^7"
-    },
-    "postcss-unrgba": {
-      "postcss": "^7"
     },
     "sass-convert": {
       "semver-regex": "^3"
