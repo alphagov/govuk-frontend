@@ -11,7 +11,7 @@
   overflow-x: auto;
   border: $govuk-focus-width solid transparent;
   outline: 1px solid transparent;
-  background-color: govuk-colour("light-grey", $legacy: "grey-3");
+  background-color: govuk-colour("light-grey");
   @include govuk-responsive-margin(4, "bottom");
 
   &:focus {
