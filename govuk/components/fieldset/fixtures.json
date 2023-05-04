@@ -1,0 +1,206 @@
+{
+    "component": "fieldset",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "legend": {
+                    "text": "What is your address?"
+                }
+            },
+            "hidden": false,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  <legend class=\"govuk-fieldset__legend\">\n    What is your address?\n  </legend>\n</fieldset>"
+        },
+        {
+            "name": "styled as xl text",
+            "options": {
+                "legend": {
+                    "text": "What is your address?",
+                    "classes": "govuk-fieldset__legend--xl"
+                }
+            },
+            "hidden": false,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--xl\">\n    What is your address?\n  </legend>\n</fieldset>"
+        },
+        {
+            "name": "styled as large text",
+            "options": {
+                "legend": {
+                    "text": "What is your address?",
+                    "classes": "govuk-fieldset__legend--l"
+                }
+            },
+            "hidden": false,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--l\">\n    What is your address?\n  </legend>\n</fieldset>"
+        },
+        {
+            "name": "styled as medium text",
+            "options": {
+                "legend": {
+                    "text": "What is your address?",
+                    "classes": "govuk-fieldset__legend--m"
+                }
+            },
+            "hidden": false,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--m\">\n    What is your address?\n  </legend>\n</fieldset>"
+        },
+        {
+            "name": "styled as small text",
+            "options": {
+                "legend": {
+                    "text": "What is your address?",
+                    "classes": "govuk-fieldset__legend--s"
+                }
+            },
+            "hidden": false,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--s\">\n    What is your address?\n  </legend>\n</fieldset>"
+        },
+        {
+            "name": "as page heading xl",
+            "options": {
+                "legend": {
+                    "text": "What is your address?",
+                    "classes": "govuk-fieldset__legend--xl",
+                    "isPageHeading": true
+                }
+            },
+            "hidden": false,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--xl\">\n    <h1 class=\"govuk-fieldset__heading\">\n      What is your address?\n    </h1>\n  </legend>\n</fieldset>"
+        },
+        {
+            "name": "as page heading l",
+            "options": {
+                "legend": {
+                    "text": "What is your address?",
+                    "classes": "govuk-fieldset__legend--l",
+                    "isPageHeading": true
+                }
+            },
+            "hidden": false,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--l\">\n    <h1 class=\"govuk-fieldset__heading\">\n      What is your address?\n    </h1>\n  </legend>\n</fieldset>"
+        },
+        {
+            "name": "as page heading m",
+            "options": {
+                "legend": {
+                    "text": "What is your address?",
+                    "classes": "govuk-fieldset__legend--m",
+                    "isPageHeading": true
+                }
+            },
+            "hidden": false,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--m\">\n    <h1 class=\"govuk-fieldset__heading\">\n      What is your address?\n    </h1>\n  </legend>\n</fieldset>"
+        },
+        {
+            "name": "as page heading s",
+            "options": {
+                "legend": {
+                    "text": "What is your address?",
+                    "classes": "govuk-fieldset__legend--s",
+                    "isPageHeading": true
+                }
+            },
+            "hidden": false,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--s\">\n    <h1 class=\"govuk-fieldset__heading\">\n      What is your address?\n    </h1>\n  </legend>\n</fieldset>"
+        },
+        {
+            "name": "as page heading without class",
+            "options": {
+                "legend": {
+                    "text": "What is your address?",
+                    "isPageHeading": true
+                }
+            },
+            "hidden": false,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  <legend class=\"govuk-fieldset__legend\">\n    <h1 class=\"govuk-fieldset__heading\">\n      What is your address?\n    </h1>\n  </legend>\n</fieldset>"
+        },
+        {
+            "name": "html fieldset content",
+            "options": {
+                "legend": {
+                    "text": "What is your address?"
+                },
+                "html": "<div class=\"my-content\">\n  <p>This is some content to put inside the fieldset</p>\n</div>\n"
+            },
+            "hidden": true,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  <legend class=\"govuk-fieldset__legend\">\n    What is your address?\n  </legend>\n  <div class=\"my-content\">\n  <p>This is some content to put inside the fieldset</p>\n</div>\n\n</fieldset>"
+        },
+        {
+            "name": "with describedBy",
+            "options": {
+                "describedBy": "some-id",
+                "legend": {
+                    "text": "Which option?"
+                }
+            },
+            "hidden": true,
+            "html": "<fieldset class=\"govuk-fieldset\" aria-describedby=\"some-id\">\n  <legend class=\"govuk-fieldset__legend\">\n    Which option?\n  </legend>\n</fieldset>"
+        },
+        {
+            "name": "html as text",
+            "options": {
+                "legend": {
+                    "text": "What is <b>your</b> address?"
+                }
+            },
+            "hidden": true,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  <legend class=\"govuk-fieldset__legend\">\n    What is &lt;b&gt;your&lt;/b&gt; address?\n  </legend>\n</fieldset>"
+        },
+        {
+            "name": "html",
+            "options": {
+                "legend": {
+                    "html": "What is <b>your</b> address?"
+                }
+            },
+            "hidden": true,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  <legend class=\"govuk-fieldset__legend\">\n    What is <b>your</b> address?\n  </legend>\n</fieldset>"
+        },
+        {
+            "name": "legend classes",
+            "options": {
+                "legend": {
+                    "text": "What is your address?",
+                    "classes": "my-custom-class"
+                }
+            },
+            "hidden": true,
+            "html": "<fieldset class=\"govuk-fieldset\">\n  <legend class=\"govuk-fieldset__legend my-custom-class\">\n    What is your address?\n  </legend>\n</fieldset>"
+        },
+        {
+            "name": "classes",
+            "options": {
+                "classes": "app-fieldset--custom-modifier",
+                "legend": {
+                    "text": "Which option?"
+                }
+            },
+            "hidden": true,
+            "html": "<fieldset class=\"govuk-fieldset app-fieldset--custom-modifier\">\n  <legend class=\"govuk-fieldset__legend\">\n    Which option?\n  </legend>\n</fieldset>"
+        },
+        {
+            "name": "role",
+            "options": {
+                "role": "group",
+                "legend": {
+                    "text": "Which option?"
+                }
+            },
+            "hidden": true,
+            "html": "<fieldset class=\"govuk-fieldset\" role=\"group\">\n  <legend class=\"govuk-fieldset__legend\">\n    Which option?\n  </legend>\n</fieldset>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "attributes": {
+                    "data-attribute": "value"
+                },
+                "legend": {
+                    "text": "Which option?"
+                }
+            },
+            "hidden": true,
+            "html": "<fieldset class=\"govuk-fieldset\" data-attribute=\"value\">\n  <legend class=\"govuk-fieldset__legend\">\n    Which option?\n  </legend>\n</fieldset>"
+        }
+    ]
+}

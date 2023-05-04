@@ -1,0 +1,118 @@
+[
+    {
+        "name": "id",
+        "type": "string",
+        "required": true,
+        "description": "Must be unique across the domain of your service if `rememberExpanded` is `true` (as the expanded state of individual instances of the component persists across page loads using [`sessionStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)). Used as an `id` in the HTML for the accordion as a whole, and also as a prefix for the `id`s of the section contents and the buttons that open them, so that those `id`s can be the target of `aria-labelledby` and `aria-control` attributes."
+    },
+    {
+        "name": "headingLevel",
+        "type": "integer",
+        "required": false,
+        "description": "Heading level, from `1` to `6`. Default is `2`."
+    },
+    {
+        "name": "classes",
+        "type": "string",
+        "required": false,
+        "description": "Classes to add to the accordion."
+    },
+    {
+        "name": "attributes",
+        "type": "object",
+        "required": false,
+        "description": "HTML attributes (for example data attributes) to add to the accordion."
+    },
+    {
+        "name": "rememberExpanded",
+        "type": "boolean",
+        "required": false,
+        "description": "Whether the expanded/collapsed state of the accordion should be saved when a user leaves the page and restored when they return. Default is `true`."
+    },
+    {
+        "name": "hideAllSectionsText",
+        "type": "string",
+        "required": false,
+        "description": "The text content of the 'Hide all sections' button at the top of the accordion when all sections are expanded."
+    },
+    {
+        "name": "hideSectionText",
+        "type": "string",
+        "required": false,
+        "description": "The text content of the 'Hide' button within each section of the accordion, which is visible when the section is expanded."
+    },
+    {
+        "name": "hideSectionAriaLabelText",
+        "type": "string",
+        "required": false,
+        "description": "Text made available to assistive technologies, like screen-readers, as the final part of the toggle's accessible name when the section is expanded. Defaults to 'Hide this section'."
+    },
+    {
+        "name": "showAllSectionsText",
+        "type": "string",
+        "required": false,
+        "description": "The text content of the 'Show all sections' button at the top of the accordion when at least one section is collapsed."
+    },
+    {
+        "name": "showSectionText",
+        "type": "string",
+        "required": false,
+        "description": "The text content of the 'Show' button within each section of the accordion, which is visible when the section is collapsed."
+    },
+    {
+        "name": "showSectionAriaLabelText",
+        "type": "string",
+        "required": false,
+        "description": "Text made available to assistive technologies, like screen-readers, as the final part of the toggle's accessible name when the section is collapsed. Defaults to 'Show this section'."
+    },
+    {
+        "name": "items",
+        "type": "array",
+        "required": true,
+        "description": "An array of sections within the accordion.",
+        "params": [
+            {
+                "name": "heading.text",
+                "type": "string",
+                "required": true,
+                "description": "The title of each section. If `heading.html` is supplied, this is ignored."
+            },
+            {
+                "name": "heading.html",
+                "type": "string",
+                "required": true,
+                "description": "The HTML content of the header for each section. Used as the title for each section. The header is inside the HTML `<button>` element, so you can only add [phrasing content](https://html.spec.whatwg.org/#phrasing-content) to it."
+            },
+            {
+                "name": "summary.text",
+                "type": "string",
+                "required": false,
+                "description": "Text content for summary line. If `summary.html` is supplied, this is ignored."
+            },
+            {
+                "name": "summary.html",
+                "type": "string",
+                "required": false,
+                "description": "The HTML content for the summary line. The summary line is inside the HTML `<button>` element, so you can only add [phrasing content](https://html.spec.whatwg.org/#phrasing-content) to it."
+            },
+            {
+                "name": "content.text",
+                "type": "string",
+                "required": true,
+                "description": "The text content of each section, which is hidden when the section is closed. If `content.html` is supplied, this is ignored."
+            },
+            {
+                "name": "content.html",
+                "type": "string",
+                "required": true,
+                "description": "The HTML content of each section, which is hidden when the section is closed."
+            },
+            {
+                "name": "expanded",
+                "type": "boolean",
+                "required": false,
+                "description": "Sets whether the section should be expanded when the page loads for the first time. Defaults to `false`."
+            }
+        ]
+    }
+]
