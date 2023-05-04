@@ -54,17 +54,8 @@
       display: block;
 
       position: absolute;
-
-      @if $govuk-use-legacy-font {
-        // Begin adjustments for font baseline offset
-        // These should be removed when legacy font support is dropped
-        $offset: govuk-em(1px, $font-size);
-        top: $offset * -1;
-        bottom: $offset;
-      } @else {
-        top: 0;
-        bottom: 0;
-      }
+      top: 0;
+      bottom: 0;
 
       // Offset by the difference between the width of the non-rotated square
       // and its width when rotated

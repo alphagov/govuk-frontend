@@ -286,18 +286,4 @@ $govuk-button-text-colour: govuk-colour("white") !default;
     // (https://github.com/w3c/csswg-drafts/issues/6310)
     forced-color-adjust: auto;
   }
-
-  @if $govuk-use-legacy-font {
-    // Begin adjustments for font baseline offset when using v1 of nta
-    $offset: 2;
-
-    .govuk-button {
-      padding-top: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset); // s1
-      padding-bottom: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1); // s1
-    }
-
-    .govuk-button__start-icon {
-      margin-top: -3px;
-    }
-  }
 }
