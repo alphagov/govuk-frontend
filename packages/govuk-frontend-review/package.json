@@ -27,7 +27,7 @@
     "govuk-frontend": "*",
     "govuk-frontend-config": "*",
     "govuk-frontend-lib": "*",
-    "highlight.js": "^11.7.0",
+    "highlight.js": "^11.8.0",
     "iframe-resizer": "^3.5.15",
     "jquery": "^1.12.4",
     "js-beautify": "^1.14.7",
