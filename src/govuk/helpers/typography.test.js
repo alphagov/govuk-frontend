@@ -54,7 +54,7 @@ describe('@mixin govuk-typography-common', () => {
         @include govuk-typography-common;
       }
       :root {
-        @include govuk-typography-common($font-family: $govuk-font-family-tabular);
+        @include govuk-typography-common($font-family: Helvetica);
       }
     `
 
@@ -93,39 +93,6 @@ describe('@mixin govuk-typography-common', () => {
     await expect(results).resolves.toMatchObject({
       css: expect.not.stringContaining('font-family: "GDS Transport"')
     })
-
-    await expect(results).resolves.toMatchObject({
-      css: expect.not.stringContaining('font-family: "ntatabularnumbers"')
-    })
-  })
-
-  it('should not output a @font-face declaration when the user wants compatibility with GOV.UK Template', async () => {
-    const sass = `
-      $govuk-compatibility-govuktemplate: true;
-      @import "settings/all";
-      @import "helpers/all";
-
-      :root {
-        @include govuk-typography-common;
-      }
-      :root {
-        @include govuk-typography-common($font-family: $govuk-font-family-tabular);
-      }
-    `
-
-    const results = compileSassString(sass)
-
-    await expect(results).resolves.toMatchObject({
-      css: expect.not.stringContaining('@font-face')
-    })
-
-    await expect(results).resolves.toMatchObject({
-      css: expect.stringContaining('font-family: "nta"')
-    })
-
-    await expect(results).resolves.toMatchObject({
-      css: expect.stringContaining('font-family: "ntatabularnumbers"')
-    })
   })
 
   it('should not output a @font-face declaration when the user has turned off this feature', async () => {
@@ -138,7 +105,7 @@ describe('@mixin govuk-typography-common', () => {
         @include govuk-typography-common;
       }
       :root {
-        @include govuk-typography-common($font-family: $govuk-font-family-tabular);
+        @include govuk-typography-common($font-family: Helvetica);
       }
     `
 
@@ -438,27 +405,6 @@ describe('@mixin govuk-typography-responsive', () => {
       })
     })
 
-    it('uses the tabular font instead if defined and $tabular: true', async () => {
-      const sass = `
-        $govuk-font-family-tabular: "ntatabularnumbers";
-        ${sassBootstrap}
-
-        .foo {
-          @include govuk-font($size: 14, $tabular: true)
-        }
-      `
-
-      const results = compileSassString(sass)
-
-      await expect(results).resolves.toMatchObject({
-        css: expect.stringContaining('font-family: "ntatabularnumbers"')
-      })
-
-      await expect(results).resolves.toMatchObject({
-        css: expect.not.stringContaining('font-feature-settings')
-      })
-    })
-
     it('sets font-size based on $size', async () => {
       const sass = `
         ${sassBootstrap}
@@ -556,26 +502,5 @@ describe('@mixin govuk-typography-responsive', () => {
         css: expect.stringContaining('line-height: 1.337;')
       })
     })
-  })
-})
-
-describe('$govuk-font-family-tabular value is specified', () => {
-  it('outputs a deprecation warning when set', async () => {
-    const sass = `
-      $govuk-font-family-tabular: monospace;
-      ${sassBootstrap}
-    `
-
-    await compileSassString(sass, sassConfig)
-
-    // Get the argument of the last @warn call, which we expect to be the
-    // deprecation notice
-    expect(mockWarnFunction.mock.calls.at(-1))
-      .toEqual(expect.arrayContaining([
-        '$govuk-font-family-tabular is deprecated. From version 5.0, ' +
-        'GOV.UK Frontend will not support using a separate font-face for ' +
-        'tabular numbers. To silence this warning, update ' +
-        '$govuk-suppressed-warnings with key: "tabular-font-face"'
-      ]))
   })
 })
