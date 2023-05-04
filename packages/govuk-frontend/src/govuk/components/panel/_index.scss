@@ -30,7 +30,7 @@
 
   .govuk-panel--confirmation {
     color: govuk-colour("white");
-    background: govuk-colour("green", $legacy: "turquoise");
+    background: govuk-colour("green");
 
     @include govuk-media-query($media-type: print) {
       border-color: currentcolor;
