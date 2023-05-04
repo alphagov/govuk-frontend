@@ -10,7 +10,7 @@
     "govuk-frontend": "*"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.4",
+    "@babel/core": "^7.21.8",
     "@babel/preset-env": "^7.21.4",
     "autoprefixer": "^9.8.8",
     "babel-loader": "^9.1.2",
