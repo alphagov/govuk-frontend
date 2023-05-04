@@ -136,7 +136,7 @@
 
     padding: govuk-spacing(1);
     border: $govuk-border-width-form-element solid $govuk-input-border-colour;
-    background-color: govuk-colour("light-grey", $legacy: "grey-3");
+    background-color: govuk-colour("light-grey");
 
     text-align: center;
     @include govuk-media-query($until: tablet) {
