@@ -1,0 +1,88 @@
+@include govuk-exports("govuk/component/details") {
+  .govuk-details {
+    @include govuk-font($size: 19);
+    @include govuk-text-colour;
+    @include govuk-responsive-margin(6, "bottom");
+
+    display: block;
+  }
+
+  .govuk-details__summary {
+    // Make the focus outline shrink-wrap the text content of the summary
+    display: inline-block;
+
+    // Absolutely position the marker against this element
+    position: relative;
+
+    margin-bottom: govuk-spacing(1);
+
+    // Allow for absolutely positioned marker and align with disclosed text
+    padding-left: govuk-spacing(4) + $govuk-border-width;
+
+    // Style the summary to look like a link...
+    color: $govuk-link-colour;
+    cursor: pointer;
+
+    &:hover {
+      color: $govuk-link-hover-colour;
+    }
+
+    &:focus {
+      @include govuk-focused-text;
+    }
+  }
+
+  // ...but only underline the text, not the arrow
+  .govuk-details__summary-text {
+    @include govuk-link-decoration;
+  }
+
+  .govuk-details__summary:hover .govuk-details__summary-text {
+    @include govuk-link-hover-decoration;
+  }
+
+  // Remove the underline when focussed to avoid duplicate borders
+  .govuk-details__summary:focus .govuk-details__summary-text {
+    text-decoration: none;
+  }
+
+  // Remove the default details marker so we can style our own consistently and
+  // ensure it displays in Firefox (see implementation.md for details)
+  .govuk-details__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  // Append our own open / closed marker using a pseudo-element
+  .govuk-details__summary:before {
+    content: "";
+    position: absolute;
+
+    top: -1px;
+    bottom: 0;
+    left: 0;
+
+    margin: auto;
+
+    @include govuk-shape-arrow($direction: right, $base: 14px);
+
+    .govuk-details[open] > & {
+      @include govuk-shape-arrow($direction: down, $base: 14px);
+    }
+  }
+
+  .govuk-details__text {
+    padding-top: govuk-spacing(3);
+    padding-bottom: govuk-spacing(3);
+    padding-left: govuk-spacing(4);
+    border-left: $govuk-border-width solid $govuk-border-colour;
+  }
+
+  .govuk-details__text p {
+    margin-top: 0;
+    margin-bottom: govuk-spacing(4);
+  }
+
+  .govuk-details__text > :last-child {
+    margin-bottom: 0;
+  }
+}

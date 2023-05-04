@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Phase banner with dependant components renders the tag component classes 1`] = `
+<strong class="govuk-tag govuk-phase-banner__content__tag govuk-tag--grey">
+  alpha
+</strong>
+`;
+
+exports[`Phase banner with dependant components renders the tag component html 1`] = `
+<strong class="govuk-tag govuk-phase-banner__content__tag">
+  <em>
+    alpha
+  </em>
+</strong>
+`;
+
+exports[`Phase banner with dependant components renders the tag component text 1`] = `
+<strong class="govuk-tag govuk-phase-banner__content__tag">
+  alpha
+</strong>
+`;

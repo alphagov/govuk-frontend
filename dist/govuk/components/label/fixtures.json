@@ -1,0 +1,159 @@
+{
+    "component": "label",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "text": "National Insurance number"
+            },
+            "hidden": false,
+            "html": "<label class=\"govuk-label\">\n  National Insurance number\n</label>"
+        },
+        {
+            "name": "with bold text",
+            "options": {
+                "classes": "govuk-label--s",
+                "text": "National Insurance number"
+            },
+            "hidden": false,
+            "html": "<label class=\"govuk-label govuk-label--s\">\n  National Insurance number\n</label>"
+        },
+        {
+            "name": "styled as xl text",
+            "options": {
+                "text": "National Insurance number",
+                "classes": "govuk-label--xl"
+            },
+            "hidden": false,
+            "html": "<label class=\"govuk-label govuk-label--xl\">\n  National Insurance number\n</label>"
+        },
+        {
+            "name": "styled as large text",
+            "options": {
+                "text": "National Insurance number",
+                "classes": "govuk-label--l"
+            },
+            "hidden": false,
+            "html": "<label class=\"govuk-label govuk-label--l\">\n  National Insurance number\n</label>"
+        },
+        {
+            "name": "styled as medium text",
+            "options": {
+                "text": "National Insurance number",
+                "classes": "govuk-label--m"
+            },
+            "hidden": false,
+            "html": "<label class=\"govuk-label govuk-label--m\">\n  National Insurance number\n</label>"
+        },
+        {
+            "name": "styled as small text",
+            "options": {
+                "text": "National Insurance number",
+                "classes": "govuk-label--s"
+            },
+            "hidden": false,
+            "html": "<label class=\"govuk-label govuk-label--s\">\n  National Insurance number\n</label>"
+        },
+        {
+            "name": "as page heading xl",
+            "options": {
+                "text": "National Insurance number",
+                "classes": "govuk-label--xl",
+                "isPageHeading": true
+            },
+            "hidden": false,
+            "html": "<h1 class=\"govuk-label-wrapper\"><label class=\"govuk-label govuk-label--xl\">\n    National Insurance number\n  </label>\n  </h1>"
+        },
+        {
+            "name": "as page heading l",
+            "options": {
+                "text": "National Insurance number",
+                "classes": "govuk-label--l",
+                "isPageHeading": true
+            },
+            "hidden": false,
+            "html": "<h1 class=\"govuk-label-wrapper\"><label class=\"govuk-label govuk-label--l\">\n    National Insurance number\n  </label>\n  </h1>"
+        },
+        {
+            "name": "as page heading m",
+            "options": {
+                "text": "National Insurance number",
+                "classes": "govuk-label--m",
+                "isPageHeading": true
+            },
+            "hidden": false,
+            "html": "<h1 class=\"govuk-label-wrapper\"><label class=\"govuk-label govuk-label--m\">\n    National Insurance number\n  </label>\n  </h1>"
+        },
+        {
+            "name": "as page heading s",
+            "options": {
+                "text": "National Insurance number",
+                "classes": "govuk-label--s",
+                "isPageHeading": true
+            },
+            "hidden": false,
+            "html": "<h1 class=\"govuk-label-wrapper\"><label class=\"govuk-label govuk-label--s\">\n    National Insurance number\n  </label>\n  </h1>"
+        },
+        {
+            "name": "as page heading without class",
+            "options": {
+                "text": "National Insurance number",
+                "isPageHeading": true
+            },
+            "hidden": false,
+            "html": "<h1 class=\"govuk-label-wrapper\"><label class=\"govuk-label\">\n    National Insurance number\n  </label>\n  </h1>"
+        },
+        {
+            "name": "empty",
+            "options": {},
+            "hidden": true,
+            "html": ""
+        },
+        {
+            "name": "classes",
+            "options": {
+                "text": "National Insurance number",
+                "classes": "extra-class one-more-class"
+            },
+            "hidden": true,
+            "html": "<label class=\"govuk-label extra-class one-more-class\">\n  National Insurance number\n</label>"
+        },
+        {
+            "name": "html as text",
+            "options": {
+                "text": "National Insurance number, <em>NINO</em>"
+            },
+            "hidden": true,
+            "html": "<label class=\"govuk-label\">\n  National Insurance number, &lt;em&gt;NINO&lt;/em&gt;\n</label>"
+        },
+        {
+            "name": "html",
+            "options": {
+                "html": "National Insurance number <em>NINO</em>"
+            },
+            "hidden": true,
+            "html": "<label class=\"govuk-label\">\n  National Insurance number <em>NINO</em>\n</label>"
+        },
+        {
+            "name": "for",
+            "options": {
+                "for": "#dummy-input",
+                "text": "National Insurance number"
+            },
+            "hidden": true,
+            "html": "<label class=\"govuk-label\" for=\"#dummy-input\">\n  National Insurance number\n</label>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "text": "National Insurance number",
+                "attributes": {
+                    "first-attribute": "foo",
+                    "second-attribute": "bar"
+                }
+            },
+            "hidden": true,
+            "html": "<label class=\"govuk-label\" first-attribute=\"foo\" second-attribute=\"bar\">\n  National Insurance number\n</label>"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": ["./src/**/*.mjs"],
+  "exclude": ["**/*.test.*"],
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM"],
+    "target": "ES2015",
+    "types": ["node"]
+  }
+}

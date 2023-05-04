@@ -1,0 +1,43 @@
+{
+  "name": "govuk-frontend",
+  "description": "GOV.UK Frontend contains the code you need to start building a user interface for government platforms and services.",
+  "version": "4.6.0",
+  "main": "govuk/all.js",
+  "module": "govuk-esm/all.mjs",
+  "exports": {
+    ".": {
+      "sass": "./govuk/all.scss",
+      "import": "./govuk-esm/all.mjs",
+      "require": "./govuk/all.js"
+    },
+    "./govuk/": "./govuk/",
+    "./govuk-esm/": "./govuk-esm/",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": [
+    "govuk-esm/vendor/**"
+  ],
+  "sass": "govuk/all.scss",
+  "engines": {
+    "node": ">= 4.2.0"
+  },
+  "author": {
+    "name": "GOV.UK Design System Team (Government Digital Service)",
+    "email": "design-system-developers@digital.cabinet-office.gov.uk"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alphagov/govuk-frontend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alphagov/govuk-frontend/issues"
+  },
+  "homepage": "https://frontend.design-system.service.gov.uk/",
+  "keywords": [
+    "govuk",
+    "frontend",
+    "design system",
+    "template"
+  ],
+  "license": "MIT"
+}

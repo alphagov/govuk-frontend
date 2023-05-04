@@ -1,0 +1,88 @@
+{%- macro _actionLink(action) %}
+  <a class="govuk-link {%- if action.classes %} {{ action.classes }}{% endif %}" href="{{ action.href }}" {%- for attribute, value in action.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+    {{ action.html | safe if action.html else action.text }}
+    {%- if action.visuallyHiddenText -%}
+      <span class="govuk-visually-hidden"> {{ action.visuallyHiddenText }}</span>
+    {% endif -%}
+  </a>
+{% endmacro -%}
+
+{%- macro _summaryCard(params) %}
+  {%- set headingLevel = params.title.headingLevel if params.title.headingLevel else 2 -%}
+
+  <div class="govuk-summary-card {%- if params.classes %} {{ params.classes }}{% endif %}"{% for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+    <div class="govuk-summary-card__title-wrapper">
+      {%- if params.title -%}
+        <h{{ headingLevel }} class="govuk-summary-card__title {%- if params.title.classes %} {{ params.title.classes }}{% endif %}">
+          {{- params.title.html | safe if params.title.html else params.title.text -}}
+        </h{{ headingLevel }}>
+      {%- endif -%}
+
+      {%- if params.actions.items.length -%}
+        {%- if params.actions.items.length == 1 -%}
+          <div class="govuk-summary-card__actions {%- if params.actions.classes %} {{ params.actions.classes }}{% endif %}">
+            {{- _actionLink(params.actions.items[0]) -}}
+          </div>
+        {%- else -%}
+          <ul class="govuk-summary-card__actions {%- if params.actions.classes %} {{ params.actions.classes }}{% endif %}">
+            {%- for action in params.actions.items -%}
+              <li class="govuk-summary-card__action">
+                {{- _actionLink(action) -}}
+              </li>
+            {%- endfor -%}
+          </ul>
+        {% endif -%}
+      {%- endif -%}
+    </div>
+
+    <div class="govuk-summary-card__content">
+      {{- caller() -}}
+    </div>
+  </div>
+{% endmacro -%}
+
+{# Determine if we need 2 or 3 columns #}
+{% set anyRowHasActions = false %}
+{% for row in params.rows %}
+  {% set anyRowHasActions = true if row.actions.items | length else anyRowHasActions %}
+{% endfor -%}
+
+{%- set summaryList -%}
+  <dl class="govuk-summary-list {%- if params.classes %} {{ params.classes }}{% endif %}"{% for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+    {% for row in params.rows %}
+      {% if row %}
+        <div class="govuk-summary-list__row {%- if anyRowHasActions and not row.actions.items %} govuk-summary-list__row--no-actions{% endif %} {%- if row.classes %} {{ row.classes }}{% endif %}">
+          <dt class="govuk-summary-list__key {%- if row.key.classes %} {{ row.key.classes }}{% endif %}">
+            {{ row.key.html | indent(4 if params.card else 0) | safe if row.key.html else row.key.text }}
+          </dt>
+          <dd class="govuk-summary-list__value {%- if row.value.classes %} {{ row.value.classes }}{% endif %}">
+            {{ row.value.html | indent(12 if params.card else 8) | trim | safe if row.value.html else row.value.text }}
+          </dd>
+          {% if row.actions.items.length %}
+            <dd class="govuk-summary-list__actions {%- if row.actions.classes %} {{ row.actions.classes }}{% endif %}">
+              {% if row.actions.items.length == 1 %}
+                {{ _actionLink(row.actions.items[0]) | indent(16 if params.card else 12) | trim }}
+              {% else %}
+                <ul class="govuk-summary-list__actions-list">
+                  {%- for action in row.actions.items -%}
+                    <li class="govuk-summary-list__actions-list-item">
+                      {{- _actionLink(action) | indent(22 if params.card else 18) | trim -}}
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {% endif %}
+            </dd>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </dl>
+{%- endset %}
+
+{%- if params.card -%}
+  {% call _summaryCard(params.card) -%}
+    {{ summaryList | safe }}
+  {%- endcall %}
+{%- else -%}
+  {{ summaryList | safe }}
+{%- endif %}

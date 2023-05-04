@@ -1,0 +1,644 @@
+{
+    "component": "footer",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {},
+            "hidden": false,
+            "html": "<footer class=\"govuk-footer \" role=\"contentinfo\">\n  <div class=\"govuk-width-container \">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            All content is available under the\n            <a\n              class=\"govuk-footer__link\"\n              href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\"\n              rel=\"license\"\n            >Open Government Licence v3.0</a>, except where otherwise stated\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        >© Crown copyright</a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        },
+        {
+            "name": "with custom HTML content licence and copyright notice",
+            "options": {
+                "contentLicence": {
+                    "html": "Mae’r holl gynnwys ar gael dan <a class=\"govuk-footer__link\" href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/\" rel=\"license\">Drwydded y Llywodraeth Agored v3.0</a>, ac eithrio lle nodir yn wahanol"
+                },
+                "copyright": {
+                    "html": "<span>Hawlfraint y Goron</span>"
+                }
+            },
+            "hidden": false,
+            "html": "<footer class=\"govuk-footer \" role=\"contentinfo\">\n  <div class=\"govuk-width-container \">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            Mae’r holl gynnwys ar gael dan <a class=\"govuk-footer__link\" href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/\" rel=\"license\">Drwydded y Llywodraeth Agored v3.0</a>, ac eithrio lle nodir yn wahanol\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        ><span>Hawlfraint y Goron</span></a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        },
+        {
+            "name": "with custom text content licence and copyright notice",
+            "options": {
+                "contentLicence": {
+                    "text": "Mae’r holl gynnwys ar gael dan Drwydded y Llywodraeth Agored v3.0, ac eithrio lle nodir yn wahanol"
+                },
+                "copyright": {
+                    "text": "© Hawlfraint y Goron"
+                }
+            },
+            "hidden": false,
+            "html": "<footer class=\"govuk-footer \" role=\"contentinfo\">\n  <div class=\"govuk-width-container \">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            Mae’r holl gynnwys ar gael dan Drwydded y Llywodraeth Agored v3.0, ac eithrio lle nodir yn wahanol\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        >© Hawlfraint y Goron</a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        },
+        {
+            "name": "with meta",
+            "options": {
+                "meta": {
+                    "visuallyHiddenTitle": "Items",
+                    "items": [
+                        {
+                            "href": "#1",
+                            "text": "Item 1"
+                        },
+                        {
+                            "href": "#2",
+                            "text": "Item 2"
+                        },
+                        {
+                            "href": "#3",
+                            "text": "Item 3"
+                        }
+                    ]
+                }
+            },
+            "hidden": false,
+            "html": "<footer class=\"govuk-footer \" role=\"contentinfo\">\n  <div class=\"govuk-width-container \">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n          <h2 class=\"govuk-visually-hidden\">Items</h2>\n            <ul class=\"govuk-footer__inline-list\">\n                <li class=\"govuk-footer__inline-list-item\">\n                  <a class=\"govuk-footer__link\" href=\"#1\">\n                    Item 1\n                  </a>\n                </li>\n                <li class=\"govuk-footer__inline-list-item\">\n                  <a class=\"govuk-footer__link\" href=\"#2\">\n                    Item 2\n                  </a>\n                </li>\n                <li class=\"govuk-footer__inline-list-item\">\n                  <a class=\"govuk-footer__link\" href=\"#3\">\n                    Item 3\n                  </a>\n                </li>\n            </ul>\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            All content is available under the\n            <a\n              class=\"govuk-footer__link\"\n              href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\"\n              rel=\"license\"\n            >Open Government Licence v3.0</a>, except where otherwise stated\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        >© Crown copyright</a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        },
+        {
+            "name": "with custom meta",
+            "options": {
+                "meta": {
+                    "text": "GOV.UK Prototype Kit v7.0.1"
+                }
+            },
+            "hidden": false,
+            "html": "<footer class=\"govuk-footer \" role=\"contentinfo\">\n  <div class=\"govuk-width-container \">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n          <h2 class=\"govuk-visually-hidden\">Support links</h2>\n            <div class=\"govuk-footer__meta-custom\">\n              GOV.UK Prototype Kit v7.0.1\n            </div>\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            All content is available under the\n            <a\n              class=\"govuk-footer__link\"\n              href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\"\n              rel=\"license\"\n            >Open Government Licence v3.0</a>, except where otherwise stated\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        >© Crown copyright</a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        },
+        {
+            "name": "with meta links and meta content",
+            "options": {
+                "meta": {
+                    "items": [
+                        {
+                            "href": "#1",
+                            "text": "Bibendum Ornare"
+                        },
+                        {
+                            "href": "#2",
+                            "text": "Nullam"
+                        },
+                        {
+                            "href": "#3",
+                            "text": "Tortor Fringilla"
+                        },
+                        {
+                            "href": "#4",
+                            "text": "Tellus"
+                        },
+                        {
+                            "href": "#5",
+                            "text": "Egestas Nullam"
+                        },
+                        {
+                            "href": "#6",
+                            "text": "Euismod Etiam"
+                        },
+                        {
+                            "href": "#7",
+                            "text": "Fusce Sollicitudin"
+                        },
+                        {
+                            "href": "#8",
+                            "text": "Ligula Nullam Ultricies"
+                        }
+                    ],
+                    "html": "Built by the <a href=\"#\" class=\"govuk-footer__link\">Department of Magical Law Enforcement</a>"
+                }
+            },
+            "hidden": false,
+            "html": "<footer class=\"govuk-footer \" role=\"contentinfo\">\n  <div class=\"govuk-width-container \">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n          <h2 class=\"govuk-visually-hidden\">Support links</h2>\n            <ul class=\"govuk-footer__inline-list\">\n                <li class=\"govuk-footer__inline-list-item\">\n                  <a class=\"govuk-footer__link\" href=\"#1\">\n                    Bibendum Ornare\n                  </a>\n                </li>\n                <li class=\"govuk-footer__inline-list-item\">\n                  <a class=\"govuk-footer__link\" href=\"#2\">\n                    Nullam\n                  </a>\n                </li>\n                <li class=\"govuk-footer__inline-list-item\">\n                  <a class=\"govuk-footer__link\" href=\"#3\">\n                    Tortor Fringilla\n                  </a>\n                </li>\n                <li class=\"govuk-footer__inline-list-item\">\n                  <a class=\"govuk-footer__link\" href=\"#4\">\n                    Tellus\n                  </a>\n                </li>\n                <li class=\"govuk-footer__inline-list-item\">\n                  <a class=\"govuk-footer__link\" href=\"#5\">\n                    Egestas Nullam\n                  </a>\n                </li>\n                <li class=\"govuk-footer__inline-list-item\">\n                  <a class=\"govuk-footer__link\" href=\"#6\">\n                    Euismod Etiam\n                  </a>\n                </li>\n                <li class=\"govuk-footer__inline-list-item\">\n                  <a class=\"govuk-footer__link\" href=\"#7\">\n                    Fusce Sollicitudin\n                  </a>\n                </li>\n                <li class=\"govuk-footer__inline-list-item\">\n                  <a class=\"govuk-footer__link\" href=\"#8\">\n                    Ligula Nullam Ultricies\n                  </a>\n                </li>\n            </ul>\n            <div class=\"govuk-footer__meta-custom\">\n              Built by the <a href=\"#\" class=\"govuk-footer__link\">Department of Magical Law Enforcement</a>\n            </div>\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            All content is available under the\n            <a\n              class=\"govuk-footer__link\"\n              href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\"\n              rel=\"license\"\n            >Open Government Licence v3.0</a>, except where otherwise stated\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        >© Crown copyright</a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        },
+        {
+            "name": "with custom meta",
+            "options": {
+                "meta": {
+                    "text": "GOV.UK Prototype Kit v7.0.1"
+                }
+            },
+            "hidden": false,
+            "html": "<footer class=\"govuk-footer \" role=\"contentinfo\">\n  <div class=\"govuk-width-container \">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n          <h2 class=\"govuk-visually-hidden\">Support links</h2>\n            <div class=\"govuk-footer__meta-custom\">\n              GOV.UK Prototype Kit v7.0.1\n            </div>\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            All content is available under the\n            <a\n              class=\"govuk-footer__link\"\n              href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\"\n              rel=\"license\"\n            >Open Government Licence v3.0</a>, except where otherwise stated\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        >© Crown copyright</a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        },
+        {
+            "name": "with default width navigation (one column)",
+            "options": {
+                "navigation": [
+                    {
+                        "title": "Navigation section",
+                        "items": [
+                            {
+                                "href": "#1",
+                                "text": "Navigation item 1"
+                            },
+                            {
+                                "href": "#2",
+                                "text": "Navigation item 2"
+                            },
+                            {
+                                "href": "#3",
+                                "text": "Navigation item 3"
+                            },
+                            {
+                                "href": "#4",
+                                "text": "Navigation item 4"
+                            },
+                            {
+                                "href": "#5",
+                                "text": "Navigation item 5"
+                            },
+                            {
+                                "href": "#6",
+                                "text": "Navigation item 6"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "hidden": false,
+            "html": "<footer class=\"govuk-footer \" role=\"contentinfo\">\n  <div class=\"govuk-width-container \">\n      <div class=\"govuk-footer__navigation\">\n          <div class=\"govuk-footer__section govuk-grid-column-full\">\n            <h2 class=\"govuk-footer__heading govuk-heading-m\">Navigation section</h2>\n              <ul class=\"govuk-footer__list \">\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#1\">\n                        Navigation item 1\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#2\">\n                        Navigation item 2\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#3\">\n                        Navigation item 3\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#4\">\n                        Navigation item 4\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#5\">\n                        Navigation item 5\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#6\">\n                        Navigation item 6\n                      </a>\n                    </li>\n              </ul>\n          </div>\n      </div>\n      <hr class=\"govuk-footer__section-break\">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            All content is available under the\n            <a\n              class=\"govuk-footer__link\"\n              href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\"\n              rel=\"license\"\n            >Open Government Licence v3.0</a>, except where otherwise stated\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        >© Crown copyright</a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        },
+        {
+            "name": "with default width navigation (two columns)",
+            "options": {
+                "navigation": [
+                    {
+                        "title": "Navigation section",
+                        "columns": 2,
+                        "items": [
+                            {
+                                "href": "#1",
+                                "text": "Navigation item 1"
+                            },
+                            {
+                                "href": "#2",
+                                "text": "Navigation item 2"
+                            },
+                            {
+                                "href": "#3",
+                                "text": "Navigation item 3"
+                            },
+                            {
+                                "href": "#4",
+                                "text": "Navigation item 4"
+                            },
+                            {
+                                "href": "#5",
+                                "text": "Navigation item 5"
+                            },
+                            {
+                                "href": "#6",
+                                "text": "Navigation item 6"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "hidden": false,
+            "html": "<footer class=\"govuk-footer \" role=\"contentinfo\">\n  <div class=\"govuk-width-container \">\n      <div class=\"govuk-footer__navigation\">\n          <div class=\"govuk-footer__section govuk-grid-column-full\">\n            <h2 class=\"govuk-footer__heading govuk-heading-m\">Navigation section</h2>\n              <ul class=\"govuk-footer__list govuk-footer__list--columns-2\">\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#1\">\n                        Navigation item 1\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#2\">\n                        Navigation item 2\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#3\">\n                        Navigation item 3\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#4\">\n                        Navigation item 4\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#5\">\n                        Navigation item 5\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#6\">\n                        Navigation item 6\n                      </a>\n                    </li>\n              </ul>\n          </div>\n      </div>\n      <hr class=\"govuk-footer__section-break\">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            All content is available under the\n            <a\n              class=\"govuk-footer__link\"\n              href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\"\n              rel=\"license\"\n            >Open Government Licence v3.0</a>, except where otherwise stated\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        >© Crown copyright</a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        },
+        {
+            "name": "with navigation",
+            "options": {
+                "navigation": [
+                    {
+                        "title": "Two column list",
+                        "width": "two-thirds",
+                        "columns": 2,
+                        "items": [
+                            {
+                                "href": "#1",
+                                "text": "Navigation item 1"
+                            },
+                            {
+                                "href": "#2",
+                                "text": "Navigation item 2"
+                            },
+                            {
+                                "href": "#3",
+                                "text": "Navigation item 3"
+                            },
+                            {
+                                "href": "#4",
+                                "text": "Navigation item 4"
+                            },
+                            {
+                                "href": "#5",
+                                "text": "Navigation item 5"
+                            },
+                            {
+                                "href": "#6",
+                                "text": "Navigation item 6"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Single column list",
+                        "width": "one-third",
+                        "items": [
+                            {
+                                "href": "#1",
+                                "text": "Navigation item 1"
+                            },
+                            {
+                                "href": "#2",
+                                "text": "Navigation item 2"
+                            },
+                            {
+                                "href": "#3",
+                                "text": "Navigation item 3"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "hidden": false,
+            "html": "<footer class=\"govuk-footer \" role=\"contentinfo\">\n  <div class=\"govuk-width-container \">\n      <div class=\"govuk-footer__navigation\">\n          <div class=\"govuk-footer__section govuk-grid-column-two-thirds\">\n            <h2 class=\"govuk-footer__heading govuk-heading-m\">Two column list</h2>\n              <ul class=\"govuk-footer__list govuk-footer__list--columns-2\">\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#1\">\n                        Navigation item 1\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#2\">\n                        Navigation item 2\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#3\">\n                        Navigation item 3\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#4\">\n                        Navigation item 4\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#5\">\n                        Navigation item 5\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#6\">\n                        Navigation item 6\n                      </a>\n                    </li>\n              </ul>\n          </div>\n          <div class=\"govuk-footer__section govuk-grid-column-one-third\">\n            <h2 class=\"govuk-footer__heading govuk-heading-m\">Single column list</h2>\n              <ul class=\"govuk-footer__list \">\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#1\">\n                        Navigation item 1\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#2\">\n                        Navigation item 2\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#3\">\n                        Navigation item 3\n                      </a>\n                    </li>\n              </ul>\n          </div>\n      </div>\n      <hr class=\"govuk-footer__section-break\">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            All content is available under the\n            <a\n              class=\"govuk-footer__link\"\n              href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\"\n              rel=\"license\"\n            >Open Government Licence v3.0</a>, except where otherwise stated\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        >© Crown copyright</a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        },
+        {
+            "name": "Full GDS example",
+            "options": {
+                "navigation": [
+                    {
+                        "title": "Coronavirus (COVID-19)",
+                        "width": "two-thirds",
+                        "items": [
+                            {
+                                "href": "/coronavirus",
+                                "text": "Coronavirus (COVID-19): guidance and support"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Brexit",
+                        "width": "one-third",
+                        "items": [
+                            {
+                                "href": "/brexit",
+                                "text": "Check what you need to do"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Services and information",
+                        "width": "two-thirds",
+                        "columns": 2,
+                        "items": [
+                            {
+                                "href": "/browse/benefits",
+                                "text": "Benefits"
+                            },
+                            {
+                                "href": "/browse/births-deaths-marriages",
+                                "text": "Births, deaths, marriages and care"
+                            },
+                            {
+                                "href": "/browse/business",
+                                "text": "Business and self-employed"
+                            },
+                            {
+                                "href": "/browse/childcare-parenting",
+                                "text": "Childcare and parenting"
+                            },
+                            {
+                                "href": "/browse/citizenship",
+                                "text": "Citizenship and living in the UK"
+                            },
+                            {
+                                "href": "/browse/justice",
+                                "text": "Crime, justice and the law"
+                            },
+                            {
+                                "href": "/browse/disabilities",
+                                "text": "Disabled people"
+                            },
+                            {
+                                "href": "/browse/driving",
+                                "text": "Driving and transport"
+                            },
+                            {
+                                "href": "/browse/education",
+                                "text": "Education and learning"
+                            },
+                            {
+                                "href": "/browse/employing-people",
+                                "text": "Employing people"
+                            },
+                            {
+                                "href": "/browse/environment-countryside",
+                                "text": "Environment and countryside"
+                            },
+                            {
+                                "href": "/browse/housing-local-services",
+                                "text": "Housing and local services"
+                            },
+                            {
+                                "href": "/browse/tax",
+                                "text": "Money and tax"
+                            },
+                            {
+                                "href": "/browse/abroad",
+                                "text": "Passports, travel and living abroad"
+                            },
+                            {
+                                "href": "/browse/visas-immigration",
+                                "text": "Visas and immigration"
+                            },
+                            {
+                                "href": "/browse/working",
+                                "text": "Working, jobs and pensions"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Departments and policy",
+                        "width": "one-third",
+                        "items": [
+                            {
+                                "href": "/government/how-government-works",
+                                "text": "How government works"
+                            },
+                            {
+                                "href": "/government/organisations",
+                                "text": "Departments"
+                            },
+                            {
+                                "href": "/world",
+                                "text": "Worldwide"
+                            },
+                            {
+                                "href": "/government/policies",
+                                "text": "Policies"
+                            },
+                            {
+                                "href": "/government/publications",
+                                "text": "Publications"
+                            },
+                            {
+                                "href": "/government/announcements",
+                                "text": "Announcements"
+                            }
+                        ]
+                    }
+                ],
+                "meta": {
+                    "items": [
+                        {
+                            "href": "/help",
+                            "text": "Help"
+                        },
+                        {
+                            "href": "/help/cookies",
+                            "text": "Cookies"
+                        },
+                        {
+                            "href": "/contact",
+                            "text": "Contact"
+                        },
+                        {
+                            "href": "/help/terms-conditions",
+                            "text": "Terms and conditions"
+                        },
+                        {
+                            "href": "/cymraeg",
+                            "text": "Rhestr o Wasanaethau Cymraeg"
+                        }
+                    ],
+                    "html": "Built by the <a class=\"govuk-footer__link\" href=\"#\">Government Digital Service</a>"
+                }
+            },
+            "hidden": false,
+            "html": "<footer class=\"govuk-footer \" role=\"contentinfo\">\n  <div class=\"govuk-width-container \">\n      <div class=\"govuk-footer__navigation\">\n          <div class=\"govuk-footer__section govuk-grid-column-two-thirds\">\n            <h2 class=\"govuk-footer__heading govuk-heading-m\">Coronavirus (COVID-19)</h2>\n              <ul class=\"govuk-footer__list \">\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/coronavirus\">\n                        Coronavirus (COVID-19): guidance and support\n                      </a>\n                    </li>\n              </ul>\n          </div>\n          <div class=\"govuk-footer__section govuk-grid-column-one-third\">\n            <h2 class=\"govuk-footer__heading govuk-heading-m\">Brexit</h2>\n              <ul class=\"govuk-footer__list \">\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/brexit\">\n                        Check what you need to do\n                      </a>\n                    </li>\n              </ul>\n          </div>\n          <div class=\"govuk-footer__section govuk-grid-column-two-thirds\">\n            <h2 class=\"govuk-footer__heading govuk-heading-m\">Services and information</h2>\n              <ul class=\"govuk-footer__list govuk-footer__list--columns-2\">\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/browse/benefits\">\n                        Benefits\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/browse/births-deaths-marriages\">\n                        Births, deaths, marriages and care\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/browse/business\">\n                        Business and self-employed\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/browse/childcare-parenting\">\n                        Childcare and parenting\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/browse/citizenship\">\n                        Citizenship and living in the UK\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/browse/justice\">\n                        Crime, justice and the law\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/browse/disabilities\">\n                        Disabled people\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/browse/driving\">\n                        Driving and transport\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/browse/education\">\n                        Education and learning\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/browse/employing-people\">\n                        Employing people\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/browse/environment-countryside\">\n                        Environment and countryside\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/browse/housing-local-services\">\n                        Housing and local services\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/browse/tax\">\n                        Money and tax\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/browse/abroad\">\n                        Passports, travel and living abroad\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/browse/visas-immigration\">\n                        Visas and immigration\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/browse/working\">\n                        Working, jobs and pensions\n                      </a>\n                    </li>\n              </ul>\n          </div>\n          <div class=\"govuk-footer__section govuk-grid-column-one-third\">\n            <h2 class=\"govuk-footer__heading govuk-heading-m\">Departments and policy</h2>\n              <ul class=\"govuk-footer__list \">\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/government/how-government-works\">\n                        How government works\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/government/organisations\">\n                        Departments\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/world\">\n                        Worldwide\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/government/policies\">\n                        Policies\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/government/publications\">\n                        Publications\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"/government/announcements\">\n                        Announcements\n                      </a>\n                    </li>\n              </ul>\n          </div>\n      </div>\n      <hr class=\"govuk-footer__section-break\">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n          <h2 class=\"govuk-visually-hidden\">Support links</h2>\n            <ul class=\"govuk-footer__inline-list\">\n                <li class=\"govuk-footer__inline-list-item\">\n                  <a class=\"govuk-footer__link\" href=\"/help\">\n                    Help\n                  </a>\n                </li>\n                <li class=\"govuk-footer__inline-list-item\">\n                  <a class=\"govuk-footer__link\" href=\"/help/cookies\">\n                    Cookies\n                  </a>\n                </li>\n                <li class=\"govuk-footer__inline-list-item\">\n                  <a class=\"govuk-footer__link\" href=\"/contact\">\n                    Contact\n                  </a>\n                </li>\n                <li class=\"govuk-footer__inline-list-item\">\n                  <a class=\"govuk-footer__link\" href=\"/help/terms-conditions\">\n                    Terms and conditions\n                  </a>\n                </li>\n                <li class=\"govuk-footer__inline-list-item\">\n                  <a class=\"govuk-footer__link\" href=\"/cymraeg\">\n                    Rhestr o Wasanaethau Cymraeg\n                  </a>\n                </li>\n            </ul>\n            <div class=\"govuk-footer__meta-custom\">\n              Built by the <a class=\"govuk-footer__link\" href=\"#\">Government Digital Service</a>\n            </div>\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            All content is available under the\n            <a\n              class=\"govuk-footer__link\"\n              href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\"\n              rel=\"license\"\n            >Open Government Licence v3.0</a>, except where otherwise stated\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        >© Crown copyright</a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        },
+        {
+            "name": "Three equal columns",
+            "options": {
+                "navigation": [
+                    {
+                        "title": "Single column list 1",
+                        "width": "one-third",
+                        "columns": 1,
+                        "items": [
+                            {
+                                "href": "#1",
+                                "text": "Navigation item 1"
+                            },
+                            {
+                                "href": "#2",
+                                "text": "Navigation item 2"
+                            },
+                            {
+                                "href": "#3",
+                                "text": "Navigation item 3"
+                            },
+                            {
+                                "href": "#4",
+                                "text": "Navigation item 4"
+                            },
+                            {
+                                "href": "#5",
+                                "text": "Navigation item 5"
+                            },
+                            {
+                                "href": "#6",
+                                "text": "Navigation item 6"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Single column list 2",
+                        "width": "one-third",
+                        "columns": 1,
+                        "items": [
+                            {
+                                "href": "#1",
+                                "text": "Navigation item 1"
+                            },
+                            {
+                                "href": "#2",
+                                "text": "Navigation item 2"
+                            },
+                            {
+                                "href": "#3",
+                                "text": "Navigation item 3"
+                            },
+                            {
+                                "href": "#4",
+                                "text": "Navigation item 4"
+                            },
+                            {
+                                "href": "#5",
+                                "text": "Navigation item 5"
+                            },
+                            {
+                                "href": "#6",
+                                "text": "Navigation item 6"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Single column list 3",
+                        "width": "one-third",
+                        "columns": 1,
+                        "items": [
+                            {
+                                "href": "#1",
+                                "text": "Navigation item 1"
+                            },
+                            {
+                                "href": "#2",
+                                "text": "Navigation item 2"
+                            },
+                            {
+                                "href": "#3",
+                                "text": "Navigation item 3"
+                            },
+                            {
+                                "href": "#4",
+                                "text": "Navigation item 4"
+                            },
+                            {
+                                "href": "#5",
+                                "text": "Navigation item 5"
+                            },
+                            {
+                                "href": "#6",
+                                "text": "Navigation item 6"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "hidden": false,
+            "html": "<footer class=\"govuk-footer \" role=\"contentinfo\">\n  <div class=\"govuk-width-container \">\n      <div class=\"govuk-footer__navigation\">\n          <div class=\"govuk-footer__section govuk-grid-column-one-third\">\n            <h2 class=\"govuk-footer__heading govuk-heading-m\">Single column list 1</h2>\n              <ul class=\"govuk-footer__list govuk-footer__list--columns-1\">\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#1\">\n                        Navigation item 1\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#2\">\n                        Navigation item 2\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#3\">\n                        Navigation item 3\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#4\">\n                        Navigation item 4\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#5\">\n                        Navigation item 5\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#6\">\n                        Navigation item 6\n                      </a>\n                    </li>\n              </ul>\n          </div>\n          <div class=\"govuk-footer__section govuk-grid-column-one-third\">\n            <h2 class=\"govuk-footer__heading govuk-heading-m\">Single column list 2</h2>\n              <ul class=\"govuk-footer__list govuk-footer__list--columns-1\">\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#1\">\n                        Navigation item 1\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#2\">\n                        Navigation item 2\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#3\">\n                        Navigation item 3\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#4\">\n                        Navigation item 4\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#5\">\n                        Navigation item 5\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#6\">\n                        Navigation item 6\n                      </a>\n                    </li>\n              </ul>\n          </div>\n          <div class=\"govuk-footer__section govuk-grid-column-one-third\">\n            <h2 class=\"govuk-footer__heading govuk-heading-m\">Single column list 3</h2>\n              <ul class=\"govuk-footer__list govuk-footer__list--columns-1\">\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#1\">\n                        Navigation item 1\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#2\">\n                        Navigation item 2\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#3\">\n                        Navigation item 3\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#4\">\n                        Navigation item 4\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#5\">\n                        Navigation item 5\n                      </a>\n                    </li>\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#6\">\n                        Navigation item 6\n                      </a>\n                    </li>\n              </ul>\n          </div>\n      </div>\n      <hr class=\"govuk-footer__section-break\">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            All content is available under the\n            <a\n              class=\"govuk-footer__link\"\n              href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\"\n              rel=\"license\"\n            >Open Government Licence v3.0</a>, except where otherwise stated\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        >© Crown copyright</a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "attributes": {
+                    "data-test-attribute": "value",
+                    "data-test-attribute-2": "value-2"
+                }
+            },
+            "hidden": true,
+            "html": "<footer class=\"govuk-footer \" role=\"contentinfo\" data-test-attribute=\"value\" data-test-attribute-2=\"value-2\">\n  <div class=\"govuk-width-container \">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            All content is available under the\n            <a\n              class=\"govuk-footer__link\"\n              href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\"\n              rel=\"license\"\n            >Open Government Licence v3.0</a>, except where otherwise stated\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        >© Crown copyright</a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        },
+        {
+            "name": "classes",
+            "options": {
+                "classes": "app-footer--custom-modifier"
+            },
+            "hidden": true,
+            "html": "<footer class=\"govuk-footer app-footer--custom-modifier\" role=\"contentinfo\">\n  <div class=\"govuk-width-container \">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            All content is available under the\n            <a\n              class=\"govuk-footer__link\"\n              href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\"\n              rel=\"license\"\n            >Open Government Licence v3.0</a>, except where otherwise stated\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        >© Crown copyright</a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        },
+        {
+            "name": "with container classes",
+            "options": {
+                "containerClasses": "app-width-container"
+            },
+            "hidden": true,
+            "html": "<footer class=\"govuk-footer \" role=\"contentinfo\">\n  <div class=\"govuk-width-container app-width-container\">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            All content is available under the\n            <a\n              class=\"govuk-footer__link\"\n              href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\"\n              rel=\"license\"\n            >Open Government Licence v3.0</a>, except where otherwise stated\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        >© Crown copyright</a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        },
+        {
+            "name": "with HTML passed as text content",
+            "options": {
+                "contentLicence": {
+                    "text": "Mae’r holl gynnwys ar gael dan <a class=\"govuk-footer__link\" href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/\" rel=\"license\">Drwydded y Llywodraeth Agored v3.0</a>, ac eithrio lle nodir yn wahanol"
+                },
+                "copyright": {
+                    "text": "<span>Hawlfraint y Goron</span>"
+                }
+            },
+            "hidden": true,
+            "html": "<footer class=\"govuk-footer \" role=\"contentinfo\">\n  <div class=\"govuk-width-container \">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            Mae’r holl gynnwys ar gael dan &lt;a class=&quot;govuk-footer__link&quot; href=&quot;https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/&quot; rel=&quot;license&quot;&gt;Drwydded y Llywodraeth Agored v3.0&lt;/a&gt;, ac eithrio lle nodir yn wahanol\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        >&lt;span&gt;Hawlfraint y Goron&lt;/span&gt;</a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        },
+        {
+            "name": "with empty meta",
+            "options": {
+                "meta": {}
+            },
+            "hidden": true,
+            "html": "<footer class=\"govuk-footer \" role=\"contentinfo\">\n  <div class=\"govuk-width-container \">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n          <h2 class=\"govuk-visually-hidden\">Support links</h2>\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            All content is available under the\n            <a\n              class=\"govuk-footer__link\"\n              href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\"\n              rel=\"license\"\n            >Open Government Licence v3.0</a>, except where otherwise stated\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        >© Crown copyright</a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        },
+        {
+            "name": "with empty meta items",
+            "options": {
+                "meta": {
+                    "items": []
+                }
+            },
+            "hidden": true,
+            "html": "<footer class=\"govuk-footer \" role=\"contentinfo\">\n  <div class=\"govuk-width-container \">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n          <h2 class=\"govuk-visually-hidden\">Support links</h2>\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            All content is available under the\n            <a\n              class=\"govuk-footer__link\"\n              href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\"\n              rel=\"license\"\n            >Open Government Licence v3.0</a>, except where otherwise stated\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        >© Crown copyright</a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        },
+        {
+            "name": "meta html as text",
+            "options": {
+                "meta": {
+                    "text": "GOV.UK Prototype Kit <strong>v7.0.1</strong>"
+                }
+            },
+            "hidden": true,
+            "html": "<footer class=\"govuk-footer \" role=\"contentinfo\">\n  <div class=\"govuk-width-container \">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n          <h2 class=\"govuk-visually-hidden\">Support links</h2>\n            <div class=\"govuk-footer__meta-custom\">\n              GOV.UK Prototype Kit &lt;strong&gt;v7.0.1&lt;/strong&gt;\n            </div>\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            All content is available under the\n            <a\n              class=\"govuk-footer__link\"\n              href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\"\n              rel=\"license\"\n            >Open Government Licence v3.0</a>, except where otherwise stated\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        >© Crown copyright</a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        },
+        {
+            "name": "with meta html",
+            "options": {
+                "meta": {
+                    "html": "GOV.UK Prototype Kit <strong>v7.0.1</strong>"
+                }
+            },
+            "hidden": true,
+            "html": "<footer class=\"govuk-footer \" role=\"contentinfo\">\n  <div class=\"govuk-width-container \">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n          <h2 class=\"govuk-visually-hidden\">Support links</h2>\n            <div class=\"govuk-footer__meta-custom\">\n              GOV.UK Prototype Kit <strong>v7.0.1</strong>\n            </div>\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            All content is available under the\n            <a\n              class=\"govuk-footer__link\"\n              href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\"\n              rel=\"license\"\n            >Open Government Licence v3.0</a>, except where otherwise stated\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        >© Crown copyright</a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        },
+        {
+            "name": "with meta item attributes",
+            "options": {
+                "meta": {
+                    "items": [
+                        {
+                            "href": "#1",
+                            "text": "meta item 1",
+                            "attributes": {
+                                "data-attribute": "my-attribute",
+                                "data-attribute-2": "my-attribute-2"
+                            }
+                        }
+                    ]
+                }
+            },
+            "hidden": true,
+            "html": "<footer class=\"govuk-footer \" role=\"contentinfo\">\n  <div class=\"govuk-width-container \">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n          <h2 class=\"govuk-visually-hidden\">Support links</h2>\n            <ul class=\"govuk-footer__inline-list\">\n                <li class=\"govuk-footer__inline-list-item\">\n                  <a class=\"govuk-footer__link\" href=\"#1\" data-attribute=\"my-attribute\" data-attribute-2=\"my-attribute-2\">\n                    meta item 1\n                  </a>\n                </li>\n            </ul>\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            All content is available under the\n            <a\n              class=\"govuk-footer__link\"\n              href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\"\n              rel=\"license\"\n            >Open Government Licence v3.0</a>, except where otherwise stated\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        >© Crown copyright</a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        },
+        {
+            "name": "with empty navigation",
+            "options": {
+                "navigation": []
+            },
+            "hidden": true,
+            "html": "<footer class=\"govuk-footer \" role=\"contentinfo\">\n  <div class=\"govuk-width-container \">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            All content is available under the\n            <a\n              class=\"govuk-footer__link\"\n              href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\"\n              rel=\"license\"\n            >Open Government Licence v3.0</a>, except where otherwise stated\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        >© Crown copyright</a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        },
+        {
+            "name": "with navigation item attributes",
+            "options": {
+                "navigation": [
+                    {
+                        "title": "Single column list 1",
+                        "items": [
+                            {
+                                "href": "#1",
+                                "text": "Navigation item 1",
+                                "attributes": {
+                                    "data-attribute": "my-attribute",
+                                    "data-attribute-2": "my-attribute-2"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "hidden": true,
+            "html": "<footer class=\"govuk-footer \" role=\"contentinfo\">\n  <div class=\"govuk-width-container \">\n      <div class=\"govuk-footer__navigation\">\n          <div class=\"govuk-footer__section govuk-grid-column-full\">\n            <h2 class=\"govuk-footer__heading govuk-heading-m\">Single column list 1</h2>\n              <ul class=\"govuk-footer__list \">\n                    <li class=\"govuk-footer__list-item\">\n                      <a class=\"govuk-footer__link\" href=\"#1\" data-attribute=\"my-attribute\" data-attribute-2=\"my-attribute-2\">\n                        Navigation item 1\n                      </a>\n                    </li>\n              </ul>\n          </div>\n      </div>\n      <hr class=\"govuk-footer__section-break\">\n    <div class=\"govuk-footer__meta\">\n      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\n\n        <svg\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          class=\"govuk-footer__licence-logo\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 483.2 195.7\"\n          height=\"17\"\n          width=\"41\"\n        >\n          <path\n            fill=\"currentColor\"\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\"\n          />\n        </svg>\n        <span class=\"govuk-footer__licence-description\">\n            All content is available under the\n            <a\n              class=\"govuk-footer__link\"\n              href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\"\n              rel=\"license\"\n            >Open Government Licence v3.0</a>, except where otherwise stated\n        </span>\n      </div>\n      <div class=\"govuk-footer__meta-item\">\n        <a\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\"\n        >© Crown copyright</a>\n      </div>\n    </div>\n  </div>\n</footer>"
+        }
+    ]
+}
