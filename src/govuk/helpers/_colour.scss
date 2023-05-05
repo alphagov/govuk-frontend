@@ -1,6 +1,7 @@
 @import "../settings/compatibility";
 @import "../settings/colours-palette";
 @import "../settings/colours-organisations";
+@import "../settings/warnings";
 
 ////
 /// @group helpers/colour
@@ -10,12 +11,24 @@
 ///
 /// @param {String | Colour} $colour - Name of colour from the colour palette
 ///   (`$govuk-colours`)
+/// @param {String | Colour | Boolean} $legacy [false] - Deprecated.
+///   The `$legacy` parameter is deprecated and is non-operational, as the
+///   legacy colour palette has been removed. The parameter will be removed in
+///   the next major version.
 /// @return {Colour} Representation of named colour
 ///
 /// @throw if `$colour` is not a colour from the colour palette
 /// @access public
 
-@function govuk-colour($colour) {
+@function govuk-colour($colour, $legacy: false) {
+  // Output a warning if $legacy is set to anything. This can't use the
+  // `_warning` mixin due to being a function, so we handle it manually.
+  @if $legacy and not index($govuk-suppressed-warnings, "legacy-colour-param") {
+    @warn "The `$legacy` parameter is deprecated and is non-operational. It " +
+      "will be removed in the next major version. To silence this warning, " +
+      "update $govuk-suppressed-warnings with key: \"legacy-palette\"";
+  }
+
   @if type-of($colour) == "color" {
     // stylelint-disable-next-line scss/function-quote-no-quoted-strings-inside
     $colour: quote("#{$colour}");

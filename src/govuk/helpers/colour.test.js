@@ -83,6 +83,27 @@ describe('@function govuk-colour', () => {
         'Unknown colour `hooloovoo`'
       )
   })
+
+  it('throws a deprecation warning if the $legacy parameter is used', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        color: govuk-colour('red', $legacy: 'blue');
+      }
+    `
+
+    await compileSassString(sass, sassConfig)
+
+    // Expect our mocked @warn function to have been called once with a single
+    // argument, which should be the deprecation notice
+    expect(mockWarnFunction.mock.calls[0])
+      .toEqual(expect.arrayContaining([
+        'The `$legacy` parameter is deprecated and is non-operational. It ' +
+        'will be removed in the next major version. To silence this warning, ' +
+        'update $govuk-suppressed-warnings with key: "legacy-palette"'
+      ]))
+  })
 })
 
 describe('@function govuk-organisation-colour', () => {
