@@ -1,5 +1,5 @@
-
 import { join } from 'path'
+import { pathToFileURL } from 'url'
 
 import { files } from './index.mjs'
 
@@ -11,7 +11,7 @@ import { files } from './index.mjs'
  * @returns {Promise<void>}
  */
 export async function compile (modulePath, options) {
-  const { default: configFn } = await import(join(options.srcPath, modulePath))
+  const { default: configFn } = await import(pathToFileURL(join(options.srcPath, modulePath)).toString())
 
   // Write to destination
   return files.write(modulePath, {

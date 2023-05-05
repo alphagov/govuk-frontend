@@ -13,12 +13,6 @@ runs:
         key: build-cache-${{ runner.os }}-${{ github.sha }}
         path: packages/*/dist
 
-    - name: Install dependencies
-      uses: ./.github/workflows/actions/install-node
-
-      # Skip install when build is already cached
-      if: steps.build-cache.outputs.cache-hit != 'true'
-
     - name: Build
       id: build
 
