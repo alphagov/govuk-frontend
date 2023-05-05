@@ -1,6 +1,7 @@
 @import "../settings/compatibility";
 @import "../settings/colours-palette";
 @import "../settings/colours-organisations";
+@import "../settings/warnings";
 
 ////
 /// @group helpers/colour
@@ -25,10 +26,18 @@
 ///    background-colour: govuk-colour("green", $legacy: #BADA55);
 ///  }
 ///
+/// @deprecated The `$legacy` parameter will be removed in v5.0 with the rest of
+///   the compatibility mode
+///
 /// @throw if `$colour` is not a colour from the colour palette
 /// @access public
 
 @function govuk-colour($colour, $legacy: false) {
+  @if $legacy and not index($govuk-suppressed-warnings, "legacy-palette") {
+    @warn "The $legacy parameter is deprecated. Only the modern colour " +
+      "palette will be supported from v5.0.";
+  }
+
   @if $govuk-use-legacy-palette and $legacy {
     @if type-of($legacy) == "color" {
       @return $legacy;

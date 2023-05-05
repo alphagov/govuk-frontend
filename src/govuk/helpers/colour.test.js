@@ -182,6 +182,26 @@ describe('@function govuk-colour', () => {
             'update $govuk-suppressed-warnings with key: "legacy-palette"'
         ]))
     })
+
+    it('outputs a deprecation warning when a $legacy colour is specified', async () => {
+      const sass = `
+        ${sassBootstrap}
+
+        .foo {
+          color: govuk-colour('red', $legacy: 'blue');
+        }
+      `
+
+      await compileSassString(sass, sassConfig)
+
+      // The $govuk-use-legacy-palette warning is always returned first, so look
+      // at index 1 of our array for this warning instead.
+      expect(mockWarnFunction.mock.calls[1])
+        .toEqual(expect.arrayContaining([
+          'The $legacy parameter is deprecated. Only the modern colour ' +
+            'palette will be supported from v5.0.'
+        ]))
+    })
   })
 
   describe('when $govuk-use-legacy-palette is false', () => {

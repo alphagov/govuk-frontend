@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+## 4.6.1 (Patch release)
+
+### Deprecated features
+
+#### Stop using legacy colour palette
+
+In GOV.UK Frontend v5.0 we will stop supporting compatibility with legacy codebases. As part of this, we're deprecating the legacy colour palette and the `$legacy` parameter of the `govuk-colour` function.
+
+Even if you are not currently using compatibility mode or the legacy colour palette, you will start receiving warnings if the `$legacy` parameter has been used anywhere in your code. These will become errors once v5.0 is released.
+
+This was added in [pull request #3585: Add deprecation warning for `govuk-colour`'s `legacy` parameter](https://github.com/alphagov/govuk-frontend/pull/3585).
+
 ## 4.6.0 (Feature release)
 
 ### New features
