@@ -64,7 +64,7 @@
         padding: govuk-spacing(2) govuk-spacing(4);
 
         float: left;
-        background-color: govuk-colour("light-grey", $legacy: "grey-4");
+        background-color: govuk-colour("light-grey");
         text-align: center;
 
         &::before {
