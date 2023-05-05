@@ -99,9 +99,10 @@ describe('@function govuk-colour', () => {
     // argument, which should be the deprecation notice
     expect(mockWarnFunction.mock.calls[0])
       .toEqual(expect.arrayContaining([
-        'The `$legacy` parameter is deprecated and is non-operational. It ' +
-        'will be removed in the next major version. To silence this warning, ' +
-        'update $govuk-suppressed-warnings with key: "legacy-palette"'
+        'The `$legacy` parameter of `govuk-colour` is deprecated and is ' +
+        'non-operational. It will be removed in the next major version. To ' +
+        'silence this warning, update $govuk-suppressed-warnings with key: ' +
+        '"legacy-colour-param"'
       ]))
   })
 })
