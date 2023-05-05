@@ -24,9 +24,10 @@
   // Output a warning if $legacy is set to anything. This can't use the
   // `_warning` mixin due to being a function, so we handle it manually.
   @if $legacy and not index($govuk-suppressed-warnings, "legacy-colour-param") {
-    @warn "The `$legacy` parameter is deprecated and is non-operational. It " +
-      "will be removed in the next major version. To silence this warning, " +
-      "update $govuk-suppressed-warnings with key: \"legacy-palette\"";
+    @warn "The `$legacy` parameter of `govuk-colour` is deprecated and is " +
+      "non-operational. It will be removed in the next major version. To " +
+      "silence this warning, update $govuk-suppressed-warnings with key: " +
+      "\"legacy-colour-param\"";
   }
 
   @if type-of($colour) == "color" {
