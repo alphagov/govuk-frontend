@@ -24,8 +24,8 @@
   }
 
   .govuk-tag--grey {
-    color: govuk-shade(govuk-colour("dark-grey", $legacy: "grey-1"), 30%);
-    background: govuk-tint(govuk-colour("dark-grey", $legacy: "grey-1"), 90%);
+    color: govuk-shade(govuk-colour("dark-grey"), 30%);
+    background: govuk-tint(govuk-colour("dark-grey"), 90%);
   }
 
   .govuk-tag--purple {
