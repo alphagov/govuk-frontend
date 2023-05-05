@@ -1,4 +1,7 @@
 import { dirname, parse, relative } from 'path'
+import { fileURLToPath } from 'url'
+
+import slash from 'slash'
 
 import { files } from './index.mjs'
 
@@ -36,10 +39,10 @@ export async function write (filePath, result) {
        * Make source file:// paths relative (e.g. for Dart Sass)
        * {@link https://sass-lang.com/documentation/js-api/interfaces/CompileResult#sourceMap}
        */
-      .map((path) => path.startsWith('file://')
-        ? relative(dirname(filePath), new URL(path).pathname)
+      .map((path) => slash(path.startsWith('file://')
+        ? relative(dirname(filePath), fileURLToPath(path))
         : path
-      )
+      ))
 
     writeTasks.push(files.write(`${base}.map`, {
       destPath: dir,
