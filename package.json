@@ -79,7 +79,7 @@
     "postcss-pseudo-classes": "^0.2.1",
     "postcss-scss": "^4.0.6",
     "prettier": "^2.8.8",
-    "puppeteer": "^19.11.1",
+    "puppeteer": "^20.1.1",
     "sassdoc": "^2.7.4",
     "standard": "^17.0.0",
     "stylelint": "^14.16.1",
