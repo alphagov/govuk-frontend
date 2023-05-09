@@ -61,14 +61,6 @@ $_spacing-directions: (
 /// Generate spacing override classes for the given property (e.g. margin)
 /// for each point in the non-responsive spacing scale.
 ///
-/// The classes in the format govuk-#{$property}-static-#{$spacing-point}
-/// and govuk-\!-#{$property}-#{$direction}-static-#{$spacing-point} are deprecated.
-/// For example: govuk-!-margin-static-2 or govuk-!-margin-top-static-2
-///
-/// Use classes in the format .govuk-\!-static-#{$property}-#{$spacing-point}
-/// and .govuk-\!-static-#{$property}-#{$direction}-#{$spacing-point} instead.
-/// For example: govuk-!-static-margin-2 or govuk-!-static-margin-top-2
-///
 /// @param {String} $property - Property to add spacing to (e.g. 'margin')
 ///
 /// @example css
@@ -79,13 +71,11 @@ $_spacing-directions: (
 /// @access private
 @mixin _govuk-generate-static-spacing-overrides($property) {
   @each $spacing-point in map-keys($govuk-spacing-points) {
-    .govuk-\!-#{$property}-static-#{$spacing-point},
     .govuk-\!-static-#{$property}-#{$spacing-point} {
       #{$property}: govuk-spacing($spacing-point) !important;
     }
 
     @each $direction in $_spacing-directions {
-      .govuk-\!-#{$property}-#{$direction}-static-#{$spacing-point},
       .govuk-\!-static-#{$property}-#{$direction}-#{$spacing-point} {
         #{$property}-#{$direction}: govuk-spacing($spacing-point) !important;
       }
