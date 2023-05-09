@@ -25,7 +25,7 @@ module.exports = {
       '--disable-setuid-sandbox',
 
       /**
-       * Prevent empty Chromium startup window
+       * Prevent empty Chrome startup window
        * Tests use their own `browser.newPage()` instead
        */
       '--no-startup-window'
