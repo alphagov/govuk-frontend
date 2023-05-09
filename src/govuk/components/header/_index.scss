@@ -173,7 +173,6 @@
 
   .govuk-header__menu-button {
     @include govuk-font($size: 16);
-    display: none;
     position: absolute;
     top: govuk-spacing(4);
     right: 0;
