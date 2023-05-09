@@ -66,6 +66,20 @@ Use the `.govuk-header__service-name` class instead.
 
 This change was introduced in [pull request #3594: Remove deprecated `.govuk-header__link--service-name` class](https://github.com/alphagov/govuk-frontend/pull/3594).
 
+#### Remove deprecated `.govuk-header__navigation--no-service-name` class
+
+We've removed the `.govuk-header__navigation--no-service-name` class that we deprecated in [GOV.UK Frontend v4.3.0](https://github.com/alphagov/govuk-frontend/releases/tag/v4.3.0).
+
+We no longer supply a dedicated class for headers with navigation but no service name. If you still need this feature, you can reproduce it in your own code using the `govuk-spacing` Sass mixin.
+
+```scss
+.govuk-header__navigation {
+  padding-top: govuk-spacing(7);
+}
+```
+
+This change was introduced in [pull request #3595: Remove deprecated `.govuk-header__navigation--no-service-name` class](https://github.com/alphagov/govuk-frontend/pull/3595).
+
 #### Update the HTML for warning text
 
 We've removed the `.govuk-warning-text__assistive` class and its styles from GOV.UK Frontend. This class is unnecessary, as it duplicates the functionality of the `.govuk-visually-hidden` class already present in Frontend.
