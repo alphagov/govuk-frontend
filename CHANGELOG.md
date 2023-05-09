@@ -40,13 +40,21 @@ We no longer support link buttons being disabled or using disabled styles.
 
 This change was introduced in [pull request #3557: Remove deprecated `.govuk-button--disabled` class](https://github.com/alphagov/govuk-frontend/pull/3557).
 
-#### Remove deprecated `govuk-!-margin-static` and `govuk-!-padding-static` classes
+#### Remove deprecated `.govuk-!-margin-static` and `.govuk-!-padding-static` classes
 
 We've removed the override classes starting with `.govuk-!-margin-static` and `.govuk-!-padding-static` which were deprecated in [GOV.UK Frontend v4.3.1](https://github.com/alphagov/govuk-frontend/releases/tag/v4.3.1).
 
 Use the classes starting with `.govuk-!-static-margin` and `.govuk-!-static-padding` instead.
 
 This change was introduced in [pull request #3593: Remove deprecated static spacing classes](https://github.com/alphagov/govuk-frontend/pull/3593).
+
+#### Remove deprecated `.govuk-header__link--service-name` class
+
+We've removed the `.govuk-header__link--service-name` class that we deprecated in [GOV.UK Frontend v4.2.0](https://github.com/alphagov/govuk-frontend/releases/tag/v4.2.0).
+
+Use the `.govuk-header__service-name` class instead.
+
+This change was introduced in [pull request #3594: Remove deprecated `.govuk-header__link--service-name` class](https://github.com/alphagov/govuk-frontend/pull/3594).
 
 #### Update the HTML for warning text
 
