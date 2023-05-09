@@ -22,6 +22,16 @@ Instead we recommend checking for the disabled attribute using [`$button.hasAttr
 
 This change was introduced in [pull request #2830: Set the boolean disabled attribute consistently in the button component](https://github.com/alphagov/govuk-frontend/pull/2830).
 
+#### Check that the mobile menu button in the header component works as expected
+
+We've removed some styles from the `.govuk-header__menu-button` class. These styles were included on the mobile menu button to avoid introducing a breaking change in [GOV.UK Frontend v4.3.0](https://github.com/alphagov/govuk-frontend/releases/tag/v4.3.0).
+
+If you're not using Nunjucks macros, and haven't done so already, add the `hidden` attribute to the button's HTML to ensure it continues working as expected. You do not need to make any changes if using the Nunjucks macro.
+
+When working correctly, the button should only be shown on narrow screens when JavaScript is available. It should be hidden on wider screens or if JavaScript is unavailable.
+
+This change was introduced in [pull request #3596: Remove redundant display style from `.govuk-header__menu-button`](https://github.com/alphagov/govuk-frontend/pull/3596).
+
 #### Remove Internet Explorer 8 stylesheets, settings and mixins
 
 We no longer support Internet Explorer 8 (IE8) in GOV.UK Frontend and no longer provide dedicated stylesheets for the browser. Remove any references to these stylesheets from your HTML.
