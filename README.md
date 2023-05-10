@@ -3,6 +3,14 @@ GOV.UK Frontend ·
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 =====================
 
+> **Warning**
+>
+> We’re currently implementing extensive changes to our code for [our next major version](https://github.com/alphagov/govuk-frontend/milestone/46).
+>
+> While we're making changes, only fork this repository if necessary. This is to limit how often you will need to update your fork to keep up to date.
+>
+> If you're fixing a bug in our previous releases, branch off the [latest 4.x tag](https://github.com/alphagov/govuk-frontend/tags) instead.
+
 GOV.UK Frontend contains the code you need to start building a user interface
 for government platforms and services.
 
