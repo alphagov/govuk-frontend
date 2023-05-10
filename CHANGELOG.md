@@ -10,6 +10,17 @@ You can now style buttons on dark backgrounds to have a white background colour 
 
 This change was made in [pull request #3556: Add inverse button styles](https://github.com/alphagov/govuk-frontend/pull/3556).
 
+#### New link styles are now enabled by default
+
+In GOV.UK Frontend v3.12.0 we introduced new link styles which:
+
+- have underlines that are consistently thinner and a bit further away from the link text
+- have a clearer hover state, where the underline gets thicker to make the link stand out to users
+
+The new link styles are now enabled by default. If you are setting `$govuk-new-link-styles` to `true` in your Sass you can now remove this.
+
+This change was made in [pull request #3599: Enable new link styles by default](https://github.com/alphagov/govuk-frontend/pull/3599).
+
 ### Breaking changes
 
 #### Check that disabled buttons work as expected
