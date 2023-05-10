@@ -22,3 +22,6 @@ dist/
 # Project lockfile only
 package-lock.json
 !/package-lock.json
+
+# Diffs
+*.diff
