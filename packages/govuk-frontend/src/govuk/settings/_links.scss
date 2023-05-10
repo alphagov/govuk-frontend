@@ -10,16 +10,10 @@
 /// - have a clearer hover state, where the underline gets thicker to make the
 ///   link stand out to users
 ///
-/// You should only enable the new link styles if both:
-///
-/// - you've made sure your whole service will use the new style consistently
-/// - you do not have links in a multi-column CSS layout - there's [a Chromium
-///   bug that affects links](https://github.com/alphagov/govuk-frontend/issues/2204)
-///
 /// @type Boolean
 /// @access public
 
-$govuk-new-link-styles: false !default;
+$govuk-new-link-styles: true !default;
 
 /// Thickness of link underlines
 ///
