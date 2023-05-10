@@ -15,6 +15,7 @@
   "license": "MIT",
   "devDependencies": {
     "@axe-core/puppeteer": "^4.6.1",
+    "@puppeteer/browsers": "^1.1.0",
     "cheerio": "^1.0.0-rc.12",
     "govuk-frontend-config": "*",
     "govuk-frontend-lib": "*",

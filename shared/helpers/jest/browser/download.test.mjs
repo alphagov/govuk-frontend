@@ -1,76 +1,88 @@
-import puppeteer from 'puppeteer'
+import { Cache, install, resolveBuildId } from '@puppeteer/browsers'
 
 import { download } from './download.mjs'
 
-jest.mock('puppeteer')
+jest.mock('@puppeteer/browsers')
 
 describe('Browser tasks: Puppeteer browser downloader', () => {
-  let browserFetcher
-  let localRevisions
+  let browsers
 
   beforeEach(() => {
-    localRevisions = []
+    browsers = []
 
-    browserFetcher = {
-      localRevisions: jest.fn(() => localRevisions),
-      download: jest.fn(),
-      remove: jest.fn()
-    }
-
-    // Mock browser version
-    // @ts-expect-error 'defaultBrowserRevision' is marked @internal
-    puppeteer.defaultBrowserRevision = 'new-version'
-
-    // Mock browser fetcher
-    puppeteer.createBrowserFetcher = jest.fn(() => browserFetcher)
+    // Mock Puppeteer browsers API
+    jest.mocked(resolveBuildId).mockImplementation(async () => 'new-version')
+    jest.mocked(Cache.prototype.getInstalledBrowsers).mockImplementation(() => browsers)
+    jest.mocked(Cache.prototype.clear).mockReturnValue()
   })
 
   it('downloads by default', async () => {
     await download()
 
-    expect(browserFetcher.download).toHaveBeenCalledWith('new-version')
-    expect(browserFetcher.download).toHaveBeenCalledTimes(1)
+    expect(install).toHaveBeenCalledWith(expect.objectContaining({ buildId: 'new-version' }))
+    expect(install).toHaveBeenCalledTimes(1)
 
-    // Outdated versions not available
-    expect(browserFetcher.remove).not.toHaveBeenCalled()
+    // Outdated versions always removed
+    expect(Cache.prototype.clear).toHaveBeenCalledTimes(1)
   })
 
   it('downloads with single version outdated', async () => {
-    localRevisions = ['old-version']
-
-    await download()
-
-    expect(browserFetcher.download).toHaveBeenCalledWith('new-version')
-    expect(browserFetcher.download).toHaveBeenCalledTimes(1)
-
-    // Outdated version removed
-    expect(browserFetcher.remove).toHaveBeenCalledWith('old-version')
-    expect(browserFetcher.remove).toHaveBeenCalledTimes(1)
-  })
-
-  it('downloads with multiple versions outdated', async () => {
-    localRevisions = [
-      'old-version-1',
-      'old-version-2'
+    browsers = [
+      {
+        path: '/path/to/govuk-frontend/.cache/puppeteer/chrome/mac-old-version',
+        browser: 'chrome',
+        platform: 'mac',
+        buildId: 'old-version'
+      }
     ]
 
     await download()
 
-    expect(browserFetcher.download).toHaveBeenCalledWith('new-version')
-    expect(browserFetcher.download).toHaveBeenCalledTimes(1)
+    expect(install).toHaveBeenCalledWith(expect.objectContaining({ buildId: 'new-version' }))
+    expect(install).toHaveBeenCalledTimes(1)
 
-    // Outdated versions removed
-    expect(browserFetcher.remove).toHaveBeenCalledWith('old-version-1')
-    expect(browserFetcher.remove).toHaveBeenCalledWith('old-version-2')
-    expect(browserFetcher.remove).toHaveBeenCalledTimes(2)
+    // Outdated versions always removed
+    expect(Cache.prototype.clear).toHaveBeenCalledTimes(1)
   })
 
-  it('download skipped when up-to-date', async () => {
-    localRevisions = ['new-version']
+  it('downloads with multiple versions outdated', async () => {
+    browsers = [
+      {
+        path: '/path/to/govuk-frontend/.cache/puppeteer/chrome/mac-old-version-1',
+        browser: 'chrome',
+        platform: 'mac',
+        buildId: 'old-version-1'
+      },
+      {
+        path: '/path/to/govuk-frontend/.cache/puppeteer/chrome/mac-old-version-2',
+        browser: 'chrome',
+        platform: 'mac',
+        buildId: 'old-version-2'
+      }
+    ]
 
     await download()
 
-    expect(browserFetcher.download).not.toHaveBeenCalled()
-    expect(browserFetcher.remove).not.toHaveBeenCalled()
+    expect(install).toHaveBeenCalledWith(expect.objectContaining({ buildId: 'new-version' }))
+    expect(install).toHaveBeenCalledTimes(1)
+
+    // Outdated versions always removed
+    expect(Cache.prototype.clear).toHaveBeenCalledTimes(1)
+  })
+
+  it('download skipped when up-to-date', async () => {
+    browsers = [
+      {
+        path: '/path/to/govuk-frontend/.cache/puppeteer/chrome/mac-new-version',
+        browser: 'chrome',
+        platform: 'mac',
+        buildId: 'new-version'
+      }
+    ]
+
+    await download()
+
+    expect(install).not.toHaveBeenCalled()
+    expect(Cache.prototype.clear).not.toHaveBeenCalled()
   })
 })
