@@ -33,8 +33,9 @@ jobs:
       - name: Generate diff
         id: diff
         run: |
-          git diff -M05 origin/$GITHUB_BASE_REF -- dist \
-            > $GITHUB_WORKSPACE/dist.diff
+          # Using `origin/$GITHUB_BASE_REF` to avoid actually checking out the branch
+          # as all we need is to let Git diff the two references
+          bin/dist-diff.sh origin/$GITHUB_BASE_REF $GITHUB_WORKSPACE
 
       - name: Add comment to PR
         uses: actions/github-script@v6
