@@ -1,20 +1,7 @@
 {% extends "template.njk" %}
 
 {% block head %}
-
-  {% if legacy %}
-    <!--[if !IE 8]><!-->
-      <link rel="stylesheet" href="/vendor/govuk_template/stylesheets/govuk-template.css">
-    <!--<![endif]-->
-    <!--[if IE 8]>
-      <link rel="stylesheet" href="/vendor/govuk_template/govuk-template-ie8.css">
-    <![endif]-->
-    <link rel="stylesheet" media="print" href="/vendor/govuk_template/stylesheets/govuk-template-print.css">
-    <link rel="stylesheet" media="all" href="/vendor/govuk_template/stylesheets/fonts.css"/>
-    <link rel="stylesheet" href="/stylesheets/app-legacy.min.css">
-  {% else %}
-    <link rel="stylesheet" href="/stylesheets/app.min.css">
-  {% endif %}
+  <link rel="stylesheet" href="/stylesheets/app.min.css">
 
   {% block styles %}{% endblock %}
 {% endblock %}
@@ -28,10 +15,6 @@
 {% set mainClasses = 'govuk-main-wrapper--auto-spacing' %}
 
 {% block bodyEnd %}
-  {% if legacy %}
-    {% include "partials/legacyJavaScript.njk" %}
-  {% endif %}
-
   <script src="/javascripts/all.min.js"></script>
   <script>window.GOVUKFrontend.initAll()</script>
 {% endblock %}
