@@ -25,7 +25,7 @@
     "govuk-frontend-config": "*",
     "govuk-frontend-lib": "*",
     "highlight.js": "^11.8.0",
-    "iframe-resizer": "^3.5.15",
+    "iframe-resizer": "^4.3.6",
     "js-beautify": "^1.14.7",
     "marked": "^4.3.0",
     "nunjucks": "^3.2.4",
