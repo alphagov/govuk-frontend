@@ -19,7 +19,7 @@ In GOV.UK Frontend v3.12.0 we introduced new link styles which:
 
 The new link styles are now enabled by default. If you are setting `$govuk-new-link-styles` to `true` in your Sass you can now remove this.
 
-This change was made in [pull request #3599: Enable new link styles by default](https://github.com/alphagov/govuk-frontend/pull/3599).
+This change was made in [pull request #3599: Enable new link styles by default](https://github.com/alphagov/govuk-frontend/pull/3599) and [pull request #3600: Remove new link styles feature flag](https://github.com/alphagov/govuk-frontend/pull/3600).
 
 ### Breaking changes
 
