@@ -1,13 +1,13 @@
 {% from "details/macro.njk" import govukDetails %}
 
-{% macro showExamples(componentData, legacyQuery) %}
+{% macro showExamples(componentData) %}
 
 {% set componentSlug = componentData.name %}
 {% set componentName = componentData.name | replace("-", " ") %}
 
 {% for example in componentData.examples | rejectattr('hidden') %}
   {% set exampleSlug = (example.name | replace(" ", "-")) %}
-  {% set iframePathQuery = legacyQuery + '&iframe=true' if legacyQuery != '' else '?iframe=true' %}
+  {% set iframePathQuery = '?iframe=true' %}
 
   {% if example.name == 'default' %}
     {% set heading = componentName | capitalize %}
@@ -21,7 +21,7 @@
     <div class="govuk-width-container">
       <div class="govuk-heading-m">
         <h3 id="heading-{{ exampleSlug }}" class="app-!-di">{{ heading | safe }}</h3>
-        <a href="{{ path }}{{ legacyQuery }}" class="govuk-link govuk-!-margin-left-1 govuk-!-font-size-16">
+        <a href="{{ path }}" class="govuk-link govuk-!-margin-left-1 govuk-!-font-size-16">
           (open in a new window)
         </a>
       </div>

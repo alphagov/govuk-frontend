@@ -9,7 +9,7 @@
 
 {% block beforeContent %}
   {{ govukBackLink({
-    href: "/" + legacyQuery
+    href: "/"
   }) }}
 {% endblock %}
 
@@ -20,6 +20,6 @@
     </h1>
   </div>
   {% for componentData in componentsData %}
-    {{ showExamples(componentData, legacyQuery) }}
+    {{ showExamples(componentData) }}
   {% endfor %}
 {% endblock %}

@@ -19,7 +19,7 @@
     "items": [
       {
         text: 'GOV.UK Frontend',
-        href: "/" + legacyQuery
+        href: "/"
       },
       {
         text: componentNameHuman | capitalize
@@ -38,6 +38,6 @@
   </div>
 
   {% block examples %}
-    {{ showExamples(componentData, legacyQuery) }}
+    {{ showExamples(componentData) }}
   {% endblock %}
 {% endblock %}
