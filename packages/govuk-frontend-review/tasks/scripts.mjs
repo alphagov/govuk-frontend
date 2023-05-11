@@ -22,5 +22,5 @@ export const compile = (options) => gulp.series(
   ),
 
   // Build JSDoc for /docs/javascript
-  npm.script('build:jsdoc', options)
+  npm.script('build:jsdoc', [], options)
 )
