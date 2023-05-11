@@ -41,7 +41,7 @@
     "html-validate": "7.15.1",
     "nunjucks": "^3.2.4",
     "outdent": "^0.8.0",
-    "puppeteer": "^19.11.1",
+    "puppeteer": "^20.1.1",
     "sass-color-helpers": "^2.1.1",
     "sass-embedded": "^1.62.0",
     "sassdoc": "^2.7.4",

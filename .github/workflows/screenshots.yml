@@ -16,6 +16,8 @@ jobs:
     env:
       PERCY_PARALLEL_NONCE: ${{ github.run_id }}-${{ github.run_attempt }}
       PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+      PERCY_POSTINSTALL_BROWSER: false
+      PUPPETEER_SKIP_DOWNLOAD: true
 
     # Skip when secrets are unavailable on forks
     if: ${{ !github.event.pull_request.head.repo.fork }}

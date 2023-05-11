@@ -30,7 +30,7 @@ jobs:
     runs-on: ${{ github.event.inputs.runner || 'ubuntu-latest' }}
 
     env:
-      PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+      PUPPETEER_SKIP_DOWNLOAD: true
 
     steps:
       - name: Checkout code
@@ -194,7 +194,7 @@ jobs:
       - name: Restore build
         uses: ./.github/workflows/actions/build
 
-      - name: Cache Jest
+      - name: Cache task
         if: ${{ matrix.task.cache }}
         uses: actions/cache@v3
         with:
