@@ -37,6 +37,13 @@ jobs:
           # as all we need is to let Git diff the two references
           .github/workflows/scripts/dist-diff.sh origin/$GITHUB_BASE_REF $GITHUB_WORKSPACE
 
+      - name: Save diffs as artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Dist diff
+          path: dist*.diff
+          if-no-files-found: ignore
+
       - name: Add comment to PR
         uses: actions/github-script@v6
         with:
