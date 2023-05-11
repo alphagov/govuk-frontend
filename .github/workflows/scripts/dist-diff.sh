@@ -15,5 +15,17 @@ base="${1:-main}"
 # And the output folder to the current working directory
 output_folder="${2:-`pwd`}"
 
-git diff -M05 $base -- dist \
+# Diff the minified JS file
+git diff \
+  $base:dist/govuk-frontend-$(git show $base:dist/VERSION.txt).min.js \
+  dist/govuk-frontend-$(cat dist/VERSION.txt).min.js \
+  > $output_folder/dist-js.diff
+# Diff the minified CSS file
+git diff \
+  $base:dist/govuk-frontend-$(git show $base:dist/VERSION.txt).min.css \
+  dist/govuk-frontend-$(cat dist/VERSION.txt).min.css \
+  > $output_folder/dist-css.diff
+# Diff the rest of the files, excluding the sourcemaps and the minified files
+# See https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec
+git diff -M05 $base -- dist ":(exclude)*.map" \
   > $output_folder/dist.diff
