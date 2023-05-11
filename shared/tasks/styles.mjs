@@ -80,7 +80,6 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath, fileP
       // Resolve @imports via
       loadPaths: [
         packageNameToPath('govuk-frontend', 'src'),
-        packageNameToPath('govuk_frontend_toolkit', 'stylesheets'),
         join(paths.root, 'node_modules')
       ],
 

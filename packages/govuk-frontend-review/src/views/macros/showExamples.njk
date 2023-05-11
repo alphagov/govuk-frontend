@@ -7,7 +7,6 @@
 
 {% for example in componentData.examples | rejectattr('hidden') %}
   {% set exampleSlug = (example.name | replace(" ", "-")) %}
-  {% set iframePathQuery = '?iframe=true' %}
 
   {% if example.name == 'default' %}
     {% set heading = componentName | capitalize %}
@@ -35,7 +34,7 @@
     <div class="app-component-preview">
       <iframe
       class="js-component-preview app-component-preview__iframe"
-      src="{{ path + iframePathQuery }}"
+      src="{{ path }}?iframe=true"
       frameBorder="0"
       allowTransparency="true"
       scrolling="auto"

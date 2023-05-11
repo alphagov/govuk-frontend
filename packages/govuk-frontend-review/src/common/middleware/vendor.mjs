@@ -8,6 +8,5 @@ const router = express.Router()
  * from node_modules
  */
 router.use('/iframe-resizer/', express.static(packageNameToPath('iframe-resizer', 'js')))
-router.use('/jquery/', express.static(packageNameToPath('jquery', 'dist')))
 
 export default router

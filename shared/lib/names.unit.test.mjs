@@ -129,20 +129,8 @@ describe('componentPathToModuleName', () => {
 describe('packageNameToPath', () => {
   const packages = [
     {
-      name: 'govuk_template_jinja',
-      path: join(paths.root, 'node_modules/govuk_template_jinja')
-    },
-    {
-      name: 'govuk_frontend_toolkit',
-      path: join(paths.root, 'node_modules/govuk_frontend_toolkit')
-    },
-    {
       name: 'govuk-frontend',
       path: paths.package
-    },
-    {
-      name: 'jquery',
-      path: join(paths.root, 'node_modules/jquery')
     }
   ]
 
