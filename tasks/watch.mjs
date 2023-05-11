@@ -18,7 +18,7 @@ export const watch = (options) => gulp.parallel(
     gulp.watch([
       `${slash(options.srcPath)}/govuk/**/*.scss`,
       `!${slash(options.srcPath)}/govuk/vendor/*`
-    ], npm.script('lint:scss', options))
+    ], npm.script('lint:scss', [], options))
   ),
 
   /**
@@ -27,6 +27,6 @@ export const watch = (options) => gulp.parallel(
   task.name('lint:js watch', () =>
     gulp.watch([
       `${slash(options.srcPath)}/govuk/**/*.mjs`
-    ], npm.script('lint:js', options))
+    ], npm.script('lint:js', [], options))
   )
 )
