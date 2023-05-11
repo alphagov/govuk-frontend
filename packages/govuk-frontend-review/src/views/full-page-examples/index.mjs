@@ -1,7 +1,6 @@
 /**
  * Full page examples routes
  */
-export { default as applicantDetails } from './applicant-details/index.mjs'
 export { default as cookieBannerEssentialCookies } from './cookie-banner-essential-cookies/index.mjs'
 export { default as cookieBannerServerSide } from './cookie-banner-server-side/index.mjs'
 export { default as haveYouChangedYourName } from './have-you-changed-your-name/index.mjs'
