@@ -13,10 +13,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "js-yaml": "^4.1.0",
     "front-matter": "^4.0.2",
-    "govuk-frontend-config": "*",
     "glob": "^10.2.2",
+    "govuk-frontend-config": "*",
+    "js-yaml": "^4.1.0",
     "minimatch": "^9.0.0"
   }
 }
