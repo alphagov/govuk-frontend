@@ -45,6 +45,6 @@
     "sass-color-helpers": "^2.1.1",
     "sass-embedded": "^1.62.0",
     "sassdoc": "^2.7.4",
-    "slash": "^5.0.1"
+    "slash": "^5.1.0"
   }
 }
