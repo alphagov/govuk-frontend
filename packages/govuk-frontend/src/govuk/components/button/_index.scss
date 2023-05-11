@@ -101,17 +101,6 @@ $govuk-button-text-colour: govuk-colour("white") !default;
       box-shadow: inset 0 0 0 1px $govuk-focus-colour;
     }
 
-    // alphagov/govuk_template includes a specific a:link:focus selector
-    // designed to make unvisited links a slightly darker blue when focussed, so
-    // we need to override the text colour for that combination of selectors so
-    // so that unvisited links styled as buttons do not end up with dark blue
-    // text when focussed.
-    @include _govuk-compatibility(govuk_template) {
-      &:link:focus {
-        color: $govuk-button-text-colour;
-      }
-    }
-
     &:focus:not(:active):not(:hover) {
       border-color: $govuk-focus-colour;
       color: $govuk-focus-text-colour;
@@ -179,17 +168,6 @@ $govuk-button-text-colour: govuk-colour("white") !default;
       color: $govuk-secondary-button-text-colour;
     }
 
-    // alphagov/govuk_template includes a specific a:link:focus selector
-    // designed to make unvisited links a slightly darker blue when focussed, so
-    // we need to override the text colour for that combination of selectors so
-    // so that unvisited links styled as buttons do not end up with dark blue
-    // text when focussed.
-    @include _govuk-compatibility(govuk_template) {
-      &:link:focus {
-        color: $govuk-secondary-button-text-colour;
-      }
-    }
-
     &:hover {
       background-color: $govuk-secondary-button-hover-colour;
 
@@ -211,17 +189,6 @@ $govuk-button-text-colour: govuk-colour("white") !default;
       color: $govuk-warning-button-text-colour;
     }
 
-    // alphagov/govuk_template includes a specific a:link:focus selector
-    // designed to make unvisited links a slightly darker blue when focussed, so
-    // we need to override the text colour for that combination of selectors so
-    // so that unvisited links styled as buttons do not end up with dark blue
-    // text when focussed.
-    @include _govuk-compatibility(govuk_template) {
-      &:link:focus {
-        color: $govuk-warning-button-text-colour;
-      }
-    }
-
     &:hover {
       background-color: $govuk-warning-button-hover-colour;
 
@@ -241,17 +208,6 @@ $govuk-button-text-colour: govuk-colour("white") !default;
     &:active,
     &:hover {
       color: $govuk-inverse-button-text-colour;
-    }
-
-    // alphagov/govuk_template includes a specific a:link:focus selector
-    // designed to make unvisited links a slightly darker blue when focussed, so
-    // we need to override the text colour for that combination of selectors so
-    // so that unvisited links styled as buttons do not end up with dark blue
-    // text when focussed.
-    @include _govuk-compatibility(govuk_template) {
-      &:link:focus {
-        color: $govuk-inverse-button-text-colour;
-      }
     }
 
     &:hover {
