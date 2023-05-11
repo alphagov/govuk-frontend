@@ -75,7 +75,7 @@ describe('dist/', () => {
     })
 
     it('should contain correct version number', () => {
-      expect(javascript).toContain(`.version="${pkg.version}",`)
+      expect(javascript).toContain(`.version="${pkg.version}"`)
     })
 
     it('should contain source mapping URL', () => {
