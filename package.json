@@ -85,7 +85,7 @@
     "stylelint": "^14.16.1",
     "stylelint-config-gds": "^0.3.0",
     "stylelint-order": "^6.0.3",
-    "typedoc": "^0.24.6",
+    "typedoc": "^0.24.7",
     "typescript": "^5.0.4"
   },
   "optionalDependencies": {
