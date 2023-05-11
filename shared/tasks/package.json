@@ -13,6 +13,9 @@
     "@percy/cli": "^1.24.0",
     "@percy/puppeteer": "^2.0.2",
     "@percy/sdk-utils": "^1.24.0",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@rollup/plugin-replace": "^5.0.2",
+    "@rollup/plugin-terser": "^0.4.1",
     "chalk": "^5.2.0",
     "cpy": "^9.0.1",
     "del": "^7.0.0",
@@ -27,12 +30,9 @@
     "postcss": "^8.4.23",
     "postcss-load-config": "^4.0.1",
     "puppeteer": "^19.11.1",
-    "rollup": "^0.59.4",
-    "rollup-plugin-node-resolve": "^4.2.4",
-    "rollup-plugin-replace": "^2.2.0",
+    "rollup": "^3.21.5",
     "sass-embedded": "^1.62.0",
     "slash": "^5.0.1",
-    "terser": "^5.17.1",
     "yargs-parser": "^21.1.1"
   }
 }
