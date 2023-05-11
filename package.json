@@ -72,7 +72,7 @@
     "jest-environment-node-single-context": "^29.0.0",
     "jest-puppeteer": "^8.0.6",
     "jest-serializer-html": "^7.1.0",
-    "lint-staged": "^13.2.1",
+    "lint-staged": "^13.2.2",
     "minimatch": "^9.0.0",
     "postcss": "^8.4.23",
     "postcss-load-config": "^4.0.1",
