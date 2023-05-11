@@ -1,0 +1,14 @@
+# This list builds on the GOV.UK service manual's browser testing recommendations
+# https://www.gov.uk/service-manual/technology/designing-for-different-browsers-and-devices
+
+> 0.1%
+last 2 Chrome versions
+last 2 Firefox versions
+last 2 Edge versions
+last 2 Samsung versions
+Safari >= 9
+ie 11
+iOS >= 9
+
+[node]
+node 18
