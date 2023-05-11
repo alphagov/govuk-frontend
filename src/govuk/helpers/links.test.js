@@ -31,38 +31,6 @@ describe('@mixin govuk-link-decoration', () => {
     })
   })
 
-  describe('when $govuk-new-link-styles are disabled', () => {
-    it('does not set text-decoration-thickness', async () => {
-      const sass = `
-        $govuk-new-link-styles: false;
-        @import "base";
-
-        .foo {
-          @include govuk-link-decoration;
-        }
-      `
-
-      await expect(compileSassString(sass)).resolves.toMatchObject({
-        css: expect.not.stringContaining('text-decoration-thickness')
-      })
-    })
-
-    it('does not set text-underline-offset', async () => {
-      const sass = `
-        $govuk-new-link-styles: false;
-        @import "base";
-
-        .foo {
-          @include govuk-link-decoration;
-        }
-      `
-
-      await expect(compileSassString(sass)).resolves.toMatchObject({
-        css: expect.not.stringContaining('text-underline-offset')
-      })
-    })
-  })
-
   describe('when $govuk-link-underline-thickness is falsey', () => {
     it('does not set text-decoration-thickness', async () => {
       const sass = `
@@ -110,25 +78,6 @@ describe('@mixin govuk-link-hover-decoration', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: expect.stringContaining('.foo:hover')
-    })
-  })
-
-  describe('when $govuk-new-link-styles are disabled', () => {
-    it('does not set a hover state', async () => {
-      const sass = `
-        $govuk-new-link-styles: false;
-        @import "base";
-
-        // The mixin shouldn't return anything, so this selector ends up empty and
-        // is omitted from the CSS
-        .foo:hover {
-            @include govuk-link-hover-decoration;
-        }
-      `
-
-      await expect(compileSassString(sass)).resolves.toMatchObject({
-        css: expect.not.stringContaining('.foo:hover')
-      })
     })
   })
 

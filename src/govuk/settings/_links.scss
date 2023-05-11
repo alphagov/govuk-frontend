@@ -2,19 +2,6 @@
 /// @group settings/links
 ////
 
-/// Enable new link styles
-///
-/// If enabled, the link styles will change. Underlines will:
-///
-/// - be consistently thinner and a bit further away from the link text
-/// - have a clearer hover state, where the underline gets thicker to make the
-///   link stand out to users
-///
-/// @type Boolean
-/// @access public
-
-$govuk-new-link-styles: true !default;
-
 /// Thickness of link underlines
 ///
 /// The default will be either:
