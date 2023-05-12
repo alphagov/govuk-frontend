@@ -4,13 +4,13 @@ import { npm, task } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
 import slash from 'slash'
 
-import { templates } from './index.mjs'
+import { scripts, templates } from './index.mjs'
 
 /**
  * Watch task
  * During development, this task will:
  * - lint when `.scss` files change
- * - lint when `.mjs` files change
+ * - lint and run `gulp scripts` when `.{cjs,js,mjs}` files change
  * - lint and run `gulp templates` when `.{md,njk}` files change
  *
  * @type {import('govuk-frontend-tasks').TaskFunction}
@@ -27,12 +27,15 @@ export const watch = (options) => gulp.parallel(
   ),
 
   /**
-   * JavaScripts lint watcher
+   * JavaScripts build + lint watcher
    */
   task.name('lint:js watch', () =>
     gulp.watch([
       `${slash(options.srcPath)}/govuk/**/*.mjs`
-    ], npm.script('lint:js:cli', [slash(join(options.workspace, '**/*.{cjs,js,mjs}'))]))
+    ], gulp.parallel(
+      npm.script('lint:js:cli', [slash(join(options.workspace, '**/*.{cjs,js,mjs}'))]),
+      scripts(options)
+    ))
   ),
 
   /**
