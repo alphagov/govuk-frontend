@@ -59,6 +59,10 @@
 
   $org-colour: map-get($govuk-colours-organisations, $organisation);
 
+  @if map-has-key($org-colour, deprecation-message) {
+    @warn map-get($org-colour, deprecation-message);
+  }
+
   @if $websafe and map-has-key($org-colour, colour-websafe) {
     @return map-get($org-colour, colour-websafe);
   } @else {
