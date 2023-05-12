@@ -2,7 +2,7 @@ import gulp from 'gulp'
 
 import * as build from './tasks/build/index.mjs'
 import { options, targets } from './tasks/build/options.mjs'
-import { scripts, styles } from './tasks/index.mjs'
+import { scripts, styles, templates } from './tasks/index.mjs'
 
 /**
  * Build target tasks
@@ -16,3 +16,4 @@ gulp.task('dev', build.dev(options))
  */
 gulp.task('scripts', scripts(options))
 gulp.task('styles', styles(options))
+gulp.task('templates', templates(options))
