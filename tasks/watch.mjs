@@ -4,11 +4,14 @@ import { npm, task } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
 import slash from 'slash'
 
+import { templates } from './index.mjs'
+
 /**
  * Watch task
  * During development, this task will:
  * - lint when `.scss` files change
  * - lint when `.mjs` files change
+ * - lint and run `gulp templates` when `.{md,njk}` files change
  *
  * @type {import('govuk-frontend-tasks').TaskFunction}
  */
@@ -30,5 +33,14 @@ export const watch = (options) => gulp.parallel(
     gulp.watch([
       `${slash(options.srcPath)}/govuk/**/*.mjs`
     ], npm.script('lint:js:cli', [slash(join(options.workspace, '**/*.{cjs,js,mjs}'))]))
+  ),
+
+  /**
+   * Component template watcher
+   */
+  task.name('copy:templates watch', () =>
+    gulp.watch([
+      `${slash(options.srcPath)}/govuk/**/*.{md,njk}`
+    ], templates(options))
   )
 )
