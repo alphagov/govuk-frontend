@@ -7,8 +7,8 @@
 /// This map is used to determine which deprecation warnings to **not** show
 /// to users when compiling sass. This is in place for codebases that do not
 /// have the necessary capacity to upgrade and remove the deprecation,
-/// particularly if the deprecation is significant. For example, removal of
-/// compatibility with legacy libraries such as govuk_elements.
+/// particularly if the deprecation is significant. For example, the removal of
+/// mixins and functions that were previously available to users of Frontend.
 ///
 /// You can add to this map and define which warnings to suppress by appending to
 /// it using the warning key, found in the warning message. For example:

@@ -13,7 +13,6 @@ groups:
   helpers/typography: Helpers / Typography
   settings/assets: Settings / Assets
   settings/colours: Settings / Colours
-  settings/compatibility: Settings / Compatibility
   settings/global-styles: Settings / Global Styles
   settings/links: Settings / Links
   settings/measurements: Settings / Measurements
