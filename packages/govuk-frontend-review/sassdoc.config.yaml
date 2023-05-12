@@ -1,4 +1,4 @@
-dest: packages/govuk-frontend-review/dist/docs/sassdoc
+dest: dist/docs/sassdoc
 exclude:
   - vendor/*
 

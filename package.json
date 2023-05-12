@@ -20,8 +20,6 @@
     "publish-release": "./bin/publish-release.sh",
     "pre-release": "./bin/pre-release.sh",
     "dev": "concurrently \"npm run dev --workspace govuk-frontend-review\" \"npm run dev --workspace govuk-frontend\" --kill-others --names \"app,pkg\" --prefix-colors \"red.dim,blue.dim\"",
-    "build:sassdoc": "sassdoc --config sassdoc.config.yaml ./packages/govuk-frontend/src/govuk",
-    "build:jsdoc": "typedoc",
     "build:app": "npm run build --workspace govuk-frontend-review",
     "build:package": "npm run build:package --workspace govuk-frontend",
     "build:release": "npm run build:release --workspace govuk-frontend",
@@ -80,12 +78,10 @@
     "postcss-scss": "^4.0.6",
     "prettier": "^2.8.8",
     "puppeteer": "^20.2.0",
-    "sassdoc": "^2.7.4",
     "standard": "^17.0.0",
     "stylelint": "^14.16.1",
     "stylelint-config-gds": "^0.3.0",
     "stylelint-order": "^6.0.3",
-    "typedoc": "^0.24.7",
     "typescript": "^5.0.4"
   },
   "optionalDependencies": {
