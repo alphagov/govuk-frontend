@@ -110,6 +110,10 @@ describe('@function govuk-organisation-colour', () => {
       ),
       'broom-regulatory-control': (
         colour: #A81223
+      ),
+      'house-elf-equalities-office': (
+        colour: #786999,
+        deprecation-message: 'The House Elf Equalities Office was disbanded in 2007.'
       )
     );
 
@@ -168,6 +172,25 @@ describe('@function govuk-organisation-colour', () => {
         }
       `
     })
+  })
+
+  it('outputs a warning if the organisation has been deprecated', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        color: govuk-organisation-colour('house-elf-equalities-office');
+      }
+    `
+
+    await compileSassString(sass, sassConfig)
+
+    // Expect our mocked @warn function to have been called once with a single
+    // argument, which should be the deprecation notice
+    expect(mockWarnFunction.mock.calls[0])
+      .toEqual(expect.arrayContaining([
+        'The House Elf Equalities Office was disbanded in 2007.'
+      ]))
   })
 
   it('throws an error if a non-existent organisation is requested', async () => {
