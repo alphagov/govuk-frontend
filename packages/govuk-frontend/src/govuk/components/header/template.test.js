@@ -254,12 +254,5 @@ describe('header', () => {
     it('sets aria-hidden="true" so that it is ignored by assistive technologies', () => {
       expect($svg.attr('aria-hidden')).toEqual('true')
     })
-
-    describe('fallback PNG', () => {
-      it('is invisible to modern browsers', () => {
-        const $fallbackImage = $('.govuk-header__logotype-crown-fallback-image')
-        expect($fallbackImage.length).toEqual(0)
-      })
-    })
   })
 })
