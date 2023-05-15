@@ -4,6 +4,7 @@ updates:
   # Update npm packages
   - package-ecosystem: npm
     directory: /
+    open-pull-requests-limit: 10
     reviewers:
       - alphagov/design-system-developers
     schedule:
