@@ -17,7 +17,7 @@
     "@rollup/plugin-replace": "^5.0.2",
     "@rollup/plugin-terser": "^0.4.1",
     "chalk": "^5.2.0",
-    "cpy": "^9.0.1",
+    "cpy": "^10.1.0",
     "del": "^7.0.0",
     "govuk-frontend-config": "*",
     "govuk-frontend-helpers": "*",
