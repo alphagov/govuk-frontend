@@ -69,6 +69,20 @@ Use the classes starting with `.govuk-!-static-margin` and `.govuk-!-static-padd
 
 This change was introduced in [pull request #3593: Remove deprecated static spacing classes](https://github.com/alphagov/govuk-frontend/pull/3593).
 
+#### Remove the fallback GOV.UK crown logo from your HTML
+
+The header component previously included a fallback version of the GOV.UK crown logo for Internet Explorer 8. As Frontend no longer supports IE8, this fallback has been removed.
+
+If you're not using the Nunjucks macros, you'll need to remove this fallback from your HTML code. In your header component:
+
+1. Remove the block of HTML containing the `govuk-header__logotype-crown-fallback-image` image, starting with `<!--[if IE 8]>` and ending with `<![endif]-->`.
+2. Remove `<!--[if gt IE 8]><!-->` and ` <!--<![endif]-->` from around the `govuk-header__logotype-crown` SVG, but don't remove the SVG.
+3. Delete the `govuk-logotype-crown.png` file from your assets folder.
+
+You don't need to change any HTML if you're using the supplied Nunjucks macros, but may still need to remove the `govuk-logotype-crown.png` image depending on [how you are serving the font and image assets](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#font-and-image-assets).
+
+This change was introduced in [pull request #3641: Remove fallback GOV.UK logo for IE8](https://github.com/alphagov/govuk-frontend/pull/3641).
+
 #### Remove deprecated `.govuk-header__link--service-name` class
 
 We've removed the `.govuk-header__link--service-name` class that we deprecated in [GOV.UK Frontend v4.2.0](https://github.com/alphagov/govuk-frontend/releases/tag/v4.2.0).
