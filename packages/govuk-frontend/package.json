@@ -16,9 +16,7 @@
       "import": "./dist/govuk-esm/all.mjs",
       "require": "./dist/govuk/all.js"
     },
-    "./package.json": "./package.json",
-    "./src/*": "./src/*",
-    "./*": "./dist/*"
+    "./*": "./*"
   },
   "sideEffects": [
     "**/vendor/**"
