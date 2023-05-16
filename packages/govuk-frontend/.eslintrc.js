@@ -3,30 +3,7 @@ const { resolve } = require('path')
 module.exports = {
   overrides: [
     {
-      files: ['src/**/*.{cjs,js,mjs}'],
-      excludedFiles: ['**/*.test.{cjs,js,mjs}'],
-      env: {
-        browser: true
-      },
-      rules: {
-        'no-var': 'off',
-
-        // JSDoc blocks are mandatory
-        'jsdoc/require-jsdoc': [
-          'error', {
-            enableFixer: false,
-            require: {
-              ClassDeclaration: true,
-              ClassExpression: true,
-              FunctionExpression: true,
-              MethodDefinition: true
-            }
-          }
-        ]
-      }
-    },
-    {
-      files: ['govuk/**/*.mjs'],
+      files: ['src/govuk/**/*.mjs'],
       excludedFiles: ['**/*.test.mjs'],
       parser: '@typescript-eslint/parser',
       parserOptions: {
@@ -43,6 +20,9 @@ module.exports = {
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
         'plugin:es-x/restrict-to-es5'
       ],
+      env: {
+        browser: true
+      },
       rules: {
         // Allow unknown `.prototype` members until ES6 classes
         '@typescript-eslint/no-unsafe-member-access': 'off',
@@ -51,7 +31,23 @@ module.exports = {
         '@typescript-eslint/no-this-alias': 'off',
 
         // Rollup transpiles modules to AMD export/define
-        'es-x/no-modules': 'off'
+        'es-x/no-modules': 'off',
+
+        // Allow `var` until let/const supported
+        'no-var': 'off',
+
+        // JSDoc blocks are mandatory
+        'jsdoc/require-jsdoc': [
+          'error', {
+            enableFixer: false,
+            require: {
+              ClassDeclaration: true,
+              ClassExpression: true,
+              FunctionExpression: true,
+              MethodDefinition: true
+            }
+          }
+        ]
       }
     },
     {
