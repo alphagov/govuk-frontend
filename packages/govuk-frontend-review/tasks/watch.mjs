@@ -22,7 +22,7 @@ export const watch = (options) => gulp.parallel(
   task.name('lint:scss watch', () =>
     gulp.watch([
       `${slash(paths.app)}/src/**/*.scss`
-    ], npm.script('lint:scss:cli', [join(options.workspace, '**/*.scss')]))
+    ], npm.script('lint:scss:cli', [slash(join(options.workspace, '**/*.scss'))]))
   ),
 
   /**
@@ -43,7 +43,7 @@ export const watch = (options) => gulp.parallel(
   task.name('lint:js watch', () =>
     gulp.watch([
       `${slash(paths.app)}/src/javascripts/**/*.mjs`
-    ], npm.script('lint:js:cli', [join(options.workspace, '**/*.{cjs,js,mjs}')]))
+    ], npm.script('lint:js:cli', [slash(join(options.workspace, '**/*.{cjs,js,mjs}'))]))
   ),
 
   /**
