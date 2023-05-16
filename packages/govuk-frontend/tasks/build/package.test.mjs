@@ -7,6 +7,7 @@ import { filterPath, getDirectories, getListing, mapPathTo } from 'govuk-fronten
 import { componentNameToClassName, componentPathToModuleName } from 'govuk-frontend-lib/names'
 
 describe('packages/govuk-frontend/dist/', () => {
+  let listingPackage
   let listingSource
   let listingDist
 
@@ -17,6 +18,7 @@ describe('packages/govuk-frontend/dist/', () => {
   let componentNames
 
   beforeAll(async () => {
+    listingPackage = await getListing(paths.package, '*')
     listingSource = await getListing(join(paths.package, 'src'))
     listingDist = await getListing(join(paths.package, 'dist'))
 
@@ -89,6 +91,17 @@ describe('packages/govuk-frontend/dist/', () => {
 
     // Compare array of actual output files
     expect(listingDist).toEqual(listingExpected)
+
+    // Check top level package contents
+    expect(listingPackage).toEqual([
+      'README.md',
+      'gulpfile.mjs',
+      'package.json',
+      'postcss.config.mjs',
+      'postcss.config.unit.test.mjs',
+      'tsconfig.build.json',
+      'tsconfig.json'
+    ])
   })
 
   describe('README.md', () => {
