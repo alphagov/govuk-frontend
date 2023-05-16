@@ -1,6 +1,11 @@
 const { resolve } = require('path')
 
 module.exports = {
+  settings: {
+    node: {
+      version: '^18.12.0'
+    }
+  },
   overrides: [
     {
       files: ['src/govuk/**/*.mjs'],
