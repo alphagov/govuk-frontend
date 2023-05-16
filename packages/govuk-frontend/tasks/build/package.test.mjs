@@ -83,9 +83,6 @@ describe('packages/govuk-frontend/dist/', () => {
         join(requirePath, 'fixtures.json'),
         join(requirePath, 'macro-options.json')
       ]))
-
-      // Files already present in 'package/dist'
-      .concat(['package.json'])
       .sort()
 
     // Compare array of actual output files

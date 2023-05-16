@@ -3,7 +3,7 @@ set -e
 
 # Check if there are unexpected changes. Changes to CHANGELOG.md, package.json
 # and package-lock.json files are expected as part of the normal release process.
-changes="$(git status --porcelain -- ':!CHANGELOG.md' ':!packages/govuk-frontend/dist/package.json' ':!package-lock.json')"
+changes="$(git status --porcelain -- ':!CHANGELOG.md' ':!packages/govuk-frontend/package.json' ':!package-lock.json')"
 if [[ -n $changes ]]; then
   echo "⚠ Unexpected changes in your working directory:"
   echo "$changes"
@@ -30,7 +30,7 @@ npm run test
 npm run build:package
 npm run build:release
 
-ALL_PACKAGE_VERSION=$(node -p "require('./packages/govuk-frontend/dist/package.json').version")
+ALL_PACKAGE_VERSION=$(node -p "require('./packages/govuk-frontend/package.json').version")
 TAG="v$ALL_PACKAGE_VERSION"
 CURRENT_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 

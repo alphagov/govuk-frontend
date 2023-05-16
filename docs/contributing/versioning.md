@@ -59,7 +59,7 @@ This includes:
 
 ### npm package
 
-The other primary way is through what is [published to npm](/packages/govuk-frontend/dist).
+The other primary way is through what is [published to npm](/packages/govuk-frontend).
 
 This includes:
 
