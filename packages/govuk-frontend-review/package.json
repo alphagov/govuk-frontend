@@ -12,6 +12,8 @@
     "predev": "npm run build",
     "dev": "gulp dev --color",
     "build": "gulp build --color",
+    "build:sassdoc": "sassdoc --config sassdoc.config.yaml ../govuk-frontend/src/govuk",
+    "build:jsdoc": "typedoc",
     "serve": "nodemon",
     "start": "node src/start.mjs",
     "test:screenshots": "gulp screenshots --color"
@@ -33,12 +35,17 @@
     "shuffle-seed": "^1.1.6"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.14",
     "cheerio": "^1.0.0-rc.12",
+    "cssnano": "^6.0.1",
     "govuk-frontend-tasks": "*",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
     "nodemon": "^2.0.22",
+    "postcss-pseudo-classes": "^0.2.1",
+    "sassdoc": "^2.7.4",
     "slash": "^5.1.0",
-    "supertest": "^6.3.3"
+    "supertest": "^6.3.3",
+    "typedoc": "^0.24.7"
   }
 }

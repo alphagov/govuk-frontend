@@ -32,6 +32,9 @@
     "dev": "gulp dev --color"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "cssnano": "^6.0.1",
+    "cssnano-preset-default": "^6.0.1",
     "govuk-frontend-config": "*",
     "govuk-frontend-helpers": "*",
     "govuk-frontend-lib": "*",
@@ -41,6 +44,8 @@
     "html-validate": "7.17.0",
     "nunjucks": "^3.2.4",
     "outdent": "^0.8.0",
+    "postcss": "^8.4.23",
+    "postcss-scss": "^4.0.6",
     "puppeteer": "^20.2.0",
     "sass-color-helpers": "^2.1.1",
     "sass-embedded": "^1.62.0",
