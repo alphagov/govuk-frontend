@@ -23,6 +23,30 @@ This change was made in [pull request #3599: Enable new link styles by default](
 
 ### Breaking changes
 
+#### "Compatibility mode" features are no longer supported
+
+GOV.UK Frontend no longer supports compatibility with [our old frameworks](https://frontend.design-system.service.gov.uk/migrating-from-legacy-products/#migrate-from-our-old-frameworks): GOV.UK Elements, GOV.UK Template and GOV.UK Frontend Toolkit. You can no longer incrementally add GOV.UK Frontend to an existing service using one of these previous frameworks. We have removed the following Sass variables and one mixin which controlled compatibility mode:
+
+- `$govuk-compatibility-govukelements`
+- `$govuk-compatibility-govuktemplate`
+- `$govuk-compatibility-govukfrontendtoolkit`
+- The `compatibility-mode` mixin which automatically checked if any of the 3 control variables were set to `true`
+
+We have additionally removed features that were managed using the above variables. The following features and their corresponding variables have now been removed:
+
+- Access to the legacy colour palette using `$govuk-use-legacy-palette`
+- Access to the legacy font using `$govuk-use-legacy-font`
+- Use of legacy tabular fonts using `$govuk-font-family-tabular`
+- The ability to not use rem font sizes using `$govuk-typography-use-rem`
+
+These changes were introduced in:
+
+- [pull request #3622: Remove compatibility mode variables](https://github.com/alphagov/govuk-frontend/pull/3622)
+- [pull request #3602: Remove `compatibility-mode` mixin](https://github.com/alphagov/govuk-frontend/pull/3602)
+- [pull request #3576: Remove legacy colour palette](https://github.com/alphagov/govuk-frontend/pull/3576)
+- [pull request #3574: Remove legacy and tabular fonts support](https://github.com/alphagov/govuk-frontend/pull/3574)
+- [pull request #3576: Remove `$govuk-typography-use-rem` setting](https://github.com/alphagov/govuk-frontend/pull/3575)
+
 #### Check that disabled buttons work as expected
 
 The `disabled` attribute on disabled buttons created using our Nunjucks macros no longer includes a value.
