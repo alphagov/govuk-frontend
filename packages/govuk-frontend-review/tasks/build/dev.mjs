@@ -10,6 +10,6 @@ import { watch } from '../index.mjs'
  * @type {import('govuk-frontend-tasks').TaskFunction}
  */
 export default (options) => gulp.parallel(
-  npm.script('serve', options),
+  npm.script('serve', [], options),
   watch(options)
 )

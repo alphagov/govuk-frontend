@@ -1,4 +1,4 @@
-import { join } from 'path'
+import { join, relative } from 'path'
 
 import { paths } from 'govuk-frontend-config'
 
@@ -10,7 +10,8 @@ import { paths } from 'govuk-frontend-config'
 export const options = {
   basePath: paths.package,
   srcPath: join(paths.package, 'src'),
-  destPath: join(paths.package, 'dist')
+  destPath: join(paths.package, 'dist'),
+  workspace: relative(paths.root, paths.package)
 }
 
 /**

@@ -22,5 +22,5 @@ export const compile = (options) => gulp.series(
   ),
 
   // Build SassDoc for /docs/sass
-  npm.script('build:sassdoc', options)
+  npm.script('build:sassdoc', [], options)
 )

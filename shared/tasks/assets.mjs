@@ -72,9 +72,10 @@ export async function write (filePath, result) {
  * Asset path options
  *
  * @typedef {object} AssetPathOptions
- * @property {string} [basePath] - Base directory, for example `package`
- * @property {string} [srcPath] - Input directory, for example `package/src`
- * @property {string} [destPath] - Output directory, for example `package/dist`
+ * @property {string} [basePath] - Base directory, for example `/path/to/package`
+ * @property {string} [srcPath] - Input directory, for example `/path/to/package/src`
+ * @property {string} [destPath] - Output directory, for example `/path/to/package/dist`
+ * @property {string} [workspace] - Workspace directory (relative), for example `package/dist`
  */
 
 /**
