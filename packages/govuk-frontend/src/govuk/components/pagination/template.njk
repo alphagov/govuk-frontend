@@ -1,5 +1,21 @@
 {% set blockLevel = not params.items and (params.next or params.previous) %}
 
+{% set currentPage = params.currentPage | int %}
+{% set neighbouringPages = params.neighbouringPages | int if params.neighbouringPages !== undefined else 2 %}
+
+{% set visiblePagesLower = (currentPage - neighbouringPages) | int %}
+{% set visiblePagesUpper = (currentPage + neighbouringPages) | int %}
+
+{% macro _paginationItem(index, item) %}
+  {%- set isCurrent = index == currentPage %}
+  {%- set number = item.number | default(index) %}
+  <li class="govuk-pagination__item {{- ' govuk-pagination__item--current' if isCurrent }}">
+    <a class="govuk-link govuk-pagination__link" href="{{ item.href }}" aria-label="{{ item.visuallyHiddenText | default("Page " + number) }}" {%- if isCurrent %} aria-current="page"{% endif %} {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+      {{- number -}}
+    </a>
+  </li>
+{% endmacro %}
+
 <nav class="govuk-pagination {{- ' ' + params.classes if params.classes }} {{- ' govuk-pagination--block' if blockLevel }}" role="navigation" aria-label="{{ params.landmarkLabel | default("results") }}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}" {%- endfor -%}>
   {%- if params.previous and params.previous.href -%}
     <div class="govuk-pagination__prev">
@@ -18,21 +34,44 @@
     </div>
   {% endif %}
 
-  {%- if params.items -%}
+  {# Only show numbered pagination if params.items is set #}
+  {%- if params.items %}
     <ul class="govuk-pagination__list">
-      {%- for item in params.items -%}
-        {%- if item.ellipsis -%}
-          <li class="govuk-pagination__item govuk-pagination__item--ellipses">&ctdot;</li>
-        {%- elseif item.number -%}
-          <li class="govuk-pagination__item {{- ' govuk-pagination__item--current' if item.current }}">
-            <a class="govuk-link govuk-pagination__link" href="{{ item.href }}" aria-label="{{ item.visuallyHiddenText | default("Page " + item.number) }}" {%- if item.current %} aria-current="page" {%- endif -%} {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}" {%- endfor -%}>
-              {{ item.number }}
-            </a>
-          </li>
-        {%- endif -%}
-      {%- endfor -%}
+
+    {# If there are 3 or fewer items in the list, skip the logic and just render them all. #}
+    {%- if params.items | length <= 3 %}
+      {%- for item in params.items %}
+        {{ _paginationItem(loop.index, item) }}
+      {%- endfor %}
+    {%- else %}
+
+      {%- for item in params.items %}
+
+        {# Always show the first and last numbered option #}
+        {%- if loop.first or loop.last %}
+
+          {# If the last item in the loop, and we're likely to need one, prepend an ellipsis #}
+          {%- if loop.last and loop.index > currentPage + 1 %}
+            <li class="govuk-pagination__item govuk-pagination__item--ellipses {{- ' govuk-pagination__item--collapsed-only' if loop.index - 1 <= visiblePagesUpper }}">&ctdot;</li>
+          {%- endif %}
+
+          {{ _paginationItem(loop.index, item) }}
+
+          {# If the first item in the loop, and we're likely to need one, append an ellipsis #}
+          {%- if loop.first and loop.index < currentPage - 1 %}
+            <li class="govuk-pagination__item govuk-pagination__item--ellipses {{- ' govuk-pagination__item--collapsed-only' if loop.index + 1 >= visiblePagesLower }}">&ctdot;</li>
+          {%- endif %}
+
+        {# Is this within neighbourly range of the current page? Show it! #}
+        {%- elif loop.index >= visiblePagesLower and loop.index <= visiblePagesUpper %}
+          {{ _paginationItem(loop.index, item) }}
+        {%- endif %}
+
+      {%- endfor %}
+
+    {%- endif %}
     </ul>
-  {%- endif -%}
+  {%- endif %}
 
   {%- if params.next and params.next.href -%}
     {%- set nextArrow -%}

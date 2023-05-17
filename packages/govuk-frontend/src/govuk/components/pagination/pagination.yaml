@@ -16,14 +16,6 @@ params:
         type: string
         required: true
         description: The link's URL.
-      - name: current
-        type: boolean
-        required: false
-        description: Set to `true` to indicate the current page the user is on.
-      - name: ellipsis
-        type: boolean
-        required: false
-        description: Use this option if you want to specify an ellipsis at a given point between numbers. If you set this option as `true`, any other options for the item are ignored.
       - name: attributes
         type: object
         required: false
@@ -70,6 +62,14 @@ params:
         type: object
         required: false
         description: The HTML attributes (for example, data attributes) you want to add to the anchor.
+  - name: currentPage
+    type: integer
+    required: true
+    description: The index of the current page within the set of `items`. This is a 1-based index, so that it matches the visible number that the component uses by default.
+  - name: neighbouringPages
+    type: integer
+    required: false
+    description: How many pages neighbouring the current page should be shown to the user. For example, when set to 2, links for up to 2 pages before and 2 pages after the current page will be visible, for a total of 5 pages. Defaults to 2.
   - name: landmarkLabel
     type: string
     required: false
@@ -90,14 +90,11 @@ examples:
         href: '/previous'
       next:
         href: '/next'
+      currentPage: 2
       items:
-        - number: 1
-          href: '/page/1'
-        - number: 2
-          href: '/page/2'
-          current: true
-        - number: 3
-          href: '/page/3'
+        - href: '/page/1'
+        - href: '/page/2'
+        - href: '/page/3'
   - name: with custom navigation landmark
     data:
       previous:
@@ -105,14 +102,11 @@ examples:
       next:
         href: '/next'
       landmarkLabel: 'search'
+      currentPage: 2
       items:
-        - number: 1
-          href: '/page/1'
-        - number: 2
-          href: '/page/2'
-          current: true
-        - number: 3
-          href: '/page/3'
+        - href: '/page/1'
+        - href: '/page/2'
+        - href: '/page/3'
   - name: with custom link and item text
     data:
       previous:
@@ -121,12 +115,12 @@ examples:
       next:
         href: '/next'
         text: 'Next page'
+      currentPage: 2
       items:
         - number: 'one'
           href: '/page/1'
         - number: 'two'
           href: '/page/2'
-          current: true
         - number: 'three'
           href: '/page/3'
   - name: with custom accessible labels on item links
@@ -135,16 +129,13 @@ examples:
         href: '/previous'
       next:
         href: '/next'
+      currentPage: 2
       items:
-        - number: 1
-          href: '/page/1'
+        - href: '/page/1'
           visuallyHiddenText: '1st page'
-        - number: 2
-          href: '/page/2'
-          current: true
+        - href: '/page/2'
           visuallyHiddenText: '2nd page (you are currently on this page)'
-        - number: 3
-          href: '/page/3'
+        - href: '/page/3'
           visuallyHiddenText: '3rd page'
   - name: with many pages
     data:
@@ -152,48 +143,139 @@ examples:
         href: '/previous'
       next:
         href: '/next'
+      currentPage: 10
       items:
-        - number: 1
-          href: '/page/1'
-        - ellipsis: true
-        - number: 8
-          href: '/page/8'
-        - number: 9
-          href: '/page/9'
-        - number: 10
-          href: '/page/10'
-          current: true
-        - number: 11
-          href: '/page/11'
-        - number: 12
-          href: '/page/12'
-        - ellipsis: true
-        - number: 40
-          href: '/page/40'
+        - href: '/page/1'
+        - href: '/page/2'
+        - href: '/page/3'
+        - href: '/page/4'
+        - href: '/page/5'
+        - href: '/page/6'
+        - href: '/page/7'
+        - href: '/page/8'
+        - href: '/page/9'
+        - href: '/page/10'
+        - href: '/page/11'
+        - href: '/page/12'
+        - href: '/page/13'
+        - href: '/page/14'
+        - href: '/page/15'
+        - href: '/page/16'
+        - href: '/page/17'
+        - href: '/page/18'
+        - href: '/page/19'
+        - href: '/page/20'
   - name: first page
     data:
       next:
         href: '/next'
+      currentPage: 1
       items:
-        - number: 1
-          href: '/page/1'
-          current: true
-        - number: 2
-          href: '/page/2'
-        - number: 3
-          href: '/page/3'
+        - href: '/page/1'
+        - href: '/page/2'
+        - href: '/page/3'
   - name: last page
     data:
       previous:
         href: '/previous'
+      currentPage: 3
       items:
-        - number: 1
-          href: '/page/1'
-        - number: 2
-          href: '/page/2'
-        - number: 3
-          href: '/page/3'
-          current: true
+        - href: '/page/1'
+        - href: '/page/2'
+        - href: '/page/3'
+  - name: bordering first page
+    data:
+      previous:
+        href: '/previous'
+      next:
+        href: '/next'
+      currentPage: 4
+      items:
+        - href: '/page/1'
+        - href: '/page/2'
+        - href: '/page/3'
+        - href: '/page/4'
+        - href: '/page/5'
+        - href: '/page/6'
+        - href: '/page/7'
+        - href: '/page/8'
+        - href: '/page/9'
+        - href: '/page/10'
+  - name: bordering last page
+    data:
+      previous:
+        href: '/previous'
+      next:
+        href: '/next'
+      currentPage: 7
+      items:
+        - href: '/page/1'
+        - href: '/page/2'
+        - href: '/page/3'
+        - href: '/page/4'
+        - href: '/page/5'
+        - href: '/page/6'
+        - href: '/page/7'
+        - href: '/page/8'
+        - href: '/page/9'
+        - href: '/page/10'
+  - name: with fewer neighbours
+    data:
+      previous:
+        href: '/previous'
+      next:
+        href: '/next'
+      currentPage: 4
+      neighbouringPages: 1
+      items:
+        - href: '/page/1'
+        - href: '/page/2'
+        - href: '/page/3'
+        - href: '/page/4'
+        - href: '/page/5'
+        - href: '/page/6'
+        - href: '/page/7'
+        - href: '/page/8'
+        - href: '/page/9'
+        - href: '/page/10'
+  - name: with more neighbours
+    data:
+      previous:
+        href: '/previous'
+      next:
+        href: '/next'
+      currentPage: 7
+      neighbouringPages: 4
+      items:
+        - href: '/page/1'
+        - href: '/page/2'
+        - href: '/page/3'
+        - href: '/page/4'
+        - href: '/page/5'
+        - href: '/page/6'
+        - href: '/page/7'
+        - href: '/page/8'
+        - href: '/page/9'
+        - href: '/page/10'
+  - name: with no neighbours
+    data:
+      previous:
+        href: '/previous'
+      next:
+        href: '/next'
+      currentPage: 7
+      neighbouringPages: 0
+      items:
+        - href: '/page/1'
+        - href: '/page/2'
+        - href: '/page/3'
+        - href: '/page/4'
+        - href: '/page/5'
+        - href: '/page/6'
+        - href: '/page/7'
+        - href: '/page/8'
+        - href: '/page/9'
+        - href: '/page/10'
   - name: with prev and next only
     data:
       previous:
