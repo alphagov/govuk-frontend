@@ -45,8 +45,8 @@ export async function version (assetPath, options) {
 export async function write (assetPath, { destPath, filePath, fileContents }) {
   const assetDestPath = join(destPath, filePath ? filePath(parse(assetPath)) : assetPath)
 
-  if (!fileContents) {
-    throw new Error("Option 'fileContents' required")
+  if (!destPath || !fileContents) {
+    throw new Error("Options 'destPath' and 'fileContents' required")
   }
 
   await mkdir(dirname(assetDestPath), { recursive: true })
