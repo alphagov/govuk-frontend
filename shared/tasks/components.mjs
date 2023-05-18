@@ -80,6 +80,7 @@ export async function generateMacroOptions (pattern, { srcPath, destPath }) {
  * @returns {Promise<{ component: string; fixtures: { [key: string]: unknown }[] }>} Component fixtures object
  */
 async function generateFixture (componentDataPath) {
+  /** @type {ComponentData} */
   const json = await yaml.load(await readFile(componentDataPath, 'utf8'), { json: true })
 
   if (!json?.examples) {
@@ -100,9 +101,10 @@ async function generateFixture (componentDataPath) {
       hidden: Boolean(example.hidden),
 
       // Wait for render to complete
+      /** @type {string} */
       html: await new Promise((resolve, reject) => {
         return nunjucks.render(template, context, (error, result) => {
-          return error ? reject(error) : resolve(result.trim())
+          return error ? reject(error) : resolve(result?.trim() ?? '')
         })
       })
     }
@@ -118,9 +120,10 @@ async function generateFixture (componentDataPath) {
  * Macro options YAML to JSON
  *
  * @param {string} componentDataPath - Path to ${componentName}.yaml
- * @returns {Promise<{ [key: string]: unknown }>} Component macro options
+ * @returns {Promise<ComponentOption[] | undefined>} Component macro options
  */
 async function generateMacroOption (componentDataPath) {
+  /** @type {ComponentData} */
   const json = await yaml.load(await readFile(componentDataPath, 'utf8'), { json: true })
 
   if (!json?.params) {
@@ -132,4 +135,6 @@ async function generateMacroOption (componentDataPath) {
 
 /**
  * @typedef {import('./assets.mjs').AssetEntry} AssetEntry
+ * @typedef {import('govuk-frontend-lib/files').ComponentData} ComponentData
+ * @typedef {import('govuk-frontend-lib/files').ComponentOption} ComponentOption
  */

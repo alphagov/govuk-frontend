@@ -75,10 +75,12 @@ const mapPathTo = (patterns, callback) => (entryPath) => {
  * Load single component data
  *
  * @param {string} componentName - Component name
- * @returns {Promise<ComponentData>} Component data
+ * @returns {Promise<ComponentData & { name: string }>} Component data
  */
 const getComponentData = async (componentName) => {
   const yamlPath = packageNameToPath('govuk-frontend', `src/govuk/components/${componentName}/${componentName}.yaml`)
+
+  /** @type {ComponentData} */
   const yamlData = yaml.load(await readFile(yamlPath, 'utf8'), { json: true })
 
   return {
@@ -90,7 +92,7 @@ const getComponentData = async (componentName) => {
 /**
  * Load all components' data
  *
- * @returns {Promise<ComponentData[]>} Components' data
+ * @returns {Promise<(ComponentData & { name: string })[]>} Components' data
  */
 const getComponentsData = async () => {
   const componentNames = await getDirectories(packageNameToPath('govuk-frontend', 'src/govuk/components'))
@@ -161,7 +163,6 @@ module.exports = {
  * Component data from YAML
  *
  * @typedef {object} ComponentData
- * @property {string} name - Component name
  * @property {ComponentOption[]} [params] - Nunjucks macro options
  * @property {ComponentExample[]} [examples] - Example Nunjucks macro options
  * @property {string} [previewLayout] - Nunjucks layout for component preview
