@@ -1,0 +1,29 @@
+@import "../tag/index";
+
+@include govuk-exports("govuk/component/phase-banner") {
+  .govuk-phase-banner {
+    padding-top: govuk-spacing(2);
+    padding-bottom: govuk-spacing(2);
+
+    border-bottom: 1px solid $govuk-border-colour;
+  }
+
+  .govuk-phase-banner__content {
+    @include govuk-font($size: 16);
+    @include govuk-text-colour;
+
+    display: table;
+    margin: 0;
+  }
+
+  .govuk-phase-banner__content__tag {
+    margin-right: govuk-spacing(2);
+  }
+
+  .govuk-phase-banner__text {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+/*# sourceMappingURL=_index.scss.map */

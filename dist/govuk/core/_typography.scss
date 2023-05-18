@@ -1,0 +1,188 @@
+@include govuk-exports("govuk/core/typography") {
+
+  // Headings
+
+  %govuk-heading-xl {
+    @include govuk-text-colour;
+    @include govuk-font($size: 48, $weight: bold);
+
+    display: block;
+
+    margin-top: 0;
+    @include govuk-responsive-margin(8, "bottom");
+  }
+
+  .govuk-heading-xl {
+    @extend %govuk-heading-xl;
+  }
+
+  %govuk-heading-l {
+    @include govuk-text-colour;
+    @include govuk-font($size: 36, $weight: bold);
+
+    display: block;
+
+    margin-top: 0;
+    @include govuk-responsive-margin(6, "bottom");
+  }
+
+  .govuk-heading-l {
+    @extend %govuk-heading-l;
+  }
+
+  %govuk-heading-m {
+    @include govuk-text-colour;
+    @include govuk-font($size: 24, $weight: bold);
+
+    display: block;
+
+    margin-top: 0;
+    @include govuk-responsive-margin(4, "bottom");
+  }
+
+  .govuk-heading-m {
+    @extend %govuk-heading-m;
+  }
+
+  %govuk-heading-s {
+    @include govuk-text-colour;
+    @include govuk-font($size: 19, $weight: bold);
+
+    display: block;
+
+    margin-top: 0;
+    @include govuk-responsive-margin(4, "bottom");
+  }
+
+  .govuk-heading-s {
+    @extend %govuk-heading-s;
+  }
+
+  // Captions to be used inside headings
+
+  .govuk-caption-xl {
+    @include govuk-font($size: 27);
+
+    display: block;
+
+    margin-bottom: govuk-spacing(1);
+
+    color: $govuk-secondary-text-colour;
+  }
+
+  .govuk-caption-l {
+    @include govuk-font($size: 24);
+
+    display: block;
+
+    margin-bottom: govuk-spacing(1);
+    color: $govuk-secondary-text-colour;
+
+    @include govuk-media-query($from: tablet) {
+      margin-bottom: 0;
+    }
+  }
+
+  .govuk-caption-m {
+    @include govuk-font($size: 19);
+
+    display: block;
+
+    color: $govuk-secondary-text-colour;
+  }
+
+  // Body (paragraphs)
+
+  %govuk-body-l {
+    @include govuk-text-colour;
+    @include govuk-font($size: 24);
+
+    margin-top: 0;
+    @include govuk-responsive-margin(6, "bottom");
+  }
+
+  .govuk-body-l {
+    @extend %govuk-body-l;
+  }
+
+  %govuk-body-m {
+    @include govuk-text-colour;
+    @include govuk-font($size: 19);
+
+    margin-top: 0;
+    @include govuk-responsive-margin(4, "bottom");
+  }
+
+  .govuk-body-m {
+    @extend %govuk-body-m;
+  }
+
+  %govuk-body-s {
+    @include govuk-text-colour;
+    @include govuk-font($size: 16);
+
+    margin-top: 0;
+    @include govuk-responsive-margin(4, "bottom");
+  }
+
+  .govuk-body-s {
+    @extend %govuk-body-s;
+  }
+
+  %govuk-body-xs {
+    @include govuk-text-colour;
+    @include govuk-font($size: 14);
+
+    margin-top: 0;
+    @include govuk-responsive-margin(4, "bottom");
+  }
+
+  .govuk-body-xs {
+    @extend %govuk-body-xs;
+  }
+
+  // Usage aliases
+
+  // Using extend to alias means we also inherit any contextual adjustments that
+  // refer to the 'original' class name
+
+  .govuk-body-lead {
+    @extend %govuk-body-l;
+  }
+
+  .govuk-body {
+    @extend %govuk-body-m;
+  }
+
+  // Contextual adjustments
+  // Add top padding to headings that appear directly after paragraphs.
+
+  %govuk-body-l  + %govuk-heading-l {
+    padding-top: govuk-spacing(1);
+
+    @include govuk-media-query($from: tablet) {
+      padding-top: govuk-spacing(2);
+    }
+  }
+
+  %govuk-body-m  + %govuk-heading-l,
+  %govuk-body-s  + %govuk-heading-l,
+  %govuk-list + %govuk-heading-l {
+    @include govuk-responsive-padding(4, "top");
+  }
+
+  %govuk-body-m + %govuk-heading-m,
+  %govuk-body-s + %govuk-heading-m,
+  %govuk-list + %govuk-heading-m,
+  %govuk-body-m + %govuk-heading-s,
+  %govuk-body-s + %govuk-heading-s,
+  %govuk-list + %govuk-heading-s {
+    padding-top: govuk-spacing(1);
+
+    @include govuk-media-query($from: tablet) {
+      padding-top: govuk-spacing(2);
+    }
+  }
+}
+
+/*# sourceMappingURL=_typography.scss.map */

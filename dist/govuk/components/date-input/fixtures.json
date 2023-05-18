@@ -1,0 +1,549 @@
+{
+    "component": "date-input",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "id": "dob"
+            },
+            "hidden": false,
+            "html": "<div class=\"govuk-form-group\">\n  <div class=\"govuk-date-input\" id=\"dob\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"dob-day\" name=\"day\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-month\">\n          Month\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"dob-month\" name=\"month\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-year\">\n          Year\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"dob-year\" name=\"year\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "complete question",
+            "options": {
+                "id": "dob",
+                "namePrefix": "dob",
+                "fieldset": {
+                    "legend": {
+                        "text": "What is your date of birth?"
+                    }
+                },
+                "hint": {
+                    "text": "For example, 31 3 1980"
+                },
+                "items": [
+                    {
+                        "name": "day",
+                        "classes": "govuk-input--width-2"
+                    },
+                    {
+                        "name": "month",
+                        "classes": "govuk-input--width-2"
+                    },
+                    {
+                        "name": "year",
+                        "classes": "govuk-input--width-4"
+                    }
+                ]
+            },
+            "hidden": false,
+            "html": "<div class=\"govuk-form-group\">\n<fieldset class=\"govuk-fieldset\" role=\"group\" aria-describedby=\"dob-hint\">\n  <legend class=\"govuk-fieldset__legend\">\n    What is your date of birth?\n  </legend>\n  <div id=\"dob-hint\" class=\"govuk-hint\">\n    For example, 31 3 1980\n  </div>\n  <div class=\"govuk-date-input\" id=\"dob\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"dob-day\" name=\"dob-day\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-month\">\n          Month\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"dob-month\" name=\"dob-month\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-year\">\n          Year\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"dob-year\" name=\"dob-year\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n\n</fieldset>\n</div>"
+        },
+        {
+            "name": "with errors only",
+            "options": {
+                "id": "dob-errors",
+                "fieldset": {
+                    "legend": {
+                        "text": "What is your date of birth?"
+                    }
+                },
+                "errorMessage": {
+                    "text": "Error message goes here"
+                },
+                "items": [
+                    {
+                        "name": "day",
+                        "classes": "govuk-input--width-2 govuk-input--error"
+                    },
+                    {
+                        "name": "month",
+                        "classes": "govuk-input--width-2 govuk-input--error"
+                    },
+                    {
+                        "name": "year",
+                        "classes": "govuk-input--width-4 govuk-input--error"
+                    }
+                ]
+            },
+            "hidden": false,
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n<fieldset class=\"govuk-fieldset\" role=\"group\" aria-describedby=\"dob-errors-error\">\n  <legend class=\"govuk-fieldset__legend\">\n    What is your date of birth?\n  </legend>\n  <p id=\"dob-errors-error\" class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> Error message goes here\n  </p>\n  <div class=\"govuk-date-input\" id=\"dob-errors\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-errors-day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--error\" id=\"dob-errors-day\" name=\"day\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-errors-month\">\n          Month\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--error\" id=\"dob-errors-month\" name=\"month\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-errors-year\">\n          Year\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4 govuk-input--error\" id=\"dob-errors-year\" name=\"year\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n\n</fieldset>\n</div>"
+        },
+        {
+            "name": "with errors and hint",
+            "options": {
+                "id": "dob-errors",
+                "fieldset": {
+                    "legend": {
+                        "text": "What is your date of birth?"
+                    }
+                },
+                "hint": {
+                    "text": "For example, 31 3 1980"
+                },
+                "errorMessage": {
+                    "text": "Error message goes here"
+                },
+                "items": [
+                    {
+                        "name": "day",
+                        "classes": "govuk-input--width-2 govuk-input--error"
+                    },
+                    {
+                        "name": "month",
+                        "classes": "govuk-input--width-2 govuk-input--error"
+                    },
+                    {
+                        "name": "year",
+                        "classes": "govuk-input--width-4 govuk-input--error"
+                    }
+                ]
+            },
+            "hidden": false,
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n<fieldset class=\"govuk-fieldset\" role=\"group\" aria-describedby=\"dob-errors-hint dob-errors-error\">\n  <legend class=\"govuk-fieldset__legend\">\n    What is your date of birth?\n  </legend>\n  <div id=\"dob-errors-hint\" class=\"govuk-hint\">\n    For example, 31 3 1980\n  </div>\n  <p id=\"dob-errors-error\" class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> Error message goes here\n  </p>\n  <div class=\"govuk-date-input\" id=\"dob-errors\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-errors-day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--error\" id=\"dob-errors-day\" name=\"day\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-errors-month\">\n          Month\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--error\" id=\"dob-errors-month\" name=\"month\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-errors-year\">\n          Year\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4 govuk-input--error\" id=\"dob-errors-year\" name=\"year\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n\n</fieldset>\n</div>"
+        },
+        {
+            "name": "with error on day input",
+            "options": {
+                "id": "dob-day-error",
+                "namePrefix": "dob-day-error",
+                "fieldset": {
+                    "legend": {
+                        "text": "What is your date of birth?"
+                    }
+                },
+                "hint": {
+                    "text": "For example, 31 3 1980"
+                },
+                "errorMessage": {
+                    "text": "Error message goes here"
+                },
+                "items": [
+                    {
+                        "name": "day",
+                        "classes": "govuk-input--width-2 govuk-input--error"
+                    },
+                    {
+                        "name": "month",
+                        "classes": "govuk-input--width-2"
+                    },
+                    {
+                        "name": "year",
+                        "classes": "govuk-input--width-4"
+                    }
+                ]
+            },
+            "hidden": false,
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n<fieldset class=\"govuk-fieldset\" role=\"group\" aria-describedby=\"dob-day-error-hint dob-day-error-error\">\n  <legend class=\"govuk-fieldset__legend\">\n    What is your date of birth?\n  </legend>\n  <div id=\"dob-day-error-hint\" class=\"govuk-hint\">\n    For example, 31 3 1980\n  </div>\n  <p id=\"dob-day-error-error\" class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> Error message goes here\n  </p>\n  <div class=\"govuk-date-input\" id=\"dob-day-error\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-day-error-day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--error\" id=\"dob-day-error-day\" name=\"dob-day-error-day\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-day-error-month\">\n          Month\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"dob-day-error-month\" name=\"dob-day-error-month\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-day-error-year\">\n          Year\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"dob-day-error-year\" name=\"dob-day-error-year\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n\n</fieldset>\n</div>"
+        },
+        {
+            "name": "with error on month input",
+            "options": {
+                "id": "dob-month-error",
+                "namePrefix": "dob-month-error",
+                "fieldset": {
+                    "legend": {
+                        "text": "What is your date of birth?"
+                    }
+                },
+                "hint": {
+                    "text": "For example, 31 3 1980"
+                },
+                "errorMessage": {
+                    "text": "Error message goes here"
+                },
+                "items": [
+                    {
+                        "name": "day",
+                        "classes": "govuk-input--width-2"
+                    },
+                    {
+                        "name": "month",
+                        "classes": "govuk-input--width-2 govuk-input--error"
+                    },
+                    {
+                        "name": "year",
+                        "classes": "govuk-input--width-4"
+                    }
+                ]
+            },
+            "hidden": false,
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n<fieldset class=\"govuk-fieldset\" role=\"group\" aria-describedby=\"dob-month-error-hint dob-month-error-error\">\n  <legend class=\"govuk-fieldset__legend\">\n    What is your date of birth?\n  </legend>\n  <div id=\"dob-month-error-hint\" class=\"govuk-hint\">\n    For example, 31 3 1980\n  </div>\n  <p id=\"dob-month-error-error\" class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> Error message goes here\n  </p>\n  <div class=\"govuk-date-input\" id=\"dob-month-error\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-month-error-day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"dob-month-error-day\" name=\"dob-month-error-day\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-month-error-month\">\n          Month\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--error\" id=\"dob-month-error-month\" name=\"dob-month-error-month\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-month-error-year\">\n          Year\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"dob-month-error-year\" name=\"dob-month-error-year\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n\n</fieldset>\n</div>"
+        },
+        {
+            "name": "with error on year input",
+            "options": {
+                "id": "dob-year-error",
+                "namePrefix": "dob-year-error",
+                "fieldset": {
+                    "legend": {
+                        "text": "What is your date of birth?"
+                    }
+                },
+                "hint": {
+                    "text": "For example, 31 3 1980"
+                },
+                "errorMessage": {
+                    "text": "Error message goes here"
+                },
+                "items": [
+                    {
+                        "name": "day",
+                        "classes": "govuk-input--width-2"
+                    },
+                    {
+                        "name": "month",
+                        "classes": "govuk-input--width-2"
+                    },
+                    {
+                        "name": "year",
+                        "classes": "govuk-input--width-4 govuk-input--error"
+                    }
+                ]
+            },
+            "hidden": false,
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n<fieldset class=\"govuk-fieldset\" role=\"group\" aria-describedby=\"dob-year-error-hint dob-year-error-error\">\n  <legend class=\"govuk-fieldset__legend\">\n    What is your date of birth?\n  </legend>\n  <div id=\"dob-year-error-hint\" class=\"govuk-hint\">\n    For example, 31 3 1980\n  </div>\n  <p id=\"dob-year-error-error\" class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> Error message goes here\n  </p>\n  <div class=\"govuk-date-input\" id=\"dob-year-error\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-year-error-day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"dob-year-error-day\" name=\"dob-year-error-day\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-year-error-month\">\n          Month\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"dob-year-error-month\" name=\"dob-year-error-month\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-year-error-year\">\n          Year\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4 govuk-input--error\" id=\"dob-year-error-year\" name=\"dob-year-error-year\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n\n</fieldset>\n</div>"
+        },
+        {
+            "name": "with default items",
+            "options": {
+                "id": "dob",
+                "namePrefix": "dob",
+                "fieldset": {
+                    "legend": {
+                        "text": "What is your date of birth?"
+                    }
+                },
+                "hint": {
+                    "text": "For example, 31 3 1980"
+                }
+            },
+            "hidden": false,
+            "html": "<div class=\"govuk-form-group\">\n<fieldset class=\"govuk-fieldset\" role=\"group\" aria-describedby=\"dob-hint\">\n  <legend class=\"govuk-fieldset__legend\">\n    What is your date of birth?\n  </legend>\n  <div id=\"dob-hint\" class=\"govuk-hint\">\n    For example, 31 3 1980\n  </div>\n  <div class=\"govuk-date-input\" id=\"dob\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"dob-day\" name=\"dob-day\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-month\">\n          Month\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"dob-month\" name=\"dob-month\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-year\">\n          Year\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"dob-year\" name=\"dob-year\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n\n</fieldset>\n</div>"
+        },
+        {
+            "name": "with optional form-group classes",
+            "options": {
+                "id": "dob",
+                "namePrefix": "dob",
+                "fieldset": {
+                    "legend": {
+                        "text": "What is your date of birth?"
+                    }
+                },
+                "hint": {
+                    "text": "For example, 31 3 1980"
+                },
+                "formGroup": {
+                    "classes": "extra-class"
+                }
+            },
+            "hidden": false,
+            "html": "<div class=\"govuk-form-group extra-class\">\n<fieldset class=\"govuk-fieldset\" role=\"group\" aria-describedby=\"dob-hint\">\n  <legend class=\"govuk-fieldset__legend\">\n    What is your date of birth?\n  </legend>\n  <div id=\"dob-hint\" class=\"govuk-hint\">\n    For example, 31 3 1980\n  </div>\n  <div class=\"govuk-date-input\" id=\"dob\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"dob-day\" name=\"dob-day\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-month\">\n          Month\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"dob-month\" name=\"dob-month\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-year\">\n          Year\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"dob-year\" name=\"dob-year\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n\n</fieldset>\n</div>"
+        },
+        {
+            "name": "with autocomplete values",
+            "options": {
+                "id": "dob-with-autocomplete-attribute",
+                "namePrefix": "dob-with-autocomplete",
+                "fieldset": {
+                    "legend": {
+                        "text": "What is your date of birth?"
+                    }
+                },
+                "hint": {
+                    "text": "For example, 31 3 1980"
+                },
+                "items": [
+                    {
+                        "name": "day",
+                        "classes": "govuk-input--width-2",
+                        "autocomplete": "bday-day"
+                    },
+                    {
+                        "name": "month",
+                        "classes": "govuk-input--width-2",
+                        "autocomplete": "bday-month"
+                    },
+                    {
+                        "name": "year",
+                        "classes": "govuk-input--width-4",
+                        "autocomplete": "bday-year"
+                    }
+                ]
+            },
+            "hidden": false,
+            "html": "<div class=\"govuk-form-group\">\n<fieldset class=\"govuk-fieldset\" role=\"group\" aria-describedby=\"dob-with-autocomplete-attribute-hint\">\n  <legend class=\"govuk-fieldset__legend\">\n    What is your date of birth?\n  </legend>\n  <div id=\"dob-with-autocomplete-attribute-hint\" class=\"govuk-hint\">\n    For example, 31 3 1980\n  </div>\n  <div class=\"govuk-date-input\" id=\"dob-with-autocomplete-attribute\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-with-autocomplete-attribute-day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"dob-with-autocomplete-attribute-day\" name=\"dob-with-autocomplete-day\" type=\"text\" autocomplete=\"bday-day\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-with-autocomplete-attribute-month\">\n          Month\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"dob-with-autocomplete-attribute-month\" name=\"dob-with-autocomplete-month\" type=\"text\" autocomplete=\"bday-month\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-with-autocomplete-attribute-year\">\n          Year\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"dob-with-autocomplete-attribute-year\" name=\"dob-with-autocomplete-year\" type=\"text\" autocomplete=\"bday-year\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n\n</fieldset>\n</div>"
+        },
+        {
+            "name": "with input attributes",
+            "options": {
+                "id": "dob-with-input-attributes",
+                "namePrefix": "dob-with-input-attributes",
+                "fieldset": {
+                    "legend": {
+                        "text": "What is your date of birth?"
+                    }
+                },
+                "hint": {
+                    "text": "For example, 31 3 1980"
+                },
+                "items": [
+                    {
+                        "name": "day",
+                        "classes": "govuk-input--width-2",
+                        "attributes": {
+                            "data-example-day": "day"
+                        }
+                    },
+                    {
+                        "name": "month",
+                        "classes": "govuk-input--width-2",
+                        "attributes": {
+                            "data-example-month": "month"
+                        }
+                    },
+                    {
+                        "name": "year",
+                        "classes": "govuk-input--width-4",
+                        "attributes": {
+                            "data-example-year": "year"
+                        }
+                    }
+                ]
+            },
+            "hidden": false,
+            "html": "<div class=\"govuk-form-group\">\n<fieldset class=\"govuk-fieldset\" role=\"group\" aria-describedby=\"dob-with-input-attributes-hint\">\n  <legend class=\"govuk-fieldset__legend\">\n    What is your date of birth?\n  </legend>\n  <div id=\"dob-with-input-attributes-hint\" class=\"govuk-hint\">\n    For example, 31 3 1980\n  </div>\n  <div class=\"govuk-date-input\" id=\"dob-with-input-attributes\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-with-input-attributes-day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"dob-with-input-attributes-day\" name=\"dob-with-input-attributes-day\" type=\"text\" inputmode=\"numeric\" data-example-day=\"day\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-with-input-attributes-month\">\n          Month\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"dob-with-input-attributes-month\" name=\"dob-with-input-attributes-month\" type=\"text\" inputmode=\"numeric\" data-example-month=\"month\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-with-input-attributes-year\">\n          Year\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"dob-with-input-attributes-year\" name=\"dob-with-input-attributes-year\" type=\"text\" inputmode=\"numeric\" data-example-year=\"year\">\n      </div>\n    </div>\n  </div>\n\n</fieldset>\n</div>"
+        },
+        {
+            "name": "classes",
+            "options": {
+                "id": "with-classes",
+                "classes": "app-date-input--custom-modifier"
+            },
+            "hidden": true,
+            "html": "<div class=\"govuk-form-group\">\n  <div class=\"govuk-date-input app-date-input--custom-modifier\" id=\"with-classes\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-classes-day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"with-classes-day\" name=\"day\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-classes-month\">\n          Month\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"with-classes-month\" name=\"month\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-classes-year\">\n          Year\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"with-classes-year\" name=\"year\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "id": "with-attributes",
+                "attributes": {
+                    "data-attribute": "my data value"
+                }
+            },
+            "hidden": true,
+            "html": "<div class=\"govuk-form-group\">\n  <div class=\"govuk-date-input\" data-attribute=\"my data value\" id=\"with-attributes\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-attributes-day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"with-attributes-day\" name=\"day\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-attributes-month\">\n          Month\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"with-attributes-month\" name=\"month\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-attributes-year\">\n          Year\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"with-attributes-year\" name=\"year\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "with empty items",
+            "options": {
+                "id": "with-empty-items",
+                "items": []
+            },
+            "hidden": true,
+            "html": "<div class=\"govuk-form-group\">\n  <div class=\"govuk-date-input\" id=\"with-empty-items\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-empty-items-day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"with-empty-items-day\" name=\"day\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-empty-items-month\">\n          Month\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"with-empty-items-month\" name=\"month\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-empty-items-year\">\n          Year\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"with-empty-items-year\" name=\"year\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "custom pattern",
+            "options": {
+                "id": "with-custom-pattern",
+                "items": [
+                    {
+                        "name": "day",
+                        "pattern": "[0-8]*"
+                    }
+                ]
+            },
+            "hidden": true,
+            "html": "<div class=\"govuk-form-group\">\n  <div class=\"govuk-date-input\" id=\"with-custom-pattern\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-custom-pattern-day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input \" id=\"with-custom-pattern-day\" name=\"day\" type=\"text\" pattern=\"[0-8]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "custom inputmode",
+            "options": {
+                "id": "with-custom-inputmode",
+                "items": [
+                    {
+                        "name": "day",
+                        "pattern": "[0-9X]*",
+                        "inputmode": "text"
+                    }
+                ]
+            },
+            "hidden": true,
+            "html": "<div class=\"govuk-form-group\">\n  <div class=\"govuk-date-input\" id=\"with-custom-inputmode\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-custom-inputmode-day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input \" id=\"with-custom-inputmode-day\" name=\"day\" type=\"text\" pattern=\"[0-9X]*\" inputmode=\"text\">\n      </div>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "with nested name",
+            "options": {
+                "id": "with-nested-name",
+                "items": [
+                    {
+                        "name": "day[dd]"
+                    },
+                    {
+                        "name": "month[mm]"
+                    },
+                    {
+                        "name": "year[yyyy]"
+                    }
+                ]
+            },
+            "hidden": true,
+            "html": "<div class=\"govuk-form-group\">\n  <div class=\"govuk-date-input\" id=\"with-nested-name\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-nested-name-day[dd]\">\n          Day[dd]\n        </label>\n      <input class=\"govuk-input govuk-date-input__input \" id=\"with-nested-name-day[dd]\" name=\"day[dd]\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-nested-name-month[mm]\">\n          Month[mm]\n        </label>\n      <input class=\"govuk-input govuk-date-input__input \" id=\"with-nested-name-month[mm]\" name=\"month[mm]\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-nested-name-year[yyyy]\">\n          Year[yyyy]\n        </label>\n      <input class=\"govuk-input govuk-date-input__input \" id=\"with-nested-name-year[yyyy]\" name=\"year[yyyy]\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "with id on items",
+            "options": {
+                "id": "with-item-id",
+                "items": [
+                    {
+                        "id": "day",
+                        "name": "day"
+                    },
+                    {
+                        "id": "month",
+                        "name": "month"
+                    },
+                    {
+                        "id": "year",
+                        "name": "year"
+                    }
+                ]
+            },
+            "hidden": true,
+            "html": "<div class=\"govuk-form-group\">\n  <div class=\"govuk-date-input\" id=\"with-item-id\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input \" id=\"day\" name=\"day\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"month\">\n          Month\n        </label>\n      <input class=\"govuk-input govuk-date-input__input \" id=\"month\" name=\"month\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"year\">\n          Year\n        </label>\n      <input class=\"govuk-input govuk-date-input__input \" id=\"year\" name=\"year\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "suffixed id",
+            "options": {
+                "id": "my-date-input",
+                "items": [
+                    {
+                        "name": "day"
+                    },
+                    {
+                        "name": "month"
+                    },
+                    {
+                        "name": "year"
+                    }
+                ]
+            },
+            "hidden": true,
+            "html": "<div class=\"govuk-form-group\">\n  <div class=\"govuk-date-input\" id=\"my-date-input\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"my-date-input-day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input \" id=\"my-date-input-day\" name=\"day\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"my-date-input-month\">\n          Month\n        </label>\n      <input class=\"govuk-input govuk-date-input__input \" id=\"my-date-input-month\" name=\"month\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"my-date-input-year\">\n          Year\n        </label>\n      <input class=\"govuk-input govuk-date-input__input \" id=\"my-date-input-year\" name=\"year\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "with values",
+            "options": {
+                "id": "with-values",
+                "items": [
+                    {
+                        "id": "day",
+                        "name": "day"
+                    },
+                    {
+                        "id": "month",
+                        "name": "month"
+                    },
+                    {
+                        "id": "year",
+                        "name": "year",
+                        "value": 2018
+                    }
+                ]
+            },
+            "hidden": true,
+            "html": "<div class=\"govuk-form-group\">\n  <div class=\"govuk-date-input\" id=\"with-values\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input \" id=\"day\" name=\"day\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"month\">\n          Month\n        </label>\n      <input class=\"govuk-input govuk-date-input__input \" id=\"month\" name=\"month\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"year\">\n          Year\n        </label>\n      <input class=\"govuk-input govuk-date-input__input \" id=\"year\" name=\"year\" type=\"text\" value=\"2018\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "with hint and describedBy",
+            "options": {
+                "id": "dob-errors",
+                "fieldset": {
+                    "describedBy": "some-id",
+                    "legend": {
+                        "text": "What is your date of birth?"
+                    }
+                },
+                "hint": {
+                    "text": "For example, 31 3 1980"
+                }
+            },
+            "hidden": true,
+            "html": "<div class=\"govuk-form-group\">\n<fieldset class=\"govuk-fieldset\" role=\"group\" aria-describedby=\"some-id dob-errors-hint\">\n  <legend class=\"govuk-fieldset__legend\">\n    What is your date of birth?\n  </legend>\n  <div id=\"dob-errors-hint\" class=\"govuk-hint\">\n    For example, 31 3 1980\n  </div>\n  <div class=\"govuk-date-input\" id=\"dob-errors\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-errors-day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"dob-errors-day\" name=\"day\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-errors-month\">\n          Month\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"dob-errors-month\" name=\"month\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-errors-year\">\n          Year\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"dob-errors-year\" name=\"year\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n\n</fieldset>\n</div>"
+        },
+        {
+            "name": "with error and describedBy",
+            "options": {
+                "id": "dob-errors",
+                "fieldset": {
+                    "describedBy": "some-id",
+                    "legend": {
+                        "text": "What is your date of birth?"
+                    }
+                },
+                "errorMessage": {
+                    "text": "Error message goes here"
+                }
+            },
+            "hidden": true,
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n<fieldset class=\"govuk-fieldset\" role=\"group\" aria-describedby=\"some-id dob-errors-error\">\n  <legend class=\"govuk-fieldset__legend\">\n    What is your date of birth?\n  </legend>\n  <p id=\"dob-errors-error\" class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> Error message goes here\n  </p>\n  <div class=\"govuk-date-input\" id=\"dob-errors\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-errors-day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"dob-errors-day\" name=\"day\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-errors-month\">\n          Month\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"dob-errors-month\" name=\"month\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-errors-year\">\n          Year\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"dob-errors-year\" name=\"year\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n\n</fieldset>\n</div>"
+        },
+        {
+            "name": "fieldset html",
+            "options": {
+                "id": "with-fieldset-html",
+                "fieldset": {
+                    "legend": {
+                        "html": "What is your <b>date of birth</b>?"
+                    }
+                }
+            },
+            "hidden": true,
+            "html": "<div class=\"govuk-form-group\">\n<fieldset class=\"govuk-fieldset\" role=\"group\">\n  <legend class=\"govuk-fieldset__legend\">\n    What is your <b>date of birth</b>?\n  </legend>\n  <div class=\"govuk-date-input\" id=\"with-fieldset-html\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-fieldset-html-day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"with-fieldset-html-day\" name=\"day\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-fieldset-html-month\">\n          Month\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"with-fieldset-html-month\" name=\"month\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-fieldset-html-year\">\n          Year\n        </label>\n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"with-fieldset-html-year\" name=\"year\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n\n</fieldset>\n</div>"
+        },
+        {
+            "name": "items with classes",
+            "options": {
+                "id": "with-item-classes",
+                "items": [
+                    {
+                        "name": "day",
+                        "classes": "app-date-input__day"
+                    },
+                    {
+                        "name": "month",
+                        "classes": "app-date-input__month"
+                    },
+                    {
+                        "name": "year",
+                        "classes": "app-date-input__year"
+                    }
+                ]
+            },
+            "hidden": true,
+            "html": "<div class=\"govuk-form-group\">\n  <div class=\"govuk-date-input\" id=\"with-item-classes\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-item-classes-day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input app-date-input__day\" id=\"with-item-classes-day\" name=\"day\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-item-classes-month\">\n          Month\n        </label>\n      <input class=\"govuk-input govuk-date-input__input app-date-input__month\" id=\"with-item-classes-month\" name=\"month\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-item-classes-year\">\n          Year\n        </label>\n      <input class=\"govuk-input govuk-date-input__input app-date-input__year\" id=\"with-item-classes-year\" name=\"year\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "items without classes",
+            "options": {
+                "id": "without-item-classes",
+                "items": [
+                    {
+                        "name": "day"
+                    },
+                    {
+                        "name": "month"
+                    },
+                    {
+                        "name": "year"
+                    }
+                ]
+            },
+            "hidden": true,
+            "html": "<div class=\"govuk-form-group\">\n  <div class=\"govuk-date-input\" id=\"without-item-classes\">\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"without-item-classes-day\">\n          Day\n        </label>\n      <input class=\"govuk-input govuk-date-input__input \" id=\"without-item-classes-day\" name=\"day\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"without-item-classes-month\">\n          Month\n        </label>\n      <input class=\"govuk-input govuk-date-input__input \" id=\"without-item-classes-month\" name=\"month\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"without-item-classes-year\">\n          Year\n        </label>\n      <input class=\"govuk-input govuk-date-input__input \" id=\"without-item-classes-year\" name=\"year\" type=\"text\" inputmode=\"numeric\">\n      </div>\n    </div>\n  </div>\n</div>"
+        }
+    ]
+}

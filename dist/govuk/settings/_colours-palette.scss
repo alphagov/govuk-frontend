@@ -1,0 +1,42 @@
+// stylelint-disable value-list-max-empty-lines -- allow empty lines in lists
+// in this file to allow grouping
+
+////
+/// @group settings/colours
+////
+
+/// Colour palette
+///
+/// @type Map
+///
+/// @prop $colour - Representation for the given $colour, where $colour is the
+///   friendly name for the colour (e.g. "red": #ff0000);
+///
+/// @access public
+
+$govuk-colours: (
+  "red": #d4351c,
+  "yellow": #ffdd00,
+  "green": #00703c,
+  "blue": #1d70b8,
+  "dark-blue": #003078,
+  "light-blue": #5694ca,
+  "purple": #4c2c92,
+
+  "black": #0b0c0c,
+  "dark-grey": #505a5f,
+  "mid-grey": #b1b4b6,
+  "light-grey": #f3f2f1,
+  "white": #ffffff,
+
+  "light-purple": #6f72af,
+  "bright-purple": #912b88,
+  "pink": #d53880,
+  "light-pink": #f499be,
+  "orange": #f47738,
+  "brown": #b58840,
+  "light-green": #85994b,
+  "turquoise": #28a197
+) !default;
+
+/*# sourceMappingURL=_colours-palette.scss.map */

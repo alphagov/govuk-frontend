@@ -1,0 +1,25 @@
+////
+/// @group settings/media-queries
+////
+
+/// Breakpoint definitions
+///
+/// @type Map
+/// @access public
+
+$govuk-breakpoints: (
+  mobile:  320px,
+  tablet:  641px,
+  desktop: 769px
+) !default;
+
+/// Show active breakpoint in top-right corner.
+///
+/// Only use this during local development.
+///
+/// @type Boolean
+/// @access public
+
+$govuk-show-breakpoints: false !default;
+
+/*# sourceMappingURL=_media-queries.scss.map */

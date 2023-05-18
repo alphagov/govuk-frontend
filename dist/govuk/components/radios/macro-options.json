@@ -1,0 +1,150 @@
+[
+    {
+        "name": "fieldset",
+        "type": "object",
+        "required": false,
+        "description": "Options for the fieldset component (for example legend).",
+        "isComponent": true
+    },
+    {
+        "name": "hint",
+        "type": "object",
+        "required": false,
+        "description": "Options for the hint component (for example text).",
+        "isComponent": true
+    },
+    {
+        "name": "errorMessage",
+        "type": "object",
+        "required": false,
+        "description": "Options for the error message component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.",
+        "isComponent": true
+    },
+    {
+        "name": "formGroup",
+        "type": "object",
+        "required": false,
+        "description": "Options for the form-group wrapper.",
+        "params": [
+            {
+                "name": "classes",
+                "type": "string",
+                "required": false,
+                "description": "Classes to add to the form group (for example to show error state for the whole group)."
+            }
+        ]
+    },
+    {
+        "name": "idPrefix",
+        "type": "string",
+        "required": false,
+        "description": "String to prefix ID for each radio item if no ID is specified on each item. If `idPrefix` is not passed, fallback to using the `name` attribute instead."
+    },
+    {
+        "name": "name",
+        "type": "string",
+        "required": true,
+        "description": "Name attribute for each radio item."
+    },
+    {
+        "name": "items",
+        "type": "array",
+        "required": true,
+        "description": "Array of radio items objects.",
+        "params": [
+            {
+                "name": "text",
+                "type": "string",
+                "required": true,
+                "description": "If `html` is set, this is not required. Text to use within each radio item label. If `html` is provided, the `text` option will be ignored."
+            },
+            {
+                "name": "html",
+                "type": "string",
+                "required": true,
+                "description": "If `text` is set, this is not required. HTML to use within each radio item label. If `html` is provided, the `text` option will be ignored."
+            },
+            {
+                "name": "id",
+                "type": "string",
+                "required": false,
+                "description": "Specific ID attribute for the radio item. If omitted, then `idPrefix` string will be applied."
+            },
+            {
+                "name": "value",
+                "type": "string",
+                "required": true,
+                "description": "Value for the radio input."
+            },
+            {
+                "name": "label",
+                "type": "object",
+                "required": false,
+                "description": "Provide attributes and classes to each radio item label.",
+                "isComponent": true
+            },
+            {
+                "name": "hint",
+                "type": "object",
+                "required": false,
+                "description": "Provide hint to each radio item.",
+                "isComponent": true
+            },
+            {
+                "name": "divider",
+                "type": "string",
+                "required": false,
+                "description": "Divider text to separate radio items, for example the text 'or'."
+            },
+            {
+                "name": "checked",
+                "type": "boolean",
+                "required": false,
+                "description": "Whether the radio should be checked when the page loads. Takes precedence over the top-level `value` option."
+            },
+            {
+                "name": "conditional",
+                "type": "object",
+                "required": false,
+                "description": "Provide additional content to reveal when the radio is checked.",
+                "params": [
+                    {
+                        "name": "html",
+                        "type": "string",
+                        "description": "The HTML to reveal when the radio is checked"
+                    }
+                ]
+            },
+            {
+                "name": "disabled",
+                "type": "boolean",
+                "required": false,
+                "description": "If `true`, radio will be disabled."
+            },
+            {
+                "name": "attributes",
+                "type": "object",
+                "required": false,
+                "description": "HTML attributes (for example data attributes) to add to the radio input tag."
+            }
+        ]
+    },
+    {
+        "name": "value",
+        "type": "string",
+        "required": false,
+        "description": "The value for the radio which should be checked when the page loads. Use this as an alternative to setting the `checked` option on each individual item."
+    },
+    {
+        "name": "classes",
+        "type": "string",
+        "required": false,
+        "description": "Classes to add to the radio container."
+    },
+    {
+        "name": "attributes",
+        "type": "object",
+        "required": false,
+        "description": "HTML attributes (for example data attributes) to add to the radio input tag."
+    }
+]

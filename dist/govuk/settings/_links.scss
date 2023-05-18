@@ -1,0 +1,49 @@
+////
+/// @group settings/links
+////
+
+/// Thickness of link underlines
+///
+/// The default will be either:
+///
+///  - 1px
+///  - 0.0625rem, if it's thicker than 1px because the user has changed the text
+///    size in their browser
+///
+/// Set this variable to `false` to avoid setting a thickness.
+///
+/// @type Number
+/// @access public
+
+$govuk-link-underline-thickness: unquote("max(1px, .0625rem)") !default;
+
+/// Offset of link underlines from text baseline
+///
+/// The default is 3px expressed as ems, as calculated against the default body
+/// font size (on desktop) of 19px.
+/// 3 ÷ 19 = 0.1578
+///
+/// Set this variable to `false` to avoid setting an offset.
+///
+/// @type Number
+/// @access public
+
+$govuk-link-underline-offset: .1578em !default;
+
+/// Thickness of link underlines in hover state
+///
+/// The default for each link will be the thickest of the following:
+///
+///  - 3px
+///  - 0.1875rem, if it's thicker than 3px because the user has changed the text
+///    size in their browser
+///  - 0.12em (relative to the link's text size)
+///
+/// Set this variable to `false` to avoid setting a thickness.
+///
+/// @type Number
+/// @access public
+
+$govuk-link-hover-underline-thickness: unquote("max(3px, .1875rem, .12em)") !default;
+
+/*# sourceMappingURL=_links.scss.map */

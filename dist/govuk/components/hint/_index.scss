@@ -1,0 +1,44 @@
+@include govuk-exports("govuk/component/hint") {
+  .govuk-hint {
+    @include govuk-font($size: 19);
+
+    margin-bottom: govuk-spacing(3);
+
+    color: $govuk-secondary-text-colour;
+  }
+
+  // Reduces margin-bottom of hint when used after the default label (no class)
+  // or govuk-label--s for better vertical alignment.
+
+  // This adjustment will not work when the label is inside the <h1>, however it
+  // is unlikely that the default or govuk-label--s class would be used in this
+  // case.
+
+  // This adjustment will not work in browsers that do not support :not().
+  // Users with these browsers will see the default size margin (5px larger).
+
+  .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-hint {
+    margin-bottom: govuk-spacing(2);
+  }
+
+  // Reduces margin-bottom of hint when used after the default legend (no class)
+  // or govuk-fieldset__legend--s for better vertical alignment.
+
+  // This adjustment will not work when the legend is outside the <h1>, however
+  // it is unlikely that the default or govuk-fieldset__legend--s class would be
+  // used in this case.
+
+  // This adjustment will not work in browsers that do not support :not().
+  // Users with these browsers will see the default size margin (5px larger).
+
+  .govuk-fieldset__legend:not(.govuk-fieldset__legend--m):not(.govuk-fieldset__legend--l):not(.govuk-fieldset__legend--xl) + .govuk-hint {
+    margin-bottom: govuk-spacing(2);
+  }
+
+  // Reduces visual spacing of legend when there is a hint
+  .govuk-fieldset__legend + .govuk-hint {
+    margin-top: govuk-spacing(-1);
+  }
+}
+
+/*# sourceMappingURL=_index.scss.map */

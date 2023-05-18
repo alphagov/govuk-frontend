@@ -1,0 +1,11 @@
+@include govuk-exports("govuk/utilities/visually-hidden") {
+  .govuk-visually-hidden {
+    @include govuk-visually-hidden;
+  }
+
+  .govuk-visually-hidden-focusable {
+    @include govuk-visually-hidden-focusable;
+  }
+}
+
+/*# sourceMappingURL=_visually-hidden.scss.map */
