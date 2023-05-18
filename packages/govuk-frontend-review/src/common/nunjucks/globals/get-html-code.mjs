@@ -9,7 +9,7 @@ import beautify from 'js-beautify'
  * @returns {string} Nunjucks code
  */
 export function getHTMLCode (componentName, params) {
-  const templatePath = packageNameToPath('govuk-frontend', `src/govuk/components/${componentName}/template.njk`)
+  const templatePath = packageNameToPath('govuk-frontend', `dist/govuk/components/${componentName}/template.njk`)
 
   // Render to HTML
   const html = this.env.render(templatePath, { params }).trim()

@@ -36,7 +36,8 @@ describe('packages/govuk-frontend/dist/', () => {
       '!**/*.test.*',
       '!**/__snapshots__/',
       '!**/__snapshots__/**',
-      '!**/tsconfig?(.build).json'
+      '!**/tsconfig?(.build).json',
+      '!README.md'
     ]
 
     // Build array of expected output files
@@ -82,9 +83,6 @@ describe('packages/govuk-frontend/dist/', () => {
         join(requirePath, 'fixtures.json'),
         join(requirePath, 'macro-options.json')
       ]))
-
-      // Files already present in 'package/dist'
-      .concat(['package.json'])
       .sort()
 
     // Compare array of actual output files
@@ -101,15 +99,6 @@ describe('packages/govuk-frontend/dist/', () => {
       'tsconfig.build.json',
       'tsconfig.json'
     ])
-  })
-
-  describe('README.md', () => {
-    it('is not overwritten', async () => {
-      const contents = await readFile(join(paths.package, 'dist/README.md'), 'utf8')
-
-      // Look for H1 matching 'GOV.UK Frontend' from existing README
-      expect(contents).toMatch(/^# GOV.UK Frontend/)
-    })
   })
 
   describe('all.scss', () => {

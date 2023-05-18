@@ -1,10 +1,10 @@
 {
-  "private": true,
   "name": "govuk-frontend",
-  "description": "Used only for the development of GOV.UK Frontend, see `dist/package.json` for the published `package.json`",
-  "main": "src/govuk/all.mjs",
+  "description": "GOV.UK Frontend contains the code you need to start building a user interface for government platforms and services.",
+  "version": "4.6.0",
+  "main": "dist/govuk/all.js",
+  "module": "dist/govuk-esm/all.mjs",
   "files": [
-    "src",
     "dist",
     "govuk-prototype-kit.config.json",
     "package.json",
@@ -12,19 +12,37 @@
   ],
   "exports": {
     ".": {
-      "sass": "./src/govuk/all.scss",
-      "import": "./src/govuk/all.mjs",
-      "default": "./src/govuk/all.mjs"
+      "sass": "./dist/govuk/all.scss",
+      "import": "./dist/govuk-esm/all.mjs",
+      "require": "./dist/govuk/all.js"
     },
-    "./dist/*": "./dist/*",
-    "./package.json": "./package.json",
-    "./*": "./src/*"
+    "./*": "./*"
   },
-  "sass": "src/govuk/all.scss",
+  "sideEffects": [
+    "**/vendor/**"
+  ],
+  "sass": "dist/govuk/all.scss",
   "engines": {
-    "node": "^18.12.0",
-    "npm": "^8.1.0 || ^9.1.0"
+    "node": ">= 4.2.0"
   },
+  "author": {
+    "name": "GOV.UK Design System Team (Government Digital Service)",
+    "email": "design-system-developers@digital.cabinet-office.gov.uk"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alphagov/govuk-frontend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alphagov/govuk-frontend/issues"
+  },
+  "homepage": "https://frontend.design-system.service.gov.uk/",
+  "keywords": [
+    "govuk",
+    "frontend",
+    "design system",
+    "template"
+  ],
   "license": "MIT",
   "scripts": {
     "build": "npm run build:package",
@@ -36,10 +54,6 @@
     "autoprefixer": "^10.4.14",
     "cssnano": "^6.0.1",
     "cssnano-preset-default": "^6.0.1",
-    "govuk-frontend-config": "*",
-    "govuk-frontend-helpers": "*",
-    "govuk-frontend-lib": "*",
-    "govuk-frontend-tasks": "*",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
     "html-validate": "7.17.0",
@@ -52,5 +66,11 @@
     "sass-embedded": "^1.62.0",
     "sassdoc": "^2.7.4",
     "slash": "^5.1.0"
+  },
+  "optionalDependencies": {
+    "govuk-frontend-config": "*",
+    "govuk-frontend-helpers": "*",
+    "govuk-frontend-lib": "*",
+    "govuk-frontend-tasks": "*"
   }
 }

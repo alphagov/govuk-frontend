@@ -76,7 +76,12 @@ module.exports = {
           'never', {
             startLines: 1
           }
-        ]
+        ],
+
+        // Ignore `govuk-frontend` exports as they require auto-generated files
+        'import/no-unresolved': ['error', { ignore: ['govuk-frontend'] }],
+        'n/no-missing-import': ['error', { allowModules: ['govuk-frontend'] }],
+        'n/no-missing-require': ['error', { allowModules: ['govuk-frontend'] }]
       },
       settings: {
         jsdoc: {

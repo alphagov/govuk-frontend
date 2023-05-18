@@ -53,8 +53,8 @@ cd packages/govuk-frontend/dist
 echo "🗒 Package published!"
 cd ..
 
-# Extract tag version from ./packages/govuk-frontend/dist/package.json
-ALL_PACKAGE_VERSION=$(node -p "require('./packages/govuk-frontend/dist/package.json').version")
+# Extract tag version from ./packages/govuk-frontend/package.json
+ALL_PACKAGE_VERSION=$(node -p "require('./packages/govuk-frontend/package.json').version")
 TAG="v$ALL_PACKAGE_VERSION"
 
 if [ $(git tag -l "$TAG") ]; then
