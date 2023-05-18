@@ -20,13 +20,11 @@
 /// @access public
 
 @function govuk-colour($colour, $legacy: false) {
-  // Output a warning if $legacy is set to anything. This can't use the
-  // `_warning` mixin due to being a function, so we handle it manually.
-  @if $legacy and not index($govuk-suppressed-warnings, "legacy-colour-param") {
-    @warn "The `$legacy` parameter of `govuk-colour` is deprecated and is " +
-      "non-operational. It will be removed in the next major version. To " +
-      "silence this warning, update $govuk-suppressed-warnings with key: " +
-      "\"legacy-colour-param\"";
+  // Output a warning if $legacy is set to anything.
+  @if $legacy and _should-warn("legacy-colour-param") {
+    @warn _warning-text("legacy-colour-param", "The `$legacy` parameter of " +
+    "`govuk-colour` is deprecated and is non-operational. It will be " +
+    "removed in the next major version.");
   }
 
   @if type-of($colour) == "color" {
