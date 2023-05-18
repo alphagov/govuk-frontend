@@ -42,19 +42,30 @@
 /// Get the colour for a government organisation
 ///
 /// @param {String} $organisation - Organisation name, lowercase, hyphenated
-/// @param {Boolean} $websafe [true] - By default a 'websafe' version of the
-///   colour will be returned which meets contrast requirements . If you want to
-///   use the non-websafe version you can set this to `false` but your should
-///   ensure that you still meets contrast requirements for accessibility - for
-///   example, do not use the non-websafe version for text.
+/// @param {Boolean} $websafe - Deprecated. Use $contrast-safe instead.
+/// @param {Boolean} $contrast-safe [true] - By default a version of the colour
+///   will be returned which has a minimum 4.5:1 contrast ratio when used with
+///   white, as per the WCAG 2.1 Level AA guidelines. If you want to use the
+///   non-contrast safe version you can set this to `false` but your should
+///   ensure that you still meets contrast requirements for accessibility -
+///   for example, do not use the non-contrast safe version for text.
 ///
 /// @return {Colour} Representation of colour for organisation
 /// @throw if `$organisation` is not a known organisation
 /// @access public
 
-@function govuk-organisation-colour($organisation, $websafe: true) {
+@function govuk-organisation-colour($organisation, $websafe: null, $contrast-safe: true) {
   @if not map-has-key($govuk-colours-organisations, $organisation) {
     @error "Unknown organisation `#{$organisation}`";
+  }
+
+  // Output a warning if $websafe is set.
+  @if $websafe and not index($govuk-suppressed-warnings, "organisation-colour-websafe-param") {
+    @warn "The `$websafe` parameter of `govuk-organisation-colour` has been " +
+      "renamed to `$contrast-safe`. The old parameter name will be removed in " +
+      "the next major version. To silence this warning, update " +
+      "$govuk-suppressed-warnings with key: " +
+      "\"organisation-colour-websafe-param\"";
   }
 
   $org-colour: map-get($govuk-colours-organisations, $organisation);
@@ -63,8 +74,15 @@
     @warn map-get($org-colour, deprecation-message);
   }
 
-  @if $websafe and map-has-key($org-colour, colour-websafe) {
-    @return map-get($org-colour, colour-websafe);
+  // If the $websafe parameter is being used (it has been explicitly set as true
+  // or false), assume the user hasn't updated to use $contrast-safe yet and map
+  // the old parameter's value onto the new parameter.
+  @if type-of($websafe) != "null" {
+    $contrast-safe: $websafe;
+  }
+
+  @if $contrast-safe and map-has-key($org-colour, contrast-safe) {
+    @return map-get($org-colour, contrast-safe);
   } @else {
     @return map-get($org-colour, colour);
   }

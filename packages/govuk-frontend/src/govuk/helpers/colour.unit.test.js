@@ -106,7 +106,7 @@ describe('@function govuk-organisation-colour', () => {
     $govuk-colours-organisations: (
       'floo-network-authority': (
         colour: #EC22FF,
-        colour-websafe: #9A00A8
+        contrast-safe: #9A00A8
       ),
       'broom-regulatory-control': (
         colour: #A81223
@@ -120,7 +120,7 @@ describe('@function govuk-organisation-colour', () => {
     @import "helpers/colour";
   `
 
-  it('returns the websafe colour for a given organisation by default', async () => {
+  it('returns the contrast-safe colour for a given organisation by default', async () => {
     const sass = `
       ${sassBootstrap}
 
@@ -138,7 +138,7 @@ describe('@function govuk-organisation-colour', () => {
     })
   })
 
-  it('falls back to the default colour if a websafe colour is not explicitly defined', async () => {
+  it('falls back to the default colour if a contrast-safe colour is not explicitly defined', async () => {
     const sass = `
       ${sassBootstrap}
 
@@ -156,7 +156,27 @@ describe('@function govuk-organisation-colour', () => {
     })
   })
 
-  it('can be overridden to return the non-websafe colour', async () => {
+  it('can be overridden to return the non-contrast-safe colour ($contrast-safe parameter)', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        border-color: govuk-organisation-colour('floo-network-authority', $contrast-safe: false);
+      }
+    `
+
+    await expect(compileSassString(sass, sassConfig))
+      .resolves
+      .toMatchObject({
+        css: outdent`
+          .foo {
+            border-color: #EC22FF;
+          }
+        `
+      })
+  })
+
+  it('can be overridden to return the non-contrast-safe colour (deprecated $websafe parameter)', async () => {
     const sass = `
       ${sassBootstrap}
 
