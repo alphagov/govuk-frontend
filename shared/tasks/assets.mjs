@@ -84,7 +84,6 @@ export async function write (filePath, result) {
  * @typedef {object} AssetFileOptions
  * @property {(file: import('path').ParsedPath) => string} [filePath] - File path formatter
  * @property {(contents?: string) => Promise<string>} [fileContents] - File contents formatter
- * @property {string[]} [ignore] - File path patterns to ignore
  */
 
 /**

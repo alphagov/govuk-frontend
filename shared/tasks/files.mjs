@@ -13,10 +13,9 @@ import slash from 'slash'
  * @param {string} pattern - Pattern to remove
  * @param {AssetEntry[1]} options - Asset options
  */
-export async function clean (pattern, { destPath, ignore }) {
+export async function clean (pattern, { destPath }) {
   await deleteAsync(slash(join(destPath, pattern)), {
-    cwd: paths.root,
-    ignore
+    cwd: paths.root
   })
 }
 
@@ -60,11 +59,8 @@ export async function write (assetPath, { destPath, filePath, fileContents }) {
  * @param {string} pattern - Minimatch pattern
  * @param {AssetEntry[1]} options - Asset options
  */
-export async function copy (pattern, { srcPath, destPath, ignore = [] }) {
-  const srcPatterns = [slash(join(srcPath, pattern))]
-    .concat(ignore.map((pattern) => `!${pattern}`))
-
-  await cpy(srcPatterns, destPath, { cwd: srcPath })
+export async function copy (pattern, { srcPath, destPath }) {
+  await cpy([slash(join(srcPath, pattern))], destPath, { cwd: srcPath })
 }
 
 /**
