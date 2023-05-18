@@ -7,6 +7,7 @@ import { filterPath, getDirectories, getListing, mapPathTo } from 'govuk-fronten
 import { componentNameToClassName, componentPathToModuleName } from 'govuk-frontend-lib/names'
 
 describe('packages/govuk-frontend/dist/', () => {
+  let listingPackage
   let listingSource
   let listingDist
 
@@ -17,6 +18,7 @@ describe('packages/govuk-frontend/dist/', () => {
   let componentNames
 
   beforeAll(async () => {
+    listingPackage = await getListing(paths.package, '*')
     listingSource = await getListing(join(paths.package, 'src'))
     listingDist = await getListing(join(paths.package, 'dist'))
 
@@ -41,10 +43,8 @@ describe('packages/govuk-frontend/dist/', () => {
     const listingExpected = listingSource
       .filter(filterPath(filterPatterns))
 
-      // Replaces GOV.UK Prototype kit config with JSON
-      .flatMap(mapPathTo(['**/govuk-prototype-kit.config.mjs'], ({ dir: requirePath, name }) => [
-        join(requirePath, '../', `${name}.json`)
-      ]))
+      // Removes GOV.UK Prototype kit config (moved to package top level)
+      .flatMap(mapPathTo(['**/govuk-prototype-kit.config.mjs'], () => []))
 
       // Replaces all source '*.mjs' files
       .flatMap(mapPathTo(['**/*.mjs'], ({ dir: requirePath, name }) => {
@@ -89,6 +89,18 @@ describe('packages/govuk-frontend/dist/', () => {
 
     // Compare array of actual output files
     expect(listingDist).toEqual(listingExpected)
+
+    // Check top level package contents
+    expect(listingPackage).toEqual([
+      'README.md',
+      'govuk-prototype-kit.config.json',
+      'gulpfile.mjs',
+      'package.json',
+      'postcss.config.mjs',
+      'postcss.config.unit.test.mjs',
+      'tsconfig.build.json',
+      'tsconfig.json'
+    ])
   })
 
   describe('README.md', () => {
