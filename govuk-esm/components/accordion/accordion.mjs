@@ -1,19 +1,16 @@
-import { nodeListForEach, mergeConfigs, extractConfigByNamespace } from '../../common/index.mjs';
+import { mergeConfigs, extractConfigByNamespace } from '../../common/index.mjs';
 import { normaliseDataset } from '../../common/normalise-dataset.mjs';
 import { I18n } from '../../i18n.mjs';
 import '../../vendor/polyfills/Element/prototype/classList.mjs';
 import '../../vendor/polyfills/Element/prototype/closest.mjs';
-import '../../vendor/polyfills/Event.mjs';
-import '../../vendor/polyfills/Function/prototype/bind.mjs';
-import '../../vendor/polyfills/String/prototype/trim.mjs';
-
-/* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
 
 /**
+ * Accordion translation defaults
+ *
+ * @see {@link AccordionConfig.i18n}
  * @constant
- * @type {AccordionTranslations}
- * @see Default value for {@link AccordionConfig.i18n}
  * @default
+ * @type {AccordionTranslations}
  */
 var ACCORDION_TRANSLATIONS = {
   hideAllSections: 'Hide all sections',
@@ -48,6 +45,7 @@ function Accordion ($module, config) {
   /** @deprecated Will be made private in v5.0 */
   this.$module = $module;
 
+  /** @type {AccordionConfig} */
   var defaultConfig = {
     i18n: ACCORDION_TRANSLATIONS,
     rememberExpanded: true
@@ -208,7 +206,7 @@ Accordion.prototype.initSectionHeaders = function () {
   var $sections = this.$sections;
 
   // Loop through sections
-  nodeListForEach($sections, function ($section, i) {
+  $sections.forEach(function ($section, i) {
     var $header = $section.querySelector('.' + $component.sectionHeaderClass);
     if (!$header) {
       return
@@ -381,7 +379,7 @@ Accordion.prototype.onShowOrHideAllToggle = function () {
   var nowExpanded = !this.checkIfAllSectionsOpen();
 
   // Loop through sections
-  nodeListForEach($sections, function ($section) {
+  $sections.forEach(function ($section) {
     $component.setExpanded(nowExpanded, $section);
     // Store the state in sessionStorage when a change is triggered
     $component.storeState($section);
@@ -594,7 +592,7 @@ Accordion.prototype.getButtonPunctuationEl = function () {
  * Accordion config
  *
  * @typedef {object} AccordionConfig
- * @property {AccordionTranslations} [i18n = ACCORDION_TRANSLATIONS] - See constant {@link ACCORDION_TRANSLATIONS}
+ * @property {AccordionTranslations} [i18n=ACCORDION_TRANSLATIONS] - Accordion translations
  * @property {boolean} [rememberExpanded] - Whether the expanded and collapsed
  *   state of each section is remembered and restored when navigating.
  */
@@ -602,6 +600,7 @@ Accordion.prototype.getButtonPunctuationEl = function () {
 /**
  * Accordion translations
  *
+ * @see {@link ACCORDION_TRANSLATIONS}
  * @typedef {object} AccordionTranslations
  *
  * Messages used by the component for the labels of its buttons. This includes
@@ -621,5 +620,5 @@ Accordion.prototype.getButtonPunctuationEl = function () {
  *   'Show' button's accessible name when a section is expanded.
  */
 
-export default Accordion;
-//# sourceMappingURL=components/accordion/accordion.mjs.map
+export { Accordion as default };
+//# sourceMappingURL=accordion.mjs.map

@@ -4,7 +4,7 @@
  *
  * @class
  * @private
- * @param {Object<string, unknown>} translations - Key-value pairs of the translation strings to use.
+ * @param {{ [key: string]: unknown }} translations - Key-value pairs of the translation strings to use.
  * @param {object} [config] - Configuration options for the function.
  * @param {string} [config.locale] - An overriding locale for the PluralRules functionality.
  */
@@ -21,7 +21,7 @@ function I18n (translations, config) {
  * returns the appropriate string.
  *
  * @param {string} lookupKey - The lookup key of the string to use.
- * @param {Object<string, unknown>} [options] - Any options passed with the translation string, e.g: for string interpolation.
+ * @param {{ [key: string]: unknown }} [options] - Any options passed with the translation string, e.g: for string interpolation.
  * @returns {string} The appropriate translation string.
  * @throws {Error} Lookup key required
  * @throws {Error} Options required for `${}` placeholders
@@ -66,8 +66,8 @@ I18n.prototype.t = function (lookupKey, options) {
  * with the provided data
  *
  * @param {string} translationString - The translation string
- * @param {Object<string, unknown>} options - Any options passed with the translation string, e.g: for string interpolation.
- * @returns {string} The translation string to output, with ${} placeholders replaced
+ * @param {{ [key: string]: unknown }} options - Any options passed with the translation string, e.g: for string interpolation.
+ * @returns {string} The translation string to output, with $\{\} placeholders replaced
  */
 I18n.prototype.replacePlaceholders = function (translationString, options) {
   /** @type {Intl.NumberFormat | undefined} */
@@ -276,7 +276,7 @@ I18n.prototype.getPluralRulesForLocale = function () {
  * Spanish: European Portuguese (pt-PT), Italian (it), Spanish (es)
  * Welsh: Welsh (cy)
  *
- * @type {Object<string, string[]>}
+ * @type {{ [key: string]: string[] }}
  */
 I18n.pluralRulesMap = {
   arabic: ['ar'],
@@ -304,7 +304,7 @@ I18n.pluralRulesMap = {
  *
  * The count must be a positive integer. Negative numbers and decimals aren't accounted for
  *
- * @type {Object<string, function(number): PluralRule>}
+ * @type {{ [key: string]: (count: number) => PluralRule }}
  */
 I18n.pluralRules = {
   /* eslint-disable jsdoc/require-jsdoc */

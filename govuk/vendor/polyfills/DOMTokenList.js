@@ -1,11 +1,9 @@
-(function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
+(function (factory) {
     typeof define === 'function' && define.amd ? define('GOVUKFrontend', factory) :
-    (factory());
-}(this, (function () { 'use strict';
+    factory();
+})((function () { 'use strict';
 
-    // @ts-nocheck
-    (function (undefined) {
+    (function (undefined$1) {
 
         // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/master/packages/polyfill-library/polyfills/DOMTokenList/detect.js
         var detect = (
@@ -83,6 +81,7 @@
                     for (i = 0; i < args.length; ++i)
                       if (rSpace.test(args[i])) {
                         error = new SyntaxError('String "' + args[i] + '" ' + "contains" + ' an invalid character');
+                        // @ts-expect-error Ignore unknown 'code' property on SyntaxError
                         error.code = 5;
                         error.name = "InvalidCharacterError";
                         throw error;
@@ -134,6 +133,7 @@
                 };
 
                 that.add = function () {
+                  // @ts-expect-error Ignore mismatch between arguments types
                   preop.apply(that, args = arguments);
 
                   for (var args, token, i = 0, l = args.length; i < l; ++i) {
@@ -157,6 +157,7 @@
                 };
 
                 that.remove = function () {
+                  // @ts-expect-error Ignore mismatch between arguments types
                   preop.apply(that, args = arguments);
 
                   /** Build a hash of token names to compare against when recollecting our token list. */
@@ -185,7 +186,7 @@
                   preop.apply(that, [token]);
 
                   /** Token state's being forced. */
-                  if (undefined !== force) {
+                  if (undefined$1 !== force) {
                     if (force) {
                       that.add(token);
                       return true;
@@ -221,7 +222,7 @@
             if (!e.classList.contains('x')) return;
             e.classList.constructor.prototype.toggle = function toggle(token /*, force*/) {
               var force = arguments[1];
-              if (force === undefined) {
+              if (force === undefined$1) {
                 var add = !this.contains(token);
                 this[add ? 'add' : 'remove'](token);
                 return add;
@@ -270,5 +271,5 @@
 
     }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-})));
+}));
 //# sourceMappingURL=DOMTokenList.js.map

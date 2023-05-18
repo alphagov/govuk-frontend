@@ -39,7 +39,7 @@
         "name": "disabled",
         "type": "boolean",
         "required": false,
-        "description": "Whether the button should be disabled. For button and input elements, `disabled` and `aria-disabled` attributes will be set automatically."
+        "description": "Whether the button should be disabled. For button and input elements, `disabled` and `aria-disabled` attributes will be set automatically. This has no effect on `a` elements."
     },
     {
         "name": "href",

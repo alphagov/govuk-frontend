@@ -147,10 +147,7 @@
     $line-height: $line-height if($important, !important, null);
 
     @if not $breakpoint {
-      font-size: $font-size;
-      @if $govuk-typography-use-rem {
-        font-size: $font-size-rem;
-      }
+      font-size: $font-size-rem;
       line-height: $line-height;
     } @else if $breakpoint == "print" {
       @include govuk-media-query($media-type: print) {
@@ -159,10 +156,7 @@
       }
     } @else {
       @include govuk-media-query($from: $breakpoint) {
-        font-size: $font-size;
-        @if $govuk-typography-use-rem {
-          font-size: $font-size-rem;
-        }
+        font-size: $font-size-rem;
         line-height: $line-height;
       }
     }
@@ -184,19 +178,13 @@
 
 @mixin govuk-font($size, $weight: regular, $tabular: false, $line-height: false) {
   @if $tabular {
-    // if govuk-font-family-tabular is set use $govuk-font-family-tabular
-    @if $govuk-font-family-tabular {
-      @include govuk-typography-common($font-family: $govuk-font-family-tabular);
-    } @else {
-      @include govuk-typography-common;
-      -webkit-font-feature-settings: "tnum" 1;
-              font-feature-settings: "tnum" 1;
-
-      @supports (font-variant-numeric: tabular-nums) {
-        -webkit-font-feature-settings: normal;
-                font-feature-settings: normal;
-        font-variant-numeric: tabular-nums;
-      }
+    @include govuk-typography-common;
+    -webkit-font-feature-settings: "tnum" 1;
+            font-feature-settings: "tnum" 1;
+    @supports (font-variant-numeric: tabular-nums) {
+      -webkit-font-feature-settings: normal;
+              font-feature-settings: normal;
+      font-variant-numeric: tabular-nums;
     }
   } @else {
     @include govuk-typography-common;
@@ -212,3 +200,5 @@
     @include govuk-typography-responsive($size, $override-line-height: $line-height);
   }
 }
+
+/*# sourceMappingURL=_typography.scss.map */

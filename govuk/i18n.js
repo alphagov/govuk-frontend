@@ -1,8 +1,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define('GOVUKFrontend', ['exports'], factory) :
-  (factory((global.GOVUKFrontend = {})));
-}(this, (function (exports) { 'use strict';
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.GOVUKFrontend = {}));
+})(this, (function (exports) { 'use strict';
 
   /**
    * Internal support for selecting messages to render, with placeholder
@@ -10,7 +10,7 @@
    *
    * @class
    * @private
-   * @param {Object<string, unknown>} translations - Key-value pairs of the translation strings to use.
+   * @param {{ [key: string]: unknown }} translations - Key-value pairs of the translation strings to use.
    * @param {object} [config] - Configuration options for the function.
    * @param {string} [config.locale] - An overriding locale for the PluralRules functionality.
    */
@@ -27,7 +27,7 @@
    * returns the appropriate string.
    *
    * @param {string} lookupKey - The lookup key of the string to use.
-   * @param {Object<string, unknown>} [options] - Any options passed with the translation string, e.g: for string interpolation.
+   * @param {{ [key: string]: unknown }} [options] - Any options passed with the translation string, e.g: for string interpolation.
    * @returns {string} The appropriate translation string.
    * @throws {Error} Lookup key required
    * @throws {Error} Options required for `${}` placeholders
@@ -72,8 +72,8 @@
    * with the provided data
    *
    * @param {string} translationString - The translation string
-   * @param {Object<string, unknown>} options - Any options passed with the translation string, e.g: for string interpolation.
-   * @returns {string} The translation string to output, with ${} placeholders replaced
+   * @param {{ [key: string]: unknown }} options - Any options passed with the translation string, e.g: for string interpolation.
+   * @returns {string} The translation string to output, with $\{\} placeholders replaced
    */
   I18n.prototype.replacePlaceholders = function (translationString, options) {
     /** @type {Intl.NumberFormat | undefined} */
@@ -282,7 +282,7 @@
    * Spanish: European Portuguese (pt-PT), Italian (it), Spanish (es)
    * Welsh: Welsh (cy)
    *
-   * @type {Object<string, string[]>}
+   * @type {{ [key: string]: string[] }}
    */
   I18n.pluralRulesMap = {
     arabic: ['ar'],
@@ -310,7 +310,7 @@
    *
    * The count must be a positive integer. Negative numbers and decimals aren't accounted for
    *
-   * @type {Object<string, function(number): PluralRule>}
+   * @type {{ [key: string]: (count: number) => PluralRule }}
    */
   I18n.pluralRules = {
     /* eslint-disable jsdoc/require-jsdoc */
@@ -393,5 +393,5 @@
 
   exports.I18n = I18n;
 
-})));
+}));
 //# sourceMappingURL=i18n.js.map

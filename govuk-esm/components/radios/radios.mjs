@@ -1,9 +1,4 @@
-import { nodeListForEach } from '../../common/index.mjs';
 import '../../vendor/polyfills/Element/prototype/classList.mjs';
-import '../../vendor/polyfills/Event.mjs';
-import '../../vendor/polyfills/Function/prototype/bind.mjs';
-
-/* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
 
 /**
  * Radios component
@@ -16,6 +11,7 @@ function Radios ($module) {
     return this
   }
 
+  /** @satisfies {NodeListOf<HTMLInputElement>} */
   var $inputs = $module.querySelectorAll('input[type="radio"]');
   if (!$inputs.length) {
     return this
@@ -51,7 +47,7 @@ Radios.prototype.init = function () {
   var $module = this.$module;
   var $inputs = this.$inputs;
 
-  nodeListForEach($inputs, function ($input) {
+  $inputs.forEach(function ($input) {
     var targetId = $input.getAttribute('data-aria-controls');
 
     // Skip radios without data-aria-controls attributes, or where the
@@ -90,7 +86,7 @@ Radios.prototype.init = function () {
  * @deprecated Will be made private in v5.0
  */
 Radios.prototype.syncAllConditionalReveals = function () {
-  nodeListForEach(this.$inputs, this.syncConditionalRevealWithInputState.bind(this));
+  this.$inputs.forEach(this.syncConditionalRevealWithInputState.bind(this));
 };
 
 /**
@@ -139,12 +135,13 @@ Radios.prototype.handleClick = function (event) {
 
   // We only need to consider radios with conditional reveals, which will have
   // aria-controls attributes.
+  /** @satisfies {NodeListOf<HTMLInputElement>} */
   var $allInputs = document.querySelectorAll('input[type="radio"][aria-controls]');
 
   var $clickedInputForm = $clickedInput.form;
   var $clickedInputName = $clickedInput.name;
 
-  nodeListForEach($allInputs, function ($input) {
+  $allInputs.forEach(function ($input) {
     var hasSameFormOwner = $input.form === $clickedInputForm;
     var hasSameName = $input.name === $clickedInputName;
 
@@ -154,5 +151,5 @@ Radios.prototype.handleClick = function (event) {
   });
 };
 
-export default Radios;
-//# sourceMappingURL=components/radios/radios.mjs.map
+export { Radios as default };
+//# sourceMappingURL=radios.mjs.map

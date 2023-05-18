@@ -5,10 +5,6 @@
     padding: govuk-spacing(2) 0;
   }
 
-  .govuk-warning-text__assistive {
-    @include govuk-visually-hidden;
-  }
-
   .govuk-warning-text__icon {
     @include govuk-font($size: false, $weight: bold);
 
@@ -64,3 +60,5 @@
     padding-left: 45px;
   }
 }
+
+/*# sourceMappingURL=_index.scss.map */

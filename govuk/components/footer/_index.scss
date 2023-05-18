@@ -2,18 +2,7 @@
 
   $govuk-footer-background: $govuk-canvas-background-colour;
   $govuk-footer-border: $govuk-border-colour;
-  // This variable can be removed entirely once the legacy palette goes away,
-  // as it'll just be the same as $govuk-footer-border.
-  $govuk-footer-border-top: $govuk-border-colour;
   $govuk-footer-text: $govuk-text-colour;
-  $govuk-footer-link-hover-colour: null; // Only used with the legacy palette
-
-  @if $govuk-use-legacy-palette {
-    $govuk-footer-border-top: #a1acb2;
-    $govuk-footer-border: govuk-colour("grey-2");
-    $govuk-footer-text: #454a4c;
-    $govuk-footer-link-hover-colour: #171819;
-  }
 
   // Based on the govuk-crest-2x.png image dimensions.
   $govuk-footer-crest-image-width-2x: 250px;
@@ -27,36 +16,14 @@
     @include govuk-responsive-padding(7, "top");
     @include govuk-responsive-padding(5, "bottom");
 
-    border-top: 1px solid $govuk-footer-border-top;
+    border-top: 1px solid $govuk-footer-border;
     color: $govuk-footer-text;
     background: $govuk-footer-background;
   }
 
   .govuk-footer__link {
     @include govuk-link-common;
-
-    @if $govuk-use-legacy-palette {
-      &:link,
-      &:visited {
-        color: $govuk-footer-text;
-      }
-
-      &:hover,
-      &:active {
-        color: $govuk-footer-link-hover-colour;
-      }
-    } @else {
-      @include govuk-link-style-text;
-    }
-
-    // alphagov/govuk_template includes a specific a:link:focus selector
-    // designed to make unvisited links a slightly darker blue when focussed, so
-    // we need to override the text colour for that combination of selectors.
-    @include _govuk-compatibility(govuk_template) {
-      &:link:focus {
-        @include govuk-text-colour;
-      }
-    }
+    @include govuk-link-style-text;
   }
 
   .govuk-footer__section-break {
@@ -67,16 +34,12 @@
   }
 
   .govuk-footer__meta {
-    display: -ms-flexbox;
     display: flex; // Support: Flexbox
     margin-right: -$govuk-gutter-half;
     margin-left: -$govuk-gutter-half;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap; // Support: Flexbox
-    -ms-flex-align: end;
-        align-items: flex-end; // Support: Flexbox
-    -ms-flex-pack: center;
-        justify-content: center; // Support: Flexbox
+    flex-wrap: wrap; // Support: Flexbox
+    align-items: flex-end; // Support: Flexbox
+    justify-content: center; // Support: Flexbox
   }
 
   .govuk-footer__meta-item {
@@ -86,11 +49,9 @@
   }
 
   .govuk-footer__meta-item--grow {
-    -ms-flex: 1;
-        flex: 1; // Support: Flexbox
+    flex: 1; // Support: Flexbox
     @include govuk-media-query ($until: tablet) {
-      -ms-flex-preferred-size: 320px;
-          flex-basis: 320px; // Support: Flexbox
+      flex-basis: 320px; // Support: Flexbox
     }
   }
 
@@ -191,3 +152,5 @@
     margin-bottom: 0;
   }
 }
+
+/*# sourceMappingURL=_index.scss.map */

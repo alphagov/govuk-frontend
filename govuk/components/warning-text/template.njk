@@ -3,7 +3,7 @@
   >
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
   <strong class="govuk-warning-text__text">
-    <span class="govuk-warning-text__assistive">{{ params.iconFallbackText | default("Warning") }}</span>
+    <span class="govuk-visually-hidden">{{ params.iconFallbackText | default("Warning") }}</span>
     {{ params.html | safe if params.html else params.text }}
   </strong>
 </div>

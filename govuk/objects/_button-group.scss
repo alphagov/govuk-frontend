@@ -29,12 +29,9 @@
     // margins, but unfortunately the support isn't there (yet) and @supports
     // doesn't play nicely with it
     // (https://github.com/w3c/csswg-drafts/issues/3559)
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-direction: column;
-        flex-direction: column;
-    -ms-flex-align: center;
-        align-items: center;
+    flex-direction: column;
+    align-items: center;
 
     // Give links within the button group the same font-size and line-height
     // as buttons.
@@ -64,13 +61,9 @@
       // Cancel out the column gap for the last item in each row
       margin-right: ($horizontal-gap * -1);
 
-      -ms-flex-direction: row;
-
-          flex-direction: row;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-      -ms-flex-align: baseline;
-          align-items: baseline;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: baseline;
 
       .govuk-button,
       .govuk-link {
@@ -83,3 +76,5 @@
     }
   }
 }
+
+/*# sourceMappingURL=_button-group.scss.map */

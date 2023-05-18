@@ -1,19 +1,16 @@
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs';
-import { extractConfigByNamespace, mergeConfigs } from '../../common/index.mjs';
+import { mergeConfigs, extractConfigByNamespace } from '../../common/index.mjs';
 import { normaliseDataset } from '../../common/normalise-dataset.mjs';
 import { I18n } from '../../i18n.mjs';
-import '../../vendor/polyfills/Date/now.mjs';
 import '../../vendor/polyfills/Element/prototype/classList.mjs';
-import '../../vendor/polyfills/Event.mjs';
-import '../../vendor/polyfills/Function/prototype/bind.mjs';
-
-/* eslint-disable es-x/no-date-now -- Polyfill imported */
 
 /**
+ * Character count translation defaults
+ *
+ * @see {@link CharacterCountConfig.i18n}
  * @constant
- * @type {CharacterCountTranslations}
- * @see Default value for {@link CharacterCountConfig.i18n}
  * @default
+ * @type {CharacterCountTranslations}
  */
 var CHARACTER_COUNT_TRANSLATIONS = {
   // Characters
@@ -70,6 +67,7 @@ function CharacterCount ($module, config) {
     return this
   }
 
+  /** @type {CharacterCountConfig} */
   var defaultConfig = {
     threshold: 0,
     i18n: CHARACTER_COUNT_TRANSLATIONS
@@ -84,11 +82,12 @@ function CharacterCount ($module, config) {
   //
   // We can't mutate `config`, though, as it may be shared across multiple
   // components inside `initAll`.
+  /** @type {CharacterCountConfig} */
   var configOverrides = {};
   if ('maxwords' in datasetConfig || 'maxlength' in datasetConfig) {
     configOverrides = {
-      maxlength: false,
-      maxwords: false
+      maxlength: undefined,
+      maxwords: undefined
     };
   }
 
@@ -252,7 +251,7 @@ CharacterCount.prototype.handleKeyUp = function () {
  * @deprecated Will be made private in v5.0
  */
 CharacterCount.prototype.handleFocus = function () {
-  this.valueChecker = setInterval(function () {
+  this.valueChecker = setInterval(/** @this {CharacterCount} */ function () {
     if (!this.lastInputTimestamp || (Date.now() - 500) >= this.lastInputTimestamp) {
       this.updateIfValueChanged();
     }
@@ -438,10 +437,10 @@ CharacterCount.prototype.isOverThreshold = function () {
  * @typedef {object} CharacterCountConfigWithMaxLength
  * @property {number} [maxlength] - The maximum number of characters.
  *   If maxwords is provided, the maxlength option will be ignored.
- * @property {number} [threshold = 0] - The percentage value of the limit at
+ * @property {number} [threshold=0] - The percentage value of the limit at
  *   which point the count message is displayed. If this attribute is set, the
  *   count message will be hidden by default.
- * @property {CharacterCountTranslations} [i18n = CHARACTER_COUNT_TRANSLATIONS] - See constant {@link CHARACTER_COUNT_TRANSLATIONS}
+ * @property {CharacterCountTranslations} [i18n=CHARACTER_COUNT_TRANSLATIONS] - Character count translations
  */
 
 /**
@@ -450,15 +449,16 @@ CharacterCount.prototype.isOverThreshold = function () {
  * @typedef {object} CharacterCountConfigWithMaxWords
  * @property {number} [maxwords] - The maximum number of words. If maxwords is
  *   provided, the maxlength option will be ignored.
- * @property {number} [threshold = 0] - The percentage value of the limit at
+ * @property {number} [threshold=0] - The percentage value of the limit at
  *   which point the count message is displayed. If this attribute is set, the
  *   count message will be hidden by default.
- * @property {CharacterCountTranslations} [i18n = CHARACTER_COUNT_TRANSLATIONS] - See constant {@link CHARACTER_COUNT_TRANSLATIONS}
+ * @property {CharacterCountTranslations} [i18n=CHARACTER_COUNT_TRANSLATIONS] - Character count translations
  */
 
 /**
  * Character count translations
  *
+ * @see {@link CHARACTER_COUNT_TRANSLATIONS}
  * @typedef {object} CharacterCountTranslations
  *
  * Messages shown to users as they type. It provides feedback on how many words
@@ -506,5 +506,5 @@ CharacterCount.prototype.isOverThreshold = function () {
  * @typedef {import('../../i18n.mjs').TranslationPluralForms} TranslationPluralForms
  */
 
-export default CharacterCount;
-//# sourceMappingURL=components/character-count/character-count.mjs.map
+export { CharacterCount as default };
+//# sourceMappingURL=character-count.mjs.map

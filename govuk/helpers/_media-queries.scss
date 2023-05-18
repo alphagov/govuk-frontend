@@ -6,22 +6,13 @@
 // Wrangle sass-mq config...
 // =========================================================
 
-// Pass our breakpoints and static breakpoint definitions through to sass-mq.
+// Pass our breakpoint definitions through to sass-mq.
 $mq-breakpoints: if(variable-exists(govuk-breakpoints), $govuk-breakpoints, ());
-$mq-static-breakpoint: if(variable-exists(govuk-ie8-breakpoint), $govuk-ie8-breakpoint, desktop);
 
 $mq-show-breakpoints: ();
 
 @if variable-exists(govuk-show-breakpoints) and $govuk-show-breakpoints {
   $mq-show-breakpoints: map-keys($govuk-breakpoints);
-}
-
-// When building a stylesheet for IE8, set $mq-responsive to false in order to
-// 'rasterize' any media queries.
-
-$mq-responsive: true;
-@if variable-exists(govuk-is-ie8) and $govuk-is-ie8 {
-  $mq-responsive: false;
 }
 
 // This is a horrible, horrible hack to prevent the 'dev mode' CSS to display
@@ -55,8 +46,6 @@ $sass-mq-already-included: true;
 ///
 /// @ignore Undocumented mq API, for advanced use only:
 /// @ignore @param {Map} $breakpoints [$govuk-breakpoints]
-/// @ignore @param {String} $static-breakpoint [$govuk-ie8-breakpoint]
-/// @ignore @param {Boolean} $responsive [$govuk-is-ie8]
 ///
 /// @content styling rules, wrapped into a @media query when $responsive is true
 ///
@@ -89,3 +78,5 @@ $sass-mq-already-included: true;
     @content;
   }
 }
+
+/*# sourceMappingURL=_media-queries.scss.map */

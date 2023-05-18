@@ -18,7 +18,7 @@
     margin-top: 0;
     margin-bottom: 0;
 
-    &:after {
+    &::after {
       // Zero-width space that will reserve vertical space when no hint is provided
       // as:
       // - setting a min-height is not possible without a magic number
@@ -32,3 +32,5 @@
     visibility: hidden;
   }
 }
+
+/*# sourceMappingURL=_index.scss.map */

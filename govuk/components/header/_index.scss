@@ -62,13 +62,6 @@
     vertical-align: top;
   }
 
-  .govuk-header__logotype-crown-fallback-image {
-    width: 36px;
-    height: 32px;
-    border: 0;
-    vertical-align: bottom;
-  }
-
   .govuk-header__product-name {
     @include govuk-font($size: 24, $line-height: 1);
     display: inline-table;
@@ -130,8 +123,6 @@
     &:active {
       // Negate the added border
       margin-bottom: $govuk-header-link-underline-thickness * -1;
-      // Omitting colour will use default value of currentColor – if we
-      // specified currentColor explicitly IE8 would ignore this rule.
       border-bottom: $govuk-header-link-underline-thickness solid;
     }
 
@@ -142,10 +133,7 @@
     }
   }
 
-  // The govuk-header__link--service-name class is deprecated - use
-  // govuk-header__service-name instead.
-  .govuk-header__service-name,
-  .govuk-header__link--service-name {
+  .govuk-header__service-name {
     display: inline-block;
     margin-bottom: govuk-spacing(2);
     @include govuk-font($size: 24, $weight: bold);
@@ -178,7 +166,6 @@
 
   .govuk-header__menu-button {
     @include govuk-font($size: 16);
-    display: none;
     position: absolute;
     top: govuk-spacing(4);
     right: 0;
@@ -202,13 +189,13 @@
       @include govuk-focused-text;
     }
 
-    &:after {
+    &::after {
       @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
       content: "";
       margin-left: govuk-spacing(1);
     }
 
-    &[aria-expanded="true"]:after {
+    &[aria-expanded="true"]::after {
       @include govuk-shape-arrow($direction: up, $base: 10px, $display: inline-block);
     }
 
@@ -249,12 +236,6 @@
       padding: govuk-spacing(1) 0;
       text-align: right;
     }
-  }
-
-  // The govuk-header__navigation--no-service-name class is deprecated and will
-  // be removed in the next major release.
-  .govuk-header__navigation--no-service-name {
-    padding-top: govuk-spacing(7);
   }
 
   .govuk-header__navigation-item {
@@ -320,30 +301,11 @@
       }
 
       // Do not append link href to GOV.UK link when printing (e.g. '(/)')
-      &:after {
+      &::after {
         display: none;
       }
     }
   }
-
-  @if $govuk-use-legacy-font {
-    // Begin adjustments for font baseline offset
-    // These should be removed when the font is updated with the correct baseline
-    .govuk-header__logotype-crown,
-    .govuk-header__logotype-crown-fallback-image {
-      position: relative;
-      top: -4px;
-      vertical-align: middle;
-    }
-
-    .govuk-header {
-      $offset: 3px;
-      padding-top: $offset;
-    }
-
-    .govuk-header__link--homepage {
-      line-height: 30px;
-    }
-    // End adjustments
-  }
 }
+
+/*# sourceMappingURL=_index.scss.map */

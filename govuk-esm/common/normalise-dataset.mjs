@@ -1,8 +1,3 @@
-import '../vendor/polyfills/Element/prototype/dataset.mjs';
-import '../vendor/polyfills/String/prototype/trim.mjs';
-
-/* eslint-disable es-x/no-string-prototype-trim -- Polyfill imported */
-
 /**
  * Normalise string
  *
@@ -49,10 +44,10 @@ function normaliseString (value) {
  *
  * @deprecated Will be made private in v5.0
  * @param {DOMStringMap} dataset - HTML element dataset
- * @returns {Object<string, unknown>} Normalised dataset
+ * @returns {{ [key: string]: unknown }} Normalised dataset
  */
 function normaliseDataset (dataset) {
-  /** @type {Object<string, unknown>} */
+  /** @type {{ [key: string]: unknown }} */
   var out = {};
 
   for (var key in dataset) {
@@ -62,5 +57,5 @@ function normaliseDataset (dataset) {
   return out
 }
 
-export { normaliseString, normaliseDataset };
-//# sourceMappingURL=common/normalise-dataset.mjs.map
+export { normaliseDataset, normaliseString };
+//# sourceMappingURL=normalise-dataset.mjs.map

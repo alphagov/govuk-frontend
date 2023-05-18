@@ -67,14 +67,6 @@
       margin-left: auto;
     }
   }
-
-  @include _govuk-if-ie8 {
-    width: $width;
-    // Since media queries are not supported in IE8,
-    // we need to duplicate this margin that centers the page.
-    margin-right: auto;
-    margin-left: auto;
-  }
 }
 
 @include govuk-exports("govuk/objects/width-container") {
@@ -82,3 +74,5 @@
     @include govuk-width-container;
   }
 }
+
+/*# sourceMappingURL=_width-container.scss.map */

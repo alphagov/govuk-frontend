@@ -1,11 +1,4 @@
-import { nodeListForEach } from '../../common/index.mjs';
 import '../../vendor/polyfills/Element/prototype/classList.mjs';
-import '../../vendor/polyfills/Element/prototype/nextElementSibling.mjs';
-import '../../vendor/polyfills/Element/prototype/previousElementSibling.mjs';
-import '../../vendor/polyfills/Event.mjs';
-import '../../vendor/polyfills/Function/prototype/bind.mjs';
-
-/* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
 
 /**
  * Tabs component
@@ -18,6 +11,7 @@ function Tabs ($module) {
     return this
   }
 
+  /** @satisfies {NodeListOf<HTMLAnchorElement>} */
   var $tabs = $module.querySelectorAll('a.govuk-tabs__tab');
   if (!$tabs.length) {
     return this
@@ -109,11 +103,11 @@ Tabs.prototype.setup = function () {
 
   $tabList.setAttribute('role', 'tablist');
 
-  nodeListForEach($tabListItems, function ($item) {
+  $tabListItems.forEach(function ($item) {
     $item.setAttribute('role', 'presentation');
   });
 
-  nodeListForEach($tabs, function ($tab) {
+  $tabs.forEach(function ($tab) {
     // Set HTML attributes
     $component.setAttributes($tab);
 
@@ -155,11 +149,11 @@ Tabs.prototype.teardown = function () {
 
   $tabList.removeAttribute('role');
 
-  nodeListForEach($tabListItems, function ($item) {
+  $tabListItems.forEach(function ($item) {
     $item.removeAttribute('role');
   });
 
-  nodeListForEach($tabs, function ($tab) {
+  $tabs.forEach(function ($tab) {
     // Remove events
     $tab.removeEventListener('click', $component.boundTabClick, true);
     $tab.removeEventListener('keydown', $component.boundTabKeydown, true);
@@ -232,7 +226,6 @@ Tabs.prototype.showTab = function ($tab) {
  * @returns {HTMLAnchorElement | null} Tab link
  */
 Tabs.prototype.getTab = function (hash) {
-  // @ts-expect-error `HTMLAnchorElement` type expected
   return this.$module.querySelector('a.govuk-tabs__tab[href="' + hash + '"]')
 };
 
@@ -373,6 +366,7 @@ Tabs.prototype.activateNextTab = function () {
     return
   }
 
+  /** @satisfies {HTMLAnchorElement} */
   var $nextTab = $nextTabListItem.querySelector('a.govuk-tabs__tab');
   if (!$nextTab) {
     return
@@ -400,6 +394,7 @@ Tabs.prototype.activatePreviousTab = function () {
     return
   }
 
+  /** @satisfies {HTMLAnchorElement} */
   var $previousTab = $previousTabListItem.querySelector('a.govuk-tabs__tab');
   if (!$previousTab) {
     return
@@ -511,5 +506,5 @@ Tabs.prototype.getHref = function ($tab) {
   return hash
 };
 
-export default Tabs;
-//# sourceMappingURL=components/tabs/tabs.mjs.map
+export { Tabs as default };
+//# sourceMappingURL=tabs.mjs.map

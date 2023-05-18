@@ -116,15 +116,16 @@
             },
             {
                 "name": "conditional",
-                "type": "boolean",
+                "type": "object",
                 "required": false,
-                "description": "If `true`, content provided will be revealed when the item is checked."
-            },
-            {
-                "name": "conditional.html",
-                "type": "string",
-                "required": false,
-                "description": "Provide content for the conditional reveal."
+                "description": "Provide additional content to reveal when the checkbox is checked.",
+                "params": [
+                    {
+                        "name": "html",
+                        "type": "string",
+                        "description": "The HTML to reveal when the checkbox is checked"
+                    }
+                ]
             },
             {
                 "name": "behaviour",

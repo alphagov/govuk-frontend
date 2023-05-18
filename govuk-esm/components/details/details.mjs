@@ -1,8 +1,11 @@
 import { generateUniqueID } from '../../common/index.mjs';
-import '../../vendor/polyfills/Event.mjs';
-import '../../vendor/polyfills/Function/prototype/bind.mjs';
 
-/* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
+/**
+ * JavaScript 'polyfill' for HTML5's <details> and <summary> elements
+ * and 'shim' to add accessiblity enhancements for all browsers
+ *
+ * http://caniuse.com/#feat=details
+ */
 
 var KEY_ENTER = 13;
 var KEY_SPACE = 32;
@@ -121,7 +124,7 @@ Details.prototype.polyfillSetAttributes = function () {
  * Handle cross-modal click events
  *
  * @deprecated Will be made private in v5.0
- * @param {polyfillHandleInputsCallback} callback - function
+ * @param {(event: UIEvent) => void} callback - function
  */
 Details.prototype.polyfillHandleInputs = function (callback) {
   this.$summary.addEventListener('keypress', function (event) {
@@ -156,11 +159,5 @@ Details.prototype.polyfillHandleInputs = function (callback) {
   this.$summary.addEventListener('click', callback);
 };
 
-/**
- * @callback polyfillHandleInputsCallback
- * @param {UIEvent} event - Keyboard or mouse event
- * @returns {void}
- */
-
-export default Details;
-//# sourceMappingURL=components/details/details.mjs.map
+export { Details as default };
+//# sourceMappingURL=details.mjs.map

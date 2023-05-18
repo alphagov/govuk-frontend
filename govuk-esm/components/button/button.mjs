@@ -1,9 +1,5 @@
 import { mergeConfigs } from '../../common/index.mjs';
 import { normaliseDataset } from '../../common/normalise-dataset.mjs';
-import '../../vendor/polyfills/Event.mjs';
-import '../../vendor/polyfills/Function/prototype/bind.mjs';
-
-/* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
 
 var KEY_SPACE = 32;
 var DEBOUNCE_TIMEOUT_IN_SECONDS = 1;
@@ -26,6 +22,7 @@ function Button ($module, config) {
   /** @deprecated Will be made private in v5.0 */
   this.debounceFormSubmitTimer = null;
 
+  /** @type {ButtonConfig} */
   var defaultConfig = {
     preventDoubleClick: false
   };
@@ -103,7 +100,7 @@ Button.prototype.debounce = function (event) {
     return false
   }
 
-  this.debounceFormSubmitTimer = setTimeout(function () {
+  this.debounceFormSubmitTimer = setTimeout(/** @this {Button} */ function () {
     this.debounceFormSubmitTimer = null;
   }.bind(this), DEBOUNCE_TIMEOUT_IN_SECONDS * 1000);
 };
@@ -112,9 +109,9 @@ Button.prototype.debounce = function (event) {
  * Button config
  *
  * @typedef {object} ButtonConfig
- * @property {boolean} [preventDoubleClick = false] - Prevent accidental double
+ * @property {boolean} [preventDoubleClick=false] - Prevent accidental double
  *   clicks on submit buttons from submitting forms multiple times.
  */
 
-export default Button;
-//# sourceMappingURL=components/button/button.mjs.map
+export { Button as default };
+//# sourceMappingURL=button.mjs.map

@@ -10,23 +10,4 @@
 
 $govuk-font-family-gds-transport: "GDS Transport", arial, sans-serif;
 
-/// List of font families to use if using NTA (old font 'stack' for
-/// GOV.UK)
-///
-/// @type List
-/// @access public
-/// @deprecated To be removed once support for compatibility mode is dropped
-
-$govuk-font-family-nta: "nta", arial, sans-serif;
-
-/// List of font families to use if using the 'tabular numbers' subset of NTA
-/// (the default font 'stack' for GOV.UK)
-///
-/// Because ntatabularnumbers only includes the digits 0-10, all other glyphs
-/// will 'fall-through' the stack to NTA.
-///
-/// @type List
-/// @access public
-/// @deprecated To be removed once support for compatibility mode is dropped
-
-$govuk-font-family-nta-tabular: "ntatabularnumbers", $govuk-font-family-nta;
+/*# sourceMappingURL=_typography-font-families.scss.map */

@@ -9,26 +9,6 @@
  */
 
 /**
- * TODO: Ideally this would be a NodeList.prototype.forEach polyfill
- * This seems to fail in IE8, requires more investigation.
- * See: https://github.com/imagitama/nodelist-foreach-polyfill
- *
- * @deprecated Will be made private in v5.0
- * @template {Node} ElementType
- * @param {NodeListOf<ElementType>} nodes - NodeList from querySelectorAll()
- * @param {nodeListIterator<ElementType>} callback - Callback function to run for each node
- * @returns {void}
- */
-function nodeListForEach (nodes, callback) {
-  if (window.NodeList.prototype.forEach) {
-    return nodes.forEach(callback)
-  }
-  for (var i = 0; i < nodes.length; i++) {
-    callback.call(window, nodes[i], i, nodes);
-  }
-}
-
-/**
  * Used to generate a unique string, allows multiple instances of the component
  * without them conflicting with each other.
  * https://stackoverflow.com/a/8809472
@@ -52,11 +32,11 @@ function generateUniqueID () {
  * Config flattening function
  *
  * Takes any number of objects, flattens them into namespaced key-value pairs,
- * (e.g. {'i18n.showSection': 'Show section'}) and combines them together, with
+ * (e.g. \{'i18n.showSection': 'Show section'\}) and combines them together, with
  * greatest priority on the LAST item passed in.
  *
  * @deprecated Will be made private in v5.0
- * @returns {Object<string, unknown>} A flattened object of key-value pairs.
+ * @returns {{ [key: string]: unknown }} A flattened object of key-value pairs.
  */
 function mergeConfigs (/* configObject1, configObject2, ...configObjects */) {
   /**
@@ -65,12 +45,12 @@ function mergeConfigs (/* configObject1, configObject2, ...configObjects */) {
    * each of our objects, nor transform our dataset from a flat list into a
    * nested object.
    *
-   * @param {Object<string, unknown>} configObject - Deeply nested object
-   * @returns {Object<string, unknown>} Flattened object with dot-separated keys
+   * @param {{ [key: string]: unknown }} configObject - Deeply nested object
+   * @returns {{ [key: string]: unknown }} Flattened object with dot-separated keys
    */
   var flattenObject = function (configObject) {
     // Prepare an empty return object
-    /** @type {Object<string, unknown>} */
+    /** @type {{ [key: string]: unknown }} */
     var flattenedObject = {};
 
     /**
@@ -78,7 +58,7 @@ function mergeConfigs (/* configObject1, configObject2, ...configObjects */) {
      * depth in the object. At each level we prepend the previous level names to
      * the key using `prefix`.
      *
-     * @param {Partial<Object<string, unknown>>} obj - Object to flatten
+     * @param {Partial<{ [key: string]: unknown }>} obj - Object to flatten
      * @param {string} [prefix] - Optional dot-separated prefix
      */
     var flattenLoop = function (obj, prefix) {
@@ -107,13 +87,14 @@ function mergeConfigs (/* configObject1, configObject2, ...configObjects */) {
   };
 
   // Start with an empty object as our base
-  /** @type {Object<string, unknown>} */
+  /** @type {{ [key: string]: unknown }} */
   var formattedConfigObject = {};
 
   // Loop through each of the remaining passed objects and push their keys
   // one-by-one into configObject. Any duplicate keys will override the existing
   // key with the new value.
   for (var i = 0; i < arguments.length; i++) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- Ignore mismatch between arguments types
     var obj = flattenObject(arguments[i]);
     for (var key in obj) {
       if (Object.prototype.hasOwnProperty.call(obj, key)) {
@@ -130,9 +111,9 @@ function mergeConfigs (/* configObject1, configObject2, ...configObjects */) {
  * object, removing the namespace in the process.
  *
  * @deprecated Will be made private in v5.0
- * @param {Object<string, unknown>} configObject - The object to extract key-value pairs from.
+ * @param {{ [key: string]: unknown }} configObject - The object to extract key-value pairs from.
  * @param {string} namespace - The namespace to filter keys with.
- * @returns {Object<string, unknown>} Flattened object with dot-separated key namespace removed
+ * @returns {{ [key: string]: unknown }} Flattened object with dot-separated key namespace removed
  * @throws {Error} Config object required
  * @throws {Error} Namespace string required
  */
@@ -146,7 +127,7 @@ function extractConfigByNamespace (configObject, namespace) {
     throw new Error('Provide a `namespace` of type "string" to filter the `configObject` by.')
   }
 
-  /** @type {Object<string, unknown>} */
+  /** @type {{ [key: string]: unknown }} */
   var newObject = {};
 
   for (var key in configObject) {
@@ -168,14 +149,5 @@ function extractConfigByNamespace (configObject, namespace) {
   return newObject
 }
 
-/**
- * @template {Node} ElementType
- * @callback nodeListIterator
- * @param {ElementType} value - The current node being iterated on
- * @param {number} index - The current index in the iteration
- * @param {NodeListOf<ElementType>} nodes - NodeList from querySelectorAll()
- * @returns {void}
- */
-
-export { nodeListForEach, generateUniqueID, mergeConfigs, extractConfigByNamespace };
-//# sourceMappingURL=common/index.mjs.map
+export { extractConfigByNamespace, generateUniqueID, mergeConfigs };
+//# sourceMappingURL=index.mjs.map

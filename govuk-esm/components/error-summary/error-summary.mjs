@@ -1,10 +1,6 @@
 import { mergeConfigs } from '../../common/index.mjs';
 import { normaliseDataset } from '../../common/normalise-dataset.mjs';
 import '../../vendor/polyfills/Element/prototype/closest.mjs';
-import '../../vendor/polyfills/Event.mjs';
-import '../../vendor/polyfills/Function/prototype/bind.mjs';
-
-/* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
 
 /**
  * JavaScript enhancements for the ErrorSummary
@@ -32,6 +28,7 @@ function ErrorSummary ($module, config) {
   /** @deprecated Will be made private in v5.0 */
   this.$module = $module;
 
+  /** @type {ErrorSummaryConfig} */
   var defaultConfig = {
     disableAutoFocus: false
   };
@@ -225,9 +222,9 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
  * Error summary config
  *
  * @typedef {object} ErrorSummaryConfig
- * @property {boolean} [disableAutoFocus = false] - If set to `true` the error
+ * @property {boolean} [disableAutoFocus=false] - If set to `true` the error
  *   summary will not be focussed when the page loads.
  */
 
-export default ErrorSummary;
-//# sourceMappingURL=components/error-summary/error-summary.mjs.map
+export { ErrorSummary as default };
+//# sourceMappingURL=error-summary.mjs.map

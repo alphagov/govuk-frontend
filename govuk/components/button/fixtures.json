@@ -16,7 +16,7 @@
                 "disabled": true
             },
             "hidden": false,
-            "html": "<button disabled=\"disabled\" aria-disabled=\"true\" class=\"govuk-button govuk-button--disabled\" data-module=\"govuk-button\">\n  Disabled button\n</button>"
+            "html": "<button disabled aria-disabled=\"true\" class=\"govuk-button\" data-module=\"govuk-button\">\n  Disabled button\n</button>"
         },
         {
             "name": "link",
@@ -26,16 +26,6 @@
             },
             "hidden": false,
             "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"govuk-button\" data-module=\"govuk-button\">\n  Link button\n</a>"
-        },
-        {
-            "name": "link disabled",
-            "options": {
-                "text": "Disabled link button",
-                "href": "/",
-                "disabled": true
-            },
-            "hidden": false,
-            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"govuk-button govuk-button--disabled\" data-module=\"govuk-button\">\n  Disabled link button\n</a>"
         },
         {
             "name": "start",
@@ -74,7 +64,7 @@
                 "disabled": true
             },
             "hidden": false,
-            "html": "<input value=\"Explicit input button disabled\" type=\"submit\" disabled=\"disabled\" aria-disabled=\"true\" class=\"govuk-button govuk-button--disabled\" data-module=\"govuk-button\">"
+            "html": "<input value=\"Explicit input button disabled\" type=\"submit\" disabled aria-disabled=\"true\" class=\"govuk-button\" data-module=\"govuk-button\">"
         },
         {
             "name": "prevent double click",
@@ -134,7 +124,7 @@
                 "disabled": true
             },
             "hidden": false,
-            "html": "<button name=\"secondary\" disabled=\"disabled\" aria-disabled=\"true\" class=\"govuk-button govuk-button--secondary govuk-button--disabled\" data-module=\"govuk-button\">\n  Secondary button disabled\n</button>"
+            "html": "<button name=\"secondary\" disabled aria-disabled=\"true\" class=\"govuk-button govuk-button--secondary\" data-module=\"govuk-button\">\n  Secondary button disabled\n</button>"
         },
         {
             "name": "Secondary link",
@@ -166,7 +156,7 @@
                 "disabled": true
             },
             "hidden": false,
-            "html": "<button name=\"warning\" disabled=\"disabled\" aria-disabled=\"true\" class=\"govuk-button govuk-button--warning govuk-button--disabled\" data-module=\"govuk-button\">\n  Warning button disabled\n</button>"
+            "html": "<button name=\"warning\" disabled aria-disabled=\"true\" class=\"govuk-button govuk-button--warning\" data-module=\"govuk-button\">\n  Warning button disabled\n</button>"
         },
         {
             "name": "Warning link",
@@ -178,6 +168,50 @@
             },
             "hidden": false,
             "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"govuk-button govuk-button--warning\" data-module=\"govuk-button\">\n  Warning button\n</a>"
+        },
+        {
+            "name": "Inverse",
+            "options": {
+                "name": "Inverse",
+                "text": "Inverse button",
+                "classes": "govuk-button--inverse"
+            },
+            "hidden": false,
+            "html": "<button name=\"Inverse\" class=\"govuk-button govuk-button--inverse\" data-module=\"govuk-button\">\n  Inverse button\n</button>"
+        },
+        {
+            "name": "Inverse disabled",
+            "options": {
+                "name": "Inverse",
+                "text": "Inverse button disabled",
+                "classes": "govuk-button--inverse",
+                "disabled": true
+            },
+            "hidden": false,
+            "html": "<button name=\"Inverse\" disabled aria-disabled=\"true\" class=\"govuk-button govuk-button--inverse\" data-module=\"govuk-button\">\n  Inverse button disabled\n</button>"
+        },
+        {
+            "name": "Inverse link",
+            "options": {
+                "name": "Inverse",
+                "text": "Inverse button",
+                "href": "/",
+                "classes": "govuk-button--inverse"
+            },
+            "hidden": false,
+            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"govuk-button govuk-button--inverse\" data-module=\"govuk-button\">\n  Inverse button\n</a>"
+        },
+        {
+            "name": "Inverse start button",
+            "options": {
+                "name": "Inverse",
+                "text": "Inverse start button",
+                "href": "/",
+                "classes": "govuk-button--inverse",
+                "isStartButton": true
+            },
+            "hidden": false,
+            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"govuk-button govuk-button--inverse govuk-button--start\" data-module=\"govuk-button\">\n  Inverse start button\n  <svg class=\"govuk-button__start-icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"17.5\" height=\"19\" viewBox=\"0 0 33 40\" aria-hidden=\"true\" focusable=\"false\">\n    <path fill=\"currentColor\" d=\"M0 0h13l20 20-20 20H0l20-20z\"/>\n  </svg></a>"
         },
         {
             "name": "attributes",

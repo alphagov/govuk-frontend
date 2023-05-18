@@ -16,4 +16,4 @@ function closestAttributeValue ($element, attributeName) {
 }
 
 export { closestAttributeValue };
-//# sourceMappingURL=common/closest-attribute-value.mjs.map
+//# sourceMappingURL=closest-attribute-value.mjs.map

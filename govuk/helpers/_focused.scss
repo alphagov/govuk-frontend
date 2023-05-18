@@ -14,11 +14,7 @@
   // backgrounds and box-shadows disappear, so we need to ensure there's a
   // transparent outline which will be set to a visible colour.
 
-  // Since Internet Explorer 8 does not support box-shadow, we want to force the
-  // user-agent outlines
-  @include _govuk-not-ie8 {
-    outline: $govuk-focus-width solid transparent;
-  }
+  outline: $govuk-focus-width solid transparent;
   color: $govuk-focus-text-colour;
   background-color: $govuk-focus-colour;
   box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
@@ -31,3 +27,5 @@
   -webkit-box-decoration-break: clone;
           box-decoration-break: clone;
 }
+
+/*# sourceMappingURL=_focused.scss.map */

@@ -8,7 +8,7 @@
                 "iconFallbackText": "Warning"
             },
             "hidden": false,
-            "html": "<div class=\"govuk-warning-text\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-warning-text__assistive\">Warning</span>\n    You can be fined up to £5,000 if you don’t register.\n  </strong>\n</div>"
+            "html": "<div class=\"govuk-warning-text\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-visually-hidden\">Warning</span>\n    You can be fined up to £5,000 if you don’t register.\n  </strong>\n</div>"
         },
         {
             "name": "multiple lines",
@@ -17,7 +17,7 @@
                 "iconFallbackText": "Warning"
             },
             "hidden": false,
-            "html": "<div class=\"govuk-warning-text\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-warning-text__assistive\">Warning</span>\n    If you are not covered by this License), You must: (a) comply with the terms stated above for the purpose of this license. It explains, for example, the production of a Source form, including but not limited to, the implied warranties or conditions of this License, without any additional file created by such Respondent to you under Sections 2.1 and 2.2 above. Larger Works. You may choose to distribute such a notice and a brief idea of what it does.\n  </strong>\n</div>"
+            "html": "<div class=\"govuk-warning-text\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-visually-hidden\">Warning</span>\n    If you are not covered by this License), You must: (a) comply with the terms stated above for the purpose of this license. It explains, for example, the production of a Source form, including but not limited to, the implied warranties or conditions of this License, without any additional file created by such Respondent to you under Sections 2.1 and 2.2 above. Larger Works. You may choose to distribute such a notice and a brief idea of what it does.\n  </strong>\n</div>"
         },
         {
             "name": "attributes",
@@ -29,7 +29,7 @@
                 }
             },
             "hidden": true,
-            "html": "<div class=\"govuk-warning-text\" id=\"my-warning-text\" data-test=\"attribute\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-warning-text__assistive\">Warning</span>\n    You can be fined up to £5,000 if you don’t register.\n  </strong>\n</div>"
+            "html": "<div class=\"govuk-warning-text\" id=\"my-warning-text\" data-test=\"attribute\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-visually-hidden\">Warning</span>\n    You can be fined up to £5,000 if you don’t register.\n  </strong>\n</div>"
         },
         {
             "name": "classes",
@@ -38,7 +38,7 @@
                 "classes": "govuk-warning-text--custom-class"
             },
             "hidden": true,
-            "html": "<div class=\"govuk-warning-text govuk-warning-text--custom-class\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-warning-text__assistive\">Warning</span>\n    Warning text\n  </strong>\n</div>"
+            "html": "<div class=\"govuk-warning-text govuk-warning-text--custom-class\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-visually-hidden\">Warning</span>\n    Warning text\n  </strong>\n</div>"
         },
         {
             "name": "html",
@@ -47,7 +47,7 @@
                 "html": "<span>Some custom warning text</span>"
             },
             "hidden": true,
-            "html": "<div class=\"govuk-warning-text\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-warning-text__assistive\">Warning</span>\n    <span>Some custom warning text</span>\n  </strong>\n</div>"
+            "html": "<div class=\"govuk-warning-text\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-visually-hidden\">Warning</span>\n    <span>Some custom warning text</span>\n  </strong>\n</div>"
         },
         {
             "name": "html as text",
@@ -55,7 +55,7 @@
                 "text": "<span>Some custom warning text</span>"
             },
             "hidden": true,
-            "html": "<div class=\"govuk-warning-text\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-warning-text__assistive\">Warning</span>\n    &lt;span&gt;Some custom warning text&lt;/span&gt;\n  </strong>\n</div>"
+            "html": "<div class=\"govuk-warning-text\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-visually-hidden\">Warning</span>\n    &lt;span&gt;Some custom warning text&lt;/span&gt;\n  </strong>\n</div>"
         },
         {
             "name": "icon fallback text only",
@@ -63,7 +63,7 @@
                 "iconFallbackText": "Some custom fallback text"
             },
             "hidden": true,
-            "html": "<div class=\"govuk-warning-text\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-warning-text__assistive\">Some custom fallback text</span>\n    \n  </strong>\n</div>"
+            "html": "<div class=\"govuk-warning-text\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-visually-hidden\">Some custom fallback text</span>\n    \n  </strong>\n</div>"
         },
         {
             "name": "no icon fallback text",
@@ -71,7 +71,7 @@
                 "text": "This is a warning"
             },
             "hidden": true,
-            "html": "<div class=\"govuk-warning-text\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-warning-text__assistive\">Warning</span>\n    This is a warning\n  </strong>\n</div>"
+            "html": "<div class=\"govuk-warning-text\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-visually-hidden\">Warning</span>\n    This is a warning\n  </strong>\n</div>"
         }
     ]
 }

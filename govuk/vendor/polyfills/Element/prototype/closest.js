@@ -1,11 +1,9 @@
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
+(function (factory) {
   typeof define === 'function' && define.amd ? define('GOVUKFrontend', factory) :
-  (factory());
-}(this, (function () { 'use strict';
+  factory();
+})((function () { 'use strict';
 
-  // @ts-nocheck
-  (function (undefined) {
+  (function (undefined$1) {
 
     // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/matches/detect.js
     var detect = (
@@ -15,6 +13,7 @@
     if (detect) return
 
     // Polyfill from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/matches/polyfill.js
+    // @ts-expect-error Ignore unknown browser prefixed properties
     Element.prototype.matches = Element.prototype.webkitMatchesSelector || Element.prototype.oMatchesSelector || Element.prototype.msMatchesSelector || Element.prototype.mozMatchesSelector || function matches(selector) {
       var element = this;
       var elements = (element.document || element.ownerDocument).querySelectorAll(selector);
@@ -29,9 +28,7 @@
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-  // @ts-nocheck
-
-  (function(undefined) {
+  (function(undefined$1) {
 
     // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/closest/detect.js
     var detect = (
@@ -46,6 +43,7 @@
 
       while (node) {
         if (node.matches(selector)) return node;
+        // @ts-expect-error Ignore mismatch between Element and ParentNode types
         else node = 'SVGElement' in window && node instanceof SVGElement ? node.parentNode : node.parentElement;
       }
 
@@ -54,5 +52,5 @@
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-})));
+}));
 //# sourceMappingURL=closest.js.map

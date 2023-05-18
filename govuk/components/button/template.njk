@@ -4,9 +4,6 @@
 {%- if params.classes %}
   {% set classNames = classNames + " " + params.classes %}
 {% endif %}
-{% if params.disabled %}
-  {% set classNames = classNames + " govuk-button--disabled" %}
-{% endif -%}
 
 {# Determine type of element to use, if not explicitly set #}
 {%- if params.element %}
@@ -37,7 +34,7 @@ treat it as an interactive element - without this it will be
 
 {#- Define common attributes we can use for both button and input types #}
 
-{%- set buttonAttributes %}{% if params.name %} name="{{ params.name }}"{% endif %}{% if params.disabled %} disabled="disabled" aria-disabled="true"{% endif %}{% if params.preventDoubleClick !== undefined %} data-prevent-double-click="{{params.preventDoubleClick}}"{% endif %}{% endset %}
+{%- set buttonAttributes %}{% if params.name %} name="{{ params.name }}"{% endif %}{% if params.disabled %} disabled aria-disabled="true"{% endif %}{% if params.preventDoubleClick !== undefined %} data-prevent-double-click="{{params.preventDoubleClick}}"{% endif %}{% endset %}
 
 {#- Actually create a button... or a link! #}
 

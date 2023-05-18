@@ -53,7 +53,7 @@
                 "name": "text",
                 "type": "string",
                 "required": false,
-                "description": "The link text to the previous page. Defaults to 'Previous page', where 'page' is visually hidden."
+                "description": "The link text to the previous page. Defaults to 'Previous'."
             },
             {
                 "name": "labelText",
@@ -85,7 +85,7 @@
                 "name": "text",
                 "type": "string",
                 "required": false,
-                "description": "The link text to the next page. Defaults to 'Next page', where 'page' is visually hidden."
+                "description": "The link text to the next page. Defaults to 'Next'."
             },
             {
                 "name": "labelText",

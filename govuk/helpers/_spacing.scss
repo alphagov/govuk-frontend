@@ -169,3 +169,5 @@
 @mixin govuk-responsive-padding($responsive-spacing-point, $direction: "all", $important: false, $adjustment: false) {
   @include _govuk-responsive-spacing($responsive-spacing-point, "padding", $direction, $important, $adjustment);
 }
+
+/*# sourceMappingURL=_spacing.scss.map */

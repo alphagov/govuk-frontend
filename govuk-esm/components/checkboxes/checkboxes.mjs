@@ -1,9 +1,4 @@
-import { nodeListForEach } from '../../common/index.mjs';
 import '../../vendor/polyfills/Element/prototype/classList.mjs';
-import '../../vendor/polyfills/Event.mjs';
-import '../../vendor/polyfills/Function/prototype/bind.mjs';
-
-/* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
 
 /**
  * Checkboxes component
@@ -16,6 +11,7 @@ function Checkboxes ($module) {
     return this
   }
 
+  /** @satisfies {NodeListOf<HTMLInputElement>} */
   var $inputs = $module.querySelectorAll('input[type="checkbox"]');
   if (!$inputs.length) {
     return this
@@ -51,7 +47,7 @@ Checkboxes.prototype.init = function () {
   var $module = this.$module;
   var $inputs = this.$inputs;
 
-  nodeListForEach($inputs, function ($input) {
+  $inputs.forEach(function ($input) {
     var targetId = $input.getAttribute('data-aria-controls');
 
     // Skip checkboxes without data-aria-controls attributes, or where the
@@ -90,7 +86,7 @@ Checkboxes.prototype.init = function () {
  * @deprecated Will be made private in v5.0
  */
 Checkboxes.prototype.syncAllConditionalReveals = function () {
-  nodeListForEach(this.$inputs, this.syncConditionalRevealWithInputState.bind(this));
+  this.$inputs.forEach(this.syncConditionalRevealWithInputState.bind(this));
 };
 
 /**
@@ -129,13 +125,12 @@ Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
 Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
   var $component = this;
 
-  /** @type {NodeListOf<HTMLInputElement>} */
-  // @ts-expect-error `NodeListOf<HTMLInputElement>` type expected
+  /** @satisfies {NodeListOf<HTMLInputElement>} */
   var allInputsWithSameName = document.querySelectorAll(
     'input[type="checkbox"][name="' + $input.name + '"]'
   );
 
-  nodeListForEach(allInputsWithSameName, function ($inputWithSameName) {
+  allInputsWithSameName.forEach(function ($inputWithSameName) {
     var hasSameFormOwner = ($input.form === $inputWithSameName.form);
     if (hasSameFormOwner && $inputWithSameName !== $input) {
       $inputWithSameName.checked = false;
@@ -157,13 +152,12 @@ Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
 Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
   var $component = this;
 
-  /** @type {NodeListOf<HTMLInputElement>} */
-  // @ts-expect-error `NodeListOf<HTMLInputElement>` type expected
+  /** @satisfies {NodeListOf<HTMLInputElement>} */
   var allInputsWithSameNameAndExclusiveBehaviour = document.querySelectorAll(
     'input[data-behaviour="exclusive"][type="checkbox"][name="' + $input.name + '"]'
   );
 
-  nodeListForEach(allInputsWithSameNameAndExclusiveBehaviour, function ($exclusiveInput) {
+  allInputsWithSameNameAndExclusiveBehaviour.forEach(function ($exclusiveInput) {
     var hasSameFormOwner = ($input.form === $exclusiveInput.form);
     if (hasSameFormOwner) {
       $exclusiveInput.checked = false;
@@ -209,5 +203,5 @@ Checkboxes.prototype.handleClick = function (event) {
   }
 };
 
-export default Checkboxes;
-//# sourceMappingURL=components/checkboxes/checkboxes.mjs.map
+export { Checkboxes as default };
+//# sourceMappingURL=checkboxes.mjs.map

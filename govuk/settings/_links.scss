@@ -2,25 +2,6 @@
 /// @group settings/links
 ////
 
-/// Enable new link styles
-///
-/// If enabled, the link styles will change. Underlines will:
-///
-/// - be consistently thinner and a bit further away from the link text
-/// - have a clearer hover state, where the underline gets thicker to make the
-///   link stand out to users
-///
-/// You should only enable the new link styles if both:
-///
-/// - you've made sure your whole service will use the new style consistently
-/// - you do not have links in a multi-column CSS layout - there's [a Chromium
-///   bug that affects links](https://github.com/alphagov/govuk-frontend/issues/2204)
-///
-/// @type Boolean
-/// @access public
-
-$govuk-new-link-styles: false !default;
-
 /// Thickness of link underlines
 ///
 /// The default will be either:
@@ -64,3 +45,5 @@ $govuk-link-underline-offset: .1578em !default;
 /// @access public
 
 $govuk-link-hover-underline-thickness: unquote("max(3px, .1875rem, .12em)") !default;
+
+/*# sourceMappingURL=_links.scss.map */

@@ -1,6 +1,5 @@
 import { mergeConfigs } from '../../common/index.mjs';
 import { normaliseDataset } from '../../common/normalise-dataset.mjs';
-import '../../vendor/polyfills/Event.mjs';
 
 /**
  * Notification Banner component
@@ -17,6 +16,7 @@ function NotificationBanner ($module, config) {
   /** @deprecated Will be made private in v5.0 */
   this.$module = $module;
 
+  /** @type {NotificationBannerConfig} */
   var defaultConfig = {
     disableAutoFocus: false
   };
@@ -85,11 +85,11 @@ NotificationBanner.prototype.setFocus = function () {
  * Notification banner config
  *
  * @typedef {object} NotificationBannerConfig
- * @property {boolean} [disableAutoFocus = false] - If set to `true` the
+ * @property {boolean} [disableAutoFocus=false] - If set to `true` the
  *   notification banner will not be focussed when the page loads. This only
  *   applies if the component has a `role` of `alert` – in other cases the
  *   component will not be focused on page load, regardless of this option.
  */
 
-export default NotificationBanner;
-//# sourceMappingURL=components/notification-banner/notification-banner.mjs.map
+export { NotificationBanner as default };
+//# sourceMappingURL=notification-banner.mjs.map

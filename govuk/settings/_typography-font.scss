@@ -1,41 +1,8 @@
-@import "compatibility";
 @import "typography-font-families";
 
 ////
 /// @group settings/typography
 ////
-
-/// Use 'legacy' fonts
-///
-/// Whether or not to use v1 nta font from GOV.UK Elements / Frontend
-/// Toolkit, for teams that are migrating to GOV.UK Frontend and may be using
-/// components from both places in a single application.
-///
-/// @type Boolean
-/// @access public
-/// @deprecated Will be removed in v5.0 with the rest of the compatibility mode
-/// suite of tools and settings
-
-$govuk-use-legacy-font: if(
-  (
-    $govuk-compatibility-govukfrontendtoolkit or
-    $govuk-compatibility-govuktemplate or
-    $govuk-compatibility-govukelements
-  ),
-  true,
-  false
-) !default;
-
-// Only show the deprecation warning if user is setting $govuk-use-legacy-font
-// manually instead of automatically via compatibility variables
-@if $govuk-use-legacy-font == true and
-  $govuk-compatibility-govukfrontendtoolkit == false and
-  $govuk-compatibility-govuktemplate == false and
-  $govuk-compatibility-govukelements == false {
-  @include _warning(legacy-font, "$govuk-use-legacy-font is deprecated. " +
-  "From version 5.0, GOV.UK Frontend will only support the included version " +
-  "of GDS Transport.");
-}
 
 // =========================================================
 // Font families
@@ -46,32 +13,7 @@ $govuk-use-legacy-font: if(
 /// @type List
 /// @access public
 
-$govuk-font-family: if(
-  $govuk-use-legacy-font,
-  $govuk-font-family-nta,
-  $govuk-font-family-gds-transport
-) !default;
-
-/// Font families to use when displaying tabular numbers
-///
-/// @type List
-/// @access public
-/// @deprecated Will be removed in v5.0 with the rest of the compatibility mode
-/// suite of tools and settings
-
-$govuk-font-family-tabular: if(
-  $govuk-use-legacy-font,
-  $govuk-font-family-nta-tabular,
-  false
-) !default;
-
-// Only show the deprecation warning if user is setting $govuk-font-family-tabular
-// manually instead of automatically via $govuk-use-legacy-font
-@if $govuk-font-family-tabular != false and $govuk-use-legacy-font == false {
-  @include _warning(tabular-font-face, "$govuk-font-family-tabular is deprecated. " +
-  "From version 5.0, GOV.UK Frontend will not support using a separate " +
-  "font-face for tabular numbers.");
-}
+$govuk-font-family: $govuk-font-family-gds-transport !default;
 
 /// Font families to use for print media
 ///
@@ -110,3 +52,5 @@ $govuk-font-weight-regular: 400 !default;
 /// @type Number
 /// @access public
 $govuk-font-weight-bold: 700 !default;
+
+/*# sourceMappingURL=_typography-font.scss.map */

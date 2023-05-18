@@ -32,7 +32,7 @@
   // bottom border is not drawn for that part of the row in some browsers.
   .govuk-summary-list__row--no-actions {
     @include govuk-media-query($from: tablet) {
-      &:after {
+      &::after {
         content: "";
         display: table-cell;
         width: 20%;
@@ -57,7 +57,6 @@
     margin-bottom: govuk-spacing(3);
     @include govuk-media-query($from: tablet) {
       width: 20%;
-      padding-right: 0; // Needed for IE8
       text-align: right;
     }
   }
@@ -101,15 +100,10 @@
     display: inline-block;
   }
 
-  // In older browsers such as IE8, :last-child is not available,
-  // so only show the border divider where it is available.
   @include govuk-media-query($until: tablet) {
     .govuk-summary-list__actions-list-item {
       margin-right: govuk-spacing(2);
       padding-right: govuk-spacing(2);
-    }
-
-    .govuk-summary-list__actions-list-item:not(:last-child) {
       border-right: 1px solid $govuk-border-colour;
     }
 
@@ -178,15 +172,12 @@
 
     // Ensures the card header appears separate to the summary list in forced colours mode
     border-bottom: 1px solid transparent;
-    background-color: govuk-colour("light-grey", $legacy: "grey-3");
+    background-color: govuk-colour("light-grey");
 
     @include govuk-media-query($from: "tablet") {
-      display: -ms-flexbox;
       display: flex;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-      -ms-flex-wrap: nowrap;
-          flex-wrap: nowrap;
+      justify-content: space-between;
+      flex-wrap: nowrap;
       padding: govuk-spacing(3) govuk-spacing(4);
     }
   }
@@ -202,18 +193,15 @@
 
   .govuk-summary-card__actions {
     @include govuk-font($size: 19, $weight: bold);
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
     row-gap: 10px;
     margin: govuk-spacing(1) 0;
     padding: 0;
     list-style: none;
 
     @include govuk-media-query($from: "tablet") {
-      -ms-flex-pack: right;
-          justify-content: right;
+      justify-content: right;
       text-align: right;
     }
   }
@@ -274,3 +262,5 @@
     }
   }
 }
+
+/*# sourceMappingURL=_index.scss.map */

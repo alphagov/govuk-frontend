@@ -28,24 +28,14 @@
   }
 
   // Prepend left pointing chevron
-  .govuk-back-link:before {
+  .govuk-back-link::before {
     content: "";
     display: block;
 
     // Vertically align with the parent element
     position: absolute;
-
-    @if $govuk-use-legacy-font {
-      // Begin adjustments for font baseline offset
-      // These should be removed when legacy font support is dropped
-      $offset: govuk-em(1px, $font-size);
-      top: $offset * -1;
-      bottom: $offset;
-    } @else {
-      top: 0;
-      bottom: 0;
-    }
-
+    top: 0;
+    bottom: 0;
     left: govuk-em(3px, $font-size);
 
     width: $chevron-size;
@@ -54,8 +44,6 @@
     margin: auto 0;
 
     -webkit-transform: rotate(225deg);
-
-        -ms-transform: rotate(225deg);
 
             transform: rotate(225deg);
 
@@ -69,26 +57,13 @@
       // Ensure that the chevron never gets smaller than 16px
       font-size: unquote("max(#{$font-size * 1px}, 1em)");
     }
-
-    // Fall back to a less than sign for IE8
-    @include _govuk-if-ie8 {
-      content: "\003c"; // Less than sign (<)
-      width: auto;
-      height: auto;
-      border: 0;
-      color: $chevron-border-colour;
-
-      // IE8 doesn't seem to like rendering pseudo-elements using @font-faces,
-      // so fall back to using another sans-serif font to render the chevron.
-      font-family: Arial, sans-serif;
-    }
   }
 
-  .govuk-back-link:focus:before {
+  .govuk-back-link:focus::before {
     border-color: $govuk-focus-text-colour;
   }
 
-  .govuk-back-link:after {
+  .govuk-back-link::after {
     content: "";
     position: absolute;
     top: -14px;
@@ -97,3 +72,5 @@
     left: 0;
   }
 }
+
+/*# sourceMappingURL=_index.scss.map */

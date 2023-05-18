@@ -1,10 +1,6 @@
-import '../../Object/defineProperty.mjs';
 import '../../DOMTokenList.mjs';
-import '../../Element.mjs';
 
-// @ts-nocheck
-
-(function(undefined) {
+(function(undefined$1) {
 
     // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/8717a9e04ac7aff99b4980fbedead98036b0929a/packages/polyfill-library/polyfills/Element/prototype/classList/detect.js
     var detect = (
@@ -60,6 +56,7 @@ import '../../Element.mjs';
           if (false === dpSupport) {
 
             var visage;
+            // @ts-expect-error Ignore unknown 'mirror' property on function
             var mirror = addProp.mirror || document.createElement("div");
             var reflections = mirror.childNodes;
             var l = reflections.length;
@@ -73,7 +70,9 @@ import '../../Element.mjs';
             /** Couldn't find an element's reflection inside the mirror. Materialise one. */
             visage || (visage = mirror.appendChild(document.createElement("div")));
 
+            // @ts-expect-error Ignore 'Expected 1 arguments, but got 3'
             tokenList = DOMTokenList.call(visage, THIS, attr);
+          // @ts-expect-error Ignore 'Expected 0 arguments, but got 2'
           } else tokenList = new DOMTokenList(THIS, attr);
 
           defineGetter(THIS, name, function () {
@@ -93,4 +92,4 @@ import '../../Element.mjs';
     }(this));
 
 }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
-//# sourceMappingURL=vendor/polyfills/Element/prototype/classList.mjs.map
+//# sourceMappingURL=classList.mjs.map
