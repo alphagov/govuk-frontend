@@ -10,17 +10,17 @@ describe('GOV.UK Prototype Kit config', () => {
 
   it('includes paths for assets, scripts, sass', () => {
     expect(config.assets).toEqual([
-      '/govuk/assets',
-      '/govuk/all.js.map'
+      '/dist/govuk/assets',
+      '/dist/govuk/all.js.map'
     ])
 
     expect(config.sass).toEqual([
-      '/govuk-prototype-kit/init.scss'
+      '/dist/govuk-prototype-kit/init.scss'
     ])
 
     expect(config.scripts).toEqual([
-      '/govuk/all.js',
-      '/govuk-prototype-kit/init.js'
+      '/dist/govuk/all.js',
+      '/dist/govuk-prototype-kit/init.js'
     ])
   })
 
@@ -159,7 +159,7 @@ describe('GOV.UK Prototype Kit config', () => {
     })
 
     it('includes paths', () => {
-      expect(config.nunjucksPaths).toEqual(['/'])
+      expect(config.nunjucksPaths).toEqual(['/dist'])
     })
   })
 })

@@ -6,6 +6,7 @@
   "files": [
     "src",
     "dist",
+    "govuk-prototype-kit.config.json",
     "package.json",
     "README.md"
   ],

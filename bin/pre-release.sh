@@ -26,6 +26,7 @@ npm run build:package
 if [[ -n $(git status --porcelain) ]]; then
   echo "✍️ Commiting changed package"
   git add packages/govuk-frontend/dist/
+  git add --force packages/govuk-frontend/govuk-prototype-kit.config.json
 
   git commit -m "Release GOV.UK Frontend to '$BRANCH_NAME' for testing"
 

@@ -43,10 +43,8 @@ describe('packages/govuk-frontend/dist/', () => {
     const listingExpected = listingSource
       .filter(filterPath(filterPatterns))
 
-      // Replaces GOV.UK Prototype kit config with JSON
-      .flatMap(mapPathTo(['**/govuk-prototype-kit.config.mjs'], ({ dir: requirePath, name }) => [
-        join(requirePath, '../', `${name}.json`)
-      ]))
+      // Removes GOV.UK Prototype kit config (moved to package top level)
+      .flatMap(mapPathTo(['**/govuk-prototype-kit.config.mjs'], () => []))
 
       // Replaces all source '*.mjs' files
       .flatMap(mapPathTo(['**/*.mjs'], ({ dir: requirePath, name }) => {
@@ -95,6 +93,7 @@ describe('packages/govuk-frontend/dist/', () => {
     // Check top level package contents
     expect(listingPackage).toEqual([
       'README.md',
+      'govuk-prototype-kit.config.json',
       'gulpfile.mjs',
       'package.json',
       'postcss.config.mjs',

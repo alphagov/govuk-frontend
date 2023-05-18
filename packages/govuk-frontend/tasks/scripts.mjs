@@ -1,4 +1,4 @@
-import { join } from 'path'
+import { join, resolve } from 'path'
 
 import { configs, scripts, task } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
@@ -39,7 +39,7 @@ export const compile = (options) => gulp.series(
   task.name("compile:js 'govuk-prototype-kit'", () =>
     configs.compile('govuk-prototype-kit.config.mjs', {
       srcPath: join(options.srcPath, 'govuk-prototype-kit'),
-      destPath: options.destPath,
+      destPath: resolve(options.destPath, '../'), // Top level (not dist) for compatibility
 
       filePath (file) {
         return join(file.dir, `${file.name}.json`)
