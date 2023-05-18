@@ -51,9 +51,20 @@ $govuk-suppressed-warnings: () !default;
   }
 }
 
+/// Check whether a key is present in the suppressed warnings list.
+///
+/// @param {String} $key - The key to be checked against `$govuk-suppressed-warnings`.
+/// @access private
+
 @function _should-warn($key) {
   @return index($govuk-suppressed-warnings, $key) == null;
 }
+
+/// Format a warning by appending information on how to suppress it.
+///
+/// @param {String} $key - The key needed to suppress the warning.
+/// @param {String} $message - The warning text.
+/// @access private
 
 @function _warning-text($key, $message) {
   @return $message + " To silence this warning, update $govuk-suppressed-warnings " +
