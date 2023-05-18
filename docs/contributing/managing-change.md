@@ -55,9 +55,22 @@ In the annotation description include:
 - the suggested alternative, if there is one
 - a link to the GitHub issue for its removal
 
-If possible, update the mixin or function to output a warning using the `_warning` mixin (see section below on allowing users to suppress warnings).
+If possible, update the code to output a warning using the `_warning` mixin or its associated functions (see section below on allowing users to suppress warnings).
 
-For example:
+Use the `_warning` mixin when deprecating a mixin:
+
+```scss
+/// XL headings
+///
+/// @deprecated Use govuk-typography-responsive($size: 80) instead.
+///   See https://github.com/alphagov/govuk-frontend/issues/1234
+@mixin govuk-heading-xl {
+  @include _warning("heading-xl", "govuk-heading-xl is deprecated. Use govuk-typography-responsive(80) instead.");
+  @include govuk-typography-responsive($size: 80);
+}
+```
+
+Mixins cannot be invoked within functions, so we use the `_should-warn` and `_warning-message` functions directly when deprecating a function:
 
 ```scss
 /// Double a number
@@ -67,10 +80,14 @@ For example:
 /// @deprecated Use govuk-multiply(number, 2) instead.
 ///   See https://github.com/alphagov/govuk-frontend/issues/1234
 @function govuk-double($number) {
-  @include _warning("double", "govuk-double($number) is deprecated. Use govuk-multiply($number, 2) instead.");
+  @if _should-warn("double") {
+    @warn _warning-message("double", "govuk-double($number) is deprecated. Use govuk-multiply($number, 2) instead.")
+  }
   @return govuk-multiply($number, 2);
 }
 ```
+
+Unlike the `_warning` mixin, producing warnings in this way doesn't suppress future instances of the same warning. This may be preferred in cases where a user may need to change their code in multiple places (such as if a parameter has been deprecated).
 
 ### Deprecating a parameter for a Sass mixin or function
 
