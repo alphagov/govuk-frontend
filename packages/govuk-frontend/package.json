@@ -54,10 +54,6 @@
     "autoprefixer": "^10.4.14",
     "cssnano": "^6.0.1",
     "cssnano-preset-default": "^6.0.1",
-    "govuk-frontend-config": "*",
-    "govuk-frontend-helpers": "*",
-    "govuk-frontend-lib": "*",
-    "govuk-frontend-tasks": "*",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
     "html-validate": "7.17.0",
@@ -70,5 +66,11 @@
     "sass-embedded": "^1.62.0",
     "sassdoc": "^2.7.4",
     "slash": "^5.1.0"
+  },
+  "optionalDependencies": {
+    "govuk-frontend-config": "*",
+    "govuk-frontend-helpers": "*",
+    "govuk-frontend-lib": "*",
+    "govuk-frontend-tasks": "*"
   }
 }
