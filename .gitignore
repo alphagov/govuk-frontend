@@ -1,2 +1,4 @@
+govuk-prototype-kit.config.json
+
 # Build output (committed)
 !/dist

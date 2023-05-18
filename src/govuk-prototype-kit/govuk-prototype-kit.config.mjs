@@ -1,5 +1,3 @@
-import { join } from 'path'
-
 import { filterPath, getDirectories, getListing } from 'govuk-frontend-lib/files'
 import { componentNameToMacroName, packageNameToPath } from 'govuk-frontend-lib/names'
 import slash from 'slash'
@@ -10,35 +8,35 @@ import slash from 'slash'
  * @returns {Promise<PrototypeKitConfig>} GOV.UK Prototype Kit config
  */
 export default async () => {
-  const componentsFiles = await getListing(packageNameToPath('govuk-frontend', 'src/govuk/components'))
+  const componentMacros = await getListing(packageNameToPath('govuk-frontend', 'src'), '**/components/**/macro.njk')
   const componentNames = await getDirectories(packageNameToPath('govuk-frontend', 'src/govuk/components'))
 
   // Build array of macros
   const nunjucksMacros = componentNames
     .map((componentName) => {
-      const [macroPath] = componentsFiles
+      const [macroPath = ''] = componentMacros
         .filter(filterPath([`**/${componentName}/macro.njk`]))
 
       return {
-        importFrom: slash(join('govuk/components', macroPath)),
+        importFrom: slash(macroPath),
         macroName: componentNameToMacroName(componentName)
       }
     })
 
   return {
     assets: [
-      '/govuk/assets',
-      '/govuk/all.js.map'
+      '/dist/govuk/assets',
+      '/dist/govuk/all.js.map'
     ],
     sass: [
-      '/govuk-prototype-kit/init.scss'
+      '/dist/govuk-prototype-kit/init.scss'
     ],
     scripts: [
-      '/govuk/all.js',
-      '/govuk-prototype-kit/init.js'
+      '/dist/govuk/all.js',
+      '/dist/govuk-prototype-kit/init.js'
     ],
     nunjucksMacros,
-    nunjucksPaths: ['/']
+    nunjucksPaths: ['/dist']
   }
 }
 
