@@ -17,7 +17,7 @@ const nunjucksEnv = nunjucks.configure(nunjucksPaths, {
  * Render component HTML
  *
  * @param {string} componentName - Component name
- * @param {object} options - options to pass to the component macro
+ * @param {{ [key: string]: unknown }} options - options to pass to the component macro
  * @param {string} [callBlock] - if provided, the macro is called using the
  *   Nunjucks call tag, with the callBlock passed as the contents of the block
  * @returns {string} HTML rendered by the macro
@@ -47,7 +47,7 @@ function render (componentName, options, callBlock) {
  *
  * @param {string} macroName - The name of the macro
  * @param {string} macroPath - The path to the file containing the macro *from the root of the project*
- * @param {Array} params - The parameters that will be passed to the macro. They'll be `JSON.stringify`ed and joined with a `,`
+ * @param {{ [key: string]: unknown }[]} params - The parameters that will be passed to the macro. They'll be `JSON.stringify`ed and joined with a `,`
  * @param {string} [callBlock] - Content for an optional callBlock, if necessary for the macro to receive one
  * @returns {string} The result of calling the macro
  */
