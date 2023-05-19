@@ -28,7 +28,7 @@ export async function compile (pattern, options) {
 
     await Promise.all(compileTasks)
   } catch (cause) {
-    throw new PluginError('compile:scss', cause)
+    throw new PluginError('shared/tasks/styles', cause)
   }
 }
 
