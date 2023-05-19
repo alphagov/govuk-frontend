@@ -30,8 +30,9 @@ export default (options) => gulp.series(
 
       srcPath: join(options.srcPath, 'govuk'),
 
-      filePath (file) {
-        return join(file.dir, `${file.name.replace(/^all/, pkg.name)}-${pkg.version}.min.js`)
+      // Rename using package name (versioned) and `*.min.js` extension
+      filePath ({ dir, name }) {
+        return join(dir, `${name.replace(/^all/, pkg.name)}-${pkg.version}.min.js`)
       }
     })
   ),
@@ -43,8 +44,9 @@ export default (options) => gulp.series(
 
       srcPath: join(options.srcPath, 'govuk'),
 
-      filePath (file) {
-        return join(file.dir, `${file.name.replace(/^all/, pkg.name)}-${pkg.version}.min.css`)
+      // Rename using package name (versioned) and `*.min.css` extension
+      filePath ({ dir, name }) {
+        return join(dir, `${name.replace(/^all/, pkg.name)}-${pkg.version}.min.css`)
       }
     })
   ),

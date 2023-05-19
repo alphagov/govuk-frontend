@@ -26,6 +26,7 @@ export async function write (filePath, result) {
   writeTasks.push(files.write(base, {
     destPath: dir,
 
+    // Add source code
     async fileContents () {
       return code
     }
@@ -47,6 +48,7 @@ export async function write (filePath, result) {
     writeTasks.push(files.write(`${base}.map`, {
       destPath: dir,
 
+      // Add source map as JSON
       async fileContents () {
         return JSON.stringify(map)
       }

@@ -29,7 +29,7 @@ export async function generateFixtures (pattern, { srcPath, destPath }) {
         return join(dir, 'fixtures.json')
       },
 
-      // Replace contents with JSON
+      // Add fixtures as JSON (formatted)
       async fileContents () {
         return JSON.stringify(fixture, null, 4)
       }
@@ -61,7 +61,7 @@ export async function generateMacroOptions (pattern, { srcPath, destPath }) {
         return join(dir, 'macro-options.json')
       },
 
-      // Replace contents with JSON
+      // Add macro options as JSON (formatted)
       async fileContents () {
         return JSON.stringify(macroOption, null, 4)
       }

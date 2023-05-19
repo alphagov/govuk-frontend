@@ -29,6 +29,7 @@ export async function version (assetPath, options) {
   await write(assetPath, {
     ...options,
 
+    // Add package version
     async fileContents () {
       return pkg.version
     }

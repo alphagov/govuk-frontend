@@ -22,7 +22,7 @@ export async function compile (modulePath, options) {
       return join(dir, `${name}.json`)
     },
 
-    // Format config as JSON
+    // Add config as JSON (formatted)
     async fileContents () {
       return JSON.stringify(await configFn(), undefined, 2)
     }

@@ -17,8 +17,9 @@ export const compile = (options) => gulp.series(
       srcPath: join(options.srcPath, 'javascripts'),
       destPath: join(options.destPath, 'javascripts'),
 
-      filePath (file) {
-        return join(file.dir, `${file.name}.min.js`)
+      // Rename with `*.min.js` extension
+      filePath ({ dir, name }) {
+        return join(dir, `${name}.min.js`)
       }
     })
   ),

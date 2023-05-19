@@ -31,8 +31,9 @@ export const compile = (options) => gulp.series(
       srcPath: join(options.srcPath, 'govuk'),
       destPath: join(options.destPath, 'govuk'),
 
-      filePath (file) {
-        return join(file.dir, `${file.name}.js`)
+      // Rename with `*.js` extension
+      filePath ({ dir, name }) {
+        return join(dir, `${name}.js`)
       }
     })
   ),
