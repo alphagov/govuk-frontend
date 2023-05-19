@@ -17,6 +17,11 @@ export async function compile (modulePath, options) {
   return files.write(modulePath, {
     ...options,
 
+    // Rename with `*.json` extension
+    filePath ({ dir, name }) {
+      return join(dir, `${name}.json`)
+    },
+
     // Format config as JSON
     async fileContents () {
       return JSON.stringify(await configFn(), undefined, 2)
