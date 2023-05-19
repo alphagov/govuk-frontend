@@ -17,12 +17,13 @@ export const compile = (options) => gulp.series(
       ...options,
 
       srcPath: join(options.srcPath, 'govuk'),
-      destPath: join(options.destPath, 'govuk-esm')
+      destPath: join(options.destPath, 'govuk-esm'),
+      configPath: join(options.basePath, 'rollup.esm.config.mjs')
     })
   ),
 
   /**
-   * Compile GOV.UK Frontend JavaScript (AMD modules)
+   * Compile GOV.UK Frontend JavaScript (UMD modules)
    */
   task.name('compile:js', () =>
     scripts.compile('**/!(*.test).mjs', {
@@ -30,6 +31,7 @@ export const compile = (options) => gulp.series(
 
       srcPath: join(options.srcPath, 'govuk'),
       destPath: join(options.destPath, 'govuk'),
+      configPath: join(options.basePath, 'rollup.umd.config.mjs'),
 
       // Rename with `*.js` extension
       filePath ({ dir, name }) {
