@@ -12,6 +12,8 @@ import gulp from 'gulp'
 export const compile = (options) => gulp.series(
   task.name('compile:scss', () =>
     styles.compile('**/[!_]*.scss', {
+      ...options,
+
       srcPath: join(options.srcPath, 'stylesheets'),
       destPath: join(options.destPath, 'stylesheets'),
 

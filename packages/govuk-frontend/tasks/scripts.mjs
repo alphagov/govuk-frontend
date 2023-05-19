@@ -14,6 +14,8 @@ export const compile = (options) => gulp.series(
    */
   task.name('compile:mjs', () =>
     scripts.compile('!(*.test).mjs', {
+      ...options,
+
       srcPath: join(options.srcPath, 'govuk'),
       destPath: join(options.destPath, 'govuk-esm')
     })
@@ -24,6 +26,8 @@ export const compile = (options) => gulp.series(
    */
   task.name('compile:js', () =>
     scripts.compile('**/!(*.test).mjs', {
+      ...options,
+
       srcPath: join(options.srcPath, 'govuk'),
       destPath: join(options.destPath, 'govuk'),
 
