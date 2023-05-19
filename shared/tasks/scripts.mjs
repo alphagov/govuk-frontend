@@ -44,7 +44,14 @@ export async function compileJavaScript ([modulePath, { configPath, srcPath, des
 
   // Create Rollup bundle(s)
   for (const options of config.options) {
-    const bundle = await rollup(options)
+    const bundle = await rollup({
+      ...options,
+
+      // Handle warnings as errors
+      onwarn (message) {
+        throw message
+      }
+    })
 
     // Compile JavaScript to output format
     await Promise.all(options.output
