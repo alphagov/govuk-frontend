@@ -77,7 +77,7 @@ export async function write (filePath, result) {
  * @property {string} basePath - Base directory, for example `/path/to/package`
  * @property {string} srcPath - Input directory, for example `/path/to/package/src`
  * @property {string} destPath - Output directory, for example `/path/to/package/dist`
- * @property {string} [configPath] - Config file path (e.g. Rollup configs)
+ * @property {string} [configPath] - Config file path (e.g. PostCSS, Rollup configs)
  * @property {string} workspace - Workspace directory (relative), for example `package/dist`
  */
 

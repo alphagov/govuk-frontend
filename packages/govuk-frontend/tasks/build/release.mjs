@@ -44,6 +44,7 @@ export default (options) => gulp.series(
       ...options,
 
       srcPath: join(options.srcPath, 'govuk'),
+      configPath: join(options.basePath, 'postcss.config.mjs'),
 
       // Rename using package name (versioned) and `*.min.css` extension
       filePath ({ dir, name }) {
