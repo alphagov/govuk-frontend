@@ -39,11 +39,7 @@ export const compile = (options) => gulp.series(
   task.name("compile:js 'govuk-prototype-kit'", () =>
     configs.compile('govuk-prototype-kit.config.mjs', {
       srcPath: join(options.srcPath, 'govuk-prototype-kit'),
-      destPath: resolve(options.destPath, '../'), // Top level (not dist) for compatibility
-
-      filePath (file) {
-        return join(file.dir, `${file.name}.json`)
-      }
+      destPath: resolve(options.destPath, '../') // Top level (not dist) for compatibility
     })
   )
 )
