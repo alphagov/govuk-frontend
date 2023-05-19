@@ -51,6 +51,8 @@
     "dev": "gulp dev --color"
   },
   "devDependencies": {
+    "@rollup/plugin-replace": "^5.0.2",
+    "@rollup/plugin-terser": "^0.4.1",
     "autoprefixer": "^10.4.14",
     "cssnano": "^6.0.1",
     "cssnano-preset-default": "^6.0.1",
@@ -62,6 +64,7 @@
     "postcss": "^8.4.23",
     "postcss-scss": "^4.0.6",
     "puppeteer": "^20.2.0",
+    "rollup": "^3.21.7",
     "sass-color-helpers": "^2.1.1",
     "sass-embedded": "^1.62.0",
     "sassdoc": "^2.7.4",
