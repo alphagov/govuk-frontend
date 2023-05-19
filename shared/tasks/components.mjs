@@ -11,7 +11,7 @@ import { files } from './index.mjs'
  * Generate fixtures.json from component data
  *
  * @param {AssetEntry[0]} pattern - Path to ${componentName}.yaml
- * @param {AssetEntry[1]} options - Asset options
+ * @param {Pick<AssetEntry[1], "srcPath" | "destPath">} options - Asset options
  */
 export async function generateFixtures (pattern, { srcPath, destPath }) {
   const componentDataPaths = await getListing(srcPath, pattern)
@@ -22,7 +22,6 @@ export async function generateFixtures (pattern, { srcPath, destPath }) {
 
     // Write to destination
     await files.write(componentDataPath, {
-      srcPath,
       destPath,
 
       // Rename to fixtures.json
@@ -44,7 +43,7 @@ export async function generateFixtures (pattern, { srcPath, destPath }) {
  * Generate macro-options.json from component data
  *
  * @param {AssetEntry[0]} pattern - Path to ${componentName}.yaml
- * @param {AssetEntry[1]} options - Asset options
+ * @param {Pick<AssetEntry[1], "srcPath" | "destPath">} options - Asset options
  */
 export async function generateMacroOptions (pattern, { srcPath, destPath }) {
   const componentDataPaths = await getListing(srcPath, pattern)
@@ -55,7 +54,6 @@ export async function generateMacroOptions (pattern, { srcPath, destPath }) {
 
     // Write to destination
     await files.write(componentDataPath, {
-      srcPath,
       destPath,
 
       // Rename to 'macro-options.json'

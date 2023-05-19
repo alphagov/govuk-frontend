@@ -15,8 +15,7 @@ import { isDev } from './helpers/task-arguments.mjs'
  * Compile JavaScript task
  *
  * @param {string} pattern - Minimatch pattern
- * @param {AssetEntry[1]} [options] - Asset options
- * @returns {Promise<void>}
+ * @param {AssetEntry[1]} options - Asset options
  */
 export async function compile (pattern, options) {
   const modulePaths = await getListing(options.srcPath, pattern)

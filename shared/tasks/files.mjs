@@ -11,7 +11,7 @@ import slash from 'slash'
  * Delete path globs for a given destination
  *
  * @param {string} pattern - Pattern to remove
- * @param {AssetEntry[1]} options - Asset options
+ * @param {Pick<AssetEntry[1], "destPath">} options - Asset options
  */
 export async function clean (pattern, { destPath }) {
   await deleteAsync(slash(join(destPath, pattern)), {
@@ -23,7 +23,7 @@ export async function clean (pattern, { destPath }) {
  * Write `packages/govuk-frontend/package.json` version to file
  *
  * @param {AssetEntry[0]} assetPath - File path to asset
- * @param {AssetEntry[1]} options - Asset options
+ * @param {Pick<AssetEntry[1], "destPath">} options - Asset options
  */
 export async function version (assetPath, options) {
   await write(assetPath, {
@@ -39,7 +39,7 @@ export async function version (assetPath, options) {
  * Write file task
  *
  * @param {AssetEntry[0]} assetPath - File path to asset
- * @param {AssetEntry[1]} options - Asset options
+ * @param {Pick<AssetEntry[1], "destPath" | "filePath" | "fileContents">} options - Asset options
  */
 export async function write (assetPath, { destPath, filePath, fileContents }) {
   const assetDestPath = join(destPath, filePath ? filePath(parse(assetPath)) : assetPath)
@@ -57,7 +57,7 @@ export async function write (assetPath, { destPath, filePath, fileContents }) {
  * Copies files to destination
  *
  * @param {string} pattern - Minimatch pattern
- * @param {AssetEntry[1]} options - Asset options
+ * @param {Pick<AssetEntry[1], "srcPath" | "destPath">} options - Asset options
  */
 export async function copy (pattern, { srcPath, destPath }) {
   await cpy([slash(join(srcPath, pattern))], destPath, { cwd: srcPath })

@@ -7,7 +7,7 @@ import { files } from './index.mjs'
  * Write config to JSON
  *
  * @param {AssetEntry[0]} modulePath - File path to config
- * @param {AssetEntry[1]} options - Asset options
+ * @param {Pick<AssetEntry[1], "srcPath" | "destPath">} options - Asset options
  * @returns {Promise<void>}
  */
 export async function compile (modulePath, options) {
