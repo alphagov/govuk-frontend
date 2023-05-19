@@ -24,7 +24,7 @@
     "build:app": "npm run build --workspace app",
     "build:package": "gulp build:package",
     "build:dist": "gulp build:dist",
-    "build:types": "tsc --build tsconfig.build.json",
+    "build:types": "tsc --build tsconfig.json tsconfig.build.json",
     "postbuild:package": "jest --color --selectProjects \"Build tasks\" --testMatch \"**/*package.test*\"",
     "postbuild:dist": "jest --color --selectProjects \"Build tasks\" --testMatch \"**/*dist.test*\"",
     "heroku-postbuild": "npm run build --workspace app",
