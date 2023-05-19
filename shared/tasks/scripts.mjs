@@ -26,7 +26,7 @@ export async function compile (pattern, options) {
 
     await Promise.all(compileTasks)
   } catch (cause) {
-    throw new PluginError('compile:js', cause)
+    throw new PluginError('shared/tasks/scripts', cause)
   }
 }
 
