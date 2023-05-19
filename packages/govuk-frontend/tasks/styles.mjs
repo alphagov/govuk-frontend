@@ -14,12 +14,10 @@ export const compile = (options) => gulp.series(
    */
   task.name('compile:scss', () =>
     styles.compile('**/*.scss', {
-      srcPath: join(options.srcPath, 'govuk'),
-      destPath: join(options.destPath, 'govuk'),
+      ...options,
 
-      filePath (file) {
-        return join(file.dir, `${file.name}.scss`)
-      }
+      srcPath: join(options.srcPath, 'govuk'),
+      destPath: join(options.destPath, 'govuk')
     })
   ),
 
@@ -28,12 +26,10 @@ export const compile = (options) => gulp.series(
    */
   task.name("compile:scss 'govuk-prototype-kit'", () =>
     styles.compile('init.scss', {
-      srcPath: join(options.srcPath, 'govuk-prototype-kit'),
-      destPath: join(options.destPath, 'govuk-prototype-kit'),
+      ...options,
 
-      filePath (file) {
-        return join(file.dir, `${file.name}.scss`)
-      }
+      srcPath: join(options.srcPath, 'govuk-prototype-kit'),
+      destPath: join(options.destPath, 'govuk-prototype-kit')
     })
   )
 )

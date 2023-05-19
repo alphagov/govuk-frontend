@@ -14,6 +14,8 @@ export const compile = (options) => gulp.series(
    */
   task.name('compile:mjs', () =>
     scripts.compile('!(*.test).mjs', {
+      ...options,
+
       srcPath: join(options.srcPath, 'govuk'),
       destPath: join(options.destPath, 'govuk-esm')
     })
@@ -24,11 +26,14 @@ export const compile = (options) => gulp.series(
    */
   task.name('compile:js', () =>
     scripts.compile('**/!(*.test).mjs', {
+      ...options,
+
       srcPath: join(options.srcPath, 'govuk'),
       destPath: join(options.destPath, 'govuk'),
 
-      filePath (file) {
-        return join(file.dir, `${file.name}.js`)
+      // Rename with `*.js` extension
+      filePath ({ dir, name }) {
+        return join(dir, `${name}.js`)
       }
     })
   ),
@@ -39,11 +44,7 @@ export const compile = (options) => gulp.series(
   task.name("compile:js 'govuk-prototype-kit'", () =>
     configs.compile('govuk-prototype-kit.config.mjs', {
       srcPath: join(options.srcPath, 'govuk-prototype-kit'),
-      destPath: resolve(options.destPath, '../'), // Top level (not dist) for compatibility
-
-      filePath (file) {
-        return join(file.dir, `${file.name}.json`)
-      }
+      destPath: resolve(options.destPath, '../') // Top level (not dist) for compatibility
     })
   )
 )

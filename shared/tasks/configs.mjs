@@ -7,7 +7,7 @@ import { files } from './index.mjs'
  * Write config to JSON
  *
  * @param {AssetEntry[0]} modulePath - File path to config
- * @param {AssetEntry[1]} options - Asset options
+ * @param {Pick<AssetEntry[1], "srcPath" | "destPath">} options - Asset options
  * @returns {Promise<void>}
  */
 export async function compile (modulePath, options) {
@@ -17,7 +17,12 @@ export async function compile (modulePath, options) {
   return files.write(modulePath, {
     ...options,
 
-    // Format config as JSON
+    // Rename with `*.json` extension
+    filePath ({ dir, name }) {
+      return join(dir, `${name}.json`)
+    },
+
+    // Add config as JSON (formatted)
     async fileContents () {
       return JSON.stringify(await configFn(), undefined, 2)
     }

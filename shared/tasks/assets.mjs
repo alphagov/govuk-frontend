@@ -26,6 +26,7 @@ export async function write (filePath, result) {
   writeTasks.push(files.write(base, {
     destPath: dir,
 
+    // Add source code
     async fileContents () {
       return code
     }
@@ -47,6 +48,7 @@ export async function write (filePath, result) {
     writeTasks.push(files.write(`${base}.map`, {
       destPath: dir,
 
+      // Add source map as JSON
       async fileContents () {
         return JSON.stringify(map)
       }
@@ -72,10 +74,10 @@ export async function write (filePath, result) {
  * Asset path options
  *
  * @typedef {object} AssetPathOptions
- * @property {string} [basePath] - Base directory, for example `/path/to/package`
- * @property {string} [srcPath] - Input directory, for example `/path/to/package/src`
- * @property {string} [destPath] - Output directory, for example `/path/to/package/dist`
- * @property {string} [workspace] - Workspace directory (relative), for example `package/dist`
+ * @property {string} basePath - Base directory, for example `/path/to/package`
+ * @property {string} srcPath - Input directory, for example `/path/to/package/src`
+ * @property {string} destPath - Output directory, for example `/path/to/package/dist`
+ * @property {string} workspace - Workspace directory (relative), for example `package/dist`
  */
 
 /**
@@ -84,7 +86,6 @@ export async function write (filePath, result) {
  * @typedef {object} AssetFileOptions
  * @property {(file: import('path').ParsedPath) => string} [filePath] - File path formatter
  * @property {(contents?: string) => Promise<string>} [fileContents] - File contents formatter
- * @property {string[]} [ignore] - File path patterns to ignore
  */
 
 /**

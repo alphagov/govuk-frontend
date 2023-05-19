@@ -13,9 +13,7 @@ import { fixtures, scripts, styles, templates } from '../index.mjs'
  */
 export default (options) => gulp.series(
   task.name('clean', () =>
-    files.clean('*', {
-      destPath: options.destPath
-    })
+    files.clean('*', options)
   ),
 
   fixtures(options),

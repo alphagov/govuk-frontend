@@ -8,5 +8,10 @@
     "../../shared/lib",
     "../../shared/tasks"
   ],
-  "exclude": ["./dist/**", "../govuk-frontend/dist/**"]
+  "exclude": ["./dist/**", "../govuk-frontend/dist/**"],
+  "compilerOptions": {
+    "paths": {
+      "govuk-frontend": ["../govuk-frontend/src/govuk/all.mjs"]
+    }
+  }
 }

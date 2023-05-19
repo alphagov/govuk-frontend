@@ -12,9 +12,7 @@ import gulp from 'gulp'
  */
 export default (options) => gulp.series(
   task.name('clean', () =>
-    files.clean('*', {
-      destPath: options.destPath
-    })
+    files.clean('*', options)
   ),
 
   // Copy GOV.UK Frontend static assets
@@ -28,11 +26,13 @@ export default (options) => gulp.series(
   // Compile GOV.UK Frontend JavaScript
   task.name('compile:js', () =>
     scripts.compile('all.mjs', {
-      srcPath: join(options.srcPath, 'govuk'),
-      destPath: options.destPath,
+      ...options,
 
-      filePath (file) {
-        return join(file.dir, `${file.name.replace(/^all/, pkg.name)}-${pkg.version}.min.js`)
+      srcPath: join(options.srcPath, 'govuk'),
+
+      // Rename using package name (versioned) and `*.min.js` extension
+      filePath ({ dir, name }) {
+        return join(dir, `${name.replace(/^all/, pkg.name)}-${pkg.version}.min.js`)
       }
     })
   ),
@@ -40,19 +40,19 @@ export default (options) => gulp.series(
   // Compile GOV.UK Frontend Sass
   task.name('compile:scss', () =>
     styles.compile('**/[!_]*.scss', {
-      srcPath: join(options.srcPath, 'govuk'),
-      destPath: options.destPath,
+      ...options,
 
-      filePath (file) {
-        return join(file.dir, `${file.name.replace(/^all/, pkg.name)}-${pkg.version}.min.css`)
+      srcPath: join(options.srcPath, 'govuk'),
+
+      // Rename using package name (versioned) and `*.min.css` extension
+      filePath ({ dir, name }) {
+        return join(dir, `${name.replace(/^all/, pkg.name)}-${pkg.version}.min.css`)
       }
     })
   ),
 
   // Update GOV.UK Frontend version
   task.name("file:version 'VERSION.txt'", () =>
-    files.version('VERSION.txt', {
-      destPath: options.destPath
-    })
+    files.version('VERSION.txt', options)
   )
 )

@@ -12,11 +12,14 @@ import gulp from 'gulp'
 export const compile = (options) => gulp.series(
   task.name('compile:scss', () =>
     styles.compile('**/[!_]*.scss', {
+      ...options,
+
       srcPath: join(options.srcPath, 'stylesheets'),
       destPath: join(options.destPath, 'stylesheets'),
 
-      filePath (file) {
-        return join(file.dir, `${file.name}.min.css`)
+      // Rename with `*.min.css` extension
+      filePath ({ dir, name }) {
+        return join(dir, `${name}.min.css`)
       }
     })
   ),
