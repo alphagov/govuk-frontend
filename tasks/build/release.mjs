@@ -12,9 +12,7 @@ import gulp from 'gulp'
  */
 export default (options) => gulp.series(
   task.name('clean', () =>
-    files.clean('*', {
-      destPath: options.destPath
-    })
+    files.clean('*', options)
   ),
 
   // Copy GOV.UK Frontend static assets
@@ -28,8 +26,9 @@ export default (options) => gulp.series(
   // Compile GOV.UK Frontend JavaScript
   task.name('compile:js', () =>
     scripts.compile('all.mjs', {
+      ...options,
+
       srcPath: join(options.srcPath, 'govuk'),
-      destPath: options.destPath,
 
       filePath (file) {
         return join(file.dir, `${file.name.replace(/^all/, pkg.name)}-${pkg.version}.min.js`)
@@ -40,8 +39,9 @@ export default (options) => gulp.series(
   // Compile GOV.UK Frontend Sass
   task.name('compile:scss', () =>
     styles.compile('**/[!_]*.scss', {
+      ...options,
+
       srcPath: join(options.srcPath, 'govuk'),
-      destPath: options.destPath,
 
       filePath (file) {
         return join(file.dir, `${file.name.replace(/^all/, pkg.name)}-${pkg.version}.min.css`)
@@ -51,8 +51,6 @@ export default (options) => gulp.series(
 
   // Update GOV.UK Frontend version
   task.name("file:version 'VERSION.txt'", () =>
-    files.version('VERSION.txt', {
-      destPath: options.destPath
-    })
+    files.version('VERSION.txt', options)
   )
 )
