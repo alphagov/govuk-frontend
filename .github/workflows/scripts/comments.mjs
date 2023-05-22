@@ -1,12 +1,57 @@
+import { readFile } from 'node:fs/promises'
+
+const DIST_DIFFS = [
+  {
+    file: 'dist-js.diff',
+    title: 'JavaScript changes to `dist`',
+    marker: 'dist-diff-js'
+  },
+  {
+    file: 'dist-css.diff',
+    title: 'CSS changes to `dist`',
+    marker: 'dist-diff-css'
+  },
+  {
+    file: 'dist-other.diff',
+    title: 'Other changes to `dist`',
+    marker: 'dist-diff-other'
+  }
+]
+
 /**
  * @param {object} githubContext - Github Action context
  * @param {import('@octokit/rest').Octokit} githubContext.github
  * @param {import('@actions/github').context} githubContext.context
- * @param {number} issueNumber - GitHub issue or PR number
+ * @param {string} githubContext.workspacePath
+ * @param {number} githubContext.issueNumber
+ * @param {string} githubContext.commit
+ */
+export async function commentDistDiffs (
+  { github, context, workspacePath, issueNumber, commit }
+) {
+  for (const { file, title, marker } of DIST_DIFFS) {
+    // Read diff from previous step
+    const diffText = await readFile(`${workspacePath}/${file}`, 'utf8')
+
+    // Add or update comment on PR
+    await comment({ github, context, issueNumber }, marker, `## ${title}\n` +
+      '```diff\n' +
+      `${diffText}\n` +
+      '```\n\n' +
+      `SHA: ${commit}\n`
+    )
+  }
+}
+
+/**
+ * @param {object} githubContext - Github Action context
+ * @param {import('@octokit/rest').Octokit} githubContext.github
+ * @param {import('@actions/github').context} githubContext.context
+ * @param {number} githubContext.issueNumber - GitHub issue or PR number
  * @param {string} markerText - A unique marker used to identify the correct comment
  * @param {string} bodyText - The body of the comment
  */
-export async function comment ({ github, context }, issueNumber, markerText, bodyText) {
+export async function comment ({ github, context, issueNumber }, markerText, bodyText) {
   const marker = `<!-- ${markerText} -->\n`
   const body = `${marker}${bodyText}`
 
