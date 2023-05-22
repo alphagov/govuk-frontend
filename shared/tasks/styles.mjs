@@ -37,7 +37,7 @@ export async function compile (pattern, options) {
  *
  * @param {AssetEntry} assetEntry - Asset entry
  */
-export async function compileStylesheet ([modulePath, { basePath, srcPath, destPath, filePath }]) {
+export async function compileStylesheet ([modulePath, { configPath, srcPath, destPath, filePath }]) {
   const moduleSrcPath = join(srcPath, modulePath)
   const moduleDestPath = join(destPath, filePath ? filePath(parse(modulePath)) : modulePath)
 
@@ -105,7 +105,7 @@ export async function compileStylesheet ([modulePath, { basePath, srcPath, destP
   }
 
   // Locate PostCSS config
-  const config = await postcssrc(options, basePath)
+  const config = await postcssrc(options, configPath)
 
   // Transform with PostCSS
   const result = await postcss(config.plugins)

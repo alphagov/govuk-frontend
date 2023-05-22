@@ -16,6 +16,7 @@ export const compile = (options) => gulp.series(
 
       srcPath: join(options.srcPath, 'stylesheets'),
       destPath: join(options.destPath, 'stylesheets'),
+      configPath: join(options.basePath, 'postcss.config.mjs'),
 
       // Rename with `*.min.css` extension
       filePath ({ dir, name }) {

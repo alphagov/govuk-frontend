@@ -17,7 +17,8 @@ export const compile = (options) => gulp.series(
       ...options,
 
       srcPath: join(options.srcPath, 'govuk'),
-      destPath: join(options.destPath, 'govuk')
+      destPath: join(options.destPath, 'govuk'),
+      configPath: join(options.basePath, 'postcss.config.mjs')
     })
   ),
 
@@ -29,7 +30,8 @@ export const compile = (options) => gulp.series(
       ...options,
 
       srcPath: join(options.srcPath, 'govuk-prototype-kit'),
-      destPath: join(options.destPath, 'govuk-prototype-kit')
+      destPath: join(options.destPath, 'govuk-prototype-kit'),
+      configPath: join(options.basePath, 'postcss.config.mjs')
     })
   )
 )
