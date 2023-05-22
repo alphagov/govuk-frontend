@@ -70,7 +70,6 @@
     "jest-serializer-html": "^7.1.0",
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
-    "puppeteer": "^20.2.0",
     "standard": "^17.0.0",
     "stylelint": "^14.16.1",
     "stylelint-config-gds": "^0.3.0",
@@ -86,7 +85,8 @@
     "@types/jest": "^29.5.1",
     "@types/jest-axe": "^3.5.5",
     "@types/node": "^20.2.3",
-    "@types/nunjucks": "^3.2.2"
+    "@types/nunjucks": "^3.2.2",
+    "puppeteer": "^20.2.0"
   },
   "overrides": {
     "chokidar@^2": {
