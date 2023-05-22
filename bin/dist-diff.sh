@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+set -ex
 
 # Computes the diff of `dist` between a provided base reference (branch, tag, commit SHA) and the current HEAD.
 # It outputs the resulting diff in the provided output folder
@@ -25,5 +25,5 @@ git diff \
   
 # Diff the rest of the files, excluding the sourcemaps and the minified files
 # See https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec
-git diff -M05 $base -- dist ":(exclude)*.map" \
-  > $output_folder/dist.diff
+git diff -M05 $base -- dist ":(exclude)dist/*.min.*" \
+  > $output_folder/dist-other.diff
