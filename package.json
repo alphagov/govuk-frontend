@@ -86,7 +86,7 @@
     "@types/jest-axe": "^3.5.5",
     "@types/node": "^20.2.3",
     "@types/nunjucks": "^3.2.2",
-    "puppeteer": "^20.2.0"
+    "puppeteer": "^20.3.0"
   },
   "overrides": {
     "chokidar@^2": {
