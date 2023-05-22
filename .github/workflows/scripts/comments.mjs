@@ -34,13 +34,35 @@ export async function commentDistDiffs (
     const diffText = await readFile(`${workspacePath}/${file}`, 'utf8')
 
     // Add or update comment on PR
-    await comment({ github, context, issueNumber }, marker, `## ${title}\n` +
-      '```diff\n' +
-      `${diffText}\n` +
-      '```\n\n' +
-      `SHA: ${commit}\n`
-    )
+    try {
+      await comment({ github, context, issueNumber }, marker, `## ${title}\n` +
+        '```diff\n' +
+        `${diffText}\n` +
+        '```\n\n' +
+        `SHA: ${commit}\n`
+      )
+    } catch {
+      await comment({ github, context, issueNumber }, marker, `## ${title}\n` +
+        `The diff could not be posted as a comment. You can download it from the [workflow artifacts](${githubActionArtifactsUrl(context.runId)}).` +
+        '\n\n' +
+        `SHA: ${commit}\n`
+      )
+    }
   }
+}
+
+/**
+ * Generates a URL to the "Artifacts" section of a Github action run
+ *
+ * Unfortunately the best we can do here is a link to the "Artifacts" section as
+ * [the upload-artifact action doesn't provide
+ * the public URL](https://github.com/actions/upload-artifact/issues/50) :'(
+ *
+ * @param {number} runId - - The ID of the Github action run
+ * @returns {string} The URL to the "Artifacts" section of the given run
+ */
+function githubActionArtifactsUrl (runId) {
+  return `https://github.com/alphagov/govuk-frontend/actions/runs/${runId}/#artifacts`
 }
 
 /**
