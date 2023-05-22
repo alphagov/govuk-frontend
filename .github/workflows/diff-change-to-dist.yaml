@@ -52,13 +52,16 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             const { readFile } = require('node:fs/promises')
-            const { commentOnPr } = await import('${{ github.workspace }}/.github/workflows/scripts/comments.mjs')
+            const { comment } = await import('${{ github.workspace }}/.github/workflows/scripts/comments.mjs')
 
             // Read diff from previous step
             const diffText = await readFile('${{ github.workspace }}/dist.diff', 'utf8')
 
+            // PR information
+            const number = '${{ github.event.pull_request.number }}'
+
             // Add or update comment on PR
-            await commentOnPr({ github, context }, 'Diff release', '## Changes to dist\n' +
+            await comment({ github, context }, number, 'Diff release', '## Changes to dist\n' +
               '```diff\n' +
               `${diffText}\n` +
               '\nSHA: ${context.sha}\n' +

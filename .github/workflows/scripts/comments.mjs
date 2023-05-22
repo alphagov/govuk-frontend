@@ -2,14 +2,11 @@
  * @param {object} githubContext - Github Action context
  * @param {import('@octokit/rest').Octokit} githubContext.github
  * @param {import('@actions/github').context} githubContext.context
+ * @param {number} issueNumber - GitHub issue or PR number
  * @param {string} markerText - A unique marker used to identify the correct comment
  * @param {string} bodyText - The body of the comment
  */
-export async function commentOnPr ({ github, context }, markerText, bodyText) {
-  if (!context.payload.pull_request) {
-    throw new Error('Workflow "comment on PR" requires a PR')
-  }
-
+export async function comment ({ github, context }, issueNumber, markerText, bodyText) {
   const marker = `<!-- ${markerText} -->\n`
   const body = `${marker}${bodyText}`
 
@@ -19,7 +16,7 @@ export async function commentOnPr ({ github, context }, markerText, bodyText) {
    * @satisfies {IssueCommentsListParams}
    */
   const issueParameters = {
-    issue_number: context.payload.pull_request.number,
+    issue_number: issueNumber,
     owner: context.repo.owner,
     repo: context.repo.repo
   }
