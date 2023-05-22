@@ -19,12 +19,7 @@ const DIST_DIFFS = [
 ]
 
 /**
- * @param {object} githubContext - Github Action context
- * @param {import('@octokit/rest').Octokit} githubContext.github
- * @param {import('@actions/github').context} githubContext.context
- * @param {string} githubContext.workspacePath
- * @param {number} githubContext.issueNumber
- * @param {string} githubContext.commit
+ * @param {GithubActionContext} githubActionContext - Github Action context
  */
 export async function commentDistDiffs (
   { github, context, workspacePath, issueNumber, commit }
@@ -66,10 +61,7 @@ function githubActionArtifactsUrl (runId) {
 }
 
 /**
- * @param {object} githubContext - Github Action context
- * @param {import('@octokit/rest').Octokit} githubContext.github
- * @param {import('@actions/github').context} githubContext.context
- * @param {number} githubContext.issueNumber - GitHub issue or PR number
+ * @param {Pick<GithubActionContext, "github" | "context" | "issueNumber">} githubContext - Github Action context
  * @param {string} markerText - A unique marker used to identify the correct comment
  * @param {string} bodyText - The body of the comment
  */
@@ -113,6 +105,15 @@ export async function comment ({ github, context, issueNumber }, markerText, bod
     ? github.rest.issues.createComment({ ...issueParameters, body })
     : github.rest.issues.updateComment({ ...issueParameters, body, comment_id: commentId }))
 }
+
+/**
+ * @typedef {object} GithubActionContext
+ * @property {import('@octokit/rest').Octokit} github - The pre-authenticated Octokit provided by Github actions
+ * @property {import('@actions/github').context} context - The context of the Github action
+ * @property {string} workspacePath - The path to the root of the
+ * @property {number} issueNumber - This number of the issue the action relates to
+ * @property {string} commit - The SHA of the commit that triggered the action
+ */
 
 /**
  * @typedef {import('@octokit/plugin-rest-endpoint-methods').RestEndpointMethodTypes["issues"]} IssuesEndpoint
