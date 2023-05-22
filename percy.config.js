@@ -7,6 +7,7 @@ const { executablePath } = require('puppeteer')
  */
 module.exports = {
   discovery: {
+    concurrency: 1,
     launchOptions: {
       executable: executablePath()
     }
