@@ -1,5 +1,4 @@
 import percySnapshot from '@percy/puppeteer'
-import { isPercyEnabled } from '@percy/sdk-utils'
 import { download } from 'govuk-frontend-helpers/jest/browser/download.mjs'
 import { goToComponent, goToExample } from 'govuk-frontend-helpers/puppeteer'
 import { filterPath, getDirectories, getListing } from 'govuk-frontend-lib/files'
@@ -25,10 +24,6 @@ export async function launch () {
  * @returns {Promise<void>}
  */
 export async function screenshots () {
-  if (!await isPercyEnabled()) {
-    throw new Error('Percy healthcheck failed')
-  }
-
   const browser = await launch()
   const componentNames = await getDirectories(packageNameToPath('govuk-frontend', 'src/govuk/components'))
   const exampleNames = ['text-alignment', 'typography']
