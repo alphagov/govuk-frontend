@@ -10,7 +10,7 @@
   "license": "MIT",
   "devDependencies": {
     "@npmcli/run-script": "^6.0.2",
-    "@percy/cli": "^1.24.0",
+    "@percy/cli": "^1.24.2",
     "@percy/puppeteer": "^2.0.2",
     "@percy/sdk-utils": "^1.24.0",
     "chalk": "^5.2.0",
