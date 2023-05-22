@@ -9,10 +9,12 @@ permissions:
 
 jobs:
   generate-diff:
-    name: Generate Diff
+    name: Generate diff
     runs-on: ubuntu-latest
-    # Abort if run from a fork, as token won't have write access to post comment
-    if: github.event.pull_request.head.repo.full_name == github.repository
+
+    # Skip when token write permissions are unavailable on forks
+    if: ${{ !github.event.pull_request.head.repo.fork }}
+
     steps:
       - uses: actions/checkout@v3
         with:
@@ -49,19 +51,20 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const fs = require('fs').promises
-            const diff = await fs.readFile(
-              process.env.GITHUB_WORKSPACE + '/dist.diff', 'utf8'
-            )
+            const { readFile } = require('node:fs/promises')
+            const { comment } = await import('${{ github.workspace }}/.github/workflows/scripts/comments.mjs')
 
-            const commentText = '## Changes to dist\n' +
+            // Read diff from previous step
+            const diffText = await readFile('${{ github.workspace }}/dist.diff', 'utf8')
+
+            // PR information
+            const number = '${{ github.event.pull_request.number }}'
+            const commit = '${{ github.event.pull_request.head.sha }}'
+
+            // Add or update comment on PR
+            await comment({ github, context }, number, 'Diff release', '## Changes to dist\n' +
               '```diff\n' +
-              diff +
-              '\n```'
-
-            github.rest.issues.createComment({
-              issue_number: context.payload.pull_request.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: commentText
-            })
+              `${diffText}\n` +
+              '```\n\n' +
+              `SHA: ${commit}\n`
+            )
