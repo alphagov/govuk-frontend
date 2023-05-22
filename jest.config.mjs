@@ -1,7 +1,7 @@
 import jestPuppeteerConfig from './jest-puppeteer.config.js'
 
 // Detect when browser has been launched headless
-const { headless = true } = jestPuppeteerConfig.launch
+const { headless = 'new' } = jestPuppeteerConfig.launch
 
 /**
  * Jest project config defaults

@@ -14,7 +14,7 @@ export async function launch () {
   await download()
 
   // Open browser
-  return puppeteer.launch()
+  return puppeteer.launch({ headless: 'new' })
 }
 
 /**
