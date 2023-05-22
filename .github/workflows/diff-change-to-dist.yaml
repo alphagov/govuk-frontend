@@ -59,11 +59,12 @@ jobs:
 
             // PR information
             const number = '${{ github.event.pull_request.number }}'
+            const commit = '${{ github.event.pull_request.head.sha }}'
 
             // Add or update comment on PR
             await comment({ github, context }, number, 'Diff release', '## Changes to dist\n' +
               '```diff\n' +
               `${diffText}\n` +
-              '\nSHA: ${context.sha}\n' +
-              '```'
+              '```\n\n' +
+              `SHA: ${commit}\n`
             )
