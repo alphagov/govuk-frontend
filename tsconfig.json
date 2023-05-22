@@ -3,6 +3,9 @@
   "files": [],
   "references": [
     {
+      "path": "./.github/workflows/scripts"
+    },
+    {
       "path": "./packages/govuk-frontend-review"
     },
     {
