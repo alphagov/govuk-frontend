@@ -1,71 +1,54 @@
 import { readFile } from 'node:fs/promises'
 
-const DIST_DIFFS = [
-  {
-    file: 'dist-js.diff',
-    title: 'JavaScript changes to `dist`',
-    marker: 'dist-diff-js'
-  },
-  {
-    file: 'dist-css.diff',
-    title: 'CSS changes to `dist`',
-    marker: 'dist-diff-css'
-  },
-  {
-    file: 'dist-other.diff',
-    title: 'Other changes to `dist`',
-    marker: 'dist-diff-other'
-  }
-]
-
 /**
- * @param {GithubActionContext} githubActionContext - Github Action context
+ * Posts the content of a diff as a comment on a Github issue
+ *
+ * @param {GithubActionContext} githubActionContext
+ * @param {number} issueNumber
+ * @param {DiffComment} diffComment
  */
-export async function commentDistDiffs (
-  { github, context, workspacePath, issueNumber, commit }
+export async function commentDiff (
+  githubActionContext,
+  issueNumber,
+  { path, title, markerText }
 ) {
-  for (const { file, title, marker } of DIST_DIFFS) {
-    // Read diff from previous step
-    const diffText = await readFile(`${workspacePath}/${file}`, 'utf8')
+  // Read diff from previous step
+  const diffText = await readFile(path, 'utf8')
 
-    // Add or update comment on PR
-    try {
-      await comment({ github, context, issueNumber }, marker, `## ${title}\n` +
+  // Add or update comment on PR
+  try {
+    await comment(
+      githubActionContext,
+      issueNumber,
+      markerText,
+      `## ${title}\n` +
         '```diff\n' +
         `${diffText}\n` +
         '```\n\n' +
-        `SHA: ${commit}\n`
-      )
-    } catch {
-      await comment({ github, context, issueNumber }, marker, `## ${title}\n` +
-        `The diff could not be posted as a comment. You can download it from the [workflow artifacts](${githubActionArtifactsUrl(context.runId)}).` +
+        `SHA: ${githubActionContext.commit}\n`
+    )
+  } catch {
+    await comment(
+      githubActionContext,
+      issueNumber,
+      markerText,
+      `## ${title}\n` +
+        `The diff could not be posted as a comment. You can download it from the [workflow artifacts](${githubActionArtifactsUrl(
+          githubActionContext.context.runId
+        )}).` +
         '\n\n' +
-        `SHA: ${commit}\n`
-      )
-    }
+        `SHA: ${githubActionContext.commit}\n`
+    )
   }
 }
 
 /**
- * Generates a URL to the "Artifacts" section of a Github action run
- *
- * Unfortunately the best we can do here is a link to the "Artifacts" section as
- * [the upload-artifact action doesn't provide
- * the public URL](https://github.com/actions/upload-artifact/issues/50) :'(
- *
- * @param {number} runId - - The ID of the Github action run
- * @returns {string} The URL to the "Artifacts" section of the given run
- */
-function githubActionArtifactsUrl (runId) {
-  return `https://github.com/alphagov/govuk-frontend/actions/runs/${runId}/#artifacts`
-}
-
-/**
- * @param {Pick<GithubActionContext, "github" | "context" | "issueNumber">} githubContext - Github Action context
+ * @param {GithubActionContext} githubContext - Github Action context
+ * @param {number} issueNumber - The number of the issue/PR on which to post the comment
  * @param {string} markerText - A unique marker used to identify the correct comment
  * @param {string} bodyText - The body of the comment
  */
-export async function comment ({ github, context, issueNumber }, markerText, bodyText) {
+export async function comment ({ github, context }, issueNumber, markerText, bodyText) {
   const marker = `<!-- ${markerText} -->\n`
   const body = `${marker}${bodyText}`
 
@@ -99,7 +82,7 @@ export async function comment ({ github, context, issueNumber }, markerText, bod
   /**
    * Create GitHub issue comment
    *
-   * Updates existing commentby ID if available
+   * Updates existing comment by ID if available
    */
   await (!commentId
     ? github.rest.issues.createComment({ ...issueParameters, body })
@@ -107,12 +90,31 @@ export async function comment ({ github, context, issueNumber }, markerText, bod
 }
 
 /**
+ * Generates a URL to the "Artifacts" section of a Github action run
+ *
+ * Unfortunately the best we can do here is a link to the "Artifacts" section as
+ * [the upload-artifact action doesn't provide
+ * the public URL](https://github.com/actions/upload-artifact/issues/50) :'(
+ *
+ * @param {number} runId - - The ID of the Github action run
+ * @returns {string} The URL to the "Artifacts" section of the given run
+ */
+function githubActionArtifactsUrl (runId) {
+  return `https://github.com/alphagov/govuk-frontend/actions/runs/${runId}/#artifacts`
+}
+
+/**
  * @typedef {object} GithubActionContext
  * @property {import('@octokit/rest').Octokit} github - The pre-authenticated Octokit provided by Github actions
  * @property {import('@actions/github').context} context - The context of the Github action
- * @property {string} workspacePath - The path to the root of the
- * @property {number} issueNumber - This number of the issue the action relates to
  * @property {string} commit - The SHA of the commit that triggered the action
+ */
+
+/**
+ * @typedef {object} DiffComment
+ * @property {string} path - The path of the file to post as a comment
+ * @property {string} title - The title of the comment
+ * @property {string} markerText - The marker to identify the comment
  */
 
 /**

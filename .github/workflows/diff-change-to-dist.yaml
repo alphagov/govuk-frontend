@@ -51,12 +51,30 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const { readFile } = require('node:fs/promises')
-            const { commentDistDiffs } = await import('${{ github.workspace }}/.github/workflows/scripts/comments.mjs')
+            const { commentDiff } = await import('${{ github.workspace }}/.github/workflows/scripts/comments.mjs')
 
             // PR information
-            const issueNumber = '${{ github.event.pull_request.number }}'
+            const issueNumber = ${{ github.event.pull_request.number }}
             const commit = '${{ github.event.pull_request.head.sha }}'
-            const workspacePath = '${{github.workspace}}'
 
-            await commentDistDiffs({github, context, workspacePath, issueNumber, commit})
+            const diffs = [
+              {
+                path: '${{ github.workspace }}/dist-js.diff',
+                title: 'JavaScript changes to `dist`',
+                markerText: 'dist-diff-js'
+              },
+              {
+                path: '${{ github.workspace }}/dist-css.diff',
+                title: 'Stylesheets changes to `dist`',
+                markerText: 'dist-diff-css'
+              },
+              {
+                path: '${{ github.workspace }}/dist-other.diff',
+                title: 'Other changes to `dist`',
+                markerText: 'dist-diff-other'
+              }
+            ]
+
+            for (const diff of diffs) {
+              await commentDiff({ github, context, commit }, issueNumber, diff)
+            }
