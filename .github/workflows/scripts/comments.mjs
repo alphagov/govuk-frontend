@@ -24,20 +24,20 @@ export async function commentDiff (
       `## ${title}\n` +
         '```diff\n' +
         `${diffText}\n` +
-        '```\n\n' +
-        `SHA: ${githubActionContext.commit}\n`
+        '```'
     )
   } catch {
     await comment(
       githubActionContext,
       issueNumber,
       markerText,
+      // Unfortunately the best we can do here is a link to the "Artifacts"
+      // section as [the upload-artifact action doesn't provide the public
+      // URL](https://github.com/actions/upload-artifact/issues/50) :'(
       `## ${title}\n` +
-        `The diff could not be posted as a comment. You can download it from the [workflow artifacts](${githubActionArtifactsUrl(
-          githubActionContext.context.runId
-        )}).` +
-        '\n\n' +
-        `SHA: ${githubActionContext.commit}\n`
+        `The diff could not be posted as a comment. You can download it from the [workflow artifacts](${githubActionRunUrl(
+          githubActionContext.context
+        )}#artifacts).`
     )
   }
 }
@@ -48,9 +48,10 @@ export async function commentDiff (
  * @param {string} markerText - A unique marker used to identify the correct comment
  * @param {string} bodyText - The body of the comment
  */
-export async function comment ({ github, context }, issueNumber, markerText, bodyText) {
+export async function comment ({ github, context, commit }, issueNumber, markerText, bodyText) {
   const marker = `<!-- ${markerText} -->\n`
-  const body = `${marker}${bodyText}`
+  const footer = renderCommentFooter({ context, commit })
+  const body = `${marker}${bodyText}\n\n${footer}`
 
   let commentId
 
@@ -90,17 +91,23 @@ export async function comment ({ github, context }, issueNumber, markerText, bod
 }
 
 /**
- * Generates a URL to the "Artifacts" section of a Github action run
+ * @param {Pick<GithubActionContext, "context" | "commit">} githubActionContext
+ * @returns {string} - The content for the footer
+ */
+function renderCommentFooter ({ context, commit }) {
+  return `[Action run](${githubActionRunUrl(context)}) for ${commit}`
+}
+
+/**
+ * Generates a URL to the Github action run
  *
- * Unfortunately the best we can do here is a link to the "Artifacts" section as
- * [the upload-artifact action doesn't provide
- * the public URL](https://github.com/actions/upload-artifact/issues/50) :'(
- *
- * @param {number} runId - - The ID of the Github action run
+ * @param {import('@actions/github').context} context - The context of the github action
  * @returns {string} The URL to the "Artifacts" section of the given run
  */
-function githubActionArtifactsUrl (runId) {
-  return `https://github.com/alphagov/govuk-frontend/actions/runs/${runId}/#artifacts`
+function githubActionRunUrl (context) {
+  const { runId, repo } = context
+
+  return `https://github.com/${repo.owner}/${repo.repo}/actions/runs/${runId}`
 }
 
 /**
