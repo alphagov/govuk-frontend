@@ -4,6 +4,17 @@
 
 ### New features
 
+#### Tag design changes
+
+The design of the tag component has changed to improve accessibility and readability.
+
+Text within the tag is no longer bold and uppercase with extra letter spacing, and is
+instead regular 19px text. Due to this, there may be changes to the width of existing tags.
+
+The colours have also changed to make them more distinguishable from buttons.
+
+This change was made in [pull request #3502: Tag design changes](https://github.com/alphagov/govuk-frontend/pull/3502).
+
 #### Added inverse modifier for buttons on dark backgrounds
 
 You can now style buttons on dark backgrounds to have a white background colour by adding the `govuk-button--inverse` class.
