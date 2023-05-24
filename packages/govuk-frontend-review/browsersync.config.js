@@ -21,7 +21,8 @@ module.exports = {
 
   // Files to watch for auto reload
   files: [
-    join(paths.app, 'dist/javascripts/**/*.mjs')
+    join(paths.app, 'dist/javascripts/**/*.mjs'),
+    join(paths.app, 'dist/stylesheets/**/*.css')
   ],
   ignore: ['**/*.test.*'],
 
@@ -30,6 +31,10 @@ module.exports = {
     {
       route: '/javascripts',
       dir: join(paths.app, 'dist/javascripts')
+    },
+    {
+      route: '/stylesheets',
+      dir: join(paths.app, 'dist/stylesheets')
     }
   ]
 }
