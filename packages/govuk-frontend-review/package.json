@@ -14,6 +14,7 @@
     "build": "gulp build --color",
     "build:sassdoc": "sassdoc --config sassdoc.config.yaml ../govuk-frontend/src/govuk",
     "build:jsdoc": "typedoc",
+    "proxy": "browser-sync start --config browsersync.config.js",
     "serve": "nodemon",
     "start": "node src/start.mjs",
     "test:screenshots": "gulp screenshots --color"
@@ -38,6 +39,7 @@
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@rollup/plugin-terser": "^0.4.3",
     "autoprefixer": "^10.4.14",
+    "browser-sync": "^2.29.3",
     "cheerio": "^1.0.0-rc.12",
     "cssnano": "^6.0.1",
     "govuk-frontend-tasks": "*",

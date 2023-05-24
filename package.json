@@ -80,6 +80,7 @@
     "@actions/github": "^5.1.1",
     "@jest/environment": "^29.5.0",
     "@octokit/rest": "19.0.11",
+    "@types/browser-sync": "^2.27.0",
     "@types/express": "^4.17.17",
     "@types/gulp": "^4.0.10",
     "@types/jest": "^29.5.1",
