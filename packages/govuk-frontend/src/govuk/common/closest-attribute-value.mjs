@@ -1,5 +1,3 @@
-import '../vendor/polyfills/Element/prototype/closest.mjs'
-
 /**
  * Returns the value of the given attribute closest to the given element (including itself)
  *
