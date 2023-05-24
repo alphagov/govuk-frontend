@@ -1,6 +1,7 @@
 const { join } = require('path')
 
 const { paths, ports } = require('govuk-frontend-config')
+const { packageNameToPath } = require('govuk-frontend-lib/names')
 
 /**
  * Browsersync config
@@ -22,7 +23,9 @@ module.exports = {
   // Files to watch for auto reload
   files: [
     join(paths.app, 'dist/javascripts/**/*.mjs'),
-    join(paths.app, 'dist/stylesheets/**/*.css')
+    join(paths.app, 'dist/stylesheets/**/*.css'),
+    join(paths.app, 'src/views/**/*.njk'),
+    packageNameToPath('govuk-frontend', 'dist/govuk/**/*.njk')
   ],
   ignore: ['**/*.test.*'],
 
