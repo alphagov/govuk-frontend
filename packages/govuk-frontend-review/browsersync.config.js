@@ -12,5 +12,8 @@ module.exports = {
   ghostMode: false,
 
   // Prevent browser opening
-  open: false
+  open: false,
+
+  // Allow for Express.js restart
+  reloadDelay: 1000
 }
