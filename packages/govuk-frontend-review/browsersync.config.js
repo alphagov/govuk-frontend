@@ -22,7 +22,7 @@ module.exports = {
 
   // Files to watch for auto reload
   files: [
-    join(paths.app, 'dist/javascripts/**/*.mjs'),
+    join(paths.app, 'dist/javascripts/**/*.js'),
     join(paths.app, 'dist/stylesheets/**/*.css'),
     join(paths.app, 'src/views/**/*.njk'),
     packageNameToPath('govuk-frontend', 'dist/govuk/**/*.njk')
