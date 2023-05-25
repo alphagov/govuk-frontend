@@ -108,7 +108,7 @@ function renderCommentFooter ({ context, commit }) {
 function githubActionRunUrl (context) {
   const { runId, repo } = context
 
-  return `https://github.com/${repo.owner}/${repo.repo}/actions/runs/${runId}`
+  return `https://github.com/${repo.owner}/${repo.repo}/actions/runs/${runId}/attempts/${process.env.GITHUB_RUN_ATTEMPT}`
 }
 
 /**
