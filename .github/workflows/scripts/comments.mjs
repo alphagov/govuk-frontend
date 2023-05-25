@@ -21,24 +21,28 @@ export async function commentDiff (
     await comment(
       githubActionContext,
       issueNumber,
-      markerText,
-      `## ${title}\n` +
-        '```diff\n' +
-        `${diffText}\n` +
-        '```'
+      {
+        markerText,
+        title,
+        bodyText: '```diff\n' +
+          `${diffText}\n` +
+          '```'
+      }
     )
   } catch {
     await comment(
       githubActionContext,
       issueNumber,
-      markerText,
-      // Unfortunately the best we can do here is a link to the "Artifacts"
-      // section as [the upload-artifact action doesn't provide the public
-      // URL](https://github.com/actions/upload-artifact/issues/50) :'(
-      `## ${title}\n` +
-        `The diff could not be posted as a comment. You can download it from the [workflow artifacts](${githubActionRunUrl(
+      {
+        markerText,
+        title,
+        // Unfortunately the best we can do here is a link to the "Artifacts"
+        // section as [the upload-artifact action doesn't provide the public
+        // URL](https://github.com/actions/upload-artifact/issues/50) :'(
+        bodyText: `The diff could not be posted as a comment. You can download it from the [workflow artifacts](${githubActionRunUrl(
           githubActionContext.context
         )}#artifacts).`
+      }
     )
   }
 }
@@ -46,13 +50,20 @@ export async function commentDiff (
 /**
  * @param {GithubActionContext} githubContext - Github Action context
  * @param {number} issueNumber - The number of the issue/PR on which to post the comment
- * @param {string} markerText - A unique marker used to identify the correct comment
- * @param {string} bodyText - The body of the comment
+ * @param {object} comment
+ * @param {string} comment.markerText - A unique marker used to identify the correct comment
+ * @param {string} comment.title - The title of the comment
+ * @param {string} comment.bodyText - The body of the comment
  */
-export async function comment ({ github, context, commit }, issueNumber, markerText, bodyText) {
-  const marker = `<!-- ${markerText} -->\n`
-  const footer = renderCommentFooter({ context, commit })
-  const body = `${marker}${bodyText}\n\n${footer}`
+export async function comment ({ github, context, commit }, issueNumber, { title, markerText, bodyText }) {
+  const marker = `<!-- ${markerText} -->`
+  const body = [
+    marker,
+    `## ${title}`,
+    bodyText,
+    '\n---', // <hr> for a little extra separation from content
+    renderCommentFooter({ context, commit })
+  ].join('\n')
 
   let commentId
 
