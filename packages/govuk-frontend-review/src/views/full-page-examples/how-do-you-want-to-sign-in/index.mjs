@@ -10,7 +10,6 @@ export default (app) => {
     '/full-page-examples/how-do-you-want-to-sign-in',
     [
       body('sign-in')
-        .exists()
         .not().isEmpty().withMessage('Select how you want to sign in')
     ],
 
