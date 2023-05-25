@@ -1,6 +1,34 @@
 import { readFile } from 'node:fs/promises'
 
 /**
+ * Posts the content of multiple diffs in parallel on the given Github issue
+ *
+ * @param {GithubActionContext} githubActionContext
+ * @param {number} issueNumber
+ * @param {DiffComment[]} diffs
+ */
+export async function commentDiffs (
+  githubActionContext,
+  issueNumber,
+  diffs
+) {
+  // Run the comments in parallel to avoid that an early one failing prevents the others
+  // and use `allSettled` to avoid the promise rejecting on the first failure but wait
+  // for everything to complete
+  const results = await Promise.allSettled(
+    diffs.map((diff) =>
+      commentDiff(githubActionContext, issueNumber, diff)
+    )
+  )
+
+  if (results.some(result => result.status === 'rejected')) {
+    throw new Error('Posting diff comment failed', {
+      cause: results
+    })
+  }
+}
+
+/**
  * Posts the content of a diff as a comment on a Github issue
  *
  * @param {GithubActionContext} githubActionContext

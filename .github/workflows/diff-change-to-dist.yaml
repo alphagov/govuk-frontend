@@ -51,7 +51,7 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const { commentDiff } = await import('${{ github.workspace }}/.github/workflows/scripts/comments.mjs')
+            const { commentDiffs } = await import('${{ github.workspace }}/.github/workflows/scripts/comments.mjs')
 
             // PR information
             const issueNumber = ${{ github.event.pull_request.number }}
@@ -75,6 +75,4 @@ jobs:
               }
             ]
 
-            for (const diff of diffs) {
-              await commentDiff({ github, context, commit }, issueNumber, diff)
-            }
+            await commentDiffs({ github, context, commit }, issueNumber, diffs)
