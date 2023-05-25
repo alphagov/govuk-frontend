@@ -12,8 +12,9 @@ export async function commentDiff (
   issueNumber,
   { path, title, markerText }
 ) {
-  // Read diff from previous step
-  const diffText = await readFile(path, 'utf8')
+  // Read diff from previous step, defaulting to a little note if the diff is empty
+  // Using `||` and not `??` as `readFile` will return `''` (so not `null` nor `undefined` that `??` handles)
+  const diffText = await readFile(path, 'utf8') || 'No changes found.'
 
   // Add or update comment on PR
   try {
