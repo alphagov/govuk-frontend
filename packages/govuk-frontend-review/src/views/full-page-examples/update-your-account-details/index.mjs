@@ -1,22 +1,6 @@
 import { body, validationResult } from 'express-validator'
 
-// To make it easier to use in the view, might be nicer as a Nunjucks function
-function getErrors (errorsInstance) {
-  if (errorsInstance.isEmpty()) {
-    return false
-  }
-  const errors = errorsInstance.array()
-  const formattedErrors = {}
-  errors.forEach(error => {
-    formattedErrors[error.param] = {
-      id: error.param,
-      href: '#' + error.param,
-      value: error.value,
-      text: error.msg
-    }
-  })
-  return formattedErrors
-}
+import { formatValidationErrors } from '../../../utils.mjs'
 
 /**
  * @param {import('express').Application} app
@@ -40,7 +24,7 @@ export default (app) => {
      * @returns {void}
      */
     (request, response) => {
-      const errors = getErrors(validationResult(request))
+      const errors = formatValidationErrors(validationResult(request))
 
       if (!errors) {
         return response.render('./full-page-examples/update-your-account-details/confirm')
