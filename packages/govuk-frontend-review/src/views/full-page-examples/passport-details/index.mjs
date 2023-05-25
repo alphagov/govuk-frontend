@@ -43,7 +43,9 @@ export default (app) => {
         // Get the first error message and merge it into a single error message.
         errors[expiryNamePrefix] = {
           id: expiryNamePrefix,
-          href: '#' + firstExpiryErrorId
+          href: '#' + firstExpiryErrorId,
+          value: '',
+          text: ''
         }
 
         // Construct a single error message based on all three error messages.
