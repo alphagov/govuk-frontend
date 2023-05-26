@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises'
 
 /**
- * Posts the content of multiple diffs in parallel on the given Github issue
+ * Posts the content of multiple diffs in parallel on the given GitHub issue
  *
  * @param {GithubActionContext} githubActionContext
  * @param {number} issueNumber
@@ -29,7 +29,7 @@ export async function commentDiffs (
 }
 
 /**
- * Posts the content of a diff as a comment on a Github issue
+ * Posts the content of a diff as a comment on a GitHub issue
  *
  * @param {GithubActionContext} githubActionContext
  * @param {number} issueNumber
@@ -38,7 +38,7 @@ export async function commentDiffs (
 export async function commentDiff (
   githubActionContext,
   issueNumber,
-  { path, title, markerText }
+  { path, titleText, markerText }
 ) {
   // Read diff from previous step, defaulting to a little note if the diff is empty
   // Using `||` and not `??` as `readFile` will return `''` (so not `null` nor `undefined` that `??` handles)
@@ -51,7 +51,7 @@ export async function commentDiff (
       issueNumber,
       {
         markerText,
-        title,
+        titleText,
         bodyText: '```diff\n' +
           `${diffText}\n` +
           '```'
@@ -63,7 +63,7 @@ export async function commentDiff (
       issueNumber,
       {
         markerText,
-        title,
+        titleText,
         // Unfortunately the best we can do here is a link to the "Artifacts"
         // section as [the upload-artifact action doesn't provide the public
         // URL](https://github.com/actions/upload-artifact/issues/50) :'(
@@ -76,18 +76,18 @@ export async function commentDiff (
 }
 
 /**
- * @param {GithubActionContext} githubContext - Github Action context
+ * @param {GithubActionContext} githubContext - GitHub Action context
  * @param {number} issueNumber - The number of the issue/PR on which to post the comment
  * @param {object} comment
  * @param {string} comment.markerText - A unique marker used to identify the correct comment
- * @param {string} comment.title - The title of the comment
+ * @param {string} comment.titleText - The title of the comment
  * @param {string} comment.bodyText - The body of the comment
  */
-export async function comment ({ github, context, commit }, issueNumber, { title, markerText, bodyText }) {
+export async function comment ({ github, context, commit }, issueNumber, { titleText, markerText, bodyText }) {
   const marker = `<!-- ${markerText} -->`
   const body = [
     marker,
-    `## ${title}`,
+    `## ${titleText}`,
     bodyText,
     '\n---', // <hr> for a little extra separation from content
     renderCommentFooter({ context, commit })
@@ -139,9 +139,9 @@ function renderCommentFooter ({ context, commit }) {
 }
 
 /**
- * Generates a URL to the Github action run
+ * Generates a URL to the GitHub action run
  *
- * @param {import('@actions/github').context} context - The context of the github action
+ * @param {import('@actions/github').context} context - The context of the GitHub action
  * @returns {string} The URL to the "Artifacts" section of the given run
  */
 function githubActionRunUrl (context) {
@@ -152,15 +152,15 @@ function githubActionRunUrl (context) {
 
 /**
  * @typedef {object} GithubActionContext
- * @property {import('@octokit/rest').Octokit} github - The pre-authenticated Octokit provided by Github actions
- * @property {import('@actions/github').context} context - The context of the Github action
+ * @property {import('@octokit/rest').Octokit} github - The pre-authenticated Octokit provided by GitHub actions
+ * @property {import('@actions/github').context} context - The context of the GitHub action
  * @property {string} commit - The SHA of the commit that triggered the action
  */
 
 /**
  * @typedef {object} DiffComment
  * @property {string} path - The path of the file to post as a comment
- * @property {string} title - The title of the comment
+ * @property {string} titleText - The title of the comment
  * @property {string} markerText - The marker to identify the comment
  */
 

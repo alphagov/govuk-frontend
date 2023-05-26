@@ -60,17 +60,17 @@ jobs:
             const diffs = [
               {
                 path: '${{ github.workspace }}/dist-js.diff',
-                title: 'JavaScript changes to `dist`',
+                titleText: 'JavaScript changes to `dist`',
                 markerText: 'dist-diff-js'
               },
               {
                 path: '${{ github.workspace }}/dist-css.diff',
-                title: 'Stylesheets changes to `dist`',
+                titleText: 'Stylesheets changes to `dist`',
                 markerText: 'dist-diff-css'
               },
               {
                 path: '${{ github.workspace }}/dist-other.diff',
-                title: 'Other changes to `dist`',
+                titleText: 'Other changes to `dist`',
                 markerText: 'dist-diff-other'
               }
             ]
