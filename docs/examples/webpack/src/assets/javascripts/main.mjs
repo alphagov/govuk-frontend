@@ -1,7 +1,3 @@
-import { Button } from 'govuk-frontend'
+import { initAll } from 'govuk-frontend'
 
-const $buttons = document.querySelectorAll('[data-module="govuk-button"]')
-
-$buttons.forEach(($button) => {
-  new Button($button).init()
-})
+initAll()
