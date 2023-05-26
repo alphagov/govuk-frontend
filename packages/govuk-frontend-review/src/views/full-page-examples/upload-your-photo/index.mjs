@@ -13,7 +13,6 @@ export default (app) => {
         .exists()
         .not().isEmpty().withMessage('Select a photo'),
       body('terms-and-conditions')
-        .exists()
         .not().isEmpty().withMessage('Select I accept the terms and conditions')
     ],
 

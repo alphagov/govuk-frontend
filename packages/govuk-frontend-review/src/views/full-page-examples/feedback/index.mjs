@@ -18,7 +18,6 @@ export default (app) => {
         .not().isEmpty().withMessage('Enter details of your question, problem or feedback')
         .isLength({ max: 300 }).withMessage('Details of your question, problem or feedback must be 300 characters or less'),
       body('do-you-want-a-reply')
-        .exists()
         .not().isEmpty().withMessage('Select yes if you want a reply'),
       body('name')
         .custom((value, { req: request }) => {

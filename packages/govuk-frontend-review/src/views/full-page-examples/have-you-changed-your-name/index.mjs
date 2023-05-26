@@ -10,7 +10,6 @@ export default (app) => {
     '/full-page-examples/have-you-changed-your-name',
     [
       body('changed-name')
-        .exists()
         .not().isEmpty().withMessage('Select if you have changed your name')
     ],
 
