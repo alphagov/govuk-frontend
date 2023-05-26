@@ -39,6 +39,7 @@ Example.prototype.init = function () {
   }
 
   // Code goes here
+  var $module = this.$module
 }
 
 export default Example
@@ -72,7 +73,7 @@ Use `/** ... */` for multi-line comments. Include a description, and specify typ
  * @param {string} tagName - Tag name (for example 'div')
  * @returns {Element} Ancestor element
  */
-function ($element, tagName) {
+function exampleHelper ($element, tagName) {
   // Code goes here
   return $element.querySelector(tagName)
 }
@@ -116,10 +117,10 @@ When initialising an object, use the `new` keyword.
 
 ```mjs
 // Bad
-var myExample = Example()
+var myExample1 = Example()
 
 // Good
-var myExample = new Example()
+var myExample2 = new Example()
 ```
 
 ## Modules
