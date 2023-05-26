@@ -10,8 +10,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
 **`npm start` will trigger `npm run dev` that will:**
 
-- runs tasks from `npm run build:package`
-- runs tasks from `npm run build:app`
+- runs `npm run build`
 - starts the review app, restarting when `.mjs`, `.json` or `.yaml` files change
 - compile again when frontend `.mjs` and `.scss` files change
 
@@ -21,9 +20,10 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - run JavaScript tests on the review app
 - run accessibility and HTML validation tests
 
-**`npm run serve --workspace govuk-frontend-review` will do the following:**
+**`npm run build` will do the following:**
 
-- start the review app, restarting when `.mjs`, `.json` or `.yaml` files change
+- run tasks from `npm run build:package`
+- run tasks from `npm run build:app`
 
 **`npm run build:app` will trigger `npm run build --workspace govuk-frontend-review` that will:**
 
@@ -96,4 +96,4 @@ This task will:
 
 ## Review app only
 
-To start the Express.js review app without Gulp tasks being triggered, run `npm run serve`.
+After building the project with `npm run build` the Express.js review app can be started with `npm start --workspace govuk-frontend-review`. This prevents the Gulp tasks triggered by `npm start` from running.
