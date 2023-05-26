@@ -12,7 +12,7 @@ Previously in GOV.UK Elements we resolved this by targeting Firefox specifically
 and reverting to `display: list-item`:
 
 ```scss
-@-moz-document regexp('.*') {
+@-moz-document regexp(".*") {
   details summary:not([tabindex]) {
     // Allow duplicate properties, override the summary display property
     // scss-lint:disable DuplicateProperty
