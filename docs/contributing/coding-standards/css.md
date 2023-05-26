@@ -24,9 +24,9 @@ The naming convention follows this pattern:
 .block__element {}
 .block--modifier {}
 
-.govuk-card               // Block - the root of a component
-.govuk-card__body         // Element - a part of the block
-.govuk-card--active       // Modifier - a variant of the block
+.govuk-card {}            // Block - the root of a component
+.govuk-card__body {}      // Element - a part of the block
+.govuk-card--active {}    // Modifier - a variant of the block
 ```
 
 It uses double hyphens (`--`) and underscores (`__`) so that the block, element
@@ -35,9 +35,9 @@ or modifiers themselves can be hyphen delimited without causing ambiguity.
 For example:
 
 ```scss
-.govuk-phase-banner
-.govuk-phase-banner__phase-tag
-.govuk-phase-banner__phase-tag--light-blue
+.govuk-phase-banner {}
+.govuk-phase-banner__phase-tag {}
+.govuk-phase-banner__phase-tag--light-blue {}
 ```
 
 ### Further reading:
@@ -58,9 +58,9 @@ Bad:
 
 ```scss
 .govuk-breadcrumb {
-  ...
+  // ...
   &__item {
-    ...
+    // ...
   }
 }
 ```
@@ -69,11 +69,11 @@ Good:
 
 ```scss
 .govuk-breadcrumb {
-  ...
+  // ...
 }
 
 .govuk-breadcrumb__item {
-  ...
+  // ...
 }
 ```
 
@@ -183,7 +183,7 @@ Bad:
 
 ```scss
 #content {
-  ...
+  // ...
 }
 ```
 
@@ -191,27 +191,7 @@ Good:
 
 ```scss
 .govuk-wrapper {
-  ...
-}
-```
-
-### Use single colons for pseudo-element selectors
-
-This is to ensure compatibility with Internet Explorer 8, which doesn't support the double colon syntax.
-
-Bad:
-
-```scss
-.selector::before {
-  content: "foo";
-}
-```
-
-Good:
-
-```scss
-.selector:before {
-  content: "foo";
+  // ...
 }
 ```
 
@@ -223,11 +203,11 @@ Bad:
 p {
   margin: 0;
   em {
-    ...
+    // ...
   }
 }
 a {
-  ...
+  // ...
 }
 ```
 
@@ -238,12 +218,12 @@ p {
   margin: 0;
 
   em {
-    ...
+    // ...
   }
 }
 
 a {
-  ...
+  // ...
 }
 ```
 
@@ -253,9 +233,9 @@ Bad:
 
 ```scss
 .govuk-breadcrumb {
-  ...
+  // ...
   &__item {
-    ...
+    // ...
   }
 }
 ```
@@ -264,11 +244,11 @@ Good:
 
 ```scss
 .govuk-breadcrumb {
-  ...
+  // ...
 }
 
 .govuk-breadcrumb__item {
-  ...
+  // ...
 }
 ```
 
@@ -403,14 +383,14 @@ Good:
 Bad:
 
 ```scss
-.selector {
+.selector-1 {
   margin: 5px+15px;
 }
 
 $foo: 1;
 $bar: 3;
 
-.selector {
+.selector-2 {
   margin: $foo+$bar+"px";
 }
 
@@ -429,14 +409,14 @@ $bar: 2-1;
 Good:
 
 ```scss
-.selector {
+.selector-1 {
   margin: 5px + 15px;
 }
 
 $foo: 1;
 $bar: 3;
 
-.selector {
+.selector-2 {
   margin: $foo + $bar + "px";
 }
 
