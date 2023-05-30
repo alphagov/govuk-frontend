@@ -17,7 +17,7 @@
     "copy-webpack-plugin": "^11.0.0",
     "postcss-loader": "^7.3.2",
     "sass-embedded": "^1.62.0",
-    "sass-loader": "^13.3.0",
+    "sass-loader": "^13.3.1",
     "terser-webpack-plugin": "^5.3.9",
     "webpack": "^5.84.1",
     "webpack-cli": "^5.1.1",
