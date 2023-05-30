@@ -142,14 +142,6 @@ Prefer named exports over default exports to avoid compatibility issues with tra
 
 ## Polyfilling
 
-If you need to support older browsers, import the necessary [polyfills](/packages/govuk-frontend/src/govuk/vendor/polyfills) and they will be added to the environment when the feature is not supported.
-
-For example, if you want to polyfill `Element.closest()` for IE11, import the closest polyfill.
-
-```js
-import '../../vendor/polyfills/Element/prototype/closest.mjs'
-```
-
 If you need polyfills for features that are not yet included in this project, please see the following guide on [how to add polyfills](../polyfilling.md).
 
 ## Formatting and linting
