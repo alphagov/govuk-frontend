@@ -2,7 +2,6 @@ import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
 import { extractConfigByNamespace, mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { I18n } from '../../i18n.mjs'
-import '../../vendor/polyfills/Element/prototype/classList.mjs'
 
 /**
  * Character count translation defaults

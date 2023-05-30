@@ -1,6 +1,5 @@
 import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
-import '../../vendor/polyfills/Element/prototype/closest.mjs'
 
 /**
  * JavaScript enhancements for the ErrorSummary
