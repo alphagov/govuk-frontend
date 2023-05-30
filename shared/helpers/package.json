@@ -20,7 +20,7 @@
     "govuk-frontend-config": "*",
     "govuk-frontend-lib": "*",
     "jest-axe": "^7.0.1",
-    "jest-dev-server": "^8.0.5",
+    "jest-dev-server": "^9.0.0",
     "jest-environment-jsdom": "^29.5.0",
     "jest-environment-node-single-context": "^29.1.0",
     "jest-environment-puppeteer": "^8.0.6",
