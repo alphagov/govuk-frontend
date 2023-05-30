@@ -14,7 +14,7 @@ module.exports = {
       extends: [
         'eslint:recommended',
         'plugin:import/recommended',
-        'plugin:jsdoc/recommended',
+        'plugin:jsdoc/recommended-typescript-flavor',
         'plugin:n/recommended',
         'plugin:promise/recommended'
       ],
