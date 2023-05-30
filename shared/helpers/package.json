@@ -26,7 +26,7 @@
     "jest-environment-puppeteer": "^8.0.6",
     "nunjucks": "^3.2.4",
     "outdent": "^0.8.0",
-    "puppeteer": "^20.3.0",
+    "puppeteer": "^20.4.0",
     "sass-embedded": "^1.62.0"
   }
 }
