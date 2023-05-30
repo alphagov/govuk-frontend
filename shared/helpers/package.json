@@ -23,7 +23,7 @@
     "jest-dev-server": "^9.0.0",
     "jest-environment-jsdom": "^29.5.0",
     "jest-environment-node-single-context": "^29.1.0",
-    "jest-environment-puppeteer": "^8.0.6",
+    "jest-environment-puppeteer": "^9.0.0",
     "nunjucks": "^3.2.4",
     "outdent": "^0.8.0",
     "puppeteer": "^20.4.0",
