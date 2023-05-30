@@ -1,4 +1,3 @@
-
 import { join } from 'path'
 
 import { paths } from 'govuk-frontend-config'
