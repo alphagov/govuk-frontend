@@ -45,10 +45,8 @@ function Header ($module) {
  *
  * Check for the presence of the header, menu and menu button – if any are
  * missing then there's nothing to do so return early.
- * Feature sniff for and apply a matchMedia for desktop which will
- * trigger a state sync if the browser viewport moves between states. If
- * matchMedia isn't available, hide the menu button and present the "no js"
- * version of the menu to the user.
+ * Apply a matchMedia for desktop which will trigger a state sync if the browser
+ * viewport moves between states.
  */
 Header.prototype.init = function () {
   // Check that required elements are present
@@ -56,27 +54,23 @@ Header.prototype.init = function () {
     return
   }
 
-  if ('matchMedia' in window) {
-    // Set the matchMedia to the govuk-frontend desktop breakpoint
-    this.mql = window.matchMedia('(min-width: 48.0625em)')
+  // Set the matchMedia to the govuk-frontend desktop breakpoint
+  this.mql = window.matchMedia('(min-width: 48.0625em)')
 
-    if ('addEventListener' in this.mql) {
-      this.mql.addEventListener('change', this.syncState.bind(this))
-    } else {
-      // addListener is a deprecated function, however addEventListener
-      // isn't supported by IE or Safari < 14. We therefore add this in as
-      // a fallback for those browsers
-
-      // @ts-expect-error Property 'addListener' does not exist
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-      this.mql.addListener(this.syncState.bind(this))
-    }
-
-    this.syncState()
-    this.$menuButton.addEventListener('click', this.handleMenuButtonClick.bind(this))
+  if ('addEventListener' in this.mql) {
+    this.mql.addEventListener('change', this.syncState.bind(this))
   } else {
-    this.$menuButton.setAttribute('hidden', '')
+    // addListener is a deprecated function, however addEventListener
+    // isn't supported by Safari < 14. We therefore add this in as
+    // a fallback for those browsers
+
+    // @ts-expect-error Property 'addListener' does not exist
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    this.mql.addListener(this.syncState.bind(this))
   }
+
+  this.syncState()
+  this.$menuButton.addEventListener('click', this.handleMenuButtonClick.bind(this))
 }
 
 /**
