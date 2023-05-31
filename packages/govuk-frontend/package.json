@@ -58,7 +58,7 @@
     "cssnano-preset-default": "^6.0.1",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
-    "html-validate": "7.17.0",
+    "html-validate": "7.18.0",
     "nunjucks": "^3.2.4",
     "outdent": "^0.8.0",
     "postcss": "^8.4.24",
