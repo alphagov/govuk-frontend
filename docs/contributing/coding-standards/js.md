@@ -124,7 +124,7 @@ var myExample = new Example()
 
 ## Modules
 
-Use ECMAScript modules (`import`/`export`) over CommonJS and other formats. You can always transpile to your preferred module system.
+Use ECMAScript (ES) modules (`import`/`export`) over CommonJS and other formats. You can always transpile to your preferred module system.
 
 ```js
 import { closestAttributeValue } from '../common/index.mjs'
@@ -136,7 +136,7 @@ export function exampleHelper2 () {}
 
 You must specify the file extension when using the import keyword.
 
-Avoid using namespace imports (`import * as namespace`) in code transpiled to UMD (or AMD, CommonJS) bundled code as this can prevent "tree shaking" optimisations.
+Avoid using namespace imports (`import * as namespace`) in code bundled for CommonJS and other formats as this can prevent "tree shaking" optimisations.
 
 Prefer named exports over default exports to avoid compatibility issues with transpiler "synthetic default" as discussed in: https://github.com/alphagov/govuk-frontend/issues/2829
 

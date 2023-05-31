@@ -122,7 +122,7 @@ describe('packages/govuk-frontend/dist/', () => {
     it('should have correct version number', async () => {
       const contents = await readFile(join(paths.package, 'dist/govuk/all.js'), 'utf8')
 
-      // Look for AMD module export 'GOVUKFrontend.version'
+      // Look for CommonJS `version` named export
       expect(contents).toContain(`var version = '${pkg.version}';`)
       expect(contents).toContain('exports.version = version;')
     })
@@ -187,11 +187,11 @@ describe('packages/govuk-frontend/dist/', () => {
         const componentDist = componentsFilesDist.filter(componentFilter)
         const componentDistESM = componentsFilesDistESM.filter(componentFilter)
 
-        // UMD module not found at source
+        // UMD bundle not found at source
         expect(componentSource)
           .toEqual(expect.not.arrayContaining([join(componentName, `${componentName}.js`)]))
 
-        // UMD module generated in dist
+        // UMD bundle generated in dist
         expect(componentDist)
           .toEqual(expect.arrayContaining([join(componentName, `${componentName}.js`)]))
 

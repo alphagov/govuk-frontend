@@ -39,7 +39,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - copy Sass files, applying Autoprefixer via PostCSS
 - copy Nunjucks component template/macro files, including JSON configs
 - copy GOV.UK Prototype Kit config files
-- compile JavaScript to ECMAScript Modules (ESM)
+- compile JavaScript to ECMAScript (ES) modules
 - compile JavaScript to Universal Module Definition (UMD)
 - runs `npm run postbuild:package` (which will test the output is correct)
 
