@@ -195,11 +195,8 @@ CharacterCount.prototype.init = function () {
   // When the page is restored after navigating 'back' in some browsers the
   // state of the character count is not restored until *after* the
   // DOMContentLoaded event is fired, so we need to manually update it after the
-  // pageshow event in browsers that support it.
-  window.addEventListener(
-    'onpageshow' in window ? 'pageshow' : 'DOMContentLoaded',
-    this.updateCountMessage.bind(this)
-  )
+  // pageshow event.
+  window.addEventListener('pageshow', this.updateCountMessage.bind(this))
 
   this.updateCountMessage()
 }
