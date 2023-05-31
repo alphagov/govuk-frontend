@@ -14,29 +14,31 @@ export default defineConfig(({ i: input }) => ({
    */
   output: {
     format: 'iife',
-    preserveModules: false
+
+    /**
+     * Output plugins
+     */
+    plugins: [
+      terser({
+        format: { comments: false },
+
+        // Include sources content from source maps to inspect
+        // GOV.UK Frontend and other dependencies' source code
+        sourceMap: {
+          includeSources: true
+        },
+
+        // Compatibility workarounds
+        ecma: 5,
+        safari10: true
+      })
+    ]
   },
 
   /**
    * Input plugins
    */
   plugins: [
-    // Enable import from `node_modules`
-    resolve(),
-
-    // Terser minifier plugin
-    terser({
-      format: { comments: false },
-
-      // Include sources content from source maps to inspect
-      // GOV.UK Frontend and other dependencies' source code
-      sourceMap: {
-        includeSources: true
-      },
-
-      // Compatibility workarounds
-      ecma: 5,
-      safari10: true
-    })
+    resolve()
   ]
 }))
