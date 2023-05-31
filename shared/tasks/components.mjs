@@ -1,8 +1,6 @@
-import { readFile } from 'fs/promises'
 import { basename, dirname, join } from 'path'
 
-import { getListing } from 'govuk-frontend-lib/files'
-import yaml from 'js-yaml'
+import { getListing, getYaml } from 'govuk-frontend-lib/files'
 import nunjucks from 'nunjucks'
 
 import { files } from './index.mjs'
@@ -18,7 +16,7 @@ export async function generateFixtures (pattern, { srcPath, destPath }) {
 
   // Loop component data paths
   const fixtures = componentDataPaths.map(async (componentDataPath) => {
-    const fixture = await generateFixture(join(srcPath, componentDataPath))
+    const fixture = await generateFixture(componentDataPath, { srcPath })
 
     // Write to destination
     await files.write(componentDataPath, {
@@ -50,7 +48,7 @@ export async function generateMacroOptions (pattern, { srcPath, destPath }) {
 
   // Loop component data paths
   const macroOptions = componentDataPaths.map(async (componentDataPath) => {
-    const macroOption = await generateMacroOption(join(srcPath, componentDataPath))
+    const macroOption = await generateMacroOption(componentDataPath, { srcPath })
 
     // Write to destination
     await files.write(componentDataPath, {
@@ -75,11 +73,12 @@ export async function generateMacroOptions (pattern, { srcPath, destPath }) {
  * Component fixtures YAML to JSON
  *
  * @param {string} componentDataPath - Path to ${componentName}.yaml
+ * @param {Pick<AssetEntry[1], "srcPath">} options - Asset options
  * @returns {Promise<{ component: string; fixtures: { [key: string]: unknown }[] }>} Component fixtures object
  */
-async function generateFixture (componentDataPath) {
+async function generateFixture (componentDataPath, options) {
   /** @type {ComponentData} */
-  const json = await yaml.load(await readFile(componentDataPath, 'utf8'), { json: true })
+  const json = await getYaml(join(options.srcPath, componentDataPath))
 
   if (!json?.examples) {
     throw new Error(`${componentDataPath} is missing "examples"`)
@@ -118,11 +117,12 @@ async function generateFixture (componentDataPath) {
  * Macro options YAML to JSON
  *
  * @param {string} componentDataPath - Path to ${componentName}.yaml
+ * @param {Pick<AssetEntry[1], "srcPath">} options - Asset options
  * @returns {Promise<ComponentOption[] | undefined>} Component macro options
  */
-async function generateMacroOption (componentDataPath) {
+async function generateMacroOption (componentDataPath, options) {
   /** @type {ComponentData} */
-  const json = await yaml.load(await readFile(componentDataPath, 'utf8'), { json: true })
+  const json = await getYaml(join(options.srcPath, componentDataPath))
 
   if (!json?.params) {
     throw new Error(`${componentDataPath} is missing "params"`)

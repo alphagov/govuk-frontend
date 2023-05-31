@@ -72,6 +72,16 @@ const mapPathTo = (patterns, callback) => (entryPath) => {
 }
 
 /**
+ * Read config from YAML file
+ *
+ * @param {string} configPath - File path to config
+ * @returns {Promise<any>} Config from YAML file
+ */
+const getYaml = async (configPath) => {
+  return yaml.load(await readFile(configPath, 'utf8'), { json: true })
+}
+
+/**
  * Load single component data
  *
  * @param {string} componentName - Component name
@@ -81,7 +91,7 @@ const getComponentData = async (componentName) => {
   const yamlPath = packageNameToPath('govuk-frontend', `src/govuk/components/${componentName}/${componentName}.yaml`)
 
   /** @type {ComponentData} */
-  const yamlData = yaml.load(await readFile(yamlPath, 'utf8'), { json: true })
+  const yamlData = await getYaml(yamlPath)
 
   return {
     name: componentName,
@@ -156,6 +166,7 @@ module.exports = {
   getExamples,
   getFullPageExamples,
   getListing,
+  getYaml,
   mapPathTo
 }
 
