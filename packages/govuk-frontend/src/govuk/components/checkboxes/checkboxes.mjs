@@ -62,12 +62,8 @@ Checkboxes.prototype.init = function () {
 
   // When the page is restored after navigating 'back' in some browsers the
   // state of form controls is not restored until *after* the DOMContentLoaded
-  // event is fired, so we need to sync after the pageshow event in browsers
-  // that support it.
-  window.addEventListener(
-    'onpageshow' in window ? 'pageshow' : 'DOMContentLoaded',
-    this.syncAllConditionalReveals.bind(this)
-  )
+  // event is fired, so we need to sync after the pageshow event.
+  window.addEventListener('pageshow', this.syncAllConditionalReveals.bind(this))
 
   // Although we've set up handlers to sync state on the pageshow or
   // DOMContentLoaded event, init could be called after those events have fired,
