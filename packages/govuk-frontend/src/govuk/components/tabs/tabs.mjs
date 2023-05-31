@@ -51,11 +51,7 @@ Tabs.prototype.init = function () {
     return
   }
 
-  if (typeof window.matchMedia === 'function') {
-    this.setupResponsiveChecks()
-  } else {
-    this.setup()
-  }
+  this.setupResponsiveChecks()
 }
 
 /**
