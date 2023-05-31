@@ -23,7 +23,7 @@ export const compile = (options) => gulp.series(
   ),
 
   /**
-   * Compile GOV.UK Frontend JavaScript (UMD modules)
+   * Compile GOV.UK Frontend JavaScript (UMD bundles)
    */
   task.name('compile:js', () =>
     scripts.compile('**/!(*.test).mjs', {

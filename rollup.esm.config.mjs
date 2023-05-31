@@ -5,7 +5,7 @@ import { defineConfig } from 'rollup'
 /**
  * Rollup config for npm publish
  *
- * ECMAScript Modules (ESM) for browser <script type="module">
+ * ECMAScript (ES) modules for browser <script type="module">
  * or using `import` for modern browsers and Node.js scripts
  */
 export default defineConfig(({ i: input }) => ({
