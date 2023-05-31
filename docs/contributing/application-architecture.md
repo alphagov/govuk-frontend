@@ -16,7 +16,7 @@
 
   - `govuk-frontend-review/`
 
-    [Express](https://github.com/expressjs/express) application to preview components; also referred to as the _review app_.
+    [Express.js](https://github.com/expressjs/express) review app [deployed to Heroku](https://govuk-frontend-review.herokuapp.com) with configuration in [app.json](/app.json) and [Procfile](/Procfile).
 
   - `govuk-frontend/`
 
