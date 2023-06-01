@@ -33,15 +33,6 @@
     }
   }
 
-  // Previously the whole tag was transformed to UPPERCASE. We’ve since decided to switch
-  // to title case to improve readability. The first letter is uppercased to ease the transition,
-  // as the text may be all lowercase within the HTML itself.
-  //
-  // 'capitalize' is used instead of 'uppercase' as a workaround for a spacing bug in Firefox.
-  .govuk-tag::first-letter {
-    text-transform: capitalize;
-  }
-
   .govuk-tag--grey {
     color: govuk-shade(govuk-colour("dark-grey"), 50%);
     background-color: govuk-tint(govuk-colour("dark-grey"), 85%);
