@@ -5,9 +5,46 @@ module.exports = {
     '**/vendor/**',
 
     // Ignore CSS-in-JS (including dotfiles)
-    '**/?(.)*.{cjs,js,mjs}'
+    '**/?(.)*.{cjs,js,mjs}',
+
+    // Prevent CHANGELOG history changes
+    'CHANGELOG.md'
   ],
   overrides: [
+    {
+      customSyntax: 'postcss-markdown',
+      files: ['**/*.md']
+    },
+    {
+      customSyntax: 'postcss-markdown',
+      files: ['**/coding-standards/css.md'],
+      rules: {
+        // Allow markdown `*.md` CSS bad examples
+        'block-closing-brace-space-before': null,
+        'block-no-empty': null,
+        'block-opening-brace-space-after': null,
+        'color-hex-case': null,
+        'color-hex-length': null,
+        'declaration-block-single-line-max-declarations': null,
+        'declaration-block-trailing-semicolon': null,
+        'declaration-colon-space-after': null,
+        'length-zero-no-unit': null,
+        'number-leading-zero': null,
+        'number-no-trailing-zeros': null,
+        'rule-empty-line-before': null,
+        'selector-max-id': null,
+        'string-quotes': null,
+        'unit-no-unknown': null,
+
+        // Allow markdown `*.md` Sass bad examples
+        'scss/at-if-no-null': null,
+        'scss/at-import-no-partial-leading-underscore': null,
+        'scss/at-import-partial-extension': null,
+        'scss/at-mixin-pattern': null,
+        'scss/at-rule-conditional-no-parentheses': null,
+        'scss/operator-no-unspaced': null
+      }
+    },
     {
       customSyntax: 'postcss-scss',
       files: ['**/*.scss']

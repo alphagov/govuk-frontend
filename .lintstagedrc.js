@@ -19,7 +19,7 @@ const commands = {
 module.exports = {
   '*.{cjs,js,mjs}': commands.eslint,
   '*.{json,yaml,yml}': commands.prettier,
-  '*.md': [commands.eslint, commands.prettier],
+  '*.md': [commands.eslint, commands.stylelint, commands.prettier],
   '*.scss': commands.stylelint
 }
 
