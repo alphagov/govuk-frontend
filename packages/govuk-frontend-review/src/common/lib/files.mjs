@@ -6,6 +6,15 @@ import { paths } from 'govuk-frontend-config'
 import { getDirectories } from 'govuk-frontend-lib/files'
 
 /**
+ * Get example names
+ *
+ * @returns {Promise<string[]>} Component names
+ */
+export function getExampleNames () {
+  return getDirectories(join(paths.app, 'src/views/examples'))
+}
+
+/**
  * Load all full page examples' front matter
  *
  * @returns {Promise<FullPageExample[]>} Full page examples
