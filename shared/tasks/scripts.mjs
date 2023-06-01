@@ -62,14 +62,14 @@ export async function compileJavaScript ([modulePath, { configPath, srcPath, des
         sourcemap: true,
 
         // Write to directory for modules
-        dir: output.preserveModules
+        dir: output.dir ?? (output.preserveModules
           ? destPath
-          : undefined,
+          : undefined),
 
         // Write to file when bundling
-        file: !output.preserveModules
+        file: output.file ?? (!output.preserveModules
           ? moduleDestPath
-          : undefined
+          : undefined)
       }))
     )
   }
