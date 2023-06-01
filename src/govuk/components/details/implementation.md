@@ -11,7 +11,7 @@ outline around the summary text, which means that the arrow no longer shows up.
 Previously in GOV.UK Elements we resolved this by targeting Firefox specifically
 and reverting to `display: list-item`:
 
-```
+```scss
 @-moz-document regexp('.*') {
   details summary:not([tabindex]) {
     // Allow duplicate properties, override the summary display property
