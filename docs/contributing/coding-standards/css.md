@@ -56,7 +56,7 @@ given class name. It also discourages excessive nesting.
 
 Bad:
 
-```
+```scss
 .govuk-breadcrumb {
   ...
   &__item {
@@ -67,7 +67,7 @@ Bad:
 
 Good:
 
-```
+```scss
 .govuk-breadcrumb {
   ...
 }
@@ -132,13 +132,13 @@ We use the following rules when linting files:
 
 Bad:
 
-```
+```scss
 .selector {padding: 0; border: 0;}
 ```
 
 Good:
 
-```
+```scss
 .selector {
   padding: 0;
   border: 0;
@@ -149,7 +149,7 @@ Good:
 
 Bad:
 
-```
+```scss
 .selector {
   color: #005ea5;
 }
@@ -157,7 +157,7 @@ Bad:
 
 Good:
 
-```
+```scss
 .selector {
   color: $govuk-blue;
 }
@@ -167,13 +167,13 @@ Good:
 
 Bad:
 
-```
+```scss
 $white: #FFF;
 ```
 
 Good:
 
-```
+```scss
 $white: #ffffff;
 ```
 
@@ -181,7 +181,7 @@ $white: #ffffff;
 
 Bad:
 
-```
+```scss
 #content {
   ...
 }
@@ -189,7 +189,7 @@ Bad:
 
 Good:
 
-```
+```scss
 .govuk-wrapper {
   ...
 }
@@ -201,7 +201,7 @@ This is to ensure compatibility with Internet Explorer 8, which doesn't support 
 
 Bad:
 
-```
+```scss
 .selector::before {
   content: "foo";
 }
@@ -209,7 +209,7 @@ Bad:
 
 Good:
 
-```
+```scss
 .selector:before {
   content: "foo";
 }
@@ -219,7 +219,7 @@ Good:
 
 Bad:
 
-```
+```scss
 p {
   margin: 0;
   em {
@@ -233,7 +233,7 @@ a {
 
 Good:
 
-```
+```scss
 p {
   margin: 0;
 
@@ -251,7 +251,7 @@ a {
 
 Bad:
 
-```
+```scss
 .govuk-breadcrumb {
   ...
   &__item {
@@ -262,7 +262,7 @@ Bad:
 
 Good:
 
-```
+```scss
 .govuk-breadcrumb {
   ...
 }
@@ -276,13 +276,13 @@ Good:
 
 Bad:
 
-```
+```scss
 @extend %contain-floats;
 ```
 
 Good:
 
-```
+```scss
 @include clearfix;
 ```
 
@@ -290,13 +290,13 @@ Good:
 
 Bad:
 
-```
+```scss
 margin: 1px 2px 3px 2px;
 ```
 
 Good:
 
-```
+```scss
 margin: 1px 2px 3px;
 ```
 
@@ -304,7 +304,7 @@ margin: 1px 2px 3px;
 
 Bad:
 
-```
+```scss
 @import 'foo';
 
 $govuk-font-family-gds-transport: 'GDS Transport', arial, sans-serif;
@@ -316,7 +316,7 @@ $govuk-font-family-gds-transport: 'GDS Transport', arial, sans-serif;
 
 Good:
 
-```
+```scss
 @import "foo";
 
 $govuk-font-family-gds-transport: "GDS Transport", arial, sans-serif;
@@ -332,14 +332,14 @@ $govuk-font-family-gds-transport: "GDS Transport", arial, sans-serif;
 
 Bad:
 
-```
+```scss
 @import "_foo.scss";
 @import "_bar/foo.scss";
 ```
 
 Good:
 
-```
+```scss
 @import "foo";
 @import "bar/foo";
 ```
@@ -348,7 +348,7 @@ Good:
 
 Bad:
 
-```
+```scss
 .foo {
   content:"bar";
 }
@@ -356,7 +356,7 @@ Bad:
 
 Good:
 
-```
+```scss
 .foo {
   content: "bar";
 }
@@ -366,7 +366,7 @@ Good:
 
 Bad:
 
-```
+```scss
 @if ($foo == $bar) {
   $baz: 1;
 }
@@ -374,7 +374,7 @@ Bad:
 
 Good:
 
-```
+```scss
 @if $foo == $bar {
   $baz: 1;
 }
@@ -384,7 +384,7 @@ Good:
 
 Bad:
 
-```
+```scss
 @if $foo == null {
   $baz: 1;
 }
@@ -392,7 +392,7 @@ Bad:
 
 Good:
 
-```
+```scss
 @if not $foo {
   $baz: 1;
 }
@@ -402,7 +402,7 @@ Good:
 
 Bad:
 
-```
+```scss
 .selector {
   margin: 5px+15px;
 }
@@ -428,7 +428,7 @@ $bar: 2-1;
 
 Good:
 
-```
+```scss
 .selector {
   margin: 5px + 15px;
 }
@@ -456,7 +456,7 @@ $bar: 2 - 1;
 
 Bad:
 
-```
+```scss
 @mixin FONT_STACK() {
   font-family: $govuk-font-stack;
 }
@@ -464,7 +464,7 @@ Bad:
 
 Good:
 
-```
+```scss
 @mixin font-stack() {
   font-family: $govuk-font-stack;
 }
@@ -474,7 +474,7 @@ Good:
 
 Bad:
 
-```
+```scss
 .selector {
   margin: 0px;
 }
@@ -482,7 +482,7 @@ Bad:
 
 Good:
 
-```
+```scss
 .selector {
   margin: 0;
 }
@@ -492,7 +492,7 @@ Good:
 
 Bad:
 
-```
+```scss
 .selector {
   margin: 0
 }
@@ -502,7 +502,7 @@ $my-example-var: value
 
 Good:
 
-```
+```scss
 .selector {
   margin: 0;
 }
@@ -514,7 +514,7 @@ $my-example-var: value;
 
 Bad:
 
-```
+```scss
 .selector {
   font-size: 0.50em;
 }
@@ -522,7 +522,7 @@ Bad:
 
 Good:
 
-```
+```scss
 .selector {
   font-size: .5em;
 }

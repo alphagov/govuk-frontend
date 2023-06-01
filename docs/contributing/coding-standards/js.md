@@ -4,7 +4,7 @@
 
 JavaScript files have the same name as the component's folder name. Test files have a `.test` suffix placed before the file extension.
 
-```
+```console
 component
 ├── component.mjs
 └── component.test.js
@@ -12,7 +12,7 @@ component
 
 ## Skeleton
 
-```js
+```mjs
 /**
  * Component name
  *
@@ -64,7 +64,7 @@ class="govuk-js-header-toggle"
 
 Use `/** ... */` for multi-line comments. Include a description, and specify types and values for all parameters and return values.
 
-```js
+```mjs
 /**
  * Get the first descendent (child) of an HTML element that matches a given tag name
  *
@@ -90,7 +90,7 @@ Use the prototype design pattern to structure your code.
 
 Create a constructor and define any variables that the object needs.
 
-```js
+```mjs
 function Example ($module) {
   // Code goes here
 }
@@ -98,7 +98,7 @@ function Example ($module) {
 
 Assign methods to the prototype object. Do not overwrite the prototype with a new object as this makes inheritance impossible.
 
-```js
+```mjs
 // Bad
 Example.prototype = {
   init: function () {
@@ -114,7 +114,7 @@ Example.prototype.init = function () {
 
 When initialising an object, use the `new` keyword.
 
-```js
+```mjs
 // Bad
 var myExample = Example()
 
@@ -126,7 +126,7 @@ var myExample = new Example()
 
 Use ECMAScript (ES) modules (`import`/`export`) over CommonJS and other formats. You can always transpile to your preferred module system.
 
-```js
+```mjs
 import { closestAttributeValue } from '../common/index.mjs'
 
 // Code goes here

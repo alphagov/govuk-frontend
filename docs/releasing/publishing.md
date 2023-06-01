@@ -22,7 +22,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 6. Apply the new version number by running:
 
-   ```
+   ```shell
    npm version <NEW VERSION NUMBER> --no-git-tag-version --workspace govuk-frontend
    ```
 
@@ -32,7 +32,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 7. Update browser data from ["Can I use"](https://caniuse.com) by running:
 
-   ```
+   ```shell
    npx update-browserslist-db@latest
    ```
 
