@@ -175,8 +175,8 @@ describe('packages/govuk-frontend/dist/', () => {
 
     beforeAll(async () => {
       // Components list (with JavaScript only)
-      componentNamesWithJavaScript = componentNames
-        .filter((componentName) => componentsFilesSource.includes(join(componentName, `${componentName}.mjs`)))
+      componentNamesWithJavaScript = await getComponentNames((componentName, componentFiles) =>
+        componentFiles.every(filterPath([`**/${componentName}.mjs`])))
     })
 
     it('should have component JavaScript file with correct module name', () => {
