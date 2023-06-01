@@ -1,4 +1,4 @@
-import { join, parse } from 'path'
+import { format, join, parse } from 'path'
 
 import { getListing } from 'govuk-frontend-lib/files'
 import PluginError from 'plugin-error'
@@ -33,13 +33,12 @@ export async function compile (pattern, options) {
  *
  * @param {AssetEntry} assetEntry - Asset entry
  */
-export async function compileJavaScript ([modulePath, { configPath, srcPath, destPath, filePath }]) {
-  const moduleSrcPath = join(srcPath, modulePath)
-  const moduleDestPath = join(destPath, filePath ? filePath(parse(modulePath)) : modulePath)
+export async function compileJavaScript ([modulePath, { configPath, srcPath, destPath, filePath = format }]) {
+  const file = parse(modulePath)
 
   // Rollup config
   const config = await loadConfigFile(configPath, {
-    i: moduleSrcPath
+    i: join(srcPath, modulePath)
   })
 
   // Create Rollup bundle(s)
@@ -54,8 +53,15 @@ export async function compileJavaScript ([modulePath, { configPath, srcPath, des
     })
 
     // Compile JavaScript to output format
-    await Promise.all(options.output
-      .map((output) => bundle.write({
+    await Promise.all(options.output.map((output) => {
+      file.ext = ['es', 'esm', 'module'].includes(output.format)
+        ? '.mjs'
+        : '.js'
+
+      // Update basename with new extension
+      file.base = `${file.name}${file.ext}`
+
+      return bundle.write({
         ...output,
 
         // Enable source maps
@@ -68,10 +74,10 @@ export async function compileJavaScript ([modulePath, { configPath, srcPath, des
 
         // Write to file when bundling
         file: output.file ?? (!output.preserveModules
-          ? moduleDestPath
+          ? join(destPath, filePath(file))
           : undefined)
-      }))
-    )
+      })
+    }))
   }
 }
 
