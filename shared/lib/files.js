@@ -110,6 +110,15 @@ const getComponentsData = async () => {
 }
 
 /**
+ * Get component files
+ *
+ * @param {string} [componentName] - Component name
+ * @returns {Promise<string[]>} Component files
+ */
+const getComponentFiles = (componentName = '') =>
+  getListing(packageNameToPath('govuk-frontend', join('src/govuk/components', componentName)))
+
+/**
  * Get component names
  *
  * @returns {Promise<string[]>} Component names
@@ -170,6 +179,7 @@ module.exports = {
   filterPath,
   getComponentData,
   getComponentsData,
+  getComponentFiles,
   getComponentNames,
   getDirectories,
   getExamples,
