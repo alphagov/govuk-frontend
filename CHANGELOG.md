@@ -11,9 +11,14 @@ The design of the tag component has changed to improve accessibility and readabi
 Text within the tag is no longer bold and uppercase with extra letter spacing, and is
 instead regular 19px text. Due to this, there may be changes to the width of existing tags.
 
+We now longer transform the content of tags to be uppercase automatically and instead recommend the content of tags be lower case with the first word in a tag's content be capitalised. Please check that the contents of tags and tags within phase banners in your service are using the correct capitalisation.
+
 The colours have also changed to make them more distinguishable from buttons.
 
-This change was made in [pull request #3502: Tag design changes](https://github.com/alphagov/govuk-frontend/pull/3502).
+This change was made in:
+
+- [pull request #3502: Tag design changes](https://github.com/alphagov/govuk-frontend/pull/3502).
+- [pull request #3731: Remove the first letter modifier from the tag component](https://github.com/alphagov/govuk-frontend/pull/3731)
 
 #### Added inverse modifier for buttons on dark backgrounds
 
