@@ -31,12 +31,7 @@ export const compile = (options) => gulp.series(
 
       srcPath: join(options.srcPath, 'govuk'),
       destPath: join(options.destPath, 'govuk'),
-      configPath: join(options.basePath, 'rollup.umd.config.mjs'),
-
-      // Rename with `*.js` extension
-      filePath ({ dir, name }) {
-        return join(dir, `${name}.js`)
-      }
+      configPath: join(options.basePath, 'rollup.umd.config.mjs')
     })
   ),
 
