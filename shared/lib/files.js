@@ -1,9 +1,7 @@
 const { readFile } = require('fs/promises')
 const { join, parse, relative } = require('path')
 
-const fm = require('front-matter')
 const { glob } = require('glob')
-const { paths } = require('govuk-frontend-config')
 const yaml = require('js-yaml')
 const { minimatch } = require('minimatch')
 
@@ -105,8 +103,37 @@ const getComponentData = async (componentName) => {
  * @returns {Promise<(ComponentData & { name: string })[]>} Components' data
  */
 const getComponentsData = async () => {
-  const componentNames = await getDirectories(packageNameToPath('govuk-frontend', 'src/govuk/components'))
+  const componentNames = await getComponentNames()
   return Promise.all(componentNames.map(getComponentData))
+}
+
+/**
+ * Get component files
+ *
+ * @param {string} [componentName] - Component name
+ * @returns {Promise<string[]>} Component files
+ */
+const getComponentFiles = (componentName = '') =>
+  getListing(packageNameToPath('govuk-frontend', join('src/govuk/components', componentName)))
+
+/**
+ * Get component names (with optional filter)
+ *
+ * @param {(componentName: string, componentFiles: string[]) => boolean} [filter] - Component names array filter
+ * @returns {Promise<string[]>} Component names
+ */
+const getComponentNames = async (filter) => {
+  const componentNames = await getDirectories(packageNameToPath('govuk-frontend', 'src/govuk/components'))
+
+  if (filter) {
+    const componentFiles = await getComponentFiles()
+
+    // Apply component names filter
+    return componentNames.filter((componentName) =>
+      filter(componentName, componentFiles))
+  }
+
+  return componentNames
 }
 
 /**
@@ -128,43 +155,14 @@ async function getExamples (componentName) {
   return examples
 }
 
-/**
- * Load all full page examples' front matter
- *
- * @returns {Promise<FullPageExample[]>} Full page examples
- */
-const getFullPageExamples = async () => {
-  const directories = await getDirectories(join(paths.app, 'src/views/full-page-examples'))
-
-  // Add metadata (front matter) to each example
-  const examples = await Promise.all(directories.map(async (exampleName) => {
-    const templatePath = join(paths.app, 'src/views/full-page-examples', exampleName, 'index.njk')
-
-    // @ts-expect-error "This expression is not callable" due to incorrect types
-    const { attributes } = fm(await readFile(templatePath, 'utf8'))
-
-    return {
-      name: exampleName,
-      path: exampleName,
-      ...attributes
-    }
-  }))
-
-  const collator = new Intl.Collator('en', {
-    sensitivity: 'base'
-  })
-
-  return examples.sort(({ name: a }, { name: b }) =>
-    collator.compare(a, b))
-}
-
 module.exports = {
   filterPath,
   getComponentData,
   getComponentsData,
+  getComponentFiles,
+  getComponentNames,
   getDirectories,
   getExamples,
-  getFullPageExamples,
   getListing,
   getYaml,
   mapPathTo
@@ -199,13 +197,4 @@ module.exports = {
  * @property {string} name - Example name
  * @property {object} data - Example data
  * @property {boolean} [hidden] - Example hidden from review app
- */
-
-/**
- * Full page example from front matter
- *
- * @typedef {object} FullPageExample
- * @property {string} name - Example name
- * @property {string} [scenario] - Description explaining the example
- * @property {string} [notes] - Additional notes about the example
  */

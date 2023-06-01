@@ -1,5 +1,4 @@
-import { getFullPageExamples } from 'govuk-frontend-lib/files'
-
+import { getFullPageExamples } from '../common/lib/files.mjs'
 import * as routes from '../views/full-page-examples/index.mjs'
 
 /**

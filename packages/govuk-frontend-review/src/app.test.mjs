@@ -1,8 +1,6 @@
-import { join } from 'path'
-
 import { load } from 'cheerio'
-import { paths, ports } from 'govuk-frontend-config'
-import { getDirectories } from 'govuk-frontend-lib/files'
+import { ports } from 'govuk-frontend-config'
+import { getComponentNames } from 'govuk-frontend-lib/files'
 
 const expectedPages = [
   '/',
@@ -46,7 +44,7 @@ describe(`http://localhost:${ports.app}`, () => {
       const response = await fetchPath('/')
       const $ = load(await response.text())
 
-      const componentNames = await getDirectories(join(paths.package, 'src/govuk/components'))
+      const componentNames = await getComponentNames()
       const componentsList = $('li a[href^="/components/"]').get()
 
       // Since we have an 'all' component link that renders the default example of all

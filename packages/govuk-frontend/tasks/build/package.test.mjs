@@ -3,7 +3,7 @@ import { join } from 'path'
 
 import { paths, pkg } from 'govuk-frontend-config'
 import { compileSassFile } from 'govuk-frontend-helpers/tests'
-import { filterPath, getDirectories, getListing, mapPathTo } from 'govuk-frontend-lib/files'
+import { filterPath, getComponentNames, getListing, mapPathTo } from 'govuk-frontend-lib/files'
 import { componentNameToClassName, componentPathToModuleName } from 'govuk-frontend-lib/names'
 
 describe('packages/govuk-frontend/dist/', () => {
@@ -27,7 +27,7 @@ describe('packages/govuk-frontend/dist/', () => {
     componentsFilesDistESM = await getListing(join(paths.package, 'dist/govuk-esm/components'))
 
     // Components list
-    componentNames = await getDirectories(join(paths.package, 'src/govuk/components'))
+    componentNames = await getComponentNames()
   })
 
   it('should contain the expected files', async () => {
@@ -175,8 +175,8 @@ describe('packages/govuk-frontend/dist/', () => {
 
     beforeAll(async () => {
       // Components list (with JavaScript only)
-      componentNamesWithJavaScript = componentNames
-        .filter((componentName) => componentsFilesSource.includes(join(componentName, `${componentName}.mjs`)))
+      componentNamesWithJavaScript = await getComponentNames((componentName, componentFiles) =>
+        componentFiles.every(filterPath([`**/${componentName}.mjs`])))
     })
 
     it('should have component JavaScript file with correct module name', () => {
