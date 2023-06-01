@@ -119,12 +119,24 @@ const getComponentFiles = (componentName = '') =>
   getListing(packageNameToPath('govuk-frontend', join('src/govuk/components', componentName)))
 
 /**
- * Get component names
+ * Get component names (with optional filter)
  *
+ * @param {(componentName: string, componentFiles: string[]) => boolean} [filter] - Component names array filter
  * @returns {Promise<string[]>} Component names
  */
-const getComponentNames = () =>
-  getDirectories(packageNameToPath('govuk-frontend', 'src/govuk/components'))
+const getComponentNames = async (filter) => {
+  const componentNames = await getDirectories(packageNameToPath('govuk-frontend', 'src/govuk/components'))
+
+  if (filter) {
+    const componentFiles = await getComponentFiles()
+
+    // Apply component names filter
+    return componentNames.filter((componentName) =>
+      filter(componentName, componentFiles))
+  }
+
+  return componentNames
+}
 
 /**
  * Get examples from a component's metadata file
