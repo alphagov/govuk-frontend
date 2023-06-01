@@ -2,8 +2,8 @@ import { join } from 'path'
 
 import express from 'express'
 import { paths } from 'govuk-frontend-config'
-import { getDirectories, getComponentsData, getFullPageExamples } from 'govuk-frontend-lib/files'
-import { componentNameToMacroName, packageNameToPath } from 'govuk-frontend-lib/names'
+import { getDirectories, getComponentsData, getComponentNames, getFullPageExamples } from 'govuk-frontend-lib/files'
+import { componentNameToMacroName } from 'govuk-frontend-lib/names'
 import { outdent } from 'outdent'
 
 import * as middleware from './common/middleware/index.mjs'
@@ -16,7 +16,7 @@ export default async () => {
   // Cache mapped components and examples
   const [componentsData, componentNames, exampleNames, fullPageExamples] = await Promise.all([
     getComponentsData(),
-    getDirectories(packageNameToPath('govuk-frontend', 'src/govuk/components')),
+    getComponentNames(),
     getDirectories(join(paths.app, 'src/views/examples')),
     getFullPageExamples()
   ])

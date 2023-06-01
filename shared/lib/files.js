@@ -105,9 +105,17 @@ const getComponentData = async (componentName) => {
  * @returns {Promise<(ComponentData & { name: string })[]>} Components' data
  */
 const getComponentsData = async () => {
-  const componentNames = await getDirectories(packageNameToPath('govuk-frontend', 'src/govuk/components'))
+  const componentNames = await getComponentNames()
   return Promise.all(componentNames.map(getComponentData))
 }
+
+/**
+ * Get component names
+ *
+ * @returns {Promise<string[]>} Component names
+ */
+const getComponentNames = () =>
+  getDirectories(packageNameToPath('govuk-frontend', 'src/govuk/components'))
 
 /**
  * Get examples from a component's metadata file
@@ -162,6 +170,7 @@ module.exports = {
   filterPath,
   getComponentData,
   getComponentsData,
+  getComponentNames,
   getDirectories,
   getExamples,
   getFullPageExamples,

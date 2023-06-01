@@ -1,4 +1,4 @@
-import { filterPath, getDirectories, getListing } from 'govuk-frontend-lib/files'
+import { filterPath, getComponentNames, getListing } from 'govuk-frontend-lib/files'
 import { componentNameToMacroName, packageNameToPath } from 'govuk-frontend-lib/names'
 import slash from 'slash'
 
@@ -9,7 +9,7 @@ import slash from 'slash'
  */
 export default async () => {
   const componentMacros = await getListing(packageNameToPath('govuk-frontend', 'src'), '**/components/**/macro.njk')
-  const componentNames = await getDirectories(packageNameToPath('govuk-frontend', 'src/govuk/components'))
+  const componentNames = await getComponentNames()
 
   // Build array of macros
   const nunjucksMacros = componentNames
