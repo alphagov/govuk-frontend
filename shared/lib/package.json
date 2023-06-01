@@ -13,7 +13,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "front-matter": "^4.0.2",
     "glob": "^10.2.6",
     "govuk-frontend-config": "*",
     "js-yaml": "^4.1.0",

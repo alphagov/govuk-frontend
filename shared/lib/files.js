@@ -1,9 +1,7 @@
 const { readFile } = require('fs/promises')
 const { join, parse, relative } = require('path')
 
-const fm = require('front-matter')
 const { glob } = require('glob')
-const { paths } = require('govuk-frontend-config')
 const yaml = require('js-yaml')
 const { minimatch } = require('minimatch')
 
@@ -157,36 +155,6 @@ async function getExamples (componentName) {
   return examples
 }
 
-/**
- * Load all full page examples' front matter
- *
- * @returns {Promise<FullPageExample[]>} Full page examples
- */
-const getFullPageExamples = async () => {
-  const directories = await getDirectories(join(paths.app, 'src/views/full-page-examples'))
-
-  // Add metadata (front matter) to each example
-  const examples = await Promise.all(directories.map(async (exampleName) => {
-    const templatePath = join(paths.app, 'src/views/full-page-examples', exampleName, 'index.njk')
-
-    // @ts-expect-error "This expression is not callable" due to incorrect types
-    const { attributes } = fm(await readFile(templatePath, 'utf8'))
-
-    return {
-      name: exampleName,
-      path: exampleName,
-      ...attributes
-    }
-  }))
-
-  const collator = new Intl.Collator('en', {
-    sensitivity: 'base'
-  })
-
-  return examples.sort(({ name: a }, { name: b }) =>
-    collator.compare(a, b))
-}
-
 module.exports = {
   filterPath,
   getComponentData,
@@ -195,7 +163,6 @@ module.exports = {
   getComponentNames,
   getDirectories,
   getExamples,
-  getFullPageExamples,
   getListing,
   getYaml,
   mapPathTo
@@ -230,13 +197,4 @@ module.exports = {
  * @property {string} name - Example name
  * @property {object} data - Example data
  * @property {boolean} [hidden] - Example hidden from review app
- */
-
-/**
- * Full page example from front matter
- *
- * @typedef {object} FullPageExample
- * @property {string} name - Example name
- * @property {string} [scenario] - Description explaining the example
- * @property {string} [notes] - Additional notes about the example
  */

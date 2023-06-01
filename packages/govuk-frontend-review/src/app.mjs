@@ -2,10 +2,11 @@ import { join } from 'path'
 
 import express from 'express'
 import { paths } from 'govuk-frontend-config'
-import { getDirectories, getComponentsData, getComponentNames, getFullPageExamples } from 'govuk-frontend-lib/files'
+import { getDirectories, getComponentsData, getComponentNames } from 'govuk-frontend-lib/files'
 import { componentNameToMacroName } from 'govuk-frontend-lib/names'
 import { outdent } from 'outdent'
 
+import { getFullPageExamples } from './common/lib/files.mjs'
 import * as middleware from './common/middleware/index.mjs'
 import * as nunjucks from './common/nunjucks/index.mjs'
 import * as routes from './routes/index.mjs'
