@@ -12,6 +12,6 @@ module.exports = {
   // Package for npm publish
   package: join(rootPath, 'packages/govuk-frontend'),
 
-  // Review application
+  // Express.js review app
   app: join(rootPath, 'packages/govuk-frontend-review')
 }

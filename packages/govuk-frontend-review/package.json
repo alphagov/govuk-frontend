@@ -9,7 +9,6 @@
   },
   "license": "MIT",
   "scripts": {
-    "predev": "npm run build",
     "dev": "gulp dev --color",
     "build": "gulp build --color",
     "build:sassdoc": "sassdoc --config sassdoc.config.yaml ../govuk-frontend/src/govuk",

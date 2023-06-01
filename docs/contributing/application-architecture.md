@@ -16,7 +16,23 @@
 
   - `govuk-frontend-review/`
 
-    [Express](https://github.com/expressjs/express) application to preview components; also referred to as the _review app_.
+    [Express.js](https://github.com/expressjs/express) review app [deployed to Heroku](https://govuk-frontend-review.herokuapp.com) with configuration in [app.json](/app.json) and [Procfile](/Procfile).
+
+    - `dist/` **contains auto-generated files**
+
+      Builds of govuk-frontend-review served by [Express.js](https://github.com/expressjs/express).
+
+    - `src/`
+
+      Source files for component previews and examples.
+
+    - `tasks/`
+
+      Read about [npm and Gulp tasks](tasks.md) or list workspace specific Gulp tasks using:
+
+      ```shell
+      npx --workspace govuk-frontend-review -- gulp --tasks
+      ```
 
   - `govuk-frontend/`
 
@@ -29,7 +45,15 @@
 
     - `src/`
 
-    Source files. See [README.md](/packages/govuk-frontend/src/README.md) in the src directory for details.
+      Source files. See [README.md](/packages/govuk-frontend/src/README.md) in the src directory for details.
+
+    - `tasks/`
+
+      Read about [npm and Gulp tasks](tasks.md) or list workspace specific Gulp tasks using:
+
+      ```shell
+      npx --workspace govuk-frontend -- gulp --tasks
+      ```
 
 - `shared/`
 
@@ -49,4 +73,4 @@
 
   - `tasks/`
 
-    See [tasks](tasks.md) for more information about the tasks.
+    Read about [npm and Gulp tasks](tasks.md) for more information about the tasks.

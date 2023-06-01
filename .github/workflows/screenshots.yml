@@ -41,7 +41,7 @@ jobs:
       - name: Build
         uses: ./.github/workflows/actions/build
 
-      - name: Start review application
+      - name: Start review app
         run: npm start --workspace govuk-frontend-review &
 
       - name: Send screenshots to Percy

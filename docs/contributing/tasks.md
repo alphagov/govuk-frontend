@@ -1,8 +1,8 @@
 # npm and Gulp tasks
 
-This document describes the npm scripts that run the application, and the Gulp tasks they trigger to build files, update the package, copy assets and watch for changes.
+This document describes the npm scripts that run the Express.js review app, and the Gulp tasks they trigger to build files, update the package, copy assets and watch for changes.
 
-To run the application without any tasks being triggered, see [Express app only](#express-app-only).
+To run the Express.js review app without any tasks being triggered, see [Review app only](#review-app-only).
 
 ## npm script aliases
 
@@ -10,20 +10,20 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
 **`npm start` will trigger `npm run dev` that will:**
 
-- runs tasks from `npm run build:package`
-- runs tasks from `npm run build:app`
-- starts up Express, restarting when `.mjs`, `.json` or `.yaml` files change
+- runs `npm run build`
+- starts the review app, restarting when `.mjs`, `.json` or `.yaml` files change
 - compile again when frontend `.mjs` and `.scss` files change
 
 **`npm test` will do the following:**
 
 - run Nunjucks macros tests
-- run JavaScript tests on the review application
+- run JavaScript tests on the review app
 - run accessibility and HTML validation tests
 
-**`npm run serve --workspace govuk-frontend-review` will do the following:**
+**`npm run build` will do the following:**
 
-- start up Express, restarting when `.mjs`, `.json` or `.yaml` files change
+- run tasks from `npm run build:package`
+- run tasks from `npm run build:app`
 
 **`npm run build:app` will trigger `npm run build --workspace govuk-frontend-review` that will:**
 
@@ -74,7 +74,7 @@ GOV.UK Frontend package build Gulp tasks are defined in [`packages/govuk-fronten
 
 **`npx --workspace govuk-frontend -- gulp --tasks`**
 
-This will list out all available tasks for the Review app.
+This will list out all available tasks for the review app.
 
 Review app Gulp tasks are defined in [`packages/govuk-frontend-review/gulpfile.mjs`](/packages/govuk-frontend-review/gulpfile.mjs) and the [`packages/govuk-frontend-review/tasks/`](/packages/govuk-frontend-review/tasks) folder.
 
@@ -94,6 +94,6 @@ This task will:
 - compile JavaScript to Universal Module Definition (UMD) into `./packages/govuk-frontend-review/dist/javascripts`
 - compile JavaScript documentation into `./packages/govuk-frontend-review/dist/docs/jsdoc`
 
-## Express app only
+## Review app only
 
-To start the Express app without Gulp tasks being triggered, run `npm run serve`.
+After building the project with `npm run build` the Express.js review app can be started with `npm start --workspace govuk-frontend-review`. This prevents the Gulp tasks triggered by `npm start` from running.
