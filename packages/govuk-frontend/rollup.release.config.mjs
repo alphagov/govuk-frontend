@@ -1,7 +1,8 @@
+import replace from '@rollup/plugin-replace'
 import terser from '@rollup/plugin-terser'
+import { pkg } from 'govuk-frontend-config'
+import { componentPathToModuleName } from 'govuk-frontend-lib/names'
 import { defineConfig } from 'rollup'
-
-import configFn from './rollup.umd.config.mjs'
 
 /**
  * Rollup config for GitHub release
@@ -9,12 +10,20 @@ import configFn from './rollup.umd.config.mjs'
  * Universal Module Definition (UMD) bundle for browser <script>
  * `window` globals and compatibility with CommonJS and AMD `require()`
  */
-export default defineConfig((args) => {
-  const config = configFn(args)
+export default defineConfig(({ i: input }) => ({
+  input,
 
-  // Add Terser minifier plugin
-  if ('plugins' in config && Array.isArray(config.plugins)) {
-    config.plugins.push(
+  /**
+   * Output options
+   */
+  output: {
+    format: 'umd',
+    preserveModules: false,
+
+    /**
+     * Output plugins
+     */
+    plugins: [
       terser({
         format: { comments: false },
 
@@ -28,8 +37,23 @@ export default defineConfig((args) => {
         ecma: 5,
         safari10: true
       })
-    )
-  }
+    ],
 
-  return config
-})
+    // Components are given names (e.g window.GOVUKFrontend.Accordion)
+    amd: { id: componentPathToModuleName(input) },
+    name: componentPathToModuleName(input)
+  },
+
+  /**
+   * Input plugins
+   */
+  plugins: [
+    replace({
+      include: '**/common/govuk-frontend-version.mjs',
+      preventAssignment: true,
+
+      // Add GOV.UK Frontend release version
+      development: pkg.version
+    })
+  ]
+}))

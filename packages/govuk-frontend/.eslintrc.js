@@ -35,7 +35,7 @@ module.exports = {
         // Allow `this` alias until arrow functions supported
         '@typescript-eslint/no-this-alias': 'off',
 
-        // Rollup transpiles modules to AMD export/define
+        // Rollup transpiles modules into other formats
         'es-x/no-modules': 'off',
 
         // Allow `var` until let/const supported

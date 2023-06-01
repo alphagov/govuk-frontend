@@ -1,5 +1,10 @@
 {
-  "watch": ["./src", "../govuk-frontend/src/govuk/**/*.{json,yaml}"],
+  "watch": [
+    "./src",
+    "../govuk-frontend/src/govuk/**/*.{json,yaml}",
+    "../../shared/config",
+    "../../shared/lib"
+  ],
   "ignore": ["./src/javascripts/**", "**/*.test.*"],
   "events": {
     "restart": "browser-sync reload --config browsersync.config.js"

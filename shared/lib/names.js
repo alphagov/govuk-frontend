@@ -41,9 +41,10 @@ function componentNameToClassName (componentName) {
 }
 
 /**
- * Convert component path to JavaScript UMD module name
+ * Convert component path to JavaScript module name
  *
- * Used by Rollup to set the `window` global and UMD/AMD export name
+ * Used by Rollup to set Universal Module Definition (UMD) export names for
+ * `window` globals maintaining compatibility with CommonJS and AMD `require()`
  *
  * Component paths have kebab-cased file names (button.mjs, date-input.mjs),
  * whilst module names have a `GOVUKFrontend.` prefix and are PascalCased
