@@ -3,7 +3,7 @@ import { join } from 'path'
 
 import { paths, pkg } from 'govuk-frontend-config'
 import { compileSassFile } from 'govuk-frontend-helpers/tests'
-import { filterPath, getDirectories, getListing, mapPathTo } from 'govuk-frontend-lib/files'
+import { filterPath, getComponentNames, getListing, mapPathTo } from 'govuk-frontend-lib/files'
 import { componentNameToClassName, componentPathToModuleName } from 'govuk-frontend-lib/names'
 
 describe('packages/govuk-frontend/dist/', () => {
@@ -27,7 +27,7 @@ describe('packages/govuk-frontend/dist/', () => {
     componentsFilesDistESM = await getListing(join(paths.package, 'dist/govuk-esm/components'))
 
     // Components list
-    componentNames = await getDirectories(join(paths.package, 'src/govuk/components'))
+    componentNames = await getComponentNames()
   })
 
   it('should contain the expected files', async () => {
