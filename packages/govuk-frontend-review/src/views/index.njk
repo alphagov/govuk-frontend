@@ -95,12 +95,18 @@
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
       <h2 class="govuk-heading-l">JavaScript modules</h2>
 
-      {% set bundleSize = stats["all.mjs"]["total"] %}
+      {% set bundleKey = "all" %}
+      {% set bundleSize = stats[bundleKey + ".mjs"]["total"] %}
+
+      {% set bundleHtml %}
+        Total bundle size<br>
+        <a href="/docs/stats/{{ bundleKey }}.html" class="govuk-body-s govuk-link govuk-!-font-weight-regular"><code>{{ bundleKey }}.mjs</code></a>
+      {% endset %}
 
       {% set rows = [{
         key: {
           classes: "govuk-!-width-three-quarters",
-          text: "Total bundle size"
+          html: bundleHtml
         },
         value: {
           text: (bundleSize / 1000) | round(2) | formatNumber + " KB"
@@ -108,12 +114,18 @@
       }] %}
 
       {% for componentName in componentNamesWithJavaScript | sort %}
-        {% set componentSize = stats["components/" + componentName + "/" + componentName + ".mjs"]["total"] %}
+        {% set componentKey = "components/" + componentName + "/" + componentName %}
+        {% set componentSize = stats[componentKey + ".mjs"]["total"] %}
+
+        {% set componentHtml %}
+          {{ componentName | replace("-", " ") | capitalize }}<br>
+          <a href="/docs/stats/{{ componentKey }}.html" class="govuk-body-s govuk-link govuk-!-font-weight-regular"><code>{{ componentName }}.mjs</code></a>
+        {% endset %}
 
         {% set rows = (rows.push({
           key: {
             classes: "govuk-!-width-three-quarters",
-            text: componentName | replace("-", " ") | capitalize
+            html: componentHtml
           },
           value: {
             text: (componentSize / 1000) | round(2) | formatNumber + " KB"
