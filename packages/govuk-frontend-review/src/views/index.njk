@@ -1,5 +1,7 @@
 {% extends "layout.njk" %}
 
+{% from "summary-list/macro.njk" import govukSummaryList %}
+
 {% block content %}
   <h1 class="govuk-heading-xl">
     GOV.UK Frontend
@@ -76,6 +78,32 @@
         </div>
 
       </div>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+      <h2 class="govuk-heading-l">JavaScript modules</h2>
+
+      {% set rows = [] %}
+      {% for componentName in componentNamesWithJavaScript | sort %}
+        {% set componentSize = stats["components/" + componentName + "/" + componentName + ".mjs"]["total"] %}
+
+        {% set rows = (rows.push({
+          key: {
+            classes: "govuk-!-width-three-quarters",
+            text: componentName | replace("-", " ") | capitalize
+          },
+          value: {
+            text: (componentSize / 1000) | round(2) | formatNumber + " KB"
+          }
+        }), rows) %}
+      {% endfor %}
+
+      {{ govukSummaryList({
+        rows: rows
+      }) }}
     </div>
   </div>
 {% endblock %}
