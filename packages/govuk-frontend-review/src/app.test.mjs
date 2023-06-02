@@ -47,10 +47,7 @@ describe(`http://localhost:${ports.app}`, () => {
       const componentNames = await getComponentNames()
       const componentsList = $('li a[href^="/components/"]').get()
 
-      // Since we have an 'all' component link that renders the default example of all
-      // components, there will always be one more expected link.
-      const expectedComponentLinks = componentNames.length + 1
-      expect(componentsList.length).toEqual(expectedComponentLinks)
+      expect(componentsList.length).toEqual(componentNames.length)
     })
   })
 
