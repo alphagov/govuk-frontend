@@ -14,11 +14,20 @@
       <h3 class="govuk-heading-m govuk-!-margin-bottom-2">All components</h3>
       <p class="govuk-body"><a href="/components/all" class="govuk-link govuk-link--muted">View all components</a></p>
 
-      <ul class="govuk-list govuk-!-margin-bottom-8">
-      {% for componentName in componentNames | sort %}
-        <li><a href="/components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
-      {% endfor %}
-      </ul>
+      <div class="govuk-grid-row govuk-!-margin-bottom-8">
+
+        {% for componentNamesSlice in componentNames | slice(2) %}
+        <div class="govuk-grid-column-one-half govuk-grid-column-full-from-desktop">
+          <ul class="govuk-list govuk-!-margin-bottom-0">
+          {% for componentName in componentNamesSlice %}
+            <li><a href="/components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
+          {% endfor %}
+          </ul>
+        </div>
+        {% endfor %}
+
+      </div>
+
     </div>
 
     <div class="govuk-grid-column-two-thirds-from-desktop">
