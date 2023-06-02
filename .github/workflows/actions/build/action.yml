@@ -11,7 +11,9 @@ runs:
       with:
         # Restore build cache (unless commit SHA changes)
         key: build-cache-${{ runner.os }}-${{ github.sha }}
-        path: packages/*/dist
+        path: |
+          packages/*/dist
+          shared/*/dist
 
     - name: Build
       id: build

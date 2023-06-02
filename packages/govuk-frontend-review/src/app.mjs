@@ -1,6 +1,7 @@
 import express from 'express'
-import { getComponentsData, getComponentNames } from 'govuk-frontend-lib/files'
+import { getComponentsData, getComponentNames, filterPath } from 'govuk-frontend-lib/files'
 import { componentNameToMacroName } from 'govuk-frontend-lib/names'
+import { getStats, modulePaths } from 'govuk-frontend-stats'
 import { outdent } from 'outdent'
 
 import { getExampleNames, getFullPageExamples } from './common/lib/files.mjs'
@@ -12,9 +13,16 @@ export default async () => {
   const app = express()
 
   // Cache mapped components and examples
-  const [componentsData, componentNames, exampleNames, fullPageExamples] = await Promise.all([
+  const [componentsData, componentNames, componentNamesWithJavaScript, exampleNames, fullPageExamples] = await Promise.all([
     getComponentsData(),
+
+    // Components list
     getComponentNames(),
+
+    // Components list (with JavaScript only)
+    getComponentNames((componentName, componentFiles) =>
+      componentFiles.some(filterPath([`**/${componentName}.mjs`]))),
+
     getExampleNames(),
     getFullPageExamples()
   ])
@@ -35,6 +43,10 @@ export default async () => {
   app.use(middleware.request)
   app.use(middleware.robots)
 
+  // Add build stats
+  app.locals.stats = Object.fromEntries(await Promise.all(modulePaths
+    .map(async (modulePath) => [modulePath, await getStats(modulePath)])))
+
   // Handle the banner component serverside.
   routes.banner(app)
 
@@ -47,6 +59,7 @@ export default async () => {
   app.get('/', async function (req, res) {
     res.render('index', {
       componentNames,
+      componentNamesWithJavaScript,
       exampleNames,
       fullPageExamples
     })

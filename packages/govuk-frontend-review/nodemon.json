@@ -3,7 +3,8 @@
     "./src",
     "../govuk-frontend/src/govuk/**/*.{json,yaml}",
     "../../shared/config",
-    "../../shared/lib"
+    "../../shared/lib",
+    "../../shared/stats"
   ],
   "ignore": ["./src/javascripts/**", "**/*.test.*"],
   "events": {

@@ -41,6 +41,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - copy GOV.UK Prototype Kit config files
 - compile JavaScript to ECMAScript (ES) modules
 - compile JavaScript to Universal Module Definition (UMD)
+- compile Rollup build stats into `./shared/govuk-frontend-stats/dist`
 - runs `npm run postbuild:package` (which will test the output is correct)
 
 **`npm run build:release` will do the following:**

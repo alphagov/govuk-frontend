@@ -6,7 +6,12 @@
     "../govuk-frontend",
     "../../shared/config",
     "../../shared/lib",
+    "../../shared/stats",
     "../../shared/tasks"
   ],
-  "exclude": ["./dist/**", "../govuk-frontend/dist/**"]
+  "exclude": [
+    "./dist/**",
+    "../govuk-frontend/dist/**",
+    "../../shared/stats/dist/**"
+  ]
 }

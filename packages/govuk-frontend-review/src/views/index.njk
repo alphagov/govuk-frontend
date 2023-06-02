@@ -1,5 +1,7 @@
 {% extends "layout.njk" %}
 
+{% from "summary-list/macro.njk" import govukSummaryList %}
+
 {% block content %}
   <h1 class="govuk-heading-xl">
     GOV.UK Frontend
@@ -7,50 +9,133 @@
 
   <div class="govuk-grid-row">
 
-    <div class="govuk-grid-column-one-third">
-      <h2 class="govuk-heading-m">Components</h2>
+    <div class="govuk-grid-column-one-third-from-desktop">
+      <h2 class="govuk-heading-l">Components</h2>
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-2">All components</h3>
+      <p class="govuk-body"><a href="/components/all" class="govuk-link govuk-link--muted">View all components</a></p>
 
-      <ul class="govuk-list">
-        <li><a href="/components/all" class="govuk-link">All</a></li>
-        {% for componentName in componentNames | sort %}
-          <li><a href="/components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
+      <div class="govuk-grid-row govuk-!-margin-bottom-8">
+
+        {% for componentNamesSlice in componentNames | slice(2) %}
+        <div class="govuk-grid-column-one-half govuk-grid-column-full-from-desktop">
+          <ul class="govuk-list govuk-!-margin-bottom-0">
+          {% for componentName in componentNamesSlice %}
+            <li><a href="/components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
+          {% endfor %}
+          </ul>
+        </div>
         {% endfor %}
-      </ul>
+
+      </div>
+
     </div>
 
-    <div class="govuk-grid-column-one-third">
-      <h2 class="govuk-heading-m">Examples</h2>
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <h2 class="govuk-heading-l">Examples</h2>
 
-      <ul class="govuk-list">
-      {% for exampleName in exampleNames | sort %}
-        <li><a href="/examples/{{ exampleName }}" class="govuk-link">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
-      {% endfor %}
-      </ul>
+      <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-one-half">
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Full page examples</h2>
+          <p class="govuk-body"><a href="/full-page-examples" class="govuk-link govuk-link--muted">View all full page examples</a></p>
+
+          <ul class="govuk-list govuk-!-margin-bottom-8">
+          {% for example in fullPageExamples %}
+            <li><a href="/full-page-examples/{{ example.path }}" class="govuk-link">{{ example.name | replace("-", " ") | capitalize }}</a></li>
+          {% endfor %}
+          </ul>
+        </div>
+
+        <div class="govuk-grid-column-one-half">
+          <h3 class="govuk-heading-m govuk-!-margin-bottom-2">Other examples</h3>
+
+          <ul class="govuk-list govuk-!-margin-bottom-8">
+          {% for exampleName in exampleNames | sort %}
+            <li><a href="/examples/{{ exampleName }}" class="govuk-link">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
+          {% endfor %}
+          </ul>
+        </div>
+
+      </div>
     </div>
 
-    <div class="govuk-grid-column-one-third">
-      <h2 class="govuk-heading-m"><a href="/full-page-examples" class="govuk-link">Full page examples</a></h2>
+  </div>
 
-      <ul class="govuk-list">
-      {% for example in fullPageExamples %}
-        <li><a href="/full-page-examples/{{ example.path }}" class="govuk-link">{{ example.name | replace("-", " ") | capitalize }}</a></li>
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <h2 class="govuk-heading-l">Documentation</h2>
+
+      <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-one-half">
+          <h3 class="govuk-heading-m govuk-!-margin-bottom-2">Sass API reference</h3>
+          <ul class="govuk-list">
+          {% if not flags.isDeployedToHeroku %}
+            <li><a href="/docs/sass" class="govuk-link">Local version</a></li>
+          {% endif %}
+            <li><a href="https://frontend.design-system.service.gov.uk/sass-api-reference/" class="govuk-link">Latest release</a></li>
+          </ul>
+        </div>
+
+        <div class="govuk-grid-column-one-half">
+          <h3 class="govuk-heading-m govuk-!-margin-bottom-2">JavaScript API reference</h3>
+          <ul class="govuk-list">
+            <li><a href="/docs/javascript" class="govuk-link">Local version</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+      <h2 class="govuk-heading-l">JavaScript modules</h2>
+
+      {% set bundleKey = "all" %}
+      {% set bundleSize = stats[bundleKey + ".mjs"]["total"] %}
+
+      {% set bundleHtml %}
+        Total bundle size<br>
+        <a href="/docs/stats/{{ bundleKey }}.html" class="govuk-body-s govuk-link govuk-!-font-weight-regular"><code>{{ bundleKey }}.mjs</code></a>
+      {% endset %}
+
+      {% set rows = [{
+        key: {
+          classes: "govuk-!-width-three-quarters",
+          html: bundleHtml
+        },
+        value: {
+          text: (bundleSize / 1000) | round(2) | formatNumber + " KB"
+        }
+      }] %}
+
+      {% for componentName in componentNamesWithJavaScript | sort %}
+        {% set componentKey = "components/" + componentName + "/" + componentName %}
+        {% set componentSize = stats[componentKey + ".mjs"]["total"] %}
+
+        {% set componentHtml %}
+          {{ componentName | replace("-", " ") | capitalize }}<br>
+          <a href="/docs/stats/{{ componentKey }}.html" class="govuk-body-s govuk-link govuk-!-font-weight-regular"><code>{{ componentName }}.mjs</code></a>
+        {% endset %}
+
+        {% set rows = (rows.push({
+          key: {
+            classes: "govuk-!-width-three-quarters",
+            html: componentHtml
+          },
+          value: {
+            text: (componentSize / 1000) | round(2) | formatNumber + " KB"
+          }
+        }), rows) %}
       {% endfor %}
-      </ul>
 
-      <h2 class="govuk-heading-m">Documentation</h2>
-
-      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Sass documentation</h3>
-      <ul class="govuk-list">
-        <li><a href="https://frontend.design-system.service.gov.uk/sass-api-reference/" class="govuk-link">Latest release</a></li>
-        {% if not flags.isDeployedToHeroku %}
-        <li><a href="/docs/sass" class="govuk-link">Local version</a></li>
-        {% endif %}
-      </ul>
-
-      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">JavaScript documentation</h3>
-      <ul class="govuk-list">
-        <li><a href="/docs/javascript" class="govuk-link">Local version</a></li>
-      </ul>
+      {{ govukSummaryList({
+        rows: rows
+      }) }}
     </div>
   </div>
 {% endblock %}

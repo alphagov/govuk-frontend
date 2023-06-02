@@ -9,9 +9,9 @@
   "license": "MIT",
   "workspaces": [
     ".github/workflows/scripts",
-    "shared/*",
     "packages/govuk-frontend",
     "packages/govuk-frontend-review",
+    "shared/*",
     "docs/examples/*"
   ],
   "scripts": {

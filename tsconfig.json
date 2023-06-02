@@ -21,6 +21,9 @@
       "path": "./shared/lib"
     },
     {
+      "path": "./shared/stats"
+    },
+    {
       "path": "./shared/tasks"
     }
   ]
