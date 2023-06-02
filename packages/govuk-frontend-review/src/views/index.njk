@@ -36,21 +36,37 @@
         <li><a href="/full-page-examples/{{ example.path }}" class="govuk-link">{{ example.name | replace("-", " ") | capitalize }}</a></li>
       {% endfor %}
       </ul>
-
-      <h2 class="govuk-heading-m">Documentation</h2>
-
-      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Sass documentation</h3>
-      <ul class="govuk-list">
-        <li><a href="https://frontend.design-system.service.gov.uk/sass-api-reference/" class="govuk-link">Latest release</a></li>
-        {% if not flags.isDeployedToHeroku %}
-        <li><a href="/docs/sass" class="govuk-link">Local version</a></li>
-        {% endif %}
-      </ul>
-
-      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">JavaScript documentation</h3>
-      <ul class="govuk-list">
-        <li><a href="/docs/javascript" class="govuk-link">Local version</a></li>
-      </ul>
     </div>
+
+  </div>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <h2 class="govuk-heading-l">Documentation</h2>
+
+      <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-one-half">
+          <h3 class="govuk-heading-m govuk-!-margin-bottom-2">Sass API reference</h3>
+          <ul class="govuk-list">
+          {% if not flags.isDeployedToHeroku %}
+            <li><a href="/docs/sass" class="govuk-link">Local version</a></li>
+          {% endif %}
+            <li><a href="https://frontend.design-system.service.gov.uk/sass-api-reference/" class="govuk-link">Latest release</a></li>
+          </ul>
+        </div>
+
+        <div class="govuk-grid-column-one-half">
+          <h3 class="govuk-heading-m govuk-!-margin-bottom-2">JavaScript API reference</h3>
+          <ul class="govuk-list">
+            <li><a href="/docs/javascript" class="govuk-link">Local version</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 {% endblock %}
