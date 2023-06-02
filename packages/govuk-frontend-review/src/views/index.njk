@@ -14,7 +14,7 @@
       <h3 class="govuk-heading-m govuk-!-margin-bottom-2">All components</h3>
       <p class="govuk-body"><a href="/components/all" class="govuk-link govuk-link--muted">View all components</a></p>
 
-      <ul class="govuk-list">
+      <ul class="govuk-list govuk-!-margin-bottom-8">
       {% for componentName in componentNames | sort %}
         <li><a href="/components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
       {% endfor %}
@@ -30,7 +30,7 @@
           <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Full page examples</h2>
           <p class="govuk-body"><a href="/full-page-examples" class="govuk-link govuk-link--muted">View all full page examples</a></p>
 
-          <ul class="govuk-list">
+          <ul class="govuk-list govuk-!-margin-bottom-8">
           {% for example in fullPageExamples %}
             <li><a href="/full-page-examples/{{ example.path }}" class="govuk-link">{{ example.name | replace("-", " ") | capitalize }}</a></li>
           {% endfor %}
@@ -40,7 +40,7 @@
         <div class="govuk-grid-column-one-half">
           <h3 class="govuk-heading-m govuk-!-margin-bottom-2">Other examples</h3>
 
-          <ul class="govuk-list">
+          <ul class="govuk-list govuk-!-margin-bottom-8">
           {% for exampleName in exampleNames | sort %}
             <li><a href="/examples/{{ exampleName }}" class="govuk-link">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
           {% endfor %}
