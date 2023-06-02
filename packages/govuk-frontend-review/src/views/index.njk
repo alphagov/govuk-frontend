@@ -95,7 +95,18 @@
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
       <h2 class="govuk-heading-l">JavaScript modules</h2>
 
-      {% set rows = [] %}
+      {% set bundleSize = stats["all.mjs"]["total"] %}
+
+      {% set rows = [{
+        key: {
+          classes: "govuk-!-width-three-quarters",
+          text: "Total bundle size"
+        },
+        value: {
+          text: (bundleSize / 1000) | round(2) | formatNumber + " KB"
+        }
+      }] %}
+
       {% for componentName in componentNamesWithJavaScript | sort %}
         {% set componentSize = stats["components/" + componentName + "/" + componentName + ".mjs"]["total"] %}
 
