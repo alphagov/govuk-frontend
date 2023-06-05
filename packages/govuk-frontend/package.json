@@ -65,7 +65,7 @@
     "postcss": "^8.4.24",
     "postcss-scss": "^4.0.6",
     "puppeteer": "^20.5.0",
-    "rollup": "^3.23.0",
+    "rollup": "^3.23.1",
     "sass-color-helpers": "^2.1.1",
     "sass-embedded": "^1.62.0",
     "sassdoc": "^2.7.4",
