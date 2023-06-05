@@ -4,8 +4,7 @@ const nunjucks = require('nunjucks')
 const { outdent } = require('outdent')
 
 const nunjucksPaths = [
-  packageNameToPath('govuk-frontend', 'src/govuk'),
-  packageNameToPath('govuk-frontend', 'src/govuk/components')
+  packageNameToPath('govuk-frontend', 'src')
 ]
 
 const nunjucksEnv = nunjucks.configure(nunjucksPaths, {
@@ -24,7 +23,7 @@ const nunjucksEnv = nunjucks.configure(nunjucksPaths, {
  */
 function renderHTML (componentName, options, callBlock) {
   const macroName = componentNameToMacroName(componentName)
-  const macroPath = `${componentName}/macro.njk`
+  const macroPath = `govuk/components/${componentName}/macro.njk`
 
   return callMacro(macroName, macroPath, [options], callBlock)
 }
@@ -75,7 +74,7 @@ function callMacro (macroName, macroPath, params = [], callBlock) {
  * @returns {import('cheerio').CheerioAPI} Nunjucks template output
  */
 function renderTemplate (context = {}, blocks = {}) {
-  let viewString = '{% extends "template.njk" %}'
+  let viewString = '{% extends "govuk/template.njk" %}'
 
   for (const [blockName, blockContent] of Object.entries(blocks)) {
     viewString += outdent`

@@ -85,7 +85,7 @@ async function generateFixture (componentDataPath, options) {
   }
 
   // Nunjucks template
-  const template = join(dirname(componentDataPath), 'template.njk')
+  const template = join(options.srcPath, dirname(componentDataPath), 'template.njk')
   const componentName = basename(dirname(componentDataPath))
 
   // Loop examples
