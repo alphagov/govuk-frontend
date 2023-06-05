@@ -23,7 +23,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
 6. Apply the new version number by running:
 
    ```
-   npm version <NEW VERSION NUMBER> --no-git-tag-version --workspace package
+   npm version <NEW VERSION NUMBER> --no-git-tag-version --workspace govuk-frontend
    ```
 
    This step will update the [`package.json`](/package.json) and project [`package-lock.json`](/package-lock.json) files.

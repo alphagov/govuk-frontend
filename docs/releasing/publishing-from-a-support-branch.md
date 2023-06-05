@@ -64,7 +64,7 @@ Read the docs for [what to do before publishing a release](/docs/releasing/befor
 6. Apply the new version number by running:
 
    ```
-   npm version <NEW VERSION NUMBER> --no-git-tag-version --workspace package
+   npm version <NEW VERSION NUMBER> --no-git-tag-version --workspace govuk-frontend
    ```
 
    This step will update the [`package.json`](/package.json) and project [`package-lock.json`](/package-lock.json) files.
