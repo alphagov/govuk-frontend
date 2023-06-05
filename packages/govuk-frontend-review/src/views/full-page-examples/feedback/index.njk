@@ -19,14 +19,14 @@ scenario: >-
 
 notes: Based on https://www.signin.service.gov.uk/feedback
 ---
-{% extends "full-page-example.njk" %}
+{% extends "layouts/full-page-example.njk" %}
 
-{% from "warning-text/macro.njk" import govukWarningText %}
-{% from "radios/macro.njk" import govukRadios %}
-{% from "input/macro.njk" import govukInput %}
-{% from "character-count/macro.njk" import govukCharacterCount %}
-{% from "button/macro.njk" import govukButton %}
-{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% set pageTitle = "Send your feedback" %}
 {% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - Verify - GOV.UK{% endblock %}

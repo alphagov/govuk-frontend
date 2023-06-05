@@ -9,12 +9,12 @@ scenario: >-
 ---
 
 {# This example is based of the  "What is your home postcode?" example: https://design-system.service.gov.uk/patterns/question-pages/postcode/index.html #}
-{% extends "full-page-example.njk" %}
+{% extends "layouts/full-page-example.njk" %}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "button/macro.njk" import govukButton %}
-{% from "error-summary/macro.njk" import govukErrorSummary %}
-{% from "input/macro.njk" import govukInput %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
 
 {% set pageTitle = "What is your home postcode?" %}
 {% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}

@@ -1,12 +1,12 @@
 {# Example that changes every setting in the template #}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "skip-link/macro.njk" import govukSkipLink %}
-{% from "header/macro.njk" import govukHeader %}
-{% from "phase-banner/macro.njk" import govukPhaseBanner %}
-{% from "footer/macro.njk" import govukFooter %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/skip-link/macro.njk" import govukSkipLink %}
+{% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
 
-{% extends "template.njk" %}
+{% extends "govuk/template.njk" %}
 
 {% set htmlClasses = 'app-html-class' %}
 {% set htmlLang = 'fr' %}

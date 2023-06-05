@@ -6,15 +6,15 @@ scenario: >-
 ---
 
 {# This example is based of the live "Passport" service: https://www.passport.service.gov.uk/photo/upload #}
-{% extends "full-page-example.njk" %}
+{% extends "layouts/full-page-example.njk" %}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "button/macro.njk" import govukButton %}
-{% from "checkboxes/macro.njk" import govukCheckboxes %}
-{% from "file-upload/macro.njk" import govukFileUpload %}
-{% from "notification-banner/macro.njk" import govukNotificationBanner %}
-{% from "phase-banner/macro.njk" import govukPhaseBanner %}
-{% from "radios/macro.njk" import govukRadios %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
 
 {% block pageTitle %}Upload your photo - GOV.UK{% endblock %}
 

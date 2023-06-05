@@ -9,10 +9,8 @@ import * as globals from './globals/index.mjs'
 
 export function renderer (app) {
   const appViews = [
-    join(paths.app, 'src/views/layouts'),
     join(paths.app, 'src/views'),
-    packageNameToPath('govuk-frontend', 'dist/govuk/components'),
-    packageNameToPath('govuk-frontend', 'dist/govuk')
+    packageNameToPath('govuk-frontend', 'dist')
   ]
 
   // Initialise nunjucks environment

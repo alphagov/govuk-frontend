@@ -14,11 +14,11 @@ notes: The links to change your answers are not functional.
 ---
 
 {# This example is based of the  "Check your answers before sending your application" example: https://design-system.service.gov.uk/patterns/check-answers/default/index.html #}
-{% extends "full-page-example.njk" %}
+{% extends "layouts/full-page-example.njk" %}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "summary-list/macro.njk" import govukSummaryList %}
-{% from "button/macro.njk" import govukButton %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% set pageTitle = "Work history" %}
 {% set serviceName = "Apply for teacher training" %}

@@ -9,15 +9,15 @@ scenario: >-
 ---
 
 {# This example is based of the live "Passport" service: https://www.passport.service.gov.uk/photo/upload #}
-{% extends "full-page-example.njk" %}
+{% extends "layouts/full-page-example.njk" %}
 
-{% from "phase-banner/macro.njk" import govukPhaseBanner %}
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "radios/macro.njk" import govukRadios %}
-{% from "error-summary/macro.njk" import govukErrorSummary %}
-{% from "checkboxes/macro.njk" import govukCheckboxes %}
-{% from "button/macro.njk" import govukButton %}
-{% from "file-upload/macro.njk" import govukFileUpload %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
 
 {% set pageTitle = "Upload your photo" %}
 {% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}

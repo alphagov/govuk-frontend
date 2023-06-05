@@ -1,8 +1,8 @@
-{% extends "layout.njk" %}
+{% extends "layouts/layout.njk" %}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "checkboxes/macro.njk" import govukCheckboxes %}
-{% from "radios/macro.njk" import govukRadios %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
 
 {% block beforeContent %}
   {{ govukBackLink({

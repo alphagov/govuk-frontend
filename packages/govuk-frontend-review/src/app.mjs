@@ -127,7 +127,7 @@ export default async () => {
     const macroParameters = JSON.stringify(exampleConfig.data, null, '\t')
 
     res.locals.componentView = env.renderString(outdent`
-      {% from '${componentName}/macro.njk' import ${macroName} %}
+      {% from "govuk/components/${componentName}/macro.njk" import ${macroName} %}
       {{ ${macroName}(${macroParameters}) }}
     `, {})
 

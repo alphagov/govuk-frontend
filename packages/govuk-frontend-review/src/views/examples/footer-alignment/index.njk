@@ -1,7 +1,7 @@
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "footer/macro.njk" import govukFooter %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
 
-{% extends "full-width-landmarks.njk" %}
+{% extends "layouts/full-width-landmarks.njk" %}
 
 {% block beforeContent %}
   {{ govukBackLink({

@@ -8,10 +8,10 @@ notes: The links within each section are not functional.
 ---
 
 {# This example is based of the live "Service Manual - Technology" page: https://www.gov.uk/service-manual/technology #}
-{% extends "full-page-example.njk" %}
+{% extends "layouts/full-page-example.njk" %}
 
-{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "accordion/macro.njk" import govukAccordion %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/accordion/macro.njk" import govukAccordion %}
 
 {% set pageTitle = "Technology - Service Manual" %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
