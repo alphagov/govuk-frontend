@@ -20,7 +20,9 @@ import { assets } from './index.mjs'
  * @param {AssetEntry[1]} options - Asset options
  */
 export async function compile (pattern, options) {
-  const modulePaths = await getListing(options.srcPath, pattern)
+  const modulePaths = await getListing(pattern, {
+    cwd: options.srcPath
+  })
 
   try {
     const compileTasks = modulePaths

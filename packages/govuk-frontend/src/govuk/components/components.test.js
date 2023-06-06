@@ -8,7 +8,8 @@ describe('Components', () => {
   let sassFiles
 
   beforeAll(async () => {
-    sassFiles = await getListing(join(paths.package, 'src/govuk/components'), '**/*.scss', {
+    sassFiles = await getListing('**/src/govuk/components/**/*.scss', {
+      cwd: paths.package,
       ignore: [
         '**/_all.scss',
         '**/_index.scss'
@@ -28,7 +29,7 @@ describe('Components', () => {
 
     it('renders CSS for each component', () => {
       const sassTasks = sassFiles.map((sassFilePath) => {
-        const file = join(paths.package, 'src/govuk/components', sassFilePath)
+        const file = join(paths.package, sassFilePath)
 
         return expect(compileSassFile(file)).resolves.toMatchObject({
           css: expect.any(String),
