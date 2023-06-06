@@ -71,7 +71,7 @@
     "jest-serializer-html": "^7.1.0",
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
-    "standard": "^17.0.0",
+    "standard": "^17.1.0",
     "stylelint": "^14.16.1",
     "stylelint-config-gds": "^0.3.0",
     "stylelint-order": "^6.0.3",
