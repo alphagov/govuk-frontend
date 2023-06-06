@@ -30,7 +30,7 @@
     "govuk-frontend-stats": "*",
     "highlight.js": "^11.8.0",
     "iframe-resizer": "^4.3.6",
-    "js-beautify": "^1.14.7",
+    "js-beautify": "^1.14.8",
     "marked": "^5.0.4",
     "nunjucks": "^3.2.4",
     "outdent": "^0.8.0",
