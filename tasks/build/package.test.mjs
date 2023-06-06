@@ -18,13 +18,29 @@ describe('packages/govuk-frontend/dist/', () => {
   let componentNames
 
   beforeAll(async () => {
-    listingPackage = await getListing(paths.package, '*')
-    listingSource = await getListing(join(paths.package, 'src'))
-    listingDist = await getListing(join(paths.package, 'dist'))
+    listingPackage = await getListing('*', {
+      cwd: paths.package
+    })
 
-    componentsFilesSource = await getListing(join(paths.package, 'src/govuk/components'))
-    componentsFilesDist = await getListing(join(paths.package, 'dist/govuk/components'))
-    componentsFilesDistESM = await getListing(join(paths.package, 'dist/govuk-esm/components'))
+    listingSource = await getListing('**/*', {
+      cwd: join(paths.package, 'src')
+    })
+
+    listingDist = await getListing('**/*', {
+      cwd: join(paths.package, 'dist')
+    })
+
+    componentsFilesSource = await getListing('**/*', {
+      cwd: join(paths.package, 'src/govuk/components')
+    })
+
+    componentsFilesDist = await getListing('**/*', {
+      cwd: join(paths.package, 'dist/govuk/components')
+    })
+
+    componentsFilesDistESM = await getListing('**/*', {
+      cwd: join(paths.package, 'dist/govuk-esm/components')
+    })
 
     // Components list
     componentNames = await getComponentNames()

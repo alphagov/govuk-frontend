@@ -9,7 +9,8 @@ describe('The tools layer', () => {
   let sassFiles
 
   beforeAll(async () => {
-    sassFiles = await getListing(paths.package, 'src/govuk/tools/**/*.scss', {
+    sassFiles = await getListing('**/src/govuk/tools/**/*.scss', {
+      cwd: paths.package,
       ignore: ['**/_all.scss']
     })
   })

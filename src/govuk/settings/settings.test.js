@@ -9,7 +9,8 @@ describe('The settings layer', () => {
   let sassFiles
 
   beforeAll(async () => {
-    sassFiles = await getListing(paths.package, 'src/govuk/settings/**/*.scss', {
+    sassFiles = await getListing('**/src/govuk/settings/**/*.scss', {
+      cwd: paths.package,
       ignore: ['**/_all.scss']
     })
   })
