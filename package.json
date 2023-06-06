@@ -75,7 +75,7 @@
     "stylelint": "^14.16.1",
     "stylelint-config-gds": "^0.3.0",
     "stylelint-order": "^6.0.3",
-    "typescript": "^5.0.4"
+    "typescript": "^5.1.3"
   },
   "optionalDependencies": {
     "@actions/github": "^5.1.1",
