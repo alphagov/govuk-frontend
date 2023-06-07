@@ -29,6 +29,7 @@
     "sass-embedded": "^1.62.0"
   },
   "peerDependencies": {
-    "@puppeteer/browsers": ">=1"
+    "@puppeteer/browsers": ">=1",
+    "puppeteer-core": ">=20"
   }
 }
