@@ -39,6 +39,7 @@ describe('Components', () => {
   })
 
   describe('Nunjucks HTML validation', () => {
+    /** @type {HtmlValidate} */
     let validator
 
     beforeAll(() => {
@@ -117,7 +118,7 @@ describe('Components', () => {
           const html = renderHTML(componentName, data)
 
           // Validate HTML
-          return expect({ componentName, exampleName, report: validator.validateString(html) })
+          return expect({ componentName, exampleName, report: await validator.validateString(html) })
             .toEqual({ componentName, exampleName, report: expect.objectContaining({ valid: true }) })
         })
 
