@@ -19,13 +19,19 @@ When providing _content_ to a macro, say for a label or a button, we accept two 
 
 Example:
 
-`{{ govukButton({"text": "Button text"}) }}`
+```njk
+{{ govukButton({ text: "Button text" }) }}
+```
 
-`{{ govukButton({"html": "Button <span class='bold'>text</span>"}) }}`
+```njk
+{{ govukButton({ html: "Button <span class='bold'>text</span>" }) }}
+```
 
 Example of implementing logic in a component template:
 
-`{{ params.html | safe if params.html else params.text }}`
+```njk
+{{ params.html | safe if params.html else params.text }}
+```
 
 Example shows that if `html` and `text` options are present, then `html` takes precedence over `text` and we are not escaping it.
 
@@ -37,25 +43,25 @@ If a component depends on another component, we group the options for the depend
 
 Example of a component depending on another component
 
-```
+```njk
 {{ govukLabel({
-  "text": "Label text",
-  "errorMessage": {
-    "text": "Error message"
+  text: "Label text",
+  errorMessage: {
+    text: "Error message"
   }
 }) }}
 ```
 
 Example of a component depending on two other components
 
-```
+```njk
 {{ govukInput({
-  "name": "example-input",
-  "label": {
-    "text": "Label text"
+  name: "example-input",
+  label: {
+    text: "Label text"
   },
-  "errorMessage": {
-    "text": "Error message"
+  errorMessage: {
+    text: "Error message"
   }
 }) }}
 ```
@@ -66,9 +72,13 @@ When there is a need to specify html attributes, such as _checked, disabled, id,
 
 Example:
 
-`{{ govukButton({"disabled": true}) }}`
+```njk
+{{ govukButton({ disabled: true }) }}
+```
 
-`{{ govukCheckbox({"checked": true}) }}`
+```njk
+{{ govukCheckbox({ checked: true }) }}
+```
 
 ## Defining additional HTML attributes
 
@@ -78,10 +88,10 @@ You cannot use this to set attributes that are already defined, such as class â€
 
 Example:
 
-```
+```njk
 {{ govukButton({
-  "attributes" : {
-    "data-target" : "contact-by-text",
+  attributes: {
+    "data-target": "contact-by-text",
     "aria-labelledby": "error-summary-heading-example-1",
     "tabindex": "-1"
   }
@@ -94,16 +104,16 @@ When a component accepts a _single array of items_ for an output, such as checkb
 
 Example:
 
-```
+```njk
 {{ govukCheckbox({
-   "items": [
+   items: [
    {
-      "value": "checkbox value",
-      "text": "Checkbox text"
+      value: "checkbox value",
+      text: "Checkbox text"
     },
     {
-      "value": "checkbox value 2",
-      "text": "Checkbox text 2"
+      value: "checkbox value 2",
+      text: "Checkbox text 2"
     }
   ]
 }) }}
@@ -115,17 +125,17 @@ When a component has multiple visual presentations, such default button vs start
 
 Default button example:
 
-```
+```njk
 {{ govukButton({
-  "text" : "Continue"
+  text: "Continue"
 }) }}
 ```
 
 Start button example:
 
-```
+```njk
 {{ govukButton({
-  "text" : "Start",
-  "classes" : "govuk-button--start"
+  text: "Start",
+  classes: "govuk-button--start"
 }) }}
 ```

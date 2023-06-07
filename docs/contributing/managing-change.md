@@ -81,8 +81,9 @@ Mixins cannot be invoked within functions, so we use the `_should-warn` and `_wa
 ///   See https://github.com/alphagov/govuk-frontend/issues/1234
 @function govuk-double($number) {
   @if _should-warn("double") {
-    @warn _warning-message("double", "govuk-double($number) is deprecated. Use govuk-multiply($number, 2) instead.")
+    @warn _warning-message("double", "govuk-double($number) is deprecated. Use govuk-multiply($number, 2) instead.");
   }
+
   @return govuk-multiply($number, 2);
 }
 ```
@@ -102,7 +103,7 @@ If possible, update the mixin or function to maintain the existing functionality
 /// @param {Number} $angle Angle to reticulate by
 /// @param {Boolean} $rightAngle Deprecated. Use $angle: 90 instead.
 @mixin govuk-reticulate-splines($spline, $angle: 180, $rightAngle: false) {
-  @if ($rightAngle != false) {
+  @if $rightAngle != false {
     @include _warning("right-angle", "Passing $rightAngle to govuk-reticulate-splines is deprecated. Pass $angle: 90 instead.");
 
     $angle: 90;
@@ -117,7 +118,7 @@ If possible, update the mixin or function to maintain the existing functionality
 ```scss
 // @deprecated
 .govuk-foo-old-class-name {
-  foo: bar;
+  content: "foo";
 }
 ```
 
@@ -167,7 +168,7 @@ Add 'Deprecated.' to the description for the parameter.
 /// @param {String} $spline Spline to reticulate
 /// @param {String} $spilne Deprecated. Use $spline instead.
 @function govuk-reticulate-splines($spline, $spilne: false) {
-  @if ($spilne != false) {
+  @if $spilne != false {
     @include _warning("spilne", "Passing $spilne to govuk-reticulate-splines is deprecated. Pass $spline instead.");
 
     $spline: $spilne;
@@ -185,7 +186,7 @@ Keep the old name in the selector list, and mark it as deprecated.
 // govuk-old-class-name is deprecated. Use govuk-new-class-name instead.
 .govuk-old-class-name,
 .govuk-new-class-name {
-  foo: bar;
+  content: "foo";
 }
 ```
 

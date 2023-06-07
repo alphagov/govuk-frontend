@@ -57,7 +57,7 @@ const Button = require('govuk-frontend/dist/govuk/components/button/button')
 
 For example using `import`:
 
-```js
+```mjs
 import Button from 'govuk-frontend/dist/govuk-esm/components/button/button.mjs'
 ```
 

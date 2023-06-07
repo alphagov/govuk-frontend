@@ -135,7 +135,7 @@ Where `<COMPONENT>` is the name of the component you've changed.
 
 To make sure your changes work in the Design System, use `npm link` to test before publishing, as follows:
 
-```bash
+```shell
 cd ../govuk-design-system
 git checkout main
 git pull
@@ -145,7 +145,7 @@ npm link ../govuk-frontend/packages/govuk-frontend/
 
 When you've finished testing, run this command to unlink the package:
 
-```bash
+```shell
 npm unlink ../govuk-frontend/packages/govuk-frontend/
 ```
 

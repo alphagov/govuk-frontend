@@ -63,7 +63,7 @@ Read the docs for [what to do before publishing a release](/docs/releasing/befor
 
 6. Apply the new version number by running:
 
-   ```
+   ```shell
    npm version <NEW VERSION NUMBER> --no-git-tag-version --workspace govuk-frontend
    ```
 

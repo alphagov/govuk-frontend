@@ -20,7 +20,7 @@ Visual regression tests help us check for any unintended visual changes to our c
 
 To test the whole codebase, run:
 
-```
+```shell
 npm test
 ```
 
@@ -42,7 +42,7 @@ Note: There's a watch mode that keeps a testing session open waiting for changes
 
 To lint the whole codebase, run:
 
-```
+```shell
 npm run lint
 ```
 
@@ -52,7 +52,7 @@ See [Tasks](../contributing/tasks.md) for details of what `npm run lint` does.
 
 ### Running only Sass linting
 
-```
+```shell
 npm run lint:scss
 ```
 
@@ -60,7 +60,7 @@ See [CSS Coding Standards](/docs/contributing/coding-standards/css.md#linting) f
 
 ### Running only JavaScript linting
 
-```
+```shell
 npm run lint:js
 ```
 
@@ -78,7 +78,7 @@ If a component uses JavaScript, we also write functional tests in a `[component 
 
 If you want to inspect a test that's running in the browser, configure Jest Puppeteer in non-headless mode with the environment variable `HEADLESS=false` and then use [Jest Puppeteer's debug mode](https://github.com/argos-ci/jest-puppeteer/blob/main/README.md#debug-mode) to pause the test execution.
 
-```
+```shell
 HEADLESS=false npx jest --watch src/govuk/components/tag/accessibility.test.mjs
 ```
 
@@ -102,7 +102,9 @@ For components, the snapshots are stored in `[component-name directory]/_snapsho
 
 If a snapshot test fails, review the difference in the console. If the change is the correct change to make, run:
 
-`npm test -- -u packages/govuk-frontend/src/govuk/components/button`
+```shell
+npm test -- -u packages/govuk-frontend/src/govuk/components/button
+```
 
 This will update the snapshot file. Commit this file separately with a commit message that explains you're updating the snapshot file and an explanation of what caused the change.
 
@@ -118,7 +120,7 @@ When you run the tests locally (for example, using `npm run test:screenshots --w
 
 When Github Actions is running against a PR from a fork, the Percy secret is not available and Percy does not generate any screenshots. Other tests will continue to run as normal. You will see the following messages in the output:
 
-```
+```console
 [percy] Skipping visual tests
 [percy] Error: Missing Percy token
 ```

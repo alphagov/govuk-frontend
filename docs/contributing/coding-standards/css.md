@@ -24,9 +24,9 @@ The naming convention follows this pattern:
 .block__element {}
 .block--modifier {}
 
-.govuk-card               // Block - the root of a component
-.govuk-card__body         // Element - a part of the block
-.govuk-card--active       // Modifier - a variant of the block
+.govuk-card {}            // Block - the root of a component
+.govuk-card__body {}      // Element - a part of the block
+.govuk-card--active {}    // Modifier - a variant of the block
 ```
 
 It uses double hyphens (`--`) and underscores (`__`) so that the block, element
@@ -35,9 +35,9 @@ or modifiers themselves can be hyphen delimited without causing ambiguity.
 For example:
 
 ```scss
-.govuk-phase-banner
-.govuk-phase-banner__phase-tag
-.govuk-phase-banner__phase-tag--light-blue
+.govuk-phase-banner {}
+.govuk-phase-banner__phase-tag {}
+.govuk-phase-banner__phase-tag--light-blue {}
 ```
 
 ### Further reading:
@@ -56,24 +56,24 @@ given class name. It also discourages excessive nesting.
 
 Bad:
 
-```
+```scss
 .govuk-breadcrumb {
-  ...
+  // ...
   &__item {
-    ...
+    // ...
   }
 }
 ```
 
 Good:
 
-```
+```scss
 .govuk-breadcrumb {
-  ...
+  // ...
 }
 
 .govuk-breadcrumb__item {
-  ...
+  // ...
 }
 ```
 
@@ -132,13 +132,13 @@ We use the following rules when linting files:
 
 Bad:
 
-```
+```scss
 .selector {padding: 0; border: 0;}
 ```
 
 Good:
 
-```
+```scss
 .selector {
   padding: 0;
   border: 0;
@@ -149,7 +149,7 @@ Good:
 
 Bad:
 
-```
+```scss
 .selector {
   color: #005ea5;
 }
@@ -157,7 +157,7 @@ Bad:
 
 Good:
 
-```
+```scss
 .selector {
   color: $govuk-blue;
 }
@@ -167,13 +167,13 @@ Good:
 
 Bad:
 
-```
+```scss
 $white: #FFF;
 ```
 
 Good:
 
-```
+```scss
 $white: #ffffff;
 ```
 
@@ -181,37 +181,17 @@ $white: #ffffff;
 
 Bad:
 
-```
+```scss
 #content {
-  ...
+  // ...
 }
 ```
 
 Good:
 
-```
+```scss
 .govuk-wrapper {
-  ...
-}
-```
-
-### Use single colons for pseudo-element selectors
-
-This is to ensure compatibility with Internet Explorer 8, which doesn't support the double colon syntax.
-
-Bad:
-
-```
-.selector::before {
-  content: "foo";
-}
-```
-
-Good:
-
-```
-.selector:before {
-  content: "foo";
+  // ...
 }
 ```
 
@@ -219,31 +199,31 @@ Good:
 
 Bad:
 
-```
+```scss
 p {
   margin: 0;
   em {
-    ...
+    // ...
   }
 }
 a {
-  ...
+  // ...
 }
 ```
 
 Good:
 
-```
+```scss
 p {
   margin: 0;
 
   em {
-    ...
+    // ...
   }
 }
 
 a {
-  ...
+  // ...
 }
 ```
 
@@ -251,24 +231,24 @@ a {
 
 Bad:
 
-```
+```scss
 .govuk-breadcrumb {
-  ...
+  // ...
   &__item {
-    ...
+    // ...
   }
 }
 ```
 
 Good:
 
-```
+```scss
 .govuk-breadcrumb {
-  ...
+  // ...
 }
 
 .govuk-breadcrumb__item {
-  ...
+  // ...
 }
 ```
 
@@ -276,13 +256,13 @@ Good:
 
 Bad:
 
-```
+```scss
 @extend %contain-floats;
 ```
 
 Good:
 
-```
+```scss
 @include clearfix;
 ```
 
@@ -290,13 +270,13 @@ Good:
 
 Bad:
 
-```
+```scss
 margin: 1px 2px 3px 2px;
 ```
 
 Good:
 
-```
+```scss
 margin: 1px 2px 3px;
 ```
 
@@ -304,7 +284,7 @@ margin: 1px 2px 3px;
 
 Bad:
 
-```
+```scss
 @import 'foo';
 
 $govuk-font-family-gds-transport: 'GDS Transport', arial, sans-serif;
@@ -316,7 +296,7 @@ $govuk-font-family-gds-transport: 'GDS Transport', arial, sans-serif;
 
 Good:
 
-```
+```scss
 @import "foo";
 
 $govuk-font-family-gds-transport: "GDS Transport", arial, sans-serif;
@@ -332,14 +312,14 @@ $govuk-font-family-gds-transport: "GDS Transport", arial, sans-serif;
 
 Bad:
 
-```
+```scss
 @import "_foo.scss";
 @import "_bar/foo.scss";
 ```
 
 Good:
 
-```
+```scss
 @import "foo";
 @import "bar/foo";
 ```
@@ -348,7 +328,7 @@ Good:
 
 Bad:
 
-```
+```scss
 .foo {
   content:"bar";
 }
@@ -356,7 +336,7 @@ Bad:
 
 Good:
 
-```
+```scss
 .foo {
   content: "bar";
 }
@@ -366,7 +346,7 @@ Good:
 
 Bad:
 
-```
+```scss
 @if ($foo == $bar) {
   $baz: 1;
 }
@@ -374,7 +354,7 @@ Bad:
 
 Good:
 
-```
+```scss
 @if $foo == $bar {
   $baz: 1;
 }
@@ -384,7 +364,7 @@ Good:
 
 Bad:
 
-```
+```scss
 @if $foo == null {
   $baz: 1;
 }
@@ -392,7 +372,7 @@ Bad:
 
 Good:
 
-```
+```scss
 @if not $foo {
   $baz: 1;
 }
@@ -402,15 +382,15 @@ Good:
 
 Bad:
 
-```
-.selector {
+```scss
+.selector-1 {
   margin: 5px+15px;
 }
 
 $foo: 1;
 $bar: 3;
 
-.selector {
+.selector-2 {
   margin: $foo+$bar+"px";
 }
 
@@ -428,15 +408,15 @@ $bar: 2-1;
 
 Good:
 
-```
-.selector {
+```scss
+.selector-1 {
   margin: 5px + 15px;
 }
 
 $foo: 1;
 $bar: 3;
 
-.selector {
+.selector-2 {
   margin: $foo + $bar + "px";
 }
 
@@ -456,7 +436,7 @@ $bar: 2 - 1;
 
 Bad:
 
-```
+```scss
 @mixin FONT_STACK() {
   font-family: $govuk-font-stack;
 }
@@ -464,7 +444,7 @@ Bad:
 
 Good:
 
-```
+```scss
 @mixin font-stack() {
   font-family: $govuk-font-stack;
 }
@@ -474,7 +454,7 @@ Good:
 
 Bad:
 
-```
+```scss
 .selector {
   margin: 0px;
 }
@@ -482,7 +462,7 @@ Bad:
 
 Good:
 
-```
+```scss
 .selector {
   margin: 0;
 }
@@ -492,7 +472,7 @@ Good:
 
 Bad:
 
-```
+```scss
 .selector {
   margin: 0
 }
@@ -502,7 +482,7 @@ $my-example-var: value
 
 Good:
 
-```
+```scss
 .selector {
   margin: 0;
 }
@@ -514,7 +494,7 @@ $my-example-var: value;
 
 Bad:
 
-```
+```scss
 .selector {
   font-size: 0.50em;
 }
@@ -522,7 +502,7 @@ Bad:
 
 Good:
 
-```
+```scss
 .selector {
   font-size: .5em;
 }

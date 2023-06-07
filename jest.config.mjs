@@ -53,7 +53,7 @@ const config = {
  *
  * @type {import('@jest/types').Config.InitialOptions}
  * @example
- * ```console
+ * ```shell
  * npx jest --selectProjects "Nunjucks macro tests"
  * npx jest --selectProjects "JavaScript unit tests"
  * ```

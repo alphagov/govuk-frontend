@@ -11,7 +11,7 @@ If you're an external contributor make sure to [fork this project first](https:/
 
 ## 2. Clone repository
 
-```
+```shell
 git clone git@github.com:alphagov/govuk-frontend.git # or clone your own fork
 
 cd govuk-frontend
@@ -30,7 +30,7 @@ To enable this we use [nvm (Node Version Manager)](https://github.com/creationix
 
 We use [npm](https://docs.npmjs.com/getting-started/what-is-npm) to manage the dependencies in development.
 
-```
+```shell
 npm install
 ```
 
@@ -38,7 +38,7 @@ npm install
 
 This will build sources, serve pages and watch for changes.
 
-```
+```shell
 npm start
 ```
 
