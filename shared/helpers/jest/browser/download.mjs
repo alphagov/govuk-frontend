@@ -1,21 +1,21 @@
 import { join } from 'path'
 
-import { Browser, Cache, detectBrowserPlatform, install, resolveBuildId } from '@puppeteer/browsers'
+import { Browser, Cache, install } from '@puppeteer/browsers'
 import { paths } from 'govuk-frontend-config'
+import { PUPPETEER_REVISIONS } from 'puppeteer-core/lib/cjs/puppeteer/revisions.js'
 
 /**
  * Puppeteer browser downloader
  */
 export async function download () {
   const browser = Browser.CHROME
-  const platform = detectBrowserPlatform()
 
   // Download management
   const cacheDir = join(paths.root, '.cache', 'puppeteer')
   const cache = new Cache(cacheDir)
 
   // Downloaded versions
-  const buildId = await resolveBuildId(browser, platform, 'stable')
+  const buildId = PUPPETEER_REVISIONS.chrome
   const versions = cache.getInstalledBrowsers()
 
   // Download latest browser (unless cached)

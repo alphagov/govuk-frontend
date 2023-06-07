@@ -1,8 +1,15 @@
-import { Cache, install, resolveBuildId } from '@puppeteer/browsers'
+import { Cache, install } from '@puppeteer/browsers'
 
 import { download } from './download.mjs'
 
+// Mock Puppeteer browser versions
 jest.mock('@puppeteer/browsers')
+jest.mock('puppeteer-core/lib/cjs/puppeteer/revisions.js', () => ({
+  PUPPETEER_REVISIONS: {
+    chrome: 'new-version',
+    firefox: 'new-version'
+  }
+}))
 
 describe('Browser tasks: Puppeteer browser downloader', () => {
   let browsers
@@ -10,8 +17,7 @@ describe('Browser tasks: Puppeteer browser downloader', () => {
   beforeEach(() => {
     browsers = []
 
-    // Mock Puppeteer browsers API
-    jest.mocked(resolveBuildId).mockImplementation(async () => 'new-version')
+    // Mock Puppeteer browser cache API
     jest.mocked(Cache.prototype.getInstalledBrowsers).mockImplementation(() => browsers)
     jest.mocked(Cache.prototype.clear).mockReturnValue()
   })
