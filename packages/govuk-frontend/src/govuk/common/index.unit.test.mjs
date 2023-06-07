@@ -1,7 +1,5 @@
 import { mergeConfigs, extractConfigByNamespace } from './index.mjs'
 
-// TODO: Write unit tests for `generateUniqueID`
-
 describe('Common JS utilities', () => {
   describe('mergeConfigs', () => {
     const config1 = {
