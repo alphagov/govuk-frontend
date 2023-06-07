@@ -7,7 +7,10 @@ module.exports = {
     // Enable dotfile linting
     '!.*',
     'node_modules',
-    'node_modules/.*'
+    'node_modules/.*',
+
+    // Prevent CHANGELOG history changes
+    'CHANGELOG.md'
   ],
   overrides: [
     {
@@ -18,7 +21,13 @@ module.exports = {
         'plugin:n/recommended',
         'plugin:promise/recommended'
       ],
-      files: ['**/*.{cjs,js,mjs}'],
+      files: [
+        '**/*.{cjs,js,mjs}',
+
+        // Check markdown `*.md` contains valid code blocks
+        // https://github.com/eslint/eslint-plugin-markdown#advanced-configuration
+        '**/*.md/*.{cjs,js,mjs}'
+      ],
       parserOptions: {
         ecmaVersion: 'latest'
       },
@@ -97,6 +106,31 @@ module.exports = {
       files: ['**/*.test.{cjs,js,mjs}'],
       env: {
         jest: true
+      }
+    },
+    {
+      // Add plugin for markdown `*.md` code blocks
+      extends: ['plugin:markdown/recommended'],
+      files: ['**/*.md'],
+      plugins: ['markdown'],
+      processor: 'markdown/markdown'
+    },
+    {
+      files: ['**/coding-standards/js.md/*.{cjs,js,mjs}'],
+      env: {
+        browser: true
+      },
+      rules: {
+        // Ignore unused example code
+        'no-undef': 'off',
+        'no-unused-vars': 'off',
+
+        // Ignore paths to example modules
+        'import/no-unresolved': 'off',
+        'n/no-missing-import': 'off',
+
+        // Allow `var` in example code
+        'no-var': 'off'
       }
     }
   ],

@@ -42,7 +42,7 @@ export const watch = (options) => gulp.parallel(
   task.name('lint:js watch', () =>
     gulp.watch([
       `${slash(paths.app)}/src/javascripts/**/*.mjs`
-    ], npm.script('lint:js:cli', [slash(join(options.workspace, '**/*.{cjs,js,mjs}'))]))
+    ], npm.script('lint:js:cli', [slash(join(options.workspace, '**/*.{cjs,js,md,mjs}'))]))
   ),
 
   /**

@@ -36,7 +36,7 @@ export const watch = (options) => gulp.parallel(
     gulp.watch([
       `${slash(options.srcPath)}/govuk/**/*.mjs`
     ], gulp.parallel(
-      npm.script('lint:js:cli', [slash(join(options.workspace, '**/*.{cjs,js,mjs}'))]),
+      npm.script('lint:js:cli', [slash(join(options.workspace, '**/*.{cjs,js,md,mjs}'))]),
       scripts(options)
     ))
   ),
