@@ -3,7 +3,6 @@ import { Accordion } from './components/accordion/accordion.mjs'
 import { Button } from './components/button/button.mjs'
 import { CharacterCount } from './components/character-count/character-count.mjs'
 import { Checkboxes } from './components/checkboxes/checkboxes.mjs'
-import { Details } from './components/details/details.mjs'
 import { ErrorSummary } from './components/error-summary/error-summary.mjs'
 import { Header } from './components/header/header.mjs'
 import { NotificationBanner } from './components/notification-banner/notification-banner.mjs'
@@ -44,11 +43,6 @@ function initAll (config) {
   const $checkboxes = $scope.querySelectorAll('[data-module="govuk-checkboxes"]')
   $checkboxes.forEach(($checkbox) => {
     new Checkboxes($checkbox).init()
-  })
-
-  const $details = $scope.querySelectorAll('[data-module="govuk-details"]')
-  $details.forEach(($detail) => {
-    new Details($detail).init()
   })
 
   // Find first error summary module to enhance.
@@ -92,7 +86,6 @@ export {
   // Components
   Accordion,
   Button,
-  Details,
   CharacterCount,
   Checkboxes,
   ErrorSummary,
