@@ -62,7 +62,17 @@ Tabs.prototype.init = function () {
 Tabs.prototype.setupResponsiveChecks = function () {
   /** @deprecated Will be made private in v5.0 */
   this.mql = window.matchMedia('(min-width: 40.0625em)')
-  this.mql.addListener(this.checkMode.bind(this))
+
+  // MediaQueryList.addEventListener isn't supported by Safari < 14 so we need
+  // to be able to fall back to the deprecated MediaQueryList.addListener
+  if ('addEventListener' in this.mql) {
+    this.mql.addEventListener('change', this.checkMode.bind(this))
+  } else {
+    // @ts-expect-error Property 'addListener' does not exist
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    this.mql.addListener(this.checkMode.bind(this))
+  }
+
   this.checkMode()
 }
 
