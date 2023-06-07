@@ -11,5 +11,6 @@
     "restart": "browser-sync reload --config browsersync.config.js"
   },
   "ext": "mjs,json,yaml",
-  "quiet": true
+  "quiet": true,
+  "signal": "SIGINT"
 }
