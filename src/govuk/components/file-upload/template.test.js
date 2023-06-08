@@ -100,7 +100,7 @@ describe('File upload', () => {
       const $hint = $('.govuk-hint')
 
       const hintId = new RegExp(
-        WORD_BOUNDARY + 'some-id' + WHITESPACE + $hint.attr('id') + WORD_BOUNDARY
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${$hint.attr('id')}${WORD_BOUNDARY}`
       )
 
       expect($component.attr('aria-describedby'))
@@ -136,7 +136,7 @@ describe('File upload', () => {
       const $errorMessage = $('.govuk-error-message')
 
       const errorMessageId = new RegExp(
-        WORD_BOUNDARY + 'some-id' + WHITESPACE + $errorMessage.attr('id') + WORD_BOUNDARY
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${$errorMessage.attr('id')}${WORD_BOUNDARY}`
       )
 
       expect($component.attr('aria-describedby'))

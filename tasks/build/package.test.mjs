@@ -123,7 +123,7 @@ describe('packages/govuk-frontend/dist/', () => {
       const contents = await readFile(join(paths.package, 'dist/govuk/all.js'), 'utf8')
 
       // Look for CommonJS `version` named export
-      expect(contents).toContain(`var version = '${pkg.version}';`)
+      expect(contents).toContain(`const version = '${pkg.version}';`)
       expect(contents).toContain('exports.version = version;')
     })
   })

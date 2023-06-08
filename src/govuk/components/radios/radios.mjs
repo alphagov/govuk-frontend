@@ -10,7 +10,7 @@ function Radios ($module) {
   }
 
   /** @satisfies {NodeListOf<HTMLInputElement>} */
-  var $inputs = $module.querySelectorAll('input[type="radio"]')
+  const $inputs = $module.querySelectorAll('input[type="radio"]')
   if (!$inputs.length) {
     return this
   }
@@ -42,11 +42,11 @@ Radios.prototype.init = function () {
     return
   }
 
-  var $module = this.$module
-  var $inputs = this.$inputs
+  const $module = this.$module
+  const $inputs = this.$inputs
 
-  $inputs.forEach(function ($input) {
-    var targetId = $input.getAttribute('data-aria-controls')
+  $inputs.forEach(($input) => {
+    const targetId = $input.getAttribute('data-aria-controls')
 
     // Skip radios without data-aria-controls attributes, or where the
     // target element does not exist.
@@ -63,7 +63,7 @@ Radios.prototype.init = function () {
   // When the page is restored after navigating 'back' in some browsers the
   // state of form controls is not restored until *after* the DOMContentLoaded
   // event is fired, so we need to sync after the pageshow event.
-  window.addEventListener('pageshow', this.syncAllConditionalReveals.bind(this))
+  window.addEventListener('pageshow', () => this.syncAllConditionalReveals())
 
   // Although we've set up handlers to sync state on the pageshow event, init
   // could be called after those events have fired, for example if they are
@@ -71,7 +71,7 @@ Radios.prototype.init = function () {
   this.syncAllConditionalReveals()
 
   // Handle events
-  $module.addEventListener('click', this.handleClick.bind(this))
+  $module.addEventListener('click', (event) => this.handleClick(event))
 }
 
 /**
@@ -80,7 +80,7 @@ Radios.prototype.init = function () {
  * @deprecated Will be made private in v5.0
  */
 Radios.prototype.syncAllConditionalReveals = function () {
-  this.$inputs.forEach(this.syncConditionalRevealWithInputState.bind(this))
+  this.$inputs.forEach(($input) => this.syncConditionalRevealWithInputState($input))
 }
 
 /**
@@ -93,14 +93,14 @@ Radios.prototype.syncAllConditionalReveals = function () {
  * @param {HTMLInputElement} $input - Radio input
  */
 Radios.prototype.syncConditionalRevealWithInputState = function ($input) {
-  var targetId = $input.getAttribute('aria-controls')
+  const targetId = $input.getAttribute('aria-controls')
   if (!targetId) {
     return
   }
 
-  var $target = document.getElementById(targetId)
+  const $target = document.getElementById(targetId)
   if ($target && $target.classList.contains('govuk-radios__conditional')) {
-    var inputIsChecked = $input.checked
+    const inputIsChecked = $input.checked
 
     $input.setAttribute('aria-expanded', inputIsChecked.toString())
     $target.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked)
@@ -119,8 +119,7 @@ Radios.prototype.syncConditionalRevealWithInputState = function ($input) {
  * @param {MouseEvent} event - Click event
  */
 Radios.prototype.handleClick = function (event) {
-  var $component = this
-  var $clickedInput = event.target
+  const $clickedInput = event.target
 
   // Ignore clicks on things that aren't radio buttons
   if (!($clickedInput instanceof HTMLInputElement) || $clickedInput.type !== 'radio') {
@@ -130,17 +129,17 @@ Radios.prototype.handleClick = function (event) {
   // We only need to consider radios with conditional reveals, which will have
   // aria-controls attributes.
   /** @satisfies {NodeListOf<HTMLInputElement>} */
-  var $allInputs = document.querySelectorAll('input[type="radio"][aria-controls]')
+  const $allInputs = document.querySelectorAll('input[type="radio"][aria-controls]')
 
-  var $clickedInputForm = $clickedInput.form
-  var $clickedInputName = $clickedInput.name
+  const $clickedInputForm = $clickedInput.form
+  const $clickedInputName = $clickedInput.name
 
-  $allInputs.forEach(function ($input) {
-    var hasSameFormOwner = $input.form === $clickedInputForm
-    var hasSameName = $input.name === $clickedInputName
+  $allInputs.forEach(($input) => {
+    const hasSameFormOwner = $input.form === $clickedInputForm
+    const hasSameName = $input.name === $clickedInputName
 
     if (hasSameName && hasSameFormOwner) {
-      $component.syncConditionalRevealWithInputState($input)
+      this.syncConditionalRevealWithInputState($input)
     }
   })
 }

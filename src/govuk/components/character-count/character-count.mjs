@@ -11,7 +11,7 @@ import { I18n } from '../../i18n.mjs'
  * @default
  * @type {CharacterCountTranslations}
  */
-var CHARACTER_COUNT_TRANSLATIONS = {
+const CHARACTER_COUNT_TRANSLATIONS = {
   // Characters
   charactersUnderLimit: {
     one: 'You have %{count} character remaining',
@@ -56,7 +56,7 @@ function CharacterCount ($module, config) {
     return this
   }
 
-  var $textarea = $module.querySelector('.govuk-js-character-count')
+  const $textarea = $module.querySelector('.govuk-js-character-count')
   if (
     !(
       $textarea instanceof HTMLTextAreaElement ||
@@ -67,13 +67,13 @@ function CharacterCount ($module, config) {
   }
 
   /** @type {CharacterCountConfig} */
-  var defaultConfig = {
+  const defaultConfig = {
     threshold: 0,
     i18n: CHARACTER_COUNT_TRANSLATIONS
   }
 
   // Read config set using dataset ('data-' values)
-  var datasetConfig = normaliseDataset($module.dataset)
+  const datasetConfig = normaliseDataset($module.dataset)
 
   // To ensure data-attributes take complete precedence, even if they change the
   // type of count, we need to reset the `maxlength` and `maxwords` from the
@@ -82,7 +82,7 @@ function CharacterCount ($module, config) {
   // We can't mutate `config`, though, as it may be shared across multiple
   // components inside `initAll`.
   /** @type {CharacterCountConfig} */
-  var configOverrides = {}
+  let configOverrides = {}
   if ('maxwords' in datasetConfig || 'maxlength' in datasetConfig) {
     configOverrides = {
       maxlength: undefined,
@@ -149,8 +149,8 @@ CharacterCount.prototype.init = function () {
     return
   }
 
-  var $textarea = this.$textarea
-  var $textareaDescription = document.getElementById($textarea.id + '-info')
+  const $textarea = this.$textarea
+  const $textareaDescription = document.getElementById(`${$textarea.id}-info`)
   if (!$textareaDescription) {
     return
   }
@@ -168,7 +168,7 @@ CharacterCount.prototype.init = function () {
 
   // Create the *screen reader* specific live-updating counter
   // This doesn't need any styling classes, as it is never visible
-  var $screenReaderCountMessage = document.createElement('div')
+  const $screenReaderCountMessage = document.createElement('div')
   $screenReaderCountMessage.className = 'govuk-character-count__sr-status govuk-visually-hidden'
   $screenReaderCountMessage.setAttribute('aria-live', 'polite')
   this.$screenReaderCountMessage = $screenReaderCountMessage
@@ -177,7 +177,7 @@ CharacterCount.prototype.init = function () {
   // Create our live-updating counter element, copying the classes from the
   // textarea description for backwards compatibility as these may have been
   // configured
-  var $visibleCountMessage = document.createElement('div')
+  const $visibleCountMessage = document.createElement('div')
   $visibleCountMessage.className = $textareaDescription.className
   $visibleCountMessage.classList.add('govuk-character-count__status')
   $visibleCountMessage.setAttribute('aria-hidden', 'true')
@@ -195,7 +195,7 @@ CharacterCount.prototype.init = function () {
   // When the page is restored after navigating 'back' in some browsers the
   // state of form controls is not restored until *after* the DOMContentLoaded
   // event is fired, so we need to sync after the pageshow event.
-  window.addEventListener('pageshow', this.updateCountMessage.bind(this))
+  window.addEventListener('pageshow', () => this.updateCountMessage())
 
   // Although we've set up handlers to sync state on the pageshow event, init
   // could be called after those events have fired, for example if they are
@@ -212,12 +212,12 @@ CharacterCount.prototype.init = function () {
  * @deprecated Will be made private in v5.0
  */
 CharacterCount.prototype.bindChangeEvents = function () {
-  var $textarea = this.$textarea
-  $textarea.addEventListener('keyup', this.handleKeyUp.bind(this))
+  const $textarea = this.$textarea
+  $textarea.addEventListener('keyup', () => this.handleKeyUp())
 
   // Bind focus/blur events to start/stop polling
-  $textarea.addEventListener('focus', this.handleFocus.bind(this))
-  $textarea.addEventListener('blur', this.handleBlur.bind(this))
+  $textarea.addEventListener('focus', () => this.handleFocus())
+  $textarea.addEventListener('blur', () => this.handleBlur())
 }
 
 /**
@@ -249,11 +249,11 @@ CharacterCount.prototype.handleKeyUp = function () {
  * @deprecated Will be made private in v5.0
  */
 CharacterCount.prototype.handleFocus = function () {
-  this.valueChecker = setInterval(/** @this {CharacterCount} */ function () {
+  this.valueChecker = setInterval(() => {
     if (!this.lastInputTimestamp || (Date.now() - 500) >= this.lastInputTimestamp) {
       this.updateIfValueChanged()
     }
-  }.bind(this), 1000)
+  }, 1000)
 }
 
 /**
@@ -299,9 +299,9 @@ CharacterCount.prototype.updateCountMessage = function () {
  * @deprecated Will be made private in v5.0
  */
 CharacterCount.prototype.updateVisibleCountMessage = function () {
-  var $textarea = this.$textarea
-  var $visibleCountMessage = this.$visibleCountMessage
-  var remainingNumber = this.maxLength - this.count($textarea.value)
+  const $textarea = this.$textarea
+  const $visibleCountMessage = this.$visibleCountMessage
+  const remainingNumber = this.maxLength - this.count($textarea.value)
 
   // If input is over the threshold, remove the disabled class which renders the
   // counter invisible.
@@ -332,7 +332,7 @@ CharacterCount.prototype.updateVisibleCountMessage = function () {
  * @deprecated Will be made private in v5.0
  */
 CharacterCount.prototype.updateScreenReaderCountMessage = function () {
-  var $screenReaderCountMessage = this.$screenReaderCountMessage
+  const $screenReaderCountMessage = this.$screenReaderCountMessage
 
   // If over the threshold, remove the aria-hidden attribute, allowing screen
   // readers to announce the content of the element.
@@ -356,7 +356,7 @@ CharacterCount.prototype.updateScreenReaderCountMessage = function () {
  */
 CharacterCount.prototype.count = function (text) {
   if ('maxwords' in this.config && this.config.maxwords) {
-    var tokens = text.match(/\S+/g) || [] // Matches consecutive non-whitespace chars
+    const tokens = text.match(/\S+/g) || [] // Matches consecutive non-whitespace chars
     return tokens.length
   } else {
     return text.length
@@ -370,9 +370,9 @@ CharacterCount.prototype.count = function (text) {
  * @returns {string} Status message
  */
 CharacterCount.prototype.getCountMessage = function () {
-  var remainingNumber = this.maxLength - this.count(this.$textarea.value)
+  const remainingNumber = this.maxLength - this.count(this.$textarea.value)
 
-  var countType = 'maxwords' in this.config && this.config.maxwords ? 'words' : 'characters'
+  const countType = 'maxwords' in this.config && this.config.maxwords ? 'words' : 'characters'
   return this.formatCountMessage(remainingNumber, countType)
 }
 
@@ -387,12 +387,12 @@ CharacterCount.prototype.getCountMessage = function () {
  */
 CharacterCount.prototype.formatCountMessage = function (remainingNumber, countType) {
   if (remainingNumber === 0) {
-    return this.i18n.t(countType + 'AtLimit')
+    return this.i18n.t(`${countType}AtLimit`)
   }
 
-  var translationKeySuffix = remainingNumber < 0 ? 'OverLimit' : 'UnderLimit'
+  const translationKeySuffix = remainingNumber < 0 ? 'OverLimit' : 'UnderLimit'
 
-  return this.i18n.t(countType + translationKeySuffix, { count: Math.abs(remainingNumber) })
+  return this.i18n.t(`${countType}${translationKeySuffix}`, { count: Math.abs(remainingNumber) })
 }
 
 /**
@@ -412,13 +412,13 @@ CharacterCount.prototype.isOverThreshold = function () {
     return true
   }
 
-  var $textarea = this.$textarea
+  const $textarea = this.$textarea
 
   // Determine the remaining number of characters/words
-  var currentLength = this.count($textarea.value)
-  var maxLength = this.maxLength
+  const currentLength = this.count($textarea.value)
+  const maxLength = this.maxLength
 
-  var thresholdValue = maxLength * this.config.threshold / 100
+  const thresholdValue = maxLength * this.config.threshold / 100
 
   return (thresholdValue <= currentLength)
 }

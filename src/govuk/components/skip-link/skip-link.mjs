@@ -29,13 +29,13 @@ SkipLink.prototype.init = function () {
   }
 
   // Check for linked element
-  var $linkedElement = this.getLinkedElement()
+  const $linkedElement = this.getLinkedElement()
   if (!$linkedElement) {
     return
   }
 
   this.$linkedElement = $linkedElement
-  this.$module.addEventListener('click', this.focusLinkedElement.bind(this))
+  this.$module.addEventListener('click', () => this.focusLinkedElement())
 }
 
 /**
@@ -45,7 +45,7 @@ SkipLink.prototype.init = function () {
  * @returns {HTMLElement | null} $linkedElement - DOM element linked to from the skip link
  */
 SkipLink.prototype.getLinkedElement = function () {
-  var linkedElementId = this.getFragmentFromUrl()
+  const linkedElementId = this.getFragmentFromUrl()
   if (!linkedElementId) {
     return null
   }
@@ -61,7 +61,7 @@ SkipLink.prototype.getLinkedElement = function () {
  * @deprecated Will be made private in v5.0
  */
 SkipLink.prototype.focusLinkedElement = function () {
-  var $linkedElement = this.$linkedElement
+  const $linkedElement = this.$linkedElement
 
   if (!$linkedElement.getAttribute('tabindex')) {
     // Set the element tabindex to -1 so it can be focused with JavaScript.
@@ -70,7 +70,7 @@ SkipLink.prototype.focusLinkedElement = function () {
 
     // Add listener for blur on the focused element (unless the listener has previously been added)
     if (!this.linkedElementListener) {
-      this.$linkedElement.addEventListener('blur', this.removeFocusProperties.bind(this))
+      this.$linkedElement.addEventListener('blur', () => this.removeFocusProperties())
       this.linkedElementListener = true
     }
   }
