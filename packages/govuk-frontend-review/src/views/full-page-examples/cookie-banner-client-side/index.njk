@@ -194,7 +194,7 @@ notes: >-
     </div>
   </div>
 
-  <script>
+  <script type="module">
     var acceptButton = document.querySelector('.js-cookies-button-accept')
     var rejectButton = document.querySelector('.js-cookies-button-reject')
 
@@ -226,11 +226,11 @@ notes: >-
         event.preventDefault()
     })
 
-    acceptedBanner.querySelector('.js-hide').addEventListener('click', function() {
+    acceptedBanner.querySelector('.js-hide').addEventListener('click', function () {
       cookieBanner.setAttribute('hidden', 'hidden')
     })
 
-    rejectedBanner.querySelector('.js-hide').addEventListener('click', function() {
+    rejectedBanner.querySelector('.js-hide').addEventListener('click', function () {
       cookieBanner.setAttribute('hidden', 'hidden')
     })
   </script>

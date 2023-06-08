@@ -15,6 +15,6 @@
 {% set mainClasses = 'govuk-main-wrapper--auto-spacing' %}
 
 {% block bodyEnd %}
-  <script src="/javascripts/all.min.js"></script>
-  <script>window.GOVUKFrontend.initAll()</script>
+  <script type="module" src="/javascripts/all.min.js"></script>
+  <script type="module">window.GOVUKFrontend.initAll()</script>
 {% endblock %}
