@@ -29,7 +29,6 @@ export default defineConfig(({ i: input }) => ({
         },
 
         // Compatibility workarounds
-        ecma: 5,
         safari10: true
       })
     ]
