@@ -45,7 +45,7 @@ Checkboxes.prototype.init = function () {
   const $module = this.$module
   const $inputs = this.$inputs
 
-  $inputs.forEach(function ($input) {
+  $inputs.forEach(($input) => {
     const targetId = $input.getAttribute('data-aria-controls')
 
     // Skip checkboxes without data-aria-controls attributes, or where the
@@ -117,18 +117,16 @@ Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
  * @param {HTMLInputElement} $input - Checkbox input
  */
 Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
-  const $component = this
-
   /** @satisfies {NodeListOf<HTMLInputElement>} */
   const allInputsWithSameName = document.querySelectorAll(
     `input[type="checkbox"][name="${$input.name}"]`
   )
 
-  allInputsWithSameName.forEach(function ($inputWithSameName) {
+  allInputsWithSameName.forEach(($inputWithSameName) => {
     const hasSameFormOwner = ($input.form === $inputWithSameName.form)
     if (hasSameFormOwner && $inputWithSameName !== $input) {
       $inputWithSameName.checked = false
-      $component.syncConditionalRevealWithInputState($inputWithSameName)
+      this.syncConditionalRevealWithInputState($inputWithSameName)
     }
   })
 }
@@ -144,18 +142,16 @@ Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
  * @param {HTMLInputElement} $input - Checkbox input
  */
 Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
-  const $component = this
-
   /** @satisfies {NodeListOf<HTMLInputElement>} */
   const allInputsWithSameNameAndExclusiveBehaviour = document.querySelectorAll(
     `input[data-behaviour="exclusive"][type="checkbox"][name="${$input.name}"]`
   )
 
-  allInputsWithSameNameAndExclusiveBehaviour.forEach(function ($exclusiveInput) {
+  allInputsWithSameNameAndExclusiveBehaviour.forEach(($exclusiveInput) => {
     const hasSameFormOwner = ($input.form === $exclusiveInput.form)
     if (hasSameFormOwner) {
       $exclusiveInput.checked = false
-      $component.syncConditionalRevealWithInputState($exclusiveInput)
+      this.syncConditionalRevealWithInputState($exclusiveInput)
     }
   })
 }

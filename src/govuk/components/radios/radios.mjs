@@ -45,7 +45,7 @@ Radios.prototype.init = function () {
   const $module = this.$module
   const $inputs = this.$inputs
 
-  $inputs.forEach(function ($input) {
+  $inputs.forEach(($input) => {
     const targetId = $input.getAttribute('data-aria-controls')
 
     // Skip radios without data-aria-controls attributes, or where the
@@ -119,7 +119,6 @@ Radios.prototype.syncConditionalRevealWithInputState = function ($input) {
  * @param {MouseEvent} event - Click event
  */
 Radios.prototype.handleClick = function (event) {
-  const $component = this
   const $clickedInput = event.target
 
   // Ignore clicks on things that aren't radio buttons
@@ -135,12 +134,12 @@ Radios.prototype.handleClick = function (event) {
   const $clickedInputForm = $clickedInput.form
   const $clickedInputName = $clickedInput.name
 
-  $allInputs.forEach(function ($input) {
+  $allInputs.forEach(($input) => {
     const hasSameFormOwner = $input.form === $clickedInputForm
     const hasSameName = $input.name === $clickedInputName
 
     if (hasSameName && hasSameFormOwner) {
-      $component.syncConditionalRevealWithInputState($input)
+      this.syncConditionalRevealWithInputState($input)
     }
   })
 }

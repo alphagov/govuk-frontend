@@ -200,26 +200,25 @@ Accordion.prototype.initControls = function () {
  * @deprecated Will be made private in v5.0
  */
 Accordion.prototype.initSectionHeaders = function () {
-  const $component = this
   const $sections = this.$sections
 
   // Loop through sections
-  $sections.forEach(function ($section, i) {
-    const $header = $section.querySelector(`.${$component.sectionHeaderClass}`)
+  $sections.forEach(($section, i) => {
+    const $header = $section.querySelector(`.${this.sectionHeaderClass}`)
     if (!$header) {
       return
     }
 
     // Set header attributes
-    $component.constructHeaderMarkup($header, i)
-    $component.setExpanded($component.isExpanded($section), $section)
+    this.constructHeaderMarkup($header, i)
+    this.setExpanded(this.isExpanded($section), $section)
 
     // Handle events
-    $header.addEventListener('click', $component.onSectionToggle.bind($component, $section))
+    $header.addEventListener('click', this.onSectionToggle.bind(this, $section))
 
     // See if there is any state stored in sessionStorage and set the sections to
     // open or closed.
-    $component.setInitialState($section)
+    this.setInitialState($section)
   })
 }
 
@@ -371,19 +370,18 @@ Accordion.prototype.onSectionToggle = function ($section) {
  * @deprecated Will be made private in v5.0
  */
 Accordion.prototype.onShowOrHideAllToggle = function () {
-  const $component = this
   const $sections = this.$sections
 
   const nowExpanded = !this.checkIfAllSectionsOpen()
 
   // Loop through sections
-  $sections.forEach(function ($section) {
-    $component.setExpanded(nowExpanded, $section)
+  $sections.forEach(($section) => {
+    this.setExpanded(nowExpanded, $section)
     // Store the state in sessionStorage when a change is triggered
-    $component.storeState($section)
+    this.storeState($section)
   })
 
-  $component.updateShowAllButton(nowExpanded)
+  this.updateShowAllButton(nowExpanded)
 }
 
 /**
