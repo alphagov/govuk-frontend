@@ -47,8 +47,8 @@ Button.prototype.init = function () {
     return
   }
 
-  this.$module.addEventListener('keydown', this.handleKeyDown)
-  this.$module.addEventListener('click', this.debounce.bind(this))
+  this.$module.addEventListener('keydown', (event) => this.handleKeyDown(event))
+  this.$module.addEventListener('click', (event) => this.debounce(event))
 }
 
 /**

@@ -63,7 +63,7 @@ Checkboxes.prototype.init = function () {
   // When the page is restored after navigating 'back' in some browsers the
   // state of form controls is not restored until *after* the DOMContentLoaded
   // event is fired, so we need to sync after the pageshow event.
-  window.addEventListener('pageshow', this.syncAllConditionalReveals.bind(this))
+  window.addEventListener('pageshow', () => this.syncAllConditionalReveals())
 
   // Although we've set up handlers to sync state on the pageshow event, init
   // could be called after those events have fired, for example if they are
@@ -71,7 +71,7 @@ Checkboxes.prototype.init = function () {
   this.syncAllConditionalReveals()
 
   // Handle events
-  $module.addEventListener('click', this.handleClick.bind(this))
+  $module.addEventListener('click', (event) => this.handleClick(event))
 }
 
 /**
@@ -80,7 +80,7 @@ Checkboxes.prototype.init = function () {
  * @deprecated Will be made private in v5.0
  */
 Checkboxes.prototype.syncAllConditionalReveals = function () {
-  this.$inputs.forEach(this.syncConditionalRevealWithInputState.bind(this))
+  this.$inputs.forEach(($input) => this.syncConditionalRevealWithInputState($input))
 }
 
 /**

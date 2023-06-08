@@ -73,7 +73,7 @@ NotificationBanner.prototype.setFocus = function () {
   if (!$module.getAttribute('tabindex')) {
     $module.setAttribute('tabindex', '-1')
 
-    $module.addEventListener('blur', function () {
+    $module.addEventListener('blur', () => {
       $module.removeAttribute('tabindex')
     })
   }

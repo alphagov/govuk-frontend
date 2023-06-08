@@ -60,15 +60,15 @@ Header.prototype.init = function () {
   // MediaQueryList.addEventListener isn't supported by Safari < 14 so we need
   // to be able to fall back to the deprecated MediaQueryList.addListener
   if ('addEventListener' in this.mql) {
-    this.mql.addEventListener('change', this.syncState.bind(this))
+    this.mql.addEventListener('change', () => this.syncState())
   } else {
     // @ts-expect-error Property 'addListener' does not exist
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-    this.mql.addListener(this.syncState.bind(this))
+    this.mql.addListener(() => this.syncState())
   }
 
   this.syncState()
-  this.$menuButton.addEventListener('click', this.handleMenuButtonClick.bind(this))
+  this.$menuButton.addEventListener('click', () => this.handleMenuButtonClick())
 }
 
 /**

@@ -55,7 +55,7 @@ ErrorSummary.prototype.init = function () {
   const $module = this.$module
 
   this.setFocus()
-  $module.addEventListener('click', this.handleClick.bind(this))
+  $module.addEventListener('click', (event) => this.handleClick(event))
 }
 
 /**
@@ -74,7 +74,7 @@ ErrorSummary.prototype.setFocus = function () {
   // remove it on blur as the error summary doesn't need to be focused again.
   $module.setAttribute('tabindex', '-1')
 
-  $module.addEventListener('blur', function () {
+  $module.addEventListener('blur', () => {
     $module.removeAttribute('tabindex')
   })
 
