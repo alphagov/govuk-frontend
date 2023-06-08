@@ -195,7 +195,7 @@ CharacterCount.prototype.init = function () {
   // When the page is restored after navigating 'back' in some browsers the
   // state of form controls is not restored until *after* the DOMContentLoaded
   // event is fired, so we need to sync after the pageshow event.
-  window.addEventListener('pageshow', this.updateCountMessage.bind(this))
+  window.addEventListener('pageshow', () => this.updateCountMessage())
 
   // Although we've set up handlers to sync state on the pageshow event, init
   // could be called after those events have fired, for example if they are
@@ -213,11 +213,11 @@ CharacterCount.prototype.init = function () {
  */
 CharacterCount.prototype.bindChangeEvents = function () {
   const $textarea = this.$textarea
-  $textarea.addEventListener('keyup', this.handleKeyUp.bind(this))
+  $textarea.addEventListener('keyup', () => this.handleKeyUp())
 
   // Bind focus/blur events to start/stop polling
-  $textarea.addEventListener('focus', this.handleFocus.bind(this))
-  $textarea.addEventListener('blur', this.handleBlur.bind(this))
+  $textarea.addEventListener('focus', () => this.handleFocus())
+  $textarea.addEventListener('blur', () => this.handleBlur())
 }
 
 /**

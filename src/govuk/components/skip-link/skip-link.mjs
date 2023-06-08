@@ -35,7 +35,7 @@ SkipLink.prototype.init = function () {
   }
 
   this.$linkedElement = $linkedElement
-  this.$module.addEventListener('click', this.focusLinkedElement.bind(this))
+  this.$module.addEventListener('click', () => this.focusLinkedElement())
 }
 
 /**
@@ -70,7 +70,7 @@ SkipLink.prototype.focusLinkedElement = function () {
 
     // Add listener for blur on the focused element (unless the listener has previously been added)
     if (!this.linkedElementListener) {
-      this.$linkedElement.addEventListener('blur', this.removeFocusProperties.bind(this))
+      this.$linkedElement.addEventListener('blur', () => this.removeFocusProperties())
       this.linkedElementListener = true
     }
   }

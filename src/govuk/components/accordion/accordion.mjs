@@ -186,11 +186,11 @@ Accordion.prototype.initControls = function () {
   this.$showAllButton.appendChild(this.$showAllText)
 
   // Handle click events on the show/hide all button
-  this.$showAllButton.addEventListener('click', this.onShowOrHideAllToggle.bind(this))
+  this.$showAllButton.addEventListener('click', () => this.onShowOrHideAllToggle())
 
   // Handle 'beforematch' events, if the user agent supports them
   if ('onbeforematch' in document) {
-    document.addEventListener('beforematch', this.onBeforeMatch.bind(this))
+    document.addEventListener('beforematch', (event) => this.onBeforeMatch(event))
   }
 }
 
@@ -214,7 +214,7 @@ Accordion.prototype.initSectionHeaders = function () {
     this.setExpanded(this.isExpanded($section), $section)
 
     // Handle events
-    $header.addEventListener('click', this.onSectionToggle.bind(this, $section))
+    $header.addEventListener('click', () => this.onSectionToggle($section))
 
     // See if there is any state stored in sessionStorage and set the sections to
     // open or closed.

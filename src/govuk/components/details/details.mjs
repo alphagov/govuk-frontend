@@ -96,7 +96,7 @@ Details.prototype.polyfillDetails = function () {
   }
 
   // Bind an event to handle summary elements
-  this.polyfillHandleInputs(this.polyfillSetAttributes.bind(this))
+  this.polyfillHandleInputs(() => this.polyfillSetAttributes())
 }
 
 /**
@@ -126,7 +126,7 @@ Details.prototype.polyfillSetAttributes = function () {
  * @param {(event: UIEvent) => void} callback - function
  */
 Details.prototype.polyfillHandleInputs = function (callback) {
-  this.$summary.addEventListener('keypress', function (event) {
+  this.$summary.addEventListener('keypress', (event) => {
     const $target = event.target
     // When the key gets pressed - check if it is enter or space
     if (event.keyCode === KEY_ENTER || event.keyCode === KEY_SPACE) {
@@ -146,7 +146,7 @@ Details.prototype.polyfillHandleInputs = function (callback) {
   })
 
   // Prevent keyup to prevent clicking twice in Firefox when using space key
-  this.$summary.addEventListener('keyup', function (event) {
+  this.$summary.addEventListener('keyup', (event) => {
     const $target = event.target
     if (event.keyCode === KEY_SPACE) {
       if ($target instanceof HTMLElement && $target.nodeName.toLowerCase() === 'summary') {
