@@ -249,11 +249,11 @@ CharacterCount.prototype.handleKeyUp = function () {
  * @deprecated Will be made private in v5.0
  */
 CharacterCount.prototype.handleFocus = function () {
-  this.valueChecker = setInterval(/** @this {CharacterCount} */ function () {
+  this.valueChecker = setInterval(() => {
     if (!this.lastInputTimestamp || (Date.now() - 500) >= this.lastInputTimestamp) {
       this.updateIfValueChanged()
     }
-  }.bind(this), 1000)
+  }, 1000)
 }
 
 /**
