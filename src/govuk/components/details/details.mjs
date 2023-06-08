@@ -6,8 +6,8 @@
  */
 import { generateUniqueID } from '../../common/index.mjs'
 
-var KEY_ENTER = 13
-var KEY_SPACE = 32
+const KEY_ENTER = 13
+const KEY_SPACE = 32
 
 /**
  * Details component
@@ -40,7 +40,7 @@ Details.prototype.init = function () {
   }
 
   // If there is native details support, we want to avoid running code to polyfill native behaviour.
-  var hasNativeDetails = 'HTMLDetailsElement' in window &&
+  const hasNativeDetails = 'HTMLDetailsElement' in window &&
     this.$module instanceof HTMLDetailsElement
 
   if (!hasNativeDetails) {
@@ -54,11 +54,11 @@ Details.prototype.init = function () {
  * @deprecated Will be made private in v5.0
  */
 Details.prototype.polyfillDetails = function () {
-  var $module = this.$module
+  const $module = this.$module
 
   // Save shortcuts to the inner summary and content elements
-  var $summary = this.$summary = $module.getElementsByTagName('summary').item(0)
-  var $content = this.$content = $module.getElementsByTagName('div').item(0)
+  const $summary = this.$summary = $module.getElementsByTagName('summary').item(0)
+  const $content = this.$content = $module.getElementsByTagName('div').item(0)
 
   // If <details> doesn't have a <summary> and a <div> representing the content
   // it means the required HTML structure is not met so the script will stop
@@ -127,7 +127,7 @@ Details.prototype.polyfillSetAttributes = function () {
  */
 Details.prototype.polyfillHandleInputs = function (callback) {
   this.$summary.addEventListener('keypress', function (event) {
-    var $target = event.target
+    const $target = event.target
     // When the key gets pressed - check if it is enter or space
     if (event.keyCode === KEY_ENTER || event.keyCode === KEY_SPACE) {
       if ($target instanceof HTMLElement && $target.nodeName.toLowerCase() === 'summary') {
@@ -147,7 +147,7 @@ Details.prototype.polyfillHandleInputs = function (callback) {
 
   // Prevent keyup to prevent clicking twice in Firefox when using space key
   this.$summary.addEventListener('keyup', function (event) {
-    var $target = event.target
+    const $target = event.target
     if (event.keyCode === KEY_SPACE) {
       if ($target instanceof HTMLElement && $target.nodeName.toLowerCase() === 'summary') {
         event.preventDefault()

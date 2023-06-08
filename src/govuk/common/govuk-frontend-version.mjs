@@ -8,4 +8,4 @@
  *
  * {@link https://github.com/alphagov/govuk-frontend/releases}
  */
-export var version = 'development'
+export const version = 'development'

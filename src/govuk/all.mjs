@@ -24,62 +24,62 @@ function initAll (config) {
 
   // Allow the user to initialise GOV.UK Frontend in only certain sections of the page
   // Defaults to the entire document if nothing is set.
-  var $scope = config.scope instanceof HTMLElement ? config.scope : document
+  const $scope = config.scope instanceof HTMLElement ? config.scope : document
 
-  var $accordions = $scope.querySelectorAll('[data-module="govuk-accordion"]')
+  const $accordions = $scope.querySelectorAll('[data-module="govuk-accordion"]')
   $accordions.forEach(function ($accordion) {
     new Accordion($accordion, config.accordion).init()
   })
 
-  var $buttons = $scope.querySelectorAll('[data-module="govuk-button"]')
+  const $buttons = $scope.querySelectorAll('[data-module="govuk-button"]')
   $buttons.forEach(function ($button) {
     new Button($button, config.button).init()
   })
 
-  var $characterCounts = $scope.querySelectorAll('[data-module="govuk-character-count"]')
+  const $characterCounts = $scope.querySelectorAll('[data-module="govuk-character-count"]')
   $characterCounts.forEach(function ($characterCount) {
     new CharacterCount($characterCount, config.characterCount).init()
   })
 
-  var $checkboxes = $scope.querySelectorAll('[data-module="govuk-checkboxes"]')
+  const $checkboxes = $scope.querySelectorAll('[data-module="govuk-checkboxes"]')
   $checkboxes.forEach(function ($checkbox) {
     new Checkboxes($checkbox).init()
   })
 
-  var $details = $scope.querySelectorAll('[data-module="govuk-details"]')
+  const $details = $scope.querySelectorAll('[data-module="govuk-details"]')
   $details.forEach(function ($detail) {
     new Details($detail).init()
   })
 
   // Find first error summary module to enhance.
-  var $errorSummary = $scope.querySelector('[data-module="govuk-error-summary"]')
+  const $errorSummary = $scope.querySelector('[data-module="govuk-error-summary"]')
   if ($errorSummary) {
     new ErrorSummary($errorSummary, config.errorSummary).init()
   }
 
   // Find first header module to enhance.
-  var $header = $scope.querySelector('[data-module="govuk-header"]')
+  const $header = $scope.querySelector('[data-module="govuk-header"]')
   if ($header) {
     new Header($header).init()
   }
 
-  var $notificationBanners = $scope.querySelectorAll('[data-module="govuk-notification-banner"]')
+  const $notificationBanners = $scope.querySelectorAll('[data-module="govuk-notification-banner"]')
   $notificationBanners.forEach(function ($notificationBanner) {
     new NotificationBanner($notificationBanner, config.notificationBanner).init()
   })
 
-  var $radios = $scope.querySelectorAll('[data-module="govuk-radios"]')
+  const $radios = $scope.querySelectorAll('[data-module="govuk-radios"]')
   $radios.forEach(function ($radio) {
     new Radios($radio).init()
   })
 
   // Find first skip link module to enhance.
-  var $skipLink = $scope.querySelector('[data-module="govuk-skip-link"]')
+  const $skipLink = $scope.querySelector('[data-module="govuk-skip-link"]')
   if ($skipLink) {
     new SkipLink($skipLink).init()
   }
 
-  var $tabs = $scope.querySelectorAll('[data-module="govuk-tabs"]')
+  const $tabs = $scope.querySelectorAll('[data-module="govuk-tabs"]')
   $tabs.forEach(function ($tabs) {
     new Tabs($tabs).init()
   })

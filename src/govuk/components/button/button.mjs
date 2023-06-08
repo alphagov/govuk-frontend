@@ -1,8 +1,8 @@
 import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 
-var KEY_SPACE = 32
-var DEBOUNCE_TIMEOUT_IN_SECONDS = 1
+const KEY_SPACE = 32
+const DEBOUNCE_TIMEOUT_IN_SECONDS = 1
 
 /**
  * JavaScript enhancements for the Button component
@@ -23,7 +23,7 @@ function Button ($module, config) {
   this.debounceFormSubmitTimer = null
 
   /** @type {ButtonConfig} */
-  var defaultConfig = {
+  const defaultConfig = {
     preventDoubleClick: false
   }
 
@@ -63,7 +63,7 @@ Button.prototype.init = function () {
  * @param {KeyboardEvent} event - Keydown event
  */
 Button.prototype.handleKeyDown = function (event) {
-  var $target = event.target
+  const $target = event.target
 
   // Handle space bar only
   if (event.keyCode !== KEY_SPACE) {

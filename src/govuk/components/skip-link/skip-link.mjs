@@ -29,7 +29,7 @@ SkipLink.prototype.init = function () {
   }
 
   // Check for linked element
-  var $linkedElement = this.getLinkedElement()
+  const $linkedElement = this.getLinkedElement()
   if (!$linkedElement) {
     return
   }
@@ -45,7 +45,7 @@ SkipLink.prototype.init = function () {
  * @returns {HTMLElement | null} $linkedElement - DOM element linked to from the skip link
  */
 SkipLink.prototype.getLinkedElement = function () {
-  var linkedElementId = this.getFragmentFromUrl()
+  const linkedElementId = this.getFragmentFromUrl()
   if (!linkedElementId) {
     return null
   }
@@ -61,7 +61,7 @@ SkipLink.prototype.getLinkedElement = function () {
  * @deprecated Will be made private in v5.0
  */
 SkipLink.prototype.focusLinkedElement = function () {
-  var $linkedElement = this.$linkedElement
+  const $linkedElement = this.$linkedElement
 
   if (!$linkedElement.getAttribute('tabindex')) {
     // Set the element tabindex to -1 so it can be focused with JavaScript.

@@ -28,7 +28,7 @@ function ErrorSummary ($module, config) {
   this.$module = $module
 
   /** @type {ErrorSummaryConfig} */
-  var defaultConfig = {
+  const defaultConfig = {
     disableAutoFocus: false
   }
 
@@ -52,7 +52,7 @@ ErrorSummary.prototype.init = function () {
     return
   }
 
-  var $module = this.$module
+  const $module = this.$module
 
   this.setFocus()
   $module.addEventListener('click', this.handleClick.bind(this))
@@ -64,7 +64,7 @@ ErrorSummary.prototype.init = function () {
  * @deprecated Will be made private in v5.0
  */
 ErrorSummary.prototype.setFocus = function () {
-  var $module = this.$module
+  const $module = this.$module
 
   if (this.config.disableAutoFocus) {
     return
@@ -88,7 +88,7 @@ ErrorSummary.prototype.setFocus = function () {
  * @param {MouseEvent} event - Click event
  */
 ErrorSummary.prototype.handleClick = function (event) {
-  var $target = event.target
+  const $target = event.target
   if (this.focusTarget($target)) {
     event.preventDefault()
   }
@@ -119,17 +119,17 @@ ErrorSummary.prototype.focusTarget = function ($target) {
     return false
   }
 
-  var inputId = this.getFragmentFromUrl($target.href)
+  const inputId = this.getFragmentFromUrl($target.href)
   if (!inputId) {
     return false
   }
 
-  var $input = document.getElementById(inputId)
+  const $input = document.getElementById(inputId)
   if (!$input) {
     return false
   }
 
-  var $legendOrLabel = this.getAssociatedLegendOrLabel($input)
+  const $legendOrLabel = this.getAssociatedLegendOrLabel($input)
   if (!$legendOrLabel) {
     return false
   }
@@ -178,13 +178,13 @@ ErrorSummary.prototype.getFragmentFromUrl = function (url) {
  *   legend or label can be found
  */
 ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
-  var $fieldset = $input.closest('fieldset')
+  const $fieldset = $input.closest('fieldset')
 
   if ($fieldset) {
-    var $legends = $fieldset.getElementsByTagName('legend')
+    const $legends = $fieldset.getElementsByTagName('legend')
 
     if ($legends.length) {
-      var $candidateLegend = $legends[0]
+      const $candidateLegend = $legends[0]
 
       // If the input type is radio or checkbox, always use the legend if there
       // is one.
@@ -198,13 +198,13 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
       //
       // This should avoid situations where the input either ends up off the
       // screen, or obscured by a software keyboard.
-      var legendTop = $candidateLegend.getBoundingClientRect().top
-      var inputRect = $input.getBoundingClientRect()
+      const legendTop = $candidateLegend.getBoundingClientRect().top
+      const inputRect = $input.getBoundingClientRect()
 
       // If the browser doesn't support Element.getBoundingClientRect().height
       // or window.innerHeight (like IE8), bail and just link to the label.
       if (inputRect.height && window.innerHeight) {
-        var inputBottom = inputRect.top + inputRect.height
+        const inputBottom = inputRect.top + inputRect.height
 
         if (inputBottom - legendTop < window.innerHeight / 2) {
           return $candidateLegend
