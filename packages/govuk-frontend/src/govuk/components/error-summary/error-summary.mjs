@@ -20,7 +20,7 @@ function ErrorSummary ($module, config) {
   // working the same now we read the elements data attributes
   if (!($module instanceof HTMLElement)) {
     // Little safety in case code gets ported as-is
-    // into and ES6 class constructor, where the return value matters
+    // into and ES2015 class constructor, where the return value matters
     return this
   }
 
