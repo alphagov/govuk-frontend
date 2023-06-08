@@ -35,9 +35,6 @@ module.exports = {
         // Allow `this` alias until arrow functions supported
         '@typescript-eslint/no-this-alias': 'off',
 
-        // Allow `var` until let/const supported
-        'no-var': 'off',
-
         // JSDoc blocks are mandatory
         'jsdoc/require-jsdoc': [
           'error', {
