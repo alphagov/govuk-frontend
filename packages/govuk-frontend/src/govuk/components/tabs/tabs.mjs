@@ -95,7 +95,6 @@ Tabs.prototype.checkMode = function () {
  * @deprecated Will be made private in v5.0
  */
 Tabs.prototype.setup = function () {
-  const $component = this
   const $module = this.$module
   const $tabs = this.$tabs
   const $tabList = $module.querySelector('.govuk-tabs__list')
@@ -107,20 +106,20 @@ Tabs.prototype.setup = function () {
 
   $tabList.setAttribute('role', 'tablist')
 
-  $tabListItems.forEach(function ($item) {
+  $tabListItems.forEach(($item) => {
     $item.setAttribute('role', 'presentation')
   })
 
-  $tabs.forEach(function ($tab) {
+  $tabs.forEach(($tab) => {
     // Set HTML attributes
-    $component.setAttributes($tab)
+    this.setAttributes($tab)
 
     // Handle events
-    $tab.addEventListener('click', $component.boundTabClick, true)
-    $tab.addEventListener('keydown', $component.boundTabKeydown, true)
+    $tab.addEventListener('click', this.boundTabClick, true)
+    $tab.addEventListener('keydown', this.boundTabKeydown, true)
 
     // Remove old active panels
-    $component.hideTab($tab)
+    this.hideTab($tab)
   })
 
   // Show either the active tab according to the URL's hash or the first tab
@@ -141,7 +140,6 @@ Tabs.prototype.setup = function () {
  * @deprecated Will be made private in v5.0
  */
 Tabs.prototype.teardown = function () {
-  const $component = this
   const $module = this.$module
   const $tabs = this.$tabs
   const $tabList = $module.querySelector('.govuk-tabs__list')
@@ -153,17 +151,17 @@ Tabs.prototype.teardown = function () {
 
   $tabList.removeAttribute('role')
 
-  $tabListItems.forEach(function ($item) {
+  $tabListItems.forEach(($item) => {
     $item.removeAttribute('role')
   })
 
-  $tabs.forEach(function ($tab) {
+  $tabs.forEach(($tab) => {
     // Remove events
-    $tab.removeEventListener('click', $component.boundTabClick, true)
-    $tab.removeEventListener('keydown', $component.boundTabKeydown, true)
+    $tab.removeEventListener('click', this.boundTabClick, true)
+    $tab.removeEventListener('keydown', this.boundTabKeydown, true)
 
     // Unset HTML attributes
-    $component.unsetAttributes($tab)
+    this.unsetAttributes($tab)
   })
 
   // Remove hashchange event handler

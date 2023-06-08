@@ -27,27 +27,27 @@ function initAll (config) {
   const $scope = config.scope instanceof HTMLElement ? config.scope : document
 
   const $accordions = $scope.querySelectorAll('[data-module="govuk-accordion"]')
-  $accordions.forEach(function ($accordion) {
+  $accordions.forEach(($accordion) => {
     new Accordion($accordion, config.accordion).init()
   })
 
   const $buttons = $scope.querySelectorAll('[data-module="govuk-button"]')
-  $buttons.forEach(function ($button) {
+  $buttons.forEach(($button) => {
     new Button($button, config.button).init()
   })
 
   const $characterCounts = $scope.querySelectorAll('[data-module="govuk-character-count"]')
-  $characterCounts.forEach(function ($characterCount) {
+  $characterCounts.forEach(($characterCount) => {
     new CharacterCount($characterCount, config.characterCount).init()
   })
 
   const $checkboxes = $scope.querySelectorAll('[data-module="govuk-checkboxes"]')
-  $checkboxes.forEach(function ($checkbox) {
+  $checkboxes.forEach(($checkbox) => {
     new Checkboxes($checkbox).init()
   })
 
   const $details = $scope.querySelectorAll('[data-module="govuk-details"]')
-  $details.forEach(function ($detail) {
+  $details.forEach(($detail) => {
     new Details($detail).init()
   })
 
@@ -64,12 +64,12 @@ function initAll (config) {
   }
 
   const $notificationBanners = $scope.querySelectorAll('[data-module="govuk-notification-banner"]')
-  $notificationBanners.forEach(function ($notificationBanner) {
+  $notificationBanners.forEach(($notificationBanner) => {
     new NotificationBanner($notificationBanner, config.notificationBanner).init()
   })
 
   const $radios = $scope.querySelectorAll('[data-module="govuk-radios"]')
-  $radios.forEach(function ($radio) {
+  $radios.forEach(($radio) => {
     new Radios($radio).init()
   })
 
@@ -80,7 +80,7 @@ function initAll (config) {
   }
 
   const $tabs = $scope.querySelectorAll('[data-module="govuk-tabs"]')
-  $tabs.forEach(function ($tabs) {
+  $tabs.forEach(($tabs) => {
     new Tabs($tabs).init()
   })
 }
