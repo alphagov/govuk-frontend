@@ -12,7 +12,7 @@ module.exports = {
       excludedFiles: ['**/*.test.mjs'],
       parser: '@typescript-eslint/parser',
       parserOptions: {
-        // Note: Allow ES6 for import/export syntax
+        // Note: Allow ES2015 for import/export syntax
         ecmaVersion: '2015',
         project: [resolve(__dirname, 'tsconfig.json')]
       },
@@ -23,20 +23,17 @@ module.exports = {
       extends: [
         'plugin:@typescript-eslint/recommended',
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
-        'plugin:es-x/restrict-to-es5'
+        'plugin:es-x/restrict-to-es2015'
       ],
       env: {
         browser: true
       },
       rules: {
-        // Allow unknown `.prototype` members until ES6 classes
+        // Allow unknown `.prototype` members until ES2015 classes
         '@typescript-eslint/no-unsafe-member-access': 'off',
 
         // Allow `this` alias until arrow functions supported
         '@typescript-eslint/no-this-alias': 'off',
-
-        // Rollup transpiles modules into other formats
-        'es-x/no-modules': 'off',
 
         // Allow `var` until let/const supported
         'no-var': 'off',
