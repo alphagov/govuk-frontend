@@ -29,9 +29,6 @@ module.exports = {
         browser: true
       },
       rules: {
-        // Allow unknown `.prototype` members until ES2015 classes
-        '@typescript-eslint/no-unsafe-member-access': 'off',
-
         // Check type support for template string implicit `.toString()`
         '@typescript-eslint/restrict-template-expressions': [
           'error',
