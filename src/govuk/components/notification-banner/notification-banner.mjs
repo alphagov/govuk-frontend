@@ -4,7 +4,7 @@ import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 /**
  * Notification Banner component
  */
-export default class NotificationBanner {
+export class NotificationBanner {
   /**
    * @param {Element} $module - HTML element to use for notification banner
    * @param {NotificationBannerConfig} [config] - Notification banner config

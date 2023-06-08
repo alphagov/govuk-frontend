@@ -225,8 +225,8 @@ describe('packages/govuk-frontend/dist/', () => {
         const moduleText = await readFile(join(paths.package, 'dist/govuk/components', modulePath), 'utf8')
         const moduleTextESM = await readFile(join(paths.package, 'dist/govuk-esm/components', modulePathESM), 'utf8')
 
-        expect(moduleText).toContain(`typeof define === 'function' && define.amd ? define('${moduleName}', factory)`)
-        expect(moduleTextESM).toContain(`export { ${componentNameToClassName(componentName)} as default }`)
+        expect(moduleText).toContain(`typeof define === 'function' && define.amd ? define('${moduleName}', ['exports'], factory)`)
+        expect(moduleTextESM).toContain(`export { ${componentNameToClassName(componentName)} }`)
       })
 
       // Check all component files

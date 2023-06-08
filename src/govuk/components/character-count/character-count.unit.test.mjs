@@ -1,4 +1,4 @@
-import CharacterCount from './character-count.mjs'
+import { CharacterCount } from './character-count.mjs'
 
 describe('CharacterCount', () => {
   let $container

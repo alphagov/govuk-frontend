@@ -12,7 +12,7 @@ const KEY_SPACE = 32
 /**
  * Details component
  */
-export default class Details {
+export class Details {
   /**
    *
    * @param {Element} $module - HTML element to use for details

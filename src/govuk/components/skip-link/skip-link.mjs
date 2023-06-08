@@ -1,7 +1,7 @@
 /**
  * Skip link component
  */
-export default class SkipLink {
+export class SkipLink {
   /**
    *
    * @param {Element} $module - HTML element to use for skip link

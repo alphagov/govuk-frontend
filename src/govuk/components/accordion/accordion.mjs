@@ -31,7 +31,7 @@ const ACCORDION_TRANSLATIONS = {
  * The state of each section is saved to the DOM via the `aria-expanded`
  * attribute, which also provides accessibility.
  */
-export default class Accordion {
+export class Accordion {
   /**
    * @param {Element} $module - HTML element to use for accordion
    * @param {AccordionConfig} [config] - Accordion config

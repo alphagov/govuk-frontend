@@ -47,7 +47,7 @@ const CHARACTER_COUNT_TRANSLATIONS = {
  * You can configure the message to only appear after a certain percentage
  * of the available characters/words has been entered.
  */
-export default class CharacterCount {
+export class CharacterCount {
   /**
    * @param {Element} $module - HTML element to use for character count
    * @param {CharacterCountConfig} [config] - Character count config
