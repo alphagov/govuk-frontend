@@ -45,8 +45,8 @@
 {% endblock %}
 
 {% block bodyEnd %}
-  <script src="/javascripts/all.min.js"></script>
-  <script>
+  <script type="module" src="/javascripts/all.min.js"></script>
+  <script type="module">
     var $scope = document.getElementById('scoped')
     window.GOVUKFrontend.initAll({
       scope: $scope

@@ -76,7 +76,6 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
         format: { comments: false },
 
         // Compatibility workarounds
-        ecma: 5,
         safari10: true
       }
     })]
@@ -85,7 +84,7 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
   output: {
     clean: true,
     filename: 'assets/javascripts/[name].min.js',
-    library: { type: 'umd' },
+    iife: true,
     path: destPath,
     publicPath: '/'
   },
@@ -108,5 +107,5 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
     errorDetails: true
   },
 
-  target: ['web', 'es5']
+  target: ['web', 'es2015']
 })

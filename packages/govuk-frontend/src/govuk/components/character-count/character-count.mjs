@@ -193,11 +193,13 @@ CharacterCount.prototype.init = function () {
   this.bindChangeEvents()
 
   // When the page is restored after navigating 'back' in some browsers the
-  // state of the character count is not restored until *after* the
-  // DOMContentLoaded event is fired, so we need to manually update it after the
-  // pageshow event.
+  // state of form controls is not restored until *after* the DOMContentLoaded
+  // event is fired, so we need to sync after the pageshow event.
   window.addEventListener('pageshow', this.updateCountMessage.bind(this))
 
+  // Although we've set up handlers to sync state on the pageshow event, init
+  // could be called after those events have fired, for example if they are
+  // added to the page dynamically, so update now too.
   this.updateCountMessage()
 }
 

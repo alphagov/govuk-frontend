@@ -10,8 +10,9 @@
   <!-- endblock:content -->
 {% endblock %}
 
-
 {% block bodyEnd %}
-  <script src="/javascripts/all.min.js"></script>
-  <script>window.GOVUKFrontend.initAll()</script>
+  <!-- block:bodyEnd -->
+  <script type="module" src="/javascripts/all.min.js"></script>
+  <script type="module">window.GOVUKFrontend.initAll()</script>
+  <!-- endblock:bodyEnd -->
 {% endblock %}
