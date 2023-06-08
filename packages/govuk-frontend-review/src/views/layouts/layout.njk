@@ -11,9 +11,11 @@
 {% block bodyEnd %}
   {{ super() }}
   {% block scripts %}
-    <script src="/vendor/iframe-resizer/iframeResizer.min.js"></script>
+    <script src="/vendor/iframe-resizer/iframeResizer.min.js" defer></script>
     <script>
-      window.iFrameResize({}, '.js-component-preview')
+      document.addEventListener('DOMContentLoaded', function () {
+        window.iFrameResize({}, '.js-component-preview')
+      })
     </script>
   {% endblock %}
 {% endblock %}
