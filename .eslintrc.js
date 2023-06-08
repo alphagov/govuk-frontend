@@ -127,10 +127,7 @@ module.exports = {
 
         // Ignore paths to example modules
         'import/no-unresolved': 'off',
-        'n/no-missing-import': 'off',
-
-        // Allow `var` in example code
-        'no-var': 'off'
+        'n/no-missing-import': 'off'
       }
     }
   ],
