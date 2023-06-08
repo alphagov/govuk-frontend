@@ -32,9 +32,6 @@ module.exports = {
         // Allow unknown `.prototype` members until ES2015 classes
         '@typescript-eslint/no-unsafe-member-access': 'off',
 
-        // Allow `this` alias until arrow functions supported
-        '@typescript-eslint/no-this-alias': 'off',
-
         // Check type support for template string implicit `.toString()`
         '@typescript-eslint/restrict-template-expressions': [
           'error',
