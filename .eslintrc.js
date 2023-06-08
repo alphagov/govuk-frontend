@@ -75,7 +75,11 @@ module.exports = {
         // Ignore `govuk-frontend` exports as they require auto-generated files
         'import/no-unresolved': ['error', { ignore: ['govuk-frontend'] }],
         'n/no-missing-import': ['error', { allowModules: ['govuk-frontend'] }],
-        'n/no-missing-require': ['error', { allowModules: ['govuk-frontend'] }]
+        'n/no-missing-require': ['error', { allowModules: ['govuk-frontend'] }],
+
+        // Automatically use template strings
+        'no-useless-concat': 'error',
+        'prefer-template': 'error'
       },
       settings: {
         jsdoc: {
@@ -127,10 +131,7 @@ module.exports = {
 
         // Ignore paths to example modules
         'import/no-unresolved': 'off',
-        'n/no-missing-import': 'off',
-
-        // Allow `var` in example code
-        'no-var': 'off'
+        'n/no-missing-import': 'off'
       }
     }
   ],

@@ -17,7 +17,7 @@ function NotificationBanner ($module, config) {
   this.$module = $module
 
   /** @type {NotificationBannerConfig} */
-  var defaultConfig = {
+  const defaultConfig = {
     disableAutoFocus: false
   }
 
@@ -57,7 +57,7 @@ NotificationBanner.prototype.init = function () {
  * @deprecated Will be made private in v5.0
  */
 NotificationBanner.prototype.setFocus = function () {
-  var $module = this.$module
+  const $module = this.$module
 
   if (this.config.disableAutoFocus) {
     return
@@ -73,7 +73,7 @@ NotificationBanner.prototype.setFocus = function () {
   if (!$module.getAttribute('tabindex')) {
     $module.setAttribute('tabindex', '-1')
 
-    $module.addEventListener('blur', function () {
+    $module.addEventListener('blur', () => {
       $module.removeAttribute('tabindex')
     })
   }

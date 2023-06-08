@@ -319,7 +319,7 @@ describe('Radios', () => {
       const $errorMessage = $('.govuk-error-message')
 
       const errorMessageId = new RegExp(
-        WORD_BOUNDARY + 'some-id' + WHITESPACE + $errorMessage.attr('id') + WORD_BOUNDARY
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${$errorMessage.attr('id')}${WORD_BOUNDARY}`
       )
 
       expect($fieldset.attr('aria-describedby'))
@@ -358,7 +358,7 @@ describe('Radios', () => {
       const hintId = $('.govuk-hint').attr('id')
 
       const combinedIds = new RegExp(
-        WORD_BOUNDARY + 'some-id' + WHITESPACE + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
       expect($fieldset.attr('aria-describedby'))

@@ -50,7 +50,7 @@ export async function write (assetPath, { destPath, filePath, fileContents }) {
   }
 
   await mkdir(dirname(assetDestPath), { recursive: true })
-  await writeFile(assetDestPath, await fileContents() + EOL)
+  await writeFile(assetDestPath, `${await fileContents()}${EOL}`)
 }
 
 /**

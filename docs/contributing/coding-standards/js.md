@@ -39,7 +39,7 @@ Example.prototype.init = function () {
   }
 
   // Code goes here
-  var $module = this.$module
+  const $module = this.$module
 }
 
 export default Example
@@ -117,10 +117,10 @@ When initialising an object, use the `new` keyword.
 
 ```mjs
 // Bad
-var myExample1 = Example()
+const myExample1 = Example()
 
 // Good
-var myExample2 = new Example()
+const myExample2 = new Example()
 ```
 
 ## Modules
