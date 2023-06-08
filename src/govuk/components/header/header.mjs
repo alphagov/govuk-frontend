@@ -17,7 +17,7 @@ function Header ($module) {
 
   /** @deprecated Will be made private in v5.0 */
   this.$menu = this.$menuButton && $module.querySelector(
-    '#' + this.$menuButton.getAttribute('aria-controls')
+    `#${this.$menuButton.getAttribute('aria-controls')}`
   )
 
   /**

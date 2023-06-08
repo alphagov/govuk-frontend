@@ -121,7 +121,7 @@ Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
 
   /** @satisfies {NodeListOf<HTMLInputElement>} */
   const allInputsWithSameName = document.querySelectorAll(
-    'input[type="checkbox"][name="' + $input.name + '"]'
+    `input[type="checkbox"][name="${$input.name}"]`
   )
 
   allInputsWithSameName.forEach(function ($inputWithSameName) {
@@ -148,7 +148,7 @@ Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
 
   /** @satisfies {NodeListOf<HTMLInputElement>} */
   const allInputsWithSameNameAndExclusiveBehaviour = document.querySelectorAll(
-    'input[data-behaviour="exclusive"][type="checkbox"][name="' + $input.name + '"]'
+    `input[data-behaviour="exclusive"][type="checkbox"][name="${$input.name}"]`
   )
 
   allInputsWithSameNameAndExclusiveBehaviour.forEach(function ($exclusiveInput) {

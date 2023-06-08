@@ -70,7 +70,7 @@ export function mergeConfigs (/* configObject1, configObject2, ...configObjects 
           continue
         }
         const value = obj[key]
-        const prefixedKey = prefix ? prefix + '.' + key : key
+        const prefixedKey = prefix ? `${prefix}.${key}` : key
         if (typeof value === 'object') {
           // If the value is a nested object, recurse over that too
           flattenLoop(value, prefixedKey)

@@ -200,7 +200,7 @@ describe('Date input', () => {
       const $hint = $('.govuk-hint')
 
       const hintId = new RegExp(
-        WORD_BOUNDARY + 'some-id' + WHITESPACE + $hint.attr('id') + WORD_BOUNDARY
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${$hint.attr('id')}${WORD_BOUNDARY}`
       )
 
       expect($fieldset.attr('aria-describedby'))

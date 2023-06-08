@@ -18,7 +18,7 @@ describe('/components/accordion', () => {
         const numberOfExampleSections = 2
 
         for (let i = 0; i < numberOfExampleSections; i++) {
-          const isContentVisible = await page.waitForSelector('.govuk-accordion .govuk-accordion__section:nth-of-type(' + (i + 1) + ') .govuk-accordion__section-content',
+          const isContentVisible = await page.waitForSelector(`.govuk-accordion .govuk-accordion__section:nth-of-type(${i + 1}) .govuk-accordion__section-content`,
             { visible: true, timeout: 1000 }
           )
           expect(isContentVisible).toBeTruthy()
@@ -46,7 +46,7 @@ describe('/components/accordion', () => {
 
         for (let i = 0; i < numberOfExampleSections; i++) {
           const sectionHeaderButtonExpanded = await page.evaluate(function (i) {
-            return document.body.querySelector('.govuk-accordion .govuk-accordion__section:nth-of-type(' + (2 + i) + ') .govuk-accordion__section-button').getAttribute('aria-expanded')
+            return document.body.querySelector(`.govuk-accordion .govuk-accordion__section:nth-of-type(${2 + i}) .govuk-accordion__section-button`).getAttribute('aria-expanded')
           }, i)
 
           expect(sectionHeaderButtonExpanded).toEqual('false')
@@ -88,7 +88,7 @@ describe('/components/accordion', () => {
 
         for (let i = 0; i < numberOfExampleSections; i++) {
           const sectionHeaderButtonExpanded = await page.evaluate(function (i) {
-            return document.body.querySelector('.govuk-accordion .govuk-accordion__section:nth-of-type(' + (2 + i) + ') .govuk-accordion__section-button').getAttribute('aria-expanded')
+            return document.body.querySelector(`.govuk-accordion .govuk-accordion__section:nth-of-type(${2 + i}) .govuk-accordion__section-button`).getAttribute('aria-expanded')
           }, i)
 
           expect(sectionHeaderButtonExpanded).toEqual('true')

@@ -150,7 +150,7 @@ CharacterCount.prototype.init = function () {
   }
 
   const $textarea = this.$textarea
-  const $textareaDescription = document.getElementById($textarea.id + '-info')
+  const $textareaDescription = document.getElementById(`${$textarea.id}-info`)
   if (!$textareaDescription) {
     return
   }
@@ -387,12 +387,12 @@ CharacterCount.prototype.getCountMessage = function () {
  */
 CharacterCount.prototype.formatCountMessage = function (remainingNumber, countType) {
   if (remainingNumber === 0) {
-    return this.i18n.t(countType + 'AtLimit')
+    return this.i18n.t(`${countType}AtLimit`)
   }
 
   const translationKeySuffix = remainingNumber < 0 ? 'OverLimit' : 'UnderLimit'
 
-  return this.i18n.t(countType + translationKeySuffix, { count: Math.abs(remainingNumber) })
+  return this.i18n.t(`${countType}${translationKeySuffix}`, { count: Math.abs(remainingNumber) })
 }
 
 /**

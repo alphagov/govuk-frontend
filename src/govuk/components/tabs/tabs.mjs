@@ -230,7 +230,7 @@ Tabs.prototype.showTab = function ($tab) {
  * @returns {HTMLAnchorElement | null} Tab link
  */
 Tabs.prototype.getTab = function (hash) {
-  return this.$module.querySelector('a.govuk-tabs__tab[href="' + hash + '"]')
+  return this.$module.querySelector(`a.govuk-tabs__tab[href="${hash}"]`)
 }
 
 /**
@@ -242,7 +242,7 @@ Tabs.prototype.getTab = function (hash) {
 Tabs.prototype.setAttributes = function ($tab) {
   // set tab attributes
   const panelId = this.getHref($tab).slice(1)
-  $tab.setAttribute('id', 'tab_' + panelId)
+  $tab.setAttribute('id', `tab_${panelId}`)
   $tab.setAttribute('role', 'tab')
   $tab.setAttribute('aria-controls', panelId)
   $tab.setAttribute('aria-selected', 'false')
