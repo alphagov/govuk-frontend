@@ -1,10 +1,10 @@
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "button/macro.njk" import govukButton %}
-{% from "date-input/macro.njk" import govukDateInput %}
-{% from "error-summary/macro.njk" import govukErrorSummary %}
-{% from "input/macro.njk" import govukInput %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
 
-{% extends "layout.njk" %}
+{% extends "layouts/layout.njk" %}
 
 {% block beforeContent %}
   {{ govukBackLink({

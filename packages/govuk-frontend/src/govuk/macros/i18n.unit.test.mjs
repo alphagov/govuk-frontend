@@ -3,7 +3,7 @@ import { callMacro } from 'govuk-frontend-helpers/nunjucks'
 describe('i18n.njk', () => {
   describe('govukPluralisedI18nAttributes', () => {
     function callMacroUnderTest (...args) {
-      return callMacro('govukPluralisedI18nAttributes', 'macros/i18n.njk', ...args)
+      return callMacro('govukPluralisedI18nAttributes', 'govuk/macros/i18n.njk', ...args)
     }
 
     it('renders a single plural type', () => {

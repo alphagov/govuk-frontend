@@ -18,14 +18,14 @@ notes: >-
   This example merges features seen on GOV.UK news and communication finders and search pages.
 ---
 
-{% extends "full-page-example.njk" %}
+{% extends "layouts/full-page-example.njk" %}
 
-{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "input/macro.njk" import govukInput %}
-{% from "select/macro.njk" import govukSelect %}
-{% from "checkboxes/macro.njk" import govukCheckboxes %}
-{% from "button/macro.njk" import govukButton %}
-{% from "pagination/macro.njk" import govukPagination %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/pagination/macro.njk" import govukPagination %}
 
 {% set pageTitle = "Search" %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}

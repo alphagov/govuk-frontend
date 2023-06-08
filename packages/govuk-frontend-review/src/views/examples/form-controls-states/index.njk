@@ -1,10 +1,10 @@
-{% extends "layout.njk" %}
+{% extends "layouts/layout.njk" %}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "file-upload/macro.njk" import govukFileUpload %}
-{% from "input/macro.njk" import govukInput %}
-{% from "select/macro.njk" import govukSelect %}
-{% from "textarea/macro.njk" import govukTextarea %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 
 {% set examples = [
   { name: "Initial" },

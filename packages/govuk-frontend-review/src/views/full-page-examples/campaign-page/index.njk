@@ -8,12 +8,12 @@ notes: >-
   Based on https://www.gov.uk/coronavirus
 ---
 
-{% extends "full-page-example.njk" %}
+{% extends "layouts/full-page-example.njk" %}
 
-{% from "header/macro.njk" import govukHeader %}
-{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "accordion/macro.njk" import govukAccordion %}
-{% from "footer/macro.njk" import govukFooter %}
+{% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
 
 {% set pageTitle = "Coronavirus (COVID‑19)" %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}

@@ -2,10 +2,10 @@
 scenario: You want to read this article about '2018’s oddest requests from Brits abroad'.
 notes: Based on https://www.gov.uk/government/news/strictly-vampires-and-sausages-2018s-oddest-requests-from-brits-abroad
 ---
-{% extends "full-page-example.njk" %}
+{% extends "layouts/full-page-example.njk" %}
 
-{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
 {% set pageTitle = "2018’s oddest requests from Brits abroad: ‘Strictly’, vampires and sausages" %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}

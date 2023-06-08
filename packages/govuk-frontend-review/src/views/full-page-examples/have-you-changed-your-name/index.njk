@@ -11,12 +11,12 @@ scenario: >-
 ---
 
 {# This example is based of the "Radios" example: https://design-system.service.gov.uk/components/radios #}
-{% extends "full-page-example.njk" %}
+{% extends "layouts/full-page-example.njk" %}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "error-summary/macro.njk" import govukErrorSummary %}
-{% from "radios/macro.njk" import govukRadios %}
-{% from "button/macro.njk" import govukButton %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% set pageTitle = "Have you changed your name?" %}
 {% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}

@@ -15,12 +15,12 @@ notes: >-
 ---
 
 {# This example is based of the live "Apply online for a UK passport" start page: https://www.gov.uk/apply-renew-passport #}
-{% extends "full-page-example.njk" %}
+{% extends "layouts/full-page-example.njk" %}
 
-{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "button/macro.njk" import govukButton %}
-{% from "cookie-banner/macro.njk" import govukCookieBanner %}
-{% from "tabs/macro.njk" import govukTabs %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
 
 {% set pageTitle = "Apply online for a UK passport" %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
