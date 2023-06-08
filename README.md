@@ -51,13 +51,13 @@ initialising Javascript in your application to ensure that all users can use it 
 You can include Javascript for all components either by copying the `all.js` from `node_modules/govuk-frontend/dist/govuk/` into your application or referencing the file directly:
 
 ```html
-<script src="<path-to-govuk-frontend-all-file>/all.js"></script>
+<script type="module" src="<path-to-govuk-frontend-all-file>/all.js"></script>
 ```
 
 Next you need to initialise the script by adding:
 
 ```html
-<script>window.GOVUKFrontend.initAll()</script>
+<script type="module">window.GOVUKFrontend.initAll()</script>
 ```
 
 [More details on importing Javascript and advanced options](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#javascript)
