@@ -1,7 +1,7 @@
 /**
  * Header component
  */
-export default class Header {
+export class Header {
   /**
    * @param {Element} $module - HTML element to use for header
    */

@@ -6,7 +6,7 @@ import { normaliseDataset } from '../../common/normalise-dataset.mjs'
  *
  * Takes focus on initialisation for accessible announcement, unless disabled in configuration.
  */
-export default class ErrorSummary {
+export class ErrorSummary {
   /**
    *
    * @param {Element} $module - HTML element to use for error summary

@@ -1,7 +1,7 @@
 /**
  * Checkboxes component
  */
-export default class Checkboxes {
+export class Checkboxes {
   /**
    * @param {Element} $module - HTML element to use for checkboxes
    */

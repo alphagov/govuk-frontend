@@ -1,7 +1,7 @@
 /**
  * Tabs component
  */
-export default class Tabs {
+export class Tabs {
   /**
    * @param {Element} $module - HTML element to use for tabs
    */

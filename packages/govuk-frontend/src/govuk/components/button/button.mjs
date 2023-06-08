@@ -7,7 +7,7 @@ const DEBOUNCE_TIMEOUT_IN_SECONDS = 1
 /**
  * JavaScript enhancements for the Button component
  */
-export default class Button {
+export class Button {
   /**
    *
    * @param {Element} $module - HTML element to use for button

@@ -1,7 +1,7 @@
 /**
  * Radios component
  */
-export default class Radios {
+export class Radios {
   /**
    * @param {Element} $module - HTML element to use for radios
    */
