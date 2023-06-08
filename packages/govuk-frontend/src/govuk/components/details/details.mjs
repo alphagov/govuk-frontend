@@ -22,13 +22,13 @@ export class Details {
       return this
     }
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.$module = $module
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.$summary = null
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.$content = null
   }
 
@@ -53,7 +53,7 @@ export class Details {
   /**
    * Polyfill component in older browsers
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    */
   polyfillDetails () {
     const $module = this.$module
@@ -104,7 +104,7 @@ export class Details {
   /**
    * Define a statechange function that updates aria-expanded and style.display
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @returns {boolean} Returns true
    */
   polyfillSetAttributes () {
@@ -124,7 +124,7 @@ export class Details {
   /**
    * Handle cross-modal click events
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {(event: UIEvent) => void} callback - function
    */
   polyfillHandleInputs (callback) {

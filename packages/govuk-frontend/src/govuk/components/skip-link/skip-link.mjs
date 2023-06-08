@@ -11,13 +11,13 @@ export class SkipLink {
       return this
     }
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.$module = $module
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.$linkedElement = null
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.linkedElementListener = false
   }
 
@@ -43,7 +43,7 @@ export class SkipLink {
   /**
    * Get linked element
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @returns {HTMLElement | null} $linkedElement - DOM element linked to from the skip link
    */
   getLinkedElement () {
@@ -60,7 +60,7 @@ export class SkipLink {
    *
    * Set tabindex and helper CSS class. Set listener to remove them on blur.
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    */
   focusLinkedElement () {
     const $linkedElement = this.$linkedElement
@@ -86,7 +86,7 @@ export class SkipLink {
    *
    * Remove the CSS class that removes the native focus styles.
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    */
   removeFocusProperties () {
     this.$linkedElement.removeAttribute('tabindex')
@@ -99,7 +99,7 @@ export class SkipLink {
    * Extract the fragment (everything after the hash symbol) from a URL, but not including
    * the symbol.
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @returns {string | undefined} Fragment from URL, without the hash symbol
    */
   getFragmentFromUrl () {

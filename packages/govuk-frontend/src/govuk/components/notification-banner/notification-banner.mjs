@@ -14,7 +14,7 @@ export class NotificationBanner {
       return this
     }
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.$module = $module
 
     /** @type {NotificationBannerConfig} */
@@ -23,7 +23,7 @@ export class NotificationBanner {
     }
 
     /**
-     * @deprecated Will be made private in v5.0
+     * @private
      * @type {NotificationBannerConfig}
      */
     this.config = mergeConfigs(
@@ -55,7 +55,7 @@ export class NotificationBanner {
    * component HTML. You might wish to do this based on user research findings, or to avoid a clash
    * with another element which should be focused when the page loads.
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    */
   setFocus () {
     const $module = this.$module

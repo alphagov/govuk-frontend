@@ -18,10 +18,10 @@ export class Button {
       return this
     }
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.$module = $module
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.debounceFormSubmitTimer = null
 
     /** @type {ButtonConfig} */
@@ -30,7 +30,7 @@ export class Button {
     }
 
     /**
-     * @deprecated Will be made private in v5.0
+     * @private
      * @type {ButtonConfig}
      */
     this.config = mergeConfigs(
@@ -61,7 +61,7 @@ export class Button {
    *
    * See https://github.com/alphagov/govuk_elements/pull/272#issuecomment-233028270
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {KeyboardEvent} event - Keydown event
    */
   handleKeyDown (event) {
@@ -86,7 +86,7 @@ export class Button {
    * stops people accidentally causing multiple form submissions by double
    * clicking buttons.
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {MouseEvent} event - Mouse click event
    * @returns {undefined | false} Returns undefined, or false when debounced
    */
