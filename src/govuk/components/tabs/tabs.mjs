@@ -16,30 +16,30 @@ export class Tabs {
       return this
     }
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.$module = $module
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.$tabs = $tabs
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.keys = { left: 37, right: 39, up: 38, down: 40 }
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.jsHiddenClass = 'govuk-tabs__panel--hidden'
 
     // Save bounded functions to use when removing event listeners during teardown
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.boundTabClick = this.onTabClick.bind(this)
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.boundTabKeydown = this.onTabKeydown.bind(this)
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.boundOnHashChange = this.onHashChange.bind(this)
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.changingHash = false
   }
 
@@ -58,10 +58,10 @@ export class Tabs {
   /**
    * Setup viewport resize check
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    */
   setupResponsiveChecks () {
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.mql = window.matchMedia('(min-width: 40.0625em)')
 
     // MediaQueryList.addEventListener isn't supported by Safari < 14 so we need
@@ -80,7 +80,7 @@ export class Tabs {
   /**
    * Setup or teardown handler for viewport resize check
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    */
   checkMode () {
     if (this.mql.matches) {
@@ -93,7 +93,7 @@ export class Tabs {
   /**
    * Setup tab component
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    */
   setup () {
     const $module = this.$module
@@ -138,7 +138,7 @@ export class Tabs {
   /**
    * Teardown tab component
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    */
   teardown () {
     const $module = this.$module
@@ -172,7 +172,7 @@ export class Tabs {
   /**
    * Handle hashchange event
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @returns {void | undefined} Returns void, or undefined when prevented
    */
   onHashChange () {
@@ -202,7 +202,7 @@ export class Tabs {
   /**
    * Hide panel for tab link
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   hideTab ($tab) {
@@ -213,7 +213,7 @@ export class Tabs {
   /**
    * Show panel for tab link
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   showTab ($tab) {
@@ -224,7 +224,7 @@ export class Tabs {
   /**
    * Get tab link by hash
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {string} hash - Hash fragment including #
    * @returns {HTMLAnchorElement | null} Tab link
    */
@@ -235,7 +235,7 @@ export class Tabs {
   /**
    * Set tab link and panel attributes
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   setAttributes ($tab) {
@@ -261,7 +261,7 @@ export class Tabs {
   /**
    * Unset tab link and panel attributes
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   unsetAttributes ($tab) {
@@ -286,7 +286,7 @@ export class Tabs {
   /**
    * Handle tab link clicks
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {MouseEvent} event - Mouse click event
    * @returns {void} Returns void
    */
@@ -311,7 +311,7 @@ export class Tabs {
    * - Allows back/forward to navigate tabs
    * - Avoids page jump when hash changes
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   createHistoryEntry ($tab) {
@@ -335,7 +335,7 @@ export class Tabs {
    * - Press right/down arrow for next tab
    * - Press left/up arrow for previous tab
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {KeyboardEvent} event - Keydown event
    */
   onTabKeydown (event) {
@@ -356,7 +356,7 @@ export class Tabs {
   /**
    * Activate next tab
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    */
   activateNextTab () {
     const $currentTab = this.getCurrentTab()
@@ -384,7 +384,7 @@ export class Tabs {
   /**
    * Activate previous tab
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    */
   activatePreviousTab () {
     const $currentTab = this.getCurrentTab()
@@ -412,7 +412,7 @@ export class Tabs {
   /**
    * Get tab panel for tab link
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {HTMLAnchorElement} $tab - Tab link
    * @returns {Element | null} Tab panel
    */
@@ -423,7 +423,7 @@ export class Tabs {
   /**
    * Show tab panel for tab link
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   showPanel ($tab) {
@@ -438,7 +438,7 @@ export class Tabs {
   /**
    * Hide tab panel for tab link
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   hidePanel ($tab) {
@@ -453,7 +453,7 @@ export class Tabs {
   /**
    * Unset 'selected' state for tab link
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   unhighlightTab ($tab) {
@@ -469,7 +469,7 @@ export class Tabs {
   /**
    * Set 'selected' state for tab link
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   highlightTab ($tab) {
@@ -485,7 +485,7 @@ export class Tabs {
   /**
    * Get current tab link
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @returns {HTMLAnchorElement | null} Tab link
    */
   getCurrentTab () {
@@ -499,7 +499,7 @@ export class Tabs {
    * should be a utility function most prob
    * {@link http://labs.thesedays.com/blog/2010/01/08/getting-the-href-value-with-jquery-in-ie/}
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {HTMLAnchorElement} $tab - Tab link
    * @returns {string} Hash fragment including #
    */

@@ -41,7 +41,7 @@ export class Accordion {
       return this
     }
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.$module = $module
 
     /** @type {AccordionConfig} */
@@ -51,7 +51,7 @@ export class Accordion {
     }
 
     /**
-     * @deprecated Will be made private in v5.0
+     * @private
      * @type {AccordionConfig}
      */
     this.config = mergeConfigs(
@@ -60,64 +60,64 @@ export class Accordion {
       normaliseDataset($module.dataset)
     )
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'))
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.controlsClass = 'govuk-accordion__controls'
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.showAllClass = 'govuk-accordion__show-all'
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.showAllTextClass = 'govuk-accordion__show-all-text'
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.sectionClass = 'govuk-accordion__section'
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.sectionExpandedClass = 'govuk-accordion__section--expanded'
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.sectionButtonClass = 'govuk-accordion__section-button'
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.sectionHeaderClass = 'govuk-accordion__section-header'
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.sectionHeadingClass = 'govuk-accordion__section-heading'
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.sectionHeadingDividerClass = 'govuk-accordion__section-heading-divider'
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.sectionHeadingTextClass = 'govuk-accordion__section-heading-text'
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.sectionHeadingTextFocusClass = 'govuk-accordion__section-heading-text-focus'
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.sectionShowHideToggleClass = 'govuk-accordion__section-toggle'
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.sectionShowHideToggleFocusClass = 'govuk-accordion__section-toggle-focus'
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.sectionShowHideTextClass = 'govuk-accordion__section-toggle-text'
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.upChevronIconClass = 'govuk-accordion-nav__chevron'
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.downChevronIconClass = 'govuk-accordion-nav__chevron--down'
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.sectionSummaryClass = 'govuk-accordion__section-summary'
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.sectionSummaryFocusClass = 'govuk-accordion__section-summary-focus'
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.sectionContentClass = 'govuk-accordion__section-content'
 
     const $sections = this.$module.querySelectorAll(`.${this.sectionClass}`)
@@ -125,19 +125,19 @@ export class Accordion {
       return this
     }
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.$sections = $sections
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.browserSupportsSessionStorage = helper.checkForSessionStorage()
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.$showAllButton = null
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.$showAllIcon = null
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.$showAllText = null
   }
 
@@ -161,7 +161,7 @@ export class Accordion {
   /**
    * Initialise controls and set attributes
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    */
   initControls () {
     // Create "Show all" button and set attributes
@@ -198,7 +198,7 @@ export class Accordion {
   /**
    * Initialise section headers
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    */
   initSectionHeaders () {
     const $sections = this.$sections
@@ -226,7 +226,7 @@ export class Accordion {
   /**
    * Construct section header
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {Element} $header - Section header
    * @param {number} index - Section index
    */
@@ -333,7 +333,7 @@ export class Accordion {
   /**
    * When a section is opened by the user agent via the 'beforematch' event
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {Event} event - Generic event
    */
   onBeforeMatch (event) {
@@ -354,7 +354,7 @@ export class Accordion {
   /**
    * When section toggled, set and store state
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {Element} $section - Section element
    */
   onSectionToggle ($section) {
@@ -368,7 +368,7 @@ export class Accordion {
   /**
    * When Open/Close All toggled, set and store state
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    */
   onShowOrHideAllToggle () {
     const $sections = this.$sections
@@ -388,7 +388,7 @@ export class Accordion {
   /**
    * Set section attributes when opened/closed
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {boolean} expanded - Section expanded
    * @param {Element} $section - Section element
    */
@@ -456,7 +456,7 @@ export class Accordion {
   /**
    * Get state of section
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {Element} $section - Section element
    * @returns {boolean} True if expanded
    */
@@ -467,7 +467,7 @@ export class Accordion {
   /**
    * Check if all sections are open
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @returns {boolean} True if all sections are open
    */
   checkIfAllSectionsOpen () {
@@ -483,7 +483,7 @@ export class Accordion {
   /**
    * Update "Show all sections" button
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {boolean} expanded - Section expanded
    */
   updateShowAllButton (expanded) {
@@ -505,7 +505,7 @@ export class Accordion {
   /**
    * Set the state of the accordions in sessionStorage
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {Element} $section - Section element
    */
   storeState ($section) {
@@ -530,7 +530,7 @@ export class Accordion {
   /**
    * Read the state of the accordions from sessionStorage
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {Element} $section - Section element
    */
   setInitialState ($section) {
@@ -555,7 +555,7 @@ export class Accordion {
    * into thematic chunks.
    * See https://github.com/alphagov/govuk-frontend/issues/2327#issuecomment-922957442
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @returns {Element} DOM element
    */
   getButtonPunctuationEl () {

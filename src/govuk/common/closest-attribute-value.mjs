@@ -1,7 +1,7 @@
 /**
  * Returns the value of the given attribute closest to the given element (including itself)
  *
- * @deprecated Will be made private in v5.0
+ * @private
  * @param {Element} $element - The element to start walking the DOM tree up
  * @param {string} attributeName - The name of the attribute
  * @returns {string | null} Attribute value

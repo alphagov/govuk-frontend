@@ -16,10 +16,10 @@ export class Radios {
       return this
     }
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.$module = $module
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.$inputs = $inputs
   }
 
@@ -78,7 +78,7 @@ export class Radios {
   /**
    * Sync the conditional reveal states for all radio buttons in this $module.
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    */
   syncAllConditionalReveals () {
     this.$inputs.forEach(($input) => this.syncConditionalRevealWithInputState($input))
@@ -90,7 +90,7 @@ export class Radios {
    * Synchronise the visibility of the conditional reveal, and its accessible
    * state, with the input's checked state.
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {HTMLInputElement} $input - Radio input
    */
   syncConditionalRevealWithInputState ($input) {
@@ -116,7 +116,7 @@ export class Radios {
    * with the same name (because checking one radio could have un-checked a radio
    * in another $module)
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {MouseEvent} event - Click event
    */
   handleClick (event) {

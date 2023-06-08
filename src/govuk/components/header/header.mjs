@@ -10,13 +10,13 @@ export class Header {
       return this
     }
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.$module = $module
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.$menuButton = $module.querySelector('.govuk-js-header-toggle')
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.$menu = this.$menuButton && $module.querySelector(
       `#${this.$menuButton.getAttribute('aria-controls')}`
     )
@@ -26,7 +26,7 @@ export class Header {
      * accurately maintain state when the screen is changed from small to
      * big and back to small
      *
-     * @deprecated Will be made private in v5.0
+     * @private
      */
     this.menuIsOpen = false
 
@@ -36,7 +36,7 @@ export class Header {
      * init function and rely on it being null if the feature isn't available
      * to initially apply hidden attributes
      *
-     * @deprecated Will be made private in v5.0
+     * @private
      */
     this.mql = null
   }
@@ -80,7 +80,7 @@ export class Header {
    * Additionally will force the menu to be visible and the menu button to be
    * hidden if the matchMedia is triggered to desktop.
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    */
   syncState () {
     if (this.mql.matches) {
@@ -104,7 +104,7 @@ export class Header {
    * When the menu button is clicked, change the visibility of the menu and then
    * sync the accessibility state and menu button state
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    */
   handleMenuButtonClick () {
     this.menuIsOpen = !this.menuIsOpen

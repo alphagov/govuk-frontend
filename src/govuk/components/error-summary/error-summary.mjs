@@ -26,7 +26,7 @@ export class ErrorSummary {
       return this
     }
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.$module = $module
 
     /** @type {ErrorSummaryConfig} */
@@ -35,7 +35,7 @@ export class ErrorSummary {
     }
 
     /**
-     * @deprecated Will be made private in v5.0
+     * @private
      * @type {ErrorSummaryConfig}
      */
     this.config = mergeConfigs(
@@ -63,7 +63,7 @@ export class ErrorSummary {
   /**
    * Focus the error summary
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    */
   setFocus () {
     const $module = this.$module
@@ -86,7 +86,7 @@ export class ErrorSummary {
   /**
    * Click event handler
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {MouseEvent} event - Click event
    */
   handleClick (event) {
@@ -111,7 +111,7 @@ export class ErrorSummary {
    * NVDA (as tested in 2018.3.2) - without this only the field type is announced
    * (e.g. "Edit, has autocomplete").
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {EventTarget} $target - Event target
    * @returns {boolean} True if the target was able to be focussed
    */
@@ -151,7 +151,7 @@ export class ErrorSummary {
    * Extract the fragment (everything after the hash) from a URL, but not including
    * the hash.
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {string} url - URL
    * @returns {string | undefined} Fragment from URL, without the hash
    */
@@ -174,7 +174,7 @@ export class ErrorSummary {
    * - The first `<label>` that is associated with the input using for="inputId"
    * - The closest parent `<label>`
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {Element} $input - The input
    * @returns {Element | null} Associated legend or label, or null if no associated
    *   legend or label can be found

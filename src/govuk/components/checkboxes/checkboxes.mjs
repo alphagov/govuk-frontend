@@ -16,10 +16,10 @@ export class Checkboxes {
       return this
     }
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.$module = $module
 
-    /** @deprecated Will be made private in v5.0 */
+    /** @private */
     this.$inputs = $inputs
   }
 
@@ -78,7 +78,7 @@ export class Checkboxes {
   /**
    * Sync the conditional reveal states for all checkboxes in this $module.
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    */
   syncAllConditionalReveals () {
     this.$inputs.forEach(($input) => this.syncConditionalRevealWithInputState($input))
@@ -90,7 +90,7 @@ export class Checkboxes {
    * Synchronise the visibility of the conditional reveal, and its accessible
    * state, with the input's checked state.
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {HTMLInputElement} $input - Checkbox input
    */
   syncConditionalRevealWithInputState ($input) {
@@ -114,7 +114,7 @@ export class Checkboxes {
    * Find any other checkbox inputs with the same name value, and uncheck them.
    * This is useful for when a “None of these" checkbox is checked.
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {HTMLInputElement} $input - Checkbox input
    */
   unCheckAllInputsExcept ($input) {
@@ -139,7 +139,7 @@ export class Checkboxes {
    * and uncheck them. This helps prevent someone checking both a regular checkbox and a
    * "None of these" checkbox in the same fieldset.
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {HTMLInputElement} $input - Checkbox input
    */
   unCheckExclusiveInputs ($input) {
@@ -163,7 +163,7 @@ export class Checkboxes {
    * Handle a click within the $module – if the click occurred on a checkbox, sync
    * the state of any associated conditional reveal with the checkbox state.
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    * @param {MouseEvent} event - Click event
    */
   handleClick (event) {
