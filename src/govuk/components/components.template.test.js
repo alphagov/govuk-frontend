@@ -27,7 +27,7 @@ describe('Components', () => {
   describe('Nunjucks environment', () => {
     it('renders template for each component', () => {
       return Promise.all(componentNames.map((componentName) =>
-        expect(nunjucksEnvDefault.render(`${componentName}/template.njk`, {})).resolves
+        expect(nunjucksEnvDefault.render(`govuk/components/${componentName}/template.njk`, {})).resolves
       ))
     })
 
