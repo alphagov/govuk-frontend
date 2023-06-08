@@ -77,7 +77,7 @@ describe('normaliseString', () => {
 
   it('normalises strings that represent very big positive numbers to numbers', () => {
     const biggestNumber = Number.MAX_SAFE_INTEGER + 1
-    expect(normaliseString(biggestNumber.toString())).toEqual(biggestNumber)
+    expect(normaliseString(`${biggestNumber}`)).toEqual(biggestNumber)
   })
 
   it('does not normalise strings that contain numbers', () => {

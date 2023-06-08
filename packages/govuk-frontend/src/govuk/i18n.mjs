@@ -37,7 +37,7 @@ I18n.prototype.t = function (lookupKey, options) {
   // falsy, as this could legitimately be 0.
   if (options && typeof options.count === 'number') {
     // Get the plural suffix
-    lookupKey = lookupKey + '.' + this.getPluralSuffix(lookupKey, options.count)
+    lookupKey = `${lookupKey}.${this.getPluralSuffix(lookupKey, options.count)}`
   }
 
   // Fetch the translation string for that lookup key
@@ -102,12 +102,12 @@ I18n.prototype.replacePlaceholders = function (translationString, options) {
 
         // If the placeholder's value is a number, localise the number formatting
         if (typeof placeholderValue === 'number') {
-          return formatter ? formatter.format(placeholderValue) : placeholderValue.toString()
+          return formatter ? formatter.format(placeholderValue) : `${placeholderValue}`
         }
 
         return placeholderValue
       } else {
-        throw new Error('i18n: no data found to replace ' + placeholderWithBraces + ' placeholder in string')
+        throw new Error(`i18n: no data found to replace ${placeholderWithBraces} placeholder in string`)
       }
     })
 }
@@ -175,21 +175,21 @@ I18n.prototype.getPluralSuffix = function (lookupKey, count) {
   }
 
   // Use the correct plural form if provided
-  if (lookupKey + '.' + preferredForm in this.translations) {
+  if (`${lookupKey}.${preferredForm}` in this.translations) {
     return preferredForm
   // Fall back to `other` if the plural form is missing, but log a warning
   // to the console
-  } else if (lookupKey + '.other' in this.translations) {
+  } else if (`${lookupKey}.other` in this.translations) {
     if (console && 'warn' in console) {
-      console.warn('i18n: Missing plural form ".' + preferredForm + '" for "' +
-        this.locale + '" locale. Falling back to ".other".')
+      console.warn(`i18n: Missing plural form ".${preferredForm}" for "${
+        this.locale}" locale. Falling back to ".other".`)
     }
 
     return 'other'
   // If the required `other` plural form is missing, all we can do is error
   } else {
     throw new Error(
-      'i18n: Plural form ".other" is required for "' + this.locale + '" locale'
+      `i18n: Plural form ".other" is required for "${this.locale}" locale`
     )
   }
 }

@@ -119,7 +119,7 @@ function Accordion ($module, config) {
   /** @deprecated Will be made private in v5.0 */
   this.sectionContentClass = 'govuk-accordion__section-content'
 
-  const $sections = this.$module.querySelectorAll('.' + this.sectionClass)
+  const $sections = this.$module.querySelectorAll(`.${this.sectionClass}`)
   if (!$sections.length) {
     return this
   }
@@ -205,7 +205,7 @@ Accordion.prototype.initSectionHeaders = function () {
 
   // Loop through sections
   $sections.forEach(function ($section, i) {
-    const $header = $section.querySelector('.' + $component.sectionHeaderClass)
+    const $header = $section.querySelector(`.${$component.sectionHeaderClass}`)
     if (!$header) {
       return
     }
@@ -231,9 +231,9 @@ Accordion.prototype.initSectionHeaders = function () {
  * @param {number} index - Section index
  */
 Accordion.prototype.constructHeaderMarkup = function ($header, index) {
-  const $span = $header.querySelector('.' + this.sectionButtonClass)
-  const $heading = $header.querySelector('.' + this.sectionHeadingClass)
-  const $summary = $header.querySelector('.' + this.sectionSummaryClass)
+  const $span = $header.querySelector(`.${this.sectionButtonClass}`)
+  const $heading = $header.querySelector(`.${this.sectionHeadingClass}`)
+  const $summary = $header.querySelector(`.${this.sectionSummaryClass}`)
 
   if (!$span || !$heading) {
     return
@@ -242,7 +242,7 @@ Accordion.prototype.constructHeaderMarkup = function ($header, index) {
   // Create a button element that will replace the '.govuk-accordion__section-button' span
   const $button = document.createElement('button')
   $button.setAttribute('type', 'button')
-  $button.setAttribute('aria-controls', this.$module.id + '-content-' + (index + 1).toString())
+  $button.setAttribute('aria-controls', `${this.$module.id}-content-${index + 1}`)
 
   // Copy all attributes (https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes) from $span to $button
   for (let i = 0; i < $span.attributes.length; i++) {
@@ -345,7 +345,7 @@ Accordion.prototype.onBeforeMatch = function (event) {
   }
 
   // Handle when fragment is inside section
-  const $section = $fragment.closest('.' + this.sectionClass)
+  const $section = $fragment.closest(`.${this.sectionClass}`)
   if ($section) {
     this.setExpanded(true, $section)
   }
@@ -394,10 +394,10 @@ Accordion.prototype.onShowOrHideAllToggle = function () {
  * @param {Element} $section - Section element
  */
 Accordion.prototype.setExpanded = function (expanded, $section) {
-  const $showHideIcon = $section.querySelector('.' + this.upChevronIconClass)
-  const $showHideText = $section.querySelector('.' + this.sectionShowHideTextClass)
-  const $button = $section.querySelector('.' + this.sectionButtonClass)
-  const $content = $section.querySelector('.' + this.sectionContentClass)
+  const $showHideIcon = $section.querySelector(`.${this.upChevronIconClass}`)
+  const $showHideText = $section.querySelector(`.${this.sectionShowHideTextClass}`)
+  const $button = $section.querySelector(`.${this.sectionButtonClass}`)
+  const $content = $section.querySelector(`.${this.sectionContentClass}`)
 
   if (!$showHideIcon ||
     !($showHideText instanceof HTMLElement) ||
@@ -411,17 +411,17 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
     : this.i18n.t('showSection')
 
   $showHideText.innerText = newButtonText
-  $button.setAttribute('aria-expanded', expanded.toString())
+  $button.setAttribute('aria-expanded', `${expanded}`)
 
   // Update aria-label combining
   const ariaLabelParts = []
 
-  const $headingText = $section.querySelector('.' + this.sectionHeadingTextClass)
+  const $headingText = $section.querySelector(`.${this.sectionHeadingTextClass}`)
   if ($headingText instanceof HTMLElement) {
     ariaLabelParts.push($headingText.innerText.trim())
   }
 
-  const $summary = $section.querySelector('.' + this.sectionSummaryClass)
+  const $summary = $section.querySelector(`.${this.sectionSummaryClass}`)
   if ($summary instanceof HTMLElement) {
     ariaLabelParts.push($summary.innerText.trim())
   }
@@ -475,7 +475,7 @@ Accordion.prototype.checkIfAllSectionsOpen = function () {
   // Get a count of all the Accordion sections
   const sectionsCount = this.$sections.length
   // Get a count of all Accordion sections that are expanded
-  const expandedSectionCount = this.$module.querySelectorAll('.' + this.sectionExpandedClass).length
+  const expandedSectionCount = this.$module.querySelectorAll(`.${this.sectionExpandedClass}`).length
   const areAllSectionsOpen = sectionsCount === expandedSectionCount
 
   return areAllSectionsOpen
@@ -534,7 +534,7 @@ Accordion.prototype.storeState = function ($section) {
     // We need a unique way of identifying each content in the Accordion. Since
     // an `#id` should be unique and an `id` is required for `aria-` attributes
     // `id` can be safely used.
-    const $button = $section.querySelector('.' + this.sectionButtonClass)
+    const $button = $section.querySelector(`.${this.sectionButtonClass}`)
 
     if ($button) {
       const contentId = $button.getAttribute('aria-controls')
@@ -556,7 +556,7 @@ Accordion.prototype.storeState = function ($section) {
  */
 Accordion.prototype.setInitialState = function ($section) {
   if (this.browserSupportsSessionStorage && this.config.rememberExpanded) {
-    const $button = $section.querySelector('.' + this.sectionButtonClass)
+    const $button = $section.querySelector(`.${this.sectionButtonClass}`)
 
     if ($button) {
       const contentId = $button.getAttribute('aria-controls')

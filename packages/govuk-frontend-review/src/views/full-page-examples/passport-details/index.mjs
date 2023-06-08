@@ -37,13 +37,13 @@ export default (app) => {
 
       // If any of the date inputs error apply a general error.
       const expiryNamePrefix = 'expiry'
-      const expiryErrors = Object.values(errors).filter(error => error.id.includes(expiryNamePrefix + '-'))
+      const expiryErrors = Object.values(errors).filter(error => error.id.includes(`${expiryNamePrefix}-`))
       if (expiryErrors.length) {
         const firstExpiryErrorId = expiryErrors[0].id
         // Get the first error message and merge it into a single error message.
         errors[expiryNamePrefix] = {
           id: expiryNamePrefix,
-          href: '#' + firstExpiryErrorId,
+          href: `#${firstExpiryErrorId}`,
           value: '',
           text: ''
         }
@@ -60,7 +60,7 @@ export default (app) => {
       let errorSummary = Object.values(errors)
       if (expiryErrors) {
         // Remove all other errors from the summary so we only have one message that links to the expiry input.
-        errorSummary = errorSummary.filter(error => !error.id.includes(expiryNamePrefix + '-'))
+        errorSummary = errorSummary.filter(error => !error.id.includes(`${expiryNamePrefix}-`))
       }
 
       response.render('./full-page-examples/passport-details/index', {

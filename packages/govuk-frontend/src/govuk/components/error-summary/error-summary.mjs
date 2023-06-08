@@ -213,7 +213,7 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
     }
   }
 
-  return document.querySelector("label[for='" + $input.getAttribute('id') + "']") ||
+  return document.querySelector(`label[for='${$input.getAttribute('id')}']`) ||
     $input.closest('label')
 }
 

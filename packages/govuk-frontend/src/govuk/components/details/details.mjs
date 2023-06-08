@@ -69,7 +69,7 @@ Details.prototype.polyfillDetails = function () {
   // If the content doesn't have an ID, assign it one now
   // which we'll need for the summary's aria-controls assignment
   if (!$content.id) {
-    $content.id = 'details-content-' + generateUniqueID()
+    $content.id = `details-content-${generateUniqueID()}`
   }
 
   // Add ARIA role="group" to details

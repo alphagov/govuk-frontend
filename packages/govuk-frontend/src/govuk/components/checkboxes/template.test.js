@@ -332,7 +332,7 @@ describe('Checkboxes', () => {
       const $errorMessage = $('.govuk-error-message')
 
       const errorMessageId = new RegExp(
-        WORD_BOUNDARY + 'some-id' + WHITESPACE + $errorMessage.attr('id') + WORD_BOUNDARY
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${$errorMessage.attr('id')}${WORD_BOUNDARY}`
       )
 
       expect($fieldset.attr('aria-describedby'))
@@ -387,7 +387,7 @@ describe('Checkboxes', () => {
       const $hint = $('.govuk-hint')
 
       const hintId = new RegExp(
-        WORD_BOUNDARY + 'some-id' + WHITESPACE + $hint.attr('id') + WORD_BOUNDARY
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${$hint.attr('id')}${WORD_BOUNDARY}`
       )
 
       expect($fieldset.attr('aria-describedby')).toMatch(hintId)
@@ -418,7 +418,7 @@ describe('Checkboxes', () => {
       const hintId = $('.govuk-hint').attr('id')
 
       const combinedIds = new RegExp(
-        WORD_BOUNDARY + 'some-id' + WHITESPACE + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
       expect($fieldset.attr('aria-describedby'))
