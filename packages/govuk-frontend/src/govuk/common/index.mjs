@@ -17,12 +17,12 @@
  * @returns {string} Unique ID
  */
 export function generateUniqueID () {
-  var d = new Date().getTime()
+  let d = new Date().getTime()
   if (typeof window.performance !== 'undefined' && typeof window.performance.now === 'function') {
     d += window.performance.now() // use high-precision timer if available
   }
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    var r = (d + Math.random() * 16) % 16 | 0
+    const r = (d + Math.random() * 16) % 16 | 0
     d = Math.floor(d / 16)
     return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16)
   })
@@ -48,10 +48,10 @@ export function mergeConfigs (/* configObject1, configObject2, ...configObjects 
    * @param {{ [key: string]: unknown }} configObject - Deeply nested object
    * @returns {{ [key: string]: unknown }} Flattened object with dot-separated keys
    */
-  var flattenObject = function (configObject) {
+  const flattenObject = function (configObject) {
     // Prepare an empty return object
     /** @type {{ [key: string]: unknown }} */
-    var flattenedObject = {}
+    const flattenedObject = {}
 
     /**
      * Our flattening function, this is called recursively for each level of
@@ -61,16 +61,16 @@ export function mergeConfigs (/* configObject1, configObject2, ...configObjects 
      * @param {Partial<{ [key: string]: unknown }>} obj - Object to flatten
      * @param {string} [prefix] - Optional dot-separated prefix
      */
-    var flattenLoop = function (obj, prefix) {
+    const flattenLoop = function (obj, prefix) {
       // Loop through keys...
-      for (var key in obj) {
+      for (const key in obj) {
         // Check to see if this is a prototypical key/value,
         // if it is, skip it.
         if (!Object.prototype.hasOwnProperty.call(obj, key)) {
           continue
         }
-        var value = obj[key]
-        var prefixedKey = prefix ? prefix + '.' + key : key
+        const value = obj[key]
+        const prefixedKey = prefix ? prefix + '.' + key : key
         if (typeof value === 'object') {
           // If the value is a nested object, recurse over that too
           flattenLoop(value, prefixedKey)
@@ -88,15 +88,15 @@ export function mergeConfigs (/* configObject1, configObject2, ...configObjects 
 
   // Start with an empty object as our base
   /** @type {{ [key: string]: unknown }} */
-  var formattedConfigObject = {}
+  const formattedConfigObject = {}
 
   // Loop through each of the remaining passed objects and push their keys
   // one-by-one into configObject. Any duplicate keys will override the existing
   // key with the new value.
-  for (var i = 0; i < arguments.length; i++) {
+  for (let i = 0; i < arguments.length; i++) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- Ignore mismatch between arguments types
-    var obj = flattenObject(arguments[i])
-    for (var key in obj) {
+    const obj = flattenObject(arguments[i])
+    for (const key in obj) {
       if (Object.prototype.hasOwnProperty.call(obj, key)) {
         formattedConfigObject[key] = obj[key]
       }
@@ -128,11 +128,11 @@ export function extractConfigByNamespace (configObject, namespace) {
   }
 
   /** @type {{ [key: string]: unknown }} */
-  var newObject = {}
+  const newObject = {}
 
-  for (var key in configObject) {
+  for (const key in configObject) {
     // Split the key into parts, using . as our namespace separator
-    var keyParts = key.split('.')
+    const keyParts = key.split('.')
     // Check if the first namespace matches the configured namespace
     if (Object.prototype.hasOwnProperty.call(configObject, key) && keyParts[0] === namespace) {
       // Remove the first item (the namespace) from the parts array,
@@ -141,7 +141,7 @@ export function extractConfigByNamespace (configObject, namespace) {
         keyParts.shift()
       }
       // Join the remaining parts back together
-      var newKey = keyParts.join('.')
+      const newKey = keyParts.join('.')
       // Add them to our new object
       newObject[newKey] = configObject[key]
     }

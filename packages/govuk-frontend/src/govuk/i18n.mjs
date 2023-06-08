@@ -41,7 +41,7 @@ I18n.prototype.t = function (lookupKey, options) {
   }
 
   // Fetch the translation string for that lookup key
-  var translationString = this.translations[lookupKey]
+  const translationString = this.translations[lookupKey]
 
   if (typeof translationString === 'string') {
     // Check for ${} placeholders in the translation string
@@ -71,7 +71,7 @@ I18n.prototype.t = function (lookupKey, options) {
  */
 I18n.prototype.replacePlaceholders = function (translationString, options) {
   /** @type {Intl.NumberFormat | undefined} */
-  var formatter
+  let formatter
 
   if (this.hasIntlNumberFormatSupport()) {
     formatter = new Intl.NumberFormat(this.locale)
@@ -89,7 +89,7 @@ I18n.prototype.replacePlaceholders = function (translationString, options) {
      */
     function (placeholderWithBraces, placeholderKey) {
       if (Object.prototype.hasOwnProperty.call(options, placeholderKey)) {
-        var placeholderValue = options[placeholderKey]
+        const placeholderValue = options[placeholderKey]
 
         // If a user has passed `false` as the value for the placeholder
         // treat it as though the value should not be displayed
@@ -163,7 +163,7 @@ I18n.prototype.getPluralSuffix = function (lookupKey, count) {
   count = Number(count)
   if (!isFinite(count)) { return 'other' }
 
-  var preferredForm
+  let preferredForm
 
   // Check to verify that all the requirements for Intl.PluralRules are met.
   // If so, we can use that instead of our custom implementation. Otherwise,
@@ -208,7 +208,7 @@ I18n.prototype.selectPluralFormUsingFallbackRules = function (count) {
   // make sure our number is one of those.
   count = Math.abs(Math.floor(count))
 
-  var ruleset = this.getPluralRulesForLocale()
+  const ruleset = this.getPluralRulesForLocale()
 
   if (ruleset) {
     return I18n.pluralRules[ruleset](count)
@@ -229,15 +229,15 @@ I18n.prototype.selectPluralFormUsingFallbackRules = function (count) {
  *   of the functions in this.pluralRules)
  */
 I18n.prototype.getPluralRulesForLocale = function () {
-  var locale = this.locale
-  var localeShort = locale.split('-')[0]
+  const locale = this.locale
+  const localeShort = locale.split('-')[0]
 
   // Look through the plural rules map to find which `pluralRule` is
   // appropriate for our current `locale`.
-  for (var pluralRule in I18n.pluralRulesMap) {
+  for (const pluralRule in I18n.pluralRulesMap) {
     if (Object.prototype.hasOwnProperty.call(I18n.pluralRulesMap, pluralRule)) {
-      var languages = I18n.pluralRulesMap[pluralRule]
-      for (var i = 0; i < languages.length; i++) {
+      const languages = I18n.pluralRulesMap[pluralRule]
+      for (let i = 0; i < languages.length; i++) {
         if (languages[i] === locale || languages[i] === localeShort) {
           return pluralRule
         }
@@ -333,8 +333,8 @@ I18n.pluralRules = {
     return 'other'
   },
   russian: function (n) {
-    var lastTwo = n % 100
-    var last = lastTwo % 10
+    const lastTwo = n % 100
+    const last = lastTwo % 10
     if (last === 1 && lastTwo !== 11) { return 'one' }
     if (last >= 2 && last <= 4 && !(lastTwo >= 12 && lastTwo <= 14)) { return 'few' }
     if (last === 0 || (last >= 5 && last <= 9) || (lastTwo >= 11 && lastTwo <= 14)) { return 'many' }

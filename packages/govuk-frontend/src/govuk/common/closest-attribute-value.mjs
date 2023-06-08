@@ -7,7 +7,7 @@
  * @returns {string | null} Attribute value
  */
 export function closestAttributeValue ($element, attributeName) {
-  var $closestElementWithAttribute = $element.closest('[' + attributeName + ']')
+  const $closestElementWithAttribute = $element.closest('[' + attributeName + ']')
   return $closestElementWithAttribute
     ? $closestElementWithAttribute.getAttribute(attributeName)
     : null

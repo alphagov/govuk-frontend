@@ -10,7 +10,7 @@ function Checkboxes ($module) {
   }
 
   /** @satisfies {NodeListOf<HTMLInputElement>} */
-  var $inputs = $module.querySelectorAll('input[type="checkbox"]')
+  const $inputs = $module.querySelectorAll('input[type="checkbox"]')
   if (!$inputs.length) {
     return this
   }
@@ -42,11 +42,11 @@ Checkboxes.prototype.init = function () {
     return
   }
 
-  var $module = this.$module
-  var $inputs = this.$inputs
+  const $module = this.$module
+  const $inputs = this.$inputs
 
   $inputs.forEach(function ($input) {
-    var targetId = $input.getAttribute('data-aria-controls')
+    const targetId = $input.getAttribute('data-aria-controls')
 
     // Skip checkboxes without data-aria-controls attributes, or where the
     // target element does not exist.
@@ -93,14 +93,14 @@ Checkboxes.prototype.syncAllConditionalReveals = function () {
  * @param {HTMLInputElement} $input - Checkbox input
  */
 Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
-  var targetId = $input.getAttribute('aria-controls')
+  const targetId = $input.getAttribute('aria-controls')
   if (!targetId) {
     return
   }
 
-  var $target = document.getElementById(targetId)
+  const $target = document.getElementById(targetId)
   if ($target && $target.classList.contains('govuk-checkboxes__conditional')) {
-    var inputIsChecked = $input.checked
+    const inputIsChecked = $input.checked
 
     $input.setAttribute('aria-expanded', inputIsChecked.toString())
     $target.classList.toggle('govuk-checkboxes__conditional--hidden', !inputIsChecked)
@@ -117,15 +117,15 @@ Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
  * @param {HTMLInputElement} $input - Checkbox input
  */
 Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
-  var $component = this
+  const $component = this
 
   /** @satisfies {NodeListOf<HTMLInputElement>} */
-  var allInputsWithSameName = document.querySelectorAll(
+  const allInputsWithSameName = document.querySelectorAll(
     'input[type="checkbox"][name="' + $input.name + '"]'
   )
 
   allInputsWithSameName.forEach(function ($inputWithSameName) {
-    var hasSameFormOwner = ($input.form === $inputWithSameName.form)
+    const hasSameFormOwner = ($input.form === $inputWithSameName.form)
     if (hasSameFormOwner && $inputWithSameName !== $input) {
       $inputWithSameName.checked = false
       $component.syncConditionalRevealWithInputState($inputWithSameName)
@@ -144,15 +144,15 @@ Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
  * @param {HTMLInputElement} $input - Checkbox input
  */
 Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
-  var $component = this
+  const $component = this
 
   /** @satisfies {NodeListOf<HTMLInputElement>} */
-  var allInputsWithSameNameAndExclusiveBehaviour = document.querySelectorAll(
+  const allInputsWithSameNameAndExclusiveBehaviour = document.querySelectorAll(
     'input[data-behaviour="exclusive"][type="checkbox"][name="' + $input.name + '"]'
   )
 
   allInputsWithSameNameAndExclusiveBehaviour.forEach(function ($exclusiveInput) {
-    var hasSameFormOwner = ($input.form === $exclusiveInput.form)
+    const hasSameFormOwner = ($input.form === $exclusiveInput.form)
     if (hasSameFormOwner) {
       $exclusiveInput.checked = false
       $component.syncConditionalRevealWithInputState($exclusiveInput)
@@ -170,7 +170,7 @@ Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
  * @param {MouseEvent} event - Click event
  */
 Checkboxes.prototype.handleClick = function (event) {
-  var $clickedInput = event.target
+  const $clickedInput = event.target
 
   // Ignore clicks on things that aren't checkbox inputs
   if (!($clickedInput instanceof HTMLInputElement) || $clickedInput.type !== 'checkbox') {
@@ -178,7 +178,7 @@ Checkboxes.prototype.handleClick = function (event) {
   }
 
   // If the checkbox conditionally-reveals some content, sync the state
-  var hasAriaControls = $clickedInput.getAttribute('aria-controls')
+  const hasAriaControls = $clickedInput.getAttribute('aria-controls')
   if (hasAriaControls) {
     this.syncConditionalRevealWithInputState($clickedInput)
   }
@@ -189,7 +189,7 @@ Checkboxes.prototype.handleClick = function (event) {
   }
 
   // Handle 'exclusive' checkbox behaviour (ie "None of these")
-  var hasBehaviourExclusive = ($clickedInput.getAttribute('data-behaviour') === 'exclusive')
+  const hasBehaviourExclusive = ($clickedInput.getAttribute('data-behaviour') === 'exclusive')
   if (hasBehaviourExclusive) {
     this.unCheckAllInputsExcept($clickedInput)
   } else {

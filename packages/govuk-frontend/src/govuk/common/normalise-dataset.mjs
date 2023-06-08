@@ -18,7 +18,7 @@ export function normaliseString (value) {
     return value
   }
 
-  var trimmedValue = value.trim()
+  const trimmedValue = value.trim()
 
   if (trimmedValue === 'true') {
     return true
@@ -48,9 +48,9 @@ export function normaliseString (value) {
  */
 export function normaliseDataset (dataset) {
   /** @type {{ [key: string]: unknown }} */
-  var out = {}
+  const out = {}
 
-  for (var key in dataset) {
+  for (const key in dataset) {
     out[key] = normaliseString(dataset[key])
   }
 
