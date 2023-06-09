@@ -116,7 +116,7 @@ export class CharacterCount {
     } else if ('maxlength' in this.config && this.config.maxlength) {
       this.maxLength = this.config.maxlength
     } else {
-      return
+      return this
     }
 
     /** @private */
