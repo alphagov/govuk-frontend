@@ -21,8 +21,6 @@ export class ErrorSummary {
     // we need to safeguard against this so things keep
     // working the same now we read the elements data attributes
     if (!($module instanceof HTMLElement)) {
-      // Little safety in case code gets ported as-is
-      // into and ES2015 class constructor, where the return value matters
       return this
     }
 
