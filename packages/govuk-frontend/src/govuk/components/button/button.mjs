@@ -6,106 +6,107 @@ const DEBOUNCE_TIMEOUT_IN_SECONDS = 1
 
 /**
  * JavaScript enhancements for the Button component
- *
- * @class
- * @param {Element} $module - HTML element to use for button
- * @param {ButtonConfig} [config] - Button config
  */
-function Button ($module, config) {
-  if (!($module instanceof HTMLElement)) {
-    return this
-  }
+export default class Button {
+  /**
+   *
+   * @param {Element} $module - HTML element to use for button
+   * @param {ButtonConfig} [config] - Button config
+   */
+  constructor ($module, config) {
+    if (!($module instanceof HTMLElement)) {
+      return this
+    }
 
-  /** @deprecated Will be made private in v5.0 */
-  this.$module = $module
+    /** @deprecated Will be made private in v5.0 */
+    this.$module = $module
 
-  /** @deprecated Will be made private in v5.0 */
-  this.debounceFormSubmitTimer = null
+    /** @deprecated Will be made private in v5.0 */
+    this.debounceFormSubmitTimer = null
 
-  /** @type {ButtonConfig} */
-  const defaultConfig = {
-    preventDoubleClick: false
+    /** @type {ButtonConfig} */
+    const defaultConfig = {
+      preventDoubleClick: false
+    }
+
+    /**
+     * @deprecated Will be made private in v5.0
+     * @type {ButtonConfig}
+     */
+    this.config = mergeConfigs(
+      defaultConfig,
+      config || {},
+      normaliseDataset($module.dataset)
+    )
   }
 
   /**
-   * @deprecated Will be made private in v5.0
-   * @type {ButtonConfig}
+   * Initialise component
    */
-  this.config = mergeConfigs(
-    defaultConfig,
-    config || {},
-    normaliseDataset($module.dataset)
-  )
+  init () {
+    // Check that required elements are present
+    if (!this.$module) {
+      return
+    }
+
+    this.$module.addEventListener('keydown', (event) => this.handleKeyDown(event))
+    this.$module.addEventListener('click', (event) => this.debounce(event))
+  }
+
+  /**
+   * Trigger a click event when the space key is pressed
+   *
+   * Some screen readers tell users they can activate things with the 'button'
+   * role, so we need to match the functionality of native HTML buttons
+   *
+   * See https://github.com/alphagov/govuk_elements/pull/272#issuecomment-233028270
+   *
+   * @deprecated Will be made private in v5.0
+   * @param {KeyboardEvent} event - Keydown event
+   */
+  handleKeyDown (event) {
+    const $target = event.target
+
+    // Handle space bar only
+    if (event.keyCode !== KEY_SPACE) {
+      return
+    }
+
+    // Handle elements with [role="button"] only
+    if ($target instanceof HTMLElement && $target.getAttribute('role') === 'button') {
+      event.preventDefault() // prevent the page from scrolling
+      $target.click()
+    }
+  }
+
+  /**
+   * Debounce double-clicks
+   *
+   * If the click quickly succeeds a previous click then nothing will happen. This
+   * stops people accidentally causing multiple form submissions by double
+   * clicking buttons.
+   *
+   * @deprecated Will be made private in v5.0
+   * @param {MouseEvent} event - Mouse click event
+   * @returns {undefined | false} Returns undefined, or false when debounced
+   */
+  debounce (event) {
+    // Check the button that was clicked has preventDoubleClick enabled
+    if (!this.config.preventDoubleClick) {
+      return
+    }
+
+    // If the timer is still running, prevent the click from submitting the form
+    if (this.debounceFormSubmitTimer) {
+      event.preventDefault()
+      return false
+    }
+
+    this.debounceFormSubmitTimer = setTimeout(() => {
+      this.debounceFormSubmitTimer = null
+    }, DEBOUNCE_TIMEOUT_IN_SECONDS * 1000)
+  }
 }
-
-/**
- * Initialise component
- */
-Button.prototype.init = function () {
-  // Check that required elements are present
-  if (!this.$module) {
-    return
-  }
-
-  this.$module.addEventListener('keydown', (event) => this.handleKeyDown(event))
-  this.$module.addEventListener('click', (event) => this.debounce(event))
-}
-
-/**
- * Trigger a click event when the space key is pressed
- *
- * Some screen readers tell users they can activate things with the 'button'
- * role, so we need to match the functionality of native HTML buttons
- *
- * See https://github.com/alphagov/govuk_elements/pull/272#issuecomment-233028270
- *
- * @deprecated Will be made private in v5.0
- * @param {KeyboardEvent} event - Keydown event
- */
-Button.prototype.handleKeyDown = function (event) {
-  const $target = event.target
-
-  // Handle space bar only
-  if (event.keyCode !== KEY_SPACE) {
-    return
-  }
-
-  // Handle elements with [role="button"] only
-  if ($target instanceof HTMLElement && $target.getAttribute('role') === 'button') {
-    event.preventDefault() // prevent the page from scrolling
-    $target.click()
-  }
-}
-
-/**
- * Debounce double-clicks
- *
- * If the click quickly succeeds a previous click then nothing will happen. This
- * stops people accidentally causing multiple form submissions by double
- * clicking buttons.
- *
- * @deprecated Will be made private in v5.0
- * @param {MouseEvent} event - Mouse click event
- * @returns {undefined | false} Returns undefined, or false when debounced
- */
-Button.prototype.debounce = function (event) {
-  // Check the button that was clicked has preventDoubleClick enabled
-  if (!this.config.preventDoubleClick) {
-    return
-  }
-
-  // If the timer is still running, prevent the click from submitting the form
-  if (this.debounceFormSubmitTimer) {
-    event.preventDefault()
-    return false
-  }
-
-  this.debounceFormSubmitTimer = setTimeout(() => {
-    this.debounceFormSubmitTimer = null
-  }, DEBOUNCE_TIMEOUT_IN_SECONDS * 1000)
-}
-
-export default Button
 
 /**
  * Button config
