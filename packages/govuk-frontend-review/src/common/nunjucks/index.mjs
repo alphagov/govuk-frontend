@@ -1,20 +1,28 @@
 import { join } from 'path'
 
 import { paths } from 'govuk-frontend-config'
-import { packageNameToPath } from 'govuk-frontend-lib/names'
+import { packageResolveToPath } from 'govuk-frontend-lib/names'
 import nunjucks from 'nunjucks'
 
 import * as filters from './filters/index.mjs'
 import * as globals from './globals/index.mjs'
 
+/**
+ * Initialise renderer with Nunjucks environment
+ *
+ * @param {import('express').Application} app - Express.js review app
+ * @returns {import('nunjucks').Environment} Nunjucks Environment
+ */
 export function renderer (app) {
-  const appViews = [
+  const env = nunjucks.configure([
     join(paths.app, 'src/views'),
-    packageNameToPath('govuk-frontend', 'dist')
-  ]
 
-  // Initialise nunjucks environment
-  const env = nunjucks.configure(appViews, {
+    // Remove `govuk/` suffix using `modulePath`
+    packageResolveToPath('govuk-frontend', {
+      modulePath: '../',
+      moduleRoot: paths.app
+    })
+  ], {
     autoescape: true, // output with dangerous characters are escaped automatically
     express: app, // the Express.js review app that nunjucks should install to
     noCache: true, // never use a cache and recompile templates each time

@@ -1,18 +1,22 @@
-import { dirname, join, parse } from 'path'
+import { dirname, join, parse, relative } from 'path'
 
 import resolve from '@rollup/plugin-node-resolve'
-import { packageNameToPath } from 'govuk-frontend-lib/names'
+import { paths } from 'govuk-frontend-config'
+import { packageTypeToPath } from 'govuk-frontend-lib/names'
 import { defineConfig } from 'rollup'
 import { visualizer } from 'rollup-plugin-visualizer'
 
-import { modulePaths } from './src/index.mjs'
+import { modulePaths, packageOptions } from './src/index.mjs'
+
+// Locate GOV.UK Frontend
+const packagePath = packageTypeToPath('govuk-frontend', packageOptions)
 
 /**
  * Rollup config with stats output
  */
 export default defineConfig(modulePaths
   .map((modulePath) => /** @satisfies {import('rollup').RollupOptions} */({
-    input: join('govuk-frontend/dist/govuk-esm', modulePath),
+    input: relative(paths.stats, packageTypeToPath('govuk-frontend', { ...packageOptions, modulePath })),
 
     /**
      * Output options
@@ -26,19 +30,19 @@ export default defineConfig(modulePaths
      * Input plugins
      */
     plugins: [
-      resolve(),
+      resolve({ rootDir: paths.stats }),
 
       // Stats: File size
       visualizer({
         filename: join('dist', dirname(modulePath), `${parse(modulePath).name}.yaml`),
-        projectRoot: packageNameToPath('govuk-frontend', 'dist/govuk-esm/'),
+        projectRoot: dirname(packagePath),
         template: 'list'
       }),
 
       // Stats: Module tree map
       visualizer({
         filename: join('dist', dirname(modulePath), `${parse(modulePath).name}.html`),
-        projectRoot: packageNameToPath('govuk-frontend', 'dist/govuk-esm/'),
+        projectRoot: dirname(packagePath),
         template: 'treemap'
       })
     ]

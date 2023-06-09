@@ -10,9 +10,20 @@ const componentNamesWithJavaScript = await getComponentNames((componentName, com
   componentFiles.some(filterPath([`**/${componentName}.mjs`])))
 
 /**
+ * Package options
+ *
+ * @type {import('govuk-frontend-lib/names').PackageOptions}
+ */
+export const packageOptions = {
+  type: 'module',
+  modulePath: 'all.mjs',
+  moduleRoot: paths.stats
+}
+
+/**
  * Rollup input paths
  */
-export const modulePaths = ['all.mjs']
+export const modulePaths = [packageOptions.modulePath]
   .concat(componentNamesWithJavaScript.map((componentName) =>
     `components/${componentName}/${componentName}.mjs`))
 

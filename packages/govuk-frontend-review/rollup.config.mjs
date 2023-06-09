@@ -1,5 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve'
 import terser from '@rollup/plugin-terser'
+import { paths } from 'govuk-frontend-config'
 import { defineConfig } from 'rollup'
 
 /**
@@ -38,6 +39,6 @@ export default defineConfig(({ i: input }) => ({
    * Input plugins
    */
   plugins: [
-    resolve()
+    resolve({ rootDir: paths.app })
   ]
 }))

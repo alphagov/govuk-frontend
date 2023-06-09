@@ -91,7 +91,7 @@ const getYaml = async (configPath) => {
  * @returns {Promise<ComponentData & { name: string }>} Component data
  */
 const getComponentData = async (componentName) => {
-  const yamlPath = packageNameToPath('govuk-frontend', `src/govuk/components/${componentName}/${componentName}.yaml`)
+  const yamlPath = join(packageNameToPath('govuk-frontend'), `src/govuk/components/${componentName}/${componentName}.yaml`)
 
   /** @type {ComponentData} */
   const yamlData = await getYaml(yamlPath)
@@ -119,7 +119,7 @@ const getComponentsData = async () => {
  * @returns {Promise<string[]>} Component files
  */
 const getComponentFiles = (componentName = '') =>
-  getListing(packageNameToPath('govuk-frontend', join('src/govuk/components', componentName, '**/*')))
+  getListing(join(packageNameToPath('govuk-frontend'), `src/govuk/components/${componentName}/**/*`))
 
 /**
  * Get component names (with optional filter)
@@ -128,7 +128,7 @@ const getComponentFiles = (componentName = '') =>
  * @returns {Promise<string[]>} Component names
  */
 const getComponentNames = async (filter) => {
-  const componentNames = await getDirectories(packageNameToPath('govuk-frontend', '**/src/govuk/components/'))
+  const componentNames = await getDirectories(join(packageNameToPath('govuk-frontend'), '**/src/govuk/components/'))
 
   if (filter) {
     const componentFiles = await getComponentFiles()
