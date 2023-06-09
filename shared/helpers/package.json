@@ -31,5 +31,13 @@
   "peerDependencies": {
     "@puppeteer/browsers": ">=1",
     "puppeteer-core": ">=20"
+  },
+  "peerDependenciesMeta": {
+    "@puppeteer/browsers": {
+      "optional": true
+    },
+    "puppeteer-core": {
+      "optional": true
+    }
   }
 }
