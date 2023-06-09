@@ -1,4 +1,5 @@
 import percySnapshot from '@percy/puppeteer'
+import { waitForPercyIdle } from '@percy/sdk-utils'
 import { download } from 'govuk-frontend-helpers/jest/browser/download.mjs'
 import { goToComponent, goToExample } from 'govuk-frontend-helpers/puppeteer'
 import { filterPath, getComponentFiles, getComponentNames } from 'govuk-frontend-lib/files'
@@ -27,31 +28,21 @@ export async function screenshots () {
   const componentNames = await getComponentNames()
   const exampleNames = ['text-alignment', 'typography']
 
-  // Screenshot stack
-  const input = []
+  // Screenshot components
+  for (const componentName of componentNames) {
+    await screenshotComponent(await browser.newPage(), componentName)
+  }
 
-  // Add components to screenshot
-  input.push(...componentNames.map((screenshotName) =>
-    /** @type {const} */ ([screenshotComponent, screenshotName])))
-
-  // Add examples to screenshot
-  input.push(...exampleNames.map((screenshotName) =>
-    /** @type {const} */ ([screenshotExample, screenshotName])))
-
-  // Batch 4x concurrent screenshots
-  while (input.length) {
-    const batch = input.splice(0, 4)
-
-    // Take screenshots
-    const screenshotTasks = batch.map(async ([screenshotFn, screenshotName]) =>
-      screenshotFn(await browser.newPage(), screenshotName))
-
-    // Wait until batch finishes
-    await Promise.all(screenshotTasks)
+  // Screenshot examples
+  for (const exampleName of exampleNames) {
+    await screenshotExample(await browser.newPage(), exampleName)
   }
 
   // Close browser
-  return browser.close()
+  await browser.close()
+
+  // Wait for Percy to finish
+  return waitForPercyIdle()
 }
 
 /**
