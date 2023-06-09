@@ -144,4 +144,16 @@
       }
     }
   }
+
+  .govuk-breadcrumbs--inverse {
+    color: govuk-colour("white");
+
+    .govuk-breadcrumbs__link {
+      @include govuk-link-style-inverse;
+    }
+
+    .govuk-breadcrumbs__list-item::before {
+      border-color: currentcolor;
+    }
+  }
 }
