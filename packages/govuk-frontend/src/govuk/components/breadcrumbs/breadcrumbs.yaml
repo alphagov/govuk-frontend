@@ -82,6 +82,16 @@ examples:
           href: '/education'
         - text: Special educational needs and disability (SEND) and high needs
           href: '/education/special-educational-needs-and-disability-send-and-high-needs'
+  - name: with inverted colours
+    description: Breadcrumbs that appear on dark backgrounds
+    data:
+      classes: govuk-breadcrumbs--inverse
+      items:
+        - text: Home
+          href: '/'
+        - text: Passports, travel and living abroad
+          href: '/browse/abroad'
+        - text: Travel abroad
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes

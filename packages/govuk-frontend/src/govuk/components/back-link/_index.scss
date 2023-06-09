@@ -69,4 +69,12 @@
     bottom: -14px;
     left: 0;
   }
+
+  .govuk-back-link--inverse {
+    @include govuk-link-style-inverse;
+
+    &::before {
+      border-color: currentcolor;
+    }
+  }
 }
