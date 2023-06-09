@@ -59,4 +59,11 @@ describe('back-link component', () => {
     expect($component.attr('data-test')).toEqual('attribute')
     expect($component.attr('aria-label')).toEqual('Back to home')
   })
+
+  it('renders with inverted colours if specified', () => {
+    const $ = render('back-link', examples['with inverted colours'])
+
+    const $component = $('.govuk-back-link')
+    expect($component.hasClass('govuk-back-link--inverse')).toBeTruthy()
+  })
 })
