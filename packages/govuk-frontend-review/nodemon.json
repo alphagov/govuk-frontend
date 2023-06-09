@@ -10,7 +10,7 @@
   "events": {
     "restart": "browser-sync reload --config browsersync.config.js"
   },
-  "ext": "mjs,json,yaml",
+  "ext": "js,mjs,json,yaml",
   "quiet": true,
   "signal": "SIGINT"
 }
