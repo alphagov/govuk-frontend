@@ -38,7 +38,7 @@ const CHARACTER_COUNT_TRANSLATIONS = {
 }
 
 /**
- * JavaScript enhancements for the CharacterCount component
+ * Character count component
  *
  * Tracks the number of characters or words in the `.govuk-js-character-count`
  * `<textarea>` inside the element. Displays a message with the remaining number

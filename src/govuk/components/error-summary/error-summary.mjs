@@ -2,7 +2,7 @@ import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 
 /**
- * JavaScript enhancements for the ErrorSummary
+ * Error summary component
  *
  * Takes focus on initialisation for accessible announcement, unless disabled in configuration.
  */
