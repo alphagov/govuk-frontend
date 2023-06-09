@@ -8,7 +8,10 @@ import slash from 'slash'
  * @returns {Promise<PrototypeKitConfig>} GOV.UK Prototype Kit config
  */
 export default async () => {
-  const componentMacros = await getListing(packageNameToPath('govuk-frontend', 'src'), '**/components/**/macro.njk')
+  const srcPath = packageNameToPath('govuk-frontend', 'src')
+
+  // Locate component macros
+  const componentMacros = await getListing('**/components/**/macro.njk', { cwd: srcPath })
   const componentNames = await getComponentNames()
 
   // Build array of macros

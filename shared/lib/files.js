@@ -1,7 +1,8 @@
 const { readFile } = require('fs/promises')
-const { join, parse, relative } = require('path')
+const { join, parse, relative, basename } = require('path')
 
 const { glob } = require('glob')
+const { paths } = require('govuk-frontend-config')
 const yaml = require('js-yaml')
 const { minimatch } = require('minimatch')
 
@@ -10,33 +11,37 @@ const { packageNameToPath } = require('./names')
 /**
  * Directory listing for path
  *
- * @param {string} directoryPath - Path to directory
- * @param {string} [pattern] - Minimatch pattern
+ * @param {string} directoryPath - Minimatch pattern to directory
  * @param {import('glob').GlobOptionsWithFileTypesUnset} [options] - Glob options
  * @returns {Promise<string[]>} File paths
  */
-const getListing = async (directoryPath, pattern = '**/*', options = {}) => {
-  const listing = await glob(pattern, {
+const getListing = async (directoryPath, options = {}) => {
+  const listing = await glob(directoryPath, {
     absolute: true,
-    cwd: directoryPath,
     nodir: true,
     realpath: true,
     ...options
   })
 
+  // Use relative paths
   return listing
-    .map((entryPath) => relative(directoryPath, entryPath))
+    .map((entryPath) => relative(options.cwd?.toString() ?? paths.root, entryPath))
     .sort()
 }
 
 /**
  * Directory listing (directories only)
  *
- * @param {string} directoryPath - Path to directory
- * @returns {Promise<string[]>} File paths
+ * @param {string} directoryPath - Minimatch pattern to directory
+ * @returns {Promise<string[]>} Directory names
  */
-const getDirectories = (directoryPath) => {
-  return getListing(directoryPath, '*/', { nodir: false })
+const getDirectories = async (directoryPath) => {
+  const listing = await getListing(`${directoryPath}/*/`, { nodir: false })
+
+  // Use directory names only
+  return listing
+    .map((directoryPath) => basename(directoryPath))
+    .sort()
 }
 
 /**
@@ -114,7 +119,7 @@ const getComponentsData = async () => {
  * @returns {Promise<string[]>} Component files
  */
 const getComponentFiles = (componentName = '') =>
-  getListing(packageNameToPath('govuk-frontend', join('src/govuk/components', componentName)))
+  getListing(packageNameToPath('govuk-frontend', join('src/govuk/components', componentName, '**/*')))
 
 /**
  * Get component names (with optional filter)
@@ -123,7 +128,7 @@ const getComponentFiles = (componentName = '') =>
  * @returns {Promise<string[]>} Component names
  */
 const getComponentNames = async (filter) => {
-  const componentNames = await getDirectories(packageNameToPath('govuk-frontend', 'src/govuk/components'))
+  const componentNames = await getDirectories(packageNameToPath('govuk-frontend', '**/src/govuk/components/'))
 
   if (filter) {
     const componentFiles = await getComponentFiles()

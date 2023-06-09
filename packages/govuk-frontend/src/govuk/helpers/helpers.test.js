@@ -9,7 +9,8 @@ describe('The helpers layer', () => {
   let sassFiles
 
   beforeAll(async () => {
-    sassFiles = await getListing(paths.package, 'src/govuk/helpers/**/*.scss', {
+    sassFiles = await getListing('**/src/govuk/helpers/**/*.scss', {
+      cwd: paths.package,
       ignore: ['**/_all.scss']
     })
   })

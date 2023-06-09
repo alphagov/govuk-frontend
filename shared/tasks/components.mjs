@@ -12,7 +12,9 @@ import { files } from './index.mjs'
  * @param {Pick<AssetEntry[1], "srcPath" | "destPath">} options - Asset options
  */
 export async function generateFixtures (pattern, { srcPath, destPath }) {
-  const componentDataPaths = await getListing(srcPath, pattern)
+  const componentDataPaths = await getListing(pattern, {
+    cwd: srcPath
+  })
 
   // Loop component data paths
   const fixtures = componentDataPaths.map(async (componentDataPath) => {
@@ -44,7 +46,9 @@ export async function generateFixtures (pattern, { srcPath, destPath }) {
  * @param {Pick<AssetEntry[1], "srcPath" | "destPath">} options - Asset options
  */
 export async function generateMacroOptions (pattern, { srcPath, destPath }) {
-  const componentDataPaths = await getListing(srcPath, pattern)
+  const componentDataPaths = await getListing(pattern, {
+    cwd: srcPath
+  })
 
   // Loop component data paths
   const macroOptions = componentDataPaths.map(async (componentDataPath) => {
