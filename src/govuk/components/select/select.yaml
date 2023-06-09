@@ -312,6 +312,19 @@ examples:
         - text: Green
         - text: Blue
 
+  - name: without values with selected value
+    hidden: true
+    data:
+      name: colors
+      id: colors
+      label:
+        text: Label text goes here
+      items:
+        - text: Red
+        - text: Green
+        - text: Blue
+      value: Green
+
   - name: with falsey values
     hidden: true
     data:
