@@ -28,6 +28,10 @@ examples:
     data:
       href: '#'
       text: Back to home
+  - name: with inverted colours
+    data:
+      classes: govuk-back-link--inverse
+      href: '#'
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes
