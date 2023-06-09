@@ -79,6 +79,43 @@ function packageResolveToPath (packageEntry, { modulePath } = {}) {
 }
 
 /**
+ * Return path to package entry from any npm workspace, by type
+ *
+ * Wraps {@link packageResolveToPath} to allow the appended `modulePath` to
+ * include unresolvable paths, globs or files that are not yet built
+ *
+ * {@link https://github.com/alphagov/govuk-frontend/issues/3755}
+ *
+ * @example
+ * Resolving components relative to a default package entry
+ *
+ * - GOV.UK Frontend v4 './govuk/components/accordion/accordion.mjs'
+ * - GOV.UK Frontend v5 './dist/govuk/components/accordion/accordion.mjs'
+ *
+ * ```mjs
+ * const templatePath = packageResolveToPath('govuk-frontend', {
+ *   modulePath: `components/accordion/accordion.mjs`
+ * })
+ * ```
+ * @param {string} packageName - Installed npm package name
+ * @param {PackageOptions} [options] - Package resolution options
+ * @returns {string} Path to installed npm package field
+ */
+function packageTypeToPath (packageName, { modulePath, type = 'commonjs' } = {}) {
+  const packageEntry = `${packageName}/package.json`
+  const packageField = type === 'module' ? 'module' : 'main'
+
+  // Package field as child path
+  const entryPath = require(packageResolveToPath(packageEntry))[packageField]
+  const childPath = modulePath !== undefined ? join(dirname(entryPath), modulePath) : entryPath
+
+  // Append optional module path
+  return packageResolveToPath(packageEntry, {
+    modulePath: childPath
+  })
+}
+
+/**
  * Resolve path to package from any npm workspace
  *
  * Used to find npm workspace packages that might be hoisted to
@@ -98,11 +135,12 @@ module.exports = {
   componentNameToMacroName,
   componentPathToModuleName,
   packageResolveToPath,
+  packageTypeToPath,
   packageNameToPath
 }
 
 /**
  * @typedef {object} PackageOptions
- * @property {string} [field] - Package field name from package.json, for example `module`
+ * @property {string} [type=commonjs] - Package type from package.json, for example `module`
  * @property {string} [modulePath] - Module path (optional, relative to package entry), for example `i18n.mjs`
  */

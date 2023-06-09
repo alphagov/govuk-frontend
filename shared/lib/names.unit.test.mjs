@@ -7,6 +7,7 @@ import {
   componentNameToMacroName,
   componentPathToModuleName,
   packageResolveToPath,
+  packageTypeToPath,
   packageNameToPath
 } from './names.js'
 
@@ -150,6 +151,35 @@ describe('packageResolveToPath', () => {
 
   it.each(packages)("locates path for npm package entry '$packageEntry'", ({ packageEntry, options, resolvedPath }) => {
     expect(packageResolveToPath(packageEntry, options))
+      .toBe(resolvedPath)
+  })
+})
+
+describe('packageTypeToPath', () => {
+  const packages = [
+    {
+      packageName: 'govuk-frontend',
+      resolvedPath: join(paths.package, 'dist/govuk/all.js')
+    },
+    {
+      packageName: 'govuk-frontend',
+      options: { modulePath: 'i18n.js' },
+      resolvedPath: join(paths.package, 'dist/govuk/i18n.js')
+    },
+    {
+      packageName: 'govuk-frontend',
+      options: { type: 'module' },
+      resolvedPath: join(paths.package, 'dist/govuk-esm/all.mjs')
+    },
+    {
+      packageName: 'govuk-frontend',
+      options: { modulePath: 'i18n.mjs', type: 'module' },
+      resolvedPath: join(paths.package, 'dist/govuk-esm/i18n.mjs')
+    }
+  ]
+
+  it.each(packages)("locates path for npm package '$packageName' field '$packageField'", ({ packageName, options, resolvedPath }) => {
+    expect(packageTypeToPath(packageName, options))
       .toBe(resolvedPath)
   })
 })
