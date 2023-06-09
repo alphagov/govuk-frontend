@@ -1,3 +1,5 @@
+import { join } from 'path'
+
 import { packageNameToPath } from 'govuk-frontend-lib/names'
 import beautify from 'js-beautify'
 
@@ -9,7 +11,7 @@ import beautify from 'js-beautify'
  * @returns {string} Nunjucks code
  */
 export function getHTMLCode (componentName, params) {
-  const templatePath = packageNameToPath('govuk-frontend', `dist/govuk/components/${componentName}/template.njk`)
+  const templatePath = join(packageNameToPath('govuk-frontend'), `dist/govuk/components/${componentName}/template.njk`)
 
   // Render to HTML
   const html = this.env.render(templatePath, { params }).trim()

@@ -31,14 +31,14 @@ export default defineConfig(modulePaths
       // Stats: File size
       visualizer({
         filename: join('dist', dirname(modulePath), `${parse(modulePath).name}.yaml`),
-        projectRoot: packageNameToPath('govuk-frontend', 'dist/govuk-esm/'),
+        projectRoot: join(packageNameToPath('govuk-frontend'), 'dist/govuk-esm/'),
         template: 'list'
       }),
 
       // Stats: Module tree map
       visualizer({
         filename: join('dist', dirname(modulePath), `${parse(modulePath).name}.html`),
-        projectRoot: packageNameToPath('govuk-frontend', 'dist/govuk-esm/'),
+        projectRoot: join(packageNameToPath('govuk-frontend'), 'dist/govuk-esm/'),
         template: 'treemap'
       })
     ]

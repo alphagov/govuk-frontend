@@ -1,3 +1,5 @@
+import { join } from 'path'
+
 import { filterPath, getComponentNames, getListing } from 'govuk-frontend-lib/files'
 import { componentNameToMacroName, packageNameToPath } from 'govuk-frontend-lib/names'
 import slash from 'slash'
@@ -8,7 +10,7 @@ import slash from 'slash'
  * @returns {Promise<PrototypeKitConfig>} GOV.UK Prototype Kit config
  */
 export default async () => {
-  const srcPath = packageNameToPath('govuk-frontend', 'src')
+  const srcPath = join(packageNameToPath('govuk-frontend'), 'src')
 
   // Locate component macros
   const componentMacros = await getListing('**/components/**/macro.njk', { cwd: srcPath })

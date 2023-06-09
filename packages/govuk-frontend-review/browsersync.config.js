@@ -25,7 +25,7 @@ module.exports = {
     join(paths.app, 'dist/javascripts/**/*.js'),
     join(paths.app, 'dist/stylesheets/**/*.css'),
     join(paths.app, 'src/views/**/*.njk'),
-    packageNameToPath('govuk-frontend', 'dist/govuk/**/*.njk')
+    join(packageNameToPath('govuk-frontend'), 'dist/govuk/**/*.njk')
   ],
   ignore: ['**/*.test.*'],
 

@@ -1,4 +1,4 @@
-const { dirname, join, parse } = require('path')
+const { dirname, parse } = require('path')
 
 const { minimatch } = require('minimatch')
 
@@ -64,15 +64,14 @@ function componentPathToModuleName (componentPath) {
 /**
  * Resolve path to package from any npm workspace
  *
- * Used by npm workspaces to find packages that might be hoisted to
+ * Used to find npm workspace packages that might be hoisted to
  * the project root node_modules
  *
  * @param {string} packageName - Installed npm package name
- * @param {string} [childPath] - Optional child directory path
  * @returns {string} Path to installed npm package
  */
-function packageNameToPath (packageName, childPath = '') {
-  return join(dirname(require.resolve(`${packageName}/package.json`)), childPath)
+function packageNameToPath (packageName) {
+  return dirname(require.resolve(`${packageName}/package.json`))
 }
 
 module.exports = {
