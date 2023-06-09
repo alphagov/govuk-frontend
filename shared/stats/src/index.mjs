@@ -16,7 +16,8 @@ const componentNamesWithJavaScript = await getComponentNames((componentName, com
  */
 export const packageOptions = {
   type: 'module',
-  modulePath: 'all.mjs'
+  modulePath: 'all.mjs',
+  moduleRoot: paths.stats
 }
 
 /**

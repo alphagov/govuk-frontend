@@ -83,7 +83,8 @@ export async function compileStylesheet ([modulePath, { basePath, configPath, sr
       loadPaths: [
         // Remove `govuk/` suffix using `modulePath`
         packageResolveToPath('govuk-frontend', {
-          modulePath: '../'
+          modulePath: '../',
+          moduleRoot: basePath
         }),
 
         // Resolve local packages first

@@ -19,7 +19,8 @@ export function renderer (app) {
 
     // Remove `govuk/` suffix using `modulePath`
     packageResolveToPath('govuk-frontend', {
-      modulePath: '../'
+      modulePath: '../',
+      moduleRoot: paths.app
     })
   ], {
     autoescape: true, // output with dangerous characters are escaped automatically

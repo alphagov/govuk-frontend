@@ -10,7 +10,7 @@ const router = express.Router()
  * Add middleware to serve static assets
  */
 
-router.use('/assets', express.static(packageTypeToPath('govuk-frontend', { modulePath: 'assets' })))
+router.use('/assets', express.static(packageTypeToPath('govuk-frontend', { modulePath: 'assets', moduleRoot: paths.app })))
 router.use('/javascripts', express.static(join(paths.app, 'dist/javascripts')))
 router.use('/stylesheets', express.static(join(paths.app, 'dist/stylesheets')))
 

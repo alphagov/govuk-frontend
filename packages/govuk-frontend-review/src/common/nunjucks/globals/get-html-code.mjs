@@ -1,3 +1,4 @@
+import { paths } from 'govuk-frontend-config'
 import { packageTypeToPath } from 'govuk-frontend-lib/names'
 import beautify from 'js-beautify'
 
@@ -10,7 +11,8 @@ import beautify from 'js-beautify'
  */
 export function getHTMLCode (componentName, params) {
   const templatePath = packageTypeToPath('govuk-frontend', {
-    modulePath: `components/${componentName}/template.njk`
+    modulePath: `components/${componentName}/template.njk`,
+    moduleRoot: paths.app
   })
 
   // Render to HTML

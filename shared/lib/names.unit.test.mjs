@@ -201,3 +201,33 @@ describe('packageNameToPath', () => {
       .toBe(resolvedPath)
   })
 })
+
+describe("packageNameToPath (with custom 'node_module' paths)", () => {
+  const packages = [
+    {
+      packageName: 'govuk-frontend',
+      options: { moduleRoot: paths.root },
+      resolvedPath: paths.package
+    },
+    {
+      packageName: 'govuk-frontend-review',
+      options: { moduleRoot: paths.root },
+      resolvedPath: paths.app
+    },
+    {
+      packageName: 'autoprefixer',
+      options: { moduleRoot: paths.package },
+      resolvedPath: join(paths.root, 'node_modules/autoprefixer')
+    },
+    {
+      packageName: 'postcss',
+      options: { moduleRoot: paths.app },
+      resolvedPath: join(paths.root, 'node_modules/postcss')
+    }
+  ]
+
+  it.each(packages)("locates path for npm package '$packageName'", ({ packageName, options = {}, resolvedPath }) => {
+    expect(packageNameToPath(packageName, options))
+      .toBe(resolvedPath)
+  })
+})
