@@ -6,6 +6,7 @@ import {
   componentNameToClassName,
   componentNameToMacroName,
   componentPathToModuleName,
+  packageResolveToPath,
   packageNameToPath
 } from './names.js'
 
@@ -125,16 +126,48 @@ describe('componentPathToModuleName', () => {
   })
 })
 
-describe('packageNameToPath', () => {
+describe('packageResolveToPath', () => {
   const packages = [
     {
-      name: 'govuk-frontend',
-      path: paths.package
+      packageEntry: 'govuk-frontend/package.json',
+      resolvedPath: join(paths.package, 'package.json')
+    },
+    {
+      packageEntry: 'govuk-frontend/src/govuk/all.mjs',
+      resolvedPath: join(paths.package, 'src/govuk/all.mjs')
+    },
+    {
+      packageEntry: 'govuk-frontend/src/govuk/all.mjs',
+      options: { modulePath: 'i18n.mjs' },
+      resolvedPath: join(paths.package, 'src/govuk/i18n.mjs')
+    },
+    {
+      packageEntry: 'govuk-frontend/src/govuk/all.mjs',
+      options: { modulePath: 'components/accordion/accordion.mjs' },
+      resolvedPath: join(paths.package, 'src/govuk/components/accordion/accordion.mjs')
     }
   ]
 
-  it.each(packages)("locates path for npm package '$name'", ({ name, path }) => {
-    expect(packageNameToPath(name))
-      .toBe(path)
+  it.each(packages)("locates path for npm package entry '$packageEntry'", ({ packageEntry, options, resolvedPath }) => {
+    expect(packageResolveToPath(packageEntry, options))
+      .toBe(resolvedPath)
+  })
+})
+
+describe('packageNameToPath', () => {
+  const packages = [
+    {
+      packageName: 'govuk-frontend',
+      resolvedPath: paths.package
+    },
+    {
+      packageName: 'govuk-frontend-review',
+      resolvedPath: paths.app
+    }
+  ]
+
+  it.each(packages)("locates path for npm package '$packageName'", ({ packageName, resolvedPath }) => {
+    expect(packageNameToPath(packageName))
+      .toBe(resolvedPath)
   })
 })

@@ -1,4 +1,4 @@
-const { dirname, parse } = require('path')
+const { dirname, join, parse } = require('path')
 
 const { minimatch } = require('minimatch')
 
@@ -62,6 +62,23 @@ function componentPathToModuleName (componentPath) {
 }
 
 /**
+ * Resolve path to package entry from any npm workspace
+ *
+ * Once the package entry is resolved, the option `modulePath` can be used to
+ * append a new path relative to the package entry, for example `i18n.mjs`
+ *
+ * @param {string} packageEntry - Installed npm package entry, for example `govuk-frontend/src/govuk/all.mjs`
+ * @param {Pick<PackageOptions, "modulePath">} [options] - Package resolution options
+ * @returns {string} Path to installed npm package entry
+ */
+function packageResolveToPath (packageEntry, { modulePath } = {}) {
+  const packagePath = require.resolve(packageEntry)
+
+  // Append optional module path
+  return modulePath !== undefined ? join(dirname(packagePath), modulePath) : packagePath
+}
+
+/**
  * Resolve path to package from any npm workspace
  *
  * Used to find npm workspace packages that might be hoisted to
@@ -71,12 +88,21 @@ function componentPathToModuleName (componentPath) {
  * @returns {string} Path to installed npm package
  */
 function packageNameToPath (packageName) {
-  return dirname(require.resolve(`${packageName}/package.json`))
+  return packageResolveToPath(`${packageName}/package.json`, {
+    modulePath: ''
+  })
 }
 
 module.exports = {
   componentNameToClassName,
   componentNameToMacroName,
   componentPathToModuleName,
+  packageResolveToPath,
   packageNameToPath
 }
+
+/**
+ * @typedef {object} PackageOptions
+ * @property {string} [field] - Package field name from package.json, for example `module`
+ * @property {string} [modulePath] - Module path (optional, relative to package entry), for example `i18n.mjs`
+ */
