@@ -91,6 +91,13 @@ describe('Select', () => {
       expect($selectedItem.attr('selected')).toBeTruthy()
     })
 
+    it('selects options with implicit value using selected value', () => {
+      const $ = render('select', examples['without values with selected value'])
+
+      const $selectedItem = $("option:contains('Green')")
+      expect($selectedItem.attr('selected')).toBeTruthy()
+    })
+
     it('allows item.selected to override value', () => {
       const $ = render('select', examples['item selected overrides value'])
 
