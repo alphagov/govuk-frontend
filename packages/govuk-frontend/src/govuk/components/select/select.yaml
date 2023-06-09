@@ -15,7 +15,7 @@ params:
       - name: value
         type: string
         required: false
-        description: Value for the option item. Defaults to an empty string.
+        description: Value for the option. If this is omitted, the value is taken from the text content of the option element.
       - name: text
         type: string
         required: true
@@ -231,11 +231,11 @@ examples:
           attributes:
             data-attribute: GHI
             data-second-attribute: JKL
-  - name: with falsey values
+  - name: with falsey items
     hidden: true
     data:
-      id: with-falsey-values
-      name: with-falsey-values
+      id: with-falsey-items
+      name: with-falsey-items
       label:
         text: Label text goes here
       items:
@@ -299,6 +299,46 @@ examples:
           text: GOV.UK frontend option 1
         - value: 2
           text: GOV.UK frontend option 2
+
+  - name: without values
+    hidden: true
+    data:
+      name: colors
+      id: colors
+      label:
+        text: Label text goes here
+      items:
+        - text: Red
+        - text: Green
+        - text: Blue
+
+  - name: without values with selected value
+    hidden: true
+    data:
+      name: colors
+      id: colors
+      label:
+        text: Label text goes here
+      items:
+        - text: Red
+        - text: Green
+        - text: Blue
+      value: Green
+
+  - name: with falsey values
+    hidden: true
+    data:
+      name: falsey-values
+      id: falsey-values
+      label:
+        text: Label text goes here
+      items:
+        - text: Empty string
+          value: ''
+        - text: Boolean false
+          value: false
+        - text: Number zero
+          value: 0
 
   - name: item selected overrides value
     hidden: true

@@ -208,6 +208,16 @@ If you’re not using Nunjucks macros, update your warning text HTML to replace 
 
 This change was introduced in [pull request #3569: Remove unnecesary class from Warning Text component](https://github.com/alphagov/govuk-frontend/pull/3569).
 
+#### Check that selects work as expected
+
+The `govukSelect` macro will no longer include an empty value attribute for options that do not have a value set.
+
+This means that the value of the select if that option is selected will now be the text content of the option, rather than an empty string.
+
+If you need to maintain the existing behaviour, you can set the value to an empty string.
+
+This change was introduced in [pull request #3773: Omit the value attribute from select options with no value](https://github.com/alphagov/govuk-frontend/pull/3773).
+
 ## 4.6.0 (Feature release)
 
 ### New features
