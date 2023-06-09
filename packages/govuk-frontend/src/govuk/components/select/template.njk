@@ -44,7 +44,7 @@
     {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
   {% for item in params.items %}
     {% if item %}
-      <option value="{{ item.value }}"
+      <option {%- if item.value !== undefined %} value="{{ item.value }}"{% endif %}
         {{-" selected" if item.selected | default(params.value and item.value == params.value) }}
         {{-" disabled" if item.disabled }}
         {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>{{ item.text }}</option>
