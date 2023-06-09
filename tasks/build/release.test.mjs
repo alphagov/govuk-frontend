@@ -10,8 +10,13 @@ describe('dist/', () => {
   let listingDistAssets
 
   beforeAll(async () => {
-    listingSourceAssets = await getListing(join(paths.package, 'src/govuk/assets'))
-    listingDistAssets = await getListing(join(paths.root, 'dist/assets'))
+    listingSourceAssets = await getListing('**/*', {
+      cwd: join(paths.package, 'src/govuk/assets')
+    })
+
+    listingDistAssets = await getListing('**/*', {
+      cwd: join(paths.root, 'dist/assets')
+    })
   })
 
   describe('assets/', () => {
