@@ -1,7 +1,7 @@
 const { join } = require('path')
 
 const { paths, ports } = require('govuk-frontend-config')
-const { packageNameToPath } = require('govuk-frontend-lib/names')
+const { packageTypeToPath } = require('govuk-frontend-lib/names')
 
 /**
  * Browsersync config
@@ -25,7 +25,7 @@ module.exports = {
     join(paths.app, 'dist/javascripts/**/*.js'),
     join(paths.app, 'dist/stylesheets/**/*.css'),
     join(paths.app, 'src/views/**/*.njk'),
-    join(packageNameToPath('govuk-frontend'), 'dist/govuk/**/*.njk')
+    packageTypeToPath('govuk-frontend', { modulePath: '**/*.njk' })
   ],
   ignore: ['**/*.test.*'],
 

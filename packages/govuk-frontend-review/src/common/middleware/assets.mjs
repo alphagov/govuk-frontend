@@ -2,7 +2,7 @@ import { join } from 'path'
 
 import express from 'express'
 import { paths } from 'govuk-frontend-config'
-import { packageNameToPath } from 'govuk-frontend-lib/names'
+import { packageTypeToPath } from 'govuk-frontend-lib/names'
 
 const router = express.Router()
 
@@ -10,7 +10,7 @@ const router = express.Router()
  * Add middleware to serve static assets
  */
 
-router.use('/assets', express.static(join(packageNameToPath('govuk-frontend'), 'dist/govuk/assets')))
+router.use('/assets', express.static(packageTypeToPath('govuk-frontend', { modulePath: 'assets' })))
 router.use('/javascripts', express.static(join(paths.app, 'dist/javascripts')))
 router.use('/stylesheets', express.static(join(paths.app, 'dist/stylesheets')))
 

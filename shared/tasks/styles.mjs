@@ -4,7 +4,7 @@ import { join, parse } from 'path'
 import chalk from 'chalk'
 import { paths } from 'govuk-frontend-config'
 import { getListing } from 'govuk-frontend-lib/files'
-import { packageNameToPath } from 'govuk-frontend-lib/names'
+import { packageResolveToPath } from 'govuk-frontend-lib/names'
 import PluginError from 'plugin-error'
 import postcss from 'postcss'
 // eslint-disable-next-line import/default
@@ -39,7 +39,7 @@ export async function compile (pattern, options) {
  *
  * @param {AssetEntry} assetEntry - Asset entry
  */
-export async function compileStylesheet ([modulePath, { configPath, srcPath, destPath, filePath }]) {
+export async function compileStylesheet ([modulePath, { basePath, configPath, srcPath, destPath, filePath }]) {
   const moduleSrcPath = join(srcPath, modulePath)
   const moduleDestPath = join(destPath, filePath ? filePath(parse(modulePath)) : modulePath)
 
@@ -81,7 +81,13 @@ export async function compileStylesheet ([modulePath, { configPath, srcPath, des
 
       // Resolve @imports via
       loadPaths: [
-        join(packageNameToPath('govuk-frontend'), 'dist'),
+        // Remove `govuk/` suffix using `modulePath`
+        packageResolveToPath('govuk-frontend', {
+          modulePath: '../'
+        }),
+
+        // Resolve local packages first
+        join(basePath, 'node_modules'),
         join(paths.root, 'node_modules')
       ],
 
