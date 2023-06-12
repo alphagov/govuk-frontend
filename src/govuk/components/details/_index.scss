@@ -5,20 +5,38 @@
     @include govuk-responsive-margin(6, "bottom");
 
     display: block;
+
+    border-left: $govuk-border-width-wide solid $govuk-border-colour;
   }
 
   .govuk-details__summary {
     // Make the focus outline shrink-wrap the text content of the summary
     display: inline-block;
 
+    margin-top: govuk-spacing(3);
+
     margin-bottom: govuk-spacing(1);
+  }
+
+  .govuk-details__summary-text {
+    @include govuk-typography-weight-bold;
+    @include govuk-responsive-margin(4, "bottom");
+    padding-left: govuk-spacing(4);
+
+    > :first-child {
+      margin-top: 0;
+    }
+
+    > :only-child,
+    > :last-child {
+      margin-bottom: 0;
+    }
   }
 
   .govuk-details__text {
     padding-top: govuk-spacing(3);
     padding-bottom: govuk-spacing(3);
     padding-left: govuk-spacing(4);
-    border-left: $govuk-border-width solid $govuk-border-colour;
   }
 
   .govuk-details__text p {
@@ -30,16 +48,27 @@
     margin-bottom: 0;
   }
 
-  // Fix for older browsers which:
+  // We wrap styles for newer browsers in a feature query, which is ignored by
+  // older browsers, which always expand the details element.
+  //
+  // Additionally, -ms-ime-align is only supported by Edge 12 - 18
+  //
+  // This ensures we don't use these styles in browsers which:
   //   - support ES6 modules but not the <details> element (Edge 16 - 18)
   //   - do not support ES6 modules or the <details> element (eg, IE8+)
-  // -ms-ime-align is only supported by Edge 12 - 18
-  // Older browsers ignore the entire feature query and use the styles above
   @supports not (-ms-ime-align: auto) {
+    // Override default border
+    .govuk-details {
+      border-left: none;
+    }
+
     .govuk-details__summary {
 
       // Absolutely position the marker against this element
       position: relative;
+
+      // Override default top margin
+      margin-top: 0;
 
       // Allow for absolutely positioned marker and align with disclosed text
       padding-left: govuk-spacing(4) + $govuk-border-width;
@@ -59,6 +88,12 @@
     // ...but only underline the text, not the arrow
     .govuk-details__summary-text {
       @include govuk-link-decoration;
+      // Override default font weight
+      @include govuk-typography-weight-regular;
+      // Override default margin
+      margin-bottom: 0;
+      // Override default padding
+      padding-left: 0;
     }
 
     .govuk-details__summary:hover .govuk-details__summary-text {
@@ -92,6 +127,10 @@
       .govuk-details[open] > & {
         @include govuk-shape-arrow($direction: down, $base: 14px);
       }
+    }
+
+    .govuk-details__text {
+      border-left: $govuk-border-width solid $govuk-border-colour;
     }
   }
 }
