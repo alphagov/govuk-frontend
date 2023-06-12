@@ -37,7 +37,7 @@ export class Accordion {
    * @param {AccordionConfig} [config] - Accordion config
    */
   constructor ($module, config) {
-    if (!($module instanceof HTMLElement)) {
+    if (!($module instanceof HTMLElement) || !document.body.classList.contains('govuk-frontend-supported')) {
       return this
     }
 

@@ -53,7 +53,7 @@ export class CharacterCount {
    * @param {CharacterCountConfig} [config] - Character count config
    */
   constructor ($module, config) {
-    if (!($module instanceof HTMLElement)) {
+    if (!($module instanceof HTMLElement) || !document.body.classList.contains('govuk-frontend-supported')) {
       return this
     }
 

@@ -22,6 +22,11 @@ import { Tabs } from './components/tabs/tabs.mjs'
 function initAll (config) {
   config = typeof config !== 'undefined' ? config : {}
 
+  // Skip initialisation when GOV.UK Frontend is not supported
+  if (!document.body.classList.contains('govuk-frontend-supported')) {
+    return
+  }
+
   // Allow the user to initialise GOV.UK Frontend in only certain sections of the page
   // Defaults to the entire document if nothing is set.
   const $scope = config.scope instanceof HTMLElement ? config.scope : document
