@@ -9,7 +9,8 @@ import pseudoclasses from 'postcss-pseudo-classes'
  */
 export default {
   plugins: [
-    autoprefixer(),
+    // Add vendor prefixes
+    autoprefixer({ env: 'stylesheets' }),
 
     // Add review app auto-generated 'companion' classes for each pseudo-class
     // For example ':hover' and ':focus' classes to simulate form label states
