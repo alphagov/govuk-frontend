@@ -230,6 +230,12 @@ If you need to maintain the existing behaviour, you can set the value to an empt
 
 This change was introduced in [pull request #3773: Omit the value attribute from select options with no value](https://github.com/alphagov/govuk-frontend/pull/3773).
 
+### Fixes
+
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#3791: Refactor mobile menu button label/text handling](https://github.com/alphagov/govuk-frontend/pull/3791)
+
 ## 4.6.0 (Feature release)
 
 ### New features
