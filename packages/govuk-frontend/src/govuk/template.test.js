@@ -161,7 +161,7 @@ describe('Template', () => {
       expect($('body > div:last-of-type').text()).toEqual('bodyEnd')
     })
 
-    describe('inline script that adds "js-enabled" class', () => {
+    describe('inline script that adds "js-enabled" and "govuk-frontend-supported" classes', () => {
       it('should match the hash published in docs', () => {
         const $ = renderTemplate()
         const script = $('body > script').first().html()
@@ -171,7 +171,7 @@ describe('Template', () => {
 
         // A change to the inline script would be a breaking change, and it would also require
         // updating the hash published in https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#if-your-javascript-isn-t-working-properly
-        expect(`sha256-${hash}`).toEqual('sha256-+6WnXIl4mbFTCARd8N3COQmT3bJJmo32N8q8ZSQAIcU=')
+        expect(`sha256-${hash}`).toEqual('sha256-GUQ5ad8JK5KmEWmROf3LZd9ge94daqNvd8xy9YS1iDw=')
       })
       it('should not have a nonce attribute by default', () => {
         const $ = renderTemplate()
