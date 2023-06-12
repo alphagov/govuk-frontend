@@ -15,34 +15,36 @@ component
 ```mjs
 /**
  * Component name
- *
- * @class
- * @param {Element} $module - HTML element to use for component
  */
-function Example ($module) {
-  if (!($module instanceof HTMLElement)) {
-    return this
+export class Example {
+  /**
+   * @param {Element} $module - HTML element to use for component
+   */
+  constructor ($module) {
+    $module = undefined
+
+    if (!($module instanceof HTMLElement)) {
+      return this
+    }
+
+    this.$module = $module
+
+    // Code goes here
   }
 
-  this.$module = $module
+  /**
+   * Initialise component
+   */
+  init () {
+    // Check that required elements are present
+    if (!this.$module) {
+      return
+    }
 
-  // Code goes here
-}
-
-/**
- * Initialise component
- */
-Example.prototype.init = function () {
-  // Check that required elements are present
-  if (!this.$module) {
-    return
+    // Code goes here
+    const $module = this.$module
   }
-
-  // Code goes here
-  const $module = this.$module
 }
-
-export default Example
 ```
 
 ## Use data attributes to initialise component JavaScript
@@ -85,35 +87,37 @@ Use `// FIXME:` to annotate problems.
 
 Use `// TODO:` to annotate solutions to problems.
 
-## Constructors and methods
+## Classes and methods
 
-Use the prototype design pattern to structure your code.
+Use the class design pattern to structure your code.
 
-Create a constructor and define any variables that the object needs.
+Create a class and define the methods you need.
 
 ```mjs
-function Example ($module) {
+class Example {
   // Code goes here
 }
 ```
 
-Assign methods to the prototype object. Do not overwrite the prototype with a new object as this makes inheritance impossible.
+Add methods to the class.
 
 ```mjs
+// Good
+class Example {
+  init () {
+    // Code goes here
+  }
+}
+
 // Bad
 Example.prototype = {
   init: function () {
     // Code goes here
   }
 }
-
-// Good
-Example.prototype.init = function () {
-  // Code goes here
-}
 ```
 
-When initialising an object, use the `new` keyword.
+When initialising a class, use the `new` keyword.
 
 ```mjs
 // Bad
