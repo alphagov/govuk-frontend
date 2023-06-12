@@ -20,7 +20,7 @@ export class ErrorSummary {
     // To avoid breaking further JavaScript initialisation
     // we need to safeguard against this so things keep
     // working the same now we read the elements data attributes
-    if (!($module instanceof HTMLElement)) {
+    if (!($module instanceof HTMLElement) || !document.body.classList.contains('govuk-frontend-supported')) {
       return this
     }
 

@@ -7,7 +7,7 @@ export class SkipLink {
    * @param {Element} $module - HTML element to use for skip link
    */
   constructor ($module) {
-    if (!($module instanceof HTMLAnchorElement)) {
+    if (!($module instanceof HTMLAnchorElement) || !document.body.classList.contains('govuk-frontend-supported')) {
       return this
     }
 
