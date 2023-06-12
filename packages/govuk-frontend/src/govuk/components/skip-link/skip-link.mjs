@@ -1,112 +1,113 @@
 /**
  * Skip link component
- *
- * @class
- * @param {Element} $module - HTML element to use for skip link
  */
-function SkipLink ($module) {
-  if (!($module instanceof HTMLAnchorElement)) {
-    return this
-  }
-
-  /** @deprecated Will be made private in v5.0 */
-  this.$module = $module
-
-  /** @deprecated Will be made private in v5.0 */
-  this.$linkedElement = null
-
-  /** @deprecated Will be made private in v5.0 */
-  this.linkedElementListener = false
-}
-
-/**
- * Initialise component
- */
-SkipLink.prototype.init = function () {
-  // Check that required elements are present
-  if (!this.$module) {
-    return
-  }
-
-  // Check for linked element
-  const $linkedElement = this.getLinkedElement()
-  if (!$linkedElement) {
-    return
-  }
-
-  this.$linkedElement = $linkedElement
-  this.$module.addEventListener('click', () => this.focusLinkedElement())
-}
-
-/**
- * Get linked element
- *
- * @deprecated Will be made private in v5.0
- * @returns {HTMLElement | null} $linkedElement - DOM element linked to from the skip link
- */
-SkipLink.prototype.getLinkedElement = function () {
-  const linkedElementId = this.getFragmentFromUrl()
-  if (!linkedElementId) {
-    return null
-  }
-
-  return document.getElementById(linkedElementId)
-}
-
-/**
- * Focus the linked element
- *
- * Set tabindex and helper CSS class. Set listener to remove them on blur.
- *
- * @deprecated Will be made private in v5.0
- */
-SkipLink.prototype.focusLinkedElement = function () {
-  const $linkedElement = this.$linkedElement
-
-  if (!$linkedElement.getAttribute('tabindex')) {
-    // Set the element tabindex to -1 so it can be focused with JavaScript.
-    $linkedElement.setAttribute('tabindex', '-1')
-    $linkedElement.classList.add('govuk-skip-link-focused-element')
-
-    // Add listener for blur on the focused element (unless the listener has previously been added)
-    if (!this.linkedElementListener) {
-      this.$linkedElement.addEventListener('blur', () => this.removeFocusProperties())
-      this.linkedElementListener = true
+export class SkipLink {
+  /**
+   *
+   * @param {Element} $module - HTML element to use for skip link
+   */
+  constructor ($module) {
+    if (!($module instanceof HTMLAnchorElement)) {
+      return this
     }
+
+    /** @private */
+    this.$module = $module
+
+    /** @private */
+    this.$linkedElement = null
+
+    /** @private */
+    this.linkedElementListener = false
   }
 
-  $linkedElement.focus()
-}
+  /**
+   * Initialise component
+   */
+  init () {
+    // Check that required elements are present
+    if (!this.$module) {
+      return
+    }
 
-/**
- * Remove the tabindex that makes the linked element focusable because the element only needs to be
- * focusable until it has received programmatic focus and a screen reader has announced it.
- *
- * Remove the CSS class that removes the native focus styles.
- *
- * @deprecated Will be made private in v5.0
- */
-SkipLink.prototype.removeFocusProperties = function () {
-  this.$linkedElement.removeAttribute('tabindex')
-  this.$linkedElement.classList.remove('govuk-skip-link-focused-element')
-}
+    // Check for linked element
+    const $linkedElement = this.getLinkedElement()
+    if (!$linkedElement) {
+      return
+    }
 
-/**
- * Get fragment from URL
- *
- * Extract the fragment (everything after the hash symbol) from a URL, but not including
- * the symbol.
- *
- * @deprecated Will be made private in v5.0
- * @returns {string | undefined} Fragment from URL, without the hash symbol
- */
-SkipLink.prototype.getFragmentFromUrl = function () {
-  // Bail if the anchor link doesn't have a hash
-  if (!this.$module.hash) {
-    return
+    this.$linkedElement = $linkedElement
+    this.$module.addEventListener('click', () => this.focusLinkedElement())
   }
 
-  return this.$module.hash.split('#').pop()
-}
+  /**
+   * Get linked element
+   *
+   * @private
+   * @returns {HTMLElement | null} $linkedElement - DOM element linked to from the skip link
+   */
+  getLinkedElement () {
+    const linkedElementId = this.getFragmentFromUrl()
+    if (!linkedElementId) {
+      return null
+    }
 
-export default SkipLink
+    return document.getElementById(linkedElementId)
+  }
+
+  /**
+   * Focus the linked element
+   *
+   * Set tabindex and helper CSS class. Set listener to remove them on blur.
+   *
+   * @private
+   */
+  focusLinkedElement () {
+    const $linkedElement = this.$linkedElement
+
+    if (!$linkedElement.getAttribute('tabindex')) {
+      // Set the element tabindex to -1 so it can be focused with JavaScript.
+      $linkedElement.setAttribute('tabindex', '-1')
+      $linkedElement.classList.add('govuk-skip-link-focused-element')
+
+      // Add listener for blur on the focused element (unless the listener has previously been added)
+      if (!this.linkedElementListener) {
+        this.$linkedElement.addEventListener('blur', () => this.removeFocusProperties())
+        this.linkedElementListener = true
+      }
+    }
+
+    $linkedElement.focus()
+  }
+
+  /**
+   * Remove the tabindex that makes the linked element focusable because the element only needs to be
+   * focusable until it has received programmatic focus and a screen reader has announced it.
+   *
+   * Remove the CSS class that removes the native focus styles.
+   *
+   * @private
+   */
+  removeFocusProperties () {
+    this.$linkedElement.removeAttribute('tabindex')
+    this.$linkedElement.classList.remove('govuk-skip-link-focused-element')
+  }
+
+  /**
+   * Get fragment from URL
+   *
+   * Extract the fragment (everything after the hash symbol) from a URL, but not including
+   * the symbol.
+   *
+   * @private
+   * @returns {string | undefined} Fragment from URL, without the hash symbol
+   */
+  getFragmentFromUrl () {
+    // Bail if the anchor link doesn't have a hash
+    if (!this.$module.hash) {
+      return
+    }
+
+    return this.$module.hash.split('#').pop()
+  }
+}

@@ -11,151 +11,152 @@ const KEY_SPACE = 32
 
 /**
  * Details component
- *
- * @class
- * @param {Element} $module - HTML element to use for details
  */
-function Details ($module) {
-  if (!($module instanceof HTMLElement)) {
-    return this
+export class Details {
+  /**
+   *
+   * @param {Element} $module - HTML element to use for details
+   */
+  constructor ($module) {
+    if (!($module instanceof HTMLElement)) {
+      return this
+    }
+
+    /** @private */
+    this.$module = $module
+
+    /** @private */
+    this.$summary = null
+
+    /** @private */
+    this.$content = null
   }
 
-  /** @deprecated Will be made private in v5.0 */
-  this.$module = $module
+  /**
+   * Initialise component
+   */
+  init () {
+    // Check that required elements are present
+    if (!this.$module) {
+      return
+    }
 
-  /** @deprecated Will be made private in v5.0 */
-  this.$summary = null
+    // If there is native details support, we want to avoid running code to polyfill native behaviour.
+    const hasNativeDetails = 'HTMLDetailsElement' in window &&
+      this.$module instanceof HTMLDetailsElement
 
-  /** @deprecated Will be made private in v5.0 */
-  this.$content = null
-}
-
-/**
- * Initialise component
- */
-Details.prototype.init = function () {
-  // Check that required elements are present
-  if (!this.$module) {
-    return
+    if (!hasNativeDetails) {
+      this.polyfillDetails()
+    }
   }
 
-  // If there is native details support, we want to avoid running code to polyfill native behaviour.
-  const hasNativeDetails = 'HTMLDetailsElement' in window &&
-    this.$module instanceof HTMLDetailsElement
+  /**
+   * Polyfill component in older browsers
+   *
+   * @private
+   */
+  polyfillDetails () {
+    const $module = this.$module
 
-  if (!hasNativeDetails) {
-    this.polyfillDetails()
-  }
-}
+    // Save shortcuts to the inner summary and content elements
+    const $summary = this.$summary = $module.getElementsByTagName('summary').item(0)
+    const $content = this.$content = $module.getElementsByTagName('div').item(0)
 
-/**
- * Polyfill component in older browsers
- *
- * @deprecated Will be made private in v5.0
- */
-Details.prototype.polyfillDetails = function () {
-  const $module = this.$module
+    // If <details> doesn't have a <summary> and a <div> representing the content
+    // it means the required HTML structure is not met so the script will stop
+    if (!$summary || !$content) {
+      return
+    }
 
-  // Save shortcuts to the inner summary and content elements
-  const $summary = this.$summary = $module.getElementsByTagName('summary').item(0)
-  const $content = this.$content = $module.getElementsByTagName('div').item(0)
+    // If the content doesn't have an ID, assign it one now
+    // which we'll need for the summary's aria-controls assignment
+    if (!$content.id) {
+      $content.id = `details-content-${generateUniqueID()}`
+    }
 
-  // If <details> doesn't have a <summary> and a <div> representing the content
-  // it means the required HTML structure is not met so the script will stop
-  if (!$summary || !$content) {
-    return
-  }
+    // Add ARIA role="group" to details
+    $module.setAttribute('role', 'group')
 
-  // If the content doesn't have an ID, assign it one now
-  // which we'll need for the summary's aria-controls assignment
-  if (!$content.id) {
-    $content.id = `details-content-${generateUniqueID()}`
-  }
+    // Add role=button to summary
+    $summary.setAttribute('role', 'button')
 
-  // Add ARIA role="group" to details
-  $module.setAttribute('role', 'group')
+    // Add aria-controls
+    $summary.setAttribute('aria-controls', $content.id)
 
-  // Add role=button to summary
-  $summary.setAttribute('role', 'button')
+    // Set tabIndex so the summary is keyboard accessible for non-native elements
+    //
+    // We have to use the camelcase `tabIndex` property as there is a bug in IE6/IE7 when we set the correct attribute lowercase:
+    // See http://web.archive.org/web/20170120194036/http://www.saliences.com/browserBugs/tabIndex.html for more information.
+    $summary.tabIndex = 0
 
-  // Add aria-controls
-  $summary.setAttribute('aria-controls', $content.id)
+    // Detect initial open state
+    if (this.$module.hasAttribute('open')) {
+      $summary.setAttribute('aria-expanded', 'true')
+    } else {
+      $summary.setAttribute('aria-expanded', 'false')
+      $content.style.display = 'none'
+    }
 
-  // Set tabIndex so the summary is keyboard accessible for non-native elements
-  //
-  // We have to use the camelcase `tabIndex` property as there is a bug in IE6/IE7 when we set the correct attribute lowercase:
-  // See http://web.archive.org/web/20170120194036/http://www.saliences.com/browserBugs/tabIndex.html for more information.
-  $summary.tabIndex = 0
-
-  // Detect initial open state
-  if (this.$module.hasAttribute('open')) {
-    $summary.setAttribute('aria-expanded', 'true')
-  } else {
-    $summary.setAttribute('aria-expanded', 'false')
-    $content.style.display = 'none'
+    // Bind an event to handle summary elements
+    this.polyfillHandleInputs(() => this.polyfillSetAttributes())
   }
 
-  // Bind an event to handle summary elements
-  this.polyfillHandleInputs(() => this.polyfillSetAttributes())
-}
+  /**
+   * Define a statechange function that updates aria-expanded and style.display
+   *
+   * @private
+   * @returns {boolean} Returns true
+   */
+  polyfillSetAttributes () {
+    if (this.$module.hasAttribute('open')) {
+      this.$module.removeAttribute('open')
+      this.$summary.setAttribute('aria-expanded', 'false')
+      this.$content.style.display = 'none'
+    } else {
+      this.$module.setAttribute('open', 'open')
+      this.$summary.setAttribute('aria-expanded', 'true')
+      this.$content.style.display = ''
+    }
 
-/**
- * Define a statechange function that updates aria-expanded and style.display
- *
- * @deprecated Will be made private in v5.0
- * @returns {boolean} Returns true
- */
-Details.prototype.polyfillSetAttributes = function () {
-  if (this.$module.hasAttribute('open')) {
-    this.$module.removeAttribute('open')
-    this.$summary.setAttribute('aria-expanded', 'false')
-    this.$content.style.display = 'none'
-  } else {
-    this.$module.setAttribute('open', 'open')
-    this.$summary.setAttribute('aria-expanded', 'true')
-    this.$content.style.display = ''
+    return true
   }
 
-  return true
-}
-
-/**
- * Handle cross-modal click events
- *
- * @deprecated Will be made private in v5.0
- * @param {(event: UIEvent) => void} callback - function
- */
-Details.prototype.polyfillHandleInputs = function (callback) {
-  this.$summary.addEventListener('keypress', (event) => {
-    const $target = event.target
-    // When the key gets pressed - check if it is enter or space
-    if (event.keyCode === KEY_ENTER || event.keyCode === KEY_SPACE) {
-      if ($target instanceof HTMLElement && $target.nodeName.toLowerCase() === 'summary') {
-        // Prevent space from scrolling the page
-        // and enter from submitting a form
-        event.preventDefault()
-        // Click to let the click event do all the necessary action
-        if ($target.click) {
-          $target.click()
-        } else {
-          // except Safari 5.1 and under don't support .click() here
-          callback(event)
+  /**
+   * Handle cross-modal click events
+   *
+   * @private
+   * @param {(event: UIEvent) => void} callback - function
+   */
+  polyfillHandleInputs (callback) {
+    this.$summary.addEventListener('keypress', (event) => {
+      const $target = event.target
+      // When the key gets pressed - check if it is enter or space
+      if (event.keyCode === KEY_ENTER || event.keyCode === KEY_SPACE) {
+        if ($target instanceof HTMLElement && $target.nodeName.toLowerCase() === 'summary') {
+          // Prevent space from scrolling the page
+          // and enter from submitting a form
+          event.preventDefault()
+          // Click to let the click event do all the necessary action
+          if ($target.click) {
+            $target.click()
+          } else {
+            // except Safari 5.1 and under don't support .click() here
+            callback(event)
+          }
         }
       }
-    }
-  })
+    })
 
-  // Prevent keyup to prevent clicking twice in Firefox when using space key
-  this.$summary.addEventListener('keyup', (event) => {
-    const $target = event.target
-    if (event.keyCode === KEY_SPACE) {
-      if ($target instanceof HTMLElement && $target.nodeName.toLowerCase() === 'summary') {
-        event.preventDefault()
+    // Prevent keyup to prevent clicking twice in Firefox when using space key
+    this.$summary.addEventListener('keyup', (event) => {
+      const $target = event.target
+      if (event.keyCode === KEY_SPACE) {
+        if ($target instanceof HTMLElement && $target.nodeName.toLowerCase() === 'summary') {
+          event.preventDefault()
+        }
       }
-    }
-  })
+    })
 
-  this.$summary.addEventListener('click', callback)
+    this.$summary.addEventListener('click', callback)
+  }
 }
-
-export default Details

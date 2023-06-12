@@ -1,4 +1,4 @@
-import CharacterCount from './character-count.mjs'
+import { CharacterCount } from './character-count.mjs'
 
 describe('CharacterCount', () => {
   let $container
@@ -55,8 +55,11 @@ describe('CharacterCount', () => {
             i18n: { charactersUnderLimit: { one: 'Custom text. Count: %{count}' } }
           })
 
+          // @ts-expect-error Property 'formatCountMessage' is private
           expect(component.formatCountMessage(1, 'characters')).toEqual('Custom text. Count: 1')
+
           // Other keys remain untouched
+          // @ts-expect-error Property 'formatCountMessage' is private
           expect(component.formatCountMessage(10, 'characters')).toEqual('You have 10 characters remaining')
         })
 
@@ -69,7 +72,10 @@ describe('CharacterCount', () => {
             }
           })
 
+          // @ts-expect-error Property 'formatCountMessage' is private
           expect(component.formatCountMessage(0, 'characters')).toEqual('Custom text.')
+
+          // @ts-expect-error Property 'formatCountMessage' is private
           expect(component.formatCountMessage(0, 'words')).toEqual('Different custom text.')
         })
       })
@@ -81,6 +87,7 @@ describe('CharacterCount', () => {
 
           const component = new CharacterCount($div)
 
+          // @ts-expect-error Property 'formatCountMessage' is private
           expect(component.formatCountMessage(10000, 'words')).toEqual('You have 10.000 words remaining')
         })
 
@@ -93,6 +100,7 @@ describe('CharacterCount', () => {
 
           const component = new CharacterCount($div)
 
+          // @ts-expect-error Property 'formatCountMessage' is private
           expect(component.formatCountMessage(10000, 'words')).toEqual('You have 10.000 words remaining')
         })
       })
@@ -104,8 +112,11 @@ describe('CharacterCount', () => {
 
           const component = new CharacterCount($div)
 
+          // @ts-expect-error Property 'formatCountMessage' is private
           expect(component.formatCountMessage(1, 'characters')).toEqual('Custom text. Count: 1')
+
           // Other keys remain untouched
+          // @ts-expect-error Property 'formatCountMessage' is private
           expect(component.formatCountMessage(10, 'characters')).toEqual('You have 10 characters remaining')
         })
 
@@ -121,9 +132,15 @@ describe('CharacterCount', () => {
                 }
               }
             })
+
+            // @ts-expect-error Property 'formatCountMessage' is private
             expect(component.formatCountMessage(1, 'characters')).toEqual('Custom text. Count: 1')
+
             // Other keys remain untouched
+            // @ts-expect-error Property 'formatCountMessage' is private
             expect(component.formatCountMessage(-10, 'characters')).toEqual('You have 10 characters too many')
+
+            // @ts-expect-error Property 'formatCountMessage' is private
             expect(component.formatCountMessage(0, 'characters')).toEqual('You have 0 characters remaining')
           })
         })

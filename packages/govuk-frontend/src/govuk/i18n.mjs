@@ -2,244 +2,246 @@
  * Internal support for selecting messages to render, with placeholder
  * interpolation and locale-aware number formatting and pluralisation
  *
- * @class
  * @private
- * @param {{ [key: string]: unknown }} translations - Key-value pairs of the translation strings to use.
- * @param {object} [config] - Configuration options for the function.
- * @param {string} [config.locale] - An overriding locale for the PluralRules functionality.
  */
-export function I18n (translations, config) {
-  // Make list of translations available throughout function
-  this.translations = translations || {}
+export class I18n {
+  /**
+   * @param {{ [key: string]: unknown }} translations - Key-value pairs of the translation strings to use.
+   * @param {object} [config] - Configuration options for the function.
+   * @param {string} [config.locale] - An overriding locale for the PluralRules functionality.
+   */
+  constructor (translations, config) {
+    // Make list of translations available throughout function
+    this.translations = translations || {}
 
-  // The locale to use for PluralRules and NumberFormat
-  this.locale = (config && config.locale) || document.documentElement.lang || 'en'
-}
-
-/**
- * The most used function - takes the key for a given piece of UI text and
- * returns the appropriate string.
- *
- * @param {string} lookupKey - The lookup key of the string to use.
- * @param {{ [key: string]: unknown }} [options] - Any options passed with the translation string, e.g: for string interpolation.
- * @returns {string} The appropriate translation string.
- * @throws {Error} Lookup key required
- * @throws {Error} Options required for `${}` placeholders
- */
-I18n.prototype.t = function (lookupKey, options) {
-  if (!lookupKey) {
-    // Print a console error if no lookup key has been provided
-    throw new Error('i18n: lookup key missing')
+    // The locale to use for PluralRules and NumberFormat
+    this.locale = (config && config.locale) || document.documentElement.lang || 'en'
   }
 
-  // If the `count` option is set, determine which plural suffix is needed and
-  // change the lookupKey to match. We check to see if it's numeric instead of
-  // falsy, as this could legitimately be 0.
-  if (options && typeof options.count === 'number') {
-    // Get the plural suffix
-    lookupKey = `${lookupKey}.${this.getPluralSuffix(lookupKey, options.count)}`
-  }
-
-  // Fetch the translation string for that lookup key
-  const translationString = this.translations[lookupKey]
-
-  if (typeof translationString === 'string') {
-    // Check for ${} placeholders in the translation string
-    if (translationString.match(/%{(.\S+)}/)) {
-      if (!options) {
-        throw new Error('i18n: cannot replace placeholders in string if no option data provided')
-      }
-
-      return this.replacePlaceholders(translationString, options)
-    } else {
-      return translationString
+  /**
+   * The most used function - takes the key for a given piece of UI text and
+   * returns the appropriate string.
+   *
+   * @param {string} lookupKey - The lookup key of the string to use.
+   * @param {{ [key: string]: unknown }} [options] - Any options passed with the translation string, e.g: for string interpolation.
+   * @returns {string} The appropriate translation string.
+   * @throws {Error} Lookup key required
+   * @throws {Error} Options required for `${}` placeholders
+   */
+  t (lookupKey, options) {
+    if (!lookupKey) {
+      // Print a console error if no lookup key has been provided
+      throw new Error('i18n: lookup key missing')
     }
-  } else {
-    // If the key wasn't found in our translations object,
-    // return the lookup key itself as the fallback
-    return lookupKey
-  }
-}
 
-/**
- * Takes a translation string with placeholders, and replaces the placeholders
- * with the provided data
- *
- * @param {string} translationString - The translation string
- * @param {{ [key: string]: unknown }} options - Any options passed with the translation string, e.g: for string interpolation.
- * @returns {string} The translation string to output, with $\{\} placeholders replaced
- */
-I18n.prototype.replacePlaceholders = function (translationString, options) {
-  /** @type {Intl.NumberFormat | undefined} */
-  let formatter
+    // If the `count` option is set, determine which plural suffix is needed and
+    // change the lookupKey to match. We check to see if it's numeric instead of
+    // falsy, as this could legitimately be 0.
+    if (options && typeof options.count === 'number') {
+      // Get the plural suffix
+      lookupKey = `${lookupKey}.${this.getPluralSuffix(lookupKey, options.count)}`
+    }
 
-  if (this.hasIntlNumberFormatSupport()) {
-    formatter = new Intl.NumberFormat(this.locale)
-  }
+    // Fetch the translation string for that lookup key
+    const translationString = this.translations[lookupKey]
 
-  return translationString.replace(
-    /%{(.\S+)}/g,
-
-    /**
-     * Replace translation string placeholders
-     *
-     * @param {string} placeholderWithBraces - Placeholder with braces
-     * @param {string} placeholderKey - Placeholder key
-     * @returns {string} Placeholder value
-     */
-    function (placeholderWithBraces, placeholderKey) {
-      if (Object.prototype.hasOwnProperty.call(options, placeholderKey)) {
-        const placeholderValue = options[placeholderKey]
-
-        // If a user has passed `false` as the value for the placeholder
-        // treat it as though the value should not be displayed
-        if (placeholderValue === false || (
-          typeof placeholderValue !== 'number' &&
-          typeof placeholderValue !== 'string')
-        ) {
-          return ''
+    if (typeof translationString === 'string') {
+      // Check for ${} placeholders in the translation string
+      if (translationString.match(/%{(.\S+)}/)) {
+        if (!options) {
+          throw new Error('i18n: cannot replace placeholders in string if no option data provided')
         }
 
-        // If the placeholder's value is a number, localise the number formatting
-        if (typeof placeholderValue === 'number') {
-          return formatter ? formatter.format(placeholderValue) : `${placeholderValue}`
-        }
-
-        return placeholderValue
+        return this.replacePlaceholders(translationString, options)
       } else {
-        throw new Error(`i18n: no data found to replace ${placeholderWithBraces} placeholder in string`)
+        return translationString
       }
-    })
-}
-
-/**
- * Check to see if the browser supports Intl and Intl.PluralRules.
- *
- * It requires all conditions to be met in order to be supported:
- * - The browser supports the Intl class (true in IE11)
- * - The implementation of Intl supports PluralRules (NOT true in IE11)
- * - The browser/OS has plural rules for the current locale (browser dependent)
- *
- * @returns {boolean} Returns true if all conditions are met. Returns false otherwise.
- */
-I18n.prototype.hasIntlPluralRulesSupport = function () {
-  return Boolean(window.Intl && ('PluralRules' in window.Intl && Intl.PluralRules.supportedLocalesOf(this.locale).length))
-}
-
-/**
- * Check to see if the browser supports Intl and Intl.NumberFormat.
- *
- * It requires all conditions to be met in order to be supported:
- * - The browser supports the Intl class (true in IE11)
- * - The implementation of Intl supports NumberFormat (also true in IE11)
- * - The browser/OS has number formatting rules for the current locale (browser dependent)
- *
- * @returns {boolean} Returns true if all conditions are met. Returns false otherwise.
- */
-I18n.prototype.hasIntlNumberFormatSupport = function () {
-  return Boolean(window.Intl && ('NumberFormat' in window.Intl && Intl.NumberFormat.supportedLocalesOf(this.locale).length))
-}
-
-/**
- * Get the appropriate suffix for the plural form.
- *
- * Uses Intl.PluralRules (or our own fallback implementation) to get the
- * 'preferred' form to use for the given count.
- *
- * Checks that a translation has been provided for that plural form – if it
- * hasn't, it'll fall back to the 'other' plural form (unless that doesn't exist
- * either, in which case an error will be thrown)
- *
- * @param {string} lookupKey - The lookup key of the string to use.
- * @param {number} count - Number used to determine which pluralisation to use.
- * @returns {PluralRule} The suffix associated with the correct pluralisation for this locale.
- * @throws {Error} Plural form `.other` required when preferred plural form is missing
- */
-I18n.prototype.getPluralSuffix = function (lookupKey, count) {
-  // Validate that the number is actually a number.
-  //
-  // Number(count) will turn anything that can't be converted to a Number type
-  // into 'NaN'. isFinite filters out NaN, as it isn't a finite number.
-  count = Number(count)
-  if (!isFinite(count)) { return 'other' }
-
-  let preferredForm
-
-  // Check to verify that all the requirements for Intl.PluralRules are met.
-  // If so, we can use that instead of our custom implementation. Otherwise,
-  // use the hardcoded fallback.
-  if (this.hasIntlPluralRulesSupport()) {
-    preferredForm = new Intl.PluralRules(this.locale).select(count)
-  } else {
-    preferredForm = this.selectPluralFormUsingFallbackRules(count)
+    } else {
+      // If the key wasn't found in our translations object,
+      // return the lookup key itself as the fallback
+      return lookupKey
+    }
   }
 
-  // Use the correct plural form if provided
-  if (`${lookupKey}.${preferredForm}` in this.translations) {
-    return preferredForm
-  // Fall back to `other` if the plural form is missing, but log a warning
-  // to the console
-  } else if (`${lookupKey}.other` in this.translations) {
-    if (console && 'warn' in console) {
-      console.warn(`i18n: Missing plural form ".${preferredForm}" for "${
-        this.locale}" locale. Falling back to ".other".`)
+  /**
+   * Takes a translation string with placeholders, and replaces the placeholders
+   * with the provided data
+   *
+   * @param {string} translationString - The translation string
+   * @param {{ [key: string]: unknown }} options - Any options passed with the translation string, e.g: for string interpolation.
+   * @returns {string} The translation string to output, with $\{\} placeholders replaced
+   */
+  replacePlaceholders (translationString, options) {
+    /** @type {Intl.NumberFormat | undefined} */
+    let formatter
+
+    if (this.hasIntlNumberFormatSupport()) {
+      formatter = new Intl.NumberFormat(this.locale)
+    }
+
+    return translationString.replace(
+      /%{(.\S+)}/g,
+
+      /**
+       * Replace translation string placeholders
+       *
+       * @param {string} placeholderWithBraces - Placeholder with braces
+       * @param {string} placeholderKey - Placeholder key
+       * @returns {string} Placeholder value
+       */
+      function (placeholderWithBraces, placeholderKey) {
+        if (Object.prototype.hasOwnProperty.call(options, placeholderKey)) {
+          const placeholderValue = options[placeholderKey]
+
+          // If a user has passed `false` as the value for the placeholder
+          // treat it as though the value should not be displayed
+          if (placeholderValue === false || (
+            typeof placeholderValue !== 'number' &&
+            typeof placeholderValue !== 'string')
+          ) {
+            return ''
+          }
+
+          // If the placeholder's value is a number, localise the number formatting
+          if (typeof placeholderValue === 'number') {
+            return formatter ? formatter.format(placeholderValue) : `${placeholderValue}`
+          }
+
+          return placeholderValue
+        } else {
+          throw new Error(`i18n: no data found to replace ${placeholderWithBraces} placeholder in string`)
+        }
+      })
+  }
+
+  /**
+   * Check to see if the browser supports Intl and Intl.PluralRules.
+   *
+   * It requires all conditions to be met in order to be supported:
+   * - The browser supports the Intl class (true in IE11)
+   * - The implementation of Intl supports PluralRules (NOT true in IE11)
+   * - The browser/OS has plural rules for the current locale (browser dependent)
+   *
+   * @returns {boolean} Returns true if all conditions are met. Returns false otherwise.
+   */
+  hasIntlPluralRulesSupport () {
+    return Boolean(window.Intl && ('PluralRules' in window.Intl && Intl.PluralRules.supportedLocalesOf(this.locale).length))
+  }
+
+  /**
+   * Check to see if the browser supports Intl and Intl.NumberFormat.
+   *
+   * It requires all conditions to be met in order to be supported:
+   * - The browser supports the Intl class (true in IE11)
+   * - The implementation of Intl supports NumberFormat (also true in IE11)
+   * - The browser/OS has number formatting rules for the current locale (browser dependent)
+   *
+   * @returns {boolean} Returns true if all conditions are met. Returns false otherwise.
+   */
+  hasIntlNumberFormatSupport () {
+    return Boolean(window.Intl && ('NumberFormat' in window.Intl && Intl.NumberFormat.supportedLocalesOf(this.locale).length))
+  }
+
+  /**
+   * Get the appropriate suffix for the plural form.
+   *
+   * Uses Intl.PluralRules (or our own fallback implementation) to get the
+   * 'preferred' form to use for the given count.
+   *
+   * Checks that a translation has been provided for that plural form – if it
+   * hasn't, it'll fall back to the 'other' plural form (unless that doesn't exist
+   * either, in which case an error will be thrown)
+   *
+   * @param {string} lookupKey - The lookup key of the string to use.
+   * @param {number} count - Number used to determine which pluralisation to use.
+   * @returns {PluralRule} The suffix associated with the correct pluralisation for this locale.
+   * @throws {Error} Plural form `.other` required when preferred plural form is missing
+   */
+  getPluralSuffix (lookupKey, count) {
+    // Validate that the number is actually a number.
+    //
+    // Number(count) will turn anything that can't be converted to a Number type
+    // into 'NaN'. isFinite filters out NaN, as it isn't a finite number.
+    count = Number(count)
+    if (!isFinite(count)) { return 'other' }
+
+    let preferredForm
+
+    // Check to verify that all the requirements for Intl.PluralRules are met.
+    // If so, we can use that instead of our custom implementation. Otherwise,
+    // use the hardcoded fallback.
+    if (this.hasIntlPluralRulesSupport()) {
+      preferredForm = new Intl.PluralRules(this.locale).select(count)
+    } else {
+      preferredForm = this.selectPluralFormUsingFallbackRules(count)
+    }
+
+    // Use the correct plural form if provided
+    if (`${lookupKey}.${preferredForm}` in this.translations) {
+      return preferredForm
+      // Fall back to `other` if the plural form is missing, but log a warning
+      // to the console
+    } else if (`${lookupKey}.other` in this.translations) {
+      if (console && 'warn' in console) {
+        console.warn(`i18n: Missing plural form ".${preferredForm}" for "${this.locale}" locale. Falling back to ".other".`)
+      }
+
+      return 'other'
+      // If the required `other` plural form is missing, all we can do is error
+    } else {
+      throw new Error(
+        `i18n: Plural form ".other" is required for "${this.locale}" locale`
+      )
+    }
+  }
+
+  /**
+   * Get the plural form using our fallback implementation
+   *
+   * This is split out into a separate function to make it easier to test the
+   * fallback behaviour in an environment where Intl.PluralRules exists.
+   *
+   * @param {number} count - Number used to determine which pluralisation to use.
+   * @returns {PluralRule} The pluralisation form for count in this locale.
+   */
+  selectPluralFormUsingFallbackRules (count) {
+    // Currently our custom code can only handle positive integers, so let's
+    // make sure our number is one of those.
+    count = Math.abs(Math.floor(count))
+
+    const ruleset = this.getPluralRulesForLocale()
+
+    if (ruleset) {
+      return I18n.pluralRules[ruleset](count)
     }
 
     return 'other'
-  // If the required `other` plural form is missing, all we can do is error
-  } else {
-    throw new Error(
-      `i18n: Plural form ".other" is required for "${this.locale}" locale`
-    )
-  }
-}
-
-/**
- * Get the plural form using our fallback implementation
- *
- * This is split out into a separate function to make it easier to test the
- * fallback behaviour in an environment where Intl.PluralRules exists.
- *
- * @param {number} count - Number used to determine which pluralisation to use.
- * @returns {PluralRule} The pluralisation form for count in this locale.
- */
-I18n.prototype.selectPluralFormUsingFallbackRules = function (count) {
-  // Currently our custom code can only handle positive integers, so let's
-  // make sure our number is one of those.
-  count = Math.abs(Math.floor(count))
-
-  const ruleset = this.getPluralRulesForLocale()
-
-  if (ruleset) {
-    return I18n.pluralRules[ruleset](count)
   }
 
-  return 'other'
-}
+  /**
+   * Work out which pluralisation rules to use for the current locale
+   *
+   * The locale may include a regional indicator (such as en-GB), but we don't
+   * usually care about this part, as pluralisation rules are usually the same
+   * regardless of region. There are exceptions, however, (e.g. Portuguese) so
+   * this searches by both the full and shortened locale codes, just to be sure.
+   *
+   * @returns {string | undefined} The name of the pluralisation rule to use (a key for one
+   *   of the functions in this.pluralRules)
+   */
+  getPluralRulesForLocale () {
+    const locale = this.locale
+    const localeShort = locale.split('-')[0]
 
-/**
- * Work out which pluralisation rules to use for the current locale
- *
- * The locale may include a regional indicator (such as en-GB), but we don't
- * usually care about this part, as pluralisation rules are usually the same
- * regardless of region. There are exceptions, however, (e.g. Portuguese) so
- * this searches by both the full and shortened locale codes, just to be sure.
- *
- * @returns {string | undefined} The name of the pluralisation rule to use (a key for one
- *   of the functions in this.pluralRules)
- */
-I18n.prototype.getPluralRulesForLocale = function () {
-  const locale = this.locale
-  const localeShort = locale.split('-')[0]
-
-  // Look through the plural rules map to find which `pluralRule` is
-  // appropriate for our current `locale`.
-  for (const pluralRule in I18n.pluralRulesMap) {
-    if (Object.prototype.hasOwnProperty.call(I18n.pluralRulesMap, pluralRule)) {
-      const languages = I18n.pluralRulesMap[pluralRule]
-      for (let i = 0; i < languages.length; i++) {
-        if (languages[i] === locale || languages[i] === localeShort) {
-          return pluralRule
+    // Look through the plural rules map to find which `pluralRule` is
+    // appropriate for our current `locale`.
+    for (const pluralRule in I18n.pluralRulesMap) {
+      if (Object.prototype.hasOwnProperty.call(I18n.pluralRulesMap, pluralRule)) {
+        const languages = I18n.pluralRulesMap[pluralRule]
+        for (let i = 0; i < languages.length; i++) {
+          if (languages[i] === locale || languages[i] === localeShort) {
+            return pluralRule
+          }
         }
       }
     }
