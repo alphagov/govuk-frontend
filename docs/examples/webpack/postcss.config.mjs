@@ -5,6 +5,7 @@ import autoprefixer from 'autoprefixer'
  */
 export default {
   plugins: [
-    autoprefixer()
+    // Add vendor prefixes
+    autoprefixer({ env: 'stylesheets' })
   ]
 }
