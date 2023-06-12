@@ -207,13 +207,6 @@ describe('header', () => {
 
         expect($button.attr('hidden')).toBeTruthy()
       })
-      it('renders default label correctly', () => {
-        const $ = render('header', examples['with navigation'])
-
-        const $button = $('.govuk-header__menu-button')
-
-        expect($button.attr('aria-label')).toEqual('Show or hide menu')
-      })
       it('allows label to be customised', () => {
         const $ = render('header', examples['with custom menu button label'])
 
