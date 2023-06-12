@@ -18,7 +18,6 @@ module.exports = {
 
   // Ignore warnings about CharacterCountTranslations using I18n (@private)
   intentionallyNotExported: [
-    'I18n',
     'TranslationPluralForms'
   ]
 }
