@@ -8,6 +8,9 @@ describe('CharacterCount', () => {
     $container = document.createElement('div')
     $textarea = document.createElement('textarea')
 
+    // Component checks that GOV.UK Frontend is supported
+    document.body.classList.add('govuk-frontend-supported')
+
     // Component checks that required elements are present
     $textarea.classList.add('govuk-js-character-count')
     $container.appendChild($textarea)
