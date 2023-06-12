@@ -7,6 +7,10 @@ module.exports = {
     // Ignore CSS-in-JS (including dotfiles)
     '**/?(.)*.{cjs,js,mjs}',
 
+    // Legacy source symlinks
+    'src/govuk/**',
+    'src/govuk-prototype-kit/**',
+
     // Prevent CHANGELOG history changes
     'CHANGELOG.md'
   ],
