@@ -186,7 +186,7 @@
     padding-left: $conditional-padding-left;
     border-left: $conditional-border-width solid $govuk-border-colour;
 
-    .js-enabled &--hidden {
+    .govuk-frontend-supported &--hidden {
       display: none;
     }
 
