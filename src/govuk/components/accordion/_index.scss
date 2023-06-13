@@ -35,8 +35,8 @@
     margin-bottom: 0;
   }
 
-  // JavaScript enabled
-  .js-enabled {
+  // GOV.UK Frontend JavaScript enabled
+  .govuk-frontend-supported {
     .govuk-accordion {
       // Border at the bottom of the whole accordion
       border-bottom: $govuk-accordion-bottom-border-width solid $govuk-border-colour;
