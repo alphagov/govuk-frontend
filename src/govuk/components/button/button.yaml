@@ -145,11 +145,15 @@ examples:
       classes: govuk-button--warning
   - name: Inverse
     description: A button that appears on dark backgrounds
+    previewLayoutModifiers:
+      - inverse
     data:
       name: Inverse
       text: Inverse button
       classes: govuk-button--inverse
   - name: Inverse disabled
+    previewLayoutModifiers:
+      - inverse
     data:
       name: Inverse
       text: Inverse button disabled
@@ -157,6 +161,8 @@ examples:
       disabled: true
   - name: Inverse link
     description: A link button for actions that appear on dark backgrounds
+    previewLayoutModifiers:
+      - inverse
     data:
       name: Inverse
       text: Inverse button
@@ -164,6 +170,8 @@ examples:
       classes: govuk-button--inverse
   - name: Inverse start button
     description: A start button that appears on dark backgrounds
+    previewLayoutModifiers:
+      - inverse
     data:
       name: Inverse
       text: Inverse start button
