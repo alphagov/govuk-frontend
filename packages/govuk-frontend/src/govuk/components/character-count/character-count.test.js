@@ -1,23 +1,15 @@
 const { goToComponent, renderAndInitialise } = require('govuk-frontend-helpers/puppeteer')
 const { getExamples } = require('govuk-frontend-lib/files')
 
-const jestPuppeteerConfig = require('../../../../../../jest-puppeteer.config')
-
-// Detect when browser has been launched headless
-const { headless = 'new' } = jestPuppeteerConfig.launch
-
-// The longest possible time from a keyboard user ending input and the screen
-// reader counter being updated: handleFocus interval time + last input wait time
-// but raised to the nearest whole second when browser is not headless as timers
-// in background pages will be aligned, clamped or throttled
-const debouncedWaitTime = headless ? 1500 : 2000
-
-// When headless, keydown-to-keyup time appears to affect event throttling,
-// affecting `lastInputTimestamp` and screen reader status message updates
-const keyupWaitTime = headless ? 0 : 50
-
 describe('Character count', () => {
   let examples
+
+  const focusIntervalTime = 1000 // ms
+  const lastInputOffsetTime = 500 // ms
+
+  // The longest possible time from a keyboard user ending input and the screen
+  // reader counter being updated (+ 50ms to stay outside the total wait time)
+  const debouncedWaitTime = focusIntervalTime + lastInputOffsetTime + 50
 
   beforeAll(async () => {
     examples = await getExamples('character-count')
@@ -89,7 +81,7 @@ describe('Character count', () => {
         await goToComponent(page, 'character-count')
 
         await page.type('.govuk-js-character-count', 'A', {
-          delay: keyupWaitTime
+          delay: 50
         })
 
         const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
@@ -106,7 +98,7 @@ describe('Character count', () => {
         await goToComponent(page, 'character-count')
 
         await page.type('.govuk-js-character-count', 'A'.repeat(9), {
-          delay: keyupWaitTime
+          delay: 50
         })
 
         const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
@@ -124,7 +116,7 @@ describe('Character count', () => {
           await goToComponent(page, 'character-count')
 
           await page.type('.govuk-js-character-count', 'A'.repeat(11), {
-            delay: keyupWaitTime
+            delay: 50
           })
         })
 
@@ -141,7 +133,7 @@ describe('Character count', () => {
 
         it('uses the plural when the limit is exceeded by 2 or more', async () => {
           await page.type('.govuk-js-character-count', 'A', {
-            delay: keyupWaitTime
+            delay: 50
           })
 
           const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
@@ -212,7 +204,7 @@ describe('Character count', () => {
 
         it('becomes visible once the threshold is reached', async () => {
           await page.type('.govuk-js-character-count', 'A'.repeat(8), {
-            delay: keyupWaitTime
+            delay: 50
           })
 
           const visibility = await page.$eval('.govuk-character-count__status', el => window.getComputedStyle(el).visibility)
@@ -293,7 +285,7 @@ describe('Character count', () => {
         })
 
         await page.type('.govuk-js-character-count', 'Hello world', {
-          delay: keyupWaitTime
+          delay: 50
         })
 
         const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
@@ -312,7 +304,7 @@ describe('Character count', () => {
         })
 
         await page.type('.govuk-js-character-count', 'Hello '.repeat(9), {
-          delay: keyupWaitTime
+          delay: 50
         })
 
         const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
@@ -332,7 +324,7 @@ describe('Character count', () => {
           })
 
           await page.type('.govuk-js-character-count', 'Hello '.repeat(11), {
-            delay: keyupWaitTime
+            delay: 50
           })
         })
 
@@ -349,7 +341,7 @@ describe('Character count', () => {
 
         it('uses the plural when the limit is exceeded by 2 or more', async () => {
           await page.type('.govuk-js-character-count', 'World', {
-            delay: keyupWaitTime
+            delay: 50
           })
 
           const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
@@ -385,7 +377,7 @@ describe('Character count', () => {
           })
 
           await page.type('.govuk-js-character-count', 'A'.repeat(11), {
-            delay: keyupWaitTime
+            delay: 50
           })
 
           const message = await page.$eval(
@@ -404,7 +396,7 @@ describe('Character count', () => {
           })
 
           await page.type('.govuk-js-character-count', 'Hello '.repeat(11), {
-            delay: keyupWaitTime
+            delay: 50
           })
 
           const message = await page.$eval(
@@ -424,7 +416,7 @@ describe('Character count', () => {
           })
 
           await page.type('.govuk-js-character-count', 'A'.repeat(8), {
-            delay: keyupWaitTime
+            delay: 50
           })
 
           const visibility = await page.$eval('.govuk-character-count__status', el => window.getComputedStyle(el).visibility)
@@ -468,7 +460,7 @@ describe('Character count', () => {
           })
 
           await page.type('.govuk-js-character-count', 'A'.repeat(11), {
-            delay: keyupWaitTime
+            delay: 50
           })
 
           const message = await page.$eval(
@@ -487,7 +479,7 @@ describe('Character count', () => {
           })
 
           await page.type('.govuk-js-character-count', 'Hello '.repeat(11), {
-            delay: keyupWaitTime
+            delay: 50
           })
 
           const message = await page.$eval(
@@ -507,7 +499,7 @@ describe('Character count', () => {
           })
 
           await page.type('.govuk-js-character-count', 'A'.repeat(8), {
-            delay: keyupWaitTime
+            delay: 50
           })
 
           const visibility = await page.$eval(
@@ -528,7 +520,7 @@ describe('Character count', () => {
           })
 
           await page.type('.govuk-js-character-count', 'A'.repeat(11), {
-            delay: keyupWaitTime
+            delay: 50
           })
 
           const message = await page.$eval(
@@ -547,7 +539,7 @@ describe('Character count', () => {
           })
 
           await page.type('.govuk-js-character-count', 'A'.repeat(11), {
-            delay: keyupWaitTime
+            delay: 50
           })
 
           const message = await page.$eval(
@@ -566,7 +558,7 @@ describe('Character count', () => {
           })
 
           await page.type('.govuk-js-character-count', 'Hello '.repeat(11), {
-            delay: keyupWaitTime
+            delay: 50
           })
 
           const message = await page.$eval(
@@ -585,7 +577,7 @@ describe('Character count', () => {
           })
 
           await page.type('.govuk-js-character-count', 'Hello '.repeat(11), {
-            delay: keyupWaitTime
+            delay: 50
           })
 
           const message = await page.$eval(
@@ -673,7 +665,7 @@ describe('Character count', () => {
       // Type 10 characters so we go 'through' all the different forms as we
       // approach 0 characters remaining.
       await page.type('.govuk-js-character-count', 'A'.repeat(10), {
-        delay: keyupWaitTime
+        delay: 50
       })
 
       // Expect the page error event not to have been fired
