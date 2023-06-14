@@ -29,6 +29,8 @@ examples:
       href: '#'
       text: Back to home
   - name: with inverted colours
+    previewLayoutModifiers:
+      - inverse
     data:
       classes: govuk-back-link--inverse
       href: '#'
