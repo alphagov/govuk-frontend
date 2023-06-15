@@ -4,6 +4,7 @@
   "version": "4.6.0",
   "main": "dist/govuk/all.js",
   "module": "dist/govuk-esm/all.mjs",
+  "sass": "dist/govuk/all.scss",
   "files": [
     "dist",
     "govuk-prototype-kit.config.json",
@@ -21,7 +22,6 @@
   "sideEffects": [
     "**/vendor/**"
   ],
-  "sass": "dist/govuk/all.scss",
   "engines": {
     "node": ">= 4.2.0"
   },
