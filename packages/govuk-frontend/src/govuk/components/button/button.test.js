@@ -1,5 +1,5 @@
 const { goTo, goToComponent, renderAndInitialise } = require('govuk-frontend-helpers/puppeteer')
-const { getExamples } = require('govuk-frontend-lib/files')
+const { getExamples } = require('govuk-frontend-lib/components')
 
 describe('/components/button', () => {
   let examples

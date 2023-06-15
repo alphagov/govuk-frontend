@@ -1,5 +1,6 @@
 import express from 'express'
-import { getComponentsData, getComponentNames, filterPath } from 'govuk-frontend-lib/files'
+import { getComponentsData, getComponentNames } from 'govuk-frontend-lib/components'
+import { filterPath } from 'govuk-frontend-lib/files'
 import { componentNameToMacroName } from 'govuk-frontend-lib/names'
 import { getStats, modulePaths } from 'govuk-frontend-stats'
 import { outdent } from 'outdent'

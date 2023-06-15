@@ -1,4 +1,4 @@
-const files = require('./files')
+const files = require('./components')
 const names = require('./names')
 
 /**

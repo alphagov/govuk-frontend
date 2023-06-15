@@ -1,5 +1,5 @@
 import { axe, goToComponent } from 'govuk-frontend-helpers/puppeteer'
-import { getExamples } from 'govuk-frontend-lib/files'
+import { getExamples } from 'govuk-frontend-lib/components'
 
 describe('/components/header', () => {
   describe('component examples', () => {

@@ -2,7 +2,8 @@ import percySnapshot from '@percy/puppeteer'
 import { waitForPercyIdle } from '@percy/sdk-utils'
 import { download } from 'govuk-frontend-helpers/jest/browser/download.mjs'
 import { goToComponent, goToExample } from 'govuk-frontend-helpers/puppeteer'
-import { filterPath, getComponentFiles, getComponentNames } from 'govuk-frontend-lib/files'
+import { getComponentFiles, getComponentNames } from 'govuk-frontend-lib/components'
+import { filterPath } from 'govuk-frontend-lib/files'
 import puppeteer from 'puppeteer'
 
 /**

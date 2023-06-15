@@ -3,7 +3,8 @@ import { join } from 'path'
 
 import { paths, pkg } from 'govuk-frontend-config'
 import { compileSassFile } from 'govuk-frontend-helpers/tests'
-import { filterPath, getComponentNames, getListing, mapPathTo } from 'govuk-frontend-lib/files'
+import { getComponentNames } from 'govuk-frontend-lib/components'
+import { filterPath, getListing, mapPathTo } from 'govuk-frontend-lib/files'
 import { componentNameToClassName, componentPathToModuleName } from 'govuk-frontend-lib/names'
 
 describe('packages/govuk-frontend/dist/', () => {

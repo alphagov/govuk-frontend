@@ -4,7 +4,7 @@ import { components, task } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
 
 /**
- * Component data and macro fixtures (for watch)
+ * Component fixtures and macro options (for watch)
  *
  * @type {import('govuk-frontend-tasks').TaskFunction}
  */
