@@ -131,10 +131,15 @@ export default async () => {
       {{ ${macroName}(${macroParameters}) }}
     `, {})
 
-    let bodyClasses = ''
+    let bodyClasses = 'app-template__body'
+
+    const layoutModifiers = exampleConfig.previewLayoutModifiers || []
+    for (const modifier of layoutModifiers) {
+      bodyClasses += ` app-template__body--${modifier}`
+    }
 
     if ('iframe' in req.query) {
-      bodyClasses = 'app-iframe-in-component-preview'
+      bodyClasses += ' app-template__body--component-preview'
     }
 
     res.render('component-preview', { bodyClasses, previewLayout })

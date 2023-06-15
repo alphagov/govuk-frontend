@@ -84,6 +84,8 @@ examples:
           href: '/education/special-educational-needs-and-disability-send-and-high-needs'
   - name: with inverted colours
     description: Breadcrumbs that appear on dark backgrounds
+    previewLayoutModifiers:
+      - inverse
     data:
       classes: govuk-breadcrumbs--inverse
       items:

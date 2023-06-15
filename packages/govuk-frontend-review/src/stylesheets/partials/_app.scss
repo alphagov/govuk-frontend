@@ -1,33 +1,43 @@
-.app-no-canvas-background {
+.app-template {
   background-color: $govuk-body-background-colour;
 }
 
-.app-width-container--wide {
-  @include govuk-width-container(1200px);
-}
-
 // Injected into the preview page, that is then put in an iframe
-.app-iframe-in-component-preview {
+.app-template__body--component-preview {
   margin: 15px 0;
 
   // Highlight the whitespace around a component, so you can see without having to
   // inspect it.
   .app-whitespace-highlight {
-    $app-preview-border-colour: #e4f2ff;
-
     @include govuk-clearfix;
 
     content: " ";
     display: table;
     width: 100%;
     clear: both;
-    box-shadow: 0 0 0 5px $app-preview-border-colour;
+    box-shadow: 0 0 0 5px mix(govuk-colour("blue"), govuk-colour("white"), 10%);
   }
 }
 
 // Removes the breakpoint sass-mq debug display
-.app-iframe-in-component-preview::before {
+.app-template__body--component-preview::before {
   display: none;
+}
+
+// Darken page background for previewing inversely coloured components
+.app-template__body--inverse {
+  color: govuk-colour("white");
+  background-color: govuk-colour("blue");
+}
+
+.app-template__body--component-preview.app-template__body--inverse {
+  .app-whitespace-highlight {
+    box-shadow: 0 0 0 5px mix(govuk-colour("white"), govuk-colour("blue"), 10%);
+  }
+}
+
+.app-width-container--wide {
+  @include govuk-width-container(1200px);
 }
 
 .app-\!-di {
