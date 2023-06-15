@@ -1,5 +1,4 @@
 import { readFile } from 'fs/promises'
-import { EOL } from 'os'
 import { join } from 'path'
 
 import { paths, pkg } from 'govuk-frontend-config'
@@ -43,7 +42,7 @@ describe('dist/', () => {
     })
 
     it('should contain source mapping URL', () => {
-      expect(stylesheet).toMatch(new RegExp(`/\\*# sourceMappingURL=${filename}.map \\*/${EOL}$`))
+      expect(stylesheet).toMatch(new RegExp(`/\\*# sourceMappingURL=${filename}.map \\*/\n$`))
     })
 
     it('should contain version number custom property', () => {
@@ -84,7 +83,7 @@ describe('dist/', () => {
     })
 
     it('should contain source mapping URL', () => {
-      expect(javascript).toMatch(new RegExp(`//# sourceMappingURL=${filename}.map${EOL}$`))
+      expect(javascript).toMatch(new RegExp(`//# sourceMappingURL=${filename}.map\n$`))
     })
   })
 
@@ -113,7 +112,7 @@ describe('dist/', () => {
     })
 
     it('should contain the correct version', () => {
-      expect(version).toEqual(`${pkg.version}${EOL}`)
+      expect(version).toEqual(`${pkg.version}\n`)
     })
   })
 })
