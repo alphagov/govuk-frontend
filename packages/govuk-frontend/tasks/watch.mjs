@@ -4,7 +4,7 @@ import { npm, task } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
 import slash from 'slash'
 
-import { scripts, styles, templates } from './index.mjs'
+import { fixtures, scripts, styles, templates } from './index.mjs'
 
 /**
  * Watch task
@@ -39,6 +39,15 @@ export const watch = (options) => gulp.parallel(
       npm.script('lint:js:cli', [slash(join(options.workspace, '**/*.{cjs,js,md,mjs}'))]),
       scripts(options)
     ))
+  ),
+
+  /**
+   * Component fixtures watcher
+   */
+  task.name('compile:fixtures watch', () =>
+    gulp.watch([
+      `${slash(options.srcPath)}/govuk/components/*/*.yaml`
+    ], fixtures(options))
   ),
 
   /**
