@@ -9,13 +9,14 @@
 
   // Fix for Firefox < 53
   // https://bugzilla.mozilla.org/show_bug.cgi?id=504622
+  // stylelint-disable selector-type-no-unknown -- Ignore unknown 'x:-moz-any-link'
   @supports not (caret-color: auto) {
     .govuk-fieldset,
     x:-moz-any-link {
-      // stylelint-disable-line selector-type-no-unknown
       display: table-cell;
     }
   }
+  // stylelint-enable selector-type-no-unknown
 
   .govuk-fieldset__legend {
     @include govuk-font($size: 19);
