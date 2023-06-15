@@ -16,6 +16,7 @@
     "glob": "^10.3.0",
     "govuk-frontend-config": "*",
     "js-yaml": "^4.1.0",
-    "minimatch": "^9.0.2"
+    "minimatch": "^9.0.2",
+    "slash": "^3.0.0"
   }
 }
