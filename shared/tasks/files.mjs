@@ -1,5 +1,4 @@
 import { mkdir, writeFile } from 'fs/promises'
-import { EOL } from 'os'
 import { dirname, join, parse } from 'path'
 
 import cpy from 'cpy'
@@ -50,7 +49,7 @@ export async function write (assetPath, { destPath, filePath, fileContents }) {
   }
 
   await mkdir(dirname(assetDestPath), { recursive: true })
-  await writeFile(assetDestPath, `${await fileContents()}${EOL}`)
+  await writeFile(assetDestPath, `${await fileContents()}\n`)
 }
 
 /**
