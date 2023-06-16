@@ -34,7 +34,8 @@ jobs:
       - name: Cache browser download
         uses: actions/cache@v3
         with:
-          key: puppeteer-cache-${{ runner.os }}
+          enableCrossOsArchive: true
+          key: puppeteer-${{ runner.os }}
           path: .cache/puppeteer
 
       - name: Build
