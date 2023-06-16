@@ -1,7 +1,10 @@
 import { basename, dirname, join } from 'path'
+import { inspect } from 'util'
 
 import { getListing, getYaml } from 'govuk-frontend-lib/files'
 import nunjucks from 'nunjucks'
+import { outdent } from 'outdent'
+import { format } from 'prettier'
 
 import { files } from './index.mjs'
 
@@ -131,6 +134,113 @@ async function generateMacroOption (componentDataPath, options) {
   if (!json?.params) {
     throw new Error(`${componentDataPath} is missing "params"`)
   }
+
+  // Generate component options/data.mjs
+  await files.write(componentDataPath, {
+    destPath: options.srcPath,
+
+    filePath ({ dir }) {
+      return join(dir, 'options', 'data.mjs')
+    },
+
+    async fileContents () {
+      const accessibilityCriteria = (json.accessibilityCriteria ?? '')
+        .replaceAll('`', '\\`')
+        .replaceAll('\n', '\n    ')
+        .trim()
+
+      return format(outdent`
+        ${json.accessibilityCriteria ? "import { outdent } from 'outdent'" : ''}
+
+        import { examples } from './examples.mjs'
+        import { params } from './params.mjs'
+
+        /**
+         * Component data
+         *
+         * @type {import("govuk-frontend-lib/components").ComponentData}
+         */
+        export default {
+          params,
+          examples,
+          ${json.previewLayout ? `previewLayout: '${json.previewLayout}',` : ''}
+          ${json.accessibilityCriteria ? `accessibilityCriteria: outdent\`\n    ${accessibilityCriteria}\n  \`` : ''}
+        }
+      `, {
+        parser: 'espree',
+        semi: false,
+        singleQuote: true,
+        trailingComma: 'none'
+      }).trim()
+    }
+  })
+
+  // Generate component options/examples.mjs
+  await files.write(componentDataPath, {
+    destPath: options.srcPath,
+
+    filePath ({ dir }) {
+      return join(dir, 'options', 'examples.mjs')
+    },
+
+    async fileContents () {
+      const inspectOptions = {
+        compact: false,
+        depth: Infinity,
+        maxArrayLength: Infinity,
+        maxStringLength: Infinity
+      }
+
+      return format(outdent`
+        /**
+         * Examples of Nunjucks macro options (or params)
+         *
+         * @type {import("govuk-frontend-lib/components").ComponentExample[]}
+         */
+        export const examples = ${inspect(json.examples, inspectOptions)}
+      `, {
+        parser: 'espree',
+        semi: false,
+        singleQuote: true,
+        trailingComma: 'none'
+      }).trim()
+    }
+  })
+
+  // Generate component options/params.mjs
+  await files.write(componentDataPath, {
+    destPath: options.srcPath,
+
+    filePath ({ dir }) {
+      return join(dir, 'options', 'params.mjs')
+    },
+
+    async fileContents () {
+      const inspectOptions = {
+        compact: false,
+        depth: Infinity,
+        maxArrayLength: Infinity,
+        maxStringLength: Infinity
+      }
+
+      return format(outdent`
+        /**
+         * Nunjucks macro options (or params)
+         *
+         * @type {import("govuk-frontend-lib/components").ComponentOption[]}
+         */
+        export const params = ${inspect(json.params, inspectOptions)}
+      `, {
+        parser: 'espree',
+        semi: false,
+        singleQuote: true,
+        trailingComma: 'none'
+      }).trim()
+    }
+  })
+
+  // Delete YAML
+  await files.clean(componentDataPath, { destPath: options.srcPath })
 
   return json.params
 }
