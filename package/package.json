@@ -4,6 +4,7 @@
   "version": "4.6.0",
   "main": "govuk/all.js",
   "module": "govuk-esm/all.mjs",
+  "sass": "govuk/all.scss",
   "exports": {
     ".": {
       "sass": "./govuk/all.scss",
@@ -17,7 +18,6 @@
   "sideEffects": [
     "govuk-esm/vendor/**"
   ],
-  "sass": "govuk/all.scss",
   "engines": {
     "node": ">= 4.2.0"
   },
