@@ -38,6 +38,9 @@ module.exports = {
           }
         ],
 
+        // Babel transpiles ES2020 class fields
+        'es-x/no-class-fields': 'off',
+
         // JSDoc blocks are mandatory
         'jsdoc/require-jsdoc': [
           'error', {
