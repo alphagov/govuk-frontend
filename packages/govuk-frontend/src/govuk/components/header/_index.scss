@@ -202,12 +202,12 @@
       top: govuk-spacing(3);
     }
 
-    .js-enabled & {
+    .govuk-frontend-supported & {
       display: block;
     }
 
     &[hidden],
-    .js-enabled &[hidden] {
+    .govuk-frontend-supported &[hidden] {
       display: none;
     }
   }

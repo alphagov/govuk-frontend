@@ -5,8 +5,8 @@
     <title>Test Boilerplate</title>
     <link rel="stylesheet" href="/stylesheets/app.min.css">
   </head>
-  <body>
-    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
     <h1 class="govuk-heading-l">Test boilerplate</h1>
     <p class="govuk-body">
       Used during testing to inject rendered components and test specific configurations

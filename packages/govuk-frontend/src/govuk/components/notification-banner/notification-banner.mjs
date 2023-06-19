@@ -10,7 +10,7 @@ export class NotificationBanner {
    * @param {NotificationBannerConfig} [config] - Notification banner config
    */
   constructor ($module, config) {
-    if (!($module instanceof HTMLElement)) {
+    if (!($module instanceof HTMLElement) || !document.body.classList.contains('govuk-frontend-supported')) {
       return this
     }
 

@@ -6,7 +6,7 @@ export class Header {
    * @param {Element} $module - HTML element to use for header
    */
   constructor ($module) {
-    if (!($module instanceof HTMLElement)) {
+    if (!($module instanceof HTMLElement) || !document.body.classList.contains('govuk-frontend-supported')) {
       return this
     }
 

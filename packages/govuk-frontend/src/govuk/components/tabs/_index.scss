@@ -41,8 +41,8 @@
     @include govuk-responsive-margin(8, "bottom");
   }
 
-  // JavaScript enabled
-  .js-enabled {
+  // GOV.UK Frontend JavaScript enabled
+  .govuk-frontend-supported {
 
     @include govuk-media-query($from: tablet) {
       .govuk-tabs__list {

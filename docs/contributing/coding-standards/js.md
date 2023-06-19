@@ -21,9 +21,7 @@ export class Example {
    * @param {Element} $module - HTML element to use for component
    */
   constructor ($module) {
-    $module = undefined
-
-    if (!($module instanceof HTMLElement)) {
+    if (!($module instanceof HTMLElement) || !document.body.classList.contains('govuk-frontend-supported')) {
       return this
     }
 

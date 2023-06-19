@@ -18,7 +18,7 @@ export class Details {
    * @param {Element} $module - HTML element to use for details
    */
   constructor ($module) {
-    if (!($module instanceof HTMLElement)) {
+    if (!($module instanceof HTMLElement) || !document.body.classList.contains('govuk-frontend-supported')) {
       return this
     }
 
