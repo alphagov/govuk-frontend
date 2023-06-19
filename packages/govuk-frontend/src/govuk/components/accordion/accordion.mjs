@@ -15,6 +15,99 @@ import { I18n } from '../../i18n.mjs'
  * attribute, which also provides accessibility.
  */
 export class Accordion {
+  /** @private */
+  $module
+
+  /**
+   * @private
+   * @type {AccordionConfig}
+   */
+  config
+
+  /** @private */
+  i18n
+
+  /** @private */
+  controlsClass = 'govuk-accordion__controls'
+
+  /** @private */
+  showAllClass = 'govuk-accordion__show-all'
+
+  /** @private */
+  showAllTextClass = 'govuk-accordion__show-all-text'
+
+  /** @private */
+  sectionClass = 'govuk-accordion__section'
+
+  /** @private */
+  sectionExpandedClass = 'govuk-accordion__section--expanded'
+
+  /** @private */
+  sectionButtonClass = 'govuk-accordion__section-button'
+
+  /** @private */
+  sectionHeaderClass = 'govuk-accordion__section-header'
+
+  /** @private */
+  sectionHeadingClass = 'govuk-accordion__section-heading'
+
+  /** @private */
+  sectionHeadingDividerClass = 'govuk-accordion__section-heading-divider'
+
+  /** @private */
+  sectionHeadingTextClass = 'govuk-accordion__section-heading-text'
+
+  /** @private */
+  sectionHeadingTextFocusClass = 'govuk-accordion__section-heading-text-focus'
+
+  /** @private */
+  sectionShowHideToggleClass = 'govuk-accordion__section-toggle'
+
+  /** @private */
+  sectionShowHideToggleFocusClass = 'govuk-accordion__section-toggle-focus'
+
+  /** @private */
+  sectionShowHideTextClass = 'govuk-accordion__section-toggle-text'
+
+  /** @private */
+  upChevronIconClass = 'govuk-accordion-nav__chevron'
+
+  /** @private */
+  downChevronIconClass = 'govuk-accordion-nav__chevron--down'
+
+  /** @private */
+  sectionSummaryClass = 'govuk-accordion__section-summary'
+
+  /** @private */
+  sectionSummaryFocusClass = 'govuk-accordion__section-summary-focus'
+
+  /** @private */
+  sectionContentClass = 'govuk-accordion__section-content'
+
+  /** @private */
+  $sections
+
+  /** @private */
+  browserSupportsSessionStorage = false
+
+  /**
+   * @private
+   * @type {HTMLButtonElement | null}
+   */
+  $showAllButton = null
+
+  /**
+   * @private
+   * @type {HTMLSpanElement | null}
+   */
+  $showAllIcon = null
+
+  /**
+   * @private
+   * @type {HTMLSpanElement | null}
+   */
+  $showAllText = null
+
   /**
    * @param {Element} $module - HTML element to use for accordion
    * @param {AccordionConfig} [config] - Accordion config
@@ -24,98 +117,23 @@ export class Accordion {
       return this
     }
 
-    /** @private */
     this.$module = $module
 
-    /**
-     * @private
-     * @type {AccordionConfig}
-     */
     this.config = mergeConfigs(
       Accordion.defaults,
       config || {},
       normaliseDataset($module.dataset)
     )
 
-    /** @private */
     this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'))
-
-    /** @private */
-    this.controlsClass = 'govuk-accordion__controls'
-
-    /** @private */
-    this.showAllClass = 'govuk-accordion__show-all'
-
-    /** @private */
-    this.showAllTextClass = 'govuk-accordion__show-all-text'
-
-    /** @private */
-    this.sectionClass = 'govuk-accordion__section'
-
-    /** @private */
-    this.sectionExpandedClass = 'govuk-accordion__section--expanded'
-
-    /** @private */
-    this.sectionButtonClass = 'govuk-accordion__section-button'
-
-    /** @private */
-    this.sectionHeaderClass = 'govuk-accordion__section-header'
-
-    /** @private */
-    this.sectionHeadingClass = 'govuk-accordion__section-heading'
-
-    /** @private */
-    this.sectionHeadingDividerClass = 'govuk-accordion__section-heading-divider'
-
-    /** @private */
-    this.sectionHeadingTextClass = 'govuk-accordion__section-heading-text'
-
-    /** @private */
-    this.sectionHeadingTextFocusClass = 'govuk-accordion__section-heading-text-focus'
-
-    /** @private */
-    this.sectionShowHideToggleClass = 'govuk-accordion__section-toggle'
-
-    /** @private */
-    this.sectionShowHideToggleFocusClass = 'govuk-accordion__section-toggle-focus'
-
-    /** @private */
-    this.sectionShowHideTextClass = 'govuk-accordion__section-toggle-text'
-
-    /** @private */
-    this.upChevronIconClass = 'govuk-accordion-nav__chevron'
-
-    /** @private */
-    this.downChevronIconClass = 'govuk-accordion-nav__chevron--down'
-
-    /** @private */
-    this.sectionSummaryClass = 'govuk-accordion__section-summary'
-
-    /** @private */
-    this.sectionSummaryFocusClass = 'govuk-accordion__section-summary-focus'
-
-    /** @private */
-    this.sectionContentClass = 'govuk-accordion__section-content'
 
     const $sections = this.$module.querySelectorAll(`.${this.sectionClass}`)
     if (!$sections.length) {
       return this
     }
 
-    /** @private */
     this.$sections = $sections
-
-    /** @private */
     this.browserSupportsSessionStorage = helper.checkForSessionStorage()
-
-    /** @private */
-    this.$showAllButton = null
-
-    /** @private */
-    this.$showAllIcon = null
-
-    /** @private */
-    this.$showAllText = null
   }
 
   /**

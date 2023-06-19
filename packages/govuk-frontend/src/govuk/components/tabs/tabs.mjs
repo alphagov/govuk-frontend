@@ -2,6 +2,30 @@
  * Tabs component
  */
 export class Tabs {
+  /** @private */
+  $module
+
+  /** @private */
+  $tabs
+
+  /** @private */
+  keys = { left: 37, right: 39, up: 38, down: 40 }
+
+  /** @private */
+  jsHiddenClass = 'govuk-tabs__panel--hidden'
+
+  /** @private */
+  changingHash = false
+
+  /** @private */
+  boundTabClick
+
+  /** @private */
+  boundTabKeydown
+
+  /** @private */
+  boundOnHashChange
+
   /**
    * @param {Element} $module - HTML element to use for tabs
    */
@@ -16,31 +40,13 @@ export class Tabs {
       return this
     }
 
-    /** @private */
     this.$module = $module
-
-    /** @private */
     this.$tabs = $tabs
 
-    /** @private */
-    this.keys = { left: 37, right: 39, up: 38, down: 40 }
-
-    /** @private */
-    this.jsHiddenClass = 'govuk-tabs__panel--hidden'
-
     // Save bounded functions to use when removing event listeners during teardown
-
-    /** @private */
     this.boundTabClick = this.onTabClick.bind(this)
-
-    /** @private */
     this.boundTabKeydown = this.onTabKeydown.bind(this)
-
-    /** @private */
     this.boundOnHashChange = this.onHashChange.bind(this)
-
-    /** @private */
-    this.changingHash = false
   }
 
   /**

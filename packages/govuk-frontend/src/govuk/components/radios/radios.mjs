@@ -2,6 +2,12 @@
  * Radios component
  */
 export class Radios {
+  /** @private */
+  $module
+
+  /** @private */
+  $inputs
+
   /**
    * @param {Element} $module - HTML element to use for radios
    */
@@ -16,10 +22,7 @@ export class Radios {
       return this
     }
 
-    /** @private */
     this.$module = $module
-
-    /** @private */
     this.$inputs = $inputs
   }
 
