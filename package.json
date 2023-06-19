@@ -17,7 +17,10 @@
       "import": "./dist/govuk-esm/all.mjs",
       "require": "./dist/govuk/all.js"
     },
-    "./*": "./*"
+    "./*": "./*",
+    "./dist/": "./dist/",
+    "./govuk-prototype-kit.config.json": "./govuk-prototype-kit.config.json",
+    "./package.json": "./package.json"
   },
   "sideEffects": [
     "**/vendor/**"
