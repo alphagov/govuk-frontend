@@ -4,40 +4,6 @@ import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { I18n } from '../../i18n.mjs'
 
 /**
- * Character count translation defaults
- *
- * @see {@link CharacterCountConfig.i18n}
- * @constant
- * @default
- * @type {CharacterCountTranslations}
- */
-const CHARACTER_COUNT_TRANSLATIONS = {
-  // Characters
-  charactersUnderLimit: {
-    one: 'You have %{count} character remaining',
-    other: 'You have %{count} characters remaining'
-  },
-  charactersAtLimit: 'You have 0 characters remaining',
-  charactersOverLimit: {
-    one: 'You have %{count} character too many',
-    other: 'You have %{count} characters too many'
-  },
-  // Words
-  wordsUnderLimit: {
-    one: 'You have %{count} word remaining',
-    other: 'You have %{count} words remaining'
-  },
-  wordsAtLimit: 'You have 0 words remaining',
-  wordsOverLimit: {
-    one: 'You have %{count} word too many',
-    other: 'You have %{count} words too many'
-  },
-  textareaDescription: {
-    other: ''
-  }
-}
-
-/**
  * Character count component
  *
  * Tracks the number of characters or words in the `.govuk-js-character-count`
@@ -67,12 +33,6 @@ export class CharacterCount {
       return this
     }
 
-    /** @type {CharacterCountConfig} */
-    const defaultConfig = {
-      threshold: 0,
-      i18n: CHARACTER_COUNT_TRANSLATIONS
-    }
-
     // Read config set using dataset ('data-' values)
     const datasetConfig = normaliseDataset($module.dataset)
 
@@ -96,7 +56,7 @@ export class CharacterCount {
      * @type {CharacterCountConfig}
      */
     this.config = mergeConfigs(
-      defaultConfig,
+      CharacterCount.defaults,
       config || {},
       configOverrides,
       datasetConfig
@@ -423,42 +383,82 @@ export class CharacterCount {
 
     return (thresholdValue <= currentLength)
   }
+
+  /**
+   * Character count default config
+   *
+   * @see {@link CharacterCountConfig}
+   * @constant
+   * @default
+   * @type {CharacterCountConfig}
+   */
+  static defaults = Object.freeze({
+    threshold: 0,
+    i18n: {
+      // Characters
+      charactersUnderLimit: {
+        one: 'You have %{count} character remaining',
+        other: 'You have %{count} characters remaining'
+      },
+      charactersAtLimit: 'You have 0 characters remaining',
+      charactersOverLimit: {
+        one: 'You have %{count} character too many',
+        other: 'You have %{count} characters too many'
+      },
+      // Words
+      wordsUnderLimit: {
+        one: 'You have %{count} word remaining',
+        other: 'You have %{count} words remaining'
+      },
+      wordsAtLimit: 'You have 0 words remaining',
+      wordsOverLimit: {
+        one: 'You have %{count} word too many',
+        other: 'You have %{count} words too many'
+      },
+      textareaDescription: {
+        other: ''
+      }
+    }
+  })
 }
 
 /**
  * Character count config
  *
+ * @see {@link CharacterCount.defaults}
  * @typedef {CharacterCountConfigWithMaxLength | CharacterCountConfigWithMaxWords} CharacterCountConfig
  */
 
 /**
  * Character count config (with maximum number of characters)
  *
+ * @see {@link CharacterCount.defaults}
  * @typedef {object} CharacterCountConfigWithMaxLength
  * @property {number} [maxlength] - The maximum number of characters.
  *   If maxwords is provided, the maxlength option will be ignored.
  * @property {number} [threshold=0] - The percentage value of the limit at
  *   which point the count message is displayed. If this attribute is set, the
  *   count message will be hidden by default.
- * @property {CharacterCountTranslations} [i18n=CHARACTER_COUNT_TRANSLATIONS] - Character count translations
+ * @property {CharacterCountTranslations} [i18n=CharacterCount.defaults.i18n] - Character count translations
  */
 
 /**
  * Character count config (with maximum number of words)
  *
+ * @see {@link CharacterCount.defaults}
  * @typedef {object} CharacterCountConfigWithMaxWords
  * @property {number} [maxwords] - The maximum number of words. If maxwords is
  *   provided, the maxlength option will be ignored.
  * @property {number} [threshold=0] - The percentage value of the limit at
  *   which point the count message is displayed. If this attribute is set, the
  *   count message will be hidden by default.
- * @property {CharacterCountTranslations} [i18n=CHARACTER_COUNT_TRANSLATIONS] - Character count translations
+ * @property {CharacterCountTranslations} [i18n=CharacterCount.defaults.i18n] - Character count translations
  */
 
 /**
  * Character count translations
  *
- * @see {@link CHARACTER_COUNT_TRANSLATIONS}
+ * @see {@link CharacterCount.defaults.i18n}
  * @typedef {object} CharacterCountTranslations
  *
  * Messages shown to users as they type. It provides feedback on how many words

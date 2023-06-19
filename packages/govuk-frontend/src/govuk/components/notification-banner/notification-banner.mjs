@@ -17,17 +17,12 @@ export class NotificationBanner {
     /** @private */
     this.$module = $module
 
-    /** @type {NotificationBannerConfig} */
-    const defaultConfig = {
-      disableAutoFocus: false
-    }
-
     /**
      * @private
      * @type {NotificationBannerConfig}
      */
     this.config = mergeConfigs(
-      defaultConfig,
+      NotificationBanner.defaults,
       config || {},
       normaliseDataset($module.dataset)
     )
@@ -79,6 +74,18 @@ export class NotificationBanner {
 
     this.$module.focus()
   }
+
+  /**
+   * Notification banner default config
+   *
+   * @see {@link NotificationBannerConfig}
+   * @constant
+   * @default
+   * @type {NotificationBannerConfig}
+   */
+  static defaults = Object.freeze({
+    disableAutoFocus: false
+  })
 }
 
 /**
