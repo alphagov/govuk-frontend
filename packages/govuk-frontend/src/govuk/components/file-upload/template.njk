@@ -5,6 +5,27 @@
 {#- a record of other elements that we need to associate with the input using
   aria-describedby – for example hints or error messages -#}
 {% set describedBy = params.describedBy if params.describedBy else "" %}
+
+{% if params.hint %}
+  {% set hintId = params.id + '-hint' %}
+  {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
+{% endif %}
+
+{% if params.errorMessage %}
+  {% set errorId = params.id + '-error' %}
+  {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
+{% endif %}
+
+{#- define the actual input separately as we place it in different contexts
+  depending on whether dropper functionality is active -#}
+{% set fileInputHtml %}
+  <input class="govuk-file-upload {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-file-upload--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="file"
+  {%- if params.value %} value="{{ params.value }}"{% endif %}
+  {%- if params.disabled %} disabled{% endif %}
+  {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
+  {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+{% endset %}
+
 <div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}">
   {{ govukLabel({
     html: params.label.html,
@@ -15,8 +36,6 @@
     for: params.id
   }) | indent(2) | trim }}
 {% if params.hint %}
-  {% set hintId = params.id + '-hint' %}
-  {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
   {{ govukHint({
     id: hintId,
     classes: params.hint.classes,
@@ -26,8 +45,6 @@
   }) | indent(2) | trim }}
 {% endif %}
 {% if params.errorMessage %}
-  {% set errorId = params.id + '-error' %}
-  {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
   {{ govukErrorMessage({
     id: errorId,
     classes: params.errorMessage.classes,
@@ -37,9 +54,14 @@
     visuallyHiddenText: params.errorMessage.visuallyHiddenText
   }) | indent(2) | trim }}
 {% endif %}
-  <input class="govuk-file-upload {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-file-upload--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="file"
-  {%- if params.value %} value="{{ params.value }}"{% endif %}
-  {%- if params.disabled %} disabled{% endif %}
-  {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
-  {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+  {%- if params.dropzone %}
+    <div class="govuk-file-upload-dropzone" data-module="govuk-file-upload">
+      {{ fileInputHtml | safe }}
+      <div class="govuk-file-upload-dropzone__hint" hidden>
+        {{- params.dropzone.html | safe if params.dropzone.html else params.dropzone.text | default("Drop a file here to select it") -}}
+      </div>
+    </div>
+  {% else %}
+    {{ fileInputHtml | safe }}
+  {%- endif %}
 </div>

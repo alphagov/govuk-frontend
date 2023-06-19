@@ -47,4 +47,33 @@
       cursor: not-allowed;
     }
   }
+
+  // =========================================================
+  // Drop zone
+  // =========================================================
+
+  .govuk-file-upload-dropzone {
+    position: relative;
+  }
+
+  .govuk-file-upload-dropzone__hint {
+    @include govuk-font($size: 19);
+    @include govuk-text-colour;
+    padding: $component-padding;
+    border: 2px dashed govuk-colour("mid-grey");
+    background-color: govuk-colour("white");
+  }
+
+  .govuk-file-upload-dropzone--visible .govuk-file-upload {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+
+  .govuk-file-upload-dropzone--visible .govuk-file-upload-dropzone__hint {
+    display: block;
+  }
 }

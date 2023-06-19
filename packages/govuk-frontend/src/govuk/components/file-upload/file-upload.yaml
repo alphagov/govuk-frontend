@@ -100,6 +100,21 @@ examples:
         text: Upload a file
       formGroup:
         classes: extra-class
+  - name: with drop zone
+    data:
+      id: file-upload-dropzone
+      name: file-upload-dropzone
+      label:
+        text: Upload a file
+      dropzone: true
+  - name: with custom drop zone text
+    data:
+      id: file-upload-dropzone
+      name: file-upload-dropzone
+      label:
+        text: Llwythwch ffeil i fyny
+      dropzone:
+        text: Gollyngwch ffeil yma i'w ddewis
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: attributes

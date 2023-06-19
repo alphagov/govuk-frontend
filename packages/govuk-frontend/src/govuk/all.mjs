@@ -5,6 +5,7 @@ import { CharacterCount } from './components/character-count/character-count.mjs
 import { Checkboxes } from './components/checkboxes/checkboxes.mjs'
 import { Details } from './components/details/details.mjs'
 import { ErrorSummary } from './components/error-summary/error-summary.mjs'
+import { FileUpload } from './components/file-upload/file-upload.mjs'
 import { Header } from './components/header/header.mjs'
 import { NotificationBanner } from './components/notification-banner/notification-banner.mjs'
 import { Radios } from './components/radios/radios.mjs'
@@ -56,6 +57,11 @@ function initAll (config) {
   if ($errorSummary) {
     new ErrorSummary($errorSummary, config.errorSummary).init()
   }
+
+  const $fileUploads = $scope.querySelectorAll('[data-module="govuk-file-upload"]')
+  $fileUploads.forEach(($fileUpload) => {
+    new FileUpload($fileUpload).init()
+  })
 
   // Find first header module to enhance.
   const $header = $scope.querySelector('[data-module="govuk-header"]')
