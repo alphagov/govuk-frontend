@@ -27,8 +27,8 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
 
   entry: {
     app: [
-      join(srcPath, 'assets/javascripts/app.mjs'),
-      join(srcPath, 'assets/stylesheets/app.scss')
+      join(srcPath, 'javascripts/app.mjs'),
+      join(srcPath, 'stylesheets/app.scss')
     ]
   },
 
@@ -100,7 +100,7 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
 
   output: {
     clean: true,
-    filename: 'assets/javascripts/[name].min.js',
+    filename: 'javascripts/[name].min.js',
     iife: true,
     path: destPath,
     publicPath: '/'
@@ -108,7 +108,7 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
 
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'assets/stylesheets/[name].min.css'
+      filename: 'stylesheets/[name].min.css'
     }),
     new CopyPlugin({
       patterns: [
