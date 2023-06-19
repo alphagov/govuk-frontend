@@ -1,3 +1,4 @@
+import { babel } from '@rollup/plugin-babel'
 import replace from '@rollup/plugin-replace'
 import terser from '@rollup/plugin-terser'
 import * as GOVUKFrontend from 'govuk-frontend/src/govuk/all.mjs'
@@ -54,6 +55,9 @@ export default defineConfig(({ i: input }) => ({
 
       // Add GOV.UK Frontend release version
       development: pkg.version
+    }),
+    babel({
+      babelHelpers: 'bundled'
     })
   ]
 }))
