@@ -58,28 +58,26 @@ export class NotificationBanner {
    * @private
    */
   setFocus () {
-    const $module = this.$module
-
     if (this.config.disableAutoFocus) {
       return
     }
 
-    if ($module.getAttribute('role') !== 'alert') {
+    if (this.$module.getAttribute('role') !== 'alert') {
       return
     }
 
     // Set tabindex to -1 to make the element focusable with JavaScript.
     // Remove the tabindex on blur as the component doesn't need to be focusable after the page has
     // loaded.
-    if (!$module.getAttribute('tabindex')) {
-      $module.setAttribute('tabindex', '-1')
+    if (!this.$module.getAttribute('tabindex')) {
+      this.$module.setAttribute('tabindex', '-1')
 
-      $module.addEventListener('blur', () => {
-        $module.removeAttribute('tabindex')
+      this.$module.addEventListener('blur', () => {
+        this.$module.removeAttribute('tabindex')
       })
     }
 
-    $module.focus()
+    this.$module.focus()
   }
 }
 

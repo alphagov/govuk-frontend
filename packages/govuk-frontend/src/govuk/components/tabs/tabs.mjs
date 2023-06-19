@@ -96,12 +96,10 @@ export class Tabs {
    * @private
    */
   setup () {
-    const $module = this.$module
-    const $tabs = this.$tabs
-    const $tabList = $module.querySelector('.govuk-tabs__list')
-    const $tabListItems = $module.querySelectorAll('.govuk-tabs__list-item')
+    const $tabList = this.$module.querySelector('.govuk-tabs__list')
+    const $tabListItems = this.$module.querySelectorAll('.govuk-tabs__list-item')
 
-    if (!$tabs || !$tabList || !$tabListItems) {
+    if (!this.$tabs || !$tabList || !$tabListItems) {
       return
     }
 
@@ -111,7 +109,7 @@ export class Tabs {
       $item.setAttribute('role', 'presentation')
     })
 
-    $tabs.forEach(($tab) => {
+    this.$tabs.forEach(($tab) => {
       // Set HTML attributes
       this.setAttributes($tab)
 
@@ -141,12 +139,10 @@ export class Tabs {
    * @private
    */
   teardown () {
-    const $module = this.$module
-    const $tabs = this.$tabs
-    const $tabList = $module.querySelector('.govuk-tabs__list')
-    const $tabListItems = $module.querySelectorAll('a.govuk-tabs__list-item')
+    const $tabList = this.$module.querySelector('.govuk-tabs__list')
+    const $tabListItems = this.$module.querySelectorAll('a.govuk-tabs__list-item')
 
-    if (!$tabs || !$tabList || !$tabListItems) {
+    if (!this.$tabs || !$tabList || !$tabListItems) {
       return
     }
 
@@ -156,7 +152,7 @@ export class Tabs {
       $item.removeAttribute('role')
     })
 
-    $tabs.forEach(($tab) => {
+    this.$tabs.forEach(($tab) => {
       // Remove events
       $tab.removeEventListener('click', this.boundTabClick, true)
       $tab.removeEventListener('keydown', this.boundTabKeydown, true)
