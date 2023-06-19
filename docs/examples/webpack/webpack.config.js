@@ -1,6 +1,7 @@
 const { dirname, join } = require('path')
 
 const CopyPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 
 // Module resolution
@@ -17,9 +18,6 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
   devServer: {
     watchFiles: {
       paths: ['**/*.html']
-    },
-    static: {
-      directory: destPath
     }
   },
 
@@ -27,10 +25,12 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
     ? 'inline-source-map'
     : 'source-map',
 
-  entry: [
-    join(srcPath, 'assets/javascripts/main.mjs'),
-    join(srcPath, 'assets/stylesheets/app.scss')
-  ],
+  entry: {
+    app: [
+      join(srcPath, 'assets/javascripts/app.mjs'),
+      join(srcPath, 'assets/stylesheets/app.scss')
+    ]
+  },
 
   module: {
     rules: [
@@ -45,14 +45,17 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
         }
       },
       {
-        generator: {
-          outputPath: 'assets/stylesheets',
-          publicPath: '/assets/stylesheets',
-          filename: '[name].min.css'
-        },
         test: /\.scss$/,
-        type: 'asset',
         use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              // Allow sass-loader to process CSS @import first
+              // before we use css-loader to extract `url()` etc
+              importLoaders: 2
+            }
+          },
           'postcss-loader',
           {
             loader: 'sass-loader',
@@ -64,6 +67,20 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
             }
           }
         ]
+      },
+      {
+        test: /\.(woff|woff2)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/fonts/[name][ext]'
+        }
+      },
+      {
+        test: /\.(png|svg)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/images/[name][ext]'
+        }
       }
     ]
   },
@@ -90,17 +107,21 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
   },
 
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'assets/stylesheets/[name].min.css'
+    }),
     new CopyPlugin({
       patterns: [
-        join(srcPath, 'index.html'),
-        {
-          context: join(frontendPath, './src/govuk/assets'),
-          from: '{fonts,images}/**',
-          to: 'assets'
-        }
+        join(srcPath, 'index.html')
       ]
     })
   ],
+
+  resolve: {
+    alias: {
+      '/assets/': join(frontendPath, './src/govuk/assets/')
+    }
+  },
 
   stats: {
     preset: 'minimal',
