@@ -148,6 +148,10 @@ describe('GOV.UK Prototype Kit config', () => {
           macroName: 'govukTag'
         },
         {
+          importFrom: 'govuk/components/task-list/macro.njk',
+          macroName: 'govukTaskList'
+        },
+        {
           importFrom: 'govuk/components/textarea/macro.njk',
           macroName: 'govukTextarea'
         },
