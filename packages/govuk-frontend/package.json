@@ -4,6 +4,7 @@
   "version": "4.6.0",
   "main": "dist/govuk/all.js",
   "module": "dist/govuk-esm/all.mjs",
+  "sass": "dist/govuk/all.scss",
   "files": [
     "dist",
     "govuk-prototype-kit.config.json",
@@ -16,12 +17,14 @@
       "import": "./dist/govuk-esm/all.mjs",
       "require": "./dist/govuk/all.js"
     },
-    "./*": "./*"
+    "./*": "./*",
+    "./dist/": "./dist/",
+    "./govuk-prototype-kit.config.json": "./govuk-prototype-kit.config.json",
+    "./package.json": "./package.json"
   },
   "sideEffects": [
     "**/vendor/**"
   ],
-  "sass": "dist/govuk/all.scss",
   "engines": {
     "node": ">= 4.2.0"
   },
