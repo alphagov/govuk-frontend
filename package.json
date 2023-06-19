@@ -92,7 +92,7 @@
     "@types/marked": "^5.0.0",
     "@types/node": "^20.3.1",
     "@types/nunjucks": "^3.2.2",
-    "puppeteer": "^20.6.0"
+    "puppeteer": "^20.7.2"
   },
   "overrides": {
     "chokidar@^2": {
