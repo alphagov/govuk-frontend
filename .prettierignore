@@ -16,3 +16,4 @@ vendor/
 
 # Files to ignore
 package-lock.json
+govuk-prototype-kit.config.json
