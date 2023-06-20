@@ -951,6 +951,7 @@
         'i18n.hideSection': 'Cuddio',
         'i18n.hideSectionAriaLabel': 'Cuddio adran'
       }
-    })
+    }).catch((error) =>
+      console.warn('GOV.UK Frontend init failed', error))
   </script>
 {% endblock %}

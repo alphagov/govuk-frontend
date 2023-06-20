@@ -23,7 +23,8 @@ describe('/components/button', () => {
 
         // `undefined` simulates the element being missing,
         // from an unchecked `document.querySelector` for example
-        new namespace[exportName](undefined).init()
+        new namespace[exportName](undefined).init().catch((error) =>
+          console.warn(`Component '${exportName}' init failed`, error))
 
         // If our component initialisation breaks, this won't run
         return true

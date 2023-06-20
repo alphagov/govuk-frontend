@@ -49,6 +49,7 @@
   <script type="module">
     import { initAll } from '/javascripts/govuk-frontend-{{ version }}.min.js'
     const $scope = document.getElementById('scoped')
-    initAll({ scope: $scope })
+    initAll({ scope: $scope }).catch((error) =>
+      console.warn('GOV.UK Frontend init failed', error))
   </script>
 {% endblock %}

@@ -99,7 +99,8 @@ async function renderAndInitialise (page, componentName, options) {
     }
 
     const namespace = await import('govuk-frontend')
-    new namespace[exportName]($module, options.config).init()
+    new namespace[exportName]($module, options.config).init().catch((error) =>
+      console.warn(`Component '${exportName}' init failed`, error))
   }, componentNameToClassName(componentName), options)
 
   return page
