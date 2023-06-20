@@ -34,7 +34,7 @@ module.exports = {
         'rule-empty-line-before': null,
         'selector-max-id': null,
         'string-quotes': null,
-        'unit-no-unknown': null,
+        'shorthand-property-no-redundant-values': null,
 
         // Allow markdown `*.md` Sass bad examples
         'scss/at-if-no-null': null,
