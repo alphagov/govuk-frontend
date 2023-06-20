@@ -11,7 +11,7 @@
   "exclude": ["./dist/**"],
   "compilerOptions": {
     "lib": ["ESNext", "DOM"],
-    "target": "ES2015",
+    "target": "ES2018",
     "types": ["jest", "jest-axe", "jest-puppeteer", "node"]
   }
 }

@@ -128,5 +128,5 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
     errorDetails: true
   },
 
-  target: ['web', 'es2015']
+  target: ['web', 'es2018']
 })

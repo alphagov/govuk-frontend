@@ -12,8 +12,8 @@ module.exports = {
       excludedFiles: ['**/*.test.mjs'],
       parser: '@typescript-eslint/parser',
       parserOptions: {
-        // Note: Allow ES2015 for import/export syntax
-        ecmaVersion: '2015',
+        // Note: Allow ES2018 for async/await syntax
+        ecmaVersion: '2018',
         project: [resolve(__dirname, 'tsconfig.json')]
       },
       plugins: [
@@ -23,7 +23,7 @@ module.exports = {
       extends: [
         'plugin:@typescript-eslint/recommended',
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
-        'plugin:es-x/restrict-to-es2015'
+        'plugin:es-x/restrict-to-es2018'
       ],
       env: {
         browser: true
