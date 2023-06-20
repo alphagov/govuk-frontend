@@ -171,7 +171,7 @@ describe('Template', () => {
 
         // A change to the inline script would be a breaking change, and it would also require
         // updating the hash published in https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#if-your-javascript-isn-t-working-properly
-        expect(`sha256-${hash}`).toEqual('sha256-GUQ5ad8JK5KmEWmROf3LZd9ge94daqNvd8xy9YS1iDw=')
+        expect(`sha256-${hash}`).toEqual('sha256-DaPqWKdkcF63017pHOqGly6DsaV45KpnY+rtqK6rPVI=')
       })
       it('should not have a nonce attribute by default', () => {
         const $ = renderTemplate()

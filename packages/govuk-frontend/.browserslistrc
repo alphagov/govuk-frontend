@@ -2,7 +2,7 @@
 # https://www.gov.uk/service-manual/technology/designing-for-different-browsers-and-devices
 
 [javascripts]
-> 0.1% in GB and supports es6-module
+> 0.1% in GB and supports es6-module and supports promise-finally
 last 6 Chrome versions
 last 6 Firefox versions
 last 6 Edge versions

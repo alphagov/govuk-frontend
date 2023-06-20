@@ -28,7 +28,7 @@
     {% endif %}
   </head>
   <body class="govuk-template__body {{ bodyClasses }}" {%- for attribute, value in bodyAttributes %} {{attribute}}="{{value}}"{% endfor %}>
-    <script{% if cspNonce %} nonce="{{ cspNonce }}"{% endif %}>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+    <script{% if cspNonce %} nonce="{{ cspNonce }}"{% endif %}>document.body.className += ' js-enabled' + ('Promise' in window && 'finally' in Promise.prototype && 'noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
     {% block bodyStart %}{% endblock %}
 
     {% block skipLink %}
