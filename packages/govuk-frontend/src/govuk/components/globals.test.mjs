@@ -5,23 +5,19 @@ describe('GOV.UK Frontend', () => {
     let exported
 
     beforeEach(async () => {
-      await goTo(page, '/')
+      await goTo(page, '/tests/boilerplate')
 
-      // Exported via global (e.g GOVUKFrontend.initAll)
-      exported = await page.evaluate(() => 'GOVUKFrontend' in window
-        ? Object.keys(window.GOVUKFrontend)
-        : undefined
+      // Exports available via browser dynamic import
+      exported = await page.evaluate(async () =>
+        Object.keys(await import('govuk-frontend'))
       )
     })
 
     it('exports `initAll` function', async () => {
-      await goTo(page, '/')
+      await goTo(page, '/tests/boilerplate')
 
-      const typeofInitAll = await page.evaluate((utility) => {
-        const namespace = 'GOVUKFrontend' in window
-          ? window.GOVUKFrontend
-          : {}
-
+      const typeofInitAll = await page.evaluate(async (utility) => {
+        const namespace = await import('govuk-frontend')
         return typeof namespace[utility]
       }, 'initAll')
 
@@ -52,10 +48,8 @@ describe('GOV.UK Frontend', () => {
       const components = exported
         .filter(method => !['initAll', 'version'].includes(method))
 
-      const componentsWithoutInitFunctions = await page.evaluate((components) => {
-        const namespace = 'GOVUKFrontend' in window
-          ? window.GOVUKFrontend
-          : {}
+      const componentsWithoutInitFunctions = await page.evaluate(async (components) => {
+        const namespace = await import('govuk-frontend')
 
         return components.filter(component => {
           const prototype = namespace[component].prototype

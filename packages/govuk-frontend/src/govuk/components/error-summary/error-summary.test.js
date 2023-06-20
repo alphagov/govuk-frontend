@@ -1,4 +1,4 @@
-const { goToComponent, goToExample, renderAndInitialise } = require('govuk-frontend-helpers/puppeteer')
+const { goToComponent, goToExample, renderAndInitialise, goTo } = require('govuk-frontend-helpers/puppeteer')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('Error Summary', () => {
@@ -82,14 +82,14 @@ describe('Error Summary', () => {
 
     describe('using JavaScript configuration, with no elements on the page', () => {
       it('does not prevent further JavaScript from running', async () => {
-        const result = await page.evaluate((component) => {
-          const namespace = 'GOVUKFrontend' in window
-            ? window.GOVUKFrontend
-            : {}
+        await goTo(page, '/tests/boilerplate')
+
+        const result = await page.evaluate(async (exportName) => {
+          const namespace = await import('govuk-frontend')
 
           // `undefined` simulates the element being missing,
           // from an unchecked `document.querySelector` for example
-          new namespace[component](undefined).init()
+          new namespace[exportName](undefined).init()
 
           // If our component initialisation breaks, this won't run
           return true

@@ -3,6 +3,13 @@
 {% set pageTitle = "Test boilerplate" %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
+{% block head %}
+  {{ super() }}
+  <script type="importmap">
+    { "imports": { "govuk-frontend": "/javascripts/all.bundle.min.mjs" } }
+  </script>
+{% endblock %}
+
 {% block content %}
   <div class="app-whitespace-highlight">
     <h1 class="govuk-heading-l">Test boilerplate</h1>
