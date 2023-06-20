@@ -18,9 +18,9 @@ export const compile = (options) => gulp.series(
       destPath: join(options.destPath, 'javascripts'),
       configPath: join(options.basePath, 'rollup.config.mjs'),
 
-      // Rename with `*.min.js` extension
+      // Rename with `*.bundle.min.mjs` extension
       filePath ({ dir, name }) {
-        return join(dir, `${name}.min.js`)
+        return join(dir, `${name}.bundle.min.mjs`)
       }
     })
   ),

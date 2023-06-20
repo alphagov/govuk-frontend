@@ -937,18 +937,19 @@
 {% endblock %}
 
 {% block bodyEnd %}
-  <script type="module" src="/javascripts/all.min.js"></script>
+  <script type="module" src="/javascripts/all.bundle.min.mjs"></script>
   <script type="module">
-    window.GOVUKFrontend.initAll({
+    import { initAll } from '/javascripts/all.bundle.min.mjs'
+    initAll({
       accordion: {
         i18n: {
-          showAllSections: "Dangos adrannau",
-          hideAllSections: "Cuddio adrannau",
+          showAllSections: 'Dangos adrannau',
+          hideAllSections: 'Cuddio adrannau',
         },
-        "i18n.showSection": "Dangos",
-        "i18n.showSectionAriaLabel": "Dangos adran",
-        "i18n.hideSection": "Cuddio",
-        "i18n.hideSectionAriaLabel": "Cuddio adran"
+        'i18n.showSection': 'Dangos',
+        'i18n.showSectionAriaLabel': 'Dangos adran',
+        'i18n.hideSection': 'Cuddio',
+        'i18n.hideSectionAriaLabel': 'Cuddio adran'
       }
     })
   </script>
