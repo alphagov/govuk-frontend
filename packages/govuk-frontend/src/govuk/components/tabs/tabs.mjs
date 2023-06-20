@@ -51,14 +51,18 @@ export class Tabs {
 
   /**
    * Initialise component
+   *
+   * @returns {Promise<Tabs>} Tabs component
    */
-  init () {
+  async init () {
     // Check that required elements are present
     if (!this.$module || !this.$tabs) {
-      return
+      throw new Error("Component 'Tabs' is missing '$module' or '$tabs' fields")
     }
 
     this.setupResponsiveChecks()
+
+    return Promise.resolve(this)
   }
 
   /**

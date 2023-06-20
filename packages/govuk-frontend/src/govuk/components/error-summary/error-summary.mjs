@@ -44,15 +44,19 @@ export class ErrorSummary {
 
   /**
    * Initialise component
+   *
+   * @returns {Promise<ErrorSummary>} Error summary component
    */
-  init () {
+  async init () {
     // Check that required elements are present
     if (!this.$module) {
-      return
+      throw new Error("Component 'Error summary' is missing '$module' field")
     }
 
     this.setFocus()
     this.$module.addEventListener('click', (event) => this.handleClick(event))
+
+    return Promise.resolve(this)
   }
 
   /**

@@ -39,11 +39,13 @@ export class Checkboxes {
    * We also need to restore the state of any conditional reveals on the page (for
    * example if the user has navigated back), and set up event handlers to keep
    * the reveal in sync with the checkbox state.
+   *
+   * @returns {Promise<Checkboxes>} Checkboxes component
    */
-  init () {
+  async init () {
     // Check that required elements are present
     if (!this.$module || !this.$inputs) {
-      return
+      throw new Error("Component 'Checkboxes' is missing '$module' or '$inputs' fields")
     }
 
     this.$inputs.forEach(($input) => {
@@ -73,6 +75,8 @@ export class Checkboxes {
 
     // Handle events
     this.$module.addEventListener('click', (event) => this.handleClick(event))
+
+    return Promise.resolve(this)
   }
 
   /**

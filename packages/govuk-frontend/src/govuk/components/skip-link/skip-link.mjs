@@ -29,11 +29,13 @@ export class SkipLink {
 
   /**
    * Initialise component
+   *
+   * @returns {Promise<SkipLink>} Skip link component
    */
-  init () {
+  async init () {
     // Check that required elements are present
     if (!this.$module) {
-      return
+      throw new Error("Component 'Skip link' is missing '$module' field")
     }
 
     // Check for linked element
@@ -44,6 +46,8 @@ export class SkipLink {
 
     this.$linkedElement = $linkedElement
     this.$module.addEventListener('click', () => this.focusLinkedElement())
+
+    return Promise.resolve(this)
   }
 
   /**

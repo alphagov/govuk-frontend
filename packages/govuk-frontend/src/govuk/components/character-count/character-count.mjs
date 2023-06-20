@@ -123,17 +123,19 @@ export class CharacterCount {
 
   /**
    * Initialise component
+   *
+   * @returns {Promise<CharacterCount>} Character count component
    */
-  init () {
+  async init () {
     // Check that required elements are present
     if (!this.$module || !this.$textarea) {
-      return
+      throw new Error("Component 'Character count' is missing '$module' or '$textarea' field")
     }
 
     const $textarea = this.$textarea
     const $textareaDescription = document.getElementById(`${$textarea.id}-info`)
     if (!$textareaDescription) {
-      return
+      throw new Error(`Component 'Character count' is missing selector '#${$textarea.id}-info' selector`)
     }
 
     // Inject a description for the textarea if none is present already
@@ -182,6 +184,8 @@ export class CharacterCount {
     // could be called after those events have fired, for example if they are
     // added to the page dynamically, so update now too.
     this.updateCountMessage()
+
+    return Promise.resolve(this)
   }
 
   /**

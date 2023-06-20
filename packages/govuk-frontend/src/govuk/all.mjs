@@ -17,8 +17,9 @@ import { Tabs } from './components/tabs/tabs.mjs'
  * components provided as part of GOV.UK Frontend.
  *
  * @param {Config} [config] - Config for all components
+ * @returns {Promise<void>}
  */
-function initAll (config) {
+async function initAll (config) {
   config = typeof config !== 'undefined' ? config : {}
 
   // Skip initialisation when GOV.UK Frontend is not supported
@@ -26,62 +27,69 @@ function initAll (config) {
     return
   }
 
+  /**
+   * @type {Promise<Component>[]}
+   */
+  const initList = []
+
   // Allow the user to initialise GOV.UK Frontend in only certain sections of the page
   // Defaults to the entire document if nothing is set.
   const $scope = config.scope instanceof HTMLElement ? config.scope : document
 
   const $accordions = $scope.querySelectorAll('[data-module="govuk-accordion"]')
   $accordions.forEach(($accordion) => {
-    new Accordion($accordion, config.accordion).init()
+    initList.push(new Accordion($accordion, config.accordion).init())
   })
 
   const $buttons = $scope.querySelectorAll('[data-module="govuk-button"]')
   $buttons.forEach(($button) => {
-    new Button($button, config.button).init()
+    initList.push(new Button($button, config.button).init())
   })
 
   const $characterCounts = $scope.querySelectorAll('[data-module="govuk-character-count"]')
   $characterCounts.forEach(($characterCount) => {
-    new CharacterCount($characterCount, config.characterCount).init()
+    initList.push(new CharacterCount($characterCount, config.characterCount).init())
   })
 
   const $checkboxes = $scope.querySelectorAll('[data-module="govuk-checkboxes"]')
   $checkboxes.forEach(($checkbox) => {
-    new Checkboxes($checkbox).init()
+    initList.push(new Checkboxes($checkbox).init())
   })
 
   // Find first error summary module to enhance.
   const $errorSummary = $scope.querySelector('[data-module="govuk-error-summary"]')
   if ($errorSummary) {
-    new ErrorSummary($errorSummary, config.errorSummary).init()
+    initList.push(new ErrorSummary($errorSummary, config.errorSummary).init())
   }
 
   // Find first header module to enhance.
   const $header = $scope.querySelector('[data-module="govuk-header"]')
   if ($header) {
-    new Header($header).init()
+    initList.push(new Header($header).init())
   }
 
   const $notificationBanners = $scope.querySelectorAll('[data-module="govuk-notification-banner"]')
   $notificationBanners.forEach(($notificationBanner) => {
-    new NotificationBanner($notificationBanner, config.notificationBanner).init()
+    initList.push(new NotificationBanner($notificationBanner, config.notificationBanner).init())
   })
 
   const $radios = $scope.querySelectorAll('[data-module="govuk-radios"]')
   $radios.forEach(($radio) => {
-    new Radios($radio).init()
+    initList.push(new Radios($radio).init())
   })
 
   // Find first skip link module to enhance.
   const $skipLink = $scope.querySelector('[data-module="govuk-skip-link"]')
   if ($skipLink) {
-    new SkipLink($skipLink).init()
+    initList.push(new SkipLink($skipLink).init())
   }
 
   const $tabs = $scope.querySelectorAll('[data-module="govuk-tabs"]')
   $tabs.forEach(($tabs) => {
-    new Tabs($tabs).init()
+    initList.push(new Tabs($tabs).init())
   })
+
+  await Promise.all(initList)
 }
 
 export {
@@ -100,6 +108,12 @@ export {
   SkipLink,
   Tabs
 }
+
+/**
+ * Component types
+ *
+ * @typedef {Accordion | Button | CharacterCount | Checkboxes | ErrorSummary | Header | NotificationBanner | Radios | SkipLink | Tabs} Component
+ */
 
 /**
  * Config for all components via `initAll()`

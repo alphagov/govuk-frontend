@@ -138,11 +138,13 @@ export class Accordion {
 
   /**
    * Initialise component
+   *
+   * @returns {Promise<Accordion>} Accordion component
    */
-  init () {
+  async init () {
     // Check that required elements are present
     if (!this.$module || !this.$sections) {
-      return
+      throw new Error("Component 'Accordion' is missing '$module' or '$sections' fields")
     }
 
     this.initControls()
@@ -151,6 +153,8 @@ export class Accordion {
     // See if "Show all sections" button text should be updated
     const areAllSectionsOpen = this.checkIfAllSectionsOpen()
     this.updateShowAllButton(areAllSectionsOpen)
+
+    return Promise.resolve(this)
   }
 
   /**

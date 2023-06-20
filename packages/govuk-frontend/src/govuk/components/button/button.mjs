@@ -44,15 +44,19 @@ export class Button {
 
   /**
    * Initialise component
+   *
+   * @returns {Promise<Button>} Button component
    */
-  init () {
+  async init () {
     // Check that required elements are present
     if (!this.$module) {
-      return
+      throw new Error("Component 'Button' is missing '$module' field")
     }
 
     this.$module.addEventListener('keydown', (event) => this.handleKeyDown(event))
     this.$module.addEventListener('click', (event) => this.debounce(event))
+
+    return Promise.resolve(this)
   }
 
   /**

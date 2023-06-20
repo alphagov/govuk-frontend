@@ -53,11 +53,13 @@ export class Header {
    * missing then there's nothing to do so return early.
    * Apply a matchMedia for desktop which will trigger a state sync if the browser
    * viewport moves between states.
+   *
+   * @returns {Promise<Header>} Header component
    */
-  init () {
+  async init () {
     // Check that required elements are present
     if (!this.$module || !this.$menuButton || !this.$menu) {
-      return
+      throw new Error("Component 'Header' is missing '$module', '$menuButton' or '$menu' fields")
     }
 
     // Set the matchMedia to the govuk-frontend desktop breakpoint
@@ -75,6 +77,8 @@ export class Header {
 
     this.syncState()
     this.$menuButton.addEventListener('click', () => this.handleMenuButtonClick())
+
+    return Promise.resolve(this)
   }
 
   /**

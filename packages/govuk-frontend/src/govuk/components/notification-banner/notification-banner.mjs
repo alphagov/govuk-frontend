@@ -34,14 +34,18 @@ export class NotificationBanner {
 
   /**
    * Initialise component
+   *
+   * @returns {Promise<NotificationBanner>} Notification banner component
    */
-  init () {
+  async init () {
     // Check that required elements are present
     if (!this.$module) {
-      return
+      throw new Error("Component 'Notification banner' is missing '$module' field")
     }
 
     this.setFocus()
+
+    return Promise.resolve(this)
   }
 
   /**
