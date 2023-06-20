@@ -61,6 +61,16 @@ This change was made in [pull request #3599: Enable new link styles by default](
 
 You must make the following changes when you migrate to this release, or your service might break.
 
+#### Check that details components work as expected
+
+The Details component no longer uses JavaScript, and is no longer polyfilled in older browsers.
+
+If you aren’t using our Nunjucks macros, ensure you remove the `data-module="govuk-details"` attribute from all `<details>` elements.
+
+If you have extended browser support requirements, check that the Details component works as expected in older browsers.
+
+This change was introduced in [pull request #3766: Remove JavaScript from Details component](https://github.com/alphagov/govuk-frontend/pull/3766).
+
 #### Update package file paths
 
 In preparation for additional build targets, we've moved our package files into a directory called `dist`.
