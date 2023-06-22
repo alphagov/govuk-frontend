@@ -1,17 +1,25 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8"/>
-    <title>Test Boilerplate</title>
-    <link rel="stylesheet" href="/stylesheets/app.min.css">
-  </head>
-  <body class="govuk-template__body">
-    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+{% extends "component-preview.njk" %}
+
+{% set pageTitle = "Test boilerplate" %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  <script type="importmap">
+    { "imports": { "govuk-frontend": "/javascripts/all.bundle.min.mjs" } }
+  </script>
+{% endblock %}
+
+{% block content %}
+  <div class="app-whitespace-highlight">
     <h1 class="govuk-heading-l">Test boilerplate</h1>
     <p class="govuk-body">
       Used during testing to inject rendered components and test specific configurations
     </p>
     <div id="slot"></div>
-    <script type="module" src="/javascripts/all.min.js"></script>
-  </body>
-</html>
+  </div>
+{% endblock %}
+
+{% block bodyEnd %}
+  <script type="module" src="/javascripts/all.bundle.min.mjs"></script>
+{% endblock %}

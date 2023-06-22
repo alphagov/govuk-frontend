@@ -8,6 +8,9 @@ module.exports = function (api) {
 
   const presets = [
     ['@babel/preset-env', {
+      exclude: [
+        'transform-dynamic-import'
+      ],
       targets: {
         node: 'current'
       }

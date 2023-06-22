@@ -14,7 +14,7 @@ export default defineConfig(({ i: input }) => ({
    * Output options
    */
   output: {
-    format: 'iife',
+    format: 'es',
 
     /**
      * Output plugins

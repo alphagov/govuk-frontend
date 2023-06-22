@@ -45,11 +45,10 @@
 {% endblock %}
 
 {% block bodyEnd %}
-  <script type="module" src="/javascripts/all.min.js"></script>
+  <script type="module" src="/javascripts/all.bundle.min.mjs"></script>
   <script type="module">
+    import { initAll } from '/javascripts/all.bundle.min.mjs'
     const $scope = document.getElementById('scoped')
-    window.GOVUKFrontend.initAll({
-      scope: $scope
-    })
+    initAll({ scope: $scope })
   </script>
 {% endblock %}

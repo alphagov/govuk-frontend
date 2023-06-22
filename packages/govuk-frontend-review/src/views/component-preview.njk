@@ -1,4 +1,4 @@
-{% extends "layouts/" + previewLayout + ".njk" %}
+{% extends "layouts/" + previewLayout | default('layout') + ".njk" %}
 
 {% set bodyClasses %}
   {{ bodyClasses }}

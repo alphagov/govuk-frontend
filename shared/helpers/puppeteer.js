@@ -76,9 +76,8 @@ async function axe (page, overrides = {}) {
  * @param {object} options - Render and initialise options
  * @param {object} options.params - Nunjucks macro params
  * @param {object} [options.config] - Component instantiation config
- * @param {(context: { config?: object, namespace: object }) => void} [options.initialiser] - A function that'll run in the
- *   browser to execute arbitrary initialisation. Receives an object with the
- *   passed configuration as `config` and the GOVUKFrontend global as `namespace`
+ * @param {($module: Element) => void} [options.initialiser] - A function that'll run in the
+ *   browser to execute arbitrary initialisation
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
 async function renderAndInitialise (page, componentName, options) {
@@ -92,22 +91,15 @@ async function renderAndInitialise (page, componentName, options) {
   }, html)
 
   // Run a script to init the JavaScript component
-  await page.evaluate((componentClassName, options) => {
-    const $component = document.querySelector('[data-module]')
-
-    // Check for window global
-    if (!('GOVUKFrontend' in window) || !window.GOVUKFrontend[componentClassName]) {
-      throw new Error(`Global 'window.GOVUKFrontend.${componentClassName}' not found`)
-    }
+  await page.evaluate(async (exportName, options) => {
+    const $module = document.querySelector('[data-module]')
 
     if (options.initialiser) {
-      return options.initialiser({
-        config: options.config,
-        namespace: window.GOVUKFrontend
-      })
+      options.initialiser($module)
     }
 
-    new window.GOVUKFrontend[componentClassName]($component, options.config).init()
+    const namespace = await import('govuk-frontend')
+    new namespace[exportName]($module, options.config).init()
   }, componentNameToClassName(componentName), options)
 
   return page
