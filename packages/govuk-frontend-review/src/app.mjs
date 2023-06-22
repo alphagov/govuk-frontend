@@ -112,7 +112,7 @@ export default async () => {
     const componentName = req.params.componentName
     const exampleName = req.params.exampleName || 'default'
 
-    const previewLayout = res.locals.componentData?.previewLayout || 'layout'
+    const previewLayout = res.locals.componentData?.previewLayout
 
     const exampleConfig = res.locals.componentData?.examples.find(
       example => example.name.replace(/ /g, '-') === exampleName
