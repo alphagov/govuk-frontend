@@ -362,3 +362,25 @@
     }
   }
 }
+
+/// Image link styles
+///
+/// Prepares and provides the focus state for links that only contain images
+/// with no accompanying text.
+///
+/// @access public
+
+@mixin govuk-link-image {
+  // Needed to draw the focus around the entire image
+  display: inline-block;
+
+  // Remove extra space at the bottom of the image that's added by line-height
+  line-height: 0;
+
+  // Don't render an underline
+  text-decoration: none;
+
+  &:focus {
+    @include govuk-focused-box;
+  }
+}
