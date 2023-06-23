@@ -57,6 +57,22 @@ The new link styles are now enabled by default. If you are setting `$govuk-new-l
 
 This change was made in [pull request #3599: Enable new link styles by default](https://github.com/alphagov/govuk-frontend/pull/3599) and [pull request #3600: Remove new link styles feature flag](https://github.com/alphagov/govuk-frontend/pull/3600).
 
+#### Added focus style for links containing non-text content
+
+We've added a new focus style for use with non-text content, such as links containing images and focusable elements that aren't form controls. This new style paints a visible yellow and black outline around the entire element, ensuring that the focus style is visible in all situations.
+
+For links containing images, we've added the `govuk-link-image` class. This class should be used on links that _only_ contain an image. If it also contains text, continue to use `govuk-link` instead.
+
+```html
+<a class="govuk-link-image" href="#">
+  <img src="..." alt="...">
+</a>
+```
+
+These styles can be used in your own code by including the `govuk-focused-box` Sass mixin.
+
+This change was made in [pull request #3819: Add linked image focus style](https://github.com/alphagov/govuk-frontend/pull/3819).
+
 ### Breaking changes
 
 You must make the following changes when you migrate to this release, or your service might break.
