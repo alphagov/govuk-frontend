@@ -26,3 +26,19 @@
   // box-shadow is applied to each fragment independently.
   box-decoration-break: clone;
 }
+
+/// Focused box
+///
+/// Provides an outline to clearly indicate when the target element is focused.
+/// Unlike govuk-focused-text, which only draws an underline below the element,
+/// govuk-focused-box draws an outline around all sides of the element.
+/// Best used for non-text content contained within links.
+///
+/// @access public
+
+@mixin govuk-focused-box {
+  outline: $govuk-focus-width solid transparent;
+  box-shadow:
+    0 0 0 4px $govuk-focus-colour,
+    0 0 0 8px $govuk-focus-text-colour;
+}
