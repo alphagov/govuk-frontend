@@ -113,6 +113,11 @@ jobs:
     runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
     needs: [install, build]
 
+    env:
+      # Use 2x CPU cores unless on Windows (runs slower when concurrent)
+      # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
+      MAX_WORKERS: ${{ inputs.runner == 'windows-latest' && '1' || '2' }}
+
     strategy:
       fail-fast: false
 
@@ -120,32 +125,37 @@ jobs:
         task:
           - description: Nunjucks macro tests
             name: test-macro
-            run: npx jest --color --selectProjects "Nunjucks macro tests"
             cache: .cache/jest
+            projects:
+              - Nunjucks macro tests
 
           - description: JavaScript unit tests
             name: test-unit
-            run: npx jest --color --maxWorkers=2 --selectProjects "JavaScript unit tests" --coverage --testLocationInResults
             cache: .cache/jest
+            projects:
+              - JavaScript unit tests
 
           - description: JavaScript behaviour tests
             name: test-behaviour
-            run: npx jest --color --maxWorkers=2 --selectProjects "JavaScript behaviour tests"
             cache: .cache/jest
+            projects:
+              - JavaScript behaviour tests
 
           - description: JavaScript component tests
             name: test-component
-            run: npx jest --color --maxWorkers=2 --selectProjects "JavaScript component tests"
             cache: |
               .cache/jest
               .cache/puppeteer
+            projects:
+              - JavaScript component tests
 
           - description: Accessibility tests
             name: test-accessibility
-            run: npx jest --color --maxWorkers=2 --selectProjects "Accessibility tests"
             cache: |
               .cache/jest
               .cache/puppeteer
+            projects:
+              - Accessibility tests
 
     steps:
       - name: Checkout
@@ -166,7 +176,7 @@ jobs:
           path: ${{ matrix.task.cache }}
 
       - name: Run test task
-        run: ${{ matrix.task.run }}
+        run: npx jest --color ${{ format('--maxWorkers={0} --selectProjects "{1}"', env.MAX_WORKERS, join(matrix.task.projects, '", "')) }}
 
       - name: Save test coverage
         uses: actions/upload-artifact@v3
