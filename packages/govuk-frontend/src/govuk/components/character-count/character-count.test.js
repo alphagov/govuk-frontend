@@ -8,8 +8,8 @@ describe('Character count', () => {
   const lastInputOffsetTime = 500 // ms
 
   // The longest possible time from a keyboard user ending input and the screen
-  // reader counter being updated (+ 50ms to stay outside the total wait time)
-  const debouncedWaitTime = focusIntervalTime + lastInputOffsetTime + 50
+  // reader counter being updated (+ 100ms to stay outside the total wait time)
+  const debouncedWaitTime = focusIntervalTime + lastInputOffsetTime + 100
 
   beforeAll(async () => {
     examples = await getExamples('character-count')

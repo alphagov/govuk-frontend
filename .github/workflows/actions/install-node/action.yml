@@ -9,8 +9,10 @@ runs:
       id: npm-install-cache
 
       with:
+        enableCrossOsArchive: true
+
         # Restore `node_modules` cache (unless packages change)
-        key: npm-install-cache-${{ runner.os }}-${{ hashFiles('package-lock.json', '**/package.json') }}
+        key: npm-install-${{ runner.os }}-${{ hashFiles('package-lock.json', '**/package.json') }}
         path: |
           node_modules
           docs/examples/*/node_modules

@@ -31,6 +31,6 @@ describe('/components/accordion', () => {
         await goToComponent(page, 'accordion', { exampleName })
         await expect(axe(page, axeRules)).resolves.toHaveNoViolations()
       }
-    }, 60000)
+    }, 90000)
   })
 })

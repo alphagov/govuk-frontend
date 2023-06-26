@@ -17,6 +17,6 @@ describe('/components/skip-link', () => {
         await goToComponent(page, 'skip-link', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
-    }, 60000)
+    }, 90000)
   })
 })

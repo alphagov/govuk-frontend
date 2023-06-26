@@ -5,6 +5,7 @@ const { glob } = require('glob')
 const { paths } = require('govuk-frontend-config')
 const yaml = require('js-yaml')
 const { minimatch } = require('minimatch')
+const slash = require('slash')
 
 const { packageNameToPath } = require('./names')
 
@@ -16,7 +17,7 @@ const { packageNameToPath } = require('./names')
  * @returns {Promise<string[]>} File paths
  */
 const getListing = async (directoryPath, options = {}) => {
-  const listing = await glob(directoryPath, {
+  const listing = await glob(slash(directoryPath), {
     absolute: true,
     nodir: true,
     realpath: true,
@@ -36,7 +37,7 @@ const getListing = async (directoryPath, options = {}) => {
  * @returns {Promise<string[]>} Directory names
  */
 const getDirectories = async (directoryPath) => {
-  const listing = await getListing(`${directoryPath}/*/`, { nodir: false })
+  const listing = await getListing(`${slash(directoryPath)}/*/`, { nodir: false })
 
   // Use directory names only
   return listing

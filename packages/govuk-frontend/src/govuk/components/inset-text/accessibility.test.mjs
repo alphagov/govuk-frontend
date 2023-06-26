@@ -17,6 +17,6 @@ describe('/components/inset-text', () => {
         await goToComponent(page, 'inset-text', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
-    }, 60000)
+    }, 90000)
   })
 })

@@ -7,8 +7,8 @@ describe('/components/button', () => {
   const clickTimeoutTime = 1000 // ms
 
   // The longest possible time a button will ignore unintentional clicks for
-  // until it can be clicked again (+ 50ms to stay outside the total wait time)
-  const debouncedWaitTime = clickTimeoutTime + 50
+  // until it can be clicked again (+ 100ms to stay outside the total wait time)
+  const debouncedWaitTime = clickTimeoutTime + 100
 
   beforeAll(async () => {
     examples = await getExamples('button')
