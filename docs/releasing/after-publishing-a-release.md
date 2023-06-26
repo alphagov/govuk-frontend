@@ -37,7 +37,10 @@ The message we send on Slack is usually a shorter version of the email.
 
 ### Design System website
 
-We should update the "what's new" section on the homepage of the website. The content for this section can be found in [/views/partials/\_whats-new.njk](https://github.com/alphagov/govuk-design-system/blob/main/views/partials/_whats-new.njk).
+We should check if we need to update the following places on the website:
+
+- the "what's new" section on the homepage of the website. The content for this section can be found in [/views/partials/\_whats-new.njk](https://github.com/alphagov/govuk-design-system/blob/main/views/partials/_whats-new.njk).
+- the aliases section in the metadata of the [Upcoming components and patterns page](https://github.com/alphagov/govuk-design-system/blob/main/src/community/upcoming-components-patterns/index.md?plain=1) to ensure that if a release includes a new component that searches for that component on the website no longer point at that page
 
 ## Clear the decks
 
