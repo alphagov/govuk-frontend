@@ -27,7 +27,7 @@ concurrency:
 jobs:
   install:
     name: Install
-    runs-on: ${{ github.event.inputs.runner || 'ubuntu-latest' }}
+    runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
 
     env:
       PUPPETEER_SKIP_DOWNLOAD: true
@@ -41,7 +41,7 @@ jobs:
 
   build:
     name: Build
-    runs-on: ${{ github.event.inputs.runner || 'ubuntu-latest' }}
+    runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
     needs: [install]
 
     steps:
@@ -59,7 +59,7 @@ jobs:
 
   lint:
     name: ${{ matrix.task.description }}
-    runs-on: ${{ github.event.inputs.runner || 'ubuntu-latest' }}
+    runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
     needs: [install]
 
     strategy:
@@ -105,7 +105,7 @@ jobs:
 
   test:
     name: ${{ matrix.task.description }}
-    runs-on: ${{ github.event.inputs.runner || 'ubuntu-latest' }}
+    runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
     needs: [install]
 
     strategy:
@@ -149,7 +149,7 @@ jobs:
 
   verify:
     name: ${{ matrix.task.description }}
-    runs-on: ${{ github.event.inputs.runner || 'ubuntu-latest' }}
+    runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
     needs: [install, build]
 
     strategy:
@@ -206,7 +206,7 @@ jobs:
 
   package:
     name: Export ${{ matrix.conditions }}, Node.js ${{ matrix.node-version }}
-    runs-on: ${{ github.event.inputs.runner || 'ubuntu-latest' }}
+    runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
     needs: [install, build]
 
     # Skip when scheduled or run manually
