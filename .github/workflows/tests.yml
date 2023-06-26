@@ -21,7 +21,7 @@ on:
           - windows-latest
 
 concurrency:
-  group: tests-${{ github.head_ref || github.run_id }}
+  group: tests-${{ inputs.runner || 'ubuntu-latest' }}-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
 jobs:
@@ -186,6 +186,9 @@ jobs:
     runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
     needs: [install, build]
 
+    # Skip when scheduled or run manually
+    if: ${{ !inputs.runner }}
+
     strategy:
       fail-fast: false
 
@@ -267,6 +270,9 @@ jobs:
   regression:
     name: Percy
     needs: [install, build]
+
+    # Skip when scheduled or run manually
+    if: ${{ !inputs.runner }}
 
     # Run existing "Percy screenshots" workflow
     # (after install and build have been cached)
