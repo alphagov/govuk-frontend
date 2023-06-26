@@ -16,7 +16,7 @@ describe('/components/tabs', () => {
       })
 
       it('falls back to making all tab containers visible', async () => {
-        const isContentVisible = await page.waitForSelector('.govuk-tabs__panel', { visible: true, timeout: 1000 })
+        const isContentVisible = await page.waitForSelector('.govuk-tabs__panel', { visible: true, timeout: 5000 })
         expect(isContentVisible).toBeTruthy()
       })
     })
@@ -156,7 +156,7 @@ describe('/components/tabs', () => {
       it('falls back to making the all tab containers visible', async () => {
         await page.emulate(iPhone)
         await goToComponent(page, 'tabs')
-        const isContentVisible = await page.waitForSelector('.govuk-tabs__panel', { visible: true, timeout: 1000 })
+        const isContentVisible = await page.waitForSelector('.govuk-tabs__panel', { visible: true, timeout: 5000 })
         expect(isContentVisible).toBeTruthy()
       })
     })

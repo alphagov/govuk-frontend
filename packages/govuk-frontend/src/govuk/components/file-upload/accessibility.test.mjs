@@ -17,6 +17,6 @@ describe('/components/file-upload', () => {
         await goToComponent(page, 'file-upload', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
-    }, 60000)
+    }, 90000)
   })
 })

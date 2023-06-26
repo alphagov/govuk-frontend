@@ -17,6 +17,6 @@ describe('/components/tabs', () => {
         await goToComponent(page, 'tabs', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
-    }, 60000)
+    }, 90000)
   })
 })

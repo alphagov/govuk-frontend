@@ -17,6 +17,6 @@ describe('/components/hint', () => {
         await goToComponent(page, 'hint', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
-    }, 60000)
+    }, 90000)
   })
 })

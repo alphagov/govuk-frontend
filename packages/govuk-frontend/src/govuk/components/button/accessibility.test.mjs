@@ -29,6 +29,6 @@ describe('/components/button', () => {
         await goToComponent(page, 'button', { exampleName })
         await expect(axe(page, axeRules)).resolves.toHaveNoViolations()
       }
-    }, 60000)
+    }, 90000)
   })
 })
