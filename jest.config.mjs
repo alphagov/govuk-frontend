@@ -60,6 +60,7 @@ const config = {
  */
 export default {
   collectCoverageFrom: ['./packages/govuk-frontend/src/**/*.{js,mjs}'],
+  coverageProvider: 'v8',
 
   // Reduce CPU usage during project test runs
   maxWorkers: headless
