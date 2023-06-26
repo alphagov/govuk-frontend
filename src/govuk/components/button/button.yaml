@@ -148,6 +148,33 @@ examples:
       text: Warning button
       href: '/'
       classes: govuk-button--warning
+  - name: Inverse
+    description: A button that appears on dark backgrounds
+    data:
+      name: Inverse
+      text: Inverse button
+      classes: govuk-button--inverse
+  - name: Inverse disabled
+    data:
+      name: Inverse
+      text: Inverse button disabled
+      classes: govuk-button--inverse
+      disabled: true
+  - name: Inverse link
+    description: A link button for actions that appear on dark backgrounds
+    data:
+      name: Inverse
+      text: Inverse button
+      href: '/'
+      classes: govuk-button--inverse
+  - name: Inverse start button
+    description: A start button that appears on dark backgrounds
+    data:
+      name: Inverse
+      text: Inverse start button
+      href: '/'
+      classes: govuk-button--inverse
+      isStartButton: true
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: attributes
