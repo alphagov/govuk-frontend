@@ -1,3 +1,6 @@
+import { packageResolveToPath } from 'govuk-frontend-lib/names'
+import { replacePathSepForRegex } from 'jest-regex-util'
+
 import jestPuppeteerConfig from './jest-puppeteer.config.js'
 
 // Detect when browser has been launched headless
@@ -35,7 +38,20 @@ const config = {
   // Enable Babel transforms until Jest supports ESM and `import()`
   // See: https://jestjs.io/docs/ecmascript-modules
   transform: {
-    '^.+\\.mjs$': ['babel-jest', { rootMode: 'upward' }]
+    // Transform all `*.mjs` to compatible CommonJS
+    '^.+\\.mjs$': ['babel-jest', {
+      rootMode: 'upward'
+    }],
+
+    // Transform some `*.js` to compatible CommonJS
+    ...Object.fromEntries([
+      'del',
+      'slash'
+    ].map((packagePath) => [
+      replacePathSepForRegex(`${packageResolveToPath(packagePath)}$`), ['babel-jest', {
+        rootMode: 'upward'
+      }]
+    ]))
   },
 
   // Enable Babel transforms for ESM-only node_modules
