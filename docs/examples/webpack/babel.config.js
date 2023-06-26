@@ -11,7 +11,11 @@ module.exports = function (api) {
   return {
     presets: [
       ['@babel/preset-env', {
-        browserslistEnv
+        browserslistEnv,
+        loose: browserslistEnv !== 'node',
+
+        // Transform ES modules for Node.js
+        modules: browserslistEnv === 'node' ? 'auto' : false
       }]
     ]
   }
