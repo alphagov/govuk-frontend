@@ -70,7 +70,7 @@
     "puppeteer": "^20.7.2",
     "rollup": "^3.25.1",
     "sass-color-helpers": "^2.1.1",
-    "sass-embedded": "^1.62.0",
+    "sass-embedded": "^1.63.6",
     "sassdoc": "^2.7.4",
     "slash": "^5.1.0"
   },
