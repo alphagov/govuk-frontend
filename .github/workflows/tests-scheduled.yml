@@ -1,0 +1,28 @@
+name: Tests (Scheduled)
+
+on:
+  workflow_dispatch:
+
+  # Run every weekday at 10:30 AM
+  schedule:
+    - cron: '30 10 * * 1-5'
+
+jobs:
+  test:
+    name: Tests (${{ matrix.runner.name }})
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        runner:
+          - name: Ubuntu
+            os: ubuntu-latest
+
+          - name: Windows
+            os: windows-latest
+
+    uses: ./.github/workflows/tests.yml
+    secrets: inherit
+    with:
+      runner: ${{ matrix.runner.os }}

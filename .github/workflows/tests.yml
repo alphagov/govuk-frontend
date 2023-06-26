@@ -9,6 +9,12 @@ on:
       - 'feature/**'
       - 'support/**'
 
+  workflow_call:
+    inputs:
+      runner:
+        description: Run tests on
+        type: string
+
   workflow_dispatch:
     inputs:
       runner:
