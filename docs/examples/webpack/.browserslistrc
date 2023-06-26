@@ -6,3 +6,6 @@ last 2 Samsung versions
 Safari >= 9
 iOS >= 9
 ie 11
+
+[node]
+node 18

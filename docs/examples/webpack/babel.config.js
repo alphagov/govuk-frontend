@@ -4,12 +4,14 @@
  * @type {import('@babel/core').ConfigFunction}
  */
 module.exports = function (api) {
-  api.cache.forever()
+  const browserslistEnv = !api.env('test')
+    ? 'production'
+    : 'node'
 
   return {
     presets: [
       ['@babel/preset-env', {
-        browserslistEnv: 'node'
+        browserslistEnv
       }]
     ]
   }
