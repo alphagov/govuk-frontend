@@ -32,10 +32,10 @@ const config = {
    */
   testEnvironment: 'jest-environment-node-single-context',
 
-  // Enable Babel transforms until Jest supports ESM
+  // Enable Babel transforms until Jest supports ESM and `import()`
   // See: https://jestjs.io/docs/ecmascript-modules
   transform: {
-    '^.+\\.m?js$': ['babel-jest', { rootMode: 'upward' }]
+    '^.+\\.mjs$': ['babel-jest', { rootMode: 'upward' }]
   },
 
   // Enable Babel transforms for ESM-only node_modules
