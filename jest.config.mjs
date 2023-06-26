@@ -104,7 +104,7 @@ export default {
         '!**/*.unit.test.{js,mjs}',
 
         // Exclude other tests
-        '!**/components/globals.test.mjs',
+        '!**/components/globals.test.js',
         '!**/components/*/**',
         '!**/tasks/build/**'
       ],
@@ -118,7 +118,7 @@ export default {
       displayName: 'JavaScript component tests',
       testEnvironment: 'govuk-frontend-helpers/jest/environment/puppeteer.mjs',
       testMatch: [
-        '**/components/globals.test.mjs',
+        '**/components/globals.test.js',
         '**/components/*/*.test.{js,mjs}',
 
         // Exclude accessibility/macro/unit tests
