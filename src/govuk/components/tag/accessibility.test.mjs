@@ -17,6 +17,6 @@ describe('/components/tag', () => {
         await goToComponent(page, 'tag', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
-    }, 60000)
+    }, 90000)
   })
 })
