@@ -253,6 +253,7 @@ This change was introduced in [pull request #3773: Omit the value attribute from
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#3791: Refactor mobile menu button label/text handling](https://github.com/alphagov/govuk-frontend/pull/3791)
+- [#3862: Fix focus style being overlapped by summary action links](https://github.com/alphagov/govuk-frontend/pull/3862)
 
 ## 4.6.0 (Feature release)
 
