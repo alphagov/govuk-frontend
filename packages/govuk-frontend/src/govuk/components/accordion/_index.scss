@@ -228,14 +228,12 @@
       }
 
       &:focus {
-        // Remove default focus border around button as
-        // styling is being applied to inner text elements that receive focus
-        outline: 0;
+        @include govuk-focused-text;
 
         .govuk-accordion__section-heading-text-focus,
         .govuk-accordion__section-summary-focus,
         .govuk-accordion__section-toggle-focus {
-          @include govuk-focused-text;
+          color: $govuk-focus-text-colour;
         }
 
         .govuk-accordion-nav__chevron {
