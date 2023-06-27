@@ -37,8 +37,9 @@
   }
 
   .govuk-pagination__item {
-    // Hide items on small screens except the prev/next items,
-    // non-link items and the first and last items
+    // Hide everything initially, we then unhide the stuff we actually want
+    // visible below. It's ridiculous but it works and avoids overly-specific
+    // selectors that mess with the cascade.
     display: none;
 
     // Center align pagination links in their parent list item so that they
@@ -48,6 +49,19 @@
     @include govuk-media-query($from: tablet) {
       display: block;
     }
+  }
+
+  .govuk-pagination__item:first-child,
+  .govuk-pagination__item:last-child,
+  .govuk-pagination__item--current,
+  .govuk-pagination__item--ellipses {
+    display: block;
+  }
+
+  // If there are exactly three items, do not hide the middle item.
+  // Avoids an awkward and pointless '1 | ... | 3' situation.
+  .govuk-pagination__item:nth-child(2):nth-last-child(2) {
+    display: block;
   }
 
   .govuk-pagination__prev,
@@ -70,12 +84,11 @@
     padding-right: 0;
   }
 
-  // Only show first, last and non-link items on mobile
-  .govuk-pagination__item--current,
-  .govuk-pagination__item--ellipses,
-  .govuk-pagination__item:first-child,
-  .govuk-pagination__item:last-child {
-    display: block;
+  // Show 'collapsed only' items only on mobile
+  .govuk-pagination__item--collapsed-only {
+    @include govuk-media-query($from: tablet) {
+      display: none;
+    }
   }
 
   .govuk-pagination__item--current {

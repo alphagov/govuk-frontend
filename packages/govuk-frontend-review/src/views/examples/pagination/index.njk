@@ -1,0 +1,92 @@
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "pagination/macro.njk" import govukPagination %}
+
+{% extends "layout.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% set veryShortPaginationItems = [
+  { href: '#' },
+  { href: '#' },
+  { href: '#' }
+] %}
+
+{% set shortPaginationItems = [
+  { href: '#' },
+  { href: '#' },
+  { href: '#' },
+  { href: '#' }
+] %}
+
+{% set mediumPaginationItems = [
+  { href: '#' },
+  { href: '#' },
+  { href: '#' },
+  { href: '#' },
+  { href: '#' },
+  { href: '#' },
+  { href: '#' }
+] %}
+
+{% set longPaginationItems = [
+  { href: '#' },
+  { href: '#' },
+  { href: '#' },
+  { href: '#' },
+  { href: '#' },
+  { href: '#' },
+  { href: '#' },
+  { href: '#' },
+  { href: '#' },
+  { href: '#' },
+  { href: '#' },
+  { href: '#' }
+] %}
+
+{% block content %}
+
+<h2 class="govuk-heading-l">Very short</h2>
+<p class="govuk-body">Very short paginations (3 or fewer items) are small enough to not need to hide anything on any breakpoint.</p>
+
+{%- for i in range(1, (veryShortPaginationItems | length) + 1) %}
+  {{ govukPagination({
+    items: veryShortPaginationItems,
+    currentPage: i
+  }) }}
+{%- endfor %}
+
+<h2 class="govuk-heading-l">Short</h2>
+<p class="govuk-body">Short paginations (4 items, with default settings) can show all items on wide breakpoints, but hide some for narrow breakpoints.</p>
+
+{%- for i in range(1, (shortPaginationItems | length) + 1) %}
+  {{ govukPagination({
+    items: shortPaginationItems,
+    currentPage: i
+  }) }}
+{%- endfor %}
+
+<h2 class="govuk-heading-l">Medium</h2>
+<p class="govuk-body">Medium length paginations (5 to 7 items, with default settings) have the ability to sometimes be within 'neighbourly' range of both the start and end at the same time, showing all items at once on wide breakpoints, but also have enough items to require removing some in certain contexts and on narrow breakpoints.</p>
+
+{%- for i in range(1, (mediumPaginationItems | length) + 1) %}
+  {{ govukPagination({
+    items: mediumPaginationItems,
+    currentPage: i
+  }) }}
+{%- endfor %}
+
+<h2 class="govuk-heading-l">Long</h2>
+<p class="govuk-body">Long paginations (8 or more items with default settings) have enough items that they can never show all items at once. Some amount of truncation is always required, even on wider breakpoints.</p>
+
+{%- for i in range(1, (longPaginationItems | length) + 1) %}
+  {{ govukPagination({
+    items: longPaginationItems,
+    currentPage: i
+  }) }}
+{%- endfor %}
+
+{% endblock %}
