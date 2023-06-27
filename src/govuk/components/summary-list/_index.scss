@@ -131,6 +131,15 @@
     }
   }
 
+  // Large groups of action links may wrap onto multiple lines. Because the link
+  // focus styles are applied outside of the link's bounding box, there are
+  // situations where the focus style on a link can be overlapped by subsequent
+  // links. We don't want this, so let's create a new stacking context on focus
+  // so the link always appears to be 'on top'.
+  .govuk-summary-list__actions-list-item .govuk-link:focus {
+    isolation: isolate;
+  }
+
   // No border on entire summary list
   .govuk-summary-list--no-border {
     .govuk-summary-list__row {
