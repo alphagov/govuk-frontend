@@ -17,7 +17,7 @@ export const compile = (options) => gulp.series(
       ...options,
 
       srcPath: join(options.srcPath, 'govuk'),
-      destPath: join(options.destPath, 'govuk-esm'),
+      destPath: join(options.destPath, 'govuk'),
       configPath: join(options.basePath, 'rollup.esm.config.mjs')
     })
   ),
