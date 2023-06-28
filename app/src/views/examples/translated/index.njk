@@ -11,6 +11,7 @@
 {% from "details/macro.njk" import govukDetails %}
 {% from "error-message/macro.njk" import govukErrorMessage %}
 {% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "exit-this-page/macro.njk" import govukExitThisPage %}
 {% from "file-upload/macro.njk" import govukFileUpload %}
 {% from "footer/macro.njk" import govukFooter %}
 {% from "header/macro.njk" import govukHeader %}
@@ -41,6 +42,14 @@
 {% endblock %}
 
 {% block content %}
+  {{ govukExitThisPage({
+    text: "Gadael y dudalen",
+    activatedText: "Tudalen ymadael",
+    timedOutText: "Wedi'i amseru",
+    pressTwoMoreTimesText: "Pwyswch 'Shift' 2 gwaith arall",
+    pressOneMoreTimeText: "Pwyswch 'Shift' 1 mwy o amser"
+  }) }}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">Translated examples</h1>
