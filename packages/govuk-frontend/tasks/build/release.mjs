@@ -24,7 +24,7 @@ export default (options) => gulp.series(
   ),
 
   // Compile GOV.UK Frontend JavaScript
-  task.name('compile:js', () =>
+  task.name("compile:js 'release'", () =>
     scripts.compile('all.mjs', {
       ...options,
 

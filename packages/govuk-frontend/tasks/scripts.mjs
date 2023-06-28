@@ -12,7 +12,7 @@ export const compile = (options) => gulp.series(
   /**
    * Compile GOV.UK Frontend JavaScript (ES modules)
    */
-  task.name('compile:mjs', () =>
+  task.name("compile:js 'modules'", () =>
     scripts.compile('!(*.test).mjs', {
       ...options,
 
@@ -25,7 +25,7 @@ export const compile = (options) => gulp.series(
   /**
    * Compile GOV.UK Frontend JavaScript (UMD bundles)
    */
-  task.name('compile:js', () =>
+  task.name("compile:js 'umd'", () =>
     scripts.compile('**/!(*.test).mjs', {
       ...options,
 
