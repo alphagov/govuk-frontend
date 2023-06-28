@@ -60,7 +60,7 @@
     @include govuk-font($size: 19);
     @include govuk-text-colour;
     padding: $component-padding;
-    border: 2px dashed govuk-colour("mid-grey");
+    border: 2px dashed $govuk-border-colour;
     background-color: govuk-colour("white");
   }
 
@@ -75,5 +75,9 @@
 
   .govuk-file-upload-dropzone--visible .govuk-file-upload-dropzone__hint {
     display: block;
+  }
+
+  .govuk-file-upload-dropzone--hovered .govuk-file-upload-dropzone__hint {
+    border-color: $govuk-success-colour;
   }
 }
