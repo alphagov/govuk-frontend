@@ -1,16 +1,21 @@
 {#
-  Renders the data attributes for the different plural forms of the given
-  translation key.
+  Renders translated text into data attributes by translation key
+
+  - Provide params.message for translation text, singular
+  - Provide params.messages for translation text by corresponding plural rule
 
   {@link https://cldr.unicode.org/index/cldr-spec/plural-rules}
 
   Helps reduce the boilerplate in component templates as they're quite verbose
 
   @private
-  @param {string} translationKey - The kebab-cased name of the translation key
-  @param {object} pluralForms - An object associating translation messages to
-    the plural form they correspond to
+  @param {object} params - i18n macro params
+  @param {string} params.key - Translation key (kebab-case)
+  @param {string} [params.message] - Translation text, singular
+  @param {{ [pluralRule: string]: string }} [params.messages] - Translation text by corresponding plural rule (optional, overrides params.message)
 #}
-{% macro govukPluralisedI18nAttributes(translationKey, pluralForms) %}
-  {% for pluralType, message in pluralForms %} data-i18n.{{translationKey}}.{{pluralType}}="{{message | escape}}"{% endfor %}
+{% macro govukI18nAttributes(params) %}
+  {%- if params.messages -%}
+    {% for pluralRule, message in params.messages %} data-i18n.{{ params.key }}.{{ pluralRule }}="{{ message | escape }}"{% endfor %}
+  {% elseif params.message %} data-i18n.{{ params.key }}="{{ params.message | escape }}"{% endif -%}
 {% endmacro %}

@@ -1,4 +1,4 @@
-{% from "../../macros/i18n.njk" import govukPluralisedI18nAttributes %}
+{% from "../../macros/i18n.njk" import govukI18nAttributes %}
 
 {% from "../textarea/macro.njk" import govukTextarea %}
 {% from "../hint/macro.njk" import govukHint %}
@@ -6,22 +6,51 @@
 {%- set hasNoLimit = (not params.maxwords and not params.maxlength) %}
 
 <div class="govuk-character-count" data-module="govuk-character-count"
-{%- if params.maxlength %} data-maxlength="{{ params.maxlength }}"{% endif %}
-{%- if params.threshold %} data-threshold="{{ params.threshold }}"{% endif %}
-{%- if params.maxwords %} data-maxwords="{{ params.maxwords }}"{% endif %}
-{#
-  Without maxlength or maxwords, we can't guess if the component will count words or characters.
-  We can't guess a default textarea description to be interpolated in JavaScript
-  once the maximum gets configured there.
-  So we only add the attribute if a textarea description was explicitely provided.
-#}
-{%- if hasNoLimit and params.textareaDescriptionText %}{{govukPluralisedI18nAttributes('textarea-description', {other: params.textareaDescriptionText})}}{% endif %}
-{%- if params.charactersUnderLimitText %}{{govukPluralisedI18nAttributes('characters-under-limit', params.charactersUnderLimitText)}}{% endif %}
-{%- if params.charactersAtLimitText %} data-i18n.characters-at-limit="{{ params.charactersAtLimitText | escape}}"{% endif %}
-{%- if params.charactersOverLimitText %}{{govukPluralisedI18nAttributes('characters-over-limit', params.charactersOverLimitText)}}{% endif %}
-{%- if params.wordsUnderLimitText %}{{govukPluralisedI18nAttributes('words-under-limit', params.wordsUnderLimitText)}}{% endif %}
-{%- if params.wordsAtLimitText %} data-i18n.words-at-limit="{{ params.wordsAtLimitText | escape}}"{% endif %}
-{%- if params.wordsOverLimitText %}{{govukPluralisedI18nAttributes('words-over-limit', params.wordsOverLimitText)}}{% endif %}>
+  {%- if params.maxlength %} data-maxlength="{{ params.maxlength }}"{% endif %}
+  {%- if params.threshold %} data-threshold="{{ params.threshold }}"{% endif %}
+  {%- if params.maxwords %} data-maxwords="{{ params.maxwords }}"{% endif %}
+  {#
+    Without maxlength or maxwords, we can't guess if the component will count words or characters.
+    We can't guess a default textarea description to be interpolated in JavaScript
+    once the maximum gets configured there.
+    So we only add the attribute if a textarea description was explicitely provided.
+  #}
+  {%- if hasNoLimit and params.textareaDescriptionText %}
+    {{- govukI18nAttributes({
+      key: 'textarea-description',
+      messages: { other: params.textareaDescriptionText }
+    }) -}}
+  {% endif -%}
+
+  {{- govukI18nAttributes({
+    key: 'characters-under-limit',
+    messages: params.charactersUnderLimitText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'characters-at-limit',
+    message: params.charactersAtLimitText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'characters-over-limit',
+    messages: params.charactersOverLimitText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'words-under-limit',
+    messages: params.wordsUnderLimitText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'words-at-limit',
+    message: params.wordsAtLimitText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'words-over-limit',
+    messages: params.wordsOverLimitText
+  }) -}}>
   {{ govukTextarea({
     id: params.id,
     name: params.name,

@@ -27,7 +27,7 @@ function renderHTML (componentName, options, callBlock) {
   const macroName = componentNameToMacroName(componentName)
   const macroPath = `govuk/components/${componentName}/macro.njk`
 
-  return callMacro(macroName, macroPath, [options], callBlock)
+  return renderMacro(macroName, macroPath, options, callBlock)
 }
 
 /**
@@ -44,26 +44,24 @@ function render (componentName, options, callBlock) {
 }
 
 /**
- * Returns the string result from calling a macro
+ * Render the string result from calling a macro
  *
  * @param {string} macroName - The name of the macro
- * @param {string} macroPath - The path to the file containing the macro *from the root of the project*
- * @param {{ [key: string]: unknown }[]} params - The parameters that will be passed to the macro. They'll be `JSON.stringify`ed and joined with a `,`
+ * @param {string} macroPath - The path to the file containing the macro
+ * @param {{ [param: string]: unknown }} options - Nunjucks macro options (or params)
  * @param {string} [callBlock] - Content for an optional callBlock, if necessary for the macro to receive one
  * @returns {string} The result of calling the macro
  */
-function callMacro (macroName, macroPath, params = [], callBlock) {
-  const macroParams = params.map(param => JSON.stringify(param, null, 2)).join(',')
+function renderMacro (macroName, macroPath, options = {}, callBlock) {
+  const macroOptions = JSON.stringify(options, undefined, 2)
 
   let macroString = `{%- from "${macroPath}" import ${macroName} -%}`
 
   // If we're nesting child components or text, pass the children to the macro
   // using the 'caller' Nunjucks feature
-  if (callBlock) {
-    macroString += `{%- call ${macroName}(${macroParams}) -%}${callBlock}{%- endcall -%}`
-  } else {
-    macroString += `{{- ${macroName}(${macroParams}) -}}`
-  }
+  macroString += callBlock
+    ? `{%- call ${macroName}(${macroOptions}) -%}${callBlock}{%- endcall -%}`
+    : `{{- ${macroName}(${macroOptions}) -}}`
 
   return nunjucksEnv.renderString(macroString, {})
 }
@@ -91,8 +89,8 @@ function renderTemplate (context = {}, blocks = {}) {
 
 module.exports = {
   nunjucksEnv,
-  callMacro,
   render,
   renderHTML,
+  renderMacro,
   renderTemplate
 }
