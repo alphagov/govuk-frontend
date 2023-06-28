@@ -8,7 +8,7 @@
     background-color: $govuk-brand-colour;
 
     &:focus {
-      outline: $govuk-focus-width solid $govuk-focus-colour;
+      @include govuk-focused-box;
     }
   }
 
