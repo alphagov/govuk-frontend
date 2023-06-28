@@ -1,5 +1,6 @@
 import replace from '@rollup/plugin-replace'
 import terser from '@rollup/plugin-terser'
+import * as GOVUKFrontend from 'govuk-frontend/src/govuk/all.mjs'
 import { pkg } from 'govuk-frontend-config'
 import { componentPathToModuleName } from 'govuk-frontend-lib/names'
 import { defineConfig } from 'rollup'
@@ -29,6 +30,7 @@ export default defineConfig(({ i: input }) => ({
     plugins: [
       terser({
         format: { comments: false },
+        mangle: { reserved: Object.keys(GOVUKFrontend) },
 
         // Include sources content from source maps to inspect
         // GOV.UK Frontend and other dependencies' source code
