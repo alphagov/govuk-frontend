@@ -15,7 +15,8 @@
     ".": {
       "sass": "./dist/govuk/all.scss",
       "import": "./dist/govuk-esm/all.mjs",
-      "require": "./dist/govuk/all.bundle.js"
+      "require": "./dist/govuk/all.bundle.js",
+      "default": "./dist/govuk/all.bundle.js"
     },
     "./*": "./*",
     "./dist/": "./dist/",
