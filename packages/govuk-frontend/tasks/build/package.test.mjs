@@ -83,6 +83,15 @@ describe('packages/govuk-frontend/dist/', () => {
         join(requirePath, `${name}.bundle.mjs.map`) // with source map
       ]))
 
+      // Only main package entry is compiled to minified ES module bundle
+      .flatMap(mapPathTo(['**/govuk/all.mjs'], ({ dir: requirePath }) => [
+        join(requirePath, 'all.mjs'),
+
+        // ES module bundles for browsers, minified
+        join(requirePath, `govuk-frontend-${pkg.version}.min.js`), // avoid MIME issues with .js extension
+        join(requirePath, `govuk-frontend-${pkg.version}.min.js.map`) // with source map
+      ]))
+
       // Add Autoprefixer prefixes to all source '*.scss' files
       .flatMap(mapPathTo(['**/*.scss'], ({ dir: requirePath, name }) => [
         join(requirePath, `${name}.scss`),

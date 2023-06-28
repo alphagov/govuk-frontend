@@ -23,6 +23,19 @@ export const compile = (options) => gulp.series(
   ),
 
   /**
+   * Compile GOV.UK Frontend JavaScript (minified) for main entry point only
+   */
+  task.name("compile:js 'minified'", () =>
+    scripts.compile('**/all.mjs', {
+      ...options,
+
+      srcPath: join(options.srcPath, 'govuk'),
+      destPath: join(options.destPath, 'govuk'),
+      configPath: join(options.basePath, 'rollup.release.config.mjs')
+    })
+  ),
+
+  /**
    * Compile GOV.UK Prototype Kit config
    */
   task.name("compile:js 'govuk-prototype-kit'", () =>
