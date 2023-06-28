@@ -52,7 +52,7 @@ export const watch = (options) => gulp.parallel(
     gulp.watch([
       `${slash(paths.root)}/typedoc.config.js`,
       `${slash(paths.app)}/src/javascripts/**/*.mjs`,
-      `${slash(paths.package)}/dist/govuk-esm/**/*.mjs`
+      `${slash(paths.package)}/dist/govuk/**/*.mjs`
     ], scripts(options))
   )
 )

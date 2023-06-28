@@ -169,12 +169,12 @@ describe('packageTypeToPath', () => {
     {
       packageName: 'govuk-frontend',
       options: { type: 'module' },
-      resolvedPath: join(paths.package, 'dist/govuk-esm/all.mjs')
+      resolvedPath: join(paths.package, 'dist/govuk/all.mjs')
     },
     {
       packageName: 'govuk-frontend',
       options: { modulePath: 'i18n.mjs', type: 'module' },
-      resolvedPath: join(paths.package, 'dist/govuk-esm/i18n.mjs')
+      resolvedPath: join(paths.package, 'dist/govuk/i18n.mjs')
     }
   ]
 
