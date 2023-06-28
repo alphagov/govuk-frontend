@@ -1,11 +1,12 @@
-> 0.1% in GB and not dead
+[javascripts]
+> 0.1% in GB and supports es6-module
 last 6 Chrome versions
 last 6 Firefox versions
 last 6 Edge versions
 last 2 Samsung versions
 Firefox ESR
-Safari >= 12
-iOS >= 12.1
+Safari >= 12 and not Safari < 11
+iOS >= 12.1 and not iOS < 11
 
 [stylesheets]
 > 0.1% in GB and not dead

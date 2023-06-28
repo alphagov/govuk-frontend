@@ -5,7 +5,7 @@
  */
 module.exports = function (api) {
   const browserslistEnv = !api.env('test')
-    ? 'production'
+    ? 'javascripts'
     : 'node'
 
   return {
