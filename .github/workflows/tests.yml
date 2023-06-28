@@ -216,7 +216,7 @@ jobs:
         run: ${{ matrix.task.run }}
 
   package:
-    name: Export ${{ matrix.conditions }}, Node.js ${{ matrix.node-version }}
+    name: Export ${{ join(matrix.conditions, ' ') || 'require' }}, Node.js ${{ matrix.node-version }}
     runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
     needs: [install, build]
 
@@ -228,17 +228,16 @@ jobs:
 
       matrix:
         node-version:
-          - 12.18 # Node.js 12.18 uses package exports with trailing slashes
-          - 12 # But Node.js 12.20+ uses package exports with subpath patterns
-          - 18
+          - 12 # Node.js 12.20+ uses package exports with subpath patterns
+          - 18 # Node.js 17+ cannot use package exports with trailing slashes
 
         conditions:
-          - require
-          - import
+          - [require]
+          - [import]
 
-        exclude:
-          - conditions: import
-            node-version: 12.18
+        include:
+          - conditions: []
+            node-version: 12.18 # Node.js 12.18 uses package exports with trailing slashes
 
     steps:
       - name: Checkout
@@ -255,11 +254,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Export ${{ matrix.conditions }}, Node.js ${{ matrix.node-version }}
+      - name: Export ${{ join(matrix.conditions, ' ') || 'require' }}, Node.js ${{ matrix.node-version }}
         env:
-          # Node.js conditions override from "require" to "import" etc
+          # Node.js conditions override from "require" (default) to "import" etc
           # https://nodejs.org/api/cli.html#-c-condition---conditionscondition
-          FLAGS: ${{ matrix.conditions != 'require' && format(' --conditions {0}', matrix.conditions) || '' }}
+          FLAGS: ${{ matrix.conditions[0] != null && format(' --conditions {0}', join(matrix.conditions, ' --conditions ')) || '' }}
 
         run: |
           node --eval "console.log(require.resolve('govuk-frontend'))"${{ env.FLAGS }}
