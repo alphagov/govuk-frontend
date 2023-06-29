@@ -13,7 +13,7 @@ export const compile = (options) => gulp.series(
    * Compile GOV.UK Frontend JavaScript (ES modules)
    */
   task.name("compile:js 'modules'", () =>
-    scripts.compile('!(*.test).mjs', {
+    scripts.compile('**/{all,components/*/!(*.test)}.mjs', {
       ...options,
 
       srcPath: join(options.srcPath, 'govuk'),
@@ -26,7 +26,7 @@ export const compile = (options) => gulp.series(
    * Compile GOV.UK Frontend JavaScript (UMD bundles)
    */
   task.name("compile:js 'umd'", () =>
-    scripts.compile('**/!(*.test).mjs', {
+    scripts.compile('**/{all,components/*/!(*.test)}.mjs', {
       ...options,
 
       srcPath: join(options.srcPath, 'govuk'),
