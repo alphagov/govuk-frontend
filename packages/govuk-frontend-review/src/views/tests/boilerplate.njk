@@ -6,7 +6,7 @@
 {% block head %}
   {{ super() }}
   <script type="importmap">
-    { "imports": { "govuk-frontend": "/javascripts/all.bundle.min.mjs" } }
+    { "imports": { "govuk-frontend": "/javascripts/govuk-frontend-{{ version }}.min.js" } }
   </script>
 {% endblock %}
 
@@ -21,5 +21,5 @@
 {% endblock %}
 
 {% block bodyEnd %}
-  <script type="module" src="/javascripts/all.bundle.min.mjs"></script>
+  <script type="module" src="/javascripts/govuk-frontend-{{ version }}.min.js"></script>
 {% endblock %}

@@ -1,4 +1,5 @@
 import express from 'express'
+import { pkg } from 'govuk-frontend-config'
 import { getComponentsData, getComponentNames, filterPath } from 'govuk-frontend-lib/files'
 import { componentNameToMacroName } from 'govuk-frontend-lib/names'
 import { getStats, modulePaths } from 'govuk-frontend-stats'
@@ -44,6 +45,7 @@ export default async () => {
   app.use(middleware.robots)
 
   // Add build stats
+  app.locals.version = pkg.version
   app.locals.stats = Object.fromEntries(await Promise.all(modulePaths
     .map(async (modulePath) => [modulePath, await getStats(modulePath)])))
 

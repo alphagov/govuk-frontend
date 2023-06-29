@@ -37,21 +37,11 @@ export const watch = (options) => gulp.parallel(
   ),
 
   /**
-   * JavaScripts lint watcher
-   */
-  task.name('lint:js watch', () =>
-    gulp.watch([
-      `${slash(paths.app)}/src/javascripts/**/*.mjs`
-    ], npm.script('lint:js:cli', [slash(join(options.workspace, '**/*.{cjs,js,md,mjs}'))]))
-  ),
-
-  /**
    * JavaScripts build watcher
    */
   task.name('compile:js watch', () =>
     gulp.watch([
       `${slash(paths.root)}/typedoc.config.js`,
-      `${slash(paths.app)}/src/javascripts/**/*.mjs`,
       `${slash(paths.package)}/dist/govuk/**/*.mjs`
     ], scripts(options))
   )

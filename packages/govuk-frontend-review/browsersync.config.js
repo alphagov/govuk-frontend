@@ -1,6 +1,7 @@
 const { join } = require('path')
 
 const { paths, ports } = require('govuk-frontend-config')
+const { pkg } = require('govuk-frontend-config')
 const { packageTypeToPath } = require('govuk-frontend-lib/names')
 
 /**
@@ -22,9 +23,14 @@ module.exports = {
 
   // Files to watch for auto reload
   files: [
-    join(paths.app, 'dist/javascripts/**/*.mjs'),
     join(paths.app, 'dist/stylesheets/**/*.css'),
     join(paths.app, 'src/views/**/*.njk'),
+
+    packageTypeToPath('govuk-frontend', {
+      modulePath: `govuk-frontend-${pkg.version}.min.js`,
+      moduleRoot: paths.app
+    }),
+
     packageTypeToPath('govuk-frontend', {
       modulePath: '**/*.njk',
       moduleRoot: paths.app
@@ -36,7 +42,10 @@ module.exports = {
   serveStatic: [
     {
       route: '/javascripts',
-      dir: join(paths.app, 'dist/javascripts')
+      dir: packageTypeToPath('govuk-frontend', {
+        modulePath: '/',
+        moduleRoot: paths.app
+      })
     },
     {
       route: '/stylesheets',
