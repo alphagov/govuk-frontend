@@ -2,7 +2,7 @@ import runScript from '@npmcli/run-script'
 import { paths } from 'govuk-frontend-config'
 import PluginError from 'plugin-error'
 
-import { isDev } from './helpers/task-arguments.js'
+import { isDev } from './helpers/task-arguments.mjs'
 import { task } from './index.mjs'
 
 /**

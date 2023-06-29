@@ -26,35 +26,35 @@ describe('Task arguments', () => {
       it('is flagged false', async () => {
         process.argv = [...argv]
 
-        const { isDev } = require('./task-arguments.js')
+        const { isDev } = await import('./task-arguments.mjs')
         expect(isDev).toBe(false)
       })
 
       it("is flagged false for 'gulp build:app'", async () => {
         process.argv = [...argv, 'build:app']
 
-        const { isDev } = require('./task-arguments.js')
+        const { isDev } = await import('./task-arguments.mjs')
         expect(isDev).toBe(false)
       })
 
       it("is flagged false for 'gulp build:package'", async () => {
         process.argv = [...argv, 'build:package']
 
-        const { isDev } = require('./task-arguments.js')
+        const { isDev } = await import('./task-arguments.mjs')
         expect(isDev).toBe(false)
       })
 
       it("is flagged false for 'gulp build:release'", async () => {
         process.argv = [...argv, 'build:release']
 
-        const { isDev } = require('./task-arguments.js')
+        const { isDev } = await import('./task-arguments.mjs')
         expect(isDev).toBe(false)
       })
 
       it("is flagged true for 'gulp dev'", async () => {
         process.argv = [...argv, 'dev']
 
-        const { isDev } = require('./task-arguments.js')
+        const { isDev } = await import('./task-arguments.mjs')
         expect(isDev).toBe(true)
       })
     })

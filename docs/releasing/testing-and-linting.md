@@ -70,6 +70,8 @@ See [JavaScript Coding Standards](/docs/contributing/coding-standards/js.md#form
 
 We use [Jest](https://jestjs.io/), an automated testing platform with an assertion library, and [Puppeteer](https://pptr.dev/) that is used to control [headless Chrome](https://developers.google.com/web/updates/2017/04/headless-chrome).
 
+Tests should be written using ES modules (`*.mjs`) by default, but use CommonJS modules (`*.js`) for tests using browser [`import()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import) in Puppeteer. This avoids Babel transforms until [Jest supports `import()` and ES modules](https://jestjs.io/docs/ecmascript-modules) in future.
+
 ### Component tests
 
 We write functional tests for every component to check the output of our Nunjucks code. These are found in `template.test.js` files in each component directory. These Nunjucks tests render the component examples defined in the component yaml files, and assert that the HTML tags, attributes and classes are as expected. For example: checking that when you pass in an `id` to the component using the Nunjucks macro, it outputs the component with an `id` attribute equal to that value.
@@ -86,7 +88,7 @@ You should also test component Javascript logic with unit tests, in a `[componen
 
 ### Global tests
 
-We write functional tests for checking our JavaScript exports and our global sass variables - see [all.test.mjs](/packages/govuk-frontend/src/govuk/all.test.mjs) and [components/globals.test.mjs](/packages/govuk-frontend/src/govuk/components/globals.test.mjs) for examples of global tests we run.
+We write functional tests for checking our JavaScript exports and our global sass variables - see [all.test.mjs](/packages/govuk-frontend/src/govuk/all.test.mjs) and [components/globals.test.js](/packages/govuk-frontend/src/govuk/components/globals.test.js) for examples of global tests we run.
 
 ### Conventions
 

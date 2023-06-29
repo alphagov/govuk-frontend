@@ -1,3 +1,6 @@
+import { packageResolveToPath } from 'govuk-frontend-lib/names'
+import { replacePathSepForRegex } from 'jest-regex-util'
+
 import jestPuppeteerConfig from './jest-puppeteer.config.js'
 
 // Detect when browser has been launched headless
@@ -32,10 +35,23 @@ const config = {
    */
   testEnvironment: 'jest-environment-node-single-context',
 
-  // Enable Babel transforms until Jest supports ESM
+  // Enable Babel transforms until Jest supports ESM and `import()`
   // See: https://jestjs.io/docs/ecmascript-modules
   transform: {
-    '^.+\\.m?js$': ['babel-jest', { rootMode: 'upward' }]
+    // Transform all `*.mjs` to compatible CommonJS
+    '^.+\\.mjs$': ['babel-jest', {
+      rootMode: 'upward'
+    }],
+
+    // Transform some `*.js` to compatible CommonJS
+    ...Object.fromEntries([
+      'del',
+      'slash'
+    ].map((packagePath) => [
+      replacePathSepForRegex(`${packageResolveToPath(packagePath)}$`), ['babel-jest', {
+        rootMode: 'upward'
+      }]
+    ]))
   },
 
   // Enable Babel transforms for ESM-only node_modules
@@ -60,6 +76,7 @@ const config = {
  */
 export default {
   collectCoverageFrom: ['./packages/govuk-frontend/src/**/*.{js,mjs}'],
+  coverageProvider: 'v8',
 
   // Reduce CPU usage during project test runs
   maxWorkers: headless
@@ -104,7 +121,7 @@ export default {
         '!**/*.unit.test.{js,mjs}',
 
         // Exclude other tests
-        '!**/components/globals.test.mjs',
+        '!**/components/globals.test.js',
         '!**/components/*/**',
         '!**/tasks/build/**'
       ],
@@ -118,7 +135,7 @@ export default {
       displayName: 'JavaScript component tests',
       testEnvironment: 'govuk-frontend-helpers/jest/environment/puppeteer.mjs',
       testMatch: [
-        '**/components/globals.test.mjs',
+        '**/components/globals.test.js',
         '**/components/*/*.test.{js,mjs}',
 
         // Exclude accessibility/macro/unit tests
