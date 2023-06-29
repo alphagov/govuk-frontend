@@ -2,14 +2,13 @@ import replace from '@rollup/plugin-replace'
 import terser from '@rollup/plugin-terser'
 import * as GOVUKFrontend from 'govuk-frontend/src/govuk/all.mjs'
 import { pkg } from 'govuk-frontend-config'
-import { componentPathToModuleName } from 'govuk-frontend-lib/names'
 import { defineConfig } from 'rollup'
 
 /**
  * Rollup config for GitHub release
  *
- * Universal Module Definition (UMD) bundle for browser <script>
- * `window` globals and compatibility with CommonJS and AMD `require()`
+ * ECMAScript (ES) module bundles for browser <script type="module">
+ * or using `import` for modern browsers and Node.js scripts
  */
 export default defineConfig(({ i: input }) => ({
   input,
@@ -19,7 +18,7 @@ export default defineConfig(({ i: input }) => ({
    */
   output: {
     compact: true,
-    format: 'umd',
+    format: 'es',
 
     // Bundled modules
     preserveModules: false,
@@ -41,11 +40,7 @@ export default defineConfig(({ i: input }) => ({
         // Compatibility workarounds
         safari10: true
       })
-    ],
-
-    // Components are given names (e.g window.GOVUKFrontend.Accordion)
-    amd: { id: componentPathToModuleName(input) },
-    name: componentPathToModuleName(input)
+    ]
   },
 
   /**
