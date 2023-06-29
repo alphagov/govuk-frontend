@@ -175,6 +175,11 @@ describe('packageTypeToPath', () => {
       packageName: 'govuk-frontend',
       options: { modulePath: 'components/accordion/accordion.bundle.js' },
       resolvedPath: join(paths.package, 'dist/govuk/components/accordion/accordion.bundle.js')
+    },
+    {
+      packageName: 'govuk-frontend',
+      options: { modulePath: 'components/accordion/accordion.bundle.mjs', type: 'module' },
+      resolvedPath: join(paths.package, 'dist/govuk/components/accordion/accordion.bundle.mjs')
     }
   ]
 

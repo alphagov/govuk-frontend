@@ -264,6 +264,7 @@ jobs:
           node --eval "console.log(require.resolve('govuk-frontend'))"${{ env.FLAGS }}
           node --eval "console.log(require.resolve('govuk-frontend/package.json'))"${{ env.FLAGS }}
           node --eval "console.log(require.resolve('govuk-frontend/dist/govuk/components/accordion/accordion.bundle.js'))"${{ env.FLAGS }}
+          node --eval "console.log(require.resolve('govuk-frontend/dist/govuk/components/accordion/accordion.bundle.mjs'))"${{ env.FLAGS }}
           node --eval "console.log(require.resolve('govuk-frontend/dist/govuk/i18n.mjs'))"${{ env.FLAGS }}
 
   regression:
