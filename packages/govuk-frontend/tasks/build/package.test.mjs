@@ -4,7 +4,8 @@ import { join } from 'path'
 import { paths, pkg } from 'govuk-frontend-config'
 import { compileSassFile } from 'govuk-frontend-helpers/tests'
 import { filterPath, getComponentNames, getListing, mapPathTo } from 'govuk-frontend-lib/files'
-import { componentNameToClassName, componentPathToModuleName } from 'govuk-frontend-lib/names'
+import { componentNameToClassName } from 'govuk-frontend-lib/names'
+import { outdent } from 'outdent'
 
 describe('packages/govuk-frontend/dist/', () => {
   let listingPackage
@@ -16,6 +17,7 @@ describe('packages/govuk-frontend/dist/', () => {
   let componentsFilesDistESM
 
   let componentNames
+  let componentNamesWithJavaScript
 
   beforeAll(async () => {
     listingPackage = await getListing('*', {
@@ -44,6 +46,10 @@ describe('packages/govuk-frontend/dist/', () => {
 
     // Components list
     componentNames = await getComponentNames()
+
+    // Components list (with JavaScript only)
+    componentNamesWithJavaScript = await getComponentNames((componentName, componentFiles) =>
+      componentFiles.some(filterPath([`**/${componentName}.mjs`])))
   })
 
   it('should contain the expected files', async () => {
@@ -67,13 +73,13 @@ describe('packages/govuk-frontend/dist/', () => {
       .flatMap(mapPathTo(['**/*.mjs'], ({ dir: requirePath, name }) => {
         const importFilter = /^govuk(?!-)/
 
-        // All source `**/*.mjs` files compiled to `**/*.js`
+        // UMD bundles for compatibility (e.g. Rails Asset Pipeline)
         const output = [
           join(requirePath, `${name}.js`),
           join(requirePath, `${name}.js.map`) // with source map
         ]
 
-        // Only source `./govuk/**/*.mjs` files compiled to `./govuk-esm/**/*.mjs`
+        // Only source `./govuk/**/*.mjs` files compiled to ES modules
         if (importFilter.test(requirePath)) {
           const importPath = requirePath.replace(importFilter, 'govuk-esm')
 
@@ -120,31 +126,74 @@ describe('packages/govuk-frontend/dist/', () => {
     ])
   })
 
-  describe('all.scss', () => {
-    it('should compile without throwing an exception', async () => {
-      const file = join(paths.package, 'dist/govuk/all.scss')
-      await expect(compileSassFile(file)).resolves
+  describe('Sass stylesheets', () => {
+    describe('all.scss', () => {
+      it('should compile without throwing an exception', async () => {
+        const file = join(paths.package, 'dist/govuk/all.scss')
+        await expect(compileSassFile(file)).resolves
+      })
     })
   })
 
-  describe('all.js', () => {
-    it('should have correct module name', async () => {
-      const contents = await readFile(join(paths.package, 'dist/govuk/all.js'), 'utf8')
+  describe('ECMAScript (ES) modules', () => {
+    describe('all.mjs', () => {
+      it('should export each module', async () => {
+        const contents = await readFile(join(paths.package, 'dist/govuk-esm/all.mjs'), 'utf8')
 
-      // Look for AMD module definition for 'GOVUKFrontend'
-      expect(contents).toContain("typeof define === 'function' && define.amd ? define('GOVUKFrontend', ['exports'], factory)")
+        // Look for ES import for each component
+        expect(contents).toContain(outdent`
+          import { Accordion } from './components/accordion/accordion.mjs';
+          import { Button } from './components/button/button.mjs';
+          import { CharacterCount } from './components/character-count/character-count.mjs';
+          import { Checkboxes } from './components/checkboxes/checkboxes.mjs';
+          import { ErrorSummary } from './components/error-summary/error-summary.mjs';
+          import { Header } from './components/header/header.mjs';
+          import { NotificationBanner } from './components/notification-banner/notification-banner.mjs';
+          import { Radios } from './components/radios/radios.mjs';
+          import { SkipLink } from './components/skip-link/skip-link.mjs';
+          import { Tabs } from './components/tabs/tabs.mjs';
+        `)
+
+        // Look for ES modules named exports
+        expect(contents).toContain('export { Accordion, Button, CharacterCount, Checkboxes, ErrorSummary, Header, NotificationBanner, Radios, SkipLink, Tabs, initAll };')
+      })
     })
 
-    it('should have correct version number', async () => {
-      const contents = await readFile(join(paths.package, 'dist/govuk/all.js'), 'utf8')
+    describe('common/govuk-frontend-version.mjs', () => {
+      it('should have correct version number', async () => {
+        const contents = await readFile(join(paths.package, 'dist/govuk-esm/common/govuk-frontend-version.mjs'), 'utf8')
 
-      // Look for CommonJS `version` named export
-      expect(contents).toContain(`const version = '${pkg.version}';`)
-      expect(contents).toContain('exports.version = version;')
+        // Look for ES modules `version` named export
+        expect(contents).toContain(`const version = '${pkg.version}';`)
+        expect(contents).toContain('export { version };')
+      })
     })
   })
 
-  describe('component', () => {
+  describe('Universal Module Definition (UMD)', () => {
+    describe('all.js', () => {
+      it('should export each module', async () => {
+        const contents = await readFile(join(paths.package, 'dist/govuk/all.js'), 'utf8')
+
+        // Look for AMD module definition for 'GOVUKFrontend'
+        expect(contents).toContain("typeof define === 'function' && define.amd ? define('GOVUKFrontend', ['exports'], factory)")
+
+        // Look for bundled components with CommonJS named exports
+        for (const componentName of componentNamesWithJavaScript) {
+          const componentClassName = componentNameToClassName(componentName)
+
+          expect(contents).toContain(`class ${componentClassName} {`)
+          expect(contents).toContain(`exports.${componentClassName} = ${componentClassName};`)
+        }
+
+        // Look for CommonJS named exports for utilities
+        expect(contents).toContain('exports.initAll = initAll;')
+        expect(contents).toContain('exports.version = version;')
+      })
+    })
+  })
+
+  describe('Components', () => {
     it('should have macro-options.json that contains JSON', () => {
       const componentTasks = componentNames.map(async (componentName) => {
         const componentFilter = filterPath([`**/${componentName}/**`])
@@ -186,18 +235,12 @@ describe('packages/govuk-frontend/dist/', () => {
     })
   })
 
-  describe('components with JavaScript', () => {
-    let componentNamesWithJavaScript
-
-    beforeAll(async () => {
-      // Components list (with JavaScript only)
-      componentNamesWithJavaScript = await getComponentNames((componentName, componentFiles) =>
-        componentFiles.some(filterPath([`**/${componentName}.mjs`])))
-    })
-
+  describe('Components with JavaScript', () => {
     it('should have component JavaScript file with correct module name', () => {
       const componentTasks = componentNamesWithJavaScript.map(async (componentName) => {
         const componentFilter = filterPath([`**/${componentName}/**`])
+
+        const componentClassName = componentNameToClassName(componentName)
 
         const componentSource = componentsFilesSource.filter(componentFilter)
         const componentDist = componentsFilesDist.filter(componentFilter)
@@ -205,7 +248,9 @@ describe('packages/govuk-frontend/dist/', () => {
 
         // UMD bundle not found at source
         expect(componentSource)
-          .toEqual(expect.not.arrayContaining([join(componentName, `${componentName}.js`)]))
+          .toEqual(expect.not.arrayContaining([
+            join(componentName, `${componentName}.js`)
+          ]))
 
         // UMD bundle generated in dist
         expect(componentDist)
@@ -215,18 +260,17 @@ describe('packages/govuk-frontend/dist/', () => {
         expect(componentsFilesDistESM)
           .toEqual(expect.arrayContaining([join(componentName, `${componentName}.mjs`)]))
 
-        const [modulePath] = componentDist
-          .filter(filterPath([`**/${componentName}.js`]))
-
         const [modulePathESM] = componentDistESM
           .filter(filterPath([`**/${componentName}.mjs`]))
 
-        const moduleName = componentPathToModuleName(join(paths.package, 'src/govuk/components', modulePath))
-        const moduleText = await readFile(join(paths.package, 'dist/govuk/components', modulePath), 'utf8')
-        const moduleTextESM = await readFile(join(paths.package, 'dist/govuk-esm/components', modulePathESM), 'utf8')
+        const [modulePathUMD] = componentDist
+          .filter(filterPath([`**/${componentName}.js`]))
 
-        expect(moduleText).toContain(`typeof define === 'function' && define.amd ? define('${moduleName}', ['exports'], factory)`)
-        expect(moduleTextESM).toContain(`export { ${componentNameToClassName(componentName)} }`)
+        const moduleTextESM = await readFile(join(paths.package, 'dist/govuk-esm/components', modulePathESM), 'utf8')
+        const moduleTextUMD = await readFile(join(paths.package, 'dist/govuk/components', modulePathUMD), 'utf8')
+
+        expect(moduleTextESM).toContain(`export { ${componentClassName} }`)
+        expect(moduleTextUMD).toContain(`exports.${componentClassName} = ${componentClassName};`)
       })
 
       // Check all component files
@@ -234,7 +278,7 @@ describe('packages/govuk-frontend/dist/', () => {
     })
   })
 
-  describe('fixtures', () => {
+  describe('Fixtures', () => {
     it('should have fixtures.json that contains JSON', () => {
       const componentTasks = componentNames.map(async (componentName) => {
         const componentFilter = filterPath([`**/${componentName}/**`])
