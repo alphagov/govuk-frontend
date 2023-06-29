@@ -4,6 +4,12 @@
 
 ### New features
 
+#### Help users quickly exit a page with Exit This Page
+
+You can now use [exit this page](https://design-system.service.gov.uk/components/exit-this-page/) to help users leave a page or service quickly in instances where the page or service contains sensitive information.
+
+This was added in [pull request #2545: Add exit this page component](https://github.com/alphagov/govuk-frontend/pull/2545).
+
 #### Added inverse modifier for buttons on dark backgrounds
 
 You can now style buttons on dark backgrounds to have a white background colour by adding the `govuk-button--inverse` class.
