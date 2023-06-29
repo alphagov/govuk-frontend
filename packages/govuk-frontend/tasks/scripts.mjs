@@ -10,7 +10,7 @@ import gulp from 'gulp'
  */
 export const compile = (options) => gulp.series(
   /**
-   * Compile GOV.UK Frontend JavaScript (ES modules)
+   * Compile GOV.UK Frontend JavaScript for all entry points
    */
   task.name("compile:js 'modules'", () =>
     scripts.compile('**/{all,components/*/!(*.test)}.mjs', {
@@ -18,20 +18,7 @@ export const compile = (options) => gulp.series(
 
       srcPath: join(options.srcPath, 'govuk'),
       destPath: join(options.destPath, 'govuk'),
-      configPath: join(options.basePath, 'rollup.esm.config.mjs')
-    })
-  ),
-
-  /**
-   * Compile GOV.UK Frontend JavaScript (UMD bundles)
-   */
-  task.name("compile:js 'umd'", () =>
-    scripts.compile('**/{all,components/*/!(*.test)}.mjs', {
-      ...options,
-
-      srcPath: join(options.srcPath, 'govuk'),
-      destPath: join(options.destPath, 'govuk'),
-      configPath: join(options.basePath, 'rollup.umd.config.mjs')
+      configPath: join(options.basePath, 'rollup.publish.config.mjs')
     })
   ),
 
