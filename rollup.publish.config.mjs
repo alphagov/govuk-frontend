@@ -1,5 +1,6 @@
 import replace from '@rollup/plugin-replace'
 import { pkg } from 'govuk-frontend-config'
+import { componentPathToModuleName } from 'govuk-frontend-lib/names'
 import { defineConfig } from 'rollup'
 
 /**
@@ -21,6 +22,21 @@ export default defineConfig(({ i: input }) => ({
 
       // Separate modules, not bundled
       preserveModules: true
+    },
+
+    /**
+     * Universal Module Definition (UMD) bundle for browser <script>
+     * `window` globals and compatibility with CommonJS and AMD `require()`
+     */
+    {
+      format: 'umd',
+
+      // Bundled modules
+      preserveModules: false,
+
+      // Components are given names (e.g window.GOVUKFrontend.Accordion)
+      amd: { id: componentPathToModuleName(input) },
+      name: componentPathToModuleName(input)
     }
   ],
 
