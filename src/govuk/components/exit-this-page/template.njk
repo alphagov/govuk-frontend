@@ -8,6 +8,7 @@
   {%- if params.pressOneMoreTimeText %} data-i18n.press-one-more-time="{{ params.pressOneMoreTimeText | escape }}"{% endif %}
 >
   {{- govukButton({
+    html: params.html,
     text: params.text | default("Exit this page"),
     classes: "govuk-button--warning govuk-exit-this-page__button govuk-js-exit-this-page-button",
     href: params.redirectUrl | default("https://www.bbc.co.uk/weather")

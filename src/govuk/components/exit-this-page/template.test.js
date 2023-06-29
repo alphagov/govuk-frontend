@@ -40,6 +40,13 @@ describe('Exit this page', () => {
       expect($button.text()).toContain('Exit this test')
     })
 
+    it('renders with custom HTML', () => {
+      const $ = render('exit-this-page', examples['testing-html'])
+      const $button = $('.govuk-exit-this-page').find('.govuk-button')
+
+      expect($button.html()).toContain('Exit <em>this</em> test')
+    })
+
     it('renders with a custom URL', () => {
       const $ = render('exit-this-page', examples.testing)
       const $button = $('.govuk-exit-this-page').find('.govuk-button')
