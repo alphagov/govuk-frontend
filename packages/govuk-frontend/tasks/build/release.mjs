@@ -29,12 +29,7 @@ export default (options) => gulp.series(
       ...options,
 
       srcPath: join(options.srcPath, 'govuk'),
-      configPath: join(options.basePath, 'rollup.release.config.mjs'),
-
-      // Rename using package name (versioned) and `*.min.js` extension
-      filePath ({ dir, name }) {
-        return join(dir, `${name.replace(/^all/, pkg.name)}-${pkg.version}.min.js`)
-      }
+      configPath: join(options.basePath, 'rollup.release.config.mjs')
     })
   ),
 

@@ -17,7 +17,11 @@ export default defineConfig(({ i: input }) => ({
    * Output options
    */
   output: {
+    compact: true,
+    file: `${pkg.name}-${pkg.version}.min.js`,
     format: 'umd',
+
+    // Bundled modules
     preserveModules: false,
 
     /**

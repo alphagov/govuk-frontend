@@ -24,12 +24,12 @@ describe('dist/', () => {
     })
   })
 
-  describe('govuk-frontend-[version].min.css', () => {
-    let filename
+  describe.each([
+    `govuk-frontend-${pkg.version}.min.css`
+  ])('%s', (filename) => {
     let stylesheet
 
     beforeAll(async () => {
-      filename = `govuk-frontend-${pkg.version}.min.css`
       stylesheet = await readFile(join(paths.root, `dist/${filename}`), 'utf8')
     })
 
@@ -50,8 +50,9 @@ describe('dist/', () => {
     })
   })
 
-  describe('govuk-frontend-[version].min.css.map', () => {
-    let filename
+  describe.each([
+    `govuk-frontend-${pkg.version}.min.css.map`
+  ])('%s', (filename) => {
     let sourcemap
 
     beforeAll(async () => {
@@ -65,12 +66,12 @@ describe('dist/', () => {
     })
   })
 
-  describe('govuk-frontend-[version].min.js', () => {
-    let filename
+  describe.each([
+    `govuk-frontend-${pkg.version}.min.js`
+  ])('%s', (filename) => {
     let javascript
 
     beforeAll(async () => {
-      filename = `govuk-frontend-${pkg.version}.min.js`
       javascript = await readFile(join(paths.root, `dist/${filename}`), 'utf8')
     })
 
@@ -87,12 +88,12 @@ describe('dist/', () => {
     })
   })
 
-  describe('govuk-frontend-[version].min.js.map', () => {
-    let filename
+  describe.each([
+    `govuk-frontend-${pkg.version}.min.js.map`
+  ])('%s', (filename) => {
     let sourcemap
 
     beforeAll(async () => {
-      filename = `govuk-frontend-${pkg.version}.min.js.map`
       sourcemap = JSON.parse(await readFile(join(paths.root, `dist/${filename}`), 'utf8'))
     })
 

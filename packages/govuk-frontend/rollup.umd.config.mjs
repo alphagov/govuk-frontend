@@ -17,6 +17,8 @@ export default defineConfig(({ i: input }) => ({
    */
   output: {
     format: 'umd',
+
+    // Bundled modules
     preserveModules: false,
 
     // Components are given names (e.g window.GOVUKFrontend.Accordion)
