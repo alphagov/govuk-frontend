@@ -2,8 +2,6 @@
 /// @group helpers/spacing
 ////
 
-// stylelint-disable indentation
-
 /// Single point spacing
 ///
 /// Returns measurement corresponding to the spacing point requested.
@@ -35,7 +33,7 @@
   $actual-input-type: type-of($spacing-point);
   @if $actual-input-type != "number" {
     @error "Expected a number (integer), but got a "
-    + "#{$actual-input-type}.";
+      + "#{$actual-input-type}.";
   }
 
   $is-negative: false;
@@ -80,7 +78,7 @@
 
   @if not map-has-key($govuk-spacing-responsive-scale, $responsive-spacing-point) {
     @error "Unknown spacing point `#{$responsive-spacing-point}`. Make sure you are using a point from the "
-    + "responsive spacing scale in `_settings/spacing.scss`.";
+      + "responsive spacing scale in `_settings/spacing.scss`.";
   }
 
   // Make sure that the return value from `_settings/spacing.scss` is a map.
@@ -88,7 +86,7 @@
   $actual-map-type: type-of($scale-map);
   @if $actual-map-type != "map" {
     @error "Expected a number (integer), but got a "
-    + "#{$actual-map-type}. Make sure you are using a map to set the responsive spacing in `_settings/spacing.scss`)";
+      + "#{$actual-map-type}. Make sure you are using a map to set the responsive spacing in `_settings/spacing.scss`)";
   }
 
   // Loop through each breakpoint in the map
