@@ -25,6 +25,17 @@ export default defineConfig(({ i: input }) => ({
     },
 
     /**
+     * ECMAScript (ES) module bundles for browser <script type="module">
+     * or using `import` for modern browsers and Node.js scripts
+     */
+    {
+      format: 'es',
+
+      // Bundled modules
+      preserveModules: false
+    },
+
+    /**
      * Universal Module Definition (UMD) bundle for browser <script>
      * `window` globals and compatibility with CommonJS and AMD `require()`
      */
