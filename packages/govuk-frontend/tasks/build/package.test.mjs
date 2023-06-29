@@ -70,8 +70,8 @@ describe('packages/govuk-frontend/dist/', () => {
         join(requirePath, `${name}.mjs.map`) // with source map
       ]))
 
-      // Only source `./govuk/**/*.mjs` files compiled to UMD bundles
-      .flatMap(mapPathTo(['**/govuk/**/*.mjs'], ({ dir: requirePath, name }) => [
+      // Only package entries and components are compiled to UMD bundles
+      .flatMap(mapPathTo(['**/govuk/{all,components/**/*}.mjs'], ({ dir: requirePath, name }) => [
         join(requirePath, `${name}.mjs`),
 
         // UMD bundles for compatibility (e.g. Rails Asset Pipeline)
