@@ -6,7 +6,7 @@ params:
   - name: redirectUrl
     type: string
     required: false
-    description: URL to redirect the current tab to. Defaults to `https://www.google.com`.
+    description: URL to redirect the current tab to. Defaults to `https://www.bbc.co.uk/weather`.
   - name: id
     type: string
     required: false
