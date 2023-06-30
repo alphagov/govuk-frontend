@@ -5,14 +5,14 @@
  */
 module.exports = function (api) {
   const browserslistEnv = !api.env('test')
-    ? 'production'
+    ? 'javascripts'
     : 'node'
 
   return {
     presets: [
       ['@babel/preset-env', {
         browserslistEnv,
-        loose: browserslistEnv === 'production',
+        loose: browserslistEnv === 'javascripts',
 
         // Transform ES modules for Node.js
         modules: browserslistEnv === 'node' ? 'auto' : false
