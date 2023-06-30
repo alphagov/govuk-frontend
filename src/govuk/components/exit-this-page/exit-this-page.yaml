@@ -2,7 +2,11 @@ params:
   - name: text
     type: string
     required: false
-    description: Text for the link. Defaults to `Exit this page`.
+    description: Text for the link. If `html` is provided, the `text` option will be ignored. Defaults to 'Exit this page'.
+  - name: html
+    type: string
+    required: false
+    description: HTML for the link. If `html` is provided, the `text` option will be ignored.
   - name: redirectUrl
     type: string
     required: false
@@ -62,3 +66,7 @@ examples:
       classes: 'test-class'
       attributes:
         test-attribute: true
+  - name: testing-html
+    hidden: true
+    data:
+      html: 'Exit <em>this</em> test'
