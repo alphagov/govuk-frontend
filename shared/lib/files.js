@@ -175,32 +175,34 @@ module.exports = {
 }
 
 /**
- * Component data from YAML
+ * Component data
  *
  * @typedef {object} ComponentData
- * @property {ComponentOption[]} [params] - Nunjucks macro options
- * @property {ComponentExample[]} [examples] - Example Nunjucks macro options
+ * @property {ComponentOption[]} [params] - Nunjucks macro option (or param) configs
+ * @property {ComponentExample[]} [examples] - Component examples with Nunjucks macro options (or params)
  * @property {string} [previewLayout] - Nunjucks layout for component preview
  * @property {string} [accessibilityCriteria] - Accessibility criteria
  */
 
 /**
- * Component option from YAML
+ * Nunjucks macro option (or param) config
  *
  * @typedef {object} ComponentOption
  * @property {string} name - Option name
- * @property {string} type - Option type
+ * @property {'array' | 'boolean' | 'integer' | 'nunjucks-block' | 'object' | 'string'} type - Option type
  * @property {boolean} required - Option required
  * @property {string} description - Option description
  * @property {boolean} [isComponent] - Option is another component
- * @property {ComponentOption[]} [params] - Nested Nunjucks macro options
+ * @property {ComponentOption[]} [params] - Nunjucks macro option (or param) configs
  */
 
 /**
- * Component example from YAML
+ * Component examples with Nunjucks macro options (or params)
  *
  * @typedef {object} ComponentExample
  * @property {string} name - Example name
- * @property {object} data - Example data
+ * @property {string} [description] - Example description
  * @property {boolean} [hidden] - Example hidden from review app
+ * @property {string[]} [previewLayoutModifiers] - Component preview layout class modifiers
+ * @property {{ [param: string]: unknown }} data - Nunjucks macro options (or params)
  */

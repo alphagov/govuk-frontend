@@ -11,10 +11,11 @@ params:
       - name: key.text
         type: string
         required: true
-        description: If `html` is set, this is not required. Text to use within the each key. If `html` is provided, the `text` option will be ignored.
+        description: If `html` is set, this is not required. Text to use within each key. If `html` is provided, the `text` option will be ignored.
       - name: key.html
         type: string
         required: true
+        description: If `text` is set, this is not required. HTML to use within each key. If `html` is provided, the `text` option will be ignored.
       - name: key.classes
         type: string
         required: false
@@ -22,11 +23,11 @@ params:
       - name: value.text
         type: string
         required: true
-        description: If `html` is set, this is not required. Text to use within the each value. If `html` is provided, the `text` option will be ignored.
+        description: If `html` is set, this is not required. Text to use within each value. If `html` is provided, the `text` option will be ignored.
       - name: value.html
         type: string
         required: true
-        description: If `text` is set, this is not required. HTML to use within the each value. If `html` is provided, the `text` option will be ignored.
+        description: If `text` is set, this is not required. HTML to use within each value. If `html` is provided, the `text` option will be ignored.
       - name: value.classes
         type: string
         required: false
@@ -51,7 +52,7 @@ params:
           - name: html
             type: string
             required: true
-            description: If `text` is set, this is not required. HTML to use within the each action item. If `html` is provided, the `text` option will be ignored.
+            description: If `text` is set, this is not required. HTML to use within each action item. If `html` is provided, the `text` option will be ignored.
           - name: visuallyHiddenText
             type: string
             required: false
@@ -77,11 +78,11 @@ params:
           - name: text
             type: string
             required: false
-            description: Text to use within the each title. If `html` is provided, the `text` option will be ignored.
+            description: Text to use within each title. If `html` is provided, the `text` option will be ignored.
           - name: html
             type: string
             required: false
-            description: Text to use within the each title. If `html` is provided, the `text` option will be ignored.
+            description: Text to use within each title. If `html` is provided, the `text` option will be ignored.
           - name: headingLevel
             type: integer
             required: false
@@ -111,7 +112,7 @@ params:
               - name: html
                 type: string
                 required: true
-                description: If `text` is set, this is not required. HTML to use within the each action item. If `html` is provided, the `text` option will be ignored.
+                description: If `text` is set, this is not required. HTML to use within each action item. If `html` is provided, the `text` option will be ignored.
               - name: visuallyHiddenText
                 type: string
                 required: false

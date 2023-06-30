@@ -42,7 +42,7 @@ params:
           - name: tag
             type: object
             required: false
-            descrption: Object containing the options for a tag that acts as the status for the task.
+            description: Object containing the options for a tag that acts as the status for the task.
             params:
               - name: text
                 type: string

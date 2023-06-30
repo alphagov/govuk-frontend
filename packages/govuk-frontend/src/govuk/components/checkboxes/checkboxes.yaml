@@ -86,6 +86,7 @@ params:
           - name: html
             type: string
             description: The HTML to reveal when the checkbox is checked
+            required: true
       - name: behaviour
         type: string
         required: false
