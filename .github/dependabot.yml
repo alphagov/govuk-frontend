@@ -7,12 +7,13 @@ updates:
     open-pull-requests-limit: 10
     reviewers:
       - alphagov/design-system-developers
+
+    # Schedule run every Monday, local time
     schedule:
-      # Defaults to weekly on Monday
       interval: weekly
       time: '10:30'
-      # Setting a timezone so we let dependabot worry about BST
       timezone: 'Europe/London'
+
     versioning-strategy: increase
 
     allow:
@@ -23,9 +24,9 @@ updates:
     directory: /
     reviewers:
       - alphagov/design-system-developers
+
+    # Schedule run every Monday, local time
     schedule:
-      # Defaults to weekly on Monday
       interval: weekly
       time: '10:30'
-      # Setting a timezone so we let dependabot worry about BST
       timezone: 'Europe/London'
