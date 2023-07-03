@@ -5,14 +5,64 @@ updates:
   - package-ecosystem: npm
     directory: /
     open-pull-requests-limit: 10
+
+    # Group packages into shared PR
+    groups:
+      babel:
+        patterns:
+          - '@babel/*'
+
+      lint:
+        patterns:
+          - '@typescript-eslint/*'
+          - 'editorconfig-checker'
+          - 'eslint'
+          - 'eslint-*'
+          - 'standard'
+          - 'prettier'
+          - 'stylelint'
+          - 'stylelint-*'
+          - 'typescript'
+
+      percy:
+        patterns:
+          - '@percy/*'
+
+      postcss:
+        patterns:
+          - 'autoprefixer'
+          - 'cssnano'
+          - 'cssnano-*'
+          - 'postcss'
+          - 'postcss-*'
+
+      rollup:
+        patterns:
+          - '@rollup/*'
+          - 'rollup'
+          - 'rollup-*'
+
+      test:
+        patterns:
+          - '@axe-core/*'
+          - '@jest/*'
+          - '@puppeteer/*'
+          - '@types/jest'
+          - '@types/jest-*'
+          - 'jest'
+          - 'jest-*'
+          - 'puppeteer'
+          - 'puppeteer-*'
+
     reviewers:
       - alphagov/design-system-developers
+
+    # Schedule run every Monday, local time
     schedule:
-      # Defaults to weekly on Monday
       interval: weekly
       time: '10:30'
-      # Setting a timezone so we let dependabot worry about BST
       timezone: 'Europe/London'
+
     versioning-strategy: increase
 
     allow:
@@ -23,9 +73,9 @@ updates:
     directory: /
     reviewers:
       - alphagov/design-system-developers
+
+    # Schedule run every Monday, local time
     schedule:
-      # Defaults to weekly on Monday
       interval: weekly
       time: '10:30'
-      # Setting a timezone so we let dependabot worry about BST
       timezone: 'Europe/London'
