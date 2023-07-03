@@ -1,0 +1,20 @@
+params:
+  - name: items
+    type: array
+    required: true
+    description: An array of items.
+
+examples:
+  - name: default
+    data:
+      items:
+        - summaryText: Do a thing
+          html: |
+            <p class="govuk-body">This is a paragraph of text.</p>
+            <p class="govuk-body">This is also a paragraph of text that intentionally contains lots of words in order to fill the width of the page successfully to check layout and so forth.</p>
+        - logic: and
+          summaryText: Do another thing
+          html: <p class="govuk-body">Some more text.</p>
+        - number: 2
+          summaryText: Do something else
+          html: <p class="govuk-body">This is yet another paragraph.</p>

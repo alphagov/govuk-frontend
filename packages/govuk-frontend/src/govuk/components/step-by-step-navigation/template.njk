@@ -1,0 +1,575 @@
+<div data-module="govuk-step-nav" class="gem-c-step-nav js-hidden  gem-c-step-nav--large" data-show-text="Show" data-hide-text="Hide" data-show-all-text="Show all steps" data-hide-all-text="Hide all steps">
+  <ol class="gem-c-step-nav__steps">
+    {%- for item in params.items %}
+      {% set idPrefix = item.id if item.id else "item-" + loop.index %}
+      {% set stepNumber = item.number | default(loop.index) %}
+      <li class="gem-c-step-nav__step js-step" id="{{ idPrefix }}" data-track-count="stepNavSection">
+        <div class="gem-c-step-nav__header js-toggle-panel" data-position="{{ loop.index }}">
+          <h2 class="gem-c-step-nav__title" aria-labelledby="{{ idPrefix + "-step " + idPrefix + "-title" }}">
+
+            <span class="gem-c-step-nav__circle gem-c-step-nav__circle--{{ "logic" if item.logic else "number" }}" id="{{ idPrefix + "-step" }}">
+              <span class="gem-c-step-nav__circle-inner">
+                <span class="gem-c-step-nav__circle-background">
+                  {%- if item.logic %}
+                    {{- item.logic -}}
+                  {%- else %}
+                    <span class="gem-c-step-nav__circle-step-label govuk-!-display-none-print visuallyhidden">Step</span> {{ stepNumber }}<span class="gem-c-step-nav__circle-step-colon govuk-!-display-none-print visuallyhidden" aria-hidden="true">:</span>
+                  {%- endif %}
+                </span>
+              </span>
+            </span>
+
+            <span class="js-step-title" id="{{ idPrefix + "-title" }}">
+              {{- item.summaryHtml | safe if item.summaryHtml else item.summaryText -}}
+            </span>
+
+          </h2>
+        </div>
+
+        <div class="gem-c-step-nav__panel js-panel" id="{{ idPrefix + "" }}">
+          {{ item.html | safe if item.html else item.text }}
+        </div>
+      </li>
+    {%- endfor %}
+  </ol>
+</div>
+
+<style>
+.gem-c-step-nav{margin-bottom:30px}@media (min-width: 40.0625em){.gem-c-step-nav.gem-c-step-nav--large{margin-bottom:60px}}.js-enabled .gem-c-step-nav.js-hidden{display:none}.gem-c-step-nav__controls{padding:3px 3px 0 0}.gem-c-step-nav____title-text-focus{margin-bottom:13px;display:inline-block}.gem-c-step-nav__chevron{box-sizing:border-box;display:inline-block;position:relative;width:1.25rem;height:1.25rem;border:0.0625rem solid;border-radius:50%;vertical-align:text-top}.gem-c-step-nav--large .gem-c-step-nav__chevron{vertical-align:top}.gem-c-step-nav__chevron:after{content:"";box-sizing:border-box;display:block;position:absolute;bottom:0.3125rem;left:0.375rem;width:0.375rem;height:0.375rem;-webkit-transform:rotate(-45deg);-ms-transform:rotate(-45deg);transform:rotate(-45deg);border-top:0.125rem solid;border-right:0.125rem solid}.gem-c-step-nav__chevron--down{-webkit-transform:rotate(180deg);-ms-transform:rotate(180deg);transform:rotate(180deg)}.gem-c-step-nav__button{color:#1d70b8;cursor:pointer;background:none;border:0;margin:0}.gem-c-step-nav__button:hover{background:#f3f2f1}.gem-c-step-nav__button:hover .gem-c-step-nav__chevron{color:#0b0c0c;background:#0b0c0c}.gem-c-step-nav__button:hover .gem-c-step-nav__chevron:after{color:#f3f2f1}.gem-c-step-nav__button:hover .gem-c-step-nav__button-text{color:#0b0c0c}.gem-c-step-nav__button:focus{outline:0}.gem-c-step-nav__button:focus .gem-c-step-nav__chevron{color:#0b0c0c;background:#0b0c0c}.gem-c-step-nav__button:focus .gem-c-step-nav__chevron:after{color:#fd0}.gem-c-step-nav__button:focus .gem-c-step-nav____title-text-focus,.gem-c-step-nav__button:focus .gem-c-step-nav__toggle-link-focus{outline:3px solid transparent;color:#0b0c0c;background-color:#fd0;box-shadow:0 -2px #fd0,0 4px #0b0c0c;text-decoration:none;-webkit-box-decoration-break:clone;box-decoration-break:clone}.gem-c-step-nav__button:focus .gem-c-step-nav__toggle-link-focus{padding-bottom:2px}.gem-c-step-nav__button::-moz-focus-inner{border:0}.gem-c-step-nav__button--title{font-family:"GDS Transport",arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:19px;font-weight:bold;line-height:1.2;display:inline-block;padding:5px 0 0;text-align:left;color:#0b0c0c;width:100%}@media print{.gem-c-step-nav__button--title{font-family:sans-serif}}@media (min-width: 40.0625em){.gem-c-step-nav__button--title{font-size:19px;line-height:1.2}}.gem-c-step-nav--large .gem-c-step-nav__button--title{font-family:"GDS Transport",arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:19px;font-weight:bold;line-height:1.3}@media print{.gem-c-step-nav--large .gem-c-step-nav__button--title{font-family:sans-serif}}@media (min-width: 40.0625em){.gem-c-step-nav--large .gem-c-step-nav__button--title{font-size:24px;line-height:1.3}}@media (min-width: 40.0625em){.gem-c-step-nav--large .gem-c-step-nav__button--title{padding-top:10px}}.gem-c-step-nav__button--controls{font-family:"GDS Transport",arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:15px;font-weight:normal;line-height:1.3;position:relative;z-index:1;margin:0.5em 0 14px;padding:5px 0}@media print{.gem-c-step-nav__button--controls{font-family:sans-serif}}@media (min-width: 40.0625em){.gem-c-step-nav__button--controls{font-size:15px;line-height:1.3}}.gem-c-step-nav--large .gem-c-step-nav__button--controls{font-family:"GDS Transport",arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:15px;font-weight:normal;line-height:1.3}@media print{.gem-c-step-nav--large .gem-c-step-nav__button--controls{font-family:sans-serif}}@media (min-width: 40.0625em){.gem-c-step-nav--large .gem-c-step-nav__button--controls{font-size:19px;line-height:1.3}}.gem-c-step-nav__button--controls:focus{outline:3px solid transparent;color:#0b0c0c;background-color:#fd0;box-shadow:0 -2px #fd0,0 4px #0b0c0c;text-decoration:none;-webkit-box-decoration-break:clone;box-decoration-break:clone}.gem-c-step-nav__button--controls:focus .gem-c-step-nav__button-text{text-decoration:none}.gem-c-step-nav__button-text{display:inline-block;text-align:left;min-width:2.5em;margin-left:5px}.gem-c-step-nav--large .gem-c-step-nav__button-text{min-width:2.5em;margin-left:5px}.gem-c-step-nav__button-text--all{min-width:6.2142857143em}.gem-c-step-nav--large .gem-c-step-nav__button-text--all{min-width:6.25em}.gem-c-step-nav__steps{padding:0;margin:0}.gem-c-step-nav__step{position:relative;padding-left:2.8125em;list-style:none}.gem-c-step-nav__step:after{content:"";position:absolute;z-index:2;width:0;height:100%;border-left:solid 1px #b1b4b6;background:#fff;left:0;margin-left:0.90625em;top:0.9375em}@media (min-width: 40.0625em){.gem-c-step-nav--large .gem-c-step-nav__step{padding-left:3.75em}.gem-c-step-nav--large .gem-c-step-nav__step:after{left:0;margin-left:1.0625em;top:1.875em}}.gem-c-step-nav__step:last-child:before{content:"";position:absolute;z-index:6;bottom:0;left:0;margin-left:7.5px;width:15px;height:0;border-bottom:solid 1px #b1b4b6}.gem-c-step-nav__step:last-child:after{height:-webkit-calc(100% - 15px);height:calc(100% - 15px)}.gem-c-step-nav__step:last-child .gem-c-step-nav__help:after{height:100%}@media (min-width: 40.0625em){.gem-c-step-nav--large .gem-c-step-nav__step:last-child:before{margin-left:8.75px;width:17.5px}.gem-c-step-nav--large .gem-c-step-nav__step:last-child:after{height:calc(100% - 30px)}}.gem-c-step-nav__step--active .gem-c-step-nav__circle--number,.gem-c-step-nav__step--active .gem-c-step-nav__help:after,.gem-c-step-nav__step--active:after,.gem-c-step-nav__step--active:last-child:before{border-color:#0b0c0c}.gem-c-step-nav__circle{box-sizing:border-box;position:absolute;z-index:5;top:3px;left:0;width:1.875em;height:1.875em;color:#0b0c0c;background:#fff;border-radius:100px;text-align:center}@media (min-width: 40.0625em){.gem-c-step-nav--large .gem-c-step-nav__circle{top:11px;width:1.8421052632em;height:1.8421052632em}}.gem-c-step-nav__circle--number{font-family:"GDS Transport",arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:16px;font-weight:bold;line-height:29px;border:solid 1px #b1b4b6}@media print{.gem-c-step-nav__circle--number{font-family:sans-serif}}@media (min-width: 40.0625em){.gem-c-step-nav__circle--number{font-size:16px;line-height:29px}}.gem-c-step-nav--large .gem-c-step-nav__circle--number{font-family:"GDS Transport",arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:16px;font-weight:bold;line-height:29px}@media print{.gem-c-step-nav--large .gem-c-step-nav__circle--number{font-family:sans-serif}}@media (min-width: 40.0625em){.gem-c-step-nav--large .gem-c-step-nav__circle--number{font-size:19px;line-height:34px}}.gem-c-step-nav__step--active .gem-c-step-nav__circle--number{background-color:#0b0c0c}.gem-c-step-nav__step--active .gem-c-step-nav__circle--number .gem-c-step-nav__circle-background{text-shadow:none;color:#fff}.gem-c-step-nav__circle--logic{font-family:"GDS Transport",arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:19px;font-weight:bold;line-height:28px;left:3px;width:1.5789473684em;height:1.5789473684em}@media print{.gem-c-step-nav__circle--logic{font-family:sans-serif}}@media (min-width: 40.0625em){.gem-c-step-nav__circle--logic{font-size:19px;line-height:28px}}.gem-c-step-nav--large .gem-c-step-nav__circle--logic{font-family:"GDS Transport",arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:19px;font-weight:bold;line-height:28px}@media print{.gem-c-step-nav--large .gem-c-step-nav__circle--logic{font-family:sans-serif}}@media (min-width: 40.0625em){.gem-c-step-nav--large .gem-c-step-nav__circle--logic{font-size:24px;line-height:34px}}@media (min-width: 40.0625em){.gem-c-step-nav--large .gem-c-step-nav__circle--logic{width:1.4583333333em;height:1.4583333333em}}.gem-c-step-nav__circle-inner{float:right;min-width:100%}.gem-c-step-nav__circle-background{text-shadow:0 -.1em 0 #fff,.1em 0 0 #fff,0 0.1em 0 #fff,-.1em 0 0 #fff}.gem-c-step-nav__circle-step-colon,.gem-c-step-nav__circle-step-label{position:absolute !important;width:1px !important;height:1px !important;margin:0 !important;padding:0 !important;overflow:hidden !important;clip:rect(0 0 0 0) !important;-webkit-clip-path:inset(50%) !important;clip-path:inset(50%) !important;border:0 !important;white-space:nowrap !important}.gem-c-step-nav__header{border-top:solid 1px #b1b4b6;padding:5px 0 30px}.gem-c-step-nav--large .gem-c-step-nav__header{padding-top:10px}.js-enabled .gem-c-step-nav__header{padding:0}.gem-c-step-nav--active .gem-c-step-nav__header{cursor:pointer}.gem-c-step-nav__title{color:#0b0c0c;font-family:"GDS Transport",arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:19px;font-weight:bold;line-height:1.4;margin:0}@media print{.gem-c-step-nav__title{color:#000}}@media print{.gem-c-step-nav__title{font-family:sans-serif}}@media (min-width: 40.0625em){.gem-c-step-nav__title{font-size:19px;line-height:1.4}}.gem-c-step-nav--large .gem-c-step-nav__title{font-family:"GDS Transport",arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:19px;font-weight:bold;line-height:1.4}@media print{.gem-c-step-nav--large .gem-c-step-nav__title{font-family:sans-serif}}@media (min-width: 40.0625em){.gem-c-step-nav--large .gem-c-step-nav__title{font-size:24px;line-height:1.4}}.gem-c-step-nav__toggle-link{font-family:"GDS Transport",arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:15px;font-weight:normal;line-height:1.2;display:block;color:#1d70b8;text-transform:capitalize;padding-bottom:30px}@media print{.gem-c-step-nav__toggle-link{font-family:sans-serif}}@media (min-width: 40.0625em){.gem-c-step-nav__toggle-link{font-size:15px;line-height:1.2}}.gem-c-step-nav--large .gem-c-step-nav__toggle-link{font-family:"GDS Transport",arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:15px;font-weight:normal;line-height:1.2}@media print{.gem-c-step-nav--large .gem-c-step-nav__toggle-link{font-family:sans-serif}}@media (min-width: 40.0625em){.gem-c-step-nav--large .gem-c-step-nav__toggle-link{font-size:19px;line-height:1.2}}.gem-c-step-nav__panel{color:#0b0c0c;font-family:"GDS Transport",arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:16px;font-weight:normal;line-height:1.3;padding-bottom:25px}@media print{.gem-c-step-nav__panel{color:#000}}@media print{.gem-c-step-nav__panel{font-family:sans-serif}}@media (min-width: 40.0625em){.gem-c-step-nav__panel{font-size:16px;line-height:1.3}}.gem-c-step-nav--large .gem-c-step-nav__panel{font-family:"GDS Transport",arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:16px;font-weight:normal;line-height:1.3}@media print{.gem-c-step-nav--large .gem-c-step-nav__panel{font-family:sans-serif}}@media (min-width: 40.0625em){.gem-c-step-nav--large .gem-c-step-nav__panel{font-size:19px;line-height:1.3}}.js-enabled .gem-c-step-nav__panel.js-hidden{display:none}.gem-c-step-nav__paragraph{padding-bottom:15px;margin:0;font-size:inherit}.gem-c-step-nav__paragraph+.gem-c-step-nav__list{margin-top:-5px}@media (min-width: 40.0625em){.gem-c-step-nav--large .gem-c-step-nav__paragraph{padding-bottom:30px}}@media (min-width: 40.0625em){.gem-c-step-nav--large .gem-c-step-nav__paragraph+.gem-c-step-nav__list{margin-top:-govuk-spacing(3)}}.gem-c-step-nav__list{padding:0 0 10px;list-style:none}@media (min-width: 40.0625em){.gem-c-step-nav--large .gem-c-step-nav__list{padding-bottom:20px}}.gem-c-step-nav__list--choice{margin-left:20px;list-style:disc}.gem-c-step-nav__list--choice .gem-c-step-nav__list-item--active:before{left:-65px}@media (min-width: 40.0625em){.gem-c-step-nav--large .gem-c-step-nav__list--choice .gem-c-step-nav__list-item--active:before{left:-80px}}.gem-c-step-nav__list-item{margin-bottom:10px}.gem-c-step-nav__link{font-family:"GDS Transport",arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-decoration:underline;text-decoration-thickness:max(1px, .0625rem);text-underline-offset:0.1578em}@media print{.gem-c-step-nav__link{font-family:sans-serif}}.gem-c-step-nav__link:hover{text-decoration-thickness:max(3px, .1875rem, .12em);-webkit-text-decoration-skip-ink:none;text-decoration-skip-ink:none;-webkit-text-decoration-skip:none;text-decoration-skip:none}.gem-c-step-nav__link:focus{outline:3px solid transparent;color:#0b0c0c;background-color:#fd0;box-shadow:0 -2px #fd0,0 4px #0b0c0c;text-decoration:none;-webkit-box-decoration-break:clone;box-decoration-break:clone}.gem-c-step-nav__link:link{color:#1d70b8}.gem-c-step-nav__link:visited{color:#4c2c92}.gem-c-step-nav__link:hover{color:#003078}.gem-c-step-nav__link:active{color:#0b0c0c}.gem-c-step-nav__link:focus{color:#0b0c0c}.gem-c-step-nav__link-active-context{position:absolute !important;width:1px !important;height:1px !important;margin:0 !important;padding:0 !important;overflow:hidden !important;clip:rect(0 0 0 0) !important;-webkit-clip-path:inset(50%) !important;clip-path:inset(50%) !important;border:0 !important;white-space:nowrap !important}.gem-c-step-nav__list-item--active{position:relative}.gem-c-step-nav__list-item--active:before{box-sizing:border-box;content:"";position:absolute;z-index:5;top:0.6em;left:-45px;margin-top:-.5px;margin-left:15px;width:15px;height:1px;background:#0b0c0c}@media (min-width: 40.0625em){.gem-c-step-nav--large .gem-c-step-nav__list-item--active:before{left:-60px;margin-left:17.5px}}.gem-c-step-nav__list-item--active .gem-c-step-nav__link:link,.gem-c-step-nav__list-item--active .gem-c-step-nav__link:visited{color:#0b0c0c}@media print{.gem-c-step-nav__list-item--active .gem-c-step-nav__link:link,.gem-c-step-nav__list-item--active .gem-c-step-nav__link:visited{color:#000}}.gem-c-step-nav__list-item--active .gem-c-step-nav__link:hover{color:rgba(11,12,12,0.99)}.gem-c-step-nav__list-item--active .gem-c-step-nav__link:active,.gem-c-step-nav__list-item--active .gem-c-step-nav__link:focus{color:#0b0c0c}@media print{.gem-c-step-nav__list-item--active .gem-c-step-nav__link:active,.gem-c-step-nav__list-item--active .gem-c-step-nav__link:focus{color:#000}}.gem-c-step-nav__context{display:inline-block;font-weight:normal;color:#505a5f}.gem-c-step-nav__context:before{content:" \2013\00a0"}@media print{.gem-c-step-nav__panel{display:block !important}}
+</style>
+
+<script>
+
+  function Gemstepnav ($module) {
+    this.$module = $module
+    this.$module.actions = {} // stores text for JS appended elements 'show' and 'hide' on steps, and 'show/hide all' button
+    this.$module.rememberShownStep = false
+    this.$module.stepNavSize = false
+    this.$module.sessionStoreLink = 'govuk-step-nav-active-link'
+    this.$module.activeLinkClass = 'gem-c-step-nav__list-item--active'
+    this.$module.activeStepClass = 'gem-c-step-nav__step--active'
+    this.$module.activeLinkHref = '#content'
+    this.$module.uniqueId = false
+  }
+
+  Gemstepnav.prototype.init = function () {
+    // Indicate that js has worked
+    this.$module.classList.add('gem-c-step-nav--active')
+
+    // Prevent FOUC, remove class hiding content
+    this.$module.classList.remove('js-hidden')
+
+    this.$module.stepNavSize = this.$module.classList.contains('gem-c-step-nav--large') ? 'Big' : 'Small'
+    this.$module.rememberShownStep = !!this.$module.hasAttribute('data-remember') && this.$module.stepNavSize === 'Big'
+
+    this.$module.steps = this.$module.querySelectorAll('.js-step')
+    this.$module.stepHeaders = this.$module.querySelectorAll('.js-toggle-panel')
+    this.$module.totalSteps = this.$module.querySelectorAll('.js-panel').length
+    this.$module.totalLinks = this.$module.querySelectorAll('.gem-c-step-nav__link').length
+    this.$module.showOrHideAllButton = false
+
+    this.$module.uniqueId = this.$module.getAttribute('data-id') || false
+
+    this.$module.dataModule = this.$module.getAttribute('data-module')
+    this.$module.isGa4Enabled = this.$module.dataModule ? this.$module.dataModule.indexOf('ga4-event-tracker') !== -1 : false
+
+    if (this.$module.uniqueId) {
+      this.$module.sessionStoreLink = this.$module.sessionStoreLink + '_' + this.$module.uniqueId
+    }
+
+    var stepNavTracker = new this.StepNavTracker(this.$module.uniqueId, this.$module.totalSteps, this.$module.totalLinks)
+
+    this.getTextForInsertedElements()
+    this.addButtonstoSteps()
+    this.addShowHideAllButton()
+    this.addShowHideToggle()
+    this.addAriaControlsAttrForShowHideAllButton()
+
+    this.ensureOnlyOneActiveLink()
+    this.showPreviouslyOpenedSteps()
+
+    this.bindToggleForSteps(stepNavTracker)
+    this.bindToggleShowHideAllButton(stepNavTracker)
+    this.bindComponentLinkClicks(stepNavTracker)
+  }
+
+  Gemstepnav.prototype.getTextForInsertedElements = function () {
+    this.$module.actions.showText = this.$module.getAttribute('data-show-text')
+    this.$module.actions.hideText = this.$module.getAttribute('data-hide-text')
+    this.$module.actions.showAllText = this.$module.getAttribute('data-show-all-text')
+    this.$module.actions.hideAllText = this.$module.getAttribute('data-hide-all-text')
+  }
+
+  Gemstepnav.prototype.addShowHideAllButton = function () {
+    var showAll = document.createElement('div')
+    var steps = this.$module.querySelectorAll('.gem-c-step-nav__steps')[0]
+
+    showAll.className = 'gem-c-step-nav__controls govuk-!-display-none-print'
+    showAll.innerHTML =
+      '<button aria-expanded="false" class="gem-c-step-nav__button gem-c-step-nav__button--controls js-step-controls-button">' +
+        '<span class="gem-c-step-nav__chevron gem-c-step-nav__chevron--down js-step-controls-button-icon"></span>' +
+          '<span class="gem-c-step-nav__button-text gem-c-step-nav__button-text--all js-step-controls-button-text">' +
+            this.$module.actions.showAllText +
+          '</span>' +
+      '</button>'
+
+    this.$module.insertBefore(showAll, steps)
+    this.$module.showOrHideAllButton = this.$module.querySelectorAll('.js-step-controls-button')[0]
+
+    // if GA4 is enabled, set attributes on 'show all sections' for tracking using ga4-event-tracker
+    if (this.$module.isGa4Enabled) {
+      var showAllAttributesGa4 = { event_name: 'select_content', type: 'step by step', index: { index_section: 0, index_section_count: this.$module.totalSteps } }
+      this.$module.showOrHideAllButton.setAttribute('data-ga4-event', JSON.stringify(showAllAttributesGa4))
+    }
+  }
+
+  Gemstepnav.prototype.addShowHideToggle = function () {
+    for (var i = 0; i < this.$module.stepHeaders.length; i++) {
+      var thisel = this.$module.stepHeaders[i]
+
+      if (!thisel.querySelectorAll('.js-toggle-link').length) {
+        var showHideSpan = document.createElement('span')
+        var showHideSpanText = document.createElement('span')
+        var showHideSpanIcon = document.createElement('span')
+        var showHideSpanFocus = document.createElement('span')
+        var thisSectionSpan = document.createElement('span')
+
+        showHideSpan.className = 'gem-c-step-nav__toggle-link js-toggle-link govuk-!-display-none-print'
+        showHideSpanText.className = 'gem-c-step-nav__button-text js-toggle-link-text'
+        showHideSpanIcon.className = 'gem-c-step-nav__chevron js-toggle-link-icon'
+        showHideSpanFocus.className = 'gem-c-step-nav__toggle-link-focus'
+        thisSectionSpan.className = 'govuk-visually-hidden'
+
+        showHideSpan.appendChild(showHideSpanFocus)
+        showHideSpanFocus.appendChild(showHideSpanIcon)
+        showHideSpanFocus.appendChild(showHideSpanText)
+
+        thisSectionSpan.innerHTML = ' this section'
+        showHideSpan.appendChild(thisSectionSpan)
+
+        thisel.querySelectorAll('.js-step-title-button')[0].appendChild(showHideSpan)
+      }
+    }
+  }
+
+  Gemstepnav.prototype.headerIsOpen = function (stepHeader) {
+    return (typeof stepHeader.parentNode.getAttribute('show') !== 'undefined')
+  }
+
+  Gemstepnav.prototype.addAriaControlsAttrForShowHideAllButton = function () {
+    var ariaControlsValue = this.$module.querySelectorAll('.js-panel')[0].getAttribute('id')
+
+    this.$module.showOrHideAllButton.setAttribute('aria-controls', ariaControlsValue)
+  }
+
+  // called by show all/hide all, sets all steps accordingly
+  Gemstepnav.prototype.setAllStepsShownState = function (isShown) {
+    var data = []
+
+    for (var i = 0; i < this.$module.steps.length; i++) {
+      var stepView = new this.StepView(this.$module.steps[i], this.$module)
+      stepView.setIsShown(isShown)
+
+      if (isShown) {
+        data.push(this.$module.steps[i].getAttribute('id'))
+      }
+    }
+
+    if (isShown) {
+      this.saveToSessionStorage(this.$module.uniqueId, JSON.stringify(data))
+    } else {
+      this.removeFromSessionStorage(this.$module.uniqueId)
+    }
+  }
+
+  // called on load, determines whether each step should be open or closed
+  Gemstepnav.prototype.showPreviouslyOpenedSteps = function () {
+    var data = this.loadFromSessionStorage(this.$module.uniqueId) || []
+
+    for (var i = 0; i < this.$module.steps.length; i++) {
+      var thisel = this.$module.steps[i]
+      var id = thisel.getAttribute('id')
+      var stepView = new this.StepView(thisel, this.$module)
+      var shouldBeShown = thisel.hasAttribute('data-show')
+
+      // show the step if it has been remembered or if it has the 'data-show' attribute
+      if ((this.$module.rememberShownStep && data.indexOf(id) > -1) || (shouldBeShown && shouldBeShown !== 'undefined')) {
+        stepView.setIsShown(true)
+      } else {
+        stepView.setIsShown(false)
+      }
+    }
+
+    if (data.length > 0) {
+      this.$module.showOrHideAllButton.setAttribute('aria-expanded', true)
+      this.setShowHideAllText()
+    }
+  }
+
+  Gemstepnav.prototype.addButtonstoSteps = function () {
+    for (var i = 0; i < this.$module.steps.length; i++) {
+      var thisel = this.$module.steps[i]
+      var title = thisel.querySelectorAll('.js-step-title')[0]
+      var titleId = title.id
+      var labelledBy = thisel.querySelectorAll('h2')[0].getAttribute('aria-labelledby')
+      var contentId = thisel.querySelectorAll('.js-panel')[0].getAttribute('id')
+      var titleText = title.textContent || title.innerText // IE8 fallback
+
+      title.outerHTML =
+        '<span class="js-step-title">' +
+          '<button ' +
+            'class="gem-c-step-nav__button gem-c-step-nav__button--title js-step-title-button" ' +
+            'aria-expanded="false" aria-controls="' + contentId + '"' + ' aria-labelledby="' + labelledBy + '">' +
+              '<span class="gem-c-step-nav____title-text-focus">' +
+                  '<span class="gem-c-step-nav__title-text js-step-title-text" id="' + titleId + '">' + titleText + '</span>' +
+                  '<span class="govuk-visually-hidden gem-c-step-nav__section-heading-divider">, </span>' +
+              '</span>' +
+          '</button>' +
+        '</span>'
+
+      if (this.$module.isGa4Enabled) {
+        var ga4JSON = {
+          event_name: 'select_content',
+          type: 'step by step',
+          text: titleText.trim(),
+          index: {
+            index_section: i + 1,
+            index_section_count: this.$module.totalSteps
+          },
+          index_total: thisel.querySelectorAll('a').length
+        }
+
+        var button = thisel.querySelector('.js-step-title-button')
+        button.setAttribute('data-ga4-event', JSON.stringify(ga4JSON))
+      }
+    }
+  }
+
+  Gemstepnav.prototype.bindToggleForSteps = function (stepNavTracker) {
+    var that = this
+    var togglePanels = this.$module.querySelectorAll('.js-toggle-panel')
+
+    for (var i = 0; i < togglePanels.length; i++) {
+      togglePanels[i].addEventListener('click', function (event) {
+        var stepView = new that.StepView(this.parentNode, that.$module)
+        stepView.toggle()
+
+        var stepIsOptional = this.parentNode.hasAttribute('data-optional')
+        var toggleClick = new that.StepToggleClick(event, stepView, stepNavTracker, stepIsOptional, that.$module.stepNavSize)
+        toggleClick.trackClick()
+
+        that.setShowHideAllText()
+        that.rememberStepState(this.parentNode)
+      })
+    }
+  }
+
+  // if the step is open, store its id in session store
+  // if the step is closed, remove its id from session store
+  Gemstepnav.prototype.rememberStepState = function (step) {
+    if (this.$module.rememberShownStep) {
+      var data = JSON.parse(this.loadFromSessionStorage(this.$module.uniqueId)) || []
+      var thisstep = step.getAttribute('id')
+      var shown = step.classList.contains('step-is-shown')
+
+      if (shown) {
+        data.push(thisstep)
+      } else {
+        var i = data.indexOf(thisstep)
+        if (i > -1) {
+          data.splice(i, 1)
+        }
+      }
+      this.saveToSessionStorage(this.$module.uniqueId, JSON.stringify(data))
+    }
+  }
+
+  // tracking click events on links in step content
+  Gemstepnav.prototype.bindComponentLinkClicks = function (stepNavTracker) {
+    var jsLinks = this.$module.querySelectorAll('.js-link')
+    var that = this
+
+    for (var i = 0; i < jsLinks.length; i++) {
+      jsLinks[i].addEventListener('click', function (event) {
+        var dataPosition = this.getAttribute('data-position')
+        var linkClick = new that.ComponentLinkClick(event, stepNavTracker, dataPosition, that.$module.stepNavSize)
+        linkClick.trackClick()
+
+        if (this.getAttribute('rel') !== 'external') {
+          that.saveToSessionStorage(that.$module.sessionStoreLink, dataPosition)
+        }
+
+        if (this.getAttribute('href') === that.$module.activeLinkHref) {
+          that.setOnlyThisLinkActive(this)
+          that.setActiveStepClass()
+        }
+      })
+    }
+  }
+
+  Gemstepnav.prototype.saveToSessionStorage = function (key, value) {
+    window.sessionStorage.setItem(key, value)
+  }
+
+  Gemstepnav.prototype.loadFromSessionStorage = function (key, value) {
+    return window.sessionStorage.getItem(key)
+  }
+
+  Gemstepnav.prototype.removeFromSessionStorage = function (key) {
+    window.sessionStorage.removeItem(key)
+  }
+
+  Gemstepnav.prototype.setOnlyThisLinkActive = function (clicked) {
+    var allActiveLinks = this.$module.querySelectorAll('.' + this.$module.activeLinkClass)
+    for (var i = 0; i < allActiveLinks.length; i++) {
+      allActiveLinks[i].classList.remove(this.$module.activeLinkClass)
+    }
+    clicked.parentNode.classList.add(this.$module.activeLinkClass)
+  }
+
+  // if a link occurs more than once in a step nav, the backend doesn't know which one to highlight
+  // so it gives all those links the 'active' attribute and highlights the last step containing that link
+  // if the user clicked on one of those links previously, it will be in the session store
+  // this code ensures only that link and its corresponding step have the highlighting
+  // otherwise it accepts what the backend has already passed to the component
+  Gemstepnav.prototype.ensureOnlyOneActiveLink = function () {
+    var activeLinks = this.$module.querySelectorAll('.js-list-item.' + this.$module.activeLinkClass)
+
+    if (activeLinks.length <= 1) {
+      return
+    }
+
+    var loaded = this.loadFromSessionStorage(this.$module.sessionStoreLink)
+    var activeParent = this.$module.querySelectorAll('.' + this.$module.activeLinkClass)[0]
+    var activeChild = activeParent.firstChild
+    var foundLink = activeChild.getAttribute('data-position')
+    var lastClicked = loaded || foundLink // the value saved has priority
+
+    // it's possible for the saved link position value to not match any of the currently duplicate highlighted links
+    // so check this otherwise it'll take the highlighting off all of them
+    var checkLink = this.$module.querySelectorAll('[data-position="' + lastClicked + '"]')[0]
+
+    if (checkLink) {
+      if (!checkLink.parentNode.classList.contains(this.$module.activeLinkClass)) {
+        lastClicked = checkLink
+      }
+    } else {
+      lastClicked = foundLink
+    }
+
+    this.removeActiveStateFromAllButCurrent(activeLinks, lastClicked)
+    this.setActiveStepClass()
+  }
+
+  Gemstepnav.prototype.removeActiveStateFromAllButCurrent = function (activeLinks, current) {
+    for (var i = 0; i < activeLinks.length; i++) {
+      var thisel = activeLinks[i]
+      if (thisel.querySelectorAll('.js-link')[0].getAttribute('data-position').toString() !== current.toString()) {
+        thisel.classList.remove(this.$module.activeLinkClass)
+        var visuallyHidden = thisel.querySelectorAll('.visuallyhidden')
+        if (visuallyHidden.length) {
+          visuallyHidden[0].parentNode.removeChild(visuallyHidden[0])
+        }
+      }
+    }
+  }
+
+  Gemstepnav.prototype.setActiveStepClass = function () {
+    // remove the 'active/open' state from all steps
+    var allActiveSteps = this.$module.querySelectorAll('.' + this.$module.activeStepClass)
+    for (var i = 0; i < allActiveSteps.length; i++) {
+      allActiveSteps[i].classList.remove(this.$module.activeStepClass)
+      allActiveSteps[i].removeAttribute('data-show')
+    }
+
+    // find the current page link and apply 'active/open' state to parent step
+    var activeLink = this.$module.querySelectorAll('.' + this.$module.activeLinkClass)[0]
+    if (activeLink) {
+      var activeStep = activeLink.closest('.gem-c-step-nav__step')
+      activeStep.classList.add(this.$module.activeStepClass)
+      activeStep.setAttribute('data-show', '')
+    }
+  }
+
+  Gemstepnav.prototype.bindToggleShowHideAllButton = function (stepNavTracker) {
+    var that = this
+
+    this.$module.showOrHideAllButton.addEventListener('click', function (event) {
+      var textContent = this.textContent || this.innerText
+      var shouldShowAll = textContent === that.$module.actions.showAllText
+
+      // Fire GA click tracking
+      stepNavTracker.trackClick('pageElementInteraction', (shouldShowAll ? 'stepNavAllShown' : 'stepNavAllHidden'), {
+        label: (shouldShowAll ? that.$module.actions.showAllText : that.$module.actions.hideAllText) + ': ' + that.$module.stepNavSize
+      })
+
+      that.setAllStepsShownState(shouldShowAll)
+      that.$module.showOrHideAllButton.setAttribute('aria-expanded', shouldShowAll)
+      that.setShowHideAllText()
+
+      return false
+    })
+  }
+
+  Gemstepnav.prototype.setShowHideAllText = function () {
+    var shownSteps = this.$module.querySelectorAll('.step-is-shown').length
+    var showAllChevon = this.$module.showOrHideAllButton.querySelector('.js-step-controls-button-icon')
+    var showAllButtonText = this.$module.showOrHideAllButton.querySelector('.js-step-controls-button-text')
+    // Find out if the number of is-opens == total number of steps
+    var shownStepsIsTotalSteps = shownSteps === this.$module.totalSteps
+
+    if (shownStepsIsTotalSteps) {
+      showAllButtonText.innerHTML = this.$module.actions.hideAllText
+      showAllChevon.classList.remove('gem-c-step-nav__chevron--down')
+    } else {
+      showAllButtonText.innerHTML = this.$module.actions.showAllText
+      showAllChevon.classList.add('gem-c-step-nav__chevron--down')
+    }
+  }
+
+  Gemstepnav.prototype.StepView = function (stepElement, $module) {
+    this.stepElement = stepElement
+    this.stepContent = this.stepElement.querySelectorAll('.js-panel')[0]
+    this.titleButton = this.stepElement.querySelectorAll('.js-step-title-button')[0]
+    var textElement = this.stepElement.querySelectorAll('.js-step-title-text')[0]
+    this.title = textElement.textContent || textElement.innerText
+    this.title = this.title.replace(/^\s+|\s+$/g, '') // this is 'trim' but supporting IE8
+    this.showText = $module.actions.showText
+    this.hideText = $module.actions.hideText
+    this.upChevronSvg = $module.upChevronSvg
+    this.downChevronSvg = $module.downChevronSvg
+
+    this.show = function () {
+      this.setIsShown(true)
+    }
+
+    this.hide = function () {
+      this.setIsShown(false)
+    }
+
+    this.toggle = function () {
+      this.setIsShown(this.isHidden())
+    }
+
+    this.setIsShown = function (isShown) {
+      var toggleLink = this.stepElement.querySelectorAll('.js-toggle-link')[0]
+      var toggleLinkText = toggleLink.querySelector('.js-toggle-link-text')
+      var stepChevron = toggleLink.querySelector('.js-toggle-link-icon')
+
+      if (isShown) {
+        this.stepElement.classList.add('step-is-shown')
+        this.stepContent.classList.remove('js-hidden')
+        toggleLinkText.innerHTML = this.hideText
+        stepChevron.classList.remove('gem-c-step-nav__chevron--down')
+      } else {
+        this.stepElement.classList.remove('step-is-shown')
+        this.stepContent.classList.add('js-hidden')
+        toggleLinkText.innerHTML = this.showText
+        stepChevron.classList.add('gem-c-step-nav__chevron--down')
+      }
+      this.titleButton.setAttribute('aria-expanded', isShown)
+    }
+
+    this.isShown = function () {
+      return this.stepElement.classList.contains('step-is-shown')
+    }
+
+    this.isHidden = function () {
+      return !this.isShown()
+    }
+
+    this.numberOfContentItems = function () {
+      return this.stepContent.querySelectorAll('.js-link').length
+    }
+  }
+
+  Gemstepnav.prototype.StepToggleClick = function (event, stepView, stepNavTracker, stepIsOptional, stepNavSize) {
+    this.target = event.target
+    this.stepIsOptional = stepIsOptional
+    this.stepNavSize = stepNavSize
+
+    this.trackClick = function () {
+      var trackingOptions = { label: this.trackingLabel(), dimension28: stepView.numberOfContentItems().toString() }
+      stepNavTracker.trackClick('pageElementInteraction', this.trackingAction(), trackingOptions)
+    }
+
+    this.trackingLabel = function () {
+      var clickedNearbyToggle = this.target.closest('.js-step').querySelectorAll('.js-toggle-panel')[0]
+      return clickedNearbyToggle.getAttribute('data-position') + ' - ' + stepView.title + ' - ' + this.locateClickElement() + ': ' + this.stepNavSize + this.isOptional()
+    }
+
+    // returns index of the clicked step in the overall number of steps
+    this.stepIndex = function () { // eslint-disable-line no-unused-vars
+      return this.$module.steps.index(stepView.element) + 1
+    }
+
+    this.trackingAction = function () {
+      return (stepView.isHidden() ? 'stepNavHidden' : 'stepNavShown')
+    }
+
+    this.locateClickElement = function () {
+      if (this.clickedOnIcon()) {
+        return this.iconType() + ' click'
+      } else if (this.clickedOnHeading()) {
+        return 'Heading click'
+      } else {
+        return 'Elsewhere click'
+      }
+    }
+
+    this.clickedOnIcon = function () {
+      return this.target.classList.contains('js-toggle-link')
+    }
+
+    this.clickedOnHeading = function () {
+      return this.target.classList.contains('js-step-title-text')
+    }
+
+    this.iconType = function () {
+      return (stepView.isHidden() ? 'Minus' : 'Plus')
+    }
+
+    this.isOptional = function () {
+      return (this.stepIsOptional ? ' ; optional' : '')
+    }
+  }
+
+  Gemstepnav.prototype.ComponentLinkClick = function (event, stepNavTracker, linkPosition, size) {
+    this.size = size
+    this.target = event.target
+
+    this.trackClick = function () {
+      var trackingOptions = { label: this.target.getAttribute('href') + ' : ' + this.size }
+      var dimension28 = this.target.closest('.gem-c-step-nav__list').getAttribute('data-length')
+
+      if (dimension28) {
+        trackingOptions.dimension28 = dimension28
+      }
+
+      stepNavTracker.trackClick('stepNavLinkClicked', linkPosition, trackingOptions)
+    }
+  }
+
+  // A helper that sends a custom event request to Google Analytics if
+  // the GOVUK module is setup
+  Gemstepnav.prototype.StepNavTracker = function (uniqueId, totalSteps, totalLinks) {
+    this.totalSteps = totalSteps
+    this.totalLinks = totalLinks
+    this.uniqueId = uniqueId
+
+    this.trackClick = function (category, action, options) {
+      // dimension26 records the total number of expand/collapse steps in this step nav
+      // dimension27 records the total number of links in this step nav
+      // dimension28 records the number of links in the step that was shown/hidden (handled in click event)
+      // if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
+      //   options = options || {}
+      //   options.dimension26 = options.dimension26 || this.totalSteps.toString()
+      //   options.dimension27 = options.dimension27 || this.totalLinks.toString()
+      //   options.dimension96 = options.dimension96 || this.uniqueId
+      //   window.GOVUK.analytics.trackEvent(category, action, options)
+      // }
+    }
+  }
+
+new Gemstepnav(document.querySelector('[data-module="govuk-step-nav"]')).init()
+</script>
