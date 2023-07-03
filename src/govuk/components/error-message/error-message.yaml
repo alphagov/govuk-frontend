@@ -10,15 +10,15 @@ params:
   - name: id
     type: string
     required: false
-    description: ID attribute to add to the error message span tag.
+    description: ID attribute to add to the error message `<p>` tag.
   - name: classes
     type: string
     required: false
-    description: Classes to add to the error message span tag.
+    description: Classes to add to the error message `<p>` tag.
   - name: attributes
     type: object
     required: false
-    description: HTML attributes (for example data attributes) to add to the error message span tag.
+    description: HTML attributes (for example data attributes) to add to the error message `<p>` tag.
   - name: visuallyHiddenText
     type: string
     required: false
