@@ -54,6 +54,15 @@ updates:
           - 'puppeteer'
           - 'puppeteer-*'
 
+      types:
+        patterns:
+          - '@types/*'
+
+        # Exclude packages in other groups
+        exclude-patterns:
+          - '@types/jest'
+          - '@types/jest-*'
+
     reviewers:
       - alphagov/design-system-developers
 
