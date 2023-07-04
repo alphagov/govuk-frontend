@@ -293,6 +293,10 @@
     // feedback to the user as to which radio they will select when their
     // cursor is outside of the visible area.
     .govuk-radios__item:hover .govuk-radios__input:not(:disabled) + .govuk-radios__label::before {
+      // Forced colours modes tend to ignore box-shadow.
+      // Apply an outline for those modes to use instead.
+      outline: $govuk-radios-focus-width dashed transparent;
+      outline-offset: 1px;
       box-shadow: 0 0 0 $govuk-hover-width $govuk-hover-colour;
     }
 
@@ -302,6 +306,10 @@
     // We use two box shadows, one that restores the original focus state [1]
     // and another that then applies the hover state [2].
     .govuk-radios__item:hover .govuk-radios__input:focus + .govuk-radios__label::before {
+      // Set different HCM colour when we have both hover/focus applied at once
+      @media screen and (forced-colors: active), (-ms-high-contrast: active) {
+        outline-color: Highlight;
+      }
       box-shadow:
         0 0 0 $govuk-radios-focus-width $govuk-focus-colour, // 1
         0 0 0 $govuk-hover-width        $govuk-hover-colour; // 2
