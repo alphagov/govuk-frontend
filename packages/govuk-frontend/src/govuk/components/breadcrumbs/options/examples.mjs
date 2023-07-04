@@ -1,7 +1,7 @@
 /**
  * Component examples with Nunjucks macro options (or params)
  *
- * @satisfies {import('@govuk-frontend/lib/components').ComponentExample[]}
+ * @satisfies {BreadcrumbsExample[]}
  */
 export const examples = [
   {
@@ -197,3 +197,9 @@ export const examples = [
     }
   }
 ]
+
+/**
+ * @typedef {import('../macro.mjs').BreadcrumbsOptions} BreadcrumbsOptions
+ * @typedef {Omit<ComponentExample, 'options'> & { options: BreadcrumbsOptions }} BreadcrumbsExample
+ * @typedef {import('@govuk-frontend/lib/components').ComponentExample} ComponentExample
+ */

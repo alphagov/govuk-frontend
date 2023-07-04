@@ -60,6 +60,7 @@ describe('packages/govuk-frontend/dist/', () => {
       '!**/__snapshots__/',
       '!**/__snapshots__/**',
       '!**/govuk-prototype-kit.config.mjs',
+      '!**/macro.mjs',
       '!**/options/examples.mjs',
       '!**/options/params.mjs',
       '!**/tsconfig?(.build).json',

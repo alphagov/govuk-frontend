@@ -1,7 +1,7 @@
 /**
  * Component examples with Nunjucks macro options (or params)
  *
- * @satisfies {import('@govuk-frontend/lib/components').ComponentExample[]}
+ * @satisfies {AccordionExample[]}
  */
 export const examples = [
   {
@@ -313,7 +313,9 @@ export const examples = [
             text: 'Some content'
           }
         },
+        // @ts-expect-error Falsy item for tests
         false,
+        // @ts-expect-error Falsy item for tests
         '',
         null,
         {
@@ -346,3 +348,9 @@ export const examples = [
     }
   }
 ]
+
+/**
+ * @typedef {import('../macro.mjs').AccordionOptions} AccordionOptions
+ * @typedef {Omit<ComponentExample, 'options'> & { options: AccordionOptions }} AccordionExample
+ * @typedef {import('@govuk-frontend/lib/components').ComponentExample} ComponentExample
+ */

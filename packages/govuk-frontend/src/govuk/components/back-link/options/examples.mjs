@@ -1,7 +1,7 @@
 /**
  * Component examples with Nunjucks macro options (or params)
  *
- * @satisfies {import('@govuk-frontend/lib/components').ComponentExample[]}
+ * @satisfies {BackLinkExample[]}
  */
 export const examples = [
   {
@@ -62,3 +62,9 @@ export const examples = [
     }
   }
 ]
+
+/**
+ * @typedef {import('../macro.mjs').BackLinkOptions} BackLinkOptions
+ * @typedef {Omit<ComponentExample, 'options'> & { options: BackLinkOptions }} BackLinkExample
+ * @typedef {import('@govuk-frontend/lib/components').ComponentExample} ComponentExample
+ */
