@@ -36,7 +36,11 @@ params:
       - name: text
         type: string
         required: false
-        description: The link text to the previous page. Defaults to 'Previous'.
+        description: The text content of the link to the previous page. Defaults to 'Previous page', with 'page' being visually hidden. If `html` is provided, the `text` option will be ignored.
+      - name: html
+        type: string
+        required: false
+        description: The HTML content of the link to the previous page. Defaults to 'Previous page', with 'page' being visually hidden. If `html` is provided, the `text` option will be ignored.
       - name: labelText
         type: string
         required: false
@@ -57,7 +61,11 @@ params:
       - name: text
         type: string
         required: false
-        description: The link text to the next page. Defaults to 'Next'.
+        description: The text content of the link to the next page. Defaults to 'Next page', with 'page' being visually hidden. If `html` is provided, the `text` option will be ignored.
+      - name: html
+        type: string
+        required: false
+        description: The HTML content of the link to the next page. Defaults to 'Next page', with 'page' being visually hidden. If `html` is provided, the `text` option will be ignored.
       - name: labelText
         type: string
         required: false
