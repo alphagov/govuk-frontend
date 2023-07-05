@@ -15,7 +15,7 @@ import scss from 'postcss-scss'
 export default ({ to = '' } = {}) => ({
   plugins: [
     // Add vendor prefixes
-    autoprefixer(),
+    autoprefixer({ env: 'stylesheets' }),
 
     // Add GOV.UK Frontend release version
     !isDev && {
