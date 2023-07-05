@@ -247,6 +247,8 @@ jobs:
         conditions:
           - [require]
           - [import]
+          - [browser, require]
+          - [browser, import]
 
         include:
           - conditions: []

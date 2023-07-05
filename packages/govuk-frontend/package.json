@@ -13,6 +13,12 @@
   ],
   "exports": {
     ".": {
+      "browser": {
+        "sass": "./dist/govuk/all.scss",
+        "import": "./dist/govuk/all.bundle.mjs",
+        "require": "./dist/govuk/all.bundle.js",
+        "default": "./dist/govuk/all.bundle.js"
+      },
       "sass": "./dist/govuk/all.scss",
       "import": "./dist/govuk/all.mjs",
       "require": "./dist/govuk/all.bundle.js",
