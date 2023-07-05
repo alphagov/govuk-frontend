@@ -937,9 +937,9 @@
 {% endblock %}
 
 {% block bodyEnd %}
-  <script type="module" src="/javascripts/all.bundle.min.mjs"></script>
+  <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
   <script type="module">
-    import { initAll } from '/javascripts/all.bundle.min.mjs'
+    import { initAll } from '/javascripts/govuk-frontend.min.js'
     initAll({
       accordion: {
         i18n: {

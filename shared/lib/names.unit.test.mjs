@@ -159,22 +159,27 @@ describe('packageTypeToPath', () => {
   const packages = [
     {
       packageName: 'govuk-frontend',
-      resolvedPath: join(paths.package, 'dist/govuk/all.js')
-    },
-    {
-      packageName: 'govuk-frontend',
-      options: { modulePath: 'i18n.js' },
-      resolvedPath: join(paths.package, 'dist/govuk/i18n.js')
+      resolvedPath: join(paths.package, 'dist/govuk/all.bundle.js')
     },
     {
       packageName: 'govuk-frontend',
       options: { type: 'module' },
-      resolvedPath: join(paths.package, 'dist/govuk-esm/all.mjs')
+      resolvedPath: join(paths.package, 'dist/govuk/all.mjs')
     },
     {
       packageName: 'govuk-frontend',
       options: { modulePath: 'i18n.mjs', type: 'module' },
-      resolvedPath: join(paths.package, 'dist/govuk-esm/i18n.mjs')
+      resolvedPath: join(paths.package, 'dist/govuk/i18n.mjs')
+    },
+    {
+      packageName: 'govuk-frontend',
+      options: { modulePath: 'components/accordion/accordion.bundle.js' },
+      resolvedPath: join(paths.package, 'dist/govuk/components/accordion/accordion.bundle.js')
+    },
+    {
+      packageName: 'govuk-frontend',
+      options: { modulePath: 'components/accordion/accordion.bundle.mjs', type: 'module' },
+      resolvedPath: join(paths.package, 'dist/govuk/components/accordion/accordion.bundle.mjs')
     }
   ]
 
