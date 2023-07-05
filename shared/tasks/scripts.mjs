@@ -1,4 +1,4 @@
-import { format, join, parse } from 'path'
+import { format, join, parse, relative } from 'path'
 
 import { getListing } from 'govuk-frontend-lib/files'
 import PluginError from 'plugin-error'
@@ -35,10 +35,7 @@ export async function compile (pattern, options) {
  *
  * @param {AssetEntry} assetEntry - Asset entry
  */
-export async function compileJavaScript ([modulePath, { configPath, srcPath, destPath, filePath = format }]) {
-  const file = parse(modulePath)
-
-  // Rollup config
+export async function compileJavaScript ([modulePath, { basePath, configPath, srcPath, destPath, filePath = format }]) {
   const config = await loadConfigFile(configPath, {
     i: join(srcPath, modulePath)
   })
@@ -56,18 +53,31 @@ export async function compileJavaScript ([modulePath, { configPath, srcPath, des
 
     // Compile JavaScript to output format
     await Promise.all(options.output.map((output) => {
-      file.ext = ['es', 'esm', 'module'].includes(output.format)
-        ? '.mjs'
-        : '.js'
+      const file = parse(output.file ?? modulePath)
 
-      // Update basename with new extension
-      file.base = `${file.name}${file.ext}`
+      // Update filename by format unless already in config
+      if (!output.file) {
+        switch (output.format) {
+          case 'es':
+          case 'esm':
+          case 'module':
+            file.ext = output.compact
+              ? '.min.mjs'
+              : '.mjs'
+            break
+
+          default:
+            file.ext = output.compact
+              ? '.min.js'
+              : '.js'
+        }
+
+        // Update basename with new extension and optional suffix
+        file.base = `${file.name}${output.preserveModules ? '' : '.bundle'}${file.ext}`
+      }
 
       return bundle.write({
         ...output,
-
-        // Enable source maps
-        sourcemap: true,
 
         // Write to directory for modules
         dir: output.dir ?? (output.preserveModules
@@ -75,9 +85,15 @@ export async function compileJavaScript ([modulePath, { configPath, srcPath, des
           : undefined),
 
         // Write to file when bundling
-        file: output.file ?? (!output.preserveModules
+        file: !output.preserveModules
           ? join(destPath, filePath(file))
-          : undefined)
+          : undefined,
+
+        // Output modules relative to base path not input
+        preserveModulesRoot: relative(basePath, srcPath),
+
+        // Enable source maps
+        sourcemap: true
       })
     }))
   }

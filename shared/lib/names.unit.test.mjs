@@ -159,12 +159,12 @@ describe('packageTypeToPath', () => {
   const packages = [
     {
       packageName: 'govuk-frontend',
-      resolvedPath: join(paths.package, 'dist/govuk/all.js')
+      resolvedPath: join(paths.package, 'dist/govuk/all.bundle.js')
     },
     {
       packageName: 'govuk-frontend',
-      options: { modulePath: 'i18n.js' },
-      resolvedPath: join(paths.package, 'dist/govuk/i18n.js')
+      options: { modulePath: 'i18n.bundle.js' },
+      resolvedPath: join(paths.package, 'dist/govuk/i18n.bundle.js')
     },
     {
       packageName: 'govuk-frontend',

@@ -40,7 +40,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - copy Nunjucks component template/macro files, including JSON configs
 - copy GOV.UK Prototype Kit config files
 - compile JavaScript to ECMAScript (ES) modules
-- compile JavaScript to Universal Module Definition (UMD)
+- compile JavaScript to Universal Module Definition (UMD) bundles
 - compile Rollup build stats into `./shared/govuk-frontend-stats/dist`
 - runs `npm run postbuild:package` (which will test the output is correct)
 
@@ -92,7 +92,7 @@ This task will:
 This task will:
 
 - check JavaScript code quality via ESLint (`npm run lint:js`) (using JavaScript Standard Style)
-- compile JavaScript to Universal Module Definition (UMD) into `./packages/govuk-frontend-review/dist/javascripts`
+- compile JavaScript to Immediately Invoked Function Expression (IIFE) into `./packages/govuk-frontend-review/dist/javascripts`
 - compile JavaScript documentation into `./packages/govuk-frontend-review/dist/docs/jsdoc`
 
 ## Review app only

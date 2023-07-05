@@ -14,6 +14,7 @@ export default defineConfig(({ i: input }) => ({
    * Output options
    */
   output: {
+    compact: true,
     format: 'es',
 
     /**

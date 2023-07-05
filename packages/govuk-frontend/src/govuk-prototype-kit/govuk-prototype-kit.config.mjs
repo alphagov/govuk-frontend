@@ -31,13 +31,13 @@ export default async () => {
   return {
     assets: [
       '/dist/govuk/assets',
-      '/dist/govuk/all.js.map'
+      '/dist/govuk/all.bundle.js.map'
     ],
     sass: [
       '/dist/govuk-prototype-kit/init.scss'
     ],
     scripts: [
-      '/dist/govuk/all.js',
+      '/dist/govuk/all.bundle.js',
       '/dist/govuk-prototype-kit/init.js'
     ],
     nunjucksMacros,
