@@ -240,6 +240,11 @@ jobs:
           - conditions: import
             node-version: 12.18
 
+    env:
+      # Node.js conditions override from "require" to "import" etc
+      # https://nodejs.org/api/cli.html#-c-condition---conditionscondition
+      FLAGS: ${{ matrix.conditions != 'require' && format(' --conditions {0}', matrix.conditions) || '' }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -255,18 +260,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Export ${{ matrix.conditions }}, Node.js ${{ matrix.node-version }}
-        env:
-          # Node.js conditions override from "require" to "import" etc
-          # https://nodejs.org/api/cli.html#-c-condition---conditionscondition
-          FLAGS: ${{ matrix.conditions != 'require' && format(' --conditions {0}', matrix.conditions) || '' }}
-
-        run: |
-          node --eval "console.log(require.resolve('govuk-frontend'))"${{ env.FLAGS }}
-          node --eval "console.log(require.resolve('govuk-frontend/package.json'))"${{ env.FLAGS }}
-          node --eval "console.log(require.resolve('govuk-frontend/dist/govuk/components/accordion/accordion.bundle.js'))"${{ env.FLAGS }}
-          node --eval "console.log(require.resolve('govuk-frontend/dist/govuk/components/accordion/accordion.bundle.mjs'))"${{ env.FLAGS }}
-          node --eval "console.log(require.resolve('govuk-frontend/dist/govuk/i18n.mjs'))"${{ env.FLAGS }}
+      - run: node --eval "console.log(require.resolve('govuk-frontend'))"${{ env.FLAGS }}
+      - run: node --eval "console.log(require.resolve('govuk-frontend/package.json'))"${{ env.FLAGS }}
+      - run: node --eval "console.log(require.resolve('govuk-frontend/dist/govuk/components/accordion/accordion.bundle.js'))"${{ env.FLAGS }}
+      - run: node --eval "console.log(require.resolve('govuk-frontend/dist/govuk/components/accordion/accordion.bundle.mjs'))"${{ env.FLAGS }}
+      - run: node --eval "console.log(require.resolve('govuk-frontend/dist/govuk/i18n.mjs'))"${{ env.FLAGS }}
 
   regression:
     name: Percy
