@@ -75,8 +75,8 @@ describe('packages/govuk-frontend/dist/', () => {
 
         // UMD bundles for compatibility (e.g. Rails Asset Pipeline)
         const output = [
-          join(requirePath, `${name}.js`),
-          join(requirePath, `${name}.js.map`) // with source map
+          join(requirePath, `${name}.bundle.js`),
+          join(requirePath, `${name}.bundle.js.map`) // with source map
         ]
 
         // Only source `./govuk/**/*.mjs` files compiled to ES modules
@@ -171,9 +171,9 @@ describe('packages/govuk-frontend/dist/', () => {
   })
 
   describe('Universal Module Definition (UMD)', () => {
-    describe('all.js', () => {
+    describe('all.bundle.js', () => {
       it('should export each module', async () => {
-        const contents = await readFile(join(paths.package, 'dist/govuk/all.js'), 'utf8')
+        const contents = await readFile(join(paths.package, 'dist/govuk/all.bundle.js'), 'utf8')
 
         // Look for AMD module definition for 'GOVUKFrontend'
         expect(contents).toContain("typeof define === 'function' && define.amd ? define('GOVUKFrontend', ['exports'], factory)")
@@ -249,12 +249,12 @@ describe('packages/govuk-frontend/dist/', () => {
         // UMD bundle not found at source
         expect(componentSource)
           .toEqual(expect.not.arrayContaining([
-            join(componentName, `${componentName}.js`)
+            join(componentName, `${componentName}.bundle.js`)
           ]))
 
         // UMD bundle generated in dist
         expect(componentDist)
-          .toEqual(expect.arrayContaining([join(componentName, `${componentName}.js`)]))
+          .toEqual(expect.arrayContaining([join(componentName, `${componentName}.bundle.js`)]))
 
         // ES module generated in dist
         expect(componentsFilesDistESM)
@@ -264,7 +264,7 @@ describe('packages/govuk-frontend/dist/', () => {
           .filter(filterPath([`**/${componentName}.mjs`]))
 
         const [modulePathUMD] = componentDist
-          .filter(filterPath([`**/${componentName}.js`]))
+          .filter(filterPath([`**/${componentName}.bundle.js`]))
 
         const moduleTextESM = await readFile(join(paths.package, 'dist/govuk-esm/components', modulePathESM), 'utf8')
         const moduleTextUMD = await readFile(join(paths.package, 'dist/govuk/components', modulePathUMD), 'utf8')

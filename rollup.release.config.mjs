@@ -17,7 +17,10 @@ export default defineConfig(({ i: input }) => ({
    * Output options
    */
   output: {
+    compact: true,
     format: 'umd',
+
+    // Bundled modules
     preserveModules: false,
 
     /**

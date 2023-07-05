@@ -11,7 +11,7 @@ describe('GOV.UK Prototype Kit config', () => {
   it('includes paths for assets, scripts, sass', () => {
     expect(config.assets).toEqual([
       '/dist/govuk/assets',
-      '/dist/govuk/all.js.map'
+      '/dist/govuk/all.bundle.js.map'
     ])
 
     expect(config.sass).toEqual([
@@ -19,7 +19,7 @@ describe('GOV.UK Prototype Kit config', () => {
     ])
 
     expect(config.scripts).toEqual([
-      '/dist/govuk/all.js',
+      '/dist/govuk/all.bundle.js',
       '/dist/govuk-prototype-kit/init.js'
     ])
   })

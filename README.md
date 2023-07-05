@@ -48,10 +48,10 @@ Some of the JavaScript included in GOV.UK Frontend improves the usability and
 accessibility of the components. You should make sure that you are importing and
 initialising Javascript in your application to ensure that all users can use it successfully.
 
-You can include Javascript for all components either by copying the `all.js` from `node_modules/govuk-frontend/dist/govuk/` into your application or referencing the file directly:
+You can include Javascript for all components either by copying the `all.bundle.js` from `node_modules/govuk-frontend/dist/govuk/` into your application or referencing the file directly:
 
 ```html
-<script type="module" src="<path-to-govuk-frontend-all-file>/all.js"></script>
+<script type="module" src="<path-to-govuk-frontend-all-file>/all.bundle.js"></script>
 ```
 
 Next you need to initialise the script by adding:

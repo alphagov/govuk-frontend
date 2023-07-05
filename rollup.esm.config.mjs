@@ -4,9 +4,6 @@ import { defineConfig } from 'rollup'
 
 /**
  * Rollup config for npm publish
- *
- * ECMAScript (ES) modules for browser <script type="module">
- * or using `import` for modern browsers and Node.js scripts
  */
 export default defineConfig(({ i: input }) => ({
   input,
@@ -14,11 +11,18 @@ export default defineConfig(({ i: input }) => ({
   /**
    * Output options
    */
-  output: {
-    entryFileNames: '[name].mjs',
-    format: 'es',
-    preserveModules: true
-  },
+  output: [
+    /**
+     * ECMAScript (ES) modules for Node.js or bundler `import`
+     */
+    {
+      entryFileNames: '[name].mjs',
+      format: 'es',
+
+      // Separate modules, not bundled
+      preserveModules: true
+    }
+  ],
 
   /**
    * Input plugins
