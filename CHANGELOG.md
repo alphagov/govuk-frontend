@@ -435,6 +435,8 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 
 ## 4.4.1 (Fix release)
 
+Note: This release was created from the `support/4.4.x` branch.
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
@@ -1194,6 +1196,8 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 - [#2448: Remove the border from the last item in the collapsible navigation menu in the header](https://github.com/alphagov/govuk-frontend/pull/2448)
 
 ## 3.14.0 (Feature release)
+
+Note: This release was created from the `support/3.x` branch.
 
 ### New features
 
