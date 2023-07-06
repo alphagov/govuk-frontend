@@ -82,7 +82,7 @@
               classes: 'govuk-checkboxes__label' + (' ' + item.label.classes if item.label.classes),
               attributes: item.label.attributes,
               for: id
-            }) | indent(6) | trim }}
+              }) | indent(6) | trim }}
             {% if hasHint %}
             {{ govukHint({
               id: itemHintId,

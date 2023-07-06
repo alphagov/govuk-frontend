@@ -5,9 +5,9 @@
 
 @include govuk-exports("govuk/component/radios") {
 
-  $govuk-touch-target-size: 44px;
-  $govuk-radios-size: 40px;
-  $govuk-small-radios-size: 24px;
+  $govuk-radios-size: govuk-spacing(7);
+  $govuk-touch-target-size: ($govuk-radios-size + 4px);
+  $govuk-small-radios-size: (govuk-spacing(4) + 4px);
   $govuk-radios-label-padding-left-right: govuk-spacing(3);
   // When the default focus width is used on a curved edge it looks visually smaller.
   // So for the circular radios we bump the default to make it look visually consistent.
@@ -15,16 +15,9 @@
 
   .govuk-radios__item {
     @include govuk-font($size: 19);
-
-    display: block;
-    position: relative;
-
-    min-height: $govuk-radios-size;
-
+    display: flex;
+    flex-wrap: wrap;
     margin-bottom: govuk-spacing(2);
-    padding-left: $govuk-radios-size;
-
-    clear: left;
   }
 
   .govuk-radios__item:last-child,
@@ -33,76 +26,74 @@
   }
 
   .govuk-radios__input {
-    $input-offset: ($govuk-touch-target-size - $govuk-radios-size) / 2;
-
-    position: absolute;
-
+    // $input-offset: ($govuk-touch-target-size - $govuk-radios-size) / 2;
+    // top: $input-offset * -1;
+    // left: $input-offset * -1;
+    appearance: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
     z-index: 1;
-    top: $input-offset * -1;
-    left: $input-offset * -1;
-
-    width: $govuk-touch-target-size;
-    height: $govuk-touch-target-size;
-    margin: 0;
-
-    opacity: 0;
-
-    cursor: pointer;
-  }
-
-  .govuk-radios__label {
-    display: inline-block;
-    margin-bottom: 0;
-    padding: 8px $govuk-radios-label-padding-left-right govuk-spacing(1);
-    cursor: pointer;
-    // remove 300ms pause on mobile
-    touch-action: manipulation;
-  }
-
-  // ( ) Radio ring
-  .govuk-radios__label::before {
-    content: "";
-    box-sizing: border-box;
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: $govuk-radios-size;
+    min-width: $govuk-radios-size;
     height: $govuk-radios-size;
-
+    margin: 0;
     border: $govuk-border-width-form-element solid currentcolor;
     border-radius: 50%;
     background: transparent;
+    cursor: pointer;
+  }
+
+  .govuk-radios__input::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: $govuk-touch-target-size;
+    height: $govuk-touch-target-size;
   }
 
   //  •  Radio button
   //
   // We create the 'button' entirely out of 'border' so that they remain
   // 'filled' even when colours are overridden in the browser.
-  .govuk-radios__label::after {
+  .govuk-radios__input::after {
     content: "";
-
-    position: absolute;
-    top: govuk-spacing(2);
-    left: govuk-spacing(2);
-
     width: 0;
     height: 0;
-
     border: govuk-spacing(2) solid currentcolor;
     border-radius: 50%;
     opacity: 0;
     background: currentcolor;
   }
 
+  .govuk-radios__label {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: calc(100% - ($govuk-radios-label-padding-left-right + $govuk-radios-size + govuk-spacing(3)));
+    margin-bottom: 0;
+    padding: (govuk-spacing(1) + $govuk-border-width-form-element) govuk-spacing(3);
+    cursor: pointer;
+    // remove 300ms pause on mobile
+    touch-action: manipulation;
+  }
+
+  // to account for when there are multiple children in a label
+  .govuk-radios__label * {
+    width: 100%;
+  }
+
   .govuk-radios__hint {
     display: block;
+    width: 100%;
     padding-right: $govuk-radios-label-padding-left-right;
-    padding-left: $govuk-radios-label-padding-left-right;
+    padding-left: ($govuk-radios-label-padding-left-right + $govuk-radios-size);
   }
 
   // Focused state
-  .govuk-radios__input:focus + .govuk-radios__label::before {
+  .govuk-radios__input:focus {
     border-width: 4px;
 
     // When colours are overridden, the yellow box-shadow becomes invisible
@@ -122,7 +113,7 @@
   }
 
   // Selected state
-  .govuk-radios__input:checked + .govuk-radios__label::after {
+  .govuk-radios__input:checked::after {
     opacity: 1;
   }
 
@@ -143,12 +134,11 @@
 
   .govuk-radios--inline {
     @include govuk-media-query ($from: tablet) {
-      @include govuk-clearfix;
+      display: flex;
+      align-items: flex-start;
 
       .govuk-radios__item {
         margin-right: govuk-spacing(4);
-        float: left;
-        clear: none;
       }
     }
   }
@@ -200,16 +190,11 @@
   // =========================================================
 
   .govuk-radios--small {
-
     $input-offset: ($govuk-touch-target-size - $govuk-small-radios-size) / 2;
     $label-offset: $govuk-touch-target-size - $input-offset;
 
     .govuk-radios__item {
-      @include govuk-clearfix;
-      min-height: 0;
       margin-bottom: 0;
-      padding-left: $label-offset;
-      float: left;
     }
 
     // Shift the touch target into the left margin so that the visible edge of
@@ -221,9 +206,6 @@
     //  └┆▲──┘
     //  ▲┆└─ Radio pseudo element, aligned with margin
     //  └─── Touch target (invisible input), shifted into the margin
-    .govuk-radios__input {
-      left: $input-offset * -1;
-    }
 
     // Adjust the size and position of the label.
     //
@@ -231,31 +213,28 @@
     // 'shrink' it, preventing the hover state from kicking in across the full
     // width of the parent element.
     .govuk-radios__label {
-      margin-top: -2px;
-      padding: 13px govuk-spacing(3) 13px 1px;
-      float: left;
-
-      @include govuk-media-query($from: tablet) {
-        padding: 11px govuk-spacing(3) 10px 1px;
-      }
+      padding-left: 0;
     }
 
     // ( ) Radio ring
     //
     // Reduce the size of the control [1], vertically centering it within the
     // touch target [2]
-    .govuk-radios__label::before {
-      top: $input-offset - $govuk-border-width-form-element; // 2
-      width: $govuk-small-radios-size; // 1
+    .govuk-radios__input {
+      min-width: $govuk-small-radios-size; // 1
       height: $govuk-small-radios-size; // 1
+      margin: govuk-spacing(2) govuk-spacing(2) govuk-spacing(2) 0;
+    }
+
+    .govuk-radios__input::before {
+      top: -12px;
+      right: -12px;
     }
 
     //  •  Radio button
     //
     // Reduce the size of the 'button' and center it within the ring
-    .govuk-radios__label::after {
-      top: 15px;
-      left: 7px;
+    .govuk-radios__input::after {
       border-width: 5px;
     }
 
@@ -268,9 +247,7 @@
     // (If you do use them, they won't look completely broken... but seriously,
     // don't use them)
     .govuk-radios__hint {
-      padding: 0;
-      clear: both;
-      pointer-events: none;
+      padding-left: (govuk-spacing(2) + $govuk-small-radios-size);
     }
 
     // Align conditional reveals with small radios
@@ -278,7 +255,6 @@
       $margin-left: ($govuk-small-radios-size / 2) - ($conditional-border-width / 2);
       margin-left: $margin-left;
       padding-left: $label-offset - ($margin-left + $conditional-border-width);
-      clear: both;
     }
 
     .govuk-radios__divider {
@@ -292,7 +268,7 @@
     // is so much larger than their visible size, and so we need to provide
     // feedback to the user as to which radio they will select when their
     // cursor is outside of the visible area.
-    .govuk-radios__item:hover .govuk-radios__input:not(:disabled) + .govuk-radios__label::before {
+    .govuk-radios__item:hover .govuk-radios__input:not(:disabled) {
       // Forced colours modes tend to ignore box-shadow.
       // Apply an outline for those modes to use instead.
       outline: $govuk-radios-focus-width dashed transparent;
@@ -305,7 +281,7 @@
     //
     // We use two box shadows, one that restores the original focus state [1]
     // and another that then applies the hover state [2].
-    .govuk-radios__item:hover .govuk-radios__input:focus + .govuk-radios__label::before {
+    .govuk-radios__item:hover .govuk-radios__input:focus {
       // Set different HCM colour when we have both hover/focus applied at once
       @media screen and (forced-colors: active), (-ms-high-contrast: active) {
         outline-color: Highlight;
@@ -322,11 +298,11 @@
     // state in browsers that don't support `@media (hover)` (like Internet
     // Explorer) – so we have to 'undo' the hover state instead.
     @media (hover: none), (pointer: coarse) {
-      .govuk-radios__item:hover .govuk-radios__input:not(:disabled) + .govuk-radios__label::before {
+      .govuk-radios__item:hover .govuk-radios__input:not(:disabled) {
         box-shadow: initial;
       }
 
-      .govuk-radios__item:hover .govuk-radios__input:focus + .govuk-radios__label::before {
+      .govuk-radios__item:hover .govuk-radios__input:focus {
         box-shadow: 0 0 0 $govuk-radios-focus-width $govuk-focus-colour;
       }
     }
