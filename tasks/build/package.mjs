@@ -3,7 +3,7 @@ import { join } from 'path'
 import { files, task } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
 
-import { fixtures, scripts, styles, templates } from '../index.mjs'
+import { assets, fixtures, scripts, styles, templates } from '../index.mjs'
 
 /**
  * Build package task
@@ -16,18 +16,11 @@ export default (options) => gulp.series(
     files.clean('*', options)
   ),
 
+  assets(options),
   fixtures(options),
   scripts(options),
   styles(options),
   templates(options),
-
-  // Copy GOV.UK Frontend static assets
-  task.name('copy:assets', () =>
-    files.copy('**/*', {
-      srcPath: join(options.srcPath, 'govuk/assets'),
-      destPath: join(options.destPath, 'govuk/assets')
-    })
-  ),
 
   // Copy GOV.UK Prototype Kit JavaScript
   task.name("copy:files 'govuk-prototype-kit'", () =>
