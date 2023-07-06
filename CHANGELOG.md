@@ -28,24 +28,6 @@ This change was made in:
 - [pull request #3502: Tag design changes](https://github.com/alphagov/govuk-frontend/pull/3502).
 - [pull request #3731: Remove the first letter modifier from the tag component](https://github.com/alphagov/govuk-frontend/pull/3731)
 
-#### Added inverse modifier for buttons on dark backgrounds
-
-You can now style buttons on dark backgrounds to have a white background colour by adding the `govuk-button--inverse` class.
-
-This change was made in [pull request #3556: Add inverse button styles](https://github.com/alphagov/govuk-frontend/pull/3556).
-
-#### Added inverse modifier for breadcrumbs on dark backgrounds
-
-You can now style breadcrumbs on dark backgrounds to use white text, links and arrows by adding the `govuk-breadcrumbs--inverse` class.
-
-This change was made in [pull request #3774: Add inverse breadcrumb and back link modifiers and styles](https://github.com/alphagov/govuk-frontend/pull/3774).
-
-#### Added inverse modifier for back links on dark backgrounds
-
-You can now style back links on dark backgrounds to have a white link and arrow colour by adding the `govuk-back-link--inverse` class.
-
-This change was made in [pull request #3774: Add inverse breadcrumb and back link modifiers and styles](https://github.com/alphagov/govuk-frontend/pull/3774).
-
 #### New link styles are now enabled by default
 
 In GOV.UK Frontend v3.12.0 we introduced new link styles which:
