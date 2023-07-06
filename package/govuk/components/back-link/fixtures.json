@@ -19,6 +19,15 @@
             "html": "<a href=\"#\" class=\"govuk-back-link\">Back to home</a>"
         },
         {
+            "name": "with inverted colours",
+            "options": {
+                "classes": "govuk-back-link--inverse",
+                "href": "#"
+            },
+            "hidden": false,
+            "html": "<a href=\"#\" class=\"govuk-back-link govuk-back-link--inverse\">Back</a>"
+        },
+        {
             "name": "classes",
             "options": {
                 "classes": "app-back-link--custom-class",

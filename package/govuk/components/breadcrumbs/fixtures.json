@@ -116,6 +116,27 @@
             "html": "<div class=\"govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile\">\n  <ol class=\"govuk-breadcrumbs__list\">\n    <li class=\"govuk-breadcrumbs__list-item\">\n      <a class=\"govuk-breadcrumbs__link\" href=\"/\">Home</a>\n    </li>\n    <li class=\"govuk-breadcrumbs__list-item\">\n      <a class=\"govuk-breadcrumbs__link\" href=\"/education\">Education, training and skills</a>\n    </li>\n    <li class=\"govuk-breadcrumbs__list-item\">\n      <a class=\"govuk-breadcrumbs__link\" href=\"/education/special-educational-needs-and-disability-send-and-high-needs\">Special educational needs and disability (SEND) and high needs</a>\n    </li>\n  </ol>\n</div>"
         },
         {
+            "name": "with inverted colours",
+            "options": {
+                "classes": "govuk-breadcrumbs--inverse",
+                "items": [
+                    {
+                        "text": "Home",
+                        "href": "/"
+                    },
+                    {
+                        "text": "Passports, travel and living abroad",
+                        "href": "/browse/abroad"
+                    },
+                    {
+                        "text": "Travel abroad"
+                    }
+                ]
+            },
+            "hidden": false,
+            "html": "<div class=\"govuk-breadcrumbs govuk-breadcrumbs--inverse\">\n  <ol class=\"govuk-breadcrumbs__list\">\n    <li class=\"govuk-breadcrumbs__list-item\">\n      <a class=\"govuk-breadcrumbs__link\" href=\"/\">Home</a>\n    </li>\n    <li class=\"govuk-breadcrumbs__list-item\">\n      <a class=\"govuk-breadcrumbs__link\" href=\"/browse/abroad\">Passports, travel and living abroad</a>\n    </li>\n    <li class=\"govuk-breadcrumbs__list-item\" aria-current=\"page\">Travel abroad</li>\n  </ol>\n</div>"
+        },
+        {
             "name": "classes",
             "options": {
                 "classes": "app-breadcrumbs--custom-modifier",

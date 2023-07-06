@@ -13,6 +13,8 @@ import Details from './components/details/details.mjs';
 export { default as Details } from './components/details/details.mjs';
 import ErrorSummary from './components/error-summary/error-summary.mjs';
 export { default as ErrorSummary } from './components/error-summary/error-summary.mjs';
+import ExitThisPage from './components/exit-this-page/exit-this-page.mjs';
+export { default as ExitThisPage } from './components/exit-this-page/exit-this-page.mjs';
 import Header from './components/header/header.mjs';
 export { default as Header } from './components/header/header.mjs';
 import NotificationBanner from './components/notification-banner/notification-banner.mjs';
@@ -88,6 +90,11 @@ function initAll (config) {
     new ErrorSummary($errorSummary, config.errorSummary).init();
   }
 
+  var $exitThisPageButtons = $scope.querySelectorAll('[data-module="govuk-exit-this-page"]');
+  nodeListForEach($exitThisPageButtons, function ($button) {
+    new ExitThisPage($button, config.exitThisPage).init();
+  });
+
   // Find first header module to enhance.
   var $header = $scope.querySelector('[data-module="govuk-header"]');
   if ($header) {
@@ -125,6 +132,7 @@ function initAll (config) {
  * @property {import('./components/button/button.mjs').ButtonConfig} [button] - Button config
  * @property {import('./components/character-count/character-count.mjs').CharacterCountConfig} [characterCount] - Character Count config
  * @property {import('./components/error-summary/error-summary.mjs').ErrorSummaryConfig} [errorSummary] - Error Summary config
+ * @property {import('./components/exit-this-page/exit-this-page.mjs').ExitThisPageConfig} [exitThisPage] - Exit This Page config
  * @property {import('./components/notification-banner/notification-banner.mjs').NotificationBannerConfig} [notificationBanner] - Notification Banner config
  */
 

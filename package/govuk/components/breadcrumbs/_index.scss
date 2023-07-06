@@ -152,7 +152,7 @@
       @include govuk-link-style-inverse;
     }
 
-    .govuk-breadcrumbs__list-item::before {
+    .govuk-breadcrumbs__list-item:before {
       border-color: currentcolor;
     }
   }
