@@ -232,7 +232,7 @@ jobs:
         run: ${{ matrix.task.run }}
 
   package:
-    name: Export ${{ matrix.conditions }}, Node.js ${{ matrix.node-version }}
+    name: Export ${{ join(matrix.conditions, ' ') || 'require' }}, Node.js ${{ matrix.node-version }}
     runs-on: ubuntu-latest
     needs: [install, build]
 
@@ -245,17 +245,17 @@ jobs:
           - 18 # Node.js 17+ cannot use package exports with trailing slashes
 
         conditions:
-          - require
-          - import
+          - [require]
+          - [import]
 
         include:
-          - conditions: require
+          - conditions: []
             node-version: 12.18 # Node.js 12.18 uses package exports with trailing slashes
 
     env:
       # Node.js conditions override from "require" to "import" etc
       # https://nodejs.org/api/cli.html#-c-condition---conditionscondition
-      FLAGS: ${{ matrix.conditions != 'require' && format(' --conditions {0}', matrix.conditions) || '' }}
+      FLAGS: ${{ matrix.conditions[0] != null && format(' --conditions {0}', join(matrix.conditions, ' --conditions ')) || '' }}
 
     steps:
       - name: Checkout
