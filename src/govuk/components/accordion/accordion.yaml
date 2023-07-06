@@ -51,27 +51,27 @@ params:
       - name: heading.text
         type: string
         required: true
-        description: The title of each section. If `heading.html` is supplied, this is ignored.
+        description: If `html` is set, this is not required. The heading text of each section. If `html` is provided, the `text` option will be ignored.
       - name: heading.html
         type: string
         required: true
-        description: The HTML content of the header for each section. Used as the title for each section. The header is inside the HTML `<button>` element, so you can only add [phrasing content](https://html.spec.whatwg.org/#phrasing-content) to it.
+        description: If `text` is set, this is not required. The heading HTML content of each section. The header is inside the HTML `<button>` element, so you can only add [phrasing content](https://html.spec.whatwg.org/#phrasing-content) to it. If `html` is provided, the `text` option will be ignored.
       - name: summary.text
         type: string
         required: false
-        description: Text content for summary line. If `summary.html` is supplied, this is ignored.
+        description: The summary line text content of each section. If `html` is provided, the `text` option will be ignored.
       - name: summary.html
         type: string
         required: false
-        description: The HTML content for the summary line. The summary line is inside the HTML `<button>` element, so you can only add [phrasing content](https://html.spec.whatwg.org/#phrasing-content) to it.
+        description: The summary line HTML content of each section. The summary line is inside the HTML `<button>` element, so you can only add [phrasing content](https://html.spec.whatwg.org/#phrasing-content) to it. If `html` is provided, the `text` option will be ignored.
       - name: content.text
         type: string
         required: true
-        description: The text content of each section, which is hidden when the section is closed. If `content.html` is supplied, this is ignored.
+        description: If `html` is set, this is not required. The text content of each section, which is hidden when the section is closed. If `html` is provided, the `text` option will be ignored.
       - name: content.html
         type: string
         required: true
-        description: The HTML content of each section, which is hidden when the section is closed.
+        description: If `text` is set, this is not required. The HTML content of each section, which is hidden when the section is closed. If `html` is provided, the `text` option will be ignored.
       - name: expanded
         type: boolean
         required: false
