@@ -241,17 +241,16 @@ jobs:
 
       matrix:
         node-version:
-          - 12.18 # Node.js 12.18 uses package exports with trailing slashes
-          - 12 # But Node.js 12.20+ uses package exports with subpath patterns
-          - 18
+          - 12 # Node.js 12.20+ uses package exports with subpath patterns
+          - 18 # Node.js 17+ cannot use package exports with trailing slashes
 
         conditions:
           - require
           - import
 
-        exclude:
-          - conditions: import
-            node-version: 12.18
+        include:
+          - conditions: require
+            node-version: 12.18 # Node.js 12.18 uses package exports with trailing slashes
 
     env:
       # Node.js conditions override from "require" to "import" etc
