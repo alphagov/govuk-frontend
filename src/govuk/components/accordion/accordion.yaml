@@ -48,14 +48,19 @@ params:
     required: true
     description: An array of sections within the accordion.
     params:
-      - name: heading.text
-        type: string
+      - name: heading
+        type: object
         required: true
-        description: If `html` is set, this is not required. The heading text of each section. If `html` is provided, the `text` option will be ignored.
-      - name: heading.html
-        type: string
-        required: true
-        description: If `text` is set, this is not required. The heading HTML content of each section. The header is inside the HTML `<button>` element, so you can only add [phrasing content](https://html.spec.whatwg.org/#phrasing-content) to it. If `html` is provided, the `text` option will be ignored.
+        description: The heading of each section.
+        params:
+          - name: text
+            type: string
+            required: true
+            description: If `html` is set, this is not required. The heading text of each section. If `html` is provided, the `text` option will be ignored.
+          - name: html
+            type: string
+            required: true
+            description: If `text` is set, this is not required. The heading HTML content of each section. The header is inside the HTML `<button>` element, so you can only add [phrasing content](https://html.spec.whatwg.org/#phrasing-content) to it. If `html` is provided, the `text` option will be ignored.
       - name: summary.text
         type: string
         required: false
