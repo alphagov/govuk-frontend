@@ -61,14 +61,19 @@ params:
             type: string
             required: true
             description: If `text` is set, this is not required. The heading HTML content of each section. The header is inside the HTML `<button>` element, so you can only add [phrasing content](https://html.spec.whatwg.org/#phrasing-content) to it. If `html` is provided, the `text` option will be ignored.
-      - name: summary.text
-        type: string
+      - name: summary
+        type: object
         required: false
-        description: The summary line text content of each section. If `html` is provided, the `text` option will be ignored.
-      - name: summary.html
-        type: string
-        required: false
-        description: The summary line HTML content of each section. The summary line is inside the HTML `<button>` element, so you can only add [phrasing content](https://html.spec.whatwg.org/#phrasing-content) to it. If `html` is provided, the `text` option will be ignored.
+        description: The summary line of each section.
+        params:
+          - name: text
+            type: string
+            required: false
+            description: The summary line text content of each section. If `html` is provided, the `text` option will be ignored.
+          - name: html
+            type: string
+            required: false
+            description: The summary line HTML content of each section. The summary line is inside the HTML `<button>` element, so you can only add [phrasing content](https://html.spec.whatwg.org/#phrasing-content) to it. If `html` is provided, the `text` option will be ignored.
       - name: content.text
         type: string
         required: true
