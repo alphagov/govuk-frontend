@@ -4,7 +4,7 @@ import { npm, task } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
 import slash from 'slash'
 
-import { fixtures, scripts, styles, templates } from './index.mjs'
+import { assets, fixtures, scripts, styles, templates } from './index.mjs'
 
 /**
  * Watch task
@@ -57,5 +57,12 @@ export const watch = (options) => gulp.parallel(
     gulp.watch([
       `${slash(options.srcPath)}/govuk/**/*.{md,njk}`
     ], templates(options))
+  ),
+
+  // Copy GOV.UK Frontend static assets
+  task.name('copy:assets watch', () =>
+    gulp.watch([
+      `${slash(options.srcPath)}/govuk/assets/**`
+    ], assets(options))
   )
 )
