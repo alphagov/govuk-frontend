@@ -1,30 +1,30 @@
 # Changelog
 
-## Unreleased
+## 4.7.0 (Feature release)
 
 ### New features
 
-#### Help users quickly exit a page with Exit This Page
+#### Added the Exit This Page component to help users quickly exit a page or service
 
-You can now use [exit this page](https://design-system.service.gov.uk/components/exit-this-page/) to help users leave a page or service quickly in instances where the page or service contains sensitive information.
+You can now choose to use the [exit this page](https://design-system.service.gov.uk/components/exit-this-page/) component to help users quickly leave a page or service which contains sensitive information.
 
 This was added in [pull request #2545: Add exit this page component](https://github.com/alphagov/govuk-frontend/pull/2545).
 
 #### Added inverse modifier for buttons on dark backgrounds
 
-You can now style buttons on dark backgrounds to have a white background colour by adding the `govuk-button--inverse` class.
+You can now choose to use the `govuk-button--inverse` class to style buttons on dark backgrounds with a white background colour.
 
 This change was made in [pull request #3556: Add inverse button styles](https://github.com/alphagov/govuk-frontend/pull/3556).
 
 #### Added inverse modifier for breadcrumbs on dark backgrounds
 
-You can now style breadcrumbs on dark backgrounds to use white text, links and arrows by adding the `govuk-breadcrumbs--inverse` class.
+You can now choose to use the `govuk-breadcrumbs--inverse` class to style breadcrumbs on dark backgrounds with white text, links and arrows.
 
 This change was made in [pull request #3774: Add inverse breadcrumb and back link modifiers and styles](https://github.com/alphagov/govuk-frontend/pull/3774).
 
 #### Added inverse modifier for back links on dark backgrounds
 
-You can now style back links on dark backgrounds to have a white link and arrow colour by adding the `govuk-back-link--inverse` class.
+You can now choose to use the `govuk-back-link--inverse` class to style back links on dark backgrounds with white links and arrows.
 
 This change was made in [pull request #3774: Add inverse breadcrumb and back link modifiers and styles](https://github.com/alphagov/govuk-frontend/pull/3774).
 
@@ -32,7 +32,8 @@ This change was made in [pull request #3774: Add inverse breadcrumb and back lin
 
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
-- [#3817: Fix package resolution in Node.js 17+](https://github.com/alphagov/govuk-frontend/pull/3817)
+[#3817: Fix package resolution in Node.js 17+](https://github.com/alphagov/govuk-frontend/pull/3817)
+[#3836: Announce whitespace in screen reader announcements of visually hidden text](https://github.com/alphagov/govuk-frontend/pull/3836)
 
 ## 4.6.0 (Feature release)
 
