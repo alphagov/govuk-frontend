@@ -14,6 +14,26 @@
        -moz-text-size-adjust: 100%;
             text-size-adjust: 100%;
 
+    // Add scroll padding to the top of govuk-template but remove it if the
+    // exit this page component is present.
+    //
+    // This is a solution to exit this page potentially failing WCAG SC 2.4.12:
+    // Focus Not Obscured (https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html)
+    // due to it's sticky positioning.
+    //
+    // This will apply scroll-padding-top in any browsers that don't support :has
+    // (https://caniuse.com/css-has). This is part of the reason we do this in
+    // a "wrong way round" way as we hypothesise that the risks of having
+    // scroll-padding unnecessarily is better than risking not having scroll-padding
+    // and needing it to account for exit this page.
+    @supports ((position: -webkit-sticky) or (position: sticky)) {
+      scroll-padding-top: govuk-spacing(9);
+
+      &:not(:has(.govuk-exit-this-page)) {
+        scroll-padding-top: 0;
+      }
+    }
+
     // Force the scrollbar to always display in IE, to prevent horizontal page
     // jumps as content height changes (e.g. autocomplete results open).
     @include govuk-media-query($media-type: screen) {
