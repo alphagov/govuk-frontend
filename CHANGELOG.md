@@ -28,24 +28,6 @@ This change was made in:
 - [pull request #3502: Tag design changes](https://github.com/alphagov/govuk-frontend/pull/3502).
 - [pull request #3731: Remove the first letter modifier from the tag component](https://github.com/alphagov/govuk-frontend/pull/3731)
 
-#### Added inverse modifier for buttons on dark backgrounds
-
-You can now style buttons on dark backgrounds to have a white background colour by adding the `govuk-button--inverse` class.
-
-This change was made in [pull request #3556: Add inverse button styles](https://github.com/alphagov/govuk-frontend/pull/3556).
-
-#### Added inverse modifier for breadcrumbs on dark backgrounds
-
-You can now style breadcrumbs on dark backgrounds to use white text, links and arrows by adding the `govuk-breadcrumbs--inverse` class.
-
-This change was made in [pull request #3774: Add inverse breadcrumb and back link modifiers and styles](https://github.com/alphagov/govuk-frontend/pull/3774).
-
-#### Added inverse modifier for back links on dark backgrounds
-
-You can now style back links on dark backgrounds to have a white link and arrow colour by adding the `govuk-back-link--inverse` class.
-
-This change was made in [pull request #3774: Add inverse breadcrumb and back link modifiers and styles](https://github.com/alphagov/govuk-frontend/pull/3774).
-
 #### New link styles are now enabled by default
 
 In GOV.UK Frontend v3.12.0 we introduced new link styles which:
@@ -256,6 +238,43 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 - [#3791: Refactor mobile menu button label/text handling](https://github.com/alphagov/govuk-frontend/pull/3791)
 - [#3862: Fix focus style being overlapped by summary action links](https://github.com/alphagov/govuk-frontend/pull/3862)
 
+## 4.7.0 (Feature release)
+
+Note: This release was created from the `support/4.x` branch.
+
+### New features
+
+#### Added the Exit This Page component to help users quickly exit a page or service
+
+You can now choose to use the [exit this page](https://design-system.service.gov.uk/components/exit-this-page/) component to help users quickly leave a page or service which contains sensitive information.
+
+This was added in [pull request #2545: Add exit this page component](https://github.com/alphagov/govuk-frontend/pull/2545).
+
+#### Added inverse modifier for buttons on dark backgrounds
+
+You can now choose to use the `govuk-button--inverse` class to style buttons on dark backgrounds with a white background colour.
+
+This change was made in [pull request #3556: Add inverse button styles](https://github.com/alphagov/govuk-frontend/pull/3556).
+
+#### Added inverse modifier for breadcrumbs on dark backgrounds
+
+You can now choose to use the `govuk-breadcrumbs--inverse` class to style breadcrumbs on dark backgrounds with white text, links and arrows.
+
+This change was made in [pull request #3774: Add inverse breadcrumb and back link modifiers and styles](https://github.com/alphagov/govuk-frontend/pull/3774).
+
+#### Added inverse modifier for back links on dark backgrounds
+
+You can now choose to use the `govuk-back-link--inverse` class to style back links on dark backgrounds with white links and arrows.
+
+This change was made in [pull request #3774: Add inverse breadcrumb and back link modifiers and styles](https://github.com/alphagov/govuk-frontend/pull/3774).
+
+### Fixes
+
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
+[#3817: Fix package resolution in Node.js 17+](https://github.com/alphagov/govuk-frontend/pull/3817)
+[#3836: Announce whitespace in screen reader announcements of visually hidden text](https://github.com/alphagov/govuk-frontend/pull/3836)
+
 ## 4.6.0 (Feature release)
 
 ### New features
@@ -415,6 +434,8 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 - [#3199: Fix Sass rounding issues with width of grid columns](https://github.com/alphagov/govuk-frontend/pull/3199)
 
 ## 4.4.1 (Fix release)
+
+Note: This release was created from the `support/4.4.x` branch.
 
 ### Fixes
 
@@ -1175,6 +1196,8 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 - [#2448: Remove the border from the last item in the collapsible navigation menu in the header](https://github.com/alphagov/govuk-frontend/pull/2448)
 
 ## 3.14.0 (Feature release)
+
+Note: This release was created from the `support/3.x` branch.
 
 ### New features
 
