@@ -8,18 +8,23 @@ params:
         type: string
         required: false
         description: Classes to add to the row `div`.
-      - name: key.text
-        type: string
+      - name: key
+        type: object
         required: true
-        description: If `html` is set, this is not required. Text to use within each key. If `html` is provided, the `text` option will be ignored.
-      - name: key.html
-        type: string
-        required: true
-        description: If `text` is set, this is not required. HTML to use within each key. If `html` is provided, the `text` option will be ignored.
-      - name: key.classes
-        type: string
-        required: false
-        description: Classes to add to the key wrapper.
+        description: The key of each row.
+        params:
+          - name: text
+            type: string
+            required: true
+            description: If `html` is set, this is not required. Text to use within each key. If `html` is provided, the `text` option will be ignored.
+          - name: html
+            type: string
+            required: true
+            description: If `text` is set, this is not required. HTML to use within each key. If `html` is provided, the `text` option will be ignored.
+          - name: classes
+            type: string
+            required: false
+            description: Classes to add to the key wrapper.
       - name: value.text
         type: string
         required: true
