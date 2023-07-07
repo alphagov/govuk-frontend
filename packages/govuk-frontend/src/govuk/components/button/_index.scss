@@ -16,6 +16,20 @@ $govuk-button-background-colour: govuk-colour("green") !default;
 
 $govuk-button-text-colour: govuk-colour("white") !default;
 
+/// Inverted button component background colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-inverse-button-background-colour: $govuk-inverse-text-colour !default;
+
+/// Inverted button component text colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-inverse-button-text-colour: $govuk-brand-colour !default;
+
 @include govuk-exports("govuk/component/button") {
   $govuk-button-colour: $govuk-button-background-colour;
   $govuk-button-text-colour: $govuk-button-text-colour;
@@ -35,8 +49,8 @@ $govuk-button-text-colour: govuk-colour("white") !default;
   $govuk-warning-button-shadow-colour: govuk-shade($govuk-warning-button-colour, 60%);
 
   // Inverse button variables
-  $govuk-inverse-button-colour: govuk-colour("white");
-  $govuk-inverse-button-text-colour: govuk-colour("blue");
+  $govuk-inverse-button-colour: $govuk-inverse-button-background-colour;
+  $govuk-inverse-button-text-colour: $govuk-inverse-button-text-colour;
   $govuk-inverse-button-hover-colour: govuk-tint($govuk-inverse-button-text-colour, 90%);
   $govuk-inverse-button-shadow-colour: govuk-shade($govuk-inverse-button-text-colour, 30%);
 
