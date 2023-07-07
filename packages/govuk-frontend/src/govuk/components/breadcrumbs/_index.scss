@@ -119,7 +119,7 @@
   }
 
   .govuk-breadcrumbs--inverse {
-    color: govuk-colour("white");
+    color: $govuk-inverse-text-colour;
 
     .govuk-breadcrumbs__link {
       @include govuk-link-style-inverse;

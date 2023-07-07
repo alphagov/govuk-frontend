@@ -259,14 +259,14 @@
 @mixin govuk-link-style-inverse {
   &:link,
   &:visited {
-    color: govuk-colour("white");
+    color: $govuk-inverse-text-colour;
   }
 
   // Force a colour change on hover to work around a bug in Safari
   // https://bugs.webkit.org/show_bug.cgi?id=224483
   &:hover,
   &:active {
-    color: rgba(govuk-colour("white"), .99);
+    color: rgba($govuk-inverse-text-colour, .99);
   }
 
   &:focus {
