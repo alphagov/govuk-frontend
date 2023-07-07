@@ -146,6 +146,7 @@ describe('packages/govuk-frontend/dist/', () => {
           import { CharacterCount } from './components/character-count/character-count.mjs';
           import { Checkboxes } from './components/checkboxes/checkboxes.mjs';
           import { ErrorSummary } from './components/error-summary/error-summary.mjs';
+          import { ExitThisPage } from './components/exit-this-page/exit-this-page.mjs';
           import { Header } from './components/header/header.mjs';
           import { NotificationBanner } from './components/notification-banner/notification-banner.mjs';
           import { Radios } from './components/radios/radios.mjs';
@@ -154,7 +155,7 @@ describe('packages/govuk-frontend/dist/', () => {
         `)
 
         // Look for ES modules named exports
-        expect(contents).toContain('export { Accordion, Button, CharacterCount, Checkboxes, ErrorSummary, Header, NotificationBanner, Radios, SkipLink, Tabs, initAll };')
+        expect(contents).toContain('export { Accordion, Button, CharacterCount, Checkboxes, ErrorSummary, ExitThisPage, Header, NotificationBanner, Radios, SkipLink, Tabs, initAll };')
       })
     })
 
