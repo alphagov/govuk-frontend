@@ -279,3 +279,27 @@ examples:
             tag:
               text: Yellow
               classes: govuk-tag--yellow
+
+  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: custom classes
+    hidden: true
+    data:
+      classes: custom-class-on-component
+      items:
+        - title:
+            text: A Link
+            classes: custom-class-on-linked-title
+          href: '#'
+          classes: custom-class-on-task
+          status:
+            classes: custom-class-on-status
+            tag:
+              text: Status
+              classes: custom-class-on-tag
+
+        - title:
+            text: Not a link
+            classes: custom-class-on-unlinked-title
+          status:
+            tag:
+              text: Status
