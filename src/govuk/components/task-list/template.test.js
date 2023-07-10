@@ -43,6 +43,13 @@ describe('Task List', () => {
     expect($tag.hasClass('custom-class-on-tag')).toBeTruthy()
   })
 
+  it('allows for custom attributes', () => {
+    const $ = render('task-list', examples['custom attributes'])
+
+    const $component = $('.govuk-task-list')
+    expect($component.attr('data-custom-attribute')).toEqual('custom-value')
+  })
+
   describe('when a task has an href set', () => {
     let $component
 

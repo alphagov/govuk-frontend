@@ -303,3 +303,16 @@ examples:
           status:
             tag:
               text: Status
+
+  - name: custom attributes
+    hidden: true
+    data:
+      attributes:
+        data-custom-attribute: custom-value
+      items:
+        - title:
+            text: A Link
+          href: '#'
+          status:
+            tag:
+              text: Status
