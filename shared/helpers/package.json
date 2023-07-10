@@ -21,12 +21,12 @@
     "govuk-frontend-lib": "*",
     "jest-axe": "^7.0.1",
     "jest-dev-server": "^9.0.0",
-    "jest-environment-jsdom": "^29.5.0",
+    "jest-environment-jsdom": "^29.6.1",
     "jest-environment-node-single-context": "^29.1.0",
     "jest-environment-puppeteer": "^9.0.0",
     "nunjucks": "^3.2.4",
     "outdent": "^0.8.0",
-    "puppeteer": "^20.7.4",
+    "puppeteer": "^20.8.0",
     "sass-embedded": "^1.63.6"
   },
   "peerDependencies": {
