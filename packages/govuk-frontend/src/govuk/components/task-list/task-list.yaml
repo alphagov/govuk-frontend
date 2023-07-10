@@ -99,7 +99,6 @@ examples:
           href: '#'
           status:
             text: Completed
-            classes: govuk-tag--black
 
         - title:
             text: Registered company details
