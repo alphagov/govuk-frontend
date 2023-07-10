@@ -186,8 +186,7 @@ examples:
             tag:
               text: Error
               classes: govuk-tag--red
-        - classes: app-task-list__item--no-link
-          title:
+        - title:
             text: Payment
           hint:
             text: It will cost between £15 and £75
