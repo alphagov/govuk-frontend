@@ -114,12 +114,38 @@ describe('Task List', () => {
 
     it('associates the hint text with the task link using aria', () => {
       const $hintText = $component.find('.govuk-task-list__task_hint')
-      expect($hintText.attr('id')).toEqual('task-list-example-3-hint')
+      expect($hintText.attr('id')).toEqual('task-list-3-hint')
 
       const $itemAssociatedWithHint = $component.find(
         `.govuk-task-list__link[aria-describedby~="${$hintText.attr('id')}"]`
       )
       expect($itemAssociatedWithHint.text()).toContain('Business plan')
+    })
+  })
+
+  describe('when a custom idPrefix is used', () => {
+    let $component
+
+    beforeAll(function () {
+      const $ = render('task-list', examples['custom id prefix'])
+      $component = $('.govuk-task-list')
+    })
+
+    it('uses the id prefix for the hint id', () => {
+      const $hint = $component.find('.govuk-task-list__task_hint')
+      expect($hint.attr('id')).toEqual('my-custom-id-1-hint')
+    })
+
+    it('uses the id prefix for the status', () => {
+      const $hint = $component.find('.govuk-task-list__status')
+      expect($hint.attr('id')).toEqual('my-custom-id-1-status')
+    })
+
+    it('uses the id prefix for the aria-describedby association', () => {
+      const $hint = $component.find('.govuk-task-list__link')
+      expect($hint.attr('aria-describedby')).toEqual(
+        'my-custom-id-1-hint my-custom-id-1-status'
+      )
     })
   })
 })

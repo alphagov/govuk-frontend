@@ -92,7 +92,6 @@ params:
 examples:
   - name: default
     data:
-      idPrefix: 'task-list-example'
       items:
         - title:
             text: Company Directors
@@ -118,7 +117,6 @@ examples:
 
   - name: example with 3 states
     data:
-      idPrefix: 'task-list-example'
       items:
         - title:
             text: Company Directors
@@ -149,7 +147,6 @@ examples:
 
   - name: example with hint text and additional states
     data:
-      idPrefix: 'task-list-example'
       items:
         - title:
             text: Company Directors
@@ -196,7 +193,6 @@ examples:
 
   - name: example with all possible colours
     data:
-      idPrefix: 'task-list-example'
       items:
         - title:
             text: Task A
@@ -312,6 +308,20 @@ examples:
       items:
         - title:
             text: A Link
+          href: '#'
+          status:
+            tag:
+              text: Status
+
+  - name: custom id prefix
+    hidden: true
+    data:
+      idPrefix: my-custom-id
+      items:
+        - title:
+            text: A Link
+          hint:
+            text: Hint text
           href: '#'
           status:
             tag:
