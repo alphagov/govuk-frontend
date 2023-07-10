@@ -63,6 +63,11 @@ describe('Task List', () => {
       expect($itemLink.attr('href')).toEqual('#')
     })
 
+    it('adds a with-link modifier class to the task', async () => {
+      const $itemLink = $component.find('.govuk-task-list__item')
+      expect($itemLink.hasClass('govuk-task-list__item--with-link')).toBeTruthy()
+    })
+
     it('associates the task name link with the status using aria', async () => {
       const $itemLink = $component.find('.govuk-task-list__link')
       const $statusWithId = $component.find(`#${$itemLink.attr('aria-describedby')}`)
