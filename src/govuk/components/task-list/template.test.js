@@ -106,7 +106,7 @@ describe('Task List', () => {
       const $ = render('task-list', examples['custom classes'])
 
       const $itemWithNoLink = $('.govuk-task-list__item:last-child')
-      const $itemWithNoLinkTitle = $itemWithNoLink.find('.govuk-task-list__task-name-and-hint div')
+      const $itemWithNoLinkTitle = $itemWithNoLink.find('.govuk-task-list__name-and-hint div')
       expect($itemWithNoLinkTitle.hasClass('custom-class-on-unlinked-title')).toBeTruthy()
     })
 
@@ -114,7 +114,7 @@ describe('Task List', () => {
       const $ = render('task-list', examples['html passed as text'])
 
       const $itemWithoutLink = $('.govuk-task-list__item:last-child')
-      const $itemWithoutLinkTitle = $itemWithoutLink.find('.govuk-task-list__task-name-and-hint')
+      const $itemWithoutLinkTitle = $itemWithoutLink.find('.govuk-task-list__name-and-hint')
       expect($itemWithoutLinkTitle.text()).toContain('<strong>Unlinked Title</strong>')
     })
 
@@ -122,7 +122,7 @@ describe('Task List', () => {
       const $ = render('task-list', examples.html)
 
       const $itemWithoutLink = $('.govuk-task-list__item:last-child')
-      const $itemWithoutLinkTitle = $itemWithoutLink.find('.govuk-task-list__task-name-and-hint')
+      const $itemWithoutLinkTitle = $itemWithoutLink.find('.govuk-task-list__name-and-hint')
       expect($itemWithoutLinkTitle.html()).toContain('<strong>Unlinked Title</strong>')
     })
   })
@@ -182,14 +182,14 @@ describe('Task List', () => {
     })
 
     it('renders the hint', () => {
-      const $hintText = $component.find('.govuk-task-list__task_hint')
+      const $hintText = $component.find('.govuk-task-list__hint')
       expect($hintText.text()).toContain(
         'Ensure the plan covers objectives, strategies, sales, marketing and financial forecasts.'
       )
     })
 
     it('associates the hint text with the task link using aria', () => {
-      const $hintText = $component.find('.govuk-task-list__task_hint')
+      const $hintText = $component.find('.govuk-task-list__hint')
       expect($hintText.attr('id')).toEqual('task-list-3-hint')
 
       const $itemAssociatedWithHint = $component.find(
@@ -201,14 +201,14 @@ describe('Task List', () => {
     it('escapes the hint when passed as text', () => {
       const $ = render('task-list', examples['html passed as text'])
 
-      const $hint = $('.govuk-task-list__task_hint')
+      const $hint = $('.govuk-task-list__hint')
       expect($hint.text()).toContain('<strong>Hint</strong>')
     })
 
     it('allows HTML in the hint when passed as html', () => {
       const $ = render('task-list', examples.html)
 
-      const $hint = $('.govuk-task-list__task_hint')
+      const $hint = $('.govuk-task-list__hint')
       expect($hint.html()).toContain('<strong>Hint</strong>')
     })
   })
@@ -222,7 +222,7 @@ describe('Task List', () => {
     })
 
     it('uses the id prefix for the hint id', () => {
-      const $hint = $component.find('.govuk-task-list__task_hint')
+      const $hint = $component.find('.govuk-task-list__hint')
       expect($hint.attr('id')).toEqual('my-custom-id-1-hint')
     })
 
