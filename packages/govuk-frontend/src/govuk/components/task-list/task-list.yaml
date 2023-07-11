@@ -326,3 +326,39 @@ examples:
           status:
             tag:
               text: Status
+
+  - name: html passed as text
+    hidden: true
+    data:
+      idPrefix: my-custom-id
+      items:
+        - title:
+            text: <strong>Linked Title</strong>
+          hint:
+            text: <strong>Hint</strong>
+          href: '#'
+          status:
+            text: <strong>Status</strong>
+        - title:
+            text: <strong>Unlinked Title</strong>
+          status:
+            tag:
+              text: <strong>Tag</strong>
+
+  - name: html
+    hidden: true
+    data:
+      idPrefix: my-custom-id
+      items:
+        - title:
+            html: <strong>Linked Title</strong>
+          hint:
+            html: <strong>Hint</strong>
+          href: '#'
+          status:
+            html: <strong>Status</strong>
+        - title:
+            html: <strong>Unlinked Title</strong>
+          status:
+            tag:
+              html: <strong>Tag</strong>

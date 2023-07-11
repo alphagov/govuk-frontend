@@ -36,13 +36,6 @@ describe('Task List', () => {
     expect($status.hasClass('custom-class-on-status')).toBeTruthy()
   })
 
-  it('allows for custom classes on tags', () => {
-    const $ = render('task-list', examples['custom classes'])
-
-    const $tag = $('.govuk-task-list__status .govuk-tag')
-    expect($tag.hasClass('custom-class-on-tag')).toBeTruthy()
-  })
-
   it('allows for custom attributes', () => {
     const $ = render('task-list', examples['custom attributes'])
 
@@ -82,6 +75,22 @@ describe('Task List', () => {
       const $itemWithLinkTitle = $itemWithLink.find('.govuk-task-list__link')
       expect($itemWithLinkTitle.hasClass('custom-class-on-linked-title')).toBeTruthy()
     })
+
+    it('escapes the title when passed as text', () => {
+      const $ = render('task-list', examples['html passed as text'])
+
+      const $itemWithLink = $('.govuk-task-list__item:first-child')
+      const $itemWithLinkTitle = $itemWithLink.find('.govuk-task-list__link')
+      expect($itemWithLinkTitle.text()).toEqual('<strong>Linked Title</strong>')
+    })
+
+    it('allows HTML in the title when passed as html', () => {
+      const $ = render('task-list', examples.html)
+
+      const $itemWithLink = $('.govuk-task-list__item:first-child')
+      const $itemWithLinkTitle = $itemWithLink.find('.govuk-task-list__link')
+      expect($itemWithLinkTitle.html()).toEqual('<strong>Linked Title</strong>')
+    })
   })
 
   describe('when a task does not have an href set', () => {
@@ -99,6 +108,61 @@ describe('Task List', () => {
       const $itemWithNoLink = $('.govuk-task-list__item:last-child')
       const $itemWithNoLinkTitle = $itemWithNoLink.find('.govuk-task-list__task-name-and-hint div')
       expect($itemWithNoLinkTitle.hasClass('custom-class-on-unlinked-title')).toBeTruthy()
+    })
+
+    it('escapes the title when passed as text', () => {
+      const $ = render('task-list', examples['html passed as text'])
+
+      const $itemWithoutLink = $('.govuk-task-list__item:last-child')
+      const $itemWithoutLinkTitle = $itemWithoutLink.find('.govuk-task-list__task-name-and-hint')
+      expect($itemWithoutLinkTitle.text()).toContain('<strong>Unlinked Title</strong>')
+    })
+
+    it('allows HTML in the title when passed as html', () => {
+      const $ = render('task-list', examples.html)
+
+      const $itemWithoutLink = $('.govuk-task-list__item:last-child')
+      const $itemWithoutLinkTitle = $itemWithoutLink.find('.govuk-task-list__task-name-and-hint')
+      expect($itemWithoutLinkTitle.html()).toContain('<strong>Unlinked Title</strong>')
+    })
+  })
+
+  describe('when a task has a tag status', () => {
+    it('escapes the tag when passed as text', () => {
+      const $ = render('task-list', examples['html passed as text'])
+
+      const $tag = $('.govuk-tag')
+      expect($tag.text()).toContain('<strong>Tag</strong>')
+    })
+
+    it('allows HTML in the tag when passed as html', () => {
+      const $ = render('task-list', examples.html)
+
+      const $tag = $('.govuk-tag')
+      expect($tag.html()).toContain('<strong>Tag</strong>')
+    })
+
+    it('allows for custom classes on tags', () => {
+      const $ = render('task-list', examples['custom classes'])
+
+      const $tag = $('.govuk-task-list__status .govuk-tag')
+      expect($tag.hasClass('custom-class-on-tag')).toBeTruthy()
+    })
+  })
+
+  describe('when a task has a non-tag status', () => {
+    it('escapes the status when passed as text', () => {
+      const $ = render('task-list', examples['html passed as text'])
+
+      const $status = $('.govuk-task-list__status')
+      expect($status.text()).toContain('<strong>Status</strong>')
+    })
+
+    it('allows HTML in the tag when passed as html', () => {
+      const $ = render('task-list', examples.html)
+
+      const $status = $('.govuk-task-list__status')
+      expect($status.html()).toContain('<strong>Status</strong>')
     })
   })
 
@@ -125,6 +189,20 @@ describe('Task List', () => {
         `.govuk-task-list__link[aria-describedby~="${$hintText.attr('id')}"]`
       )
       expect($itemAssociatedWithHint.text()).toContain('Business plan')
+    })
+
+    it('escapes the hint when passed as text', () => {
+      const $ = render('task-list', examples['html passed as text'])
+
+      const $hint = $('.govuk-task-list__task_hint')
+      expect($hint.text()).toContain('<strong>Hint</strong>')
+    })
+
+    it('allows HTML in the hint when passed as html', () => {
+      const $ = render('task-list', examples.html)
+
+      const $hint = $('.govuk-task-list__task_hint')
+      expect($hint.html()).toContain('<strong>Hint</strong>')
     })
   })
 
