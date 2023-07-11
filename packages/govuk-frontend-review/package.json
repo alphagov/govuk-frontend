@@ -34,7 +34,7 @@
     "marked": "^5.1.0",
     "nunjucks": "^3.2.4",
     "outdent": "^0.8.0",
-    "prettier": "^2.8.8",
+    "prettier": "^3.0.0",
     "shuffle-seed": "^1.1.6"
   },
   "devDependencies": {
