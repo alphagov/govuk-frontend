@@ -55,5 +55,8 @@
     "slash": "^5.1.0",
     "supertest": "^6.3.3",
     "typedoc": "^0.24.8"
+  },
+  "optionalDependencies": {
+    "@types/prettier": "^2.7.3"
   }
 }
