@@ -37,7 +37,7 @@
     background: $govuk-task-list-hover-colour;
   }
 
-  .govuk-task-list__task-name-and-hint {
+  .govuk-task-list__name-and-hint {
     display: table-cell;
     vertical-align: top;
     @include govuk-text-colour;
@@ -68,7 +68,7 @@
     left: 0;
   }
 
-  .govuk-task-list__task_hint {
+  .govuk-task-list__hint {
     margin-top: govuk-spacing(1);
     color: $govuk-secondary-text-colour;
   }
