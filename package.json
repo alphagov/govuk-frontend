@@ -91,7 +91,7 @@
     "@types/jest": "^29.5.3",
     "@types/jest-axe": "^3.5.5",
     "@types/marked": "^5.0.0",
-    "@types/node": "^20.3.3",
+    "@types/node": "^20.4.1",
     "@types/nunjucks": "^3.2.3",
     "puppeteer": "^20.8.0"
   },
