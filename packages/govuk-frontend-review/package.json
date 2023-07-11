@@ -34,7 +34,7 @@
     "marked": "^5.1.0",
     "nunjucks": "^3.2.4",
     "outdent": "^0.8.0",
-    "prettier": "^3.0.0",
+    "prettier": "^2.8.8",
     "shuffle-seed": "^1.1.6"
   },
   "devDependencies": {
@@ -55,5 +55,8 @@
     "slash": "^5.1.0",
     "supertest": "^6.3.3",
     "typedoc": "^0.24.8"
+  },
+  "optionalDependencies": {
+    "@types/prettier": "^2.7.3"
   }
 }
