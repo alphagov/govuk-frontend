@@ -1,3 +1,5 @@
+@import "../tag/index";
+
 @include govuk-exports("govuk/component/task-list") {
   $govuk-task-list-hover-colour: govuk-colour("light-grey");
 
