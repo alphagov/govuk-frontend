@@ -31,7 +31,7 @@
   },
   "peerDependencies": {
     "@puppeteer/browsers": "^1.4.4",
-    "puppeteer-core": ">=20"
+    "puppeteer-core": "^20.8.1"
   },
   "peerDependenciesMeta": {
     "@puppeteer/browsers": {
