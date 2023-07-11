@@ -230,6 +230,16 @@ If you need to maintain the existing behaviour, you can set the value to an empt
 
 This change was introduced in [pull request #3773: Omit the value attribute from select options with no value](https://github.com/alphagov/govuk-frontend/pull/3773).
 
+### Suggested changes
+
+#### Update the Pagination component's default `aria-label`
+
+The default value of the Pagination component's `aria-label` has been updated to be more descriptive of the contents of the region. If you are using the component's default label, you may wish to update it to the new value.
+
+You don't need to change anything if you're using the `govukPagination` Nunjucks macro.
+
+This change was introduced in [pull request #3899: Update default `aria-label` in Pagination component](https://github.com/alphagov/govuk-frontend/pull/3899).
+
 ### Fixes
 
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
