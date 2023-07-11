@@ -70,7 +70,7 @@ const Button = require('govuk-frontend/dist/govuk/components/button/button')
 For example using `import`:
 
 ```mjs
-import Button from 'govuk-frontend/dist/govuk-esm/components/button/button.mjs'
+import Button from 'govuk-frontend/dist/govuk/components/button/button.mjs'
 ```
 
 ##### If you’re using Sass
