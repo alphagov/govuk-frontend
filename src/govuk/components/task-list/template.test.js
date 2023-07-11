@@ -148,6 +148,13 @@ describe('Task List', () => {
       const $tag = $('.govuk-task-list__status .govuk-tag')
       expect($tag.hasClass('custom-class-on-tag')).toBeTruthy()
     })
+
+    it('allows for custom attributes on tags', () => {
+      const $ = render('task-list', examples['custom attributes'])
+
+      const $component = $('.govuk-tag')
+      expect($component.attr('data-tag-attribute')).toEqual('tag-value')
+    })
   })
 
   describe('when a task has a non-tag status', () => {
