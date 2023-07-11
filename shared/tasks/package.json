@@ -22,7 +22,7 @@
     "gulp-cli": "^2.3.0",
     "nunjucks": "^3.2.4",
     "plugin-error": "^2.0.1",
-    "postcss": "^8.4.24",
+    "postcss": "^8.4.25",
     "postcss-load-config": "^4.0.1",
     "puppeteer": "^20.8.0",
     "rollup": "^3.26.0",
