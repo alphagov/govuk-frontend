@@ -46,21 +46,24 @@ To import add the below to your Sass file:
 
 Some of the JavaScript included in GOV.UK Frontend improves the usability and
 accessibility of the components. You should make sure that you are importing and
-initialising Javascript in your application to ensure that all users can use it successfully.
+initialising JavaScript in your application. This will ensure all users can use it successfully.
 
-You can include Javascript for all components either by copying the `all.bundle.js` from `node_modules/govuk-frontend/dist/govuk/` into your application or referencing the file directly:
-
-```html
-<script type="module" src="<path-to-govuk-frontend-all-file>/all.bundle.js"></script>
-```
-
-Next you need to initialise the script by adding:
+You can include JavaScript for all components by copying both `govuk-frontend.min.js` and `govuk-frontend.min.js.map` from `node_modules/govuk-frontend/dist/govuk/` into your application and referencing the JavaScript directly:
 
 ```html
-<script type="module">window.GOVUKFrontend.initAll()</script>
+<script type="module" src="{path-to-javascript}/govuk-frontend.min.js"></script>
 ```
 
-[More details on importing Javascript and advanced options](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#javascript)
+Next you need to import and initialise GOV.UK Frontend by adding:
+
+```html
+<script type="module">
+  import { initAll } from '{path-to-javascript}/govuk-frontend.min.js'
+  initAll()
+</script>
+```
+
+[More details on importing JavaScript and advanced options](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#javascript)
 
 ## Importing assets
 

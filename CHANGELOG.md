@@ -70,8 +70,27 @@ const Button = require('govuk-frontend/dist/govuk/components/button/button')
 For example using `import`:
 
 ```mjs
-import Button from 'govuk-frontend/dist/govuk-esm/components/button/button.mjs'
+import Button from 'govuk-frontend/dist/govuk/components/button/button.mjs'
 ```
+
+##### If you’re including JavaScript directly
+
+Replace GOV.UK Frontend `all.js` with `govuk-frontend.min.js` and use `<script type="module">` for ES modules:
+
+```html
+<script type="module" src="{path-to-javascript}/govuk-frontend.min.js"></script>
+```
+
+Next replace `<script>window.GOVUKFrontend.initAll()</script>` to import and initialise GOV.UK Frontend using ES modules:
+
+```html
+<script type="module">
+  import { initAll } from '{path-to-javascript}/govuk-frontend.min.js'
+  initAll()
+</script>
+```
+
+If you import JavaScript using a different method, you might need to make some changes. Refer to the [detailed guidance on importing JavaScript](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#javascript).
 
 ##### If you’re using Sass
 
