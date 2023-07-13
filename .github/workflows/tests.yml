@@ -18,10 +18,18 @@ concurrency:
 jobs:
   install:
     name: Install
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
 
     env:
       PUPPETEER_SKIP_DOWNLOAD: true
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        runner:
+          - ubuntu-latest
+          - windows-latest
 
     steps:
       - name: Checkout code
@@ -32,8 +40,16 @@ jobs:
 
   build:
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
     needs: [install]
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        runner:
+          - ubuntu-latest
+          - windows-latest
 
     steps:
       - name: Checkout
@@ -49,14 +65,18 @@ jobs:
         run: npm run build:types
 
   lint:
-    name: ${{ matrix.task.description }}
-    runs-on: ubuntu-latest
+    name: ${{ matrix.task.description }} (${{ matrix.runner }})
+    runs-on: ${{ matrix.runner }}
     needs: [install]
 
     strategy:
       fail-fast: false
 
       matrix:
+        runner:
+          - ubuntu-latest
+          - windows-latest
+
         task:
           - description: Lint Sass
             name: lint-scss
@@ -96,7 +116,7 @@ jobs:
         run: ${{ matrix.task.run }}
 
   test:
-    name: ${{ matrix.task.description }}
+    name: ${{ matrix.task.description }} (${{ matrix.runner }})
     runs-on: ${{ matrix.runner }}
     needs: [install, build]
 
@@ -111,6 +131,7 @@ jobs:
       matrix:
         runner:
           - ubuntu-latest
+          - windows-latest
 
         task:
           - description: Nunjucks macro tests
@@ -171,19 +192,23 @@ jobs:
       - name: Save test coverage
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: ${{ matrix.task.description }} coverage
+          name: ${{ matrix.task.description }} coverage (${{ matrix.runner }})
           path: coverage
           if-no-files-found: ignore
 
   verify:
-    name: ${{ matrix.task.description }}
-    runs-on: ubuntu-latest
+    name: ${{ matrix.task.description }} (${{ matrix.runner }})
+    runs-on: ${{ matrix.runner }}
     needs: [install, build]
 
     strategy:
       fail-fast: false
 
       matrix:
+        runner:
+          - ubuntu-latest
+          - windows-latest
+
         task:
           - description: Verify package build
             name: test-build-package
