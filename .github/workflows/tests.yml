@@ -243,6 +243,7 @@ jobs:
         node-version:
           - 12 # Node.js 12.20+ uses package exports with subpath patterns
           - 18 # Node.js 17+ cannot use package exports with trailing slashes
+          - 20
 
         conditions:
           - require
