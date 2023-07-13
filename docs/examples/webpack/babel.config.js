@@ -4,9 +4,11 @@
  * @type {import('@babel/core').ConfigFunction}
  */
 module.exports = function (api) {
-  const browserslistEnv = !api.env('test')
-    ? 'javascripts'
-    : 'node'
+  const isBrowser = !api.env('test')
+
+  // Apply Browserslist environment for supported targets
+  // https://github.com/browserslist/browserslist#configuring-for-different-environments
+  const browserslistEnv = isBrowser ? 'javascripts' : 'node'
 
   return {
     presets: [
@@ -17,10 +19,10 @@ module.exports = function (api) {
         bugfixes: true,
 
         // Apply smaller "loose" transforms for browsers
-        loose: browserslistEnv === 'javascripts',
+        loose: isBrowser,
 
-        // Transform ES modules for Node.js
-        modules: browserslistEnv === 'node' ? 'auto' : false
+        // Skip ES module transforms for browsers
+        modules: isBrowser ? false : 'auto'
       }]
     ]
   }
