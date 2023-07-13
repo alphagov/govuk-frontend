@@ -3,7 +3,8 @@ name: Setup
 inputs:
   use-cache:
     description: Restore global `~/.npm` cache
-    required: false
+    default: 'true'
+    required: true
 
 runs:
   using: composite
@@ -14,5 +15,5 @@ runs:
       id: setup-node
 
       with:
-        cache: ${{ inputs.use-cache != 'false' && 'npm' || '' }}
+        cache: ${{ inputs.use-cache == 'true' && 'npm' || '' }}
         node-version-file: .nvmrc
