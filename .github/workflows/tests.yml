@@ -261,9 +261,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3.5.3
 
-      - name: Restore dependencies
-        uses: ./.github/workflows/actions/install-node
-
       - name: Restore build
         uses: ./.github/workflows/actions/build
 
@@ -273,10 +270,19 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - run: node --eval "console.log(require.resolve('govuk-frontend'))"${{ env.FLAGS }}
+        working-directory: packages/govuk-frontend
+
       - run: node --eval "console.log(require.resolve('govuk-frontend/package.json'))"${{ env.FLAGS }}
+        working-directory: packages/govuk-frontend
+
       - run: node --eval "console.log(require.resolve('govuk-frontend/dist/govuk/components/accordion/accordion.bundle.js'))"${{ env.FLAGS }}
+        working-directory: packages/govuk-frontend
+
       - run: node --eval "console.log(require.resolve('govuk-frontend/dist/govuk/components/accordion/accordion.bundle.mjs'))"${{ env.FLAGS }}
+        working-directory: packages/govuk-frontend
+
       - run: node --eval "console.log(require.resolve('govuk-frontend/dist/govuk/i18n.mjs'))"${{ env.FLAGS }}
+        working-directory: packages/govuk-frontend
 
   regression:
     name: Percy
