@@ -184,10 +184,15 @@ notes: >-
 
       {{ govukPagination({
         next: {
-          text: 'Next page',
-          href: '#',
-          labelText: '2 of 2939'
-        }
+          href: "#"
+        },
+        items: [
+          { href: "#", number: 1, current: true },
+          { href: "#", number: 2 },
+          { href: "#", number: 3 },
+          { ellipsis: true },
+          { href: "#", number: 2939 }
+        ]
       }) }}
     </div>
   </div>
