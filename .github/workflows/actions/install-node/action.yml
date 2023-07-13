@@ -5,7 +5,7 @@ runs:
 
   steps:
     - name: Cache dependencies
-      uses: actions/cache@v3
+      uses: actions/cache@v3.3.1
       id: npm-install-cache
 
       with:

@@ -16,7 +16,7 @@ jobs:
     if: ${{ !github.event.pull_request.head.repo.fork }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.5.3
         with:
           fetch-depth: 0 # Need to also checkout the base branch to compare
 
@@ -40,14 +40,14 @@ jobs:
           bin/dist-diff.sh origin/$GITHUB_BASE_REF $GITHUB_WORKSPACE
 
       - name: Save distribution diffs
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: Dist diff
           path: dist*.diff
           if-no-files-found: ignore
 
       - name: Add comment to PR
-        uses: actions/github-script@v6
+        uses: actions/github-script@v6.4.1
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
