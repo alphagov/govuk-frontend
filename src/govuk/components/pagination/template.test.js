@@ -137,8 +137,8 @@ describe('Pagination', () => {
       const $prevLabel = $('.govuk-pagination__prev .govuk-pagination__link-label')
       const $nextLabel = $('.govuk-pagination__next .govuk-pagination__link-label')
 
-      expect($prevLabel.text()).toEqual('1 of 3')
-      expect($nextLabel.text()).toEqual('3 of 3')
+      expect($prevLabel.text()).toEqual('Paying VAT and duty')
+      expect($nextLabel.text()).toEqual('Registering an imported vehicle')
     })
 
     // This is for when pagination is in block mode but there isn't a label
