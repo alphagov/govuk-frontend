@@ -41,21 +41,9 @@ params:
         params:
           - name: tag
             type: object
+            isComponent: true
             required: false
-            description: Object containing the options for a tag that acts as the status for the task.
-            params:
-              - name: text
-                type: string
-                required: true
-                description: Text to use within the tag. If `html` is provided, the `text` argument will be ignored.
-              - name: html
-                type: string
-                required: true
-                description: HTML to use within the tag. If `html` is provided, the `text` argument will be ignored.
-              - name: classes
-                type: string
-                required: false
-                description: Classes to add to the tag.
+            description: Options for the tag component.
           - name: text
             required: false
             type: string
@@ -92,14 +80,12 @@ params:
 examples:
   - name: default
     data:
-      idPrefix: 'task-list-example'
       items:
         - title:
             text: Company Directors
           href: '#'
           status:
             text: Completed
-            classes: govuk-tag--black
 
         - title:
             text: Registered company details
@@ -119,7 +105,6 @@ examples:
 
   - name: example with 3 states
     data:
-      idPrefix: 'task-list-example'
       items:
         - title:
             text: Company Directors
@@ -150,7 +135,6 @@ examples:
 
   - name: example with hint text and additional states
     data:
-      idPrefix: 'task-list-example'
       items:
         - title:
             text: Company Directors
@@ -187,8 +171,7 @@ examples:
             tag:
               text: Error
               classes: govuk-tag--red
-        - classes: app-task-list__item--no-link
-          title:
+        - title:
             text: Payment
           hint:
             text: It will cost between £15 and £75
@@ -198,7 +181,6 @@ examples:
 
   - name: example with all possible colours
     data:
-      idPrefix: 'task-list-example'
       items:
         - title:
             text: Task A
@@ -281,3 +263,92 @@ examples:
             tag:
               text: Yellow
               classes: govuk-tag--yellow
+
+  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: custom classes
+    hidden: true
+    data:
+      classes: custom-class-on-component
+      items:
+        - title:
+            text: A Link
+            classes: custom-class-on-linked-title
+          href: '#'
+          classes: custom-class-on-task
+          status:
+            classes: custom-class-on-status
+            tag:
+              text: Status
+              classes: custom-class-on-tag
+
+        - title:
+            text: Not a link
+            classes: custom-class-on-unlinked-title
+          status:
+            tag:
+              text: Status
+
+  - name: custom attributes
+    hidden: true
+    data:
+      attributes:
+        data-custom-attribute: custom-value
+      items:
+        - title:
+            text: A Link
+          href: '#'
+          status:
+            tag:
+              text: Status
+              attributes:
+                data-tag-attribute: tag-value
+
+  - name: custom id prefix
+    hidden: true
+    data:
+      idPrefix: my-custom-id
+      items:
+        - title:
+            text: A Link
+          hint:
+            text: Hint text
+          href: '#'
+          status:
+            tag:
+              text: Status
+
+  - name: html passed as text
+    hidden: true
+    data:
+      idPrefix: my-custom-id
+      items:
+        - title:
+            text: <strong>Linked Title</strong>
+          hint:
+            text: <strong>Hint</strong>
+          href: '#'
+          status:
+            text: <strong>Status</strong>
+        - title:
+            text: <strong>Unlinked Title</strong>
+          status:
+            tag:
+              text: <strong>Tag</strong>
+
+  - name: html
+    hidden: true
+    data:
+      idPrefix: my-custom-id
+      items:
+        - title:
+            html: <strong>Linked Title</strong>
+          hint:
+            html: <strong>Hint</strong>
+          href: '#'
+          status:
+            html: <strong>Status</strong>
+        - title:
+            html: <strong>Unlinked Title</strong>
+          status:
+            tag:
+              html: <strong>Tag</strong>
