@@ -113,9 +113,16 @@ async function renderAndInitialise (page, componentName, options) {
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
 async function goTo (page, path) {
-  const { href } = new URL(path, `http://localhost:${ports.app}`)
+  const { href, pathname } = new URL(path, `http://localhost:${ports.app}`)
 
-  await page.goto(href)
+  const response = await page.goto(href)
+  const code = response.status()
+
+  // Throw on HTTP errors (e.g. component URL typo)
+  if (code >= 400) {
+    throw new Error(`HTTP ${code} for '${pathname}'`)
+  }
+
   await page.bringToFront()
 
   return page
