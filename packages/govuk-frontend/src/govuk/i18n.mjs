@@ -246,124 +246,124 @@ export class I18n {
       }
     }
   }
-}
 
-/**
- * Map of plural rules to languages where those rules apply.
- *
- * Note: These groups are named for the most dominant or recognisable language
- * that uses each system. The groupings do not imply that the languages are
- * related to one another. Many languages have evolved the same systems
- * independently of one another.
- *
- * Code to support more languages can be found in the i18n spike:
- * {@link https://github.com/alphagov/govuk-frontend/blob/spike-i18n-support/src/govuk/i18n.mjs}
- *
- * Languages currently supported:
- *
- * Arabic: Arabic (ar)
- * Chinese: Burmese (my), Chinese (zh), Indonesian (id), Japanese (ja),
- *   Javanese (jv), Korean (ko), Malay (ms), Thai (th), Vietnamese (vi)
- * French: Armenian (hy), Bangla (bn), French (fr), Gujarati (gu), Hindi (hi),
- *   Persian Farsi (fa), Punjabi (pa), Zulu (zu)
- * German: Afrikaans (af), Albanian (sq), Azerbaijani (az), Basque (eu),
- *   Bulgarian (bg), Catalan (ca), Danish (da), Dutch (nl), English (en),
- *   Estonian (et), Finnish (fi), Georgian (ka), German (de), Greek (el),
- *   Hungarian (hu), Luxembourgish (lb), Norwegian (no), Somali (so),
- *   Swahili (sw), Swedish (sv), Tamil (ta), Telugu (te), Turkish (tr),
- *   Urdu (ur)
- * Irish: Irish Gaelic (ga)
- * Russian: Russian (ru), Ukrainian (uk)
- * Scottish: Scottish Gaelic (gd)
- * Spanish: European Portuguese (pt-PT), Italian (it), Spanish (es)
- * Welsh: Welsh (cy)
- *
- * @type {{ [key: string]: string[] }}
- */
-I18n.pluralRulesMap = {
-  arabic: ['ar'],
-  chinese: ['my', 'zh', 'id', 'ja', 'jv', 'ko', 'ms', 'th', 'vi'],
-  french: ['hy', 'bn', 'fr', 'gu', 'hi', 'fa', 'pa', 'zu'],
-  german: [
-    'af', 'sq', 'az', 'eu', 'bg', 'ca', 'da', 'nl', 'en', 'et', 'fi', 'ka',
-    'de', 'el', 'hu', 'lb', 'no', 'so', 'sw', 'sv', 'ta', 'te', 'tr', 'ur'
-  ],
-  irish: ['ga'],
-  russian: ['ru', 'uk'],
-  scottish: ['gd'],
-  spanish: ['pt-PT', 'it', 'es'],
-  welsh: ['cy']
-}
-
-/**
- * Different pluralisation rule sets
- *
- * Returns the appropriate suffix for the plural form associated with `n`.
- * Possible suffixes: 'zero', 'one', 'two', 'few', 'many', 'other' (the actual
- * meaning of each differs per locale). 'other' should always exist, even in
- * languages without plurals, such as Chinese.
- * {@link https://cldr.unicode.org/index/cldr-spec/plural-rules}
- *
- * The count must be a positive integer. Negative numbers and decimals aren't accounted for
- *
- * @type {{ [key: string]: (count: number) => PluralRule }}
- */
-I18n.pluralRules = {
-  /* eslint-disable jsdoc/require-jsdoc */
-  arabic: function (n) {
-    if (n === 0) { return 'zero' }
-    if (n === 1) { return 'one' }
-    if (n === 2) { return 'two' }
-    if (n % 100 >= 3 && n % 100 <= 10) { return 'few' }
-    if (n % 100 >= 11 && n % 100 <= 99) { return 'many' }
-    return 'other'
-  },
-  chinese: function () {
-    return 'other'
-  },
-  french: function (n) {
-    return n === 0 || n === 1 ? 'one' : 'other'
-  },
-  german: function (n) {
-    return n === 1 ? 'one' : 'other'
-  },
-  irish: function (n) {
-    if (n === 1) { return 'one' }
-    if (n === 2) { return 'two' }
-    if (n >= 3 && n <= 6) { return 'few' }
-    if (n >= 7 && n <= 10) { return 'many' }
-    return 'other'
-  },
-  russian: function (n) {
-    const lastTwo = n % 100
-    const last = lastTwo % 10
-    if (last === 1 && lastTwo !== 11) { return 'one' }
-    if (last >= 2 && last <= 4 && !(lastTwo >= 12 && lastTwo <= 14)) { return 'few' }
-    if (last === 0 || (last >= 5 && last <= 9) || (lastTwo >= 11 && lastTwo <= 14)) { return 'many' }
-    // Note: The 'other' suffix is only used by decimal numbers in Russian.
-    // We don't anticipate it being used, but it's here for consistency.
-    return 'other'
-  },
-  scottish: function (n) {
-    if (n === 1 || n === 11) { return 'one' }
-    if (n === 2 || n === 12) { return 'two' }
-    if ((n >= 3 && n <= 10) || (n >= 13 && n <= 19)) { return 'few' }
-    return 'other'
-  },
-  spanish: function (n) {
-    if (n === 1) { return 'one' }
-    if (n % 1000000 === 0 && n !== 0) { return 'many' }
-    return 'other'
-  },
-  welsh: function (n) {
-    if (n === 0) { return 'zero' }
-    if (n === 1) { return 'one' }
-    if (n === 2) { return 'two' }
-    if (n === 3) { return 'few' }
-    if (n === 6) { return 'many' }
-    return 'other'
+  /**
+   * Map of plural rules to languages where those rules apply.
+   *
+   * Note: These groups are named for the most dominant or recognisable language
+   * that uses each system. The groupings do not imply that the languages are
+   * related to one another. Many languages have evolved the same systems
+   * independently of one another.
+   *
+   * Code to support more languages can be found in the i18n spike:
+   * {@link https://github.com/alphagov/govuk-frontend/blob/spike-i18n-support/src/govuk/i18n.mjs}
+   *
+   * Languages currently supported:
+   *
+   * Arabic: Arabic (ar)
+   * Chinese: Burmese (my), Chinese (zh), Indonesian (id), Japanese (ja),
+   *   Javanese (jv), Korean (ko), Malay (ms), Thai (th), Vietnamese (vi)
+   * French: Armenian (hy), Bangla (bn), French (fr), Gujarati (gu), Hindi (hi),
+   *   Persian Farsi (fa), Punjabi (pa), Zulu (zu)
+   * German: Afrikaans (af), Albanian (sq), Azerbaijani (az), Basque (eu),
+   *   Bulgarian (bg), Catalan (ca), Danish (da), Dutch (nl), English (en),
+   *   Estonian (et), Finnish (fi), Georgian (ka), German (de), Greek (el),
+   *   Hungarian (hu), Luxembourgish (lb), Norwegian (no), Somali (so),
+   *   Swahili (sw), Swedish (sv), Tamil (ta), Telugu (te), Turkish (tr),
+   *   Urdu (ur)
+   * Irish: Irish Gaelic (ga)
+   * Russian: Russian (ru), Ukrainian (uk)
+   * Scottish: Scottish Gaelic (gd)
+   * Spanish: European Portuguese (pt-PT), Italian (it), Spanish (es)
+   * Welsh: Welsh (cy)
+   *
+   * @type {{ [key: string]: string[] }}
+   */
+  static pluralRulesMap = {
+    arabic: ['ar'],
+    chinese: ['my', 'zh', 'id', 'ja', 'jv', 'ko', 'ms', 'th', 'vi'],
+    french: ['hy', 'bn', 'fr', 'gu', 'hi', 'fa', 'pa', 'zu'],
+    german: [
+      'af', 'sq', 'az', 'eu', 'bg', 'ca', 'da', 'nl', 'en', 'et', 'fi', 'ka',
+      'de', 'el', 'hu', 'lb', 'no', 'so', 'sw', 'sv', 'ta', 'te', 'tr', 'ur'
+    ],
+    irish: ['ga'],
+    russian: ['ru', 'uk'],
+    scottish: ['gd'],
+    spanish: ['pt-PT', 'it', 'es'],
+    welsh: ['cy']
   }
-  /* eslint-enable jsdoc/require-jsdoc */
+
+  /**
+   * Different pluralisation rule sets
+   *
+   * Returns the appropriate suffix for the plural form associated with `n`.
+   * Possible suffixes: 'zero', 'one', 'two', 'few', 'many', 'other' (the actual
+   * meaning of each differs per locale). 'other' should always exist, even in
+   * languages without plurals, such as Chinese.
+   * {@link https://cldr.unicode.org/index/cldr-spec/plural-rules}
+   *
+   * The count must be a positive integer. Negative numbers and decimals aren't accounted for
+   *
+   * @type {{ [key: string]: (count: number) => PluralRule }}
+   */
+  static pluralRules = {
+    /* eslint-disable jsdoc/require-jsdoc */
+    arabic (n) {
+      if (n === 0) { return 'zero' }
+      if (n === 1) { return 'one' }
+      if (n === 2) { return 'two' }
+      if (n % 100 >= 3 && n % 100 <= 10) { return 'few' }
+      if (n % 100 >= 11 && n % 100 <= 99) { return 'many' }
+      return 'other'
+    },
+    chinese () {
+      return 'other'
+    },
+    french (n) {
+      return n === 0 || n === 1 ? 'one' : 'other'
+    },
+    german (n) {
+      return n === 1 ? 'one' : 'other'
+    },
+    irish (n) {
+      if (n === 1) { return 'one' }
+      if (n === 2) { return 'two' }
+      if (n >= 3 && n <= 6) { return 'few' }
+      if (n >= 7 && n <= 10) { return 'many' }
+      return 'other'
+    },
+    russian (n) {
+      const lastTwo = n % 100
+      const last = lastTwo % 10
+      if (last === 1 && lastTwo !== 11) { return 'one' }
+      if (last >= 2 && last <= 4 && !(lastTwo >= 12 && lastTwo <= 14)) { return 'few' }
+      if (last === 0 || (last >= 5 && last <= 9) || (lastTwo >= 11 && lastTwo <= 14)) { return 'many' }
+      // Note: The 'other' suffix is only used by decimal numbers in Russian.
+      // We don't anticipate it being used, but it's here for consistency.
+      return 'other'
+    },
+    scottish (n) {
+      if (n === 1 || n === 11) { return 'one' }
+      if (n === 2 || n === 12) { return 'two' }
+      if ((n >= 3 && n <= 10) || (n >= 13 && n <= 19)) { return 'few' }
+      return 'other'
+    },
+    spanish (n) {
+      if (n === 1) { return 'one' }
+      if (n % 1000000 === 0 && n !== 0) { return 'many' }
+      return 'other'
+    },
+    welsh (n) {
+      if (n === 0) { return 'zero' }
+      if (n === 1) { return 'one' }
+      if (n === 2) { return 'two' }
+      if (n === 3) { return 'few' }
+      if (n === 6) { return 'many' }
+      return 'other'
+    }
+    /* eslint-enable jsdoc/require-jsdoc */
+  }
 }
 
 /**

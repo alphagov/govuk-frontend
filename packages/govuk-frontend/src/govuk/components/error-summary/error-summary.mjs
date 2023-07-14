@@ -27,17 +27,12 @@ export class ErrorSummary {
     /** @private */
     this.$module = $module
 
-    /** @type {ErrorSummaryConfig} */
-    const defaultConfig = {
-      disableAutoFocus: false
-    }
-
     /**
      * @private
      * @type {ErrorSummaryConfig}
      */
     this.config = mergeConfigs(
-      defaultConfig,
+      ErrorSummary.defaults,
       config || {},
       normaliseDataset($module.dataset)
     )
@@ -212,6 +207,18 @@ export class ErrorSummary {
     return document.querySelector(`label[for='${$input.getAttribute('id')}']`) ||
       $input.closest('label')
   }
+
+  /**
+   * Error summary default config
+   *
+   * @see {@link ErrorSummaryConfig}
+   * @constant
+   * @default
+   * @type {ErrorSummaryConfig}
+   */
+  static defaults = Object.freeze({
+    disableAutoFocus: false
+  })
 }
 
 /**

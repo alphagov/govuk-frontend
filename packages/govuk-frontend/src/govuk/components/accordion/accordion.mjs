@@ -3,23 +3,6 @@ import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { I18n } from '../../i18n.mjs'
 
 /**
- * Accordion translation defaults
- *
- * @see {@link AccordionConfig.i18n}
- * @constant
- * @default
- * @type {AccordionTranslations}
- */
-const ACCORDION_TRANSLATIONS = {
-  hideAllSections: 'Hide all sections',
-  hideSection: 'Hide',
-  hideSectionAriaLabel: 'Hide this section',
-  showAllSections: 'Show all sections',
-  showSection: 'Show',
-  showSectionAriaLabel: 'Show this section'
-}
-
-/**
  * Accordion component
  *
  * This allows a collection of sections to be collapsed by default, showing only
@@ -44,18 +27,12 @@ export class Accordion {
     /** @private */
     this.$module = $module
 
-    /** @type {AccordionConfig} */
-    const defaultConfig = {
-      i18n: ACCORDION_TRANSLATIONS,
-      rememberExpanded: true
-    }
-
     /**
      * @private
      * @type {AccordionConfig}
      */
     this.config = mergeConfigs(
-      defaultConfig,
+      Accordion.defaults,
       config || {},
       normaliseDataset($module.dataset)
     )
@@ -560,6 +537,26 @@ export class Accordion {
     $punctuationEl.innerHTML = ', '
     return $punctuationEl
   }
+
+  /**
+   * Accordion default config
+   *
+   * @see {@link AccordionConfig}
+   * @constant
+   * @default
+   * @type {AccordionConfig}
+   */
+  static defaults = Object.freeze({
+    i18n: {
+      hideAllSections: 'Hide all sections',
+      hideSection: 'Hide',
+      hideSectionAriaLabel: 'Hide this section',
+      showAllSections: 'Show all sections',
+      showSection: 'Show',
+      showSectionAriaLabel: 'Show this section'
+    },
+    rememberExpanded: true
+  })
 }
 
 const helper = {
@@ -585,8 +582,9 @@ const helper = {
 /**
  * Accordion config
  *
+ * @see {@link Accordion.defaults}
  * @typedef {object} AccordionConfig
- * @property {AccordionTranslations} [i18n=ACCORDION_TRANSLATIONS] - Accordion translations
+ * @property {AccordionTranslations} [i18n=Accordion.defaults.i18n] - Accordion translations
  * @property {boolean} [rememberExpanded] - Whether the expanded and collapsed
  *   state of each section is remembered and restored when navigating.
  */
@@ -594,7 +592,7 @@ const helper = {
 /**
  * Accordion translations
  *
- * @see {@link ACCORDION_TRANSLATIONS}
+ * @see {@link Accordion.defaults.i18n}
  * @typedef {object} AccordionTranslations
  *
  * Messages used by the component for the labels of its buttons. This includes

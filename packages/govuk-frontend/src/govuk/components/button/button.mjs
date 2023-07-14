@@ -24,17 +24,12 @@ export class Button {
     /** @private */
     this.debounceFormSubmitTimer = null
 
-    /** @type {ButtonConfig} */
-    const defaultConfig = {
-      preventDoubleClick: false
-    }
-
     /**
      * @private
      * @type {ButtonConfig}
      */
     this.config = mergeConfigs(
-      defaultConfig,
+      Button.defaults,
       config || {},
       normaliseDataset($module.dataset)
     )
@@ -106,6 +101,18 @@ export class Button {
       this.debounceFormSubmitTimer = null
     }, DEBOUNCE_TIMEOUT_IN_SECONDS * 1000)
   }
+
+  /**
+   * Button default config
+   *
+   * @see {@link ButtonConfig}
+   * @constant
+   * @default
+   * @type {ButtonConfig}
+   */
+  static defaults = Object.freeze({
+    preventDoubleClick: false
+  })
 }
 
 /**
