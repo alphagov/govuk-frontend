@@ -5,6 +5,9 @@
  * @private
  */
 export class I18n {
+  translations
+  locale
+
   /**
    * @param {{ [key: string]: unknown }} translations - Key-value pairs of the translation strings to use.
    * @param {object} [config] - Configuration options for the function.

@@ -7,6 +7,15 @@ import { normaliseDataset } from '../../common/normalise-dataset.mjs'
  * Takes focus on initialisation for accessible announcement, unless disabled in configuration.
  */
 export class ErrorSummary {
+  /** @private */
+  $module
+
+  /**
+   * @private
+   * @type {ErrorSummaryConfig}
+   */
+  config
+
   /**
    *
    * @param {Element} $module - HTML element to use for error summary
@@ -24,13 +33,8 @@ export class ErrorSummary {
       return this
     }
 
-    /** @private */
     this.$module = $module
 
-    /**
-     * @private
-     * @type {ErrorSummaryConfig}
-     */
     this.config = mergeConfigs(
       ErrorSummary.defaults,
       config || {},

@@ -5,6 +5,15 @@ import { normaliseDataset } from '../../common/normalise-dataset.mjs'
  * Notification Banner component
  */
 export class NotificationBanner {
+  /** @private */
+  $module
+
+  /**
+   * @private
+   * @type {NotificationBannerConfig}
+   */
+  config
+
   /**
    * @param {Element} $module - HTML element to use for notification banner
    * @param {NotificationBannerConfig} [config] - Notification banner config
@@ -14,13 +23,8 @@ export class NotificationBanner {
       return this
     }
 
-    /** @private */
     this.$module = $module
 
-    /**
-     * @private
-     * @type {NotificationBannerConfig}
-     */
     this.config = mergeConfigs(
       NotificationBanner.defaults,
       config || {},

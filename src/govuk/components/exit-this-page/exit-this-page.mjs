@@ -6,6 +6,70 @@ import { I18n } from '../../i18n.mjs'
  * Exit This Page component
  */
 export class ExitThisPage {
+  /** @private */
+  $module
+
+  /**
+   * @private
+   * @type {ExitThisPageConfig}
+   */
+  config
+
+  /** @private */
+  i18n
+
+  /** @private */
+  $button
+
+  /**
+   * @private
+   * @type {HTMLAnchorElement | null}
+   */
+  $skiplinkButton = null
+
+  /**
+   * @private
+   * @type {HTMLElement | null}
+   */
+  $updateSpan = null
+
+  /**
+   * @private
+   * @type {HTMLElement | null}
+   */
+  $indicatorContainer = null
+
+  /**
+   * @private
+   * @type {HTMLElement | null}
+   */
+  $overlay = null
+
+  /** @private */
+  keypressCounter = 0
+
+  /** @private */
+  lastKeyWasModified = false
+
+  /** @private */
+  timeoutTime = 5000 // milliseconds
+
+  // Store the timeout events so that we can clear them to avoid user keypresses overlapping
+  // setTimeout returns an id that we can use to clear it with clearTimeout,
+  // hence the 'Id' suffix
+
+  /**
+   * @private
+   * @type {number | null}
+   */
+  keypressTimeoutId = null
+
+  /**
+   * @private
+   * @type {number | null}
+   */
+  timeoutMessageId = null
+
   /**
    * @param {Element} $module - HTML element that wraps the Exit This Page button
    * @param {ExitThisPageConfig} [config] - Exit This Page config
@@ -20,63 +84,20 @@ export class ExitThisPage {
       return this
     }
 
-    /**
-     * @private
-     * @type {ExitThisPageConfig}
-     */
     this.config = mergeConfigs(
       ExitThisPage.defaults,
       config || {},
       normaliseDataset($module.dataset)
     )
 
-    /** @private */
     this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'))
-
-    /** @private */
     this.$module = $module
-
-    /** @private */
     this.$button = $button
-
-    /**
-     * @private
-     * @type {HTMLAnchorElement | null}
-     */
-    this.$skiplinkButton = null
 
     const $skiplinkButton = document.querySelector('.govuk-js-exit-this-page-skiplink')
     if ($skiplinkButton instanceof HTMLAnchorElement) {
       this.$skiplinkButton = $skiplinkButton
     }
-
-    /** @private */
-    this.$updateSpan = null
-
-    /** @private */
-    this.$indicatorContainer = null
-
-    /** @private */
-    this.$overlay = null
-
-    /** @private */
-    this.keypressCounter = 0
-
-    /** @private */
-    this.lastKeyWasModified = false
-
-    /** @private */
-    this.timeoutTime = 5000 // milliseconds
-
-    // Store the timeout events so that we can clear them to avoid user keypresses overlapping
-    // setTimeout returns an id that we can use to clear it with clearTimeout,
-    // hence the 'Id' suffix
-
-    /** @private */
-    this.keypressTimeoutId = null
-
-    /** @private */
-    this.timeoutMessageId = null
   }
 
   /**
