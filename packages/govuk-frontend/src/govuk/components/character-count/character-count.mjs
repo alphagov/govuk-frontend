@@ -14,6 +14,51 @@ import { I18n } from '../../i18n.mjs'
  * of the available characters/words has been entered.
  */
 export class CharacterCount {
+  /** @private */
+  $module
+
+  /** @private */
+  $textarea
+
+  /**
+   * @private
+   * @type {HTMLElement | null}
+   */
+  $visibleCountMessage = null
+
+  /**
+   * @private
+   * @type {HTMLElement | null}
+   */
+  $screenReaderCountMessage = null
+
+  /**
+   * @private
+   * @type {number | null}
+   */
+  lastInputTimestamp = null
+
+  /** @private */
+  lastInputValue = ''
+
+  /**
+   * @private
+   * @type {number | null}
+   */
+  valueChecker = null
+
+  /**
+   * @private
+   * @type {CharacterCountConfig}
+   */
+  config
+
+  /** @private */
+  i18n
+
+  /** @private */
+  maxLength = Infinity
+
   /**
    * @param {Element} $module - HTML element to use for character count
    * @param {CharacterCountConfig} [config] - Character count config
@@ -51,10 +96,6 @@ export class CharacterCount {
       }
     }
 
-    /**
-     * @private
-     * @type {CharacterCountConfig}
-     */
     this.config = mergeConfigs(
       CharacterCount.defaults,
       config || {},
@@ -62,14 +103,11 @@ export class CharacterCount {
       datasetConfig
     )
 
-    /** @private */
     this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'), {
       // Read the fallback if necessary rather than have it set in the defaults
       locale: closestAttributeValue($module, 'lang')
     })
 
-    /** @private */
-    this.maxLength = Infinity
     // Determine the limit attribute (characters or words)
     if ('maxwords' in this.config && this.config.maxwords) {
       this.maxLength = this.config.maxwords
@@ -79,26 +117,8 @@ export class CharacterCount {
       return this
     }
 
-    /** @private */
     this.$module = $module
-
-    /** @private */
     this.$textarea = $textarea
-
-    /** @private */
-    this.$visibleCountMessage = null
-
-    /** @private */
-    this.$screenReaderCountMessage = null
-
-    /** @private */
-    this.lastInputTimestamp = null
-
-    /** @private */
-    this.lastInputValue = ''
-
-    /** @private */
-    this.valueChecker = null
   }
 
   /**

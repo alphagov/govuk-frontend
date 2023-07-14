@@ -2,6 +2,12 @@
  * Checkboxes component
  */
 export class Checkboxes {
+  /** @private */
+  $module
+
+  /** @private */
+  $inputs
+
   /**
    * @param {Element} $module - HTML element to use for checkboxes
    */
@@ -16,10 +22,7 @@ export class Checkboxes {
       return this
     }
 
-    /** @private */
     this.$module = $module
-
-    /** @private */
     this.$inputs = $inputs
   }
 

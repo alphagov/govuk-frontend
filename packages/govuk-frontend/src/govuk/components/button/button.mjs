@@ -8,6 +8,21 @@ const DEBOUNCE_TIMEOUT_IN_SECONDS = 1
  * JavaScript enhancements for the Button component
  */
 export class Button {
+  /** @private */
+  $module
+
+  /**
+   * @private
+   * @type {ButtonConfig}
+   */
+  config
+
+  /**
+   * @private
+   * @type {number | null}
+   */
+  debounceFormSubmitTimer = null
+
   /**
    *
    * @param {Element} $module - HTML element to use for button
@@ -18,16 +33,8 @@ export class Button {
       return this
     }
 
-    /** @private */
     this.$module = $module
 
-    /** @private */
-    this.debounceFormSubmitTimer = null
-
-    /**
-     * @private
-     * @type {ButtonConfig}
-     */
     this.config = mergeConfigs(
       Button.defaults,
       config || {},
