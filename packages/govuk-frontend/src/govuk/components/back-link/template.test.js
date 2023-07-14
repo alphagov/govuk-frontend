@@ -61,7 +61,7 @@ describe('back-link component', () => {
   })
 
   it('renders with inverted colours if specified', () => {
-    const $ = render('back-link', examples['with inverted colours'])
+    const $ = render('back-link', examples.inverse)
 
     const $component = $('.govuk-back-link')
     expect($component.hasClass('govuk-back-link--inverse')).toBeTruthy()
