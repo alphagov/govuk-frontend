@@ -33,6 +33,11 @@
   // causes content to wrap 1 word per line:
   // https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
   white-space: nowrap if($important, !important, null);
+
+  // Prevent users from selecting or copying visually-hidden text. This prevents
+  // a user unintentionally copying more text than they intended and needing to
+  // manually trim it down again.
+  user-select: none;
 }
 
 /// Hide an element visually, but have it available for screen readers whilst
@@ -64,6 +69,11 @@
   // https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
   white-space: nowrap if($important, !important, null);
 
+  // Prevent users from selecting or copying visually-hidden text. This prevents
+  // a user unintentionally copying more text than they intended and needing to
+  // manually trim it down again.
+  user-select: none;
+
   &:active,
   &:focus {
     position: static if($important, !important, null);
@@ -77,5 +87,8 @@
     clip-path: none if($important, !important, null);
 
     white-space: inherit if($important, !important, null);
+
+    // Allow the text to be selectable now it's visible
+    user-select: text;
   }
 }
