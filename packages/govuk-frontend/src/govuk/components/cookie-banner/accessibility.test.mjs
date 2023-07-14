@@ -10,9 +10,7 @@ describe('/components/cookie-banner', () => {
     })
 
     it('passes accessibility tests', async () => {
-      for (const name of exampleNames) {
-        const exampleName = name.replace(/ /g, '-')
-
+      for (const exampleName of exampleNames) {
         // Navigation to example, create report
         await goToComponent(page, 'cookie-banner', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
