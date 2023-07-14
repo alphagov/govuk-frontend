@@ -201,10 +201,8 @@ export class Accordion {
    * @private
    */
   initSectionHeaders () {
-    const $sections = this.$sections
-
     // Loop through sections
-    $sections.forEach(($section, i) => {
+    this.$sections.forEach(($section, i) => {
       const $header = $section.querySelector(`.${this.sectionHeaderClass}`)
       if (!$header) {
         return
@@ -371,12 +369,10 @@ export class Accordion {
    * @private
    */
   onShowOrHideAllToggle () {
-    const $sections = this.$sections
-
     const nowExpanded = !this.checkIfAllSectionsOpen()
 
     // Loop through sections
-    $sections.forEach(($section) => {
+    this.$sections.forEach(($section) => {
       this.setExpanded(nowExpanded, $section)
       // Store the state in sessionStorage when a change is triggered
       this.storeState($section)

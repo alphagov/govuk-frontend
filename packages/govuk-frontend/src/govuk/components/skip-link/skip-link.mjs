@@ -63,12 +63,10 @@ export class SkipLink {
    * @private
    */
   focusLinkedElement () {
-    const $linkedElement = this.$linkedElement
-
-    if (!$linkedElement.getAttribute('tabindex')) {
+    if (!this.$linkedElement.getAttribute('tabindex')) {
       // Set the element tabindex to -1 so it can be focused with JavaScript.
-      $linkedElement.setAttribute('tabindex', '-1')
-      $linkedElement.classList.add('govuk-skip-link-focused-element')
+      this.$linkedElement.setAttribute('tabindex', '-1')
+      this.$linkedElement.classList.add('govuk-skip-link-focused-element')
 
       // Add listener for blur on the focused element (unless the listener has previously been added)
       if (!this.linkedElementListener) {
@@ -77,7 +75,7 @@ export class SkipLink {
       }
     }
 
-    $linkedElement.focus()
+    this.$linkedElement.focus()
   }
 
   /**

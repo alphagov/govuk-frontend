@@ -150,8 +150,7 @@ export class CharacterCount {
       return
     }
 
-    const $textarea = this.$textarea
-    const $textareaDescription = document.getElementById(`${$textarea.id}-info`)
+    const $textareaDescription = document.getElementById(`${this.$textarea.id}-info`)
     if (!$textareaDescription) {
       return
     }
@@ -165,7 +164,7 @@ export class CharacterCount {
 
     // Move the textarea description to be immediately after the textarea
     // Kept for backwards compatibility
-    $textarea.insertAdjacentElement('afterend', $textareaDescription)
+    this.$textarea.insertAdjacentElement('afterend', $textareaDescription)
 
     // Create the *screen reader* specific live-updating counter
     // This doesn't need any styling classes, as it is never visible
@@ -189,7 +188,7 @@ export class CharacterCount {
     $textareaDescription.classList.add('govuk-visually-hidden')
 
     // Remove hard limit if set
-    $textarea.removeAttribute('maxlength')
+    this.$textarea.removeAttribute('maxlength')
 
     this.bindChangeEvents()
 
@@ -213,12 +212,11 @@ export class CharacterCount {
    * @private
    */
   bindChangeEvents () {
-    const $textarea = this.$textarea
-    $textarea.addEventListener('keyup', () => this.handleKeyUp())
+    this.$textarea.addEventListener('keyup', () => this.handleKeyUp())
 
     // Bind focus/blur events to start/stop polling
-    $textarea.addEventListener('focus', () => this.handleFocus())
-    $textarea.addEventListener('blur', () => this.handleBlur())
+    this.$textarea.addEventListener('focus', () => this.handleFocus())
+    this.$textarea.addEventListener('blur', () => this.handleBlur())
   }
 
   /**
@@ -300,31 +298,29 @@ export class CharacterCount {
    * @private
    */
   updateVisibleCountMessage () {
-    const $textarea = this.$textarea
-    const $visibleCountMessage = this.$visibleCountMessage
-    const remainingNumber = this.maxLength - this.count($textarea.value)
+    const remainingNumber = this.maxLength - this.count(this.$textarea.value)
 
     // If input is over the threshold, remove the disabled class which renders the
     // counter invisible.
     if (this.isOverThreshold()) {
-      $visibleCountMessage.classList.remove('govuk-character-count__message--disabled')
+      this.$visibleCountMessage.classList.remove('govuk-character-count__message--disabled')
     } else {
-      $visibleCountMessage.classList.add('govuk-character-count__message--disabled')
+      this.$visibleCountMessage.classList.add('govuk-character-count__message--disabled')
     }
 
     // Update styles
     if (remainingNumber < 0) {
-      $textarea.classList.add('govuk-textarea--error')
-      $visibleCountMessage.classList.remove('govuk-hint')
-      $visibleCountMessage.classList.add('govuk-error-message')
+      this.$textarea.classList.add('govuk-textarea--error')
+      this.$visibleCountMessage.classList.remove('govuk-hint')
+      this.$visibleCountMessage.classList.add('govuk-error-message')
     } else {
-      $textarea.classList.remove('govuk-textarea--error')
-      $visibleCountMessage.classList.remove('govuk-error-message')
-      $visibleCountMessage.classList.add('govuk-hint')
+      this.$textarea.classList.remove('govuk-textarea--error')
+      this.$visibleCountMessage.classList.remove('govuk-error-message')
+      this.$visibleCountMessage.classList.add('govuk-hint')
     }
 
     // Update message
-    $visibleCountMessage.innerText = this.getCountMessage()
+    this.$visibleCountMessage.innerText = this.getCountMessage()
   }
 
   /**
@@ -333,18 +329,16 @@ export class CharacterCount {
    * @private
    */
   updateScreenReaderCountMessage () {
-    const $screenReaderCountMessage = this.$screenReaderCountMessage
-
     // If over the threshold, remove the aria-hidden attribute, allowing screen
     // readers to announce the content of the element.
     if (this.isOverThreshold()) {
-      $screenReaderCountMessage.removeAttribute('aria-hidden')
+      this.$screenReaderCountMessage.removeAttribute('aria-hidden')
     } else {
-      $screenReaderCountMessage.setAttribute('aria-hidden', 'true')
+      this.$screenReaderCountMessage.setAttribute('aria-hidden', 'true')
     }
 
     // Update message
-    $screenReaderCountMessage.innerText = this.getCountMessage()
+    this.$screenReaderCountMessage.innerText = this.getCountMessage()
   }
 
   /**
@@ -413,10 +407,8 @@ export class CharacterCount {
       return true
     }
 
-    const $textarea = this.$textarea
-
     // Determine the remaining number of characters/words
-    const currentLength = this.count($textarea.value)
+    const currentLength = this.count(this.$textarea.value)
     const maxLength = this.maxLength
 
     const thresholdValue = maxLength * this.config.threshold / 100

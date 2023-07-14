@@ -40,7 +40,9 @@ export class Example {
     }
 
     // Code goes here
-    const $module = this.$module
+    this.$module.addEventListener('click', () => {
+      // ...
+    })
   }
 }
 ```

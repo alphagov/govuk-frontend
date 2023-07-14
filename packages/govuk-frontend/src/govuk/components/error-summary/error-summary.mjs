@@ -52,10 +52,8 @@ export class ErrorSummary {
       return
     }
 
-    const $module = this.$module
-
     this.setFocus()
-    $module.addEventListener('click', (event) => this.handleClick(event))
+    this.$module.addEventListener('click', (event) => this.handleClick(event))
   }
 
   /**
@@ -64,21 +62,19 @@ export class ErrorSummary {
    * @private
    */
   setFocus () {
-    const $module = this.$module
-
     if (this.config.disableAutoFocus) {
       return
     }
 
     // Set tabindex to -1 to make the element programmatically focusable, but
     // remove it on blur as the error summary doesn't need to be focused again.
-    $module.setAttribute('tabindex', '-1')
+    this.$module.setAttribute('tabindex', '-1')
 
-    $module.addEventListener('blur', () => {
-      $module.removeAttribute('tabindex')
+    this.$module.addEventListener('blur', () => {
+      this.$module.removeAttribute('tabindex')
     })
 
-    $module.focus()
+    this.$module.focus()
   }
 
   /**
