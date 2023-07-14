@@ -32,4 +32,10 @@
   .govuk-link--no-visited-state {
     @include govuk-link-style-no-visited-state;
   }
+
+  // Links that only contain images
+
+  .govuk-link-image {
+    @include govuk-link-image;
+  }
 }
