@@ -102,7 +102,7 @@ export class Button {
       return false
     }
 
-    this.debounceFormSubmitTimer = setTimeout(() => {
+    this.debounceFormSubmitTimer = window.setTimeout(() => {
       this.debounceFormSubmitTimer = null
     }, DEBOUNCE_TIMEOUT_IN_SECONDS * 1000)
   }

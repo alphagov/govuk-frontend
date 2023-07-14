@@ -248,7 +248,7 @@ export class CharacterCount {
    * @private
    */
   handleFocus () {
-    this.valueChecker = setInterval(() => {
+    this.valueChecker = window.setInterval(() => {
       if (!this.lastInputTimestamp || (Date.now() - 500) >= this.lastInputTimestamp) {
         this.updateIfValueChanged()
       }
