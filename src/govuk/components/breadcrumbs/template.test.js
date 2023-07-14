@@ -93,7 +93,7 @@ describe('Breadcrumbs', () => {
     })
 
     it('renders with inverted colours if specified', () => {
-      const $ = render('breadcrumbs', examples['with inverted colours'])
+      const $ = render('breadcrumbs', examples.inverse)
 
       const $component = $('.govuk-breadcrumbs')
       expect($component.hasClass('govuk-breadcrumbs--inverse')).toBeTruthy()
