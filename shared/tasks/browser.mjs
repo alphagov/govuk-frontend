@@ -42,6 +42,17 @@ export async function screenshots () {
     }
   }
 
+  // Screenshot specific component examples
+  for (const [componentName, options] of /** @type {const} */ ([
+    ['button', { exampleName: 'start' }],
+    ['button', { exampleName: 'inverse-start' }],
+    ['details', { exampleName: 'expanded' }],
+    ['pagination', { exampleName: 'with-prev-and-next-only' }],
+    ['pagination', { exampleName: 'with-prev-and-next-only-and-labels' }]
+  ])) {
+    await screenshotComponent(await browser.newPage(), componentName, options)
+  }
+
   // Screenshot specific example pages
   for (const exampleName of [
     'text-alignment',
