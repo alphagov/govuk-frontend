@@ -82,7 +82,7 @@ examples:
           href: '/education'
         - text: Special educational needs and disability (SEND) and high needs
           href: '/education/special-educational-needs-and-disability-send-and-high-needs'
-  - name: with inverted colours
+  - name: inverse
     description: Breadcrumbs that appear on dark backgrounds
     previewLayoutModifiers:
       - inverse

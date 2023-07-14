@@ -2,7 +2,7 @@ import percySnapshot from '@percy/puppeteer'
 import { waitForPercyIdle } from '@percy/sdk-utils'
 import { download } from 'govuk-frontend-helpers/jest/browser/download.mjs'
 import { goToComponent, goToExample } from 'govuk-frontend-helpers/puppeteer'
-import { filterPath, getComponentFiles, getComponentNames } from 'govuk-frontend-lib/files'
+import { filterPath, getComponentFiles, getComponentNames, getExamples } from 'govuk-frontend-lib/files'
 import puppeteer from 'puppeteer'
 
 /**
@@ -30,7 +30,17 @@ export async function screenshots () {
 
   // Screenshot components
   for (const componentName of componentNames) {
+    const componentExamples = await getExamples(componentName)
+
+    // Screenshot "default" example
     await screenshotComponent(await browser.newPage(), componentName)
+
+    // Screenshot "inverse" example
+    if (Object.keys(componentExamples).includes('inverse')) {
+      await screenshotComponent(await browser.newPage(), componentName, {
+        exampleName: 'inverse'
+      })
+    }
   }
 
   // Screenshot examples
@@ -51,16 +61,23 @@ export async function screenshots () {
  *
  * @param {import('puppeteer').Page} page - Puppeteer page object
  * @param {string} componentName - Component name
+ * @param {object} [options] - Component options
+ * @param {string} options.exampleName - Example name
  * @returns {Promise<void>}
  */
-export async function screenshotComponent (page, componentName) {
+export async function screenshotComponent (page, componentName, options) {
   const componentFiles = await getComponentFiles(componentName)
 
   // Navigate to component
-  await goToComponent(page, componentName)
+  await goToComponent(page, componentName, options)
+
+  // Add optional example to screenshot name
+  const screenshotName = options?.exampleName
+    ? `${componentName} (${options.exampleName})`
+    : componentName
 
   // Screenshot preview page (with JavaScript)
-  await percySnapshot(page, `js: ${componentName}`)
+  await percySnapshot(page, `js: ${screenshotName}`)
 
   // Check for "JavaScript enabled" components
   if (componentFiles.some(filterPath([`**/${componentName}.mjs`]))) {
@@ -68,7 +85,7 @@ export async function screenshotComponent (page, componentName) {
 
     // Screenshot preview page (without JavaScript)
     await page.reload({ waitUntil: 'load' })
-    await percySnapshot(page, `no-js: ${componentName}`)
+    await percySnapshot(page, `no-js: ${screenshotName}`)
   }
 
   // Close page
