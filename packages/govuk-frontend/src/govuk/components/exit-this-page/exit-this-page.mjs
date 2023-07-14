@@ -268,7 +268,7 @@ export class ExitThisPage {
 
       // Clear the timeout for the keypress timeout message clearing itself
       if (this.timeoutMessageId !== null) {
-        clearTimeout(this.timeoutMessageId)
+        window.clearTimeout(this.timeoutMessageId)
         this.timeoutMessageId = null
       }
 
@@ -276,7 +276,7 @@ export class ExitThisPage {
         this.keypressCounter = 0
 
         if (this.keypressTimeoutId !== null) {
-          clearTimeout(this.keypressTimeoutId)
+          window.clearTimeout(this.keypressTimeoutId)
           this.keypressTimeoutId = null
         }
 
@@ -313,10 +313,10 @@ export class ExitThisPage {
   setKeypressTimer () {
     // Clear any existing timeout. This is so only one timer is running even if
     // there are multiple keypresses in quick succession.
-    clearTimeout(this.keypressTimeoutId)
+    window.clearTimeout(this.keypressTimeoutId)
 
     // Set a fresh timeout
-    this.keypressTimeoutId = setTimeout(
+    this.keypressTimeoutId = window.setTimeout(
       this.resetKeypressTimer.bind(this),
       this.timeoutTime
     )
@@ -328,13 +328,13 @@ export class ExitThisPage {
    * @private
    */
   resetKeypressTimer () {
-    clearTimeout(this.keypressTimeoutId)
+    window.clearTimeout(this.keypressTimeoutId)
     this.keypressTimeoutId = null
 
     this.keypressCounter = 0
     this.$updateSpan.innerText = this.i18n.t('timedOut')
 
-    this.timeoutMessageId = setTimeout(() => {
+    this.timeoutMessageId = window.setTimeout(() => {
       this.$updateSpan.innerText = ''
     }, this.timeoutTime)
 
@@ -373,11 +373,11 @@ export class ExitThisPage {
 
     // If the timeouts are active, clear them
     if (this.keypressTimeoutId) {
-      clearTimeout(this.keypressTimeoutId)
+      window.clearTimeout(this.keypressTimeoutId)
     }
 
     if (this.timeoutMessageId) {
-      clearTimeout(this.timeoutMessageId)
+      window.clearTimeout(this.timeoutMessageId)
     }
   }
 }
