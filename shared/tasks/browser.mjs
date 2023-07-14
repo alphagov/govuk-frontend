@@ -26,7 +26,6 @@ export async function launch () {
 export async function screenshots () {
   const browser = await launch()
   const componentNames = await getComponentNames()
-  const exampleNames = ['text-alignment', 'typography']
 
   // Screenshot components
   for (const componentName of componentNames) {
@@ -43,8 +42,22 @@ export async function screenshots () {
     }
   }
 
-  // Screenshot examples
-  for (const exampleName of exampleNames) {
+  // Screenshot specific component examples
+  for (const [componentName, options] of /** @type {const} */ ([
+    ['button', { exampleName: 'start' }],
+    ['button', { exampleName: 'inverse-start' }],
+    ['details', { exampleName: 'expanded' }],
+    ['pagination', { exampleName: 'with-prev-and-next-only' }],
+    ['pagination', { exampleName: 'with-prev-and-next-only-and-labels' }]
+  ])) {
+    await screenshotComponent(await browser.newPage(), componentName, options)
+  }
+
+  // Screenshot specific example pages
+  for (const exampleName of [
+    'text-alignment',
+    'typography'
+  ]) {
     await screenshotExample(await browser.newPage(), exampleName)
   }
 
