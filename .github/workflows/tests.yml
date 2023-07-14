@@ -34,7 +34,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.3
 
       - name: Install dependencies
         uses: ./.github/workflows/actions/install-node
@@ -46,7 +46,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.3
 
       - name: Restore dependencies
         uses: ./.github/workflows/actions/install-node
@@ -88,14 +88,14 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.3
 
       - name: Restore dependencies
         uses: ./.github/workflows/actions/install-node
 
       - name: Cache linter
         if: ${{ matrix.task.cache }}
-        uses: actions/cache@v3
+        uses: actions/cache@v3.3.1
         with:
           enableCrossOsArchive: true
           key: ${{ matrix.task.name }}-${{ runner.os }}
@@ -155,7 +155,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.3
 
       - name: Restore dependencies
         uses: ./.github/workflows/actions/install-node
@@ -165,7 +165,7 @@ jobs:
 
       - name: Cache task
         if: ${{ matrix.task.cache }}
-        uses: actions/cache@v3
+        uses: actions/cache@v3.3.1
         with:
           enableCrossOsArchive: true
           key: ${{ matrix.task.name }}-${{ runner.os }}
@@ -175,7 +175,7 @@ jobs:
         run: npx jest --color ${{ format('--maxWorkers={0} --selectProjects "{1}"', env.MAX_WORKERS, join(matrix.task.projects, '", "')) }}
 
       - name: Save test coverage
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: ${{ matrix.task.description }} coverage
           path: coverage
@@ -204,7 +204,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.3
 
       - name: Restore dependencies
         uses: ./.github/workflows/actions/install-node
@@ -247,7 +247,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.3
 
       - name: Restore dependencies
         uses: ./.github/workflows/actions/install-node
@@ -256,7 +256,7 @@ jobs:
         uses: ./.github/workflows/actions/build
 
       - name: Change Node.js version
-        uses: actions/setup-node@v3.6.0
+        uses: actions/setup-node@v3.7.0
         with:
           node-version: ${{ matrix.node-version }}
 
