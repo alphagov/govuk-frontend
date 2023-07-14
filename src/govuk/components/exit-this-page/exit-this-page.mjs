@@ -3,21 +3,6 @@ import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { I18n } from '../../i18n.mjs'
 
 /**
- * Exit this page translation defaults
- *
- * @see {@link ExitThisPageConfig.i18n}
- * @constant
- * @default
- * @type {ExitThisPageTranslations}
- */
-const EXIT_THIS_PAGE_TRANSLATIONS = {
-  activated: 'Loading.',
-  timedOut: 'Exit this page expired.',
-  pressTwoMoreTimes: 'Shift, press 2 more times to exit.',
-  pressOneMoreTime: 'Shift, press 1 more time to exit.'
-}
-
-/**
  * Exit This Page component
  */
 export class ExitThisPage {
@@ -35,17 +20,12 @@ export class ExitThisPage {
       return this
     }
 
-    /** @type {ExitThisPageConfig} */
-    const defaultConfig = {
-      i18n: EXIT_THIS_PAGE_TRANSLATIONS
-    }
-
     /**
      * @private
      * @type {ExitThisPageConfig}
      */
     this.config = mergeConfigs(
-      defaultConfig,
+      ExitThisPage.defaults,
       config || {},
       normaliseDataset($module.dataset)
     )
@@ -380,19 +360,37 @@ export class ExitThisPage {
       window.clearTimeout(this.timeoutMessageId)
     }
   }
+
+  /**
+   * Exit this page default config
+   *
+   * @see {@link ExitThisPageConfig}
+   * @constant
+   * @default
+   * @type {ExitThisPageConfig}
+   */
+  static defaults = Object.freeze({
+    i18n: {
+      activated: 'Loading.',
+      timedOut: 'Exit this page expired.',
+      pressTwoMoreTimes: 'Shift, press 2 more times to exit.',
+      pressOneMoreTime: 'Shift, press 1 more time to exit.'
+    }
+  })
 }
 
 /**
  * Exit this Page config
  *
+ * @see {@link ExitThisPage.defaults}
  * @typedef {object} ExitThisPageConfig
- * @property {ExitThisPageTranslations} [i18n=EXIT_THIS_PAGE_TRANSLATIONS] - Exit this page translations
+ * @property {ExitThisPageTranslations} [i18n=ExitThisPage.defaults.i18n] - Exit this page translations
  */
 
 /**
  * Exit this Page translations
  *
- * @see {@link EXIT_THIS_PAGE_TRANSLATIONS}
+ * @see {@link ExitThisPage.defaults.i18n}
  * @typedef {object} ExitThisPageTranslations
  *
  * Messages used by the component programatically inserted text, including
