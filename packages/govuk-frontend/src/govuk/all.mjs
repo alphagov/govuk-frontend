@@ -4,6 +4,7 @@ import { Button } from './components/button/button.mjs'
 import { CharacterCount } from './components/character-count/character-count.mjs'
 import { Checkboxes } from './components/checkboxes/checkboxes.mjs'
 import { ErrorSummary } from './components/error-summary/error-summary.mjs'
+import { ExitThisPage } from './components/exit-this-page/exit-this-page.mjs'
 import { Header } from './components/header/header.mjs'
 import { NotificationBanner } from './components/notification-banner/notification-banner.mjs'
 import { Radios } from './components/radios/radios.mjs'
@@ -56,6 +57,11 @@ function initAll (config) {
     new ErrorSummary($errorSummary, config.errorSummary).init()
   }
 
+  const $exitThisPageButtons = $scope.querySelectorAll('[data-module="govuk-exit-this-page"]')
+  $exitThisPageButtons.forEach(($button) => {
+    new ExitThisPage($button, config.exitThisPage).init()
+  })
+
   // Find first header module to enhance.
   const $header = $scope.querySelector('[data-module="govuk-header"]')
   if ($header) {
@@ -94,6 +100,7 @@ export {
   CharacterCount,
   Checkboxes,
   ErrorSummary,
+  ExitThisPage,
   Header,
   NotificationBanner,
   Radios,
@@ -110,6 +117,7 @@ export {
  * @property {ButtonConfig} [button] - Button config
  * @property {CharacterCountConfig} [characterCount] - Character Count config
  * @property {ErrorSummaryConfig} [errorSummary] - Error Summary config
+ * @property {ExitThisPageConfig} [exitThisPage] - Exit This Page config
  * @property {NotificationBannerConfig} [notificationBanner] - Notification Banner config
  */
 
@@ -124,5 +132,7 @@ export {
  * @typedef {import('./components/character-count/character-count.mjs').CharacterCountConfigWithMaxWords} CharacterCountConfigWithMaxWords
  * @typedef {import('./components/character-count/character-count.mjs').CharacterCountTranslations} CharacterCountTranslations
  * @typedef {import('./components/error-summary/error-summary.mjs').ErrorSummaryConfig} ErrorSummaryConfig
+ * @typedef {import('./components/exit-this-page/exit-this-page.mjs').ExitThisPageConfig} ExitThisPageConfig
+ * @typedef {import('./components/exit-this-page/exit-this-page.mjs').ExitThisPageTranslations} ExitThisPageTranslations
  * @typedef {import('./components/notification-banner/notification-banner.mjs').NotificationBannerConfig} NotificationBannerConfig
  */

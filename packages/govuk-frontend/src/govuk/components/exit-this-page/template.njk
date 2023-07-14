@@ -1,0 +1,16 @@
+{% from "../button/macro.njk" import govukButton -%}
+
+<div
+  {%- if params.id %} id="{{ params.id }}"{% endif %} class="govuk-exit-this-page {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-exit-this-page" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}
+  {%- if params.activatedText %} data-i18n.activated="{{ params.activatedText | escape }}"{% endif %}
+  {%- if params.timedOutText %} data-i18n.timed-out="{{ params.timedOutText | escape }}"{% endif %}
+  {%- if params.pressTwoMoreTimesText %} data-i18n.press-two-more-times="{{ params.pressTwoMoreTimesText | escape }}"{% endif %}
+  {%- if params.pressOneMoreTimeText %} data-i18n.press-one-more-time="{{ params.pressOneMoreTimeText | escape }}"{% endif %}
+>
+  {{- govukButton({
+    html: params.html,
+    text: params.text | default("Exit this page"),
+    classes: "govuk-button--warning govuk-exit-this-page__button govuk-js-exit-this-page-button",
+    href: params.redirectUrl | default("https://www.bbc.co.uk/weather")
+  }) -}}
+</div>
