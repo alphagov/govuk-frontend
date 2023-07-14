@@ -2,24 +2,23 @@
 
 {% macro showExamples(componentData) %}
 
-{% set componentSlug = componentData.name %}
-{% set componentName = componentData.name | replace("-", " ") %}
+{% set componentName = componentData.name %}
 
 {% for example in componentData.examples | rejectattr('hidden') %}
-  {% set exampleSlug = (example.name | replace(" ", "-")) %}
+  {% set exampleName = example.name | slugify %}
 
   {% if example.name == 'default' %}
-    {% set heading = componentName | capitalize %}
-    {% set path = '/components/' + componentSlug + "/preview" %}
+    {% set heading = componentName | unslugify %}
+    {% set path = '/components/' + componentName + "/preview" %}
   {% else %}
-    {% set heading %}{{ componentName | capitalize }} {{ example.name }}{% endset %}
-    {% set path = '/components/' + componentSlug + '/' + exampleSlug + "/preview" %}
+    {% set heading %}{{ componentName | unslugify }} {{ example.name }}{% endset %}
+    {% set path = '/components/' + componentName + '/' + exampleName + "/preview" %}
   {% endif %}
 
-  <section aria-labelledby="heading-{{ exampleSlug }}" class="govuk-!-margin-bottom-9">
+  <section aria-labelledby="heading-{{ exampleName }}" class="govuk-!-margin-bottom-9">
     <div class="govuk-width-container">
       <div class="govuk-heading-m">
-        <h3 id="heading-{{ exampleSlug }}" class="app-!-di">{{ heading | safe }}</h3>
+        <h3 id="heading-{{ exampleName }}" class="app-!-di">{{ heading | safe }}</h3>
         <a href="{{ path }}" class="govuk-link govuk-!-margin-left-1 govuk-!-font-size-16">
           (open in a new window)
         </a>

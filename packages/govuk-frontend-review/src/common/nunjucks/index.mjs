@@ -49,3 +49,6 @@ export function renderer (app) {
 
   return env
 }
+
+export { filters }
+export { globals }
