@@ -3,24 +3,73 @@ import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { I18n } from '../../i18n.mjs'
 
 /**
- * Exit this page translation defaults
- *
- * @see {@link ExitThisPageConfig.i18n}
- * @constant
- * @default
- * @type {ExitThisPageTranslations}
- */
-const EXIT_THIS_PAGE_TRANSLATIONS = {
-  activated: 'Loading.',
-  timedOut: 'Exit this page expired.',
-  pressTwoMoreTimes: 'Shift, press 2 more times to exit.',
-  pressOneMoreTime: 'Shift, press 1 more time to exit.'
-}
-
-/**
  * Exit This Page component
  */
 export class ExitThisPage {
+  /** @private */
+  $module
+
+  /**
+   * @private
+   * @type {ExitThisPageConfig}
+   */
+  config
+
+  /** @private */
+  i18n
+
+  /** @private */
+  $button
+
+  /**
+   * @private
+   * @type {HTMLAnchorElement | null}
+   */
+  $skiplinkButton = null
+
+  /**
+   * @private
+   * @type {HTMLElement | null}
+   */
+  $updateSpan = null
+
+  /**
+   * @private
+   * @type {HTMLElement | null}
+   */
+  $indicatorContainer = null
+
+  /**
+   * @private
+   * @type {HTMLElement | null}
+   */
+  $overlay = null
+
+  /** @private */
+  keypressCounter = 0
+
+  /** @private */
+  lastKeyWasModified = false
+
+  /** @private */
+  timeoutTime = 5000 // milliseconds
+
+  // Store the timeout events so that we can clear them to avoid user keypresses overlapping
+  // setTimeout returns an id that we can use to clear it with clearTimeout,
+  // hence the 'Id' suffix
+
+  /**
+   * @private
+   * @type {number | null}
+   */
+  keypressTimeoutId = null
+
+  /**
+   * @private
+   * @type {number | null}
+   */
+  timeoutMessageId = null
+
   /**
    * @param {Element} $module - HTML element that wraps the Exit This Page button
    * @param {ExitThisPageConfig} [config] - Exit This Page config
@@ -35,68 +84,20 @@ export class ExitThisPage {
       return this
     }
 
-    /** @type {ExitThisPageConfig} */
-    const defaultConfig = {
-      i18n: EXIT_THIS_PAGE_TRANSLATIONS
-    }
-
-    /**
-     * @private
-     * @type {ExitThisPageConfig}
-     */
     this.config = mergeConfigs(
-      defaultConfig,
+      ExitThisPage.defaults,
       config || {},
       normaliseDataset($module.dataset)
     )
 
-    /** @private */
     this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'))
-
-    /** @private */
     this.$module = $module
-
-    /** @private */
     this.$button = $button
-
-    /**
-     * @private
-     * @type {HTMLAnchorElement | null}
-     */
-    this.$skiplinkButton = null
 
     const $skiplinkButton = document.querySelector('.govuk-js-exit-this-page-skiplink')
     if ($skiplinkButton instanceof HTMLAnchorElement) {
       this.$skiplinkButton = $skiplinkButton
     }
-
-    /** @private */
-    this.$updateSpan = null
-
-    /** @private */
-    this.$indicatorContainer = null
-
-    /** @private */
-    this.$overlay = null
-
-    /** @private */
-    this.keypressCounter = 0
-
-    /** @private */
-    this.lastKeyWasModified = false
-
-    /** @private */
-    this.timeoutTime = 5000 // milliseconds
-
-    // Store the timeout events so that we can clear them to avoid user keypresses overlapping
-    // setTimeout returns an id that we can use to clear it with clearTimeout,
-    // hence the 'Id' suffix
-
-    /** @private */
-    this.keypressTimeoutId = null
-
-    /** @private */
-    this.timeoutMessageId = null
   }
 
   /**
@@ -268,7 +269,7 @@ export class ExitThisPage {
 
       // Clear the timeout for the keypress timeout message clearing itself
       if (this.timeoutMessageId !== null) {
-        clearTimeout(this.timeoutMessageId)
+        window.clearTimeout(this.timeoutMessageId)
         this.timeoutMessageId = null
       }
 
@@ -276,7 +277,7 @@ export class ExitThisPage {
         this.keypressCounter = 0
 
         if (this.keypressTimeoutId !== null) {
-          clearTimeout(this.keypressTimeoutId)
+          window.clearTimeout(this.keypressTimeoutId)
           this.keypressTimeoutId = null
         }
 
@@ -313,10 +314,10 @@ export class ExitThisPage {
   setKeypressTimer () {
     // Clear any existing timeout. This is so only one timer is running even if
     // there are multiple keypresses in quick succession.
-    clearTimeout(this.keypressTimeoutId)
+    window.clearTimeout(this.keypressTimeoutId)
 
     // Set a fresh timeout
-    this.keypressTimeoutId = setTimeout(
+    this.keypressTimeoutId = window.setTimeout(
       this.resetKeypressTimer.bind(this),
       this.timeoutTime
     )
@@ -328,13 +329,13 @@ export class ExitThisPage {
    * @private
    */
   resetKeypressTimer () {
-    clearTimeout(this.keypressTimeoutId)
+    window.clearTimeout(this.keypressTimeoutId)
     this.keypressTimeoutId = null
 
     this.keypressCounter = 0
     this.$updateSpan.innerText = this.i18n.t('timedOut')
 
-    this.timeoutMessageId = setTimeout(() => {
+    this.timeoutMessageId = window.setTimeout(() => {
       this.$updateSpan.innerText = ''
     }, this.timeoutTime)
 
@@ -373,26 +374,44 @@ export class ExitThisPage {
 
     // If the timeouts are active, clear them
     if (this.keypressTimeoutId) {
-      clearTimeout(this.keypressTimeoutId)
+      window.clearTimeout(this.keypressTimeoutId)
     }
 
     if (this.timeoutMessageId) {
-      clearTimeout(this.timeoutMessageId)
+      window.clearTimeout(this.timeoutMessageId)
     }
   }
+
+  /**
+   * Exit this page default config
+   *
+   * @see {@link ExitThisPageConfig}
+   * @constant
+   * @default
+   * @type {ExitThisPageConfig}
+   */
+  static defaults = Object.freeze({
+    i18n: {
+      activated: 'Loading.',
+      timedOut: 'Exit this page expired.',
+      pressTwoMoreTimes: 'Shift, press 2 more times to exit.',
+      pressOneMoreTime: 'Shift, press 1 more time to exit.'
+    }
+  })
 }
 
 /**
  * Exit this Page config
  *
+ * @see {@link ExitThisPage.defaults}
  * @typedef {object} ExitThisPageConfig
- * @property {ExitThisPageTranslations} [i18n=EXIT_THIS_PAGE_TRANSLATIONS] - Exit this page translations
+ * @property {ExitThisPageTranslations} [i18n=ExitThisPage.defaults.i18n] - Exit this page translations
  */
 
 /**
  * Exit this Page translations
  *
- * @see {@link EXIT_THIS_PAGE_TRANSLATIONS}
+ * @see {@link ExitThisPage.defaults.i18n}
  * @typedef {object} ExitThisPageTranslations
  *
  * Messages used by the component programatically inserted text, including

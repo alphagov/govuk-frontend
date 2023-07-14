@@ -2,6 +2,35 @@
  * Header component
  */
 export class Header {
+  /** @private */
+  $module
+
+  /** @private */
+  $menuButton
+
+  /** @private */
+  $menu
+
+  /**
+   * Save the opened/closed state for the nav in memory so that we can
+   * accurately maintain state when the screen is changed from small to
+   * big and back to small
+   *
+   * @private
+   */
+  menuIsOpen = false
+
+  /**
+   * A global const for storing a matchMedia instance which we'll use to
+   * detect when a screen size change happens. We set this later during the
+   * init function and rely on it being null if the feature isn't available
+   * to initially apply hidden attributes
+   *
+   * @private
+   * @type {MediaQueryList | null}
+   */
+  mql = null
+
   /**
    * @param {Element} $module - HTML element to use for header
    */
@@ -10,35 +39,11 @@ export class Header {
       return this
     }
 
-    /** @private */
     this.$module = $module
-
-    /** @private */
     this.$menuButton = $module.querySelector('.govuk-js-header-toggle')
-
-    /** @private */
     this.$menu = this.$menuButton && $module.querySelector(
       `#${this.$menuButton.getAttribute('aria-controls')}`
     )
-
-    /**
-     * Save the opened/closed state for the nav in memory so that we can
-     * accurately maintain state when the screen is changed from small to
-     * big and back to small
-     *
-     * @private
-     */
-    this.menuIsOpen = false
-
-    /**
-     * A global const for storing a matchMedia instance which we'll use to
-     * detect when a screen size change happens. We set this later during the
-     * init function and rely on it being null if the feature isn't available
-     * to initially apply hidden attributes
-     *
-     * @private
-     */
-    this.mql = null
   }
 
   /**

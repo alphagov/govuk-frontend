@@ -4,40 +4,6 @@ import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { I18n } from '../../i18n.mjs'
 
 /**
- * Character count translation defaults
- *
- * @see {@link CharacterCountConfig.i18n}
- * @constant
- * @default
- * @type {CharacterCountTranslations}
- */
-const CHARACTER_COUNT_TRANSLATIONS = {
-  // Characters
-  charactersUnderLimit: {
-    one: 'You have %{count} character remaining',
-    other: 'You have %{count} characters remaining'
-  },
-  charactersAtLimit: 'You have 0 characters remaining',
-  charactersOverLimit: {
-    one: 'You have %{count} character too many',
-    other: 'You have %{count} characters too many'
-  },
-  // Words
-  wordsUnderLimit: {
-    one: 'You have %{count} word remaining',
-    other: 'You have %{count} words remaining'
-  },
-  wordsAtLimit: 'You have 0 words remaining',
-  wordsOverLimit: {
-    one: 'You have %{count} word too many',
-    other: 'You have %{count} words too many'
-  },
-  textareaDescription: {
-    other: ''
-  }
-}
-
-/**
  * Character count component
  *
  * Tracks the number of characters or words in the `.govuk-js-character-count`
@@ -48,6 +14,51 @@ const CHARACTER_COUNT_TRANSLATIONS = {
  * of the available characters/words has been entered.
  */
 export class CharacterCount {
+  /** @private */
+  $module
+
+  /** @private */
+  $textarea
+
+  /**
+   * @private
+   * @type {HTMLElement | null}
+   */
+  $visibleCountMessage = null
+
+  /**
+   * @private
+   * @type {HTMLElement | null}
+   */
+  $screenReaderCountMessage = null
+
+  /**
+   * @private
+   * @type {number | null}
+   */
+  lastInputTimestamp = null
+
+  /** @private */
+  lastInputValue = ''
+
+  /**
+   * @private
+   * @type {number | null}
+   */
+  valueChecker = null
+
+  /**
+   * @private
+   * @type {CharacterCountConfig}
+   */
+  config
+
+  /** @private */
+  i18n
+
+  /** @private */
+  maxLength = Infinity
+
   /**
    * @param {Element} $module - HTML element to use for character count
    * @param {CharacterCountConfig} [config] - Character count config
@@ -65,12 +76,6 @@ export class CharacterCount {
       )
     ) {
       return this
-    }
-
-    /** @type {CharacterCountConfig} */
-    const defaultConfig = {
-      threshold: 0,
-      i18n: CHARACTER_COUNT_TRANSLATIONS
     }
 
     // Read config set using dataset ('data-' values)
@@ -91,25 +96,18 @@ export class CharacterCount {
       }
     }
 
-    /**
-     * @private
-     * @type {CharacterCountConfig}
-     */
     this.config = mergeConfigs(
-      defaultConfig,
+      CharacterCount.defaults,
       config || {},
       configOverrides,
       datasetConfig
     )
 
-    /** @private */
     this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'), {
       // Read the fallback if necessary rather than have it set in the defaults
       locale: closestAttributeValue($module, 'lang')
     })
 
-    /** @private */
-    this.maxLength = Infinity
     // Determine the limit attribute (characters or words)
     if ('maxwords' in this.config && this.config.maxwords) {
       this.maxLength = this.config.maxwords
@@ -119,26 +117,8 @@ export class CharacterCount {
       return this
     }
 
-    /** @private */
     this.$module = $module
-
-    /** @private */
     this.$textarea = $textarea
-
-    /** @private */
-    this.$visibleCountMessage = null
-
-    /** @private */
-    this.$screenReaderCountMessage = null
-
-    /** @private */
-    this.lastInputTimestamp = null
-
-    /** @private */
-    this.lastInputValue = ''
-
-    /** @private */
-    this.valueChecker = null
   }
 
   /**
@@ -150,8 +130,7 @@ export class CharacterCount {
       return
     }
 
-    const $textarea = this.$textarea
-    const $textareaDescription = document.getElementById(`${$textarea.id}-info`)
+    const $textareaDescription = document.getElementById(`${this.$textarea.id}-info`)
     if (!$textareaDescription) {
       return
     }
@@ -165,7 +144,7 @@ export class CharacterCount {
 
     // Move the textarea description to be immediately after the textarea
     // Kept for backwards compatibility
-    $textarea.insertAdjacentElement('afterend', $textareaDescription)
+    this.$textarea.insertAdjacentElement('afterend', $textareaDescription)
 
     // Create the *screen reader* specific live-updating counter
     // This doesn't need any styling classes, as it is never visible
@@ -189,7 +168,7 @@ export class CharacterCount {
     $textareaDescription.classList.add('govuk-visually-hidden')
 
     // Remove hard limit if set
-    $textarea.removeAttribute('maxlength')
+    this.$textarea.removeAttribute('maxlength')
 
     this.bindChangeEvents()
 
@@ -213,12 +192,11 @@ export class CharacterCount {
    * @private
    */
   bindChangeEvents () {
-    const $textarea = this.$textarea
-    $textarea.addEventListener('keyup', () => this.handleKeyUp())
+    this.$textarea.addEventListener('keyup', () => this.handleKeyUp())
 
     // Bind focus/blur events to start/stop polling
-    $textarea.addEventListener('focus', () => this.handleFocus())
-    $textarea.addEventListener('blur', () => this.handleBlur())
+    this.$textarea.addEventListener('focus', () => this.handleFocus())
+    this.$textarea.addEventListener('blur', () => this.handleBlur())
   }
 
   /**
@@ -250,7 +228,7 @@ export class CharacterCount {
    * @private
    */
   handleFocus () {
-    this.valueChecker = setInterval(() => {
+    this.valueChecker = window.setInterval(() => {
       if (!this.lastInputTimestamp || (Date.now() - 500) >= this.lastInputTimestamp) {
         this.updateIfValueChanged()
       }
@@ -300,31 +278,29 @@ export class CharacterCount {
    * @private
    */
   updateVisibleCountMessage () {
-    const $textarea = this.$textarea
-    const $visibleCountMessage = this.$visibleCountMessage
-    const remainingNumber = this.maxLength - this.count($textarea.value)
+    const remainingNumber = this.maxLength - this.count(this.$textarea.value)
 
     // If input is over the threshold, remove the disabled class which renders the
     // counter invisible.
     if (this.isOverThreshold()) {
-      $visibleCountMessage.classList.remove('govuk-character-count__message--disabled')
+      this.$visibleCountMessage.classList.remove('govuk-character-count__message--disabled')
     } else {
-      $visibleCountMessage.classList.add('govuk-character-count__message--disabled')
+      this.$visibleCountMessage.classList.add('govuk-character-count__message--disabled')
     }
 
     // Update styles
     if (remainingNumber < 0) {
-      $textarea.classList.add('govuk-textarea--error')
-      $visibleCountMessage.classList.remove('govuk-hint')
-      $visibleCountMessage.classList.add('govuk-error-message')
+      this.$textarea.classList.add('govuk-textarea--error')
+      this.$visibleCountMessage.classList.remove('govuk-hint')
+      this.$visibleCountMessage.classList.add('govuk-error-message')
     } else {
-      $textarea.classList.remove('govuk-textarea--error')
-      $visibleCountMessage.classList.remove('govuk-error-message')
-      $visibleCountMessage.classList.add('govuk-hint')
+      this.$textarea.classList.remove('govuk-textarea--error')
+      this.$visibleCountMessage.classList.remove('govuk-error-message')
+      this.$visibleCountMessage.classList.add('govuk-hint')
     }
 
     // Update message
-    $visibleCountMessage.innerText = this.getCountMessage()
+    this.$visibleCountMessage.innerText = this.getCountMessage()
   }
 
   /**
@@ -333,18 +309,16 @@ export class CharacterCount {
    * @private
    */
   updateScreenReaderCountMessage () {
-    const $screenReaderCountMessage = this.$screenReaderCountMessage
-
     // If over the threshold, remove the aria-hidden attribute, allowing screen
     // readers to announce the content of the element.
     if (this.isOverThreshold()) {
-      $screenReaderCountMessage.removeAttribute('aria-hidden')
+      this.$screenReaderCountMessage.removeAttribute('aria-hidden')
     } else {
-      $screenReaderCountMessage.setAttribute('aria-hidden', 'true')
+      this.$screenReaderCountMessage.setAttribute('aria-hidden', 'true')
     }
 
     // Update message
-    $screenReaderCountMessage.innerText = this.getCountMessage()
+    this.$screenReaderCountMessage.innerText = this.getCountMessage()
   }
 
   /**
@@ -413,52 +387,90 @@ export class CharacterCount {
       return true
     }
 
-    const $textarea = this.$textarea
-
     // Determine the remaining number of characters/words
-    const currentLength = this.count($textarea.value)
+    const currentLength = this.count(this.$textarea.value)
     const maxLength = this.maxLength
 
     const thresholdValue = maxLength * this.config.threshold / 100
 
     return (thresholdValue <= currentLength)
   }
+
+  /**
+   * Character count default config
+   *
+   * @see {@link CharacterCountConfig}
+   * @constant
+   * @default
+   * @type {CharacterCountConfig}
+   */
+  static defaults = Object.freeze({
+    threshold: 0,
+    i18n: {
+      // Characters
+      charactersUnderLimit: {
+        one: 'You have %{count} character remaining',
+        other: 'You have %{count} characters remaining'
+      },
+      charactersAtLimit: 'You have 0 characters remaining',
+      charactersOverLimit: {
+        one: 'You have %{count} character too many',
+        other: 'You have %{count} characters too many'
+      },
+      // Words
+      wordsUnderLimit: {
+        one: 'You have %{count} word remaining',
+        other: 'You have %{count} words remaining'
+      },
+      wordsAtLimit: 'You have 0 words remaining',
+      wordsOverLimit: {
+        one: 'You have %{count} word too many',
+        other: 'You have %{count} words too many'
+      },
+      textareaDescription: {
+        other: ''
+      }
+    }
+  })
 }
 
 /**
  * Character count config
  *
+ * @see {@link CharacterCount.defaults}
  * @typedef {CharacterCountConfigWithMaxLength | CharacterCountConfigWithMaxWords} CharacterCountConfig
  */
 
 /**
  * Character count config (with maximum number of characters)
  *
+ * @see {@link CharacterCount.defaults}
  * @typedef {object} CharacterCountConfigWithMaxLength
  * @property {number} [maxlength] - The maximum number of characters.
  *   If maxwords is provided, the maxlength option will be ignored.
  * @property {number} [threshold=0] - The percentage value of the limit at
  *   which point the count message is displayed. If this attribute is set, the
  *   count message will be hidden by default.
- * @property {CharacterCountTranslations} [i18n=CHARACTER_COUNT_TRANSLATIONS] - Character count translations
+ * @property {CharacterCountTranslations} [i18n=CharacterCount.defaults.i18n] - Character count translations
  */
 
 /**
  * Character count config (with maximum number of words)
  *
+ * @see {@link CharacterCount.defaults}
  * @typedef {object} CharacterCountConfigWithMaxWords
  * @property {number} [maxwords] - The maximum number of words. If maxwords is
  *   provided, the maxlength option will be ignored.
  * @property {number} [threshold=0] - The percentage value of the limit at
  *   which point the count message is displayed. If this attribute is set, the
  *   count message will be hidden by default.
- * @property {CharacterCountTranslations} [i18n=CHARACTER_COUNT_TRANSLATIONS] - Character count translations
+ * @property {CharacterCountTranslations} [i18n=CharacterCount.defaults.i18n] - Character count translations
  */
 
 /**
  * Character count translations
  *
- * @see {@link CHARACTER_COUNT_TRANSLATIONS}
+ * @see {@link CharacterCount.defaults.i18n}
  * @typedef {object} CharacterCountTranslations
  *
  * Messages shown to users as they type. It provides feedback on how many words

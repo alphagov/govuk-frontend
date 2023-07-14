@@ -7,6 +7,15 @@ import { normaliseDataset } from '../../common/normalise-dataset.mjs'
  * Takes focus on initialisation for accessible announcement, unless disabled in configuration.
  */
 export class ErrorSummary {
+  /** @private */
+  $module
+
+  /**
+   * @private
+   * @type {ErrorSummaryConfig}
+   */
+  config
+
   /**
    *
    * @param {Element} $module - HTML element to use for error summary
@@ -24,20 +33,10 @@ export class ErrorSummary {
       return this
     }
 
-    /** @private */
     this.$module = $module
 
-    /** @type {ErrorSummaryConfig} */
-    const defaultConfig = {
-      disableAutoFocus: false
-    }
-
-    /**
-     * @private
-     * @type {ErrorSummaryConfig}
-     */
     this.config = mergeConfigs(
-      defaultConfig,
+      ErrorSummary.defaults,
       config || {},
       normaliseDataset($module.dataset)
     )
@@ -52,10 +51,8 @@ export class ErrorSummary {
       return
     }
 
-    const $module = this.$module
-
     this.setFocus()
-    $module.addEventListener('click', (event) => this.handleClick(event))
+    this.$module.addEventListener('click', (event) => this.handleClick(event))
   }
 
   /**
@@ -64,21 +61,19 @@ export class ErrorSummary {
    * @private
    */
   setFocus () {
-    const $module = this.$module
-
     if (this.config.disableAutoFocus) {
       return
     }
 
     // Set tabindex to -1 to make the element programmatically focusable, but
     // remove it on blur as the error summary doesn't need to be focused again.
-    $module.setAttribute('tabindex', '-1')
+    this.$module.setAttribute('tabindex', '-1')
 
-    $module.addEventListener('blur', () => {
-      $module.removeAttribute('tabindex')
+    this.$module.addEventListener('blur', () => {
+      this.$module.removeAttribute('tabindex')
     })
 
-    $module.focus()
+    this.$module.focus()
   }
 
   /**
@@ -216,6 +211,18 @@ export class ErrorSummary {
     return document.querySelector(`label[for='${$input.getAttribute('id')}']`) ||
       $input.closest('label')
   }
+
+  /**
+   * Error summary default config
+   *
+   * @see {@link ErrorSummaryConfig}
+   * @constant
+   * @default
+   * @type {ErrorSummaryConfig}
+   */
+  static defaults = Object.freeze({
+    disableAutoFocus: false
+  })
 }
 
 /**

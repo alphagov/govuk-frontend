@@ -3,23 +3,6 @@ import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { I18n } from '../../i18n.mjs'
 
 /**
- * Accordion translation defaults
- *
- * @see {@link AccordionConfig.i18n}
- * @constant
- * @default
- * @type {AccordionTranslations}
- */
-const ACCORDION_TRANSLATIONS = {
-  hideAllSections: 'Hide all sections',
-  hideSection: 'Hide',
-  hideSectionAriaLabel: 'Hide this section',
-  showAllSections: 'Show all sections',
-  showSection: 'Show',
-  showSectionAriaLabel: 'Show this section'
-}
-
-/**
  * Accordion component
  *
  * This allows a collection of sections to be collapsed by default, showing only
@@ -32,6 +15,99 @@ const ACCORDION_TRANSLATIONS = {
  * attribute, which also provides accessibility.
  */
 export class Accordion {
+  /** @private */
+  $module
+
+  /**
+   * @private
+   * @type {AccordionConfig}
+   */
+  config
+
+  /** @private */
+  i18n
+
+  /** @private */
+  controlsClass = 'govuk-accordion__controls'
+
+  /** @private */
+  showAllClass = 'govuk-accordion__show-all'
+
+  /** @private */
+  showAllTextClass = 'govuk-accordion__show-all-text'
+
+  /** @private */
+  sectionClass = 'govuk-accordion__section'
+
+  /** @private */
+  sectionExpandedClass = 'govuk-accordion__section--expanded'
+
+  /** @private */
+  sectionButtonClass = 'govuk-accordion__section-button'
+
+  /** @private */
+  sectionHeaderClass = 'govuk-accordion__section-header'
+
+  /** @private */
+  sectionHeadingClass = 'govuk-accordion__section-heading'
+
+  /** @private */
+  sectionHeadingDividerClass = 'govuk-accordion__section-heading-divider'
+
+  /** @private */
+  sectionHeadingTextClass = 'govuk-accordion__section-heading-text'
+
+  /** @private */
+  sectionHeadingTextFocusClass = 'govuk-accordion__section-heading-text-focus'
+
+  /** @private */
+  sectionShowHideToggleClass = 'govuk-accordion__section-toggle'
+
+  /** @private */
+  sectionShowHideToggleFocusClass = 'govuk-accordion__section-toggle-focus'
+
+  /** @private */
+  sectionShowHideTextClass = 'govuk-accordion__section-toggle-text'
+
+  /** @private */
+  upChevronIconClass = 'govuk-accordion-nav__chevron'
+
+  /** @private */
+  downChevronIconClass = 'govuk-accordion-nav__chevron--down'
+
+  /** @private */
+  sectionSummaryClass = 'govuk-accordion__section-summary'
+
+  /** @private */
+  sectionSummaryFocusClass = 'govuk-accordion__section-summary-focus'
+
+  /** @private */
+  sectionContentClass = 'govuk-accordion__section-content'
+
+  /** @private */
+  $sections
+
+  /** @private */
+  browserSupportsSessionStorage = false
+
+  /**
+   * @private
+   * @type {HTMLButtonElement | null}
+   */
+  $showAllButton = null
+
+  /**
+   * @private
+   * @type {HTMLElement | null}
+   */
+  $showAllIcon = null
+
+  /**
+   * @private
+   * @type {HTMLElement | null}
+   */
+  $showAllText = null
+
   /**
    * @param {Element} $module - HTML element to use for accordion
    * @param {AccordionConfig} [config] - Accordion config
@@ -41,104 +117,23 @@ export class Accordion {
       return this
     }
 
-    /** @private */
     this.$module = $module
 
-    /** @type {AccordionConfig} */
-    const defaultConfig = {
-      i18n: ACCORDION_TRANSLATIONS,
-      rememberExpanded: true
-    }
-
-    /**
-     * @private
-     * @type {AccordionConfig}
-     */
     this.config = mergeConfigs(
-      defaultConfig,
+      Accordion.defaults,
       config || {},
       normaliseDataset($module.dataset)
     )
 
-    /** @private */
     this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'))
-
-    /** @private */
-    this.controlsClass = 'govuk-accordion__controls'
-
-    /** @private */
-    this.showAllClass = 'govuk-accordion__show-all'
-
-    /** @private */
-    this.showAllTextClass = 'govuk-accordion__show-all-text'
-
-    /** @private */
-    this.sectionClass = 'govuk-accordion__section'
-
-    /** @private */
-    this.sectionExpandedClass = 'govuk-accordion__section--expanded'
-
-    /** @private */
-    this.sectionButtonClass = 'govuk-accordion__section-button'
-
-    /** @private */
-    this.sectionHeaderClass = 'govuk-accordion__section-header'
-
-    /** @private */
-    this.sectionHeadingClass = 'govuk-accordion__section-heading'
-
-    /** @private */
-    this.sectionHeadingDividerClass = 'govuk-accordion__section-heading-divider'
-
-    /** @private */
-    this.sectionHeadingTextClass = 'govuk-accordion__section-heading-text'
-
-    /** @private */
-    this.sectionHeadingTextFocusClass = 'govuk-accordion__section-heading-text-focus'
-
-    /** @private */
-    this.sectionShowHideToggleClass = 'govuk-accordion__section-toggle'
-
-    /** @private */
-    this.sectionShowHideToggleFocusClass = 'govuk-accordion__section-toggle-focus'
-
-    /** @private */
-    this.sectionShowHideTextClass = 'govuk-accordion__section-toggle-text'
-
-    /** @private */
-    this.upChevronIconClass = 'govuk-accordion-nav__chevron'
-
-    /** @private */
-    this.downChevronIconClass = 'govuk-accordion-nav__chevron--down'
-
-    /** @private */
-    this.sectionSummaryClass = 'govuk-accordion__section-summary'
-
-    /** @private */
-    this.sectionSummaryFocusClass = 'govuk-accordion__section-summary-focus'
-
-    /** @private */
-    this.sectionContentClass = 'govuk-accordion__section-content'
 
     const $sections = this.$module.querySelectorAll(`.${this.sectionClass}`)
     if (!$sections.length) {
       return this
     }
 
-    /** @private */
     this.$sections = $sections
-
-    /** @private */
     this.browserSupportsSessionStorage = helper.checkForSessionStorage()
-
-    /** @private */
-    this.$showAllButton = null
-
-    /** @private */
-    this.$showAllIcon = null
-
-    /** @private */
-    this.$showAllText = null
   }
 
   /**
@@ -201,10 +196,8 @@ export class Accordion {
    * @private
    */
   initSectionHeaders () {
-    const $sections = this.$sections
-
     // Loop through sections
-    $sections.forEach(($section, i) => {
+    this.$sections.forEach(($section, i) => {
       const $header = $section.querySelector(`.${this.sectionHeaderClass}`)
       if (!$header) {
         return
@@ -371,12 +364,10 @@ export class Accordion {
    * @private
    */
   onShowOrHideAllToggle () {
-    const $sections = this.$sections
-
     const nowExpanded = !this.checkIfAllSectionsOpen()
 
     // Loop through sections
-    $sections.forEach(($section) => {
+    this.$sections.forEach(($section) => {
       this.setExpanded(nowExpanded, $section)
       // Store the state in sessionStorage when a change is triggered
       this.storeState($section)
@@ -564,6 +555,26 @@ export class Accordion {
     $punctuationEl.innerHTML = ', '
     return $punctuationEl
   }
+
+  /**
+   * Accordion default config
+   *
+   * @see {@link AccordionConfig}
+   * @constant
+   * @default
+   * @type {AccordionConfig}
+   */
+  static defaults = Object.freeze({
+    i18n: {
+      hideAllSections: 'Hide all sections',
+      hideSection: 'Hide',
+      hideSectionAriaLabel: 'Hide this section',
+      showAllSections: 'Show all sections',
+      showSection: 'Show',
+      showSectionAriaLabel: 'Show this section'
+    },
+    rememberExpanded: true
+  })
 }
 
 const helper = {
@@ -589,8 +600,9 @@ const helper = {
 /**
  * Accordion config
  *
+ * @see {@link Accordion.defaults}
  * @typedef {object} AccordionConfig
- * @property {AccordionTranslations} [i18n=ACCORDION_TRANSLATIONS] - Accordion translations
+ * @property {AccordionTranslations} [i18n=Accordion.defaults.i18n] - Accordion translations
  * @property {boolean} [rememberExpanded] - Whether the expanded and collapsed
  *   state of each section is remembered and restored when navigating.
  */
@@ -598,7 +610,7 @@ const helper = {
 /**
  * Accordion translations
  *
- * @see {@link ACCORDION_TRANSLATIONS}
+ * @see {@link Accordion.defaults.i18n}
  * @typedef {object} AccordionTranslations
  *
  * Messages used by the component for the labels of its buttons. This includes

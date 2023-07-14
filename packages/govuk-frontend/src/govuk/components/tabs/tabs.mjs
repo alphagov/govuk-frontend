@@ -2,6 +2,36 @@
  * Tabs component
  */
 export class Tabs {
+  /** @private */
+  $module
+
+  /** @private */
+  $tabs
+
+  /** @private */
+  keys = { left: 37, right: 39, up: 38, down: 40 }
+
+  /** @private */
+  jsHiddenClass = 'govuk-tabs__panel--hidden'
+
+  /** @private */
+  changingHash = false
+
+  /** @private */
+  boundTabClick
+
+  /** @private */
+  boundTabKeydown
+
+  /** @private */
+  boundOnHashChange
+
+  /**
+   * @private
+   * @type {MediaQueryList | null}
+   */
+  mql = null
+
   /**
    * @param {Element} $module - HTML element to use for tabs
    */
@@ -16,31 +46,13 @@ export class Tabs {
       return this
     }
 
-    /** @private */
     this.$module = $module
-
-    /** @private */
     this.$tabs = $tabs
 
-    /** @private */
-    this.keys = { left: 37, right: 39, up: 38, down: 40 }
-
-    /** @private */
-    this.jsHiddenClass = 'govuk-tabs__panel--hidden'
-
     // Save bounded functions to use when removing event listeners during teardown
-
-    /** @private */
     this.boundTabClick = this.onTabClick.bind(this)
-
-    /** @private */
     this.boundTabKeydown = this.onTabKeydown.bind(this)
-
-    /** @private */
     this.boundOnHashChange = this.onHashChange.bind(this)
-
-    /** @private */
-    this.changingHash = false
   }
 
   /**
@@ -61,7 +73,6 @@ export class Tabs {
    * @private
    */
   setupResponsiveChecks () {
-    /** @private */
     this.mql = window.matchMedia('(min-width: 40.0625em)')
 
     // MediaQueryList.addEventListener isn't supported by Safari < 14 so we need
@@ -96,12 +107,10 @@ export class Tabs {
    * @private
    */
   setup () {
-    const $module = this.$module
-    const $tabs = this.$tabs
-    const $tabList = $module.querySelector('.govuk-tabs__list')
-    const $tabListItems = $module.querySelectorAll('.govuk-tabs__list-item')
+    const $tabList = this.$module.querySelector('.govuk-tabs__list')
+    const $tabListItems = this.$module.querySelectorAll('.govuk-tabs__list-item')
 
-    if (!$tabs || !$tabList || !$tabListItems) {
+    if (!this.$tabs || !$tabList || !$tabListItems) {
       return
     }
 
@@ -111,7 +120,7 @@ export class Tabs {
       $item.setAttribute('role', 'presentation')
     })
 
-    $tabs.forEach(($tab) => {
+    this.$tabs.forEach(($tab) => {
       // Set HTML attributes
       this.setAttributes($tab)
 
@@ -141,12 +150,10 @@ export class Tabs {
    * @private
    */
   teardown () {
-    const $module = this.$module
-    const $tabs = this.$tabs
-    const $tabList = $module.querySelector('.govuk-tabs__list')
-    const $tabListItems = $module.querySelectorAll('a.govuk-tabs__list-item')
+    const $tabList = this.$module.querySelector('.govuk-tabs__list')
+    const $tabListItems = this.$module.querySelectorAll('a.govuk-tabs__list-item')
 
-    if (!$tabs || !$tabList || !$tabListItems) {
+    if (!this.$tabs || !$tabList || !$tabListItems) {
       return
     }
 
@@ -156,7 +163,7 @@ export class Tabs {
       $item.removeAttribute('role')
     })
 
-    $tabs.forEach(($tab) => {
+    this.$tabs.forEach(($tab) => {
       // Remove events
       $tab.removeEventListener('click', this.boundTabClick, true)
       $tab.removeEventListener('keydown', this.boundTabKeydown, true)

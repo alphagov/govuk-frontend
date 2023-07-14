@@ -16,8 +16,9 @@ module.exports = {
   tsconfig: packageResolveToPath('govuk-frontend/tsconfig.build.json'),
   out: './dist/docs/jsdoc',
 
-  // Ignore warnings about CharacterCountTranslations using I18n (@private)
+  // Ignore warnings about class fields using I18n (@private)
   intentionallyNotExported: [
+    'I18n',
     'TranslationPluralForms'
   ]
 }

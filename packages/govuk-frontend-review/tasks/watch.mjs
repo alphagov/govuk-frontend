@@ -30,7 +30,7 @@ export const watch = (options) => gulp.parallel(
    */
   task.name('compile:scss watch', () =>
     gulp.watch([
-      `${slash(paths.root)}/sassdoc.config.yaml`,
+      `${slash(paths.app)}/sassdoc.config.yaml`,
       `${slash(paths.app)}/src/**/*.scss`,
       `${slash(paths.package)}/dist/govuk/**/*.scss`
     ], styles(options))
@@ -41,7 +41,7 @@ export const watch = (options) => gulp.parallel(
    */
   task.name('compile:js watch', () =>
     gulp.watch([
-      `${slash(paths.root)}/typedoc.config.js`,
+      `${slash(paths.app)}/typedoc.config.js`,
       `${slash(paths.package)}/dist/govuk/**/*.mjs`
     ], scripts(options))
   )

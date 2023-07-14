@@ -2,6 +2,12 @@
  * Checkboxes component
  */
 export class Checkboxes {
+  /** @private */
+  $module
+
+  /** @private */
+  $inputs
+
   /**
    * @param {Element} $module - HTML element to use for checkboxes
    */
@@ -16,10 +22,7 @@ export class Checkboxes {
       return this
     }
 
-    /** @private */
     this.$module = $module
-
-    /** @private */
     this.$inputs = $inputs
   }
 
@@ -43,10 +46,7 @@ export class Checkboxes {
       return
     }
 
-    const $module = this.$module
-    const $inputs = this.$inputs
-
-    $inputs.forEach(($input) => {
+    this.$inputs.forEach(($input) => {
       const targetId = $input.getAttribute('data-aria-controls')
 
       // Skip checkboxes without data-aria-controls attributes, or where the
@@ -72,7 +72,7 @@ export class Checkboxes {
     this.syncAllConditionalReveals()
 
     // Handle events
-    $module.addEventListener('click', (event) => this.handleClick(event))
+    this.$module.addEventListener('click', (event) => this.handleClick(event))
   }
 
   /**

@@ -8,6 +8,21 @@ const DEBOUNCE_TIMEOUT_IN_SECONDS = 1
  * JavaScript enhancements for the Button component
  */
 export class Button {
+  /** @private */
+  $module
+
+  /**
+   * @private
+   * @type {ButtonConfig}
+   */
+  config
+
+  /**
+   * @private
+   * @type {number | null}
+   */
+  debounceFormSubmitTimer = null
+
   /**
    *
    * @param {Element} $module - HTML element to use for button
@@ -18,23 +33,10 @@ export class Button {
       return this
     }
 
-    /** @private */
     this.$module = $module
 
-    /** @private */
-    this.debounceFormSubmitTimer = null
-
-    /** @type {ButtonConfig} */
-    const defaultConfig = {
-      preventDoubleClick: false
-    }
-
-    /**
-     * @private
-     * @type {ButtonConfig}
-     */
     this.config = mergeConfigs(
-      defaultConfig,
+      Button.defaults,
       config || {},
       normaliseDataset($module.dataset)
     )
@@ -102,10 +104,22 @@ export class Button {
       return false
     }
 
-    this.debounceFormSubmitTimer = setTimeout(() => {
+    this.debounceFormSubmitTimer = window.setTimeout(() => {
       this.debounceFormSubmitTimer = null
     }, DEBOUNCE_TIMEOUT_IN_SECONDS * 1000)
   }
+
+  /**
+   * Button default config
+   *
+   * @see {@link ButtonConfig}
+   * @constant
+   * @default
+   * @type {ButtonConfig}
+   */
+  static defaults = Object.freeze({
+    preventDoubleClick: false
+  })
 }
 
 /**
