@@ -168,7 +168,7 @@ examples:
       text: Inverse button
       href: '/'
       classes: govuk-button--inverse
-  - name: inverse start button
+  - name: inverse start
     description: A start button that appears on dark backgrounds
     previewLayoutModifiers:
       - inverse
