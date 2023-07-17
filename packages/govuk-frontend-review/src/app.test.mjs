@@ -1,5 +1,6 @@
 import { load } from 'cheerio'
 import { ports } from 'govuk-frontend-config'
+import { fetchPath } from 'govuk-frontend-helpers/tests'
 import { getComponentNames } from 'govuk-frontend-lib/files'
 
 const expectedPages = [
@@ -15,11 +16,6 @@ const expectedPages = [
   '/full-page-examples',
   '/full-page-examples/announcements'
 ]
-
-// Returns Fetch API wrapper which applies these options by default
-const fetchPath = (path, options) => {
-  return fetch(`http://localhost:${ports.app}${path}`, options)
-}
 
 describe(`http://localhost:${ports.app}`, () => {
   describe.each(expectedPages)('%s', path => {
