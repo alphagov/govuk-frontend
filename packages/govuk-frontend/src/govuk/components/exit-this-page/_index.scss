@@ -1,7 +1,7 @@
 @import "../button/index";
 
 @include govuk-exports("govuk/component/exit-this-page") {
-  $indicator-size: .75em;
+  $indicator-size: 0.75em;
 
   .govuk-exit-this-page {
     @include govuk-responsive-margin(8, "bottom");
@@ -43,7 +43,7 @@
     display: inline-block;
     width: $indicator-size;
     height: $indicator-size;
-    margin: 0 .125em;
+    margin: 0 0.125em;
     border-width: 2px;
     border-style: solid;
     border-radius: 50%;

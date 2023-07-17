@@ -69,7 +69,6 @@
   //   - do not support ES6 modules or the <details> element (eg, IE8+)
   @supports not (-ms-ime-align: auto) {
     .govuk-details__summary {
-
       // Absolutely position the marker against this element
       position: relative;
 

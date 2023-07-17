@@ -17,7 +17,9 @@
   outline: $govuk-focus-width solid transparent;
   color: $govuk-focus-text-colour;
   background-color: $govuk-focus-colour;
-  box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
+  box-shadow:
+    0 -2px $govuk-focus-colour,
+    0 4px $govuk-focus-text-colour;
   // When link is focussed, hide the default underline since the
   // box shadow adds the "underline"
   text-decoration: none;

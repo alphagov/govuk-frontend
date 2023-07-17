@@ -1,5 +1,4 @@
 @include govuk-exports("govuk/component/footer") {
-
   $govuk-footer-background: $govuk-canvas-background-colour;
   $govuk-footer-border: $govuk-border-colour;
   $govuk-footer-text: $govuk-text-colour;
@@ -50,7 +49,7 @@
 
   .govuk-footer__meta-item--grow {
     flex: 1; // Support: Flexbox
-    @include govuk-media-query ($until: tablet) {
+    @include govuk-media-query($until: tablet) {
       flex-basis: 320px; // Support: Flexbox
     }
   }
@@ -58,7 +57,7 @@
   .govuk-footer__licence-logo {
     display: inline-block;
     margin-right: govuk-spacing(2);
-    @include govuk-media-query ($until: desktop) {
+    @include govuk-media-query($until: desktop) {
       margin-bottom: govuk-spacing(3);
     }
     vertical-align: top;
@@ -106,7 +105,7 @@
     margin-bottom: govuk-spacing(6);
     padding-bottom: govuk-spacing(4);
 
-    @include govuk-media-query ($until: tablet) {
+    @include govuk-media-query($until: tablet) {
       padding-bottom: govuk-spacing(2);
     }
     border-bottom: 1px solid $govuk-footer-border;
@@ -131,7 +130,7 @@
     column-gap: $govuk-gutter; // Support: Columns
   }
 
-  @include govuk-media-query ($from: desktop) {
+  @include govuk-media-query($from: desktop) {
     .govuk-footer__list--columns-2 {
       column-count: 2; // Support: Columns
     }
