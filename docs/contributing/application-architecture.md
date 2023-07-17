@@ -71,6 +71,10 @@
 
     Shared libraries for directory listings, component data, naming conventions.
 
+  - `stats/`
+
+    File size measurement and module breakdown of built files
+
   - `tasks/`
 
     Read about [npm and Gulp tasks](tasks.md) for more information about the tasks.
