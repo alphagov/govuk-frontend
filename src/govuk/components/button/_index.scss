@@ -56,7 +56,8 @@ $govuk-button-text-colour: govuk-colour("white") !default;
     margin-right: 0;
     margin-left: 0;
     @include govuk-responsive-margin(6, "bottom", $adjustment: $button-shadow-size); // s2
-    padding: (govuk-spacing(2) - $govuk-border-width-form-element) govuk-spacing(2) (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2)); // s1
+    padding: (govuk-spacing(2) - $govuk-border-width-form-element) govuk-spacing(2)
+      (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2)); // s1
     border: $govuk-border-width-form-element solid transparent;
     border-radius: 0;
     color: $govuk-button-text-colour;
@@ -143,7 +144,7 @@ $govuk-button-text-colour: govuk-colour("white") !default;
   }
 
   .govuk-button[disabled] {
-    opacity: (.5);
+    opacity: (0.5);
 
     &:hover {
       background-color: $govuk-button-colour;

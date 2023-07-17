@@ -43,7 +43,6 @@
 
   // GOV.UK Frontend JavaScript enabled
   .govuk-frontend-supported {
-
     @include govuk-media-query($from: tablet) {
       .govuk-tabs__list {
         @include govuk-clearfix;

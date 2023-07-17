@@ -1,5 +1,4 @@
 @include govuk-exports("govuk/core/links") {
-
   %govuk-link {
     @include govuk-link-common;
     @include govuk-link-style-default;

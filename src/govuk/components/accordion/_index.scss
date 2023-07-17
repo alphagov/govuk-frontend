@@ -89,7 +89,7 @@
       cursor: pointer;
       -webkit-appearance: none;
 
-      @include govuk-media-query ($from: tablet) {
+      @include govuk-media-query($from: tablet) {
         margin-bottom: 14px;
       }
 
@@ -105,7 +105,9 @@
         // The GOV.UK Design System focus state adds a box-shadow to the top and bottom of the
         // button. We add a grey box-shadow on hover too, to make the height of the hover state
         // match the height of the focus state.
-        box-shadow: 0 -2px $govuk-accordion-hover-colour, 0 4px $govuk-accordion-hover-colour;
+        box-shadow:
+          0 -2px $govuk-accordion-hover-colour,
+          0 4px $govuk-accordion-hover-colour;
 
         .govuk-accordion__section-toggle-text {
           color: $govuk-accordion-base-colour;
@@ -200,7 +202,7 @@
       cursor: pointer;
       -webkit-appearance: none;
 
-      @include govuk-media-query ($from: tablet) {
+      @include govuk-media-query($from: tablet) {
         padding-bottom: govuk-spacing(2);
       }
 
@@ -262,7 +264,7 @@
       padding-bottom: govuk-spacing(3);
       border-bottom: 0;
 
-      @include govuk-media-query ($from: tablet) {
+      @include govuk-media-query($from: tablet) {
         padding-bottom: govuk-spacing(4);
       }
     }
@@ -272,7 +274,7 @@
     .govuk-accordion__section-button:focus .govuk-accordion__section-toggle-focus {
       padding-bottom: 3px;
 
-      @include govuk-media-query ($from: desktop) {
+      @include govuk-media-query($from: desktop) {
         padding-bottom: 2px;
       }
     }

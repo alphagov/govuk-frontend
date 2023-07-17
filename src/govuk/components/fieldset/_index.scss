@@ -11,7 +11,8 @@
   // https://bugzilla.mozilla.org/show_bug.cgi?id=504622
   @supports not (caret-color: auto) {
     .govuk-fieldset,
-    x:-moz-any-link { // stylelint-disable-line selector-type-no-unknown
+    x:-moz-any-link {
+      // stylelint-disable-line selector-type-no-unknown
       display: table-cell;
     }
   }
@@ -24,12 +25,12 @@
     // 1. IE9-11 & Edge 12-13
     // 2. IE8-11
     box-sizing: border-box; // 1
-    display: table;         // 2
-    max-width: 100%;        // 1
+    display: table; // 2
+    max-width: 100%; // 1
     margin-bottom: govuk-spacing(2);
     padding: 0;
 
-    white-space: normal;    // 1
+    white-space: normal; // 1
   }
 
   // Modifiers that make legends look more like their equivalent headings

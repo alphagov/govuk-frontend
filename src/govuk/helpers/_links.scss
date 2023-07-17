@@ -230,7 +230,7 @@
   // https://bugs.webkit.org/show_bug.cgi?id=224483
   &:hover {
     @if type-of($govuk-text-colour) == color {
-      color: rgba($govuk-text-colour, .99);
+      color: rgba($govuk-text-colour, 0.99);
     }
   }
 
@@ -266,7 +266,7 @@
   // https://bugs.webkit.org/show_bug.cgi?id=224483
   &:hover,
   &:active {
-    color: rgba(govuk-colour("white"), .99);
+    color: rgba(govuk-colour("white"), 0.99);
   }
 
   &:focus {
@@ -349,7 +349,8 @@
   @include govuk-media-query($media-type: print) {
     &[href^="/"],
     &[href^="http://"],
-    &[href^="https://"] {
+    &[href^="https://"]
+    {
       &::after {
         content: " (" attr(href) ")";
         font-size: 90%;

@@ -35,7 +35,6 @@
   }
 
   .govuk-breadcrumbs__list-item {
-
     display: inline-block;
     position: relative;
 
@@ -73,7 +72,10 @@
       border-color: $chevron-border-colour;
 
       @supports (border-width: unquote("max(0px)")) {
-        border-width: unquote("max(#{$chevron-border-min-width}, #{$chevron-border-width}) max(#{$chevron-border-min-width}, #{$chevron-border-width})") 0 0;
+        border-width: unquote(
+            "max(#{$chevron-border-min-width}, #{$chevron-border-width}) max(#{$chevron-border-min-width}, #{$chevron-border-width})"
+          )
+          0 0;
 
         // Ensure that the chevron never gets smaller than 16px
         font-size: unquote("max(#{$font-size * 1px}, 1em)");

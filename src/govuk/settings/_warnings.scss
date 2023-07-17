@@ -67,6 +67,5 @@ $govuk-suppressed-warnings: () !default;
 /// @access private
 
 @function _warning-text($key, $message) {
-  @return $message + " To silence this warning, update $govuk-suppressed-warnings " +
-    "with key: \"#{$key}\"";
+  @return $message + " To silence this warning, update $govuk-suppressed-warnings " + 'with key: "#{$key}"';
 }
