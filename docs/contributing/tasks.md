@@ -61,25 +61,17 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
 Project Gulp tasks are defined in [`gulpfile.mjs`](/gulpfile.mjs) and the [`tasks/`](/shared/tasks) folder.
 
-**`gulp --tasks`**
-
-This task will:
-
-- list out all available tasks
-
-Review app Gulp tasks are defined in [`app/gulpfile.mjs`](/app/gulpfile.mjs) and the [`app/tasks/`](/app/tasks) folder.
-
 Gulp tasks from npm workspaces (such as the review app) can be run as shown:
 
 **`npx --workspace govuk-frontend-review -- gulp --tasks`**
 
-This will list out all available tasks for the GOV.UK Frontend package.
+This will list out all available tasks for the review app.
 
 GOV.UK Frontend package build Gulp tasks are defined in [`packages/govuk-frontend/gulpfile.mjs`](/packages/govuk-frontend/gulpfile.mjs) and the [`packages/govuk-frontend/tasks/`](/packages/govuk-frontend/tasks) folder.
 
 **`npx --workspace govuk-frontend -- gulp --tasks`**
 
-This will list out all available tasks for the review app.
+This will list out all available tasks for the GOV.UK Frontend package.
 
 Review app Gulp tasks are defined in [`packages/govuk-frontend-review/gulpfile.mjs`](/packages/govuk-frontend-review/gulpfile.mjs) and the [`packages/govuk-frontend-review/tasks/`](/packages/govuk-frontend-review/tasks) folder.
 
