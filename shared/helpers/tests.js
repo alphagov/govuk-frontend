@@ -48,7 +48,10 @@ async function compileSassString (source, options = {}) {
  * @returns {Promise<Response>} Fetch response
  */
 const fetchPath = (path, options = {}) => {
-  return fetch(`http://localhost:${ports.app}${path}`, options)
+  return fetch(new URL(path, `http://localhost:${ports.app}`), {
+    keepalive: true,
+    ...options
+  })
 }
 
 /**
