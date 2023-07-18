@@ -95,7 +95,7 @@ export default async () => {
   // Component 'README' page
   app.get('/components/:componentName', function (req, res, next) {
     // make variables available to nunjucks template
-    res.locals.componentPath = req.params.componentName
+    res.locals.componentName = req.params.componentName
 
     res.render('component', function (error, html) {
       if (error) {
@@ -115,7 +115,7 @@ export default async () => {
     const previewLayout = res.locals.componentData?.previewLayout
 
     const exampleConfig = res.locals.componentData?.examples.find(
-      example => example.name.replace(/ /g, '-') === exampleName
+      example => nunjucks.filters.slugify(example.name) === exampleName
     )
 
     if (!exampleConfig) {

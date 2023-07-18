@@ -1,6 +1,7 @@
 const { AxePuppeteer } = require('@axe-core/puppeteer')
 const { ports } = require('govuk-frontend-config')
 const { componentNameToClassName } = require('govuk-frontend-lib/names')
+const slug = require('slug')
 
 const { renderHTML } = require('./nunjucks')
 
@@ -113,9 +114,16 @@ async function renderAndInitialise (page, componentName, options) {
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
 async function goTo (page, path) {
-  const { href } = new URL(path, `http://localhost:${ports.app}`)
+  const { href, pathname } = new URL(path, `http://localhost:${ports.app}`)
 
-  await page.goto(href)
+  const response = await page.goto(href)
+  const code = response.status()
+
+  // Throw on HTTP errors (e.g. component URL typo)
+  if (code >= 400) {
+    throw new Error(`HTTP ${code} for '${pathname}'`)
+  }
+
   await page.bringToFront()
 
   return page
@@ -142,8 +150,11 @@ function goToExample (page, exampleName) {
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
 function goToComponent (page, componentName, options) {
-  const componentPath = options?.exampleName
-    ? `/components/${componentName}/${options.exampleName}/preview`
+  const exampleName = slug(options?.exampleName ?? '', { lower: true })
+
+  // Add example name to URL or use default
+  const componentPath = exampleName
+    ? `/components/${componentName}/${exampleName}/preview`
     : `/components/${componentName}/preview`
 
   return goTo(page, componentPath)

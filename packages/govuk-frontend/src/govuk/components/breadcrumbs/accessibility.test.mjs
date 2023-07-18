@@ -10,9 +10,7 @@ describe('/components/breadcrumbs', () => {
     })
 
     it('passes accessibility tests', async () => {
-      for (const name of exampleNames) {
-        const exampleName = name.replace(/ /g, '-')
-
+      for (const exampleName of exampleNames) {
         // Navigation to example, create report
         await goToComponent(page, 'breadcrumbs', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()

@@ -20,7 +20,7 @@
         <div class="govuk-grid-column-one-half govuk-grid-column-full-from-desktop">
           <ul class="govuk-list govuk-!-margin-bottom-0">
           {% for componentName in componentNamesSlice %}
-            <li><a href="/components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
+            <li><a href="/components/{{ componentName }}" class="govuk-link">{{ componentName | unslugify }}</a></li>
           {% endfor %}
           </ul>
         </div>
@@ -41,7 +41,7 @@
 
           <ul class="govuk-list govuk-!-margin-bottom-8">
           {% for example in fullPageExamples %}
-            <li><a href="/full-page-examples/{{ example.path }}" class="govuk-link">{{ example.name | replace("-", " ") | capitalize }}</a></li>
+            <li><a href="/full-page-examples/{{ example.path }}" class="govuk-link">{{ example.name | unslugify }}</a></li>
           {% endfor %}
           </ul>
         </div>
@@ -51,7 +51,7 @@
 
           <ul class="govuk-list govuk-!-margin-bottom-8">
           {% for exampleName in exampleNames | sort %}
-            <li><a href="/examples/{{ exampleName }}" class="govuk-link">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
+            <li><a href="/examples/{{ exampleName }}" class="govuk-link">{{ exampleName | unslugify }}</a></li>
           {% endfor %}
           </ul>
         </div>
@@ -118,7 +118,7 @@
         {% set componentSize = stats[componentKey + ".mjs"]["total"] %}
 
         {% set componentHtml %}
-          {{ componentName | replace("-", " ") | capitalize }}<br>
+          {{ componentName | unslugify }}<br>
           <a href="/docs/stats/{{ componentKey }}.html" class="govuk-body-s govuk-link govuk-!-font-weight-regular"><code>{{ componentName }}.mjs</code></a>
         {% endset %}
 

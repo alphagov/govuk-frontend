@@ -22,7 +22,7 @@
 
     {% for example in fullPageExamples %}
 
-      <h2 class="govuk-heading-m"><a href="/full-page-examples/{{ example.path }}" class="govuk-link">{{ example.name | replace("-", " ") | capitalize }}</a></h2>
+      <h2 class="govuk-heading-m"><a href="/full-page-examples/{{ example.path }}" class="govuk-link">{{ example.name | unslugify }}</a></h2>
 
       {% if example.scenario %}
       <div class="app-prose-scope">

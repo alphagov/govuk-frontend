@@ -27,7 +27,8 @@
     "nunjucks": "^3.2.4",
     "outdent": "^0.8.0",
     "puppeteer": "^20.8.2",
-    "sass-embedded": "^1.63.6"
+    "sass-embedded": "^1.63.6",
+    "slug": "^8.2.2"
   },
   "peerDependencies": {
     "@puppeteer/browsers": "^1.4.4",
