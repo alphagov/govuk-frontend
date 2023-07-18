@@ -56,6 +56,8 @@ updates:
 
       types:
         patterns:
+          - '@actions/*'
+          - '@octokit/*'
           - '@types/*'
 
         # Exclude packages in other groups
