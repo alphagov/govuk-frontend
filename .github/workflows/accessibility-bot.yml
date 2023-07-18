@@ -1,0 +1,31 @@
+name: Accessibility bot
+
+on:
+  issues:
+    types: [opened, edited]
+
+  pull_request:
+    types: [opened, edited]
+
+  issue_comment:
+    types: [created, edited]
+
+  discussion:
+    types: [created, edited]
+
+  discussion_comment:
+    types: [created, edited]
+
+permissions:
+  issues: write
+  pull-requests: write
+  discussions: write
+
+jobs:
+  images:
+    name: Check images
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check images for alt text
+        uses: github/accessibility-alt-text-bot@v1.2.0
