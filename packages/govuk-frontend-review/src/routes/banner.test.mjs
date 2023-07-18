@@ -1,10 +1,5 @@
 import { load } from 'cheerio'
-import { ports } from 'govuk-frontend-config'
-
-// Returns Fetch API wrapper which applies these options by default
-const fetchPath = (path, options) => {
-  return fetch(`http://localhost:${ports.app}${path}`, options)
-}
+import { fetchPath } from 'govuk-frontend-helpers/tests'
 
 describe('Banner', () => {
   it('is visible by default', async () => {
