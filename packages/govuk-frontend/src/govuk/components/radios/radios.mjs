@@ -94,18 +94,20 @@ export class Radios {
    * @param {HTMLInputElement} $input - Radio input
    */
   syncConditionalRevealWithInputState ($input) {
-    const targetId = $input.getAttribute('aria-controls')
-    if (!targetId) {
+    const ariaControlsIds = $input.getAttribute('aria-controls')
+    if (!ariaControlsIds) {
       return
     }
 
-    const $target = document.getElementById(targetId)
-    if ($target && $target.classList.contains('govuk-radios__conditional')) {
-      const inputIsChecked = $input.checked
+    ariaControlsIds.split(" ").forEach((targetId) => {
+      const $target = document.getElementById(targetId)
+      if ($target && $target.classList.contains('govuk-radios__conditional')) {
+        const inputIsChecked = $input.checked
 
-      $input.setAttribute('aria-expanded', inputIsChecked.toString())
-      $target.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked)
-    }
+        $input.setAttribute('aria-expanded', inputIsChecked.toString())
+        $target.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked)
+      }
+    });
   }
 
   /**
