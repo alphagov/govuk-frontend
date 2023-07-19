@@ -1,7 +1,7 @@
 import { inspect } from 'util'
 
+import prettier from '@prettier/sync'
 import { outdent } from 'outdent'
-import { format } from 'prettier'
 
 import { componentNameToMacroName } from '../filters/index.mjs'
 
@@ -24,7 +24,7 @@ export function getNunjucksCode (componentName, params) {
   })
 
   // Format Nunjucks safely with double quotes
-  const macroFormatted = format(`${macroName}(${paramsFormatted})`, {
+  const macroFormatted = prettier.format(`${macroName}(${paramsFormatted})`, {
     parser: 'espree',
     semi: false,
     singleQuote: false,
