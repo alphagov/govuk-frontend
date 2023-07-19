@@ -265,6 +265,18 @@ If you need to maintain the existing behaviour, you can set the value to an empt
 
 This change was introduced in [pull request #3773: Omit the value attribute from select options with no value](https://github.com/alphagov/govuk-frontend/pull/3773).
 
+### Removal of font family Sass variables
+
+The following Sass variables have been removed:
+
+- `$govuk-font-family-gds-transport`
+- `$govuk-font-family-nta`
+- `$govuk-font-family-nta-tabular`
+
+If you were using `$govuk-font-family-gds-transport` to set the font on an element we recommend using [the `govuk-font` mixin](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-font) instead.
+
+This change was introduced in [pull request #3949: Simplify font family settings](https://github.com/alphagov/govuk-frontend/pull/3949).
+
 ### Suggested changes
 
 #### Update the Pagination component's default `aria-label`
