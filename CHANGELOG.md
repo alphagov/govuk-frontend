@@ -329,8 +329,8 @@ This change was made in [pull request #3774: Add inverse breadcrumb and back lin
 
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
-[#3817: Fix package resolution in Node.js 17+](https://github.com/alphagov/govuk-frontend/pull/3817)
-[#3836: Announce whitespace in screen reader announcements of visually hidden text](https://github.com/alphagov/govuk-frontend/pull/3836)
+- [#3817: Fix package resolution in Node.js 17+](https://github.com/alphagov/govuk-frontend/pull/3817)
+- [#3836: Announce whitespace in screen reader announcements of visually hidden text](https://github.com/alphagov/govuk-frontend/pull/3836)
 
 ## 4.6.0 (Feature release)
 
