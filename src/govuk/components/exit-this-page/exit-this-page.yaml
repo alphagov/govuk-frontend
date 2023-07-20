@@ -2,11 +2,11 @@ params:
   - name: text
     type: string
     required: false
-    description: Text for the link. If `html` is provided, the `text` option will be ignored. Defaults to 'Exit this page'.
+    description: Text for the link. If `html` is provided, the `text` option will be ignored. Defaults to 'Emergency Exit this page' with 'Emergency' visually hidden.
   - name: html
     type: string
     required: false
-    description: HTML for the link. If `html` is provided, the `text` option will be ignored.
+    description: HTML for the link. If `html` is provided, the `text` option will be ignored. Defaults to 'Emergency Exit this page' with 'Emergency' visually hidden.
   - name: redirectUrl
     type: string
     required: false
