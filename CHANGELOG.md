@@ -265,7 +265,7 @@ If you need to maintain the existing behaviour, you can set the value to an empt
 
 This change was introduced in [pull request #3773: Omit the value attribute from select options with no value](https://github.com/alphagov/govuk-frontend/pull/3773).
 
-### Removal of font family Sass variables
+#### Removal of font family Sass variables
 
 The following Sass variables have been removed:
 
