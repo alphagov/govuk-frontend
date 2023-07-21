@@ -101,6 +101,7 @@ export class Button {
     // If the timer is still running, prevent the click from submitting the form
     if (this.debounceFormSubmitTimer) {
       event.preventDefault()
+      event.stopPropagation()
       return false
     }
 
