@@ -31,7 +31,7 @@
     {% endif %}
     </div>
     <div class="app-component-preview">
-      <iframe src="{{ path }}?iframe=true" loading="lazy" class="js-component-preview app-component-preview__iframe"></iframe>
+      <iframe src="{{ path }}?iframe=true" loading="{{ "eager" if loop.index <= 3 else "lazy" }}" class="js-component-preview app-component-preview__iframe"></iframe>
     </div>
 
     <div class="govuk-width-container">

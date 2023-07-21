@@ -22,7 +22,10 @@
 
       // Defer resize for lazy-loaded iframes
       document.addEventListener('DOMContentLoaded', () =>
-        $examples.forEach(($example) => $example.addEventListener('load', resize))
+        $examples.forEach(($example) => $example.loading === 'lazy'
+          ? $example.addEventListener('load', resize)
+          : resize.call($example)
+        )
       )
     </script>
   {% endblock %}
