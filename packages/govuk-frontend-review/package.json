@@ -36,7 +36,7 @@
     "nunjucks": "^3.2.4",
     "outdent": "^0.8.0",
     "shuffle-seed": "^1.1.6",
-    "slug": "^8.2.2"
+    "slug": "^8.2.3"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.1.0",
