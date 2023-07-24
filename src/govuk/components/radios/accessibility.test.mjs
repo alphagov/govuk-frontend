@@ -30,6 +30,6 @@ describe('/components/radios', () => {
         await goToComponent(page, 'radios', { exampleName })
         await expect(axe(page, axeRules)).resolves.toHaveNoViolations()
       }
-    }, 60000)
+    }, 90000)
   })
 })

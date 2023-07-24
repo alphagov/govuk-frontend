@@ -7,6 +7,9 @@ module.exports = {
   command: 'npm start --workspace app',
   port: ports.app,
 
+  // Allow 15 seconds to start server
+  launchTimeout: 15000,
+
   // Skip when already running
   usedPortAction: 'ignore'
 }

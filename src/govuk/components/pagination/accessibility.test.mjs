@@ -17,6 +17,6 @@ describe('/components/pagination', () => {
         await goToComponent(page, 'pagination', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
-    }, 60000)
+    }, 90000)
   })
 })

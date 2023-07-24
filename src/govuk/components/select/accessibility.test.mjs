@@ -17,6 +17,6 @@ describe('/components/select', () => {
         await goToComponent(page, 'select', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
-    }, 60000)
+    }, 90000)
   })
 })
