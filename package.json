@@ -19,7 +19,7 @@
     "start": "npm run dev",
     "build-release": "./bin/build-release.sh",
     "publish-release": "./bin/publish-release.sh",
-    "pre-release": "./bin/pre-release.sh",
+    "publish-preview": "./bin/publish-preview.sh",
     "predev": "npm run build",
     "dev": "concurrently \"npm run dev --workspace govuk-frontend-review\" \"npm run dev --workspace govuk-frontend\" --kill-others --names \"app,pkg\" --prefix-colors \"red.dim,blue.dim\"",
     "build": "npm run build --workspace govuk-frontend --workspace govuk-frontend-review",
