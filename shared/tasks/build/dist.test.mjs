@@ -46,6 +46,21 @@ describe('dist/', () => {
     })
   })
 
+  describe('govuk-frontend-[version].min.css.map', () => {
+    let filename
+    let sourcemap
+
+    beforeAll(async () => {
+      filename = `govuk-frontend-${pkg.version}.min.css.map`
+      sourcemap = JSON.parse(await readFile(join(paths.dist, filename), 'utf8'))
+    })
+
+    it('should contain relative paths to sources', () => {
+      expect(sourcemap.sources).toContain('../src/govuk/all.scss')
+      expect(sourcemap.sources).toContain('../src/govuk/core/_govuk-frontend-version.scss')
+    })
+  })
+
   describe('govuk-frontend-ie8-[version].min.css', () => {
     let filename
     let stylesheet
@@ -61,6 +76,21 @@ describe('dist/', () => {
 
     it('should contain source mapping URL', () => {
       expect(stylesheet).toMatch(new RegExp(`/\\*# sourceMappingURL=${filename}.map \\*/$`))
+    })
+  })
+
+  describe('govuk-frontend-ie8-[version].min.css.map', () => {
+    let filename
+    let sourcemap
+
+    beforeAll(async () => {
+      filename = `govuk-frontend-ie8-${pkg.version}.min.css.map`
+      sourcemap = JSON.parse(await readFile(join(paths.dist, filename), 'utf8'))
+    })
+
+    it('should contain relative paths to sources', () => {
+      expect(sourcemap.sources).toContain('../src/govuk/all-ie8.scss')
+      expect(sourcemap.sources).toContain('../src/govuk/core/_govuk-frontend-version.scss')
     })
   })
 
@@ -83,6 +113,21 @@ describe('dist/', () => {
 
     it('should contain source mapping URL', () => {
       expect(javascript).toMatch(new RegExp(`//# sourceMappingURL=${filename}.map$`))
+    })
+  })
+
+  describe('govuk-frontend-[version].min.js.map', () => {
+    let filename
+    let sourcemap
+
+    beforeAll(async () => {
+      filename = `govuk-frontend-${pkg.version}.min.js.map`
+      sourcemap = JSON.parse(await readFile(join(paths.dist, filename), 'utf8'))
+    })
+
+    it('should contain relative paths to sources', () => {
+      expect(sourcemap.sources).toContain('../src/govuk/all.mjs')
+      expect(sourcemap.sources).toContain('../src/govuk/common/govuk-frontend-version.mjs')
     })
   })
 
