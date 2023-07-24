@@ -207,7 +207,7 @@ jobs:
   package:
     name: Export ${{ matrix.conditions }}, Node.js ${{ matrix.node-version }}
     runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
-    needs: [install]
+    needs: [install, build]
 
     # Skip when scheduled or run manually
     if: ${{ !inputs.runner }}
