@@ -2,7 +2,7 @@
 set -e
 
 CURRENT_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
-BRANCH_NAME="pre-release-$CURRENT_BRANCH_NAME"
+BRANCH_NAME="preview-$CURRENT_BRANCH_NAME"
 
 # Check if there are files that need to be commited
 if [[ -n $(git status --porcelain) ]]; then

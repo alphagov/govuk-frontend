@@ -79,7 +79,7 @@ See the versioning documentation for [updating the changelog](/docs/contributing
 
 ## Testing a release
 
-If you need to test a release, for example if you're contributing a new component see [Publishing pre-release of GOV.UK Frontend](/docs/releasing/publishing-a-pre-release.md).
+If you need to test a release, for example if you're contributing a new component see [Publishing a preview of GOV.UK Frontend](/docs/releasing/publishing-a-preview.md).
 
 ## Application tasks
 
