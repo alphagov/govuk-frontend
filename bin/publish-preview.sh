@@ -2,7 +2,10 @@
 set -e
 
 CURRENT_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+CURRENT_VERSION=$(npm run version --silent --workspace govuk-frontend)
+
 BRANCH_NAME="preview-$CURRENT_BRANCH_NAME"
+VERSION="$CURRENT_VERSION-$CURRENT_BRANCH_NAME"
 
 # Check if there are files that need to be commited
 if [[ -n $(git status --porcelain) ]]; then
@@ -22,10 +25,15 @@ git checkout -b $BRANCH_NAME
 # Build the package as normal
 npm run build:package
 
+echo "✍️ Update package version"
+npm version $VERSION --allow-same-version --no-git-tag-version --workspace govuk-frontend
+git add packages/govuk-frontend/package.json
+git add package-lock.json
+
 echo "✍️ Force commit package"
 git add --force packages/govuk-frontend/dist/
 git add --force packages/govuk-frontend/govuk-prototype-kit.config.json
-git commit --allow-empty -m "Release GOV.UK Frontend to '$BRANCH_NAME' for testing"
+git commit --allow-empty -m "Release GOV.UK Frontend 'v$VERSION' to '$BRANCH_NAME' for testing"
 
 # Create a local branch containing the packages/govuk-frontend directory
 echo "✨ Filter the branch to only the packages/govuk-frontend/ directory..."
