@@ -1,5 +1,4 @@
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { axe } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('Inset text', () => {
@@ -10,13 +9,6 @@ describe('Inset text', () => {
   })
 
   describe('by default', () => {
-    it('passes accessibility tests', async () => {
-      const $ = render('inset-text', examples.default)
-
-      const results = await axe($.html())
-      expect(results).toHaveNoViolations()
-    })
-
     it('renders with classes', () => {
       const $ = render('inset-text', examples.classes)
 

@@ -1,5 +1,4 @@
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { axe } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('Error-summary', () => {
@@ -10,13 +9,6 @@ describe('Error-summary', () => {
   })
 
   describe('default example', () => {
-    it('passes accessibility tests', async () => {
-      const $ = render('error-summary', examples.default)
-
-      const results = await axe($.html())
-      expect(results).toHaveNoViolations()
-    })
-
     it('has a child container with the role=alert attribute', () => {
       const $ = render('error-summary', examples.default)
       const childRoleAttr = $('.govuk-error-summary div:first-child').attr('role')

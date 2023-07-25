@@ -1,5 +1,4 @@
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { axe } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('Accordion', () => {
@@ -10,13 +9,6 @@ describe('Accordion', () => {
   })
 
   describe('default example', () => {
-    it('passes accessibility tests', async () => {
-      const $ = render('accordion', examples.default)
-
-      const results = await axe($.html())
-      expect(results).toHaveNoViolations()
-    })
-
     it('renders with heading button text', () => {
       const $ = render('accordion', examples.default)
       const $componentHeadingButton = $('.govuk-accordion__section-button')

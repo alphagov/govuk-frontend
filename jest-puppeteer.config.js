@@ -30,6 +30,7 @@ module.exports = {
        */
       '--no-startup-window'
     ],
+    headless: process.env.HEADLESS !== 'false',
     waitForInitialPage: false
   },
 

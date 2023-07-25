@@ -178,6 +178,13 @@ jobs:
               .cache/jest
               .cache/puppeteer
 
+          - description: Accessibility tests
+            name: test-accessibility
+            run: npx jest --color --maxWorkers=2 --selectProjects "Accessibility tests"
+            cache: |
+              .cache/jest
+              .cache/puppeteer
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3

@@ -1,5 +1,4 @@
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { axe } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('footer', () => {
@@ -7,13 +6,6 @@ describe('footer', () => {
 
   beforeAll(async () => {
     examples = await getExamples('footer')
-  })
-
-  it('default example passes accessibility tests', async () => {
-    const $ = render('footer', examples.default)
-
-    const results = await axe($.html())
-    expect(results).toHaveNoViolations()
   })
 
   it('entire component must have a role of `contentinfo`', () => {
@@ -48,13 +40,6 @@ describe('footer', () => {
   })
 
   describe('meta', () => {
-    it('passes accessibility tests', async () => {
-      const $ = render('footer', examples['with meta'])
-
-      const results = await axe($.html())
-      expect(results).toHaveNoViolations()
-    })
-
     it('renders heading', () => {
       const $ = render('footer', examples['with meta'])
 
@@ -119,13 +104,6 @@ describe('footer', () => {
   })
 
   describe('navigation', () => {
-    it('passes accessibility tests', async () => {
-      const $ = render('footer', examples['with navigation'])
-
-      const results = await axe($.html())
-      expect(results).toHaveNoViolations()
-    })
-
     it('no items displayed when no item array is provided', () => {
       const $ = render('footer', examples['with empty navigation'])
 

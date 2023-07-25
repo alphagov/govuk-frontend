@@ -4,7 +4,6 @@
 /* eslint-env jest */
 
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { axe } = require('govuk-frontend-helpers/tests')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('Exit this page', () => {
@@ -15,13 +14,6 @@ describe('Exit this page', () => {
   })
 
   describe('default example', () => {
-    it('passes accessibility tests', async () => {
-      const $ = render('exit-this-page', examples.default)
-
-      const results = await axe($.html())
-      expect(results).toHaveNoViolations()
-    })
-
     it('renders the default example', () => {
       const $ = render('exit-this-page', examples.default)
       const $button = $('.govuk-exit-this-page').find('.govuk-button')
