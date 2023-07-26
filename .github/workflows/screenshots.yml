@@ -35,6 +35,7 @@ jobs:
       - name: Cache browser download
         uses: actions/cache@v3.3.1
         with:
+          # Use faster GNU tar for all runners
           enableCrossOsArchive: true
           key: puppeteer-${{ runner.os }}
           path: .cache/puppeteer
