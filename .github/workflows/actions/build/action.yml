@@ -9,6 +9,7 @@ runs:
       id: build-cache
 
       with:
+        # Use faster GNU tar for all runners
         enableCrossOsArchive: true
 
         # Restore build cache (unless commit SHA changes)
