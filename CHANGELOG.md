@@ -59,6 +59,22 @@ This change was made in [pull request #3819: Add linked image focus style](https
 
 You must make the following changes when you migrate to this release, or your service might break.
 
+#### Update component initialisation
+
+Remove `.init()` from individually instantiated components as initialisation now happens automatically:
+
+```mjs
+new Radios($radio).init()
+```
+
+```mjs
+new Radios($radio)
+```
+
+If you import the JavaScript using `window.GOVUKFrontend.initAll()`, you will not need to make any changes.
+
+This change was introduced in [pull request #4011: Remove component init() methods and initialise in constructor](https://github.com/alphagov/govuk-frontend/pull/4011).
+
 #### Check that details components work as expected
 
 The Details component no longer uses JavaScript, and is no longer polyfilled in older browsers.
