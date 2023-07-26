@@ -28,18 +28,6 @@ export class Example {
     this.$module = $module
 
     // Code goes here
-  }
-
-  /**
-   * Initialise component
-   */
-  init () {
-    // Check that required elements are present
-    if (!this.$module) {
-      return
-    }
-
-    // Code goes here
     this.$module.addEventListener('click', () => {
       // ...
     })
@@ -104,14 +92,14 @@ Add methods to the class.
 ```mjs
 // Good
 class Example {
-  init () {
+  doSomething () {
     // Code goes here
   }
 }
 
 // Bad
 Example.prototype = {
-  init: function () {
+  doSomething: function () {
     // Code goes here
   }
 }

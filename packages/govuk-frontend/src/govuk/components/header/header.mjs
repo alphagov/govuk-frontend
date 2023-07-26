@@ -22,9 +22,8 @@ export class Header {
 
   /**
    * A global const for storing a matchMedia instance which we'll use to
-   * detect when a screen size change happens. We set this later during the
-   * init function and rely on it being null if the feature isn't available
-   * to initially apply hidden attributes
+   * detect when a screen size change happens. We rely on it being null if the
+   * feature isn't available to initially apply hidden attributes
    *
    * @private
    * @type {MediaQueryList | null}
@@ -32,6 +31,9 @@ export class Header {
   mql = null
 
   /**
+   * Apply a matchMedia for desktop which will trigger a state sync if the browser
+   * viewport moves between states.
+   *
    * @param {Element} $module - HTML element to use for header
    */
   constructor ($module) {
@@ -44,20 +46,14 @@ export class Header {
     this.$menu = this.$menuButton && $module.querySelector(
       `#${this.$menuButton.getAttribute('aria-controls')}`
     )
-  }
 
-  /**
-   * Initialise component
-   *
-   * Check for the presence of the header, menu and menu button – if any are
-   * missing then there's nothing to do so return early.
-   * Apply a matchMedia for desktop which will trigger a state sync if the browser
-   * viewport moves between states.
-   */
-  init () {
-    // Check that required elements are present
-    if (!this.$module || !this.$menuButton || !this.$menu) {
-      return
+    if (
+      !(
+        this.$menuButton instanceof HTMLElement ||
+        this.$menu instanceof HTMLElement
+      )
+    ) {
+      return this
     }
 
     // Set the matchMedia to the govuk-frontend desktop breakpoint

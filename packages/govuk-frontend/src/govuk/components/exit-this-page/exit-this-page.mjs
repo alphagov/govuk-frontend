@@ -98,12 +98,7 @@ export class ExitThisPage {
     if ($skiplinkButton instanceof HTMLAnchorElement) {
       this.$skiplinkButton = $skiplinkButton
     }
-  }
 
-  /**
-   * Initialise component
-   */
-  init () {
     this.buildIndicator()
     this.initUpdateSpan()
     this.initButtonClickHandler()

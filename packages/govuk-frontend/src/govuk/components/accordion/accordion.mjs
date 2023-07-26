@@ -134,16 +134,6 @@ export class Accordion {
 
     this.$sections = $sections
     this.browserSupportsSessionStorage = helper.checkForSessionStorage()
-  }
-
-  /**
-   * Initialise component
-   */
-  init () {
-    // Check that required elements are present
-    if (!this.$module || !this.$sections) {
-      return
-    }
 
     this.initControls()
     this.initSectionHeaders()

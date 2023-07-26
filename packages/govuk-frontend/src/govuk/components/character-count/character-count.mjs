@@ -119,16 +119,6 @@ export class CharacterCount {
 
     this.$module = $module
     this.$textarea = $textarea
-  }
-
-  /**
-   * Initialise component
-   */
-  init () {
-    // Check that required elements are present
-    if (!this.$module || !this.$textarea) {
-      return
-    }
 
     const $textareaDescription = document.getElementById(`${this.$textarea.id}-info`)
     if (!$textareaDescription) {
