@@ -30,16 +30,6 @@ export class NotificationBanner {
       config || {},
       normaliseDataset($module.dataset)
     )
-  }
-
-  /**
-   * Initialise component
-   */
-  init () {
-    // Check that required elements are present
-    if (!this.$module) {
-      return
-    }
 
     this.setFocus()
   }
