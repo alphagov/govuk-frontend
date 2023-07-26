@@ -40,16 +40,6 @@ export class ErrorSummary {
       config || {},
       normaliseDataset($module.dataset)
     )
-  }
-
-  /**
-   * Initialise component
-   */
-  init () {
-    // Check that required elements are present
-    if (!this.$module) {
-      return
-    }
 
     this.setFocus()
     this.$module.addEventListener('click', (event) => this.handleClick(event))

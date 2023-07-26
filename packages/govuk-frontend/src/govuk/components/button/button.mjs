@@ -40,16 +40,6 @@ export class Button {
       config || {},
       normaliseDataset($module.dataset)
     )
-  }
-
-  /**
-   * Initialise component
-   */
-  init () {
-    // Check that required elements are present
-    if (!this.$module) {
-      return
-    }
 
     this.$module.addEventListener('keydown', (event) => this.handleKeyDown(event))
     this.$module.addEventListener('click', (event) => this.debounce(event))

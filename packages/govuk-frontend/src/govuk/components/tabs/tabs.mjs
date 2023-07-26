@@ -53,16 +53,6 @@ export class Tabs {
     this.boundTabClick = this.onTabClick.bind(this)
     this.boundTabKeydown = this.onTabKeydown.bind(this)
     this.boundOnHashChange = this.onHashChange.bind(this)
-  }
-
-  /**
-   * Initialise component
-   */
-  init () {
-    // Check that required elements are present
-    if (!this.$module || !this.$tabs) {
-      return
-    }
 
     this.setupResponsiveChecks()
   }

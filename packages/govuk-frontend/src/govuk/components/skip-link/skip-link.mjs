@@ -24,16 +24,6 @@ export class SkipLink {
     }
 
     this.$module = $module
-  }
-
-  /**
-   * Initialise component
-   */
-  init () {
-    // Check that required elements are present
-    if (!this.$module) {
-      return
-    }
 
     // Check for linked element
     const $linkedElement = this.getLinkedElement()
