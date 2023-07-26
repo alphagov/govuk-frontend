@@ -67,7 +67,7 @@ async function axe (page, overrides = {}) {
  * the test boilerplate page, then either:
  *
  * - instantiates the component class, passing the provided JavaScript
- *   configuration, and calls the init function
+ *   configuration
  * - runs the passed initialiser function inside the browser
  *   (which lets you instantiate it a different way, like using `initAll`,
  *   or run arbitrary code)
@@ -100,7 +100,8 @@ async function renderAndInitialise (page, componentName, options) {
     }
 
     const namespace = await import('govuk-frontend')
-    new namespace[exportName]($module, options.config).init()
+    /* eslint-disable-next-line no-new */
+    new namespace[exportName]($module, options.config)
   }, componentNameToClassName(componentName), options)
 
   return page

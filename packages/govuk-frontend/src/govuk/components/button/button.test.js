@@ -23,7 +23,8 @@ describe('/components/button', () => {
 
         // `undefined` simulates the element being missing,
         // from an unchecked `document.querySelector` for example
-        new namespace[exportName](undefined).init()
+        /* eslint-disable-next-line no-new */
+        new namespace[exportName](undefined)
 
         // If our component initialisation breaks, this won't run
         return true

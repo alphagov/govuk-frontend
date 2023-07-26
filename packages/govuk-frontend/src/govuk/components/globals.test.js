@@ -45,22 +45,6 @@ describe('GOV.UK Frontend', () => {
       ])
     })
 
-    it('exported Components have an init function', async () => {
-      const components = exported
-        .filter(method => !['initAll', 'version'].includes(method))
-
-      const componentsWithoutInitFunctions = await page.evaluate(async (components) => {
-        const namespace = await import('govuk-frontend')
-
-        return components.filter(component => {
-          const prototype = namespace[component].prototype
-          return typeof prototype.init !== 'function'
-        })
-      }, components)
-
-      expect(componentsWithoutInitFunctions).toEqual([])
-    })
-
     it('can be initialised scoped to certain sections of the page', async () => {
       await goToExample(page, 'scoped-initialisation')
 
