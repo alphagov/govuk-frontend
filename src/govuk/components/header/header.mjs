@@ -22,9 +22,8 @@ export class Header {
 
   /**
    * A global const for storing a matchMedia instance which we'll use to
-   * detect when a screen size change happens. We set this later during the
-   * init function and rely on it being null if the feature isn't available
-   * to initially apply hidden attributes
+   * detect when a screen size change happens. We rely on it being null if the
+   * feature isn't available to initially apply hidden attributes
    *
    * @private
    * @type {MediaQueryList | null}
