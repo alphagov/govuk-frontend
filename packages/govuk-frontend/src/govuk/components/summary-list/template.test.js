@@ -268,7 +268,7 @@ describe('Summary list', () => {
         const $singleAction = $('.govuk-summary-card__actions > a')
         const $actionItems = $('.govuk-summary-card__action')
         expect($actionItems.length).toBe(0)
-        expect($singleAction.text().trim()).toBe('My lonely action')
+        expect($singleAction.text().trim()).toBe('My lonely action (Undergraduate teaching assistant)')
       })
     })
 
