@@ -76,8 +76,8 @@
     "postcss-scss": "^4.0.6",
     "prettier": "^3.0.0",
     "standard": "^17.1.0",
-    "stylelint": "^14.16.1",
-    "stylelint-config-gds": "^0.3.0",
+    "stylelint": "^15.10.2",
+    "stylelint-config-gds": "^1.0.0",
     "stylelint-order": "^6.0.3",
     "typescript": "^5.1.6"
   },
