@@ -287,6 +287,21 @@ You don't need to change anything if you're using the `govukPagination` Nunjucks
 
 This change was introduced in [pull request #3899: Update default `aria-label` in Pagination component](https://github.com/alphagov/govuk-frontend/pull/3899).
 
+#### Update the Exit this Page button's default text
+
+The default text of the Exit this Page button has been updated to indicate that the button is a safety tool and not a generic method of leaving the current page. If you are using the component's default label, you may wish to update it to the new value.
+
+```diff
+<a href="..." role="button" draggable="false" class="govuk-button govuk-button--warning govuk-exit-this-page__button govuk-js-exit-this-page-button" data-module="govuk-button">
+-   Exit this page
++   <span class="govuk-visually-hidden">Emergency</span> Exit this page
+</a>
+```
+
+You don't need to change anything if you're using the `govukExitThisPage` Nunjucks macro.
+
+This change was introduced in [pull request #3989: Update default Exit This Page button text](https://github.com/alphagov/govuk-frontend/pull/3989).
+
 ### Fixes
 
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
