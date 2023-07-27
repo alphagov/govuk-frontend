@@ -1,9 +1,12 @@
-{%- macro _actionLink(action) %}
+{%- macro _actionLink(action, cardTitle) %}
   <a class="govuk-link {%- if action.classes %} {{ action.classes }}{% endif %}" href="{{ action.href }}" {%- for attribute, value in action.attributes %} {{attribute}}="{{value}}"{% endfor %}>
-    {{ action.html | safe if action.html else action.text }}
-    {%- if action.visuallyHiddenText -%}
-      <span class="govuk-visually-hidden"> {{ action.visuallyHiddenText }}</span>
-    {% endif -%}
+    {{- action.html | safe if action.html else action.text -}}
+    {%- if action.visuallyHiddenText or cardTitle -%}
+      <span class="govuk-visually-hidden">
+        {%- if action.visuallyHiddenText %} {{ action.visuallyHiddenText }}{% endif -%}
+        {%- if cardTitle %} ({{ cardTitle.html | safe if cardTitle.html else cardTitle.text }}){% endif -%}
+      </span>
+    {%- endif -%}
   </a>
 {% endmacro -%}
 
@@ -21,13 +24,13 @@
       {%- if params.actions.items.length -%}
         {%- if params.actions.items.length == 1 -%}
           <div class="govuk-summary-card__actions {%- if params.actions.classes %} {{ params.actions.classes }}{% endif %}">
-            {{- _actionLink(params.actions.items[0]) -}}
+            {{- _actionLink(params.actions.items[0], params.title) -}}
           </div>
         {%- else -%}
           <ul class="govuk-summary-card__actions {%- if params.actions.classes %} {{ params.actions.classes }}{% endif %}">
             {%- for action in params.actions.items -%}
               <li class="govuk-summary-card__action">
-                {{- _actionLink(action) -}}
+                {{- _actionLink(action, params.title) -}}
               </li>
             {%- endfor -%}
           </ul>
@@ -61,12 +64,12 @@
           {% if row.actions.items.length %}
             <dd class="govuk-summary-list__actions {%- if row.actions.classes %} {{ row.actions.classes }}{% endif %}">
               {% if row.actions.items.length == 1 %}
-                {{ _actionLink(row.actions.items[0]) | indent(16 if params.card else 12) | trim }}
+                {{ _actionLink(row.actions.items[0], params.card.title) | indent(16 if params.card else 12) | trim }}
               {% else %}
                 <ul class="govuk-summary-list__actions-list">
                   {%- for action in row.actions.items -%}
                     <li class="govuk-summary-list__actions-list-item">
-                      {{- _actionLink(action) | indent(22 if params.card else 18) | trim -}}
+                      {{- _actionLink(action, params.card.title) | indent(22 if params.card else 18) | trim -}}
                     </li>
                   {%- endfor -%}
                 </ul>
