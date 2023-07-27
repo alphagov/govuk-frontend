@@ -27,7 +27,7 @@ Projects can point to this branch in their package.json, instead of to the publi
 
 4. Run `npm ci` to make sure you have the exact dependencies installed.
 
-5. Run `npm run preview` to create and push a new branch that contains your changes. This process may take a few moments and will display a `Success!` message.
+5. Run `npm run publish-preview` to create and push a new branch that contains your changes. This process may take a few moments and will display a `Success!` message.
 
 ## Preview your changes
 
