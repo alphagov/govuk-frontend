@@ -18,18 +18,13 @@ concurrency:
 jobs:
   install:
     name: Install
-    runs-on: ${{ matrix.runner }}
+    runs-on: ubuntu-latest
 
     env:
       PUPPETEER_SKIP_DOWNLOAD: true
 
     strategy:
       fail-fast: false
-
-      matrix:
-        runner:
-          - ubuntu-latest
-          - windows-latest
 
     steps:
       - name: Checkout code

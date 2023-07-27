@@ -13,9 +13,10 @@ runs:
         enableCrossOsArchive: true
 
         # Restore `node_modules` cache (unless packages change)
-        key: npm-install-${{ runner.os }}-${{ hashFiles('package-lock.json', '**/package.json') }}
+        key: npm-install-${{ hashFiles('package-lock.json', '**/package.json') }}
         path: |
           node_modules
+          !node_modules/.bin
           docs/examples/*/node_modules
           packages/*/node_modules
           shared/*/node_modules
@@ -34,4 +35,28 @@ runs:
       # Skip install when dependencies are cached
       if: steps.npm-install-cache.outputs.cache-hit != 'true'
       shell: bash
-      run: npm ci
+
+      # Install without `node_modules/.bin` executables
+      run: npm ci --bin-links false
+
+    - name: Restore symbolic links to executables
+      uses: actions/cache@v3.3.1
+      id: install-exec
+
+      with:
+        # Use faster GNU tar for all runners
+        enableCrossOsArchive: true
+
+        # Restore `node_modules/.bin` cache (unless packages change)
+        key: npm-exec-${{ runner.os }}-${{ hashFiles('package-lock.json', '**/package.json') }}
+        path: node_modules/.bin
+
+    - name: Create symbolic links to executables
+
+      # Skip install when symbolic links are cached
+      if: steps.install-exec.outputs.cache-hit != 'true'
+      shell: bash
+
+      # Run `npm install` after `node_modules` restore to create
+      # missing `node_modules/.bin` symbolic links for runner OS
+      run: npm install --ignore-scripts --no-save --silent
