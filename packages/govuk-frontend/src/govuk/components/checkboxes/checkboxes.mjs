@@ -2,6 +2,8 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
  * Checkboxes component
+ *
+ * @preserve
  */
 export class Checkboxes extends GOVUKFrontendComponent {
   /** @private */

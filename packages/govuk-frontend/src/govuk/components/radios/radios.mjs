@@ -2,6 +2,8 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
  * Radios component
+ *
+ * @preserve
  */
 export class Radios extends GOVUKFrontendComponent {
   /** @private */
