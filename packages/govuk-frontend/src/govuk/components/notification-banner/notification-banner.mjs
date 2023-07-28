@@ -3,6 +3,8 @@ import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 
 /**
  * Notification Banner component
+ *
+ * @preserve
  */
 export class NotificationBanner {
   /** @private */

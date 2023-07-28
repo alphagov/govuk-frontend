@@ -12,6 +12,8 @@ import { I18n } from '../../i18n.mjs'
  *
  * You can configure the message to only appear after a certain percentage
  * of the available characters/words has been entered.
+ *
+ * @preserve
  */
 export class CharacterCount {
   /** @private */

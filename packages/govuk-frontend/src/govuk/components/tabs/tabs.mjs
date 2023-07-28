@@ -1,5 +1,7 @@
 /**
  * Tabs component
+ *
+ * @preserve
  */
 export class Tabs {
   /** @private */

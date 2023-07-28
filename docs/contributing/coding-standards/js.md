@@ -15,6 +15,8 @@ component
 ```mjs
 /**
  * Component name
+ *
+ * @preserve
  */
 export class Example {
   /**

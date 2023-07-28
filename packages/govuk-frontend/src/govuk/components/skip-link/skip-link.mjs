@@ -1,5 +1,7 @@
 /**
  * Skip link component
+ *
+ * @preserve
  */
 export class SkipLink {
   /** @private */
@@ -15,7 +17,6 @@ export class SkipLink {
   linkedElementListener = false
 
   /**
-   *
    * @param {Element} $module - HTML element to use for skip link
    */
   constructor($module) {

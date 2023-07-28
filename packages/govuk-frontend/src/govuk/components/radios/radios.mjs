@@ -1,5 +1,7 @@
 /**
  * Radios component
+ *
+ * @preserve
  */
 export class Radios {
   /** @private */

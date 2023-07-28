@@ -1,5 +1,7 @@
 /**
  * Checkboxes component
+ *
+ * @preserve
  */
 export class Checkboxes {
   /** @private */
