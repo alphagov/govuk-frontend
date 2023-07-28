@@ -19,9 +19,17 @@ module.exports = function (api) {
 
         // Assume all comments are public unless
         // tagged with `@private` or `@internal`
-        return ['* @internal', '* @private'].every(
-          (tag) => !comment.includes(tag)
+        const isPrivate = ['* @internal', '* @private'].some((tag) =>
+          comment.includes(tag)
         )
+
+        // Flag any JSDoc comments worth keeping
+        const isDocumentation = ['* @param', '* @returns', '* @typedef'].some(
+          (tag) => comment.includes(tag)
+        )
+
+        // Print only public JSDoc comments
+        return !isPrivate && isDocumentation
       }
     },
     presets: [
