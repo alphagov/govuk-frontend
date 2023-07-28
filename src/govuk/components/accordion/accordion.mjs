@@ -13,6 +13,8 @@ import { I18n } from '../../i18n.mjs'
  *
  * The state of each section is saved to the DOM via the `aria-expanded`
  * attribute, which also provides accessibility.
+ *
+ * @preserve
  */
 export class Accordion {
   /** @private */

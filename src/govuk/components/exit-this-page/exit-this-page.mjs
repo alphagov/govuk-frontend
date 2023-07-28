@@ -4,6 +4,8 @@ import { I18n } from '../../i18n.mjs'
 
 /**
  * Exit This Page component
+ *
+ * @preserve
  */
 export class ExitThisPage {
   /** @private */

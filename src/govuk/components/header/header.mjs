@@ -1,5 +1,7 @@
 /**
  * Header component
+ *
+ * @preserve
  */
 export class Header {
   /** @private */
