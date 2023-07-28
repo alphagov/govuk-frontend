@@ -14,7 +14,7 @@ describe('Exit this page', () => {
       const $button = $('.govuk-exit-this-page').find('.govuk-button')
 
       expect($button.hasClass('govuk-button--warning')).toBeTruthy()
-      expect($button.text()).toContain('Exit this page')
+      expect($button.html()).toContain('<span class="govuk-visually-hidden">Emergency</span> Exit this page')
       expect($button.attr('href')).toBe('/full-page-examples/announcements')
     })
   })
