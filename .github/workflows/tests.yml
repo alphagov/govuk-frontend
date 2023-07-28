@@ -11,14 +11,6 @@ on:
 
   workflow_dispatch:
     inputs:
-      runner:
-        description: Run tests on
-        type: choice
-        default: ubuntu-latest
-        options:
-          - macos-latest
-          - ubuntu-latest
-          - windows-latest
       types:
         description: Check type declarations
         type: boolean
@@ -30,10 +22,18 @@ concurrency:
 jobs:
   install:
     name: Install
-    runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
+    runs-on: ${{ matrix.runner }}
 
     env:
       PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        runner:
+          - ubuntu-latest
+          - windows-latest
 
     steps:
       - name: Checkout code
@@ -44,8 +44,16 @@ jobs:
 
   build:
     name: Build
-    runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
+    runs-on: ${{ matrix.runner }}
     needs: [install]
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        runner:
+          - ubuntu-latest
+          - windows-latest
 
     steps:
       - name: Checkout
@@ -62,14 +70,18 @@ jobs:
         run: npm run build:types
 
   lint:
-    name: ${{ matrix.task.description }}
-    runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
+    name: ${{ matrix.task.description }} (${{ matrix.runner }})
+    runs-on: ${{ matrix.runner }}
     needs: [install]
 
     strategy:
       fail-fast: false
 
       matrix:
+        runner:
+          - ubuntu-latest
+          - windows-latest
+
         task:
           - description: Lint Sass
             name: lint-scss
@@ -109,19 +121,23 @@ jobs:
         run: ${{ matrix.task.run }}
 
   test:
-    name: ${{ matrix.task.description }}
-    runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
+    name: ${{ matrix.task.description }} (${{ matrix.runner }})
+    runs-on: ${{ matrix.runner }}
     needs: [install, build]
 
     env:
       # Use 2x CPU cores unless on Windows (runs slower when concurrent)
       # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
-      MAX_WORKERS: ${{ inputs.runner == 'windows-latest' && '1' || '2' }}
+      MAX_WORKERS: ${{ matrix.runner == 'windows-latest' && '1' || '2' }}
 
     strategy:
       fail-fast: false
 
       matrix:
+        runner:
+          - ubuntu-latest
+          - windows-latest
+
         task:
           - description: Nunjucks macro tests
             name: test-macro
@@ -181,13 +197,13 @@ jobs:
       - name: Save test coverage
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ matrix.task.description }} coverage
+          name: ${{ matrix.task.description }} coverage (${{ matrix.runner }})
           path: coverage
           if-no-files-found: ignore
 
   verify:
-    name: ${{ matrix.task.description }}
-    runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
+    name: ${{ matrix.task.description }} (${{ matrix.runner }})
+    runs-on: ${{ matrix.runner }}
     needs: [install, build]
 
     # Skip when scheduled or run manually
@@ -197,6 +213,10 @@ jobs:
       fail-fast: false
 
       matrix:
+        runner:
+          - ubuntu-latest
+          - windows-latest
+
         task:
           - description: Verify package build
             name: test-build-package
@@ -221,11 +241,8 @@ jobs:
 
   package:
     name: Export ${{ matrix.conditions }}, Node.js ${{ matrix.node-version }}
-    runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
+    runs-on: ubuntu-latest
     needs: [install, build]
-
-    # Skip when scheduled or run manually
-    if: ${{ !inputs.runner }}
 
     strategy:
       fail-fast: false
