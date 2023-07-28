@@ -36,16 +36,21 @@ export class Header {
    *
    * @param {Element} $module - HTML element to use for header
    */
-  constructor ($module) {
-    if (!($module instanceof HTMLElement) || !document.body.classList.contains('govuk-frontend-supported')) {
+  constructor($module) {
+    if (
+      !($module instanceof HTMLElement) ||
+      !document.body.classList.contains('govuk-frontend-supported')
+    ) {
       return this
     }
 
     this.$module = $module
     this.$menuButton = $module.querySelector('.govuk-js-header-toggle')
-    this.$menu = this.$menuButton && $module.querySelector(
-      `#${this.$menuButton.getAttribute('aria-controls')}`
-    )
+    this.$menu =
+      this.$menuButton &&
+      $module.querySelector(
+        `#${this.$menuButton.getAttribute('aria-controls')}`
+      )
 
     if (
       !(
@@ -70,7 +75,9 @@ export class Header {
     }
 
     this.syncState()
-    this.$menuButton.addEventListener('click', () => this.handleMenuButtonClick())
+    this.$menuButton.addEventListener('click', () =>
+      this.handleMenuButtonClick()
+    )
   }
 
   /**
@@ -83,7 +90,7 @@ export class Header {
    *
    * @private
    */
-  syncState () {
+  syncState() {
     if (this.mql.matches) {
       this.$menu.removeAttribute('hidden')
       this.$menuButton.setAttribute('hidden', '')
@@ -107,7 +114,7 @@ export class Header {
    *
    * @private
    */
-  handleMenuButtonClick () {
+  handleMenuButtonClick() {
     this.menuIsOpen = !this.menuIsOpen
     this.syncState()
   }

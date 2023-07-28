@@ -92,7 +92,7 @@ describe('Input', () => {
       expect($formGroup.hasClass('extra-class')).toBeTruthy()
     })
 
-    it('doesn\'t render the input wrapper', () => {
+    it("doesn't render the input wrapper", () => {
       const $ = render('input', examples.default)
 
       const $wrapper = $('.govuk-form-group > .govuk-input__wrapper')
@@ -117,8 +117,7 @@ describe('Input', () => {
         WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
       )
 
-      expect($input.attr('aria-describedby'))
-        .toMatch(hintId)
+      expect($input.attr('aria-describedby')).toMatch(hintId)
     })
 
     it('associates the input as "described by" the hint and parent fieldset', () => {
@@ -128,11 +127,12 @@ describe('Input', () => {
       const $hint = $('.govuk-hint')
 
       const hintId = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${$hint.attr('id')}${WORD_BOUNDARY}`
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${$hint.attr(
+          'id'
+        )}${WORD_BOUNDARY}`
       )
 
-      expect($input.attr('aria-describedby'))
-        .toMatch(hintId)
+      expect($input.attr('aria-describedby')).toMatch(hintId)
     })
   })
 
@@ -153,8 +153,7 @@ describe('Input', () => {
         WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
       )
 
-      expect($input.attr('aria-describedby'))
-        .toMatch(errorMessageId)
+      expect($input.attr('aria-describedby')).toMatch(errorMessageId)
     })
 
     it('associates the input as "described by" the error message and parent fieldset', () => {
@@ -164,11 +163,12 @@ describe('Input', () => {
       const $errorMessage = $('.govuk-error-message')
 
       const errorMessageId = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${$errorMessage.attr('id')}${WORD_BOUNDARY}`
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${$errorMessage.attr(
+          'id'
+        )}${WORD_BOUNDARY}`
       )
 
-      expect($input.attr('aria-describedby'))
-        .toMatch(errorMessageId)
+      expect($input.attr('aria-describedby')).toMatch(errorMessageId)
     })
 
     it('includes the error class on the input', () => {
@@ -221,8 +221,7 @@ describe('Input', () => {
         WORD_BOUNDARY + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
       )
 
-      expect($component.attr('aria-describedby'))
-        .toMatch(combinedIds)
+      expect($component.attr('aria-describedby')).toMatch(combinedIds)
     })
 
     it('associates the input as described by the hint, error message and parent fieldset', () => {
@@ -236,8 +235,7 @@ describe('Input', () => {
         `${WORD_BOUNDARY}some-id${WHITESPACE}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($component.attr('aria-describedby'))
-        .toMatch(combinedIds)
+      expect($component.attr('aria-describedby')).toMatch(combinedIds)
     })
   })
 
@@ -292,14 +290,18 @@ describe('Input', () => {
     it('renders the prefix inside the wrapper', () => {
       const $ = render('input', examples['with prefix'])
 
-      const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
+      const $prefix = $(
+        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix'
+      )
       expect($prefix.length).toBeTruthy()
     })
 
     it('renders the text in the prefix', () => {
       const $ = render('input', examples['with prefix'])
 
-      const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
+      const $prefix = $(
+        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix'
+      )
 
       expect($prefix.html()).toEqual('£')
     })
@@ -307,7 +309,9 @@ describe('Input', () => {
     it('allows prefix text to be passed whilst escaping HTML entities', () => {
       const $ = render('input', examples['with prefix with html as text'])
 
-      const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
+      const $prefix = $(
+        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix'
+      )
 
       expect($prefix.html()).toEqual('&lt;span&gt;£&lt;/span&gt;')
     })
@@ -315,7 +319,9 @@ describe('Input', () => {
     it('allows prefix HTML to be passed un-escaped', () => {
       const $ = render('input', examples['with prefix with html'])
 
-      const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
+      const $prefix = $(
+        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix'
+      )
 
       expect($prefix.html()).toEqual('<span>£</span>')
     })
@@ -323,21 +329,29 @@ describe('Input', () => {
     it('hides the prefix from screen readers using the aria-hidden attribute', () => {
       const $ = render('input', examples['with prefix'])
 
-      const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
+      const $prefix = $(
+        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix'
+      )
       expect($prefix.attr('aria-hidden')).toEqual('true')
     })
 
     it('renders with classes', () => {
       const $ = render('input', examples['with prefix with classes'])
 
-      const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
-      expect($prefix.hasClass('app-input__prefix--custom-modifier')).toBeTruthy()
+      const $prefix = $(
+        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix'
+      )
+      expect(
+        $prefix.hasClass('app-input__prefix--custom-modifier')
+      ).toBeTruthy()
     })
 
     it('renders with attributes', () => {
       const $ = render('input', examples['with prefix with attributes'])
 
-      const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
+      const $prefix = $(
+        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix'
+      )
       expect($prefix.attr('data-attribute')).toEqual('value')
     })
   })
@@ -353,14 +367,18 @@ describe('Input', () => {
     it('renders the suffix inside the wrapper', () => {
       const $ = render('input', examples['with suffix'])
 
-      const $suffix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix')
+      const $suffix = $(
+        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix'
+      )
       expect($suffix.length).toBeTruthy()
     })
 
     it('renders the text in the prefix', () => {
       const $ = render('input', examples['with prefix'])
 
-      const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
+      const $prefix = $(
+        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix'
+      )
 
       expect($prefix.html()).toEqual('£')
     })
@@ -368,7 +386,9 @@ describe('Input', () => {
     it('allows suffix text to be passed whilst escaping HTML entities', () => {
       const $ = render('input', examples['with suffix with html as text'])
 
-      const $suffix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix')
+      const $suffix = $(
+        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix'
+      )
 
       expect($suffix.html()).toEqual('&lt;span&gt;kg&lt;/span&gt;')
     })
@@ -376,7 +396,9 @@ describe('Input', () => {
     it('allows suffix HTML to be passed un-escaped', () => {
       const $ = render('input', examples['with suffix with html'])
 
-      const $suffix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix')
+      const $suffix = $(
+        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix'
+      )
 
       expect($suffix.html()).toEqual('<span>kg</span>')
     })
@@ -384,21 +406,29 @@ describe('Input', () => {
     it('hides the suffix from screen readers using the aria-hidden attribute', () => {
       const $ = render('input', examples['with suffix'])
 
-      const $suffix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix')
+      const $suffix = $(
+        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix'
+      )
       expect($suffix.attr('aria-hidden')).toEqual('true')
     })
 
     it('renders with classes', () => {
       const $ = render('input', examples['with suffix with classes'])
 
-      const $suffix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix')
-      expect($suffix.hasClass('app-input__suffix--custom-modifier')).toBeTruthy()
+      const $suffix = $(
+        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix'
+      )
+      expect(
+        $suffix.hasClass('app-input__suffix--custom-modifier')
+      ).toBeTruthy()
     })
 
     it('renders with attributes', () => {
       const $ = render('input', examples['with suffix with attributes'])
 
-      const $suffix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix')
+      const $suffix = $(
+        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix'
+      )
       expect($suffix.attr('data-attribute')).toEqual('value')
     })
   })
@@ -407,7 +437,9 @@ describe('Input', () => {
     it('renders the prefix before the suffix', () => {
       const $ = render('input', examples['with prefix and suffix'])
 
-      const $prefixBeforeSuffix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix ~ .govuk-input__suffix')
+      const $prefixBeforeSuffix = $(
+        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix ~ .govuk-input__suffix'
+      )
       expect($prefixBeforeSuffix.length).toBeTruthy()
     })
   })

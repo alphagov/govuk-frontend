@@ -11,9 +11,12 @@ export default (app) => {
      * @returns {void}
      */
     (request, response) => {
-      return response.render('./full-page-examples/upload-your-photo-success/index', {
-        isSuccess: true
-      })
+      return response.render(
+        './full-page-examples/upload-your-photo-success/index',
+        {
+          isSuccess: true
+        }
+      )
     }
   )
 }

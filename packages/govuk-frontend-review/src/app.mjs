@@ -1,5 +1,9 @@
 import express from 'express'
-import { getComponentsData, getComponentNames, filterPath } from 'govuk-frontend-lib/files'
+import {
+  getComponentsData,
+  getComponentNames,
+  filterPath
+} from 'govuk-frontend-lib/files'
 import { componentNameToMacroName } from 'govuk-frontend-lib/names'
 import { getStats, modulePaths } from 'govuk-frontend-stats'
 import { outdent } from 'outdent'
@@ -13,7 +17,13 @@ export default async () => {
   const app = express()
 
   // Cache mapped components and examples
-  const [componentsData, componentNames, componentNamesWithJavaScript, exampleNames, fullPageExamples] = await Promise.all([
+  const [
+    componentsData,
+    componentNames,
+    componentNamesWithJavaScript,
+    exampleNames,
+    fullPageExamples
+  ] = await Promise.all([
     getComponentsData(),
 
     // Components list
@@ -21,7 +31,8 @@ export default async () => {
 
     // Components list (with JavaScript only)
     getComponentNames((componentName, componentFiles) =>
-      componentFiles.some(filterPath([`**/${componentName}.mjs`]))),
+      componentFiles.some(filterPath([`**/${componentName}.mjs`]))
+    ),
 
     getExampleNames(),
     getFullPageExamples()
@@ -44,8 +55,14 @@ export default async () => {
   app.use(middleware.robots)
 
   // Add build stats
-  app.locals.stats = Object.fromEntries(await Promise.all(modulePaths
-    .map(async (modulePath) => [modulePath, await getStats(modulePath)])))
+  app.locals.stats = Object.fromEntries(
+    await Promise.all(
+      modulePaths.map(async (modulePath) => [
+        modulePath,
+        await getStats(modulePath)
+      ])
+    )
+  )
 
   // Handle the banner component serverside.
   routes.banner(app)
@@ -68,14 +85,18 @@ export default async () => {
   // Whenever the route includes a :componentName parameter, read the component data
   // from its YAML file
   app.param('componentName', function (req, res, next, componentName) {
-    res.locals.componentData = componentsData.find(({ name }) => name === componentName)
+    res.locals.componentData = componentsData.find(
+      ({ name }) => name === componentName
+    )
     next()
   })
 
   // All components view
   app.get('/components/all', function (req, res, next) {
     res.locals.componentsData = componentsData.map((componentData) => {
-      const defaultExample = componentData.examples.find(({ name }) => name === 'default')
+      const defaultExample = componentData.examples.find(
+        ({ name }) => name === 'default'
+      )
 
       return {
         ...componentData,
@@ -107,55 +128,65 @@ export default async () => {
   })
 
   // Component example preview
-  app.get('/components/:componentName/:exampleName?/preview', function (req, res, next) {
-    // Find the data for the specified example (or the default example)
-    const componentName = req.params.componentName
-    const exampleName = req.params.exampleName || 'default'
+  app.get(
+    '/components/:componentName/:exampleName?/preview',
+    function (req, res, next) {
+      // Find the data for the specified example (or the default example)
+      const componentName = req.params.componentName
+      const exampleName = req.params.exampleName || 'default'
 
-    const previewLayout = res.locals.componentData?.previewLayout
+      const previewLayout = res.locals.componentData?.previewLayout
 
-    const exampleConfig = res.locals.componentData?.examples.find(
-      example => nunjucks.filters.slugify(example.name) === exampleName
-    )
+      const exampleConfig = res.locals.componentData?.examples.find(
+        (example) => nunjucks.filters.slugify(example.name) === exampleName
+      )
 
-    if (!exampleConfig) {
-      next()
-    }
+      if (!exampleConfig) {
+        next()
+      }
 
-    // Construct and evaluate the component with the data for this example
-    const macroName = componentNameToMacroName(componentName)
-    const macroParameters = JSON.stringify(exampleConfig.data, null, '\t')
+      // Construct and evaluate the component with the data for this example
+      const macroName = componentNameToMacroName(componentName)
+      const macroParameters = JSON.stringify(exampleConfig.data, null, '\t')
 
-    res.locals.componentView = env.renderString(outdent`
+      res.locals.componentView = env.renderString(
+        outdent`
       {% from "govuk/components/${componentName}/macro.njk" import ${macroName} %}
       {{ ${macroName}(${macroParameters}) }}
-    `, {})
+    `,
+        {}
+      )
 
-    let bodyClasses = 'app-template__body'
+      let bodyClasses = 'app-template__body'
 
-    const layoutModifiers = exampleConfig.previewLayoutModifiers || []
-    for (const modifier of layoutModifiers) {
-      bodyClasses += ` app-template__body--${modifier}`
+      const layoutModifiers = exampleConfig.previewLayoutModifiers || []
+      for (const modifier of layoutModifiers) {
+        bodyClasses += ` app-template__body--${modifier}`
+      }
+
+      if ('iframe' in req.query) {
+        bodyClasses += ' app-template__body--component-preview'
+      }
+
+      res.render('component-preview', { bodyClasses, previewLayout })
     }
-
-    if ('iframe' in req.query) {
-      bodyClasses += ' app-template__body--component-preview'
-    }
-
-    res.render('component-preview', { bodyClasses, previewLayout })
-  })
+  )
 
   // Example view
   app.get('/examples/:exampleName', function (req, res, next) {
     // Passing a random number used for the links so that they will be unique and not display as "visited"
     const randomPageHash = (Math.random() * 1000000).toFixed()
-    res.render(`examples/${req.params.exampleName}/index`, { randomPageHash }, function (error, html) {
-      if (error) {
-        next(error)
-      } else {
-        res.send(html)
+    res.render(
+      `examples/${req.params.exampleName}/index`,
+      { randomPageHash },
+      function (error, html) {
+        if (error) {
+          next(error)
+        } else {
+          res.send(html)
+        }
       }
-    })
+    )
   })
 
   // Test view for injecting rendered components

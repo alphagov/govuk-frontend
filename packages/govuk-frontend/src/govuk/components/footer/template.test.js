@@ -56,7 +56,7 @@ describe('footer', () => {
       expect($heading.text()).toEqual('Support links')
     })
 
-    it('doesn\'t render footer link list when no items are provided', () => {
+    it("doesn't render footer link list when no items are provided", () => {
       const $ = render('footer', examples['with empty meta items'])
 
       expect($('.govuk-footer__inline-list').length).toEqual(0)
@@ -84,7 +84,9 @@ describe('footer', () => {
       const $ = render('footer', examples['meta html as text'])
 
       const $custom = $('.govuk-footer__meta-custom')
-      expect($custom.text()).toContain('GOV.UK Prototype Kit <strong>v7.0.1</strong>')
+      expect($custom.text()).toContain(
+        'GOV.UK Prototype Kit <strong>v7.0.1</strong>'
+      )
     })
 
     it('renders custom meta html', () => {
@@ -148,14 +150,20 @@ describe('footer', () => {
     })
 
     it('renders one-column section full width by default', () => {
-      const $ = render('footer', examples['with default width navigation (one column)'])
+      const $ = render(
+        'footer',
+        examples['with default width navigation (one column)']
+      )
 
       const $section = $('.govuk-footer__section')
       expect($section.hasClass('govuk-grid-column-full')).toBeTruthy()
     })
 
     it('renders two-column section full width by default', () => {
-      const $ = render('footer', examples['with default width navigation (two columns)'])
+      const $ = render(
+        'footer',
+        examples['with default width navigation (two columns)']
+      )
 
       const $section = $('.govuk-footer__section')
       expect($section.hasClass('govuk-grid-column-full')).toBeTruthy()
@@ -194,24 +202,36 @@ describe('footer', () => {
     })
 
     it('can be customised with `text` parameter', () => {
-      const $ = render('footer', examples['with custom text content licence and copyright notice'])
+      const $ = render(
+        'footer',
+        examples['with custom text content licence and copyright notice']
+      )
 
       const $licenceMessage = $('.govuk-footer__licence-description')
-      expect($licenceMessage.text()).toContain('Drwydded y Llywodraeth Agored v3.0')
+      expect($licenceMessage.text()).toContain(
+        'Drwydded y Llywodraeth Agored v3.0'
+      )
     })
 
     it('can be customised with `html` parameter', () => {
-      const $ = render('footer', examples['with custom HTML content licence and copyright notice'])
+      const $ = render(
+        'footer',
+        examples['with custom HTML content licence and copyright notice']
+      )
 
       const $licenceMessage = $('.govuk-footer__licence-description')
-      expect($licenceMessage.html()).toContain('<a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/" rel="license">Drwydded y Llywodraeth Agored v3.0</a>')
+      expect($licenceMessage.html()).toContain(
+        '<a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/" rel="license">Drwydded y Llywodraeth Agored v3.0</a>'
+      )
     })
 
     it('escapes HTML in the `text` parameter', () => {
       const $ = render('footer', examples['with HTML passed as text content'])
 
       const $licenceMessage = $('.govuk-footer__licence-description')
-      expect($licenceMessage.html()).toContain('&lt;a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/" rel="license"&gt;Drwydded y Llywodraeth Agored v3.0&lt;/a&gt;')
+      expect($licenceMessage.html()).toContain(
+        '&lt;a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/" rel="license"&gt;Drwydded y Llywodraeth Agored v3.0&lt;/a&gt;'
+      )
     })
   })
 
@@ -224,24 +244,34 @@ describe('footer', () => {
     })
 
     it('can be customised with `text` parameter', () => {
-      const $ = render('footer', examples['with custom text content licence and copyright notice'])
+      const $ = render(
+        'footer',
+        examples['with custom text content licence and copyright notice']
+      )
 
       const $copyrightMessage = $('.govuk-footer__copyright-logo')
       expect($copyrightMessage.text()).toContain('© Hawlfraint y Goron')
     })
 
     it('can be customised with `html` parameter', () => {
-      const $ = render('footer', examples['with custom HTML content licence and copyright notice'])
+      const $ = render(
+        'footer',
+        examples['with custom HTML content licence and copyright notice']
+      )
 
       const $copyrightMessage = $('.govuk-footer__copyright-logo')
-      expect($copyrightMessage.html()).toContain('<span>Hawlfraint y Goron</span>')
+      expect($copyrightMessage.html()).toContain(
+        '<span>Hawlfraint y Goron</span>'
+      )
     })
 
     it('escapes HTML in the `text` parameter', () => {
       const $ = render('footer', examples['with HTML passed as text content'])
 
       const $copyrightMessage = $('.govuk-footer__copyright-logo')
-      expect($copyrightMessage.html()).toContain('&lt;span&gt;Hawlfraint y Goron&lt;/span&gt;')
+      expect($copyrightMessage.html()).toContain(
+        '&lt;span&gt;Hawlfraint y Goron&lt;/span&gt;'
+      )
     })
   })
 })

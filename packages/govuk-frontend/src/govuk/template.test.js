@@ -49,7 +49,9 @@ describe('Template', () => {
       const $ = renderTemplate({}, { headIcons })
 
       // Build a list of the rel values of all links with a rel ending 'icon'
-      const icons = $('link[rel$="icon"]').map((_, link) => $(link).attr('rel')).get()
+      const icons = $('link[rel$="icon"]')
+        .map((_, link) => $(link).attr('rel'))
+        .get()
       expect(icons).toEqual(['govuk-icon'])
     })
 
@@ -87,14 +89,20 @@ describe('Template', () => {
         const $ = renderTemplate({ assetUrl: 'https://foo.com/my-assets' })
         const $ogImage = $('meta[property="og:image"]')
 
-        expect($ogImage.attr('content')).toEqual('https://foo.com/my-assets/images/govuk-opengraph-image.png')
+        expect($ogImage.attr('content')).toEqual(
+          'https://foo.com/my-assets/images/govuk-opengraph-image.png'
+        )
       })
 
       it('is included if opengraphImageUrl is set', () => {
-        const $ = renderTemplate({ opengraphImageUrl: 'https://foo.com/custom/og-image.png' })
+        const $ = renderTemplate({
+          opengraphImageUrl: 'https://foo.com/custom/og-image.png'
+        })
         const $ogImage = $('meta[property="og:image"]')
 
-        expect($ogImage.attr('content')).toEqual('https://foo.com/custom/og-image.png')
+        expect($ogImage.attr('content')).toEqual(
+          'https://foo.com/custom/og-image.png'
+        )
       })
     })
 
@@ -111,7 +119,8 @@ describe('Template', () => {
     })
 
     describe('<title>', () => {
-      const expectedTitle = 'GOV.UK - The best place to find government services and information'
+      const expectedTitle =
+        'GOV.UK - The best place to find government services and information'
       it(`defaults to '${expectedTitle}'`, () => {
         const $ = renderTemplate()
         expect($('title').text()).toEqual(expectedTitle)
@@ -171,7 +180,9 @@ describe('Template', () => {
 
         // A change to the inline script would be a breaking change, and it would also require
         // updating the hash published in https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#if-your-javascript-isn-t-working-properly
-        expect(`sha256-${hash}`).toEqual('sha256-GUQ5ad8JK5KmEWmROf3LZd9ge94daqNvd8xy9YS1iDw=')
+        expect(`sha256-${hash}`).toEqual(
+          'sha256-GUQ5ad8JK5KmEWmROf3LZd9ge94daqNvd8xy9YS1iDw='
+        )
       })
       it('should not have a nonce attribute by default', () => {
         const $ = renderTemplate()

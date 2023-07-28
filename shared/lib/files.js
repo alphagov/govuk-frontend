@@ -26,7 +26,9 @@ const getListing = async (directoryPath, options = {}) => {
 
   // Use relative paths
   return listing
-    .map((entryPath) => relative(options.cwd?.toString() ?? paths.root, entryPath))
+    .map((entryPath) =>
+      relative(options.cwd?.toString() ?? paths.root, entryPath)
+    )
     .sort()
 }
 
@@ -37,12 +39,12 @@ const getListing = async (directoryPath, options = {}) => {
  * @returns {Promise<string[]>} Directory names
  */
 const getDirectories = async (directoryPath) => {
-  const listing = await getListing(`${slash(directoryPath)}/*/`, { nodir: false })
+  const listing = await getListing(`${slash(directoryPath)}/*/`, {
+    nodir: false
+  })
 
   // Use directory names only
-  return listing
-    .map((directoryPath) => basename(directoryPath))
-    .sort()
+  return listing.map((directoryPath) => basename(directoryPath)).sort()
 }
 
 /**
@@ -53,9 +55,7 @@ const getDirectories = async (directoryPath) => {
  * @returns {(entryPath: string) => boolean} Returns true for files matching every pattern
  */
 const filterPath = (patterns) => (entryPath) => {
-  return patterns.every(
-    (pattern) => minimatch(entryPath, pattern)
-  )
+  return patterns.every((pattern) => minimatch(entryPath, pattern))
 }
 
 /**
@@ -70,9 +70,7 @@ const mapPathTo = (patterns, callback) => (entryPath) => {
   const isMatch = filterPath(patterns)
 
   // Run callback on files matching every pattern (or original path)
-  return isMatch(entryPath)
-    ? callback(parse(entryPath))
-    : entryPath
+  return isMatch(entryPath) ? callback(parse(entryPath)) : entryPath
 }
 
 /**
@@ -92,7 +90,10 @@ const getYaml = async (configPath) => {
  * @returns {Promise<ComponentData & { name: string }>} Component data
  */
 const getComponentData = async (componentName) => {
-  const yamlPath = join(packageNameToPath('govuk-frontend'), `src/govuk/components/${componentName}/${componentName}.yaml`)
+  const yamlPath = join(
+    packageNameToPath('govuk-frontend'),
+    `src/govuk/components/${componentName}/${componentName}.yaml`
+  )
 
   /** @type {ComponentData} */
   const yamlData = await getYaml(yamlPath)
@@ -120,7 +121,12 @@ const getComponentsData = async () => {
  * @returns {Promise<string[]>} Component files
  */
 const getComponentFiles = (componentName = '') =>
-  getListing(join(packageNameToPath('govuk-frontend'), `src/govuk/components/${componentName}/**/*`))
+  getListing(
+    join(
+      packageNameToPath('govuk-frontend'),
+      `src/govuk/components/${componentName}/**/*`
+    )
+  )
 
 /**
  * Get component names (with optional filter)
@@ -129,14 +135,17 @@ const getComponentFiles = (componentName = '') =>
  * @returns {Promise<string[]>} Component names
  */
 const getComponentNames = async (filter) => {
-  const componentNames = await getDirectories(join(packageNameToPath('govuk-frontend'), '**/src/govuk/components/'))
+  const componentNames = await getDirectories(
+    join(packageNameToPath('govuk-frontend'), '**/src/govuk/components/')
+  )
 
   if (filter) {
     const componentFiles = await getComponentFiles()
 
     // Apply component names filter
     return componentNames.filter((componentName) =>
-      filter(componentName, componentFiles))
+      filter(componentName, componentFiles)
+    )
   }
 
   return componentNames
@@ -148,7 +157,7 @@ const getComponentNames = async (filter) => {
  * @param {string} componentName - Component name
  * @returns {Promise<{ [name: string]: ComponentExample['data'] }>} returns object that includes all examples at once
  */
-async function getExamples (componentName) {
+async function getExamples(componentName) {
   const componentData = await getComponentData(componentName)
 
   /** @type {{ [name: string]: ComponentExample['data'] }} */

@@ -19,14 +19,15 @@ import { assets } from './index.mjs'
  * @param {string} pattern - Minimatch pattern
  * @param {AssetEntry[1]} options - Asset options
  */
-export async function compile (pattern, options) {
+export async function compile(pattern, options) {
   const modulePaths = await getListing(pattern, {
     cwd: options.srcPath
   })
 
   try {
-    const compileTasks = modulePaths
-      .map((modulePath) => compileStylesheet([modulePath, options]))
+    const compileTasks = modulePaths.map((modulePath) =>
+      compileStylesheet([modulePath, options])
+    )
 
     await Promise.all(compileTasks)
   } catch (cause) {
@@ -39,9 +40,15 @@ export async function compile (pattern, options) {
  *
  * @param {AssetEntry} assetEntry - Asset entry
  */
-export async function compileStylesheet ([modulePath, { basePath, configPath, srcPath, destPath, filePath }]) {
+export async function compileStylesheet([
+  modulePath,
+  { basePath, configPath, srcPath, destPath, filePath }
+]) {
   const moduleSrcPath = join(srcPath, modulePath)
-  const moduleDestPath = join(destPath, filePath ? filePath(parse(modulePath)) : modulePath)
+  const moduleDestPath = join(
+    destPath,
+    filePath ? filePath(parse(modulePath)) : modulePath
+  )
 
   let css
   let map
@@ -69,7 +76,7 @@ export async function compileStylesheet ([modulePath, { basePath, configPath, sr
 
   // Compile Sass to CSS
   if (moduleDestPath.endsWith('.css')) {
-    ({ css, sourceMap: map } = await compileAsync(moduleSrcPath, {
+    ;({ css, sourceMap: map } = await compileAsync(moduleSrcPath, {
       alertColor: true,
 
       // Turn off dependency warnings
@@ -117,8 +124,10 @@ export async function compileStylesheet ([modulePath, { basePath, configPath, sr
   const config = await postcssrc(options, configPath)
 
   // Transform with PostCSS
-  const result = await postcss(config.plugins)
-    .process(css, { ...options, ...config.options })
+  const result = await postcss(config.plugins).process(css, {
+    ...options,
+    ...config.options
+  })
 
   // Write to files
   await assets.write(moduleDestPath, result)
@@ -131,7 +140,7 @@ export async function compileStylesheet ([modulePath, { basePath, configPath, sr
  * @returns {import('sass-embedded').Logger} Sass logger
  */
 export const logger = (config) => ({
-  warn (message, options) {
+  warn(message, options) {
     let log = `${message}\n`
 
     // Silence Sass suppressed warnings
@@ -148,25 +157,32 @@ export const logger = (config) => ({
       const column = ' '.repeat(`${number}`.length)
 
       // Source code warning arrows
-      const arrows = '^'.repeat(text.length)
+      const arrows = '^'
+        .repeat(text.length)
         .padStart(context.indexOf(text) + text.length)
 
       // Source code snippet showing warning in red
       log += '\n\n'
       log += `${chalk.blue(`${column} ╷`)}\n`
-      log += `${chalk.blue(`${number} │`)} ${context.replace(text, chalk.red(text))}`
+      log += `${chalk.blue(`${number} │`)} ${context.replace(
+        text,
+        chalk.red(text)
+      )}`
       log += `${chalk.blue(`${column} │`)} ${chalk.red(arrows)}\n`
       log += `${chalk.blue(`${column} ╵`)}\n`
     }
 
     // Check for stack trace
-    options.stack?.trim().split('\n').forEach((line) => {
-      log += `    ${line}\n`
-    })
+    options.stack
+      ?.trim()
+      .split('\n')
+      .forEach((line) => {
+        log += `    ${line}\n`
+      })
 
-    const title = chalk.bold.yellow(options.deprecation
-      ? 'Deprecation Warning'
-      : 'Warning')
+    const title = chalk.bold.yellow(
+      options.deprecation ? 'Deprecation Warning' : 'Warning'
+    )
 
     console.warn(`${title}: ${log}`)
   }

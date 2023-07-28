@@ -19,15 +19,13 @@ describe('@mixin govuk-exports', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
           .foo {
             color: red;
           }
         `
-      })
+    })
   })
 
   it('will export differently named sections', async () => {
@@ -47,10 +45,8 @@ describe('@mixin govuk-exports', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
           .foo {
             color: red;
           }
@@ -59,6 +55,6 @@ describe('@mixin govuk-exports', () => {
             color: blue;
           }
         `
-      })
+    })
   })
 })

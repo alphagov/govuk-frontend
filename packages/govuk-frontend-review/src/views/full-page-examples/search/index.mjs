@@ -2,7 +2,9 @@ import { readFile } from 'fs/promises'
 
 import shuffleSeed from 'shuffle-seed'
 
-const { documents } = JSON.parse(await readFile(new URL('data.json', import.meta.url), 'utf8'))
+const { documents } = JSON.parse(
+  await readFile(new URL('data.json', import.meta.url), 'utf8')
+)
 
 /**
  * @param {import('express').Application} app
@@ -28,15 +30,18 @@ export default (app) => {
       const total = '128124'
 
       // Shuffle the total based on the query string
-      const randomizedTotal = shuffleSeed.shuffle(total.split(''), seed).join('')
+      const randomizedTotal = shuffleSeed
+        .shuffle(total.split(''), seed)
+        .join('')
 
       response.render('./full-page-examples/search/index', {
         documents: shuffledDocuments,
         order: query.order,
 
         // Make the total more readable
-        total: Number(randomizedTotal)
-          .toLocaleString('en', { useGrouping: true }),
+        total: Number(randomizedTotal).toLocaleString('en', {
+          useGrouping: true
+        }),
 
         // In production this should be sanitized
         values: query

@@ -7,6 +7,7 @@ import hljs from 'highlight.js'
  * @param {string} [language] - Code programming language
  * @returns {string} Code with syntax highlighting
  */
-export function highlight (code, language) {
-  return hljs.highlight(code.trim(), { language: language || 'plaintext' }).value
+export function highlight(code, language) {
+  return hljs.highlight(code.trim(), { language: language || 'plaintext' })
+    .value
 }

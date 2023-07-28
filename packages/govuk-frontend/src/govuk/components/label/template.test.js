@@ -42,7 +42,9 @@ describe('Label', () => {
       const $ = render('label', examples['html as text'])
 
       const labelText = $('.govuk-label').html().trim()
-      expect(labelText).toEqual('National Insurance number, &lt;em&gt;NINO&lt;/em&gt;')
+      expect(labelText).toEqual(
+        'National Insurance number, &lt;em&gt;NINO&lt;/em&gt;'
+      )
     })
 
     it('allows label HTML to be passed un-escaped', () => {

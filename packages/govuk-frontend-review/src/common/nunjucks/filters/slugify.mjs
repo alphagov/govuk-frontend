@@ -6,6 +6,6 @@ import slug from 'slug'
  * @param {string} string - String to format
  * @returns {string} URL friendly "slug"
  */
-export function slugify (string) {
+export function slugify(string) {
   return slug(string, { lower: true })
 }

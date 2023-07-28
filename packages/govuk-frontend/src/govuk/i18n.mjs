@@ -13,12 +13,13 @@ export class I18n {
    * @param {object} [config] - Configuration options for the function.
    * @param {string} [config.locale] - An overriding locale for the PluralRules functionality.
    */
-  constructor (translations, config) {
+  constructor(translations, config) {
     // Make list of translations available throughout function
     this.translations = translations || {}
 
     // The locale to use for PluralRules and NumberFormat
-    this.locale = (config && config.locale) || document.documentElement.lang || 'en'
+    this.locale =
+      (config && config.locale) || document.documentElement.lang || 'en'
   }
 
   /**
@@ -31,7 +32,7 @@ export class I18n {
    * @throws {Error} Lookup key required
    * @throws {Error} Options required for `${}` placeholders
    */
-  t (lookupKey, options) {
+  t(lookupKey, options) {
     if (!lookupKey) {
       // Print a console error if no lookup key has been provided
       throw new Error('i18n: lookup key missing')
@@ -42,7 +43,10 @@ export class I18n {
     // falsy, as this could legitimately be 0.
     if (options && typeof options.count === 'number') {
       // Get the plural suffix
-      lookupKey = `${lookupKey}.${this.getPluralSuffix(lookupKey, options.count)}`
+      lookupKey = `${lookupKey}.${this.getPluralSuffix(
+        lookupKey,
+        options.count
+      )}`
     }
 
     // Fetch the translation string for that lookup key
@@ -52,7 +56,9 @@ export class I18n {
       // Check for ${} placeholders in the translation string
       if (translationString.match(/%{(.\S+)}/)) {
         if (!options) {
-          throw new Error('i18n: cannot replace placeholders in string if no option data provided')
+          throw new Error(
+            'i18n: cannot replace placeholders in string if no option data provided'
+          )
         }
 
         return this.replacePlaceholders(translationString, options)
@@ -74,7 +80,7 @@ export class I18n {
    * @param {{ [key: string]: unknown }} options - Any options passed with the translation string, e.g: for string interpolation.
    * @returns {string} The translation string to output, with $\{\} placeholders replaced
    */
-  replacePlaceholders (translationString, options) {
+  replacePlaceholders(translationString, options) {
     /** @type {Intl.NumberFormat | undefined} */
     let formatter
 
@@ -98,23 +104,29 @@ export class I18n {
 
           // If a user has passed `false` as the value for the placeholder
           // treat it as though the value should not be displayed
-          if (placeholderValue === false || (
-            typeof placeholderValue !== 'number' &&
-            typeof placeholderValue !== 'string')
+          if (
+            placeholderValue === false ||
+            (typeof placeholderValue !== 'number' &&
+              typeof placeholderValue !== 'string')
           ) {
             return ''
           }
 
           // If the placeholder's value is a number, localise the number formatting
           if (typeof placeholderValue === 'number') {
-            return formatter ? formatter.format(placeholderValue) : `${placeholderValue}`
+            return formatter
+              ? formatter.format(placeholderValue)
+              : `${placeholderValue}`
           }
 
           return placeholderValue
         } else {
-          throw new Error(`i18n: no data found to replace ${placeholderWithBraces} placeholder in string`)
+          throw new Error(
+            `i18n: no data found to replace ${placeholderWithBraces} placeholder in string`
+          )
         }
-      })
+      }
+    )
   }
 
   /**
@@ -127,8 +139,12 @@ export class I18n {
    *
    * @returns {boolean} Returns true if all conditions are met. Returns false otherwise.
    */
-  hasIntlPluralRulesSupport () {
-    return Boolean(window.Intl && ('PluralRules' in window.Intl && Intl.PluralRules.supportedLocalesOf(this.locale).length))
+  hasIntlPluralRulesSupport() {
+    return Boolean(
+      window.Intl &&
+        'PluralRules' in window.Intl &&
+        Intl.PluralRules.supportedLocalesOf(this.locale).length
+    )
   }
 
   /**
@@ -141,8 +157,12 @@ export class I18n {
    *
    * @returns {boolean} Returns true if all conditions are met. Returns false otherwise.
    */
-  hasIntlNumberFormatSupport () {
-    return Boolean(window.Intl && ('NumberFormat' in window.Intl && Intl.NumberFormat.supportedLocalesOf(this.locale).length))
+  hasIntlNumberFormatSupport() {
+    return Boolean(
+      window.Intl &&
+        'NumberFormat' in window.Intl &&
+        Intl.NumberFormat.supportedLocalesOf(this.locale).length
+    )
   }
 
   /**
@@ -160,13 +180,15 @@ export class I18n {
    * @returns {PluralRule} The suffix associated with the correct pluralisation for this locale.
    * @throws {Error} Plural form `.other` required when preferred plural form is missing
    */
-  getPluralSuffix (lookupKey, count) {
+  getPluralSuffix(lookupKey, count) {
     // Validate that the number is actually a number.
     //
     // Number(count) will turn anything that can't be converted to a Number type
     // into 'NaN'. isFinite filters out NaN, as it isn't a finite number.
     count = Number(count)
-    if (!isFinite(count)) { return 'other' }
+    if (!isFinite(count)) {
+      return 'other'
+    }
 
     let preferredForm
 
@@ -186,7 +208,9 @@ export class I18n {
       // to the console
     } else if (`${lookupKey}.other` in this.translations) {
       if (console && 'warn' in console) {
-        console.warn(`i18n: Missing plural form ".${preferredForm}" for "${this.locale}" locale. Falling back to ".other".`)
+        console.warn(
+          `i18n: Missing plural form ".${preferredForm}" for "${this.locale}" locale. Falling back to ".other".`
+        )
       }
 
       return 'other'
@@ -207,7 +231,7 @@ export class I18n {
    * @param {number} count - Number used to determine which pluralisation to use.
    * @returns {PluralRule} The pluralisation form for count in this locale.
    */
-  selectPluralFormUsingFallbackRules (count) {
+  selectPluralFormUsingFallbackRules(count) {
     // Currently our custom code can only handle positive integers, so let's
     // make sure our number is one of those.
     count = Math.abs(Math.floor(count))
@@ -232,14 +256,16 @@ export class I18n {
    * @returns {string | undefined} The name of the pluralisation rule to use (a key for one
    *   of the functions in this.pluralRules)
    */
-  getPluralRulesForLocale () {
+  getPluralRulesForLocale() {
     const locale = this.locale
     const localeShort = locale.split('-')[0]
 
     // Look through the plural rules map to find which `pluralRule` is
     // appropriate for our current `locale`.
     for (const pluralRule in I18n.pluralRulesMap) {
-      if (Object.prototype.hasOwnProperty.call(I18n.pluralRulesMap, pluralRule)) {
+      if (
+        Object.prototype.hasOwnProperty.call(I18n.pluralRulesMap, pluralRule)
+      ) {
         const languages = I18n.pluralRulesMap[pluralRule]
         for (let i = 0; i < languages.length; i++) {
           if (languages[i] === locale || languages[i] === localeShort) {
@@ -287,8 +313,30 @@ export class I18n {
     chinese: ['my', 'zh', 'id', 'ja', 'jv', 'ko', 'ms', 'th', 'vi'],
     french: ['hy', 'bn', 'fr', 'gu', 'hi', 'fa', 'pa', 'zu'],
     german: [
-      'af', 'sq', 'az', 'eu', 'bg', 'ca', 'da', 'nl', 'en', 'et', 'fi', 'ka',
-      'de', 'el', 'hu', 'lb', 'no', 'so', 'sw', 'sv', 'ta', 'te', 'tr', 'ur'
+      'af',
+      'sq',
+      'az',
+      'eu',
+      'bg',
+      'ca',
+      'da',
+      'nl',
+      'en',
+      'et',
+      'fi',
+      'ka',
+      'de',
+      'el',
+      'hu',
+      'lb',
+      'no',
+      'so',
+      'sw',
+      'sv',
+      'ta',
+      'te',
+      'tr',
+      'ur'
     ],
     irish: ['ga'],
     russian: ['ru', 'uk'],
@@ -312,57 +360,105 @@ export class I18n {
    */
   static pluralRules = {
     /* eslint-disable jsdoc/require-jsdoc */
-    arabic (n) {
-      if (n === 0) { return 'zero' }
-      if (n === 1) { return 'one' }
-      if (n === 2) { return 'two' }
-      if (n % 100 >= 3 && n % 100 <= 10) { return 'few' }
-      if (n % 100 >= 11 && n % 100 <= 99) { return 'many' }
+    arabic(n) {
+      if (n === 0) {
+        return 'zero'
+      }
+      if (n === 1) {
+        return 'one'
+      }
+      if (n === 2) {
+        return 'two'
+      }
+      if (n % 100 >= 3 && n % 100 <= 10) {
+        return 'few'
+      }
+      if (n % 100 >= 11 && n % 100 <= 99) {
+        return 'many'
+      }
       return 'other'
     },
-    chinese () {
+    chinese() {
       return 'other'
     },
-    french (n) {
+    french(n) {
       return n === 0 || n === 1 ? 'one' : 'other'
     },
-    german (n) {
+    german(n) {
       return n === 1 ? 'one' : 'other'
     },
-    irish (n) {
-      if (n === 1) { return 'one' }
-      if (n === 2) { return 'two' }
-      if (n >= 3 && n <= 6) { return 'few' }
-      if (n >= 7 && n <= 10) { return 'many' }
+    irish(n) {
+      if (n === 1) {
+        return 'one'
+      }
+      if (n === 2) {
+        return 'two'
+      }
+      if (n >= 3 && n <= 6) {
+        return 'few'
+      }
+      if (n >= 7 && n <= 10) {
+        return 'many'
+      }
       return 'other'
     },
-    russian (n) {
+    russian(n) {
       const lastTwo = n % 100
       const last = lastTwo % 10
-      if (last === 1 && lastTwo !== 11) { return 'one' }
-      if (last >= 2 && last <= 4 && !(lastTwo >= 12 && lastTwo <= 14)) { return 'few' }
-      if (last === 0 || (last >= 5 && last <= 9) || (lastTwo >= 11 && lastTwo <= 14)) { return 'many' }
+      if (last === 1 && lastTwo !== 11) {
+        return 'one'
+      }
+      if (last >= 2 && last <= 4 && !(lastTwo >= 12 && lastTwo <= 14)) {
+        return 'few'
+      }
+      if (
+        last === 0 ||
+        (last >= 5 && last <= 9) ||
+        (lastTwo >= 11 && lastTwo <= 14)
+      ) {
+        return 'many'
+      }
       // Note: The 'other' suffix is only used by decimal numbers in Russian.
       // We don't anticipate it being used, but it's here for consistency.
       return 'other'
     },
-    scottish (n) {
-      if (n === 1 || n === 11) { return 'one' }
-      if (n === 2 || n === 12) { return 'two' }
-      if ((n >= 3 && n <= 10) || (n >= 13 && n <= 19)) { return 'few' }
+    scottish(n) {
+      if (n === 1 || n === 11) {
+        return 'one'
+      }
+      if (n === 2 || n === 12) {
+        return 'two'
+      }
+      if ((n >= 3 && n <= 10) || (n >= 13 && n <= 19)) {
+        return 'few'
+      }
       return 'other'
     },
-    spanish (n) {
-      if (n === 1) { return 'one' }
-      if (n % 1000000 === 0 && n !== 0) { return 'many' }
+    spanish(n) {
+      if (n === 1) {
+        return 'one'
+      }
+      if (n % 1000000 === 0 && n !== 0) {
+        return 'many'
+      }
       return 'other'
     },
-    welsh (n) {
-      if (n === 0) { return 'zero' }
-      if (n === 1) { return 'one' }
-      if (n === 2) { return 'two' }
-      if (n === 3) { return 'few' }
-      if (n === 6) { return 'many' }
+    welsh(n) {
+      if (n === 0) {
+        return 'zero'
+      }
+      if (n === 1) {
+        return 'one'
+      }
+      if (n === 2) {
+        return 'two'
+      }
+      if (n === 3) {
+        return 'few'
+      }
+      if (n === 6) {
+        return 'many'
+      }
       return 'other'
     }
     /* eslint-enable jsdoc/require-jsdoc */

@@ -20,7 +20,7 @@ const expectedPages = [
 ]
 
 describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
-  describe.each(expectedPages)('%s', path => {
+  describe.each(expectedPages)('%s', (path) => {
     it('should resolve with a http status code of 200', async () => {
       const { status } = await fetchPath(path, { method: 'HEAD' })
       expect(status).toEqual(200)
@@ -53,7 +53,9 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         expect($errorSummary.length).toBeFalsy()
       })
       it('should show errors if form is submitted with no input', async () => {
-        const response = await fetchPath('/full-page-examples/feedback', { method: 'POST' })
+        const response = await fetchPath('/full-page-examples/feedback', {
+          method: 'POST'
+        })
         const body = await response.text()
         const $ = load(body)
 
@@ -72,7 +74,9 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
 
     describe('have-you-changed-your-name', () => {
       it('should not show errors if submit with no input', async () => {
-        const response = await fetchPath('/full-page-examples/have-you-changed-your-name')
+        const response = await fetchPath(
+          '/full-page-examples/have-you-changed-your-name'
+        )
         const body = await response.text()
         const $ = load(body)
 
@@ -85,7 +89,10 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         expect($errorSummary.length).toBeFalsy()
       })
       it('should show errors if form is submitted with no input', async () => {
-        const response = await fetchPath('/full-page-examples/have-you-changed-your-name', { method: 'POST' })
+        const response = await fetchPath(
+          '/full-page-examples/have-you-changed-your-name',
+          { method: 'POST' }
+        )
         const body = await response.text()
         const $ = load(body)
 
@@ -117,7 +124,10 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         expect($errorSummary.length).toBeFalsy()
       })
       it('should show errors if form is submitted with no input', async () => {
-        const response = await fetchPath('/full-page-examples/passport-details', { method: 'POST' })
+        const response = await fetchPath(
+          '/full-page-examples/passport-details',
+          { method: 'POST' }
+        )
         const body = await response.text()
         const $ = load(body)
 
@@ -136,7 +146,9 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
 
     describe('update-your-account-details', () => {
       it('should not show errors if submit with no input', async () => {
-        const response = await fetchPath('/full-page-examples/update-your-account-details')
+        const response = await fetchPath(
+          '/full-page-examples/update-your-account-details'
+        )
         const body = await response.text()
         const $ = load(body)
 
@@ -149,7 +161,10 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         expect($errorSummary.length).toBeFalsy()
       })
       it('should show errors if form is submitted with no input', async () => {
-        const response = await fetchPath('/full-page-examples/update-your-account-details', { method: 'POST' })
+        const response = await fetchPath(
+          '/full-page-examples/update-your-account-details',
+          { method: 'POST' }
+        )
         const body = await response.text()
         const $ = load(body)
 
@@ -168,7 +183,9 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
 
     describe('upload-your-photo', () => {
       it('should not show errors if submit with no input', async () => {
-        const response = await fetchPath('/full-page-examples/upload-your-photo')
+        const response = await fetchPath(
+          '/full-page-examples/upload-your-photo'
+        )
         const body = await response.text()
         const $ = load(body)
 
@@ -181,7 +198,10 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         expect($errorSummary.length).toBeFalsy()
       })
       it('should show errors if form is submitted with no input', async () => {
-        const response = await fetchPath('/full-page-examples/upload-your-photo', { method: 'POST' })
+        const response = await fetchPath(
+          '/full-page-examples/upload-your-photo',
+          { method: 'POST' }
+        )
         const body = await response.text()
         const $ = load(body)
 
@@ -200,7 +220,9 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
 
     describe('how-do-you-want-to-sign-in', () => {
       it('should not show errors if submit with no input', async () => {
-        const response = await fetchPath('/full-page-examples/how-do-you-want-to-sign-in')
+        const response = await fetchPath(
+          '/full-page-examples/how-do-you-want-to-sign-in'
+        )
         const body = await response.text()
         const $ = load(body)
 
@@ -213,7 +235,10 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         expect($errorSummary.length).toBeFalsy()
       })
       it('should show errors if form is submitted with no input', async () => {
-        const response = await fetchPath('/full-page-examples/how-do-you-want-to-sign-in', { method: 'POST' })
+        const response = await fetchPath(
+          '/full-page-examples/how-do-you-want-to-sign-in',
+          { method: 'POST' }
+        )
         const body = await response.text()
         const $ = load(body)
 
@@ -232,7 +257,9 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
 
     describe('what-is-your-nationality', () => {
       it('should not show errors if submit with no input', async () => {
-        const response = await fetchPath('/full-page-examples/what-is-your-nationality')
+        const response = await fetchPath(
+          '/full-page-examples/what-is-your-nationality'
+        )
         const body = await response.text()
         const $ = load(body)
 
@@ -245,7 +272,10 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         expect($errorSummary.length).toBeFalsy()
       })
       it('should show errors if form is submitted with no input', async () => {
-        const response = await fetchPath('/full-page-examples/what-is-your-nationality', { method: 'POST' })
+        const response = await fetchPath(
+          '/full-page-examples/what-is-your-nationality',
+          { method: 'POST' }
+        )
         const body = await response.text()
         const $ = load(body)
 
@@ -264,7 +294,9 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
 
     describe('what-is-your-address', () => {
       it('should not show errors if submit with no input', async () => {
-        const response = await fetchPath('/full-page-examples/what-is-your-address')
+        const response = await fetchPath(
+          '/full-page-examples/what-is-your-address'
+        )
         const body = await response.text()
         const $ = load(body)
 
@@ -277,7 +309,10 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         expect($errorSummary.length).toBeFalsy()
       })
       it('should show errors if form is submitted with no input', async () => {
-        const response = await fetchPath('/full-page-examples/what-is-your-address', { method: 'POST' })
+        const response = await fetchPath(
+          '/full-page-examples/what-is-your-address',
+          { method: 'POST' }
+        )
         const body = await response.text()
         const $ = load(body)
 
@@ -296,7 +331,9 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
 
     describe('what-is-your-postcode', () => {
       it('should not show errors if submit with no input', async () => {
-        const response = await fetchPath('/full-page-examples/what-is-your-postcode')
+        const response = await fetchPath(
+          '/full-page-examples/what-is-your-postcode'
+        )
         const body = await response.text()
         const $ = load(body)
 
@@ -309,7 +346,10 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         expect($errorSummary.length).toBeFalsy()
       })
       it('should show errors if form is submitted with no input', async () => {
-        const response = await fetchPath('/full-page-examples/what-is-your-postcode', { method: 'POST' })
+        const response = await fetchPath(
+          '/full-page-examples/what-is-your-postcode',
+          { method: 'POST' }
+        )
         const body = await response.text()
         const $ = load(body)
 
@@ -335,14 +375,18 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         expect($.html()).toContain('482,211 results')
       })
       it('should show sorted results when selected', async () => {
-        const response = await fetchPath('/full-page-examples/search?order=updated-newest')
+        const response = await fetchPath(
+          '/full-page-examples/search?order=updated-newest'
+        )
         const body = await response.text()
         const $ = load(body)
         // Check the results are correct
         expect($.html()).toContain('241,128 results')
       })
       it('should show organisation results when selected', async () => {
-        const response = await fetchPath('/full-page-examples/search?order=updated-newest&organisation=hmrc')
+        const response = await fetchPath(
+          '/full-page-examples/search?order=updated-newest&organisation=hmrc'
+        )
         const body = await response.text()
         const $ = load(body)
         // Check the results are correct
@@ -352,7 +396,9 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
 
     describe('what-was-the-last-country-you-visited', () => {
       it('should not show errors if submit with no input', async () => {
-        const response = await fetchPath('/full-page-examples/what-was-the-last-country-you-visited')
+        const response = await fetchPath(
+          '/full-page-examples/what-was-the-last-country-you-visited'
+        )
         const body = await response.text()
         const $ = load(body)
 
@@ -365,7 +411,10 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         expect($errorSummary.length).toBeFalsy()
       })
       it('should show errors if form is submitted with no input', async () => {
-        const response = await fetchPath('/full-page-examples/what-was-the-last-country-you-visited', { method: 'POST' })
+        const response = await fetchPath(
+          '/full-page-examples/what-was-the-last-country-you-visited',
+          { method: 'POST' }
+        )
         const body = await response.text()
         const $ = load(body)
 

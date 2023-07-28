@@ -9,7 +9,7 @@ import beautify from 'js-beautify'
  * @param {unknown} params - Component macro params
  * @returns {string} Nunjucks code
  */
-export function getHTMLCode (componentName, params) {
+export function getHTMLCode(componentName, params) {
   const templatePath = packageTypeToPath('govuk-frontend', {
     modulePath: `components/${componentName}/template.njk`,
     moduleRoot: paths.app

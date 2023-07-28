@@ -5,7 +5,7 @@ import { TestEnvironment } from 'jest-environment-puppeteer'
  * Adds Puppeteer page/browser globals, shared test globals
  */
 class BrowserAutomationEnvironment extends TestEnvironment {
-  async setup () {
+  async setup() {
     await super.setup()
 
     // Listen for browser exceptions

@@ -12,18 +12,21 @@ module.exports = function (api) {
 
   return {
     presets: [
-      ['@babel/preset-env', {
-        browserslistEnv,
+      [
+        '@babel/preset-env',
+        {
+          browserslistEnv,
 
-        // Apply bug fixes to avoid transforms
-        bugfixes: true,
+          // Apply bug fixes to avoid transforms
+          bugfixes: true,
 
-        // Apply smaller "loose" transforms for browsers
-        loose: isBrowser,
+          // Apply smaller "loose" transforms for browsers
+          loose: isBrowser,
 
-        // Skip ES module transforms for browsers
-        modules: isBrowser ? false : 'auto'
-      }]
+          // Skip ES module transforms for browsers
+          modules: isBrowser ? false : 'auto'
+        }
+      ]
     ]
   }
 }

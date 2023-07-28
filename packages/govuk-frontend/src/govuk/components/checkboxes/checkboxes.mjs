@@ -22,8 +22,11 @@ export class Checkboxes {
    *
    * @param {Element} $module - HTML element to use for checkboxes
    */
-  constructor ($module) {
-    if (!($module instanceof HTMLElement) || !document.body.classList.contains('govuk-frontend-supported')) {
+  constructor($module) {
+    if (
+      !($module instanceof HTMLElement) ||
+      !document.body.classList.contains('govuk-frontend-supported')
+    ) {
       return this
     }
 
@@ -70,8 +73,10 @@ export class Checkboxes {
    *
    * @private
    */
-  syncAllConditionalReveals () {
-    this.$inputs.forEach(($input) => this.syncConditionalRevealWithInputState($input))
+  syncAllConditionalReveals() {
+    this.$inputs.forEach(($input) =>
+      this.syncConditionalRevealWithInputState($input)
+    )
   }
 
   /**
@@ -83,18 +88,24 @@ export class Checkboxes {
    * @private
    * @param {HTMLInputElement} $input - Checkbox input
    */
-  syncConditionalRevealWithInputState ($input) {
+  syncConditionalRevealWithInputState($input) {
     const targetId = $input.getAttribute('aria-controls')
     if (!targetId) {
       return
     }
 
     const $target = document.getElementById(targetId)
-    if ($target && $target.classList.contains('govuk-checkboxes__conditional')) {
+    if (
+      $target &&
+      $target.classList.contains('govuk-checkboxes__conditional')
+    ) {
       const inputIsChecked = $input.checked
 
       $input.setAttribute('aria-expanded', inputIsChecked.toString())
-      $target.classList.toggle('govuk-checkboxes__conditional--hidden', !inputIsChecked)
+      $target.classList.toggle(
+        'govuk-checkboxes__conditional--hidden',
+        !inputIsChecked
+      )
     }
   }
 
@@ -107,14 +118,14 @@ export class Checkboxes {
    * @private
    * @param {HTMLInputElement} $input - Checkbox input
    */
-  unCheckAllInputsExcept ($input) {
+  unCheckAllInputsExcept($input) {
     /** @satisfies {NodeListOf<HTMLInputElement>} */
     const allInputsWithSameName = document.querySelectorAll(
       `input[type="checkbox"][name="${$input.name}"]`
     )
 
     allInputsWithSameName.forEach(($inputWithSameName) => {
-      const hasSameFormOwner = ($input.form === $inputWithSameName.form)
+      const hasSameFormOwner = $input.form === $inputWithSameName.form
       if (hasSameFormOwner && $inputWithSameName !== $input) {
         $inputWithSameName.checked = false
         this.syncConditionalRevealWithInputState($inputWithSameName)
@@ -132,14 +143,15 @@ export class Checkboxes {
    * @private
    * @param {HTMLInputElement} $input - Checkbox input
    */
-  unCheckExclusiveInputs ($input) {
+  unCheckExclusiveInputs($input) {
     /** @satisfies {NodeListOf<HTMLInputElement>} */
-    const allInputsWithSameNameAndExclusiveBehaviour = document.querySelectorAll(
-      `input[data-behaviour="exclusive"][type="checkbox"][name="${$input.name}"]`
-    )
+    const allInputsWithSameNameAndExclusiveBehaviour =
+      document.querySelectorAll(
+        `input[data-behaviour="exclusive"][type="checkbox"][name="${$input.name}"]`
+      )
 
     allInputsWithSameNameAndExclusiveBehaviour.forEach(($exclusiveInput) => {
-      const hasSameFormOwner = ($input.form === $exclusiveInput.form)
+      const hasSameFormOwner = $input.form === $exclusiveInput.form
       if (hasSameFormOwner) {
         $exclusiveInput.checked = false
         this.syncConditionalRevealWithInputState($exclusiveInput)
@@ -156,11 +168,14 @@ export class Checkboxes {
    * @private
    * @param {MouseEvent} event - Click event
    */
-  handleClick (event) {
+  handleClick(event) {
     const $clickedInput = event.target
 
     // Ignore clicks on things that aren't checkbox inputs
-    if (!($clickedInput instanceof HTMLInputElement) || $clickedInput.type !== 'checkbox') {
+    if (
+      !($clickedInput instanceof HTMLInputElement) ||
+      $clickedInput.type !== 'checkbox'
+    ) {
       return
     }
 
@@ -176,7 +191,8 @@ export class Checkboxes {
     }
 
     // Handle 'exclusive' checkbox behaviour (ie "None of these")
-    const hasBehaviourExclusive = ($clickedInput.getAttribute('data-behaviour') === 'exclusive')
+    const hasBehaviourExclusive =
+      $clickedInput.getAttribute('data-behaviour') === 'exclusive'
     if (hasBehaviourExclusive) {
       this.unCheckAllInputsExcept($clickedInput)
     } else {

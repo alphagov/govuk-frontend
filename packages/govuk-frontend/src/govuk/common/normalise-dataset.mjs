@@ -13,7 +13,7 @@
  * @param {string} value - The value to normalise
  * @returns {string | boolean | number | undefined} Normalised data
  */
-export function normaliseString (value) {
+export function normaliseString(value) {
   if (typeof value !== 'string') {
     return value
   }
@@ -46,7 +46,7 @@ export function normaliseString (value) {
  * @param {DOMStringMap} dataset - HTML element dataset
  * @returns {{ [key: string]: unknown }} Normalised dataset
  */
-export function normaliseDataset (dataset) {
+export function normaliseDataset(dataset) {
   /** @type {{ [key: string]: unknown }} */
   const out = {}
 

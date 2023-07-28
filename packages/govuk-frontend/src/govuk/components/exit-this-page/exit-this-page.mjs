@@ -74,8 +74,11 @@ export class ExitThisPage {
    * @param {Element} $module - HTML element that wraps the Exit This Page button
    * @param {ExitThisPageConfig} [config] - Exit This Page config
    */
-  constructor ($module, config) {
-    if (!($module instanceof HTMLElement) || !document.body.classList.contains('govuk-frontend-supported')) {
+  constructor($module, config) {
+    if (
+      !($module instanceof HTMLElement) ||
+      !document.body.classList.contains('govuk-frontend-supported')
+    ) {
       return this
     }
 
@@ -94,7 +97,9 @@ export class ExitThisPage {
     this.$module = $module
     this.$button = $button
 
-    const $skiplinkButton = document.querySelector('.govuk-js-exit-this-page-skiplink')
+    const $skiplinkButton = document.querySelector(
+      '.govuk-js-exit-this-page-skiplink'
+    )
     if ($skiplinkButton instanceof HTMLAnchorElement) {
       this.$skiplinkButton = $skiplinkButton
     }
@@ -120,7 +125,7 @@ export class ExitThisPage {
    *
    * @private
    */
-  initUpdateSpan () {
+  initUpdateSpan() {
     this.$updateSpan = document.createElement('span')
     this.$updateSpan.setAttribute('role', 'status')
     this.$updateSpan.className = 'govuk-visually-hidden'
@@ -133,13 +138,16 @@ export class ExitThisPage {
    *
    * @private
    */
-  initButtonClickHandler () {
+  initButtonClickHandler() {
     // Main EtP button
     this.$button.addEventListener('click', this.handleClick.bind(this))
 
     // EtP secondary link
     if (this.$skiplinkButton) {
-      this.$skiplinkButton.addEventListener('click', this.handleClick.bind(this))
+      this.$skiplinkButton.addEventListener(
+        'click',
+        this.handleClick.bind(this)
+      )
     }
   }
 
@@ -148,7 +156,7 @@ export class ExitThisPage {
    *
    * @private
    */
-  buildIndicator () {
+  buildIndicator() {
     // Build container
     // Putting `aria-hidden` on it as it won't contain any readable information
     this.$indicatorContainer = document.createElement('div')
@@ -172,12 +180,16 @@ export class ExitThisPage {
    *
    * @private
    */
-  updateIndicator () {
+  updateIndicator() {
     // Show or hide the indicator container depending on keypressCounter value
     if (this.keypressCounter > 0) {
-      this.$indicatorContainer.classList.add('govuk-exit-this-page__indicator--visible')
+      this.$indicatorContainer.classList.add(
+        'govuk-exit-this-page__indicator--visible'
+      )
     } else {
-      this.$indicatorContainer.classList.remove('govuk-exit-this-page__indicator--visible')
+      this.$indicatorContainer.classList.remove(
+        'govuk-exit-this-page__indicator--visible'
+      )
     }
 
     // Turn on only the indicators we want on
@@ -200,7 +212,7 @@ export class ExitThisPage {
    *
    * @private
    */
-  exitPage () {
+  exitPage() {
     this.$updateSpan.innerText = ''
 
     // Blank the page
@@ -232,7 +244,7 @@ export class ExitThisPage {
    * @private
    * @param {MouseEvent} event - mouse click event
    */
-  handleClick (event) {
+  handleClick(event) {
     event.preventDefault()
     this.exitPage()
   }
@@ -244,7 +256,7 @@ export class ExitThisPage {
    * @private
    * @param {KeyboardEvent} event - keyup event
    */
-  handleKeypress (event) {
+  handleKeypress(event) {
     // Detect if the 'Shift' key has been pressed. We want to only do things if it
     // was pressed by itself and not in a combination with another key—so we keep
     // track of whether the preceding keyup had shiftKey: true on it, and if it
@@ -306,7 +318,7 @@ export class ExitThisPage {
    *
    * @private
    */
-  setKeypressTimer () {
+  setKeypressTimer() {
     // Clear any existing timeout. This is so only one timer is running even if
     // there are multiple keypresses in quick succession.
     window.clearTimeout(this.keypressTimeoutId)
@@ -323,7 +335,7 @@ export class ExitThisPage {
    *
    * @private
    */
-  resetKeypressTimer () {
+  resetKeypressTimer() {
     window.clearTimeout(this.keypressTimeoutId)
     this.keypressTimeoutId = null
 
@@ -351,7 +363,7 @@ export class ExitThisPage {
    *
    * @deprecated Will be made private in v5.0
    */
-  resetPage () {
+  resetPage() {
     // If an overlay is set, remove it and reset the value
     document.body.classList.remove('govuk-exit-this-page-hide-content')
 

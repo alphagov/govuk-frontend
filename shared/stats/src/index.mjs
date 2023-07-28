@@ -1,13 +1,19 @@
 import { join, parse } from 'path'
 
 import { paths } from 'govuk-frontend-config'
-import { getComponentNames, filterPath, getYaml } from 'govuk-frontend-lib/files'
+import {
+  getComponentNames,
+  filterPath,
+  getYaml
+} from 'govuk-frontend-lib/files'
 
 /**
  * Components with JavaScript
  */
-const componentNamesWithJavaScript = await getComponentNames((componentName, componentFiles) =>
-  componentFiles.some(filterPath([`**/${componentName}.mjs`])))
+const componentNamesWithJavaScript = await getComponentNames(
+  (componentName, componentFiles) =>
+    componentFiles.some(filterPath([`**/${componentName}.mjs`]))
+)
 
 /**
  * Package options
@@ -23,9 +29,11 @@ export const packageOptions = {
 /**
  * Rollup input paths
  */
-export const modulePaths = [packageOptions.modulePath]
-  .concat(componentNamesWithJavaScript.map((componentName) =>
-    `components/${componentName}/${componentName}.mjs`))
+export const modulePaths = [packageOptions.modulePath].concat(
+  componentNamesWithJavaScript.map(
+    (componentName) => `components/${componentName}/${componentName}.mjs`
+  )
+)
 
 /**
  * Rollup module stats
@@ -33,13 +41,14 @@ export const modulePaths = [packageOptions.modulePath]
  * @param {string} modulePath - Rollup input path
  * @returns {Promise<{ total: number, modules: ModulesList }>} Rollup module stats
  */
-export async function getStats (modulePath) {
+export async function getStats(modulePath) {
   const { base, dir, name } = parse(modulePath)
 
   // Path to Rollup `npm run build` YAML stats
   /** @type {Record<string, ModulesList> | undefined} */
-  const stats = await getYaml(join(paths.stats, `dist/${dir}/${name}.yaml`))
-    .catch(() => undefined)
+  const stats = await getYaml(
+    join(paths.stats, `dist/${dir}/${name}.yaml`)
+  ).catch(() => undefined)
 
   // Modules bundled
   const modules = stats?.[base] ?? {}

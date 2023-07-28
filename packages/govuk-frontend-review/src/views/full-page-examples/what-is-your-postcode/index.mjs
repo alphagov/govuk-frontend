@@ -11,7 +11,9 @@ export default (app) => {
     [
       body('address-postcode')
         .exists()
-        .not().isEmpty().withMessage('Enter your home postcode')
+        .not()
+        .isEmpty()
+        .withMessage('Enter your home postcode')
     ],
 
     /**
@@ -22,11 +24,14 @@ export default (app) => {
     (request, response) => {
       const errors = formatValidationErrors(validationResult(request))
       if (errors) {
-        return response.render('./full-page-examples/what-is-your-postcode/index', {
-          errors,
-          errorSummary: Object.values(errors),
-          values: request.body // In production this should sanitized.
-        })
+        return response.render(
+          './full-page-examples/what-is-your-postcode/index',
+          {
+            errors,
+            errorSummary: Object.values(errors),
+            values: request.body // In production this should sanitized.
+          }
+        )
       }
       response.render('./full-page-examples/what-is-your-postcode/confirm')
     }

@@ -4,8 +4,7 @@ const { sassNull } = require('sass-embedded')
 
 // Create a mock warn function that we can use to override the native @warn
 // function, that we can make assertions about post-render.
-const mockWarnFunction = jest.fn()
-  .mockReturnValue(sassNull)
+const mockWarnFunction = jest.fn().mockReturnValue(sassNull)
 
 const sassConfig = {
   logger: {
@@ -131,15 +130,13 @@ describe('@function _govuk-line-height', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
           .foo {
             line-height: 3.141;
           }
         `
-      })
+    })
   })
 
   it('preserves line-height if using different units', async () => {
@@ -151,15 +148,13 @@ describe('@function _govuk-line-height', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
           .foo {
             line-height: 2em;
           }
         `
-      })
+    })
   })
 
   it('converts line-height to a relative number', async () => {
@@ -171,15 +166,13 @@ describe('@function _govuk-line-height', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
           .foo {
             line-height: 1.5;
           }
         `
-      })
+    })
   })
 })
 
@@ -193,10 +186,8 @@ describe('@mixin govuk-typography-responsive', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
           .foo {
             font-size: 0.75rem;
             line-height: 1.25;
@@ -208,7 +199,7 @@ describe('@mixin govuk-typography-responsive', () => {
             }
           }
         `
-      })
+    })
   })
 
   it('outputs CSS with suitable media queries for print', async () => {
@@ -220,10 +211,8 @@ describe('@mixin govuk-typography-responsive', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
           .foo {
             font-size: 0.75rem;
             line-height: 1.25;
@@ -235,7 +224,7 @@ describe('@mixin govuk-typography-responsive', () => {
             }
           }
         `
-      })
+    })
   })
 
   it('throws an exception when passed a size that is not in the scale', async () => {
@@ -247,11 +236,9 @@ describe('@mixin govuk-typography-responsive', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
-      .rejects
-      .toThrow(
-        'Unknown font size `3.1415926536` - expected a point from the typography scale.'
-      )
+    await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
+      'Unknown font size `3.1415926536` - expected a point from the typography scale.'
+    )
   })
 
   describe('when $important is set to true', () => {
@@ -264,10 +251,8 @@ describe('@mixin govuk-typography-responsive', () => {
         }
       `
 
-      await expect(compileSassString(sass))
-        .resolves
-        .toMatchObject({
-          css: outdent`
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
             .foo {
               font-size: 0.75rem !important;
               line-height: 1.25 !important;
@@ -279,7 +264,7 @@ describe('@mixin govuk-typography-responsive', () => {
               }
             }
           `
-        })
+      })
     })
 
     it('marks font-size and line-height as important for print media', async () => {
@@ -291,10 +276,8 @@ describe('@mixin govuk-typography-responsive', () => {
         }
       `
 
-      await expect(compileSassString(sass))
-        .resolves
-        .toMatchObject({
-          css: outdent`
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
             .foo {
               font-size: 0.75rem !important;
               line-height: 1.25 !important;
@@ -306,7 +289,7 @@ describe('@mixin govuk-typography-responsive', () => {
               }
             }
           `
-        })
+      })
     })
   })
 
@@ -320,10 +303,8 @@ describe('@mixin govuk-typography-responsive', () => {
         }
       `
 
-      await expect(compileSassString(sass))
-        .resolves
-        .toMatchObject({
-          css: outdent`
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
             .foo {
               font-size: 0.75rem;
               line-height: 1.75;
@@ -335,7 +316,7 @@ describe('@mixin govuk-typography-responsive', () => {
               }
             }
           `
-        })
+      })
     })
   })
 
@@ -351,10 +332,8 @@ describe('@mixin govuk-typography-responsive', () => {
         }
       `
 
-      await expect(compileSassString(sass))
-        .resolves
-        .toMatchObject({
-          css: outdent`
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
             .foo {
               font-family: "GDS Transport", arial, sans-serif;
               -webkit-font-smoothing: antialiased;
@@ -375,7 +354,7 @@ describe('@mixin govuk-typography-responsive', () => {
               }
             }
           `
-        })
+      })
     })
 
     it('enables tabular numbers opentype feature flags if $tabular: true', async () => {

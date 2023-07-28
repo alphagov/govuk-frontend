@@ -14,7 +14,9 @@ describe('Exit this page', () => {
       const $button = $('.govuk-exit-this-page').find('.govuk-button')
 
       expect($button.hasClass('govuk-button--warning')).toBeTruthy()
-      expect($button.html()).toContain('<span class="govuk-visually-hidden">Emergency</span> Exit this page')
+      expect($button.html()).toContain(
+        '<span class="govuk-visually-hidden">Emergency</span> Exit this page'
+      )
       expect($button.attr('href')).toBe('/full-page-examples/announcements')
     })
   })
@@ -70,8 +72,12 @@ describe('Exit this page', () => {
 
       expect($component.attr('data-i18n.activated')).toBe('Tudalen ymadael')
       expect($component.attr('data-i18n.timed-out')).toBe("Wedi'i amseru")
-      expect($component.attr('data-i18n.press-two-more-times')).toBe("Pwyswch 'Shift' 2 gwaith arall")
-      expect($component.attr('data-i18n.press-one-more-time')).toBe("Pwyswch 'Shift' 1 mwy o amser")
+      expect($component.attr('data-i18n.press-two-more-times')).toBe(
+        "Pwyswch 'Shift' 2 gwaith arall"
+      )
+      expect($component.attr('data-i18n.press-one-more-time')).toBe(
+        "Pwyswch 'Shift' 1 mwy o amser"
+      )
     })
   })
 })

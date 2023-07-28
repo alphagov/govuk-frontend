@@ -12,7 +12,7 @@ import { files } from './index.mjs'
  * @param {AssetOutput} result - Generated or minified bundle
  * @returns {Promise<void>}
  */
-export async function write (filePath, result) {
+export async function write(filePath, result) {
   const { base, dir } = parse(filePath)
 
   const writeTasks = []
@@ -23,14 +23,16 @@ export async function write (filePath, result) {
   const code = 'css' in result ? result.css : result.code
 
   // 1. Write code (example.js)
-  writeTasks.push(files.write(base, {
-    destPath: dir,
+  writeTasks.push(
+    files.write(base, {
+      destPath: dir,
 
-    // Add source code
-    async fileContents () {
-      return code
-    }
-  }))
+      // Add source code
+      async fileContents() {
+        return code
+      }
+    })
+  )
 
   // 2. Write source map (example.js.map)
   if (map && 'sources' in map) {
@@ -40,19 +42,24 @@ export async function write (filePath, result) {
        * Make source file:// paths relative (e.g. for Dart Sass)
        * {@link https://sass-lang.com/documentation/js-api/interfaces/CompileResult#sourceMap}
        */
-      .map((path) => slash(path.startsWith('file://')
-        ? relative(dirname(filePath), fileURLToPath(path))
-        : path
-      ))
+      .map((path) =>
+        slash(
+          path.startsWith('file://')
+            ? relative(dirname(filePath), fileURLToPath(path))
+            : path
+        )
+      )
 
-    writeTasks.push(files.write(`${base}.map`, {
-      destPath: dir,
+    writeTasks.push(
+      files.write(`${base}.map`, {
+        destPath: dir,
 
-      // Add source map as JSON
-      async fileContents () {
-        return JSON.stringify(map)
-      }
-    }))
+        // Add source map as JSON
+        async fileContents() {
+          return JSON.stringify(map)
+        }
+      })
+    )
   }
 
   await Promise.all(writeTasks)

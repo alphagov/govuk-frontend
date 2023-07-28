@@ -11,7 +11,7 @@ import { loadConfigFile } from 'rollup/dist/loadConfigFile.js'
  * @param {string} pattern - Minimatch pattern
  * @param {AssetEntry[1]} [options] - Asset options for script(s)
  */
-export async function compile (pattern, options) {
+export async function compile(pattern, options) {
   const modulePaths = await getListing(pattern, {
     cwd: options.srcPath
   })
@@ -21,8 +21,9 @@ export async function compile (pattern, options) {
   process.setMaxListeners(1 + modulePaths.length)
 
   try {
-    const compileTasks = modulePaths
-      .map((modulePath) => compileJavaScript([modulePath, options]))
+    const compileTasks = modulePaths.map((modulePath) =>
+      compileJavaScript([modulePath, options])
+    )
 
     await Promise.all(compileTasks)
   } catch (cause) {
@@ -35,7 +36,10 @@ export async function compile (pattern, options) {
  *
  * @param {AssetEntry} assetEntry - Asset entry
  */
-export async function compileJavaScript ([modulePath, { basePath, configPath, srcPath, destPath, filePath = format }]) {
+export async function compileJavaScript([
+  modulePath,
+  { basePath, configPath, srcPath, destPath, filePath = format }
+]) {
   const config = await loadConfigFile(configPath, {
     i: join(srcPath, modulePath)
   })
@@ -46,56 +50,54 @@ export async function compileJavaScript ([modulePath, { basePath, configPath, sr
       ...options,
 
       // Handle warnings as errors
-      onwarn (message) {
+      onwarn(message) {
         throw message
       }
     })
 
     // Compile JavaScript to output format
-    await Promise.all(options.output.map((output) => {
-      const file = parse(output.file ?? modulePath)
+    await Promise.all(
+      options.output.map((output) => {
+        const file = parse(output.file ?? modulePath)
 
-      // Update filename by format unless already in config
-      if (!output.file) {
-        switch (output.format) {
-          case 'es':
-          case 'esm':
-          case 'module':
-            file.ext = output.compact
-              ? '.min.mjs'
-              : '.mjs'
-            break
+        // Update filename by format unless already in config
+        if (!output.file) {
+          switch (output.format) {
+            case 'es':
+            case 'esm':
+            case 'module':
+              file.ext = output.compact ? '.min.mjs' : '.mjs'
+              break
 
-          default:
-            file.ext = output.compact
-              ? '.min.js'
-              : '.js'
+            default:
+              file.ext = output.compact ? '.min.js' : '.js'
+          }
+
+          // Update basename with new extension and optional suffix
+          file.base = `${file.name}${output.preserveModules ? '' : '.bundle'}${
+            file.ext
+          }`
         }
 
-        // Update basename with new extension and optional suffix
-        file.base = `${file.name}${output.preserveModules ? '' : '.bundle'}${file.ext}`
-      }
+        return bundle.write({
+          ...output,
 
-      return bundle.write({
-        ...output,
+          // Write to directory for modules
+          dir: output.dir ?? (output.preserveModules ? destPath : undefined),
 
-        // Write to directory for modules
-        dir: output.dir ?? (output.preserveModules
-          ? destPath
-          : undefined),
+          // Write to file when bundling
+          file: !output.preserveModules
+            ? join(destPath, filePath(file))
+            : undefined,
 
-        // Write to file when bundling
-        file: !output.preserveModules
-          ? join(destPath, filePath(file))
-          : undefined,
+          // Output modules relative to base path not input
+          preserveModulesRoot: relative(basePath, srcPath),
 
-        // Output modules relative to base path not input
-        preserveModulesRoot: relative(basePath, srcPath),
-
-        // Enable source maps
-        sourcemap: true
+          // Enable source maps
+          sourcemap: true
+        })
       })
-    }))
+    )
   }
 }
 

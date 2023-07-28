@@ -1,4 +1,10 @@
-const { goToComponent, goToExample, getProperty, getAttribute, isVisible } = require('govuk-frontend-helpers/puppeteer')
+const {
+  goToComponent,
+  goToExample,
+  getProperty,
+  getAttribute,
+  isVisible
+} = require('govuk-frontend-helpers/puppeteer')
 
 describe('Radios with conditional reveals', () => {
   describe('when JavaScript is unavailable or fails', () => {
@@ -29,17 +35,23 @@ describe('Radios with conditional reveals', () => {
       })
 
       it('has no ARIA attributes applied', async () => {
-        const $inputsWithAriaExpanded = await $component.$$('.govuk-radios__input[aria-expanded]')
-        const $inputsWithAriaControls = await $component.$$('.govuk-radios__input[aria-controls]')
+        const $inputsWithAriaExpanded = await $component.$$(
+          '.govuk-radios__input[aria-expanded]'
+        )
+        const $inputsWithAriaControls = await $component.$$(
+          '.govuk-radios__input[aria-controls]'
+        )
 
         expect($inputsWithAriaExpanded.length).toBe(0)
         expect($inputsWithAriaControls.length).toBe(0)
       })
 
       it('falls back to making all conditional content visible', async () => {
-        return Promise.all($conditionals.map(async ($conditional) => {
-          return expect(await isVisible($conditional)).toBe(true)
-        }))
+        return Promise.all(
+          $conditionals.map(async ($conditional) => {
+            return expect(await isVisible($conditional)).toBe(true)
+          })
+        )
       })
     })
   })
@@ -60,7 +72,9 @@ describe('Radios with conditional reveals', () => {
 
       it('has conditional content revealed that is associated with a checked input', async () => {
         const $input = $inputs[0] // First input, checked
-        const $conditional = await $component.$(`[id="${await getAttribute($input, 'aria-controls')}"]`)
+        const $conditional = await $component.$(
+          `[id="${await getAttribute($input, 'aria-controls')}"]`
+        )
 
         expect(await getProperty($input, 'checked')).toBe(true)
         expect(await isVisible($conditional)).toBe(true)
@@ -68,7 +82,9 @@ describe('Radios with conditional reveals', () => {
 
       it('has no conditional content revealed that is associated with an unchecked input', async () => {
         const $input = $inputs[$inputs.length - 1] // Last input, unchecked
-        const $conditional = await $component.$(`[id="${await getAttribute($input, 'aria-controls')}"]`)
+        const $conditional = await $component.$(
+          `[id="${await getAttribute($input, 'aria-controls')}"]`
+        )
 
         expect(await getProperty($input, 'checked')).toBe(false)
         expect(await isVisible($conditional)).toBe(false)
@@ -110,7 +126,9 @@ describe('Radios with conditional reveals', () => {
 
       it('toggles the conditional content when clicking an input', async () => {
         const $input = $inputs[0] // First input, with conditional content
-        const $conditional = await $component.$(`[id="${await getAttribute($input, 'aria-controls')}"]`)
+        const $conditional = await $component.$(
+          `[id="${await getAttribute($input, 'aria-controls')}"]`
+        )
 
         // Initially collapsed
         expect(await getProperty($input, 'checked')).toBe(false)
@@ -131,7 +149,9 @@ describe('Radios with conditional reveals', () => {
 
       it('toggles the conditional content when using an input with a keyboard', async () => {
         const $input = $inputs[0] // First input, with conditional content
-        const $conditional = await $component.$(`[id="${await getAttribute($input, 'aria-controls')}"]`)
+        const $conditional = await $component.$(
+          `[id="${await getAttribute($input, 'aria-controls')}"]`
+        )
 
         // Initially collapsed
         expect(await getProperty($input, 'checked')).toBe(false)
@@ -174,12 +194,18 @@ describe('Radios with multiple groups', () => {
 
       $inputsWarm = await page.$$('.govuk-radios__input[id^="warm"]')
       $inputsCool = await page.$$('.govuk-radios__input[id^="cool"]')
-      $inputsNotInForm = await page.$$('.govuk-radios__input[id^="question-not-in-form"]')
+      $inputsNotInForm = await page.$$(
+        '.govuk-radios__input[id^="question-not-in-form"]'
+      )
     })
 
     it('toggles conditional reveals in other groups', async () => {
-      const $conditionalWarm = await page.$(`[id="${await getAttribute($inputsWarm[0], 'aria-controls')}"]`)
-      const $conditionalCool = await page.$(`[id="${await getAttribute($inputsCool[0], 'aria-controls')}"]`)
+      const $conditionalWarm = await page.$(
+        `[id="${await getAttribute($inputsWarm[0], 'aria-controls')}"]`
+      )
+      const $conditionalCool = await page.$(
+        `[id="${await getAttribute($inputsCool[0], 'aria-controls')}"]`
+      )
 
       // Select red in warm colours
       await $inputsWarm[0].click()
@@ -195,7 +221,9 @@ describe('Radios with multiple groups', () => {
     })
 
     it('toggles conditional reveals when not in a form', async () => {
-      const $conditionalWarm = await page.$(`[id="${await getAttribute($inputsWarm[0], 'aria-controls')}"]`)
+      const $conditionalWarm = await page.$(
+        `[id="${await getAttribute($inputsWarm[0], 'aria-controls')}"]`
+      )
 
       // Select first input in radios not in a form
       await $inputsNotInForm[0].click()
@@ -218,7 +246,9 @@ describe('Radios with multiple groups and conditional reveals', () => {
     })
 
     it('hides conditional reveals in other groups', async () => {
-      const $conditionalPrimary = await page.$(`[id="${await getAttribute($inputsPrimary[1], 'aria-controls')}"]`)
+      const $conditionalPrimary = await page.$(
+        `[id="${await getAttribute($inputsPrimary[1], 'aria-controls')}"]`
+      )
 
       // Choose the second radio in the first group, which reveals additional content
       await $inputsPrimary[1].click()

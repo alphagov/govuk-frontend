@@ -11,16 +11,24 @@ export default (app) => {
     [
       body('passport-number')
         .exists()
-        .not().isEmpty().withMessage('Enter your passport number'),
+        .not()
+        .isEmpty()
+        .withMessage('Enter your passport number'),
       body('expiry-day')
         .exists()
-        .not().isEmpty().withMessage('Enter your expiry day'),
+        .not()
+        .isEmpty()
+        .withMessage('Enter your expiry day'),
       body('expiry-month')
         .exists()
-        .not().isEmpty().withMessage('Enter your expiry month'),
+        .not()
+        .isEmpty()
+        .withMessage('Enter your expiry month'),
       body('expiry-year')
         .exists()
-        .not().isEmpty().withMessage('Enter your expiry year')
+        .not()
+        .isEmpty()
+        .withMessage('Enter your expiry year')
     ],
 
     /**
@@ -37,7 +45,9 @@ export default (app) => {
 
       // If any of the date inputs error apply a general error.
       const expiryNamePrefix = 'expiry'
-      const expiryErrors = Object.values(errors).filter(error => error.id.includes(`${expiryNamePrefix}-`))
+      const expiryErrors = Object.values(errors).filter((error) =>
+        error.id.includes(`${expiryNamePrefix}-`)
+      )
       if (expiryErrors.length) {
         const firstExpiryErrorId = expiryErrors[0].id
         // Get the first error message and merge it into a single error message.
@@ -53,14 +63,18 @@ export default (app) => {
         if (expiryErrors.length === 3) {
           errors[expiryNamePrefix].text += 'date'
         } else {
-          errors[expiryNamePrefix].text += expiryErrors.map(error => error.text.replace('Enter your expiry ', '')).join(' and ')
+          errors[expiryNamePrefix].text += expiryErrors
+            .map((error) => error.text.replace('Enter your expiry ', ''))
+            .join(' and ')
         }
       }
 
       let errorSummary = Object.values(errors)
       if (expiryErrors) {
         // Remove all other errors from the summary so we only have one message that links to the expiry input.
-        errorSummary = errorSummary.filter(error => !error.id.includes(`${expiryNamePrefix}-`))
+        errorSummary = errorSummary.filter(
+          (error) => !error.id.includes(`${expiryNamePrefix}-`)
+        )
       }
 
       response.render('./full-page-examples/passport-details/index', {

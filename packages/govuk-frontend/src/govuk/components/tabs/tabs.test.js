@@ -16,7 +16,10 @@ describe('/components/tabs', () => {
       })
 
       it('falls back to making all tab containers visible', async () => {
-        const isContentVisible = await page.waitForSelector('.govuk-tabs__panel', { visible: true, timeout: 5000 })
+        const isContentVisible = await page.waitForSelector(
+          '.govuk-tabs__panel',
+          { visible: true, timeout: 5000 }
+        )
         expect(isContentVisible).toBeTruthy()
       })
     })
@@ -27,20 +30,40 @@ describe('/components/tabs', () => {
       })
 
       it('should indicate the open state of the first tab', async () => {
-        const firstTabAriaSelected = await page.evaluate(() => document.body.querySelector('.govuk-tabs__list-item:first-child .govuk-tabs__tab').getAttribute('aria-selected'))
+        const firstTabAriaSelected = await page.evaluate(() =>
+          document.body
+            .querySelector(
+              '.govuk-tabs__list-item:first-child .govuk-tabs__tab'
+            )
+            .getAttribute('aria-selected')
+        )
         expect(firstTabAriaSelected).toEqual('true')
 
-        const firstTabClasses = await page.evaluate(() => document.body.querySelector('.govuk-tabs__list-item:first-child').className)
+        const firstTabClasses = await page.evaluate(
+          () =>
+            document.body.querySelector('.govuk-tabs__list-item:first-child')
+              .className
+        )
         expect(firstTabClasses).toContain('govuk-tabs__list-item--selected')
       })
 
       it('should display the first tab panel', async () => {
-        const tabPanelIsHidden = await page.evaluate(() => document.body.querySelector('.govuk-tabs > .govuk-tabs__panel').classList.contains('govuk-tabs__panel--hidden'))
+        const tabPanelIsHidden = await page.evaluate(() =>
+          document.body
+            .querySelector('.govuk-tabs > .govuk-tabs__panel')
+            .classList.contains('govuk-tabs__panel--hidden')
+        )
         expect(tabPanelIsHidden).toBeFalsy()
       })
 
       it('should hide all the tab panels except for the first one', async () => {
-        const tabPanelIsHidden = await page.evaluate(() => document.body.querySelector('.govuk-tabs > .govuk-tabs__panel ~ .govuk-tabs__panel').classList.contains('govuk-tabs__panel--hidden'))
+        const tabPanelIsHidden = await page.evaluate(() =>
+          document.body
+            .querySelector(
+              '.govuk-tabs > .govuk-tabs__panel ~ .govuk-tabs__panel'
+            )
+            .classList.contains('govuk-tabs__panel--hidden')
+        )
         expect(tabPanelIsHidden).toBeTruthy()
       })
     })
@@ -54,10 +77,20 @@ describe('/components/tabs', () => {
         // Click the second tab
         await page.click('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab')
 
-        const secondTabAriaSelected = await page.evaluate(() => document.body.querySelector('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab').getAttribute('aria-selected'))
+        const secondTabAriaSelected = await page.evaluate(() =>
+          document.body
+            .querySelector(
+              '.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab'
+            )
+            .getAttribute('aria-selected')
+        )
         expect(secondTabAriaSelected).toEqual('true')
 
-        const secondTabClasses = await page.evaluate(() => document.body.querySelector('.govuk-tabs__list-item:nth-child(2)').className)
+        const secondTabClasses = await page.evaluate(
+          () =>
+            document.body.querySelector('.govuk-tabs__list-item:nth-child(2)')
+              .className
+        )
         expect(secondTabClasses).toContain('govuk-tabs__list-item--selected')
       })
 
@@ -66,8 +99,14 @@ describe('/components/tabs', () => {
         await page.click('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab')
 
         const secondTabPanelIsHidden = await page.evaluate(() => {
-          const secondTabAriaControls = document.body.querySelector('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab').getAttribute('aria-controls')
-          return document.body.querySelector(`[id="${secondTabAriaControls}"]`).classList.contains('govuk-tabs__panel--hidden')
+          const secondTabAriaControls = document.body
+            .querySelector(
+              '.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab'
+            )
+            .getAttribute('aria-controls')
+          return document.body
+            .querySelector(`[id="${secondTabAriaControls}"]`)
+            .classList.contains('govuk-tabs__panel--hidden')
         })
         expect(secondTabPanelIsHidden).toBeFalsy()
       })
@@ -80,16 +119,26 @@ describe('/components/tabs', () => {
         it('should display the tab panel associated with the selected tab', async () => {
           await page.evaluate(() => {
             // Replace contents of second tab with a DOM element
-            const secondTab = document.body.querySelector('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab')
+            const secondTab = document.body.querySelector(
+              '.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab'
+            )
             secondTab.innerHTML = '<span>Tab 2</span>'
           })
 
           // Click the DOM element inside the second tab
-          await page.click('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab span')
+          await page.click(
+            '.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab span'
+          )
 
           const secondTabPanelIsHidden = await page.evaluate(() => {
-            const secondTabAriaControls = document.body.querySelector('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab').getAttribute('aria-controls')
-            return document.body.querySelector(`[id="${secondTabAriaControls}"]`).classList.contains('govuk-tabs__panel--hidden')
+            const secondTabAriaControls = document.body
+              .querySelector(
+                '.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab'
+              )
+              .getAttribute('aria-controls')
+            return document.body
+              .querySelector(`[id="${secondTabAriaControls}"]`)
+              .classList.contains('govuk-tabs__panel--hidden')
           })
           expect(secondTabPanelIsHidden).toBeFalsy()
         })
@@ -106,10 +155,20 @@ describe('/components/tabs', () => {
         await page.focus('.govuk-tabs__list-item:first-child .govuk-tabs__tab')
         await page.keyboard.press('ArrowRight')
 
-        const secondTabAriaSelected = await page.evaluate(() => document.body.querySelector('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab').getAttribute('aria-selected'))
+        const secondTabAriaSelected = await page.evaluate(() =>
+          document.body
+            .querySelector(
+              '.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab'
+            )
+            .getAttribute('aria-selected')
+        )
         expect(secondTabAriaSelected).toEqual('true')
 
-        const secondTabClasses = await page.evaluate(() => document.body.querySelector('.govuk-tabs__list-item:nth-child(2)').className)
+        const secondTabClasses = await page.evaluate(
+          () =>
+            document.body.querySelector('.govuk-tabs__list-item:nth-child(2)')
+              .className
+        )
         expect(secondTabClasses).toContain('govuk-tabs__list-item--selected')
       })
 
@@ -119,8 +178,14 @@ describe('/components/tabs', () => {
         await page.keyboard.down('ArrowRight')
 
         const secondTabPanelIsHidden = await page.evaluate(() => {
-          const secondTabAriaControls = document.body.querySelector('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab').getAttribute('aria-controls')
-          return document.body.querySelector(`[id="${secondTabAriaControls}"]`).classList.contains('govuk-tabs__panel--hidden')
+          const secondTabAriaControls = document.body
+            .querySelector(
+              '.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab'
+            )
+            .getAttribute('aria-controls')
+          return document.body
+            .querySelector(`[id="${secondTabAriaControls}"]`)
+            .classList.contains('govuk-tabs__panel--hidden')
         })
         expect(secondTabPanelIsHidden).toBeFalsy()
       })
@@ -130,13 +195,25 @@ describe('/components/tabs', () => {
       it('should indicate the open state of the associated tab', async () => {
         await goTo(page, '/components/tabs/preview/#past-week')
 
-        const currentTabAriaSelected = await page.evaluate(() => document.body.querySelector('.govuk-tabs__tab[href="#past-week"]').getAttribute('aria-selected'))
+        const currentTabAriaSelected = await page.evaluate(() =>
+          document.body
+            .querySelector('.govuk-tabs__tab[href="#past-week"]')
+            .getAttribute('aria-selected')
+        )
         expect(currentTabAriaSelected).toEqual('true')
 
-        const currentTabClasses = await page.evaluate(() => document.body.querySelector('.govuk-tabs__tab[href="#past-week"]').parentElement.className)
+        const currentTabClasses = await page.evaluate(
+          () =>
+            document.body.querySelector('.govuk-tabs__tab[href="#past-week"]')
+              .parentElement.className
+        )
         expect(currentTabClasses).toContain('govuk-tabs__list-item--selected')
 
-        const currentTabPanelIsHidden = await page.evaluate(() => document.getElementById('past-week').classList.contains('govuk-tabs__panel--hidden'))
+        const currentTabPanelIsHidden = await page.evaluate(() =>
+          document
+            .getElementById('past-week')
+            .classList.contains('govuk-tabs__panel--hidden')
+        )
         expect(currentTabPanelIsHidden).toBeFalsy()
       })
 
@@ -147,7 +224,9 @@ describe('/components/tabs', () => {
 
         await page.click('[href="#anchor"]')
 
-        const activeElementId = await page.evaluate(() => document.activeElement.id)
+        const activeElementId = await page.evaluate(
+          () => document.activeElement.id
+        )
         expect(activeElementId).toEqual('anchor')
       })
     })
@@ -156,7 +235,10 @@ describe('/components/tabs', () => {
       it('falls back to making the all tab containers visible', async () => {
         await page.emulate(iPhone)
         await goToComponent(page, 'tabs')
-        const isContentVisible = await page.waitForSelector('.govuk-tabs__panel', { visible: true, timeout: 5000 })
+        const isContentVisible = await page.waitForSelector(
+          '.govuk-tabs__panel',
+          { visible: true, timeout: 5000 }
+        )
         expect(isContentVisible).toBeTruthy()
       })
     })

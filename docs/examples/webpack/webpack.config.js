@@ -21,9 +21,7 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
     }
   },
 
-  devtool: WEBPACK_SERVE
-    ? 'inline-source-map'
-    : 'source-map',
+  devtool: WEBPACK_SERVE ? 'inline-source-map' : 'source-map',
 
   entry: {
     app: [
@@ -87,15 +85,17 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
 
   optimization: {
     minimize: mode === 'production',
-    minimizer: [new TerserPlugin({
-      extractComments: true,
-      terserOptions: {
-        format: { comments: false },
+    minimizer: [
+      new TerserPlugin({
+        extractComments: true,
+        terserOptions: {
+          format: { comments: false },
 
-        // Compatibility workarounds
-        safari10: true
-      }
-    })]
+          // Compatibility workarounds
+          safari10: true
+        }
+      })
+    ]
   },
 
   output: {
@@ -111,9 +111,7 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
       filename: 'stylesheets/[name].min.css'
     }),
     new CopyPlugin({
-      patterns: [
-        join(srcPath, 'index.html')
-      ]
+      patterns: [join(srcPath, 'index.html')]
     })
   ],
 

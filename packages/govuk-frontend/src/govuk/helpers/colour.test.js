@@ -4,8 +4,7 @@ const { sassNull } = require('sass-embedded')
 
 // Create a mock warn function that we can use to override the native @warn
 // function, that we can make assertions about post-render.
-const mockWarnFunction = jest.fn()
-  .mockReturnValue(sassNull)
+const mockWarnFunction = jest.fn().mockReturnValue(sassNull)
 
 const sassConfig = {
   logger: {
@@ -37,15 +36,13 @@ describe('@function govuk-colour', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
-      .resolves
-      .toMatchObject({
-        css: outdent`
+    await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+      css: outdent`
           .foo {
             color: #ff0000;
           }
         `
-      })
+    })
   })
 
   it('works with unquoted strings', async () => {
@@ -57,15 +54,13 @@ describe('@function govuk-colour', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
-      .resolves
-      .toMatchObject({
-        css: outdent`
+    await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+      css: outdent`
           .foo {
             color: #ff0000;
           }
         `
-      })
+    })
   })
 
   it('throws an error if a non-existent colour is requested', async () => {
@@ -77,11 +72,9 @@ describe('@function govuk-colour', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
-      .rejects
-      .toThrow(
-        'Unknown colour `hooloovoo`'
-      )
+    await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
+      'Unknown colour `hooloovoo`'
+    )
   })
 
   it('throws a deprecation warning if the $legacy parameter is used', async () => {
@@ -97,13 +90,14 @@ describe('@function govuk-colour', () => {
 
     // Expect our mocked @warn function to have been called once with a single
     // argument, which should be the deprecation notice
-    expect(mockWarnFunction.mock.calls[0])
-      .toEqual(expect.arrayContaining([
+    expect(mockWarnFunction.mock.calls[0]).toEqual(
+      expect.arrayContaining([
         'The `$legacy` parameter of `govuk-colour` is deprecated and is ' +
-        'non-operational. It will be removed in the next major version. To ' +
-        'silence this warning, update $govuk-suppressed-warnings with key: ' +
-        '"legacy-colour-param"'
-      ]))
+          'non-operational. It will be removed in the next major version. To ' +
+          'silence this warning, update $govuk-suppressed-warnings with key: ' +
+          '"legacy-colour-param"'
+      ])
+    )
   })
 })
 
@@ -131,15 +125,13 @@ describe('@function govuk-organisation-colour', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
-      .resolves
-      .toMatchObject({
-        css: outdent`
+    await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+      css: outdent`
           .foo {
             color: #9A00A8;
           }
         `
-      })
+    })
   })
 
   it('falls back to the default colour if a websafe colour is not explicitly defined', async () => {
@@ -151,15 +143,13 @@ describe('@function govuk-organisation-colour', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
-      .resolves
-      .toMatchObject({
-        css: outdent`
+    await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+      css: outdent`
           .foo {
             color: #A81223;
           }
         `
-      })
+    })
   })
 
   it('can be overridden to return the non-websafe colour', async () => {
@@ -171,15 +161,13 @@ describe('@function govuk-organisation-colour', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
-      .resolves
-      .toMatchObject({
-        css: outdent`
+    await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+      css: outdent`
           .foo {
             border-color: #EC22FF;
           }
         `
-      })
+    })
   })
 
   it('throws an error if a non-existent organisation is requested', async () => {
@@ -191,10 +179,8 @@ describe('@function govuk-organisation-colour', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
-      .rejects
-      .toThrow(
-        'Unknown organisation `muggle-born-registration-commission`'
-      )
+    await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
+      'Unknown organisation `muggle-born-registration-commission`'
+    )
   })
 })

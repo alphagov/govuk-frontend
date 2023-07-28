@@ -2,7 +2,12 @@ import percySnapshot from '@percy/puppeteer'
 import { waitForPercyIdle } from '@percy/sdk-utils'
 import { download } from 'govuk-frontend-helpers/jest/browser/download.mjs'
 import { goToComponent, goToExample } from 'govuk-frontend-helpers/puppeteer'
-import { filterPath, getComponentFiles, getComponentNames, getExamples } from 'govuk-frontend-lib/files'
+import {
+  filterPath,
+  getComponentFiles,
+  getComponentNames,
+  getExamples
+} from 'govuk-frontend-lib/files'
 import puppeteer from 'puppeteer'
 
 /**
@@ -10,7 +15,7 @@ import puppeteer from 'puppeteer'
  *
  * @returns {Promise<import('puppeteer').Browser>} Puppeteer browser object
  */
-export async function launch () {
+export async function launch() {
   await download()
 
   // Open browser
@@ -23,7 +28,7 @@ export async function launch () {
  *
  * @returns {Promise<void>}
  */
-export async function screenshots () {
+export async function screenshots() {
   const browser = await launch()
   const componentNames = await getComponentNames()
 
@@ -54,10 +59,7 @@ export async function screenshots () {
   }
 
   // Screenshot specific example pages
-  for (const exampleName of [
-    'text-alignment',
-    'typography'
-  ]) {
+  for (const exampleName of ['text-alignment', 'typography']) {
     await screenshotExample(await browser.newPage(), exampleName)
   }
 
@@ -78,7 +80,7 @@ export async function screenshots () {
  * @param {string} options.exampleName - Example name
  * @returns {Promise<void>}
  */
-export async function screenshotComponent (page, componentName, options) {
+export async function screenshotComponent(page, componentName, options) {
   const componentFiles = await getComponentFiles(componentName)
 
   // Navigate to component
@@ -113,7 +115,7 @@ export async function screenshotComponent (page, componentName, options) {
  * @param {string} exampleName - Component name
  * @returns {Promise<void>}
  */
-export async function screenshotExample (page, exampleName) {
+export async function screenshotExample(page, exampleName) {
   await goToExample(page, exampleName)
 
   // Dismiss app banner

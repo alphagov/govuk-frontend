@@ -43,7 +43,9 @@ describe('Panel', () => {
       const $ = render('panel', examples['title html as text'])
 
       const panelTitle = $('.govuk-panel__title').html().trim()
-      expect(panelTitle).toEqual('Application &lt;strong&gt;not&lt;/strong&gt; complete')
+      expect(panelTitle).toEqual(
+        'Application &lt;strong&gt;not&lt;/strong&gt; complete'
+      )
     })
 
     it('renders title as specified heading level', () => {
@@ -70,14 +72,18 @@ describe('Panel', () => {
       const $ = render('panel', examples['body html as text'])
 
       const panelBodyText = $('.govuk-panel__body').html().trim()
-      expect(panelBodyText).toEqual('Your reference number&lt;br&gt;&lt;strong&gt;HDJ2123F&lt;/strong&gt;')
+      expect(panelBodyText).toEqual(
+        'Your reference number&lt;br&gt;&lt;strong&gt;HDJ2123F&lt;/strong&gt;'
+      )
     })
 
     it('allows body HTML to be passed un-escaped', () => {
       const $ = render('panel', examples['body html'])
 
       const panelBodyText = $('.govuk-panel__body').html().trim()
-      expect(panelBodyText).toEqual('Your reference number<br><strong>HDJ2123F</strong>')
+      expect(panelBodyText).toEqual(
+        'Your reference number<br><strong>HDJ2123F</strong>'
+      )
     })
 
     it('allows additional classes to be added to the component', () => {

@@ -18,7 +18,7 @@ const expectedPages = [
 ]
 
 describe(`http://localhost:${ports.app}`, () => {
-  describe.each(expectedPages)('%s', path => {
+  describe.each(expectedPages)('%s', (path) => {
     it('should resolve with a http status code of 200', async () => {
       const { status } = await fetchPath(path, { method: 'HEAD' })
       expect(status).toEqual(200)
@@ -58,17 +58,14 @@ describe(`http://localhost:${ports.app}`, () => {
   describe('/examples/template-custom', () => {
     const templatePath = '/examples/template-custom'
 
-    it.each([
-      'headIcons',
-      'bodyStart',
-      'main',
-      'content',
-      'bodyEnd'
-    ])('should have a %s block set', async (block) => {
-      const response = await fetchPath(templatePath)
-      const $ = load(await response.text())
-      expect($.html()).toContain(`<!-- block:${block} -->`)
-    })
+    it.each(['headIcons', 'bodyStart', 'main', 'content', 'bodyEnd'])(
+      'should have a %s block set',
+      async (block) => {
+        const response = await fetchPath(templatePath)
+        const $ = load(await response.text())
+        expect($.html()).toContain(`<!-- block:${block} -->`)
+      }
+    )
 
     it('should have additional `htmlClasses`', async () => {
       const response = await fetchPath(templatePath)
@@ -110,7 +107,9 @@ describe(`http://localhost:${ports.app}`, () => {
       const $ = load(await response.text())
 
       const $title = $('title')
-      expect($title.html()).toBe("GOV.UK - Le meilleur endroit pour trouver des services gouvernementaux et de l'information")
+      expect($title.html()).toBe(
+        "GOV.UK - Le meilleur endroit pour trouver des services gouvernementaux et de l'information"
+      )
     })
 
     it('should have an application stylesheet', async () => {
@@ -146,7 +145,9 @@ describe(`http://localhost:${ports.app}`, () => {
       const $phaseBanner = $('.govuk-phase-banner')
       const $text = $phaseBanner.find('.govuk-phase-banner__text')
 
-      expect($text.html()).toContain("C'est un nouveau service - vos <a class=\"govuk-link\" href=\"#\">commentaires</a> nous aideront à l'améliorer.")
+      expect($text.html()).toContain(
+        'C\'est un nouveau service - vos <a class="govuk-link" href="#">commentaires</a> nous aideront à l\'améliorer.'
+      )
     })
 
     it('should have a custom Footer component', async () => {
@@ -184,7 +185,9 @@ describe(`http://localhost:${ports.app}`, () => {
       const $ = load(await response.text())
 
       const $main = $('main')
-      expect($main.attr('class')).toBe('govuk-main-wrapper govuk-main-wrapper--auto-spacing app-main-class')
+      expect($main.attr('class')).toBe(
+        'govuk-main-wrapper govuk-main-wrapper--auto-spacing app-main-class'
+      )
     })
   })
 })

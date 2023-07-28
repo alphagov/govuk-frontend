@@ -11,7 +11,9 @@ describe('Error-summary', () => {
   describe('default example', () => {
     it('has a child container with the role=alert attribute', () => {
       const $ = render('error-summary', examples.default)
-      const childRoleAttr = $('.govuk-error-summary div:first-child').attr('role')
+      const childRoleAttr = $('.govuk-error-summary div:first-child').attr(
+        'role'
+      )
 
       expect(childRoleAttr).toEqual('alert')
     })
@@ -33,14 +35,18 @@ describe('Error-summary', () => {
     it('error list item is an anchor tag if href attribute is specified', () => {
       const $ = render('error-summary', examples.default)
 
-      const errorItem = $('.govuk-error-summary .govuk-error-summary__list li:first-child')
+      const errorItem = $(
+        '.govuk-error-summary .govuk-error-summary__list li:first-child'
+      )
       expect(errorItem.children().get(0).tagName).toEqual('a')
     })
 
     it('render anchor tag href attribute is correctly', () => {
       const $ = render('error-summary', examples.default)
 
-      const errorItem = $('.govuk-error-summary .govuk-error-summary__list li:first-child a')
+      const errorItem = $(
+        '.govuk-error-summary .govuk-error-summary__list li:first-child a'
+      )
       expect(errorItem.attr('href')).toEqual('#example-error-1')
     })
   })
@@ -82,9 +88,15 @@ describe('Error-summary', () => {
     })
 
     it('renders nested components in description using `call`', () => {
-      const $ = render('error-summary', {}, '<div class="app-nested-component"></div>')
+      const $ = render(
+        'error-summary',
+        {},
+        '<div class="app-nested-component"></div>'
+      )
 
-      expect($('.govuk-error-summary .app-nested-component').length).toBeTruthy()
+      expect(
+        $('.govuk-error-summary .app-nested-component').length
+      ).toBeTruthy()
     })
 
     it('allows additional classes to be added to the error-summary component', () => {
@@ -112,7 +124,11 @@ describe('Error-summary', () => {
 
     it('renders error item text', () => {
       const $ = render('error-summary', examples['without links'])
-      const errorItemText = $('.govuk-error-summary .govuk-error-summary__list li:first-child').text().trim()
+      const errorItemText = $(
+        '.govuk-error-summary .govuk-error-summary__list li:first-child'
+      )
+        .text()
+        .trim()
 
       expect(errorItemText).toEqual('Invalid username or password')
     })
@@ -120,33 +136,63 @@ describe('Error-summary', () => {
     it('allows error item HTML to be passed un-escaped', () => {
       const $ = render('error-summary', examples['error list with html'])
 
-      const errorItemText = $('.govuk-error-summary .govuk-error-summary__list li').html().trim()
+      const errorItemText = $(
+        '.govuk-error-summary .govuk-error-summary__list li'
+      )
+        .html()
+        .trim()
 
-      expect(errorItemText).toEqual('The date your passport was issued <b>must</b> be in the past')
+      expect(errorItemText).toEqual(
+        'The date your passport was issued <b>must</b> be in the past'
+      )
     })
 
     it('allows error item text to be passed whilst escaping HTML entities', () => {
-      const $ = render('error-summary', examples['error list with html as text'])
+      const $ = render(
+        'error-summary',
+        examples['error list with html as text']
+      )
 
-      const errorItemText = $('.govuk-error-summary .govuk-error-summary__list li').html().trim()
+      const errorItemText = $(
+        '.govuk-error-summary .govuk-error-summary__list li'
+      )
+        .html()
+        .trim()
 
-      expect(errorItemText).toEqual('Descriptive link to the &lt;b&gt;question&lt;/b&gt; with an error')
+      expect(errorItemText).toEqual(
+        'Descriptive link to the &lt;b&gt;question&lt;/b&gt; with an error'
+      )
     })
 
     it('allows error item HTML inside "a" tag to be passed un-escaped', () => {
       const $ = render('error-summary', examples['error list with html link'])
 
-      const errorItemText = $('.govuk-error-summary .govuk-error-summary__list li a').html().trim()
+      const errorItemText = $(
+        '.govuk-error-summary .govuk-error-summary__list li a'
+      )
+        .html()
+        .trim()
 
-      expect(errorItemText).toEqual('Descriptive link to the <b>question</b> with an error')
+      expect(errorItemText).toEqual(
+        'Descriptive link to the <b>question</b> with an error'
+      )
     })
 
     it('allows error item text inside "a" tag to be passed whilst escaping HTML entities', () => {
-      const $ = render('error-summary', examples['error list with html as text link'])
+      const $ = render(
+        'error-summary',
+        examples['error list with html as text link']
+      )
 
-      const errorItemText = $('.govuk-error-summary .govuk-error-summary__list li a').html().trim()
+      const errorItemText = $(
+        '.govuk-error-summary .govuk-error-summary__list li a'
+      )
+        .html()
+        .trim()
 
-      expect(errorItemText).toEqual('Descriptive link to the &lt;b&gt;question&lt;/b&gt; with an error')
+      expect(errorItemText).toEqual(
+        'Descriptive link to the &lt;b&gt;question&lt;/b&gt; with an error'
+      )
     })
 
     it('allows to disable autofocus', () => {
@@ -157,7 +203,10 @@ describe('Error-summary', () => {
     })
 
     it('allows to explicitely enable autofocus', () => {
-      const $ = render('error-summary', examples['autofocus explicitly enabled'])
+      const $ = render(
+        'error-summary',
+        examples['autofocus explicitly enabled']
+      )
 
       const $component = $('.govuk-error-summary')
       expect($component.attr('data-disable-auto-focus')).toBe('false')

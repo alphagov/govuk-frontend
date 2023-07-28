@@ -10,20 +10,22 @@ import { files } from './index.mjs'
  * @param {Pick<AssetEntry[1], "srcPath" | "destPath">} options - Asset options
  * @returns {Promise<void>}
  */
-export async function compile (modulePath, options) {
-  const { default: configFn } = await import(pathToFileURL(join(options.srcPath, modulePath)).toString())
+export async function compile(modulePath, options) {
+  const { default: configFn } = await import(
+    pathToFileURL(join(options.srcPath, modulePath)).toString()
+  )
 
   // Write to destination
   return files.write(modulePath, {
     ...options,
 
     // Rename with `*.json` extension
-    filePath ({ dir, name }) {
+    filePath({ dir, name }) {
       return join(dir, `${name}.json`)
     },
 
     // Add config as JSON (formatted)
-    async fileContents () {
+    async fileContents() {
       return JSON.stringify(await configFn(), undefined, 2)
     }
   })

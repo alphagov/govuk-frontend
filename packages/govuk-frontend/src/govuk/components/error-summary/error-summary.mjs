@@ -21,7 +21,7 @@ export class ErrorSummary {
    * @param {Element} $module - HTML element to use for error summary
    * @param {ErrorSummaryConfig} [config] - Error summary config
    */
-  constructor ($module, config) {
+  constructor($module, config) {
     // Some consuming code may not be passing a module,
     // for example if they initialise the component
     // on their own by directly passing the result
@@ -29,7 +29,10 @@ export class ErrorSummary {
     // To avoid breaking further JavaScript initialisation
     // we need to safeguard against this so things keep
     // working the same now we read the elements data attributes
-    if (!($module instanceof HTMLElement) || !document.body.classList.contains('govuk-frontend-supported')) {
+    if (
+      !($module instanceof HTMLElement) ||
+      !document.body.classList.contains('govuk-frontend-supported')
+    ) {
       return this
     }
 
@@ -50,7 +53,7 @@ export class ErrorSummary {
    *
    * @private
    */
-  setFocus () {
+  setFocus() {
     if (this.config.disableAutoFocus) {
       return
     }
@@ -72,7 +75,7 @@ export class ErrorSummary {
    * @private
    * @param {MouseEvent} event - Click event
    */
-  handleClick (event) {
+  handleClick(event) {
     const $target = event.target
     if (this.focusTarget($target)) {
       event.preventDefault()
@@ -98,7 +101,7 @@ export class ErrorSummary {
    * @param {EventTarget} $target - Event target
    * @returns {boolean} True if the target was able to be focussed
    */
-  focusTarget ($target) {
+  focusTarget($target) {
     // If the element that was clicked was not a link, return early
     if (!($target instanceof HTMLAnchorElement)) {
       return false
@@ -138,7 +141,7 @@ export class ErrorSummary {
    * @param {string} url - URL
    * @returns {string | undefined} Fragment from URL, without the hash
    */
-  getFragmentFromUrl (url) {
+  getFragmentFromUrl(url) {
     if (url.indexOf('#') === -1) {
       return undefined
     }
@@ -162,7 +165,7 @@ export class ErrorSummary {
    * @returns {Element | null} Associated legend or label, or null if no associated
    *   legend or label can be found
    */
-  getAssociatedLegendOrLabel ($input) {
+  getAssociatedLegendOrLabel($input) {
     const $fieldset = $input.closest('fieldset')
 
     if ($fieldset) {
@@ -173,7 +176,10 @@ export class ErrorSummary {
 
         // If the input type is radio or checkbox, always use the legend if there
         // is one.
-        if ($input instanceof HTMLInputElement && ($input.type === 'checkbox' || $input.type === 'radio')) {
+        if (
+          $input instanceof HTMLInputElement &&
+          ($input.type === 'checkbox' || $input.type === 'radio')
+        ) {
           return $candidateLegend
         }
 
@@ -198,8 +204,10 @@ export class ErrorSummary {
       }
     }
 
-    return document.querySelector(`label[for='${$input.getAttribute('id')}']`) ||
+    return (
+      document.querySelector(`label[for='${$input.getAttribute('id')}']`) ||
       $input.closest('label')
+    )
   }
 
   /**

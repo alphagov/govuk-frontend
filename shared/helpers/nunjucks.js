@@ -1,13 +1,14 @@
 const { join } = require('path')
 
 const cheerio = require('cheerio')
-const { componentNameToMacroName, packageNameToPath } = require('govuk-frontend-lib/names')
+const {
+  componentNameToMacroName,
+  packageNameToPath
+} = require('govuk-frontend-lib/names')
 const nunjucks = require('nunjucks')
 const { outdent } = require('outdent')
 
-const nunjucksPaths = [
-  join(packageNameToPath('govuk-frontend'), 'src')
-]
+const nunjucksPaths = [join(packageNameToPath('govuk-frontend'), 'src')]
 
 const nunjucksEnv = nunjucks.configure(nunjucksPaths, {
   trimBlocks: true,
@@ -23,7 +24,7 @@ const nunjucksEnv = nunjucks.configure(nunjucksPaths, {
  *   Nunjucks call tag, with the callBlock passed as the contents of the block
  * @returns {string} HTML rendered by the macro
  */
-function renderHTML (componentName, options, callBlock) {
+function renderHTML(componentName, options, callBlock) {
   const macroName = componentNameToMacroName(componentName)
   const macroPath = `govuk/components/${componentName}/macro.njk`
 
@@ -39,7 +40,7 @@ function renderHTML (componentName, options, callBlock) {
  *   Nunjucks call tag, with the callBlock passed as the contents of the block
  * @returns {import('cheerio').CheerioAPI} HTML rendered by the macro
  */
-function render (componentName, options, callBlock) {
+function render(componentName, options, callBlock) {
   return cheerio.load(renderHTML(componentName, options, callBlock))
 }
 
@@ -52,7 +53,7 @@ function render (componentName, options, callBlock) {
  * @param {string} [callBlock] - Content for an optional callBlock, if necessary for the macro to receive one
  * @returns {string} The result of calling the macro
  */
-function renderMacro (macroName, macroPath, options = {}, callBlock) {
+function renderMacro(macroName, macroPath, options = {}, callBlock) {
   const macroOptions = JSON.stringify(options, undefined, 2)
 
   let macroString = `{%- from "${macroPath}" import ${macroName} -%}`
@@ -73,7 +74,7 @@ function renderMacro (macroName, macroPath, options = {}, callBlock) {
  * @param {{ [blockName: string]: string }} [blocks] - Nunjucks blocks
  * @returns {import('cheerio').CheerioAPI} Nunjucks template output
  */
-function renderTemplate (context = {}, blocks = {}) {
+function renderTemplate(context = {}, blocks = {}) {
   let viewString = '{% extends "govuk/template.njk" %}'
 
   for (const [blockName, blockContent] of Object.entries(blocks)) {

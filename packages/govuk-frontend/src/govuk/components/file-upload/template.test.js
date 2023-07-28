@@ -40,7 +40,9 @@ describe('File upload', () => {
       const $ = render('file-upload', examples.classes)
 
       const $component = $('.govuk-file-upload')
-      expect($component.hasClass('app-file-upload--custom-modifier')).toBeTruthy()
+      expect(
+        $component.hasClass('app-file-upload--custom-modifier')
+      ).toBeTruthy()
     })
 
     it('renders with value', () => {
@@ -65,7 +67,10 @@ describe('File upload', () => {
     })
 
     it('renders with a form group wrapper that has extra classes', () => {
-      const $ = render('file-upload', examples['with optional form-group classes'])
+      const $ = render(
+        'file-upload',
+        examples['with optional form-group classes']
+      )
 
       const $formGroup = $('.govuk-form-group')
       expect($formGroup.hasClass('extra-class')).toBeTruthy()
@@ -89,8 +94,7 @@ describe('File upload', () => {
         WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
       )
 
-      expect($component.attr('aria-describedby'))
-        .toMatch(hintId)
+      expect($component.attr('aria-describedby')).toMatch(hintId)
     })
 
     it('associates the input as "described by" the hint and parent fieldset', () => {
@@ -100,11 +104,12 @@ describe('File upload', () => {
       const $hint = $('.govuk-hint')
 
       const hintId = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${$hint.attr('id')}${WORD_BOUNDARY}`
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${$hint.attr(
+          'id'
+        )}${WORD_BOUNDARY}`
       )
 
-      expect($component.attr('aria-describedby'))
-        .toMatch(hintId)
+      expect($component.attr('aria-describedby')).toMatch(hintId)
     })
   })
 
@@ -125,8 +130,7 @@ describe('File upload', () => {
         WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
       )
 
-      expect($component.attr('aria-describedby'))
-        .toMatch(errorMessageId)
+      expect($component.attr('aria-describedby')).toMatch(errorMessageId)
     })
 
     it('associates the input as "described by" the error message and parent fieldset', () => {
@@ -136,11 +140,12 @@ describe('File upload', () => {
       const $errorMessage = $('.govuk-error-message')
 
       const errorMessageId = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${$errorMessage.attr('id')}${WORD_BOUNDARY}`
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${$errorMessage.attr(
+          'id'
+        )}${WORD_BOUNDARY}`
       )
 
-      expect($component.attr('aria-describedby'))
-        .toMatch(errorMessageId)
+      expect($component.attr('aria-describedby')).toMatch(errorMessageId)
     })
 
     it('includes the error class on the component', () => {
@@ -170,25 +175,32 @@ describe('File upload', () => {
         WORD_BOUNDARY + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
       )
 
-      expect($component.attr('aria-describedby'))
-        .toMatch(combinedIds)
+      expect($component.attr('aria-describedby')).toMatch(combinedIds)
     })
 
     it('associates the input as described by the hint, error message and parent fieldset', () => {
       const describedById = 'some-id'
 
-      const $ = render('file-upload', examples['with error, describedBy and hint'])
+      const $ = render(
+        'file-upload',
+        examples['with error, describedBy and hint']
+      )
 
       const $component = $('.govuk-file-upload')
       const errorMessageId = $('.govuk-error-message').attr('id')
       const hintId = $('.govuk-hint').attr('id')
 
       const combinedIds = new RegExp(
-        WORD_BOUNDARY + describedById + WHITESPACE + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
+        WORD_BOUNDARY +
+          describedById +
+          WHITESPACE +
+          hintId +
+          WHITESPACE +
+          errorMessageId +
+          WORD_BOUNDARY
       )
 
-      expect($component.attr('aria-describedby'))
-        .toMatch(combinedIds)
+      expect($component.attr('aria-describedby')).toMatch(combinedIds)
     })
   })
 

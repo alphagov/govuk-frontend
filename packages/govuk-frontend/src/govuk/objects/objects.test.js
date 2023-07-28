@@ -30,7 +30,9 @@ describe('The objects layer', () => {
 
   describe('Sass documentation', () => {
     it('associates everything with a "objects" group', async () => {
-      const docs = await sassdoc.parse(join(paths.package, 'src/govuk/objects/**/*.scss'))
+      const docs = await sassdoc.parse(
+        join(paths.package, 'src/govuk/objects/**/*.scss')
+      )
 
       for (const doc of docs) {
         expect(doc).toMatchObject({
@@ -39,9 +41,7 @@ describe('The objects layer', () => {
           context: {
             name: doc.context.name
           },
-          group: [
-            expect.stringMatching(/^objects/)
-          ]
+          group: [expect.stringMatching(/^objects/)]
         })
       }
     })

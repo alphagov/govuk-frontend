@@ -39,28 +39,31 @@ const config = {
   // See: https://jestjs.io/docs/ecmascript-modules
   transform: {
     // Transform all `*.mjs` to compatible CommonJS
-    '^.+\\.mjs$': ['babel-jest', {
-      rootMode: 'upward'
-    }],
+    '^.+\\.mjs$': [
+      'babel-jest',
+      {
+        rootMode: 'upward'
+      }
+    ],
 
     // Transform some `*.js` to compatible CommonJS
-    ...Object.fromEntries([
-      'del',
-      'slash'
-    ].map((packagePath) => [
-      replacePathSepForRegex(`${packageResolveToPath(packagePath)}$`), ['babel-jest', {
-        rootMode: 'upward'
-      }]
-    ]))
+    ...Object.fromEntries(
+      ['del', 'slash'].map((packagePath) => [
+        replacePathSepForRegex(`${packageResolveToPath(packagePath)}$`),
+        [
+          'babel-jest',
+          {
+            rootMode: 'upward'
+          }
+        ]
+      ])
+    )
   },
 
   // Enable Babel transforms for ESM-only node_modules
   // See: https://jestjs.io/docs/ecmascript-modules
   transformIgnorePatterns: [
-    `<rootDir>/node_modules/(?!${[
-      'del',
-      'slash'
-    ].join('|')}/)`
+    `<rootDir>/node_modules/(?!${['del', 'slash'].join('|')}/)`
   ]
 }
 
@@ -87,28 +90,20 @@ export default {
     {
       ...config,
       displayName: 'Build tasks',
-      testMatch: [
-        '**/tasks/build/*.test.{js,mjs}'
-      ]
+      testMatch: ['**/tasks/build/*.test.{js,mjs}']
     },
     {
       ...config,
       displayName: 'Nunjucks macro tests',
-      snapshotSerializers: [
-        'jest-serializer-html'
-      ],
+      snapshotSerializers: ['jest-serializer-html'],
       testEnvironment: 'govuk-frontend-helpers/jest/environment/jsdom.mjs',
-      testMatch: [
-        '**/(*.)?template.test.{js,mjs}'
-      ]
+      testMatch: ['**/(*.)?template.test.{js,mjs}']
     },
     {
       ...config,
       displayName: 'JavaScript unit tests',
       testEnvironment: 'govuk-frontend-helpers/jest/environment/jsdom.mjs',
-      testMatch: [
-        '**/*.unit.test.{js,mjs}'
-      ]
+      testMatch: ['**/*.unit.test.{js,mjs}']
     },
     {
       ...config,

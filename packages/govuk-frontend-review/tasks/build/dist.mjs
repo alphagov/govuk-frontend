@@ -9,13 +9,9 @@ import { scripts, styles } from '../index.mjs'
  *
  * @type {import('govuk-frontend-tasks').TaskFunction}
  */
-export default (options) => gulp.series(
-  task.name('clean', () =>
-    files.clean('*', options)
-  ),
+export default (options) =>
+  gulp.series(
+    task.name('clean', () => files.clean('*', options)),
 
-  gulp.parallel(
-    scripts(options),
-    styles(options)
+    gulp.parallel(scripts(options), styles(options))
   )
-)

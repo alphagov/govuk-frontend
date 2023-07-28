@@ -12,7 +12,7 @@ import slash from 'slash'
  * @param {string} pattern - Pattern to remove
  * @param {Pick<AssetEntry[1], "destPath">} options - Asset options
  */
-export async function clean (pattern, { destPath }) {
+export async function clean(pattern, { destPath }) {
   await deleteAsync(slash(join(destPath, pattern)), {
     cwd: paths.root
   })
@@ -24,12 +24,12 @@ export async function clean (pattern, { destPath }) {
  * @param {AssetEntry[0]} assetPath - File path to asset
  * @param {Pick<AssetEntry[1], "destPath">} options - Asset options
  */
-export async function version (assetPath, options) {
+export async function version(assetPath, options) {
   await write(assetPath, {
     ...options,
 
     // Add package version
-    async fileContents () {
+    async fileContents() {
       return pkg.version
     }
   })
@@ -41,8 +41,11 @@ export async function version (assetPath, options) {
  * @param {AssetEntry[0]} assetPath - File path to asset
  * @param {Pick<AssetEntry[1], "destPath" | "filePath" | "fileContents">} options - Asset options
  */
-export async function write (assetPath, { destPath, filePath, fileContents }) {
-  const assetDestPath = join(destPath, filePath ? filePath(parse(assetPath)) : assetPath)
+export async function write(assetPath, { destPath, filePath, fileContents }) {
+  const assetDestPath = join(
+    destPath,
+    filePath ? filePath(parse(assetPath)) : assetPath
+  )
 
   if (!destPath || !fileContents) {
     throw new Error("Options 'destPath' and 'fileContents' required")
@@ -59,7 +62,7 @@ export async function write (assetPath, { destPath, filePath, fileContents }) {
  * @param {string} pattern - Minimatch pattern
  * @param {Pick<AssetEntry[1], "srcPath" | "destPath">} options - Asset options
  */
-export async function copy (pattern, { srcPath, destPath }) {
+export async function copy(pattern, { srcPath, destPath }) {
   await cpy([slash(join(srcPath, pattern))], destPath, { cwd: srcPath })
 }
 
