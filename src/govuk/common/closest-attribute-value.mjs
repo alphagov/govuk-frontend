@@ -6,7 +6,7 @@
  * @param {string} attributeName - The name of the attribute
  * @returns {string | null} Attribute value
  */
-export function closestAttributeValue ($element, attributeName) {
+export function closestAttributeValue($element, attributeName) {
   const $closestElementWithAttribute = $element.closest(`[${attributeName}]`)
   return $closestElementWithAttribute
     ? $closestElementWithAttribute.getAttribute(attributeName)

@@ -13,9 +13,15 @@ describe('Pagination', () => {
       const $ = render('pagination', examples.default)
       const $previous = $('.govuk-pagination__prev .govuk-pagination__link')
       const $next = $('.govuk-pagination__next .govuk-pagination__link')
-      const $firstNumber = $('.govuk-pagination__item:first-child .govuk-pagination__link')
-      const $secondNumber = $('.govuk-pagination__item:nth-child(2) .govuk-pagination__link')
-      const $thirdNumber = $('.govuk-pagination__item:last-child .govuk-pagination__link')
+      const $firstNumber = $(
+        '.govuk-pagination__item:first-child .govuk-pagination__link'
+      )
+      const $secondNumber = $(
+        '.govuk-pagination__item:nth-child(2) .govuk-pagination__link'
+      )
+      const $thirdNumber = $(
+        '.govuk-pagination__item:last-child .govuk-pagination__link'
+      )
 
       expect($previous.attr('href')).toEqual('/previous')
       expect($next.attr('href')).toEqual('/next')
@@ -48,7 +54,9 @@ describe('Pagination', () => {
 
     it('marks up pagination items as ellipses when specified', () => {
       const $ = render('pagination', examples['with many pages'])
-      const $firstEllipsis = $('.govuk-pagination__item:nth-child(2).govuk-pagination__item--ellipses')
+      const $firstEllipsis = $(
+        '.govuk-pagination__item:nth-child(2).govuk-pagination__item--ellipses'
+      )
 
       expect($firstEllipsis).toBeTruthy()
       // Test for the unicode character of &ctdot;
@@ -58,7 +66,10 @@ describe('Pagination', () => {
 
   describe('with custom text, labels and landmarks', () => {
     it('renders a custom navigation landmark', () => {
-      const $ = render('pagination', examples['with custom navigation landmark'])
+      const $ = render(
+        'pagination',
+        examples['with custom navigation landmark']
+      )
       const $nav = $('.govuk-pagination')
 
       expect($nav.attr('aria-label')).toEqual('search')
@@ -80,13 +91,24 @@ describe('Pagination', () => {
     })
 
     it('renders custom accessible labels for pagination items', () => {
-      const $ = render('pagination', examples['with custom accessible labels on item links'])
-      const $firstNumber = $('.govuk-pagination__item:first-child .govuk-pagination__link')
-      const $secondNumber = $('.govuk-pagination__item:nth-child(2) .govuk-pagination__link')
-      const $thirdNumber = $('.govuk-pagination__item:last-child .govuk-pagination__link')
+      const $ = render(
+        'pagination',
+        examples['with custom accessible labels on item links']
+      )
+      const $firstNumber = $(
+        '.govuk-pagination__item:first-child .govuk-pagination__link'
+      )
+      const $secondNumber = $(
+        '.govuk-pagination__item:nth-child(2) .govuk-pagination__link'
+      )
+      const $thirdNumber = $(
+        '.govuk-pagination__item:last-child .govuk-pagination__link'
+      )
 
       expect($firstNumber.attr('aria-label')).toEqual('1st page')
-      expect($secondNumber.attr('aria-label')).toEqual('2nd page (you are currently on this page)')
+      expect($secondNumber.attr('aria-label')).toEqual(
+        '2nd page (you are currently on this page)'
+      )
       expect($thirdNumber.attr('aria-label')).toEqual('3rd page')
     })
   })
@@ -133,9 +155,16 @@ describe('Pagination', () => {
     })
 
     it('applies labels when provided', () => {
-      const $ = render('pagination', examples['with prev and next only and labels'])
-      const $prevLabel = $('.govuk-pagination__prev .govuk-pagination__link-label')
-      const $nextLabel = $('.govuk-pagination__next .govuk-pagination__link-label')
+      const $ = render(
+        'pagination',
+        examples['with prev and next only and labels']
+      )
+      const $prevLabel = $(
+        '.govuk-pagination__prev .govuk-pagination__link-label'
+      )
+      const $nextLabel = $(
+        '.govuk-pagination__next .govuk-pagination__link-label'
+      )
 
       expect($prevLabel.text()).toEqual('Paying VAT and duty')
       expect($nextLabel.text()).toEqual('Registering an imported vehicle')
@@ -146,8 +175,12 @@ describe('Pagination', () => {
     // of the label so that there's a clear underline hover state on the link
     it('adds the decoration class to the link title if no label is present', () => {
       const $ = render('pagination', examples['with prev and next only'])
-      const $decoratedPreviousLinkTitle = $('.govuk-pagination__prev .govuk-pagination__link-title--decorated')
-      const $decoratedNextLinkTitle = $('.govuk-pagination__next .govuk-pagination__link-title--decorated')
+      const $decoratedPreviousLinkTitle = $(
+        '.govuk-pagination__prev .govuk-pagination__link-title--decorated'
+      )
+      const $decoratedNextLinkTitle = $(
+        '.govuk-pagination__next .govuk-pagination__link-title--decorated'
+      )
 
       expect($decoratedPreviousLinkTitle).toBeTruthy()
       expect($decoratedNextLinkTitle).toBeTruthy()

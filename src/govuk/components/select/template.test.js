@@ -188,8 +188,7 @@ describe('Select', () => {
         WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
       )
 
-      expect($select.attr('aria-describedby'))
-        .toMatch(hintId)
+      expect($select.attr('aria-describedby')).toMatch(hintId)
     })
 
     it('associates the select as "described by" the hint and parent fieldset', () => {
@@ -197,8 +196,7 @@ describe('Select', () => {
 
       const $select = $('.govuk-select')
 
-      expect($select.attr('aria-describedby'))
-        .toMatch('some-id')
+      expect($select.attr('aria-describedby')).toMatch('some-id')
     })
   })
 
@@ -219,8 +217,7 @@ describe('Select', () => {
         WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
       )
 
-      expect($input.attr('aria-describedby'))
-        .toMatch(errorMessageId)
+      expect($input.attr('aria-describedby')).toMatch(errorMessageId)
     })
 
     it('associates the select as "described by" the error message and parent fieldset', () => {
@@ -228,8 +225,7 @@ describe('Select', () => {
 
       const $input = $('.govuk-select')
 
-      expect($input.attr('aria-describedby'))
-        .toMatch('some-id')
+      expect($input.attr('aria-describedby')).toMatch('some-id')
     })
 
     it('adds the error class to the select', () => {
@@ -259,8 +255,7 @@ describe('Select', () => {
         WORD_BOUNDARY + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
       )
 
-      expect($component.attr('aria-describedby'))
-        .toMatch(combinedIds)
+      expect($component.attr('aria-describedby')).toMatch(combinedIds)
     })
 
     it('associates the select as described by the hint, error message and parent fieldset', () => {
@@ -268,8 +263,9 @@ describe('Select', () => {
 
       const $component = $('.govuk-select')
 
-      expect($component.attr('aria-describedby'))
-        .toMatch('select-2-hint select-2-error')
+      expect($component.attr('aria-describedby')).toMatch(
+        'select-2-hint select-2-error'
+      )
     })
   })
 

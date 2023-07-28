@@ -48,7 +48,9 @@ describe('Error message', () => {
     const $ = render('error-message', examples.default)
 
     const $component = $('.govuk-error-message')
-    expect($component.text().trim()).toEqual('Error: Error message about full name goes here')
+    expect($component.text().trim()).toEqual(
+      'Error: Error message about full name goes here'
+    )
   })
 
   it('allows the visually hidden prefix to be customised', () => {
@@ -69,6 +71,8 @@ describe('Error message', () => {
     const $ = render('error-message', examples.translated)
 
     const $component = $('.govuk-error-message')
-    expect($component.html().trim()).toContain('<span class="govuk-visually-hidden">Gwall:</span> Neges gwall am yr enw llawn yn mynd yma')
+    expect($component.html().trim()).toContain(
+      '<span class="govuk-visually-hidden">Gwall:</span> Neges gwall am yr enw llawn yn mynd yma'
+    )
   })
 })

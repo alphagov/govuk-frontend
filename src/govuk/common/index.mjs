@@ -18,7 +18,7 @@
  * @private
  * @returns {{ [key: string]: unknown }} A flattened object of key-value pairs.
  */
-export function mergeConfigs (/* configObject1, configObject2, ...configObjects */) {
+export function mergeConfigs(/* configObject1, configObject2, ...configObjects */) {
   /**
    * Function to take nested objects and flatten them to a dot-separated keyed
    * object. Doing this means we don't need to do any deep/recursive merging of
@@ -97,14 +97,16 @@ export function mergeConfigs (/* configObject1, configObject2, ...configObjects 
  * @throws {Error} Config object required
  * @throws {Error} Namespace string required
  */
-export function extractConfigByNamespace (configObject, namespace) {
+export function extractConfigByNamespace(configObject, namespace) {
   // Check we have what we need
   if (!configObject || typeof configObject !== 'object') {
     throw new Error('Provide a `configObject` of type "object".')
   }
 
   if (!namespace || typeof namespace !== 'string') {
-    throw new Error('Provide a `namespace` of type "string" to filter the `configObject` by.')
+    throw new Error(
+      'Provide a `namespace` of type "string" to filter the `configObject` by.'
+    )
   }
 
   /** @type {{ [key: string]: unknown }} */
@@ -114,7 +116,10 @@ export function extractConfigByNamespace (configObject, namespace) {
     // Split the key into parts, using . as our namespace separator
     const keyParts = key.split('.')
     // Check if the first namespace matches the configured namespace
-    if (Object.prototype.hasOwnProperty.call(configObject, key) && keyParts[0] === namespace) {
+    if (
+      Object.prototype.hasOwnProperty.call(configObject, key) &&
+      keyParts[0] === namespace
+    ) {
       // Remove the first item (the namespace) from the parts array,
       // but only if there is more than one part (we don't want blank keys!)
       if (keyParts.length > 1) {

@@ -10,52 +10,57 @@ import gulp from 'gulp'
  *
  * @type {import('govuk-frontend-tasks').TaskFunction}
  */
-export default (options) => gulp.series(
-  task.name('clean', () =>
-    files.clean('*', options)
-  ),
+export default (options) =>
+  gulp.series(
+    task.name('clean', () => files.clean('*', options)),
 
-  // Copy GOV.UK Frontend static assets
-  task.name('copy:assets', () =>
-    files.copy('*/**', {
-      srcPath: join(options.srcPath, 'govuk/assets'),
-      destPath: join(options.destPath, 'assets')
-    })
-  ),
+    // Copy GOV.UK Frontend static assets
+    task.name('copy:assets', () =>
+      files.copy('*/**', {
+        srcPath: join(options.srcPath, 'govuk/assets'),
+        destPath: join(options.destPath, 'assets')
+      })
+    ),
 
-  // Compile GOV.UK Frontend JavaScript
-  task.name("compile:js 'release'", () =>
-    scripts.compile('all.mjs', {
-      ...options,
+    // Compile GOV.UK Frontend JavaScript
+    task.name("compile:js 'release'", () =>
+      scripts.compile('all.mjs', {
+        ...options,
 
-      srcPath: join(options.srcPath, 'govuk'),
-      configPath: join(options.basePath, 'rollup.release.config.mjs'),
+        srcPath: join(options.srcPath, 'govuk'),
+        configPath: join(options.basePath, 'rollup.release.config.mjs'),
 
-      // Rename using package name (versioned) and `*.min.js` extension due to
-      // web server ES module `*.mjs` Content-Type header support
-      filePath ({ dir, name }) {
-        return join(dir, `${name.replace(/^all/, pkg.name)}-${pkg.version}.min.js`)
-      }
-    })
-  ),
+        // Rename using package name (versioned) and `*.min.js` extension due to
+        // web server ES module `*.mjs` Content-Type header support
+        filePath({ dir, name }) {
+          return join(
+            dir,
+            `${name.replace(/^all/, pkg.name)}-${pkg.version}.min.js`
+          )
+        }
+      })
+    ),
 
-  // Compile GOV.UK Frontend Sass
-  task.name('compile:scss', () =>
-    styles.compile('**/[!_]*.scss', {
-      ...options,
+    // Compile GOV.UK Frontend Sass
+    task.name('compile:scss', () =>
+      styles.compile('**/[!_]*.scss', {
+        ...options,
 
-      srcPath: join(options.srcPath, 'govuk'),
-      configPath: join(options.basePath, 'postcss.config.mjs'),
+        srcPath: join(options.srcPath, 'govuk'),
+        configPath: join(options.basePath, 'postcss.config.mjs'),
 
-      // Rename using package name (versioned) and `*.min.css` extension
-      filePath ({ dir, name }) {
-        return join(dir, `${name.replace(/^all/, pkg.name)}-${pkg.version}.min.css`)
-      }
-    })
-  ),
+        // Rename using package name (versioned) and `*.min.css` extension
+        filePath({ dir, name }) {
+          return join(
+            dir,
+            `${name.replace(/^all/, pkg.name)}-${pkg.version}.min.css`
+          )
+        }
+      })
+    ),
 
-  // Update GOV.UK Frontend version
-  task.name("file:version 'VERSION.txt'", () =>
-    files.version('VERSION.txt', options)
+    // Update GOV.UK Frontend version
+    task.name("file:version 'VERSION.txt'", () =>
+      files.version('VERSION.txt', options)
+    )
   )
-)

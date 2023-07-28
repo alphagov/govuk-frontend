@@ -126,8 +126,7 @@ describe('Textarea', () => {
         WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
       )
 
-      expect($textarea.attr('aria-describedby'))
-        .toMatch(hintId)
+      expect($textarea.attr('aria-describedby')).toMatch(hintId)
     })
 
     it('associates the textarea as "described by" the hint and parent fieldset', () => {
@@ -137,11 +136,12 @@ describe('Textarea', () => {
       const $hint = $('.govuk-hint')
 
       const hintId = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${$hint.attr('id')}${WORD_BOUNDARY}`
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${$hint.attr(
+          'id'
+        )}${WORD_BOUNDARY}`
       )
 
-      expect($textarea.attr('aria-describedby'))
-        .toMatch(hintId)
+      expect($textarea.attr('aria-describedby')).toMatch(hintId)
     })
   })
 
@@ -162,22 +162,25 @@ describe('Textarea', () => {
         WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
       )
 
-      expect($component.attr('aria-describedby'))
-        .toMatch(errorMessageId)
+      expect($component.attr('aria-describedby')).toMatch(errorMessageId)
     })
 
     it('associates the textarea as "described by" the error message and parent fieldset', () => {
-      const $ = render('textarea', examples['with error message and described by'])
+      const $ = render(
+        'textarea',
+        examples['with error message and described by']
+      )
 
       const $component = $('.govuk-textarea')
       const $errorMessage = $('.govuk-error-message')
 
       const errorMessageId = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${$errorMessage.attr('id')}${WORD_BOUNDARY}`
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${$errorMessage.attr(
+          'id'
+        )}${WORD_BOUNDARY}`
       )
 
-      expect($component.attr('aria-describedby'))
-        .toMatch(errorMessageId)
+      expect($component.attr('aria-describedby')).toMatch(errorMessageId)
     })
 
     it('adds the error class to the textarea', () => {
@@ -207,12 +210,14 @@ describe('Textarea', () => {
         WORD_BOUNDARY + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
       )
 
-      expect($component.attr('aria-describedby'))
-        .toMatch(combinedIds)
+      expect($component.attr('aria-describedby')).toMatch(combinedIds)
     })
 
     it('associates the textarea as described by the hint, error message and parent fieldset', () => {
-      const $ = render('textarea', examples['with hint, error message and described by'])
+      const $ = render(
+        'textarea',
+        examples['with hint, error message and described by']
+      )
 
       const $component = $('.govuk-textarea')
       const errorMessageId = $('.govuk-error-message').attr('id')
@@ -222,8 +227,7 @@ describe('Textarea', () => {
         `${WORD_BOUNDARY}some-id${WHITESPACE}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($component.attr('aria-describedby'))
-        .toMatch(combinedIds)
+      expect($component.attr('aria-describedby')).toMatch(combinedIds)
     })
   })
 

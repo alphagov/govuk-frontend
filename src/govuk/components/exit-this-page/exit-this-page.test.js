@@ -1,4 +1,7 @@
-const { goToComponent, goToExample } = require('govuk-frontend-helpers/puppeteer')
+const {
+  goToComponent,
+  goToExample
+} = require('govuk-frontend-helpers/puppeteer')
 
 const buttonClass = '.govuk-js-exit-this-page-button'
 const skiplinkClass = '.govuk-js-exit-this-page-skiplink'
@@ -17,12 +20,11 @@ describe('/components/exit-this-page', () => {
     it('navigates to the href of the button', async () => {
       await goToComponent(page, 'exit-this-page')
 
-      const pathname = await page.$eval(buttonClass, el => el.getAttribute('href'))
+      const pathname = await page.$eval(buttonClass, (el) =>
+        el.getAttribute('href')
+      )
 
-      await Promise.all([
-        page.waitForNavigation(),
-        page.click(buttonClass)
-      ])
+      await Promise.all([page.waitForNavigation(), page.click(buttonClass)])
 
       const url = new URL(await page.url())
       expect(url.pathname).toBe(pathname)
@@ -31,7 +33,9 @@ describe('/components/exit-this-page', () => {
     it('navigates to the href of the skiplink', async () => {
       await goToExample(page, 'exit-this-page-with-skiplink')
 
-      const href = await page.$eval(skiplinkClass, el => el.getAttribute('href'))
+      const href = await page.$eval(skiplinkClass, (el) =>
+        el.getAttribute('href')
+      )
 
       await Promise.all([
         page.waitForNavigation(),
@@ -48,12 +52,11 @@ describe('/components/exit-this-page', () => {
     it('navigates to the href of the button', async () => {
       await goToComponent(page, 'exit-this-page')
 
-      const pathname = await page.$eval(buttonClass, el => el.getAttribute('href'))
+      const pathname = await page.$eval(buttonClass, (el) =>
+        el.getAttribute('href')
+      )
 
-      await Promise.all([
-        page.waitForNavigation(),
-        page.click(buttonClass)
-      ])
+      await Promise.all([page.waitForNavigation(), page.click(buttonClass)])
 
       const url = new URL(await page.url())
       expect(url.pathname).toBe(pathname)
@@ -62,7 +65,9 @@ describe('/components/exit-this-page', () => {
     it('navigates to the href of the skiplink', async () => {
       await goToExample(page, 'exit-this-page-with-skiplink')
 
-      const href = await page.$eval(skiplinkClass, el => el.getAttribute('href'))
+      const href = await page.$eval(skiplinkClass, (el) =>
+        el.getAttribute('href')
+      )
 
       await Promise.all([
         page.waitForNavigation(),
@@ -79,10 +84,13 @@ describe('/components/exit-this-page', () => {
 
       // Stop the button from navigating away from the current page as a workaround
       // to puppeteer struggling to return to previous pages after navigation reliably
-      await page.$eval(buttonClass, el => el.setAttribute('href', '#'))
+      await page.$eval(buttonClass, (el) => el.setAttribute('href', '#'))
       await page.click(buttonClass)
 
-      const ghostOverlay = await page.evaluate((overlayClass) => document.body.querySelector(overlayClass), overlayClass)
+      const ghostOverlay = await page.evaluate(
+        (overlayClass) => document.body.querySelector(overlayClass),
+        overlayClass
+      )
       expect(ghostOverlay).not.toBeNull()
     })
 
@@ -94,11 +102,14 @@ describe('/components/exit-this-page', () => {
       //
       // We apply this to the button and not the skiplink because we pull the href
       // from the button rather than the skiplink
-      await page.$eval(buttonClass, el => el.setAttribute('href', '#'))
+      await page.$eval(buttonClass, (el) => el.setAttribute('href', '#'))
       await page.focus(skiplinkClass)
       await page.click(skiplinkClass)
 
-      const ghostOverlay = await page.evaluate((overlayClass) => document.body.querySelector(overlayClass), overlayClass)
+      const ghostOverlay = await page.evaluate(
+        (overlayClass) => document.body.querySelector(overlayClass),
+        overlayClass
+      )
       expect(ghostOverlay).not.toBeNull()
     })
 
@@ -106,7 +117,9 @@ describe('/components/exit-this-page', () => {
       it('activates the button functionality when the Shift key is pressed 3 times', async () => {
         await goToComponent(page, 'exit-this-page')
 
-        const pathname = await page.$eval(buttonClass, el => el.getAttribute('href'))
+        const pathname = await page.$eval(buttonClass, (el) =>
+          el.getAttribute('href')
+        )
 
         await Promise.all([
           page.keyboard.press('Shift'),
@@ -124,7 +137,9 @@ describe('/components/exit-this-page', () => {
 
         await page.keyboard.press('Shift')
 
-        const message = await page.$eval(buttonClass, el => el.nextElementSibling.innerHTML.trim())
+        const message = await page.$eval(buttonClass, (el) =>
+          el.nextElementSibling.innerHTML.trim()
+        )
         expect(message).toBe('Shift, press 2 more times to exit.')
       })
 
@@ -134,7 +149,9 @@ describe('/components/exit-this-page', () => {
         await page.keyboard.press('Shift')
         await page.keyboard.press('Shift')
 
-        const message = await page.$eval(buttonClass, el => el.nextElementSibling.innerHTML.trim())
+        const message = await page.$eval(buttonClass, (el) =>
+          el.nextElementSibling.innerHTML.trim()
+        )
         expect(message).toBe('Shift, press 1 more time to exit.')
       })
 
@@ -142,13 +159,15 @@ describe('/components/exit-this-page', () => {
         await goToComponent(page, 'exit-this-page')
 
         // Make the button not navigate away from the current page
-        await page.$eval(buttonClass, el => el.setAttribute('href', '#'))
+        await page.$eval(buttonClass, (el) => el.setAttribute('href', '#'))
 
         await page.keyboard.press('Shift')
         await page.keyboard.press('Shift')
         await page.keyboard.press('Shift')
 
-        const message = await page.$eval(overlayClass, el => el.innerHTML.trim())
+        const message = await page.$eval(overlayClass, (el) =>
+          el.innerHTML.trim()
+        )
         expect(message).toBe('Loading.')
       })
 
@@ -160,7 +179,9 @@ describe('/components/exit-this-page', () => {
         // Wait for 6 seconds (one full second over the 5 second limit)
         await new Promise((resolve) => setTimeout(resolve, 6000))
 
-        const message = await page.$eval(buttonClass, el => el.nextElementSibling.innerHTML.trim())
+        const message = await page.$eval(buttonClass, (el) =>
+          el.nextElementSibling.innerHTML.trim()
+        )
         expect(message).toBe('Exit this page expired.')
       })
     })

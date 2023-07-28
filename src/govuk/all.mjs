@@ -21,7 +21,7 @@ import { Tabs } from './components/tabs/tabs.mjs'
  *
  * @param {Config} [config] - Config for all components
  */
-function initAll (config) {
+function initAll(config) {
   config = typeof config !== 'undefined' ? config : {}
 
   // Skip initialisation when GOV.UK Frontend is not supported
@@ -43,23 +43,31 @@ function initAll (config) {
     new Button($button, config.button)
   })
 
-  const $characterCounts = $scope.querySelectorAll('[data-module="govuk-character-count"]')
+  const $characterCounts = $scope.querySelectorAll(
+    '[data-module="govuk-character-count"]'
+  )
   $characterCounts.forEach(($characterCount) => {
     new CharacterCount($characterCount, config.characterCount)
   })
 
-  const $checkboxes = $scope.querySelectorAll('[data-module="govuk-checkboxes"]')
+  const $checkboxes = $scope.querySelectorAll(
+    '[data-module="govuk-checkboxes"]'
+  )
   $checkboxes.forEach(($checkbox) => {
     new Checkboxes($checkbox)
   })
 
   // Find first error summary module to enhance.
-  const $errorSummary = $scope.querySelector('[data-module="govuk-error-summary"]')
+  const $errorSummary = $scope.querySelector(
+    '[data-module="govuk-error-summary"]'
+  )
   if ($errorSummary) {
     new ErrorSummary($errorSummary, config.errorSummary)
   }
 
-  const $exitThisPageButtons = $scope.querySelectorAll('[data-module="govuk-exit-this-page"]')
+  const $exitThisPageButtons = $scope.querySelectorAll(
+    '[data-module="govuk-exit-this-page"]'
+  )
   $exitThisPageButtons.forEach(($button) => {
     new ExitThisPage($button, config.exitThisPage)
   })
@@ -70,7 +78,9 @@ function initAll (config) {
     new Header($header)
   }
 
-  const $notificationBanners = $scope.querySelectorAll('[data-module="govuk-notification-banner"]')
+  const $notificationBanners = $scope.querySelectorAll(
+    '[data-module="govuk-notification-banner"]'
+  )
   $notificationBanners.forEach(($notificationBanner) => {
     new NotificationBanner($notificationBanner, config.notificationBanner)
   })

@@ -13,7 +13,9 @@ describe('Hint', () => {
       const $ = render('hint', examples.default)
 
       const content = $('.govuk-hint').text()
-      expect(content).toEqual('\n  It\'s on your National Insurance card, benefit letter, payslip or P60.\nFor example, \'QQ 12 34 56 C\'.\n\n')
+      expect(content).toEqual(
+        "\n  It's on your National Insurance card, benefit letter, payslip or P60.\nFor example, 'QQ 12 34 56 C'.\n\n"
+      )
     })
 
     it('renders with classes', () => {
@@ -34,14 +36,18 @@ describe('Hint', () => {
       const $ = render('hint', examples['html as text'])
 
       const content = $('.govuk-hint').html().trim()
-      expect(content).toEqual('Unexpected &lt;strong&gt;bold text&lt;/strong&gt; in body')
+      expect(content).toEqual(
+        'Unexpected &lt;strong&gt;bold text&lt;/strong&gt; in body'
+      )
     })
 
     it('allows HTML to be passed un-escaped', () => {
       const $ = render('hint', examples['with html'])
 
       const content = $('.govuk-hint').html().trim()
-      expect(content).toEqual('It\'s on your National Insurance card, benefit letter, payslip or <a class="govuk-link" href="#">P60</a>.\nFor example, \'QQ 12 34 56 C\'.')
+      expect(content).toEqual(
+        'It\'s on your National Insurance card, benefit letter, payslip or <a class="govuk-link" href="#">P60</a>.\nFor example, \'QQ 12 34 56 C\'.'
+      )
     })
 
     it('renders with attributes', () => {

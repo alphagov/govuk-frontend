@@ -18,8 +18,11 @@ export class SkipLink {
    *
    * @param {Element} $module - HTML element to use for skip link
    */
-  constructor ($module) {
-    if (!($module instanceof HTMLAnchorElement) || !document.body.classList.contains('govuk-frontend-supported')) {
+  constructor($module) {
+    if (
+      !($module instanceof HTMLAnchorElement) ||
+      !document.body.classList.contains('govuk-frontend-supported')
+    ) {
       return this
     }
 
@@ -41,7 +44,7 @@ export class SkipLink {
    * @private
    * @returns {HTMLElement | null} $linkedElement - DOM element linked to from the skip link
    */
-  getLinkedElement () {
+  getLinkedElement() {
     const linkedElementId = this.getFragmentFromUrl()
     if (!linkedElementId) {
       return null
@@ -57,7 +60,7 @@ export class SkipLink {
    *
    * @private
    */
-  focusLinkedElement () {
+  focusLinkedElement() {
     if (!this.$linkedElement.getAttribute('tabindex')) {
       // Set the element tabindex to -1 so it can be focused with JavaScript.
       this.$linkedElement.setAttribute('tabindex', '-1')
@@ -65,7 +68,9 @@ export class SkipLink {
 
       // Add listener for blur on the focused element (unless the listener has previously been added)
       if (!this.linkedElementListener) {
-        this.$linkedElement.addEventListener('blur', () => this.removeFocusProperties())
+        this.$linkedElement.addEventListener('blur', () =>
+          this.removeFocusProperties()
+        )
         this.linkedElementListener = true
       }
     }
@@ -81,7 +86,7 @@ export class SkipLink {
    *
    * @private
    */
-  removeFocusProperties () {
+  removeFocusProperties() {
     this.$linkedElement.removeAttribute('tabindex')
     this.$linkedElement.classList.remove('govuk-skip-link-focused-element')
   }
@@ -95,7 +100,7 @@ export class SkipLink {
    * @private
    * @returns {string | undefined} Fragment from URL, without the hash symbol
    */
-  getFragmentFromUrl () {
+  getFragmentFromUrl() {
     // Bail if the anchor link doesn't have a hash
     if (!this.$module.hash) {
       return

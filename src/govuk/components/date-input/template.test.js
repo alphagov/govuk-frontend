@@ -82,7 +82,9 @@ describe('Date input', () => {
       const $ = render('date-input', examples.default)
 
       const $items = $('.govuk-date-input__item')
-      const $firstItemInput = $('.govuk-date-input:first-child .govuk-date-input__input')
+      const $firstItemInput = $(
+        '.govuk-date-input:first-child .govuk-date-input__input'
+      )
 
       expect($items.length).toEqual(3)
       expect($firstItemInput.attr('name')).toEqual('day')
@@ -122,7 +124,9 @@ describe('Date input', () => {
       const $ = render('date-input', examples.classes)
 
       const $component = $('.govuk-date-input')
-      expect($component.hasClass('app-date-input--custom-modifier')).toBeTruthy()
+      expect(
+        $component.hasClass('app-date-input--custom-modifier')
+      ).toBeTruthy()
     })
 
     it('renders with attributes', () => {
@@ -166,7 +170,10 @@ describe('Date input', () => {
     })
 
     it('renders with a form group wrapper that has extra classes', () => {
-      const $ = render('date-input', examples['with optional form-group classes'])
+      const $ = render(
+        'date-input',
+        examples['with optional form-group classes']
+      )
 
       const $formGroup = $('.govuk-form-group')
       expect($formGroup.hasClass('extra-class')).toBeTruthy()
@@ -189,8 +196,7 @@ describe('Date input', () => {
         WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
       )
 
-      expect($fieldset.attr('aria-describedby'))
-        .toMatch(hintId)
+      expect($fieldset.attr('aria-describedby')).toMatch(hintId)
     })
 
     it('associates the fieldset as "described by" the hint and parent fieldset', () => {
@@ -200,11 +206,12 @@ describe('Date input', () => {
       const $hint = $('.govuk-hint')
 
       const hintId = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${$hint.attr('id')}${WORD_BOUNDARY}`
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${$hint.attr(
+          'id'
+        )}${WORD_BOUNDARY}`
       )
 
-      expect($fieldset.attr('aria-describedby'))
-        .toMatch(hintId)
+      expect($fieldset.attr('aria-describedby')).toMatch(hintId)
     })
   })
 
@@ -232,8 +239,7 @@ describe('Date input', () => {
         WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
       )
 
-      expect($fieldset.attr('aria-describedby'))
-        .toMatch(errorMessageId)
+      expect($fieldset.attr('aria-describedby')).toMatch(errorMessageId)
     })
 
     it('associates the fieldset as "described by" the error message and parent fieldset', () => {
@@ -241,8 +247,9 @@ describe('Date input', () => {
 
       const $fieldset = $('.govuk-fieldset')
 
-      expect($fieldset.attr('aria-describedby'))
-        .toMatch('some-id dob-errors-error')
+      expect($fieldset.attr('aria-describedby')).toMatch(
+        'some-id dob-errors-error'
+      )
     })
 
     it('renders with a form group wrapper that has an error state', () => {
@@ -273,8 +280,7 @@ describe('Date input', () => {
         WORD_BOUNDARY + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
       )
 
-      expect($fieldset.attr('aria-describedby'))
-        .toMatch(combinedIds)
+      expect($fieldset.attr('aria-describedby')).toMatch(combinedIds)
     })
 
     it('associates the fieldset as described by the hint, error message and parent fieldset', () => {
@@ -282,8 +288,9 @@ describe('Date input', () => {
 
       const $fieldset = $('.govuk-fieldset')
 
-      expect($fieldset.attr('aria-describedby'))
-        .toMatch('dob-errors-hint dob-errors-error')
+      expect($fieldset.attr('aria-describedby')).toMatch(
+        'dob-errors-hint dob-errors-error'
+      )
     })
   })
 
@@ -291,7 +298,9 @@ describe('Date input', () => {
     it('have correct nesting order', () => {
       const $ = render('date-input', examples['complete question'])
 
-      const $component = $('.govuk-form-group > .govuk-fieldset > .govuk-date-input')
+      const $component = $(
+        '.govuk-form-group > .govuk-fieldset > .govuk-date-input'
+      )
       expect($component.length).toBeTruthy()
     })
 

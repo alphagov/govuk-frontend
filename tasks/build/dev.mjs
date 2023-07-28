@@ -8,6 +8,4 @@ import { watch } from '../index.mjs'
  *
  * @type {import('govuk-frontend-tasks').TaskFunction}
  */
-export default (options) => gulp.series(
-  watch(options)
-)
+export default (options) => gulp.series(watch(options))

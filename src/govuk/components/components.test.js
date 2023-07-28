@@ -10,10 +10,7 @@ describe('Components', () => {
   beforeAll(async () => {
     sassFiles = await getListing('**/src/govuk/components/**/*.scss', {
       cwd: paths.package,
-      ignore: [
-        '**/_all.scss',
-        '**/_index.scss'
-      ]
+      ignore: ['**/_all.scss', '**/_index.scss']
     })
   })
 

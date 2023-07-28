@@ -1,4 +1,10 @@
-const { goToComponent, goToExample, getAttribute, getProperty, isVisible } = require('govuk-frontend-helpers/puppeteer')
+const {
+  goToComponent,
+  goToExample,
+  getAttribute,
+  getProperty,
+  isVisible
+} = require('govuk-frontend-helpers/puppeteer')
 
 describe('Checkboxes with conditional reveals', () => {
   describe('when JavaScript is unavailable or fails', () => {
@@ -29,17 +35,23 @@ describe('Checkboxes with conditional reveals', () => {
       })
 
       it('has no ARIA attributes applied', async () => {
-        const $inputsWithAriaExpanded = await $component.$$('.govuk-checkboxes__input[aria-expanded]')
-        const $inputsWithAriaControls = await $component.$$('.govuk-checkboxes__input[aria-controls]')
+        const $inputsWithAriaExpanded = await $component.$$(
+          '.govuk-checkboxes__input[aria-expanded]'
+        )
+        const $inputsWithAriaControls = await $component.$$(
+          '.govuk-checkboxes__input[aria-controls]'
+        )
 
         expect($inputsWithAriaExpanded.length).toBe(0)
         expect($inputsWithAriaControls.length).toBe(0)
       })
 
       it('falls back to making all conditional content visible', async () => {
-        return Promise.all($conditionals.map(async ($conditional) => {
-          return expect(await isVisible($conditional)).toBe(true)
-        }))
+        return Promise.all(
+          $conditionals.map(async ($conditional) => {
+            return expect(await isVisible($conditional)).toBe(true)
+          })
+        )
       })
     })
   })
@@ -60,7 +72,9 @@ describe('Checkboxes with conditional reveals', () => {
 
       it('has conditional content revealed that is associated with a checked input', async () => {
         const $input = $inputs[0] // First input, checked
-        const $conditional = await $component.$(`[id="${await getAttribute($input, 'aria-controls')}"]`)
+        const $conditional = await $component.$(
+          `[id="${await getAttribute($input, 'aria-controls')}"]`
+        )
 
         expect(await getProperty($input, 'checked')).toBe(true)
         expect(await isVisible($conditional)).toBe(true)
@@ -68,7 +82,9 @@ describe('Checkboxes with conditional reveals', () => {
 
       it('has no conditional content revealed that is associated with an unchecked input', async () => {
         const $input = $inputs[$inputs.length - 1] // Last input, unchecked
-        const $conditional = await $component.$(`[id="${await getAttribute($input, 'aria-controls')}"]`)
+        const $conditional = await $component.$(
+          `[id="${await getAttribute($input, 'aria-controls')}"]`
+        )
 
         expect(await getProperty($input, 'checked')).toBe(false)
         expect(await isVisible($conditional)).toBe(false)
@@ -110,7 +126,9 @@ describe('Checkboxes with conditional reveals', () => {
 
       it('toggles the conditional content when clicking an input', async () => {
         const $input = $inputs[0] // First input, with conditional content
-        const $conditional = await $component.$(`[id="${await getAttribute($input, 'aria-controls')}"]`)
+        const $conditional = await $component.$(
+          `[id="${await getAttribute($input, 'aria-controls')}"]`
+        )
 
         // Initially collapsed
         expect(await getProperty($input, 'checked')).toBe(false)
@@ -131,7 +149,9 @@ describe('Checkboxes with conditional reveals', () => {
 
       it('toggles the conditional content when using an input with a keyboard', async () => {
         const $input = $inputs[0] // First input, with conditional content
-        const $conditional = await $component.$(`[id="${await getAttribute($input, 'aria-controls')}"]`)
+        const $conditional = await $component.$(
+          `[id="${await getAttribute($input, 'aria-controls')}"]`
+        )
 
         // Initially collapsed
         expect(await getProperty($input, 'checked')).toBe(false)
@@ -221,7 +241,9 @@ describe('Checkboxes with a "None" checkbox and conditional reveals', () => {
 
     it('unchecks other checkboxes and hides conditional reveals when the "None" checkbox is checked', async () => {
       const $input = $inputs[3]
-      const $conditional = await $component.$(`[id="${await getAttribute($input, 'aria-controls')}"]`)
+      const $conditional = await $component.$(
+        `[id="${await getAttribute($input, 'aria-controls')}"]`
+      )
 
       // Check the "Another access need" checkbox
       await $inputs[3].click()
@@ -250,9 +272,15 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
     beforeEach(async () => {
       await goToExample(page, 'conditional-reveals')
 
-      $inputsPrimary = await page.$$('.govuk-checkboxes__input[id^="colour-primary"]')
-      $inputsSecondary = await page.$$('.govuk-checkboxes__input[id^="colour-secondary"]')
-      $inputsOther = await page.$$('.govuk-checkboxes__input[id^="colour-other"]')
+      $inputsPrimary = await page.$$(
+        '.govuk-checkboxes__input[id^="colour-primary"]'
+      )
+      $inputsSecondary = await page.$$(
+        '.govuk-checkboxes__input[id^="colour-secondary"]'
+      )
+      $inputsOther = await page.$$(
+        '.govuk-checkboxes__input[id^="colour-other"]'
+      )
     })
 
     it('none checkbox unchecks other checkboxes in other groups', async () => {
@@ -269,7 +297,9 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
     })
 
     it('hides conditional reveals in other groups', async () => {
-      const $conditionalPrimary = await page.$(`[id="${await getAttribute($inputsPrimary[1], 'aria-controls')}"]`)
+      const $conditionalPrimary = await page.$(
+        `[id="${await getAttribute($inputsPrimary[1], 'aria-controls')}"]`
+      )
 
       // Check the second checkbox in the first group, which reveals additional content
       await $inputsPrimary[1].click()

@@ -1,4 +1,8 @@
-const { goTo, goToComponent, renderAndInitialise } = require('govuk-frontend-helpers/puppeteer')
+const {
+  goTo,
+  goToComponent,
+  renderAndInitialise
+} = require('govuk-frontend-helpers/puppeteer')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('/components/button', () => {
@@ -42,7 +46,9 @@ describe('/components/button', () => {
     })
 
     it('triggers the click event when the space key is pressed', async () => {
-      const pathname = await page.evaluate(() => document.body.getElementsByTagName('a')[0].getAttribute('href'))
+      const pathname = await page.evaluate(() =>
+        document.body.getElementsByTagName('a')[0].getAttribute('href')
+      )
 
       await page.focus('a[role="button"]')
 
@@ -66,25 +72,33 @@ describe('/components/button', () => {
      * @param {import('puppeteer').ElementHandle<HTMLButtonElement>} $button - Puppeteer button element
      * @returns {Promise<import('puppeteer').ElementHandle<HTMLButtonElement>>} Puppeteer button element
      */
-    async function setButtonTracking ($button) {
+    async function setButtonTracking($button) {
       const counts = {
         click: 0,
         debounce: 0
       }
 
       // Track number of button clicks
-      await $button.evaluate((el, counts) => el.addEventListener('click', (event) => {
-        counts.click++
-        el.dataset.clickCount = `${counts.click}`
+      await $button.evaluate(
+        (el, counts) =>
+          el.addEventListener(
+            'click',
+            (event) => {
+              counts.click++
+              el.dataset.clickCount = `${counts.click}`
 
-        // Track number of button clicks that debounced
-        event.preventDefault = () => {
-          counts.debounce++
-          el.dataset.debounceCount = `${counts.debounce}`
-        }
+              // Track number of button clicks that debounced
+              event.preventDefault = () => {
+                counts.debounce++
+                el.dataset.debounceCount = `${counts.debounce}`
+              }
 
-        // Add listener during capture phase to spy on event
-      }, { capture: true }), counts)
+              // Add listener during capture phase to spy on event
+            },
+            { capture: true }
+          ),
+        counts
+      )
 
       return $button
     }
@@ -95,7 +109,7 @@ describe('/components/button', () => {
      * @param {import('puppeteer').ElementHandle<HTMLButtonElement>} $button - Puppeteer button element
      * @returns {Promise<{ click: number; debounce: number; }>} Number of times the button was clicked
      */
-    function getButtonTracking ($button) {
+    function getButtonTracking($button) {
       return $button.evaluate((el) => ({
         click: parseInt(el.dataset.clickCount ?? '0'),
         debounce: parseInt(el.dataset.debounceCount ?? '0')
@@ -157,8 +171,12 @@ describe('/components/button', () => {
         $button.evaluate((el) => el.parentNode.appendChild(el.cloneNode(true)))
 
         // Locate original and cloned button
-        const $button1 = await setButtonTracking(await page.$('button:nth-child(1)'))
-        const $button2 = await setButtonTracking(await page.$('button:nth-child(2)'))
+        const $button1 = await setButtonTracking(
+          await page.$('button:nth-child(1)')
+        )
+        const $button2 = await setButtonTracking(
+          await page.$('button:nth-child(2)')
+        )
 
         await $button1.click({ count: 2 })
         await $button2.click()
@@ -213,8 +231,12 @@ describe('/components/button', () => {
         $button.evaluate((el) => el.parentNode.appendChild(el.cloneNode(true)))
 
         // Locate original and cloned button
-        const $button1 = await setButtonTracking(await page.$('button:nth-child(1)'))
-        const $button2 = await setButtonTracking(await page.$('button:nth-child(2)'))
+        const $button1 = await setButtonTracking(
+          await page.$('button:nth-child(1)')
+        )
+        const $button2 = await setButtonTracking(
+          await page.$('button:nth-child(2)')
+        )
 
         await $button1.click({ count: 2 })
         await $button2.click()
@@ -294,8 +316,12 @@ describe('/components/button', () => {
         $button.evaluate((el) => el.parentNode.appendChild(el.cloneNode(true)))
 
         // Locate original and cloned button
-        const $button1 = await setButtonTracking(await page.$('button:nth-child(1)'))
-        const $button2 = await setButtonTracking(await page.$('button:nth-child(2)'))
+        const $button1 = await setButtonTracking(
+          await page.$('button:nth-child(1)')
+        )
+        const $button2 = await setButtonTracking(
+          await page.$('button:nth-child(2)')
+        )
 
         await $button1.click({ count: 2 })
         await $button2.click()

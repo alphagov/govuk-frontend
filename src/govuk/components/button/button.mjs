@@ -28,8 +28,11 @@ export class Button {
    * @param {Element} $module - HTML element to use for button
    * @param {ButtonConfig} [config] - Button config
    */
-  constructor ($module, config) {
-    if (!($module instanceof HTMLElement) || !document.body.classList.contains('govuk-frontend-supported')) {
+  constructor($module, config) {
+    if (
+      !($module instanceof HTMLElement) ||
+      !document.body.classList.contains('govuk-frontend-supported')
+    ) {
       return this
     }
 
@@ -41,7 +44,9 @@ export class Button {
       normaliseDataset($module.dataset)
     )
 
-    this.$module.addEventListener('keydown', (event) => this.handleKeyDown(event))
+    this.$module.addEventListener('keydown', (event) =>
+      this.handleKeyDown(event)
+    )
     this.$module.addEventListener('click', (event) => this.debounce(event))
   }
 
@@ -56,7 +61,7 @@ export class Button {
    * @private
    * @param {KeyboardEvent} event - Keydown event
    */
-  handleKeyDown (event) {
+  handleKeyDown(event) {
     const $target = event.target
 
     // Handle space bar only
@@ -65,7 +70,10 @@ export class Button {
     }
 
     // Handle elements with [role="button"] only
-    if ($target instanceof HTMLElement && $target.getAttribute('role') === 'button') {
+    if (
+      $target instanceof HTMLElement &&
+      $target.getAttribute('role') === 'button'
+    ) {
       event.preventDefault() // prevent the page from scrolling
       $target.click()
     }
@@ -82,7 +90,7 @@ export class Button {
    * @param {MouseEvent} event - Mouse click event
    * @returns {undefined | false} Returns undefined, or false when debounced
    */
-  debounce (event) {
+  debounce(event) {
     // Check the button that was clicked has preventDoubleClick enabled
     if (!this.config.preventDoubleClick) {
       return

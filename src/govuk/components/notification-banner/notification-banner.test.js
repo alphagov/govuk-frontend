@@ -1,4 +1,7 @@
-const { renderAndInitialise, goToComponent } = require('govuk-frontend-helpers/puppeteer')
+const {
+  renderAndInitialise,
+  goToComponent
+} = require('govuk-frontend-helpers/puppeteer')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('Notification banner, when type is set to "success"', () => {
@@ -13,7 +16,9 @@ describe('Notification banner, when type is set to "success"', () => {
       exampleName: 'with-type-as-success'
     })
 
-    const tabindex = await page.$eval('.govuk-notification-banner', el => el.getAttribute('tabindex'))
+    const tabindex = await page.$eval('.govuk-notification-banner', (el) =>
+      el.getAttribute('tabindex')
+    )
 
     expect(tabindex).toEqual('-1')
   })
@@ -23,7 +28,9 @@ describe('Notification banner, when type is set to "success"', () => {
       exampleName: 'with-type-as-success'
     })
 
-    const activeElement = await page.evaluate(() => document.activeElement.getAttribute('data-module'))
+    const activeElement = await page.evaluate(() =>
+      document.activeElement.getAttribute('data-module')
+    )
 
     expect(activeElement).toBe('govuk-notification-banner')
   })
@@ -33,9 +40,14 @@ describe('Notification banner, when type is set to "success"', () => {
       exampleName: 'with-type-as-success'
     })
 
-    await page.$eval('.govuk-notification-banner', el => el instanceof window.HTMLElement && el.blur())
+    await page.$eval(
+      '.govuk-notification-banner',
+      (el) => el instanceof window.HTMLElement && el.blur()
+    )
 
-    const tabindex = await page.$eval('.govuk-notification-banner', el => el.getAttribute('tabindex'))
+    const tabindex = await page.$eval('.govuk-notification-banner', (el) =>
+      el.getAttribute('tabindex')
+    )
     expect(tabindex).toBeNull()
   })
 
@@ -47,13 +59,17 @@ describe('Notification banner, when type is set to "success"', () => {
     })
 
     it('does not have a tabindex attribute', async () => {
-      const tabindex = await page.$eval('.govuk-notification-banner', el => el.getAttribute('tabindex'))
+      const tabindex = await page.$eval('.govuk-notification-banner', (el) =>
+        el.getAttribute('tabindex')
+      )
 
       expect(tabindex).toBeNull()
     })
 
     it('does not focus the notification banner', async () => {
-      const activeElement = await page.evaluate(() => document.activeElement.getAttribute('data-module'))
+      const activeElement = await page.evaluate(() =>
+        document.activeElement.getAttribute('data-module')
+      )
 
       expect(activeElement).not.toBe('govuk-notification-banner')
     })
@@ -70,13 +86,17 @@ describe('Notification banner, when type is set to "success"', () => {
     })
 
     it('does not have a tabindex attribute', async () => {
-      const tabindex = await page.$eval('.govuk-notification-banner', el => el.getAttribute('tabindex'))
+      const tabindex = await page.$eval('.govuk-notification-banner', (el) =>
+        el.getAttribute('tabindex')
+      )
 
       expect(tabindex).toBeNull()
     })
 
     it('does not focus the notification banner', async () => {
-      const activeElement = await page.evaluate(() => document.activeElement.getAttribute('data-module'))
+      const activeElement = await page.evaluate(() =>
+        document.activeElement.getAttribute('data-module')
+      )
 
       expect(activeElement).not.toBe('govuk-notification-banner')
     })
@@ -93,13 +113,17 @@ describe('Notification banner, when type is set to "success"', () => {
     })
 
     it('does not have a tabindex attribute', async () => {
-      const tabindex = await page.$eval('.govuk-notification-banner', el => el.getAttribute('tabindex'))
+      const tabindex = await page.$eval('.govuk-notification-banner', (el) =>
+        el.getAttribute('tabindex')
+      )
 
       expect(tabindex).toBeNull()
     })
 
     it('does not focus the notification banner', async () => {
-      const activeElement = await page.evaluate(() => document.activeElement.getAttribute('data-module'))
+      const activeElement = await page.evaluate(() =>
+        document.activeElement.getAttribute('data-module')
+      )
 
       expect(activeElement).not.toBe('govuk-notification-banner')
     })
@@ -116,13 +140,17 @@ describe('Notification banner, when type is set to "success"', () => {
     })
 
     it('has the correct tabindex attribute to be focused with JavaScript', async () => {
-      const tabindex = await page.$eval('.govuk-notification-banner', el => el.getAttribute('tabindex'))
+      const tabindex = await page.$eval('.govuk-notification-banner', (el) =>
+        el.getAttribute('tabindex')
+      )
 
       expect(tabindex).toEqual('-1')
     })
 
     it('is automatically focused when the page loads', async () => {
-      const activeElement = await page.evaluate(() => document.activeElement.getAttribute('data-module'))
+      const activeElement = await page.evaluate(() =>
+        document.activeElement.getAttribute('data-module')
+      )
 
       expect(activeElement).toBe('govuk-notification-banner')
     })
@@ -131,18 +159,23 @@ describe('Notification banner, when type is set to "success"', () => {
   describe('and role is overridden to "region"', () => {
     beforeAll(async () => {
       await goToComponent(page, 'notification-banner', {
-        exampleName: 'role=alert-overridden-to-role=region,-with-type-as-success'
+        exampleName:
+          'role=alert-overridden-to-role=region,-with-type-as-success'
       })
     })
 
     it('does not have a tabindex attribute', async () => {
-      const tabindex = await page.$eval('.govuk-notification-banner', el => el.getAttribute('tabindex'))
+      const tabindex = await page.$eval('.govuk-notification-banner', (el) =>
+        el.getAttribute('tabindex')
+      )
 
       expect(tabindex).toBeNull()
     })
 
     it('does not focus the notification banner', async () => {
-      const activeElement = await page.evaluate(() => document.activeElement.getAttribute('data-module'))
+      const activeElement = await page.evaluate(() =>
+        document.activeElement.getAttribute('data-module')
+      )
 
       expect(activeElement).not.toBe('govuk-notification-banner')
     })
@@ -156,9 +189,14 @@ describe('Notification banner, when type is set to "success"', () => {
     })
 
     it('does not remove the tabindex attribute on blur', async () => {
-      await page.$eval('.govuk-notification-banner', el => el instanceof window.HTMLElement && el.blur())
+      await page.$eval(
+        '.govuk-notification-banner',
+        (el) => el instanceof window.HTMLElement && el.blur()
+      )
 
-      const tabindex = await page.$eval('.govuk-notification-banner', el => el.getAttribute('tabindex'))
+      const tabindex = await page.$eval('.govuk-notification-banner', (el) =>
+        el.getAttribute('tabindex')
+      )
       expect(tabindex).toEqual('2')
     })
   })

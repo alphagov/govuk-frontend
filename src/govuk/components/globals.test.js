@@ -26,7 +26,7 @@ describe('GOV.UK Frontend', () => {
 
     it('exports Components', async () => {
       const components = exported
-        .filter(method => !['initAll', 'version'].includes(method))
+        .filter((method) => !['initAll', 'version'].includes(method))
         .sort()
 
       // Ensure GOV.UK Frontend exports the expected components

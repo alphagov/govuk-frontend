@@ -20,7 +20,9 @@ describe('Tabs', () => {
       const $ = render('tabs', examples.default)
 
       expect($('#past-week').hasClass('govuk-tabs__panel--hidden')).toBeTruthy()
-      expect($('#past-month').hasClass('govuk-tabs__panel--hidden')).toBeTruthy()
+      expect(
+        $('#past-month').hasClass('govuk-tabs__panel--hidden')
+      ).toBeTruthy()
       expect($('#past-year').hasClass('govuk-tabs__panel--hidden')).toBeTruthy()
     })
   })
@@ -56,14 +58,14 @@ describe('Tabs', () => {
   })
 
   describe('items', () => {
-    it('doesn\'t render a list if items is not defined', () => {
+    it("doesn't render a list if items is not defined", () => {
       const $ = render('tabs', examples['no item list'])
 
       const $component = $('.govuk-tabs')
       expect($component.find('.govuk-tabs__list').length).toEqual(0)
     })
 
-    it('doesn\'t render a list if items is empty', () => {
+    it("doesn't render a list if items is empty", () => {
       const $ = render('tabs', examples['empty item list'])
 
       const $component = $('.govuk-tabs')
@@ -75,7 +77,9 @@ describe('Tabs', () => {
 
       const $component = $('.govuk-tabs')
 
-      const $firstTab = $component.find('.govuk-tabs__list-item:first-child .govuk-tabs__tab')
+      const $firstTab = $component.find(
+        '.govuk-tabs__list-item:first-child .govuk-tabs__tab'
+      )
       const $firstPanel = $component.find('.govuk-tabs__panel')
       expect($firstTab.attr('href')).toEqual('#past-day')
       expect($firstPanel.attr('id')).toEqual('past-day')
@@ -95,7 +99,9 @@ describe('Tabs', () => {
 
       const $component = $('.govuk-tabs')
 
-      const $firstTab = $component.find('.govuk-tabs__list-item:first-child .govuk-tabs__tab')
+      const $firstTab = $component.find(
+        '.govuk-tabs__list-item:first-child .govuk-tabs__tab'
+      )
       const $firstPanel = $component.find('.govuk-tabs__panel')
       expect($firstTab.attr('href')).toEqual('#custom-1')
       expect($firstPanel.attr('id')).toEqual('custom-1')
@@ -106,7 +112,9 @@ describe('Tabs', () => {
 
       const $component = $('.govuk-tabs')
 
-      const $firstTab = $component.find('.govuk-tabs__list-item:first-child .govuk-tabs__tab')
+      const $firstTab = $component.find(
+        '.govuk-tabs__list-item:first-child .govuk-tabs__tab'
+      )
       expect($firstTab.text().trim()).toEqual('Past day')
     })
 
@@ -116,7 +124,9 @@ describe('Tabs', () => {
       const $lastTab = $component.find('.govuk-tabs__panel').last()
 
       expect($lastTab.find('p').hasClass('govuk-body')).toBeTruthy()
-      expect($lastTab.text().trim()).toEqual('There is no data for this year yet, check back later')
+      expect($lastTab.text().trim()).toEqual(
+        'There is no data for this year yet, check back later'
+      )
     })
 
     it('render escaped html when passed to text content', () => {
@@ -125,7 +135,9 @@ describe('Tabs', () => {
       const $component = $('.govuk-tabs')
 
       const $firstPanel = $component.find('.govuk-tabs__panel .govuk-body')
-      expect($firstPanel.html().trim()).toEqual('&lt;p&gt;Panel 1 content&lt;/p&gt;')
+      expect($firstPanel.html().trim()).toEqual(
+        '&lt;p&gt;Panel 1 content&lt;/p&gt;'
+      )
     })
 
     it('render html when passed to content', () => {

@@ -31,13 +31,17 @@ export default ({ to = '' } = {}) => ({
     },
 
     // Always minify CSS
-    to.endsWith('.css') && cssnano({
-      preset: [cssnanoPresetDefault, {
-        // Sorted CSS is smaller when gzipped, but we sort using Stylelint
-        // https://cssnano.co/docs/optimisations/cssdeclarationsorter/
-        cssDeclarationSorter: false
-      }]
-    })
+    to.endsWith('.css') &&
+      cssnano({
+        preset: [
+          cssnanoPresetDefault,
+          {
+            // Sorted CSS is smaller when gzipped, but we sort using Stylelint
+            // https://cssnano.co/docs/optimisations/cssdeclarationsorter/
+            cssDeclarationSorter: false
+          }
+        ]
+      })
   ],
 
   // Sass syntax support

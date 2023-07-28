@@ -23,15 +23,13 @@ describe('grid system', () => {
         }
       `
 
-      await expect(compileSassString(sass))
-        .resolves
-        .toMatchObject({
-          css: outdent`
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
             .foo {
               content: 25%;
             }
           `
-        })
+      })
     })
 
     it('throws an error that the specified key does not exist in the map of widths', async () => {
@@ -41,9 +39,9 @@ describe('grid system', () => {
         $value: govuk-grid-width(seven-fifths);
         `
 
-      await expect(compileSassString(sass))
-        .rejects
-        .toThrow('Unknown grid width `seven-fifths`')
+      await expect(compileSassString(sass)).rejects.toThrow(
+        'Unknown grid width `seven-fifths`'
+      )
     })
   })
 
@@ -57,10 +55,8 @@ describe('grid system', () => {
         }
         `
 
-      await expect(compileSassString(sass))
-        .resolves
-        .toMatchObject({
-          css: outdent`
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
             .govuk-grid-column-full {
               box-sizing: border-box;
               width: 100%;
@@ -73,7 +69,7 @@ describe('grid system', () => {
               }
             }
           `
-        })
+      })
     })
 
     it('allows different widths to be specified using $width', async () => {
@@ -85,10 +81,8 @@ describe('grid system', () => {
         }
       `
 
-      await expect(compileSassString(sass))
-        .resolves
-        .toMatchObject({
-          css: outdent`
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
             .govuk-grid-column-two-thirds {
               box-sizing: border-box;
               width: 100%;
@@ -101,7 +95,7 @@ describe('grid system', () => {
               }
             }
           `
-        })
+      })
     })
 
     it('allows predefined breakpoints to be specified using $at', async () => {
@@ -112,10 +106,8 @@ describe('grid system', () => {
           @include govuk-grid-column(one-quarter, $at: desktop);
         }
       `
-      await expect(compileSassString(sass))
-        .resolves
-        .toMatchObject({
-          css: outdent`
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
             .govuk-grid-column-one-quarter-at-desktop {
               box-sizing: border-box;
               padding: 0 15px;
@@ -127,7 +119,7 @@ describe('grid system', () => {
               }
             }
           `
-        })
+      })
     })
 
     it('allows custom breakpoints to be specified using $at', async () => {
@@ -139,10 +131,8 @@ describe('grid system', () => {
         }
       `
 
-      await expect(compileSassString(sass))
-        .resolves
-        .toMatchObject({
-          css: outdent`
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
             .govuk-grid-column-one-quarter-at-500px {
               box-sizing: border-box;
               width: 100%;
@@ -155,7 +145,7 @@ describe('grid system', () => {
               }
             }
           `
-        })
+      })
     })
 
     it('allows columns to float right using $float: right', async () => {
@@ -167,10 +157,8 @@ describe('grid system', () => {
         }
       `
 
-      await expect(compileSassString(sass))
-        .resolves
-        .toMatchObject({
-          css: outdent`
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
             .govuk-grid-column-one-half-right {
               box-sizing: border-box;
               width: 100%;
@@ -183,7 +171,7 @@ describe('grid system', () => {
               }
             }
           `
-        })
+      })
     })
   })
 })

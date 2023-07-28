@@ -67,7 +67,9 @@ describe('fieldset', () => {
   it('renders html when passed as fieldset content', () => {
     const $ = render('fieldset', examples['html fieldset content'])
 
-    expect($('.govuk-fieldset .my-content').text().trim()).toEqual('This is some content to put inside the fieldset')
+    expect($('.govuk-fieldset .my-content').text().trim()).toEqual(
+      'This is some content to put inside the fieldset'
+    )
   })
 
   it('renders nested components using `call`', () => {

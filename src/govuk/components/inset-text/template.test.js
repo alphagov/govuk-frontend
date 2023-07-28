@@ -13,7 +13,9 @@ describe('Inset text', () => {
       const $ = render('inset-text', examples.classes)
 
       const $component = $('.govuk-inset-text')
-      expect($component.hasClass('app-inset-text--custom-modifier')).toBeTruthy()
+      expect(
+        $component.hasClass('app-inset-text--custom-modifier')
+      ).toBeTruthy()
     })
 
     it('renders with id', () => {
@@ -24,7 +26,11 @@ describe('Inset text', () => {
     })
 
     it('renders nested components using `call`', () => {
-      const $ = render('inset-text', {}, '<div class="app-nested-component"></div>')
+      const $ = render(
+        'inset-text',
+        {},
+        '<div class="app-nested-component"></div>'
+      )
 
       expect($('.govuk-inset-text .app-nested-component').length).toBeTruthy()
     })
@@ -33,16 +39,26 @@ describe('Inset text', () => {
       const $ = render('inset-text', examples['html as text'])
 
       const content = $('.govuk-inset-text').html().trim()
-      expect(content).toEqual('It can take &lt;b&gt;up to 8 weeks&lt;/b&gt; to register a lasting power of attorney if there are no mistakes in the application.')
+      expect(content).toEqual(
+        'It can take &lt;b&gt;up to 8 weeks&lt;/b&gt; to register a lasting power of attorney if there are no mistakes in the application.'
+      )
     })
 
     it('allows HTML to be passed un-escaped', () => {
       const $ = render('inset-text', examples['with html'])
 
-      const mainContent = $('.govuk-inset-text .govuk-body:first-child').text().trim()
-      const warningContent = $('.govuk-inset-text .govuk-warning-text__text').text().trim()
-      expect(mainContent).toEqual('It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.')
-      expect(warningContent).toEqual('Warning\n    You can be fined up to £5,000 if you don’t register.')
+      const mainContent = $('.govuk-inset-text .govuk-body:first-child')
+        .text()
+        .trim()
+      const warningContent = $('.govuk-inset-text .govuk-warning-text__text')
+        .text()
+        .trim()
+      expect(mainContent).toEqual(
+        'It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.'
+      )
+      expect(warningContent).toEqual(
+        'Warning\n    You can be fined up to £5,000 if you don’t register.'
+      )
     })
 
     it('renders with attributes', () => {

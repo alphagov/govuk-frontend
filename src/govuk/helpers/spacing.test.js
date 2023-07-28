@@ -38,15 +38,13 @@ describe('@function govuk-spacing', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
           .foo {
             top: 15px;
           }
         `
-      })
+    })
   })
 
   it('returns CSS for a property based on a negative spacing point', async () => {
@@ -58,15 +56,13 @@ describe('@function govuk-spacing', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
           .foo {
             top: -15px;
           }
         `
-      })
+    })
   })
 
   it('throws an error when passed anything other than a number', async () => {
@@ -78,11 +74,9 @@ describe('@function govuk-spacing', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .rejects
-      .toThrow(
-        'Expected a number (integer), but got a string.'
-      )
+    await expect(compileSassString(sass)).rejects.toThrow(
+      'Expected a number (integer), but got a string.'
+    )
   })
 
   it('throws an error when passed a non-existent point', async () => {
@@ -94,11 +88,9 @@ describe('@function govuk-spacing', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .rejects
-      .toThrow(
-        'Unknown spacing variable `999`. Make sure you are using a point from the spacing scale in `_settings/spacing.scss`.'
-      )
+    await expect(compileSassString(sass)).rejects.toThrow(
+      'Unknown spacing variable `999`. Make sure you are using a point from the spacing scale in `_settings/spacing.scss`.'
+    )
   })
 
   it('throws an error when passed a non-existent negative point', async () => {
@@ -110,11 +102,9 @@ describe('@function govuk-spacing', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .rejects
-      .toThrow(
-        'Unknown spacing variable `999`. Make sure you are using a point from the spacing scale in `_settings/spacing.scss`.'
-      )
+    await expect(compileSassString(sass)).rejects.toThrow(
+      'Unknown spacing variable `999`. Make sure you are using a point from the spacing scale in `_settings/spacing.scss`.'
+    )
   })
 
   it('handles negative zero', async () => {
@@ -126,15 +116,13 @@ describe('@function govuk-spacing', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
           .foo {
             top: 0;
           }
         `
-      })
+    })
   })
 })
 
@@ -148,10 +136,8 @@ describe('@mixin _govuk-responsive-spacing', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
           .foo {
             margin: 15px;
           }
@@ -161,7 +147,7 @@ describe('@mixin _govuk-responsive-spacing', () => {
             }
           }
         `
-      })
+    })
   })
 
   it('outputs CSS for a property and direction based on the spacing map', async () => {
@@ -173,10 +159,8 @@ describe('@mixin _govuk-responsive-spacing', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
           .foo {
             padding-top: 15px;
           }
@@ -186,7 +170,7 @@ describe('@mixin _govuk-responsive-spacing', () => {
             }
           }
         `
-      })
+    })
   })
 
   it('throws an exception when passed a non-existent point', async () => {
@@ -198,11 +182,9 @@ describe('@mixin _govuk-responsive-spacing', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .rejects
-      .toThrow(
-        'Unknown spacing point `14px`. Make sure you are using a point from the responsive spacing scale in `_settings/spacing.scss`.'
-      )
+    await expect(compileSassString(sass)).rejects.toThrow(
+      'Unknown spacing point `14px`. Make sure you are using a point from the responsive spacing scale in `_settings/spacing.scss`.'
+    )
   })
 
   describe('when $important is set to true', () => {
@@ -219,10 +201,8 @@ describe('@mixin _govuk-responsive-spacing', () => {
         }
       `
 
-      await expect(compileSassString(sass))
-        .resolves
-        .toMatchObject({
-          css: outdent`
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
             .foo {
               margin: 15px !important;
             }
@@ -232,7 +212,7 @@ describe('@mixin _govuk-responsive-spacing', () => {
               }
             }
           `
-        })
+      })
     })
 
     it('marks the rule as important for the property and direction', async () => {
@@ -249,10 +229,8 @@ describe('@mixin _govuk-responsive-spacing', () => {
         }
       `
 
-      await expect(compileSassString(sass))
-        .resolves
-        .toMatchObject({
-          css: outdent`
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
             .foo {
               margin-top: 15px !important;
             }
@@ -262,7 +240,7 @@ describe('@mixin _govuk-responsive-spacing', () => {
               }
             }
           `
-        })
+      })
     })
   })
 
@@ -280,10 +258,8 @@ describe('@mixin _govuk-responsive-spacing', () => {
         }
       `
 
-      await expect(compileSassString(sass))
-        .resolves
-        .toMatchObject({
-          css: outdent`
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
             .foo {
               margin: 17px;
             }
@@ -293,7 +269,7 @@ describe('@mixin _govuk-responsive-spacing', () => {
               }
             }
           `
-        })
+      })
     })
 
     it('adjusts the value for the property and direction', async () => {
@@ -310,10 +286,8 @@ describe('@mixin _govuk-responsive-spacing', () => {
         }
       `
 
-      await expect(compileSassString(sass))
-        .resolves
-        .toMatchObject({
-          css: outdent`
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: outdent`
             .foo {
               margin-top: 17px;
             }
@@ -323,7 +297,7 @@ describe('@mixin _govuk-responsive-spacing', () => {
               }
             }
           `
-        })
+      })
     })
   })
 })
@@ -338,10 +312,8 @@ describe('@mixin govuk-responsive-margin', () => {
         }
       `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
           .foo {
             margin: 15px;
           }
@@ -351,7 +323,7 @@ describe('@mixin govuk-responsive-margin', () => {
             }
           }
         `
-      })
+    })
   })
 
   it('outputs extreme responsive margins', async () => {
@@ -368,10 +340,8 @@ describe('@mixin govuk-responsive-margin', () => {
         }
       `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
           .foo {
             margin-top: 17px !important;
           }
@@ -381,7 +351,7 @@ describe('@mixin govuk-responsive-margin', () => {
             }
           }
         `
-      })
+    })
   })
 })
 
@@ -395,10 +365,8 @@ describe('@mixin govuk-responsive-padding', () => {
         }
       `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
           .foo {
             padding: 15px;
           }
@@ -408,7 +376,7 @@ describe('@mixin govuk-responsive-padding', () => {
             }
           }
         `
-      })
+    })
   })
 
   it('outputs extreme responsive padding', async () => {
@@ -425,10 +393,8 @@ describe('@mixin govuk-responsive-padding', () => {
         }
       `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
           .foo {
             padding-top: 17px !important;
           }
@@ -438,6 +404,6 @@ describe('@mixin govuk-responsive-padding', () => {
             }
           }
         `
-      })
+    })
   })
 })

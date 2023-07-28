@@ -58,12 +58,16 @@ describe('Task List', () => {
 
     it('adds a with-link modifier class to the task', async () => {
       const $itemLink = $component.find('.govuk-task-list__item')
-      expect($itemLink.hasClass('govuk-task-list__item--with-link')).toBeTruthy()
+      expect(
+        $itemLink.hasClass('govuk-task-list__item--with-link')
+      ).toBeTruthy()
     })
 
     it('associates the task name link with the status using aria', async () => {
       const $itemLink = $component.find('.govuk-task-list__link')
-      const $statusWithId = $component.find(`#${$itemLink.attr('aria-describedby')}`)
+      const $statusWithId = $component.find(
+        `#${$itemLink.attr('aria-describedby')}`
+      )
 
       expect($statusWithId.text()).toContain('Completed')
     })
@@ -73,7 +77,9 @@ describe('Task List', () => {
 
       const $itemWithLink = $('.govuk-task-list__item:first-child')
       const $itemWithLinkTitle = $itemWithLink.find('.govuk-task-list__link')
-      expect($itemWithLinkTitle.hasClass('custom-class-on-linked-title')).toBeTruthy()
+      expect(
+        $itemWithLinkTitle.hasClass('custom-class-on-linked-title')
+      ).toBeTruthy()
     })
 
     it('escapes the title when passed as text', () => {
@@ -95,7 +101,10 @@ describe('Task List', () => {
 
   describe('when a task does not have an href set', () => {
     it('does not link the task title', () => {
-      const $ = render('task-list', examples['example with hint text and additional states'])
+      const $ = render(
+        'task-list',
+        examples['example with hint text and additional states']
+      )
 
       const $itemWithNoLink = $('.govuk-task-list__item:last-child')
       const $itemWithNoLinkTitle = $itemWithNoLink.find('div')
@@ -106,24 +115,36 @@ describe('Task List', () => {
       const $ = render('task-list', examples['custom classes'])
 
       const $itemWithNoLink = $('.govuk-task-list__item:last-child')
-      const $itemWithNoLinkTitle = $itemWithNoLink.find('.govuk-task-list__name-and-hint div')
-      expect($itemWithNoLinkTitle.hasClass('custom-class-on-unlinked-title')).toBeTruthy()
+      const $itemWithNoLinkTitle = $itemWithNoLink.find(
+        '.govuk-task-list__name-and-hint div'
+      )
+      expect(
+        $itemWithNoLinkTitle.hasClass('custom-class-on-unlinked-title')
+      ).toBeTruthy()
     })
 
     it('escapes the title when passed as text', () => {
       const $ = render('task-list', examples['html passed as text'])
 
       const $itemWithoutLink = $('.govuk-task-list__item:last-child')
-      const $itemWithoutLinkTitle = $itemWithoutLink.find('.govuk-task-list__name-and-hint')
-      expect($itemWithoutLinkTitle.text()).toContain('<strong>Unlinked Title</strong>')
+      const $itemWithoutLinkTitle = $itemWithoutLink.find(
+        '.govuk-task-list__name-and-hint'
+      )
+      expect($itemWithoutLinkTitle.text()).toContain(
+        '<strong>Unlinked Title</strong>'
+      )
     })
 
     it('allows HTML in the title when passed as html', () => {
       const $ = render('task-list', examples.html)
 
       const $itemWithoutLink = $('.govuk-task-list__item:last-child')
-      const $itemWithoutLinkTitle = $itemWithoutLink.find('.govuk-task-list__name-and-hint')
-      expect($itemWithoutLinkTitle.html()).toContain('<strong>Unlinked Title</strong>')
+      const $itemWithoutLinkTitle = $itemWithoutLink.find(
+        '.govuk-task-list__name-and-hint'
+      )
+      expect($itemWithoutLinkTitle.html()).toContain(
+        '<strong>Unlinked Title</strong>'
+      )
     })
   })
 
@@ -177,7 +198,10 @@ describe('Task List', () => {
     let $component
 
     beforeAll(function () {
-      const $ = render('task-list', examples['example with hint text and additional states'])
+      const $ = render(
+        'task-list',
+        examples['example with hint text and additional states']
+      )
       $component = $('.govuk-task-list')
     })
 
