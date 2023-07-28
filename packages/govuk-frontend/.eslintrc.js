@@ -23,7 +23,8 @@ module.exports = {
       extends: [
         'plugin:@typescript-eslint/recommended',
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
-        'plugin:es-x/restrict-to-es2015'
+        'plugin:es-x/restrict-to-es2015',
+        'prettier'
       ],
       env: {
         browser: true

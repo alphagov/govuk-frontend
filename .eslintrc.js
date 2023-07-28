@@ -1,5 +1,5 @@
 module.exports = {
-  extends: 'standard',
+  extends: ['standard', 'prettier'],
   ignorePatterns: [
     '**/dist/**',
     '**/vendor/**',
@@ -19,7 +19,8 @@ module.exports = {
         'plugin:import/recommended',
         'plugin:jsdoc/recommended-typescript-flavor',
         'plugin:n/recommended',
-        'plugin:promise/recommended'
+        'plugin:promise/recommended',
+        'prettier'
       ],
       files: [
         '**/*.{cjs,js,mjs}',
