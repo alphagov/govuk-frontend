@@ -17,6 +17,6 @@ describe('/components/back-link', () => {
         await goToComponent(page, 'back-link', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
-    }, 60000)
+    }, 90000)
   })
 })

@@ -14,7 +14,7 @@ const debouncedWaitTime = headless ? 1500 : 2000
 
 // When headless, keydown-to-keyup time appears to affect event throttling,
 // affecting `lastInputTimestamp` and screen reader status message updates
-const keyupWaitTime = headless ? 0 : 50
+const keyupWaitTime = headless ? 0 : 100
 
 describe('Character count', () => {
   let examples

@@ -9,8 +9,10 @@ runs:
       id: build-cache
 
       with:
+        enableCrossOsArchive: true
+
         # Restore build cache (unless commit SHA changes)
-        key: build-cache-${{ runner.os }}-${{ github.sha }}
+        key: build-${{ runner.os }}-${{ github.sha }}
         path: app/dist
 
     - name: Build

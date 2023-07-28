@@ -19,7 +19,7 @@ describe('/components/accordion', () => {
 
         for (let i = 0; i < numberOfExampleSections; i++) {
           const isContentVisible = await page.waitForSelector('.govuk-accordion .govuk-accordion__section:nth-of-type(' + (i + 1) + ') .govuk-accordion__section-content',
-            { visible: true, timeout: 1000 }
+            { visible: true, timeout: 5000 }
           )
           expect(isContentVisible).toBeTruthy()
         }

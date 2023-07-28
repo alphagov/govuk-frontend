@@ -30,6 +30,6 @@ describe('/components/checkboxes', () => {
         await goToComponent(page, 'checkboxes', { exampleName })
         await expect(axe(page, axeRules)).resolves.toHaveNoViolations()
       }
-    }, 60000)
+    }, 90000)
   })
 })

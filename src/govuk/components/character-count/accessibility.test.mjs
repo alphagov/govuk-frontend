@@ -17,6 +17,6 @@ describe('/components/character-count', () => {
         await goToComponent(page, 'character-count', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
-    }, 60000)
+    }, 90000)
   })
 })

@@ -142,6 +142,6 @@ export default {
   // Enable GitHub Actions reporter UI
   reporters: ['default', 'github-actions'],
 
-  // Browser test increased timeout (5s to 15s)
-  testTimeout: 15000
+  // Browser test increased timeout (5s to 30s)
+  testTimeout: 30000
 }

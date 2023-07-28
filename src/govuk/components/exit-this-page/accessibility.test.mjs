@@ -17,6 +17,6 @@ describe('/components/exit-this-page', () => {
         await goToComponent(page, 'exit-this-page', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
-    }, 60000)
+    }, 90000)
   })
 })

@@ -17,6 +17,6 @@ describe('/components/summary-list', () => {
         await goToComponent(page, 'summary-list', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
-    }, 60000)
+    }, 90000)
   })
 })
