@@ -777,7 +777,7 @@ describe('Character count', () => {
           // Override maxlength to 10
           maxlength: 10
         },
-        initialiser($module) {
+        beforeInitialisation($module) {
           // Set locale to Welsh, which expects translations for 'one', 'two',
           // 'few' 'many' and 'other' forms – with the default English strings
           // provided we only have translations for 'one' and 'other'.
