@@ -536,7 +536,74 @@
 
       </section>
 
+      <section class="govuk-!-margin-top-8">
+        <h2 class="govuk-heading-l govuk-!-padding-bottom-2" style="border-bottom: 4px solid;">Visually hidden text</h2>
 
+        <h3 class="govuk-heading-m">Heading with visually hidden text at the beginning</h3>
+
+        <h4 class="govuk-heading-s"><span class="govuk-visually-hidden">Countries starting with </span>A</h4>
+
+        <h3 class="govuk-heading-m">Heading with visually hidden text at the end</h3>
+
+        <h4 class="govuk-heading-s">Search <span class="govuk-visually-hidden">all content</span></h4>
+
+        <h3 class="govuk-heading-m">Heading that is visually hidden</h3>
+
+        <h4 class="govuk-visually-hidden">Navigation menu</h4>
+
+        <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
+
+        <h3 class="govuk-heading-m">Paragraph that contains visually hidden text</h3>
+
+        <p class="govuk-body">This is a paragraph <span class="govuk-visually-hidden">with some visually hidden text</span>.</p>
+
+        <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
+
+        <h3 class="govuk-heading-m">Table with visually hidden text</h3>
+
+        {{ govukTable({
+          caption: "2019",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "19 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ],
+            [
+              {
+                text: "22 April"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Easter Monday"
+              }
+            ]
+          ]
+        }) }}
+      </section>
     </div>
   </div>
 {% endblock %}
