@@ -243,17 +243,17 @@ jobs:
 
       matrix:
         node-version:
-          - 12.18 # Node.js 12.18 uses package exports with trailing slashes
-          - 12 # But Node.js 12.20+ uses package exports with subpath patterns
-          - 18
+          - 12 # Node.js 12.20+ uses package exports with subpath patterns
+          - 18 # Node.js 17+ cannot use package exports with trailing slashes
+          - 20
 
         conditions:
           - require
           - import
 
-        exclude:
-          - conditions: import
-            node-version: 12.18
+        include:
+          - conditions: require
+            node-version: 12.18 # Node.js 12.18 uses package exports with trailing slashes
 
     env:
       # Node.js conditions override from "require" to "import" etc
@@ -264,9 +264,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3.5.3
 
-      - name: Restore dependencies
-        uses: ./.github/workflows/actions/install-node
-
       - name: Restore build
         uses: ./.github/workflows/actions/build
 
@@ -276,10 +273,19 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - run: node --eval "console.log(require.resolve('govuk-frontend'))"${{ env.FLAGS }}
+        working-directory: packages/govuk-frontend
+
       - run: node --eval "console.log(require.resolve('govuk-frontend/package.json'))"${{ env.FLAGS }}
+        working-directory: packages/govuk-frontend
+
       - run: node --eval "console.log(require.resolve('govuk-frontend/dist/govuk/components/accordion/accordion.bundle.js'))"${{ env.FLAGS }}
+        working-directory: packages/govuk-frontend
+
       - run: node --eval "console.log(require.resolve('govuk-frontend/dist/govuk/components/accordion/accordion.bundle.mjs'))"${{ env.FLAGS }}
+        working-directory: packages/govuk-frontend
+
       - run: node --eval "console.log(require.resolve('govuk-frontend/dist/govuk/i18n.mjs'))"${{ env.FLAGS }}
+        working-directory: packages/govuk-frontend
 
   regression:
     name: Percy
