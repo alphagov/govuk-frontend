@@ -1,4 +1,11 @@
-import { readFile } from 'node:fs/promises'
+import { readFile, stat } from 'node:fs/promises'
+import { join } from 'node:path'
+
+import { filesize } from 'filesize'
+/* eslint-disable */
+// @ts-ignore
+import { paths, pkg } from 'govuk-frontend-config'
+/* eslint-ensable */
 
 /**
  * Posts the content of multiple diffs in parallel on the given GitHub issue
@@ -74,6 +81,47 @@ export async function commentDiff (
     )
   }
 }
+
+/**
+ * Generates comment for stats
+ *
+ * @param {GithubActionContext} githubActionContext
+ * @param {number} issueNumber
+ * @param {StatComment} statComment
+ */
+export async function commentStats (
+  githubActionContext,
+  issueNumber,
+  { titleText, markerText }
+) {
+  const fileSizes = await getFileSizes()
+
+  await comment(
+    githubActionContext,
+    issueNumber,
+    {
+      markerText,
+      titleText,
+      bodyText: `${Object.entries(fileSizes)}`
+    }
+  )
+}
+
+async function getFileSizes () {
+  const [js, css] = await Promise.all([
+    stat(join(paths.root, 'dist', `govuk-frontend-${pkg.version}.min.js`)),
+    stat(join(paths.root, 'dist', `govuk-frontend-${pkg.version}.min.css`))
+  ])
+
+  return {
+    js: filesize(js.size, { base: 2 }),
+    css: filesize(css.size, { base: 2 })
+  }
+}
+
+// async function getModuleBreakdown () {}
+
+// async function renderTableRows () {}
 
 /**
  * @param {GithubActionContext} githubContext - GitHub Action context
@@ -160,6 +208,12 @@ function githubActionRunUrl (context) {
 /**
  * @typedef {object} DiffComment
  * @property {string} path - The path of the file to post as a comment
+ * @property {string} titleText - The title of the comment
+ * @property {string} markerText - The marker to identify the comment
+ */
+
+/**
+ * @typedef {object} StatComment
  * @property {string} titleText - The title of the comment
  * @property {string} markerText - The marker to identify the comment
  */
