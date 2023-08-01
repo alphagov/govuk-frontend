@@ -2,6 +2,11 @@
 
 Read the docs for [what to do before publishing a release](/docs/releasing/before-publishing-a-release.md) to ensure you are prepared to publish.
 
+See the [documentation on support branches](https://govuk-design-system-team-docs.netlify.app/how-we-work/version-control/support-branches.html#support-branches) if you need to:
+
+- publish a new release of previous major versions of GOV.UK Frontend
+- publish a ‘hotfix’ release of GOV.UK Frontend without including other unreleased changes on the `main` branch
+
 # Publish a new version of GOV.UK Frontend
 
 Developers should pair on releases. When remote working, it can be useful to be on a call together.
