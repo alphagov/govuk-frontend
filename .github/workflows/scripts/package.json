@@ -8,7 +8,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "filesize": "^10.0.8",
-    "govuk-frontend-config": "*"
+    "govuk-frontend-stats": "*"
   }
 }

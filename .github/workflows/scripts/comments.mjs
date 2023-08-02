@@ -1,10 +1,8 @@
-import { readFile, stat } from 'node:fs/promises'
-import { join } from 'node:path'
+import { readFile } from 'node:fs/promises'
 
-import { filesize } from 'filesize'
 /* eslint-disable */
 // @ts-ignore
-import { paths, pkg } from 'govuk-frontend-config'
+import { getFileSizes } from 'govuk-frontend-stats'
 /* eslint-ensable */
 
 /**
@@ -94,7 +92,7 @@ export async function commentStats (
   issueNumber,
   { titleText, markerText }
 ) {
-  const fileSizes = await getFileSizes()
+  const fileSizesText = await getFileSizes()
 
   await comment(
     githubActionContext,
@@ -102,21 +100,9 @@ export async function commentStats (
     {
       markerText,
       titleText,
-      bodyText: `${Object.entries(fileSizes)}`
+      bodyText: fileSizesText
     }
   )
-}
-
-async function getFileSizes () {
-  const [js, css] = await Promise.all([
-    stat(join(paths.root, 'dist', `govuk-frontend-${pkg.version}.min.js`)),
-    stat(join(paths.root, 'dist', `govuk-frontend-${pkg.version}.min.css`))
-  ])
-
-  return {
-    js: filesize(js.size, { base: 2 }),
-    css: filesize(css.size, { base: 2 })
-  }
 }
 
 // async function getModuleBreakdown () {}

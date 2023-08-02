@@ -1,6 +1,8 @@
+import { stat } from 'fs/promises'
 import { join, parse } from 'path'
 
-import { paths } from 'govuk-frontend-config'
+import { filesize } from 'filesize'
+import { paths, pkg } from 'govuk-frontend-config'
 import { getComponentNames, filterPath, getYaml } from 'govuk-frontend-lib/files'
 
 /**
@@ -18,6 +20,21 @@ export const packageOptions = {
   type: 'module',
   modulePath: 'all.mjs',
   moduleRoot: paths.stats
+}
+
+/**
+ * Target files for file size analysis
+ */
+const filesForAnalysis = {
+  dist: {
+    js: join(paths.root, `dist/govuk-frontend-${pkg.version}.min.js`),
+    css: join(paths.root, `dist/govuk-frontend-${pkg.version}.min.css`)
+  },
+  package: {
+    esModule: join(paths.package, 'dist/govuk/all.mjs'),
+    esModuleBundle: join(paths.package, 'dist/govuk/all.bundle.mjs'),
+    umdBundle: join(paths.package, 'dist/govuk/all.bundle.js')
+  }
 }
 
 /**
@@ -50,6 +67,24 @@ export async function getStats (modulePath) {
     .reduce((total, rendered) => total + rendered, 0)
 
   return { total, modules }
+}
+
+export async function getFileSizes () {
+  const [distJs, distCSS, esModule, esModuleBundle, umdBundle] = await Promise.all([
+    stat(filesForAnalysis.dist.js),
+    stat(filesForAnalysis.dist.css),
+    stat(filesForAnalysis.package.esModule),
+    stat(filesForAnalysis.package.esModuleBundle),
+    stat(filesForAnalysis.package.umdBundle)
+  ])
+
+  return `
+- Release JS: ${filesize(distJs.size, { base: 2 })},
+- Release CSS: ${filesize(distCSS.size, { base: 2 })},
+- Package ES Module: ${filesize(esModule.size, { base: 2 })},
+- Package ES Module Bundle: ${filesize(esModuleBundle.size, { base: 2 })},
+- Package UMD Bundle: ${filesize(umdBundle.size, { base: 2 })}
+  `
 }
 
 /**
