@@ -14,7 +14,13 @@
     "target": "ESNext",
     "types": ["jest", "jest-axe", "jest-puppeteer", "node"],
     "paths": {
-      "govuk-frontend": ["./packages/govuk-frontend/src/govuk/all.mjs"]
+      "govuk-frontend": ["./packages/govuk-frontend/src/govuk/all.mjs"],
+      "govuk-frontend-stats": ["./shared/stats/src/index.mjs"],
+      "govuk-frontend-config": ["./shared/config/index.js"],
+      "govuk-frontend-helpers": ["./shared/helpers/index.js"],
+      "govuk-frontend-lib": ["./shared/lib/index.js"],
+      "govuk-frontend-lib/names": ["./shared/lib/names.js"],
+      "govuk-frontend-lib/files": ["./shared/lib/files.js"]
     }
   }
 }

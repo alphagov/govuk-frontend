@@ -18,5 +18,8 @@
     "js-yaml": "^4.1.0",
     "minimatch": "^9.0.3",
     "slash": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.5"
   }
 }
