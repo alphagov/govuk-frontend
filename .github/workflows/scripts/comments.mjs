@@ -1,9 +1,6 @@
 import { readFile } from 'node:fs/promises'
 
-/* eslint-disable */
-// @ts-ignore
-import { getFileSizes } from 'govuk-frontend-stats'
-/* eslint-ensable */
+import { getFileSizes, getStats, modulePaths } from 'govuk-frontend-stats'
 
 /**
  * Posts the content of multiple diffs in parallel on the given GitHub issue
@@ -92,11 +89,35 @@ export async function commentStats (
   issueNumber,
   { titleText, markerText }
 ) {
+  const reviewAppURL = getReviewAppUrl(issueNumber)
+
+  // File sizes
   const fileSizeTitle = '### File sizes'
   const fileSizes = await getFileSizes()
   const fileSizeRows = Object.entries(fileSizes).map(([key, value]) => [key, String(value)])
-  const headers = ['File', 'Size']
-  const fileSizeTable = renderTable(headers, fileSizeRows)
+  const fileSizeHeaders = ['File', 'Size']
+  const fileSizeTable = renderTable(fileSizeHeaders, fileSizeRows)
+  const fileSizeText = [fileSizeTitle, fileSizeTable].join('\n')
+
+  // Modules
+  const modulesTitle = '### Modules'
+  const modules = Object.fromEntries(await Promise.all(modulePaths
+    .filter((modulePath) => typeof modulePath === 'string')
+    .map(async (modulePath) => [modulePath, await getStats(String(modulePath))])))
+
+  const modulesRows = Object.entries(modules)
+    .map(([key, value]) => {
+      return [
+        `[${key}](${[reviewAppURL, key.replace('mjs', 'html')].join()})`,
+        `${(value.total / 1000).toFixed(2)} KB`,
+        value.moduleCount
+      ]
+    })
+
+  const modulesHeaders = ['File', 'Size', 'Module count']
+  const modulesTable = renderTable(modulesHeaders, modulesRows)
+  const modulesFooter = `[View stats and visualisations on the review app](${reviewAppURL})`
+  const modulesText = [modulesTitle, modulesTable, modulesFooter].join('\n')
 
   await comment(
     githubActionContext,
@@ -104,41 +125,39 @@ export async function commentStats (
     {
       markerText,
       titleText,
-      bodyText: [fileSizeTitle, fileSizeTable].join('\n')
+      bodyText: [fileSizeText, modulesText].join('\n')
     }
   )
 }
 
-// async function getModuleBreakdown () {}
-
 /**
  * Renders a GitHub Markdown table using the headers and rows.
+ *
  * @param {Array<string>} headers - An array or object containing the table headers.
  * @param {Array<Array<string>>} rows - An array of arrays or objects containing the row data for the table.
  * @returns {string} The GitHub Markdown table as a string.
  */
 function renderTable (headers, rows) {
-
   if (!Array.isArray(headers) || !Array.isArray(rows)) {
-    throw new Error("Headers and rows must be arrays.");
+    throw new Error('Headers and rows must be arrays.')
   }
 
   if (headers.length === 0) {
-    throw new Error("Headers array must have at least one element.")
+    throw new Error('Headers array must have at least one element.')
   }
 
-  const numColumns = headers.length;
+  const numColumns = headers.length
   if (!rows.every((row) => row.length === numColumns)) {
-    throw new Error("All rows must have the same number of elements as the headers.")
+    throw new Error('All rows must have the same number of elements as the headers.')
   }
 
-  const headerRow = `|${headers.join("|")}|`
-  const headerSeparator = `|${Array(numColumns).fill("---").join("|")}|`
+  const headerRow = `|${headers.join('|')}|`
+  const headerSeparator = `|${Array(numColumns).fill('---').join('|')}|`
 
-  const rowStrings = rows.map((row) => `|${row.join("|")}|`);
+  const rowStrings = rows.map((row) => `|${row.join('|')}|`)
 
   // Combine headers, header separator, and rows to form the table
-  return [headerRow, headerSeparator, ...rowStrings].join("\n");
+  return `${[headerRow, headerSeparator, ...rowStrings].join('\n')}\n`
 }
 
 /**
@@ -202,6 +221,14 @@ export async function comment ({ github, context, commit }, issueNumber, { title
  */
 function renderCommentFooter ({ context, commit }) {
   return `[Action run](${githubActionRunUrl(context)}) for ${commit}`
+}
+
+/**
+ * @param {number} prNumber - The PR number
+ * @returns {string} - The Review App preview URL
+ */
+function getReviewAppUrl (prNumber) {
+  return `https://govuk-frontend-pr-${prNumber}.herokuapp.com/`
 }
 
 /**

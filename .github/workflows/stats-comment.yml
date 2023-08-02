@@ -38,7 +38,7 @@ jobs:
             const commit = '${{ github.event.pull_request.head.sha }}'
 
             const options = {
-              titleText: 'Stats',
+              titleText: ':clipboard: Stats',
               markerText: 'stats'
             }
 

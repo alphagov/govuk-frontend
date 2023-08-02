@@ -48,7 +48,7 @@ export const modulePaths = [packageOptions.modulePath]
  * Rollup module stats
  *
  * @param {string} modulePath - Rollup input path
- * @returns {Promise<{ total: number, modules: ModulesList }>} Rollup module stats
+ * @returns {Promise<{ total: number, modules: ModulesList, moduleCount: number }>} Rollup module stats
  */
 export async function getStats (modulePath) {
   const { base, dir, name } = parse(modulePath)
@@ -61,12 +61,14 @@ export async function getStats (modulePath) {
   // Modules bundled
   const modules = stats?.[base] ?? {}
 
+  const moduleCount = Object.keys(modules).length
+
   // Modules total size
   const total = Object.values(modules)
     .map(({ rendered }) => rendered)
     .reduce((total, rendered) => total + rendered, 0)
 
-  return { total, modules }
+  return { total, modules, moduleCount }
 }
 
 export async function getFileSizes () {
