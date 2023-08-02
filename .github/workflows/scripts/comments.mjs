@@ -92,7 +92,11 @@ export async function commentStats (
   issueNumber,
   { titleText, markerText }
 ) {
-  const fileSizesText = await getFileSizes()
+  const fileSizeTitle = '### File sizes'
+  const fileSizes = await getFileSizes()
+  const fileSizeRows = Object.entries(fileSizes).map(([key, value]) => [key, String(value)])
+  const headers = ['File', 'Size']
+  const fileSizeTable = renderTable(headers, fileSizeRows)
 
   await comment(
     githubActionContext,
@@ -100,14 +104,42 @@ export async function commentStats (
     {
       markerText,
       titleText,
-      bodyText: fileSizesText
+      bodyText: [fileSizeTitle, fileSizeTable].join('\n')
     }
   )
 }
 
 // async function getModuleBreakdown () {}
 
-// async function renderTableRows () {}
+/**
+ * Renders a GitHub Markdown table using the headers and rows.
+ * @param {Array<string>} headers - An array or object containing the table headers.
+ * @param {Array<Array<string>>} rows - An array of arrays or objects containing the row data for the table.
+ * @returns {string} The GitHub Markdown table as a string.
+ */
+function renderTable (headers, rows) {
+
+  if (!Array.isArray(headers) || !Array.isArray(rows)) {
+    throw new Error("Headers and rows must be arrays.");
+  }
+
+  if (headers.length === 0) {
+    throw new Error("Headers array must have at least one element.")
+  }
+
+  const numColumns = headers.length;
+  if (!rows.every((row) => row.length === numColumns)) {
+    throw new Error("All rows must have the same number of elements as the headers.")
+  }
+
+  const headerRow = `|${headers.join("|")}|`
+  const headerSeparator = `|${Array(numColumns).fill("---").join("|")}|`
+
+  const rowStrings = rows.map((row) => `|${row.join("|")}|`);
+
+  // Combine headers, header separator, and rows to form the table
+  return [headerRow, headerSeparator, ...rowStrings].join("\n");
+}
 
 /**
  * @param {GithubActionContext} githubContext - GitHub Action context

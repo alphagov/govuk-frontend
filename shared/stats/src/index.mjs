@@ -78,13 +78,13 @@ export async function getFileSizes () {
     stat(filesForAnalysis.package.umdBundle)
   ])
 
-  return `
-- Release JS: ${filesize(distJs.size, { base: 2 })},
-- Release CSS: ${filesize(distCSS.size, { base: 2 })},
-- Package ES Module: ${filesize(esModule.size, { base: 2 })},
-- Package ES Module Bundle: ${filesize(esModuleBundle.size, { base: 2 })},
-- Package UMD Bundle: ${filesize(umdBundle.size, { base: 2 })}
-  `
+  return {
+    'Minified release JS': filesize(distJs.size, { base: 2 }),
+    'Minified release CSS': filesize(distCSS.size, { base: 2 }),
+    'Package ES Module': filesize(esModule.size, { base: 2 }),
+    'Package ES Module Bundle': filesize(esModuleBundle.size, { base: 2 }),
+    'Package UMD Bundle': filesize(umdBundle.size, { base: 2 })
+  }
 }
 
 /**
