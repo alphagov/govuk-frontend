@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises'
 
-import { getFileSizes } from 'govuk-frontend-stats'
+import { getFileSizes, getStats, modulePaths } from 'govuk-frontend-stats'
 
 /**
  * Posts the content of multiple diffs in parallel on the given GitHub issue
@@ -74,6 +74,8 @@ export async function commentStats (
   issueNumber,
   { titleText, markerText }
 ) {
+  const reviewAppURL = getReviewAppUrl(issueNumber)
+
   // File sizes
   const fileSizeTitle = '### File sizes'
   const fileSizes = await getFileSizes()
@@ -82,13 +84,33 @@ export async function commentStats (
   const fileSizeTable = renderTable(fileSizeHeaders, fileSizeRows)
   const fileSizeText = [fileSizeTitle, fileSizeTable].join('\n')
 
+  // Modules
+  const modulesTitle = '### Modules'
+  const modules = Object.fromEntries(await Promise.all(modulePaths
+    .filter((modulePath) => typeof modulePath === 'string')
+    .map(async (modulePath) => [modulePath, await getStats(String(modulePath))])))
+
+  const modulesRows = Object.entries(modules)
+    .map(([key, value]) => {
+      return [
+        `[${key}](${[reviewAppURL, key.replace('mjs', 'html')].join()})`,
+        `${(value.total / 1000).toFixed(2)} KB`,
+        value.moduleCount
+      ]
+    })
+
+  const modulesHeaders = ['File', 'Size', 'Module count']
+  const modulesTable = renderTable(modulesHeaders, modulesRows)
+  const modulesFooter = `[View stats and visualisations on the review app](${reviewAppURL})`
+  const modulesText = [modulesTitle, modulesTable, modulesFooter].join('\n')
+
   await comment(
     githubActionContext,
     issueNumber,
     {
       markerText,
       titleText,
-      bodyText: fileSizeText
+      bodyText: [fileSizeText, modulesText].join('\n')
     }
   )
 }
@@ -204,6 +226,14 @@ function githubActionRunUrl(context) {
   const { runId, repo } = context
 
   return `https://github.com/${repo.owner}/${repo.repo}/actions/runs/${runId}/attempts/${process.env.GITHUB_RUN_ATTEMPT}`
+}
+
+/**
+ * @param {number} prNumber - The PR number
+ * @returns {string} - The Review App preview URL
+ */
+function getReviewAppUrl (prNumber) {
+  return `https://govuk-frontend-pr-${prNumber}.herokuapp.com/`
 }
 
 /**
