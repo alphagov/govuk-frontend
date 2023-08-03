@@ -58,7 +58,7 @@ const getComponentsFixtures = async () => {
  * @param {string} [componentName] - Component name
  * @returns {Promise<string[]>} Component files
  */
-const getComponentFiles = (componentName = '') =>
+const getComponentFiles = (componentName = '*') =>
   getListing(
     join(
       packageNameToPath('govuk-frontend'),
