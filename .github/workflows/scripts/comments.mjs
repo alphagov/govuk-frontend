@@ -1,5 +1,7 @@
 import { readFile } from 'node:fs/promises'
 
+import { getFileSizes } from 'govuk-frontend-stats'
+
 /**
  * Posts the content of multiple diffs in parallel on the given GitHub issue
  *
@@ -58,6 +60,37 @@ export async function commentDiff(
       )}#artifacts).`
     })
   }
+}
+
+/**
+ * Generates comment for stats
+ *
+ * @param {GithubActionContext} githubActionContext
+ * @param {number} issueNumber
+ * @param {StatComment} statComment
+ */
+export async function commentStats (
+  githubActionContext,
+  issueNumber,
+  { titleText, markerText }
+) {
+  // File sizes
+  const fileSizeTitle = '### File sizes'
+  const fileSizes = await getFileSizes()
+  const fileSizeRows = Object.entries(fileSizes).map(([key, value]) => [key, String(value)])
+  const fileSizeHeaders = ['File', 'Size']
+  const fileSizeTable = renderTable(fileSizeHeaders, fileSizeRows)
+  const fileSizeText = [fileSizeTitle, fileSizeTable].join('\n')
+
+  await comment(
+    githubActionContext,
+    issueNumber,
+    {
+      markerText,
+      titleText,
+      bodyText: fileSizeText
+    }
+  )
 }
 
 /**
@@ -132,6 +165,36 @@ function renderCommentFooter({ context, commit }) {
 }
 
 /**
+ * Renders a GitHub Markdown table.
+ *
+ * @param {Array<string>} headers - An array containing the table headers.
+ * @param {Array<Array<string>>} rows - An array of arrays containing the row data for the table.
+ * @returns {string} The GitHub Markdown table as a string.
+ */
+function renderTable (headers, rows) {
+  if (!Array.isArray(headers) || !Array.isArray(rows)) {
+    throw new Error('Headers and rows must be arrays.')
+  }
+
+  if (headers.length === 0) {
+    throw new Error('Headers array must have at least one element.')
+  }
+
+  const numColumns = headers.length
+  if (!rows.every((row) => row.length === numColumns)) {
+    throw new Error('All rows must have the same number of elements as the headers.')
+  }
+
+  const headerRow = `|${headers.join('|')}|`
+  const headerSeparator = `|${Array(numColumns).fill('---').join('|')}|`
+
+  const rowStrings = rows.map((row) => `|${row.join('|')}|`)
+
+  // Combine headers, header separator, and rows to form the table
+  return `${[headerRow, headerSeparator, ...rowStrings].join('\n')}\n`
+}
+
+/**
  * Generates a URL to the GitHub action run
  *
  * @param {import('@actions/github').context} context - The context of the GitHub action
@@ -153,6 +216,12 @@ function githubActionRunUrl(context) {
 /**
  * @typedef {object} DiffComment
  * @property {string} path - The path of the file to post as a comment
+ * @property {string} titleText - The title of the comment
+ * @property {string} markerText - The marker to identify the comment
+ */
+
+/**
+ * @typedef {object} StatComment
  * @property {string} titleText - The title of the comment
  * @property {string} markerText - The marker to identify the comment
  */
