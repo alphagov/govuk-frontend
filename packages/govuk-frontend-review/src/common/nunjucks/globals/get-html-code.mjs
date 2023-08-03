@@ -1,5 +1,4 @@
-import { paths } from 'govuk-frontend-config'
-import { packageTypeToPath } from 'govuk-frontend-lib/names'
+import { renderComponent } from 'govuk-frontend-lib/components'
 import beautify from 'js-beautify'
 
 /**
@@ -11,13 +10,9 @@ import beautify from 'js-beautify'
  * @returns {string} HTML rendered by the component
  */
 export function getHTMLCode(componentName, params) {
-  const templatePath = packageTypeToPath('govuk-frontend', {
-    modulePath: `components/${componentName}/template.njk`,
-    moduleRoot: paths.app
+  const html = renderComponent(componentName, params, {
+    env: this.env
   })
-
-  // Render to HTML
-  const html = this.env.render(templatePath, { params }).trim()
 
   // Default beautify options
   const options = beautify.html.defaultOptions()

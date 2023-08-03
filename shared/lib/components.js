@@ -147,7 +147,7 @@ function renderMacro(macroName, macroPath, params = {}, options) {
     ? `{%- call ${macroName}(${paramsFormatted}) -%}${options.callBlock}{%- endcall -%}`
     : `{{- ${macroName}(${paramsFormatted}) -}}`
 
-  return renderString(macroString)
+  return renderString(macroString, {}, options)
 }
 
 /**
@@ -155,10 +155,12 @@ function renderMacro(macroName, macroPath, params = {}, options) {
  *
  * @param {string} string - Nunjucks string to render
  * @param {object} [context] - Nunjucks context object (optional)
+ * @param {MacroRenderOptions} [options] - Nunjucks macro render options
  * @returns {string} HTML rendered from the Nunjucks string
  */
-function renderString(string, context) {
-  return env.renderString(string, context)
+function renderString(string, context, options) {
+  const nunjucksEnv = options?.env ?? env
+  return nunjucksEnv.renderString(string, context)
 }
 
 module.exports = {
@@ -225,6 +227,7 @@ module.exports = {
  *
  * @typedef {object} MacroRenderOptions
  * @property {string} [callBlock] - Nunjucks macro `caller()` content (optional)
+ * @property {import('nunjucks').Environment} [env] - Nunjucks environment (optional)
  */
 
 /**

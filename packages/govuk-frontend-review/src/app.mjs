@@ -2,12 +2,11 @@ import express from 'express'
 import {
   getComponentsFixtures,
   getComponentNames,
-  getComponentNamesFiltered
+  getComponentNamesFiltered,
+  renderComponent
 } from 'govuk-frontend-lib/components'
 import { filterPath } from 'govuk-frontend-lib/files'
-import { componentNameToMacroName } from 'govuk-frontend-lib/names'
 import { getStats, modulePaths } from 'govuk-frontend-stats'
-import { outdent } from 'outdent'
 
 import { getExampleNames, getFullPageExamples } from './common/lib/files.mjs'
 import * as middleware from './common/middleware/index.mjs'
@@ -149,15 +148,10 @@ export default async () => {
       }
 
       // Construct and evaluate the component with the data for this example
-      const macroName = componentNameToMacroName(componentName)
-      const macroParameters = JSON.stringify(fixture.options, null, '\t')
-
-      res.locals.componentView = env.renderString(
-        outdent`
-      {% from "govuk/components/${componentName}/macro.njk" import ${macroName} %}
-      {{ ${macroName}(${macroParameters}) }}
-    `,
-        {}
+      res.locals.componentView = renderComponent(
+        componentName,
+        fixture.options,
+        { env }
       )
 
       let bodyClasses = 'app-template__body'
