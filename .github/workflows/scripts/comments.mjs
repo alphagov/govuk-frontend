@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises'
 
-import { getFileSizes, getStats, modulePaths } from 'govuk-frontend-stats'
+import { getFileSizes, getStats, modulePaths } from '@govuk-frontend/stats'
+import { filesize } from 'filesize'
 
 /**
  * Posts the content of multiple diffs in parallel on the given GitHub issue
@@ -69,7 +70,7 @@ export async function commentDiff(
  * @param {number} issueNumber
  * @param {StatComment} statComment
  */
-export async function commentStats (
+export async function commentStats(
   githubActionContext,
   issueNumber,
   { titleText, markerText }
@@ -79,40 +80,48 @@ export async function commentStats (
   // File sizes
   const fileSizeTitle = '### File sizes'
   const fileSizes = await getFileSizes()
-  const fileSizeRows = Object.entries(fileSizes).map(([key, value]) => [key, String(value)])
+  const fileSizeRows = Object.entries(fileSizes).map(([key, value]) => {
+    return [key, String(filesize(value.size, { base: 2 }))]
+  })
   const fileSizeHeaders = ['File', 'Size']
   const fileSizeTable = renderTable(fileSizeHeaders, fileSizeRows)
   const fileSizeText = [fileSizeTitle, fileSizeTable].join('\n')
 
   // Modules
   const modulesTitle = '### Modules'
-  const modules = Object.fromEntries(await Promise.all(modulePaths
-    .filter((modulePath) => typeof modulePath === 'string')
-    .map(async (modulePath) => [modulePath, await getStats(String(modulePath))])))
+  const modules = Object.fromEntries(
+    await Promise.all(
+      modulePaths
+        .filter((modulePath) => typeof modulePath === 'string')
+        .map(async (modulePath) => [
+          modulePath,
+          await getStats(String(modulePath))
+        ])
+    )
+  )
 
-  const modulesRows = Object.entries(modules)
-    .map(([key, value]) => {
-      return [
-        `[${key}](${[reviewAppURL, key.replace('mjs', 'html')].join()})`,
-        `${(value.total / 1000).toFixed(2)} KB`,
-        value.moduleCount
-      ]
-    })
+  const modulesRows = Object.entries(modules).map(([key, value]) => {
+    return [
+      `[${key}](${[
+        reviewAppURL,
+        'docs/stats/',
+        key.replace('mjs', 'html')
+      ].join('')})`,
+      `${(value.total / 1000).toFixed(2)} KB`,
+      value.moduleCount
+    ]
+  })
 
   const modulesHeaders = ['File', 'Size', 'Module count']
   const modulesTable = renderTable(modulesHeaders, modulesRows)
   const modulesFooter = `[View stats and visualisations on the review app](${reviewAppURL})`
   const modulesText = [modulesTitle, modulesTable, modulesFooter].join('\n')
 
-  await comment(
-    githubActionContext,
-    issueNumber,
-    {
-      markerText,
-      titleText,
-      bodyText: [fileSizeText, modulesText].join('\n')
-    }
-  )
+  await comment(githubActionContext, issueNumber, {
+    markerText,
+    titleText,
+    bodyText: [fileSizeText, modulesText].join('\n')
+  })
 }
 
 /**
@@ -193,7 +202,7 @@ function renderCommentFooter({ context, commit }) {
  * @param {Array<Array<string>>} rows - An array of arrays containing the row data for the table.
  * @returns {string} The GitHub Markdown table as a string.
  */
-function renderTable (headers, rows) {
+function renderTable(headers, rows) {
   if (!Array.isArray(headers) || !Array.isArray(rows)) {
     throw new Error('Headers and rows must be arrays.')
   }
@@ -204,7 +213,9 @@ function renderTable (headers, rows) {
 
   const numColumns = headers.length
   if (!rows.every((row) => row.length === numColumns)) {
-    throw new Error('All rows must have the same number of elements as the headers.')
+    throw new Error(
+      'All rows must have the same number of elements as the headers.'
+    )
   }
 
   const headerRow = `|${headers.join('|')}|`
@@ -232,7 +243,7 @@ function githubActionRunUrl(context) {
  * @param {number} prNumber - The PR number
  * @returns {string} - The Review App preview URL
  */
-function getReviewAppUrl (prNumber) {
+function getReviewAppUrl(prNumber) {
   return `https://govuk-frontend-pr-${prNumber}.herokuapp.com/`
 }
 

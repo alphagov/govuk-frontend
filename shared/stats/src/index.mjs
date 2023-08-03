@@ -1,10 +1,9 @@
 import { stat } from 'fs/promises'
 import { join, parse } from 'path'
 
-import { paths } from '@govuk-frontend/config'
+import { paths, pkg } from '@govuk-frontend/config'
 import { getComponentNamesFiltered } from '@govuk-frontend/lib/components'
 import { filterPath, getYaml } from '@govuk-frontend/lib/files'
-import { filesize } from 'filesize'
 
 /**
  * Components with JavaScript
@@ -18,17 +17,13 @@ const componentNamesWithJavaScript = await getComponentNamesFiltered(
 /**
  * Target files for file size analysis
  */
-const filesForAnalysis = {
-  dist: {
-    js: join(paths.root, `dist/govuk-frontend-${pkg.version}.min.js`),
-    css: join(paths.root, `dist/govuk-frontend-${pkg.version}.min.css`)
-  },
-  package: {
-    esModule: join(paths.package, 'dist/govuk/all.mjs'),
-    esModuleBundle: join(paths.package, 'dist/govuk/all.bundle.mjs'),
-    umdBundle: join(paths.package, 'dist/govuk/all.bundle.js')
-  }
-}
+const filesForAnalysis = [
+  `dist/govuk-frontend-${pkg.version}.min.js`,
+  `dist/govuk-frontend-${pkg.version}.min.css`,
+  'packages/govuk-frontend/dist/govuk/all.mjs',
+  'packages/govuk-frontend/dist/govuk/all.bundle.mjs',
+  'packages/govuk-frontend/dist/govuk/all.bundle.js'
+]
 
 /**
  * Package options
@@ -81,38 +76,20 @@ export async function getStats(modulePath) {
 /**
  * Returns file sizes of key files
  *
- * @returns {Promise<{[key: string]: string | number | any[] | FileSizeObject}>} - File names and size
+ * @returns {Promise<{[key: string]: import('fs').Stats}>} - File names and size
  */
 export async function getFileSizes() {
-  const [distJs, distCSS, esModule, esModuleBundle, umdBundle] =
-    await Promise.all([
-      stat(filesForAnalysis.dist.js),
-      stat(filesForAnalysis.dist.css),
-      stat(filesForAnalysis.package.esModule),
-      stat(filesForAnalysis.package.esModuleBundle),
-      stat(filesForAnalysis.package.umdBundle)
-    ])
+  /** @type { { [key: string]: import('fs').Stats } } */
+  const result = {}
 
-  return {
-    'Minified release JS': filesize(distJs.size, { base: 2 }),
-    'Minified release CSS': filesize(distCSS.size, { base: 2 }),
-    'Package ES Module': filesize(esModule.size, { base: 2 }),
-    'Package ES Module Bundle': filesize(esModuleBundle.size, { base: 2 }),
-    'Package UMD Bundle': filesize(umdBundle.size, { base: 2 })
+  for (const filename of filesForAnalysis) {
+    const stats = await stat(join(paths.root, filename))
+    result[filename] = stats
   }
+
+  return result
 }
 
 /**
  * @typedef {{ [modulePath: string]: { rendered: number } }} ModulesList
- */
-
-/**
- * Filesize return object
- * https://github.com/avoidwork/filesize.js/blob/c9fff4f777d65ac85dd14e22fa2f0a62dac166e2/types/filesize.d.ts#L20
- *
- * @typedef {object} FileSizeObject
- * @property {any} value - filesize value
- * @property {any} symbol - filesize symbol
- * @property {number} exponent - filesize exponent
- * @property {string} unit - filesize unit
  */
