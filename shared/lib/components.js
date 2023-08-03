@@ -143,7 +143,18 @@ function renderMacro(macroName, macroPath, params = {}, options) {
     ? `{%- call ${macroName}(${paramsFormatted}) -%}${options.callBlock}{%- endcall -%}`
     : `{{- ${macroName}(${paramsFormatted}) -}}`
 
-  return env.renderString(macroString, {})
+  return renderString(macroString)
+}
+
+/**
+ * Render string
+ *
+ * @param {string} string - Nunjucks string to render
+ * @param {object} [context] - Nunjucks context object (optional)
+ * @returns {string} HTML rendered from the Nunjucks string
+ */
+function renderString(string, context) {
+  return env.renderString(string, context)
 }
 
 module.exports = {
@@ -154,7 +165,8 @@ module.exports = {
   getExamples,
   nunjucksEnv,
   renderComponent,
-  renderMacro
+  renderMacro,
+  renderString
 }
 
 /**
