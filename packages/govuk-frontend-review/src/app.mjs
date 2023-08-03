@@ -1,4 +1,5 @@
 import express from 'express'
+import { paths } from 'govuk-frontend-config'
 import {
   getComponentsFixtures,
   getComponentNames,
@@ -16,6 +17,10 @@ import * as routes from './routes/index.mjs'
 export default async () => {
   const app = express()
 
+  // Resolve GOV.UK Frontend from review app `node_modules`
+  // to allow previous versions to be installed locally
+  const packageOptions = { moduleRoot: paths.app }
+
   // Cache mapped components and examples
   const [
     componentsFixtures,
@@ -24,14 +29,16 @@ export default async () => {
     exampleNames,
     fullPageExamples
   ] = await Promise.all([
-    getComponentsFixtures(),
+    getComponentsFixtures(packageOptions),
 
     // Components list
-    getComponentNames(),
+    getComponentNames(packageOptions),
 
     // Components list (with JavaScript only)
-    getComponentNamesFiltered((componentName, componentFiles) =>
-      componentFiles.some(filterPath([`**/${componentName}.mjs`]))
+    getComponentNamesFiltered(
+      (componentName, componentFiles) =>
+        componentFiles.some(filterPath([`**/${componentName}.mjs`])),
+      packageOptions
     ),
 
     getExampleNames(),

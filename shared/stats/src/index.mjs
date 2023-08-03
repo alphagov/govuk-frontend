@@ -9,7 +9,8 @@ import { filterPath, getYaml } from 'govuk-frontend-lib/files'
  */
 const componentNamesWithJavaScript = await getComponentNamesFiltered(
   (componentName, componentFiles) =>
-    componentFiles.some(filterPath([`**/${componentName}.mjs`]))
+    componentFiles.some(filterPath([`**/${componentName}.mjs`])),
+  { moduleRoot: paths.stats }
 )
 
 /**

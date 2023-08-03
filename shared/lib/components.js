@@ -1,9 +1,9 @@
-const { join } = require('path')
+const { dirname, join } = require('path')
 
 const nunjucks = require('nunjucks')
 
 const { getListing, getDirectories } = require('./files')
-const { packageNameToPath, componentNameToMacroName } = require('./names')
+const { packageTypeToPath, componentNameToMacroName } = require('./names')
 
 // Nunjucks default environment
 const env = nunjucksEnv()
@@ -13,13 +13,16 @@ const env = nunjucksEnv()
  *
  * @param {string[]} [searchPaths] - Nunjucks search paths (optional)
  * @param {import('nunjucks').ConfigureOptions} [nunjucksOptions] - Nunjucks options (optional)
+ * @param {import('./names').PackageOptions} [packageOptions] - Package options (optional)
  * @returns {import('nunjucks').Environment} Nunjucks environment
  */
-function nunjucksEnv(searchPaths = [], nunjucksOptions = {}) {
-  const packagePath = packageNameToPath('govuk-frontend')
+function nunjucksEnv(searchPaths = [], nunjucksOptions = {}, packageOptions) {
+  const packagePath = dirname(
+    packageTypeToPath('govuk-frontend', packageOptions)
+  )
 
-  // Add to Nunjucks search paths
-  searchPaths.push(join(packagePath, 'src'))
+  // Add to Nunjucks search paths (without 'govuk' suffix)
+  searchPaths.push(join(packagePath, '../'))
 
   // Nunjucks environment
   return nunjucks.configure(searchPaths, {
@@ -33,47 +36,58 @@ function nunjucksEnv(searchPaths = [], nunjucksOptions = {}) {
  * Load single component fixtures
  *
  * @param {string} componentName - Component name
+ * @param {import('./names').PackageOptions} [packageOptions] - Package options (optional)
  * @returns {Promise<ComponentFixtures>} Component data
  */
-const getComponentFixtures = async (componentName) => {
+const getComponentFixtures = async (componentName, packageOptions) => {
   return require(join(
-    packageNameToPath('govuk-frontend'),
-    `dist/govuk/components/${componentName}/fixtures.json`
+    dirname(packageTypeToPath('govuk-frontend', packageOptions)),
+    `components/${componentName}/fixtures.json`
   ))
 }
 
 /**
  * Load all components' data
  *
+ * @param {import('./names').PackageOptions} [packageOptions] - Package options (optional)
  * @returns {Promise<(ComponentFixtures)[]>} Components' data
  */
-const getComponentsFixtures = async () => {
-  const componentNames = await getComponentNames()
-  return Promise.all(componentNames.map(getComponentFixtures))
+const getComponentsFixtures = async (packageOptions) => {
+  const componentNames = await getComponentNames(packageOptions)
+  return Promise.all(
+    componentNames.map((componentName) =>
+      getComponentFixtures(componentName, packageOptions)
+    )
+  )
 }
 
 /**
  * Get component files
  *
  * @param {string} [componentName] - Component name
+ * @param {import('./names').PackageOptions} [packageOptions] - Package options (optional)
  * @returns {Promise<string[]>} Component files
  */
-const getComponentFiles = (componentName = '*') =>
+const getComponentFiles = (componentName = '*', packageOptions) =>
   getListing(
     join(
-      packageNameToPath('govuk-frontend'),
-      `dist/govuk/components/${componentName}/**/*`
+      dirname(packageTypeToPath('govuk-frontend', packageOptions)),
+      `components/${componentName}/**/*`
     )
   )
 
 /**
  * Get component names
  *
+ * @param {import('./names').PackageOptions} [packageOptions] - Package options (optional)
  * @returns {Promise<string[]>} Component names
  */
-async function getComponentNames() {
+async function getComponentNames(packageOptions) {
   return getDirectories(
-    join(packageNameToPath('govuk-frontend'), '**/dist/govuk/components/')
+    join(
+      dirname(packageTypeToPath('govuk-frontend', packageOptions)),
+      'components/'
+    )
   )
 }
 
@@ -81,11 +95,12 @@ async function getComponentNames() {
  * Get component names, filtered
  *
  * @param {(componentName: string, componentFiles: string[]) => boolean} filter - Component names array filter
+ * @param {import('./names').PackageOptions} [packageOptions] - Package options (optional)
  * @returns {Promise<string[]>} Component names
  */
-async function getComponentNamesFiltered(filter) {
-  const componentNames = await getComponentNames()
-  const componentFiles = await getComponentFiles()
+async function getComponentNamesFiltered(filter, packageOptions) {
+  const componentNames = await getComponentNames(packageOptions)
+  const componentFiles = await getComponentFiles('*', packageOptions)
 
   // Apply component names filter
   return componentNames.filter((componentName) =>
@@ -97,10 +112,11 @@ async function getComponentNamesFiltered(filter) {
  * Get examples from component fixtures
  *
  * @param {string} componentName - Component name
+ * @param {import('./names').PackageOptions} [packageOptions] - Package options (optional)
  * @returns {Promise<{ [name: string]: ComponentFixture['options'] }>} Component examples as an object
  */
-async function getExamples(componentName) {
-  const { fixtures } = await getComponentFixtures(componentName)
+async function getExamples(componentName, packageOptions) {
+  const { fixtures } = await getComponentFixtures(componentName, packageOptions)
 
   /** @type {{ [name: string]: ComponentFixture['options'] }} */
   const examples = {}
