@@ -1,13 +1,13 @@
 import { join, parse } from 'path'
 
 import { paths } from 'govuk-frontend-config'
-import { getComponentNames } from 'govuk-frontend-lib/components'
+import { getComponentNamesFiltered } from 'govuk-frontend-lib/components'
 import { filterPath, getYaml } from 'govuk-frontend-lib/files'
 
 /**
  * Components with JavaScript
  */
-const componentNamesWithJavaScript = await getComponentNames(
+const componentNamesWithJavaScript = await getComponentNamesFiltered(
   (componentName, componentFiles) =>
     componentFiles.some(filterPath([`**/${componentName}.mjs`]))
 )

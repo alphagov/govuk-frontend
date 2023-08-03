@@ -1,7 +1,8 @@
 import express from 'express'
 import {
   getComponentsFixtures,
-  getComponentNames
+  getComponentNames,
+  getComponentNamesFiltered
 } from 'govuk-frontend-lib/components'
 import { filterPath } from 'govuk-frontend-lib/files'
 import { componentNameToMacroName } from 'govuk-frontend-lib/names'
@@ -30,7 +31,7 @@ export default async () => {
     getComponentNames(),
 
     // Components list (with JavaScript only)
-    getComponentNames((componentName, componentFiles) =>
+    getComponentNamesFiltered((componentName, componentFiles) =>
       componentFiles.some(filterPath([`**/${componentName}.mjs`]))
     ),
 

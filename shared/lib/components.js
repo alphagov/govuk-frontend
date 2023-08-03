@@ -67,26 +67,30 @@ const getComponentFiles = (componentName = '') =>
   )
 
 /**
- * Get component names (with optional filter)
+ * Get component names
  *
- * @param {(componentName: string, componentFiles: string[]) => boolean} [filter] - Component names array filter
  * @returns {Promise<string[]>} Component names
  */
-const getComponentNames = async (filter) => {
-  const componentNames = await getDirectories(
+async function getComponentNames() {
+  return getDirectories(
     join(packageNameToPath('govuk-frontend'), '**/dist/govuk/components/')
   )
+}
 
-  if (filter) {
-    const componentFiles = await getComponentFiles()
+/**
+ * Get component names, filtered
+ *
+ * @param {(componentName: string, componentFiles: string[]) => boolean} filter - Component names array filter
+ * @returns {Promise<string[]>} Component names
+ */
+async function getComponentNamesFiltered(filter) {
+  const componentNames = await getComponentNames()
+  const componentFiles = await getComponentFiles()
 
-    // Apply component names filter
-    return componentNames.filter((componentName) =>
-      filter(componentName, componentFiles)
-    )
-  }
-
-  return componentNames
+  // Apply component names filter
+  return componentNames.filter((componentName) =>
+    filter(componentName, componentFiles)
+  )
 }
 
 /**
@@ -162,6 +166,7 @@ module.exports = {
   getComponentsFixtures,
   getComponentFiles,
   getComponentNames,
+  getComponentNamesFiltered,
   getExamples,
   nunjucksEnv,
   renderComponent,

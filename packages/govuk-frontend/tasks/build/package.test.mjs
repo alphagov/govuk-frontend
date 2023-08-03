@@ -3,7 +3,10 @@ import { join } from 'path'
 
 import { paths, pkg } from 'govuk-frontend-config'
 import { compileSassFile } from 'govuk-frontend-helpers/tests'
-import { getComponentNames } from 'govuk-frontend-lib/components'
+import {
+  getComponentNames,
+  getComponentNamesFiltered
+} from 'govuk-frontend-lib/components'
 import { filterPath, getListing, mapPathTo } from 'govuk-frontend-lib/files'
 import { componentNameToClassName } from 'govuk-frontend-lib/names'
 import { outdent } from 'outdent'
@@ -44,7 +47,7 @@ describe('packages/govuk-frontend/dist/', () => {
     componentNames = await getComponentNames()
 
     // Components list (with JavaScript only)
-    componentNamesWithJavaScript = await getComponentNames(
+    componentNamesWithJavaScript = await getComponentNamesFiltered(
       (componentName, componentFiles) =>
         componentFiles.some(filterPath([`**/${componentName}.mjs`]))
     )
