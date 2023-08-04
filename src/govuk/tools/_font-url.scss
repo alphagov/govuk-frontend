@@ -13,8 +13,10 @@
 /// @access public
 
 @function govuk-font-url($filename) {
-  $use-custom-function: variable-exists("govuk-font-url-function") and $govuk-font-url-function and
-    function-exists($govuk-font-url-function);
+  // prettier-ignore
+  $use-custom-function: variable-exists("govuk-font-url-function")
+    and $govuk-font-url-function
+    and function-exists($govuk-font-url-function);
 
   @if $use-custom-function {
     @return call(get-function($govuk-font-url-function), $filename);
