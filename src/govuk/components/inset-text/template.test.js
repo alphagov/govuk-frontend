@@ -29,7 +29,9 @@ describe('Inset text', () => {
       const $ = render(
         'inset-text',
         {},
-        '<div class="app-nested-component"></div>'
+        {
+          callBlock: '<div class="app-nested-component"></div>'
+        }
       )
 
       expect($('.govuk-inset-text .app-nested-component').length).toBeTruthy()
