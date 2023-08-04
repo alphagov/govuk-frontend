@@ -295,7 +295,7 @@ module.exports = {
  * Component data
  *
  * @typedef {object} ComponentData
- * @property {ComponentOption[]} [params] - Nunjucks macro option (or param) configs
+ * @property {{ [param: string]: ComponentOption }} params - Nunjucks macro option (or param) configs
  * @property {ComponentExample[]} [examples] - Component examples with Nunjucks macro options (or params)
  * @property {string} [previewLayout] - Nunjucks layout for component preview
  * @property {string} [accessibilityCriteria] - Accessibility criteria
@@ -305,12 +305,11 @@ module.exports = {
  * Nunjucks macro option (or param) config
  *
  * @typedef {object} ComponentOption
- * @property {string} name - Option name
  * @property {'array' | 'boolean' | 'integer' | 'nunjucks-block' | 'object' | 'string'} type - Option type
  * @property {boolean} required - Option required
  * @property {string} description - Option description
  * @property {boolean} [isComponent] - Option is another component
- * @property {ComponentOption[]} [params] - Nunjucks macro option (or param) configs
+ * @property {{ [param: string]: ComponentOption }} [params] - Nunjucks macro option (or param) configs
  */
 
 /**
