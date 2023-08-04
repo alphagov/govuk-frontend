@@ -80,7 +80,7 @@ export async function generateMacroOptions(pattern, { srcPath, destPath }) {
  *
  * @param {string} componentDataPath - Path to ${componentName}.yaml
  * @param {Pick<AssetEntry[1], "srcPath">} options - Asset options
- * @returns {Promise<{ component: string; fixtures: { [key: string]: unknown }[] }>} Component fixtures object
+ * @returns {Promise<ComponentFixtures>} Component fixtures object
  */
 async function generateFixture(componentDataPath, options) {
   /** @type {ComponentData} */
@@ -99,27 +99,35 @@ async function generateFixture(componentDataPath, options) {
   const componentName = basename(dirname(componentDataPath))
 
   // Loop examples
-  const examples = json.examples.map(async (example) => {
-    const context = { params: example.data }
-
-    return {
+  const fixtures = json.examples.map(
+    /**
+     * @param {ComponentExample} example - Component example
+     * @returns {Promise<ComponentFixture>} Component fixture
+     */
+    async (example) => ({
       name: example.name,
       options: example.data,
       hidden: Boolean(example.hidden),
 
+      // Add defaults to optional fields
+      description: example.description ?? '',
+      previewLayoutModifiers: example.previewLayoutModifiers ?? [],
+
       // Wait for render to complete
-      /** @type {string} */
       html: await new Promise((resolve, reject) => {
+        const context = { params: example.data }
+
         return nunjucks.render(template, context, (error, result) => {
           return error ? reject(error) : resolve(result?.trim() ?? '')
         })
       })
-    }
-  })
+    })
+  )
 
   return {
     component: componentName,
-    fixtures: await Promise.all(examples)
+    fixtures: await Promise.all(fixtures),
+    previewLayout: json.previewLayout
   }
 }
 
@@ -145,4 +153,7 @@ async function generateMacroOption(componentDataPath, options) {
  * @typedef {import('./assets.mjs').AssetEntry} AssetEntry
  * @typedef {import('govuk-frontend-lib/files').ComponentData} ComponentData
  * @typedef {import('govuk-frontend-lib/files').ComponentOption} ComponentOption
+ * @typedef {import('govuk-frontend-lib/files').ComponentExample} ComponentExample
+ * @typedef {import('govuk-frontend-lib/files').ComponentFixture} ComponentFixture
+ * @typedef {import('govuk-frontend-lib/files').ComponentFixtures} ComponentFixtures
  */

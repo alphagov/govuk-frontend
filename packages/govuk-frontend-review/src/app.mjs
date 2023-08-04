@@ -1,6 +1,6 @@
 import express from 'express'
 import {
-  getComponentsData,
+  getComponentsFixtures,
   getComponentNames,
   filterPath
 } from 'govuk-frontend-lib/files'
@@ -18,13 +18,13 @@ export default async () => {
 
   // Cache mapped components and examples
   const [
-    componentsData,
+    componentsFixtures,
     componentNames,
     componentNamesWithJavaScript,
     exampleNames,
     fullPageExamples
   ] = await Promise.all([
-    getComponentsData(),
+    getComponentsFixtures(),
 
     // Components list
     getComponentNames(),
@@ -82,27 +82,28 @@ export default async () => {
     })
   })
 
-  // Whenever the route includes a :componentName parameter, read the component data
-  // from its YAML file
+  // Whenever the route includes a :componentName parameter, read the component fixtures
   app.param('componentName', function (req, res, next, componentName) {
-    res.locals.componentData = componentsData.find(
-      ({ name }) => name === componentName
+    res.locals.componentFixtures = componentsFixtures.find(
+      ({ component }) => component === componentName
     )
     next()
   })
 
   // All components view
   app.get('/components/all', function (req, res, next) {
-    res.locals.componentsData = componentsData.map((componentData) => {
-      const defaultExample = componentData.examples.find(
-        ({ name }) => name === 'default'
-      )
+    res.locals.componentsFixtures = componentsFixtures.map(
+      (componentFixtures) => {
+        const defaultFixture = componentFixtures.fixtures.find(
+          ({ name }) => name === 'default'
+        )
 
-      return {
-        ...componentData,
-        examples: [defaultExample]
+        return {
+          ...componentFixtures,
+          fixtures: [defaultFixture]
+        }
       }
-    })
+    )
 
     res.render('all-components', function (error, html) {
       if (error) {
@@ -135,31 +136,32 @@ export default async () => {
       const componentName = req.params.componentName
       const exampleName = req.params.exampleName || 'default'
 
-      const previewLayout = res.locals.componentData?.previewLayout
+      /** @type {ComponentFixtures | undefined} */
+      const componentFixtures = res.locals.componentFixtures
 
-      const exampleConfig = res.locals.componentData?.examples.find(
-        (example) => nunjucks.filters.slugify(example.name) === exampleName
+      const fixture = componentFixtures?.fixtures.find(
+        (fixture) => nunjucks.filters.slugify(fixture.name) === exampleName
       )
 
-      if (!exampleConfig) {
+      if (!fixture) {
         next()
       }
 
       // Construct and evaluate the component with the data for this example
       const macroName = componentNameToMacroName(componentName)
-      const macroParameters = JSON.stringify(exampleConfig.data, null, '\t')
+      const macroParameters = JSON.stringify(fixture.options, null, '\t')
 
       res.locals.componentView = env.renderString(
         outdent`
-          {% from "govuk/components/${componentName}/macro.njk" import ${macroName} %}
-          {{ ${macroName}(${macroParameters}) }}
-        `,
+      {% from "govuk/components/${componentName}/macro.njk" import ${macroName} %}
+      {{ ${macroName}(${macroParameters}) }}
+    `,
         {}
       )
 
       let bodyClasses = 'app-template__body'
 
-      const layoutModifiers = exampleConfig.previewLayoutModifiers || []
+      const layoutModifiers = fixture.previewLayoutModifiers ?? []
       for (const modifier of layoutModifiers) {
         bodyClasses += ` app-template__body--${modifier}`
       }
@@ -168,7 +170,10 @@ export default async () => {
         bodyClasses += ' app-template__body--component-preview'
       }
 
-      res.render('component-preview', { bodyClasses, previewLayout })
+      res.render('component-preview', {
+        bodyClasses,
+        previewLayout: componentFixtures.previewLayout
+      })
     }
   )
 
@@ -201,3 +206,7 @@ export default async () => {
 
   return app
 }
+
+/**
+ * @typedef {import('govuk-frontend-lib/files').ComponentFixtures} ComponentFixtures
+ */
