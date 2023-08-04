@@ -1,6 +1,6 @@
 import { basename, dirname, join } from 'path'
 
-import { nunjucksEnv } from 'govuk-frontend-lib/components'
+import { nunjucksEnv, renderComponent } from 'govuk-frontend-lib/components'
 import { getListing, getYaml } from 'govuk-frontend-lib/files'
 
 import { files } from './index.mjs'
@@ -94,11 +94,6 @@ async function generateFixture(componentDataPath, options) {
   const env = nunjucksEnv([options.srcPath])
 
   // Nunjucks template
-  const template = join(
-    options.srcPath,
-    dirname(componentDataPath),
-    'template.njk'
-  )
   const componentName = basename(dirname(componentDataPath))
 
   // Loop examples
@@ -116,14 +111,8 @@ async function generateFixture(componentDataPath, options) {
       description: example.description ?? '',
       previewLayoutModifiers: example.previewLayoutModifiers ?? [],
 
-      // Wait for render to complete
-      html: await new Promise((resolve, reject) => {
-        const context = { params: example.options }
-
-        return env.render(template, context, (error, result) => {
-          return error ? reject(error) : resolve(result?.trim() ?? '')
-        })
-      })
+      // Render Nunjucks example
+      html: renderComponent(componentName, example.options, { env })
     })
   )
 
