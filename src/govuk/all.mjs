@@ -19,7 +19,7 @@ import { Tabs } from './components/tabs/tabs.mjs'
  * Use the `data-module` attributes to find, instantiate and init all of the
  * components provided as part of GOV.UK Frontend.
  *
- * @param {Config} [config] - Config for all components
+ * @param {Config & { scope?: Element }} [config] - Config for all components (with optional scope)
  */
 function initAll(config) {
   config = typeof config !== 'undefined' ? config : {}
@@ -124,7 +124,6 @@ export {
  * Config for all components via `initAll()`
  *
  * @typedef {object} Config
- * @property {Element} [scope=document] - Scope to query for components
  * @property {AccordionConfig} [accordion] - Accordion config
  * @property {ButtonConfig} [button] - Button config
  * @property {CharacterCountConfig} [characterCount] - Character Count config
