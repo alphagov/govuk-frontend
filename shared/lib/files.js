@@ -84,34 +84,26 @@ const getYaml = async (configPath) => {
 }
 
 /**
- * Load single component data
+ * Load single component fixtures
  *
  * @param {string} componentName - Component name
- * @returns {Promise<ComponentData & { name: string }>} Component data
+ * @returns {Promise<ComponentFixtures>} Component data
  */
-const getComponentData = async (componentName) => {
-  const yamlPath = join(
+const getComponentFixtures = async (componentName) => {
+  return require(join(
     packageNameToPath('govuk-frontend'),
-    `src/govuk/components/${componentName}/${componentName}.yaml`
-  )
-
-  /** @type {ComponentData} */
-  const yamlData = await getYaml(yamlPath)
-
-  return {
-    name: componentName,
-    ...yamlData
-  }
+    `dist/govuk/components/${componentName}/fixtures.json`
+  ))
 }
 
 /**
  * Load all components' data
  *
- * @returns {Promise<(ComponentData & { name: string })[]>} Components' data
+ * @returns {Promise<(ComponentFixtures)[]>} Components' data
  */
-const getComponentsData = async () => {
+const getComponentsFixtures = async () => {
   const componentNames = await getComponentNames()
-  return Promise.all(componentNames.map(getComponentData))
+  return Promise.all(componentNames.map(getComponentFixtures))
 }
 
 /**
@@ -152,19 +144,19 @@ const getComponentNames = async (filter) => {
 }
 
 /**
- * Get examples from a component's metadata file
+ * Get examples from component fixtures
  *
  * @param {string} componentName - Component name
- * @returns {Promise<{ [name: string]: ComponentExample['data'] }>} returns object that includes all examples at once
+ * @returns {Promise<{ [name: string]: ComponentFixture['options'] }>} Component examples as an object
  */
 async function getExamples(componentName) {
-  const componentData = await getComponentData(componentName)
+  const { fixtures } = await getComponentFixtures(componentName)
 
-  /** @type {{ [name: string]: ComponentExample['data'] }} */
+  /** @type {{ [name: string]: ComponentFixture['options'] }} */
   const examples = {}
 
-  for (const example of componentData?.examples || []) {
-    examples[example.name] = example.data
+  for (const example of fixtures) {
+    examples[example.name] = example.options
   }
 
   return examples
@@ -172,8 +164,8 @@ async function getExamples(componentName) {
 
 module.exports = {
   filterPath,
-  getComponentData,
-  getComponentsData,
+  getComponentFixtures,
+  getComponentsFixtures,
   getComponentFiles,
   getComponentNames,
   getDirectories,
@@ -214,4 +206,27 @@ module.exports = {
  * @property {boolean} [hidden] - Example hidden from review app
  * @property {string[]} [previewLayoutModifiers] - Component preview layout class modifiers
  * @property {{ [param: string]: unknown }} data - Nunjucks macro options (or params)
+ */
+
+/**
+ * Component fixture
+ * (used by the Design System website)
+ *
+ * @typedef {object} ComponentFixture
+ * @property {string} name - Example name
+ * @property {string} description - Example description
+ * @property {boolean} hidden - Example hidden from review app
+ * @property {string[]} previewLayoutModifiers - Component preview layout class modifiers
+ * @property {{ [param: string]: unknown }} options - Nunjucks macro options (or params)
+ * @property {string} html - Nunjucks macro rendered HTML
+ */
+
+/**
+ * Component fixtures
+ * (used by the Design System website)
+ *
+ * @typedef {object} ComponentFixtures
+ * @property {string} component - Component name
+ * @property {ComponentFixture[]} fixtures - Component fixtures with Nunjucks macro options (or params)
+ * @property {string} [previewLayout] - Nunjucks layout for component preview
  */

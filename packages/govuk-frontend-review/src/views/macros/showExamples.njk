@@ -1,10 +1,10 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 
-{% macro showExamples(componentData) %}
+{% macro showExamples(componentFixtures) %}
 
-{% set componentName = componentData.name %}
+{% set componentName = componentFixtures.component %}
 
-{% for example in componentData.examples | rejectattr('hidden') %}
+{% for example in componentFixtures.fixtures | rejectattr('hidden') %}
   {% set exampleName = example.name | slugify %}
 
   {% if example.name == 'default' %}
