@@ -5,7 +5,7 @@ const {
   getComponentsFixtures,
   getComponentNames,
   nunjucksEnv,
-  renderHTML
+  renderComponent
 } = require('govuk-frontend-lib/components')
 const { HtmlValidate } = require('html-validate')
 // We can't use the render function from jest-helpers, because we need control
@@ -139,7 +139,7 @@ describe('Components', () => {
       for (const { component: componentName, fixtures } of componentsFixtures) {
         const fixtureTasks = fixtures.map(
           async ({ name: exampleName, options }) => {
-            const html = renderHTML(componentName, options)
+            const html = renderComponent(componentName, options)
 
             // Validate HTML
             return expect({
