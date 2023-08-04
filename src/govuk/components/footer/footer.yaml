@@ -140,11 +140,11 @@ accessibilityCriteria: |
 
 examples:
   - name: default
-    data: {}
+    options: {}
 
   - name: with custom HTML content licence and copyright notice
     description: Open Government Licence and Crown copyright notice translated into Welsh
-    data:
+    options:
       contentLicence:
         html: 'Mae’r holl gynnwys ar gael dan <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/" rel="license">Drwydded y Llywodraeth Agored v3.0</a>, ac eithrio lle nodir yn wahanol'
       copyright:
@@ -152,7 +152,7 @@ examples:
 
   - name: with custom text content licence and copyright notice
     description: Open Government Licence and Crown copyright notice translated into Welsh
-    data:
+    options:
       contentLicence:
         text: 'Mae’r holl gynnwys ar gael dan Drwydded y Llywodraeth Agored v3.0, ac eithrio lle nodir yn wahanol'
       copyright:
@@ -160,7 +160,7 @@ examples:
 
   - name: with meta
     description: Secondary navigation with meta information relating to the site
-    data:
+    options:
       meta:
         visuallyHiddenTitle: Items
         items:
@@ -173,13 +173,13 @@ examples:
 
   - name: with custom meta
     description: Custom meta section
-    data:
+    options:
       meta:
         text: GOV.UK Prototype Kit v7.0.1
 
   - name: with meta links and meta content
     description: Secondary navigation links and custom meta text
-    data:
+    options:
       meta:
         items:
           - href: '#1'
@@ -202,12 +202,12 @@ examples:
 
   - name: with custom meta
     description: Custom meta section
-    data:
+    options:
       meta:
         text: GOV.UK Prototype Kit v7.0.1
 
   - name: with default width navigation (one column)
-    data:
+    options:
       navigation:
         - title: Navigation section
           items:
@@ -225,7 +225,7 @@ examples:
               text: Navigation item 6
 
   - name: with default width navigation (two columns)
-    data:
+    options:
       navigation:
         - title: Navigation section
           columns: 2
@@ -244,7 +244,7 @@ examples:
               text: Navigation item 6
 
   - name: with navigation
-    data:
+    options:
       navigation:
         - title: Two column list
           width: two-thirds
@@ -274,7 +274,7 @@ examples:
 
   - name: Full GDS example
     description: A full example based on GOV.UK's current footer
-    data:
+    options:
       navigation:
         - title: Coronavirus (COVID-19)
           width: two-thirds
@@ -353,7 +353,7 @@ examples:
 
   - name: Three equal columns
     description: A full example to demonstrate three equal width columns
-    data:
+    options:
       navigation:
         - title: Single column list 1
           width: one-third
@@ -407,47 +407,47 @@ examples:
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: attributes
     hidden: true
-    data:
+    options:
       attributes:
         data-test-attribute: value
         data-test-attribute-2: value-2
   - name: classes
     hidden: true
-    data:
+    options:
       classes: app-footer--custom-modifier
   - name: with container classes
     hidden: true
-    data:
+    options:
       containerClasses: app-width-container
   - name: with HTML passed as text content
     hidden: true
-    data:
+    options:
       contentLicence:
         text: 'Mae’r holl gynnwys ar gael dan <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/" rel="license">Drwydded y Llywodraeth Agored v3.0</a>, ac eithrio lle nodir yn wahanol'
       copyright:
         text: '<span>Hawlfraint y Goron</span>'
   - name: with empty meta
     hidden: true
-    data:
+    options:
       meta: {}
   - name: with empty meta items
     hidden: true
-    data:
+    options:
       meta:
         items: []
   - name: meta html as text
     hidden: true
-    data:
+    options:
       meta:
         text: GOV.UK Prototype Kit <strong>v7.0.1</strong>
   - name: with meta html
     hidden: true
-    data:
+    options:
       meta:
         html: GOV.UK Prototype Kit <strong>v7.0.1</strong>
   - name: with meta item attributes
     hidden: true
-    data:
+    options:
       meta:
         items:
           - href: '#1'
@@ -457,11 +457,11 @@ examples:
               data-attribute-2: my-attribute-2
   - name: with empty navigation
     hidden: true
-    data:
+    options:
       navigation: []
   - name: with navigation item attributes
     hidden: true
-    data:
+    options:
       navigation:
         - title: Single column list 1
           items:
