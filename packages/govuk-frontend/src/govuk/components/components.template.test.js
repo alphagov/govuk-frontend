@@ -1,10 +1,11 @@
 const { join } = require('path')
 
 const { paths } = require('govuk-frontend-config')
-const { nunjucksEnv, renderHTML } = require('govuk-frontend-helpers/nunjucks')
 const {
   getComponentsFixtures,
-  getComponentNames
+  getComponentNames,
+  nunjucksEnv,
+  renderHTML
 } = require('govuk-frontend-lib/components')
 const { HtmlValidate } = require('html-validate')
 // We can't use the render function from jest-helpers, because we need control

@@ -1,9 +1,8 @@
 const { AxePuppeteer } = require('@axe-core/puppeteer')
 const { ports } = require('govuk-frontend-config')
+const { renderHTML } = require('govuk-frontend-lib/components')
 const { componentNameToClassName } = require('govuk-frontend-lib/names')
 const slug = require('slug')
-
-const { renderHTML } = require('./nunjucks')
 
 /**
  * Axe Puppeteer reporter

@@ -1,7 +1,17 @@
 const { join } = require('path')
 
+const nunjucks = require('nunjucks')
+
 const { getListing, getDirectories } = require('./files')
-const { packageNameToPath } = require('./names')
+const { packageNameToPath, componentNameToMacroName } = require('./names')
+
+const nunjucksEnv = nunjucks.configure(
+  [join(packageNameToPath('govuk-frontend'), 'src')],
+  {
+    trimBlocks: true,
+    lstripBlocks: true
+  }
+)
 
 /**
  * Load single component fixtures
@@ -82,12 +92,54 @@ async function getExamples(componentName) {
   return examples
 }
 
+/**
+ * Render component HTML
+ *
+ * @param {string} componentName - Component name
+ * @param {{ [key: string]: unknown }} options - Nunjucks macro options (or params)
+ * @param {string} [callBlock] - if provided, the macro is called using the
+ *   Nunjucks call tag, with the callBlock passed as the contents of the block
+ * @returns {string} HTML rendered by the macro
+ */
+function renderHTML(componentName, options, callBlock) {
+  const macroName = componentNameToMacroName(componentName)
+  const macroPath = `govuk/components/${componentName}/macro.njk`
+
+  return renderMacro(macroName, macroPath, options, callBlock)
+}
+
+/**
+ * Render the string result from calling a macro
+ *
+ * @param {string} macroName - The name of the macro
+ * @param {string} macroPath - The path to the file containing the macro
+ * @param {{ [param: string]: unknown }} options - Nunjucks macro options (or params)
+ * @param {string} [callBlock] - Content for an optional callBlock, if necessary for the macro to receive one
+ * @returns {string} The result of calling the macro
+ */
+function renderMacro(macroName, macroPath, options = {}, callBlock) {
+  const macroOptions = JSON.stringify(options, undefined, 2)
+
+  let macroString = `{%- from "${macroPath}" import ${macroName} -%}`
+
+  // If we're nesting child components or text, pass the children to the macro
+  // using the 'caller' Nunjucks feature
+  macroString += callBlock
+    ? `{%- call ${macroName}(${macroOptions}) -%}${callBlock}{%- endcall -%}`
+    : `{{- ${macroName}(${macroOptions}) -}}`
+
+  return nunjucksEnv.renderString(macroString, {})
+}
+
 module.exports = {
   getComponentFixtures,
   getComponentsFixtures,
   getComponentFiles,
   getComponentNames,
-  getExamples
+  getExamples,
+  nunjucksEnv,
+  renderHTML,
+  renderMacro
 }
 
 /**
