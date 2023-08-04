@@ -5,13 +5,29 @@ const nunjucks = require('nunjucks')
 const { getListing, getDirectories } = require('./files')
 const { packageNameToPath, componentNameToMacroName } = require('./names')
 
-const nunjucksEnv = nunjucks.configure(
-  [join(packageNameToPath('govuk-frontend'), 'src')],
-  {
-    trimBlocks: true,
-    lstripBlocks: true
-  }
-)
+// Nunjucks default environment
+const env = nunjucksEnv()
+
+/**
+ * Nunjucks environment factory
+ *
+ * @param {string[]} [searchPaths] - Nunjucks search paths (optional)
+ * @param {import('nunjucks').ConfigureOptions} [nunjucksOptions] - Nunjucks options (optional)
+ * @returns {import('nunjucks').Environment} Nunjucks environment
+ */
+function nunjucksEnv(searchPaths = [], nunjucksOptions = {}) {
+  const packagePath = packageNameToPath('govuk-frontend')
+
+  // Add to Nunjucks search paths
+  searchPaths.push(join(packagePath, 'src'))
+
+  // Nunjucks environment
+  return nunjucks.configure(searchPaths, {
+    trimBlocks: true, // automatically remove trailing newlines from a block/tag
+    lstripBlocks: true, // automatically remove leading whitespace from a block/tag,
+    ...nunjucksOptions
+  })
+}
 
 /**
  * Load single component fixtures
@@ -128,7 +144,7 @@ function renderMacro(macroName, macroPath, options = {}, callBlock) {
     ? `{%- call ${macroName}(${macroOptions}) -%}${callBlock}{%- endcall -%}`
     : `{{- ${macroName}(${macroOptions}) -}}`
 
-  return nunjucksEnv.renderString(macroString, {})
+  return env.renderString(macroString, {})
 }
 
 module.exports = {

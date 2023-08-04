@@ -1,7 +1,7 @@
 import { basename, dirname, join } from 'path'
 
+import { nunjucksEnv } from 'govuk-frontend-lib/components'
 import { getListing, getYaml } from 'govuk-frontend-lib/files'
-import nunjucks from 'nunjucks'
 
 import { files } from './index.mjs'
 
@@ -90,6 +90,9 @@ async function generateFixture(componentDataPath, options) {
     throw new Error(`${componentDataPath} is missing "examples"`)
   }
 
+  // Nunjucks environment
+  const env = nunjucksEnv([options.srcPath])
+
   // Nunjucks template
   const template = join(
     options.srcPath,
@@ -117,7 +120,7 @@ async function generateFixture(componentDataPath, options) {
       html: await new Promise((resolve, reject) => {
         const context = { params: example.options }
 
-        return nunjucks.render(template, context, (error, result) => {
+        return env.render(template, context, (error, result) => {
           return error ? reject(error) : resolve(result?.trim() ?? '')
         })
       })

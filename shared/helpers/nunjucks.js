@@ -5,6 +5,9 @@ const {
 } = require('govuk-frontend-lib/components')
 const { outdent } = require('outdent')
 
+// Nunjucks default environment
+const env = nunjucksEnv()
+
 /**
  * Render component HTML into cheerio
  *
@@ -36,7 +39,7 @@ function renderTemplate(context = {}, blocks = {}) {
       {%- endblock %}`
   }
 
-  return cheerio.load(nunjucksEnv.renderString(viewString, context))
+  return cheerio.load(env.renderString(viewString, context))
 }
 
 module.exports = {

@@ -1,8 +1,7 @@
 import { join } from 'path'
 
 import { paths } from 'govuk-frontend-config'
-import { packageResolveToPath } from 'govuk-frontend-lib/names'
-import nunjucks from 'nunjucks'
+import { nunjucksEnv } from 'govuk-frontend-lib/components'
 
 import * as filters from './filters/index.mjs'
 import * as globals from './globals/index.mjs'
@@ -14,25 +13,11 @@ import * as globals from './globals/index.mjs'
  * @returns {import('nunjucks').Environment} Nunjucks Environment
  */
 export function renderer(app) {
-  const env = nunjucks.configure(
-    [
-      join(paths.app, 'src/views'),
-
-      // Remove `govuk/` suffix using `modulePath`
-      packageResolveToPath('govuk-frontend', {
-        modulePath: '../',
-        moduleRoot: paths.app
-      })
-    ],
-    {
-      autoescape: true, // output with dangerous characters are escaped automatically
-      express: app, // the Express.js review app that nunjucks should install to
-      noCache: true, // never use a cache and recompile templates each time
-      trimBlocks: true, // automatically remove trailing newlines from a block/tag
-      lstripBlocks: true, // automatically remove leading whitespace from a block/tag
-      watch: true // reload templates when they are changed. needs chokidar dependency to be installed
-    }
-  )
+  const env = nunjucksEnv([join(paths.app, 'src/views')], {
+    express: app, // the Express.js review app that nunjucks should install to
+    noCache: true, // never use a cache and recompile templates each time
+    watch: true // reload templates when they are changed. needs chokidar dependency to be installed
+  })
 
   // Set view engine
   app.set('view engine', 'njk')
