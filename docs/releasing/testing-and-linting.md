@@ -34,11 +34,15 @@ See [Tasks](../contributing/tasks.md) for details of what `npm test` does.
 
 You can run a subset of the test suite that only tests components by running:
 
-    `npx jest packages/govuk-frontend/src/govuk/components/button`
+```shell
+npx jest packages/govuk-frontend/src/govuk/components/button
+```
 
 Note: There's a watch mode that keeps a testing session open waiting for changes that can be used with:
 
-    `npx jest --watch packages/govuk-frontend/src/govuk/components/button`
+```shell
+npx jest --watch packages/govuk-frontend/src/govuk/components/button
+```
 
 ### Running all linting checks locally
 
