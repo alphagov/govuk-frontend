@@ -18,62 +18,62 @@ params:
 
 examples:
   - name: default
-    data:
+    options:
       text: Alpha
   - name: grey
-    data:
+    options:
       text: Grey
       classes: govuk-tag--grey
   - name: blue
-    data:
+    options:
       text: Blue
       classes: govuk-tag--blue
   - name: light blue
-    data:
+    options:
       text: Light blue
       classes: govuk-tag--light-blue
   - name: turquoise
-    data:
+    options:
       text: Turquoise
       classes: govuk-tag--turquoise
   - name: green
-    data:
+    options:
       text: Green
       classes: govuk-tag--green
   - name: purple
-    data:
+    options:
       text: Purple
       classes: govuk-tag--purple
   - name: pink
-    data:
+    options:
       text: Pink
       classes: govuk-tag--pink
   - name: red
-    data:
+    options:
       text: Red
       classes: govuk-tag--red
   - name: orange
-    data:
+    options:
       text: Orange
       classes: govuk-tag--orange
   - name: yellow
-    data:
+    options:
       text: Yellow
       classes: govuk-tag--yellow
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: attributes
     hidden: true
-    data:
+    options:
       text: Tag with attributes
       attributes:
         data-test: attribute
         id: my-tag
   - name: html as text
     hidden: true
-    data:
+    options:
       text: <span>Alpha</span>
   - name: html
     hidden: true
-    data:
+    options:
       html: <span>Alpha</span>

@@ -88,7 +88,7 @@ params:
 
 examples:
   - name: default
-    data:
+    options:
       rows:
         - - text: January
           - text: £85
@@ -106,7 +106,7 @@ examples:
           - text: £125
             format: numeric
   - name: table with head
-    data:
+    options:
       head:
         - text: Month you apply
         - text: Rate for bicycles
@@ -130,7 +130,7 @@ examples:
           - text: £125
             format: numeric
   - name: table with head and caption
-    data:
+    options:
       caption: 'Caption 1: Months and rates'
       captionClasses: govuk-heading-m
       firstCellIsHeader: true
@@ -160,14 +160,14 @@ examples:
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes
     hidden: true
-    data:
+    options:
       classes: custom-class-goes-here
       rows:
         - - text: Jan
           - text: Feb
   - name: attributes
     hidden: true
-    data:
+    options:
       attributes:
         data-foo: bar
       rows:
@@ -175,21 +175,21 @@ examples:
           - text: Feb
   - name: html as text
     hidden: true
-    data:
+    options:
       head:
         - text: Foo <script>hacking.do(1337)</script>
       rows:
         - - text: Foo <script>hacking.do(1337)</script>
   - name: html
     hidden: true
-    data:
+    options:
       head:
         - html: Foo <span>bar</span>
       rows:
         - - html: Foo <span>bar</span>
   - name: head with classes
     hidden: true
-    data:
+    options:
       head:
         - text: Foo
           classes: my-custom-class
@@ -198,7 +198,7 @@ examples:
           - text: Feb
   - name: head with rowspan and colspan
     hidden: true
-    data:
+    options:
       head:
         - text: Foo
           rowspan: 2
@@ -208,7 +208,7 @@ examples:
           - text: Feb
   - name: head with attributes
     hidden: true
-    data:
+    options:
       head:
         - text: Foo
           attributes:
@@ -218,7 +218,7 @@ examples:
           - text: Feb
   - name: with firstCellIsHeader true
     hidden: true
-    data:
+    options:
       firstCellIsHeader: true
       rows:
         - - text: January
@@ -238,26 +238,26 @@ examples:
             format: numeric
   - name: firstCellIsHeader with classes
     hidden: true
-    data:
+    options:
       firstCellIsHeader: true
       rows:
         - - text: Foo
             classes: my-custom-class
   - name: firstCellIsHeader with html
     hidden: true
-    data:
+    options:
       firstCellIsHeader: true
       rows:
         - - html: Foo <span>bar</span>
   - name: firstCellIsHeader with html as text
     hidden: true
-    data:
+    options:
       firstCellIsHeader: true
       rows:
         - - text: Foo <script>hacking.do(1337)</script>
   - name: firstCellIsHeader with rowspan and colspan
     hidden: true
-    data:
+    options:
       firstCellIsHeader: true
       rows:
         - - text: Foo
@@ -265,7 +265,7 @@ examples:
             colspan: 2
   - name: firstCellIsHeader with attributes
     hidden: true
-    data:
+    options:
       firstCellIsHeader: true
       rows:
         - - text: Foo
@@ -273,7 +273,7 @@ examples:
               data-fizz: buzz
   - name: with falsey items
     hidden: true
-    data:
+    options:
       rows:
         - - text: A
           - text: 1
@@ -285,20 +285,20 @@ examples:
           - text: 3
   - name: rows with classes
     hidden: true
-    data:
+    options:
       rows:
         - - text: Foo
             classes: my-custom-class
   - name: rows with rowspan and colspan
     hidden: true
-    data:
+    options:
       rows:
         - - text: Foo
             rowspan: 2
             colspan: 2
   - name: rows with attributes
     hidden: true
-    data:
+    options:
       rows:
         - - text: Foo
             attributes:

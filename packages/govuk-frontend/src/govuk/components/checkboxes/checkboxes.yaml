@@ -124,7 +124,7 @@ accessibilityCriteria: |
 
 examples:
   - name: default
-    data:
+    options:
       name: nationality
       items:
         - value: british
@@ -135,7 +135,7 @@ examples:
           text: Citizen of another country
 
   - name: with pre-checked values
-    data:
+    options:
       name: nationality
       items:
         - value: british
@@ -157,7 +157,7 @@ examples:
         - other
 
   - name: with divider and None
-    data:
+    options:
       name: with-divider-and-none
       fieldset:
         legend:
@@ -177,7 +177,7 @@ examples:
           behaviour: exclusive
 
   - name: with divider, None and conditional items
-    data:
+    options:
       name: with-divider-and-none-and-conditional-items
       fieldset:
         legend:
@@ -203,7 +203,7 @@ examples:
           behaviour: exclusive
 
   - name: with id and name
-    data:
+    options:
       name: with-id-and-name
       fieldset:
         legend:
@@ -224,7 +224,7 @@ examples:
           value: scottish
 
   - name: with hints on items
-    data:
+    options:
       name: with-hints-on-items
       fieldset:
         legend:
@@ -246,7 +246,7 @@ examples:
             text: You'll have an account if you've already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.
 
   - name: with disabled item
-    data:
+    options:
       name: sign-in
       fieldset:
         legend:
@@ -269,7 +269,7 @@ examples:
           disabled: true
 
   - name: with legend as a page heading
-    data:
+    options:
       name: waste
       fieldset:
         legend:
@@ -287,7 +287,7 @@ examples:
           text: Farm or agricultural waste
 
   - name: with a medium legend
-    data:
+    options:
       name: waste
       fieldset:
         legend:
@@ -306,7 +306,7 @@ examples:
           text: Farm or agricultural waste
 
   - name: without fieldset
-    data:
+    options:
       name: colours
       items:
         - value: red
@@ -317,7 +317,7 @@ examples:
           text: Blue
 
   - name: with single option set 'aria-describedby' on input
-    data:
+    options:
       name: t-and-c
       errorMessage:
         text: Please accept the terms and conditions
@@ -326,7 +326,7 @@ examples:
           text: I agree to the terms and conditions
 
   - name: with single option (and hint) set 'aria-describedby' on input
-    data:
+    options:
       name: t-and-c-with-hint
       errorMessage:
         text: Please accept the terms and conditions
@@ -337,7 +337,7 @@ examples:
             text: Go on, you know you want to!
 
   - name: with fieldset and error message
-    data:
+    options:
       name: nationality
       errorMessage:
         text: Please accept the terms and conditions
@@ -353,7 +353,7 @@ examples:
           text: Citizen of another country
 
   - name: with error message
-    data:
+    options:
       name: waste
       errorMessage:
         text: Please select an option
@@ -369,7 +369,7 @@ examples:
           text: Farm or agricultural waste
 
   - name: with error message and hints on items
-    data:
+    options:
       name: waste
       errorMessage:
         text: Please select an option
@@ -391,7 +391,7 @@ examples:
             text: Nullam id dolor id nibh ultricies vehicula ut id elit.
 
   - name: with very long option text
-    data:
+    options:
       name: waste
       hint:
         text: Nullam id dolor id nibh ultricies vehicula ut id elit.
@@ -426,7 +426,7 @@ examples:
             Donec sed odio dui. Sed posuere consectetur est at lobortis.
 
   - name: with conditional items
-    data:
+    options:
       name: with-conditional-items
       idPrefix: how-contacted
       fieldset:
@@ -453,7 +453,7 @@ examples:
               <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
   - name: with conditional items with special characters
-    data:
+    options:
       name: contact-prefs
       idPrefix: user.profile[contact-prefs]
       fieldset:
@@ -480,7 +480,7 @@ examples:
               <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
   - name: with conditional item checked
-    data:
+    options:
       name: how-contacted-checked
       idPrefix: how-contacted-checked
       fieldset:
@@ -508,7 +508,7 @@ examples:
               <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
   - name: with optional form-group classes showing group error
-    data:
+    options:
       name: how-contacted-checked
       idPrefix: how-contacted-checked
       formGroup:
@@ -539,7 +539,7 @@ examples:
               <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
   - name: small
-    data:
+    options:
       idPrefix: nationality
       name: nationality
       classes: govuk-checkboxes--small
@@ -555,7 +555,7 @@ examples:
           text: this thing
 
   - name: small with long text
-    data:
+    options:
       idPrefix: nationality
       name: nationality
       classes: govuk-checkboxes--small
@@ -588,7 +588,7 @@ examples:
             Donec sed odio dui. Sed posuere consectetur est at lobortis.
 
   - name: small with error
-    data:
+    options:
       idPrefix: nationality
       name: nationality
       classes: govuk-checkboxes--small
@@ -606,7 +606,7 @@ examples:
           text: this thing
 
   - name: small with hint
-    data:
+    options:
       idPrefix: nationality
       name: nationality
       classes: govuk-checkboxes--small
@@ -624,7 +624,7 @@ examples:
           text: this thing
 
   - name: small with disabled
-    data:
+    options:
       idPrefix: nationality
       name: nationality
       classes: govuk-checkboxes--small
@@ -641,7 +641,7 @@ examples:
           disabled: true
 
   - name: small with conditional reveal
-    data:
+    options:
       name: how-contacted
       idPrefix: how-contacted
       classes: govuk-checkboxes--small
@@ -661,7 +661,7 @@ examples:
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: with idPrefix
     hidden: true
-    data:
+    options:
       name: example-name
       idPrefix: nationality
       items:
@@ -671,7 +671,7 @@ examples:
           text: Option 2
   - name: with falsey values
     hidden: true
-    data:
+    options:
       name: example-name
       items:
         - value: 1
@@ -683,7 +683,7 @@ examples:
           text: Option 2
   - name: classes
     hidden: true
-    data:
+    options:
       name: example-name
       classes: app-checkboxes--custom-modifier
       items:
@@ -693,7 +693,7 @@ examples:
           text: Option 2
   - name: with fieldset describedBy
     hidden: true
-    data:
+    options:
       name: example-name
       fieldset:
         describedBy: some-id
@@ -708,7 +708,7 @@ examples:
         text: If you have dual nationality, select all options that are relevant to you.
   - name: attributes
     hidden: true
-    data:
+    options:
       name: example-name
       attributes:
         data-attribute: value
@@ -720,7 +720,7 @@ examples:
           text: Option 2
   - name: with checked item
     hidden: true
-    data:
+    options:
       name: example-name
       items:
         - value: 1
@@ -733,7 +733,7 @@ examples:
           checked: true
   - name: items with attributes
     hidden: true
-    data:
+    options:
       name: example-name
       items:
         - value: 1
@@ -748,7 +748,7 @@ examples:
             data-second-attribute: JKL
   - name: empty conditional
     hidden: true
-    data:
+    options:
       name: example-conditional
       items:
         - value: foo
@@ -757,7 +757,7 @@ examples:
             html: false
   - name: with label classes
     hidden: true
-    data:
+    options:
       name: example-label-classes
       items:
         - value: yes
@@ -766,7 +766,7 @@ examples:
             classes: bold
   - name: multiple hints
     hidden: true
-    data:
+    options:
       name: example-multiple-hints
       hint:
         text: If you have dual nationality, select all options that are relevant to you.
@@ -783,7 +783,7 @@ examples:
             text: Hint for other option here
   - name: with error message and hint
     hidden: true
-    data:
+    options:
       name: example
       items:
         - value: british
@@ -799,7 +799,7 @@ examples:
         text: If you have dual nationality, select all options that are relevant to you.
   - name: with error, hint and fieldset describedBy
     hidden: true
-    data:
+    options:
       name: example
       errorMessage:
         text: Please select an option
@@ -816,7 +816,7 @@ examples:
           text: Irish
   - name: label with attributes
     hidden: true
-    data:
+    options:
       name: example-name
       items:
         - value: 1
@@ -827,7 +827,7 @@ examples:
               data-second-attribute: second-value
   - name: fieldset params
     hidden: true
-    data:
+    options:
       name: example-name
       errorMessage:
         text: Please select an option
@@ -845,7 +845,7 @@ examples:
           text: Irish
   - name: fieldset html params
     hidden: true
-    data:
+    options:
       name: example-name
       fieldset:
         legend:
@@ -857,7 +857,7 @@ examples:
           text: Irish
   - name: with single option set 'aria-describedby' on input, and describedBy
     hidden: true
-    data:
+    options:
       describedBy: some-id
       name: t-and-c
       errorMessage:
@@ -867,7 +867,7 @@ examples:
           text: I agree to the terms and conditions
   - name: with single option (and hint) set 'aria-describedby' on input, and describedBy
     hidden: true
-    data:
+    options:
       describedBy: some-id
       name: t-and-c-with-hint
       errorMessage:
@@ -879,7 +879,7 @@ examples:
             text: Go on, you know you want to!
   - name: with error and idPrefix
     hidden: true
-    data:
+    options:
       name: name-of-checkboxes
       errorMessage:
         text: Please select an option
@@ -889,7 +889,7 @@ examples:
           text: Waste from animal carcasses
   - name: with error message and fieldset describedBy
     hidden: true
-    data:
+    options:
       name: example
       errorMessage:
         text: Please select an option
@@ -905,7 +905,7 @@ examples:
 
   - name: item checked overrides values
     hidden: true
-    data:
+    options:
       name: colors
       items:
         - value: red

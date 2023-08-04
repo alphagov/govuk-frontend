@@ -23,7 +23,7 @@ params:
 
 examples:
   - name: default
-    data:
+    options:
       tag:
         text: Alpha
       html: This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
@@ -31,33 +31,33 @@ examples:
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes
     hidden: true
-    data:
+    options:
       text: This is a new service – your feedback will help us to improve it
       classes: extra-class one-more-class
   - name: text
     hidden: true
-    data:
+    options:
       text: This is a new service – your feedback will help us to improve it
   - name: html as text
     hidden: true
-    data:
+    options:
       text: This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
   - name: attributes
     hidden: true
-    data:
+    options:
       text: This is a new service – your feedback will help us to improve it
       attributes:
         first-attribute: foo
         second-attribute: bar
   - name: tag html
     hidden: true
-    data:
+    options:
       text: This is a new service – your feedback will help us to improve it
       tag:
         html: <em>Alpha</em>
   - name: tag classes
     hidden: true
-    data:
+    options:
       text: This is a new service – your feedback will help us to improve it
       tag:
         classes: govuk-tag--grey

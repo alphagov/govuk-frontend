@@ -35,19 +35,19 @@ params:
 
 examples:
   - name: default
-    data:
+    options:
       items:
         - text: Section
           href: '/section'
         - text: Sub-section
           href: '/section/sub-section'
   - name: with one level
-    data:
+    options:
       items:
         - text: Section
           href: '/section'
   - name: with multiple levels
-    data:
+    options:
       items:
         - text: Home
           href: '/'
@@ -58,14 +58,14 @@ examples:
         - text: Sub Sub-section
           href: '/section/sub-section/sub-sub-section'
   - name: without the home section
-    data:
+    options:
       items:
         - text: Service Manual
           href: '/service-manual'
         - text: Agile Delivery
           href: '/service-manual/agile-delivery'
   - name: with last breadcrumb as current page
-    data:
+    options:
       items:
         - text: Home
           href: '/'
@@ -73,7 +73,7 @@ examples:
           href: '/browse/abroad'
         - text: Travel abroad
   - name: with collapse on mobile
-    data:
+    options:
       collapseOnMobile: true
       items:
         - text: Home
@@ -86,7 +86,7 @@ examples:
     description: Breadcrumbs that appear on dark backgrounds
     previewLayoutModifiers:
       - inverse
-    data:
+    options:
       classes: govuk-breadcrumbs--inverse
       items:
         - text: Home
@@ -98,13 +98,13 @@ examples:
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes
     hidden: true
-    data:
+    options:
       classes: app-breadcrumbs--custom-modifier
       items:
         - text: Home
   - name: attributes
     hidden: true
-    data:
+    options:
       attributes:
         id: my-navigation
         role: navigation
@@ -112,7 +112,7 @@ examples:
         - text: Home
   - name: item attributes
     hidden: true
-    data:
+    options:
       items:
         - text: Section 1
           href: /section
@@ -121,12 +121,12 @@ examples:
             data-attribute-2: my-attribute-2
   - name: html as text
     hidden: true
-    data:
+    options:
       items:
         - text: <span>Section 1</span>
   - name: html
     hidden: true
-    data:
+    options:
       items:
         - html: <em>Section 1</em>
         - html: <em>Section 2</em>

@@ -56,7 +56,7 @@ params:
 
 examples:
   - name: default
-    data:
+    options:
       items:
         - label: Past day
           id: past-day
@@ -158,7 +158,7 @@ examples:
 
   - name: tabs-with-anchor-in-panel
     description: Ensure that anchors that are in tab panels work correctly
-    data:
+    options:
       items:
         - label: Tab 1
           id: tab-1
@@ -177,7 +177,7 @@ examples:
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes
     hidden: true
-    data:
+    options:
       classes: app-tabs--custom-modifier
       items:
         - label: Tab 1
@@ -186,7 +186,7 @@ examples:
             text: Information about tabs
   - name: id
     hidden: true
-    data:
+    options:
       id: my-tabs
       items:
         - label: Tab 1
@@ -195,7 +195,7 @@ examples:
             text: Information about tabs
   - name: title
     hidden: true
-    data:
+    options:
       title: Custom title for Contents
       items:
         - label: Tab 1
@@ -204,7 +204,7 @@ examples:
             text: Information about tabs
   - name: attributes
     hidden: true
-    data:
+    options:
       attributes:
         data-attribute: my data value
       items:
@@ -214,7 +214,7 @@ examples:
             text: Information about tabs
   - name: item with attributes
     hidden: true
-    data:
+    options:
       items:
         - id: tab-1
           label: Tab 1
@@ -225,7 +225,7 @@ examples:
             data-attribute-2: my-attribute-2
   - name: panel with attributes
     hidden: true
-    data:
+    options:
       items:
         - id: tab-1
           label: Tab 1
@@ -236,16 +236,16 @@ examples:
               data-attribute-2: my-attribute-2
   - name: no item list
     hidden: true
-    data:
+    options:
       id: my-tabs
       classes: app-tabs--custom-modifier
   - name: empty item list
     hidden: true
-    data:
+    options:
       items: []
   - name: with falsey values
     hidden: true
-    data:
+    options:
       items:
         - label: Tab 1
           id: tab-1
@@ -260,7 +260,7 @@ examples:
             text: Panel 2 content
   - name: idPrefix
     hidden: true
-    data:
+    options:
       idPrefix: custom
       items:
         - label: Tab 1
@@ -271,7 +271,7 @@ examples:
             text: Panel 2 content
   - name: html as text
     hidden: true
-    data:
+    options:
       items:
         - label: Tab 1
           id: tab-1
@@ -283,7 +283,7 @@ examples:
             text: <p>Panel 2 content</p>
   - name: html
     hidden: true
-    data:
+    options:
       items:
         - label: Tab 1
           id: tab-1

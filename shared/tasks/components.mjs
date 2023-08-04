@@ -106,7 +106,7 @@ async function generateFixture(componentDataPath, options) {
      */
     async (example) => ({
       name: example.name,
-      options: example.data,
+      options: example.options,
       hidden: Boolean(example.hidden),
 
       // Add defaults to optional fields
@@ -115,7 +115,7 @@ async function generateFixture(componentDataPath, options) {
 
       // Wait for render to complete
       html: await new Promise((resolve, reject) => {
-        const context = { params: example.data }
+        const context = { params: example.options }
 
         return nunjucks.render(template, context, (error, result) => {
           return error ? reject(error) : resolve(result?.trim() ?? '')

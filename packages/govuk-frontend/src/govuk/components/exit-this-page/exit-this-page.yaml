@@ -42,14 +42,14 @@ params:
 
 examples:
   - name: default
-    data:
+    options:
       redirectUrl: '/full-page-examples/announcements'
       id: null
       classes: null
       attributes: {}
 
   - name: translated
-    data:
+    options:
       text: Gadael y dudalen
       activatedText: Tudalen ymadael
       timedOutText: Wedi'i amseru
@@ -59,7 +59,7 @@ examples:
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: testing
     hidden: true
-    data:
+    options:
       text: 'Exit this test'
       redirectUrl: 'https://www.test.co.uk'
       id: 'test-id'
@@ -68,5 +68,5 @@ examples:
         test-attribute: true
   - name: testing-html
     hidden: true
-    data:
+    options:
       html: 'Exit <em>this</em> test'

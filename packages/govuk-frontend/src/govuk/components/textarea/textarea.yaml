@@ -66,13 +66,13 @@ params:
 
 examples:
   - name: default
-    data:
+    options:
       name: more-detail
       id: more-detail
       label:
         text: Can you provide more detail?
   - name: with hint
-    data:
+    options:
       name: more-detail
       id: more-detail
       label:
@@ -81,7 +81,7 @@ examples:
         text: Don't include personal or financial information, eg your National Insurance number or credit card details.
 
   - name: with error message
-    data:
+    options:
       name: no-ni-reason
       id: no-ni-reason
       label:
@@ -90,7 +90,7 @@ examples:
         text: You must provide an explanation
 
   - name: with default value
-    data:
+    options:
       id: full-address
       name: address
       value: |
@@ -101,7 +101,7 @@ examples:
         text: Full address
 
   - name: with custom rows
-    data:
+    options:
       id: full-address
       name: address
       label:
@@ -109,7 +109,7 @@ examples:
       rows: 8
 
   - name: with label as page heading
-    data:
+    options:
       id: textarea-with-page-heading
       name: address
       label:
@@ -118,7 +118,7 @@ examples:
         isPageHeading: true
 
   - name: with optional form-group classes
-    data:
+    options:
       id: textarea-with-page-heading
       name: address
       label:
@@ -127,7 +127,7 @@ examples:
         classes: extra-class
 
   - name: with autocomplete attribute
-    data:
+    options:
       id: textarea-with-autocomplete-attribute
       name: address
       label:
@@ -135,7 +135,7 @@ examples:
       autocomplete: street-address
 
   - name: with spellcheck enabled
-    data:
+    options:
       label:
         text: Spellcheck is enabled
       id: textarea-with-spellcheck-enabled
@@ -143,7 +143,7 @@ examples:
       spellcheck: true
 
   - name: with spellcheck disabled
-    data:
+    options:
       label:
         text: Spellcheck is disabled
       id: textarea-with-spellcheck-disabled
@@ -153,7 +153,7 @@ examples:
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes
     hidden: true
-    data:
+    options:
       id: with-classes
       name: with-classes
       label:
@@ -161,7 +161,7 @@ examples:
       classes: app-textarea--custom-modifier
   - name: attributes
     hidden: true
-    data:
+    options:
       id: with-attributes
       name: with-attributes
       label:
@@ -170,7 +170,7 @@ examples:
         data-attribute: my data value
   - name: with describedBy
     hidden: true
-    data:
+    options:
       id: with-describedby
       name: with-describedby
       label:
@@ -178,7 +178,7 @@ examples:
       describedBy: some-id
   - name: with hint and described by
     hidden: true
-    data:
+    options:
       id: with-hint-describedby
       name: with-hint-describedby
       label:
@@ -188,7 +188,7 @@ examples:
         text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
   - name: with error message and described by
     hidden: true
-    data:
+    options:
       name: textarea-with-error
       label:
         text: Textarea with error
@@ -198,7 +198,7 @@ examples:
         text: Error message
   - name: with hint and error message
     hidden: true
-    data:
+    options:
       id: with-hint-error
       name: with-hint-error
       label:
@@ -209,7 +209,7 @@ examples:
         text: Hint
   - name: with hint, error message and described by
     hidden: true
-    data:
+    options:
       id: with-hint-error-describedby
       name: with-hint-error-describedby
       label:

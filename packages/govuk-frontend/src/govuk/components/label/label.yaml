@@ -26,78 +26,78 @@ params:
 
 examples:
   - name: default
-    data:
+    options:
       text: National Insurance number
   - name: with bold text
-    data:
+    options:
       classes: govuk-label--s
       text: National Insurance number
   - name: styled as xl text
-    data:
+    options:
       text: National Insurance number
       classes: govuk-label--xl
   - name: styled as large text
-    data:
+    options:
       text: National Insurance number
       classes: govuk-label--l
   - name: styled as medium text
-    data:
+    options:
       text: National Insurance number
       classes: govuk-label--m
   - name: styled as small text
-    data:
+    options:
       text: National Insurance number
       classes: govuk-label--s
   - name: as page heading xl
-    data:
+    options:
       text: National Insurance number
       classes: govuk-label--xl
       isPageHeading: true
   - name: as page heading l
-    data:
+    options:
       text: National Insurance number
       classes: govuk-label--l
       isPageHeading: true
   - name: as page heading m
-    data:
+    options:
       text: National Insurance number
       classes: govuk-label--m
       isPageHeading: true
   - name: as page heading s
-    data:
+    options:
       text: National Insurance number
       classes: govuk-label--s
       isPageHeading: true
   - name: as page heading without class
-    data:
+    options:
       text: National Insurance number
       isPageHeading: true
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: empty
     hidden: true
-    data: {}
+    options: {}
   - name: classes
     hidden: true
-    data:
+    options:
       text: National Insurance number
       classes: extra-class one-more-class
   - name: html as text
     hidden: true
-    data:
+    options:
       text: National Insurance number, <em>NINO</em>
   - name: html
     hidden: true
-    data:
+    options:
       html: National Insurance number <em>NINO</em>
   - name: for
     hidden: true
-    data:
+    options:
       for: '#dummy-input'
       text: National Insurance number
   - name: attributes
     hidden: true
-    data:
+    options:
       text: National Insurance number
       attributes:
         first-attribute: 'foo'

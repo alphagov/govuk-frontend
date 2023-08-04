@@ -94,7 +94,7 @@ params:
 
 examples:
   - name: default
-    data:
+    options:
       id: default-example
       items:
         - heading:
@@ -110,7 +110,7 @@ examples:
               </ul>
 
   - name: with additional descriptions
-    data:
+    options:
       id: with-descriptions
       items:
         - heading:
@@ -136,7 +136,7 @@ examples:
               </ul>
 
   - name: with long content and description
-    data:
+    options:
       id: with-long-content-and-description
       items:
         - heading:
@@ -159,7 +159,7 @@ examples:
               </ul>
 
   - name: with one section open
-    data:
+    options:
       id: one-section-open-example
       items:
         - heading:
@@ -179,7 +179,7 @@ examples:
               </ul>
 
   - name: with all sections already open
-    data:
+    options:
       id: all-sections-open-example
       items:
         - heading:
@@ -200,7 +200,7 @@ examples:
               </ul>
 
   - name: with focusable elements inside
-    data:
+    options:
       id: with-focusable-elements
       items:
         - heading:
@@ -213,7 +213,7 @@ examples:
             html: <a class="govuk-link" href="#">Link B</a>
 
   - name: with translations
-    data:
+    options:
       id: with-translations
       hideAllSectionsText: Collapse all sections
       showAllSectionsText: Expand all sections
@@ -237,7 +237,7 @@ examples:
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes
     hidden: true
-    data:
+    options:
       id: accordion-classes
       classes: myClass
       items:
@@ -247,7 +247,7 @@ examples:
             text: Some content
   - name: attributes
     hidden: true
-    data:
+    options:
       id: accordion-attributes
       attributes:
         data-attribute: value
@@ -258,7 +258,7 @@ examples:
             text: Some content
   - name: custom heading level
     hidden: true
-    data:
+    options:
       id: accordion-heading
       headingLevel: 3
       items:
@@ -268,7 +268,7 @@ examples:
             text: Some content
   - name: heading html
     hidden: true
-    data:
+    options:
       id: accordion-heading-html
       items:
         - heading:
@@ -277,7 +277,7 @@ examples:
             text: Some content
   - name: with falsey values
     hidden: true
-    data:
+    options:
       id: accordion-falsey
       items:
         - heading:
@@ -293,7 +293,7 @@ examples:
             text: Some content
   - name: with remember expanded off
     hidden: true
-    data:
+    options:
       id: accordion-remember-expanded-off
       rememberExpanded: false
       items:
