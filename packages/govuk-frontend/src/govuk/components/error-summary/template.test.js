@@ -91,7 +91,9 @@ describe('Error-summary', () => {
       const $ = render(
         'error-summary',
         {},
-        '<div class="app-nested-component"></div>'
+        {
+          callBlock: '<div class="app-nested-component"></div>'
+        }
       )
 
       expect(

@@ -172,7 +172,9 @@ describe('Notification-banner', () => {
       const $ = render(
         'notification-banner',
         {},
-        '<div class="app-nested-component"></div>'
+        {
+          callBlock: '<div class="app-nested-component"></div>'
+        }
       )
 
       expect(

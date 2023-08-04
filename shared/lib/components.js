@@ -113,14 +113,14 @@ async function getExamples(componentName) {
  *
  * @param {string} componentName - Component name
  * @param {MacroOptions} [params] - Nunjucks macro options (or params)
- * @param {string} [callBlock] - Nunjucks macro `caller()` content (optional)
+ * @param {MacroRenderOptions} [options] - Nunjucks macro render options
  * @returns {string} HTML rendered by the component
  */
-function renderComponent(componentName, params, callBlock) {
+function renderComponent(componentName, params, options) {
   const macroName = componentNameToMacroName(componentName)
   const macroPath = `govuk/components/${componentName}/macro.njk`
 
-  return renderMacro(macroName, macroPath, params, callBlock)
+  return renderMacro(macroName, macroPath, params, options)
 }
 
 /**
@@ -129,18 +129,18 @@ function renderComponent(componentName, params, callBlock) {
  * @param {string} macroName - The name of the macro
  * @param {string} macroPath - The path to the file containing the macro
  * @param {MacroOptions} [params] - Nunjucks macro options (or params)
- * @param {string} [callBlock] - Nunjucks macro `caller()` content (optional)
+ * @param {MacroRenderOptions} [options] - Nunjucks macro render options
  * @returns {string} HTML rendered by the macro
  */
-function renderMacro(macroName, macroPath, params = {}, callBlock) {
+function renderMacro(macroName, macroPath, params = {}, options) {
   const paramsFormatted = JSON.stringify(params, undefined, 2)
 
   let macroString = `{%- from "${macroPath}" import ${macroName} -%}`
 
   // If we're nesting child components or text, pass the children to the macro
   // using the 'caller' Nunjucks feature
-  macroString += callBlock
-    ? `{%- call ${macroName}(${paramsFormatted}) -%}${callBlock}{%- endcall -%}`
+  macroString += options?.callBlock
+    ? `{%- call ${macroName}(${paramsFormatted}) -%}${options.callBlock}{%- endcall -%}`
     : `{{- ${macroName}(${paramsFormatted}) -}}`
 
   return env.renderString(macroString, {})
@@ -201,6 +201,13 @@ module.exports = {
  * (used by the Design System website)
  *
  * @typedef {Required<ComponentExample> & { html: string }} ComponentFixture
+ */
+
+/**
+ * Nunjucks macro render options
+ *
+ * @typedef {object} MacroRenderOptions
+ * @property {string} [callBlock] - Nunjucks macro `caller()` content (optional)
  */
 
 /**
