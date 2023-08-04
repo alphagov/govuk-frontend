@@ -22,13 +22,13 @@ params:
 
 examples:
   - name: default
-    data:
+    options:
       text: Skip to main content
       href: '#content'
 
   - name: with focus
     description: Simulate triggering the :focus CSS pseudo-class, not available in the production build.
-    data:
+    options:
       classes: :focus
       text: Skip to main content
       href: '#content'
@@ -36,33 +36,33 @@ examples:
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: no href
     hidden: true
-    data:
+    options:
       text: Skip to main content
   - name: custom href
     hidden: true
-    data:
+    options:
       text: Skip to custom content
       href: '#custom'
   - name: custom text
     hidden: true
-    data:
+    options:
       text: skip
   - name: html as text
     hidden: true
-    data:
+    options:
       text: <p>skip</p>
   - name: html
     hidden: true
-    data:
+    options:
       html: <p>skip</p>
   - name: classes
     hidden: true
-    data:
+    options:
       text: Skip link
       classes: app-skip-link--custom-class
   - name: attributes
     hidden: true
-    data:
+    options:
       text: Skip link
       attributes:
         data-test: attribute

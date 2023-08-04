@@ -88,7 +88,7 @@ params:
 
 examples:
   - name: default
-    data:
+    options:
       messages:
         - headingText: Cookies on this government service
           text: We use analytics cookies to help understand how users use our service.
@@ -105,7 +105,7 @@ examples:
               href: /cookie-preferences
 
   - name: accepted confirmation banner
-    data:
+    options:
       messages:
         - text: Your cookie preferences have been saved. You have accepted cookies.
           role: alert
@@ -114,7 +114,7 @@ examples:
               type: button
 
   - name: rejected confirmation banner
-    data:
+    options:
       messages:
         - text: Your cookie preferences have been saved. You have rejected cookies.
           role: alert
@@ -123,7 +123,7 @@ examples:
               type: button
 
   - name: client-side implementation
-    data:
+    options:
       messages:
         - headingText: Cookies on this service
           text: We use cookies to help understand how users use our service.
@@ -152,7 +152,7 @@ examples:
               type: button
 
   - name: with html
-    data:
+    options:
       messages:
         - headingHtml: Cookies on <span>my service</span>
           html: <p class="govuk-body">We use cookies in <span>our service</span>.</p><p class="govuk-body">We’d like to use analytics cookies so we can understand how you use the Design System and make improvements.</p>
@@ -171,62 +171,62 @@ examples:
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: heading html
     hidden: true
-    data:
+    options:
       messages:
         - headingHtml: Cookies on <span>my service</span>
   - name: heading html as text
     hidden: true
-    data:
+    options:
       messages:
         - headingText: Cookies on <span>my service</span>
   - name: html
     hidden: true
-    data:
+    options:
       messages:
         - html: <p class="govuk-body">We use cookies in <span>our service</span>.</p>
   - name: classes
     hidden: true
-    data:
+    options:
       messages:
         - classes: 'app-my-class'
   - name: attributes
     hidden: true
-    data:
+    options:
       messages:
         - attributes:
             'data-attribute': 'my-value'
   - name: custom aria label
     hidden: true
-    data:
+    options:
       ariaLabel: 'Cookies on GOV.UK'
       messages:
         - text: 'We use cookies on GOV.UK'
   - name: hidden
     hidden: true
-    data:
+    options:
       messages:
         - hidden: true
   - name: hidden false
     hidden: true
-    data:
+    options:
       messages:
         - hidden: false
   - name: default action
     hidden: true
-    data:
+    options:
       messages:
         - actions:
             - text: This is a button
   - name: link
     hidden: true
-    data:
+    options:
       messages:
         - actions:
             - text: This is a link
               href: /link
   - name: link with false button options
     hidden: true
-    data:
+    options:
       messages:
         - actions:
             - text: This is a link
@@ -235,7 +235,7 @@ examples:
               name: link
   - name: link as a button
     hidden: true
-    data:
+    options:
       messages:
         - actions:
             - text: This is a link
@@ -243,21 +243,21 @@ examples:
               type: button
   - name: type
     hidden: true
-    data:
+    options:
       messages:
         - actions:
             - text: Button
               type: button
   - name: button classes
     hidden: true
-    data:
+    options:
       messages:
         - actions:
             - text: Button with custom classes
               classes: 'my-button-class app-button-class'
   - name: button attributes
     hidden: true
-    data:
+    options:
       messages:
         - actions:
             - text: Button with attributes
@@ -265,7 +265,7 @@ examples:
                 'data-button-attribute': 'my-value'
   - name: link classes
     hidden: true
-    data:
+    options:
       messages:
         - actions:
             - text: Link with custom classes
@@ -273,7 +273,7 @@ examples:
               classes: 'my-link-class app-link-class'
   - name: link attributes
     hidden: true
-    data:
+    options:
       messages:
         - actions:
             - text: Link with attributes
@@ -282,7 +282,7 @@ examples:
                 'data-link-attribute': 'my-value'
   - name: full banner hidden
     hidden: true
-    data:
+    options:
       hidden: true
       classes: hide-cookie-banner
       attributes:

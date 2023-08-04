@@ -22,38 +22,38 @@ params:
 
 examples:
   - name: default
-    data:
+    options:
       href: '#'
   - name: with custom text
-    data:
+    options:
       href: '#'
       text: Back to home
   - name: inverse
     previewLayoutModifiers:
       - inverse
-    data:
+    options:
       classes: govuk-back-link--inverse
       href: '#'
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes
     hidden: true
-    data:
+    options:
       classes: app-back-link--custom-class
       href: '#'
   - name: html as text
     hidden: true
-    data:
+    options:
       text: <b>Home</b>
       href: '#'
   - name: html
     hidden: true
-    data:
+    options:
       html: <b>Back</b>
       href: '#'
   - name: attributes
     hidden: true
-    data:
+    options:
       href: '#'
       html: <b>Back to home</b>
       attributes:

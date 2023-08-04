@@ -205,20 +205,14 @@ module.exports = {
  * @property {string} [description] - Example description
  * @property {boolean} [hidden] - Example hidden from review app
  * @property {string[]} [previewLayoutModifiers] - Component preview layout class modifiers
- * @property {{ [param: string]: unknown }} data - Nunjucks macro options (or params)
+ * @property {{ [param: string]: unknown }} options - Nunjucks macro options (or params)
  */
 
 /**
  * Component fixture
  * (used by the Design System website)
  *
- * @typedef {object} ComponentFixture
- * @property {string} name - Example name
- * @property {string} description - Example description
- * @property {boolean} hidden - Example hidden from review app
- * @property {string[]} previewLayoutModifiers - Component preview layout class modifiers
- * @property {{ [param: string]: unknown }} options - Nunjucks macro options (or params)
- * @property {string} html - Nunjucks macro rendered HTML
+ * @typedef {Required<ComponentExample> & { html: string }} ComponentFixture
  */
 
 /**
