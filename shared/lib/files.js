@@ -124,7 +124,7 @@ const getComponentFiles = (componentName = '') =>
   getListing(
     join(
       packageNameToPath('govuk-frontend'),
-      `src/govuk/components/${componentName}/**/*`
+      `dist/govuk/components/${componentName}/**/*`
     )
   )
 
@@ -136,7 +136,7 @@ const getComponentFiles = (componentName = '') =>
  */
 const getComponentNames = async (filter) => {
   const componentNames = await getDirectories(
-    join(packageNameToPath('govuk-frontend'), '**/src/govuk/components/')
+    join(packageNameToPath('govuk-frontend'), '**/dist/govuk/components/')
   )
 
   if (filter) {
