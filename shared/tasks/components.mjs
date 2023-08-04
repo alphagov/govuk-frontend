@@ -38,6 +38,10 @@ export async function generateFixtures(pattern, { srcPath, destPath }) {
     })
   })
 
+  if (!fixtures.length) {
+    throw new Error('No fixtures to write')
+  }
+
   await Promise.all(fixtures)
 }
 
@@ -73,6 +77,10 @@ export async function generateMacroOptions(pattern, { srcPath, destPath }) {
       }
     })
   })
+
+  if (!macroOptions.length) {
+    throw new Error('No macro options to write')
+  }
 
   await Promise.all(macroOptions)
 }
