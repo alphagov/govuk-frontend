@@ -1,5 +1,8 @@
 const cheerio = require('cheerio')
-const { nunjucksEnv, renderHTML } = require('govuk-frontend-lib/components')
+const {
+  nunjucksEnv,
+  renderComponent
+} = require('govuk-frontend-lib/components')
 const { outdent } = require('outdent')
 
 /**
@@ -12,7 +15,7 @@ const { outdent } = require('outdent')
  * @returns {import('cheerio').CheerioAPI} HTML rendered by the macro
  */
 function render(componentName, options, callBlock) {
-  return cheerio.load(renderHTML(componentName, options, callBlock))
+  return cheerio.load(renderComponent(componentName, options, callBlock))
 }
 
 /**

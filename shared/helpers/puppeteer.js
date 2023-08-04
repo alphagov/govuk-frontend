@@ -1,6 +1,6 @@
 const { AxePuppeteer } = require('@axe-core/puppeteer')
 const { ports } = require('govuk-frontend-config')
-const { renderHTML } = require('govuk-frontend-lib/components')
+const { renderComponent } = require('govuk-frontend-lib/components')
 const { componentNameToClassName } = require('govuk-frontend-lib/names')
 const slug = require('slug')
 
@@ -80,7 +80,7 @@ async function axe(page, overrides = {}) {
 async function renderAndInitialise(page, componentName, options) {
   await goTo(page, '/tests/boilerplate')
 
-  const html = renderHTML(componentName, options.params)
+  const html = renderComponent(componentName, options.params)
 
   // Inject rendered HTML into the page
   await page.$eval(

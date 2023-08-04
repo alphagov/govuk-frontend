@@ -101,7 +101,7 @@ async function getExamples(componentName) {
  *   Nunjucks call tag, with the callBlock passed as the contents of the block
  * @returns {string} HTML rendered by the macro
  */
-function renderHTML(componentName, options, callBlock) {
+function renderComponent(componentName, options, callBlock) {
   const macroName = componentNameToMacroName(componentName)
   const macroPath = `govuk/components/${componentName}/macro.njk`
 
@@ -138,7 +138,7 @@ module.exports = {
   getComponentNames,
   getExamples,
   nunjucksEnv,
-  renderHTML,
+  renderComponent,
   renderMacro
 }
 
