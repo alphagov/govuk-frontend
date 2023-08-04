@@ -46,9 +46,28 @@ To lint the whole codebase, run:
 npm run lint
 ```
 
-This will trigger [ESLint](https://eslint.org) (using [JavaScript Standard Style](https://standardjs.com)) and [Stylelint](https://stylelint.io) for linting.
+This will run the following checks:
 
-See [Tasks](../contributing/tasks.md) for details of what `npm run lint` does.
+1. [EditorConfig](https://editorconfig.org)
+2. [Prettier](https://prettier.io)
+3. [ESLint](https://eslint.org) (using [JavaScript Standard Style](https://standardjs.com))
+4. [Stylelint](https://stylelint.io) (using [GDS Stylelint Config](https://github.com/alphagov/stylelint-config-gds))
+
+### Running only EditorConfig linting
+
+```shell
+npm run lint:editorconfig
+```
+
+See [.editorconfig](/.editorconfig) for details.
+
+### Running only Prettier linting
+
+```shell
+npm run lint:prettier
+```
+
+See [.prettierrc.js](/.prettierrc.js) for details.
 
 ### Running only Sass linting
 
