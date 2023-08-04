@@ -505,13 +505,13 @@ Good:
 $my-example-var: value;
 ```
 
-### Don't write leading or trailing zeroes for numeric values with a decimal point
+### Write leading or trailing zeroes for numeric values with a decimal point
 
 Bad:
 
 ```scss
 .selector {
-  font-size: 0.50em;
+  font-size: .50em;
 }
 ```
 
@@ -519,7 +519,7 @@ Good:
 
 ```scss
 .selector {
-  font-size: .5em;
+  font-size: 0.5em;
 }
 ```
 
