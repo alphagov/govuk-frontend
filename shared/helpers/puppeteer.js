@@ -71,8 +71,8 @@ async function axe(page, overrides = {}) {
  * @param {import('puppeteer').Page} page - Puppeteer page object
  * @param {string} componentName - The kebab-cased name of the component
  * @param {object} options - Render and initialise options
- * @param {object} options.params - Nunjucks macro params
- * @param {object} [options.config] - Component instantiation config
+ * @param {MacroOptions} [options.params] - Nunjucks macro options (or params)
+ * @param {Config[ConfigKey]} [options.config] - Component config (optional)
  * @param {($module: Element) => void} [options.beforeInitialisation] - A function that'll run in the browser
  *   before the component gets initialised
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
@@ -250,3 +250,9 @@ module.exports = {
   getAccessibleName,
   isVisible
 }
+
+/**
+ * @typedef {import('govuk-frontend-lib/components').MacroOptions} MacroOptions
+ * @typedef {import('govuk-frontend').Config} Config - Config for all components via `initAll()`
+ * @typedef {keyof Config} ConfigKey - Component config keys, e.g. `accordion` and `characterCount`
+ */

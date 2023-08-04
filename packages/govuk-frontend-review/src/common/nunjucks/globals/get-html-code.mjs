@@ -7,8 +7,8 @@ import beautify from 'js-beautify'
  *
  * @this {{ env: import('nunjucks').Environment }}
  * @param {string} componentName - Component name
- * @param {unknown} params - Component macro params
- * @returns {string} Nunjucks code
+ * @param {MacroOptions} [params] - Nunjucks macro options (or params)
+ * @returns {string} HTML rendered by the component
  */
 export function getHTMLCode(componentName, params) {
   const templatePath = packageTypeToPath('govuk-frontend', {
@@ -32,3 +32,7 @@ export function getHTMLCode(componentName, params) {
     wrap_attributes: 'preserve'
   })
 }
+
+/**
+ * @typedef {import('govuk-frontend-lib/components').MacroOptions} MacroOptions
+ */

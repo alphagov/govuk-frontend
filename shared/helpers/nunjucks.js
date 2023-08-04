@@ -12,13 +12,12 @@ const env = nunjucksEnv()
  * Render component HTML into cheerio
  *
  * @param {string} componentName - Component name
- * @param {object} options - options to pass to the component macro
- * @param {string} [callBlock] - if provided, the macro is called using the
- *   Nunjucks call tag, with the callBlock passed as the contents of the block
+ * @param {MacroOptions} [params] - Nunjucks macro options (or params)
+ * @param {string} [callBlock] - Nunjucks macro `caller()` content (optional)
  * @returns {import('cheerio').CheerioAPI} HTML rendered by the macro
  */
-function render(componentName, options, callBlock) {
-  return cheerio.load(renderComponent(componentName, options, callBlock))
+function render(componentName, params, callBlock) {
+  return cheerio.load(renderComponent(componentName, params, callBlock))
 }
 
 /**
@@ -46,3 +45,7 @@ module.exports = {
   render,
   renderTemplate
 }
+
+/**
+ * @typedef {import('govuk-frontend-lib/components').MacroOptions} MacroOptions
+ */

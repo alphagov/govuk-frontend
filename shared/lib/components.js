@@ -112,37 +112,36 @@ async function getExamples(componentName) {
  * Render component HTML
  *
  * @param {string} componentName - Component name
- * @param {{ [key: string]: unknown }} options - Nunjucks macro options (or params)
- * @param {string} [callBlock] - if provided, the macro is called using the
- *   Nunjucks call tag, with the callBlock passed as the contents of the block
- * @returns {string} HTML rendered by the macro
+ * @param {MacroOptions} [params] - Nunjucks macro options (or params)
+ * @param {string} [callBlock] - Nunjucks macro `caller()` content (optional)
+ * @returns {string} HTML rendered by the component
  */
-function renderComponent(componentName, options, callBlock) {
+function renderComponent(componentName, params, callBlock) {
   const macroName = componentNameToMacroName(componentName)
   const macroPath = `govuk/components/${componentName}/macro.njk`
 
-  return renderMacro(macroName, macroPath, options, callBlock)
+  return renderMacro(macroName, macroPath, params, callBlock)
 }
 
 /**
- * Render the string result from calling a macro
+ * Render macro HTML
  *
  * @param {string} macroName - The name of the macro
  * @param {string} macroPath - The path to the file containing the macro
- * @param {{ [param: string]: unknown }} options - Nunjucks macro options (or params)
- * @param {string} [callBlock] - Content for an optional callBlock, if necessary for the macro to receive one
- * @returns {string} The result of calling the macro
+ * @param {MacroOptions} [params] - Nunjucks macro options (or params)
+ * @param {string} [callBlock] - Nunjucks macro `caller()` content (optional)
+ * @returns {string} HTML rendered by the macro
  */
-function renderMacro(macroName, macroPath, options = {}, callBlock) {
-  const macroOptions = JSON.stringify(options, undefined, 2)
+function renderMacro(macroName, macroPath, params = {}, callBlock) {
+  const paramsFormatted = JSON.stringify(params, undefined, 2)
 
   let macroString = `{%- from "${macroPath}" import ${macroName} -%}`
 
   // If we're nesting child components or text, pass the children to the macro
   // using the 'caller' Nunjucks feature
   macroString += callBlock
-    ? `{%- call ${macroName}(${macroOptions}) -%}${callBlock}{%- endcall -%}`
-    : `{{- ${macroName}(${macroOptions}) -}}`
+    ? `{%- call ${macroName}(${paramsFormatted}) -%}${callBlock}{%- endcall -%}`
+    : `{{- ${macroName}(${paramsFormatted}) -}}`
 
   return env.renderString(macroString, {})
 }
@@ -188,7 +187,13 @@ module.exports = {
  * @property {string} [description] - Example description
  * @property {boolean} [hidden] - Example hidden from review app
  * @property {string[]} [previewLayoutModifiers] - Component preview layout class modifiers
- * @property {{ [param: string]: unknown }} options - Nunjucks macro options (or params)
+ * @property {MacroOptions} options - Nunjucks macro options (or params)
+ */
+
+/**
+ * Nunjucks macro options
+ *
+ * @typedef {{ [param: string]: unknown }} MacroOptions
  */
 
 /**

@@ -9,8 +9,8 @@ import { componentNameToMacroName } from '../filters/index.mjs'
  * Component Nunjucks code (formatted)
  *
  * @param {string} componentName - Component name
- * @param {unknown} params - Component macro params
- * @returns {string} Nunjucks code
+ * @param {MacroOptions} [params] - Nunjucks macro options (or params)
+ * @returns {string} Nunjucks code for the component
  */
 export function getNunjucksCode(componentName, params) {
   const macroName = componentNameToMacroName(componentName)
@@ -37,3 +37,7 @@ export function getNunjucksCode(componentName, params) {
     {{ ${macroFormatted.trim()} }}
   `
 }
+
+/**
+ * @typedef {import('govuk-frontend-lib/components').MacroOptions} MacroOptions
+ */
