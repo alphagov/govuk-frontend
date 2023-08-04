@@ -1,7 +1,7 @@
 {
   "watch": [
     "./src",
-    "../govuk-frontend/src/govuk/**/*.{json,yaml}",
+    "../govuk-frontend/dist/govuk/**/*.json",
     "../../shared/config",
     "../../shared/lib",
     "../../shared/stats"
@@ -10,7 +10,7 @@
   "events": {
     "restart": "browser-sync reload --config browsersync.config.js"
   },
-  "ext": "js,mjs,json,yaml",
+  "ext": "js,mjs,json",
   "quiet": true,
   "signal": "SIGINT"
 }
