@@ -1,5 +1,3 @@
-import { join } from 'path'
-
 import { components, task } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
 
@@ -14,19 +12,13 @@ export const compile = (options) =>
      * Generate GOV.UK Frontend fixtures.json from ${componentName}.yaml
      */
     task.name('compile:fixtures', () =>
-      components.generateFixtures('**/*.yaml', {
-        srcPath: join(options.srcPath, 'govuk/components'),
-        destPath: join(options.destPath, 'govuk/components')
-      })
+      components.generateFixtures('**/*.yaml', options)
     ),
 
     /**
      * Generate GOV.UK Frontend macro-options.json from ${componentName}.yaml
      */
     task.name('compile:macro-options', () =>
-      components.generateMacroOptions('**/*.yaml', {
-        srcPath: join(options.srcPath, 'govuk/components'),
-        destPath: join(options.destPath, 'govuk/components')
-      })
+      components.generateMacroOptions('**/*.yaml', options)
     )
   )

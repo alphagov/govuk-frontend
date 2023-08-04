@@ -1,26 +1,29 @@
 const crypto = require('crypto')
-const { join } = require('path')
 
-const { paths } = require('govuk-frontend-config')
 const { renderTemplate } = require('govuk-frontend-helpers/nunjucks')
-const nunjucks = require('nunjucks')
+const { nunjucksEnv } = require('govuk-frontend-lib/components')
 
 describe('Template', () => {
   describe('with default nunjucks configuration', () => {
     it('should not have any whitespace before the doctype', () => {
-      nunjucks.configure(join(paths.package, 'src/govuk'))
-      const output = nunjucks.render('./template.njk')
+      const env = nunjucksEnv([], {
+        trimBlocks: false,
+        lstripBlocks: false
+      })
+
+      const output = env.render('./govuk/template.njk')
       expect(output.charAt(0)).toEqual('<')
     })
   })
 
   describe('with nunjucks block trimming enabled', () => {
     it('should not have any whitespace before the doctype', () => {
-      nunjucks.configure(join(paths.package, 'src/govuk'), {
+      const env = nunjucksEnv([], {
         trimBlocks: true,
         lstripBlocks: true
       })
-      const output = nunjucks.render('./template.njk')
+
+      const output = env.render('./govuk/template.njk')
       expect(output.charAt(0)).toEqual('<')
     })
   })
