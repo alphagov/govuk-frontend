@@ -20,8 +20,11 @@ export class Example {
   /**
    * @param {Element} $module - HTML element to use for component
    */
-  constructor ($module) {
-    if (!($module instanceof HTMLElement) || !document.body.classList.contains('govuk-frontend-supported')) {
+  constructor($module) {
+    if (
+      !($module instanceof HTMLElement) ||
+      !document.body.classList.contains('govuk-frontend-supported')
+    ) {
       return this
     }
 
@@ -63,7 +66,7 @@ Use `/** ... */` for multi-line comments. Include a description, and specify typ
  * @param {string} tagName - Tag name (for example 'div')
  * @returns {Element} Ancestor element
  */
-function exampleHelper ($element, tagName) {
+function exampleHelper($element, tagName) {
   // Code goes here
   return $element.querySelector(tagName)
 }
@@ -92,7 +95,7 @@ Add methods to the class.
 ```mjs
 // Good
 class Example {
-  doSomething () {
+  doSomething() {
     // Code goes here
   }
 }
@@ -123,8 +126,8 @@ Use ECMAScript (ES) modules (`import`/`export`) over CommonJS and other formats.
 import { closestAttributeValue } from '../common/index.mjs'
 
 // Code goes here
-export function exampleHelper1 () {}
-export function exampleHelper2 () {}
+export function exampleHelper1() {}
+export function exampleHelper2() {}
 ```
 
 You must specify the file extension when using the import keyword.
