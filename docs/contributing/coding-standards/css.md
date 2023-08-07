@@ -109,18 +109,21 @@ This class is part of the component, rather than a parent of a component.
 **Why?**
 This makes it easier to keep track of different contexts.
 
-# Linting
+## Formatting and linting
 
-To ensure code quality and consistency in our Sass files we check that certain
-style rules are followed. These rules are based on [stylelint-config-gds](https://github.com/alphagov/stylelint-config-gds/blob/main/scss.js), but we also add our own custom rules with a project [config file](/stylelint.config.js).
+To ensure code quality and consistency in our Sass files we check that certain rules are followed. These rules are based on [GDS Stylelint Config](https://github.com/alphagov/stylelint-config-gds/blob/main/scss.js), but we also add our own custom rules with a project [config file](/stylelint.config.js).
 
 See [testing and linting](/docs/releasing/testing-and-linting.md) for more information.
 
 ## Running the lint task
 
-You can run the linter in Gulp by running `npm run lint:scss`, or use linting in [Sublime Text](https://github.com/SublimeLinter/SublimeLinter-stylelint), [Atom](https://atom.io/packages/linter-stylelint) or [other editors that support stylelint](https://stylelint.io/user-guide/integrations/editor).
+You can run the linter with `npm run lint:scss`, or use linting in [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) and [other editors that support Stylelint](https://stylelint.io/user-guide/customize/#using-stylelint).
 
-See also [testing and linting](/docs/releasing/testing-and-linting.md).
+To automatically fix Stylelint issues, add the `--fix` flag:
+
+```shell
+npm run lint:scss -- --fix
+```
 
 ## Linting rules
 

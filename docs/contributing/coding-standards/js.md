@@ -139,10 +139,20 @@ If you need polyfills for features that are not yet included in this project, pl
 
 ## Formatting and linting
 
-GOV.UK Frontend uses [JavaScript Standard Style](https://standardjs.com), an opinionated JavaScript linter. All JavaScript files follow its conventions, and it runs on GitHub Actions to ensure that new pull requests are in line with them.
+GOV.UK Frontend uses [ESLint](https://eslint.org) with [JavaScript Standard Style](https://standardjs.com), an opinionated JavaScript style guide. All JavaScript files follow its conventions, and it runs on GitHub Actions to ensure that new pull requests are in line with them.
 
 The standard docs have a [complete list of rules and some reasoning behind them](https://standardjs.com/rules.html).
 
 Read more about [running standard manually, or in your editor, on the 'JavaScript coding style' page of the GDS Way](https://gds-way.cloudapps.digital/manuals/programming-languages/js.html#linting).
 
 See also [testing and linting](/docs/releasing/testing-and-linting.md).
+
+## Running the lint task
+
+You can run the linter with `npm run lint:js`, or use linting in [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and [other editors that support ESLint](https://eslint.org/docs/latest/use/integrations#editors).
+
+To automatically fix ESLint issues, add the `--fix` flag:
+
+```shell
+npm run lint:js -- --fix
+```

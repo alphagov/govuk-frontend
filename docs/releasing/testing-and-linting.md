@@ -1,6 +1,8 @@
 # Testing and linting
 
-GitHub Actions lints Sass and JavaScript, runs unit and functional tests with Node, and generates snapshots for [visual regression testing](https://www.browserstack.com/percy/visual-testing).
+GitHub Actions lints Sass and JavaScript, runs unit and functional tests with Node.js, and generates snapshots for [visual regression testing](#visual-regression-testing-with-percy).
+
+See the [GitHub Actions **Tests** workflow](https://github.com/alphagov/govuk-frontend/actions/workflows/tests.yml) for more information.
 
 ## Testing terminology
 
@@ -32,11 +34,15 @@ See [Tasks](../contributing/tasks.md) for details of what `npm test` does.
 
 You can run a subset of the test suite that only tests components by running:
 
-    `npx jest packages/govuk-frontend/src/govuk/components/button`
+```shell
+npx jest packages/govuk-frontend/src/govuk/components/button
+```
 
 Note: There's a watch mode that keeps a testing session open waiting for changes that can be used with:
 
-    `npx jest --watch packages/govuk-frontend/src/govuk/components/button`
+```shell
+npx jest --watch packages/govuk-frontend/src/govuk/components/button
+```
 
 ### Running all linting checks locally
 
@@ -46,9 +52,32 @@ To lint the whole codebase, run:
 npm run lint
 ```
 
-This will trigger [ESLint](https://eslint.org) (using [JavaScript Standard Style](https://standardjs.com)) and [Stylelint](https://stylelint.io) for linting.
+This will run the following checks:
 
-See [Tasks](../contributing/tasks.md) for details of what `npm run lint` does.
+1. [EditorConfig](https://editorconfig.org)
+2. [Prettier](https://prettier.io)
+3. [ESLint](https://eslint.org) (using [JavaScript Standard Style](https://standardjs.com))
+4. [Stylelint](https://stylelint.io) (using [GDS Stylelint Config](https://github.com/alphagov/stylelint-config-gds))
+
+Where possible, issues will be fixed automatically on `git commit` using [Husky](https://typicode.github.io/husky/) and [`.lintstagedrc.js`](/.lintstagedrc.js).
+
+To commit changes without automatic checks use `git commit --no-verify`.
+
+### Running only EditorConfig linting
+
+```shell
+npm run lint:editorconfig
+```
+
+See [.editorconfig](/.editorconfig) for details.
+
+### Running only Prettier linting
+
+```shell
+npm run lint:prettier
+```
+
+See [.prettierrc.js](/.prettierrc.js) for details.
 
 ### Running only Sass linting
 
