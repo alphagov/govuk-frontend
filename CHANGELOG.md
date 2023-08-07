@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Deprecated `govuk-device-pixel-ratio` mixin
+
+The next main release of GOV.UK Frontend will remove support for Internet Explorer 8 (IE8). In preparation for this, we've added `govuk-device-pixel-ratio` to the list of deprecated mixins.
+
+This mixin is used to serve different background images based on a device's screen resolution. The same result can be achieved using a single image and the `background-size` property.
+
 ### New features
 
 #### Task list component added
