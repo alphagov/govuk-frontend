@@ -29,6 +29,12 @@ export default async () => {
     })
 
   return {
+    constants: [
+      {
+        name: 'govukAssetPath',
+        value: '/plugin-assets/govuk-frontend/dist/govuk/assets'
+      }
+    ],
     assets: [
       '/dist/govuk/assets',
       '/dist/govuk/all.bundle.js.map'
@@ -49,6 +55,7 @@ export default async () => {
  * GOV.UK Prototype Kit config
  *
  * @typedef {object} PrototypeKitConfig
+ * @property {Array<{name: string, value: string}>} constants - Constants to load in the PrototypeKit
  * @property {string[]} assets - Static asset paths
  * @property {string[]} sass - Sass stylesheets to compile
  * @property {string[] | { path: string, type?: string }[]} scripts - JavaScripts to serve
