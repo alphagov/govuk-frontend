@@ -1,13 +1,13 @@
 import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
-import { GOVUKFrontendSupportError } from '../../errors/index.mjs'
+import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
  * Error summary component
  *
  * Takes focus on initialisation for accessible announcement, unless disabled in configuration.
  */
-export class ErrorSummary {
+export class ErrorSummary extends GOVUKFrontendComponent {
   /** @private */
   $module
 
@@ -23,9 +23,7 @@ export class ErrorSummary {
    * @param {ErrorSummaryConfig} [config] - Error summary config
    */
   constructor($module, config) {
-    if (!document.body.classList.contains('govuk-frontend-supported')) {
-      throw new GOVUKFrontendSupportError()
-    }
+    super()
 
     if (!($module instanceof HTMLElement)) {
       return this

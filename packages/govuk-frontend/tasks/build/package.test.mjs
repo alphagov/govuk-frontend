@@ -216,7 +216,10 @@ describe('packages/govuk-frontend/dist/', () => {
         for (const componentName of componentNamesWithJavaScript) {
           const componentClassName = componentNameToClassName(componentName)
 
-          expect(contents).toContain(`class ${componentClassName} {`)
+          expect(contents).toContain(
+            // Trailing space is important to not match `class ${componentClassName}Something`
+            `class ${componentClassName} `
+          )
           expect(contents).toContain(
             `exports.${componentClassName} = ${componentClassName};`
           )

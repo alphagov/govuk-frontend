@@ -1,6 +1,6 @@
 import { mergeConfigs, extractConfigByNamespace } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
-import { GOVUKFrontendSupportError } from '../../errors/index.mjs'
+import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 import { I18n } from '../../i18n.mjs'
 
 /**
@@ -15,7 +15,7 @@ import { I18n } from '../../i18n.mjs'
  * The state of each section is saved to the DOM via the `aria-expanded`
  * attribute, which also provides accessibility.
  */
-export class Accordion {
+export class Accordion extends GOVUKFrontendComponent {
   /** @private */
   $module
 
@@ -114,9 +114,7 @@ export class Accordion {
    * @param {AccordionConfig} [config] - Accordion config
    */
   constructor($module, config) {
-    if (!document.body.classList.contains('govuk-frontend-supported')) {
-      throw new GOVUKFrontendSupportError()
-    }
+    super()
 
     if (!($module instanceof HTMLElement)) {
       return this

@@ -1,4 +1,8 @@
-import { mergeConfigs, extractConfigByNamespace } from './index.mjs'
+import {
+  mergeConfigs,
+  extractConfigByNamespace,
+  isSupported
+} from './index.mjs'
 
 describe('Common JS utilities', () => {
   describe('mergeConfigs', () => {
@@ -110,6 +114,24 @@ describe('Common JS utilities', () => {
     it('throws an error if no `namespace` is provided', () => {
       // @ts-expect-error Parameter 'namespace' not provided
       expect(() => extractConfigByNamespace(flattenedConfig)).toThrow()
+    })
+  })
+
+  describe.only('isSupported', () => {
+    beforeEach(() => {
+      // Jest does not tidy the JSDOM document between tests
+      // so we need to take care of that ourselves
+      document.documentElement.innerHTML = ''
+    })
+
+    it('returns true if the govuk-frontend-supported class is set', () => {
+      document.body.classList.add('govuk-frontend-supported')
+
+      expect(isSupported(document.body)).toBe(true)
+    })
+
+    it('returns false if the govuk-frontend-supported class is not set', () => {
+      expect(isSupported(document.body)).toBe(false)
     })
   })
 })

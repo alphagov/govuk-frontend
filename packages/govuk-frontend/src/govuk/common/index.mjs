@@ -133,3 +133,17 @@ export function extractConfigByNamespace(configObject, namespace) {
   }
   return newObject
 }
+
+/**
+ * Checks if GOV.UK Frontend is supported on this page
+ *
+ * Some browsers will load and run our JavaScript but GOV.UK Frontend
+ * won't be supported.
+ *
+ * @internal
+ * @param {HTMLElement} [$scope] - The `<body>` element of the document to check for support
+ * @returns {boolean} Whether GOV.UK Frontend is supported on this page
+ */
+export function isSupported($scope = document.body) {
+  return $scope.classList.contains('govuk-frontend-supported')
+}
