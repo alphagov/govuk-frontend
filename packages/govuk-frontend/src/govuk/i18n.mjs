@@ -2,7 +2,7 @@
  * Internal support for selecting messages to render, with placeholder
  * interpolation and locale-aware number formatting and pluralisation
  *
- * @private
+ * @internal
  */
 export class I18n {
   translations
