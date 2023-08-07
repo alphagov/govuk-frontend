@@ -18,7 +18,7 @@
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.1.0",
     "govuk-frontend": "*",
-    "rollup": "^3.26.3",
+    "rollup": "^3.27.2",
     "rollup-plugin-visualizer": "^5.9.2"
   }
 }
