@@ -16,6 +16,7 @@ describe('Exit this page', () => {
       expect($button.hasClass('govuk-button--warning')).toBeTruthy()
       expect($button.html()).toContain('<span class="govuk-visually-hidden">Emergency</span> Exit this page')
       expect($button.attr('href')).toBe('/full-page-examples/announcements')
+      expect($button.attr('rel')).toBe('nofollow noreferrer')
     })
   })
 
