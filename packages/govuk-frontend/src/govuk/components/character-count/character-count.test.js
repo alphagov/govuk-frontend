@@ -763,6 +763,28 @@ describe('Character count', () => {
         )
       })
     })
+
+    describe('errors at instantiation', () => {
+      let examples
+
+      beforeAll(async () => {
+        examples = await getExamples('character-count')
+      })
+
+      it('throws when GOV.UK Frontend is not supported', async () => {
+        await expect(
+          renderAndInitialise(page, 'character-count', {
+            params: examples.default,
+            beforeInitialisation() {
+              document.body.classList.remove('govuk-frontend-supported')
+            }
+          })
+        ).rejects.toEqual({
+          name: 'SupportError',
+          message: 'GOV.UK Frontend is not supported in this browser'
+        })
+      })
+    })
   })
 
   describe('in mismatched locale', () => {

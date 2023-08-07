@@ -1,4 +1,8 @@
-const { goToComponent } = require('govuk-frontend-helpers/puppeteer')
+const {
+  goToComponent,
+  renderAndInitialise
+} = require('govuk-frontend-helpers/puppeteer')
+const { getExamples } = require('govuk-frontend-lib/files.js')
 const { KnownDevices } = require('puppeteer')
 
 const iPhone = KnownDevices['iPhone 6']
@@ -161,6 +165,28 @@ describe('Header navigation', () => {
         )
 
         expect(ariaExpanded).toBe('false')
+      })
+    })
+
+    describe('errors at instantiation', () => {
+      let examples
+
+      beforeAll(async () => {
+        examples = await getExamples('header')
+      })
+
+      it('throws when GOV.UK Frontend is not supported', async () => {
+        await expect(
+          renderAndInitialise(page, 'header', {
+            params: examples.default,
+            beforeInitialisation() {
+              document.body.classList.remove('govuk-frontend-supported')
+            }
+          })
+        ).rejects.toEqual({
+          name: 'SupportError',
+          message: 'GOV.UK Frontend is not supported in this browser'
+        })
       })
     })
   })

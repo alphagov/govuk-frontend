@@ -1,7 +1,9 @@
 const {
   goToComponent,
-  goToExample
+  goToExample,
+  renderAndInitialise
 } = require('govuk-frontend-helpers/puppeteer')
+const { getExamples } = require('govuk-frontend-lib/files.js')
 
 const buttonClass = '.govuk-js-exit-this-page-button'
 const skiplinkClass = '.govuk-js-exit-this-page-skiplink'
@@ -183,6 +185,28 @@ describe('/components/exit-this-page', () => {
           el.nextElementSibling.innerHTML.trim()
         )
         expect(message).toBe('Exit this page expired.')
+      })
+    })
+
+    describe('errors at instantiation', () => {
+      let examples
+
+      beforeAll(async () => {
+        examples = await getExamples('exit-this-page')
+      })
+
+      it('throws when GOV.UK Frontend is not supported', async () => {
+        await expect(
+          renderAndInitialise(page, 'exit-this-page', {
+            params: examples.default,
+            beforeInitialisation() {
+              document.body.classList.remove('govuk-frontend-supported')
+            }
+          })
+        ).rejects.toEqual({
+          name: 'SupportError',
+          message: 'GOV.UK Frontend is not supported in this browser'
+        })
       })
     })
   })
