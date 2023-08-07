@@ -1,7 +1,7 @@
 const { AxePuppeteer } = require('@axe-core/puppeteer')
 const { ports } = require('govuk-frontend-config')
 const { componentNameToClassName } = require('govuk-frontend-lib/names')
-const slug = require('slug')
+const { Slugger } = require('marked')
 
 const { renderHTML } = require('./nunjucks')
 
@@ -151,7 +151,7 @@ function goToExample (page, exampleName) {
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
 function goToComponent (page, componentName, options) {
-  const exampleName = slug(options?.exampleName ?? '', { lower: true })
+  const exampleName = new Slugger().slug(options?.exampleName ?? '')
 
   // Add example name to URL or use default
   const componentPath = exampleName

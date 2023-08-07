@@ -1,4 +1,4 @@
-import slug from 'slug'
+import { Slugger } from 'marked'
 
 /**
  * Format strings into URL friendly "slug"
@@ -7,5 +7,5 @@ import slug from 'slug'
  * @returns {string} URL friendly "slug"
  */
 export function slugify (string) {
-  return slug(string, { lower: true })
+  return new Slugger().slug(string)
 }
