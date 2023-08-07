@@ -1,7 +1,7 @@
 const { goToExample } = require('govuk-frontend-helpers/puppeteer')
 
-describe('/examples/template-default', () => {
-  describe('skip link', () => {
+describe('Skip Link', () => {
+  describe('/examples/template-default', () => {
     beforeAll(async () => {
       await goToExample(page, 'template-default')
       await page.keyboard.press('Tab')
