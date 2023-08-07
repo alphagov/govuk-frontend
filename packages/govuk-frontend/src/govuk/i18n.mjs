@@ -25,6 +25,7 @@ export class I18n {
    * The most used function - takes the key for a given piece of UI text and
    * returns the appropriate string.
    *
+   * @public
    * @param {string} lookupKey - The lookup key of the string to use.
    * @param {{ [key: string]: unknown }} [options] - Any options passed with the translation string, e.g: for string interpolation.
    * @returns {string} The appropriate translation string.
@@ -70,6 +71,7 @@ export class I18n {
    * Takes a translation string with placeholders, and replaces the placeholders
    * with the provided data
    *
+   * @private
    * @param {string} translationString - The translation string
    * @param {{ [key: string]: unknown }} options - Any options passed with the translation string, e.g: for string interpolation.
    * @returns {string} The translation string to output, with $\{\} placeholders replaced
@@ -125,6 +127,7 @@ export class I18n {
    * - The implementation of Intl supports PluralRules (NOT true in IE11)
    * - The browser/OS has plural rules for the current locale (browser dependent)
    *
+   * @private
    * @returns {boolean} Returns true if all conditions are met. Returns false otherwise.
    */
   hasIntlPluralRulesSupport () {
@@ -139,6 +142,7 @@ export class I18n {
    * - The implementation of Intl supports NumberFormat (also true in IE11)
    * - The browser/OS has number formatting rules for the current locale (browser dependent)
    *
+   * @private
    * @returns {boolean} Returns true if all conditions are met. Returns false otherwise.
    */
   hasIntlNumberFormatSupport () {
@@ -155,6 +159,7 @@ export class I18n {
    * hasn't, it'll fall back to the 'other' plural form (unless that doesn't exist
    * either, in which case an error will be thrown)
    *
+   * @private
    * @param {string} lookupKey - The lookup key of the string to use.
    * @param {number} count - Number used to determine which pluralisation to use.
    * @returns {PluralRule} The suffix associated with the correct pluralisation for this locale.
@@ -204,6 +209,7 @@ export class I18n {
    * This is split out into a separate function to make it easier to test the
    * fallback behaviour in an environment where Intl.PluralRules exists.
    *
+   * @private
    * @param {number} count - Number used to determine which pluralisation to use.
    * @returns {PluralRule} The pluralisation form for count in this locale.
    */
@@ -229,6 +235,7 @@ export class I18n {
    * regardless of region. There are exceptions, however, (e.g. Portuguese) so
    * this searches by both the full and shortened locale codes, just to be sure.
    *
+   * @private
    * @returns {string | undefined} The name of the pluralisation rule to use (a key for one
    *   of the functions in this.pluralRules)
    */
@@ -280,6 +287,7 @@ export class I18n {
    * Spanish: European Portuguese (pt-PT), Italian (it), Spanish (es)
    * Welsh: Welsh (cy)
    *
+   * @private
    * @type {{ [key: string]: string[] }}
    */
   static pluralRulesMap = {
@@ -308,6 +316,7 @@ export class I18n {
    *
    * The count must be a positive integer. Negative numbers and decimals aren't accounted for
    *
+   * @private
    * @type {{ [key: string]: (count: number) => PluralRule }}
    */
   static pluralRules = {
