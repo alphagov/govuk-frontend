@@ -7,9 +7,5 @@ import { marked } from 'marked'
  * @returns {string} Rendered Markdown
  */
 export function markdown (content) {
-  // Explicitly set deprecated properties to false to avoid deprecation warnings
-  return marked.parse(content, {
-    mangle: false,
-    headerIds: false
-  })
+  return marked.parse(content)
 }
