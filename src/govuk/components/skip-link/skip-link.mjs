@@ -1,9 +1,9 @@
-import { GOVUKFrontendSupportError } from '../../errors/index.mjs'
+import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
  * Skip link component
  */
-export class SkipLink {
+export class SkipLink extends GOVUKFrontendComponent {
   /** @private */
   $module
 
@@ -21,9 +21,7 @@ export class SkipLink {
    * @param {Element} $module - HTML element to use for skip link
    */
   constructor($module) {
-    if (!document.body.classList.contains('govuk-frontend-supported')) {
-      throw new GOVUKFrontendSupportError()
-    }
+    super()
 
     if (!($module instanceof HTMLAnchorElement)) {
       return this

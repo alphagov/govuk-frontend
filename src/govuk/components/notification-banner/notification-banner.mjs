@@ -1,11 +1,11 @@
 import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
-import { GOVUKFrontendSupportError } from '../../errors/index.mjs'
+import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
  * Notification Banner component
  */
-export class NotificationBanner {
+export class NotificationBanner extends GOVUKFrontendComponent {
   /** @private */
   $module
 
@@ -20,9 +20,7 @@ export class NotificationBanner {
    * @param {NotificationBannerConfig} [config] - Notification banner config
    */
   constructor($module, config) {
-    if (!document.body.classList.contains('govuk-frontend-supported')) {
-      throw new GOVUKFrontendSupportError()
-    }
+    super()
 
     if (!($module instanceof HTMLElement)) {
       return this

@@ -1,12 +1,12 @@
 import { mergeConfigs, extractConfigByNamespace } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
-import { GOVUKFrontendSupportError } from '../../errors/index.mjs'
+import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 import { I18n } from '../../i18n.mjs'
 
 /**
  * Exit This Page component
  */
-export class ExitThisPage {
+export class ExitThisPage extends GOVUKFrontendComponent {
   /** @private */
   $module
 
@@ -76,9 +76,7 @@ export class ExitThisPage {
    * @param {ExitThisPageConfig} [config] - Exit This Page config
    */
   constructor($module, config) {
-    if (!document.body.classList.contains('govuk-frontend-supported')) {
-      throw new GOVUKFrontendSupportError()
-    }
+    super()
 
     if (!($module instanceof HTMLElement)) {
       return this
