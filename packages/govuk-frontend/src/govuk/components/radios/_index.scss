@@ -4,7 +4,6 @@
 @import "../label/index";
 
 @include govuk-exports("govuk/component/radios") {
-
   $govuk-touch-target-size: 44px;
   $govuk-radios-size: 40px;
   $govuk-small-radios-size: 24px;
@@ -134,7 +133,7 @@
 
   .govuk-radios__input:disabled + .govuk-radios__label,
   .govuk-radios__input:disabled ~ .govuk-hint {
-    opacity: .5;
+    opacity: 0.5;
   }
 
   // =========================================================
@@ -142,7 +141,7 @@
   // =========================================================
 
   .govuk-radios--inline {
-    @include govuk-media-query ($from: tablet) {
+    @include govuk-media-query($from: tablet) {
       @include govuk-clearfix;
 
       .govuk-radios__item {
@@ -200,7 +199,6 @@
   // =========================================================
 
   .govuk-radios--small {
-
     $input-offset: ($govuk-touch-target-size - $govuk-small-radios-size) / 2;
     $label-offset: $govuk-touch-target-size - $input-offset;
 
@@ -310,9 +308,10 @@
       @media screen and (forced-colors: active), (-ms-high-contrast: active) {
         outline-color: Highlight;
       }
+      // prettier-ignore
       box-shadow:
-        0 0 0 $govuk-radios-focus-width $govuk-focus-colour, // 1
-        0 0 0 $govuk-hover-width        $govuk-hover-colour; // 2
+        0 0 0 $govuk-radios-focus-width $govuk-focus-colour // 1,
+        0 0 0 $govuk-hover-width $govuk-hover-colour; // 2
     }
 
     // For devices that explicitly don't support hover, don't provide a hover

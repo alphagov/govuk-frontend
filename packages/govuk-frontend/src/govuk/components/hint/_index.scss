@@ -31,6 +31,7 @@
   // This adjustment will not work in browsers that do not support :not().
   // Users with these browsers will see the default size margin (5px larger).
 
+  // prettier-ignore
   .govuk-fieldset__legend:not(.govuk-fieldset__legend--m):not(.govuk-fieldset__legend--l):not(.govuk-fieldset__legend--xl) + .govuk-hint {
     margin-bottom: govuk-spacing(2);
   }

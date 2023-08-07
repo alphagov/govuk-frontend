@@ -7,6 +7,10 @@ module.exports = {
     // Ignore CSS-in-JS (including dotfiles)
     '**/?(.)*.{cjs,js,mjs}',
 
+    // Legacy source symlinks
+    'src/govuk/**',
+    'src/govuk-prototype-kit/**',
+
     // Prevent CHANGELOG history changes
     'CHANGELOG.md'
   ],
@@ -20,21 +24,13 @@ module.exports = {
       files: ['**/coding-standards/css.md'],
       rules: {
         // Allow markdown `*.md` CSS bad examples
-        'block-closing-brace-space-before': null,
         'block-no-empty': null,
-        'block-opening-brace-space-after': null,
-        'color-hex-case': null,
         'color-hex-length': null,
         'declaration-block-single-line-max-declarations': null,
-        'declaration-block-trailing-semicolon': null,
-        'declaration-colon-space-after': null,
         'length-zero-no-unit': null,
-        'number-leading-zero': null,
-        'number-no-trailing-zeros': null,
         'rule-empty-line-before': null,
         'selector-max-id': null,
-        'string-quotes': null,
-        'unit-no-unknown': null,
+        'shorthand-property-no-redundant-values': null,
 
         // Allow markdown `*.md` Sass bad examples
         'scss/at-if-no-null': null,
@@ -212,17 +208,6 @@ module.exports = {
       'src',
       'cursor',
       '-webkit-appearance'
-    ],
-
-    /**
-     * We no longer need to use single colon pseudo-selectors, as we've dropped
-     * support for Internet Explorer 8.  Override the
-     * `selector-pseudo-element-colon-notation` value until the upstream
-     * Stylelint config has been updated.
-     *
-     * https://github.com/alphagov/stylelint-config-gds/pull/36
-     * https://stylelint.io/user-guide/rules/list/selector-pseudo-element-colon-notation/
-     */
-    'selector-pseudo-element-colon-notation': 'double'
+    ]
   }
 }

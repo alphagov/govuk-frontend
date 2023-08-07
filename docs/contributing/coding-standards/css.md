@@ -113,6 +113,8 @@ This makes it easier to keep track of different contexts.
 
 To ensure code quality and consistency in our Sass files we check that certain rules are followed. These rules are based on [GDS Stylelint Config](https://github.com/alphagov/stylelint-config-gds/blob/main/scss.js), but we also add our own custom rules with a project [config file](/stylelint.config.js).
 
+For consistent formatting we run [Prettier](https://prettier.io).
+
 See [testing and linting](/docs/releasing/testing-and-linting.md) for more information.
 
 ## Running the lint task
@@ -123,6 +125,16 @@ To automatically fix Stylelint issues, add the `--fix` flag:
 
 ```shell
 npm run lint:scss -- --fix
+```
+
+## Running the formatting task
+
+You can run the formatter with `npm run lint:prettier`, or use formatting in [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and [other editors that support Prettier](https://prettier.io/docs/en/editors.html)
+
+To automatically fix Prettier issues in all supported files, add the `--write` flag:
+
+```shell
+npm run lint:prettier -- --write
 ```
 
 ## Linting rules
@@ -493,13 +505,13 @@ Good:
 $my-example-var: value;
 ```
 
-### Don't write leading or trailing zeroes for numeric values with a decimal point
+### Write leading or trailing zeroes for numeric values with a decimal point
 
 Bad:
 
 ```scss
 .selector {
-  font-size: 0.50em;
+  font-size: .50em;
 }
 ```
 
@@ -507,7 +519,7 @@ Good:
 
 ```scss
 .selector {
-  font-size: .5em;
+  font-size: 0.5em;
 }
 ```
 

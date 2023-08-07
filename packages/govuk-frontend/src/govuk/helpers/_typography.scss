@@ -115,7 +115,6 @@
 /// @access public
 
 @mixin govuk-typography-responsive($size, $override-line-height: false, $important: false) {
-
   @if not map-has-key($govuk-typography-scale, $size) {
     @error "Unknown font size `#{$size}` - expected a point from the typography scale.";
   }
@@ -127,11 +126,7 @@
     $font-size-rem: govuk-px-to-rem($font-size);
 
     $line-height: _govuk-line-height(
-      $line-height: if(
-        $override-line-height,
-        $override-line-height,
-        map-get($breakpoint-map, "line-height")
-      ),
+      $line-height: if($override-line-height, $override-line-height, map-get($breakpoint-map, "line-height")),
       $font-size: $font-size
     );
 

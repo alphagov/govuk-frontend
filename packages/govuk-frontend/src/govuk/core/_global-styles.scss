@@ -12,7 +12,6 @@
 }
 
 @include govuk-exports("govuk/core/global-styles") {
-
   @if $govuk-global-styles == true {
     @include govuk-global-styles;
   }

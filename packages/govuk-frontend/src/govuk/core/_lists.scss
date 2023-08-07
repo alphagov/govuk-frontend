@@ -1,5 +1,4 @@
 @include govuk-exports("govuk/core/lists") {
-
   %govuk-list {
     @include govuk-font($size: 19);
     @include govuk-text-colour;

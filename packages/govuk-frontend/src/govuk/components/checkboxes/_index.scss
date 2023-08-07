@@ -4,7 +4,6 @@
 @import "../label/index";
 
 @include govuk-exports("govuk/component/checkboxes") {
-
   $govuk-touch-target-size: 44px;
   $govuk-checkboxes-size: 40px;
   $govuk-small-checkboxes-size: 24px;
@@ -134,7 +133,7 @@
 
   .govuk-checkboxes__input:disabled + .govuk-checkboxes__label,
   .govuk-checkboxes__input:disabled ~ .govuk-hint {
-    opacity: .5;
+    opacity: 0.5;
   }
 
   // =========================================================
@@ -184,7 +183,6 @@
   // =========================================================
 
   .govuk-checkboxes--small {
-
     $input-offset: ($govuk-touch-target-size - $govuk-small-checkboxes-size) / 2;
     $label-offset: $govuk-touch-target-size - $input-offset;
 
@@ -290,6 +288,7 @@
       @media screen and (forced-colors: active), (-ms-high-contrast: active) {
         outline-color: Highlight;
       }
+      // prettier-ignore
       box-shadow:
         0 0 0 $govuk-focus-width $govuk-focus-colour, // 1
         0 0 0 $govuk-hover-width $govuk-hover-colour; // 2
