@@ -1,4 +1,8 @@
-const { goToExample } = require('govuk-frontend-helpers/puppeteer')
+const {
+  goToExample,
+  renderAndInitialise
+} = require('govuk-frontend-helpers/puppeteer')
+const { getExamples } = require('govuk-frontend-lib/files.js')
 
 describe('Skip Link', () => {
   describe('/examples/template-default', () => {
@@ -54,6 +58,28 @@ describe('Skip Link', () => {
       )
 
       expect(cssClass).not.toContain('govuk-skip-link-focused-element')
+    })
+  })
+
+  describe('errors at instantiation', () => {
+    let examples
+
+    beforeAll(async () => {
+      examples = await getExamples('skip-link')
+    })
+
+    it('throws when GOV.UK Frontend is not supported', async () => {
+      await expect(
+        renderAndInitialise(page, 'skip-link', {
+          params: examples.default,
+          beforeInitialisation() {
+            document.body.classList.remove('govuk-frontend-supported')
+          }
+        })
+      ).rejects.toEqual({
+        name: 'SupportError',
+        message: 'GOV.UK Frontend is not supported in this browser'
+      })
     })
   })
 })

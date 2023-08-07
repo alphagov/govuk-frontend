@@ -3,8 +3,10 @@ const {
   goToExample,
   getProperty,
   getAttribute,
-  isVisible
+  isVisible,
+  renderAndInitialise
 } = require('govuk-frontend-helpers/puppeteer')
+const { getExamples } = require('govuk-frontend-lib/files.js')
 
 describe('Radios', () => {
   describe('with conditional reveals', () => {
@@ -264,6 +266,28 @@ describe('Radios', () => {
 
         // Expect conditional content to have been collapsed
         expect(await isVisible($conditionalPrimary)).toBe(false)
+      })
+    })
+  })
+
+  describe('errors at instantiation', () => {
+    let examples
+
+    beforeAll(async () => {
+      examples = await getExamples('radios')
+    })
+
+    it('throws when GOV.UK Frontend is not supported', async () => {
+      await expect(
+        renderAndInitialise(page, 'radios', {
+          params: examples.default,
+          beforeInitialisation() {
+            document.body.classList.remove('govuk-frontend-supported')
+          }
+        })
+      ).rejects.toEqual({
+        name: 'SupportError',
+        message: 'GOV.UK Frontend is not supported in this browser'
       })
     })
   })

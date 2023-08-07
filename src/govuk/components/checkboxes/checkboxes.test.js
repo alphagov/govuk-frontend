@@ -3,8 +3,10 @@ const {
   goToExample,
   getAttribute,
   getProperty,
-  isVisible
+  isVisible,
+  renderAndInitialise
 } = require('govuk-frontend-helpers/puppeteer')
+const { getExamples } = require('govuk-frontend-lib/files.js')
 
 describe('Checkboxes with conditional reveals', () => {
   describe('when JavaScript is unavailable or fails', () => {
@@ -315,6 +317,28 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
 
       // Expect conditional content to have been collapsed
       expect(await isVisible($conditionalPrimary)).toBe(false)
+    })
+
+    describe('errors at instantiation', () => {
+      let examples
+
+      beforeAll(async () => {
+        examples = await getExamples('checkboxes')
+      })
+
+      it('throws when GOV.UK Frontend is not supported', async () => {
+        await expect(
+          renderAndInitialise(page, 'checkboxes', {
+            params: examples.default,
+            beforeInitialisation() {
+              document.body.classList.remove('govuk-frontend-supported')
+            }
+          })
+        ).rejects.toEqual({
+          name: 'SupportError',
+          message: 'GOV.UK Frontend is not supported in this browser'
+        })
+      })
     })
   })
 })

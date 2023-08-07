@@ -1,3 +1,5 @@
+import { GOVUKFrontendSupportError } from '../../errors/index.mjs'
+
 /**
  * Radios component
  */
@@ -23,10 +25,11 @@ export class Radios {
    * @param {Element} $module - HTML element to use for radios
    */
   constructor($module) {
-    if (
-      !($module instanceof HTMLElement) ||
-      !document.body.classList.contains('govuk-frontend-supported')
-    ) {
+    if (!document.body.classList.contains('govuk-frontend-supported')) {
+      throw new GOVUKFrontendSupportError()
+    }
+
+    if (!($module instanceof HTMLElement)) {
       return this
     }
 

@@ -1,5 +1,6 @@
 import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { GOVUKFrontendSupportError } from '../../errors/index.mjs'
 
 /**
  * Error summary component
@@ -22,17 +23,11 @@ export class ErrorSummary {
    * @param {ErrorSummaryConfig} [config] - Error summary config
    */
   constructor($module, config) {
-    // Some consuming code may not be passing a module,
-    // for example if they initialise the component
-    // on their own by directly passing the result
-    // of `document.querySelector`.
-    // To avoid breaking further JavaScript initialisation
-    // we need to safeguard against this so things keep
-    // working the same now we read the elements data attributes
-    if (
-      !($module instanceof HTMLElement) ||
-      !document.body.classList.contains('govuk-frontend-supported')
-    ) {
+    if (!document.body.classList.contains('govuk-frontend-supported')) {
+      throw new GOVUKFrontendSupportError()
+    }
+
+    if (!($module instanceof HTMLElement)) {
       return this
     }
 
