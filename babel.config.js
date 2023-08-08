@@ -11,6 +11,19 @@ module.exports = function (api) {
   const browserslistEnv = isBrowser ? 'javascripts' : 'node'
 
   return {
+    generatorOpts: {
+      shouldPrintComment(comment) {
+        if (!isBrowser || comment.includes('* @preserve')) {
+          return true
+        }
+
+        // Assume all comments are public unless
+        // tagged with `@private` or `@internal`
+        return ['* @internal', '* @private'].every(
+          (tag) => !comment.includes(tag)
+        )
+      }
+    },
     presets: [
       [
         '@babel/preset-env',
