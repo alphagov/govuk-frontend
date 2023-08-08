@@ -9,13 +9,15 @@ const { minimatch } = require('minimatch')
  * @param {string} value - Input kebab-cased string
  * @returns {string} Output PascalCased string
  */
-function kebabCaseToPascalCase (value) {
-  return value
-    .toLowerCase()
-    .split('-')
-    // capitalize each 'word'
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join('')
+function kebabCaseToPascalCase(value) {
+  return (
+    value
+      .toLowerCase()
+      .split('-')
+      // capitalize each 'word'
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join('')
+  )
 }
 
 /**
@@ -27,7 +29,7 @@ function kebabCaseToPascalCase (value) {
  * @param {string} componentName - A kebab-cased component name
  * @returns {string} The name of its corresponding Nunjucks macro
  */
-function componentNameToMacroName (componentName) {
+function componentNameToMacroName(componentName) {
   return `govuk${kebabCaseToPascalCase(componentName)}`
 }
 
@@ -37,7 +39,7 @@ function componentNameToMacroName (componentName) {
  * @param {string} componentName - A kebab-cased component name
  * @returns {string} The name of its corresponding JavaScript class
  */
-function componentNameToClassName (componentName) {
+function componentNameToClassName(componentName) {
   return kebabCaseToPascalCase(componentName)
 }
 
@@ -54,7 +56,7 @@ function componentNameToClassName (componentName) {
  * @param {string} componentPath - Path to component with kebab-cased file name
  * @returns {string} The name of its corresponding module
  */
-function componentPathToModuleName (componentPath) {
+function componentPathToModuleName(componentPath) {
   const { name } = parse(componentPath)
 
   return minimatch(componentPath, '**/components/**', { matchBase: true })
@@ -72,13 +74,15 @@ function componentPathToModuleName (componentPath) {
  * @param {Pick<PackageOptions, "modulePath" | "moduleRoot">} [options] - Package resolution options
  * @returns {string} Path to installed npm package entry
  */
-function packageResolveToPath (packageEntry, { modulePath, moduleRoot } = {}) {
+function packageResolveToPath(packageEntry, { modulePath, moduleRoot } = {}) {
   const packagePath = require.resolve(packageEntry, {
     paths: [moduleRoot ?? paths.root]
   })
 
   // Append optional module path
-  return modulePath !== undefined ? join(dirname(packagePath), modulePath) : packagePath
+  return modulePath !== undefined
+    ? join(dirname(packagePath), modulePath)
+    : packagePath
 }
 
 /**
@@ -104,13 +108,19 @@ function packageResolveToPath (packageEntry, { modulePath, moduleRoot } = {}) {
  * @param {PackageOptions} [options] - Package resolution options
  * @returns {string} Path to installed npm package field
  */
-function packageTypeToPath (packageName, { modulePath, moduleRoot, type = 'commonjs' } = {}) {
+function packageTypeToPath(
+  packageName,
+  { modulePath, moduleRoot, type = 'commonjs' } = {}
+) {
   const packageEntry = `${packageName}/package.json`
   const packageField = type === 'module' ? 'module' : 'main'
 
   // Package field as child path
-  const entryPath = require(packageResolveToPath(packageEntry, { moduleRoot }))[packageField]
-  const childPath = modulePath !== undefined ? join(dirname(entryPath), modulePath) : entryPath
+  const entryPath = require(packageResolveToPath(packageEntry, { moduleRoot }))[
+    packageField
+  ]
+  const childPath =
+    modulePath !== undefined ? join(dirname(entryPath), modulePath) : entryPath
 
   // Append optional module path
   return packageResolveToPath(packageEntry, {
@@ -129,7 +139,7 @@ function packageTypeToPath (packageName, { modulePath, moduleRoot, type = 'commo
  * @param {Pick<PackageOptions, "moduleRoot">} [options] - Package resolution options
  * @returns {string} Path to installed npm package
  */
-function packageNameToPath (packageName, options) {
+function packageNameToPath(packageName, options) {
   return packageResolveToPath(`${packageName}/package.json`, {
     modulePath: '',
     ...options

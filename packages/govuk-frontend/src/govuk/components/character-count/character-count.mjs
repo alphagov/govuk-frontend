@@ -63,8 +63,11 @@ export class CharacterCount {
    * @param {Element} $module - HTML element to use for character count
    * @param {CharacterCountConfig} [config] - Character count config
    */
-  constructor ($module, config) {
-    if (!($module instanceof HTMLElement) || !document.body.classList.contains('govuk-frontend-supported')) {
+  constructor($module, config) {
+    if (
+      !($module instanceof HTMLElement) ||
+      !document.body.classList.contains('govuk-frontend-supported')
+    ) {
       return this
     }
 
@@ -120,7 +123,9 @@ export class CharacterCount {
     this.$module = $module
     this.$textarea = $textarea
 
-    const $textareaDescription = document.getElementById(`${this.$textarea.id}-info`)
+    const $textareaDescription = document.getElementById(
+      `${this.$textarea.id}-info`
+    )
     if (!$textareaDescription) {
       return
     }
@@ -129,7 +134,9 @@ export class CharacterCount {
     // for when the component was rendered with no maxlength, maxwords
     // nor custom textareaDescriptionText
     if ($textareaDescription.innerText.match(/^\s*$/)) {
-      $textareaDescription.innerText = this.i18n.t('textareaDescription', { count: this.maxLength })
+      $textareaDescription.innerText = this.i18n.t('textareaDescription', {
+        count: this.maxLength
+      })
     }
 
     // Move the textarea description to be immediately after the textarea
@@ -139,10 +146,14 @@ export class CharacterCount {
     // Create the *screen reader* specific live-updating counter
     // This doesn't need any styling classes, as it is never visible
     const $screenReaderCountMessage = document.createElement('div')
-    $screenReaderCountMessage.className = 'govuk-character-count__sr-status govuk-visually-hidden'
+    $screenReaderCountMessage.className =
+      'govuk-character-count__sr-status govuk-visually-hidden'
     $screenReaderCountMessage.setAttribute('aria-live', 'polite')
     this.$screenReaderCountMessage = $screenReaderCountMessage
-    $textareaDescription.insertAdjacentElement('afterend', $screenReaderCountMessage)
+    $textareaDescription.insertAdjacentElement(
+      'afterend',
+      $screenReaderCountMessage
+    )
 
     // Create our live-updating counter element, copying the classes from the
     // textarea description for backwards compatibility as these may have been
@@ -181,7 +192,7 @@ export class CharacterCount {
    *
    * @private
    */
-  bindChangeEvents () {
+  bindChangeEvents() {
     this.$textarea.addEventListener('keyup', () => this.handleKeyUp())
 
     // Bind focus/blur events to start/stop polling
@@ -197,7 +208,7 @@ export class CharacterCount {
    *
    * @private
    */
-  handleKeyUp () {
+  handleKeyUp() {
     this.updateVisibleCountMessage()
     this.lastInputTimestamp = Date.now()
   }
@@ -217,9 +228,12 @@ export class CharacterCount {
    *
    * @private
    */
-  handleFocus () {
+  handleFocus() {
     this.valueChecker = window.setInterval(() => {
-      if (!this.lastInputTimestamp || (Date.now() - 500) >= this.lastInputTimestamp) {
+      if (
+        !this.lastInputTimestamp ||
+        Date.now() - 500 >= this.lastInputTimestamp
+      ) {
         this.updateIfValueChanged()
       }
     }, 1000)
@@ -232,7 +246,7 @@ export class CharacterCount {
    *
    * @private
    */
-  handleBlur () {
+  handleBlur() {
     // Cancel value checking on blur
     clearInterval(this.valueChecker)
   }
@@ -242,7 +256,7 @@ export class CharacterCount {
    *
    * @private
    */
-  updateIfValueChanged () {
+  updateIfValueChanged() {
     if (this.$textarea.value !== this.lastInputValue) {
       this.lastInputValue = this.$textarea.value
       this.updateCountMessage()
@@ -257,7 +271,7 @@ export class CharacterCount {
    *
    * @private
    */
-  updateCountMessage () {
+  updateCountMessage() {
     this.updateVisibleCountMessage()
     this.updateScreenReaderCountMessage()
   }
@@ -267,15 +281,19 @@ export class CharacterCount {
    *
    * @private
    */
-  updateVisibleCountMessage () {
+  updateVisibleCountMessage() {
     const remainingNumber = this.maxLength - this.count(this.$textarea.value)
 
     // If input is over the threshold, remove the disabled class which renders the
     // counter invisible.
     if (this.isOverThreshold()) {
-      this.$visibleCountMessage.classList.remove('govuk-character-count__message--disabled')
+      this.$visibleCountMessage.classList.remove(
+        'govuk-character-count__message--disabled'
+      )
     } else {
-      this.$visibleCountMessage.classList.add('govuk-character-count__message--disabled')
+      this.$visibleCountMessage.classList.add(
+        'govuk-character-count__message--disabled'
+      )
     }
 
     // Update styles
@@ -298,7 +316,7 @@ export class CharacterCount {
    *
    * @private
    */
-  updateScreenReaderCountMessage () {
+  updateScreenReaderCountMessage() {
     // If over the threshold, remove the aria-hidden attribute, allowing screen
     // readers to announce the content of the element.
     if (this.isOverThreshold()) {
@@ -319,7 +337,7 @@ export class CharacterCount {
    * @param {string} text - The text to count the characters of
    * @returns {number} the number of characters (or words) in the text
    */
-  count (text) {
+  count(text) {
     if ('maxwords' in this.config && this.config.maxwords) {
       const tokens = text.match(/\S+/g) || [] // Matches consecutive non-whitespace chars
       return tokens.length
@@ -334,10 +352,11 @@ export class CharacterCount {
    * @private
    * @returns {string} Status message
    */
-  getCountMessage () {
+  getCountMessage() {
     const remainingNumber = this.maxLength - this.count(this.$textarea.value)
 
-    const countType = 'maxwords' in this.config && this.config.maxwords ? 'words' : 'characters'
+    const countType =
+      'maxwords' in this.config && this.config.maxwords ? 'words' : 'characters'
     return this.formatCountMessage(remainingNumber, countType)
   }
 
@@ -350,14 +369,17 @@ export class CharacterCount {
    * @param {string} countType - "words" or "characters"
    * @returns {string} Status message
    */
-  formatCountMessage (remainingNumber, countType) {
+  formatCountMessage(remainingNumber, countType) {
     if (remainingNumber === 0) {
       return this.i18n.t(`${countType}AtLimit`)
     }
 
-    const translationKeySuffix = remainingNumber < 0 ? 'OverLimit' : 'UnderLimit'
+    const translationKeySuffix =
+      remainingNumber < 0 ? 'OverLimit' : 'UnderLimit'
 
-    return this.i18n.t(`${countType}${translationKeySuffix}`, { count: Math.abs(remainingNumber) })
+    return this.i18n.t(`${countType}${translationKeySuffix}`, {
+      count: Math.abs(remainingNumber)
+    })
   }
 
   /**
@@ -371,7 +393,7 @@ export class CharacterCount {
    * @returns {boolean} true if the current count is over the config.threshold
    *   (or no threshold is set)
    */
-  isOverThreshold () {
+  isOverThreshold() {
     // No threshold means we're always above threshold so save some computation
     if (!this.config.threshold) {
       return true
@@ -381,9 +403,9 @@ export class CharacterCount {
     const currentLength = this.count(this.$textarea.value)
     const maxLength = this.maxLength
 
-    const thresholdValue = maxLength * this.config.threshold / 100
+    const thresholdValue = (maxLength * this.config.threshold) / 100
 
-    return (thresholdValue <= currentLength)
+    return thresholdValue <= currentLength
   }
 
   /**

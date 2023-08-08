@@ -46,13 +46,10 @@ describe('Middleware: Request handling', () => {
 
       // Send form payload as string
       // application/x-www-form-urlencoded
-      await agent
-        .post('/')
-        .send(payload.toString())
+      await agent.post('/').send(payload.toString())
 
       // Form payload object
-      expect(req.body)
-        .toEqual(Object.fromEntries(payload))
+      expect(req.body).toEqual(Object.fromEntries(payload))
     })
   })
 
@@ -71,13 +68,10 @@ describe('Middleware: Request handling', () => {
       // Send cookies as string
       await agent
         .get('/')
-        .set('Cookie', [...cookies]
-          .map((cookie) => cookie.join('='))
-          .join(';'))
+        .set('Cookie', [...cookies].map((cookie) => cookie.join('=')).join(';'))
 
       // Cookies object
-      expect(req.cookies)
-        .toEqual(Object.fromEntries(cookies))
+      expect(req.cookies).toEqual(Object.fromEntries(cookies))
     })
   })
 })

@@ -22,8 +22,11 @@ export class Radios {
    *
    * @param {Element} $module - HTML element to use for radios
    */
-  constructor ($module) {
-    if (!($module instanceof HTMLElement) || !document.body.classList.contains('govuk-frontend-supported')) {
+  constructor($module) {
+    if (
+      !($module instanceof HTMLElement) ||
+      !document.body.classList.contains('govuk-frontend-supported')
+    ) {
       return this
     }
 
@@ -70,8 +73,10 @@ export class Radios {
    *
    * @private
    */
-  syncAllConditionalReveals () {
-    this.$inputs.forEach(($input) => this.syncConditionalRevealWithInputState($input))
+  syncAllConditionalReveals() {
+    this.$inputs.forEach(($input) =>
+      this.syncConditionalRevealWithInputState($input)
+    )
   }
 
   /**
@@ -83,7 +88,7 @@ export class Radios {
    * @private
    * @param {HTMLInputElement} $input - Radio input
    */
-  syncConditionalRevealWithInputState ($input) {
+  syncConditionalRevealWithInputState($input) {
     const targetId = $input.getAttribute('aria-controls')
     if (!targetId) {
       return
@@ -94,7 +99,10 @@ export class Radios {
       const inputIsChecked = $input.checked
 
       $input.setAttribute('aria-expanded', inputIsChecked.toString())
-      $target.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked)
+      $target.classList.toggle(
+        'govuk-radios__conditional--hidden',
+        !inputIsChecked
+      )
     }
   }
 
@@ -109,18 +117,23 @@ export class Radios {
    * @private
    * @param {MouseEvent} event - Click event
    */
-  handleClick (event) {
+  handleClick(event) {
     const $clickedInput = event.target
 
     // Ignore clicks on things that aren't radio buttons
-    if (!($clickedInput instanceof HTMLInputElement) || $clickedInput.type !== 'radio') {
+    if (
+      !($clickedInput instanceof HTMLInputElement) ||
+      $clickedInput.type !== 'radio'
+    ) {
       return
     }
 
     // We only need to consider radios with conditional reveals, which will have
     // aria-controls attributes.
     /** @satisfies {NodeListOf<HTMLInputElement>} */
-    const $allInputs = document.querySelectorAll('input[type="radio"][aria-controls]')
+    const $allInputs = document.querySelectorAll(
+      'input[type="radio"][aria-controls]'
+    )
 
     const $clickedInputForm = $clickedInput.form
     const $clickedInputName = $clickedInput.name

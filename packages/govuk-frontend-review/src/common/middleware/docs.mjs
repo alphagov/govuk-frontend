@@ -19,7 +19,9 @@ router.use('/sass', ({ app }, res, next) => {
   const { isDeployedToHeroku } = app.get('flags')
 
   if (isDeployedToHeroku) {
-    return res.redirect('https://frontend.design-system.service.gov.uk/sass-api-reference/')
+    return res.redirect(
+      'https://frontend.design-system.service.gov.uk/sass-api-reference/'
+    )
   }
 
   next()

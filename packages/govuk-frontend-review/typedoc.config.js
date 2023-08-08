@@ -1,6 +1,9 @@
 const { join } = require('path')
 
-const { packageResolveToPath, packageNameToPath } = require('govuk-frontend-lib/names')
+const {
+  packageResolveToPath,
+  packageNameToPath
+} = require('govuk-frontend-lib/names')
 
 /**
  * @type {import('typedoc').TypeDocOptions}
@@ -8,7 +11,8 @@ const { packageResolveToPath, packageNameToPath } = require('govuk-frontend-lib/
 module.exports = {
   emit: 'both',
   name: 'govuk-frontend',
-  sourceLinkTemplate: 'https://github.com/alphagov/govuk-frontend/blob/{gitRevision}/{path}#L{line}',
+  sourceLinkTemplate:
+    'https://github.com/alphagov/govuk-frontend/blob/{gitRevision}/{path}#L{line}',
 
   // Configure paths
   basePath: join(packageNameToPath('govuk-frontend'), 'src'),
@@ -17,8 +21,5 @@ module.exports = {
   out: './dist/docs/jsdoc',
 
   // Ignore warnings about class fields using I18n (@private)
-  intentionallyNotExported: [
-    'I18n',
-    'TranslationPluralForms'
-  ]
+  intentionallyNotExported: ['I18n', 'TranslationPluralForms']
 }

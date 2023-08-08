@@ -37,9 +37,7 @@ module.exports = {
      *
      * {@link https://developer.chrome.com/articles/new-headless/}
      */
-    headless: process.env.HEADLESS !== 'false'
-      ? 'new'
-      : false,
+    headless: process.env.HEADLESS !== 'false' ? 'new' : false,
 
     // See launch arg '--no-startup-window'
     waitForInitialPage: false

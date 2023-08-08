@@ -35,7 +35,9 @@ describe('The settings layer', () => {
 
   describe('Sass documentation', () => {
     it('associates everything with a "settings" group', async () => {
-      const docs = await sassdoc.parse(join(paths.package, 'src/govuk/settings/**/*.scss'))
+      const docs = await sassdoc.parse(
+        join(paths.package, 'src/govuk/settings/**/*.scss')
+      )
 
       for (const doc of docs) {
         expect(doc).toMatchObject({
@@ -44,9 +46,7 @@ describe('The settings layer', () => {
           context: {
             name: doc.context.name
           },
-          group: [
-            expect.stringMatching(/^settings/)
-          ]
+          group: [expect.stringMatching(/^settings/)]
         })
       }
     })

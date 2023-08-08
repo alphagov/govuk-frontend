@@ -2,7 +2,10 @@ const { join } = require('path')
 
 const { paths } = require('govuk-frontend-config')
 const { nunjucksEnv, renderHTML } = require('govuk-frontend-helpers/nunjucks')
-const { getComponentsData, getComponentNames } = require('govuk-frontend-lib/files')
+const {
+  getComponentsData,
+  getComponentNames
+} = require('govuk-frontend-lib/files')
 const { HtmlValidate } = require('html-validate')
 // We can't use the render function from jest-helpers, because we need control
 // over the nunjucks environment.
@@ -26,15 +29,21 @@ describe('Components', () => {
 
   describe('Nunjucks environment', () => {
     it('renders template for each component', () => {
-      return Promise.all(componentNames.map((componentName) =>
-        expect(nunjucksEnvDefault.render(`govuk/components/${componentName}/template.njk`, {})).resolves
-      ))
+      return Promise.all(
+        componentNames.map((componentName) => {
+          const viewPath = `govuk/components/${componentName}/template.njk`
+          return expect(nunjucksEnvDefault.render(viewPath, {})).resolves
+        })
+      )
     })
 
     it('renders template for each component (different base path)', () => {
-      return Promise.all(componentNames.map((componentName) =>
-        expect(nunjucksEnvCustom.render(`components/${componentName}/template.njk`, {})).resolves
-      ))
+      return Promise.all(
+        componentNames.map((componentName) => {
+          const viewPath = `components/${componentName}/template.njk`
+          return expect(nunjucksEnvCustom.render(viewPath, {})).resolves
+        })
+      )
     })
   })
 
@@ -48,7 +57,10 @@ describe('Components', () => {
         rules: {
           // Allow for multiple buttons in the same form to have the same name
           // (as in the cookie banner examples)
-          'form-dup-name': ['error', { shared: ['radio', 'checkbox', 'submit'] }],
+          'form-dup-name': [
+            'error',
+            { shared: ['radio', 'checkbox', 'submit'] }
+          ],
 
           // Allow pattern attribute on input type="number"
           'input-attributes': 'off',
@@ -91,8 +103,8 @@ describe('Components', () => {
         elements: [
           'html5',
           {
-          // Allow textarea autocomplete attribute to be street-address
-          // (html-validate only allows on/off in default rules)
+            // Allow textarea autocomplete attribute to be street-address
+            // (html-validate only allows on/off in default rules)
             textarea: {
               attributes: {
                 autocomplete: { enum: ['on', 'off', 'street-address'] }
@@ -114,13 +126,22 @@ describe('Components', () => {
 
       // Validate component examples
       for (const { name: componentName, examples } of componentsData) {
-        const exampleTasks = examples.map(async ({ name: exampleName, data }) => {
-          const html = renderHTML(componentName, data)
+        const exampleTasks = examples.map(
+          async ({ name: exampleName, data }) => {
+            const html = renderHTML(componentName, data)
 
-          // Validate HTML
-          return expect({ componentName, exampleName, report: await validator.validateString(html) })
-            .toEqual({ componentName, exampleName, report: expect.objectContaining({ valid: true }) })
-        })
+            // Validate HTML
+            return expect({
+              componentName,
+              exampleName,
+              report: await validator.validateString(html)
+            }).toEqual({
+              componentName,
+              exampleName,
+              report: expect.objectContaining({ valid: true })
+            })
+          }
+        )
 
         // Validate all component examples in parallel
         await Promise.all(exampleTasks)

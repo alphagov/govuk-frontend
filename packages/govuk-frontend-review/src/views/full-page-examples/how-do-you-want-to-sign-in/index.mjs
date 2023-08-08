@@ -10,7 +10,9 @@ export default (app) => {
     '/full-page-examples/how-do-you-want-to-sign-in',
     [
       body('sign-in')
-        .not().isEmpty().withMessage('Select how you want to sign in')
+        .not()
+        .isEmpty()
+        .withMessage('Select how you want to sign in')
     ],
 
     /**
@@ -21,11 +23,14 @@ export default (app) => {
     (request, response) => {
       const errors = formatValidationErrors(validationResult(request))
       if (errors) {
-        return response.render('./full-page-examples/how-do-you-want-to-sign-in/index', {
-          errors,
-          errorSummary: Object.values(errors),
-          values: request.body // In production this should sanitized.
-        })
+        return response.render(
+          './full-page-examples/how-do-you-want-to-sign-in/index',
+          {
+            errors,
+            errorSummary: Object.values(errors),
+            values: request.body // In production this should sanitized.
+          }
+        )
       }
       response.render('./full-page-examples/how-do-you-want-to-sign-in/confirm')
     }

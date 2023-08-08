@@ -6,6 +6,6 @@ import { marked } from 'marked'
  * @param {string} content - Markdown source
  * @returns {string} Rendered Markdown
  */
-export function markdown (content) {
+export function markdown(content) {
   return marked.parse(content)
 }

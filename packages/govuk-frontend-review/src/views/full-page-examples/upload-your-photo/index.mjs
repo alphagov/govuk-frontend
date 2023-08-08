@@ -9,11 +9,12 @@ export default (app) => {
   app.post(
     '/full-page-examples/upload-your-photo',
     [
-      body('photo')
-        .exists()
-        .not().isEmpty().withMessage('Select a photo'),
+      body('photo').exists().not().isEmpty().withMessage('Select a photo'),
+
       body('terms-and-conditions')
-        .not().isEmpty().withMessage('Select I accept the terms and conditions')
+        .not()
+        .isEmpty()
+        .withMessage('Select I accept the terms and conditions')
     ],
 
     /**

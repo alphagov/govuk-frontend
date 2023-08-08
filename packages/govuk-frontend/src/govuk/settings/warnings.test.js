@@ -3,8 +3,7 @@ const { sassNull } = require('sass-embedded')
 
 // Create a mock warn function that we can use to override the native @warn
 // function, that we can make assertions about post-render.
-const mockWarnFunction = jest.fn()
-  .mockReturnValue(sassNull)
+const mockWarnFunction = jest.fn().mockReturnValue(sassNull)
 
 const sassConfig = {
   logger: {
@@ -25,11 +24,12 @@ describe('Warnings mixin', () => {
 
     // Expect our mocked @warn function to have been called once with a single
     // argument, which should be the test message
-    expect(mockWarnFunction.mock.calls[0])
-      .toEqual(expect.arrayContaining([
+    expect(mockWarnFunction.mock.calls[0]).toEqual(
+      expect.arrayContaining([
         'This is a warning. To silence this warning, update ' +
-        '$govuk-suppressed-warnings with key: "test"'
-      ]))
+          '$govuk-suppressed-warnings with key: "test"'
+      ])
+    )
   })
 
   it('Only fires one @warn per warning key', async () => {

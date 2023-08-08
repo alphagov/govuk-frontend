@@ -16,13 +16,7 @@ export default {
     // For example ':hover' and ':focus' classes to simulate form label states
     pseudoclasses({
       allCombinations: true,
-      restrictTo: [
-        ':link',
-        ':visited',
-        ':hover',
-        ':active',
-        ':focus'
-      ]
+      restrictTo: [':link', ':visited', ':hover', ':active', ':focus']
     }),
 
     // Always minify CSS

@@ -15,7 +15,7 @@ const sassPaths = [
  * @param {import('sass-embedded').Options} [options] - Options to pass to Sass
  * @returns {Promise<import('sass-embedded').CompileResult>} Sass compile result
  */
-async function compileSassFile (path, options = {}) {
+async function compileSassFile(path, options = {}) {
   return compileAsync(path, {
     loadPaths: sassPaths,
     logger: Logger.silent,
@@ -31,7 +31,7 @@ async function compileSassFile (path, options = {}) {
  * @param {import('sass-embedded').Options} [options] - Options to pass to Sass
  * @returns {Promise<import('sass-embedded').CompileResult>} Sass compile result
  */
-async function compileSassString (source, options = {}) {
+async function compileSassString(source, options = {}) {
   return compileStringAsync(source, {
     loadPaths: sassPaths,
     logger: Logger.silent,
@@ -65,7 +65,7 @@ const fetchPath = (path, options = {}) => {
  * @param {string} className - the top level class 'Block' in B.E.M terminology
  * @returns {string} returns HTML
  */
-function htmlWithClassName ($, className) {
+function htmlWithClassName($, className) {
   const $component = $(className)
   const classSelector = className.replace('.', '')
   // Remove all other elements that do not match this component

@@ -22,16 +22,17 @@ describe('Header navigation', () => {
     })
 
     it('shows the navigation', async () => {
-      const navDisplay = await page.$eval('.govuk-header__navigation-list',
-        el => window.getComputedStyle(el).getPropertyValue('display')
+      const navDisplay = await page.$eval(
+        '.govuk-header__navigation-list',
+        (el) => window.getComputedStyle(el).getPropertyValue('display')
       )
 
       expect(navDisplay).toBe('block')
     })
 
     it('does not show the mobile menu button', async () => {
-      const buttonDisplay = await page.$eval('.govuk-js-header-toggle',
-        el => window.getComputedStyle(el).getPropertyValue('display')
+      const buttonDisplay = await page.$eval('.govuk-js-header-toggle', (el) =>
+        window.getComputedStyle(el).getPropertyValue('display')
       )
 
       expect(buttonDisplay).toBe('none')
@@ -54,12 +55,13 @@ describe('Header navigation', () => {
       })
 
       it('reveals the menu button', async () => {
-        const hidden = await page.$eval('.govuk-js-header-toggle',
-          el => el.hasAttribute('hidden')
+        const hidden = await page.$eval('.govuk-js-header-toggle', (el) =>
+          el.hasAttribute('hidden')
         )
 
-        const buttonDisplay = await page.$eval('.govuk-js-header-toggle',
-          el => window.getComputedStyle(el).getPropertyValue('display')
+        const buttonDisplay = await page.$eval(
+          '.govuk-js-header-toggle',
+          (el) => window.getComputedStyle(el).getPropertyValue('display')
         )
 
         expect(hidden).toBe(false)
@@ -67,12 +69,14 @@ describe('Header navigation', () => {
       })
 
       it('hides the menu via the hidden attribute', async () => {
-        const hidden = await page.$eval('.govuk-header__navigation-list',
-          el => el.hasAttribute('hidden')
+        const hidden = await page.$eval(
+          '.govuk-header__navigation-list',
+          (el) => el.hasAttribute('hidden')
         )
 
-        const navDisplay = await page.$eval('.govuk-header__navigation-list',
-          el => window.getComputedStyle(el).getPropertyValue('display')
+        const navDisplay = await page.$eval(
+          '.govuk-header__navigation-list',
+          (el) => window.getComputedStyle(el).getPropertyValue('display')
         )
 
         expect(hidden).toBe(true)
@@ -80,8 +84,9 @@ describe('Header navigation', () => {
       })
 
       it('exposes the collapsed state of the menu button using aria-expanded', async () => {
-        const ariaExpanded = await page.$eval('.govuk-header__menu-button',
-          el => el.getAttribute('aria-expanded')
+        const ariaExpanded = await page.$eval(
+          '.govuk-header__menu-button',
+          (el) => el.getAttribute('aria-expanded')
         )
 
         expect(ariaExpanded).toBe('false')
@@ -99,12 +104,14 @@ describe('Header navigation', () => {
       })
 
       it('shows the menu', async () => {
-        const hidden = await page.$eval('.govuk-header__navigation-list',
-          el => el.hasAttribute('hidden')
+        const hidden = await page.$eval(
+          '.govuk-header__navigation-list',
+          (el) => el.hasAttribute('hidden')
         )
 
-        const navDisplay = await page.$eval('.govuk-header__navigation-list',
-          el => window.getComputedStyle(el).getPropertyValue('display')
+        const navDisplay = await page.$eval(
+          '.govuk-header__navigation-list',
+          (el) => window.getComputedStyle(el).getPropertyValue('display')
         )
 
         expect(hidden).toBe(false)
@@ -112,8 +119,9 @@ describe('Header navigation', () => {
       })
 
       it('exposes the expanded state of the menu button using aria-expanded', async () => {
-        const ariaExpanded = await page.$eval('.govuk-header__menu-button',
-          el => el.getAttribute('aria-expanded')
+        const ariaExpanded = await page.$eval(
+          '.govuk-header__menu-button',
+          (el) => el.getAttribute('aria-expanded')
         )
 
         expect(ariaExpanded).toBe('true')
@@ -132,12 +140,14 @@ describe('Header navigation', () => {
       })
 
       it('adds the hidden attribute back to the menu, hiding it', async () => {
-        const hidden = await page.$eval('.govuk-header__navigation-list',
-          el => el.hasAttribute('hidden')
+        const hidden = await page.$eval(
+          '.govuk-header__navigation-list',
+          (el) => el.hasAttribute('hidden')
         )
 
-        const navDisplay = await page.$eval('.govuk-header__navigation-list',
-          el => window.getComputedStyle(el).getPropertyValue('display')
+        const navDisplay = await page.$eval(
+          '.govuk-header__navigation-list',
+          (el) => window.getComputedStyle(el).getPropertyValue('display')
         )
 
         expect(hidden).toBe(true)
@@ -145,8 +155,9 @@ describe('Header navigation', () => {
       })
 
       it('exposes the collapsed state of the menu button using aria-expanded', async () => {
-        const ariaExpanded = await page.$eval('.govuk-header__menu-button',
-          el => el.getAttribute('aria-expanded')
+        const ariaExpanded = await page.$eval(
+          '.govuk-header__menu-button',
+          (el) => el.getAttribute('aria-expanded')
         )
 
         expect(ariaExpanded).toBe('false')

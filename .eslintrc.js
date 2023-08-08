@@ -1,5 +1,5 @@
 module.exports = {
-  extends: 'standard',
+  extends: ['standard', 'prettier'],
   ignorePatterns: [
     '**/dist/**',
     '**/vendor/**',
@@ -19,7 +19,8 @@ module.exports = {
         'plugin:import/recommended',
         'plugin:jsdoc/recommended-typescript-flavor',
         'plugin:n/recommended',
-        'plugin:promise/recommended'
+        'plugin:promise/recommended',
+        'prettier'
       ],
       files: [
         '**/*.{cjs,js,mjs}',
@@ -31,12 +32,7 @@ module.exports = {
       parserOptions: {
         ecmaVersion: 'latest'
       },
-      plugins: [
-        'import',
-        'jsdoc',
-        'n',
-        'promise'
-      ],
+      plugins: ['import', 'jsdoc', 'n', 'promise'],
       rules: {
         // Check import or require statements are A-Z ordered
         'import/order': [
@@ -55,7 +51,8 @@ module.exports = {
         // Check for valid formatting
         'jsdoc/check-line-alignment': [
           'warn',
-          'never', {
+          'never',
+          {
             wrapIndent: '  '
           }
         ],
@@ -67,7 +64,8 @@ module.exports = {
         // Maintain new line after description
         'jsdoc/tag-lines': [
           'warn',
-          'never', {
+          'never',
+          {
             startLines: 1
           }
         ],

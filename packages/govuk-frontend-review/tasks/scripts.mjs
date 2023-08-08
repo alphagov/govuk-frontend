@@ -7,6 +7,5 @@ import gulp from 'gulp'
  *
  * @type {import('govuk-frontend-tasks').TaskFunction}
  */
-export const compile = (options) => gulp.series(
-  npm.script('build:jsdoc', [], options)
-)
+export const compile = (options) =>
+  gulp.series(npm.script('build:jsdoc', [], options))

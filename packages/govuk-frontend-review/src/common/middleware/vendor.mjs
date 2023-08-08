@@ -9,6 +9,9 @@ const router = express.Router()
  * Add middleware to serve dependencies
  * from node_modules
  */
-router.use('/iframe-resizer/', express.static(join(packageNameToPath('iframe-resizer'), 'js')))
+router.use(
+  '/iframe-resizer/',
+  express.static(join(packageNameToPath('iframe-resizer'), 'js'))
+)
 
 export default router

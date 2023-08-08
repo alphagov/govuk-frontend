@@ -10,7 +10,7 @@ import { getDirectories } from 'govuk-frontend-lib/files'
  *
  * @returns {Promise<string[]>} Component names
  */
-export function getExampleNames () {
+export function getExampleNames() {
   return getDirectories(join(paths.app, 'src/views/examples'))
 }
 
@@ -19,27 +19,35 @@ export function getExampleNames () {
  *
  * @returns {Promise<FullPageExample[]>} Full page examples
  */
-export async function getFullPageExamples () {
-  const directories = await getDirectories(join(paths.app, 'src/views/full-page-examples'))
+export async function getFullPageExamples() {
+  const directories = await getDirectories(
+    join(paths.app, 'src/views/full-page-examples')
+  )
 
   // Add metadata (front matter) to each example
-  const examples = await Promise.all(directories.map(async (exampleName) => {
-    const templatePath = join(paths.app, 'src/views/full-page-examples', exampleName, 'index.njk')
-    const { attributes } = fm(await readFile(templatePath, 'utf8'))
+  const examples = await Promise.all(
+    directories.map(async (exampleName) => {
+      const templatePath = join(
+        paths.app,
+        'src/views/full-page-examples',
+        exampleName,
+        'index.njk'
+      )
+      const { attributes } = fm(await readFile(templatePath, 'utf8'))
 
-    return {
-      name: exampleName,
-      path: exampleName,
-      ...attributes
-    }
-  }))
+      return {
+        name: exampleName,
+        path: exampleName,
+        ...attributes
+      }
+    })
+  )
 
   const collator = new Intl.Collator('en', {
     sensitivity: 'base'
   })
 
-  return examples.sort(({ name: a }, { name: b }) =>
-    collator.compare(a, b))
+  return examples.sort(({ name: a }, { name: b }) => collator.compare(a, b))
 }
 
 /**

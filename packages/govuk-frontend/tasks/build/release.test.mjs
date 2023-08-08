@@ -38,11 +38,15 @@ describe('dist/', () => {
     })
 
     it('should contain the copyright notice', () => {
-      expect(stylesheet).toContain('/*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */')
+      expect(stylesheet).toContain(
+        '/*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */'
+      )
     })
 
     it('should contain source mapping URL', () => {
-      expect(stylesheet).toMatch(new RegExp(`/\\*# sourceMappingURL=${filename}.map \\*/\n$`))
+      expect(stylesheet).toMatch(
+        new RegExp(`/\\*# sourceMappingURL=${filename}.map \\*/\n$`)
+      )
     })
 
     it('should contain version number custom property', () => {
@@ -56,12 +60,18 @@ describe('dist/', () => {
 
     beforeAll(async () => {
       filename = `govuk-frontend-${pkg.version}.min.css.map`
-      sourcemap = JSON.parse(await readFile(join(paths.root, `dist/${filename}`), 'utf8'))
+      sourcemap = JSON.parse(
+        await readFile(join(paths.root, `dist/${filename}`), 'utf8')
+      )
     })
 
     it('should contain relative paths to sources', () => {
-      expect(sourcemap.sources).toContain('../packages/govuk-frontend/src/govuk/all.scss')
-      expect(sourcemap.sources).toContain('../packages/govuk-frontend/src/govuk/core/_govuk-frontend-version.scss')
+      expect(sourcemap.sources).toContain(
+        '../packages/govuk-frontend/src/govuk/all.scss'
+      )
+      expect(sourcemap.sources).toContain(
+        '../packages/govuk-frontend/src/govuk/core/_govuk-frontend-version.scss'
+      )
     })
   })
 
@@ -83,7 +93,9 @@ describe('dist/', () => {
     })
 
     it('should contain source mapping URL', () => {
-      expect(javascript).toMatch(new RegExp(`//# sourceMappingURL=${filename}.map\n$`))
+      expect(javascript).toMatch(
+        new RegExp(`//# sourceMappingURL=${filename}.map\n$`)
+      )
     })
   })
 
@@ -93,12 +105,18 @@ describe('dist/', () => {
 
     beforeAll(async () => {
       filename = `govuk-frontend-${pkg.version}.min.js.map`
-      sourcemap = JSON.parse(await readFile(join(paths.root, `dist/${filename}`), 'utf8'))
+      sourcemap = JSON.parse(
+        await readFile(join(paths.root, `dist/${filename}`), 'utf8')
+      )
     })
 
     it('should contain relative paths to sources', () => {
-      expect(sourcemap.sources).toContain('../packages/govuk-frontend/src/govuk/all.mjs')
-      expect(sourcemap.sources).toContain('../packages/govuk-frontend/src/govuk/common/govuk-frontend-version.mjs')
+      expect(sourcemap.sources).toContain(
+        '../packages/govuk-frontend/src/govuk/all.mjs'
+      )
+      expect(sourcemap.sources).toContain(
+        '../packages/govuk-frontend/src/govuk/common/govuk-frontend-version.mjs'
+      )
     })
   })
 

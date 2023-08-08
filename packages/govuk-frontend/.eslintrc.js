@@ -16,14 +16,12 @@ module.exports = {
         ecmaVersion: '2015',
         project: [resolve(__dirname, 'tsconfig.json')]
       },
-      plugins: [
-        '@typescript-eslint',
-        'es-x'
-      ],
+      plugins: ['@typescript-eslint', 'es-x'],
       extends: [
         'plugin:@typescript-eslint/recommended',
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
-        'plugin:es-x/restrict-to-es2015'
+        'plugin:es-x/restrict-to-es2015',
+        'prettier'
       ],
       env: {
         browser: true
@@ -43,7 +41,8 @@ module.exports = {
 
         // JSDoc blocks are mandatory
         'jsdoc/require-jsdoc': [
-          'error', {
+          'error',
+          {
             enableFixer: false,
             require: {
               ClassDeclaration: true,

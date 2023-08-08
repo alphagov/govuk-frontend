@@ -123,7 +123,9 @@ describe('Summary list', () => {
         const $component = $('.govuk-summary-list')
         const $actionLink = $component.find('.govuk-summary-list__actions > a')
 
-        expect($actionLink.html()).toContain('Edit<span class="visually-hidden"> name</span>')
+        expect($actionLink.html()).toContain(
+          'Edit<span class="visually-hidden"> name</span>'
+        )
       })
 
       it('allows the visually hidden prefix to be removed and then manually added with HTML', async () => {
@@ -132,7 +134,9 @@ describe('Summary list', () => {
         const $component = $('.govuk-summary-list')
         const $actionLink = $component.find('.govuk-summary-list__actions > a')
 
-        expect($actionLink.html()).toContain('Golygu<span class="govuk-visually-hidden"> dyddiad geni</span>')
+        expect($actionLink.html()).toContain(
+          'Golygu<span class="govuk-visually-hidden"> dyddiad geni</span>'
+        )
       })
 
       it('renders custom accessible name', async () => {
@@ -176,7 +180,9 @@ describe('Summary list', () => {
 
         const $component = $('.govuk-summary-list')
         const $actionList = $component.find('.govuk-summary-list__actions')
-        const $secondAction = $actionList.find('.govuk-summary-list__actions-list-item:last-child')
+        const $secondAction = $actionList.find(
+          '.govuk-summary-list__actions-list-item:last-child'
+        )
 
         expect($secondAction.text().trim()).toBe('Delete name')
       })
@@ -219,14 +225,22 @@ describe('Summary list', () => {
 
         it('does not add no-actions modifier class to rows with actions', () => {
           // The first row has actions
-          const $firstRow = $component.find('.govuk-summary-list__row:first-child')
-          expect($firstRow.hasClass('govuk-summary-list__row--no-actions')).toBeFalsy()
+          const $firstRow = $component.find(
+            '.govuk-summary-list__row:first-child'
+          )
+          expect(
+            $firstRow.hasClass('govuk-summary-list__row--no-actions')
+          ).toBeFalsy()
         })
 
         it('adds no-actions modifier class to rows without actions', () => {
           // The second row does not have actions
-          const $secondRow = $component.find('.govuk-summary-list__row:nth-child(2)')
-          expect($secondRow.hasClass('govuk-summary-list__row--no-actions')).toBeTruthy()
+          const $secondRow = $component.find(
+            '.govuk-summary-list__row:nth-child(2)'
+          )
+          expect(
+            $secondRow.hasClass('govuk-summary-list__row--no-actions')
+          ).toBeTruthy()
         })
       })
 
@@ -242,7 +256,9 @@ describe('Summary list', () => {
         it('does not add no-actions modifier class to any of the rows', () => {
           // The first row has actions
           const $rows = $component.find('.govuk-summary-list__row')
-          expect($rows.hasClass('govuk-summary-list__row--no-actions')).toBeFalsy()
+          expect(
+            $rows.hasClass('govuk-summary-list__row--no-actions')
+          ).toBeFalsy()
         })
       })
     })
@@ -256,39 +272,58 @@ describe('Summary list', () => {
     // This is already tested in depth in the 'actions' describe above.
     describe('actions', () => {
       it('renders actions', () => {
-        const $ = render('summary-list', examples['as a summary card with actions'])
+        const $ = render(
+          'summary-list',
+          examples['as a summary card with actions']
+        )
 
         const $actionItems = $('.govuk-summary-card__action')
         expect($actionItems.length).toBe(2)
       })
 
       it('does not render a list if only one action is present', () => {
-        const $ = render('summary-list', examples['summary card with only 1 action'])
+        const $ = render(
+          'summary-list',
+          examples['summary card with only 1 action']
+        )
 
         const $singleAction = $('.govuk-summary-card__actions > a')
         const $actionItems = $('.govuk-summary-card__action')
         expect($actionItems.length).toBe(0)
-        expect($singleAction.text().trim()).toBe('My lonely action (Undergraduate teaching assistant)')
+        expect($singleAction.text().trim()).toBe(
+          'My lonely action (Undergraduate teaching assistant)'
+        )
       })
     })
 
     describe('title', () => {
       it('renders with a text title', () => {
-        const $ = render('summary-list', examples['as a summary card with a text header'])
+        const $ = render(
+          'summary-list',
+          examples['as a summary card with a text header']
+        )
 
         const $title = $('.govuk-summary-card__title')
         expect($title.text()).toContain('Undergraduate teaching assistant')
       })
 
       it('renders with a html title', () => {
-        const $ = render('summary-list', examples['as a summary card with a html header'])
+        const $ = render(
+          'summary-list',
+          examples['as a summary card with a html header']
+        )
 
         const $title = $('.govuk-summary-card__title')
-        expect($title.html()).toContain('<em>Undergraduate teaching assistant</em>')
+        expect($title.html()).toContain(
+          '<em>Undergraduate teaching assistant</em>'
+        )
       })
 
       it('renders with a custom heading level', () => {
-        const $ = render('summary-list', examples['as a summary card with a custom header level'])
+        const $ = render(
+          'summary-list',
+          examples['as a summary card with a custom header level']
+        )
 
         const $title = $('.govuk-summary-card__title')
         expect($title.get(0).tagName).toEqual('h3')
@@ -297,7 +332,10 @@ describe('Summary list', () => {
 
     describe('custom options', () => {
       it('renders custom classes on the summary card', () => {
-        const $ = render('summary-list', examples['summary card with custom classes'])
+        const $ = render(
+          'summary-list',
+          examples['summary card with custom classes']
+        )
 
         const $list = $('.govuk-summary-list')
         const $card = $('.govuk-summary-card')
@@ -306,7 +344,10 @@ describe('Summary list', () => {
       })
 
       it('renders with attributes on the summary card', () => {
-        const $ = render('summary-list', examples['summary card with custom attributes'])
+        const $ = render(
+          'summary-list',
+          examples['summary card with custom attributes']
+        )
 
         const $list = $('.govuk-summary-list')
         const $card = $('.govuk-summary-card')

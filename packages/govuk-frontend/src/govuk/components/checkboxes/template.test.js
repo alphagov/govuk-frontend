@@ -17,14 +17,22 @@ describe('Checkboxes', () => {
 
     const $component = $('.govuk-checkboxes')
 
-    const $firstInput = $component.find('.govuk-checkboxes__item:first-child input')
-    const $firstLabel = $component.find('.govuk-checkboxes__item:first-child label')
+    const $firstInput = $component.find(
+      '.govuk-checkboxes__item:first-child input'
+    )
+    const $firstLabel = $component.find(
+      '.govuk-checkboxes__item:first-child label'
+    )
     expect($firstInput.attr('name')).toEqual('nationality')
     expect($firstInput.val()).toEqual('british')
     expect($firstLabel.text()).toContain('British')
 
-    const $lastInput = $component.find('.govuk-checkboxes__item:last-child input')
-    const $lastLabel = $component.find('.govuk-checkboxes__item:last-child label')
+    const $lastInput = $component.find(
+      '.govuk-checkboxes__item:last-child input'
+    )
+    const $lastLabel = $component.find(
+      '.govuk-checkboxes__item:last-child label'
+    )
     expect($lastInput.attr('name')).toEqual('nationality')
     expect($lastInput.val()).toEqual('other')
     expect($lastLabel.text()).toContain('Citizen of another country')
@@ -94,7 +102,10 @@ describe('Checkboxes', () => {
   })
 
   it('render a custom class on the form group', () => {
-    const $ = render('checkboxes', examples['with optional form-group classes showing group error'])
+    const $ = render(
+      'checkboxes',
+      examples['with optional form-group classes showing group error']
+    )
 
     const $formGroup = $('.govuk-form-group')
     expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
@@ -106,13 +117,21 @@ describe('Checkboxes', () => {
 
       const $component = $('.govuk-checkboxes')
 
-      const $firstInput = $component.find('.govuk-checkboxes__item:first-child input')
-      const $firstLabel = $component.find('.govuk-checkboxes__item:first-child label')
+      const $firstInput = $component.find(
+        '.govuk-checkboxes__item:first-child input'
+      )
+      const $firstLabel = $component.find(
+        '.govuk-checkboxes__item:first-child label'
+      )
       expect($firstInput.attr('id')).toEqual('nationality')
       expect($firstLabel.attr('for')).toEqual('nationality')
 
-      const $lastInput = $component.find('.govuk-checkboxes__item:last-child input')
-      const $lastLabel = $component.find('.govuk-checkboxes__item:last-child label')
+      const $lastInput = $component.find(
+        '.govuk-checkboxes__item:last-child input'
+      )
+      const $lastLabel = $component.find(
+        '.govuk-checkboxes__item:last-child label'
+      )
       expect($lastInput.attr('id')).toEqual('nationality-3')
       expect($lastLabel.attr('for')).toEqual('nationality-3')
     })
@@ -122,13 +141,21 @@ describe('Checkboxes', () => {
 
       const $component = $('.govuk-checkboxes')
 
-      const $firstInput = $component.find('.govuk-checkboxes__item:first-child input')
-      const $firstLabel = $component.find('.govuk-checkboxes__item:first-child label')
+      const $firstInput = $component.find(
+        '.govuk-checkboxes__item:first-child input'
+      )
+      const $firstLabel = $component.find(
+        '.govuk-checkboxes__item:first-child label'
+      )
       expect($firstInput.attr('id')).toEqual('nationality')
       expect($firstLabel.attr('for')).toEqual('nationality')
 
-      const $lastInput = $component.find('.govuk-checkboxes__item:last-child input')
-      const $lastLabel = $component.find('.govuk-checkboxes__item:last-child label')
+      const $lastInput = $component.find(
+        '.govuk-checkboxes__item:last-child input'
+      )
+      const $lastLabel = $component.find(
+        '.govuk-checkboxes__item:last-child label'
+      )
       expect($lastInput.attr('id')).toEqual('nationality-2')
       expect($lastLabel.attr('for')).toEqual('nationality-2')
     })
@@ -138,11 +165,17 @@ describe('Checkboxes', () => {
 
       const $component = $('.govuk-checkboxes')
 
-      const $lastInput = $component.find('.govuk-checkboxes__item:last-child input')
+      const $lastInput = $component.find(
+        '.govuk-checkboxes__item:last-child input'
+      )
       expect($lastInput.attr('id')).toBe('with-id-and-name-3')
 
-      const $firstInput = $component.find('.govuk-checkboxes__item:first-child input')
-      const $firstLabel = $component.find('.govuk-checkboxes__item:first-child label')
+      const $firstInput = $component.find(
+        '.govuk-checkboxes__item:first-child input'
+      )
+      const $firstLabel = $component.find(
+        '.govuk-checkboxes__item:first-child label'
+      )
       expect($firstInput.attr('id')).toBe('item_british')
       expect($firstLabel.attr('for')).toEqual('item_british')
     })
@@ -152,7 +185,9 @@ describe('Checkboxes', () => {
 
       const $component = $('.govuk-checkboxes')
 
-      const $lastInput = $component.find('.govuk-checkboxes__item:last-child input')
+      const $lastInput = $component.find(
+        '.govuk-checkboxes__item:last-child input'
+      )
       expect($lastInput.attr('name')).toBe('custom-name-scottish')
     })
 
@@ -161,7 +196,9 @@ describe('Checkboxes', () => {
 
       const $component = $('.govuk-checkboxes')
 
-      const $disabledInput = $component.find('.govuk-checkboxes__item:last-child input')
+      const $disabledInput = $component.find(
+        '.govuk-checkboxes__item:last-child input'
+      )
       expect($disabledInput.attr('disabled')).toEqual('disabled')
     })
 
@@ -169,8 +206,12 @@ describe('Checkboxes', () => {
       const $ = render('checkboxes', examples['with checked item'])
 
       const $component = $('.govuk-checkboxes')
-      const $secondInput = $component.find('.govuk-checkboxes__item:nth-child(2) input')
-      const $lastInput = $component.find('.govuk-checkboxes__item:last-child input')
+      const $secondInput = $component.find(
+        '.govuk-checkboxes__item:nth-child(2) input'
+      )
+      const $lastInput = $component.find(
+        '.govuk-checkboxes__item:last-child input'
+      )
       expect($secondInput.attr('checked')).toEqual('checked')
       expect($lastInput.attr('checked')).toEqual('checked')
     })
@@ -199,11 +240,15 @@ describe('Checkboxes', () => {
 
         const $component = $('.govuk-checkboxes')
 
-        const $firstInput = $component.find('.govuk-checkboxes__item:first-child input')
+        const $firstInput = $component.find(
+          '.govuk-checkboxes__item:first-child input'
+        )
         expect($firstInput.attr('data-attribute')).toEqual('ABC')
         expect($firstInput.attr('data-second-attribute')).toEqual('DEF')
 
-        const $lastInput = $component.find('.govuk-checkboxes__item:last-child input')
+        const $lastInput = $component.find(
+          '.govuk-checkboxes__item:last-child input'
+        )
         expect($lastInput.attr('data-attribute')).toEqual('GHI')
         expect($lastInput.attr('data-second-attribute')).toEqual('JKL')
       })
@@ -215,19 +260,25 @@ describe('Checkboxes', () => {
       const $ = render('checkboxes', examples['with hints on items'])
 
       const $firstHint = $('.govuk-checkboxes__hint').first()
-      expect($firstHint.text().trim()).toContain('You\'ll have a user ID if you\'ve registered for Self Assessment or filed a tax return online before.')
+      expect($firstHint.text().trim()).toContain(
+        "You'll have a user ID if you've registered for Self Assessment or filed a tax return online before."
+      )
     })
 
     it('it renders the correct id attribute for the hint', () => {
       const $ = render('checkboxes', examples['with hints on items'])
 
-      expect($('.govuk-checkboxes__hint').attr('id')).toBe('government-gateway-item-hint')
+      expect($('.govuk-checkboxes__hint').attr('id')).toBe(
+        'government-gateway-item-hint'
+      )
     })
 
     it('the input describedBy attribute matches the item hint id', () => {
       const $ = render('checkboxes', examples['with hints on items'])
 
-      expect($('.govuk-checkboxes__input').attr('aria-describedby')).toBe('government-gateway-item-hint')
+      expect($('.govuk-checkboxes__input').attr('aria-describedby')).toBe(
+        'government-gateway-item-hint'
+      )
     })
   })
 
@@ -237,18 +288,26 @@ describe('Checkboxes', () => {
 
       const $component = $('.govuk-checkboxes')
 
-      const $firstConditional = $component.find('.govuk-checkboxes__conditional').first()
+      const $firstConditional = $component
+        .find('.govuk-checkboxes__conditional')
+        .first()
       expect($firstConditional.text().trim()).toContain('Email address')
-      expect($firstConditional.hasClass('govuk-checkboxes__conditional--hidden')).toBeTruthy()
+      expect(
+        $firstConditional.hasClass('govuk-checkboxes__conditional--hidden')
+      ).toBeTruthy()
     })
     it('visible by default when checked', () => {
       const $ = render('checkboxes', examples['with conditional item checked'])
 
       const $component = $('.govuk-checkboxes')
 
-      const $firstConditional = $component.find('.govuk-checkboxes__conditional').first()
+      const $firstConditional = $component
+        .find('.govuk-checkboxes__conditional')
+        .first()
       expect($firstConditional.text().trim()).toContain('Email address')
-      expect($firstConditional.hasClass('govuk-checkboxes__conditional--hidden')).toBeFalsy()
+      expect(
+        $firstConditional.hasClass('govuk-checkboxes__conditional--hidden')
+      ).toBeFalsy()
     })
 
     it('visible when checked with pre-checked values', () => {
@@ -256,9 +315,13 @@ describe('Checkboxes', () => {
 
       const $component = $('.govuk-checkboxes')
 
-      const $firstConditional = $component.find('.govuk-checkboxes__conditional').first()
+      const $firstConditional = $component
+        .find('.govuk-checkboxes__conditional')
+        .first()
       expect($firstConditional.text().trim()).toContain('Country')
-      expect($firstConditional.hasClass('govuk-checkboxes__conditional--hidden')).toBeFalsy()
+      expect(
+        $firstConditional.hasClass('govuk-checkboxes__conditional--hidden')
+      ).toBeFalsy()
     })
 
     it('with association to the input they are controlled by', () => {
@@ -267,9 +330,13 @@ describe('Checkboxes', () => {
       const $component = $('.govuk-checkboxes')
 
       const $lastInput = $component.find('.govuk-checkboxes__input').last()
-      const $lastConditional = $component.find('.govuk-checkboxes__conditional').last()
+      const $lastConditional = $component
+        .find('.govuk-checkboxes__conditional')
+        .last()
 
-      expect($lastInput.attr('data-aria-controls')).toBe('conditional-how-contacted-3')
+      expect($lastInput.attr('data-aria-controls')).toBe(
+        'conditional-how-contacted-3'
+      )
       expect($lastConditional.attr('id')).toBe('conditional-how-contacted-3')
     })
 
@@ -277,7 +344,9 @@ describe('Checkboxes', () => {
       const $ = render('checkboxes', examples['empty conditional'])
 
       const $component = $('.govuk-checkboxes')
-      expect($component.find('.govuk-checkboxes__conditional').length).toEqual(0)
+      expect($component.find('.govuk-checkboxes__conditional').length).toEqual(
+        0
+      )
     })
 
     it('does not associate checkboxes with empty conditionals', () => {
@@ -298,54 +367,59 @@ describe('Checkboxes', () => {
     it('uses the idPrefix for the error message id if provided', () => {
       const $ = render('checkboxes', examples['with error and idPrefix'])
 
-      const $errorMessage = $('.govuk-error-message')
-
-      expect($errorMessage.attr('id')).toEqual('id-prefix-error')
+      const errorMessageId = $('.govuk-error-message').attr('id')
+      expect(errorMessageId).toEqual('id-prefix-error')
     })
 
     it('falls back to using the name for the error message id', () => {
       const $ = render('checkboxes', examples['with error message'])
 
-      const $errorMessage = $('.govuk-error-message')
-
-      expect($errorMessage.attr('id')).toEqual('waste-error')
+      const errorMessageId = $('.govuk-error-message').attr('id')
+      expect(errorMessageId).toEqual('waste-error')
     })
 
     it('associates the fieldset as "described by" the error message', () => {
-      const $ = render('checkboxes', examples['with fieldset and error message'])
-
-      const $fieldset = $('.govuk-fieldset')
-      const $errorMessage = $('.govuk-error-message')
-
-      const errorMessageId = new RegExp(
-        WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
+      const $ = render(
+        'checkboxes',
+        examples['with fieldset and error message']
       )
 
-      expect($fieldset.attr('aria-describedby'))
-        .toMatch(errorMessageId)
+      const $fieldset = $('.govuk-fieldset')
+      const errorMessageId = $('.govuk-error-message').attr('id')
+
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}${errorMessageId}${WORD_BOUNDARY}`
+      )
+
+      expect($fieldset.attr('aria-describedby')).toMatch(describedBy)
     })
 
     it('associates the fieldset as "described by" the error message and parent fieldset', () => {
-      const $ = render('checkboxes', examples['with error message and fieldset describedBy'])
-
-      const $fieldset = $('.govuk-fieldset')
-      const $errorMessage = $('.govuk-error-message')
-
-      const errorMessageId = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${$errorMessage.attr('id')}${WORD_BOUNDARY}`
+      const $ = render(
+        'checkboxes',
+        examples['with error message and fieldset describedBy']
       )
 
-      expect($fieldset.attr('aria-describedby'))
-        .toMatch(errorMessageId)
+      const $fieldset = $('.govuk-fieldset')
+      const errorMessageId = $('.govuk-error-message').attr('id')
+
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
+      )
+
+      expect($fieldset.attr('aria-describedby')).toMatch(describedBy)
     })
 
     it('does not associate each input as "described by" the error message', () => {
-      const $ = render('checkboxes', examples['with error message and hints on items'])
+      const $ = render(
+        'checkboxes',
+        examples['with error message and hints on items']
+      )
 
       const $inputs = $('input')
 
       $inputs.each((index, input) => {
-        let expectedDescribedById = `waste-${(index + 1)}-item-hint`
+        let expectedDescribedById = `waste-${index + 1}-item-hint`
         if (index === 0) {
           expectedDescribedById = 'waste-item-hint'
         }
@@ -372,25 +446,25 @@ describe('Checkboxes', () => {
       const $ = render('checkboxes', examples['with id and name'])
 
       const $fieldset = $('.govuk-fieldset')
-      const $hint = $('.govuk-hint')
+      const hintId = $('.govuk-hint').attr('id')
 
-      const hintId = new RegExp(
-        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}${hintId}${WORD_BOUNDARY}`
       )
-
-      expect($fieldset.attr('aria-describedby')).toMatch(hintId)
+      expect($fieldset.attr('aria-describedby')).toMatch(describedBy)
     })
 
     it('associates the fieldset as "described by" the hint and parent fieldset', () => {
       const $ = render('checkboxes', examples['with fieldset describedBy'])
-      const $fieldset = $('.govuk-fieldset')
-      const $hint = $('.govuk-hint')
 
-      const hintId = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${$hint.attr('id')}${WORD_BOUNDARY}`
+      const $fieldset = $('.govuk-fieldset')
+      const hintId = $('.govuk-hint').attr('id')
+
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${hintId}${WORD_BOUNDARY}`
       )
 
-      expect($fieldset.attr('aria-describedby')).toMatch(hintId)
+      expect($fieldset.attr('aria-describedby')).toMatch(describedBy)
     })
   })
 
@@ -399,30 +473,32 @@ describe('Checkboxes', () => {
       const $ = render('checkboxes', examples['with error message and hint'])
 
       const $fieldset = $('.govuk-fieldset')
+
       const errorMessageId = $('.govuk-error-message').attr('id')
       const hintId = $('.govuk-hint').attr('id')
 
-      const combinedIds = new RegExp(
-        WORD_BOUNDARY + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
+      const describedByCombined = new RegExp(
+        `${WORD_BOUNDARY}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($fieldset.attr('aria-describedby'))
-        .toMatch(combinedIds)
+      expect($fieldset.attr('aria-describedby')).toMatch(describedByCombined)
     })
 
     it('associates the fieldset as described by the hint, error message and parent fieldset', () => {
-      const $ = render('checkboxes', examples['with error, hint and fieldset describedBy'])
+      const $ = render(
+        'checkboxes',
+        examples['with error, hint and fieldset describedBy']
+      )
 
       const $fieldset = $('.govuk-fieldset')
-      const errorMessageId = $('.govuk-error-message').attr('id')
       const hintId = $('.govuk-hint').attr('id')
+      const errorMessageId = $('.govuk-error-message').attr('id')
 
-      const combinedIds = new RegExp(
+      const describedByCombined = new RegExp(
         `${WORD_BOUNDARY}some-id${WHITESPACE}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($fieldset.attr('aria-describedby'))
-        .toMatch(combinedIds)
+      expect($fieldset.attr('aria-describedby')).toMatch(describedByCombined)
     })
   })
 
@@ -430,7 +506,9 @@ describe('Checkboxes', () => {
     it('have correct nesting order', () => {
       const $ = render('checkboxes', examples['fieldset params'])
 
-      const $component = $('.govuk-form-group > .govuk-fieldset > .govuk-checkboxes')
+      const $component = $(
+        '.govuk-form-group > .govuk-fieldset > .govuk-checkboxes'
+      )
       expect($component.length).toBeTruthy()
     })
 
@@ -455,33 +533,48 @@ describe('Checkboxes', () => {
 
   describe('single checkbox without a fieldset', () => {
     it('adds aria-describedby to input if there is an error', () => {
-      const $ = render('checkboxes', examples["with single option set 'aria-describedby' on input"])
+      const exampleName = "with single option set 'aria-describedby' on input"
+
+      const $ = render('checkboxes', examples[exampleName])
       const $input = $('input')
+
       expect($input.attr('aria-describedby')).toMatch('t-and-c-error')
     })
 
     it('adds aria-describedby to input if there is an error and parent fieldset', () => {
-      const $ = render('checkboxes', examples["with single option set 'aria-describedby' on input, and describedBy"])
+      const exampleName =
+        "with single option set 'aria-describedby' on input, and describedBy"
+
+      const $ = render('checkboxes', examples[exampleName])
       const $input = $('input')
 
-      expect($input.attr('aria-describedby'))
-        .toMatch('some-id t-and-c-error')
+      expect($input.attr('aria-describedby')).toMatch('some-id t-and-c-error')
     })
   })
 
   describe('single checkbox (with hint) without a fieldset', () => {
     it('adds aria-describedby to input if there is an error and a hint', () => {
-      const $ = render('checkboxes', examples["with single option (and hint) set 'aria-describedby' on input"])
+      const exampleName =
+        "with single option (and hint) set 'aria-describedby' on input"
+
+      const $ = render('checkboxes', examples[exampleName])
       const $input = $('input')
-      expect($input.attr('aria-describedby')).toMatch('t-and-c-with-hint-error t-and-c-with-hint-item-hint')
+
+      expect($input.attr('aria-describedby')).toMatch(
+        't-and-c-with-hint-error t-and-c-with-hint-item-hint'
+      )
     })
 
     it('adds aria-describedby to input if there is an error, hint and parent fieldset', () => {
-      const $ = render('checkboxes', examples["with single option (and hint) set 'aria-describedby' on input, and describedBy"])
+      const exampleName =
+        "with single option (and hint) set 'aria-describedby' on input, and describedBy"
+
+      const $ = render('checkboxes', examples[exampleName])
       const $input = $('input')
 
-      expect($input.attr('aria-describedby'))
-        .toMatch('some-id t-and-c-with-hint-error t-and-c-with-hint-item-hint')
+      expect($input.attr('aria-describedby')).toMatch(
+        'some-id t-and-c-with-hint-error t-and-c-with-hint-item-hint'
+      )
     })
   })
 })

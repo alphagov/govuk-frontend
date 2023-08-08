@@ -190,7 +190,7 @@ describe('Button', () => {
       expect($component.get(0).tagName).toEqual('a')
     })
 
-    it('renders a button if you don\'t pass anything', () => {
+    it("renders a button if you don't pass anything", () => {
       const $ = render('button', examples['no type'])
 
       const $component = $('.govuk-button')

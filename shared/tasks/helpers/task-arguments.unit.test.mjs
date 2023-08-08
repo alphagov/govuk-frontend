@@ -6,16 +6,17 @@ describe('Task arguments', () => {
 
     args = {
       posix: ['/usr/bin/node', '/path/to/project/node_modules/.bin/gulp'],
-      windows: ['node.exe', 'C:\\path\\to\\project\\node_modules\\.bin\\gulp.cmd']
+      windows: [
+        'node.exe',
+        'C:\\path\\to\\project\\node_modules\\.bin\\gulp.cmd'
+      ]
     }
   })
 
-  describe.each(
-    [
-      { key: 'posix', description: 'Linux, macOS etc' },
-      { key: 'windows', description: 'Windows only' }
-    ]
-  )('Platform: $description', ({ key }) => {
+  describe.each([
+    { key: 'posix', description: 'Linux, macOS etc' },
+    { key: 'windows', description: 'Windows only' }
+  ])('Platform: $description', ({ key }) => {
     describe('Flag: isDev', () => {
       let argv
 

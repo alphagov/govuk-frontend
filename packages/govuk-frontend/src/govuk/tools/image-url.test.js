@@ -13,15 +13,13 @@ describe('@function image-url', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
-          .foo {
-            background-image: url("/path/to/images/baz.png");
-          }
-        `
-      })
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
+        .foo {
+          background-image: url("/path/to/images/baz.png");
+        }
+      `
+    })
   })
 
   it('can be overridden to use a defined Sass function', async () => {
@@ -35,15 +33,13 @@ describe('@function image-url', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
-          .foo {
-            background-image: "BAZ.PNG";
-          }
-        `
-      })
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
+        .foo {
+          background-image: "BAZ.PNG";
+        }
+      `
+    })
   })
 
   it('can be overridden to use a custom function', async () => {
@@ -62,14 +58,12 @@ describe('@function image-url', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
-          .foo {
-            background-image: url("/custom/baz.png");
-          }
-        `
-      })
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
+        .foo {
+          background-image: url("/custom/baz.png");
+        }
+      `
+    })
   })
 })

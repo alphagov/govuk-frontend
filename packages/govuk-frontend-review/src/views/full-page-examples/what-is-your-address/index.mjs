@@ -11,16 +11,27 @@ export default (app) => {
     [
       body('address-line-1')
         .exists()
-        .not().isEmpty().withMessage('Enter your building and street'),
+        .not()
+        .isEmpty()
+        .withMessage('Enter your building and street'),
+
       body('address-town')
         .exists()
-        .not().isEmpty().withMessage('Enter your town and city'),
+        .not()
+        .isEmpty()
+        .withMessage('Enter your town and city'),
+
       body('address-county')
         .exists()
-        .not().isEmpty().withMessage('Enter your county'),
+        .not()
+        .isEmpty()
+        .withMessage('Enter your county'),
+
       body('address-postcode')
         .exists()
-        .not().isEmpty().withMessage('Enter your postcode')
+        .not()
+        .isEmpty()
+        .withMessage('Enter your postcode')
     ],
 
     /**
@@ -31,11 +42,14 @@ export default (app) => {
     (request, response) => {
       const errors = formatValidationErrors(validationResult(request))
       if (errors) {
-        return response.render('./full-page-examples/what-is-your-address/index', {
-          errors,
-          errorSummary: Object.values(errors),
-          values: request.body // In production this should sanitized.
-        })
+        return response.render(
+          './full-page-examples/what-is-your-address/index',
+          {
+            errors,
+            errorSummary: Object.values(errors),
+            values: request.body // In production this should sanitized.
+          }
+        )
       }
       response.render('./full-page-examples/what-is-your-address/confirm')
     }

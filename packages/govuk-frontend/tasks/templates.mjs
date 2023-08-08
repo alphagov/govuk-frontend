@@ -8,11 +8,12 @@ import gulp from 'gulp'
  *
  * @type {import('govuk-frontend-tasks').TaskFunction}
  */
-export const templates = (options) => gulp.series(
-  task.name('copy:templates', () =>
-    files.copy('**/*.{md,njk}', {
-      srcPath: join(options.srcPath, 'govuk'),
-      destPath: join(options.destPath, 'govuk')
-    })
+export const templates = (options) =>
+  gulp.series(
+    task.name('copy:templates', () =>
+      files.copy('**/*.{md,njk}', {
+        srcPath: join(options.srcPath, 'govuk'),
+        destPath: join(options.destPath, 'govuk')
+      })
+    )
   )
-)

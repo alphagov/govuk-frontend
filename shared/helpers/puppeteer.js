@@ -12,7 +12,7 @@ const { renderHTML } = require('./nunjucks')
  * @param {import('axe-core').RuleObject} [overrides] - Axe rule overrides
  * @returns {Promise<import('axe-core').AxeResults>} Axe Puppeteer instance
  */
-async function axe (page, overrides = {}) {
+async function axe(page, overrides = {}) {
   const reporter = new AxePuppeteer(page)
     .setLegacyMode(true) // Share single page via iframe
     .include('body')
@@ -48,9 +48,7 @@ async function axe (page, overrides = {}) {
   }
 
   // Create report
-  const report = await reporter
-    .options({ rules })
-    .analyze()
+  const report = await reporter.options({ rules }).analyze()
 
   // Add preview URL to report violations
   report.violations.forEach((violation) => {
@@ -81,28 +79,36 @@ async function axe (page, overrides = {}) {
  *   browser to execute arbitrary initialisation
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
-async function renderAndInitialise (page, componentName, options) {
+async function renderAndInitialise(page, componentName, options) {
   await goTo(page, '/tests/boilerplate')
 
   const html = renderHTML(componentName, options.params)
 
   // Inject rendered HTML into the page
-  await page.$eval('#slot', (slot, htmlForSlot) => {
-    slot.innerHTML = htmlForSlot
-  }, html)
+  await page.$eval(
+    '#slot',
+    (slot, htmlForSlot) => {
+      slot.innerHTML = htmlForSlot
+    },
+    html
+  )
 
   // Run a script to init the JavaScript component
-  await page.evaluate(async (exportName, options) => {
-    const $module = document.querySelector('[data-module]')
+  await page.evaluate(
+    async (exportName, options) => {
+      const $module = document.querySelector('[data-module]')
 
-    if (options.initialiser) {
-      options.initialiser($module)
-    }
+      if (options.initialiser) {
+        options.initialiser($module)
+      }
 
-    const namespace = await import('govuk-frontend')
-    /* eslint-disable-next-line no-new */
-    new namespace[exportName]($module, options.config)
-  }, componentNameToClassName(componentName), options)
+      const namespace = await import('govuk-frontend')
+      /* eslint-disable-next-line no-new */
+      new namespace[exportName]($module, options.config)
+    },
+    componentNameToClassName(componentName),
+    options
+  )
 
   return page
 }
@@ -114,7 +120,7 @@ async function renderAndInitialise (page, componentName, options) {
  * @param {URL['pathname']} path - URL path
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
-async function goTo (page, path) {
+async function goTo(page, path) {
   const { href, pathname } = new URL(path, `http://localhost:${ports.app}`)
 
   const response = await page.goto(href)
@@ -137,7 +143,7 @@ async function goTo (page, path) {
  * @param {string} exampleName - Example name
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
-function goToExample (page, exampleName) {
+function goToExample(page, exampleName) {
   return goTo(page, `/examples/${exampleName}`)
 }
 
@@ -150,7 +156,7 @@ function goToExample (page, exampleName) {
  * @param {string} options.exampleName - Example name
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
-function goToComponent (page, componentName, options) {
+function goToComponent(page, componentName, options) {
   const exampleName = slug(options?.exampleName ?? '', { lower: true })
 
   // Add example name to URL or use default
@@ -168,7 +174,7 @@ function goToComponent (page, componentName, options) {
  * @param {string} propertyName - Property name to return value for
  * @returns {Promise<unknown>} Property value
  */
-async function getProperty ($element, propertyName) {
+async function getProperty($element, propertyName) {
   const handle = await $element.getProperty(propertyName)
   return handle.jsonValue()
 }
@@ -180,7 +186,7 @@ async function getProperty ($element, propertyName) {
  * @param {string} attributeName - Attribute name to return value for
  * @returns {Promise<string | null>} Attribute value
  */
-function getAttribute ($element, attributeName) {
+function getAttribute($element, attributeName) {
   return $element.evaluate((el, name) => el.getAttribute(name), attributeName)
 }
 
@@ -192,7 +198,7 @@ function getAttribute ($element, attributeName) {
  * @returns {Promise<string>} The element's accessible name
  * @throws {TypeError} If the element has no corresponding node in the accessibility tree
  */
-async function getAccessibleName (page, $element) {
+async function getAccessibleName(page, $element) {
   // Purposefully doesn't use `?.` to return undefined if there's no node in the
   // accessibility tree. This lets us distinguish different kinds of failures:
   // - assertion on the name failing: we need to figure out
@@ -208,8 +214,8 @@ async function getAccessibleName (page, $element) {
  * @param {import('puppeteer').ElementHandle} $element - Puppeteer element handle
  * @returns {Promise<boolean>} Element visibility
  */
-async function isVisible ($element) {
-  return !!await $element.boundingBox()
+async function isVisible($element) {
+  return !!(await $element.boundingBox())
 }
 
 module.exports = {

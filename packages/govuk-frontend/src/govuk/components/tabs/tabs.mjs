@@ -35,8 +35,11 @@ export class Tabs {
   /**
    * @param {Element} $module - HTML element to use for tabs
    */
-  constructor ($module) {
-    if (!($module instanceof HTMLElement) || !document.body.classList.contains('govuk-frontend-supported')) {
+  constructor($module) {
+    if (
+      !($module instanceof HTMLElement) ||
+      !document.body.classList.contains('govuk-frontend-supported')
+    ) {
       return this
     }
 
@@ -62,7 +65,7 @@ export class Tabs {
    *
    * @private
    */
-  setupResponsiveChecks () {
+  setupResponsiveChecks() {
     this.mql = window.matchMedia('(min-width: 40.0625em)')
 
     // MediaQueryList.addEventListener isn't supported by Safari < 14 so we need
@@ -83,7 +86,7 @@ export class Tabs {
    *
    * @private
    */
-  checkMode () {
+  checkMode() {
     if (this.mql.matches) {
       this.setup()
     } else {
@@ -96,9 +99,11 @@ export class Tabs {
    *
    * @private
    */
-  setup () {
+  setup() {
     const $tabList = this.$module.querySelector('.govuk-tabs__list')
-    const $tabListItems = this.$module.querySelectorAll('.govuk-tabs__list-item')
+    const $tabListItems = this.$module.querySelectorAll(
+      '.govuk-tabs__list-item'
+    )
 
     if (!this.$tabs || !$tabList || !$tabListItems) {
       return
@@ -139,9 +144,11 @@ export class Tabs {
    *
    * @private
    */
-  teardown () {
+  teardown() {
     const $tabList = this.$module.querySelector('.govuk-tabs__list')
-    const $tabListItems = this.$module.querySelectorAll('a.govuk-tabs__list-item')
+    const $tabListItems = this.$module.querySelectorAll(
+      'a.govuk-tabs__list-item'
+    )
 
     if (!this.$tabs || !$tabList || !$tabListItems) {
       return
@@ -172,7 +179,7 @@ export class Tabs {
    * @private
    * @returns {void | undefined} Returns void, or undefined when prevented
    */
-  onHashChange () {
+  onHashChange() {
     const hash = window.location.hash
     const $tabWithHash = this.getTab(hash)
     if (!$tabWithHash) {
@@ -202,7 +209,7 @@ export class Tabs {
    * @private
    * @param {HTMLAnchorElement} $tab - Tab link
    */
-  hideTab ($tab) {
+  hideTab($tab) {
     this.unhighlightTab($tab)
     this.hidePanel($tab)
   }
@@ -213,7 +220,7 @@ export class Tabs {
    * @private
    * @param {HTMLAnchorElement} $tab - Tab link
    */
-  showTab ($tab) {
+  showTab($tab) {
     this.highlightTab($tab)
     this.showPanel($tab)
   }
@@ -225,7 +232,7 @@ export class Tabs {
    * @param {string} hash - Hash fragment including #
    * @returns {HTMLAnchorElement | null} Tab link
    */
-  getTab (hash) {
+  getTab(hash) {
     return this.$module.querySelector(`a.govuk-tabs__tab[href="${hash}"]`)
   }
 
@@ -235,7 +242,7 @@ export class Tabs {
    * @private
    * @param {HTMLAnchorElement} $tab - Tab link
    */
-  setAttributes ($tab) {
+  setAttributes($tab) {
     // set tab attributes
     const panelId = this.getHref($tab).slice(1)
     $tab.setAttribute('id', `tab_${panelId}`)
@@ -261,7 +268,7 @@ export class Tabs {
    * @private
    * @param {HTMLAnchorElement} $tab - Tab link
    */
-  unsetAttributes ($tab) {
+  unsetAttributes($tab) {
     // unset tab attributes
     $tab.removeAttribute('id')
     $tab.removeAttribute('role')
@@ -287,7 +294,7 @@ export class Tabs {
    * @param {MouseEvent} event - Mouse click event
    * @returns {void} Returns void
    */
-  onTabClick (event) {
+  onTabClick(event) {
     const $currentTab = this.getCurrentTab()
     const $nextTab = event.currentTarget
 
@@ -311,7 +318,7 @@ export class Tabs {
    * @private
    * @param {HTMLAnchorElement} $tab - Tab link
    */
-  createHistoryEntry ($tab) {
+  createHistoryEntry($tab) {
     const $panel = this.getPanel($tab)
     if (!$panel) {
       return
@@ -335,7 +342,7 @@ export class Tabs {
    * @private
    * @param {KeyboardEvent} event - Keydown event
    */
-  onTabKeydown (event) {
+  onTabKeydown(event) {
     switch (event.keyCode) {
       case this.keys.left:
       case this.keys.up:
@@ -355,7 +362,7 @@ export class Tabs {
    *
    * @private
    */
-  activateNextTab () {
+  activateNextTab() {
     const $currentTab = this.getCurrentTab()
     if (!$currentTab || !$currentTab.parentElement) {
       return
@@ -383,13 +390,14 @@ export class Tabs {
    *
    * @private
    */
-  activatePreviousTab () {
+  activatePreviousTab() {
     const $currentTab = this.getCurrentTab()
     if (!$currentTab || !$currentTab.parentElement) {
       return
     }
 
-    const $previousTabListItem = $currentTab.parentElement.previousElementSibling
+    const $previousTabListItem =
+      $currentTab.parentElement.previousElementSibling
     if (!$previousTabListItem) {
       return
     }
@@ -413,7 +421,7 @@ export class Tabs {
    * @param {HTMLAnchorElement} $tab - Tab link
    * @returns {Element | null} Tab panel
    */
-  getPanel ($tab) {
+  getPanel($tab) {
     return this.$module.querySelector(this.getHref($tab))
   }
 
@@ -423,7 +431,7 @@ export class Tabs {
    * @private
    * @param {HTMLAnchorElement} $tab - Tab link
    */
-  showPanel ($tab) {
+  showPanel($tab) {
     const $panel = this.getPanel($tab)
     if (!$panel) {
       return
@@ -438,7 +446,7 @@ export class Tabs {
    * @private
    * @param {HTMLAnchorElement} $tab - Tab link
    */
-  hidePanel ($tab) {
+  hidePanel($tab) {
     const $panel = this.getPanel($tab)
     if (!$panel) {
       return
@@ -453,7 +461,7 @@ export class Tabs {
    * @private
    * @param {HTMLAnchorElement} $tab - Tab link
    */
-  unhighlightTab ($tab) {
+  unhighlightTab($tab) {
     if (!$tab.parentElement) {
       return
     }
@@ -469,7 +477,7 @@ export class Tabs {
    * @private
    * @param {HTMLAnchorElement} $tab - Tab link
    */
-  highlightTab ($tab) {
+  highlightTab($tab) {
     if (!$tab.parentElement) {
       return
     }
@@ -485,8 +493,10 @@ export class Tabs {
    * @private
    * @returns {HTMLAnchorElement | null} Tab link
    */
-  getCurrentTab () {
-    return this.$module.querySelector('.govuk-tabs__list-item--selected a.govuk-tabs__tab')
+  getCurrentTab() {
+    return this.$module.querySelector(
+      '.govuk-tabs__list-item--selected a.govuk-tabs__tab'
+    )
   }
 
   /**
@@ -500,7 +510,7 @@ export class Tabs {
    * @param {HTMLAnchorElement} $tab - Tab link
    * @returns {string} Hash fragment including #
    */
-  getHref ($tab) {
+  getHref($tab) {
     const href = $tab.getAttribute('href')
     const hash = href.slice(href.indexOf('#'), href.length)
     return hash

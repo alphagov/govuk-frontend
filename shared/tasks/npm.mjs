@@ -13,7 +13,7 @@ import { task } from './index.mjs'
  * @param {import('./index.mjs').TaskOptions} [options] - Task options
  * @returns {Promise<void>} Script run
  */
-export async function run (name, args = [], options) {
+export async function run(name, args = [], options) {
   const pkgPath = options?.basePath ?? paths.root
 
   try {
@@ -50,7 +50,7 @@ export async function run (name, args = [], options) {
  * @param {import('./index.mjs').TaskOptions} [options] - Task options
  * @returns {() => Promise<void>} Script run
  */
-export function script (name, args = [], options) {
+export function script(name, args = [], options) {
   let displayName = `npm run ${name}`
 
   if (args.length) {

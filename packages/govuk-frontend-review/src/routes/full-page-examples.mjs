@@ -34,12 +34,15 @@ export default (app) => {
 
   // Display full page examples index by default if not handled already
   app.get('/full-page-examples/:exampleName', function (req, res, next) {
-    res.render(`full-page-examples/${req.params.exampleName}/index`, function (error, html) {
-      if (error) {
-        next(error)
-      } else {
-        res.send(html)
+    res.render(
+      `full-page-examples/${req.params.exampleName}/index`,
+      function (error, html) {
+        if (error) {
+          next(error)
+        } else {
+          res.send(html)
+        }
       }
-    })
+    )
   })
 }

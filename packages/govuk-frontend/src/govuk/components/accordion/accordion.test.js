@@ -1,4 +1,9 @@
-const { goToComponent, goToExample, renderAndInitialise, getAccessibleName } = require('govuk-frontend-helpers/puppeteer')
+const {
+  goToComponent,
+  goToExample,
+  renderAndInitialise,
+  getAccessibleName
+} = require('govuk-frontend-helpers/puppeteer')
 const { getExamples } = require('govuk-frontend-lib/files')
 
 describe('/components/accordion', () => {
@@ -18,7 +23,10 @@ describe('/components/accordion', () => {
         const numberOfExampleSections = 2
 
         for (let i = 0; i < numberOfExampleSections; i++) {
-          const isContentVisible = await page.waitForSelector(`.govuk-accordion .govuk-accordion__section:nth-of-type(${i + 1}) .govuk-accordion__section-content`,
+          const isContentVisible = await page.waitForSelector(
+            `.govuk-accordion .govuk-accordion__section:nth-of-type(${
+              i + 1
+            }) .govuk-accordion__section-content`,
             { visible: true, timeout: 5000 }
           )
           expect(isContentVisible).toBeTruthy()
@@ -28,7 +36,12 @@ describe('/components/accordion', () => {
       it('does not display "↓/↑" in the section headings', async () => {
         await goToComponent(page, 'accordion')
 
-        const numberOfIcons = await page.evaluate(() => document.body.querySelectorAll('.govuk-accordion .govuk-accordion__section .govuk-accordion-nav__chevron').length)
+        const numberOfIcons = await page.evaluate(
+          () =>
+            document.body.querySelectorAll(
+              '.govuk-accordion .govuk-accordion__section .govuk-accordion-nav__chevron'
+            ).length
+        )
         expect(numberOfIcons).toEqual(0)
       })
     })
@@ -46,7 +59,13 @@ describe('/components/accordion', () => {
 
         for (let i = 0; i < numberOfExampleSections; i++) {
           const sectionHeaderButtonExpanded = await page.evaluate(function (i) {
-            return document.body.querySelector(`.govuk-accordion .govuk-accordion__section:nth-of-type(${2 + i}) .govuk-accordion__section-button`).getAttribute('aria-expanded')
+            return document.body
+              .querySelector(
+                `.govuk-accordion .govuk-accordion__section:nth-of-type(${
+                  2 + i
+                }) .govuk-accordion__section-button`
+              )
+              .getAttribute('aria-expanded')
           }, i)
 
           expect(sectionHeaderButtonExpanded).toEqual('false')
@@ -56,10 +75,18 @@ describe('/components/accordion', () => {
       it('should change the Show all sections button to Hide all sections when both sections are opened', async () => {
         await goToComponent(page, 'accordion')
 
-        await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header')
-        await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(3) .govuk-accordion__section-header')
+        await page.click(
+          '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header'
+        )
+        await page.click(
+          '.govuk-accordion .govuk-accordion__section:nth-of-type(3) .govuk-accordion__section-header'
+        )
 
-        const openOrCloseAllButtonText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__show-all').textContent)
+        const openOrCloseAllButtonText = await page.evaluate(
+          () =>
+            document.body.querySelector('.govuk-accordion__show-all')
+              .textContent
+        )
         await page.click('.govuk-accordion__show-all')
 
         expect(openOrCloseAllButtonText).toEqual('Hide all sections')
@@ -70,11 +97,23 @@ describe('/components/accordion', () => {
 
         await page.click('.govuk-accordion__show-all')
 
-        const firstSectionHeaderButtonExpanded = await page.evaluate(() => document.body.querySelectorAll('.govuk-accordion__section').item(0).querySelector('.govuk-accordion__section-button').getAttribute('aria-expanded'))
+        const firstSectionHeaderButtonExpanded = await page.evaluate(() =>
+          document.body
+            .querySelectorAll('.govuk-accordion__section')
+            .item(0)
+            .querySelector('.govuk-accordion__section-button')
+            .getAttribute('aria-expanded')
+        )
 
         expect(firstSectionHeaderButtonExpanded).toBeTruthy()
 
-        const secondSectionHeaderButtonExpanded = await page.evaluate(() => document.body.querySelectorAll('.govuk-accordion__section').item(1).querySelector('.govuk-accordion__section-button').getAttribute('aria-expanded'))
+        const secondSectionHeaderButtonExpanded = await page.evaluate(() =>
+          document.body
+            .querySelectorAll('.govuk-accordion__section')
+            .item(1)
+            .querySelector('.govuk-accordion__section-button')
+            .getAttribute('aria-expanded')
+        )
 
         expect(secondSectionHeaderButtonExpanded).toBeTruthy()
       })
@@ -88,40 +127,59 @@ describe('/components/accordion', () => {
 
         for (let i = 0; i < numberOfExampleSections; i++) {
           const sectionHeaderButtonExpanded = await page.evaluate(function (i) {
-            return document.body.querySelector(`.govuk-accordion .govuk-accordion__section:nth-of-type(${2 + i}) .govuk-accordion__section-button`).getAttribute('aria-expanded')
+            return document.body
+              .querySelector(
+                `.govuk-accordion .govuk-accordion__section:nth-of-type(${
+                  2 + i
+                }) .govuk-accordion__section-button`
+              )
+              .getAttribute('aria-expanded')
           }, i)
 
           expect(sectionHeaderButtonExpanded).toEqual('true')
         }
 
-        const openOrCloseAllButtonText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__show-all').textContent)
+        const openOrCloseAllButtonText = await page.evaluate(
+          () =>
+            document.body.querySelector('.govuk-accordion__show-all')
+              .textContent
+        )
 
         expect(openOrCloseAllButtonText).toEqual('Hide all sections')
       })
 
       it('should maintain the expanded state after a page refresh', async () => {
-        const sectionHeaderButton = '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-button'
+        const sectionHeaderButton =
+          '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-button'
 
         await goToComponent(page, 'accordion')
         await page.click(sectionHeaderButton)
 
         const expandedState = await page.evaluate((sectionHeaderButton) => {
-          return document.body.querySelector(sectionHeaderButton).getAttribute('aria-expanded')
+          return document.body
+            .querySelector(sectionHeaderButton)
+            .getAttribute('aria-expanded')
         }, sectionHeaderButton)
 
         await page.reload({
           waitUntil: 'load'
         })
 
-        const expandedStateAfterRefresh = await page.evaluate((sectionHeaderButton) => {
-          return document.body.querySelector(sectionHeaderButton).getAttribute('aria-expanded')
-        }, sectionHeaderButton)
+        const expandedStateAfterRefresh = await page.evaluate(
+          (sectionHeaderButton) => {
+            return document.body
+              .querySelector(sectionHeaderButton)
+              .getAttribute('aria-expanded')
+          },
+          sectionHeaderButton
+        )
 
         expect(expandedState).toEqual(expandedStateAfterRefresh)
       })
 
       it('should not maintain the expanded state after a page refresh, if configured', async () => {
-        const sectionHeaderButton = '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-button'
+        const sectionHeaderButton =
+          '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-button'
 
         await goToComponent(page, 'accordion', {
           exampleName: 'with-remember-expanded-off'
@@ -129,16 +187,23 @@ describe('/components/accordion', () => {
         await page.click(sectionHeaderButton)
 
         const expandedState = await page.evaluate((sectionHeaderButton) => {
-          return document.body.querySelector(sectionHeaderButton).getAttribute('aria-expanded')
+          return document.body
+            .querySelector(sectionHeaderButton)
+            .getAttribute('aria-expanded')
         }, sectionHeaderButton)
 
         await page.reload({
           waitUntil: 'load'
         })
 
-        const expandedStateAfterRefresh = await page.evaluate((sectionHeaderButton) => {
-          return document.body.querySelector(sectionHeaderButton).getAttribute('aria-expanded')
-        }, sectionHeaderButton)
+        const expandedStateAfterRefresh = await page.evaluate(
+          (sectionHeaderButton) => {
+            return document.body
+              .querySelector(sectionHeaderButton)
+              .getAttribute('aria-expanded')
+          },
+          sectionHeaderButton
+        )
 
         expect(expandedState).not.toEqual(expandedStateAfterRefresh)
       })
@@ -146,7 +211,12 @@ describe('/components/accordion', () => {
       it('should transform the button span to <button>', async () => {
         await goToComponent(page, 'accordion')
 
-        const buttonTag = await page.evaluate(() => document.body.querySelector('.govuk-accordion .govuk-accordion__section-button').tagName)
+        const buttonTag = await page.evaluate(
+          () =>
+            document.body.querySelector(
+              '.govuk-accordion .govuk-accordion__section-button'
+            ).tagName
+        )
 
         expect(buttonTag).toEqual('BUTTON')
       })
@@ -154,7 +224,11 @@ describe('/components/accordion', () => {
       it('should contain a heading text container', async () => {
         await goToComponent(page, 'accordion')
 
-        const headingTextContainer = await page.evaluate(() => document.body.querySelector('.govuk-accordion .govuk-accordion__section-button > .govuk-accordion__section-heading-text'))
+        const headingTextContainer = await page.evaluate(() =>
+          document.body.querySelector(
+            '.govuk-accordion .govuk-accordion__section-button > .govuk-accordion__section-heading-text'
+          )
+        )
 
         expect(headingTextContainer).toBeTruthy()
       })
@@ -163,7 +237,11 @@ describe('/components/accordion', () => {
         it('should contain a heading text focus container', async () => {
           await goToComponent(page, 'accordion')
 
-          const headingTextFocusContainer = await page.evaluate(() => document.body.querySelector('.govuk-accordion .govuk-accordion__section-button .govuk-accordion__section-heading-text > .govuk-accordion__section-heading-text-focus'))
+          const headingTextFocusContainer = await page.evaluate(() =>
+            document.body.querySelector(
+              '.govuk-accordion .govuk-accordion__section-button .govuk-accordion__section-heading-text > .govuk-accordion__section-heading-text-focus'
+            )
+          )
 
           expect(headingTextFocusContainer).toBeTruthy()
         })
@@ -172,14 +250,22 @@ describe('/components/accordion', () => {
             exampleName: 'with-additional-descriptions'
           })
 
-          const summaryFocusContainer = await page.evaluate(() => document.body.querySelector('.govuk-accordion .govuk-accordion__section-button > .govuk-accordion__section-summary > .govuk-accordion__section-summary-focus'))
+          const summaryFocusContainer = await page.evaluate(() =>
+            document.body.querySelector(
+              '.govuk-accordion .govuk-accordion__section-button > .govuk-accordion__section-summary > .govuk-accordion__section-summary-focus'
+            )
+          )
 
           expect(summaryFocusContainer).toBeTruthy()
         })
         it('should contain a show/hide focus container', async () => {
           await goToComponent(page, 'accordion')
 
-          const headingTextFocusContainer = await page.evaluate(() => document.body.querySelector('.govuk-accordion .govuk-accordion__section-button .govuk-accordion__section-toggle > .govuk-accordion__section-toggle-focus'))
+          const headingTextFocusContainer = await page.evaluate(() =>
+            document.body.querySelector(
+              '.govuk-accordion .govuk-accordion__section-button .govuk-accordion__section-toggle > .govuk-accordion__section-toggle-focus'
+            )
+          )
 
           expect(headingTextFocusContainer).toBeTruthy()
         })
@@ -190,7 +276,12 @@ describe('/components/accordion', () => {
           await goToComponent(page, 'accordion')
 
           const numberOfExampleSections = 2
-          const numberOfIcons = await page.evaluate(() => document.body.querySelectorAll('.govuk-accordion .govuk-accordion__section .govuk-accordion-nav__chevron').length)
+          const numberOfIcons = await page.evaluate(
+            () =>
+              document.body.querySelectorAll(
+                '.govuk-accordion .govuk-accordion__section .govuk-accordion-nav__chevron'
+              ).length
+          )
 
           expect(numberOfIcons).toEqual(numberOfExampleSections)
         })
@@ -200,11 +291,23 @@ describe('/components/accordion', () => {
         it('should contain hidden comma " ," after the heading text for when CSS does not load', async () => {
           await goToComponent(page, 'accordion')
 
-          const commaAfterHeadingTextClassName = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-heading-text').nextElementSibling.className)
+          const commaAfterHeadingTextClassName = await page.evaluate(
+            () =>
+              document.body.querySelector(
+                '.govuk-accordion__section-heading-text'
+              ).nextElementSibling.className
+          )
 
-          const commaAfterHeadingTextContent = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-heading-text').nextElementSibling.innerHTML)
+          const commaAfterHeadingTextContent = await page.evaluate(
+            () =>
+              document.body.querySelector(
+                '.govuk-accordion__section-heading-text'
+              ).nextElementSibling.innerHTML
+          )
 
-          expect(commaAfterHeadingTextClassName).toEqual('govuk-visually-hidden govuk-accordion__section-heading-divider')
+          expect(commaAfterHeadingTextClassName).toEqual(
+            'govuk-visually-hidden govuk-accordion__section-heading-divider'
+          )
 
           expect(commaAfterHeadingTextContent).toEqual(', ')
         })
@@ -214,11 +317,21 @@ describe('/components/accordion', () => {
             exampleName: 'with-additional-descriptions'
           })
 
-          const commaAfterHeadingTextClassName = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-summary').nextElementSibling.className)
+          const commaAfterHeadingTextClassName = await page.evaluate(
+            () =>
+              document.body.querySelector('.govuk-accordion__section-summary')
+                .nextElementSibling.className
+          )
 
-          const commaAfterHeadingTextContent = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-summary').nextElementSibling.innerHTML)
+          const commaAfterHeadingTextContent = await page.evaluate(
+            () =>
+              document.body.querySelector('.govuk-accordion__section-summary')
+                .nextElementSibling.innerHTML
+          )
 
-          expect(commaAfterHeadingTextClassName).toEqual('govuk-visually-hidden govuk-accordion__section-heading-divider')
+          expect(commaAfterHeadingTextClassName).toEqual(
+            'govuk-visually-hidden govuk-accordion__section-heading-divider'
+          )
 
           expect(commaAfterHeadingTextContent).toEqual(', ')
         })
@@ -232,7 +345,12 @@ describe('/components/accordion', () => {
             })
 
             const summaryClass = 'govuk-accordion__section-summary govuk-body'
-            const firstSummaryElement = await page.evaluate(() => document.body.querySelectorAll('.govuk-accordion__section-button > span')[2].className)
+            const firstSummaryElement = await page.evaluate(
+              () =>
+                document.body.querySelectorAll(
+                  '.govuk-accordion__section-button > span'
+                )[2].className
+            )
             expect(firstSummaryElement).toMatch(summaryClass)
           })
         })
@@ -243,7 +361,12 @@ describe('/components/accordion', () => {
               exampleName: 'with-additional-descriptions'
             })
 
-            const firstSummaryElement = await page.evaluate(() => document.body.querySelector('.govuk-accordion .govuk-accordion__section .govuk-accordion__section-summary').outerHTML)
+            const firstSummaryElement = await page.evaluate(
+              () =>
+                document.body.querySelector(
+                  '.govuk-accordion .govuk-accordion__section .govuk-accordion__section-summary'
+                ).outerHTML
+            )
 
             expect(firstSummaryElement).toMatch(/<span[^>]*>/)
           })
@@ -252,10 +375,18 @@ describe('/components/accordion', () => {
 
       it('should change the Show text to Hide when sections are opened', async () => {
         await goToComponent(page, 'accordion')
-        await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header')
-        await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(3) .govuk-accordion__section-header')
+        await page.click(
+          '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header'
+        )
+        await page.click(
+          '.govuk-accordion .govuk-accordion__section:nth-of-type(3) .govuk-accordion__section-header'
+        )
 
-        const ShowOrHideButtonText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-toggle-text').textContent)
+        const ShowOrHideButtonText = await page.evaluate(
+          () =>
+            document.body.querySelector('.govuk-accordion__section-toggle-text')
+              .textContent
+        )
 
         expect(ShowOrHideButtonText).toEqual('Hide')
       })
@@ -263,7 +394,11 @@ describe('/components/accordion', () => {
       it('should have a data-nosnippet attribute on the "Show / hide" container to hide it from search result snippets', async () => {
         await goToComponent(page, 'accordion')
 
-        const dataNoSnippetAttribute = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-toggle').getAttribute('data-nosnippet'))
+        const dataNoSnippetAttribute = await page.evaluate(() =>
+          document.body
+            .querySelector('.govuk-accordion__section-toggle')
+            .getAttribute('data-nosnippet')
+        )
 
         expect(dataNoSnippetAttribute).toEqual('')
       })
@@ -308,9 +443,17 @@ describe('/components/accordion', () => {
         it('should have an aria-labelledby that matches the heading text ID', async () => {
           await goToComponent(page, 'accordion')
 
-          const ariaLabelledByValue = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-content').getAttribute('aria-labelledby'))
+          const ariaLabelledByValue = await page.evaluate(() =>
+            document.body
+              .querySelector('.govuk-accordion__section-content')
+              .getAttribute('aria-labelledby')
+          )
 
-          const headingTextId = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-heading-text').getAttribute('id'))
+          const headingTextId = await page.evaluate(() =>
+            document.body
+              .querySelector('.govuk-accordion__section-heading-text')
+              .getAttribute('id')
+          )
 
           expect(ariaLabelledByValue).toEqual(headingTextId)
         })
@@ -322,8 +465,16 @@ describe('/components/accordion', () => {
             exampleName: 'with-translations'
           })
 
-          const showAllSectionsDataAttribute = await page.evaluate(() => document.body.querySelector('.govuk-accordion').getAttribute('data-i18n.show-all-sections'))
-          const allSectionsToggleText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__show-all-text').innerHTML)
+          const showAllSectionsDataAttribute = await page.evaluate(() =>
+            document.body
+              .querySelector('.govuk-accordion')
+              .getAttribute('data-i18n.show-all-sections')
+          )
+          const allSectionsToggleText = await page.evaluate(
+            () =>
+              document.body.querySelector('.govuk-accordion__show-all-text')
+                .innerHTML
+          )
 
           expect(allSectionsToggleText).toEqual(showAllSectionsDataAttribute)
         })
@@ -331,7 +482,11 @@ describe('/components/accordion', () => {
         it('should localise "Show all sections" based on JavaScript configuration', async () => {
           await goToExample(page, 'translated')
 
-          const allSectionsToggleText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__show-all-text').innerHTML)
+          const allSectionsToggleText = await page.evaluate(
+            () =>
+              document.body.querySelector('.govuk-accordion__show-all-text')
+                .innerHTML
+          )
 
           expect(allSectionsToggleText).toBe('Dangos adrannau')
         })
@@ -340,11 +495,23 @@ describe('/components/accordion', () => {
           await goToComponent(page, 'accordion', {
             exampleName: 'with-translations'
           })
-          await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header')
-          await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(3) .govuk-accordion__section-header')
+          await page.click(
+            '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header'
+          )
+          await page.click(
+            '.govuk-accordion .govuk-accordion__section:nth-of-type(3) .govuk-accordion__section-header'
+          )
 
-          const hideAllSectionsDataAttribute = await page.evaluate(() => document.body.querySelector('.govuk-accordion').getAttribute('data-i18n.hide-all-sections'))
-          const allSectionsToggleText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__show-all-text').innerHTML)
+          const hideAllSectionsDataAttribute = await page.evaluate(() =>
+            document.body
+              .querySelector('.govuk-accordion')
+              .getAttribute('data-i18n.hide-all-sections')
+          )
+          const allSectionsToggleText = await page.evaluate(
+            () =>
+              document.body.querySelector('.govuk-accordion__show-all-text')
+                .innerHTML
+          )
 
           expect(allSectionsToggleText).toEqual(hideAllSectionsDataAttribute)
         })
@@ -353,7 +520,11 @@ describe('/components/accordion', () => {
           await goToExample(page, 'translated')
           await page.click('.govuk-accordion .govuk-accordion__show-all')
 
-          const allSectionsToggleText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__show-all-text').innerHTML)
+          const allSectionsToggleText = await page.evaluate(
+            () =>
+              document.body.querySelector('.govuk-accordion__show-all-text')
+                .innerHTML
+          )
 
           expect(allSectionsToggleText).toBe('Cuddio adrannau')
         })
@@ -363,8 +534,17 @@ describe('/components/accordion', () => {
             exampleName: 'with-translations'
           })
 
-          const showSectionDataAttribute = await page.evaluate(() => document.body.querySelector('.govuk-accordion').getAttribute('data-i18n.show-section'))
-          const firstSectionToggleText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-toggle-text').innerHTML)
+          const showSectionDataAttribute = await page.evaluate(() =>
+            document.body
+              .querySelector('.govuk-accordion')
+              .getAttribute('data-i18n.show-section')
+          )
+          const firstSectionToggleText = await page.evaluate(
+            () =>
+              document.body.querySelector(
+                '.govuk-accordion__section-toggle-text'
+              ).innerHTML
+          )
 
           expect(firstSectionToggleText).toEqual(showSectionDataAttribute)
         })
@@ -372,7 +552,12 @@ describe('/components/accordion', () => {
         it('should localise "Show section" based on JavaScript configuration', async () => {
           await goToExample(page, 'translated')
 
-          const firstSectionToggleText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-toggle-text').innerHTML)
+          const firstSectionToggleText = await page.evaluate(
+            () =>
+              document.body.querySelector(
+                '.govuk-accordion__section-toggle-text'
+              ).innerHTML
+          )
 
           expect(firstSectionToggleText).toBe('Dangos')
         })
@@ -387,11 +572,10 @@ describe('/components/accordion', () => {
               .querySelector('.govuk-accordion')
               .getAttribute('data-i18n.show-section-aria-label')
           )
-          const firstSectionToggleAriaLabel = await page.evaluate(
-            () =>
-              document.body.querySelector(
-                '.govuk-accordion__section-button'
-              ).getAttribute('aria-label')
+          const firstSectionToggleAriaLabel = await page.evaluate(() =>
+            document.body
+              .querySelector('.govuk-accordion__section-button')
+              .getAttribute('aria-label')
           )
 
           expect(
@@ -408,26 +592,46 @@ describe('/components/accordion', () => {
               .getAttribute('aria-label')
           )
 
-          expect(firstSectionToggleAriaLabel.endsWith('Dangos adran')).toBeTruthy()
+          expect(
+            firstSectionToggleAriaLabel.endsWith('Dangos adran')
+          ).toBeTruthy()
         })
 
         it('should localise "Hide section" based on data attribute', async () => {
           await goToComponent(page, 'accordion', {
             exampleName: 'with-translations'
           })
-          await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header')
+          await page.click(
+            '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header'
+          )
 
-          const hideSectionDataAttribute = await page.evaluate(() => document.body.querySelector('.govuk-accordion').getAttribute('data-i18n.hide-section'))
-          const firstSectionToggleText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-toggle-text').innerHTML)
+          const hideSectionDataAttribute = await page.evaluate(() =>
+            document.body
+              .querySelector('.govuk-accordion')
+              .getAttribute('data-i18n.hide-section')
+          )
+          const firstSectionToggleText = await page.evaluate(
+            () =>
+              document.body.querySelector(
+                '.govuk-accordion__section-toggle-text'
+              ).innerHTML
+          )
 
           expect(firstSectionToggleText).toEqual(hideSectionDataAttribute)
         })
 
         it('should localise "Hide section" based on JavaScript configuration', async () => {
           await goToExample(page, 'translated')
-          await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header')
+          await page.click(
+            '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header'
+          )
 
-          const firstSectionToggleText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-toggle-text').innerHTML)
+          const firstSectionToggleText = await page.evaluate(
+            () =>
+              document.body.querySelector(
+                '.govuk-accordion__section-toggle-text'
+              ).innerHTML
+          )
 
           expect(firstSectionToggleText).toBe('Cuddio')
         })

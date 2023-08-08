@@ -20,8 +20,11 @@ export class Example {
   /**
    * @param {Element} $module - HTML element to use for component
    */
-  constructor ($module) {
-    if (!($module instanceof HTMLElement) || !document.body.classList.contains('govuk-frontend-supported')) {
+  constructor($module) {
+    if (
+      !($module instanceof HTMLElement) ||
+      !document.body.classList.contains('govuk-frontend-supported')
+    ) {
       return this
     }
 
@@ -63,7 +66,7 @@ Use `/** ... */` for multi-line comments. Include a description, and specify typ
  * @param {string} tagName - Tag name (for example 'div')
  * @returns {Element} Ancestor element
  */
-function exampleHelper ($element, tagName) {
+function exampleHelper($element, tagName) {
   // Code goes here
   return $element.querySelector(tagName)
 }
@@ -92,7 +95,7 @@ Add methods to the class.
 ```mjs
 // Good
 class Example {
-  doSomething () {
+  doSomething() {
     // Code goes here
   }
 }
@@ -123,8 +126,8 @@ Use ECMAScript (ES) modules (`import`/`export`) over CommonJS and other formats.
 import { closestAttributeValue } from '../common/index.mjs'
 
 // Code goes here
-export function exampleHelper1 () {}
-export function exampleHelper2 () {}
+export function exampleHelper1() {}
+export function exampleHelper2() {}
 ```
 
 You must specify the file extension when using the import keyword.
@@ -141,6 +144,8 @@ If you need polyfills for features that are not yet included in this project, pl
 
 GOV.UK Frontend uses [ESLint](https://eslint.org) with [JavaScript Standard Style](https://standardjs.com), an opinionated JavaScript style guide. All JavaScript files follow its conventions, and it runs on GitHub Actions to ensure that new pull requests are in line with them.
 
+For consistent formatting we run [Prettier](https://prettier.io).
+
 The standard docs have a [complete list of rules and some reasoning behind them](https://standardjs.com/rules.html).
 
 Read more about [running standard manually, or in your editor, on the 'JavaScript coding style' page of the GDS Way](https://gds-way.cloudapps.digital/manuals/programming-languages/js.html#linting).
@@ -155,4 +160,14 @@ To automatically fix ESLint issues, add the `--fix` flag:
 
 ```shell
 npm run lint:js -- --fix
+```
+
+## Running the formatting task
+
+You can run the formatter with `npm run lint:prettier`, or use formatting in [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and [other editors that support Prettier](https://prettier.io/docs/en/editors.html)
+
+To automatically fix Prettier issues in all supported files, add the `--write` flag:
+
+```shell
+npm run lint:prettier -- --write
 ```

@@ -21,7 +21,9 @@ describe('I18n', () => {
     it('returns the HTML for a given lookup key', () => {
       const i18n = new I18n(translations)
       const returnString = i18n.t('htmlString')
-      expect(returnString).toBe('Hello<span class="govuk-visually-hidden"> world</span>')
+      expect(returnString).toBe(
+        'Hello<span class="govuk-visually-hidden"> world</span>'
+      )
     })
 
     it('returns the lookup key if no translation is defined', () => {
@@ -45,24 +47,38 @@ describe('I18n', () => {
 
       it('throws an error if the options data is not present', () => {
         const i18n = new I18n(translations)
-        expect(() => { i18n.t('nameString') }).toThrowError('i18n: cannot replace placeholders in string if no option data provided')
+        expect(() => {
+          i18n.t('nameString')
+        }).toThrowError(
+          'i18n: cannot replace placeholders in string if no option data provided'
+        )
       })
 
       it('throws an error if the options object is empty', () => {
         const i18n = new I18n(translations)
-        expect(() => { i18n.t('nameString', {}) }).toThrowError('i18n: no data found to replace %{name} placeholder in string')
+        expect(() => {
+          i18n.t('nameString', {})
+        }).toThrowError(
+          'i18n: no data found to replace %{name} placeholder in string'
+        )
       })
 
       it('throws an error if the options object does not have a matching key', () => {
         const i18n = new I18n(translations)
-        expect(() => { i18n.t('nameString', { unrelatedThing: 'hello' }) }).toThrowError('i18n: no data found to replace %{name} placeholder in string')
+        expect(() => {
+          i18n.t('nameString', { unrelatedThing: 'hello' })
+        }).toThrowError(
+          'i18n: no data found to replace %{name} placeholder in string'
+        )
       })
 
       it('only matches %{} as a placeholder', () => {
         const i18n = new I18n({
           price: '%{name}, this } item %{ costs $5.00'
         })
-        expect(i18n.t('price', { name: 'John' })).toBe('John, this } item %{ costs $5.00')
+        expect(i18n.t('price', { name: 'John' })).toBe(
+          'John, this } item %{ costs $5.00'
+        )
       })
 
       it('can lookup a placeholder value with non-alphanumeric key', () => {
@@ -83,7 +99,11 @@ describe('I18n', () => {
         const i18n = new I18n({
           age: 'My age is %{valueOf}'
         })
-        expect(() => { i18n.t('age', {}) }).toThrowError('i18n: no data found to replace %{valueOf} placeholder in string')
+        expect(() => {
+          i18n.t('age', {})
+        }).toThrowError(
+          'i18n: no data found to replace %{valueOf} placeholder in string'
+        )
       })
 
       it('replaces the placeholder with the provided data', () => {
@@ -109,33 +129,53 @@ describe('I18n', () => {
 
       it('selects the correct data to replace in the string', () => {
         const i18n = new I18n(translations)
-        expect(i18n.t('nameString', { number: 50, name: 'Claire', otherName: 'Zoe' })).toBe('My name is Claire')
+        expect(
+          i18n.t('nameString', { number: 50, name: 'Claire', otherName: 'Zoe' })
+        ).toBe('My name is Claire')
       })
 
       it('replaces multiple placeholders, if present', () => {
         const i18n = new I18n({
           nameString: 'Their name is %{name}. %{name} is %{age} years old'
         })
-        expect(i18n.t('nameString', { number: 50, name: 'Andrew', otherName: 'Vic', age: 22 })).toBe('Their name is Andrew. Andrew is 22 years old')
+        expect(
+          i18n.t('nameString', {
+            number: 50,
+            name: 'Andrew',
+            otherName: 'Vic',
+            age: 22
+          })
+        ).toBe('Their name is Andrew. Andrew is 22 years old')
       })
 
       it('replaces very long placeholders', () => {
         const i18n = new I18n({
-          nameString: 'Hi %{aVeryLongPlaceholderName}. %{aVeryLongPlaceholderName}, it sure is nice to meet you.'
+          nameString:
+            'Hi %{aVeryLongPlaceholderName}. %{aVeryLongPlaceholderName}, it sure is nice to meet you.'
         })
-        expect(i18n.t('nameString', { aVeryLongPlaceholderName: 'Bob' })).toBe('Hi Bob. Bob, it sure is nice to meet you.')
+        expect(i18n.t('nameString', { aVeryLongPlaceholderName: 'Bob' })).toBe(
+          'Hi Bob. Bob, it sure is nice to meet you.'
+        )
       })
 
       it('nested placeholder only resolves with a matching key', () => {
         const i18n = new I18n({
           nameString: 'Their name is %{name%{age}}'
         })
-        expect(i18n.t('nameString', { name: 'Andrew', age: 55, 'name%{age}': 'Testing' })).toBe('Their name is Testing')
+        expect(
+          i18n.t('nameString', {
+            name: 'Andrew',
+            age: 55,
+            'name%{age}': 'Testing'
+          })
+        ).toBe('Their name is Testing')
       })
 
       it('handles placeholder-style text within options values', () => {
         const i18n = new I18n(translations)
-        expect(i18n.t('nameString', { name: '%{name}' })).toBe('My name is %{name}')
+        expect(i18n.t('nameString', { name: '%{name}' })).toBe(
+          'My name is %{name}'
+        )
       })
 
       it('formats numbers that are passed as placeholders', () => {
@@ -145,8 +185,12 @@ describe('I18n', () => {
         const i18nEn = new I18n(translations, { locale: 'en' })
         const i18nDe = new I18n(translations, { locale: 'de' })
 
-        expect(i18nEn.t('ageString', { age: 2000 })).toBe('I am 2,000 years old')
-        expect(i18nDe.t('ageString', { age: 2000 })).toBe('I am 2.000 years old')
+        expect(i18nEn.t('ageString', { age: 2000 })).toBe(
+          'I am 2,000 years old'
+        )
+        expect(i18nDe.t('ageString', { age: 2000 })).toBe(
+          'I am 2.000 years old'
+        )
       })
 
       it('does not format number-like strings that are passed as placeholders', () => {
@@ -154,18 +198,23 @@ describe('I18n', () => {
           yearString: 'Happy new year %{year}'
         })
 
-        expect(i18n.t('yearString', { year: '2023' })).toBe('Happy new year 2023')
+        expect(i18n.t('yearString', { year: '2023' })).toBe(
+          'Happy new year 2023'
+        )
       })
     })
 
     describe('pluralisation', () => {
       it('interpolates the count variable into the correct plural form', () => {
-        const i18n = new I18n({
-          'test.one': '%{count} test',
-          'test.other': '%{count} tests'
-        }, {
-          locale: 'en'
-        })
+        const i18n = new I18n(
+          {
+            'test.one': '%{count} test',
+            'test.other': '%{count} tests'
+          },
+          {
+            locale: 'en'
+          }
+        )
 
         expect(i18n.t('test', { count: 1 })).toBe('1 test')
         expect(i18n.t('test', { count: 5 })).toBe('5 tests')
@@ -178,8 +227,11 @@ describe('I18n', () => {
 
     beforeEach(() => {
       // Silence warnings in test output, and allow us to 'expect' them
-      consoleWarn = jest.spyOn(global.console, 'warn')
-        .mockImplementation(() => { /* noop */ })
+      consoleWarn = jest
+        .spyOn(global.console, 'warn')
+        .mockImplementation(() => {
+          /* noop */
+        })
     })
 
     afterEach(() => {
@@ -187,44 +239,58 @@ describe('I18n', () => {
     })
 
     it('uses `Intl.PluralRules` when available', () => {
-      const IntlPluralRulesSelect = jest.spyOn(global.Intl.PluralRules.prototype, 'select')
+      const IntlPluralRulesSelect = jest
+        .spyOn(global.Intl.PluralRules.prototype, 'select')
         .mockImplementation(() => 'one')
 
-      const i18n = new I18n({
-        'test.one': 'test',
-        'test.other': 'test'
-      }, {
-        locale: 'en'
-      })
+      const i18n = new I18n(
+        {
+          'test.one': 'test',
+          'test.other': 'test'
+        },
+        {
+          locale: 'en'
+        }
+      )
 
       expect(i18n.getPluralSuffix('test', 1)).toBe('one')
       expect(IntlPluralRulesSelect).toBeCalledWith(1)
     })
 
     it('falls back to internal fallback rules', () => {
-      const i18n = new I18n({
-        'test.one': 'test',
-        'test.other': 'test'
-      }, {
-        locale: 'en'
-      })
+      const i18n = new I18n(
+        {
+          'test.one': 'test',
+          'test.other': 'test'
+        },
+        {
+          locale: 'en'
+        }
+      )
 
-      jest.spyOn(i18n, 'hasIntlPluralRulesSupport')
+      jest
+        .spyOn(i18n, 'hasIntlPluralRulesSupport')
         .mockImplementation(() => false)
 
-      const selectPluralFormUsingFallbackRules = jest.spyOn(i18n, 'selectPluralFormUsingFallbackRules')
+      const selectPluralFormUsingFallbackRules = jest.spyOn(
+        i18n,
+        'selectPluralFormUsingFallbackRules'
+      )
 
       i18n.getPluralSuffix('test', 1)
       expect(selectPluralFormUsingFallbackRules).toBeCalledWith(1)
     })
 
     it('returns the preferred plural form for the locale if a translation exists', () => {
-      const i18n = new I18n({
-        'test.one': 'test',
-        'test.other': 'test'
-      }, {
-        locale: 'en'
-      })
+      const i18n = new I18n(
+        {
+          'test.one': 'test',
+          'test.other': 'test'
+        },
+        {
+          locale: 'en'
+        }
+      )
       expect(i18n.getPluralSuffix('test', 1)).toBe('one')
     })
 
@@ -233,22 +299,31 @@ describe('I18n', () => {
       { form: 'two', count: 2 },
       { form: 'few', count: 3 },
       { form: 'many', count: 6 }
-    ])('`$form` falls back to `other` if preferred form `$form` is missing', ({ count }) => {
-      const i18n = new I18n({
-        'test.other': 'test'
-      }, {
-        locale: 'cy'
-      })
+    ])(
+      '`$form` falls back to `other` if preferred form `$form` is missing',
+      ({ count }) => {
+        const i18n = new I18n(
+          {
+            'test.other': 'test'
+          },
+          {
+            locale: 'cy'
+          }
+        )
 
-      expect(i18n.getPluralSuffix('test', count)).toBe('other')
-    })
+        expect(i18n.getPluralSuffix('test', count)).toBe('other')
+      }
+    )
 
     it('logs a console warning when falling back to `other`', () => {
-      const i18n = new I18n({
-        'test.other': 'test'
-      }, {
-        locale: 'en'
-      })
+      const i18n = new I18n(
+        {
+          'test.other': 'test'
+        },
+        {
+          locale: 'en'
+        }
+      )
 
       i18n.getPluralSuffix('test', 1)
 
@@ -258,31 +333,42 @@ describe('I18n', () => {
     })
 
     it('throws an error if trying to use `other` but `other` is not provided', () => {
-      const i18n = new I18n({}, {
-        locale: 'en'
-      })
+      const i18n = new I18n(
+        {},
+        {
+          locale: 'en'
+        }
+      )
 
-      expect(() => { i18n.getPluralSuffix('test', 2) })
-        .toThrowError('i18n: Plural form ".other" is required for "en" locale')
+      expect(() => {
+        i18n.getPluralSuffix('test', 2)
+      }).toThrowError('i18n: Plural form ".other" is required for "en" locale')
     })
 
     it('throws an error if a plural form is not provided and neither is `other`', () => {
-      const i18n = new I18n({
-        'test.one': 'test'
-      }, {
-        locale: 'en'
-      })
+      const i18n = new I18n(
+        {
+          'test.one': 'test'
+        },
+        {
+          locale: 'en'
+        }
+      )
 
-      expect(() => { i18n.getPluralSuffix('test', 2) })
-        .toThrowError('i18n: Plural form ".other" is required for "en" locale')
+      expect(() => {
+        i18n.getPluralSuffix('test', 2)
+      }).toThrowError('i18n: Plural form ".other" is required for "en" locale')
     })
 
     it('returns `other` for non-numbers', () => {
-      const i18n = new I18n({
-        'test.other': 'test'
-      }, {
-        locale: 'en'
-      })
+      const i18n = new I18n(
+        {
+          'test.other': 'test'
+        },
+        {
+          locale: 'en'
+        }
+      )
 
       // @ts-expect-error Parameter 'count' not a number
       expect(i18n.getPluralSuffix('test', 'nonsense')).toBe('other')
@@ -325,16 +411,21 @@ describe('I18n', () => {
       ['cy', [3, 6]]
     ]
 
-    it.each(locales)('matches `Intl.PluralRules.select()` for %s locale', (locale, localeNumbers) => {
-      const i18n = new I18n({}, { locale })
-      const intl = new Intl.PluralRules(locale)
+    it.each(locales)(
+      'matches `Intl.PluralRules.select()` for %s locale',
+      (locale, localeNumbers) => {
+        const i18n = new I18n({}, { locale })
+        const intl = new Intl.PluralRules(locale)
 
-      const numbersToTest = [0, 1, 2, 5, 25, 100, ...localeNumbers]
+        const numbersToTest = [0, 1, 2, 5, 25, 100, ...localeNumbers]
 
-      numbersToTest.forEach(num => {
-        expect(i18n.selectPluralFormUsingFallbackRules(num)).toBe(intl.select(num))
-      })
-    })
+        numbersToTest.forEach((num) => {
+          expect(i18n.selectPluralFormUsingFallbackRules(num)).toBe(
+            intl.select(num)
+          )
+        })
+      }
+    )
 
     it('returns "other" for unsupported locales', () => {
       const locale = 'la'
@@ -342,7 +433,7 @@ describe('I18n', () => {
 
       const numbersToTest = [0, 1, 2, 5, 25, 100]
 
-      numbersToTest.forEach(num => {
+      numbersToTest.forEach((num) => {
         expect(i18n.selectPluralFormUsingFallbackRules(num)).toBe('other')
       })
     })

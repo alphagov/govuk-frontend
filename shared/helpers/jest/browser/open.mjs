@@ -8,7 +8,7 @@ import { download } from './download.mjs'
  * @param {import('jest').Config} jestConfig - Jest config
  * @returns {Promise<void>}
  */
-export default async function browserOpen (jestConfig) {
+export default async function browserOpen(jestConfig) {
   await download() // Download browser
   return setup(jestConfig) // Open browser, start server
 }

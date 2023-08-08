@@ -14,9 +14,7 @@ describe('GOV.UK Prototype Kit config', () => {
       '/dist/govuk/all.bundle.js.map'
     ])
 
-    expect(config.sass).toEqual([
-      '/dist/govuk-prototype-kit/init.scss'
-    ])
+    expect(config.sass).toEqual(['/dist/govuk-prototype-kit/init.scss'])
 
     expect(config.scripts).toEqual([
       '/dist/govuk/all.bundle.js',

@@ -4,7 +4,7 @@
  * @param {Errors} errors - Validation errors
  * @returns {Record<string, ErrorFormatted> | undefined} Formatted errors
  */
-export function formatValidationErrors (errors) {
+export function formatValidationErrors(errors) {
   return errors
     .formatWith((error) => {
       if (error.type !== 'field') {

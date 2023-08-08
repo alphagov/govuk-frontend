@@ -17,7 +17,7 @@ const commands = {
 }
 
 module.exports = {
-  '*.{cjs,js,mjs}': commands.eslint,
+  '*.{cjs,js,mjs}': [commands.eslint, commands.prettier],
   '*.{json,yaml,yml}': commands.prettier,
   '*.md': [commands.eslint, commands.stylelint, commands.prettier],
   '*.scss': [commands.stylelint, commands.prettier]
@@ -32,7 +32,7 @@ const eslint = new ESLint()
  * @param {string} task - The task `lint-staged` wants to execute
  * @returns {Promise<(paths: string[]) => string[]>} Tasks to run with files argument
  */
-function filterTask (task) {
+function filterTask(task) {
   return async (files) => {
     const isIgnored = await Promise.all(
       files.map((file) => eslint.isPathIgnored(file))
@@ -41,10 +41,8 @@ function filterTask (task) {
     // Wrap files in quotes in case they contains a space
     const paths = files
       .filter((_, i) => !isIgnored[i])
-      .map(file => `"${file}"`)
+      .map((file) => `"${file}"`)
 
-    return paths.length
-      ? [`${task} ${paths.join(' ')}`]
-      : []
+    return paths.length ? [`${task} ${paths.join(' ')}`] : []
   }
 }

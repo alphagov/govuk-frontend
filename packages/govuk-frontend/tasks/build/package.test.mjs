@@ -3,7 +3,12 @@ import { join } from 'path'
 
 import { paths, pkg } from 'govuk-frontend-config'
 import { compileSassFile } from 'govuk-frontend-helpers/tests'
-import { filterPath, getComponentNames, getListing, mapPathTo } from 'govuk-frontend-lib/files'
+import {
+  filterPath,
+  getComponentNames,
+  getListing,
+  mapPathTo
+} from 'govuk-frontend-lib/files'
 import { componentNameToClassName } from 'govuk-frontend-lib/names'
 import { outdent } from 'outdent'
 
@@ -43,8 +48,10 @@ describe('packages/govuk-frontend/dist/', () => {
     componentNames = await getComponentNames()
 
     // Components list (with JavaScript only)
-    componentNamesWithJavaScript = await getComponentNames((componentName, componentFiles) =>
-      componentFiles.some(filterPath([`**/${componentName}.mjs`])))
+    componentNamesWithJavaScript = await getComponentNames(
+      (componentName, componentFiles) =>
+        componentFiles.some(filterPath([`**/${componentName}.mjs`]))
+    )
   })
 
   it('should contain the expected files', async () => {
@@ -65,46 +72,59 @@ describe('packages/govuk-frontend/dist/', () => {
       .flatMap(mapPathTo(['**/govuk-prototype-kit.config.mjs'], () => []))
 
       // All source `**/*.mjs` files compiled to ES modules
-      .flatMap(mapPathTo(['**/*.mjs'], ({ dir: requirePath, name }) => [
-        join(requirePath, `${name}.mjs`),
-        join(requirePath, `${name}.mjs.map`) // with source map
-      ]))
+      .flatMap(
+        mapPathTo(['**/*.mjs'], ({ dir: requirePath, name }) => [
+          join(requirePath, `${name}.mjs`),
+          join(requirePath, `${name}.mjs.map`) // with source map
+        ])
+      )
 
       // Only package entries and components are compiled to ES module + UMD bundles
-      .flatMap(mapPathTo(['**/govuk/{all,components/**/*}.mjs'], ({ dir: requirePath, name }) => [
-        join(requirePath, `${name}.mjs`),
+      .flatMap(
+        mapPathTo(
+          ['**/govuk/{all,components/**/*}.mjs'],
+          ({ dir: requirePath, name }) => [
+            join(requirePath, `${name}.mjs`),
 
-        // UMD bundles for compatibility (e.g. Rails Asset Pipeline)
-        join(requirePath, `${name}.bundle.js`),
-        join(requirePath, `${name}.bundle.js.map`), // with source map
+            // UMD bundles for compatibility (e.g. Rails Asset Pipeline)
+            join(requirePath, `${name}.bundle.js`),
+            join(requirePath, `${name}.bundle.js.map`), // with source map
 
-        // ES module bundles for browsers
-        join(requirePath, `${name}.bundle.mjs`),
-        join(requirePath, `${name}.bundle.mjs.map`) // with source map
-      ]))
+            // ES module bundles for browsers
+            join(requirePath, `${name}.bundle.mjs`),
+            join(requirePath, `${name}.bundle.mjs.map`) // with source map
+          ]
+        )
+      )
 
       // Only main package entry is compiled to minified ES module bundle
-      .flatMap(mapPathTo(['**/govuk/all.mjs'], ({ dir: requirePath }) => [
-        join(requirePath, 'all.mjs'),
+      .flatMap(
+        mapPathTo(['**/govuk/all.mjs'], ({ dir: requirePath }) => [
+          join(requirePath, 'all.mjs'),
 
-        // ES module bundles for browsers, minified
-        join(requirePath, 'govuk-frontend.min.js'), // avoid .mjs extension MIME issues
-        join(requirePath, 'govuk-frontend.min.js.map') // with source map
-      ]))
+          // ES module bundles for browsers, minified
+          join(requirePath, 'govuk-frontend.min.js'), // avoid .mjs extension MIME issues
+          join(requirePath, 'govuk-frontend.min.js.map') // with source map
+        ])
+      )
 
       // Add Autoprefixer prefixes to all source '*.scss' files
-      .flatMap(mapPathTo(['**/*.scss'], ({ dir: requirePath, name }) => [
-        join(requirePath, `${name}.scss`),
-        join(requirePath, `${name}.scss.map`) // with source map
-      ]))
+      .flatMap(
+        mapPathTo(['**/*.scss'], ({ dir: requirePath, name }) => [
+          join(requirePath, `${name}.scss`),
+          join(requirePath, `${name}.scss.map`) // with source map
+        ])
+      )
 
       // Replaces source component '*.yaml' with:
       // - `fixtures.json` fixtures for tests
       // - `macro-options.json` component options
-      .flatMap(mapPathTo(['**/*.yaml'], ({ dir: requirePath }) => [
-        join(requirePath, 'fixtures.json'),
-        join(requirePath, 'macro-options.json')
-      ]))
+      .flatMap(
+        mapPathTo(['**/*.yaml'], ({ dir: requirePath }) => [
+          join(requirePath, 'fixtures.json'),
+          join(requirePath, 'macro-options.json')
+        ])
+      )
       .sort()
 
     // Compare array of actual output files
@@ -138,7 +158,10 @@ describe('packages/govuk-frontend/dist/', () => {
   describe('ECMAScript (ES) modules', () => {
     describe('all.mjs', () => {
       it('should export each module', async () => {
-        const contents = await readFile(join(paths.package, 'dist/govuk/all.mjs'), 'utf8')
+        const contents = await readFile(
+          join(paths.package, 'dist/govuk/all.mjs'),
+          'utf8'
+        )
 
         // Look for ES import for each component
         expect(contents).toContain(outdent`
@@ -156,13 +179,18 @@ describe('packages/govuk-frontend/dist/', () => {
         `)
 
         // Look for ES modules named exports
-        expect(contents).toContain('export { Accordion, Button, CharacterCount, Checkboxes, ErrorSummary, ExitThisPage, Header, NotificationBanner, Radios, SkipLink, Tabs, initAll };')
+        expect(contents).toContain(
+          'export { Accordion, Button, CharacterCount, Checkboxes, ErrorSummary, ExitThisPage, Header, NotificationBanner, Radios, SkipLink, Tabs, initAll };'
+        )
       })
     })
 
     describe('common/govuk-frontend-version.mjs', () => {
       it('should have correct version number', async () => {
-        const contents = await readFile(join(paths.package, 'dist/govuk/common/govuk-frontend-version.mjs'), 'utf8')
+        const contents = await readFile(
+          join(paths.package, 'dist/govuk/common/govuk-frontend-version.mjs'),
+          'utf8'
+        )
 
         // Look for ES modules `version` named export
         expect(contents).toContain(`const version = '${pkg.version}';`)
@@ -174,17 +202,24 @@ describe('packages/govuk-frontend/dist/', () => {
   describe('Universal Module Definition (UMD)', () => {
     describe('all.bundle.js', () => {
       it('should export each module', async () => {
-        const contents = await readFile(join(paths.package, 'dist/govuk/all.bundle.js'), 'utf8')
+        const contents = await readFile(
+          join(paths.package, 'dist/govuk/all.bundle.js'),
+          'utf8'
+        )
 
         // Look for AMD module definition for 'GOVUKFrontend'
-        expect(contents).toContain("typeof define === 'function' && define.amd ? define('GOVUKFrontend', ['exports'], factory)")
+        expect(contents).toContain(
+          "typeof define === 'function' && define.amd ? define('GOVUKFrontend', ['exports'], factory)"
+        )
 
         // Look for bundled components with CommonJS named exports
         for (const componentName of componentNamesWithJavaScript) {
           const componentClassName = componentNameToClassName(componentName)
 
           expect(contents).toContain(`class ${componentClassName} {`)
-          expect(contents).toContain(`exports.${componentClassName} = ${componentClassName};`)
+          expect(contents).toContain(
+            `exports.${componentClassName} = ${componentClassName};`
+          )
         }
 
         // Look for CommonJS named exports for utilities
@@ -203,29 +238,43 @@ describe('packages/govuk-frontend/dist/', () => {
         const componentDist = componentsFilesDist.filter(componentFilter)
 
         // File not found at source
-        expect(componentSource)
-          .toEqual(expect.not.arrayContaining([join(componentName, 'macro-options.json')]))
+        expect(componentSource).toEqual(
+          expect.not.arrayContaining([
+            join(componentName, 'macro-options.json')
+          ])
+        )
 
         // File generated in dist
-        expect(componentDist)
-          .toEqual(expect.arrayContaining([join(componentName, 'macro-options.json')]))
+        expect(componentDist).toEqual(
+          expect.arrayContaining([join(componentName, 'macro-options.json')])
+        )
 
-        const [optionsPath] = componentDist
-          .filter(filterPath(['**/macro-options.json']))
+        const [optionsPath] = componentDist.filter(
+          filterPath(['**/macro-options.json'])
+        )
 
         // Component options
-        const options = JSON.parse(await readFile(join(paths.package, 'dist/govuk/components', optionsPath), 'utf8'))
+        const options = JSON.parse(
+          await readFile(
+            join(paths.package, 'dist/govuk/components', optionsPath),
+            'utf8'
+          )
+        )
         expect(options).toBeInstanceOf(Array)
 
         // Component options requirements
-        const optionTasks = options.map(async (option) => expect(option).toEqual(
-          expect.objectContaining({
-            name: expect.stringMatching(/^[A-Z]+$/i),
-            type: expect.stringMatching(/array|boolean|integer|string|object|nunjucks-block/),
-            required: expect.any(Boolean),
-            description: expect.any(String)
-          })
-        ))
+        const optionTasks = options.map(async (option) =>
+          expect(option).toEqual(
+            expect.objectContaining({
+              name: expect.stringMatching(/^[A-Z]+$/i),
+              type: expect.stringMatching(
+                /array|boolean|integer|string|object|nunjucks-block/
+              ),
+              required: expect.any(Boolean),
+              description: expect.any(String)
+            })
+          )
+        )
 
         // Check all component options
         return Promise.all(optionTasks)
@@ -238,39 +287,53 @@ describe('packages/govuk-frontend/dist/', () => {
 
   describe('Components with JavaScript', () => {
     it('should have component JavaScript file with correct module name', () => {
-      const componentTasks = componentNamesWithJavaScript.map(async (componentName) => {
-        const componentFilter = filterPath([`**/${componentName}/**`])
+      const componentTasks = componentNamesWithJavaScript.map(
+        async (componentName) => {
+          const componentFilter = filterPath([`**/${componentName}/**`])
 
-        const componentClassName = componentNameToClassName(componentName)
+          const componentClassName = componentNameToClassName(componentName)
 
-        const componentSource = componentsFilesSource.filter(componentFilter)
-        const componentDist = componentsFilesDist.filter(componentFilter)
+          const componentSource = componentsFilesSource.filter(componentFilter)
+          const componentDist = componentsFilesDist.filter(componentFilter)
 
-        // UMD bundle not found at source
-        expect(componentSource)
-          .toEqual(expect.not.arrayContaining([
-            join(componentName, `${componentName}.bundle.js`)
-          ]))
+          // UMD bundle not found at source
+          expect(componentSource).toEqual(
+            expect.not.arrayContaining([
+              join(componentName, `${componentName}.bundle.js`)
+            ])
+          )
 
-        // ES modules and UMD bundle generated in dist
-        expect(componentDist)
-          .toEqual(expect.arrayContaining([
-            join(componentName, `${componentName}.mjs`),
-            join(componentName, `${componentName}.bundle.js`)
-          ]))
+          // ES modules and UMD bundle generated in dist
+          expect(componentDist).toEqual(
+            expect.arrayContaining([
+              join(componentName, `${componentName}.mjs`),
+              join(componentName, `${componentName}.bundle.js`)
+            ])
+          )
 
-        const [modulePathESM] = componentDist
-          .filter(filterPath([`**/${componentName}.mjs`]))
+          const [modulePathESM] = componentDist.filter(
+            filterPath([`**/${componentName}.mjs`])
+          )
 
-        const [modulePathUMD] = componentDist
-          .filter(filterPath([`**/${componentName}.bundle.js`]))
+          const [modulePathUMD] = componentDist.filter(
+            filterPath([`**/${componentName}.bundle.js`])
+          )
 
-        const moduleTextESM = await readFile(join(paths.package, 'dist/govuk/components', modulePathESM), 'utf8')
-        const moduleTextUMD = await readFile(join(paths.package, 'dist/govuk/components', modulePathUMD), 'utf8')
+          const moduleTextESM = await readFile(
+            join(paths.package, 'dist/govuk/components', modulePathESM),
+            'utf8'
+          )
+          const moduleTextUMD = await readFile(
+            join(paths.package, 'dist/govuk/components', modulePathUMD),
+            'utf8'
+          )
 
-        expect(moduleTextESM).toContain(`export { ${componentClassName} }`)
-        expect(moduleTextUMD).toContain(`exports.${componentClassName} = ${componentClassName};`)
-      })
+          expect(moduleTextESM).toContain(`export { ${componentClassName} }`)
+          expect(moduleTextUMD).toContain(
+            `exports.${componentClassName} = ${componentClassName};`
+          )
+        }
+      )
 
       // Check all component files
       return Promise.all(componentTasks)
@@ -286,30 +349,40 @@ describe('packages/govuk-frontend/dist/', () => {
         const componentDist = componentsFilesDist.filter(componentFilter)
 
         // File not found at source
-        expect(componentSource)
-          .toEqual(expect.not.arrayContaining([join(componentName, 'fixtures.json')]))
+        expect(componentSource).toEqual(
+          expect.not.arrayContaining([join(componentName, 'fixtures.json')])
+        )
 
         // File generated in dist
-        expect(componentDist)
-          .toEqual(expect.arrayContaining([join(componentName, 'fixtures.json')]))
+        expect(componentDist).toEqual(
+          expect.arrayContaining([join(componentName, 'fixtures.json')])
+        )
 
-        const [fixturesPath] = componentDist
-          .filter(filterPath([`**/${componentName}/fixtures.json`]))
+        const [fixturesPath] = componentDist.filter(
+          filterPath([`**/${componentName}/fixtures.json`])
+        )
 
         // Component fixtures
-        const { component, fixtures } = JSON.parse(await readFile(join(paths.package, 'dist/govuk/components', fixturesPath), 'utf8'))
+        const { component, fixtures } = JSON.parse(
+          await readFile(
+            join(paths.package, 'dist/govuk/components', fixturesPath),
+            'utf8'
+          )
+        )
         expect(component).toEqual(componentName)
         expect(fixtures).toBeInstanceOf(Array)
 
         // Component fixtures requirements
-        const optionTasks = fixtures.map(async (fixture) => expect(fixture).toEqual(
-          expect.objectContaining({
-            name: expect.any(String),
-            options: expect.any(Object),
-            html: expect.any(String),
-            hidden: expect.any(Boolean)
-          })
-        ))
+        const optionTasks = fixtures.map(async (fixture) =>
+          expect(fixture).toEqual(
+            expect.objectContaining({
+              name: expect.any(String),
+              options: expect.any(Object),
+              html: expect.any(String),
+              hidden: expect.any(Boolean)
+            })
+          )
+        )
 
         // Check all component fixtures
         return Promise.all(optionTasks)

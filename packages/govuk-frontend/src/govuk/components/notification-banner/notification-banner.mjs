@@ -18,8 +18,11 @@ export class NotificationBanner {
    * @param {Element} $module - HTML element to use for notification banner
    * @param {NotificationBannerConfig} [config] - Notification banner config
    */
-  constructor ($module, config) {
-    if (!($module instanceof HTMLElement) || !document.body.classList.contains('govuk-frontend-supported')) {
+  constructor($module, config) {
+    if (
+      !($module instanceof HTMLElement) ||
+      !document.body.classList.contains('govuk-frontend-supported')
+    ) {
       return this
     }
 
@@ -46,7 +49,7 @@ export class NotificationBanner {
    *
    * @private
    */
-  setFocus () {
+  setFocus() {
     if (this.config.disableAutoFocus) {
       return
     }

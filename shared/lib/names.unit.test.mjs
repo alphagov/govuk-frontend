@@ -31,10 +31,12 @@ describe('componentNameToClassName', () => {
     }
   ]
 
-  it.each(components)("transforms component '$name' to class '$className'", ({ name, className }) => {
-    expect(componentNameToClassName(name))
-      .toBe(className)
-  })
+  it.each(components)(
+    "transforms component '$name' to class '$className'",
+    ({ name, className }) => {
+      expect(componentNameToClassName(name)).toBe(className)
+    }
+  )
 })
 
 describe('componentNameToMacroName', () => {
@@ -57,10 +59,12 @@ describe('componentNameToMacroName', () => {
     }
   ]
 
-  it.each(components)("transforms component '$name' to macro '$macroName'", ({ name, macroName }) => {
-    expect(componentNameToMacroName(name))
-      .toBe(macroName)
-  })
+  it.each(components)(
+    "transforms component '$name' to macro '$macroName'",
+    ({ name, macroName }) => {
+      expect(componentNameToMacroName(name)).toBe(macroName)
+    }
+  )
 })
 
 describe('componentPathToModuleName', () => {
@@ -83,48 +87,52 @@ describe('componentPathToModuleName', () => {
     }
   ]
 
-  const others = [
-    'common/index.mjs',
-    'common/normalise-dataset.mjs'
-  ]
+  const others = ['common/index.mjs', 'common/normalise-dataset.mjs']
 
-  it.each(components)("transforms '$path' to '$moduleName'", ({ path, moduleName }) => {
-    const srcPath = join(paths.package, 'src/govuk')
+  it.each(components)(
+    "transforms '$path' to '$moduleName'",
+    ({ path, moduleName }) => {
+      const srcPath = join(paths.package, 'src/govuk')
 
-    // Path variations
-    const pathAbsolute = join(srcPath, path)
-    const pathRelativeToRoot = relative(paths.root, pathAbsolute)
-    const pathRelativeToSource = relative(srcPath, pathAbsolute)
+      // Path variations
+      const pathAbsolute = join(srcPath, path)
+      const pathRelativeToRoot = relative(paths.root, pathAbsolute)
+      const pathRelativeToSource = relative(srcPath, pathAbsolute)
 
-    // Absolute path
-    // For example `/path/to/project/packages/govuk-frontend/src/govuk/components/button/button.mjs`
-    expect(componentPathToModuleName(pathAbsolute))
-      .toBe(moduleName)
+      // Absolute path
+      // For example `/path/to/project/packages/govuk-frontend/src/govuk/components/button/button.mjs`
+      expect(componentPathToModuleName(pathAbsolute)).toBe(moduleName)
 
-    // Relative path (to project)
-    // For example `packages/govuk-frontend/src/govuk/components/button/button.mjs`
-    expect(componentPathToModuleName(pathRelativeToRoot))
-      .toBe(moduleName)
+      // Relative path (to project)
+      // For example `packages/govuk-frontend/src/govuk/components/button/button.mjs`
+      expect(componentPathToModuleName(pathRelativeToRoot)).toBe(moduleName)
 
-    // Relative path (to source)
-    // For example `components/button/button.mjs`
-    expect(componentPathToModuleName(pathRelativeToSource))
-      .toBe(moduleName)
-  })
+      // Relative path (to source)
+      // For example `components/button/button.mjs`
+      expect(componentPathToModuleName(pathRelativeToSource)).toBe(moduleName)
+    }
+  )
 
-  it.each(others)("transforms unknown components to 'GOVUKFrontend'", (path) => {
-    const srcPath = join(paths.package, 'src/govuk')
+  it.each(others)(
+    "transforms unknown components to 'GOVUKFrontend'",
+    (path) => {
+      const srcPath = join(paths.package, 'src/govuk')
 
-    // Path variations
-    const pathAbsolute = join(srcPath, path)
-    const pathRelativeToRoot = relative(paths.root, pathAbsolute)
-    const pathRelativeToSource = relative(srcPath, pathAbsolute)
+      // Path variations
+      const pathAbsolute = join(srcPath, path)
+      const pathRelativeToRoot = relative(paths.root, pathAbsolute)
+      const pathRelativeToSource = relative(srcPath, pathAbsolute)
 
-    // Unknown components always named 'GOVUKFrontend'
-    expect(componentPathToModuleName(pathAbsolute)).toBe('GOVUKFrontend')
-    expect(componentPathToModuleName(pathRelativeToRoot)).toBe('GOVUKFrontend')
-    expect(componentPathToModuleName(pathRelativeToSource)).toBe('GOVUKFrontend')
-  })
+      // Unknown components always named 'GOVUKFrontend'
+      expect(componentPathToModuleName(pathAbsolute)).toBe('GOVUKFrontend')
+      expect(componentPathToModuleName(pathRelativeToRoot)).toBe(
+        'GOVUKFrontend'
+      )
+      expect(componentPathToModuleName(pathRelativeToSource)).toBe(
+        'GOVUKFrontend'
+      )
+    }
+  )
 })
 
 describe('packageResolveToPath', () => {
@@ -145,14 +153,19 @@ describe('packageResolveToPath', () => {
     {
       packageEntry: 'govuk-frontend/src/govuk/all.mjs',
       options: { modulePath: 'components/accordion/accordion.mjs' },
-      resolvedPath: join(paths.package, 'src/govuk/components/accordion/accordion.mjs')
+      resolvedPath: join(
+        paths.package,
+        'src/govuk/components/accordion/accordion.mjs'
+      )
     }
   ]
 
-  it.each(packages)("locates path for npm package entry '$packageEntry'", ({ packageEntry, options, resolvedPath }) => {
-    expect(packageResolveToPath(packageEntry, options))
-      .toBe(resolvedPath)
-  })
+  it.each(packages)(
+    "locates path for npm package entry '$packageEntry'",
+    ({ packageEntry, options, resolvedPath }) => {
+      expect(packageResolveToPath(packageEntry, options)).toBe(resolvedPath)
+    }
+  )
 })
 
 describe('packageTypeToPath', () => {
@@ -174,19 +187,30 @@ describe('packageTypeToPath', () => {
     {
       packageName: 'govuk-frontend',
       options: { modulePath: 'components/accordion/accordion.bundle.js' },
-      resolvedPath: join(paths.package, 'dist/govuk/components/accordion/accordion.bundle.js')
+      resolvedPath: join(
+        paths.package,
+        'dist/govuk/components/accordion/accordion.bundle.js'
+      )
     },
     {
       packageName: 'govuk-frontend',
-      options: { modulePath: 'components/accordion/accordion.bundle.mjs', type: 'module' },
-      resolvedPath: join(paths.package, 'dist/govuk/components/accordion/accordion.bundle.mjs')
+      options: {
+        modulePath: 'components/accordion/accordion.bundle.mjs',
+        type: 'module'
+      },
+      resolvedPath: join(
+        paths.package,
+        'dist/govuk/components/accordion/accordion.bundle.mjs'
+      )
     }
   ]
 
-  it.each(packages)("locates path for npm package '$packageName' field '$packageField'", ({ packageName, options, resolvedPath }) => {
-    expect(packageTypeToPath(packageName, options))
-      .toBe(resolvedPath)
-  })
+  it.each(packages)(
+    "locates path for npm package '$packageName' field '$packageField'",
+    ({ packageName, options, resolvedPath }) => {
+      expect(packageTypeToPath(packageName, options)).toBe(resolvedPath)
+    }
+  )
 })
 
 describe('packageNameToPath', () => {
@@ -201,10 +225,12 @@ describe('packageNameToPath', () => {
     }
   ]
 
-  it.each(packages)("locates path for npm package '$packageName'", ({ packageName, resolvedPath }) => {
-    expect(packageNameToPath(packageName))
-      .toBe(resolvedPath)
-  })
+  it.each(packages)(
+    "locates path for npm package '$packageName'",
+    ({ packageName, resolvedPath }) => {
+      expect(packageNameToPath(packageName)).toBe(resolvedPath)
+    }
+  )
 })
 
 describe("packageNameToPath (with custom 'node_module' paths)", () => {
@@ -231,8 +257,10 @@ describe("packageNameToPath (with custom 'node_module' paths)", () => {
     }
   ]
 
-  it.each(packages)("locates path for npm package '$packageName'", ({ packageName, options = {}, resolvedPath }) => {
-    expect(packageNameToPath(packageName, options))
-      .toBe(resolvedPath)
-  })
+  it.each(packages)(
+    "locates path for npm package '$packageName'",
+    ({ packageName, options = {}, resolvedPath }) => {
+      expect(packageNameToPath(packageName, options)).toBe(resolvedPath)
+    }
+  )
 })

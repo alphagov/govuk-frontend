@@ -21,7 +21,9 @@ describe('Accordion', () => {
       const $componentContent = $('.govuk-accordion__section-content').first()
 
       expect($componentContent.find('p').hasClass('govuk-body')).toBeTruthy()
-      expect($componentContent.text().trim()).toEqual('We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.')
+      expect($componentContent.text().trim()).toEqual(
+        'We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.'
+      )
     })
 
     it('renders with content as html', () => {
@@ -65,14 +67,18 @@ describe('Accordion', () => {
       const $ = render('accordion', examples['heading html'])
       const $componentHeadingButton = $('.govuk-accordion__section-button')
 
-      expect($componentHeadingButton.html().trim()).toEqual('<span class="myClass">Section A</span>')
+      expect($componentHeadingButton.html().trim()).toEqual(
+        '<span class="myClass">Section A</span>'
+      )
     })
 
     it('renders with section expanded class', () => {
       const $ = render('accordion', examples['with one section open'])
       const $componentSection = $('.govuk-accordion__section').first()
 
-      expect($componentSection.hasClass('govuk-accordion__section--expanded')).toBeTruthy()
+      expect(
+        $componentSection.hasClass('govuk-accordion__section--expanded')
+      ).toBeTruthy()
     })
 
     it('renders with summary', () => {
@@ -94,12 +100,20 @@ describe('Accordion', () => {
       const $ = render('accordion', examples['with translations'])
       const $component = $('.govuk-accordion')
 
-      expect($component.attr('data-i18n.hide-all-sections')).toEqual('Collapse all sections')
-      expect($component.attr('data-i18n.show-all-sections')).toEqual('Expand all sections')
+      expect($component.attr('data-i18n.hide-all-sections')).toEqual(
+        'Collapse all sections'
+      )
+      expect($component.attr('data-i18n.show-all-sections')).toEqual(
+        'Expand all sections'
+      )
       expect($component.attr('data-i18n.hide-section')).toEqual('Collapse')
-      expect($component.attr('data-i18n.hide-section-aria-label')).toEqual('Collapse this section')
+      expect($component.attr('data-i18n.hide-section-aria-label')).toEqual(
+        'Collapse this section'
+      )
       expect($component.attr('data-i18n.show-section')).toEqual('Expand')
-      expect($component.attr('data-i18n.show-section-aria-label')).toEqual('Expand this section')
+      expect($component.attr('data-i18n.show-section-aria-label')).toEqual(
+        'Expand this section'
+      )
     })
 
     it('renders with remember expanded data attribute', () => {

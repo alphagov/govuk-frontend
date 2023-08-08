@@ -11,11 +11,19 @@ export default (app) => {
     [
       body('email')
         .exists()
-        .isEmail().withMessage('Enter an email address in the correct format, like name@example.com')
-        .not().isEmpty().withMessage('Enter your email address'),
+        .isEmail()
+        .withMessage(
+          'Enter an email address in the correct format, like name@example.com'
+        )
+        .not()
+        .isEmpty()
+        .withMessage('Enter your email address'),
+
       body('password')
         .exists()
-        .not().isEmpty().withMessage('Enter your password')
+        .not()
+        .isEmpty()
+        .withMessage('Enter your password')
     ],
 
     /**
@@ -27,14 +35,19 @@ export default (app) => {
       const errors = formatValidationErrors(validationResult(request))
 
       if (!errors) {
-        return response.render('./full-page-examples/update-your-account-details/confirm')
+        return response.render(
+          './full-page-examples/update-your-account-details/confirm'
+        )
       }
 
-      response.render('./full-page-examples/update-your-account-details/index', {
-        errors,
-        errorSummary: Object.values(errors),
-        values: request.body // In production this should sanitized.
-      })
+      response.render(
+        './full-page-examples/update-your-account-details/index',
+        {
+          errors,
+          errorSummary: Object.values(errors),
+          values: request.body // In production this should sanitized.
+        }
+      )
     }
   )
 }

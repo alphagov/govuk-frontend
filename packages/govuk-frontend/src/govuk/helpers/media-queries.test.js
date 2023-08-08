@@ -22,17 +22,15 @@ describe('@mixin govuk-media-query', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
-          @media (min-width: 20em) {
-            .foo {
-              color: red;
-            }
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
+        @media (min-width: 20em) {
+          .foo {
+            color: red;
           }
-        `
-      })
+        }
+      `
+    })
   })
 
   it('allows you to target min-width using a predefined breakpoint', async () => {
@@ -47,17 +45,15 @@ describe('@mixin govuk-media-query', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
-          @media (min-width: 20em) {
-            .foo {
-              color: red;
-            }
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
+        @media (min-width: 20em) {
+          .foo {
+            color: red;
           }
-        `
-      })
+        }
+      `
+    })
   })
 
   it('allows you to target max-width using a numeric value', async () => {
@@ -70,17 +66,15 @@ describe('@mixin govuk-media-query', () => {
         }
       }
     `
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
-          @media (max-width: 20em) {
-            .foo {
-              color: red;
-            }
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
+        @media (max-width: 20em) {
+          .foo {
+            color: red;
           }
-        `
-      })
+        }
+      `
+    })
   })
 
   it('allows you to target max-width using a predefined breakpoint', async () => {
@@ -95,17 +89,15 @@ describe('@mixin govuk-media-query', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
-          @media (max-width: 61.24em) {
-            .foo {
-              color: red;
-            }
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
+        @media (max-width: 61.24em) {
+          .foo {
+            color: red;
           }
-        `
-      })
+        }
+      `
+    })
   })
 
   it('allows you to target combined min-width and max-width using numeric values', async () => {
@@ -119,17 +111,15 @@ describe('@mixin govuk-media-query', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
-          @media (min-width: 20em) and (max-width: 40em) {
-            .foo {
-              color: red;
-            }
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
+        @media (min-width: 20em) and (max-width: 40em) {
+          .foo {
+            color: red;
           }
-        `
-      })
+        }
+      `
+    })
   })
 
   it('allows you to target combined min-width and max-width using predefined breakpoints', async () => {
@@ -144,17 +134,15 @@ describe('@mixin govuk-media-query', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
-          @media (min-width: 20em) and (max-width: 46.24em) {
-            .foo {
-              color: red;
-            }
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
+        @media (min-width: 20em) and (max-width: 46.24em) {
+          .foo {
+            color: red;
           }
-        `
-      })
+        }
+      `
+    })
   })
 
   it('allows you to target using custom directives', async () => {
@@ -168,17 +156,15 @@ describe('@mixin govuk-media-query', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
-          @media (max-width: 40em) and (orientation: landscape) {
-            .foo {
-              color: red;
-            }
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
+        @media (max-width: 40em) and (orientation: landscape) {
+          .foo {
+            color: red;
           }
-        `
-      })
+        }
+      `
+    })
   })
 
   it('allows you to target particular media types', async () => {
@@ -192,16 +178,14 @@ describe('@mixin govuk-media-query', () => {
       }
     `
 
-    await expect(compileSassString(sass))
-      .resolves
-      .toMatchObject({
-        css: outdent`
-          @media aural and (max-width: 40em) {
-            .foo {
-              color: red;
-            }
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
+        @media aural and (max-width: 40em) {
+          .foo {
+            color: red;
           }
-        `
-      })
+        }
+      `
+    })
   })
 })

@@ -12,7 +12,7 @@ import { componentNameToMacroName } from '../filters/index.mjs'
  * @param {unknown} params - Component macro params
  * @returns {string} Nunjucks code
  */
-export function getNunjucksCode (componentName, params) {
+export function getNunjucksCode(componentName, params) {
   const macroName = componentNameToMacroName(componentName)
 
   // Allow nested HTML strings to wrap at `\n`

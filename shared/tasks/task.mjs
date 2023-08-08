@@ -8,7 +8,7 @@
  * @param {TaskFunction} taskFn - Task function to wrap
  * @returns {TaskFunction} Script run
  */
-export function name (displayName, taskFn) {
+export function name(displayName, taskFn) {
   taskFn.displayName = displayName
   return taskFn
 }

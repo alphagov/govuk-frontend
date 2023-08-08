@@ -15,34 +15,44 @@ import { scripts, styles } from './index.mjs'
  *
  * @type {import('govuk-frontend-tasks').TaskFunction}
  */
-export const watch = (options) => gulp.parallel(
-  /**
-   * Stylesheets lint watcher
-   */
-  task.name('lint:scss watch', () =>
-    gulp.watch([
-      `${slash(paths.app)}/src/**/*.scss`
-    ], npm.script('lint:scss:cli', [slash(join(options.workspace, '**/*.scss'))]))
-  ),
+export const watch = (options) =>
+  gulp.parallel(
+    /**
+     * Stylesheets lint watcher
+     */
+    task.name('lint:scss watch', () =>
+      gulp.watch(
+        [`${slash(paths.app)}/src/**/*.scss`],
+        npm.script('lint:scss:cli', [
+          slash(join(options.workspace, '**/*.scss'))
+        ])
+      )
+    ),
 
-  /**
-   * Stylesheets build watcher
-   */
-  task.name('compile:scss watch', () =>
-    gulp.watch([
-      `${slash(paths.app)}/sassdoc.config.yaml`,
-      `${slash(paths.app)}/src/**/*.scss`,
-      `${slash(paths.package)}/dist/govuk/**/*.scss`
-    ], styles(options))
-  ),
+    /**
+     * Stylesheets build watcher
+     */
+    task.name('compile:scss watch', () =>
+      gulp.watch(
+        [
+          `${slash(paths.app)}/sassdoc.config.yaml`,
+          `${slash(paths.app)}/src/**/*.scss`,
+          `${slash(paths.package)}/dist/govuk/**/*.scss`
+        ],
+        styles(options)
+      )
+    ),
 
-  /**
-   * JavaScripts build watcher
-   */
-  task.name('compile:js watch', () =>
-    gulp.watch([
-      `${slash(paths.app)}/typedoc.config.js`,
-      `${slash(paths.package)}/dist/govuk/**/*.mjs`
-    ], scripts(options))
+    /**
+     * JavaScripts build watcher
+     */
+    task.name('compile:js watch', () =>
+      gulp.watch(
+        [
+          `${slash(paths.app)}/typedoc.config.js`,
+          `${slash(paths.package)}/dist/govuk/**/*.mjs`
+        ],
+        scripts(options)
+      )
+    )
   )
-)

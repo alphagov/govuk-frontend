@@ -8,9 +8,12 @@ module.exports = function (api) {
 
   return {
     presets: [
-      ['@babel/preset-env', {
-        browserslistEnv: 'node'
-      }]
+      [
+        '@babel/preset-env',
+        {
+          browserslistEnv: 'node'
+        }
+      ]
     ]
   }
 }

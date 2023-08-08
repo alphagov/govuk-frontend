@@ -7,7 +7,7 @@ import { PUPPETEER_REVISIONS } from 'puppeteer-core/lib/cjs/puppeteer/revisions.
 /**
  * Puppeteer browser downloader
  */
-export async function download () {
+export async function download() {
   const browser = Browser.CHROME
 
   // Download management

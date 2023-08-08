@@ -35,7 +35,9 @@ describe('The helpers layer', () => {
 
   describe('Sass documentation', () => {
     it('associates everything with a "helpers" group', async () => {
-      const docs = await sassdoc.parse(join(paths.package, 'src/govuk/helpers/**/*.scss'))
+      const docs = await sassdoc.parse(
+        join(paths.package, 'src/govuk/helpers/**/*.scss')
+      )
 
       for (const doc of docs) {
         expect(doc).toMatchObject({
@@ -44,9 +46,7 @@ describe('The helpers layer', () => {
           context: {
             name: doc.context.name
           },
-          group: [
-            expect.stringMatching(/^helpers/)
-          ]
+          group: [expect.stringMatching(/^helpers/)]
         })
       }
     })

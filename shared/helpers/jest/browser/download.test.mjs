@@ -18,14 +18,18 @@ describe('Browser tasks: Puppeteer browser downloader', () => {
     browsers = []
 
     // Mock Puppeteer browser cache API
-    jest.mocked(Cache.prototype.getInstalledBrowsers).mockImplementation(() => browsers)
+    jest
+      .mocked(Cache.prototype.getInstalledBrowsers)
+      .mockImplementation(() => browsers)
     jest.mocked(Cache.prototype.clear).mockReturnValue()
   })
 
   it('downloads by default', async () => {
     await download()
 
-    expect(install).toHaveBeenCalledWith(expect.objectContaining({ buildId: 'new-version' }))
+    expect(install).toHaveBeenCalledWith(
+      expect.objectContaining({ buildId: 'new-version' })
+    )
     expect(install).toHaveBeenCalledTimes(1)
 
     // Outdated versions always removed
@@ -44,7 +48,9 @@ describe('Browser tasks: Puppeteer browser downloader', () => {
 
     await download()
 
-    expect(install).toHaveBeenCalledWith(expect.objectContaining({ buildId: 'new-version' }))
+    expect(install).toHaveBeenCalledWith(
+      expect.objectContaining({ buildId: 'new-version' })
+    )
     expect(install).toHaveBeenCalledTimes(1)
 
     // Outdated versions always removed
@@ -69,7 +75,9 @@ describe('Browser tasks: Puppeteer browser downloader', () => {
 
     await download()
 
-    expect(install).toHaveBeenCalledWith(expect.objectContaining({ buildId: 'new-version' }))
+    expect(install).toHaveBeenCalledWith(
+      expect.objectContaining({ buildId: 'new-version' })
+    )
     expect(install).toHaveBeenCalledTimes(1)
 
     // Outdated versions always removed
