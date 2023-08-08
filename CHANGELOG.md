@@ -293,6 +293,25 @@ If you were using `$govuk-font-family-gds-transport` to set the font on an eleme
 
 This change was introduced in [pull request #3949: Simplify font family settings](https://github.com/alphagov/govuk-frontend/pull/3949).
 
+#### Removal of Javascript polyfills for Internet Explorer (IE) 8-11
+
+We've removed polyfills for:
+
+- `DOMTokenList`, `Element.prototype.classList`, `Element.prototype.closest`,`Element.prototype.matches`, and `Event`, required for IE 11 and below
+- `Element.prototype.dataset`, required for IE 10 and below
+- `Date.now`, `Document`, `Element`, `Element.prototype.nextElementSibling`, `Element.prototype.previousElementSibling`, `Function.prototype.bind`, `Object.defineProperty`, `String.prototype.trim` and `Window`, required for IE 8
+
+GOV.UK Frontend no longer needs these polyfills because Internet Explorer will no longer try to run our JavaScript, as long as you are follow our instructions and include it using `<script type="module">`.
+
+However, because these polyfills create or extend global objects ('polluting the global namespace') you may have other code in your service that was unintentionally relying on them being included.
+
+If your service has JavaScript that you want to run successfully in Internet Explorer (for example JavaScript for analytics), ensure that the JavaScript does not rely on the removed polyfills and still executes successfully. You may need to introduce your own polyfills or rewrite your JavaScript to avoid using the polyfilled features.
+
+These changes were introduced in:
+
+- [pull request #3570: Remove IE8-10 JavaScript polyfills, helpers, config](https://github.com/alphagov/govuk-frontend/pull/3570)
+- [pull request #3720: Remove IE11 vendor polyfills](https://github.com/alphagov/govuk-frontend/pull/3720)
+
 ### Suggested changes
 
 #### Update the Pagination component's default `aria-label`
