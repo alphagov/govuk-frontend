@@ -4,8 +4,6 @@
  * IMPORTANT: If a helper require a polyfill, please isolate it in its own module
  * so that the polyfill can be properly tree-shaken and does not burden
  * the components that do not need that helper
- *
- * @module common/index
  */
 
 /**
