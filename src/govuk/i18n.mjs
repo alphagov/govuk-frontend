@@ -9,6 +9,7 @@ export class I18n {
   locale
 
   /**
+   * @internal
    * @param {{ [key: string]: unknown }} translations - Key-value pairs of the translation strings to use.
    * @param {object} [config] - Configuration options for the function.
    * @param {string} [config.locale] - An overriding locale for the PluralRules functionality.
@@ -26,6 +27,7 @@ export class I18n {
    * The most used function - takes the key for a given piece of UI text and
    * returns the appropriate string.
    *
+   * @internal
    * @param {string} lookupKey - The lookup key of the string to use.
    * @param {{ [key: string]: unknown }} [options] - Any options passed with the translation string, e.g: for string interpolation.
    * @returns {string} The appropriate translation string.
@@ -76,6 +78,7 @@ export class I18n {
    * Takes a translation string with placeholders, and replaces the placeholders
    * with the provided data
    *
+   * @internal
    * @param {string} translationString - The translation string
    * @param {{ [key: string]: unknown }} options - Any options passed with the translation string, e.g: for string interpolation.
    * @returns {string} The translation string to output, with $\{\} placeholders replaced
@@ -94,6 +97,7 @@ export class I18n {
       /**
        * Replace translation string placeholders
        *
+       * @internal
        * @param {string} placeholderWithBraces - Placeholder with braces
        * @param {string} placeholderKey - Placeholder key
        * @returns {string} Placeholder value
@@ -137,6 +141,7 @@ export class I18n {
    * - The implementation of Intl supports PluralRules (NOT true in IE11)
    * - The browser/OS has plural rules for the current locale (browser dependent)
    *
+   * @internal
    * @returns {boolean} Returns true if all conditions are met. Returns false otherwise.
    */
   hasIntlPluralRulesSupport() {
@@ -155,6 +160,7 @@ export class I18n {
    * - The implementation of Intl supports NumberFormat (also true in IE11)
    * - The browser/OS has number formatting rules for the current locale (browser dependent)
    *
+   * @internal
    * @returns {boolean} Returns true if all conditions are met. Returns false otherwise.
    */
   hasIntlNumberFormatSupport() {
@@ -175,6 +181,7 @@ export class I18n {
    * hasn't, it'll fall back to the 'other' plural form (unless that doesn't exist
    * either, in which case an error will be thrown)
    *
+   * @internal
    * @param {string} lookupKey - The lookup key of the string to use.
    * @param {number} count - Number used to determine which pluralisation to use.
    * @returns {PluralRule} The suffix associated with the correct pluralisation for this locale.
@@ -228,6 +235,7 @@ export class I18n {
    * This is split out into a separate function to make it easier to test the
    * fallback behaviour in an environment where Intl.PluralRules exists.
    *
+   * @internal
    * @param {number} count - Number used to determine which pluralisation to use.
    * @returns {PluralRule} The pluralisation form for count in this locale.
    */
@@ -253,6 +261,7 @@ export class I18n {
    * regardless of region. There are exceptions, however, (e.g. Portuguese) so
    * this searches by both the full and shortened locale codes, just to be sure.
    *
+   * @internal
    * @returns {string | undefined} The name of the pluralisation rule to use (a key for one
    *   of the functions in this.pluralRules)
    */
@@ -306,6 +315,7 @@ export class I18n {
    * Spanish: European Portuguese (pt-PT), Italian (it), Spanish (es)
    * Welsh: Welsh (cy)
    *
+   * @internal
    * @type {{ [key: string]: string[] }}
    */
   static pluralRulesMap = {
@@ -356,6 +366,7 @@ export class I18n {
    *
    * The count must be a positive integer. Negative numbers and decimals aren't accounted for
    *
+   * @internal
    * @type {{ [key: string]: (count: number) => PluralRule }}
    */
   static pluralRules = {
@@ -468,6 +479,7 @@ export class I18n {
 /**
  * Plural rule category mnemonic tags
  *
+ * @internal
  * @typedef {'zero' | 'one' | 'two' | 'few' | 'many' | 'other'} PluralRule
  */
 
@@ -477,6 +489,7 @@ export class I18n {
  * Allows to group pluralised messages under a single key when passing
  * translations to a component's constructor
  *
+ * @internal
  * @typedef {object} TranslationPluralForms
  * @property {string} [other] - General plural form
  * @property {string} [zero] - Plural form used with 0
