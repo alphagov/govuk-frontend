@@ -30,29 +30,19 @@ describe('Components', () => {
   describe('Nunjucks environment', () => {
     it('renders template for each component', () => {
       return Promise.all(
-        componentNames.map(
-          (componentName) =>
-            expect(
-              nunjucksEnvDefault.render(
-                `govuk/components/${componentName}/template.njk`,
-                {}
-              )
-            ).resolves
-        )
+        componentNames.map((componentName) => {
+          const viewPath = `govuk/components/${componentName}/template.njk`
+          return expect(nunjucksEnvDefault.render(viewPath, {})).resolves
+        })
       )
     })
 
     it('renders template for each component (different base path)', () => {
       return Promise.all(
-        componentNames.map(
-          (componentName) =>
-            expect(
-              nunjucksEnvCustom.render(
-                `components/${componentName}/template.njk`,
-                {}
-              )
-            ).resolves
-        )
+        componentNames.map((componentName) => {
+          const viewPath = `components/${componentName}/template.njk`
+          return expect(nunjucksEnvCustom.render(viewPath, {})).resolves
+        })
       )
     })
   })

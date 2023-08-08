@@ -367,17 +367,15 @@ describe('Checkboxes', () => {
     it('uses the idPrefix for the error message id if provided', () => {
       const $ = render('checkboxes', examples['with error and idPrefix'])
 
-      const $errorMessage = $('.govuk-error-message')
-
-      expect($errorMessage.attr('id')).toEqual('id-prefix-error')
+      const errorMessageId = $('.govuk-error-message').attr('id')
+      expect(errorMessageId).toEqual('id-prefix-error')
     })
 
     it('falls back to using the name for the error message id', () => {
       const $ = render('checkboxes', examples['with error message'])
 
-      const $errorMessage = $('.govuk-error-message')
-
-      expect($errorMessage.attr('id')).toEqual('waste-error')
+      const errorMessageId = $('.govuk-error-message').attr('id')
+      expect(errorMessageId).toEqual('waste-error')
     })
 
     it('associates the fieldset as "described by" the error message', () => {
@@ -387,13 +385,13 @@ describe('Checkboxes', () => {
       )
 
       const $fieldset = $('.govuk-fieldset')
-      const $errorMessage = $('.govuk-error-message')
+      const errorMessageId = $('.govuk-error-message').attr('id')
 
-      const errorMessageId = new RegExp(
-        WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($fieldset.attr('aria-describedby')).toMatch(errorMessageId)
+      expect($fieldset.attr('aria-describedby')).toMatch(describedBy)
     })
 
     it('associates the fieldset as "described by" the error message and parent fieldset', () => {
@@ -403,15 +401,13 @@ describe('Checkboxes', () => {
       )
 
       const $fieldset = $('.govuk-fieldset')
-      const $errorMessage = $('.govuk-error-message')
+      const errorMessageId = $('.govuk-error-message').attr('id')
 
-      const errorMessageId = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${$errorMessage.attr(
-          'id'
-        )}${WORD_BOUNDARY}`
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($fieldset.attr('aria-describedby')).toMatch(errorMessageId)
+      expect($fieldset.attr('aria-describedby')).toMatch(describedBy)
     })
 
     it('does not associate each input as "described by" the error message', () => {
@@ -450,27 +446,25 @@ describe('Checkboxes', () => {
       const $ = render('checkboxes', examples['with id and name'])
 
       const $fieldset = $('.govuk-fieldset')
-      const $hint = $('.govuk-hint')
+      const hintId = $('.govuk-hint').attr('id')
 
-      const hintId = new RegExp(
-        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}${hintId}${WORD_BOUNDARY}`
       )
-
-      expect($fieldset.attr('aria-describedby')).toMatch(hintId)
+      expect($fieldset.attr('aria-describedby')).toMatch(describedBy)
     })
 
     it('associates the fieldset as "described by" the hint and parent fieldset', () => {
       const $ = render('checkboxes', examples['with fieldset describedBy'])
-      const $fieldset = $('.govuk-fieldset')
-      const $hint = $('.govuk-hint')
 
-      const hintId = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${$hint.attr(
-          'id'
-        )}${WORD_BOUNDARY}`
+      const $fieldset = $('.govuk-fieldset')
+      const hintId = $('.govuk-hint').attr('id')
+
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${hintId}${WORD_BOUNDARY}`
       )
 
-      expect($fieldset.attr('aria-describedby')).toMatch(hintId)
+      expect($fieldset.attr('aria-describedby')).toMatch(describedBy)
     })
   })
 
@@ -479,14 +473,15 @@ describe('Checkboxes', () => {
       const $ = render('checkboxes', examples['with error message and hint'])
 
       const $fieldset = $('.govuk-fieldset')
+
       const errorMessageId = $('.govuk-error-message').attr('id')
       const hintId = $('.govuk-hint').attr('id')
 
-      const combinedIds = new RegExp(
-        WORD_BOUNDARY + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
+      const describedByCombined = new RegExp(
+        `${WORD_BOUNDARY}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($fieldset.attr('aria-describedby')).toMatch(combinedIds)
+      expect($fieldset.attr('aria-describedby')).toMatch(describedByCombined)
     })
 
     it('associates the fieldset as described by the hint, error message and parent fieldset', () => {
@@ -496,14 +491,14 @@ describe('Checkboxes', () => {
       )
 
       const $fieldset = $('.govuk-fieldset')
-      const errorMessageId = $('.govuk-error-message').attr('id')
       const hintId = $('.govuk-hint').attr('id')
+      const errorMessageId = $('.govuk-error-message').attr('id')
 
-      const combinedIds = new RegExp(
+      const describedByCombined = new RegExp(
         `${WORD_BOUNDARY}some-id${WHITESPACE}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($fieldset.attr('aria-describedby')).toMatch(combinedIds)
+      expect($fieldset.attr('aria-describedby')).toMatch(describedByCombined)
     })
   })
 
@@ -538,21 +533,19 @@ describe('Checkboxes', () => {
 
   describe('single checkbox without a fieldset', () => {
     it('adds aria-describedby to input if there is an error', () => {
-      const $ = render(
-        'checkboxes',
-        examples["with single option set 'aria-describedby' on input"]
-      )
+      const exampleName = "with single option set 'aria-describedby' on input"
+
+      const $ = render('checkboxes', examples[exampleName])
       const $input = $('input')
+
       expect($input.attr('aria-describedby')).toMatch('t-and-c-error')
     })
 
     it('adds aria-describedby to input if there is an error and parent fieldset', () => {
-      const $ = render(
-        'checkboxes',
-        examples[
-          "with single option set 'aria-describedby' on input, and describedBy"
-        ]
-      )
+      const exampleName =
+        "with single option set 'aria-describedby' on input, and describedBy"
+
+      const $ = render('checkboxes', examples[exampleName])
       const $input = $('input')
 
       expect($input.attr('aria-describedby')).toMatch('some-id t-and-c-error')
@@ -561,25 +554,22 @@ describe('Checkboxes', () => {
 
   describe('single checkbox (with hint) without a fieldset', () => {
     it('adds aria-describedby to input if there is an error and a hint', () => {
-      const $ = render(
-        'checkboxes',
-        examples[
-          "with single option (and hint) set 'aria-describedby' on input"
-        ]
-      )
+      const exampleName =
+        "with single option (and hint) set 'aria-describedby' on input"
+
+      const $ = render('checkboxes', examples[exampleName])
       const $input = $('input')
+
       expect($input.attr('aria-describedby')).toMatch(
         't-and-c-with-hint-error t-and-c-with-hint-item-hint'
       )
     })
 
     it('adds aria-describedby to input if there is an error, hint and parent fieldset', () => {
-      const $ = render(
-        'checkboxes',
-        examples[
-          "with single option (and hint) set 'aria-describedby' on input, and describedBy"
-        ]
-      )
+      const exampleName =
+        "with single option (and hint) set 'aria-describedby' on input, and describedBy"
+
+      const $ = render('checkboxes', examples[exampleName])
       const $input = $('input')
 
       expect($input.attr('aria-describedby')).toMatch(

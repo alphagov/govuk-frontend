@@ -24,12 +24,12 @@ describe('@mixin govuk-media-query', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
-          @media (min-width: 20em) {
-            .foo {
-              color: red;
-            }
+        @media (min-width: 20em) {
+          .foo {
+            color: red;
           }
-        `
+        }
+      `
     })
   })
 
@@ -47,12 +47,12 @@ describe('@mixin govuk-media-query', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
-          @media (min-width: 20em) {
-            .foo {
-              color: red;
-            }
+        @media (min-width: 20em) {
+          .foo {
+            color: red;
           }
-        `
+        }
+      `
     })
   })
 
@@ -68,12 +68,12 @@ describe('@mixin govuk-media-query', () => {
     `
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
-          @media (max-width: 20em) {
-            .foo {
-              color: red;
-            }
+        @media (max-width: 20em) {
+          .foo {
+            color: red;
           }
-        `
+        }
+      `
     })
   })
 
@@ -91,12 +91,12 @@ describe('@mixin govuk-media-query', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
-          @media (max-width: 61.24em) {
-            .foo {
-              color: red;
-            }
+        @media (max-width: 61.24em) {
+          .foo {
+            color: red;
           }
-        `
+        }
+      `
     })
   })
 
@@ -113,12 +113,12 @@ describe('@mixin govuk-media-query', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
-          @media (min-width: 20em) and (max-width: 40em) {
-            .foo {
-              color: red;
-            }
+        @media (min-width: 20em) and (max-width: 40em) {
+          .foo {
+            color: red;
           }
-        `
+        }
+      `
     })
   })
 
@@ -136,12 +136,12 @@ describe('@mixin govuk-media-query', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
-          @media (min-width: 20em) and (max-width: 46.24em) {
-            .foo {
-              color: red;
-            }
+        @media (min-width: 20em) and (max-width: 46.24em) {
+          .foo {
+            color: red;
           }
-        `
+        }
+      `
     })
   })
 
@@ -158,12 +158,12 @@ describe('@mixin govuk-media-query', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
-          @media (max-width: 40em) and (orientation: landscape) {
-            .foo {
-              color: red;
-            }
+        @media (max-width: 40em) and (orientation: landscape) {
+          .foo {
+            color: red;
           }
-        `
+        }
+      `
     })
   })
 
@@ -180,12 +180,12 @@ describe('@mixin govuk-media-query', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
-          @media aural and (max-width: 40em) {
-            .foo {
-              color: red;
-            }
+        @media aural and (max-width: 40em) {
+          .foo {
+            color: red;
           }
-        `
+        }
+      `
     })
   })
 })

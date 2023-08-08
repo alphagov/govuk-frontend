@@ -38,10 +38,10 @@ describe('@function govuk-colour', () => {
 
     await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
       css: outdent`
-          .foo {
-            color: #ff0000;
-          }
-        `
+        .foo {
+          color: #ff0000;
+        }
+      `
     })
   })
 
@@ -56,10 +56,10 @@ describe('@function govuk-colour', () => {
 
     await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
       css: outdent`
-          .foo {
-            color: #ff0000;
-          }
-        `
+        .foo {
+          color: #ff0000;
+        }
+      `
     })
   })
 
@@ -127,10 +127,10 @@ describe('@function govuk-organisation-colour', () => {
 
     await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
       css: outdent`
-          .foo {
-            color: #9A00A8;
-          }
-        `
+        .foo {
+          color: #9A00A8;
+        }
+      `
     })
   })
 
@@ -145,10 +145,10 @@ describe('@function govuk-organisation-colour', () => {
 
     await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
       css: outdent`
-          .foo {
-            color: #A81223;
-          }
-        `
+        .foo {
+          color: #A81223;
+        }
+      `
     })
   })
 
@@ -163,10 +163,10 @@ describe('@function govuk-organisation-colour', () => {
 
     await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
       css: outdent`
-          .foo {
-            border-color: #EC22FF;
-          }
-        `
+        .foo {
+          border-color: #EC22FF;
+        }
+      `
     })
   })
 

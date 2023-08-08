@@ -111,28 +111,26 @@ describe('Input', () => {
       const $ = render('input', examples['with hint text'])
 
       const $input = $('.govuk-input')
-      const $hint = $('.govuk-hint')
+      const hintId = $('.govuk-hint').attr('id')
 
-      const hintId = new RegExp(
-        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}${hintId}${WORD_BOUNDARY}`
       )
 
-      expect($input.attr('aria-describedby')).toMatch(hintId)
+      expect($input.attr('aria-describedby')).toMatch(describedBy)
     })
 
     it('associates the input as "described by" the hint and parent fieldset', () => {
       const $ = render('input', examples['hint with describedBy'])
 
       const $input = $('.govuk-input')
-      const $hint = $('.govuk-hint')
+      const hintId = $('.govuk-hint').attr('id')
 
-      const hintId = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${$hint.attr(
-          'id'
-        )}${WORD_BOUNDARY}`
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${hintId}${WORD_BOUNDARY}`
       )
 
-      expect($input.attr('aria-describedby')).toMatch(hintId)
+      expect($input.attr('aria-describedby')).toMatch(describedBy)
     })
   })
 
@@ -147,28 +145,26 @@ describe('Input', () => {
       const $ = render('input', examples['with error message'])
 
       const $input = $('.govuk-input')
-      const $errorMessage = $('.govuk-error-message')
+      const errorMessageId = $('.govuk-error-message').attr('id')
 
-      const errorMessageId = new RegExp(
-        WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($input.attr('aria-describedby')).toMatch(errorMessageId)
+      expect($input.attr('aria-describedby')).toMatch(describedBy)
     })
 
     it('associates the input as "described by" the error message and parent fieldset', () => {
       const $ = render('input', examples['error with describedBy'])
 
       const $input = $('.govuk-input')
-      const $errorMessage = $('.govuk-error-message')
+      const errorMessageId = $('.govuk-error-message').attr('id')
 
-      const errorMessageId = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${$errorMessage.attr(
-          'id'
-        )}${WORD_BOUNDARY}`
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($input.attr('aria-describedby')).toMatch(errorMessageId)
+      expect($input.attr('aria-describedby')).toMatch(describedBy)
     })
 
     it('includes the error class on the input', () => {
@@ -217,11 +213,11 @@ describe('Input', () => {
       const errorMessageId = $('.govuk-error-message').attr('id')
       const hintId = $('.govuk-hint').attr('id')
 
-      const combinedIds = new RegExp(
-        WORD_BOUNDARY + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
+      const describedByCombined = new RegExp(
+        `${WORD_BOUNDARY}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($component.attr('aria-describedby')).toMatch(combinedIds)
+      expect($component.attr('aria-describedby')).toMatch(describedByCombined)
     })
 
     it('associates the input as described by the hint, error message and parent fieldset', () => {
@@ -231,11 +227,11 @@ describe('Input', () => {
       const errorMessageId = $('.govuk-error-message').attr('id')
       const hintId = $('.govuk-hint').attr('id')
 
-      const combinedIds = new RegExp(
+      const describedByCombined = new RegExp(
         `${WORD_BOUNDARY}some-id${WHITESPACE}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($component.attr('aria-describedby')).toMatch(combinedIds)
+      expect($component.attr('aria-describedby')).toMatch(describedByCombined)
     })
   })
 

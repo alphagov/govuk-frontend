@@ -339,13 +339,13 @@ describe('Radios', () => {
       const $ = render('radios', examples['with fieldset and error message'])
 
       const $fieldset = $('.govuk-fieldset')
-      const $errorMessage = $('.govuk-error-message')
+      const errorMessageId = $('.govuk-error-message').attr('id')
 
-      const errorMessageId = new RegExp(
-        WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($fieldset.attr('aria-describedby')).toMatch(errorMessageId)
+      expect($fieldset.attr('aria-describedby')).toMatch(describedBy)
     })
 
     it('associates the fieldset as "described by" the error message and parent fieldset', () => {
@@ -355,15 +355,13 @@ describe('Radios', () => {
       )
 
       const $fieldset = $('.govuk-fieldset')
-      const $errorMessage = $('.govuk-error-message')
+      const errorMessageId = $('.govuk-error-message').attr('id')
 
-      const errorMessageId = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${$errorMessage.attr(
-          'id'
-        )}${WORD_BOUNDARY}`
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($fieldset.attr('aria-describedby')).toMatch(errorMessageId)
+      expect($fieldset.attr('aria-describedby')).toMatch(describedBy)
     })
 
     it('renders with a form group wrapper that has an error state', () => {
@@ -382,11 +380,11 @@ describe('Radios', () => {
       const errorMessageId = $('.govuk-error-message').attr('id')
       const hintId = $('.govuk-hint').attr('id')
 
-      const combinedIds = new RegExp(
-        WORD_BOUNDARY + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
+      const describedByCombined = new RegExp(
+        `${WORD_BOUNDARY}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($fieldset.attr('aria-describedby')).toMatch(combinedIds)
+      expect($fieldset.attr('aria-describedby')).toMatch(describedByCombined)
     })
 
     it('associates the fieldset as described by the hint, error message and parent fieldset', () => {
@@ -399,11 +397,11 @@ describe('Radios', () => {
       const errorMessageId = $('.govuk-error-message').attr('id')
       const hintId = $('.govuk-hint').attr('id')
 
-      const combinedIds = new RegExp(
+      const describedByCombined = new RegExp(
         `${WORD_BOUNDARY}some-id${WHITESPACE}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($fieldset.attr('aria-describedby')).toMatch(combinedIds)
+      expect($fieldset.attr('aria-describedby')).toMatch(describedByCombined)
     })
   })
 

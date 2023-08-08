@@ -92,9 +92,9 @@ describe('/components/button', () => {
                 counts.debounce++
                 el.dataset.debounceCount = `${counts.debounce}`
               }
-
-              // Add listener during capture phase to spy on event
             },
+
+            // Add listener during capture phase to spy on event
             { capture: true }
           ),
         counts

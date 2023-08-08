@@ -132,10 +132,10 @@ describe('@function _govuk-line-height', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
-          .foo {
-            line-height: 3.141;
-          }
-        `
+        .foo {
+          line-height: 3.141;
+        }
+      `
     })
   })
 
@@ -150,10 +150,10 @@ describe('@function _govuk-line-height', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
-          .foo {
-            line-height: 2em;
-          }
-        `
+        .foo {
+          line-height: 2em;
+        }
+      `
     })
   })
 
@@ -168,10 +168,10 @@ describe('@function _govuk-line-height', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
-          .foo {
-            line-height: 1.5;
-          }
-        `
+        .foo {
+          line-height: 1.5;
+        }
+      `
     })
   })
 })
@@ -188,17 +188,17 @@ describe('@mixin govuk-typography-responsive', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
+        .foo {
+          font-size: 0.75rem;
+          line-height: 1.25;
+        }
+        @media (min-width: 30em) {
           .foo {
-            font-size: 0.75rem;
-            line-height: 1.25;
+            font-size: 0.875rem;
+            line-height: 1.4285714286;
           }
-          @media (min-width: 30em) {
-            .foo {
-              font-size: 0.875rem;
-              line-height: 1.4285714286;
-            }
-          }
-        `
+        }
+      `
     })
   })
 
@@ -213,17 +213,17 @@ describe('@mixin govuk-typography-responsive', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
+        .foo {
+          font-size: 0.75rem;
+          line-height: 1.25;
+        }
+        @media print {
           .foo {
-            font-size: 0.75rem;
-            line-height: 1.25;
+            font-size: 14pt;
+            line-height: 1.5;
           }
-          @media print {
-            .foo {
-              font-size: 14pt;
-              line-height: 1.5;
-            }
-          }
-        `
+        }
+      `
     })
   })
 
@@ -253,17 +253,17 @@ describe('@mixin govuk-typography-responsive', () => {
 
       await expect(compileSassString(sass)).resolves.toMatchObject({
         css: outdent`
+          .foo {
+            font-size: 0.75rem !important;
+            line-height: 1.25 !important;
+          }
+          @media (min-width: 30em) {
             .foo {
-              font-size: 0.75rem !important;
-              line-height: 1.25 !important;
+              font-size: 0.875rem !important;
+              line-height: 1.4285714286 !important;
             }
-            @media (min-width: 30em) {
-              .foo {
-                font-size: 0.875rem !important;
-                line-height: 1.4285714286 !important;
-              }
-            }
-          `
+          }
+        `
       })
     })
 
@@ -278,17 +278,17 @@ describe('@mixin govuk-typography-responsive', () => {
 
       await expect(compileSassString(sass)).resolves.toMatchObject({
         css: outdent`
+          .foo {
+            font-size: 0.75rem !important;
+            line-height: 1.25 !important;
+          }
+          @media print {
             .foo {
-              font-size: 0.75rem !important;
-              line-height: 1.25 !important;
+              font-size: 14pt !important;
+              line-height: 1.5 !important;
             }
-            @media print {
-              .foo {
-                font-size: 14pt !important;
-                line-height: 1.5 !important;
-              }
-            }
-          `
+          }
+        `
       })
     })
   })
@@ -305,17 +305,17 @@ describe('@mixin govuk-typography-responsive', () => {
 
       await expect(compileSassString(sass)).resolves.toMatchObject({
         css: outdent`
+          .foo {
+            font-size: 0.75rem;
+            line-height: 1.75;
+          }
+          @media (min-width: 30em) {
             .foo {
-              font-size: 0.75rem;
-              line-height: 1.75;
+              font-size: 0.875rem;
+              line-height: 1.5;
             }
-            @media (min-width: 30em) {
-              .foo {
-                font-size: 0.875rem;
-                line-height: 1.5;
-              }
-            }
-          `
+          }
+        `
       })
     })
   })
@@ -334,26 +334,26 @@ describe('@mixin govuk-typography-responsive', () => {
 
       await expect(compileSassString(sass)).resolves.toMatchObject({
         css: outdent`
+          .foo {
+            font-family: "GDS Transport", arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-weight: 400;
+            font-size: 0.75rem;
+            line-height: 1.25;
+          }
+          @media print {
             .foo {
-              font-family: "GDS Transport", arial, sans-serif;
-              -webkit-font-smoothing: antialiased;
-              -moz-osx-font-smoothing: grayscale;
-              font-weight: 400;
-              font-size: 0.75rem;
-              line-height: 1.25;
+              font-family: sans-serif;
             }
-            @media print {
-              .foo {
-                font-family: sans-serif;
-              }
+          }
+          @media (min-width: 30em) {
+            .foo {
+              font-size: 0.875rem;
+              line-height: 1.4285714286;
             }
-            @media (min-width: 30em) {
-              .foo {
-                font-size: 0.875rem;
-                line-height: 1.4285714286;
-              }
-            }
-          `
+          }
+        `
       })
     })
 

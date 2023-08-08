@@ -190,28 +190,26 @@ describe('Date input', () => {
       const $ = render('date-input', examples['complete question'])
 
       const $fieldset = $('.govuk-fieldset')
-      const $hint = $('.govuk-hint')
+      const hintId = $('.govuk-hint').attr('id')
 
-      const hintId = new RegExp(
-        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}${hintId}${WORD_BOUNDARY}`
       )
 
-      expect($fieldset.attr('aria-describedby')).toMatch(hintId)
+      expect($fieldset.attr('aria-describedby')).toMatch(describedBy)
     })
 
     it('associates the fieldset as "described by" the hint and parent fieldset', () => {
       const $ = render('date-input', examples['with hint and describedBy'])
 
       const $fieldset = $('.govuk-fieldset')
-      const $hint = $('.govuk-hint')
+      const hintId = $('.govuk-hint').attr('id')
 
-      const hintId = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${$hint.attr(
-          'id'
-        )}${WORD_BOUNDARY}`
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${hintId}${WORD_BOUNDARY}`
       )
 
-      expect($fieldset.attr('aria-describedby')).toMatch(hintId)
+      expect($fieldset.attr('aria-describedby')).toMatch(describedBy)
     })
   })
 
@@ -233,13 +231,13 @@ describe('Date input', () => {
       const $ = render('date-input', examples['with errors only'])
 
       const $fieldset = $('.govuk-fieldset')
-      const $errorMessage = $('.govuk-error-message')
+      const errorMessageId = $('.govuk-error-message').attr('id')
 
-      const errorMessageId = new RegExp(
-        WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($fieldset.attr('aria-describedby')).toMatch(errorMessageId)
+      expect($fieldset.attr('aria-describedby')).toMatch(describedBy)
     })
 
     it('associates the fieldset as "described by" the error message and parent fieldset', () => {
@@ -276,11 +274,11 @@ describe('Date input', () => {
       const errorMessageId = $('.govuk-error-message').attr('id')
       const hintId = $('.govuk-hint').attr('id')
 
-      const combinedIds = new RegExp(
-        WORD_BOUNDARY + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
+      const describedByCombined = new RegExp(
+        `${WORD_BOUNDARY}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($fieldset.attr('aria-describedby')).toMatch(combinedIds)
+      expect($fieldset.attr('aria-describedby')).toMatch(describedByCombined)
     })
 
     it('associates the fieldset as described by the hint, error message and parent fieldset', () => {
