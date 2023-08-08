@@ -15,10 +15,10 @@ describe('@function image-url', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
-          .foo {
-            background-image: url("/path/to/images/baz.png");
-          }
-        `
+        .foo {
+          background-image: url("/path/to/images/baz.png");
+        }
+      `
     })
   })
 
@@ -35,10 +35,10 @@ describe('@function image-url', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
-          .foo {
-            background-image: "BAZ.PNG";
-          }
-        `
+        .foo {
+          background-image: "BAZ.PNG";
+        }
+      `
     })
   })
 
@@ -60,10 +60,10 @@ describe('@function image-url', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
-          .foo {
-            background-image: url("/custom/baz.png");
-          }
-        `
+        .foo {
+          background-image: url("/custom/baz.png");
+        }
+      `
     })
   })
 })

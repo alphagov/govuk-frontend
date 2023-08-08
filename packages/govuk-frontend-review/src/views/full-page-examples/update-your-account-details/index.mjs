@@ -18,6 +18,7 @@ export default (app) => {
         .not()
         .isEmpty()
         .withMessage('Enter your email address'),
+
       body('password')
         .exists()
         .not()

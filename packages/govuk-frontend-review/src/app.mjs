@@ -151,9 +151,9 @@ export default async () => {
 
       res.locals.componentView = env.renderString(
         outdent`
-      {% from "govuk/components/${componentName}/macro.njk" import ${macroName} %}
-      {{ ${macroName}(${macroParameters}) }}
-    `,
+          {% from "govuk/components/${componentName}/macro.njk" import ${macroName} %}
+          {{ ${macroName}(${macroParameters}) }}
+        `,
         {}
       )
 

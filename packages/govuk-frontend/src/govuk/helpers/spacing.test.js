@@ -40,10 +40,10 @@ describe('@function govuk-spacing', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
-          .foo {
-            top: 15px;
-          }
-        `
+        .foo {
+          top: 15px;
+        }
+      `
     })
   })
 
@@ -58,10 +58,10 @@ describe('@function govuk-spacing', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
-          .foo {
-            top: -15px;
-          }
-        `
+        .foo {
+          top: -15px;
+        }
+      `
     })
   })
 
@@ -118,10 +118,10 @@ describe('@function govuk-spacing', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
-          .foo {
-            top: 0;
-          }
-        `
+        .foo {
+          top: 0;
+        }
+      `
     })
   })
 })
@@ -138,15 +138,15 @@ describe('@mixin _govuk-responsive-spacing', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
+        .foo {
+          margin: 15px;
+        }
+        @media (min-width: 30em) {
           .foo {
-            margin: 15px;
+            margin: 25px;
           }
-          @media (min-width: 30em) {
-            .foo {
-              margin: 25px;
-            }
-          }
-        `
+        }
+      `
     })
   })
 
@@ -161,15 +161,15 @@ describe('@mixin _govuk-responsive-spacing', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
+        .foo {
+          padding-top: 15px;
+        }
+        @media (min-width: 30em) {
           .foo {
-            padding-top: 15px;
+            padding-top: 25px;
           }
-          @media (min-width: 30em) {
-            .foo {
-              padding-top: 25px;
-            }
-          }
-        `
+        }
+      `
     })
   })
 
@@ -203,15 +203,15 @@ describe('@mixin _govuk-responsive-spacing', () => {
 
       await expect(compileSassString(sass)).resolves.toMatchObject({
         css: outdent`
+          .foo {
+            margin: 15px !important;
+          }
+          @media (min-width: 30em) {
             .foo {
-              margin: 15px !important;
+              margin: 25px !important;
             }
-            @media (min-width: 30em) {
-              .foo {
-                margin: 25px !important;
-              }
-            }
-          `
+          }
+        `
       })
     })
 
@@ -231,15 +231,15 @@ describe('@mixin _govuk-responsive-spacing', () => {
 
       await expect(compileSassString(sass)).resolves.toMatchObject({
         css: outdent`
+          .foo {
+            margin-top: 15px !important;
+          }
+          @media (min-width: 30em) {
             .foo {
-              margin-top: 15px !important;
+              margin-top: 25px !important;
             }
-            @media (min-width: 30em) {
-              .foo {
-                margin-top: 25px !important;
-              }
-            }
-          `
+          }
+        `
       })
     })
   })
@@ -260,15 +260,15 @@ describe('@mixin _govuk-responsive-spacing', () => {
 
       await expect(compileSassString(sass)).resolves.toMatchObject({
         css: outdent`
+          .foo {
+            margin: 17px;
+          }
+          @media (min-width: 30em) {
             .foo {
-              margin: 17px;
+              margin: 27px;
             }
-            @media (min-width: 30em) {
-              .foo {
-                margin: 27px;
-              }
-            }
-          `
+          }
+        `
       })
     })
 
@@ -288,15 +288,15 @@ describe('@mixin _govuk-responsive-spacing', () => {
 
       await expect(compileSassString(sass)).resolves.toMatchObject({
         css: outdent`
+          .foo {
+            margin-top: 17px;
+          }
+          @media (min-width: 30em) {
             .foo {
-              margin-top: 17px;
+              margin-top: 27px;
             }
-            @media (min-width: 30em) {
-              .foo {
-                margin-top: 27px;
-              }
-            }
-          `
+          }
+        `
       })
     })
   })
@@ -314,15 +314,15 @@ describe('@mixin govuk-responsive-margin', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
+        .foo {
+          margin: 15px;
+        }
+        @media (min-width: 30em) {
           .foo {
-            margin: 15px;
+            margin: 25px;
           }
-          @media (min-width: 30em) {
-            .foo {
-              margin: 25px;
-            }
-          }
-        `
+        }
+      `
     })
   })
 
@@ -342,15 +342,15 @@ describe('@mixin govuk-responsive-margin', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
+        .foo {
+          margin-top: 17px !important;
+        }
+        @media (min-width: 30em) {
           .foo {
-            margin-top: 17px !important;
+            margin-top: 27px !important;
           }
-          @media (min-width: 30em) {
-            .foo {
-              margin-top: 27px !important;
-            }
-          }
-        `
+        }
+      `
     })
   })
 })
@@ -367,15 +367,15 @@ describe('@mixin govuk-responsive-padding', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
+        .foo {
+          padding: 15px;
+        }
+        @media (min-width: 30em) {
           .foo {
-            padding: 15px;
+            padding: 25px;
           }
-          @media (min-width: 30em) {
-            .foo {
-              padding: 25px;
-            }
-          }
-        `
+        }
+      `
     })
   })
 
@@ -395,15 +395,15 @@ describe('@mixin govuk-responsive-padding', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
+        .foo {
+          padding-top: 17px !important;
+        }
+        @media (min-width: 30em) {
           .foo {
-            padding-top: 17px !important;
+            padding-top: 27px !important;
           }
-          @media (min-width: 30em) {
-            .foo {
-              padding-top: 27px !important;
-            }
-          }
-        `
+        }
+      `
     })
   })
 })

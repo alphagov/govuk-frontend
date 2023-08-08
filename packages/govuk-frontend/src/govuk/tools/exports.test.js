@@ -21,10 +21,10 @@ describe('@mixin govuk-exports', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
-          .foo {
-            color: red;
-          }
-        `
+        .foo {
+          color: red;
+        }
+      `
     })
   })
 
@@ -47,14 +47,14 @@ describe('@mixin govuk-exports', () => {
 
     await expect(compileSassString(sass)).resolves.toMatchObject({
       css: outdent`
-          .foo {
-            color: red;
-          }
+        .foo {
+          color: red;
+        }
 
-          .bar {
-            color: blue;
-          }
-        `
+        .bar {
+          color: blue;
+        }
+      `
     })
   })
 })

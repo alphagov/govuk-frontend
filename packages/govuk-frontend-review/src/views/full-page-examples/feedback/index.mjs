@@ -18,6 +18,7 @@ export default (app) => {
         .withMessage(
           'What were you trying to do must be 100 characters or less'
         ),
+
       body('detail')
         .exists()
         .not()
@@ -27,10 +28,12 @@ export default (app) => {
         .withMessage(
           'Details of your question, problem or feedback must be 300 characters or less'
         ),
+
       body('do-you-want-a-reply')
         .not()
         .isEmpty()
         .withMessage('Select yes if you want a reply'),
+
       body('name').custom((value, { req: request }) => {
         // See https://github.com/express-validator/express-validator/pull/658
         const wantsReply = request.body['do-you-want-a-reply'] === 'yes'
@@ -42,6 +45,7 @@ export default (app) => {
         }
         return true
       }),
+
       body('email').custom((value, { req: request }) => {
         // See https://github.com/express-validator/express-validator/pull/658
         const wantsReply = request.body['do-you-want-a-reply'] === 'yes'

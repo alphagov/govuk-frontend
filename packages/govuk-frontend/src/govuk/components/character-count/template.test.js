@@ -96,13 +96,13 @@ describe('Character count', () => {
       const $ = render('character-count', examples.default)
 
       const $textarea = $('.govuk-js-character-count')
-      const $countMessage = $('.govuk-character-count__message')
+      const countMessageId = $('.govuk-character-count__message').attr('id')
 
-      const hintId = new RegExp(
-        WORD_BOUNDARY + $countMessage.attr('id') + WORD_BOUNDARY
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}${countMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($textarea.attr('aria-describedby')).toMatch(hintId)
+      expect($textarea.attr('aria-describedby')).toMatch(describedBy)
     })
 
     it('renders with custom classes', () => {
@@ -150,13 +150,13 @@ describe('Character count', () => {
       const $ = render('character-count', examples['with hint'])
 
       const $textarea = $('.govuk-js-character-count')
-      const $hint = $('.govuk-hint')
+      const hintId = $('.govuk-hint').attr('id')
 
-      const hintId = new RegExp(
-        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}${hintId}${WORD_BOUNDARY}`
       )
 
-      expect($textarea.attr('aria-describedby')).toMatch(hintId)
+      expect($textarea.attr('aria-describedby')).toMatch(describedBy)
     })
   })
 
@@ -177,13 +177,13 @@ describe('Character count', () => {
       )
 
       const $component = $('.govuk-js-character-count')
-      const $errorMessage = $('.govuk-error-message')
+      const errorMessageId = $('.govuk-error-message').attr('id')
 
-      const errorMessageId = new RegExp(
-        WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($component.attr('aria-describedby')).toMatch(errorMessageId)
+      expect($component.attr('aria-describedby')).toMatch(describedBy)
     })
 
     it('adds the error class to the character-count', () => {

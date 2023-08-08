@@ -10,6 +10,7 @@ export default (app) => {
     '/full-page-examples/upload-your-photo',
     [
       body('photo').exists().not().isEmpty().withMessage('Select a photo'),
+
       body('terms-and-conditions')
         .not()
         .isEmpty()

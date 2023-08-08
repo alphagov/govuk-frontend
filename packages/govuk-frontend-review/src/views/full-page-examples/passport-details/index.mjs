@@ -14,16 +14,19 @@ export default (app) => {
         .not()
         .isEmpty()
         .withMessage('Enter your passport number'),
+
       body('expiry-day')
         .exists()
         .not()
         .isEmpty()
         .withMessage('Enter your expiry day'),
+
       body('expiry-month')
         .exists()
         .not()
         .isEmpty()
         .withMessage('Enter your expiry month'),
+
       body('expiry-year')
         .exists()
         .not()

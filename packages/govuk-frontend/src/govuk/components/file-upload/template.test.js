@@ -88,28 +88,26 @@ describe('File upload', () => {
       const $ = render('file-upload', examples['with hint text'])
 
       const $component = $('.govuk-file-upload')
-      const $hint = $('.govuk-hint')
+      const hintId = $('.govuk-hint').attr('id')
 
-      const hintId = new RegExp(
-        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}${hintId}${WORD_BOUNDARY}`
       )
 
-      expect($component.attr('aria-describedby')).toMatch(hintId)
+      expect($component.attr('aria-describedby')).toMatch(describedBy)
     })
 
     it('associates the input as "described by" the hint and parent fieldset', () => {
       const $ = render('file-upload', examples['with hint and describedBy'])
 
       const $component = $('.govuk-file-upload')
-      const $hint = $('.govuk-hint')
+      const hintId = $('.govuk-hint').attr('id')
 
-      const hintId = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${$hint.attr(
-          'id'
-        )}${WORD_BOUNDARY}`
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${hintId}${WORD_BOUNDARY}`
       )
 
-      expect($component.attr('aria-describedby')).toMatch(hintId)
+      expect($component.attr('aria-describedby')).toMatch(describedBy)
     })
   })
 
@@ -124,28 +122,26 @@ describe('File upload', () => {
       const $ = render('file-upload', examples.error)
 
       const $component = $('.govuk-file-upload')
-      const $errorMessage = $('.govuk-error-message')
+      const errorMessageId = $('.govuk-error-message').attr('id')
 
-      const errorMessageId = new RegExp(
-        WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($component.attr('aria-describedby')).toMatch(errorMessageId)
+      expect($component.attr('aria-describedby')).toMatch(describedBy)
     })
 
     it('associates the input as "described by" the error message and parent fieldset', () => {
       const $ = render('file-upload', examples['with error and describedBy'])
 
       const $component = $('.govuk-file-upload')
-      const $errorMessage = $('.govuk-error-message')
+      const errorMessageId = $('.govuk-error-message').attr('id')
 
-      const errorMessageId = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${$errorMessage.attr(
-          'id'
-        )}${WORD_BOUNDARY}`
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}some-id${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($component.attr('aria-describedby')).toMatch(errorMessageId)
+      expect($component.attr('aria-describedby')).toMatch(describedBy)
     })
 
     it('includes the error class on the component', () => {
@@ -171,11 +167,11 @@ describe('File upload', () => {
       const errorMessageId = $('.govuk-error-message').attr('id')
       const hintId = $('.govuk-hint').attr('id')
 
-      const combinedIds = new RegExp(
-        WORD_BOUNDARY + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
+      const describedByCombined = new RegExp(
+        `${WORD_BOUNDARY}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($component.attr('aria-describedby')).toMatch(combinedIds)
+      expect($component.attr('aria-describedby')).toMatch(describedByCombined)
     })
 
     it('associates the input as described by the hint, error message and parent fieldset', () => {
@@ -190,17 +186,11 @@ describe('File upload', () => {
       const errorMessageId = $('.govuk-error-message').attr('id')
       const hintId = $('.govuk-hint').attr('id')
 
-      const combinedIds = new RegExp(
-        WORD_BOUNDARY +
-          describedById +
-          WHITESPACE +
-          hintId +
-          WHITESPACE +
-          errorMessageId +
-          WORD_BOUNDARY
+      const describedByCombined = new RegExp(
+        `${WORD_BOUNDARY}${describedById}${WHITESPACE}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($component.attr('aria-describedby')).toMatch(combinedIds)
+      expect($component.attr('aria-describedby')).toMatch(describedByCombined)
     })
   })
 

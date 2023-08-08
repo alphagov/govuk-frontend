@@ -56,6 +56,7 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         const response = await fetchPath('/full-page-examples/feedback', {
           method: 'POST'
         })
+
         const body = await response.text()
         const $ = load(body)
 
@@ -77,6 +78,7 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         const response = await fetchPath(
           '/full-page-examples/have-you-changed-your-name'
         )
+
         const body = await response.text()
         const $ = load(body)
 
@@ -93,6 +95,7 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
           '/full-page-examples/have-you-changed-your-name',
           { method: 'POST' }
         )
+
         const body = await response.text()
         const $ = load(body)
 
@@ -128,6 +131,7 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
           '/full-page-examples/passport-details',
           { method: 'POST' }
         )
+
         const body = await response.text()
         const $ = load(body)
 
@@ -149,6 +153,7 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         const response = await fetchPath(
           '/full-page-examples/update-your-account-details'
         )
+
         const body = await response.text()
         const $ = load(body)
 
@@ -165,6 +170,7 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
           '/full-page-examples/update-your-account-details',
           { method: 'POST' }
         )
+
         const body = await response.text()
         const $ = load(body)
 
@@ -186,6 +192,7 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         const response = await fetchPath(
           '/full-page-examples/upload-your-photo'
         )
+
         const body = await response.text()
         const $ = load(body)
 
@@ -202,6 +209,7 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
           '/full-page-examples/upload-your-photo',
           { method: 'POST' }
         )
+
         const body = await response.text()
         const $ = load(body)
 
@@ -223,6 +231,7 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         const response = await fetchPath(
           '/full-page-examples/how-do-you-want-to-sign-in'
         )
+
         const body = await response.text()
         const $ = load(body)
 
@@ -239,6 +248,7 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
           '/full-page-examples/how-do-you-want-to-sign-in',
           { method: 'POST' }
         )
+
         const body = await response.text()
         const $ = load(body)
 
@@ -260,6 +270,7 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         const response = await fetchPath(
           '/full-page-examples/what-is-your-nationality'
         )
+
         const body = await response.text()
         const $ = load(body)
 
@@ -276,6 +287,7 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
           '/full-page-examples/what-is-your-nationality',
           { method: 'POST' }
         )
+
         const body = await response.text()
         const $ = load(body)
 
@@ -297,6 +309,7 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         const response = await fetchPath(
           '/full-page-examples/what-is-your-address'
         )
+
         const body = await response.text()
         const $ = load(body)
 
@@ -313,6 +326,7 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
           '/full-page-examples/what-is-your-address',
           { method: 'POST' }
         )
+
         const body = await response.text()
         const $ = load(body)
 
@@ -334,6 +348,7 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         const response = await fetchPath(
           '/full-page-examples/what-is-your-postcode'
         )
+
         const body = await response.text()
         const $ = load(body)
 
@@ -350,6 +365,7 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
           '/full-page-examples/what-is-your-postcode',
           { method: 'POST' }
         )
+
         const body = await response.text()
         const $ = load(body)
 
@@ -378,6 +394,7 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         const response = await fetchPath(
           '/full-page-examples/search?order=updated-newest'
         )
+
         const body = await response.text()
         const $ = load(body)
         // Check the results are correct
@@ -387,6 +404,7 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         const response = await fetchPath(
           '/full-page-examples/search?order=updated-newest&organisation=hmrc'
         )
+
         const body = await response.text()
         const $ = load(body)
         // Check the results are correct
@@ -399,6 +417,7 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
         const response = await fetchPath(
           '/full-page-examples/what-was-the-last-country-you-visited'
         )
+
         const body = await response.text()
         const $ = load(body)
 
@@ -415,6 +434,7 @@ describe(`http://localhost:${ports.app}/full-page-examples/`, () => {
           '/full-page-examples/what-was-the-last-country-you-visited',
           { method: 'POST' }
         )
+
         const body = await response.text()
         const $ = load(body)
 

@@ -182,13 +182,13 @@ describe('Select', () => {
       const $ = render('select', examples.hint)
 
       const $select = $('.govuk-select')
-      const $hint = $('.govuk-hint')
+      const hintId = $('.govuk-hint').attr('id')
 
-      const hintId = new RegExp(
-        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}${hintId}${WORD_BOUNDARY}`
       )
 
-      expect($select.attr('aria-describedby')).toMatch(hintId)
+      expect($select.attr('aria-describedby')).toMatch(describedBy)
     })
 
     it('associates the select as "described by" the hint and parent fieldset', () => {
@@ -211,13 +211,13 @@ describe('Select', () => {
       const $ = render('select', examples.error)
 
       const $input = $('.govuk-select')
-      const $errorMessage = $('.govuk-error-message')
+      const errorMessageId = $('.govuk-error-message').attr('id')
 
-      const errorMessageId = new RegExp(
-        WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
+      const describedBy = new RegExp(
+        `${WORD_BOUNDARY}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($input.attr('aria-describedby')).toMatch(errorMessageId)
+      expect($input.attr('aria-describedby')).toMatch(describedBy)
     })
 
     it('associates the select as "described by" the error message and parent fieldset', () => {
@@ -251,11 +251,11 @@ describe('Select', () => {
       const errorMessageId = $('.govuk-error-message').attr('id')
       const hintId = $('.govuk-hint').attr('id')
 
-      const combinedIds = new RegExp(
-        WORD_BOUNDARY + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
+      const describedByCombined = new RegExp(
+        `${WORD_BOUNDARY}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
-      expect($component.attr('aria-describedby')).toMatch(combinedIds)
+      expect($component.attr('aria-describedby')).toMatch(describedByCombined)
     })
 
     it('associates the select as described by the hint, error message and parent fieldset', () => {

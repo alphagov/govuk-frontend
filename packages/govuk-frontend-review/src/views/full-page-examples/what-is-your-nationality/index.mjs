@@ -23,6 +23,7 @@ export default (app) => {
         }
         return true
       }),
+
       body('country-name').custom((value, { req: request }) => {
         // See https://github.com/express-validator/express-validator/pull/658
         const confirmedNationality = request.body['confirm-nationality'] || []
