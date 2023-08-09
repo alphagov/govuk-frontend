@@ -75,6 +75,11 @@ export class NotificationBanner extends GOVUKFrontendComponent {
   }
 
   /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'govuk-notification-banner'
+
+  /**
    * Notification banner default config
    *
    * @see {@link NotificationBannerConfig}
