@@ -392,6 +392,13 @@ export class ExitThisPage extends GOVUKFrontendComponent {
   }
 
   /**
+   * Name for the component used when initialising using data-module attributes.
+   *
+   * @type {string}
+   */
+  static moduleName = 'govuk-exit-this-page'
+
+  /**
    * Exit this page default config
    *
    * @see {@link ExitThisPageConfig}

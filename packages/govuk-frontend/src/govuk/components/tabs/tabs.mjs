@@ -518,4 +518,11 @@ export class Tabs extends GOVUKFrontendComponent {
     const hash = href.slice(href.indexOf('#'), href.length)
     return hash
   }
+
+  /**
+   * Name for the component used when initialising using data-module attributes.
+   *
+   * @type {string}
+   */
+  static moduleName = 'govuk-tabs'
 }

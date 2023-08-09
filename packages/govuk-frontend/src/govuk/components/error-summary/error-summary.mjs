@@ -205,6 +205,13 @@ export class ErrorSummary extends GOVUKFrontendComponent {
   }
 
   /**
+   * Name for the component used when initialising using data-module attributes.
+   *
+   * @type {string}
+   */
+  static moduleName = 'govuk-error-summary'
+
+  /**
    * Error summary default config
    *
    * @see {@link ErrorSummaryConfig}

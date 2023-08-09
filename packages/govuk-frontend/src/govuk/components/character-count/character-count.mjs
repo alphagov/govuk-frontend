@@ -411,6 +411,13 @@ export class CharacterCount extends GOVUKFrontendComponent {
   }
 
   /**
+   * Name for the component used when initialising using data-module attributes.
+   *
+   * @type {string}
+   */
+  static moduleName = 'govuk-character-count'
+
+  /**
    * Character count default config
    *
    * @see {@link CharacterCountConfig}

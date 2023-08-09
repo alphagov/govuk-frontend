@@ -121,4 +121,11 @@ export class Header extends GOVUKFrontendComponent {
     this.menuIsOpen = !this.menuIsOpen
     this.syncState()
   }
+
+  /**
+   * Name for the component used when initialising using data-module attributes.
+   *
+   * @type {string}
+   */
+  static moduleName = 'govuk-header'
 }
