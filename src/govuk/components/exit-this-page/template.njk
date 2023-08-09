@@ -15,6 +15,9 @@
     html: params.html if (params.html or params.text) else defaultHtml,
     text: params.text,
     classes: "govuk-button--warning govuk-exit-this-page__button govuk-js-exit-this-page-button",
-    href: params.redirectUrl | default("https://www.bbc.co.uk/weather")
+    href: params.redirectUrl | default("https://www.bbc.co.uk/weather"),
+    attributes: {
+      rel: "nofollow noreferrer"
+    }
   }) -}}
 </div>
