@@ -56,11 +56,15 @@ function initAll(config) {
     )
 
     $elements.forEach(($element) => {
-      // Only pass config to components that accept it
-      if ('defaults' in Component) {
-        new Component($element, configKey in config ? config[configKey] : {})
-      } else {
-        new Component($element)
+      try {
+        // Only pass config to components that accept it
+        if ('defaults' in Component) {
+          new Component($element, configKey in config ? config[configKey] : {})
+        } else {
+          new Component($element)
+        }
+      } catch (error) {
+        console.log(error)
       }
     })
   })
