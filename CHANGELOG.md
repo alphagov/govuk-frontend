@@ -316,7 +316,7 @@ These changes were introduced in:
 
 #### Update the Pagination component's default `aria-label`
 
-The default value of the Pagination component's `aria-label` has been updated to be more descriptive of the contents of the region. If you are using the component's default label, you may wish to update it to the new value.
+The default value of the Pagination component's `aria-label` has been updated to be more descriptive of the contents of the region. If you are using the component's default label, you may wish to update it to the new default of 'Pagination'.
 
 You don't need to change anything if you're using the `govukPagination` Nunjucks macro.
 
@@ -324,18 +324,28 @@ This change was introduced in [pull request #3899: Update default `aria-label` i
 
 #### Update the Exit this Page button's default text
 
-The default text of the Exit this Page button has been updated to indicate that the button is a safety tool and not a generic method of leaving the current page. If you are using the component's default label, you may wish to update it to the new value.
+The default text of the Exit this Page button has been updated. It now includes visually-hidden text to clarify that the button is a safety tool and not a generic method of leaving the current page.
 
-```diff
-<a href="..." role="button" draggable="false" class="govuk-button govuk-button--warning govuk-exit-this-page__button govuk-js-exit-this-page-button" data-module="govuk-button">
--   Exit this page
-+   <span class="govuk-visually-hidden">Emergency</span> Exit this page
-</a>
-```
+If you are using the component's default text, you may wish to update it to the new value: `<span class="govuk-visually-hidden">Emergency</span> Exit this page`
 
 You don't need to change anything if you're using the `govukExitThisPage` Nunjucks macro.
 
 This change was introduced in [pull request #3989: Update default Exit This Page button text](https://github.com/alphagov/govuk-frontend/pull/3989).
+
+#### Add the `rel` attribute to the Exit this Page button and secondary link
+
+Update the Exit this Page button and secondary link to include a new attribute and value: `rel="nofollow noreferrer"`.
+
+Adding this attribute does two things:
+
+1. It instructs search engines that your service does not endorse the external website for the purposes of determining search engine rankings.
+2. It instructs web browsers to not send information about your service to the external website.
+
+This fixes a potential risk where the external website could detect that a user had visited from a GOV.UK page and play that information back to the user, which could risk a user's personal safety in some contexts.
+
+You don't need to change the Exit this Page button if you're using the `govukExitThisPage` Nunjucks macro. You will still have to update the secondary link manually.
+
+This change was introduced in [pull request #4054: Add `rel` attribute to the Exit this Page button](https://github.com/alphagov/govuk-frontend/pull/4054). Thanks to [Greg Tyler](https://github.com/gregtyler) for reporting this issue.
 
 ### Fixes
 

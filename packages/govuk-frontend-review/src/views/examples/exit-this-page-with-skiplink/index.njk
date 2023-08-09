@@ -8,7 +8,10 @@
   {{ govukSkipLink({
     href: "https://www.gov.uk/",
     text: "Exit this page",
-    classes: "govuk-js-exit-this-page-skiplink"
+    classes: "govuk-js-exit-this-page-skiplink",
+    attributes: {
+      rel: "nofollow noreferrer"
+    }
   }) }}
 {% endblock %}
 
