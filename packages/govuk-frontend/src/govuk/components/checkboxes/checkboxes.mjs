@@ -202,4 +202,9 @@ export class Checkboxes extends GOVUKFrontendComponent {
       this.unCheckExclusiveInputs($clickedInput)
     }
   }
+
+  /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'govuk-checkboxes'
 }
