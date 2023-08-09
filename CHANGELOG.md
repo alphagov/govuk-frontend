@@ -55,6 +55,24 @@ These styles can be used in your own code by including the `govuk-focused-box` S
 
 This change was made in [pull request #3819: Add linked image focus style](https://github.com/alphagov/govuk-frontend/pull/3819).
 
+#### Customise inverse button colours
+
+For non-GOV.UK branded websites, you can now change the colours of inverse buttons — buttons intended for use on dark backgrounds.
+
+To change the inverse button's background colour, set the `$govuk-inverse-button-background-colour` Sass variable.
+
+To change the inverse button's text colour, set the `$govuk-inverse-button-text-colour` Sass variable.
+
+```scss
+@import "node_modules/govuk-frontend/govuk/base";
+
+$govuk-inverse-button-background-colour: govuk-colour("yellow");
+$govuk-inverse-button-text-colour: govuk-colour("black");
+@import "node_modules/govuk-frontend/govuk/components/button/index";
+```
+
+This change was made in [pull request #4043: Add ability to customise inverse button colours](https://github.com/alphagov/govuk-frontend/pull/4043).
+
 ### Breaking changes
 
 You must make the following changes when you migrate to this release, or your service might break.
@@ -311,6 +329,21 @@ These changes were introduced in:
 
 - [pull request #3570: Remove IE8-10 JavaScript polyfills, helpers, config](https://github.com/alphagov/govuk-frontend/pull/3570)
 - [pull request #3720: Remove IE11 vendor polyfills](https://github.com/alphagov/govuk-frontend/pull/3720)
+
+#### Check that inverse buttons still look as expected
+
+Inverse button components now use the `$govuk-brand-colour` setting to determine the button's text colour and the button's background tint when hovered or activated. The button will only look different if `$govuk-brand-colour` has been changed from the default.
+
+You can restore the previous blue colour by setting `$govuk-inverse-button-text-colour` before importing the button component's Sass.
+
+```scss
+@import "node_modules/govuk-frontend/govuk/base";
+
+$govuk-inverse-button-text-colour: govuk-colour("blue");
+@import "node_modules/govuk-frontend/govuk/components/button/index";
+```
+
+This change was made in [pull request #4043: Add ability to customise inverse button colours](https://github.com/alphagov/govuk-frontend/pull/4043).
 
 ### Suggested changes
 
