@@ -10,18 +10,33 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 2. Run `nvm use` to make sure you're using the right version of Node.js and npm.
 
-3. Run `npm install` to make sure you have the latest dependencies installed.
+3. Run `npm ci` to make sure you have the exact dependencies installed.
 
 4. Create and check out a new branch (`release-[version-number]`). See the [versioning documentation](/docs/contributing/versioning.md) for more information.
 
 5. Update the [`CHANGELOG.md`](../../CHANGELOG.md) by:
 
-   - changing the 'Unreleased' heading to the new version-number and release-type - for example, '3.11.0 (Feature release)'
-   - adding a new 'Unreleased' heading above the new version-number and release-type, so users will know where to add PRs to the changelog
+   - changing the 'Unreleased' heading to the new version number and release type. For example, '3.11.0 (Feature release)'
+   - adding a new 'Unreleased' heading above the new version number and release type, so users will know where to add PRs to the changelog
+   - saving your changes
 
-6. Update [`package/package.json`](../../package/package.json) version with the new version-number.
+6. Apply the new version number by running:
 
-7. Save the changes. Do not commit.
+   ```
+   npm version <NEW VERSION NUMBER> --no-git-tag-version --workspace package
+   ```
+
+   This step will update the `package.json` and project `package-lock.json` files.
+
+   Do not commit the changes.
+
+7. Update browser data from ["Can I use"](https://caniuse.com) by running:
+
+   ```
+   npx update-browserslist-db@latest
+   ```
+
+   This step will update the project `package-lock.json` file if updates are found.
 
 8. Run `npm run build-release` to:
 
@@ -32,7 +47,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
    You will now be prompted to continue or cancel.
 
 9. Create a pull request and copy the changelog text.
-   When reviewing the PR, check that the version-numbers have been updated and that the compiled assets use this version-number.
+   When reviewing the PR, check that the version numbers have been updated and that the compiled assets use this version number.
 
 10. Once a reviewer approves the pull request, merge it to **main**.
 
