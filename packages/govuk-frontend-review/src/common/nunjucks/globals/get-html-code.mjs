@@ -5,6 +5,7 @@ import beautify from 'js-beautify'
 /**
  * Component HTML code (formatted)
  *
+ * @this {{ env: import('nunjucks').Environment }}
  * @param {string} componentName - Component name
  * @param {unknown} params - Component macro params
  * @returns {string} Nunjucks code
