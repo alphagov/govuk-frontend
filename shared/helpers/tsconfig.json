@@ -1,5 +1,8 @@
 {
   "extends": "../../tsconfig.base.json",
   "include": ["**/*.js", "**/*.mjs"],
-  "exclude": ["./node_modules"]
+  "exclude": ["./node_modules"],
+  "compilerOptions": {
+    "types": ["jest", "node", "nunjucks", "slug"]
+  }
 }

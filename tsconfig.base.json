@@ -13,7 +13,7 @@
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
     "target": "ESNext",
-    "types": ["jest", "jest-axe", "jest-puppeteer", "node"],
+    "types": [],
     "paths": {
       "govuk-frontend": ["./packages/govuk-frontend/src/govuk/all.mjs"],
       "govuk-frontend-stats": ["./shared/stats/src/index.mjs"],
@@ -24,5 +24,8 @@
       "govuk-frontend-lib": ["./shared/lib/index.js"],
       "govuk-frontend-lib/*": ["./shared/lib/*.js"]
     }
+  },
+  "typeAcquisition": {
+    "enable": false
   }
 }

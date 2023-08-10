@@ -3,6 +3,6 @@
   "include": ["./src/**/*.mjs"],
   "exclude": ["**/*.test.*"],
   "compilerOptions": {
-    "types": ["node"]
+    "types": ["express", "marked", "node", "nunjucks", "slug"]
   }
 }
