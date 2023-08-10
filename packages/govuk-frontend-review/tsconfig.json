@@ -1,17 +1,5 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": [
-    "**/*.js",
-    "**/*.mjs",
-    "../govuk-frontend",
-    "../../shared/config",
-    "../../shared/lib",
-    "../../shared/stats",
-    "../../shared/tasks"
-  ],
-  "exclude": [
-    "./dist/**",
-    "../govuk-frontend/dist/**",
-    "../../shared/stats/dist/**"
-  ]
+  "include": ["**/*.js", "**/*.mjs"],
+  "exclude": ["./dist"]
 }
