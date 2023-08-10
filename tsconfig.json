@@ -3,28 +3,28 @@
   "files": [],
   "references": [
     {
-      "path": "./.github/workflows/scripts"
+      "path": "./.github/workflows/scripts/tsconfig.json"
     },
     {
-      "path": "./packages/govuk-frontend-review"
+      "path": "./packages/govuk-frontend-review/tsconfig.json"
     },
     {
-      "path": "./packages/govuk-frontend"
+      "path": "./packages/govuk-frontend/tsconfig.json"
     },
     {
-      "path": "./shared/config"
+      "path": "./shared/config/tsconfig.json"
     },
     {
-      "path": "./shared/helpers"
+      "path": "./shared/helpers/tsconfig.json"
     },
     {
-      "path": "./shared/lib"
+      "path": "./shared/lib/tsconfig.json"
     },
     {
-      "path": "./shared/stats"
+      "path": "./shared/stats/tsconfig.json"
     },
     {
-      "path": "./shared/tasks"
+      "path": "./shared/tasks/tsconfig.json"
     }
   ]
 }
