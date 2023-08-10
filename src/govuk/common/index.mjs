@@ -4,8 +4,6 @@
  * IMPORTANT: If a helper require a polyfill, please isolate it in its own module
  * so that the polyfill can be properly tree-shaken and does not burden
  * the components that do not need that helper
- *
- * @module common/index
  */
 
 /**
@@ -15,7 +13,7 @@
  * (e.g. \{'i18n.showSection': 'Show section'\}) and combines them together, with
  * greatest priority on the LAST item passed in.
  *
- * @private
+ * @internal
  * @returns {{ [key: string]: unknown }} A flattened object of key-value pairs.
  */
 export function mergeConfigs(/* configObject1, configObject2, ...configObjects */) {
@@ -25,6 +23,7 @@ export function mergeConfigs(/* configObject1, configObject2, ...configObjects *
    * each of our objects, nor transform our dataset from a flat list into a
    * nested object.
    *
+   * @internal
    * @param {{ [key: string]: unknown }} configObject - Deeply nested object
    * @returns {{ [key: string]: unknown }} Flattened object with dot-separated keys
    */
@@ -38,6 +37,7 @@ export function mergeConfigs(/* configObject1, configObject2, ...configObjects *
      * depth in the object. At each level we prepend the previous level names to
      * the key using `prefix`.
      *
+     * @internal
      * @param {Partial<{ [key: string]: unknown }>} obj - Object to flatten
      * @param {string} [prefix] - Optional dot-separated prefix
      */
@@ -90,7 +90,7 @@ export function mergeConfigs(/* configObject1, configObject2, ...configObjects *
  * Extracts keys starting with a particular namespace from a flattened config
  * object, removing the namespace in the process.
  *
- * @private
+ * @internal
  * @param {{ [key: string]: unknown }} configObject - The object to extract key-value pairs from.
  * @param {string} namespace - The namespace to filter keys with.
  * @returns {{ [key: string]: unknown }} Flattened object with dot-separated key namespace removed
