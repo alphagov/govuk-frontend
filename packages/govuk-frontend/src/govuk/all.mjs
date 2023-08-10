@@ -29,28 +29,25 @@ function initAll(config) {
     return
   }
 
-  const components = [
-    Accordion,
-    Button,
-    CharacterCount,
-    Checkboxes,
-    ErrorSummary,
-    ExitThisPage,
-    Header,
-    NotificationBanner,
-    Radios,
-    SkipLink,
-    Tabs
-  ]
+  const components = /** @type {const} */ ([
+    [Accordion, config.accordion],
+    [Button, config.button],
+    [CharacterCount, config.characterCount],
+    [Checkboxes],
+    [ErrorSummary, config.errorSummary],
+    [ExitThisPage, config.exitThisPage],
+    [Header],
+    [NotificationBanner, config.notificationBanner],
+    [Radios],
+    [SkipLink],
+    [Tabs]
+  ])
 
   // Allow the user to initialise GOV.UK Frontend in only certain sections of the page
   // Defaults to the entire document if nothing is set.
   const $scope = config.scope instanceof HTMLElement ? config.scope : document
 
-  components.forEach((Component) => {
-    // configKey is the component name converted from PascalCase to camelCase
-    const configKey = Component.name.replace(/^./, (str) => str.toLowerCase())
-
+  components.forEach(([Component, config]) => {
     const $elements = $scope.querySelectorAll(
       `[data-module="${Component.moduleName}"]`
     )
@@ -58,11 +55,9 @@ function initAll(config) {
     $elements.forEach(($element) => {
       try {
         // Only pass config to components that accept it
-        if ('defaults' in Component) {
-          new Component($element, configKey in config ? config[configKey] : {})
-        } else {
-          new Component($element)
-        }
+        'defaults' in Component
+          ? new Component($element, config)
+          : new Component($element)
       } catch (error) {
         console.log(error)
       }
