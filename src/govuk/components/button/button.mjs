@@ -7,6 +7,8 @@ const DEBOUNCE_TIMEOUT_IN_SECONDS = 1
 
 /**
  * JavaScript enhancements for the Button component
+ *
+ * @preserve
  */
 export class Button extends GOVUKFrontendComponent {
   /** @private */
@@ -25,7 +27,6 @@ export class Button extends GOVUKFrontendComponent {
   debounceFormSubmitTimer = null
 
   /**
-   *
    * @param {Element} $module - HTML element to use for button
    * @param {ButtonConfig} [config] - Button config
    */
