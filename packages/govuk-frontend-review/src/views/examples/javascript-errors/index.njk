@@ -1,0 +1,40 @@
+{% extends "layouts/layout.njk" %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-l">JavaScript errors</h1>
+  <p class="govuk-body-lead">
+    Open your <a class="govuk-link" href="https://developer.mozilla.org/en-US/docs/Web/API/console#see_also">brower's console</a>
+    to witness the error thrown in browsers where GOV.UK Frontend is not supported.
+  </p>
+  {{ govukCharacterCount({
+    label: {
+      text: 'Any other comment'
+    },
+    id: 'some-content',
+    name: 'some-content'
+  })}}
+{% endblock %}
+
+{% block bodyEnd %}
+
+  <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+
+  <script type="module">
+    import { Accordion } from '/javascripts/govuk-frontend.min.js'
+    // Simulate GOV.UK Frontend not being supported
+    document.body.classList.remove('govuk-frontend-supported')
+
+    // We don't want to use `initAll` as it returns early if govuk-frontend is not supported
+    const $element = document.querySelector('[data-module="govuk-character-count"]')
+    new Accordion($element)
+  </script>
+{% endblock %}
