@@ -2,6 +2,8 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
  * Skip link component
+ *
+ * @preserve
  */
 export class SkipLink extends GOVUKFrontendComponent {
   /** @private */
@@ -17,7 +19,6 @@ export class SkipLink extends GOVUKFrontendComponent {
   linkedElementListener = false
 
   /**
-   *
    * @param {Element} $module - HTML element to use for skip link
    */
   constructor($module) {

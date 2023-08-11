@@ -11,6 +11,27 @@ module.exports = function (api) {
   const browserslistEnv = isBrowser ? 'javascripts' : 'node'
 
   return {
+    generatorOpts: {
+      shouldPrintComment(comment) {
+        if (!isBrowser || comment.includes('* @preserve')) {
+          return true
+        }
+
+        // Assume all comments are public unless
+        // tagged with `@private` or `@internal`
+        const isPrivate = ['* @internal', '* @private'].some((tag) =>
+          comment.includes(tag)
+        )
+
+        // Flag any JSDoc comments worth keeping
+        const isDocumentation = ['* @param', '* @returns', '* @typedef'].some(
+          (tag) => comment.includes(tag)
+        )
+
+        // Print only public JSDoc comments
+        return !isPrivate && isDocumentation
+      }
+    },
     presets: [
       [
         '@babel/preset-env',

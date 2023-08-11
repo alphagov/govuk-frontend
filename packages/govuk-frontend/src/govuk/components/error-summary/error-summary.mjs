@@ -6,6 +6,8 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  * Error summary component
  *
  * Takes focus on initialisation for accessible announcement, unless disabled in configuration.
+ *
+ * @preserve
  */
 export class ErrorSummary extends GOVUKFrontendComponent {
   /** @private */
@@ -18,7 +20,6 @@ export class ErrorSummary extends GOVUKFrontendComponent {
   config
 
   /**
-   *
    * @param {Element} $module - HTML element to use for error summary
    * @param {ErrorSummaryConfig} [config] - Error summary config
    */

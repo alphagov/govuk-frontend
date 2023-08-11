@@ -2,6 +2,8 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
  * Tabs component
+ *
+ * @preserve
  */
 export class Tabs extends GOVUKFrontendComponent {
   /** @private */

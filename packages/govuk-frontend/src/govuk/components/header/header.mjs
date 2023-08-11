@@ -2,6 +2,8 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
  * Header component
+ *
+ * @preserve
  */
 export class Header extends GOVUKFrontendComponent {
   /** @private */

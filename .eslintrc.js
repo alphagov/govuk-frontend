@@ -43,11 +43,6 @@ module.exports = {
           }
         ],
 
-        // JSDoc blocks are optional
-        'jsdoc/require-jsdoc': 'off',
-        'jsdoc/require-param-description': 'off',
-        'jsdoc/require-param': 'off',
-
         // Check for valid formatting
         'jsdoc/check-line-alignment': [
           'warn',
@@ -56,6 +51,19 @@ module.exports = {
             wrapIndent: '  '
           }
         ],
+
+        // JSDoc blocks can use `@preserve` to prevent removal
+        'jsdoc/check-tag-names': [
+          'warn',
+          {
+            definedTags: ['preserve']
+          }
+        ],
+
+        // JSDoc blocks are optional
+        'jsdoc/require-jsdoc': 'off',
+        'jsdoc/require-param-description': 'off',
+        'jsdoc/require-param': 'off',
 
         // Require hyphens before param description
         // Aligns with TSDoc style: https://tsdoc.org/pages/tags/param/
