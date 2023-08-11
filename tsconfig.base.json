@@ -6,15 +6,26 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "noEmit": true,
+    "noImplicitThis": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": false,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
     "target": "ESNext",
-    "types": ["jest", "jest-axe", "jest-puppeteer", "node"],
+    "types": [],
     "paths": {
-      "govuk-frontend": ["./packages/govuk-frontend/src/govuk/all.mjs"]
+      "govuk-frontend": ["./packages/govuk-frontend/src/govuk/all.mjs"],
+      "govuk-frontend-stats": ["./shared/stats/src/index.mjs"],
+      "govuk-frontend-config": ["./shared/config/index.js"],
+      "govuk-frontend-helpers": ["./shared/helpers/index.js"],
+      "govuk-frontend-helpers/*": ["./shared/helpers/*.js"],
+      "govuk-frontend-helpers/jest/*": ["./shared/helpers/jest/*"],
+      "govuk-frontend-lib": ["./shared/lib/index.js"],
+      "govuk-frontend-lib/*": ["./shared/lib/*.js"]
     }
+  },
+  "typeAcquisition": {
+    "enable": false
   }
 }
