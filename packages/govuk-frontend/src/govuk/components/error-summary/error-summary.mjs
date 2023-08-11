@@ -1,12 +1,13 @@
 import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
  * Error summary component
  *
  * Takes focus on initialisation for accessible announcement, unless disabled in configuration.
  */
-export class ErrorSummary {
+export class ErrorSummary extends GOVUKFrontendComponent {
   /** @private */
   $module
 
@@ -22,17 +23,9 @@ export class ErrorSummary {
    * @param {ErrorSummaryConfig} [config] - Error summary config
    */
   constructor($module, config) {
-    // Some consuming code may not be passing a module,
-    // for example if they initialise the component
-    // on their own by directly passing the result
-    // of `document.querySelector`.
-    // To avoid breaking further JavaScript initialisation
-    // we need to safeguard against this so things keep
-    // working the same now we read the elements data attributes
-    if (
-      !($module instanceof HTMLElement) ||
-      !document.body.classList.contains('govuk-frontend-supported')
-    ) {
+    super()
+
+    if (!($module instanceof HTMLElement)) {
       return this
     }
 

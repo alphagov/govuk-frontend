@@ -712,6 +712,28 @@ describe('/components/accordion', () => {
             )
           })
         })
+
+        describe('errors at instantiation', () => {
+          let examples
+
+          beforeAll(async () => {
+            examples = await getExamples('accordion')
+          })
+
+          it('throws when GOV.UK Frontend is not supported', async () => {
+            await expect(
+              renderAndInitialise(page, 'accordion', {
+                params: examples.default,
+                beforeInitialisation() {
+                  document.body.classList.remove('govuk-frontend-supported')
+                }
+              })
+            ).rejects.toEqual({
+              name: 'SupportError',
+              message: 'GOV.UK Frontend is not supported in this browser'
+            })
+          })
+        })
       })
     })
   })

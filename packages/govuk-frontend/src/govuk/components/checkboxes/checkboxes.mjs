@@ -1,7 +1,9 @@
+import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
+
 /**
  * Checkboxes component
  */
-export class Checkboxes {
+export class Checkboxes extends GOVUKFrontendComponent {
   /** @private */
   $module
 
@@ -23,10 +25,9 @@ export class Checkboxes {
    * @param {Element} $module - HTML element to use for checkboxes
    */
   constructor($module) {
-    if (
-      !($module instanceof HTMLElement) ||
-      !document.body.classList.contains('govuk-frontend-supported')
-    ) {
+    super()
+
+    if (!($module instanceof HTMLElement)) {
       return this
     }
 

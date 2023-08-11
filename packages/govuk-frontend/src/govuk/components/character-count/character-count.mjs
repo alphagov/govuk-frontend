@@ -1,6 +1,7 @@
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
 import { extractConfigByNamespace, mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 import { I18n } from '../../i18n.mjs'
 
 /**
@@ -13,7 +14,7 @@ import { I18n } from '../../i18n.mjs'
  * You can configure the message to only appear after a certain percentage
  * of the available characters/words has been entered.
  */
-export class CharacterCount {
+export class CharacterCount extends GOVUKFrontendComponent {
   /** @private */
   $module
 
@@ -64,10 +65,9 @@ export class CharacterCount {
    * @param {CharacterCountConfig} [config] - Character count config
    */
   constructor($module, config) {
-    if (
-      !($module instanceof HTMLElement) ||
-      !document.body.classList.contains('govuk-frontend-supported')
-    ) {
+    super()
+
+    if (!($module instanceof HTMLElement)) {
       return this
     }
 

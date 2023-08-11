@@ -136,6 +136,40 @@ Avoid using namespace imports (`import * as namespace`) in code bundled for Comm
 
 Prefer named exports over default exports to avoid compatibility issues with transpiler "synthetic default" as discussed in: https://github.com/alphagov/govuk-frontend/issues/2829
 
+## Throwing errors
+
+### Error types
+
+First, check if one of the [native errors provides](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error#error_types) the right semantic for the error you're looking to throw, if so, use this class.
+
+If none of the native errors have the right semantics, create a new class for this error. This class should:
+
+- have a name ending in `Error` to match the native conventions
+- extend `GOVUKFrontendError`, so users can separate our custom errors from native ones using `instanceof`
+- have a `name` property set to its class name, as extending classes doesn't set this automatically and grabbing the constructor's name risks being affected by mangling during minification
+
+```js
+class CustomError extends GOVUKFrontendError {
+  name = 'CustomError'
+}
+```
+
+### Error message
+
+Keep the message to the point, but provide the users the information they need to identify the cause of the error.
+
+If the message is the same whatever the situation, you may use the constructor of our custom error to centralise that message, rather than passing it each time an error is thrown.
+
+```js
+class SupportError extends GOVUKFrontendError {
+  name = 'SupportError'
+
+  constructor () {
+    super('GOV.UK Frontend is not supported in this browser')
+  }
+}
+```
+
 ## Polyfilling
 
 If you need polyfills for features that are not yet included in this project, please see the following guide on [how to add polyfills](../polyfilling.md).

@@ -1,5 +1,6 @@
 import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 const KEY_SPACE = 32
 const DEBOUNCE_TIMEOUT_IN_SECONDS = 1
@@ -7,7 +8,7 @@ const DEBOUNCE_TIMEOUT_IN_SECONDS = 1
 /**
  * JavaScript enhancements for the Button component
  */
-export class Button {
+export class Button extends GOVUKFrontendComponent {
   /** @private */
   $module
 
@@ -29,10 +30,9 @@ export class Button {
    * @param {ButtonConfig} [config] - Button config
    */
   constructor($module, config) {
-    if (
-      !($module instanceof HTMLElement) ||
-      !document.body.classList.contains('govuk-frontend-supported')
-    ) {
+    super()
+
+    if (!($module instanceof HTMLElement)) {
       return this
     }
 

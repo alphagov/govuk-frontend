@@ -1,7 +1,9 @@
+import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
+
 /**
  * Tabs component
  */
-export class Tabs {
+export class Tabs extends GOVUKFrontendComponent {
   /** @private */
   $module
 
@@ -36,10 +38,9 @@ export class Tabs {
    * @param {Element} $module - HTML element to use for tabs
    */
   constructor($module) {
-    if (
-      !($module instanceof HTMLElement) ||
-      !document.body.classList.contains('govuk-frontend-supported')
-    ) {
+    super()
+
+    if (!($module instanceof HTMLElement)) {
       return this
     }
 

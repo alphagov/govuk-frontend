@@ -1,7 +1,9 @@
+import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
+
 /**
  * Header component
  */
-export class Header {
+export class Header extends GOVUKFrontendComponent {
   /** @private */
   $module
 
@@ -37,10 +39,9 @@ export class Header {
    * @param {Element} $module - HTML element to use for header
    */
   constructor($module) {
-    if (
-      !($module instanceof HTMLElement) ||
-      !document.body.classList.contains('govuk-frontend-supported')
-    ) {
+    super()
+
+    if (!($module instanceof HTMLElement)) {
       return this
     }
 

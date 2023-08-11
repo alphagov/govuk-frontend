@@ -62,21 +62,20 @@ async function axe(page, overrides = {}) {
  * Render and initialise a component within test boilerplate HTML
  *
  * Renders a component's Nunjucks macro with the given params, injects it into
- * the test boilerplate page, then either:
+ * the test boilerplate page, and instantiates the component class, passing the
+ * provided JavaScript configuration.
  *
- * - instantiates the component class, passing the provided JavaScript
- *   configuration
- * - runs the passed initialiser function inside the browser
- *   (which lets you instantiate it a different way, like using `initAll`,
- *   or run arbitrary code)
+ * It runs an optional `beforeInitialisation` function before initialising the
+ * components, allowing to tweak the state of the page before the component gets
+ * instantiated.
  *
  * @param {import('puppeteer').Page} page - Puppeteer page object
  * @param {string} componentName - The kebab-cased name of the component
  * @param {object} options - Render and initialise options
  * @param {object} options.params - Nunjucks macro params
  * @param {object} [options.config] - Component instantiation config
- * @param {($module: Element) => void} [options.initialiser] - A function that'll run in the
- *   browser to execute arbitrary initialisation
+ * @param {($module: Element) => void} [options.beforeInitialisation] - A function that'll run in the browser
+ *   before the component gets initialised
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
 async function renderAndInitialise(page, componentName, options) {
@@ -93,22 +92,45 @@ async function renderAndInitialise(page, componentName, options) {
     html
   )
 
+  // Call `beforeInitialisation` in a separate `$eval` call
+  // as running it inside the body of the next `evaluate`
+  // didn't provide a reliable execution
+  if (options.beforeInitialisation) {
+    await page.$eval('[data-module]', options.beforeInitialisation)
+  }
+
   // Run a script to init the JavaScript component
-  await page.evaluate(
+  //
+  // Use `evaluate` to ensure we run `document.querySelector` inside the
+  // browser, like users would, rather than rely on Puppeteer looking for the
+  // element which would cause an error in Jest-land rather than within the
+  // browser if the element is missingß
+  //
+  // Puppeteer returns very little information on errors thrown during
+  // `evaluate`, only a `name` that maps to the error class (and not its `name`
+  // property, which means we get a mangled value). As a workaround, we can
+  // gather and `return` the values we need from inside the browser, and throw
+  // them when back in Jest (to keep them triggering a Promise rejection)
+  const error = await page.evaluate(
     async (exportName, options) => {
       const $module = document.querySelector('[data-module]')
 
-      if (options.initialiser) {
-        options.initialiser($module)
-      }
-
       const namespace = await import('govuk-frontend')
-      /* eslint-disable-next-line no-new */
-      new namespace[exportName]($module, options.config)
+
+      try {
+        /* eslint-disable-next-line no-new */
+        new namespace[exportName]($module, options.config)
+      } catch ({ name, message }) {
+        return { name, message }
+      }
     },
     componentNameToClassName(componentName),
     options
   )
+
+  if (error) {
+    throw error
+  }
 
   return page
 }
