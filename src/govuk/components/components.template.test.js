@@ -3,7 +3,7 @@ const { join } = require('path')
 const { paths } = require('govuk-frontend-config')
 const { nunjucksEnv, renderHTML } = require('govuk-frontend-helpers/nunjucks')
 const {
-  getComponentsData,
+  getComponentsFixtures,
   getComponentNames
 } = require('govuk-frontend-lib/files')
 const { HtmlValidate } = require('html-validate')
@@ -30,19 +30,29 @@ describe('Components', () => {
   describe('Nunjucks environment', () => {
     it('renders template for each component', () => {
       return Promise.all(
-        componentNames.map((componentName) => {
-          const viewPath = `govuk/components/${componentName}/template.njk`
-          return expect(nunjucksEnvDefault.render(viewPath, {})).resolves
-        })
+        componentNames.map(
+          (componentName) =>
+            expect(
+              nunjucksEnvDefault.render(
+                `govuk/components/${componentName}/template.njk`,
+                {}
+              )
+            ).resolves
+        )
       )
     })
 
     it('renders template for each component (different base path)', () => {
       return Promise.all(
-        componentNames.map((componentName) => {
-          const viewPath = `components/${componentName}/template.njk`
-          return expect(nunjucksEnvCustom.render(viewPath, {})).resolves
-        })
+        componentNames.map(
+          (componentName) =>
+            expect(
+              nunjucksEnvCustom.render(
+                `components/${componentName}/template.njk`,
+                {}
+              )
+            ).resolves
+        )
       )
     })
   })
@@ -122,13 +132,13 @@ describe('Components', () => {
     })
 
     it('renders valid HTML for each component example', async () => {
-      const componentsData = await getComponentsData()
+      const componentsFixtures = await getComponentsFixtures()
 
       // Validate component examples
-      for (const { name: componentName, examples } of componentsData) {
-        const exampleTasks = examples.map(
-          async ({ name: exampleName, data }) => {
-            const html = renderHTML(componentName, data)
+      for (const { component: componentName, fixtures } of componentsFixtures) {
+        const fixtureTasks = fixtures.map(
+          async ({ name: exampleName, options }) => {
+            const html = renderHTML(componentName, options)
 
             // Validate HTML
             return expect({
@@ -144,7 +154,7 @@ describe('Components', () => {
         )
 
         // Validate all component examples in parallel
-        await Promise.all(exampleTasks)
+        await Promise.all(fixtureTasks)
       }
     }, 30000)
   })

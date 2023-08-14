@@ -38,13 +38,13 @@ params:
 
 examples:
   - name: default
-    data:
+    options:
       summaryText: Help with nationality
       text: We need to know your nationality so we can work out which elections
         you’re entitled to vote in. If you can’t provide your nationality,
         you’ll have to send copies of identity documents through the post.
   - name: expanded
-    data:
+    options:
       id: help-with-nationality
       summaryText: Help with nationality
       text: We need to know your nationality so we can work out which elections
@@ -52,7 +52,7 @@ examples:
         you’ll have to send copies of identity documents through the post.
       open: true
   - name: with html
-    data:
+    options:
       summaryText: Where to find your National Insurance Number
       html: |
         Your National Insurance number can be found on
@@ -67,39 +67,39 @@ examples:
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: id
     hidden: true
-    data:
+    options:
       id: my-details-element
       summaryText: Expand this section
       text: Here are some more details
   - name: html as text
     hidden: true
-    data:
+    options:
       summaryText: Expand this section
       text: More about the greater than symbol (>)
   - name: html
     hidden: true
-    data:
+    options:
       summaryText: Expand this section
       html: More about <b>bold text</b>
   - name: summary html as text
     hidden: true
-    data:
+    options:
       summaryText: The greater than symbol (>) is the best
       text: Here are some more details
   - name: summary html
     hidden: true
-    data:
+    options:
       summaryHtml: Use <b>bold text</b> sparingly
       text: Here are some more details
   - name: classes
     hidden: true
-    data:
+    options:
       classes: some-additional-class
       text: Here are some more details
       summaryText: Expand me
   - name: attributes
     hidden: true
-    data:
+    options:
       text: Here are some more details
       summaryText: Expand me
       attributes:

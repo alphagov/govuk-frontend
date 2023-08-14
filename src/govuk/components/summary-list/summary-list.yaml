@@ -163,7 +163,7 @@ params:
 
 examples:
   - name: default
-    data:
+    options:
       rows:
         - key:
             text: Name
@@ -188,7 +188,7 @@ examples:
                 Address line 5
               </p>
   - name: with actions
-    data:
+    options:
       rows:
         - key:
             text: Name
@@ -234,7 +234,7 @@ examples:
                 text: Change
                 visuallyHiddenText: contact information
   - name: translated
-    data:
+    options:
       rows:
         - key:
             text: Enw
@@ -277,7 +277,7 @@ examples:
                 html: Golygu<span class="govuk-visually-hidden"> gwybodaeth cyswllt</span>
                 visuallyHiddenText: ''
   - name: with some actions
-    data:
+    options:
       rows:
         - key:
             text: Name
@@ -310,7 +310,7 @@ examples:
                 Address line 5
               </p>
   - name: with no first action
-    data:
+    options:
       rows:
         - key:
             text: Name
@@ -360,7 +360,7 @@ examples:
                 text: Change
                 visuallyHiddenText: licence period
   - name: no-border
-    data:
+    options:
       classes: govuk-summary-list--no-border
       rows:
         - key:
@@ -386,7 +386,7 @@ examples:
                 Address line 5
               </p>
   - name: no-border on last row
-    data:
+    options:
       rows:
         - key:
             text: Name
@@ -412,7 +412,7 @@ examples:
               </p>
           classes: govuk-summary-list__row--no-border
   - name: overridden-widths
-    data:
+    options:
       rows:
         - key:
             classes: govuk-!-width-one-half
@@ -461,7 +461,7 @@ examples:
                 text: Change
                 visuallyHiddenText: contact information
   - name: check-your-answers
-    data:
+    options:
       rows:
         - key:
             text: Name
@@ -548,7 +548,7 @@ examples:
                 text: Change
                 visuallyHiddenText: licence period
   - name: extreme
-    data:
+    options:
       rows:
         - key:
             text: Name
@@ -727,7 +727,7 @@ examples:
               - href: '#'
                 text: Format
   - name: as a summary card with a text header
-    data:
+    options:
       card:
         title:
           text: Undergraduate teaching assistant
@@ -741,7 +741,7 @@ examples:
           value:
             text: 13/08/1980
   - name: as a summary card with a custom header level
-    data:
+    options:
       card:
         title:
           text: Undergraduate teaching assistant
@@ -756,7 +756,7 @@ examples:
           value:
             text: 13/08/1980
   - name: as a summary card with a html header
-    data:
+    options:
       card:
         title:
           html: <em>Undergraduate teaching assistant</em>
@@ -770,7 +770,7 @@ examples:
           value:
             text: 13/08/1980
   - name: as a summary card with actions
-    data:
+    options:
       card:
         title:
           text: Undergraduate teaching assistant
@@ -790,7 +790,7 @@ examples:
           value:
             text: 13/08/1980
   - name: as a summary card with actions plus summary list actions
-    data:
+    options:
       card:
         title:
           text: Undergraduate teaching assistant
@@ -825,7 +825,7 @@ examples:
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: attributes
     hidden: true
-    data:
+    options:
       rows:
         - key:
             text: Name
@@ -836,7 +836,7 @@ examples:
         data-attribute-2: value-2
   - name: with falsey values
     hidden: true
-    data:
+    options:
       rows:
         - key:
             text: Name
@@ -851,7 +851,7 @@ examples:
             text: Firstname2 Lastname2
   - name: key with html
     hidden: true
-    data:
+    options:
       rows:
         - key:
             html: <b>Name</b>
@@ -859,7 +859,7 @@ examples:
             html: <strong>Firstname Lastname</strong>
   - name: key with classes
     hidden: true
-    data:
+    options:
       rows:
         - key:
             text: Name
@@ -868,7 +868,7 @@ examples:
             text: Firstname Lastname
   - name: value with html
     hidden: true
-    data:
+    options:
       rows:
         - key:
             text: Name
@@ -876,7 +876,7 @@ examples:
             html: <span>email@email.com</span>
   - name: actions href
     hidden: true
-    data:
+    options:
       rows:
         - key:
             text: Name
@@ -888,7 +888,7 @@ examples:
                 text: Go to GOV.UK
   - name: actions with html
     hidden: true
-    data:
+    options:
       rows:
         - key:
             text: Name
@@ -900,7 +900,7 @@ examples:
                 href: '#'
   - name: actions with classes
     hidden: true
-    data:
+    options:
       rows:
         - key:
             text: Name
@@ -913,7 +913,7 @@ examples:
                 href: '/edit'
   - name: actions with attributes
     hidden: true
-    data:
+    options:
       rows:
         - key:
             text: Name
@@ -928,7 +928,7 @@ examples:
                   data-test-attribute-2: value-2
   - name: single action with anchor
     hidden: true
-    data:
+    options:
       rows:
         - key:
             text: Name
@@ -940,7 +940,7 @@ examples:
                 href: '#'
   - name: classes on items
     hidden: true
-    data:
+    options:
       rows:
         - key:
             text: Name
@@ -953,7 +953,7 @@ examples:
                 classes: govuk-link--no-visited-state
   - name: empty items array
     hidden: true
-    data:
+    options:
       rows:
         - key:
             text: Name
@@ -963,7 +963,7 @@ examples:
             items: []
   - name: rows with classes
     hidden: true
-    data:
+    options:
       rows:
         - key:
             text: Name
@@ -972,7 +972,7 @@ examples:
           classes: app-custom-class
   - name: summary card with custom classes
     hidden: true
-    data:
+    options:
       card:
         classes: custom-class
       rows:
@@ -986,7 +986,7 @@ examples:
             text: 13/08/1980
   - name: summary card with custom attributes
     hidden: true
-    data:
+    options:
       card:
         attributes:
           data-attribute-1: value-1
@@ -1002,7 +1002,7 @@ examples:
             text: 13/08/1980
   - name: summary card with only 1 action
     hidden: true
-    data:
+    options:
       card:
         title:
           text: Undergraduate teaching assistant

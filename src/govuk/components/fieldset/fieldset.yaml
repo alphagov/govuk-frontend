@@ -47,55 +47,55 @@ params:
 
 examples:
   - name: default
-    data:
+    options:
       legend:
         text: What is your address?
   - name: styled as xl text
-    data:
+    options:
       legend:
         text: What is your address?
         classes: govuk-fieldset__legend--xl
   - name: styled as large text
-    data:
+    options:
       legend:
         text: What is your address?
         classes: govuk-fieldset__legend--l
   - name: styled as medium text
-    data:
+    options:
       legend:
         text: What is your address?
         classes: govuk-fieldset__legend--m
   - name: styled as small text
-    data:
+    options:
       legend:
         text: What is your address?
         classes: govuk-fieldset__legend--s
   - name: as page heading xl
-    data:
+    options:
       legend:
         text: What is your address?
         classes: govuk-fieldset__legend--xl
         isPageHeading: true
   - name: as page heading l
-    data:
+    options:
       legend:
         text: What is your address?
         classes: govuk-fieldset__legend--l
         isPageHeading: true
   - name: as page heading m
-    data:
+    options:
       legend:
         text: What is your address?
         classes: govuk-fieldset__legend--m
         isPageHeading: true
   - name: as page heading s
-    data:
+    options:
       legend:
         text: What is your address?
         classes: govuk-fieldset__legend--s
         isPageHeading: true
   - name: as page heading without class
-    data:
+    options:
       legend:
         text: What is your address?
         isPageHeading: true
@@ -103,7 +103,7 @@ examples:
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: html fieldset content
     hidden: true
-    data:
+    options:
       legend:
         text: What is your address?
       html: |
@@ -112,41 +112,41 @@ examples:
         </div>
   - name: with describedBy
     hidden: true
-    data:
+    options:
       describedBy: some-id
       legend:
         text: Which option?
   - name: html as text
     hidden: true
-    data:
+    options:
       legend:
         text: What is <b>your</b> address?
   - name: html
     hidden: true
-    data:
+    options:
       legend:
         html: What is <b>your</b> address?
   - name: legend classes
     hidden: true
-    data:
+    options:
       legend:
         text: What is your address?
         classes: my-custom-class
   - name: classes
     hidden: true
-    data:
+    options:
       classes: app-fieldset--custom-modifier
       legend:
         text: Which option?
   - name: role
     hidden: true
-    data:
+    options:
       role: group
       legend:
         text: Which option?
   - name: attributes
     hidden: true
-    data:
+    options:
       attributes:
         data-attribute: value
       legend:

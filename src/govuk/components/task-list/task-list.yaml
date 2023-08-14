@@ -79,7 +79,7 @@ params:
 
 examples:
   - name: default
-    data:
+    options:
       items:
         - title:
             text: Company Directors
@@ -104,7 +104,7 @@ examples:
               classes: govuk-tag--blue
 
   - name: example with 3 states
-    data:
+    options:
       items:
         - title:
             text: Company Directors
@@ -134,7 +134,7 @@ examples:
               classes: govuk-tag--light-blue
 
   - name: example with hint text and additional states
-    data:
+    options:
       items:
         - title:
             text: Company Directors
@@ -180,7 +180,7 @@ examples:
             classes: govuk-task-list__status--cannot-start-yet
 
   - name: example with all possible colours
-    data:
+    options:
       items:
         - title:
             text: Task A
@@ -267,7 +267,7 @@ examples:
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: custom classes
     hidden: true
-    data:
+    options:
       classes: custom-class-on-component
       items:
         - title:
@@ -290,7 +290,7 @@ examples:
 
   - name: custom attributes
     hidden: true
-    data:
+    options:
       attributes:
         data-custom-attribute: custom-value
       items:
@@ -305,7 +305,7 @@ examples:
 
   - name: custom id prefix
     hidden: true
-    data:
+    options:
       idPrefix: my-custom-id
       items:
         - title:
@@ -319,7 +319,7 @@ examples:
 
   - name: html passed as text
     hidden: true
-    data:
+    options:
       idPrefix: my-custom-id
       items:
         - title:
@@ -337,7 +337,7 @@ examples:
 
   - name: html
     hidden: true
-    data:
+    options:
       idPrefix: my-custom-id
       items:
         - title:

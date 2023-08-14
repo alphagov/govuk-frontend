@@ -40,47 +40,47 @@ accessibilityCriteria: |
 
 examples:
   - name: default
-    data:
+    options:
       text: Error message about full name goes here
 
   - name: translated
-    data:
+    options:
       visuallyHiddenText: ''
       html: <span class="govuk-visually-hidden">Gwall:</span> Neges gwall am yr enw llawn yn mynd yma
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: id
     hidden: true
-    data:
+    options:
       id: my-error-message-id
       text: This is an error message
   - name: classes
     hidden: true
-    data:
+    options:
       classes: custom-class
       text: This is an error message
   - name: html as text
     hidden: true
-    data:
+    options:
       text: Unexpected > in body
   - name: html
     hidden: true
-    data:
+    options:
       html: Unexpected <b>bold text</b> in body copy
   - name: attributes
     hidden: true
-    data:
+    options:
       text: This is an error message
       attributes:
         data-test: attribute
         id: my-error-message
   - name: with visually hidden text
     hidden: true
-    data:
+    options:
       text: Rhowch eich enw llawn
       visuallyHiddenText: Gwall
   - name: visually hidden text removed
     hidden: true
-    data:
+    options:
       text: There is an error on line 42
       visuallyHiddenText: ''
