@@ -2,7 +2,7 @@ const {
   goToExample,
   renderAndInitialise
 } = require('govuk-frontend-helpers/puppeteer')
-const { getExamples } = require('govuk-frontend-lib/files.js')
+const { getExamples } = require('govuk-frontend-lib/components')
 
 describe('Skip Link', () => {
   describe('/examples/template-default', () => {

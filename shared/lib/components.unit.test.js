@@ -1,4 +1,4 @@
-const { getComponentFixtures } = require('./files.js')
+const { getComponentFixtures } = require('./components.js')
 
 describe('getComponentFixtures', () => {
   it('rejects if unable to load component fixtures', async () => {

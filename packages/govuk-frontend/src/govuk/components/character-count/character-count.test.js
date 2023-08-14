@@ -2,7 +2,7 @@ const {
   goToComponent,
   renderAndInitialise
 } = require('govuk-frontend-helpers/puppeteer')
-const { getExamples } = require('govuk-frontend-lib/files')
+const { getExamples } = require('govuk-frontend-lib/components')
 
 describe('Character count', () => {
   let examples

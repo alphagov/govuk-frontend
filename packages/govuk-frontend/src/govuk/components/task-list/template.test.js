@@ -1,5 +1,5 @@
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { getExamples } = require('govuk-frontend-lib/files')
+const { getExamples } = require('govuk-frontend-lib/components')
 
 describe('Task List', () => {
   let examples

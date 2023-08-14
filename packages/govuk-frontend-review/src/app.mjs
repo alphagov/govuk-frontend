@@ -1,9 +1,9 @@
 import express from 'express'
 import {
   getComponentsFixtures,
-  getComponentNames,
-  filterPath
-} from 'govuk-frontend-lib/files'
+  getComponentNames
+} from 'govuk-frontend-lib/components'
+import { filterPath } from 'govuk-frontend-lib/files'
 import { componentNameToMacroName } from 'govuk-frontend-lib/names'
 import { getStats, modulePaths } from 'govuk-frontend-stats'
 import { outdent } from 'outdent'
@@ -208,5 +208,5 @@ export default async () => {
 }
 
 /**
- * @typedef {import('govuk-frontend-lib/files').ComponentFixtures} ComponentFixtures
+ * @typedef {import('govuk-frontend-lib/components').ComponentFixtures} ComponentFixtures
  */
