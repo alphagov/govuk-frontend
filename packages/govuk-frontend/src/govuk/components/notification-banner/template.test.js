@@ -1,5 +1,5 @@
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { getExamples } = require('govuk-frontend-lib/files')
+const { getExamples } = require('govuk-frontend-lib/components')
 
 describe('Notification-banner', () => {
   let examples
@@ -172,7 +172,9 @@ describe('Notification-banner', () => {
       const $ = render(
         'notification-banner',
         {},
-        '<div class="app-nested-component"></div>'
+        {
+          callBlock: '<div class="app-nested-component"></div>'
+        }
       )
 
       expect(

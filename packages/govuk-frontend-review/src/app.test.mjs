@@ -1,7 +1,7 @@
 import { load } from 'cheerio'
 import { ports } from 'govuk-frontend-config'
 import { fetchPath } from 'govuk-frontend-helpers/tests'
-import { getComponentNames } from 'govuk-frontend-lib/files'
+import { getComponentNames } from 'govuk-frontend-lib/components'
 
 const expectedPages = [
   '/',

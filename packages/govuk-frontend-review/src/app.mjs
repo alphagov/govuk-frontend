@@ -1,12 +1,13 @@
 import express from 'express'
+import { paths } from 'govuk-frontend-config'
 import {
   getComponentsFixtures,
   getComponentNames,
-  filterPath
-} from 'govuk-frontend-lib/files'
-import { componentNameToMacroName } from 'govuk-frontend-lib/names'
+  getComponentNamesFiltered,
+  renderComponent
+} from 'govuk-frontend-lib/components'
+import { filterPath } from 'govuk-frontend-lib/files'
 import { getStats, modulePaths } from 'govuk-frontend-stats'
-import { outdent } from 'outdent'
 
 import { getExampleNames, getFullPageExamples } from './common/lib/files.mjs'
 import * as middleware from './common/middleware/index.mjs'
@@ -16,6 +17,10 @@ import * as routes from './routes/index.mjs'
 export default async () => {
   const app = express()
 
+  // Resolve GOV.UK Frontend from review app `node_modules`
+  // to allow previous versions to be installed locally
+  const packageOptions = { moduleRoot: paths.app }
+
   // Cache mapped components and examples
   const [
     componentsFixtures,
@@ -24,14 +29,16 @@ export default async () => {
     exampleNames,
     fullPageExamples
   ] = await Promise.all([
-    getComponentsFixtures(),
+    getComponentsFixtures(packageOptions),
 
     // Components list
-    getComponentNames(),
+    getComponentNames(packageOptions),
 
     // Components list (with JavaScript only)
-    getComponentNames((componentName, componentFiles) =>
-      componentFiles.some(filterPath([`**/${componentName}.mjs`]))
+    getComponentNamesFiltered(
+      (componentName, componentFiles) =>
+        componentFiles.some(filterPath([`**/${componentName}.mjs`])),
+      packageOptions
     ),
 
     getExampleNames(),
@@ -148,15 +155,10 @@ export default async () => {
       }
 
       // Construct and evaluate the component with the data for this example
-      const macroName = componentNameToMacroName(componentName)
-      const macroParameters = JSON.stringify(fixture.options, null, '\t')
-
-      res.locals.componentView = env.renderString(
-        outdent`
-      {% from "govuk/components/${componentName}/macro.njk" import ${macroName} %}
-      {{ ${macroName}(${macroParameters}) }}
-    `,
-        {}
+      res.locals.componentView = renderComponent(
+        componentName,
+        fixture.options,
+        { env }
       )
 
       let bodyClasses = 'app-template__body'
@@ -208,5 +210,5 @@ export default async () => {
 }
 
 /**
- * @typedef {import('govuk-frontend-lib/files').ComponentFixtures} ComponentFixtures
+ * @typedef {import('govuk-frontend-lib/components').ComponentFixtures} ComponentFixtures
  */

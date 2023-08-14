@@ -1,15 +1,13 @@
 const { join } = require('path')
 
 const { paths } = require('govuk-frontend-config')
-const { nunjucksEnv, renderHTML } = require('govuk-frontend-helpers/nunjucks')
 const {
   getComponentsFixtures,
-  getComponentNames
-} = require('govuk-frontend-lib/files')
+  getComponentNames,
+  nunjucksEnv,
+  renderComponent
+} = require('govuk-frontend-lib/components')
 const { HtmlValidate } = require('html-validate')
-// We can't use the render function from jest-helpers, because we need control
-// over the nunjucks environment.
-const nunjucks = require('nunjucks')
 
 describe('Components', () => {
   let nunjucksEnvCustom
@@ -18,10 +16,10 @@ describe('Components', () => {
   let componentNames
 
   beforeAll(async () => {
-    // Create a new Nunjucks environment that uses the src directory as its
-    // base path, rather than the components folder itself
-    nunjucksEnvCustom = nunjucks.configure(join(paths.package, 'src/govuk'))
-    nunjucksEnvDefault = nunjucksEnv
+    // Create a new Nunjucks environment that uses the `src/govuk` directory as
+    // its first search path, rather than default to `src` (no 'govuk' prefix)
+    nunjucksEnvCustom = nunjucksEnv([join(paths.package, 'src/govuk')])
+    nunjucksEnvDefault = nunjucksEnv()
 
     // Components list
     componentNames = await getComponentNames()
@@ -138,7 +136,7 @@ describe('Components', () => {
       for (const { component: componentName, fixtures } of componentsFixtures) {
         const fixtureTasks = fixtures.map(
           async ({ name: exampleName, options }) => {
-            const html = renderHTML(componentName, options)
+            const html = renderComponent(componentName, options)
 
             // Validate HTML
             return expect({

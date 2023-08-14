@@ -1,9 +1,8 @@
 const { AxePuppeteer } = require('@axe-core/puppeteer')
 const { ports } = require('govuk-frontend-config')
+const { renderComponent } = require('govuk-frontend-lib/components')
 const { componentNameToClassName } = require('govuk-frontend-lib/names')
 const slug = require('slug')
-
-const { renderHTML } = require('./nunjucks')
 
 /**
  * Axe Puppeteer reporter
@@ -72,8 +71,8 @@ async function axe(page, overrides = {}) {
  * @param {import('puppeteer').Page} page - Puppeteer page object
  * @param {string} componentName - The kebab-cased name of the component
  * @param {object} options - Render and initialise options
- * @param {object} options.params - Nunjucks macro params
- * @param {object} [options.config] - Component instantiation config
+ * @param {MacroOptions} [options.params] - Nunjucks macro options (or params)
+ * @param {Config[ConfigKey]} [options.config] - Component config (optional)
  * @param {($module: Element) => void} [options.beforeInitialisation] - A function that'll run in the browser
  *   before the component gets initialised
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
@@ -81,7 +80,7 @@ async function axe(page, overrides = {}) {
 async function renderAndInitialise(page, componentName, options) {
   await goTo(page, '/tests/boilerplate')
 
-  const html = renderHTML(componentName, options.params)
+  const html = renderComponent(componentName, options.params)
 
   // Inject rendered HTML into the page
   await page.$eval(
@@ -251,3 +250,9 @@ module.exports = {
   getAccessibleName,
   isVisible
 }
+
+/**
+ * @typedef {import('govuk-frontend-lib/components').MacroOptions} MacroOptions
+ * @typedef {import('govuk-frontend').Config} Config - Config for all components via `initAll()`
+ * @typedef {keyof Config} ConfigKey - Component config keys, e.g. `accordion` and `characterCount`
+ */

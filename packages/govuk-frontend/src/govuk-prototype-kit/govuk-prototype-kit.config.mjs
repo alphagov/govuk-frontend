@@ -1,10 +1,7 @@
 import { join } from 'path'
 
-import {
-  filterPath,
-  getComponentNames,
-  getListing
-} from 'govuk-frontend-lib/files'
+import { getComponentNames } from 'govuk-frontend-lib/components'
+import { filterPath, getListing } from 'govuk-frontend-lib/files'
 import {
   componentNameToMacroName,
   packageNameToPath

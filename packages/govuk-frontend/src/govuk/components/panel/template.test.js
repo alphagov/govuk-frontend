@@ -1,5 +1,5 @@
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { getExamples } = require('govuk-frontend-lib/files')
+const { getExamples } = require('govuk-frontend-lib/components')
 
 describe('Panel', () => {
   let examples
@@ -63,7 +63,13 @@ describe('Panel', () => {
     })
 
     it('renders nested components using `call`', () => {
-      const $ = render('panel', {}, '<div class="app-nested-component"></div>')
+      const $ = render(
+        'panel',
+        {},
+        {
+          callBlock: '<div class="app-nested-component"></div>'
+        }
+      )
 
       expect($('.govuk-panel .app-nested-component').length).toBeTruthy()
     })

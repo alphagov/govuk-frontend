@@ -3,7 +3,7 @@ const {
   goToComponent,
   renderAndInitialise
 } = require('govuk-frontend-helpers/puppeteer')
-const { getExamples } = require('govuk-frontend-lib/files')
+const { getExamples } = require('govuk-frontend-lib/components')
 
 describe('/components/button', () => {
   let examples
@@ -92,9 +92,9 @@ describe('/components/button', () => {
                 counts.debounce++
                 el.dataset.debounceCount = `${counts.debounce}`
               }
-            },
 
-            // Add listener during capture phase to spy on event
+              // Add listener during capture phase to spy on event
+            },
             { capture: true }
           ),
         counts

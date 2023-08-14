@@ -33,7 +33,6 @@
     "iframe-resizer": "^4.3.6",
     "js-beautify": "^1.14.9",
     "marked": "^7.0.0",
-    "nunjucks": "^3.2.4",
     "outdent": "^0.8.0",
     "shuffle-seed": "^1.1.6",
     "slug": "^8.2.3"
@@ -57,5 +56,8 @@
     "slash": "^5.1.0",
     "supertest": "^6.3.3",
     "typedoc": "^0.24.8"
+  },
+  "optionalDependencies": {
+    "nunjucks": "^3.2.4"
   }
 }

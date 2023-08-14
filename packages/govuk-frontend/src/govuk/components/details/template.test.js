@@ -1,5 +1,5 @@
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { getExamples } = require('govuk-frontend-lib/files')
+const { getExamples } = require('govuk-frontend-lib/components')
 
 describe('Details', () => {
   let examples
@@ -45,7 +45,13 @@ describe('Details', () => {
   })
 
   it('renders nested components using `call`', () => {
-    const $ = render('details', {}, '<div class="app-nested-component"></div>')
+    const $ = render(
+      'details',
+      {},
+      {
+        callBlock: '<div class="app-nested-component"></div>'
+      }
+    )
 
     expect($('.govuk-details .app-nested-component').length).toBeTruthy()
   })
