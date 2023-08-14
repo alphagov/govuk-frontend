@@ -54,13 +54,13 @@ params:
 
 examples:
   - name: default
-    data:
+    options:
       id: file-upload-1
       name: file-upload-1
       label:
         text: Upload a file
   - name: with hint text
-    data:
+    options:
       id: file-upload-2
       name: file-upload-2
       label:
@@ -68,7 +68,7 @@ examples:
       hint:
         text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
   - name: with error message and hint
-    data:
+    options:
       id: file-upload-3
       name: file-upload-3
       label:
@@ -78,14 +78,14 @@ examples:
       errorMessage:
         text: Error message goes here
   - name: with value
-    data:
+    options:
       id: file-upload-4
       name: file-upload-4
       value: C:\fakepath\myphoto.jpg
       label:
         text: Upload a photo
   - name: with label as page heading
-    data:
+    options:
       id: file-upload-1
       name: file-upload-1
       label:
@@ -93,7 +93,7 @@ examples:
         classes: govuk-label--l
         isPageHeading: true
   - name: with optional form-group classes
-    data:
+    options:
       id: file-upload-1
       name: file-upload-1
       label:
@@ -104,7 +104,7 @@ examples:
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: attributes
     hidden: true
-    data:
+    options:
       id: file-upload-attributes
       name: file-upload-attributes
       label:
@@ -113,7 +113,7 @@ examples:
         accept: .jpg, .jpeg, .png
   - name: classes
     hidden: true
-    data:
+    options:
       id: file-upload-classes
       name: file-upload-classes
       label:
@@ -121,7 +121,7 @@ examples:
       classes: app-file-upload--custom-modifier
   - name: with describedBy
     hidden: true
-    data:
+    options:
       id: file-upload-describedby
       name: file-upload-describedby
       label:
@@ -129,7 +129,7 @@ examples:
       describedBy: some-id
   - name: with hint and describedBy
     hidden: true
-    data:
+    options:
       id: file-upload-hint-describedby
       name: file-upload-hint-describedby
       label:
@@ -139,7 +139,7 @@ examples:
         text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
   - name: error
     hidden: true
-    data:
+    options:
       id: file-upload-with-error
       name: file-upload-with-error
       label:
@@ -148,7 +148,7 @@ examples:
         text: Error message
   - name: with error and describedBy
     hidden: true
-    data:
+    options:
       id: file-upload-error-describedby
       name: file-upload-error-describedby
       label:
@@ -158,7 +158,7 @@ examples:
         text: Error message
   - name: with error, describedBy and hint
     hidden: true
-    data:
+    options:
       id: file-upload-error-describedby-hint
       name: file-upload-error-describedby-hint
       label:

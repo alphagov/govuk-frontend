@@ -79,7 +79,7 @@ params:
 
 examples:
   - name: default
-    data:
+    options:
       id: select-1
       name: select-1
       label:
@@ -94,14 +94,14 @@ examples:
           text: GOV.UK frontend option 3
           disabled: true
   - name: with no items
-    data:
+    options:
       id: select-1
       name: select-1
       label:
         text: Horse with no name
       items: []
   - name: with selected value
-    data:
+    options:
       id: select-1
       name: select-1
       label:
@@ -116,7 +116,7 @@ examples:
           disabled: true
       value: 2
   - name: with hint text and error message
-    data:
+    options:
       id: select-2
       name: select-2
       label:
@@ -133,7 +133,7 @@ examples:
         - value: 3
           text: GOV.UK frontend option 3
   - name: with label as page heading
-    data:
+    options:
       id: select-3
       name: select-3
       label:
@@ -150,7 +150,7 @@ examples:
           text: GOV.UK frontend option 3
           disabled: true
   - name: with full width override
-    data:
+    options:
       id: select-1
       name: select-1
       classes: govuk-!-width-full
@@ -166,7 +166,7 @@ examples:
           text: GOV.UK frontend option 3
           disabled: true
   - name: with optional form-group classes
-    data:
+    options:
       id: select-1
       name: select-1
       classes: govuk-!-width-full
@@ -187,7 +187,7 @@ examples:
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: with describedBy
     hidden: true
-    data:
+    options:
       id: with-describedby
       name: with-describedby
       label:
@@ -200,7 +200,7 @@ examples:
       describedBy: some-id
   - name: attributes
     hidden: true
-    data:
+    options:
       id: with-attributes
       name: with-attributes
       label:
@@ -214,7 +214,7 @@ examples:
         data-attribute: my data value
   - name: attributes on items
     hidden: true
-    data:
+    options:
       id: with-item-attributes
       name: with-item-attributes
       label:
@@ -233,7 +233,7 @@ examples:
             data-second-attribute: JKL
   - name: with falsey items
     hidden: true
-    data:
+    options:
       id: with-falsey-items
       name: with-falsey-items
       label:
@@ -248,7 +248,7 @@ examples:
           value: 2
   - name: hint
     hidden: true
-    data:
+    options:
       id: select-with-hint
       name: select-with-hint
       label:
@@ -257,7 +257,7 @@ examples:
         text: Hint text goes here
   - name: hint and describedBy
     hidden: true
-    data:
+    options:
       id: select-with-hint
       name: select-with-hint
       label:
@@ -272,7 +272,7 @@ examples:
           text: GOV.UK frontend option 2
   - name: error
     hidden: true
-    data:
+    options:
       id: select-with-error
       name: select-with-error
       label:
@@ -286,7 +286,7 @@ examples:
           text: GOV.UK frontend option 2
   - name: error and describedBy
     hidden: true
-    data:
+    options:
       id: select-with-error
       name: select-with-error
       label:
@@ -302,7 +302,7 @@ examples:
 
   - name: without values
     hidden: true
-    data:
+    options:
       name: colors
       id: colors
       label:
@@ -314,7 +314,7 @@ examples:
 
   - name: without values with selected value
     hidden: true
-    data:
+    options:
       name: colors
       id: colors
       label:
@@ -327,7 +327,7 @@ examples:
 
   - name: with falsey values
     hidden: true
-    data:
+    options:
       name: falsey-values
       id: falsey-values
       label:
@@ -342,7 +342,7 @@ examples:
 
   - name: item selected overrides value
     hidden: true
-    data:
+    options:
       name: colors
       id: colors
       label:

@@ -1,50 +1,35 @@
-const { getComponentData } = require('./files.js')
+const { getComponentFixtures } = require('./files.js')
 
-describe('getComponentData', () => {
-  it('rejects if unable to load component data', async () => {
-    await expect(getComponentData('not-a-real-component')).rejects.toThrow(
-      /ENOENT: no such file or directory/
+describe('getComponentFixtures', () => {
+  it('rejects if unable to load component fixtures', async () => {
+    await expect(getComponentFixtures('not-a-real-component')).rejects.toThrow(
+      /Cannot find module/
     )
   })
 
-  it('outputs objects with an array of params and examples', async () => {
+  it('outputs object with an array of fixtures', async () => {
     const componentName = 'accordion'
-    const componentData = await getComponentData(componentName)
+    const componentFixtures = await getComponentFixtures(componentName)
 
-    expect(componentData).toEqual(
+    expect(componentFixtures).toEqual(
       expect.objectContaining({
-        name: componentName,
-        params: expect.arrayContaining([expect.any(Object)]),
-        examples: expect.arrayContaining([expect.any(Object)])
+        component: componentName,
+        fixtures: expect.arrayContaining([expect.any(Object)])
       })
     )
   })
 
-  it('outputs a param for each object with the expected attributes', async () => {
+  it('contains fixture objects with the expected attributes', async () => {
     const componentName = 'accordion'
-    const { params } = await getComponentData(componentName)
+    const { fixtures } = await getComponentFixtures(componentName)
 
-    params.forEach((param) =>
-      expect(param).toEqual(
+    fixtures.forEach((fixture) =>
+      expect(fixture).toEqual(
         expect.objectContaining({
           name: expect.any(String),
-          type: expect.any(String),
-          required: expect.any(Boolean),
-          description: expect.any(String)
-        })
-      )
-    )
-  })
-
-  it('contains example objects with the expected attributes', async () => {
-    const componentName = 'accordion'
-    const { examples } = await getComponentData(componentName)
-
-    examples.forEach((example) =>
-      expect(example).toEqual(
-        expect.objectContaining({
-          name: expect.any(String),
-          data: expect.any(Object)
+          options: expect.any(Object),
+          hidden: expect.any(Boolean),
+          html: expect.any(String)
         })
       )
     )
