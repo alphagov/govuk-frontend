@@ -30,7 +30,9 @@ export default defineConfig(({ i: input }) => ({
     plugins: [
       terser({
         format: { comments: false },
-        mangle: { reserved: Object.keys(GOVUKFrontend) },
+        mangle: process.env.TERSER_MANGLE
+          ? JSON.parse(process.env.TERSER_MANGLE)
+          : { reserved: Object.keys(GOVUKFrontend) },
 
         // Include sources content from source maps to inspect
         // GOV.UK Frontend and other dependencies' source code
