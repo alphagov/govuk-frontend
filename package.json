@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "govuk-frontend-repository",
+  "name": "@govuk-frontend/repository",
   "description": "Used only for the development of GOV.UK Frontend, see `packages/govuk-frontend/package.json` for the published `package.json`",
   "engines": {
     "node": "^18.12.0",
