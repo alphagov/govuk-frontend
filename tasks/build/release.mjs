@@ -1,14 +1,14 @@
 import { join } from 'path'
 
 import { pkg } from '@govuk-frontend/config'
-import { files, scripts, styles, task } from 'govuk-frontend-tasks'
+import { files, scripts, styles, task } from '@govuk-frontend/tasks'
 import gulp from 'gulp'
 
 /**
  * Build dist task
  * Prepare dist folder for release
  *
- * @type {import('govuk-frontend-tasks').TaskFunction}
+ * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
 export default (options) =>
   gulp.series(

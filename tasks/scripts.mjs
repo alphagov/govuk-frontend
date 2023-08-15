@@ -1,13 +1,13 @@
 import { join, resolve } from 'path'
 
 import { pkg } from '@govuk-frontend/config'
-import { configs, scripts, npm, task } from 'govuk-frontend-tasks'
+import { configs, scripts, npm, task } from '@govuk-frontend/tasks'
 import gulp from 'gulp'
 
 /**
  * JavaScripts task (for watch)
  *
- * @type {import('govuk-frontend-tasks').TaskFunction}
+ * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
 export const compile = (options) =>
   gulp.series(
