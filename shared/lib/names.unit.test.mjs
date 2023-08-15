@@ -4,6 +4,7 @@ import { paths } from '@govuk-frontend/config'
 
 import {
   componentNameToClassName,
+  componentNameToConfigName,
   componentNameToMacroName,
   componentPathToModuleName,
   packageResolveToPath,
@@ -35,6 +36,34 @@ describe('componentNameToClassName', () => {
     "transforms component '$name' to class '$className'",
     ({ name, className }) => {
       expect(componentNameToClassName(name)).toBe(className)
+    }
+  )
+})
+
+describe('componentNameToConfigName', () => {
+  const components = [
+    {
+      name: 'button',
+      configName: 'button'
+    },
+    {
+      name: 'radios',
+      configName: 'radios'
+    },
+    {
+      name: 'skip-link',
+      configName: 'skipLink'
+    },
+    {
+      name: 'character-count',
+      configName: 'characterCount'
+    }
+  ]
+
+  it.each(components)(
+    "transforms component '$name' to class '$configName'",
+    ({ name, configName }) => {
+      expect(componentNameToConfigName(name)).toBe(configName)
     }
   )
 })
