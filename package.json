@@ -63,7 +63,7 @@
     "@govuk-frontend/config": "*",
     "@govuk-frontend/helpers": "*",
     "@govuk-frontend/lib": "*",
-    "govuk-frontend-tasks": "*",
+    "@govuk-frontend/tasks": "*",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
     "husky": "^8.0.3",

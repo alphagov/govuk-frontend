@@ -1,7 +1,7 @@
 import { join } from 'path'
 
 import { paths } from '@govuk-frontend/config'
-import { npm, task } from 'govuk-frontend-tasks'
+import { npm, task } from '@govuk-frontend/tasks'
 import gulp from 'gulp'
 import slash from 'slash'
 
@@ -13,7 +13,7 @@ import { scripts, styles } from './index.mjs'
  * - lint and run `gulp styles` when `.scss` files change
  * - lint and run `gulp scripts` when `.mjs` files change
  *
- * @type {import('govuk-frontend-tasks').TaskFunction}
+ * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
 export const watch = (options) =>
   gulp.parallel(

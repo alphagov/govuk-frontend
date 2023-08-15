@@ -1,12 +1,12 @@
 import { join } from 'path'
 
-import { files, task } from 'govuk-frontend-tasks'
+import { files, task } from '@govuk-frontend/tasks'
 import gulp from 'gulp'
 
 /**
  * Copy GOV.UK Frontend template files (for watch)
  *
- * @type {import('govuk-frontend-tasks').TaskFunction}
+ * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
 export const templates = (options) =>
   gulp.series(

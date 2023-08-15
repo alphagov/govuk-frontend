@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "govuk-frontend-tasks",
+  "name": "@govuk-frontend/tasks",
   "description": "GOV.UK Frontend shared tasks",
   "main": "index.mjs",
   "engines": {

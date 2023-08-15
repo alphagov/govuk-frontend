@@ -5,7 +5,7 @@ import { paths } from '@govuk-frontend/config'
 /**
  * Default build paths
  *
- * @type {import('govuk-frontend-tasks').TaskOptions}
+ * @type {import('@govuk-frontend/tasks').TaskOptions}
  */
 export const options = {
   basePath: paths.package,

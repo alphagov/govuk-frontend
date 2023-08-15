@@ -45,7 +45,7 @@
     "cheerio": "^1.0.0-rc.12",
     "cssnano": "^6.0.1",
     "@govuk-frontend/helpers": "*",
-    "govuk-frontend-tasks": "*",
+    "@govuk-frontend/tasks": "*",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
     "nodemon": "^3.0.1",
