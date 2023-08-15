@@ -1,6 +1,6 @@
+const { getExamples } = require('@govuk-frontend/lib/components')
 const { render } = require('govuk-frontend-helpers/nunjucks')
 const { htmlWithClassName } = require('govuk-frontend-helpers/tests')
-const { getExamples } = require('govuk-frontend-lib/components')
 
 const WORD_BOUNDARY = '\\b'
 

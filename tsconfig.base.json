@@ -20,8 +20,8 @@
       "govuk-frontend-helpers": ["./shared/helpers/index.js"],
       "govuk-frontend-helpers/*": ["./shared/helpers/*.js"],
       "govuk-frontend-helpers/jest/*": ["./shared/helpers/jest/*"],
-      "govuk-frontend-lib": ["./shared/lib/index.js"],
-      "govuk-frontend-lib/*": ["./shared/lib/*.js"],
+      "@govuk-frontend/lib": ["./shared/lib/index.js"],
+      "@govuk-frontend/lib/*": ["./shared/lib/*.js"],
       "govuk-frontend-stats": ["./shared/stats/src/index.mjs"],
       "govuk-frontend-tasks": ["./shared/tasks/index.mjs"]
     }

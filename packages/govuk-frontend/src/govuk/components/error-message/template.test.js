@@ -1,5 +1,5 @@
+const { getExamples } = require('@govuk-frontend/lib/components')
 const { render } = require('govuk-frontend-helpers/nunjucks')
-const { getExamples } = require('govuk-frontend-lib/components')
 
 describe('Error message', () => {
   let examples

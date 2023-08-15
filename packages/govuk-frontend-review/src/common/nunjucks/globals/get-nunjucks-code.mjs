@@ -39,5 +39,5 @@ export function getNunjucksCode(componentName, params) {
 }
 
 /**
- * @typedef {import('govuk-frontend-lib/components').MacroOptions} MacroOptions
+ * @typedef {import('@govuk-frontend/lib/components').MacroOptions} MacroOptions
  */

@@ -1,8 +1,8 @@
 import { join } from 'path'
 
 import { paths } from '@govuk-frontend/config'
+import { packageTypeToPath } from '@govuk-frontend/lib/names'
 import express from 'express'
-import { packageTypeToPath } from 'govuk-frontend-lib/names'
 
 const router = express.Router()
 

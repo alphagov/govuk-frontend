@@ -3,7 +3,7 @@ const { join } = require('path')
 const {
   packageResolveToPath,
   packageNameToPath
-} = require('govuk-frontend-lib/names')
+} = require('@govuk-frontend/lib/names')
 
 /**
  * @type {import('typedoc').TypeDocOptions}

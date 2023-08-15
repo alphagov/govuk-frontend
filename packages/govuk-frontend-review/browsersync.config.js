@@ -1,7 +1,7 @@
 const { join } = require('path')
 
 const { paths, ports } = require('@govuk-frontend/config')
-const { packageTypeToPath } = require('govuk-frontend-lib/names')
+const { packageTypeToPath } = require('@govuk-frontend/lib/names')
 
 /**
  * Browsersync config

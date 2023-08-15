@@ -62,7 +62,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "@govuk-frontend/config": "*",
     "govuk-frontend-helpers": "*",
-    "govuk-frontend-lib": "*",
+    "@govuk-frontend/lib": "*",
     "govuk-frontend-tasks": "*",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",

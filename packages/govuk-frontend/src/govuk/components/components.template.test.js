@@ -6,7 +6,7 @@ const {
   getComponentNames,
   nunjucksEnv,
   renderComponent
-} = require('govuk-frontend-lib/components')
+} = require('@govuk-frontend/lib/components')
 const { HtmlValidate } = require('html-validate')
 
 describe('Components', () => {

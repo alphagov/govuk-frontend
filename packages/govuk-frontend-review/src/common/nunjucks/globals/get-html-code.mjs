@@ -1,4 +1,4 @@
-import { renderComponent } from 'govuk-frontend-lib/components'
+import { renderComponent } from '@govuk-frontend/lib/components'
 import beautify from 'js-beautify'
 
 /**
@@ -29,5 +29,5 @@ export function getHTMLCode(componentName, params) {
 }
 
 /**
- * @typedef {import('govuk-frontend-lib/components').MacroOptions} MacroOptions
+ * @typedef {import('@govuk-frontend/lib/components').MacroOptions} MacroOptions
  */

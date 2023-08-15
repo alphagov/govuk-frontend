@@ -1,12 +1,12 @@
 import { paths } from '@govuk-frontend/config'
-import express from 'express'
 import {
   getComponentsFixtures,
   getComponentNames,
   getComponentNamesFiltered,
   renderComponent
-} from 'govuk-frontend-lib/components'
-import { filterPath } from 'govuk-frontend-lib/files'
+} from '@govuk-frontend/lib/components'
+import { filterPath } from '@govuk-frontend/lib/files'
+import express from 'express'
 import { getStats, modulePaths } from 'govuk-frontend-stats'
 
 import { getExampleNames, getFullPageExamples } from './common/lib/files.mjs'
@@ -210,5 +210,5 @@ export default async () => {
 }
 
 /**
- * @typedef {import('govuk-frontend-lib/components').ComponentFixtures} ComponentFixtures
+ * @typedef {import('@govuk-frontend/lib/components').ComponentFixtures} ComponentFixtures
  */

@@ -2,8 +2,8 @@ import { readFile } from 'fs/promises'
 import { join } from 'path'
 
 import { paths } from '@govuk-frontend/config'
+import { getDirectories } from '@govuk-frontend/lib/files'
 import fm from 'front-matter'
-import { getDirectories } from 'govuk-frontend-lib/files'
 
 /**
  * Get example names

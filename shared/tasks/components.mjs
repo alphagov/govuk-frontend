@@ -1,7 +1,7 @@
 import { basename, dirname, join } from 'path'
 
-import { nunjucksEnv, renderComponent } from 'govuk-frontend-lib/components'
-import { getListing, getYaml } from 'govuk-frontend-lib/files'
+import { nunjucksEnv, renderComponent } from '@govuk-frontend/lib/components'
+import { getListing, getYaml } from '@govuk-frontend/lib/files'
 
 import { files } from './index.mjs'
 
@@ -143,9 +143,9 @@ async function generateMacroOption(componentDataPath, options) {
 
 /**
  * @typedef {import('./assets.mjs').AssetEntry} AssetEntry
- * @typedef {import('govuk-frontend-lib/components').ComponentData} ComponentData
- * @typedef {import('govuk-frontend-lib/components').ComponentOption} ComponentOption
- * @typedef {import('govuk-frontend-lib/components').ComponentExample} ComponentExample
- * @typedef {import('govuk-frontend-lib/components').ComponentFixture} ComponentFixture
- * @typedef {import('govuk-frontend-lib/components').ComponentFixtures} ComponentFixtures
+ * @typedef {import('@govuk-frontend/lib/components').ComponentData} ComponentData
+ * @typedef {import('@govuk-frontend/lib/components').ComponentOption} ComponentOption
+ * @typedef {import('@govuk-frontend/lib/components').ComponentExample} ComponentExample
+ * @typedef {import('@govuk-frontend/lib/components').ComponentFixture} ComponentFixture
+ * @typedef {import('@govuk-frontend/lib/components').ComponentFixtures} ComponentFixtures
  */

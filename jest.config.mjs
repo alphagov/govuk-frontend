@@ -1,4 +1,4 @@
-import { packageResolveToPath } from 'govuk-frontend-lib/names'
+import { packageResolveToPath } from '@govuk-frontend/lib/names'
 import { replacePathSepForRegex } from 'jest-regex-util'
 
 import jestPuppeteerConfig from './jest-puppeteer.config.js'
