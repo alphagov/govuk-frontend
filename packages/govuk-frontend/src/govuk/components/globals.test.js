@@ -1,4 +1,4 @@
-const { goTo, goToExample } = require('govuk-frontend-helpers/puppeteer')
+const { goTo, goToExample } = require('@govuk-frontend/helpers/puppeteer')
 
 describe('GOV.UK Frontend', () => {
   describe('javascript', () => {

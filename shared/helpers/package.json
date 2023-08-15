@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "govuk-frontend-helpers",
+  "name": "@govuk-frontend/helpers",
   "description": "GOV.UK Frontend shared helpers",
   "main": "index.js",
   "exports": {

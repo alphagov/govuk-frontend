@@ -2,13 +2,13 @@ import { readFile } from 'fs/promises'
 import { join } from 'path'
 
 import { paths, pkg } from '@govuk-frontend/config'
+import { compileSassFile } from '@govuk-frontend/helpers/tests'
 import {
   getComponentNames,
   getComponentNamesFiltered
 } from '@govuk-frontend/lib/components'
 import { filterPath, getListing, mapPathTo } from '@govuk-frontend/lib/files'
 import { componentNameToClassName } from '@govuk-frontend/lib/names'
-import { compileSassFile } from 'govuk-frontend-helpers/tests'
 import { outdent } from 'outdent'
 
 describe('packages/govuk-frontend/dist/', () => {

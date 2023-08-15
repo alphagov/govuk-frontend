@@ -78,7 +78,7 @@
   },
   "optionalDependencies": {
     "@govuk-frontend/config": "*",
-    "govuk-frontend-helpers": "*",
+    "@govuk-frontend/helpers": "*",
     "@govuk-frontend/lib": "*",
     "govuk-frontend-tasks": "*"
   }

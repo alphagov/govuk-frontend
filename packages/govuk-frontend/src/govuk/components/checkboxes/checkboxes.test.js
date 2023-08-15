@@ -1,4 +1,3 @@
-const { getExamples } = require('@govuk-frontend/lib/components')
 const {
   goToComponent,
   goToExample,
@@ -6,7 +5,8 @@ const {
   getProperty,
   isVisible,
   renderAndInitialise
-} = require('govuk-frontend-helpers/puppeteer')
+} = require('@govuk-frontend/helpers/puppeteer')
+const { getExamples } = require('@govuk-frontend/lib/components')
 
 describe('Checkboxes with conditional reveals', () => {
   describe('when JavaScript is unavailable or fails', () => {

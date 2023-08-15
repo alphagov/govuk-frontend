@@ -1,7 +1,7 @@
 const crypto = require('crypto')
 
+const { renderTemplate } = require('@govuk-frontend/helpers/nunjucks')
 const { nunjucksEnv } = require('@govuk-frontend/lib/components')
-const { renderTemplate } = require('govuk-frontend-helpers/nunjucks')
 
 describe('Template', () => {
   describe('with default nunjucks configuration', () => {

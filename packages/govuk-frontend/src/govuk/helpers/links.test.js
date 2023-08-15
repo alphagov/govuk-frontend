@@ -1,4 +1,4 @@
-const { compileSassString } = require('govuk-frontend-helpers/tests')
+const { compileSassString } = require('@govuk-frontend/helpers/tests')
 
 describe('@mixin govuk-link-decoration', () => {
   it('sets text-decoration-thickness', async () => {

@@ -1,10 +1,10 @@
-const { getExamples } = require('@govuk-frontend/lib/components')
 const {
   goToComponent,
   goToExample,
   renderAndInitialise,
   getAccessibleName
-} = require('govuk-frontend-helpers/puppeteer')
+} = require('@govuk-frontend/helpers/puppeteer')
+const { getExamples } = require('@govuk-frontend/lib/components')
 
 describe('/components/accordion', () => {
   describe('/components/accordion/preview', () => {
