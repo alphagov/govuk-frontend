@@ -6,8 +6,8 @@ import {
   renderComponent
 } from '@govuk-frontend/lib/components'
 import { filterPath } from '@govuk-frontend/lib/files'
+import { getStats, modulePaths } from '@govuk-frontend/stats'
 import express from 'express'
-import { getStats, modulePaths } from 'govuk-frontend-stats'
 
 import { getExampleNames, getFullPageExamples } from './common/lib/files.mjs'
 import * as middleware from './common/middleware/index.mjs'

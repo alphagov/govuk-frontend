@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "govuk-frontend-stats",
+  "name": "@govuk-frontend/stats",
   "description": "GOV.UK Frontend build stats",
   "main": "src/index.mjs",
   "engines": {

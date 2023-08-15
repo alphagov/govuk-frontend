@@ -49,7 +49,7 @@
     "build": "npm run build:package",
     "build:package": "gulp build:package --color",
     "build:release": "gulp build:release --color",
-    "build:stats": "npm run stats --workspace govuk-frontend-stats",
+    "build:stats": "npm run stats --workspace @govuk-frontend/stats",
     "dev": "gulp dev --color",
     "version": "echo $npm_package_version"
   },
