@@ -15,7 +15,6 @@
     "target": "ESNext",
     "types": [],
     "paths": {
-      "govuk-frontend": ["./packages/govuk-frontend/src/govuk/all.mjs"],
       "@govuk-frontend/config": ["./shared/config/index.js"],
       "@govuk-frontend/helpers": ["./shared/helpers/index.js"],
       "@govuk-frontend/helpers/*": ["./shared/helpers/*.js"],
@@ -23,7 +22,8 @@
       "@govuk-frontend/lib": ["./shared/lib/index.js"],
       "@govuk-frontend/lib/*": ["./shared/lib/*.js"],
       "@govuk-frontend/stats": ["./shared/stats/src/index.mjs"],
-      "@govuk-frontend/tasks": ["./shared/tasks/index.mjs"]
+      "@govuk-frontend/tasks": ["./shared/tasks/index.mjs"],
+      "govuk-frontend": ["./packages/govuk-frontend/src/govuk/all.mjs"]
     }
   },
   "typeAcquisition": {
