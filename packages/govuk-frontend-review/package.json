@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "govuk-frontend-review",
+  "name": "@govuk-frontend/review",
   "description": "GOV.UK Frontend review app",
   "main": "src/start.mjs",
   "engines": {

@@ -25,7 +25,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - run tasks from `npm run build:package`
 - run tasks from `npm run build:app`
 
-**`npm run build:app` will trigger `npm run build --workspace govuk-frontend-review` that will:**
+**`npm run build:app` will trigger `npm run build --workspace @govuk-frontend/review` that will:**
 
 - clean the `./packages/govuk-frontend-review/dist` folder
 - output files into `./packages/govuk-frontend-review/dist`
@@ -63,7 +63,7 @@ Project Gulp tasks are defined in [`gulpfile.mjs`](/gulpfile.mjs) and the [`task
 
 Gulp tasks from npm workspaces (such as the review app) can be run as shown:
 
-**`npx --workspace govuk-frontend-review -- gulp --tasks`**
+**`npx --workspace @govuk-frontend/review -- gulp --tasks`**
 
 This will list out all available tasks for the review app.
 
@@ -75,7 +75,7 @@ This will list out all available tasks for the GOV.UK Frontend package.
 
 Review app Gulp tasks are defined in [`packages/govuk-frontend-review/gulpfile.mjs`](/packages/govuk-frontend-review/gulpfile.mjs) and the [`packages/govuk-frontend-review/tasks/`](/packages/govuk-frontend-review/tasks) folder.
 
-**`npx --workspace govuk-frontend-review -- gulp styles`**
+**`npx --workspace @govuk-frontend/review -- gulp styles`**
 
 This task will:
 
@@ -83,7 +83,7 @@ This task will:
 - compile Sass to CSS into `./packages/govuk-frontend-review/dist/stylesheets`
 - compile Sass documentation into `./packages/govuk-frontend-review/dist/docs/sassdoc`
 
-**`npx --workspace govuk-frontend-review -- gulp scripts`**
+**`npx --workspace @govuk-frontend/review -- gulp scripts`**
 
 This task will:
 
@@ -91,4 +91,4 @@ This task will:
 
 ## Review app only
 
-After building the project with `npm run build` the Express.js review app can be started with `npm start --workspace govuk-frontend-review`. This prevents the Gulp tasks triggered by `npm start` from running.
+After building the project with `npm run build` the Express.js review app can be started with `npm start --workspace @govuk-frontend/review`. This prevents the Gulp tasks triggered by `npm start` from running.
