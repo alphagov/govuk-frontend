@@ -1,4 +1,5 @@
 import { marked } from 'marked'
+import filters from 'nunjucks/src/filters.js'
 
 /**
  * Render Markdown
@@ -7,5 +8,5 @@ import { marked } from 'marked'
  * @returns {string} Rendered Markdown
  */
 export function markdown(content) {
-  return marked.parse(content)
+  return filters.safe(marked.parse(content))
 }

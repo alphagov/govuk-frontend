@@ -26,7 +26,7 @@
 
       {% if example.scenario %}
       <div class="app-prose-scope">
-        {{ markdown(example.scenario) | safe }}
+        {{ example.scenario | markdown }}
       </div>
       {% endif %}
 
