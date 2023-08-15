@@ -1,10 +1,10 @@
-const { ports } = require('govuk-frontend-config')
+const { ports } = require('@govuk-frontend/config')
 
 /**
  * @type {import('jest-dev-server').Config}
  */
 module.exports = {
-  command: 'npm start --workspace govuk-frontend-review',
+  command: 'npm start --workspace @govuk-frontend/review',
   port: ports.app,
 
   // Allow 15 seconds to start server

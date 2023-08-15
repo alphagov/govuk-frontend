@@ -1,6 +1,6 @@
+import { ports } from '@govuk-frontend/config'
+import { fetchPath } from '@govuk-frontend/helpers/tests'
 import { load } from 'cheerio'
-import { ports } from 'govuk-frontend-config'
-import { fetchPath } from 'govuk-frontend-helpers/tests'
 
 const expectedPages = [
   '/full-page-examples/bank-holidays',

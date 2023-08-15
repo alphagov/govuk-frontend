@@ -1,4 +1,4 @@
-const { compileSassString } = require('govuk-frontend-helpers/tests')
+const { compileSassString } = require('@govuk-frontend/helpers/tests')
 const { outdent } = require('outdent')
 
 describe('@function font-url', () => {

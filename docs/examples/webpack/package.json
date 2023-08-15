@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "govuk-frontend-webpack-boilerplate",
+  "name": "@govuk-frontend/webpack-boilerplate",
   "description": "Boilerplate example for govuk-frontend using webpack",
   "scripts": {
     "dev": "webpack serve --progress --mode development",

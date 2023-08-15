@@ -1,13 +1,13 @@
-import percySnapshot from '@percy/puppeteer'
-import { waitForPercyIdle } from '@percy/sdk-utils'
-import { download } from 'govuk-frontend-helpers/jest/browser/download.mjs'
-import { goToComponent, goToExample } from 'govuk-frontend-helpers/puppeteer'
+import { download } from '@govuk-frontend/helpers/jest/browser/download.mjs'
+import { goToComponent, goToExample } from '@govuk-frontend/helpers/puppeteer'
 import {
   getComponentFiles,
   getComponentNames,
   getExamples
-} from 'govuk-frontend-lib/components'
-import { filterPath } from 'govuk-frontend-lib/files'
+} from '@govuk-frontend/lib/components'
+import { filterPath } from '@govuk-frontend/lib/files'
+import percySnapshot from '@percy/puppeteer'
+import { waitForPercyIdle } from '@percy/sdk-utils'
 import puppeteer from 'puppeteer'
 
 /**

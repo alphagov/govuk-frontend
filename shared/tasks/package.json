@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "govuk-frontend-tasks",
+  "name": "@govuk-frontend/tasks",
   "description": "GOV.UK Frontend shared tasks",
   "main": "index.mjs",
   "engines": {
@@ -15,9 +15,9 @@
     "chalk": "^5.3.0",
     "cpy": "^10.1.0",
     "del": "^7.0.0",
-    "govuk-frontend-config": "*",
-    "govuk-frontend-helpers": "*",
-    "govuk-frontend-lib": "*",
+    "@govuk-frontend/config": "*",
+    "@govuk-frontend/helpers": "*",
+    "@govuk-frontend/lib": "*",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
     "nunjucks": "^3.2.4",

@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "govuk-frontend-stats",
+  "name": "@govuk-frontend/stats",
   "description": "GOV.UK Frontend build stats",
   "main": "src/index.mjs",
   "engines": {
@@ -12,8 +12,8 @@
     "stats": "rollup --config rollup.config.mjs"
   },
   "dependencies": {
-    "govuk-frontend-config": "*",
-    "govuk-frontend-lib": "*"
+    "@govuk-frontend/config": "*",
+    "@govuk-frontend/lib": "*"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.1.0",

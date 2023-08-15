@@ -31,7 +31,7 @@
       Read about [npm and Gulp tasks](tasks.md) or list workspace specific Gulp tasks using:
 
       ```shell
-      npx --workspace govuk-frontend-review -- gulp --tasks
+      npx --workspace @govuk-frontend/review -- gulp --tasks
       ```
 
   - `govuk-frontend/`

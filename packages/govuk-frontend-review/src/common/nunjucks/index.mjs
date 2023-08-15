@@ -1,7 +1,7 @@
 import { join } from 'path'
 
-import { paths } from 'govuk-frontend-config'
-import { nunjucksEnv } from 'govuk-frontend-lib/components'
+import { paths } from '@govuk-frontend/config'
+import { nunjucksEnv } from '@govuk-frontend/lib/components'
 
 import * as filters from './filters/index.mjs'
 import * as globals from './globals/index.mjs'

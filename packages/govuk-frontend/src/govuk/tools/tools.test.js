@@ -1,8 +1,8 @@
 const { join } = require('path')
 
-const { paths } = require('govuk-frontend-config')
-const { compileSassFile } = require('govuk-frontend-helpers/tests')
-const { getListing } = require('govuk-frontend-lib/files')
+const { paths } = require('@govuk-frontend/config')
+const { compileSassFile } = require('@govuk-frontend/helpers/tests')
+const { getListing } = require('@govuk-frontend/lib/files')
 const sassdoc = require('sassdoc')
 
 describe('The tools layer', () => {

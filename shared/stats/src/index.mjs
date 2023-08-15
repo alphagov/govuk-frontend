@@ -1,8 +1,8 @@
 import { join, parse } from 'path'
 
-import { paths } from 'govuk-frontend-config'
-import { getComponentNamesFiltered } from 'govuk-frontend-lib/components'
-import { filterPath, getYaml } from 'govuk-frontend-lib/files'
+import { paths } from '@govuk-frontend/config'
+import { getComponentNamesFiltered } from '@govuk-frontend/lib/components'
+import { filterPath, getYaml } from '@govuk-frontend/lib/files'
 
 /**
  * Components with JavaScript
@@ -16,7 +16,7 @@ const componentNamesWithJavaScript = await getComponentNamesFiltered(
 /**
  * Package options
  *
- * @type {import('govuk-frontend-lib/names').PackageOptions}
+ * @type {import('@govuk-frontend/lib/names').PackageOptions}
  */
 export const packageOptions = {
   type: 'module',

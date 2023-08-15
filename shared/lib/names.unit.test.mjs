@@ -1,6 +1,6 @@
 import { join, relative } from 'path'
 
-import { paths } from 'govuk-frontend-config'
+import { paths } from '@govuk-frontend/config'
 
 import {
   componentNameToClassName,
@@ -220,7 +220,7 @@ describe('packageNameToPath', () => {
       resolvedPath: paths.package
     },
     {
-      packageName: 'govuk-frontend-review',
+      packageName: '@govuk-frontend/review',
       resolvedPath: paths.app
     }
   ]
@@ -241,7 +241,7 @@ describe("packageNameToPath (with custom 'node_module' paths)", () => {
       resolvedPath: paths.package
     },
     {
-      packageName: 'govuk-frontend-review',
+      packageName: '@govuk-frontend/review',
       options: { moduleRoot: paths.root },
       resolvedPath: paths.app
     },

@@ -1,8 +1,8 @@
-const cheerio = require('cheerio')
 const {
   renderComponent,
   renderString
-} = require('govuk-frontend-lib/components')
+} = require('@govuk-frontend/lib/components')
+const cheerio = require('cheerio')
 const { outdent } = require('outdent')
 
 /**
@@ -44,6 +44,6 @@ module.exports = {
 }
 
 /**
- * @typedef {import('govuk-frontend-lib/components').MacroOptions} MacroOptions
- * @typedef {import('govuk-frontend-lib/components').MacroRenderOptions} MacroRenderOptions
+ * @typedef {import('@govuk-frontend/lib/components').MacroOptions} MacroOptions
+ * @typedef {import('@govuk-frontend/lib/components').MacroRenderOptions} MacroRenderOptions
  */

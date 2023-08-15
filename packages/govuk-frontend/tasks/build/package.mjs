@@ -1,6 +1,6 @@
 import { join } from 'path'
 
-import { files, task } from 'govuk-frontend-tasks'
+import { files, task } from '@govuk-frontend/tasks'
 import gulp from 'gulp'
 
 import { assets, fixtures, scripts, styles, templates } from '../index.mjs'
@@ -9,7 +9,7 @@ import { assets, fixtures, scripts, styles, templates } from '../index.mjs'
  * Build package task
  * Prepare packages/govuk-frontend/dist folder for publishing
  *
- * @type {import('govuk-frontend-tasks').TaskFunction}
+ * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
 export default (options) =>
   gulp.series(

@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "govuk-frontend-config",
+  "name": "@govuk-frontend/config",
   "description": "GOV.UK Frontend shared config",
   "main": "index.js",
   "engines": {

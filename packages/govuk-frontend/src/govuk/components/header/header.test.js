@@ -1,8 +1,8 @@
 const {
   goToComponent,
   renderAndInitialise
-} = require('govuk-frontend-helpers/puppeteer')
-const { getExamples } = require('govuk-frontend-lib/components')
+} = require('@govuk-frontend/helpers/puppeteer')
+const { getExamples } = require('@govuk-frontend/lib/components')
 const { KnownDevices } = require('puppeteer')
 
 const iPhone = KnownDevices['iPhone 6']

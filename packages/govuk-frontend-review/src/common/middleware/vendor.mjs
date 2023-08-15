@@ -1,7 +1,7 @@
 import { join } from 'path'
 
+import { packageNameToPath } from '@govuk-frontend/lib/names'
 import express from 'express'
-import { packageNameToPath } from 'govuk-frontend-lib/names'
 
 const router = express.Router()
 

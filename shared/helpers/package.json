@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "govuk-frontend-helpers",
+  "name": "@govuk-frontend/helpers",
   "description": "GOV.UK Frontend shared helpers",
   "main": "index.js",
   "exports": {
@@ -17,8 +17,8 @@
     "@axe-core/puppeteer": "^4.7.3",
     "cheerio": "^1.0.0-rc.12",
     "govuk-frontend": "*",
-    "govuk-frontend-config": "*",
-    "govuk-frontend-lib": "*",
+    "@govuk-frontend/config": "*",
+    "@govuk-frontend/lib": "*",
     "jest-axe": "^8.0.0",
     "jest-dev-server": "^9.0.0",
     "jest-environment-jsdom": "^29.6.2",

@@ -1,9 +1,9 @@
 import { mkdir, writeFile } from 'fs/promises'
 import { dirname, join, parse } from 'path'
 
+import { paths, pkg } from '@govuk-frontend/config'
 import cpy from 'cpy'
 import { deleteAsync } from 'del'
-import { paths, pkg } from 'govuk-frontend-config'
 import slash from 'slash'
 
 /**

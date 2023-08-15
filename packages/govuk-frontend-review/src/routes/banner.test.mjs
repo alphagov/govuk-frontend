@@ -1,5 +1,5 @@
+import { fetchPath } from '@govuk-frontend/helpers/tests'
 import { load } from 'cheerio'
-import { fetchPath } from 'govuk-frontend-helpers/tests'
 
 describe('Banner', () => {
   it('is visible by default', async () => {

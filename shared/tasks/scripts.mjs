@@ -1,6 +1,6 @@
 import { format, join, parse, relative } from 'path'
 
-import { getListing } from 'govuk-frontend-lib/files'
+import { getListing } from '@govuk-frontend/lib/files'
 import PluginError from 'plugin-error'
 import { rollup } from 'rollup'
 import { loadConfigFile } from 'rollup/dist/loadConfigFile.js'

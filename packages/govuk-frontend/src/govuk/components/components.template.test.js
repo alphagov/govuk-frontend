@@ -1,12 +1,12 @@
 const { join } = require('path')
 
-const { paths } = require('govuk-frontend-config')
+const { paths } = require('@govuk-frontend/config')
 const {
   getComponentsFixtures,
   getComponentNames,
   nunjucksEnv,
   renderComponent
-} = require('govuk-frontend-lib/components')
+} = require('@govuk-frontend/lib/components')
 const { HtmlValidate } = require('html-validate')
 
 describe('Components', () => {

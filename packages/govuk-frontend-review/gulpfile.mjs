@@ -1,4 +1,4 @@
-import { browser } from 'govuk-frontend-tasks'
+import { browser } from '@govuk-frontend/tasks'
 import gulp from 'gulp'
 
 import * as build from './tasks/build/index.mjs'

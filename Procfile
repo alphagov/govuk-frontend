@@ -1,1 +1,1 @@
-web: npm start --workspace govuk-frontend-review
+web: npm start --workspace @govuk-frontend/review
