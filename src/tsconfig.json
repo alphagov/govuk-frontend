@@ -1,0 +1,4 @@
+{
+  "extends": "../packages/govuk-frontend/tsconfig.json",
+  "include": ["**/*.js", "**/*.mjs"]
+}
