@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "govuk-frontend-workflow-scripts",
+  "name": "@govuk-frontend/workflow-scripts",
   "description": "GOV.UK Frontend GitHub Actions workflow scripts",
   "engines": {
     "node": "^18.12.0",
