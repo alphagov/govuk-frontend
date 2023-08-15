@@ -1,4 +1,4 @@
-const { compileSassString } = require('govuk-frontend-helpers/tests')
+const { compileSassString } = require('@govuk-frontend/helpers/tests')
 
 describe('$govuk-include-default-font-face', () => {
   it('is true if $govuk-font-family is default', async () => {

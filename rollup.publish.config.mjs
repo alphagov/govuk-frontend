@@ -1,7 +1,7 @@
+import { pkg } from '@govuk-frontend/config'
+import { componentPathToModuleName } from '@govuk-frontend/lib/names'
 import { babel } from '@rollup/plugin-babel'
 import replace from '@rollup/plugin-replace'
-import { pkg } from 'govuk-frontend-config'
-import { componentPathToModuleName } from 'govuk-frontend-lib/names'
 import { defineConfig } from 'rollup'
 
 /**

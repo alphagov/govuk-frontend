@@ -2,8 +2,8 @@ const {
   goToComponent,
   goToExample,
   renderAndInitialise
-} = require('govuk-frontend-helpers/puppeteer')
-const { getExamples } = require('govuk-frontend-lib/components')
+} = require('@govuk-frontend/helpers/puppeteer')
+const { getExamples } = require('@govuk-frontend/lib/components')
 
 const buttonClass = '.govuk-js-exit-this-page-button'
 const skiplinkClass = '.govuk-js-exit-this-page-skiplink'

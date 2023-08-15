@@ -1,4 +1,4 @@
-import { renderMacro } from 'govuk-frontend-lib/components'
+import { renderMacro } from '@govuk-frontend/lib/components'
 
 describe('i18n.njk', () => {
   describe('govukI18nAttributes', () => {

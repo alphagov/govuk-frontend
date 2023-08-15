@@ -1,11 +1,11 @@
 import { join } from 'path'
 
-import { getComponentNames } from 'govuk-frontend-lib/components'
-import { filterPath, getListing } from 'govuk-frontend-lib/files'
+import { getComponentNames } from '@govuk-frontend/lib/components'
+import { filterPath, getListing } from '@govuk-frontend/lib/files'
 import {
   componentNameToMacroName,
   packageNameToPath
-} from 'govuk-frontend-lib/names'
+} from '@govuk-frontend/lib/names'
 import slash from 'slash'
 
 /**
