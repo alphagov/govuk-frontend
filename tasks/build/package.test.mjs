@@ -1,7 +1,7 @@
 import { readFile } from 'fs/promises'
 import { join } from 'path'
 
-import { paths, pkg } from 'govuk-frontend-config'
+import { paths, pkg } from '@govuk-frontend/config'
 import { compileSassFile } from 'govuk-frontend-helpers/tests'
 import {
   getComponentNames,

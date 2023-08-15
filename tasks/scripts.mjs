@@ -1,6 +1,6 @@
 import { join, resolve } from 'path'
 
-import { pkg } from 'govuk-frontend-config'
+import { pkg } from '@govuk-frontend/config'
 import { configs, scripts, npm, task } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
 

@@ -1,6 +1,6 @@
 import { join, relative } from 'path'
 
-import { paths } from 'govuk-frontend-config'
+import { paths } from '@govuk-frontend/config'
 
 /**
  * Default build paths

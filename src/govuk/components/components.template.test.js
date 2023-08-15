@@ -1,6 +1,6 @@
 const { join } = require('path')
 
-const { paths } = require('govuk-frontend-config')
+const { paths } = require('@govuk-frontend/config')
 const {
   getComponentsFixtures,
   getComponentNames,

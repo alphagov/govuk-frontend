@@ -1,7 +1,7 @@
+import { pkg } from '@govuk-frontend/config'
 import autoprefixer from 'autoprefixer'
 import cssnano from 'cssnano'
 import cssnanoPresetDefault from 'cssnano-preset-default'
-import { pkg } from 'govuk-frontend-config'
 import { isDev } from 'govuk-frontend-tasks/helpers/task-arguments.mjs'
 import postcss from 'postcss'
 import scss from 'postcss-scss'

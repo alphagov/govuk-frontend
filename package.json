@@ -77,7 +77,7 @@
     "slash": "^5.1.0"
   },
   "optionalDependencies": {
-    "govuk-frontend-config": "*",
+    "@govuk-frontend/config": "*",
     "govuk-frontend-helpers": "*",
     "govuk-frontend-lib": "*",
     "govuk-frontend-tasks": "*"

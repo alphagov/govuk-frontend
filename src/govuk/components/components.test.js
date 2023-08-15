@@ -1,6 +1,6 @@
 const { join } = require('path')
 
-const { paths } = require('govuk-frontend-config')
+const { paths } = require('@govuk-frontend/config')
 const { compileSassFile } = require('govuk-frontend-helpers/tests')
 const { getListing } = require('govuk-frontend-lib/files')
 
