@@ -44,6 +44,18 @@ function componentNameToClassName(componentName) {
 }
 
 /**
+ * Convert component name to its config name as passed to initAll
+ *
+ * @param {string} componentName - A kebab-cased component name
+ * @returns {string} The name of its corresponding config
+ */
+function componentNameToConfigName(componentName) {
+  return componentNameToClassName(componentName).replace(/^./, (str) =>
+    str.toLowerCase()
+  )
+}
+
+/**
  * Convert component path to JavaScript module name
  *
  * Used by Rollup to set Universal Module Definition (UMD) export names for
@@ -148,6 +160,7 @@ function packageNameToPath(packageName, options) {
 
 module.exports = {
   componentNameToClassName,
+  componentNameToConfigName,
   componentNameToMacroName,
   componentPathToModuleName,
   packageResolveToPath,
