@@ -1,10 +1,10 @@
+const { getExamples } = require('@govuk-frontend/lib/components')
 const {
   goToComponent,
   goToExample,
   renderAndInitialise,
   goTo
 } = require('govuk-frontend-helpers/puppeteer')
-const { getExamples } = require('govuk-frontend-lib/components')
 
 describe('Error Summary', () => {
   let examples
