@@ -1,5 +1,5 @@
 import { paths } from '@govuk-frontend/config'
-import { compileSassString } from 'govuk-frontend-helpers/tests'
+import { compileSassString } from '@govuk-frontend/helpers/tests'
 import sassdoc from 'sassdoc'
 import slash from 'slash'
 

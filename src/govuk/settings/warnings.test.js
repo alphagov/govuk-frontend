@@ -1,4 +1,4 @@
-const { compileSassString } = require('govuk-frontend-helpers/tests')
+const { compileSassString } = require('@govuk-frontend/helpers/tests')
 const { sassNull } = require('sass-embedded')
 
 // Create a mock warn function that we can use to override the native @warn

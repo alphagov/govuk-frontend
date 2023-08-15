@@ -1,5 +1,5 @@
+import { axe, goToComponent } from '@govuk-frontend/helpers/puppeteer'
 import { getExamples } from '@govuk-frontend/lib/components'
-import { axe, goToComponent } from 'govuk-frontend-helpers/puppeteer'
 
 describe('/components/tag', () => {
   describe('component examples', () => {
