@@ -16,7 +16,7 @@
     "types": [],
     "paths": {
       "govuk-frontend": ["./packages/govuk-frontend/src/govuk/all.mjs"],
-      "govuk-frontend-config": ["./shared/config/index.js"],
+      "@govuk-frontend/config": ["./shared/config/index.js"],
       "govuk-frontend-helpers": ["./shared/helpers/index.js"],
       "govuk-frontend-helpers/*": ["./shared/helpers/*.js"],
       "govuk-frontend-helpers/jest/*": ["./shared/helpers/jest/*"],

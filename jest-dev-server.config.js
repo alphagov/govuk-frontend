@@ -1,4 +1,4 @@
-const { ports } = require('govuk-frontend-config')
+const { ports } = require('@govuk-frontend/config')
 
 /**
  * @type {import('jest-dev-server').Config}

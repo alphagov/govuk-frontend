@@ -1,6 +1,6 @@
 import { join } from 'path'
 
-import { paths } from 'govuk-frontend-config'
+import { paths } from '@govuk-frontend/config'
 import { nunjucksEnv } from 'govuk-frontend-lib/components'
 
 import * as filters from './filters/index.mjs'

@@ -1,6 +1,6 @@
 import { join, parse } from 'path'
 
-import { paths } from 'govuk-frontend-config'
+import { paths } from '@govuk-frontend/config'
 import { getComponentNamesFiltered } from 'govuk-frontend-lib/components'
 import { filterPath, getYaml } from 'govuk-frontend-lib/files'
 

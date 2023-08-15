@@ -1,7 +1,7 @@
 import { dirname, join, parse, relative } from 'path'
 
+import { paths } from '@govuk-frontend/config'
 import resolve from '@rollup/plugin-node-resolve'
-import { paths } from 'govuk-frontend-config'
 import { packageTypeToPath } from 'govuk-frontend-lib/names'
 import { defineConfig } from 'rollup'
 import { visualizer } from 'rollup-plugin-visualizer'

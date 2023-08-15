@@ -17,7 +17,7 @@
     "@axe-core/puppeteer": "^4.7.3",
     "cheerio": "^1.0.0-rc.12",
     "govuk-frontend": "*",
-    "govuk-frontend-config": "*",
+    "@govuk-frontend/config": "*",
     "govuk-frontend-lib": "*",
     "jest-axe": "^8.0.0",
     "jest-dev-server": "^9.0.0",

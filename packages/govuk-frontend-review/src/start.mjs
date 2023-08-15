@@ -1,4 +1,4 @@
-import { ports } from 'govuk-frontend-config'
+import { ports } from '@govuk-frontend/config'
 
 import app from './app.mjs'
 

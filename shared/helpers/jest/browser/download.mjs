@@ -1,7 +1,7 @@
 import { join } from 'path'
 
+import { paths } from '@govuk-frontend/config'
 import { Browser, Cache, install } from '@puppeteer/browsers'
-import { paths } from 'govuk-frontend-config'
 import { PUPPETEER_REVISIONS } from 'puppeteer-core/lib/cjs/puppeteer/revisions.js'
 
 /**

@@ -1,5 +1,5 @@
+import { paths } from '@govuk-frontend/config'
 import express from 'express'
-import { paths } from 'govuk-frontend-config'
 import {
   getComponentsFixtures,
   getComponentNames,

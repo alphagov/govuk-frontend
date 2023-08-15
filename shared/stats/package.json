@@ -12,7 +12,7 @@
     "stats": "rollup --config rollup.config.mjs"
   },
   "dependencies": {
-    "govuk-frontend-config": "*",
+    "@govuk-frontend/config": "*",
     "govuk-frontend-lib": "*"
   },
   "devDependencies": {

@@ -1,8 +1,8 @@
 import { readFile } from 'fs/promises'
 import { join, parse } from 'path'
 
+import { paths } from '@govuk-frontend/config'
 import chalk from 'chalk'
-import { paths } from 'govuk-frontend-config'
 import { getListing } from 'govuk-frontend-lib/files'
 import { packageResolveToPath } from 'govuk-frontend-lib/names'
 import PluginError from 'plugin-error'

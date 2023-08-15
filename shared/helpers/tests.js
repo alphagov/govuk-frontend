@@ -1,6 +1,6 @@
 const { join } = require('path')
 
-const { paths, ports } = require('govuk-frontend-config')
+const { paths, ports } = require('@govuk-frontend/config')
 const { compileAsync, compileStringAsync, Logger } = require('sass-embedded')
 
 const sassPaths = [

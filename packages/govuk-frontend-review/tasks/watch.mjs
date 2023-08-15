@@ -1,6 +1,6 @@
 import { join } from 'path'
 
-import { paths } from 'govuk-frontend-config'
+import { paths } from '@govuk-frontend/config'
 import { npm, task } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
 import slash from 'slash'

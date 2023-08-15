@@ -15,7 +15,7 @@
     "chalk": "^5.3.0",
     "cpy": "^10.1.0",
     "del": "^7.0.0",
-    "govuk-frontend-config": "*",
+    "@govuk-frontend/config": "*",
     "govuk-frontend-helpers": "*",
     "govuk-frontend-lib": "*",
     "gulp": "^4.0.2",

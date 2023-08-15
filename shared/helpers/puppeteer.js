@@ -1,5 +1,5 @@
 const { AxePuppeteer } = require('@axe-core/puppeteer')
-const { ports } = require('govuk-frontend-config')
+const { ports } = require('@govuk-frontend/config')
 const { renderComponent } = require('govuk-frontend-lib/components')
 const { componentNameToClassName } = require('govuk-frontend-lib/names')
 const slug = require('slug')
