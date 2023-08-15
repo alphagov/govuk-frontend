@@ -45,8 +45,8 @@
     "prepare": "node -e \"try { require('husky').install() } catch (e) {if (e.code !== 'MODULE_NOT_FOUND') throw e}\""
   },
   "devDependencies": {
-    "@babel/core": "^7.22.9",
-    "@babel/preset-env": "^7.22.9",
+    "@babel/core": "^7.22.10",
+    "@babel/preset-env": "^7.22.10",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "@typescript-eslint/parser": "^6.3.0",
     "concurrently": "^8.2.0",
