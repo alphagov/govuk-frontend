@@ -1,17 +1,19 @@
 /* eslint-disable no-new */
 
 import { version } from './common/govuk-frontend-version.mjs'
-import { Accordion } from './components/accordion/accordion.mjs'
-import { Button } from './components/button/button.mjs'
-import { CharacterCount } from './components/character-count/character-count.mjs'
-import { Checkboxes } from './components/checkboxes/checkboxes.mjs'
-import { ErrorSummary } from './components/error-summary/error-summary.mjs'
-import { ExitThisPage } from './components/exit-this-page/exit-this-page.mjs'
-import { Header } from './components/header/header.mjs'
-import { NotificationBanner } from './components/notification-banner/notification-banner.mjs'
-import { Radios } from './components/radios/radios.mjs'
-import { SkipLink } from './components/skip-link/skip-link.mjs'
-import { Tabs } from './components/tabs/tabs.mjs'
+import {
+  Accordion,
+  Button,
+  CharacterCount,
+  Checkboxes,
+  ErrorSummary,
+  ExitThisPage,
+  Header,
+  NotificationBanner,
+  Radios,
+  SkipLink,
+  Tabs
+} from './components/index.mjs'
 
 /**
  * Initialise all components
@@ -93,6 +95,11 @@ export {
  * @property {ErrorSummaryConfig} [errorSummary] - Error Summary config
  * @property {ExitThisPageConfig} [exitThisPage] - Exit This Page config
  * @property {NotificationBannerConfig} [notificationBanner] - Notification Banner config
+ */
+
+/**
+ * @typedef {keyof import('./components/index.mjs')} ComponentName - Component names, e.g. `'Accordion'`, `'CharacterCount'`
+ * @typedef {import('./components/index.mjs')[ComponentName]} Component - Component types, e.g. `Accordion`, `CharacterCount`
  */
 
 /**

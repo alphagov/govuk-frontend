@@ -59,6 +59,7 @@ describe('packages/govuk-frontend/dist/', () => {
       '!**/*.test.*',
       '!**/__snapshots__/',
       '!**/__snapshots__/**',
+      '!**/components/index.mjs',
       '!**/tsconfig?(.build).json',
       '!README.md'
     ]
