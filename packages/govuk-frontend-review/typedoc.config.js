@@ -20,6 +20,12 @@ module.exports = {
   tsconfig: packageResolveToPath('govuk-frontend/tsconfig.build.json'),
   out: './dist/docs/jsdoc',
 
-  // Ignore warnings about class fields using I18n (@private)
-  intentionallyNotExported: ['I18n', 'TranslationPluralForms']
+  // Ignore warnings for JSDoc types not exports
+  intentionallyNotExported: [
+    'I18n',
+    'TranslationPluralForms',
+
+    // Rollup tree shaking export-only `index.mjs`
+    '__module'
+  ]
 }
