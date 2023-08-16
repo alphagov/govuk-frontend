@@ -4,11 +4,13 @@
   "exclude": ["**/*.test.*"],
   "compilerOptions": {
     "declaration": true,
+    "declarationMap": true,
     "emitDeclarationOnly": true,
     "lib": ["ESNext", "DOM"],
     "noEmit": false,
     "outDir": "./dist",
     "rootDir": "./src",
+    "sourceMap": true,
     "strict": true,
     "target": "ES2015",
     "types": ["node", "typed-query-selector"]
