@@ -150,4 +150,9 @@ export class Radios extends GOVUKFrontendComponent {
       }
     })
   }
+
+  /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'govuk-radios'
 }

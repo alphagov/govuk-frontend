@@ -572,6 +572,11 @@ export class Accordion extends GOVUKFrontendComponent {
   }
 
   /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'govuk-accordion'
+
+  /**
    * Accordion default config
    *
    * @see {@link AccordionConfig}
