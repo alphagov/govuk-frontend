@@ -253,6 +253,6 @@ module.exports = {
 
 /**
  * @typedef {import('@govuk-frontend/lib/components').MacroOptions} MacroOptions
- * @typedef {import('govuk-frontend').Config} Config - Config for all components via `initAll()`
- * @typedef {keyof Config} ConfigKey - Component config keys, e.g. `accordion` and `characterCount`
+ * @typedef {import('govuk-frontend').Config} Config
+ * @typedef {import('govuk-frontend').ConfigKey} ConfigKey
  */
