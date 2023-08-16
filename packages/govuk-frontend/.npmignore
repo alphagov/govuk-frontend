@@ -1,2 +1,8 @@
+# Ignore diff fixtures
 *.html
+
+# Ignore test files
 *.test.*
+
+# Ignore config build tools
+src/govuk-prototype-kit/*.mjs
