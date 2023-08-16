@@ -31,25 +31,26 @@ function initAll(config) {
     return
   }
 
-  const components = /** @type {const} */ ([
-    [Accordion, config.accordion],
-    [Button, config.button],
-    [CharacterCount, config.characterCount],
+  /** @type {[Component, ConfigKey?][]} */
+  const components = [
+    [Accordion, 'accordion'],
+    [Button, 'button'],
+    [CharacterCount, 'characterCount'],
     [Checkboxes],
-    [ErrorSummary, config.errorSummary],
-    [ExitThisPage, config.exitThisPage],
+    [ErrorSummary, 'errorSummary'],
+    [ExitThisPage, 'exitThisPage'],
     [Header],
-    [NotificationBanner, config.notificationBanner],
+    [NotificationBanner, 'notificationBanner'],
     [Radios],
     [SkipLink],
     [Tabs]
-  ])
+  ]
 
   // Allow the user to initialise GOV.UK Frontend in only certain sections of the page
   // Defaults to the entire document if nothing is set.
   const $scope = config.scope instanceof HTMLElement ? config.scope : document
 
-  components.forEach(([Component, config]) => {
+  components.forEach(([Component, configKey]) => {
     const $elements = $scope.querySelectorAll(
       `[data-module="${Component.moduleName}"]`
     )
@@ -58,7 +59,7 @@ function initAll(config) {
       try {
         // Only pass config to components that accept it
         'defaults' in Component
-          ? new Component($element, config)
+          ? new Component($element, config[configKey])
           : new Component($element)
       } catch (error) {
         console.log(error)
@@ -98,6 +99,7 @@ export {
  */
 
 /**
+ * @typedef {keyof Config} ConfigKey - Component config keys, e.g. `'accordion'`, `'characterCount'`
  * @typedef {keyof import('./components/index.mjs')} ComponentName - Component names, e.g. `'Accordion'`, `'CharacterCount'`
  * @typedef {import('./components/index.mjs')[ComponentName]} Component - Component types, e.g. `Accordion`, `CharacterCount`
  */
