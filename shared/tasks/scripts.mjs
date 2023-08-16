@@ -92,7 +92,8 @@ export async function compileJavaScript([
           preserveModulesRoot: relative(basePath, srcPath),
 
           // Enable source maps
-          sourcemap: true
+          sourcemap: true,
+          sourcemapExcludeSources: !!output.preserveModules
         })
       })
     )
