@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises'
 
-import { getFileSizes, getStats, modulePaths } from '@govuk-frontend/stats'
+import { getFileSizes } from '@govuk-frontend/lib/files'
+import { getStats, modulePaths } from '@govuk-frontend/stats'
 import { filesize } from 'filesize'
 
 /**
@@ -75,11 +76,18 @@ export async function commentStats(
   issueNumber,
   { titleText, markerText }
 ) {
+  const { WORKSPACE_DIR } = process.env
   const reviewAppURL = getReviewAppUrl(issueNumber)
 
   // File sizes
   const fileSizeTitle = '### File sizes'
-  const fileSizes = await getFileSizes()
+  const distFileSizes = await getFileSizes(
+    `${WORKSPACE_DIR}/dist/**/*.{css,js,mjs}`
+  )
+  const packageFileSizes = await getFileSizes(
+    `${WORKSPACE_DIR}/packages/govuk-frontend/dist/govuk/*.{css,js,mjs}`
+  )
+  const fileSizes = { ...distFileSizes, ...packageFileSizes }
   const fileSizeRows = Object.entries(fileSizes).map(([key, value]) => {
     return [key, String(filesize(value.size, { base: 2 }))]
   })

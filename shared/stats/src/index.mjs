@@ -1,7 +1,6 @@
-import { stat } from 'fs/promises'
 import { join, parse } from 'path'
 
-import { paths, pkg } from '@govuk-frontend/config'
+import { paths } from '@govuk-frontend/config'
 import { getComponentNamesFiltered } from '@govuk-frontend/lib/components'
 import { filterPath, getYaml } from '@govuk-frontend/lib/files'
 
@@ -13,17 +12,6 @@ const componentNamesWithJavaScript = await getComponentNamesFiltered(
     componentFiles.some(filterPath([`**/${componentName}.mjs`])),
   { moduleRoot: paths.stats }
 )
-
-/**
- * Target files for file size analysis
- */
-const filesForAnalysis = [
-  `dist/govuk-frontend-${pkg.version}.min.js`,
-  `dist/govuk-frontend-${pkg.version}.min.css`,
-  'packages/govuk-frontend/dist/govuk/all.mjs',
-  'packages/govuk-frontend/dist/govuk/all.bundle.mjs',
-  'packages/govuk-frontend/dist/govuk/all.bundle.js'
-]
 
 /**
  * Package options
@@ -71,23 +59,6 @@ export async function getStats(modulePath) {
     .reduce((total, rendered) => total + rendered, 0)
 
   return { total, modules, moduleCount }
-}
-
-/**
- * Returns file sizes of key files
- *
- * @returns {Promise<{[key: string]: import('fs').Stats}>} - File names and size
- */
-export async function getFileSizes() {
-  /** @type { { [key: string]: import('fs').Stats } } */
-  const result = {}
-
-  for (const filename of filesForAnalysis) {
-    const stats = await stat(join(paths.root, filename))
-    result[filename] = stats
-  }
-
-  return result
 }
 
 /**
