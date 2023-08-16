@@ -21,6 +21,16 @@ function kebabCaseToPascalCase(value) {
 }
 
 /**
+ * Convert a kebab-cased string to a camelCased one
+ *
+ * @param {string} value - Input kebab-cased string
+ * @returns {string} Output camelCased string
+ */
+function kebabCaseToCamelCase(value) {
+  return kebabCaseToPascalCase(value).replace(/^./, (str) => str.toLowerCase())
+}
+
+/**
  * Convert component name to macro name
  *
  * Component names are kebab-cased (button, date-input), whilst macro names have
@@ -30,7 +40,7 @@ function kebabCaseToPascalCase(value) {
  * @returns {string} The name of its corresponding Nunjucks macro
  */
 function componentNameToMacroName(componentName) {
-  return `govuk${kebabCaseToPascalCase(componentName)}`
+  return kebabCaseToCamelCase(`govuk-${componentName}`)
 }
 
 /**
@@ -50,9 +60,7 @@ function componentNameToClassName(componentName) {
  * @returns {string} The name of its corresponding config
  */
 function componentNameToConfigName(componentName) {
-  return componentNameToClassName(componentName).replace(/^./, (str) =>
-    str.toLowerCase()
-  )
+  return kebabCaseToCamelCase(componentName)
 }
 
 /**
