@@ -61,9 +61,6 @@ jobs:
       - name: Build
         uses: ./.github/workflows/actions/build
 
-      - name: Type declarations
-        run: npm run build:types
-
   lint:
     name: ${{ matrix.task.description }} (${{ matrix.runner }})
     runs-on: ${{ matrix.runner }}
@@ -96,6 +93,10 @@ jobs:
             name: lint-prettier
             run: npm run lint:prettier
             cache: .cache/prettier
+
+          - description: TypeScript compiler
+            name: lint-types
+            run: npm run lint:types
 
     steps:
       - name: Checkout

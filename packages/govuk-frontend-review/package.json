@@ -12,6 +12,7 @@
     "dev": "gulp dev --color",
     "build": "gulp build --color",
     "build:sassdoc": "sassdoc --config sassdoc.config.yaml ../govuk-frontend/src/govuk",
+    "build:types": "tsc --build tsconfig.build.json",
     "build:jsdoc": "typedoc",
     "proxy": "browser-sync start --config browsersync.config.js",
     "serve": "nodemon",
