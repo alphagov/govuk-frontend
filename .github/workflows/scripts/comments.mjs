@@ -96,14 +96,12 @@ export async function commentStats(
   // Module sizes
   const modulesTitle = '### Modules'
   const modulesRows = (await Promise.all(modulePaths.map(getStats))).map(
-    ([modulePath, moduleSize]) => [
-      `[${modulePath}](${[
-        reviewAppURL,
-        'docs/stats/',
-        modulePath.replace('mjs', 'html')
-      ].join('')})`,
-      moduleSize
-    ]
+    ([modulePath, moduleSize]) => {
+      const statsPath = `docs/stats/${modulePath.replace('mjs', 'html')}`
+      const statsURL = new URL(statsPath, reviewAppURL)
+
+      return [`[${modulePath}](${statsURL})`, moduleSize]
+    }
   )
 
   const modulesHeaders = ['File', 'Size']
@@ -245,10 +243,11 @@ function githubActionRunUrl(context) {
 
 /**
  * @param {number} prNumber - The PR number
- * @returns {string} - The Review App preview URL
+ * @param {string} path - URL path
+ * @returns {URL} - The Review App preview URL
  */
-function getReviewAppUrl(prNumber) {
-  return `https://govuk-frontend-pr-${prNumber}.herokuapp.com/`
+function getReviewAppUrl(prNumber, path = '/') {
+  return new URL(path, `https://govuk-frontend-pr-${prNumber}.herokuapp.com`)
 }
 
 /**
