@@ -211,17 +211,35 @@ function renderCommentFooter({ context, commit }) {
  * @returns {string} The GitHub Markdown table as a string.
  */
 function renderTable(headers, rows) {
-  const numColumns = headers.length
-  if (!rows.every((row) => row.length === numColumns)) {
+  if (!rows.every((row) => row.length === headers.length)) {
     throw new Error(
       'All rows must have the same number of elements as the headers.'
     )
   }
 
-  const headerRow = `|${headers.join('|')}|`
-  const headerSeparator = `|${Array(numColumns).fill('---').join('|')}|`
+  /**
+   * @example
+   * ```md
+   * | File | Size |
+   * ```
+   */
+  const headerRow = `| ${headers.join(' | ')} |`
 
-  const rowStrings = rows.map((row) => `|${row.join('|')}|`)
+  /**
+   * @example
+   * ```md
+   * | --- | --- |
+   * ```
+   */
+  const headerSeparator = `| ${Array(headers.length).fill('---').join(' | ')} |`
+
+  /**
+   * @example
+   * ```md
+   * | packages/govuk-frontend/dist/example.mjs | 100 KiB |
+   * ```
+   */
+  const rowStrings = rows.map((row) => `| ${row.join(' | ')} |`)
 
   // Combine headers, header separator, and rows to form the table
   return `${[headerRow, headerSeparator, ...rowStrings].join('\n')}\n`
