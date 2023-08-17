@@ -174,7 +174,7 @@ function renderMacro(macroName, macroPath, params = {}, options) {
  * @param {MacroRenderOptions} [options] - Nunjucks macro render options
  * @returns {string} HTML rendered from the Nunjucks string
  */
-function renderString(string, context, options) {
+function renderString(string, context = {}, options) {
   const nunjucksEnv = options?.env ?? env
   return nunjucksEnv.renderString(string, context)
 }

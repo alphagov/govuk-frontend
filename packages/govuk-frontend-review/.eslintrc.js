@@ -7,7 +7,7 @@ module.exports = {
       excludedFiles: ['**/*.test.mjs'],
       parser: '@typescript-eslint/parser',
       parserOptions: {
-        project: [join(__dirname, 'tsconfig.json')]
+        project: [join(__dirname, 'tsconfig.dev.json')]
       },
       plugins: ['@typescript-eslint']
     }

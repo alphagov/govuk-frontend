@@ -14,7 +14,7 @@ module.exports = {
       parserOptions: {
         // Note: Allow ES2015 for import/export syntax
         ecmaVersion: '2015',
-        project: [resolve(__dirname, 'tsconfig.json')]
+        project: [resolve(__dirname, 'tsconfig.dev.json')]
       },
       plugins: ['@typescript-eslint', 'es-x'],
       extends: [

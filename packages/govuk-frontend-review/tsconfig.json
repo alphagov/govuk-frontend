@@ -1,17 +1,12 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["**/*.js", "**/*.mjs"],
-  "exclude": ["./dist", "./node_modules"],
-  "compilerOptions": {
-    "types": [
-      "browser-sync",
-      "express",
-      "gulp",
-      "jest",
-      "marked",
-      "node",
-      "nunjucks",
-      "slug"
-    ]
-  }
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.build.json"
+    },
+    {
+      "path": "./tsconfig.dev.json"
+    }
+  ]
 }

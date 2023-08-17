@@ -3,7 +3,7 @@ const { executablePath } = require('puppeteer')
 /**
  * Percy config
  *
- * @type {import('@percy/config').PercyConfigObject}
+ * @type {import('@percy/core').PercyConfigOptions}
  */
 module.exports = {
   discovery: {

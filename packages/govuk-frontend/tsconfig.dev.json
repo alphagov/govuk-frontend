@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": ["**/*.js", "**/*.mjs"],
+  "exclude": ["./dist", "./node_modules"],
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM"],
+    "target": "ES2015",
+    "types": ["gulp", "jest", "jest-axe", "jest-puppeteer", "node"]
+  }
+}

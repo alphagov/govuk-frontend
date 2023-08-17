@@ -55,7 +55,9 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 
 **`npm run build:types` will do the following:**
 
-- run the [TypeScript compiler](https://www.typescriptlang.org/docs/handbook/compiler-options.html) to verify the types in our JavaScript files
+- run the [TypeScript compiler](https://www.typescriptlang.org/docs/handbook/compiler-options.html) to build type declarations for the GOV.UK Frontend package
+
+To verify the types in all our JavaScript files, run `npm run lint:types`
 
 ## Gulp tasks
 

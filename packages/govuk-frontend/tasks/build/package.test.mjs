@@ -141,6 +141,7 @@ describe('packages/govuk-frontend/dist/', () => {
       'rollup.publish.config.mjs',
       'rollup.release.config.mjs',
       'tsconfig.build.json',
+      'tsconfig.dev.json',
       'tsconfig.json'
     ])
   })

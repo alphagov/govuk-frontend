@@ -16,7 +16,7 @@ const componentNamesWithJavaScript = await getComponentNamesFiltered(
 /**
  * Package options
  *
- * @type {import('@govuk-frontend/lib/names').PackageOptions}
+ * @satisfies {import('@govuk-frontend/lib/names').PackageOptions}
  */
 export const packageOptions = {
   type: 'module',
