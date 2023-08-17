@@ -25,21 +25,18 @@ team](mailto:govuk-design-system-support@digital.cabinet-office.gov.uk) or get i
 
 ## Quick start
 
-There are 2 ways to start using GOV.UK Frontend in your app.
+There are 2 ways to start using GOV.UK Frontend in your app:
+
+- [using Node.js package manager
+  (npm)](https://frontend.design-system.service.gov.uk/installing-with-npm/) (recommended)
+- by [copying our CSS, JavaScript and asset
+  files into your project](https://frontend.design-system.service.gov.uk/install-using-precompiled-files/)
 
 Once installed, you will be able to use the code from the examples in the
 [GOV.UK Design System](https://design-system.service.gov.uk/)
 in your service.
 
-### 1. Install with npm (recommended)
-
-We recommend [installing GOV.UK Frontend using node package manager
-(npm)](https://frontend.design-system.service.gov.uk/installing-with-npm/).
-
-### 2. Install using compiled files
-
-You can also install GOV.UK Frontend by [copying our CSS, JavaScript and asset
-files into your project](https://frontend.design-system.service.gov.uk/install-using-precompiled-files/).
+You should also have a plan to [stay up to date with changes](https://frontend.design-system.service.gov.uk/staying-up-to-date/).
 
 ## Browser and assistive technology support
 
@@ -68,15 +65,6 @@ You can also read the [accessibility statement for the GOV.UK Design System](htt
 ### Accessibility warnings
 
 If you get a warning from a linter or accessibility checker, check our list of [issues you should not need to fix](https://github.com/alphagov/govuk-frontend/issues/1280#issuecomment-509588851).
-
-## Getting updates
-
-To be notified when there’s a new release, you can either:
-
-- [watch the govuk-frontend Github repository](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository)
-- join the [#govuk-design-system channel on cross-government Slack](https://ukgovernmentdigital.slack.com/app_redirect?channel=govuk-design-system)
-
-Find out how to [update with npm](https://frontend.design-system.service.gov.uk/updating-with-npm/).
 
 ## Security
 
