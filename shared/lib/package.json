@@ -13,8 +13,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "glob": "^10.3.3",
     "@govuk-frontend/config": "*",
+    "glob": "^10.3.3",
     "js-yaml": "^4.1.0",
     "minimatch": "^9.0.3",
     "nunjucks": "^3.2.4",
