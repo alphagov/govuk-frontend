@@ -2,6 +2,7 @@ const { readFile, stat } = require('fs/promises')
 const { parse, relative, basename } = require('path')
 
 const { paths } = require('@govuk-frontend/config')
+const { filesize } = require('filesize')
 const { glob } = require('glob')
 const yaml = require('js-yaml')
 const { minimatch } = require('minimatch')
@@ -46,24 +47,26 @@ async function getDirectories(directoryPath) {
 }
 
 /**
- * Get file sizes
+ * Get file size entries
  *
  * @param {string} directoryPath - Minimatch pattern to directory
  * @param {import('glob').GlobOptionsWithFileTypesUnset} [options] - Glob options
- * @returns {Promise<{[key: string]: import('fs').Stats}>} - File names and size
+ * @returns {Promise<[string, string][]>} - File entries with name and size
  */
 async function getFileSizes(directoryPath, options = {}) {
   const filesForAnalysis = await getListing(directoryPath, options)
+  return Promise.all(filesForAnalysis.map(getFileSize))
+}
 
-  /** @type { { [key: string]: import('fs').Stats } } */
-  const result = {}
-
-  for (const filename of filesForAnalysis) {
-    const stats = await stat(filename)
-    result[filename] = stats
-  }
-
-  return result
+/**
+ * Get file size entry
+ *
+ * @param {string} filePath - File path
+ * @returns {Promise<[string, string]>} - File entry with name and size
+ */
+async function getFileSize(filePath) {
+  const { size } = await stat(filePath)
+  return [filePath, `${filesize(size, { base: 2 })}`]
 }
 
 /**
@@ -106,6 +109,7 @@ module.exports = {
   filterPath,
   getDirectories,
   getFileSizes,
+  getFileSize,
   getListing,
   getYaml,
   mapPathTo

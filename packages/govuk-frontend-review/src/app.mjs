@@ -63,12 +63,7 @@ export default async () => {
 
   // Add build stats
   app.locals.stats = Object.fromEntries(
-    await Promise.all(
-      modulePaths.map(async (modulePath) => [
-        modulePath,
-        await getStats(modulePath)
-      ])
-    )
+    await Promise.all(modulePaths.map(getStats))
   )
 
   // Handle the banner component serverside.

@@ -1,8 +1,8 @@
 import { readFile } from 'node:fs/promises'
+import { join } from 'path'
 
 import { getFileSizes } from '@govuk-frontend/lib/files'
 import { getStats, modulePaths } from '@govuk-frontend/stats'
-import { filesize } from 'filesize'
 
 /**
  * Posts the content of multiple diffs in parallel on the given GitHub issue
@@ -76,51 +76,37 @@ export async function commentStats(
   issueNumber,
   { titleText, markerText }
 ) {
-  const { WORKSPACE_DIR } = process.env
+  const { WORKSPACE_DIR = '' } = process.env
   const reviewAppURL = getReviewAppUrl(issueNumber)
+
+  const distPath = join(WORKSPACE_DIR, 'dist')
+  const packagePath = join(WORKSPACE_DIR, 'packages/govuk-frontend/dist/govuk')
 
   // File sizes
   const fileSizeTitle = '### File sizes'
-  const distFileSizes = await getFileSizes(
-    `${WORKSPACE_DIR}/dist/**/*.{css,js,mjs}`
-  )
-  const packageFileSizes = await getFileSizes(
-    `${WORKSPACE_DIR}/packages/govuk-frontend/dist/govuk/*.{css,js,mjs}`
-  )
-  const fileSizes = { ...distFileSizes, ...packageFileSizes }
-  const fileSizeRows = Object.entries(fileSizes).map(([key, value]) => {
-    return [key, String(filesize(value.size, { base: 2 }))]
-  })
+  const fileSizeRows = [
+    ...(await getFileSizes(join(distPath, '**/*.{css,js,mjs}'))),
+    ...(await getFileSizes(join(packagePath, '*.{css,js,mjs}')))
+  ]
+
   const fileSizeHeaders = ['File', 'Size']
   const fileSizeTable = renderTable(fileSizeHeaders, fileSizeRows)
   const fileSizeText = [fileSizeTitle, fileSizeTable].join('\n')
 
-  // Modules
+  // Module sizes
   const modulesTitle = '### Modules'
-  const modules = Object.fromEntries(
-    await Promise.all(
-      modulePaths
-        .filter((modulePath) => typeof modulePath === 'string')
-        .map(async (modulePath) => [
-          modulePath,
-          await getStats(String(modulePath))
-        ])
-    )
-  )
-
-  const modulesRows = Object.entries(modules).map(([key, value]) => {
-    return [
-      `[${key}](${[
+  const modulesRows = (await Promise.all(modulePaths.map(getStats))).map(
+    ([modulePath, moduleSize]) => [
+      `[${modulePath}](${[
         reviewAppURL,
         'docs/stats/',
-        key.replace('mjs', 'html')
+        modulePath.replace('mjs', 'html')
       ].join('')})`,
-      `${(value.total / 1000).toFixed(2)} KB`,
-      value.moduleCount
+      moduleSize
     ]
-  })
+  )
 
-  const modulesHeaders = ['File', 'Size', 'Module count']
+  const modulesHeaders = ['File', 'Size']
   const modulesTable = renderTable(modulesHeaders, modulesRows)
   const modulesFooter = `[View stats and visualisations on the review app](${reviewAppURL})`
   const modulesText = [modulesTitle, modulesTable, modulesFooter].join('\n')

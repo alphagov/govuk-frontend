@@ -3,6 +3,7 @@ import { join, parse } from 'path'
 import { paths } from '@govuk-frontend/config'
 import { getComponentNamesFiltered } from '@govuk-frontend/lib/components'
 import { filterPath, getYaml } from '@govuk-frontend/lib/files'
+import { filesize } from 'filesize'
 
 /**
  * Components with JavaScript
@@ -37,7 +38,7 @@ export const modulePaths = [packageOptions.modulePath].concat(
  * Rollup module stats
  *
  * @param {string} modulePath - Rollup input path
- * @returns {Promise<{ total: number, modules: ModulesList, moduleCount: number }>} Rollup module stats
+ * @returns {Promise<[string, string]>} Rollup module stats
  */
 export async function getStats(modulePath) {
   const { base, dir, name } = parse(modulePath)
@@ -51,14 +52,12 @@ export async function getStats(modulePath) {
   // Modules bundled
   const modules = stats?.[base] ?? {}
 
-  const moduleCount = Object.keys(modules).length
-
   // Modules total size
   const total = Object.values(modules)
     .map(({ rendered }) => rendered)
     .reduce((total, rendered) => total + rendered, 0)
 
-  return { total, modules, moduleCount }
+  return [modulePath, `${filesize(total, { base: 2 })}`]
 }
 
 /**
