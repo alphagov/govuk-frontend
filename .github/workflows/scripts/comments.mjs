@@ -206,19 +206,11 @@ function renderCommentFooter({ context, commit }) {
 /**
  * Renders a GitHub Markdown table.
  *
- * @param {Array<string>} headers - An array containing the table headers.
- * @param {Array<Array<string>>} rows - An array of arrays containing the row data for the table.
+ * @param {string[]} headers - An array containing the table headers.
+ * @param {string[][]} rows - An array of arrays containing the row data for the table.
  * @returns {string} The GitHub Markdown table as a string.
  */
 function renderTable(headers, rows) {
-  if (!Array.isArray(headers) || !Array.isArray(rows)) {
-    throw new Error('Headers and rows must be arrays.')
-  }
-
-  if (headers.length === 0) {
-    throw new Error('Headers array must have at least one element.')
-  }
-
   const numColumns = headers.length
   if (!rows.every((row) => row.length === numColumns)) {
     throw new Error(
