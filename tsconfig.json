@@ -6,10 +6,10 @@
       "path": "./.github/workflows/scripts/tsconfig.json"
     },
     {
-      "path": "./packages/govuk-frontend-review/tsconfig.dev.json"
+      "path": "./packages/govuk-frontend-review/tsconfig.json"
     },
     {
-      "path": "./packages/govuk-frontend/tsconfig.dev.json"
+      "path": "./packages/govuk-frontend/tsconfig.json"
     },
     {
       "path": "./shared/config/tsconfig.json"
