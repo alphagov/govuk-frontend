@@ -32,7 +32,7 @@
   }
 
   .govuk-radios__input {
-    $input-offset: ($govuk-touch-target-size - $govuk-radios-size) / 2;
+    $input-offset: calc(($govuk-touch-target-size - $govuk-radios-size) / 2);
 
     position: absolute;
 
@@ -173,7 +173,7 @@
   // to be an even number in order to be centred under the 40px checkbox or radio.
   $conditional-border-width: $govuk-border-width-narrow;
   // Calculate the amount of padding needed to keep the border centered against the radios.
-  $conditional-border-padding: ($govuk-radios-size / 2) - ($conditional-border-width / 2);
+  $conditional-border-padding: calc($govuk-radios-size / 2) - calc($conditional-border-width / 2);
   // Move the border centered with the radios
   $conditional-margin-left: $conditional-border-padding;
   // Move the contents of the conditional inline with the label
@@ -199,7 +199,7 @@
   // =========================================================
 
   .govuk-radios--small {
-    $input-offset: ($govuk-touch-target-size - $govuk-small-radios-size) / 2;
+    $input-offset: calc(($govuk-touch-target-size - $govuk-small-radios-size) / 2);
     $label-offset: $govuk-touch-target-size - $input-offset;
 
     .govuk-radios__item {
@@ -273,7 +273,7 @@
 
     // Align conditional reveals with small radios
     .govuk-radios__conditional {
-      $margin-left: ($govuk-small-radios-size / 2) - ($conditional-border-width / 2);
+      $margin-left: calc($govuk-small-radios-size / 2) - calc($conditional-border-width / 2);
       margin-left: $margin-left;
       padding-left: $label-offset - ($margin-left + $conditional-border-width);
       clear: both;

@@ -51,7 +51,7 @@
   }
 
   .govuk-exit-this-page__indicator-light--on {
-    border-width: $indicator-size / 2;
+    border-width: calc($indicator-size / 2);
   }
 
   @media only print {

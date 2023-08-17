@@ -74,7 +74,7 @@
 
 @function _govuk-line-height($line-height, $font-size) {
   @if not unitless($line-height) and unit($line-height) == unit($font-size) {
-    $line-height: $line-height / $font-size;
+    $line-height: calc($line-height / $font-size);
   }
 
   @return $line-height;

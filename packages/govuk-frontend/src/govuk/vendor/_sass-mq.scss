@@ -95,7 +95,7 @@ $mq-media-type: all !default;
     } @else if unit($px) == em {
         @return $px;
     }
-    @return ($px / $base-font-size) * 1em;
+    @return calc($px / $base-font-size) * 1em;
 }
 
 /// Get a breakpoint's width

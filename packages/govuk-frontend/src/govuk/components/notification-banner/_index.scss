@@ -52,7 +52,7 @@
       box-sizing: border-box;
 
       // Calculate the internal width of a two-thirds column...
-      $two-col-width: ($govuk-page-width * 2 / 3) - ($govuk-gutter * 1 / 3);
+      $two-col-width: calc($govuk-page-width * 2 / 3) - calc($govuk-gutter * 1 / 3);
 
       // ...and then factor in the left border and padding
       $banner-exterior: ($padding-tablet + $govuk-border-width);

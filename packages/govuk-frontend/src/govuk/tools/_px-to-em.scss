@@ -16,5 +16,5 @@
   @if unitless($context-font-size) {
     $context-font-size: $context-font-size * 1px;
   }
-  @return $value / $context-font-size * 1em;
+  @return calc($value / $context-font-size * 1em);
 }
