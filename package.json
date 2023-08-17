@@ -33,7 +33,7 @@
     "postheroku-postbuild": "NPM_CONFIG_PRODUCTION=true npm ci --ignore-scripts --omit=optional --workspace @govuk-frontend/review",
     "pretest": "npm run build",
     "test": "jest --color --ignoreProjects \"Build tasks\" --maxWorkers=50%",
-    "lint": "npm run lint:editorconfig && npm run lint:prettier && npm run lint:js && npm run lint:types npm run lint:scss",
+    "lint": "npm run lint:editorconfig && npm run lint:prettier && npm run lint:js && npm run lint:types && npm run lint:scss",
     "lint:editorconfig": "npm run lint:editorconfig:cli",
     "lint:editorconfig:cli": "editorconfig-checker",
     "lint:js": "npm run lint:js:cli -- \"**/*.{cjs,js,md,mjs}\"",
