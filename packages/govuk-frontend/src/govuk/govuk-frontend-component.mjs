@@ -16,15 +16,13 @@ export class GOVUKFrontendComponent {
    * @internal
    */
   constructor() {
-    this.checkSupport()
+    this.#checkSupport()
   }
 
   /**
    * Validates whether GOV.UK Frontend is supported
-   *
-   * @private
    */
-  checkSupport() {
+  #checkSupport() {
     if (!isSupported()) {
       throw new SupportError()
     }

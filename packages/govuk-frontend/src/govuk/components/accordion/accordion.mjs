@@ -18,98 +18,51 @@ import { I18n } from '../../i18n.mjs'
  * @preserve
  */
 export class Accordion extends GOVUKFrontendComponent {
-  /** @private */
-  $module
+  #$module
 
   /**
-   * @private
    * @type {AccordionConfig}
    */
-  config
+  #config
 
-  /** @private */
-  i18n
+  #i18n
 
-  /** @private */
-  controlsClass = 'govuk-accordion__controls'
-
-  /** @private */
-  showAllClass = 'govuk-accordion__show-all'
-
-  /** @private */
-  showAllTextClass = 'govuk-accordion__show-all-text'
-
-  /** @private */
-  sectionClass = 'govuk-accordion__section'
-
-  /** @private */
-  sectionExpandedClass = 'govuk-accordion__section--expanded'
-
-  /** @private */
-  sectionButtonClass = 'govuk-accordion__section-button'
-
-  /** @private */
-  sectionHeaderClass = 'govuk-accordion__section-header'
-
-  /** @private */
-  sectionHeadingClass = 'govuk-accordion__section-heading'
-
-  /** @private */
-  sectionHeadingDividerClass = 'govuk-accordion__section-heading-divider'
-
-  /** @private */
-  sectionHeadingTextClass = 'govuk-accordion__section-heading-text'
-
-  /** @private */
-  sectionHeadingTextFocusClass = 'govuk-accordion__section-heading-text-focus'
-
-  /** @private */
-  sectionShowHideToggleClass = 'govuk-accordion__section-toggle'
-
-  /** @private */
-  sectionShowHideToggleFocusClass = 'govuk-accordion__section-toggle-focus'
-
-  /** @private */
-  sectionShowHideTextClass = 'govuk-accordion__section-toggle-text'
-
-  /** @private */
-  upChevronIconClass = 'govuk-accordion-nav__chevron'
-
-  /** @private */
-  downChevronIconClass = 'govuk-accordion-nav__chevron--down'
-
-  /** @private */
-  sectionSummaryClass = 'govuk-accordion__section-summary'
-
-  /** @private */
-  sectionSummaryFocusClass = 'govuk-accordion__section-summary-focus'
-
-  /** @private */
-  sectionContentClass = 'govuk-accordion__section-content'
-
-  /** @private */
-  $sections
-
-  /** @private */
-  browserSupportsSessionStorage = false
+  #controlsClass = 'govuk-accordion__controls'
+  #showAllClass = 'govuk-accordion__show-all'
+  #showAllTextClass = 'govuk-accordion__show-all-text'
+  #sectionClass = 'govuk-accordion__section'
+  #sectionExpandedClass = 'govuk-accordion__section--expanded'
+  #sectionButtonClass = 'govuk-accordion__section-button'
+  #sectionHeaderClass = 'govuk-accordion__section-header'
+  #sectionHeadingClass = 'govuk-accordion__section-heading'
+  #sectionHeadingDividerClass = 'govuk-accordion__section-heading-divider'
+  #sectionHeadingTextClass = 'govuk-accordion__section-heading-text'
+  #sectionHeadingTextFocusClass = 'govuk-accordion__section-heading-text-focus'
+  #sectionShowHideToggleClass = 'govuk-accordion__section-toggle'
+  #sectionShowHideToggleFocusClass = 'govuk-accordion__section-toggle-focus'
+  #sectionShowHideTextClass = 'govuk-accordion__section-toggle-text'
+  #upChevronIconClass = 'govuk-accordion-nav__chevron'
+  #downChevronIconClass = 'govuk-accordion-nav__chevron--down'
+  #sectionSummaryClass = 'govuk-accordion__section-summary'
+  #sectionSummaryFocusClass = 'govuk-accordion__section-summary-focus'
+  #sectionContentClass = 'govuk-accordion__section-content'
+  #$sections
+  #browserSupportsSessionStorage = false
 
   /**
-   * @private
    * @type {HTMLButtonElement | null}
    */
-  $showAllButton = null
+  #$showAllButton = null
 
   /**
-   * @private
    * @type {HTMLElement | null}
    */
-  $showAllIcon = null
+  #$showAllIcon = null
 
   /**
-   * @private
    * @type {HTMLElement | null}
    */
-  $showAllText = null
+  #$showAllText = null
 
   /**
    * @param {Element} $module - HTML element to use for accordion
@@ -122,110 +75,105 @@ export class Accordion extends GOVUKFrontendComponent {
       return this
     }
 
-    this.$module = $module
+    this.#$module = $module
 
-    this.config = mergeConfigs(
+    this.#config = mergeConfigs(
       Accordion.defaults,
       config || {},
       normaliseDataset($module.dataset)
     )
 
-    this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'))
+    this.#i18n = new I18n(extractConfigByNamespace(this.#config, 'i18n'))
 
-    const $sections = this.$module.querySelectorAll(`.${this.sectionClass}`)
+    const $sections = this.#$module.querySelectorAll(`.${this.#sectionClass}`)
     if (!$sections.length) {
       return this
     }
 
-    this.$sections = $sections
-    this.browserSupportsSessionStorage = helper.checkForSessionStorage()
+    this.#$sections = $sections
+    this.#browserSupportsSessionStorage = helper.checkForSessionStorage()
 
-    this.initControls()
-    this.initSectionHeaders()
+    this.#initControls()
+    this.#initSectionHeaders()
 
     // See if "Show all sections" button text should be updated
-    const areAllSectionsOpen = this.checkIfAllSectionsOpen()
-    this.updateShowAllButton(areAllSectionsOpen)
+    const areAllSectionsOpen = this.#checkIfAllSectionsOpen()
+    this.#updateShowAllButton(areAllSectionsOpen)
   }
 
   /**
    * Initialise controls and set attributes
-   *
-   * @private
    */
-  initControls() {
+  #initControls() {
     // Create "Show all" button and set attributes
-    this.$showAllButton = document.createElement('button')
-    this.$showAllButton.setAttribute('type', 'button')
-    this.$showAllButton.setAttribute('class', this.showAllClass)
-    this.$showAllButton.setAttribute('aria-expanded', 'false')
+    this.#$showAllButton = document.createElement('button')
+    this.#$showAllButton.setAttribute('type', 'button')
+    this.#$showAllButton.setAttribute('class', this.#showAllClass)
+    this.#$showAllButton.setAttribute('aria-expanded', 'false')
 
     // Create icon, add to element
-    this.$showAllIcon = document.createElement('span')
-    this.$showAllIcon.classList.add(this.upChevronIconClass)
-    this.$showAllButton.appendChild(this.$showAllIcon)
+    this.#$showAllIcon = document.createElement('span')
+    this.#$showAllIcon.classList.add(this.#upChevronIconClass)
+    this.#$showAllButton.appendChild(this.#$showAllIcon)
 
     // Create control wrapper and add controls to it
     const $accordionControls = document.createElement('div')
-    $accordionControls.setAttribute('class', this.controlsClass)
-    $accordionControls.appendChild(this.$showAllButton)
-    this.$module.insertBefore($accordionControls, this.$module.firstChild)
+    $accordionControls.setAttribute('class', this.#controlsClass)
+    $accordionControls.appendChild(this.#$showAllButton)
+    this.#$module.insertBefore($accordionControls, this.#$module.firstChild)
 
     // Build additional wrapper for Show all toggle text and place after icon
-    this.$showAllText = document.createElement('span')
-    this.$showAllText.classList.add(this.showAllTextClass)
-    this.$showAllButton.appendChild(this.$showAllText)
+    this.#$showAllText = document.createElement('span')
+    this.#$showAllText.classList.add(this.#showAllTextClass)
+    this.#$showAllButton.appendChild(this.#$showAllText)
 
     // Handle click events on the show/hide all button
-    this.$showAllButton.addEventListener('click', () =>
-      this.onShowOrHideAllToggle()
+    this.#$showAllButton.addEventListener('click', () =>
+      this.#onShowOrHideAllToggle()
     )
 
     // Handle 'beforematch' events, if the user agent supports them
     if ('onbeforematch' in document) {
       document.addEventListener('beforematch', (event) =>
-        this.onBeforeMatch(event)
+        this.#onBeforeMatch(event)
       )
     }
   }
 
   /**
    * Initialise section headers
-   *
-   * @private
    */
-  initSectionHeaders() {
+  #initSectionHeaders() {
     // Loop through sections
-    this.$sections.forEach(($section, i) => {
-      const $header = $section.querySelector(`.${this.sectionHeaderClass}`)
+    this.#$sections.forEach(($section, i) => {
+      const $header = $section.querySelector(`.${this.#sectionHeaderClass}`)
       if (!$header) {
         return
       }
 
       // Set header attributes
-      this.constructHeaderMarkup($header, i)
-      this.setExpanded(this.isExpanded($section), $section)
+      this.#constructHeaderMarkup($header, i)
+      this.#setExpanded(this.#isExpanded($section), $section)
 
       // Handle events
-      $header.addEventListener('click', () => this.onSectionToggle($section))
+      $header.addEventListener('click', () => this.#onSectionToggle($section))
 
       // See if there is any state stored in sessionStorage and set the sections to
       // open or closed.
-      this.setInitialState($section)
+      this.#setInitialState($section)
     })
   }
 
   /**
    * Construct section header
    *
-   * @private
    * @param {Element} $header - Section header
    * @param {number} index - Section index
    */
-  constructHeaderMarkup($header, index) {
-    const $span = $header.querySelector(`.${this.sectionButtonClass}`)
-    const $heading = $header.querySelector(`.${this.sectionHeadingClass}`)
-    const $summary = $header.querySelector(`.${this.sectionSummaryClass}`)
+  #constructHeaderMarkup($header, index) {
+    const $span = $header.querySelector(`.${this.#sectionButtonClass}`)
+    const $heading = $header.querySelector(`.${this.#sectionHeadingClass}`)
+    const $summary = $header.querySelector(`.${this.#sectionSummaryClass}`)
 
     if (!$span || !$heading) {
       return
@@ -236,7 +184,7 @@ export class Accordion extends GOVUKFrontendComponent {
     $button.setAttribute('type', 'button')
     $button.setAttribute(
       'aria-controls',
-      `${this.$module.id}-content-${index + 1}`
+      `${this.#$module.id}-content-${index + 1}`
     )
 
     // Copy all attributes (https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes) from $span to $button
@@ -251,35 +199,35 @@ export class Accordion extends GOVUKFrontendComponent {
 
     // Create container for heading text so it can be styled
     const $headingText = document.createElement('span')
-    $headingText.classList.add(this.sectionHeadingTextClass)
+    $headingText.classList.add(this.#sectionHeadingTextClass)
     // Copy the span ID to the heading text to allow it to be referenced by `aria-labelledby` on the
     // hidden content area without "Show this section"
     $headingText.id = $span.id
 
     // Create an inner heading text container to limit the width of the focus state
     const $headingTextFocus = document.createElement('span')
-    $headingTextFocus.classList.add(this.sectionHeadingTextFocusClass)
+    $headingTextFocus.classList.add(this.#sectionHeadingTextFocusClass)
     $headingText.appendChild($headingTextFocus)
     // span could contain HTML elements (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
     $headingTextFocus.innerHTML = $span.innerHTML
 
     // Create container for show / hide icons and text.
     const $showHideToggle = document.createElement('span')
-    $showHideToggle.classList.add(this.sectionShowHideToggleClass)
+    $showHideToggle.classList.add(this.#sectionShowHideToggleClass)
     // Tell Google not to index the 'show' text as part of the heading
     // For the snippet to work with JavaScript, it must be added before adding the page element to the
     // page's DOM. See https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#data-nosnippet-attr
     $showHideToggle.setAttribute('data-nosnippet', '')
     // Create an inner container to limit the width of the focus state
     const $showHideToggleFocus = document.createElement('span')
-    $showHideToggleFocus.classList.add(this.sectionShowHideToggleFocusClass)
+    $showHideToggleFocus.classList.add(this.#sectionShowHideToggleFocusClass)
     $showHideToggle.appendChild($showHideToggleFocus)
     // Create wrapper for the show / hide text. Append text after the show/hide icon
     const $showHideText = document.createElement('span')
     const $showHideIcon = document.createElement('span')
-    $showHideIcon.classList.add(this.upChevronIconClass)
+    $showHideIcon.classList.add(this.#upChevronIconClass)
     $showHideToggleFocus.appendChild($showHideIcon)
-    $showHideText.classList.add(this.sectionShowHideTextClass)
+    $showHideText.classList.add(this.#sectionShowHideTextClass)
     $showHideToggleFocus.appendChild($showHideText)
 
     // Append elements to the button:
@@ -288,7 +236,7 @@ export class Accordion extends GOVUKFrontendComponent {
     // 3. (Optional: Summary line followed by punctuation)
     // 4. Show / hide toggle
     $button.appendChild($headingText)
-    $button.appendChild(this.getButtonPunctuationEl())
+    $button.appendChild(this.#getButtonPunctuationEl())
 
     // If summary content exists add to DOM in correct order
     if ($summary) {
@@ -299,7 +247,7 @@ export class Accordion extends GOVUKFrontendComponent {
       const $summarySpan = document.createElement('span')
       // Create an inner summary container to limit the width of the summary focus state
       const $summarySpanFocus = document.createElement('span')
-      $summarySpanFocus.classList.add(this.sectionSummaryFocusClass)
+      $summarySpanFocus.classList.add(this.#sectionSummaryFocusClass)
       $summarySpan.appendChild($summarySpanFocus)
 
       // Get original attributes, and pass them to the replacement
@@ -316,7 +264,7 @@ export class Accordion extends GOVUKFrontendComponent {
       $summary.parentNode.replaceChild($summarySpan, $summary)
 
       $button.appendChild($summarySpan)
-      $button.appendChild(this.getButtonPunctuationEl())
+      $button.appendChild(this.#getButtonPunctuationEl())
     }
 
     $button.appendChild($showHideToggle)
@@ -328,10 +276,9 @@ export class Accordion extends GOVUKFrontendComponent {
   /**
    * When a section is opened by the user agent via the 'beforematch' event
    *
-   * @private
    * @param {Event} event - Generic event
    */
-  onBeforeMatch(event) {
+  #onBeforeMatch(event) {
     const $fragment = event.target
 
     // Handle elements with `.closest()` support only
@@ -340,58 +287,54 @@ export class Accordion extends GOVUKFrontendComponent {
     }
 
     // Handle when fragment is inside section
-    const $section = $fragment.closest(`.${this.sectionClass}`)
+    const $section = $fragment.closest(`.${this.#sectionClass}`)
     if ($section) {
-      this.setExpanded(true, $section)
+      this.#setExpanded(true, $section)
     }
   }
 
   /**
    * When section toggled, set and store state
    *
-   * @private
    * @param {Element} $section - Section element
    */
-  onSectionToggle($section) {
-    const expanded = this.isExpanded($section)
-    this.setExpanded(!expanded, $section)
+  #onSectionToggle($section) {
+    const expanded = this.#isExpanded($section)
+    this.#setExpanded(!expanded, $section)
 
     // Store the state in sessionStorage when a change is triggered
-    this.storeState($section)
+    this.#storeState($section)
   }
 
   /**
    * When Open/Close All toggled, set and store state
-   *
-   * @private
    */
-  onShowOrHideAllToggle() {
-    const nowExpanded = !this.checkIfAllSectionsOpen()
+  #onShowOrHideAllToggle() {
+    const nowExpanded = !this.#checkIfAllSectionsOpen()
 
     // Loop through sections
-    this.$sections.forEach(($section) => {
-      this.setExpanded(nowExpanded, $section)
+    this.#$sections.forEach(($section) => {
+      this.#setExpanded(nowExpanded, $section)
       // Store the state in sessionStorage when a change is triggered
-      this.storeState($section)
+      this.#storeState($section)
     })
 
-    this.updateShowAllButton(nowExpanded)
+    this.#updateShowAllButton(nowExpanded)
   }
 
   /**
    * Set section attributes when opened/closed
    *
-   * @private
    * @param {boolean} expanded - Section expanded
    * @param {Element} $section - Section element
    */
-  setExpanded(expanded, $section) {
-    const $showHideIcon = $section.querySelector(`.${this.upChevronIconClass}`)
+  #setExpanded(expanded, $section) {
+    const $showHideIcon = $section.querySelector(`.${this.#upChevronIconClass}`)
     const $showHideText = $section.querySelector(
-      `.${this.sectionShowHideTextClass}`
+      `.${this.#sectionShowHideTextClass}`
     )
-    const $button = $section.querySelector(`.${this.sectionButtonClass}`)
-    const $content = $section.querySelector(`.${this.sectionContentClass}`)
+    const $button = $section.querySelector(`.${this.#sectionButtonClass}`)
+    const $content = $section.querySelector(`.${this.#sectionContentClass}`)
 
     if (
       !$showHideIcon ||
@@ -403,8 +346,8 @@ export class Accordion extends GOVUKFrontendComponent {
     }
 
     const newButtonText = expanded
-      ? this.i18n.t('hideSection')
-      : this.i18n.t('showSection')
+      ? this.#i18n.t('hideSection')
+      : this.#i18n.t('showSection')
 
     $showHideText.innerText = newButtonText
     $button.setAttribute('aria-expanded', `${expanded}`)
@@ -413,20 +356,20 @@ export class Accordion extends GOVUKFrontendComponent {
     const ariaLabelParts = []
 
     const $headingText = $section.querySelector(
-      `.${this.sectionHeadingTextClass}`
+      `.${this.#sectionHeadingTextClass}`
     )
     if ($headingText instanceof HTMLElement) {
       ariaLabelParts.push($headingText.innerText.trim())
     }
 
-    const $summary = $section.querySelector(`.${this.sectionSummaryClass}`)
+    const $summary = $section.querySelector(`.${this.#sectionSummaryClass}`)
     if ($summary instanceof HTMLElement) {
       ariaLabelParts.push($summary.innerText.trim())
     }
 
     const ariaLabelMessage = expanded
-      ? this.i18n.t('hideSectionAriaLabel')
-      : this.i18n.t('showSectionAriaLabel')
+      ? this.#i18n.t('hideSectionAriaLabel')
+      : this.#i18n.t('showSectionAriaLabel')
     ariaLabelParts.push(ariaLabelMessage)
 
     /*
@@ -439,42 +382,40 @@ export class Accordion extends GOVUKFrontendComponent {
     // Swap icon, change class
     if (expanded) {
       $content.removeAttribute('hidden')
-      $section.classList.add(this.sectionExpandedClass)
-      $showHideIcon.classList.remove(this.downChevronIconClass)
+      $section.classList.add(this.#sectionExpandedClass)
+      $showHideIcon.classList.remove(this.#downChevronIconClass)
     } else {
       $content.setAttribute('hidden', 'until-found')
-      $section.classList.remove(this.sectionExpandedClass)
-      $showHideIcon.classList.add(this.downChevronIconClass)
+      $section.classList.remove(this.#sectionExpandedClass)
+      $showHideIcon.classList.add(this.#downChevronIconClass)
     }
 
     // See if "Show all sections" button text should be updated
-    const areAllSectionsOpen = this.checkIfAllSectionsOpen()
-    this.updateShowAllButton(areAllSectionsOpen)
+    const areAllSectionsOpen = this.#checkIfAllSectionsOpen()
+    this.#updateShowAllButton(areAllSectionsOpen)
   }
 
   /**
    * Get state of section
    *
-   * @private
    * @param {Element} $section - Section element
    * @returns {boolean} True if expanded
    */
-  isExpanded($section) {
-    return $section.classList.contains(this.sectionExpandedClass)
+  #isExpanded($section) {
+    return $section.classList.contains(this.#sectionExpandedClass)
   }
 
   /**
    * Check if all sections are open
    *
-   * @private
    * @returns {boolean} True if all sections are open
    */
-  checkIfAllSectionsOpen() {
+  #checkIfAllSectionsOpen() {
     // Get a count of all the Accordion sections
-    const sectionsCount = this.$sections.length
+    const sectionsCount = this.#$sections.length
     // Get a count of all Accordion sections that are expanded
-    const expandedSectionCount = this.$module.querySelectorAll(
-      `.${this.sectionExpandedClass}`
+    const expandedSectionCount = this.#$module.querySelectorAll(
+      `.${this.#sectionExpandedClass}`
     ).length
     const areAllSectionsOpen = sectionsCount === expandedSectionCount
 
@@ -484,37 +425,35 @@ export class Accordion extends GOVUKFrontendComponent {
   /**
    * Update "Show all sections" button
    *
-   * @private
    * @param {boolean} expanded - Section expanded
    */
-  updateShowAllButton(expanded) {
+  #updateShowAllButton(expanded) {
     const newButtonText = expanded
-      ? this.i18n.t('hideAllSections')
-      : this.i18n.t('showAllSections')
+      ? this.#i18n.t('hideAllSections')
+      : this.#i18n.t('showAllSections')
 
-    this.$showAllButton.setAttribute('aria-expanded', expanded.toString())
-    this.$showAllText.innerText = newButtonText
+    this.#$showAllButton.setAttribute('aria-expanded', expanded.toString())
+    this.#$showAllText.innerText = newButtonText
 
     // Swap icon, toggle class
     if (expanded) {
-      this.$showAllIcon.classList.remove(this.downChevronIconClass)
+      this.#$showAllIcon.classList.remove(this.#downChevronIconClass)
     } else {
-      this.$showAllIcon.classList.add(this.downChevronIconClass)
+      this.#$showAllIcon.classList.add(this.#downChevronIconClass)
     }
   }
 
   /**
    * Set the state of the accordions in sessionStorage
    *
-   * @private
    * @param {Element} $section - Section element
    */
-  storeState($section) {
-    if (this.browserSupportsSessionStorage && this.config.rememberExpanded) {
+  #storeState($section) {
+    if (this.#browserSupportsSessionStorage && this.#config.rememberExpanded) {
       // We need a unique way of identifying each content in the Accordion. Since
       // an `#id` should be unique and an `id` is required for `aria-` attributes
       // `id` can be safely used.
-      const $button = $section.querySelector(`.${this.sectionButtonClass}`)
+      const $button = $section.querySelector(`.${this.#sectionButtonClass}`)
 
       if ($button) {
         const contentId = $button.getAttribute('aria-controls')
@@ -531,12 +470,11 @@ export class Accordion extends GOVUKFrontendComponent {
   /**
    * Read the state of the accordions from sessionStorage
    *
-   * @private
    * @param {Element} $section - Section element
    */
-  setInitialState($section) {
-    if (this.browserSupportsSessionStorage && this.config.rememberExpanded) {
-      const $button = $section.querySelector(`.${this.sectionButtonClass}`)
+  #setInitialState($section) {
+    if (this.#browserSupportsSessionStorage && this.#config.rememberExpanded) {
+      const $button = $section.querySelector(`.${this.#sectionButtonClass}`)
 
       if ($button) {
         const contentId = $button.getAttribute('aria-controls')
@@ -545,7 +483,7 @@ export class Accordion extends GOVUKFrontendComponent {
           : null
 
         if (contentState !== null) {
-          this.setExpanded(contentState === 'true', $section)
+          this.#setExpanded(contentState === 'true', $section)
         }
       }
     }
@@ -558,14 +496,13 @@ export class Accordion extends GOVUKFrontendComponent {
    * into thematic chunks.
    * See https://github.com/alphagov/govuk-frontend/issues/2327#issuecomment-922957442
    *
-   * @private
    * @returns {Element} DOM element
    */
-  getButtonPunctuationEl() {
+  #getButtonPunctuationEl() {
     const $punctuationEl = document.createElement('span')
     $punctuationEl.classList.add(
       'govuk-visually-hidden',
-      this.sectionHeadingDividerClass
+      this.#sectionHeadingDividerClass
     )
     $punctuationEl.innerHTML = ', '
     return $punctuationEl
