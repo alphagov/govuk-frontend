@@ -50,6 +50,7 @@
     "build:package": "gulp build:package --color",
     "build:release": "gulp build:release --color",
     "build:stats": "npm run stats --workspace @govuk-frontend/stats",
+    "build:types": "tsc --build tsconfig.build.json",
     "dev": "gulp dev --color",
     "version": "echo $npm_package_version"
   },
