@@ -50,7 +50,16 @@ export default async () => {
     },
     assets: ['/dist/govuk/assets', '/dist/govuk/all.bundle.js.map'],
     sass: ['/dist/govuk-prototype-kit/init.scss'],
-    scripts: ['/dist/govuk/all.bundle.js', '/dist/govuk-prototype-kit/init.js'],
+    scripts: [
+      {
+        path: '/dist/govuk/all.bundle.js',
+        type: 'module'
+      },
+      {
+        path: '/dist/govuk-prototype-kit/init.js',
+        type: 'module'
+      }
+    ],
     nunjucksMacros,
     nunjucksPaths: ['/dist']
   }
