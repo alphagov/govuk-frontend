@@ -35,6 +35,16 @@ export default async () => {
   })
 
   return {
+    meta: {
+      description:
+        'GOV.UK Frontend contains the code you need to start building a user interface for government platforms and services.',
+      urls: {
+        documentation: 'https://design-system.service.gov.uk/',
+        releaseNotes:
+          'https://github.com/alphagov/govuk-frontend/releases/tag/v{{version}}',
+        versionHistory: 'https://github.com/alphagov/govuk-frontend/releases'
+      }
+    },
     assets: ['/dist/govuk/assets', '/dist/govuk/all.bundle.js.map'],
     sass: ['/dist/govuk-prototype-kit/init.scss'],
     scripts: ['/dist/govuk/all.bundle.js', '/dist/govuk-prototype-kit/init.js'],
@@ -47,6 +57,7 @@ export default async () => {
  * GOV.UK Prototype Kit config
  *
  * @typedef {object} PrototypeKitConfig
+ * @property {object} meta - metadata about the plugin
  * @property {string[]} assets - Static asset paths
  * @property {string[]} sass - Sass stylesheets to compile
  * @property {string[] | { path: string, type?: string }[]} scripts - JavaScripts to serve
