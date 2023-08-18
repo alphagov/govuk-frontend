@@ -34,7 +34,7 @@ export class Button extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      return this
+      throw new TypeError('Button: $module is not an instance of "HTMLElement"')
     }
 
     this.$module = $module

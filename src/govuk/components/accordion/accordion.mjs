@@ -119,7 +119,9 @@ export class Accordion extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      return this
+      throw new TypeError(
+        'Accordion: $module is not an instance of "HTMLElement"'
+      )
     }
 
     this.$module = $module

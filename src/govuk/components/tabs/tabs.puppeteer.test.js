@@ -268,6 +268,22 @@ describe('/components/tabs', () => {
           message: 'GOV.UK Frontend is not supported in this browser'
         })
       })
+
+      it('throws when receiving the wrong type for $module', async () => {
+        await expect(
+          renderAndInitialise(page, 'tabs', {
+            params: examples.default,
+            beforeInitialisation() {
+              // Remove the root of the components as a way
+              // for the constructor to receive the wrong type for `$module`
+              document.querySelector('[data-module]').remove()
+            }
+          })
+        ).rejects.toEqual({
+          name: 'TypeError',
+          message: 'Tabs: $module is not an instance of "HTMLAnchorElement"'
+        })
+      })
     })
   })
 })

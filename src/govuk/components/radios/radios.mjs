@@ -30,7 +30,7 @@ export class Radios extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      return this
+      throw new TypeError('Radios: $module is not an instance of "HTMLElement"')
     }
 
     /** @satisfies {NodeListOf<HTMLInputElement>} */

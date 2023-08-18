@@ -44,7 +44,7 @@ export class Header extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      return this
+      throw new TypeError('Header: $module is not an instance of "HTMLElement"')
     }
 
     this.$module = $module

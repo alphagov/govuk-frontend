@@ -1,5 +1,4 @@
 const {
-  goTo,
   goToComponent,
   renderAndInitialise
 } = require('@govuk-frontend/helpers/puppeteer')
@@ -16,26 +15,6 @@ describe('/components/button', () => {
 
   beforeAll(async () => {
     examples = await getExamples('button')
-  })
-
-  describe('mis-instantiation', () => {
-    it('does not prevent further JavaScript from running', async () => {
-      await goTo(page, '/tests/boilerplate')
-
-      const result = await page.evaluate(async (exportName) => {
-        const namespace = await import('govuk-frontend')
-
-        // `undefined` simulates the element being missing,
-        // from an unchecked `document.querySelector` for example
-        /* eslint-disable-next-line no-new */
-        new namespace[exportName](undefined)
-
-        // If our component initialisation breaks, this won't run
-        return true
-      }, 'Button')
-
-      expect(result).toBe(true)
-    })
   })
 
   describe('/components/button/link', () => {
@@ -357,6 +336,22 @@ describe('/components/button', () => {
         ).rejects.toEqual({
           name: 'SupportError',
           message: 'GOV.UK Frontend is not supported in this browser'
+        })
+      })
+
+      it('throws when receiving the wrong type for $module', async () => {
+        await expect(
+          renderAndInitialise(page, 'button', {
+            params: examples.default,
+            beforeInitialisation() {
+              // Remove the root of the components as a way
+              // for the constructor to receive the wrong type for `$module`
+              document.querySelector('[data-module]').remove()
+            }
+          })
+        ).rejects.toEqual({
+          name: 'TypeError',
+          message: 'Button: $module is not an instance of "HTMLElement"'
         })
       })
     })
