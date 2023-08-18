@@ -1,3 +1,5 @@
+import { pkg } from '@govuk-frontend/config'
+
 import configFn from './govuk-prototype-kit.config.mjs'
 
 describe('GOV.UK Prototype Kit config', () => {
@@ -6,6 +8,17 @@ describe('GOV.UK Prototype Kit config', () => {
 
   beforeAll(async () => {
     config = await configFn()
+  })
+
+  it('includes metadata from `package.json`', () => {
+    expect(config.meta).toEqual({
+      description: pkg.description,
+      urls: {
+        documentation: pkg.homepage,
+        releaseNotes: expect.stringContaining(`/releases/tag/v${pkg.version}`),
+        versionHistory: expect.stringContaining('/releases')
+      }
+    })
   })
 
   it('includes paths for assets, scripts, sass', () => {
