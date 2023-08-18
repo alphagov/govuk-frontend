@@ -1,4 +1,4 @@
-const { resolve } = require('path')
+const { join } = require('path')
 
 module.exports = {
   settings: {
@@ -14,7 +14,7 @@ module.exports = {
       parserOptions: {
         // Note: Allow ES2015 for import/export syntax
         ecmaVersion: '2015',
-        project: [resolve(__dirname, 'tsconfig.dev.json')]
+        project: [join(__dirname, 'tsconfig.build.json')]
       },
       plugins: ['@typescript-eslint', 'es-x'],
       extends: [
