@@ -1,5 +1,6 @@
 import { join } from 'path'
 
+import { pkg } from '@govuk-frontend/config'
 import { getComponentNames } from '@govuk-frontend/lib/components'
 import { filterPath, getListing } from '@govuk-frontend/lib/files'
 import {
@@ -16,11 +17,15 @@ import slash from 'slash'
 export default async () => {
   const srcPath = join(packageNameToPath('govuk-frontend'), 'src')
 
-  // Locate component macros
+  // GitHub URL without `.git` suffix
+  const { href } = new URL(pkg.repository.url)
+  const githubURL = new URL(href.replace(/\.git$/, ''))
+
+  // Locate component names and macros
+  const componentNames = await getComponentNames()
   const componentMacros = await getListing('**/components/**/macro.njk', {
     cwd: srcPath
   })
-  const componentNames = await getComponentNames()
 
   // Build array of macros
   const nunjucksMacros = componentNames.map((componentName) => {
@@ -36,13 +41,11 @@ export default async () => {
 
   return {
     meta: {
-      description:
-        'GOV.UK Frontend contains the code you need to start building a user interface for government platforms and services.',
+      description: pkg.description,
       urls: {
-        documentation: 'https://design-system.service.gov.uk/',
-        releaseNotes:
-          'https://github.com/alphagov/govuk-frontend/releases/tag/v{{version}}',
-        versionHistory: 'https://github.com/alphagov/govuk-frontend/releases'
+        documentation: pkg.homepage,
+        releaseNotes: `${githubURL.href}/releases/tag/v${pkg.version}`,
+        versionHistory: `${githubURL.href}/releases`
       }
     },
     assets: ['/dist/govuk/assets', '/dist/govuk/all.bundle.js.map'],
@@ -54,13 +57,30 @@ export default async () => {
 }
 
 /**
- * GOV.UK Prototype Kit config
+ * GOV.UK Prototype Kit plugin config
  *
  * @typedef {object} PrototypeKitConfig
- * @property {object} meta - metadata about the plugin
+ * @property {PrototypeKitConfigMeta} meta - metadata about the plugin
  * @property {string[]} assets - Static asset paths
  * @property {string[]} sass - Sass stylesheets to compile
  * @property {string[] | { path: string, type?: string }[]} scripts - JavaScripts to serve
  * @property {{ importFrom: string, macroName: string }[]} nunjucksMacros - Nunjucks macros to include
  * @property {string[]} nunjucksPaths - Nunjucks paths
+ */
+
+/**
+ * GOV.UK Prototype Kit plugin metadata
+ *
+ * @typedef {object} PrototypeKitConfigMeta
+ * @property {string} description - Plugin description
+ * @property {PrototypeKitConfigURLs} urls - Plugin URLs
+ */
+
+/**
+ * GOV.UK Prototype Kit plugin URLs
+ *
+ * @typedef {object} PrototypeKitConfigURLs
+ * @property {string} documentation - Documentation URL
+ * @property {string} releaseNotes - Release notes URL
+ * @property {string} versionHistory - Version history URL
  */
