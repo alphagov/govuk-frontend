@@ -30,8 +30,14 @@ describe('GOV.UK Prototype Kit config', () => {
     expect(config.sass).toEqual(['/dist/govuk-prototype-kit/init.scss'])
 
     expect(config.scripts).toEqual([
-      '/dist/govuk/all.bundle.js',
-      '/dist/govuk-prototype-kit/init.js'
+      {
+        path: '/dist/govuk/all.bundle.js',
+        type: 'module'
+      },
+      {
+        path: '/dist/govuk-prototype-kit/init.js',
+        type: 'module'
+      }
     ])
   })
 
