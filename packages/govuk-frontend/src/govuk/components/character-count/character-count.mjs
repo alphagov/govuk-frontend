@@ -75,7 +75,9 @@ export class CharacterCount extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      return this
+      throw new TypeError(
+        'Character Count: $module is not an instance of "HTMLElement"'
+      )
     }
 
     const $textarea = $module.querySelector('.govuk-js-character-count')

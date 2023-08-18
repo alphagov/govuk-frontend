@@ -81,7 +81,9 @@ export class ExitThisPage extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      return this
+      throw new TypeError(
+        'Exit This Page: $module is not an instance of "HTMLElement"'
+      )
     }
 
     const $button = $module.querySelector('.govuk-exit-this-page__button')

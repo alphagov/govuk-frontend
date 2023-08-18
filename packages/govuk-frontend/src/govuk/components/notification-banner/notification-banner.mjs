@@ -25,7 +25,9 @@ export class NotificationBanner extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      return this
+      throw new TypeError(
+        'Notification Banner: $module is not an instance of "HTMLElement"'
+      )
     }
 
     this.$module = $module

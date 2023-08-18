@@ -43,7 +43,9 @@ export class Tabs extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      return this
+      throw new TypeError(
+        'Tabs: $module is not an instance of "HTMLAnchorElement"'
+      )
     }
 
     /** @satisfies {NodeListOf<HTMLAnchorElement>} */

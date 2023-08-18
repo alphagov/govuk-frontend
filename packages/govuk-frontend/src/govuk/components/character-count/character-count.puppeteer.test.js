@@ -785,6 +785,23 @@ describe('Character count', () => {
         })
       })
 
+      it('throws when receiving the wrong type for $module', async () => {
+        await expect(
+          renderAndInitialise(page, 'character-count', {
+            params: examples.default,
+            beforeInitialisation() {
+              // Remove the root of the components as a way
+              // for the constructor to receive the wrong type for `$module`
+              document.querySelector('[data-module]').remove()
+            }
+          })
+        ).rejects.toEqual({
+          name: 'TypeError',
+          message:
+            'Character Count: $module is not an instance of "HTMLElement"'
+        })
+      })
+
       it('throws when receiving invalid configuration', async () => {
         await expect(
           renderAndInitialise(page, 'character-count', {
