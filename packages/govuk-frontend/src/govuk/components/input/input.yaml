@@ -50,11 +50,11 @@ params:
       - name: text
         type: string
         required: true
-        description: Required. If `html` is set, this is not required. Text to use within the label. If `html` is provided, the `text` option will be ignored.
+        description: Required. If `html` is set, this is not required. Text to use within the prefix. If `html` is provided, the `text` option will be ignored.
       - name: html
         type: string
         required: true
-        description: Required. If `text` is set, this is not required. HTML to use within the label. If `html` is provided, the `text` option will be ignored.
+        description: Required. If `text` is set, this is not required. HTML to use within the prefix. If `html` is provided, the `text` option will be ignored.
       - name: classes
         type: string
         required: false
@@ -71,11 +71,11 @@ params:
       - name: text
         type: string
         required: true
-        description: If `html` is set, this is not required. Text to use within the label. If `html` is provided, the `text` option will be ignored.
+        description: If `html` is set, this is not required. Text to use within the suffix. If `html` is provided, the `text` option will be ignored.
       - name: html
         type: string
         required: true
-        description: If `text` is set, this is not required. HTML to use within the label. If `html` is provided, the `text` option will be ignored.
+        description: If `text` is set, this is not required. HTML to use within the suffix. If `html` is provided, the `text` option will be ignored.
       - name: classes
         type: string
         required: false
