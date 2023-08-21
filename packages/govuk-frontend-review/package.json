@@ -42,7 +42,7 @@
   "devDependencies": {
     "@govuk-frontend/helpers": "*",
     "@govuk-frontend/tasks": "*",
-    "@rollup/plugin-node-resolve": "^15.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.0",
     "@rollup/plugin-terser": "^0.4.3",
     "autoprefixer": "^10.4.15",
     "browser-sync": "^2.29.3",
