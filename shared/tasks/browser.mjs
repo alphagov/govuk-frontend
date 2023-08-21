@@ -51,9 +51,13 @@ export async function screenshots() {
   for (const [componentName, options] of /** @type {const} */ ([
     ['button', { exampleName: 'start' }],
     ['button', { exampleName: 'inverse-start' }],
+    ['checkboxes', { exampleName: 'with-hints-on-items' }],
+    ['checkboxes', { exampleName: 'small' }],
     ['details', { exampleName: 'expanded' }],
     ['pagination', { exampleName: 'with-prev-and-next-only' }],
-    ['pagination', { exampleName: 'with-prev-and-next-only-and-labels' }]
+    ['pagination', { exampleName: 'with-prev-and-next-only-and-labels' }],
+    ['radios', { exampleName: 'with-hints-on-items' }],
+    ['radios', { exampleName: 'small' }]
   ])) {
     await screenshotComponent(await browser.newPage(), componentName, options)
   }
