@@ -70,12 +70,28 @@ describe('initAll', () => {
     }
   )
 
-  it('returns early if govuk-frontend-supported class is not present', () => {
-    document.body.innerHTML = '<div data-module="govuk-accordion"></div>'
+  describe('govuk-frontend-supported not present', () => {
+    it('returns early', () => {
+      document.body.innerHTML = '<div data-module="govuk-accordion"></div>'
 
-    GOVUKFrontend.initAll()
+      GOVUKFrontend.initAll()
 
-    expect(GOVUKFrontend.Accordion).not.toHaveBeenCalled()
+      expect(GOVUKFrontend.Accordion).not.toHaveBeenCalled()
+    })
+
+    it('logs why it did not initialise components', () => {
+      // Silence warnings in test output, and allow us to 'expect' them
+      jest.spyOn(global.console, 'log').mockImplementation()
+
+      GOVUKFrontend.initAll()
+
+      // Only validate the message as it's the important part for the user
+      expect(global.console.log).toHaveBeenCalledWith(
+        expect.objectContaining({
+          message: 'GOV.UK Frontend is not supported in this browser'
+        })
+      )
+    })
   })
 
   it('only initialises components within a given scope', () => {
