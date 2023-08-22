@@ -21,11 +21,11 @@
     "govuk-frontend": "*",
     "jest-axe": "^8.0.0",
     "jest-dev-server": "^9.0.0",
-    "jest-environment-jsdom": "^29.6.2",
+    "jest-environment-jsdom": "^29.6.3",
     "jest-environment-node-single-context": "^29.1.0",
     "jest-environment-puppeteer": "^9.0.0",
     "outdent": "^0.8.0",
-    "puppeteer": "^21.0.3",
+    "puppeteer": "^21.1.0",
     "sass-embedded": "^1.66.1",
     "slug": "^8.2.3"
   },
