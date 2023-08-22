@@ -26,7 +26,7 @@
     "jest-environment-puppeteer": "^9.0.0",
     "outdent": "^0.8.0",
     "puppeteer": "^21.0.3",
-    "sass-embedded": "^1.64.2",
+    "sass-embedded": "^1.66.1",
     "slug": "^8.2.3"
   },
   "peerDependencies": {
