@@ -2,6 +2,8 @@
 
 This package is used to generate Rollup visualizer stats for built GOV.UK Frontend modules.
 
+It can also generate file size information for key distribution files.
+
 ```shell
 npm run build:stats --workspace govuk-frontend
 ```
