@@ -1,4 +1,8 @@
 import { readFile } from 'node:fs/promises'
+import { join } from 'path'
+
+import { getFileSizes } from '@govuk-frontend/lib/files'
+import { getStats, modulePaths } from '@govuk-frontend/stats'
 
 /**
  * Posts the content of multiple diffs in parallel on the given GitHub issue
@@ -58,6 +62,58 @@ export async function commentDiff(
       )}#artifacts).`
     })
   }
+}
+
+/**
+ * Generates comment for stats
+ *
+ * @param {GithubActionContext} githubActionContext
+ * @param {number} issueNumber
+ * @param {DiffComment} statComment
+ */
+export async function commentStats(
+  githubActionContext,
+  issueNumber,
+  { path, titleText, markerText }
+) {
+  const { WORKSPACE_DIR = '' } = process.env
+  const reviewAppURL = getReviewAppUrl(issueNumber)
+
+  const distPath = join(WORKSPACE_DIR, 'dist')
+  const packagePath = join(WORKSPACE_DIR, 'packages/govuk-frontend/dist/govuk')
+
+  // File sizes
+  const fileSizeTitle = '### File sizes'
+  const fileSizeRows = [
+    ...(await getFileSizes(join(distPath, '**/*.{css,js,mjs}'))),
+    ...(await getFileSizes(join(packagePath, '*.{css,js,mjs}')))
+  ]
+
+  const fileSizeHeaders = ['File', 'Size']
+  const fileSizeTable = renderTable(fileSizeHeaders, fileSizeRows)
+  const fileSizeText = [fileSizeTitle, fileSizeTable].join('\n')
+
+  // Module sizes
+  const modulesTitle = '### Modules'
+  const modulesRows = (await Promise.all(modulePaths.map(getStats))).map(
+    ([modulePath, moduleSize]) => {
+      const statsPath = `docs/stats/${modulePath.replace('mjs', 'html')}`
+      const statsURL = new URL(statsPath, reviewAppURL)
+
+      return [`[${modulePath}](${statsURL})`, moduleSize]
+    }
+  )
+
+  const modulesHeaders = ['File', 'Size']
+  const modulesTable = renderTable(modulesHeaders, modulesRows)
+  const modulesFooter = `[View stats and visualisations on the review app](${reviewAppURL})`
+  const modulesText = [modulesTitle, modulesTable, modulesFooter].join('\n')
+
+  await comment(githubActionContext, issueNumber, {
+    markerText,
+    titleText,
+    bodyText: [fileSizeText, modulesText].join('\n')
+  })
 }
 
 /**
@@ -132,6 +188,48 @@ function renderCommentFooter({ context, commit }) {
 }
 
 /**
+ * Renders a GitHub Markdown table.
+ *
+ * @param {string[]} headers - An array containing the table headers.
+ * @param {string[][]} rows - An array of arrays containing the row data for the table.
+ * @returns {string} The GitHub Markdown table as a string.
+ */
+function renderTable(headers, rows) {
+  if (!rows.every((row) => row.length === headers.length)) {
+    throw new Error(
+      'All rows must have the same number of elements as the headers.'
+    )
+  }
+
+  /**
+   * @example
+   * ```md
+   * | File | Size |
+   * ```
+   */
+  const headerRow = `| ${headers.join(' | ')} |`
+
+  /**
+   * @example
+   * ```md
+   * | --- | --- |
+   * ```
+   */
+  const headerSeparator = `| ${Array(headers.length).fill('---').join(' | ')} |`
+
+  /**
+   * @example
+   * ```md
+   * | packages/govuk-frontend/dist/example.mjs | 100 KiB |
+   * ```
+   */
+  const rowStrings = rows.map((row) => `| ${row.join(' | ')} |`)
+
+  // Combine headers, header separator, and rows to form the table
+  return `${[headerRow, headerSeparator, ...rowStrings].join('\n')}\n`
+}
+
+/**
  * Generates a URL to the GitHub action run
  *
  * @param {import('@actions/github').context} context - The context of the GitHub action
@@ -141,6 +239,15 @@ function githubActionRunUrl(context) {
   const { runId, repo } = context
 
   return `https://github.com/${repo.owner}/${repo.repo}/actions/runs/${runId}/attempts/${process.env.GITHUB_RUN_ATTEMPT}`
+}
+
+/**
+ * @param {number} prNumber - The PR number
+ * @param {string} path - URL path
+ * @returns {URL} - The Review App preview URL
+ */
+function getReviewAppUrl(prNumber, path = '/') {
+  return new URL(path, `https://govuk-frontend-pr-${prNumber}.herokuapp.com`)
 }
 
 /**
