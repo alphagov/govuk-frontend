@@ -296,3 +296,14 @@ jobs:
     # (after install and build have been cached)
     uses: ./.github/workflows/screenshots.yml
     secrets: inherit
+
+  generate-stats:
+    name: Stats comment
+    needs: [install, build]
+
+    permissions:
+      pull-requests: write
+
+    # Run existing "Stats comment" workflow
+    # (after install and build have been cached)
+    uses: ./.github/workflows/stats-comment.yml

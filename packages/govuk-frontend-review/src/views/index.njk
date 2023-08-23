@@ -96,7 +96,7 @@
       <h2 class="govuk-heading-l">JavaScript modules</h2>
 
       {% set bundleKey = "all" %}
-      {% set bundleSize = stats[bundleKey + ".mjs"]["total"] %}
+      {% set bundleSize = stats[bundleKey + ".mjs"] %}
 
       {% set bundleHtml %}
         Total bundle size<br>
@@ -109,13 +109,13 @@
           html: bundleHtml
         },
         value: {
-          text: (bundleSize / 1000) | round(2) | formatNumber + " KB"
+          text: bundleSize
         }
       }] %}
 
       {% for componentName in componentNamesWithJavaScript | sort %}
         {% set componentKey = "components/" + componentName + "/" + componentName %}
-        {% set componentSize = stats[componentKey + ".mjs"]["total"] %}
+        {% set componentSize = stats[componentKey + ".mjs"] %}
 
         {% set componentHtml %}
           {{ componentName | unslugify }}<br>
@@ -128,7 +128,7 @@
             html: componentHtml
           },
           value: {
-            text: (componentSize / 1000) | round(2) | formatNumber + " KB"
+            text: componentSize
           }
         }), rows) %}
       {% endfor %}
