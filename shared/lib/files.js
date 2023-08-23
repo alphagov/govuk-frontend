@@ -1,7 +1,8 @@
-const { readFile } = require('fs/promises')
+const { readFile, stat } = require('fs/promises')
 const { parse, relative, basename } = require('path')
 
 const { paths } = require('@govuk-frontend/config')
+const { filesize } = require('filesize')
 const { glob } = require('glob')
 const yaml = require('js-yaml')
 const { minimatch } = require('minimatch')
@@ -46,6 +47,29 @@ async function getDirectories(directoryPath) {
 }
 
 /**
+ * Get file size entries
+ *
+ * @param {string} directoryPath - Minimatch pattern to directory
+ * @param {import('glob').GlobOptionsWithFileTypesUnset} [options] - Glob options
+ * @returns {Promise<[string, string][]>} - File entries with name and size
+ */
+async function getFileSizes(directoryPath, options = {}) {
+  const filesForAnalysis = await getListing(directoryPath, options)
+  return Promise.all(filesForAnalysis.map(getFileSize))
+}
+
+/**
+ * Get file size entry
+ *
+ * @param {string} filePath - File path
+ * @returns {Promise<[string, string]>} - File entry with name and size
+ */
+async function getFileSize(filePath) {
+  const { size } = await stat(filePath)
+  return [filePath, `${filesize(size, { base: 2 })}`]
+}
+
+/**
  * Directory listing array filter
  * Returns true for files matching every pattern
  *
@@ -84,6 +108,8 @@ async function getYaml(configPath) {
 module.exports = {
   filterPath,
   getDirectories,
+  getFileSizes,
+  getFileSize,
   getListing,
   getYaml,
   mapPathTo
