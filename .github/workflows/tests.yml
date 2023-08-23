@@ -215,11 +215,11 @@ jobs:
         task:
           - description: Verify package build
             name: test-build-package
-            run: npm run build:package
+            run: npm run build:package -- --ignore-scripts
 
           - description: Verify distribution build
             name: test-build-release
-            run: npm run build:release
+            run: npm run build:release -- --ignore-scripts
 
     steps:
       - name: Checkout
