@@ -76,11 +76,10 @@ export async function commentStats(
   issueNumber,
   { path, titleText, markerText }
 ) {
-  const { WORKSPACE_DIR = '' } = process.env
   const reviewAppURL = getReviewAppUrl(issueNumber)
 
-  const distPath = join(WORKSPACE_DIR, 'dist')
-  const packagePath = join(WORKSPACE_DIR, 'packages/govuk-frontend/dist/govuk')
+  const distPath = join(path, 'dist')
+  const packagePath = join(path, 'packages/govuk-frontend/dist/govuk')
 
   // File sizes
   const fileSizeTitle = '### File sizes'
