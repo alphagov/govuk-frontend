@@ -96,7 +96,8 @@ jobs:
 
           - description: TypeScript compiler
             name: lint-types
-            run: npm run lint:types
+            run: npm run lint:types -- --incremental
+            cache: '**/*.tsbuildinfo'
 
     steps:
       - name: Checkout
