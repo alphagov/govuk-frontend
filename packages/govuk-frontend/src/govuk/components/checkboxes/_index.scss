@@ -32,9 +32,7 @@
   }
 
   .govuk-checkboxes__label {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    align-self: center;
 
     // Ensure that the width of the label is never more than the width of the
     // container minus the input width minus the padding on either side of
@@ -46,11 +44,6 @@
     cursor: pointer;
     // remove 300ms pause on mobile
     touch-action: manipulation;
-  }
-
-  // to account for when there are multiple children in a label
-  .govuk-checkboxes__label * {
-    width: 100%;
   }
 
   // [ ] Check box
