@@ -1,12 +1,8 @@
 name: Stats comment
 
 on:
-  pull_request:
-
+  workflow_call:
   workflow_dispatch:
-
-permissions:
-  pull-requests: write
 
 jobs:
   generate-stats:
