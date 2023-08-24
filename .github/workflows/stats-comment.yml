@@ -9,8 +9,9 @@ jobs:
     name: Generate stats
     runs-on: ubuntu-latest
 
-    # Skip when token write permissions are unavailable on forks
-    if: ${{ !github.event.pull_request.head.repo.fork }}
+    # Skip workflows other than PRs such as merges to `main` but
+    # also when token write permissions are unavailable on forks
+    if: ${{ github.event.pull_request && !github.event.pull_request.head.repo.fork }}
 
     steps:
       - name: Checkout code
