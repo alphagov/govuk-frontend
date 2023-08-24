@@ -1,6 +1,7 @@
 /* eslint-disable no-new */
 
 import { version } from './common/govuk-frontend-version.mjs'
+import { isSupported } from './common/index.mjs'
 import { Accordion } from './components/accordion/accordion.mjs'
 import { Button } from './components/button/button.mjs'
 import { CharacterCount } from './components/character-count/character-count.mjs'
@@ -12,6 +13,7 @@ import { NotificationBanner } from './components/notification-banner/notificatio
 import { Radios } from './components/radios/radios.mjs'
 import { SkipLink } from './components/skip-link/skip-link.mjs'
 import { Tabs } from './components/tabs/tabs.mjs'
+import { SupportError } from './errors/index.mjs'
 
 /**
  * Initialise all components
@@ -25,7 +27,8 @@ function initAll(config) {
   config = typeof config !== 'undefined' ? config : {}
 
   // Skip initialisation when GOV.UK Frontend is not supported
-  if (!document.body.classList.contains('govuk-frontend-supported')) {
+  if (!isSupported()) {
+    console.log(new SupportError())
     return
   }
 
