@@ -109,7 +109,7 @@ params:
       - name: actions
         type: object
         required: false
-        description: Data for the summary card actions
+        description: The actions of each summary card.
         params:
           - name: items
             type: array
