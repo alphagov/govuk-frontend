@@ -21,7 +21,7 @@
     "govuk-frontend": "*",
     "jest-axe": "^8.0.0",
     "jest-dev-server": "^9.0.0",
-    "jest-environment-jsdom": "^29.6.3",
+    "jest-environment-jsdom": "^29.6.4",
     "jest-environment-node-single-context": "^29.1.0",
     "jest-environment-puppeteer": "^9.0.0",
     "outdent": "^0.8.0",
