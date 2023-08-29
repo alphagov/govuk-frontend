@@ -1,6 +1,6 @@
 # Changelog
 
-For advice on how to these release notes see [our guidance on staying up to date with changes](https://frontend.design-system.service.gov.uk/staying-up-to-date/).
+For advice on how to use these release notes see [our guidance on staying up to date with changes](https://frontend.design-system.service.gov.uk/staying-up-to-date/).
 
 ## Unreleased
 
