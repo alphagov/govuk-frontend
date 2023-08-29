@@ -30,7 +30,13 @@ export default defineConfig(({ i: input }) => ({
     plugins: [
       terser({
         format: { comments: false },
-        mangle: { reserved: Object.keys(GOVUKFrontend) },
+        mangle: {
+          keep_classnames: true,
+          keep_fnames: true,
+          // Keep our exports reserved, which will make sure any `const`,
+          // like `version` remains untouched
+          reserved: Object.keys(GOVUKFrontend)
+        },
 
         // Include sources content from source maps to inspect
         // GOV.UK Frontend and other dependencies' source code
