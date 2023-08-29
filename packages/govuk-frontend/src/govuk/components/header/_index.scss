@@ -11,6 +11,7 @@
   // as the crown svg height is the only thing that controls the height of the header
   $govuk-header-crown-height: 30px;
   $govuk-header-menu-button-height: 20px;
+  $govuk-header-menu-button-width: 80px;
 
   .govuk-header {
     @include govuk-font($size: 16);
@@ -149,8 +150,10 @@
   }
 
   .govuk-header__logo {
-    padding-right: govuk-spacing(8);
     @include govuk-responsive-margin($govuk-header-vertical-spacing-value, "bottom");
+    // Protect the absolute positioned menu button from overlapping with the
+    // logo with right padding using the button's width
+    padding-right: $govuk-header-menu-button-width;
 
     @include govuk-media-query($from: desktop) {
       width: 33.33%;
@@ -176,9 +179,11 @@
     // - adding that to the crown height
     // - dividing it by 2 so you have the vertical centre of the header
     // - subtracting half the height of the menu button
-    top: (((govuk-spacing($govuk-header-vertical-spacing-value) * 2) + $govuk-header-crown-height) / 2) - ($govuk-header-menu-button-height / 2);
+    top: (((govuk-spacing($govuk-header-vertical-spacing-value) * 2) + $govuk-header-crown-height) / 2) -
+      ($govuk-header-menu-button-height / 2);
     right: 0;
-    height: $govuk-header-menu-button-height;
+    max-width: $govuk-header-menu-button-width;
+    min-height: $govuk-header-menu-button-height;
     margin: 0;
     padding: 0;
     border: 0;
