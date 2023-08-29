@@ -6,6 +6,7 @@
   $govuk-header-link-active: #1d8feb;
   $govuk-header-nav-item-border-color: #2e3133;
   $govuk-header-link-underline-thickness: 3px;
+  $govuk-header-vertical-spacing-value: 2;
 
   .govuk-header {
     @include govuk-font($size: 16, $line-height: 1);
@@ -28,7 +29,7 @@
     @include govuk-clearfix;
     position: relative;
     margin-bottom: -$govuk-header-border-width;
-    padding-top: govuk-spacing(2);
+    padding-top: govuk-spacing($govuk-header-vertical-spacing-value);
     border-bottom: $govuk-header-border-width solid $govuk-header-border-color;
   }
 
@@ -160,8 +161,8 @@
   }
 
   .govuk-header__logo {
-    @include govuk-responsive-margin(2, "bottom");
     padding-right: govuk-spacing(8);
+    @include govuk-responsive-margin($govuk-header-vertical-spacing-value, "bottom");
 
     @include govuk-media-query($from: desktop) {
       width: 33.33%;
