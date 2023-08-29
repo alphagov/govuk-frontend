@@ -7,6 +7,10 @@
   $govuk-header-nav-item-border-color: #2e3133;
   $govuk-header-link-underline-thickness: 3px;
   $govuk-header-vertical-spacing-value: 2;
+  // This crown height is only used to calculate top offset of mobile menu button
+  // as the crown svg height is the only thing that controls the height of the header
+  $govuk-header-crown-height: 30px;
+  $govuk-header-menu-button-height: 20px;
 
   .govuk-header {
     @include govuk-font($size: 16);
@@ -167,8 +171,14 @@
   .govuk-header__menu-button {
     @include govuk-font($size: 16);
     position: absolute;
-    top: govuk-spacing(4);
+    // calculate top offset by:
+    // - getting the vertical spacing for the top and the bottom of the header
+    // - adding that to the crown height
+    // - dividing it by 2 so you have the vertical centre of the header
+    // - subtracting half the height of the menu button
+    top: (((govuk-spacing($govuk-header-vertical-spacing-value) * 2) + $govuk-header-crown-height) / 2) - ($govuk-header-menu-button-height / 2);
     right: 0;
+    height: $govuk-header-menu-button-height;
     margin: 0;
     padding: 0;
     border: 0;
