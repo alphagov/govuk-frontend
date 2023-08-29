@@ -42,7 +42,7 @@
   "devDependencies": {
     "@govuk-frontend/helpers": "*",
     "@govuk-frontend/tasks": "*",
-    "@rollup/plugin-node-resolve": "^15.2.0",
+    "@rollup/plugin-node-resolve": "^15.2.1",
     "@rollup/plugin-terser": "^0.4.3",
     "autoprefixer": "^10.4.15",
     "browser-sync": "^2.29.3",
@@ -53,7 +53,7 @@
     "nodemon": "^3.0.1",
     "postcss-pseudo-classes": "^0.2.1",
     "puppeteer": "^21.1.0",
-    "rollup": "^3.28.0",
+    "rollup": "^3.28.1",
     "sassdoc": "^2.7.4",
     "slash": "^5.1.0",
     "supertest": "^6.3.3",
