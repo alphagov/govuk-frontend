@@ -54,7 +54,7 @@
     "@govuk-frontend/tasks": "*",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "@typescript-eslint/parser": "^6.4.1",
-    "concurrently": "^8.2.0",
+    "concurrently": "^8.2.1",
     "editorconfig-checker": "^5.1.1",
     "eslint": "^8.48.0",
     "eslint-config-prettier": "^9.0.0",
