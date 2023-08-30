@@ -1,4 +1,12 @@
 {
-  "extends": "../packages/govuk-frontend/tsconfig.json",
-  "include": ["**/*.js", "**/*.mjs"]
+  "extends": "../tsconfig.base.json",
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.dev.json"
+    },
+    {
+      "path": "./tsconfig.build.json"
+    }
+  ]
 }

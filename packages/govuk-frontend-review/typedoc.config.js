@@ -20,6 +20,12 @@ module.exports = {
   tsconfig: packageResolveToPath('govuk-frontend/tsconfig.build.json'),
   out: './dist/docs/jsdoc',
 
+  // Turn off strict checks for JSDoc output
+  // since `lint:types` will already log issues
+  compilerOptions: {
+    strict: false
+  },
+
   // Ignore warnings about class fields using I18n (@private)
   intentionallyNotExported: ['I18n', 'TranslationPluralForms']
 }

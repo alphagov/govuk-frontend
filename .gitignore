@@ -16,8 +16,9 @@ dist/
 
 # Files to ignore
 .DS_Store
-*.zip
 *.log
+*.tsbuildinfo
+*.zip
 
 # Project lockfile only
 package-lock.json

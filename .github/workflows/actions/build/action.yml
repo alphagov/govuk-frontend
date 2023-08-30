@@ -25,4 +25,6 @@ runs:
       if: steps.build-cache.outputs.cache-hit != 'true'
       shell: bash
 
-      run: npm run build --workspaces --if-present
+      # Build all workspaces but skip `postbuild` scripts
+      # since we run these in other workflow steps instead
+      run: npm run build --workspaces --if-present --ignore-scripts

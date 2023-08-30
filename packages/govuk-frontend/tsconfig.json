@@ -3,10 +3,10 @@
   "files": [],
   "references": [
     {
-      "path": "./tsconfig.build.json"
+      "path": "./tsconfig.dev.json"
     },
     {
-      "path": "./tsconfig.dev.json"
+      "path": "./tsconfig.build.json"
     }
   ]
 }

@@ -1,0 +1,5 @@
+{
+  "extends": "../packages/govuk-frontend/tsconfig.build.json",
+  "include": ["./govuk/**/*.mjs"],
+  "exclude": ["**/*.test.*"]
+}
