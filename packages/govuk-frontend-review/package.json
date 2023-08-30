@@ -57,7 +57,7 @@
     "sassdoc": "^2.7.4",
     "slash": "^5.1.0",
     "supertest": "^6.3.3",
-    "typedoc": "^0.24.8"
+    "typedoc": "^0.25.0"
   },
   "optionalDependencies": {
     "nunjucks": "^3.2.4"
