@@ -1,0 +1,26 @@
+@import "../button/index";
+@import "../error-message/index";
+@import "../hint/index";
+@import "../input/index";
+@import "../label/index";
+
+@include govuk-exports("govuk/component/password-input") {
+  .govuk-password-input {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+
+    @include govuk-media-query($from: mobile) {
+      flex-direction: row;
+    }
+  }
+
+  .govuk-password-input__toggle {
+    margin-bottom: 0;
+
+    // Buttons are normally 100% width on this breakpoint, but we don't want that in this case
+    @include govuk-media-query($from: mobile) {
+      width: auto;
+    }
+  }
+}
