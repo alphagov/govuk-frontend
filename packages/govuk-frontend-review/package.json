@@ -34,7 +34,7 @@
     "highlight.js": "^11.8.0",
     "iframe-resizer": "^4.3.6",
     "js-beautify": "^1.14.9",
-    "marked": "^7.0.4",
+    "marked": "^7.0.5",
     "outdent": "^0.8.0",
     "shuffle-seed": "^1.1.6",
     "slug": "^8.2.3"
