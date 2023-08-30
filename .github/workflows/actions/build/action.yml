@@ -4,6 +4,10 @@ runs:
   using: composite
 
   steps:
+    - name: Log GitHub context
+      shell: bash
+      run: echo "github.sha ${{github.sha}} - github.event.pull_request.head.sha ${{github.event.pull_request.head.sha}}"
+
     - name: Cache build
       uses: actions/cache@v3.3.1
       id: build-cache
