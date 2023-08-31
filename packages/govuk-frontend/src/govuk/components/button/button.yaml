@@ -42,7 +42,7 @@ params:
   - name: preventDoubleClick
     type: boolean
     required: false
-    description: Prevent accidental double clicks on submit buttons from submitting forms multiple times
+    description: Prevent accidental double clicks on submit buttons from submitting forms multiple times.
   - name: isStartButton
     type: boolean
     required: false

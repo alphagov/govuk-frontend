@@ -6,7 +6,7 @@ params:
   - name: legend
     type: object
     required: false
-    description: Options for the legend
+    description: Options for the legend.
     params:
       - name: text
         type: string

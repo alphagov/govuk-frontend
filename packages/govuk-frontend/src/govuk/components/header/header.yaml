@@ -2,11 +2,11 @@ params:
   - name: homepageUrl
     type: string
     required: false
-    description: The URL of the homepage. Defaults to `/`
+    description: The URL of the homepage. Defaults to `/`.
   - name: assetsPath
     type: string
     required: false
-    description: The public path for the assets folder. If not provided it defaults to /assets/images
+    description: The public path for the assets folder. If not provided it defaults to /assets/images.
   - name: productName
     type: string
     required: false
@@ -181,7 +181,7 @@ examples:
           text: Navigation item 4
 
   - name: with large navigation
-    description: An edge case example with a large number of navitation items with long names used to test wrapping
+    description: An edge case example with a large number of navigation items with long names used to test wrapping
     options:
       navigation:
         - href: '/browse/benefits'

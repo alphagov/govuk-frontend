@@ -77,7 +77,7 @@ params:
         params:
           - name: html
             type: string
-            description: The HTML to reveal when the radio is checked
+            description: The HTML to reveal when the radio is checked.
             required: true
       - name: disabled
         type: boolean
