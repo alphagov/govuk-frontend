@@ -19,8 +19,6 @@
 
     $link-spacing: govuk-spacing(1);
 
-    @include govuk-responsive-margin(6, "bottom", $adjustment: $vertical-gap * -1);
-
     // Flexbox is used to center-align links on mobile, align everything along
     // the baseline on tablet and above, and to removes extra whitespace that
     // we'd get between the buttons and links because they're inline-blocks.
@@ -32,6 +30,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    margin-bottom: (govuk-spacing(6) - $vertical-gap);
 
     // Give links within the button group the same font-size and line-height
     // as buttons.
