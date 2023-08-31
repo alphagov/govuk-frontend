@@ -26,7 +26,7 @@ params:
   - name: activatedText
     type: string
     required: false
-    description: Text announced by screen readers when Exit this Page has been activated via the keyboard shortcut. Defaults to 'Exiting page.'.
+    description: Text announced by screen readers when Exit this Page has been activated via the keyboard shortcut. Defaults to 'Loading.'.
   - name: timedOutText
     type: string
     required: false
