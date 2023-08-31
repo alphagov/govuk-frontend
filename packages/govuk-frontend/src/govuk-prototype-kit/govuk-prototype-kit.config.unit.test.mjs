@@ -14,7 +14,7 @@ describe('GOV.UK Prototype Kit config', () => {
     expect(config.meta).toEqual({
       description: pkg.description,
       urls: {
-        documentation: pkg.homepage,
+        documentation: 'https://design-system.service.gov.uk/',
         releaseNotes: expect.stringContaining(`/releases/tag/v${pkg.version}`),
         versionHistory: expect.stringContaining('/releases')
       }
