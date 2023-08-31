@@ -4,6 +4,12 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#4157: Dynamically position text within input prefixes and suffixes](https://github.com/alphagov/govuk-frontend/pull/4157)
+
 ## 5.0.0 (Breaking release)
 
 You can find a summary of the main [changes to GOV.UK Frontend v5](https://frontend.design-system.service.gov.uk/changes-to-govuk-frontend-v5/) on the Frontend site. It's important to note [our old frameworks (such as GOV.UK Elements)](https://frontend.design-system.service.gov.uk/v4/migrating-from-legacy-products/) are no longer compatible with this release. It also stops Internet Explorer 11 from running GOV.UK Frontend JavaScript and removes support completely for Internet Explorer 8 to 10.
