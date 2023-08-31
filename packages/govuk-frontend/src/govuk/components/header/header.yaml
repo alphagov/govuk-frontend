@@ -181,7 +181,7 @@ examples:
           text: Navigation item 4
 
   - name: with large navigation
-    description: An edge case example with a large number of navitation items with long names used to test wrapping
+    description: An edge case example with a large number of navigation items with long names used to test wrapping
     options:
       navigation:
         - href: '/browse/benefits'
