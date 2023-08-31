@@ -47,10 +47,6 @@ params:
         required: false
         description: The actions of each row.
         params:
-          - name: classes
-            type: string
-            required: false
-            description: Classes to add to the actions wrapper.
           - name: items
             type: array
             required: false
@@ -80,6 +76,10 @@ params:
                 type: object
                 required: false
                 description: HTML attributes (for example data attributes) to add to the action item.
+          - name: classes
+            type: string
+            required: false
+            description: Classes to add to the actions wrapper.
   - name: card
     type: object
     required: false
@@ -109,7 +109,7 @@ params:
       - name: actions
         type: object
         required: false
-        description: Data for the summary card actions
+        description: The actions of each summary card.
         params:
           - name: items
             type: array
