@@ -2,11 +2,11 @@ params:
   - name: homepageUrl
     type: string
     required: false
-    description: The URL of the homepage. Defaults to `/`
+    description: The URL of the homepage. Defaults to `/`.
   - name: assetsPath
     type: string
     required: false
-    description: The public path for the assets folder. If not provided it defaults to /assets/images
+    description: The public path for the assets folder. If not provided it defaults to /assets/images.
   - name: productName
     type: string
     required: false

@@ -111,7 +111,7 @@ examples:
         text: Can you provide more detail?
 
   - name: with custom textarea description
-    description: with textarea description translated into Welsh
+    description: with textarea description translated into Welsh.
     options:
       name: custom-textarea-description
       id: custom-textarea-description

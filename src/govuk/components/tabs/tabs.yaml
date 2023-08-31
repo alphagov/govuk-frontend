@@ -29,7 +29,7 @@ params:
         required: false
         description: HTML attributes (for example data attributes) to add to the tab.
       - name: panel
-        description: Content for the panel
+        description: Content for the panel.
         type: object
         required: true
         params:
