@@ -43,7 +43,7 @@ export default async () => {
     meta: {
       description: pkg.description,
       urls: {
-        documentation: pkg.homepage,
+        documentation: 'https://design-system.service.gov.uk/',
         releaseNotes: `${githubURL.href}/releases/tag/v${pkg.version}`,
         versionHistory: `${githubURL.href}/releases`
       }
