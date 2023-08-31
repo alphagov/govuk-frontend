@@ -10,7 +10,7 @@ params:
   - name: iconFallbackText
     type: string
     required: false
-    description: The fallback text for the icon. Defaults to 'Warning'
+    description: The fallback text for the icon. Defaults to 'Warning'.
   - name: classes
     type: string
     required: false

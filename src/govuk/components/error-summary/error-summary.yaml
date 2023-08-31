@@ -22,7 +22,7 @@ params:
   - name: errorList
     type: array
     required: true
-    description: The list of errors to include in the summary
+    description: The list of errors to include in the summary.
     params:
       - name: href
         type: string
