@@ -10,6 +10,7 @@
   // This crown height is only used to calculate top offset of mobile menu button
   // as the crown svg height is the only thing that controls the height of the header
   $govuk-header-crown-height: 30px;
+  $govuk-header-logo-width: 200px;
   $govuk-header-menu-button-height: 24px;
   $govuk-header-menu-button-width: 80px;
 
@@ -83,6 +84,7 @@
     //   different underline widths looks unbalanced
     @include govuk-link-style-inverse;
 
+    max-width: $govuk-header-logo-width;
     text-decoration: none;
 
     &:hover {
@@ -182,13 +184,16 @@
     top: (((govuk-spacing($govuk-header-vertical-spacing-value) * 2) + $govuk-header-crown-height) / 2) -
       ($govuk-header-menu-button-height / 2);
     right: 0;
-    max-width: $govuk-header-menu-button-width;
+    // Protect the absolute positioned menu button from overlapping with the
+    // logo with left position using the logo's width
+    left: $govuk-header-logo-width;
     min-height: $govuk-header-menu-button-height;
     margin: 0;
     padding: 0;
     border: 0;
     color: govuk-colour("white");
     background: none;
+    text-align: right;
     word-break: break-all;
     cursor: pointer;
 
@@ -216,6 +221,7 @@
 
     @include govuk-media-query($from: tablet) {
       top: govuk-spacing(3);
+      left: auto;
     }
 
     .govuk-frontend-supported & {
