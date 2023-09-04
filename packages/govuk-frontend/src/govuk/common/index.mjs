@@ -147,3 +147,40 @@ export function extractConfigByNamespace(configObject, namespace) {
 export function isSupported($scope = document.body) {
   return $scope.classList.contains('govuk-frontend-supported')
 }
+
+/**
+ * Validates Component config against a schema
+ *
+ * @protected
+ * @param {Schema} schema
+ * @param {Config[ConfigKey]} config
+ * @returns {string[]} An array of errors, or an empty array if there are no errors
+ */
+export function validateConfig(schema, config) {
+  /**
+   * @type {string[]}
+   */
+  const errors = []
+
+  if (!schema.anyOf) {
+    return errors
+  }
+
+  const satisfiesAnyOf = schema.anyOf.conditions.some(({ required }) =>
+    required.every((prop) => prop in config && config[prop])
+  )
+
+  if (!satisfiesAnyOf) {
+    errors.push(schema.anyOf.errorMessage)
+  }
+
+  return errors
+}
+
+/**
+ * @typedef {import('govuk-frontend').Config} Config - Config for all components via `initAll()`
+ * @typedef {import('govuk-frontend').ConfigKey} ConfigKey - Component config keys, e.g. `accordion` and `characterCount`
+ * @typedef {import('../govuk-frontend-component.mjs').Schema} Schema - Component config schema
+ * @typedef {import('../govuk-frontend-component.mjs').SchemaAnyOf} SchemaAnyOf - Component "Any Of" schema rule
+ * @typedef {import('../govuk-frontend-component.mjs').SchemaCondition} SchemaCondition - Schema required array
+ */
