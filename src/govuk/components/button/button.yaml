@@ -6,7 +6,7 @@ params:
   - name: text
     type: string
     required: true
-    description: If `html` is set, this is not required. Text for the button or link. If `html` is provided, the `text` option will be ignored and `element` will be automatically set to `button` unless `href` is also set, or it has already been defined. This option has no effect if `element` is set to `input`.
+    description: If `html` is set, this is not required. Text for the button or link. If `html` is provided, the `text` option will be ignored and `element` will be automatically set to `button` unless `href` is also set, or it has already been defined.
   - name: html
     type: string
     required: true
