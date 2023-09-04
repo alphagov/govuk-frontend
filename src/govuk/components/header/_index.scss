@@ -212,6 +212,7 @@
     border: 0;
     color: govuk-colour("white");
     background: none;
+    word-break: break-all;
     cursor: pointer;
 
     &:hover {
