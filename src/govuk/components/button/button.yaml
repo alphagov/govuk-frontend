@@ -2,7 +2,7 @@ params:
   - name: element
     type: string
     required: false
-    description: Whether to use an `input`, `button` or `a` element to create the button. In most cases you will not need to set this as it will be configured automatically if you use `href` or `html`.
+    description: HTML element for the button component – `input`, `button` or `a`. In most cases you will not need to set this as it will be configured automatically if you use `href` or `html`.
   - name: text
     type: string
     required: true
@@ -26,11 +26,11 @@ params:
   - name: disabled
     type: boolean
     required: false
-    description: Whether the button should be disabled. For `input` and `button` elements, `disabled` and `aria-disabled` attributes will be set automatically. This has no effect on `a` elements.
+    description: Whether the button component should be disabled. For `input` and `button` elements, `disabled` and `aria-disabled` attributes will be set automatically. This has no effect on `a` elements.
   - name: href
     type: string
     required: false
-    description: The URL that the button should link to. If this is set, `element` will be automatically set to `a` if it has not already been defined.
+    description: The URL that the button component should link to. If this is set, `element` will be automatically set to `a` if it has not already been defined.
   - name: classes
     type: string
     required: false
