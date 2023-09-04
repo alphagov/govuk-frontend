@@ -62,6 +62,21 @@ export class CharacterCount extends GOVUKFrontendComponent {
   /** @private */
   maxLength = Infinity
 
+  /** @private */
+  configSchema = {
+    anyOf: {
+      conditions: [
+        {
+          required: ['maxwords']
+        },
+        {
+          required: ['maxlength']
+        }
+      ],
+      errorMessage: 'Either `maxlength` or `maxwords` must be provided'
+    }
+  }
+
   /**
    * @param {Element} $module - HTML element to use for character count
    * @param {CharacterCountConfig} [config] - Character count config
@@ -107,6 +122,8 @@ export class CharacterCount extends GOVUKFrontendComponent {
       configOverrides,
       datasetConfig
     )
+
+    this.checkConfig(this.configSchema, this.config)
 
     this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'), {
       // Read the fallback if necessary rather than have it set in the defaults

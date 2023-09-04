@@ -18,11 +18,13 @@ describe('CharacterCount', () => {
 
   describe('formatCountMessage', () => {
     describe('default configuration', () => {
-      let component
+      let componentWithMaxLength
+      let componentWithMaxWords
 
       beforeAll(() => {
         const $div = $container.cloneNode(true)
-        component = new CharacterCount($div)
+        componentWithMaxLength = new CharacterCount($div, { maxlength: 100 })
+        componentWithMaxWords = new CharacterCount($div, { maxwords: 100 })
       })
 
       const cases = [
@@ -60,17 +62,25 @@ describe('CharacterCount', () => {
       it.each(cases)(
         'picks the relevant translation for $number $type',
         function test({ number, type, expected }) {
-          expect(component.formatCountMessage(number, type)).toEqual(expected)
+          if (type === 'characters') {
+            expect(
+              componentWithMaxLength.formatCountMessage(number, type)
+            ).toEqual(expected)
+          } else {
+            expect(
+              componentWithMaxWords.formatCountMessage(number, type)
+            ).toEqual(expected)
+          }
         }
       )
 
       it('formats the number inserted in the message', () => {
-        expect(component.formatCountMessage(10000, 'words')).toEqual(
-          'You have 10,000 words remaining'
-        )
-        expect(component.formatCountMessage(-10000, 'words')).toEqual(
-          'You have 10,000 words too many'
-        )
+        expect(
+          componentWithMaxWords.formatCountMessage(10000, 'words')
+        ).toEqual('You have 10,000 words remaining')
+        expect(
+          componentWithMaxWords.formatCountMessage(-10000, 'words')
+        ).toEqual('You have 10,000 words too many')
       })
     })
 
@@ -79,6 +89,7 @@ describe('CharacterCount', () => {
         it('overrides the default translation keys', () => {
           const $div = $container.cloneNode(true)
           const component = new CharacterCount($div, {
+            maxlength: 100,
             i18n: {
               charactersUnderLimit: { one: 'Custom text. Count: %{count}' }
             }
@@ -98,20 +109,26 @@ describe('CharacterCount', () => {
 
         it('uses specific keys for when limit is reached', () => {
           const $div = $container.cloneNode(true)
-          const component = new CharacterCount($div, {
+          const componentWithMaxLength = new CharacterCount($div, {
+            maxlength: 100,
             i18n: {
-              charactersAtLimit: 'Custom text.',
+              charactersAtLimit: 'Custom text.'
+            }
+          })
+          const componentWithMaxWords = new CharacterCount($div, {
+            maxwords: 100,
+            i18n: {
               wordsAtLimit: 'Different custom text.'
             }
           })
 
-          // @ts-expect-error Property 'formatCountMessage' is private
-          expect(component.formatCountMessage(0, 'characters')).toEqual(
-            'Custom text.'
-          )
+          expect(
+            // @ts-expect-error Property 'formatCountMessage' is private
+            componentWithMaxLength.formatCountMessage(0, 'characters')
+          ).toEqual('Custom text.')
 
           // @ts-expect-error Property 'formatCountMessage' is private
-          expect(component.formatCountMessage(0, 'words')).toEqual(
+          expect(componentWithMaxWords.formatCountMessage(0, 'words')).toEqual(
             'Different custom text.'
           )
         })
@@ -122,7 +139,7 @@ describe('CharacterCount', () => {
           const $div = $container.cloneNode(true)
           $div.setAttribute('lang', 'de')
 
-          const component = new CharacterCount($div)
+          const component = new CharacterCount($div, { maxwords: 20000 })
 
           // @ts-expect-error Property 'formatCountMessage' is private
           expect(component.formatCountMessage(10000, 'words')).toEqual(
@@ -137,7 +154,7 @@ describe('CharacterCount', () => {
           const $div = $container.cloneNode(true)
           $parent.appendChild($div)
 
-          const component = new CharacterCount($div)
+          const component = new CharacterCount($div, { maxwords: 20000 })
 
           // @ts-expect-error Property 'formatCountMessage' is private
           expect(component.formatCountMessage(10000, 'words')).toEqual(
@@ -154,7 +171,7 @@ describe('CharacterCount', () => {
             'Custom text. Count: %{count}'
           )
 
-          const component = new CharacterCount($div)
+          const component = new CharacterCount($div, { maxlength: 100 })
 
           // @ts-expect-error Property 'formatCountMessage' is private
           expect(component.formatCountMessage(1, 'characters')).toEqual(
@@ -177,6 +194,7 @@ describe('CharacterCount', () => {
             )
 
             const component = new CharacterCount($div, {
+              maxlength: 100,
               i18n: {
                 charactersUnderLimit: {
                   one: 'Different custom text. Count: %{count}'
