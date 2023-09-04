@@ -2,7 +2,7 @@ params:
   - name: element
     type: string
     required: false
-    description: HTML element for the button component – `input`, `button` or `a`. In most cases you will not need to set this as it will be configured automatically if you use `href` or `html`.
+    description: HTML element for the button component – `input`, `button` or `a`. In most cases you will not need to set this as it will be configured automatically if `href` is provided.
   - name: text
     type: string
     required: true
