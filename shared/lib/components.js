@@ -40,10 +40,12 @@ function nunjucksEnv(searchPaths = [], nunjucksOptions = {}, packageOptions) {
  * @returns {Promise<ComponentFixtures>} Component data
  */
 const getComponentFixtures = async (componentName, packageOptions) => {
-  return require(join(
-    dirname(packageTypeToPath('govuk-frontend', packageOptions)),
-    `components/${componentName}/fixtures.json`
-  ))
+  return require(
+    join(
+      dirname(packageTypeToPath('govuk-frontend', packageOptions)),
+      `components/${componentName}/fixtures.json`
+    )
+  )
 }
 
 /**
