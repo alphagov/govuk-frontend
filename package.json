@@ -56,8 +56,8 @@
     "version": "echo $npm_package_version"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.11",
-    "@babel/preset-env": "^7.22.10",
+    "@babel/core": "^7.22.15",
+    "@babel/preset-env": "^7.22.15",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-replace": "^5.0.2",
     "@rollup/plugin-terser": "^0.4.3",
