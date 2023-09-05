@@ -81,5 +81,19 @@ describe('Skip Link', () => {
         message: 'GOV.UK Frontend is not supported in this browser'
       })
     })
+
+    it('throws when the linked element is missing', async () => {
+      await expect(
+        renderAndInitialise(page, 'skip-link', {
+          params: {
+            text: 'Skip to main content',
+            href: '#this-element-does-not-exist'
+          }
+        })
+      ).rejects.toEqual({
+        name: 'MissingElementError',
+        message: 'The linked HTML element does not exist'
+      })
+    })
   })
 })

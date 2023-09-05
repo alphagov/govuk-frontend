@@ -1,3 +1,4 @@
+import { MissingElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
@@ -33,7 +34,7 @@ export class SkipLink extends GOVUKFrontendComponent {
     // Check for linked element
     const $linkedElement = this.getLinkedElement()
     if (!$linkedElement) {
-      return
+      throw new MissingElementError('The linked HTML element does not exist')
     }
 
     this.$linkedElement = $linkedElement
