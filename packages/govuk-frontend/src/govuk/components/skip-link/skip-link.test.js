@@ -92,7 +92,7 @@ describe('Skip Link', () => {
         })
       ).rejects.toEqual({
         name: 'MissingElementError',
-        message: 'The linked HTML element does not exist'
+        message: 'Skip link: the linked HTML element does not exist'
       })
     })
   })
