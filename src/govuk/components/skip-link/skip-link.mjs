@@ -32,12 +32,18 @@ export class SkipLink extends GOVUKFrontendComponent {
     this.$module = $module
 
     // Check for linked element
-    const $linkedElement = this.getLinkedElement()
-    if (!$linkedElement) {
-      throw new MissingElementError('The linked HTML element does not exist')
+    try {
+      const $linkedElement = this.getLinkedElement()
+      this.$linkedElement = $linkedElement
+    } catch (cause) {
+      throw new MissingElementError(
+        'Skip link: the linked HTML element does not exist',
+        {
+          cause: cause instanceof Error ? cause : undefined
+        }
+      )
     }
 
-    this.$linkedElement = $linkedElement
     this.$module.addEventListener('click', () => this.focusLinkedElement())
   }
 
@@ -45,15 +51,27 @@ export class SkipLink extends GOVUKFrontendComponent {
    * Get linked element
    *
    * @private
-   * @returns {HTMLElement | null} $linkedElement - DOM element linked to from the skip link
+   * @throws {Error} If the "href" attribute does not contain a hash
+   * @throws {Error} If the element with the specified ID does not exist
+   * @returns {HTMLElement} $linkedElement - DOM element linked to from the skip link
    */
   getLinkedElement() {
     const linkedElementId = this.getFragmentFromUrl()
     if (!linkedElementId) {
-      return null
+      throw new Error(
+        `Skip link: $module "href" attribute does not contain a hash`
+      )
     }
 
-    return document.getElementById(linkedElementId)
+    const linkedElement = document.getElementById(linkedElementId)
+
+    if (!linkedElement) {
+      throw new Error(
+        `Skip link: Target selector "#${linkedElementId}" not found`
+      )
+    }
+
+    return linkedElement
   }
 
   /**
