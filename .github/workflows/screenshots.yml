@@ -15,6 +15,7 @@ jobs:
 
     env:
       PERCY_PARALLEL_NONCE: ${{ github.run_id }}-${{ github.run_attempt }}
+      PERCY_TARGET_BRANCH: ${{ github.base_ref }}
       PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
 
     # Skip when secrets are unavailable on forks
