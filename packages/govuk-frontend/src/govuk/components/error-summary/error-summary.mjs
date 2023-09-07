@@ -1,5 +1,6 @@
 import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { MissingElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
@@ -27,9 +28,11 @@ export class ErrorSummary extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      throw new TypeError(
-        'Error Summary: $module is not an instance of "HTMLElement"'
-      )
+      throw !$module
+        ? new MissingElementError('Error summary: $module not found')
+        : new TypeError(
+            'Error summary: $module is not an instance of "HTMLElement"'
+          )
     }
 
     this.$module = $module

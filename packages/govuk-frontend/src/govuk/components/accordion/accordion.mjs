@@ -1,5 +1,6 @@
 import { mergeConfigs, extractConfigByNamespace } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { MissingElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 import { I18n } from '../../i18n.mjs'
 
@@ -119,9 +120,11 @@ export class Accordion extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      throw new TypeError(
-        'Accordion: $module is not an instance of "HTMLElement"'
-      )
+      throw !$module
+        ? new MissingElementError('Accordion: $module not found')
+        : new TypeError(
+            'Accordion: $module is not an instance of "HTMLElement"'
+          )
     }
 
     this.$module = $module

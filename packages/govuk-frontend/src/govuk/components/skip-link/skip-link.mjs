@@ -27,9 +27,11 @@ export class SkipLink extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLAnchorElement)) {
-      throw new TypeError(
-        'Skip Link: $module is not an instance of "HTMLAnchorElement"'
-      )
+      throw !$module
+        ? new MissingElementError('Skip link: $module not found')
+        : new TypeError(
+            'Skip link: $module is not an instance of "HTMLAnchorElement"'
+          )
     }
 
     this.$module = $module

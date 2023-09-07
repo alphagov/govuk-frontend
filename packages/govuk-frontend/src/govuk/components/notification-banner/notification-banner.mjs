@@ -1,5 +1,6 @@
 import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { MissingElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
@@ -25,9 +26,11 @@ export class NotificationBanner extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      throw new TypeError(
-        'Notification Banner: $module is not an instance of "HTMLElement"'
-      )
+      throw !$module
+        ? new MissingElementError('Notification banner: $module not found')
+        : new TypeError(
+            'Notification banner: $module is not an instance of "HTMLElement"'
+          )
     }
 
     this.$module = $module

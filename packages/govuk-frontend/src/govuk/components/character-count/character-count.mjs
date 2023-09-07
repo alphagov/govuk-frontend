@@ -5,7 +5,7 @@ import {
   validateConfig
 } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
-import { ConfigError } from '../../errors/index.mjs'
+import { ConfigError, MissingElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 import { I18n } from '../../i18n.mjs'
 
@@ -75,9 +75,11 @@ export class CharacterCount extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      throw new TypeError(
-        'Character Count: $module is not an instance of "HTMLElement"'
-      )
+      throw !$module
+        ? new MissingElementError('Character count: $module not found')
+        : new TypeError(
+            'Character count: $module is not an instance of "HTMLElement"'
+          )
     }
 
     const $textarea = $module.querySelector('.govuk-js-character-count')

@@ -1,3 +1,4 @@
+import { MissingElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
@@ -30,7 +31,9 @@ export class Radios extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      throw new TypeError('Radios: $module is not an instance of "HTMLElement"')
+      throw !$module
+        ? new MissingElementError('Radios: $module not found')
+        : new TypeError('Radios: $module is not an instance of "HTMLElement"')
     }
 
     /** @satisfies {NodeListOf<HTMLInputElement>} */
