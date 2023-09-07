@@ -92,7 +92,22 @@ describe('Skip Link', () => {
         })
       ).rejects.toEqual({
         name: 'MissingElementError',
-        message: 'Skip link: the linked HTML element does not exist'
+        message:
+          'Skip link: Linked element selector "#this-element-does-not-exist" not found'
+      })
+    })
+
+    it('throws when the href does not contain a hash', async () => {
+      await expect(
+        renderAndInitialise(page, 'skip-link', {
+          params: {
+            text: 'Skip to main content',
+            href: 'this-element-does-not-exist'
+          }
+        })
+      ).rejects.toEqual({
+        name: 'MissingElementError',
+        message: 'Skip link: $module "href" attribute does not contain a hash'
       })
     })
   })
