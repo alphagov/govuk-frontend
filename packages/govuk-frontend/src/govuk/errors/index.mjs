@@ -23,6 +23,13 @@ export class GOVUKFrontendError extends Error {
 }
 
 /**
+ * Indicates that a Component's required HTML element is missing
+ */
+export class MissingElementError extends GOVUKFrontendError {
+  name = 'MissingElementError'
+}
+
+/**
  * Indicates that GOV.UK Frontend is not supported
  */
 export class SupportError extends GOVUKFrontendError {

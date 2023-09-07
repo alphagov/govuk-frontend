@@ -1,3 +1,4 @@
+import { MissingElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
@@ -20,6 +21,7 @@ export class SkipLink extends GOVUKFrontendComponent {
 
   /**
    * @param {Element} $module - HTML element to use for skip link
+   * @throws {MissingElementError} If the element with the specified ID is not found
    */
   constructor($module) {
     super()
@@ -31,12 +33,17 @@ export class SkipLink extends GOVUKFrontendComponent {
     this.$module = $module
 
     // Check for linked element
-    const $linkedElement = this.getLinkedElement()
-    if (!$linkedElement) {
-      return
+    try {
+      const $linkedElement = this.getLinkedElement()
+      this.$linkedElement = $linkedElement
+    } catch (error) {
+      throw new MissingElementError(
+        `Skip link: ${
+          error instanceof Error ? error.message : 'Linked element not found'
+        }`
+      )
     }
 
-    this.$linkedElement = $linkedElement
     this.$module.addEventListener('click', () => this.focusLinkedElement())
   }
 
@@ -44,15 +51,25 @@ export class SkipLink extends GOVUKFrontendComponent {
    * Get linked element
    *
    * @private
-   * @returns {HTMLElement | null} $linkedElement - DOM element linked to from the skip link
+   * @throws {Error} If the "href" attribute does not contain a hash
+   * @throws {TypeError} If the element with the specified ID is not found
+   * @returns {HTMLElement} $linkedElement - DOM element linked to from the skip link
    */
   getLinkedElement() {
     const linkedElementId = this.getFragmentFromUrl()
     if (!linkedElementId) {
-      return null
+      throw new Error(`$module "href" attribute does not contain a hash`)
     }
 
-    return document.getElementById(linkedElementId)
+    const linkedElement = document.getElementById(linkedElementId)
+
+    if (!linkedElement) {
+      throw new TypeError(
+        `Linked element selector "#${linkedElementId}" not found`
+      )
+    }
+
+    return linkedElement
   }
 
   /**
