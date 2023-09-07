@@ -231,19 +231,34 @@ describe('Error Summary', () => {
       })
     })
 
+    it('throws when $module is not set', async () => {
+      await expect(
+        renderAndInitialise(page, 'error-summary', {
+          params: examples.default,
+          beforeInitialisation($module) {
+            $module.remove()
+          }
+        })
+      ).rejects.toEqual({
+        name: 'MissingElementError',
+        message: 'Error summary: $module not found'
+      })
+    })
+
     it('throws when receiving the wrong type for $module', async () => {
       await expect(
         renderAndInitialise(page, 'error-summary', {
           params: examples.default,
-          beforeInitialisation() {
-            // Remove the root of the components as a way
-            // for the constructor to receive the wrong type for `$module`
-            document.querySelector('[data-module]').remove()
+          beforeInitialisation($module) {
+            // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
+            $module.outerHTML = `<svg data-module="${$module.getAttribute(
+              'data-module'
+            )}"></svg>`
           }
         })
       ).rejects.toEqual({
         name: 'TypeError',
-        message: 'Error Summary: $module is not an instance of "HTMLElement"'
+        message: 'Error summary: $module is not an instance of "HTMLElement"'
       })
     })
   })
