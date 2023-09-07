@@ -114,13 +114,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
     })
 
     // Determine the limit attribute (characters or words)
-    if ('maxwords' in this.config && this.config.maxwords) {
-      this.maxLength = this.config.maxwords
-    } else if ('maxlength' in this.config && this.config.maxlength) {
-      this.maxLength = this.config.maxlength
-    } else {
-      return this
-    }
+    this.maxLength = this.config.maxwords || this.config.maxlength
 
     this.$module = $module
     this.$textarea = $textarea
@@ -340,7 +334,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
    * @returns {number} the number of characters (or words) in the text
    */
   count(text) {
-    if ('maxwords' in this.config && this.config.maxwords) {
+    if (this.config.maxwords) {
       const tokens = text.match(/\S+/g) || [] // Matches consecutive non-whitespace chars
       return tokens.length
     } else {
@@ -356,9 +350,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
    */
   getCountMessage() {
     const remainingNumber = this.maxLength - this.count(this.$textarea.value)
-
-    const countType =
-      'maxwords' in this.config && this.config.maxwords ? 'words' : 'characters'
+    const countType = this.config.maxwords ? 'words' : 'characters'
     return this.formatCountMessage(remainingNumber, countType)
   }
 
@@ -457,27 +449,9 @@ export class CharacterCount extends GOVUKFrontendComponent {
  * Character count config
  *
  * @see {@link CharacterCount.defaults}
- * @typedef {CharacterCountConfigWithMaxLength | CharacterCountConfigWithMaxWords} CharacterCountConfig
- */
-
-/**
- * Character count config (with maximum number of characters)
- *
- * @see {@link CharacterCount.defaults}
- * @typedef {object} CharacterCountConfigWithMaxLength
+ * @typedef {object} CharacterCountConfig
  * @property {number} [maxlength] - The maximum number of characters.
  *   If maxwords is provided, the maxlength option will be ignored.
- * @property {number} [threshold=0] - The percentage value of the limit at
- *   which point the count message is displayed. If this attribute is set, the
- *   count message will be hidden by default.
- * @property {CharacterCountTranslations} [i18n=CharacterCount.defaults.i18n] - Character count translations
- */
-
-/**
- * Character count config (with maximum number of words)
- *
- * @see {@link CharacterCount.defaults}
- * @typedef {object} CharacterCountConfigWithMaxWords
  * @property {number} [maxwords] - The maximum number of words. If maxwords is
  *   provided, the maxlength option will be ignored.
  * @property {number} [threshold=0] - The percentage value of the limit at
