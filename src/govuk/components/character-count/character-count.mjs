@@ -62,21 +62,6 @@ export class CharacterCount extends GOVUKFrontendComponent {
   /** @private */
   maxLength = Infinity
 
-  /** @private */
-  configSchema = {
-    anyOf: {
-      conditions: [
-        {
-          required: ['maxwords']
-        },
-        {
-          required: ['maxlength']
-        }
-      ],
-      errorMessage: 'Either `maxlength` or `maxwords` must be provided'
-    }
-  }
-
   /**
    * @param {Element} $module - HTML element to use for character count
    * @param {CharacterCountConfig} [config] - Character count config
@@ -123,7 +108,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
       datasetConfig
     )
 
-    this.checkConfig(this.configSchema, this.config)
+    this.checkConfig(CharacterCount.schema, this.config)
 
     this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'), {
       // Read the fallback if necessary rather than have it set in the defaults
@@ -460,6 +445,25 @@ export class CharacterCount extends GOVUKFrontendComponent {
       }
     }
   })
+
+  /**
+   * Character count config schema
+   *
+   * @constant
+   * @satisfies {Schema}
+   */
+  static schema = Object.freeze({
+    anyOf: [
+      {
+        required: ['maxwords'],
+        errorMessage: 'Either "maxlength" or "maxwords" must be provided'
+      },
+      {
+        required: ['maxlength'],
+        errorMessage: 'Either "maxlength" or "maxwords" must be provided'
+      }
+    ]
+  })
 }
 
 /**
@@ -525,5 +529,6 @@ export class CharacterCount extends GOVUKFrontendComponent {
  */
 
 /**
+ * @typedef {import('../../govuk-frontend-component.mjs').Schema} Schema
  * @typedef {import('../../i18n.mjs').TranslationPluralForms} TranslationPluralForms
  */

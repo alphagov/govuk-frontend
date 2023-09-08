@@ -792,7 +792,7 @@ describe('Character count', () => {
           })
         ).rejects.toEqual({
           name: 'ConfigError',
-          message: 'Either `maxlength` or `maxwords` must be provided'
+          message: 'Either "maxlength" or "maxwords" must be provided'
         })
       })
     })
