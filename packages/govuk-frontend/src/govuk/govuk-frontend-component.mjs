@@ -32,8 +32,8 @@ export class GOVUKFrontendComponent {
 
   /**
    * @protected
-   * @param {Schema} schema
-   * @param {Config[ConfigKey]} config
+   * @param {Schema} schema - Config schema
+   * @param {Config[ConfigKey]} config - Component config
    */
   checkConfig(schema, config) {
     const errors = validateConfig(schema, config)
@@ -45,14 +45,14 @@ export class GOVUKFrontendComponent {
 }
 
 /**
- * Schema for components
+ * Schema for component config
  *
  * @typedef {object} Schema
- * @property {SchemaAnyOf} [anyOf] - An array of conditions
+ * @property {SchemaAnyOf} [anyOf] - List of schema conditions
  */
 
 /**
- * Component "Any Of" schema rule
+ * Schema rule "Any of" for component config
  *
  * @typedef {object} SchemaAnyOf
  * @property {string} errorMessage - The error message to display if the condition fails
@@ -60,10 +60,10 @@ export class GOVUKFrontendComponent {
  */
 
 /**
- * Schema required array
+ * Schema condition for component config
  *
  * @typedef {object} SchemaCondition
- * @property {string[]} required - Whether the current item is required
+ * @property {string[]} required - List of required config fields
  */
 
 /**

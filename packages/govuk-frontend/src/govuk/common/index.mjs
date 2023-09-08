@@ -149,12 +149,12 @@ export function isSupported($scope = document.body) {
 }
 
 /**
- * Validates Component config against a schema
+ * Validate component config by schema
  *
- * @protected
- * @param {Schema} schema
- * @param {Config[ConfigKey]} config
- * @returns {string[]} An array of errors, or an empty array if there are no errors
+ * @internal
+ * @param {Schema} schema - Config schema
+ * @param {Config[ConfigKey]} config - Component config
+ * @returns {string[]} List of validation errors
  */
 export function validateConfig(schema, config) {
   /**
@@ -180,7 +180,7 @@ export function validateConfig(schema, config) {
 /**
  * @typedef {import('govuk-frontend').Config} Config - Config for all components via `initAll()`
  * @typedef {import('govuk-frontend').ConfigKey} ConfigKey - Component config keys, e.g. `accordion` and `characterCount`
- * @typedef {import('../govuk-frontend-component.mjs').Schema} Schema - Component config schema
- * @typedef {import('../govuk-frontend-component.mjs').SchemaAnyOf} SchemaAnyOf - Component "Any Of" schema rule
- * @typedef {import('../govuk-frontend-component.mjs').SchemaCondition} SchemaCondition - Schema required array
+ * @typedef {import('../govuk-frontend-component.mjs').Schema} Schema - Schema for component config
+ * @typedef {import('../govuk-frontend-component.mjs').SchemaAnyOf} SchemaAnyOf - Schema rule "Any of" for component config
+ * @typedef {import('../govuk-frontend-component.mjs').SchemaCondition} SchemaCondition - Schema condition for component config
  */

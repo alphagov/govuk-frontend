@@ -26,6 +26,6 @@ module.exports = {
     strict: false
   },
 
-  // Ignore warnings about class fields using I18n (@private)
-  intentionallyNotExported: ['I18n', 'TranslationPluralForms']
+  // Ignore known undocumented types (@internal, @private etc)
+  intentionallyNotExported: ['I18n', 'Schema', 'TranslationPluralForms']
 }
