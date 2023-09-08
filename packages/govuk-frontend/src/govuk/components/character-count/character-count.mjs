@@ -1,6 +1,11 @@
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
-import { extractConfigByNamespace, mergeConfigs } from '../../common/index.mjs'
+import {
+  extractConfigByNamespace,
+  mergeConfigs,
+  validateConfig
+} from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { ConfigError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 import { I18n } from '../../i18n.mjs'
 
@@ -108,7 +113,11 @@ export class CharacterCount extends GOVUKFrontendComponent {
       datasetConfig
     )
 
-    this.checkConfig(CharacterCount.schema, this.config)
+    // Check for valid config
+    const errors = validateConfig(CharacterCount.schema, this.config)
+    if (errors[0]) {
+      throw new ConfigError(`Character count: ${errors[0]}`)
+    }
 
     this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'), {
       // Read the fallback if necessary rather than have it set in the defaults
@@ -529,6 +538,6 @@ export class CharacterCount extends GOVUKFrontendComponent {
  */
 
 /**
- * @typedef {import('../../govuk-frontend-component.mjs').Schema} Schema
+ * @typedef {import('../../common/index.mjs').Schema} Schema
  * @typedef {import('../../i18n.mjs').TranslationPluralForms} TranslationPluralForms
  */
