@@ -180,7 +180,21 @@ export function validateConfig(schema, config) {
 }
 
 /**
+ * Schema for component config
+ *
+ * @typedef {object} Schema
+ * @property {SchemaCondition[]} [anyOf] - List of schema conditions
+ */
+
+/**
+ * Schema condition for component config
+ *
+ * @typedef {object} SchemaCondition
+ * @property {string[]} required - List of required config fields
+ * @property {string} errorMessage - Error message when required config fields not provided
+ */
+
+/**
  * @typedef {import('govuk-frontend').Config} Config - Config for all components via `initAll()`
  * @typedef {import('govuk-frontend').ConfigKey} ConfigKey - Component config keys, e.g. `accordion` and `characterCount`
- * @typedef {import('../govuk-frontend-component.mjs').Schema} Schema - Schema for component config
  */
