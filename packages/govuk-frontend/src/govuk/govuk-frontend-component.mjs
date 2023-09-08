@@ -48,15 +48,7 @@ export class GOVUKFrontendComponent {
  * Schema for component config
  *
  * @typedef {object} Schema
- * @property {SchemaAnyOf} [anyOf] - List of schema conditions
- */
-
-/**
- * Schema rule "Any of" for component config
- *
- * @typedef {object} SchemaAnyOf
- * @property {string} errorMessage - The error message to display if the condition fails
- * @property {SchemaCondition[]} conditions - Whether the current item is required
+ * @property {SchemaCondition[]} [anyOf] - List of schema conditions
  */
 
 /**
@@ -64,6 +56,7 @@ export class GOVUKFrontendComponent {
  *
  * @typedef {object} SchemaCondition
  * @property {string[]} required - List of required config fields
+ * @property {string} errorMessage - Error message when required config fields not provided
  */
 
 /**
