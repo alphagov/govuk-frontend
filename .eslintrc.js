@@ -39,7 +39,7 @@ module.exports = {
         // Babel transpiles ES2020 class fields
         'es-x/no-class-fields': 'off',
 
-        // JSDoc blocks are mandatory
+        // JSDoc blocks are mandatory in source code
         'jsdoc/require-jsdoc': [
           'error',
           {
@@ -51,7 +51,12 @@ module.exports = {
               MethodDefinition: true
             }
           }
-        ]
+        ],
+
+        // JSDoc @param required in (mandatory) blocks but
+        // @param description is necessary in source code
+        'jsdoc/require-param-description': 'warn',
+        'jsdoc/require-param': 'error'
       }
     },
     {
