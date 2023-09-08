@@ -105,8 +105,6 @@ export {
  * @typedef {import('./components/accordion/accordion.mjs').AccordionTranslations} AccordionTranslations
  * @typedef {import('./components/button/button.mjs').ButtonConfig} ButtonConfig
  * @typedef {import('./components/character-count/character-count.mjs').CharacterCountConfig} CharacterCountConfig
- * @typedef {import('./components/character-count/character-count.mjs').CharacterCountConfigWithMaxLength} CharacterCountConfigWithMaxLength
- * @typedef {import('./components/character-count/character-count.mjs').CharacterCountConfigWithMaxWords} CharacterCountConfigWithMaxWords
  * @typedef {import('./components/character-count/character-count.mjs').CharacterCountTranslations} CharacterCountTranslations
  * @typedef {import('./components/error-summary/error-summary.mjs').ErrorSummaryConfig} ErrorSummaryConfig
  * @typedef {import('./components/exit-this-page/exit-this-page.mjs').ExitThisPageConfig} ExitThisPageConfig
