@@ -111,3 +111,9 @@ export {
  * @typedef {import('./components/exit-this-page/exit-this-page.mjs').ExitThisPageTranslations} ExitThisPageTranslations
  * @typedef {import('./components/notification-banner/notification-banner.mjs').NotificationBannerConfig} NotificationBannerConfig
  */
+
+/**
+ * Component config keys, e.g. `accordion` and `characterCount`
+ *
+ * @typedef {keyof Config} ConfigKey
+ */

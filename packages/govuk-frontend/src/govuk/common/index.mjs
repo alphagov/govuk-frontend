@@ -147,3 +147,54 @@ export function extractConfigByNamespace(configObject, namespace) {
 export function isSupported($scope = document.body) {
   return $scope.classList.contains('govuk-frontend-supported')
 }
+
+/**
+ * Validate component config by schema
+ *
+ * @internal
+ * @param {Schema} schema - Config schema
+ * @param {Config[ConfigKey]} config - Component config
+ * @returns {string[]} List of validation errors
+ */
+export function validateConfig(schema, config) {
+  const validationErrors = []
+
+  // Check errors for each schema
+  for (const [name, conditions] of Object.entries(schema)) {
+    const errors = []
+
+    // Check errors for each schema condition
+    for (const { required, errorMessage } of conditions) {
+      if (!required.every((key) => !!config[key])) {
+        errors.push(errorMessage) // Missing config key value
+      }
+    }
+
+    // Check one condition passes or add errors
+    if (name === 'anyOf' && !(conditions.length - errors.length >= 1)) {
+      validationErrors.push(...errors)
+    }
+  }
+
+  return validationErrors
+}
+
+/**
+ * Schema for component config
+ *
+ * @typedef {object} Schema
+ * @property {SchemaCondition[]} [anyOf] - List of schema conditions
+ */
+
+/**
+ * Schema condition for component config
+ *
+ * @typedef {object} SchemaCondition
+ * @property {string[]} required - List of required config fields
+ * @property {string} errorMessage - Error message when required config fields not provided
+ */
+
+/**
+ * @typedef {import('govuk-frontend').Config} Config - Config for all components via `initAll()`
+ * @typedef {import('govuk-frontend').ConfigKey} ConfigKey - Component config keys, e.g. `accordion` and `characterCount`
+ */

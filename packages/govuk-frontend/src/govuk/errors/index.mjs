@@ -40,3 +40,10 @@ export class SupportError extends GOVUKFrontendError {
     super('GOV.UK Frontend is not supported in this browser')
   }
 }
+
+/**
+ * Indicates that a component has received an illegal configuration
+ */
+export class ConfigError extends GOVUKFrontendError {
+  name = 'ConfigError'
+}

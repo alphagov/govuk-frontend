@@ -784,6 +784,18 @@ describe('Character count', () => {
           message: 'GOV.UK Frontend is not supported in this browser'
         })
       })
+
+      it('throws when receiving invalid configuration', async () => {
+        await expect(
+          renderAndInitialise(page, 'character-count', {
+            params: {}
+          })
+        ).rejects.toEqual({
+          name: 'ConfigError',
+          message:
+            'Character count: Either "maxlength" or "maxwords" must be provided'
+        })
+      })
     })
   })
 
