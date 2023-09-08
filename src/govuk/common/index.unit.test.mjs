@@ -117,7 +117,7 @@ describe('Common JS utilities', () => {
     })
   })
 
-  describe.only('isSupported', () => {
+  describe('isSupported', () => {
     beforeEach(() => {
       // Jest does not tidy the JSDOM document between tests
       // so we need to take care of that ourselves
