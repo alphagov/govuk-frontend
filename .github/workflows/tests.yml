@@ -146,6 +146,7 @@ jobs:
           - description: JavaScript unit tests
             name: test-unit
             cache: .cache/jest
+            coverage: true
             projects:
               - JavaScript unit tests
 
@@ -191,7 +192,7 @@ jobs:
           path: ${{ matrix.task.cache }}
 
       - name: Run test task
-        run: npx jest --color ${{ format('--maxWorkers={0} --selectProjects "{1}"', env.MAX_WORKERS, join(matrix.task.projects, '", "')) }}
+        run: npx jest --color ${{ format('--coverage={0} --maxWorkers={1} --selectProjects "{2}"', matrix.task.coverage || false, env.MAX_WORKERS, join(matrix.task.projects, '", "')) }}
 
       - name: Save test coverage
         uses: actions/upload-artifact@v3.1.3
