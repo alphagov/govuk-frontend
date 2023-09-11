@@ -40,7 +40,7 @@ jobs:
           bin/dist-diff.sh origin/$GITHUB_BASE_REF $GITHUB_WORKSPACE
 
       - name: Save distribution diffs
-        uses: actions/upload-artifact@v3.1.2
+        uses: actions/upload-artifact@v3.1.3
         with:
           name: Dist diff
           path: dist*.diff

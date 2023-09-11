@@ -194,7 +194,7 @@ jobs:
         run: npx jest --color ${{ format('--maxWorkers={0} --selectProjects "{1}"', env.MAX_WORKERS, join(matrix.task.projects, '", "')) }}
 
       - name: Save test coverage
-        uses: actions/upload-artifact@v3.1.2
+        uses: actions/upload-artifact@v3.1.3
         with:
           name: ${{ matrix.task.description }} coverage (${{ matrix.runner }})
           path: coverage
