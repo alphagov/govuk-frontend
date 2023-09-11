@@ -13,6 +13,10 @@ import * as globals from './globals/index.mjs'
  * @returns {import('nunjucks').Environment} Nunjucks Environment
  */
 export function renderer(app) {
+  const flags = /** @type {import('../../app.mjs').FeatureFlags} */ (
+    app.get('flags')
+  )
+
   const env = nunjucksEnv(
     [join(paths.app, 'src/views')],
     {
@@ -29,7 +33,7 @@ export function renderer(app) {
   app.set('view engine', 'njk')
 
   // Share feature flags with middleware
-  env.addGlobal('flags', app.get('flags'))
+  env.addGlobal('flags', flags)
 
   // Custom filters
   for (const key in filters) {

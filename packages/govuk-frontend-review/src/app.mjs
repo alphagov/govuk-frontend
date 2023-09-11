@@ -46,9 +46,9 @@ export default async () => {
   ])
 
   // Feature flags
-  const flags = {
+  const flags = /** @type {FeatureFlags} */ ({
     isDeployedToHeroku: !!process.env.HEROKU_APP
-  }
+  })
 
   // Set up Express.js
   app.set('flags', flags)
@@ -206,4 +206,9 @@ export default async () => {
 
 /**
  * @typedef {import('@govuk-frontend/lib/components').ComponentFixtures} ComponentFixtures
+ */
+
+/**
+ * @typedef {object} FeatureFlags
+ * @property {boolean} isDeployedToHeroku - Review app using `HEROKU_APP`
  */

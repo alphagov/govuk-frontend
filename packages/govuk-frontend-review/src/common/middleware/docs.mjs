@@ -16,7 +16,8 @@ router.get('/', (req, res) => {
  * Sass docs latest release (when deployed)
  */
 router.use('/sass', ({ app }, res, next) => {
-  const { isDeployedToHeroku } = app.get('flags')
+  const { isDeployedToHeroku } =
+    /** @type {import('../../app.mjs').FeatureFlags} */ (app.get('flags'))
 
   if (isDeployedToHeroku) {
     return res.redirect(
