@@ -21,7 +21,7 @@ export function renderer(app) {
     [join(paths.app, 'src/views')],
     {
       express: app, // the Express.js review app that nunjucks should install to
-      noCache: true, // never use a cache and recompile templates each time
+      noCache: !flags.isDeployedToHeroku, // use cache when deployed only
       watch: flags.isDevelopment // reload templates in development only
     },
     {
