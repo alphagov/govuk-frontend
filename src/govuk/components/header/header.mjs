@@ -1,4 +1,4 @@
-import { MissingElementError } from '../../errors/index.mjs'
+import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
@@ -45,9 +45,11 @@ export class Header extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      throw !$module
-        ? new MissingElementError('Header: $module not found')
-        : new TypeError('Header: $module is not an instance of "HTMLElement"')
+      throw new ElementError($module, {
+        componentName: 'Header',
+        identifier: '$module',
+        expectedType: HTMLElement
+      })
     }
 
     this.$module = $module

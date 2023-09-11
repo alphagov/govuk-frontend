@@ -218,7 +218,7 @@ describe('/components/exit-this-page', () => {
             }
           })
         ).rejects.toEqual({
-          name: 'MissingElementError',
+          name: 'ElementError',
           message: 'Exit this page: $module not found'
         })
       })
@@ -229,13 +229,11 @@ describe('/components/exit-this-page', () => {
             params: examples.default,
             beforeInitialisation($module) {
               // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
-              $module.outerHTML = `<svg data-module="${$module.getAttribute(
-                'data-module'
-              )}"></svg>`
+              $module.outerHTML = `<svg data-module="govuk-exit-this-page"></svg>`
             }
           })
         ).rejects.toEqual({
-          name: 'TypeError',
+          name: 'ElementError',
           message: 'Exit this page: $module is not an instance of "HTMLElement"'
         })
       })

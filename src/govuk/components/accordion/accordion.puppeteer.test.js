@@ -743,7 +743,7 @@ describe('/components/accordion', () => {
                 }
               })
             ).rejects.toEqual({
-              name: 'MissingElementError',
+              name: 'ElementError',
               message: 'Accordion: $module not found'
             })
           })
@@ -754,13 +754,11 @@ describe('/components/accordion', () => {
                 params: examples.default,
                 beforeInitialisation($module) {
                   // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
-                  $module.outerHTML = `<svg data-module="${$module.getAttribute(
-                    'data-module'
-                  )}"></svg>`
+                  $module.outerHTML = `<svg data-module="govuk-accordion"></svg>`
                 }
               })
             ).rejects.toEqual({
-              name: 'TypeError',
+              name: 'ElementError',
               message: 'Accordion: $module is not an instance of "HTMLElement"'
             })
           })
