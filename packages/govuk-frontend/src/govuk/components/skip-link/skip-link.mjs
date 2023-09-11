@@ -1,4 +1,4 @@
-import { MissingElementError } from '../../errors/index.mjs'
+import { ElementError, MissingElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
@@ -27,11 +27,11 @@ export class SkipLink extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLAnchorElement)) {
-      throw !$module
-        ? new MissingElementError('Skip link: $module not found')
-        : new TypeError(
-            'Skip link: $module is not an instance of "HTMLAnchorElement"'
-          )
+      throw new ElementError($module, {
+        componentName: 'Skip link',
+        identifier: '$module',
+        expectedType: HTMLAnchorElement
+      })
     }
 
     this.$module = $module

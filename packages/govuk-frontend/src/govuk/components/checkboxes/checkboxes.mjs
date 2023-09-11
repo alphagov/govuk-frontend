@@ -1,4 +1,4 @@
-import { MissingElementError } from '../../errors/index.mjs'
+import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
@@ -31,11 +31,11 @@ export class Checkboxes extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      throw !$module
-        ? new MissingElementError('Checkboxes: $module not found')
-        : new TypeError(
-            'Checkboxes: $module is not an instance of "HTMLElement"'
-          )
+      throw new ElementError($module, {
+        componentName: 'Checkboxes',
+        identifier: '$module',
+        expectedType: HTMLElement
+      })
     }
 
     /** @satisfies {NodeListOf<HTMLInputElement>} */

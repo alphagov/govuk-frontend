@@ -300,7 +300,7 @@ describe('Radios', () => {
           }
         })
       ).rejects.toEqual({
-        name: 'MissingElementError',
+        name: 'ElementError',
         message: 'Radios: $module not found'
       })
     })
@@ -311,13 +311,11 @@ describe('Radios', () => {
           params: examples.default,
           beforeInitialisation($module) {
             // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
-            $module.outerHTML = `<svg data-module="${$module.getAttribute(
-              'data-module'
-            )}"></svg>`
+            $module.outerHTML = `<svg data-module="govuk-radios"></svg>`
           }
         })
       ).rejects.toEqual({
-        name: 'TypeError',
+        name: 'ElementError',
         message: 'Radios: $module is not an instance of "HTMLElement"'
       })
     })

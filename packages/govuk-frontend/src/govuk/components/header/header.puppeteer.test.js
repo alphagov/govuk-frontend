@@ -200,7 +200,7 @@ describe('Header navigation', () => {
             }
           })
         ).rejects.toEqual({
-          name: 'MissingElementError',
+          name: 'ElementError',
           message: 'Header: $module not found'
         })
       })
@@ -211,13 +211,11 @@ describe('Header navigation', () => {
             params: examples.default,
             beforeInitialisation($module) {
               // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
-              $module.outerHTML = `<svg data-module="${$module.getAttribute(
-                'data-module'
-              )}"></svg>`
+              $module.outerHTML = `<svg data-module="govuk-header"></svg>`
             }
           })
         ).rejects.toEqual({
-          name: 'TypeError',
+          name: 'ElementError',
           message: 'Header: $module is not an instance of "HTMLElement"'
         })
       })

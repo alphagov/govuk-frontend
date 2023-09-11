@@ -1,4 +1,4 @@
-import { MissingElementError } from '../../errors/index.mjs'
+import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
@@ -44,9 +44,11 @@ export class Tabs extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      throw !$module
-        ? new MissingElementError('Tabs: $module not found')
-        : new TypeError('Tabs: $module is not an instance of "HTMLElement"')
+      throw new ElementError($module, {
+        componentName: 'Tabs',
+        identifier: '$module',
+        expectedType: HTMLElement
+      })
     }
 
     /** @satisfies {NodeListOf<HTMLAnchorElement>} */
