@@ -27,5 +27,5 @@ module.exports = {
   },
 
   // Ignore known undocumented types (@internal, @private etc)
-  intentionallyNotExported: ['I18n', 'Schema', 'TranslationPluralForms']
+  intentionallyNotExported: ['I18n', 'TranslationPluralForms']
 }
