@@ -237,6 +237,20 @@ describe('/components/exit-this-page', () => {
           message: 'Exit this page: $module is not an instance of "HTMLElement"'
         })
       })
+
+      it('throws when the button is missing', async () => {
+        await expect(
+          renderAndInitialise(page, 'exit-this-page', {
+            params: examples.default,
+            beforeInitialisation($module) {
+              $module.querySelector('.govuk-exit-this-page__button').remove()
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message: 'Exit this page: Button not found'
+        })
+      })
     })
   })
 })
