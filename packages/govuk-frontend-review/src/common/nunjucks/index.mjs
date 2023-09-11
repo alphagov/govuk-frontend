@@ -22,7 +22,7 @@ export function renderer(app) {
     {
       express: app, // the Express.js review app that nunjucks should install to
       noCache: true, // never use a cache and recompile templates each time
-      watch: true // reload templates when they are changed. needs chokidar dependency to be installed
+      watch: flags.isDevelopment // reload templates in development only
     },
     {
       moduleRoot: paths.app

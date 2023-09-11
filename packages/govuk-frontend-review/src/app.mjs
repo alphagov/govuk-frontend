@@ -47,7 +47,8 @@ export default async () => {
 
   // Feature flags
   const flags = /** @type {FeatureFlags} */ ({
-    isDeployedToHeroku: !!process.env.HEROKU_APP
+    isDeployedToHeroku: !!process.env.HEROKU_APP,
+    isDevelopment: !['test', 'production'].includes(process.env.NODE_ENV)
   })
 
   // Set up Express.js
@@ -211,4 +212,5 @@ export default async () => {
 /**
  * @typedef {object} FeatureFlags
  * @property {boolean} isDeployedToHeroku - Review app using `HEROKU_APP`
+ * @property {boolean} isDevelopment - Review app not using `NODE_ENV` production or test
  */
