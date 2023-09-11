@@ -16,7 +16,7 @@ export default (options) =>
 
     // Copy GOV.UK Frontend static assets
     task.name('copy:assets', () =>
-      files.copy('*/**', {
+      files.copy('**/*', {
         srcPath: join(options.srcPath, 'govuk/assets'),
         destPath: join(options.destPath, 'assets')
       })
