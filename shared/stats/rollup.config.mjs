@@ -1,4 +1,4 @@
-import { dirname, join, parse, relative } from 'path'
+import { dirname, join, parse } from 'path'
 
 import { paths } from '@govuk-frontend/config'
 import { packageTypeToPath } from '@govuk-frontend/lib/names'
@@ -18,10 +18,10 @@ export default defineConfig(
   modulePaths.map(
     (modulePath) =>
       /** @satisfies {import('rollup').RollupOptions} */ ({
-        input: relative(
-          paths.stats,
-          packageTypeToPath('govuk-frontend', { ...packageOptions, modulePath })
-        ),
+        input: packageTypeToPath('govuk-frontend', {
+          ...packageOptions,
+          modulePath
+        }),
 
         /**
          * Output options
