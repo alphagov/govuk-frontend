@@ -53,7 +53,7 @@
     "nodemon": "^3.0.1",
     "postcss-pseudo-classes": "^0.2.1",
     "puppeteer": "^21.1.1",
-    "rollup": "^3.28.1",
+    "rollup": "^3.29.1",
     "sassdoc": "^2.7.4",
     "slash": "^5.1.0",
     "supertest": "^6.3.3",
