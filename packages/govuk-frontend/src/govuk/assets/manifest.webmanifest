@@ -1,6 +1,7 @@
 {
   "icons": [
-    { "src": "images/govuk-android-icon.png", "type": "image/png", "sizes": "192x192" },
-    { "src": "images/govuk-android-icon-512.png", "type": "image/png", "sizes": "512x512" }
+    { "src": "images/govuk-icon-180.png", "type": "image/png", "sizes": "180x180" },
+    { "src": "images/govuk-icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "images/govuk-icon-512.png", "type": "image/png", "sizes": "512x512" }
   ]
 }
