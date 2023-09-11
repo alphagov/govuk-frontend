@@ -20,6 +20,7 @@ export function renderer(app) {
   const env = nunjucksEnv(
     [join(paths.app, 'src/views')],
     {
+      dev: true, // log stack traces
       express: app, // the Express.js review app that nunjucks should install to
       noCache: !flags.isDeployedToHeroku, // use cache when deployed only
       watch: flags.isDevelopment // reload templates in development only
