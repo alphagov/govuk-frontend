@@ -68,14 +68,14 @@ describe('Template', () => {
 
     it('uses a default assets path of /assets', () => {
       const $ = renderTemplate()
-      const $icon = $('link[rel="shortcut icon"]')
+      const $icon = $('link[rel="icon"][sizes="48x48"]')
 
       expect($icon.attr('href')).toEqual('/assets/images/favicon.ico')
     })
 
     it('can have the assets path overridden using assetPath', () => {
       const $ = renderTemplate({ assetPath: '/whatever' })
-      const $icon = $('link[rel="shortcut icon"]')
+      const $icon = $('link[rel="icon"][sizes="48x48"]')
 
       expect($icon.attr('href')).toEqual('/whatever/images/favicon.ico')
     })
