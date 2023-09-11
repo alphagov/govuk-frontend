@@ -90,7 +90,11 @@ export class ExitThisPage extends GOVUKFrontendComponent {
 
     const $button = $module.querySelector('.govuk-exit-this-page__button')
     if (!($button instanceof HTMLElement)) {
-      return this
+      throw new ElementError($button, {
+        componentName: 'Exit this page',
+        identifier: 'Button',
+        expectedType: HTMLElement
+      })
     }
 
     this.config = mergeConfigs(
