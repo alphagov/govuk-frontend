@@ -108,22 +108,8 @@ export default {
     {
       ...config,
       displayName: 'JavaScript behaviour tests',
-      testMatch: [
-        '**/*.test.{js,mjs}',
-
-        // Exclude macro/unit tests
-        '!**/(*.)?template.test.{js,mjs}',
-        '!**/*.unit.test.{js,mjs}',
-
-        // Exclude other tests
-        '!**/components/globals.test.js',
-        '!**/components/*/**',
-        '!**/tasks/build/**'
-      ],
-
-      // Web server required
-      globalSetup: '@govuk-frontend/helpers/jest/server/start.mjs',
-      globalTeardown: '@govuk-frontend/helpers/jest/server/stop.mjs'
+      testEnvironment: '@govuk-frontend/helpers/jest/environment/jsdom.mjs',
+      testMatch: ['**/*.jsdom.test.{js,mjs}']
     },
     {
       ...config,
