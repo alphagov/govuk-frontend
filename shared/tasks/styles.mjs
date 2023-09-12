@@ -25,11 +25,9 @@ export async function compile(pattern, options) {
   })
 
   try {
-    const compileTasks = modulePaths.map((modulePath) =>
+    for (const modulePath of modulePaths) {
       compileStylesheet([modulePath, options])
-    )
-
-    await Promise.all(compileTasks)
+    }
   } catch (cause) {
     throw new PluginError('shared/tasks/styles', cause)
   }
