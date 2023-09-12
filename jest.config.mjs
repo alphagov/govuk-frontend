@@ -96,7 +96,6 @@ export default {
       ...config,
       displayName: 'Nunjucks macro tests',
       snapshotSerializers: ['jest-serializer-html'],
-      testEnvironment: '@govuk-frontend/helpers/jest/environment/jsdom.mjs',
       testMatch: ['**/(*.)?template.test.{js,mjs}']
     },
     {
