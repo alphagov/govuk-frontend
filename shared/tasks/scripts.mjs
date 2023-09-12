@@ -16,16 +16,10 @@ export async function compile(pattern, options) {
     cwd: options.srcPath
   })
 
-  // Increase Node.js max listeners warning threshold to silence
-  // Rollup calling `process.on('warning')` once per bundle
-  process.setMaxListeners(1 + modulePaths.length)
-
   try {
-    const compileTasks = modulePaths.map((modulePath) =>
-      compileJavaScript([modulePath, options])
-    )
-
-    await Promise.all(compileTasks)
+    for (const modulePath of modulePaths) {
+      await compileJavaScript([modulePath, options])
+    }
   } catch (cause) {
     throw new PluginError('shared/tasks/scripts', cause)
   }
