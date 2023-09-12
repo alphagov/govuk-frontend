@@ -41,6 +41,23 @@ describe('PostCSS config', () => {
   })
 
   describe('Plugins', () => {
+    describe('GOV.UK Frontend version', () => {
+      it('Skips version number for NODE_ENV=development', () => {
+        const config = configFn({ env: 'development' })
+        expect(getPluginNames(config)).not.toContain('govuk-frontend-version')
+      })
+
+      it('Adds version number for NODE_ENV=production', () => {
+        const config = configFn({ env: 'production' })
+        expect(getPluginNames(config)).toContain('govuk-frontend-version')
+      })
+
+      it('Adds version number for NODE_ENV=test', () => {
+        const config = configFn({ env: 'test' })
+        expect(getPluginNames(config)).toContain('govuk-frontend-version')
+      })
+    })
+
     describe('CSS syntax parser', () => {
       it.each([
         {
