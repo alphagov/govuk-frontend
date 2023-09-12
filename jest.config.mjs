@@ -130,13 +130,10 @@ export default {
       displayName: 'JavaScript component tests',
       testEnvironment: '@govuk-frontend/helpers/jest/environment/puppeteer.mjs',
       testMatch: [
-        '**/components/globals.test.js',
-        '**/components/*/*.test.{js,mjs}',
+        '**/*.puppeteer.test.{js,mjs}',
 
-        // Exclude accessibility/macro/unit tests
-        '!**/*/accessibility.test.{js,mjs}',
-        '!**/(*.)?template.test.{js,mjs}',
-        '!**/*.unit.test.{js,mjs}'
+        // Exclude accessibility tests
+        '!**/accessibility.puppeteer.test.mjs'
       ],
 
       // Web server and browser required
@@ -148,7 +145,7 @@ export default {
       displayName: 'Accessibility tests',
       setupFilesAfterEnv: ['@govuk-frontend/helpers/jest/matchers.js'],
       testEnvironment: '@govuk-frontend/helpers/jest/environment/puppeteer.mjs',
-      testMatch: ['**/*/accessibility.test.{js,mjs}'],
+      testMatch: ['**/accessibility.puppeteer.test.mjs'],
 
       // Web server and browser required
       globalSetup: '@govuk-frontend/helpers/jest/browser/open.mjs',

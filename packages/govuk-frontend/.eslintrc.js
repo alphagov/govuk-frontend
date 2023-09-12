@@ -62,23 +62,6 @@ module.exports = {
         'jsdoc/require-param-description': 'warn',
         'jsdoc/require-param': 'error'
       }
-    },
-    {
-      // Matches 'JavaScript component tests' in jest.config.mjs
-      // to ignore unknown Jest Puppeteer globals
-      files: [
-        '**/components/globals.test.js',
-        '**/components/*/*.test.{js,mjs}'
-      ],
-      excludedFiles: [
-        '**/(*.)?template.test.{js,mjs}',
-        '**/*.unit.test.{js,mjs}'
-      ],
-      globals: {
-        page: 'readonly',
-        browser: 'readonly',
-        jestPuppeteer: 'readonly'
-      }
     }
   ]
 }

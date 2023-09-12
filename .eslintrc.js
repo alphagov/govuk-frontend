@@ -122,6 +122,16 @@ module.exports = {
       }
     },
     {
+      // Matches Puppeteer environment in jest.config.mjs
+      // to ignore unknown Jest Puppeteer globals
+      files: ['**/*.puppeteer.test.{js,mjs}'],
+      globals: {
+        page: 'readonly',
+        browser: 'readonly',
+        jestPuppeteer: 'readonly'
+      }
+    },
+    {
       // Add plugin for markdown `*.md` code blocks
       extends: ['plugin:markdown/recommended'],
       files: ['**/*.md'],
