@@ -1,10 +1,11 @@
 import { pkg } from '@govuk-frontend/config'
-import { isDev } from '@govuk-frontend/tasks/helpers/task-arguments.mjs'
 import autoprefixer from 'autoprefixer'
 import cssnano from 'cssnano'
 import cssnanoPresetDefault from 'cssnano-preset-default'
 import postcss from 'postcss'
 import scss from 'postcss-scss'
+
+const { NODE_ENV } = process.env
 
 /**
  * PostCSS config
@@ -12,13 +13,13 @@ import scss from 'postcss-scss'
  * @param {import('postcss-load-config').ConfigContext} [ctx] - Context options
  * @returns {import('postcss-load-config').Config} PostCSS Config
  */
-export default ({ to = '' } = {}) => ({
+export default ({ env = NODE_ENV, to = '' } = {}) => ({
   plugins: [
     // Add vendor prefixes
     autoprefixer({ env: 'stylesheets' }),
 
     // Add GOV.UK Frontend release version
-    !isDev && {
+    ['test', 'production'].includes(env) && {
       postcssPlugin: 'govuk-frontend-version',
       Declaration: {
         // Find CSS declaration for version, update value
