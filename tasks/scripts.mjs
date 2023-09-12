@@ -12,10 +12,23 @@ import gulp from 'gulp'
 export const compile = (options) =>
   gulp.series(
     /**
-     * Compile GOV.UK Frontend JavaScript for all entry points
+     * Compile GOV.UK Frontend JavaScript for component entry points
      */
-    task.name("compile:js 'modules'", () =>
-      scripts.compile('**/{all,components/*/!(*.test)}.mjs', {
+    task.name("compile:js 'components'", () =>
+      scripts.compile('**/components/*/!(*.test).mjs', {
+        ...options,
+
+        srcPath: join(options.srcPath, 'govuk'),
+        destPath: join(options.destPath, 'govuk'),
+        configPath: join(options.basePath, 'rollup.publish.config.mjs')
+      })
+    ),
+
+    /**
+     * Compile GOV.UK Frontend JavaScript for main entry point only
+     */
+    task.name("compile:js 'entry'", () =>
+      scripts.compile('**/all.mjs', {
         ...options,
 
         srcPath: join(options.srcPath, 'govuk'),
