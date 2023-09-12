@@ -101,7 +101,12 @@ export default {
     {
       ...config,
       displayName: 'JavaScript unit tests',
-      testMatch: ['**/*.unit.test.{js,mjs}']
+      testMatch: [
+        '**/*.unit.test.{js,mjs}',
+
+        // Exclude build tests
+        '!**/tasks/build/*.test.{js,mjs}'
+      ]
     },
     {
       ...config,
