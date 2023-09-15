@@ -77,8 +77,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
     if (!($module instanceof HTMLElement)) {
       throw new ElementError($module, {
         componentName: 'Character count',
-        identifier: '$module',
-        expectedType: HTMLElement
+        identifier: '$module'
       })
     }
 
