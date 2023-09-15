@@ -61,7 +61,10 @@ export class ElementError extends GOVUKFrontendError {
    * @param {string} options.identifier - An identifier that'll let the user understand which element has an error (variable name, CSS selector)
    * @param {typeof HTMLElement} [options.expectedType] - The type that was expected for the element
    */
-  constructor(element, { componentName, identifier, expectedType }) {
+  constructor(
+    element,
+    { componentName, identifier, expectedType = HTMLElement }
+  ) {
     const reason = !element
       ? `${identifier} not found`
       : `${identifier} is not an instance of "${expectedType.name}"`

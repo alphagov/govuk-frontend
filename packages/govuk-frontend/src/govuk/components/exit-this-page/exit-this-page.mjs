@@ -84,8 +84,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
     if (!($module instanceof HTMLElement)) {
       throw new ElementError($module, {
         componentName: 'Exit this page',
-        identifier: '$module',
-        expectedType: HTMLElement
+        identifier: '$module'
       })
     }
 

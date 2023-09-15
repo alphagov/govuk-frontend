@@ -33,8 +33,7 @@ export class Radios extends GOVUKFrontendComponent {
     if (!($module instanceof HTMLElement)) {
       throw new ElementError($module, {
         componentName: 'Radios',
-        identifier: '$module',
-        expectedType: HTMLElement
+        identifier: '$module'
       })
     }
 

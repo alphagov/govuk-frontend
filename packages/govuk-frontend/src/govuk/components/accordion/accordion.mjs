@@ -122,8 +122,7 @@ export class Accordion extends GOVUKFrontendComponent {
     if (!($module instanceof HTMLElement)) {
       throw new ElementError($module, {
         componentName: 'Accordion',
-        identifier: '$module',
-        expectedType: HTMLElement
+        identifier: '$module'
       })
     }
 
