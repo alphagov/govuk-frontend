@@ -30,7 +30,7 @@ export class SkipLink extends GOVUKFrontendComponent {
       throw new ElementError($module, {
         componentName: 'Skip link',
         identifier: '$module',
-        expectedType: HTMLAnchorElement
+        expectedType: window.HTMLAnchorElement
       })
     }
 
