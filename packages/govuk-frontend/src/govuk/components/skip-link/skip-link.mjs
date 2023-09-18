@@ -60,7 +60,7 @@ export class SkipLink extends GOVUKFrontendComponent {
    * @returns {HTMLElement} $linkedElement - DOM element linked to from the skip link
    */
   getLinkedElement() {
-    const linkedElementId = this.getFragmentFromUrl()
+    const linkedElementId = this.getFragmentFromUrl(this.$module.hash)
     if (!linkedElementId) {
       throw new Error(`$module "href" attribute does not contain a hash`)
     }
@@ -117,19 +117,19 @@ export class SkipLink extends GOVUKFrontendComponent {
   /**
    * Get fragment from URL
    *
-   * Extract the fragment (everything after the hash symbol) from a URL, but not including
-   * the symbol.
+   * Extract the fragment (everything after the hash) from a URL, but not including
+   * the hash.
    *
    * @private
-   * @returns {string | undefined} Fragment from URL, without the hash symbol
+   * @param {string} url - URL
+   * @returns {string | undefined} Fragment from URL, without the hash
    */
-  getFragmentFromUrl() {
-    // Bail if the anchor link doesn't have a hash
-    if (!this.$module.hash) {
-      return
+  getFragmentFromUrl(url) {
+    if (url.indexOf('#') === -1) {
+      return undefined
     }
 
-    return this.$module.hash.split('#').pop()
+    return url.split('#').pop()
   }
 
   /**
