@@ -1,3 +1,4 @@
+import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
@@ -44,7 +45,10 @@ export class Header extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      return this
+      throw new ElementError($module, {
+        componentName: 'Header',
+        identifier: '$module'
+      })
     }
 
     this.$module = $module

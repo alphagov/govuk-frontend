@@ -1,8 +1,7 @@
 const {
   goToComponent,
   goToExample,
-  renderAndInitialise,
-  goTo
+  renderAndInitialise
 } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
@@ -91,26 +90,6 @@ describe('Error Summary', () => {
         )
 
         expect(activeElement).not.toBe('govuk-error-summary')
-      })
-    })
-
-    describe('using JavaScript configuration, with no elements on the page', () => {
-      it('does not prevent further JavaScript from running', async () => {
-        await goTo(page, '/tests/boilerplate')
-
-        const result = await page.evaluate(async (exportName) => {
-          const namespace = await import('govuk-frontend')
-
-          // `undefined` simulates the element being missing,
-          // from an unchecked `document.querySelector` for example
-          /* eslint-disable-next-line no-new */
-          new namespace[exportName](undefined)
-
-          // If our component initialisation breaks, this won't run
-          return true
-        }, 'ErrorSummary')
-
-        expect(result).toBe(true)
       })
     })
 
@@ -249,6 +228,35 @@ describe('Error Summary', () => {
       ).rejects.toEqual({
         name: 'SupportError',
         message: 'GOV.UK Frontend is not supported in this browser'
+      })
+    })
+
+    it('throws when $module is not set', async () => {
+      await expect(
+        renderAndInitialise(page, 'error-summary', {
+          params: examples.default,
+          beforeInitialisation($module) {
+            $module.remove()
+          }
+        })
+      ).rejects.toEqual({
+        name: 'ElementError',
+        message: 'Error summary: $module not found'
+      })
+    })
+
+    it('throws when receiving the wrong type for $module', async () => {
+      await expect(
+        renderAndInitialise(page, 'error-summary', {
+          params: examples.default,
+          beforeInitialisation($module) {
+            // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
+            $module.outerHTML = `<svg data-module="govuk-error-summary"></svg>`
+          }
+        })
+      ).rejects.toEqual({
+        name: 'ElementError',
+        message: 'Error summary: $module is not an instance of "HTMLElement"'
       })
     })
   })

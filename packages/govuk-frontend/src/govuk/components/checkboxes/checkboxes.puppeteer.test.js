@@ -339,6 +339,35 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
           message: 'GOV.UK Frontend is not supported in this browser'
         })
       })
+
+      it('throws when $module is not set', async () => {
+        await expect(
+          renderAndInitialise(page, 'checkboxes', {
+            params: examples.default,
+            beforeInitialisation($module) {
+              $module.remove()
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message: 'Checkboxes: $module not found'
+        })
+      })
+
+      it('throws when receiving the wrong type for $module', async () => {
+        await expect(
+          renderAndInitialise(page, 'checkboxes', {
+            params: examples.default,
+            beforeInitialisation($module) {
+              // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
+              $module.outerHTML = `<svg data-module="govuk-checkboxes"></svg>`
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message: 'Checkboxes: $module is not an instance of "HTMLElement"'
+        })
+      })
     })
   })
 })

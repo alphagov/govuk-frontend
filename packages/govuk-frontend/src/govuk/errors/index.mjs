@@ -47,3 +47,27 @@ export class SupportError extends GOVUKFrontendError {
 export class ConfigError extends GOVUKFrontendError {
   name = 'ConfigError'
 }
+
+/**
+ * Indicates an issue with an element (possibly `null` or `undefined`)
+ */
+export class ElementError extends GOVUKFrontendError {
+  name = 'ElementError'
+
+  /**
+   * @param {Element} element - The element in error
+   * @param {object} options - Element error options
+   * @param {string} options.componentName - The name of the component throwing the error
+   * @param {string} options.identifier - An identifier that'll let the user understand which element has an error (variable name, CSS selector)
+   * @param {typeof HTMLElement} [options.expectedType] - The type that was expected for the element
+   */
+  constructor(element, { componentName, identifier, expectedType }) {
+    expectedType = expectedType || window.HTMLElement
+
+    const reason = !element
+      ? `${identifier} not found`
+      : `${identifier} is not an instance of "${expectedType.name}"`
+
+    super(`${componentName}: ${reason}`)
+  }
+}

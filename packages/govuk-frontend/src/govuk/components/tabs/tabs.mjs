@@ -1,3 +1,4 @@
+import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
@@ -43,7 +44,10 @@ export class Tabs extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      return this
+      throw new ElementError($module, {
+        componentName: 'Tabs',
+        identifier: '$module'
+      })
     }
 
     /** @satisfies {NodeListOf<HTMLAnchorElement>} */

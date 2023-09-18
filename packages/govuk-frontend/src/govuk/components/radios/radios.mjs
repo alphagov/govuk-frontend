@@ -1,3 +1,4 @@
+import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
@@ -30,7 +31,10 @@ export class Radios extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      return this
+      throw new ElementError($module, {
+        componentName: 'Radios',
+        identifier: '$module'
+      })
     }
 
     /** @satisfies {NodeListOf<HTMLInputElement>} */

@@ -188,6 +188,37 @@ describe('Header navigation', () => {
           message: 'GOV.UK Frontend is not supported in this browser'
         })
       })
+
+      it('throws when $module is not set', async () => {
+        await expect(
+          renderAndInitialise(page, 'header', {
+            params: examples.default,
+            beforeInitialisation($module) {
+              // Remove the root of the components as a way
+              // for the constructor to receive the wrong type for `$module`
+              $module.remove()
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message: 'Header: $module not found'
+        })
+      })
+
+      it('throws when receiving the wrong type for $module', async () => {
+        await expect(
+          renderAndInitialise(page, 'header', {
+            params: examples.default,
+            beforeInitialisation($module) {
+              // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
+              $module.outerHTML = `<svg data-module="govuk-header"></svg>`
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message: 'Header: $module is not an instance of "HTMLElement"'
+        })
+      })
     })
   })
 })

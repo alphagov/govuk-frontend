@@ -290,5 +290,34 @@ describe('Radios', () => {
         message: 'GOV.UK Frontend is not supported in this browser'
       })
     })
+
+    it('throws when $module is not set', async () => {
+      await expect(
+        renderAndInitialise(page, 'radios', {
+          params: examples.default,
+          beforeInitialisation($module) {
+            $module.remove()
+          }
+        })
+      ).rejects.toEqual({
+        name: 'ElementError',
+        message: 'Radios: $module not found'
+      })
+    })
+
+    it('throws when receiving the wrong type for $module', async () => {
+      await expect(
+        renderAndInitialise(page, 'radios', {
+          params: examples.default,
+          beforeInitialisation($module) {
+            // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
+            $module.outerHTML = `<svg data-module="govuk-radios"></svg>`
+          }
+        })
+      ).rejects.toEqual({
+        name: 'ElementError',
+        message: 'Radios: $module is not an instance of "HTMLElement"'
+      })
+    })
   })
 })

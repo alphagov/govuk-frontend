@@ -82,6 +82,35 @@ describe('Skip Link', () => {
       })
     })
 
+    it('throws when $module is not set', async () => {
+      await expect(
+        renderAndInitialise(page, 'skip-link', {
+          params: examples.default,
+          beforeInitialisation($module) {
+            $module.remove()
+          }
+        })
+      ).rejects.toEqual({
+        name: 'ElementError',
+        message: 'Skip link: $module not found'
+      })
+    })
+
+    it('throws when receiving the wrong type for $module', async () => {
+      await expect(
+        renderAndInitialise(page, 'skip-link', {
+          params: examples.default,
+          beforeInitialisation($module) {
+            // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
+            $module.outerHTML = `<svg data-module="govuk-skip-link"></svg>`
+          }
+        })
+      ).rejects.toEqual({
+        name: 'ElementError',
+        message: 'Skip link: $module is not an instance of "HTMLAnchorElement"'
+      })
+    })
+
     it('throws when the linked element is missing', async () => {
       await expect(
         renderAndInitialise(page, 'skip-link', {

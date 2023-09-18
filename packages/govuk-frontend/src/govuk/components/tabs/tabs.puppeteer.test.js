@@ -268,6 +268,35 @@ describe('/components/tabs', () => {
           message: 'GOV.UK Frontend is not supported in this browser'
         })
       })
+
+      it('throws when $module is not set', async () => {
+        await expect(
+          renderAndInitialise(page, 'tabs', {
+            params: examples.default,
+            beforeInitialisation($module) {
+              $module.remove()
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message: 'Tabs: $module not found'
+        })
+      })
+
+      it('throws when receiving the wrong type for $module', async () => {
+        await expect(
+          renderAndInitialise(page, 'tabs', {
+            params: examples.default,
+            beforeInitialisation($module) {
+              // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
+              $module.outerHTML = `<svg data-module="govuk-tabs"></svg>`
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message: 'Tabs: $module is not an instance of "HTMLElement"'
+        })
+      })
     })
   })
 })

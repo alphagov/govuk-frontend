@@ -5,7 +5,7 @@ import {
   validateConfig
 } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
-import { ConfigError } from '../../errors/index.mjs'
+import { ConfigError, ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 import { I18n } from '../../i18n.mjs'
 
@@ -75,7 +75,10 @@ export class CharacterCount extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      return this
+      throw new ElementError($module, {
+        componentName: 'Character count',
+        identifier: '$module'
+      })
     }
 
     const $textarea = $module.querySelector('.govuk-js-character-count')

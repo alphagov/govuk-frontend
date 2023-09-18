@@ -785,6 +785,36 @@ describe('Character count', () => {
         })
       })
 
+      it('throws when $module is not set', async () => {
+        await expect(
+          renderAndInitialise(page, 'character-count', {
+            params: examples.default,
+            beforeInitialisation($module) {
+              $module.remove()
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message: 'Character count: $module not found'
+        })
+      })
+
+      it('throws when receiving the wrong type for $module', async () => {
+        await expect(
+          renderAndInitialise(page, 'character-count', {
+            params: examples.default,
+            beforeInitialisation($module) {
+              // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
+              $module.outerHTML = `<svg data-module="govuk-character-count"></svg>`
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message:
+            'Character count: $module is not an instance of "HTMLElement"'
+        })
+      })
+
       it('throws when receiving invalid configuration', async () => {
         await expect(
           renderAndInitialise(page, 'character-count', {
