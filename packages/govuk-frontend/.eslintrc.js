@@ -39,6 +39,9 @@ module.exports = {
         // Babel transpiles ES2020 class fields
         'es-x/no-class-fields': 'off',
 
+        // Babel transpiles ES2021 `??=` logical assignment
+        'es-x/no-logical-assignment-operators': 'off',
+
         // Babel transpiles ES2020 `??` nullish coalescing
         'es-x/no-nullish-coalescing-operators': 'off',
 
