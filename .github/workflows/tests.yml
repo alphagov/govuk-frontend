@@ -153,6 +153,7 @@ jobs:
           - description: JavaScript behaviour tests
             name: test-behaviour
             cache: .cache/jest
+            coverage: true
             projects:
               - JavaScript behaviour tests
 

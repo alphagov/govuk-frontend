@@ -2,7 +2,6 @@ import { paths } from '@govuk-frontend/config'
 import runScript from '@npmcli/run-script'
 import PluginError from 'plugin-error'
 
-import { isDev } from './helpers/task-arguments.mjs'
 import { task } from './index.mjs'
 
 /**
@@ -31,7 +30,8 @@ export async function run(name, args = [], options) {
   } catch (cause) {
     const error = new Error(`Task for npm script '${name}' failed`, { cause })
 
-    if (!isDev) {
+    // Skip errors by default to allow Gulp to resume tasks
+    if (['test', 'production'].includes(process.env.NODE_ENV)) {
       throw new PluginError(`npm run ${name}`, error, {
         showProperties: false,
         showStack: false

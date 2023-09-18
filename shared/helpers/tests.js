@@ -1,6 +1,6 @@
 const { join } = require('path')
 
-const { paths, ports } = require('@govuk-frontend/config')
+const { paths } = require('@govuk-frontend/config')
 const { compileAsync, compileStringAsync, Logger } = require('sass-embedded')
 
 const sassPaths = [
@@ -41,20 +41,6 @@ async function compileSassString(source, options = {}) {
 }
 
 /**
- * Fetch by URL request path
- *
- * @param {string} path - URL request path
- * @param {RequestInit} [options] - Fetch options
- * @returns {Promise<Response>} Fetch response
- */
-const fetchPath = (path, options = {}) => {
-  return fetch(new URL(path, `http://localhost:${ports.app}`), {
-    keepalive: true,
-    ...options
-  })
-}
-
-/**
  * Get the raw HTML representation of a component, and remove any other
  * child elements that do not match the component.
  * Relies on B.E.M naming ensuring that child components relating to a component
@@ -76,6 +62,5 @@ function htmlWithClassName($, className) {
 module.exports = {
   compileSassFile,
   compileSassString,
-  fetchPath,
   htmlWithClassName
 }

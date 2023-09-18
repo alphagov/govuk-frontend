@@ -96,47 +96,33 @@ export default {
       ...config,
       displayName: 'Nunjucks macro tests',
       snapshotSerializers: ['jest-serializer-html'],
-      testEnvironment: '@govuk-frontend/helpers/jest/environment/jsdom.mjs',
       testMatch: ['**/(*.)?template.test.{js,mjs}']
     },
     {
       ...config,
       displayName: 'JavaScript unit tests',
-      testEnvironment: '@govuk-frontend/helpers/jest/environment/jsdom.mjs',
-      testMatch: ['**/*.unit.test.{js,mjs}']
+      testMatch: [
+        '**/*.unit.test.{js,mjs}',
+
+        // Exclude build tests
+        '!**/tasks/build/*.test.{js,mjs}'
+      ]
     },
     {
       ...config,
       displayName: 'JavaScript behaviour tests',
-      testMatch: [
-        '**/*.test.{js,mjs}',
-
-        // Exclude macro/unit tests
-        '!**/(*.)?template.test.{js,mjs}',
-        '!**/*.unit.test.{js,mjs}',
-
-        // Exclude other tests
-        '!**/components/globals.test.js',
-        '!**/components/*/**',
-        '!**/tasks/build/**'
-      ],
-
-      // Web server required
-      globalSetup: '@govuk-frontend/helpers/jest/server/start.mjs',
-      globalTeardown: '@govuk-frontend/helpers/jest/server/stop.mjs'
+      testEnvironment: '@govuk-frontend/helpers/jest/environment/jsdom.mjs',
+      testMatch: ['**/*.jsdom.test.{js,mjs}']
     },
     {
       ...config,
       displayName: 'JavaScript component tests',
       testEnvironment: '@govuk-frontend/helpers/jest/environment/puppeteer.mjs',
       testMatch: [
-        '**/components/globals.test.js',
-        '**/components/*/*.test.{js,mjs}',
+        '**/*.puppeteer.test.{js,mjs}',
 
-        // Exclude accessibility/macro/unit tests
-        '!**/*/accessibility.test.{js,mjs}',
-        '!**/(*.)?template.test.{js,mjs}',
-        '!**/*.unit.test.{js,mjs}'
+        // Exclude accessibility tests
+        '!**/accessibility.puppeteer.test.mjs'
       ],
 
       // Web server and browser required
@@ -148,7 +134,7 @@ export default {
       displayName: 'Accessibility tests',
       setupFilesAfterEnv: ['@govuk-frontend/helpers/jest/matchers.js'],
       testEnvironment: '@govuk-frontend/helpers/jest/environment/puppeteer.mjs',
-      testMatch: ['**/*/accessibility.test.{js,mjs}'],
+      testMatch: ['**/accessibility.puppeteer.test.mjs'],
 
       // Web server and browser required
       globalSetup: '@govuk-frontend/helpers/jest/browser/open.mjs',
