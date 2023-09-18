@@ -32,7 +32,7 @@
     "front-matter": "^4.0.2",
     "govuk-frontend": "*",
     "highlight.js": "^11.8.0",
-    "iframe-resizer": "^4.3.6",
+    "iframe-resizer": "^4.3.7",
     "js-beautify": "^1.14.9",
     "marked": "^9.0.0",
     "outdent": "^0.8.0",
