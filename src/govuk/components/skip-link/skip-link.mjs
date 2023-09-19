@@ -1,4 +1,4 @@
-import { ElementError, MissingElementError } from '../../errors/index.mjs'
+import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
@@ -10,18 +10,17 @@ export class SkipLink extends GOVUKFrontendComponent {
   /** @private */
   $module
 
-  /**
-   * @private
-   * @type {HTMLElement | null}
-   */
-  $linkedElement = null
+  /** @private */
+  $linkedElement
 
   /** @private */
   linkedElementListener = false
 
   /**
    * @param {Element} $module - HTML element to use for skip link
-   * @throws {MissingElementError} If the element with the specified ID is not found
+   * @throws {ElementError} when $module is not set or the wrong type
+   * @throws {ElementError} when $module.hash does not contain a hash
+   * @throws {ElementError} when the linked element is missing or the wrong type
    */
   constructor($module) {
     super()
@@ -30,23 +29,12 @@ export class SkipLink extends GOVUKFrontendComponent {
       throw new ElementError($module, {
         componentName: 'Skip link',
         identifier: '$module',
-        expectedType: window.HTMLAnchorElement
+        expectedType: HTMLAnchorElement
       })
     }
 
     this.$module = $module
-
-    // Check for linked element
-    try {
-      const $linkedElement = this.getLinkedElement()
-      this.$linkedElement = $linkedElement
-    } catch (error) {
-      throw new MissingElementError(
-        `Skip link: ${
-          error instanceof Error ? error.message : 'Linked element not found'
-        }`
-      )
-    }
+    this.$linkedElement = this.getLinkedElement()
 
     this.$module.addEventListener('click', () => this.focusLinkedElement())
   }
@@ -55,25 +43,31 @@ export class SkipLink extends GOVUKFrontendComponent {
    * Get linked element
    *
    * @private
-   * @throws {Error} If the "href" attribute does not contain a hash
-   * @throws {TypeError} If the element with the specified ID is not found
    * @returns {HTMLElement} $linkedElement - DOM element linked to from the skip link
    */
   getLinkedElement() {
-    const linkedElementId = this.getFragmentFromUrl()
+    const linkedElementId = this.getFragmentFromUrl(this.$module.hash)
+
+    // Check for link hash fragment
     if (!linkedElementId) {
-      throw new Error(`$module "href" attribute does not contain a hash`)
+      throw new ElementError(this.$module, {
+        componentName: 'Skip link',
+        identifier: '$module.hash',
+        expectedType: 'string'
+      })
     }
 
-    const linkedElement = document.getElementById(linkedElementId)
+    const $linkedElement = document.getElementById(linkedElementId)
 
-    if (!linkedElement) {
-      throw new TypeError(
-        `Linked element selector "#${linkedElementId}" not found`
-      )
+    // Check for link target element
+    if (!($linkedElement instanceof HTMLElement)) {
+      throw new ElementError($linkedElement, {
+        componentName: 'Skip link',
+        identifier: `$module.hash target #${linkedElementId}`
+      })
     }
 
-    return linkedElement
+    return $linkedElement
   }
 
   /**
@@ -117,19 +111,19 @@ export class SkipLink extends GOVUKFrontendComponent {
   /**
    * Get fragment from URL
    *
-   * Extract the fragment (everything after the hash symbol) from a URL, but not including
-   * the symbol.
+   * Extract the fragment (everything after the hash) from a URL, but not including
+   * the hash.
    *
    * @private
-   * @returns {string | undefined} Fragment from URL, without the hash symbol
+   * @param {string} url - URL
+   * @returns {string | undefined} Fragment from URL, without the hash
    */
-  getFragmentFromUrl() {
-    // Bail if the anchor link doesn't have a hash
-    if (!this.$module.hash) {
-      return
+  getFragmentFromUrl(url) {
+    if (url.indexOf('#') === -1) {
+      return undefined
     }
 
-    return this.$module.hash.split('#').pop()
+    return url.split('#').pop()
   }
 
   /**
