@@ -120,9 +120,9 @@ describe('Skip Link', () => {
           }
         })
       ).rejects.toEqual({
-        name: 'MissingElementError',
+        name: 'ElementError',
         message:
-          'Skip link: Linked element selector "#this-element-does-not-exist" not found'
+          'Skip link: $module.hash target #this-element-does-not-exist not found'
       })
     })
 
@@ -135,8 +135,8 @@ describe('Skip Link', () => {
           }
         })
       ).rejects.toEqual({
-        name: 'MissingElementError',
-        message: 'Skip link: $module "href" attribute does not contain a hash'
+        name: 'ElementError',
+        message: 'Skip link: $module.hash is not of type "string"'
       })
     })
   })
