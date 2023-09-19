@@ -37,7 +37,6 @@ export class Radios extends GOVUKFrontendComponent {
       })
     }
 
-    /** @satisfies {NodeListOf<HTMLInputElement>} */
     const $inputs = $module.querySelectorAll('input[type="radio"]')
     if (!$inputs.length) {
       return this
@@ -137,7 +136,6 @@ export class Radios extends GOVUKFrontendComponent {
 
     // We only need to consider radios with conditional reveals, which will have
     // aria-controls attributes.
-    /** @satisfies {NodeListOf<HTMLInputElement>} */
     const $allInputs = document.querySelectorAll(
       'input[type="radio"][aria-controls]'
     )

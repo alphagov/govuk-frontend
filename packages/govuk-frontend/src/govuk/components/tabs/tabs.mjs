@@ -50,7 +50,6 @@ export class Tabs extends GOVUKFrontendComponent {
       })
     }
 
-    /** @satisfies {NodeListOf<HTMLAnchorElement>} */
     const $tabs = $module.querySelectorAll('a.govuk-tabs__tab')
     if (!$tabs.length) {
       return this
@@ -380,7 +379,6 @@ export class Tabs extends GOVUKFrontendComponent {
       return
     }
 
-    /** @satisfies {HTMLAnchorElement} */
     const $nextTab = $nextTabListItem.querySelector('a.govuk-tabs__tab')
     if (!$nextTab) {
       return
@@ -409,7 +407,6 @@ export class Tabs extends GOVUKFrontendComponent {
       return
     }
 
-    /** @satisfies {HTMLAnchorElement} */
     const $previousTab = $previousTabListItem.querySelector('a.govuk-tabs__tab')
     if (!$previousTab) {
       return

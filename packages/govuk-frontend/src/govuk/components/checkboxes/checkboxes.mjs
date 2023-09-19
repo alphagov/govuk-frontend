@@ -37,7 +37,6 @@ export class Checkboxes extends GOVUKFrontendComponent {
       })
     }
 
-    /** @satisfies {NodeListOf<HTMLInputElement>} */
     const $inputs = $module.querySelectorAll('input[type="checkbox"]')
     if (!$inputs.length) {
       return this
@@ -126,7 +125,6 @@ export class Checkboxes extends GOVUKFrontendComponent {
    * @param {HTMLInputElement} $input - Checkbox input
    */
   unCheckAllInputsExcept($input) {
-    /** @satisfies {NodeListOf<HTMLInputElement>} */
     const allInputsWithSameName = document.querySelectorAll(
       `input[type="checkbox"][name="${$input.name}"]`
     )
@@ -151,7 +149,6 @@ export class Checkboxes extends GOVUKFrontendComponent {
    * @param {HTMLInputElement} $input - Checkbox input
    */
   unCheckExclusiveInputs($input) {
-    /** @satisfies {NodeListOf<HTMLInputElement>} */
     const allInputsWithSameNameAndExclusiveBehaviour =
       document.querySelectorAll(
         `input[data-behaviour="exclusive"][type="checkbox"][name="${$input.name}"]`
