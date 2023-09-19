@@ -23,13 +23,6 @@ export class GOVUKFrontendError extends Error {
 }
 
 /**
- * Indicates that a Component's required HTML element is missing
- */
-export class MissingElementError extends GOVUKFrontendError {
-  name = 'MissingElementError'
-}
-
-/**
  * Indicates that GOV.UK Frontend is not supported
  */
 export class SupportError extends GOVUKFrontendError {
@@ -59,14 +52,20 @@ export class ElementError extends GOVUKFrontendError {
    * @param {object} options - Element error options
    * @param {string} options.componentName - The name of the component throwing the error
    * @param {string} options.identifier - An identifier that'll let the user understand which element has an error (variable name, CSS selector)
-   * @param {typeof HTMLElement} [options.expectedType] - The type that was expected for the element
+   * @param {string | typeof HTMLElement} [options.expectedType] - The type that was expected for the identifier
    */
   constructor(element, { componentName, identifier, expectedType }) {
-    expectedType = expectedType || window.HTMLElement
+    let reason = `${identifier} not found`
 
-    const reason = !element
-      ? `${identifier} not found`
-      : `${identifier} is not an instance of "${expectedType.name}"`
+    // Otherwise check for type mismatch
+    if (element) {
+      expectedType = expectedType || window.HTMLElement
+
+      reason =
+        typeof expectedType === 'string'
+          ? `${identifier} is not of type "${expectedType}"`
+          : `${identifier} is not an instance of "${expectedType.name}"`
+    }
 
     super(`${componentName}: ${reason}`)
   }
