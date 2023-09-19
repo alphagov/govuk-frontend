@@ -12,7 +12,8 @@
       "marked",
       "node",
       "nunjucks",
-      "slug"
+      "slug",
+      "typed-query-selector"
     ]
   }
 }

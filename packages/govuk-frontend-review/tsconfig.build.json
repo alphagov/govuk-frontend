@@ -3,6 +3,13 @@
   "include": ["./src/**/*.mjs"],
   "exclude": ["**/*.test.*"],
   "compilerOptions": {
-    "types": ["express", "marked", "node", "nunjucks", "slug"]
+    "types": [
+      "express",
+      "marked",
+      "node",
+      "nunjucks",
+      "slug",
+      "typed-query-selector"
+    ]
   }
 }
