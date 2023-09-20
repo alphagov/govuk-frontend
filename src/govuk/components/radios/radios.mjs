@@ -40,7 +40,10 @@ export class Radios extends GOVUKFrontendComponent {
     /** @satisfies {NodeListOf<HTMLInputElement>} */
     const $inputs = $module.querySelectorAll('input[type="radio"]')
     if (!$inputs.length) {
-      return this
+      throw new ElementError(null, {
+        componentName: 'Radios',
+        identifier: '<input type="radio">'
+      })
     }
 
     this.$module = $module

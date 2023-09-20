@@ -319,5 +319,21 @@ describe('Radios', () => {
         message: 'Radios: $module is not an instance of "HTMLElement"'
       })
     })
+
+    it('throws when the input list is empty', async () => {
+      await expect(
+        renderAndInitialise(page, 'radios', {
+          params: examples.default,
+          beforeInitialisation($module) {
+            $module.querySelectorAll('.govuk-radios__item').forEach((item) => {
+              item.remove()
+            })
+          }
+        })
+      ).rejects.toEqual({
+        name: 'ElementError',
+        message: 'Radios: <input type="radio"> not found'
+      })
+    })
   })
 })
