@@ -301,7 +301,7 @@ describe('Radios', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message: 'Radios: $module not found'
+        message: 'Radios: [data-module="govuk-radios"] not found'
       })
     })
 
@@ -316,7 +316,8 @@ describe('Radios', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message: 'Radios: $module is not an instance of "HTMLElement"'
+        message:
+          'Radios: [data-module="govuk-radios"] is not an instance of "HTMLElement"'
       })
     })
 
@@ -332,7 +333,7 @@ describe('Radios', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message: 'Radios: <input type="radio"> not found'
+        message: 'Radios: input[type="radio"] not found'
       })
     })
 
@@ -346,8 +347,7 @@ describe('Radios', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message:
-          'Radios: .govuk-radios__conditional #conditional-how-contacted not found'
+        message: 'Radios: #conditional-how-contacted not found'
       })
     })
   })
