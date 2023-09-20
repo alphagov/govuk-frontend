@@ -350,7 +350,7 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Checkboxes: $module not found'
+          message: 'Checkboxes: [data-module="govuk-checkboxes"] not found'
         })
       })
 
@@ -365,7 +365,40 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Checkboxes: $module is not an instance of "HTMLElement"'
+          message:
+            'Checkboxes: [data-module="govuk-checkboxes"] is not an instance of "HTMLElement"'
+        })
+      })
+
+      it('throws when the input list is empty', async () => {
+        await expect(
+          renderAndInitialise(page, 'checkboxes', {
+            params: examples.default,
+            beforeInitialisation($module) {
+              $module
+                .querySelectorAll('.govuk-checkboxes__item')
+                .forEach((item) => {
+                  item.remove()
+                })
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message: 'Checkboxes: input[type="checkbox"] not found'
+        })
+      })
+
+      it('throws when a conditional target element is not found', async () => {
+        await expect(
+          renderAndInitialise(page, 'checkboxes', {
+            params: examples['with conditional items'],
+            beforeInitialisation($module) {
+              $module.querySelector('.govuk-checkboxes__conditional').remove()
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message: 'Checkboxes: #conditional-how-contacted not found'
         })
       })
     })

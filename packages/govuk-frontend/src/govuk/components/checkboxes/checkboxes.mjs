@@ -33,14 +33,17 @@ export class Checkboxes extends GOVUKFrontendComponent {
     if (!($module instanceof HTMLElement)) {
       throw new ElementError($module, {
         componentName: 'Checkboxes',
-        identifier: '$module'
+        identifier: `[data-module="${Checkboxes.moduleName}"]`
       })
     }
 
     /** @satisfies {NodeListOf<HTMLInputElement>} */
     const $inputs = $module.querySelectorAll('input[type="checkbox"]')
     if (!$inputs.length) {
-      return this
+      throw new ElementError(null, {
+        componentName: 'Checkboxes',
+        identifier: 'input[type="checkbox"]'
+      })
     }
 
     this.$module = $module
@@ -49,10 +52,17 @@ export class Checkboxes extends GOVUKFrontendComponent {
     this.$inputs.forEach(($input) => {
       const targetId = $input.getAttribute('data-aria-controls')
 
-      // Skip checkboxes without data-aria-controls attributes, or where the
-      // target element does not exist.
-      if (!targetId || !document.getElementById(targetId)) {
+      // Skip radios without data-aria-controls attributes
+      if (!targetId) {
         return
+      }
+
+      // Throw if target conditional element does not exist.
+      if (!document.getElementById(targetId)) {
+        throw new ElementError(null, {
+          componentName: 'Checkboxes',
+          identifier: `#${targetId}`
+        })
       }
 
       // Promote the data-aria-controls attribute to a aria-controls attribute

@@ -301,7 +301,7 @@ describe('Radios', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message: 'Radios: $module not found'
+        message: 'Radios: [data-module="govuk-radios"] not found'
       })
     })
 
@@ -316,7 +316,38 @@ describe('Radios', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message: 'Radios: $module is not an instance of "HTMLElement"'
+        message:
+          'Radios: [data-module="govuk-radios"] is not an instance of "HTMLElement"'
+      })
+    })
+
+    it('throws when the input list is empty', async () => {
+      await expect(
+        renderAndInitialise(page, 'radios', {
+          params: examples.default,
+          beforeInitialisation($module) {
+            $module.querySelectorAll('.govuk-radios__item').forEach((item) => {
+              item.remove()
+            })
+          }
+        })
+      ).rejects.toEqual({
+        name: 'ElementError',
+        message: 'Radios: input[type="radio"] not found'
+      })
+    })
+
+    it('throws when a conditional target element is not found', async () => {
+      await expect(
+        renderAndInitialise(page, 'radios', {
+          params: examples['with conditional items'],
+          beforeInitialisation($module) {
+            $module.querySelector('.govuk-radios__conditional').remove()
+          }
+        })
+      ).rejects.toEqual({
+        name: 'ElementError',
+        message: 'Radios: #conditional-how-contacted not found'
       })
     })
   })
