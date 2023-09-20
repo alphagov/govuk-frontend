@@ -386,6 +386,21 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
           message: 'Checkboxes: <input type="checkbox"> not found'
         })
       })
+
+      it('throws when a conditional target element is not found', async () => {
+        await expect(
+          renderAndInitialise(page, 'checkboxes', {
+            params: examples['with conditional items'],
+            beforeInitialisation($module) {
+              $module.querySelector('.govuk-checkboxes__conditional').remove()
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message:
+            'Checkboxes: .govuk-checkboxes__conditional #conditional-how-contacted not found'
+        })
+      })
     })
   })
 })

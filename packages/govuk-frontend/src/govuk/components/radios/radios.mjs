@@ -51,11 +51,19 @@ export class Radios extends GOVUKFrontendComponent {
 
     this.$inputs.forEach(($input) => {
       const targetId = $input.getAttribute('data-aria-controls')
+      const targetElement = document.getElementById(targetId)
 
-      // Skip radios without data-aria-controls attributes, or where the
-      // target element does not exist.
-      if (!targetId || !document.getElementById(targetId)) {
+      // Skip radios without data-aria-controls attributes
+      if (!targetId) {
         return
+      }
+
+      // Throw if target conditional element does not exist.
+      if (!targetElement) {
+        throw new ElementError(targetElement, {
+          componentName: 'Radios',
+          identifier: `.govuk-radios__conditional #${targetId}`
+        })
       }
 
       // Promote the data-aria-controls attribute to a aria-controls attribute

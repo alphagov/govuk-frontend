@@ -335,5 +335,20 @@ describe('Radios', () => {
         message: 'Radios: <input type="radio"> not found'
       })
     })
+
+    it('throws when a conditional target element is not found', async () => {
+      await expect(
+        renderAndInitialise(page, 'radios', {
+          params: examples['with conditional items'],
+          beforeInitialisation($module) {
+            $module.querySelector('.govuk-radios__conditional').remove()
+          }
+        })
+      ).rejects.toEqual({
+        name: 'ElementError',
+        message:
+          'Radios: .govuk-radios__conditional #conditional-how-contacted not found'
+      })
+    })
   })
 })
