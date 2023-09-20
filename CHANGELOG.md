@@ -389,6 +389,7 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 - [#3777: Fix hover style on small checkboxes and radio buttons in High Contrast Mode](https://github.com/alphagov/govuk-frontend/pull/3777)
 - [#3791: Refactor mobile menu button label/text handling](https://github.com/alphagov/govuk-frontend/pull/3791)
 - [#3862: Fix focus style being overlapped by summary action links](https://github.com/alphagov/govuk-frontend/pull/3862)
+- [#4113: Always set an explicit button `type`](https://github.com/alphagov/govuk-frontend/pull/4113)
 
 ## 4.7.0 (Feature release)
 
