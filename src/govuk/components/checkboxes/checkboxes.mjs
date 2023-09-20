@@ -40,7 +40,10 @@ export class Checkboxes extends GOVUKFrontendComponent {
     /** @satisfies {NodeListOf<HTMLInputElement>} */
     const $inputs = $module.querySelectorAll('input[type="checkbox"]')
     if (!$inputs.length) {
-      return this
+      throw new ElementError(null, {
+        componentName: 'Checkboxes',
+        identifier: '<input type="checkbox">'
+      })
     }
 
     this.$module = $module
