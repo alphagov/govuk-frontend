@@ -350,7 +350,7 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Checkboxes: $module not found'
+          message: 'Checkboxes: [data-module="govuk-checkboxes"] not found'
         })
       })
 
@@ -365,7 +365,8 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Checkboxes: $module is not an instance of "HTMLElement"'
+          message:
+            'Checkboxes: [data-module="govuk-checkboxes"] is not an instance of "HTMLElement"'
         })
       })
 
@@ -383,7 +384,7 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Checkboxes: <input type="checkbox"> not found'
+          message: 'Checkboxes: input[type="checkbox"] not found'
         })
       })
 
@@ -397,8 +398,7 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message:
-            'Checkboxes: .govuk-checkboxes__conditional #conditional-how-contacted not found'
+          message: 'Checkboxes: #conditional-how-contacted not found'
         })
       })
     })

@@ -33,7 +33,7 @@ export class Radios extends GOVUKFrontendComponent {
     if (!($module instanceof HTMLElement)) {
       throw new ElementError($module, {
         componentName: 'Radios',
-        identifier: '$module'
+        identifier: `[data-module="${Radios.moduleName}"]`
       })
     }
 
@@ -42,7 +42,7 @@ export class Radios extends GOVUKFrontendComponent {
     if (!$inputs.length) {
       throw new ElementError(null, {
         componentName: 'Radios',
-        identifier: '<input type="radio">'
+        identifier: 'input[type="radio"]'
       })
     }
 
@@ -51,7 +51,6 @@ export class Radios extends GOVUKFrontendComponent {
 
     this.$inputs.forEach(($input) => {
       const targetId = $input.getAttribute('data-aria-controls')
-      const targetElement = document.getElementById(targetId)
 
       // Skip radios without data-aria-controls attributes
       if (!targetId) {
@@ -59,10 +58,10 @@ export class Radios extends GOVUKFrontendComponent {
       }
 
       // Throw if target conditional element does not exist.
-      if (!targetElement) {
-        throw new ElementError(targetElement, {
+      if (!document.getElementById(targetId)) {
+        throw new ElementError(null, {
           componentName: 'Radios',
-          identifier: `.govuk-radios__conditional #${targetId}`
+          identifier: `#${targetId}`
         })
       }
 

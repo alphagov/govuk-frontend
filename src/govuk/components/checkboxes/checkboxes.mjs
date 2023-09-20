@@ -33,7 +33,7 @@ export class Checkboxes extends GOVUKFrontendComponent {
     if (!($module instanceof HTMLElement)) {
       throw new ElementError($module, {
         componentName: 'Checkboxes',
-        identifier: '$module'
+        identifier: `[data-module="${Checkboxes.moduleName}"]`
       })
     }
 
@@ -42,7 +42,7 @@ export class Checkboxes extends GOVUKFrontendComponent {
     if (!$inputs.length) {
       throw new ElementError(null, {
         componentName: 'Checkboxes',
-        identifier: '<input type="checkbox">'
+        identifier: 'input[type="checkbox"]'
       })
     }
 
@@ -51,7 +51,6 @@ export class Checkboxes extends GOVUKFrontendComponent {
 
     this.$inputs.forEach(($input) => {
       const targetId = $input.getAttribute('data-aria-controls')
-      const targetElement = document.getElementById(targetId)
 
       // Skip radios without data-aria-controls attributes
       if (!targetId) {
@@ -59,10 +58,10 @@ export class Checkboxes extends GOVUKFrontendComponent {
       }
 
       // Throw if target conditional element does not exist.
-      if (!targetElement) {
-        throw new ElementError(targetElement, {
+      if (!document.getElementById(targetId)) {
+        throw new ElementError(null, {
           componentName: 'Checkboxes',
-          identifier: `.govuk-checkboxes__conditional #${targetId}`
+          identifier: `#${targetId}`
         })
       }
 
