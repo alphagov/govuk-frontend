@@ -390,19 +390,18 @@ export class Accordion extends GOVUKFrontendComponent {
    * @param {Element} $section - Section element
    */
   setExpanded(expanded, $section) {
-    const $showHideIcon = $section.querySelector(`.${this.upChevronIconClass}`)
-    const $showHideText = $section.querySelector(
-      `.${this.sectionShowHideTextClass}`
+    const $showHideIcon = $section.querySelector(
+      `span.${this.upChevronIconClass}`
     )
+
+    const $showHideText = $section.querySelector(
+      `span.${this.sectionShowHideTextClass}`
+    )
+
     const $button = $section.querySelector(`.${this.sectionButtonClass}`)
     const $content = $section.querySelector(`.${this.sectionContentClass}`)
 
-    if (
-      !$showHideIcon ||
-      !($showHideText instanceof HTMLElement) ||
-      !$button ||
-      !$content
-    ) {
+    if (!$showHideIcon || !$showHideText || !$button || !$content) {
       return
     }
 
@@ -416,15 +415,15 @@ export class Accordion extends GOVUKFrontendComponent {
     // Update aria-label combining
     const ariaLabelParts = []
 
-    const $headingText = $section.querySelector(
-      `.${this.sectionHeadingTextClass}`
+    const $headingText = $button.querySelector(
+      `span.${this.sectionHeadingTextClass}`
     )
-    if ($headingText instanceof HTMLElement) {
+    if ($headingText) {
       ariaLabelParts.push($headingText.innerText.trim())
     }
 
-    const $summary = $section.querySelector(`.${this.sectionSummaryClass}`)
-    if ($summary instanceof HTMLElement) {
+    const $summary = $button.querySelector(`span.${this.sectionSummaryClass}`)
+    if ($summary) {
       ariaLabelParts.push($summary.innerText.trim())
     }
 

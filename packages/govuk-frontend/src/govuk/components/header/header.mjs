@@ -52,19 +52,14 @@ export class Header extends GOVUKFrontendComponent {
     }
 
     this.$module = $module
-    this.$menuButton = $module.querySelector('.govuk-js-header-toggle')
+    this.$menuButton = $module.querySelector('button.govuk-js-header-toggle')
     this.$menu =
       this.$menuButton &&
       $module.querySelector(
-        `#${this.$menuButton.getAttribute('aria-controls')}`
+        `ul#${this.$menuButton.getAttribute('aria-controls')}`
       )
 
-    if (
-      !(
-        this.$menuButton instanceof HTMLElement ||
-        this.$menu instanceof HTMLElement
-      )
-    ) {
+    if (!this.$menuButton || !this.$menu) {
       return this
     }
 

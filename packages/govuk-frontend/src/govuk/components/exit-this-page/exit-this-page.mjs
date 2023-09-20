@@ -108,9 +108,9 @@ export class ExitThisPage extends GOVUKFrontendComponent {
     this.$button = $button
 
     const $skiplinkButton = document.querySelector(
-      '.govuk-js-exit-this-page-skiplink'
+      'a.govuk-js-exit-this-page-skiplink'
     )
-    if ($skiplinkButton instanceof HTMLAnchorElement) {
+    if ($skiplinkButton) {
       this.$skiplinkButton = $skiplinkButton
     }
 

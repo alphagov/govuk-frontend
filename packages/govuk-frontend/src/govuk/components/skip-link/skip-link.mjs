@@ -60,7 +60,7 @@ export class SkipLink extends GOVUKFrontendComponent {
     const $linkedElement = document.getElementById(linkedElementId)
 
     // Check for link target element
-    if (!($linkedElement instanceof HTMLElement)) {
+    if (!$linkedElement) {
       throw new ElementError($linkedElement, {
         componentName: 'Skip link',
         identifier: `$module.hash target #${linkedElementId}`
