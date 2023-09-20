@@ -1,6 +1,10 @@
 # Before you publish GOV.UK Frontend
 
-Read the docs for [what to do before publishing a release](/docs/releasing/before-publishing-a-release.md) to ensure you are prepared to publish.
+This is a support branch, which we use to release additional v4.x versions now that the `main` branch reflects a newer major version.
+
+Make sure you understand how this branch is meant to be used be reading the [documentation on support branches](https://govuk-design-system-team-docs.netlify.app/how-we-work/version-control/support-branches.html#support-branches) in our team docs.
+
+You should also read the docs for [what to do before publishing a release](/docs/releasing/before-publishing-a-release.md) to ensure you are prepared to publish.
 
 # Publish a new version of GOV.UK Frontend
 
