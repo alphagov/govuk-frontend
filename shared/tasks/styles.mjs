@@ -26,7 +26,7 @@ export async function compile(pattern, options) {
 
   try {
     for (const modulePath of modulePaths) {
-      compileStylesheet([modulePath, options])
+      await compileStylesheet([modulePath, options])
     }
   } catch (cause) {
     throw new PluginError('shared/tasks/styles', cause)
