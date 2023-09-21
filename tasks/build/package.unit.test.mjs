@@ -107,6 +107,17 @@ describe('packages/govuk-frontend/dist/', () => {
         ])
       )
 
+      // Only sass package entry is compiled to minified CSS bundle
+      .flatMap(
+        mapPathTo(['**/govuk/all.scss'], ({ dir: requirePath }) => [
+          join(requirePath, 'all.scss'),
+
+          // CSS bundle, minified
+          join(requirePath, 'govuk-frontend.min.css'),
+          join(requirePath, 'govuk-frontend.min.css.map') // with source map
+        ])
+      )
+
       // Add Autoprefixer prefixes to all source '*.scss' files
       .flatMap(
         mapPathTo(['**/*.scss'], ({ dir: requirePath, name }) => [
