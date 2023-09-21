@@ -1,7 +1,7 @@
 import { join, resolve } from 'path'
 
 import { pkg } from '@govuk-frontend/config'
-import { configs, scripts, npm, task } from '@govuk-frontend/tasks'
+import { configs, scripts, task } from '@govuk-frontend/tasks'
 import gulp from 'gulp'
 
 /**
@@ -64,8 +64,5 @@ export const compile = (options) =>
         srcPath: join(options.srcPath, 'govuk-prototype-kit'),
         destPath: resolve(options.destPath, '../') // Top level (not dist) for compatibility
       })
-    ),
-
-    // Compile GOV.UK Frontend build stats
-    npm.script('build:stats', [], options)
+    )
   )
