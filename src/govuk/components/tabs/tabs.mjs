@@ -53,7 +53,10 @@ export class Tabs extends GOVUKFrontendComponent {
     /** @satisfies {NodeListOf<HTMLAnchorElement>} */
     const $tabs = $module.querySelectorAll('a.govuk-tabs__tab')
     if (!$tabs.length) {
-      return this
+      throw new ElementError(null, {
+        componentName: 'Tabs',
+        identifier: 'a.govuk-tabs__tab'
+      })
     }
 
     this.$module = $module
