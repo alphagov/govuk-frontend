@@ -21,7 +21,10 @@ export async function compile(pattern, options) {
       await compileJavaScript([modulePath, options])
     }
   } catch (cause) {
-    throw new PluginError('shared/tasks/scripts', cause)
+    throw new PluginError(`scripts.compile('${pattern}')`, cause, {
+      // Show additional error properties from Babel etc
+      showProperties: true
+    })
   }
 }
 
