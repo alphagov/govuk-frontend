@@ -14,7 +14,7 @@
     "build:sassdoc": "sassdoc --config sassdoc.config.yaml ../govuk-frontend/src/govuk",
     "build:types": "tsc --build tsconfig.build.json",
     "build:jsdoc": "typedoc",
-    "postbuild": "npm run build:jsdoc && npm run build:types",
+    "postbuild": "npm run build:jsdoc && npm run build:sassdoc && npm run build:types",
     "proxy": "browser-sync start --config browsersync.config.js",
     "serve": "nodemon",
     "start": "node src/start.mjs",

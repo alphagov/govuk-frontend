@@ -1,11 +1,10 @@
 import { join } from 'path'
 
-import { npm, styles, task } from '@govuk-frontend/tasks'
+import { styles, task } from '@govuk-frontend/tasks'
 import gulp from 'gulp'
 
 /**
  * Stylesheets task (for watch)
- * Compilation, documentation
  *
  * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
@@ -24,8 +23,5 @@ export const compile = (options) =>
           return join(dir, `${name}.min.css`)
         }
       })
-    ),
-
-    // Build SassDoc for /docs/sass
-    npm.script('build:sassdoc', [], options)
+    )
   )
