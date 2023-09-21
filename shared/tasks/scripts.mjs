@@ -9,7 +9,7 @@ import { loadConfigFile } from 'rollup/dist/loadConfigFile.js'
  * Compile JavaScript task
  *
  * @param {string} pattern - Minimatch pattern
- * @param {AssetEntry[1]} [options] - Asset options for script(s)
+ * @param {AssetEntry[1]} options - Asset options for script(s)
  */
 export async function compile(pattern, options) {
   const modulePaths = await getListing(pattern, {
@@ -21,7 +21,10 @@ export async function compile(pattern, options) {
       await compileJavaScript([modulePath, options])
     }
   } catch (cause) {
-    throw new PluginError('shared/tasks/scripts', cause)
+    throw new PluginError(`scripts.compile('${pattern}')`, cause, {
+      // Show additional error properties from Babel etc
+      showProperties: true
+    })
   }
 }
 

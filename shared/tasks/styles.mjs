@@ -17,7 +17,7 @@ import { assets } from './index.mjs'
  * Compile Sass to CSS task
  *
  * @param {string} pattern - Minimatch pattern
- * @param {AssetEntry[1]} options - Asset options
+ * @param {AssetEntry[1]} options - Asset options for stylesheet(s)
  */
 export async function compile(pattern, options) {
   const modulePaths = await getListing(pattern, {
@@ -26,10 +26,13 @@ export async function compile(pattern, options) {
 
   try {
     for (const modulePath of modulePaths) {
-      compileStylesheet([modulePath, options])
+      await compileStylesheet([modulePath, options])
     }
   } catch (cause) {
-    throw new PluginError('shared/tasks/styles', cause)
+    throw new PluginError(`styles.compile('${pattern}')`, cause, {
+      // Hide error properties already formatted by Sass
+      showProperties: false
+    })
   }
 }
 

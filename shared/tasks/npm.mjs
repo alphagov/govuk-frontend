@@ -28,17 +28,16 @@ export async function run(name, args = [], options) {
       throw new Error(`Task '${name}' not found in '${pkgPath}'`)
     }
   } catch (cause) {
-    const error = new Error(`Task for npm script '${name}' failed`, { cause })
-
-    // Skip errors by default to allow Gulp to resume tasks
-    if (['test', 'production'].includes(process.env.NODE_ENV)) {
-      throw new PluginError(`npm run ${name}`, error, {
-        showProperties: false,
-        showStack: false
-      })
+    // Skip Nodemon (SIGINT) exit or aborted task error codes
+    // https://github.com/open-cli-tools/concurrently/pull/359/files
+    if (cause.signal === 'SIGINT' || [130, 3221225786].includes(cause.code)) {
+      return
     }
 
-    console.error(error.message)
+    throw new PluginError(`npm run ${name}`, cause, {
+      // Hide error properties already formatted by npm
+      showProperties: false
+    })
   }
 }
 
