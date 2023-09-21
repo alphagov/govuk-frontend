@@ -51,7 +51,7 @@
     "build:release": "gulp build:release --color",
     "build:stats": "npm run stats --workspace @govuk-frontend/stats",
     "build:types": "tsc --build tsconfig.build.json",
-    "postbuild:package": "npm run build:stats && npm run build:types && govuk-prototype-kit validate-plugin .",
+    "postbuild:package": "npm run build:stats && govuk-prototype-kit validate-plugin .",
     "dev": "gulp dev --color",
     "version": "echo $npm_package_version"
   },

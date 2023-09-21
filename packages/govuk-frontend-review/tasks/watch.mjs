@@ -52,11 +52,15 @@ export const watch = (options) =>
     task.name('lint:js watch', () =>
       gulp.watch(
         [join(options.srcPath, '**/*.{cjs,js,mjs}')],
+        gulp.parallel(
+          // Run TypeScript compiler
+          npm.script('build:types', ['--incremental', '--pretty'], options),
 
-        // Run ESLint checks
-        npm.script('lint:js:cli', [
-          slash(join(options.workspace, '**/*.{cjs,js,mjs}'))
-        ])
+          // Run ESLint checks
+          npm.script('lint:js:cli', [
+            slash(join(options.workspace, '**/*.{cjs,js,mjs}'))
+          ])
+        )
       )
     )
   )
