@@ -13,7 +13,7 @@ export const compile = (options) =>
     /**
      * Apply CSS prefixes to GOV.UK Frontend Sass
      */
-    task.name('compile:scss', () =>
+    task.name('postcss:scss', () =>
       styles.compile('**/*.scss', {
         ...options,
 
@@ -26,7 +26,7 @@ export const compile = (options) =>
     /**
      * Apply CSS prefixes to GOV.UK Prototype Kit Sass
      */
-    task.name("compile:scss 'govuk-prototype-kit'", () =>
+    task.name("postcss:scss 'govuk-prototype-kit'", () =>
       styles.compile('init.scss', {
         ...options,
 
