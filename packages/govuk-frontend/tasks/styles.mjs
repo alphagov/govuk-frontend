@@ -1,5 +1,6 @@
 import { join } from 'path'
 
+import { pkg } from '@govuk-frontend/config'
 import { styles, task } from '@govuk-frontend/tasks'
 import gulp from 'gulp'
 
@@ -10,6 +11,24 @@ import gulp from 'gulp'
  */
 export const compile = (options) =>
   gulp.series(
+    /**
+     * Compile GOV.UK Frontend Sass
+     */
+    task.name('compile:scss', () =>
+      styles.compile('all.scss', {
+        ...options,
+
+        srcPath: join(options.srcPath, 'govuk'),
+        destPath: join(options.destPath, 'govuk'),
+        configPath: join(options.basePath, 'postcss.config.mjs'),
+
+        // Rename using package name and `*.min.css` extension
+        filePath({ dir }) {
+          return join(dir, `${pkg.name}.min.css`)
+        }
+      })
+    ),
+
     /**
      * Apply CSS prefixes to GOV.UK Frontend Sass
      */
