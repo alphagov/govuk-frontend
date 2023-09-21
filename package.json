@@ -29,7 +29,7 @@
     "build:types": "npm run build:types --workspaces --if-present",
     "postbuild:package": "jest --color --selectProjects \"Build tasks\" --testMatch \"**/build/package.unit.test.mjs\"",
     "postbuild:release": "jest --color --selectProjects \"Build tasks\" --testMatch \"**/build/release.unit.test.mjs\"",
-    "heroku-postbuild": "npm run build -- --ignore-scripts",
+    "heroku-postbuild": "npm run build",
     "postheroku-postbuild": "NPM_CONFIG_PRODUCTION=true npm ci --ignore-scripts --omit=optional --workspace @govuk-frontend/review",
     "pretest": "npm run build",
     "test": "jest --color --ignoreProjects \"Build tasks\" --maxWorkers=50%",
