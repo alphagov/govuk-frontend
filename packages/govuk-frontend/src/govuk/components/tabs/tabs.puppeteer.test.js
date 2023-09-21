@@ -297,6 +297,22 @@ describe('/components/tabs', () => {
           message: 'Tabs: $module is not an instance of HTMLElement'
         })
       })
+
+      it('throws when the input list is empty', async () => {
+        await expect(
+          renderAndInitialise(page, 'tabs', {
+            params: examples.default,
+            beforeInitialisation($module) {
+              $module.querySelectorAll('a.govuk-tabs__tab').forEach((item) => {
+                item.remove()
+              })
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message: 'Tabs: a.govuk-tabs__tab not found'
+        })
+      })
     })
   })
 })
