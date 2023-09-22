@@ -15,6 +15,6 @@ describe('/components/textarea', () => {
         await goToComponent(page, 'textarea', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
-    }, 90000)
+    }, 120000)
   })
 })

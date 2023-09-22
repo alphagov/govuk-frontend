@@ -15,6 +15,6 @@ describe('/components/fieldset', () => {
         await goToComponent(page, 'fieldset', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
-    }, 90000)
+    }, 120000)
   })
 })

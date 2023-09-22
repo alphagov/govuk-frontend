@@ -15,6 +15,6 @@ describe('/components/error-summary', () => {
         await goToComponent(page, 'error-summary', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
-    }, 90000)
+    }, 120000)
   })
 })

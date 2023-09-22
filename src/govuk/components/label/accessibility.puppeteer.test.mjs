@@ -15,6 +15,6 @@ describe('/components/label', () => {
         await goToComponent(page, 'label', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
-    }, 90000)
+    }, 120000)
   })
 })

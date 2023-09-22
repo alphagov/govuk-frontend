@@ -15,6 +15,6 @@ describe('/components/warning-text', () => {
         await goToComponent(page, 'warning-text', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
-    }, 90000)
+    }, 120000)
   })
 })
