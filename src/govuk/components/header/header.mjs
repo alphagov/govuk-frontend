@@ -61,9 +61,16 @@ export class Header extends GOVUKFrontendComponent {
       return this
     }
 
-    const $menu = $module.querySelector(
-      `#${$menuButton.getAttribute('aria-controls')}`
-    )
+    const menuId = $menuButton.getAttribute('aria-controls')
+    if (!menuId) {
+      throw new ElementError($menuButton, {
+        componentName: 'Header',
+        identifier: '$menuButton["aria-controls"]',
+        expectedType: 'string'
+      })
+    }
+
+    const $menu = document.getElementById(menuId)
 
     if (!($menuButton instanceof HTMLElement)) {
       throw new ElementError($menu, {

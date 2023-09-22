@@ -230,6 +230,23 @@ describe('Header navigation', () => {
         })
       })
 
+      it("throws when the toggle's aria-control attribute is missing", async () => {
+        await expect(
+          renderAndInitialise(page, 'header', {
+            params: examples['with navigation'],
+            beforeInitialisation($module) {
+              $module
+                .querySelector('.govuk-js-header-toggle')
+                .removeAttribute('aria-controls')
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message:
+            'Header: $menuButton["aria-controls"] is not of type "string"'
+        })
+      })
+
       it('throws when the menu is missing, but a toggle is present', async () => {
         await expect(
           renderAndInitialise(page, 'header', {
