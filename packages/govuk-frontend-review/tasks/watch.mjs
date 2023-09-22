@@ -22,7 +22,9 @@ export const watch = (options) =>
      */
     task.name('lint:scss watch', () =>
       gulp.watch(
-        [`${slash(paths.app)}/src/**/*.scss`],
+        [join(options.srcPath, '**/*.scss')],
+
+        // Run Stylelint checks
         npm.script('lint:scss:cli', [
           slash(join(options.workspace, '**/*.scss'))
         ])
@@ -35,9 +37,11 @@ export const watch = (options) =>
     task.name('compile:scss watch', () =>
       gulp.watch(
         [
-          `${slash(paths.app)}/src/**/*.scss`,
-          `${slash(paths.package)}/dist/govuk/all.scss`
+          join(options.srcPath, '**/*.scss'),
+          join(paths.package, 'dist/govuk/all.scss')
         ],
+
+        // Run Sass compile
         styles(options)
       )
     )
