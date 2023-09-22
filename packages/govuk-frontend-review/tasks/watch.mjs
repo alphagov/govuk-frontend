@@ -44,5 +44,19 @@ export const watch = (options) =>
         // Run Sass compile
         styles(options)
       )
+    ),
+
+    /**
+     * JavaScripts lint watcher
+     */
+    task.name('lint:js watch', () =>
+      gulp.watch(
+        [join(options.srcPath, '**/*.{cjs,js,mjs}')],
+
+        // Run ESLint checks
+        npm.script('lint:js:cli', [
+          slash(join(options.workspace, '**/*.{cjs,js,mjs}'))
+        ])
+      )
     )
   )
