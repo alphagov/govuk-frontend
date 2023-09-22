@@ -19,7 +19,9 @@ describe('Other examples', () => {
       const $title = await page.$('title')
 
       // Check the page responded correctly
-      expect(getProperty($title, 'textContent')).resolves.toContain('GOV.UK')
+      await expect(getProperty($title, 'textContent')).resolves.toContain(
+        'GOV.UK'
+      )
     })
   })
 })
@@ -35,7 +37,9 @@ describe('Listing pages', () => {
       const $title = await page.$('title')
 
       // Check the page responded correctly
-      expect(getProperty($title, 'textContent')).resolves.toContain('GOV.UK')
+      await expect(getProperty($title, 'textContent')).resolves.toContain(
+        'GOV.UK'
+      )
     })
   })
 })
@@ -47,6 +51,6 @@ describe('Home page', () => {
     const componentNames = await getComponentNames()
     const componentsList = await page.$$('li a[href^="/components/"]')
 
-    expect(componentsList.length).toEqual(componentNames.length)
+    await expect(componentsList.length).toEqual(componentNames.length)
   })
 })

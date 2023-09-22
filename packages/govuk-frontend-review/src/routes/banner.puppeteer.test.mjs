@@ -12,7 +12,7 @@ describe('Banner', () => {
     )
 
     // Check that the banner is visible
-    expect(page.$('[data-module="app-banner"]')).resolves.toBeTruthy()
+    await expect(page.$('[data-module="app-banner"]')).resolves.toBeTruthy()
   })
 
   it('can be hidden using a URL parameter', async () => {
@@ -21,11 +21,11 @@ describe('Banner', () => {
     const $title = await page.$('title')
 
     // Check the page responded correctly
-    expect(getProperty($title, 'textContent')).resolves.toEqual(
+    await expect(getProperty($title, 'textContent')).resolves.toEqual(
       `GOV.UK Frontend`
     )
 
     // Check that the banner is hidden
-    expect(page.$('[data-module="app-banner"]')).resolves.toBeFalsy()
+    await expect(page.$('[data-module="app-banner"]')).resolves.toBeFalsy()
   })
 })
