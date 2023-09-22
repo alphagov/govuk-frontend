@@ -26,7 +26,7 @@ describe('Full page examples', () => {
       const $title = await page.$('title')
 
       // Check the page responded correctly
-      expect(getProperty($title, 'textContent')).resolves.toEqual(
+      await expect(getProperty($title, 'textContent')).resolves.toEqual(
         `${title} - GOV.UK`
       )
     })
@@ -84,12 +84,14 @@ describe('Full page examples (with form submit)', () => {
       const $title = await page.$('title')
 
       // Check the page responded correctly
-      expect(getProperty($title, 'textContent')).resolves.toEqual(
+      await expect(getProperty($title, 'textContent')).resolves.toEqual(
         `${title} - GOV.UK`
       )
 
       // Check that the error summary is not visible
-      expect(page.$('[data-module="govuk-error-summary"]')).resolves.toBeFalsy()
+      await expect(
+        page.$('[data-module="govuk-error-summary"]')
+      ).resolves.toBeFalsy()
     })
 
     it('should show errors if submitted without input', async () => {
@@ -101,12 +103,12 @@ describe('Full page examples (with form submit)', () => {
       const $title = await page.$('title')
 
       // Check the page responded with an error
-      expect(getProperty($title, 'textContent')).resolves.toEqual(
+      await expect(getProperty($title, 'textContent')).resolves.toEqual(
         `Error: ${title} - GOV.UK`
       )
 
       // Check that the error summary is visible
-      expect(
+      await expect(
         page.$('[data-module="govuk-error-summary"]')
       ).resolves.toBeTruthy()
     })
@@ -121,7 +123,7 @@ describe('Full page examples (with form submit)', () => {
       const $summary = await page.$('.app-search-results-summary')
 
       // Check the results are correct
-      expect(getProperty($summary, 'textContent')).resolves.toContain(
+      await expect(getProperty($summary, 'textContent')).resolves.toContain(
         '482,211 results'
       )
     })
@@ -137,7 +139,7 @@ describe('Full page examples (with form submit)', () => {
       const $summary = await page.$('.app-search-results-summary')
 
       // Check the results are correct
-      expect(getProperty($summary, 'textContent')).resolves.toContain(
+      await expect(getProperty($summary, 'textContent')).resolves.toContain(
         '221,418 results'
       )
     })
@@ -154,7 +156,7 @@ describe('Full page examples (with form submit)', () => {
       const $summary = await page.$('.app-search-results-summary')
 
       // Check the results are correct
-      expect(getProperty($summary, 'textContent')).resolves.toContain(
+      await expect(getProperty($summary, 'textContent')).resolves.toContain(
         '128,421 results'
       )
     })
