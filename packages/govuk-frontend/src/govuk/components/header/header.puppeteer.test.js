@@ -219,6 +219,65 @@ describe('Header navigation', () => {
           message: 'Header: $module is not an instance of "HTMLElement"'
         })
       })
+
+      it('does not throw if the toggle is absent', async () => {
+        // The default example is rendered without navigation
+        // and should keep rendering. No expectations as the JavaScript
+        // will just return early. All we ask of that test is for it not
+        // to throw during the initialisation
+        await renderAndInitialise(page, 'header', {
+          params: examples.default
+        })
+      })
+
+      it('throws when the toggle is of the wrong type', async () => {
+        await expect(
+          renderAndInitialise(page, 'header', {
+            params: examples['with navigation'],
+            beforeInitialisation($module) {
+              // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
+              $module.querySelector(
+                '.govuk-js-header-toggle'
+              ).outerHTML = `<svg class="govuk-js-header-toggle" ></svg>`
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message:
+            'Header: .govuk-js-header-toggle is not an instance of "HTMLElement"'
+        })
+      })
+
+      it("throws when the toggle's aria-control attribute is missing", async () => {
+        await expect(
+          renderAndInitialise(page, 'header', {
+            params: examples['with navigation'],
+            beforeInitialisation($module) {
+              $module
+                .querySelector('.govuk-js-header-toggle')
+                .removeAttribute('aria-controls')
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message: 'Header: .govuk-js-header-toggle[aria-controls] not found'
+        })
+      })
+
+      it('throws when the menu is missing, but a toggle is present', async () => {
+        await expect(
+          renderAndInitialise(page, 'header', {
+            params: examples['with navigation'],
+            beforeInitialisation($module) {
+              // Remove the menu `<ul>` referenced by $menuButton's `aria-controls`
+              $module.querySelector('#navigation').remove()
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message: 'Header: #navigation not found'
+        })
+      })
     })
   })
 })
