@@ -52,21 +52,41 @@ export class Header extends GOVUKFrontendComponent {
     }
 
     this.$module = $module
-    this.$menuButton = $module.querySelector('.govuk-js-header-toggle')
-    this.$menu =
-      this.$menuButton &&
-      $module.querySelector(
-        `#${this.$menuButton.getAttribute('aria-controls')}`
-      )
+    const $menuButton = $module.querySelector('.govuk-js-header-toggle')
 
-    if (
-      !(
-        this.$menuButton instanceof HTMLElement ||
-        this.$menu instanceof HTMLElement
-      )
-    ) {
+    // Headers don't necessarily have a navigation.
+    // When they don't, the menu toggle won't be rendered
+    // by our macro (or may be omitted when writing plain HTML)
+    if (!$menuButton) {
       return this
     }
+
+    if (!($menuButton instanceof HTMLElement)) {
+      throw new ElementError($menuButton, {
+        componentName: 'Header',
+        identifier: '.govuk-js-header-toggle'
+      })
+    }
+
+    const menuId = $menuButton.getAttribute('aria-controls')
+    if (!menuId) {
+      throw new ElementError(null, {
+        componentName: 'Header',
+        identifier: '.govuk-js-header-toggle[aria-controls]'
+      })
+    }
+
+    const $menu = document.getElementById(menuId)
+
+    if (!($menu instanceof HTMLElement)) {
+      throw new ElementError($menu, {
+        componentName: 'Header',
+        identifier: `#${menuId}`
+      })
+    }
+
+    this.$menu = $menu
+    this.$menuButton = $menuButton
 
     // Set the matchMedia to the govuk-frontend desktop breakpoint
     this.mql = window.matchMedia('(min-width: 48.0625em)')
