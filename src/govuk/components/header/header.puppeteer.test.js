@@ -230,6 +230,24 @@ describe('Header navigation', () => {
         })
       })
 
+      it('throws when the toggle is of the wrong type', async () => {
+        await expect(
+          renderAndInitialise(page, 'header', {
+            params: examples['with navigation'],
+            beforeInitialisation($module) {
+              // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
+              $module.querySelector(
+                '.govuk-js-header-toggle'
+              ).outerHTML = `<svg class="govuk-js-header-toggle" ></svg>`
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message:
+            'Header: .govuk-js-header-toggle is not an instance of "HTMLElement"'
+        })
+      })
+
       it("throws when the toggle's aria-control attribute is missing", async () => {
         await expect(
           renderAndInitialise(page, 'header', {
@@ -242,8 +260,7 @@ describe('Header navigation', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message:
-            'Header: $menuButton["aria-controls"] is not of type "string"'
+          message: 'Header: .govuk-js-header-toggle[aria-controls] not found'
         })
       })
 
@@ -258,7 +275,7 @@ describe('Header navigation', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Header: Menu not found'
+          message: 'Header: #navigation not found'
         })
       })
     })

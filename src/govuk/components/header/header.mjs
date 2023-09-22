@@ -61,28 +61,27 @@ export class Header extends GOVUKFrontendComponent {
       return this
     }
 
-    const menuId = $menuButton.getAttribute('aria-controls')
-    if (!menuId) {
+    if (!($menuButton instanceof HTMLElement)) {
       throw new ElementError($menuButton, {
         componentName: 'Header',
-        identifier: '$menuButton["aria-controls"]',
-        expectedType: 'string'
+        identifier: '.govuk-js-header-toggle'
+      })
+    }
+
+    const menuId = $menuButton.getAttribute('aria-controls')
+    if (!menuId) {
+      throw new ElementError(null, {
+        componentName: 'Header',
+        identifier: '.govuk-js-header-toggle[aria-controls]'
       })
     }
 
     const $menu = document.getElementById(menuId)
 
-    if (!($menuButton instanceof HTMLElement)) {
-      throw new ElementError($menu, {
-        componentName: 'Header',
-        identifier: 'Menu'
-      })
-    }
-
     if (!($menu instanceof HTMLElement)) {
       throw new ElementError($menu, {
         componentName: 'Header',
-        identifier: 'Menu'
+        identifier: `#${menuId}`
       })
     }
 
