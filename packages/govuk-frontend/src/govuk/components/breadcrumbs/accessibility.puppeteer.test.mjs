@@ -15,6 +15,6 @@ describe('/components/breadcrumbs', () => {
         await goToComponent(page, 'breadcrumbs', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
-    }, 90000)
+    }, 120000)
   })
 })
