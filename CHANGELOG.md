@@ -38,6 +38,7 @@ This change was made in:
 
 - [pull request #3502: Tag design changes](https://github.com/alphagov/govuk-frontend/pull/3502).
 - [pull request #3731: Remove the first letter modifier from the tag component](https://github.com/alphagov/govuk-frontend/pull/3731)
+- [pull request #4259: Add word breaking for long single word tags](https://github.com/alphagov/govuk-frontend/pull/4259)
 
 #### New link styles are now enabled by default
 

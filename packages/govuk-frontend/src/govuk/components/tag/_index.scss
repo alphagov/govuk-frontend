@@ -1,8 +1,16 @@
 @include govuk-exports("govuk/component/tag") {
+  $govuk-tag-max-width: if(map-has-key($govuk-breakpoints, "mobile"), map-get($govuk-breakpoints, "mobile") / 2, 160px);
+
   .govuk-tag {
     @include govuk-font($size: 19);
 
     display: inline-block;
+
+    // set a max-width along with overflow-wrap: break-word below for instances
+    // where a tag has a single long word and could overflow its boundaries.
+    // The max-width is necessary as break-word requires a bounding box to base
+    // where to break off of.
+    max-width: $govuk-tag-max-width;
 
     // These negative margins make sure that the tag component doesn’t increase the
     // size of its container. Otherwise, for example, a table row containing a tag
@@ -16,11 +24,10 @@
     padding-right: 8px;
     padding-bottom: 3px;
     padding-left: 8px;
-
     color: govuk-shade(govuk-colour("blue"), 60%);
     background-color: govuk-tint(govuk-colour("blue"), 70%);
-
     text-decoration: none;
+    overflow-wrap: break-word;
 
     // When forced colour mode is active, for example to provide high contrast,
     // the background colour of the tag is the same as the rest of the page. To ensure
