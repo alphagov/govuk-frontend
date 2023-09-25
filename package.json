@@ -98,7 +98,7 @@
     "@types/node": "^20.6.5",
     "@types/nunjucks": "^3.2.4",
     "@types/slug": "^5.0.3",
-    "puppeteer": "^21.3.1"
+    "puppeteer": "^21.3.4"
   },
   "overrides": {
     "chokidar@^2": {
