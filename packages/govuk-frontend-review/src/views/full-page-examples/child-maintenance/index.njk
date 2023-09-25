@@ -1,19 +1,16 @@
 ---
-scenario: >-
+scenario: |
   You are a user looking for information on child maintenance.
+
   There is a chance that as a user of this service, you are a victim of domestic
   abuse, therefore this page includes an Exit this Page component.
 
   Things to try:
 
   1. Activate the Exit this Page button by clicking it
-
   2. Activate the Exit this Page button by pressing the Esc key 3 times
-
   3. Activating the Exit this Page button on a small screen view
-
   4. Scoll down the page to see if the Exit this Page button remains sticky
-
   5. Tabbing through the page to find the Exit this Page "skip link" at the top
   of the accessibility tree
 ---
@@ -126,19 +123,19 @@ scenario: >-
       }) }}
 
       {% set doIHaveAnActiveCase %}
-        You will need to <a href="/get-help-arranging-child-maintenance/contact-child-maintenance-service" target="_blank" class="govuk-link">contact child maintenance (opens in new tab)</a>.
+        You will need to <a href="/get-help-arranging-child-maintenance/contact-child-maintenance-service" class="govuk-link" rel="noreferrer noopener" target="_blank">contact child maintenance (opens in new tab)</a>.
       {% endset %}
 
       {% set payingToReceiving %}
         <p class="govuk-body">You will need to close your existing Child Maintenance case and open a new one.</p>
-        <p class="govuk-body">If you were the original applicant, you can close your case in <a href="https://childmaintenanceservice.direct.gov.uk/onlinerevive/public/landing-screen" target="blank" class="govuk-link">MCMC</a> , or you can <a href="/get-help-arranging-child-maintenance/contact-child-maintenance-service" target="blank" class="govuk-link">contact child maintenance (opens in new tab)</a>.</p>
-        <p class="govuk-body">If you were not the original applicant, you will need to <a href="/get-help-arranging-child-maintenance/contact-child-maintenance-service" target="_blank" class="govuk-link">contact child maintenance (opens in new tab)</a>.</p>
+        <p class="govuk-body">If you were the original applicant, you can close your case in <a href="https://childmaintenanceservice.direct.gov.uk/onlinerevive/public/landing-screen" class="govuk-link" rel="noreferrer noopener" target="_blank">MCMC (opens in new tab)</a>, or you can <a href="/get-help-arranging-child-maintenance/contact-child-maintenance-service" class="govuk-link" rel="noreferrer noopener" target="_blank">contact child maintenance (opens in new tab)</a>.</p>
+        <p class="govuk-body">If you were not the original applicant, you will need to <a href="/get-help-arranging-child-maintenance/contact-child-maintenance-service" class="govuk-link" rel="noreferrer noopener" target="_blank">contact child maintenance (opens in new tab)</a>.</p>
       {% endset %}
 
       {% set receivingToPaying %}
         <p class="govuk-body">You will need to close your existing Child Maintenance case and open a new one.</p>
-        <p class="govuk-body">If you were the original applicant, you can close your case in <a href="https://childmaintenanceservice.direct.gov.uk/onlinerevive/public/landing-screen" target="blank" class="govuk-link">MCMC</a> , or you can <a href="/get-help-arranging-child-maintenance/contact-child-maintenance-service" target="blank" class="govuk-link">contact child maintenance (opens in new tab)</a>.</p>
-        <p class="govuk-body">If you were not the original applicant, you will need to <a href="/get-help-arranging-child-maintenance/contact-child-maintenance-service" target="_blank" class="govuk-link">contact child maintenance (opens in new tab)</a>.</p>
+        <p class="govuk-body">If you were the original applicant, you can close your case in <a href="https://childmaintenanceservice.direct.gov.uk/onlinerevive/public/landing-screen" class="govuk-link" rel="noreferrer noopener" target="_blank">MCMC (opens in new tab)</a>, or you can <a href="/get-help-arranging-child-maintenance/contact-child-maintenance-service" class="govuk-link" rel="noreferrer noopener" target="_blank">contact child maintenance (opens in new tab)</a>.</p>
+        <p class="govuk-body">If you were not the original applicant, you will need to <a href="/get-help-arranging-child-maintenance/contact-child-maintenance-service" class="govuk-link" rel="noreferrer noopener" target="_blank">contact child maintenance (opens in new tab)</a>.</p>
       {% endset %}
 
       {{ govukDetails({

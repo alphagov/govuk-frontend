@@ -17,12 +17,12 @@
 
   <section aria-labelledby="heading-{{ exampleName }}" class="govuk-!-margin-bottom-9">
     <div class="govuk-width-container">
-      <div class="govuk-heading-m">
-        <h3 id="heading-{{ exampleName }}" class="govuk-!-display-inline">{{ heading | safe }}</h3>
-        <a href="{{ path }}" class="govuk-link govuk-!-margin-left-1 govuk-!-font-size-16">
-          (open in a new window)
+      <h3 id="heading-{{ exampleName }}" class="govuk-heading-m govuk-!-margin-bottom-2">{{ heading | safe }}</h3>
+      <p class="govuk-body">
+        <a href="{{ path }}" class="govuk-link" rel="noreferrer noopener" target="_blank">
+          Open this example in a new tab<span class="govuk-visually-hidden">: {{ heading | safe | lower }}</span>
         </a>
-      </div>
+      </p>
 
     {% if example.description %}
       <p class="govuk-body">
