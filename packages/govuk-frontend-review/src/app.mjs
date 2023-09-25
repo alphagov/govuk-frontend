@@ -1,3 +1,5 @@
+import { join } from 'path'
+
 import { paths } from '@govuk-frontend/config'
 import {
   getComponentsFixtures,
@@ -5,7 +7,7 @@ import {
   getComponentNamesFiltered,
   renderComponent
 } from '@govuk-frontend/lib/components'
-import { filterPath } from '@govuk-frontend/lib/files'
+import { filterPath, hasPath } from '@govuk-frontend/lib/files'
 import { getStats, modulePaths } from '@govuk-frontend/stats'
 import express from 'express'
 
@@ -48,7 +50,12 @@ export default async () => {
   // Feature flags
   const flags = /** @type {FeatureFlags} */ ({
     isDeployedToHeroku: !!process.env.HEROKU_APP,
-    isDevelopment: !['test', 'production'].includes(process.env.NODE_ENV)
+    isDevelopment: !['test', 'production'].includes(process.env.NODE_ENV),
+
+    // Check for JSDoc, SassDoc and Rollup stats
+    hasDocsScripts: await hasPath(join(paths.app, 'dist/docs/jsdoc')),
+    hasDocsStyles: await hasPath(join(paths.app, 'dist/docs/sassdoc')),
+    hasStats: await hasPath(join(paths.stats, 'dist'))
   })
 
   // Set up Express.js
@@ -213,4 +220,7 @@ export default async () => {
  * @typedef {object} FeatureFlags
  * @property {boolean} isDeployedToHeroku - Review app using `HEROKU_APP`
  * @property {boolean} isDevelopment - Review app not using `NODE_ENV` production or test
+ * @property {boolean} hasDocsStyles - Stylesheets documentation (SassDoc) is available
+ * @property {boolean} hasDocsScripts - JavaScripts documentation (JSDoc) is available
+ * @property {boolean} hasStats - Rollup stats are available
  */
