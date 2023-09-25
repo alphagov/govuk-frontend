@@ -126,7 +126,7 @@ accessibilityCriteria: |
 
   Landmarks and Roles in the Footer should:
   - avoid navigation landmarks or roles
-    "The footer element alone is sufficient for such cases; while a nav element can be used in such cases, it is usually unnecessary." - (https://www.w3.org/TR/html52/sections.html#the-nav-element)
+    "The footer element alone is sufficient for such cases; while a nav element can be used in such cases, it is usually unnecessary." - (https://html.spec.whatwg.org/multipage/sections.html#the-nav-element)
     Note: This decision has been made based on prior experience seeing removal of overuse of `<nav>` elements from www.GOV.UK, which made it confusing for users of assistive technologies to know what were the most important navigation aspects of GOV.UK.
     Should be challenged if user research indicates this is an issue.
 
