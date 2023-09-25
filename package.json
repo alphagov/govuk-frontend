@@ -20,7 +20,7 @@
     "build-release": "./bin/build-release.sh",
     "publish-release": "./bin/publish-release.sh",
     "publish-preview": "./bin/publish-preview.sh",
-    "predev": "npm run build",
+    "predev": "npm run build -- --ignore-scripts",
     "dev": "concurrently \"npm run dev --workspace @govuk-frontend/review\" \"npm run dev --workspace govuk-frontend\" --kill-others --names \"app,pkg\" --prefix-colors \"red.dim,blue.dim\"",
     "build": "npm run build --workspace govuk-frontend --workspace @govuk-frontend/review",
     "build:app": "cross-env-shell NODE_ENV=production npm run build --workspace @govuk-frontend/review",
