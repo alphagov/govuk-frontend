@@ -88,7 +88,11 @@ export class CharacterCount extends GOVUKFrontendComponent {
         $textarea instanceof HTMLInputElement
       )
     ) {
-      return this
+      throw new ElementError($textarea, {
+        componentName: 'Character count',
+        identifier: '.govuk-js-character-count',
+        expectedType: 'HTMLTextareaElement" or "HTMLInputElement'
+      })
     }
 
     // Read config set using dataset ('data-' values)
