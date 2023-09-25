@@ -25,6 +25,10 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - run tasks from `npm run build:package`
 - run tasks from `npm run build:app`
 
+**`npm run clean` will do the following:**
+
+- clean the `./dist` folder from all workspaces
+
 **`npm run build:app` will trigger `npm run build --workspace @govuk-frontend/review` that will:**
 
 - clean the `./packages/govuk-frontend-review/dist` folder

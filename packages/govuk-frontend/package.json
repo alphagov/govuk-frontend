@@ -46,13 +46,18 @@
   ],
   "license": "MIT",
   "scripts": {
+    "dev": "gulp dev --color",
+    "prebuild:package": "npm run clean:package",
+    "prebuild:release": "npm run clean:release",
     "build": "npm run build:package",
     "build:package": "gulp build:package --color",
     "build:release": "gulp build:release --color",
     "build:stats": "npm run stats --workspace @govuk-frontend/stats",
     "build:types": "tsc --build tsconfig.build.json",
+    "clean": "npm run clean:package",
+    "clean:package": "del-cli dist",
+    "clean:release": "del-cli ../../dist --force",
     "postbuild:package": "npm run build:stats && govuk-prototype-kit validate-plugin .",
-    "dev": "gulp dev --color",
     "version": "echo $npm_package_version"
   },
   "devDependencies": {

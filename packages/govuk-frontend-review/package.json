@@ -10,11 +10,13 @@
   "license": "MIT",
   "scripts": {
     "dev": "gulp dev --color",
+    "prebuild": "npm run clean",
     "build": "gulp build --color",
     "build:sassdoc": "sassdoc --config sassdoc.config.yaml ../govuk-frontend/src/govuk",
     "build:types": "tsc --build tsconfig.build.json",
     "build:jsdoc": "typedoc",
     "postbuild": "npm run build:jsdoc && npm run build:sassdoc",
+    "clean": "del-cli dist",
     "proxy": "browser-sync start --config browsersync.config.js",
     "serve": "nodemon",
     "start": "node src/start.mjs",

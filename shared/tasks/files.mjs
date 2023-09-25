@@ -1,22 +1,9 @@
 import { mkdir, writeFile } from 'fs/promises'
 import { dirname, join, parse } from 'path'
 
-import { paths, pkg } from '@govuk-frontend/config'
+import { pkg } from '@govuk-frontend/config'
 import cpy from 'cpy'
-import { deleteAsync } from 'del'
 import slash from 'slash'
-
-/**
- * Delete path globs for a given destination
- *
- * @param {string} pattern - Pattern to remove
- * @param {Pick<AssetEntry[1], "destPath">} options - Asset options
- */
-export async function clean(pattern, { destPath }) {
-  await deleteAsync(slash(join(destPath, pattern)), {
-    cwd: paths.root
-  })
-}
 
 /**
  * Write `packages/govuk-frontend/package.json` version to file

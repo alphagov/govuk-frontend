@@ -9,6 +9,8 @@
   },
   "license": "MIT",
   "scripts": {
+    "clean": "del-cli dist",
+    "prestats": "npm run clean",
     "stats": "rollup --config rollup.config.mjs"
   },
   "dependencies": {
