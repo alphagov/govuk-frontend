@@ -35,7 +35,7 @@ params:
       - name: pattern
         type: string
         required: false
-        description: Attribute to [provide a regular expression pattern](https://www.w3.org/TR/html51/sec-forms.html#the-pattern-attribute), used to match allowed character combinations for the input value.
+        description: Attribute to [provide a regular expression pattern](https://html.spec.whatwg.org/multipage/sec-forms.html#the-pattern-attribute), used to match allowed character combinations for the input value.
       - name: classes
         type: string
         required: false
