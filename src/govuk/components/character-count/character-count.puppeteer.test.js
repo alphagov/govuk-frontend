@@ -846,6 +846,20 @@ describe('Character count', () => {
         })
       })
 
+      it('throws when the textarea description is missing', async () => {
+        await expect(
+          renderAndInitialise(page, 'character-count', {
+            params: examples.default,
+            beforeInitialisation($module) {
+              $module.querySelector('#more-detail-info').remove()
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message: 'Character count: #more-detail-info not found'
+        })
+      })
+
       it('throws when receiving invalid configuration', async () => {
         await expect(
           renderAndInitialise(page, 'character-count', {

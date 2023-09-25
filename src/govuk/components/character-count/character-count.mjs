@@ -137,11 +137,13 @@ export class CharacterCount extends GOVUKFrontendComponent {
     this.$module = $module
     this.$textarea = $textarea
 
-    const $textareaDescription = document.getElementById(
-      `${this.$textarea.id}-info`
-    )
+    const textareaDescriptionId = `${this.$textarea.id}-info`
+    const $textareaDescription = document.getElementById(textareaDescriptionId)
     if (!$textareaDescription) {
-      return
+      throw new ElementError($textareaDescription, {
+        componentName: 'Character count',
+        identifier: `#${textareaDescriptionId}`
+      })
     }
 
     // Inject a description for the textarea if none is present already
