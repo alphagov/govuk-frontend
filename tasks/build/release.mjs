@@ -43,18 +43,15 @@ export default (options) =>
 
     // Compile GOV.UK Frontend Sass
     task.name('compile:scss', () =>
-      styles.compile('**/[!_]*.scss', {
+      styles.compile('all.scss', {
         ...options,
 
         srcPath: join(options.srcPath, 'govuk'),
         configPath: join(options.basePath, 'postcss.config.mjs'),
 
         // Rename using package name (versioned) and `*.min.css` extension
-        filePath({ dir, name }) {
-          return join(
-            dir,
-            `${name.replace(/^all/, pkg.name)}-${pkg.version}.min.css`
-          )
+        filePath({ dir }) {
+          return join(dir, `${pkg.name}-${pkg.version}.min.css`)
         }
       })
     ),
