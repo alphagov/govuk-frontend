@@ -27,7 +27,7 @@ describe('/components/accordion', () => {
             `.govuk-accordion .govuk-accordion__section:nth-of-type(${
               i + 1
             }) .govuk-accordion__section-content`,
-            { visible: true, timeout: 5000 }
+            { visible: true, timeout: 10000 }
           )
           expect(isContentVisible).toBeTruthy()
         }

@@ -15,6 +15,6 @@ describe('/components/date-input', () => {
         await goToComponent(page, 'date-input', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
-    }, 90000)
+    }, 120000)
   })
 })

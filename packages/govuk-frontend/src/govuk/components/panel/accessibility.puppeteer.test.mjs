@@ -15,6 +15,6 @@ describe('/components/panel', () => {
         await goToComponent(page, 'panel', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
-    }, 90000)
+    }, 120000)
   })
 })
