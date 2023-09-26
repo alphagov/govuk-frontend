@@ -216,7 +216,7 @@ describe('Header navigation', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Header: $module is not an instance of "HTMLElement"'
+          message: 'Header: $module is not an instance of HTMLElement'
         })
       })
 
@@ -244,7 +244,7 @@ describe('Header navigation', () => {
         ).rejects.toEqual({
           name: 'ElementError',
           message:
-            'Header: .govuk-js-header-toggle is not an instance of "HTMLElement"'
+            'Header: .govuk-js-header-toggle is not an instance of HTMLElement'
         })
       })
 

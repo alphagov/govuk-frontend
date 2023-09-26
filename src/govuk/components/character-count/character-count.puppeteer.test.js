@@ -810,8 +810,7 @@ describe('Character count', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message:
-            'Character count: $module is not an instance of "HTMLElement"'
+          message: 'Character count: $module is not an instance of HTMLElement'
         })
       })
 
@@ -842,7 +841,7 @@ describe('Character count', () => {
         ).rejects.toEqual({
           name: 'ElementError',
           message:
-            'Character count: .govuk-js-character-count is not of type "HTMLTextareaElement" or "HTMLInputElement"'
+            'Character count: .govuk-js-character-count is not of type HTMLTextareaElement or HTMLInputElement'
         })
       })
 
