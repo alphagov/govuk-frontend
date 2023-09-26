@@ -9,6 +9,21 @@ const { minimatch } = require('minimatch')
 const slash = require('slash')
 
 /**
+ * Check path exists
+ *
+ * @param {string} entryPath - File or directory path
+ * @returns {Promise<boolean>} Returns true for paths that exist
+ */
+async function hasPath(entryPath) {
+  try {
+    await stat(entryPath)
+    return true
+  } catch {
+    return false
+  }
+}
+
+/**
  * Directory listing for path
  *
  * @param {string} directoryPath - Minimatch pattern to directory
@@ -107,6 +122,7 @@ async function getYaml(configPath) {
 
 module.exports = {
   filterPath,
+  hasPath,
   getDirectories,
   getFileSizes,
   getFileSize,

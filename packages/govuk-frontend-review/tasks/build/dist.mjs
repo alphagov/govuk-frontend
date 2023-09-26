@@ -1,7 +1,7 @@
-import { files, task } from '@govuk-frontend/tasks'
+import { npm } from '@govuk-frontend/tasks'
 import gulp from 'gulp'
 
-import { scripts, styles } from '../index.mjs'
+import { styles } from '../index.mjs'
 
 /**
  * Build review app task
@@ -10,8 +10,4 @@ import { scripts, styles } from '../index.mjs'
  * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
 export default (options) =>
-  gulp.series(
-    task.name('clean', () => files.clean('*', options)),
-
-    gulp.parallel(scripts(options), styles(options))
-  )
+  gulp.series(npm.script('clean', [], options), styles(options))

@@ -11,43 +11,58 @@ import { assets, fixtures, scripts, styles, templates } from './index.mjs'
  * During development, this task will:
  * - lint and run `gulp styles` when `.scss` files change
  * - lint and run `gulp scripts` when `.{cjs,js,mjs}` files change
+ * - lint and run `gulp fixtures` when `.yaml` files change
  * - lint and run `gulp templates` when `.{md,njk}` files change
+ * - lint and run `gulp assets` when assets change
  *
  * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
 export const watch = (options) =>
   gulp.parallel(
     /**
-     * Stylesheets build + lint watcher
+     * Stylesheets lint watcher
      */
     task.name('lint:scss watch', () =>
       gulp.watch(
-        [
-          `${slash(options.srcPath)}/govuk/**/*.scss`,
-          `!${slash(options.srcPath)}/govuk/vendor/*`
-        ],
+        [join(options.srcPath, '**/*.scss')],
+
+        // Run Stylelint checks
+        npm.script('lint:scss:cli', [
+          slash(join(options.workspace, '**/*.scss'))
+        ])
+      )
+    ),
+
+    /**
+     * Stylesheets build watcher
+     */
+    task.name('compile:scss watch', () =>
+      gulp.watch([join(options.srcPath, '**/*.scss')], styles(options))
+    ),
+
+    /**
+     * JavaScripts lint watcher
+     */
+    task.name('lint:js watch', () =>
+      gulp.watch(
+        [join(options.srcPath, '**/*.{cjs,js,mjs}')],
         gulp.parallel(
-          npm.script('lint:scss:cli', [
-            slash(join(options.workspace, '**/*.scss'))
-          ]),
-          styles(options)
+          // Run TypeScript compiler
+          npm.script('build:types', ['--incremental', '--pretty'], options),
+
+          // Run ESLint checks
+          npm.script('lint:js:cli', [
+            slash(join(options.workspace, '**/*.{cjs,js,mjs}'))
+          ])
         )
       )
     ),
 
     /**
-     * JavaScripts build + lint watcher
+     * JavaScripts build watcher
      */
-    task.name('lint:js watch', () =>
-      gulp.watch(
-        [`${slash(options.srcPath)}/govuk/**/*.mjs`],
-        gulp.parallel(
-          npm.script('lint:js:cli', [
-            slash(join(options.workspace, '**/*.{cjs,js,md,mjs}'))
-          ]),
-          scripts(options)
-        )
-      )
+    task.name('compile:js watch', () =>
+      gulp.watch([join(options.srcPath, '**/*.{cjs,js,mjs}')], scripts(options))
     ),
 
     /**
@@ -55,7 +70,7 @@ export const watch = (options) =>
      */
     task.name('compile:fixtures watch', () =>
       gulp.watch(
-        [`${slash(options.srcPath)}/govuk/components/*/*.yaml`],
+        [join(options.srcPath, 'govuk/components/*/*.yaml')],
         fixtures(options)
       )
     ),
@@ -65,13 +80,13 @@ export const watch = (options) =>
      */
     task.name('copy:templates watch', () =>
       gulp.watch(
-        [`${slash(options.srcPath)}/govuk/**/*.{md,njk}`],
+        [join(options.srcPath, 'govuk/**/*.{md,njk}')],
         templates(options)
       )
     ),
 
     // Copy GOV.UK Frontend static assets
     task.name('copy:assets watch', () =>
-      gulp.watch([`${slash(options.srcPath)}/govuk/assets/**`], assets(options))
+      gulp.watch([join(options.srcPath, 'govuk/assets/**')], assets(options))
     )
   )

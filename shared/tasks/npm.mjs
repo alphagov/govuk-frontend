@@ -9,7 +9,7 @@ import { task } from './index.mjs'
  *
  * @param {string} name - npm script name
  * @param {string[]} [args] - npm script CLI arguments
- * @param {import('./index.mjs').TaskOptions} [options] - Task options
+ * @param {Pick<TaskOptions, "basePath">} [options] - Task options
  * @returns {Promise<void>} Script run
  */
 export async function run(name, args = [], options) {
@@ -46,7 +46,7 @@ export async function run(name, args = [], options) {
  *
  * @param {string} name - npm script name
  * @param {string[]} [args] - npm script CLI arguments
- * @param {import('./index.mjs').TaskOptions} [options] - Task options
+ * @param {Pick<TaskOptions, "basePath">} [options] - Task options
  * @returns {() => Promise<void>} Script run
  */
 export function script(name, args = [], options) {
@@ -58,3 +58,7 @@ export function script(name, args = [], options) {
 
   return task.name(displayName, () => run(name, args, options))
 }
+
+/**
+ * @typedef {import('./index.mjs').TaskOptions} TaskOptions
+ */

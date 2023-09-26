@@ -1,6 +1,7 @@
 {
   "watch": [
     "./src",
+    "./dist/**/index.html",
     "../govuk-frontend/dist/govuk/**/*.json",
     "../../shared/config",
     "../../shared/lib",

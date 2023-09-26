@@ -4,7 +4,9 @@
   "description": "Boilerplate example for govuk-frontend using webpack",
   "scripts": {
     "dev": "webpack serve --progress --mode development",
-    "build": "webpack --progress --mode production"
+    "prebuild": "npm run clean",
+    "build": "webpack --progress --mode production",
+    "clean": "del-cli dist"
   },
   "dependencies": {
     "govuk-frontend": "*"

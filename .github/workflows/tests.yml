@@ -96,7 +96,7 @@ jobs:
 
           - description: TypeScript compiler
             name: lint-types
-            run: npm run lint:types -- --incremental
+            run: npm run lint:types -- --incremental --pretty
             cache: '**/*.tsbuildinfo'
 
     steps:
@@ -218,11 +218,11 @@ jobs:
         task:
           - description: Verify package build
             name: test-build-package
-            run: npm run build:package -- --ignore-scripts
+            run: npm run build:package
 
           - description: Verify distribution build
             name: test-build-release
-            run: npm run build:release -- --ignore-scripts
+            run: npm run build:release
 
     steps:
       - name: Checkout

@@ -48,7 +48,7 @@ const config = {
 
     // Transform some `*.js` to compatible CommonJS
     ...Object.fromEntries(
-      ['del', 'slash'].map((packagePath) => [
+      ['slash'].map((packagePath) => [
         replacePathSepForRegex(`${packageResolveToPath(packagePath)}$`),
         [
           'babel-jest',
@@ -63,7 +63,7 @@ const config = {
   // Enable Babel transforms for ESM-only node_modules
   // See: https://jestjs.io/docs/ecmascript-modules
   transformIgnorePatterns: [
-    `<rootDir>/node_modules/(?!${['del', 'slash'].join('|')}/)`
+    `<rootDir>/node_modules/(?!${['slash'].join('|')}/)`
   ]
 }
 

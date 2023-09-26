@@ -5,7 +5,7 @@ import { npm, task } from '@govuk-frontend/tasks'
 import gulp from 'gulp'
 import slash from 'slash'
 
-import { scripts, styles } from './index.mjs'
+import { styles } from './index.mjs'
 
 /**
  * Watch task
@@ -22,7 +22,9 @@ export const watch = (options) =>
      */
     task.name('lint:scss watch', () =>
       gulp.watch(
-        [`${slash(paths.app)}/src/**/*.scss`],
+        [join(options.srcPath, '**/*.scss')],
+
+        // Run Stylelint checks
         npm.script('lint:scss:cli', [
           slash(join(options.workspace, '**/*.scss'))
         ])
@@ -35,24 +37,30 @@ export const watch = (options) =>
     task.name('compile:scss watch', () =>
       gulp.watch(
         [
-          `${slash(paths.app)}/sassdoc.config.yaml`,
-          `${slash(paths.app)}/src/**/*.scss`,
-          `${slash(paths.package)}/dist/govuk/all.scss`
+          join(options.srcPath, '**/*.scss'),
+          join(paths.package, 'dist/govuk/all.scss')
         ],
+
+        // Run Sass compile
         styles(options)
       )
     ),
 
     /**
-     * JavaScripts build watcher
+     * JavaScripts lint watcher
      */
-    task.name('compile:js watch', () =>
+    task.name('lint:js watch', () =>
       gulp.watch(
-        [
-          `${slash(paths.app)}/typedoc.config.js`,
-          `${slash(paths.package)}/dist/govuk/**/*.mjs`
-        ],
-        scripts(options)
+        [join(options.srcPath, '**/*.{cjs,js,mjs}')],
+        gulp.parallel(
+          // Run TypeScript compiler
+          npm.script('build:types', ['--incremental', '--pretty'], options),
+
+          // Run ESLint checks
+          npm.script('lint:js:cli', [
+            slash(join(options.workspace, '**/*.{cjs,js,mjs}'))
+          ])
+        )
       )
     )
   )
