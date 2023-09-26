@@ -364,7 +364,7 @@ describe('/components/button', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Button: $module is not an instance of "HTMLElement"'
+          message: 'Button: $module is not an instance of HTMLElement'
         })
       })
     })
