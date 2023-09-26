@@ -1,38 +1,22 @@
+import { getExamples, renderComponent } from '@govuk-frontend/lib/components'
+
 import { CharacterCount } from './character-count.mjs'
 
 describe('CharacterCount', () => {
-  let $container
-  let $textarea
-  let $textareaDescription
+  let html
 
-  function cloneContainerAndAddToDocument() {
-    const $clone = $container.cloneNode(true)
-    document.body.appendChild($clone)
-    return $clone
-  }
-
-  // Jest JSDOM does not clear the body between tests in the same file
-  // so we need to do it ourselves
-  // https://github.com/jestjs/jest/issues/1224#issuecomment-443661330
-  beforeEach(() => {
-    document.body.innerHTML = ''
+  beforeAll(async () => {
+    const examples = await getExamples('character-count')
+    html = renderComponent(
+      'character-count',
+      examples['to configure in JavaScript']
+    )
   })
 
-  beforeAll(() => {
-    $container = document.createElement('div')
-    $textarea = document.createElement('textarea')
-    $textareaDescription = document.createElement('span')
-
-    // Component checks that GOV.UK Frontend is supported
-    document.body.classList.add('govuk-frontend-supported')
-
-    // Component checks that required elements are present
-    $textarea.classList.add('govuk-js-character-count')
-    $textarea.id = 'textarea-id'
-    $container.appendChild($textarea)
-
-    $textareaDescription.id = 'textarea-id-info'
-    $container.appendChild($textareaDescription)
+  beforeEach(async () => {
+    // Some tests add attributes to `document.body` so we need
+    // to reset it alongside the component's markup
+    document.body.outerHTML = `<body class="govuk-frontend-supported">${html}</body>`
   })
 
   describe('formatCountMessage', () => {
@@ -40,8 +24,8 @@ describe('CharacterCount', () => {
       let componentWithMaxLength
       let componentWithMaxWords
 
-      beforeAll(() => {
-        const $div = cloneContainerAndAddToDocument()
+      beforeEach(() => {
+        const $div = document.querySelector('[data-module]')
         componentWithMaxLength = new CharacterCount($div, { maxlength: 100 })
         componentWithMaxWords = new CharacterCount($div, { maxwords: 100 })
       })
@@ -106,7 +90,7 @@ describe('CharacterCount', () => {
     describe('i18n', () => {
       describe('JavaScript configuration', () => {
         it('overrides the default translation keys', () => {
-          const $div = cloneContainerAndAddToDocument()
+          const $div = document.querySelector('[data-module]')
           const component = new CharacterCount($div, {
             maxlength: 100,
             i18n: {
@@ -127,7 +111,7 @@ describe('CharacterCount', () => {
         })
 
         it('uses specific keys for when limit is reached', () => {
-          const $div = cloneContainerAndAddToDocument()
+          const $div = document.querySelector('[data-module]')
           const componentWithMaxLength = new CharacterCount($div, {
             maxlength: 100,
             i18n: {
@@ -155,7 +139,7 @@ describe('CharacterCount', () => {
 
       describe('lang attribute configuration', () => {
         it('overrides the locale when set on the element', () => {
-          const $div = cloneContainerAndAddToDocument()
+          const $div = document.querySelector('[data-module]')
           $div.setAttribute('lang', 'de')
 
           const component = new CharacterCount($div, { maxwords: 20000 })
@@ -167,13 +151,9 @@ describe('CharacterCount', () => {
         })
 
         it('overrides the locale when set on an ancestor', () => {
-          const $parent = document.createElement('div')
-          $parent.setAttribute('lang', 'de')
+          document.body.setAttribute('lang', 'de')
 
-          const $div = $container.cloneNode(true)
-          $parent.appendChild($div)
-
-          document.body.appendChild($parent)
+          const $div = document.querySelector('[data-module]')
 
           const component = new CharacterCount($div, { maxwords: 20000 })
 
@@ -186,7 +166,7 @@ describe('CharacterCount', () => {
 
       describe('Data attribute configuration', () => {
         it('overrides the default translation keys', () => {
-          const $div = cloneContainerAndAddToDocument()
+          const $div = document.querySelector('[data-module]')
           $div.setAttribute(
             'data-i18n.characters-under-limit.one',
             'Custom text. Count: %{count}'
@@ -208,13 +188,11 @@ describe('CharacterCount', () => {
 
         describe('precedence over JavaScript configuration', () => {
           it('overrides translation keys', () => {
-            const $div = cloneContainerAndAddToDocument()
+            const $div = document.querySelector('[data-module]')
             $div.setAttribute(
               'data-i18n.characters-under-limit.one',
               'Custom text. Count: %{count}'
             )
-
-            console.log($div.outerHTML)
 
             const component = new CharacterCount($div, {
               maxlength: 100,
