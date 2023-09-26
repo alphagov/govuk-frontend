@@ -298,7 +298,7 @@ describe('/components/tabs', () => {
         })
       })
 
-      it('throws when the input list is empty', async () => {
+      it('throws when there are no tabs', async () => {
         await expect(
           renderAndInitialise(page, 'tabs', {
             params: examples.default,
@@ -311,6 +311,40 @@ describe('/components/tabs', () => {
         ).rejects.toEqual({
           name: 'ElementError',
           message: 'Tabs: a.govuk-tabs__tab not found'
+        })
+      })
+
+      it('throws when the tab list is missing', async () => {
+        await expect(
+          renderAndInitialise(page, 'tabs', {
+            params: examples.default,
+            beforeInitialisation($module) {
+              $module
+                .querySelector('.govuk-tabs__list')
+                .setAttribute('class', 'govuk-tabs__typo')
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message: 'Tabs: .govuk-tabs__list not found'
+        })
+      })
+
+      it('throws when there the tab list is empty', async () => {
+        await expect(
+          renderAndInitialise(page, 'tabs', {
+            params: examples.default,
+            beforeInitialisation($module) {
+              $module
+                .querySelectorAll('.govuk-tabs__list-item')
+                .forEach((item) =>
+                  item.setAttribute('class', '.govuk-tabs__list-typo')
+                )
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message: 'Tabs: .govuk-tabs__list-item not found'
         })
       })
     })
