@@ -39,6 +39,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - copy Sass files, applying Autoprefixer via PostCSS
 - copy Nunjucks component template/macro files, including JSON configs
 - copy GOV.UK Prototype Kit config files
+- compile Sass to CSS
 - compile JavaScript to ECMAScript (ES) modules
 - compile JavaScript to Universal Module Definition (UMD) bundles
 - compile Rollup build stats into `./shared/stats/dist`
@@ -83,13 +84,6 @@ This task will:
 
 - check Sass code quality via Stylelint (`npm run lint:scss`)
 - compile Sass to CSS into `./packages/govuk-frontend-review/dist/stylesheets`
-- compile Sass documentation into `./packages/govuk-frontend-review/dist/docs/sassdoc`
-
-**`npx --workspace @govuk-frontend/review -- gulp scripts`**
-
-This task will:
-
-- compile JavaScript documentation into `./packages/govuk-frontend-review/dist/docs/jsdoc`
 
 ## Review app only
 

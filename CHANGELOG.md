@@ -6,6 +6,15 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ### New features
 
+#### Precompiled CSS and JavaScript
+
+The precompiled CSS and JavaScript files found in our [GitHub releases](https://github.com/alphagov/govuk-frontend/releases) are now also published to [`govuk-frontend` on npm](https://www.npmjs.com/package/govuk-frontend).
+
+These changes were introduced in:
+
+- [pull request #3726: Default to ES modules with single Rollup config](https://github.com/alphagov/govuk-frontend/pull/3726)
+- [pull request #4241: Add new `govuk-frontend.min.css` package bundle](https://github.com/alphagov/govuk-frontend/pull/4241)
+
 #### Task list component added
 
 A new component has been added which creates lists of tasks that users need to complete.

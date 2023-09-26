@@ -37,7 +37,7 @@ export const watch = (options) =>
         [
           `${slash(paths.app)}/sassdoc.config.yaml`,
           `${slash(paths.app)}/src/**/*.scss`,
-          `${slash(paths.package)}/dist/govuk/**/*.scss`
+          `${slash(paths.package)}/dist/govuk/all.scss`
         ],
         styles(options)
       )
