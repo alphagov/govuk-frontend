@@ -14,6 +14,12 @@ export class Tabs extends GOVUKFrontendComponent {
   $tabs
 
   /** @private */
+  $tabList
+
+  /** @private */
+  $tabListItems
+
+  /** @private */
   keys = { left: 37, right: 39, up: 38, down: 40 }
 
   /** @private */
@@ -55,7 +61,7 @@ export class Tabs extends GOVUKFrontendComponent {
     if (!$tabs.length) {
       throw new ElementError(null, {
         componentName: 'Tabs',
-        identifier: 'a.govuk-tabs__tab'
+        identifier: `[data-module="${Tabs.moduleName}"] a.govuk-tabs__tab`
       })
     }
 
@@ -66,6 +72,28 @@ export class Tabs extends GOVUKFrontendComponent {
     this.boundTabClick = this.onTabClick.bind(this)
     this.boundTabKeydown = this.onTabKeydown.bind(this)
     this.boundOnHashChange = this.onHashChange.bind(this)
+
+    const $tabList = this.$module.querySelector('.govuk-tabs__list')
+    const $tabListItems = this.$module.querySelectorAll(
+      'li.govuk-tabs__list-item'
+    )
+
+    if (!$tabList) {
+      throw new ElementError(null, {
+        componentName: 'Tabs',
+        identifier: `[data-module="${Tabs.moduleName}"] .govuk-tabs__list`
+      })
+    }
+
+    if (!$tabListItems.length) {
+      throw new ElementError(null, {
+        componentName: 'Tabs',
+        identifier: `[data-module="${Tabs.moduleName}"] .govuk-tabs__list-item`
+      })
+    }
+
+    this.$tabList = $tabList
+    this.$tabListItems = $tabListItems
 
     this.setupResponsiveChecks()
   }
@@ -114,16 +142,9 @@ export class Tabs extends GOVUKFrontendComponent {
    * @private
    */
   setup() {
-    const $tabList = this.$module.querySelector('.govuk-tabs__list')
-    const $tabListItems = this.$module.querySelectorAll(
-      'li.govuk-tabs__list-item'
-    )
+    this.$tabList.setAttribute('role', 'tablist')
 
-    this.checkTabList($tabList, $tabListItems)
-
-    $tabList.setAttribute('role', 'tablist')
-
-    $tabListItems.forEach(($item) => {
+    this.$tabListItems.forEach(($item) => {
       $item.setAttribute('role', 'presentation')
     })
 
@@ -154,16 +175,9 @@ export class Tabs extends GOVUKFrontendComponent {
    * @private
    */
   teardown() {
-    const $tabList = this.$module.querySelector('.govuk-tabs__list')
-    const $tabListItems = this.$module.querySelectorAll(
-      'li.govuk-tabs__list-item'
-    )
+    this.$tabList.removeAttribute('role')
 
-    this.checkTabList($tabList, $tabListItems)
-
-    $tabList.removeAttribute('role')
-
-    $tabListItems.forEach(($item) => {
+    this.$tabListItems.forEach(($item) => {
       $item.removeAttribute('role')
     })
 
@@ -521,31 +535,6 @@ export class Tabs extends GOVUKFrontendComponent {
     const href = $tab.getAttribute('href')
     const hash = href.slice(href.indexOf('#'), href.length)
     return hash
-  }
-
-  /**
-   * Checks the tab list for missing HTML elements
-   *
-   * @private
-   * @param {Element} $tabList - The tab list
-   * @param {NodeListOf<Element>} $tabListItems - The tab list items
-   * @throws {ElementError} when the tab list is missing
-   * @throws {ElementError} when there are no tab list items
-   */
-  checkTabList($tabList, $tabListItems) {
-    if (!$tabList) {
-      throw new ElementError($tabList, {
-        componentName: 'Tabs',
-        identifier: '.govuk-tabs__list'
-      })
-    }
-
-    if (!$tabListItems.length) {
-      throw new ElementError(null, {
-        componentName: 'Tabs',
-        identifier: '.govuk-tabs__list-item'
-      })
-    }
   }
 
   /**
