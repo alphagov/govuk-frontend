@@ -149,8 +149,8 @@ export class CharacterCount extends GOVUKFrontendComponent {
     // Inject a description for the textarea if none is present already
     // for when the component was rendered with no maxlength, maxwords
     // nor custom textareaDescriptionText
-    if ($textareaDescription.innerText.match(/^\s*$/)) {
-      $textareaDescription.innerText = this.i18n.t('textareaDescription', {
+    if ($textareaDescription.textContent.match(/^\s*$/)) {
+      $textareaDescription.textContent = this.i18n.t('textareaDescription', {
         count: this.maxLength
       })
     }
@@ -324,7 +324,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
     }
 
     // Update message
-    this.$visibleCountMessage.innerText = this.getCountMessage()
+    this.$visibleCountMessage.textContent = this.getCountMessage()
   }
 
   /**
@@ -342,7 +342,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
     }
 
     // Update message
-    this.$screenReaderCountMessage.innerText = this.getCountMessage()
+    this.$screenReaderCountMessage.textContent = this.getCountMessage()
   }
 
   /**
