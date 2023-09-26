@@ -81,11 +81,15 @@ export class Tabs extends GOVUKFrontendComponent {
     // MediaQueryList.addEventListener isn't supported by Safari < 14 so we need
     // to be able to fall back to the deprecated MediaQueryList.addListener
     if ('addEventListener' in this.mql) {
-      this.mql.addEventListener('change', () => this.checkMode())
+      this.mql.addEventListener('change', () => {
+        this.checkMode()
+      })
     } else {
       // @ts-expect-error Property 'addListener' does not exist
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-      this.mql.addListener(() => this.checkMode())
+      this.mql.addListener(() => {
+        this.checkMode()
+      })
     }
 
     this.checkMode()
@@ -112,12 +116,10 @@ export class Tabs extends GOVUKFrontendComponent {
   setup() {
     const $tabList = this.$module.querySelector('.govuk-tabs__list')
     const $tabListItems = this.$module.querySelectorAll(
-      '.govuk-tabs__list-item'
+      'li.govuk-tabs__list-item'
     )
 
-    if (!this.$tabs || !$tabList || !$tabListItems) {
-      return
-    }
+    this.checkTabList($tabList, $tabListItems)
 
     $tabList.setAttribute('role', 'tablist')
 
@@ -157,12 +159,10 @@ export class Tabs extends GOVUKFrontendComponent {
   teardown() {
     const $tabList = this.$module.querySelector('.govuk-tabs__list')
     const $tabListItems = this.$module.querySelectorAll(
-      'a.govuk-tabs__list-item'
+      'li.govuk-tabs__list-item'
     )
 
-    if (!this.$tabs || !$tabList || !$tabListItems) {
-      return
-    }
+    this.checkTabList($tabList, $tabListItems)
 
     $tabList.removeAttribute('role')
 
@@ -524,6 +524,31 @@ export class Tabs extends GOVUKFrontendComponent {
     const href = $tab.getAttribute('href')
     const hash = href.slice(href.indexOf('#'), href.length)
     return hash
+  }
+
+  /**
+   * Checks the tab list for missing HTML elements
+   *
+   * @private
+   * @param {Element} $tabList - The tab list
+   * @param {NodeListOf<Element>} $tabListItems - The tab list items
+   * @throws {ElementError} when the tab list is missing
+   * @throws {ElementError} when there are no tab list items
+   */
+  checkTabList($tabList, $tabListItems) {
+    if (!$tabList) {
+      throw new ElementError($tabList, {
+        componentName: 'Tabs',
+        identifier: '.govuk-tabs__list'
+      })
+    }
+
+    if (!$tabListItems.length) {
+      throw new ElementError(null, {
+        componentName: 'Tabs',
+        identifier: '.govuk-tabs__list-item'
+      })
+    }
   }
 
   /**
