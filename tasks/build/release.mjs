@@ -1,7 +1,7 @@
 import { join } from 'path'
 
 import { pkg } from '@govuk-frontend/config'
-import { files, scripts, styles, task } from '@govuk-frontend/tasks'
+import { files, npm, scripts, styles, task } from '@govuk-frontend/tasks'
 import gulp from 'gulp'
 
 /**
@@ -12,7 +12,7 @@ import gulp from 'gulp'
  */
 export default (options) =>
   gulp.series(
-    task.name('clean', () => files.clean('*', options)),
+    npm.script('clean:release', [], options),
 
     // Copy GOV.UK Frontend static assets
     task.name('copy:assets', () =>

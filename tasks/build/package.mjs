@@ -1,6 +1,7 @@
 import { join } from 'path'
 
-import { files, task } from '@govuk-frontend/tasks'
+import { paths } from '@govuk-frontend/config'
+import { files, npm, task } from '@govuk-frontend/tasks'
 import gulp from 'gulp'
 
 import { assets, fixtures, scripts, styles, templates } from '../index.mjs'
@@ -13,7 +14,8 @@ import { assets, fixtures, scripts, styles, templates } from '../index.mjs'
  */
 export default (options) =>
   gulp.series(
-    task.name('clean', () => files.clean('*', options)),
+    npm.script('clean', [], { basePath: paths.stats }),
+    npm.script('clean:package', [], options),
 
     assets(options),
     fixtures(options),
