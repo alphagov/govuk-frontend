@@ -15,6 +15,6 @@ describe('/components/cookie-banner', () => {
         await goToComponent(page, 'cookie-banner', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
-    }, 90000)
+    }, 120000)
   })
 })

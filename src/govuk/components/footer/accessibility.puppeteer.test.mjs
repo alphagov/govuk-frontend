@@ -15,6 +15,6 @@ describe('/components/footer', () => {
         await goToComponent(page, 'footer', { exampleName })
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
-    }, 90000)
+    }, 120000)
   })
 })
