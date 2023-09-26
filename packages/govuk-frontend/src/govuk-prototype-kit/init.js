@@ -1,5 +1,8 @@
 // @ts-nocheck
-import { initAll } from '../govuk/govuk-frontend.min.js'
+import * as GOVUKFrontend from '../govuk/govuk-frontend.min.js'
+
+// Maintain window global for compatibility
+window.GOVUKFrontend = GOVUKFrontend
 
 if (
   window.GOVUKPrototypeKit &&
@@ -7,6 +10,6 @@ if (
   window.GOVUKPrototypeKit.majorVersion >= 13
 ) {
   window.GOVUKPrototypeKit.documentReady(() => {
-    initAll()
+    window.GOVUKFrontend.initAll()
   })
 }
