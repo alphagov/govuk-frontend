@@ -264,6 +264,30 @@ examples:
               text: Yellow
               classes: govuk-tag--yellow
 
+  - name: example with very long single word tags
+    options:
+      items:
+        - title:
+            text: Company Directors
+          href: '#'
+          status:
+            text: Completed
+
+        - title:
+            text: Registered company details
+          href: '#'
+          status:
+            tag:
+              text: Incomplete
+              classes: govuk-tag--blue
+
+        - title:
+            text: A very very very long Business plan
+          href: '#'
+          status:
+            tag:
+              text: Thisisaverylongwaytosaythatsomethingisincomplete
+              classes: govuk-tag--blue
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: custom classes
     hidden: true
