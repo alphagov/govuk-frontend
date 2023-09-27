@@ -1,19 +1,22 @@
+import { getExamples, renderComponent } from '@govuk-frontend/lib/components'
+
 import { CharacterCount } from './character-count.mjs'
 
 describe('CharacterCount', () => {
-  let $container
-  let $textarea
+  let html
 
-  beforeAll(() => {
-    $container = document.createElement('div')
-    $textarea = document.createElement('textarea')
+  beforeAll(async () => {
+    const examples = await getExamples('character-count')
+    html = renderComponent(
+      'character-count',
+      examples['to configure in JavaScript']
+    )
+  })
 
-    // Component checks that GOV.UK Frontend is supported
-    document.body.classList.add('govuk-frontend-supported')
-
-    // Component checks that required elements are present
-    $textarea.classList.add('govuk-js-character-count')
-    $container.appendChild($textarea)
+  beforeEach(async () => {
+    // Some tests add attributes to `document.body` so we need
+    // to reset it alongside the component's markup
+    document.body.outerHTML = `<body class="govuk-frontend-supported">${html}</body>`
   })
 
   describe('formatCountMessage', () => {
@@ -21,8 +24,8 @@ describe('CharacterCount', () => {
       let componentWithMaxLength
       let componentWithMaxWords
 
-      beforeAll(() => {
-        const $div = $container.cloneNode(true)
+      beforeEach(() => {
+        const $div = document.querySelector('[data-module]')
         componentWithMaxLength = new CharacterCount($div, { maxlength: 100 })
         componentWithMaxWords = new CharacterCount($div, { maxwords: 100 })
       })
@@ -87,7 +90,7 @@ describe('CharacterCount', () => {
     describe('i18n', () => {
       describe('JavaScript configuration', () => {
         it('overrides the default translation keys', () => {
-          const $div = $container.cloneNode(true)
+          const $div = document.querySelector('[data-module]')
           const component = new CharacterCount($div, {
             maxlength: 100,
             i18n: {
@@ -108,7 +111,7 @@ describe('CharacterCount', () => {
         })
 
         it('uses specific keys for when limit is reached', () => {
-          const $div = $container.cloneNode(true)
+          const $div = document.querySelector('[data-module]')
           const componentWithMaxLength = new CharacterCount($div, {
             maxlength: 100,
             i18n: {
@@ -136,7 +139,7 @@ describe('CharacterCount', () => {
 
       describe('lang attribute configuration', () => {
         it('overrides the locale when set on the element', () => {
-          const $div = $container.cloneNode(true)
+          const $div = document.querySelector('[data-module]')
           $div.setAttribute('lang', 'de')
 
           const component = new CharacterCount($div, { maxwords: 20000 })
@@ -148,11 +151,9 @@ describe('CharacterCount', () => {
         })
 
         it('overrides the locale when set on an ancestor', () => {
-          const $parent = document.createElement('div')
-          $parent.setAttribute('lang', 'de')
+          document.body.setAttribute('lang', 'de')
 
-          const $div = $container.cloneNode(true)
-          $parent.appendChild($div)
+          const $div = document.querySelector('[data-module]')
 
           const component = new CharacterCount($div, { maxwords: 20000 })
 
@@ -165,7 +166,7 @@ describe('CharacterCount', () => {
 
       describe('Data attribute configuration', () => {
         it('overrides the default translation keys', () => {
-          const $div = $container.cloneNode(true)
+          const $div = document.querySelector('[data-module]')
           $div.setAttribute(
             'data-i18n.characters-under-limit.one',
             'Custom text. Count: %{count}'
@@ -187,7 +188,7 @@ describe('CharacterCount', () => {
 
         describe('precedence over JavaScript configuration', () => {
           it('overrides translation keys', () => {
-            const $div = $container.cloneNode(true)
+            const $div = document.querySelector('[data-module]')
             $div.setAttribute(
               'data-i18n.characters-under-limit.one',
               'Custom text. Count: %{count}'

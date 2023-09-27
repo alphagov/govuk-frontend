@@ -410,7 +410,7 @@ export class Accordion extends GOVUKFrontendComponent {
       ? this.i18n.t('hideSection')
       : this.i18n.t('showSection')
 
-    $showHideText.innerText = newButtonText
+    $showHideText.textContent = newButtonText
     $button.setAttribute('aria-expanded', `${expanded}`)
 
     // Update aria-label combining
@@ -420,12 +420,12 @@ export class Accordion extends GOVUKFrontendComponent {
       `.${this.sectionHeadingTextClass}`
     )
     if ($headingText instanceof HTMLElement) {
-      ariaLabelParts.push($headingText.innerText.trim())
+      ariaLabelParts.push($headingText.textContent.trim())
     }
 
     const $summary = $section.querySelector(`.${this.sectionSummaryClass}`)
     if ($summary instanceof HTMLElement) {
-      ariaLabelParts.push($summary.innerText.trim())
+      ariaLabelParts.push($summary.textContent.trim())
     }
 
     const ariaLabelMessage = expanded
@@ -497,7 +497,7 @@ export class Accordion extends GOVUKFrontendComponent {
       : this.i18n.t('showAllSections')
 
     this.$showAllButton.setAttribute('aria-expanded', expanded.toString())
-    this.$showAllText.innerText = newButtonText
+    this.$showAllText.textContent = newButtonText
 
     // Swap icon, toggle class
     if (expanded) {

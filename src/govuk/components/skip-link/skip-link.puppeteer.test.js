@@ -107,7 +107,7 @@ describe('Skip Link', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message: 'Skip link: $module is not an instance of "HTMLAnchorElement"'
+        message: 'Skip link: $module is not an instance of HTMLAnchorElement'
       })
     })
 
@@ -136,7 +136,7 @@ describe('Skip Link', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message: 'Skip link: $module.hash is not of type "string"'
+        message: 'Skip link: $module.hash is not of type string'
       })
     })
   })

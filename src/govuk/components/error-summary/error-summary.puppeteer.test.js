@@ -256,7 +256,7 @@ describe('Error Summary', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message: 'Error summary: $module is not an instance of "HTMLElement"'
+        message: 'Error summary: $module is not an instance of HTMLElement'
       })
     })
   })

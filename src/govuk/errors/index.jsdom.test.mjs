@@ -60,7 +60,7 @@ describe('errors', () => {
           expectedType: window.HTMLAnchorElement
         }).message
       ).toBe(
-        'Component name: variableName is not an instance of "HTMLAnchorElement"'
+        'Component name: variableName is not an instance of HTMLAnchorElement'
       )
     })
   })
