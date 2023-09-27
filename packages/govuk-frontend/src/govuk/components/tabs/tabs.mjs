@@ -61,7 +61,7 @@ export class Tabs extends GOVUKFrontendComponent {
     if (!$tabs.length) {
       throw new ElementError(null, {
         componentName: 'Tabs',
-        identifier: `[data-module="${Tabs.moduleName}"] a.govuk-tabs__tab`
+        identifier: `a.govuk-tabs__tab`
       })
     }
 
@@ -81,14 +81,14 @@ export class Tabs extends GOVUKFrontendComponent {
     if (!$tabList) {
       throw new ElementError(null, {
         componentName: 'Tabs',
-        identifier: `[data-module="${Tabs.moduleName}"] .govuk-tabs__list`
+        identifier: `.govuk-tabs__list`
       })
     }
 
     if (!$tabListItems.length) {
       throw new ElementError(null, {
         componentName: 'Tabs',
-        identifier: `[data-module="${Tabs.moduleName}"] .govuk-tabs__list-item`
+        identifier: `.govuk-tabs__list-item`
       })
     }
 
