@@ -1,6 +1,6 @@
 @include govuk-exports("govuk/component/panel") {
   .govuk-panel {
-    @include govuk-font($size: 19);
+    @include govuk-font($size: 36);
 
     box-sizing: border-box;
 
@@ -40,17 +40,13 @@
   }
 
   .govuk-panel__title {
+    @include govuk-typography-responsive($size: 48);
+    @include govuk-typography-weight-bold;
     margin-top: 0;
     margin-bottom: govuk-spacing(6);
-
-    @include govuk-font($size: 48, $weight: bold);
   }
 
   .govuk-panel__title:last-child {
     margin-bottom: 0;
-  }
-
-  .govuk-panel__body {
-    @include govuk-font($size: 36);
   }
 }

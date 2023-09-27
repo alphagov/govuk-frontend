@@ -13,8 +13,6 @@
   $govuk-radios-focus-width: $govuk-focus-width + 1px;
 
   .govuk-radios__item {
-    @include govuk-font($size: 19);
-
     display: block;
     position: relative;
 
@@ -157,9 +155,9 @@
   // =========================================================
 
   .govuk-radios__divider {
-    $govuk-divider-size: $govuk-radios-size !default;
     @include govuk-font($size: 19);
     @include govuk-text-colour;
+    $govuk-divider-size: $govuk-radios-size !default;
     width: $govuk-divider-size;
     margin-bottom: govuk-spacing(2);
     text-align: center;

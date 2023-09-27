@@ -9,24 +9,27 @@
   }
 
   // Modifiers that make labels look more like their equivalent headings
+  .govuk-label--xl,
+  .govuk-label--l,
+  .govuk-label--m {
+    @include govuk-typography-weight-bold;
+    margin-bottom: govuk-spacing(3);
+  }
 
   .govuk-label--xl {
-    @include govuk-font($size: 48, $weight: bold);
-    margin-bottom: govuk-spacing(3);
+    @include govuk-typography-responsive($size: 48);
   }
 
   .govuk-label--l {
-    @include govuk-font($size: 36, $weight: bold);
-    margin-bottom: govuk-spacing(3);
+    @include govuk-typography-responsive($size: 36);
   }
 
   .govuk-label--m {
-    @include govuk-font($size: 24, $weight: bold);
-    margin-bottom: govuk-spacing(2);
+    @include govuk-typography-responsive($size: 24);
   }
 
   .govuk-label--s {
-    @include govuk-font($size: 19, $weight: bold);
+    @include govuk-typography-weight-bold;
   }
 
   // When the label is nested inside a heading, override the heading so that it

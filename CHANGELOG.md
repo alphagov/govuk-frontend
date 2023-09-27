@@ -400,6 +400,7 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 - [#3791: Refactor mobile menu button label/text handling](https://github.com/alphagov/govuk-frontend/pull/3791)
 - [#3862: Fix focus style being overlapped by summary action links](https://github.com/alphagov/govuk-frontend/pull/3862)
 - [#4113: Always set an explicit button `type`](https://github.com/alphagov/govuk-frontend/pull/4113)
+- [#4267: Remove unnecessary duplicated use of govuk-font](https://github.com/alphagov/govuk-frontend/pull/4267)
 
 ## 4.7.0 (Feature release)
 
