@@ -310,8 +310,7 @@ describe('/components/tabs', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message:
-            'Tabs: [data-module="govuk-tabs"] a.govuk-tabs__tab not found'
+          message: 'Tabs: a.govuk-tabs__tab not found'
         })
       })
 
@@ -327,8 +326,7 @@ describe('/components/tabs', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message:
-            'Tabs: [data-module="govuk-tabs"] .govuk-tabs__list not found'
+          message: 'Tabs: .govuk-tabs__list not found'
         })
       })
 
@@ -346,8 +344,7 @@ describe('/components/tabs', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message:
-            'Tabs: [data-module="govuk-tabs"] .govuk-tabs__list-item not found'
+          message: 'Tabs: .govuk-tabs__list-item not found'
         })
       })
     })
