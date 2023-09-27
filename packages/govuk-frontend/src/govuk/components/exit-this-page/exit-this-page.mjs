@@ -223,7 +223,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
    * @private
    */
   exitPage() {
-    this.$updateSpan.innerText = ''
+    this.$updateSpan.textContent = ''
 
     // Blank the page
     // As well as creating an overlay with text, we also set the body to hidden
@@ -238,7 +238,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
     // the element text after adding it means that screen readers pick up the
     // announcement more reliably.
     document.body.appendChild(this.$overlay)
-    this.$overlay.innerText = this.i18n.t('activated')
+    this.$overlay.textContent = this.i18n.t('activated')
 
     window.location.href = this.$button.getAttribute('href')
   }
@@ -301,9 +301,9 @@ export class ExitThisPage extends GOVUKFrontendComponent {
         this.exitPage()
       } else {
         if (this.keypressCounter === 1) {
-          this.$updateSpan.innerText = this.i18n.t('pressTwoMoreTimes')
+          this.$updateSpan.textContent = this.i18n.t('pressTwoMoreTimes')
         } else {
-          this.$updateSpan.innerText = this.i18n.t('pressOneMoreTime')
+          this.$updateSpan.textContent = this.i18n.t('pressOneMoreTime')
         }
       }
 
@@ -350,10 +350,10 @@ export class ExitThisPage extends GOVUKFrontendComponent {
     this.keypressTimeoutId = null
 
     this.keypressCounter = 0
-    this.$updateSpan.innerText = this.i18n.t('timedOut')
+    this.$updateSpan.textContent = this.i18n.t('timedOut')
 
     this.timeoutMessageId = window.setTimeout(() => {
-      this.$updateSpan.innerText = ''
+      this.$updateSpan.textContent = ''
     }, this.timeoutTime)
 
     this.updateIndicator()
@@ -384,7 +384,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
 
     // Ensure the announcement span's role is status, not alert and clear any text
     this.$updateSpan.setAttribute('role', 'status')
-    this.$updateSpan.innerText = ''
+    this.$updateSpan.textContent = ''
 
     // Sync the keypress indicator lights
     this.updateIndicator()

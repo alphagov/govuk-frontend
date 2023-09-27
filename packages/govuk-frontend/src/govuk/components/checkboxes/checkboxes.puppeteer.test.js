@@ -366,7 +366,7 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
         ).rejects.toEqual({
           name: 'ElementError',
           message:
-            'Checkboxes: [data-module="govuk-checkboxes"] is not an instance of "HTMLElement"'
+            'Checkboxes: [data-module="govuk-checkboxes"] is not an instance of HTMLElement'
         })
       })
 

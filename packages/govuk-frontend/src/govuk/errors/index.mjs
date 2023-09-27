@@ -63,8 +63,8 @@ export class ElementError extends GOVUKFrontendError {
 
       reason =
         typeof expectedType === 'string'
-          ? `${identifier} is not of type "${expectedType}"`
-          : `${identifier} is not an instance of "${expectedType.name}"`
+          ? `${identifier} is not of type ${expectedType}`
+          : `${identifier} is not an instance of ${expectedType.name}`
     }
 
     super(`${componentName}: ${reason}`)

@@ -810,8 +810,52 @@ describe('Character count', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
+          message: 'Character count: $module is not an instance of HTMLElement'
+        })
+      })
+
+      it('throws when the textarea is missing', async () => {
+        await expect(
+          renderAndInitialise(page, 'character-count', {
+            params: examples.default,
+            beforeInitialisation($module) {
+              $module.querySelector('.govuk-js-character-count').remove()
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message: 'Character count: .govuk-js-character-count not found'
+        })
+      })
+
+      it('throws when the textarea is not the right type', async () => {
+        await expect(
+          renderAndInitialise(page, 'character-count', {
+            params: examples.default,
+            beforeInitialisation($module) {
+              // Replace with a tag that's neither an `<input>` or `<textarea>`
+              $module.querySelector('.govuk-js-character-count').outerHTML =
+                '<div class="govuk-js-character-count"></div>'
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
           message:
-            'Character count: $module is not an instance of "HTMLElement"'
+            'Character count: .govuk-js-character-count is not of type HTMLTextareaElement or HTMLInputElement'
+        })
+      })
+
+      it('throws when the textarea description is missing', async () => {
+        await expect(
+          renderAndInitialise(page, 'character-count', {
+            params: examples.default,
+            beforeInitialisation($module) {
+              $module.querySelector('#more-detail-info').remove()
+            }
+          })
+        ).rejects.toEqual({
+          name: 'ElementError',
+          message: 'Character count: #more-detail-info not found'
         })
       })
 

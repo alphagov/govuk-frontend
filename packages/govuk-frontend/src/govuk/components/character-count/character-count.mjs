@@ -88,7 +88,11 @@ export class CharacterCount extends GOVUKFrontendComponent {
         $textarea instanceof HTMLInputElement
       )
     ) {
-      return this
+      throw new ElementError($textarea, {
+        componentName: 'Character count',
+        identifier: '.govuk-js-character-count',
+        expectedType: 'HTMLTextareaElement or HTMLInputElement'
+      })
     }
 
     // Read config set using dataset ('data-' values)
@@ -133,18 +137,20 @@ export class CharacterCount extends GOVUKFrontendComponent {
     this.$module = $module
     this.$textarea = $textarea
 
-    const $textareaDescription = document.getElementById(
-      `${this.$textarea.id}-info`
-    )
+    const textareaDescriptionId = `${this.$textarea.id}-info`
+    const $textareaDescription = document.getElementById(textareaDescriptionId)
     if (!$textareaDescription) {
-      return
+      throw new ElementError($textareaDescription, {
+        componentName: 'Character count',
+        identifier: `#${textareaDescriptionId}`
+      })
     }
 
     // Inject a description for the textarea if none is present already
     // for when the component was rendered with no maxlength, maxwords
     // nor custom textareaDescriptionText
-    if ($textareaDescription.innerText.match(/^\s*$/)) {
-      $textareaDescription.innerText = this.i18n.t('textareaDescription', {
+    if ($textareaDescription.textContent.match(/^\s*$/)) {
+      $textareaDescription.textContent = this.i18n.t('textareaDescription', {
         count: this.maxLength
       })
     }
@@ -318,7 +324,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
     }
 
     // Update message
-    this.$visibleCountMessage.innerText = this.getCountMessage()
+    this.$visibleCountMessage.textContent = this.getCountMessage()
   }
 
   /**
@@ -336,7 +342,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
     }
 
     // Update message
-    this.$screenReaderCountMessage.innerText = this.getCountMessage()
+    this.$screenReaderCountMessage.textContent = this.getCountMessage()
   }
 
   /**

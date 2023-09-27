@@ -245,7 +245,7 @@ describe('Notification banner', () => {
       ).rejects.toEqual({
         name: 'ElementError',
         message:
-          'Notification banner: $module is not an instance of "HTMLElement"'
+          'Notification banner: $module is not an instance of HTMLElement'
       })
     })
   })
