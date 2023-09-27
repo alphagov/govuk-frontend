@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "name": "@govuk-frontend/govuk-prototype-kit-review",
+  "description": "GOV.UK Prototype Kit review",
+  "engines": {
+    "node": "^18.12.0",
+    "npm": "^8.1.0 || ^9.1.0"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev": "cd dist && govuk-prototype-kit dev",
+    "prebuild": "npm run clean",
+    "build": "govuk-prototype-kit create dist",
+    "postbuild": "cd dist && npm link ../../govuk-frontend",
+    "clean": "del-cli dist"
+  },
+  "devDependencies": {
+    "govuk-prototype-kit": "^13.13.3"
+  }
+}
