@@ -14,6 +14,12 @@ export class Tabs extends GOVUKFrontendComponent {
   $tabs
 
   /** @private */
+  $tabList
+
+  /** @private */
+  $tabListItems
+
+  /** @private */
   keys = { left: 37, right: 39, up: 38, down: 40 }
 
   /** @private */
@@ -53,7 +59,10 @@ export class Tabs extends GOVUKFrontendComponent {
     /** @satisfies {NodeListOf<HTMLAnchorElement>} */
     const $tabs = $module.querySelectorAll('a.govuk-tabs__tab')
     if (!$tabs.length) {
-      return this
+      throw new ElementError(null, {
+        componentName: 'Tabs',
+        identifier: `a.govuk-tabs__tab`
+      })
     }
 
     this.$module = $module
@@ -63,6 +72,28 @@ export class Tabs extends GOVUKFrontendComponent {
     this.boundTabClick = this.onTabClick.bind(this)
     this.boundTabKeydown = this.onTabKeydown.bind(this)
     this.boundOnHashChange = this.onHashChange.bind(this)
+
+    const $tabList = this.$module.querySelector('.govuk-tabs__list')
+    const $tabListItems = this.$module.querySelectorAll(
+      'li.govuk-tabs__list-item'
+    )
+
+    if (!$tabList) {
+      throw new ElementError(null, {
+        componentName: 'Tabs',
+        identifier: `.govuk-tabs__list`
+      })
+    }
+
+    if (!$tabListItems.length) {
+      throw new ElementError(null, {
+        componentName: 'Tabs',
+        identifier: `.govuk-tabs__list-item`
+      })
+    }
+
+    this.$tabList = $tabList
+    this.$tabListItems = $tabListItems
 
     this.setupResponsiveChecks()
   }
@@ -78,11 +109,15 @@ export class Tabs extends GOVUKFrontendComponent {
     // MediaQueryList.addEventListener isn't supported by Safari < 14 so we need
     // to be able to fall back to the deprecated MediaQueryList.addListener
     if ('addEventListener' in this.mql) {
-      this.mql.addEventListener('change', () => this.checkMode())
+      this.mql.addEventListener('change', () => {
+        this.checkMode()
+      })
     } else {
       // @ts-expect-error Property 'addListener' does not exist
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-      this.mql.addListener(() => this.checkMode())
+      this.mql.addListener(() => {
+        this.checkMode()
+      })
     }
 
     this.checkMode()
@@ -107,18 +142,9 @@ export class Tabs extends GOVUKFrontendComponent {
    * @private
    */
   setup() {
-    const $tabList = this.$module.querySelector('.govuk-tabs__list')
-    const $tabListItems = this.$module.querySelectorAll(
-      '.govuk-tabs__list-item'
-    )
+    this.$tabList.setAttribute('role', 'tablist')
 
-    if (!this.$tabs || !$tabList || !$tabListItems) {
-      return
-    }
-
-    $tabList.setAttribute('role', 'tablist')
-
-    $tabListItems.forEach(($item) => {
+    this.$tabListItems.forEach(($item) => {
       $item.setAttribute('role', 'presentation')
     })
 
@@ -136,9 +162,6 @@ export class Tabs extends GOVUKFrontendComponent {
 
     // Show either the active tab according to the URL's hash or the first tab
     const $activeTab = this.getTab(window.location.hash) || this.$tabs[0]
-    if (!$activeTab) {
-      return
-    }
 
     this.showTab($activeTab)
 
@@ -152,18 +175,9 @@ export class Tabs extends GOVUKFrontendComponent {
    * @private
    */
   teardown() {
-    const $tabList = this.$module.querySelector('.govuk-tabs__list')
-    const $tabListItems = this.$module.querySelectorAll(
-      'a.govuk-tabs__list-item'
-    )
+    this.$tabList.removeAttribute('role')
 
-    if (!this.$tabs || !$tabList || !$tabListItems) {
-      return
-    }
-
-    $tabList.removeAttribute('role')
-
-    $tabListItems.forEach(($item) => {
+    this.$tabListItems.forEach(($item) => {
       $item.removeAttribute('role')
     })
 
