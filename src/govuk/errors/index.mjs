@@ -48,7 +48,7 @@ export class ElementError extends GOVUKFrontendError {
   name = 'ElementError'
 
   /**
-   * @param {Element} element - The element in error
+   * @param {Element | null} element - The element in error
    * @param {object} options - Element error options
    * @param {string} options.componentName - The name of the component throwing the error
    * @param {string} options.identifier - An identifier that'll let the user understand which element has an error (variable name, CSS selector)
