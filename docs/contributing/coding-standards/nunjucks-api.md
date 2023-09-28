@@ -4,9 +4,9 @@ We have chosen as Nunjucks as the templating language for GOV.UK Frontend compon
 
 To provide a level of consistency for developers we have standardised option names, their expected input, use and placement. There are exceptions, and if so they are documented accordingly.
 
-The options (arguments) accepted by the component macro are specified in a `[component-name].yaml` file as `params`. Each option should have the following attributes: `name`, `type`, `required`, `description`.
+The macro options (or params) accepted by the component macro are specified in an `options/data.mjs` file. Each option should have the following attributes: `name`, `type`, `required`, `description`.
 
-An option can additionally contain `params` that denotes nested items in the option (see [breadcrumbs component](/packages/govuk-frontend/src/govuk/components/breadcrumbs/breadcrumbs.yaml#L6)) and `isComponent: true` where the option is another component (see [checkboxes component](/packages/govuk-frontend/src/govuk/components/checkboxes/checkboxes.yaml#L10)).
+An option can additionally contain `params` that denotes nested items in the option (see [breadcrumbs component](/packages/govuk-frontend/src/govuk/components/breadcrumbs/options/params.mjs#L12)) and `isComponent: true` where the option is another component (see [checkboxes component](/packages/govuk-frontend/src/govuk/components/checkboxes/options/params.mjs#L16)).
 
 Component macro options are shipped as `macro-options.json` in `packages/govuk-frontend/dist`.
 

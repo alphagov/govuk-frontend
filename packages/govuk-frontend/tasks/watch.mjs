@@ -1,10 +1,11 @@
 import { join } from 'path'
 
+import { paths } from '@govuk-frontend/config'
 import { npm, task } from '@govuk-frontend/tasks'
 import gulp from 'gulp'
 import slash from 'slash'
 
-import { assets, fixtures, scripts, styles, templates } from './index.mjs'
+import { assets, scripts, styles, templates } from './index.mjs'
 
 /**
  * Watch task
@@ -76,7 +77,10 @@ export const watch = (options) =>
      */
     task.name('compile:js watch', () =>
       gulp.watch(
-        '**/*.{cjs,js,mjs}',
+        [
+          '**/*.{cjs,js,mjs}', // Watch all script files
+          `!**/options/**` // Except component options
+        ],
         { cwd: options.srcPath, ignored: ['**/*.test.*'] },
 
         // Run JavaScripts compile
@@ -89,11 +93,13 @@ export const watch = (options) =>
      */
     task.name('compile:fixtures watch', () =>
       gulp.watch(
-        'govuk/components/*/*.yaml',
+        '**/options/**',
         { cwd: options.srcPath },
 
-        // Run fixtures compile
-        fixtures(options)
+        // Build fixtures and macro options via npm script otherwise
+        // imported component data is cached by the ES module loader
+        // https://nodejs.org/api/esm.html#no-requirecache
+        npm.script('build:fixtures', ['--silent'], { basePath: paths.package })
       )
     ),
 

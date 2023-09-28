@@ -11,7 +11,7 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 **`npm start` will trigger `npm run dev` that will:**
 
 - runs `npm run build`
-- starts the review app, restarting when `.mjs`, `.json` or `.yaml` files change
+- starts the review app, restarting when `.js`, `.mjs` or `.json` files change
 - compile again when frontend `.mjs` and `.scss` files change
 
 **`npm test` will do the following:**

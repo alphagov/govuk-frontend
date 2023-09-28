@@ -52,6 +52,7 @@
     "build": "npm run build:package",
     "build:package": "gulp build:package --color",
     "build:release": "gulp build:release --color",
+    "build:fixtures": "gulp fixtures --color",
     "build:stats": "npm run stats --workspace @govuk-frontend/stats",
     "build:types": "tsc --build tsconfig.build.json",
     "clean": "npm run clean:package",

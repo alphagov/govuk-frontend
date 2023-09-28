@@ -49,10 +49,10 @@ Check that:
 
 You should add an example to the review app if the existing examples do not reflect the changes you've made.
 
-1. Open `packages/govuk-frontend/src/govuk/components/<COMPONENT>/<COMPONENT>.yaml`, where `<COMPONENT>` is the component you've changed.
-2. Add or update examples in the `examples` list.
+1. Open `packages/govuk-frontend/src/govuk/components/<COMPONENT>/options/data.mjs`, where `<COMPONENT>` is the component you've changed.
+2. Add or update examples in the `examples` export.
 
-If you've created a new component, create a new `packages/govuk-frontend/src/govuk/<COMPONENT>/<COMPONENT>.yaml` file instead, where `<COMPONENT>` is the name of the component you've created.
+If you've created a new component, create a new `packages/govuk-frontend/src/govuk/<COMPONENT>/options/data.mjs` file instead, where `<COMPONENT>` is the name of the component you've created.
 
 ## 4. Test in supported browsers and assistive technology
 
@@ -84,7 +84,7 @@ You should write new tests if you’ve created a new component, or changed the w
 
 If you're new to testing, see existing test files for examples of things to do. Do not let the tests keep you from submitting your contribution! If you're not sure which tests are needed or are having trouble updating them, submit your pull request anyway. We will help you create the tests and solve problems during code review.
 
-Some test files use examples from each component’s `.yaml` file, for example `packages/govuk-frontend/src/govuk/components/button/button.yaml`. When you add or update these tests, you can use the existing examples or add new ones.
+Some test files use examples from each component’s `options/data.mjs` file, for example `packages/govuk-frontend/src/govuk/components/button/options/data.mjs`. When you add or update these tests, you can use the existing examples or add new ones.
 
 Use `hidden: true` in a new example if you do not want to include the example in the review app. The example will still appear in our [test fixtures](http://frontend.design-system.service.gov.uk/testing-your-html/).
 

@@ -1,11 +1,16 @@
-const { dirname, join } = require('path')
+const { dirname, join, relative } = require('path')
 const { pathToFileURL } = require('url')
 
 const nunjucks = require('nunjucks')
 const { outdent } = require('outdent')
+const slash = require('slash')
 
 const { getListing, getDirectories } = require('./files')
-const { packageTypeToPath, componentNameToMacroName } = require('./names')
+const {
+  packageNameToPath,
+  packageTypeToPath,
+  componentNameToMacroName
+} = require('./names')
 
 // Nunjucks default environment
 const env = nunjucksEnv()
@@ -41,6 +46,28 @@ function nunjucksEnv(searchPaths = [], nunjucksOptions = {}, packageOptions) {
     lstripBlocks: true, // automatically remove leading whitespace from a block/tag,
     ...nunjucksOptions
   })
+}
+
+/**
+ * Load single component data (from source)
+ *
+ * @param {string} componentName - Component name
+ * @returns {Promise<ComponentData & { name: string }>} Component data
+ */
+async function getComponentData(componentName) {
+  const componentDataPath = join(
+    packageNameToPath('govuk-frontend'),
+    `src/govuk/components/${componentName}/options/data.mjs`
+  )
+
+  const { default: componentData } = await import(
+    slash(relative(__dirname, componentDataPath))
+  )
+
+  return {
+    name: componentName,
+    ...componentData
+  }
 }
 
 /**
@@ -274,6 +301,7 @@ function renderTemplate(templatePath, options) {
 }
 
 module.exports = {
+  getComponentData,
   getComponentFixtures,
   getComponentsFixtures,
   getComponentFiles,
