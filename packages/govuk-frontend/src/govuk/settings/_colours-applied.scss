@@ -102,7 +102,7 @@ $govuk-success-colour: govuk-colour("green") !default;
 /// @type Colour
 /// @access public
 
-$govuk-border-colour: govuk-colour("mid-grey");
+$govuk-border-colour: govuk-colour("mid-grey") !default;
 
 /// Input border colour
 ///
@@ -120,7 +120,7 @@ $govuk-input-border-colour: govuk-colour("black") !default;
 /// @type Colour
 /// @access public
 
-$govuk-hover-colour: govuk-colour("mid-grey");
+$govuk-hover-colour: govuk-colour("mid-grey") !default;
 
 // =============================================================================
 // Links
