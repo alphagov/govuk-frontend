@@ -62,6 +62,19 @@ module.exports = {
         'jsdoc/require-param-description': 'warn',
         'jsdoc/require-param': 'error'
       }
+    },
+    {
+      files: ['src/govuk-prototype-kit/**/*.js'],
+      parserOptions: {
+        sourceType: 'module'
+      },
+      env: {
+        browser: true
+      },
+      rules: {
+        // Allow browser import `govuk-frontend.min.js`
+        'n/no-missing-import': 'off'
+      }
     }
   ]
 }
