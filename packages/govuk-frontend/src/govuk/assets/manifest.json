@@ -11,25 +11,28 @@
       "sizes": "48x48 72x72 96x96 128x128 256x256"
     },
     {
-      "src": "images/govuk-icon-mask.svg",
-      "type": "image/svg+xml",
-      "sizes": "48x48 72x72 96x96 128x128 256x256",
-      "purpose": "monochrome"
-    },
-    {
       "src": "images/govuk-icon-180.png",
       "type": "image/png",
-      "sizes": "180x180"
+      "sizes": "180x180",
+      "purpose": "maskable any"
     },
     {
       "src": "images/govuk-icon-192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "maskable any"
     },
     {
       "src": "images/govuk-icon-512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "images/govuk-icon-mask.svg",
+      "type": "image/svg+xml",
+      "sizes": "48x48 72x72 96x96 128x128 256x256",
+      "purpose": "monochrome"
     }
   ]
 }
