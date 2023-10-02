@@ -14,6 +14,7 @@ module.exports = function (api) {
   const browserslistEnv = isBrowser ? 'javascripts' : 'node'
 
   return {
+    browserslistEnv,
     generatorOpts: {
       shouldPrintComment(comment) {
         if (!isBrowser || comment.includes('* @preserve')) {
@@ -39,8 +40,6 @@ module.exports = function (api) {
       [
         '@babel/preset-env',
         {
-          browserslistEnv,
-
           // Apply bug fixes to avoid transforms
           bugfixes: true,
 
