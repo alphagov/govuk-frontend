@@ -4,6 +4,7 @@
   "version": "5.2.0",
   "main": "dist/govuk/all.bundle.js",
   "module": "dist/govuk/all.mjs",
+  "types": "dist/govuk/all.d.mts",
   "sass": "dist/govuk/all.scss",
   "files": [
     "dist",
@@ -13,6 +14,7 @@
   ],
   "exports": {
     ".": {
+      "types": "./dist/govuk/all.d.mts",
       "sass": "./dist/govuk/all.scss",
       "import": "./dist/govuk/all.mjs",
       "require": "./dist/govuk/all.bundle.js",
@@ -57,7 +59,7 @@
     "clean": "npm run clean:package",
     "clean:package": "del-cli *.tsbuildinfo dist govuk-prototype-kit.config.json",
     "clean:release": "del-cli ../../dist --force",
-    "postbuild:package": "npm run build:stats && govuk-prototype-kit validate-plugin .",
+    "postbuild:package": "npm run build:stats && npm run build:types && govuk-prototype-kit validate-plugin .",
     "version": "echo $npm_package_version"
   },
   "devDependencies": {
