@@ -193,6 +193,7 @@
 
   .govuk-summary-card__title {
     @include govuk-font($size: 19, $weight: bold);
+    @include govuk-text-colour;
     margin: govuk-spacing(1) govuk-spacing(4) govuk-spacing(2) 0;
 
     @include govuk-media-query($from: "tablet") {
@@ -201,7 +202,8 @@
   }
 
   .govuk-summary-card__actions {
-    @include govuk-font($size: 19, $weight: bold);
+    @include govuk-typography-responsive($size: 19);
+    @include govuk-typography-weight-bold;
     display: flex;
     flex-wrap: wrap;
     row-gap: 10px;

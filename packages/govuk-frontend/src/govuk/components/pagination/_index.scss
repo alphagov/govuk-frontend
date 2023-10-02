@@ -148,7 +148,7 @@
   }
 
   .govuk-pagination__link-label {
-    @include govuk-font($size: 19, $weight: "regular");
+    @include govuk-typography-weight-regular;
     @include govuk-link-decoration;
     display: inline-block;
     padding-left: govuk-spacing(6);

@@ -2,10 +2,14 @@
   .govuk-tabs {
     @include govuk-responsive-margin(1, "top");
     @include govuk-responsive-margin(6, "bottom");
+    @include govuk-font($size: 19);
   }
 
   .govuk-tabs__title {
-    @include govuk-font($size: 19);
+    // Set the size and weight again because this element is a heading and the
+    // user agent font size overrides the inherited font size
+    @include govuk-typography-responsive($size: 19);
+    @include govuk-typography-weight-regular;
     @include govuk-text-colour;
     margin-bottom: govuk-spacing(2);
   }
@@ -18,7 +22,6 @@
   }
 
   .govuk-tabs__list-item {
-    @include govuk-font($size: 19);
     margin-left: govuk-spacing(5);
 
     &::before {

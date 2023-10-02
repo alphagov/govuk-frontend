@@ -62,7 +62,8 @@
   }
 
   .govuk-header__product-name {
-    @include govuk-font($size: 24, $line-height: 1);
+    @include govuk-typography-responsive($size: 24, $override-line-height: 1);
+    @include govuk-typography-weight-regular;
     display: inline-table;
   }
 
@@ -74,7 +75,6 @@
     // - all links get a 3px underline regardless of text size, as there are
     //   multiple grouped elements close to one another and having slightly
     //   different underline widths looks unbalanced
-    @include govuk-typography-common;
     @include govuk-link-style-inverse;
 
     text-decoration: none;
@@ -96,8 +96,7 @@
   .govuk-header__link--homepage {
     // Font size needs to be set on the link so that the box sizing is correct
     // in Firefox
-    @include govuk-font($size: false, $weight: bold);
-
+    @include govuk-typography-weight-bold;
     display: inline-block;
     margin-right: govuk-spacing(2);
     font-size: 30px; // We don't have a mixin that produces 30px font size
@@ -135,7 +134,8 @@
   .govuk-header__service-name {
     display: inline-block;
     margin-bottom: govuk-spacing(2);
-    @include govuk-font($size: 24, $weight: bold);
+    @include govuk-typography-responsive($size: 24);
+    @include govuk-typography-weight-bold;
   }
 
   .govuk-header__logo,
@@ -248,7 +248,8 @@
     }
 
     a {
-      @include govuk-font($size: 16, $weight: bold);
+      @include govuk-typography-responsive($size: 16);
+      @include govuk-typography-weight-bold;
       white-space: nowrap;
     }
   }

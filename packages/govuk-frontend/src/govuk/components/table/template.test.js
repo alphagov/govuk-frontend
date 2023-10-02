@@ -36,7 +36,7 @@ describe('Table', () => {
       const $ = render('table', examples['table with head and caption'])
       const $caption = $('.govuk-table__caption')
 
-      expect($caption.hasClass('govuk-heading-m')).toBeTruthy()
+      expect($caption.hasClass('govuk-table__caption--m')).toBeTruthy()
     })
   })
 

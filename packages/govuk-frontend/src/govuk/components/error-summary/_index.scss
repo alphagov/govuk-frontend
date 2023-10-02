@@ -2,6 +2,7 @@
 
 @include govuk-exports("govuk/component/error-summary") {
   .govuk-error-summary {
+    @include govuk-font($size: 19);
     @include govuk-text-colour;
     @include govuk-responsive-padding(4);
     @include govuk-responsive-margin(8, "bottom");
@@ -14,15 +15,14 @@
   }
 
   .govuk-error-summary__title {
-    @include govuk-font($size: 24, $weight: bold);
+    @include govuk-typography-responsive($size: 24);
+    @include govuk-typography-weight-bold;
 
     margin-top: 0;
     @include govuk-responsive-margin(4, "bottom");
   }
 
   .govuk-error-summary__body {
-    @include govuk-font($size: 19);
-
     p {
       margin-top: 0;
       @include govuk-responsive-margin(4, "bottom");
