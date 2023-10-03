@@ -153,13 +153,15 @@ describe('Template', () => {
       })
     })
 
+    // These tests use a select that specifically looks for a <title> within the <head> of the page
+    // to prevent them from matching <title> elements within embedded SVGs.
     describe('<title>', () => {
       const expectedTitle =
         'GOV.UK - The best place to find government services and information'
 
       it(`defaults to '${expectedTitle}'`, () => {
         const $ = renderTemplate('govuk/template.njk')
-        expect($('title').text()).toEqual(expectedTitle)
+        expect($('head > title').text()).toEqual(expectedTitle)
       })
 
       it('can be overridden using the pageTitle block', () => {
@@ -169,12 +171,12 @@ describe('Template', () => {
           }
         })
 
-        expect($('title').text()).toEqual('Foo')
+        expect($('head > title').text()).toEqual('Foo')
       })
 
       it('does not have a lang attribute by default', () => {
         const $ = renderTemplate('govuk/template.njk')
-        expect($('title').attr('lang')).toBeUndefined()
+        expect($('head > title').attr('lang')).toBeUndefined()
       })
 
       it('can have a lang attribute specified using pageTitleLang', () => {
@@ -184,7 +186,7 @@ describe('Template', () => {
           }
         })
 
-        expect($('title').attr('lang')).toEqual('zu')
+        expect($('head > title').attr('lang')).toEqual('zu')
       })
     })
   })
