@@ -15,7 +15,7 @@
   }
 
   .govuk-error-summary__title {
-    @include govuk-typography-responsive($size: 24);
+    @include govuk-font-size($size: 24);
     @include govuk-typography-weight-bold;
 
     margin-top: 0;

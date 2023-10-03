@@ -13,7 +13,7 @@
   $chevron-border-colour: $govuk-secondary-text-colour;
 
   .govuk-back-link {
-    @include govuk-typography-responsive($size: $font-size);
+    @include govuk-font-size($size: $font-size);
     @include govuk-link-common;
     @include govuk-link-style-text;
 

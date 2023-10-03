@@ -176,13 +176,13 @@ describe('@function _govuk-line-height', () => {
   })
 })
 
-describe('@mixin govuk-typography-responsive', () => {
+describe('@mixin govuk-font-size', () => {
   it('outputs CSS with suitable media queries', async () => {
     const sass = `
       ${sassBootstrap}
 
       .foo {
-        @include govuk-typography-responsive($size: 14)
+        @include govuk-font-size($size: 14)
       }
     `
 
@@ -207,7 +207,7 @@ describe('@mixin govuk-typography-responsive', () => {
       ${sassBootstrap}
 
       .foo {
-        @include govuk-typography-responsive($size: 12)
+        @include govuk-font-size($size: 12)
       }
     `
 
@@ -232,7 +232,7 @@ describe('@mixin govuk-typography-responsive', () => {
       ${sassBootstrap}
 
       .foo {
-        @include govuk-typography-responsive(3.1415926536)
+        @include govuk-font-size(3.1415926536)
       }
     `
 
@@ -247,7 +247,7 @@ describe('@mixin govuk-typography-responsive', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-typography-responsive($size: 14, $important: true);
+          @include govuk-font-size($size: 14, $important: true);
         }
       `
 
@@ -272,7 +272,7 @@ describe('@mixin govuk-typography-responsive', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-typography-responsive($size: 12, $important: true);
+          @include govuk-font-size($size: 12, $important: true);
         }
       `
 
@@ -299,7 +299,7 @@ describe('@mixin govuk-typography-responsive', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-typography-responsive($size: 14, $override-line-height: 21px);
+          @include govuk-font-size($size: 14, $override-line-height: 21px);
         }
       `
 

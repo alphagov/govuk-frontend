@@ -17,15 +17,15 @@
   }
 
   .govuk-label--xl {
-    @include govuk-typography-responsive($size: 48);
+    @include govuk-font-size($size: 48);
   }
 
   .govuk-label--l {
-    @include govuk-typography-responsive($size: 36);
+    @include govuk-font-size($size: 36);
   }
 
   .govuk-label--m {
-    @include govuk-typography-responsive($size: 24);
+    @include govuk-font-size($size: 24);
   }
 
   .govuk-label--s {

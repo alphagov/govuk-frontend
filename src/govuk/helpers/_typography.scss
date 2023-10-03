@@ -210,6 +210,6 @@
   }
 
   @if $size {
-    @include govuk-typography-responsive($size, $override-line-height: $line-height);
+    @include govuk-font-size($size, $override-line-height: $line-height);
   }
 }
