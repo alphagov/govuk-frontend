@@ -202,7 +202,7 @@
   }
 
   .govuk-summary-card__actions {
-    @include govuk-typography-responsive($size: 19);
+    @include govuk-font-size($size: 19);
     @include govuk-typography-weight-bold;
     display: flex;
     flex-wrap: wrap;

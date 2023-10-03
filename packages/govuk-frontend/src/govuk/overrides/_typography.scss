@@ -5,7 +5,7 @@
   // typography scale eg .govuk-\!-font-size-80
   @each $size in map-keys($govuk-typography-scale) {
     .govuk-\!-font-size-#{$size} {
-      @include govuk-typography-responsive($size, $important: true);
+      @include govuk-font-size($size, $important: true);
     }
   }
 

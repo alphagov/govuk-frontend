@@ -17,7 +17,7 @@
   }
 
   .govuk-phase-banner__content__tag {
-    @include govuk-typography-responsive($size: 16);
+    @include govuk-font-size($size: 16);
     margin-right: govuk-spacing(2);
 
     // When forced colour mode is active, for example to provide high contrast,

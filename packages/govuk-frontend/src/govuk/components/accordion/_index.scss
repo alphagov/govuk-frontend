@@ -294,7 +294,7 @@
 
     // Add toggle link with Chevron icon on left.
     .govuk-accordion__section-toggle {
-      @include govuk-typography-responsive($size: 19);
+      @include govuk-font-size($size: 19);
       @include govuk-typography-weight-regular;
       color: $govuk-link-colour;
     }
