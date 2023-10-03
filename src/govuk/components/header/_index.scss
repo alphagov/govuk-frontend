@@ -61,7 +61,7 @@
     $product-name-offset: 10px;
     $product-name-offset-tablet: 5px;
 
-    @include govuk-font-size($size: 24, $override-line-height: 1);
+    @include govuk-font-size($size: 24, $line-height: 1);
     @include govuk-typography-weight-regular;
     display: inline-table;
 

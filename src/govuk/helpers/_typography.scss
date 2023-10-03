@@ -129,7 +129,7 @@
 ///
 /// @param {Number} $size - Point from the spacing scale (the size as it would
 ///   appear on tablet and above)
-/// @param {Number} $override-line-height [false] - Non responsive custom line
+/// @param {Number} $line-height [false] - Non responsive custom line
 ///   height. Omit to use the line height from the font map.
 /// @param {Boolean} $important [false] - Whether to mark declarations as
 ///   `!important`.
@@ -138,7 +138,7 @@
 ///
 /// @access public
 
-@mixin govuk-font-size($size, $override-line-height: false, $important: false) {
+@mixin govuk-font-size($size, $line-height: false, $important: false) {
   @if not map-has-key($govuk-typography-scale, $size) {
     @error "Unknown font size `#{$size}` - expected a point from the typography scale.";
   }
@@ -149,8 +149,14 @@
     $font-size: map-get($breakpoint-map, "font-size");
     $font-size-rem: govuk-px-to-rem($font-size);
 
-    $line-height: _govuk-line-height(
-      $line-height: if($override-line-height, $override-line-height, map-get($breakpoint-map, "line-height")),
+    // $calculated-line-height is a separate variable from $line-height,
+    // as otherwise the value would get redefined with each loop and
+    // eventually break _govuk-line-height.
+    //
+    // We continue to call the param $line-height to stay consistent with the
+    // naming with govuk-font.
+    $calculated-line-height: _govuk-line-height(
+      $line-height: if($line-height, $line-height, map-get($breakpoint-map, "line-height")),
       $font-size: $font-size
     );
 
@@ -159,20 +165,20 @@
     // are used in calculations
     $font-size: $font-size if($important, !important, null);
     $font-size-rem: $font-size-rem if($important, !important, null);
-    $line-height: $line-height if($important, !important, null);
+    $calculated-line-height: $calculated-line-height if($important, !important, null);
 
     @if not $breakpoint {
       font-size: $font-size-rem;
-      line-height: $line-height;
+      line-height: $calculated-line-height;
     } @else if $breakpoint == "print" {
       @include govuk-media-query($media-type: print) {
         font-size: $font-size;
-        line-height: $line-height;
+        line-height: $calculated-line-height;
       }
     } @else {
       @include govuk-media-query($from: $breakpoint) {
         font-size: $font-size-rem;
-        line-height: $line-height;
+        line-height: $calculated-line-height;
       }
     }
   }
@@ -210,6 +216,6 @@
   }
 
   @if $size {
-    @include govuk-font-size($size, $override-line-height: $line-height);
+    @include govuk-font-size($size, $line-height);
   }
 }

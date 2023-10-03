@@ -293,13 +293,13 @@ describe('@mixin govuk-font-size', () => {
     })
   })
 
-  describe('when $override-line-height is set', () => {
+  describe('when $line-height is set', () => {
     it('overrides the line height', async () => {
       const sass = `
         ${sassBootstrap}
 
         .foo {
-          @include govuk-font-size($size: 14, $override-line-height: 21px);
+          @include govuk-font-size($size: 14, $line-height: 21px);
         }
       `
 
@@ -504,7 +504,7 @@ describe('@mixin govuk-font-size', () => {
         .foo {
           @include govuk-font-size(
             $size: 14,
-            $override-line-height: 40px,
+            $line-height: 40px,
             $important: true
           )
         }
