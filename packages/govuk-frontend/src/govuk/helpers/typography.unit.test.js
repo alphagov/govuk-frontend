@@ -482,4 +482,59 @@ describe('@mixin govuk-font-size', () => {
       })
     })
   })
+
+  // govuk-typography-responsive is the previous, deprecated version of govuk-font-size
+  describe('@mixin govuk-typography-responsive', () => {
+    it('outputs the same CSS as govuk-font-size', async () => {
+      const sass = `
+        ${sassBootstrap}
+
+        .foo {
+          @include govuk-typography-responsive(
+            $size: 14,
+            $override-line-height: 40px,
+            $important: true
+          )
+        }
+      `
+
+      const expectedSass = `
+        ${sassBootstrap}
+
+        .foo {
+          @include govuk-font-size(
+            $size: 14,
+            $override-line-height: 40px,
+            $important: true
+          )
+        }
+      `
+
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: (await compileSassString(expectedSass)).css
+      })
+    })
+
+    it('throws a deprecation warning if govuk-typography-responsive is used', async () => {
+      const sass = `
+        ${sassBootstrap}
+
+        .foo {
+          @include govuk-typography-responsive($size: 14)
+        }
+      `
+
+      await compileSassString(sass, sassConfig)
+
+      // Expect our mocked @warn function to have been called once with a single
+      // argument, which should be the deprecation notice
+      expect(mockWarnFunction.mock.calls[0]).toEqual(
+        expect.arrayContaining([
+          'govuk-typography-responsive is deprecated. Use govuk-font-size instead. ' +
+            'To silence this warning, update $govuk-suppressed-warnings with key: ' +
+            '"govuk-typography-responsive"'
+        ])
+      )
+    })
+  })
 })
