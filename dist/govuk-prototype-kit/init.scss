@@ -1,0 +1,13 @@
+$govuk-prototype-kit-major-version: 0 !default;
+
+$govuk-assets-path: if(
+  $govuk-prototype-kit-major-version > 12,
+  $govuk-extensions-url-context + "/govuk-frontend/dist/govuk/assets/",
+  "/govuk/assets/"
+) !default;
+
+$govuk-global-styles: true !default;
+
+@import "../govuk/all";
+
+/*# sourceMappingURL=init.scss.map */

@@ -1,0 +1,64 @@
+{% from "../../macros/i18n.njk" import govukI18nAttributes %}
+
+{% set id = params.id %}
+{% set headingLevel = params.headingLevel if params.headingLevel else 2 %}
+
+<div class="govuk-accordion {%- if params.classes %} {{ params.classes }}{% endif -%}" data-module="govuk-accordion" id="{{ id }}"
+  {{- govukI18nAttributes({
+    key: 'hide-all-sections',
+    message: params.hideAllSectionsText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'hide-section',
+    message: params.hideSectionText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'hide-section-aria-label',
+    message: params.hideSectionAriaLabelText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'show-all-sections',
+    message: params.showAllSectionsText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'show-section',
+    message: params.showSectionText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'show-section-aria-label',
+    message: params.showSectionAriaLabelText
+  }) -}}
+
+  {%- if params.rememberExpanded !== undefined %} data-remember-expanded="{{ params.rememberExpanded | escape }}"{% endif %}
+  {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+  {% for item in params.items %}
+    {% if item %}
+      <div class="govuk-accordion__section {%- if item.expanded %} govuk-accordion__section--expanded{% endif %}">
+        <div class="govuk-accordion__section-header">
+          <h{{ headingLevel }} class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="{{ id }}-heading-{{ loop.index }}">
+              {{ item.heading.html | safe if item.heading.html else item.heading.text }}
+            </span>
+          </h{{ headingLevel }}>
+          {% if item.summary.html or item.summary.text %}
+            <div class="govuk-accordion__section-summary govuk-body" id="{{ id }}-summary-{{ loop.index }}">
+              {{ item.summary.html | safe if item.summary.html else item.summary.text }}
+            </div>
+          {% endif %}
+        </div>
+        <div id="{{ id }}-content-{{ loop.index }}" class="govuk-accordion__section-content" aria-labelledby="{{ id }}-heading-{{ loop.index }}">
+          {% if item.content.html %}
+            {{ item.content.html | safe }}
+          {% elif item.content.text %}
+            <p class="govuk-body">{{ item.content.text }}</p>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>

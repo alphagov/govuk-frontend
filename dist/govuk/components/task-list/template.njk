@@ -1,0 +1,30 @@
+{% from "../tag/macro.njk" import govukTag -%}
+
+{% set idPrefix = params.idPrefix if params.idPrefix else "task-list" %}
+<ul class="govuk-task-list {%- if params.classes %} {{ params.classes }}{% endif %}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  {% for item in params.items %}
+    {%- set hintId = idPrefix + "-" + loop.index + "-hint" -%}
+    {%- set statusId = idPrefix + "-" + loop.index + "-status" -%}
+    <li class="govuk-task-list__item {%- if item.href %} govuk-task-list__item--with-link{% endif %}{%- if item.classes %} {{ item.classes }}{% endif %}">
+      <div class="govuk-task-list__name-and-hint">
+        {% if item.href %}
+          <a class="govuk-link govuk-task-list__link {%- if item.title.classes %} {{ item.title.classes }}{% endif %}" href="{{ item.href }}" aria-describedby="{{ hintId + " " if item.hint }}{{ statusId }}">{{ item.title.html | safe if item.title.html else item.title.text }}</a>
+        {% else %}
+          <div {%- if item.title.classes %} class="{{ item.title.classes }}"{% endif %}>{{ item.title.html | safe if item.title.html else item.title.text }}</div>
+        {% endif %}
+        {% if item.hint %}
+          <div id="{{ hintId }}" class="govuk-task-list__hint">
+            {{ item.hint.html | safe if item.hint.html else item.hint.text }}
+          </div>
+        {% endif %}
+      </div>
+      <div class="govuk-task-list__status {%- if item.status.classes %} {{ item.status.classes }}{% endif %}" id="{{ statusId }}">
+        {% if item.status.tag %}
+          {{ govukTag(item.status.tag) | indent(4) | trim }}
+        {% else %}
+          {{ item.status.html | safe if item.status.html else item.status.text }}
+        {% endif %}
+      </div>
+    </li>
+  {% endfor %}
+</ul>

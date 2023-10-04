@@ -1,0 +1,15 @@
+////
+/// @group settings/global-styles
+////
+
+/// Include 'global' styles
+///
+/// Whether to style paragraphs (`<p>`) and links (`<a>`) without explicitly
+/// having to apply the `govuk-body` and `govuk-link` classes.
+///
+/// @type Boolean
+/// @access public
+
+$govuk-global-styles: false !default;
+
+/*# sourceMappingURL=_global-styles.scss.map */

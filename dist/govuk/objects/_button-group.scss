@@ -1,0 +1,80 @@
+@import "../base";
+
+@include govuk-exports("govuk/objects/button-group") {
+  // Button groups can be used to group buttons and links together as a group.
+  //
+  // Within a button group:
+  //
+  // - links are styled to line up visually with the buttons, including being
+  //   centre-aligned on mobile
+  // - spacing between the buttons and links is handled automatically, including
+  //   when they wrap across multiple lines
+  .govuk-button-group {
+    $horizontal-gap: govuk-spacing(3);
+    $vertical-gap: govuk-spacing(3);
+
+    // These need to be kept in sync with the button component's styles
+    $button-padding: govuk-spacing(2);
+    $button-shadow-size: $govuk-border-width-form-element;
+
+    $link-spacing: govuk-spacing(1);
+
+    @include govuk-responsive-margin(6, "bottom", $adjustment: $vertical-gap * -1);
+
+    // Flexbox is used to center-align links on mobile, align everything along
+    // the baseline on tablet and above, and to removes extra whitespace that
+    // we'd get between the buttons and links because they're inline-blocks.
+    //
+    // Ideally we'd use `gap` with flexbox rather than having to do it all with
+    // margins, but unfortunately the support isn't there (yet) and @supports
+    // doesn't play nicely with it
+    // (https://github.com/w3c/csswg-drafts/issues/3559)
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    // Give links within the button group the same font-size and line-height
+    // as buttons.
+    //
+    // Because we want the focus state to be tight around the link text, we use
+    // margins where the buttons would use padding.
+    .govuk-link {
+      @include govuk-font($size: 19, $line-height: 19px);
+      display: inline-block;
+      // Prevent links overflowing their container in IE10/11 because of bug
+      // with align-items: center
+      max-width: 100%;
+      margin-top: $link-spacing;
+      margin-bottom: $link-spacing + $vertical-gap;
+      text-align: center;
+    }
+
+    // Reduce the bottom margin to the size of the vertical gap (accommodating
+    // the button shadow) – the 'lost' margin is moved to the button-group.
+    .govuk-button {
+      margin-bottom: $vertical-gap + $button-shadow-size;
+    }
+
+    // On tablet and above, we also introduce a 'column gap' between the
+    // buttons and links in each row and left align links
+    @include govuk-media-query($from: tablet) {
+      // Cancel out the column gap for the last item in each row
+      margin-right: ($horizontal-gap * -1);
+
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: baseline;
+
+      .govuk-button,
+      .govuk-link {
+        margin-right: $horizontal-gap;
+      }
+
+      .govuk-link {
+        text-align: left;
+      }
+    }
+  }
+}
+
+/*# sourceMappingURL=_button-group.scss.map */

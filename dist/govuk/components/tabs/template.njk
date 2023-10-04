@@ -1,0 +1,36 @@
+{#- If an id 'prefix' is not passed, fall back to using the name attribute
+  instead. We need this for error messages and hints as well -#}
+{% set idPrefix = params.idPrefix if params.idPrefix -%}
+
+<div {%- if params.id %} id="{{params.id}}"{% endif %} class="govuk-tabs {%- if params.classes %} {{ params.classes }}{% endif %}" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %} data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    {{ params.title | default ("Contents") }}
+  </h2>
+  {% if(params.items | length) %}
+  <ul class="govuk-tabs__list">
+    {% for item in params.items %}
+      {% if item %}
+        {% set id = item.id if item.id else idPrefix + "-" + loop.index %}
+        <li class="govuk-tabs__list-item{% if loop.index == 1 %} govuk-tabs__list-item--selected{% endif %}">
+          <a class="govuk-tabs__tab" href="#{{ id }}"
+            {%- for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+            {{ item.label }}
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% for item in params.items %}
+    {% if item %}
+      {% set id = item.id if item.id else idPrefix + "-" + loop.index %}
+      <div class="govuk-tabs__panel{% if loop.index > 1 %} govuk-tabs__panel--hidden{% endif %}" id="{{ id }}"{% for attribute, value in item.panel.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+        {% if item.panel.html %}
+          {{ item.panel.html | safe }}
+        {% elif item.panel.text %}
+          <p class="govuk-body">{{ item.panel.text }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>

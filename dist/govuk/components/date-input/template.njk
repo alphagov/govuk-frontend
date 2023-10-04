@@ -1,0 +1,97 @@
+{% from "../error-message/macro.njk" import govukErrorMessage -%}
+{% from "../fieldset/macro.njk" import govukFieldset %}
+{% from "../hint/macro.njk" import govukHint %}
+{% from "../input/macro.njk" import govukInput %}
+
+{#- a record of other elements that we need to associate with the input using
+  aria-describedby – for example hints or error messages -#}
+{% set describedBy = params.fieldset.describedBy if params.fieldset.describedBy else "" %}
+
+{% if params.items | length %}
+  {% set dateInputItems = params.items %}
+{% else %}
+  {% set dateInputItems = [
+    {
+      name: "day",
+      classes: "govuk-input--width-2"
+    },
+    {
+      name: "month",
+      classes: "govuk-input--width-2"
+    },
+    {
+      name: "year",
+      classes: "govuk-input--width-4"
+    }
+  ] %}
+{% endif %}
+
+{#- Capture the HTML so we can optionally nest it in a fieldset -#}
+{% set innerHtml %}
+{% if params.hint %}
+  {% set hintId = params.id + "-hint" %}
+  {% set describedBy = describedBy + " " + hintId if describedBy else hintId %}
+  {{ govukHint({
+    id: hintId,
+    classes: params.hint.classes,
+    attributes: params.hint.attributes,
+    html: params.hint.html,
+    text: params.hint.text
+  }) | indent(2) | trim }}
+{% endif %}
+{% if params.errorMessage %}
+  {% set errorId = params.id + "-error" %}
+  {% set describedBy = describedBy + " " + errorId if describedBy else errorId %}
+  {{ govukErrorMessage({
+    id: errorId,
+    classes: params.errorMessage.classes,
+    attributes: params.errorMessage.attributes,
+    html: params.errorMessage.html,
+    text: params.errorMessage.text,
+    visuallyHiddenText: params.errorMessage.visuallyHiddenText
+  }) | indent(2) | trim }}
+{% endif %}
+  <div class="govuk-date-input {%- if params.classes %} {{ params.classes }}{% endif %}"
+    {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}
+    {%- if params.id %} id="{{ params.id }}"{% endif %}>
+    {% for item in dateInputItems %}
+    <div class="govuk-date-input__item">
+      {{ govukInput({
+        label: {
+          text: item.label if item.label else item.name | capitalize,
+          classes: "govuk-date-input__label"
+        },
+        id: item.id if item.id else (params.id + "-" + item.name),
+        classes: "govuk-date-input__input " + (item.classes if item.classes),
+        name: (params.namePrefix + "-" + item.name) if params.namePrefix else item.name,
+        value: item.value,
+        type: "text",
+        inputmode: item.inputmode if item.inputmode else "numeric",
+        autocomplete: item.autocomplete,
+        pattern: item.pattern,
+        attributes: item.attributes
+      }) | indent(6) | trim }}
+    </div>
+  {% endfor %}
+  </div>
+{% endset %}
+
+<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}">
+{% if params.fieldset %}
+{#- We override the fieldset's role to 'group' because otherwise JAWS does not
+    announce the description for a fieldset comprised of text inputs, but
+    adding the role to the fieldset always makes the output overly verbose for
+    radio buttons or checkboxes. -#}
+  {% call govukFieldset({
+    describedBy: describedBy,
+    classes: params.fieldset.classes,
+    role: 'group',
+    attributes: params.fieldset.attributes,
+    legend: params.fieldset.legend
+  }) %}
+  {{ innerHtml | trim | safe }}
+  {% endcall %}
+{% else %}
+  {{ innerHtml | trim | safe }}
+{% endif %}
+</div>

@@ -1,0 +1,70 @@
+{% set blockLevel = not params.items and (params.next or params.previous) %}
+
+<nav class="govuk-pagination {{- ' ' + params.classes if params.classes }} {{- ' govuk-pagination--block' if blockLevel }}" role="navigation" aria-label="{{ params.landmarkLabel | default("Pagination") }}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}" {%- endfor -%}>
+  {%- if params.previous and params.previous.href -%}
+    <div class="govuk-pagination__prev">
+      <a class="govuk-link govuk-pagination__link" href="{{ params.previous.href }}" rel="prev" {%- for attribute, value in params.previous.attributes %} {{ attribute }}="{{ value }}" {%- endfor -%}>
+        <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+          <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+        </svg>
+        <span class="govuk-pagination__link-title {{- ' govuk-pagination__link-title--decorated' if blockLevel and not params.previous.labelText }}">
+          {%- if params.previous.html or params.previous.text -%}
+            {{ params.previous.html | safe if params.previous.html else params.previous.text }}
+          {%- else -%}
+            Previous<span class="govuk-visually-hidden"> page</span>
+          {%- endif -%}
+        </span>
+        {%- if params.previous.labelText and blockLevel -%}
+          <span class="govuk-visually-hidden">:</span>
+          <span class="govuk-pagination__link-label">{{ params.previous.labelText }}</span>
+        {%- endif -%}
+      </a>
+    </div>
+  {% endif %}
+
+  {%- if params.items -%}
+    <ul class="govuk-pagination__list">
+      {%- for item in params.items -%}
+        {%- if item.ellipsis -%}
+          <li class="govuk-pagination__item govuk-pagination__item--ellipses">&ctdot;</li>
+        {%- elseif item.number -%}
+          <li class="govuk-pagination__item {{- ' govuk-pagination__item--current' if item.current }}">
+            <a class="govuk-link govuk-pagination__link" href="{{ item.href }}" aria-label="{{ item.visuallyHiddenText | default("Page " + item.number) }}" {%- if item.current %} aria-current="page" {%- endif -%} {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}" {%- endfor -%}>
+              {{ item.number }}
+            </a>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+
+  {%- if params.next and params.next.href -%}
+    {%- set nextArrow -%}
+      <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+        <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+      </svg>
+    {%- endset -%}
+
+    <div class="govuk-pagination__next">
+      <a class="govuk-link govuk-pagination__link" href="{{ params.next.href }}" rel="next" {%- for attribute, value in params.next.attributes %} {{ attribute }}="{{ value }}" {%- endfor -%}>
+        {%- if blockLevel -%}
+          {{- nextArrow | safe -}}
+        {%- endif %}
+        <span class="govuk-pagination__link-title {{- ' govuk-pagination__link-title--decorated' if blockLevel and not params.next.labelText }}">
+          {%- if params.next.html or params.next.text -%}
+            {{ params.next.html | safe if params.next.html else params.next.text }}
+          {%- else -%}
+            Next<span class="govuk-visually-hidden"> page</span>
+          {%- endif -%}
+        </span>
+        {%- if params.next.labelText and blockLevel -%}
+          <span class="govuk-visually-hidden">:</span>
+          <span class="govuk-pagination__link-label">{{ params.next.labelText }}</span>
+        {%- endif -%}
+        {%- if not blockLevel -%}
+          {{- nextArrow | safe -}}
+        {%- endif -%}
+      </a>
+    </div>
+  {%- endif -%}
+</nav>

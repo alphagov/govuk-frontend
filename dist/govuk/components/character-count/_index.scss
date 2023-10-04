@@ -1,0 +1,36 @@
+@import "../error-message/index";
+@import "../hint/index";
+@import "../label/index";
+@import "../textarea/index";
+
+@include govuk-exports("govuk/component/character-count") {
+  .govuk-character-count {
+    @include govuk-responsive-margin(6, "bottom");
+
+    .govuk-form-group,
+    .govuk-textarea {
+      margin-bottom: govuk-spacing(1);
+    }
+  }
+
+  .govuk-character-count__message {
+    @include govuk-font($size: false, $tabular: true);
+    margin-top: 0;
+    margin-bottom: 0;
+
+    &::after {
+      // Zero-width space that will reserve vertical space when no hint is provided
+      // as:
+      // - setting a min-height is not possible without a magic number
+      //   because the line-height is set by the `govuk-font` call above
+      // - using `:empty` is not possible as the hint macro outputs line breaks
+      content: "\200B";
+    }
+  }
+
+  .govuk-character-count__message--disabled {
+    visibility: hidden;
+  }
+}
+
+/*# sourceMappingURL=_index.scss.map */

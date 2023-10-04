@@ -1,0 +1,79 @@
+[
+    {
+        "name": "name",
+        "type": "string",
+        "required": true,
+        "description": "The name of the input, which is submitted with the form data."
+    },
+    {
+        "name": "id",
+        "type": "string",
+        "required": true,
+        "description": "The ID of the input."
+    },
+    {
+        "name": "value",
+        "type": "string",
+        "required": false,
+        "description": "Optional initial value of the input."
+    },
+    {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": "If `true`, file input will be disabled."
+    },
+    {
+        "name": "describedBy",
+        "type": "string",
+        "required": false,
+        "description": "One or more element IDs to add to the `aria-describedby` attribute, used to provide additional descriptive information for screenreader users."
+    },
+    {
+        "name": "label",
+        "type": "object",
+        "required": true,
+        "description": "Options for the label component.",
+        "isComponent": true
+    },
+    {
+        "name": "hint",
+        "type": "object",
+        "required": false,
+        "description": "Options for the hint component.",
+        "isComponent": true
+    },
+    {
+        "name": "errorMessage",
+        "type": "object",
+        "required": false,
+        "description": "Options for the error message component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.",
+        "isComponent": true
+    },
+    {
+        "name": "formGroup",
+        "type": "object",
+        "required": false,
+        "description": "Options for the form-group wrapper.",
+        "params": [
+            {
+                "name": "classes",
+                "type": "string",
+                "required": false,
+                "description": "Classes to add to the form group (for example to show error state for the whole group)."
+            }
+        ]
+    },
+    {
+        "name": "classes",
+        "type": "string",
+        "required": false,
+        "description": "Classes to add to the file upload component."
+    },
+    {
+        "name": "attributes",
+        "type": "object",
+        "required": false,
+        "description": "HTML attributes (for example data attributes) to add to the file upload component."
+    }
+]

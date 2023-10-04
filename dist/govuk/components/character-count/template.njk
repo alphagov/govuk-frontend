@@ -1,0 +1,87 @@
+{% from "../../macros/i18n.njk" import govukI18nAttributes %}
+
+{% from "../textarea/macro.njk" import govukTextarea %}
+{% from "../hint/macro.njk" import govukHint %}
+
+{%- set hasNoLimit = (not params.maxwords and not params.maxlength) %}
+
+<div class="govuk-character-count" data-module="govuk-character-count"
+  {%- if params.maxlength %} data-maxlength="{{ params.maxlength }}"{% endif %}
+  {%- if params.threshold %} data-threshold="{{ params.threshold }}"{% endif %}
+  {%- if params.maxwords %} data-maxwords="{{ params.maxwords }}"{% endif %}
+  {#
+    Without maxlength or maxwords, we can't guess if the component will count words or characters.
+    We can't guess a default textarea description to be interpolated in JavaScript
+    once the maximum gets configured there.
+    So we only add the attribute if a textarea description was explicitely provided.
+  #}
+  {%- if hasNoLimit and params.textareaDescriptionText %}
+    {{- govukI18nAttributes({
+      key: 'textarea-description',
+      messages: { other: params.textareaDescriptionText }
+    }) -}}
+  {% endif -%}
+
+  {{- govukI18nAttributes({
+    key: 'characters-under-limit',
+    messages: params.charactersUnderLimitText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'characters-at-limit',
+    message: params.charactersAtLimitText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'characters-over-limit',
+    messages: params.charactersOverLimitText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'words-under-limit',
+    messages: params.wordsUnderLimitText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'words-at-limit',
+    message: params.wordsAtLimitText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'words-over-limit',
+    messages: params.wordsOverLimitText
+  }) -}}>
+  {{ govukTextarea({
+    id: params.id,
+    name: params.name,
+    describedBy: params.id + '-info',
+    rows: params.rows,
+    spellcheck: params.spellcheck,
+    value: params.value,
+    formGroup: params.formGroup,
+    classes: 'govuk-js-character-count' + (' ' + params.classes if params.classes),
+    label: {
+      html: params.label.html,
+      text: params.label.text,
+      classes: params.label.classes,
+      isPageHeading: params.label.isPageHeading,
+      attributes: params.label.attributes,
+      for: params.id
+    },
+    hint: params.hint,
+    errorMessage: params.errorMessage,
+    attributes: params.attributes
+  }) }}
+  {%- set textareaDescriptionLength = params.maxwords or params.maxlength %}
+  {%- set textareaDescriptionText = params.textareaDescriptionText or 'You can enter up to %{count} ' + ('words' if params.maxwords else 'characters') %}
+  {#
+    If the limit is set in JavaScript, we won't be able to interpolate the message
+    until JavaScript, so we only set a text if the `maxlength` or `maxwords` options
+    were provided to the macro.
+  #}
+  {{ govukHint({
+    text: ((textareaDescriptionText) | replace('%{count}', textareaDescriptionLength) if not hasNoLimit),
+    id: params.id + '-info',
+    classes: 'govuk-character-count__message' + (' ' + params.countMessage.classes if params.countMessage.classes)
+  }) }}
+</div>
