@@ -1,5 +1,7 @@
 import config from '@govuk-frontend/config'
 import { babel } from '@rollup/plugin-babel'
+import commonjs from '@rollup/plugin-commonjs'
+import resolve from '@rollup/plugin-node-resolve'
 import replace from '@rollup/plugin-replace'
 import terser from '@rollup/plugin-terser'
 import * as GOVUKFrontend from 'govuk-frontend/src/govuk/all.mjs'
@@ -54,6 +56,9 @@ export default defineConfig(({ i: input }) => ({
    * Input plugins
    */
   plugins: [
+    resolve({
+      browser: true
+    }),
     replace({
       include: '**/common/govuk-frontend-version.mjs',
       preventAssignment: true,
@@ -61,8 +66,13 @@ export default defineConfig(({ i: input }) => ({
       // Add GOV.UK Frontend release version
       development: config.version
     }),
+    commonjs({
+      requireReturnsDefault: 'preferred',
+      defaultIsModuleExports: true
+    }),
     babel({
-      babelHelpers: 'bundled'
+      babelHelpers: 'bundled',
+      exclude: '**/node_modules/**'
     })
   ]
 }))
