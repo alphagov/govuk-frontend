@@ -57,7 +57,7 @@
   }
 
   .govuk-input--extra-letter-spacing {
-    @include govuk-font(false, $tabular: true);
+    @include govuk-font-tabular-numbers;
     letter-spacing: 0.05em;
   }
 

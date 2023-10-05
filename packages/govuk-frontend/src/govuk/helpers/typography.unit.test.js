@@ -120,6 +120,42 @@ describe('@mixin govuk-typography-common', () => {
   })
 })
 
+describe('@mixin govuk-font-tabular-numbers', () => {
+  it('enables tabular numbers opentype feature flags', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        @include govuk-font-tabular-numbers;
+      }
+    `
+
+    const results = compileSassString(sass)
+
+    await expect(results).resolves.toMatchObject({
+      css: expect.stringContaining('font-variant-numeric: tabular-nums;')
+    })
+  })
+
+  it('marks font-variant-numeric as important if $important is set to true', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        @include govuk-font-tabular-numbers($important: true);
+      }
+    `
+
+    const results = compileSassString(sass)
+
+    await expect(results).resolves.toMatchObject({
+      css: expect.stringContaining(
+        'font-variant-numeric: tabular-nums !important;'
+      )
+    })
+  })
+})
+
 describe('@function _govuk-line-height', () => {
   it('preserves line-height if already unitless', async () => {
     const sass = `
@@ -369,18 +405,7 @@ describe('@mixin govuk-font-size', () => {
       const results = compileSassString(sass)
 
       await expect(results).resolves.toMatchObject({
-        css: expect.stringContaining('font-feature-settings: "tnum" 1;')
-      })
-
-      await expect(results).resolves.toMatchObject({
-        css: expect.stringContaining(outdent`
-          @supports (font-variant-numeric: tabular-nums) {
-            .foo {
-              font-feature-settings: normal;
-              font-variant-numeric: tabular-nums;
-            }
-          }
-        `)
+        css: expect.stringContaining('font-variant-numeric: tabular-nums;')
       })
     })
 
