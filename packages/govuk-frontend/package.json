@@ -75,7 +75,7 @@
     "html-validate": "8.5.0",
     "nunjucks": "^3.2.4",
     "outdent": "^0.8.0",
-    "postcss": "^8.4.30",
+    "postcss": "^8.4.31",
     "postcss-scss": "^4.0.8",
     "puppeteer": "^21.3.6",
     "rollup": "^3.29.3",
