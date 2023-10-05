@@ -62,6 +62,23 @@
   font-weight: $govuk-font-weight-bold if($important, !important, null);
 }
 
+/// Tabular number helper
+///
+/// Switches numerical glyphs (0–9) to use alternative forms with a
+/// monospaced bounding box. This ensures that columns of numbers, such
+/// as those in tables, remain horizontally aligned with one another.
+/// This also has the useful side effect of making numbers more legible
+/// in some situations, such as reference codes, as the numbers are more
+/// distinct and visually separated from one another.
+///
+/// @param {Boolean} $important [false] - Whether to mark declarations as
+///   `!important`. Generally Used to create override classes.
+/// @access public
+
+@mixin govuk-font-tabular-numbers($important: false) {
+  font-variant-numeric: tabular-nums if($important, !important, null);
+}
+
 /// Convert line-heights specified in pixels into a relative value, unless
 /// they are already unit-less (and thus already treated as relative values)
 /// or the units do not match the units used for the font size.
@@ -201,12 +218,7 @@
   @include govuk-typography-common;
 
   @if $tabular {
-    font-feature-settings: "tnum" 1;
-
-    @supports (font-variant-numeric: tabular-nums) {
-      font-feature-settings: normal;
-      font-variant-numeric: tabular-nums;
-    }
+    @include govuk-font-tabular-numbers;
   }
 
   @if $weight == regular {
