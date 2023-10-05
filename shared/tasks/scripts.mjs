@@ -43,14 +43,15 @@ export async function compileJavaScript([
 
   // Create Rollup bundle(s)
   for (const options of config.options) {
-    const bundle = await rollup({
-      ...options,
+    const bundle = await rollup(options)
 
-      // Handle warnings as errors
-      onwarn(message) {
-        throw message
-      }
-    })
+    // Log warnings
+    config.warnings.flush()
+
+    // Handle warnings as errors
+    if (config.warnings.warningOccurred) {
+      throw new Error(`Rollup input '${modulePath}' logged warnings`)
+    }
 
     // Compile JavaScript to output format
     await Promise.all(
