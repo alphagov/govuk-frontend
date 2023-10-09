@@ -490,18 +490,11 @@ export class Accordion extends GOVUKFrontendComponent {
    * @param {boolean} expanded - Section expanded
    */
   updateShowAllButton(expanded) {
-    const newButtonText = expanded
+    this.$showAllButton.setAttribute('aria-expanded', expanded.toString())
+    this.$showAllText.textContent = expanded
       ? this.i18n.t('hideAllSections')
       : this.i18n.t('showAllSections')
-
-    this.$showAllButton.setAttribute('aria-expanded', expanded.toString())
-    this.$showAllText.textContent = newButtonText
-
-    if (expanded) {
-      this.$showAllIcon.classList.remove(this.downChevronIconClass)
-    } else {
-      this.$showAllIcon.classList.add(this.downChevronIconClass)
-    }
+    this.$showAllIcon.classList.toggle(this.downChevronIconClass, !expanded)
   }
 
   /**

@@ -192,15 +192,10 @@ export class ExitThisPage extends GOVUKFrontendComponent {
    */
   updateIndicator() {
     // Show or hide the indicator container depending on keypressCounter value
-    if (this.keypressCounter > 0) {
-      this.$indicatorContainer.classList.add(
-        'govuk-exit-this-page__indicator--visible'
-      )
-    } else {
-      this.$indicatorContainer.classList.remove(
-        'govuk-exit-this-page__indicator--visible'
-      )
-    }
+    this.$indicatorContainer.classList.toggle(
+      'govuk-exit-this-page__indicator--visible',
+      this.keypressCounter > 0
+    )
 
     // Turn on only the indicators we want on
     const $indicators = this.$indicatorContainer.querySelectorAll(
