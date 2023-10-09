@@ -14,16 +14,16 @@ export class Checkboxes extends GOVUKFrontendComponent {
   $inputs
 
   /**
-   * Checkboxes can be associated with a 'conditionally revealed' content block –
-   * for example, a checkbox for 'Phone' could reveal an additional form field for
-   * the user to enter their phone number.
+   * Checkboxes can be associated with a 'conditionally revealed' content block
+   * – for example, a checkbox for 'Phone' could reveal an additional form field
+   * for the user to enter their phone number.
    *
-   * These associations are made using a `data-aria-controls` attribute, which is
-   * promoted to an aria-controls attribute during initialisation.
+   * These associations are made using a `data-aria-controls` attribute, which
+   * is promoted to an aria-controls attribute during initialisation.
    *
-   * We also need to restore the state of any conditional reveals on the page (for
-   * example if the user has navigated back), and set up event handlers to keep
-   * the reveal in sync with the checkbox state.
+   * We also need to restore the state of any conditional reveals on the page
+   * (for example if the user has navigated back), and set up event handlers to
+   * keep the reveal in sync with the checkbox state.
    *
    * @param {Element} $module - HTML element to use for checkboxes
    */
@@ -153,9 +153,9 @@ export class Checkboxes extends GOVUKFrontendComponent {
   /**
    * Uncheck exclusive checkboxes
    *
-   * Find any checkbox inputs with the same name value and the 'exclusive' behaviour,
-   * and uncheck them. This helps prevent someone checking both a regular checkbox and a
-   * "None of these" checkbox in the same fieldset.
+   * Find any checkbox inputs with the same name value and the 'exclusive'
+   * behaviour, and uncheck them. This helps prevent someone checking both a
+   * regular checkbox and a "None of these" checkbox in the same fieldset.
    *
    * @private
    * @param {HTMLInputElement} $input - Checkbox input
@@ -179,8 +179,9 @@ export class Checkboxes extends GOVUKFrontendComponent {
   /**
    * Click event handler
    *
-   * Handle a click within the $module – if the click occurred on a checkbox, sync
-   * the state of any associated conditional reveal with the checkbox state.
+   * Handle a click within the $module – if the click occurred on a checkbox,
+   * sync the state of any associated conditional reveal with the checkbox
+   * state.
    *
    * @private
    * @param {MouseEvent} event - Click event
