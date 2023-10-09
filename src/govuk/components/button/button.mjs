@@ -58,8 +58,9 @@ export class Button extends GOVUKFrontendComponent {
   /**
    * Trigger a click event when the space key is pressed
    *
-   * Some screen readers tell users they can activate things with the 'button'
-   * role, so we need to match the functionality of native HTML buttons
+   * Some screen readers tell users they can use the space bar to activate
+   * things with the 'button' role, so we need to match the functionality of
+   * native HTML buttons.
    *
    * See https://github.com/alphagov/govuk_elements/pull/272#issuecomment-233028270
    *
@@ -87,8 +88,8 @@ export class Button extends GOVUKFrontendComponent {
   /**
    * Debounce double-clicks
    *
-   * If the click quickly succeeds a previous click then nothing will happen. This
-   * stops people accidentally causing multiple form submissions by double
+   * If the click quickly succeeds a previous click then nothing will happen.
+   * This stops people accidentally causing multiple form submissions by double
    * clicking buttons.
    *
    * @private

@@ -6,7 +6,8 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 /**
  * Error summary component
  *
- * Takes focus on initialisation for accessible announcement, unless disabled in configuration.
+ * Takes focus on initialisation for accessible announcement, unless disabled in
+ * configuration.
  *
  * @preserve
  */
@@ -83,17 +84,17 @@ export class ErrorSummary extends GOVUKFrontendComponent {
   /**
    * Focus the target element
    *
-   * By default, the browser will scroll the target into view. Because our labels
-   * or legends appear above the input, this means the user will be presented with
-   * an input without any context, as the label or legend will be off the top of
-   * the screen.
+   * By default, the browser will scroll the target into view. Because our
+   * labels or legends appear above the input, this means the user will be
+   * presented with an input without any context, as the label or legend will be
+   * off the top of the screen.
    *
-   * Manually handling the click event, scrolling the question into view and then
-   * focussing the element solves this.
+   * Manually handling the click event, scrolling the question into view and
+   * then focussing the element solves this.
    *
    * This also results in the label and/or legend being announced correctly in
-   * NVDA (as tested in 2018.3.2) - without this only the field type is announced
-   * (e.g. "Edit, has autocomplete").
+   * NVDA (as tested in 2018.3.2) - without this only the field type is
+   * announced (e.g. "Edit, has autocomplete").
    *
    * @private
    * @param {EventTarget} $target - Event target
@@ -120,9 +121,9 @@ export class ErrorSummary extends GOVUKFrontendComponent {
       return false
     }
 
-    // Scroll the legend or label into view *before* calling focus on the input to
-    // avoid extra scrolling in browsers that don't support `preventScroll` (which
-    // at time of writing is most of them...)
+    // Scroll the legend or label into view *before* calling focus on the input
+    // to avoid extra scrolling in browsers that don't support `preventScroll`
+    // (which at time of writing is most of them...)
     $legendOrLabel.scrollIntoView()
     $input.focus({ preventScroll: true })
 
@@ -132,8 +133,8 @@ export class ErrorSummary extends GOVUKFrontendComponent {
   /**
    * Get fragment from URL
    *
-   * Extract the fragment (everything after the hash) from a URL, but not including
-   * the hash.
+   * Extract the fragment (everything after the hash) from a URL, but not
+   * including the hash.
    *
    * @private
    * @param {string} url - URL
@@ -160,8 +161,8 @@ export class ErrorSummary extends GOVUKFrontendComponent {
    *
    * @private
    * @param {Element} $input - The input
-   * @returns {Element | null} Associated legend or label, or null if no associated
-   *   legend or label can be found
+   * @returns {Element | null} Associated legend or label, or null if no
+   *   associated legend or label can be found
    */
   getAssociatedLegendOrLabel($input) {
     const $fieldset = $input.closest('fieldset')
@@ -172,8 +173,8 @@ export class ErrorSummary extends GOVUKFrontendComponent {
       if ($legends.length) {
         const $candidateLegend = $legends[0]
 
-        // If the input type is radio or checkbox, always use the legend if there
-        // is one.
+        // If the input type is radio or checkbox, always use the legend if
+        // there is one.
         if (
           $input instanceof HTMLInputElement &&
           ($input.type === 'checkbox' || $input.type === 'radio')
@@ -181,9 +182,9 @@ export class ErrorSummary extends GOVUKFrontendComponent {
           return $candidateLegend
         }
 
-        // For other input types, only scroll to the fieldset’s legend (instead of
-        // the label associated with the input) if the input would end up in the
-        // top half of the screen.
+        // For other input types, only scroll to the fieldset’s legend (instead
+        // of the label associated with the input) if the input would end up in
+        // the top half of the screen.
         //
         // This should avoid situations where the input either ends up off the
         // screen, or obscured by a software keyboard.

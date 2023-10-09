@@ -14,16 +14,16 @@ export class Radios extends GOVUKFrontendComponent {
   $inputs
 
   /**
-   * Radios can be associated with a 'conditionally revealed' content block – for
-   * example, a radio for 'Phone' could reveal an additional form field for the
-   * user to enter their phone number.
+   * Radios can be associated with a 'conditionally revealed' content block –
+   * for example, a radio for 'Phone' could reveal an additional form field for
+   * the user to enter their phone number.
    *
-   * These associations are made using a `data-aria-controls` attribute, which is
-   * promoted to an aria-controls attribute during initialisation.
+   * These associations are made using a `data-aria-controls` attribute, which
+   * is promoted to an aria-controls attribute during initialisation.
    *
-   * We also need to restore the state of any conditional reveals on the page (for
-   * example if the user has navigated back), and set up event handlers to keep
-   * the reveal in sync with the radio state.
+   * We also need to restore the state of any conditional reveals on the page
+   * (for example if the user has navigated back), and set up event handlers to
+   * keep the reveal in sync with the radio state.
    *
    * @param {Element} $module - HTML element to use for radios
    */
@@ -128,8 +128,8 @@ export class Radios extends GOVUKFrontendComponent {
    *
    * Handle a click within the $module – if the click occurred on a radio, sync
    * the state of the conditional reveal for all radio buttons in the same form
-   * with the same name (because checking one radio could have un-checked a radio
-   * in another $module)
+   * with the same name (because checking one radio could have un-checked a
+   * radio in another $module)
    *
    * @private
    * @param {MouseEvent} event - Click event

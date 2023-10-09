@@ -199,7 +199,6 @@ export class Accordion extends GOVUKFrontendComponent {
    * @private
    */
   initSectionHeaders() {
-    // Loop through sections
     this.$sections.forEach(($section, i) => {
       const $header = $section.querySelector(`.${this.sectionHeaderClass}`)
       if (!$header) {
@@ -213,8 +212,8 @@ export class Accordion extends GOVUKFrontendComponent {
       // Handle events
       $header.addEventListener('click', () => this.onSectionToggle($section))
 
-      // See if there is any state stored in sessionStorage and set the sections to
-      // open or closed.
+      // See if there is any state stored in sessionStorage and set the sections
+      // to open or closed.
       this.setInitialState($section)
     })
   }
@@ -235,7 +234,8 @@ export class Accordion extends GOVUKFrontendComponent {
       return
     }
 
-    // Create a button element that will replace the '.govuk-accordion__section-button' span
+    // Create a button element that will replace the
+    // '.govuk-accordion__section-button' span
     const $button = document.createElement('button')
     $button.setAttribute('type', 'button')
     $button.setAttribute(
@@ -243,11 +243,10 @@ export class Accordion extends GOVUKFrontendComponent {
       `${this.$module.id}-content-${index + 1}`
     )
 
-    // Copy all attributes (https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes) from $span to $button
+    // Copy all attributes from $span to $button (except `id`, which gets added
+    // to the `$headingText` element)
     for (let i = 0; i < $span.attributes.length; i++) {
       const attr = $span.attributes.item(i)
-      // Add all attributes but not ID as this is being added to
-      // the section heading ($headingText)
       if (attr.nodeName !== 'id') {
         $button.setAttribute(attr.nodeName, attr.nodeValue)
       }
@@ -256,23 +255,25 @@ export class Accordion extends GOVUKFrontendComponent {
     // Create container for heading text so it can be styled
     const $headingText = document.createElement('span')
     $headingText.classList.add(this.sectionHeadingTextClass)
-    // Copy the span ID to the heading text to allow it to be referenced by `aria-labelledby` on the
-    // hidden content area without "Show this section"
+    // Copy the span ID to the heading text to allow it to be referenced by
+    // `aria-labelledby` on the hidden content area without "Show this section"
     $headingText.id = $span.id
 
-    // Create an inner heading text container to limit the width of the focus state
+    // Create an inner heading text container to limit the width of the focus
+    // state
     const $headingTextFocus = document.createElement('span')
     $headingTextFocus.classList.add(this.sectionHeadingTextFocusClass)
     $headingText.appendChild($headingTextFocus)
-    // span could contain HTML elements (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
+    // span could contain HTML elements
+    // (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
     $headingTextFocus.innerHTML = $span.innerHTML
 
     // Create container for show / hide icons and text.
     const $showHideToggle = document.createElement('span')
     $showHideToggle.classList.add(this.sectionShowHideToggleClass)
-    // Tell Google not to index the 'show' text as part of the heading
-    // For the snippet to work with JavaScript, it must be added before adding the page element to the
-    // page's DOM. See https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#data-nosnippet-attr
+    // Tell Google not to index the 'show' text as part of the heading. Must be
+    // set on the element before it's added to the DOM.
+    // See https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#data-nosnippet-attr
     $showHideToggle.setAttribute('data-nosnippet', '')
     // Create an inner container to limit the width of the focus state
     const $showHideToggleFocus = document.createElement('span')
@@ -296,12 +297,13 @@ export class Accordion extends GOVUKFrontendComponent {
 
     // If summary content exists add to DOM in correct order
     if ($summary) {
-      // Create a new `span` element and copy the summary line content from the original `div` to the
-      // new `span`
-      // This is because the summary line text is now inside a button element, which can only contain
-      // phrasing content
+      // Create a new `span` element and copy the summary line content from the
+      // original `div` to the new `span`. This is because the summary line text
+      // is now inside a button element, which can only contain phrasing
+      // content.
       const $summarySpan = document.createElement('span')
-      // Create an inner summary container to limit the width of the summary focus state
+      // Create an inner summary container to limit the width of the summary
+      // focus state
       const $summarySpanFocus = document.createElement('span')
       $summarySpanFocus.classList.add(this.sectionSummaryFocusClass)
       $summarySpan.appendChild($summarySpanFocus)
@@ -372,10 +374,8 @@ export class Accordion extends GOVUKFrontendComponent {
   onShowOrHideAllToggle() {
     const nowExpanded = !this.checkIfAllSectionsOpen()
 
-    // Loop through sections
     this.$sections.forEach(($section) => {
       this.setExpanded(nowExpanded, $section)
-      // Store the state in sessionStorage when a change is triggered
       this.storeState($section)
     })
 
@@ -474,9 +474,7 @@ export class Accordion extends GOVUKFrontendComponent {
    * @returns {boolean} True if all sections are open
    */
   checkIfAllSectionsOpen() {
-    // Get a count of all the Accordion sections
     const sectionsCount = this.$sections.length
-    // Get a count of all Accordion sections that are expanded
     const expandedSectionCount = this.$module.querySelectorAll(
       `.${this.sectionExpandedClass}`
     ).length
@@ -499,7 +497,6 @@ export class Accordion extends GOVUKFrontendComponent {
     this.$showAllButton.setAttribute('aria-expanded', expanded.toString())
     this.$showAllText.textContent = newButtonText
 
-    // Swap icon, toggle class
     if (expanded) {
       this.$showAllIcon.classList.remove(this.downChevronIconClass)
     } else {
@@ -515,16 +512,17 @@ export class Accordion extends GOVUKFrontendComponent {
    */
   storeState($section) {
     if (this.browserSupportsSessionStorage && this.config.rememberExpanded) {
-      // We need a unique way of identifying each content in the Accordion. Since
-      // an `#id` should be unique and an `id` is required for `aria-` attributes
-      // `id` can be safely used.
+      // We need a unique way of identifying each content in the Accordion.
+      // Since an `#id` should be unique and an `id` is required for `aria-`
+      // attributes `id` can be safely used.
       const $button = $section.querySelector(`.${this.sectionButtonClass}`)
 
       if ($button) {
         const contentId = $button.getAttribute('aria-controls')
         const contentState = $button.getAttribute('aria-expanded')
 
-        // Only set the state when both `contentId` and `contentState` are taken from the DOM.
+        // Only set the state when both `contentId` and `contentState` are taken
+        // from the DOM.
         if (contentId && contentState) {
           window.sessionStorage.setItem(contentId, contentState)
         }
@@ -556,11 +554,12 @@ export class Accordion extends GOVUKFrontendComponent {
   }
 
   /**
-   * Create an element to improve semantics of the section button with punctuation
+   * Create an element to improve semantics of the section button with
+   * punctuation
    *
-   * Adding punctuation to the button can also improve its general semantics by dividing its contents
-   * into thematic chunks.
-   * See https://github.com/alphagov/govuk-frontend/issues/2327#issuecomment-922957442
+   * Adding punctuation to the button can also improve its general semantics by
+   * dividing its contents into thematic chunks. See
+   * https://github.com/alphagov/govuk-frontend/issues/2327#issuecomment-922957442
    *
    * @private
    * @returns {Element} DOM element

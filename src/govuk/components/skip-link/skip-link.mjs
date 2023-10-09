@@ -43,7 +43,7 @@ export class SkipLink extends GOVUKFrontendComponent {
    * Get linked element
    *
    * @private
-   * @returns {HTMLElement} $linkedElement - DOM element linked to from the skip link
+   * @returns {HTMLElement} $linkedElement - Target of the skip link
    */
   getLinkedElement() {
     const linkedElementId = this.getFragmentFromUrl(this.$module.hash)
@@ -83,7 +83,8 @@ export class SkipLink extends GOVUKFrontendComponent {
       this.$linkedElement.setAttribute('tabindex', '-1')
       this.$linkedElement.classList.add('govuk-skip-link-focused-element')
 
-      // Add listener for blur on the focused element (unless the listener has previously been added)
+      // Add listener for blur on the focused element (unless the listener has
+      // previously been added)
       if (!this.linkedElementListener) {
         this.$linkedElement.addEventListener('blur', () =>
           this.removeFocusProperties()
@@ -96,8 +97,9 @@ export class SkipLink extends GOVUKFrontendComponent {
   }
 
   /**
-   * Remove the tabindex that makes the linked element focusable because the element only needs to be
-   * focusable until it has received programmatic focus and a screen reader has announced it.
+   * Remove the tabindex that makes the linked element focusable because the
+   * element only needs to be focusable until it has received programmatic focus
+   * and a screen reader has announced it.
    *
    * Remove the CSS class that removes the native focus styles.
    *
@@ -111,8 +113,8 @@ export class SkipLink extends GOVUKFrontendComponent {
   /**
    * Get fragment from URL
    *
-   * Extract the fragment (everything after the hash) from a URL, but not including
-   * the hash.
+   * Extract the fragment (everything after the hash) from a URL, but not
+   * including the hash.
    *
    * @private
    * @param {string} url - URL

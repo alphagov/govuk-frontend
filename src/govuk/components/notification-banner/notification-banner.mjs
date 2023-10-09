@@ -46,12 +46,13 @@ export class NotificationBanner extends GOVUKFrontendComponent {
   /**
    * Focus the element
    *
-   * If `role="alert"` is set, focus the element to help some assistive technologies
-   * prioritise announcing it.
+   * If `role="alert"` is set, focus the element to help some assistive
+   * technologies prioritise announcing it.
    *
-   * You can turn off the auto-focus functionality by setting `data-disable-auto-focus="true"` in the
-   * component HTML. You might wish to do this based on user research findings, or to avoid a clash
-   * with another element which should be focused when the page loads.
+   * You can turn off the auto-focus functionality by setting
+   * `data-disable-auto-focus="true"` in the component HTML. You might wish to
+   * do this based on user research findings, or to avoid a clash with another
+   * element which should be focused when the page loads.
    *
    * @private
    */
@@ -64,9 +65,9 @@ export class NotificationBanner extends GOVUKFrontendComponent {
       return
     }
 
-    // Set tabindex to -1 to make the element focusable with JavaScript.
-    // Remove the tabindex on blur as the component doesn't need to be focusable after the page has
-    // loaded.
+    // Set tabindex to -1 to make the element focusable with JavaScript. Remove
+    // the tabindex on blur as the component doesn't need to be focusable after
+    // the page has loaded.
     if (!this.$module.getAttribute('tabindex')) {
       this.$module.setAttribute('tabindex', '-1')
 
