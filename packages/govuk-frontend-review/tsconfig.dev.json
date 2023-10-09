@@ -9,7 +9,6 @@
       "gulp",
       "jest",
       "jest-puppeteer",
-      "marked",
       "node",
       "nunjucks",
       "slug"
