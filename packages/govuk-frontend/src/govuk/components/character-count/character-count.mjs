@@ -299,29 +299,19 @@ export class CharacterCount extends GOVUKFrontendComponent {
    */
   updateVisibleCountMessage() {
     const remainingNumber = this.maxLength - this.count(this.$textarea.value)
+    const isError = remainingNumber < 0
 
     // If input is over the threshold, remove the disabled class which renders
     // the counter invisible.
-    if (this.isOverThreshold()) {
-      this.$visibleCountMessage.classList.remove(
-        'govuk-character-count__message--disabled'
-      )
-    } else {
-      this.$visibleCountMessage.classList.add(
-        'govuk-character-count__message--disabled'
-      )
-    }
+    this.$visibleCountMessage.classList.toggle(
+      'govuk-character-count__message--disabled',
+      !this.isOverThreshold()
+    )
 
     // Update styles
-    if (remainingNumber < 0) {
-      this.$textarea.classList.add('govuk-textarea--error')
-      this.$visibleCountMessage.classList.remove('govuk-hint')
-      this.$visibleCountMessage.classList.add('govuk-error-message')
-    } else {
-      this.$textarea.classList.remove('govuk-textarea--error')
-      this.$visibleCountMessage.classList.remove('govuk-error-message')
-      this.$visibleCountMessage.classList.add('govuk-hint')
-    }
+    this.$textarea.classList.toggle('govuk-textarea--error', isError)
+    this.$visibleCountMessage.classList.toggle('govuk-error-message', isError)
+    this.$visibleCountMessage.classList.toggle('govuk-hint', !isError)
 
     // Update message
     this.$visibleCountMessage.textContent = this.getCountMessage()
