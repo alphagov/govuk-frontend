@@ -98,9 +98,9 @@ export class CharacterCount extends GOVUKFrontendComponent {
     // Read config set using dataset ('data-' values)
     const datasetConfig = normaliseDataset($module.dataset)
 
-    // To ensure data-attributes take complete precedence, even if they change the
-    // type of count, we need to reset the `maxlength` and `maxwords` from the
-    // JavaScript config.
+    // To ensure data-attributes take complete precedence, even if they change
+    // the type of count, we need to reset the `maxlength` and `maxwords` from
+    // the JavaScript config.
     //
     // We can't mutate `config`, though, as it may be shared across multiple
     // components inside `initAll`.
@@ -232,12 +232,12 @@ export class CharacterCount extends GOVUKFrontendComponent {
   /**
    * Handle focus event
    *
-   * Speech recognition software such as Dragon NaturallySpeaking will modify the
-   * fields by directly changing its `value`. These changes don't trigger events
-   * in JavaScript, so we need to poll to handle when and if they occur.
+   * Speech recognition software such as Dragon NaturallySpeaking will modify
+   * the fields by directly changing its `value`. These changes don't trigger
+   * events in JavaScript, so we need to poll to handle when and if they occur.
    *
-   * Once the keyup event hasn't been detected for at least 1000 ms (1s), check if
-   * the textarea value has changed and update the count message if it has.
+   * Once the keyup event hasn't been detected for at least 1000 ms (1s), check
+   * if the textarea value has changed and update the count message if it has.
    *
    * This is so that the update triggered by the manual comparison doesn't
    * conflict with debounced KeyboardEvent updates.
@@ -300,8 +300,8 @@ export class CharacterCount extends GOVUKFrontendComponent {
   updateVisibleCountMessage() {
     const remainingNumber = this.maxLength - this.count(this.$textarea.value)
 
-    // If input is over the threshold, remove the disabled class which renders the
-    // counter invisible.
+    // If input is over the threshold, remove the disabled class which renders
+    // the counter invisible.
     if (this.isOverThreshold()) {
       this.$visibleCountMessage.classList.remove(
         'govuk-character-count__message--disabled'

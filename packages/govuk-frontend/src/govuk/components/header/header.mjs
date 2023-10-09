@@ -18,17 +18,17 @@ export class Header extends GOVUKFrontendComponent {
 
   /**
    * Save the opened/closed state for the nav in memory so that we can
-   * accurately maintain state when the screen is changed from small to
-   * big and back to small
+   * accurately maintain state when the screen is changed from small to big and
+   * back to small
    *
    * @private
    */
   menuIsOpen = false
 
   /**
-   * A global const for storing a matchMedia instance which we'll use to
-   * detect when a screen size change happens. We rely on it being null if the
-   * feature isn't available to initially apply hidden attributes
+   * A global const for storing a matchMedia instance which we'll use to detect
+   * when a screen size change happens. We rely on it being null if the feature
+   * isn't available to initially apply hidden attributes
    *
    * @private
    * @type {MediaQueryList | null}
@@ -36,8 +36,8 @@ export class Header extends GOVUKFrontendComponent {
   mql = null
 
   /**
-   * Apply a matchMedia for desktop which will trigger a state sync if the browser
-   * viewport moves between states.
+   * Apply a matchMedia for desktop which will trigger a state sync if the
+   * browser viewport moves between states.
    *
    * @param {Element} $module - HTML element to use for header
    */
@@ -54,9 +54,9 @@ export class Header extends GOVUKFrontendComponent {
     this.$module = $module
     const $menuButton = $module.querySelector('.govuk-js-header-toggle')
 
-    // Headers don't necessarily have a navigation.
-    // When they don't, the menu toggle won't be rendered
-    // by our macro (or may be omitted when writing plain HTML)
+    // Headers don't necessarily have a navigation. When they don't, the menu
+    // toggle won't be rendered by our macro (or may be omitted when writing
+    // plain HTML)
     if (!$menuButton) {
       return this
     }

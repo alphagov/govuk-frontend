@@ -68,7 +68,7 @@ export class Tabs extends GOVUKFrontendComponent {
     this.$module = $module
     this.$tabs = $tabs
 
-    // Save bounded functions to use when removing event listeners during teardown
+    // Save bound functions so we can remove event listeners during teardown
     this.boundTabClick = this.onTabClick.bind(this)
     this.boundTabKeydown = this.onTabKeydown.bind(this)
     this.boundOnHashChange = this.onHashChange.bind(this)
@@ -345,8 +345,8 @@ export class Tabs extends GOVUKFrontendComponent {
       return
     }
 
-    // Save and restore the id
-    // so the page doesn't jump when a user clicks a tab (which changes the hash)
+    // Save and restore the id so the page doesn't jump when a user clicks a tab
+    // (which changes the hash)
     const panelId = $panel.id
     $panel.id = ''
     this.changingHash = true
@@ -523,8 +523,8 @@ export class Tabs extends GOVUKFrontendComponent {
   /**
    * Get link hash fragment for href attribute
    *
-   * this is because IE doesn't always return the actual value but a relative full path
-   * should be a utility function most prob
+   * this is because IE doesn't always return the actual value but a relative
+   * full path should be a utility function most prob
    * {@link http://labs.thesedays.com/blog/2010/01/08/getting-the-href-value-with-jquery-in-ie/}
    *
    * @private
