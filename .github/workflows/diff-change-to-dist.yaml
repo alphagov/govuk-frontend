@@ -20,11 +20,8 @@ jobs:
         with:
           fetch-depth: 0 # Need to also checkout the base branch to compare
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3.8.1
-        with:
-          cache: npm
-          node-version-file: .nvmrc
+      - name: Install dependencies
+        uses: ./.github/workflows/actions/install-node
 
       - name: Set up diff drivers
         run: |
