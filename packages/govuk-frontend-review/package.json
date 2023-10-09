@@ -32,7 +32,7 @@
     "express-validator": "^7.0.1",
     "front-matter": "^4.0.2",
     "govuk-frontend": "*",
-    "highlight.js": "^11.8.0",
+    "highlight.js": "^11.9.0",
     "iframe-resizer": "^4.3.7",
     "js-beautify": "^1.14.9",
     "marked": "^9.0.3",
