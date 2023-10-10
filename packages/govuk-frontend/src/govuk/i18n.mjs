@@ -131,20 +131,20 @@ export class I18n {
   }
 
   /**
-   * Check to see if the browser supports Intl and Intl.PluralRules.
+   * Check to see if the browser supports Intl.PluralRules
    *
    * It requires all conditions to be met in order to be supported:
-   * - The browser supports the Intl class (true in IE11)
-   * - The implementation of Intl supports PluralRules (NOT true in IE11)
+   * - The implementation of Intl supports PluralRules (NOT true in Safari 10–12)
    * - The browser/OS has plural rules for the current locale (browser dependent)
+   *
+   * {@link https://browsersl.ist/#q=supports+es6-module+and+not+supports+intl-pluralrules}
    *
    * @internal
    * @returns {boolean} Returns true if all conditions are met. Returns false otherwise.
    */
   hasIntlPluralRulesSupport() {
     return Boolean(
-      window.Intl &&
-        'PluralRules' in window.Intl &&
+      'PluralRules' in window.Intl &&
         Intl.PluralRules.supportedLocalesOf(this.locale).length
     )
   }
