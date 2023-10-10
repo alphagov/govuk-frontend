@@ -27,6 +27,14 @@ module.exports = {
         browser: true
       },
       rules: {
+        // Allow void return shorthand in arrow functions
+        '@typescript-eslint/no-confusing-void-expression': [
+          'error',
+          {
+            ignoreArrowShorthand: true
+          }
+        ],
+
         // Check type support for template string implicit `.toString()`
         '@typescript-eslint/restrict-template-expressions': [
           'error',
