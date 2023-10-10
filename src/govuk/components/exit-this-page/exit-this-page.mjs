@@ -78,7 +78,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
    * @param {Element} $module - HTML element that wraps the Exit This Page button
    * @param {ExitThisPageConfig} [config] - Exit This Page config
    */
-  constructor($module, config) {
+  constructor($module, config = {}) {
     super()
 
     if (!($module instanceof HTMLElement)) {
@@ -99,7 +99,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
 
     this.config = mergeConfigs(
       ExitThisPage.defaults,
-      config || {},
+      config,
       normaliseDataset($module.dataset)
     )
 
@@ -404,7 +404,6 @@ export class ExitThisPage extends GOVUKFrontendComponent {
    *
    * @see {@link ExitThisPageConfig}
    * @constant
-   * @default
    * @type {ExitThisPageConfig}
    */
   static defaults = Object.freeze({

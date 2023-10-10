@@ -71,7 +71,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
    * @param {Element} $module - HTML element to use for character count
    * @param {CharacterCountConfig} [config] - Character count config
    */
-  constructor($module, config) {
+  constructor($module, config = {}) {
     super()
 
     if (!($module instanceof HTMLElement)) {
@@ -115,7 +115,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
 
     this.config = mergeConfigs(
       CharacterCount.defaults,
-      config || {},
+      config,
       configOverrides,
       datasetConfig
     )
@@ -422,7 +422,6 @@ export class CharacterCount extends GOVUKFrontendComponent {
    *
    * @see {@link CharacterCountConfig}
    * @constant
-   * @default
    * @type {CharacterCountConfig}
    */
   static defaults = Object.freeze({

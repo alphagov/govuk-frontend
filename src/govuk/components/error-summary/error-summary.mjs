@@ -25,7 +25,7 @@ export class ErrorSummary extends GOVUKFrontendComponent {
    * @param {Element} $module - HTML element to use for error summary
    * @param {ErrorSummaryConfig} [config] - Error summary config
    */
-  constructor($module, config) {
+  constructor($module, config = {}) {
     super()
 
     if (!($module instanceof HTMLElement)) {
@@ -39,7 +39,7 @@ export class ErrorSummary extends GOVUKFrontendComponent {
 
     this.config = mergeConfigs(
       ErrorSummary.defaults,
-      config || {},
+      config,
       normaliseDataset($module.dataset)
     )
 
@@ -219,7 +219,6 @@ export class ErrorSummary extends GOVUKFrontendComponent {
    *
    * @see {@link ErrorSummaryConfig}
    * @constant
-   * @default
    * @type {ErrorSummaryConfig}
    */
   static defaults = Object.freeze({
