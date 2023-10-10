@@ -366,7 +366,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
    * By running this check when the page is shown, we can programatically restore
    * the page and the component to a "default" state
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    */
   resetPage() {
     // If an overlay is set, remove it and reset the value
