@@ -18,8 +18,8 @@ module.exports = {
       },
       plugins: ['@typescript-eslint', 'es-x'],
       extends: [
-        'plugin:@typescript-eslint/recommended',
-        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        'plugin:@typescript-eslint/strict-type-checked',
+        'plugin:@typescript-eslint/stylistic-type-checked',
         'plugin:es-x/restrict-to-es2015',
         'prettier'
       ],
