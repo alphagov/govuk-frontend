@@ -25,7 +25,7 @@ export class Checkboxes extends GOVUKFrontendComponent {
    * (for example if the user has navigated back), and set up event handlers to
    * keep the reveal in sync with the checkbox state.
    *
-   * @param {Element} $module - HTML element to use for checkboxes
+   * @param {Element | null} $module - HTML element to use for checkboxes
    */
   constructor($module) {
     super()
