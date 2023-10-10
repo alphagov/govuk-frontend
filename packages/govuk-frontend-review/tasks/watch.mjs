@@ -51,7 +51,8 @@ export const watch = (options) =>
      */
     task.name('lint:js watch', () =>
       gulp.watch(
-        [join(options.srcPath, '**/*.{cjs,js,mjs}')],
+        join(options.srcPath, '**/*.{cjs,js,mjs}'),
+        { ignored: ['**/*.test.*'] },
         gulp.parallel(
           // Run TypeScript compiler
           npm.script('build:types', ['--incremental', '--pretty'], options),
