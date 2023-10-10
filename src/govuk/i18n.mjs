@@ -266,20 +266,14 @@ export class I18n {
    *   of the functions in this.pluralRules)
    */
   getPluralRulesForLocale() {
-    const locale = this.locale
-    const localeShort = locale.split('-')[0]
+    const localeShort = this.locale.split('-')[0]
 
     // Look through the plural rules map to find which `pluralRule` is
     // appropriate for our current `locale`.
     for (const pluralRule in I18n.pluralRulesMap) {
-      if (
-        Object.prototype.hasOwnProperty.call(I18n.pluralRulesMap, pluralRule)
-      ) {
-        const languages = I18n.pluralRulesMap[pluralRule]
-        for (let i = 0; i < languages.length; i++) {
-          if (languages[i] === locale || languages[i] === localeShort) {
-            return pluralRule
-          }
+      for (const language of I18n.pluralRulesMap[pluralRule]) {
+        if (language === this.locale || language === localeShort) {
+          return pluralRule
         }
       }
     }
