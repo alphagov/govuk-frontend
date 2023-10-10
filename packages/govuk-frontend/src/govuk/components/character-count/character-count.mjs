@@ -28,17 +28,11 @@ export class CharacterCount extends GOVUKFrontendComponent {
   /** @private */
   $textarea
 
-  /**
-   * @private
-   * @type {HTMLElement | null}
-   */
-  $visibleCountMessage = null
+  /** @private */
+  $visibleCountMessage
 
-  /**
-   * @private
-   * @type {HTMLElement | null}
-   */
-  $screenReaderCountMessage = null
+  /** @private */
+  $screenReaderCountMessage
 
   /**
    * @private
