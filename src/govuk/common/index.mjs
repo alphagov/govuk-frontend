@@ -126,7 +126,7 @@ export function extractConfigByNamespace(configObject, namespace) {
  * @returns {string | undefined} Fragment from URL, without the hash
  */
 export function getFragmentFromUrl(url) {
-  if (url.indexOf('#') === -1) {
+  if (!url.includes('#')) {
     return undefined
   }
 
