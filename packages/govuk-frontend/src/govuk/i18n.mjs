@@ -14,13 +14,12 @@ export class I18n {
    * @param {object} [config] - Configuration options for the function.
    * @param {string} [config.locale] - An overriding locale for the PluralRules functionality.
    */
-  constructor(translations, config) {
+  constructor(translations = {}, config = {}) {
     // Make list of translations available throughout function
-    this.translations = translations || {}
+    this.translations = translations
 
     // The locale to use for PluralRules and NumberFormat
-    this.locale =
-      (config && config.locale) || document.documentElement.lang || 'en'
+    this.locale = config.locale || document.documentElement.lang || 'en'
   }
 
   /**

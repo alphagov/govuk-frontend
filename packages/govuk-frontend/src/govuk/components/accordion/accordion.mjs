@@ -116,7 +116,7 @@ export class Accordion extends GOVUKFrontendComponent {
    * @param {Element} $module - HTML element to use for accordion
    * @param {AccordionConfig} [config] - Accordion config
    */
-  constructor($module, config) {
+  constructor($module, config = {}) {
     super()
 
     if (!($module instanceof HTMLElement)) {
@@ -130,7 +130,7 @@ export class Accordion extends GOVUKFrontendComponent {
 
     this.config = mergeConfigs(
       Accordion.defaults,
-      config || {},
+      config,
       normaliseDataset($module.dataset)
     )
 
@@ -574,7 +574,6 @@ export class Accordion extends GOVUKFrontendComponent {
    *
    * @see {@link AccordionConfig}
    * @constant
-   * @default
    * @type {AccordionConfig}
    */
   static defaults = Object.freeze({
