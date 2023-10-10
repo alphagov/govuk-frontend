@@ -292,7 +292,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
       this.updateIndicator()
 
       // Clear the timeout for the keypress timeout message clearing itself
-      if (this.timeoutMessageId !== null) {
+      if (this.timeoutMessageId) {
         window.clearTimeout(this.timeoutMessageId)
         this.timeoutMessageId = null
       }
@@ -300,7 +300,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
       if (this.keypressCounter >= 3) {
         this.keypressCounter = 0
 
-        if (this.keypressTimeoutId !== null) {
+        if (this.keypressTimeoutId) {
           window.clearTimeout(this.keypressTimeoutId)
           this.keypressTimeoutId = null
         }
@@ -315,7 +315,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
       }
 
       this.setKeypressTimer()
-    } else if (this.keypressTimeoutId !== null) {
+    } else if (this.keypressTimeoutId) {
       // If the user pressed any key other than 'Shift', after having pressed
       // 'Shift' and activating the timer, stop and reset the timer.
       this.resetKeypressTimer()
@@ -338,7 +338,9 @@ export class ExitThisPage extends GOVUKFrontendComponent {
   setKeypressTimer() {
     // Clear any existing timeout. This is so only one timer is running even if
     // there are multiple keypresses in quick succession.
-    window.clearTimeout(this.keypressTimeoutId)
+    if (this.keypressTimeoutId) {
+      window.clearTimeout(this.keypressTimeoutId)
+    }
 
     // Set a fresh timeout
     this.keypressTimeoutId = window.setTimeout(
@@ -357,8 +359,10 @@ export class ExitThisPage extends GOVUKFrontendComponent {
       return
     }
 
-    window.clearTimeout(this.keypressTimeoutId)
-    this.keypressTimeoutId = null
+    if (this.keypressTimeoutId) {
+      window.clearTimeout(this.keypressTimeoutId)
+      this.keypressTimeoutId = null
+    }
 
     const $updateSpan = this.$updateSpan
 
