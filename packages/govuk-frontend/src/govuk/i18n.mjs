@@ -84,12 +84,9 @@ export class I18n {
    * @returns {string} The translation string to output, with $\{\} placeholders replaced
    */
   replacePlaceholders(translationString, options) {
-    /** @type {Intl.NumberFormat | undefined} */
-    let formatter
-
-    if (this.hasIntlNumberFormatSupport()) {
-      formatter = new Intl.NumberFormat(this.locale)
-    }
+    const formatter = Intl.NumberFormat.supportedLocalesOf(this.locale).length
+      ? new Intl.NumberFormat(this.locale)
+      : undefined
 
     return translationString.replace(
       /%{(.\S+)}/g,
@@ -149,25 +146,6 @@ export class I18n {
       window.Intl &&
         'PluralRules' in window.Intl &&
         Intl.PluralRules.supportedLocalesOf(this.locale).length
-    )
-  }
-
-  /**
-   * Check to see if the browser supports Intl and Intl.NumberFormat.
-   *
-   * It requires all conditions to be met in order to be supported:
-   * - The browser supports the Intl class (true in IE11)
-   * - The implementation of Intl supports NumberFormat (also true in IE11)
-   * - The browser/OS has number formatting rules for the current locale (browser dependent)
-   *
-   * @internal
-   * @returns {boolean} Returns true if all conditions are met. Returns false otherwise.
-   */
-  hasIntlNumberFormatSupport() {
-    return Boolean(
-      window.Intl &&
-        'NumberFormat' in window.Intl &&
-        Intl.NumberFormat.supportedLocalesOf(this.locale).length
     )
   }
 
