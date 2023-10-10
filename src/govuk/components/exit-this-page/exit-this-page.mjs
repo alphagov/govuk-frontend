@@ -89,11 +89,11 @@ export class ExitThisPage extends GOVUKFrontendComponent {
     }
 
     const $button = $module.querySelector('.govuk-exit-this-page__button')
-    if (!($button instanceof HTMLElement)) {
+    if (!($button instanceof HTMLAnchorElement)) {
       throw new ElementError($button, {
         componentName: 'Exit this page',
         identifier: 'Button',
-        expectedType: HTMLElement
+        expectedType: HTMLAnchorElement
       })
     }
 
@@ -235,7 +235,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
     document.body.appendChild(this.$overlay)
     this.$overlay.textContent = this.i18n.t('activated')
 
-    window.location.href = this.$button.getAttribute('href')
+    window.location.href = this.$button.href
   }
 
   /**
