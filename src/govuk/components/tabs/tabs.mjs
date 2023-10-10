@@ -1,3 +1,4 @@
+import { getFragmentFromUrl } from '../../common/index.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
@@ -264,7 +265,7 @@ export class Tabs extends GOVUKFrontendComponent {
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   setAttributes($tab) {
-    const panelId = this.getFragmentFromUrl($tab.href)
+    const panelId = getFragmentFromUrl($tab.href)
     if (!panelId) {
       return
     }
@@ -447,7 +448,7 @@ export class Tabs extends GOVUKFrontendComponent {
    * @returns {Element | null} Tab panel
    */
   getPanel($tab) {
-    const panelId = this.getFragmentFromUrl($tab.href)
+    const panelId = getFragmentFromUrl($tab.href)
     if (!panelId) {
       return null
     }
@@ -527,24 +528,6 @@ export class Tabs extends GOVUKFrontendComponent {
     return this.$module.querySelector(
       '.govuk-tabs__list-item--selected a.govuk-tabs__tab'
     )
-  }
-
-  /**
-   * Get fragment from URL
-   *
-   * Extract the fragment (everything after the hash) from a URL, but not
-   * including the hash.
-   *
-   * @private
-   * @param {string} url - URL
-   * @returns {string | undefined} Fragment from URL, without the hash
-   */
-  getFragmentFromUrl(url) {
-    if (!url.includes('#')) {
-      return undefined
-    }
-
-    return url.split('#').pop()
   }
 
   /**
