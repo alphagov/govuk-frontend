@@ -242,10 +242,9 @@ export class I18n {
     // Look through the plural rules map to find which `pluralRule` is
     // appropriate for our current `locale`.
     for (const pluralRule in I18n.pluralRulesMap) {
-      for (const language of I18n.pluralRulesMap[pluralRule]) {
-        if (language === this.locale || language === localeShort) {
-          return pluralRule
-        }
+      const languages = I18n.pluralRulesMap[pluralRule]
+      if (languages.includes(this.locale) || languages.includes(localeShort)) {
+        return pluralRule
       }
     }
   }
