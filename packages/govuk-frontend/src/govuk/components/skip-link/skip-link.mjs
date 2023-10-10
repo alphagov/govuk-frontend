@@ -18,7 +18,7 @@ export class SkipLink extends GOVUKFrontendComponent {
   linkedElementListener = false
 
   /**
-   * @param {Element} $module - HTML element to use for skip link
+   * @param {Element | null} $module - HTML element to use for skip link
    * @throws {ElementError} when $module is not set or the wrong type
    * @throws {ElementError} when $module.hash does not contain a hash
    * @throws {ElementError} when the linked element is missing or the wrong type

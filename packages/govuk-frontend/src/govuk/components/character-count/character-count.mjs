@@ -62,7 +62,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
   maxLength = Infinity
 
   /**
-   * @param {Element} $module - HTML element to use for character count
+   * @param {Element | null} $module - HTML element to use for character count
    * @param {CharacterCountConfig} [config] - Character count config
    */
   constructor($module, config = {}) {

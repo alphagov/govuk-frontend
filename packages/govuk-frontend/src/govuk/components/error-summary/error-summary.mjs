@@ -22,7 +22,7 @@ export class ErrorSummary extends GOVUKFrontendComponent {
   config
 
   /**
-   * @param {Element} $module - HTML element to use for error summary
+   * @param {Element | null} $module - HTML element to use for error summary
    * @param {ErrorSummaryConfig} [config] - Error summary config
    */
   constructor($module, config = {}) {

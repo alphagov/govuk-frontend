@@ -113,7 +113,7 @@ export class Accordion extends GOVUKFrontendComponent {
   $showAllText = null
 
   /**
-   * @param {Element} $module - HTML element to use for accordion
+   * @param {Element | null} $module - HTML element to use for accordion
    * @param {AccordionConfig} [config] - Accordion config
    */
   constructor($module, config = {}) {

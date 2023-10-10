@@ -75,7 +75,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
   timeoutMessageId = null
 
   /**
-   * @param {Element} $module - HTML element that wraps the Exit This Page button
+   * @param {Element | null} $module - HTML element that wraps the Exit This Page button
    * @param {ExitThisPageConfig} [config] - Exit This Page config
    */
   constructor($module, config = {}) {

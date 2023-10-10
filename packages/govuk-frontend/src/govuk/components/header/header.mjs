@@ -39,7 +39,7 @@ export class Header extends GOVUKFrontendComponent {
    * Apply a matchMedia for desktop which will trigger a state sync if the
    * browser viewport moves between states.
    *
-   * @param {Element} $module - HTML element to use for header
+   * @param {Element | null} $module - HTML element to use for header
    */
   constructor($module) {
     super()
