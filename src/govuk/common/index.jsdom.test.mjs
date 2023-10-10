@@ -105,16 +105,6 @@ describe('Common JS utilities', () => {
       const result = extractConfigByNamespace(flattenedConfig, 'b')
       expect(result).toEqual({ a: 'bat', e: 'bear', o: 'boar' })
     })
-
-    it('throws an error if no `configObject` is provided', () => {
-      // @ts-expect-error Parameter 'configObject' not provided
-      expect(() => extractConfigByNamespace()).toThrow()
-    })
-
-    it('throws an error if no `namespace` is provided', () => {
-      // @ts-expect-error Parameter 'namespace' not provided
-      expect(() => extractConfigByNamespace(flattenedConfig)).toThrow()
-    })
   })
 
   describe('isSupported', () => {

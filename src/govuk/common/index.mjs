@@ -88,21 +88,8 @@ export function mergeConfigs(...configObjects) {
  * @param {{ [key: string]: unknown }} configObject - The object to extract key-value pairs from.
  * @param {string} namespace - The namespace to filter keys with.
  * @returns {{ [key: string]: unknown }} Flattened object with dot-separated key namespace removed
- * @throws {Error} Config object required
- * @throws {Error} Namespace string required
  */
 export function extractConfigByNamespace(configObject, namespace) {
-  // Check we have what we need
-  if (!configObject || typeof configObject !== 'object') {
-    throw new Error('Provide a `configObject` of type "object".')
-  }
-
-  if (!namespace || typeof namespace !== 'string') {
-    throw new Error(
-      'Provide a `namespace` of type "string" to filter the `configObject` by.'
-    )
-  }
-
   /** @type {{ [key: string]: unknown }} */
   const newObject = {}
 
