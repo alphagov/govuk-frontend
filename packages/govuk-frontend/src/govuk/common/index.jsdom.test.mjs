@@ -1,7 +1,8 @@
 import {
   mergeConfigs,
   extractConfigByNamespace,
-  isSupported
+  isSupported,
+  getFragmentFromUrl
 } from './index.mjs'
 
 describe('Common JS utilities', () => {
@@ -132,6 +133,49 @@ describe('Common JS utilities', () => {
 
     it('returns false if the govuk-frontend-supported class is not set', () => {
       expect(isSupported(document.body)).toBe(false)
+    })
+  })
+
+  describe('getFragmentFromUrl', () => {
+    it.each([
+      {
+        url: 'https://www.gov.uk/#content',
+        fragment: 'content'
+      },
+      {
+        url: 'https://www.gov.uk/example/#content',
+        fragment: 'content'
+      },
+      {
+        url: 'https://www.gov.uk/example/?keywords=123#content',
+        fragment: 'content'
+      },
+      {
+        url: '/#content',
+        fragment: 'content'
+      },
+      {
+        url: '/example/#content',
+        fragment: 'content'
+      },
+      {
+        url: '/?keywords=123#content',
+        fragment: 'content'
+      },
+      {
+        url: '#content',
+        fragment: 'content'
+      },
+      {
+        url: '/',
+        fragment: undefined
+      },
+      {
+        url: '',
+        fragment: undefined
+      }
+    ])("returns '$fragment' for '$url'", ({ url, fragment }) => {
+      expect(getFragmentFromUrl(url)).toBe(fragment)
     })
   })
 })

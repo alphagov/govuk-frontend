@@ -1,4 +1,4 @@
-import { mergeConfigs } from '../../common/index.mjs'
+import { getFragmentFromUrl, mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
@@ -106,7 +106,7 @@ export class ErrorSummary extends GOVUKFrontendComponent {
       return false
     }
 
-    const inputId = this.getFragmentFromUrl($target.href)
+    const inputId = getFragmentFromUrl($target.href)
     if (!inputId) {
       return false
     }
@@ -128,24 +128,6 @@ export class ErrorSummary extends GOVUKFrontendComponent {
     $input.focus({ preventScroll: true })
 
     return true
-  }
-
-  /**
-   * Get fragment from URL
-   *
-   * Extract the fragment (everything after the hash) from a URL, but not
-   * including the hash.
-   *
-   * @private
-   * @param {string} url - URL
-   * @returns {string | undefined} Fragment from URL, without the hash
-   */
-  getFragmentFromUrl(url) {
-    if (url.indexOf('#') === -1) {
-      return undefined
-    }
-
-    return url.split('#').pop()
   }
 
   /**

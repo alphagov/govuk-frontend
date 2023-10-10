@@ -135,6 +135,24 @@ export function extractConfigByNamespace(configObject, namespace) {
 }
 
 /**
+ * Get hash fragment from URL
+ *
+ * Extract the hash fragment (everything after the hash) from a URL,
+ * but not including the hash symbol
+ *
+ * @private
+ * @param {string} url - URL
+ * @returns {string | undefined} Fragment from URL, without the hash
+ */
+export function getFragmentFromUrl(url) {
+  if (url.indexOf('#') === -1) {
+    return undefined
+  }
+
+  return url.split('#').pop()
+}
+
+/**
  * Checks if GOV.UK Frontend is supported on this page
  *
  * Some browsers will load and run our JavaScript but GOV.UK Frontend
