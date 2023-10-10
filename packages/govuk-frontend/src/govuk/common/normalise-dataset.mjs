@@ -10,7 +10,7 @@
  * always strings) into something sensible.
  *
  * @internal
- * @param {string} value - The value to normalise
+ * @param {string | undefined} value - The value to normalise
  * @returns {string | boolean | number | undefined} Normalised data
  */
 export function normaliseString(value) {
@@ -44,14 +44,14 @@ export function normaliseString(value) {
  *
  * @internal
  * @param {DOMStringMap} dataset - HTML element dataset
- * @returns {{ [key: string]: unknown }} Normalised dataset
+ * @returns {{ [key: string]: string | boolean | number | undefined }} Normalised dataset
  */
 export function normaliseDataset(dataset) {
-  /** @type {{ [key: string]: unknown }} */
+  /** @type {ReturnType<typeof normaliseDataset>} */
   const out = {}
 
-  for (const key in dataset) {
-    out[key] = normaliseString(dataset[key])
+  for (const [key, value] of Object.entries(dataset)) {
+    out[key] = normaliseString(value)
   }
 
   return out
