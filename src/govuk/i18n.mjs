@@ -64,14 +64,14 @@ export class I18n {
         }
 
         return this.replacePlaceholders(translationString, options)
-      } else {
-        return translationString
       }
-    } else {
-      // If the key wasn't found in our translations object,
-      // return the lookup key itself as the fallback
-      return lookupKey
+
+      return translationString
     }
+
+    // If the key wasn't found in our translations object,
+    // return the lookup key itself as the fallback
+    return lookupKey
   }
 
   /**
@@ -124,11 +124,11 @@ export class I18n {
           }
 
           return placeholderValue
-        } else {
-          throw new Error(
-            `i18n: no data found to replace ${placeholderWithBraces} placeholder in string`
-          )
         }
+
+        throw new Error(
+          `i18n: no data found to replace ${placeholderWithBraces} placeholder in string`
+        )
       }
     )
   }
@@ -197,16 +197,12 @@ export class I18n {
       return 'other'
     }
 
-    let preferredForm
-
     // Check to verify that all the requirements for Intl.PluralRules are met.
     // If so, we can use that instead of our custom implementation. Otherwise,
     // use the hardcoded fallback.
-    if (this.hasIntlPluralRulesSupport()) {
-      preferredForm = new Intl.PluralRules(this.locale).select(count)
-    } else {
-      preferredForm = this.selectPluralFormUsingFallbackRules(count)
-    }
+    const preferredForm = this.hasIntlPluralRulesSupport()
+      ? new Intl.PluralRules(this.locale).select(count)
+      : this.selectPluralFormUsingFallbackRules(count)
 
     // Use the correct plural form if provided
     if (`${lookupKey}.${preferredForm}` in this.translations) {
@@ -214,19 +210,17 @@ export class I18n {
       // Fall back to `other` if the plural form is missing, but log a warning
       // to the console
     } else if (`${lookupKey}.other` in this.translations) {
-      if (console && 'warn' in console) {
-        console.warn(
-          `i18n: Missing plural form ".${preferredForm}" for "${this.locale}" locale. Falling back to ".other".`
-        )
-      }
+      console.warn(
+        `i18n: Missing plural form ".${preferredForm}" for "${this.locale}" locale. Falling back to ".other".`
+      )
 
       return 'other'
-      // If the required `other` plural form is missing, all we can do is error
-    } else {
-      throw new Error(
-        `i18n: Plural form ".other" is required for "${this.locale}" locale`
-      )
     }
+
+    // If the required `other` plural form is missing, all we can do is error
+    throw new Error(
+      `i18n: Plural form ".other" is required for "${this.locale}" locale`
+    )
   }
 
   /**
