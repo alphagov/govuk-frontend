@@ -2,9 +2,9 @@
 
 <header class="govuk-header {{ params.classes if params.classes }}" role="banner" data-module="govuk-header"
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
-  <div class="govuk-header__container {{ params.containerClasses | default('govuk-width-container') }}">
+  <div class="govuk-header__container {{ params.containerClasses | default("govuk-width-container", true) }}">
     <div class="govuk-header__logo">
-      <a href="{{ params.homepageUrl | default('/') }}" class="govuk-header__link govuk-header__link--homepage">
+      <a href="{{ params.homepageUrl | default("/", true) }}" class="govuk-header__link govuk-header__link--homepage">
         <span class="govuk-header__logotype">
           {#- We use an inline SVG for the crown so that we can cascade the
           currentColor into the crown whilst continuing to support older browsers
@@ -57,7 +57,7 @@
     {% endif %}
     {% endif %}
     {% if params.navigation %}
-    <nav aria-label="{{ params.navigationLabel | default(menuButtonText) }}" class="govuk-header__navigation {{ params.navigationClasses if params.navigationClasses }}">
+    <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-header__navigation {{ params.navigationClasses if params.navigationClasses }}">
       <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation"{%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden>{{ menuButtonText }}</button>
 
       <ul id="navigation" class="govuk-header__navigation-list">
