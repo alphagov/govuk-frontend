@@ -238,7 +238,7 @@ describe('Header navigation', () => {
               // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
               $module.querySelector(
                 '.govuk-js-header-toggle'
-              ).outerHTML = `<svg class="govuk-js-header-toggle" ></svg>`
+              ).outerHTML = `<svg class="govuk-js-header-toggle"></svg>`
             }
           })
         ).rejects.toEqual({
