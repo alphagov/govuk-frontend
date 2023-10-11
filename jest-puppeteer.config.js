@@ -18,13 +18,6 @@ module.exports = {
   launch: {
     args: [
       /**
-       * Workaround for 'No usable sandbox! Update your kernel' error
-       * see more https://github.com/Googlechrome/puppeteer/issues/290
-       */
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-
-      /**
        * Prevent empty Chrome startup window
        * Tests use their own `browser.newPage()` instead
        */
