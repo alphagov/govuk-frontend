@@ -49,11 +49,10 @@ export function mergeConfigs(...configObjects) {
         // If the value is a nested object, recurse over that too
         if (typeof value === 'object') {
           flattenLoop(value, prefixedKey)
-          continue
+        } else {
+          // Otherwise, add this value to our return object
+          flattenedObject[prefixedKey] = value
         }
-
-        // Otherwise, add this value to our return object
-        flattenedObject[prefixedKey] = value
       }
     }
 
