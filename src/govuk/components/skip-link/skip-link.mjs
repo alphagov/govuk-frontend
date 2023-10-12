@@ -1,3 +1,4 @@
+import { getFragmentFromUrl } from '../../common/index.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
@@ -46,7 +47,7 @@ export class SkipLink extends GOVUKFrontendComponent {
    * @returns {HTMLElement} $linkedElement - Target of the skip link
    */
   getLinkedElement() {
-    const linkedElementId = this.getFragmentFromUrl(this.$module.hash)
+    const linkedElementId = getFragmentFromUrl(this.$module.hash)
 
     // Check for link hash fragment
     if (!linkedElementId) {
@@ -108,24 +109,6 @@ export class SkipLink extends GOVUKFrontendComponent {
   removeFocusProperties() {
     this.$linkedElement.removeAttribute('tabindex')
     this.$linkedElement.classList.remove('govuk-skip-link-focused-element')
-  }
-
-  /**
-   * Get fragment from URL
-   *
-   * Extract the fragment (everything after the hash) from a URL, but not
-   * including the hash.
-   *
-   * @private
-   * @param {string} url - URL
-   * @returns {string | undefined} Fragment from URL, without the hash
-   */
-  getFragmentFromUrl(url) {
-    if (url.indexOf('#') === -1) {
-      return undefined
-    }
-
-    return url.split('#').pop()
   }
 
   /**
