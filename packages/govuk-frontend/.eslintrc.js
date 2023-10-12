@@ -47,6 +47,8 @@ module.exports = {
         'jsdoc/require-jsdoc': [
           'error',
           {
+            checkGetters: false,
+            checkSetters: false,
             enableFixer: false,
             require: {
               ClassDeclaration: true,

@@ -72,6 +72,14 @@ module.exports = {
         // Aligns with TSDoc style: https://tsdoc.org/pages/tags/param/
         'jsdoc/require-hyphen-before-param-description': 'warn',
 
+        // JSDoc @returns is optional for getters
+        'jsdoc/require-returns': [
+          'warn',
+          {
+            checkGetters: false
+          }
+        ],
+
         // Maintain new line after description
         'jsdoc/tag-lines': [
           'warn',
