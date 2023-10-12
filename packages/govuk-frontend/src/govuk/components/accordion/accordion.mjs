@@ -95,24 +95,6 @@ export class Accordion extends GOVUKFrontendComponent {
   browserSupportsSessionStorage = false
 
   /**
-   * @private
-   * @type {HTMLButtonElement | null}
-   */
-  $showAllButton = null
-
-  /**
-   * @private
-   * @type {HTMLElement | null}
-   */
-  $showAllIcon = null
-
-  /**
-   * @private
-   * @type {HTMLElement | null}
-   */
-  $showAllText = null
-
-  /**
    * @param {Element | null} $module - HTML element to use for accordion
    * @param {AccordionConfig} [config] - Accordion config
    */
@@ -156,38 +138,61 @@ export class Accordion extends GOVUKFrontendComponent {
     this.updateShowAllButton(areAllSectionsOpen)
   }
 
+  /** @private */
+  get $showAllButton() {
+    if (!this._$showAllButton) {
+      // Create "Show all" button
+      this._$showAllButton = document.createElement('button')
+      this._$showAllButton.classList.add(this.showAllClass)
+      this._$showAllButton.setAttribute('type', 'button')
+      this._$showAllButton.setAttribute('aria-expanded', 'false')
+
+      // Add icon first, then text
+      this._$showAllButton.appendChild(this.$showAllIcon)
+      this._$showAllButton.appendChild(this.$showAllText)
+
+      // Handle click events on the button
+      this._$showAllButton.addEventListener('click', () =>
+        this.onShowOrHideAllToggle()
+      )
+    }
+
+    return this._$showAllButton
+  }
+
+  /** @private */
+  get $showAllIcon() {
+    if (!this._$showAllIcon) {
+      // Create "Show all" toggle icon
+      this._$showAllIcon = document.createElement('span')
+      this._$showAllIcon.classList.add(this.upChevronIconClass)
+    }
+
+    return this._$showAllIcon
+  }
+
+  /** @private */
+  get $showAllText() {
+    if (!this._$showAllText) {
+      // Create "Show all" toggle text
+      this._$showAllText = document.createElement('span')
+      this._$showAllText.classList.add(this.showAllTextClass)
+    }
+
+    return this._$showAllText
+  }
+
   /**
    * Initialise controls and set attributes
    *
    * @private
    */
   initControls() {
-    // Create "Show all" button and set attributes
-    this.$showAllButton = document.createElement('button')
-    this.$showAllButton.setAttribute('type', 'button')
-    this.$showAllButton.setAttribute('class', this.showAllClass)
-    this.$showAllButton.setAttribute('aria-expanded', 'false')
-
-    // Create icon, add to element
-    this.$showAllIcon = document.createElement('span')
-    this.$showAllIcon.classList.add(this.upChevronIconClass)
-    this.$showAllButton.appendChild(this.$showAllIcon)
-
     // Create control wrapper and add controls to it
     const $accordionControls = document.createElement('div')
-    $accordionControls.setAttribute('class', this.controlsClass)
+    $accordionControls.classList.add(this.controlsClass)
     $accordionControls.appendChild(this.$showAllButton)
     this.$module.insertBefore($accordionControls, this.$module.firstChild)
-
-    // Build additional wrapper for Show all toggle text and place after icon
-    this.$showAllText = document.createElement('span')
-    this.$showAllText.classList.add(this.showAllTextClass)
-    this.$showAllButton.appendChild(this.$showAllText)
-
-    // Handle click events on the show/hide all button
-    this.$showAllButton.addEventListener('click', () =>
-      this.onShowOrHideAllToggle()
-    )
 
     // Handle 'beforematch' events, if the user agent supports them
     if ('onbeforematch' in document) {
