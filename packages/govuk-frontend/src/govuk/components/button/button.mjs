@@ -31,7 +31,7 @@ export class Button extends GOVUKFrontendComponent {
    * @param {Element} $module - HTML element to use for button
    * @param {ButtonConfig} [config] - Button config
    */
-  constructor($module, config) {
+  constructor($module, config = {}) {
     super()
 
     if (!($module instanceof HTMLElement)) {
@@ -45,7 +45,7 @@ export class Button extends GOVUKFrontendComponent {
 
     this.config = mergeConfigs(
       Button.defaults,
-      config || {},
+      config,
       normaliseDataset($module.dataset)
     )
 
@@ -123,7 +123,6 @@ export class Button extends GOVUKFrontendComponent {
    *
    * @see {@link ButtonConfig}
    * @constant
-   * @default
    * @type {ButtonConfig}
    */
   static defaults = Object.freeze({

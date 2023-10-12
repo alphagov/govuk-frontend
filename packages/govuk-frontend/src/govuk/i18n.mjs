@@ -14,13 +14,12 @@ export class I18n {
    * @param {object} [config] - Configuration options for the function.
    * @param {string} [config.locale] - An overriding locale for the PluralRules functionality.
    */
-  constructor(translations, config) {
+  constructor(translations = {}, config = {}) {
     // Make list of translations available throughout function
-    this.translations = translations || {}
+    this.translations = translations
 
     // The locale to use for PluralRules and NumberFormat
-    this.locale =
-      (config && config.locale) || document.documentElement.lang || 'en'
+    this.locale = config.locale || document.documentElement.lang || 'en'
   }
 
   /**
@@ -64,14 +63,14 @@ export class I18n {
         }
 
         return this.replacePlaceholders(translationString, options)
-      } else {
-        return translationString
       }
-    } else {
-      // If the key wasn't found in our translations object,
-      // return the lookup key itself as the fallback
-      return lookupKey
+
+      return translationString
     }
+
+    // If the key wasn't found in our translations object,
+    // return the lookup key itself as the fallback
+    return lookupKey
   }
 
   /**
@@ -84,12 +83,9 @@ export class I18n {
    * @returns {string} The translation string to output, with $\{\} placeholders replaced
    */
   replacePlaceholders(translationString, options) {
-    /** @type {Intl.NumberFormat | undefined} */
-    let formatter
-
-    if (this.hasIntlNumberFormatSupport()) {
-      formatter = new Intl.NumberFormat(this.locale)
-    }
+    const formatter = Intl.NumberFormat.supportedLocalesOf(this.locale).length
+      ? new Intl.NumberFormat(this.locale)
+      : undefined
 
     return translationString.replace(
       /%{(.\S+)}/g,
@@ -124,50 +120,31 @@ export class I18n {
           }
 
           return placeholderValue
-        } else {
-          throw new Error(
-            `i18n: no data found to replace ${placeholderWithBraces} placeholder in string`
-          )
         }
+
+        throw new Error(
+          `i18n: no data found to replace ${placeholderWithBraces} placeholder in string`
+        )
       }
     )
   }
 
   /**
-   * Check to see if the browser supports Intl and Intl.PluralRules.
+   * Check to see if the browser supports Intl.PluralRules
    *
    * It requires all conditions to be met in order to be supported:
-   * - The browser supports the Intl class (true in IE11)
-   * - The implementation of Intl supports PluralRules (NOT true in IE11)
+   * - The implementation of Intl supports PluralRules (NOT true in Safari 10–12)
    * - The browser/OS has plural rules for the current locale (browser dependent)
+   *
+   * {@link https://browsersl.ist/#q=supports+es6-module+and+not+supports+intl-pluralrules}
    *
    * @internal
    * @returns {boolean} Returns true if all conditions are met. Returns false otherwise.
    */
   hasIntlPluralRulesSupport() {
     return Boolean(
-      window.Intl &&
-        'PluralRules' in window.Intl &&
+      'PluralRules' in window.Intl &&
         Intl.PluralRules.supportedLocalesOf(this.locale).length
-    )
-  }
-
-  /**
-   * Check to see if the browser supports Intl and Intl.NumberFormat.
-   *
-   * It requires all conditions to be met in order to be supported:
-   * - The browser supports the Intl class (true in IE11)
-   * - The implementation of Intl supports NumberFormat (also true in IE11)
-   * - The browser/OS has number formatting rules for the current locale (browser dependent)
-   *
-   * @internal
-   * @returns {boolean} Returns true if all conditions are met. Returns false otherwise.
-   */
-  hasIntlNumberFormatSupport() {
-    return Boolean(
-      window.Intl &&
-        'NumberFormat' in window.Intl &&
-        Intl.NumberFormat.supportedLocalesOf(this.locale).length
     )
   }
 
@@ -197,16 +174,12 @@ export class I18n {
       return 'other'
     }
 
-    let preferredForm
-
     // Check to verify that all the requirements for Intl.PluralRules are met.
     // If so, we can use that instead of our custom implementation. Otherwise,
     // use the hardcoded fallback.
-    if (this.hasIntlPluralRulesSupport()) {
-      preferredForm = new Intl.PluralRules(this.locale).select(count)
-    } else {
-      preferredForm = this.selectPluralFormUsingFallbackRules(count)
-    }
+    const preferredForm = this.hasIntlPluralRulesSupport()
+      ? new Intl.PluralRules(this.locale).select(count)
+      : this.selectPluralFormUsingFallbackRules(count)
 
     // Use the correct plural form if provided
     if (`${lookupKey}.${preferredForm}` in this.translations) {
@@ -214,19 +187,17 @@ export class I18n {
       // Fall back to `other` if the plural form is missing, but log a warning
       // to the console
     } else if (`${lookupKey}.other` in this.translations) {
-      if (console && 'warn' in console) {
-        console.warn(
-          `i18n: Missing plural form ".${preferredForm}" for "${this.locale}" locale. Falling back to ".other".`
-        )
-      }
+      console.warn(
+        `i18n: Missing plural form ".${preferredForm}" for "${this.locale}" locale. Falling back to ".other".`
+      )
 
       return 'other'
-      // If the required `other` plural form is missing, all we can do is error
-    } else {
-      throw new Error(
-        `i18n: Plural form ".other" is required for "${this.locale}" locale`
-      )
     }
+
+    // If the required `other` plural form is missing, all we can do is error
+    throw new Error(
+      `i18n: Plural form ".other" is required for "${this.locale}" locale`
+    )
   }
 
   /**
@@ -266,20 +237,14 @@ export class I18n {
    *   of the functions in this.pluralRules)
    */
   getPluralRulesForLocale() {
-    const locale = this.locale
-    const localeShort = locale.split('-')[0]
+    const localeShort = this.locale.split('-')[0]
 
     // Look through the plural rules map to find which `pluralRule` is
     // appropriate for our current `locale`.
     for (const pluralRule in I18n.pluralRulesMap) {
-      if (
-        Object.prototype.hasOwnProperty.call(I18n.pluralRulesMap, pluralRule)
-      ) {
-        const languages = I18n.pluralRulesMap[pluralRule]
-        for (let i = 0; i < languages.length; i++) {
-          if (languages[i] === locale || languages[i] === localeShort) {
-            return pluralRule
-          }
+      for (const language of I18n.pluralRulesMap[pluralRule]) {
+        if (language === this.locale || language === localeShort) {
+          return pluralRule
         }
       }
     }

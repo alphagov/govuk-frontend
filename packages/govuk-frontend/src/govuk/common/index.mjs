@@ -14,9 +14,10 @@
  * greatest priority on the LAST item passed in.
  *
  * @internal
+ * @param {...{ [key: string]: unknown }} configObjects - Config object to merge
  * @returns {{ [key: string]: unknown }} A flattened object of key-value pairs.
  */
-export function mergeConfigs(/* configObject1, configObject2, ...configObjects */) {
+export function mergeConfigs(...configObjects) {
   /**
    * Function to take nested objects and flatten them to a dot-separated keyed
    * object. Doing this means we don't need to do any deep/recursive merging of
@@ -27,7 +28,7 @@ export function mergeConfigs(/* configObject1, configObject2, ...configObjects *
    * @param {{ [key: string]: unknown }} configObject - Deeply nested object
    * @returns {{ [key: string]: unknown }} Flattened object with dot-separated keys
    */
-  const flattenObject = function (configObject) {
+  function flattenObject(configObject) {
     // Prepare an empty return object
     /** @type {{ [key: string]: unknown }} */
     const flattenedObject = {}
@@ -41,18 +42,12 @@ export function mergeConfigs(/* configObject1, configObject2, ...configObjects *
      * @param {Partial<{ [key: string]: unknown }>} obj - Object to flatten
      * @param {string} [prefix] - Optional dot-separated prefix
      */
-    const flattenLoop = function (obj, prefix) {
-      // Loop through keys...
-      for (const key in obj) {
-        // Check to see if this is a prototypical key/value,
-        // if it is, skip it.
-        if (!Object.prototype.hasOwnProperty.call(obj, key)) {
-          continue
-        }
-        const value = obj[key]
+    function flattenLoop(obj, prefix) {
+      for (const [key, value] of Object.entries(obj)) {
         const prefixedKey = prefix ? `${prefix}.${key}` : key
+
+        // If the value is a nested object, recurse over that too
         if (typeof value === 'object') {
-          // If the value is a nested object, recurse over that too
           flattenLoop(value, prefixedKey)
         } else {
           // Otherwise, add this value to our return object
@@ -70,16 +65,14 @@ export function mergeConfigs(/* configObject1, configObject2, ...configObjects *
   /** @type {{ [key: string]: unknown }} */
   const formattedConfigObject = {}
 
-  // Loop through each of the remaining passed objects and push their keys
-  // one-by-one into configObject. Any duplicate keys will override the existing
-  // key with the new value.
-  for (let i = 0; i < arguments.length; i++) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- Ignore mismatch between arguments types
-    const obj = flattenObject(arguments[i])
-    for (const key in obj) {
-      if (Object.prototype.hasOwnProperty.call(obj, key)) {
-        formattedConfigObject[key] = obj[key]
-      }
+  // Loop through each of the passed objects
+  for (const configObject of configObjects) {
+    const obj = flattenObject(configObject)
+
+    // Push their keys one-by-one into formattedConfigObject. Any duplicate
+    // keys will override the existing key with the new value.
+    for (const [key, value] of Object.entries(obj)) {
+      formattedConfigObject[key] = value
     }
   }
 
@@ -94,43 +87,31 @@ export function mergeConfigs(/* configObject1, configObject2, ...configObjects *
  * @param {{ [key: string]: unknown }} configObject - The object to extract key-value pairs from.
  * @param {string} namespace - The namespace to filter keys with.
  * @returns {{ [key: string]: unknown }} Flattened object with dot-separated key namespace removed
- * @throws {Error} Config object required
- * @throws {Error} Namespace string required
  */
 export function extractConfigByNamespace(configObject, namespace) {
-  // Check we have what we need
-  if (!configObject || typeof configObject !== 'object') {
-    throw new Error('Provide a `configObject` of type "object".')
-  }
-
-  if (!namespace || typeof namespace !== 'string') {
-    throw new Error(
-      'Provide a `namespace` of type "string" to filter the `configObject` by.'
-    )
-  }
-
   /** @type {{ [key: string]: unknown }} */
   const newObject = {}
 
-  for (const key in configObject) {
+  for (const [key, value] of Object.entries(configObject)) {
     // Split the key into parts, using . as our namespace separator
     const keyParts = key.split('.')
+
     // Check if the first namespace matches the configured namespace
-    if (
-      Object.prototype.hasOwnProperty.call(configObject, key) &&
-      keyParts[0] === namespace
-    ) {
+    if (keyParts[0] === namespace) {
       // Remove the first item (the namespace) from the parts array,
       // but only if there is more than one part (we don't want blank keys!)
       if (keyParts.length > 1) {
         keyParts.shift()
       }
+
       // Join the remaining parts back together
       const newKey = keyParts.join('.')
+
       // Add them to our new object
-      newObject[newKey] = configObject[key]
+      newObject[newKey] = value
     }
   }
+
   return newObject
 }
 
@@ -171,7 +152,7 @@ export function isSupported($scope = document.body) {
  *
  * @internal
  * @param {Schema} schema - Config schema
- * @param {Config[ConfigKey]} config - Component config
+ * @param {{ [key: string]: unknown }} config - Component config
  * @returns {string[]} List of validation errors
  */
 export function validateConfig(schema, config) {
@@ -210,9 +191,4 @@ export function validateConfig(schema, config) {
  * @typedef {object} SchemaCondition
  * @property {string[]} required - List of required config fields
  * @property {string} errorMessage - Error message when required config fields not provided
- */
-
-/**
- * @typedef {import('govuk-frontend').Config} Config - Config for all components via `initAll()`
- * @typedef {import('govuk-frontend').ConfigKey} ConfigKey - Component config keys, e.g. `accordion` and `characterCount`
  */
