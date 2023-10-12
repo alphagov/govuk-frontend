@@ -1,3 +1,4 @@
+import { getFragmentFromUrl } from '../../common/index.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
@@ -264,15 +265,19 @@ export class Tabs extends GOVUKFrontendComponent {
    * @param {HTMLAnchorElement} $tab - Tab link
    */
   setAttributes($tab) {
-    // set tab attributes
-    const panelId = this.getHref($tab).slice(1)
+    const panelId = getFragmentFromUrl($tab.href)
+    if (!panelId) {
+      return
+    }
+
+    // Set tab attributes
     $tab.setAttribute('id', `tab_${panelId}`)
     $tab.setAttribute('role', 'tab')
     $tab.setAttribute('aria-controls', panelId)
     $tab.setAttribute('aria-selected', 'false')
     $tab.setAttribute('tabindex', '-1')
 
-    // set panel attributes
+    // Set panel attributes
     const $panel = this.getPanel($tab)
     if (!$panel) {
       return
@@ -350,7 +355,7 @@ export class Tabs extends GOVUKFrontendComponent {
     const panelId = $panel.id
     $panel.id = ''
     this.changingHash = true
-    window.location.hash = this.getHref($tab).slice(1)
+    window.location.hash = panelId
     $panel.id = panelId
   }
 
@@ -443,7 +448,12 @@ export class Tabs extends GOVUKFrontendComponent {
    * @returns {Element | null} Tab panel
    */
   getPanel($tab) {
-    return this.$module.querySelector(this.getHref($tab))
+    const panelId = getFragmentFromUrl($tab.href)
+    if (!panelId) {
+      return null
+    }
+
+    return this.$module.querySelector(`#${panelId}`)
   }
 
   /**
@@ -518,23 +528,6 @@ export class Tabs extends GOVUKFrontendComponent {
     return this.$module.querySelector(
       '.govuk-tabs__list-item--selected a.govuk-tabs__tab'
     )
-  }
-
-  /**
-   * Get link hash fragment for href attribute
-   *
-   * this is because IE doesn't always return the actual value but a relative
-   * full path should be a utility function most prob
-   * {@link http://labs.thesedays.com/blog/2010/01/08/getting-the-href-value-with-jquery-in-ie/}
-   *
-   * @private
-   * @param {HTMLAnchorElement} $tab - Tab link
-   * @returns {string} Hash fragment including #
-   */
-  getHref($tab) {
-    const href = $tab.getAttribute('href')
-    const hash = href.slice(href.indexOf('#'), href.length)
-    return hash
   }
 
   /**
