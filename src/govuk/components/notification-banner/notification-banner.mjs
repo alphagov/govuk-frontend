@@ -22,7 +22,7 @@ export class NotificationBanner extends GOVUKFrontendComponent {
    * @param {Element} $module - HTML element to use for notification banner
    * @param {NotificationBannerConfig} [config] - Notification banner config
    */
-  constructor($module, config) {
+  constructor($module, config = {}) {
     super()
 
     if (!($module instanceof HTMLElement)) {
@@ -36,7 +36,7 @@ export class NotificationBanner extends GOVUKFrontendComponent {
 
     this.config = mergeConfigs(
       NotificationBanner.defaults,
-      config || {},
+      config,
       normaliseDataset($module.dataset)
     )
 
@@ -89,7 +89,6 @@ export class NotificationBanner extends GOVUKFrontendComponent {
    *
    * @see {@link NotificationBannerConfig}
    * @constant
-   * @default
    * @type {NotificationBannerConfig}
    */
   static defaults = Object.freeze({

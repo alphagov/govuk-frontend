@@ -116,7 +116,7 @@ export class Accordion extends GOVUKFrontendComponent {
    * @param {Element} $module - HTML element to use for accordion
    * @param {AccordionConfig} [config] - Accordion config
    */
-  constructor($module, config) {
+  constructor($module, config = {}) {
     super()
 
     if (!($module instanceof HTMLElement)) {
@@ -130,7 +130,7 @@ export class Accordion extends GOVUKFrontendComponent {
 
     this.config = mergeConfigs(
       Accordion.defaults,
-      config || {},
+      config,
       normaliseDataset($module.dataset)
     )
 
@@ -245,8 +245,7 @@ export class Accordion extends GOVUKFrontendComponent {
 
     // Copy all attributes from $span to $button (except `id`, which gets added
     // to the `$headingText` element)
-    for (let i = 0; i < $span.attributes.length; i++) {
-      const attr = $span.attributes.item(i)
+    for (const attr of Array.from($span.attributes)) {
       if (attr.nodeName !== 'id') {
         $button.setAttribute(attr.nodeName, attr.nodeValue)
       }
@@ -309,10 +308,8 @@ export class Accordion extends GOVUKFrontendComponent {
       $summarySpan.appendChild($summarySpanFocus)
 
       // Get original attributes, and pass them to the replacement
-      for (let j = 0, l = $summary.attributes.length; j < l; ++j) {
-        const nodeName = $summary.attributes.item(j).nodeName
-        const nodeValue = $summary.attributes.item(j).nodeValue
-        $summarySpan.setAttribute(nodeName, nodeValue)
+      for (const attr of Array.from($summary.attributes)) {
+        $summarySpan.setAttribute(attr.nodeName, attr.nodeValue)
       }
 
       // Copy original contents of summary to the new summary span
@@ -577,7 +574,6 @@ export class Accordion extends GOVUKFrontendComponent {
    *
    * @see {@link AccordionConfig}
    * @constant
-   * @default
    * @type {AccordionConfig}
    */
   static defaults = Object.freeze({
