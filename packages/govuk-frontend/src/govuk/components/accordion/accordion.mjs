@@ -512,10 +512,6 @@ export class Accordion extends GOVUKFrontendComponent {
    * @param {boolean} expanded - Section expanded
    */
   updateShowAllButton(expanded) {
-    if (!this.$showAllButton || !this.$showAllText || !this.$showAllIcon) {
-      return
-    }
-
     this.$showAllButton.setAttribute('aria-expanded', expanded.toString())
     this.$showAllText.textContent = expanded
       ? this.i18n.t('hideAllSections')
