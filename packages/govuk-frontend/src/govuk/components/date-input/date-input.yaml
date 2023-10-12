@@ -97,6 +97,34 @@ examples:
           classes: govuk-input--width-2
         - name: year
           classes: govuk-input--width-4
+  - name: day and month
+    options:
+      id: bday
+      namePrefix: bday
+      fieldset:
+        legend:
+          text: What is your birthday?
+      hint:
+        text: For example, 5 12
+      items:
+        - name: day
+          classes: govuk-input--width-2
+        - name: month
+          classes: govuk-input--width-2
+  - name: month and year
+    options:
+      id: dob
+      namePrefix: dob
+      fieldset:
+        legend:
+          text: When did you move to this property?
+      hint:
+        text: For example, 3 1980
+      items:
+        - name: month
+          classes: govuk-input--width-2
+        - name: year
+          classes: govuk-input--width-4
   - name: with errors only
     options:
       id: dob-errors
