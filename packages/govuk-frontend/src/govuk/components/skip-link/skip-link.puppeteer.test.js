@@ -70,8 +70,7 @@ describe('Skip Link', () => {
 
     it('throws when GOV.UK Frontend is not supported', async () => {
       await expect(
-        renderAndInitialise(page, 'skip-link', {
-          params: examples.default,
+        renderAndInitialise(page, 'skip-link', examples.default, {
           beforeInitialisation() {
             document.body.classList.remove('govuk-frontend-supported')
           }
@@ -84,8 +83,7 @@ describe('Skip Link', () => {
 
     it('throws when $module is not set', async () => {
       await expect(
-        renderAndInitialise(page, 'skip-link', {
-          params: examples.default,
+        renderAndInitialise(page, 'skip-link', examples.default, {
           beforeInitialisation($module) {
             $module.remove()
           }
@@ -98,8 +96,7 @@ describe('Skip Link', () => {
 
     it('throws when receiving the wrong type for $module', async () => {
       await expect(
-        renderAndInitialise(page, 'skip-link', {
-          params: examples.default,
+        renderAndInitialise(page, 'skip-link', examples.default, {
           beforeInitialisation($module) {
             // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
             $module.outerHTML = `<svg data-module="govuk-skip-link"></svg>`
@@ -114,10 +111,8 @@ describe('Skip Link', () => {
     it('throws when the linked element is missing', async () => {
       await expect(
         renderAndInitialise(page, 'skip-link', {
-          params: {
-            text: 'Skip to main content',
-            href: '#this-element-does-not-exist'
-          }
+          text: 'Skip to main content',
+          href: '#this-element-does-not-exist'
         })
       ).rejects.toEqual({
         name: 'ElementError',
@@ -129,10 +124,8 @@ describe('Skip Link', () => {
     it('throws when the href does not contain a hash', async () => {
       await expect(
         renderAndInitialise(page, 'skip-link', {
-          params: {
-            text: 'Skip to main content',
-            href: 'this-element-does-not-exist'
-          }
+          text: 'Skip to main content',
+          href: 'this-element-does-not-exist'
         })
       ).rejects.toEqual({
         name: 'ElementError',

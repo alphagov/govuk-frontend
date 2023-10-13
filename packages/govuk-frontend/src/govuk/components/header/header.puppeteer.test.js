@@ -177,8 +177,7 @@ describe('Header navigation', () => {
 
       it('throws when GOV.UK Frontend is not supported', async () => {
         await expect(
-          renderAndInitialise(page, 'header', {
-            params: examples.default,
+          renderAndInitialise(page, 'header', examples.default, {
             beforeInitialisation() {
               document.body.classList.remove('govuk-frontend-supported')
             }
@@ -191,8 +190,7 @@ describe('Header navigation', () => {
 
       it('throws when $module is not set', async () => {
         await expect(
-          renderAndInitialise(page, 'header', {
-            params: examples.default,
+          renderAndInitialise(page, 'header', examples.default, {
             beforeInitialisation($module) {
               // Remove the root of the components as a way
               // for the constructor to receive the wrong type for `$module`
@@ -207,8 +205,7 @@ describe('Header navigation', () => {
 
       it('throws when receiving the wrong type for $module', async () => {
         await expect(
-          renderAndInitialise(page, 'header', {
-            params: examples.default,
+          renderAndInitialise(page, 'header', examples.default, {
             beforeInitialisation($module) {
               // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
               $module.outerHTML = `<svg data-module="govuk-header"></svg>`
@@ -225,20 +222,20 @@ describe('Header navigation', () => {
         // and should keep rendering. No expectations as the JavaScript
         // will just return early. All we ask of that test is for it not
         // to throw during the initialisation
-        await renderAndInitialise(page, 'header', {
-          params: examples.default
-        })
+        await renderAndInitialise(page, 'header', examples.default)
       })
 
       it('throws when the toggle is of the wrong type', async () => {
         await expect(
-          renderAndInitialise(page, 'header', {
-            params: examples['with navigation'],
-            beforeInitialisation($module) {
+          renderAndInitialise(page, 'header', examples['with navigation'], {
+            beforeInitialisation($module, { selector }) {
               // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
               $module.querySelector(
-                '.govuk-js-header-toggle'
+                selector
               ).outerHTML = `<svg class="govuk-js-header-toggle"></svg>`
+            },
+            context: {
+              selector: '.govuk-js-header-toggle'
             }
           })
         ).rejects.toEqual({
@@ -250,12 +247,12 @@ describe('Header navigation', () => {
 
       it("throws when the toggle's aria-control attribute is missing", async () => {
         await expect(
-          renderAndInitialise(page, 'header', {
-            params: examples['with navigation'],
-            beforeInitialisation($module) {
-              $module
-                .querySelector('.govuk-js-header-toggle')
-                .removeAttribute('aria-controls')
+          renderAndInitialise(page, 'header', examples['with navigation'], {
+            beforeInitialisation($module, { selector }) {
+              $module.querySelector(selector).removeAttribute('aria-controls')
+            },
+            context: {
+              selector: '.govuk-js-header-toggle'
             }
           })
         ).rejects.toEqual({
@@ -266,11 +263,13 @@ describe('Header navigation', () => {
 
       it('throws when the menu is missing, but a toggle is present', async () => {
         await expect(
-          renderAndInitialise(page, 'header', {
-            params: examples['with navigation'],
-            beforeInitialisation($module) {
+          renderAndInitialise(page, 'header', examples['with navigation'], {
+            beforeInitialisation($module, { selector }) {
               // Remove the menu `<ul>` referenced by $menuButton's `aria-controls`
-              $module.querySelector('#navigation').remove()
+              $module.querySelector(selector).remove()
+            },
+            context: {
+              selector: '#navigation'
             }
           })
         ).rejects.toEqual({
