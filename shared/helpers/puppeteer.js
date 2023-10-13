@@ -119,13 +119,17 @@ async function renderAndInitialise(
   // them when back in Jest (to keep them triggering a Promise rejection)
   const error = await page.evaluate(
     async (exportName, config) => {
-      const $module = document.querySelector('[data-module]')
-
       const namespace = await import('govuk-frontend')
 
+      // Find all matching modules
+      const $modules = document.querySelectorAll('[data-module]')
+
       try {
-        /* eslint-disable-next-line no-new */
-        new namespace[exportName]($module, config)
+        // Loop and initialise all $modules or use default
+        // selector `null` return value when none found
+        ;($modules.length ? $modules : [null]).forEach(
+          ($module) => new namespace[exportName]($module, config)
+        )
       } catch ({ name, message }) {
         return { name, message }
       }
