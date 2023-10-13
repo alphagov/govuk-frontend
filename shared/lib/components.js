@@ -1,6 +1,7 @@
 const { dirname, join } = require('path')
 
 const nunjucks = require('nunjucks')
+const { outdent } = require('outdent')
 
 const { getListing, getDirectories } = require('./files')
 const { packageTypeToPath, componentNameToMacroName } = require('./names')
@@ -180,6 +181,29 @@ function renderString(string, options) {
   return nunjucksEnv.renderString(string, options?.context ?? {})
 }
 
+/**
+ * Render template HTML
+ *
+ * @param {string} templatePath - Nunjucks template path
+ * @param {TemplateRenderOptions} [options] - Nunjucks template render options
+ * @returns {string} HTML rendered by template.njk
+ */
+function renderTemplate(templatePath, options) {
+  let viewString = `{% extends "${templatePath}" %}`
+
+  if (options?.blocks) {
+    for (const [name, content] of Object.entries(options.blocks)) {
+      viewString += outdent`
+
+        {% block ${name} -%}
+          ${content}
+        {%- endblock %}`
+    }
+  }
+
+  return renderString(viewString, options)
+}
+
 module.exports = {
   getComponentFixtures,
   getComponentsFixtures,
@@ -190,7 +214,8 @@ module.exports = {
   nunjucksEnv,
   renderComponent,
   renderMacro,
-  renderString
+  renderString,
+  renderTemplate
 }
 
 /**

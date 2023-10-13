@@ -1,9 +1,5 @@
-const {
-  renderComponent,
-  renderString
-} = require('@govuk-frontend/lib/components')
+const components = require('@govuk-frontend/lib/components')
 const cheerio = require('cheerio')
-const { outdent } = require('outdent')
 
 /**
  * Render component HTML into cheerio
@@ -13,7 +9,7 @@ const { outdent } = require('outdent')
  * @returns {import('cheerio').CheerioAPI} HTML rendered by the macro
  */
 function render(componentName, options) {
-  return cheerio.load(renderComponent(componentName, options))
+  return cheerio.load(components.renderComponent(componentName, options))
 }
 
 /**
@@ -24,19 +20,7 @@ function render(componentName, options) {
  * @returns {import('cheerio').CheerioAPI} Nunjucks template output
  */
 function renderTemplate(templatePath, options) {
-  let viewString = `{% extends "${templatePath}" %}`
-
-  if (options?.blocks) {
-    for (const [name, content] of Object.entries(options.blocks)) {
-      viewString += outdent`
-
-        {% block ${name} -%}
-          ${content}
-        {%- endblock %}`
-    }
-  }
-
-  return cheerio.load(renderString(viewString, options))
+  return cheerio.load(components.renderTemplate(templatePath, options))
 }
 
 module.exports = {
