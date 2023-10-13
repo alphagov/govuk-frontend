@@ -68,8 +68,7 @@ describe('Error Summary', () => {
 
     describe('using JavaScript configuration', () => {
       beforeAll(async () => {
-        await renderAndInitialise(page, 'error-summary', {
-          params: examples.default,
+        await renderAndInitialise(page, 'error-summary', examples.default, {
           config: {
             disableAutoFocus: true
           }
@@ -95,9 +94,11 @@ describe('Error Summary', () => {
 
     describe('using JavaScript configuration, but enabled via data-attributes', () => {
       beforeAll(async () => {
-        await renderAndInitialise(page, 'error-summary', {
-          params: examples['autofocus explicitly enabled']
-        })
+        await renderAndInitialise(
+          page,
+          'error-summary',
+          examples['autofocus explicitly enabled']
+        )
       })
 
       it('adds the tabindex attribute on page load', async () => {
@@ -117,8 +118,7 @@ describe('Error Summary', () => {
 
     describe('using `initAll`', () => {
       beforeAll(async () => {
-        await renderAndInitialise(page, 'error-summary', {
-          params: examples.default,
+        await renderAndInitialise(page, 'error-summary', examples.default, {
           config: {
             disableAutoFocus: true
           }
@@ -219,8 +219,7 @@ describe('Error Summary', () => {
 
     it('throws when GOV.UK Frontend is not supported', async () => {
       await expect(
-        renderAndInitialise(page, 'error-summary', {
-          params: examples.default,
+        renderAndInitialise(page, 'error-summary', examples.default, {
           beforeInitialisation() {
             document.body.classList.remove('govuk-frontend-supported')
           }
@@ -233,8 +232,7 @@ describe('Error Summary', () => {
 
     it('throws when $module is not set', async () => {
       await expect(
-        renderAndInitialise(page, 'error-summary', {
-          params: examples.default,
+        renderAndInitialise(page, 'error-summary', examples.default, {
           beforeInitialisation($module) {
             $module.remove()
           }
@@ -247,8 +245,7 @@ describe('Error Summary', () => {
 
     it('throws when receiving the wrong type for $module', async () => {
       await expect(
-        renderAndInitialise(page, 'error-summary', {
-          params: examples.default,
+        renderAndInitialise(page, 'error-summary', examples.default, {
           beforeInitialisation($module) {
             // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
             $module.outerHTML = `<svg data-module="govuk-error-summary"></svg>`

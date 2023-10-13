@@ -328,8 +328,7 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
 
       it('throws when GOV.UK Frontend is not supported', async () => {
         await expect(
-          renderAndInitialise(page, 'checkboxes', {
-            params: examples.default,
+          renderAndInitialise(page, 'checkboxes', examples.default, {
             beforeInitialisation() {
               document.body.classList.remove('govuk-frontend-supported')
             }
@@ -342,8 +341,7 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
 
       it('throws when $module is not set', async () => {
         await expect(
-          renderAndInitialise(page, 'checkboxes', {
-            params: examples.default,
+          renderAndInitialise(page, 'checkboxes', examples.default, {
             beforeInitialisation($module) {
               $module.remove()
             }
@@ -356,8 +354,7 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
 
       it('throws when receiving the wrong type for $module', async () => {
         await expect(
-          renderAndInitialise(page, 'checkboxes', {
-            params: examples.default,
+          renderAndInitialise(page, 'checkboxes', examples.default, {
             beforeInitialisation($module) {
               // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
               $module.outerHTML = `<svg data-module="govuk-checkboxes"></svg>`
@@ -372,14 +369,14 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
 
       it('throws when the input list is empty', async () => {
         await expect(
-          renderAndInitialise(page, 'checkboxes', {
-            params: examples.default,
-            beforeInitialisation($module) {
+          renderAndInitialise(page, 'checkboxes', examples.default, {
+            beforeInitialisation($module, { selector }) {
               $module
-                .querySelectorAll('.govuk-checkboxes__item')
-                .forEach((item) => {
-                  item.remove()
-                })
+                .querySelectorAll(selector)
+                .forEach((item) => item.remove())
+            },
+            context: {
+              selector: '.govuk-checkboxes__item'
             }
           })
         ).rejects.toEqual({
@@ -390,12 +387,19 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
 
       it('throws when a conditional target element is not found', async () => {
         await expect(
-          renderAndInitialise(page, 'checkboxes', {
-            params: examples['with conditional items'],
-            beforeInitialisation($module) {
-              $module.querySelector('.govuk-checkboxes__conditional').remove()
+          renderAndInitialise(
+            page,
+            'checkboxes',
+            examples['with conditional items'],
+            {
+              beforeInitialisation($module, { selector }) {
+                $module.querySelector(selector).remove()
+              },
+              context: {
+                selector: '.govuk-checkboxes__conditional'
+              }
             }
-          })
+          )
         ).rejects.toEqual({
           name: 'ElementError',
           message: 'Checkboxes: #conditional-how-contacted not found'

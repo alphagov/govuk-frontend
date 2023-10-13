@@ -178,8 +178,7 @@ describe('/components/button', () => {
       let $button
 
       beforeEach(async () => {
-        await renderAndInitialise(page, 'button', {
-          params: examples.default,
+        await renderAndInitialise(page, 'button', examples.default, {
           config: {
             preventDoubleClick: true
           }
@@ -238,12 +237,16 @@ describe('/components/button', () => {
       let $button
 
       beforeEach(async () => {
-        await renderAndInitialise(page, 'button', {
-          params: examples["don't prevent double click"],
-          config: {
-            preventDoubleClick: true
+        await renderAndInitialise(
+          page,
+          'button',
+          examples["don't prevent double click"],
+          {
+            config: {
+              preventDoubleClick: true
+            }
           }
-        })
+        )
 
         $button = await setButtonTracking(await page.$('button'))
       })
@@ -263,8 +266,7 @@ describe('/components/button', () => {
       let $button
 
       beforeEach(async () => {
-        await renderAndInitialise(page, 'button', {
-          params: examples.default,
+        await renderAndInitialise(page, 'button', examples.default, {
           config: {
             preventDoubleClick: true
           }
@@ -327,8 +329,7 @@ describe('/components/button', () => {
 
       it('throws when GOV.UK Frontend is not supported', async () => {
         await expect(
-          renderAndInitialise(page, 'button', {
-            params: examples.default,
+          renderAndInitialise(page, 'button', examples.default, {
             beforeInitialisation() {
               document.body.classList.remove('govuk-frontend-supported')
             }
@@ -341,8 +342,7 @@ describe('/components/button', () => {
 
       it('throws when $module is not set', async () => {
         await expect(
-          renderAndInitialise(page, 'button', {
-            params: examples.default,
+          renderAndInitialise(page, 'button', examples.default, {
             beforeInitialisation($module) {
               $module.remove()
             }
@@ -355,8 +355,7 @@ describe('/components/button', () => {
 
       it('throws when receiving the wrong type for $module', async () => {
         await expect(
-          renderAndInitialise(page, 'button', {
-            params: examples.default,
+          renderAndInitialise(page, 'button', examples.default, {
             beforeInitialisation($module) {
               // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
               $module.outerHTML = `<svg data-module="govuk-button"></svg>`

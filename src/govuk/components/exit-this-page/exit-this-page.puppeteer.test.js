@@ -197,8 +197,7 @@ describe('/components/exit-this-page', () => {
 
       it('throws when GOV.UK Frontend is not supported', async () => {
         await expect(
-          renderAndInitialise(page, 'exit-this-page', {
-            params: examples.default,
+          renderAndInitialise(page, 'exit-this-page', examples.default, {
             beforeInitialisation() {
               document.body.classList.remove('govuk-frontend-supported')
             }
@@ -211,8 +210,7 @@ describe('/components/exit-this-page', () => {
 
       it('throws when $module is not set', async () => {
         await expect(
-          renderAndInitialise(page, 'exit-this-page', {
-            params: examples.default,
+          renderAndInitialise(page, 'exit-this-page', examples.default, {
             beforeInitialisation($module) {
               $module.remove()
             }
@@ -225,8 +223,7 @@ describe('/components/exit-this-page', () => {
 
       it('throws when receiving the wrong type for $module', async () => {
         await expect(
-          renderAndInitialise(page, 'exit-this-page', {
-            params: examples.default,
+          renderAndInitialise(page, 'exit-this-page', examples.default, {
             beforeInitialisation($module) {
               // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
               $module.outerHTML = `<svg data-module="govuk-exit-this-page"></svg>`
@@ -240,10 +237,12 @@ describe('/components/exit-this-page', () => {
 
       it('throws when the button is missing', async () => {
         await expect(
-          renderAndInitialise(page, 'exit-this-page', {
-            params: examples.default,
-            beforeInitialisation($module) {
-              $module.querySelector('.govuk-exit-this-page__button').remove()
+          renderAndInitialise(page, 'exit-this-page', examples.default, {
+            beforeInitialisation($module, { selector }) {
+              $module.querySelector(selector).remove()
+            },
+            context: {
+              selector: '.govuk-exit-this-page__button'
             }
           })
         ).rejects.toEqual({

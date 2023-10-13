@@ -279,8 +279,7 @@ describe('Radios', () => {
 
     it('throws when GOV.UK Frontend is not supported', async () => {
       await expect(
-        renderAndInitialise(page, 'radios', {
-          params: examples.default,
+        renderAndInitialise(page, 'radios', examples.default, {
           beforeInitialisation() {
             document.body.classList.remove('govuk-frontend-supported')
           }
@@ -293,8 +292,7 @@ describe('Radios', () => {
 
     it('throws when $module is not set', async () => {
       await expect(
-        renderAndInitialise(page, 'radios', {
-          params: examples.default,
+        renderAndInitialise(page, 'radios', examples.default, {
           beforeInitialisation($module) {
             $module.remove()
           }
@@ -307,8 +305,7 @@ describe('Radios', () => {
 
     it('throws when receiving the wrong type for $module', async () => {
       await expect(
-        renderAndInitialise(page, 'radios', {
-          params: examples.default,
+        renderAndInitialise(page, 'radios', examples.default, {
           beforeInitialisation($module) {
             // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
             $module.outerHTML = `<svg data-module="govuk-radios"></svg>`
@@ -323,12 +320,12 @@ describe('Radios', () => {
 
     it('throws when the input list is empty', async () => {
       await expect(
-        renderAndInitialise(page, 'radios', {
-          params: examples.default,
-          beforeInitialisation($module) {
-            $module.querySelectorAll('.govuk-radios__item').forEach((item) => {
-              item.remove()
-            })
+        renderAndInitialise(page, 'radios', examples.default, {
+          beforeInitialisation($module, { selector }) {
+            $module.querySelectorAll(selector).forEach((item) => item.remove())
+          },
+          context: {
+            selector: '.govuk-radios__item'
           }
         })
       ).rejects.toEqual({
@@ -339,12 +336,16 @@ describe('Radios', () => {
 
     it('throws when a conditional target element is not found', async () => {
       await expect(
-        renderAndInitialise(page, 'radios', {
-          params: examples['with conditional items'],
-          beforeInitialisation($module) {
-            $module.querySelector('.govuk-radios__conditional').remove()
+        renderAndInitialise(
+          page,
+          'radios',
+          examples['with conditional items'],
+          {
+            beforeInitialisation($module) {
+              $module.querySelector('.govuk-radios__conditional').remove()
+            }
           }
-        })
+        )
       ).rejects.toEqual({
         name: 'ElementError',
         message: 'Radios: #conditional-how-contacted not found'
