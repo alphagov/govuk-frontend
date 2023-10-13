@@ -83,15 +83,14 @@ async function renderAndInitialise(
 ) {
   await goTo(page, '/tests/boilerplate')
 
-  const html = renderComponent(componentName, renderOptions)
+  const exportName = componentNameToClassName(componentName)
+  const selector = `[data-module="govuk-${componentName}"]`
 
   // Inject rendered HTML into the page
   await page.$eval(
-    '#slot',
-    (slot, htmlForSlot) => {
-      slot.innerHTML = htmlForSlot
-    },
-    html
+    '#slot', // See boilerplate.njk `<div id="slot">`
+    (slot, html) => (slot.innerHTML = html),
+    renderComponent(componentName, renderOptions)
   )
 
   // Call `beforeInitialisation` in a separate `$eval` call
@@ -99,7 +98,7 @@ async function renderAndInitialise(
   // didn't provide a reliable execution
   if (browserOptions?.beforeInitialisation) {
     await page.$eval(
-      '[data-module]',
+      selector,
       browserOptions.beforeInitialisation,
       browserOptions.context
     )
@@ -118,11 +117,11 @@ async function renderAndInitialise(
   // gather and `return` the values we need from inside the browser, and throw
   // them when back in Jest (to keep them triggering a Promise rejection)
   const error = await page.evaluate(
-    async (exportName, config) => {
+    async (selector, exportName, config) => {
       const namespace = await import('govuk-frontend')
 
       // Find all matching modules
-      const $modules = document.querySelectorAll('[data-module]')
+      const $modules = document.querySelectorAll(selector)
 
       try {
         // Loop and initialise all $modules or use default
@@ -134,7 +133,8 @@ async function renderAndInitialise(
         return { name, message }
       }
     },
-    componentNameToClassName(componentName),
+    selector,
+    exportName,
     browserOptions?.config
   )
 
