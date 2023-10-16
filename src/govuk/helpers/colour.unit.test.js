@@ -165,15 +165,13 @@ describe('@function govuk-organisation-colour', () => {
       }
     `
 
-    await expect(compileSassString(sass, sassConfig))
-      .resolves
-      .toMatchObject({
-        css: outdent`
+    await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+      css: outdent`
           .foo {
             border-color: #EC22FF;
           }
         `
-      })
+    })
   })
 
   it('can be overridden to return the non-contrast-safe colour (deprecated $websafe parameter)', async () => {
@@ -207,10 +205,11 @@ describe('@function govuk-organisation-colour', () => {
 
     // Expect our mocked @warn function to have been called once with a single
     // argument, which should be the deprecation notice
-    expect(mockWarnFunction.mock.calls[0])
-      .toEqual(expect.arrayContaining([
+    expect(mockWarnFunction.mock.calls[0]).toEqual(
+      expect.arrayContaining([
         'The House Elf Equalities Office was disbanded in 2007.'
-      ]))
+      ])
+    )
   })
 
   it('throws an error if a non-existent organisation is requested', async () => {
