@@ -19,17 +19,17 @@
 
 $govuk-colours-organisations: (
   "attorney-generals-office": (
-    colour: #9f1888
+    colour: #a91c8e
   ),
   "cabinet-office": (
-    colour: #005abb
+    colour: #0056b8
   ),
   "civil-service": (
-    colour: #af292e
+    colour: #b2292e
   ),
   "department-for-business-trade": (
     colour: #e52d13,
-    contrast-safe: #ce2911
+    contrast-safe: #e02c13
   ),
   "department-for-business-energy-industrial-strategy": (
     colour: #003479,
@@ -43,12 +43,12 @@ $govuk-colours-organisations: (
   ),
   "department-for-communities-local-government": (
     colour: #009999,
-    contrast-safe: #008383,
+    contrast-safe: #008080,
     deprecation-message:
       "`department-for-communities-local-government` became `ministry-of-housing-communities-local-government` in 2018. As of 2023, it is equivalent to `department-for-levelling-up-housing-communities`."
   ),
   "department-for-culture-media-sport": (
-    colour: #d40072
+    colour: #d6006e
   ),
   "department-for-digital-culture-media-sport": (
     colour: #d40072,
@@ -56,16 +56,15 @@ $govuk-colours-organisations: (
       "`department-for-digital-culture-media-sport` became `department-for-culture-media-sport` in 2023."
   ),
   "department-for-education": (
-    colour: #003a69,
-    contrast-safe: #347ca9
+    colour: #003764
   ),
   "department-for-energy-security-net-zero": (
     colour: #00a33b,
-    contrast-safe: #008530
+    contrast-safe: #00852f
   ),
   "department-for-environment-food-rural-affairs": (
-    colour: #00a33b,
-    contrast-safe: #008530
+    colour: #00af43,
+    contrast-safe: #008733
   ),
   "department-for-international-development": (
     colour: #002878,
@@ -81,83 +80,82 @@ $govuk-colours-organisations: (
   ),
   "department-for-science-innovation-technology": (
     colour: #00f9f8,
-    contrast-safe: #00807f
+    contrast-safe: #008180
   ),
   "department-for-transport": (
-    colour: #006c56
+    colour: #006853
   ),
   "department-for-work-pensions": (
-    colour: #00beb7,
-    contrast-safe: #007e7a
+    colour: #00bcb5,
+    contrast-safe: #00857e
   ),
   "department-of-energy-climate-change": (
     colour: #009ddb,
-    contrast-safe: #007aaa,
+    contrast-safe: #007db3,
     deprecation-message:
       "`department-of-energy-climate-change` was merged into `department-for-business-energy-industrial-strategy` in 2016. As of 2023, it is equivalent to `department-for-energy-security-net-zero`."
   ),
   "department-of-health": (
     colour: #00ad93,
-    contrast-safe: #008672,
+    contrast-safe: #008573,
     deprecation-message: "`department-of-health` became `department-of-health-social-care` in 2018."
   ),
   "department-of-health-social-care": (
-    colour: #00ad93,
-    contrast-safe: #008672
+    colour: #00a990,
+    contrast-safe: #008674
   ),
   "foreign-commonwealth-office": (
     colour: #003e74,
     deprecation-message: "`foreign-commonwealth-office` became `foreign-commonwealth-development-office` in 2018."
   ),
   "foreign-commonwealth-development-office": (
-    colour: #012169
+    colour: #002269
   ),
   "government-equalities-office": (
-    colour: #005abb,
+    colour: #0056b8,
     deprecation-message: "`government-equalities-office` is deprecated. Use `cabinet-office` instead."
   ),
   "hm-government": (
     colour: #266ebc
   ),
   "hm-revenue-customs": (
-    colour: #009390,
-    contrast-safe: #007e7b
+    colour: #008476
   ),
   "hm-treasury": (
-    colour: #af292e
+    colour: #b2292e
   ),
   "home-office": (
-    colour: #9325b2
+    colour: #732282
   ),
   "ministry-of-defence": (
-    colour: #4d2942
+    colour: #532a45
   ),
   "ministry-of-housing-communities-local-government": (
     colour: #009999,
-    contrast-safe: #008383,
+    contrast-safe: #008080,
     deprecation-message:
       "`ministry-of-housing-communities-local-government` became `department-for-levelling-up-housing-communities` in 2021."
   ),
   "ministry-of-justice": (
-    colour: #231f20
+    colour: #000000
   ),
   "northern-ireland-office": (
-    colour: #002663
+    colour: #00205c
   ),
   "office-of-the-advocate-general-for-scotland": (
-    colour: #002663
+    colour: #00205c
   ),
   "office-of-the-leader-of-the-house-of-commons": (
-    colour: #317023
+    colour: #497629
   ),
   "office-of-the-leader-of-the-house-of-lords": (
-    colour: #9c132e
+    colour: #9c182f
   ),
   "office-of-the-secretary-of-state-for-scotland": (
-    colour: #002663
+    colour: #00205c
   ),
   "office-of-the-secretary-of-state-for-wales": (
-    colour: #a33038
+    colour: #a8353a
   ),
   "prime-ministers-office-10-downing-street": (
     colour: #0b0c0c
@@ -167,7 +165,7 @@ $govuk-colours-organisations: (
     deprecation-message: "`scotland-office` became `office-of-the-secretary-of-state-for-scotland` in 2018."
   ),
   "uk-export-finance": (
-    colour: #d0132f
+    colour: #cf102d
   ),
   "uk-trade-investment": (
     colour: #c80651,
