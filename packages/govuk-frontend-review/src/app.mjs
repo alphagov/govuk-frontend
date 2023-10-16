@@ -5,7 +5,7 @@ import {
   getComponentsFixtures,
   getComponentNames,
   getComponentNamesFiltered,
-  renderComponent,
+  render,
   renderPreview
 } from '@govuk-frontend/lib/components'
 import { filterPath, hasPath } from '@govuk-frontend/lib/files'
@@ -159,7 +159,7 @@ export default async () => {
       }
 
       // Construct and evaluate the component with the data for this example
-      res.locals.componentView = renderComponent(componentName, {
+      res.locals.componentView = render(componentName, {
         context: fixture.options,
         env
       })

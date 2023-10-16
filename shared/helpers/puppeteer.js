@@ -1,6 +1,6 @@
 const { AxePuppeteer } = require('@axe-core/puppeteer')
 const { ports } = require('@govuk-frontend/config')
-const { renderComponent } = require('@govuk-frontend/lib/components')
+const components = require('@govuk-frontend/lib/components')
 const { componentNameToClassName } = require('@govuk-frontend/lib/names')
 const slug = require('slug')
 
@@ -58,7 +58,7 @@ async function axe(page, overrides = {}) {
 }
 
 /**
- * Render and initialise a component within test boilerplate HTML
+ * Render component HTML with browser preview
  *
  * Renders a component's Nunjucks macro with the given params, injects it into
  * the test boilerplate page, and instantiates the component class, passing the
@@ -75,12 +75,7 @@ async function axe(page, overrides = {}) {
  * @param {BrowserRenderOptions<HandlerContext>} [browserOptions] - Puppeteer browser render options
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
-async function renderAndInitialise(
-  page,
-  componentName,
-  renderOptions,
-  browserOptions
-) {
+async function render(page, componentName, renderOptions, browserOptions) {
   await goTo(page, '/tests/boilerplate')
 
   const exportName = componentNameToClassName(componentName)
@@ -90,7 +85,7 @@ async function renderAndInitialise(
   await page.$eval(
     '#slot', // See boilerplate.njk `<div id="slot">`
     (slot, html) => (slot.innerHTML = html),
-    renderComponent(componentName, renderOptions)
+    components.render(componentName, renderOptions)
   )
 
   // Call `beforeInitialisation` in a separate `$eval` call
@@ -252,7 +247,7 @@ async function isVisible($element) {
 
 module.exports = {
   axe,
-  renderAndInitialise,
+  render,
   goTo,
   goToComponent,
   goToExample,

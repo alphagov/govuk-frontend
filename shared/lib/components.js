@@ -140,7 +140,7 @@ async function getExamples(componentName, packageOptions) {
  * @param {MacroRenderOptions} [options] - Nunjucks macro render options
  * @returns {string} HTML rendered by the component
  */
-function renderComponent(componentName, options) {
+function render(componentName, options) {
   const macroName = componentNameToMacroName(componentName)
   const macroPath = `govuk/components/${componentName}/macro.njk`
 
@@ -204,7 +204,7 @@ function renderPreview(componentName, options) {
           <p class="govuk-body">Used during testing to inject rendered components and test specific configurations</p>
 
           <div id="slot" class="govuk-!-margin-top-6">
-            ${componentName ? renderComponent(componentName, options) : ''}
+            ${componentName ? render(componentName, options) : ''}
           </div>
         </div>
       `,
@@ -262,7 +262,7 @@ module.exports = {
   getComponentNamesFiltered,
   getExamples,
   nunjucksEnv,
-  renderComponent,
+  render,
   renderMacro,
   renderPreview,
   renderString,

@@ -1,4 +1,4 @@
-import { getExamples, renderComponent } from '@govuk-frontend/lib/components'
+import { getExamples, render } from '@govuk-frontend/lib/components'
 
 import { CharacterCount } from './character-count.mjs'
 
@@ -7,10 +7,7 @@ describe('CharacterCount', () => {
 
   beforeAll(async () => {
     const examples = await getExamples('character-count')
-    html = renderComponent(
-      'character-count',
-      examples['to configure in JavaScript']
-    )
+    html = render('character-count', examples['to configure in JavaScript'])
   })
 
   beforeEach(async () => {

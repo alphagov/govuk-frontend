@@ -1,7 +1,4 @@
-const {
-  goToComponent,
-  renderAndInitialise
-} = require('@govuk-frontend/helpers/puppeteer')
+const { goToComponent, render } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 const { KnownDevices } = require('puppeteer')
 
@@ -177,7 +174,7 @@ describe('Header navigation', () => {
 
       it('throws when GOV.UK Frontend is not supported', async () => {
         await expect(
-          renderAndInitialise(page, 'header', examples.default, {
+          render(page, 'header', examples.default, {
             beforeInitialisation() {
               document.body.classList.remove('govuk-frontend-supported')
             }
@@ -190,7 +187,7 @@ describe('Header navigation', () => {
 
       it('throws when $module is not set', async () => {
         await expect(
-          renderAndInitialise(page, 'header', examples.default, {
+          render(page, 'header', examples.default, {
             beforeInitialisation($module) {
               // Remove the root of the components as a way
               // for the constructor to receive the wrong type for `$module`
@@ -208,12 +205,12 @@ describe('Header navigation', () => {
         // and should keep rendering. No expectations as the JavaScript
         // will just return early. All we ask of that test is for it not
         // to throw during the initialisation
-        await renderAndInitialise(page, 'header', examples.default)
+        await render(page, 'header', examples.default)
       })
 
       it("throws when the toggle's aria-control attribute is missing", async () => {
         await expect(
-          renderAndInitialise(page, 'header', examples['with navigation'], {
+          render(page, 'header', examples['with navigation'], {
             beforeInitialisation($module, { selector }) {
               $module.querySelector(selector).removeAttribute('aria-controls')
             },
@@ -230,7 +227,7 @@ describe('Header navigation', () => {
 
       it('throws when the menu is missing, but a toggle is present', async () => {
         await expect(
-          renderAndInitialise(page, 'header', examples['with navigation'], {
+          render(page, 'header', examples['with navigation'], {
             beforeInitialisation($module, { selector }) {
               // Remove the menu `<ul>` referenced by $menuButton's `aria-controls`
               $module.querySelector(selector).remove()

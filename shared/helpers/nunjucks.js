@@ -9,7 +9,7 @@ const cheerio = require('cheerio')
  * @returns {import('cheerio').CheerioAPI} HTML rendered by the macro
  */
 function render(componentName, options) {
-  return cheerio.load(components.renderComponent(componentName, options))
+  return cheerio.load(components.render(componentName, options))
 }
 
 /**

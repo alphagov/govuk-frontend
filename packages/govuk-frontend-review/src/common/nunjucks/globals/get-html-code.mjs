@@ -1,4 +1,4 @@
-import { renderComponent } from '@govuk-frontend/lib/components'
+import { render } from '@govuk-frontend/lib/components'
 import beautify from 'js-beautify'
 
 /**
@@ -10,7 +10,7 @@ import beautify from 'js-beautify'
  * @returns {string} HTML rendered by the component
  */
 export function getHTMLCode(componentName, options) {
-  const html = renderComponent(componentName, { ...options, env: this.env })
+  const html = render(componentName, { ...options, env: this.env })
 
   // Default beautify options
   const beautifyOptions = beautify.html.defaultOptions()
