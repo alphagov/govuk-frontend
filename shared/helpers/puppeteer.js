@@ -132,6 +132,11 @@ async function render(page, componentName, renderOptions, browserOptions) {
       async (selector, exportName, config) => {
         const namespace = await import('govuk-frontend')
 
+        // Skip custom initialisation without export
+        if (!namespace[exportName]) {
+          return namespace.initAll()
+        }
+
         // Find all matching modules
         const $modules = document.querySelectorAll(selector)
 
