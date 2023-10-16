@@ -170,6 +170,56 @@ function renderMacro(macroName, macroPath, options) {
 }
 
 /**
+ * Render component preview on boilerplate page
+ *
+ * @param {string} [componentName] - Component name
+ * @param {MacroRenderOptions} [options] - Nunjucks macro render options
+ * @returns {string} HTML rendered from the Nunjucks template
+ */
+function renderPreview(componentName, options) {
+  const stylesPath = '/stylesheets/govuk-frontend.min.css'
+  const scriptsPath = '/javascripts/govuk-frontend.min.js'
+
+  // Render page template
+  return renderTemplate('govuk/template.njk', {
+    blocks: {
+      pageTitle: 'Test boilerplate - GOV.UK',
+      head: outdent`
+        <link rel="stylesheet" href="${stylesPath}">
+
+        <script type="importmap">
+          { "imports": { "govuk-frontend": "${scriptsPath}" } }
+        </script>
+      `,
+
+      // Remove default template blocks
+      skipLink: '',
+      bodyStart: '',
+      header: '',
+      footer: '',
+
+      main: outdent`
+        <div class="govuk-width-container">
+          <h1 class="govuk-heading-l">Test boilerplate</h1>
+          <p class="govuk-body">Used during testing to inject rendered components and test specific configurations</p>
+
+          <div id="slot" class="govuk-!-margin-top-6">
+            ${componentName ? renderComponent(componentName, options) : ''}
+          </div>
+        </div>
+      `,
+
+      bodyEnd: outdent`
+        <script type="module" src="${scriptsPath}"></script>
+      `
+    },
+    context: {
+      mainClasses: 'govuk-main-wrapper--auto-spacing'
+    }
+  })
+}
+
+/**
  * Render string
  *
  * @param {string} string - Nunjucks string to render
@@ -214,6 +264,7 @@ module.exports = {
   nunjucksEnv,
   renderComponent,
   renderMacro,
+  renderPreview,
   renderString,
   renderTemplate
 }
