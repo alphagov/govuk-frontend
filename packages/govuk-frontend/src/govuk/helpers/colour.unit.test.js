@@ -225,4 +225,28 @@ describe('@function govuk-organisation-colour', () => {
       'Unknown organisation `muggle-born-registration-commission`'
     )
   })
+
+  it('aliases renamed organisation keys to the equivalent key', async () => {
+    const sass = `
+      $govuk-colours-organisations: (
+        'department-for-business-trade': (
+          colour: #e52d13
+        )
+      );
+
+      @import "helpers/colour";
+
+      .foo {
+        color: govuk-organisation-colour('department-for-business-and-trade');
+      }
+    `
+
+    await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+      css: outdent`
+          .foo {
+            color: #e52d13;
+          }
+        `
+    })
+  })
 })

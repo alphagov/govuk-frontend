@@ -55,6 +55,13 @@
 /// @access public
 
 @function govuk-organisation-colour($organisation, $websafe: null, $contrast-safe: true) {
+  // Check if the $organisation exists in the aliases map. If so, change the
+  // value of $organisation to the aliased value.
+  @if map-has-key($_govuk_colours-organisations-aliases, $organisation) {
+    $organisation: map-get($_govuk_colours-organisations-aliases, $organisation);
+  }
+
+  // Check to see if the organisation exists
   @if not map-has-key($govuk-colours-organisations, $organisation) {
     @error "Unknown organisation `#{$organisation}`";
   }
