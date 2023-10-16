@@ -6,6 +6,12 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ### New features
 
+### Fixes
+
+#### Update brand class name for Department for Energy Security & Net Zero
+
+This was added in [pull request #4331: Add new brand colour for Department for Business Innovation and Skills](https://github.com/alphagov/govuk-frontend/pull/4331).
+
 #### Precompiled CSS and JavaScript
 
 The precompiled CSS and JavaScript files found in our [GitHub releases](https://github.com/alphagov/govuk-frontend/releases) are now also published to [`govuk-frontend` on npm](https://www.npmjs.com/package/govuk-frontend).
