@@ -4,7 +4,7 @@ const {
   getProperty,
   getAttribute,
   isVisible,
-  renderAndInitialise
+  render
 } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
@@ -279,7 +279,7 @@ describe('Radios', () => {
 
     it('throws when GOV.UK Frontend is not supported', async () => {
       await expect(
-        renderAndInitialise(page, 'radios', examples.default, {
+        render(page, 'radios', examples.default, {
           beforeInitialisation() {
             document.body.classList.remove('govuk-frontend-supported')
           }
@@ -292,7 +292,7 @@ describe('Radios', () => {
 
     it('throws when $module is not set', async () => {
       await expect(
-        renderAndInitialise(page, 'radios', examples.default, {
+        render(page, 'radios', examples.default, {
           beforeInitialisation($module) {
             $module.remove()
           }
@@ -305,7 +305,7 @@ describe('Radios', () => {
 
     it('throws when receiving the wrong type for $module', async () => {
       await expect(
-        renderAndInitialise(page, 'radios', examples.default, {
+        render(page, 'radios', examples.default, {
           beforeInitialisation($module) {
             // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
             $module.outerHTML = `<svg data-module="govuk-radios"></svg>`
@@ -319,7 +319,7 @@ describe('Radios', () => {
 
     it('throws when the input list is empty', async () => {
       await expect(
-        renderAndInitialise(page, 'radios', examples.default, {
+        render(page, 'radios', examples.default, {
           beforeInitialisation($module, { selector }) {
             $module.querySelectorAll(selector).forEach((item) => item.remove())
           },
@@ -335,16 +335,11 @@ describe('Radios', () => {
 
     it('throws when a conditional target element is not found', async () => {
       await expect(
-        renderAndInitialise(
-          page,
-          'radios',
-          examples['with conditional items'],
-          {
-            beforeInitialisation($module) {
-              $module.querySelector('.govuk-radios__conditional').remove()
-            }
+        render(page, 'radios', examples['with conditional items'], {
+          beforeInitialisation($module) {
+            $module.querySelector('.govuk-radios__conditional').remove()
           }
-        )
+        })
       ).rejects.toEqual({
         name: 'ElementError',
         message:

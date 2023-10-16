@@ -1,7 +1,7 @@
 const {
   goTo,
   goToComponent,
-  renderAndInitialise
+  render
 } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 const { KnownDevices } = require('puppeteer')
@@ -257,7 +257,7 @@ describe('/components/tabs', () => {
 
       it('throws when GOV.UK Frontend is not supported', async () => {
         await expect(
-          renderAndInitialise(page, 'tabs', examples.default, {
+          render(page, 'tabs', examples.default, {
             beforeInitialisation() {
               document.body.classList.remove('govuk-frontend-supported')
             }
@@ -270,7 +270,7 @@ describe('/components/tabs', () => {
 
       it('throws when $module is not set', async () => {
         await expect(
-          renderAndInitialise(page, 'tabs', examples.default, {
+          render(page, 'tabs', examples.default, {
             beforeInitialisation($module) {
               $module.remove()
             }
@@ -283,7 +283,7 @@ describe('/components/tabs', () => {
 
       it('throws when there are no tabs', async () => {
         await expect(
-          renderAndInitialise(page, 'tabs', examples.default, {
+          render(page, 'tabs', examples.default, {
             beforeInitialisation($module, { selector }) {
               $module
                 .querySelectorAll(selector)
@@ -301,7 +301,7 @@ describe('/components/tabs', () => {
 
       it('throws when the tab list is missing', async () => {
         await expect(
-          renderAndInitialise(page, 'tabs', examples.default, {
+          render(page, 'tabs', examples.default, {
             beforeInitialisation($module, { selector }) {
               $module
                 .querySelector(selector)
@@ -319,7 +319,7 @@ describe('/components/tabs', () => {
 
       it('throws when there the tab list is empty', async () => {
         await expect(
-          renderAndInitialise(page, 'tabs', examples.default, {
+          render(page, 'tabs', examples.default, {
             beforeInitialisation($module, { selector, className }) {
               $module
                 .querySelectorAll(selector)

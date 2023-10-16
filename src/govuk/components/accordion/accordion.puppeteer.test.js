@@ -1,7 +1,7 @@
 const {
   goToComponent,
   goToExample,
-  renderAndInitialise,
+  render,
   getAccessibleName
 } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
@@ -685,7 +685,7 @@ describe('/components/accordion', () => {
           })
 
           it('injects the localised strings as text not HTML', async () => {
-            await renderAndInitialise(page, 'accordion', examples.default, {
+            await render(page, 'accordion', examples.default, {
               config: {
                 i18n: {
                   showAllSections: 'Show <strong>all sections</strong>',
@@ -721,7 +721,7 @@ describe('/components/accordion', () => {
 
           it('throws when GOV.UK Frontend is not supported', async () => {
             await expect(
-              renderAndInitialise(page, 'accordion', examples.default, {
+              render(page, 'accordion', examples.default, {
                 beforeInitialisation() {
                   document.body.classList.remove('govuk-frontend-supported')
                 }
@@ -734,7 +734,7 @@ describe('/components/accordion', () => {
 
           it('throws when $module is not set', async () => {
             await expect(
-              renderAndInitialise(page, 'accordion', examples.default, {
+              render(page, 'accordion', examples.default, {
                 beforeInitialisation($module) {
                   $module.remove()
                 }
@@ -747,7 +747,7 @@ describe('/components/accordion', () => {
 
           it('throws when receiving the wrong type for $module', async () => {
             await expect(
-              renderAndInitialise(page, 'accordion', examples.default, {
+              render(page, 'accordion', examples.default, {
                 beforeInitialisation($module) {
                   // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
                   $module.outerHTML = `<svg data-module="govuk-accordion"></svg>`
