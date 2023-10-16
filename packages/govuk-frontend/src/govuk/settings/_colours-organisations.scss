@@ -11,6 +11,9 @@
 ///   `$organisation`. This colour has at least a 4.5:1 contrast against
 ///   white, to be used for copy and meet the AAA (large text) and AA (smaller
 ///   copy) WCAG guidelines.
+/// @prop $organisation.colour-websafe - Deprecated. Use `contrast-safe`
+///   instead. The values of both `colour-websafe` and `contrast-safe` should
+///   be the same.
 /// @prop $organisation.deprecation-message - Marks this organisation as
 ///   deprecated (usually because it has ceased to exist). Value is the
 ///   deprecation message output to the terminal when compiling.
@@ -29,6 +32,7 @@ $govuk-colours-organisations: (
   ),
   "department-for-business-trade": (
     colour: #e52d13,
+    colour-websafe: #e02c13,
     contrast-safe: #e02c13
   ),
   "department-for-business-energy-industrial-strategy": (
@@ -43,6 +47,7 @@ $govuk-colours-organisations: (
   ),
   "department-for-communities-local-government": (
     colour: #009999,
+    colour-websafe: #008080,
     contrast-safe: #008080,
     deprecation-message:
       "`department-for-communities-local-government` became `ministry-of-housing-communities-local-government` in 2018. As of 2023, it is equivalent to `department-for-levelling-up-housing-communities`."
@@ -60,10 +65,12 @@ $govuk-colours-organisations: (
   ),
   "department-for-energy-security-net-zero": (
     colour: #00a33b,
+    colour-websafe: #00852f,
     contrast-safe: #00852f
   ),
   "department-for-environment-food-rural-affairs": (
     colour: #00af43,
+    colour-websafe: #008733,
     contrast-safe: #008733
   ),
   "department-for-international-development": (
@@ -80,6 +87,7 @@ $govuk-colours-organisations: (
   ),
   "department-for-science-innovation-technology": (
     colour: #00f9f8,
+    colour-websafe: #008180,
     contrast-safe: #008180
   ),
   "department-for-transport": (
@@ -87,21 +95,25 @@ $govuk-colours-organisations: (
   ),
   "department-for-work-pensions": (
     colour: #00bcb5,
+    colour-websafe: #00857e,
     contrast-safe: #00857e
   ),
   "department-of-energy-climate-change": (
     colour: #009ddb,
+    colour-websafe: #007db3,
     contrast-safe: #007db3,
     deprecation-message:
       "`department-of-energy-climate-change` was merged into `department-for-business-energy-industrial-strategy` in 2016. As of 2023, it is equivalent to `department-for-energy-security-net-zero`."
   ),
   "department-of-health": (
     colour: #00ad93,
+    colour-websafe: #008573,
     contrast-safe: #008573,
     deprecation-message: "`department-of-health` became `department-of-health-social-care` in 2018."
   ),
   "department-of-health-social-care": (
     colour: #00a990,
+    colour-websafe: #008674,
     contrast-safe: #008674
   ),
   "foreign-commonwealth-office": (
@@ -132,6 +144,7 @@ $govuk-colours-organisations: (
   ),
   "ministry-of-housing-communities-local-government": (
     colour: #009999,
+    colour-websafe: #008080,
     contrast-safe: #008080,
     deprecation-message:
       "`ministry-of-housing-communities-local-government` became `department-for-levelling-up-housing-communities` in 2021."
