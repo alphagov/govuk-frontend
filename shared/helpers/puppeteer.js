@@ -128,6 +128,10 @@ async function render(page, componentName, renderOptions, browserOptions) {
   // property, which means we get a mangled value). As a workaround, we can
   // gather and `return` the values we need from inside the browser
   try {
+    if (!page.isJavaScriptEnabled()) {
+      return page
+    }
+
     const error = await page.evaluate(
       async (selector, exportName, config) => {
         const namespace = await import('govuk-frontend')
