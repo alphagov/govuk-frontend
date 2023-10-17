@@ -28,4 +28,4 @@ jobs:
 
     steps:
       - name: Check images for alt text
-        uses: github/accessibility-alt-text-bot@v1.3.0
+        uses: github/accessibility-alt-text-bot@v1.4.0
