@@ -264,7 +264,7 @@ export class Accordion extends GOVUKFrontendComponent {
     // to the `$headingText` element)
     for (const attr of Array.from($span.attributes)) {
       if (attr.nodeName !== 'id') {
-        $button.setAttribute(attr.nodeName, attr.nodeValue)
+        $button.setAttribute(attr.nodeName, `${attr.nodeValue}`)
       }
     }
 
@@ -326,7 +326,7 @@ export class Accordion extends GOVUKFrontendComponent {
 
       // Get original attributes, and pass them to the replacement
       for (const attr of Array.from($summary.attributes)) {
-        $summarySpan.setAttribute(attr.nodeName, attr.nodeValue)
+        $summarySpan.setAttribute(attr.nodeName, `${attr.nodeValue}`)
       }
 
       // Copy original contents of summary to the new summary span
@@ -437,12 +437,12 @@ export class Accordion extends GOVUKFrontendComponent {
       `.${this.sectionHeadingTextClass}`
     )
     if ($headingText) {
-      ariaLabelParts.push($headingText.textContent.trim())
+      ariaLabelParts.push(`${$headingText.textContent}`.trim())
     }
 
     const $summary = $section.querySelector(`.${this.sectionSummaryClass}`)
     if ($summary) {
-      ariaLabelParts.push($summary.textContent.trim())
+      ariaLabelParts.push(`${$summary.textContent}`.trim())
     }
 
     const ariaLabelMessage = expanded
