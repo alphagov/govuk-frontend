@@ -12,7 +12,7 @@ describe('/components/accordion', () => {
        *
        * {@link https://github.com/alphagov/govuk-frontend/issues/2472}
        */
-      'aria-allowed-attr': { enabled: false }
+      'aria-prohibited-attr': { enabled: false }
     }
   })
 
