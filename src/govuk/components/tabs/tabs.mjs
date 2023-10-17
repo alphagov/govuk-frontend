@@ -50,7 +50,7 @@ export class Tabs extends GOVUKFrontendComponent {
   constructor($module) {
     super()
 
-    if (!($module instanceof HTMLElement)) {
+    if (!$module) {
       throw new ElementError('$module', {
         componentName: 'Tabs',
         element: $module
