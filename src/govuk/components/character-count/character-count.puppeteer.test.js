@@ -496,12 +496,16 @@ describe('Character count', () => {
     describe('JavaScript configuration', () => {
       describe('at instantiation', () => {
         it('configures the number of characters', async () => {
-          await renderAndInitialise(page, 'character-count', {
-            params: examples['to configure in JavaScript'],
-            config: {
-              maxlength: 10
+          await renderAndInitialise(
+            page,
+            'character-count',
+            examples['to configure in JavaScript'],
+            {
+              config: {
+                maxlength: 10
+              }
             }
-          })
+          )
 
           await page.type('.govuk-js-character-count', 'A'.repeat(11), {
             delay: 50
@@ -515,12 +519,16 @@ describe('Character count', () => {
         })
 
         it('configures the number of words', async () => {
-          await renderAndInitialise(page, 'character-count', {
-            params: examples['to configure in JavaScript'],
-            config: {
-              maxwords: 10
+          await renderAndInitialise(
+            page,
+            'character-count',
+            examples['to configure in JavaScript'],
+            {
+              config: {
+                maxwords: 10
+              }
             }
-          })
+          )
 
           await page.type('.govuk-js-character-count', 'Hello '.repeat(11), {
             delay: 50
@@ -534,13 +542,17 @@ describe('Character count', () => {
         })
 
         it('configures the threshold', async () => {
-          await renderAndInitialise(page, 'character-count', {
-            params: examples['to configure in JavaScript'],
-            config: {
-              maxlength: 10,
-              threshold: 75
+          await renderAndInitialise(
+            page,
+            'character-count',
+            examples['to configure in JavaScript'],
+            {
+              config: {
+                maxlength: 10,
+                threshold: 75
+              }
             }
-          })
+          )
 
           await page.type('.govuk-js-character-count', 'A'.repeat(8), {
             delay: 50
@@ -557,20 +569,23 @@ describe('Character count', () => {
           // This tests that a description can be provided through JavaScript attributes
           // and interpolated with the limit provided to the character count in JS.
 
-          await renderAndInitialise(page, 'character-count', {
-            params:
-              examples[
-                'when neither maxlength/maxwords nor textarea description are set'
-              ],
-            config: {
-              maxlength: 10,
-              i18n: {
-                textareaDescription: {
-                  other: 'No more than %{count} characters'
+          await renderAndInitialise(
+            page,
+            'character-count',
+            examples[
+              'when neither maxlength/maxwords nor textarea description are set'
+            ],
+            {
+              config: {
+                maxlength: 10,
+                i18n: {
+                  textareaDescription: {
+                    other: 'No more than %{count} characters'
+                  }
                 }
               }
             }
-          })
+          )
 
           const message = await page.$eval(
             '.govuk-character-count__message',
@@ -582,12 +597,16 @@ describe('Character count', () => {
 
       describe('via `initAll`', () => {
         it('configures the number of characters', async () => {
-          await renderAndInitialise(page, 'character-count', {
-            params: examples['to configure in JavaScript'],
-            config: {
-              maxlength: 10
+          await renderAndInitialise(
+            page,
+            'character-count',
+            examples['to configure in JavaScript'],
+            {
+              config: {
+                maxlength: 10
+              }
             }
-          })
+          )
 
           await page.type('.govuk-js-character-count', 'A'.repeat(11), {
             delay: 50
@@ -601,12 +620,16 @@ describe('Character count', () => {
         })
 
         it('configures the number of words', async () => {
-          await renderAndInitialise(page, 'character-count', {
-            params: examples['to configure in JavaScript'],
-            config: {
-              maxwords: 10
+          await renderAndInitialise(
+            page,
+            'character-count',
+            examples['to configure in JavaScript'],
+            {
+              config: {
+                maxwords: 10
+              }
             }
-          })
+          )
 
           await page.type('.govuk-js-character-count', 'Hello '.repeat(11), {
             delay: 50
@@ -620,13 +643,17 @@ describe('Character count', () => {
         })
 
         it('configures the threshold', async () => {
-          await renderAndInitialise(page, 'character-count', {
-            params: examples['to configure in JavaScript'],
-            config: {
-              maxlength: 10,
-              threshold: 75
+          await renderAndInitialise(
+            page,
+            'character-count',
+            examples['to configure in JavaScript'],
+            {
+              config: {
+                maxlength: 10,
+                threshold: 75
+              }
             }
-          })
+          )
 
           await page.type('.govuk-js-character-count', 'A'.repeat(8), {
             delay: 50
@@ -642,8 +669,7 @@ describe('Character count', () => {
 
       describe('when data-attributes are present', () => {
         it('uses `maxlength` data attribute instead of the JS one', async () => {
-          await renderAndInitialise(page, 'character-count', {
-            params: examples.default,
+          await renderAndInitialise(page, 'character-count', examples.default, {
             config: {
               maxlength: 12 // JS configuration that would tell 1 character remaining
             }
@@ -661,8 +687,7 @@ describe('Character count', () => {
         })
 
         it("uses `maxlength` data attribute instead of JS's `maxwords`", async () => {
-          await renderAndInitialise(page, 'character-count', {
-            params: examples.default, // Default example counts characters
+          await renderAndInitialise(page, 'character-count', examples.default, {
             config: {
               maxwords: 12
             }
@@ -680,12 +705,16 @@ describe('Character count', () => {
         })
 
         it('uses `maxwords` data attribute instead of the JS one', async () => {
-          await renderAndInitialise(page, 'character-count', {
-            params: examples['with word count'],
-            config: {
-              maxwords: 12 // JS configuration that would tell 1 word remaining
+          await renderAndInitialise(
+            page,
+            'character-count',
+            examples['with word count'],
+            {
+              config: {
+                maxwords: 12 // JS configuration that would tell 1 word remaining
+              }
             }
-          })
+          )
 
           await page.type('.govuk-js-character-count', 'Hello '.repeat(11), {
             delay: 50
@@ -699,12 +728,16 @@ describe('Character count', () => {
         })
 
         it("uses `maxwords` data attribute instead of the JS's `maxlength`", async () => {
-          await renderAndInitialise(page, 'character-count', {
-            params: examples['with word count'],
-            config: {
-              maxlength: 10
+          await renderAndInitialise(
+            page,
+            'character-count',
+            examples['with word count'],
+            {
+              config: {
+                maxlength: 10
+              }
             }
-          })
+          )
 
           await page.type('.govuk-js-character-count', 'Hello '.repeat(11), {
             delay: 50
@@ -724,12 +757,16 @@ describe('Character count', () => {
           // element holding the textarea's accessible description
           // (and interpolated to replace `%{count}` with the maximum)
 
-          await renderAndInitialise(page, 'character-count', {
-            params: examples['when neither maxlength nor maxwords are set'],
-            config: {
-              maxlength: 10
+          await renderAndInitialise(
+            page,
+            'character-count',
+            examples['when neither maxlength nor maxwords are set'],
+            {
+              config: {
+                maxlength: 10
+              }
             }
-          })
+          )
 
           const message = await page.$eval(
             '.govuk-character-count__message',
@@ -742,17 +779,21 @@ describe('Character count', () => {
 
     describe('Cross Side Scripting prevention', () => {
       it('injects the localised strings as text not HTML', async () => {
-        await renderAndInitialise(page, 'character-count', {
-          params: examples['to configure in JavaScript'],
-          config: {
-            maxlength: 10,
-            i18n: {
-              charactersUnderLimit: {
-                other: '<strong>%{count}</strong> characters left'
+        await renderAndInitialise(
+          page,
+          'character-count',
+          examples['to configure in JavaScript'],
+          {
+            config: {
+              maxlength: 10,
+              i18n: {
+                charactersUnderLimit: {
+                  other: '<strong>%{count}</strong> characters left'
+                }
               }
             }
           }
-        })
+        )
 
         const message = await page.$eval(
           '.govuk-character-count__status',
@@ -773,8 +814,7 @@ describe('Character count', () => {
 
       it('throws when GOV.UK Frontend is not supported', async () => {
         await expect(
-          renderAndInitialise(page, 'character-count', {
-            params: examples.default,
+          renderAndInitialise(page, 'character-count', examples.default, {
             beforeInitialisation() {
               document.body.classList.remove('govuk-frontend-supported')
             }
@@ -787,8 +827,7 @@ describe('Character count', () => {
 
       it('throws when $module is not set', async () => {
         await expect(
-          renderAndInitialise(page, 'character-count', {
-            params: examples.default,
+          renderAndInitialise(page, 'character-count', examples.default, {
             beforeInitialisation($module) {
               $module.remove()
             }
@@ -801,8 +840,7 @@ describe('Character count', () => {
 
       it('throws when receiving the wrong type for $module', async () => {
         await expect(
-          renderAndInitialise(page, 'character-count', {
-            params: examples.default,
+          renderAndInitialise(page, 'character-count', examples.default, {
             beforeInitialisation($module) {
               // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
               $module.outerHTML = `<svg data-module="govuk-character-count"></svg>`
@@ -816,10 +854,12 @@ describe('Character count', () => {
 
       it('throws when the textarea is missing', async () => {
         await expect(
-          renderAndInitialise(page, 'character-count', {
-            params: examples.default,
-            beforeInitialisation($module) {
-              $module.querySelector('.govuk-js-character-count').remove()
+          renderAndInitialise(page, 'character-count', examples.default, {
+            beforeInitialisation($module, { selector }) {
+              $module.querySelector(selector).remove()
+            },
+            context: {
+              selector: '.govuk-js-character-count'
             }
           })
         ).rejects.toEqual({
@@ -830,12 +870,14 @@ describe('Character count', () => {
 
       it('throws when the textarea is not the right type', async () => {
         await expect(
-          renderAndInitialise(page, 'character-count', {
-            params: examples.default,
-            beforeInitialisation($module) {
+          renderAndInitialise(page, 'character-count', examples.default, {
+            beforeInitialisation($module, { selector }) {
               // Replace with a tag that's neither an `<input>` or `<textarea>`
-              $module.querySelector('.govuk-js-character-count').outerHTML =
+              $module.querySelector(selector).outerHTML =
                 '<div class="govuk-js-character-count"></div>'
+            },
+            context: {
+              selector: '.govuk-js-character-count'
             }
           })
         ).rejects.toEqual({
@@ -847,10 +889,12 @@ describe('Character count', () => {
 
       it('throws when the textarea description is missing', async () => {
         await expect(
-          renderAndInitialise(page, 'character-count', {
-            params: examples.default,
-            beforeInitialisation($module) {
-              $module.querySelector('#more-detail-info').remove()
+          renderAndInitialise(page, 'character-count', examples.default, {
+            beforeInitialisation($module, { selector }) {
+              $module.querySelector(selector).remove()
+            },
+            context: {
+              selector: '#more-detail-info'
             }
           })
         ).rejects.toEqual({
@@ -861,9 +905,7 @@ describe('Character count', () => {
 
       it('throws when receiving invalid configuration', async () => {
         await expect(
-          renderAndInitialise(page, 'character-count', {
-            params: {}
-          })
+          renderAndInitialise(page, 'character-count')
         ).rejects.toEqual({
           name: 'ConfigError',
           message:
@@ -879,8 +921,7 @@ describe('Character count', () => {
       const pageErrorListener = jest.fn()
       page.on('pageerror', pageErrorListener)
 
-      await renderAndInitialise(page, 'character-count', {
-        params: examples.default,
+      await renderAndInitialise(page, 'character-count', examples.default, {
         config: {
           // Override maxlength to 10
           maxlength: 10

@@ -257,8 +257,7 @@ describe('/components/tabs', () => {
 
       it('throws when GOV.UK Frontend is not supported', async () => {
         await expect(
-          renderAndInitialise(page, 'tabs', {
-            params: examples.default,
+          renderAndInitialise(page, 'tabs', examples.default, {
             beforeInitialisation() {
               document.body.classList.remove('govuk-frontend-supported')
             }
@@ -271,8 +270,7 @@ describe('/components/tabs', () => {
 
       it('throws when $module is not set', async () => {
         await expect(
-          renderAndInitialise(page, 'tabs', {
-            params: examples.default,
+          renderAndInitialise(page, 'tabs', examples.default, {
             beforeInitialisation($module) {
               $module.remove()
             }
@@ -285,8 +283,7 @@ describe('/components/tabs', () => {
 
       it('throws when receiving the wrong type for $module', async () => {
         await expect(
-          renderAndInitialise(page, 'tabs', {
-            params: examples.default,
+          renderAndInitialise(page, 'tabs', examples.default, {
             beforeInitialisation($module) {
               // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
               $module.outerHTML = `<svg data-module="govuk-tabs"></svg>`
@@ -300,12 +297,14 @@ describe('/components/tabs', () => {
 
       it('throws when there are no tabs', async () => {
         await expect(
-          renderAndInitialise(page, 'tabs', {
-            params: examples.default,
-            beforeInitialisation($module) {
-              $module.querySelectorAll('a.govuk-tabs__tab').forEach((item) => {
-                item.remove()
-              })
+          renderAndInitialise(page, 'tabs', examples.default, {
+            beforeInitialisation($module, { selector }) {
+              $module
+                .querySelectorAll(selector)
+                .forEach((item) => item.remove())
+            },
+            context: {
+              selector: 'a.govuk-tabs__tab'
             }
           })
         ).rejects.toEqual({
@@ -316,12 +315,14 @@ describe('/components/tabs', () => {
 
       it('throws when the tab list is missing', async () => {
         await expect(
-          renderAndInitialise(page, 'tabs', {
-            params: examples.default,
-            beforeInitialisation($module) {
+          renderAndInitialise(page, 'tabs', examples.default, {
+            beforeInitialisation($module, { selector }) {
               $module
-                .querySelector('.govuk-tabs__list')
+                .querySelector(selector)
                 .setAttribute('class', 'govuk-tabs__typo')
+            },
+            context: {
+              selector: '.govuk-tabs__list'
             }
           })
         ).rejects.toEqual({
@@ -332,14 +333,15 @@ describe('/components/tabs', () => {
 
       it('throws when there the tab list is empty', async () => {
         await expect(
-          renderAndInitialise(page, 'tabs', {
-            params: examples.default,
-            beforeInitialisation($module) {
+          renderAndInitialise(page, 'tabs', examples.default, {
+            beforeInitialisation($module, { selector, className }) {
               $module
-                .querySelectorAll('.govuk-tabs__list-item')
-                .forEach((item) =>
-                  item.setAttribute('class', '.govuk-tabs__list-typo')
-                )
+                .querySelectorAll(selector)
+                .forEach((item) => item.setAttribute('class', className))
+            },
+            context: {
+              selector: '.govuk-tabs__list-item',
+              className: 'govuk-tabs__list-typo'
             }
           })
         ).rejects.toEqual({
