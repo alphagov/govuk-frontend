@@ -2,19 +2,6 @@ import { axe, goToComponent } from '@govuk-frontend/helpers/puppeteer'
 import { getExamples } from '@govuk-frontend/lib/components'
 
 describe('/components/checkboxes', () => {
-  let axeRules
-
-  beforeAll(() => {
-    axeRules = {
-      /**
-       * Ignore 'ARIA attribute is not allowed: aria-expanded="false"'
-       *
-       * {@link https://github.com/alphagov/govuk-frontend/issues/979}
-       */
-      'aria-allowed-attr': { enabled: false }
-    }
-  })
-
   describe('component examples', () => {
     let exampleNames
 
@@ -26,7 +13,7 @@ describe('/components/checkboxes', () => {
       for (const exampleName of exampleNames) {
         // Navigation to example, create report
         await goToComponent(page, 'checkboxes', { exampleName })
-        await expect(axe(page, axeRules)).resolves.toHaveNoViolations()
+        await expect(axe(page)).resolves.toHaveNoViolations()
       }
     }, 120000)
   })
