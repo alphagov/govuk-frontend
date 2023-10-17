@@ -68,34 +68,40 @@ async function axe(page, overrides = {}) {
  * components, allowing to tweak the state of the page before the component gets
  * instantiated.
  *
+ * @template {object} HandlerContext
  * @param {import('puppeteer').Page} page - Puppeteer page object
  * @param {string} componentName - The kebab-cased name of the component
- * @param {object} options - Render and initialise options
- * @param {MacroOptions} [options.params] - Nunjucks macro options (or params)
- * @param {Config[ConfigKey]} [options.config] - Component config (optional)
- * @param {($module: Element) => void} [options.beforeInitialisation] - A function that'll run in the browser
- *   before the component gets initialised
+ * @param {MacroOptions} [renderOptions] - Component options
+ * @param {BrowserRenderOptions<HandlerContext>} [browserOptions] - Component options
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
-async function renderAndInitialise(page, componentName, options) {
+async function renderAndInitialise(
+  page,
+  componentName,
+  renderOptions,
+  browserOptions
+) {
   await goTo(page, '/tests/boilerplate')
 
-  const html = renderComponent(componentName, options.params)
+  const exportName = componentNameToClassName(componentName)
+  const selector = `[data-module="govuk-${componentName}"]`
 
   // Inject rendered HTML into the page
   await page.$eval(
-    '#slot',
-    (slot, htmlForSlot) => {
-      slot.innerHTML = htmlForSlot
-    },
-    html
+    '#slot', // See boilerplate.njk `<div id="slot">`
+    (slot, html) => (slot.innerHTML = html),
+    renderComponent(componentName, renderOptions)
   )
 
   // Call `beforeInitialisation` in a separate `$eval` call
   // as running it inside the body of the next `evaluate`
   // didn't provide a reliable execution
-  if (options.beforeInitialisation) {
-    await page.$eval('[data-module]', options.beforeInitialisation)
+  if (browserOptions?.beforeInitialisation) {
+    await page.$eval(
+      selector,
+      browserOptions.beforeInitialisation,
+      browserOptions.context
+    )
   }
 
   // Run a script to init the JavaScript component
@@ -111,20 +117,25 @@ async function renderAndInitialise(page, componentName, options) {
   // gather and `return` the values we need from inside the browser, and throw
   // them when back in Jest (to keep them triggering a Promise rejection)
   const error = await page.evaluate(
-    async (exportName, options) => {
-      const $module = document.querySelector('[data-module]')
-
+    async (selector, exportName, config) => {
       const namespace = await import('govuk-frontend')
 
+      // Find all matching modules
+      const $modules = document.querySelectorAll(selector)
+
       try {
-        /* eslint-disable-next-line no-new */
-        new namespace[exportName]($module, options.config)
+        // Loop and initialise all $modules or use default
+        // selector `null` return value when none found
+        ;($modules.length ? $modules : [null]).forEach(
+          ($module) => new namespace[exportName]($module, config)
+        )
       } catch ({ name, message }) {
         return { name, message }
       }
     },
-    componentNameToClassName(componentName),
-    options
+    selector,
+    exportName,
+    browserOptions?.config
   )
 
   if (error) {
@@ -250,6 +261,23 @@ module.exports = {
   getAccessibleName,
   isVisible
 }
+
+/**
+ * Browser render options
+ *
+ * @template {object} HandlerContext
+ * @typedef {object} BrowserRenderOptions - Component render options
+ * @property {Config[ConfigKey]} [config] - Component JavaScript config
+ * @property {HandlerContext} [context] - Context options for custom functions
+ * @property {HandlerFunction<HandlerContext>} [beforeInitialisation] - Custom function to run before initialisation
+ */
+
+/**
+ * Browser handler function with context options
+ *
+ * @template {object} HandlerContext
+ * @typedef {import('puppeteer').EvaluateFuncWith<Element, [HandlerContext]>} HandlerFunction
+ */
 
 /**
  * @typedef {import('@govuk-frontend/lib/components').MacroOptions} MacroOptions
