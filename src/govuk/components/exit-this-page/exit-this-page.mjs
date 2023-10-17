@@ -191,6 +191,10 @@ export class ExitThisPage extends GOVUKFrontendComponent {
    * @private
    */
   updateIndicator() {
+    if (!this.$indicatorContainer) {
+      return
+    }
+
     // Show or hide the indicator container depending on keypressCounter value
     this.$indicatorContainer.classList.toggle(
       'govuk-exit-this-page__indicator--visible',
@@ -218,6 +222,10 @@ export class ExitThisPage extends GOVUKFrontendComponent {
    * @private
    */
   exitPage() {
+    if (!this.$updateSpan) {
+      return
+    }
+
     this.$updateSpan.textContent = ''
 
     // Blank the page
@@ -262,6 +270,10 @@ export class ExitThisPage extends GOVUKFrontendComponent {
    * @param {KeyboardEvent} event - keyup event
    */
   handleKeypress(event) {
+    if (!this.$updateSpan) {
+      return
+    }
+
     // Detect if the 'Shift' key has been pressed. We want to only do things if it
     // was pressed by itself and not in a combination with another key—so we keep
     // track of whether the preceding keyup had shiftKey: true on it, and if it
@@ -341,14 +353,20 @@ export class ExitThisPage extends GOVUKFrontendComponent {
    * @private
    */
   resetKeypressTimer() {
+    if (!this.$updateSpan) {
+      return
+    }
+
     window.clearTimeout(this.keypressTimeoutId)
     this.keypressTimeoutId = null
 
+    const $updateSpan = this.$updateSpan
+
     this.keypressCounter = 0
-    this.$updateSpan.textContent = this.i18n.t('timedOut')
+    $updateSpan.textContent = this.i18n.t('timedOut')
 
     this.timeoutMessageId = window.setTimeout(() => {
-      this.$updateSpan.textContent = ''
+      $updateSpan.textContent = ''
     }, this.timeoutTime)
 
     this.updateIndicator()
@@ -378,8 +396,10 @@ export class ExitThisPage extends GOVUKFrontendComponent {
     }
 
     // Ensure the announcement span's role is status, not alert and clear any text
-    this.$updateSpan.setAttribute('role', 'status')
-    this.$updateSpan.textContent = ''
+    if (this.$updateSpan) {
+      this.$updateSpan.setAttribute('role', 'status')
+      this.$updateSpan.textContent = ''
+    }
 
     // Sync the keypress indicator lights
     this.updateIndicator()
