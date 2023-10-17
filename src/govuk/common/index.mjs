@@ -47,7 +47,7 @@ export function mergeConfigs(...configObjects) {
         const prefixedKey = prefix ? `${prefix}.${key}` : key
 
         // If the value is a nested object, recurse over that too
-        if (typeof value === 'object') {
+        if (value && typeof value === 'object') {
           flattenLoop(value, prefixedKey)
         } else {
           // Otherwise, add this value to our return object
