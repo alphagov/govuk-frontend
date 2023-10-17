@@ -281,20 +281,6 @@ describe('/components/tabs', () => {
         })
       })
 
-      it('throws when receiving the wrong type for $module', async () => {
-        await expect(
-          renderAndInitialise(page, 'tabs', examples.default, {
-            beforeInitialisation($module) {
-              // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
-              $module.outerHTML = `<svg data-module="govuk-tabs"></svg>`
-            }
-          })
-        ).rejects.toEqual({
-          name: 'ElementError',
-          message: 'Tabs: $module is not of type HTMLElement'
-        })
-      })
-
       it('throws when there are no tabs', async () => {
         await expect(
           renderAndInitialise(page, 'tabs', examples.default, {

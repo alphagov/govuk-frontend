@@ -394,12 +394,7 @@ export class Accordion extends GOVUKFrontendComponent {
     const $button = $section.querySelector(`.${this.sectionButtonClass}`)
     const $content = $section.querySelector(`.${this.sectionContentClass}`)
 
-    if (
-      !$showHideIcon ||
-      !($showHideText instanceof HTMLElement) ||
-      !$button ||
-      !$content
-    ) {
+    if (!$showHideIcon || !$showHideText || !$button || !$content) {
       return
     }
 
@@ -416,12 +411,12 @@ export class Accordion extends GOVUKFrontendComponent {
     const $headingText = $section.querySelector(
       `.${this.sectionHeadingTextClass}`
     )
-    if ($headingText instanceof HTMLElement) {
+    if ($headingText) {
       ariaLabelParts.push($headingText.textContent.trim())
     }
 
     const $summary = $section.querySelector(`.${this.sectionSummaryClass}`)
-    if ($summary instanceof HTMLElement) {
+    if ($summary) {
       ariaLabelParts.push($summary.textContent.trim())
     }
 
