@@ -89,11 +89,11 @@ export class ExitThisPage extends GOVUKFrontendComponent {
     }
 
     const $button = $module.querySelector('.govuk-exit-this-page__button')
-    if (!($button instanceof HTMLElement)) {
+    if (!($button instanceof HTMLAnchorElement)) {
       throw new ElementError($button, {
         componentName: 'Exit this page',
         identifier: 'Button',
-        expectedType: HTMLElement
+        expectedType: HTMLAnchorElement
       })
     }
 
@@ -191,6 +191,10 @@ export class ExitThisPage extends GOVUKFrontendComponent {
    * @private
    */
   updateIndicator() {
+    if (!this.$indicatorContainer) {
+      return
+    }
+
     // Show or hide the indicator container depending on keypressCounter value
     this.$indicatorContainer.classList.toggle(
       'govuk-exit-this-page__indicator--visible',
@@ -218,6 +222,10 @@ export class ExitThisPage extends GOVUKFrontendComponent {
    * @private
    */
   exitPage() {
+    if (!this.$updateSpan) {
+      return
+    }
+
     this.$updateSpan.textContent = ''
 
     // Blank the page
@@ -235,7 +243,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
     document.body.appendChild(this.$overlay)
     this.$overlay.textContent = this.i18n.t('activated')
 
-    window.location.href = this.$button.getAttribute('href')
+    window.location.href = this.$button.href
   }
 
   /**
@@ -262,6 +270,10 @@ export class ExitThisPage extends GOVUKFrontendComponent {
    * @param {KeyboardEvent} event - keyup event
    */
   handleKeypress(event) {
+    if (!this.$updateSpan) {
+      return
+    }
+
     // Detect if the 'Shift' key has been pressed. We want to only do things if it
     // was pressed by itself and not in a combination with another key—so we keep
     // track of whether the preceding keyup had shiftKey: true on it, and if it
@@ -280,7 +292,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
       this.updateIndicator()
 
       // Clear the timeout for the keypress timeout message clearing itself
-      if (this.timeoutMessageId !== null) {
+      if (this.timeoutMessageId) {
         window.clearTimeout(this.timeoutMessageId)
         this.timeoutMessageId = null
       }
@@ -288,7 +300,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
       if (this.keypressCounter >= 3) {
         this.keypressCounter = 0
 
-        if (this.keypressTimeoutId !== null) {
+        if (this.keypressTimeoutId) {
           window.clearTimeout(this.keypressTimeoutId)
           this.keypressTimeoutId = null
         }
@@ -303,7 +315,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
       }
 
       this.setKeypressTimer()
-    } else if (this.keypressTimeoutId !== null) {
+    } else if (this.keypressTimeoutId) {
       // If the user pressed any key other than 'Shift', after having pressed
       // 'Shift' and activating the timer, stop and reset the timer.
       this.resetKeypressTimer()
@@ -326,7 +338,9 @@ export class ExitThisPage extends GOVUKFrontendComponent {
   setKeypressTimer() {
     // Clear any existing timeout. This is so only one timer is running even if
     // there are multiple keypresses in quick succession.
-    window.clearTimeout(this.keypressTimeoutId)
+    if (this.keypressTimeoutId) {
+      window.clearTimeout(this.keypressTimeoutId)
+    }
 
     // Set a fresh timeout
     this.keypressTimeoutId = window.setTimeout(
@@ -341,14 +355,22 @@ export class ExitThisPage extends GOVUKFrontendComponent {
    * @private
    */
   resetKeypressTimer() {
-    window.clearTimeout(this.keypressTimeoutId)
-    this.keypressTimeoutId = null
+    if (!this.$updateSpan) {
+      return
+    }
+
+    if (this.keypressTimeoutId) {
+      window.clearTimeout(this.keypressTimeoutId)
+      this.keypressTimeoutId = null
+    }
+
+    const $updateSpan = this.$updateSpan
 
     this.keypressCounter = 0
-    this.$updateSpan.textContent = this.i18n.t('timedOut')
+    $updateSpan.textContent = this.i18n.t('timedOut')
 
     this.timeoutMessageId = window.setTimeout(() => {
-      this.$updateSpan.textContent = ''
+      $updateSpan.textContent = ''
     }, this.timeoutTime)
 
     this.updateIndicator()
@@ -366,7 +388,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
    * By running this check when the page is shown, we can programatically restore
    * the page and the component to a "default" state
    *
-   * @deprecated Will be made private in v5.0
+   * @private
    */
   resetPage() {
     // If an overlay is set, remove it and reset the value
@@ -378,8 +400,10 @@ export class ExitThisPage extends GOVUKFrontendComponent {
     }
 
     // Ensure the announcement span's role is status, not alert and clear any text
-    this.$updateSpan.setAttribute('role', 'status')
-    this.$updateSpan.textContent = ''
+    if (this.$updateSpan) {
+      this.$updateSpan.setAttribute('role', 'status')
+      this.$updateSpan.textContent = ''
+    }
 
     // Sync the keypress indicator lights
     this.updateIndicator()
