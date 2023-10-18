@@ -71,6 +71,11 @@ describe('initAll', () => {
   )
 
   describe('govuk-frontend-supported not present', () => {
+    beforeAll(() => {
+      // Silence warnings in test output, and allow us to 'expect' them
+      jest.spyOn(global.console, 'log').mockImplementation()
+    })
+
     it('returns early', () => {
       document.body.innerHTML = '<div data-module="govuk-accordion"></div>'
 
@@ -80,9 +85,6 @@ describe('initAll', () => {
     })
 
     it('logs why it did not initialise components', () => {
-      // Silence warnings in test output, and allow us to 'expect' them
-      jest.spyOn(global.console, 'log').mockImplementation()
-
       GOVUKFrontend.initAll()
 
       // Only validate the message as it's the important part for the user
