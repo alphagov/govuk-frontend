@@ -291,7 +291,7 @@ describe('/components/tabs', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Tabs: $module is not an instance of HTMLElement'
+          message: 'Tabs: $module is not of type HTMLElement'
         })
       })
 

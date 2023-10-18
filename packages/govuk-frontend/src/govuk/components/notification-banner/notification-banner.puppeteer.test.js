@@ -252,8 +252,7 @@ describe('Notification banner', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message:
-          'Notification banner: $module is not an instance of HTMLElement'
+        message: 'Notification banner: $module is not of type HTMLElement'
       })
     })
   })

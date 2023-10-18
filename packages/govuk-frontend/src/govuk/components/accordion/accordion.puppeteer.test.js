@@ -755,7 +755,7 @@ describe('/components/accordion', () => {
               })
             ).rejects.toEqual({
               name: 'ElementError',
-              message: 'Accordion: $module is not an instance of HTMLElement'
+              message: 'Accordion: $module is not of type HTMLElement'
             })
           })
         })
