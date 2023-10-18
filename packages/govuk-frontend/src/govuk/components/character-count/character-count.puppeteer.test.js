@@ -865,7 +865,8 @@ describe('Character count', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Character count: .govuk-js-character-count not found'
+          message:
+            'Character count: Form field (`.govuk-js-character-count`) not found'
         })
       })
 
@@ -884,7 +885,7 @@ describe('Character count', () => {
         ).rejects.toEqual({
           name: 'ElementError',
           message:
-            'Character count: .govuk-js-character-count is not of type HTMLTextareaElement or HTMLInputElement'
+            'Character count: Form field (`.govuk-js-character-count`) is not of type HTMLTextareaElement or HTMLInputElement'
         })
       })
 

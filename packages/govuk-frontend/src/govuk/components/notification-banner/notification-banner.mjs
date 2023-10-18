@@ -26,9 +26,10 @@ export class NotificationBanner extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      throw new ElementError('Root element (`$module`)', {
+      throw new ElementError({
         componentName: 'Notification banner',
-        element: $module
+        element: $module,
+        identifier: 'Root element (`$module`)'
       })
     }
 

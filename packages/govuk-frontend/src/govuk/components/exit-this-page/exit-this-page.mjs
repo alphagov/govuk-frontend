@@ -82,18 +82,20 @@ export class ExitThisPage extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      throw new ElementError('Root element (`$module`)', {
+      throw new ElementError({
         componentName: 'Exit this page',
-        element: $module
+        element: $module,
+        identifier: 'Root element (`$module`)'
       })
     }
 
     const $button = $module.querySelector('.govuk-exit-this-page__button')
     if (!($button instanceof HTMLAnchorElement)) {
-      throw new ElementError('Button', {
+      throw new ElementError({
         componentName: 'Exit this page',
         element: $button,
-        expectedType: 'HTMLAnchorElement'
+        expectedType: 'HTMLAnchorElement',
+        identifier: 'Button'
       })
     }
 
