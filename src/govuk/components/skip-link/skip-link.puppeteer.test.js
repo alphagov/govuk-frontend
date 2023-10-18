@@ -72,9 +72,11 @@ describe('Skip Link', () => {
             document.body.classList.remove('govuk-frontend-supported')
           }
         })
-      ).rejects.toEqual({
-        name: 'SupportError',
-        message: 'GOV.UK Frontend is not supported in this browser'
+      ).rejects.toMatchObject({
+        cause: {
+          name: 'SupportError',
+          message: 'GOV.UK Frontend is not supported in this browser'
+        }
       })
     })
 
@@ -85,9 +87,11 @@ describe('Skip Link', () => {
             $module.remove()
           }
         })
-      ).rejects.toEqual({
-        name: 'ElementError',
-        message: 'Skip link: Root element (`$module`) not found'
+      ).rejects.toMatchObject({
+        cause: {
+          name: 'ElementError',
+          message: 'Skip link: Root element (`$module`) not found'
+        }
       })
     })
 
@@ -99,10 +103,12 @@ describe('Skip Link', () => {
             $module.outerHTML = `<svg data-module="govuk-skip-link"></svg>`
           }
         })
-      ).rejects.toEqual({
-        name: 'ElementError',
-        message:
-          'Skip link: Root element (`$module`) is not of type HTMLAnchorElement'
+      ).rejects.toMatchObject({
+        cause: {
+          name: 'ElementError',
+          message:
+            'Skip link: Root element (`$module`) is not of type HTMLAnchorElement'
+        }
       })
     })
 
@@ -114,10 +120,12 @@ describe('Skip Link', () => {
             href: '#this-element-does-not-exist'
           }
         })
-      ).rejects.toEqual({
-        name: 'ElementError',
-        message:
-          'Skip link: Target content (`id="this-element-does-not-exist"`) not found'
+      ).rejects.toMatchObject({
+        cause: {
+          name: 'ElementError',
+          message:
+            'Skip link: Target content (`id="this-element-does-not-exist"`) not found'
+        }
       })
     })
 
@@ -129,10 +137,12 @@ describe('Skip Link', () => {
             href: 'this-element-does-not-exist'
           }
         })
-      ).rejects.toEqual({
-        name: 'ElementError',
-        message:
-          'Skip link: Root element (`$module`) attribute (`href`) has no URL fragment'
+      ).rejects.toMatchObject({
+        cause: {
+          name: 'ElementError',
+          message:
+            'Skip link: Root element (`$module`) attribute (`href`) has no URL fragment'
+        }
       })
     })
   })

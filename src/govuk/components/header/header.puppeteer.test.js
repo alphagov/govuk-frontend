@@ -179,9 +179,11 @@ describe('Header navigation', () => {
               document.body.classList.remove('govuk-frontend-supported')
             }
           })
-        ).rejects.toEqual({
-          name: 'SupportError',
-          message: 'GOV.UK Frontend is not supported in this browser'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'SupportError',
+            message: 'GOV.UK Frontend is not supported in this browser'
+          }
         })
       })
 
@@ -194,9 +196,11 @@ describe('Header navigation', () => {
               $module.remove()
             }
           })
-        ).rejects.toEqual({
-          name: 'ElementError',
-          message: 'Header: Root element (`$module`) not found'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'ElementError',
+            message: 'Header: Root element (`$module`) not found'
+          }
         })
       })
 
@@ -218,10 +222,12 @@ describe('Header navigation', () => {
               selector: '.govuk-js-header-toggle'
             }
           })
-        ).rejects.toEqual({
-          name: 'ElementError',
-          message:
-            'Header: Navigation button (`<button class="govuk-js-header-toggle">`) attribute (`aria-controls`) not found'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'ElementError',
+            message:
+              'Header: Navigation button (`<button class="govuk-js-header-toggle">`) attribute (`aria-controls`) not found'
+          }
         })
       })
 
@@ -236,9 +242,11 @@ describe('Header navigation', () => {
               selector: '#navigation'
             }
           })
-        ).rejects.toEqual({
-          name: 'ElementError',
-          message: 'Header: Navigation (`<ul id="navigation">`) not found'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'ElementError',
+            message: 'Header: Navigation (`<ul id="navigation">`) not found'
+          }
         })
       })
     })

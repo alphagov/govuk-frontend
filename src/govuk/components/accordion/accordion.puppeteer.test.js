@@ -726,9 +726,11 @@ describe('/components/accordion', () => {
                   document.body.classList.remove('govuk-frontend-supported')
                 }
               })
-            ).rejects.toEqual({
-              name: 'SupportError',
-              message: 'GOV.UK Frontend is not supported in this browser'
+            ).rejects.toMatchObject({
+              cause: {
+                name: 'SupportError',
+                message: 'GOV.UK Frontend is not supported in this browser'
+              }
             })
           })
 
@@ -739,9 +741,11 @@ describe('/components/accordion', () => {
                   $module.remove()
                 }
               })
-            ).rejects.toEqual({
-              name: 'ElementError',
-              message: 'Accordion: Root element (`$module`) not found'
+            ).rejects.toMatchObject({
+              cause: {
+                name: 'ElementError',
+                message: 'Accordion: Root element (`$module`) not found'
+              }
             })
           })
 
@@ -753,10 +757,12 @@ describe('/components/accordion', () => {
                   $module.outerHTML = `<svg data-module="govuk-accordion"></svg>`
                 }
               })
-            ).rejects.toEqual({
-              name: 'ElementError',
-              message:
-                'Accordion: Root element (`$module`) is not of type HTMLElement'
+            ).rejects.toMatchObject({
+              cause: {
+                name: 'ElementError',
+                message:
+                  'Accordion: Root element (`$module`) is not of type HTMLElement'
+              }
             })
           })
         })

@@ -220,9 +220,11 @@ describe('Notification banner', () => {
             document.body.classList.remove('govuk-frontend-supported')
           }
         })
-      ).rejects.toEqual({
-        name: 'SupportError',
-        message: 'GOV.UK Frontend is not supported in this browser'
+      ).rejects.toMatchObject({
+        cause: {
+          name: 'SupportError',
+          message: 'GOV.UK Frontend is not supported in this browser'
+        }
       })
     })
 
@@ -233,9 +235,11 @@ describe('Notification banner', () => {
             $module.remove()
           }
         })
-      ).rejects.toEqual({
-        name: 'ElementError',
-        message: 'Notification banner: Root element (`$module`) not found'
+      ).rejects.toMatchObject({
+        cause: {
+          name: 'ElementError',
+          message: 'Notification banner: Root element (`$module`) not found'
+        }
       })
     })
 
@@ -247,10 +251,12 @@ describe('Notification banner', () => {
             $module.outerHTML = `<svg data-module="govuk-notification-banner"></svg>`
           }
         })
-      ).rejects.toEqual({
-        name: 'ElementError',
-        message:
-          'Notification banner: Root element (`$module`) is not of type HTMLElement'
+      ).rejects.toMatchObject({
+        cause: {
+          name: 'ElementError',
+          message:
+            'Notification banner: Root element (`$module`) is not of type HTMLElement'
+        }
       })
     })
   })

@@ -224,9 +224,11 @@ describe('Error Summary', () => {
             document.body.classList.remove('govuk-frontend-supported')
           }
         })
-      ).rejects.toEqual({
-        name: 'SupportError',
-        message: 'GOV.UK Frontend is not supported in this browser'
+      ).rejects.toMatchObject({
+        cause: {
+          name: 'SupportError',
+          message: 'GOV.UK Frontend is not supported in this browser'
+        }
       })
     })
 
@@ -237,9 +239,11 @@ describe('Error Summary', () => {
             $module.remove()
           }
         })
-      ).rejects.toEqual({
-        name: 'ElementError',
-        message: 'Error summary: Root element (`$module`) not found'
+      ).rejects.toMatchObject({
+        cause: {
+          name: 'ElementError',
+          message: 'Error summary: Root element (`$module`) not found'
+        }
       })
     })
 
@@ -251,10 +255,12 @@ describe('Error Summary', () => {
             $module.outerHTML = `<svg data-module="govuk-error-summary"></svg>`
           }
         })
-      ).rejects.toEqual({
-        name: 'ElementError',
-        message:
-          'Error summary: Root element (`$module`) is not of type HTMLElement'
+      ).rejects.toMatchObject({
+        cause: {
+          name: 'ElementError',
+          message:
+            'Error summary: Root element (`$module`) is not of type HTMLElement'
+        }
       })
     })
   })
