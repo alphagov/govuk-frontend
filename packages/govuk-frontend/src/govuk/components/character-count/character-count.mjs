@@ -75,9 +75,9 @@ export class CharacterCount extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      throw new ElementError($module, {
+      throw new ElementError('$module', {
         componentName: 'Character count',
-        identifier: '$module'
+        element: $module
       })
     }
 
@@ -88,9 +88,9 @@ export class CharacterCount extends GOVUKFrontendComponent {
         $textarea instanceof HTMLInputElement
       )
     ) {
-      throw new ElementError($textarea, {
+      throw new ElementError('.govuk-js-character-count', {
         componentName: 'Character count',
-        identifier: '.govuk-js-character-count',
+        element: $textarea,
         expectedType: 'HTMLTextareaElement or HTMLInputElement'
       })
     }
@@ -140,9 +140,9 @@ export class CharacterCount extends GOVUKFrontendComponent {
     const textareaDescriptionId = `${this.$textarea.id}-info`
     const $textareaDescription = document.getElementById(textareaDescriptionId)
     if (!$textareaDescription) {
-      throw new ElementError($textareaDescription, {
+      throw new ElementError(`#${textareaDescriptionId}`, {
         componentName: 'Character count',
-        identifier: `#${textareaDescriptionId}`
+        element: $textareaDescription
       })
     }
 

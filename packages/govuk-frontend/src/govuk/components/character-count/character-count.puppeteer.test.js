@@ -848,7 +848,7 @@ describe('Character count', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Character count: $module is not an instance of HTMLElement'
+          message: 'Character count: $module is not of type HTMLElement'
         })
       })
 

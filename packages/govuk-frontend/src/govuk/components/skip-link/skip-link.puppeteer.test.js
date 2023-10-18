@@ -104,7 +104,7 @@ describe('Skip Link', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message: 'Skip link: $module is not an instance of HTMLAnchorElement'
+        message: 'Skip link: $module is not of type HTMLAnchorElement'
       })
     })
 

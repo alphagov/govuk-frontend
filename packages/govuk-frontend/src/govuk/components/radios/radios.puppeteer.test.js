@@ -314,7 +314,7 @@ describe('Radios', () => {
       ).rejects.toEqual({
         name: 'ElementError',
         message:
-          'Radios: [data-module="govuk-radios"] is not an instance of HTMLElement'
+          'Radios: [data-module="govuk-radios"] is not of type HTMLElement'
       })
     })
 
