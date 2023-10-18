@@ -277,7 +277,7 @@ describe('/components/tabs', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Tabs: $module not found'
+          message: 'Tabs: Root element (`$module`) not found'
         })
       })
 

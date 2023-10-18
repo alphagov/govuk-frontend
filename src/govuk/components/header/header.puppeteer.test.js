@@ -199,7 +199,7 @@ describe('Header navigation', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Header: $module not found'
+          message: 'Header: Root element (`$module`) not found'
         })
       })
 

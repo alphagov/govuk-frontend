@@ -90,7 +90,7 @@ describe('Skip Link', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message: 'Skip link: $module not found'
+        message: 'Skip link: Root element (`$module`) not found'
       })
     })
 
@@ -104,7 +104,8 @@ describe('Skip Link', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message: 'Skip link: $module is not of type HTMLAnchorElement'
+        message:
+          'Skip link: Root element (`$module`) is not of type HTMLAnchorElement'
       })
     })
 
