@@ -78,6 +78,7 @@ async function axe(page, overrides = {}) {
 async function render(page, componentName, renderOptions, browserOptions) {
   await goTo(page, '/tests/boilerplate')
 
+  const exampleName = renderOptions.fixture?.name ?? 'default'
   const exportName = componentNameToClassName(componentName)
   const selector = `[data-module="govuk-${componentName}"]`
 
@@ -109,8 +110,7 @@ async function render(page, componentName, renderOptions, browserOptions) {
   // Puppeteer returns very little information on errors thrown during
   // `evaluate`, only a `name` that maps to the error class (and not its `name`
   // property, which means we get a mangled value). As a workaround, we can
-  // gather and `return` the values we need from inside the browser, and throw
-  // them when back in Jest (to keep them triggering a Promise rejection)
+  // gather and `return` the values we need from inside the browser
   const error = await page.evaluate(
     async (selector, exportName, config) => {
       const namespace = await import('govuk-frontend')
@@ -133,8 +133,13 @@ async function render(page, componentName, renderOptions, browserOptions) {
     browserOptions?.config
   )
 
+  // Throw Puppeteer errors back to Jest
   if (error) {
-    throw error
+    throw new Error(
+      `Initialising \`new ${exportName}()\` with example '${exampleName}' threw:` +
+        `\n\t${error.name}: ${error.message}`,
+      { cause: error }
+    )
   }
 
   return page

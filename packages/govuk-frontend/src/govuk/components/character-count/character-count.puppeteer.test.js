@@ -806,9 +806,11 @@ describe('Character count', () => {
               document.body.classList.remove('govuk-frontend-supported')
             }
           })
-        ).rejects.toEqual({
-          name: 'SupportError',
-          message: 'GOV.UK Frontend is not supported in this browser'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'SupportError',
+            message: 'GOV.UK Frontend is not supported in this browser'
+          }
         })
       })
 
@@ -819,9 +821,11 @@ describe('Character count', () => {
               $module.remove()
             }
           })
-        ).rejects.toEqual({
-          name: 'ElementError',
-          message: 'Character count: Root element (`$module`) not found'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'ElementError',
+            message: 'Character count: Root element (`$module`) not found'
+          }
         })
       })
 
@@ -833,10 +837,12 @@ describe('Character count', () => {
               $module.outerHTML = `<svg data-module="govuk-character-count"></svg>`
             }
           })
-        ).rejects.toEqual({
-          name: 'ElementError',
-          message:
-            'Character count: Root element (`$module`) is not of type HTMLElement'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'ElementError',
+            message:
+              'Character count: Root element (`$module`) is not of type HTMLElement'
+          }
         })
       })
 
@@ -850,10 +856,12 @@ describe('Character count', () => {
               selector: '.govuk-js-character-count'
             }
           })
-        ).rejects.toEqual({
-          name: 'ElementError',
-          message:
-            'Character count: Form field (`.govuk-js-character-count`) not found'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'ElementError',
+            message:
+              'Character count: Form field (`.govuk-js-character-count`) not found'
+          }
         })
       })
 
@@ -869,10 +877,12 @@ describe('Character count', () => {
               selector: '.govuk-js-character-count'
             }
           })
-        ).rejects.toEqual({
-          name: 'ElementError',
-          message:
-            'Character count: Form field (`.govuk-js-character-count`) is not of type HTMLTextareaElement or HTMLInputElement'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'ElementError',
+            message:
+              'Character count: Form field (`.govuk-js-character-count`) is not of type HTMLTextareaElement or HTMLInputElement'
+          }
         })
       })
 
@@ -886,10 +896,12 @@ describe('Character count', () => {
               selector: '#more-detail-info'
             }
           })
-        ).rejects.toEqual({
-          name: 'ElementError',
-          message:
-            'Character count: Count message (`id="more-detail-info"`) not found'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'ElementError',
+            message:
+              'Character count: Count message (`id="more-detail-info"`) not found'
+          }
         })
       })
 
@@ -900,10 +912,12 @@ describe('Character count', () => {
             'character-count',
             examples['to configure in JavaScript']
           )
-        ).rejects.toEqual({
-          name: 'ConfigError',
-          message:
-            'Character count: Either "maxlength" or "maxwords" must be provided'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'ConfigError',
+            message:
+              'Character count: Either "maxlength" or "maxwords" must be provided'
+          }
         })
       })
     })

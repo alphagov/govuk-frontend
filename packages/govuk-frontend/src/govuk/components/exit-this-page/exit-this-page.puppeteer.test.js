@@ -202,9 +202,11 @@ describe('/components/exit-this-page', () => {
               document.body.classList.remove('govuk-frontend-supported')
             }
           })
-        ).rejects.toEqual({
-          name: 'SupportError',
-          message: 'GOV.UK Frontend is not supported in this browser'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'SupportError',
+            message: 'GOV.UK Frontend is not supported in this browser'
+          }
         })
       })
 
@@ -215,9 +217,11 @@ describe('/components/exit-this-page', () => {
               $module.remove()
             }
           })
-        ).rejects.toEqual({
-          name: 'ElementError',
-          message: 'Exit this page: Root element (`$module`) not found'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'ElementError',
+            message: 'Exit this page: Root element (`$module`) not found'
+          }
         })
       })
 
@@ -229,10 +233,12 @@ describe('/components/exit-this-page', () => {
               $module.outerHTML = `<svg data-module="govuk-exit-this-page"></svg>`
             }
           })
-        ).rejects.toEqual({
-          name: 'ElementError',
-          message:
-            'Exit this page: Root element (`$module`) is not of type HTMLElement'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'ElementError',
+            message:
+              'Exit this page: Root element (`$module`) is not of type HTMLElement'
+          }
         })
       })
 
@@ -246,10 +252,12 @@ describe('/components/exit-this-page', () => {
               selector: '.govuk-exit-this-page__button'
             }
           })
-        ).rejects.toEqual({
-          name: 'ElementError',
-          message:
-            'Exit this page: Button (`.govuk-exit-this-page__button`) not found'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'ElementError',
+            message:
+              'Exit this page: Button (`.govuk-exit-this-page__button`) not found'
+          }
         })
       })
     })
