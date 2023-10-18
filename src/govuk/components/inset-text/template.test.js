@@ -26,13 +26,9 @@ describe('Inset text', () => {
     })
 
     it('renders nested components using `call`', () => {
-      const $ = render(
-        'inset-text',
-        {},
-        {
-          callBlock: '<div class="app-nested-component"></div>'
-        }
-      )
+      const $ = render('inset-text', {
+        callBlock: '<div class="app-nested-component"></div>'
+      })
 
       expect($('.govuk-inset-text .app-nested-component').length).toBeTruthy()
     })

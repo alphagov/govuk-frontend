@@ -136,7 +136,7 @@ describe('Components', () => {
       for (const { component: componentName, fixtures } of componentsFixtures) {
         const fixtureTasks = fixtures.map(
           async ({ name: exampleName, options }) => {
-            const html = renderComponent(componentName, options)
+            const html = renderComponent(componentName, { context: options })
 
             // Validate HTML
             return expect({

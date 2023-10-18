@@ -45,13 +45,9 @@ describe('Details', () => {
   })
 
   it('renders nested components using `call`', () => {
-    const $ = render(
-      'details',
-      {},
-      {
-        callBlock: '<div class="app-nested-component"></div>'
-      }
-    )
+    const $ = render('details', {
+      callBlock: '<div class="app-nested-component"></div>'
+    })
 
     expect($('.govuk-details .app-nested-component').length).toBeTruthy()
   })
