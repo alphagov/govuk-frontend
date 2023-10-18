@@ -35,9 +35,10 @@ export class Button extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      throw new ElementError('Root element (`$module`)', {
+      throw new ElementError({
         componentName: 'Button',
-        element: $module
+        element: $module,
+        identifier: 'Root element (`$module`)'
       })
     }
 

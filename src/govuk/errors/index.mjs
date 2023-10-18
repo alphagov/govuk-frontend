@@ -48,20 +48,45 @@ export class ElementError extends GOVUKFrontendError {
   name = 'ElementError'
 
   /**
-   * @param {string} identifier - An identifier that'll let the user understand which element has an error (variable name, CSS selector)
-   * @param {object} options - Element error options
-   * @param {string} options.componentName - The name of the component throwing the error
-   * @param {Element | null} [options.element] - The element in error
-   * @param {string} [options.expectedType] - The type that was expected for the identifier
+   * @overload
+   * @param {string} message - Element error message
    */
-  constructor(identifier, { componentName, element, expectedType }) {
-    let reason = `${identifier} not found`
 
-    // Otherwise check for type mismatch
-    if (element) {
-      reason = `${identifier} is not of type ${expectedType || 'HTMLElement'}`
+  /**
+   * @overload
+   * @param {ElementErrorOptions} options - Element error options
+   */
+
+  /**
+   * @param {string | ElementErrorOptions} messageOrOptions - Element error message or options
+   */
+  constructor(messageOrOptions) {
+    let message = typeof messageOrOptions === 'string' && messageOrOptions
+
+    // Build message from options
+    if (typeof messageOrOptions === 'object') {
+      const { componentName, identifier, element, expectedType } =
+        messageOrOptions
+
+      // Add prefix and identifier
+      message = `${componentName}: ${identifier}`
+
+      // Append reason
+      message += element
+        ? ` is not of type ${expectedType || 'HTMLElement'}`
+        : ' not found'
     }
 
-    super(`${componentName}: ${reason}`)
+    super(message)
   }
 }
+
+/**
+ * Element error options
+ *
+ * @typedef {object} ElementErrorOptions
+ * @property {string} componentName - The name of the component throwing the error
+ * @property {string} identifier - An identifier that'll let the user understand which element has an error. This is whatever makes the most sense
+ * @property {Element | null} [element] - The element in error
+ * @property {string} [expectedType] - The type that was expected for the identifier
+ */

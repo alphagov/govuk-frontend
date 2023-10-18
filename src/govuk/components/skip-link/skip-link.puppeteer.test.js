@@ -118,7 +118,7 @@ describe('Skip Link', () => {
       ).rejects.toEqual({
         name: 'ElementError',
         message:
-          'Skip link: $module.hash target #this-element-does-not-exist not found'
+          'Skip link: Target content (`id="this-element-does-not-exist"`) not found'
       })
     })
 
@@ -130,7 +130,8 @@ describe('Skip Link', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message: 'Skip link: $module.hash is not of type string'
+        message:
+          'Skip link: Root element (`$module`) attribute (`href`) has no URL fragment'
       })
     })
   })

@@ -31,16 +31,18 @@ export class Checkboxes extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      throw new ElementError(`[data-module="${Checkboxes.moduleName}"]`, {
+      throw new ElementError({
         componentName: 'Checkboxes',
-        element: $module
+        element: $module,
+        identifier: `[data-module="${Checkboxes.moduleName}"]`
       })
     }
 
     const $inputs = $module.querySelectorAll('input[type="checkbox"]')
     if (!$inputs.length) {
-      throw new ElementError('input[type="checkbox"]', {
-        componentName: 'Checkboxes'
+      throw new ElementError({
+        componentName: 'Checkboxes',
+        identifier: 'input[type="checkbox"]'
       })
     }
 
@@ -57,8 +59,9 @@ export class Checkboxes extends GOVUKFrontendComponent {
 
       // Throw if target conditional element does not exist.
       if (!document.getElementById(targetId)) {
-        throw new ElementError(`#${targetId}`, {
-          componentName: 'Checkboxes'
+        throw new ElementError({
+          componentName: 'Checkboxes',
+          identifier: `#${targetId}`
         })
       }
 

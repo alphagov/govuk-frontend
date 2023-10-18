@@ -28,22 +28,30 @@ describe('errors', () => {
   describe('ElementError', () => {
     it('is an instance of GOVUKFrontendError', () => {
       expect(
-        new ElementError('variableName', {
-          componentName: 'Component name'
+        new ElementError({
+          componentName: 'Component name',
+          identifier: 'variableName'
         })
       ).toBeInstanceOf(GOVUKFrontendError)
     })
     it('has its own name set', () => {
       expect(
-        new ElementError('variableName', {
-          componentName: 'Component name'
+        new ElementError({
+          componentName: 'Component name',
+          identifier: 'variableName'
         }).name
       ).toBe('ElementError')
     })
+    it('accepts a string and does not process it in any way', () => {
+      expect(new ElementError('Complex custom error message').message).toBe(
+        'Complex custom error message'
+      )
+    })
     it('formats the message when the element is not found', () => {
       expect(
-        new ElementError('variableName', {
-          componentName: 'Component name'
+        new ElementError({
+          componentName: 'Component name',
+          identifier: 'variableName'
         }).message
       ).toBe('Component name: variableName not found')
     })
@@ -51,10 +59,11 @@ describe('errors', () => {
       const element = document.createElement('div')
 
       expect(
-        new ElementError('variableName', {
+        new ElementError({
           componentName: 'Component name',
           element,
-          expectedType: 'HTMLAnchorElement'
+          expectedType: 'HTMLAnchorElement',
+          identifier: 'variableName'
         }).message
       ).toBe('Component name: variableName is not of type HTMLAnchorElement')
     })
