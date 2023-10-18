@@ -29,9 +29,9 @@ export class ErrorSummary extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      throw new ElementError($module, {
+      throw new ElementError('$module', {
         componentName: 'Error summary',
-        identifier: '$module'
+        element: $module
       })
     }
 

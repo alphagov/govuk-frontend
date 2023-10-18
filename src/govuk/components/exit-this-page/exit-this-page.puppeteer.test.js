@@ -231,7 +231,7 @@ describe('/components/exit-this-page', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Exit this page: $module is not an instance of HTMLElement'
+          message: 'Exit this page: $module is not of type HTMLElement'
         })
       })
 
