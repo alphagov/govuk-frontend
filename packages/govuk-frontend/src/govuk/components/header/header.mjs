@@ -45,7 +45,7 @@ export class Header extends GOVUKFrontendComponent {
     super()
 
     if (!$module) {
-      throw new ElementError('$module', {
+      throw new ElementError('Root element (`$module`)', {
         componentName: 'Header',
         element: $module
       })

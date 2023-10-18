@@ -834,7 +834,7 @@ describe('Character count', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Character count: $module not found'
+          message: 'Character count: Root element (`$module`) not found'
         })
       })
 
@@ -848,7 +848,8 @@ describe('Character count', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Character count: $module is not of type HTMLElement'
+          message:
+            'Character count: Root element (`$module`) is not of type HTMLElement'
         })
       })
 

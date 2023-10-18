@@ -120,7 +120,7 @@ export class Accordion extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLElement)) {
-      throw new ElementError('$module', {
+      throw new ElementError('Root element (`$module`)', {
         componentName: 'Accordion',
         element: $module
       })

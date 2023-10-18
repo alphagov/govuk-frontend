@@ -238,7 +238,7 @@ describe('Notification banner', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message: 'Notification banner: $module not found'
+        message: 'Notification banner: Root element (`$module`) not found'
       })
     })
 
@@ -252,7 +252,8 @@ describe('Notification banner', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message: 'Notification banner: $module is not of type HTMLElement'
+        message:
+          'Notification banner: Root element (`$module`) is not of type HTMLElement'
       })
     })
   })

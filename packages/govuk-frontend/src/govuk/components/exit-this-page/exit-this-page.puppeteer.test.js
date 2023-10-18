@@ -217,7 +217,7 @@ describe('/components/exit-this-page', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Exit this page: $module not found'
+          message: 'Exit this page: Root element (`$module`) not found'
         })
       })
 
@@ -231,7 +231,8 @@ describe('/components/exit-this-page', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Exit this page: $module is not of type HTMLElement'
+          message:
+            'Exit this page: Root element (`$module`) is not of type HTMLElement'
         })
       })
 

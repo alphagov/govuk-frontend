@@ -349,7 +349,7 @@ describe('/components/button', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Button: $module not found'
+          message: 'Button: Root element (`$module`) not found'
         })
       })
 
@@ -363,7 +363,7 @@ describe('/components/button', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Button: $module is not of type HTMLElement'
+          message: 'Button: Root element (`$module`) is not of type HTMLElement'
         })
       })
     })

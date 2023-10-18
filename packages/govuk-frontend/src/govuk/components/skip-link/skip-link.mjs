@@ -27,7 +27,7 @@ export class SkipLink extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLAnchorElement)) {
-      throw new ElementError('$module', {
+      throw new ElementError('Root element (`$module`)', {
         componentName: 'Skip link',
         element: $module,
         expectedType: 'HTMLAnchorElement'

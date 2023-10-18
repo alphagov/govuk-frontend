@@ -51,7 +51,7 @@ export class Tabs extends GOVUKFrontendComponent {
     super()
 
     if (!$module) {
-      throw new ElementError('$module', {
+      throw new ElementError('Root element (`$module`)', {
         componentName: 'Tabs',
         element: $module
       })
