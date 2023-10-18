@@ -11,7 +11,8 @@
       "jest-puppeteer",
       "node",
       "nunjucks",
-      "slug"
+      "slug",
+      "typed-query-selector"
     ]
   }
 }

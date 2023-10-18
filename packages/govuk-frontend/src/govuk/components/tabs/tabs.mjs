@@ -50,14 +50,13 @@ export class Tabs extends GOVUKFrontendComponent {
   constructor($module) {
     super()
 
-    if (!($module instanceof HTMLElement)) {
+    if (!$module) {
       throw new ElementError('$module', {
         componentName: 'Tabs',
         element: $module
       })
     }
 
-    /** @satisfies {NodeListOf<HTMLAnchorElement>} */
     const $tabs = $module.querySelectorAll('a.govuk-tabs__tab')
     if (!$tabs.length) {
       throw new ElementError(`a.govuk-tabs__tab`, {
@@ -396,7 +395,6 @@ export class Tabs extends GOVUKFrontendComponent {
       return
     }
 
-    /** @satisfies {HTMLAnchorElement} */
     const $nextTab = $nextTabListItem.querySelector('a.govuk-tabs__tab')
     if (!$nextTab) {
       return
@@ -425,7 +423,6 @@ export class Tabs extends GOVUKFrontendComponent {
       return
     }
 
-    /** @satisfies {HTMLAnchorElement} */
     const $previousTab = $previousTabListItem.querySelector('a.govuk-tabs__tab')
     if (!$previousTab) {
       return

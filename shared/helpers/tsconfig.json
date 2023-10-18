@@ -3,6 +3,6 @@
   "include": ["**/*.js", "**/*.mjs"],
   "exclude": ["./node_modules"],
   "compilerOptions": {
-    "types": ["jest", "node", "nunjucks", "slug"]
+    "types": ["jest", "node", "nunjucks", "slug", "typed-query-selector"]
   }
 }

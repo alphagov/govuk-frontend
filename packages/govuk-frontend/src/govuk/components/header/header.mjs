@@ -44,7 +44,7 @@ export class Header extends GOVUKFrontendComponent {
   constructor($module) {
     super()
 
-    if (!($module instanceof HTMLElement)) {
+    if (!$module) {
       throw new ElementError('$module', {
         componentName: 'Header',
         element: $module
@@ -61,13 +61,6 @@ export class Header extends GOVUKFrontendComponent {
       return this
     }
 
-    if (!($menuButton instanceof HTMLElement)) {
-      throw new ElementError('.govuk-js-header-toggle', {
-        componentName: 'Header',
-        element: $menuButton
-      })
-    }
-
     const menuId = $menuButton.getAttribute('aria-controls')
     if (!menuId) {
       throw new ElementError('.govuk-js-header-toggle[aria-controls]', {
@@ -76,8 +69,7 @@ export class Header extends GOVUKFrontendComponent {
     }
 
     const $menu = document.getElementById(menuId)
-
-    if (!($menu instanceof HTMLElement)) {
+    if (!$menu) {
       throw new ElementError(`#${menuId}`, {
         componentName: 'Header',
         element: $menu
