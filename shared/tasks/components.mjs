@@ -112,7 +112,10 @@ async function generateFixture(componentDataPath, options) {
       previewLayoutModifiers: example.previewLayoutModifiers ?? [],
 
       // Render Nunjucks example
-      html: renderComponent(componentName, example.options, { env }).trim()
+      html: renderComponent(componentName, {
+        context: example.options,
+        env
+      }).trim()
     })
   )
 

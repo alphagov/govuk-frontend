@@ -908,7 +908,7 @@ describe('Character count', () => {
 
       it('throws when receiving invalid configuration', async () => {
         await expect(
-          renderAndInitialise(page, 'character-count')
+          renderAndInitialise(page, 'character-count', { context: {} })
         ).rejects.toEqual({
           name: 'ConfigError',
           message:

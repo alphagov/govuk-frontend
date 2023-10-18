@@ -115,16 +115,18 @@ async function getComponentNamesFiltered(filter, packageOptions) {
  *
  * @param {string} componentName - Component name
  * @param {import('./names').PackageOptions} [packageOptions] - Package options (optional)
- * @returns {Promise<{ [name: string]: ComponentFixture['options'] }>} Component examples as an object
+ * @returns {Promise<{ [name: string]: MacroRenderOptions }>} Component examples as an object
  */
 async function getExamples(componentName, packageOptions) {
   const { fixtures } = await getComponentFixtures(componentName, packageOptions)
 
-  /** @type {{ [name: string]: ComponentFixture['options'] }} */
+  /** @type {{ [name: string]: MacroRenderOptions }} */
   const examples = {}
 
-  for (const example of fixtures) {
-    examples[example.name] = example.options
+  for (const fixture of fixtures) {
+    examples[fixture.name] = {
+      context: fixture.options
+    }
   }
 
   return examples
@@ -134,15 +136,14 @@ async function getExamples(componentName, packageOptions) {
  * Render component HTML
  *
  * @param {string} componentName - Component name
- * @param {MacroOptions} [params] - Nunjucks macro options (or params)
  * @param {MacroRenderOptions} [options] - Nunjucks macro render options
  * @returns {string} HTML rendered by the component
  */
-function renderComponent(componentName, params, options) {
+function renderComponent(componentName, options) {
   const macroName = componentNameToMacroName(componentName)
   const macroPath = `govuk/components/${componentName}/macro.njk`
 
-  return renderMacro(macroName, macroPath, params, options)
+  return renderMacro(macroName, macroPath, options)
 }
 
 /**
@@ -150,12 +151,11 @@ function renderComponent(componentName, params, options) {
  *
  * @param {string} macroName - The name of the macro
  * @param {string} macroPath - The path to the file containing the macro
- * @param {MacroOptions} [params] - Nunjucks macro options (or params)
  * @param {MacroRenderOptions} [options] - Nunjucks macro render options
  * @returns {string} HTML rendered by the macro
  */
-function renderMacro(macroName, macroPath, params = {}, options) {
-  const paramsFormatted = JSON.stringify(params, undefined, 2)
+function renderMacro(macroName, macroPath, options) {
+  const paramsFormatted = JSON.stringify(options?.context ?? {}, undefined, 2)
 
   let macroString = `{%- from "${macroPath}" import ${macroName} -%}`
 
@@ -165,20 +165,19 @@ function renderMacro(macroName, macroPath, params = {}, options) {
     ? `{%- call ${macroName}(${paramsFormatted}) -%}${options.callBlock}{%- endcall -%}`
     : `{{- ${macroName}(${paramsFormatted}) -}}`
 
-  return renderString(macroString, {}, options)
+  return renderString(macroString, options)
 }
 
 /**
  * Render string
  *
  * @param {string} string - Nunjucks string to render
- * @param {object} [context] - Nunjucks context object (optional)
- * @param {MacroRenderOptions} [options] - Nunjucks macro render options
+ * @param {MacroRenderOptions | TemplateRenderOptions} [options] - Nunjucks render options
  * @returns {string} HTML rendered from the Nunjucks string
  */
-function renderString(string, context = {}, options) {
+function renderString(string, options) {
   const nunjucksEnv = options?.env ?? env
-  return nunjucksEnv.renderString(string, context)
+  return nunjucksEnv.renderString(string, options?.context ?? {})
 }
 
 module.exports = {
@@ -244,7 +243,17 @@ module.exports = {
  * Nunjucks macro render options
  *
  * @typedef {object} MacroRenderOptions
+ * @property {MacroOptions} [context] - Nunjucks context object (optional)
  * @property {string} [callBlock] - Nunjucks macro `caller()` content (optional)
+ * @property {import('nunjucks').Environment} [env] - Nunjucks environment (optional)
+ */
+
+/**
+ * Nunjucks template render options
+ *
+ * @typedef {object} TemplateRenderOptions
+ * @property {object} [context] - Nunjucks context object (optional)
+ * @property {{ [blockName: string]: string }} [blocks] - Nunjucks blocks (optional)
  * @property {import('nunjucks').Environment} [env] - Nunjucks environment (optional)
  */
 

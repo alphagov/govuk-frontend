@@ -9,14 +9,14 @@ import { componentNameToMacroName } from '../filters/index.mjs'
  * Component Nunjucks code (formatted)
  *
  * @param {string} componentName - Component name
- * @param {MacroOptions} [params] - Nunjucks macro options (or params)
+ * @param {MacroRenderOptions} [options] - Nunjucks macro render options
  * @returns {string} Nunjucks code for the component
  */
-export function getNunjucksCode(componentName, params) {
+export function getNunjucksCode(componentName, options) {
   const macroName = componentNameToMacroName(componentName)
 
   // Allow nested HTML strings to wrap at `\n`
-  const paramsFormatted = inspect(params, {
+  const paramsFormatted = inspect(options.context, {
     compact: false,
     depth: Infinity,
     maxArrayLength: Infinity,
@@ -39,5 +39,5 @@ export function getNunjucksCode(componentName, params) {
 }
 
 /**
- * @typedef {import('@govuk-frontend/lib/components').MacroOptions} MacroOptions
+ * @typedef {import('@govuk-frontend/lib/components').MacroRenderOptions} MacroRenderOptions
  */

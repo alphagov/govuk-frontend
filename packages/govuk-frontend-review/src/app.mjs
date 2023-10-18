@@ -158,11 +158,10 @@ export default async () => {
       }
 
       // Construct and evaluate the component with the data for this example
-      res.locals.componentView = renderComponent(
-        componentName,
-        fixture.options,
-        { env }
-      )
+      res.locals.componentView = renderComponent(componentName, {
+        context: fixture.options,
+        env
+      })
 
       let bodyClasses = 'app-template__body'
 

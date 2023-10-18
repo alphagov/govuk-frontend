@@ -71,8 +71,8 @@ async function axe(page, overrides = {}) {
  * @template {object} HandlerContext
  * @param {import('puppeteer').Page} page - Puppeteer page object
  * @param {string} componentName - The kebab-cased name of the component
- * @param {MacroOptions} [renderOptions] - Component options
- * @param {BrowserRenderOptions<HandlerContext>} [browserOptions] - Component options
+ * @param {MacroRenderOptions} [renderOptions] - Nunjucks macro render options
+ * @param {BrowserRenderOptions<HandlerContext>} [browserOptions] - Puppeteer browser render options
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
 async function renderAndInitialise(
@@ -280,7 +280,7 @@ module.exports = {
  */
 
 /**
- * @typedef {import('@govuk-frontend/lib/components').MacroOptions} MacroOptions
+ * @typedef {import('@govuk-frontend/lib/components').MacroRenderOptions} MacroRenderOptions
  * @typedef {import('govuk-frontend').Config} Config - Config for all components via `initAll()`
  * @typedef {import('govuk-frontend').ConfigKey} ConfigKey - Component config keys, e.g. `accordion` and `characterCount`
  */

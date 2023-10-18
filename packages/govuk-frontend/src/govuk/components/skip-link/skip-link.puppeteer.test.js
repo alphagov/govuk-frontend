@@ -112,8 +112,10 @@ describe('Skip Link', () => {
     it('throws when the linked element is missing', async () => {
       await expect(
         renderAndInitialise(page, 'skip-link', {
-          text: 'Skip to main content',
-          href: '#this-element-does-not-exist'
+          context: {
+            text: 'Skip to main content',
+            href: '#this-element-does-not-exist'
+          }
         })
       ).rejects.toEqual({
         name: 'ElementError',
@@ -125,8 +127,10 @@ describe('Skip Link', () => {
     it('throws when the href does not contain a hash', async () => {
       await expect(
         renderAndInitialise(page, 'skip-link', {
-          text: 'Skip to main content',
-          href: 'this-element-does-not-exist'
+          context: {
+            text: 'Skip to main content',
+            href: 'this-element-does-not-exist'
+          }
         })
       ).rejects.toEqual({
         name: 'ElementError',

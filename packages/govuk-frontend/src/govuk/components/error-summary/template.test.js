@@ -88,13 +88,9 @@ describe('Error-summary', () => {
     })
 
     it('renders nested components in description using `call`', () => {
-      const $ = render(
-        'error-summary',
-        {},
-        {
-          callBlock: '<div class="app-nested-component"></div>'
-        }
-      )
+      const $ = render('error-summary', {
+        callBlock: '<div class="app-nested-component"></div>'
+      })
 
       expect(
         $('.govuk-error-summary .app-nested-component').length
