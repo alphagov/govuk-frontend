@@ -1,5 +1,5 @@
 const { AxePuppeteer } = require('@axe-core/puppeteer')
-const { ports } = require('@govuk-frontend/config')
+const { urls } = require('@govuk-frontend/config')
 const components = require('@govuk-frontend/lib/components')
 const { componentNameToClassName } = require('@govuk-frontend/lib/names')
 const slug = require('slug')
@@ -153,7 +153,7 @@ async function render(page, componentName, renderOptions, browserOptions) {
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
 async function goTo(page, path) {
-  const { href, pathname } = new URL(path, `http://localhost:${ports.app}`)
+  const { href, pathname } = new URL(path, urls.app)
 
   const response = await page.goto(href)
   const code = response.status()
