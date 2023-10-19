@@ -239,7 +239,7 @@ describe('Error Summary', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message: 'Error summary: $module not found'
+        message: 'Error summary: Root element (`$module`) not found'
       })
     })
 
@@ -253,7 +253,8 @@ describe('Error Summary', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message: 'Error summary: $module is not of type HTMLElement'
+        message:
+          'Error summary: Root element (`$module`) is not of type HTMLElement'
       })
     })
   })

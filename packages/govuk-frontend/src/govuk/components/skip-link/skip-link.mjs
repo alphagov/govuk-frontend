@@ -27,10 +27,11 @@ export class SkipLink extends GOVUKFrontendComponent {
     super()
 
     if (!($module instanceof HTMLAnchorElement)) {
-      throw new ElementError('$module', {
+      throw new ElementError({
         componentName: 'Skip link',
         element: $module,
-        expectedType: 'HTMLAnchorElement'
+        expectedType: 'HTMLAnchorElement',
+        identifier: 'Root element (`$module`)'
       })
     }
 
@@ -51,20 +52,19 @@ export class SkipLink extends GOVUKFrontendComponent {
 
     // Check for link hash fragment
     if (!linkedElementId) {
-      throw new ElementError('$module.hash', {
-        componentName: 'Skip link',
-        element: this.$module,
-        expectedType: 'string'
-      })
+      throw new ElementError(
+        'Skip link: Root element (`$module`) attribute (`href`) has no URL fragment'
+      )
     }
 
     const $linkedElement = document.getElementById(linkedElementId)
 
     // Check for link target element
     if (!$linkedElement) {
-      throw new ElementError(`$module.hash target #${linkedElementId}`, {
+      throw new ElementError({
         componentName: 'Skip link',
-        element: $linkedElement
+        element: $linkedElement,
+        identifier: `Target content (\`id="${linkedElementId}"\`)`
       })
     }
 

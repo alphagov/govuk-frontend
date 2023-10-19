@@ -741,7 +741,7 @@ describe('/components/accordion', () => {
               })
             ).rejects.toEqual({
               name: 'ElementError',
-              message: 'Accordion: $module not found'
+              message: 'Accordion: Root element (`$module`) not found'
             })
           })
 
@@ -755,7 +755,8 @@ describe('/components/accordion', () => {
               })
             ).rejects.toEqual({
               name: 'ElementError',
-              message: 'Accordion: $module is not of type HTMLElement'
+              message:
+                'Accordion: Root element (`$module`) is not of type HTMLElement'
             })
           })
         })
