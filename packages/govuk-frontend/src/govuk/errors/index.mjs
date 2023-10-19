@@ -48,16 +48,19 @@ export class ElementError extends GOVUKFrontendError {
   name = 'ElementError'
 
   /**
+   * @internal
    * @overload
    * @param {string} message - Element error message
    */
 
   /**
+   * @internal
    * @overload
    * @param {ElementErrorOptions} options - Element error options
    */
 
   /**
+   * @internal
    * @param {string | ElementErrorOptions} messageOrOptions - Element error message or options
    */
   constructor(messageOrOptions) {
@@ -84,6 +87,7 @@ export class ElementError extends GOVUKFrontendError {
 /**
  * Element error options
  *
+ * @internal
  * @typedef {object} ElementErrorOptions
  * @property {string} componentName - The name of the component throwing the error
  * @property {string} identifier - An identifier that'll let the user understand which element has an error. This is whatever makes the most sense
