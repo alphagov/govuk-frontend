@@ -62,7 +62,7 @@ export class Tabs extends GOVUKFrontendComponent {
     if (!$tabs.length) {
       throw new ElementError({
         componentName: 'Tabs',
-        identifier: `a.govuk-tabs__tab`
+        identifier: 'Links (`<a class="govuk-tabs__tab">`)'
       })
     }
 
@@ -82,14 +82,14 @@ export class Tabs extends GOVUKFrontendComponent {
     if (!$tabList) {
       throw new ElementError({
         componentName: 'Tabs',
-        identifier: `.govuk-tabs__list`
+        identifier: 'List (`<ul class="govuk-tabs__list">`)'
       })
     }
 
     if (!$tabListItems.length) {
       throw new ElementError({
         componentName: 'Tabs',
-        identifier: `.govuk-tabs__list-item`
+        identifier: 'List items (`<li class="govuk-tabs__list-item">`)'
       })
     }
 
