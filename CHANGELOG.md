@@ -402,6 +402,7 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 - [#4113: Always set an explicit button `type`](https://github.com/alphagov/govuk-frontend/pull/4113)
 - [#4267: Remove unnecessary duplicated use of govuk-font](https://github.com/alphagov/govuk-frontend/pull/4267)
 - [#4268: Allow border and hover colours to be overridden](https://github.com/alphagov/govuk-frontend/pull/4268)
+- [#4327: Fix Nunjucks `default()` values when `null`, `false` or `""` is provided](https://github.com/alphagov/govuk-frontend/pull/4327)
 
 ## 4.7.0 (Feature release)
 
