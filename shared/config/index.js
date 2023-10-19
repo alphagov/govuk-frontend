@@ -5,9 +5,11 @@ const pkg = require('govuk-frontend/package.json')
  */
 const paths = require('./paths')
 const ports = require('./ports')
+const urls = require('./urls')
 
 module.exports = {
   paths,
   pkg,
-  ports
+  ports,
+  urls
 }

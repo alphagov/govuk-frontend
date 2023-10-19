@@ -1,6 +1,6 @@
 const { join } = require('path')
 
-const { paths, ports } = require('@govuk-frontend/config')
+const { paths, urls } = require('@govuk-frontend/config')
 const { packageTypeToPath } = require('@govuk-frontend/lib/names')
 
 /**
@@ -9,7 +9,7 @@ const { packageTypeToPath } = require('@govuk-frontend/lib/names')
  * @type {import('browser-sync').Options}
  */
 module.exports = {
-  proxy: `http://localhost:${ports.app}`,
+  proxy: urls.app,
 
   // Prevent browser mirroring
   ghostMode: false,
