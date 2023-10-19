@@ -149,11 +149,15 @@ async function render(page, componentName, renderOptions, browserOptions) {
  * Navigate to path
  *
  * @param {import('puppeteer').Page} page - Puppeteer page object
- * @param {URL['pathname']} path - URL path
+ * @param {URL | string} path - Path or URL to navigate to
+ * @param {object} [options] - Navigation options
+ * @param {URL} [options.baseURL] - Base URL to override
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
-async function goTo(page, path) {
-  const { href, pathname } = new URL(path, urls.app)
+async function goTo(page, path, options) {
+  const { href, pathname } = !(path instanceof URL)
+    ? new URL(path, options?.baseURL ?? urls.app)
+    : path
 
   const response = await page.goto(href)
   const code = response.status()
@@ -173,10 +177,12 @@ async function goTo(page, path) {
  *
  * @param {import('puppeteer').Page} page - Puppeteer page object
  * @param {string} exampleName - Example name
+ * @param {object} [options] - Navigation options
+ * @param {URL} [options.baseURL] - Base URL to override
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
-function goToExample(page, exampleName) {
-  return goTo(page, `/examples/${exampleName}`)
+function goToExample(page, exampleName, options) {
+  return goTo(page, `/examples/${exampleName}`, options)
 }
 
 /**
@@ -184,19 +190,32 @@ function goToExample(page, exampleName) {
  *
  * @param {import('puppeteer').Page} page - Puppeteer page object
  * @param {string} componentName - Component name
- * @param {object} [options] - Component options
- * @param {string} options.exampleName - Example name
+ * @param {Parameters<typeof getComponentURL>[1]} [options] - Navigation options
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
 function goToComponent(page, componentName, options) {
+  return goTo(page, getComponentURL(componentName, options))
+}
+
+/**
+ * Get component preview Review app URL
+ *
+ * @param {string} componentName - Component name
+ * @param {object} [options] - Navigation options
+ * @param {string} options.exampleName - Example name
+ * @param {URL} [options.baseURL] - Base URL to override
+ * @returns {URL} Review app component preview URL
+ */
+function getComponentURL(componentName, options) {
   const exampleName = slug(options?.exampleName ?? '', { lower: true })
 
   // Add example name to URL or use default
-  const componentPath = exampleName
-    ? `/components/${componentName}/${exampleName}/preview`
-    : `/components/${componentName}/preview`
+  const componentPath =
+    exampleName && exampleName !== 'default'
+      ? `/components/${componentName}/${exampleName}/preview`
+      : `/components/${componentName}/preview`
 
-  return goTo(page, componentPath)
+  return new URL(componentPath, options?.baseURL ?? urls.app)
 }
 
 /**
