@@ -901,7 +901,8 @@ describe('Character count', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Character count: #more-detail-info not found'
+          message:
+            'Character count: Count message (`id="more-detail-info"`) not found'
         })
       })
 

@@ -145,7 +145,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
       throw new ElementError({
         componentName: 'Character count',
         element: $textareaDescription,
-        identifier: `#${textareaDescriptionId}`
+        identifier: `Count message (\`id="${textareaDescriptionId}"\`)`
       })
     }
 
