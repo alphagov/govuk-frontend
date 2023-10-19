@@ -1,8 +1,6 @@
-const {
-  goToComponent,
-  goToExample,
-  render
-} = require('@govuk-frontend/helpers/puppeteer')
+const { setTimeout } = require('timers/promises')
+
+const { goToExample, render } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
 const buttonClass = '.govuk-js-exit-this-page-button'
@@ -10,6 +8,12 @@ const skiplinkClass = '.govuk-js-exit-this-page-skiplink'
 const overlayClass = '.govuk-exit-this-page-overlay'
 
 describe('/components/exit-this-page', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('exit-this-page')
+  })
+
   describe('when JavaScript is unavailable or fails', () => {
     beforeAll(async () => {
       await page.setJavaScriptEnabled(false)
@@ -20,7 +24,7 @@ describe('/components/exit-this-page', () => {
     })
 
     it('navigates to the href of the button', async () => {
-      await goToComponent(page, 'exit-this-page')
+      await render(page, 'exit-this-page', examples.default)
 
       const pathname = await page.$eval(buttonClass, (el) =>
         el.getAttribute('href')
@@ -29,6 +33,7 @@ describe('/components/exit-this-page', () => {
       await Promise.all([page.waitForNavigation(), page.click(buttonClass)])
 
       const url = new URL(await page.url())
+
       expect(url.pathname).toBe(pathname)
     })
 
@@ -52,7 +57,7 @@ describe('/components/exit-this-page', () => {
 
   describe('when JavaScript is available', () => {
     it('navigates to the href of the button', async () => {
-      await goToComponent(page, 'exit-this-page')
+      await render(page, 'exit-this-page', examples.default)
 
       const pathname = await page.$eval(buttonClass, (el) =>
         el.getAttribute('href')
@@ -117,7 +122,7 @@ describe('/components/exit-this-page', () => {
 
     describe('keyboard shortcut activation', () => {
       it('activates the button functionality when the Shift key is pressed 3 times', async () => {
-        await goToComponent(page, 'exit-this-page')
+        await render(page, 'exit-this-page', examples.default)
 
         const pathname = await page.$eval(buttonClass, (el) =>
           el.getAttribute('href')
@@ -135,7 +140,7 @@ describe('/components/exit-this-page', () => {
       })
 
       it('announces when the Shift key has been pressed once', async () => {
-        await goToComponent(page, 'exit-this-page')
+        await render(page, 'exit-this-page', examples.default)
 
         await page.keyboard.press('Shift')
 
@@ -146,7 +151,7 @@ describe('/components/exit-this-page', () => {
       })
 
       it('announces when the Shift key has been pressed twice', async () => {
-        await goToComponent(page, 'exit-this-page')
+        await render(page, 'exit-this-page', examples.default)
 
         await page.keyboard.press('Shift')
         await page.keyboard.press('Shift')
@@ -158,7 +163,7 @@ describe('/components/exit-this-page', () => {
       })
 
       it('announces when the keyboard shortcut has been successfully activated', async () => {
-        await goToComponent(page, 'exit-this-page')
+        await render(page, 'exit-this-page', examples.default)
 
         // Make the button not navigate away from the current page
         await page.$eval(buttonClass, (el) => el.setAttribute('href', '#'))
@@ -174,12 +179,12 @@ describe('/components/exit-this-page', () => {
       })
 
       it('announces when the keyboard shortcut has timed out', async () => {
-        await goToComponent(page, 'exit-this-page')
+        await render(page, 'exit-this-page', examples.default)
 
         await page.keyboard.press('Shift')
 
         // Wait for 6 seconds (one full second over the 5 second limit)
-        await new Promise((resolve) => setTimeout(resolve, 6000))
+        await setTimeout(6000)
 
         const message = await page.$eval(buttonClass, (el) =>
           el.nextElementSibling.innerHTML.trim()
@@ -189,12 +194,6 @@ describe('/components/exit-this-page', () => {
     })
 
     describe('errors at instantiation', () => {
-      let examples
-
-      beforeAll(async () => {
-        examples = await getExamples('exit-this-page')
-      })
-
       it('throws when GOV.UK Frontend is not supported', async () => {
         await expect(
           render(page, 'exit-this-page', examples.default, {

@@ -1,19 +1,21 @@
-const {
-  goTo,
-  goToComponent,
-  render
-} = require('@govuk-frontend/helpers/puppeteer')
+const { goTo, render } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 const { KnownDevices } = require('puppeteer')
 
 const iPhone = KnownDevices['iPhone 6']
 
 describe('/components/tabs', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('tabs')
+  })
+
   describe('/components/tabs/preview', () => {
     describe('when JavaScript is unavailable or fails', () => {
       beforeAll(async () => {
         await page.setJavaScriptEnabled(false)
-        await goToComponent(page, 'tabs')
+        await render(page, 'tabs', examples.default)
       })
 
       afterAll(async () => {
@@ -31,7 +33,7 @@ describe('/components/tabs', () => {
 
     describe('when JavaScript is available', () => {
       beforeAll(async () => {
-        await goToComponent(page, 'tabs')
+        await render(page, 'tabs', examples.default)
       })
 
       it('should indicate the open state of the first tab', async () => {
@@ -75,7 +77,7 @@ describe('/components/tabs', () => {
 
     describe('when a tab is pressed', () => {
       beforeEach(async () => {
-        await goToComponent(page, 'tabs')
+        await render(page, 'tabs', examples.default)
       })
 
       it('should indicate the open state of the pressed tab', async () => {
@@ -118,7 +120,7 @@ describe('/components/tabs', () => {
 
       describe('when the tab contains a DOM element', () => {
         beforeAll(async () => {
-          await goToComponent(page, 'tabs')
+          await render(page, 'tabs', examples.default)
         })
 
         it('should display the tab panel associated with the selected tab', async () => {
@@ -152,7 +154,7 @@ describe('/components/tabs', () => {
 
     describe('when first tab is focused and the right arrow key is pressed', () => {
       beforeEach(async () => {
-        await goToComponent(page, 'tabs')
+        await render(page, 'tabs', examples.default)
       })
 
       it('should indicate the open state of the next tab', async () => {
@@ -223,9 +225,7 @@ describe('/components/tabs', () => {
       })
 
       it('should only update based on hashes that are tabs', async () => {
-        await goToComponent(page, 'tabs', {
-          exampleName: 'tabs-with-anchor-in-panel'
-        })
+        await render(page, 'tabs', examples['tabs-with-anchor-in-panel'])
 
         await page.click('[href="#anchor"]')
 
@@ -239,7 +239,7 @@ describe('/components/tabs', () => {
     describe('when rendered on a small device', () => {
       it('falls back to making the all tab containers visible', async () => {
         await page.emulate(iPhone)
-        await goToComponent(page, 'tabs')
+        await render(page, 'tabs', examples.default)
         const isContentVisible = await page.waitForSelector(
           '.govuk-tabs__panel',
           { visible: true, timeout: 10000 }
@@ -249,12 +249,6 @@ describe('/components/tabs', () => {
     })
 
     describe('errors at instantiation', () => {
-      let examples
-
-      beforeAll(async () => {
-        examples = await getExamples('tabs')
-      })
-
       it('throws when GOV.UK Frontend is not supported', async () => {
         await expect(
           render(page, 'tabs', examples.default, {

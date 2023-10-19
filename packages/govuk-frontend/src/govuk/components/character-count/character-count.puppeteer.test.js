@@ -1,4 +1,6 @@
-const { goToComponent, render } = require('@govuk-frontend/helpers/puppeteer')
+const { setTimeout } = require('timers/promises')
+
+const { render } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
 describe('Character count', () => {
@@ -25,7 +27,8 @@ describe('Character count', () => {
     })
 
     it('shows the textarea description', async () => {
-      await goToComponent(page, 'character-count')
+      await render(page, 'character-count', examples.default)
+
       const message = await page.$eval(
         '.govuk-character-count__message',
         (el) => el.innerHTML.trim()
@@ -38,7 +41,7 @@ describe('Character count', () => {
   describe('when JavaScript is available', () => {
     describe('on page load', () => {
       beforeAll(async () => {
-        await goToComponent(page, 'character-count')
+        await render(page, 'character-count', examples.default)
       })
 
       it('injects the visual counter', async () => {
@@ -64,7 +67,7 @@ describe('Character count', () => {
 
     describe('when counting characters', () => {
       it('shows the dynamic message', async () => {
-        await goToComponent(page, 'character-count')
+        await render(page, 'character-count', examples.default)
 
         const message = await page.$eval(
           '.govuk-character-count__status',
@@ -80,9 +83,7 @@ describe('Character count', () => {
       })
 
       it('shows the characters remaining if the field is pre-filled', async () => {
-        await goToComponent(page, 'character-count', {
-          exampleName: 'with-default-value'
-        })
+        await render(page, 'character-count', examples['with default value'])
 
         const message = await page.$eval(
           '.govuk-character-count__status',
@@ -98,7 +99,7 @@ describe('Character count', () => {
       })
 
       it('counts down to the character limit', async () => {
-        await goToComponent(page, 'character-count')
+        await render(page, 'character-count', examples.default)
 
         await page.type('.govuk-js-character-count', 'A', {
           delay: 50
@@ -111,7 +112,7 @@ describe('Character count', () => {
         expect(message).toEqual('You have 9 characters remaining')
 
         // Wait for debounced update to happen
-        await new Promise((resolve) => setTimeout(resolve, debouncedWaitTime))
+        await setTimeout(debouncedWaitTime)
 
         const srMessage = await page.$eval(
           '.govuk-character-count__sr-status',
@@ -121,7 +122,7 @@ describe('Character count', () => {
       })
 
       it('uses the singular when there is only one character remaining', async () => {
-        await goToComponent(page, 'character-count')
+        await render(page, 'character-count', examples.default)
 
         await page.type('.govuk-js-character-count', 'A'.repeat(9), {
           delay: 50
@@ -134,7 +135,7 @@ describe('Character count', () => {
         expect(message).toEqual('You have 1 character remaining')
 
         // Wait for debounced update to happen
-        await new Promise((resolve) => setTimeout(resolve, debouncedWaitTime))
+        await setTimeout(debouncedWaitTime)
 
         const srMessage = await page.$eval(
           '.govuk-character-count__sr-status',
@@ -145,7 +146,7 @@ describe('Character count', () => {
 
       describe('when the character limit is exceeded', () => {
         beforeAll(async () => {
-          await goToComponent(page, 'character-count')
+          await render(page, 'character-count', examples.default)
 
           await page.type('.govuk-js-character-count', 'A'.repeat(11), {
             delay: 50
@@ -160,7 +161,7 @@ describe('Character count', () => {
           expect(message).toEqual('You have 1 character too many')
 
           // Wait for debounced update to happen
-          await new Promise((resolve) => setTimeout(resolve, debouncedWaitTime))
+          await setTimeout(debouncedWaitTime)
 
           const srMessage = await page.$eval(
             '.govuk-character-count__sr-status',
@@ -181,7 +182,7 @@ describe('Character count', () => {
           expect(message).toEqual('You have 2 characters too many')
 
           // Wait for debounced update to happen
-          await new Promise((resolve) => setTimeout(resolve, debouncedWaitTime))
+          await setTimeout(debouncedWaitTime)
 
           const srMessage = await page.$eval(
             '.govuk-character-count__sr-status',
@@ -209,9 +210,11 @@ describe('Character count', () => {
 
       describe('when the character limit is exceeded on page load', () => {
         beforeAll(async () => {
-          await goToComponent(page, 'character-count', {
-            exampleName: 'with-default-value-exceeding-limit'
-          })
+          await render(
+            page,
+            'character-count',
+            examples['with default value exceeding limit']
+          )
         })
 
         it('shows the number of characters over the limit', async () => {
@@ -247,9 +250,7 @@ describe('Character count', () => {
 
       describe('when a threshold is set', () => {
         beforeAll(async () => {
-          await goToComponent(page, 'character-count', {
-            exampleName: 'with-threshold'
-          })
+          await render(page, 'character-count', examples['with threshold'])
         })
 
         it('does not show the limit until the threshold is reached', async () => {
@@ -260,7 +261,7 @@ describe('Character count', () => {
           expect(visibility).toEqual('hidden')
 
           // Wait for debounced update to happen
-          await new Promise((resolve) => setTimeout(resolve, debouncedWaitTime))
+          await setTimeout(debouncedWaitTime)
 
           // Ensure threshold is hidden for users of assistive technologies
           const ariaHidden = await page.$eval(
@@ -282,7 +283,7 @@ describe('Character count', () => {
           expect(visibility).toEqual('visible')
 
           // Wait for debounced update to happen
-          await new Promise((resolve) => setTimeout(resolve, debouncedWaitTime))
+          await setTimeout(debouncedWaitTime)
 
           // Ensure threshold is visible for users of assistive technologies
           const ariaHidden = await page.$eval(
@@ -296,9 +297,11 @@ describe('Character count', () => {
       // Errors logged to the console will cause these tests to fail
       describe('when the textarea ID starts with a number', () => {
         beforeAll(async () => {
-          await goToComponent(page, 'character-count', {
-            exampleName: 'with-id-starting-with-number'
-          })
+          await render(
+            page,
+            'character-count',
+            examples['with id starting with number']
+          )
         })
 
         it('still works correctly', async () => {
@@ -318,9 +321,11 @@ describe('Character count', () => {
 
       describe('when the textarea ID contains CSS syntax characters', () => {
         beforeAll(async () => {
-          await goToComponent(page, 'character-count', {
-            exampleName: 'with-id-with-special-characters'
-          })
+          await render(
+            page,
+            'character-count',
+            examples['with id with special characters']
+          )
         })
 
         it('still works correctly', async () => {
@@ -340,9 +345,11 @@ describe('Character count', () => {
 
       describe('when a maxlength attribute is specified on the textarea', () => {
         beforeAll(async () => {
-          await goToComponent(page, 'character-count', {
-            exampleName: 'with-textarea-maxlength-attribute'
-          })
+          await render(
+            page,
+            'character-count',
+            examples['with textarea maxlength attribute']
+          )
         })
 
         it('should not have a maxlength attribute once the JS has run', async () => {
@@ -356,9 +363,7 @@ describe('Character count', () => {
 
     describe('when counting words', () => {
       it('shows the dynamic message', async () => {
-        await goToComponent(page, 'character-count', {
-          exampleName: 'with-word-count'
-        })
+        await render(page, 'character-count', examples['with word count'])
 
         const message = await page.$eval(
           '.govuk-character-count__status',
@@ -374,9 +379,7 @@ describe('Character count', () => {
       })
 
       it('counts down to the word limit', async () => {
-        await goToComponent(page, 'character-count', {
-          exampleName: 'with-word-count'
-        })
+        await render(page, 'character-count', examples['with word count'])
 
         await page.type('.govuk-js-character-count', 'Hello world', {
           delay: 50
@@ -389,7 +392,7 @@ describe('Character count', () => {
         expect(message).toEqual('You have 8 words remaining')
 
         // Wait for debounced update to happen
-        await new Promise((resolve) => setTimeout(resolve, debouncedWaitTime))
+        await setTimeout(debouncedWaitTime)
 
         const srMessage = await page.$eval(
           '.govuk-character-count__sr-status',
@@ -399,9 +402,7 @@ describe('Character count', () => {
       })
 
       it('uses the singular when there is only one word remaining', async () => {
-        await goToComponent(page, 'character-count', {
-          exampleName: 'with-word-count'
-        })
+        await render(page, 'character-count', examples['with word count'])
 
         await page.type('.govuk-js-character-count', 'Hello '.repeat(9), {
           delay: 50
@@ -414,7 +415,7 @@ describe('Character count', () => {
         expect(message).toEqual('You have 1 word remaining')
 
         // Wait for debounced update to happen
-        await new Promise((resolve) => setTimeout(resolve, debouncedWaitTime))
+        await setTimeout(debouncedWaitTime)
 
         const srMessage = await page.$eval(
           '.govuk-character-count__sr-status',
@@ -425,9 +426,7 @@ describe('Character count', () => {
 
       describe('when the word limit is exceeded', () => {
         beforeAll(async () => {
-          await goToComponent(page, 'character-count', {
-            exampleName: 'with-word-count'
-          })
+          await render(page, 'character-count', examples['with word count'])
 
           await page.type('.govuk-js-character-count', 'Hello '.repeat(11), {
             delay: 50
@@ -442,7 +441,7 @@ describe('Character count', () => {
           expect(message).toEqual('You have 1 word too many')
 
           // Wait for debounced update to happen
-          await new Promise((resolve) => setTimeout(resolve, debouncedWaitTime))
+          await setTimeout(debouncedWaitTime)
 
           const srMessage = await page.$eval(
             '.govuk-character-count__sr-status',
@@ -463,7 +462,7 @@ describe('Character count', () => {
           expect(message).toEqual('You have 2 words too many')
 
           // Wait for debounced update to happen
-          await new Promise((resolve) => setTimeout(resolve, debouncedWaitTime))
+          await setTimeout(debouncedWaitTime)
 
           const srMessage = await page.$eval(
             '.govuk-character-count__sr-status',
