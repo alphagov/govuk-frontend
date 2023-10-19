@@ -783,7 +783,7 @@ describe('/components/accordion', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Accordion: Sections (`.govuk-accordion__section`) not found'
+                'Accordion: Sections (`<div class="govuk-accordion__section">`) not found'
             }
           })
         })
@@ -804,7 +804,7 @@ describe('/components/accordion', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Accordion: Section headers (`.govuk-accordion__section-header`) not found'
+                'Accordion: Section headers (`<div class="govuk-accordion__section-header">`) not found'
             }
           })
         })
@@ -842,7 +842,7 @@ describe('/components/accordion', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Accordion: Section button (`.govuk-accordion__section-button`) not found'
+                'Accordion: Section button (`<span class="govuk-accordion__section-button">`) not found'
             }
           })
         })
@@ -861,7 +861,7 @@ describe('/components/accordion', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Accordion: Section content (`.govuk-accordion__section-content`) not found'
+                'Accordion: Section content (`<div class="govuk-accordion__section-content">`) not found'
             }
           })
         })
