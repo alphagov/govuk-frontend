@@ -47,7 +47,7 @@
       {# Allow selecting by text content (the value for an option when no value attribute is specified) #}
       {% set effectiveValue = item.value | default(item.text) %}
       <option {%- if item.value !== undefined %} value="{{ item.value }}"{% endif %}
-        {{-" selected" if item.selected | default(params.value and effectiveValue == params.value) }}
+        {{-" selected" if item.selected | default((effectiveValue == params.value and item.selected != false) if params.value else false, true) }}
         {{-" disabled" if item.disabled }}
         {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>{{ item.text }}</option>
     {% endif %}
