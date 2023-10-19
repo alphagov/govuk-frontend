@@ -34,7 +34,7 @@ export class Checkboxes extends GOVUKFrontendComponent {
       throw new ElementError({
         componentName: 'Checkboxes',
         element: $module,
-        identifier: `[data-module="${Checkboxes.moduleName}"]`
+        identifier: 'Root element (`$module`)'
       })
     }
 
@@ -42,7 +42,7 @@ export class Checkboxes extends GOVUKFrontendComponent {
     if (!$inputs.length) {
       throw new ElementError({
         componentName: 'Checkboxes',
-        identifier: 'input[type="checkbox"]'
+        identifier: 'Form inputs (`<input type="checkbox">`)'
       })
     }
 
@@ -61,7 +61,7 @@ export class Checkboxes extends GOVUKFrontendComponent {
       if (!document.getElementById(targetId)) {
         throw new ElementError({
           componentName: 'Checkboxes',
-          identifier: `#${targetId}`
+          identifier: `Conditional reveal (\`id="${targetId}"\`)`
         })
       }
 

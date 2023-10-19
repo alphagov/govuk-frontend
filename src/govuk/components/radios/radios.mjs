@@ -34,7 +34,7 @@ export class Radios extends GOVUKFrontendComponent {
       throw new ElementError({
         componentName: 'Radios',
         element: $module,
-        identifier: `[data-module="${Radios.moduleName}"]`
+        identifier: 'Root element (`$module`)'
       })
     }
 
@@ -42,7 +42,7 @@ export class Radios extends GOVUKFrontendComponent {
     if (!$inputs.length) {
       throw new ElementError({
         componentName: 'Radios',
-        identifier: 'input[type="radio"]'
+        identifier: 'Form inputs (`<input type="radio">`)'
       })
     }
 
@@ -61,7 +61,7 @@ export class Radios extends GOVUKFrontendComponent {
       if (!document.getElementById(targetId)) {
         throw new ElementError({
           componentName: 'Radios',
-          identifier: `#${targetId}`
+          identifier: `Conditional reveal (\`id="${targetId}"\`)`
         })
       }
 
