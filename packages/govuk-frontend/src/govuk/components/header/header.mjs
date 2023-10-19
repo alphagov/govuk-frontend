@@ -66,7 +66,8 @@ export class Header extends GOVUKFrontendComponent {
     if (!menuId) {
       throw new ElementError({
         componentName: 'Header',
-        identifier: '.govuk-js-header-toggle[aria-controls]'
+        identifier:
+          'Navigation button (`<button class="govuk-js-header-toggle">`) attribute (`aria-controls`)'
       })
     }
 
@@ -75,7 +76,7 @@ export class Header extends GOVUKFrontendComponent {
       throw new ElementError({
         componentName: 'Header',
         element: $menu,
-        identifier: `#${menuId}`
+        identifier: `Navigation (\`<ul id="${menuId}">\`)`
       })
     }
 
