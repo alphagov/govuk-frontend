@@ -248,7 +248,8 @@ describe('/components/exit-this-page', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Exit this page: Button not found'
+          message:
+            'Exit this page: Button (`.govuk-exit-this-page__button`) not found'
         })
       })
     })

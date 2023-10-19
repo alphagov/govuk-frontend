@@ -95,7 +95,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
         componentName: 'Exit this page',
         element: $button,
         expectedType: 'HTMLAnchorElement',
-        identifier: 'Button'
+        identifier: 'Button (`.govuk-exit-this-page__button`)'
       })
     }
 
