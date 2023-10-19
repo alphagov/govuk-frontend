@@ -277,7 +277,7 @@ describe('/components/tabs', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Tabs: $module not found'
+          message: 'Tabs: Root element (`$module`) not found'
         })
       })
 
@@ -295,7 +295,7 @@ describe('/components/tabs', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Tabs: a.govuk-tabs__tab not found'
+          message: 'Tabs: Links (`<a class="govuk-tabs__tab">`) not found'
         })
       })
 
@@ -313,7 +313,7 @@ describe('/components/tabs', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Tabs: .govuk-tabs__list not found'
+          message: 'Tabs: List (`<ul class="govuk-tabs__list">`) not found'
         })
       })
 
@@ -332,7 +332,8 @@ describe('/components/tabs', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Tabs: .govuk-tabs__list-item not found'
+          message:
+            'Tabs: List items (`<li class="govuk-tabs__list-item">`) not found'
         })
       })
     })

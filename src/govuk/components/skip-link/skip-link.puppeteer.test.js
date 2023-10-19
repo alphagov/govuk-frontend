@@ -90,7 +90,7 @@ describe('Skip Link', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message: 'Skip link: $module not found'
+        message: 'Skip link: Root element (`$module`) not found'
       })
     })
 
@@ -104,7 +104,8 @@ describe('Skip Link', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message: 'Skip link: $module is not of type HTMLAnchorElement'
+        message:
+          'Skip link: Root element (`$module`) is not of type HTMLAnchorElement'
       })
     })
 
@@ -117,7 +118,7 @@ describe('Skip Link', () => {
       ).rejects.toEqual({
         name: 'ElementError',
         message:
-          'Skip link: $module.hash target #this-element-does-not-exist not found'
+          'Skip link: Target content (`id="this-element-does-not-exist"`) not found'
       })
     })
 
@@ -129,7 +130,8 @@ describe('Skip Link', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message: 'Skip link: $module.hash is not of type string'
+        message:
+          'Skip link: Root element (`$module`) attribute (`href`) has no URL fragment'
       })
     })
   })

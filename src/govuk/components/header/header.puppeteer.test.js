@@ -199,7 +199,7 @@ describe('Header navigation', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Header: $module not found'
+          message: 'Header: Root element (`$module`) not found'
         })
       })
 
@@ -223,7 +223,8 @@ describe('Header navigation', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Header: .govuk-js-header-toggle[aria-controls] not found'
+          message:
+            'Header: Navigation button (`<button class="govuk-js-header-toggle">`) attribute (`aria-controls`) not found'
         })
       })
 
@@ -240,7 +241,7 @@ describe('Header navigation', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Header: #navigation not found'
+          message: 'Header: Navigation (`<ul id="navigation">`) not found'
         })
       })
     })

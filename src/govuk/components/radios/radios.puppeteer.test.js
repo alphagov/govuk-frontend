@@ -299,7 +299,7 @@ describe('Radios', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message: 'Radios: [data-module="govuk-radios"] not found'
+        message: 'Radios: Root element (`$module`) not found'
       })
     })
 
@@ -313,8 +313,7 @@ describe('Radios', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message:
-          'Radios: [data-module="govuk-radios"] is not of type HTMLElement'
+        message: 'Radios: Root element (`$module`) is not of type HTMLElement'
       })
     })
 
@@ -330,7 +329,7 @@ describe('Radios', () => {
         })
       ).rejects.toEqual({
         name: 'ElementError',
-        message: 'Radios: input[type="radio"] not found'
+        message: 'Radios: Form inputs (`<input type="radio">`) not found'
       })
     })
 
@@ -348,7 +347,8 @@ describe('Radios', () => {
         )
       ).rejects.toEqual({
         name: 'ElementError',
-        message: 'Radios: #conditional-how-contacted not found'
+        message:
+          'Radios: Conditional reveal (`id="conditional-how-contacted"`) not found'
       })
     })
   })

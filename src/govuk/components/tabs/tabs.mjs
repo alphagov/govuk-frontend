@@ -51,16 +51,18 @@ export class Tabs extends GOVUKFrontendComponent {
     super()
 
     if (!$module) {
-      throw new ElementError('$module', {
+      throw new ElementError({
         componentName: 'Tabs',
-        element: $module
+        element: $module,
+        identifier: 'Root element (`$module`)'
       })
     }
 
     const $tabs = $module.querySelectorAll('a.govuk-tabs__tab')
     if (!$tabs.length) {
-      throw new ElementError(`a.govuk-tabs__tab`, {
-        componentName: 'Tabs'
+      throw new ElementError({
+        componentName: 'Tabs',
+        identifier: 'Links (`<a class="govuk-tabs__tab">`)'
       })
     }
 
@@ -78,14 +80,16 @@ export class Tabs extends GOVUKFrontendComponent {
     )
 
     if (!$tabList) {
-      throw new ElementError(`.govuk-tabs__list`, {
-        componentName: 'Tabs'
+      throw new ElementError({
+        componentName: 'Tabs',
+        identifier: 'List (`<ul class="govuk-tabs__list">`)'
       })
     }
 
     if (!$tabListItems.length) {
-      throw new ElementError(`.govuk-tabs__list-item`, {
-        componentName: 'Tabs'
+      throw new ElementError({
+        componentName: 'Tabs',
+        identifier: 'List items (`<li class="govuk-tabs__list-item">`)'
       })
     }
 

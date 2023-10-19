@@ -834,7 +834,7 @@ describe('Character count', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Character count: $module not found'
+          message: 'Character count: Root element (`$module`) not found'
         })
       })
 
@@ -848,7 +848,8 @@ describe('Character count', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Character count: $module is not of type HTMLElement'
+          message:
+            'Character count: Root element (`$module`) is not of type HTMLElement'
         })
       })
 
@@ -864,7 +865,8 @@ describe('Character count', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Character count: .govuk-js-character-count not found'
+          message:
+            'Character count: Form field (`.govuk-js-character-count`) not found'
         })
       })
 
@@ -883,7 +885,7 @@ describe('Character count', () => {
         ).rejects.toEqual({
           name: 'ElementError',
           message:
-            'Character count: .govuk-js-character-count is not of type HTMLTextareaElement or HTMLInputElement'
+            'Character count: Form field (`.govuk-js-character-count`) is not of type HTMLTextareaElement or HTMLInputElement'
         })
       })
 
@@ -899,7 +901,8 @@ describe('Character count', () => {
           })
         ).rejects.toEqual({
           name: 'ElementError',
-          message: 'Character count: #more-detail-info not found'
+          message:
+            'Character count: Count message (`id="more-detail-info"`) not found'
         })
       })
 
