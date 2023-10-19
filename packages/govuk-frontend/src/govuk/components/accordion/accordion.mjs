@@ -141,7 +141,7 @@ export class Accordion extends GOVUKFrontendComponent {
     if (!$sections.length) {
       throw new ElementError({
         componentName: 'Accordion',
-        identifier: `Sections (\`.${this.sectionClass}\`)`
+        identifier: `Sections (\`<div class="${this.sectionClass}">\`)`
       })
     }
 
@@ -208,7 +208,7 @@ export class Accordion extends GOVUKFrontendComponent {
       if (!$header) {
         throw new ElementError({
           componentName: 'Accordion',
-          identifier: `Section headers (\`.${this.sectionHeaderClass}\`)`
+          identifier: `Section headers (\`<div class="${this.sectionHeaderClass}">\`)`
         })
       }
 
@@ -247,7 +247,7 @@ export class Accordion extends GOVUKFrontendComponent {
     if (!$span) {
       throw new ElementError({
         componentName: 'Accordion',
-        identifier: `Section button (\`.${this.sectionButtonClass}\`)`
+        identifier: `Section button (\`<span class="${this.sectionButtonClass}">\`)`
       })
     }
 
@@ -414,14 +414,14 @@ export class Accordion extends GOVUKFrontendComponent {
     if (!$button) {
       throw new ElementError({
         componentName: 'Accordion',
-        identifier: `Section button (\`.${this.sectionButtonClass}\`)`
+        identifier: `Section button (\`<span class="${this.sectionButtonClass}">\`)`
       })
     }
 
     if (!$content) {
       throw new ElementError({
         componentName: 'Accordion',
-        identifier: `Section content (\`.${this.sectionContentClass}\`)`
+        identifier: `Section content (\`<div class="${this.sectionContentClass}">\`)`
       })
     }
 
