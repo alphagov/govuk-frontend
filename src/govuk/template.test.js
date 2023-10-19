@@ -94,7 +94,7 @@ describe('Template', () => {
 
     it('uses a default assets path of /assets', () => {
       const $ = renderTemplate('govuk/template.njk')
-      const $icon = $('link[rel="shortcut icon"]')
+      const $icon = $('link[rel="icon"][sizes="48x48"]')
 
       expect($icon.attr('href')).toEqual('/assets/images/favicon.ico')
     })
@@ -105,10 +105,49 @@ describe('Template', () => {
           assetPath: '/whatever'
         }
       })
-
-      const $icon = $('link[rel="shortcut icon"]')
+      const $icon = $('link[rel="icon"][sizes="48x48"]')
 
       expect($icon.attr('href')).toEqual('/whatever/images/favicon.ico')
+    })
+
+    describe('favicons', () => {
+      it('has an .ico icon', () => {
+        const $ = renderTemplate('govuk/template.njk')
+        const $icon = $('link[rel="icon"][href$=".ico"]')
+
+        expect($icon.attr('sizes')).toEqual('48x48')
+        expect($icon.attr('href')).toEqual('/assets/images/favicon.ico')
+      })
+
+      it('has an .svg icon', () => {
+        const $ = renderTemplate('govuk/template.njk')
+        const $icon = $('link[rel="icon"][href$=".svg"]')
+
+        expect($icon.attr('sizes')).toEqual('any')
+        expect($icon.attr('href')).toEqual('/assets/images/favicon.svg')
+      })
+
+      it('has a mask-icon', () => {
+        const $ = renderTemplate('govuk/template.njk')
+        const $icon = $('link[rel="mask-icon"]')
+
+        expect($icon.attr('color')).toEqual('#0b0c0c')
+        expect($icon.attr('href')).toEqual('/assets/images/govuk-icon-mask.svg')
+      })
+
+      it('has an apple-touch-icon', () => {
+        const $ = renderTemplate('govuk/template.njk')
+        const $icon = $('link[rel="apple-touch-icon"]')
+
+        expect($icon.attr('href')).toEqual('/assets/images/govuk-icon-180.png')
+      })
+
+      it('has a linked web manifest file', () => {
+        const $ = renderTemplate('govuk/template.njk')
+        const $icon = $('link[rel="manifest"]')
+
+        expect($icon.attr('href')).toEqual('/assets/manifest.json')
+      })
     })
 
     describe('opengraph image', () => {
