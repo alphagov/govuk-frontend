@@ -126,7 +126,8 @@ async function getExamples(componentName, packageOptions) {
 
   for (const fixture of fixtures) {
     examples[fixture.name] = {
-      context: fixture.options
+      context: fixture.options,
+      fixture
     }
   }
 
@@ -322,6 +323,7 @@ module.exports = {
  * @property {MacroOptions} [context] - Nunjucks context object (optional)
  * @property {string} [callBlock] - Nunjucks macro `caller()` content (optional)
  * @property {import('nunjucks').Environment} [env] - Nunjucks environment (optional)
+ * @property {ComponentFixture} [fixture] - Component fixture (optional)
  */
 
 /**

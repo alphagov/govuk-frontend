@@ -262,9 +262,11 @@ describe('/components/tabs', () => {
               document.body.classList.remove('govuk-frontend-supported')
             }
           })
-        ).rejects.toEqual({
-          name: 'SupportError',
-          message: 'GOV.UK Frontend is not supported in this browser'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'SupportError',
+            message: 'GOV.UK Frontend is not supported in this browser'
+          }
         })
       })
 
@@ -275,9 +277,11 @@ describe('/components/tabs', () => {
               $module.remove()
             }
           })
-        ).rejects.toEqual({
-          name: 'ElementError',
-          message: 'Tabs: Root element (`$module`) not found'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'ElementError',
+            message: 'Tabs: Root element (`$module`) not found'
+          }
         })
       })
 
@@ -293,9 +297,11 @@ describe('/components/tabs', () => {
               selector: 'a.govuk-tabs__tab'
             }
           })
-        ).rejects.toEqual({
-          name: 'ElementError',
-          message: 'Tabs: Links (`<a class="govuk-tabs__tab">`) not found'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'ElementError',
+            message: 'Tabs: Links (`<a class="govuk-tabs__tab">`) not found'
+          }
         })
       })
 
@@ -311,9 +317,11 @@ describe('/components/tabs', () => {
               selector: '.govuk-tabs__list'
             }
           })
-        ).rejects.toEqual({
-          name: 'ElementError',
-          message: 'Tabs: List (`<ul class="govuk-tabs__list">`) not found'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'ElementError',
+            message: 'Tabs: List (`<ul class="govuk-tabs__list">`) not found'
+          }
         })
       })
 
@@ -330,10 +338,12 @@ describe('/components/tabs', () => {
               className: 'govuk-tabs__list-typo'
             }
           })
-        ).rejects.toEqual({
-          name: 'ElementError',
-          message:
-            'Tabs: List items (`<li class="govuk-tabs__list-item">`) not found'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'ElementError',
+            message:
+              'Tabs: List items (`<li class="govuk-tabs__list-item">`) not found'
+          }
         })
       })
     })

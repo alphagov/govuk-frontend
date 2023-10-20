@@ -284,9 +284,11 @@ describe('Radios', () => {
             document.body.classList.remove('govuk-frontend-supported')
           }
         })
-      ).rejects.toEqual({
-        name: 'SupportError',
-        message: 'GOV.UK Frontend is not supported in this browser'
+      ).rejects.toMatchObject({
+        cause: {
+          name: 'SupportError',
+          message: 'GOV.UK Frontend is not supported in this browser'
+        }
       })
     })
 
@@ -297,9 +299,11 @@ describe('Radios', () => {
             $module.remove()
           }
         })
-      ).rejects.toEqual({
-        name: 'ElementError',
-        message: 'Radios: Root element (`$module`) not found'
+      ).rejects.toMatchObject({
+        cause: {
+          name: 'ElementError',
+          message: 'Radios: Root element (`$module`) not found'
+        }
       })
     })
 
@@ -311,9 +315,11 @@ describe('Radios', () => {
             $module.outerHTML = `<svg data-module="govuk-radios"></svg>`
           }
         })
-      ).rejects.toEqual({
-        name: 'ElementError',
-        message: 'Radios: Root element (`$module`) is not of type HTMLElement'
+      ).rejects.toMatchObject({
+        cause: {
+          name: 'ElementError',
+          message: 'Radios: Root element (`$module`) is not of type HTMLElement'
+        }
       })
     })
 
@@ -327,9 +333,11 @@ describe('Radios', () => {
             selector: '.govuk-radios__item'
           }
         })
-      ).rejects.toEqual({
-        name: 'ElementError',
-        message: 'Radios: Form inputs (`<input type="radio">`) not found'
+      ).rejects.toMatchObject({
+        cause: {
+          name: 'ElementError',
+          message: 'Radios: Form inputs (`<input type="radio">`) not found'
+        }
       })
     })
 
@@ -340,10 +348,12 @@ describe('Radios', () => {
             $module.querySelector('.govuk-radios__conditional').remove()
           }
         })
-      ).rejects.toEqual({
-        name: 'ElementError',
-        message:
-          'Radios: Conditional reveal (`id="conditional-how-contacted"`) not found'
+      ).rejects.toMatchObject({
+        cause: {
+          name: 'ElementError',
+          message:
+            'Radios: Conditional reveal (`id="conditional-how-contacted"`) not found'
+        }
       })
     })
   })

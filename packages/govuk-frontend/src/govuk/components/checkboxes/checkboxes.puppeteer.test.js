@@ -333,9 +333,11 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
               document.body.classList.remove('govuk-frontend-supported')
             }
           })
-        ).rejects.toEqual({
-          name: 'SupportError',
-          message: 'GOV.UK Frontend is not supported in this browser'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'SupportError',
+            message: 'GOV.UK Frontend is not supported in this browser'
+          }
         })
       })
 
@@ -346,9 +348,11 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
               $module.remove()
             }
           })
-        ).rejects.toEqual({
-          name: 'ElementError',
-          message: 'Checkboxes: Root element (`$module`) not found'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'ElementError',
+            message: 'Checkboxes: Root element (`$module`) not found'
+          }
         })
       })
 
@@ -360,10 +364,12 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
               $module.outerHTML = `<svg data-module="govuk-checkboxes"></svg>`
             }
           })
-        ).rejects.toEqual({
-          name: 'ElementError',
-          message:
-            'Checkboxes: Root element (`$module`) is not of type HTMLElement'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'ElementError',
+            message:
+              'Checkboxes: Root element (`$module`) is not of type HTMLElement'
+          }
         })
       })
 
@@ -379,10 +385,12 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
               selector: '.govuk-checkboxes__item'
             }
           })
-        ).rejects.toEqual({
-          name: 'ElementError',
-          message:
-            'Checkboxes: Form inputs (`<input type="checkbox">`) not found'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'ElementError',
+            message:
+              'Checkboxes: Form inputs (`<input type="checkbox">`) not found'
+          }
         })
       })
 
@@ -396,10 +404,12 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
               selector: '.govuk-checkboxes__conditional'
             }
           })
-        ).rejects.toEqual({
-          name: 'ElementError',
-          message:
-            'Checkboxes: Conditional reveal (`id="conditional-how-contacted"`) not found'
+        ).rejects.toMatchObject({
+          cause: {
+            name: 'ElementError',
+            message:
+              'Checkboxes: Conditional reveal (`id="conditional-how-contacted"`) not found'
+          }
         })
       })
     })
