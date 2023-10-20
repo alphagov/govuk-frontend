@@ -1,7 +1,11 @@
+const { readFileSync } = require('fs')
+const { join } = require('path')
+
 const { AxePuppeteer } = require('@axe-core/puppeteer')
-const { ports } = require('@govuk-frontend/config')
-const components = require('@govuk-frontend/lib/components')
+const { paths, urls } = require('@govuk-frontend/config')
+const { renderPreview } = require('@govuk-frontend/lib/components')
 const { componentNameToClassName } = require('@govuk-frontend/lib/names')
+const mime = require('mime-types')
 const slug = require('slug')
 
 /**
@@ -71,23 +75,35 @@ async function axe(page, overrides = {}) {
  * @template {object} HandlerContext
  * @param {import('puppeteer').Page} page - Puppeteer page object
  * @param {string} componentName - The kebab-cased name of the component
- * @param {MacroRenderOptions} [renderOptions] - Nunjucks macro render options
+ * @param {MacroRenderOptions} renderOptions - Nunjucks macro render options
  * @param {BrowserRenderOptions<HandlerContext>} [browserOptions] - Puppeteer browser render options
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
 async function render(page, componentName, renderOptions, browserOptions) {
-  await goTo(page, '/tests/boilerplate')
+  await page.setRequestInterception(true)
 
   const exampleName = renderOptions.fixture?.name ?? 'default'
   const exportName = componentNameToClassName(componentName)
   const selector = `[data-module="govuk-${componentName}"]`
 
-  // Inject rendered HTML into the page
-  await page.$eval(
-    '#slot', // See boilerplate.njk `<div id="slot">`
-    (slot, html) => (slot.innerHTML = html),
-    components.render(componentName, renderOptions)
+  const route = getComponentURL(componentName, {
+    baseURL: new URL('file://'),
+    exampleName
+  })
+
+  // Mock preview HTTP response
+  page.once('request', (request) =>
+    request.respond({
+      body: renderPreview(componentName, renderOptions),
+      contentType: 'text/html'
+    })
   )
+
+  // Mock assets HTTP responses
+  page.on('request', requestHandler)
+
+  // Navigate to component preview
+  await goTo(page, route)
 
   // Call `beforeInitialisation` in a separate `$eval` call
   // as running it inside the body of the next `evaluate`
@@ -111,49 +127,91 @@ async function render(page, componentName, renderOptions, browserOptions) {
   // `evaluate`, only a `name` that maps to the error class (and not its `name`
   // property, which means we get a mangled value). As a workaround, we can
   // gather and `return` the values we need from inside the browser
-  const error = await page.evaluate(
-    async (selector, exportName, config) => {
-      const namespace = await import('govuk-frontend')
+  try {
+    const error = await page.evaluate(
+      async (selector, exportName, config) => {
+        const namespace = await import('govuk-frontend')
 
-      // Find all matching modules
-      const $modules = document.querySelectorAll(selector)
+        // Find all matching modules
+        const $modules = document.querySelectorAll(selector)
 
-      try {
-        // Loop and initialise all $modules or use default
-        // selector `null` return value when none found
-        ;($modules.length ? $modules : [null]).forEach(
-          ($module) => new namespace[exportName]($module, config)
-        )
-      } catch ({ name, message }) {
-        return { name, message }
-      }
-    },
-    selector,
-    exportName,
-    browserOptions?.config
-  )
-
-  // Throw Puppeteer errors back to Jest
-  if (error) {
-    throw new Error(
-      `Initialising \`new ${exportName}()\` with example '${exampleName}' threw:` +
-        `\n\t${error.name}: ${error.message}`,
-      { cause: error }
+        try {
+          // Loop and initialise all $modules or use default
+          // selector `null` return value when none found
+          ;($modules.length ? $modules : [null]).forEach(
+            ($module) => new namespace[exportName]($module, config)
+          )
+        } catch ({ name, message }) {
+          return { name, message }
+        }
+      },
+      selector,
+      exportName,
+      browserOptions?.config
     )
+
+    // Throw Puppeteer errors back to Jest
+    if (error) {
+      throw new Error(
+        `Initialising \`new ${exportName}()\` with example '${exampleName}' threw:` +
+          `\n\t${error.name}: ${error.message}`,
+        { cause: error }
+      )
+    }
+
+    await page.evaluateHandle('document.fonts.ready')
+  } finally {
+    // Disable middleware
+    page.off('request', requestHandler)
+
+    await page.setRequestInterception(false)
   }
 
   return page
 }
 
 /**
+ * Component preview HTTP request handler
+ *
+ * - Returns early for requests already handled
+ * - Responds to file:// asset requests (web fonts etc)
+ * - Skips unknown requests
+ *
+ * @param {import('puppeteer').HTTPRequest} request - Puppeteer HTTP request
+ * @returns {Promise<void>}
+ */
+async function requestHandler(request) {
+  if (request.isInterceptResolutionHandled()) {
+    return
+  }
+
+  const { pathname, protocol } = new URL(request.url())
+
+  // Return static assets
+  if (protocol === 'file:' && pathname.startsWith('/assets/')) {
+    return request.respond({
+      body: readFileSync(join(paths.package, `dist/govuk/${pathname}`)),
+      contentType: mime.lookup(pathname) || 'text/plain'
+    })
+  }
+
+  // Skip unknown requests
+  return request.continue()
+}
+
+/**
  * Navigate to path
  *
  * @param {import('puppeteer').Page} page - Puppeteer page object
- * @param {URL['pathname']} path - URL path
+ * @param {URL | string} path - Path or URL to navigate to
+ * @param {object} [options] - Navigation options
+ * @param {URL} [options.baseURL] - Base URL to override
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
-async function goTo(page, path) {
-  const { href, pathname } = new URL(path, `http://localhost:${ports.app}`)
+async function goTo(page, path, options) {
+  const { href, pathname } = !(path instanceof URL)
+    ? new URL(path, options?.baseURL ?? urls.app)
+    : path
 
   const response = await page.goto(href)
   const code = response.status()
@@ -163,6 +221,7 @@ async function goTo(page, path) {
     throw new Error(`HTTP ${code} for '${pathname}'`)
   }
 
+  await page.evaluateHandle('document.fonts.ready')
   await page.bringToFront()
 
   return page
@@ -173,10 +232,12 @@ async function goTo(page, path) {
  *
  * @param {import('puppeteer').Page} page - Puppeteer page object
  * @param {string} exampleName - Example name
+ * @param {object} [options] - Navigation options
+ * @param {URL} [options.baseURL] - Base URL to override
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
-function goToExample(page, exampleName) {
-  return goTo(page, `/examples/${exampleName}`)
+function goToExample(page, exampleName, options) {
+  return goTo(page, `/examples/${exampleName}`, options)
 }
 
 /**
@@ -184,19 +245,32 @@ function goToExample(page, exampleName) {
  *
  * @param {import('puppeteer').Page} page - Puppeteer page object
  * @param {string} componentName - Component name
- * @param {object} [options] - Component options
- * @param {string} options.exampleName - Example name
+ * @param {Parameters<typeof getComponentURL>[1]} [options] - Navigation options
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
 function goToComponent(page, componentName, options) {
+  return goTo(page, getComponentURL(componentName, options))
+}
+
+/**
+ * Get component preview Review app URL
+ *
+ * @param {string} componentName - Component name
+ * @param {object} [options] - Navigation options
+ * @param {string} options.exampleName - Example name
+ * @param {URL} [options.baseURL] - Base URL to override
+ * @returns {URL} Review app component preview URL
+ */
+function getComponentURL(componentName, options) {
   const exampleName = slug(options?.exampleName ?? '', { lower: true })
 
   // Add example name to URL or use default
-  const componentPath = exampleName
-    ? `/components/${componentName}/${exampleName}/preview`
-    : `/components/${componentName}/preview`
+  const componentPath =
+    exampleName && exampleName !== 'default'
+      ? `/components/${componentName}/${exampleName}/preview`
+      : `/components/${componentName}/preview`
 
-  return goTo(page, componentPath)
+  return new URL(componentPath, options?.baseURL ?? urls.app)
 }
 
 /**
@@ -257,6 +331,7 @@ module.exports = {
   goToComponent,
   goToExample,
   getAttribute,
+  getComponentURL,
   getProperty,
   getAccessibleName,
   isVisible

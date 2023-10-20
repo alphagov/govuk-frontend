@@ -1,4 +1,5 @@
 const { dirname, join } = require('path')
+const { pathToFileURL } = require('url')
 
 const nunjucks = require('nunjucks')
 const { outdent } = require('outdent')
@@ -8,6 +9,15 @@ const { packageTypeToPath, componentNameToMacroName } = require('./names')
 
 // Nunjucks default environment
 const env = nunjucksEnv()
+
+// Paths to entry styles and scripts
+const [stylesPath, scriptsPath, assetPath] = [
+  'govuk-frontend.min.css',
+  'govuk-frontend.min.js',
+  'assets'
+].map((modulePath) =>
+  pathToFileURL(packageTypeToPath('govuk-frontend', { modulePath }))
+)
 
 /**
  * Nunjucks environment factory
@@ -173,15 +183,11 @@ function renderMacro(macroName, macroPath, options) {
 /**
  * Render component preview on boilerplate page
  *
- * @param {string} [componentName] - Component name
+ * @param {string} componentName - Component name
  * @param {MacroRenderOptions} [options] - Nunjucks macro render options
  * @returns {string} HTML rendered from the Nunjucks template
  */
 function renderPreview(componentName, options) {
-  const stylesPath = '/stylesheets/govuk-frontend.min.css'
-  const scriptsPath = '/javascripts/govuk-frontend.min.js'
-
-  // Render page template
   return renderTemplate('govuk/template.njk', {
     blocks: {
       pageTitle: 'Test boilerplate - GOV.UK',
@@ -201,12 +207,7 @@ function renderPreview(componentName, options) {
 
       main: outdent`
         <div class="govuk-width-container">
-          <h1 class="govuk-heading-l">Test boilerplate</h1>
-          <p class="govuk-body">Used during testing to inject rendered components and test specific configurations</p>
-
-          <div id="slot" class="govuk-!-margin-top-6">
-            ${componentName ? render(componentName, options) : ''}
-          </div>
+          ${render(componentName, options)}
         </div>
       `,
 
@@ -215,6 +216,7 @@ function renderPreview(componentName, options) {
       `
     },
     context: {
+      assetPath,
       mainClasses: 'govuk-main-wrapper--auto-spacing'
     }
   })

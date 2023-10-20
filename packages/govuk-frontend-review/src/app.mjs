@@ -5,8 +5,7 @@ import {
   getComponentsFixtures,
   getComponentNames,
   getComponentNamesFiltered,
-  render,
-  renderPreview
+  render
 } from '@govuk-frontend/lib/components'
 import { filterPath, hasPath } from '@govuk-frontend/lib/files'
 import { getStats, modulePaths } from '@govuk-frontend/stats'
@@ -197,15 +196,6 @@ export default async () => {
         }
       }
     )
-  })
-
-  // Test view for injecting rendered components
-  // and testing specific JavaScript configurations
-  app.get('/tests/boilerplate', function (req, res) {
-    const componentName = undefined
-
-    // Render blank component preview
-    res.send(renderPreview(componentName, { env }))
   })
 
   // Full page example views
