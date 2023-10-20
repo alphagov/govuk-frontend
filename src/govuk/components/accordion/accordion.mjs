@@ -139,7 +139,10 @@ export class Accordion extends GOVUKFrontendComponent {
 
     const $sections = this.$module.querySelectorAll(`.${this.sectionClass}`)
     if (!$sections.length) {
-      return this
+      throw new ElementError({
+        componentName: 'Accordion',
+        identifier: `Sections (\`.${this.sectionClass}\`)`
+      })
     }
 
     this.$sections = $sections

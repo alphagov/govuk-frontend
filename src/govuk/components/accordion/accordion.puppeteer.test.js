@@ -766,6 +766,27 @@ describe('/components/accordion', () => {
             }
           })
         })
+
+        it('throws when the accordion sections are missing', async () => {
+          await expect(
+            render(page, 'accordion', examples.default, {
+              beforeInitialisation($module, { selector }) {
+                $module
+                  .querySelectorAll(selector)
+                  .forEach((item) => item.remove())
+              },
+              context: {
+                selector: '.govuk-accordion__section'
+              }
+            })
+          ).rejects.toMatchObject({
+            cause: {
+              name: 'ElementError',
+              message:
+                'Accordion: Sections (`.govuk-accordion__section`) not found'
+            }
+          })
+        })
       })
     })
   })
