@@ -1,7 +1,11 @@
+const { readFileSync } = require('fs')
+const { join } = require('path')
+
 const { AxePuppeteer } = require('@axe-core/puppeteer')
-const { urls } = require('@govuk-frontend/config')
+const { paths, urls } = require('@govuk-frontend/config')
 const { renderPreview } = require('@govuk-frontend/lib/components')
 const { componentNameToClassName } = require('@govuk-frontend/lib/names')
+const mime = require('mime-types')
 const slug = require('slug')
 
 /**
@@ -76,6 +80,8 @@ async function axe(page, overrides = {}) {
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
 async function render(page, componentName, renderOptions, browserOptions) {
+  await page.setRequestInterception(true)
+
   const exampleName = renderOptions.fixture?.name ?? 'default'
   const exportName = componentNameToClassName(componentName)
   const selector = `[data-module="govuk-${componentName}"]`
@@ -85,8 +91,14 @@ async function render(page, componentName, renderOptions, browserOptions) {
     exampleName
   })
 
-  // Inject rendered HTML into the page
-  await page.setContent(renderPreview(componentName, renderOptions))
+  // Handle route and assets
+  const middleware = renderMiddleware({
+    body: renderPreview(componentName, renderOptions),
+    route
+  })
+
+  // Enable middleware
+  page.on('request', middleware)
 
   // Navigate to component preview
   await goTo(page, route)
@@ -144,8 +156,45 @@ async function render(page, componentName, renderOptions, browserOptions) {
     )
   }
 
+  // Disable middleware
+  page.off('request', middleware)
+
+  await page.setRequestInterception(false)
+
   return page
 }
+
+/**
+ * Component preview HTTP request middleware
+ *
+ * @param {{ route: URL; body: string; contentType?: string }} options - Route options
+ * @returns {(request: import('puppeteer').HTTPRequest) => Promise<void>} Route middleware
+ */
+const renderMiddleware =
+  ({ route, body, contentType = 'text/html' }) =>
+  async (request) => {
+    if (request.isInterceptResolutionHandled()) {
+      return
+    }
+
+    const { href, pathname, protocol } = new URL(request.url())
+
+    // Return component preview
+    if (href === route.href) {
+      return request.respond({ body, contentType })
+    }
+
+    // Return static assets
+    if (protocol === 'file:' && pathname.startsWith('/assets/')) {
+      return request.respond({
+        body: readFileSync(join(paths.package, `dist/govuk/${pathname}`)),
+        contentType: mime.lookup(pathname) || 'text/plain'
+      })
+    }
+
+    // Skip unknown requests
+    return request.continue()
+  }
 
 /**
  * Navigate to path
