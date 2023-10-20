@@ -237,8 +237,18 @@ export class Accordion extends GOVUKFrontendComponent {
     const $heading = $header.querySelector(`.${this.sectionHeadingClass}`)
     const $summary = $header.querySelector(`.${this.sectionSummaryClass}`)
 
-    if (!$span || !$heading) {
-      return
+    if (!$heading) {
+      throw new ElementError({
+        componentName: 'Accordion',
+        identifier: `Section heading (\`.${this.sectionHeadingClass}\`)`
+      })
+    }
+
+    if (!$span) {
+      throw new ElementError({
+        componentName: 'Accordion',
+        identifier: `Section button (\`.${this.sectionButtonClass}\`)`
+      })
     }
 
     // Create a button element that will replace the
