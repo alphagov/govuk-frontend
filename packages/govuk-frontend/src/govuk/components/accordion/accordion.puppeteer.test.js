@@ -808,6 +808,44 @@ describe('/components/accordion', () => {
             }
           })
         })
+
+        it('throws when any section heading is missing', async () => {
+          await expect(
+            render(page, 'accordion', examples.default, {
+              beforeInitialisation($module, { selector }) {
+                $module.querySelector(selector).remove()
+              },
+              context: {
+                selector: '.govuk-accordion__section-heading'
+              }
+            })
+          ).rejects.toMatchObject({
+            cause: {
+              name: 'ElementError',
+              message:
+                'Accordion: Section heading (`.govuk-accordion__section-heading`) not found'
+            }
+          })
+        })
+
+        it('throws when any section button span is missing', async () => {
+          await expect(
+            render(page, 'accordion', examples.default, {
+              beforeInitialisation($module, { selector }) {
+                $module.querySelector(selector).remove()
+              },
+              context: {
+                selector: '.govuk-accordion__section-button'
+              }
+            })
+          ).rejects.toMatchObject({
+            cause: {
+              name: 'ElementError',
+              message:
+                'Accordion: Section button (`.govuk-accordion__section-button`) not found'
+            }
+          })
+        })
       })
     })
   })
