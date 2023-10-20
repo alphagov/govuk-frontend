@@ -787,6 +787,27 @@ describe('/components/accordion', () => {
             }
           })
         })
+
+        it('throws when section header is missing', async () => {
+          await expect(
+            render(page, 'accordion', examples.default, {
+              beforeInitialisation($module, { selector }) {
+                $module
+                  .querySelectorAll(selector)
+                  .forEach((item) => item.remove())
+              },
+              context: {
+                selector: '.govuk-accordion__section-header'
+              }
+            })
+          ).rejects.toMatchObject({
+            cause: {
+              name: 'ElementError',
+              message:
+                'Accordion: Section headers (`.govuk-accordion__section-header`) not found'
+            }
+          })
+        })
       })
     })
   })
