@@ -1,28 +1,27 @@
-const { goTo, goToExample } = require('@govuk-frontend/helpers/puppeteer')
+const { goToExample, render } = require('@govuk-frontend/helpers/puppeteer')
+const { scriptsPath } = require('@govuk-frontend/lib/components')
 
 describe('GOV.UK Frontend', () => {
   describe('JavaScript', () => {
     let exported
 
     beforeEach(async () => {
-      await goTo(page, '/')
+      await render(page)
 
       // Exports available via browser dynamic import
       exported = await page.evaluate(
         async (importPath) => Object.keys(await import(importPath)),
-        '/javascripts/govuk-frontend.min.js'
+        scriptsPath.href
       )
     })
 
     it('exports `initAll` function', async () => {
-      await goTo(page, '/')
-
       const typeofInitAll = await page.evaluate(
         async (importPath, exportName) => {
           const namespace = await import(importPath)
           return typeof namespace[exportName]
         },
-        '/javascripts/govuk-frontend.min.js',
+        scriptsPath.href,
         'initAll'
       )
 

@@ -187,7 +187,7 @@ function renderMacro(macroName, macroPath, options) {
  * Uses {@link renderTemplate} with the default `govuk/template.njk` to
  * render components via {@link render} into the `main` content block
  *
- * @param {string} componentName - Component name
+ * @param {string} [componentName] - Component name
  * @param {MacroRenderOptions} [options] - Nunjucks macro render options
  * @returns {string} HTML rendered from the Nunjucks template
  */
@@ -211,7 +211,7 @@ function renderPreview(componentName, options) {
 
       main: outdent`
         <div id="content" class="govuk-width-container">
-          ${render(componentName, options)}
+          ${componentName ? render(componentName, options) : ''}
         </div>
       `,
 
@@ -273,7 +273,10 @@ module.exports = {
   renderMacro,
   renderPreview,
   renderString,
-  renderTemplate
+  renderTemplate,
+  stylesPath,
+  scriptsPath,
+  assetPath
 }
 
 /**

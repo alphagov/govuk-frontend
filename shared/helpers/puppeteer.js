@@ -88,17 +88,19 @@ async function axe(page, overrides = {}) {
  *
  * @template {object} HandlerContext
  * @param {import('puppeteer').Page} page - Puppeteer page object
- * @param {string} componentName - The kebab-cased name of the component
- * @param {MacroRenderOptions} renderOptions - Nunjucks macro render options
+ * @param {string} [componentName] - The kebab-cased name of the component
+ * @param {MacroRenderOptions} [renderOptions] - Nunjucks macro render options
  * @param {BrowserRenderOptions<HandlerContext>} [browserOptions] - Puppeteer browser render options
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
 async function render(page, componentName, renderOptions, browserOptions) {
   await page.setRequestInterception(true)
 
-  const exampleName = renderOptions.fixture?.name ?? 'default'
-  const exportName = componentNameToClassName(componentName)
-  const selector = `[data-module="govuk-${componentName}"]`
+  const exampleName = renderOptions?.fixture?.name ?? 'default'
+  const exportName = componentNameToClassName(componentName ?? '')
+  const selector = componentName
+    ? `[data-module="govuk-${componentName}"]`
+    : `[data-module]`
 
   const route = getComponentURL(componentName, {
     baseURL: new URL('file://'),
@@ -151,7 +153,7 @@ async function render(page, componentName, renderOptions, browserOptions) {
         const namespace = await import('govuk-frontend')
 
         // Skip custom initialisation without export
-        if (!namespace[exportName]) {
+        if (!exportName || !namespace[exportName]) {
           return namespace.initAll()
         }
 
@@ -175,11 +177,13 @@ async function render(page, componentName, renderOptions, browserOptions) {
 
     // Throw Puppeteer errors back to Jest
     if (error) {
-      throw new Error(
-        `Initialising \`new ${exportName}()\` with example '${exampleName}' threw:` +
-          `\n\t${error.name}: ${error.message}`,
-        { cause: error }
-      )
+      const message = componentName
+        ? `Initialising \`new ${exportName}()\` with example '${exampleName}' threw:`
+        : 'Initialising boilerplate preview'
+
+      throw new Error(`${message}\n\t${error.name}: ${error.message}`, {
+        cause: error
+      })
     }
 
     await page.evaluateHandle('document.fonts.ready')
@@ -267,7 +271,7 @@ function goToExample(page, exampleName, options) {
  * Navigate to component preview page
  *
  * @param {import('puppeteer').Page} page - Puppeteer page object
- * @param {string} componentName - Component name
+ * @param {string} [componentName] - Component name
  * @param {Parameters<typeof getComponentURL>[1]} [options] - Navigation options
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
@@ -278,20 +282,32 @@ function goToComponent(page, componentName, options) {
 /**
  * Get component preview Review app URL
  *
- * @param {string} componentName - Component name
+ * @param {string} [componentName] - Component name
  * @param {object} [options] - Navigation options
  * @param {string} options.exampleName - Example name
  * @param {URL} [options.baseURL] - Base URL to override
  * @returns {URL} Review app component preview URL
  */
 function getComponentURL(componentName, options) {
-  const exampleName = slug(options?.exampleName ?? '', { lower: true })
+  let componentPath = '/components'
 
-  // Add example name to URL or use default
-  const componentPath =
-    exampleName && exampleName !== 'default'
-      ? `/components/${componentName}/${exampleName}/preview`
-      : `/components/${componentName}/preview`
+  // Add component name to URL
+  if (componentName) {
+    componentPath += `/${componentName}`
+
+    // Format example name
+    const exampleName = slug(options?.exampleName ?? '', {
+      lower: true
+    })
+
+    // Add example name to URL
+    if (exampleName && exampleName !== 'default') {
+      componentPath += `/${exampleName}`
+    }
+  }
+
+  // Add prefix suffix
+  componentPath += '/preview'
 
   return new URL(componentPath, options?.baseURL ?? urls.app)
 }
