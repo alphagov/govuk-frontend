@@ -133,7 +133,7 @@ export default {
       ...config,
       displayName: 'Accessibility tests',
       setupFilesAfterEnv: ['@govuk-frontend/helpers/jest/matchers.js'],
-      testEnvironment: '@govuk-frontend/helpers/jest/environment/puppeteer.mjs',
+      testEnvironment: 'jest-environment-puppeteer',
       testMatch: ['**/accessibility.puppeteer.test.mjs'],
 
       // Web server and browser required

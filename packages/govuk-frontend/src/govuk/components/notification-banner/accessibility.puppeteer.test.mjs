@@ -1,4 +1,4 @@
-import { axe, goToComponent } from '@govuk-frontend/helpers/puppeteer'
+import { axe, render } from '@govuk-frontend/helpers/puppeteer'
 import { getExamples } from '@govuk-frontend/lib/components'
 
 describe('/components/notification-banner', () => {
@@ -21,16 +21,11 @@ describe('/components/notification-banner', () => {
   })
 
   describe('component examples', () => {
-    let exampleNames
-
-    beforeAll(async () => {
-      exampleNames = Object.keys(await getExamples('notification-banner'))
-    })
-
     it('passes accessibility tests', async () => {
-      for (const exampleName of exampleNames) {
-        // Navigation to example, create report
-        await goToComponent(page, 'notification-banner', { exampleName })
+      const examples = await getExamples('notification-banner')
+
+      for (const exampleName in examples) {
+        await render(page, 'notification-banner', examples[exampleName])
         await expect(axe(page, axeRules)).resolves.toHaveNoViolations()
       }
     }, 120000)
