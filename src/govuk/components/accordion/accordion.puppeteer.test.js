@@ -711,59 +711,59 @@ describe('/components/accordion', () => {
             )
           })
         })
+      })
 
-        describe('errors at instantiation', () => {
-          let examples
+      describe('errors at instantiation', () => {
+        let examples
 
-          beforeAll(async () => {
-            examples = await getExamples('accordion')
-          })
+        beforeAll(async () => {
+          examples = await getExamples('accordion')
+        })
 
-          it('throws when GOV.UK Frontend is not supported', async () => {
-            await expect(
-              render(page, 'accordion', examples.default, {
-                beforeInitialisation() {
-                  document.body.classList.remove('govuk-frontend-supported')
-                }
-              })
-            ).rejects.toMatchObject({
-              cause: {
-                name: 'SupportError',
-                message: 'GOV.UK Frontend is not supported in this browser'
+        it('throws when GOV.UK Frontend is not supported', async () => {
+          await expect(
+            render(page, 'accordion', examples.default, {
+              beforeInitialisation() {
+                document.body.classList.remove('govuk-frontend-supported')
               }
             })
+          ).rejects.toMatchObject({
+            cause: {
+              name: 'SupportError',
+              message: 'GOV.UK Frontend is not supported in this browser'
+            }
           })
+        })
 
-          it('throws when $module is not set', async () => {
-            await expect(
-              render(page, 'accordion', examples.default, {
-                beforeInitialisation($module) {
-                  $module.remove()
-                }
-              })
-            ).rejects.toMatchObject({
-              cause: {
-                name: 'ElementError',
-                message: 'Accordion: Root element (`$module`) not found'
+        it('throws when $module is not set', async () => {
+          await expect(
+            render(page, 'accordion', examples.default, {
+              beforeInitialisation($module) {
+                $module.remove()
               }
             })
+          ).rejects.toMatchObject({
+            cause: {
+              name: 'ElementError',
+              message: 'Accordion: Root element (`$module`) not found'
+            }
           })
+        })
 
-          it('throws when receiving the wrong type for $module', async () => {
-            await expect(
-              render(page, 'accordion', examples.default, {
-                beforeInitialisation($module) {
-                  // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
-                  $module.outerHTML = `<svg data-module="govuk-accordion"></svg>`
-                }
-              })
-            ).rejects.toMatchObject({
-              cause: {
-                name: 'ElementError',
-                message:
-                  'Accordion: Root element (`$module`) is not of type HTMLElement'
+        it('throws when receiving the wrong type for $module', async () => {
+          await expect(
+            render(page, 'accordion', examples.default, {
+              beforeInitialisation($module) {
+                // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
+                $module.outerHTML = `<svg data-module="govuk-accordion"></svg>`
               }
             })
+          ).rejects.toMatchObject({
+            cause: {
+              name: 'ElementError',
+              message:
+                'Accordion: Root element (`$module`) is not of type HTMLElement'
+            }
           })
         })
       })
