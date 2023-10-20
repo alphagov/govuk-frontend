@@ -26,23 +26,30 @@ describe('/components/exit-this-page', () => {
     it('navigates to the href of the button', async () => {
       await render(page, 'exit-this-page', examples.default)
 
-      const pathname = await page.$eval(buttonClass, (el) =>
-        el.getAttribute('href')
+      const exitPageURL = await page
+        .$eval(buttonClass, (el) => el.getAttribute('href'))
+        .then((path) => new URL(path, 'file://'))
+
+      await page.setRequestInterception(true)
+
+      // Mock page navigation
+      page.once('request', (request) =>
+        request.respond({ body: 'Mock response' })
       )
 
-      await Promise.all([page.waitForNavigation(), page.click(buttonClass)])
+      // Click button, check URL
+      await page.click(buttonClass)
+      expect(page.url()).toBe(exitPageURL.href)
 
-      const url = new URL(await page.url())
-
-      expect(url.pathname).toBe(pathname)
+      await page.setRequestInterception(false)
     })
 
     it('navigates to the href of the skiplink', async () => {
       await goToExample(page, 'exit-this-page-with-skiplink')
 
-      const href = await page.$eval(skiplinkClass, (el) =>
-        el.getAttribute('href')
-      )
+      const exitPageURL = await page
+        .$eval(skiplinkClass, (el) => el.getAttribute('href'))
+        .then((path) => new URL(path, 'file://'))
 
       await Promise.all([
         page.waitForNavigation(),
@@ -50,8 +57,7 @@ describe('/components/exit-this-page', () => {
         page.click(skiplinkClass)
       ])
 
-      const url = await page.url()
-      expect(url).toBe(href)
+      expect(page.url()).toBe(exitPageURL.href)
     })
   })
 
@@ -59,22 +65,30 @@ describe('/components/exit-this-page', () => {
     it('navigates to the href of the button', async () => {
       await render(page, 'exit-this-page', examples.default)
 
-      const pathname = await page.$eval(buttonClass, (el) =>
-        el.getAttribute('href')
+      const exitPageURL = await page
+        .$eval(buttonClass, (el) => el.getAttribute('href'))
+        .then((path) => new URL(path, 'file://'))
+
+      await page.setRequestInterception(true)
+
+      // Mock page navigation
+      page.once('request', (request) =>
+        request.respond({ body: 'Mock response' })
       )
 
-      await Promise.all([page.waitForNavigation(), page.click(buttonClass)])
+      // Click button, check URL
+      await page.click(buttonClass)
+      expect(page.url()).toBe(exitPageURL.href)
 
-      const url = new URL(await page.url())
-      expect(url.pathname).toBe(pathname)
+      await page.setRequestInterception(false)
     })
 
     it('navigates to the href of the skiplink', async () => {
       await goToExample(page, 'exit-this-page-with-skiplink')
 
-      const href = await page.$eval(skiplinkClass, (el) =>
-        el.getAttribute('href')
-      )
+      const exitPageURL = await page
+        .$eval(skiplinkClass, (el) => el.getAttribute('href'))
+        .then((path) => new URL(path, 'file://'))
 
       await Promise.all([
         page.waitForNavigation(),
@@ -82,8 +96,7 @@ describe('/components/exit-this-page', () => {
         page.click(skiplinkClass)
       ])
 
-      const url = await page.url()
-      expect(url).toBe(href)
+      expect(page.url()).toBe(exitPageURL.href)
     })
 
     it('shows the ghost page when the EtP button is clicked', async () => {
@@ -124,8 +137,15 @@ describe('/components/exit-this-page', () => {
       it('activates the button functionality when the Shift key is pressed 3 times', async () => {
         await render(page, 'exit-this-page', examples.default)
 
-        const pathname = await page.$eval(buttonClass, (el) =>
-          el.getAttribute('href')
+        const exitPageURL = await page
+          .$eval(buttonClass, (el) => el.getAttribute('href'))
+          .then((path) => new URL(path, 'file://'))
+
+        await page.setRequestInterception(true)
+
+        // Mock page navigation
+        page.once('request', (request) =>
+          request.respond({ body: 'Mock response' })
         )
 
         await Promise.all([
@@ -135,8 +155,9 @@ describe('/components/exit-this-page', () => {
           page.waitForNavigation()
         ])
 
-        const url = new URL(await page.url())
-        expect(url.pathname).toBe(pathname)
+        expect(page.url()).toBe(exitPageURL.href)
+
+        await page.setRequestInterception(false)
       })
 
       it('announces when the Shift key has been pressed once', async () => {
