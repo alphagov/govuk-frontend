@@ -8,6 +8,9 @@ describe('/components/tabs', () => {
 
       for (const exampleName in examples) {
         await render(page, 'tabs', examples[exampleName])
+          // Log errors for invalid examples
+          .catch(({ message }) => console.warn(message))
+
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
     }, 120000)
