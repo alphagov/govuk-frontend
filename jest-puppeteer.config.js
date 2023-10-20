@@ -18,6 +18,12 @@ module.exports = {
   launch: {
     args: [
       /**
+       * Allow tests to use file:// paths
+       */
+      '--allow-file-access-from-files',
+      '---disable-web-security',
+
+      /**
        * Prevent empty Chrome startup window
        * Tests use their own `browser.newPage()` instead
        */

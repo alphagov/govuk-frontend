@@ -1,6 +1,6 @@
 const { AxePuppeteer } = require('@axe-core/puppeteer')
 const { urls } = require('@govuk-frontend/config')
-const components = require('@govuk-frontend/lib/components')
+const { renderPreview } = require('@govuk-frontend/lib/components')
 const { componentNameToClassName } = require('@govuk-frontend/lib/names')
 const slug = require('slug')
 
@@ -71,23 +71,25 @@ async function axe(page, overrides = {}) {
  * @template {object} HandlerContext
  * @param {import('puppeteer').Page} page - Puppeteer page object
  * @param {string} componentName - The kebab-cased name of the component
- * @param {MacroRenderOptions} [renderOptions] - Nunjucks macro render options
+ * @param {MacroRenderOptions} renderOptions - Nunjucks macro render options
  * @param {BrowserRenderOptions<HandlerContext>} [browserOptions] - Puppeteer browser render options
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
 async function render(page, componentName, renderOptions, browserOptions) {
-  await goTo(page, '/tests/boilerplate')
-
   const exampleName = renderOptions.fixture?.name ?? 'default'
   const exportName = componentNameToClassName(componentName)
   const selector = `[data-module="govuk-${componentName}"]`
 
+  const route = getComponentURL(componentName, {
+    baseURL: new URL('file://'),
+    exampleName
+  })
+
   // Inject rendered HTML into the page
-  await page.$eval(
-    '#slot', // See boilerplate.njk `<div id="slot">`
-    (slot, html) => (slot.innerHTML = html),
-    components.render(componentName, renderOptions)
-  )
+  await page.setContent(renderPreview(componentName, renderOptions))
+
+  // Navigate to component preview
+  await goTo(page, route)
 
   // Call `beforeInitialisation` in a separate `$eval` call
   // as running it inside the body of the next `evaluate`
@@ -276,6 +278,7 @@ module.exports = {
   goToComponent,
   goToExample,
   getAttribute,
+  getComponentURL,
   getProperty,
   getAccessibleName,
   isVisible
