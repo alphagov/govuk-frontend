@@ -846,6 +846,25 @@ describe('/components/accordion', () => {
             }
           })
         })
+
+        it('throws when any section content is missing', async () => {
+          await expect(
+            render(page, 'accordion', examples.default, {
+              beforeInitialisation($module, { selector }) {
+                $module.querySelector(selector).remove()
+              },
+              context: {
+                selector: '.govuk-accordion__section-content'
+              }
+            })
+          ).rejects.toMatchObject({
+            cause: {
+              name: 'ElementError',
+              message:
+                'Accordion: Section content (`.govuk-accordion__section-content`) not found'
+            }
+          })
+        })
       })
     })
   })

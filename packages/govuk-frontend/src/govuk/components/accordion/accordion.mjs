@@ -411,7 +411,22 @@ export class Accordion extends GOVUKFrontendComponent {
     const $button = $section.querySelector(`.${this.sectionButtonClass}`)
     const $content = $section.querySelector(`.${this.sectionContentClass}`)
 
-    if (!$showHideIcon || !$showHideText || !$button || !$content) {
+    if (!$button) {
+      throw new ElementError({
+        componentName: 'Accordion',
+        identifier: `Section button (\`.${this.sectionButtonClass}\`)`
+      })
+    }
+
+    if (!$content) {
+      throw new ElementError({
+        componentName: 'Accordion',
+        identifier: `Section content (\`.${this.sectionContentClass}\`)`
+      })
+    }
+
+    if (!$showHideIcon || !$showHideText) {
+      // Return early for elements we create
       return
     }
 
