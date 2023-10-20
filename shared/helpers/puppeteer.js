@@ -1,7 +1,11 @@
+const { readFileSync } = require('fs')
+const { join } = require('path')
+
 const { AxePuppeteer } = require('@axe-core/puppeteer')
-const { urls } = require('@govuk-frontend/config')
+const { paths, urls } = require('@govuk-frontend/config')
 const { renderPreview } = require('@govuk-frontend/lib/components')
 const { componentNameToClassName } = require('@govuk-frontend/lib/names')
+const mime = require('mime-types')
 const slug = require('slug')
 
 /**
@@ -76,6 +80,8 @@ async function axe(page, overrides = {}) {
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
 async function render(page, componentName, renderOptions, browserOptions) {
+  await page.setRequestInterception(true)
+
   const exampleName = renderOptions.fixture?.name ?? 'default'
   const exportName = componentNameToClassName(componentName)
   const selector = `[data-module="govuk-${componentName}"]`
@@ -85,8 +91,16 @@ async function render(page, componentName, renderOptions, browserOptions) {
     exampleName
   })
 
-  // Inject rendered HTML into the page
-  await page.setContent(renderPreview(componentName, renderOptions))
+  // Mock preview HTTP response
+  page.once('request', (request) =>
+    request.respond({
+      body: renderPreview(componentName, renderOptions),
+      contentType: 'text/html'
+    })
+  )
+
+  // Mock assets HTTP responses
+  page.on('request', requestHandler)
 
   // Navigate to component preview
   await goTo(page, route)
@@ -144,7 +158,41 @@ async function render(page, componentName, renderOptions, browserOptions) {
     )
   }
 
+  // Disable middleware
+  page.off('request', requestHandler)
+
+  await page.setRequestInterception(false)
+
   return page
+}
+
+/**
+ * Component preview HTTP request handler
+ *
+ * - Returns early for requests already handled
+ * - Responds to file:// asset requests (web fonts etc)
+ * - Skips unknown requests
+ *
+ * @param {import('puppeteer').HTTPRequest} request - Puppeteer HTTP request
+ * @returns {Promise<void>}
+ */
+async function requestHandler(request) {
+  if (request.isInterceptResolutionHandled()) {
+    return
+  }
+
+  const { pathname, protocol } = new URL(request.url())
+
+  // Return static assets
+  if (protocol === 'file:' && pathname.startsWith('/assets/')) {
+    return request.respond({
+      body: readFileSync(join(paths.package, `dist/govuk/${pathname}`)),
+      contentType: mime.lookup(pathname) || 'text/plain'
+    })
+  }
+
+  // Skip unknown requests
+  return request.continue()
 }
 
 /**
