@@ -55,7 +55,10 @@ async function axe(page, overrides = {}) {
 
   // Add preview URL to report violations
   report.violations.forEach((violation) => {
-    violation.helpUrl = `${violation.helpUrl}\n${page.url()}`
+    const { pathname } = new URL(page.url())
+
+    // Replace file:// URLs with Review app
+    violation.helpUrl = `${violation.helpUrl}\n${new URL(pathname, urls.app)}`
   })
 
   return report
