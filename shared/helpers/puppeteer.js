@@ -156,6 +156,8 @@ async function render(page, componentName, renderOptions, browserOptions) {
         { cause: error }
       )
     }
+
+    await page.evaluateHandle('document.fonts.ready')
   } finally {
     // Disable middleware
     page.off('request', middleware)
@@ -220,6 +222,7 @@ async function goTo(page, path, options) {
     throw new Error(`HTTP ${code} for '${pathname}'`)
   }
 
+  await page.evaluateHandle('document.fonts.ready')
   await page.bringToFront()
 
   return page
