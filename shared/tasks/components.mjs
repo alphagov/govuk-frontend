@@ -1,6 +1,6 @@
 import { basename, dirname, join } from 'path'
 
-import { nunjucksEnv, renderComponent } from '@govuk-frontend/lib/components'
+import { nunjucksEnv, render } from '@govuk-frontend/lib/components'
 import { getListing, getYaml } from '@govuk-frontend/lib/files'
 
 import { files } from './index.mjs'
@@ -112,7 +112,10 @@ async function generateFixture(componentDataPath, options) {
       previewLayoutModifiers: example.previewLayoutModifiers ?? [],
 
       // Render Nunjucks example
-      html: renderComponent(componentName, example.options, { env }).trim()
+      html: render(componentName, {
+        context: example.options,
+        env
+      }).trim()
     })
   )
 

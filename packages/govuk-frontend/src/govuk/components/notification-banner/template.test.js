@@ -169,13 +169,9 @@ describe('Notification-banner', () => {
     })
 
     it('renders nested components using `call`', () => {
-      const $ = render(
-        'notification-banner',
-        {},
-        {
-          callBlock: '<div class="app-nested-component"></div>'
-        }
-      )
+      const $ = render('notification-banner', {
+        callBlock: '<div class="app-nested-component"></div>'
+      })
 
       expect(
         $('.govuk-notification-banner .app-nested-component').length

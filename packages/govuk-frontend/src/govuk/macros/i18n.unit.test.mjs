@@ -7,9 +7,11 @@ describe('i18n.njk', () => {
         'govukI18nAttributes',
         'govuk/macros/i18n.njk',
         {
-          key: 'translation-key',
-          messages: {
-            other: 'You have %{count} characters remaining.'
+          context: {
+            key: 'translation-key',
+            messages: {
+              other: 'You have %{count} characters remaining.'
+            }
           }
         }
       )
@@ -25,10 +27,12 @@ describe('i18n.njk', () => {
         'govukI18nAttributes',
         'govuk/macros/i18n.njk',
         {
-          key: 'translation-key',
-          messages: {
-            other: 'You have %{count} characters remaining.',
-            one: 'One character remaining'
+          context: {
+            key: 'translation-key',
+            messages: {
+              other: 'You have %{count} characters remaining.',
+              one: 'One character remaining'
+            }
           }
         }
       )
@@ -43,7 +47,9 @@ describe('i18n.njk', () => {
         'govukI18nAttributes',
         'govuk/macros/i18n.njk',
         {
-          key: 'translation-key'
+          context: {
+            key: 'translation-key'
+          }
         }
       )
 

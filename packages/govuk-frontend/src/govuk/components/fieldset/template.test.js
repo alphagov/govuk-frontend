@@ -73,13 +73,9 @@ describe('fieldset', () => {
   })
 
   it('renders nested components using `call`', () => {
-    const $ = render(
-      'fieldset',
-      {},
-      {
-        callBlock: '<div class="app-nested-component"></div>'
-      }
-    )
+    const $ = render('fieldset', {
+      callBlock: '<div class="app-nested-component"></div>'
+    })
 
     expect($('.govuk-fieldset .app-nested-component').length).toBeTruthy()
   })

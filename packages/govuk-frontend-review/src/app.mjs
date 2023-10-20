@@ -5,7 +5,8 @@ import {
   getComponentsFixtures,
   getComponentNames,
   getComponentNamesFiltered,
-  renderComponent
+  render,
+  renderPreview
 } from '@govuk-frontend/lib/components'
 import { filterPath, hasPath } from '@govuk-frontend/lib/files'
 import { getStats, modulePaths } from '@govuk-frontend/stats'
@@ -158,11 +159,10 @@ export default async () => {
       }
 
       // Construct and evaluate the component with the data for this example
-      res.locals.componentView = renderComponent(
-        componentName,
-        fixture.options,
-        { env }
-      )
+      res.locals.componentView = render(componentName, {
+        context: fixture.options,
+        env
+      })
 
       let bodyClasses = 'app-template__body'
 
@@ -201,9 +201,11 @@ export default async () => {
 
   // Test view for injecting rendered components
   // and testing specific JavaScript configurations
-  // Example view
   app.get('/tests/boilerplate', function (req, res) {
-    res.render('tests/boilerplate')
+    const componentName = undefined
+
+    // Render blank component preview
+    res.send(renderPreview(componentName, { env }))
   })
 
   // Full page example views

@@ -1,7 +1,4 @@
-const {
-  renderAndInitialise,
-  goToComponent
-} = require('@govuk-frontend/helpers/puppeteer')
+const { render, goToComponent } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
 describe('Notification banner', () => {
@@ -78,7 +75,7 @@ describe('Notification banner', () => {
 
     describe('and auto-focus is disabled using JavaScript configuration', () => {
       beforeAll(async () => {
-        await renderAndInitialise(
+        await render(
           page,
           'notification-banner',
           examples['with type as success'],
@@ -109,7 +106,7 @@ describe('Notification banner', () => {
 
     describe('and auto-focus is disabled using options passed to initAll', () => {
       beforeAll(async () => {
-        await renderAndInitialise(
+        await render(
           page,
           'notification-banner',
           examples['with type as success'],
@@ -140,7 +137,7 @@ describe('Notification banner', () => {
 
     describe('and autofocus is disabled in JS but enabled in data attributes', () => {
       beforeAll(async () => {
-        await renderAndInitialise(
+        await render(
           page,
           'notification-banner',
           examples['auto-focus explicitly enabled, with type as success'],
@@ -218,7 +215,7 @@ describe('Notification banner', () => {
   describe('errors at instantiation', () => {
     it('throws when GOV.UK Frontend is not supported', async () => {
       await expect(
-        renderAndInitialise(page, 'notification-banner', examples.default, {
+        render(page, 'notification-banner', examples.default, {
           beforeInitialisation() {
             document.body.classList.remove('govuk-frontend-supported')
           }
@@ -231,7 +228,7 @@ describe('Notification banner', () => {
 
     it('throws when $module is not set', async () => {
       await expect(
-        renderAndInitialise(page, 'notification-banner', examples.default, {
+        render(page, 'notification-banner', examples.default, {
           beforeInitialisation($module) {
             $module.remove()
           }
@@ -244,7 +241,7 @@ describe('Notification banner', () => {
 
     it('throws when receiving the wrong type for $module', async () => {
       await expect(
-        renderAndInitialise(page, 'notification-banner', examples.default, {
+        render(page, 'notification-banner', examples.default, {
           beforeInitialisation($module) {
             // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
             $module.outerHTML = `<svg data-module="govuk-notification-banner"></svg>`

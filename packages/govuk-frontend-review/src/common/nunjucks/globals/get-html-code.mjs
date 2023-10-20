@@ -1,4 +1,4 @@
-import { renderComponent } from '@govuk-frontend/lib/components'
+import { render } from '@govuk-frontend/lib/components'
 import beautify from 'js-beautify'
 
 /**
@@ -6,21 +6,19 @@ import beautify from 'js-beautify'
  *
  * @this {{ env: import('nunjucks').Environment }}
  * @param {string} componentName - Component name
- * @param {MacroOptions} [params] - Nunjucks macro options (or params)
+ * @param {MacroRenderOptions} [options] - Nunjucks macro render options
  * @returns {string} HTML rendered by the component
  */
-export function getHTMLCode(componentName, params) {
-  const html = renderComponent(componentName, params, {
-    env: this.env
-  })
+export function getHTMLCode(componentName, options) {
+  const html = render(componentName, { ...options, env: this.env })
 
   // Default beautify options
-  const options = beautify.html.defaultOptions()
+  const beautifyOptions = beautify.html.defaultOptions()
 
   return beautify.html(html, {
     indent_size: 2,
     // Ensure nested labels in headings are indented properly
-    inline: options.inline.filter((tag) => !['label'].includes(tag)),
+    inline: beautifyOptions.inline.filter((tag) => !['label'].includes(tag)),
     // Remove blank lines
     max_preserve_newlines: 0,
     // Ensure attribute wrapping in header SVG is preserved
@@ -29,5 +27,5 @@ export function getHTMLCode(componentName, params) {
 }
 
 /**
- * @typedef {import('@govuk-frontend/lib/components').MacroOptions} MacroOptions
+ * @typedef {import('@govuk-frontend/lib/components').MacroRenderOptions} MacroRenderOptions
  */
