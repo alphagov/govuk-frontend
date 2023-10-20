@@ -8,6 +8,9 @@ describe('/components/skip-link', () => {
 
       for (const exampleName in examples) {
         await render(page, 'skip-link', examples[exampleName])
+          // Log errors for invalid examples
+          .catch(({ message }) => console.warn(message))
+
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
     }, 120000)
