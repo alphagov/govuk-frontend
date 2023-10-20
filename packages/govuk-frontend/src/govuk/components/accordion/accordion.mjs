@@ -206,7 +206,10 @@ export class Accordion extends GOVUKFrontendComponent {
     this.$sections.forEach(($section, i) => {
       const $header = $section.querySelector(`.${this.sectionHeaderClass}`)
       if (!$header) {
-        return
+        throw new ElementError({
+          componentName: 'Accordion',
+          identifier: `Section headers (\`.${this.sectionHeaderClass}\`)`
+        })
       }
 
       // Set header attributes
