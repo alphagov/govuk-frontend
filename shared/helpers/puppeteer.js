@@ -125,41 +125,43 @@ async function render(page, componentName, renderOptions, browserOptions) {
   // `evaluate`, only a `name` that maps to the error class (and not its `name`
   // property, which means we get a mangled value). As a workaround, we can
   // gather and `return` the values we need from inside the browser
-  const error = await page.evaluate(
-    async (selector, exportName, config) => {
-      const namespace = await import('govuk-frontend')
+  try {
+    const error = await page.evaluate(
+      async (selector, exportName, config) => {
+        const namespace = await import('govuk-frontend')
 
-      // Find all matching modules
-      const $modules = document.querySelectorAll(selector)
+        // Find all matching modules
+        const $modules = document.querySelectorAll(selector)
 
-      try {
-        // Loop and initialise all $modules or use default
-        // selector `null` return value when none found
-        ;($modules.length ? $modules : [null]).forEach(
-          ($module) => new namespace[exportName]($module, config)
-        )
-      } catch ({ name, message }) {
-        return { name, message }
-      }
-    },
-    selector,
-    exportName,
-    browserOptions?.config
-  )
-
-  // Throw Puppeteer errors back to Jest
-  if (error) {
-    throw new Error(
-      `Initialising \`new ${exportName}()\` with example '${exampleName}' threw:` +
-        `\n\t${error.name}: ${error.message}`,
-      { cause: error }
+        try {
+          // Loop and initialise all $modules or use default
+          // selector `null` return value when none found
+          ;($modules.length ? $modules : [null]).forEach(
+            ($module) => new namespace[exportName]($module, config)
+          )
+        } catch ({ name, message }) {
+          return { name, message }
+        }
+      },
+      selector,
+      exportName,
+      browserOptions?.config
     )
+
+    // Throw Puppeteer errors back to Jest
+    if (error) {
+      throw new Error(
+        `Initialising \`new ${exportName}()\` with example '${exampleName}' threw:` +
+          `\n\t${error.name}: ${error.message}`,
+        { cause: error }
+      )
+    }
+  } finally {
+    // Disable middleware
+    page.off('request', middleware)
+
+    await page.setRequestInterception(false)
   }
-
-  // Disable middleware
-  page.off('request', middleware)
-
-  await page.setRequestInterception(false)
 
   return page
 }
