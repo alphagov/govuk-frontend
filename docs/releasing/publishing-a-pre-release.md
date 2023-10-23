@@ -9,13 +9,13 @@ Use pre-releases when you:
 - [work on developing a component or pattern](https://design-system.service.gov.uk/community/develop-a-component-or-pattern/) for the GOV.UK Design System
 - want to trial an experimental feature (guidance on trialing experimental features is in development)
 
-> **Warning** Your projects should never depend on a pre-released GOV.UK Frontend package. This is because someone could remove the GitHub branch containing the pre-release package at any time. For this reason, never use a pre-released package in a production setting.
+> **Warning** Never use a pre-release GOV.UK Frontend package in a production setting.
 
 ## What happens when you pre-release GOV.UK Frontend
 
-When you pre-release GOV.UK Frontend, this creates a GitHub branch. This branch contains the GOV.UK Frontend [`/packages/govuk-frontend`](/packages/govuk-frontend) directory with your trial changes.
+When you pre-release GOV.UK Frontend, this publishes a package to npm with the `@beta` tag. This package contains the GOV.UK Frontend [`/packages/govuk-frontend`](/packages/govuk-frontend) directory with your trial changes.
 
-Projects can point to this branch in their package.json, instead of to the published [GOV.UK Frontend npm package](https://www.npmjs.com/package/govuk-frontend). No changes are published to the GOV.UK Frontend npm package as part of this process.
+Projects can install `govuk-frontend@beta` in their package.json alongside other [GOV.UK Frontend npm package](https://www.npmjs.com/package/govuk-frontend) releases.
 
 ## Publish a pre-release
 
@@ -27,7 +27,36 @@ Projects can point to this branch in their package.json, instead of to the publi
 
 4. Run `npm ci` to make sure you have the exact dependencies installed.
 
-5. Run `npm run pre-release` to create and push a new branch that contains your changes. This process may take a few moments and will display a `Success!` message.
+5. Determine the pre-release npm tag
+
+   All pre-releases are public:
+
+   - Use `internal` for internal use
+   - Use `beta` for wider testing
+
+6. Determine the pre-release version type
+
+   Given the `beta` npm tag:
+
+   - Use `premajor` to bump from `v4.7.0` to `v5.0.0-beta.0`
+   - Use `preminor` to bump from `v4.7.0` to `v4.8.0-beta.0`
+   - Use `prepatch` to bump from `v4.7.0` to `v4.7.1-beta.0`
+
+   Alternatively, when publishing an update to an existing pre-release:
+
+   - Use `prerelease` to bump from `v5.0.0-beta.0` to `v5.0.0-beta.1`
+
+7. Apply the new pre-release version number by running:
+
+   ```shell
+   npm version <PRE-RELEASE TYPE> --preid <PRE-RELEASE TAG> --no-git-tag-version --workspace govuk-frontend
+   ```
+
+   This step will update the [`package.json`](/package.json) and project [`package-lock.json`](/package-lock.json) files.
+
+   Do not commit the changes.
+
+8. Run `npm run pre-release` to create and push a new branch that contains your changes. This process may take a few moments and will display a `Success!` message.
 
 ## Preview your changes
 
