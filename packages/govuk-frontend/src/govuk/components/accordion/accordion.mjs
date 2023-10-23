@@ -247,7 +247,7 @@ export class Accordion extends GOVUKFrontendComponent {
     if (!$span) {
       throw new ElementError({
         componentName: 'Accordion',
-        identifier: `Section button (\`<span class="${this.sectionButtonClass}">\`)`
+        identifier: `Section button placeholder (\`<span class="${this.sectionButtonClass}">\`)`
       })
     }
 
@@ -411,13 +411,6 @@ export class Accordion extends GOVUKFrontendComponent {
     const $button = $section.querySelector(`.${this.sectionButtonClass}`)
     const $content = $section.querySelector(`.${this.sectionContentClass}`)
 
-    if (!$button) {
-      throw new ElementError({
-        componentName: 'Accordion',
-        identifier: `Section button (\`<span class="${this.sectionButtonClass}">\`)`
-      })
-    }
-
     if (!$content) {
       throw new ElementError({
         componentName: 'Accordion',
@@ -425,7 +418,7 @@ export class Accordion extends GOVUKFrontendComponent {
       })
     }
 
-    if (!$showHideIcon || !$showHideText) {
+    if (!$showHideIcon || !$showHideText || !$button) {
       // Return early for elements we create
       return
     }

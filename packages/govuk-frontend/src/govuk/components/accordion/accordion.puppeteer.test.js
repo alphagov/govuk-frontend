@@ -828,7 +828,7 @@ describe('/components/accordion', () => {
           })
         })
 
-        it('throws when any section button span is missing', async () => {
+        it('throws when any section button placeholder span is missing', async () => {
           await expect(
             render(page, 'accordion', examples.default, {
               beforeInitialisation($module, { selector }) {
@@ -842,7 +842,7 @@ describe('/components/accordion', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Accordion: Section button (`<span class="govuk-accordion__section-button">`) not found'
+                'Accordion: Section button placeholder (`<span class="govuk-accordion__section-button">`) not found'
             }
           })
         })
