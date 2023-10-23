@@ -1,42 +1,42 @@
-# Publishing a pre-release of GOV.UK Frontend
+# Before you publish a pre-release of GOV.UK Frontend
 
-This pre-release guidance is aimed at Design System team members. If you're an external contributor who needs to create a pre-release, please [contact the Design System team](https://design-system.service.gov.uk/get-in-touch/) and we'll do it for you.
+Decide the kind of pre-release you're publishing. All pre-releases are public, but we distinguish:
 
-Before you publish a pre-release, you need to have committed a code change to GOV.UK Frontend. Then follow these instructions.
+- `internal` pre-releases for internal use
+- `beta` pre-releases aimed at external users
 
-Use pre-releases when you:
+We'll use the kind of pre-release as [the pre-release identifier](https://docs.npmjs.com/cli/v8/commands/npm-version#preid) in the package version.
 
-- [work on developing a component or pattern](https://design-system.service.gov.uk/community/develop-a-component-or-pattern/) for the GOV.UK Design System
-- want to trial an experimental feature (guidance on trialing experimental features is in development)
+## If you're publishing a beta pre-release
 
-> **Warning** Never use a pre-release GOV.UK Frontend package in a production setting.
+Besides publishing the code itself, beta releases will likely involve
+documentation updates linked to the code, as well as communications, similarly to an actual release.
 
-## What happens when you pre-release GOV.UK Frontend
+Review the docs for [what to do before publishing a release](/docs/releasing/before-publishing-a-release.md) to assess which steps you need to follow for your specific pre-release and ensure you are prepared to publish.
 
-When you pre-release GOV.UK Frontend, this publishes a package to npm with the `@beta` tag. This package contains the GOV.UK Frontend [`/packages/govuk-frontend`](/packages/govuk-frontend) directory with your trial changes.
+See the [documentation on support branches](https://govuk-design-system-team-docs.netlify.app/how-we-work/version-control/support-branches.html#support-branches) if you need to:
 
-Projects can install `govuk-frontend@beta` in their package.json alongside other [GOV.UK Frontend npm package](https://www.npmjs.com/package/govuk-frontend) releases.
+- publish a new pre-release of previous major versions of GOV.UK Frontend
+- publish a ‘hotfix’ release of GOV.UK Frontend without including other unreleased changes on the `main` branch
 
-## Publish a pre-release
+# Publish a new version of GOV.UK Frontend
 
-1. Run `git checkout -b BRANCH-NAME` to check out a new branch you want to pre-release, or `git checkout BRANCH-NAME` to check out an existing branch.
+Developers should pair on pre-releases. When remote working, it can be useful to be on a call together.
 
-2. Make any required changes and commit them.
+1. Check out the **main** branch and pull the latest changes.
 
-3. Run `nvm use` to make sure you’re using the right version of Node.js and npm.
+2. Run `nvm use` to make sure you're using the right version of Node.js and npm.
 
-4. Run `npm ci` to make sure you have the exact dependencies installed.
+3. Run `npm ci` to make sure you have the exact dependencies installed.
 
-5. Determine the pre-release npm tag
+4. Determine the pre-release identifier
 
-   All pre-releases are public:
+   - Use `internal` for internal pre-releases
+   - Use `beta` for beta pre-releases
 
-   - Use `internal` for internal use
-   - Use `beta` for wider testing
+5. Determine the pre-release version type
 
-6. Determine the pre-release version type
-
-   Given the `beta` npm tag:
+   Given the `beta` pre-release identifier:
 
    - Use `premajor` to bump from `v4.7.0` to `v5.0.0-beta.0`
    - Use `preminor` to bump from `v4.7.0` to `v4.8.0-beta.0`
@@ -46,20 +46,78 @@ Projects can install `govuk-frontend@beta` in their package.json alongside other
 
    - Use `prerelease` to bump from `v5.0.0-beta.0` to `v5.0.0-beta.1`
 
-7. Apply the new pre-release version number by running:
+6. Create and check out a new branch (`release-[version-number]`). See the [versioning documentation](/docs/contributing/versioning.md) for more information.
+
+7. If you're publishing a beta pre-release, update the [`CHANGELOG.md`](/CHANGELOG.md) by:
+
+   - changing the 'Unreleased' heading to the new version number and release type. For example, '5.0.0-beta.0 (Pre-release)'
+   - adding a new 'Unreleased' heading above the new version number and release type, so users will know where to add PRs to the changelog
+   - saving your changes
+
+8. Apply the new pre-release version number by running:
 
    ```shell
-   npm version <PRE-RELEASE TYPE> --preid <PRE-RELEASE TAG> --no-git-tag-version --workspace govuk-frontend
+   npm version <PRE-RELEASE TYPE> --preid <PRE-RELEASE IDENTIFIER> --no-git-tag-version --workspace govuk-frontend
    ```
 
    This step will update the [`package.json`](/package.json) and project [`package-lock.json`](/package-lock.json) files.
 
    Do not commit the changes.
 
-8. Run `npm run pre-release` to create and push a new branch that contains your changes. This process may take a few moments and will display a `Success!` message.
+9. Update browser data from ["Can I use"](https://caniuse.com) by running:
 
-## Preview your changes
+   ```shell
+   npx update-browserslist-db@latest
+   ```
 
-1. If you need to update an existing project to use the pre-release, copy the command that displays after the `Success!` message.
+   This step will update the project [`package-lock.json`](/package-lock.json) file if updates are found.
 
-2. Navigate to the project in the command line and run the success notification command. Running this command makes the project point to the pre-release branch, instead of to the published [GOV.UK Frontend npm package](https://www.npmjs.com/package/govuk-frontend). You can now preview your trial changes to GOV.UK Frontend.
+10. Run `npm run build-release` to:
+
+    - build GOV.UK Frontend into the [`/package`](/package) and [`/dist`](/dist) directories
+    - commit the changes
+    - push a branch to GitHub
+
+    You will now be prompted to continue or cancel.
+
+11. If you're publishing a beta pre-release, create a pull request
+    When reviewing the PR, check that the version numbers have been updated and that the compiled assets use this version number.
+
+12. If you're publishing a beta pre-release, once a reviewer approves the pull request, merge it to **main**.
+
+## Publish a release to npm
+
+1. If you're publishing a beta pre-release, check out the **main** branch and pull the latest changes.
+
+2. Sign in to npm (`npm login`), using the credentials for the govuk-patterns-and-tools npm user from Bitwarden.
+
+3. Run `npm run publish-release`, which will prompt you to check whether the npm tag looks as expected.
+
+4. Enter `N` to continue to set the npm tag corresponding to the kind of release you're publishing:
+
+   - `internal` for internal pre-releases
+   - `next` for beta pre-releases
+
+5. You will now be prompted to continue or cancel the release. Check the details and enter `y` to continue. If something does not look right, press `N` to cancel the release.
+
+   This step will create a ZIP file containing the release in the root of your govuk-frontend git directory. You will need this file when creating the GitHub release.
+
+   It will also automatically create a tag in Github which you can use to create a Github release in the following section.
+
+6. Run `npm logout` to log out from npm.
+
+## If publishing a beta pre-release, create a release on Github
+
+You can view the tag created during step 10 of creating the new version in the [Github interface](https://github.com/alphagov/govuk-frontend/tags). To create a new Github release, do the following:
+
+1. Select the latest tag
+2. Press **Create release from tag**
+3. Set 'GOV.UK Frontend v[version-number]' as the title
+4. Add release notes from changelog
+5. Attach the ZIP file that has been generated at the root of this project during the npm publishing phase
+6. [Select "This is a pre-release"](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository) to mark the release as a pre-release
+7. Publish release
+
+# After you publish the new pre-release
+
+If you're publishing a beta pre-release, read the docs for [what to do after publishing a release](/docs/releasing/after-publishing-a-release.md) and assess which parts may be relevant to your pre-release.
