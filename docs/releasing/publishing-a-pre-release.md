@@ -14,10 +14,7 @@ documentation updates linked to the code, as well as communications, similarly t
 
 Review the docs for [what to do before publishing a release](/docs/releasing/before-publishing-a-release.md) to assess which steps you need to follow for your specific pre-release and ensure you are prepared to publish.
 
-See the [documentation on support branches](https://govuk-design-system-team-docs.netlify.app/how-we-work/version-control/support-branches.html#support-branches) if you need to:
-
-- publish a new pre-release of previous major versions of GOV.UK Frontend
-- publish a ‘hotfix’ release of GOV.UK Frontend without including other unreleased changes on the `main` branch
+See the [documentation on support branches](https://govuk-design-system-team-docs.netlify.app/how-we-work/version-control/support-branches.html#support-branches) if you need to publish a new pre-release of previous major versions of GOV.UK Frontend.
 
 # Publish a new version of GOV.UK Frontend
 
@@ -60,7 +57,7 @@ Developers should pair on pre-releases. When remote working, it can be useful to
    npm version <PRE-RELEASE TYPE> --preid <PRE-RELEASE IDENTIFIER> --no-git-tag-version --workspace govuk-frontend
    ```
 
-   This step will update the [`package.json`](/package.json) and project [`package-lock.json`](/package-lock.json) files.
+   This step will update [`govuk-frontend`'s `package.json`](/packages/govuk-frontend/package.json) and project [`package-lock.json`](/package-lock.json) files.
 
    Do not commit the changes.
 
@@ -74,7 +71,7 @@ Developers should pair on pre-releases. When remote working, it can be useful to
 
 10. Run `npm run build-release` to:
 
-    - build GOV.UK Frontend into the [`/package`](/package) and [`/dist`](/dist) directories
+    - build GOV.UK Frontend into [the package's `/dist`](/packages/govuk-frontend/dist) and [root `/dist`](/dist) directories
     - commit the changes
     - push a branch to GitHub
 
@@ -104,7 +101,12 @@ Developers should pair on pre-releases. When remote working, it can be useful to
 
    It will also automatically create a tag in Github which you can use to create a Github release in the following section.
 
-6. Run `npm logout` to log out from npm.
+6. Verify the presence of the pre-release and its tag on [npm](https://www.npmjs.com/package/govuk-frontend?activeTab=versions)
+
+   If the pre-release has been assigned the wrong tag (mistakes happen),
+   you can use [`npm dist-tag`](https://docs.npmjs.com/cli/v8/commands/npm-dist-tag) to quickly correct.
+
+7. Run `npm logout` to log out from npm.
 
 ## If publishing a beta pre-release, create a release on Github
 
