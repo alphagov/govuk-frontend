@@ -32,13 +32,13 @@ Developers should pair on releases. When remote working, it can be useful to be 
    npm version <NEW VERSION NUMBER> --no-git-tag-version --workspace govuk-frontend
    ```
 
-   This step will update the [`package.json`](/package.json) and project [`package-lock.json`](/package-lock.json) files.
+   This step will update [`govuk-frontend`'s `package.json`](/packages/govuk-frontend/package.json) and project [`package-lock.json`](/package-lock.json) files.
 
    Do not commit the changes.
 
 7. Run `npm run build-release` to:
 
-   - build GOV.UK Frontend into the [`/package`](/package) and [`/dist`](/dist) directories
+   - build GOV.UK Frontend into [the package's `/dist`](/packages/govuk-frontend/dist) and [root `/dist`](/dist) directories
    - commit the changes
    - push a branch to GitHub
 
@@ -68,7 +68,12 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
    It will also automatically create a tag in Github which you can use to create a Github release in the following section.
 
-6. Run `npm logout` to log out from npm.
+6. Verify the presence of the pre-release and its tag on [npm](https://www.npmjs.com/package/govuk-frontend?activeTab=versions)
+
+   If the release has been assigned the wrong tag (mistakes happen),
+   you can use [`npm dist-tag`](https://docs.npmjs.com/cli/v8/commands/npm-dist-tag) to quickly correct.
+
+7. Run `npm logout` to log out from npm.
 
 ## Create a release on Github
 
