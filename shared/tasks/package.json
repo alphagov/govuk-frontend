@@ -25,7 +25,7 @@
     "postcss-load-config": "^4.0.1",
     "puppeteer": "^21.4.0",
     "rollup": "^4.1.4",
-    "sass-embedded": "^1.69.2",
+    "sass-embedded": "^1.69.4",
     "slash": "^5.1.0",
     "yargs-parser": "^21.1.1"
   },
