@@ -1,18 +1,13 @@
-import { axe, goToComponent } from '@govuk-frontend/helpers/puppeteer'
+import { axe, render } from '@govuk-frontend/helpers/puppeteer'
 import { getExamples } from '@govuk-frontend/lib/components'
 
 describe('/components/character-count', () => {
   describe('component examples', () => {
-    let exampleNames
-
-    beforeAll(async () => {
-      exampleNames = Object.keys(await getExamples('character-count'))
-    })
-
     it('passes accessibility tests', async () => {
-      for (const exampleName of exampleNames) {
-        // Navigation to example, create report
-        await goToComponent(page, 'character-count', { exampleName })
+      const examples = await getExamples('character-count')
+
+      for (const exampleName in examples) {
+        await render(page, 'character-count', examples[exampleName])
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
     }, 120000)
