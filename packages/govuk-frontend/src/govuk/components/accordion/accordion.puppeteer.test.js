@@ -711,59 +711,158 @@ describe('/components/accordion', () => {
             )
           })
         })
+      })
 
-        describe('errors at instantiation', () => {
-          let examples
+      describe('errors at instantiation', () => {
+        let examples
 
-          beforeAll(async () => {
-            examples = await getExamples('accordion')
-          })
+        beforeAll(async () => {
+          examples = await getExamples('accordion')
+        })
 
-          it('throws when GOV.UK Frontend is not supported', async () => {
-            await expect(
-              render(page, 'accordion', examples.default, {
-                beforeInitialisation() {
-                  document.body.classList.remove('govuk-frontend-supported')
-                }
-              })
-            ).rejects.toMatchObject({
-              cause: {
-                name: 'SupportError',
-                message: 'GOV.UK Frontend is not supported in this browser'
+        it('throws when GOV.UK Frontend is not supported', async () => {
+          await expect(
+            render(page, 'accordion', examples.default, {
+              beforeInitialisation() {
+                document.body.classList.remove('govuk-frontend-supported')
               }
             })
+          ).rejects.toMatchObject({
+            cause: {
+              name: 'SupportError',
+              message: 'GOV.UK Frontend is not supported in this browser'
+            }
           })
+        })
 
-          it('throws when $module is not set', async () => {
-            await expect(
-              render(page, 'accordion', examples.default, {
-                beforeInitialisation($module) {
-                  $module.remove()
-                }
-              })
-            ).rejects.toMatchObject({
-              cause: {
-                name: 'ElementError',
-                message: 'Accordion: Root element (`$module`) not found'
+        it('throws when $module is not set', async () => {
+          await expect(
+            render(page, 'accordion', examples.default, {
+              beforeInitialisation($module) {
+                $module.remove()
               }
             })
+          ).rejects.toMatchObject({
+            cause: {
+              name: 'ElementError',
+              message: 'Accordion: Root element (`$module`) not found'
+            }
           })
+        })
 
-          it('throws when receiving the wrong type for $module', async () => {
-            await expect(
-              render(page, 'accordion', examples.default, {
-                beforeInitialisation($module) {
-                  // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
-                  $module.outerHTML = `<svg data-module="govuk-accordion"></svg>`
-                }
-              })
-            ).rejects.toMatchObject({
-              cause: {
-                name: 'ElementError',
-                message:
-                  'Accordion: Root element (`$module`) is not of type HTMLElement'
+        it('throws when receiving the wrong type for $module', async () => {
+          await expect(
+            render(page, 'accordion', examples.default, {
+              beforeInitialisation($module) {
+                // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
+                $module.outerHTML = `<svg data-module="govuk-accordion"></svg>`
               }
             })
+          ).rejects.toMatchObject({
+            cause: {
+              name: 'ElementError',
+              message:
+                'Accordion: Root element (`$module`) is not of type HTMLElement'
+            }
+          })
+        })
+
+        it('throws when the accordion sections are missing', async () => {
+          await expect(
+            render(page, 'accordion', examples.default, {
+              beforeInitialisation($module, { selector }) {
+                $module
+                  .querySelectorAll(selector)
+                  .forEach((item) => item.remove())
+              },
+              context: {
+                selector: '.govuk-accordion__section'
+              }
+            })
+          ).rejects.toMatchObject({
+            cause: {
+              name: 'ElementError',
+              message:
+                'Accordion: Sections (`<div class="govuk-accordion__section">`) not found'
+            }
+          })
+        })
+
+        it('throws when section header is missing', async () => {
+          await expect(
+            render(page, 'accordion', examples.default, {
+              beforeInitialisation($module, { selector }) {
+                $module
+                  .querySelectorAll(selector)
+                  .forEach((item) => item.remove())
+              },
+              context: {
+                selector: '.govuk-accordion__section-header'
+              }
+            })
+          ).rejects.toMatchObject({
+            cause: {
+              name: 'ElementError',
+              message:
+                'Accordion: Section headers (`<div class="govuk-accordion__section-header">`) not found'
+            }
+          })
+        })
+
+        it('throws when any section heading is missing', async () => {
+          await expect(
+            render(page, 'accordion', examples.default, {
+              beforeInitialisation($module, { selector }) {
+                $module.querySelector(selector).remove()
+              },
+              context: {
+                selector: '.govuk-accordion__section-heading'
+              }
+            })
+          ).rejects.toMatchObject({
+            cause: {
+              name: 'ElementError',
+              message:
+                'Accordion: Section heading (`.govuk-accordion__section-heading`) not found'
+            }
+          })
+        })
+
+        it('throws when any section button placeholder span is missing', async () => {
+          await expect(
+            render(page, 'accordion', examples.default, {
+              beforeInitialisation($module, { selector }) {
+                $module.querySelector(selector).remove()
+              },
+              context: {
+                selector: '.govuk-accordion__section-button'
+              }
+            })
+          ).rejects.toMatchObject({
+            cause: {
+              name: 'ElementError',
+              message:
+                'Accordion: Section button placeholder (`<span class="govuk-accordion__section-button">`) not found'
+            }
+          })
+        })
+
+        it('throws when any section content is missing', async () => {
+          await expect(
+            render(page, 'accordion', examples.default, {
+              beforeInitialisation($module, { selector }) {
+                $module.querySelector(selector).remove()
+              },
+              context: {
+                selector: '.govuk-accordion__section-content'
+              }
+            })
+          ).rejects.toMatchObject({
+            cause: {
+              name: 'ElementError',
+              message:
+                'Accordion: Section content (`<div class="govuk-accordion__section-content">`) not found'
+            }
           })
         })
       })

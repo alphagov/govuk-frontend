@@ -139,7 +139,10 @@ export class Accordion extends GOVUKFrontendComponent {
 
     const $sections = this.$module.querySelectorAll(`.${this.sectionClass}`)
     if (!$sections.length) {
-      return this
+      throw new ElementError({
+        componentName: 'Accordion',
+        identifier: `Sections (\`<div class="${this.sectionClass}">\`)`
+      })
     }
 
     this.$sections = $sections
@@ -203,7 +206,10 @@ export class Accordion extends GOVUKFrontendComponent {
     this.$sections.forEach(($section, i) => {
       const $header = $section.querySelector(`.${this.sectionHeaderClass}`)
       if (!$header) {
-        return
+        throw new ElementError({
+          componentName: 'Accordion',
+          identifier: `Section headers (\`<div class="${this.sectionHeaderClass}">\`)`
+        })
       }
 
       // Set header attributes
@@ -231,8 +237,18 @@ export class Accordion extends GOVUKFrontendComponent {
     const $heading = $header.querySelector(`.${this.sectionHeadingClass}`)
     const $summary = $header.querySelector(`.${this.sectionSummaryClass}`)
 
-    if (!$span || !$heading) {
-      return
+    if (!$heading) {
+      throw new ElementError({
+        componentName: 'Accordion',
+        identifier: `Section heading (\`.${this.sectionHeadingClass}\`)`
+      })
+    }
+
+    if (!$span) {
+      throw new ElementError({
+        componentName: 'Accordion',
+        identifier: `Section button placeholder (\`<span class="${this.sectionButtonClass}">\`)`
+      })
     }
 
     // Create a button element that will replace the
@@ -395,7 +411,15 @@ export class Accordion extends GOVUKFrontendComponent {
     const $button = $section.querySelector(`.${this.sectionButtonClass}`)
     const $content = $section.querySelector(`.${this.sectionContentClass}`)
 
-    if (!$showHideIcon || !$showHideText || !$button || !$content) {
+    if (!$content) {
+      throw new ElementError({
+        componentName: 'Accordion',
+        identifier: `Section content (\`<div class="${this.sectionContentClass}">\`)`
+      })
+    }
+
+    if (!$showHideIcon || !$showHideText || !$button) {
+      // Return early for elements we create
       return
     }
 
