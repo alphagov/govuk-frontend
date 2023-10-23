@@ -20,7 +20,7 @@
     "css-loader": "^6.8.1",
     "mini-css-extract-plugin": "^2.7.6",
     "postcss-loader": "^7.3.3",
-    "sass-embedded": "^1.69.2",
+    "sass-embedded": "^1.69.4",
     "sass-loader": "^13.3.2",
     "terser-webpack-plugin": "^5.3.9",
     "webpack": "^5.89.0",
