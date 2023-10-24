@@ -64,7 +64,7 @@ export class ElementError extends GOVUKFrontendError {
    * @param {string | ElementErrorOptions} messageOrOptions - Element error message or options
    */
   constructor(messageOrOptions) {
-    let message = typeof messageOrOptions === 'string' && messageOrOptions
+    let message = typeof messageOrOptions === 'string' ? messageOrOptions : ''
 
     // Build message from options
     if (typeof messageOrOptions === 'object') {
