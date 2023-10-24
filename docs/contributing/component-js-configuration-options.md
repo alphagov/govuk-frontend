@@ -6,20 +6,24 @@ Configuration options can be configured using Nunjucks, HTML or JavaScript, but 
 
 ## Preparing the component's JavaScript
 
-First, make sure the entry function for the component has a parameter for passing in a configuration object.
+First, make sure the component class has a constructor parameter for passing in a configuration object.
 
-```javascript
-function Accordion ($module, config) {
-  ...
+```mjs
+import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
+
+export class Accordion extends GOVUKFrontendComponent {
+  constructor($module, config = {}) {
+    // ...
+  }
 }
 ```
 
-Within the entry function, you'll then create an object with the default configuration for the component. These are the options the component will use if no other options are provided.
+Within the entry class, you'll then create an object with the default configuration for the component. These are the options the component will use if no other options are provided.
 
-```javascript
-var defaultConfig = {
+```mjs
+static defaults = Object.freeze({
   rememberExpanded: true
-}
+})
 ```
 
 Next, use the `mergeConfigs` helper to combine the default config and the configuration object. The result of the merge is assigned globally (using `this`) so that it's accessible anywhere within the component's JavaScript.
@@ -28,18 +32,16 @@ The order in which variables are written defines their priority, with objects pa
 
 There is no guarantee `config` will have any value at all, so it'll be `undefined`. We use an OR operator (`||`) as a safety check. If the value is `undefined`, we use an empty object instead.
 
-```javascript
-import { mergeConfigs } from '../../common/index.mjs'
-
+```mjs
 this.config = mergeConfigs(
-  defaultConfig,
-  config || {}
+  Accordion.defaults,
+  config
 )
 ```
 
 We can now reference the configuration option anywhere we need to in the component's JavaScript:
 
-```javascript
+```js
 this.config.rememberExpanded
 // => true
 ```
@@ -47,11 +49,14 @@ this.config.rememberExpanded
 It's now possible to individually initialise the component with configuration options.
 
 ```html
-<script>
-  var $accordion = document.getElementById("accordion")
-  new window.GOVUKFrontend.Accordion($accordion, {
+<script type="module">
+  import { Accordion } from '{path-to-javascript}/govuk-frontend.min.js'
+
+  const $element = document.getElementById('accordion')
+
+  new Accordion($element, {
     rememberExpanded: false
-  }).init()
+  })
 </script>
 ```
 
@@ -59,17 +64,19 @@ It's now possible to individually initialise the component with configuration op
 
 Usually, teams will not be individually initialising components. Instead, GOV.UK Frontend ships with an `initAll` function, which searches the page for instances of components and automatically initialises them.
 
-In `src/govuk/all.mjs`, update the component's `new` function to pass through a nested configuration object. The nested object should use the component's name converted to camelCase (for example, the 'Character Count' component becomes `characterCount`).
+In `src/govuk/all.mjs`, update the component's `new` class to pass through a nested configuration object. The nested object should use the component's name converted to camelCase (for example, the 'Character Count' component becomes `characterCount`).
 
-```javascript
-new Accordion($accordion, config.accordion).init()
+```js
+new Accordion($accordion, config.accordion)
 ```
 
 It's now possible to pass configuration options for your component, as well as multiple other components, using the `initAll` function.
 
 ```html
-<script>
-  window.GOVUKFrontend.initAll({
+<script type="module">
+  import { initAll } from '{path-to-javascript}/govuk-frontend.min.js'
+
+  initAll({
     accordion: {
       rememberExpanded: false
     },
@@ -90,13 +97,10 @@ As we expect configuration-related `data-*` attributes to always be on the compo
 
 Using the `mergeConfigs` call discussed earlier in this document, update it to include `$module.dataset` as the highest priority.
 
-```javascript
-import { mergeConfigs } from '../../common/index.mjs'
-import { normaliseDataset } from '../../common/normalise-dataset.mjs'
-
+```mjs
 this.config = mergeConfigs(
-  defaultConfig,
-  config || {},
+  Accordion.defaults,
+  config,
   normaliseDataset($module.dataset)
 )
 ```
@@ -145,7 +149,6 @@ We can now call the Accordion's Nunjucks macro with our new `rememberExpanded` p
 }) }}
 ```
 
-
 ## Naming configuration options
 
 ### In JavaScript
@@ -180,10 +183,10 @@ For example, we could namespace our `rememberExpanded` option under the `stateIn
 
 The `extractConfigByNamespace` JavaScript helper can be used to create an object containing _only_ the configuration options that belong to a certain namespace.
 
-```javascript
+```mjs
 this.config = mergeConfigs(
-  defaultConfig,
-  config || {},
+  Accordion.defaults,
+  config,
   normaliseDataset($module.dataset)
 )
 
