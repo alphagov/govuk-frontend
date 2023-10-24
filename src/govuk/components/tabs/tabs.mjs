@@ -130,7 +130,7 @@ export class Tabs extends GOVUKFrontendComponent {
    * @private
    */
   checkMode() {
-    if (this.mql.matches) {
+    if (this.mql && this.mql.matches) {
       this.setup()
     } else {
       this.teardown()
