@@ -113,6 +113,10 @@ export class Header extends GOVUKFrontendComponent {
    * @private
    */
   syncState() {
+    if (!this.mql || !this.$menu || !this.$menuButton) {
+      return
+    }
+
     if (this.mql.matches) {
       this.$menu.removeAttribute('hidden')
       this.$menuButton.setAttribute('hidden', '')

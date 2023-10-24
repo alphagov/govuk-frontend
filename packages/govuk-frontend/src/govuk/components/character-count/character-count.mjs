@@ -261,7 +261,9 @@ export class CharacterCount extends GOVUKFrontendComponent {
    */
   handleBlur() {
     // Cancel value checking on blur
-    clearInterval(this.valueChecker)
+    if (this.valueChecker) {
+      window.clearInterval(this.valueChecker)
+    }
   }
 
   /**

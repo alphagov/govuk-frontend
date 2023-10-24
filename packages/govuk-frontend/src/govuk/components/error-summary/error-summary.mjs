@@ -77,7 +77,7 @@ export class ErrorSummary extends GOVUKFrontendComponent {
    */
   handleClick(event) {
     const $target = event.target
-    if (this.focusTarget($target)) {
+    if ($target && this.focusTarget($target)) {
       event.preventDefault()
     }
   }
