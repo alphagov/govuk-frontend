@@ -9,9 +9,7 @@ Configuration options can be configured using Nunjucks, HTML or JavaScript, but 
 First, make sure the component class has a constructor parameter for passing in a configuration object.
 
 ```mjs
-import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
-
-export class Accordion extends GOVUKFrontendComponent {
+export class Accordion {
   constructor($module, config = {}) {
     // ...
   }
@@ -21,9 +19,11 @@ export class Accordion extends GOVUKFrontendComponent {
 Within the entry class, you'll then create an object with the default configuration for the component. These are the options the component will use if no other options are provided.
 
 ```mjs
-static defaults = Object.freeze({
-  rememberExpanded: true
-})
+export class Accordion {
+  static defaults = Object.freeze({
+    rememberExpanded: true
+  })
+}
 ```
 
 Next, use the `mergeConfigs` helper to combine the default config and the configuration object. The result of the merge is assigned globally (using `this`) so that it's accessible anywhere within the component's JavaScript.
@@ -33,10 +33,14 @@ The order in which variables are written defines their priority, with objects pa
 There is no guarantee `config` will have any value at all, so it'll be `undefined`. We use an OR operator (`||`) as a safety check. If the value is `undefined`, we use an empty object instead.
 
 ```mjs
-this.config = mergeConfigs(
-  Accordion.defaults,
-  config
-)
+export class Accordion {
+  constructor($module, config = {}) {
+    this.config = mergeConfigs(
+      Accordion.defaults,
+      config
+    )
+  }
+}
 ```
 
 We can now reference the configuration option anywhere we need to in the component's JavaScript:
@@ -98,11 +102,15 @@ As we expect configuration-related `data-*` attributes to always be on the compo
 Using the `mergeConfigs` call discussed earlier in this document, update it to include `$module.dataset` as the highest priority.
 
 ```mjs
-this.config = mergeConfigs(
-  Accordion.defaults,
-  config,
-  normaliseDataset($module.dataset)
-)
+export class Accordion {
+  constructor($module, config = {}) {
+    this.config = mergeConfigs(
+      Accordion.defaults,
+      config,
+      normaliseDataset($module.dataset)
+    )
+  }
+}
 ```
 
 Here, we pass the value of `$module.dataset` through our `normaliseDataset` function. This is because attribute values in dataset are always interpreted as strings. `normaliseDataset` runs a few simple checks to convert values back to numbers or booleans where appropriate.
@@ -184,11 +192,15 @@ For example, we could namespace our `rememberExpanded` option under the `stateIn
 The `extractConfigByNamespace` JavaScript helper can be used to create an object containing _only_ the configuration options that belong to a certain namespace.
 
 ```mjs
-this.config = mergeConfigs(
-  Accordion.defaults,
-  config,
-  normaliseDataset($module.dataset)
-)
+export class Accordion {
+  constructor($module, config = {}) {
+    this.config = mergeConfigs(
+      Accordion.defaults,
+      config,
+      normaliseDataset($module.dataset)
+    )
 
-this.stateInfo = extractConfigByNamespace(this.config, 'stateInfo');
+    this.stateInfo = extractConfigByNamespace(this.config, 'stateInfo');
+  }
+}
 ```
