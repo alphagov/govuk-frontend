@@ -22,7 +22,7 @@ export class ErrorSummary extends GOVUKFrontendComponent {
   config
 
   /**
-   * @param {Element} $module - HTML element to use for error summary
+   * @param {Element | null} $module - HTML element to use for error summary
    * @param {ErrorSummaryConfig} [config] - Error summary config
    */
   constructor($module, config = {}) {
@@ -77,7 +77,7 @@ export class ErrorSummary extends GOVUKFrontendComponent {
    */
   handleClick(event) {
     const $target = event.target
-    if (this.focusTarget($target)) {
+    if ($target && this.focusTarget($target)) {
       event.preventDefault()
     }
   }

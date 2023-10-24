@@ -45,7 +45,7 @@ export class Tabs extends GOVUKFrontendComponent {
   mql = null
 
   /**
-   * @param {Element} $module - HTML element to use for tabs
+   * @param {Element | null} $module - HTML element to use for tabs
    */
   constructor($module) {
     super()
@@ -130,7 +130,7 @@ export class Tabs extends GOVUKFrontendComponent {
    * @private
    */
   checkMode() {
-    if (this.mql.matches) {
+    if (this.mql && this.mql.matches) {
       this.setup()
     } else {
       this.teardown()

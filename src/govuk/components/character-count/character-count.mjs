@@ -28,17 +28,11 @@ export class CharacterCount extends GOVUKFrontendComponent {
   /** @private */
   $textarea
 
-  /**
-   * @private
-   * @type {HTMLElement | null}
-   */
-  $visibleCountMessage = null
+  /** @private */
+  $visibleCountMessage
 
-  /**
-   * @private
-   * @type {HTMLElement | null}
-   */
-  $screenReaderCountMessage = null
+  /** @private */
+  $screenReaderCountMessage
 
   /**
    * @private
@@ -65,10 +59,10 @@ export class CharacterCount extends GOVUKFrontendComponent {
   i18n
 
   /** @private */
-  maxLength = Infinity
+  maxLength
 
   /**
-   * @param {Element} $module - HTML element to use for character count
+   * @param {Element | null} $module - HTML element to use for character count
    * @param {CharacterCountConfig} [config] - Character count config
    */
   constructor($module, config = {}) {
@@ -134,7 +128,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
     })
 
     // Determine the limit attribute (characters or words)
-    this.maxLength = this.config.maxwords || this.config.maxlength
+    this.maxLength = this.config.maxwords || this.config.maxlength || Infinity
 
     this.$module = $module
     this.$textarea = $textarea
@@ -267,7 +261,9 @@ export class CharacterCount extends GOVUKFrontendComponent {
    */
   handleBlur() {
     // Cancel value checking on blur
-    clearInterval(this.valueChecker)
+    if (this.valueChecker) {
+      window.clearInterval(this.valueChecker)
+    }
   }
 
   /**

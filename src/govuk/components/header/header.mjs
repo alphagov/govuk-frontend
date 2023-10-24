@@ -39,7 +39,7 @@ export class Header extends GOVUKFrontendComponent {
    * Apply a matchMedia for desktop which will trigger a state sync if the
    * browser viewport moves between states.
    *
-   * @param {Element} $module - HTML element to use for header
+   * @param {Element | null} $module - HTML element to use for header
    */
   constructor($module) {
     super()
@@ -113,6 +113,10 @@ export class Header extends GOVUKFrontendComponent {
    * @private
    */
   syncState() {
+    if (!this.mql || !this.$menu || !this.$menuButton) {
+      return
+    }
+
     if (this.mql.matches) {
       this.$menu.removeAttribute('hidden')
       this.$menuButton.setAttribute('hidden', '')
