@@ -149,14 +149,20 @@ module.exports = {
       processor: 'markdown/markdown'
     },
     {
-      files: ['**/coding-standards/js.md/*.{cjs,js,mjs}'],
+      files: [
+        '**/coding-standards/component-options.md/*.{cjs,js,mjs}',
+        '**/coding-standards/js.md/*.{cjs,js,mjs}'
+      ],
       env: {
         browser: true
       },
       rules: {
         // Ignore unused example code
+        'no-new': 'off',
         'no-undef': 'off',
+        'no-unused-expressions': 'off',
         'no-unused-vars': 'off',
+        'no-useless-constructor': 'off',
 
         // Ignore paths to example modules
         'import/no-unresolved': 'off',

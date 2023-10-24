@@ -1,4 +1,4 @@
-# Adding JavaScript configuration options to components
+# Component configuration
 
 Configuration options allow developers to pass additional information into a component's JavaScript. This allows them to change how the component might work or appear without needing to create their own fork.
 
