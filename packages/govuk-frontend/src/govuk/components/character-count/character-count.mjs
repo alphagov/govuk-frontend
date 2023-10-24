@@ -59,7 +59,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
   i18n
 
   /** @private */
-  maxLength = Infinity
+  maxLength
 
   /**
    * @param {Element | null} $module - HTML element to use for character count
@@ -128,7 +128,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
     })
 
     // Determine the limit attribute (characters or words)
-    this.maxLength = this.config.maxwords || this.config.maxlength
+    this.maxLength = this.config.maxwords || this.config.maxlength || Infinity
 
     this.$module = $module
     this.$textarea = $textarea
