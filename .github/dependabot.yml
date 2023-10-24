@@ -77,7 +77,12 @@ updates:
     versioning-strategy: increase
 
     allow:
+      # Include direct package.json updates
       - dependency-type: direct
+
+      # Include indirect browser data updates
+      # https://caniuse.com
+      - dependency-name: caniuse-lite
 
   # Update GitHub Actions
   - package-ecosystem: github-actions
