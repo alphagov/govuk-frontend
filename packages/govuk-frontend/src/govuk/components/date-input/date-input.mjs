@@ -31,29 +31,29 @@ export class DateInput extends GOVUKFrontendComponent {
    * @param {ClipboardEvent} event - event
    */
   handlePaste(event) {
-    const clipboardData = event.clipboardData.getData('text')
-    const regex = /([0-9]{1,2})([/\-.])([0-9]{1,2}|[A-Z]+)([/\-.])([0-9]{1,4})/
+    try {
+      const clipboardData = event.clipboardData.getData('text')
+      // eslint-disable-next-line es-x/no-regexp-named-capture-groups
+      const regex =
+        /(?<day>[0-9]{0,2})(?<separator>[ /.-])(?<month>[0-9]{0,2})\k<separator>(?<year>[0-9]{0,4})/
 
-    let result
+      let result
 
-    if ((result = regex.exec(clipboardData))) {
-      console.log(result)
+      if ((result = regex.exec(clipboardData))) {
+        const parts = [
+          result.groups.day,
+          result.groups.month,
+          result.groups.year
+        ]
 
-      const [, day, firstSeparator, month, secondSeperator, year] = result
+        this.$inputs.forEach(($input, index) => {
+          $input.value = parts[index]
+        })
 
-      if (firstSeparator !== secondSeperator) {
-        return
+        this.$inputs[this.$inputs.length - 1].focus()
+        event.preventDefault()
       }
-
-      const parts = [day, month, year]
-
-      this.$inputs.forEach(($input, index) => {
-        $input.value = parts[index]
-      })
-
-      this.$inputs[this.$inputs.length - 1].focus()
-      event.preventDefault()
-    }
+    } catch (error) {}
   }
 
   /**
