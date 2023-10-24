@@ -47,11 +47,12 @@ fi
 
 echo "📦  Publishing package..."
 
+NPM_ARGS=( --workspace govuk-frontend )
+[ $NPM_TAG = "latest" ] || NPM_ARGS+=( --tag $NPM_TAG )
+
 # Try publishing
-cd packages/govuk-frontend/dist
-[ $NPM_TAG = "latest" ] && npm publish || npm publish --tag $NPM_TAG
+npm publish "${NPM_ARGS[@]}"
 echo "🗒 Package published!"
-cd ..
 
 # Extract tag version from ./packages/govuk-frontend/package.json
 ALL_PACKAGE_VERSION=$(npm run version --silent --workspace govuk-frontend)
