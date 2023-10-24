@@ -25,7 +25,7 @@ export class Radios extends GOVUKFrontendComponent {
    * (for example if the user has navigated back), and set up event handlers to
    * keep the reveal in sync with the radio state.
    *
-   * @param {Element} $module - HTML element to use for radios
+   * @param {Element | null} $module - HTML element to use for radios
    */
   constructor($module) {
     super()

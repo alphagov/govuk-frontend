@@ -12,7 +12,7 @@ export class I18n {
    * @internal
    * @param {{ [key: string]: unknown }} translations - Key-value pairs of the translation strings to use.
    * @param {object} [config] - Configuration options for the function.
-   * @param {string} [config.locale] - An overriding locale for the PluralRules functionality.
+   * @param {string | null} [config.locale] - An overriding locale for the PluralRules functionality.
    */
   constructor(translations = {}, config = {}) {
     // Make list of translations available throughout function

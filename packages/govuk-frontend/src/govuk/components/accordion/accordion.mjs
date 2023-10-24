@@ -113,7 +113,7 @@ export class Accordion extends GOVUKFrontendComponent {
   $showAllText = null
 
   /**
-   * @param {Element} $module - HTML element to use for accordion
+   * @param {Element | null} $module - HTML element to use for accordion
    * @param {AccordionConfig} [config] - Accordion config
    */
   constructor($module, config = {}) {
@@ -312,7 +312,7 @@ export class Accordion extends GOVUKFrontendComponent {
     $button.appendChild(this.getButtonPunctuationEl())
 
     // If summary content exists add to DOM in correct order
-    if ($summary) {
+    if ($summary && $summary.parentNode) {
       // Create a new `span` element and copy the summary line content from the
       // original `div` to the new `span`. This is because the summary line text
       // is now inside a button element, which can only contain phrasing
@@ -507,6 +507,10 @@ export class Accordion extends GOVUKFrontendComponent {
    * @param {boolean} expanded - Section expanded
    */
   updateShowAllButton(expanded) {
+    if (!this.$showAllButton || !this.$showAllText || !this.$showAllIcon) {
+      return
+    }
+
     this.$showAllButton.setAttribute('aria-expanded', expanded.toString())
     this.$showAllText.textContent = expanded
       ? this.i18n.t('hideAllSections')

@@ -20,7 +20,7 @@ component
  */
 export class Example {
   /**
-   * @param {Element} $module - HTML element to use for component
+   * @param {Element | null} $module - HTML element to use for component
    */
   constructor($module) {
     if (

@@ -28,7 +28,7 @@ export class Button extends GOVUKFrontendComponent {
   debounceFormSubmitTimer = null
 
   /**
-   * @param {Element} $module - HTML element to use for button
+   * @param {Element | null} $module - HTML element to use for button
    * @param {ButtonConfig} [config] - Button config
    */
   constructor($module, config = {}) {
