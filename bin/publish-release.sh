@@ -54,7 +54,7 @@ echo "🗒 Package published!"
 cd ..
 
 # Extract tag version from ./packages/govuk-frontend/package.json
-ALL_PACKAGE_VERSION=$(node -p "require('./packages/govuk-frontend/package.json').version")
+ALL_PACKAGE_VERSION=$(npm run version --silent --workspace govuk-frontend)
 TAG="v$ALL_PACKAGE_VERSION"
 
 if [ $(git tag -l "$TAG") ]; then
