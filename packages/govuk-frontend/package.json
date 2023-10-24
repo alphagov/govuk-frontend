@@ -55,7 +55,7 @@
     "build:stats": "npm run stats --workspace @govuk-frontend/stats",
     "build:types": "tsc --build tsconfig.build.json",
     "clean": "npm run clean:package",
-    "clean:package": "del-cli dist",
+    "clean:package": "del-cli *.tsbuildinfo dist govuk-prototype-kit.config.json",
     "clean:release": "del-cli ../../dist --force",
     "postbuild:package": "npm run build:stats && govuk-prototype-kit validate-plugin .",
     "version": "echo $npm_package_version"
