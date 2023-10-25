@@ -5,7 +5,7 @@ runs:
 
   steps:
     - name: Cache build
-      uses: actions/cache@v3.3.1
+      uses: actions/cache@v3.3.2
       id: build-cache
 
       with:
