@@ -77,13 +77,12 @@ updates:
     versioning-strategy: increase
 
     allow:
+      # Include direct package.json updates
       - dependency-type: direct
 
-    ignore:
-      # Ignore major updates (causes `stylelint-config-gds` peer dependency conflict)
-      # See pull request: https://github.com/alphagov/stylelint-config-gds/pull/32
-      - dependency-name: stylelint
-        update-types: ['version-update:semver-major']
+      # Include indirect browser data updates
+      # https://caniuse.com
+      - dependency-name: caniuse-lite
 
   # Update GitHub Actions
   - package-ecosystem: github-actions
