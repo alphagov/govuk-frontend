@@ -5,7 +5,7 @@ set -e
 HIGHEST_PUBLISHED_VERSION=$(git tag --list 2>/dev/null | sort -V | tail -n1 2>/dev/null | sed 's/v//g')
 
 # Extract tag version from ./packages/govuk-frontend/package.json
-CURRENT_VERSION=$(node -p "require('./packages/govuk-frontend/package.json').version")
+CURRENT_VERSION=$(npm run version --silent --workspace govuk-frontend)
 
 function version() { echo "$@" | awk -F. '{ printf("%d%03d%03d\n", $1,$2,$3); }'; }
 
