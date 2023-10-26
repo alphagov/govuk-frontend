@@ -187,6 +187,33 @@ These changes were made in the following pull requests:
 - [#3491: Update Review app to import `govuk-frontend` via local package](https://github.com/alphagov/govuk-frontend/pull/3491)
 - [#3498: Remove built `dist` and `package` from source](https://github.com/alphagov/govuk-frontend/pull/3498)
 
+#### Check your browser console for component initialisation errors
+
+GOV.UK Frontend JavaScript components now provide errors. The following list shows the type of errors and the situations in which they occur:
+
+- `SupportError` - when GOV.UK Frontend is not supported in the current browser
+- `ElementError` - when component templates have missing or broken HTML elements
+- `ConfigError` - when component JavaScript configuration does not match our documentation
+
+These errors will be:
+
+- logged in the browser console when [using the `initAll()` function](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#add-the-javascript-file-to-your-html)
+- [thrown as exceptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) when [instantiating components individually](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#select-and-initialise-an-individual-component)
+
+To make sure the components behave as intended, we encourage you to check your browser console and address any errors by updating your markup or configuration.
+
+These changes were introduced in:
+
+- [pull request #4030: Throw `SupportError` when instantiating components where GOV.UK Frontend is not supported](https://github.com/alphagov/govuk-frontend/pull/4030)
+- [pull request #4104: Throw `ElementError` when the module is not of the expected type](https://github.com/alphagov/govuk-frontend/pull/4104)
+- [pull request #4176: Throw `ConfigError` when component configs are invalid](https://github.com/alphagov/govuk-frontend/pull/4176)
+- [pull request #4177: Add `MissingElementError` and use it within the Skip Link](https://github.com/alphagov/govuk-frontend/pull/4177)
+- [pull request #4199: Throw `ElementError` when "Exit this page" button is missing](https://github.com/alphagov/govuk-frontend/pull/4199)
+- [pull request #4206: Throw `ElementError` when the menu of the header is missing but a toggle is present](https://github.com/alphagov/govuk-frontend/pull/4206)
+- [pull request #4236: Throw `ElementError` (not found) if checkboxes or radios have no input items](https://github.com/alphagov/govuk-frontend/pull/4236)
+- [pull request #4261: Throw `ElementError` for missing elements during Character count instantiation](https://github.com/alphagov/govuk-frontend/pull/4261)
+- [pull request #4266: Throw errors during accordion initialisation](https://github.com/alphagov/govuk-frontend/pull/4266)
+
 #### "Compatibility mode" features are no longer supported
 
 GOV.UK Frontend no longer supports compatibility with [our old frameworks](https://frontend.design-system.service.gov.uk/migrating-from-legacy-products/#migrate-from-our-old-frameworks): GOV.UK Elements, GOV.UK Template and GOV.UK Frontend Toolkit. You can no longer incrementally add GOV.UK Frontend to an existing service using one of these previous frameworks. We have removed the following Sass variables and one mixin which controlled compatibility mode:
