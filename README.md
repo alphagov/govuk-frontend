@@ -40,11 +40,20 @@ You should also have a plan to [stay up to date with changes](https://frontend.d
 
 ## Browser and assistive technology support
 
-GOV.UK Frontend supports:
+To help manage the ever-growing number of browser versions, we group browsers into 4 grades:
 
-- [recommended browsers](https://www.gov.uk/service-manual/technology/designing-for-different-browsers-and-devices#browsers-to-test-in) and Internet Explorer 11
+- **grade A** - Most recent stable versions of Chrome, Firefox, Edge, Samsung Internet and Safari
+- **grade B** - All stable versions of Chrome, Firefox and Edge released in the last 6 months and the last 4 major stable releases of Safari which are not supported in Grade A
+- **grade C** - [All browsers that support <script type="module">](https://caniuse.com/es6-module) (Chrome 61+, Edge 16-18, Edge 79+
+- **grade X** - All other browsers (including IE11 and older)
+
+> **Note: Only browsers in grades A, B and C will run our JavaScript enhancements. We will not support our JavaScript enhancements for older browsers in grade X.**
+
+For more information see [our Browser Support documentation](/docs/contributing/browser-support.md).
+
+GOV.UK Frontend also supports:
+
 - [recommended assistive technologies](https://www.gov.uk/service-manual/technology/testing-with-assistive-technologies#which-assistive-technologies-to-test-with)
-- Internet Explorer 8, 9 and 10, although components may not look perfect
 - your users overriding colours in Windows, Firefox and Chrome
 
 ## Accessibility
