@@ -28,9 +28,17 @@ export class GOVUKFrontendError extends Error {
 export class SupportError extends GOVUKFrontendError {
   name = 'SupportError'
 
-  // eslint-disable-next-line jsdoc/require-jsdoc -- Nothing pertinent to document
-  constructor() {
-    super('GOV.UK Frontend is not supported in this browser')
+  /**
+   * Checks if GOV.UK Frontend is supported on this page
+   *
+   * @param {HTMLElement | null} [$scope] - HTML element `<body>` checked for browser support
+   */
+  constructor($scope = document.body) {
+    super(
+      $scope
+        ? 'GOV.UK Frontend is not supported in this browser'
+        : 'GOV.UK Frontend initialised without `<script type="module">`'
+    )
   }
 }
 
