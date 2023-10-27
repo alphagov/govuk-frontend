@@ -42,19 +42,13 @@ Developers should pair on pre-releases. When remote working, it can be useful to
    - Use `preminor` to bump from `v4.7.0` to `v4.8.0-beta.0`
    - Use `prepatch` to bump from `v4.7.0` to `v4.7.1-beta.0`
 
+   See the [versioning documentation](/docs/contributing/versioning.md) for more information.
+
    Alternatively, when publishing an update to an existing pre-release:
 
    - Use `prerelease` to bump from `v5.0.0-beta.0` to `v5.0.0-beta.1`
 
-6. Create and check out a new branch (`release-[version-number]`). See the [versioning documentation](/docs/contributing/versioning.md) for more information.
-
-7. If you're publishing a beta pre-release, update the [`CHANGELOG.md`](/CHANGELOG.md) by:
-
-   - changing the 'Unreleased' heading to the new version number and release type. For example, '5.0.0-beta.0 (Pre-release)'
-   - adding a new 'Unreleased' heading above the new version number and release type, so users will know where to add PRs to the changelog
-   - saving your changes
-
-8. Apply the new pre-release version number by running:
+6. Apply the new pre-release version number by running:
 
    ```shell
    npm version <PRE-RELEASE TYPE> --preid <PRE-RELEASE IDENTIFIER> --no-git-tag-version --workspace govuk-frontend
@@ -63,6 +57,18 @@ Developers should pair on pre-releases. When remote working, it can be useful to
    This step will update [`govuk-frontend`'s `package.json`](/packages/govuk-frontend/package.json) and project [`package-lock.json`](/package-lock.json) files.
 
    Do not commit the changes.
+
+7. Create and check out a new branch (`release-[version-number]`)
+
+   ```shell
+   git switch -c "release-$(npm run version --silent --workspace govuk-frontend)"
+   ```
+
+8. If you're publishing a beta pre-release, update the [`CHANGELOG.md`](/CHANGELOG.md) by:
+
+   - changing the 'Unreleased' heading to the new version number and release type. For example, '5.0.0-beta.0 (Pre-release)'
+   - adding a new 'Unreleased' heading above the new version number and release type, so users will know where to add PRs to the changelog
+   - saving your changes
 
 9. Run `npm run build-release` to:
 

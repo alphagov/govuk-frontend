@@ -20,16 +20,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 3. Run `npm ci` to make sure you have the exact dependencies installed.
 
-4. Create and check out a new branch (`release-[version-number]`). See the [versioning documentation](/docs/contributing/versioning.md) for more information.
-
-5. Update the [`CHANGELOG.md`](/CHANGELOG.md) by:
-
-   - changing the 'Unreleased' heading to the new version number and release type. For example, '3.11.0 (Feature release)'
-   - adding a new 'Unreleased' heading above the new version number and release type, so users will know where to add PRs to the changelog
-   - if the changelog has headings from [pre-releases](/docs/releasing/publishing-a-pre-release.md#publish-a-new-version-of-govuk-frontend), regroup the content under those headings in a single block
-   - saving your changes
-
-6. Apply the new version number by running:
+4. Pick a new version number according to the [versioning documentation](/docs/contributing/versioning.md) and apply it running:
 
    ```shell
    npm version <NEW VERSION NUMBER> --no-git-tag-version --workspace govuk-frontend
@@ -38,6 +29,19 @@ Developers should pair on releases. When remote working, it can be useful to be 
    This step will update [`govuk-frontend`'s `package.json`](/packages/govuk-frontend/package.json) and project [`package-lock.json`](/package-lock.json) files.
 
    Do not commit the changes.
+
+5. Create and check out a new branch (`release-[version-number]`)
+
+   ```shell
+   git switch -c "release-$(npm run version --silent --workspace govuk-frontend)"
+   ```
+
+6. Update the [`CHANGELOG.md`](/CHANGELOG.md) by:
+
+   - changing the 'Unreleased' heading to the new version number and release type. For example, '3.11.0 (Feature release)'
+   - adding a new 'Unreleased' heading above the new version number and release type, so users will know where to add PRs to the changelog
+   - if the changelog has headings from [pre-releases](/docs/releasing/publishing-a-pre-release.md#publish-a-new-version-of-govuk-frontend), regroup the content under those headings in a single block
+   - saving your changes
 
 7. Run `npm run build-release` to:
 
