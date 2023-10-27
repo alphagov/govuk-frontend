@@ -140,10 +140,14 @@ export function getFragmentFromUrl(url) {
  * won't be supported.
  *
  * @internal
- * @param {HTMLElement} [$scope] - The `<body>` element of the document to check for support
+ * @param {HTMLElement | null} [$scope] - HTML element `<body>` checked for browser support
  * @returns {boolean} Whether GOV.UK Frontend is supported on this page
  */
 export function isSupported($scope = document.body) {
+  if (!$scope) {
+    return false
+  }
+
   return $scope.classList.contains('govuk-frontend-supported')
 }
 

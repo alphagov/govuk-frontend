@@ -124,6 +124,12 @@ describe('Common JS utilities', () => {
     it('returns false if the govuk-frontend-supported class is not set', () => {
       expect(isSupported(document.body)).toBe(false)
     })
+
+    it('returns false when `document.body` is not set', () => {
+      // For example, running `initAll()` in `<head>` without `type="module"`
+      // will see support checks run when document.body is still `null`
+      expect(isSupported(null)).toBe(false)
+    })
   })
 
   describe('getFragmentFromUrl', () => {

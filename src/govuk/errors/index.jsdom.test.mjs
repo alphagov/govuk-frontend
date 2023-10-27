@@ -13,14 +13,24 @@ describe('errors', () => {
 
   describe('SupportError', () => {
     it('is an instance of GOVUKFrontendError', () => {
-      expect(new SupportError()).toBeInstanceOf(GOVUKFrontendError)
+      expect(new SupportError(document.body)).toBeInstanceOf(GOVUKFrontendError)
     })
+
     it('has its own name set', () => {
-      expect(new SupportError().name).toBe('SupportError')
+      expect(new SupportError(document.body).name).toBe('SupportError')
     })
-    it('provides meaningful feedback to users', () => {
-      expect(new SupportError().message).toBe(
+
+    it('provides feedback regarding browser support', () => {
+      expect(new SupportError(document.body).message).toBe(
         'GOV.UK Frontend is not supported in this browser'
+      )
+    })
+
+    it('provides feedback when `document.body` is not set', () => {
+      // For example, running `initAll()` in `<head>` without `type="module"`
+      // will see support checks run when document.body is still `null`
+      expect(new SupportError(null).message).toBe(
+        'GOV.UK Frontend initialised without `<script type="module">`'
       )
     })
   })
