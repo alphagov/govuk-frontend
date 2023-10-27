@@ -61,6 +61,10 @@
     "version": "echo $npm_package_version"
   },
   "devDependencies": {
+    "@govuk-frontend/config": "*",
+    "@govuk-frontend/helpers": "*",
+    "@govuk-frontend/lib": "*",
+    "@govuk-frontend/tasks": "*",
     "@babel/core": "^7.23.2",
     "@babel/preset-env": "^7.23.2",
     "@rollup/plugin-babel": "^6.0.4",
@@ -83,11 +87,5 @@
     "sass-embedded": "^1.69.4",
     "sassdoc": "^2.7.4",
     "slash": "^5.1.0"
-  },
-  "optionalDependencies": {
-    "@govuk-frontend/config": "*",
-    "@govuk-frontend/helpers": "*",
-    "@govuk-frontend/lib": "*",
-    "@govuk-frontend/tasks": "*"
   }
 }
