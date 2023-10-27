@@ -22,7 +22,10 @@ Developers should pair on pre-releases. When remote working, it can be useful to
 
 1. Check out the **main** branch and pull the latest changes.
 
-2. Run `nvm use` to make sure you're using the right version of Node.js and npm.
+2. Ensure you're running the version of NodeJS matching [`.nvmrc`](/.nvmrc).
+
+   - If you use NVM, run `nvm use` to set up the right version
+   - If you use another management system (like [`asdf`](https://asdf-vm.com/guide/getting-started.html)), compare the output of `node --version` and install the right one if necessary
 
 3. Run `npm ci` to make sure you have the exact dependencies installed.
 
@@ -63,15 +66,15 @@ Developers should pair on pre-releases. When remote working, it can be useful to
 
 9. Run `npm run build-release` to:
 
-    - build GOV.UK Frontend into [the package's `/dist`](/packages/govuk-frontend/dist) and [root `/dist`](/dist) directories
-    - commit the changes
-    - push a branch to GitHub
+   - build GOV.UK Frontend into [the package's `/dist`](/packages/govuk-frontend/dist) and [root `/dist`](/dist) directories
+   - commit the changes
+   - push a branch to GitHub
 
-    You will now be prompted to continue or cancel.
+   You will now be prompted to continue or cancel.
 
 10. Create a pull request.
     When reviewing the PR, check that the version numbers have been updated and that the compiled assets use this version number.
-    
+
 11. Once a reviewer approves the pull request, merge it to **main**.
 
 ## Publish a release to npm

@@ -13,7 +13,10 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 1. Check out the **main** branch and pull the latest changes.
 
-2. Run `nvm use` to make sure you're using the right version of Node.js and npm.
+2. Ensure you're running the version of NodeJS matching [`.nvmrc`](/.nvmrc).
+
+   - If you use NVM, run `nvm use` to set up the right version
+   - If you use another management system (like [`asdf`](https://asdf-vm.com/guide/getting-started.html)), compare the output of `node --version` and install the right one if necessary
 
 3. Run `npm ci` to make sure you have the exact dependencies installed.
 
