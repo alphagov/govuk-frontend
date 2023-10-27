@@ -204,6 +204,36 @@ These changes were made in the following pull requests:
 - [#3491: Update Review app to import `govuk-frontend` via local package](https://github.com/alphagov/govuk-frontend/pull/3491)
 - [#3498: Remove built `dist` and `package` from source](https://github.com/alphagov/govuk-frontend/pull/3498)
 
+#### Update the `<script>` snippet at the top of your `<body>` tag
+
+Page templates now include a new `govuk-frontend-supported` class on the `<body>` tag when GOV.UK Frontend JavaScript components are fully supported.
+
+If you are not using our [Nunjucks page template](https://design-system.service.gov.uk/styles/page-template/), replace the existing snippet:
+
+```html
+<script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+```
+
+with:
+
+```html
+<script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+```
+
+#### Update the hash used by your Content Security Policy
+
+If your Content Security Policy uses a hash to let the snippet above run, you'll need to update it from:
+
+```
+sha256-+6WnXIl4mbFTCARd8N3COQmT3bJJmo32N8q8ZSQAIcU=
+```
+
+to:
+
+```
+sha256-GUQ5ad8JK5KmEWmROf3LZd9ge94daqNvd8xy9YS1iDw=
+```
+
 #### Check your browser console for component initialisation errors
 
 GOV.UK Frontend JavaScript components now provide errors. The following list shows the type of errors and the situations in which they occur:
