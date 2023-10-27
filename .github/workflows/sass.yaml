@@ -50,6 +50,7 @@ jobs:
         uses: actions/setup-node@v4.0.0
         with:
           cache: npm
+          check-latest: true
           node-version-file: .nvmrc # Node.js project version must support Dart Sass v1
 
       - name: Install package
@@ -102,6 +103,7 @@ jobs:
         uses: actions/setup-node@v4.0.0
         with:
           cache: npm
+          check-latest: true
           node-version-file: .nvmrc # Node.js project version must support Node Sass v8.x
 
       - name: Install package
