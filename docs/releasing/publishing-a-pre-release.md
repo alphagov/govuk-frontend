@@ -69,14 +69,14 @@ Developers should pair on pre-releases. When remote working, it can be useful to
 
     You will now be prompted to continue or cancel.
 
-10. If you're publishing a beta pre-release, create a pull request
+10. Create a pull request.
     When reviewing the PR, check that the version numbers have been updated and that the compiled assets use this version number.
-
-11. If you're publishing a beta pre-release, once a reviewer approves the pull request, merge it to **main**.
+    
+11. Once a reviewer approves the pull request, merge it to **main**.
 
 ## Publish a release to npm
 
-1. If you're publishing a beta pre-release, check out the **main** branch and pull the latest changes.
+1. Check out the **main** branch and pull the latest changes.
 
 2. Sign in to npm (`npm login`), using the credentials for the govuk-patterns-and-tools npm user from Bitwarden.
 
