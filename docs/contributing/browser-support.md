@@ -63,138 +63,57 @@ Supporting a browser involves more than considering whether JavaScript enhanceme
 - optional enhancements being available to users
 - bug prioritisation
 
-This table shows the level of support for the 3 grades of browsers (A, B and C) which run our JavaScript.
+The following information shows the level of support for the 3 grades of browsers (A, B and C) which run our JavaScript. We’ve not provided detail for Grade X browsers as we’re not supporting enhancements for them and the prioritisation for bugs is ‘will not fix’.
 
-We’ve excluded Grade X browsers from this table as we’re not supporting enhancements for them and the prioritisation for bugs is ‘will not fix’.
+## Grade A
 
-<table>
-  <tbody>
-    <tr>
-      <td></td>
-      <td>
-        <p>grade A</p>
-      </td>
-      <td>
-        <p>grade B</p>
-      </td>
-      <td>
-        <p>grade C</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>Browsers</p>
-      </td>
-      <td valign="top">
-        <p>Most recent stable versions of Chrome, Firefox, Edge, Samsung Internet and Safari</p>
-      </td>
-      <td valign="top">
-        <p>All stable versions of Chrome, Firefox and Edge released in the last 6 months</p>
-        <p></p>
-        <p>Versions of Safari listed in the Service Manual</p>
-      </td>
-      <td valign="top">
-        <p><a href="https://www.google.com/url?q=https://caniuse.com/es6-module&sa=D&source=editors&ust=1698171017326021&usg=AOvVaw1Q_pKufv4pMgLmqabJEoLX" >All browsers that support &lt;script nomodule&gt;</a></p>
-        <ul>
-          <li>Chrome 61+</li>
-          <li>Edge 16-18</li>
-          <li>Edge 79+</li>
-          <li>Safari 11+ (mac)</li>
-          <li>Firefox 60+</li>
-          <li>Opera 48+</li>
-        </ul>
-        <ul>
-          <li>Safari 10.3+ (iOS)</li>
-          <li>Samsung Internet 8.2+</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>Manual testing</p>
-      </td>
-      <td>
-        <p>Regular</p>
-      </td>
-      <td>
-        <p>If needed (old feature workaround or fallback, specific bugs)</p>
-      </td>
-      <td>
-        <p>No</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>Automated testing</p>
-      </td>
-      <td>
-        <p><span>W<span>here possible</p>
-      </td>
-      <td>
-        <p>Oldest version – where possible</p>
-      </td>
-      <td>
-        <p>No</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>JavaScript downloads and parses</p>
-      </td>
-      <td>
-        <p>Yes</p>
-      </td>
-      <td>
-        <p>Yes</p>
-      </td>
-      <td>
-        <p>Yes (also includes Safari 10.x)</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>Necessary enhancements</p>
-      </td>
-      <td>
-        <p>Work</p>
-      </td>
-      <td>
-        <p>Work</p>
-      </td>
-      <td>
-        <p>Work</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>Optional enhancements</p>
-      </td>
-      <td>
-        <p>Disabled only if needing a browser specific API</p>
-      </td>
-      <td>
-        <p>Disabled only if needing a browser specific API</p>
-      </td>
-      <td>
-        <p>Disabled based on impact of support</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>Relative priority of reported bugs</p>
-      </td>
-      <td>
-        <p>High</p>
-      </td>
-      <td>
-        <p>Low</p>
-      </td>
-      <td>
-        <p>Will not fix</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+These browsers include the most recent stable versions of Chrome, Firefox, Edge, Samsung Internet and Safari.
+
+For support we will:
+
+- do regular manual testing
+- do automated testing where possible
+- make sure our JavaScript downloads and parses correctly
+- make sure the necessary enhancements work
+- only disable optional enhancements only if needing a browser specific API
+- give a high priority to fixing reported bugs
+
+## Grade B
+
+These browsers include all stable versions of Chrome, Firefox and Edge released in the last 6 months and the last 4 releases of Safari which are not supported in Grade A.
+
+For support we will:
+
+- only do manual testing as needed (old feature workaround or fallback, specific bugs)
+- where possible, do automated testing on the oldest version
+- make sure our JavaScript downloads and parses correctly
+- make sure the necessary enhancements work
+- only disable optional enhancements only if needing a browser specific API
+- give a lower priority to fixing reported bugs
+
+## Grade C
+
+This grade covers browsers not in Grade A or B which support <script type="module">. These are:
+
+- Chrome 61+
+- Edge 16-18
+- Edge 79+
+- Safari 11 (mac)
+- Firefox 60+
+- Opera 48+
+- Safari 10.3+ (iOS)
+- Samsung Internet 8.2+
+
+Safari 10.1 also supports <script type="module"> but will 'exit early' as it does not support HTMLScriptElement.prototype.nomodule which is how we test support for <script type="module"> from within our JavaScript.
+
+For support we will:
+
+- not provide manual testing
+- not provide automated testing
+- make sure our JavaScript downloads and parses correctly (also includes Safari 10.x)
+- make sure the necessary enhancements work
+- only disable optional enhancements based on impact of support
+- not fix reported bugs
 
 ## How we rely on browser features
 
