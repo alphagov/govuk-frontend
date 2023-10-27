@@ -47,6 +47,8 @@ Developers should pair on pre-releases. When remote working, it can be useful to
    Alternatively, when publishing an update to an existing pre-release:
 
    - Use `prerelease` to bump from `v5.0.0-beta.0` to `v5.0.0-beta.1`
+   - Use `prerelease` to move from `v5.0.0-internal.X` to `v5.0.0-beta.0`.
+     Note that this resets the final number to `.0`, so prefer setting the version manually if a pre-release of the kind you're running has already gone through.
 
 6. Apply the new pre-release version number by running:
 
