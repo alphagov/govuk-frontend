@@ -354,7 +354,7 @@ If you're not using the Nunjucks macros, you'll need to remove this fallback fro
 
 You do not need to change any HTML if you're using the supplied Nunjucks macros, but you might still need to remove the `govuk-logotype-crown.png` image depending on [how you are serving the font and image assets](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#font-and-image-assets).
 
-This change was introduced in [pull request #3641: Remove fallback GOV.UK logo for IE8](https://github.com/alphagov/govuk-frontend/pull/3641.
+This change was introduced in [pull request #3641: Remove fallback GOV.UK logo for IE8](https://github.com/alphagov/govuk-frontend/pull/3641).
 
 #### Removal of Javascript polyfills for Internet Explorer (IE) 8-11
 
