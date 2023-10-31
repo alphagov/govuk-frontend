@@ -47,6 +47,13 @@ module.exports = function (api) {
           // Add logging for required polyfills
           debug: isProduction,
 
+          // Browser support polyfills to exclude
+          exclude: [
+            // ES2022 Error cause is unused
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/cause
+            'es.error.cause'
+          ],
+
           // Replace unsupported code with polyfills
           method: 'usage-global',
           version: pkg.devDependencies['core-js']
