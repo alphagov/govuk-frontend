@@ -24,7 +24,7 @@ describe('Skip Link', () => {
     })
 
     it('adds the tabindex attribute to the linked element', async () => {
-      const tabindex = await page.$eval('.govuk-main-wrapper', (el) =>
+      const tabindex = await page.$eval('#content', (el) =>
         el.getAttribute('tabindex')
       )
 
@@ -32,7 +32,7 @@ describe('Skip Link', () => {
     })
 
     it('adds the class for removing the native focus style to the linked element', async () => {
-      const cssClass = await page.$eval('.govuk-main-wrapper', (el) =>
+      const cssClass = await page.$eval('#content', (el) =>
         el.classList.contains('govuk-skip-link-focused-element')
       )
 
@@ -41,11 +41,11 @@ describe('Skip Link', () => {
 
     it('removes the tabindex attribute from the linked element on blur', async () => {
       await page.$eval(
-        '.govuk-main-wrapper',
+        '#content',
         (el) => el instanceof window.HTMLElement && el.blur()
       )
 
-      const tabindex = await page.$eval('.govuk-main-wrapper', (el) =>
+      const tabindex = await page.$eval('#content', (el) =>
         el.getAttribute('tabindex')
       )
 
@@ -54,11 +54,11 @@ describe('Skip Link', () => {
 
     it('removes the class for removing the native focus style from the linked element on blur', async () => {
       await page.$eval(
-        '.govuk-main-wrapper',
+        '#content',
         (el) => el instanceof window.HTMLElement && el.blur()
       )
 
-      const cssClass = await page.$eval('.govuk-main-wrapper', (el) =>
+      const cssClass = await page.$eval('#content', (el) =>
         el.getAttribute('class')
       )
 
