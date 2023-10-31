@@ -168,9 +168,8 @@ describe('/components/accordion', () => {
             .getAttribute('aria-expanded')
         }, sectionHeaderButton)
 
-        await page.reload({
-          waitUntil: 'load'
-        })
+        // Render again to simulate page refresh
+        await render(page, 'accordion', examples.default)
 
         const expandedStateAfterRefresh = await page.evaluate(
           (sectionHeaderButton) => {
@@ -198,9 +197,8 @@ describe('/components/accordion', () => {
             .getAttribute('aria-expanded')
         }, sectionHeaderButton)
 
-        await page.reload({
-          waitUntil: 'load'
-        })
+        // Render again to simulate page refresh
+        await render(page, 'accordion', examples['with remember expanded off'])
 
         const expandedStateAfterRefresh = await page.evaluate(
           (sectionHeaderButton) => {
