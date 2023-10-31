@@ -1,10 +1,16 @@
-const { goToExample, render } = require('@govuk-frontend/helpers/puppeteer')
+const { render } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
 describe('Skip Link', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('skip-link')
+  })
+
   describe('/examples/template-default', () => {
     beforeAll(async () => {
-      await goToExample(page, 'template-default')
+      await render(page, 'skip-link', examples.default)
       await page.keyboard.press('Tab')
       await page.keyboard.press('Enter')
     })
@@ -59,12 +65,6 @@ describe('Skip Link', () => {
   })
 
   describe('errors at instantiation', () => {
-    let examples
-
-    beforeAll(async () => {
-      examples = await getExamples('skip-link')
-    })
-
     it('throws when GOV.UK Frontend is not supported', async () => {
       await expect(
         render(page, 'skip-link', examples.default, {

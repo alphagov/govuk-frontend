@@ -1,4 +1,4 @@
-const { goToComponent, render } = require('@govuk-frontend/helpers/puppeteer')
+const { render } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
 describe('/components/button', () => {
@@ -16,9 +16,7 @@ describe('/components/button', () => {
 
   describe('/components/button/link', () => {
     beforeAll(async () => {
-      await goToComponent(page, 'button', {
-        exampleName: 'link'
-      })
+      await render(page, 'button', examples.link)
     })
 
     it('triggers the click event when the space key is pressed', async () => {
@@ -97,8 +95,7 @@ describe('/components/button', () => {
       let $button
 
       beforeEach(async () => {
-        await goToComponent(page, 'button')
-
+        await render(page, 'button', examples.default)
         $button = await setButtonTracking(await page.$('button'))
       })
 
@@ -118,10 +115,7 @@ describe('/components/button', () => {
       let $button
 
       beforeEach(async () => {
-        await goToComponent(page, 'button', {
-          exampleName: 'prevent-double-click'
-        })
-
+        await render(page, 'button', examples['prevent double click'])
         $button = await setButtonTracking(await page.$('button'))
       })
 

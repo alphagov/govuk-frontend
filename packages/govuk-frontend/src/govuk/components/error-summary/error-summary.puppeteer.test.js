@@ -1,8 +1,4 @@
-const {
-  goToComponent,
-  goToExample,
-  render
-} = require('@govuk-frontend/helpers/puppeteer')
+const { goToExample, render } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
 describe('Error Summary', () => {
@@ -13,23 +9,28 @@ describe('Error Summary', () => {
   })
 
   it('adds the tabindex attribute on page load', async () => {
-    await goToComponent(page, 'error-summary')
+    await render(page, 'error-summary', examples.default)
+
     const tabindex = await page.$eval('.govuk-error-summary', (el) =>
       el.getAttribute('tabindex')
     )
+
     expect(tabindex).toEqual('-1')
   })
 
   it('is automatically focused when the page loads', async () => {
-    await goToComponent(page, 'error-summary')
+    await render(page, 'error-summary', examples.default)
+
     const moduleName = await page.evaluate(() =>
       document.activeElement.getAttribute('data-module')
     )
+
     expect(moduleName).toBe('govuk-error-summary')
   })
 
   it('removes the tabindex attribute on blur', async () => {
-    await goToComponent(page, 'error-summary')
+    await render(page, 'error-summary', examples.default)
+
     await page.$eval(
       '.govuk-error-summary',
       (el) => el instanceof window.HTMLElement && el.blur()
@@ -38,15 +39,14 @@ describe('Error Summary', () => {
     const tabindex = await page.$eval('.govuk-error-summary', (el) =>
       el.getAttribute('tabindex')
     )
+
     expect(tabindex).toBeNull()
   })
 
   describe('when auto-focus is disabled', () => {
     describe('using data-attributes', () => {
       beforeAll(async () => {
-        await goToComponent(page, 'error-summary', {
-          exampleName: 'autofocus-disabled'
-        })
+        await render(page, 'error-summary', examples['autofocus disabled'])
       })
 
       it('does not have a tabindex attribute', async () => {
