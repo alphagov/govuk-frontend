@@ -16,9 +16,11 @@ describe('Skip Link', () => {
     })
 
     it('focuses the linked element', async () => {
-      const activeElement = await page.evaluate(() => document.activeElement.id)
+      const activeElementId = await page.evaluate(
+        () => document.activeElement.id
+      )
 
-      expect(activeElement).toBe('main-content')
+      expect(activeElementId).toBe('content')
     })
 
     it('adds the tabindex attribute to the linked element', async () => {
