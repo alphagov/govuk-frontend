@@ -1,5 +1,4 @@
 const {
-  goToComponent,
   goToExample,
   render,
   getAccessibleName
@@ -7,6 +6,12 @@ const {
 const { getExamples } = require('@govuk-frontend/lib/components')
 
 describe('/components/accordion', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('accordion')
+  })
+
   describe('/components/accordion/preview', () => {
     describe('when JavaScript is unavailable or fails', () => {
       beforeAll(async () => {
@@ -18,7 +23,7 @@ describe('/components/accordion', () => {
       })
 
       it('falls back to making all accordion sections visible', async () => {
-        await goToComponent(page, 'accordion')
+        await render(page, 'accordion', examples.default)
 
         const numberOfExampleSections = 2
 
@@ -34,7 +39,7 @@ describe('/components/accordion', () => {
       })
 
       it('does not display "↓/↑" in the section headings', async () => {
-        await goToComponent(page, 'accordion')
+        await render(page, 'accordion', examples.default)
 
         const numberOfIcons = await page.evaluate(
           () =>
@@ -53,7 +58,7 @@ describe('/components/accordion', () => {
       })
 
       it('should indicate that the sections are not expanded', async () => {
-        await goToComponent(page, 'accordion')
+        await render(page, 'accordion', examples.default)
 
         const numberOfExampleSections = 2
 
@@ -73,7 +78,7 @@ describe('/components/accordion', () => {
       })
 
       it('should change the Show all sections button to Hide all sections when both sections are opened', async () => {
-        await goToComponent(page, 'accordion')
+        await render(page, 'accordion', examples.default)
 
         await page.click(
           '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header'
@@ -93,7 +98,7 @@ describe('/components/accordion', () => {
       })
 
       it('should open both sections when the Show all sections button is clicked', async () => {
-        await goToComponent(page, 'accordion')
+        await render(page, 'accordion', examples.default)
 
         await page.click('.govuk-accordion__show-all')
 
@@ -119,9 +124,11 @@ describe('/components/accordion', () => {
       })
 
       it('should already have all sections open if they have the expanded class', async () => {
-        await goToComponent(page, 'accordion', {
-          exampleName: 'with-all-sections-already-open'
-        })
+        await render(
+          page,
+          'accordion',
+          examples['with all sections already open']
+        )
 
         const numberOfExampleSections = 2
 
@@ -152,7 +159,7 @@ describe('/components/accordion', () => {
         const sectionHeaderButton =
           '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-button'
 
-        await goToComponent(page, 'accordion')
+        await render(page, 'accordion', examples.default)
         await page.click(sectionHeaderButton)
 
         const expandedState = await page.evaluate((sectionHeaderButton) => {
@@ -181,9 +188,8 @@ describe('/components/accordion', () => {
         const sectionHeaderButton =
           '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-button'
 
-        await goToComponent(page, 'accordion', {
-          exampleName: 'with-remember-expanded-off'
-        })
+        await render(page, 'accordion', examples['with remember expanded off'])
+
         await page.click(sectionHeaderButton)
 
         const expandedState = await page.evaluate((sectionHeaderButton) => {
@@ -209,7 +215,7 @@ describe('/components/accordion', () => {
       })
 
       it('should transform the button span to <button>', async () => {
-        await goToComponent(page, 'accordion')
+        await render(page, 'accordion', examples.default)
 
         const buttonTag = await page.evaluate(
           () =>
@@ -222,7 +228,7 @@ describe('/components/accordion', () => {
       })
 
       it('should contain a heading text container', async () => {
-        await goToComponent(page, 'accordion')
+        await render(page, 'accordion', examples.default)
 
         const headingTextContainer = await page.evaluate(() =>
           document.body.querySelector(
@@ -235,7 +241,7 @@ describe('/components/accordion', () => {
 
       describe('focus containers', () => {
         it('should contain a heading text focus container', async () => {
-          await goToComponent(page, 'accordion')
+          await render(page, 'accordion', examples.default)
 
           const headingTextFocusContainer = await page.evaluate(() =>
             document.body.querySelector(
@@ -246,9 +252,11 @@ describe('/components/accordion', () => {
           expect(headingTextFocusContainer).toBeTruthy()
         })
         it('should contain a summary focus container', async () => {
-          await goToComponent(page, 'accordion', {
-            exampleName: 'with-additional-descriptions'
-          })
+          await render(
+            page,
+            'accordion',
+            examples['with additional descriptions']
+          )
 
           const summaryFocusContainer = await page.evaluate(() =>
             document.body.querySelector(
@@ -259,7 +267,7 @@ describe('/components/accordion', () => {
           expect(summaryFocusContainer).toBeTruthy()
         })
         it('should contain a show/hide focus container', async () => {
-          await goToComponent(page, 'accordion')
+          await render(page, 'accordion', examples.default)
 
           const headingTextFocusContainer = await page.evaluate(() =>
             document.body.querySelector(
@@ -273,7 +281,7 @@ describe('/components/accordion', () => {
 
       describe('"↓/↑" icon', () => {
         it('should display "↓/↑" in the section headings', async () => {
-          await goToComponent(page, 'accordion')
+          await render(page, 'accordion', examples.default)
 
           const numberOfExampleSections = 2
           const numberOfIcons = await page.evaluate(
@@ -289,7 +297,7 @@ describe('/components/accordion', () => {
 
       describe('hidden comma', () => {
         it('should contain hidden comma " ," after the heading text for when CSS does not load', async () => {
-          await goToComponent(page, 'accordion')
+          await render(page, 'accordion', examples.default)
 
           const commaAfterHeadingTextClassName = await page.evaluate(
             () =>
@@ -313,9 +321,11 @@ describe('/components/accordion', () => {
         })
 
         it('should contain hidden comma " ," after the summary line for when CSS does not load', async () => {
-          await goToComponent(page, 'accordion', {
-            exampleName: 'with-additional-descriptions'
-          })
+          await render(
+            page,
+            'accordion',
+            examples['with additional descriptions']
+          )
 
           const commaAfterHeadingTextClassName = await page.evaluate(
             () =>
@@ -340,9 +350,11 @@ describe('/components/accordion', () => {
       describe('summary line', () => {
         describe('location of summary', () => {
           it('should move the additional description to the button text in the correct order', async () => {
-            await goToComponent(page, 'accordion', {
-              exampleName: 'with-additional-descriptions'
-            })
+            await render(
+              page,
+              'accordion',
+              examples['with additional descriptions']
+            )
 
             const summaryClass = 'govuk-accordion__section-summary govuk-body'
             const firstSummaryElement = await page.evaluate(
@@ -357,9 +369,11 @@ describe('/components/accordion', () => {
 
         describe('div to span', () => {
           it('should have converted the div to a span tag', async () => {
-            await goToComponent(page, 'accordion', {
-              exampleName: 'with-additional-descriptions'
-            })
+            await render(
+              page,
+              'accordion',
+              examples['with additional descriptions']
+            )
 
             const firstSummaryElement = await page.evaluate(
               () =>
@@ -374,7 +388,7 @@ describe('/components/accordion', () => {
       })
 
       it('should change the Show text to Hide when sections are opened', async () => {
-        await goToComponent(page, 'accordion')
+        await render(page, 'accordion', examples.default)
         await page.click(
           '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header'
         )
@@ -392,7 +406,7 @@ describe('/components/accordion', () => {
       })
 
       it('should have a data-nosnippet attribute on the "Show / hide" container to hide it from search result snippets', async () => {
-        await goToComponent(page, 'accordion')
+        await render(page, 'accordion', examples.default)
 
         const dataNoSnippetAttribute = await page.evaluate(() =>
           document.body
@@ -405,7 +419,7 @@ describe('/components/accordion', () => {
 
       describe('accessible name', () => {
         it('Should set the accessible name of the show/hide section buttons', async () => {
-          await goToComponent(page, 'accordion')
+          await render(page, 'accordion', examples.default)
 
           const $element = await page.$('.govuk-accordion__section-button')
 
@@ -421,9 +435,11 @@ describe('/components/accordion', () => {
         })
 
         it('Includes the heading summary', async () => {
-          await goToComponent(page, 'accordion', {
-            exampleName: 'with-additional-descriptions'
-          })
+          await render(
+            page,
+            'accordion',
+            examples['with additional descriptions']
+          )
 
           const $element = await page.$('.govuk-accordion__section-button')
 
@@ -441,7 +457,7 @@ describe('/components/accordion', () => {
 
       describe('expandable content', () => {
         it('should have an aria-labelledby that matches the heading text ID', async () => {
-          await goToComponent(page, 'accordion')
+          await render(page, 'accordion', examples.default)
 
           const ariaLabelledByValue = await page.evaluate(() =>
             document.body
@@ -461,9 +477,7 @@ describe('/components/accordion', () => {
 
       describe('localisation', () => {
         it('should localise "Show all sections" based on data attribute', async () => {
-          await goToComponent(page, 'accordion', {
-            exampleName: 'with-translations'
-          })
+          await render(page, 'accordion', examples['with translations'])
 
           const showAllSectionsDataAttribute = await page.evaluate(() =>
             document.body
@@ -492,9 +506,7 @@ describe('/components/accordion', () => {
         })
 
         it('should localise "Hide all sections" based on data attribute', async () => {
-          await goToComponent(page, 'accordion', {
-            exampleName: 'with-translations'
-          })
+          await render(page, 'accordion', examples['with translations'])
           await page.click(
             '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header'
           )
@@ -530,9 +542,7 @@ describe('/components/accordion', () => {
         })
 
         it('should localise "Show section" based on data attribute', async () => {
-          await goToComponent(page, 'accordion', {
-            exampleName: 'with-translations'
-          })
+          await render(page, 'accordion', examples['with translations'])
 
           const showSectionDataAttribute = await page.evaluate(() =>
             document.body
@@ -563,9 +573,7 @@ describe('/components/accordion', () => {
         })
 
         it('should localise "Show section" aria-label based on data attribute', async () => {
-          await goToComponent(page, 'accordion', {
-            exampleName: 'with-translations'
-          })
+          await render(page, 'accordion', examples['with translations'])
 
           const showSectionDataAttribute = await page.evaluate(() =>
             document.body
@@ -598,9 +606,7 @@ describe('/components/accordion', () => {
         })
 
         it('should localise "Hide section" based on data attribute', async () => {
-          await goToComponent(page, 'accordion', {
-            exampleName: 'with-translations'
-          })
+          await render(page, 'accordion', examples['with translations'])
           await page.click(
             '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header'
           )
@@ -637,9 +643,7 @@ describe('/components/accordion', () => {
         })
 
         it('should localise "Hide section" aria-label based on data attribute', async () => {
-          await goToComponent(page, 'accordion', {
-            exampleName: 'with-translations'
-          })
+          await render(page, 'accordion', examples['with translations'])
           await page.click(
             '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header'
           )
@@ -678,12 +682,6 @@ describe('/components/accordion', () => {
         })
 
         describe('Cross Side Scripting prevention', () => {
-          let examples
-
-          beforeAll(async () => {
-            examples = await getExamples('accordion')
-          })
-
           it('injects the localised strings as text not HTML', async () => {
             await render(page, 'accordion', examples.default, {
               config: {
