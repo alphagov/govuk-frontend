@@ -324,8 +324,6 @@ examples:
           status:
             tag:
               text: Status
-              attributes:
-                data-tag-attribute: tag-value
 
   - name: custom id prefix
     hidden: true
