@@ -1,3 +1,5 @@
+const { setTimeout } = require('timers/promises')
+
 const { goToExample, render } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
@@ -182,7 +184,7 @@ describe('/components/exit-this-page', () => {
         await page.keyboard.press('Shift')
 
         // Wait for 6 seconds (one full second over the 5 second limit)
-        await new Promise((resolve) => setTimeout(resolve, 6000))
+        await setTimeout(6000)
 
         const message = await page.$eval(buttonClass, (el) =>
           el.nextElementSibling.innerHTML.trim()

@@ -1,3 +1,5 @@
+const { setTimeout } = require('timers/promises')
+
 const { render } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
@@ -110,7 +112,7 @@ describe('Character count', () => {
         expect(message).toEqual('You have 9 characters remaining')
 
         // Wait for debounced update to happen
-        await new Promise((resolve) => setTimeout(resolve, debouncedWaitTime))
+        await setTimeout(debouncedWaitTime)
 
         const srMessage = await page.$eval(
           '.govuk-character-count__sr-status',
@@ -133,7 +135,7 @@ describe('Character count', () => {
         expect(message).toEqual('You have 1 character remaining')
 
         // Wait for debounced update to happen
-        await new Promise((resolve) => setTimeout(resolve, debouncedWaitTime))
+        await setTimeout(debouncedWaitTime)
 
         const srMessage = await page.$eval(
           '.govuk-character-count__sr-status',
@@ -159,7 +161,7 @@ describe('Character count', () => {
           expect(message).toEqual('You have 1 character too many')
 
           // Wait for debounced update to happen
-          await new Promise((resolve) => setTimeout(resolve, debouncedWaitTime))
+          await setTimeout(debouncedWaitTime)
 
           const srMessage = await page.$eval(
             '.govuk-character-count__sr-status',
@@ -180,7 +182,7 @@ describe('Character count', () => {
           expect(message).toEqual('You have 2 characters too many')
 
           // Wait for debounced update to happen
-          await new Promise((resolve) => setTimeout(resolve, debouncedWaitTime))
+          await setTimeout(debouncedWaitTime)
 
           const srMessage = await page.$eval(
             '.govuk-character-count__sr-status',
@@ -259,7 +261,7 @@ describe('Character count', () => {
           expect(visibility).toEqual('hidden')
 
           // Wait for debounced update to happen
-          await new Promise((resolve) => setTimeout(resolve, debouncedWaitTime))
+          await setTimeout(debouncedWaitTime)
 
           // Ensure threshold is hidden for users of assistive technologies
           const ariaHidden = await page.$eval(
@@ -281,7 +283,7 @@ describe('Character count', () => {
           expect(visibility).toEqual('visible')
 
           // Wait for debounced update to happen
-          await new Promise((resolve) => setTimeout(resolve, debouncedWaitTime))
+          await setTimeout(debouncedWaitTime)
 
           // Ensure threshold is visible for users of assistive technologies
           const ariaHidden = await page.$eval(
@@ -390,7 +392,7 @@ describe('Character count', () => {
         expect(message).toEqual('You have 8 words remaining')
 
         // Wait for debounced update to happen
-        await new Promise((resolve) => setTimeout(resolve, debouncedWaitTime))
+        await setTimeout(debouncedWaitTime)
 
         const srMessage = await page.$eval(
           '.govuk-character-count__sr-status',
@@ -439,7 +441,7 @@ describe('Character count', () => {
           expect(message).toEqual('You have 1 word too many')
 
           // Wait for debounced update to happen
-          await new Promise((resolve) => setTimeout(resolve, debouncedWaitTime))
+          await setTimeout(debouncedWaitTime)
 
           const srMessage = await page.$eval(
             '.govuk-character-count__sr-status',
@@ -460,7 +462,7 @@ describe('Character count', () => {
           expect(message).toEqual('You have 2 words too many')
 
           // Wait for debounced update to happen
-          await new Promise((resolve) => setTimeout(resolve, debouncedWaitTime))
+          await setTimeout(debouncedWaitTime)
 
           const srMessage = await page.$eval(
             '.govuk-character-count__sr-status',
