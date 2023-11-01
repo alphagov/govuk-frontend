@@ -1,6 +1,6 @@
 {% from "../button/macro.njk" import govukButton -%}
 
-<div class="govuk-cookie-banner {{ params.classes if params.classes }}" data-nosnippet role="region" aria-label="{{ params.ariaLabel | default("Cookie banner", true) }}"
+<div class="govuk-cookie-banner {%- if params.classes %} {{ params.classes }}{% endif %}" data-nosnippet role="region" aria-label="{{ params.ariaLabel | default("Cookie banner", true) }}"
   {%- if params.hidden %} hidden{% endif %}
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
 
