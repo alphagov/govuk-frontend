@@ -15,9 +15,6 @@ module.exports = {
     // Allow pattern attribute on input type="number"
     'input-attributes': 'off',
 
-    // Allow for conditional comments (used in header for fallback png)
-    'no-conditional-comment': 'off',
-
     // Allow inline styles for testing purposes
     'no-inline-style': 'off',
 
