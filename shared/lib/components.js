@@ -155,7 +155,8 @@ function render(componentName, options) {
   const macroName = componentNameToMacroName(componentName)
   const macroPath = `govuk/components/${componentName}/macro.njk`
 
-  return renderMacro(macroName, macroPath, options)
+  // Return built fixture or render
+  return options?.fixture?.html ?? renderMacro(macroName, macroPath, options)
 }
 
 /**
