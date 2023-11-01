@@ -696,7 +696,7 @@ examples:
     options:
       name: example-name
       fieldset:
-        describedBy: some-id
+        describedBy: content
         legend:
           text: Which option?
       items:
@@ -804,7 +804,7 @@ examples:
       errorMessage:
         text: Please select an option
       fieldset:
-        describedBy: some-id
+        describedBy: content
         legend:
           text: What is your nationality?
       hint:
@@ -858,7 +858,7 @@ examples:
   - name: with single option set 'aria-describedby' on input, and describedBy
     hidden: true
     options:
-      describedBy: some-id
+      describedBy: content
       name: t-and-c
       errorMessage:
         text: Please accept the terms and conditions
@@ -868,7 +868,7 @@ examples:
   - name: with single option (and hint) set 'aria-describedby' on input, and describedBy
     hidden: true
     options:
-      describedBy: some-id
+      describedBy: content
       name: t-and-c-with-hint
       errorMessage:
         text: Please accept the terms and conditions
@@ -894,7 +894,7 @@ examples:
       errorMessage:
         text: Please select an option
       fieldset:
-        describedBy: some-id
+        describedBy: content
         legend:
           text: What is your nationality?
       items:

@@ -206,7 +206,7 @@ function renderPreview(componentName, options) {
       footer: '',
 
       main: outdent`
-        <div class="govuk-width-container">
+        <div id="content" class="govuk-width-container">
           ${render(componentName, options)}
         </div>
       `,

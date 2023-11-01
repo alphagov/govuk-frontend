@@ -126,7 +126,7 @@ examples:
       name: file-upload-describedby
       label:
         text: Upload a file
-      describedBy: some-id
+      describedBy: content
   - name: with hint and describedBy
     hidden: true
     options:
@@ -134,7 +134,7 @@ examples:
       name: file-upload-hint-describedby
       label:
         text: Upload a file
-      describedBy: some-id
+      describedBy: content
       hint:
         text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
   - name: error
@@ -153,7 +153,7 @@ examples:
       name: file-upload-error-describedby
       label:
         text: Upload a file
-      describedBy: some-id
+      describedBy: content
       errorMessage:
         text: Error message
   - name: with error, describedBy and hint
@@ -163,7 +163,7 @@ examples:
       name: file-upload-error-describedby-hint
       label:
         text: Upload a file
-      describedBy: some-id
+      describedBy: content
       errorMessage:
         text: Error message
       hint:

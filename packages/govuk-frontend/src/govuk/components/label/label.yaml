@@ -93,7 +93,7 @@ examples:
   - name: for
     hidden: true
     options:
-      for: '#dummy-input'
+      for: content
       text: National Insurance number
   - name: attributes
     hidden: true
