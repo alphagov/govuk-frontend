@@ -113,7 +113,7 @@ examples:
   - name: with describedBy
     hidden: true
     options:
-      describedBy: some-id
+      describedBy: content
       legend:
         text: Which option?
   - name: html as text

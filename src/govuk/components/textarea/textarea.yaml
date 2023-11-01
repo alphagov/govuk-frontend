@@ -175,7 +175,7 @@ examples:
       name: with-describedby
       label:
         text: With describedBy
-      describedBy: some-id
+      describedBy: content
   - name: with hint and described by
     hidden: true
     options:
@@ -183,7 +183,7 @@ examples:
       name: with-hint-describedby
       label:
         text: With hint and describedBy
-      describedBy: some-id
+      describedBy: content
       hint:
         text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
   - name: with error message and described by
@@ -192,7 +192,7 @@ examples:
       name: textarea-with-error
       label:
         text: Textarea with error
-      describedBy: some-id
+      describedBy: content
       id: textarea-with-error
       errorMessage:
         text: Error message
@@ -214,7 +214,7 @@ examples:
       name: with-hint-error-describedby
       label:
         text: With hint, error and describedBy
-      describedBy: some-id
+      describedBy: content
       errorMessage:
         text: Error message
       hint:

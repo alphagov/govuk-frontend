@@ -206,7 +206,7 @@ describe('Date input', () => {
       const hintId = $('.govuk-hint').attr('id')
 
       const describedBy = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${hintId}${WORD_BOUNDARY}`
+        `${WORD_BOUNDARY}content${WHITESPACE}${hintId}${WORD_BOUNDARY}`
       )
 
       expect($fieldset.attr('aria-describedby')).toMatch(describedBy)
@@ -246,7 +246,7 @@ describe('Date input', () => {
       const $fieldset = $('.govuk-fieldset')
 
       expect($fieldset.attr('aria-describedby')).toMatch(
-        'some-id dob-errors-error'
+        'content dob-errors-error'
       )
     })
 

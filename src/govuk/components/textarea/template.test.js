@@ -68,7 +68,7 @@ describe('Textarea', () => {
       const $ = render('textarea', examples['with describedBy'])
 
       const $component = $('.govuk-textarea')
-      expect($component.attr('aria-describedby')).toMatch('some-id')
+      expect($component.attr('aria-describedby')).toMatch('content')
     })
 
     it('renders with rows', () => {
@@ -136,7 +136,7 @@ describe('Textarea', () => {
       const hintId = $('.govuk-hint').attr('id')
 
       const describedBy = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${hintId}${WORD_BOUNDARY}`
+        `${WORD_BOUNDARY}content${WHITESPACE}${hintId}${WORD_BOUNDARY}`
       )
 
       expect($textarea.attr('aria-describedby')).toMatch(describedBy)
@@ -173,7 +173,7 @@ describe('Textarea', () => {
       const errorMessageId = $('.govuk-error-message').attr('id')
 
       const describedBy = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
+        `${WORD_BOUNDARY}content${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
       expect($component.attr('aria-describedby')).toMatch(describedBy)
@@ -220,7 +220,7 @@ describe('Textarea', () => {
       const hintId = $('.govuk-hint').attr('id')
 
       const describedByCombined = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
+        `${WORD_BOUNDARY}content${WHITESPACE}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
       expect($component.attr('aria-describedby')).toMatch(describedByCombined)
