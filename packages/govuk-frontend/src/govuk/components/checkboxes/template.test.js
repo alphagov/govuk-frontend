@@ -82,7 +82,7 @@ describe('Checkboxes', () => {
     const $ = render('checkboxes', examples['with fieldset describedBy'])
 
     const $fieldset = $('.govuk-fieldset')
-    expect($fieldset.attr('aria-describedby')).toMatch('some-id')
+    expect($fieldset.attr('aria-describedby')).toMatch('content')
   })
 
   it('render attributes', () => {
@@ -404,7 +404,7 @@ describe('Checkboxes', () => {
       const errorMessageId = $('.govuk-error-message').attr('id')
 
       const describedBy = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
+        `${WORD_BOUNDARY}content${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
       expect($fieldset.attr('aria-describedby')).toMatch(describedBy)
@@ -461,7 +461,7 @@ describe('Checkboxes', () => {
       const hintId = $('.govuk-hint').attr('id')
 
       const describedBy = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${hintId}${WORD_BOUNDARY}`
+        `${WORD_BOUNDARY}content${WHITESPACE}${hintId}${WORD_BOUNDARY}`
       )
 
       expect($fieldset.attr('aria-describedby')).toMatch(describedBy)
@@ -495,7 +495,7 @@ describe('Checkboxes', () => {
       const errorMessageId = $('.govuk-error-message').attr('id')
 
       const describedByCombined = new RegExp(
-        `${WORD_BOUNDARY}some-id${WHITESPACE}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
+        `${WORD_BOUNDARY}content${WHITESPACE}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
       expect($fieldset.attr('aria-describedby')).toMatch(describedByCombined)
@@ -548,7 +548,7 @@ describe('Checkboxes', () => {
       const $ = render('checkboxes', examples[exampleName])
       const $input = $('input')
 
-      expect($input.attr('aria-describedby')).toMatch('some-id t-and-c-error')
+      expect($input.attr('aria-describedby')).toMatch('content t-and-c-error')
     })
   })
 
@@ -573,7 +573,7 @@ describe('Checkboxes', () => {
       const $input = $('input')
 
       expect($input.attr('aria-describedby')).toMatch(
-        'some-id t-and-c-with-hint-error t-and-c-with-hint-item-hint'
+        'content t-and-c-with-hint-error t-and-c-with-hint-item-hint'
       )
     })
   })

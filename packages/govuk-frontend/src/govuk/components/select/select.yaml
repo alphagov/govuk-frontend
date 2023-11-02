@@ -197,7 +197,7 @@ examples:
           text: GOV.UK frontend option 1
         - value: 2
           text: GOV.UK frontend option 2
-      describedBy: some-id
+      describedBy: content
   - name: attributes
     hidden: true
     options:
@@ -262,7 +262,7 @@ examples:
       name: select-with-hint
       label:
         text: Label text goes here
-      describedBy: some-id
+      describedBy: content
       hint:
         text: Hint text goes here
       items:
@@ -291,7 +291,7 @@ examples:
       name: select-with-error
       label:
         text: Label text goes here
-      describedBy: some-id
+      describedBy: content
       errorMessage:
         text: Error message
       items:

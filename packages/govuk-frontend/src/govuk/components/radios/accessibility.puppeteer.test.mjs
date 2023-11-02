@@ -1,4 +1,4 @@
-import { axe, goToComponent } from '@govuk-frontend/helpers/puppeteer'
+import { axe, render } from '@govuk-frontend/helpers/puppeteer'
 import { getExamples } from '@govuk-frontend/lib/components'
 
 describe('/components/radios', () => {
@@ -16,16 +16,11 @@ describe('/components/radios', () => {
   })
 
   describe('component examples', () => {
-    let exampleNames
-
-    beforeAll(async () => {
-      exampleNames = Object.keys(await getExamples('radios'))
-    })
-
     it('passes accessibility tests', async () => {
-      for (const exampleName of exampleNames) {
-        // Navigation to example, create report
-        await goToComponent(page, 'radios', { exampleName })
+      const examples = await getExamples('radios')
+
+      for (const exampleName in examples) {
+        await render(page, 'radios', examples[exampleName])
         await expect(axe(page, axeRules)).resolves.toHaveNoViolations()
       }
     }, 120000)

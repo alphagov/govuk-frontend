@@ -55,7 +55,22 @@ async function axe(page, overrides = {}) {
 
   // Add preview URL to report violations
   report.violations.forEach((violation) => {
-    violation.helpUrl = `${violation.helpUrl}\n${page.url()}`
+    const { pathname } = new URL(page.url())
+
+    // Replace file:// URLs with Review app
+    const previewUrl = new URL(pathname, urls.app)
+
+    /**
+     * Add Review app preview URL below link to violation
+     *
+     * @example
+     * ```console
+     * You can find more information on this issue here:
+     * https://dequeuniversity.com/rules/axe/4.8/aria-allowed-attr?application=axe-puppeteer
+     * http://localhost:8080/components/radios/with-conditional-items/preview
+     * ```
+     */
+    violation.helpUrl += `\n${previewUrl}`
   })
 
   return report
@@ -64,9 +79,8 @@ async function axe(page, overrides = {}) {
 /**
  * Render component HTML with browser preview
  *
- * Renders a component's Nunjucks macro with the given params, injects it into
- * the test boilerplate page, and instantiates the component class, passing the
- * provided JavaScript configuration.
+ * Uses Nunjucks component {@link renderPreview} for HTML output, but runs
+ * component JavaScript (where available) or `initAll()` in the browser
  *
  * It runs an optional `beforeInitialisation` function before initialising the
  * components, allowing to tweak the state of the page before the component gets
@@ -128,9 +142,18 @@ async function render(page, componentName, renderOptions, browserOptions) {
   // property, which means we get a mangled value). As a workaround, we can
   // gather and `return` the values we need from inside the browser
   try {
+    if (!page.isJavaScriptEnabled()) {
+      return page
+    }
+
     const error = await page.evaluate(
       async (selector, exportName, config) => {
         const namespace = await import('govuk-frontend')
+
+        // Skip custom initialisation without export
+        if (!namespace[exportName]) {
+          return namespace.initAll()
+        }
 
         // Find all matching modules
         const $modules = document.querySelectorAll(selector)

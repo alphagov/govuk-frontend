@@ -155,7 +155,8 @@ function render(componentName, options) {
   const macroName = componentNameToMacroName(componentName)
   const macroPath = `govuk/components/${componentName}/macro.njk`
 
-  return renderMacro(macroName, macroPath, options)
+  // Return built fixture or render
+  return options?.fixture?.html ?? renderMacro(macroName, macroPath, options)
 }
 
 /**
@@ -183,6 +184,9 @@ function renderMacro(macroName, macroPath, options) {
 /**
  * Render component preview on boilerplate page
  *
+ * Uses {@link renderTemplate} with the default `govuk/template.njk` to
+ * render components via {@link render} into the `main` content block
+ *
  * @param {string} componentName - Component name
  * @param {MacroRenderOptions} [options] - Nunjucks macro render options
  * @returns {string} HTML rendered from the Nunjucks template
@@ -206,7 +210,7 @@ function renderPreview(componentName, options) {
       footer: '',
 
       main: outdent`
-        <div class="govuk-width-container">
+        <div id="content" class="govuk-width-container">
           ${render(componentName, options)}
         </div>
       `,

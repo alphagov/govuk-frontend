@@ -1,18 +1,16 @@
-import { axe, goToComponent } from '@govuk-frontend/helpers/puppeteer'
+import { axe, render } from '@govuk-frontend/helpers/puppeteer'
 import { getExamples } from '@govuk-frontend/lib/components'
 
 describe('/components/tabs', () => {
   describe('component examples', () => {
-    let exampleNames
-
-    beforeAll(async () => {
-      exampleNames = Object.keys(await getExamples('tabs'))
-    })
-
     it('passes accessibility tests', async () => {
-      for (const exampleName of exampleNames) {
-        // Navigation to example, create report
-        await goToComponent(page, 'tabs', { exampleName })
+      const examples = await getExamples('tabs')
+
+      for (const exampleName in examples) {
+        await render(page, 'tabs', examples[exampleName])
+          // Log errors for invalid examples
+          .catch(({ message }) => console.warn(message))
+
         await expect(axe(page)).resolves.toHaveNoViolations()
       }
     }, 120000)
