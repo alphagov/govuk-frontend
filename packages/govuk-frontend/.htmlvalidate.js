@@ -15,8 +15,14 @@ module.exports = {
     // Allow pattern attribute on input type="number"
     'input-attributes': 'off',
 
+    // Require input to have a label
+    'input-missing-label': 'error',
+
     // Allow inline styles for testing purposes
     'no-inline-style': 'off',
+
+    // Require all form field and ARIA references to exist
+    'no-missing-references': 'error',
 
     // Allow for explicit roles on regions that have implict roles
     // We do this to better support AT with older versions of IE that
