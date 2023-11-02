@@ -184,6 +184,9 @@ function renderMacro(macroName, macroPath, options) {
 /**
  * Render component preview on boilerplate page
  *
+ * Uses {@link renderTemplate} with the default `govuk/template.njk` to
+ * render components via {@link render} into the `main` content block
+ *
  * @param {string} componentName - Component name
  * @param {MacroRenderOptions} [options] - Nunjucks macro render options
  * @returns {string} HTML rendered from the Nunjucks template

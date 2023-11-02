@@ -67,9 +67,8 @@ async function axe(page, overrides = {}) {
 /**
  * Render component HTML with browser preview
  *
- * Renders a component's Nunjucks macro with the given params, injects it into
- * the test boilerplate page, and instantiates the component class, passing the
- * provided JavaScript configuration.
+ * Uses Nunjucks component {@link renderPreview} for HTML output, but runs
+ * component JavaScript (where available) or `initAll()` in the browser
  *
  * It runs an optional `beforeInitialisation` function before initialising the
  * components, allowing to tweak the state of the page before the component gets
