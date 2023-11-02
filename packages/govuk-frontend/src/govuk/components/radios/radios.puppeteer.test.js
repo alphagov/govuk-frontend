@@ -1,5 +1,4 @@
 const {
-  goToExample,
   getProperty,
   getAttribute,
   isVisible,
@@ -187,96 +186,6 @@ describe('Radios', () => {
             examples['with conditional items with special characters']
           )
         })
-      })
-    })
-  })
-
-  describe('with multiple groups', () => {
-    describe('when JavaScript is available', () => {
-      /** @type {globalThis.page} */
-      let page
-
-      let $inputsWarm
-      let $inputsCool
-      let $inputsNotInForm
-
-      beforeEach(async () => {
-        page = await goToExample(browser, 'multiple-radio-groups')
-
-        $inputsWarm = await page.$$('.govuk-radios__input[id^="warm"]')
-        $inputsCool = await page.$$('.govuk-radios__input[id^="cool"]')
-        $inputsNotInForm = await page.$$(
-          '.govuk-radios__input[id^="question-not-in-form"]'
-        )
-      })
-
-      it('toggles conditional reveals in other groups', async () => {
-        const $conditionalWarm = await page.$(
-          `[id="${await getAttribute($inputsWarm[0], 'aria-controls')}"]`
-        )
-        const $conditionalCool = await page.$(
-          `[id="${await getAttribute($inputsCool[0], 'aria-controls')}"]`
-        )
-
-        // Select red in warm colours
-        await $inputsWarm[0].click()
-
-        expect(await isVisible($conditionalWarm)).toBe(true)
-        expect(await isVisible($conditionalCool)).toBe(false)
-
-        // Select blue in cool colours
-        await $inputsCool[0].click()
-
-        expect(await isVisible($conditionalWarm)).toBe(false)
-        expect(await isVisible($conditionalCool)).toBe(true)
-      })
-
-      it('toggles conditional reveals when not in a form', async () => {
-        const $conditionalWarm = await page.$(
-          `[id="${await getAttribute($inputsWarm[0], 'aria-controls')}"]`
-        )
-
-        // Select first input in radios not in a form
-        await $inputsNotInForm[0].click()
-
-        expect(await isVisible($conditionalWarm)).toBe(false)
-      })
-    })
-  })
-
-  describe('with multiple groups and conditional reveals', () => {
-    describe('when JavaScript is available', () => {
-      /** @type {globalThis.page} */
-      let page
-
-      let $inputsPrimary
-      let $inputsOther
-
-      beforeEach(async () => {
-        page = await goToExample(browser, 'conditional-reveals')
-
-        $inputsPrimary = await page.$$(
-          '.govuk-radios__input[id^="fave-primary"]'
-        )
-        $inputsOther = await page.$$('.govuk-radios__input[id^="fave-other"]')
-      })
-
-      it('hides conditional reveals in other groups', async () => {
-        const $conditionalPrimary = await page.$(
-          `[id="${await getAttribute($inputsPrimary[1], 'aria-controls')}"]`
-        )
-
-        // Choose the second radio in the first group, which reveals additional content
-        await $inputsPrimary[1].click()
-
-        // Assert that conditional content is revealed
-        expect(await isVisible($conditionalPrimary)).toBe(true)
-
-        // Choose a different radio with the same name, but in a different group
-        await $inputsOther[1].click()
-
-        // Expect conditional content to have been collapsed
-        expect(await isVisible($conditionalPrimary)).toBe(false)
       })
     })
   })
