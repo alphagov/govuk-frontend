@@ -58,7 +58,19 @@ async function axe(page, overrides = {}) {
     const { pathname } = new URL(page.url())
 
     // Replace file:// URLs with Review app
-    violation.helpUrl = `${violation.helpUrl}\n${new URL(pathname, urls.app)}`
+    const previewUrl = new URL(pathname, urls.app)
+
+    /**
+     * Add Review app preview URL below link to violation
+     *
+     * @example
+     * ```console
+     * You can find more information on this issue here:
+     * https://dequeuniversity.com/rules/axe/4.8/aria-allowed-attr?application=axe-puppeteer
+     * http://localhost:8080/components/radios/with-conditional-items/preview
+     * ```
+     */
+    violation.helpUrl += `\n${previewUrl}`
   })
 
   return report
