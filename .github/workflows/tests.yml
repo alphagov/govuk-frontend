@@ -123,11 +123,6 @@ jobs:
     runs-on: ${{ matrix.runner }}
     needs: [install, build]
 
-    env:
-      # Use 2x CPU cores unless on Windows (runs slower when concurrent)
-      # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
-      MAX_WORKERS: ${{ matrix.runner == 'windows-latest' && '1' || '2' }}
-
     strategy:
       fail-fast: false
 
@@ -193,7 +188,10 @@ jobs:
           path: ${{ matrix.task.cache }}
 
       - name: Run test task
-        run: npx jest --color ${{ format('--coverage={0} --maxWorkers={1} --selectProjects "{2}"', matrix.task.coverage || false, env.MAX_WORKERS, join(matrix.task.projects, '", "')) }}
+
+        # Use 2x CPU cores for hosted GitHub runners
+        # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
+        run: npx jest --color ${{ format('--coverage={0} --maxWorkers=2 --selectProjects "{1}"', matrix.task.coverage || false, join(matrix.task.projects, '", "')) }}
 
       - name: Save test coverage
         uses: actions/upload-artifact@v3.1.3
