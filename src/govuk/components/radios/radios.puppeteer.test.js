@@ -193,12 +193,15 @@ describe('Radios', () => {
 
   describe('with multiple groups', () => {
     describe('when JavaScript is available', () => {
+      /** @type {globalThis.page} */
+      let page
+
       let $inputsWarm
       let $inputsCool
       let $inputsNotInForm
 
       beforeEach(async () => {
-        await goToExample(page, 'multiple-radio-groups')
+        page = await goToExample(browser, 'multiple-radio-groups')
 
         $inputsWarm = await page.$$('.govuk-radios__input[id^="warm"]')
         $inputsCool = await page.$$('.govuk-radios__input[id^="cool"]')
@@ -243,11 +246,14 @@ describe('Radios', () => {
 
   describe('with multiple groups and conditional reveals', () => {
     describe('when JavaScript is available', () => {
+      /** @type {globalThis.page} */
+      let page
+
       let $inputsPrimary
       let $inputsOther
 
       beforeEach(async () => {
-        await goToExample(page, 'conditional-reveals')
+        page = await goToExample(browser, 'conditional-reveals')
 
         $inputsPrimary = await page.$$(
           '.govuk-radios__input[id^="fave-primary"]'

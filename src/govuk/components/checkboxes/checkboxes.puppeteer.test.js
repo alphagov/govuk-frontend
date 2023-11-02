@@ -290,12 +290,15 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
   })
 
   describe('when JavaScript is available', () => {
+    /** @type {globalThis.page} */
+    let page
+
     let $inputsPrimary
     let $inputsSecondary
     let $inputsOther
 
     beforeEach(async () => {
-      await goToExample(page, 'conditional-reveals')
+      page = await goToExample(browser, 'conditional-reveals')
 
       $inputsPrimary = await page.$$(
         '.govuk-checkboxes__input[id^="colour-primary"]'

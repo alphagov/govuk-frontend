@@ -50,7 +50,7 @@ describe('GOV.UK Frontend', () => {
     })
 
     it('can be initialised scoped to certain sections of the page', async () => {
-      await goToExample(page, 'scoped-initialisation')
+      const page = await goToExample(browser, 'scoped-initialisation')
 
       // To test that certain parts of the page are scoped we have two similar components
       // that we can interact with to check if they're interactive.

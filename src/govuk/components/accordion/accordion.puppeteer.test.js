@@ -492,7 +492,7 @@ describe('/components/accordion', () => {
         })
 
         it('should localise "Show all sections" based on JavaScript configuration', async () => {
-          await goToExample(page, 'translated')
+          const page = await goToExample(browser, 'translated')
 
           const allSectionsToggleText = await page.evaluate(
             () =>
@@ -527,7 +527,7 @@ describe('/components/accordion', () => {
         })
 
         it('should localise "Hide all sections" based on JavaScript configuration', async () => {
-          await goToExample(page, 'translated')
+          const page = await goToExample(browser, 'translated')
           await page.click('.govuk-accordion .govuk-accordion__show-all')
 
           const allSectionsToggleText = await page.evaluate(
@@ -558,7 +558,7 @@ describe('/components/accordion', () => {
         })
 
         it('should localise "Show section" based on JavaScript configuration', async () => {
-          await goToExample(page, 'translated')
+          const page = await goToExample(browser, 'translated')
 
           const firstSectionToggleText = await page.evaluate(
             () =>
@@ -590,7 +590,7 @@ describe('/components/accordion', () => {
         })
 
         it('should localise "Show section" aria-label based on JavaScript configuration', async () => {
-          await goToExample(page, 'translated')
+          const page = await goToExample(browser, 'translated')
 
           const firstSectionToggleAriaLabel = await page.evaluate(() =>
             document.body
@@ -625,7 +625,7 @@ describe('/components/accordion', () => {
         })
 
         it('should localise "Hide section" based on JavaScript configuration', async () => {
-          await goToExample(page, 'translated')
+          const page = await goToExample(browser, 'translated')
           await page.click(
             '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header'
           )
@@ -663,7 +663,7 @@ describe('/components/accordion', () => {
         })
 
         it('should localise "Hide section" aria-label based on JavaScript configuration', async () => {
-          await goToExample(page, 'translated')
+          const page = await goToExample(browser, 'translated')
           await page.click(
             '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header'
           )
