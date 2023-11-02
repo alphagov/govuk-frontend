@@ -119,10 +119,22 @@ export default {
       displayName: 'JavaScript component tests',
       testEnvironment: '@govuk-frontend/helpers/jest/environment/puppeteer.mjs',
       testMatch: [
-        '**/*.puppeteer.test.{js,mjs}',
+        '**/packages/govuk-frontend/**/*.puppeteer.test.{js,mjs}',
 
         // Exclude accessibility tests
         '!**/accessibility.puppeteer.test.mjs'
+      ],
+
+      // Web server and browser required
+      globalSetup: '@govuk-frontend/helpers/jest/browser/open.mjs',
+      globalTeardown: '@govuk-frontend/helpers/jest/browser/close.mjs'
+    },
+    {
+      ...config,
+      displayName: 'Review app browser tests',
+      testEnvironment: '@govuk-frontend/helpers/jest/environment/puppeteer.mjs',
+      testMatch: [
+        '**/packages/govuk-frontend-review/**/*.puppeteer.test.{js,mjs}'
       ],
 
       // Web server and browser required

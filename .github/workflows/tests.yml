@@ -160,6 +160,14 @@ jobs:
             projects:
               - JavaScript component tests
 
+          - description: Review app browser tests
+            name: test-review-app-browser
+            cache: |
+              .cache/jest
+              .cache/puppeteer
+            projects:
+              - Review app browser tests
+
           - description: Accessibility tests
             name: test-accessibility
             cache: |
