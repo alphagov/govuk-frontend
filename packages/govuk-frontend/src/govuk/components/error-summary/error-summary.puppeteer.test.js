@@ -180,8 +180,11 @@ describe('Error Summary', () => {
   describe.each(inputTypes)(
     'when linking to %s',
     (_, inputId, legendOrLabelSelector) => {
+      /** @type {globalThis.page} */
+      let page
+
       beforeAll(async () => {
-        await goToExample(page, 'error-summary')
+        page = await goToExample(browser, 'error-summary')
         await page.click(`.govuk-error-summary a[href="#${inputId}"]`)
       })
 

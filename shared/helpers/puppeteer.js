@@ -257,26 +257,26 @@ async function goTo(page, path, options) {
 /**
  * Navigate to example
  *
- * @param {import('puppeteer').Page} page - Puppeteer page object
+ * @param {import('puppeteer').Browser} browser - Puppeteer browser object
  * @param {string} exampleName - Example name
  * @param {object} [options] - Navigation options
  * @param {URL} [options.baseURL] - Base URL to override
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
-function goToExample(page, exampleName, options) {
-  return goTo(page, `/examples/${exampleName}`, options)
+async function goToExample(browser, exampleName, options) {
+  return goTo(await browser.newPage(), `/examples/${exampleName}`, options)
 }
 
 /**
  * Navigate to component preview page
  *
- * @param {import('puppeteer').Page} page - Puppeteer page object
+ * @param {import('puppeteer').Browser} browser - Puppeteer browser object
  * @param {string} [componentName] - Component name
  * @param {Parameters<typeof getComponentURL>[1]} [options] - Navigation options
  * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
  */
-function goToComponent(page, componentName, options) {
-  return goTo(page, getComponentURL(componentName, options))
+async function goToComponent(browser, componentName, options) {
+  return goTo(await browser.newPage(), getComponentURL(componentName, options))
 }
 
 /**

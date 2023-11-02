@@ -45,7 +45,7 @@ describe('/components/exit-this-page', () => {
     })
 
     it('navigates to the href of the skiplink', async () => {
-      await goToExample(page, 'exit-this-page-with-skiplink')
+      const page = await goToExample(browser, 'exit-this-page-with-skiplink')
 
       const exitPageURL = await page
         .$eval(skiplinkClass, (el) => el.getAttribute('href'))
@@ -84,7 +84,7 @@ describe('/components/exit-this-page', () => {
     })
 
     it('navigates to the href of the skiplink', async () => {
-      await goToExample(page, 'exit-this-page-with-skiplink')
+      const page = await goToExample(browser, 'exit-this-page-with-skiplink')
 
       const exitPageURL = await page
         .$eval(skiplinkClass, (el) => el.getAttribute('href'))
@@ -100,7 +100,7 @@ describe('/components/exit-this-page', () => {
     })
 
     it('shows the ghost page when the EtP button is clicked', async () => {
-      await goToExample(page, 'exit-this-page-with-skiplink')
+      const page = await goToExample(browser, 'exit-this-page-with-skiplink')
 
       // Stop the button from navigating away from the current page as a workaround
       // to puppeteer struggling to return to previous pages after navigation reliably
@@ -115,7 +115,7 @@ describe('/components/exit-this-page', () => {
     })
 
     it('shows the ghost page when the skiplink is clicked', async () => {
-      await goToExample(page, 'exit-this-page-with-skiplink')
+      const page = await goToExample(browser, 'exit-this-page-with-skiplink')
 
       // Stop the button from navigating away from the current page as a workaround
       // to puppeteer struggling to return to previous pages after navigation reliably
