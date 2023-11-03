@@ -4,6 +4,15 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### New features
+
+### Fixes
+
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#4391: Move private workspace packages to `devDependencies`](https://github.com/alphagov/govuk-frontend/pull/4391)
+- [#4394: Improve SupportError when document.body is not set](https://github.com/alphagov/govuk-frontend/pull/4394)
+
 ## 5.0.0-beta.0 (Pre-release)
 
 ### New features
