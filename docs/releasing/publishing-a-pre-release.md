@@ -1,6 +1,6 @@
 # Before you publish a pre-release of GOV.UK Frontend
 
-Decide the kind of pre-release you're publishing. All pre-releases are public, but we distinguish:
+Decide the kind of pre-release you're publishing. All pre-releases are public, but we distinguish between:
 
 - `internal` pre-releases for internal use
 - `beta` pre-releases aimed at external users
@@ -9,8 +9,7 @@ We'll use the kind of pre-release as [the pre-release identifier](https://docs.n
 
 ## If you're publishing a beta pre-release
 
-Besides publishing the code itself, beta releases will likely involve
-documentation updates linked to the code, as well as communications, similarly to an actual release.
+Besides publishing the code itself, beta releases will likely involve code-related documentation updates and user communications, much like an actual release.
 
 Review the docs for [what to do before publishing a release](/docs/releasing/before-publishing-a-release.md) to assess which steps you need to follow for your specific pre-release and ensure you are prepared to publish.
 
@@ -18,7 +17,7 @@ See the [documentation on support branches](https://govuk-design-system-team-doc
 
 # Publish a new version of GOV.UK Frontend
 
-Developers should pair on pre-releases. When remote working, it can be useful to be on a call together.
+Developers should pair on pre-releases. When working remotely, it can be useful to be on a call together.
 
 1. Check out the **main** branch and pull the latest changes.
 
@@ -29,14 +28,14 @@ Developers should pair on pre-releases. When remote working, it can be useful to
 
 3. Run `npm ci` to make sure you have the exact dependencies installed.
 
-4. Determine the pre-release identifier
+4. Determine the `< PRE_RELEASE_IDENTIFIER >`
 
    - Use `internal` for internal pre-releases
    - Use `beta` for beta pre-releases
 
-5. Determine the pre-release version type
+5. Determine the `< PRE_RELEASE_VERSION_TYPE >`
 
-   Given the `beta` pre-release identifier:
+   As examples with a `beta` pre-release identifier:
 
    - Use `premajor` to bump from `v4.7.0` to `v5.0.0-beta.0`
    - Use `preminor` to bump from `v4.7.0` to `v4.8.0-beta.0`
@@ -53,14 +52,14 @@ Developers should pair on pre-releases. When remote working, it can be useful to
 6. Apply the new pre-release version number by running:
 
    ```shell
-   npm version <PRE-RELEASE TYPE> --preid <PRE-RELEASE IDENTIFIER> --no-git-tag-version --workspace govuk-frontend
+   npm version < PRE_RELEASE_VERSION_TYPE > --preid < PRE_RELEASE_IDENTIFIER > --no-git-tag-version --workspace govuk-frontend
    ```
 
    This step will update [`govuk-frontend`'s `package.json`](/packages/govuk-frontend/package.json) and project [`package-lock.json`](/package-lock.json) files.
 
    Do not commit the changes.
 
-7. Create and check out a new branch (`release-[version-number]`)
+7. Create and check out a new branch (`release-[version]`)
 
    ```shell
    git switch -c "release-$(npm run version --silent --workspace govuk-frontend)"
@@ -78,7 +77,7 @@ Developers should pair on pre-releases. When remote working, it can be useful to
    - commit the changes
    - push a branch to GitHub
 
-   You will now be prompted to continue or cancel.
+   You will now be prompted to continue or cancel. Check the details and enter `y` to continue. If something does not look right, press `N` to cancel the build and creation of the branch on GitHub.
 
 10. Create a pull request.
     When reviewing the PR, check that the version numbers have been updated and that the compiled assets use this version number.
@@ -109,7 +108,7 @@ Developers should pair on pre-releases. When remote working, it can be useful to
 
    This step will create a ZIP file containing the release in the root of your govuk-frontend git directory. You will need this file when creating the GitHub release.
 
-   It will also automatically create a tag in GitHub which you can use to create a GitHub release in the following section.
+   This step will also automatically create a tag in GitHub which you can use to create a GitHub release in the following section.
 
 6. Verify the presence of the pre-release and its tag on [npm](https://www.npmjs.com/package/govuk-frontend?activeTab=versions)
 
@@ -124,7 +123,7 @@ To create a new GitHub release, do the following:
 
 1. Select the tag corresponding to the release in [the list of tags on GitHub](https://github.com/alphagov/govuk-frontend/tags)
 2. Press **Create release from tag**
-3. Set 'GOV.UK Frontend v[version-number]' as the title
+3. Set 'GOV.UK Frontend v[version]' as the title
 4. Add release notes from [`CHANGELOG.md`](/CHANGELOG.md)
 5. Attach as release binary the ZIP file that has been generated at the root of this project during the npm publishing phase
 6. [Select "This is a pre-release"](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository) to mark the release as a pre-release

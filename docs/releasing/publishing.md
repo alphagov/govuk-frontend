@@ -20,7 +20,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 3. Run `npm ci` to make sure you have the exact dependencies installed.
 
-4. Pick a new version number according to the [versioning documentation](/docs/contributing/versioning.md) and apply it running:
+4. Pick a new version number according to the [versioning documentation](/docs/contributing/versioning.md) and apply it by running:
 
    ```shell
    npm version <NEW VERSION NUMBER> --no-git-tag-version --workspace govuk-frontend
@@ -30,7 +30,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
    Do not commit the changes.
 
-5. Create and check out a new branch (`release-[version-number]`)
+5. Create and check out a new branch (`release-[version]`)
 
    ```shell
    git switch -c "release-$(npm run version --silent --workspace govuk-frontend)"
@@ -49,7 +49,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
    - commit the changes
    - push a branch to GitHub
 
-   You will now be prompted to continue or cancel.
+   You will now be prompted to continue or cancel. Check the details and enter `y` to continue. If something does not look right, press `N` to cancel the build and creation of the branch on GitHub.
 
 8. Create a pull request and copy the changelog text.
    When reviewing the PR, check that the version numbers have been updated and that the compiled assets use this version number.
@@ -73,7 +73,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
    This step will create a ZIP file containing the release in the root of your govuk-frontend git directory. You will need this file when creating the GitHub release.
 
-   It will also automatically create a tag in Github which you can use to create a Github release in the following section.
+   This step will also automatically create a tag in Github which you can use to create a Github release in the following section.
 
 6. Verify the presence of the pre-release and its tag on [npm](https://www.npmjs.com/package/govuk-frontend?activeTab=versions)
 
@@ -88,7 +88,7 @@ To create a new GitHub release, do the following:
 
 1. Select the tag corresponding to the release in [the list of tags on GitHub](https://github.com/alphagov/govuk-frontend/tags)
 2. Press **Create release from tag**
-3. Set 'GOV.UK Frontend v[version-number]' as the title
+3. Set 'GOV.UK Frontend v[version]' as the title
 4. Add release notes from [`CHANGELOG.md`](/CHANGELOG.md)
 5. Attach as release binary the ZIP file that has been generated at the root of this project during the npm publishing phase
 6. Publish release
