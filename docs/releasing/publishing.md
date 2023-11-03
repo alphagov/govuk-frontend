@@ -84,13 +84,13 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 ## Create a release on Github
 
-You can view the tag created during step 10 of creating the new version in the [Github interface](https://github.com/alphagov/govuk-frontend/tags). To create a new Github release, do the following:
+To create a new GitHub release, do the following:
 
-1. Select the latest tag
+1. Select the tag corresponding to the release in [the list of tags on GitHub](https://github.com/alphagov/govuk-frontend/tags)
 2. Press **Create release from tag**
 3. Set 'GOV.UK Frontend v[version-number]' as the title
-4. Add release notes from changelog
-5. Attach the ZIP file that has been generated at the root of this project during the npm publishing phase
+4. Add release notes from [`CHANGELOG.md`](/CHANGELOG.md)
+5. Attach as release binary the ZIP file that has been generated at the root of this project during the npm publishing phase
 6. Publish release
 
 # After you publish the new release
