@@ -4,7 +4,7 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
-### New features
+## 5.0.0-beta.1 (Pre-release)
 
 ### Fixes
 
