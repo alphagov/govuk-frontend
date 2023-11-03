@@ -1,6 +1,8 @@
 {% extends "layouts/layout.njk" %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 
+{% block pageTitle %}Full page examples - GOV.UK Frontend{% endblock %}
+
 {% block beforeContent %}
   {{ govukBackLink({
     href: "/"

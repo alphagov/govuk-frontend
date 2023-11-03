@@ -185,6 +185,7 @@ export default async () => {
 
   // Example view
   app.get('/examples/:exampleName', function (req, res, next) {
+    res.locals.exampleName = req.params.exampleName
     // Passing a random number used for the links so that they will be unique and not display as "visited"
     const randomPageHash = (Math.random() * 1000000).toFixed()
     res.render(

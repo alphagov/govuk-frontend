@@ -3,6 +3,8 @@
 
 {% extends "layouts/full-width-landmarks.njk" %}
 
+{% block pageTitle %}{{ exampleName | unslugify }} - GOV.UK Frontend{% endblock %}
+
 {% block beforeContent %}
   {{ govukBackLink({
     href: "/"
