@@ -66,6 +66,11 @@ jobs:
     runs-on: ${{ matrix.runner }}
     needs: [install]
 
+    env:
+      # Authorise GitHub API requests for EditorConfig checker binary
+      # https://www.npmjs.com/package/editorconfig-checker
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     strategy:
       fail-fast: false
 
