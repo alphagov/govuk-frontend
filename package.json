@@ -100,7 +100,7 @@
     "@types/node": "^20.8.9",
     "@types/nunjucks": "^3.2.5",
     "@types/slug": "^5.0.6",
-    "puppeteer": "^21.4.1",
+    "puppeteer": "^21.5.0",
     "typed-query-selector": "^2.11.0"
   },
   "overrides": {
