@@ -141,7 +141,7 @@ export default async () => {
       )
 
       if (!fixture) {
-        next()
+        return next()
       }
 
       // Render component using fixture
