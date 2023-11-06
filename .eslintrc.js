@@ -88,7 +88,12 @@ module.exports = {
 
         // Automatically use template strings
         'no-useless-concat': 'error',
-        'prefer-template': 'error'
+        'prefer-template': 'error',
+
+        // Flow control – avoid continue and else blocks after return statements
+        // in if statements
+        'no-continue': 'error',
+        'no-else-return': 'error'
       },
       settings: {
         jsdoc: {

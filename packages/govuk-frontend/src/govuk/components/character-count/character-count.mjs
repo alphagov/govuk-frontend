@@ -346,9 +346,9 @@ export class CharacterCount extends GOVUKFrontendComponent {
     if (this.config.maxwords) {
       const tokens = text.match(/\S+/g) || [] // Matches consecutive non-whitespace chars
       return tokens.length
-    } else {
-      return text.length
     }
+
+    return text.length
   }
 
   /**
