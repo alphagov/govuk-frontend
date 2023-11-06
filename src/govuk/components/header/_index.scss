@@ -34,10 +34,14 @@
 
   .govuk-header__logotype {
     display: inline-block;
+    position: relative;
+    top: -2px;
 
     // Add a gap after the logo in case it's followed by a product name. This
     // gets removed later if the logotype is a :last-child.
     margin-right: govuk-spacing(1);
+    fill: currentcolor;
+    vertical-align: top;
 
     // Prevent readability backplate from obscuring underline in Windows High
     // Contrast Mode
@@ -51,14 +55,6 @@
     &:last-child {
       margin-right: 0;
     }
-  }
-
-  .govuk-header__logotype-crown {
-    position: relative;
-    top: -1px;
-    margin-right: 1px;
-    fill: currentcolor;
-    vertical-align: top;
   }
 
   .govuk-header__product-name {
@@ -286,11 +282,6 @@
       border-bottom-width: 0;
       color: govuk-colour("black");
       background: transparent;
-    }
-
-    // Hide the inverted crown when printing in browsers that don't support SVG.
-    .govuk-header__logotype-crown-fallback-image {
-      display: none;
     }
 
     .govuk-header__link {
