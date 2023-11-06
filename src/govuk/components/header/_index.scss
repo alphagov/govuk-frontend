@@ -8,7 +8,7 @@
   $govuk-header-link-underline-thickness: 3px;
 
   .govuk-header {
-    @include govuk-font($size: 16);
+    @include govuk-font($size: 16, $line-height: 1);
 
     border-bottom: govuk-spacing(2) solid govuk-colour("white");
     color: $govuk-header-text;
@@ -35,7 +35,7 @@
   .govuk-header__logotype {
     display: inline-block;
     position: relative;
-    top: -2px;
+    top: -3px;
 
     // Add a gap after the logo in case it's followed by a product name. This
     // gets removed later if the logotype is a :last-child.
@@ -58,9 +58,31 @@
   }
 
   .govuk-header__product-name {
+    $product-name-offset: 10px;
+    $product-name-offset-tablet: 5px;
+
     @include govuk-typography-responsive($size: 24, $override-line-height: 1);
     @include govuk-typography-weight-regular;
     display: inline-table;
+
+    // Maintain space below logo when wrapped
+    margin-top: $product-name-offset;
+
+    // Firefox places the GOV.UK logo one pixel higher, due to how it rounds
+    // subpixels, so nudge the product name in FF to still be aligned.
+    @-moz-document url-prefix() {
+      margin-top: $product-name-offset - 0.5px;
+    }
+
+    // Align vertically with logo when not wrapped
+    vertical-align: top;
+
+    @include govuk-media-query($from: tablet) {
+      margin-top: $product-name-offset-tablet;
+      @-moz-document url-prefix() {
+        margin-top: $product-name-offset-tablet - 0.5px;
+      }
+    }
   }
 
   .govuk-header__link {
@@ -92,11 +114,9 @@
   .govuk-header__link--homepage {
     // Font size needs to be set on the link so that the box sizing is correct
     // in Firefox
-    @include govuk-typography-weight-bold;
     display: inline-block;
     margin-right: govuk-spacing(2);
     font-size: 30px; // We don't have a mixin that produces 30px font size
-    line-height: 1;
 
     @include govuk-media-query($from: tablet) {
       display: inline;
