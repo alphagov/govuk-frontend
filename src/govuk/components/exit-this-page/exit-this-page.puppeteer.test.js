@@ -1,8 +1,6 @@
-const {
-  goToComponent,
-  goToExample,
-  render
-} = require('@govuk-frontend/helpers/puppeteer')
+const { setTimeout } = require('timers/promises')
+
+const { goToExample, render } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
 const buttonClass = '.govuk-js-exit-this-page-button'
@@ -10,6 +8,12 @@ const skiplinkClass = '.govuk-js-exit-this-page-skiplink'
 const overlayClass = '.govuk-exit-this-page-overlay'
 
 describe('/components/exit-this-page', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('exit-this-page')
+  })
+
   describe('when JavaScript is unavailable or fails', () => {
     beforeAll(async () => {
       await page.setJavaScriptEnabled(false)
@@ -20,24 +24,32 @@ describe('/components/exit-this-page', () => {
     })
 
     it('navigates to the href of the button', async () => {
-      await goToComponent(page, 'exit-this-page')
+      await render(page, 'exit-this-page', examples.default)
 
-      const pathname = await page.$eval(buttonClass, (el) =>
-        el.getAttribute('href')
+      const exitPageURL = await page
+        .$eval(buttonClass, (el) => el.getAttribute('href'))
+        .then((path) => new URL(path, 'file://'))
+
+      await page.setRequestInterception(true)
+
+      // Mock page navigation
+      page.once('request', (request) =>
+        request.respond({ body: 'Mock response' })
       )
 
-      await Promise.all([page.waitForNavigation(), page.click(buttonClass)])
+      // Click button, check URL
+      await page.click(buttonClass)
+      expect(page.url()).toBe(exitPageURL.href)
 
-      const url = new URL(await page.url())
-      expect(url.pathname).toBe(pathname)
+      await page.setRequestInterception(false)
     })
 
     it('navigates to the href of the skiplink', async () => {
-      await goToExample(page, 'exit-this-page-with-skiplink')
+      const page = await goToExample(browser, 'exit-this-page-with-skiplink')
 
-      const href = await page.$eval(skiplinkClass, (el) =>
-        el.getAttribute('href')
-      )
+      const exitPageURL = await page
+        .$eval(skiplinkClass, (el) => el.getAttribute('href'))
+        .then((path) => new URL(path, 'file://'))
 
       await Promise.all([
         page.waitForNavigation(),
@@ -45,31 +57,38 @@ describe('/components/exit-this-page', () => {
         page.click(skiplinkClass)
       ])
 
-      const url = await page.url()
-      expect(url).toBe(href)
+      expect(page.url()).toBe(exitPageURL.href)
     })
   })
 
   describe('when JavaScript is available', () => {
     it('navigates to the href of the button', async () => {
-      await goToComponent(page, 'exit-this-page')
+      await render(page, 'exit-this-page', examples.default)
 
-      const pathname = await page.$eval(buttonClass, (el) =>
-        el.getAttribute('href')
+      const exitPageURL = await page
+        .$eval(buttonClass, (el) => el.getAttribute('href'))
+        .then((path) => new URL(path, 'file://'))
+
+      await page.setRequestInterception(true)
+
+      // Mock page navigation
+      page.once('request', (request) =>
+        request.respond({ body: 'Mock response' })
       )
 
-      await Promise.all([page.waitForNavigation(), page.click(buttonClass)])
+      // Click button, check URL
+      await page.click(buttonClass)
+      expect(page.url()).toBe(exitPageURL.href)
 
-      const url = new URL(await page.url())
-      expect(url.pathname).toBe(pathname)
+      await page.setRequestInterception(false)
     })
 
     it('navigates to the href of the skiplink', async () => {
-      await goToExample(page, 'exit-this-page-with-skiplink')
+      const page = await goToExample(browser, 'exit-this-page-with-skiplink')
 
-      const href = await page.$eval(skiplinkClass, (el) =>
-        el.getAttribute('href')
-      )
+      const exitPageURL = await page
+        .$eval(skiplinkClass, (el) => el.getAttribute('href'))
+        .then((path) => new URL(path, 'file://'))
 
       await Promise.all([
         page.waitForNavigation(),
@@ -77,12 +96,11 @@ describe('/components/exit-this-page', () => {
         page.click(skiplinkClass)
       ])
 
-      const url = await page.url()
-      expect(url).toBe(href)
+      expect(page.url()).toBe(exitPageURL.href)
     })
 
     it('shows the ghost page when the EtP button is clicked', async () => {
-      await goToExample(page, 'exit-this-page-with-skiplink')
+      const page = await goToExample(browser, 'exit-this-page-with-skiplink')
 
       // Stop the button from navigating away from the current page as a workaround
       // to puppeteer struggling to return to previous pages after navigation reliably
@@ -97,7 +115,7 @@ describe('/components/exit-this-page', () => {
     })
 
     it('shows the ghost page when the skiplink is clicked', async () => {
-      await goToExample(page, 'exit-this-page-with-skiplink')
+      const page = await goToExample(browser, 'exit-this-page-with-skiplink')
 
       // Stop the button from navigating away from the current page as a workaround
       // to puppeteer struggling to return to previous pages after navigation reliably
@@ -117,10 +135,17 @@ describe('/components/exit-this-page', () => {
 
     describe('keyboard shortcut activation', () => {
       it('activates the button functionality when the Shift key is pressed 3 times', async () => {
-        await goToComponent(page, 'exit-this-page')
+        await render(page, 'exit-this-page', examples.default)
 
-        const pathname = await page.$eval(buttonClass, (el) =>
-          el.getAttribute('href')
+        const exitPageURL = await page
+          .$eval(buttonClass, (el) => el.getAttribute('href'))
+          .then((path) => new URL(path, 'file://'))
+
+        await page.setRequestInterception(true)
+
+        // Mock page navigation
+        page.once('request', (request) =>
+          request.respond({ body: 'Mock response' })
         )
 
         await Promise.all([
@@ -130,12 +155,13 @@ describe('/components/exit-this-page', () => {
           page.waitForNavigation()
         ])
 
-        const url = new URL(await page.url())
-        expect(url.pathname).toBe(pathname)
+        expect(page.url()).toBe(exitPageURL.href)
+
+        await page.setRequestInterception(false)
       })
 
       it('announces when the Shift key has been pressed once', async () => {
-        await goToComponent(page, 'exit-this-page')
+        await render(page, 'exit-this-page', examples.default)
 
         await page.keyboard.press('Shift')
 
@@ -146,7 +172,7 @@ describe('/components/exit-this-page', () => {
       })
 
       it('announces when the Shift key has been pressed twice', async () => {
-        await goToComponent(page, 'exit-this-page')
+        await render(page, 'exit-this-page', examples.default)
 
         await page.keyboard.press('Shift')
         await page.keyboard.press('Shift')
@@ -158,7 +184,7 @@ describe('/components/exit-this-page', () => {
       })
 
       it('announces when the keyboard shortcut has been successfully activated', async () => {
-        await goToComponent(page, 'exit-this-page')
+        await render(page, 'exit-this-page', examples.default)
 
         // Make the button not navigate away from the current page
         await page.$eval(buttonClass, (el) => el.setAttribute('href', '#'))
@@ -174,12 +200,12 @@ describe('/components/exit-this-page', () => {
       })
 
       it('announces when the keyboard shortcut has timed out', async () => {
-        await goToComponent(page, 'exit-this-page')
+        await render(page, 'exit-this-page', examples.default)
 
         await page.keyboard.press('Shift')
 
         // Wait for 6 seconds (one full second over the 5 second limit)
-        await new Promise((resolve) => setTimeout(resolve, 6000))
+        await setTimeout(6000)
 
         const message = await page.$eval(buttonClass, (el) =>
           el.nextElementSibling.innerHTML.trim()
@@ -189,12 +215,6 @@ describe('/components/exit-this-page', () => {
     })
 
     describe('errors at instantiation', () => {
-      let examples
-
-      beforeAll(async () => {
-        examples = await getExamples('exit-this-page')
-      })
-
       it('throws when GOV.UK Frontend is not supported', async () => {
         await expect(
           render(page, 'exit-this-page', examples.default, {

@@ -1,4 +1,4 @@
-const { render, goToComponent } = require('@govuk-frontend/helpers/puppeteer')
+const { render } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
 describe('Notification banner', () => {
@@ -10,9 +10,11 @@ describe('Notification banner', () => {
 
   describe('when type is set to "success"', () => {
     it('has the correct tabindex attribute to be focused with JavaScript', async () => {
-      await goToComponent(page, 'notification-banner', {
-        exampleName: 'with-type-as-success'
-      })
+      await render(
+        page,
+        'notification-banner',
+        examples['with type as success']
+      )
 
       const tabindex = await page.$eval('.govuk-notification-banner', (el) =>
         el.getAttribute('tabindex')
@@ -22,9 +24,11 @@ describe('Notification banner', () => {
     })
 
     it('is automatically focused when the page loads', async () => {
-      await goToComponent(page, 'notification-banner', {
-        exampleName: 'with-type-as-success'
-      })
+      await render(
+        page,
+        'notification-banner',
+        examples['with type as success']
+      )
 
       const activeElement = await page.evaluate(() =>
         document.activeElement.getAttribute('data-module')
@@ -34,9 +38,11 @@ describe('Notification banner', () => {
     })
 
     it('removes the tabindex attribute on blur', async () => {
-      await goToComponent(page, 'notification-banner', {
-        exampleName: 'with-type-as-success'
-      })
+      await render(
+        page,
+        'notification-banner',
+        examples['with type as success']
+      )
 
       await page.$eval(
         '.govuk-notification-banner',
@@ -51,9 +57,11 @@ describe('Notification banner', () => {
 
     describe('and auto-focus is disabled using data attributes', () => {
       beforeAll(async () => {
-        await goToComponent(page, 'notification-banner', {
-          exampleName: 'auto-focus-disabled,-with-type-as-success'
-        })
+        await render(
+          page,
+          'notification-banner',
+          examples['auto-focus disabled, with type as success']
+        )
       })
 
       it('does not have a tabindex attribute', async () => {
@@ -168,10 +176,11 @@ describe('Notification banner', () => {
 
     describe('and role is overridden to "region"', () => {
       beforeAll(async () => {
-        await goToComponent(page, 'notification-banner', {
-          exampleName:
-            'role=alert-overridden-to-role=region,-with-type-as-success'
-        })
+        await render(
+          page,
+          'notification-banner',
+          examples['role=alert overridden to role=region, with type as success']
+        )
       })
 
       it('does not have a tabindex attribute', async () => {
@@ -193,9 +202,7 @@ describe('Notification banner', () => {
 
     describe('and a custom tabindex is set', () => {
       beforeAll(async () => {
-        await goToComponent(page, 'notification-banner', {
-          exampleName: 'custom-tabindex'
-        })
+        await render(page, 'notification-banner', examples['custom tabindex'])
       })
 
       it('does not remove the tabindex attribute on blur', async () => {

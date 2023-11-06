@@ -1,5 +1,4 @@
 const {
-  goToComponent,
   goToExample,
   getProperty,
   getAttribute,
@@ -9,6 +8,12 @@ const {
 const { getExamples } = require('@govuk-frontend/lib/components')
 
 describe('Radios', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('radios')
+  })
+
   describe('with conditional reveals', () => {
     describe('when JavaScript is unavailable or fails', () => {
       beforeAll(async () => {
@@ -25,9 +30,7 @@ describe('Radios', () => {
         let $conditionals
 
         beforeAll(async () => {
-          await goToComponent(page, 'radios', {
-            exampleName: 'with-conditional-items'
-          })
+          await render(page, 'radios', examples['with conditional items'])
 
           $component = await page.$('.govuk-radios')
           $inputs = await $component.$$('.govuk-radios__input')
@@ -65,9 +68,11 @@ describe('Radios', () => {
         let $inputs
 
         beforeEach(async () => {
-          await goToComponent(page, 'radios', {
-            exampleName: 'with-conditional-item-checked'
-          })
+          await render(
+            page,
+            'radios',
+            examples['with conditional item checked']
+          )
 
           $component = await page.$('.govuk-radios')
           $inputs = await $component.$$('.govuk-radios__input')
@@ -99,9 +104,7 @@ describe('Radios', () => {
         let $inputs
 
         beforeEach(async () => {
-          await goToComponent(page, 'radios', {
-            exampleName: 'with-conditional-items'
-          })
+          await render(page, 'radios', examples['with conditional items'])
 
           $component = await page.$('.govuk-radios')
           $inputs = await $component.$$('.govuk-radios__input')
@@ -178,9 +181,11 @@ describe('Radios', () => {
       describe('with conditional items with special characters', () => {
         it('does not error when ID of revealed content contains special characters', async () => {
           // Errors logged to the console will cause this test to fail
-          await goToComponent(page, 'radios', {
-            exampleName: 'with-conditional-items-with-special-characters'
-          })
+          await render(
+            page,
+            'radios',
+            examples['with conditional items with special characters']
+          )
         })
       })
     })
@@ -188,12 +193,15 @@ describe('Radios', () => {
 
   describe('with multiple groups', () => {
     describe('when JavaScript is available', () => {
+      /** @type {globalThis.page} */
+      let page
+
       let $inputsWarm
       let $inputsCool
       let $inputsNotInForm
 
       beforeEach(async () => {
-        await goToExample(page, 'multiple-radio-groups')
+        page = await goToExample(browser, 'multiple-radio-groups')
 
         $inputsWarm = await page.$$('.govuk-radios__input[id^="warm"]')
         $inputsCool = await page.$$('.govuk-radios__input[id^="cool"]')
@@ -238,11 +246,14 @@ describe('Radios', () => {
 
   describe('with multiple groups and conditional reveals', () => {
     describe('when JavaScript is available', () => {
+      /** @type {globalThis.page} */
+      let page
+
       let $inputsPrimary
       let $inputsOther
 
       beforeEach(async () => {
-        await goToExample(page, 'conditional-reveals')
+        page = await goToExample(browser, 'conditional-reveals')
 
         $inputsPrimary = await page.$$(
           '.govuk-radios__input[id^="fave-primary"]'
@@ -271,12 +282,6 @@ describe('Radios', () => {
   })
 
   describe('errors at instantiation', () => {
-    let examples
-
-    beforeAll(async () => {
-      examples = await getExamples('radios')
-    })
-
     it('throws when GOV.UK Frontend is not supported', async () => {
       await expect(
         render(page, 'radios', examples.default, {
