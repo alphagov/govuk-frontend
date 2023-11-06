@@ -38,6 +38,7 @@ module.exports = {
         'scss/at-import-partial-extension': null,
         'scss/at-mixin-pattern': null,
         'scss/at-rule-conditional-no-parentheses': null,
+        'scss/load-no-partial-leading-underscore': null,
         'scss/operator-no-unspaced': null
       }
     },
