@@ -1,22 +1,30 @@
-const { goToExample, render } = require('@govuk-frontend/helpers/puppeteer')
+const { render } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
 describe('Skip Link', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('skip-link')
+  })
+
   describe('/examples/template-default', () => {
     beforeAll(async () => {
-      await goToExample(page, 'template-default')
+      await render(page, 'skip-link', examples.default)
       await page.keyboard.press('Tab')
       await page.keyboard.press('Enter')
     })
 
     it('focuses the linked element', async () => {
-      const activeElement = await page.evaluate(() => document.activeElement.id)
+      const activeElementId = await page.evaluate(
+        () => document.activeElement.id
+      )
 
-      expect(activeElement).toBe('main-content')
+      expect(activeElementId).toBe('content')
     })
 
     it('adds the tabindex attribute to the linked element', async () => {
-      const tabindex = await page.$eval('.govuk-main-wrapper', (el) =>
+      const tabindex = await page.$eval('#content', (el) =>
         el.getAttribute('tabindex')
       )
 
@@ -24,7 +32,7 @@ describe('Skip Link', () => {
     })
 
     it('adds the class for removing the native focus style to the linked element', async () => {
-      const cssClass = await page.$eval('.govuk-main-wrapper', (el) =>
+      const cssClass = await page.$eval('#content', (el) =>
         el.classList.contains('govuk-skip-link-focused-element')
       )
 
@@ -33,11 +41,11 @@ describe('Skip Link', () => {
 
     it('removes the tabindex attribute from the linked element on blur', async () => {
       await page.$eval(
-        '.govuk-main-wrapper',
+        '#content',
         (el) => el instanceof window.HTMLElement && el.blur()
       )
 
-      const tabindex = await page.$eval('.govuk-main-wrapper', (el) =>
+      const tabindex = await page.$eval('#content', (el) =>
         el.getAttribute('tabindex')
       )
 
@@ -46,11 +54,11 @@ describe('Skip Link', () => {
 
     it('removes the class for removing the native focus style from the linked element on blur', async () => {
       await page.$eval(
-        '.govuk-main-wrapper',
+        '#content',
         (el) => el instanceof window.HTMLElement && el.blur()
       )
 
-      const cssClass = await page.$eval('.govuk-main-wrapper', (el) =>
+      const cssClass = await page.$eval('#content', (el) =>
         el.getAttribute('class')
       )
 
@@ -59,12 +67,6 @@ describe('Skip Link', () => {
   })
 
   describe('errors at instantiation', () => {
-    let examples
-
-    beforeAll(async () => {
-      examples = await getExamples('skip-link')
-    })
-
     it('throws when GOV.UK Frontend is not supported', async () => {
       await expect(
         render(page, 'skip-link', examples.default, {

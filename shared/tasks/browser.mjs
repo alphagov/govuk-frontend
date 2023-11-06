@@ -37,11 +37,11 @@ export async function screenshots() {
     const componentExamples = await getExamples(componentName)
 
     // Screenshot "default" example
-    await screenshotComponent(await browser.newPage(), componentName)
+    await screenshotComponent(browser, componentName)
 
     // Screenshot "inverse" example
     if (Object.keys(componentExamples).includes('inverse')) {
-      await screenshotComponent(await browser.newPage(), componentName, {
+      await screenshotComponent(browser, componentName, {
         exampleName: 'inverse'
       })
     }
@@ -59,12 +59,12 @@ export async function screenshots() {
     ['radios', { exampleName: 'with-hints-on-items' }],
     ['radios', { exampleName: 'small' }]
   ])) {
-    await screenshotComponent(await browser.newPage(), componentName, options)
+    await screenshotComponent(browser, componentName, options)
   }
 
   // Screenshot specific example pages
   for (const exampleName of ['text-alignment', 'typography']) {
-    await screenshotExample(await browser.newPage(), exampleName)
+    await screenshotExample(browser, exampleName)
   }
 
   // Close browser
@@ -78,17 +78,17 @@ export async function screenshots() {
  * Send single component screenshots to Percy
  * for visual regression testing
  *
- * @param {import('puppeteer').Page} page - Puppeteer page object
+ * @param {import('puppeteer').Browser} browser - Puppeteer browser object
  * @param {string} componentName - Component name
  * @param {object} [options] - Component options
  * @param {string} options.exampleName - Example name
  * @returns {Promise<void>}
  */
-export async function screenshotComponent(page, componentName, options) {
+export async function screenshotComponent(browser, componentName, options) {
   const componentFiles = await getComponentFiles(componentName)
 
   // Navigate to component
-  await goToComponent(page, componentName, options)
+  const page = await goToComponent(browser, componentName, options)
 
   // Add optional example to screenshot name
   const screenshotName = options?.exampleName
@@ -115,12 +115,12 @@ export async function screenshotComponent(page, componentName, options) {
  * Send single example screenshot to Percy
  * for visual regression testing
  *
- * @param {import('puppeteer').Page} page - Puppeteer page object
+ * @param {import('puppeteer').Browser} browser - Puppeteer browser object
  * @param {string} exampleName - Component name
  * @returns {Promise<void>}
  */
-export async function screenshotExample(page, exampleName) {
-  await goToExample(page, exampleName)
+export async function screenshotExample(browser, exampleName) {
+  const page = await goToExample(browser, exampleName)
 
   // Dismiss app banner
   await page.setCookie({

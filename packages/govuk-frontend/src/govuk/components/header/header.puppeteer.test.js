@@ -1,10 +1,16 @@
-const { goToComponent, render } = require('@govuk-frontend/helpers/puppeteer')
+const { render } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 const { KnownDevices } = require('puppeteer')
 
 const iPhone = KnownDevices['iPhone 6']
 
 describe('Header navigation', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('header')
+  })
+
   beforeAll(async () => {
     await page.emulate(iPhone)
   })
@@ -12,10 +18,7 @@ describe('Header navigation', () => {
   describe('when JavaScript is unavailable or fails', () => {
     beforeAll(async () => {
       await page.setJavaScriptEnabled(false)
-
-      await goToComponent(page, 'header', {
-        exampleName: 'with-navigation'
-      })
+      await render(page, 'header', examples['with navigation'])
     })
 
     afterAll(async () => {
@@ -44,15 +47,13 @@ describe('Header navigation', () => {
     describe('when no navigation is present', () => {
       it('exits gracefully with no errors', async () => {
         // Errors logged to the console will cause this test to fail
-        await goToComponent(page, 'header')
+        await render(page, 'header', examples.default)
       })
     })
 
     describe('on page load', () => {
       beforeAll(async () => {
-        await goToComponent(page, 'header', {
-          exampleName: 'with-navigation'
-        })
+        await render(page, 'header', examples['with navigation'])
       })
 
       it('reveals the menu button', async () => {
@@ -96,9 +97,7 @@ describe('Header navigation', () => {
 
     describe('when menu button is pressed', () => {
       beforeAll(async () => {
-        await goToComponent(page, 'header', {
-          exampleName: 'with-navigation'
-        })
+        await render(page, 'header', examples['with navigation'])
 
         await page.waitForSelector('.govuk-js-header-toggle')
         await page.click('.govuk-js-header-toggle')
@@ -131,9 +130,7 @@ describe('Header navigation', () => {
 
     describe('when menu button is pressed twice', () => {
       beforeAll(async () => {
-        await goToComponent(page, 'header', {
-          exampleName: 'with-navigation'
-        })
+        await render(page, 'header', examples['with navigation'])
 
         await page.waitForSelector('.govuk-js-header-toggle')
         await page.click('.govuk-js-header-toggle')
@@ -166,12 +163,6 @@ describe('Header navigation', () => {
     })
 
     describe('errors at instantiation', () => {
-      let examples
-
-      beforeAll(async () => {
-        examples = await getExamples('header')
-      })
-
       it('throws when GOV.UK Frontend is not supported', async () => {
         await expect(
           render(page, 'header', examples.default, {

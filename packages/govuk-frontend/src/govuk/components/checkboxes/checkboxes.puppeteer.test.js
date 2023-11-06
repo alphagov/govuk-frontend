@@ -1,5 +1,4 @@
 const {
-  goToComponent,
   goToExample,
   getAttribute,
   getProperty,
@@ -9,6 +8,12 @@ const {
 const { getExamples } = require('@govuk-frontend/lib/components')
 
 describe('Checkboxes with conditional reveals', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('checkboxes')
+  })
+
   describe('when JavaScript is unavailable or fails', () => {
     beforeAll(async () => {
       await page.setJavaScriptEnabled(false)
@@ -24,9 +29,7 @@ describe('Checkboxes with conditional reveals', () => {
       let $conditionals
 
       beforeAll(async () => {
-        await goToComponent(page, 'checkboxes', {
-          exampleName: 'with-conditional-items'
-        })
+        await render(page, 'checkboxes', examples['with conditional items'])
 
         $component = await page.$('.govuk-checkboxes')
         $inputs = await $component.$$('.govuk-checkboxes__input')
@@ -64,9 +67,11 @@ describe('Checkboxes with conditional reveals', () => {
       let $inputs
 
       beforeAll(async () => {
-        await goToComponent(page, 'checkboxes', {
-          exampleName: 'with-conditional-item-checked'
-        })
+        await render(
+          page,
+          'checkboxes',
+          examples['with conditional item checked']
+        )
 
         $component = await page.$('.govuk-checkboxes')
         $inputs = await $component.$$('.govuk-checkboxes__input')
@@ -98,9 +103,7 @@ describe('Checkboxes with conditional reveals', () => {
       let $inputs
 
       beforeEach(async () => {
-        await goToComponent(page, 'checkboxes', {
-          exampleName: 'with-conditional-items'
-        })
+        await render(page, 'checkboxes', examples['with conditional items'])
 
         $component = await page.$('.govuk-checkboxes')
         $inputs = await $component.$$('.govuk-checkboxes__input')
@@ -177,23 +180,29 @@ describe('Checkboxes with conditional reveals', () => {
     describe('with conditional items with special characters', () => {
       it('does not error when ID of revealed content contains special characters', async () => {
         // Errors logged to the console will cause this test to fail
-        await goToComponent(page, 'checkboxes', {
-          exampleName: 'with-conditional-items-with-special-characters'
-        })
+        await render(
+          page,
+          'checkboxes',
+          examples['with conditional items with special characters']
+        )
       })
     })
   })
 })
 
 describe('Checkboxes with a "None" checkbox', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('checkboxes')
+  })
+
   describe('when JavaScript is available', () => {
     let $component
     let $inputs
 
     beforeEach(async () => {
-      await goToComponent(page, 'checkboxes', {
-        exampleName: 'with-divider-and-None'
-      })
+      await render(page, 'checkboxes', examples['with divider and None'])
 
       $component = await page.$('.govuk-checkboxes')
       $inputs = await $component.$$('.govuk-checkboxes__input')
@@ -228,14 +237,22 @@ describe('Checkboxes with a "None" checkbox', () => {
 })
 
 describe('Checkboxes with a "None" checkbox and conditional reveals', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('checkboxes')
+  })
+
   describe('when JavaScript is available', () => {
     let $component
     let $inputs
 
     beforeEach(async () => {
-      await goToComponent(page, 'checkboxes', {
-        exampleName: 'with-divider,-None-and-conditional-items'
-      })
+      await render(
+        page,
+        'checkboxes',
+        examples['with divider, None and conditional items']
+      )
 
       $component = await page.$('.govuk-checkboxes')
       $inputs = await $component.$$('.govuk-checkboxes__input')
@@ -266,13 +283,22 @@ describe('Checkboxes with a "None" checkbox and conditional reveals', () => {
 })
 
 describe('Checkboxes with multiple groups and a "None" checkbox and conditional reveals', () => {
+  let examples
+
+  beforeAll(async () => {
+    examples = await getExamples('checkboxes')
+  })
+
   describe('when JavaScript is available', () => {
+    /** @type {globalThis.page} */
+    let page
+
     let $inputsPrimary
     let $inputsSecondary
     let $inputsOther
 
     beforeEach(async () => {
-      await goToExample(page, 'conditional-reveals')
+      page = await goToExample(browser, 'conditional-reveals')
 
       $inputsPrimary = await page.$$(
         '.govuk-checkboxes__input[id^="colour-primary"]'
@@ -320,12 +346,6 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
     })
 
     describe('errors at instantiation', () => {
-      let examples
-
-      beforeAll(async () => {
-        examples = await getExamples('checkboxes')
-      })
-
       it('throws when GOV.UK Frontend is not supported', async () => {
         await expect(
           render(page, 'checkboxes', examples.default, {

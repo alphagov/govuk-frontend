@@ -64,22 +64,23 @@ describe('Components', () => {
 
       // Validate component examples
       for (const { component: componentName, fixtures } of componentsFixtures) {
-        const fixtureTasks = fixtures.map(
-          async ({ name: exampleName, options }) => {
-            const html = render(componentName, { context: options })
+        const fixtureTasks = fixtures.map(async (fixture) => {
+          const html = render(componentName, {
+            context: fixture.options,
+            fixture
+          })
 
-            // Validate HTML
-            return expect({
-              componentName,
-              exampleName,
-              report: await validator.validateString(html)
-            }).toEqual({
-              componentName,
-              exampleName,
-              report: expect.objectContaining({ valid: true })
-            })
-          }
-        )
+          // Validate HTML
+          return expect({
+            componentName,
+            exampleName: fixture.name,
+            report: await validator.validateString(html)
+          }).toEqual({
+            componentName,
+            exampleName: fixture.name,
+            report: expect.objectContaining({ valid: true })
+          })
+        })
 
         // Validate all component examples in parallel
         await Promise.all(fixtureTasks)
