@@ -4,6 +4,22 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### Recommended changes
+
+We've recently made some non-breaking changes to GOV.UK Frontend. Implementing these changes will make your service work better.
+
+#### Remove the X-UA-Compatible meta tag
+
+Remove the `<meta http-equiv="X-UA-Compatible" content="IE=edge">` meta tag from your page template.
+
+Internet Explorer versions 8, 9 and 10 included a feature that would try to determine if the page was built for an older version of IE and would silently enable compatibility mode, which would modify the rendering engine's behaviour to match the older version of IE. Setting this meta tag prevented that behaviour.
+
+IE11 deprecated this meta tag and defaulted to always using IE11's renderer when the page has a HTML5 doctype (`<!DOCTYPE html>`).
+
+As Frontend no longer supports Internet Explorer versions older than 11, this meta tag can now be removed.
+
+This change was made in [pull request #4434: Remove X-UA-Compatible meta tag](https://github.com/alphagov/govuk-frontend/pull/4434).
+
 ## 5.0.0-beta.1 (Pre-release)
 
 ### Fixes
@@ -23,7 +39,7 @@ We’ve added a new component which creates lists of tasks that users need to co
 
 Each task in the list can have a title, status, link and an optional hint. When a link is added, the whole row is clickable.
 
-This change was made in [pull request #2261: Task list component.](https://github.com/alphagov/govuk-frontend/pull/2261).
+This change was made in [pull request #2261: Task list component](https://github.com/alphagov/govuk-frontend/pull/2261).
 
 #### Added focus style for links containing non-text content
 
@@ -435,7 +451,7 @@ We no longer supply a dedicated class for headers with navigation but no service
 
 This change was introduced in [pull request #3595: Remove deprecated `.govuk-header__navigation--no-service-name` class](https://github.com/alphagov/govuk-frontend/pull/3595).
 
-### Suggested changes
+### Recommended changes
 
 #### Update the Pagination component's default `aria-label`
 
