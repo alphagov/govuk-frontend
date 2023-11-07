@@ -1,3 +1,5 @@
+{% from "../../macros/i18n.njk" import govukI18nAttributes %}
+
 {% from "../error-message/macro.njk" import govukErrorMessage -%}
 {% from "../hint/macro.njk" import govukHint %}
 {% from "../label/macro.njk" import govukLabel %}
@@ -39,7 +41,14 @@
   }) | indent(2) | trim }}
 {% endif %}
 
-  <div class="govuk-password-input" data-module="govuk-password-input">
+  <div class="govuk-password-input" data-module="govuk-password-input"
+    {%- if params.disableFormSubmitCheck %} data-disable-form-submit-check="true"{% endif %}
+    {{- govukI18nAttributes({ key: 'show-password', message: params.showPasswordText }) -}}
+    {{- govukI18nAttributes({ key: 'hide-password', message: params.hidePasswordText }) -}}
+    {{- govukI18nAttributes({ key: 'show-password-aria-label', message: params.showPasswordAriaLabelText }) -}}
+    {{- govukI18nAttributes({ key: 'hide-password-aria-label', message: params.hidePasswordAriaLabelText }) -}}
+    {{- govukI18nAttributes({ key: 'password-shown-announcement', message: params.passwordShownAnnouncementText }) -}}
+    {{- govukI18nAttributes({ key: 'password-hidden-announcement', message: params.passwordHiddenAnnouncementText }) -}}>
 
     <input
       class="govuk-input govuk-password-input__input {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-input--error{% endif %}"
