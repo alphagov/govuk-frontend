@@ -162,7 +162,9 @@ export default async () => {
       res.locals.componentView = render(res.locals.componentName, {
         context: fixture.options,
         env,
-        fixture
+
+        // Skip Nunjucks render from cache in development
+        fixture: !flags.isDevelopment ? fixture : undefined
       })
 
       let bodyClasses = 'app-template__body'

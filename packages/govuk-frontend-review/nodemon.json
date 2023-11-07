@@ -2,7 +2,7 @@
   "watch": [
     "./src",
     "./dist/**/index.html",
-    "../govuk-frontend/dist/govuk/**/*.json",
+    "../govuk-frontend/dist/govuk/**/fixtures.json",
     "../../shared/config",
     "../../shared/lib",
     "../../shared/stats"
