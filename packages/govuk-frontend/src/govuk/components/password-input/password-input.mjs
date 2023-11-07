@@ -91,7 +91,7 @@ export class PasswordInput extends GOVUKFrontendComponent {
     $showHideButton.setAttribute('type', 'button')
     $showHideButton.setAttribute(
       'aria-label',
-      this.i18n.t('showPasswordFullText')
+      this.i18n.t('showPasswordAriaLabel')
     )
     $showHideButton.innerHTML = this.i18n.t('showPassword')
     this.$showHideButton = $showHideButton
@@ -100,7 +100,7 @@ export class PasswordInput extends GOVUKFrontendComponent {
     // Create and append the status text for screen readers
     const $statusText = document.createElement('span')
     $statusText.className = 'govuk-visually-hidden'
-    $statusText.innerText = this.i18n.t('hiddenPasswordAnnouncement')
+    $statusText.innerText = this.i18n.t('passwordHiddenAnnouncement')
     $statusText.setAttribute('aria-live', 'polite')
     this.$statusText = $statusText
     this.$wrapper.insertBefore($statusText, this.$input.nextSibling)
@@ -135,12 +135,12 @@ export class PasswordInput extends GOVUKFrontendComponent {
     this.$showHideButton.setAttribute(
       'aria-label',
       passwordIsHidden
-        ? this.i18n.t('showPasswordFullText')
-        : this.i18n.t('hidePasswordFullText')
+        ? this.i18n.t('showPasswordAriaLabel')
+        : this.i18n.t('hidePasswordAriaLabel')
     )
     this.$statusText.innerText = passwordIsHidden
-      ? this.i18n.t('hiddenPasswordAnnouncement')
-      : this.i18n.t('shownPasswordAnnouncement')
+      ? this.i18n.t('passwordHiddenAnnouncement')
+      : this.i18n.t('passwordShownAnnouncement')
   }
 
   /**
@@ -150,10 +150,10 @@ export class PasswordInput extends GOVUKFrontendComponent {
   revertToPasswordOnFormSubmit() {
     this.$showHideButton.setAttribute(
       'aria-label',
-      this.i18n.t('showPasswordFullText')
+      this.i18n.t('showPasswordAriaLabel')
     )
     this.$showHideButton.innerHTML = this.i18n.t('showPassword')
-    this.$statusText.innerText = this.i18n.t('hiddenPasswordAnnouncement')
+    this.$statusText.innerText = this.i18n.t('passwordHiddenAnnouncement')
     this.$input.setAttribute('type', 'password')
   }
 
@@ -175,10 +175,10 @@ export class PasswordInput extends GOVUKFrontendComponent {
     i18n: {
       showPassword: 'Show',
       hidePassword: 'Hide',
-      showPasswordFullText: 'Show password',
-      hidePasswordFullText: 'Hide password',
-      shownPasswordAnnouncement: 'Your password is visible',
-      hiddenPasswordAnnouncement: 'Your password is hidden'
+      showPasswordAriaLabel: 'Show password',
+      hidePasswordAriaLabel: 'Hide password',
+      passwordShownAnnouncement: 'Your password is visible',
+      passwordHiddenAnnouncement: 'Your password is hidden'
     }
   })
 
@@ -212,14 +212,14 @@ export class PasswordInput extends GOVUKFrontendComponent {
  *   password is currently hidden. HTML is acceptable.
  * @property {string} [hidePassword] - Visible text of the button when the
  *   password is currently visible. HTML is acceptable.
- * @property {string} [showPasswordFullText] - aria-label of the button when
+ * @property {string} [showPasswordAriaLabel] - aria-label of the button when
  *   the password is currently hidden. Plain text only.
- * @property {string} [hidePasswordFullText] - aria-label of the button when
+ * @property {string} [hidePasswordAriaLabel] - aria-label of the button when
  *   the password is currently visible. Plain text only.
- * @property {string} [shownPasswordAnnouncement] - Screen reader
+ * @property {string} [passwordShownAnnouncement] - Screen reader
  *   announcement to make when the password has just become visible.
  *   Plain text only.
- * @property {string} [hiddenPasswordAnnouncement] - Screen reader
+ * @property {string} [passwordHiddenAnnouncement] - Screen reader
  *   announcement to make when the password has just been hidden.
  *   Plain text only.
  */
