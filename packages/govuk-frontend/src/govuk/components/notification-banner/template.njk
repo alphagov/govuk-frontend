@@ -26,9 +26,7 @@
   {% set title = "Important" %}
 {%- endif -%}
 
-<div class="govuk-notification-banner {%- if typeClass %} {{ typeClass }}{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}" role="{{ role }}"
-  aria-labelledby="{{ params.titleId | default("govuk-notification-banner-title", true) }}"
-  data-module="govuk-notification-banner"
+<div class="govuk-notification-banner {%- if typeClass %} {{ typeClass }}{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}" role="{{ role }}" aria-labelledby="{{ params.titleId | default("govuk-notification-banner-title", true) }}" data-module="govuk-notification-banner"
   {%- if params.disableAutoFocus !== undefined %} data-disable-auto-focus="{{ params.disableAutoFocus }}"{% endif %}
   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
   <div class="govuk-notification-banner__header">
