@@ -1,4 +1,4 @@
-import { join, relative } from 'path'
+import { join } from 'path'
 
 import { paths } from '@govuk-frontend/config'
 
@@ -6,7 +6,6 @@ import {
   componentNameToClassName,
   componentNameToConfigName,
   componentNameToMacroName,
-  componentPathToModuleName,
   packageResolveToPath,
   packageTypeToPath,
   packageNameToPath
@@ -92,74 +91,6 @@ describe('componentNameToMacroName', () => {
     "transforms component '$name' to macro '$macroName'",
     ({ name, macroName }) => {
       expect(componentNameToMacroName(name)).toBe(macroName)
-    }
-  )
-})
-
-describe('componentPathToModuleName', () => {
-  const components = [
-    {
-      path: 'components/button/button.mjs',
-      moduleName: 'GOVUKFrontend.Button'
-    },
-    {
-      path: 'components/radios/radios.mjs',
-      moduleName: 'GOVUKFrontend.Radios'
-    },
-    {
-      path: 'components/skip-link/skip-link.mjs',
-      moduleName: 'GOVUKFrontend.SkipLink'
-    },
-    {
-      path: 'components/character-count/character-count.mjs',
-      moduleName: 'GOVUKFrontend.CharacterCount'
-    }
-  ]
-
-  const others = ['common/index.mjs', 'common/normalise-dataset.mjs']
-
-  it.each(components)(
-    "transforms '$path' to '$moduleName'",
-    ({ path, moduleName }) => {
-      const srcPath = join(paths.package, 'src/govuk')
-
-      // Path variations
-      const pathAbsolute = join(srcPath, path)
-      const pathRelativeToRoot = relative(paths.root, pathAbsolute)
-      const pathRelativeToSource = relative(srcPath, pathAbsolute)
-
-      // Absolute path
-      // For example `/path/to/project/packages/govuk-frontend/src/govuk/components/button/button.mjs`
-      expect(componentPathToModuleName(pathAbsolute)).toBe(moduleName)
-
-      // Relative path (to project)
-      // For example `packages/govuk-frontend/src/govuk/components/button/button.mjs`
-      expect(componentPathToModuleName(pathRelativeToRoot)).toBe(moduleName)
-
-      // Relative path (to source)
-      // For example `components/button/button.mjs`
-      expect(componentPathToModuleName(pathRelativeToSource)).toBe(moduleName)
-    }
-  )
-
-  it.each(others)(
-    "transforms unknown components to 'GOVUKFrontend'",
-    (path) => {
-      const srcPath = join(paths.package, 'src/govuk')
-
-      // Path variations
-      const pathAbsolute = join(srcPath, path)
-      const pathRelativeToRoot = relative(paths.root, pathAbsolute)
-      const pathRelativeToSource = relative(srcPath, pathAbsolute)
-
-      // Unknown components always named 'GOVUKFrontend'
-      expect(componentPathToModuleName(pathAbsolute)).toBe('GOVUKFrontend')
-      expect(componentPathToModuleName(pathRelativeToRoot)).toBe(
-        'GOVUKFrontend'
-      )
-      expect(componentPathToModuleName(pathRelativeToSource)).toBe(
-        'GOVUKFrontend'
-      )
     }
   )
 })
