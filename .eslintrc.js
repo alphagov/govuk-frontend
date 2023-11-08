@@ -38,7 +38,6 @@ module.exports = {
         // Turn off known code suggestions until support is confirmed
         // e.g. Already supported ES2015+ features or via Babel transforms
         '@typescript-eslint/prefer-nullish-coalescing': 'off',
-        '@typescript-eslint/prefer-optional-chain': 'off',
 
         // Check type support for template string implicit `.toString()`
         '@typescript-eslint/restrict-template-expressions': [
@@ -59,6 +58,9 @@ module.exports = {
         // ES modules include ES2017 'Object.entries()' coverage
         // https://browsersl.ist/#q=supports+es6-module+and+not+supports+object-entries
         'es-x/no-object-entries': 'off',
+
+        // Babel transpiles ES2020 optional chaining
+        'es-x/no-optional-chaining': 'off',
 
         // JSDoc blocks are mandatory in source code
         'jsdoc/require-jsdoc': [
