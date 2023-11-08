@@ -35,6 +35,12 @@ module.exports = {
           }
         ],
 
+        // Turn off known code suggestions until support is confirmed
+        // e.g. Already supported ES2015+ features or via Babel transforms
+        '@typescript-eslint/prefer-includes': 'off',
+        '@typescript-eslint/prefer-nullish-coalescing': 'off',
+        '@typescript-eslint/prefer-optional-chain': 'off',
+
         // Check type support for template string implicit `.toString()`
         '@typescript-eslint/restrict-template-expressions': [
           'error',
