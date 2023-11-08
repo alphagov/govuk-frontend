@@ -110,15 +110,11 @@ export class Tabs extends GOVUKFrontendComponent {
     // MediaQueryList.addEventListener isn't supported by Safari < 14 so we need
     // to be able to fall back to the deprecated MediaQueryList.addListener
     if ('addEventListener' in this.mql) {
-      this.mql.addEventListener('change', () => {
-        this.checkMode()
-      })
+      this.mql.addEventListener('change', () => this.checkMode())
     } else {
       // @ts-expect-error Property 'addListener' does not exist
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-      this.mql.addListener(() => {
-        this.checkMode()
-      })
+      this.mql.addListener(() => this.checkMode())
     }
 
     this.checkMode()

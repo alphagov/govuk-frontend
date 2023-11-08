@@ -1,4 +1,4 @@
-const { resolve } = require('path')
+const { join } = require('path')
 
 module.exports = {
   settings: {
@@ -14,12 +14,12 @@ module.exports = {
       parserOptions: {
         // Note: Allow ES2015 for import/export syntax
         ecmaVersion: '2015',
-        project: [resolve(__dirname, 'tsconfig.dev.json')]
+        project: [join(__dirname, 'tsconfig.build.json')]
       },
       plugins: ['@typescript-eslint', 'es-x'],
       extends: [
-        'plugin:@typescript-eslint/recommended',
-        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        'plugin:@typescript-eslint/strict-type-checked',
+        'plugin:@typescript-eslint/stylistic-type-checked',
         'plugin:es-x/restrict-to-es2015',
         'prettier'
       ],
@@ -27,6 +27,20 @@ module.exports = {
         browser: true
       },
       rules: {
+        // Allow void return shorthand in arrow functions
+        '@typescript-eslint/no-confusing-void-expression': [
+          'error',
+          {
+            ignoreArrowShorthand: true
+          }
+        ],
+
+        // Turn off known code suggestions until support is confirmed
+        // e.g. Already supported ES2015+ features or via Babel transforms
+        '@typescript-eslint/prefer-includes': 'off',
+        '@typescript-eslint/prefer-nullish-coalescing': 'off',
+        '@typescript-eslint/prefer-optional-chain': 'off',
+
         // Check type support for template string implicit `.toString()`
         '@typescript-eslint/restrict-template-expressions': [
           'error',
