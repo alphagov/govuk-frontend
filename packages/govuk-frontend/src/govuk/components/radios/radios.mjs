@@ -112,7 +112,7 @@ export class Radios extends GOVUKFrontendComponent {
     }
 
     const $target = document.getElementById(targetId)
-    if ($target && $target.classList.contains('govuk-radios__conditional')) {
+    if ($target?.classList.contains('govuk-radios__conditional')) {
       const inputIsChecked = $input.checked
 
       $input.setAttribute('aria-expanded', inputIsChecked.toString())

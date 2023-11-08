@@ -42,7 +42,7 @@ export class I18n {
     // If the `count` option is set, determine which plural suffix is needed and
     // change the lookupKey to match. We check to see if it's numeric instead of
     // falsy, as this could legitimately be 0.
-    if (options && typeof options.count === 'number') {
+    if (typeof options?.count === 'number') {
       // Get the plural suffix
       lookupKey = `${lookupKey}.${this.getPluralSuffix(
         lookupKey,
