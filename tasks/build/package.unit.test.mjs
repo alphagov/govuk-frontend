@@ -220,7 +220,7 @@ describe('packages/govuk-frontend/dist/', () => {
 
         // Look for AMD module definition for 'GOVUKFrontend'
         expect(contents).toContain(
-          "typeof define === 'function' && define.amd ? define('GOVUKFrontend', ['exports'], factory)"
+          "(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.GOVUKFrontend = {}));"
         )
 
         // Look for bundled components with CommonJS named exports

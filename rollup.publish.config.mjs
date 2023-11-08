@@ -1,5 +1,4 @@
 import { pkg } from '@govuk-frontend/config'
-import { componentPathToModuleName } from '@govuk-frontend/lib/names'
 import { babel } from '@rollup/plugin-babel'
 import replace from '@rollup/plugin-replace'
 import { defineConfig } from 'rollup'
@@ -46,9 +45,8 @@ export default defineConfig(({ i: input }) => ({
       // Bundled modules
       preserveModules: false,
 
-      // Components are given names (e.g window.GOVUKFrontend.Accordion)
-      amd: { id: componentPathToModuleName(input) },
-      name: componentPathToModuleName(input)
+      // Export via `window.GOVUKFrontend.${exportName}`
+      name: 'GOVUKFrontend'
     }
   ],
 
