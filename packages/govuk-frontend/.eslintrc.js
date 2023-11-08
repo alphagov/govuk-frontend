@@ -37,7 +37,6 @@ module.exports = {
 
         // Turn off known code suggestions until support is confirmed
         // e.g. Already supported ES2015+ features or via Babel transforms
-        '@typescript-eslint/prefer-includes': 'off',
         '@typescript-eslint/prefer-nullish-coalescing': 'off',
         '@typescript-eslint/prefer-optional-chain': 'off',
 
@@ -52,6 +51,10 @@ module.exports = {
 
         // Babel transpiles ES2020 class fields
         'es-x/no-class-fields': 'off',
+
+        // ES modules include ES2016 '[].includes()' coverage
+        // https://browsersl.ist/#q=supports+es6-module+and+not+supports+array-includes
+        'es-x/no-array-prototype-includes': 'off',
 
         // ES modules include ES2017 'Object.entries()' coverage
         // https://browsersl.ist/#q=supports+es6-module+and+not+supports+object-entries
