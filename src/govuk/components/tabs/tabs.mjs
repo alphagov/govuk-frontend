@@ -126,7 +126,7 @@ export class Tabs extends GOVUKFrontendComponent {
    * @private
    */
   checkMode() {
-    if (this.mql && this.mql.matches) {
+    if (this.mql?.matches) {
       this.setup()
     } else {
       this.teardown()
@@ -386,7 +386,7 @@ export class Tabs extends GOVUKFrontendComponent {
    */
   activateNextTab() {
     const $currentTab = this.getCurrentTab()
-    if (!$currentTab || !$currentTab.parentElement) {
+    if (!$currentTab?.parentElement) {
       return
     }
 
@@ -413,7 +413,7 @@ export class Tabs extends GOVUKFrontendComponent {
    */
   activatePreviousTab() {
     const $currentTab = this.getCurrentTab()
-    if (!$currentTab || !$currentTab.parentElement) {
+    if (!$currentTab?.parentElement) {
       return
     }
 
