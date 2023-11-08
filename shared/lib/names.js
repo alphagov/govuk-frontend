@@ -1,7 +1,6 @@
-const { dirname, join, parse } = require('path')
+const { dirname, join } = require('path')
 
 const { paths } = require('@govuk-frontend/config')
-const { minimatch } = require('minimatch')
 
 /**
  * Convert a kebab-cased string to a PascalCased one
@@ -61,27 +60,6 @@ function componentNameToClassName(componentName) {
  */
 function componentNameToConfigName(componentName) {
   return kebabCaseToCamelCase(componentName)
-}
-
-/**
- * Convert component path to JavaScript module name
- *
- * Used by Rollup to set Universal Module Definition (UMD) export names for
- * `window` globals maintaining compatibility with CommonJS and AMD `require()`
- *
- * Component paths have kebab-cased file names (button.mjs, date-input.mjs),
- * whilst module names have a `GOVUKFrontend.` prefix and are PascalCased
- * (GOVUKFrontend.Button, GOVUKFrontend.CharacterCount)
- *
- * @param {string} componentPath - Path to component with kebab-cased file name
- * @returns {string} The name of its corresponding module
- */
-function componentPathToModuleName(componentPath) {
-  const { name } = parse(componentPath)
-
-  return minimatch(componentPath, '**/components/**', { matchBase: true })
-    ? `GOVUKFrontend.${componentNameToClassName(name)}`
-    : 'GOVUKFrontend'
 }
 
 /**
@@ -170,7 +148,6 @@ module.exports = {
   componentNameToClassName,
   componentNameToConfigName,
   componentNameToMacroName,
-  componentPathToModuleName,
   packageResolveToPath,
   packageTypeToPath,
   packageNameToPath
