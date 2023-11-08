@@ -13,7 +13,9 @@ describe('Cookie Banner', () => {
       const $ = render('cookie-banner', examples.default)
 
       const $heading = $('.govuk-cookie-banner__heading')
-      expect($heading.text()).toEqual('Cookies on this government service')
+      expect($heading.text().trim()).toEqual(
+        'Cookies on this government service'
+      )
     })
 
     it('renders heading as escaped html when passed as text', () => {
@@ -38,7 +40,7 @@ describe('Cookie Banner', () => {
       const $ = render('cookie-banner', examples.default)
 
       const $content = $('.govuk-cookie-banner__content')
-      expect($content.text()).toEqual(
+      expect($content.text().trim()).toEqual(
         'We use analytics cookies to help understand how users use our service.'
       )
     })
