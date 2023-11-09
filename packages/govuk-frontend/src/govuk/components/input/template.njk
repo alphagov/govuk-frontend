@@ -41,7 +41,7 @@
   {%- if params.prefix or params.suffix %}<div class="govuk-input__wrapper">{% endif -%}
 
   {%- if params.prefix.text or params.prefix.html -%}
-    <div class="govuk-input__prefix {{- ' ' + params.prefix.classes if params.prefix.classes }}" aria-hidden="true" {%- for attribute, value in params.prefix.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+    <div class="govuk-input__prefix {%- if params.prefix.classes %} {{ params.prefix.classes }}{% endif %}" aria-hidden="true" {%- for attribute, value in params.prefix.attributes %} {{attribute}}="{{value}}"{% endfor %}>
       {{- params.prefix.html | safe if params.prefix.html else params.prefix.text -}}
     </div>
   {% endif -%}
@@ -57,7 +57,7 @@
   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
 
   {%- if params.suffix.text or params.suffix.html -%}
-    <div class="govuk-input__suffix {{- ' ' + params.suffix.classes if params.suffix.classes }}" aria-hidden="true" {%- for attribute, value in params.suffix.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+    <div class="govuk-input__suffix {%- if params.suffix.classes %} {{ params.suffix.classes }}{% endif %}" aria-hidden="true" {%- for attribute, value in params.suffix.attributes %} {{attribute}}="{{value}}"{% endfor %}>
       {{- params.suffix.html | safe if params.suffix.html else params.suffix.text -}}
     </div>
   {% endif -%}
