@@ -1,5 +1,7 @@
 const { render } = require('@govuk-frontend/helpers/nunjucks')
 const { getExamples } = require('@govuk-frontend/lib/components')
+const { indent } = require('nunjucks/src/filters')
+const { outdent } = require('outdent')
 
 describe('Hint', () => {
   let examples
@@ -46,7 +48,13 @@ describe('Hint', () => {
 
       const content = $('.govuk-hint').html().trim()
       expect(content).toEqual(
-        'It\'s on your National Insurance card, benefit letter, payslip or <a class="govuk-link" href="#">P60</a>.\nFor example, \'QQ 12 34 56 C\'.'
+        indent(
+          outdent`
+            It's on your National Insurance card, benefit letter, payslip or <a class="govuk-link" href="#">P60</a>.
+            For example, 'QQ 12 34 56 C'.
+          `,
+          2
+        )
       )
     })
 
