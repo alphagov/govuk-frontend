@@ -7,12 +7,8 @@
           <div class="govuk-footer__section govuk-grid-column-{{ nav.width | default("full", true) }}">
             <h2 class="govuk-footer__heading govuk-heading-m">{{ nav.title }}</h2>
             {% if nav.items | length %}
-              {% set listClasses %}
-                {% if nav.columns %}
-                  govuk-footer__list--columns-{{ nav.columns }}
-                {% endif %}
-              {% endset %}
-              <ul class="govuk-footer__list {{ listClasses | trim }}">
+              {% set listClasses = "govuk-footer__list--columns-" + nav.columns if nav.columns %}
+              <ul class="govuk-footer__list {%- if listClasses %} {{ listClasses }}{% endif %}">
                 {% for item in nav.items %}
                   {% if item.href and item.text %}
                     <li class="govuk-footer__list-item">

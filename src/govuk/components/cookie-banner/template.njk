@@ -5,12 +5,7 @@
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
 
   {%- for message in params.messages %}
-    {% set classNames = "govuk-cookie-banner__message govuk-width-container" %}
-    {% if message.classes %}
-      {% set classNames = classNames + " " + message.classes %}
-    {% endif %}
-
-    <div class="{{classNames}}" {%- if message.role %} role="{{message.role}}"{% endif %}
+    <div class="govuk-cookie-banner__message {%- if message.classes %} {{message.classes}}{% endif %} govuk-width-container" {%- if message.role %} role="{{message.role}}"{% endif %}
     {%- for attribute, value in message.attributes %} {{attribute}}="{{value}}"{% endfor %}
     {%- if message.hidden %} hidden{% endif %}>
 
@@ -49,11 +44,7 @@
                 "attributes": action.attributes
               }) | indent(12) | trim }}
             {% else %}
-              {% set linkClasses = "govuk-link" %}
-              {% if action.classes %}
-                {% set linkClasses = linkClasses + " " + action.classes %}
-              {% endif %}
-              <a class="{{ linkClasses }}" href="{{ action.href }}" {%- for attribute, value in action.attributes %} {{attribute}}="{{value}}"{% endfor %}>{{ action.text }}</a>
+              <a class="govuk-link {%- if action.classes %} {{ action.classes }}{% endif %}" href="{{ action.href }}" {%- for attribute, value in action.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>{{ action.text }}</a>
             {% endif %}
           {% else %}
             {{ govukButton({

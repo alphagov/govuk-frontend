@@ -63,7 +63,7 @@
       <ul id="navigation" class="govuk-header__navigation-list">
         {% for item in params.navigation %}
           {% if item.text or item.html %}
-            <li class="govuk-header__navigation-item{{ ' govuk-header__navigation-item--active' if item.active }}">
+            <li class="govuk-header__navigation-item {%- if item.active %} govuk-header__navigation-item--active{% endif %}">
               {% if item.href %}
                 <a class="govuk-header__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
               {% endif %}

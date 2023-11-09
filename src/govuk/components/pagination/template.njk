@@ -1,13 +1,13 @@
 {% set blockLevel = not params.items and (params.next or params.previous) %}
 
-<nav class="govuk-pagination {{- ' ' + params.classes if params.classes }} {{- ' govuk-pagination--block' if blockLevel }}" role="navigation" aria-label="{{ params.landmarkLabel | default("Pagination", true) }}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}" {%- endfor -%}>
+<nav class="govuk-pagination {%- if blockLevel %} govuk-pagination--block{% endif %} {%- if params.classes %} {{ params.classes }}{% endif %}" role="navigation" aria-label="{{ params.landmarkLabel | default("Pagination", true) }}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}" {%- endfor -%}>
   {%- if params.previous and params.previous.href -%}
     <div class="govuk-pagination__prev">
       <a class="govuk-link govuk-pagination__link" href="{{ params.previous.href }}" rel="prev" {%- for attribute, value in params.previous.attributes %} {{ attribute }}="{{ value }}" {%- endfor -%}>
         <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
           <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
         </svg>
-        <span class="govuk-pagination__link-title {{- ' govuk-pagination__link-title--decorated' if blockLevel and not params.previous.labelText }}">
+        <span class="govuk-pagination__link-title {%- if blockLevel and not params.previous.labelText %} govuk-pagination__link-title--decorated{% endif %}">
           {%- if params.previous.html or params.previous.text -%}
             {{ params.previous.html | safe if params.previous.html else params.previous.text }}
           {%- else -%}
@@ -28,7 +28,7 @@
         {%- if item.ellipsis -%}
           <li class="govuk-pagination__item govuk-pagination__item--ellipses">&ctdot;</li>
         {%- elseif item.number -%}
-          <li class="govuk-pagination__item {{- ' govuk-pagination__item--current' if item.current }}">
+          <li class="govuk-pagination__item {%- if item.current %} govuk-pagination__item--current{% endif %}">
             <a class="govuk-link govuk-pagination__link" href="{{ item.href }}" aria-label="{{ item.visuallyHiddenText | default("Page " + item.number) }}" {%- if item.current %} aria-current="page" {%- endif -%} {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}" {%- endfor -%}>
               {{ item.number }}
             </a>
@@ -50,7 +50,7 @@
         {%- if blockLevel -%}
           {{- nextArrow | safe -}}
         {%- endif %}
-        <span class="govuk-pagination__link-title {{- ' govuk-pagination__link-title--decorated' if blockLevel and not params.next.labelText }}">
+        <span class="govuk-pagination__link-title {%- if blockLevel and not params.next.labelText %} govuk-pagination__link-title--decorated{% endif %}">
           {%- if params.next.html or params.next.text -%}
             {{ params.next.html | safe if params.next.html else params.next.text }}
           {%- else -%}
