@@ -5,7 +5,7 @@
   {% set classNames = classNames + " " + params.classes %}
 {% endif %}
 
-{# Determine type of element to use, if not explicitly set #}
+{#- Determine type of element to use, if not explicitly set #}
 {%- if params.element %}
   {% set element = params.element | lower %}
 {% else %}
