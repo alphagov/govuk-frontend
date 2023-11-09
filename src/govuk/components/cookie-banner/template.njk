@@ -2,11 +2,11 @@
 
 <div class="govuk-cookie-banner {%- if params.classes %} {{ params.classes }}{% endif %}" data-nosnippet role="region" aria-label="{{ params.ariaLabel | default("Cookie banner", true) }}"
   {%- if params.hidden %} hidden{% endif %}
-  {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+  {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
 
   {%- for message in params.messages %}
-    <div class="govuk-cookie-banner__message {%- if message.classes %} {{message.classes}}{% endif %} govuk-width-container" {%- if message.role %} role="{{message.role}}"{% endif %}
-    {%- for attribute, value in message.attributes %} {{attribute}}="{{value}}"{% endfor %}
+    <div class="govuk-cookie-banner__message {%- if message.classes %} {{ message.classes }}{% endif %} govuk-width-container" {%- if message.role %} role="{{ message.role }}"{% endif %}
+    {%- for attribute, value in message.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
     {%- if message.hidden %} hidden{% endif %}>
 
     <div class="govuk-grid-row">
