@@ -1,9 +1,8 @@
 {% from "../../macros/i18n.njk" import govukI18nAttributes %}
-
 {% from "../textarea/macro.njk" import govukTextarea %}
 {% from "../hint/macro.njk" import govukHint %}
 
-{%- set hasNoLimit = (not params.maxwords and not params.maxlength) %}
+{%- set hasNoLimit = (not params.maxwords and not params.maxlength) -%}
 
 <div class="govuk-character-count" data-module="govuk-character-count"
   {%- if params.maxlength %} data-maxlength="{{ params.maxlength }}"{% endif %}

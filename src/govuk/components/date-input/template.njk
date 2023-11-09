@@ -7,7 +7,7 @@
   aria-describedby – for example hints or error messages -#}
 {% set describedBy = params.fieldset.describedBy if params.fieldset.describedBy else "" %}
 
-{% if params.items | length %}
+{%- if params.items | length %}
   {% set dateInputItems = params.items %}
 {% else %}
   {% set dateInputItems = [
@@ -74,7 +74,7 @@
     </div>
   {% endfor %}
   </div>
-{% endset %}
+{% endset -%}
 
 <div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}">
 {% if params.fieldset %}
