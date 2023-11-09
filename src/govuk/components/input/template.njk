@@ -1,4 +1,4 @@
-{% from "../error-message/macro.njk" import govukErrorMessage -%}
+{% from "../error-message/macro.njk" import govukErrorMessage %}
 {% from "../hint/macro.njk" import govukHint %}
 {% from "../label/macro.njk" import govukLabel %}
 
@@ -55,7 +55,7 @@
   {%- if params.autocomplete %} autocomplete="{{ params.autocomplete }}"{% endif %}
   {%- if params.pattern %} pattern="{{ params.pattern }}"{% endif %}
   {%- if params.inputmode %} inputmode="{{ params.inputmode }}"{% endif %}
-  {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
+  {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
 
   {%- if params.suffix.text or params.suffix.html -%}
     <div class="govuk-input__suffix {%- if params.suffix.classes %} {{ params.suffix.classes }}{% endif %}" aria-hidden="true" {%- for attribute, value in params.suffix.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>

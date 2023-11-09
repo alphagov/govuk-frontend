@@ -1,4 +1,4 @@
-{% from "../error-message/macro.njk" import govukErrorMessage -%}
+{% from "../error-message/macro.njk" import govukErrorMessage %}
 {% from "../hint/macro.njk" import govukHint %}
 {% from "../label/macro.njk" import govukLabel %}
 
@@ -37,7 +37,7 @@
     visuallyHiddenText: params.errorMessage.visuallyHiddenText
   }) | indent(2) | trim }}
 {% endif %}
-  <textarea class="govuk-textarea {%- if params.errorMessage %} govuk-textarea--error{% endif %} {%- if params.classes %} {{ params.classes }}{% endif %}" id="{{ params.id }}" name="{{ params.name }}" rows="{%if params.rows %} {{- params.rows -}} {% else %}5{%endif %}"
+  <textarea class="govuk-textarea {%- if params.errorMessage %} govuk-textarea--error{% endif %} {%- if params.classes %} {{ params.classes }}{% endif %}" id="{{ params.id }}" name="{{ params.name }}" rows="{{ params.rows | default(5, true) }}"
   {%- if (params.spellcheck === false) or (params.spellcheck === true) %} spellcheck="{{ params.spellcheck }}"{% endif %}
   {%- if params.disabled %} disabled{% endif %}
   {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}

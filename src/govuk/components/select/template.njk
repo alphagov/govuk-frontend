@@ -1,4 +1,4 @@
-{% from "../error-message/macro.njk" import govukErrorMessage -%}
+{% from "../error-message/macro.njk" import govukErrorMessage %}
 {% from "../hint/macro.njk" import govukHint %}
 {% from "../label/macro.njk" import govukLabel %}
 
@@ -49,7 +49,7 @@
       <option {%- if item.value !== undefined %} value="{{ item.value }}"{% endif %}
         {{-" selected" if item.selected | default((effectiveValue == params.value and item.selected != false) if params.value else false, true) }}
         {{-" disabled" if item.disabled }}
-        {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>{{ item.text }}</option>
+        {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>{{ item.text }}</option>
     {% endif %}
   {% endfor %}
   </select>
