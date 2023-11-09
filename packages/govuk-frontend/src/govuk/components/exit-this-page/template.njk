@@ -1,8 +1,8 @@
 {% from "../button/macro.njk" import govukButton %}
 
-{%- set defaultHtml -%}
+{%- set defaultHtml %}
   <span class="govuk-visually-hidden">Emergency</span> Exit this page
-{%- endset -%}
+{% endset -%}
 
 <div
   {%- if params.id %} id="{{ params.id }}"{% endif %} class="govuk-exit-this-page {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-exit-this-page" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
@@ -11,7 +11,7 @@
   {%- if params.pressTwoMoreTimesText %} data-i18n.press-two-more-times="{{ params.pressTwoMoreTimesText | escape }}"{% endif %}
   {%- if params.pressOneMoreTimeText %} data-i18n.press-one-more-time="{{ params.pressOneMoreTimeText | escape }}"{% endif %}
 >
-  {{- govukButton({
+  {{ govukButton({
     html: params.html if (params.html or params.text) else defaultHtml,
     text: params.text,
     classes: "govuk-button--warning govuk-exit-this-page__button govuk-js-exit-this-page-button",
@@ -19,5 +19,5 @@
     attributes: {
       rel: "nofollow noreferrer"
     }
-  }) -}}
+  }) | trim | indent(2) }}
 </div>
