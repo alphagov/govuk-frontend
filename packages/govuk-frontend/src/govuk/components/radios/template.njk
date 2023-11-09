@@ -84,7 +84,7 @@
           {% endif %}
         </div>
         {% if item.conditional.html %}
-          <div class="govuk-radios__conditional{% if not isChecked %} govuk-radios__conditional--hidden{% endif %}" id="{{ conditionalId }}">
+          <div class="govuk-radios__conditional {%- if not isChecked %} govuk-radios__conditional--hidden{% endif %}" id="{{ conditionalId }}">
             {{ item.conditional.html | safe }}
           </div>
         {% endif %}
