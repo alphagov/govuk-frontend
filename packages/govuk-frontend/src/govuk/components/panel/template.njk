@@ -7,7 +7,7 @@
   </h{{ headingLevel }}>
   {% if caller or params.html or params.text %}
   <div class="govuk-panel__body">
-    {{ caller() if caller else (params.html | safe if params.html else params.text) }}
+    {{ caller() if caller else (params.html | safe | trim | indent(4) if params.html else params.text) }}
   </div>
   {% endif %}
 </div>
