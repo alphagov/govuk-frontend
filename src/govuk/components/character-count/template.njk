@@ -71,6 +71,7 @@
     errorMessage: params.errorMessage,
     attributes: params.attributes
   }) }}
+
   {%- set textareaDescriptionLength = params.maxwords or params.maxlength %}
   {%- set textareaDescriptionText = params.textareaDescriptionText or 'You can enter up to %{count} ' + ('words' if params.maxwords else 'characters') %}
   {#-
@@ -82,5 +83,5 @@
     text: ((textareaDescriptionText) | replace('%{count}', textareaDescriptionLength) if not hasNoLimit),
     id: params.id + '-info',
     classes: 'govuk-character-count__message' + (' ' + params.countMessage.classes if params.countMessage.classes)
-  }) }}
+  }) | trim | indent(2) }}
 </div>
