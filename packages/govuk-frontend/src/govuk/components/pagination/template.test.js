@@ -60,7 +60,7 @@ describe('Pagination', () => {
 
       expect($firstEllipsis).toBeTruthy()
       // Test for the unicode character of &ctdot;
-      expect($firstEllipsis.text()).toEqual('\u22ef')
+      expect($firstEllipsis.text().trim()).toEqual('\u22ef')
     })
   })
 
@@ -166,8 +166,10 @@ describe('Pagination', () => {
         '.govuk-pagination__next .govuk-pagination__link-label'
       )
 
-      expect($prevLabel.text()).toEqual('Paying VAT and duty')
-      expect($nextLabel.text()).toEqual('Registering an imported vehicle')
+      expect($prevLabel.text().trim()).toEqual('Paying VAT and duty')
+      expect($nextLabel.text().trim()).toEqual(
+        'Registering an imported vehicle'
+      )
     })
 
     // This is for when pagination is in block mode but there isn't a label
