@@ -1,5 +1,7 @@
 const { render } = require('@govuk-frontend/helpers/nunjucks')
 const { getExamples } = require('@govuk-frontend/lib/components')
+const { indent } = require('nunjucks/src/filters')
+const { outdent } = require('outdent')
 
 describe('Inset text', () => {
   let examples
@@ -48,14 +50,23 @@ describe('Inset text', () => {
       const mainContent = $('.govuk-inset-text .govuk-body:first-child')
         .text()
         .trim()
+
       const warningContent = $('.govuk-inset-text .govuk-warning-text__text')
         .text()
         .trim()
+
       expect(mainContent).toEqual(
         'It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.'
       )
+
       expect(warningContent).toEqual(
-        'Warning\n    You can be fined up to £5,000 if you don’t register.'
+        indent(
+          outdent`
+            Warning
+            You can be fined up to £5,000 if you don’t register.
+          `,
+          6
+        )
       )
     })
 
