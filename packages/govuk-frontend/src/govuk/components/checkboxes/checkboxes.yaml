@@ -150,7 +150,7 @@ examples:
                 <label class="govuk-label" for="other-country">
                   Country
                 </label>
-              <input class="govuk-input" id="other-country" name="other-country" type="text" value="Ravka">
+                <input class="govuk-input" id="other-country" name="other-country" type="text" value="Ravka">
               </div>
       values:
         - british
