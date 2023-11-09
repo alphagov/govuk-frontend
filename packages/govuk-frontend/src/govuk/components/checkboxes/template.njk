@@ -1,4 +1,4 @@
-{% from "../error-message/macro.njk" import govukErrorMessage -%}
+{% from "../error-message/macro.njk" import govukErrorMessage %}
 {% from "../fieldset/macro.njk" import govukFieldset %}
 {% from "../hint/macro.njk" import govukHint %}
 {% from "../label/macro.njk" import govukLabel %}
@@ -75,7 +75,7 @@
             {%- if item.conditional.html %} data-aria-controls="{{ conditionalId }}"{% endif -%}
             {%- if item.behaviour %} data-behaviour="{{ item.behaviour }}"{% endif -%}
             {%- if itemDescribedBy %} aria-describedby="{{ itemDescribedBy }}"{% endif -%}
-            {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
+            {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
             {{ govukLabel({
               html: item.html,
               text: item.text,
