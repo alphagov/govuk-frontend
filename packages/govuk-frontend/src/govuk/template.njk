@@ -25,7 +25,7 @@
     <meta property="og:image" content="{{ opengraphImageUrl | default(assetUrl + "/images/govuk-opengraph-image.png", true) }}">
     {% endif %}
   </head>
-  <body class="govuk-template__body {%- if bodyClasses %} {{ bodyClasses }}{% endif %}" {%- for attribute, value in bodyAttributes %} {{attribute}}="{{value}}"{% endfor %}>
+  <body class="govuk-template__body {%- if bodyClasses %} {{ bodyClasses }}{% endif %}" {%- for attribute, value in bodyAttributes %} {{ attribute }}="{{ value }}"{% endfor %}>
     <script {%- if cspNonce %} nonce="{{ cspNonce }}"{% endif %}>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
     {% block bodyStart %}{% endblock %}
 
