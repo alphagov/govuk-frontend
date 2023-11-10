@@ -20,6 +20,41 @@ Otherwise, to update to the new logo:
 
 This change was made in [pull request #4449: Implement transitional crown in the Header component (v5.0)](https://github.com/alphagov/govuk-frontend/pull/4449).
 
+#### Check your favicons, app icons and OpenGraph image still work
+
+We've changed the names, formats and sizes of icon assets that we distribute in Frontend. You will want to check that the correct files are in place.
+
+The following files have been added to the assets folder:
+
+- manifest.json
+- images/favicon.svg
+- images/govuk-icon-180.png
+- images/govuk-icon-192.png
+- images/govuk-icon-512.png
+- images/govuk-icon-mask.svg
+
+The following files have been removed from the assets folder:
+
+- images/govuk-apple-touch-icon.png
+- images/govuk-apple-touch-icon-152x152.png
+- images/govuk-apple-touch-icon-167x167.png
+- images/govuk-apple-touch-icon-180x180.png
+- images/govuk-mask-icon.svg
+
+If you're not using the Nunjucks page template, you will need to replace the list of icons in the template's `head` with the following:
+
+```html
+<link rel="icon" sizes="48x48" href="/assets/images/favicon.ico">
+<link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml">
+<link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="#0b0c0c">
+<link rel="apple-touch-icon" href="/assets/images/govuk-icon-180.png">
+<link rel="manifest" href="/assets/manifest.json">
+```
+
+You will need to update the file path to match your assets folder if it's not at the default location.
+
+This change was made in [pull request #4445: Implement transitional crown favicons (v5.0)](https://github.com/alphagov/govuk-frontend/pull/4445).
+
 ### Recommended changes
 
 We've recently made some non-breaking changes to GOV.UK Frontend. Implementing these changes will make your service work better.
