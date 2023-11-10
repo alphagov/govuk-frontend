@@ -63,12 +63,12 @@ params:
       - name: label
         type: object
         required: false
-        description: Provide attributes and classes to each checkbox item label.
+        description: Additional options for the label used by each checkbox item within the checkboxes component.
         isComponent: true
       - name: hint
         type: object
         required: false
-        description: Provide hint to each checkbox item.
+        description: Can be used to add a hint to each checkbox item within the checkboxes component.
         isComponent: true
       - name: divider
         type: string
