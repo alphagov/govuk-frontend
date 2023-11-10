@@ -37,7 +37,7 @@ params:
       - name: status
         type: object
         required: true
-        description: The status tag for each task within the task list component.
+        description: The status for each task within the task list component.
         params:
           - name: tag
             type: object
