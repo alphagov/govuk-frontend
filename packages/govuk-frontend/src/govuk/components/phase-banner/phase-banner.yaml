@@ -10,7 +10,7 @@ params:
   - name: tag
     type: object
     required: true
-    description: Options for the tag component.
+    description: Additional options for the tag used by the phase banner component.
     isComponent: true
   - name: classes
     type: string
