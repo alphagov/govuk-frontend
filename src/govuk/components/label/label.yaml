@@ -93,7 +93,7 @@ examples:
   - name: for
     hidden: true
     options:
-      for: content
+      for: test-target-element
       text: National Insurance number
   - name: attributes
     hidden: true

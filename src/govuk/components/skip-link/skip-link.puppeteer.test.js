@@ -20,11 +20,11 @@ describe('Skip Link', () => {
         () => document.activeElement.id
       )
 
-      expect(activeElementId).toBe('content')
+      expect(activeElementId).toBe('test-target-element')
     })
 
     it('adds the tabindex attribute to the linked element', async () => {
-      const tabindex = await page.$eval('#content', (el) =>
+      const tabindex = await page.$eval('#test-target-element', (el) =>
         el.getAttribute('tabindex')
       )
 
@@ -32,7 +32,7 @@ describe('Skip Link', () => {
     })
 
     it('adds the class for removing the native focus style to the linked element', async () => {
-      const cssClass = await page.$eval('#content', (el) =>
+      const cssClass = await page.$eval('#test-target-element', (el) =>
         el.classList.contains('govuk-skip-link-focused-element')
       )
 
@@ -41,11 +41,11 @@ describe('Skip Link', () => {
 
     it('removes the tabindex attribute from the linked element on blur', async () => {
       await page.$eval(
-        '#content',
+        '#test-target-element',
         (el) => el instanceof window.HTMLElement && el.blur()
       )
 
-      const tabindex = await page.$eval('#content', (el) =>
+      const tabindex = await page.$eval('#test-target-element', (el) =>
         el.getAttribute('tabindex')
       )
 
@@ -54,11 +54,11 @@ describe('Skip Link', () => {
 
     it('removes the class for removing the native focus style from the linked element on blur', async () => {
       await page.$eval(
-        '#content',
+        '#test-target-element',
         (el) => el instanceof window.HTMLElement && el.blur()
       )
 
-      const cssClass = await page.$eval('#content', (el) =>
+      const cssClass = await page.$eval('#test-target-element', (el) =>
         el.getAttribute('class')
       )
 

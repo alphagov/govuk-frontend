@@ -113,7 +113,7 @@ examples:
   - name: with describedBy
     hidden: true
     options:
-      describedBy: content
+      describedBy: test-target-element
       legend:
         text: Which option?
   - name: html as text
