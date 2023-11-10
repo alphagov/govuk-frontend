@@ -10,7 +10,7 @@ params:
   - name: items
     type: array
     required: false
-    description: An array of input objects with name, value and classes.
+    description: The items of each date input component.
     params:
       - name: id
         type: string
@@ -47,7 +47,7 @@ params:
   - name: hint
     type: object
     required: false
-    description: Options for the hint component.
+    description: Can be used to add a hint to a date input component.
     isComponent: true
   - name: errorMessage
     type: object
@@ -57,7 +57,7 @@ params:
   - name: formGroup
     type: object
     required: false
-    description: Options for the form-group wrapper.
+    description: Additional options for the form group containing the date input component.
     params:
       - name: classes
         type: string

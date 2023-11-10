@@ -11,7 +11,7 @@ params:
   - name: hint
     type: object
     required: false
-    description: Options for the hint component (for example text).
+    description: Can be used to add a hint to the checkboxes component.
     isComponent: true
   - name: errorMessage
     type: object
@@ -21,7 +21,7 @@ params:
   - name: formGroup
     type: object
     required: false
-    description: Options for the form-group wrapper.
+    description: Additional options for the form group containing the checkboxes component.
     params:
       - name: classes
         type: string
@@ -38,7 +38,7 @@ params:
   - name: items
     type: array
     required: true
-    description: Array of checkbox items objects.
+    description: The items within the checkboxes component.
     params:
       - name: text
         type: string

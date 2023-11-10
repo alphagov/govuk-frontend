@@ -2,7 +2,7 @@ params:
   - name: items
     type: array
     required: true
-    description: Array of breadcrumbs item objects.
+    description: The items within breadcrumbs.
     params:
       - name: text
         type: string

@@ -46,12 +46,12 @@ params:
   - name: items
     type: array
     required: true
-    description: An array of sections within the accordion.
+    description: The items within sections of the accordion.
     params:
       - name: heading
         type: object
         required: true
-        description: The heading of each section.
+        description: The heading of each accordion section.
         params:
           - name: text
             type: string
@@ -64,7 +64,7 @@ params:
       - name: summary
         type: object
         required: false
-        description: The summary line of each section.
+        description: The summary line of each accordion section.
         params:
           - name: text
             type: string
@@ -77,7 +77,7 @@ params:
       - name: content
         type: object
         required: true
-        description: The content of each section.
+        description: The content of each accordion section.
         params:
           - name: text
             type: string

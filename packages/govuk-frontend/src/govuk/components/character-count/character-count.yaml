@@ -30,12 +30,12 @@ params:
   - name: label
     type: object
     required: true
-    description: Options for the label component.
+    description: Can be used to add a label to a character count component.
     isComponent: true
   - name: hint
     type: object
     required: false
-    description: Options for the hint component.
+    description: Can be used to add a hint to the character count component.
     isComponent: true
   - name: errorMessage
     type: object
@@ -45,7 +45,7 @@ params:
   - name: formGroup
     type: object
     required: false
-    description: Options for the form-group wrapper.
+    description: Additional options for the form group containing the character count component.
     params:
       - name: classes
         type: string
@@ -66,7 +66,7 @@ params:
   - name: countMessage
     type: object
     required: false
-    description: Options for the count message.
+    description: The message for the character count component.
     params:
       - name: classes
         type: string

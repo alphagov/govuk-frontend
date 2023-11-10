@@ -30,12 +30,12 @@ params:
   - name: label
     type: object
     required: true
-    description: Options for the label component.
+    description: Can be used to add a label to the textarea component.
     isComponent: true
   - name: hint
     type: object
     required: false
-    description: Options for the hint component.
+    description: Can be used to add a hint to the textarea component.
     isComponent: true
   - name: errorMessage
     type: object
@@ -45,7 +45,7 @@ params:
   - name: formGroup
     type: object
     required: false
-    description: Options for the form-group wrapper.
+    description: Additional options for the form group containing the textarea component.
     params:
       - name: classes
         type: string

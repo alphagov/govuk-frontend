@@ -2,7 +2,7 @@ params:
   - name: items
     type: array
     required: false
-    description: The array of link objects.
+    description: The items within the pagination component.
     params:
       - name: number
         type: string

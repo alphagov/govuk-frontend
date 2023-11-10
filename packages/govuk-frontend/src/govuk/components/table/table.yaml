@@ -2,7 +2,7 @@ params:
   - name: rows
     type: array
     required: true
-    description: Array of table rows and cells.
+    description: The rows within the table component.
     params:
       - name: text
         type: string
@@ -35,7 +35,7 @@ params:
   - name: head
     type: array
     required: false
-    description: Array of table head cells.
+    description: The head cells within the table component.
     params:
       - name: text
         type: string
