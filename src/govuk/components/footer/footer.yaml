@@ -2,7 +2,7 @@ params:
   - name: meta
     type: object
     required: false
-    description: Object containing options for the meta navigation.
+    description: The section to add content before the standard footer component.
     params:
       - name: visuallyHiddenTitle
         type: string
@@ -19,7 +19,7 @@ params:
       - name: items
         type: array
         required: false
-        description: Array of items for use in the meta section of the footer.
+        description: The meta items add content within a unordered list to the meta section of the footer component. These appear above any text or custom html in the meta section.
         params:
           - name: text
             type: string
@@ -36,7 +36,7 @@ params:
   - name: navigation
     type: array
     required: false
-    description: Array of items for use in the navigation section of the footer.
+    description: The navigation section of the footer before a section break and the standard footer component.
     params:
       - name: title
         type: string
@@ -53,7 +53,7 @@ params:
       - name: items
         type: array
         required: false
-        description: Array of items to display in the list in navigation section of the footer.
+        description: The items within the navigation section of the footer component.
         params:
           - name: text
             type: string
@@ -70,7 +70,7 @@ params:
   - name: contentLicence
     type: object
     required: false
-    description: The content licence information. Defaults to Open Government Licence (OGL) v3 licence.
+    description: The content licence information within the footer component. Defaults to Open Government Licence (OGL) v3 licence.
     params:
       - name: text
         type: string
@@ -83,7 +83,7 @@ params:
   - name: copyright
     type: object
     required: false
-    description: The copyright information, this defaults to Crown Copyright.
+    description: The copyright information in the footer component, this defaults to Crown Copyright.
     params:
       - name: text
         type: string

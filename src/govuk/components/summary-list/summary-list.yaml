@@ -2,7 +2,7 @@ params:
   - name: rows
     type: array
     required: true
-    description: Array of row item objects.
+    description: The rows within the summary list component.
     params:
       - name: classes
         type: string
@@ -11,7 +11,7 @@ params:
       - name: key
         type: object
         required: true
-        description: The key of each row.
+        description: The reference content (key) for each row item in the summary list component.
         params:
           - name: text
             type: string
@@ -28,7 +28,7 @@ params:
       - name: value
         type: object
         required: true
-        description: The value of each row.
+        description: The value for each row item in the summary list component.
         params:
           - name: text
             type: string
@@ -45,12 +45,12 @@ params:
       - name: actions
         type: object
         required: false
-        description: The actions of each row.
+        description: The action link content for each row item in the summary list component.
         params:
           - name: items
             type: array
             required: false
-            description: Array of action item objects.
+            description: The items within the summary list component.
             params:
               - name: href
                 type: string
@@ -109,12 +109,12 @@ params:
       - name: actions
         type: object
         required: false
-        description: The actions of each summary card.
+        description: The action link content for each summary card variant of the summary list component.
         params:
           - name: items
             type: array
             required: false
-            description: Array of action item objects.
+            description: The items within the summary card variant of the summary list component.
             params:
               - name: href
                 type: string

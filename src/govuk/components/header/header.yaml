@@ -18,7 +18,7 @@ params:
   - name: navigation
     type: array
     required: false
-    description: An array of navigation item objects.
+    description: Can be used to add navigation to the header component.
     params:
       - name: text
         type: string

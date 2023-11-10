@@ -2,12 +2,12 @@ params:
   - name: items
     type: array
     required: true
-    description: Array of tasks within the task list.
+    description: The items for each task within the task list component.
     params:
       - name: title
         type: object
         required: true
-        description: Object containing the main title for the task.
+        description: The main title for the task within the task list component.
         params:
           - name: text
             type: string
@@ -24,7 +24,7 @@ params:
       - name: hint
         type: object
         required: false
-        description: Object containing a hint for the task.
+        description: The hint for each task within the task list component.
         params:
           - name: text
             type: string
@@ -37,7 +37,7 @@ params:
       - name: status
         type: object
         required: true
-        description: Object containing the status of the task.
+        description: The status tag for each task within the task list component.
         params:
           - name: tag
             type: object

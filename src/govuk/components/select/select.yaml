@@ -10,7 +10,7 @@ params:
   - name: items
     type: array
     required: true
-    description: Array of option items for the select.
+    description: The items within the select component.
     params:
       - name: value
         type: string
@@ -47,12 +47,12 @@ params:
   - name: label
     type: object
     required: false
-    description: Label text or HTML by specifying value for either text or html keys.
+    description: Can be used to add a label to the select component.
     isComponent: true
   - name: hint
     type: object
     required: false
-    description: Options for the hint component.
+    description: Can be used to add a hint to the select component.
     isComponent: true
   - name: errorMessage
     type: object
@@ -62,7 +62,7 @@ params:
   - name: formGroup
     type: object
     required: false
-    description: Options for the form-group wrapper.
+    description: Additional options for the form group containing the select component.
     params:
       - name: classes
         type: string

@@ -14,7 +14,7 @@ params:
   - name: items
     type: array
     required: true
-    description: Array of tab items.
+    description: The items within the tabs component.
     params:
       - name: id
         type: string
@@ -29,7 +29,7 @@ params:
         required: false
         description: HTML attributes (for example data attributes) to add to the tab.
       - name: panel
-        description: Content for the panel.
+        description: The contents of each tab within the tabs component. This is referenced as a panel.
         type: object
         required: true
         params:
