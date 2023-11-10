@@ -43,7 +43,7 @@ params:
             type: object
             isComponent: true
             required: false
-            description: Options for the tag component.
+            description: Can be used to add a tag to the status of the task within the task list component.
           - name: text
             required: false
             type: string
