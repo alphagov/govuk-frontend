@@ -55,12 +55,12 @@ params:
       - name: label
         type: object
         required: false
-        description: Provide attributes and classes to each radio item label.
+        description: Additional options for the label used by each radio item within the radios component.
         isComponent: true
       - name: hint
         type: object
         required: false
-        description: Provide hint to each radio item.
+        description: Can be used to add a hint to each radio item within the radios component.
         isComponent: true
       - name: divider
         type: string
