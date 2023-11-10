@@ -349,7 +349,7 @@ examples:
     options:
       id: dob-errors
       fieldset:
-        describedBy: content
+        describedBy: test-target-element
         legend:
           text: What is your date of birth?
       hint:
@@ -359,7 +359,7 @@ examples:
     options:
       id: dob-errors
       fieldset:
-        describedBy: content
+        describedBy: test-target-element
         legend:
           text: What is your date of birth?
       errorMessage:

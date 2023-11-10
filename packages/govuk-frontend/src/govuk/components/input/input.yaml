@@ -351,7 +351,7 @@ examples:
       name: with-describedby
       label:
         text: With describedBy
-      describedBy: content
+      describedBy: test-target-element
   - name: attributes
     hidden: true
     options:
@@ -368,7 +368,7 @@ examples:
       name: with-hint-describedby
       label:
         text: With hint describedBy
-      describedBy: content
+      describedBy: test-target-element
       hint:
         text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
   - name: error with describedBy
@@ -378,7 +378,7 @@ examples:
       name: with-error-describedby
       label:
         text: With error describedBy
-      describedBy: content
+      describedBy: test-target-element
       errorMessage:
         text: Error message
   - name: with error and hint
@@ -403,7 +403,7 @@ examples:
         text: Error message
       hint:
         text: Hint
-      describedBy: content
+      describedBy: test-target-element
   - name: inputmode
     hidden: true
     options:
