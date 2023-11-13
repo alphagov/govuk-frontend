@@ -58,9 +58,22 @@
   }
 
   .govuk-header__product-name {
+    $product-name-offset: 10px;
+    $product-name-offset-tablet: 5px;
+
     @include govuk-typography-responsive($size: 24, $override-line-height: 1);
     @include govuk-typography-weight-regular;
     display: inline-table;
+
+    // Maintain space below logo when wrapped
+    margin-top: $product-name-offset;
+
+    // Align vertically with logo when not wrapped
+    vertical-align: top;
+
+    @include govuk-media-query($from: tablet) {
+      margin-top: $product-name-offset-tablet;
+    }
   }
 
   .govuk-header__link {
