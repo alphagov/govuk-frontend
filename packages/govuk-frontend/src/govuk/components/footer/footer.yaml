@@ -49,7 +49,7 @@ params:
       - name: width
         type: string
         required: false
-        description: Width of each navigation section in the footer. Defaults to full width. You can pass any design system grid width here, for example, 'one-third'; 'two-thirds'; 'one-half'.
+        description: Width of each navigation section in the footer. Defaults to `full`. You can pass any design system grid width here, for example, 'one-third'; 'two-thirds'; 'one-half'.
       - name: items
         type: array
         required: false
