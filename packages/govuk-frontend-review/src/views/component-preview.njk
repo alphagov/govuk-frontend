@@ -1,5 +1,9 @@
 {% extends "layouts/" + previewLayout | default('layout') + ".njk" %}
 
+{% set templateTitle = ("Default " + componentName if exampleName == "default" else componentName + " " + exampleName) | unslugify %}
+
+{% block pageTitle %}{{ templateTitle }} - GOV.UK Frontend{% endblock %}
+
 {% set bodyClasses %}
   {{ bodyClasses }}
 {% endset %}

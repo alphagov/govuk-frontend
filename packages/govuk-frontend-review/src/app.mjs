@@ -143,14 +143,15 @@ export default async () => {
     '/components/:componentName/:exampleName?/preview',
     function (req, res, next) {
       // Find the data for the specified example (or the default example)
-      const componentName = req.params.componentName
-      const exampleName = req.params.exampleName || 'default'
+      res.locals.componentName = req.params.componentName
+      res.locals.exampleName = req.params.exampleName || 'default'
 
       /** @type {ComponentFixtures | undefined} */
       const componentFixtures = res.locals.componentFixtures
 
       const fixture = componentFixtures?.fixtures.find(
-        (fixture) => nunjucks.filters.slugify(fixture.name) === exampleName
+        (fixture) =>
+          nunjucks.filters.slugify(fixture.name) === res.locals.exampleName
       )
 
       if (!fixture) {
@@ -158,7 +159,7 @@ export default async () => {
       }
 
       // Construct and evaluate the component with the data for this example
-      res.locals.componentView = render(componentName, {
+      res.locals.componentView = render(res.locals.componentName, {
         context: fixture.options,
         env,
         fixture
@@ -184,6 +185,7 @@ export default async () => {
 
   // Example view
   app.get('/examples/:exampleName', function (req, res, next) {
+    res.locals.exampleName = req.params.exampleName
     // Passing a random number used for the links so that they will be unique and not display as "visited"
     const randomPageHash = (Math.random() * 1000000).toFixed()
     res.render(
