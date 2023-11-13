@@ -65,7 +65,7 @@ params:
       - name: divider
         type: string
         required: false
-        description: Divider text to separate radio items, for example the text 'or'.
+        description: Divider text to separate radio items, for example the text `"or"`.
       - name: checked
         type: boolean
         required: false

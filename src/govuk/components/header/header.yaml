@@ -2,7 +2,7 @@ params:
   - name: homepageUrl
     type: string
     required: false
-    description: The URL of the homepage. Defaults to `/`.
+    description: The URL of the homepage. Defaults to `"/"`.
   - name: productName
     type: string
     required: false
@@ -87,7 +87,7 @@ accessibilityCriteria: |
   - be presentational when linked to from accompanying text (crown icon).
 
   Landmarks and Roles in the Header should:
-  - have a role of `banner` at the root of the component (<header>) (https://www.w3.org/TR/wai-aria-1.1/#banner)
+  - have a role of `"banner"` at the root of the component (<header>) (https://www.w3.org/TR/wai-aria-1.1/#banner)
 
 examples:
   - name: default

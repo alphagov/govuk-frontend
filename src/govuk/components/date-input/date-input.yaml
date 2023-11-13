@@ -6,7 +6,7 @@ params:
   - name: namePrefix
     type: string
     required: false
-    description: Optional prefix. This is used to prefix each `item.name` using `-`.
+    description: Optional prefix. This is used to prefix each item `name` using `-`.
   - name: items
     type: array
     required: false
@@ -31,7 +31,7 @@ params:
       - name: autocomplete
         type: string
         required: false
-        description: Attribute to [identify input purpose](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html), for instance `bday-day`. See [autofill](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for full list of attributes that can be used.
+        description: Attribute to [identify input purpose](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html), for instance `"bday-day"`. See [autofill](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for full list of attributes that can be used.
       - name: pattern
         type: string
         required: false

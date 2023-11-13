@@ -6,11 +6,11 @@ params:
   - name: text
     type: string
     required: true
-    description: If `html` is set, this is not required. Text for the `input`, `button` or `a` element. If `html` is provided, the `text` option will be ignored and `element` will be automatically set to `button` unless `href` is also set, or it has already been defined.
+    description: If `html` is set, this is not required. Text for the `input`, `button` or `a` element. If `html` is provided, the `text` option will be ignored and `element` will be automatically set to `"button"` unless `href` is also set, or it has already been defined.
   - name: html
     type: string
     required: true
-    description: If `text` is set, this is not required. HTML for the `button` or `a` element only. If `html` is provided, the `text` option will be ignored and `element` will be automatically set to `button` unless `href` is also set, or it has already been defined. This option has no effect if `element` is set to `input`.
+    description: If `text` is set, this is not required. HTML for the `button` or `a` element only. If `html` is provided, the `text` option will be ignored and `element` will be automatically set to `"button"` unless `href` is also set, or it has already been defined. This option has no effect if `element` is set to `"input"`.
   - name: name
     type: string
     required: false
@@ -18,7 +18,7 @@ params:
   - name: type
     type: string
     required: false
-    description: Type of `input` or `button` – `button`, `submit` or `reset`. Defaults to `submit`. This has no effect on `a` elements.
+    description: Type for the `input` or `button` element – `"button"`, `"submit"` or `"reset"`. Defaults to `"submit"`. This has no effect on `a` elements.
   - name: value
     type: string
     required: false
@@ -30,7 +30,7 @@ params:
   - name: href
     type: string
     required: false
-    description: The URL that the button component should link to. If this is set, `element` will be automatically set to `a` if it has not already been defined.
+    description: The URL that the button component should link to. If this is set, `element` will be automatically set to `"a"` if it has not already been defined.
   - name: classes
     type: string
     required: false
