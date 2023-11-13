@@ -73,7 +73,7 @@ params:
       - name: divider
         type: string
         required: false
-        description: Divider text to separate checkbox items, for example the text 'or'.
+        description: Divider text to separate checkbox items, for example the text `"or"`.
       - name: checked
         type: boolean
         required: false
@@ -90,7 +90,7 @@ params:
       - name: behaviour
         type: string
         required: false
-        description: If set to `exclusive`, implements a 'None of these' type behaviour via JavaScript when checkboxes are clicked.
+        description: If set to `"exclusive"`, implements a 'None of these' type behaviour via JavaScript when checkboxes are clicked.
       - name: disabled
         type: boolean
         required: false

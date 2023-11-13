@@ -2,7 +2,7 @@ params:
   - name: ariaLabel
     type: string
     required: false
-    description: The text for the `aria-label` which labels the cookie banner region. This region applies to all messages that the cookie banner includes. For example, the cookie message and the confirmation message. Defaults to 'Cookie banner'.
+    description: The text for the `aria-label` which labels the cookie banner region. This region applies to all messages that the cookie banner includes. For example, the cookie message and the confirmation message. Defaults to `"Cookie banner"`.
   - name: hidden
     type: boolean
     required: false
@@ -39,7 +39,7 @@ params:
       - name: actions
         type: array
         required: false
-        description: The buttons and links that you want to display in the message. `actions` defaults to `button` unless you set `href`, which renders the action as a link.
+        description: The buttons and links that you want to display in the message. `actions` defaults to `"button"` unless you set `href`, which renders the action as a link.
         params:
           - name: text
             type: string
@@ -48,11 +48,11 @@ params:
           - name: type
             type: string
             required: false
-            description: The type of button. You can set `button` or `submit`. Set `button` and `href` to render a link styled as a button. If you set `href`, it overrides `submit`.
+            description: The type of button. You can set `"button"` or `"submit"`. Set `type` to `"button"` and set `href` to render a link styled as a button. If you set `href`, it overrides `type` `"submit"`.
           - name: href
             type: string
             required: false
-            description: The `href` for a link. Set `button` and `href` to render a link styled as a button.
+            description: The `href` for a link. Set `type` to `"button"` and set `href` to render a link styled as a button.
           - name: name
             type: string
             required: false
@@ -76,7 +76,7 @@ params:
       - name: role
         type: string
         required: false
-        description: Set `role` to `alert` on confirmation messages to allow assistive tech to automatically read the message. You will also need to move focus to the confirmation message using JavaScript you have written yourself.
+        description: Set `role` to `"alert"` on confirmation messages to allow assistive tech to automatically read the message. You will also need to move focus to the confirmation message using JavaScript you have written yourself.
       - name: classes
         type: string
         required: false
