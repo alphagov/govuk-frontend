@@ -83,16 +83,16 @@ params:
   - name: copyright
     type: object
     required: false
-    description: The copyright information in the footer component, this defaults to Crown Copyright.
+    description: The copyright information in the footer component, this defaults to `© Crown copyright`.
     params:
       - name: text
         type: string
         required: false
-        description: If `html` is set, this is not required. If `html` is provided, the `text` option will be ignored. If neither are provided, Crown copyright is used.
+        description: If `html` is set, this is not required. If `html` is provided, the `text` option will be ignored. If neither are provided, `© Crown copyright` is used.
       - name: html
         type: string
         required: false
-        description: If `text` is set, this is not required. If `html` is provided, the `text` option will be ignored. If neither are provided, Crown copyright is used. The copyright notice is inside an `<a>` element, so you can only use text formatting elements within it.
+        description: If `text` is set, this is not required. If `html` is provided, the `text` option will be ignored. If neither are provided, `© Crown copyright` is used. The copyright notice is inside an `<a>` element, so you can only use text formatting elements within it.
   - name: containerClasses
     type: string
     required: false
