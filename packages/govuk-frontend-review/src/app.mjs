@@ -100,18 +100,17 @@ export default async () => {
     next()
   })
 
-  // All components view
+  // All components redirect
   app.get('/components/all', function (req, res) {
-    res.render('all-components', {
-      componentsFixtures
-    })
+    res.redirect('./')
   })
 
-  // Component 'README' page
-  app.get('/components/:componentName', (req, res) => {
+  // Component examples
+  app.get('/components/:componentName?', (req, res) => {
     const { componentName } = req.params
 
-    res.render('component', {
+    res.render(componentName ? 'component' : 'components', {
+      componentsFixtures,
       componentName
     })
   })
