@@ -5,7 +5,7 @@
 {% set componentName = componentFixtures.component %}
 
 {% for example in componentFixtures.fixtures %}
-  {% if not example.hidden %}
+  {% if (not exampleNames and not example.hidden) or (exampleNames and example.name in exampleNames) %}
 
   {% set exampleName = example.name | slugify %}
 

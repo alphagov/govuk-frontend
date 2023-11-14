@@ -102,20 +102,9 @@ export default async () => {
 
   // All components view
   app.get('/components/all', function (req, res) {
-    res.locals.componentsFixtures = componentsFixtures.map(
-      (componentFixtures) => {
-        const defaultFixture = componentFixtures.fixtures.find(
-          ({ name }) => name === 'default'
-        )
-
-        return {
-          ...componentFixtures,
-          fixtures: [defaultFixture]
-        }
-      }
-    )
-
-    res.render('all-components')
+    res.render('all-components', {
+      componentsFixtures
+    })
   })
 
   // Component 'README' page
