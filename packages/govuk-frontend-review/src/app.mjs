@@ -169,8 +169,7 @@ export default async () => {
 
       let bodyClasses = 'app-template__body'
 
-      const layoutModifiers = fixture.previewLayoutModifiers ?? []
-      for (const modifier of layoutModifiers) {
+      for (const modifier of fixture.previewLayoutModifiers) {
         bodyClasses += ` app-template__body--${modifier}`
       }
 
