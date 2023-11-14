@@ -2,6 +2,7 @@ import { getFullPageExamples } from '../common/lib/files.mjs'
 import * as routes from '../views/full-page-examples/index.mjs'
 
 const fullPageExamples = await getFullPageExamples()
+const fullPageExampleNames = fullPageExamples.map(({ path }) => path)
 
 /**
  * @param {import('express').Application} app
@@ -29,8 +30,13 @@ export default (app) => {
   })
 
   // Display full page examples index by default if not handled already
-  app.get('/full-page-examples/:exampleName', (req, res) => {
+  app.get('/full-page-examples/:exampleName', (req, res, next) => {
     const { exampleName } = req.params
+
+    // No matching example so continue to page not found
+    if (!fullPageExampleNames.includes(exampleName)) {
+      return next()
+    }
 
     res.render(`full-page-examples/${exampleName}/index`)
   })

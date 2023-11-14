@@ -147,8 +147,13 @@ export default async () => {
   })
 
   // Component examples
-  app.get('/components/:componentName?', (req, res) => {
-    const { componentName } = req.params
+  app.get('/components/:componentName?', (req, res, next) => {
+    const { componentName } = res.locals
+
+    // Unknown component, continue to page not found
+    if (componentName && !componentNames.includes(componentName)) {
+      return next()
+    }
 
     res.render(componentName ? 'component' : 'components', {
       componentsFixtures,
@@ -166,7 +171,8 @@ export default async () => {
         componentFixture: fixture
       } = res.locals
 
-      if (!fixture) {
+      // Unknown component or fixture, continue to page not found
+      if (!componentNames.includes(componentName) || !fixtures || !fixture) {
         return next()
       }
 
@@ -198,8 +204,13 @@ export default async () => {
   )
 
   // Example view
-  app.get('/examples/:exampleName', function (req, res) {
+  app.get('/examples/:exampleName', function (req, res, next) {
     const { exampleName } = res.locals
+
+    // Unknown example, continue to page not found
+    if (!exampleNames.includes(exampleName)) {
+      return next()
+    }
 
     res.render(`examples/${exampleName}/index`, {
       exampleName,
@@ -211,6 +222,23 @@ export default async () => {
 
   // Full page example views
   routes.fullPageExamples(app)
+
+  /**
+   * Page not found handler
+   */
+  app.use((req, res) => {
+    res.status(404).render('errors/404')
+  })
+
+  /**
+   * Error handler
+   */
+  app.use((error, req, res, next) => {
+    console.error(error)
+    res.status(500).render('errors/500', {
+      error
+    })
+  })
 
   return app
 }
