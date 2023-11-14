@@ -21,13 +21,15 @@ export default (app) => {
   routes.whatWasTheLastCountryYouVisited(app)
 
   app.get('/full-page-examples', async (req, res) => {
-    res.locals.fullPageExamples = await getFullPageExamples()
-
-    res.render('full-page-examples/index')
+    res.render('full-page-examples/index', {
+      fullPageExamples: await getFullPageExamples()
+    })
   })
 
   // Display full page examples index by default if not handled already
-  app.get('/full-page-examples/:exampleName', function (req, res) {
-    res.render(`full-page-examples/${req.params.exampleName}/index`)
+  app.get('/full-page-examples/:exampleName', (req, res) => {
+    const { exampleName } = req.params
+
+    res.render(`full-page-examples/${exampleName}/index`)
   })
 }

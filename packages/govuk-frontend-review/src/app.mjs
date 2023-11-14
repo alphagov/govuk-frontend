@@ -119,35 +119,33 @@ export default async () => {
   })
 
   // Component 'README' page
-  app.get('/components/:componentName', function (req, res) {
-    // make variables available to nunjucks template
-    res.locals.componentName = req.params.componentName
+  app.get('/components/:componentName', (req, res) => {
+    const { componentName } = req.params
 
-    res.render('component')
+    res.render('component', {
+      componentName
+    })
   })
 
   // Component example preview
   app.get(
     '/components/:componentName/:exampleName?/preview',
     function (req, res, next) {
-      // Find the data for the specified example (or the default example)
-      res.locals.componentName = req.params.componentName
-      res.locals.exampleName = req.params.exampleName || 'default'
+      const { componentName, exampleName = 'default' } = req.params
 
       /** @type {ComponentFixtures | undefined} */
       const componentFixtures = res.locals.componentFixtures
 
       const fixture = componentFixtures?.fixtures.find(
-        (fixture) =>
-          nunjucks.filters.slugify(fixture.name) === res.locals.exampleName
+        (fixture) => nunjucks.filters.slugify(fixture.name) === exampleName
       )
 
       if (!fixture) {
         next()
       }
 
-      // Construct and evaluate the component with the data for this example
-      res.locals.componentView = render(res.locals.componentName, {
+      // Render component using fixture
+      const componentView = render(componentName, {
         context: fixture.options,
         env,
 
@@ -167,6 +165,9 @@ export default async () => {
 
       res.render('component-preview', {
         bodyClasses,
+        componentName,
+        componentView,
+        exampleName,
         previewLayout: componentFixtures.previewLayout
       })
     }
@@ -174,13 +175,13 @@ export default async () => {
 
   // Example view
   app.get('/examples/:exampleName', function (req, res) {
-    res.locals.exampleName = req.params.exampleName
+    const { exampleName } = req.params
 
-    // Passing a random number used for the links so that they will be unique and not display as "visited"
-    const randomPageHash = (Math.random() * 1000000).toFixed()
+    res.render(`examples/${exampleName}/index`, {
+      exampleName,
 
-    res.render(`examples/${req.params.exampleName}/index`, {
-      randomPageHash
+      // Render with random number for unique non-visited links
+      randomPageHash: (Math.random() * 1000000).toFixed()
     })
   })
 
