@@ -23,13 +23,18 @@ export default (app) => {
   routes.whatIsYourPostcode(app)
   routes.whatWasTheLastCountryYouVisited(app)
 
+  /**
+   * Full page examples index
+   */
   app.get('/full-page-examples', async (req, res) => {
     res.render('full-page-examples/index', {
       fullPageExamples
     })
   })
 
-  // Display full page examples index by default if not handled already
+  /**
+   * Full page example
+   */
   app.get('/full-page-examples/:exampleName', (req, res, next) => {
     const { exampleName } = req.params
 
