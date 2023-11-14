@@ -23,7 +23,7 @@
     "plugin-error": "^2.0.1",
     "postcss": "^8.4.31",
     "postcss-load-config": "^4.0.1",
-    "puppeteer": "^21.5.0",
+    "puppeteer": "^21.5.1",
     "rollup": "^4.3.0",
     "sass-embedded": "^1.69.5",
     "slash": "^5.1.0",
