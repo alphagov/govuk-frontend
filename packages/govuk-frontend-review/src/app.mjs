@@ -101,7 +101,7 @@ export default async () => {
   })
 
   // All components view
-  app.get('/components/all', function (req, res, next) {
+  app.get('/components/all', function (req, res) {
     res.locals.componentsFixtures = componentsFixtures.map(
       (componentFixtures) => {
         const defaultFixture = componentFixtures.fixtures.find(
@@ -115,27 +115,15 @@ export default async () => {
       }
     )
 
-    res.render('all-components', function (error, html) {
-      if (error) {
-        next(error)
-      } else {
-        res.send(html)
-      }
-    })
+    res.render('all-components')
   })
 
   // Component 'README' page
-  app.get('/components/:componentName', function (req, res, next) {
+  app.get('/components/:componentName', function (req, res) {
     // make variables available to nunjucks template
     res.locals.componentName = req.params.componentName
 
-    res.render('component', function (error, html) {
-      if (error) {
-        next(error)
-      } else {
-        res.send(html)
-      }
-    })
+    res.render('component')
   })
 
   // Component example preview
@@ -185,21 +173,15 @@ export default async () => {
   )
 
   // Example view
-  app.get('/examples/:exampleName', function (req, res, next) {
+  app.get('/examples/:exampleName', function (req, res) {
     res.locals.exampleName = req.params.exampleName
+
     // Passing a random number used for the links so that they will be unique and not display as "visited"
     const randomPageHash = (Math.random() * 1000000).toFixed()
-    res.render(
-      `examples/${req.params.exampleName}/index`,
-      { randomPageHash },
-      function (error, html) {
-        if (error) {
-          next(error)
-        } else {
-          res.send(html)
-        }
-      }
-    )
+
+    res.render(`examples/${req.params.exampleName}/index`, {
+      randomPageHash
+    })
   })
 
   // Full page example views
