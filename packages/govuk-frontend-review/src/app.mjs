@@ -80,6 +80,55 @@ export default async () => {
   // Configure nunjucks
   const env = nunjucks.renderer(app)
 
+  // Define parameters
+
+  /**
+   * Handle parameter :componentName
+   *
+   * Finds all component fixtures and default example
+   */
+  app.param('componentName', (req, res, next, componentName) => {
+    const exampleName = 'default'
+
+    // Find all fixtures for component
+    const componentFixtures = componentsFixtures.find(
+      ({ component }) => component === componentName
+    )
+
+    // Find default fixture for component
+    const componentFixture = componentFixtures?.fixtures.find(
+      ({ name }) => name === exampleName
+    )
+
+    // Add response locals
+    res.locals.componentName = componentName
+    res.locals.componentFixtures = componentFixtures
+    res.locals.componentFixture = componentFixture
+    res.locals.exampleName = 'default'
+
+    next()
+  })
+
+  /**
+   * Handle parameter :exampleName
+   *
+   * Finds component fixture for example and updates locals
+   */
+  app.param('exampleName', (req, res, next, exampleName) => {
+    const { componentFixtures } = res.locals
+
+    // Replace default fixture with named example
+    const componentFixture = componentFixtures?.fixtures.find(
+      ({ name }) => nunjucks.filters.slugify(name) === exampleName
+    )
+
+    // Update response locals
+    res.locals.componentFixture = componentFixture
+    res.locals.exampleName = exampleName
+
+    next()
+  })
+
   // Define routes
 
   // Index page - render the component list template
@@ -90,14 +139,6 @@ export default async () => {
       exampleNames,
       fullPageExamples
     })
-  })
-
-  // Whenever the route includes a :componentName parameter, read the component fixtures
-  app.param('componentName', function (req, res, next, componentName) {
-    res.locals.componentFixtures = componentsFixtures.find(
-      ({ component }) => component === componentName
-    )
-    next()
   })
 
   // All components redirect
@@ -119,14 +160,11 @@ export default async () => {
   app.get(
     '/components/:componentName/:exampleName?/preview',
     function (req, res, next) {
-      const { componentName, exampleName = 'default' } = req.params
-
-      /** @type {ComponentFixtures | undefined} */
-      const componentFixtures = res.locals.componentFixtures
-
-      const fixture = componentFixtures?.fixtures.find(
-        (fixture) => nunjucks.filters.slugify(fixture.name) === exampleName
-      )
+      const {
+        componentName,
+        componentFixtures: fixtures,
+        componentFixture: fixture
+      } = res.locals
 
       if (!fixture) {
         return next()
@@ -153,17 +191,15 @@ export default async () => {
 
       res.render('component-preview', {
         bodyClasses,
-        componentName,
         componentView,
-        exampleName,
-        previewLayout: componentFixtures.previewLayout
+        previewLayout: fixtures.previewLayout
       })
     }
   )
 
   // Example view
   app.get('/examples/:exampleName', function (req, res) {
-    const { exampleName } = req.params
+    const { exampleName } = res.locals
 
     res.render(`examples/${exampleName}/index`, {
       exampleName,
@@ -178,10 +214,6 @@ export default async () => {
 
   return app
 }
-
-/**
- * @typedef {import('@govuk-frontend/lib/components').ComponentFixtures} ComponentFixtures
- */
 
 /**
  * @typedef {object} FeatureFlags
