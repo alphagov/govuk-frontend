@@ -1,6 +1,8 @@
 import { getFullPageExamples } from '../common/lib/files.mjs'
 import * as routes from '../views/full-page-examples/index.mjs'
 
+const fullPageExamples = await getFullPageExamples()
+
 /**
  * @param {import('express').Application} app
  */
@@ -22,7 +24,7 @@ export default (app) => {
 
   app.get('/full-page-examples', async (req, res) => {
     res.render('full-page-examples/index', {
-      fullPageExamples: await getFullPageExamples()
+      fullPageExamples
     })
   })
 
