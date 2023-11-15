@@ -30,11 +30,11 @@ params:
   - name: name
     type: string
     required: true
-    description: Name attribute for each radio item.
+    description: Name attribute for all radio items.
   - name: items
     type: array
     required: true
-    description: The items within each radio component.
+    description: The radio items within the radios component.
     params:
       - name: text
         type: string

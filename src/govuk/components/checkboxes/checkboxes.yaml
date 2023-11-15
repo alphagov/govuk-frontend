@@ -38,7 +38,7 @@ params:
   - name: items
     type: array
     required: true
-    description: The items within the checkboxes component.
+    description: The checkbox items within the checkboxes component.
     params:
       - name: text
         type: string
