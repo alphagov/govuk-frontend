@@ -8,7 +8,7 @@
   $govuk-header-link-underline-thickness: 3px;
 
   .govuk-header {
-    @include govuk-font($size: 16);
+    @include govuk-font($size: 16, $line-height: 1);
 
     border-bottom: govuk-spacing(2) solid govuk-colour("white");
     color: $govuk-header-text;
@@ -114,7 +114,6 @@
     display: inline-block;
     margin-right: govuk-spacing(2);
     font-size: 30px; // We don't have a mixin that produces 30px font size
-    line-height: 1;
 
     @include govuk-media-query($from: tablet) {
       display: inline;
