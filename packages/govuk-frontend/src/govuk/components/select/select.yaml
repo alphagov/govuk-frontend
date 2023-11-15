@@ -46,7 +46,7 @@ params:
     description: One or more element IDs to add to the `aria-describedby` attribute, used to provide additional descriptive information for screenreader users.
   - name: label
     type: object
-    required: false
+    required: true
     description: Additional options for the label used by the select component.
     isComponent: true
   - name: hint
