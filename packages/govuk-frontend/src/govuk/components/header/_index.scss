@@ -115,7 +115,7 @@
     margin-right: govuk-spacing(2);
     font-size: 30px; // We don't have a mixin that produces 30px font size
 
-    @include govuk-media-query($from: tablet) {
+    @include govuk-media-query($from: desktop) {
       display: inline;
 
       &:focus {
