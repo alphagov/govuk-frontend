@@ -67,12 +67,18 @@
 
     // Maintain space below logo when wrapped
     margin-top: $product-name-offset;
+    @-moz-document url-prefix() {
+      margin-top: $product-name-offset - 0.5px;
+    }
 
     // Align vertically with logo when not wrapped
     vertical-align: top;
 
     @include govuk-media-query($from: tablet) {
       margin-top: $product-name-offset-tablet;
+      @-moz-document url-prefix() {
+        margin-top: $product-name-offset-tablet - 0.5px;
+      }
     }
   }
 
