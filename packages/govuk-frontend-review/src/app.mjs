@@ -100,41 +100,18 @@ export default async () => {
     next()
   })
 
-  // All components view
-  app.get('/components/all', function (req, res, next) {
-    res.locals.componentsFixtures = componentsFixtures.map(
-      (componentFixtures) => {
-        const defaultFixture = componentFixtures.fixtures.find(
-          ({ name }) => name === 'default'
-        )
-
-        return {
-          ...componentFixtures,
-          fixtures: [defaultFixture]
-        }
-      }
-    )
-
-    res.render('all-components', function (error, html) {
-      if (error) {
-        next(error)
-      } else {
-        res.send(html)
-      }
-    })
+  // All components redirect
+  app.get('/components/all', function (req, res) {
+    res.redirect('./')
   })
 
-  // Component 'README' page
-  app.get('/components/:componentName', function (req, res, next) {
-    // make variables available to nunjucks template
-    res.locals.componentName = req.params.componentName
+  // Component examples
+  app.get('/components/:componentName?', (req, res) => {
+    const { componentName } = req.params
 
-    res.render('component', function (error, html) {
-      if (error) {
-        next(error)
-      } else {
-        res.send(html)
-      }
+    res.render(componentName ? 'component' : 'components', {
+      componentsFixtures,
+      componentName
     })
   })
 
@@ -142,33 +119,31 @@ export default async () => {
   app.get(
     '/components/:componentName/:exampleName?/preview',
     function (req, res, next) {
-      // Find the data for the specified example (or the default example)
-      res.locals.componentName = req.params.componentName
-      res.locals.exampleName = req.params.exampleName || 'default'
+      const { componentName, exampleName = 'default' } = req.params
 
       /** @type {ComponentFixtures | undefined} */
       const componentFixtures = res.locals.componentFixtures
 
       const fixture = componentFixtures?.fixtures.find(
-        (fixture) =>
-          nunjucks.filters.slugify(fixture.name) === res.locals.exampleName
+        (fixture) => nunjucks.filters.slugify(fixture.name) === exampleName
       )
 
       if (!fixture) {
-        next()
+        return next()
       }
 
-      // Construct and evaluate the component with the data for this example
-      res.locals.componentView = render(res.locals.componentName, {
+      // Render component using fixture
+      const componentView = render(componentName, {
         context: fixture.options,
         env,
-        fixture
+
+        // Skip Nunjucks render from cache in development
+        fixture: !flags.isDevelopment ? fixture : undefined
       })
 
       let bodyClasses = 'app-template__body'
 
-      const layoutModifiers = fixture.previewLayoutModifiers ?? []
-      for (const modifier of layoutModifiers) {
+      for (const modifier of fixture.previewLayoutModifiers) {
         bodyClasses += ` app-template__body--${modifier}`
       }
 
@@ -178,27 +153,24 @@ export default async () => {
 
       res.render('component-preview', {
         bodyClasses,
+        componentName,
+        componentView,
+        exampleName,
         previewLayout: componentFixtures.previewLayout
       })
     }
   )
 
   // Example view
-  app.get('/examples/:exampleName', function (req, res, next) {
-    res.locals.exampleName = req.params.exampleName
-    // Passing a random number used for the links so that they will be unique and not display as "visited"
-    const randomPageHash = (Math.random() * 1000000).toFixed()
-    res.render(
-      `examples/${req.params.exampleName}/index`,
-      { randomPageHash },
-      function (error, html) {
-        if (error) {
-          next(error)
-        } else {
-          res.send(html)
-        }
-      }
-    )
+  app.get('/examples/:exampleName', function (req, res) {
+    const { exampleName } = req.params
+
+    res.render(`examples/${exampleName}/index`, {
+      exampleName,
+
+      // Render with random number for unique non-visited links
+      randomPageHash: (Math.random() * 1000000).toFixed()
+    })
   })
 
   // Full page example views

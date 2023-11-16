@@ -1,6 +1,8 @@
 import { getFullPageExamples } from '../common/lib/files.mjs'
 import * as routes from '../views/full-page-examples/index.mjs'
 
+const fullPageExamples = await getFullPageExamples()
+
 /**
  * @param {import('express').Application} app
  */
@@ -20,29 +22,16 @@ export default (app) => {
   routes.whatIsYourPostcode(app)
   routes.whatWasTheLastCountryYouVisited(app)
 
-  app.get('/full-page-examples', async (req, res, next) => {
-    res.locals.fullPageExamples = await getFullPageExamples()
-
-    res.render('full-page-examples/index', (error, html) => {
-      if (error) {
-        next(error)
-      } else {
-        res.send(html)
-      }
+  app.get('/full-page-examples', async (req, res) => {
+    res.render('full-page-examples/index', {
+      fullPageExamples
     })
   })
 
   // Display full page examples index by default if not handled already
-  app.get('/full-page-examples/:exampleName', function (req, res, next) {
-    res.render(
-      `full-page-examples/${req.params.exampleName}/index`,
-      function (error, html) {
-        if (error) {
-          next(error)
-        } else {
-          res.send(html)
-        }
-      }
-    )
+  app.get('/full-page-examples/:exampleName', (req, res) => {
+    const { exampleName } = req.params
+
+    res.render(`full-page-examples/${exampleName}/index`)
   })
 }

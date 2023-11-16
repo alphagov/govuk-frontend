@@ -28,7 +28,7 @@ describe('Other examples', () => {
 
 describe('Listing pages', () => {
   describe.each([
-    '/components/all', // All component default examples
+    '/components', // All component default examples
     '/full-page-examples' // All full page examples
   ])('%s', (path) => {
     it('should load correctly', async () => {

@@ -1,10 +1,12 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 
-{% macro showExamples(componentFixtures) %}
+{% macro showExamples(componentFixtures, exampleNames) %}
 
 {% set componentName = componentFixtures.component %}
 
-{% for example in componentFixtures.fixtures | rejectattr('hidden') %}
+{% for example in componentFixtures.fixtures %}
+  {% if (not exampleNames and not example.hidden) or (exampleNames and example.name in exampleNames) %}
+
   {% set exampleName = example.name | slugify %}
 
   {% if example.name == 'default' %}
@@ -58,5 +60,6 @@
     </div>
 
   </section>
+  {% endif %}
 {% endfor %}
 {% endmacro %}
