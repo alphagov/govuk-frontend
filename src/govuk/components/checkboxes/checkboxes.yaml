@@ -30,7 +30,7 @@ params:
   - name: idPrefix
     type: string
     required: false
-    description: String to prefix id for each checkbox item if no id is specified on each item. If not passed, fall back to using the name option instead.
+    description: Optional prefix. This is used to prefix the `id` attribute for each checkbox item input, hint and error message, separated by `-`. Defaults to the `name` option value.
   - name: name
     type: string
     required: true

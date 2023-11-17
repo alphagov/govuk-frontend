@@ -2,7 +2,7 @@ params:
   - name: fieldset
     type: object
     required: false
-    description: Can be used to add a fieldset to the radios component.
+    description: Additional options for the fieldset used by the radios component.
     isComponent: true
   - name: hint
     type: object
@@ -26,7 +26,7 @@ params:
   - name: idPrefix
     type: string
     required: false
-    description: String to prefix ID for each radio item if no ID is specified on each item. If `idPrefix` is not passed, fallback to using the `name` attribute instead.
+    description: Optional prefix. This is used to prefix the `id` attribute for each radio input, hint and error message, separated by `-`. Defaults to the `name` option value.
   - name: name
     type: string
     required: true

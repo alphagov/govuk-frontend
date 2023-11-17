@@ -48,7 +48,7 @@ params:
           - name: type
             type: string
             required: false
-            description: The type of button. You can set `"button"` or `"submit"`. Set `type` to `"button"` and set `href` to render a link styled as a button. If you set `href`, it overrides `type` `"submit"`.
+            description: The type of button – `"button"` or `"submit"`. If `href` is provided, set `type` to `"button"` render a link styled as a button.
           - name: href
             type: string
             required: false

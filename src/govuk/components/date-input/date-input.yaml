@@ -6,11 +6,11 @@ params:
   - name: namePrefix
     type: string
     required: false
-    description: Optional prefix. This is used to prefix each item `name` using `-`.
+    description: Optional prefix. This is used to prefix each item `name`, separated by `-`.
   - name: items
     type: array
     required: false
-    description: The items of each date input component.
+    description: The inputs within the date input component.
     params:
       - name: id
         type: string
