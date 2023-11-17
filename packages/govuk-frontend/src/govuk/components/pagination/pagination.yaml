@@ -7,7 +7,7 @@ params:
       - name: number
         type: string
         required: false
-        description: The pagination item text - usually a page number.
+        description: The pagination item text – usually a page number.
       - name: visuallyHiddenText
         type: string
         required: false

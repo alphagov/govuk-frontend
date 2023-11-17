@@ -50,7 +50,7 @@ params:
           - name: items
             type: array
             required: false
-            description: The items within the summary list component.
+            description: The action link items within the row item of the summary list component.
             params:
               - name: href
                 type: string
@@ -109,12 +109,12 @@ params:
       - name: actions
         type: object
         required: false
-        description: The action link content for each summary card variant of the summary list component.
+        description: The action link content shown in the header of each summary card wrapped around the summary list component.
         params:
           - name: items
             type: array
             required: false
-            description: The items within the summary card variant of the summary list component.
+            description: The action link items shown in the header within the summary card wrapped around the summary list component.
             params:
               - name: href
                 type: string

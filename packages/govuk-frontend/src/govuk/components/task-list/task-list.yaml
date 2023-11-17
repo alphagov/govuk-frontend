@@ -24,7 +24,7 @@ params:
       - name: hint
         type: object
         required: false
-        description: The hint for each task within the task list component.
+        description: Can be used to add a hint to each task within the task list component.
         params:
           - name: text
             type: string
@@ -75,7 +75,7 @@ params:
   - name: idPrefix
     type: string
     required: false
-    description: String to prefix ID for the tag and hint for each task list item. If `idPrefix` is not passed, fallback to using the `"task-list"` string instead.
+    description: Optional prefix. This is used to prefix the `id` attribute for the task list item tag and hint, separated by `-`. Defaults to `"task-list"`.
 
 examples:
   - name: default

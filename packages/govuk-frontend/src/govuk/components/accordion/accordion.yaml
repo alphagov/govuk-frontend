@@ -46,7 +46,7 @@ params:
   - name: items
     type: array
     required: true
-    description: The items within sections of the accordion.
+    description: The sections within the accordion.
     params:
       - name: heading
         type: object

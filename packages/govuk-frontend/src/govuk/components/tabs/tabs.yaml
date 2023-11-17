@@ -6,7 +6,7 @@ params:
   - name: idPrefix
     type: string
     required: false
-    description: String to prefix id for each tab item if no id is specified on each item.
+    description: Optional prefix. This is used to prefix the `id` attribute for each tab item and panel, separated by `-`.
   - name: title
     type: string
     required: false
@@ -14,7 +14,7 @@ params:
   - name: items
     type: array
     required: true
-    description: The items within the tabs component.
+    description: The individual tabs within the tabs component.
     params:
       - name: id
         type: string

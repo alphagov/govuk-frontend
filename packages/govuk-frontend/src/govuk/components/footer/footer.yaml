@@ -2,7 +2,7 @@ params:
   - name: meta
     type: object
     required: false
-    description: The section to add content before the standard footer component.
+    description: The meta section of the footer after any navigation, before the copyright and license information.
     params:
       - name: visuallyHiddenTitle
         type: string
@@ -36,7 +36,7 @@ params:
   - name: navigation
     type: array
     required: false
-    description: The navigation section of the footer before a section break and the standard footer component.
+    description: The navigation section of the footer before a section break and the copyright and license information.
     params:
       - name: title
         type: string
@@ -49,7 +49,7 @@ params:
       - name: width
         type: string
         required: false
-        description: Width of each navigation section in the footer. Defaults to `"full"`. You can pass any design system grid width here, for example, `"one-third"`; `"two-thirds"`; `"one-half"`.
+        description: Width of each navigation section in the footer. You can pass any Design System grid width here – for example, `"one-third"`, `"two-thirds"` or `"one-half"`. Defaults to `"full"`.
       - name: items
         type: array
         required: false
