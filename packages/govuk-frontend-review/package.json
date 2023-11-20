@@ -34,7 +34,7 @@
     "govuk-frontend": "*",
     "highlight.js": "^11.9.0",
     "iframe-resizer": "^4.3.7",
-    "js-beautify": "^1.14.9",
+    "js-beautify": "^1.14.11",
     "marked": "^9.1.5",
     "marked-linkify-it": "^3.1.6",
     "marked-smartypants": "^1.1.4",
