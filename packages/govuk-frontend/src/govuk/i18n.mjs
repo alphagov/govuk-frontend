@@ -19,7 +19,7 @@ export class I18n {
     this.translations = translations
 
     // The locale to use for PluralRules and NumberFormat
-    this.locale = config.locale || document.documentElement.lang || 'en'
+    this.locale = config.locale ?? (document.documentElement.lang || 'en')
   }
 
   /**
@@ -42,7 +42,7 @@ export class I18n {
     // If the `count` option is set, determine which plural suffix is needed and
     // change the lookupKey to match. We check to see if it's numeric instead of
     // falsy, as this could legitimately be 0.
-    if (options && typeof options.count === 'number') {
+    if (typeof options?.count === 'number') {
       // Get the plural suffix
       lookupKey = `${lookupKey}.${this.getPluralSuffix(
         lookupKey,
@@ -242,10 +242,9 @@ export class I18n {
     // Look through the plural rules map to find which `pluralRule` is
     // appropriate for our current `locale`.
     for (const pluralRule in I18n.pluralRulesMap) {
-      for (const language of I18n.pluralRulesMap[pluralRule]) {
-        if (language === this.locale || language === localeShort) {
-          return pluralRule
-        }
+      const languages = I18n.pluralRulesMap[pluralRule]
+      if (languages.includes(this.locale) || languages.includes(localeShort)) {
+        return pluralRule
       }
     }
   }

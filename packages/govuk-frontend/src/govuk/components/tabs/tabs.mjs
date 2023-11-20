@@ -126,7 +126,7 @@ export class Tabs extends GOVUKFrontendComponent {
    * @private
    */
   checkMode() {
-    if (this.mql && this.mql.matches) {
+    if (this.mql?.matches) {
       this.setup()
     } else {
       this.teardown()
@@ -158,7 +158,7 @@ export class Tabs extends GOVUKFrontendComponent {
     })
 
     // Show either the active tab according to the URL's hash or the first tab
-    const $activeTab = this.getTab(window.location.hash) || this.$tabs[0]
+    const $activeTab = this.getTab(window.location.hash) ?? this.$tabs[0]
 
     this.showTab($activeTab)
 
@@ -386,7 +386,7 @@ export class Tabs extends GOVUKFrontendComponent {
    */
   activateNextTab() {
     const $currentTab = this.getCurrentTab()
-    if (!$currentTab || !$currentTab.parentElement) {
+    if (!$currentTab?.parentElement) {
       return
     }
 
@@ -413,7 +413,7 @@ export class Tabs extends GOVUKFrontendComponent {
    */
   activatePreviousTab() {
     const $currentTab = this.getCurrentTab()
-    if (!$currentTab || !$currentTab.parentElement) {
+    if (!$currentTab?.parentElement) {
       return
     }
 
