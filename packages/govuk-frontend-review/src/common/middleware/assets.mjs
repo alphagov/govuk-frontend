@@ -18,7 +18,10 @@ const frontendPath = packageTypeToPath('govuk-frontend', {
  */
 
 router.use('/assets', express.static(join(frontendPath, 'assets')))
-router.use('/javascripts', express.static(frontendPath))
+router.use('/javascripts', [
+  express.static(frontendPath),
+  express.static(join(paths.app, 'dist/javascripts'))
+])
 router.use('/stylesheets', [
   express.static(frontendPath),
   express.static(join(paths.app, 'dist/stylesheets'))
