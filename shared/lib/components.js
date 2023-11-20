@@ -213,6 +213,12 @@ function renderPreview(componentName, options) {
         <div id="content" class="govuk-width-container">
           ${componentName ? render(componentName, options) : ''}
         </div>
+
+        <!--
+          Target for references in examples (e.g. aria-controls)
+          https://dequeuniversity.com/rules/axe/4.8/aria-valid-attr-value
+        -->
+        <div id="test-target-element"></div>
       `,
 
       bodyEnd: outdent`

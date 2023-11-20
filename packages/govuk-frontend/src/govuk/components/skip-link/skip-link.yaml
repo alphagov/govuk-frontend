@@ -24,14 +24,14 @@ examples:
   - name: default
     options:
       text: Skip to main content
-      href: '#content'
+      href: '#test-target-element'
 
   - name: with focus
     description: Simulate triggering the :focus CSS pseudo-class, not available in the production build.
     options:
       classes: :focus
       text: Skip to main content
-      href: '#content'
+      href: '#test-target-element'
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: no href

@@ -146,7 +146,7 @@ describe('Select', () => {
       const $ = render('select', examples['with describedBy'])
 
       const $component = $('.govuk-select')
-      expect($component.attr('aria-describedby')).toMatch('content')
+      expect($component.attr('aria-describedby')).toMatch('test-target-element')
     })
 
     it('renders with attributes', () => {
@@ -196,7 +196,7 @@ describe('Select', () => {
 
       const $select = $('.govuk-select')
 
-      expect($select.attr('aria-describedby')).toMatch('content')
+      expect($select.attr('aria-describedby')).toMatch('test-target-element')
     })
   })
 
@@ -225,7 +225,7 @@ describe('Select', () => {
 
       const $input = $('.govuk-select')
 
-      expect($input.attr('aria-describedby')).toMatch('content')
+      expect($input.attr('aria-describedby')).toMatch('test-target-element')
     })
 
     it('adds the error class to the select', () => {

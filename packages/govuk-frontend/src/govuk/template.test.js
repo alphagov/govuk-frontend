@@ -1,5 +1,7 @@
 const crypto = require('crypto')
 
+require('html-validate/jest')
+
 const { renderTemplate } = require('@govuk-frontend/helpers/nunjucks')
 const { nunjucksEnv } = require('@govuk-frontend/lib/components')
 
@@ -52,6 +54,16 @@ describe('Template', () => {
       })
 
       expect($('html').hasClass('my-custom-class')).toBeTruthy()
+    })
+
+    it('renders valid HTML', () => {
+      expect(renderTemplate('govuk/template.njk').html()).toHTMLValidate({
+        extends: ['html-validate:document'],
+        rules: {
+          // Allow optional subresource integrity (SRI)
+          'require-sri': 'off'
+        }
+      })
     })
   })
 

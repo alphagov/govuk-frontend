@@ -47,7 +47,7 @@ describe('Radios', () => {
   })
 
   it('renders initial aria-describedby on fieldset', () => {
-    const describedById = 'content'
+    const describedById = 'test-target-element'
 
     const $ = render('radios', examples['fieldset with describedBy'])
 
@@ -309,7 +309,7 @@ describe('Radios', () => {
       const $ = render('radios', examples['with describedBy and hint'])
       const $fieldset = $('.govuk-fieldset')
 
-      expect($fieldset.attr('aria-describedby')).toMatch('content')
+      expect($fieldset.attr('aria-describedby')).toMatch('test-target-element')
     })
   })
 
@@ -358,7 +358,7 @@ describe('Radios', () => {
       const errorMessageId = $('.govuk-error-message').attr('id')
 
       const describedBy = new RegExp(
-        `${WORD_BOUNDARY}content${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
+        `${WORD_BOUNDARY}test-target-element${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
       expect($fieldset.attr('aria-describedby')).toMatch(describedBy)
@@ -398,7 +398,7 @@ describe('Radios', () => {
       const hintId = $('.govuk-hint').attr('id')
 
       const describedByCombined = new RegExp(
-        `${WORD_BOUNDARY}content${WHITESPACE}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
+        `${WORD_BOUNDARY}test-target-element${WHITESPACE}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
       )
 
       expect($fieldset.attr('aria-describedby')).toMatch(describedByCombined)

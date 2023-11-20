@@ -9,6 +9,7 @@ const {
 } = require('@govuk-frontend/lib/components')
 const validatorConfig = require('govuk-frontend/.htmlvalidate.js')
 const { HtmlValidate } = require('html-validate')
+const { outdent } = require('outdent')
 
 describe('Components', () => {
   let nunjucksEnvCustom
@@ -65,10 +66,18 @@ describe('Components', () => {
       // Validate component examples
       for (const { component: componentName, fixtures } of componentsFixtures) {
         const fixtureTasks = fixtures.map(async (fixture) => {
-          const html = render(componentName, {
-            context: fixture.options,
-            fixture
-          })
+          const html = outdent`
+            ${render(componentName, {
+              context: fixture.options,
+              fixture
+            })}
+
+            <!--
+              Target for references in examples (e.g. aria-controls)
+              https://html-validate.org/rules/no-missing-references.html
+            -->
+            <div id="test-target-element"></div>
+          `
 
           // Validate HTML
           return expect({
