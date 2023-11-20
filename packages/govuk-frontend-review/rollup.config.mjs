@@ -1,3 +1,5 @@
+import commonjs from '@rollup/plugin-commonjs'
+import resolve from '@rollup/plugin-node-resolve'
 import terser from '@rollup/plugin-terser'
 import { defineConfig } from 'rollup'
 
@@ -31,5 +33,18 @@ export default defineConfig(({ i: input }) => ({
         safari10: true
       })
     ]
-  }
+  },
+
+  /**
+   * Input plugins
+   */
+  plugins: [
+    resolve({
+      browser: true
+    }),
+    commonjs({
+      requireReturnsDefault: 'preferred',
+      defaultIsModuleExports: true
+    })
+  ]
 }))
