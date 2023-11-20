@@ -128,7 +128,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
     })
 
     // Determine the limit attribute (characters or words)
-    this.maxLength = this.config.maxwords || this.config.maxlength || Infinity
+    this.maxLength = this.config.maxwords ?? this.config.maxlength ?? Infinity
 
     this.$module = $module
     this.$textarea = $textarea
@@ -344,7 +344,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
    */
   count(text) {
     if (this.config.maxwords) {
-      const tokens = text.match(/\S+/g) || [] // Matches consecutive non-whitespace chars
+      const tokens = text.match(/\S+/g) ?? [] // Matches consecutive non-whitespace chars
       return tokens.length
     }
 

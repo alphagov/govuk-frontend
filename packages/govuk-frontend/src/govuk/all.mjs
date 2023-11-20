@@ -48,7 +48,7 @@ function initAll(config) {
 
   // Allow the user to initialise GOV.UK Frontend in only certain sections of the page
   // Defaults to the entire document if nothing is set.
-  const $scope = config.scope || document
+  const $scope = config.scope ?? document
 
   components.forEach(([Component, config]) => {
     const $elements = $scope.querySelectorAll(
