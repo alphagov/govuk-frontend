@@ -158,7 +158,7 @@ export class Tabs extends GOVUKFrontendComponent {
     })
 
     // Show either the active tab according to the URL's hash or the first tab
-    const $activeTab = this.getTab(window.location.hash) || this.$tabs[0]
+    const $activeTab = this.getTab(window.location.hash) ?? this.$tabs[0]
 
     this.showTab($activeTab)
 

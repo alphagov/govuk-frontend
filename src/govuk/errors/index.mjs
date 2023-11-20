@@ -84,7 +84,7 @@ export class ElementError extends GOVUKFrontendError {
 
       // Append reason
       message += element
-        ? ` is not of type ${expectedType || 'HTMLElement'}`
+        ? ` is not of type ${expectedType ?? 'HTMLElement'}`
         : ' not found'
     }
 

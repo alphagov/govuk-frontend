@@ -19,7 +19,7 @@ export class I18n {
     this.translations = translations
 
     // The locale to use for PluralRules and NumberFormat
-    this.locale = config.locale || document.documentElement.lang || 'en'
+    this.locale = config.locale ?? (document.documentElement.lang || 'en')
   }
 
   /**

@@ -187,7 +187,7 @@ export class ErrorSummary extends GOVUKFrontendComponent {
     }
 
     return (
-      document.querySelector(`label[for='${$input.getAttribute('id')}']`) ||
+      document.querySelector(`label[for='${$input.getAttribute('id')}']`) ??
       $input.closest('label')
     )
   }
