@@ -1,7 +1,7 @@
 {% set headingLevel = params.headingLevel if params.headingLevel else 1 %}
 <div class="govuk-panel govuk-panel--confirmation
   {%- if params.classes %} {{ params.classes }}{% endif %}"
-  {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+  {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
   <h{{ headingLevel }} class="govuk-panel__title">
     {{ params.titleHtml | safe if params.titleHtml else params.titleText }}
   </h{{ headingLevel }}>

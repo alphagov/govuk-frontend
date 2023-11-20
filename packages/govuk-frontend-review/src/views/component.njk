@@ -5,9 +5,7 @@
 
 {% block pageTitle %}{{ componentName | unslugify }} - GOV.UK Frontend{% endblock %}
 
-{% set bodyClasses %}
-  language-markup
-{% endset %}
+{% set bodyClasses = "language-markup" %}
 
 {% set htmlMarkup %}
   {% include componentName + "/" + componentName + ".njk" ignore missing %}

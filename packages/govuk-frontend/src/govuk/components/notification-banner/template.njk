@@ -6,13 +6,13 @@
   {% set typeClass = "govuk-notification-banner--" + params.type %}
 {% endif %}
 
-{% if params.role %}
+{%- if params.role %}
   {% set role = params.role %}
 {% elif successBanner %}
-  {# If type is success, add `role="alert"` to prioritise the information in the notification banner to users of assistive technologies #}
+  {#- If type is success, add `role="alert"` to prioritise the information in the notification banner to users of assistive technologies -#}
   {% set role = "alert" %}
 {% else %}
-  {# Otherwise add `role="region"` to make the notification banner a landmark to help users of assistive technologies to navigate to the banner #}
+  {#- Otherwise add `role="region"` to make the notification banner a landmark to help users of assistive technologies to navigate to the banner -#}
   {% set role = "region" %}
 {% endif %}
 
@@ -26,11 +26,9 @@
   {% set title = "Important" %}
 {%- endif -%}
 
-<div class="govuk-notification-banner{% if typeClass %} {{ typeClass }}{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}" role="{{ role }}"
-  aria-labelledby="{{ params.titleId | default("govuk-notification-banner-title", true) }}"
-  data-module="govuk-notification-banner"
+<div class="govuk-notification-banner {%- if typeClass %} {{ typeClass }}{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}" role="{{ role }}" aria-labelledby="{{ params.titleId | default("govuk-notification-banner-title", true) }}" data-module="govuk-notification-banner"
   {%- if params.disableAutoFocus !== undefined %} data-disable-auto-focus="{{ params.disableAutoFocus }}"{% endif %}
-  {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+  {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
   <div class="govuk-notification-banner__header">
     <h{{ params.titleHeadingLevel | default(2, true) }} class="govuk-notification-banner__title" id="{{ params.titleId | default("govuk-notification-banner-title", true) }}">
       {{ title }}
