@@ -40,7 +40,7 @@ describe('fieldset', () => {
     const $ = render('fieldset', examples['with describedBy'])
 
     const $component = $('.govuk-fieldset')
-    expect($component.attr('aria-describedby')).toEqual('content')
+    expect($component.attr('aria-describedby')).toEqual('test-target-element')
   })
 
   it('escapes HTML in the text argument', () => {

@@ -689,7 +689,7 @@ examples:
     options:
       name: example-name
       fieldset:
-        describedBy: content
+        describedBy: test-target-element
         legend:
           text: Which option?
       items:
@@ -767,7 +767,7 @@ examples:
     options:
       name: example-hint-describedby
       fieldset:
-        describedBy: content
+        describedBy: test-target-element
         legend:
           text: Have you changed your name?
       hint:
@@ -823,7 +823,7 @@ examples:
       errorMessage:
         text: Please select an option
       fieldset:
-        describedBy: content
+        describedBy: test-target-element
         legend:
           text: Have you changed your name?
       hint:
@@ -882,7 +882,7 @@ examples:
       errorMessage:
         text: Please select an option
       fieldset:
-        describedBy: content
+        describedBy: test-target-element
         legend:
           text: Have you changed your name?
       items:

@@ -23,7 +23,7 @@ describe('Button', () => {
       const $ = render('button', examples.attributes)
 
       const $component = $('.govuk-button')
-      expect($component.attr('aria-controls')).toEqual('content')
+      expect($component.attr('aria-controls')).toEqual('test-target-element')
       expect($component.attr('data-tracking-dimension')).toEqual('123')
     })
 
@@ -123,7 +123,7 @@ describe('Button', () => {
       const $ = render('button', examples['link attributes'])
 
       const $component = $('.govuk-button')
-      expect($component.attr('aria-controls')).toEqual('content')
+      expect($component.attr('aria-controls')).toEqual('test-target-element')
       expect($component.attr('data-tracking-dimension')).toEqual('123')
     })
 
@@ -148,7 +148,7 @@ describe('Button', () => {
       const $ = render('button', examples['input attributes'])
 
       const $component = $('.govuk-button')
-      expect($component.attr('aria-controls')).toEqual('content')
+      expect($component.attr('aria-controls')).toEqual('test-target-element')
       expect($component.attr('data-tracking-dimension')).toEqual('123')
     })
 
