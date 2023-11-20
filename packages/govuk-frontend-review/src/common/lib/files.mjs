@@ -55,6 +55,7 @@ export async function getFullPageExamples() {
  *
  * @typedef {object} FullPageExample
  * @property {string} name - Example name
+ * @property {string} path - Example directory name
  * @property {string} [scenario] - Description explaining the example
  * @property {string} [notes] - Additional notes about the example
  */

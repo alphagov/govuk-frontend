@@ -80,10 +80,81 @@ export default async () => {
   // Configure nunjucks
   const env = nunjucks.renderer(app)
 
+  // Define parameters
+
+  /**
+   * Handle parameter :componentName
+   *
+   * Finds all component fixtures and default example
+   */
+  app.param(
+    'componentName',
+
+    /**
+     * @param {import('express').Request} req
+     * @param {import('express').Response<{}, Partial<PreviewLocals>>} res
+     * @param {import('express').NextFunction} next
+     * @param {string} componentName
+     */
+    (req, res, next, componentName) => {
+      const exampleName = 'default'
+
+      // Find all fixtures for component
+      const componentFixtures = componentsFixtures.find(
+        ({ component }) => component === componentName
+      )
+
+      // Find default fixture for component
+      const componentFixture = componentFixtures?.fixtures.find(
+        ({ name }) => name === exampleName
+      )
+
+      // Add response locals
+      res.locals.componentName = componentName
+      res.locals.componentFixtures = componentFixtures
+      res.locals.componentFixture = componentFixture
+      res.locals.exampleName = 'default'
+
+      next()
+    }
+  )
+
+  /**
+   * Handle parameter :exampleName
+   *
+   * Finds component fixture for example and updates locals
+   */
+  app.param(
+    'exampleName',
+
+    /**
+     * @param {import('express').Request} req
+     * @param {import('express').Response<{}, Partial<PreviewLocals>>} res
+     * @param {import('express').NextFunction} next
+     * @param {string} exampleName
+     */
+    (req, res, next, exampleName) => {
+      const { componentFixtures } = res.locals
+
+      // Replace default fixture with named example
+      const componentFixture = componentFixtures?.fixtures.find(
+        ({ name }) => nunjucks.filters.slugify(name) === exampleName
+      )
+
+      // Update response locals
+      res.locals.componentFixture = componentFixture
+      res.locals.exampleName = exampleName
+
+      next()
+    }
+  )
+
   // Define routes
 
-  // Index page - render the component list template
-  app.get('/', async function (req, res) {
+  /**
+   * Review app home page
+   */
+  app.get('/', (req, res) => {
     res.render('index', {
       componentNames,
       componentNamesWithJavaScript,
@@ -92,43 +163,61 @@ export default async () => {
     })
   })
 
-  // Whenever the route includes a :componentName parameter, read the component fixtures
-  app.param('componentName', function (req, res, next, componentName) {
-    res.locals.componentFixtures = componentsFixtures.find(
-      ({ component }) => component === componentName
-    )
-    next()
-  })
-
-  // All components redirect
+  /**
+   * All components redirect
+   */
   app.get('/components/all', function (req, res) {
     res.redirect('./')
   })
 
-  // Component examples
-  app.get('/components/:componentName?', (req, res) => {
-    const { componentName } = req.params
+  /**
+   * Component examples
+   */
+  app.get(
+    '/components/:componentName?',
 
-    res.render(componentName ? 'component' : 'components', {
-      componentsFixtures,
-      componentName
-    })
-  })
+    /**
+     * @param {import('express').Request} req
+     * @param {import('express').Response<{}, Partial<PreviewLocals>>} res
+     * @param {import('express').NextFunction} next
+     * @returns {void}
+     */
+    (req, res, next) => {
+      const { componentName } = res.locals
 
-  // Component example preview
+      // Unknown component, continue to page not found
+      if (componentName && !componentNames.includes(componentName)) {
+        return next()
+      }
+
+      res.render(componentName ? 'component' : 'components', {
+        componentsFixtures,
+        componentName
+      })
+    }
+  )
+
+  /**
+   * Component example preview
+   */
   app.get(
     '/components/:componentName/:exampleName?/preview',
-    function (req, res, next) {
-      const { componentName, exampleName = 'default' } = req.params
 
-      /** @type {ComponentFixtures | undefined} */
-      const componentFixtures = res.locals.componentFixtures
+    /**
+     * @param {import('express').Request} req
+     * @param {import('express').Response<{}, Partial<PreviewLocals>>} res
+     * @param {import('express').NextFunction} next
+     * @returns {void}
+     */
+    (req, res, next) => {
+      const {
+        componentName,
+        componentFixtures: fixtures,
+        componentFixture: fixture
+      } = res.locals
 
-      const fixture = componentFixtures?.fixtures.find(
-        (fixture) => nunjucks.filters.slugify(fixture.name) === exampleName
-      )
-
-      if (!fixture) {
+      // Unknown component or fixture, continue to page not found
+      if (!componentNames.includes(componentName) || !fixtures || !fixture) {
         return next()
       }
 
@@ -153,34 +242,70 @@ export default async () => {
 
       res.render('component-preview', {
         bodyClasses,
-        componentName,
         componentView,
-        exampleName,
-        previewLayout: componentFixtures.previewLayout
+        previewLayout: fixtures.previewLayout
       })
     }
   )
 
-  // Example view
-  app.get('/examples/:exampleName', function (req, res) {
-    const { exampleName } = req.params
+  /**
+   * Example view
+   */
+  app.get(
+    '/examples/:exampleName',
 
-    res.render(`examples/${exampleName}/index`, {
-      exampleName,
+    /**
+     * @param {import('express').Request} req
+     * @param {import('express').Response<{}, Partial<PreviewLocals>>} res
+     * @param {import('express').NextFunction} next
+     * @returns {void}
+     */
+    (req, res, next) => {
+      const { exampleName } = res.locals
 
-      // Render with random number for unique non-visited links
-      randomPageHash: (Math.random() * 1000000).toFixed()
-    })
-  })
+      // Unknown example, continue to page not found
+      if (!exampleNames.includes(exampleName)) {
+        return next()
+      }
+
+      res.render(`examples/${exampleName}/index`, {
+        exampleName,
+
+        // Render with random number for unique non-visited links
+        randomPageHash: (Math.random() * 1000000).toFixed()
+      })
+    }
+  )
 
   // Full page example views
   routes.fullPageExamples(app)
+
+  /**
+   * Page not found handler
+   */
+  app.use((req, res) => {
+    res.status(404).render('errors/404')
+  })
+
+  /**
+   * Error handler
+   */
+  app.use((error, req, res, next) => {
+    console.error(error)
+    res.status(500).render('errors/500', {
+      error
+    })
+  })
 
   return app
 }
 
 /**
- * @typedef {import('@govuk-frontend/lib/components').ComponentFixtures} ComponentFixtures
+ * @typedef {object} PreviewLocals
+ * @property {import('@govuk-frontend/lib/components').ComponentFixtures} componentFixtures - All Component fixtures
+ * @property {import('@govuk-frontend/lib/components').ComponentFixture} [componentFixture] - Single component fixture
+ * @property {string} componentName - Component name
+ * @property {string} [exampleName] - Example name
  */
 
 /**

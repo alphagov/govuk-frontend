@@ -1,11 +1,19 @@
 {% extends "layouts/layout.njk" %}
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 
 {% block pageTitle %}Full page examples - GOV.UK Frontend{% endblock %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
-    href: "/"
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "GOV.UK Frontend",
+        href: "/"
+      },
+      {
+        text: "Full page examples"
+      }
+    ]
   }) }}
 {% endblock %}
 
