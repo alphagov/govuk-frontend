@@ -1,6 +1,6 @@
 {% extends "layouts/full-width-landmarks.njk" %}
 
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "macros/showExamples.njk" import showExamples %}
 
 {% block pageTitle %}All components - GOV.UK Frontend{% endblock %}
@@ -10,8 +10,16 @@
 {% endset %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
-    href: "/"
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "GOV.UK Frontend",
+        href: "/"
+      },
+      {
+        text: "All components"
+      }
+    ]
   }) }}
 {% endblock %}
 

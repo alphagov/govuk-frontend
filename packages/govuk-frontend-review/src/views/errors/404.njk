@@ -1,6 +1,22 @@
 {% extends "layouts/layout.njk" %}
 
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
 {% block pageTitle %}Page not found - GOV.UK Frontend{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "GOV.UK Frontend",
+        href: "/"
+      },
+      {
+        text: "Page not found"
+      }
+    ]
+  }) }}
+{% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">

@@ -15,10 +15,14 @@
 
 {% block beforeContent %}
   {{ govukBreadcrumbs({
-    "items": [
+    items: [
       {
-        text: 'GOV.UK Frontend',
+        text: "GOV.UK Frontend",
         href: "/"
+      },
+      {
+        text: "All components",
+        href: "/components"
       },
       {
         text: componentName | unslugify
