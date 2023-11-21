@@ -23,7 +23,10 @@ Projects can point to this branch in their package.json, instead of to the publi
 
 2. Make any required changes and commit them.
 
-3. Run `nvm use` to make sure you’re using the right version of Node.js and npm.
+3. Ensure you're running the version of NodeJS matching [`.nvmrc`](/.nvmrc).
+
+   - If you use NVM, run `nvm use` to set up the right version
+   - If you use another management system (like [`asdf`](https://asdf-vm.com/guide/getting-started.html)), compare the output of `node --version` and install the right one if necessary
 
 4. Run `npm ci` to make sure you have the exact dependencies installed.
 
@@ -31,7 +34,7 @@ Projects can point to this branch in their package.json, instead of to the publi
 
 ## Preview your changes
 
-1. If you need to update an existing project to use the preview, copy the command that displays after the `Success!`message.
+1. If you need to update an existing project to use the preview, copy the command that displays after the `Success!` message.
 
 2. Navigate to the project in the command line and run the success notification command. Running this command makes the project point to the preview branch, instead of to the published [GOV.UK Frontend npm package](https://www.npmjs.com/package/govuk-frontend). You can now preview your trial changes to GOV.UK Frontend.
 
