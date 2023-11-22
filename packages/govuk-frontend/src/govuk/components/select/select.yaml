@@ -47,7 +47,7 @@ params:
   - name: label
     type: object
     required: true
-    description: Additional options for the label used by the select component.
+    description: The label used by the select component.
     isComponent: true
   - name: hint
     type: object

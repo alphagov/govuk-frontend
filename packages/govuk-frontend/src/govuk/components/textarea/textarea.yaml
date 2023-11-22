@@ -30,7 +30,7 @@ params:
   - name: label
     type: object
     required: true
-    description: Additional options for the label used by the textarea component.
+    description: The label used by the textarea component.
     isComponent: true
   - name: hint
     type: object
