@@ -30,7 +30,7 @@ params:
   - name: label
     type: object
     required: true
-    description: Additional options for the label used by the character count component.
+    description: The label used by the character count component.
     isComponent: true
   - name: hint
     type: object

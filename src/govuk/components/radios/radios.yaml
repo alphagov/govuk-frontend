@@ -2,7 +2,7 @@ params:
   - name: fieldset
     type: object
     required: false
-    description: Additional options for the fieldset used by the radios component.
+    description: The fieldset used by the radios component.
     isComponent: true
   - name: hint
     type: object
