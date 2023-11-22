@@ -1,0 +1,39 @@
+{% extends "layouts/examples.njk" %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+{% block head %}
+  <link rel="stylesheet" href="/stylesheets/app.min.css">
+
+  {% block styles %}{% endblock %}
+  <script src="/javascripts/all.bundle.js"></script>
+  <script>
+    window.GOVUKFrontend.initAll()
+  </script>
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-l">JavaScript in &lt;head&gt; error</h1>
+  <p class="govuk-body-lead">
+    Open your <a class="govuk-link" href="https://developer.mozilla.org/en-US/docs/Web/API/console#see_also">brower's console</a>
+    to witness the error thrown in browsers where GOV.UK Frontend is not supported.
+  </p>
+  {{ govukCharacterCount({
+    label: {
+      text: "Any other comment"
+    },
+    id: "some-content",
+    name: "some-content",
+    maxlength: "100"
+  })}}
+{% endblock %}
+
+{% block bodyEnd %}
+{% endblock %}
