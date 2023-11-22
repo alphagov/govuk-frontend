@@ -31,14 +31,10 @@ export class SupportError extends GOVUKFrontendError {
   /**
    * Checks if GOV.UK Frontend is supported on this page
    *
-   * @param {HTMLElement | null} [$scope] - HTML element `<body>` checked for browser support
+   * @param {string} message - Element error message
    */
-  constructor($scope = document.body) {
-    super(
-      $scope
-        ? 'GOV.UK Frontend is not supported in this browser'
-        : 'GOV.UK Frontend initialised without `<script type="module">`'
-    )
+  constructor(message = 'GOV.UK Frontend is not supported in this browser') {
+    super(message)
   }
 }
 

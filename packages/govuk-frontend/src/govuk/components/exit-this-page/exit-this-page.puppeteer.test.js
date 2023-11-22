@@ -225,7 +225,8 @@ describe('/components/exit-this-page', () => {
         ).rejects.toMatchObject({
           cause: {
             name: 'SupportError',
-            message: 'GOV.UK Frontend is not supported in this browser'
+            message:
+              '<body> tag is missing the `govuk-frontend-supported` class'
           }
         })
       })

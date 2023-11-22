@@ -1,7 +1,7 @@
 /* eslint-disable no-new */
 
 import { version } from './common/govuk-frontend-version.mjs'
-import { isSupported } from './common/index.mjs'
+import { getSupportedLevelMessage } from './common/index.mjs'
 import { Accordion } from './components/accordion/accordion.mjs'
 import { Button } from './components/button/button.mjs'
 import { CharacterCount } from './components/character-count/character-count.mjs'
@@ -27,8 +27,9 @@ function initAll(config) {
   config = typeof config !== 'undefined' ? config : {}
 
   // Skip initialisation when GOV.UK Frontend is not supported
-  if (!isSupported()) {
-    console.log(new SupportError())
+  const supportLevelMessage = getSupportedLevelMessage()
+  if (supportLevelMessage !== 'OK') {
+    console.log(new SupportError(supportLevelMessage))
     return
   }
 

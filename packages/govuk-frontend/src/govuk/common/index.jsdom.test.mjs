@@ -1,8 +1,8 @@
 import {
   mergeConfigs,
   extractConfigByNamespace,
-  isSupported,
-  getFragmentFromUrl
+  getFragmentFromUrl,
+  getSupportedLevelMessage
 } from './index.mjs'
 
 describe('Common JS utilities', () => {
@@ -108,28 +108,34 @@ describe('Common JS utilities', () => {
     })
   })
 
-  describe('isSupported', () => {
+  describe('getSupportedLevelMessage', () => {
     beforeEach(() => {
       // Jest does not tidy the JSDOM document between tests
       // so we need to take care of that ourselves
       document.documentElement.innerHTML = ''
     })
 
-    it('returns true if the govuk-frontend-supported class is set', () => {
+    it('returns "OK" if there are no errors', () => {
       document.body.classList.add('govuk-frontend-supported')
 
-      expect(isSupported(document.body)).toBe(true)
+      expect(getSupportedLevelMessage(document.body)).toBe('OK')
     })
 
-    it('returns false if the govuk-frontend-supported class is not set', () => {
-      expect(isSupported(document.body)).toBe(false)
+    it('returns appropriate message if the govuk-frontend-supported class is not set', () => {
+      expect(getSupportedLevelMessage(document.body)).toBe(
+        '<body> tag is missing the `govuk-frontend-supported` class'
+      )
     })
 
-    it('returns false when `document.body` is not set', () => {
+    it('returns appropriate message when `document.body` is not set', () => {
       // For example, running `initAll()` in `<head>` without `type="module"`
       // will see support checks run when document.body is still `null`
-      expect(isSupported(null)).toBe(false)
+      expect(getSupportedLevelMessage(null)).toBe(
+        'GOV.UK Frontend initialised without `<script type="module">`'
+      )
     })
+
+    it.todo('returns appropriate message when noModule not supported', () => {})
   })
 
   describe('getFragmentFromUrl', () => {

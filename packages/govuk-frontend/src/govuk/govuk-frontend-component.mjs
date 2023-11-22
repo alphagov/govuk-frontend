@@ -1,4 +1,4 @@
-import { isSupported } from './common/index.mjs'
+import { getSupportedLevelMessage } from './common/index.mjs'
 import { SupportError } from './errors/index.mjs'
 
 /**
@@ -25,8 +25,9 @@ export class GOVUKFrontendComponent {
    * @private
    */
   checkSupport() {
-    if (!isSupported()) {
-      throw new SupportError()
+    const supportLevelMessage = getSupportedLevelMessage()
+    if (supportLevelMessage !== 'OK') {
+      throw new SupportError(supportLevelMessage)
     }
   }
 }

@@ -134,21 +134,33 @@ export function getFragmentFromUrl(url) {
 }
 
 /**
- * Checks if GOV.UK Frontend is supported on this page
- *
- * Some browsers will load and run our JavaScript but GOV.UK Frontend
- * won't be supported.
  *
  * @internal
  * @param {HTMLElement | null} [$scope] - HTML element `<body>` checked for browser support
- * @returns {boolean} Whether GOV.UK Frontend is supported on this page
+ * @returns {string} Support level
  */
-export function isSupported($scope = document.body) {
-  if (!$scope) {
-    return false
+export function getSupportedLevelMessage($scope = document.body) {
+  const LEVELS = {
+    OK: 'OK',
+    NO_SUPPORT: 'GOV.UK Frontend is not supported in this browser',
+    NO_MODULE: 'GOV.UK Frontend initialised without `<script type="module">`',
+    MISSING_CLASS: '<body> tag is missing the `govuk-frontend-supported` class'
   }
+  let supportedLevel = LEVELS.OK
 
-  return $scope.classList.contains('govuk-frontend-supported')
+  // The currentScript property only exists on <script> tags with no module.
+  // $scope will be null if `initAll` was called from the <head> with no module
+  if (document.currentScript ?? !$scope) {
+    supportedLevel = LEVELS.NO_MODULE
+  } else if (!document.body.classList.contains('govuk-frontend-supported')) {
+    supportedLevel = LEVELS.MISSING_CLASS
+  } else if (!('noModule' in HTMLScriptElement.prototype)) {
+    // For browsers that support es-module, but not noModule
+    supportedLevel = LEVELS.NO_SUPPORT
+  }
+  // All other browsers either don't load the JavaScript, or fully support GOV.UK Frontend
+
+  return supportedLevel
 }
 
 /**
