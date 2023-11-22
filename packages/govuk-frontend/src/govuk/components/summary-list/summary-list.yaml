@@ -83,7 +83,7 @@ params:
   - name: card
     type: object
     required: false
-    description: Options for the summary card. If any of these options are present, a summary card will wrap around the summary list.
+    description: Can be used to wrap a summary card around the summary list component. If any of these options are present, a summary card will wrap around the summary list.
     params:
       - name: title
         type: object
