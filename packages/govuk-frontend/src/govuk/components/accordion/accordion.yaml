@@ -2,7 +2,7 @@ params:
   - name: id
     type: string
     required: true
-    description: Must be unique across the domain of your service if `rememberExpanded` is `true` (as the expanded state of individual instances of the component persists across page loads using [`sessionStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)). Used as an `id` in the HTML for the accordion as a whole, and also as a prefix for the `id`s of the section contents and the buttons that open them, so that those `id`s can be the target of `aria-labelledby` and `aria-control` attributes.
+    description: Must be unique across the domain of your service if `rememberExpanded` is `true` (as the expanded state of individual instances of the component persists across page loads using [session storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)). Used as an `id` in the HTML for the accordion as a whole, and also as a prefix for the `id`s of the section contents and the buttons that open them, so that those `id`s can be the target of `aria-labelledby` and `aria-control` attributes.
   - name: headingLevel
     type: integer
     required: false
@@ -30,7 +30,7 @@ params:
   - name: hideSectionAriaLabelText
     type: string
     required: false
-    description: Text made available to assistive technologies, like screen-readers, as the final part of the toggle's accessible name when the section is expanded. Defaults to 'Hide this section'.
+    description: Text made available to assistive technologies, like screen-readers, as the final part of the toggle's accessible name when the section is expanded. Defaults to `"Hide this section"`.
   - name: showAllSectionsText
     type: string
     required: false
@@ -42,16 +42,16 @@ params:
   - name: showSectionAriaLabelText
     type: string
     required: false
-    description: Text made available to assistive technologies, like screen-readers, as the final part of the toggle's accessible name when the section is collapsed. Defaults to 'Show this section'.
+    description: Text made available to assistive technologies, like screen-readers, as the final part of the toggle's accessible name when the section is collapsed. Defaults to `"Show this section"`.
   - name: items
     type: array
     required: true
-    description: An array of sections within the accordion.
+    description: The sections within the accordion.
     params:
       - name: heading
         type: object
         required: true
-        description: The heading of each section.
+        description: The heading of each accordion section.
         params:
           - name: text
             type: string
@@ -64,7 +64,7 @@ params:
       - name: summary
         type: object
         required: false
-        description: The summary line of each section.
+        description: The summary line of each accordion section.
         params:
           - name: text
             type: string
@@ -77,7 +77,7 @@ params:
       - name: content
         type: object
         required: true
-        description: The content of each section.
+        description: The content of each accordion section.
         params:
           - name: text
             type: string

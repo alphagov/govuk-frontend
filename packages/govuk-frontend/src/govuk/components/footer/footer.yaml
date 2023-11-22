@@ -2,24 +2,24 @@ params:
   - name: meta
     type: object
     required: false
-    description: Object containing options for the meta navigation.
+    description: The meta section of the footer after any navigation, before the copyright and license information.
     params:
       - name: visuallyHiddenTitle
         type: string
         required: false
-        description: Title for a meta item section. Defaults to 'Support links'.
+        description: Title for a meta item section. Defaults to `"Support links"`.
       - name: html
         type: string
         required: false
-        description: HTML to add to the meta section of the footer, which will appear below any links specified using meta.items.
+        description: HTML to add to the meta section of the footer, which will appear below any links specified using meta `items`.
       - name: text
         type: string
         required: false
-        description: Text to add to the meta section of the footer, which will appear below any links specified using meta.items. If meta.html is specified, this option is ignored.
+        description: Text to add to the meta section of the footer, which will appear below any links specified using meta `items`. If meta `html` is specified, this option is ignored.
       - name: items
         type: array
         required: false
-        description: Array of items for use in the meta section of the footer.
+        description: The meta `items` add content within a unordered list to the meta section of the footer component. These appear above any text or custom html in the meta section.
         params:
           - name: text
             type: string
@@ -28,7 +28,7 @@ params:
           - name: href
             type: string
             required: true
-            description: List item href attribute in the meta section of the footer.
+            description: List item link `href` attribute in the meta section of the footer.
           - name: attributes
             type: object
             required: false
@@ -36,7 +36,7 @@ params:
   - name: navigation
     type: array
     required: false
-    description: Array of items for use in the navigation section of the footer.
+    description: The navigation section of the footer before a section break and the copyright and license information.
     params:
       - name: title
         type: string
@@ -49,11 +49,11 @@ params:
       - name: width
         type: string
         required: false
-        description: Width of each navigation section in the footer. Defaults to full width. You can pass any design system grid width here, for example, 'one-third'; 'two-thirds'; 'one-half'.
+        description: Width of each navigation section in the footer. You can pass any Design System grid width here – for example, `"one-third"`, `"two-thirds"` or `"one-half"`. Defaults to `"full"`.
       - name: items
         type: array
         required: false
-        description: Array of items to display in the list in navigation section of the footer.
+        description: The items within the navigation section of the footer component.
         params:
           - name: text
             type: string
@@ -62,7 +62,7 @@ params:
           - name: href
             type: string
             required: true
-            description: List item href attribute in the navigation section of the footer. Both `text` and `href` attributes need to be present to create a link.
+            description: List item link `href` attribute in the navigation section of the footer. Both `text` and `href` attributes need to be present to create a link.
           - name: attributes
             type: object
             required: false
@@ -70,7 +70,7 @@ params:
   - name: contentLicence
     type: object
     required: false
-    description: The content licence information. Defaults to Open Government Licence (OGL) v3 licence.
+    description: The content licence information within the footer component. Defaults to Open Government Licence (OGL) v3 licence.
     params:
       - name: text
         type: string
@@ -83,16 +83,16 @@ params:
   - name: copyright
     type: object
     required: false
-    description: The copyright information, this defaults to Crown Copyright.
+    description: The copyright information in the footer component, this defaults to `"© Crown copyright"`.
     params:
       - name: text
         type: string
         required: false
-        description: If `html` is set, this is not required. If `html` is provided, the `text` option will be ignored. If neither are provided, Crown copyright is used.
+        description: If `html` is set, this is not required. If `html` is provided, the `text` option will be ignored. If neither are provided, `"© Crown copyright"` is used.
       - name: html
         type: string
         required: false
-        description: If `text` is set, this is not required. If `html` is provided, the `text` option will be ignored. If neither are provided, Crown copyright is used. The copyright notice is inside an `<a>` element, so you can only use text formatting elements within it.
+        description: If `text` is set, this is not required. If `html` is provided, the `text` option will be ignored. If neither are provided, `"© Crown copyright"` is used. The copyright notice is inside an `<a>` element, so you can only use text formatting elements within it.
   - name: containerClasses
     type: string
     required: false
@@ -130,10 +130,10 @@ accessibilityCriteria: |
     Note: This decision has been made based on prior experience seeing removal of overuse of `<nav>` elements from www.GOV.UK, which made it confusing for users of assistive technologies to know what were the most important navigation aspects of GOV.UK.
     Should be challenged if user research indicates this is an issue.
 
-  - have a role of `contentinfo` at the root of the component (<footer>) (https://www.w3.org/TR/wai-aria-1.1/#contentinfo)
+  - have a role of `"contentinfo"` at the root of the component (<footer>) (https://www.w3.org/TR/wai-aria-1.1/#contentinfo)
     Note: This decision has been made given that most uses of this role tend to be used directly on a `<footer>` element.
     Assumption made is that is most predictable for users of assistive technologies.
-    The spec indicates that `contentinfo` is useful for "Examples of information included in this region of the page are copyrights and links to privacy statements.", which may indicate that it might be better placed around the 'meta' section of this component.
+    The spec indicates that `"contentinfo"` is useful for "Examples of information included in this region of the page are copyrights and links to privacy statements.", which may indicate that it might be better placed around the 'meta' section of this component.
     Should be challenged if user research indicates this is an issue.
 
     See also: http://www.brucelawson.co.uk/2013/why-does-html-take-rolecontentinfo

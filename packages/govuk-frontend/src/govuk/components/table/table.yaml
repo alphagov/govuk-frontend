@@ -2,7 +2,7 @@ params:
   - name: rows
     type: array
     required: true
-    description: Array of table rows and cells.
+    description: The rows within the table component.
     params:
       - name: text
         type: string
@@ -35,7 +35,7 @@ params:
   - name: head
     type: array
     required: false
-    description: Array of table head cells.
+    description: Can be used to add a row of table header cells (`<th>`) at the top of the table component.
     params:
       - name: text
         type: string
@@ -76,7 +76,7 @@ params:
   - name: firstCellIsHeader
     type: boolean
     required: false
-    description: If set to true, first cell in table row will be a TH instead of a TD.
+    description: If set to `true`, the first cell in each row will be a table header (`<th>`).
   - name: classes
     type: string
     required: false

@@ -2,22 +2,22 @@ params:
   - name: fieldset
     type: object
     required: false
-    description: Options for the fieldset component (for example legend).
+    description: The fieldset used by the radios component.
     isComponent: true
   - name: hint
     type: object
     required: false
-    description: Options for the hint component (for example text).
+    description: Can be used to add a hint to the radios component.
     isComponent: true
   - name: errorMessage
     type: object
     required: false
-    description: Options for the error message component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.
+    description: Can be used to add an error message to the radios component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.
     isComponent: true
   - name: formGroup
     type: object
     required: false
-    description: Options for the form-group wrapper.
+    description: Additional options for the form group containing the radios component.
     params:
       - name: classes
         type: string
@@ -26,15 +26,15 @@ params:
   - name: idPrefix
     type: string
     required: false
-    description: String to prefix ID for each radio item if no ID is specified on each item. If `idPrefix` is not passed, fallback to using the `name` attribute instead.
+    description: Optional prefix. This is used to prefix the `id` attribute for each radio input, hint and error message, separated by `-`. Defaults to the `name` option value.
   - name: name
     type: string
     required: true
-    description: Name attribute for each radio item.
+    description: Name attribute for all radio items.
   - name: items
     type: array
     required: true
-    description: Array of radio items objects.
+    description: The radio items within the radios component.
     params:
       - name: text
         type: string
@@ -55,17 +55,17 @@ params:
       - name: label
         type: object
         required: false
-        description: Provide attributes and classes to each radio item label.
+        description: Additional options for the label used by each radio item within the radios component.
         isComponent: true
       - name: hint
         type: object
         required: false
-        description: Provide hint to each radio item.
+        description: Can be used to add a hint to each radio item within the radios component.
         isComponent: true
       - name: divider
         type: string
         required: false
-        description: Divider text to separate radio items, for example the text 'or'.
+        description: Divider text to separate radio items, for example the text `"or"`.
       - name: checked
         type: boolean
         required: false

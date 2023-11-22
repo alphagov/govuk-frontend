@@ -10,7 +10,7 @@ params:
   - name: type
     type: string
     required: false
-    description: Type of input control to render, for example, a password input control. Defaults to `text`.
+    description: Type of input control to render, for example, a password input control. Defaults to `"text"`.
   - name: inputmode
     type: string
     required: false
@@ -30,22 +30,22 @@ params:
   - name: label
     type: object
     required: true
-    description: Options for the label component.
+    description: The label used by the text input component.
     isComponent: true
   - name: hint
     type: object
     required: false
-    description: Options for the hint component.
+    description: Can be used to add a hint to a text input component.
     isComponent: true
   - name: errorMessage
     type: object
     required: false
-    description: Options for the error message component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.
+    description: Can be used to add an error message to the text input component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.
     isComponent: true
   - name: prefix
     type: object
     required: false
-    description: Options for the prefix element.
+    description: Can be used to add a prefix to the text input component.
     params:
       - name: text
         type: string
@@ -66,7 +66,7 @@ params:
   - name: suffix
     type: object
     required: false
-    description: Options for the suffix element.
+    description: Can be used to add a suffix to the text input component.
     params:
       - name: text
         type: string
@@ -87,7 +87,7 @@ params:
   - name: formGroup
     type: object
     required: false
-    description: Options for the form-group wrapper.
+    description: Additional options for the form group containing the text-input component.
     params:
       - name: classes
         type: string

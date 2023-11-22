@@ -2,12 +2,12 @@ params:
   - name: items
     type: array
     required: false
-    description: The array of link objects.
+    description: The items within the pagination component.
     params:
       - name: number
         type: string
         required: false
-        description: The pagination item text - usually a page number.
+        description: The pagination item text – usually a page number.
       - name: visuallyHiddenText
         type: string
         required: false
@@ -36,11 +36,11 @@ params:
       - name: text
         type: string
         required: false
-        description: The text content of the link to the previous page. Defaults to 'Previous page', with 'page' being visually hidden. If `html` is provided, the `text` option will be ignored.
+        description: The text content of the link to the previous page. Defaults to `"Previous page"`, with 'page' being visually hidden. If `html` is provided, the `text` option will be ignored.
       - name: html
         type: string
         required: false
-        description: The HTML content of the link to the previous page. Defaults to 'Previous page', with 'page' being visually hidden. If `html` is provided, the `text` option will be ignored.
+        description: The HTML content of the link to the previous page. Defaults to `"Previous page"`, with 'page' being visually hidden. If `html` is provided, the `text` option will be ignored.
       - name: labelText
         type: string
         required: false
@@ -61,11 +61,11 @@ params:
       - name: text
         type: string
         required: false
-        description: The text content of the link to the next page. Defaults to 'Next page', with 'page' being visually hidden. If `html` is provided, the `text` option will be ignored.
+        description: The text content of the link to the next page. Defaults to `"Next page"`, with 'page' being visually hidden. If `html` is provided, the `text` option will be ignored.
       - name: html
         type: string
         required: false
-        description: The HTML content of the link to the next page. Defaults to 'Next page', with 'page' being visually hidden. If `html` is provided, the `text` option will be ignored.
+        description: The HTML content of the link to the next page. Defaults to `"Next page"`, with 'page' being visually hidden. If `html` is provided, the `text` option will be ignored.
       - name: labelText
         type: string
         required: false
@@ -81,7 +81,7 @@ params:
   - name: landmarkLabel
     type: string
     required: false
-    description: The label for the navigation landmark that wraps the pagination. Defaults to 'Pagination'.
+    description: The label for the navigation landmark that wraps the pagination. Defaults to `"Pagination"`.
   - name: classes
     type: string
     required: false

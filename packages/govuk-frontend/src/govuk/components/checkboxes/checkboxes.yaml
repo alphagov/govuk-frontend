@@ -6,22 +6,22 @@ params:
   - name: fieldset
     type: object
     required: false
-    description: Options for the fieldset component (for example legend).
+    description: Can be used to add a fieldset to the checkboxes component.
     isComponent: true
   - name: hint
     type: object
     required: false
-    description: Options for the hint component (for example text).
+    description: Can be used to add a hint to the checkboxes component.
     isComponent: true
   - name: errorMessage
     type: object
     required: false
-    description: Options for the error message component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.
+    description: Can be used to add an error message to the checkboxes component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.
     isComponent: true
   - name: formGroup
     type: object
     required: false
-    description: Options for the form-group wrapper.
+    description: Additional options for the form group containing the checkboxes component.
     params:
       - name: classes
         type: string
@@ -30,7 +30,7 @@ params:
   - name: idPrefix
     type: string
     required: false
-    description: String to prefix id for each checkbox item if no id is specified on each item. If not passed, fall back to using the name option instead.
+    description: Optional prefix. This is used to prefix the `id` attribute for each checkbox item input, hint and error message, separated by `-`. Defaults to the `name` option value.
   - name: name
     type: string
     required: true
@@ -38,7 +38,7 @@ params:
   - name: items
     type: array
     required: true
-    description: Array of checkbox items objects.
+    description: The checkbox items within the checkboxes component.
     params:
       - name: text
         type: string
@@ -63,17 +63,17 @@ params:
       - name: label
         type: object
         required: false
-        description: Provide attributes and classes to each checkbox item label.
+        description: Additional options for the label used by each checkbox item within the checkboxes component.
         isComponent: true
       - name: hint
         type: object
         required: false
-        description: Provide hint to each checkbox item.
+        description: Can be used to add a hint to each checkbox item within the checkboxes component.
         isComponent: true
       - name: divider
         type: string
         required: false
-        description: Divider text to separate checkbox items, for example the text 'or'.
+        description: Divider text to separate checkbox items, for example the text `"or"`.
       - name: checked
         type: boolean
         required: false
@@ -90,7 +90,7 @@ params:
       - name: behaviour
         type: string
         required: false
-        description: If set to `exclusive`, implements a 'None of these' type behaviour via JavaScript when checkboxes are clicked.
+        description: If set to `"exclusive"`, implements a 'None of these' type behaviour via JavaScript when checkboxes are clicked.
       - name: disabled
         type: boolean
         required: false
