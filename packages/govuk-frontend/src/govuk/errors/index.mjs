@@ -34,9 +34,14 @@ export class SupportError extends GOVUKFrontendError {
    * @param {HTMLElement | null} [$scope] - HTML element `<body>` checked for browser support
    */
   constructor($scope = document.body) {
+    const supportMessage =
+      'noModule' in HTMLScriptElement.prototype
+        ? 'GOV.UK Frontend initialised without `<body class="govuk-frontend-supported">` from template `<script>` snippet'
+        : 'GOV.UK Frontend is not supported in this browser'
+
     super(
       $scope
-        ? 'GOV.UK Frontend is not supported in this browser'
+        ? supportMessage
         : 'GOV.UK Frontend initialised without `<script type="module">`'
     )
   }
