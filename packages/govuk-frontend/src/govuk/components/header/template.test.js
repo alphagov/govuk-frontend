@@ -266,7 +266,7 @@ describe('header', () => {
       expect($svg.attr('role')).toEqual('img')
     })
 
-    it('has an embedded <title> element to serve as alternate text', () => {
+    it('has an embedded <title> element to serve as alternative text', () => {
       expect($svg.html()).toContain('<title>GOV.UK</title>')
     })
   })
