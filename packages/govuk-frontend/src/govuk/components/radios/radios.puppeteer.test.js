@@ -282,7 +282,7 @@ describe('Radios', () => {
   })
 
   describe('errors at instantiation', () => {
-    it('throws when GOV.UK Frontend is not supported', async () => {
+    it('can throw a SupportError if appropriate', async () => {
       await expect(
         render(page, 'radios', examples.default, {
           beforeInitialisation() {
@@ -292,7 +292,8 @@ describe('Radios', () => {
       ).rejects.toMatchObject({
         cause: {
           name: 'SupportError',
-          message: 'GOV.UK Frontend is not supported in this browser'
+          message:
+            'GOV.UK Frontend initialised without `<body class="govuk-frontend-supported">` from template `<script>` snippet'
         }
       })
     })
