@@ -255,15 +255,19 @@ describe('header', () => {
 
     beforeAll(() => {
       $ = render('header', examples.default)
-      $svg = $('.govuk-header__logotype-crown')
+      $svg = $('.govuk-header__logotype')
     })
 
     it('sets focusable="false" so that IE does not treat it as an interactive element', () => {
       expect($svg.attr('focusable')).toEqual('false')
     })
 
-    it('sets aria-hidden="true" so that it is ignored by assistive technologies', () => {
-      expect($svg.attr('aria-hidden')).toEqual('true')
+    it('sets role="img" so that assistive technologies do not treat it as an embedded document', () => {
+      expect($svg.attr('role')).toEqual('img')
+    })
+
+    it('has an embedded <title> element to serve as alternative text', () => {
+      expect($svg.html()).toContain('<title>GOV.UK</title>')
     })
   })
 })

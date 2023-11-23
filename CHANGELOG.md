@@ -4,6 +4,22 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### Breaking changes
+
+#### Update the GOV.UK logo
+
+The GOV.UK logo has been updated to merge the GOV.UK text with the crown graphic. This is to ensure that the full logo is always rendered correctly even if parts of the page, such as CSS or the Transport webfont fail to load. Styles relating to the logo have also been modified.
+
+If you're using the `govukHeader` Nunjucks macro you don't need to change anything.
+
+Otherwise, to update to the new logo:
+
+1. Remove `<span class="govuk-header__logotype-text">` and its content.
+2. Remove the `<span class="govuk-header__logotype">` around the `svg` element.
+3. Replace the `svg` element with [this updated SVG](https://github.com/alphagov/govuk-frontend/blob/06e6a56655f458112363423dc8f1fb50d21b225e/packages/govuk-frontend/src/govuk/components/header/template.njk#L14-L25), ensuring that the class name and attributes are also updated.
+
+This change was made in [pull request #4449: Implement transitional crown in the Header component (v5.0)](https://github.com/alphagov/govuk-frontend/pull/4449).
+
 ### Recommended changes
 
 We've recently made some non-breaking changes to GOV.UK Frontend. Implementing these changes will make your service work better.
