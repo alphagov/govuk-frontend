@@ -798,7 +798,7 @@ describe('Character count', () => {
         examples = await getExamples('character-count')
       })
 
-      it('throws when GOV.UK Frontend is not supported', async () => {
+      it('can throw a SupportError if appropriate', async () => {
         await expect(
           render(page, 'character-count', examples.default, {
             beforeInitialisation() {
@@ -808,7 +808,8 @@ describe('Character count', () => {
         ).rejects.toMatchObject({
           cause: {
             name: 'SupportError',
-            message: 'GOV.UK Frontend is not supported in this browser'
+            message:
+              'GOV.UK Frontend initialised without `<body class="govuk-frontend-supported">` from template `<script>` snippet'
           }
         })
       })

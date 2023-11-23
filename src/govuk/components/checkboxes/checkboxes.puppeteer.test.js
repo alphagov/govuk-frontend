@@ -346,7 +346,7 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
     })
 
     describe('errors at instantiation', () => {
-      it('throws when GOV.UK Frontend is not supported', async () => {
+      it('can throw a SupportError if appropriate', async () => {
         await expect(
           render(page, 'checkboxes', examples.default, {
             beforeInitialisation() {
@@ -356,7 +356,8 @@ describe('Checkboxes with multiple groups and a "None" checkbox and conditional 
         ).rejects.toMatchObject({
           cause: {
             name: 'SupportError',
-            message: 'GOV.UK Frontend is not supported in this browser'
+            message:
+              'GOV.UK Frontend initialised without `<body class="govuk-frontend-supported">` from template `<script>` snippet'
           }
         })
       })
