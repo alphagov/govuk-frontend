@@ -38,58 +38,58 @@ notes: |
 {% endset %}
 
 {% block bodyStart %}
-    {{ govukCookieBanner({
-    "classes": "js-cookies-banner",
-    "messages": [
-        {
-            "headingText": "Cookies on this government service",
-            "html": html,
-            "actions": [
-                {
-                    "text": "Accept analytics cookies",
-                    "type": "button",
-                    "classes": "js-cookies-button-accept"
-                },
-                {
-                    "text": "Reject analytics cookies",
-                    "type": "button",
-                    "classes": "js-cookies-button-reject"
-                },
-                {
-                    "text": "View cookie preferences",
-                    "href": "#"
-                }
-            ],
-            "classes": "js-question-banner"
-        },
-        {
-            "html": acceptHtml,
-            "role": "alert",
-            "actions": [
-                {
-                    "text": "Hide cookie message",
-                    "type": "button",
-                    "classes": "js-hide"
-                }
-            ],
-            "classes": "js-cookies-accepted",
-            "hidden": true
-        },
-        {
-            "html": rejectHtml,
-            "role": "alert",
-            "actions": [
-                {
-                    "text": "Hide cookie message",
-                    "type": "button",
-                    "classes": "js-hide"
-                }
-            ],
-            "classes": "js-cookies-rejected",
-            "hidden": true
-        }
+  {{ govukCookieBanner({
+    classes: "js-cookies-banner",
+    messages: [
+      {
+        headingText: "Cookies on this government service",
+        html: html,
+        actions: [
+          {
+            text: "Accept analytics cookies",
+            type: "button",
+            classes: "js-cookies-button-accept"
+          },
+          {
+            text: "Reject analytics cookies",
+            type: "button",
+            classes: "js-cookies-button-reject"
+          },
+          {
+            text: "View cookie preferences",
+            href: "#"
+          }
+        ],
+        classes: "js-question-banner"
+      },
+      {
+        html: acceptHtml,
+        role: "alert",
+        actions: [
+          {
+              text: "Hide cookie message",
+              type: "button",
+              classes: "js-hide"
+          }
+        ],
+        classes: "js-cookies-accepted",
+        hidden: true
+      },
+      {
+        html: rejectHtml,
+        role: "alert",
+        actions: [
+          {
+            text: "Hide cookie message",
+            type: "button",
+            classes: "js-hide"
+          }
+        ],
+        classes: "js-cookies-rejected",
+        hidden: true
+      }
     ]
-    }) }}
+  }) }}
 {% endblock %}
 
 {% block beforeContent %}

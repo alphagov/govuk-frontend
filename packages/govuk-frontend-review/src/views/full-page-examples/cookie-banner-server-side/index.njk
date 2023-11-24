@@ -27,58 +27,58 @@ notes: |
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block bodyStart %}
-{% if cookies == "accept" or cookies =="reject" %}
+  {% if cookies == "accept" or cookies =="reject" %}
     {% if cookies == "accept" %}
-        {% set outcome = "You have accepted cookies." %}
+      {% set outcome = "You have accepted cookies." %}
     {% else %}
-        {% set outcome = "You have rejected cookies." %}
+      {% set outcome = "You have rejected cookies." %}
     {% endif %}
 
     {{ govukCookieBanner({
-    "messages": [
+      messages: [
         {
-            "text": "Your cookie preferences have been saved. " + outcome,
-            "role": "alert",
-            "actions": [
-                {
-                    "text": "Hide cookie message",
-                    "href": currentUrl,
-                    "type": "button",
-                    "classes": "js-hide"
-                }
-            ],
-            "classes": "js-confirmation-banner"
+          text: "Your cookie preferences have been saved. " + outcome,
+          role: "alert",
+          actions: [
+            {
+              text: "Hide cookie message",
+              href: currentUrl,
+              type: "button",
+              classes: "js-hide"
+            }
+          ],
+          classes: "js-confirmation-banner"
         }
-    ]
+      ]
     }) }}
 {% else %}
 <form action="" method="POST">
-    {{ govukCookieBanner({
-    "messages": [
-        {
-        "headingText": "Cookies on this government service",
-        "text": "We use analytics cookies to help understand how users use our service.",
-        "actions": [
-            {
-            "text": "Accept analytics cookies",
-            "type": "submit",
-            "name": "cookies",
-            "value": "accept"
-            },
-            {
-            "text": "Reject analytics cookies",
-            "type": "submit",
-            "name": "cookies",
-            "value": "reject"
-            },
-            {
-            "text": "View cookie preferences",
-            "href": "#"
-            }
+  {{ govukCookieBanner({
+    messages: [
+      {
+        headingText: "Cookies on this government service",
+        text: "We use analytics cookies to help understand how users use our service.",
+        actions: [
+          {
+            text: "Accept analytics cookies",
+            type: "submit",
+            name: "cookies",
+            value: "accept"
+          },
+          {
+            text: "Reject analytics cookies",
+            type: "submit",
+            name: "cookies",
+            value: "reject"
+          },
+          {
+            text: "View cookie preferences",
+            href: "#"
+          }
         ]
-        }
+      }
     ]
-    }) }}
+  }) }}
 </form>
 {% endif %}
 {% endblock %}
