@@ -8,46 +8,37 @@ import { formatValidationErrors } from '../../../utils.mjs'
 export default (app) => {
   app.post(
     '/full-page-examples/update-your-account-details',
-    [
-      body('email')
-        .exists()
-        .isEmail()
-        .withMessage(
-          'Enter an email address in the correct format, like name@example.com'
-        )
-        .not()
-        .isEmpty()
-        .withMessage('Enter your email address'),
 
-      body('password')
-        .exists()
-        .not()
-        .isEmpty()
-        .withMessage('Enter your password')
-    ],
+    body('email')
+      .exists()
+      .isEmail()
+      .withMessage(
+        'Enter an email address in the correct format, like name@example.com'
+      )
+      .not()
+      .isEmpty()
+      .withMessage('Enter your email address'),
 
-    /**
-     * @param {import('express').Request} request
-     * @param {import('express').Response} response
-     * @returns {void}
-     */
-    (request, response) => {
-      const errors = formatValidationErrors(validationResult(request))
+    body('password')
+      .exists()
+      .not()
+      .isEmpty()
+      .withMessage('Enter your password'),
+
+    (req, res) => {
+      const errors = formatValidationErrors(validationResult(req))
 
       if (!errors) {
-        return response.render(
+        return res.render(
           './full-page-examples/update-your-account-details/confirm'
         )
       }
 
-      response.render(
-        './full-page-examples/update-your-account-details/index',
-        {
-          errors,
-          errorSummary: Object.values(errors),
-          values: request.body // In production this should sanitized.
-        }
-      )
+      res.render('./full-page-examples/update-your-account-details/index', {
+        errors,
+        errorSummary: Object.values(errors),
+        values: req.body // In production this should sanitized.
+      })
     }
   )
 }

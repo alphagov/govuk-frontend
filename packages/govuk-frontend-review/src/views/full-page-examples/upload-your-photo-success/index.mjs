@@ -5,13 +5,8 @@ export default (app) => {
   app.post(
     '/full-page-examples/upload-your-photo-success',
 
-    /**
-     * @param {import('express').Request} request
-     * @param {import('express').Response} response
-     * @returns {void}
-     */
-    (request, response) => {
-      return response.render(
+    (req, res) => {
+      return res.render(
         './full-page-examples/upload-your-photo-success/index',
         {
           isSuccess: true

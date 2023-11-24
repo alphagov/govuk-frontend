@@ -8,31 +8,25 @@ import { formatValidationErrors } from '../../../utils.mjs'
 export default (app) => {
   app.post(
     '/full-page-examples/have-you-changed-your-name',
-    [
-      body('changed-name')
-        .not()
-        .isEmpty()
-        .withMessage('Select if you have changed your name')
-    ],
 
-    /**
-     * @param {import('express').Request} request
-     * @param {import('express').Response} response
-     * @returns {void}
-     */
-    (request, response) => {
-      const errors = formatValidationErrors(validationResult(request))
+    body('changed-name')
+      .not()
+      .isEmpty()
+      .withMessage('Select if you have changed your name'),
+
+    (req, res) => {
+      const errors = formatValidationErrors(validationResult(req))
       if (errors) {
-        return response.render(
+        return res.render(
           './full-page-examples/have-you-changed-your-name/index',
           {
             errors,
             errorSummary: Object.values(errors),
-            values: request.body // In production this should sanitized.
+            values: req.body // In production this should sanitized.
           }
         )
       }
-      response.render('./full-page-examples/have-you-changed-your-name/confirm')
+      res.render('./full-page-examples/have-you-changed-your-name/confirm')
     }
   )
 }

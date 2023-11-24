@@ -18,12 +18,8 @@ export default (app) => {
   app.get(
     '/full-page-examples/search',
 
-    /**
-     * @param {import('express').Request} request
-     * @param {import('express').Response} response
-     */
-    (request, response) => {
-      const { query } = request
+    (req, res) => {
+      const { query } = req
 
       query.search ??= 'driving'
       query.order ??= 'most-viewed'
@@ -39,7 +35,7 @@ export default (app) => {
         .shuffle(total.split(''), seed)
         .join('')
 
-      response.render('./full-page-examples/search/index', {
+      res.render('./full-page-examples/search/index', {
         documents: shuffledDocuments,
         order: query.order,
 

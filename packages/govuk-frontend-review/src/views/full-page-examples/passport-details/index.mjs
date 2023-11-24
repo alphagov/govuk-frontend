@@ -8,42 +8,36 @@ import { formatValidationErrors } from '../../../utils.mjs'
 export default (app) => {
   app.post(
     '/full-page-examples/passport-details',
-    [
-      body('passport-number')
-        .exists()
-        .not()
-        .isEmpty()
-        .withMessage('Enter your passport number'),
 
-      body('expiry-day')
-        .exists()
-        .not()
-        .isEmpty()
-        .withMessage('Enter your expiry day'),
+    body('passport-number')
+      .exists()
+      .not()
+      .isEmpty()
+      .withMessage('Enter your passport number'),
 
-      body('expiry-month')
-        .exists()
-        .not()
-        .isEmpty()
-        .withMessage('Enter your expiry month'),
+    body('expiry-day')
+      .exists()
+      .not()
+      .isEmpty()
+      .withMessage('Enter your expiry day'),
 
-      body('expiry-year')
-        .exists()
-        .not()
-        .isEmpty()
-        .withMessage('Enter your expiry year')
-    ],
+    body('expiry-month')
+      .exists()
+      .not()
+      .isEmpty()
+      .withMessage('Enter your expiry month'),
 
-    /**
-     * @param {import('express').Request} request
-     * @param {import('express').Response} response
-     * @returns {void}
-     */
-    (request, response) => {
-      const errors = formatValidationErrors(validationResult(request))
+    body('expiry-year')
+      .exists()
+      .not()
+      .isEmpty()
+      .withMessage('Enter your expiry year'),
+
+    (req, res) => {
+      const errors = formatValidationErrors(validationResult(req))
 
       if (!errors) {
-        return response.render('./full-page-examples/passport-details/confirm')
+        return res.render('./full-page-examples/passport-details/confirm')
       }
 
       // If any of the date inputs error apply a general error.
@@ -80,10 +74,10 @@ export default (app) => {
         )
       }
 
-      response.render('./full-page-examples/passport-details/index', {
+      res.render('./full-page-examples/passport-details/index', {
         errors,
         errorSummary,
-        values: request.body // In production this should sanitized.
+        values: req.body // In production this should sanitized.
       })
     }
   )

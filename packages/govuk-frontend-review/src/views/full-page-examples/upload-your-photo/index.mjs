@@ -8,30 +8,24 @@ import { formatValidationErrors } from '../../../utils.mjs'
 export default (app) => {
   app.post(
     '/full-page-examples/upload-your-photo',
-    [
-      body('photo').exists().not().isEmpty().withMessage('Select a photo'),
 
-      body('terms-and-conditions')
-        .not()
-        .isEmpty()
-        .withMessage('Select I accept the terms and conditions')
-    ],
+    body('photo').exists().not().isEmpty().withMessage('Select a photo'),
 
-    /**
-     * @param {import('express').Request} request
-     * @param {import('express').Response} response
-     * @returns {void}
-     */
-    (request, response) => {
-      const errors = formatValidationErrors(validationResult(request))
+    body('terms-and-conditions')
+      .not()
+      .isEmpty()
+      .withMessage('Select I accept the terms and conditions'),
+
+    (req, res) => {
+      const errors = formatValidationErrors(validationResult(req))
       if (errors) {
-        return response.render('./full-page-examples/upload-your-photo/index', {
+        return res.render('./full-page-examples/upload-your-photo/index', {
           errors,
           errorSummary: Object.values(errors),
-          values: request.body // In production this should sanitized.
+          values: req.body // In production this should sanitized.
         })
       }
-      response.render('./full-page-examples/upload-your-photo/confirm')
+      res.render('./full-page-examples/upload-your-photo/confirm')
     }
   )
 }
