@@ -12,6 +12,11 @@ describe('errors', () => {
   })
 
   describe('SupportError', () => {
+    beforeEach(() => {
+      // JSDOM hasn't yet implemented `noModule`, so we have to mock this
+      window.HTMLScriptElement.prototype.noModule = true
+    })
+
     it('is an instance of GOVUKFrontendError', () => {
       expect(new SupportError(document.body)).toBeInstanceOf(GOVUKFrontendError)
     })
@@ -21,8 +26,15 @@ describe('errors', () => {
     })
 
     it('provides feedback regarding browser support', () => {
+      delete window.HTMLScriptElement.prototype.noModule
       expect(new SupportError(document.body).message).toBe(
         'GOV.UK Frontend is not supported in this browser'
+      )
+    })
+
+    it('provides feedback when <body> class is missing', () => {
+      expect(new SupportError(document.body).message).toBe(
+        'GOV.UK Frontend initialised without `<body class="govuk-frontend-supported">` from template `<script>` snippet'
       )
     })
 
