@@ -1,9 +1,14 @@
-import { readFile } from 'fs/promises'
+import { readFileSync } from 'fs'
+import { join } from 'path'
 
+import { paths } from '@govuk-frontend/config'
 import shuffleSeed from 'shuffle-seed'
 
 const { documents } = JSON.parse(
-  await readFile(new URL('data.json', import.meta.url), 'utf8')
+  readFileSync(
+    join(paths.app, 'src/views/full-page-examples/search/data.json'),
+    'utf8'
+  )
 )
 
 /**
