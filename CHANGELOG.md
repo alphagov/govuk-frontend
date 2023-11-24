@@ -77,6 +77,7 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#4416: Review and fix HTML attribute trailing spaces etc](https://github.com/alphagov/govuk-frontend/pull/4416)
 - [#4444: Fix UMD component exports with duplicate names](https://github.com/alphagov/govuk-frontend/pull/4444)
+- [#4492: Improve SupportError when `<body class="govuk-frontend-supported">` is not set](https://github.com/alphagov/govuk-frontend/pull/4492)
 - [#4450: Update descriptions for Nunjucks macro options + fixes](https://github.com/alphagov/govuk-frontend/pull/4450)
 
 ## 5.0.0-beta.1 (Pre-release)
