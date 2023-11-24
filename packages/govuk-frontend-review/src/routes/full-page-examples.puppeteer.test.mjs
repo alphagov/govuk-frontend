@@ -1,35 +1,36 @@
+import { join } from 'path'
+
+import { paths } from '@govuk-frontend/config'
 import { getProperty, goTo } from '@govuk-frontend/helpers/puppeteer'
+import { getDirectories } from '@govuk-frontend/lib/files'
+
+import { getFullPageExamples } from '../common/lib/files.mjs'
 
 describe('Full page examples', () => {
-  describe.each([
-    {
-      title:
-        '2018’s oddest requests from Brits abroad: ‘Strictly’, vampires and sausages',
-      path: '/full-page-examples/announcements'
-    },
-    {
-      title: 'UK bank holidays',
-      path: '/full-page-examples/bank-holidays'
-    },
-    {
-      title: 'Check your answers - Temporary events notice',
-      path: '/full-page-examples/check-your-answers'
-    },
-    {
-      title: 'Apply online for a UK passport',
-      path: '/full-page-examples/start-page'
-    }
-  ])('$title', ({ title, path }) => {
-    it('should load correctly', async () => {
-      await goTo(page, path)
+  it('should load correctly', async () => {
+    const exampleNamesFullPage = await getDirectories(
+      join(paths.app, 'src/views/full-page-examples')
+    )
 
-      const $title = await page.$('title')
+    // Full page examples have additional context
+    const fullPageExamples = await getFullPageExamples()
 
-      // Check the page responded correctly
-      await expect(getProperty($title, 'textContent')).resolves.toEqual(
-        `${title} - GOV.UK`
+    // Check the page responded correctly
+    for (const exampleName of exampleNamesFullPage) {
+      await goTo(page, `/full-page-examples/${exampleName}`)
+
+      // Look for full page example context
+      const example = fullPageExamples.find(
+        (example) => example.path === exampleName
       )
-    })
+
+      // Find title text
+      const $title = await page.$('title')
+      const titleText = await getProperty($title, 'textContent')
+
+      // Check for matching title
+      expect(titleText).toEqual(`${example.title} - GOV.UK`)
+    }
   })
 })
 
