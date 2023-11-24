@@ -27,6 +27,7 @@ notes: |
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block bodyStart %}
+  {{ super() }}
   {% if cookies == "accept" or cookies =="reject" %}
     {% if cookies == "accept" %}
       {% set outcome = "You have accepted cookies." %}

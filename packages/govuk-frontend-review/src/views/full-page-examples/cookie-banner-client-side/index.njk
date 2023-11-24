@@ -38,6 +38,7 @@ notes: |
 {% endset %}
 
 {% block bodyStart %}
+  {{ super() }}
   {{ govukCookieBanner({
     classes: "js-cookies-banner",
     messages: [
