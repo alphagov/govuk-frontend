@@ -68,14 +68,12 @@ export default async () => {
   app.use(middleware.assets)
   app.use(middleware.request)
   app.use(middleware.robots)
+  app.use(middleware.banner)
 
   // Add build stats
   app.locals.stats = Object.fromEntries(
     await Promise.all(modulePaths.map(getStats))
   )
-
-  // Handle the banner component serverside.
-  routes.banner(app)
 
   // Configure nunjucks
   const env = nunjucks.renderer(app)

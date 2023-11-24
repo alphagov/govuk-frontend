@@ -14,7 +14,7 @@ router.use(
 )
 
 /**
- * Parses cookie headers into `req.cookie`
+ * Parses cookie headers into `req.cookies`
  */
 router.use(cookies())
 

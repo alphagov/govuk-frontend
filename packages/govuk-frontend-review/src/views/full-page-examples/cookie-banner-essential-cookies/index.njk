@@ -23,7 +23,7 @@ notes: |
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block bodyStart %}
-
+  {{ super() }}
   {% if cookies != "cookie-banner-dismissed" %}
     <form action="" method="POST">
       {{ govukCookieBanner({
