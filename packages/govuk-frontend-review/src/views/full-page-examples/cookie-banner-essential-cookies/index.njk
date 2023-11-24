@@ -1,4 +1,5 @@
 ---
+title: Apply online for a UK passport
 name: Cookie banner (essential cookies)
 scenario: You are told about essential cookies, with a choice to hide the banner.
 
@@ -19,7 +20,7 @@ notes: |
 {% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
 {% from "govuk/components/tabs/macro.njk" import govukTabs %}
 
-{% set pageTitle = "Apply online for a UK passport" %}
+{% set pageTitle = example.title %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block bodyStart %}

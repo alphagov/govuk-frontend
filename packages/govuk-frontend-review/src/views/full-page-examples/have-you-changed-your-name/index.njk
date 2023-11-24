@@ -1,4 +1,5 @@
 ---
+title: Have you changed your name?
 scenario: |
   As part of an online service, you are asked if you have changed your name.
 
@@ -16,7 +17,7 @@ scenario: |
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
-{% set pageTitle = "Have you changed your name?" %}
+{% set pageTitle = example.title %}
 {% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}

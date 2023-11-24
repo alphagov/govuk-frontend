@@ -1,4 +1,5 @@
 ---
+title: Check your answers - Temporary events notice
 scenario: |
   As part of an online service, you are asked to check your answers before
   you send your application.
@@ -17,14 +18,12 @@ notes: The links to change your answers are not functional.
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
-{% set pageTitle = "Check your answers" %}
-{% set serviceName = "Temporary events notice" %}
-
-{% block pageTitle %}{{ pageTitle }} - {{ serviceName }} - GOV.UK{% endblock %}
+{% set pageTitle = example.title %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block header %}
   {{ govukHeader({
-    serviceName: serviceName
+    serviceName: "Temporary events notice"
   }) }}
 {% endblock %}
 

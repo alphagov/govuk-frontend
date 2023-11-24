@@ -1,4 +1,5 @@
 ---
+title: What is your home address?
 scenario: |
   As part of an online service, you are asked to provide your address.
 
@@ -17,7 +18,7 @@ scenario: |
 {% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
-{% set pageTitle = "What is your home address?" %}
+{% set pageTitle = example.title %}
 {% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}

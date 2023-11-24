@@ -1,4 +1,5 @@
 ---
+title: Search
 scenario: |
   You would like to find relevant articles by sorting the results and filtering
   by the organisation(s) that published the articles.
@@ -25,7 +26,7 @@ notes: |
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/pagination/macro.njk" import govukPagination %}
 
-{% set pageTitle = "Search" %}
+{% set pageTitle = example.title %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block head %}

@@ -1,4 +1,5 @@
 ---
+title: Send your feedback - Verify
 scenario: |
   You have used a service called GOV.UK Verify and wish to report an issue.
 
@@ -27,8 +28,8 @@ notes: Based on https://www.signin.service.gov.uk/feedback
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
-{% set pageTitle = "Send your feedback" %}
-{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - Verify - GOV.UK{% endblock %}
+{% set pageTitle = example.title %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block header %}
   {{ govukHeader({

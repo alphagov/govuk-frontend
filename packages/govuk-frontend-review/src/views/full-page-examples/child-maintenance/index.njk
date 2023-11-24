@@ -1,4 +1,5 @@
 ---
+title: Child maintenance
 scenario: |
   You are a user looking for information on child maintenance.
 
@@ -24,7 +25,7 @@ scenario: |
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 
-{% set pageTitle = "Child maintenance" %}
+{% set pageTitle = example.title %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block skipLink %}
