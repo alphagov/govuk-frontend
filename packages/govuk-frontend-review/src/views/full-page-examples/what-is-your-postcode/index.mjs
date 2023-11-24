@@ -1,33 +1,33 @@
+import express from 'express'
 import { body, validationResult } from 'express-validator'
 
 import { formatValidationErrors } from '../../../utils.mjs'
 
-/**
- * @param {import('express').Application} app
- */
-export default (app) => {
-  app.post(
-    '/full-page-examples/what-is-your-postcode',
+const router = express.Router()
 
-    body('address-postcode')
-      .exists()
-      .not()
-      .isEmpty()
-      .withMessage('Enter your home postcode'),
+router.post(
+  '/what-is-your-postcode',
 
-    (req, res) => {
-      const viewPath = './full-page-examples/what-is-your-postcode'
-      const errors = formatValidationErrors(validationResult(req))
+  body('address-postcode')
+    .exists()
+    .not()
+    .isEmpty()
+    .withMessage('Enter your home postcode'),
 
-      if (!errors) {
-        return res.render(`${viewPath}/confirm`)
-      }
+  (req, res) => {
+    const viewPath = './full-page-examples/what-is-your-postcode'
+    const errors = formatValidationErrors(validationResult(req))
 
-      res.render(`${viewPath}/index`, {
-        errors,
-        errorSummary: Object.values(errors),
-        values: req.body // In production this should sanitized.
-      })
+    if (!errors) {
+      return res.render(`${viewPath}/confirm`)
     }
-  )
-}
+
+    res.render(`${viewPath}/index`, {
+      errors,
+      errorSummary: Object.values(errors),
+      values: req.body // In production this should sanitized.
+    })
+  }
+)
+
+export default router

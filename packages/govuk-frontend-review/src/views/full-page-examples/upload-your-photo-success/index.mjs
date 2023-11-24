@@ -1,17 +1,15 @@
-/**
- * @param {import('express').Application} app
- */
-export default (app) => {
-  app.post(
-    '/full-page-examples/upload-your-photo-success',
+import express from 'express'
 
-    (req, res) => {
-      return res.render(
-        './full-page-examples/upload-your-photo-success/index',
-        {
-          isSuccess: true
-        }
-      )
-    }
-  )
-}
+const router = express.Router()
+
+router.post(
+  '/upload-your-photo-success',
+
+  (req, res) => {
+    res.render('./full-page-examples/upload-your-photo-success/index', {
+      isSuccess: true
+    })
+  }
+)
+
+export default router

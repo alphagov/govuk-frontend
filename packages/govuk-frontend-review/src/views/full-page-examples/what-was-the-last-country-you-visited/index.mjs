@@ -1,34 +1,34 @@
+import express from 'express'
 import { body, validationResult } from 'express-validator'
 
 import { formatValidationErrors } from '../../../utils.mjs'
 
-/**
- * @param {import('express').Application} app
- */
-export default (app) => {
-  app.post(
-    '/full-page-examples/what-was-the-last-country-you-visited',
+const router = express.Router()
 
-    body('last-visited-country')
-      .exists()
-      .not()
-      .isEmpty()
-      .withMessage('Enter the last country you visited'),
+router.post(
+  '/what-was-the-last-country-you-visited',
 
-    (req, res) => {
-      const viewPath =
-        './full-page-examples/what-was-the-last-country-you-visited'
-      const errors = formatValidationErrors(validationResult(req))
+  body('last-visited-country')
+    .exists()
+    .not()
+    .isEmpty()
+    .withMessage('Enter the last country you visited'),
 
-      if (!errors) {
-        return res.render(`${viewPath}/confirm`)
-      }
+  (req, res) => {
+    const viewPath =
+      './full-page-examples/what-was-the-last-country-you-visited'
+    const errors = formatValidationErrors(validationResult(req))
 
-      res.render(`${viewPath}/index`, {
-        errors,
-        errorSummary: Object.values(errors),
-        values: req.body // In production this should sanitized.
-      })
+    if (!errors) {
+      return res.render(`${viewPath}/confirm`)
     }
-  )
-}
+
+    res.render(`${viewPath}/index`, {
+      errors,
+      errorSummary: Object.values(errors),
+      values: req.body // In production this should sanitized.
+    })
+  }
+)
+
+export default router

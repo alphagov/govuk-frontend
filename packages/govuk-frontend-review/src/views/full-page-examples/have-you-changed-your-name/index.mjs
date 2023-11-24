@@ -1,32 +1,32 @@
+import express from 'express'
 import { body, validationResult } from 'express-validator'
 
 import { formatValidationErrors } from '../../../utils.mjs'
 
-/**
- * @param {import('express').Application} app
- */
-export default (app) => {
-  app.post(
-    '/full-page-examples/have-you-changed-your-name',
+const router = express.Router()
 
-    body('changed-name')
-      .not()
-      .isEmpty()
-      .withMessage('Select if you have changed your name'),
+router.post(
+  '/have-you-changed-your-name',
 
-    (req, res) => {
-      const viewPath = './full-page-examples/have-you-changed-your-name'
-      const errors = formatValidationErrors(validationResult(req))
+  body('changed-name')
+    .not()
+    .isEmpty()
+    .withMessage('Select if you have changed your name'),
 
-      if (!errors) {
-        return res.render(`${viewPath}/confirm`)
-      }
+  (req, res) => {
+    const viewPath = './full-page-examples/have-you-changed-your-name'
+    const errors = formatValidationErrors(validationResult(req))
 
-      res.render(`${viewPath}/index`, {
-        errors,
-        errorSummary: Object.values(errors),
-        values: req.body // In production this should sanitized.
-      })
+    if (!errors) {
+      return res.render(`${viewPath}/confirm`)
     }
-  )
-}
+
+    res.render(`${viewPath}/index`, {
+      errors,
+      errorSummary: Object.values(errors),
+      values: req.body // In production this should sanitized.
+    })
+  }
+)
+
+export default router

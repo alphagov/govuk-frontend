@@ -1,34 +1,34 @@
+import express from 'express'
 import { body, validationResult } from 'express-validator'
 
 import { formatValidationErrors } from '../../../utils.mjs'
 
-/**
- * @param {import('express').Application} app
- */
-export default (app) => {
-  app.post(
-    '/full-page-examples/upload-your-photo',
+const router = express.Router()
 
-    body('photo').exists().not().isEmpty().withMessage('Select a photo'),
+router.post(
+  '/upload-your-photo',
 
-    body('terms-and-conditions')
-      .not()
-      .isEmpty()
-      .withMessage('Select I accept the terms and conditions'),
+  body('photo').exists().not().isEmpty().withMessage('Select a photo'),
 
-    (req, res) => {
-      const viewPath = './full-page-examples/upload-your-photo'
-      const errors = formatValidationErrors(validationResult(req))
+  body('terms-and-conditions')
+    .not()
+    .isEmpty()
+    .withMessage('Select I accept the terms and conditions'),
 
-      if (!errors) {
-        return res.render(`${viewPath}/confirm`)
-      }
+  (req, res) => {
+    const viewPath = './full-page-examples/upload-your-photo'
+    const errors = formatValidationErrors(validationResult(req))
 
-      res.render(`${viewPath}/index`, {
-        errors,
-        errorSummary: Object.values(errors),
-        values: req.body // In production this should sanitized.
-      })
+    if (!errors) {
+      return res.render(`${viewPath}/confirm`)
     }
-  )
-}
+
+    res.render(`${viewPath}/index`, {
+      errors,
+      errorSummary: Object.values(errors),
+      values: req.body // In production this should sanitized.
+    })
+  }
+)
+
+export default router

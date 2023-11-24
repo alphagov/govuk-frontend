@@ -2,6 +2,7 @@ import { readFileSync } from 'fs'
 import { join } from 'path'
 
 import { paths } from '@govuk-frontend/config'
+import express from 'express'
 import shuffleSeed from 'shuffle-seed'
 
 const { documents } = JSON.parse(
@@ -11,42 +12,35 @@ const { documents } = JSON.parse(
   )
 )
 
-/**
- * @param {import('express').Application} app
- */
-export default (app) => {
-  app.get(
-    '/full-page-examples/search',
+const router = express.Router()
 
-    (req, res) => {
-      const { query } = req
+router.get('/search', (req, res) => {
+  const { query } = req
 
-      query.search ??= 'driving'
-      query.order ??= 'most-viewed'
+  query.search ??= 'driving'
+  query.order ??= 'most-viewed'
 
-      // Shuffle the documents based on the query string, to simulate different responses.
-      const seed = JSON.stringify(query)
-      const shuffledDocuments = shuffleSeed.shuffle(documents, seed)
+  // Shuffle the documents based on the query string, to simulate different responses.
+  const seed = JSON.stringify(query)
+  const shuffledDocuments = shuffleSeed.shuffle(documents, seed)
 
-      const total = '128124'
+  const total = '128124'
 
-      // Shuffle the total based on the query string
-      const randomizedTotal = shuffleSeed
-        .shuffle(total.split(''), seed)
-        .join('')
+  // Shuffle the total based on the query string
+  const randomizedTotal = shuffleSeed.shuffle(total.split(''), seed).join('')
 
-      res.render('./full-page-examples/search/index', {
-        documents: shuffledDocuments,
-        order: query.order,
+  res.render('./full-page-examples/search/index', {
+    documents: shuffledDocuments,
+    order: query.order,
 
-        // Make the total more readable
-        total: Number(randomizedTotal).toLocaleString('en', {
-          useGrouping: true
-        }),
+    // Make the total more readable
+    total: Number(randomizedTotal).toLocaleString('en', {
+      useGrouping: true
+    }),
 
-        // In production this should be sanitized
-        values: query
-      })
-    }
-  )
-}
+    // In production this should be sanitized
+    values: query
+  })
+})
+
+export default router
