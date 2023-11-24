@@ -53,4 +53,32 @@ describe('Home page', () => {
 
     await expect(componentsList.length).toEqual(componentNames.length)
   })
+
+  it('should display the banner by default', async () => {
+    await goTo(page, '/')
+
+    const $title = await page.$('title')
+
+    // Check the page responded correctly
+    expect(getProperty($title, 'textContent')).resolves.toEqual(
+      `GOV.UK Frontend`
+    )
+
+    // Check that the banner is visible
+    await expect(page.$('[data-module="app-banner"]')).resolves.toBeTruthy()
+  })
+
+  it('should hide the banner using a URL parameter', async () => {
+    await goTo(page, '/?hide-banner')
+
+    const $title = await page.$('title')
+
+    // Check the page responded correctly
+    await expect(getProperty($title, 'textContent')).resolves.toEqual(
+      `GOV.UK Frontend`
+    )
+
+    // Check that the banner is hidden
+    await expect(page.$('[data-module="app-banner"]')).resolves.toBeFalsy()
+  })
 })
