@@ -1,9 +1,11 @@
+import { join } from 'path'
+
+import { paths } from '@govuk-frontend/config'
+import { getDirectories } from '@govuk-frontend/lib/files'
 import express from 'express'
 
-import { getExampleNames } from '../common/lib/files.mjs'
-
 const router = express.Router()
-const exampleNames = await getExampleNames()
+const exampleNames = await getDirectories(join(paths.app, 'src/views/examples'))
 
 /**
  * Other example
