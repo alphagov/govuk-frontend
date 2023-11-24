@@ -10,19 +10,9 @@ const BANNER_COOKIE_NAME = 'dismissed-app-banner'
 router.use((req, res, next) => {
   const { query, cookies } = req
 
-  if ('hide-banner' in query) {
-    res.locals.shouldShowAppBanner = false
-    return next()
-  }
-
-  const cookie = cookies?.[BANNER_COOKIE_NAME]
-
-  if (cookie === 'yes') {
-    res.locals.shouldShowAppBanner = false
-    return next()
-  }
-
-  res.locals.shouldShowAppBanner = true
+  res.locals.shouldShowAppBanner = !(
+    cookies?.[BANNER_COOKIE_NAME] === 'yes' || 'hide-banner' in query
+  )
 
   next()
 })
@@ -32,13 +22,16 @@ router.use((req, res, next) => {
  */
 router.post('/hide-banner', (req, res) => {
   const maxAgeInDays = 28
+  const redirectURL = req.header('Referer')
+
   res.cookie(BANNER_COOKIE_NAME, 'yes', {
     maxAge: maxAgeInDays * 24 * 60 * 60 * 1000,
     httpOnly: true
   })
-  // Redirect to where the user POSTed from.
-  const previousURL = req.header('Referer') || '/'
-  res.redirect(previousURL)
+
+  // Redirect to where the user POSTed from
+  // or default to the Review app home page
+  res.redirect(redirectURL ?? '/')
 })
 
 export default router
