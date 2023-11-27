@@ -68,6 +68,10 @@ params:
     type: object
     required: false
     description: HTML attributes (for example data attributes) to add to the header container.
+  - name: useTudorCrown
+    type: boolean
+    required: false
+    description: If `true`, the header uses the Tudor crown from King Charles III's royal cypher. This will become the default in a future version of GOV.UK Frontend.
 
 previewLayout: full-width
 accessibilityCriteria: |
@@ -93,6 +97,11 @@ examples:
   - name: default
     description: The standard header as used on information pages on GOV.UK
     options: {}
+
+  - name: with Tudor crown
+    description: Standard header with King Charles III's crown.
+    options:
+      useTudorCrown: true
 
   - name: with service name
     description: If your service is more than a few pages long, you can help users understand where they are by adding the service name.
