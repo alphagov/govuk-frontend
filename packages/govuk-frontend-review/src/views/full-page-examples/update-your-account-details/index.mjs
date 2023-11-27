@@ -26,15 +26,14 @@ export default (app) => {
       .withMessage('Enter your password'),
 
     (req, res) => {
+      const viewPath = './full-page-examples/update-your-account-details'
       const errors = formatValidationErrors(validationResult(req))
 
       if (!errors) {
-        return res.render(
-          './full-page-examples/update-your-account-details/confirm'
-        )
+        return res.render(`${viewPath}/confirm`)
       }
 
-      res.render('./full-page-examples/update-your-account-details/index', {
+      res.render(`${viewPath}/index`, {
         errors,
         errorSummary: Object.values(errors),
         values: req.body // In production this should sanitized.

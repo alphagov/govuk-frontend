@@ -34,10 +34,11 @@ export default (app) => {
       .withMessage('Enter your expiry year'),
 
     (req, res) => {
+      const viewPath = './full-page-examples/passport-details'
       const errors = formatValidationErrors(validationResult(req))
 
       if (!errors) {
-        return res.render('./full-page-examples/passport-details/confirm')
+        return res.render(`${viewPath}/confirm`)
       }
 
       // If any of the date inputs error apply a general error.
@@ -74,7 +75,7 @@ export default (app) => {
         )
       }
 
-      res.render('./full-page-examples/passport-details/index', {
+      res.render(`${viewPath}/index`, {
         errors,
         errorSummary,
         values: req.body // In production this should sanitized.

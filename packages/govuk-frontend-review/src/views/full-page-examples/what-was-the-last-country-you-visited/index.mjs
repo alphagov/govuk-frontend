@@ -16,20 +16,19 @@ export default (app) => {
       .withMessage('Enter the last country you visited'),
 
     (req, res) => {
+      const viewPath =
+        './full-page-examples/what-was-the-last-country-you-visited'
       const errors = formatValidationErrors(validationResult(req))
-      if (errors) {
-        return res.render(
-          './full-page-examples/what-was-the-last-country-you-visited/index',
-          {
-            errors,
-            errorSummary: Object.values(errors),
-            values: req.body // In production this should sanitized.
-          }
-        )
+
+      if (!errors) {
+        return res.render(`${viewPath}/confirm`)
       }
-      res.render(
-        './full-page-examples/what-was-the-last-country-you-visited/confirm'
-      )
+
+      res.render(`${viewPath}/index`, {
+        errors,
+        errorSummary: Object.values(errors),
+        values: req.body // In production this should sanitized.
+      })
     }
   )
 }

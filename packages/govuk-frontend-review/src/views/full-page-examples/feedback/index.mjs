@@ -62,15 +62,18 @@ export default (app) => {
     }),
 
     (req, res) => {
+      const viewPath = './full-page-examples/feedback'
       const errors = formatValidationErrors(validationResult(req))
-      if (errors) {
-        return res.render('./full-page-examples/feedback/index', {
-          errors,
-          errorSummary: Object.values(errors),
-          values: req.body // In production this should sanitized.
-        })
+
+      if (!errors) {
+        return res.render(`${viewPath}/confirm`)
       }
-      res.render('./full-page-examples/feedback/confirm')
+
+      res.render(`${viewPath}/index`, {
+        errors,
+        errorSummary: Object.values(errors),
+        values: req.body // In production this should sanitized.
+      })
     }
   )
 }
