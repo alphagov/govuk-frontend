@@ -1,6 +1,14 @@
+import { pkg } from '@govuk-frontend/config'
+
 import configFn from './postcss.config.mjs'
 
 describe('PostCSS config', () => {
+  function getPlugin(config, pluginName) {
+    return config.plugins.find(
+      ({ postcssPlugin }) => postcssPlugin === pluginName
+    )
+  }
+
   function getPluginNames(config) {
     return config.plugins.flatMap(getPluginName)
   }
@@ -42,19 +50,54 @@ describe('PostCSS config', () => {
 
   describe('Plugins', () => {
     describe('GOV.UK Frontend version', () => {
-      it('Skips version number for NODE_ENV=development', () => {
-        const config = configFn({ env: 'development' })
-        expect(getPluginNames(config)).not.toContain('govuk-frontend-version')
+      beforeEach(() => {
+        jest.resetModules()
       })
 
-      it('Adds version number for NODE_ENV=production', () => {
-        const config = configFn({ env: 'production' })
-        expect(getPluginNames(config)).toContain('govuk-frontend-version')
+      afterEach(() => {
+        process.env.NODE_ENV = 'test'
       })
 
-      it('Adds version number for NODE_ENV=test', () => {
-        const config = configFn({ env: 'test' })
-        expect(getPluginNames(config)).toContain('govuk-frontend-version')
+      it('Adds build type for NODE_ENV=development', async () => {
+        process.env.NODE_ENV = 'development'
+
+        const { Declaration } = getPlugin(
+          configFn({ env: 'development' }),
+          'govuk-frontend-version'
+        )
+
+        const property = { value: 'development' }
+        await Declaration['--govuk-frontend-version'](property)
+
+        expect(property.value).toEqual('"development"')
+      })
+
+      it('Adds version number for NODE_ENV=production', async () => {
+        process.env.NODE_ENV = 'production'
+
+        const { Declaration } = getPlugin(
+          configFn({ env: 'production' }),
+          'govuk-frontend-version'
+        )
+
+        const property = { value: 'development' }
+        await Declaration['--govuk-frontend-version'](property)
+
+        expect(property.value).toEqual(`"${pkg.version}"`)
+      })
+
+      it('Adds version number for NODE_ENV=test', async () => {
+        process.env.NODE_ENV = 'test'
+
+        const { Declaration } = getPlugin(
+          configFn({ env: 'test' }),
+          'govuk-frontend-version'
+        )
+
+        const property = { value: 'development' }
+        await Declaration['--govuk-frontend-version'](property)
+
+        expect(property.value).toEqual(`"${pkg.version}"`)
       })
     })
 
