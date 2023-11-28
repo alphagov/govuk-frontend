@@ -4,7 +4,10 @@
  * @type {import('@babel/core').ConfigFunction}
  */
 module.exports = function (api) {
-  const isBrowser = !api.env('test')
+  // Assume browser environment via Rollup plugin
+  const isBrowser = api.caller(
+    (caller) => caller?.name === '@rollup/plugin-babel'
+  )
 
   // Apply Browserslist environment for supported targets
   // https://github.com/browserslist/browserslist#configuring-for-different-environments

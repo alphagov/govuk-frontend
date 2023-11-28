@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from 'fs/promises'
 import { dirname, join, parse } from 'path'
 
-import { pkg } from '@govuk-frontend/config'
+import config from '@govuk-frontend/config'
 import cpy from 'cpy'
 import slash from 'slash'
 
@@ -17,7 +17,7 @@ export async function version(assetPath, options) {
 
     // Add package version
     async fileContents() {
-      return pkg.version
+      return config.version
     }
   })
 }
