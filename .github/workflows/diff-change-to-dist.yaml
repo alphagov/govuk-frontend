@@ -27,8 +27,8 @@ jobs:
       - name: Set up diff drivers
         run: |
           npm install -g js-beautify
-          git config diff.minjs.textconv js-beautify
-          git config diff.mincss.textconv js-beautify
+          git config diff.minjs.textconv "js-beautify --editorconfig --type js"
+          git config diff.mincss.textconv "js-beautify --editorconfig --type css"
 
       - name: Generate diff
         run: |
