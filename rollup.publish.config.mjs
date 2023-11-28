@@ -1,4 +1,4 @@
-import { pkg } from '@govuk-frontend/config'
+import config from '@govuk-frontend/config'
 import { babel } from '@rollup/plugin-babel'
 import replace from '@rollup/plugin-replace'
 import { defineConfig } from 'rollup'
@@ -59,7 +59,7 @@ export default defineConfig(({ i: input }) => ({
       preventAssignment: true,
 
       // Add GOV.UK Frontend release version
-      development: pkg.version
+      development: config.version
     }),
     babel({
       babelHelpers: 'bundled'

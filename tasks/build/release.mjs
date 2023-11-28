@@ -1,6 +1,6 @@
 import { join } from 'path'
 
-import { pkg } from '@govuk-frontend/config'
+import { pkg, version } from '@govuk-frontend/config'
 import { files, npm, scripts, styles, task } from '@govuk-frontend/tasks'
 import gulp from 'gulp'
 
@@ -35,7 +35,7 @@ export default (options) =>
         filePath({ dir, name }) {
           return join(
             dir,
-            `${name.replace(/^all/, pkg.name)}-${pkg.version}.min.js`
+            `${name.replace(/^all/, pkg.name)}-${version}.min.js`
           )
         }
       })
@@ -51,7 +51,7 @@ export default (options) =>
 
         // Rename using package name (versioned) and `*.min.css` extension
         filePath({ dir }) {
-          return join(dir, `${pkg.name}-${pkg.version}.min.css`)
+          return join(dir, `${pkg.name}-${version}.min.css`)
         }
       })
     ),
