@@ -1,4 +1,4 @@
-name: Diff changes to dist
+name: Diff changes to GitHub release
 
 on:
   pull_request:
@@ -12,8 +12,9 @@ jobs:
     name: Generate diff
     runs-on: ubuntu-latest
 
-    # Skip when token write permissions are unavailable on forks
-    if: ${{ !github.event.pull_request.head.repo.fork }}
+    # Skip workflows other than PRs such as merges to `main` but
+    # also when token write permissions are unavailable on forks
+    if: ${{ github.event.pull_request && !github.event.pull_request.head.repo.fork }}
 
     steps:
       - uses: actions/checkout@v4.1.1
@@ -30,17 +31,16 @@ jobs:
           git config diff.mincss.textconv js-beautify
 
       - name: Generate diff
-        id: diff
         run: |
           # Using `origin/$GITHUB_BASE_REF` to avoid actually checking out the branch
           # as all we need is to let Git diff the two references
           bin/dist-diff.sh origin/$GITHUB_BASE_REF $GITHUB_WORKSPACE
 
-      - name: Save distribution diffs
+      - name: Save GitHub release diffs
         uses: actions/upload-artifact@v3.1.3
         with:
-          name: Dist diff
-          path: dist*.diff
+          name: GitHub release diffs
+          path: .cache/diff/dist/*.diff
           if-no-files-found: ignore
 
       - name: Add comment to PR
@@ -56,19 +56,19 @@ jobs:
 
             const diffs = [
               {
-                path: '${{ github.workspace }}/dist-js.diff',
-                titleText: 'JavaScript changes to `dist`',
-                markerText: 'dist-diff-js'
+                path: '${{ github.workspace }}/.cache/diff/dist/js.diff',
+                titleText: 'JavaScript changes to GitHub release',
+                markerText: 'dist/js.diff'
               },
               {
-                path: '${{ github.workspace }}/dist-css.diff',
-                titleText: 'Stylesheets changes to `dist`',
-                markerText: 'dist-diff-css'
+                path: '${{ github.workspace }}/.cache/diff/dist/css.diff',
+                titleText: 'Stylesheets changes to GitHub release',
+                markerText: 'dist/css.diff'
               },
               {
-                path: '${{ github.workspace }}/dist-other.diff',
-                titleText: 'Other changes to `dist`',
-                markerText: 'dist-diff-other'
+                path: '${{ github.workspace }}/.cache/diff/dist/other.diff',
+                titleText: 'Other changes to GitHub release',
+                markerText: 'dist/other.diff'
               }
             ]
 
