@@ -20,8 +20,10 @@ jobs:
       - name: Restore dependencies
         uses: ./.github/workflows/actions/install-node
 
-      - name: Build
-        uses: ./.github/workflows/actions/build
+      - name: Build npm package and GitHub release
+        run: |
+          npm run build:package --workspace govuk-frontend
+          npm run build:release --workspace govuk-frontend
 
       - name: Add comment to PR
         uses: actions/github-script@v7.0.1
@@ -29,12 +31,15 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const { commentStats } = await import('${{ github.workspace }}/.github/workflows/scripts/comments.mjs')
+
             // PR information
             const issueNumber = ${{ github.event.pull_request.number }}
             const commit = '${{ github.event.pull_request.head.sha }}'
+
             const options = {
               path: '${{ github.workspace }}',
               titleText: ':clipboard: Stats',
               markerText: 'stats'
             }
+
             await commentStats({ github, context, commit }, issueNumber, options)

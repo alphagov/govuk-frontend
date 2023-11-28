@@ -305,11 +305,11 @@ jobs:
 
   generate-stats:
     name: Stats comment
-    needs: [install, build]
+    needs: [install]
 
     permissions:
       pull-requests: write
 
     # Run existing "Stats comment" workflow
-    # (after install and build have been cached)
+    # (after only install has been cached)
     uses: ./.github/workflows/stats-comment.yml
