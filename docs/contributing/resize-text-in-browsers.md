@@ -43,7 +43,7 @@ You can resize text in Firefox in 2 ways.
 2. Select **Accessibility**.
 3. Drag the **Text scaling** slider until you're happy with the size of the example text.
 
-## Resize text in Internet Explorer versions 8 to 11
+## Resize text in Internet Explorer 11
 
 1. Press **Alt** to display the menu bar.
 2. On the menu bar, select **View**.
