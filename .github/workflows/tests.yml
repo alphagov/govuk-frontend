@@ -303,6 +303,17 @@ jobs:
     uses: ./.github/workflows/screenshots.yml
     secrets: inherit
 
+  generate-diff-package:
+    name: Diff changes to npm package
+    needs: [install]
+
+    permissions:
+      pull-requests: write
+
+    # Run existing "Diff changes to npm package" workflow
+    # (after only install has been cached)
+    uses: ./.github/workflows/diff-change-to-package.yaml
+
   generate-stats:
     name: Stats comment
     needs: [install]
