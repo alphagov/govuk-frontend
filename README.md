@@ -67,8 +67,6 @@ You should also use:
 - [the JavaScript from GOV.UK Frontend](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#javascript)
 - [a separate stylesheet](https://frontend.design-system.service.gov.uk/supporting-ie8/) if you support Internet Explorer 8
 
-Your service will not meet level AA of WCAG 2.1 if you use [compatibility mode](https://frontend.design-system.service.gov.uk/compatibility-mode/) to use GOV.UK Frontend with old frameworks or the old colour palette.
-
 You can also read the [accessibility statement for the GOV.UK Design System](https://design-system.service.gov.uk/accessibility/).
 
 ### Accessibility warnings
