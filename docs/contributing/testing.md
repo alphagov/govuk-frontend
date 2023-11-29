@@ -58,7 +58,7 @@ If you've created a new component, create a new `packages/govuk-frontend/src/gov
 
 You should test that your contribution works:
 
-- in [Internet Explorer 8](https://frontend.design-system.service.gov.uk/supporting-ie8/), 9 and 10 - components do not need to look perfect
+- in Internet Explorer 11 and other [grade X browsers](/docs/contributing/browser-support.md#browsers-grades) - components do not need to look perfect but should work without JavaScript
 - in [recommended browsers](https://www.gov.uk/service-manual/technology/designing-for-different-browsers-and-devices#browsers-to-test-in), including when you [resize text](/docs/contributing/resize-text-in-browsers.md)
 - when your users [override colours in Windows, Firefox and Chrome](https://accessibility.blog.gov.uk/2018/08/01/supporting-users-who-change-colours-on-gov-uk/)
 - with [recommended assistive technologies](https://www.gov.uk/service-manual/technology/testing-with-assistive-technologies#what-to-test)
