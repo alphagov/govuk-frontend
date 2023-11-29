@@ -68,7 +68,7 @@ You should test that your contribution works:
 Automated testing helps ensure that the code changes we make do not unintentionally break functionality.
 Tests are automatically run against a branch, pull request, or when the project is built for release, and will notify us if a test has failed.
 
-In your project folder, run `npm test` to run the automated tests, including linting.
+In your project folder, run [`npm test` to run the automated tests](../releasing/testing-and-linting.md#running-all-tests-locally) and [`npm run lint` for linting checks](../releasing/testing-and-linting.md#running-all-linting-checks-locally).
 
 If a test fails, you should check your code for any errors, then update any tests you need to.
 
