@@ -86,6 +86,7 @@ function componentNameToConfigName(componentName) {
 function packageResolveToPath(packageEntry, options = {}) {
   const { modulePath, moduleRoot } = options
 
+  // Resolve full path from package entry or package name
   const packagePath = require.resolve(packageEntry, {
     paths: [moduleRoot ?? paths.root]
   })
@@ -111,15 +112,22 @@ function packageResolveToPath(packageEntry, options = {}) {
 function packageTypeToPath(packageName, options = {}) {
   const { modulePath, moduleRoot, type = 'commonjs' } = options
 
+  // Assume package.json is always resolvable
   const packageEntry = `${packageName}/package.json`
-  const packageField = type === 'module' ? 'module' : 'main'
 
-  // Package field as child path
-  const entryPath = require(packageResolveToPath(packageEntry, { moduleRoot }))[
-    packageField
-  ]
+  // Require package.json for access to main, module fields
+  const packageJson = require(
+    packageResolveToPath(packageEntry, { moduleRoot })
+  )
+
+  // Use package.json field for default entry path
+  const packagePath = packageJson[type === 'module' ? 'module' : 'main']
+
+  // Use package.json field to build child path
   const childPath =
-    modulePath !== undefined ? join(dirname(entryPath), modulePath) : entryPath
+    modulePath !== undefined
+      ? join(dirname(packagePath), modulePath)
+      : packagePath
 
   // Append optional module path
   return packageResolveToPath(packageEntry, {
