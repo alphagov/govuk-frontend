@@ -104,7 +104,7 @@ This grade covers browsers not in Grade A or B which support <script type="modul
 - Safari 10.3+ (iOS)
 - Samsung Internet 8.2+
 
-Safari 10.1 also supports <script type="module"> but will 'exit early' as it does not support HTMLScriptElement.prototype.nomodule which is how we test support for <script type="module"> from within our JavaScript.
+Safari 10.1 also supports <script type="module"> but will 'exit early' as it does not support HTMLScriptElement.prototype.noModule which is how we test support for <script type="module"> from within our JavaScript.
 
 For support we will:
 
