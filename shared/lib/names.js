@@ -72,7 +72,9 @@ function componentNameToConfigName(componentName) {
  * @param {Pick<PackageOptions, "modulePath" | "moduleRoot">} [options] - Package resolution options
  * @returns {string} Path to installed npm package entry
  */
-function packageResolveToPath(packageEntry, { modulePath, moduleRoot } = {}) {
+function packageResolveToPath(packageEntry, options = {}) {
+  const { modulePath, moduleRoot } = options
+
   const packagePath = require.resolve(packageEntry, {
     paths: [moduleRoot ?? paths.root]
   })
@@ -106,10 +108,9 @@ function packageResolveToPath(packageEntry, { modulePath, moduleRoot } = {}) {
  * @param {PackageOptions} [options] - Package resolution options
  * @returns {string} Path to installed npm package field
  */
-function packageTypeToPath(
-  packageName,
-  { modulePath, moduleRoot, type = 'commonjs' } = {}
-) {
+function packageTypeToPath(packageName, options = {}) {
+  const { modulePath, moduleRoot, type = 'commonjs' } = options
+
   const packageEntry = `${packageName}/package.json`
   const packageField = type === 'module' ? 'module' : 'main'
 
