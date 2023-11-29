@@ -68,6 +68,17 @@ function componentNameToConfigName(componentName) {
  * Once the package entry is resolved, the option `modulePath` can be used to
  * append a new path relative to the package entry, for example `i18n.mjs`
  *
+ * @example
+ * Resolving components relative to a default package entry
+ *
+ * - GOV.UK Frontend v4 './govuk/components/accordion/accordion.mjs'
+ * - GOV.UK Frontend v5 './dist/govuk/components/accordion/accordion.mjs'
+ *
+ * ```mjs
+ * const templatePath = packageResolveToPath('govuk-frontend', {
+ *   modulePath: `components/accordion/accordion.mjs`
+ * })
+ * ```
  * @param {string} packageEntry - Installed npm package entry, for example `govuk-frontend/src/govuk/all.mjs`
  * @param {Pick<PackageOptions, "modulePath" | "moduleRoot">} [options] - Package resolution options
  * @returns {string} Path to installed npm package entry
@@ -93,17 +104,6 @@ function packageResolveToPath(packageEntry, options = {}) {
  *
  * {@link https://github.com/alphagov/govuk-frontend/issues/3755}
  *
- * @example
- * Resolving components relative to a default package entry
- *
- * - GOV.UK Frontend v4 './govuk/components/accordion/accordion.mjs'
- * - GOV.UK Frontend v5 './dist/govuk/components/accordion/accordion.mjs'
- *
- * ```mjs
- * const templatePath = packageResolveToPath('govuk-frontend', {
- *   modulePath: `components/accordion/accordion.mjs`
- * })
- * ```
  * @param {string} packageName - Installed npm package name
  * @param {PackageOptions} [options] - Package resolution options
  * @returns {string} Path to installed npm package field
