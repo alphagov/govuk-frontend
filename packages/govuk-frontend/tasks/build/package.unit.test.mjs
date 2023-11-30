@@ -56,6 +56,7 @@ describe('packages/govuk-frontend/dist/', () => {
   it('should contain the expected files', async () => {
     const filterPatterns = [
       '!**/.DS_Store',
+      '!**/*.html',
       '!**/*.test.*',
       '!**/__snapshots__/',
       '!**/__snapshots__/**',
@@ -138,7 +139,9 @@ describe('packages/govuk-frontend/dist/', () => {
       .sort()
 
     // Compare array of actual output files
-    expect(listingDist).toEqual(listingExpected)
+    expect(listingDist.filter(filterPath(filterPatterns))).toEqual(
+      listingExpected
+    )
 
     // Check top level package contents
     expect(listingPackage).toEqual([

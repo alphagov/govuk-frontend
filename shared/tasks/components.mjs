@@ -111,6 +111,14 @@ async function generateFixture(componentDataPath, options) {
         env
       })
 
+      // Write rendered Nunjucks example for diff
+      if (!example.hidden) {
+        await files.write(`template-${slug(example.name)}.html`, {
+          destPath: join(paths.package, `dist/govuk/components`, componentName),
+          fileContents: async () => html.trimEnd()
+        })
+      }
+
       return {
         name: example.name,
         options: example.options,
