@@ -48,24 +48,33 @@ export async function commentDiffs(githubActionContext, issueNumber, diffs) {
 export async function commentDiff(
   githubActionContext,
   issueNumber,
-  { path, titleText, markerText }
+  { path, titleText, markerText, skipEmpty }
 ) {
-  // Read diff from previous step, defaulting to a little note if the diff is empty
-  // Using `||` and not `??` as `readFile` will return `''` (so not `null` nor `undefined` that `??` handles)
-  const diffText = (await readFile(path, 'utf8')) || 'No changes found.'
+  // Read diff from previous step
+  const diffText = await readFile(path, 'utf8')
+
+  // Skip comment for empty diff
+  if (!diffText && skipEmpty) {
+    console.log(`Skipping GitHub comment for ${basename(path)}`)
+    return
+  }
 
   // Add or update comment on PR
   try {
     await comment(githubActionContext, issueNumber, {
       markerText,
       titleText,
-      // eslint-disable-next-line no-useless-concat
-      bodyText: '```diff\n' + `${diffText}\n` + '```'
+
+      // Add a little note if the diff is empty
+      bodyText: diffText
+        ? `\`\`\`diff\n${diffText}\n\`\`\``
+        : 'No diff changes found.'
     })
   } catch {
     await comment(githubActionContext, issueNumber, {
       markerText,
       titleText,
+
       // Unfortunately the best we can do here is a link to the "Artifacts"
       // section as [the upload-artifact action doesn't provide the public
       // URL](https://github.com/actions/upload-artifact/issues/50) :'(
@@ -273,6 +282,7 @@ function getReviewAppUrl(prNumber, path = '/') {
  * @property {string} path - The path of the file to post as a comment
  * @property {string} titleText - The title of the comment
  * @property {string} markerText - The marker to identify the comment
+ * @property {boolean} [skipEmpty] - Whether to skip PR comments for empty diffs
  */
 
 /**
