@@ -68,7 +68,8 @@ jobs:
               {
                 path: '${{ github.workspace }}/.cache/diff/dist/other.diff',
                 titleText: 'Other changes to GitHub release',
-                markerText: 'dist/other.diff'
+                markerText: 'dist/other.diff',
+                skipEmpty: true
               }
             ]
 
