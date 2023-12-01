@@ -125,12 +125,9 @@ export async function commentStats(
 }
 
 /**
- * @param {GithubActionContext} githubContext - GitHub Action context
+ * @param {GithubActionContext} githubActionContext - GitHub Action context
  * @param {number} issueNumber - The number of the issue/PR on which to post the comment
- * @param {object} comment
- * @param {string} comment.markerText - A unique marker used to identify the correct comment
- * @param {string} comment.titleText - The title of the comment
- * @param {string} comment.bodyText - The body of the comment
+ * @param {Comment} comment
  */
 export async function comment(
   { github, context, commit },
@@ -146,45 +143,31 @@ export async function comment(
     renderCommentFooter({ context, commit })
   ].join('\n')
 
-  let commentId
+  const { issues } = github.rest
 
   /**
+   * GitHub issue REST API parameters
+   *
    * @satisfies {IssueCommentsListParams}
    */
-  const issueParameters = {
+  const parameters = {
     issue_number: issueNumber,
     owner: context.repo.owner,
     repo: context.repo.repo
   }
 
   /**
-   * Finds the first issue comment for which the `matcher` function returns `true`
-   *
-   * {@link https://github.com/peter-evans/find-comment/blob/main/src/find.ts}
+   * Find GitHub issue comment with marker `<!-- Example -->`
    */
-  for await (const { data: comments } of github.paginate.iterator(
-    github.rest.issues.listComments,
-    issueParameters
-  )) {
-    const comment = comments.find((comment) => !!comment.body?.includes(marker))
-
-    if (comment) {
-      commentId = comment.id
-    }
-  }
+  const comments = await github.paginate(issues.listComments, parameters)
+  const comment = comments.find(({ body }) => !!body?.includes(markerText))
 
   /**
-   * Create GitHub issue comment
-   *
-   * Updates existing comment by ID if available
+   * Update GitHub issue comment (or create new)
    */
-  await (!commentId
-    ? github.rest.issues.createComment({ ...issueParameters, body })
-    : github.rest.issues.updateComment({
-        ...issueParameters,
-        body,
-        comment_id: commentId
-      }))
+  await (comment?.id
+    ? issues.updateComment({ ...parameters, body, comment_id: comment.id })
+    : issues.createComment({ ...parameters, body }))
 }
 
 /**
@@ -266,15 +249,21 @@ function getReviewAppUrl(prNumber, path = '/') {
  */
 
 /**
- * @typedef {object} DiffComment
- * @property {string} path - The path of the file to post as a comment
- * @property {string} titleText - The title of the comment
+ * @typedef {object} Comment
  * @property {string} markerText - The marker to identify the comment
+ * @property {string} titleText - The title of the comment
+ * @property {string} bodyText - The body of the comment
+ */
+
+/**
+ * @typedef {object} DiffComment
+ * @property {string} markerText - The marker to identify the comment
+ * @property {string} titleText - The title of the comment
+ * @property {string} path - The path of the file to post as a comment
  * @property {boolean} [skipEmpty] - Whether to skip PR comments for empty diffs
  */
 
 /**
  * @typedef {import('@octokit/plugin-rest-endpoint-methods').RestEndpointMethodTypes["issues"]} IssuesEndpoint
- * @typedef {IssuesEndpoint["updateComment"]["parameters"]} IssueCommentUpdateParams
  * @typedef {IssuesEndpoint["listComments"]["parameters"]} IssueCommentsListParams
  */
