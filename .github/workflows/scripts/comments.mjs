@@ -1,5 +1,5 @@
 import { readFile } from 'node:fs/promises'
-import { join } from 'path'
+import { basename, join } from 'path'
 
 import { getFileSizes } from '@govuk-frontend/lib/files'
 import { getStats, modulePaths } from '@govuk-frontend/stats'
@@ -12,16 +12,28 @@ import { getStats, modulePaths } from '@govuk-frontend/stats'
  * @param {DiffComment[]} diffs
  */
 export async function commentDiffs(githubActionContext, issueNumber, diffs) {
-  // Run the comments in parallel to avoid that an early one failing prevents the others
-  // and use `allSettled` to avoid the promise rejecting on the first failure but wait
-  // for everything to complete
-  const results = await Promise.allSettled(
-    diffs.map((diff) => commentDiff(githubActionContext, issueNumber, diff))
-  )
+  const errors = []
 
-  if (results.some((result) => result.status === 'rejected')) {
-    throw new Error('Posting diff comment failed', {
-      cause: results
+  // Run comments in order, but prevent errors stopping other comments
+  for (const diff of diffs) {
+    try {
+      await commentDiff(githubActionContext, issueNumber, diff)
+    } catch (error) {
+      const filename = basename(diff.path)
+
+      // Defer errors until all comments are attempted
+      errors.push(
+        new Error(`Failed to post GitHub comment for ${filename}`, {
+          cause: error
+        })
+      )
+    }
+  }
+
+  // Throw on any deferred errors above
+  if (errors.length) {
+    throw new Error('Failed to post GitHub comments', {
+      cause: errors
     })
   }
 }
