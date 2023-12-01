@@ -1,7 +1,9 @@
 import { basename, dirname, join } from 'path'
 
+import { paths } from '@govuk-frontend/config'
 import { nunjucksEnv, render } from '@govuk-frontend/lib/components'
 import { getListing, getYaml } from '@govuk-frontend/lib/files'
+import slug from 'slug'
 
 import { files } from './index.mjs'
 
@@ -108,6 +110,14 @@ async function generateFixture(componentDataPath, options) {
         context: example.options,
         env
       })
+
+      // Write rendered Nunjucks example for diff
+      if (!example.hidden) {
+        await files.write(`template-${slug(example.name)}.html`, {
+          destPath: join(paths.package, `dist/govuk/components`, componentName),
+          fileContents: async () => html.trimEnd()
+        })
+      }
 
       return {
         name: example.name,

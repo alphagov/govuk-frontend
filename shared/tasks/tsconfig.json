@@ -2,6 +2,13 @@
   "extends": "../../tsconfig.base.json",
   "include": ["**/*.js", "**/*.mjs"],
   "compilerOptions": {
-    "types": ["gulp", "jest", "node", "nunjucks", "typed-query-selector"]
+    "types": [
+      "gulp",
+      "jest",
+      "node",
+      "nunjucks",
+      "slug",
+      "typed-query-selector"
+    ]
   }
 }
