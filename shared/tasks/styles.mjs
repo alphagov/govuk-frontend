@@ -3,7 +3,7 @@ import { join, parse } from 'path'
 
 import { paths } from '@govuk-frontend/config'
 import { getListing } from '@govuk-frontend/lib/files'
-import { packageResolveToPath } from '@govuk-frontend/lib/names'
+import { packageTypeToPath } from '@govuk-frontend/lib/names'
 import chalk from 'chalk'
 import PluginError from 'plugin-error'
 import postcss from 'postcss'
@@ -90,7 +90,7 @@ export async function compileStylesheet([
       // Resolve @imports via
       loadPaths: [
         // Remove `govuk/` suffix using `modulePath`
-        packageResolveToPath('govuk-frontend', {
+        packageTypeToPath('govuk-frontend', {
           modulePath: '../',
           moduleRoot: basePath
         }),
