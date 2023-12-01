@@ -53,8 +53,13 @@ git diff HEAD^ -- packages/govuk-frontend/dist/govuk/govuk-frontend.min.css \
 git diff -M05 HEAD^ -- "packages/govuk-frontend/dist/**/*.njk" \
   > $output_folder/.cache/diff/package/nunjucks.diff
 
+# Diff the rendered HTML output
+git diff -M05 HEAD^ -- "packages/govuk-frontend/dist/**/*.html" \
+  > $output_folder/.cache/diff/package/html.diff
+
 # Diff the rest of the files, excluding the sourcemaps and the minified files
 git diff -M05 HEAD^ -- packages/govuk-frontend/dist \
+  ":(exclude)**/*.html" \
   ":(exclude)**/*.map" \
   ":(exclude)**/*.min.*" \
   ":(exclude)**/*.njk" \

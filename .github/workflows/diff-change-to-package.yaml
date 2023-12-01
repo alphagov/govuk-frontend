@@ -74,6 +74,12 @@ jobs:
                 skipEmpty: true
               },
               {
+                path: '${{ github.workspace }}/.cache/diff/package/html.diff',
+                titleText: 'Rendered HTML changes to npm package',
+                markerText: '<!-- package/html.diff -->',
+                skipEmpty: true
+              },
+              {
                 path: '${{ github.workspace }}/.cache/diff/package/other.diff',
                 titleText: 'Other changes to npm package',
                 markerText: '<!-- package/other.diff -->',
