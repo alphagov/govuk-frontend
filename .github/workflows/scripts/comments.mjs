@@ -164,8 +164,7 @@ export async function comment(
   /**
    * Find GitHub issue comment with marker `<!-- Example -->`
    */
-  const comments = await github.paginate(issues.listComments, parameters)
-  const comment = comments.find(({ body }) => !!body?.includes(markerText))
+  const comment = await getComment({ github, context }, issueNumber, markerText)
 
   /**
    * Update GitHub issue comment (or create new)
@@ -238,6 +237,28 @@ function githubActionRunUrl(context) {
 }
 
 /**
+ * Find GitHub issue comment with marker `<!-- Example -->`
+ *
+ * @param {Pick<GithubActionContext, "github" | "context">} githubActionContext
+ * @param {number} issueNumber
+ * @param {Comment["markerText"]} markerText
+ * @returns {Promise<IssueCommentData | undefined>} GitHub comment
+ */
+export async function getComment({ github, context }, issueNumber, markerText) {
+  const { issues } = github.rest
+
+  // Find all GitHub issue comments
+  const comments = await github.paginate(issues.listComments, {
+    issue_number: issueNumber,
+    owner: context.repo.owner,
+    repo: context.repo.repo
+  })
+
+  // Find first match for marker
+  return comments.find(({ body }) => !!body?.includes(markerText))
+}
+
+/**
  * @param {number} prNumber - The PR number
  * @param {string} path - URL path
  * @returns {URL} - The Review App preview URL
@@ -271,4 +292,5 @@ function getReviewAppUrl(prNumber, path = '/') {
 /**
  * @typedef {import('@octokit/plugin-rest-endpoint-methods').RestEndpointMethodTypes["issues"]} IssuesEndpoint
  * @typedef {IssuesEndpoint["listComments"]["parameters"]} IssueCommentsListParams
+ * @typedef {IssuesEndpoint["getComment"]["response"]["data"]} IssueCommentData
  */
