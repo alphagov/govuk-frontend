@@ -42,9 +42,10 @@ export async function commentDiff(
   // Read diff from previous step
   const diffText = await readFile(path, 'utf8')
 
-  // Skip comment for empty diff
+  // Skip or delete comment for empty diff
   if (!diffText && skipEmpty) {
     console.log(`Skipping GitHub comment for ${basename(path)}`)
+    await deleteComment(githubActionContext, issueNumber, markerText)
     return
   }
 
@@ -234,6 +235,34 @@ function githubActionRunUrl(context) {
   const { runId, repo } = context
 
   return `https://github.com/${repo.owner}/${repo.repo}/actions/runs/${runId}/attempts/${process.env.GITHUB_RUN_ATTEMPT}`
+}
+
+/**
+ * Delete GitHub issue comment with marker `<!-- Example -->`
+ *
+ * @param {Pick<GithubActionContext, "github" | "context">} githubActionContext
+ * @param {number} issueNumber
+ * @param {Comment["markerText"]} markerText
+ */
+export async function deleteComment(
+  { github, context },
+  issueNumber,
+  markerText
+) {
+  const { issues } = github.rest
+
+  // Find first match for marker
+  const comment = await getComment({ github, context }, issueNumber, markerText)
+
+  // Delete comment
+  if (comment) {
+    await issues.deleteComment({
+      issue_number: issueNumber,
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      comment_id: comment.id
+    })
+  }
 }
 
 /**
