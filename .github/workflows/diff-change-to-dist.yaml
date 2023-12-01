@@ -58,17 +58,17 @@ jobs:
               {
                 path: '${{ github.workspace }}/.cache/diff/dist/js.diff',
                 titleText: 'JavaScript changes to GitHub release',
-                markerText: 'dist/js.diff'
+                markerText: '<!-- dist/js.diff -->'
               },
               {
                 path: '${{ github.workspace }}/.cache/diff/dist/css.diff',
                 titleText: 'Stylesheets changes to GitHub release',
-                markerText: 'dist/css.diff'
+                markerText: '<!-- dist/css.diff -->'
               },
               {
                 path: '${{ github.workspace }}/.cache/diff/dist/other.diff',
                 titleText: 'Other changes to GitHub release',
-                markerText: 'dist/other.diff',
+                markerText: '<!-- dist/other.diff -->',
                 skipEmpty: true
               }
             ]

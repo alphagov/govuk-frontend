@@ -7,8 +7,9 @@
     "npm": "^10.1.0"
   },
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "@govuk-frontend/lib": "*",
-    "@govuk-frontend/stats": "*"
+    "@govuk-frontend/stats": "*",
+    "outdent": "^0.8.0"
   }
 }

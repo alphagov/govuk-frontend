@@ -58,19 +58,19 @@ jobs:
               {
                 path: '${{ github.workspace }}/.cache/diff/package/js.diff',
                 titleText: 'JavaScript changes to npm package',
-                markerText: 'package/js.diff',
+                markerText: '<!-- package/js.diff -->',
                 skipEmpty: true
               },
               {
                 path: '${{ github.workspace }}/.cache/diff/package/css.diff',
                 titleText: 'Stylesheets changes to npm package',
-                markerText: 'package/css.diff',
+                markerText: '<!-- package/css.diff -->',
                 skipEmpty: true
               },
               {
                 path: '${{ github.workspace }}/.cache/diff/package/other.diff',
                 titleText: 'Other changes to npm package',
-                markerText: 'package/other.diff',
+                markerText: '<!-- package/other.diff -->',
                 skipEmpty: true
               }
             ]

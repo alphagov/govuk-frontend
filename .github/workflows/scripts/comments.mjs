@@ -3,6 +3,7 @@ import { basename, join } from 'path'
 
 import { getFileSizes } from '@govuk-frontend/lib/files'
 import { getStats, modulePaths } from '@govuk-frontend/stats'
+import { outdent } from 'outdent'
 
 /**
  * Posts the content of multiple diffs in parallel on the given GitHub issue
@@ -134,15 +135,6 @@ export async function comment(
   issueNumber,
   { titleText, markerText, bodyText }
 ) {
-  const marker = `<!-- ${markerText} -->`
-  const body = [
-    marker,
-    `## ${titleText}`,
-    bodyText,
-    '\n---', // <hr> for a little extra separation from content
-    renderCommentFooter({ context, commit })
-  ].join('\n')
-
   const { issues } = github.rest
 
   /**
@@ -155,6 +147,19 @@ export async function comment(
     owner: context.repo.owner,
     repo: context.repo.repo
   }
+
+  /**
+   * GitHub issue comment body
+   */
+  const body = outdent`
+    ${markerText}
+    ## ${titleText}
+
+    ${bodyText}
+
+    ---
+    ${renderCommentFooter({ context, commit })}
+  `
 
   /**
    * Find GitHub issue comment with marker `<!-- Example -->`

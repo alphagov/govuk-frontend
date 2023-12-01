@@ -39,7 +39,7 @@ jobs:
             const options = {
               path: '${{ github.workspace }}',
               titleText: ':clipboard: Stats',
-              markerText: 'stats'
+              markerText: '<!-- stats -->'
             }
 
             await commentStats({ github, context, commit }, issueNumber, options)
