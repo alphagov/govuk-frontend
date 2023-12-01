@@ -5,6 +5,10 @@
   {% set classNames = classNames + " " + params.classes %}
 {% endif %}
 
+{%- if params.isStartButton %}
+  {% set classNames = classNames + " govuk-button--start" %}
+{% endif %}
+
 {#- Determine type of element to use, if not explicitly set #}
 {%- if params.element %}
   {% set element = params.element | lower %}
@@ -16,17 +20,14 @@
   {% endif %}
 {% endif -%}
 
-{% if params.isStartButton %}
-  {% set iconHtml %}
-{#- The SVG needs `focusable="false"` so that Internet Explorer does not
-treat it as an interactive element - without this it will be
-'focusable' when using the keyboard to navigate. #}
-<svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"/>
-</svg>
-  {% endset %}
-  {% set classNames = classNames + " govuk-button--start" %}
-{% endif %}
+{%- macro _startIcon() %}
+  {#- The SVG needs `focusable="false"` so that Internet Explorer does not
+  treat it as an interactive element - without this it will be
+  'focusable' when using the keyboard to navigate. #}
+  <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"/>
+  </svg>
+{%- endmacro -%}
 
 {#- Define common attributes that we can use across all element types #}
 
@@ -40,16 +41,14 @@ treat it as an interactive element - without this it will be
 
 {%- if element == 'a' %}
 <a href="{{ params.href if params.href else '#' }}" role="button" draggable="false" {{- commonAttributes | safe }}>
-  {{ params.html | safe if params.html else params.text }}
-{# Indentation is intentional to output HTML nicely #}
-{{- iconHtml | safe | trim | indent(2, true) if iconHtml -}}
+  {{ params.html | safe | trim | indent(2) if params.html else params.text }}
+  {{- _startIcon() | safe if params.isStartButton }}
 </a>
 
 {%- elseif element == 'button' %}
 <button {%- if params.value %} value="{{ params.value }}"{% endif %} type="{{ params.type if params.type else 'submit' }}" {{- buttonAttributes | safe }} {{- commonAttributes | safe }}>
-  {{ params.html | safe if params.html else params.text }}
-{# Indentation is intentional to output HTML nicely #}
-{{- iconHtml | safe | trim | indent(2, true) if iconHtml -}}
+  {{ params.html | safe | trim | indent(2) if params.html else params.text }}
+  {{- _startIcon() | safe if params.isStartButton }}
 </button>
 
 {%- elseif element == 'input' %}
