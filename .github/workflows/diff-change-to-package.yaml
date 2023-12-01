@@ -68,6 +68,12 @@ jobs:
                 skipEmpty: true
               },
               {
+                path: '${{ github.workspace }}/.cache/diff/package/nunjucks.diff',
+                titleText: 'Nunjucks changes to npm package',
+                markerText: '<!-- package/nunjucks.diff -->',
+                skipEmpty: true
+              },
+              {
                 path: '${{ github.workspace }}/.cache/diff/package/other.diff',
                 titleText: 'Other changes to npm package',
                 markerText: '<!-- package/other.diff -->',
