@@ -8,11 +8,7 @@ const router = express.Router()
 router.post(
   '/what-is-your-postcode',
 
-  body('address-postcode')
-    .exists()
-    .not()
-    .isEmpty()
-    .withMessage('Enter your home postcode'),
+  body('address-postcode').notEmpty().withMessage('Enter your home postcode'),
 
   (req, res) => {
     const viewPath = './full-page-examples/what-is-your-postcode'

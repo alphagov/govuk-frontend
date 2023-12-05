@@ -92,11 +92,13 @@ scenario: |
               }
             },
             {
-              value: "other-country-nationality",
+              name: "other-nationality",
+              value: "yes",
               text: "Citizen of a different country",
               conditional: {
                 html: otherCountryHtml
-              }
+              },
+              checked: values["other-nationality"] === "yes"
             }
           ],
           values: values["confirm-nationality"],

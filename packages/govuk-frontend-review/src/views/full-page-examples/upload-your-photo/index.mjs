@@ -8,11 +8,10 @@ const router = express.Router()
 router.post(
   '/upload-your-photo',
 
-  body('photo').exists().not().isEmpty().withMessage('Select a photo'),
+  body('photo').notEmpty().withMessage('Select a photo'),
 
   body('terms-and-conditions')
-    .not()
-    .isEmpty()
+    .notEmpty()
     .withMessage('Select I accept the terms and conditions'),
 
   (req, res) => {

@@ -9,28 +9,13 @@ router.post(
   '/what-is-your-address',
 
   body('address-line-1')
-    .exists()
-    .not()
-    .isEmpty()
+    .notEmpty()
     .withMessage('Enter your building and street'),
 
-  body('address-town')
-    .exists()
-    .not()
-    .isEmpty()
-    .withMessage('Enter your town and city'),
-
-  body('address-county')
-    .exists()
-    .not()
-    .isEmpty()
-    .withMessage('Enter your county'),
-
-  body('address-postcode')
-    .exists()
-    .not()
-    .isEmpty()
-    .withMessage('Enter your postcode'),
+  body('address-line-2').optional(),
+  body('address-town').notEmpty().withMessage('Enter your town and city'),
+  body('address-county').notEmpty().withMessage('Enter your county'),
+  body('address-postcode').notEmpty().withMessage('Enter your postcode'),
 
   (req, res) => {
     const viewPath = './full-page-examples/what-is-your-address'

@@ -9,17 +9,13 @@ router.post(
   '/feedback',
 
   body('what-were-you-trying-to-do')
-    .exists()
-    .not()
-    .isEmpty()
+    .notEmpty()
     .withMessage('Enter what you were trying to do')
     .isLength({ max: 100 })
     .withMessage('What were you trying to do must be 100 characters or less'),
 
   body('detail')
-    .exists()
-    .not()
-    .isEmpty()
+    .notEmpty()
     .withMessage('Enter details of your question, problem or feedback')
     .isLength({ max: 300 })
     .withMessage(
@@ -27,38 +23,22 @@ router.post(
     ),
 
   body('do-you-want-a-reply')
-    .not()
-    .isEmpty()
+    .notEmpty()
     .withMessage('Select yes if you want a reply'),
 
-  body('name').custom((value, { req }) => {
-    // See https://github.com/express-validator/express-validator/pull/658
-    const wantsReply = req.body['do-you-want-a-reply'] === 'yes'
-    if (!wantsReply) {
-      return true
-    }
-    if (!value) {
-      throw new Error('Enter your name')
-    }
-    return true
-  }),
+  body('name')
+    .if(body('do-you-want-a-reply').equals('yes'))
+    .notEmpty()
+    .withMessage('Enter your name'),
 
-  body('email').custom((value, { req }) => {
-    // See https://github.com/express-validator/express-validator/pull/658
-    const wantsReply = req.body['do-you-want-a-reply'] === 'yes'
-    if (!wantsReply) {
-      return true
-    }
-    if (!value) {
-      throw new Error('Enter your email address')
-    }
-    if (!value.includes('@')) {
-      throw new Error(
-        'Enter an email address in the correct format, like name@example.com'
-      )
-    }
-    return true
-  }),
+  body('email')
+    .if(body('do-you-want-a-reply').equals('yes'))
+    .notEmpty()
+    .withMessage('Enter your email address')
+    .isEmail()
+    .withMessage(
+      'Enter an email address in the correct format, like name@example.com'
+    ),
 
   (req, res) => {
     const viewPath = './full-page-examples/feedback'

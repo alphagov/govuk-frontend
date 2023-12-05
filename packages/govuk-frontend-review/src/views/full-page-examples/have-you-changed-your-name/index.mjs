@@ -9,8 +9,7 @@ router.post(
   '/have-you-changed-your-name',
 
   body('changed-name')
-    .not()
-    .isEmpty()
+    .notEmpty()
     .withMessage('Select if you have changed your name'),
 
   (req, res) => {

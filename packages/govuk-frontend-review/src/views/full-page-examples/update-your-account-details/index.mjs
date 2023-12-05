@@ -9,16 +9,14 @@ router.post(
   '/update-your-account-details',
 
   body('email')
-    .exists()
     .isEmail()
     .withMessage(
       'Enter an email address in the correct format, like name@example.com'
     )
-    .not()
-    .isEmpty()
+    .notEmpty()
     .withMessage('Enter your email address'),
 
-  body('password').exists().not().isEmpty().withMessage('Enter your password'),
+  body('password').notEmpty().withMessage('Enter your password'),
 
   (req, res) => {
     const viewPath = './full-page-examples/update-your-account-details'

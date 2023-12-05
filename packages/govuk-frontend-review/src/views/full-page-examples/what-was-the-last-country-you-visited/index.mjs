@@ -9,9 +9,7 @@ router.post(
   '/what-was-the-last-country-you-visited',
 
   body('last-visited-country')
-    .exists()
-    .not()
-    .isEmpty()
+    .notEmpty()
     .withMessage('Enter the last country you visited'),
 
   (req, res) => {
