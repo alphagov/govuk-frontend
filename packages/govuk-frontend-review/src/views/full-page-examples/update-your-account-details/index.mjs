@@ -9,12 +9,12 @@ router.post(
   '/update-your-account-details',
 
   body('email')
+    .notEmpty()
+    .withMessage('Enter your email address')
     .isEmail()
     .withMessage(
       'Enter an email address in the correct format, like name@example.com'
-    )
-    .notEmpty()
-    .withMessage('Enter your email address'),
+    ),
 
   body('password').notEmpty().withMessage('Enter your password'),
 
