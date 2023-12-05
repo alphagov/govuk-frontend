@@ -126,7 +126,8 @@ scenario: |
 
         {{ govukDetails({
           summaryText: "Help with nationality",
-          html: helpWithNationalityHtml
+          html: helpWithNationalityHtml,
+          open: values["details-cannot-provide-nationality"] | length
         }) }}
 
       {{ govukButton({
