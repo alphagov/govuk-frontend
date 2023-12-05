@@ -168,6 +168,13 @@
       padding-right: $govuk-gutter-half;
       float: left;
       vertical-align: top;
+
+      // Reset float when logo is the last child, without a navigation
+      &:last-child {
+        width: auto;
+        padding-right: 0;
+        float: none;
+      }
     }
   }
 
