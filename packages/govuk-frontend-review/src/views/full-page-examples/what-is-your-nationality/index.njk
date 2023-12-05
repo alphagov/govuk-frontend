@@ -59,7 +59,7 @@ scenario: |
             },
             value: values["country-name"],
             errorMessage: errors["country-name"]
-            }) }}
+          }) }}
 
         {% endset %}
 
@@ -130,7 +130,7 @@ scenario: |
           open: values["details-cannot-provide-nationality"] | length
         }) }}
 
-      {{ govukButton({
+        {{ govukButton({
           text: "Continue"
         }) }}
       </form>
