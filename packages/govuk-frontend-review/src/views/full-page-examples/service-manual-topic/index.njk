@@ -16,6 +16,12 @@ notes: The links within each section are not functional.
 {% set pageTitle = "Technology - Service Manual" %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
+{% block header %}
+  {{ govukHeader({
+    productName: "Service Manual"
+  }) }}
+{% endblock %}
+
 {% block beforeContent %}
   {{ govukBreadcrumbs({
     items: [
