@@ -79,7 +79,6 @@ scenario: |
             {
               value: "british-nationality",
               text: "British",
-              checked: values["confirm-nationality"]|length and "british-nationality" in values["confirm-nationality"],
               hint: {
                 text: "including English, Scottish, Welsh and Northern Irish"
               }
@@ -87,7 +86,6 @@ scenario: |
             {
               value: "irish-nationality",
               text: "Irish",
-              checked: values["confirm-nationality"]|length and "irish-nationality" in values["confirm-nationality"],
               hint: {
                 text: "including from Northern Ireland"
               }
@@ -95,12 +93,12 @@ scenario: |
             {
               value: "other-country-nationality",
               text: "Citizen of a different country",
-              checked: values["confirm-nationality"]|length and "other-country-nationality" in values["confirm-nationality"],
               conditional: {
                 html: otherCountryHtml
               }
             }
           ],
+          values: values["confirm-nationality"],
           errorMessage: errors["confirm-nationality"]
         }) }}
 

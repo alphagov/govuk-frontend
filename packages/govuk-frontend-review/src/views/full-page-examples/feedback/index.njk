@@ -126,17 +126,16 @@ notes: Based on https://www.signin.service.gov.uk/feedback
                         id: "do-you-want-a-reply",
                         value: "yes",
                         text: "Yes",
-                        checked: values["do-you-want-a-reply"] === "yes",
                         conditional: {
                             html: yesHTML
                         }
                     },
                     {
                         value: "no",
-                        text: "No",
-                        checked: values["do-you-want-a-reply"] === "no"
+                        text: "No"
                     }
                 ],
+                value: values["do-you-want-a-reply"],
                 errorMessage: errors["do-you-want-a-reply"]
             }) }}
 
