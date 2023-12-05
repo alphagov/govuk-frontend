@@ -16,7 +16,7 @@ scenario: |
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% set pageTitle = example.title %}
-{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
+{% block pageTitle %}{{ "Error: " if errorSummary | length }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -27,12 +27,13 @@ scenario: |
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {% if errorSummary.length > 0 %}
+      {% if errorSummary | length %}
         {{ govukErrorSummary({
           titleText: "There is a problem",
           errorList: errorSummary
         }) }}
       {% endif %}
+
       <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
 
       <form method="post" novalidate>

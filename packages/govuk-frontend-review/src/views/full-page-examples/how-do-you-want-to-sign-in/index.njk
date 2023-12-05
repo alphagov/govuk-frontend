@@ -19,7 +19,7 @@ notes: Based on https://www.gov.uk/log-in-file-self-assessment-tax-return/sign-i
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% set pageTitle = example.title %}
-{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
+{% block pageTitle %}{{ "Error: " if errorSummary | length }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -33,12 +33,12 @@ notes: Based on https://www.gov.uk/log-in-file-self-assessment-tax-return/sign-i
     <div class="govuk-grid-column-two-thirds">
 
       <form method="post" novalidate>
-          {% if errorSummary.length > 0 %}
-              {{ govukErrorSummary({
-                  titleText: "There is a problem",
-                  errorList: errorSummary
-              }) }}
-          {% endif %}
+        {% if errorSummary | length %}
+          {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: errorSummary
+          }) }}
+        {% endif %}
 
         {{ govukRadios({
           idPrefix: "sign-in",

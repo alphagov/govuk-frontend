@@ -29,7 +29,7 @@ notes: Based on https://www.signin.service.gov.uk/feedback
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% set pageTitle = example.title %}
-{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
+{% block pageTitle %}{{ "Error: " if errorSummary | length }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block header %}
   {{ govukHeader({
@@ -41,11 +41,11 @@ notes: Based on https://www.signin.service.gov.uk/feedback
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <form method="post" novalidate>
-            {% if errorSummary.length > 0 %}
-                {{ govukErrorSummary({
-                    titleText: "There is a problem",
-                    errorList: errorSummary
-                }) }}
+            {% if errorSummary | length %}
+              {{ govukErrorSummary({
+                titleText: "There is a problem",
+                errorList: errorSummary
+              }) }}
             {% endif %}
 
             <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
