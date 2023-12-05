@@ -7,6 +7,11 @@ const router = express.Router()
 const fullPageExamples = await getFullPageExamples()
 const fullPageExampleNames = fullPageExamples.map(({ path }) => path)
 
+// Full page examples, custom handlers
+const fullPageExampleRoutes = Object.values(routes).flatMap(({ stack }) =>
+  stack.map(({ route }) => route)
+)
+
 /**
  * Handle parameter :exampleName
  *
@@ -43,18 +48,25 @@ router.get('/', (req, res) => {
 })
 
 /**
- * Full page example 404 handler
+ * Full page example and 404 handler
  */
 router.all('/:exampleName', (req, res, next) => {
   const { exampleName } = req.params
 
-  // No matching example so flag as page not found
-  // for other routes mounted to '/:exampleName'
-  if (!fullPageExampleNames.includes(exampleName)) {
-    res.status(404)
+  // Check for known examples
+  const hasExample = fullPageExampleNames.includes(exampleName)
+
+  // Check for named custom examples with GET handlers
+  const hasRouter = fullPageExampleRoutes.some(
+    ({ path, methods }) => methods.get && path === `/${exampleName}`
+  )
+
+  // Continue to page not found or next matching route
+  if (!hasExample || hasRouter || req.method !== 'GET') {
+    return next()
   }
 
-  next()
+  res.render(`full-page-examples/${exampleName}/index`)
 })
 
 /**
@@ -63,19 +75,5 @@ router.all('/:exampleName', (req, res, next) => {
 for (const route of Object.values(routes)) {
   router.use(route)
 }
-
-/**
- * Full page example
- */
-router.get('/:exampleName', (req, res, next) => {
-  const { exampleName } = req.params
-
-  // No matching example so continue to page not found
-  if (res.statusCode !== 200) {
-    return next()
-  }
-
-  res.render(`full-page-examples/${exampleName}/index`)
-})
 
 export default router
