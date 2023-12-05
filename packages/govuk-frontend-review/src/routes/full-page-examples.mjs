@@ -39,18 +39,17 @@ router.param(
 )
 
 /**
- * Full page examples index
+ * Full page example name handler
+ *
+ * Empty handler ensures `router.param()` matches above to populate
+ * `res.locals.example` before routes with custom handling are run
  */
-router.get('/', (req, res) => {
-  res.render('full-page-examples/index', {
-    fullPageExamples
-  })
-})
+router.all('/:exampleName', (req, res, next) => next())
 
 /**
  * Full page example and 404 handler
  */
-router.all('/:exampleName', (req, res, next) => {
+router.get('/:exampleName', (req, res, next) => {
   const { exampleName } = req.params
 
   // Check for known examples
@@ -62,11 +61,20 @@ router.all('/:exampleName', (req, res, next) => {
   )
 
   // Continue to page not found or next matching route
-  if (!hasExample || hasRouter || req.method !== 'GET') {
+  if (!hasExample || hasRouter) {
     return next()
   }
 
   res.render(`full-page-examples/${exampleName}/index`)
+})
+
+/**
+ * Full page examples index
+ */
+router.get('/', (req, res) => {
+  res.render('full-page-examples/index', {
+    fullPageExamples
+  })
 })
 
 /**
