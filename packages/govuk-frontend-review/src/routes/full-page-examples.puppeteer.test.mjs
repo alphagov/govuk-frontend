@@ -125,7 +125,7 @@ describe('Full page examples (with form submit)', () => {
 
       // Check the results are correct
       await expect(getProperty($summary, 'textContent')).resolves.toContain(
-        '482,211 results'
+        '221,418 results'
       )
     })
 
@@ -141,7 +141,7 @@ describe('Full page examples (with form submit)', () => {
 
       // Check the results are correct
       await expect(getProperty($summary, 'textContent')).resolves.toContain(
-        '221,418 results'
+        '181,224 results'
       )
     })
 
@@ -158,7 +158,7 @@ describe('Full page examples (with form submit)', () => {
 
       // Check the results are correct
       await expect(getProperty($summary, 'textContent')).resolves.toContain(
-        '128,421 results'
+        '211,248 results'
       )
     })
   })
