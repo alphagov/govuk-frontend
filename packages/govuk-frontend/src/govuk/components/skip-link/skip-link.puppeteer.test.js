@@ -157,5 +157,22 @@ describe('Skip Link', () => {
         }
       })
     })
+
+    it('throws when the href links to another page', async () => {
+      await expect(
+        render(page, 'skip-link', {
+          context: {
+            text: 'Skip to main content',
+            href: '/somewhere-else#main-content'
+          }
+        })
+      ).rejects.toMatchObject({
+        cause: {
+          name: 'ElementError',
+          message:
+            'Skip link: Target link (`href="/somewhere-else#main-content"`) must stay on page (`/components/skip-link/preview`)'
+        }
+      })
+    })
   })
 })
