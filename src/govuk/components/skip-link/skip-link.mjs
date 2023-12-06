@@ -36,18 +36,7 @@ export class SkipLink extends GOVUKFrontendComponent {
     }
 
     this.$module = $module
-    this.$linkedElement = this.getLinkedElement()
 
-    this.$module.addEventListener('click', () => this.focusLinkedElement())
-  }
-
-  /**
-   * Get linked element
-   *
-   * @private
-   * @returns {HTMLElement} $linkedElement - Target of the skip link
-   */
-  getLinkedElement() {
     const linkedElementId = getFragmentFromUrl(this.$module.hash)
 
     // Check for link hash fragment
@@ -68,7 +57,9 @@ export class SkipLink extends GOVUKFrontendComponent {
       })
     }
 
-    return $linkedElement
+    this.$linkedElement = $linkedElement
+
+    this.$module.addEventListener('click', () => this.focusLinkedElement())
   }
 
   /**
