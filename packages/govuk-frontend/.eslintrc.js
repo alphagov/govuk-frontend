@@ -69,7 +69,7 @@ module.exports = {
             require: {
               ClassDeclaration: true,
               ClassExpression: true,
-              FunctionExpression: true,
+              FunctionExpression: false,
               MethodDefinition: true
             }
           }
