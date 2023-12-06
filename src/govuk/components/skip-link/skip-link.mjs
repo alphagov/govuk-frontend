@@ -39,6 +39,12 @@ export class SkipLink extends GOVUKFrontendComponent {
 
     const hash = this.$module.hash
     const href = this.$module.getAttribute('href') ?? ''
+    const url = new window.URL(this.$module.href)
+
+    // Check for external link URL and return early
+    if (url.origin !== window.location.origin) {
+      return
+    }
 
     const linkedElementId = getFragmentFromUrl(hash)
 
@@ -73,6 +79,10 @@ export class SkipLink extends GOVUKFrontendComponent {
    * @private
    */
   focusLinkedElement() {
+    if (!this.$linkedElement) {
+      return
+    }
+
     if (!this.$linkedElement.getAttribute('tabindex')) {
       // Set the element tabindex to -1 so it can be focused with JavaScript.
       this.$linkedElement.setAttribute('tabindex', '-1')
@@ -101,6 +111,10 @@ export class SkipLink extends GOVUKFrontendComponent {
    * @private
    */
   removeFocusProperties() {
+    if (!this.$linkedElement) {
+      return
+    }
+
     this.$linkedElement.removeAttribute('tabindex')
     this.$linkedElement.classList.remove('govuk-skip-link-focused-element')
   }
