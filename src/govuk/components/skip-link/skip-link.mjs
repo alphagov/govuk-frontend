@@ -66,9 +66,11 @@ export class SkipLink extends GOVUKFrontendComponent {
     const linkedElementId = getFragmentFromUrl(hash)
 
     // Check for link hash fragment
-    if (!linkedElementId) {
+    if (!linkedElementId || url.pathname !== window.location.pathname) {
       throw new ElementError(
-        `Skip link: Target link (\`href="${href}"\`) has no hash fragment`
+        !linkedElementId
+          ? `Skip link: Target link (\`href="${href}"\`) has no hash fragment`
+          : `Skip link: Target link (\`href="${href}"\`) must stay on page (\`${window.location.pathname}\`)`
       )
     }
 
