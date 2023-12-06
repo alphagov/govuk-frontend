@@ -37,12 +37,15 @@ export class SkipLink extends GOVUKFrontendComponent {
 
     this.$module = $module
 
-    const linkedElementId = getFragmentFromUrl(this.$module.hash)
+    const hash = this.$module.hash
+    const href = this.$module.getAttribute('href') ?? ''
+
+    const linkedElementId = getFragmentFromUrl(hash)
 
     // Check for link hash fragment
     if (!linkedElementId) {
       throw new ElementError(
-        'Skip link: Root element (`$module`) attribute (`href`) has no URL fragment'
+        `Skip link: Target link (\`href="${href}"\`) has no hash fragment`
       )
     }
 

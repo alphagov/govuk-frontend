@@ -144,7 +144,7 @@ describe('Skip Link', () => {
         cause: {
           name: 'ElementError',
           message:
-            'Skip link: Root element (`$module`) attribute (`href`) has no URL fragment'
+            'Skip link: Target link (`href="this-element-does-not-exist"`) has no hash fragment'
         }
       })
     })
