@@ -67,6 +67,15 @@ describe('Skip Link', () => {
   })
 
   describe('errors at instantiation', () => {
+    it('can return early without errors for external href', async () => {
+      await render(page, 'skip-link', {
+        context: {
+          text: 'Exit this page',
+          href: 'https://www.bbc.co.uk/weather'
+        }
+      })
+    })
+
     it('can throw a SupportError if appropriate', async () => {
       await expect(
         render(page, 'skip-link', examples.default, {
