@@ -334,7 +334,6 @@ export class I18n {
    * @type {{ [key: string]: (count: number) => PluralRule }}
    */
   static pluralRules = {
-    /* eslint-disable jsdoc/require-jsdoc */
     arabic(n) {
       if (n === 0) {
         return 'zero'
@@ -436,7 +435,6 @@ export class I18n {
       }
       return 'other'
     }
-    /* eslint-enable jsdoc/require-jsdoc */
   }
 }
 
