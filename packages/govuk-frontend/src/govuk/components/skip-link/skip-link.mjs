@@ -39,7 +39,24 @@ export class SkipLink extends GOVUKFrontendComponent {
 
     const hash = this.$module.hash
     const href = this.$module.getAttribute('href') ?? ''
-    const url = new window.URL(this.$module.href)
+
+    /** @type {URL | undefined} */
+    let url
+
+    /**
+     * Check for valid link URL
+     *
+     * {@link https://caniuse.com/url}
+     * {@link https://url.spec.whatwg.org}
+     *
+     */
+    try {
+      url = new window.URL(this.$module.href)
+    } catch (error) {
+      throw new ElementError(
+        `Skip link: Target link (\`href="${href}"\`) is invalid`
+      )
+    }
 
     // Check for external link URL and return early
     if (url.origin !== window.location.origin) {
