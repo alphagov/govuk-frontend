@@ -29,6 +29,7 @@ export default defineConfig(({ i: input }) => ({
      */
     plugins: [
       terser({
+        ecma: 2015,
         format: { comments: false },
         mangle: {
           keep_classnames: true,
@@ -37,6 +38,7 @@ export default defineConfig(({ i: input }) => ({
           // non-function string constants like `export { version }`
           reserved: Object.keys(GOVUKFrontend)
         },
+        module: true,
 
         // Include sources content from source maps to inspect
         // GOV.UK Frontend and other dependencies' source code
