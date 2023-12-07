@@ -58,19 +58,20 @@ export class SkipLink extends GOVUKFrontendComponent {
       )
     }
 
-    // Check for external link URL and return early
-    if (url.origin !== window.location.origin) {
+    // Return early for external URLs or links to other pages
+    if (
+      url.origin !== window.location.origin ||
+      url.pathname !== window.location.pathname
+    ) {
       return
     }
 
     const linkedElementId = getFragmentFromUrl(hash)
 
-    // Check for link hash fragment
-    if (!linkedElementId || url.pathname !== window.location.pathname) {
+    // Check link path matching current page
+    if (!linkedElementId) {
       throw new ElementError(
-        !linkedElementId
-          ? `Skip link: Target link (\`href="${href}"\`) has no hash fragment`
-          : `Skip link: Target link (\`href="${href}"\`) must stay on page (\`${window.location.pathname}\`)`
+        `Skip link: Target link (\`href="${href}"\`) has no hash fragment`
       )
     }
 
