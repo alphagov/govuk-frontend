@@ -76,6 +76,33 @@ describe('Skip Link', () => {
       })
     })
 
+    it('can return early without errors when linking to another page (without hash fragment)', async () => {
+      await render(page, 'skip-link', {
+        context: {
+          text: 'Exit this page',
+          href: '/clear-session-data'
+        }
+      })
+    })
+
+    it('can return early without errors when linking to another page (with hash fragment)', async () => {
+      await render(page, 'skip-link', {
+        context: {
+          text: 'Skip to main content',
+          href: '/somewhere-else#main-content'
+        }
+      })
+    })
+
+    it('can return early without errors when linking to the current page (with hash fragment)', async () => {
+      await render(page, 'skip-link', {
+        context: {
+          text: 'Skip to main content',
+          href: '#content'
+        }
+      })
+    })
+
     it('can throw a SupportError if appropriate', async () => {
       await expect(
         render(page, 'skip-link', examples.default, {
@@ -146,31 +173,14 @@ describe('Skip Link', () => {
         render(page, 'skip-link', {
           context: {
             text: 'Skip to main content',
-            href: 'this-element-does-not-exist'
+            href: '/components/skip-link/preview'
           }
         })
       ).rejects.toMatchObject({
         cause: {
           name: 'ElementError',
           message:
-            'Skip link: Target link (`href="this-element-does-not-exist"`) has no hash fragment'
-        }
-      })
-    })
-
-    it('throws when the href links to another page', async () => {
-      await expect(
-        render(page, 'skip-link', {
-          context: {
-            text: 'Skip to main content',
-            href: '/somewhere-else#main-content'
-          }
-        })
-      ).rejects.toMatchObject({
-        cause: {
-          name: 'ElementError',
-          message:
-            'Skip link: Target link (`href="/somewhere-else#main-content"`) must stay on page (`/components/skip-link/preview`)'
+            'Skip link: Target link (`href="/components/skip-link/preview"`) has no hash fragment'
         }
       })
     })
