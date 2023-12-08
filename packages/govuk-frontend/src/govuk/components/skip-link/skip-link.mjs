@@ -36,24 +36,42 @@ export class SkipLink extends GOVUKFrontendComponent {
     }
 
     this.$module = $module
-    this.$linkedElement = this.getLinkedElement()
 
-    this.$module.addEventListener('click', () => this.focusLinkedElement())
-  }
+    const hash = this.$module.hash
+    const href = this.$module.getAttribute('href') ?? ''
 
-  /**
-   * Get linked element
-   *
-   * @private
-   * @returns {HTMLElement} $linkedElement - Target of the skip link
-   */
-  getLinkedElement() {
-    const linkedElementId = getFragmentFromUrl(this.$module.hash)
+    /** @type {URL | undefined} */
+    let url
 
-    // Check for link hash fragment
+    /**
+     * Check for valid link URL
+     *
+     * {@link https://caniuse.com/url}
+     * {@link https://url.spec.whatwg.org}
+     *
+     */
+    try {
+      url = new window.URL(this.$module.href)
+    } catch (error) {
+      throw new ElementError(
+        `Skip link: Target link (\`href="${href}"\`) is invalid`
+      )
+    }
+
+    // Return early for external URLs or links to other pages
+    if (
+      url.origin !== window.location.origin ||
+      url.pathname !== window.location.pathname
+    ) {
+      return
+    }
+
+    const linkedElementId = getFragmentFromUrl(hash)
+
+    // Check link path matching current page
     if (!linkedElementId) {
       throw new ElementError(
-        'Skip link: Root element (`$module`) attribute (`href`) has no URL fragment'
+        `Skip link: Target link (\`href="${href}"\`) has no hash fragment`
       )
     }
 
@@ -68,7 +86,9 @@ export class SkipLink extends GOVUKFrontendComponent {
       })
     }
 
-    return $linkedElement
+    this.$linkedElement = $linkedElement
+
+    this.$module.addEventListener('click', () => this.focusLinkedElement())
   }
 
   /**
@@ -79,6 +99,10 @@ export class SkipLink extends GOVUKFrontendComponent {
    * @private
    */
   focusLinkedElement() {
+    if (!this.$linkedElement) {
+      return
+    }
+
     if (!this.$linkedElement.getAttribute('tabindex')) {
       // Set the element tabindex to -1 so it can be focused with JavaScript.
       this.$linkedElement.setAttribute('tabindex', '-1')
@@ -107,6 +131,10 @@ export class SkipLink extends GOVUKFrontendComponent {
    * @private
    */
   removeFocusProperties() {
+    if (!this.$linkedElement) {
+      return
+    }
+
     this.$linkedElement.removeAttribute('tabindex')
     this.$linkedElement.classList.remove('govuk-skip-link-focused-element')
   }

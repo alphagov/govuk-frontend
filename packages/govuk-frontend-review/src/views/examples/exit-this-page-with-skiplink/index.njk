@@ -20,3 +20,19 @@
     redirectUrl: "https://www.gov.uk/"
   }) }}
 {% endblock %}
+
+{% block bodyEnd %}
+  <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+  <script type="module">
+    import { ExitThisPage, SkipLink } from '/javascripts/govuk-frontend.min.js'
+
+    const $skipLinks = document.querySelectorAll('[data-module="govuk-skip-link"]')
+    const $exitThisPage = document.querySelector('[data-module="govuk-exit-this-page"]')
+
+    $skipLinks.forEach(($skipLink) => {
+      new SkipLink($skipLink)
+    })
+
+    new ExitThisPage($exitThisPage)
+  </script>
+{% endblock %}

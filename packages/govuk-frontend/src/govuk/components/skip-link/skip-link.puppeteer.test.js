@@ -67,6 +67,42 @@ describe('Skip Link', () => {
   })
 
   describe('errors at instantiation', () => {
+    it('can return early without errors for external href', async () => {
+      await render(page, 'skip-link', {
+        context: {
+          text: 'Exit this page',
+          href: 'https://www.bbc.co.uk/weather'
+        }
+      })
+    })
+
+    it('can return early without errors when linking to another page (without hash fragment)', async () => {
+      await render(page, 'skip-link', {
+        context: {
+          text: 'Exit this page',
+          href: '/clear-session-data'
+        }
+      })
+    })
+
+    it('can return early without errors when linking to another page (with hash fragment)', async () => {
+      await render(page, 'skip-link', {
+        context: {
+          text: 'Skip to main content',
+          href: '/somewhere-else#main-content'
+        }
+      })
+    })
+
+    it('can return early without errors when linking to the current page (with hash fragment)', async () => {
+      await render(page, 'skip-link', {
+        context: {
+          text: 'Skip to main content',
+          href: '#content'
+        }
+      })
+    })
+
     it('can throw a SupportError if appropriate', async () => {
       await expect(
         render(page, 'skip-link', examples.default, {
@@ -137,14 +173,14 @@ describe('Skip Link', () => {
         render(page, 'skip-link', {
           context: {
             text: 'Skip to main content',
-            href: 'this-element-does-not-exist'
+            href: '/components/skip-link/preview'
           }
         })
       ).rejects.toMatchObject({
         cause: {
           name: 'ElementError',
           message:
-            'Skip link: Root element (`$module`) attribute (`href`) has no URL fragment'
+            'Skip link: Target link (`href="/components/skip-link/preview"`) has no hash fragment'
         }
       })
     })
