@@ -317,8 +317,7 @@ Otherwise, to update to the new logo:
 
 - remove `<span class="govuk-header__logotype-text">` and its content
 - remove the `<span class="govuk-header__logotype">` around the svg element
-
-- replace the svg element with [this updated SVG](https://github.com/alphagov/govuk-frontend/blob/06e6a56655f458112363423dc8f1fb50d21b225e/packages/govuk-frontend/src/govuk/components/header/template.njk#L14-L25), and make sure you also update the class name and attributes
+- replace the svg element with [this updated SVG](https://github.com/alphagov/govuk-frontend/blob/70be4b7fcaed406c4aeaf9618da52de1b3ff02db/packages/govuk-frontend/src/govuk/components/header/template.njk#L14-L26), and make sure you also update the class name and attributes
 
 This change was introduced in [pull request #4449: Implement transitional crown in the Header component (v5.0)](https://github.com/alphagov/govuk-frontend/pull/4449).
 
