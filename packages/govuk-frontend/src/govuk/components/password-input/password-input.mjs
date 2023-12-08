@@ -51,7 +51,6 @@ export class PasswordInput extends GOVUKFrontendComponent {
       })
     }
 
-    this.$wrapper = $module
     this.$input = $module.querySelector('input')
 
     if (!(this.$input instanceof HTMLInputElement)) {
@@ -79,6 +78,13 @@ export class PasswordInput extends GOVUKFrontendComponent {
       // Read the fallback if necessary rather than have it set in the defaults
       locale: closestAttributeValue($module, 'lang')
     })
+
+    // Create an element to wrap around the input as it doesn't exist in HTML
+    const $wrapper = document.createElement('div')
+    $wrapper.className = 'govuk-password-input__container'
+    this.$input.parentNode.insertBefore($wrapper, this.$input)
+    $wrapper.appendChild(this.$input)
+    this.$wrapper = $wrapper
 
     // Create and append the button element
     const $showHideButton = document.createElement('button')

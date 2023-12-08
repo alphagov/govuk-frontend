@@ -5,7 +5,7 @@
 @import "../label/index";
 
 @include govuk-exports("govuk/component/password-input") {
-  .govuk-password-input {
+  .govuk-password-input__container {
     display: flex;
     width: 100%;
     flex-direction: column;
