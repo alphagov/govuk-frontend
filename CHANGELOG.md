@@ -29,13 +29,13 @@ Replace `govuk-frontend/govuk` with `govuk-frontend/dist/govuk` in any [Sass](ht
 For example:
 
 ```scss
-@import  "node_modules/govuk-frontend/dist/govuk/all";
+@import "node_modules/govuk-frontend/dist/govuk/all";
 ```
 
 If you've added [`node_modules/govuk-frontend` as a Sass import path](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#simplify-sass-import-paths), update it with the `/dist` suffix:
 
 ```js
-loadPaths:  [
+loadPaths: [
   'node_modules/govuk-frontend/dist'
 ]
 ```
@@ -95,14 +95,14 @@ If you've [set up your routing to serve GOV.UK Frontend's `all.js` file from `no
 Update any `<script>` tag with the new path and filename, if necessary. Make sure they have a `type="module"` attribute. For example:
 
 ```html
-<script  type="module"  src="{path-to-javascript}/govuk-frontend.min.js"></script>
+<script type="module" src="{path-to-javascript}/govuk-frontend.min.js"></script>
 ```
 
 Replace `<script>window.GOVUKFrontend.initAll()</script>` to import and initialise GOV.UK Frontend using ES modules:
 
 ```html
-<script  type="module">
-  import  {  initAll  }  from  '{path-to-javascript}/govuk-frontend.min.js'
+<script type="module">
+  import { initAll } from '{path-to-javascript}/govuk-frontend.min.js'
 
   initAll()
 </script>
@@ -121,13 +121,13 @@ If you're importing GOV.UK Frontend using `import ... from 'govuk-frontend'` or 
 If you're using `import` to import individual components, replace `govuk-frontend/govuk` with `govuk-frontend/dist/govuk`. For example:
 
 ```js
-import  Button  from  'govuk-frontend/dist/govuk/components/button/button.mjs'
+import Button from 'govuk-frontend/dist/govuk/components/button/button.mjs'
 ```
 
 If you're using `require` to import individual components, replace `govuk-frontend/govuk` with `govuk-frontend/dist/govuk` and update the file name to `<COMPONENT_NAME>.bundle.js`. For example:
 
 ```js
-const  Button  =  require('govuk-frontend/dist/govuk/components/button/button.bundle.js')
+const Button = require('govuk-frontend/dist/govuk/components/button/button.bundle.js')
 ```
 
 Refer to the [detailed guidance on importing JavaScript](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#import-javascript-using-a-bundler).
@@ -207,13 +207,13 @@ If you instantiate individual components, remove any calls to component `init` m
 For example, the following:
 
 ```js
-new  Radios($radio).init()
+new Radios($radio).init()
 ```
 
 becomes:
 
 ```js
-new  Radios($radio)
+new Radios($radio)
 ```
 
 This change was introduced in [pull request #4011: Remove component init() methods and initialise in constructor](https://github.com/alphagov/govuk-frontend/pull/4011).
@@ -366,9 +366,9 @@ The [Header component](https://design-system.service.gov.uk/components/header/) 
 
 If you're not using the Nunjucks macros, you'll need to remove this fallback from your HTML code. In your Header component:
 
-1.  Remove the block of HTML containing the `govuk-header__logotype-crown-fallback-image` image, starting with `<!--[if IE 8]>` and ending with `<![endif]-->`.
-2.  Remove `<!--[if gt IE 8]><!-->` and  `<!--<![endif]-->` from around the `govuk-header__logotype-crown` SVG, but don't remove the SVG.
-3.  Delete the `govuk-logotype-crown.png` file from your assets folder.
+1. Remove the block of HTML containing the `govuk-header__logotype-crown-fallback-image` image, starting with `<!--[if IE 8]>` and ending with `<![endif]-->`.
+2. Remove `<!--[if gt IE 8]><!-->` and  `<!--<![endif]-->` from around the `govuk-header__logotype-crown` SVG, but don't remove the SVG.
+3. Delete the `govuk-logotype-crown.png` file from your assets folder.
 
 You do not need to change any HTML if you're using the supplied Nunjucks macros, but you might still need to remove the `govuk-logotype-crown.png` image depending on [how you are serving the font and image assets](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#font-and-image-assets).
 
@@ -386,8 +386,8 @@ You could:
 - add the following styles for this class in your Sass:
 
 ```scss
-.app-header-navigation  {
-    padding-top:  govuk-spacing(7);
+.app-header-navigation {
+    padding-top: govuk-spacing(7);
 }
 ```
 
@@ -475,11 +475,11 @@ This change was introduced in [pull request #2830: Set the boolean disabled attr
 You can restore the previous blue colour by setting `$govuk-inverse-button-text-colour` before importing the button component's Sass.
 
 ```scss
-@import  "node_modules/govuk-frontend/govuk/base";
+@import "node_modules/govuk-frontend/govuk/base";
 
-$govuk-inverse-button-text-colour:  govuk-colour("blue");
+$govuk-inverse-button-text-colour: govuk-colour("blue");
 
-@import  "node_modules/govuk-frontend/govuk/components/button/index";
+@import "node_modules/govuk-frontend/govuk/components/button/index";
 ```
 
 This change was introduced in [pull request #4043: Add ability to customise inverse button colours](https://github.com/alphagov/govuk-frontend/pull/4043).
