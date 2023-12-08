@@ -12,6 +12,8 @@ Service teams should be [using a progressive enhancement approach](https://www.g
 
 If you still need to provide support for older versions of Internet Explorer, you should stay on the latest [GOV.UK Frontend v4 release](https://github.com/alphagov/govuk-frontend/releases).
 
+If you need it, we have a checklist for the changes you might need to make for v5, which you can [view](https://docs.google.com/spreadsheets/d/1Qt-9kLcB_ONp4WOTI61i69P3q7Ymw0ziA5YNUqNkImE/edit) or [copy (needs a Google account)](https://docs.google.com/spreadsheets/d/1Qt-9kLcB_ONp4WOTI61i69P3q7Ymw0ziA5YNUqNkImE/copy).
+
 ### Breaking changes
 
 You must make the following changes when you migrate to this release, or your service might break.
