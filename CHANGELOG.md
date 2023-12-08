@@ -4,6 +4,8 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+## 5.0.0 (Breaking release)
+
 You can find a summary of the main [changes to GOV.UK Frontend v5](https://frontend.design-system.service.gov.uk/changes-to-govuk-frontend-v5/) on the Frontend site. It's important to note [our old frameworks (such as GOV.UK Elements)](https://frontend.design-system.service.gov.uk/v4/migrating-from-legacy-products/) are no longer compatible with this release. It also stops Internet Explorer 11 from running GOV.UK Frontend JavaScript and removes support completely for Internet Explorer 8 to 10.
 
 Your service will not stop working in Internet Explorer 11, but components will look and behave differently without JavaScript. Read more about [how we provide support for different browsers](https://frontend.design-system.service.gov.uk/browser-support/).
@@ -106,7 +108,7 @@ Replace `<script>window.GOVUKFrontend.initAll()</script>` to import and initiali
 </script>
 ```
 
-Refer to the [detailed guidance on importing JavaScript](<https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#add-the-javascript-file-to-your-html)>.
+Refer to the [detailed guidance on importing JavaScript](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#add-the-javascript-file-to-your-html).
 
 These changes were introduced in [#3498: Remove built `dist` and `package` from source](https://github.com/alphagov/govuk-frontend/pull/3498)
 
@@ -370,7 +372,7 @@ If you're not using the Nunjucks macros, you'll need to remove this fallback fro
 
 You do not need to change any HTML if you're using the supplied Nunjucks macros, but you might still need to remove the `govuk-logotype-crown.png` image depending on [how you are serving the font and image assets](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#font-and-image-assets).
 
-This change was introduced in [pull request #3641: Remove fallback GOV.UK logo for IE8](<https://github.com/alphagov/govuk-frontend/pull/3641>.
+This change was introduced in [pull request #3641: Remove fallback GOV.UK logo for IE8](https://github.com/alphagov/govuk-frontend/pull/3641).
 
 #### Remove references to `govuk-header__navigation--no-service-name` class from the HTML for the Header component
 
@@ -496,7 +498,7 @@ This change was introduced in [pull request #3773: Omit the value attribute from
 
 #### Use the Task list component to give users an overview of the tasks they need to complete
 
-The [Task list component[](https://design-system.service.gov.uk/components/task-list/)](https://design-system.service.gov.uk/components/task-list/) displays all the tasks a user needs to do, and allows users to easily identify which ones are done and which they still need to do.
+The [Task list component](https://design-system.service.gov.uk/components/task-list/) displays all the tasks a user needs to do, and allows users to easily identify which ones are done and which they still need to do.
 
 Each task in the list can have a title, status, link and an optional hint. When a link is added, the whole row is clickable.
 
