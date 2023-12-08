@@ -6,7 +6,7 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 You can find a summary of the main [changes to GOV.UK Frontend v5](https://frontend.design-system.service.gov.uk/changes-to-govuk-frontend-v5/) on the Frontend site. It's important to note [our old frameworks (such as GOV.UK Elements)](https://frontend.design-system.service.gov.uk/v4/migrating-from-legacy-products/) are no longer compatible with this release. It also stops Internet Explorer 11 from running GOV.UK Frontend JavaScript and removes support completely for Internet Explorer 8 to 10.
 
-Your service will not stop working in Internet Explorer 11, but components will look and behave differently without JavaScript. Read more about [how we provide support for different browsers](https://release-5-0--govuk-frontend-docs-preview.netlify.app/browser-support/).
+Your service will not stop working in Internet Explorer 11, but components will look and behave differently without JavaScript. Read more about [how we provide support for different browsers](https://frontend.design-system.service.gov.uk/browser-support/).
 
 Service teams should be [using a progressive enhancement approach](https://www.gov.uk/service-manual/technology/using-progressive-enhancement) to make sure users can still access any content and complete their tasks.
 
@@ -38,7 +38,7 @@ loadPaths:  [
 
 If you're building your Sass code through Rails Assets Pipeline or Sprockets, refer to the section 'Update package file paths in Rails Assets Pipeline or Sprockets'.
 
-Refer to the [detailed guidance on importing using Sass](https://release-5-0--govuk-frontend-docs-preview.netlify.app/importing-css-assets-and-javascript/#import-using-sass).
+Refer to the [detailed guidance on importing using Sass](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#import-using-sass).
 
 These changes were introduced in [#3498: Remove built `dist` and `package` from source](https://github.com/alphagov/govuk-frontend/pull/3498)
 
@@ -54,7 +54,7 @@ nunjucks.configure([
 ])
 ```
 
-Refer to the [detailed guidance on using Nunjucks](https://release-5-0--govuk-frontend-docs-preview.netlify.app/use-nunjucks/#set-up-nunjucks-and-use-the-page-template).
+Refer to the [detailed guidance on using Nunjucks](https://frontend.design-system.service.gov.uk/use-nunjucks/#set-up-nunjucks-and-use-the-page-template).
 
 These changes were made in the following pull requests:
 
@@ -67,7 +67,7 @@ In preparation for additional build targets, we've moved our package files into 
 
 If you're [serving the assets from the GOV.UK Frontend assets folder](https://frontend.design-system.service.gov.uk/v4/importing-css-assets-and-javascript/#serve-the-assets-from-the-gov-uk-frontend-assets-folder-recommended) (`node_modules/govuk-frontend/govuk/assets`), [update your routing to the new assets path ](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#serve-the-assets-from-the-gov-uk-frontend-assets-folder-recommended): `node_modules/govuk-frontend/dist/govuk/assets`.
 
-Refer to the [detailed guidance on importing assets](https://release-5-0--govuk-frontend-docs-preview.netlify.app/importing-css-assets-and-javascript/#font-and-image-assets).
+Refer to the [detailed guidance on importing assets](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#font-and-image-assets).
 
 These changes were introduced in [#3498: Remove built `dist` and `package` from source](https://github.com/alphagov/govuk-frontend/pull/3498)
 
@@ -86,7 +86,7 @@ These changes were introduced in [#3498: Remove built `dist` and `package` from 
 
 In preparation for additional build targets, we've moved our package files into a directory called `dist`.
 
-If you've [set up your routing to serve GOV.UK Frontend's `all.js` file from `node_modules`](https://release-5-0--govuk-frontend-docs-preview.netlify.app/v4/importing-css-assets-and-javascript/#add-the-javascript-file-to-your-html), update the path you're serving to `node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.js`.
+If you've [set up your routing to serve GOV.UK Frontend's `all.js` file from `node_modules`](https://frontend.design-system.service.gov.uk/v4/importing-css-assets-and-javascript/#add-the-javascript-file-to-your-html), update the path you're serving to `node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.js`.
 
 Update any `<script>` tag with the new path and filename, if necessary. Make sure they have a `type="module"` attribute. For example:
 
@@ -104,7 +104,7 @@ Replace `<script>window.GOVUKFrontend.initAll()</script>` to import and initiali
 </script>
 ```
 
-Refer to the [detailed guidance on importing JavaScript](<https://release-5-0--govuk-frontend-docs-preview.netlify.app/importing-css-assets-and-javascript/#add-the-javascript-file-to-your-html)>.
+Refer to the [detailed guidance on importing JavaScript](<https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#add-the-javascript-file-to-your-html)>.
 
 These changes were introduced in [#3498: Remove built `dist` and `package` from source](https://github.com/alphagov/govuk-frontend/pull/3498)
 
@@ -126,7 +126,7 @@ If you're using `require` to import individual components, replace `govuk-fronte
 const  Button  =  require('govuk-frontend/dist/govuk/components/button/button.bundle.js')
 ```
 
-Refer to the [detailed guidance on importing JavaScript](https://release-5-0--govuk-frontend-docs-preview.netlify.app/importing-css-assets-and-javascript/#import-javascript-using-a-bundler).
+Refer to the [detailed guidance on importing JavaScript](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#import-javascript-using-a-bundler).
 
 These changes were introduced in [#3498: Remove built `dist` and `package` from source](https://github.com/alphagov/govuk-frontend/pull/3498)
 
