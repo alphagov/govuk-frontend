@@ -3,7 +3,7 @@ import gulp from 'gulp'
 
 import * as build from './tasks/build/index.mjs'
 import { options } from './tasks/build/options.mjs'
-import { styles } from './tasks/index.mjs'
+import { styles, watch } from './tasks/index.mjs'
 
 /**
  * Build target tasks
@@ -15,6 +15,7 @@ gulp.task('dev', build.dev(options))
  * Utility tasks
  */
 gulp.task('styles', styles(options))
+gulp.task('watch', watch(options))
 
 /**
  * Screenshots task
