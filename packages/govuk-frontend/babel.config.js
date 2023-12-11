@@ -4,6 +4,8 @@
  * @type {import('@babel/core').ConfigFunction}
  */
 module.exports = function (api) {
+  const isProduction = !api.env('development')
+
   // Assume browser environment via Rollup plugin
   const isBrowser = api.caller(
     (caller) => caller?.name === '@rollup/plugin-babel'
@@ -36,6 +38,19 @@ module.exports = function (api) {
         return !isPrivate && isDocumentation
       }
     },
+    plugins: [
+      [
+        'polyfill-es-shims',
+        {
+          // Add logging for required polyfills
+          debug: isProduction,
+
+          // Replace unsupported code with polyfills
+          // without modifying window globals
+          method: 'usage-pure'
+        }
+      ]
+    ],
     presets: [
       [
         '@babel/preset-env',

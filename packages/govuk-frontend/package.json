@@ -73,6 +73,7 @@
     "@rollup/plugin-replace": "^5.0.5",
     "@rollup/plugin-terser": "^0.4.4",
     "autoprefixer": "^10.4.17",
+    "babel-plugin-polyfill-es-shims": "^0.10.2",
     "cssnano": "^6.0.3",
     "cssnano-preset-default": "^6.0.1",
     "govuk-prototype-kit": "^13.16.0",
