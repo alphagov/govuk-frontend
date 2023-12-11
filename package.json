@@ -90,6 +90,7 @@
     "@actions/github": "^6.0.0",
     "@jest/environment": "^29.5.0",
     "@octokit/rest": "20.0.2",
+    "@percy/core": "^1.27.5",
     "@types/browser-sync": "^2.27.5",
     "@types/express": "^4.17.21",
     "@types/gulp": "^4.0.17",
