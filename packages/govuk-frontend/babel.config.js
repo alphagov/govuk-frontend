@@ -47,6 +47,11 @@ module.exports = function (api) {
 
           // Browser support polyfills to exclude
           exclude: [
+            // ES2016 '[].includes()' sparse array fix is unnecessary
+            // https://bugzilla.mozilla.org/show_bug.cgi?id=1767541
+            // https://github.com/zloirock/core-js/commit/66be5f0b673714bc7cc72a3b5e437fe277465973
+            'Array.prototype.includes',
+
             // ES2022 Error cause is unused
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/cause
             'Error cause'
