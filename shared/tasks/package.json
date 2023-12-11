@@ -27,13 +27,5 @@
     "sass-embedded": "^1.69.5",
     "slash": "^5.1.0",
     "yargs-parser": "^21.1.1"
-  },
-  "peerDependencies": {
-    "@percy/sdk-utils": "^1.26.2"
-  },
-  "peerDependenciesMeta": {
-    "@percy/sdk-utils": {
-      "optional": true
-    }
   }
 }
