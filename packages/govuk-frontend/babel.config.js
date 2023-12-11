@@ -1,9 +1,13 @@
+const { pkg } = require('@govuk-frontend/config')
+
 /**
  * Babel config
  *
  * @type {import('@babel/core').ConfigFunction}
  */
 module.exports = function (api) {
+  const isProduction = !api.env('development')
+
   // Assume browser environment via Rollup plugin
   const isBrowser = api.caller(
     (caller) => caller?.name === '@rollup/plugin-babel'
@@ -36,6 +40,19 @@ module.exports = function (api) {
         return !isPrivate && isDocumentation
       }
     },
+    plugins: [
+      [
+        'polyfill-corejs3',
+        {
+          // Add logging for required polyfills
+          debug: isProduction,
+
+          // Replace unsupported code with polyfills
+          method: 'usage-global',
+          version: pkg.devDependencies['core-js']
+        }
+      ]
+    ],
     presets: [
       [
         '@babel/preset-env',
