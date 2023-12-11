@@ -28,7 +28,8 @@ export default defineConfig(
          */
         output: {
           file: join('dist', modulePath),
-          format: 'es'
+          format: 'es',
+          generatedCode: 'es2015'
         },
 
         /**

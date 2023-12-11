@@ -19,6 +19,7 @@ export default defineConfig(({ i: input }) => ({
     {
       entryFileNames: '[name].mjs',
       format: 'es',
+      generatedCode: 'es2015',
 
       // Separate modules, not bundled
       preserveModules: true
@@ -30,6 +31,7 @@ export default defineConfig(({ i: input }) => ({
      */
     {
       format: 'es',
+      generatedCode: 'es2015',
 
       // Bundled modules
       preserveModules: false
@@ -41,6 +43,7 @@ export default defineConfig(({ i: input }) => ({
      */
     {
       format: 'umd',
+      generatedCode: 'es2015',
 
       // Bundled modules
       preserveModules: false,

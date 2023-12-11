@@ -20,6 +20,7 @@ export default defineConfig(({ i: input }) => ({
   output: {
     compact: true,
     format: 'es',
+    generatedCode: 'es2015',
 
     // Bundled modules
     preserveModules: false,
