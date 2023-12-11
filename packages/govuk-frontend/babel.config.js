@@ -53,6 +53,10 @@ module.exports = function (api) {
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/cause
             'es.error.cause',
 
+            // DOM collection iteration is unnecessary with `Array.from()`
+            // see https://github.com/zloirock/core-js/issues/1003
+            'web.dom-collections.iterator',
+
             // WHATWG URL constructor `undefined` base fix is unnecessary
             // https://bugs.webkit.org/show_bug.cgi?id=216841
             // https://github.com/zloirock/core-js/commit/0ef4be7352e900dfa6f1eda27de22f7974576531
