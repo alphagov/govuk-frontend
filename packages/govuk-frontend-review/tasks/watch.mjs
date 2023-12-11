@@ -5,7 +5,7 @@ import { npm, task } from '@govuk-frontend/tasks'
 import gulp from 'gulp'
 import slash from 'slash'
 
-import { styles } from './index.mjs'
+import { scripts, styles } from './index.mjs'
 
 /**
  * Watch task
@@ -62,6 +62,18 @@ export const watch = (options) =>
             slash(join(options.workspace, '**/*.{cjs,js,mjs}'))
           ])
         )
+      )
+    ),
+
+    /**
+     * JavaScripts build watcher
+     */
+    task.name('compile:js watch', () =>
+      gulp.watch(
+        [join(options.srcPath, 'javascripts/**/*.mjs')],
+
+        // Run JavaScripts compile
+        scripts(options)
       )
     )
   )
