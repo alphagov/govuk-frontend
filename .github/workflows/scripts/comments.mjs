@@ -3,6 +3,7 @@ import { basename, join } from 'path'
 
 import { getFileSizes } from '@govuk-frontend/lib/files'
 import { getStats, modulePaths } from '@govuk-frontend/stats'
+import { outdent } from 'outdent'
 
 /**
  * Posts the content of multiple diffs in parallel on the given GitHub issue
@@ -48,24 +49,34 @@ export async function commentDiffs(githubActionContext, issueNumber, diffs) {
 export async function commentDiff(
   githubActionContext,
   issueNumber,
-  { path, titleText, markerText }
+  { path, titleText, markerText, skipEmpty }
 ) {
-  // Read diff from previous step, defaulting to a little note if the diff is empty
-  // Using `||` and not `??` as `readFile` will return `''` (so not `null` nor `undefined` that `??` handles)
-  const diffText = (await readFile(path, 'utf8')) || 'No changes found.'
+  // Read diff from previous step
+  const diffText = await readFile(path, 'utf8')
+
+  // Skip or delete comment for empty diff
+  if (!diffText && skipEmpty) {
+    console.log(`Skipping GitHub comment for ${basename(path)}`)
+    await deleteComment(githubActionContext, issueNumber, markerText)
+    return
+  }
 
   // Add or update comment on PR
   try {
     await comment(githubActionContext, issueNumber, {
       markerText,
       titleText,
-      // eslint-disable-next-line no-useless-concat
-      bodyText: '```diff\n' + `${diffText}\n` + '```'
+
+      // Add a little note if the diff is empty
+      bodyText: diffText
+        ? `\`\`\`diff\n${diffText}\n\`\`\``
+        : 'No diff changes found.'
     })
   } catch {
     await comment(githubActionContext, issueNumber, {
       markerText,
       titleText,
+
       // Unfortunately the best we can do here is a link to the "Artifacts"
       // section as [the upload-artifact action doesn't provide the public
       // URL](https://github.com/actions/upload-artifact/issues/50) :'(
@@ -128,66 +139,52 @@ export async function commentStats(
 }
 
 /**
- * @param {GithubActionContext} githubContext - GitHub Action context
+ * @param {GithubActionContext} githubActionContext - GitHub Action context
  * @param {number} issueNumber - The number of the issue/PR on which to post the comment
- * @param {object} comment
- * @param {string} comment.markerText - A unique marker used to identify the correct comment
- * @param {string} comment.titleText - The title of the comment
- * @param {string} comment.bodyText - The body of the comment
+ * @param {Comment} comment
  */
 export async function comment(
   { github, context, commit },
   issueNumber,
   { titleText, markerText, bodyText }
 ) {
-  const marker = `<!-- ${markerText} -->`
-  const body = [
-    marker,
-    `## ${titleText}`,
-    bodyText,
-    '\n---', // <hr> for a little extra separation from content
-    renderCommentFooter({ context, commit })
-  ].join('\n')
-
-  let commentId
+  const { issues } = github.rest
 
   /**
+   * GitHub issue REST API parameters
+   *
    * @satisfies {IssueCommentsListParams}
    */
-  const issueParameters = {
+  const parameters = {
     issue_number: issueNumber,
     owner: context.repo.owner,
     repo: context.repo.repo
   }
 
   /**
-   * Finds the first issue comment for which the `matcher` function returns `true`
-   *
-   * {@link https://github.com/peter-evans/find-comment/blob/main/src/find.ts}
+   * GitHub issue comment body
    */
-  for await (const { data: comments } of github.paginate.iterator(
-    github.rest.issues.listComments,
-    issueParameters
-  )) {
-    const comment = comments.find((comment) => !!comment.body?.includes(marker))
+  const body = outdent`
+    <!-- ${markerText} -->
+    ## ${titleText}
 
-    if (comment) {
-      commentId = comment.id
-    }
-  }
+    ${bodyText}
+
+    ---
+    ${renderCommentFooter({ context, commit })}
+  `
 
   /**
-   * Create GitHub issue comment
-   *
-   * Updates existing comment by ID if available
+   * Find GitHub issue comment with marker `<!-- Example -->`
    */
-  await (!commentId
-    ? github.rest.issues.createComment({ ...issueParameters, body })
-    : github.rest.issues.updateComment({
-        ...issueParameters,
-        body,
-        comment_id: commentId
-      }))
+  const comment = await getComment({ github, context }, issueNumber, markerText)
+
+  /**
+   * Update GitHub issue comment (or create new)
+   */
+  await (comment?.id
+    ? issues.updateComment({ ...parameters, body, comment_id: comment.id })
+    : issues.createComment({ ...parameters, body }))
 }
 
 /**
@@ -253,6 +250,56 @@ function githubActionRunUrl(context) {
 }
 
 /**
+ * Delete GitHub issue comment with marker `<!-- Example -->`
+ *
+ * @param {Pick<GithubActionContext, "github" | "context">} githubActionContext
+ * @param {number} issueNumber
+ * @param {Comment["markerText"]} markerText
+ */
+export async function deleteComment(
+  { github, context },
+  issueNumber,
+  markerText
+) {
+  const { issues } = github.rest
+
+  // Find first match for marker
+  const comment = await getComment({ github, context }, issueNumber, markerText)
+
+  // Delete comment
+  if (comment) {
+    await issues.deleteComment({
+      issue_number: issueNumber,
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      comment_id: comment.id
+    })
+  }
+}
+
+/**
+ * Find GitHub issue comment with marker `<!-- Example -->`
+ *
+ * @param {Pick<GithubActionContext, "github" | "context">} githubActionContext
+ * @param {number} issueNumber
+ * @param {Comment["markerText"]} markerText
+ * @returns {Promise<IssueCommentData | undefined>} GitHub comment
+ */
+export async function getComment({ github, context }, issueNumber, markerText) {
+  const { issues } = github.rest
+
+  // Find all GitHub issue comments
+  const comments = await github.paginate(issues.listComments, {
+    issue_number: issueNumber,
+    owner: context.repo.owner,
+    repo: context.repo.repo
+  })
+
+  // Find first match for marker
+  return comments.find(({ body }) => !!body?.includes(markerText))
+}
+
+/**
  * @param {number} prNumber - The PR number
  * @param {string} path - URL path
  * @returns {URL} - The Review App preview URL
@@ -269,14 +316,22 @@ function getReviewAppUrl(prNumber, path = '/') {
  */
 
 /**
- * @typedef {object} DiffComment
- * @property {string} path - The path of the file to post as a comment
- * @property {string} titleText - The title of the comment
+ * @typedef {object} Comment
  * @property {string} markerText - The marker to identify the comment
+ * @property {string} titleText - The title of the comment
+ * @property {string} bodyText - The body of the comment
+ */
+
+/**
+ * @typedef {object} DiffComment
+ * @property {string} markerText - The marker to identify the comment
+ * @property {string} titleText - The title of the comment
+ * @property {string} path - The path of the file to post as a comment
+ * @property {boolean} [skipEmpty] - Whether to skip PR comments for empty diffs
  */
 
 /**
  * @typedef {import('@octokit/plugin-rest-endpoint-methods').RestEndpointMethodTypes["issues"]} IssuesEndpoint
- * @typedef {IssuesEndpoint["updateComment"]["parameters"]} IssueCommentUpdateParams
  * @typedef {IssuesEndpoint["listComments"]["parameters"]} IssueCommentsListParams
+ * @typedef {IssuesEndpoint["getComment"]["response"]["data"]} IssueCommentData
  */
