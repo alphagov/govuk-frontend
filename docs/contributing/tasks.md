@@ -82,6 +82,13 @@ This will list out all available tasks for the GOV.UK Frontend package.
 
 Review app Gulp tasks are defined in [`packages/govuk-frontend-review/gulpfile.mjs`](/packages/govuk-frontend-review/gulpfile.mjs) and the [`packages/govuk-frontend-review/tasks/`](/packages/govuk-frontend-review/tasks) folder.
 
+**`npx --workspace @govuk-frontend/review -- gulp scripts`**
+
+This task will:
+
+- check JavaScript code quality via ESLint (`npm run lint:js`) (using JavaScript Standard Style)
+- bundle JavaScript using Rollup into `./packages/govuk-frontend-review/dist/javascripts`
+
 **`npx --workspace @govuk-frontend/review -- gulp styles`**
 
 This task will:

@@ -11,22 +11,6 @@
 {% block bodyEnd %}
   {{ super() }}
   {% block scripts %}
-    <script type="module" src="/vendor/iframe-resizer/iframeResizer.js"></script>
-    <script type="module">
-      const $examples = document.querySelectorAll('.js-component-preview')
-
-      // Resize component preview iframe
-      function resize () {
-        window.iFrameResize({ scrolling: 'omit' }, this)
-      }
-
-      // Defer resize for lazy-loaded iframes
-      document.addEventListener('DOMContentLoaded', () =>
-        $examples.forEach(($example) => $example.loading === 'lazy'
-          ? $example.addEventListener('load', resize)
-          : resize.call($example)
-        )
-      )
-    </script>
+    <script type="module" src="/javascripts/component-preview.bundle.min.mjs"></script>
   {% endblock %}
 {% endblock %}

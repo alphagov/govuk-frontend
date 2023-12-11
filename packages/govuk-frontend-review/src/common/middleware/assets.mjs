@@ -1,27 +1,27 @@
-import { join } from 'path'
-
-import { paths } from '@govuk-frontend/config'
-import { packageTypeToPath } from '@govuk-frontend/lib/names'
 import express from 'express'
 
-const router = express.Router()
+import browserSyncConfig from '../../../browsersync.config.js'
 
-// Resolve GOV.UK Frontend from review app `node_modules`
-// to allow previous versions to be installed locally
-const frontendPath = packageTypeToPath('govuk-frontend', {
-  modulePath: '/',
-  moduleRoot: paths.app
-})
+// Map Browsersync static paths as routes object
+const browserSyncPaths = Object.fromEntries(
+  browserSyncConfig.serveStatic.map(({ route, dir }) => [route, dir])
+)
+
+const router = express.Router()
 
 /**
  * Add middleware to serve static assets
  */
+for (const route in browserSyncPaths) {
+  router.use(
+    route,
 
-router.use('/assets', express.static(join(frontendPath, 'assets')))
-router.use('/javascripts', express.static(frontendPath))
-router.use('/stylesheets', [
-  express.static(frontendPath),
-  express.static(join(paths.app, 'dist/stylesheets'))
-])
+    // Single route (e.g. `/javascripts`) is mapped to multiple
+    // Browsersync directories via static assets middleware
+    browserSyncPaths[route].map((assetPath) => {
+      return express.static(assetPath)
+    })
+  )
+}
 
 export default router

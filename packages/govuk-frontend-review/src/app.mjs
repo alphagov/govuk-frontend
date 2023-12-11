@@ -64,7 +64,6 @@ export default async () => {
 
   // Set up middleware
   app.use('/docs', middleware.docs)
-  app.use('/vendor', middleware.vendor)
   app.use(middleware.assets)
   app.use(middleware.request)
   app.use(middleware.robots)
