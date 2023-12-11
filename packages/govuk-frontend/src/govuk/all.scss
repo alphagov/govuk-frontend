@@ -7,3 +7,15 @@
 
 @import "utilities/all";
 @import "overrides/all";
+
+@mixin govuk-if-ie8 {
+  @if false {
+    @content;
+  }
+}
+
+body {
+  @include govuk-if-ie8 {
+    background: #ff0000;
+  }
+}
