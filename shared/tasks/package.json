@@ -13,7 +13,6 @@
     "@govuk-frontend/helpers": "*",
     "@govuk-frontend/lib": "*",
     "@npmcli/run-script": "^7.0.2",
-    "@percy/cli": "^1.27.4",
     "@percy/puppeteer": "^2.0.2",
     "chalk": "^5.3.0",
     "cpy": "^11.0.0",
@@ -28,13 +27,5 @@
     "sass-embedded": "^1.69.5",
     "slash": "^5.1.0",
     "yargs-parser": "^21.1.1"
-  },
-  "peerDependencies": {
-    "@percy/sdk-utils": "^1.26.2"
-  },
-  "peerDependenciesMeta": {
-    "@percy/sdk-utils": {
-      "optional": true
-    }
   }
 }

@@ -7,7 +7,6 @@ import {
 } from '@govuk-frontend/lib/components'
 import { filterPath } from '@govuk-frontend/lib/files'
 import percySnapshot from '@percy/puppeteer'
-import { waitForPercyIdle } from '@percy/sdk-utils'
 import puppeteer from 'puppeteer'
 
 /**
@@ -69,9 +68,6 @@ export async function screenshots() {
 
   // Close browser
   await browser.close()
-
-  // Wait for Percy to finish
-  return waitForPercyIdle()
 }
 
 /**
