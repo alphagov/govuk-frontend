@@ -7,7 +7,7 @@
     "../../shared/lib",
     "../../shared/stats"
   ],
-  "ignore": ["**/*.test.*"],
+  "ignore": ["./src/javascripts/**", "**/*.test.*"],
   "events": {
     "restart": "browser-sync reload --config browsersync.config.js"
   },
