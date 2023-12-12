@@ -236,7 +236,11 @@ If a library you depend on is not yet updated and relies on these mixins and var
 ```scss
 $govuk-is-ie8: false;
 $govuk-ie8-breakpoint: ('desktop');
-@mixin govuk-if-ie8 {}
+@mixin govuk-if-ie8 {
+  @if false {
+    @content;
+  }
+}
 @mixin govuk-not-ie8 {@content}
 ```
 
