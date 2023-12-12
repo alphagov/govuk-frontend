@@ -1,5 +1,3 @@
-import { join } from 'path'
-
 import { paths } from '@govuk-frontend/config'
 import { npm, task } from '@govuk-frontend/tasks'
 import gulp from 'gulp'
@@ -26,7 +24,10 @@ export default (options) =>
     // Copy GOV.UK Prototype Kit JavaScript
     task.name("copy:files 'govuk-prototype-kit'", () =>
       gulp
-        .src(join(options.srcPath, 'govuk-prototype-kit/**/*.js'))
-        .pipe(gulp.dest(join(options.destPath, 'govuk-prototype-kit')))
+        .src('govuk-prototype-kit/**/*.js', {
+          base: options.srcPath,
+          cwd: options.srcPath
+        })
+        .pipe(gulp.dest(options.destPath))
     )
   )

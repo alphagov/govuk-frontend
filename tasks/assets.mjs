@@ -1,5 +1,3 @@
-import { join } from 'path'
-
 import { task } from '@govuk-frontend/tasks'
 import gulp from 'gulp'
 
@@ -12,7 +10,10 @@ export const assets = (options) =>
   gulp.series(
     task.name('copy:assets', () =>
       gulp
-        .src(join(options.srcPath, 'govuk/assets/**/*'))
-        .pipe(gulp.dest(join(options.destPath, 'govuk/assets')))
+        .src('govuk/assets/**/*', {
+          base: options.srcPath,
+          cwd: options.srcPath
+        })
+        .pipe(gulp.dest(options.destPath))
     )
   )

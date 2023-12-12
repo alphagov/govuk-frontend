@@ -24,7 +24,8 @@ export const watch = (options) =>
      */
     task.name('lint:scss watch', () =>
       gulp.watch(
-        [join(options.srcPath, '**/*.scss')],
+        '**/*.scss',
+        { cwd: options.srcPath },
 
         // Run Stylelint checks
         npm.script('lint:scss:cli', [
@@ -37,7 +38,7 @@ export const watch = (options) =>
      * Stylesheets build watcher
      */
     task.name('compile:scss watch', () =>
-      gulp.watch([join(options.srcPath, '**/*.scss')], styles(options))
+      gulp.watch('**/*.scss', { cwd: options.srcPath }, styles(options))
     ),
 
     /**
@@ -45,8 +46,8 @@ export const watch = (options) =>
      */
     task.name('lint:js watch', () =>
       gulp.watch(
-        join(options.srcPath, '**/*.{cjs,js,mjs}'),
-        { ignored: ['**/*.test.*'] },
+        '**/*.{cjs,js,mjs}',
+        { cwd: options.srcPath, ignored: ['**/*.test.*'] },
         gulp.parallel(
           // Run TypeScript compiler
           npm.script('build:types', ['--incremental', '--pretty'], options),
@@ -64,8 +65,8 @@ export const watch = (options) =>
      */
     task.name('compile:js watch', () =>
       gulp.watch(
-        join(options.srcPath, '**/*.{cjs,js,mjs}'),
-        { ignored: ['**/*.test.*'] },
+        '**/*.{cjs,js,mjs}',
+        { cwd: options.srcPath, ignored: ['**/*.test.*'] },
         scripts(options)
       )
     ),
@@ -75,7 +76,8 @@ export const watch = (options) =>
      */
     task.name('compile:fixtures watch', () =>
       gulp.watch(
-        [join(options.srcPath, 'govuk/components/*/*.yaml')],
+        'govuk/components/*/*.yaml',
+        { cwd: options.srcPath },
         fixtures(options)
       )
     ),
@@ -85,13 +87,14 @@ export const watch = (options) =>
      */
     task.name('copy:templates watch', () =>
       gulp.watch(
-        [join(options.srcPath, 'govuk/**/*.{md,njk}')],
+        'govuk/**/*.{md,njk}',
+        { cwd: options.srcPath },
         templates(options)
       )
     ),
 
     // Copy GOV.UK Frontend static assets
     task.name('copy:assets watch', () =>
-      gulp.watch([join(options.srcPath, 'govuk/assets/**')], assets(options))
+      gulp.watch('govuk/assets/**', { cwd: options.srcPath }, assets(options))
     )
   )
