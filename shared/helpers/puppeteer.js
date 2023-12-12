@@ -91,9 +91,14 @@ async function axe(page, overrides = {}) {
  * Uses Nunjucks component {@link renderPreview} for HTML output, but runs
  * component JavaScript (where available) or `initAll()` in the browser
  *
- * It runs an optional `beforeInitialisation` function before initialising the
- * components, allowing to tweak the state of the page before the component gets
- * instantiated.
+ * Provide optional handlers to tweak the state of the page before or after
+ * the component gets initialised:
+ *
+ * - `beforeInitialisation()`
+ * - `afterInitialisation()`
+ *
+ * Note: We run these handlers outside `page.evaluate()` since functions since
+ * functions as nested context values aren't passed into Puppeteer correctly
  *
  * @template {object} HandlerContext
  * @param {import('puppeteer').Page} page - Puppeteer page object
@@ -130,9 +135,7 @@ async function render(page, componentName, renderOptions, browserOptions) {
   // Navigate to component preview
   await goTo(page, route)
 
-  // Call `beforeInitialisation` in a separate `$eval` call
-  // as running it inside the body of the next `evaluate`
-  // didn't provide a reliable execution
+  // Run custom function before component init
   if (browserOptions?.beforeInitialisation) {
     await page.$eval(
       selector,
@@ -193,6 +196,15 @@ async function render(page, componentName, renderOptions, browserOptions) {
       throw new Error(`${message}\n\t${error.name}: ${error.message}`, {
         cause: error
       })
+    }
+
+    // Run custom function after component init
+    if (browserOptions?.afterInitialisation) {
+      await page.$eval(
+        selector,
+        browserOptions.afterInitialisation,
+        browserOptions.context
+      )
     }
 
     await page.evaluateHandle('document.fonts.ready')
@@ -393,6 +405,7 @@ module.exports = {
  * @property {Config[ConfigKey]} [config] - Component JavaScript config
  * @property {HandlerContext} [context] - Context options for custom functions
  * @property {HandlerFunction<HandlerContext>} [beforeInitialisation] - Custom function to run before initialisation
+ * @property {HandlerFunction<HandlerContext>} [afterInitialisation] - Custom function to run after initialisation
  */
 
 /**
