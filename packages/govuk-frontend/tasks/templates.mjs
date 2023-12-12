@@ -1,6 +1,6 @@
 import { join } from 'path'
 
-import { files, task } from '@govuk-frontend/tasks'
+import { task } from '@govuk-frontend/tasks'
 import gulp from 'gulp'
 
 /**
@@ -11,9 +11,8 @@ import gulp from 'gulp'
 export const templates = (options) =>
   gulp.series(
     task.name('copy:templates', () =>
-      files.copy('**/*.{md,njk}', {
-        srcPath: join(options.srcPath, 'govuk'),
-        destPath: join(options.destPath, 'govuk')
-      })
+      gulp
+        .src(join(options.srcPath, 'govuk/**/*.{md,njk}'))
+        .pipe(gulp.dest(options.destPath))
     )
   )
