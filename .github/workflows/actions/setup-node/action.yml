@@ -16,5 +16,4 @@ runs:
 
       with:
         cache: ${{ inputs.use-cache == 'true' && 'npm' || '' }}
-        check-latest: true
         node-version-file: .nvmrc
