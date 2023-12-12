@@ -98,6 +98,22 @@ export class ElementError extends GOVUKFrontendError {
 }
 
 /**
+ * Indicates that a component is already initialised
+ */
+export class InitError extends GOVUKFrontendError {
+  name = 'InitError'
+
+  /**
+   * @internal
+   * @param {Element} $module - HTML element already initialised
+   */
+  constructor($module) {
+    const moduleName = $module.getAttribute('data-module')
+    super(`Root element (\`$module\`) already initialised (\`${moduleName}\`)`)
+  }
+}
+
+/**
  * Element error options
  *
  * @internal
