@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 const { goToExample, render } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
@@ -233,6 +235,21 @@ describe('Error Summary', () => {
           message:
             'GOV.UK Frontend initialised without `<body class="govuk-frontend-supported">` from template `<script>` snippet'
         }
+      })
+    })
+
+    it('throws when initialised twice', async () => {
+      await expect(
+        render(page, 'error-summary', examples.default, {
+          async afterInitialisation($module) {
+            const { ErrorSummary } = await import('govuk-frontend')
+            new ErrorSummary($module)
+          }
+        })
+      ).rejects.toMatchObject({
+        name: 'InitError',
+        message:
+          'Root element (`$module`) already initialised (`govuk-error-summary`)'
       })
     })
 

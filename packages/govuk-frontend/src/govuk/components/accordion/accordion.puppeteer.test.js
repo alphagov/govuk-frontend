@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 const {
   goToExample,
   render,
@@ -709,6 +711,21 @@ describe('/components/accordion', () => {
               message:
                 'GOV.UK Frontend initialised without `<body class="govuk-frontend-supported">` from template `<script>` snippet'
             }
+          })
+        })
+
+        it('throws when initialised twice', async () => {
+          await expect(
+            render(page, 'accordion', examples.default, {
+              async afterInitialisation($module) {
+                const { Accordion } = await import('govuk-frontend')
+                new Accordion($module)
+              }
+            })
+          ).rejects.toMatchObject({
+            name: 'InitError',
+            message:
+              'Root element (`$module`) already initialised (`govuk-accordion`)'
           })
         })
 

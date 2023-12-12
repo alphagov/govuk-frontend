@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 const {
   goToExample,
   getAttribute,
@@ -360,6 +362,21 @@ describe('Checkboxes', () => {
               message:
                 'GOV.UK Frontend initialised without `<body class="govuk-frontend-supported">` from template `<script>` snippet'
             }
+          })
+        })
+
+        it('throws when initialised twice', async () => {
+          await expect(
+            render(page, 'checkboxes', examples.default, {
+              async afterInitialisation($module) {
+                const { Checkboxes } = await import('govuk-frontend')
+                new Checkboxes($module)
+              }
+            })
+          ).rejects.toMatchObject({
+            name: 'InitError',
+            message:
+              'Root element (`$module`) already initialised (`govuk-checkboxes`)'
           })
         })
 
