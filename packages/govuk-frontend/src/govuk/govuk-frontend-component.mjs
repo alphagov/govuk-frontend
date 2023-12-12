@@ -23,6 +23,7 @@ export class GOVUKFrontendComponent {
    * Validates whether GOV.UK Frontend is supported
    *
    * @private
+   * @throws {SupportError} when GOV.UK Frontend is not supported
    */
   checkSupport() {
     if (!isSupported()) {
