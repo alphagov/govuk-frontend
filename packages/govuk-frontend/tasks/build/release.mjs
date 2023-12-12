@@ -17,8 +17,11 @@ export default (options) =>
     // Copy GOV.UK Frontend static assets
     task.name('copy:assets', () =>
       gulp
-        .src(join(options.srcPath, 'govuk/assets/**/*'))
-        .pipe(gulp.dest(join(options.destPath, 'assets')))
+        .src('govuk/assets/**/*', {
+          base: join(options.srcPath, 'govuk'),
+          cwd: options.srcPath
+        })
+        .pipe(gulp.dest(options.destPath))
     ),
 
     // Compile GOV.UK Frontend JavaScript

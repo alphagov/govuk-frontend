@@ -22,7 +22,8 @@ export const watch = (options) =>
      */
     task.name('lint:scss watch', () =>
       gulp.watch(
-        [join(options.srcPath, '**/*.scss')],
+        '**/*.scss',
+        { cwd: options.srcPath },
 
         // Run Stylelint checks
         npm.script('lint:scss:cli', [
@@ -36,10 +37,8 @@ export const watch = (options) =>
      */
     task.name('compile:scss watch', () =>
       gulp.watch(
-        [
-          join(options.srcPath, '**/*.scss'),
-          join(paths.package, 'dist/govuk/all.scss')
-        ],
+        ['**/*.scss', join(paths.package, 'dist/govuk/all.scss')],
+        { cwd: options.srcPath },
 
         // Run Sass compile
         styles(options)
@@ -51,8 +50,8 @@ export const watch = (options) =>
      */
     task.name('lint:js watch', () =>
       gulp.watch(
-        join(options.srcPath, '**/*.{cjs,js,mjs}'),
-        { ignored: ['**/*.test.*'] },
+        '**/*.{cjs,js,mjs}',
+        { cwd: options.srcPath, ignored: ['**/*.test.*'] },
         gulp.parallel(
           // Run TypeScript compiler
           npm.script('build:types', ['--incremental', '--pretty'], options),
@@ -70,7 +69,8 @@ export const watch = (options) =>
      */
     task.name('compile:js watch', () =>
       gulp.watch(
-        [join(options.srcPath, 'javascripts/**/*.mjs')],
+        'javascripts/**/*.mjs',
+        { cwd: options.srcPath },
 
         // Run JavaScripts compile
         scripts(options)
