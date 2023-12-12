@@ -1,19 +1,26 @@
 import { getExamples, render } from '@govuk-frontend/lib/components'
+import { outdent } from 'outdent'
 
 import { CharacterCount } from './character-count.mjs'
 
 describe('CharacterCount', () => {
-  let html
+  let examples
 
   beforeAll(async () => {
-    const examples = await getExamples('character-count')
-    html = render('character-count', examples['to configure in JavaScript'])
+    examples = await getExamples('character-count')
   })
 
-  beforeEach(async () => {
-    // Some tests add attributes to `document.body` so we need
-    // to reset it alongside the component's markup
-    document.body.outerHTML = `<body class="govuk-frontend-supported">${html}</body>`
+  beforeEach(() => {
+    const example = examples['to configure in JavaScript']
+
+    // Some tests add attributes to `document.body` so we need to reset it
+    // alongside both character count renders (for maxlength and maxwords)
+    document.body.outerHTML = outdent`
+      <body class="govuk-frontend-supported">
+        ${render('character-count', example)}
+        ${render('character-count', example)}
+      </body>
+    `
   })
 
   describe('formatCountMessage', () => {
@@ -22,9 +29,15 @@ describe('CharacterCount', () => {
       let componentWithMaxWords
 
       beforeEach(() => {
-        const $div = document.querySelector('[data-module]')
-        componentWithMaxLength = new CharacterCount($div, { maxlength: 100 })
-        componentWithMaxWords = new CharacterCount($div, { maxwords: 100 })
+        const $divs = document.querySelectorAll('[data-module]')
+
+        componentWithMaxLength = new CharacterCount($divs[0], {
+          maxlength: 100
+        })
+
+        componentWithMaxWords = new CharacterCount($divs[1], {
+          maxwords: 100
+        })
       })
 
       const cases = [
@@ -108,14 +121,16 @@ describe('CharacterCount', () => {
         })
 
         it('uses specific keys for when limit is reached', () => {
-          const $div = document.querySelector('[data-module]')
-          const componentWithMaxLength = new CharacterCount($div, {
+          const $divs = document.querySelectorAll('[data-module]')
+
+          const componentWithMaxLength = new CharacterCount($divs[0], {
             maxlength: 100,
             i18n: {
               charactersAtLimit: 'Custom text.'
             }
           })
-          const componentWithMaxWords = new CharacterCount($div, {
+
+          const componentWithMaxWords = new CharacterCount($divs[1], {
             maxwords: 100,
             i18n: {
               wordsAtLimit: 'Different custom text.'
