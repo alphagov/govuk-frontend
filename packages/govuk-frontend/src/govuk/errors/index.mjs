@@ -98,6 +98,28 @@ export class ElementError extends GOVUKFrontendError {
 }
 
 /**
+ * Indicates that a component is already initialised
+ */
+export class InitError extends GOVUKFrontendError {
+  name = 'InitError'
+
+  /**
+   * @internal
+   * @param {string|undefined} moduleName - name of the component module
+   * @param {string} [className] - name of the component module
+   */
+  constructor(moduleName, className) {
+    let errorText = `moduleName not defined in component (\`${className}\`)`
+
+    if (typeof moduleName === 'string') {
+      errorText = `Root element (\`$module\`) already initialised (\`${moduleName}\`)`
+    }
+
+    super(errorText)
+  }
+}
+
+/**
  * Element error options
  *
  * @internal
