@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 const { setTimeout } = require('timers/promises')
 
 const { render } = require('@govuk-frontend/helpers/puppeteer')
@@ -809,6 +811,21 @@ describe('Character count', () => {
             message:
               'GOV.UK Frontend initialised without `<body class="govuk-frontend-supported">` from template `<script>` snippet'
           }
+        })
+      })
+
+      it('throws when initialised twice', async () => {
+        await expect(
+          render(page, 'character-count', examples.default, {
+            async afterInitialisation($module) {
+              const { CharacterCount } = await import('govuk-frontend')
+              new CharacterCount($module)
+            }
+          })
+        ).rejects.toMatchObject({
+          name: 'InitError',
+          message:
+            'Root element (`$module`) already initialised (`govuk-character-count`)'
         })
       })
 

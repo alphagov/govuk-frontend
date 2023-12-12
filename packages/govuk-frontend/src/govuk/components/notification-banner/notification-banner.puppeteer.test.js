@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 const { render } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
@@ -233,6 +235,21 @@ describe('Notification banner', () => {
           message:
             'GOV.UK Frontend initialised without `<body class="govuk-frontend-supported">` from template `<script>` snippet'
         }
+      })
+    })
+
+    it('throws when initialised twice', async () => {
+      await expect(
+        render(page, 'notification-banner', examples.default, {
+          async afterInitialisation($module) {
+            const { NotificationBanner } = await import('govuk-frontend')
+            new NotificationBanner($module)
+          }
+        })
+      ).rejects.toMatchObject({
+        name: 'InitError',
+        message:
+          'Root element (`$module`) already initialised (`govuk-notification-banner`)'
       })
     })
 
