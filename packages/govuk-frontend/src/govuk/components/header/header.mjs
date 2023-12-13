@@ -83,23 +83,33 @@ export class Header extends GOVUKFrontendComponent {
     this.$menu = $menu
     this.$menuButton = $menuButton
 
+    this.setupResponsiveChecks()
+
+    this.$menuButton.addEventListener('click', () =>
+      this.handleMenuButtonClick()
+    )
+  }
+
+  /**
+   * Setup viewport resize check
+   *
+   * @private
+   */
+  setupResponsiveChecks() {
     // Set the matchMedia to the govuk-frontend desktop breakpoint
     this.mql = window.matchMedia('(min-width: 48.0625em)')
 
     // MediaQueryList.addEventListener isn't supported by Safari < 14 so we need
     // to be able to fall back to the deprecated MediaQueryList.addListener
     if ('addEventListener' in this.mql) {
-      this.mql.addEventListener('change', () => this.syncState())
+      this.mql.addEventListener('change', () => this.checkMode())
     } else {
       // @ts-expect-error Property 'addListener' does not exist
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-      this.mql.addListener(() => this.syncState())
+      this.mql.addListener(() => this.checkMode())
     }
 
-    this.syncState()
-    this.$menuButton.addEventListener('click', () =>
-      this.handleMenuButtonClick()
-    )
+    this.checkMode()
   }
 
   /**
@@ -112,7 +122,7 @@ export class Header extends GOVUKFrontendComponent {
    *
    * @private
    */
-  syncState() {
+  checkMode() {
     if (!this.mql || !this.$menu || !this.$menuButton) {
       return
     }
@@ -142,7 +152,7 @@ export class Header extends GOVUKFrontendComponent {
    */
   handleMenuButtonClick() {
     this.menuIsOpen = !this.menuIsOpen
-    this.syncState()
+    this.checkMode()
   }
 
   /**
