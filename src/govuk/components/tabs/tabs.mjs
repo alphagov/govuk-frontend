@@ -105,7 +105,13 @@ export class Tabs extends GOVUKFrontendComponent {
    * @private
    */
   setupResponsiveChecks() {
-    this.mql = window.matchMedia('(min-width: 40.0625em)')
+    const breakpointProperty = '--govuk-frontend-breakpoint-tablet'
+    const breakpointValue = window
+      .getComputedStyle(document.documentElement)
+      .getPropertyValue(breakpointProperty)
+
+    // Media query list for GOV.UK Frontend tablet breakpoint
+    this.mql = window.matchMedia(`(min-width: ${breakpointValue})`)
 
     // MediaQueryList.addEventListener isn't supported by Safari < 14 so we need
     // to be able to fall back to the deprecated MediaQueryList.addListener
