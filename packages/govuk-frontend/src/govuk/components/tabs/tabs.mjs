@@ -110,6 +110,13 @@ export class Tabs extends GOVUKFrontendComponent {
       .getComputedStyle(document.documentElement)
       .getPropertyValue(breakpointProperty)
 
+    if (!breakpointValue) {
+      throw new ElementError({
+        componentName: 'Tabs',
+        identifier: `CSS custom property (\`${breakpointProperty}\`)`
+      })
+    }
+
     // Media query list for GOV.UK Frontend tablet breakpoint
     this.mql = window.matchMedia(`(min-width: ${breakpointValue})`)
 

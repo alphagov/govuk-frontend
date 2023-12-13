@@ -101,6 +101,13 @@ export class Header extends GOVUKFrontendComponent {
       .getComputedStyle(document.documentElement)
       .getPropertyValue(breakpointProperty)
 
+    if (!breakpointValue) {
+      throw new ElementError({
+        componentName: 'Header',
+        identifier: `CSS custom property (\`${breakpointProperty}\`)`
+      })
+    }
+
     // Media query list for GOV.UK Frontend desktop breakpoint
     this.mql = window.matchMedia(`(min-width: ${breakpointValue})`)
 
