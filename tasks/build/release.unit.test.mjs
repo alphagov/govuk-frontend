@@ -50,7 +50,17 @@ describe('dist/', () => {
     })
 
     it('should contain CSS custom properties', () => {
+      // GOV.UK Frontend version number
       expect(stylesheet).toContain(`--govuk-frontend-version:"${pkg.version}"`)
+
+      // Breakpoints for `window.matchMedia()` in Header, Tabs components
+      expect(stylesheet).toContain('--govuk-frontend-breakpoint-mobile:20rem')
+      expect(stylesheet).toContain(
+        '--govuk-frontend-breakpoint-tablet:40.0625rem'
+      )
+      expect(stylesheet).toContain(
+        '--govuk-frontend-breakpoint-desktop:48.0625rem'
+      )
     })
   })
 
