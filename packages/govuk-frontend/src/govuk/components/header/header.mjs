@@ -96,8 +96,13 @@ export class Header extends GOVUKFrontendComponent {
    * @private
    */
   setupResponsiveChecks() {
-    // Set the matchMedia to the govuk-frontend desktop breakpoint
-    this.mql = window.matchMedia('(min-width: 48.0625em)')
+    const breakpointProperty = '--govuk-frontend-breakpoint-desktop'
+    const breakpointValue = window
+      .getComputedStyle(document.documentElement)
+      .getPropertyValue(breakpointProperty)
+
+    // Media query list for GOV.UK Frontend desktop breakpoint
+    this.mql = window.matchMedia(`(min-width: ${breakpointValue})`)
 
     // MediaQueryList.addEventListener isn't supported by Safari < 14 so we need
     // to be able to fall back to the deprecated MediaQueryList.addListener
