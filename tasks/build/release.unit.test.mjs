@@ -49,7 +49,7 @@ describe('dist/', () => {
       )
     })
 
-    it('should contain version number custom property', () => {
+    it('should contain CSS custom properties', () => {
       expect(stylesheet).toContain(`--govuk-frontend-version:"${pkg.version}"`)
     })
   })
@@ -70,7 +70,7 @@ describe('dist/', () => {
         '../packages/govuk-frontend/src/govuk/all.scss'
       )
       expect(sourcemap.sources).toContain(
-        '../packages/govuk-frontend/src/govuk/core/_govuk-frontend-version.scss'
+        '../packages/govuk-frontend/src/govuk/core/_govuk-frontend-properties.scss'
       )
     })
   })
