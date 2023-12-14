@@ -7,11 +7,10 @@ import {
   getComponentNamesFiltered,
   render
 } from '@govuk-frontend/lib/components'
-import { filterPath, hasPath } from '@govuk-frontend/lib/files'
+import { filterPath, getDirectories, hasPath } from '@govuk-frontend/lib/files'
 import { getStats, modulePaths } from '@govuk-frontend/stats'
 import express from 'express'
 
-import { getExampleNames, getFullPageExamples } from './common/lib/files.mjs'
 import * as middleware from './common/middleware/index.mjs'
 import * as nunjucks from './common/nunjucks/index.mjs'
 import * as routes from './routes/index.mjs'
@@ -29,7 +28,7 @@ export default async () => {
     componentNames,
     componentNamesWithJavaScript,
     exampleNames,
-    fullPageExamples
+    exampleNamesFullPage
   ] = await Promise.all([
     getComponentsFixtures(packageOptions),
 
@@ -43,8 +42,8 @@ export default async () => {
       packageOptions
     ),
 
-    getExampleNames(),
-    getFullPageExamples()
+    getDirectories(join(paths.app, 'src/views/examples')),
+    getDirectories(join(paths.app, 'src/views/full-page-examples'))
   ])
 
   // Feature flags
@@ -146,8 +145,6 @@ export default async () => {
     }
   )
 
-  // Define routes
-
   /**
    * Review app home page
    */
@@ -156,7 +153,7 @@ export default async () => {
       componentNames,
       componentNamesWithJavaScript,
       exampleNames,
-      fullPageExamples
+      exampleNamesFullPage
     })
   })
 
@@ -246,37 +243,9 @@ export default async () => {
   )
 
   /**
-   * Example view
+   * Additional routes
    */
-  app.get(
-    '/examples/:exampleName',
-
-    /**
-     * @param {import('express').Request} req
-     * @param {import('express').Response<{}, Partial<PreviewLocals>>} res
-     * @param {import('express').NextFunction} next
-     * @returns {void}
-     */
-    (req, res, next) => {
-      const { exampleName } = res.locals
-
-      // Unknown example, continue to page not found
-      if (!exampleNames.includes(exampleName)) {
-        return next()
-      }
-
-      res.render(`examples/${exampleName}/index`, {
-        exampleName,
-
-        // Render with random number for unique non-visited links
-        randomPageHash: (Math.random() * 1000000).toFixed()
-      })
-    }
-  )
-
-  /**
-   * Full page example routes
-   */
+  app.use('/examples', routes.examples)
   app.use('/full-page-examples', routes.fullPageExamples)
 
   /**
