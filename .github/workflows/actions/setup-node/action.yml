@@ -11,10 +11,9 @@ runs:
 
   steps:
     - name: Setup Node.js
-      uses: actions/setup-node@v4.0.0
+      uses: actions/setup-node@v3.8.2
       id: setup-node
 
       with:
         cache: ${{ inputs.use-cache == 'true' && 'npm' || '' }}
-        check-latest: true
         node-version-file: .nvmrc
