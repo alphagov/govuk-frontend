@@ -143,7 +143,7 @@ export function getFragmentFromUrl(url) {
  * @template {HTMLElement} FocusElement
  * @param {FocusElement} $element - HTML element
  * @param {object} [options] - Handler options
- * @param {function(this: FocusElement): void} [options.onFocus] - Callback on focus
+ * @param {function(this: FocusElement): void} [options.onBeforeFocus] - Callback before focus
  * @param {function(this: FocusElement): void} [options.onBlur] - Callback on blur
  */
 export function setFocus($element, options = {}) {
@@ -175,7 +175,7 @@ export function setFocus($element, options = {}) {
   $element.addEventListener('focus', onFocus, { once: true })
 
   // Focus element
-  options.onFocus?.call($element)
+  options.onBeforeFocus?.call($element)
   $element.focus()
 }
 
