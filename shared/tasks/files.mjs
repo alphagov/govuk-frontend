@@ -2,8 +2,6 @@ import { mkdir, writeFile } from 'fs/promises'
 import { dirname, join, parse } from 'path'
 
 import config from '@govuk-frontend/config'
-import cpy from 'cpy'
-import slash from 'slash'
 
 /**
  * Write `packages/govuk-frontend/package.json` version to file
@@ -40,17 +38,6 @@ export async function write(assetPath, { destPath, filePath, fileContents }) {
 
   await mkdir(dirname(assetDestPath), { recursive: true })
   await writeFile(assetDestPath, `${await fileContents()}\n`)
-}
-
-/**
- * Copy files task
- * Copies files to destination
- *
- * @param {string} pattern - Minimatch pattern
- * @param {Pick<AssetEntry[1], "srcPath" | "destPath">} options - Asset options
- */
-export async function copy(pattern, { srcPath, destPath }) {
-  await cpy([slash(join(srcPath, pattern))], destPath, { cwd: srcPath })
 }
 
 /**
