@@ -1,4 +1,5 @@
 ---
+title: What is your nationality?
 scenario: |
   As part of an online service, you are asked to provide your nationality.
 
@@ -24,7 +25,7 @@ scenario: |
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
-{% set pageTitle = "What is your nationality?" %}
+{% set pageTitle = example.title %}
 {% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}

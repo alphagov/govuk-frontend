@@ -1,84 +1,79 @@
+import express from 'express'
 import { body, validationResult } from 'express-validator'
 
 import { formatValidationErrors } from '../../../utils.mjs'
 
-/**
- * @param {import('express').Application} app
- */
-export default (app) => {
-  app.post(
-    '/full-page-examples/feedback',
-    [
-      body('what-were-you-trying-to-do')
-        .exists()
-        .not()
-        .isEmpty()
-        .withMessage('Enter what you were trying to do')
-        .isLength({ max: 100 })
-        .withMessage(
-          'What were you trying to do must be 100 characters or less'
-        ),
+const router = express.Router()
 
-      body('detail')
-        .exists()
-        .not()
-        .isEmpty()
-        .withMessage('Enter details of your question, problem or feedback')
-        .isLength({ max: 300 })
-        .withMessage(
-          'Details of your question, problem or feedback must be 300 characters or less'
-        ),
+router.post(
+  '/feedback',
 
-      body('do-you-want-a-reply')
-        .not()
-        .isEmpty()
-        .withMessage('Select yes if you want a reply'),
+  body('what-were-you-trying-to-do')
+    .exists()
+    .not()
+    .isEmpty()
+    .withMessage('Enter what you were trying to do')
+    .isLength({ max: 100 })
+    .withMessage('What were you trying to do must be 100 characters or less'),
 
-      body('name').custom((value, { req: request }) => {
-        // See https://github.com/express-validator/express-validator/pull/658
-        const wantsReply = request.body['do-you-want-a-reply'] === 'yes'
-        if (!wantsReply) {
-          return true
-        }
-        if (!value) {
-          throw new Error('Enter your name')
-        }
-        return true
-      }),
+  body('detail')
+    .exists()
+    .not()
+    .isEmpty()
+    .withMessage('Enter details of your question, problem or feedback')
+    .isLength({ max: 300 })
+    .withMessage(
+      'Details of your question, problem or feedback must be 300 characters or less'
+    ),
 
-      body('email').custom((value, { req: request }) => {
-        // See https://github.com/express-validator/express-validator/pull/658
-        const wantsReply = request.body['do-you-want-a-reply'] === 'yes'
-        if (!wantsReply) {
-          return true
-        }
-        if (!value) {
-          throw new Error('Enter your email address')
-        }
-        if (!value.includes('@')) {
-          throw new Error(
-            'Enter an email address in the correct format, like name@example.com'
-          )
-        }
-        return true
-      })
-    ],
+  body('do-you-want-a-reply')
+    .not()
+    .isEmpty()
+    .withMessage('Select yes if you want a reply'),
 
-    /**
-     * @param {import('express').Request} request
-     * @param {import('express').Response} response
-     * @returns {void}
-     */
-    (request, response) => {
-      const errors = formatValidationErrors(validationResult(request))
-      if (errors) {
-        return response.render('./full-page-examples/feedback/index', {
-          errors,
-          errorSummary: Object.values(errors),
-          values: request.body // In production this should sanitized.
-        })
-      }
-      response.render('./full-page-examples/feedback/confirm')
+  body('name').custom((value, { req }) => {
+    // See https://github.com/express-validator/express-validator/pull/658
+    const wantsReply = req.body['do-you-want-a-reply'] === 'yes'
+    if (!wantsReply) {
+      return true
     }
-  )
-}
+    if (!value) {
+      throw new Error('Enter your name')
+    }
+    return true
+  }),
+
+  body('email').custom((value, { req }) => {
+    // See https://github.com/express-validator/express-validator/pull/658
+    const wantsReply = req.body['do-you-want-a-reply'] === 'yes'
+    if (!wantsReply) {
+      return true
+    }
+    if (!value) {
+      throw new Error('Enter your email address')
+    }
+    if (!value.includes('@')) {
+      throw new Error(
+        'Enter an email address in the correct format, like name@example.com'
+      )
+    }
+    return true
+  }),
+
+  (req, res) => {
+    const viewPath = './full-page-examples/feedback'
+    const errors = formatValidationErrors(validationResult(req))
+
+    if (!errors) {
+      return res.render(`${viewPath}/confirm`)
+    }
+
+    res.render(`${viewPath}/index`, {
+      errors,
+      errorSummary: Object.values(errors),
+      values: req.body // In production this should sanitized.
+    })
+  }
+)
+
+export default router

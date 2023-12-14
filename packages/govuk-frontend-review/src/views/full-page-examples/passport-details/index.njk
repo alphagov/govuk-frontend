@@ -1,4 +1,5 @@
 ---
+title: Passport details
 scenario: |
   As part of an online service, you are asked to provide your passport details.
 
@@ -17,7 +18,7 @@ scenario: |
 {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
-{% set pageTitle = "Passport details" %}
+{% set pageTitle = example.title %}
 {% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}

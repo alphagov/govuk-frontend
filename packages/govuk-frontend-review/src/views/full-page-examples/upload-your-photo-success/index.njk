@@ -1,4 +1,5 @@
 ---
+title: Upload your photo
 scenario: |
   As part of an online service, you are asked to upload your photo.
 
@@ -16,7 +17,8 @@ scenario: |
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-{% block pageTitle %}Upload your photo - GOV.UK{% endblock %}
+{% set pageTitle = example.title %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block header %}
   {{ govukHeader({

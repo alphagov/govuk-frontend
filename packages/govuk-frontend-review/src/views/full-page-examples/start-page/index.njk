@@ -1,4 +1,5 @@
 ---
+title: Apply online for a UK passport
 scenario: |
   You want to apply for a passport.
 
@@ -16,7 +17,7 @@ notes: The buttons and links on this page are not functional.
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/tabs/macro.njk" import govukTabs %}
 
-{% set pageTitle = "Apply online for a UK passport" %}
+{% set pageTitle = example.title %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}

@@ -1,4 +1,5 @@
 ---
+title: Technology - Service Manual
 name: Topic page (Service Manual)
 scenario: |
   You would like to access information on a given topic, perhaps by finding out
@@ -13,7 +14,7 @@ notes: The links within each section are not functional.
 {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
 
-{% set pageTitle = "Technology - Service Manual" %}
+{% set pageTitle = example.title %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block header %}

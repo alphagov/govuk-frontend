@@ -274,8 +274,10 @@ export default async () => {
     }
   )
 
-  // Full page example views
-  routes.fullPageExamples(app)
+  /**
+   * Full page example routes
+   */
+  app.use('/full-page-examples', routes.fullPageExamples)
 
   /**
    * Page not found handler

@@ -1,4 +1,5 @@
 ---
+title: UK bank holidays
 scenario: |
   You want to know when the next bank holiday will be.
 
@@ -18,7 +19,7 @@ notes: |
 {% from "govuk/components/panel/macro.njk" import govukPanel %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
 
-{% set pageTitle = "UK bank holidays" %}
+{% set pageTitle = example.title %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}
