@@ -89,10 +89,10 @@ export class SkipLink extends GOVUKFrontendComponent {
     this.$module.addEventListener('click', () =>
       setFocus($linkedElement, {
         onFocus() {
-          this.classList.add('govuk-skip-link-focused-element')
+          $linkedElement.classList.add('govuk-skip-link-focused-element')
         },
         onBlur() {
-          this.classList.remove('govuk-skip-link-focused-element')
+          $linkedElement.classList.remove('govuk-skip-link-focused-element')
         }
       })
     )
