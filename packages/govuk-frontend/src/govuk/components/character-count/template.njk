@@ -16,7 +16,9 @@
   Unlike objects which cannot be modified, Nunjucks can both push to and loop
   arrays (as if they were objects) when in `Object.entries()` array format
 #}
-{%- set attributes = [] -%}
+{%- set attributes = [
+  ["data-module", "govuk-character-count"]
+] -%}
 
 {% for attribute, value in params.formGroup.attributes %}
   {% set attributes = (attributes.push([attribute, value]), attributes) %}
@@ -79,33 +81,31 @@
 {% endif -%}
 {% endset -%}
 
-<div class="govuk-character-count" data-module="govuk-character-count">
-  {{ govukTextarea({
-    id: params.id,
-    name: params.name,
-    describedBy: params.id + '-info',
-    rows: params.rows,
-    spellcheck: params.spellcheck,
-    value: params.value,
-    formGroup: {
-      classes: params.formGroup.classes,
-      attributes: attributes,
-      beforeInput: params.formGroup.beforeInput,
-      afterInput: {
-        html: countMessageHtml
-      }
-    },
-    classes: 'govuk-js-character-count' + (' ' + params.classes if params.classes),
-    label: {
-      html: params.label.html,
-      text: params.label.text,
-      classes: params.label.classes,
-      isPageHeading: params.label.isPageHeading,
-      attributes: params.label.attributes,
-      for: params.id
-    },
-    hint: params.hint,
-    errorMessage: params.errorMessage,
-    attributes: params.attributes
-  }) | trim }}
-</div>
+{{ govukTextarea({
+  id: params.id,
+  name: params.name,
+  describedBy: params.id + '-info',
+  rows: params.rows,
+  spellcheck: params.spellcheck,
+  value: params.value,
+  formGroup: {
+    classes: 'govuk-character-count' + (' ' + params.formGroup.classes if params.formGroup.classes),
+    attributes: attributes,
+    beforeInput: params.formGroup.beforeInput,
+    afterInput: {
+      html: countMessageHtml
+    }
+  },
+  classes: 'govuk-js-character-count' + (' ' + params.classes if params.classes),
+  label: {
+    html: params.label.html,
+    text: params.label.text,
+    classes: params.label.classes,
+    isPageHeading: params.label.isPageHeading,
+    attributes: params.label.attributes,
+    for: params.id
+  },
+  hint: params.hint,
+  errorMessage: params.errorMessage,
+  attributes: params.attributes
+}) | trim }}
