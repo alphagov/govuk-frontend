@@ -18,6 +18,10 @@
 #}
 {%- set attributes = [] -%}
 
+{% for attribute, value in params.formGroup.attributes %}
+  {% set attributes = (attributes.push([attribute, value]), attributes) %}
+{% endfor %}
+
 {%- if params.maxlength %}{% set attributes = (attributes.push(["data-maxlength", params.maxlength]), attributes) %}{% endif -%}
 {%- if params.threshold %}{% set attributes = (attributes.push(["data-threshold", params.threshold]), attributes) %}{% endif -%}
 {%- if params.maxwords %}{% set attributes = (attributes.push(["data-maxwords", params.maxwords]), attributes) %}{% endif -%}
@@ -75,7 +79,7 @@
 {% endif -%}
 {% endset -%}
 
-<div class="govuk-character-count" data-module="govuk-character-count" {%- for attribute, value in attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+<div class="govuk-character-count" data-module="govuk-character-count">
   {{ govukTextarea({
     id: params.id,
     name: params.name,
@@ -85,7 +89,7 @@
     value: params.value,
     formGroup: {
       classes: params.formGroup.classes,
-      attributes: params.formGroup.attributes,
+      attributes: attributes,
       beforeInput: params.formGroup.beforeInput,
       afterInput: {
         html: countMessageHtml
