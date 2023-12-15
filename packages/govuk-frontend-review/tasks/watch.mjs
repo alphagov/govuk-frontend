@@ -43,7 +43,13 @@ export const watch = (options) =>
     task.name('compile:scss watch', () =>
       gulp.watch(
         ['**/*.scss', join(paths.package, 'dist/govuk/all.scss')],
-        { cwd: options.srcPath },
+        {
+          cwd: options.srcPath,
+
+          // Prevent early Sass compile by ignoring delete (unlink) event
+          // when GOV.UK Frontend runs the `clean` script before build
+          events: ['add', 'change']
+        },
 
         // Run Sass compile
         styles(options)
