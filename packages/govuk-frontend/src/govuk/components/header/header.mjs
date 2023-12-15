@@ -102,7 +102,7 @@ export class Header extends GOVUKFrontendComponent {
     if (!breakpoint.value) {
       throw new ElementError({
         componentName: 'Header',
-        identifier: `CSS custom property (\`${breakpoint.property}\`)`
+        identifier: `CSS custom property (\`${breakpoint.property}\`) on pseudo-class \`:root\``
       })
     }
 

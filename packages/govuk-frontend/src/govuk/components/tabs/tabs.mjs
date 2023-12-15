@@ -110,7 +110,7 @@ export class Tabs extends GOVUKFrontendComponent {
     if (!breakpoint.value) {
       throw new ElementError({
         componentName: 'Tabs',
-        identifier: `CSS custom property (\`${breakpoint.property}\`)`
+        identifier: `CSS custom property (\`${breakpoint.property}\`) on pseudo-class \`:root\``
       })
     }
 
