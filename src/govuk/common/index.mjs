@@ -134,6 +134,27 @@ export function getFragmentFromUrl(url) {
 }
 
 /**
+ * Get GOV.UK Frontend breakpoint value from CSS custom property
+ *
+ * @private
+ * @param {string} name - Breakpoint name
+ * @returns {{ property: string, value?: string }} Breakpoint object
+ */
+export function getBreakpoint(name) {
+  const property = `--govuk-frontend-breakpoint-${name}`
+
+  // Get value from `<html>` with breakpoints on CSS :root
+  const value = window
+    .getComputedStyle(document.documentElement)
+    .getPropertyValue(property)
+
+  return {
+    property,
+    value: value || undefined
+  }
+}
+
+/**
  * Move focus to element
  *
  * Sets tabindex to -1 to make the element programmatically focusable,
