@@ -9,9 +9,14 @@ import { scripts, styles } from './index.mjs'
 
 /**
  * Watch task
+ *
  * During development, this task will:
+ *
  * - lint and run `gulp styles` when `.scss` files change
- * - lint and run `gulp scripts` when `.mjs` files change
+ * - lint and run `gulp scripts` when `.{cjs,js,mjs}` files change
+ *
+ * These tasks respond to `gulp watch` output from GOV.UK Frontend:
+ * {@link file://./../../govuk-frontend/tasks/watch.mjs}
  *
  * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
