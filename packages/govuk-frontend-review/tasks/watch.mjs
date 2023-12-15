@@ -44,6 +44,7 @@ export const watch = (options) =>
       gulp.watch(
         ['**/*.scss', join(paths.package, 'dist/govuk/all.scss')],
         {
+          awaitWriteFinish: true,
           cwd: options.srcPath,
 
           // Prevent early Sass compile by ignoring delete (unlink) event
