@@ -1,4 +1,4 @@
-import { getFragmentFromUrl } from '../../common/index.mjs'
+import { getFragmentFromUrl, setFocus } from '../../common/index.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
@@ -10,12 +10,6 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 export class SkipLink extends GOVUKFrontendComponent {
   /** @private */
   $module
-
-  /** @private */
-  $linkedElement
-
-  /** @private */
-  linkedElementListener = false
 
   /**
    * @param {Element | null} $module - HTML element to use for skip link
@@ -86,57 +80,22 @@ export class SkipLink extends GOVUKFrontendComponent {
       })
     }
 
-    this.$linkedElement = $linkedElement
-
-    this.$module.addEventListener('click', () => this.focusLinkedElement())
-  }
-
-  /**
-   * Focus the linked element
-   *
-   * Set tabindex and helper CSS class. Set listener to remove them on blur.
-   *
-   * @private
-   */
-  focusLinkedElement() {
-    if (!this.$linkedElement) {
-      return
-    }
-
-    if (!this.$linkedElement.getAttribute('tabindex')) {
-      // Set the element tabindex to -1 so it can be focused with JavaScript.
-      this.$linkedElement.setAttribute('tabindex', '-1')
-      this.$linkedElement.classList.add('govuk-skip-link-focused-element')
-
-      // Add listener for blur on the focused element (unless the listener has
-      // previously been added)
-      if (!this.linkedElementListener) {
-        this.$linkedElement.addEventListener('blur', () =>
-          this.removeFocusProperties()
-        )
-        this.linkedElementListener = true
-      }
-    }
-
-    this.$linkedElement.focus()
-  }
-
-  /**
-   * Remove the tabindex that makes the linked element focusable because the
-   * element only needs to be focusable until it has received programmatic focus
-   * and a screen reader has announced it.
-   *
-   * Remove the CSS class that removes the native focus styles.
-   *
-   * @private
-   */
-  removeFocusProperties() {
-    if (!this.$linkedElement) {
-      return
-    }
-
-    this.$linkedElement.removeAttribute('tabindex')
-    this.$linkedElement.classList.remove('govuk-skip-link-focused-element')
+    /**
+     * Focus the linked element on click
+     *
+     * Adds a helper CSS class to hide native focus styles,
+     * but removes it on blur to restore native focus styles
+     */
+    this.$module.addEventListener('click', () =>
+      setFocus($linkedElement, {
+        onBeforeFocus() {
+          $linkedElement.classList.add('govuk-skip-link-focused-element')
+        },
+        onBlur() {
+          $linkedElement.classList.remove('govuk-skip-link-focused-element')
+        }
+      })
+    )
   }
 
   /**
