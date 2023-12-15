@@ -1,4 +1,8 @@
-import { getFragmentFromUrl, mergeConfigs } from '../../common/index.mjs'
+import {
+  getFragmentFromUrl,
+  mergeConfigs,
+  setFocus
+} from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
@@ -44,29 +48,14 @@ export class ErrorSummary extends GOVUKFrontendComponent {
       normaliseDataset($module.dataset)
     )
 
-    this.setFocus()
-    this.$module.addEventListener('click', (event) => this.handleClick(event))
-  }
-
-  /**
-   * Focus the error summary
-   *
-   * @private
-   */
-  setFocus() {
-    if (this.config.disableAutoFocus) {
-      return
+    /**
+     * Focus the error summary
+     */
+    if (!this.config.disableAutoFocus) {
+      setFocus(this.$module)
     }
 
-    // Set tabindex to -1 to make the element programmatically focusable, but
-    // remove it on blur as the error summary doesn't need to be focused again.
-    this.$module.setAttribute('tabindex', '-1')
-
-    this.$module.addEventListener('blur', () => {
-      this.$module.removeAttribute('tabindex')
-    })
-
-    this.$module.focus()
+    this.$module.addEventListener('click', (event) => this.handleClick(event))
   }
 
   /**
