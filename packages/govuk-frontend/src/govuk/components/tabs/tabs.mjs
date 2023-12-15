@@ -1,4 +1,4 @@
-import { getFragmentFromUrl } from '../../common/index.mjs'
+import { getBreakpoint, getFragmentFromUrl } from '../../common/index.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
@@ -105,7 +105,17 @@ export class Tabs extends GOVUKFrontendComponent {
    * @private
    */
   setupResponsiveChecks() {
-    this.mql = window.matchMedia('(min-width: 40.0625em)')
+    const breakpoint = getBreakpoint('tablet')
+
+    if (!breakpoint.value) {
+      throw new ElementError({
+        componentName: 'Tabs',
+        identifier: `CSS custom property (\`${breakpoint.property}\`) on pseudo-class \`:root\``
+      })
+    }
+
+    // Media query list for GOV.UK Frontend tablet breakpoint
+    this.mql = window.matchMedia(`(min-width: ${breakpoint.value})`)
 
     // MediaQueryList.addEventListener isn't supported by Safari < 14 so we need
     // to be able to fall back to the deprecated MediaQueryList.addListener
