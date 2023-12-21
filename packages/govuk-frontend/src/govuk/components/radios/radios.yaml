@@ -55,8 +55,17 @@ params:
       - name: label
         type: object
         required: false
-        description: Additional options for the label used by each radio item within the radios component.
+        description: Subset of options for the label used by each radio item within the radios component.
         isComponent: true
+        params:
+          - name: classes
+            type: string
+            required: false
+            description: Classes to add to the label tag.
+          - name: attributes
+            type: object
+            required: false
+            description: HTML attributes (for example data attributes) to add to the label tag.
       - name: hint
         type: object
         required: false
