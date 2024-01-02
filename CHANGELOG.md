@@ -4,6 +4,14 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### Replace instances of `govuk-typography-responsive` with `govuk-font-size`
+
+We've renamed the Sass mixin `govuk-typography-responsive` to `govuk-font-size` and have deprecated `govuk-typography-responsive`. You can still use `govuk-typography-responsive` but we'll be removing it in a future breaking release (6.0.0).
+
+This is an experimental change, based on our hypothesis that `govuk-font-size` as a name better communicates the Sass mixin's intended use than `govuk-typography-responsive`. We're interested in feedback from the community on this name change so please let us know what you think.
+
+This change was introduced in [pull request #4291: Rename `govuk-typography-responsive` to `govuk-font-size`](https://github.com/alphagov/govuk-frontend/pull/4291)
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
