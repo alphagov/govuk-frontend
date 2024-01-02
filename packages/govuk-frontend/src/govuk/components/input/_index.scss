@@ -118,26 +118,21 @@
   .govuk-input__prefix,
   .govuk-input__suffix {
     @include govuk-font($size: 19);
-
     box-sizing: border-box;
-    display: inline-block;
+    // Use flexbox to align text within the prefix and suffix
+    display: flex;
+    align-items: center;
+    justify-content: center;
     min-width: govuk-px-to-rem(40px);
     height: govuk-px-to-rem(40px);
     padding: govuk-spacing(1);
     border: $govuk-border-width-form-element solid $govuk-input-border-colour;
     background-color: govuk-colour("light-grey");
-
     text-align: center;
-    @include govuk-media-query($until: tablet) {
-      line-height: 1.6;
-    }
     white-space: nowrap;
-
     // Emphasise non-editable status of prefixes and suffixes
     cursor: default;
-
     flex: 0 0 auto;
-
     // Split prefix/suffix onto separate lines on narrow screens
     @include govuk-media-query($until: mobile) {
       display: block;
