@@ -19,7 +19,7 @@
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
     "mini-css-extract-plugin": "^2.7.6",
-    "postcss-loader": "^7.3.3",
+    "postcss-loader": "^7.3.4",
     "sass-embedded": "^1.69.7",
     "sass-loader": "^13.3.2",
     "terser-webpack-plugin": "^5.3.9",
