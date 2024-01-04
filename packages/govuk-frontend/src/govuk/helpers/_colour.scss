@@ -68,17 +68,20 @@
 
   // Output a warning if $websafe is set.
   @if $websafe and not index($govuk-suppressed-warnings, "organisation-colour-websafe-param") {
-    @warn "The `$websafe` parameter of `govuk-organisation-colour` has been " +
+    @warn _warning-text("organisation-colour-websafe-param",
+      "The `$websafe` parameter of `govuk-organisation-colour` has been " +
       "renamed to `$contrast-safe`. The old parameter name will be removed in " +
-      "the next major version. To silence this warning, update " +
-      "$govuk-suppressed-warnings with key: " +
-      "\"organisation-colour-websafe-param\"";
+      "the next major version."
+    );
   }
 
   $org-colour: map-get($govuk-colours-organisations, $organisation);
 
   @if map-has-key($org-colour, deprecation-message) {
-    @warn map-get($org-colour, deprecation-message);
+    @warn _warning-text(
+      "organisation-colour-websafe-param",
+      map-get($org-colour, deprecation-message)
+    );
   }
 
   // If the $websafe parameter is being used (it has been explicitly set as true
