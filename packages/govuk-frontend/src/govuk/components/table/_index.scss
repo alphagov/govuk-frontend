@@ -50,14 +50,14 @@
   }
 
   .govuk-table__caption--xl {
-    @include govuk-typography-responsive($size: 48);
+    @include govuk-font-size($size: 48);
   }
 
   .govuk-table__caption--l {
-    @include govuk-typography-responsive($size: 36);
+    @include govuk-font-size($size: 36);
   }
 
   .govuk-table__caption--m {
-    @include govuk-typography-responsive($size: 24);
+    @include govuk-font-size($size: 24);
   }
 }

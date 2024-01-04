@@ -62,11 +62,11 @@ Use the `_warning` mixin when deprecating a mixin:
 ```scss
 /// XL headings
 ///
-/// @deprecated Use govuk-typography-responsive($size: 80) instead.
+/// @deprecated Use govuk-font-size($size: 80) instead.
 ///   See https://github.com/alphagov/govuk-frontend/issues/1234
 @mixin govuk-heading-xl {
-  @include _warning("heading-xl", "govuk-heading-xl is deprecated. Use govuk-typography-responsive(80) instead.");
-  @include govuk-typography-responsive($size: 80);
+  @include _warning("heading-xl", "govuk-heading-xl is deprecated. Use govuk-font-size(80) instead.");
+  @include govuk-font-size($size: 80);
 }
 ```
 

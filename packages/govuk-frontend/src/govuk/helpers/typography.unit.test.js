@@ -176,13 +176,13 @@ describe('@function _govuk-line-height', () => {
   })
 })
 
-describe('@mixin govuk-typography-responsive', () => {
+describe('@mixin govuk-font-size', () => {
   it('outputs CSS with suitable media queries', async () => {
     const sass = `
       ${sassBootstrap}
 
       .foo {
-        @include govuk-typography-responsive($size: 14)
+        @include govuk-font-size($size: 14)
       }
     `
 
@@ -207,7 +207,7 @@ describe('@mixin govuk-typography-responsive', () => {
       ${sassBootstrap}
 
       .foo {
-        @include govuk-typography-responsive($size: 12)
+        @include govuk-font-size($size: 12)
       }
     `
 
@@ -232,7 +232,7 @@ describe('@mixin govuk-typography-responsive', () => {
       ${sassBootstrap}
 
       .foo {
-        @include govuk-typography-responsive(3.1415926536)
+        @include govuk-font-size(3.1415926536)
       }
     `
 
@@ -247,7 +247,7 @@ describe('@mixin govuk-typography-responsive', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-typography-responsive($size: 14, $important: true);
+          @include govuk-font-size($size: 14, $important: true);
         }
       `
 
@@ -272,7 +272,7 @@ describe('@mixin govuk-typography-responsive', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-typography-responsive($size: 12, $important: true);
+          @include govuk-font-size($size: 12, $important: true);
         }
       `
 
@@ -293,13 +293,13 @@ describe('@mixin govuk-typography-responsive', () => {
     })
   })
 
-  describe('when $override-line-height is set', () => {
+  describe('when $line-height is set', () => {
     it('overrides the line height', async () => {
       const sass = `
         ${sassBootstrap}
 
         .foo {
-          @include govuk-typography-responsive($size: 14, $override-line-height: 21px);
+          @include govuk-font-size($size: 14, $line-height: 21px);
         }
       `
 
@@ -480,6 +480,61 @@ describe('@mixin govuk-typography-responsive', () => {
       await expect(compileSassString(sass)).resolves.toMatchObject({
         css: expect.stringContaining('line-height: 1.337;')
       })
+    })
+  })
+
+  // govuk-typography-responsive is the previous, deprecated version of govuk-font-size
+  describe('@mixin govuk-typography-responsive', () => {
+    it('outputs the same CSS as govuk-font-size', async () => {
+      const sass = `
+        ${sassBootstrap}
+
+        .foo {
+          @include govuk-typography-responsive(
+            $size: 14,
+            $override-line-height: 40px,
+            $important: true
+          )
+        }
+      `
+
+      const expectedSass = `
+        ${sassBootstrap}
+
+        .foo {
+          @include govuk-font-size(
+            $size: 14,
+            $line-height: 40px,
+            $important: true
+          )
+        }
+      `
+
+      await expect(compileSassString(sass)).resolves.toMatchObject({
+        css: (await compileSassString(expectedSass)).css
+      })
+    })
+
+    it('throws a deprecation warning if govuk-typography-responsive is used', async () => {
+      const sass = `
+        ${sassBootstrap}
+
+        .foo {
+          @include govuk-typography-responsive($size: 14)
+        }
+      `
+
+      await compileSassString(sass, sassConfig)
+
+      // Expect our mocked @warn function to have been called once with a single
+      // argument, which should be the deprecation notice
+      expect(mockWarnFunction.mock.calls[0]).toEqual(
+        expect.arrayContaining([
+          'govuk-typography-responsive is deprecated. Use govuk-font-size instead. ' +
+            'To silence this warning, update $govuk-suppressed-warnings with key: ' +
+            '"govuk-typography-responsive"'
+        ])
+      )
     })
   })
 })

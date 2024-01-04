@@ -236,7 +236,7 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
 
   .govuk-button--start {
     @include govuk-typography-weight-bold;
-    @include govuk-typography-responsive($size: 24, $override-line-height: 1);
+    @include govuk-font-size($size: 24, $line-height: 1);
 
     display: inline-flex;
     min-height: auto;

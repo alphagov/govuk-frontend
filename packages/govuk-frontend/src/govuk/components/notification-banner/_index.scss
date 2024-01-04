@@ -26,7 +26,7 @@
   .govuk-notification-banner__title {
     // Set the size again because this element is a heading and the user agent
     // font size overrides the inherited font size
-    @include govuk-typography-responsive($size: 19);
+    @include govuk-font-size($size: 19);
     @include govuk-typography-weight-bold;
     margin: 0;
     padding: 0;
@@ -65,7 +65,7 @@
   }
 
   .govuk-notification-banner__heading {
-    @include govuk-typography-responsive($size: 24);
+    @include govuk-font-size($size: 24);
     @include govuk-typography-weight-bold;
 
     margin: 0 0 govuk-spacing(3) 0;

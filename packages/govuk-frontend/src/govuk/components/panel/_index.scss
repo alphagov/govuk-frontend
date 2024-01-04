@@ -40,7 +40,7 @@
   }
 
   .govuk-panel__title {
-    @include govuk-typography-responsive($size: 48);
+    @include govuk-font-size($size: 48);
     @include govuk-typography-weight-bold;
     margin-top: 0;
     margin-bottom: govuk-spacing(6);
