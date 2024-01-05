@@ -4,7 +4,21 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
-### Replace instances of `govuk-typography-responsive` with `govuk-font-size`
+### New features
+
+#### Use tabular numbers with the `govuk-font-tabular-numbers` mixin
+
+You can now use tabular numbers in your authored Sass by including the new `govuk-font-tabular-numbers` mixin.
+
+Previously, you would use the `govuk-font` mixin with the `$tabular` parameter. However, the `govuk-font` mixin includes styles that are unrelated to tabular numbers, which are unnecessary in some contexts.
+
+These additional styles are not included if you use `govuk-font-tabular-numbers`. Switching to the new mixin can reduce the size of your compiled CSS without affecting the appearance of pages.
+
+This change was introduced in [pull request #4307: Refactor tabular number activation into their own mixin](https://github.com/alphagov/govuk-frontend/pull/4307)
+
+### Recommended changes
+
+#### Replace instances of `govuk-typography-responsive` with `govuk-font-size`
 
 We've renamed the Sass mixin `govuk-typography-responsive` to `govuk-font-size` and have deprecated `govuk-typography-responsive`. You can still use `govuk-typography-responsive` but we'll be removing it in a future breaking release (6.0.0).
 
