@@ -79,7 +79,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
    * @param {ExitThisPageConfig} [config] - Exit This Page config
    */
   constructor($module, config = {}) {
-    super()
+    super($module)
 
     if (!($module instanceof HTMLElement)) {
       throw new ElementError({

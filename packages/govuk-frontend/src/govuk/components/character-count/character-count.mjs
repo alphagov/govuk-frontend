@@ -66,7 +66,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
    * @param {CharacterCountConfig} [config] - Character count config
    */
   constructor($module, config = {}) {
-    super()
+    super($module)
 
     if (!($module instanceof HTMLElement)) {
       throw new ElementError({
