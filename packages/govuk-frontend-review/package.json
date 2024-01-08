@@ -58,7 +58,7 @@
     "nodemon": "^3.0.2",
     "postcss-pseudo-classes": "^0.4.0",
     "puppeteer": "^21.6.1",
-    "rollup": "^4.9.2",
+    "rollup": "^4.9.4",
     "sassdoc": "^2.7.4",
     "supertest": "^6.3.3",
     "typedoc": "^0.25.4"
