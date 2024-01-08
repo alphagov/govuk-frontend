@@ -189,6 +189,21 @@ export function setFocus($element, options = {}) {
 }
 
 /**
+ * Checks if component is already initialised
+ *
+ * @internal
+ * @param {Element} $module - HTML element to be checked
+ * @param {string} moduleName - name of component module
+ * @returns {boolean} Whether component is already initialised
+ */
+export function isInitialised($module, moduleName) {
+  return (
+    $module instanceof HTMLElement &&
+    $module.hasAttribute(`data-${moduleName}-init`)
+  )
+}
+
+/**
  * Checks if GOV.UK Frontend is supported on this page
  *
  * Some browsers will load and run our JavaScript but GOV.UK Frontend
