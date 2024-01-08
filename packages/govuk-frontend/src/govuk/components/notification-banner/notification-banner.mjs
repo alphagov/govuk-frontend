@@ -23,7 +23,7 @@ export class NotificationBanner extends GOVUKFrontendComponent {
    * @param {NotificationBannerConfig} [config] - Notification banner config
    */
   constructor($module, config = {}) {
-    super()
+    super($module)
 
     if (!($module instanceof HTMLElement)) {
       throw new ElementError({

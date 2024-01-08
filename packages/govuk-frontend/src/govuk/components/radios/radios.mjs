@@ -28,7 +28,7 @@ export class Radios extends GOVUKFrontendComponent {
    * @param {Element | null} $module - HTML element to use for radios
    */
   constructor($module) {
-    super()
+    super($module)
 
     if (!($module instanceof HTMLElement)) {
       throw new ElementError({
