@@ -1,5 +1,5 @@
 import express from 'express'
-import { body, validationResult } from 'express-validator'
+import { body, matchedData, validationResult } from 'express-validator'
 
 import { formatValidationErrors } from '../../../utils.mjs'
 
@@ -8,29 +8,10 @@ const router = express.Router()
 router.post(
   '/passport-details',
 
-  body('passport-number')
-    .exists()
-    .not()
-    .isEmpty()
-    .withMessage('Enter your passport number'),
-
-  body('expiry-day')
-    .exists()
-    .not()
-    .isEmpty()
-    .withMessage('Enter your expiry day'),
-
-  body('expiry-month')
-    .exists()
-    .not()
-    .isEmpty()
-    .withMessage('Enter your expiry month'),
-
-  body('expiry-year')
-    .exists()
-    .not()
-    .isEmpty()
-    .withMessage('Enter your expiry year'),
+  body('passport-number').notEmpty().withMessage('Enter your passport number'),
+  body('expiry-day').notEmpty().withMessage('Enter your expiry day'),
+  body('expiry-month').notEmpty().withMessage('Enter your expiry month'),
+  body('expiry-year').notEmpty().withMessage('Enter your expiry year'),
 
   (req, res) => {
     const viewPath = './full-page-examples/passport-details'
@@ -78,7 +59,7 @@ router.post(
     res.render(`${viewPath}/index`, {
       errors,
       errorSummary,
-      values: req.body // In production this should sanitized.
+      values: matchedData(req, { onlyValidData: false }) // In production this should sanitized.
     })
   }
 )

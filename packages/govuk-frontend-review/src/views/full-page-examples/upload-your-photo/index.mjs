@@ -1,5 +1,5 @@
 import express from 'express'
-import { body, validationResult } from 'express-validator'
+import { body, matchedData, validationResult } from 'express-validator'
 
 import { formatValidationErrors } from '../../../utils.mjs'
 
@@ -8,11 +8,10 @@ const router = express.Router()
 router.post(
   '/upload-your-photo',
 
-  body('photo').exists().not().isEmpty().withMessage('Select a photo'),
+  body('photo').notEmpty().withMessage('Select a photo'),
 
   body('terms-and-conditions')
-    .not()
-    .isEmpty()
+    .notEmpty()
     .withMessage('Select I accept the terms and conditions'),
 
   (req, res) => {
@@ -26,7 +25,7 @@ router.post(
     res.render(`${viewPath}/index`, {
       errors,
       errorSummary: Object.values(errors),
-      values: req.body // In production this should sanitized.
+      values: matchedData(req, { onlyValidData: false }) // In production this should sanitized.
     })
   }
 )

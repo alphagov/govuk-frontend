@@ -1,5 +1,5 @@
 import express from 'express'
-import { body, validationResult } from 'express-validator'
+import { body, matchedData, validationResult } from 'express-validator'
 
 import { formatValidationErrors } from '../../../utils.mjs'
 
@@ -8,30 +8,19 @@ const router = express.Router()
 router.post(
   '/what-is-your-nationality',
 
-  body('confirm-nationality').custom((value, { req }) => {
-    // See https://github.com/express-validator/express-validator/pull/658
-    const cannotProvideNationality =
-      !!req.body['details-cannot-provide-nationality']
-    // If the user cannot provide their nationality and has given us separate details
-    // then do not show an error for the nationality fields.
-    if (cannotProvideNationality) {
-      return true
-    }
-    if (!value) {
-      throw new Error('Select your nationality or nationalities')
-    }
-    return true
-  }),
+  body('confirm-nationality')
+    .if(body('other-nationality').not().equals('yes'))
+    .if(body('details-cannot-provide-nationality').isEmpty())
+    .notEmpty()
+    .withMessage('Select your nationality or nationalities'),
 
-  body('country-name').custom((value, { req }) => {
-    // See https://github.com/express-validator/express-validator/pull/658
-    const confirmedNationality = req.body['confirm-nationality'] || []
-    // If the other country option is selected and there's no value.
-    if (confirmedNationality.includes('other-country-nationality') && !value) {
-      throw new Error('Enter your country')
-    }
-    return true
-  }),
+  body('country-name')
+    .if(body('other-nationality').equals('yes'))
+    .notEmpty()
+    .withMessage('Enter your country'),
+
+  body('details-cannot-provide-nationality'),
+  body('other-nationality'),
 
   (req, res) => {
     const viewPath = './full-page-examples/what-is-your-nationality'
@@ -44,7 +33,7 @@ router.post(
     res.render(`${viewPath}/index`, {
       errors,
       errorSummary: Object.values(errors),
-      values: req.body // In production this should sanitized.
+      values: matchedData(req, { onlyValidData: false }) // In production this should sanitized.
     })
   }
 )
