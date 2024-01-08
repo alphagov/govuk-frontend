@@ -81,7 +81,7 @@
     "outdent": "^0.8.0",
     "postcss": "^8.4.32",
     "postcss-scss": "^4.0.9",
-    "puppeteer": "^21.6.1",
+    "puppeteer": "^21.7.0",
     "rollup": "^4.9.4",
     "sass-color-helpers": "^2.1.1",
     "sass-embedded": "^1.69.7",
