@@ -1,3 +1,4 @@
+{% from "../../macros/text-input.njk" import govukInputElement %}
 {% from "../../macros/i18n.njk" import govukI18nAttributes %}
 
 {% from "../error-message/macro.njk" import govukErrorMessage -%}
@@ -50,18 +51,20 @@
     {{- govukI18nAttributes({ key: 'password-shown-announcement', message: params.passwordShownAnnouncementText }) -}}
     {{- govukI18nAttributes({ key: 'password-hidden-announcement', message: params.passwordHiddenAnnouncementText }) -}}>
 
-    <input
-      class="govuk-input govuk-password-input__input {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-input--error{% endif %}"
-      id="{{ params.id }}"
-      name="{{ params.name }}"
-      type="password"
-      spellcheck="false"
-      autocapitalize="off"
-      autocomplete="{{ 'new-password' if params.newPassword else 'current-password' }}"
-      {%- if params.value %} value="{{ params.value}}"{% endif %}
-      {%- if params.disabled %} disabled{% endif %}
-      {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
-      {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
+    {{ govukInputElement({
+      classes: "govuk-password-input__input" + (" " + params.classes if params.classes),
+      errorClass: params.errorMessage,
+      id: params.id,
+      name: params.name,
+      type: "password",
+      spellcheck: "false",
+      autocapitalize: "off",
+      autocomplete: 'new-password' if params.newPassword else 'current-password',
+      disabled: params.disabled,
+      describedBy: describedBy,
+      value: params.value,
+      attributes: params.attributes
+    }) }}
 
   </div>
 

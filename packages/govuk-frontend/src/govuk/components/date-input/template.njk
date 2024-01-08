@@ -1,7 +1,8 @@
+{% from "../../macros/text-input.njk" import govukInputElement %}
 {% from "../error-message/macro.njk" import govukErrorMessage %}
 {% from "../fieldset/macro.njk" import govukFieldset %}
 {% from "../hint/macro.njk" import govukHint %}
-{% from "../input/macro.njk" import govukInput %}
+{% from "../label/macro.njk" import govukLabel %}
 
 {#- a record of other elements that we need to associate with the input using
   aria-describedby – for example hints or error messages -#}
@@ -55,13 +56,15 @@
     {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
     {%- if params.id %} id="{{ params.id }}"{% endif %}>
     {% for item in dateInputItems %}
+    {% set inputId = item.id if item.id else (params.id + "-" + item.name) %}
     <div class="govuk-date-input__item">
-      {{ govukInput({
-        label: {
-          text: item.label if item.label else item.name | capitalize,
-          classes: "govuk-date-input__label"
-        },
-        id: item.id if item.id else (params.id + "-" + item.name),
+      {{ govukLabel({
+        for: inputId,
+        classes: "govuk-date-input__label",
+        text: item.label if item.label else item.name | capitalize
+      }) }}
+      {{ govukInputElement({
+        id: inputId,
         classes: "govuk-date-input__input " + (item.classes if item.classes),
         name: (params.namePrefix + "-" + item.name) if params.namePrefix else item.name,
         value: item.value,
@@ -70,7 +73,7 @@
         autocomplete: item.autocomplete,
         pattern: item.pattern,
         attributes: item.attributes
-      }) | trim | indent(6) }}
+      }) }}
     </div>
   {% endfor %}
   </div>

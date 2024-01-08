@@ -1,0 +1,34 @@
+{#
+  Internal-only macros to render out text-like inputs, which are used across
+  multiple components but where different components may want to only allow a
+  subset of configuration parameters.
+#}
+{% macro govukInputElement(params) %}
+<input
+  class="govuk-input {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorClass %} govuk-input--error{% endif %}"
+  type="{{ params.type | default("text", true) }}"
+  {%- if params.value %} value="{{ params.value }}"{% endif %}
+  {{ _govukTextCommonAttributes(params) | indent(2) | trim }}>
+{% endmacro %}
+
+{% macro govukTextareaElement(params) %}
+<textarea
+  class="govuk-textarea {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorClass %} govuk-textarea--error{% endif %}"
+  rows="{{ params.rows | default(5, true) }}"
+  {{ _govukTextCommonAttributes(params) | indent(2) | trim }}>
+  {{- params.value -}}
+</textarea>
+{% endmacro %}
+
+{% macro _govukTextCommonAttributes(params) %}
+id="{{ params.id }}"
+name="{{ params.name }}"
+{%- if params.autocapitalize %} autocapitalize="{{ params.autocapitalize }}"{% endif %}
+{%- if params.autocomplete %} autocomplete="{{ params.autocomplete }}"{% endif %}
+{%- if params.describedBy %} aria-describedby="{{ params.describedBy }}"{% endif %}
+{%- if params.disabled %} disabled{% endif %}
+{%- if params.inputmode %} inputmode="{{ params.inputmode }}"{% endif %}
+{%- if params.pattern %} pattern="{{ params.pattern }}"{% endif %}
+{%- if (params.spellcheck === false) or (params.spellcheck === true) %} spellcheck="{{ params.spellcheck }}"{% endif %}
+{%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
+{% endmacro %}

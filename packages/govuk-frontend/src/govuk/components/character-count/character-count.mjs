@@ -152,10 +152,6 @@ export class CharacterCount extends GOVUKFrontendComponent {
       })
     }
 
-    // Move the textarea description to be immediately after the textarea
-    // Kept for backwards compatibility
-    this.$textarea.insertAdjacentElement('afterend', $textareaDescription)
-
     // Create the *screen reader* specific live-updating counter
     // This doesn't need any styling classes, as it is never visible
     const $screenReaderCountMessage = document.createElement('div')

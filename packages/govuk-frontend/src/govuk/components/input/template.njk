@@ -1,6 +1,8 @@
+{% from "../../macros/text-input.njk" import govukInputElement %}
 {% from "../error-message/macro.njk" import govukErrorMessage %}
 {% from "../hint/macro.njk" import govukHint %}
 {% from "../label/macro.njk" import govukLabel %}
+
 
 {#- a record of other elements that we need to associate with the input using
   aria-describedby – for example hints or error messages -#}
@@ -47,15 +49,21 @@
     </div>
   {% endif -%}
 
-  <input class="govuk-input {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-input--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="{{ params.type | default("text", true) }}"
-  {%- if (params.spellcheck === false) or (params.spellcheck === true) %} spellcheck="{{ params.spellcheck }}"{% endif %}
-  {%- if params.value %} value="{{ params.value }}"{% endif %}
-  {%- if params.disabled %} disabled{% endif %}
-  {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
-  {%- if params.autocomplete %} autocomplete="{{ params.autocomplete }}"{% endif %}
-  {%- if params.pattern %} pattern="{{ params.pattern }}"{% endif %}
-  {%- if params.inputmode %} inputmode="{{ params.inputmode }}"{% endif %}
-  {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  {{ govukInputElement({
+    classes: params.classes,
+    attributes: params.attributes,
+    errorClass: params.errorMessage,
+    id: params.id,
+    name: params.name,
+    type: params.type,
+    autocomplete: params.autocomplete,
+    describedBy: describedBy,
+    disabled: params.disabled,
+    inputmode: params.inputmode,
+    pattern: params.pattern,
+    spellcheck: params.spellcheck,
+    value: params.value
+  }) }}
 
   {%- if params.suffix.text or params.suffix.html -%}
     <div class="govuk-input__suffix {%- if params.suffix.classes %} {{ params.suffix.classes }}{% endif %}" aria-hidden="true" {%- for attribute, value in params.suffix.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>

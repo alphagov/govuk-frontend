@@ -216,7 +216,7 @@ describe('Character count', () => {
         examples['with default value exceeding limit']
       )
 
-      const $component = $('.govuk-form-group > .govuk-js-character-count')
+      const $component = $('.govuk-form-group .govuk-js-character-count')
       expect($component.length).toBeTruthy()
     })
 
