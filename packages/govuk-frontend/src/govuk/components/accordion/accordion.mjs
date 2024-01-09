@@ -145,6 +145,8 @@ export class Accordion extends GOVUKFrontendComponent {
       })
     }
 
+    $module.classList.add('govuk-accordion--ready')
+
     this.$sections = $sections
     this.browserSupportsSessionStorage = helper.checkForSessionStorage()
 

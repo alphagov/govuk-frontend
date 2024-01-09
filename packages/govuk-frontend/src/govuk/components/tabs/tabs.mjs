@@ -93,6 +93,8 @@ export class Tabs extends GOVUKFrontendComponent {
       })
     }
 
+    $module.classList.add('govuk-tabs--ready')
+
     this.$tabList = $tabList
     this.$tabListItems = $tabListItems
 

@@ -25,7 +25,7 @@
     {% endif %}
   </head>
   <body class="govuk-template__body {%- if bodyClasses %} {{ bodyClasses }}{% endif %}" {%- for attribute, value in bodyAttributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-    <script {%- if cspNonce %} nonce="{{ cspNonce }}"{% endif %}>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+    <script {%- if cspNonce %} nonce="{{ cspNonce }}"{% endif %}>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported govuk-frontend-loading' : ''); addEventListener('DOMContentLoaded', function () { document.body.classList.remove('govuk-frontend-loading') });</script>
     {% block bodyStart %}{% endblock %}
 
     {% block skipLink %}
