@@ -32,6 +32,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#4157: Dynamically position text within input prefixes and suffixes](https://github.com/alphagov/govuk-frontend/pull/4157)
 - [#4150: Header menu button position refactor](https://github.com/alphagov/govuk-frontend/pull/4150)
+- [#4093: Refactor positioning of radios and checkboxes](https://github.com/alphagov/govuk-frontend/pull/4093)
 
 ## 5.0.0 (Breaking release)
 
