@@ -93,7 +93,7 @@
   </div>
 {% endset -%}
 
-<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}">
+<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}" {%- for attribute, value in params.formGroup.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
 {% if params.fieldset %}
   {% call govukFieldset({
     describedBy: describedBy,
