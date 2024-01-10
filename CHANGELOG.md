@@ -6,6 +6,22 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ### New features
 
+#### Add attributes to component form group wrappers
+
+You can now add attributes to the form group wrapper for all components with form fields.
+
+```njk
+govukRadios({
+  formGroup: {
+    attributes: {
+      "data-attribute": "value"
+    }
+  }
+})
+```
+
+This change was introduced in [pull request #4565: Allow `attributes` option on form groups](https://github.com/alphagov/govuk-frontend/pull/4565).
+
 #### Use tabular numbers with the `govuk-font-tabular-numbers` mixin
 
 You can now use tabular numbers in your authored Sass by including the new `govuk-font-tabular-numbers` mixin.
