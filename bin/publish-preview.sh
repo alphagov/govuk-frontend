@@ -25,6 +25,13 @@ git checkout -b $BRANCH_NAME
 # Build the package as normal
 npm run build:package
 
+# npm will try to install dev, optional and peer dependencies
+# when installing from a Git repository, which will error
+# when looking for our `@govuk-frontend/xyz@*` packages
+# pointing to the npm workspaces in our source
+echo "✍️ Remove dev dependencies"
+npm pkg delete devDependencies --workspace govuk-frontend
+
 echo "✍️ Update package version"
 npm version $VERSION --allow-same-version --no-git-tag-version --workspace govuk-frontend
 git add packages/govuk-frontend/package.json
