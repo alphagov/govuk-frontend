@@ -1,0 +1,366 @@
+@include govuk-exports("govuk/component/accordion") {
+  $govuk-accordion-base-colour: govuk-colour("black");
+  $govuk-accordion-hover-colour: govuk-colour("light-grey");
+  $govuk-accordion-icon-focus-colour: $govuk-focus-colour;
+  $govuk-accordion-bottom-border-width: 1px;
+
+  .govuk-accordion {
+    @include govuk-responsive-margin(6, "bottom");
+  }
+
+  .govuk-accordion__section {
+    padding-top: govuk-spacing(3);
+  }
+
+  .govuk-accordion__section-heading {
+    // Override browser defaults to ensure consistent element height
+    margin-top: 0;
+    margin-bottom: 0;
+
+    padding-top: govuk-spacing(3);
+    padding-bottom: govuk-spacing(3);
+  }
+
+  .govuk-accordion__section-button {
+    @include govuk-font($size: 24, $weight: bold);
+    @include govuk-text-colour;
+
+    display: block;
+    margin-bottom: 0;
+    padding-top: govuk-spacing(3);
+  }
+
+  // Remove the bottom margin from the last item inside the content
+  .govuk-accordion__section-content > :last-child {
+    margin-bottom: 0;
+  }
+
+  // GOV.UK Frontend JavaScript enabled
+  .govuk-frontend-supported {
+    .govuk-accordion {
+      // Border at the bottom of the whole accordion
+      border-bottom: $govuk-accordion-bottom-border-width solid $govuk-border-colour;
+    }
+
+    .govuk-accordion__section {
+      padding-top: 0;
+    }
+
+    // Hide the body of collapsed sections by default for browsers that lack
+    // support for `content-visibility` paired with [hidden=until-found]
+    .govuk-accordion__section-content {
+      display: none;
+
+      @include govuk-responsive-padding(3, "top");
+      @include govuk-responsive-padding(8, "bottom");
+    }
+
+    // Hide the body of collapsed sections using `content-visibility` to enable
+    // page search within [hidden=until-found] regions where browser supported
+    .govuk-accordion__section-content[hidden] {
+      @supports (content-visibility: hidden) {
+        content-visibility: hidden;
+        display: inherit;
+      }
+
+      // Hide the padding of collapsed sections
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    // Show the body of expanded sections
+    .govuk-accordion__section--expanded .govuk-accordion__section-content {
+      display: block;
+    }
+
+    .govuk-accordion__show-all {
+      @include govuk-font($size: 19);
+      position: relative;
+      z-index: 1;
+
+      margin-bottom: 9px;
+      padding: govuk-spacing(1) 2px govuk-spacing(1) 0;
+
+      border-width: 0;
+
+      color: $govuk-link-colour;
+      background: none;
+
+      cursor: pointer;
+      -webkit-appearance: none;
+
+      @include govuk-media-query($from: tablet) {
+        margin-bottom: 14px;
+      }
+
+      // Remove default button focus outline in Firefox
+      &::-moz-focus-inner {
+        padding: 0;
+        border: 0;
+      }
+
+      &:hover {
+        color: $govuk-accordion-base-colour;
+        background: $govuk-accordion-hover-colour;
+        // The GOV.UK Design System focus state adds a box-shadow to the top and bottom of the
+        // button. We add a grey box-shadow on hover too, to make the height of the hover state
+        // match the height of the focus state.
+        box-shadow:
+          0 -2px $govuk-accordion-hover-colour,
+          0 4px $govuk-accordion-hover-colour;
+
+        .govuk-accordion__section-toggle-text {
+          color: $govuk-accordion-base-colour;
+        }
+
+        .govuk-accordion-nav__chevron {
+          color: $govuk-accordion-base-colour;
+          background: $govuk-accordion-base-colour;
+        }
+
+        .govuk-accordion-nav__chevron::after {
+          color: $govuk-accordion-hover-colour;
+        }
+      }
+
+      &:focus {
+        @include govuk-focused-text;
+
+        .govuk-accordion-nav__chevron {
+          background: $govuk-accordion-base-colour;
+        }
+
+        .govuk-accordion-nav__chevron::after {
+          color: $govuk-accordion-icon-focus-colour;
+        }
+      }
+    }
+
+    .govuk-accordion__section-heading {
+      padding: 0;
+    }
+
+    // Create Chevron icon aligned with text
+    .govuk-accordion-nav__chevron {
+      box-sizing: border-box;
+      display: inline-block;
+
+      position: relative;
+
+      // Set size using rems to make the icon scale with text if user resizes text in their browser
+      width: govuk-px-to-rem(20px);
+      height: govuk-px-to-rem(20px);
+
+      border: govuk-px-to-rem(1px) solid;
+      border-radius: 50%;
+
+      vertical-align: middle;
+
+      // Create inner chevron arrow
+      &::after {
+        content: "";
+        box-sizing: border-box;
+        display: block;
+
+        position: absolute;
+        bottom: govuk-px-to-rem(5px);
+        left: govuk-px-to-rem(6px);
+
+        width: govuk-px-to-rem(6px);
+        height: govuk-px-to-rem(6px);
+
+        transform: rotate(-45deg);
+
+        border-top: govuk-px-to-rem(2px) solid;
+        border-right: govuk-px-to-rem(2px) solid;
+      }
+    }
+
+    // Rotate icon to create "Down" version
+    .govuk-accordion-nav__chevron--down {
+      transform: rotate(180deg);
+    }
+
+    .govuk-accordion__section-button {
+      width: 100%;
+
+      padding: govuk-spacing(2) 0 0 0;
+
+      border: 0;
+
+      border-top: $govuk-accordion-bottom-border-width solid $govuk-border-colour;
+
+      // Visually separate the section from the one underneath when user changes colours in their
+      // browser. See https://github.com/alphagov/govuk-frontend/issues/2321#issuecomment-924201488
+      border-bottom: govuk-spacing(2) solid transparent;
+
+      color: $govuk-text-colour;
+      background: none;
+
+      text-align: left;
+      // Section headers have a pointer cursor as an additional affordance
+      cursor: pointer;
+      -webkit-appearance: none;
+
+      @include govuk-media-query($from: tablet) {
+        padding-bottom: govuk-spacing(2);
+      }
+
+      &:active {
+        color: $govuk-link-active-colour;
+        background: none;
+      }
+
+      &:hover {
+        color: $govuk-accordion-base-colour;
+        background: $govuk-accordion-hover-colour;
+
+        .govuk-accordion__section-toggle-text {
+          color: $govuk-accordion-base-colour;
+        }
+
+        .govuk-accordion-nav__chevron {
+          color: $govuk-accordion-base-colour;
+          background: $govuk-accordion-base-colour;
+        }
+
+        .govuk-accordion-nav__chevron::after {
+          color: $govuk-accordion-hover-colour;
+        }
+      }
+
+      &:focus {
+        // Remove default focus border around button as
+        // styling is being applied to inner text elements that receive focus
+        outline: 0;
+
+        .govuk-accordion__section-heading-text-focus,
+        .govuk-accordion__section-summary-focus,
+        .govuk-accordion__section-toggle-focus {
+          @include govuk-focused-text;
+        }
+
+        .govuk-accordion-nav__chevron {
+          color: $govuk-accordion-base-colour;
+          background: $govuk-accordion-base-colour;
+        }
+
+        .govuk-accordion-nav__chevron::after {
+          color: $govuk-accordion-icon-focus-colour;
+        }
+      }
+
+      // Remove default button focus outline in Firefox
+      &::-moz-focus-inner {
+        padding: 0;
+        border: 0;
+      }
+    }
+
+    // Remove the transparent border when the section is expanded to make it clear that the heading
+    // relates to the content below. Adjust padding to maintain the height of the element.
+    // See https://github.com/alphagov/govuk-frontend/pull/2257#issuecomment-951920798
+    .govuk-accordion__section--expanded .govuk-accordion__section-button {
+      padding-bottom: govuk-spacing(3);
+      border-bottom: 0;
+
+      @include govuk-media-query($from: tablet) {
+        padding-bottom: govuk-spacing(4);
+      }
+    }
+
+    // As Chevron icon is vertically aligned it overlaps with the focus state bottom border
+    // Styling adds some spacing
+    .govuk-accordion__section-button:focus .govuk-accordion__section-toggle-focus {
+      padding-bottom: 3px;
+
+      @include govuk-media-query($from: desktop) {
+        padding-bottom: 2px;
+      }
+    }
+
+    .govuk-accordion__section-toggle,
+    .govuk-accordion__section-heading-text,
+    .govuk-accordion__section-summary {
+      display: block;
+      margin-bottom: 13px;
+
+      .govuk-accordion__section-heading-text-focus,
+      .govuk-accordion__section-summary-focus,
+      .govuk-accordion__section-toggle-focus {
+        display: inline;
+      }
+    }
+
+    // Add toggle link with Chevron icon on left.
+    .govuk-accordion__section-toggle {
+      @include govuk-font-size($size: 19);
+      @include govuk-typography-weight-regular;
+      color: $govuk-link-colour;
+    }
+
+    // Add space between the icon and text.
+    // Avoid applying spacing directly to the icon as the use of `transform` will change the
+    // placement of any margins.
+    .govuk-accordion__show-all-text,
+    .govuk-accordion__section-toggle-text {
+      margin-left: govuk-spacing(1);
+      vertical-align: middle;
+    }
+
+    // Background colour adjustment when user changes colours in Firefox
+    //
+    // When user changes colours in Firefox, text colour inside <button> is always black
+    // (regardless of the custom colours the user has set). This is fine when the text in the
+    // button is not nested inside another element because when user changes colours in Firefox,
+    // the immediate background colour of buttons is always white (again, regardless of user's
+    // custom colours).
+    //
+    // However, when the text inside <button> is wrapped inside another element AND that element
+    // sets a background colour, the text colour is still black but the background of that nested
+    // element gets the user's custom background colour. When the custom background is a lighter
+    // hue, the contrast might be sufficient. But if the user's custom background colour is a
+    // darker colour, the contrast with the text might not be sufficient.
+    //
+    // To ensure sufficient contrast, override the background colour set by the focus state on the
+    // nested elements to be transparent.
+    //
+    // Also override the background colour of the Show/Hide chevrons which set a background colour
+    // on hover.
+    @media screen and (forced-colors: active) {
+      .govuk-accordion__show-all:hover,
+      .govuk-accordion__section-button:hover {
+        .govuk-accordion-nav__chevron {
+          background-color: transparent;
+        }
+      }
+
+      .govuk-accordion__show-all:focus,
+      .govuk-accordion__section-button:focus {
+        .govuk-accordion__section-heading-text-focus,
+        .govuk-accordion__section-summary-focus,
+        .govuk-accordion__section-toggle-focus,
+        .govuk-accordion-nav__chevron {
+          background: transparent;
+          background-color: transparent;
+        }
+      }
+    }
+
+    // For devices that can't hover such as touch devices,
+    // remove hover state as it can be stuck in that state (iOS).
+    @media (hover: none) {
+      .govuk-accordion__section-header:hover {
+        border-top-color: $govuk-border-colour;
+
+        box-shadow: inset 0 3px 0 0 $govuk-link-colour;
+
+        .govuk-accordion__section-button {
+          border-top-color: $govuk-border-colour;
+        }
+      }
+    }
+  }
+}
+
+/*# sourceMappingURL=_index.scss.map */
