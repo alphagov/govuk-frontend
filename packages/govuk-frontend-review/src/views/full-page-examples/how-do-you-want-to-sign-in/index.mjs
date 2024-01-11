@@ -1,5 +1,5 @@
 import express from 'express'
-import { body, validationResult } from 'express-validator'
+import { body, matchedData, validationResult } from 'express-validator'
 
 import { formatValidationErrors } from '../../../utils.mjs'
 
@@ -8,7 +8,7 @@ const router = express.Router()
 router.post(
   '/how-do-you-want-to-sign-in',
 
-  body('sign-in').not().isEmpty().withMessage('Select how you want to sign in'),
+  body('sign-in').notEmpty().withMessage('Select how you want to sign in'),
 
   (req, res) => {
     const viewPath = './full-page-examples/how-do-you-want-to-sign-in'
@@ -21,7 +21,7 @@ router.post(
     res.render(`${viewPath}/index`, {
       errors,
       errorSummary: Object.values(errors),
-      values: req.body // In production this should sanitized.
+      values: matchedData(req, { onlyValidData: false }) // In production this should sanitized.
     })
   }
 )

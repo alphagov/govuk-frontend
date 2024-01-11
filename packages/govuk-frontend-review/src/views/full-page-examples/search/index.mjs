@@ -3,7 +3,10 @@ import { join } from 'path'
 
 import { paths } from '@govuk-frontend/config'
 import express from 'express'
+import { matchedData, query, validationResult } from 'express-validator'
 import shuffleSeed from 'shuffle-seed'
+
+import { formatValidationErrors } from '../../../utils.mjs'
 
 const { documents } = JSON.parse(
   readFileSync(
@@ -14,33 +17,38 @@ const { documents } = JSON.parse(
 
 const router = express.Router()
 
-router.get('/search', (req, res) => {
-  const { query } = req
+router.get(
+  '/search',
 
-  query.search ??= 'driving'
-  query.order ??= 'most-viewed'
+  query('search').default('driving'),
+  query('order').default('most-viewed'),
+  query('organisation').toArray(),
 
-  // Shuffle the documents based on the query string, to simulate different responses.
-  const seed = JSON.stringify(query)
-  const shuffledDocuments = shuffleSeed.shuffle(documents, seed)
+  (req, res) => {
+    const errors = formatValidationErrors(validationResult(req))
 
-  const total = '128124'
+    // Shuffle the documents based on the query string, to simulate different responses.
+    const seed = JSON.stringify(req.query)
+    const shuffledDocuments = shuffleSeed.shuffle(documents, seed)
 
-  // Shuffle the total based on the query string
-  const randomizedTotal = shuffleSeed.shuffle(total.split(''), seed).join('')
+    const total = '128124'
 
-  res.render('./full-page-examples/search/index', {
-    documents: shuffledDocuments,
-    order: query.order,
+    // Shuffle the total based on the query string
+    const randomizedTotal = shuffleSeed.shuffle(total.split(''), seed).join('')
 
-    // Make the total more readable
-    total: Number(randomizedTotal).toLocaleString('en', {
-      useGrouping: true
-    }),
+    res.render('./full-page-examples/search/index', {
+      documents: shuffledDocuments,
 
-    // In production this should be sanitized
-    values: query
-  })
-})
+      // Make the total more readable
+      total: Number(randomizedTotal).toLocaleString('en', {
+        useGrouping: true
+      }),
+
+      errors,
+      errorSummary: Object.values(errors),
+      values: matchedData(req, { onlyValidData: false }) // In production this should sanitized.
+    })
+  }
+)
 
 export default router

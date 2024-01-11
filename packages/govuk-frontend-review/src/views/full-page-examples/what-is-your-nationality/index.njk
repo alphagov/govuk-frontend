@@ -26,7 +26,7 @@ scenario: |
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% set pageTitle = example.title %}
-{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
+{% block pageTitle %}{{ "Error: " if errorSummary | length }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -40,12 +40,12 @@ scenario: |
     <div class="govuk-grid-column-two-thirds">
 
       <form method="post" novalidate>
-          {% if errorSummary.length > 0 %}
-              {{ govukErrorSummary({
-                  titleText: "There is a problem",
-                  errorList: errorSummary
-              }) }}
-          {% endif %}
+        {% if errorSummary | length %}
+          {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: errorSummary
+          }) }}
+        {% endif %}
 
         {% set otherCountryHtml %}
 
@@ -57,8 +57,9 @@ scenario: |
             label: {
               text: "Country name"
             },
+            value: values["country-name"],
             errorMessage: errors["country-name"]
-            }) }}
+          }) }}
 
         {% endset %}
 
@@ -79,7 +80,6 @@ scenario: |
             {
               value: "british-nationality",
               text: "British",
-              checked: values["confirm-nationality"]|length and "british-nationality" in values["confirm-nationality"],
               hint: {
                 text: "including English, Scottish, Welsh and Northern Irish"
               }
@@ -87,20 +87,21 @@ scenario: |
             {
               value: "irish-nationality",
               text: "Irish",
-              checked: values["confirm-nationality"]|length and "irish-nationality" in values["confirm-nationality"],
               hint: {
                 text: "including from Northern Ireland"
               }
             },
             {
-              value: "other-country-nationality",
+              name: "other-nationality",
+              value: "yes",
               text: "Citizen of a different country",
-              checked: values["confirm-nationality"]|length and "other-country-nationality" in values["confirm-nationality"],
               conditional: {
                 html: otherCountryHtml
-              }
+              },
+              checked: values["other-nationality"] === "yes"
             }
           ],
+          values: values["confirm-nationality"],
           errorMessage: errors["confirm-nationality"]
         }) }}
 
@@ -117,17 +118,19 @@ scenario: |
             label: {
               text: "Can you provide more detail on why you cannot confirm your nationality?"
             },
-            value: values["details-cannot-provide-nationality"]
+            value: values["details-cannot-provide-nationality"],
+            errorMessage: errors["details-cannot-provide-nationality"]
           }) }}
 
         {% endset %}
 
         {{ govukDetails({
           summaryText: "Help with nationality",
-          html: helpWithNationalityHtml
+          html: helpWithNationalityHtml,
+          open: values["details-cannot-provide-nationality"] | length
         }) }}
 
-      {{ govukButton({
+        {{ govukButton({
           text: "Continue"
         }) }}
       </form>

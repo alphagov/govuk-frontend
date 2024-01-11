@@ -62,6 +62,22 @@ If you aren't using the Nunjucks macro, locate the SVG code for the existing log
 </svg>
 ```
 
+#### Add attributes to component form group wrappers
+
+You can now add attributes to the form group wrapper for all components with form fields.
+
+```njk
+govukRadios({
+  formGroup: {
+    attributes: {
+      "data-attribute": "value"
+    }
+  }
+})
+```
+
+This change was introduced in [pull request #4565: Allow `attributes` option on form groups](https://github.com/alphagov/govuk-frontend/pull/4565).
+
 #### Use tabular numbers with the `govuk-font-tabular-numbers` mixin
 
 You can now use tabular numbers in your authored Sass by including the new `govuk-font-tabular-numbers` mixin.
@@ -88,6 +104,8 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#4157: Dynamically position text within input prefixes and suffixes](https://github.com/alphagov/govuk-frontend/pull/4157)
 - [#4150: Header menu button position refactor](https://github.com/alphagov/govuk-frontend/pull/4150)
+- [#4093: Refactor positioning of radios and checkboxes](https://github.com/alphagov/govuk-frontend/pull/4093)
+- [#4562: Use CSS custom properties for component `matchMedia()`](https://github.com/alphagov/govuk-frontend/pull/4562)
 
 ## 5.0.0 (Breaking release)
 

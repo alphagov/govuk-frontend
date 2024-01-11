@@ -57,7 +57,8 @@ notes: |
     id: "search",
     name: "search",
     classes: "govuk-!-width-two-thirds",
-    value: values.search
+    error: errors["search"],
+    value: values["search"]
   }) }}
 
   <div class="govuk-grid-row">
@@ -92,6 +93,7 @@ notes: |
               text: "Ministry of Defence"
             }
           ],
+          error: errors["organisation"],
           values: values["organisation"]
         }) }}
 
@@ -110,7 +112,6 @@ notes: |
         {{ govukSelect({
           id: "order",
           name: "order",
-          value: values.order,
           classes: "app-search-result-sort",
           label: {
             text: "Sort by"
@@ -132,7 +133,9 @@ notes: |
               value: "updated-oldest",
               text: "Updated (oldest)"
             }
-          ]
+          ],
+          error: errors["order"],
+          value: values["order"]
         }) }}
       </div>
       <ul class="govuk-list app-document-list">

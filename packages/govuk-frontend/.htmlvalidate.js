@@ -1,11 +1,11 @@
+const { defineConfig } = require('html-validate')
+
 /**
  * HTML validation config
  *
  * {@link https://html-validate.org/rules/}
- *
- * @satisfies {import('html-validate').ConfigData}
  */
-module.exports = {
+module.exports = defineConfig({
   extends: ['html-validate:recommended'],
   rules: {
     // Allow for multiple buttons in the same form to have the same name
@@ -71,4 +71,4 @@ module.exports = {
       }
     }
   ]
-}
+})

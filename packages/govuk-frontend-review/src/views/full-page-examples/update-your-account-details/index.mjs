@@ -1,5 +1,5 @@
 import express from 'express'
-import { body, validationResult } from 'express-validator'
+import { body, matchedData, validationResult } from 'express-validator'
 
 import { formatValidationErrors } from '../../../utils.mjs'
 
@@ -9,16 +9,14 @@ router.post(
   '/update-your-account-details',
 
   body('email')
-    .exists()
+    .notEmpty()
+    .withMessage('Enter your email address')
     .isEmail()
     .withMessage(
       'Enter an email address in the correct format, like name@example.com'
-    )
-    .not()
-    .isEmpty()
-    .withMessage('Enter your email address'),
+    ),
 
-  body('password').exists().not().isEmpty().withMessage('Enter your password'),
+  body('password').notEmpty().withMessage('Enter your password'),
 
   (req, res) => {
     const viewPath = './full-page-examples/update-your-account-details'
@@ -31,7 +29,7 @@ router.post(
     res.render(`${viewPath}/index`, {
       errors,
       errorSummary: Object.values(errors),
-      values: req.body // In production this should sanitized.
+      values: matchedData(req, { onlyValidData: false }) // In production this should sanitized.
     })
   }
 )

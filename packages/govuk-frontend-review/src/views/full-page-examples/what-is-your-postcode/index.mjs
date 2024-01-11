@@ -1,5 +1,5 @@
 import express from 'express'
-import { body, validationResult } from 'express-validator'
+import { body, matchedData, validationResult } from 'express-validator'
 
 import { formatValidationErrors } from '../../../utils.mjs'
 
@@ -8,11 +8,7 @@ const router = express.Router()
 router.post(
   '/what-is-your-postcode',
 
-  body('address-postcode')
-    .exists()
-    .not()
-    .isEmpty()
-    .withMessage('Enter your home postcode'),
+  body('address-postcode').notEmpty().withMessage('Enter your home postcode'),
 
   (req, res) => {
     const viewPath = './full-page-examples/what-is-your-postcode'
@@ -25,7 +21,7 @@ router.post(
     res.render(`${viewPath}/index`, {
       errors,
       errorSummary: Object.values(errors),
-      values: req.body // In production this should sanitized.
+      values: matchedData(req, { onlyValidData: false }) // In production this should sanitized.
     })
   }
 )
