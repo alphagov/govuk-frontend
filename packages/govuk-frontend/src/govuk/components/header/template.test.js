@@ -258,6 +258,10 @@ describe('header', () => {
       $svg = $('.govuk-header__logotype')
     })
 
+    it("defaults to St Edward's crown", () => {
+      expect($svg.attr('viewBox')).toEqual('0 0 152 30')
+    })
+
     it('sets focusable="false" so that IE does not treat it as an interactive element', () => {
       expect($svg.attr('focusable')).toEqual('false')
     })
@@ -266,8 +270,19 @@ describe('header', () => {
       expect($svg.attr('role')).toEqual('img')
     })
 
+    it('sets aria-label so that assistive technologies have an accessible name to fall back to', () => {
+      expect($svg.attr('aria-label')).toEqual('GOV.UK')
+    })
+
     it('has an embedded <title> element to serve as alternative text', () => {
       expect($svg.html()).toContain('<title>GOV.UK</title>')
+    })
+
+    it('uses the Tudor Crown if useTudorCrown is set', () => {
+      $ = render('header', examples['with Tudor crown'])
+      $svg = $('.govuk-header__logotype')
+
+      expect($svg.attr('viewBox')).toEqual('0 0 148 30')
     })
   })
 })
