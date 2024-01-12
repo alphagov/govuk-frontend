@@ -51,7 +51,7 @@
             </div>
           {% endif %}
         </div>
-        <div id="{{ id }}-content-{{ loop.index }}" class="govuk-accordion__section-content" aria-labelledby="{{ id }}-heading-{{ loop.index }}">
+        <div id="{{ id }}-content-{{ loop.index }}" class="govuk-accordion__section-content">
           {% if item.content.html %}
             {{ item.content.html | safe }}
           {% elif item.content.text %}
