@@ -15,9 +15,6 @@ import { I18n } from '../../i18n.mjs'
  * @preserve
  */
 export class PasswordInput extends GOVUKFrontendComponent {
-  /** @private */
-  $module
-
   /**
    * @private
    * @type {PasswordInputConfig}
@@ -26,7 +23,7 @@ export class PasswordInput extends GOVUKFrontendComponent {
 
   /**
    * @private
-   * @type {HTMLElement | null}
+   * @type {HTMLButtonElement | null}
    */
   $showHideButton = null
 
@@ -81,29 +78,24 @@ export class PasswordInput extends GOVUKFrontendComponent {
     })
 
     // Create and append the button element
-    const $showHideButton = document.createElement('button')
-    $showHideButton.className =
+    this.$showHideButton = document.createElement('button')
+    this.$showHideButton.className =
       'govuk-button govuk-button--secondary govuk-password-input__toggle'
-    $showHideButton.setAttribute(
-      'aria-controls',
-      this.$input.getAttribute('id')
-    )
-    $showHideButton.setAttribute('type', 'button')
-    $showHideButton.setAttribute(
+    this.$showHideButton.setAttribute('aria-controls', this.$input.id)
+    this.$showHideButton.setAttribute('type', 'button')
+    this.$showHideButton.setAttribute(
       'aria-label',
       this.i18n.t('showPasswordAriaLabel')
     )
-    $showHideButton.innerHTML = this.i18n.t('showPassword')
-    this.$showHideButton = $showHideButton
-    this.$wrapper.insertBefore($showHideButton, this.$input.nextSibling)
+    this.$showHideButton.innerHTML = this.i18n.t('showPassword')
+    this.$wrapper.insertBefore(this.$showHideButton, this.$input.nextSibling)
 
     // Create and append the status text for screen readers
-    const $statusText = document.createElement('span')
-    $statusText.className = 'govuk-visually-hidden'
-    $statusText.innerText = this.i18n.t('passwordHiddenAnnouncement')
-    $statusText.setAttribute('aria-live', 'polite')
-    this.$statusText = $statusText
-    this.$wrapper.insertBefore($statusText, this.$input.nextSibling)
+    this.$statusText = document.createElement('span')
+    this.$statusText.className = 'govuk-visually-hidden'
+    this.$statusText.innerText = this.i18n.t('passwordHiddenAnnouncement')
+    this.$statusText.setAttribute('aria-live', 'polite')
+    this.$wrapper.insertBefore(this.$statusText, this.$input.nextSibling)
 
     // Bind toggle button
     this.$showHideButton.addEventListener(
@@ -124,6 +116,11 @@ export class PasswordInput extends GOVUKFrontendComponent {
    */
   togglePassword(event) {
     event.preventDefault()
+
+    if (!this.$showHideButton || !this.$statusText) {
+      return
+    }
+
     this.$input.setAttribute(
       'type',
       this.$input.type === 'password' ? 'text' : 'password'
@@ -148,6 +145,10 @@ export class PasswordInput extends GOVUKFrontendComponent {
    * user agents potentially saving or caching the plain text password.
    */
   revertToPasswordOnFormSubmit() {
+    if (!this.$showHideButton || !this.$statusText) {
+      return
+    }
+
     this.$showHideButton.setAttribute(
       'aria-label',
       this.i18n.t('showPasswordAriaLabel')
