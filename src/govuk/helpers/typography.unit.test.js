@@ -37,6 +37,20 @@ const sassBootstrap = `
         font-size: 14px,
         line-height: 20px
       )
+    ),
+    16: (
+      null: (
+        font-size: 14px,
+        line-height: 15px
+      ),
+      desktop: (
+        font-size: 16px,
+        line-height: 20px
+      ),
+      deprecation: (
+        key: "test-key",
+        message: "This point on the scale is deprecated."
+      )
     )
   );
 
@@ -273,7 +287,27 @@ describe('@mixin govuk-font-size', () => {
     `
 
     await expect(compileSassString(sass, sassConfig)).rejects.toThrow(
-      'Unknown font size `3.1415926536` - expected a point from the typography scale.'
+      'Unknown font size `3.1415926536` - expected a point from the type scale.'
+    )
+  })
+
+  it('throws a deprecation warning if a point on the scale is deprecated', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        @include govuk-font-size($size: 16)
+      }
+    `
+
+    await compileSassString(sass, sassConfig)
+
+    // Expect our mocked @warn function to have been called once with a single
+    // argument, which should be the deprecation notice
+    expect(mockWarnFunction.mock.calls[0]).toEqual(
+      expect.arrayContaining([
+        'This point on the scale is deprecated. To silence this warning, update $govuk-suppressed-warnings with key: "test-key"'
+      ])
     )
   })
 
