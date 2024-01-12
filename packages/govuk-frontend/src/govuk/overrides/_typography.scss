@@ -5,9 +5,20 @@
   // typography scale eg .govuk-\!-font-size-80
   //
   // govuk-!-font-size-14 is deprecated
-  @each $size in map-keys($govuk-typography-scale) {
-    .govuk-\!-font-size-#{$size} {
-      @include govuk-font-size($size, $important: true);
+  @each $size, $font-map in $govuk-typography-scale {
+    // Suppress class if the map key is a string with an underscore eg: _14 to
+    // avoid classes like govuk-!-font-size-_14 getting generated
+    @if type-of($size) == "number" or str-slice(#{$size}, 1, 1) != "_" {
+      .govuk-\!-font-size-#{$size} {
+        $font-map: map-get($govuk-typography-scale, $size);
+
+        // Add underscore to deprecated typography scale keys
+        @if map-has-key($font-map, "deprecation") {
+          $size: _#{$size};
+        }
+
+        @include govuk-font-size($size, $important: true);
+      }
     }
   }
 
