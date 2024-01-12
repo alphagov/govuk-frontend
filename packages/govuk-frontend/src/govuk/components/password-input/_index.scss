@@ -7,20 +7,34 @@
 @include govuk-exports("govuk/component/password-input") {
   .govuk-password-input {
     display: flex;
-    width: 100%;
     flex-direction: column;
 
     @include govuk-media-query($from: mobile) {
       flex-direction: row;
+
+      // The default of `stretch` makes the toggle button appear taller than the input, due to using
+      // box-shadow, which we don't particularly want in this situation
+      align-items: flex-start;
     }
   }
 
   .govuk-password-input__toggle {
+    // Add margin to the top so that the button doesn't obscure the input's focus style
+    margin-top: govuk-spacing(1);
+
+    // Remove default margin-bottom from button
     margin-bottom: 0;
 
-    // Buttons are normally 100% width on this breakpoint, but we don't want that in this case
     @include govuk-media-query($from: mobile) {
+      // Buttons are normally 100% width on this breakpoint, but we don't want that in this case
       width: auto;
+      flex-grow: 1;
+      flex-shrink: 0;
+      flex-basis: 5em;
+
+      // Move the spacing from top to the left
+      margin-top: 0;
+      margin-left: govuk-spacing(1);
     }
   }
 }
