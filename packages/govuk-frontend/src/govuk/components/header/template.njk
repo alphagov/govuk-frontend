@@ -51,7 +51,7 @@
         {% endif %}
       </a>
     </div>
-    {% if params.serviceName or params.navigation  %}
+    {% if params.serviceName or params.navigation | length %}
     <div class="govuk-header__content">
     {% if params.serviceName %}
     {% if params.serviceUrl %}
@@ -64,7 +64,7 @@
       </span>
     {% endif %}
     {% endif %}
-    {% if params.navigation %}
+    {% if params.navigation | length %}
     <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-header__navigation {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
       <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden>{{ menuButtonText }}</button>
 
