@@ -9,6 +9,16 @@
     border-collapse: collapse;
   }
 
+  // Modifier for tables with a lot of data. Tables with lots of data benefit
+  // from a smaller font size on small screens.
+  .govuk-table--small-text-until-tablet {
+    @include govuk-font-size($size: 16);
+
+    @include govuk-media-query($from: tablet) {
+      @include govuk-font-size($size: 19);
+    }
+  }
+
   .govuk-table__header {
     @include govuk-typography-weight-bold;
   }
