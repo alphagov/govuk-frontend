@@ -156,7 +156,25 @@ examples:
             format: numeric
           - text: £125
             format: numeric
-
+  - name: with small text modifier for tables with a lot of data
+    options:
+      classes: govuk-table--small-text-until-tablet
+      rows:
+        - - text: January
+          - text: £85
+            format: numeric
+          - text: £95
+            format: numeric
+        - - text: February
+          - text: £75
+            format: numeric
+          - text: £55
+            format: numeric
+        - - text: March
+          - text: £165
+            format: numeric
+          - text: £125
+            format: numeric
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes
     hidden: true
