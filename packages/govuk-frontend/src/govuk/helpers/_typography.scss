@@ -157,10 +157,19 @@
 
 @mixin govuk-font-size($size, $line-height: false, $important: false) {
   @if not map-has-key($govuk-typography-scale, $size) {
-    @error "Unknown font size `#{$size}` - expected a point from the typography scale.";
+    @error "Unknown font size `#{$size}` - expected a point from the type scale.";
   }
 
   $font-map: map-get($govuk-typography-scale, $size);
+
+  // Check for a deprecation within the type scale
+  $deprecation: map-get($font-map, "deprecation");
+
+  @if $deprecation {
+    @include _warning(map-get($deprecation, "key"), map-get($deprecation, "message"));
+    // remove the deprecation map keys so they do not break the breakpoint loop
+    $font-map: map-remove($font-map, "deprecation");
+  }
 
   @each $breakpoint, $breakpoint-map in $font-map {
     $font-size: map-get($breakpoint-map, "font-size");
