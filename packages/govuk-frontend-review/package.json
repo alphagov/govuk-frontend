@@ -60,7 +60,7 @@
     "puppeteer": "^21.7.0",
     "rollup": "^4.9.4",
     "sassdoc": "^2.7.4",
-    "supertest": "^6.3.3",
+    "supertest": "^6.3.4",
     "typedoc": "^0.25.7"
   },
   "optionalDependencies": {
