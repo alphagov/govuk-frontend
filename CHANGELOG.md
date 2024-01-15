@@ -265,7 +265,7 @@ If your service has JavaScript you want to run successfully in Internet Explorer
 
 These changes were introduced in [pull request #3720: Remove IE11 vendor polyfills](https://github.com/alphagov/govuk-frontend/pull/3720)
 
-#### Update the <script> snippet at the top of your `<body>` tag
+#### Update the `<script>` snippet at the top of your `<body>` tag
 
 Page templates now include a new `govuk-frontend-supported` class on the `<body>` tag when GOV.UK Frontend JavaScript components are fully supported.
 
