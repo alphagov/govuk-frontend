@@ -98,6 +98,16 @@ This is an experimental change, based on our hypothesis that `govuk-font-size` a
 
 This change was introduced in [pull request #4291: Rename `govuk-typography-responsive` to `govuk-font-size`](https://github.com/alphagov/govuk-frontend/pull/4291)
 
+### Deprecated features
+
+#### Stop using the `element` parameter on buttons
+
+We have deprecated the `element` Nunjucks parameter and will remove it in the next major release.
+
+In the future, the component will automatically use the use the `<a>` element if the `href` parameter is set, or the `<button>` element otherwise, without the ability to override it.
+
+This change was introduced in [pull request #4646: Deprecate `element` parameter on button component](https://github.com/alphagov/govuk-frontend/pull/4646)
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
