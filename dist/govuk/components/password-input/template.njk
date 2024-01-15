@@ -1,0 +1,68 @@
+{% from "../../macros/i18n.njk" import govukI18nAttributes %}
+
+{% from "../error-message/macro.njk" import govukErrorMessage -%}
+{% from "../hint/macro.njk" import govukHint %}
+{% from "../label/macro.njk" import govukLabel %}
+
+{#- a record of other elements that we need to associate with the input using
+  aria-describedby – for example hints or error messages -#}
+{% set describedBy = params.describedBy if params.describedBy else "" %}
+
+<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}">
+  {{ govukLabel({
+    html: params.label.html,
+    text: params.label.text,
+    classes: params.label.classes,
+    isPageHeading: params.label.isPageHeading,
+    attributes: params.label.attributes,
+    for: params.id
+  }) | indent(2) | trim }}
+{% if params.hint %}
+  {% set hintId = params.id + '-hint' %}
+  {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
+  {{ govukHint({
+    id: hintId,
+    classes: params.hint.classes,
+    attributes: params.hint.attributes,
+    html: params.hint.html,
+    text: params.hint.text
+  }) | indent(2) | trim }}
+{% endif %}
+{% if params.errorMessage %}
+  {% set errorId = params.id + '-error' %}
+  {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
+  {{ govukErrorMessage({
+    id: errorId,
+    classes: params.errorMessage.classes,
+    attributes: params.errorMessage.attributes,
+    html: params.errorMessage.html,
+    text: params.errorMessage.text,
+    visuallyHiddenText: params.errorMessage.visuallyHiddenText
+  }) | indent(2) | trim }}
+{% endif %}
+
+  <div class="govuk-password-input" data-module="govuk-password-input"
+    {%- if params.disableFormSubmitCheck %} data-disable-form-submit-check="true"{% endif %}
+    {{- govukI18nAttributes({ key: 'show-password', message: params.showPasswordText }) -}}
+    {{- govukI18nAttributes({ key: 'hide-password', message: params.hidePasswordText }) -}}
+    {{- govukI18nAttributes({ key: 'show-password-aria-label', message: params.showPasswordAriaLabelText }) -}}
+    {{- govukI18nAttributes({ key: 'hide-password-aria-label', message: params.hidePasswordAriaLabelText }) -}}
+    {{- govukI18nAttributes({ key: 'password-shown-announcement', message: params.passwordShownAnnouncementText }) -}}
+    {{- govukI18nAttributes({ key: 'password-hidden-announcement', message: params.passwordHiddenAnnouncementText }) -}}>
+
+    <input
+      class="govuk-input govuk-password-input__input {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-input--error{% endif %}"
+      id="{{ params.id }}"
+      name="{{ params.name }}"
+      type="password"
+      spellcheck="false"
+      autocapitalize="off"
+      autocomplete="{{ 'new-password' if params.newPassword else 'current-password' }}"
+      {%- if params.value %} value="{{ params.value}}"{% endif %}
+      {%- if params.disabled %} disabled{% endif %}
+      {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
+      {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
+
+  </div>
+
+</div>

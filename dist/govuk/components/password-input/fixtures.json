@@ -1,0 +1,107 @@
+{
+    "component": "password-input",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "label": {
+                    "text": "Password"
+                },
+                "id": "password-input",
+                "name": "password"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"password-input\">\n    Password\n  </label>\n\n  <div class=\"govuk-password-input\" data-module=\"govuk-password-input\">\n\n    <input\n      class=\"govuk-input govuk-password-input__input\"\n      id=\"password-input\"\n      name=\"password\"\n      type=\"password\"\n      spellcheck=\"false\"\n      autocapitalize=\"off\"\n      autocomplete=\"current-password\">\n\n  </div>\n\n</div>"
+        },
+        {
+            "name": "with hint text",
+            "options": {
+                "label": {
+                    "text": "Password"
+                },
+                "hint": {
+                    "text": "It probably has some letters, numbers and maybe even some symbols in it."
+                },
+                "id": "password-input-with-hint-text",
+                "name": "test-name-2"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"password-input-with-hint-text\">\n    Password\n  </label>\n  <div id=\"password-input-with-hint-text-hint\" class=\"govuk-hint\">\n    It probably has some letters, numbers and maybe even some symbols in it.\n  </div>\n\n  <div class=\"govuk-password-input\" data-module=\"govuk-password-input\">\n\n    <input\n      class=\"govuk-input govuk-password-input__input\"\n      id=\"password-input-with-hint-text\"\n      name=\"test-name-2\"\n      type=\"password\"\n      spellcheck=\"false\"\n      autocapitalize=\"off\"\n      autocomplete=\"current-password\" aria-describedby=\"password-input-with-hint-text-hint\">\n\n  </div>\n\n</div>"
+        },
+        {
+            "name": "with error message",
+            "options": {
+                "label": {
+                    "text": "Password"
+                },
+                "hint": {
+                    "text": "It probably has some letters, numbers and maybe even some symbols in it."
+                },
+                "id": "password-input-with-error-message",
+                "name": "test-name-3",
+                "errorMessage": {
+                    "text": "Error message goes here"
+                }
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"password-input-with-error-message\">\n    Password\n  </label>\n  <div id=\"password-input-with-error-message-hint\" class=\"govuk-hint\">\n    It probably has some letters, numbers and maybe even some symbols in it.\n  </div>\n  <p id=\"password-input-with-error-message-error\" class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> Error message goes here\n  </p>\n\n  <div class=\"govuk-password-input\" data-module=\"govuk-password-input\">\n\n    <input\n      class=\"govuk-input govuk-password-input__input govuk-input--error\"\n      id=\"password-input-with-error-message\"\n      name=\"test-name-3\"\n      type=\"password\"\n      spellcheck=\"false\"\n      autocapitalize=\"off\"\n      autocomplete=\"current-password\" aria-describedby=\"password-input-with-error-message-hint password-input-with-error-message-error\">\n\n  </div>\n\n</div>"
+        },
+        {
+            "name": "with label as page heading",
+            "options": {
+                "label": {
+                    "text": "Password",
+                    "classes": "govuk-label--l",
+                    "isPageHeading": true
+                },
+                "id": "password-input-with-page-heading",
+                "name": "test-name"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group\">\n  <h1 class=\"govuk-label-wrapper\"><label class=\"govuk-label govuk-label--l\" for=\"password-input-with-page-heading\">\n      Password\n    </label>\n    </h1>\n\n  <div class=\"govuk-password-input\" data-module=\"govuk-password-input\">\n\n    <input\n      class=\"govuk-input govuk-password-input__input\"\n      id=\"password-input-with-page-heading\"\n      name=\"test-name\"\n      type=\"password\"\n      spellcheck=\"false\"\n      autocapitalize=\"off\"\n      autocomplete=\"current-password\">\n\n  </div>\n\n</div>"
+        },
+        {
+            "name": "with new-password autocomplete",
+            "options": {
+                "label": {
+                    "text": "Password"
+                },
+                "newPassword": true,
+                "id": "password-input-new-password",
+                "name": "password"
+            },
+            "hidden": false,
+            "description": "Browsers and password managers should prompt to generate a password.",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"password-input-new-password\">\n    Password\n  </label>\n\n  <div class=\"govuk-password-input\" data-module=\"govuk-password-input\">\n\n    <input\n      class=\"govuk-input govuk-password-input__input\"\n      id=\"password-input-new-password\"\n      name=\"password\"\n      type=\"password\"\n      spellcheck=\"false\"\n      autocapitalize=\"off\"\n      autocomplete=\"new-password\">\n\n  </div>\n\n</div>"
+        },
+        {
+            "name": "with translations",
+            "options": {
+                "label": {
+                    "text": "Cyfrinair"
+                },
+                "id": "password-translated",
+                "name": "password-translated",
+                "showPasswordText": "Datguddia",
+                "hidePasswordText": "Cuddio",
+                "showPasswordAriaLabelText": "Datgelu cyfrinair",
+                "hidePasswordAriaLabelText": "Cuddio cyfrinair",
+                "passwordShownAnnouncementText": "Mae eich cyfrinair yn weladwy.",
+                "passwordHiddenAnnouncementText": "Mae eich cyfrinair wedi'i guddio."
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"password-translated\">\n    Cyfrinair\n  </label>\n\n  <div class=\"govuk-password-input\" data-module=\"govuk-password-input\" data-i18n.show-password=\"Datguddia\" data-i18n.hide-password=\"Cuddio\" data-i18n.show-password-aria-label=\"Datgelu cyfrinair\" data-i18n.hide-password-aria-label=\"Cuddio cyfrinair\" data-i18n.password-shown-announcement=\"Mae eich cyfrinair yn weladwy.\" data-i18n.password-hidden-announcement=\"Mae eich cyfrinair wedi&#39;i guddio.\">\n\n    <input\n      class=\"govuk-input govuk-password-input__input\"\n      id=\"password-translated\"\n      name=\"password-translated\"\n      type=\"password\"\n      spellcheck=\"false\"\n      autocapitalize=\"off\"\n      autocomplete=\"current-password\">\n\n  </div>\n\n</div>"
+        }
+    ]
+}

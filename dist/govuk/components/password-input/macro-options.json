@@ -1,0 +1,8 @@
+[
+    {
+        "name": "id",
+        "type": "string",
+        "required": true,
+        "description": "The ID of the input."
+    }
+]

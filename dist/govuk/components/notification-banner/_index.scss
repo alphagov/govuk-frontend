@@ -1,0 +1,92 @@
+@include govuk-exports("govuk/component/notification-banner") {
+  .govuk-notification-banner {
+    @include govuk-font($size: 19);
+    @include govuk-responsive-margin(8, "bottom");
+
+    border: $govuk-border-width solid $govuk-brand-colour;
+
+    background-color: $govuk-brand-colour;
+
+    &:focus {
+      outline: $govuk-focus-width solid $govuk-focus-colour;
+    }
+  }
+
+  .govuk-notification-banner__header {
+    padding: 2px govuk-spacing(3) govuk-spacing(1);
+
+    // Ensures the notification header appears separate to the notification body text in high contrast mode
+    border-bottom: 1px solid transparent;
+
+    @include govuk-media-query($from: tablet) {
+      padding: 2px govuk-spacing(4) govuk-spacing(1);
+    }
+  }
+
+  .govuk-notification-banner__title {
+    // Set the size again because this element is a heading and the user agent
+    // font size overrides the inherited font size
+    @include govuk-font-size($size: 19);
+    @include govuk-typography-weight-bold;
+    margin: 0;
+    padding: 0;
+    color: govuk-colour("white");
+  }
+
+  .govuk-notification-banner__content {
+    $padding-tablet: govuk-spacing(4);
+    @include govuk-text-colour;
+    padding: govuk-spacing(3);
+
+    background-color: $govuk-body-background-colour;
+
+    @include govuk-media-query($from: tablet) {
+      padding: $padding-tablet;
+    }
+
+    // Wrap content at the same place that a 2/3 grid column ends, to maintain
+    // shorter line-lengths when the notification banner is full width
+    > * {
+      // When elements have their own padding (like lists), include the padding
+      // in the max-width calculation
+      box-sizing: border-box;
+
+      // Calculate the internal width of a two-thirds column...
+      $two-col-width: ($govuk-page-width * 2 / 3) - ($govuk-gutter * 1 / 3);
+
+      // ...and then factor in the left border and padding
+      $banner-exterior: ($padding-tablet + $govuk-border-width);
+      max-width: $two-col-width - $banner-exterior;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .govuk-notification-banner__heading {
+    @include govuk-font-size($size: 24);
+    @include govuk-typography-weight-bold;
+
+    margin: 0 0 govuk-spacing(3) 0;
+
+    padding: 0;
+  }
+
+  .govuk-notification-banner__link {
+    @include govuk-link-common;
+    @include govuk-link-style-no-visited-state;
+  }
+
+  .govuk-notification-banner--success {
+    border-color: $govuk-success-colour;
+
+    background-color: $govuk-success-colour;
+
+    .govuk-notification-banner__link {
+      @include govuk-link-style-success;
+    }
+  }
+}
+
+/*# sourceMappingURL=_index.scss.map */
