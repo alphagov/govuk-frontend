@@ -62,7 +62,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.23.7",
-    "@babel/preset-env": "^7.23.7",
+    "@babel/preset-env": "^7.23.8",
     "@govuk-frontend/config": "*",
     "@govuk-frontend/helpers": "*",
     "@govuk-frontend/lib": "*",
