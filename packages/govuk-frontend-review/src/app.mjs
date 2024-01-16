@@ -9,11 +9,16 @@ import {
 } from '@govuk-frontend/lib/components'
 import { filterPath, getDirectories, hasPath } from '@govuk-frontend/lib/files'
 import { getStats, modulePaths } from '@govuk-frontend/stats'
+// TODO: Remove import, for testing only
+import Autocomplete from 'accessible-autocomplete/react.js'
 import express from 'express'
 
 import * as middleware from './common/middleware/index.mjs'
 import * as nunjucks from './common/nunjucks/index.mjs'
 import * as routes from './routes/index.mjs'
+
+// TODO: Remove console log, for testing only
+console.log('Accessible Autocomplete', Autocomplete.default)
 
 export default async () => {
   const app = express()

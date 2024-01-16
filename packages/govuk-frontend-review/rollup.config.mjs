@@ -1,5 +1,6 @@
 import commonjs from '@rollup/plugin-commonjs'
 import resolve from '@rollup/plugin-node-resolve'
+import replace from '@rollup/plugin-replace'
 import terser from '@rollup/plugin-terser'
 import { defineConfig } from 'rollup'
 
@@ -45,6 +46,10 @@ export default defineConfig(({ i: input }) => ({
     commonjs({
       requireReturnsDefault: 'preferred',
       defaultIsModuleExports: true
+    }),
+    replace({
+      preventAssignment: true,
+      'process.env.NODE_ENV': JSON.stringify('production')
     })
   ]
 }))
