@@ -453,26 +453,6 @@ describe('/components/accordion', () => {
         })
       })
 
-      describe('expandable content', () => {
-        it('should have an aria-labelledby that matches the heading text ID', async () => {
-          await render(page, 'accordion', examples.default)
-
-          const ariaLabelledByValue = await page.evaluate(() =>
-            document.body
-              .querySelector('.govuk-accordion__section-content')
-              .getAttribute('aria-labelledby')
-          )
-
-          const headingTextId = await page.evaluate(() =>
-            document.body
-              .querySelector('.govuk-accordion__section-heading-text')
-              .getAttribute('id')
-          )
-
-          expect(ariaLabelledByValue).toEqual(headingTextId)
-        })
-      })
-
       describe('localisation', () => {
         it('should localise "Show all sections" based on data attribute', async () => {
           await render(page, 'accordion', examples['with translations'])

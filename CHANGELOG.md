@@ -98,6 +98,12 @@ This is an experimental change, based on our hypothesis that `govuk-font-size` a
 
 This change was introduced in [pull request #4291: Rename `govuk-typography-responsive` to `govuk-font-size`](https://github.com/alphagov/govuk-frontend/pull/4291)
 
+#### Remove the `aria-labelledby` attribute from accordion sections
+
+If you aren't using our Nunjucks macros, remove the `aria-labelledby` attribute from all accordion sections (`div` elements that have the `govuk-accordion__section-content` class).
+
+This change was introduced in [pull request #4628: Remove aria-labelledby from accordion sections](https://github.com/alphagov/govuk-frontend/pull/4628)
+
 ### Deprecated features
 
 #### Stop using the `element` parameter on buttons
