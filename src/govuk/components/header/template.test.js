@@ -249,6 +249,29 @@ describe('header', () => {
     })
   })
 
+  describe.each([
+    { message: 'without navigation', exampleName: 'default' },
+    { message: 'with empty navigation', exampleName: 'empty navigation array' }
+  ])('$message', ({ exampleName }) => {
+    let $
+
+    beforeAll(() => {
+      $ = render('summary-list', examples[exampleName])
+    })
+
+    it('does not include a menu button', async () => {
+      expect($('.govuk-header__menu-button')).toHaveLength(0)
+    })
+
+    it('does not include a <nav> element', async () => {
+      expect($('nav')).toHaveLength(0)
+    })
+
+    it('does not include a govuk-header__content wrapper', async () => {
+      expect($('.govuk-header__content')).toHaveLength(0)
+    })
+  })
+
   describe('SVG logo', () => {
     let $
     let $svg
