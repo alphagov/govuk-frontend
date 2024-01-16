@@ -155,8 +155,12 @@ function render(componentName, options) {
   const macroName = componentNameToMacroName(componentName)
   const macroPath = `govuk/components/${componentName}/macro.njk`
 
-  // Return built fixture or render
-  return options?.fixture?.html ?? renderMacro(macroName, macroPath, options)
+  // Use built fixtures (if they exist) on CI to optimise for speed
+  if (process.env.CI === 'true' && options?.fixture?.html) {
+    return options.fixture.html
+  }
+
+  return renderMacro(macroName, macroPath, options)
 }
 
 /**
