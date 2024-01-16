@@ -16,5 +16,20 @@
 {% endblock %}
 
 {% block scripts %}
+  {#
+    Uncomment to load the accessible-autocomplete as the `accessibleAutocomplete` global.
+
+    If doing so, make sure you comment the bundled ways to load accessibleAutocomplete in `javascripts/component-preview-iframe.mjs`
+  #}
+
+    <script type="module" src="/accessible-autocomplete/dist/accessible-autocomplete.min.js"></script>
+    <script type="module">
+      const selectElement = document.querySelector('.govuk-select');
+
+      if (selectElement) {
+        accessibleAutocomplete.enhanceSelectElement({selectElement})
+      }
+    </script>
+
   <script type="module" src="/javascripts/component-preview-iframe.bundle.min.mjs"></script>
 {% endblock %}

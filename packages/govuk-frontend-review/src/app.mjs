@@ -248,6 +248,11 @@ export default async () => {
   app.use('/examples', routes.examples)
   app.use('/full-page-examples', routes.fullPageExamples)
 
+  app.use(
+    '/accessible-autocomplete',
+    express.static(join(paths.root, 'node_modules/accessible-autocomplete'))
+  )
+
   /**
    * Page not found handler
    */
