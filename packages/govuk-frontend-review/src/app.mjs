@@ -48,8 +48,7 @@ export default async () => {
 
   // Feature flags
   const flags = /** @type {FeatureFlags} */ ({
-    isDeployedToHeroku: !!process.env.HEROKU_APP,
-    isDevelopment: !['test', 'production'].includes(process.env.NODE_ENV),
+    isDevelopment: !process.env.HEROKU_APP && !process.env.CI,
 
     // Check for JSDoc, SassDoc and Rollup stats
     hasDocsScripts: await hasPath(join(paths.app, 'dist/docs/jsdoc')),
@@ -221,7 +220,7 @@ export default async () => {
         env,
 
         // Skip Nunjucks render from cache in development
-        fixture: !flags.isDevelopment ? fixture : undefined
+        fixture: flags.isDevelopment ? undefined : fixture
       })
 
       let bodyClasses = 'app-template__body'
@@ -278,8 +277,7 @@ export default async () => {
 
 /**
  * @typedef {object} FeatureFlags
- * @property {boolean} isDeployedToHeroku - Review app using `HEROKU_APP`
- * @property {boolean} isDevelopment - Review app not using `NODE_ENV` production or test
+ * @property {boolean} isDevelopment - Review app not in CI or on Heroku
  * @property {boolean} hasDocsStyles - Stylesheets documentation (SassDoc) is available
  * @property {boolean} hasDocsScripts - JavaScripts documentation (JSDoc) is available
  * @property {boolean} hasStats - Rollup stats are available
