@@ -84,6 +84,23 @@ describe('Textarea', () => {
       const $formGroup = $('.govuk-form-group')
       expect($formGroup.hasClass('extra-class')).toBeTruthy()
     })
+
+    it('renders a form-group wrapper with extra attributes', () => {
+      const $ = render('textarea', examples['with form-group attributes'])
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.attr('data-custom-attribute')).toEqual('my-value')
+    })
+
+    it('renders a form-group wrapper with extra attributes as a string', () => {
+      const $ = render(
+        'textarea',
+        examples['with form-group attributes as a string']
+      )
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.attr('data-string-1')).toEqual('value-1')
+    })
   })
 
   describe('when it has the spellcheck attribute', () => {

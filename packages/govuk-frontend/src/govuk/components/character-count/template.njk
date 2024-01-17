@@ -12,63 +12,54 @@
 {%- set textareaDescriptionText = params.textareaDescriptionText or 'You can enter up to %{count} ' + ('words' if params.maxwords else 'characters') -%}
 {%- set textareaDescriptionTextNoLimit = textareaDescriptionText | replace('%{count}', textareaDescriptionLength) if not hasNoLimit -%}
 
-{#-
-  Unlike objects which cannot be modified, Nunjucks can both push to and loop
-  arrays (as if they were objects) when in `Object.entries()` array format
-#}
-{%- set attributes = [
-  ["data-module", "govuk-character-count"]
-] -%}
+{% set attributes %}
+data-module="govuk-character-count"
+  {%- if params.maxlength %} data-maxlength="{{ params.maxlength }}"{% endif %}
+  {%- if params.threshold %} data-threshold="{{ params.threshold }}"{% endif %}
+  {%- if params.maxwords %} data-maxwords="{{ params.maxwords }}"{% endif %}
+  {#-
+    Without maxlength or maxwords, we can't guess if the component will count words or characters.
+    We can't guess a default textarea description to be interpolated in JavaScript
+    once the maximum gets configured there.
+    So we only add the attribute if a textarea description was explicitely provided.
+  #}
+  {%- if hasNoLimit and params.textareaDescriptionText %}
+    {{- govukI18nAttributes({
+      key: 'textarea-description',
+      messages: { other: params.textareaDescriptionText }
+    }) -}}
+  {% endif -%}
 
-{% for attribute, value in params.formGroup.attributes %}
-  {% set attributes = (attributes.push([attribute, value]), attributes) %}
-{% endfor %}
+  {{- govukI18nAttributes({
+    key: 'characters-under-limit',
+    messages: params.charactersUnderLimitText
+  }) -}}
 
-{%- if params.maxlength %}{% set attributes = (attributes.push(["data-maxlength", params.maxlength]), attributes) %}{% endif -%}
-{%- if params.threshold %}{% set attributes = (attributes.push(["data-threshold", params.threshold]), attributes) %}{% endif -%}
-{%- if params.maxwords %}{% set attributes = (attributes.push(["data-maxwords", params.maxwords]), attributes) %}{% endif -%}
+  {{- govukI18nAttributes({
+    key: 'characters-at-limit',
+    message: params.charactersAtLimitText
+  }) -}}
 
-{#-
-  Without maxlength or maxwords, we can't guess if the component will count words or characters.
-  We can't guess a default textarea description to be interpolated in JavaScript
-  once the maximum gets configured there.
-  So we only add the attribute if a textarea description was explicitely provided.
-#}
-{%- if hasNoLimit and params.textareaDescriptionText %}
-  {% set attributes = (attributes.push(["data-i18n.textarea-description.other", params.textareaDescriptionText | escape]), attributes) %}
-{% endif -%}
+  {{- govukI18nAttributes({
+    key: 'characters-over-limit',
+    messages: params.charactersOverLimitText
+  }) -}}
 
-{%- if params.charactersUnderLimitText %}
-  {% for pluralRule, message in params.charactersUnderLimitText %}
-    {% set attributes = (attributes.push(["data-i18n.characters-under-limit." + pluralRule, message | escape]), attributes) %}
-  {% endfor %}
-{% endif -%}
+  {{- govukI18nAttributes({
+    key: 'words-under-limit',
+    messages: params.wordsUnderLimitText
+  }) -}}
 
-{%- if params.charactersAtLimitText %}
-  {% set attributes = (attributes.push(["data-i18n.characters-at-limit", params.charactersAtLimitText | escape]), attributes) %}
-{% endif -%}
+  {{- govukI18nAttributes({
+    key: 'words-at-limit',
+    message: params.wordsAtLimitText
+  }) -}}
 
-{%- if params.charactersOverLimitText %}
-  {% for pluralRule, message in params.charactersOverLimitText %}
-    {% set attributes = (attributes.push(["data-i18n.characters-over-limit." + pluralRule, message | escape]), attributes) %}
-  {% endfor %}
-{% endif -%}
-
-{%- if params.wordsUnderLimitText %}
-  {% for pluralRule, message in params.wordsUnderLimitText %}
-    {% set attributes = (attributes.push(["data-i18n.words-under-limit." + pluralRule, message | escape]), attributes) %}
-  {% endfor %}
-{% endif -%}
-
-{%- if params.wordsAtLimitText %}
-  {% set attributes = (attributes.push(["data-i18n.words-at-limit", params.wordsAtLimitText | escape]), attributes) %}
-{% endif -%}
-
-{%- if params.wordsOverLimitText %}
-  {% for pluralRule, message in params.wordsOverLimitText %}
-    {% set attributes = (attributes.push(["data-i18n.words-over-limit." + pluralRule, message | escape]), attributes) %}
-  {% endfor %}
-{% endif -%}
+  {{- govukI18nAttributes({
+    key: 'words-over-limit',
+    messages: params.wordsOverLimitText
+  }) -}}
+{% endset%}
 
 {%- set countMessageHtml %}
 {{ govukHint({

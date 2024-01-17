@@ -5,7 +5,7 @@
 {#- a record of other elements that we need to associate with the input using
   aria-describedby – for example hints or error messages -#}
 {% set describedBy = params.describedBy if params.describedBy else "" %}
-<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}" {%- for attribute, value in params.formGroup.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}" {%- if params.formGroup.attributes is string -%} {{ params.formGroup.attributes | safe }}{% else -%}{%- for attribute, value in params.formGroup.attributes %} {{ attribute }}="{{ value }}"{% endfor %}{% endif %}>
   {{ govukLabel({
     html: params.label.html,
     text: params.label.text,

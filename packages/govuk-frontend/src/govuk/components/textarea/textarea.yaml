@@ -147,15 +147,6 @@ examples:
         classes: govuk-label--l
         isPageHeading: true
 
-  - name: with optional form-group classes
-    options:
-      id: textarea-with-page-heading
-      name: address
-      label:
-        text: Full address
-      formGroup:
-        classes: extra-class
-
   - name: with autocomplete attribute
     options:
       id: textarea-with-autocomplete-attribute
@@ -249,3 +240,34 @@ examples:
         text: Error message
       hint:
         text: Hint
+
+  - name: with optional form-group classes
+    hidden: true
+    options:
+      id: textarea-with-page-heading
+      name: address
+      label:
+        text: Full address
+      formGroup:
+        classes: extra-class
+
+  - name: with form-group attributes
+    hidden: true
+    options:
+      id: textarea-with-page-heading
+      name: address
+      label:
+        text: Full address
+      formGroup:
+        attributes:
+          data-custom-attribute: my-value
+
+  - name: with form-group attributes as a string
+    hidden: true
+    options:
+      id: textarea-with-page-heading
+      name: address
+      label:
+        text: Full address
+      formGroup:
+        attributes: data-string-1="value-1" data-string-2="value-2"
