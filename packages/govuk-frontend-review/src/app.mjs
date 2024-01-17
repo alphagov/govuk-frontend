@@ -218,9 +218,7 @@ export default async () => {
       const componentView = render(componentName, {
         context: fixture.options,
         env,
-
-        // Skip Nunjucks render from cache in development
-        fixture: flags.isDevelopment ? undefined : fixture
+        fixture
       })
 
       let bodyClasses = 'app-template__body'

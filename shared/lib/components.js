@@ -155,8 +155,10 @@ function render(componentName, options) {
   const macroName = componentNameToMacroName(componentName)
   const macroPath = `govuk/components/${componentName}/macro.njk`
 
-  // Use built fixtures (if they exist) on CI to optimise for speed
-  if (process.env.CI === 'true' && options?.fixture?.html) {
+  // On Heroku / CI we know we're running against an up-to-date build so we can
+  // use the generated HTML from the component JSON (where it exists) to make
+  // things faster
+  if ((process.env.HEROKU_APP || process.env.CI) && options?.fixture?.html) {
     return options.fixture.html
   }
 
