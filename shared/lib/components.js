@@ -155,8 +155,14 @@ function render(componentName, options) {
   const macroName = componentNameToMacroName(componentName)
   const macroPath = `govuk/components/${componentName}/macro.njk`
 
-  // Return built fixture or render
-  return options?.fixture?.html ?? renderMacro(macroName, macroPath, options)
+  // On Heroku / CI we know we're running against an up-to-date build so we can
+  // use the generated HTML from the component JSON (where it exists) to make
+  // things faster
+  if ((process.env.HEROKU_APP || process.env.CI) && options?.fixture?.html) {
+    return options.fixture.html
+  }
+
+  return renderMacro(macroName, macroPath, options)
 }
 
 /**

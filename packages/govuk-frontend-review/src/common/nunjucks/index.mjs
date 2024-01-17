@@ -22,7 +22,7 @@ export function renderer(app) {
     {
       dev: true, // log stack traces
       express: app, // the Express.js review app that nunjucks should install to
-      noCache: !flags.isDeployedToHeroku, // use cache when deployed only
+      noCache: flags.isDevelopment, // use cache in development only
       watch: flags.isDevelopment // reload templates in development only
     },
     {
