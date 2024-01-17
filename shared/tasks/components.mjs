@@ -102,21 +102,26 @@ async function generateFixture(componentDataPath, options) {
      * @param {ComponentExample} example - Component example
      * @returns {Promise<ComponentFixture>} Component fixture
      */
-    async (example) => ({
-      name: example.name,
-      options: example.options,
-      hidden: Boolean(example.hidden),
-
-      // Add defaults to optional fields
-      description: example.description ?? '',
-      previewLayoutModifiers: example.previewLayoutModifiers ?? [],
-
+    async (example) => {
       // Render Nunjucks example
-      html: render(componentName, {
+      const html = render(componentName, {
         context: example.options,
         env
-      }).trim()
-    })
+      })
+
+      return {
+        name: example.name,
+        options: example.options,
+        hidden: Boolean(example.hidden),
+
+        // Add defaults to optional fields
+        description: example.description ?? '',
+        previewLayoutModifiers: example.previewLayoutModifiers ?? [],
+
+        // Add rendered Nunjucks example to fixture
+        html: html.trim()
+      }
+    }
   )
 
   return {
