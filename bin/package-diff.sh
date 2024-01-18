@@ -42,13 +42,21 @@ git commit --allow-empty -m "Build output for '$head'" --no-verify
 git diff HEAD^ -- packages/govuk-frontend/dist/govuk/govuk-frontend.min.js \
   > $output_folder/.cache/diff/package/js.diff
 
-# # Diff the minified CSS file
+# Diff the minified CSS file
 git diff HEAD^ -- packages/govuk-frontend/dist/govuk/govuk-frontend.min.css \
   > $output_folder/.cache/diff/package/css.diff
 
-# Diff the rest of the files, excluding the sourcemaps and the minified files
+# The following are directory diffs but filtered using git pathspec
 # See https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec
+
+# Diff the rendered HTML output
+git diff -M05 HEAD^ -- "packages/govuk-frontend/dist/**/*.html" \
+  > $output_folder/.cache/diff/package/html.diff
+
+# Diff the rest of the files, excluding the sourcemaps and the minified files
 git diff -M05 HEAD^ -- packages/govuk-frontend/dist \
+  ":(exclude)**/*.html" \
   ":(exclude)**/*.map" \
   ":(exclude)**/*.min.*" \
+  ":(exclude)**/*.njk" \
   > $output_folder/.cache/diff/package/other.diff

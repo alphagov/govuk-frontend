@@ -137,8 +137,12 @@ describe('packages/govuk-frontend/dist/', () => {
       )
       .sort()
 
-    // Compare array of actual output files
-    expect(listingDist).toEqual(listingExpected)
+    // Compare output files with '.npmignore' filter
+    const listingDistIgnored = listingDist.filter(
+      filterPath(['!**/*.html', '!**/*.test.*'])
+    )
+
+    expect(listingDistIgnored).toEqual(listingExpected)
 
     // Check top level package contents
     expect(listingPackage).toEqual([
