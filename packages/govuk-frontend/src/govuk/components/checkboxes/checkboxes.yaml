@@ -103,7 +103,7 @@ params:
       - name: behaviour
         type: string
         required: false
-        description: If set to `"exclusive"`, implements a 'None of these' type behaviour via JavaScript when checkboxes are clicked.
+        description: If set to `"exclusive"`, implements a 'None of these' type behaviour via JavaScript when checkboxes are clicked. If set to `"inclusive"`, implements a 'Select all' type behaviour when checkboxes are clicked.
       - name: disabled
         type: boolean
         required: false
@@ -214,6 +214,32 @@ examples:
         - value: none
           text: None of these
           behaviour: exclusive
+
+  - name: with divider and All
+    options:
+      name: with-divider-and-all
+      fieldset:
+        legend:
+          text: Who do you want to add to this team?
+          classes: govuk-fieldset__legend--l
+          isPageHeading: true
+      items:
+        - value: all
+          text: All invited users
+          behaviour: inclusive
+        - divider: or
+        - value: chandler
+          text: Chandler Bing
+        - value: phoebe
+          text: Phoebe Buffay
+        - value: monica
+          text: Monica Gellar
+        - value: ross
+          text: Ross Gellar
+        - value: rachel
+          text: Rachel Green
+        - value: joey
+          text: Joey Tribbiani
 
   - name: with id and name
     options:

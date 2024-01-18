@@ -175,6 +175,51 @@ export class Checkboxes extends GOVUKFrontendComponent {
   }
 
   /**
+   * Uncheck inclusive checkboxes
+   *
+   * Find all checkbox inputs with the same name value and the 'inclusive'
+   * behaviour, and uncheck them. This is needed when a user has checked an
+   * "All of the above" option but then unchecks some of the items.
+   *
+   * @private
+   * @param {HTMLInputElement} $input - Checkbox input
+   */
+  unCheckInclusiveInputs($input) {
+    const allInputsWithSameNameAndInclusiveBehaviour =
+      document.querySelectorAll(
+        `input[data-behaviour="inclusive"][type="checkbox"][name="${$input.name}"]`
+      )
+
+    allInputsWithSameNameAndInclusiveBehaviour.forEach(($inclusiveInput) => {
+      const hasSameFormOwner = $input.form === $inclusiveInput.form
+      if (hasSameFormOwner) {
+        $inclusiveInput.checked = false
+        this.syncConditionalRevealWithInputState($inclusiveInput)
+      }
+    })
+  }
+
+  /**
+   * Check all inputs with the same `name` as the given input
+   *
+   * @private
+   * @param {HTMLInputElement} $input - Checkbox input
+   */
+  checkAllInputsWithName($input) {
+    const allInputsWithSameName = document.querySelectorAll(
+      `input[type="checkbox"][name="${$input.name}"]`
+    )
+
+    allInputsWithSameName.forEach(($namedInput) => {
+      const hasSameFormOwner = $input.form === $namedInput.form
+      if (hasSameFormOwner) {
+        $namedInput.checked = true
+        this.syncConditionalRevealWithInputState($namedInput)
+      }
+    })
+  }
+
+  /**
    * Click event handler
    *
    * Handle a click within the $module – if the click occurred on a checkbox,
@@ -201,11 +246,6 @@ export class Checkboxes extends GOVUKFrontendComponent {
       this.syncConditionalRevealWithInputState($clickedInput)
     }
 
-    // No further behaviour needed for unchecking
-    if (!$clickedInput.checked) {
-      return
-    }
-
     // Handle 'exclusive' checkbox behaviour (ie "None of these")
     const hasBehaviourExclusive =
       $clickedInput.getAttribute('data-behaviour') === 'exclusive'
@@ -213,6 +253,19 @@ export class Checkboxes extends GOVUKFrontendComponent {
       this.unCheckAllInputsExcept($clickedInput)
     } else {
       this.unCheckExclusiveInputs($clickedInput)
+    }
+
+    // Handle 'inclusive' checkbox behaviour (ie "All of these")
+    const hasBehaviourInclusive =
+      $clickedInput.getAttribute('data-behaviour') === 'inclusive'
+    if (hasBehaviourInclusive) {
+      if ($clickedInput.checked) {
+        this.checkAllInputsWithName($clickedInput)
+      }
+    } else {
+      if (!$clickedInput.checked) {
+        this.unCheckInclusiveInputs($clickedInput)
+      }
     }
   }
 
