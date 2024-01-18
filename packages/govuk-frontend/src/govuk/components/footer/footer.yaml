@@ -81,9 +81,9 @@ params:
         required: false
         description: If `text` is set, this is not required. If `html` is provided, the `text` option will be ignored. If neither are provided, the text for the Open Government Licence is used. The content licence is inside a `<span>` element, so you can only add [phrasing content](https://html.spec.whatwg.org/#phrasing-content) to it.
   - name: copyright
-    type: object
+    type: object | boolean
     required: false
-    description: The copyright information in the footer component, this defaults to `"© Crown copyright"`.
+    description: Crown copyright notice that links to a page on [The National Archives](https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/). Setting this to `false` removes this notice and the royal coat of arms.
     params:
       - name: text
         type: string
@@ -157,6 +157,11 @@ examples:
         text: 'Mae’r holl gynnwys ar gael dan Drwydded y Llywodraeth Agored v3.0, ac eithrio lle nodir yn wahanol'
       copyright:
         text: '© Hawlfraint y Goron'
+
+  - name: with copyright notice removed
+    description: Crown copyright notice removed
+    options:
+      copyright: false
 
   - name: with meta
     description: Secondary navigation with meta information relating to the site
