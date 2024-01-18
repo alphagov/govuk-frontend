@@ -88,6 +88,12 @@ These additional styles are not included if you use `govuk-font-tabular-numbers`
 
 This change was introduced in [pull request #4307: Refactor tabular number activation into their own mixin](https://github.com/alphagov/govuk-frontend/pull/4307)
 
+#### Allow Crown copyright notice to be removed
+
+For non-GOV.UK branded websites, you can now remove the copyright notice and coat of arms from the [footer component](https://design-system.service.gov.uk/components/footer/) by setting the `copyright` Nunjucks option to `false`.
+
+This was added in [pull request #3876: Allow Crown copyright notice to be removed](https://github.com/alphagov/govuk-frontend/pull/3876). Thanks to [@paulrobertlloyd](https://github.com/paulrobertlloyd) for contributing this improvement.
+
 ### Recommended changes
 
 #### Replace instances of `govuk-typography-responsive` with `govuk-font-size`
