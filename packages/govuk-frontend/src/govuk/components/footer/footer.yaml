@@ -83,7 +83,7 @@ params:
   - name: copyright
     type: object | boolean
     required: false
-    description: Crown copyright notice that links to a page on [The National Archives](https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/). Setting this to `false` removes this notice and the royal coat of arms.
+    description: The copyright information in the footer component that links to [The National Archives ‘Crown copyright’ page](https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/). Defaults to the `text` option value. If you set this option to `false`, the whole copyright notice is removed, including the Royal coat of arms.
     params:
       - name: text
         type: string
