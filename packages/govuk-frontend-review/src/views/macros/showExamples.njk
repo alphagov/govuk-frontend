@@ -41,7 +41,8 @@
         <h4 class="govuk-heading-s">Markup</h4>
         <pre class="app-code"><code tabindex="0" class="app-code__container hljs language-html">
           {{- getHTMLCode(componentName, {
-            context: example.options
+            context: example.options,
+            fixture: example
           }) | highlight("html") | safe -}}
         </code></pre>
 

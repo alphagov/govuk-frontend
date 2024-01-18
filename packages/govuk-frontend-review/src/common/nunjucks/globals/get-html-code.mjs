@@ -1,5 +1,4 @@
 import { render } from '@govuk-frontend/lib/components'
-import beautify from 'js-beautify'
 
 /**
  * Component HTML code (formatted)
@@ -10,20 +9,7 @@ import beautify from 'js-beautify'
  * @returns {string} HTML rendered by the component
  */
 export function getHTMLCode(componentName, options) {
-  const html = render(componentName, { ...options, env: this.env })
-
-  // Default beautify options
-  const beautifyOptions = beautify.html.defaultOptions()
-
-  return beautify.html(html, {
-    indent_size: 2,
-    // Ensure nested labels in headings are indented properly
-    inline: beautifyOptions.inline.filter((tag) => !['label'].includes(tag)),
-    // Remove blank lines
-    max_preserve_newlines: 0,
-    // Ensure attribute wrapping in header SVG is preserved
-    wrap_attributes: 'preserve'
-  })
+  return render(componentName, { ...options, env: this.env })
 }
 
 /**

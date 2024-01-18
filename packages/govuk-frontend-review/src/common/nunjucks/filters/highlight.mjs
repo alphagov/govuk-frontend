@@ -8,6 +8,5 @@ import hljs from 'highlight.js'
  * @returns {string} Code with syntax highlighting
  */
 export function highlight(code, language) {
-  return hljs.highlight(code.trim(), { language: language || 'plaintext' })
-    .value
+  return hljs.highlight(code, { language: language || 'plaintext' }).value
 }
