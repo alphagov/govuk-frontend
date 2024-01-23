@@ -95,3 +95,39 @@ updates:
       interval: weekly
       time: '10:30'
       timezone: 'Europe/London'
+
+  # Update GitHub Actions (Build)
+  - package-ecosystem: github-actions
+    directory: /.github/workflows/actions/build
+    reviewers:
+      - alphagov/design-system-developers
+
+    # Schedule run every Monday, local time
+    schedule:
+      interval: weekly
+      time: '10:30'
+      timezone: 'Europe/London'
+
+  # Update GitHub Actions (Install dependencies)
+  - package-ecosystem: github-actions
+    directory: /.github/workflows/actions/install-node
+    reviewers:
+      - alphagov/design-system-developers
+
+    # Schedule run every Monday, local time
+    schedule:
+      interval: weekly
+      time: '10:30'
+      timezone: 'Europe/London'
+
+  # Update GitHub Actions (Setup Node.js)
+  - package-ecosystem: github-actions
+    directory: /.github/workflows/actions/setup-node
+    reviewers:
+      - alphagov/design-system-developers
+
+    # Schedule run every Monday, local time
+    schedule:
+      interval: weekly
+      time: '10:30'
+      timezone: 'Europe/London'
