@@ -70,7 +70,7 @@
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-replace": "^5.0.5",
     "@rollup/plugin-terser": "^0.4.4",
-    "autoprefixer": "^10.4.16",
+    "autoprefixer": "^10.4.17",
     "cssnano": "^6.0.3",
     "cssnano-preset-default": "^6.0.1",
     "govuk-prototype-kit": "^13.16.0",
