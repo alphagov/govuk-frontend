@@ -1,8 +1,11 @@
+import { outdent } from 'outdent'
+
 import {
   mergeConfigs,
   extractConfigByNamespace,
   isSupported,
-  getFragmentFromUrl
+  getFragmentFromUrl,
+  getBreakpoint
 } from './index.mjs'
 
 describe('Common JS utilities', () => {
@@ -172,6 +175,47 @@ describe('Common JS utilities', () => {
       }
     ])("returns '$fragment' for '$url'", ({ url, fragment }) => {
       expect(getFragmentFromUrl(url)).toBe(fragment)
+    })
+  })
+
+  describe('getBreakpoint', () => {
+    beforeAll(() => {
+      // Reset the state of the DOM to cleanup after other tests
+      document.documentElement.innerHTML = ''
+
+      const stylesheet = document.createElement('style')
+      stylesheet.innerHTML = outdent`
+        :root {
+          --govuk-frontend-breakpoint-mobile: 40em;
+          --govuk-frontend-breakpoint-tablet: 80em;
+        }
+
+        body {
+          --govuk-frontend-breakpoint-tablet: 90em;
+        }
+      `
+      document.body.appendChild(stylesheet)
+    })
+
+    it('returns the breakpoint value if it exists', () => {
+      expect(getBreakpoint('mobile')).toEqual({
+        property: '--govuk-frontend-breakpoint-mobile',
+        value: '40em'
+      })
+    })
+
+    it('returns the value as set on the HTML (root) element', () => {
+      expect(getBreakpoint('tablet')).toEqual({
+        property: '--govuk-frontend-breakpoint-tablet',
+        value: '80em'
+      })
+    })
+
+    it('returns an undefined value if the breakpoint does not exist', () => {
+      expect(getBreakpoint('giant-video-wall')).toEqual({
+        property: '--govuk-frontend-breakpoint-giant-video-wall',
+        value: undefined
+      })
     })
   })
 })
