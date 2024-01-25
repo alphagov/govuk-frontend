@@ -59,7 +59,7 @@
             {{ row.key.html | indent(4 if params.card else 0) | safe if row.key.html else row.key.text }}
           </dt>
           <dd class="govuk-summary-list__value {%- if row.value.classes %} {{ row.value.classes }}{% endif %}">
-            {{ row.value.html | indent(12 if params.card else 8) | trim | safe if row.value.html else row.value.text }}
+            {{ row.value.html | indent(12 if params.card else 8) | safe | trim if row.value.html else row.value.text }}
           </dd>
           {% if row.actions.items.length %}
             <dd class="govuk-summary-list__actions {%- if row.actions.classes %} {{ row.actions.classes }}{% endif %}">

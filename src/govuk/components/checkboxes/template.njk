@@ -111,9 +111,9 @@
     attributes: params.fieldset.attributes,
     legend: params.fieldset.legend
   }) %}
-  {{ innerHtml | trim | safe }}
+  {{ innerHtml | safe | trim }}
   {% endcall %}
 {% else %}
-  {{ innerHtml | trim | safe }}
+  {{ innerHtml | safe | trim }}
 {% endif %}
 </div>
