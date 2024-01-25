@@ -42,7 +42,7 @@
                 "classes": action.classes,
                 "href": action.href,
                 "attributes": action.attributes
-              }) | indent(12) | trim }}
+              }) | trim | indent(12) }}
             {% else %}
               <a class="govuk-link {%- if action.classes %} {{ action.classes }}{% endif %}" href="{{ action.href }}" {%- for attribute, value in action.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>{{ action.text }}</a>
             {% endif %}
@@ -54,7 +54,7 @@
               "type": action.type,
               "classes": action.classes,
               "attributes": action.attributes
-            }) | indent(12) | trim }}
+            }) | trim | indent(12) }}
           {% endif %}
         {% endfor %}
       </div>

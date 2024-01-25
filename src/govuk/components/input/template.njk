@@ -14,7 +14,7 @@
     isPageHeading: params.label.isPageHeading,
     attributes: params.label.attributes,
     for: params.id
-  }) | indent(2) | trim }}
+  }) | trim | indent(2) }}
 {% if params.hint %}
   {% set hintId = params.id + '-hint' %}
   {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
@@ -24,7 +24,7 @@
     attributes: params.hint.attributes,
     html: params.hint.html,
     text: params.hint.text
-  }) | indent(2) | trim }}
+  }) | trim | indent(2) }}
 {% endif %}
 {% if params.errorMessage %}
   {% set errorId = params.id + '-error' %}
@@ -36,7 +36,7 @@
     html: params.errorMessage.html,
     text: params.errorMessage.text,
     visuallyHiddenText: params.errorMessage.visuallyHiddenText
-  }) | indent(2) | trim }}
+  }) | trim | indent(2) }}
 {% endif %}
 
   {%- if params.prefix or params.suffix %}<div class="govuk-input__wrapper">{% endif -%}
