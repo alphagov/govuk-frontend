@@ -20,40 +20,40 @@
   {% set itemId = item.id if item.id else idPrefix + ("-" + index if index > 1 else "") %}
   {% set conditionalId = "conditional-" + itemId %}
   {%- if item.divider %}
-  <div class="govuk-radios__divider">{{ item.divider }}</div>
-  {%- else %}
-  {% set isChecked = item.checked | default((item.value == params.value and item.checked != false) if params.value else false, true) %}
-  {% set hasHint = true if item.hint.text or item.hint.html %}
-  {% set itemHintId = itemId + '-item-hint' %}
-  <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="{{ itemId }}" name="{{ params.name }}" type="radio" value="{{ item.value }}"
-    {{-" checked" if isChecked }}
-    {{-" disabled" if item.disabled }}
-    {%- if item.conditional.html %} data-aria-controls="{{ conditionalId }}"{% endif -%}
-    {%- if hasHint %} aria-describedby="{{ itemHintId }}"{% endif -%}
-    {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-    {{ govukLabel({
-      html: item.html,
-      text: item.text,
-      classes: 'govuk-radios__label' + (' ' + item.label.classes if item.label.classes),
-      attributes: item.label.attributes,
-      for: itemId
-    }) | trim | indent(6) }}
-    {% if hasHint %}
-    {{ govukHint({
-      id: itemHintId,
-      classes: 'govuk-radios__hint' + (' ' + item.hint.classes if item.hint.classes),
-      attributes: item.hint.attributes,
-      html: item.hint.html,
-      text: item.hint.text
-    }) | trim | indent(6) }}
-    {% endif %}
-  </div>
-  {% if item.conditional.html %}
-    <div class="govuk-radios__conditional {%- if not isChecked %} govuk-radios__conditional--hidden{% endif %}" id="{{ conditionalId }}">
-      {{ item.conditional.html | safe }}
+    <div class="govuk-radios__divider">{{ item.divider }}</div>
+  {% else %}
+    {% set isChecked = item.checked | default((item.value == params.value and item.checked != false) if params.value else false, true) %}
+    {% set hasHint = true if item.hint.text or item.hint.html %}
+    {% set itemHintId = itemId + '-item-hint' %}
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="{{ itemId }}" name="{{ params.name }}" type="radio" value="{{ item.value }}"
+        {{-" checked" if isChecked }}
+        {{-" disabled" if item.disabled }}
+        {%- if item.conditional.html %} data-aria-controls="{{ conditionalId }}"{% endif -%}
+        {%- if hasHint %} aria-describedby="{{ itemHintId }}"{% endif -%}
+        {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+      {{ govukLabel({
+        html: item.html,
+        text: item.text,
+        classes: 'govuk-radios__label' + (' ' + item.label.classes if item.label.classes),
+        attributes: item.label.attributes,
+        for: itemId
+      }) | trim | indent(6) }}
+      {% if hasHint %}
+      {{ govukHint({
+        id: itemHintId,
+        classes: 'govuk-radios__hint' + (' ' + item.hint.classes if item.hint.classes),
+        attributes: item.hint.attributes,
+        html: item.hint.html,
+        text: item.hint.text
+      }) | trim | indent(6) }}
+      {% endif %}
     </div>
-  {% endif %}
+    {% if item.conditional.html %}
+    <div class="govuk-radios__conditional {%- if not isChecked %} govuk-radios__conditional--hidden{% endif %}" id="{{ conditionalId }}">
+      {{ item.conditional.html | safe | trim | indent(6) }}
+    </div>
+    {% endif %}
   {% endif %}
 {%- endmacro %}
 
@@ -86,7 +86,7 @@
     {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %} data-module="govuk-radios">
     {% for item in params.items %}
       {% if item %}
-        {{- _radioItem(params, item, loop.index) -}}
+        {{ _radioItem(params, item, loop.index) -}}
       {% endif %}
     {% endfor %}
   </div>
