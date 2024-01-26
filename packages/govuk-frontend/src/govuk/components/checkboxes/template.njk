@@ -25,7 +25,7 @@
   {% set conditionalId = "conditional-" + itemId %}
   {%- if item.divider %}
     <div class="govuk-checkboxes__divider">{{ item.divider }}</div>
-  {%- else %}
+  {% else %}
     {% set isChecked = item.checked | default((item.value in params.values and item.checked != false) if params.values else false, true) %}
     {% set hasHint = true if item.hint.text or item.hint.html %}
     {% set itemHintId = itemId + "-item-hint" if hasHint else "" %}
@@ -33,12 +33,12 @@
     {% set itemDescribedBy = (itemDescribedBy + " " + itemHintId) | trim %}
     <div class="govuk-checkboxes__item">
       <input class="govuk-checkboxes__input" id="{{ itemId }}" name="{{ itemName }}" type="checkbox" value="{{ item.value }}"
-      {{-" checked" if isChecked }}
-      {{-" disabled" if item.disabled }}
-      {%- if item.conditional.html %} data-aria-controls="{{ conditionalId }}"{% endif -%}
-      {%- if item.behaviour %} data-behaviour="{{ item.behaviour }}"{% endif -%}
-      {%- if itemDescribedBy %} aria-describedby="{{ itemDescribedBy }}"{% endif -%}
-      {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+        {{-" checked" if isChecked }}
+        {{-" disabled" if item.disabled }}
+        {%- if item.conditional.html %} data-aria-controls="{{ conditionalId }}"{% endif -%}
+        {%- if item.behaviour %} data-behaviour="{{ item.behaviour }}"{% endif -%}
+        {%- if itemDescribedBy %} aria-describedby="{{ itemDescribedBy }}"{% endif -%}
+        {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
       {{ govukLabel({
         html: item.html,
         text: item.text,
@@ -57,9 +57,9 @@
       {% endif %}
     </div>
     {% if item.conditional.html %}
-      <div class="govuk-checkboxes__conditional {%- if not isChecked %} govuk-checkboxes__conditional--hidden{% endif %}" id="{{ conditionalId }}">
-        {{ item.conditional.html | safe }}
-      </div>
+    <div class="govuk-checkboxes__conditional {%- if not isChecked %} govuk-checkboxes__conditional--hidden{% endif %}" id="{{ conditionalId }}">
+      {{ item.conditional.html | safe | trim | indent(6) }}
+    </div>
     {% endif %}
   {% endif %}
 {% endmacro -%}
