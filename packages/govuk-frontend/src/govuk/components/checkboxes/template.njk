@@ -18,6 +18,61 @@
 {#- fieldset is false by default -#}
 {% set hasFieldset = true if params.fieldset else false %}
 
+{%- macro _checkboxItem(params, item, index) %}
+  {#- If the user explicitly sets an id, use this instead of the regular idPrefix -#}
+  {%- if item.id -%}
+    {%- set itemId = item.id -%}
+  {%- else -%}
+    {#- The first id should not have a number suffix so it's easy to link to from the error summary component -#}
+    {%- if not index > 1 -%}
+      {%- set itemId = idPrefix %}
+    {% else %}
+      {%- set itemId = idPrefix + "-" + index -%}
+    {%- endif -%}
+  {%- endif -%}
+  {% set itemName = item.name if item.name else params.name %}
+  {% set conditionalId = "conditional-" + itemId %}
+  {%- if item.divider %}
+    <div class="govuk-checkboxes__divider">{{ item.divider }}</div>
+  {%- else %}
+    {% set isChecked = item.checked | default((item.value in params.values and item.checked != false) if params.values else false, true) %}
+    {% set hasHint = true if item.hint.text or item.hint.html %}
+    {% set itemHintId = itemId + "-item-hint" if hasHint else "" %}
+    {% set itemDescribedBy = describedBy if not hasFieldset else "" %}
+    {% set itemDescribedBy = (itemDescribedBy + " " + itemHintId) | trim %}
+    <div class="govuk-checkboxes__item">
+      <input class="govuk-checkboxes__input" id="{{ itemId }}" name="{{ itemName }}" type="checkbox" value="{{ item.value }}"
+      {{-" checked" if isChecked }}
+      {{-" disabled" if item.disabled }}
+      {%- if item.conditional.html %} data-aria-controls="{{ conditionalId }}"{% endif -%}
+      {%- if item.behaviour %} data-behaviour="{{ item.behaviour }}"{% endif -%}
+      {%- if itemDescribedBy %} aria-describedby="{{ itemDescribedBy }}"{% endif -%}
+      {{- govukAttributes(item.attributes) }}>
+      {{ govukLabel({
+        html: item.html,
+        text: item.text,
+        classes: 'govuk-checkboxes__label' + (' ' + item.label.classes if item.label.classes),
+        attributes: item.label.attributes,
+        for: itemId
+      }) | trim | indent(6) }}
+      {% if hasHint %}
+      {{ govukHint({
+        id: itemHintId,
+        classes: 'govuk-checkboxes__hint' + (' ' + item.hint.classes if item.hint.classes),
+        attributes: item.hint.attributes,
+        html: item.hint.html,
+        text: item.hint.text
+      }) | trim | indent(6) }}
+      {% endif %}
+    </div>
+    {% if item.conditional.html %}
+      <div class="govuk-checkboxes__conditional {%- if not isChecked %} govuk-checkboxes__conditional--hidden{% endif %}" id="{{ conditionalId }}">
+        {{ item.conditional.html | safe }}
+      </div>
+    {% endif %}
+  {% endif %}
+{% endmacro -%}
+
 {#- Capture the HTML so we can optionally nest it in a fieldset -#}
 {% set innerHtml %}
 {% if params.hint %}
@@ -50,58 +105,7 @@
     {% endif %}
     {% for item in params.items %}
       {% if item %}
-        {#- If the user explicitly sets an id, use this instead of the regular idPrefix -#}
-        {%- if item.id -%}
-          {%- set id = item.id -%}
-        {%- else -%}
-          {#- The first id should not have a number suffix so it's easy to link to from the error summary component -#}
-          {%- if loop.first -%}
-            {%- set id = idPrefix %}
-          {% else %}
-            {%- set id = idPrefix + "-" + loop.index -%}
-          {%- endif -%}
-        {%- endif -%}
-        {% set name = item.name if item.name else params.name %}
-        {% set conditionalId = "conditional-" + id %}
-        {%- if item.divider %}
-          <div class="govuk-checkboxes__divider">{{ item.divider }}</div>
-        {%- else %}
-          {% set isChecked = item.checked | default((item.value in params.values and item.checked != false) if params.values else false, true) %}
-          {% set hasHint = true if item.hint.text or item.hint.html %}
-          {% set itemHintId = id + "-item-hint" if hasHint else "" %}
-          {% set itemDescribedBy = describedBy if not hasFieldset else "" %}
-          {% set itemDescribedBy = (itemDescribedBy + " " + itemHintId) | trim %}
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="{{ id }}" name="{{ name }}" type="checkbox" value="{{ item.value }}"
-            {{-" checked" if isChecked }}
-            {{-" disabled" if item.disabled }}
-            {%- if item.conditional.html %} data-aria-controls="{{ conditionalId }}"{% endif -%}
-            {%- if item.behaviour %} data-behaviour="{{ item.behaviour }}"{% endif -%}
-            {%- if itemDescribedBy %} aria-describedby="{{ itemDescribedBy }}"{% endif -%}
-            {{- govukAttributes(item.attributes) }}>
-            {{ govukLabel({
-              html: item.html,
-              text: item.text,
-              classes: 'govuk-checkboxes__label' + (' ' + item.label.classes if item.label.classes),
-              attributes: item.label.attributes,
-              for: id
-            }) | trim | indent(6) }}
-            {% if hasHint %}
-            {{ govukHint({
-              id: itemHintId,
-              classes: 'govuk-checkboxes__hint' + (' ' + item.hint.classes if item.hint.classes),
-              attributes: item.hint.attributes,
-              html: item.hint.html,
-              text: item.hint.text
-            }) | trim | indent(6) }}
-            {% endif %}
-          </div>
-          {% if item.conditional.html %}
-            <div class="govuk-checkboxes__conditional {%- if not isChecked %} govuk-checkboxes__conditional--hidden{% endif %}" id="{{ conditionalId }}">
-              {{ item.conditional.html | safe }}
-            </div>
-          {% endif %}
-        {% endif %}
+        {{- _checkboxItem(params, item, loop.index) -}}
       {% endif %}
     {% endfor %}
     {% if params.formGroup.afterInputs %}
