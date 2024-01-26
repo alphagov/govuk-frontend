@@ -66,7 +66,8 @@
   // existing crown. In Frontend v5, this rule should replace the equivalent in
   // the block above.
   .govuk-header__logotype-crown[width="32"] {
-    margin-right: 4px;
+    top: -3px;
+    margin-right: 2px;
   }
 
   .govuk-header__logotype-crown-fallback-image {
