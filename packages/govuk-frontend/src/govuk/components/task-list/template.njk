@@ -21,7 +21,7 @@
       </div>
       <div class="govuk-task-list__status {%- if item.status.classes %} {{ item.status.classes }}{% endif %}" id="{{ statusId }}">
         {% if item.status.tag %}
-          {{ govukTag(item.status.tag) | indent(4) | trim }}
+          {{ govukTag(item.status.tag) | trim | indent(4) }}
         {% else %}
           {{ item.status.html | safe if item.status.html else item.status.text }}
         {% endif %}

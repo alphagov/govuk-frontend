@@ -37,7 +37,7 @@
     attributes: params.hint.attributes,
     html: params.hint.html,
     text: params.hint.text
-  }) | indent(2) | trim }}
+  }) | trim | indent(2) }}
 {% endif %}
 {% if params.errorMessage %}
   {% set errorId = params.id + "-error" %}
@@ -49,7 +49,7 @@
     html: params.errorMessage.html,
     text: params.errorMessage.text,
     visuallyHiddenText: params.errorMessage.visuallyHiddenText
-  }) | indent(2) | trim }}
+  }) | trim | indent(2) }}
 {% endif %}
   <div class="govuk-date-input {%- if params.classes %} {{ params.classes }}{% endif %}"
     {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
@@ -70,7 +70,7 @@
         autocomplete: item.autocomplete,
         pattern: item.pattern,
         attributes: item.attributes
-      }) | indent(6) | trim }}
+      }) | trim | indent(6) }}
     </div>
   {% endfor %}
   </div>
@@ -89,9 +89,9 @@
     attributes: params.fieldset.attributes,
     legend: params.fieldset.legend
   }) %}
-  {{ innerHtml | trim | safe }}
+  {{ innerHtml | safe | trim }}
   {% endcall %}
 {% else %}
-  {{ innerHtml | trim | safe }}
+  {{ innerHtml | safe | trim }}
 {% endif %}
 </div>
