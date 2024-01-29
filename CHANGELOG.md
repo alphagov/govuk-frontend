@@ -14,6 +14,7 @@ These changes were made in the following pull requests:
 
 - [#4376: Implement the Tudor crown favicons (v4.x)](https://github.com/alphagov/govuk-frontend/pull/4376)
 - [#4278: Implement the Tudor crown in the Header component (v4.x)](https://github.com/alphagov/govuk-frontend/pull/4278)
+- [#4677: Adjust the spacing of the new Tudor crown (v4.x)](https://github.com/alphagov/govuk-frontend/pull/4677) - thanks to [Martin Jones](https://github.com/MartinJJones) and [Mónica Crusellas](https://github.com/monicacrusellasfanlo) for contributing this change
 
 ##### Include the new logo assets
 
