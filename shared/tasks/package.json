@@ -12,7 +12,7 @@
     "@govuk-frontend/config": "*",
     "@govuk-frontend/helpers": "*",
     "@govuk-frontend/lib": "*",
-    "@npmcli/run-script": "^7.0.3",
+    "@npmcli/run-script": "^7.0.4",
     "@percy/puppeteer": "^2.0.2",
     "chalk": "^5.3.0",
     "gulp": "^4.0.2",
