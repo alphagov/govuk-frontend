@@ -6,6 +6,9 @@
   aria-describedby – for example hints or error messages -#}
 {% set describedBy = params.describedBy if params.describedBy else "" -%}
 
+{%- set hasPrefix = true if params.prefix and (params.prefix.text or params.prefix.html) else false %}
+{%- set hasSuffix = true if params.suffix and (params.suffix.text or params.suffix.html) else false %}
+
 <div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}" {%- for attribute, value in params.formGroup.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
   {{ govukLabel({
     html: params.label.html,
@@ -39,9 +42,9 @@
   }) | trim | indent(2) }}
 {% endif %}
 
-  {%- if params.prefix or params.suffix %}<div class="govuk-input__wrapper">{% endif -%}
+  {%- if hasPrefix or hasSuffix %}<div class="govuk-input__wrapper">{% endif -%}
 
-  {%- if params.prefix.text or params.prefix.html -%}
+  {%- if hasPrefix -%}
     <div class="govuk-input__prefix {%- if params.prefix.classes %} {{ params.prefix.classes }}{% endif %}" aria-hidden="true" {%- for attribute, value in params.prefix.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
       {{- params.prefix.html | safe if params.prefix.html else params.prefix.text -}}
     </div>
@@ -57,12 +60,12 @@
   {%- if params.inputmode %} inputmode="{{ params.inputmode }}"{% endif %}
   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
 
-  {%- if params.suffix.text or params.suffix.html -%}
+  {%- if hasSuffix -%}
     <div class="govuk-input__suffix {%- if params.suffix.classes %} {{ params.suffix.classes }}{% endif %}" aria-hidden="true" {%- for attribute, value in params.suffix.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
       {{- params.suffix.html | safe if params.suffix.html else params.suffix.text -}}
     </div>
   {% endif -%}
 
-{%- if params.prefix or params.suffix %}</div>{% endif %}
+{%- if hasPrefix or hasSuffix %}</div>{% endif %}
 
 </div>
