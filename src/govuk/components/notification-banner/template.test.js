@@ -1,5 +1,6 @@
 const { render } = require('@govuk-frontend/helpers/nunjucks')
 const { getExamples } = require('@govuk-frontend/lib/components')
+const { indent } = require('nunjucks/src/filters')
 const { outdent } = require('outdent')
 
 describe('Notification-banner', () => {
@@ -191,7 +192,13 @@ describe('Notification-banner', () => {
       const $content = $('.govuk-notification-banner__content')
 
       expect($content.html().trim()).toEqual(
-        '<p class="govuk-notification-banner__heading">&lt;span&gt;This publication was withdrawn on 7 March 2014.&lt;/span&gt;</p>'
+        indent(
+          outdent`
+            <p class="govuk-notification-banner__heading">
+              &lt;span&gt;This publication was withdrawn on 7 March 2014.&lt;/span&gt;
+            </p>
+          `
+        )
       )
     })
 
@@ -199,12 +206,18 @@ describe('Notification-banner', () => {
       const $ = render('notification-banner', examples['with text as html'])
       const $contentHtml = $('.govuk-notification-banner__content')
 
-      expect($contentHtml.html().trim()).toEqual(outdent`
-        <h3 class="govuk-notification-banner__heading">
-          This publication was withdrawn on 7 March 2014
-        </h3>
-        <p class="govuk-body">Archived and replaced by the <a href="#" class="govuk-notification-banner__link">new planning guidance</a> launched 6 March 2014 on an external website</p>
-      `)
+      expect($contentHtml.html().trim()).toEqual(
+        indent(
+          outdent`
+            <h3 class="govuk-notification-banner__heading">
+              This publication was withdrawn on 7 March 2014
+            </h3>
+            <p class="govuk-body">
+              Archived and replaced by the <a href="#" class="govuk-notification-banner__link">new planning guidance</a> launched 6 March 2014 on an external website
+            </p>
+          `
+        )
+      )
     })
   })
 
