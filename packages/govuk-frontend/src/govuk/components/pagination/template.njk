@@ -12,26 +12,41 @@
   </svg>
 {%- endset -%}
 
+{%- macro _arrowLink(link, type = "next") %}
+  {% set arrowType = arrowPrevious if type == "prev" else arrowNext %}
+  <div class="govuk-pagination__{{ type }}">
+    <a class="govuk-link govuk-pagination__link" href="{{ link.href }}" rel="{{ type }}"
+      {%- for attribute, value in link.attributes %} {{ attribute }}="{{ value }}" {%- endfor %}>
+      {% if blockLevel or type == "prev" %}
+        {{- arrowType | safe | indent(4, true) }}
+      {% endif %}
+      <span class="govuk-pagination__link-title {%- if blockLevel and not link.labelText %} govuk-pagination__link-title--decorated{% endif %}">
+        {{ caller() | safe | trim }}
+      </span>
+      {% if link.labelText and blockLevel %}
+      <span class="govuk-visually-hidden">:</span>
+      <span class="govuk-pagination__link-label">{{ link.labelText }}</span>
+      {% endif %}
+      {% if not blockLevel and type == "next" %}
+        {{- arrowType | safe | indent(4, true) }}
+      {% endif %}
+    </a>
+  </div>
+{% endmacro -%}
+
 <nav class="govuk-pagination {%- if blockLevel %} govuk-pagination--block{% endif %} {%- if params.classes %} {{ params.classes }}{% endif %}" role="navigation" aria-label="{{ params.landmarkLabel | default("Pagination", true) }}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}" {%- endfor %}>
-  {% if params.previous and params.previous.href %}
-    <div class="govuk-pagination__prev">
-      <a class="govuk-link govuk-pagination__link" href="{{ params.previous.href }}" rel="prev"
-        {%- for attribute, value in params.previous.attributes %} {{ attribute }}="{{ value }}" {%- endfor %}>
-        {{ arrowPrevious | safe }}
-        <span class="govuk-pagination__link-title {%- if blockLevel and not params.previous.labelText %} govuk-pagination__link-title--decorated{% endif %}">
-          {% if params.previous.html or params.previous.text %}
-            {{ params.previous.html | safe if params.previous.html else params.previous.text }}
-          {% else %}
-            Previous<span class="govuk-visually-hidden"> page</span>
-          {% endif %}
-        </span>
-        {% if params.previous.labelText and blockLevel %}
-          <span class="govuk-visually-hidden">:</span>
-          <span class="govuk-pagination__link-label">{{ params.previous.labelText }}</span>
-        {% endif %}
-      </a>
-    </div>
-  {% endif %}
+  {% set previous = params.previous %}
+  {% set next = params.next %}
+
+  {%- if previous and previous.href %}
+    {% call _arrowLink(previous, "prev") %}
+      {% if previous.html or previous.text %}
+        {{ previous.html | safe | trim | indent(8) if previous.html else previous.text }}
+      {% else %}
+        Previous<span class="govuk-visually-hidden"> page</span>
+      {% endif %}
+    {% endcall %}
+  {%- endif %}
 
   {%- if params.items %}
     <ul class="govuk-pagination__list">
@@ -50,28 +65,13 @@
     </ul>
   {% endif %}
 
-  {%- if params.next and params.next.href %}
-    <div class="govuk-pagination__next">
-      <a class="govuk-link govuk-pagination__link" href="{{ params.next.href }}" rel="next"
-        {%- for attribute, value in params.next.attributes %} {{ attribute }}="{{ value }}" {%- endfor %}>
-        {% if blockLevel %}
-          {{- arrowNext | safe }}
-        {% endif %}
-        <span class="govuk-pagination__link-title {%- if blockLevel and not params.next.labelText %} govuk-pagination__link-title--decorated{% endif %}">
-          {% if params.next.html or params.next.text %}
-            {{ params.next.html | safe if params.next.html else params.next.text }}
-          {% else %}
-            Next<span class="govuk-visually-hidden"> page</span>
-          {% endif %}
-        </span>
-        {% if params.next.labelText and blockLevel %}
-          <span class="govuk-visually-hidden">:</span>
-          <span class="govuk-pagination__link-label">{{ params.next.labelText }}</span>
-        {% endif %}
-        {% if not blockLevel %}
-          {{- arrowNext | safe }}
-        {% endif %}
-      </a>
-    </div>
+  {%- if next and next.href %}
+    {% call _arrowLink(next, "next") %}
+      {% if next.html or next.text %}
+        {{ next.html | safe | trim | indent(8) if next.html else next.text }}
+      {% else %}
+        Next<span class="govuk-visually-hidden"> page</span>
+      {% endif %}
+    {% endcall %}
   {% endif %}
 </nav>
