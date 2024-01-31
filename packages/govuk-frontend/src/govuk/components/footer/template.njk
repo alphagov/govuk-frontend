@@ -31,28 +31,28 @@
     <div class="govuk-footer__meta">
       <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
         {% if params.meta %}
-          <h2 class="govuk-visually-hidden">{{ params.meta.visuallyHiddenTitle | default("Support links", true) }}</h2>
-          {% if params.meta.items | length %}
-            <ul class="govuk-footer__inline-list">
-              {% for item in params.meta.items %}
-                <li class="govuk-footer__inline-list-item">
-                  <a class="govuk-footer__link" href="{{ item.href }}"
-                    {{- govukAttributes(item.attributes) }}>
-                    {{ item.text }}
-                  </a>
-                </li>
-              {% endfor %}
-            </ul>
-          {% endif %}
-          {% if params.meta.text or params.meta.html %}
-            <div class="govuk-footer__meta-custom">
-              {{ params.meta.html | safe if params.meta.html else params.meta.text }}
-            </div>
-          {% endif %}
+        <h2 class="govuk-visually-hidden">{{ params.meta.visuallyHiddenTitle | default("Support links", true) }}</h2>
+        {% if params.meta.items | length %}
+        <ul class="govuk-footer__inline-list">
+        {% for item in params.meta.items %}
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="{{ item.href }}"
+              {{- govukAttributes(item.attributes) }}>
+              {{ item.text }}
+            </a>
+          </li>
+        {% endfor %}
+        </ul>
         {% endif %}
-        {#- The SVG needs `focusable="false"` so that Internet Explorer does not
-        treat it as an interactive element - without this it will be
-        'focusable' when using the keyboard to navigate. #}
+        {% if params.meta.text or params.meta.html %}
+        <div class="govuk-footer__meta-custom">
+          {{ params.meta.html | safe | trim | indent(10) if params.meta.html else params.meta.text }}
+        </div>
+        {% endif %}
+        {% endif %}
+        {# The SVG needs `focusable="false"` so that Internet Explorer does not
+          treat it as an interactive element - without this it will be
+          'focusable' when using the keyboard to navigate. -#}
         <svg
           aria-hidden="true"
           focusable="false"
@@ -68,16 +68,16 @@
           />
         </svg>
         <span class="govuk-footer__licence-description">
-          {% if params.contentLicence.html or params.contentLicence.text %}
-            {{ params.contentLicence.html | safe if params.contentLicence.html else params.contentLicence.text }}
-          {% else %}
-            All content is available under the
-            <a
-              class="govuk-footer__link"
-              href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-              rel="license"
-            >Open Government Licence v3.0</a>, except where otherwise stated
-          {% endif %}
+        {% if params.contentLicence.html or params.contentLicence.text %}
+          {{ params.contentLicence.html | safe | trim | indent(10) if params.contentLicence.html else params.contentLicence.text }}
+        {% else %}
+          All content is available under the
+          <a
+            class="govuk-footer__link"
+            href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+            rel="license"
+          >Open Government Licence v3.0</a>, except where otherwise stated
+        {% endif %}
         </span>
       </div>
       <div class="govuk-footer__meta-item">
@@ -85,11 +85,11 @@
           class="govuk-footer__link govuk-footer__copyright-logo"
           href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
         >
-          {%- if params.copyright.html or params.copyright.text -%}
-            {{ params.copyright.html | safe if params.copyright.html else params.copyright.text }}
-          {%- else -%}
-            © Crown copyright
-          {%- endif -%}
+        {% if params.copyright.html or params.copyright.text %}
+          {{ params.copyright.html | safe | trim | indent(10) if params.copyright.html else params.copyright.text }}
+        {% else %}
+          © Crown copyright
+        {% endif %}
         </a>
       </div>
     </div>
