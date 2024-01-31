@@ -23,7 +23,7 @@
 
 {%- macro _affixItem(affix, type) %}
   <div class="govuk-input__{{ type }} {%- if affix.classes %} {{ affix.classes }}{% endif %}" aria-hidden="true" {%- for attribute, value in affix.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-    {{- affix.html | safe if affix.html else affix.text -}}
+    {{- affix.html | safe | trim | indent(4) if affix.html else affix.text -}}
   </div>
 {%- endmacro -%}
 
@@ -62,13 +62,13 @@
 
 {%- if hasPrefix or hasSuffix %}
   <div class="govuk-input__wrapper">
-  {%- if hasPrefix -%}
-    {{ _affixItem(params.prefix, "prefix") }}
-  {% endif %}
-  {{ _inputElement(params) }}
-  {%- if hasSuffix -%}
-    {{ _affixItem(params.suffix, "suffix") }}
-  {% endif %}
+    {% if hasPrefix %}
+      {{- _affixItem(params.prefix, "prefix") | indent(2, true) }}
+    {% endif %}
+    {{ _inputElement(params) }}
+    {% if hasSuffix %}
+      {{- _affixItem(params.suffix, "suffix") | indent(2, true) }}
+    {% endif %}
   </div>
 {% else %}
   {{ _inputElement(params) }}
