@@ -112,7 +112,8 @@ export default {
       ...config,
       displayName: 'JavaScript behaviour tests',
       testEnvironment: '@govuk-frontend/helpers/jest/environment/jsdom.mjs',
-      testMatch: ['**/*.jsdom.test.{js,mjs}']
+      testMatch: ['**/*.jsdom.test.{js,mjs}'],
+      setupFilesAfterEnv: ['@testing-library/jest-dom']
     },
     {
       ...config,
