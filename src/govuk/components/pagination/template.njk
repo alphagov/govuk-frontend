@@ -26,8 +26,8 @@
         {{ caller() | safe | trim }}
       </span>
       {% if link.labelText and blockLevel %}
-        <span class="govuk-visually-hidden">:</span>
-        <span class="govuk-pagination__link-label">{{ link.labelText }}</span>
+      <span class="govuk-visually-hidden">:</span>
+      <span class="govuk-pagination__link-label">{{ link.labelText }}</span>
       {% endif %}
       {% if not blockLevel and type == "next" %}
         {{- arrowType | safe | indent(4, true) }}
@@ -66,11 +66,11 @@
   {%- endif %}
 
   {%- if params.items %}
-    <ul class="govuk-pagination__list">
-      {% for item in params.items %}
-        {{ _pageItem(item) | indent(2) }}
-      {% endfor %}
-    </ul>
+  <ul class="govuk-pagination__list">
+  {% for item in params.items %}
+    {{ _pageItem(item) | indent(2) }}
+  {% endfor %}
+  </ul>
   {% endif %}
 
   {%- if next and next.href %}
