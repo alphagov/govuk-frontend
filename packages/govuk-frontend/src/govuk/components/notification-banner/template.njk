@@ -35,11 +35,13 @@
     </h{{ params.titleHeadingLevel | default(2, true) }}>
   </div>
   <div class="govuk-notification-banner__content">
-    {%- if caller or params.html -%}
-      {{ caller() if caller else params.html | safe }}
-    {%- elif params.text -%}
-      {# Set default style for single line content #}
-      <p class="govuk-notification-banner__heading">{{ params.text }}</p>
-    {%- endif -%}
+  {% if caller or params.html %}
+    {{ caller() if caller else params.html | safe | trim | indent(4) }}
+  {% elif params.text %}
+    {# Set default style for single line content -#}
+    <p class="govuk-notification-banner__heading">
+      {{ params.text | trim | indent(6) }}
+    </p>
+  {% endif %}
   </div>
 </div>
