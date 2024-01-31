@@ -16,32 +16,32 @@
 
 <nav class="govuk-pagination {%- if blockLevel %} govuk-pagination--block{% endif %} {%- if params.classes %} {{ params.classes }}{% endif %}" role="navigation" aria-label="{{ params.landmarkLabel | default("Pagination", true) }}"
   {{- govukAttributes(params.attributes) }}>
-  {%- if params.previous and params.previous.href -%}
+  {% if params.previous and params.previous.href %}
     <div class="govuk-pagination__prev">
       <a class="govuk-link govuk-pagination__link" href="{{ params.previous.href }}" rel="prev"
         {{- govukAttributes(params.previous.attributes) }}>
-        {{- arrowPrevious | safe -}}
+        {{ arrowPrevious | safe }}
         <span class="govuk-pagination__link-title {%- if blockLevel and not params.previous.labelText %} govuk-pagination__link-title--decorated{% endif %}">
-          {%- if params.previous.html or params.previous.text -%}
+          {% if params.previous.html or params.previous.text %}
             {{ params.previous.html | safe if params.previous.html else params.previous.text }}
-          {%- else -%}
+          {% else %}
             Previous<span class="govuk-visually-hidden"> page</span>
-          {%- endif -%}
+          {% endif %}
         </span>
-        {%- if params.previous.labelText and blockLevel -%}
+        {% if params.previous.labelText and blockLevel %}
           <span class="govuk-visually-hidden">:</span>
           <span class="govuk-pagination__link-label">{{ params.previous.labelText }}</span>
-        {%- endif -%}
+        {% endif %}
       </a>
     </div>
   {% endif %}
 
-  {%- if params.items -%}
+  {%- if params.items %}
     <ul class="govuk-pagination__list">
-      {%- for item in params.items -%}
-        {%- if item.ellipsis -%}
+      {% for item in params.items %}
+        {% if item.ellipsis %}
           <li class="govuk-pagination__item govuk-pagination__item--ellipses">&ctdot;</li>
-        {%- elseif item.number -%}
+        {% elseif item.number %}
           <li class="govuk-pagination__item {%- if item.current %} govuk-pagination__item--current{% endif %}">
             <a class="govuk-link govuk-pagination__link" href="{{ item.href }}" aria-label="{{ item.visuallyHiddenText | default("Page " + item.number) }}"
               {%- if item.current %} aria-current="page"{% endif %}
@@ -49,33 +49,33 @@
               {{ item.number }}
             </a>
           </li>
-        {%- endif -%}
-      {%- endfor -%}
+        {% endif %}
+      {% endfor %}
     </ul>
-  {%- endif -%}
+  {% endif %}
 
-  {%- if params.next and params.next.href -%}
+  {%- if params.next and params.next.href %}
     <div class="govuk-pagination__next">
       <a class="govuk-link govuk-pagination__link" href="{{ params.next.href }}" rel="next"
         {{- govukAttributes(params.next.attributes) }}>
-        {%- if blockLevel -%}
-          {{- arrowNext | safe -}}
-        {%- endif %}
+        {% if blockLevel %}
+          {{- arrowNext | safe }}
+        {% endif %}
         <span class="govuk-pagination__link-title {%- if blockLevel and not params.next.labelText %} govuk-pagination__link-title--decorated{% endif %}">
-          {%- if params.next.html or params.next.text -%}
+          {% if params.next.html or params.next.text %}
             {{ params.next.html | safe if params.next.html else params.next.text }}
-          {%- else -%}
+          {% else %}
             Next<span class="govuk-visually-hidden"> page</span>
-          {%- endif -%}
+          {% endif %}
         </span>
-        {%- if params.next.labelText and blockLevel -%}
+        {% if params.next.labelText and blockLevel %}
           <span class="govuk-visually-hidden">:</span>
           <span class="govuk-pagination__link-label">{{ params.next.labelText }}</span>
-        {%- endif -%}
-        {%- if not blockLevel -%}
-          {{- arrowNext | safe -}}
-        {%- endif -%}
+        {% endif %}
+        {% if not blockLevel %}
+          {{- arrowNext | safe }}
+        {% endif %}
       </a>
     </div>
-  {%- endif -%}
+  {% endif %}
 </nav>
