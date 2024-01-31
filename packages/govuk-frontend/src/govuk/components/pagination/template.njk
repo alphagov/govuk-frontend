@@ -62,11 +62,11 @@
   {%- endif %}
 
   {%- if params.items %}
-    <ul class="govuk-pagination__list">
-      {% for item in params.items %}
-        {{ _pageItem(item) | indent(2) }}
-      {% endfor %}
-    </ul>
+  <ul class="govuk-pagination__list">
+  {% for item in params.items %}
+    {{ _pageItem(item) | indent(2) }}
+  {% endfor %}
+  </ul>
   {% endif %}
 
   {%- if next and next.href %}
