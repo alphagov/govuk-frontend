@@ -21,6 +21,12 @@
     {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
 {%- endmacro -%}
 
+{%- macro _affixItem(affix, type) %}
+  <div class="govuk-input__{{ type }} {%- if affix.classes %} {{ affix.classes }}{% endif %}" aria-hidden="true" {%- for attribute, value in affix.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    {{- affix.html | safe if affix.html else affix.text -}}
+  </div>
+{%- endmacro -%}
+
 <div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}" {%- for attribute, value in params.formGroup.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
   {{ govukLabel({
     html: params.label.html,
@@ -57,15 +63,11 @@
 {%- if hasPrefix or hasSuffix %}
   <div class="govuk-input__wrapper">
   {%- if hasPrefix -%}
-    <div class="govuk-input__prefix {%- if params.prefix.classes %} {{ params.prefix.classes }}{% endif %}" aria-hidden="true" {%- for attribute, value in params.prefix.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-      {{- params.prefix.html | safe if params.prefix.html else params.prefix.text -}}
-    </div>
+    {{ _affixItem(params.prefix, "prefix") }}
   {% endif %}
   {{ _inputElement(params) }}
   {%- if hasSuffix -%}
-    <div class="govuk-input__suffix {%- if params.suffix.classes %} {{ params.suffix.classes }}{% endif %}" aria-hidden="true" {%- for attribute, value in params.suffix.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-      {{- params.suffix.html | safe if params.suffix.html else params.suffix.text -}}
-    </div>
+    {{ _affixItem(params.suffix, "suffix") }}
   {% endif %}
   </div>
 {% else %}
