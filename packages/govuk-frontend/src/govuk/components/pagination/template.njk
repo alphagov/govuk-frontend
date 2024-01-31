@@ -36,6 +36,20 @@
   </div>
 {% endmacro -%}
 
+{%- macro _pageItem(item) -%}
+  <li class="govuk-pagination__item {%- if item.current %} govuk-pagination__item--current{% endif %} {%- if item.ellipsis %} govuk-pagination__item--ellipses{% endif %}">
+  {% if item.ellipsis %}
+    &ctdot;
+  {% else %}
+    <a class="govuk-link govuk-pagination__link" href="{{ item.href }}" aria-label="{{ item.visuallyHiddenText | default("Page " + item.number) }}"
+      {%- if item.current %} aria-current="page"{% endif %}
+      {{- govukAttributes(item.attributes) }}>
+      {{ item.number }}
+    </a>
+  {% endif %}
+  </li>
+{%- endmacro -%}
+
 <nav class="govuk-pagination {%- if blockLevel %} govuk-pagination--block{% endif %} {%- if params.classes %} {{ params.classes }}{% endif %}" role="navigation" aria-label="{{ params.landmarkLabel | default("Pagination", true) }}"
   {{- govukAttributes(params.attributes) }}>
   {% set previous = params.previous %}
@@ -54,17 +68,7 @@
   {%- if params.items %}
     <ul class="govuk-pagination__list">
       {% for item in params.items %}
-        {% if item.ellipsis %}
-          <li class="govuk-pagination__item govuk-pagination__item--ellipses">&ctdot;</li>
-        {% elseif item.number %}
-          <li class="govuk-pagination__item {%- if item.current %} govuk-pagination__item--current{% endif %}">
-            <a class="govuk-link govuk-pagination__link" href="{{ item.href }}" aria-label="{{ item.visuallyHiddenText | default("Page " + item.number) }}"
-              {%- if item.current %} aria-current="page"{% endif %}
-              {{- govukAttributes(item.attributes) }}>
-              {{ item.number }}
-            </a>
-          </li>
-        {% endif %}
+        {{ _pageItem(item) | indent(2) }}
       {% endfor %}
     </ul>
   {% endif %}

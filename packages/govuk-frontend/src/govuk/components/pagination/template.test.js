@@ -60,7 +60,7 @@ describe('Pagination', () => {
 
       expect($firstEllipsis).toBeTruthy()
       // Test for the unicode character of &ctdot;
-      expect($firstEllipsis.text()).toEqual('\u22ef')
+      expect($firstEllipsis.text().trim()).toEqual('\u22ef')
     })
   })
 
