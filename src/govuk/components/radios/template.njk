@@ -11,6 +11,9 @@
   aria-describedby – for example hints or error messages -#}
 {% set describedBy = params.fieldset.describedBy if params.fieldset.describedBy else "" %}
 
+{#- fieldset is false by default -#}
+{% set hasFieldset = true if params.fieldset else false %}
+
 {#- Capture the HTML so we can optionally nest it in a fieldset -#}
 {% set innerHtml %}
 {% if params.hint %}
@@ -94,15 +97,14 @@
 {% endset -%}
 
 <div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}" {%- for attribute, value in params.formGroup.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-{% if params.fieldset %}
-  {% call govukFieldset({
+{% if hasFieldset %}
+  {{ govukFieldset({
     describedBy: describedBy,
     classes: params.fieldset.classes,
     attributes: params.fieldset.attributes,
-    legend: params.fieldset.legend
-  }) %}
-  {{ innerHtml | safe | trim }}
-  {% endcall %}
+    legend: params.fieldset.legend,
+    html: innerHtml | trim
+  }) | trim | indent(2) }}
 {% else %}
   {{ innerHtml | safe | trim }}
 {% endif %}
