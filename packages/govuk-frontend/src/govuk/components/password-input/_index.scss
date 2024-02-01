@@ -18,6 +18,16 @@
     }
   }
 
+  .govuk-password-input__input {
+    // IE 11 and Microsoft Edge comes with its own password reveal function. We want to hide it, so
+    // that there aren't two controls presented to the user that do the same thing but aren't in
+    // sync with one another. This doesn't affect the function that allows Edge user's to toggle\
+    // password visibility by pressing Alt+F8.
+    &::-ms-reveal {
+      display: none;
+    }
+  }
+
   .govuk-password-input__toggle {
     // Add margin to the top so that the button doesn't obscure the input's focus style
     margin-top: govuk-spacing(1);
