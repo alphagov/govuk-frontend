@@ -6,6 +6,27 @@
   aria-describedby – for example hints or error messages -#}
 {% set describedBy = params.describedBy if params.describedBy else "" -%}
 
+{%- set hasPrefix = true if params.prefix and (params.prefix.text or params.prefix.html) else false %}
+{%- set hasSuffix = true if params.suffix and (params.suffix.text or params.suffix.html) else false %}
+
+{%- macro _inputElement(params) -%}
+  <input class="govuk-input {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-input--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="{{ params.type | default("text", true) }}"
+    {%- if (params.spellcheck === false) or (params.spellcheck === true) %} spellcheck="{{ params.spellcheck }}"{% endif %}
+    {%- if params.value %} value="{{ params.value }}"{% endif %}
+    {%- if params.disabled %} disabled{% endif %}
+    {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
+    {%- if params.autocomplete %} autocomplete="{{ params.autocomplete }}"{% endif %}
+    {%- if params.pattern %} pattern="{{ params.pattern }}"{% endif %}
+    {%- if params.inputmode %} inputmode="{{ params.inputmode }}"{% endif %}
+    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+{%- endmacro -%}
+
+{%- macro _affixItem(affix, type) %}
+  <div class="govuk-input__{{ type }} {%- if affix.classes %} {{ affix.classes }}{% endif %}" aria-hidden="true" {%- for attribute, value in affix.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    {{- affix.html | safe | trim | indent(4) if affix.html else affix.text -}}
+  </div>
+{%- endmacro -%}
+
 <div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}" {%- for attribute, value in params.formGroup.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
   {{ govukLabel({
     html: params.label.html,
@@ -39,30 +60,17 @@
   }) | trim | indent(2) }}
 {% endif %}
 
-  {%- if params.prefix or params.suffix %}<div class="govuk-input__wrapper">{% endif -%}
-
-  {%- if params.prefix.text or params.prefix.html -%}
-    <div class="govuk-input__prefix {%- if params.prefix.classes %} {{ params.prefix.classes }}{% endif %}" aria-hidden="true" {%- for attribute, value in params.prefix.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-      {{- params.prefix.html | safe if params.prefix.html else params.prefix.text -}}
-    </div>
-  {% endif -%}
-
-  <input class="govuk-input {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-input--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="{{ params.type | default("text", true) }}"
-  {%- if (params.spellcheck === false) or (params.spellcheck === true) %} spellcheck="{{ params.spellcheck }}"{% endif %}
-  {%- if params.value %} value="{{ params.value }}"{% endif %}
-  {%- if params.disabled %} disabled{% endif %}
-  {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
-  {%- if params.autocomplete %} autocomplete="{{ params.autocomplete }}"{% endif %}
-  {%- if params.pattern %} pattern="{{ params.pattern }}"{% endif %}
-  {%- if params.inputmode %} inputmode="{{ params.inputmode }}"{% endif %}
-  {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-
-  {%- if params.suffix.text or params.suffix.html -%}
-    <div class="govuk-input__suffix {%- if params.suffix.classes %} {{ params.suffix.classes }}{% endif %}" aria-hidden="true" {%- for attribute, value in params.suffix.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-      {{- params.suffix.html | safe if params.suffix.html else params.suffix.text -}}
-    </div>
-  {% endif -%}
-
-{%- if params.prefix or params.suffix %}</div>{% endif %}
-
+{%- if hasPrefix or hasSuffix %}
+  <div class="govuk-input__wrapper">
+    {% if hasPrefix %}
+      {{- _affixItem(params.prefix, "prefix") | indent(2, true) }}
+    {% endif %}
+    {{ _inputElement(params) }}
+    {% if hasSuffix %}
+      {{- _affixItem(params.suffix, "suffix") | indent(2, true) }}
+    {% endif %}
+  </div>
+{% else %}
+  {{ _inputElement(params) }}
+{% endif %}
 </div>
