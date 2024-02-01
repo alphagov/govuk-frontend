@@ -153,6 +153,7 @@ describe('packages/govuk-frontend/dist/', () => {
       'package.json',
       'postcss.config.mjs',
       'postcss.config.unit.test.mjs',
+      'postinstall.js',
       'rollup.publish.config.mjs',
       'rollup.release.config.mjs',
       'tsconfig.build.json',
