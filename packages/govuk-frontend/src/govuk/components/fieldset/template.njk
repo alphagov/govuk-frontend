@@ -7,10 +7,10 @@
   <legend class="govuk-fieldset__legend {%- if params.legend.classes %} {{ params.legend.classes }}{% endif %}">
   {% if params.legend.isPageHeading %}
     <h1 class="govuk-fieldset__heading">
-      {{ params.legend.html | safe if params.legend.html else params.legend.text }}
+      {{ params.legend.html | safe | trim | indent(6) if params.legend.html else params.legend.text }}
     </h1>
   {% else %}
-    {{ params.legend.html | safe if params.legend.html else params.legend.text }}
+    {{ params.legend.html | safe | trim | indent(4) if params.legend.html else params.legend.text }}
   {% endif %}
   </legend>
   {% endif %}
