@@ -151,6 +151,25 @@ $govuk-typography-scale: (
     print: (
       font-size: 12pt,
       line-height: 1.2
+    ),
+    deprecation: (
+      key: "govuk-typography-scale-14",
+      message: "14 on the type scale is deprecated and will be removed as " +
+        "a possible option in the next major version."
+    )
+  ),
+  _14: (
+    null: (
+      font-size: 12px,
+      line-height: 15px
+    ),
+    tablet: (
+      font-size: 14px,
+      line-height: 20px
+    ),
+    print: (
+      font-size: 12pt,
+      line-height: 1.2
     )
   )
 ) !default;

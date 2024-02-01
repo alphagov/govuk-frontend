@@ -114,6 +114,17 @@ In the future, the component will automatically use the use the `<a>` element if
 
 This change was introduced in [pull request #4646: Deprecate `element` parameter on button component](https://github.com/alphagov/govuk-frontend/pull/4646)
 
+#### Stop using `govuk-body-xs`, `govuk-!-font-size-14` and '14' on the type scale
+
+We have deprecated point 14 (14px large screens, 12px small screens) on the GOV.UK Frontend responsive type scale, including font override classes that use point 14:
+
+- `govuk-body-xs`
+- `govuk-!-font-size-14`
+
+We will be removing these classes and point 14 on the type scale in GOV.UK Frontend release v6.0.0. From the next major release, you will no longer be able to call the Sass mixins `govuk-font` or `govuk-font-size` with `$size` set to '14'.
+
+This change was introduced in [#4649: Deprecate 14 on the type scale](https://github.com/alphagov/govuk-frontend/pull/4649)
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:

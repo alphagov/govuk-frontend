@@ -99,14 +99,14 @@
 
 /// Font size and line height helper
 ///
-/// @param {Number} $size - Point from the spacing scale (the size as it would
+/// @param {Number} $size - Point from the type scale (the size as it would
 ///   appear on tablet and above)
 /// @param {Number} $override-line-height [false] - Non responsive custom line
 ///   height. Omit to use the line height from the font map.
 /// @param {Boolean} $important [false] - Whether to mark declarations as
 ///   `!important`.
 ///
-/// @throw if `$size` is not a valid point from the spacing scale
+/// @throw if `$size` is not a valid point from the type scale
 ///
 /// @access public
 ///
@@ -144,23 +144,32 @@
 ///   )
 /// );
 ///
-/// @param {Number} $size - Point from the spacing scale (the size as it would
-///   appear on tablet and above)
+/// @param {Number | String} $size - Point from the type scale (the size as
+///   it would appear on tablet and above)
 /// @param {Number} $line-height [false] - Non responsive custom line
 ///   height. Omit to use the line height from the font map.
 /// @param {Boolean} $important [false] - Whether to mark declarations as
 ///   `!important`.
 ///
-/// @throw if `$size` is not a valid point from the spacing scale
+/// @throw if `$size` is not a valid point from the type scale
 ///
 /// @access public
 
 @mixin govuk-font-size($size, $line-height: false, $important: false) {
   @if not map-has-key($govuk-typography-scale, $size) {
-    @error "Unknown font size `#{$size}` - expected a point from the typography scale.";
+    @error "Unknown font size `#{$size}` - expected a point from the type scale.";
   }
 
   $font-map: map-get($govuk-typography-scale, $size);
+
+  // Check for a deprecation within the type scale
+  $deprecation: map-get($font-map, "deprecation");
+
+  @if $deprecation {
+    @include _warning(map-get($deprecation, "key"), map-get($deprecation, "message"));
+    // remove the deprecation map keys so they do not break the breakpoint loop
+    $font-map: map-remove($font-map, "deprecation");
+  }
 
   @each $breakpoint, $breakpoint-map in $font-map {
     $font-size: map-get($breakpoint-map, "font-size");
@@ -203,14 +212,15 @@
 
 /// Font helper
 ///
-/// @param {Number | Boolean} $size Point from the spacing scale (the size as it
-///   would appear on tablet and above). Use `false` to avoid setting a size.
+/// @param {Number | Boolean | String} $size Point from the type scale (the
+///   size as it would appear on tablet and above). Use `false` to avoid setting
+///   a size.
 /// @param {String} $weight [regular] - Weight: `bold` or `regular`
 /// @param {Boolean} $tabular [false] - Whether to use tabular numbers or not
 /// @param {Number} $line-height [false] - Line-height, if overriding the
 ///   default
 ///
-/// @throw if `$size` is not a valid point from the spacing scale (or false)
+/// @throw if `$size` is not a valid point from the type scale (or false)
 ///
 /// @access public
 
