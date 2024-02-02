@@ -11,37 +11,37 @@
 {% endmacro -%}
 
 {%- macro _summaryCard(params) %}
-  {%- set headingLevel = params.title.headingLevel if params.title.headingLevel else 2 -%}
+{%- set headingLevel = params.title.headingLevel if params.title.headingLevel else 2 -%}
 
-  <div class="govuk-summary-card {%- if params.classes %} {{ params.classes }}{% endif %}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-    <div class="govuk-summary-card__title-wrapper">
-      {%- if params.title -%}
-        <h{{ headingLevel }} class="govuk-summary-card__title {%- if params.title.classes %} {{ params.title.classes }}{% endif %}">
-          {{- params.title.html | safe if params.title.html else params.title.text -}}
-        </h{{ headingLevel }}>
-      {%- endif -%}
+<div class="govuk-summary-card {%- if params.classes %} {{ params.classes }}{% endif %}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  <div class="govuk-summary-card__title-wrapper">
+  {%- if params.title -%}
+    <h{{ headingLevel }} class="govuk-summary-card__title {%- if params.title.classes %} {{ params.title.classes }}{% endif %}">
+      {{- params.title.html | safe if params.title.html else params.title.text -}}
+    </h{{ headingLevel }}>
+  {%- endif -%}
 
-      {%- if params.actions.items.length -%}
-        {%- if params.actions.items.length == 1 -%}
-          <div class="govuk-summary-card__actions {%- if params.actions.classes %} {{ params.actions.classes }}{% endif %}">
-            {{- _actionLink(params.actions.items[0], params.title) -}}
-          </div>
-        {%- else -%}
-          <ul class="govuk-summary-card__actions {%- if params.actions.classes %} {{ params.actions.classes }}{% endif %}">
-            {%- for action in params.actions.items -%}
-              <li class="govuk-summary-card__action">
-                {{- _actionLink(action, params.title) -}}
-              </li>
-            {%- endfor -%}
-          </ul>
-        {% endif -%}
-      {%- endif -%}
+  {%- if params.actions.items.length -%}
+    {%- if params.actions.items.length == 1 -%}
+    <div class="govuk-summary-card__actions {%- if params.actions.classes %} {{ params.actions.classes }}{% endif %}">
+      {{- _actionLink(params.actions.items[0], params.title) -}}
     </div>
-
-    <div class="govuk-summary-card__content">
-      {{- caller() -}}
-    </div>
+    {%- else -%}
+    <ul class="govuk-summary-card__actions {%- if params.actions.classes %} {{ params.actions.classes }}{% endif %}">
+      {%- for action in params.actions.items -%}
+      <li class="govuk-summary-card__action">
+        {{- _actionLink(action, params.title) -}}
+      </li>
+      {%- endfor -%}
+    </ul>
+    {% endif -%}
+  {%- endif -%}
   </div>
+
+  <div class="govuk-summary-card__content">
+    {{- caller() -}}
+  </div>
+</div>
 {% endmacro -%}
 
 {# Determine if we need 2 or 3 columns #}
