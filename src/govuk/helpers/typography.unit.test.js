@@ -277,6 +277,73 @@ describe('@mixin govuk-font-size', () => {
     })
   })
 
+  it('outputs CSS when passing size as a string', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        @include govuk-font-size($size: "14")
+      }
+    `
+
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
+        .foo {
+          font-size: 0.75rem;
+          line-height: 1.25;
+        }
+        @media (min-width: 30em) {
+          .foo {
+            font-size: 0.875rem;
+            line-height: 1.4285714286;
+          }
+        }
+      `
+    })
+  })
+
+  it('outputs CSS using points as strings', async () => {
+    const sass = `
+      $govuk-breakpoints: (
+        desktop: 30em
+      );
+
+      $govuk-typography-scale: (
+        "small": (
+          null: (
+            font-size: 12px,
+            line-height: 15px
+          ),
+          print: (
+            font-size: 14pt,
+            line-height: 1.5
+          )
+        )
+      );
+
+      @import "base";
+
+      .foo {
+        @include govuk-font-size($size: "small")
+      }
+    `
+
+    await expect(compileSassString(sass)).resolves.toMatchObject({
+      css: outdent`
+        .foo {
+          font-size: 0.75rem;
+          line-height: 1.25;
+        }
+        @media print {
+          .foo {
+            font-size: 14pt;
+            line-height: 1.5;
+          }
+        }
+      `
+    })
+  })
+
   it('throws an exception when passed a size that is not in the scale', async () => {
     const sass = `
       ${sassBootstrap}
