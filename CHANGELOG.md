@@ -123,7 +123,7 @@ We have deprecated point 14 (14px large screens, 12px small screens) on the GOV.
 
 We will be removing these classes and point 14 on the type scale in GOV.UK Frontend release v6.0.0. From the next major release, you will no longer be able to call the Sass mixins `govuk-font` or `govuk-font-size` with `$size` set to '14'.
 
-This change was introduced in [#4649: Deprecate 14 on the type scale](https://github.com/alphagov/govuk-frontend/pull/4649)
+This change was introduced in [#4649: Deprecate 14 on the type scale](https://github.com/alphagov/govuk-frontend/pull/4649) and [#4713: Ensure `govuk-font-size()` handles string keys](https://github.com/alphagov/govuk-frontend/pull/4713)
 
 ### Fixes
 
