@@ -160,6 +160,11 @@
   // deprecated sizes used internally, for example `govuk-font($size: "_14")`
   $size-internal-use-only: str-slice(#{$size}, 1, 1) == "_";
 
+  // Remove underscore from font sizes flagged for internal use
+  @if $size-internal-use-only {
+    $size: str-slice(#{$size}, 2);
+  }
+
   // Check for a font map exactly matching the given size
   $font-map: map-get($govuk-typography-scale, $size);
 
