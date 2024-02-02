@@ -156,11 +156,22 @@
 /// @access public
 
 @mixin govuk-font-size($size, $line-height: false, $important: false) {
-  @if not map-has-key($govuk-typography-scale, $size) {
-    @error "Unknown font size `#{$size}` - expected a point from the type scale.";
+  // Check for a font map exactly matching the given size
+  $font-map: map-get($govuk-typography-scale, $size);
+
+  // No match? Try with string type (e.g. $size: "16" not 16)
+  @if not $font-map {
+    @each $font-size in map-keys($govuk-typography-scale) {
+      @if not $font-map and #{$font-size} == #{$size} {
+        $font-map: map-get($govuk-typography-scale, $font-size);
+      }
+    }
   }
 
-  $font-map: map-get($govuk-typography-scale, $size);
+  // Still no match? Throw error
+  @if not $font-map {
+    @error "Unknown font size `#{$size}` - expected a point from the type scale.";
+  }
 
   // Check for a deprecation within the type scale
   $deprecation: map-get($font-map, "deprecation");
