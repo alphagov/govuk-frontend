@@ -2,10 +2,10 @@
   <a class="govuk-link {%- if action.classes %} {{ action.classes }}{% endif %}" href="{{ action.href }}" {%- for attribute, value in action.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
     {{- action.html | safe if action.html else action.text -}}
     {%- if action.visuallyHiddenText or cardTitle -%}
-      <span class="govuk-visually-hidden">
-        {%- if action.visuallyHiddenText %} {{ action.visuallyHiddenText }}{% endif -%}
-        {%- if cardTitle %} ({{ cardTitle.html | safe if cardTitle.html else cardTitle.text }}){% endif -%}
-      </span>
+    <span class="govuk-visually-hidden">
+      {%- if action.visuallyHiddenText %} {{ action.visuallyHiddenText }}{% endif -%}
+      {%- if cardTitle %} ({{ cardTitle.html | safe if cardTitle.html else cardTitle.text }}){% endif -%}
+    </span>
     {%- endif -%}
   </a>
 {% endmacro -%}
