@@ -55,36 +55,35 @@
 {% endfor -%}
 
 {%- set summaryList -%}
-  <dl class="govuk-summary-list {%- if params.classes %} {{ params.classes }}{% endif %}"
-    {{- govukAttributes(params.attributes) }}>
-    {% for row in params.rows %}
-      {% if row %}
-        <div class="govuk-summary-list__row {%- if anyRowHasActions and not row.actions.items %} govuk-summary-list__row--no-actions{% endif %} {%- if row.classes %} {{ row.classes }}{% endif %}">
-          <dt class="govuk-summary-list__key {%- if row.key.classes %} {{ row.key.classes }}{% endif %}">
-            {{ row.key.html | indent(4 if params.card else 0) | safe if row.key.html else row.key.text }}
-          </dt>
-          <dd class="govuk-summary-list__value {%- if row.value.classes %} {{ row.value.classes }}{% endif %}">
-            {{ row.value.html | indent(12 if params.card else 8) | safe | trim if row.value.html else row.value.text }}
-          </dd>
-          {% if row.actions.items.length %}
-            <dd class="govuk-summary-list__actions {%- if row.actions.classes %} {{ row.actions.classes }}{% endif %}">
-              {% if row.actions.items.length == 1 %}
-                {{ _actionLink(row.actions.items[0], params.card.title) | indent(16 if params.card else 12) | trim }}
-              {% else %}
-                <ul class="govuk-summary-list__actions-list">
-                  {%- for action in row.actions.items -%}
-                    <li class="govuk-summary-list__actions-list-item">
-                      {{- _actionLink(action, params.card.title) | indent(22 if params.card else 18) | trim -}}
-                    </li>
-                  {%- endfor -%}
-                </ul>
-              {% endif %}
-            </dd>
-          {% endif %}
-        </div>
+<dl class="govuk-summary-list {%- if params.classes %} {{ params.classes }}{% endif %}" {{- govukAttributes(params.attributes) }}>
+{% for row in params.rows %}
+  {% if row %}
+  <div class="govuk-summary-list__row {%- if anyRowHasActions and not row.actions.items %} govuk-summary-list__row--no-actions{% endif %} {%- if row.classes %} {{ row.classes }}{% endif %}">
+    <dt class="govuk-summary-list__key {%- if row.key.classes %} {{ row.key.classes }}{% endif %}">
+      {{ row.key.html | indent(4 if params.card else 0) | safe if row.key.html else row.key.text }}
+    </dt>
+    <dd class="govuk-summary-list__value {%- if row.value.classes %} {{ row.value.classes }}{% endif %}">
+      {{ row.value.html | indent(12 if params.card else 8) | safe | trim if row.value.html else row.value.text }}
+    </dd>
+    {% if row.actions.items.length %}
+    <dd class="govuk-summary-list__actions {%- if row.actions.classes %} {{ row.actions.classes }}{% endif %}">
+      {% if row.actions.items.length == 1 %}
+        {{ _actionLink(row.actions.items[0], params.card.title) | indent(16 if params.card else 12) | trim }}
+      {% else %}
+      <ul class="govuk-summary-list__actions-list">
+        {%- for action in row.actions.items -%}
+        <li class="govuk-summary-list__actions-list-item">
+          {{- _actionLink(action, params.card.title) | indent(22 if params.card else 18) | trim -}}
+        </li>
+        {%- endfor -%}
+      </ul>
       {% endif %}
-    {% endfor %}
-  </dl>
+    </dd>
+    {% endif %}
+  </div>
+  {% endif %}
+{% endfor %}
+</dl>
 {%- endset %}
 
 {%- if params.card -%}
