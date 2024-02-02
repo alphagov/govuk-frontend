@@ -156,6 +156,10 @@
 /// @access public
 
 @mixin govuk-font-size($size, $line-height: false, $important: false) {
+  // Flag font sizes that start with underscores so we can suppress warnings on
+  // deprecated sizes used internally, for example `govuk-font($size: "_14")`
+  $size-internal-use-only: str-slice(#{$size}, 1, 1) == "_";
+
   // Check for a font map exactly matching the given size
   $font-map: map-get($govuk-typography-scale, $size);
 
@@ -177,7 +181,11 @@
   $deprecation: map-get($font-map, "deprecation");
 
   @if $deprecation {
-    @include _warning(map-get($deprecation, "key"), map-get($deprecation, "message"));
+    // Warn on deprecated font sizes unless flagged for internal use
+    @if not $size-internal-use-only {
+      @include _warning(map-get($deprecation, "key"), map-get($deprecation, "message"));
+    }
+
     // remove the deprecation map keys so they do not break the breakpoint loop
     $font-map: map-remove($font-map, "deprecation");
   }
