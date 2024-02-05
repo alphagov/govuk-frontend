@@ -101,11 +101,9 @@
       width: 23px;
       height: 12px;
 
-      -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
 
-          -ms-transform: rotate(-45deg);
-
-              transform: rotate(-45deg);
+          transform: rotate(-45deg);
       border: solid;
       border-width: 0 0 5px 5px;
       // Fix bug in IE11 caused by transform rotate (-45deg).
@@ -333,3 +331,5 @@
     }
   }
 }
+
+/*# sourceMappingURL=_index.scss.map */

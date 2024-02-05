@@ -62,11 +62,27 @@
     vertical-align: top;
   }
 
+  // Spacing adjustment for Tudor crown, as the new graphic is narrower than the
+  // existing crown. In Frontend v5, this rule should replace the equivalent in
+  // the block above.
+  .govuk-header__logotype-crown[width="32"] {
+    top: -3px;
+    margin-right: 2px;
+  }
+
   .govuk-header__logotype-crown-fallback-image {
     width: 36px;
     height: 32px;
     border: 0;
     vertical-align: bottom;
+  }
+
+  // Sizing adjustment for Tudor crown, as the new graphic is smaller than the
+  // existing crown. In Frontend v5, these rules should replace their
+  // equivalents in the block above.
+  .govuk-header__logotype-crown-fallback-image[width="32"] {
+    width: 32px;
+    height: 30px;
   }
 
   .govuk-header__product-name {
@@ -347,3 +363,5 @@
     // End adjustments
   }
 }
+
+/*# sourceMappingURL=_index.scss.map */

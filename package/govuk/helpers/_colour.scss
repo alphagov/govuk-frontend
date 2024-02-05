@@ -96,3 +96,5 @@
 @function govuk-tint($colour, $percentage) {
   @return mix(govuk-colour("white"), $colour, $percentage);
 }
+
+/*# sourceMappingURL=_colour.scss.map */

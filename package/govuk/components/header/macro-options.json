@@ -108,5 +108,11 @@
         "type": "object",
         "required": false,
         "description": "HTML attributes (for example data attributes) to add to the header container."
+    },
+    {
+        "name": "useTudorCrown",
+        "type": "boolean",
+        "required": false,
+        "description": "If `true`, the header uses the Tudor crown from King Charles III's royal cypher. This will become the default in a future version of GOV.UK Frontend."
     }
 ]
