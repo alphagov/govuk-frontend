@@ -345,3 +345,5 @@ $mq-media-type: all !default;
 @if length($mq-show-breakpoints) > 0 {
     @include mq-show-breakpoints;
 }
+
+/*# sourceMappingURL=_sass-mq.scss.map */

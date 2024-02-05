@@ -302,6 +302,7 @@
             "options": {
                 "head": [
                     {
+                        "text": "Foo",
                         "attributes": {
                             "data-fizz": "buzz"
                         }
@@ -319,7 +320,7 @@
                 ]
             },
             "hidden": true,
-            "html": "<table class=\"govuk-table\">\n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n      <th scope=\"col\" class=\"govuk-table__header\" data-fizz=\"buzz\"></th>\n    </tr>\n  </thead>\n  <tbody class=\"govuk-table__body\">\n        <tr class=\"govuk-table__row\">\n          <td class=\"govuk-table__cell\">Jan</td>\n          <td class=\"govuk-table__cell\">Feb</td>\n        </tr>\n  </tbody>\n</table>"
+            "html": "<table class=\"govuk-table\">\n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n      <th scope=\"col\" class=\"govuk-table__header\" data-fizz=\"buzz\">Foo</th>\n    </tr>\n  </thead>\n  <tbody class=\"govuk-table__body\">\n        <tr class=\"govuk-table__row\">\n          <td class=\"govuk-table__cell\">Jan</td>\n          <td class=\"govuk-table__cell\">Feb</td>\n        </tr>\n  </tbody>\n</table>"
         },
         {
             "name": "with firstCellIsHeader true",

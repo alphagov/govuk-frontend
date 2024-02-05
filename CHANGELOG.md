@@ -1,14 +1,16 @@
 # Changelog
 
-## 4.8.0 (Feature release)
+## GOV.UK Frontend v4.8.0 (Feature release)
+
+This release includes the ability to update the crown logo. You must do this between 19 February and 1 March 2024.
+We’ll send reminders to our mailing list and cross-government Slack as soon as you can make this change.
 
 ### New features
 
-#### Update to the new GOV.UK logo
+#### Update to the new GOV.UK logo (between 19 February and 1 March 2024)
 
-The GOV.UK logo has been updated to reflect the changing of the monarch; King Charles III uses the Tudor Crown, rather than the St Edward’s Crown chosen by Queen Elizabeth II.
-
-If your service uses GOV.UK branding, you should update your service to use the new crown as soon as possible.
+We’ve updated the GOV.UK logo to reflect the changing of the monarch. King Charles III uses the Tudor Crown, rather than the St Edward’s Crown chosen by Queen Elizabeth II.
+If your service uses GOV.UK branding, you must update your service to use the new crown.
 
 These changes were made in the following pull requests:
 
@@ -16,11 +18,11 @@ These changes were made in the following pull requests:
 - [#4278: Implement the Tudor crown in the Header component (v4.x)](https://github.com/alphagov/govuk-frontend/pull/4278)
 - [#4677: Adjust the spacing of the new Tudor crown (v4.x)](https://github.com/alphagov/govuk-frontend/pull/4677) - thanks to [Martin Jones](https://github.com/MartinJJones) and [Mónica Crusellas](https://github.com/monicacrusellasfanlo) for contributing this change
 
-##### Include the new logo assets
+#### Include the new logo assets
 
-Multiple new image assets are included in this release. You will need to copy these to your service's image assets folder if they aren't being used directly from the Frontend package. By default this folder is located at `/assets/images`.
+Multiple new image assets are included in this release. You’ll need to copy these to your service's image assets folder if they are not being used directly from the Frontend package. By default this folder is located at `/assets/images`.
 
-If you are using Nunjucks, the asset path may have been changed by the `assetPath` global variable or `assetsPath` parameter on the header component.
+If you’re using Nunjucks, the asset path may have been changed by the `assetPath` global variable or `assetsPath` parameter on the header component.
 
 Copy the following files from `/dist/assets/images` into your assets folder. Any images with the same name as an existing image can be safely overwritten.
 
@@ -33,11 +35,11 @@ Copy the following files from `/dist/assets/images` into your assets folder. Any
 - govuk-mask-icon.svg
 - govuk-opengraph-image.png
 
-##### Update the logo in the header of your page
+#### Update the logo in the header of your page
 
 If you are using the `govukHeader` Nunjucks macro in your service, add the `useTudorCrown` parameter to the macro instantiation.
 
-```nunjucks
+```
 {{ govukHeader({
   ...
   useTudorCrown: true
@@ -46,7 +48,7 @@ If you are using the `govukHeader` Nunjucks macro in your service, add the `useT
 
 If you are not using the Nunjucks macro, locate the HTML for the existing crown and replace it with this updated HTML. Make sure the URL for the new PNG fallback image is correct.
 
-```html
+```
 <!--[if gt IE 8]><!-->
 <svg
   aria-hidden="true"

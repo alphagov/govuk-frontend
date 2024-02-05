@@ -174,11 +174,9 @@
         width: govuk-px-to-rem(6px);
         height: govuk-px-to-rem(6px);
 
-        -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
 
-            -ms-transform: rotate(-45deg);
-
-                transform: rotate(-45deg);
+            transform: rotate(-45deg);
 
         border-top: govuk-px-to-rem(2px) solid;
         border-right: govuk-px-to-rem(2px) solid;
@@ -194,17 +192,15 @@
 
     // Rotate icon to create "Down" version
     .govuk-accordion-nav__chevron--down {
-      -webkit-transform: rotate(180deg);
-          -ms-transform: rotate(180deg);
-              transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
 
       // IE8 fallback of arrow icon
       @include _govuk-if-ie8 {
         &:after {
           content: "\25BC"; // "▼"
-          -webkit-transform: none;
-              -ms-transform: none;
-                  transform: none;
+          -ms-transform: none;
+              transform: none;
         }
       }
     }
@@ -390,3 +386,5 @@
     }
   }
 }
+
+/*# sourceMappingURL=_index.scss.map */

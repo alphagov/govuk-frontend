@@ -53,11 +53,9 @@
 
     margin: auto 0;
 
-    -webkit-transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
 
-        -ms-transform: rotate(225deg);
-
-            transform: rotate(225deg);
+        transform: rotate(225deg);
 
     border: solid;
     border-width: $chevron-border-min-width $chevron-border-min-width 0 0;
@@ -105,3 +103,5 @@
     }
   }
 }
+
+/*# sourceMappingURL=_index.scss.map */

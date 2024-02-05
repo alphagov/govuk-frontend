@@ -3,7 +3,7 @@
  * It doesn't need to be updated manually.
  */
 
-var version = '4.7.0';
+var version = '4.8.0';
 
 export { version };
 //# sourceMappingURL=common/govuk-frontend-version.mjs.map
