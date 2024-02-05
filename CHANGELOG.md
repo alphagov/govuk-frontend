@@ -4,24 +4,28 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+## GOV.UK Frontend v5.1.0 (Feature release)
+
 ### New features
+
+To install this version with npm, run `npm install govuk-frontend@5.1.0`. You can also find more information about [how to stay up to date in our documentation](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version).
 
 #### Update to the new GOV.UK logo
 
-The GOV.UK logo has been updated to reflect the changing of the monarch; King Charles III uses the Tudor Crown, rather than the St Edward’s Crown chosen by Queen Elizabeth II.
+The GOV.UK logo has been updated to reflect the changing of the monarch. King Charles III uses the Tudor Crown, rather than the St Edward’s Crown chosen by Queen Elizabeth II.
 
-If your service uses GOV.UK branding, you should update your service to use the new logo as soon as possible.
+If your service uses GOV.UK branding, you must update your service between 19 February and 1 March 2024 to use the new logo.
 
 These changes were made in the following pull requests:
 
 - [#4354: Implement the Tudor crown favicons (v5.x)](https://github.com/alphagov/govuk-frontend/pull/4354)
 - [#4297: Implement the Tudor crown in the Header component (v5.x)](https://github.com/alphagov/govuk-frontend/pull/4297)
 
-##### Include the new logo assets
+#### Include the new logo assets
 
-Multiple new image assets are included in this release. These will need to be copied to your service's image assets folder if they aren't being used directly from the Frontend package. By default this folder is located at `/assets/images`.
+Multiple new image assets are included in this release. You’ll need to copy these to your service's image assets folder if they’re not being used directly from the Frontend package. By default this folder is located at `/assets/images`.
 
-If you are using Nunjucks, the asset path may have been changed by the `assetPath` global variable or `assetsPath` parameter on the header component.
+If you’re using Nunjucks, the asset path may have been changed by the `assetPath` global variable or `assetsPath` parameter on the header component.
 
 Copy the following files from `/dist/assets/images` into your assets folder. Any images with the same name as an existing image can be safely overwritten.
 
@@ -33,9 +37,9 @@ Copy the following files from `/dist/assets/images` into your assets folder. Any
 - govuk-icon-mask.svg
 - govuk-opengraph-image.png
 
-##### Update the logo in the header of your page
+#### Update the logo in the header of your page
 
-If you are using the `govukHeader` Nunjucks macro in your service, add the `useTudorCrown` parameter to the macro instantiation. This will become the default in a future version of GOV.UK Frontend.
+If you’re using the `govukHeader` Nunjucks macro in your service, add the `useTudorCrown` parameter to the macro instantiation. This will become the default in a future version of GOV.UK Frontend.
 
 ```nunjucks
 {{ govukHeader({
@@ -44,7 +48,7 @@ If you are using the `govukHeader` Nunjucks macro in your service, add the `useT
 }) }}
 ```
 
-If you aren't using the Nunjucks macro, locate the SVG code for the existing logo and replace it with this updated SVG.
+If you’re not using the Nunjucks macro, locate the SVG code for the existing logo and replace it with this updated SVG.
 
 ```html
 <svg
@@ -82,48 +86,50 @@ This change was introduced in [pull request #4565: Allow `attributes` option on 
 
 You can now use tabular numbers in your authored Sass by including the new `govuk-font-tabular-numbers` mixin.
 
-Previously, you would use the `govuk-font` mixin with the `$tabular` parameter. However, the `govuk-font` mixin includes styles that are unrelated to tabular numbers, which are unnecessary in some contexts.
+Previously, you’d use the `govuk-font` mixin with the `$tabular` parameter. However, the `govuk-font` mixin includes styles unrelated to tabular numbers, which are not needed in some contexts.
 
 These additional styles are not included if you use `govuk-font-tabular-numbers`. Switching to the new mixin can reduce the size of your compiled CSS without affecting the appearance of pages.
 
-This change was introduced in [pull request #4307: Refactor tabular number activation into their own mixin](https://github.com/alphagov/govuk-frontend/pull/4307)
+This change was introduced in [pull request #4307: Refactor tabular number activation into their own mixin](https://github.com/alphagov/govuk-frontend/pull/4307).
 
 ### Recommended changes
 
 #### Replace instances of `govuk-typography-responsive` with `govuk-font-size`
 
-We've renamed the Sass mixin `govuk-typography-responsive` to `govuk-font-size` and have deprecated `govuk-typography-responsive`. You can still use `govuk-typography-responsive` but we'll be removing it in a future breaking release (6.0.0).
+We've renamed the Sass mixin `govuk-typography-responsive` to `govuk-font-size` and have deprecated `govuk-typography-responsive`. You can still use `govuk-typography-responsive`, but we'll remove it in a future breaking release (GOV.UK Frontend v6.0.0).
 
-This is an experimental change, based on our hypothesis that `govuk-font-size` as a name better communicates the Sass mixin's intended use than `govuk-typography-responsive`. We're interested in feedback from the community on this name change so please let us know what you think.
+This is an experimental change to see if the name `govuk-font-size` better communicates the Sass mixin's intended use than the name `govuk-typography-responsive`.
 
-This change was introduced in [pull request #4291: Rename `govuk-typography-responsive` to `govuk-font-size`](https://github.com/alphagov/govuk-frontend/pull/4291)
+We're interested in feedback from the community on this name change, so please let us know what you think [through our usual channels](https://design-system.service.gov.uk/get-in-touch/).
+
+This change was introduced in [pull request #4291: Rename `govuk-typography-responsive` to `govuk-font-size`](https://github.com/alphagov/govuk-frontend/pull/4291).
 
 #### Remove the `aria-labelledby` attribute from accordion sections
 
-If you aren't using our Nunjucks macros, remove the `aria-labelledby` attribute from all accordion sections (`div` elements that have the `govuk-accordion__section-content` class).
+If you’re not using our Nunjucks macros, remove the `aria-labelledby` attribute from all accordion sections (`div` elements that have the `govuk-accordion__section-content` class).
 
-This change was introduced in [pull request #4628: Remove aria-labelledby from accordion sections](https://github.com/alphagov/govuk-frontend/pull/4628)
+This change was introduced in [pull request #4628: Remove `aria-labelledby` from accordion sections](https://github.com/alphagov/govuk-frontend/pull/4628).
 
 ### Deprecated features
 
 #### Stop using the `element` parameter on buttons
 
-We have deprecated the `element` Nunjucks parameter and will remove it in the next major release.
+We’ve deprecated the `element` Nunjucks parameter and will remove it in the next major release.
 
-In the future, the component will automatically use the use the `<a>` element if the `href` parameter is set, or the `<button>` element otherwise, without the ability to override it.
+In the future, if the `href` parameter is set the component will automatically use the `<a>` element. If the `href` parameter is not set the component will automatically use the `<button>` element. It will not be possible to override this change.
 
-This change was introduced in [pull request #4646: Deprecate `element` parameter on button component](https://github.com/alphagov/govuk-frontend/pull/4646)
+This change was introduced in [pull request #4646: Deprecate `element` parameter on button component](https://github.com/alphagov/govuk-frontend/pull/4646).
 
 #### Stop using `govuk-body-xs`, `govuk-!-font-size-14` and '14' on the type scale
 
-We have deprecated point 14 (14px large screens, 12px small screens) on the GOV.UK Frontend responsive type scale, including font override classes that use point 14:
+We’ve deprecated point 14 (14px large screens, 12px small screens) on the GOV.UK Frontend responsive type scale, including font override classes that use point 14:
 
 - `govuk-body-xs`
 - `govuk-!-font-size-14`
 
-We will be removing these classes and point 14 on the type scale in GOV.UK Frontend release v6.0.0. From the next major release, you will no longer be able to call the Sass mixins `govuk-font` or `govuk-font-size` with `$size` set to '14'.
+We’ll remove these classes and point 14 on the type scale in the next major release, GOV.UK Frontend release v6.0.0. With this change in the v6.0.0 release, you’ll no longer be able to call the Sass mixins `govuk-font` or `govuk-font-size` with `$size` set to '14'.
 
-This change was introduced in [#4649: Deprecate 14 on the type scale](https://github.com/alphagov/govuk-frontend/pull/4649) and [#4713: Ensure `govuk-font-size()` handles string keys](https://github.com/alphagov/govuk-frontend/pull/4713)
+This change was introduced in [#4649: Deprecate 14 on the type scale](https://github.com/alphagov/govuk-frontend/pull/4649) and [#4713: Ensure `govuk-font-size()` handles string keys](https://github.com/alphagov/govuk-frontend/pull/4713).
 
 ### Fixes
 
