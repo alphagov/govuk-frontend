@@ -13,7 +13,7 @@ Besides publishing the code itself, beta releases will likely involve code-relat
 
 Review the docs for [what to do before publishing a release](/docs/releasing/before-publishing-a-release.md) to assess which steps you need to follow for your specific pre-release and ensure you are prepared to publish.
 
-See the [documentation on support branches](https://govuk-design-system-team-docs.netlify.app/how-we-work/version-control/support-branches.html#support-branches) if you need to publish a new pre-release of previous major versions of GOV.UK Frontend.
+See the [documentation on support branches](https://team-playbook.design-system.service.gov.uk/how-we-work/version-control/support-branches.html#support-branches) if you need to publish a new pre-release of previous major versions of GOV.UK Frontend.
 
 # Publish a new version of GOV.UK Frontend
 
