@@ -2,13 +2,16 @@
 
 ## 3.15.0 (Feature release)
 
+This release includes the ability to update the crown logo. You must do this between 19 February and 1 March 2024. 
+
+We’ll send reminders to our mailing list and cross-government Slack as soon as you can make this change.
+
 ### New features
 
-#### Update to the new GOV.UK logo
+#### Update to the new GOV.UK logo (between 19 February and 1 March 2024)
 
-The GOV.UK logo has been updated to reflect the changing of the monarch; King Charles III uses the Tudor Crown, rather than the St Edward’s Crown chosen by Queen Elizabeth II.
-
-If your service uses GOV.UK branding, you should update your service to use the new crown as soon as possible.
+We’ve updated the GOV.UK logo to reflect the changing of the monarch. King Charles III uses the Tudor Crown, rather than the St Edward’s Crown chosen by Queen Elizabeth II.
+If your service uses GOV.UK branding, you must update your service to use the new crown.
 
 These changes were made in the following pull requests:
 
@@ -18,7 +21,7 @@ These changes were made in the following pull requests:
 
 ##### Include the new logo assets
 
-Multiple new image assets are included in this release. You will need to copy these to your service's image assets folder if they aren't being used directly from the Frontend package. By default this folder is located at `/assets/images`.
+Multiple new image assets are included in this release. You will need to copy these to your service's image assets folder if they are not being used directly from the Frontend package. By default this folder is located at `/assets/images`.
 
 If you are using Nunjucks, the asset path may have been changed by the `assetPath` global variable or `assetsPath` parameter on the header component.
 
