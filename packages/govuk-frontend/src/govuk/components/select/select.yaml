@@ -72,6 +72,32 @@ params:
         type: object
         required: false
         description: HTML attributes (for example data attributes) to add to the form group.
+      - name: beforeInput
+        type: object
+        required: false
+        description: Content to add before the select used by the select component.
+        params:
+          - name: text
+            type: string
+            required: true
+            description: Text to add before the select. If `html` is provided, the `text` option will be ignored.
+          - name: html
+            type: string
+            required: true
+            description: HTML to add before the select. If `html` is provided, the `text` option will be ignored.
+      - name: afterInput
+        type: object
+        required: false
+        description: Content to add after the select used by the select component.
+        params:
+          - name: text
+            type: string
+            required: true
+            description: Text to add after the select. If `html` is provided, the `text` option will be ignored.
+          - name: html
+            type: string
+            required: true
+            description: HTML to add after the select. If `html` is provided, the `text` option will be ignored.
   - name: classes
     type: string
     required: false

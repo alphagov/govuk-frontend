@@ -37,10 +37,16 @@
     visuallyHiddenText: params.errorMessage.visuallyHiddenText
   }) | trim | indent(2) }}
 {% endif %}
+{% if params.formGroup.beforeInput %}
+  {{ params.formGroup.beforeInput.html | safe | trim | indent(2) if params.formGroup.beforeInput.html else params.formGroup.beforeInput.text }}
+{% endif %}
   <textarea class="govuk-textarea {%- if params.errorMessage %} govuk-textarea--error{% endif %} {%- if params.classes %} {{ params.classes }}{% endif %}" id="{{ params.id }}" name="{{ params.name }}" rows="{{ params.rows | default(5, true) }}"
   {%- if (params.spellcheck === false) or (params.spellcheck === true) %} spellcheck="{{ params.spellcheck }}"{% endif %}
   {%- if params.disabled %} disabled{% endif %}
   {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
   {%- if params.autocomplete %} autocomplete="{{ params.autocomplete }}"{% endif %}
   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>{{ params.value }}</textarea>
+{% if params.formGroup.afterInput %}
+  {{ params.formGroup.afterInput.html | safe | trim | indent(2) if params.formGroup.afterInput.html else params.formGroup.afterInput.text }}
+{% endif %}
 </div>

@@ -60,6 +60,9 @@
   }) | trim | indent(2) }}
 {% endif %}
 
+{%- if params.formGroup.beforeInput %}
+  {{ params.formGroup.beforeInput.html | safe | trim | indent(2) if params.formGroup.beforeInput.html else params.formGroup.beforeInput.text }}
+{% endif %}
 {%- if hasPrefix or hasSuffix %}
   <div class="govuk-input__wrapper">
     {% if hasPrefix %}
@@ -73,4 +76,7 @@
 {% else %}
   {{ _inputElement(params) }}
 {% endif %}
+{%- if params.formGroup.afterInput %}
+  {{ params.formGroup.afterInput.html | safe | trim | indent(2) if params.formGroup.afterInput.html else params.formGroup.afterInput.text }}
+{% endif -%}
 </div>
