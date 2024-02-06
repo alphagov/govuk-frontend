@@ -3,9 +3,8 @@
 <div class="govuk-cookie-banner {%- if params.classes %} {{ params.classes }}{% endif %}" data-nosnippet role="region" aria-label="{{ params.ariaLabel | default("Cookie banner", true) }}"
   {%- if params.hidden %} hidden{% endif %}
   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-
-  {%- for message in params.messages %}
-    <div class="govuk-cookie-banner__message {%- if message.classes %} {{ message.classes }}{% endif %} govuk-width-container" {%- if message.role %} role="{{ message.role }}"{% endif %}
+  {% for message in params.messages %}
+  <div class="govuk-cookie-banner__message {%- if message.classes %} {{ message.classes }}{% endif %} govuk-width-container" {%- if message.role %} role="{{ message.role }}"{% endif %}
     {%- for attribute, value in message.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
     {%- if message.hidden %} hidden{% endif %}>
 
@@ -13,52 +12,43 @@
       <div class="govuk-grid-column-two-thirds">
         {% if message.headingHtml or message.headingText %}
         <h2 class="govuk-cookie-banner__heading govuk-heading-m">
-          {%- if message.headingHtml -%}
-            {{ message.headingHtml | safe }}
-          {%- else -%}
-            {{ message.headingText }}
-          {%- endif -%}
+          {{ message.headingHtml | safe | trim | indent(10) if message.headingHtml else message.headingText }}
         </h2>
         {% endif %}
-
         <div class="govuk-cookie-banner__content">
-          {%- if message.html -%}
-            {{ message.html | safe }}
-          {%- elif message.text -%}
-            <p class="govuk-body">{{ message.text }}</p>
-          {%- endif -%}
+          {% if message.html %}
+          {{ message.html | safe | trim | indent(10) }}
+          {% elif message.text %}
+          <p class="govuk-body">{{ message.text }}</p>
+          {% endif %}
         </div>
       </div>
     </div>
 
-      {% if message.actions %}
-      <div class="govuk-button-group">
-        {% for action in message.actions %}
-          {% if action.href %}
-            {% if action.type == "button" %}
-              {{ govukButton({
-                "text": action.text,
-                "type": "button",
-                "classes": action.classes,
-                "href": action.href,
-                "attributes": action.attributes
-              }) | trim | indent(12) }}
-            {% else %}
-              <a class="govuk-link {%- if action.classes %} {{ action.classes }}{% endif %}" href="{{ action.href }}" {%- for attribute, value in action.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>{{ action.text }}</a>
-            {% endif %}
-          {% else %}
-            {{ govukButton({
-              "text": action.text,
-              "value": action.value,
-              "name": action.name,
-              "type": action.type,
-              "classes": action.classes,
-              "attributes": action.attributes
-            }) | trim | indent(12) }}
-          {% endif %}
-        {% endfor %}
-      </div>
-      {% endif %}
+    {% if message.actions %}
+    <div class="govuk-button-group">
+    {% for action in message.actions %}
+      {% set buttonHtml -%}
+        {% if not action.href or action.type == "button" %}
+          {{ govukButton({
+            "text": action.text,
+            "type": action.type if action.type else "button",
+            "name": action.name,
+            "value": action.value,
+            "classes": action.classes,
+            "href": action.href,
+            "attributes": action.attributes
+          }) }}
+        {% else %}
+          <a class="govuk-link {%- if action.classes %} {{ action.classes }}{% endif %}" href="{{ action.href }}"
+            {%- for attribute, value in action.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>{{ action.text }}</a>
+        {% endif %}
+      {%- endset %}
+      {{ buttonHtml | safe | trim | indent(6) }}
+    {% endfor %}
     </div>
+    {% endif %}
+
+  </div>
   {% endfor %}
 </div>
