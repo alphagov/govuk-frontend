@@ -98,7 +98,7 @@
     "@types/jest-axe": "^3.5.9",
     "@types/js-yaml": "^4.0.9",
     "@types/mime-types": "^2.1.4",
-    "@types/node": "^20.11.5",
+    "@types/node": "^20.11.16",
     "@types/nunjucks": "^3.2.6",
     "@types/slug": "^5.0.7",
     "puppeteer": "^21.10.0",
