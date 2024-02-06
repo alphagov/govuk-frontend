@@ -243,6 +243,13 @@ describe('footer', () => {
       expect($copyrightMessage.text()).toContain('© Crown copyright')
     })
 
+    it('can be removed', () => {
+      const $ = render('footer', examples['with copyright notice removed'])
+
+      const $copyrightMessage = $('.govuk-footer__copyright-logo')
+      expect($copyrightMessage.length).toBeFalsy()
+    })
+
     it('can be customised with `text` parameter', () => {
       const $ = render(
         'footer',
