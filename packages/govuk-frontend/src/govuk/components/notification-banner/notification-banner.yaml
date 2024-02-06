@@ -66,7 +66,9 @@ examples:
         <h3 class="govuk-notification-banner__heading">
           This publication was withdrawn on 7 March 2014
         </h3>
-        <p class="govuk-body">Archived and replaced by the <a href="#" class="govuk-notification-banner__link">new planning guidance</a> launched 6 March 2014 on an external website</p>
+        <p class="govuk-body">
+          Archived and replaced by the <a href="#" class="govuk-notification-banner__link">new planning guidance</a> launched 6 March 2014 on an external website
+        </p>
   - name: with type as success
     options:
       type: success
@@ -101,7 +103,9 @@ examples:
         <h3 class="govuk-notification-banner__heading">
           Check if you need to apply the reverse charge to this application
         </h3>
-        <p class="govuk-body">You will have to apply the <a href="#" class="govuk-notification-banner__link">reverse charge</a> if the applicant supplies any of these services:</p>
+        <p class="govuk-body">
+          You will have to apply the <a href="#" class="govuk-notification-banner__link">reverse charge</a> if the applicant supplies any of these services:
+        </p>
         <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
           <li>constructing, altering, repairing, extending, demolishing or dismantling buildings or structures (whether permanent or not), including offshore installation services</li>
           <li>constructing, altering, repairing, extending, demolishing of any works forming, or planned to form, part of the land, including (in particular) walls, roadworks, power lines, electronic communications equipment, aircraft runways, railways, inland waterways, docks and harbours</li>
