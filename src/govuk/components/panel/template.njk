@@ -1,4 +1,5 @@
-{% set headingLevel = params.headingLevel if params.headingLevel else 1 %}
+{% set headingLevel = params.headingLevel if params.headingLevel else 1 -%}
+
 <div class="govuk-panel govuk-panel--confirmation
   {%- if params.classes %} {{ params.classes }}{% endif %}"
   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
@@ -7,7 +8,7 @@
   </h{{ headingLevel }}>
   {% if caller or params.html or params.text %}
   <div class="govuk-panel__body">
-    {{ caller() if caller else (params.html | safe if params.html else params.text) }}
+    {{ caller() if caller else (params.html | safe | trim | indent(4) if params.html else params.text) }}
   </div>
   {% endif %}
 </div>

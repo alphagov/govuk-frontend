@@ -9,7 +9,7 @@
       classes: "govuk-phase-banner__content__tag" + (" " + params.tag.classes if params.tag.classes)
     }) | trim | indent(4) }}
     <span class="govuk-phase-banner__text">
-      {{ params.html | safe if params.html else params.text }}
+      {{ params.html | safe | trim | indent(6) if params.html else params.text }}
     </span>
   </p>
 </div>
