@@ -41,6 +41,9 @@
 {% endif %}
   <div class="govuk-radios {%- if params.classes %} {{ params.classes }}{% endif %}"
     {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %} data-module="govuk-radios">
+    {% if params.formGroup.beforeInputs %}
+    {{ params.formGroup.beforeInputs.html | safe | trim | indent(4) if params.formGroup.beforeInputs.html else params.formGroup.beforeInputs.text }}
+    {% endif %}
     {% for item in params.items %}
       {% if item %}
         {#- If the user explicitly sets an id, use this instead of the regular idPrefix -#}
@@ -93,6 +96,9 @@
         {% endif %}
       {% endif %}
     {% endfor %}
+    {% if params.formGroup.afterInputs %}
+    {{ params.formGroup.afterInputs.html | safe | trim | indent(4) if params.formGroup.afterInputs.html else params.formGroup.afterInputs.text }}
+    {% endif %}
   </div>
 {% endset -%}
 

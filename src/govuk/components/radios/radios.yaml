@@ -27,6 +27,32 @@ params:
         type: object
         required: false
         description: HTML attributes (for example data attributes) to add to the form group.
+      - name: beforeInputs
+        type: object
+        required: false
+        description: Content to add before all radio items within the checkboxes component.
+        params:
+          - name: text
+            type: string
+            required: true
+            description: Text to add before all radio items. If `html` is provided, the `text` option will be ignored.
+          - name: html
+            type: string
+            required: true
+            description: HTML to add before all radio items. If `html` is provided, the `text` option will be ignored.
+      - name: afterInputs
+        type: object
+        required: false
+        description: Content to add after all radio items within the checkboxes component.
+        params:
+          - name: text
+            type: string
+            required: true
+            description: Text to add after all radio items. If `html` is provided, the `text` option will be ignored.
+          - name: html
+            type: string
+            required: true
+            description: HTML to add after all radio items. If `html` is provided, the `text` option will be ignored.
   - name: idPrefix
     type: string
     required: false
@@ -34,7 +60,7 @@ params:
   - name: name
     type: string
     required: true
-    description: Name attribute for all radio items.
+    description: Name attribute for the radio items.
   - name: items
     type: array
     required: true

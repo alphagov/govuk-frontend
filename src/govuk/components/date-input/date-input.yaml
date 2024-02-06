@@ -67,6 +67,32 @@ params:
         type: object
         required: false
         description: HTML attributes (for example data attributes) to add to the form group.
+      - name: beforeInputs
+        type: object
+        required: false
+        description: Content to add before the inputs used by the date input component.
+        params:
+          - name: text
+            type: string
+            required: true
+            description: Text to add before the inputs. If `html` is provided, the `text` option will be ignored.
+          - name: html
+            type: string
+            required: true
+            description: HTML to add before the inputs. If `html` is provided, the `text` option will be ignored.
+      - name: afterInputs
+        type: object
+        required: false
+        description: Content to add after the inputs used by the date input component.
+        params:
+          - name: text
+            type: string
+            required: true
+            description: Text to add after the inputs. If `html` is provided, the `text` option will be ignored.
+          - name: html
+            type: string
+            required: true
+            description: HTML to add after the inputs. If `html` is provided, the `text` option will be ignored.
   - name: fieldset
     type: object
     required: false
