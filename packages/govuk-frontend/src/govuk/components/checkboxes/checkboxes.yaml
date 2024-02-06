@@ -31,6 +31,32 @@ params:
         type: object
         required: false
         description: HTML attributes (for example data attributes) to add to the form group.
+      - name: beforeInputs
+        type: object
+        required: false
+        description: Content to add before all checkbox items within the checkboxes component.
+        params:
+          - name: text
+            type: string
+            required: true
+            description: Text to add before all checkbox items. If `html` is provided, the `text` option will be ignored.
+          - name: html
+            type: string
+            required: true
+            description: HTML to add before all checkbox items. If `html` is provided, the `text` option will be ignored.
+      - name: afterInputs
+        type: object
+        required: false
+        description: Content to add after all checkbox items within the checkboxes component.
+        params:
+          - name: text
+            type: string
+            required: true
+            description: Text to add after all checkbox items. If `html` is provided, the `text` option will be ignored.
+          - name: html
+            type: string
+            required: true
+            description: HTML to add after all checkbox items. If `html` is provided, the `text` option will be ignored.
   - name: idPrefix
     type: string
     required: false
