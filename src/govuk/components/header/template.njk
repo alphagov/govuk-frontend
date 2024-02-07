@@ -45,7 +45,7 @@
 
         We use a single compound path for the logo to prevent subpixel rounding
         shifting different elements unevenly relative to one another. #}
-        {{ (_tudorCrown if params.useTudorCrown else _stEdwardsCrown) | safe | trim | indent(8) }}
+        {{ (_stEdwardsCrown if (params.useTudorCrown !== undefined and params.useTudorCrown === false) else _tudorCrown) | safe | trim | indent(8) }}
         {% if (params.productName) %}
         <span class="govuk-header__product-name">
           {{ params.productName }}
