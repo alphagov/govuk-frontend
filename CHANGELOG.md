@@ -48,6 +48,14 @@ govukInput({
 
 This change was introduced in [pull request #4567: Add `beforeInput(s)` and `beforeInput(s)` options to form groups](https://github.com/alphagov/govuk-frontend/pull/4567).
 
+### Deprecated features
+
+#### Stop using the `useTudorCrown` parameter in the Heading component
+
+As the beginning of the GOV.UK logo rollout has passed, the Tudor crown logo is now shown by default and the `useTudorCrown` parameter has been deprecated. We will remove it in the next major release.
+
+The `useTudorCrown` parameter, along with any other adjustments made to display the Tudor crown logo in your service, can now be removed.
+
 ## 5.1.0 (Feature release)
 
 To install this version with npm, run `npm install govuk-frontend@5.1.0`. You can also find more information about [how to stay up to date in our documentation](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version).
