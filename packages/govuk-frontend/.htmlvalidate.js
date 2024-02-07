@@ -8,6 +8,10 @@ const { defineConfig } = require('html-validate')
 module.exports = defineConfig({
   extends: ['html-validate:recommended'],
   rules: {
+    // Allow for `attributes: { "hidden": "" }` on password input button
+    // Related: https://github.com/alphagov/govuk-frontend/pull/1665
+    'attribute-boolean-style': 'off',
+
     // Allow for multiple buttons in the same form to have the same name
     // (as in the cookie banner examples)
     'form-dup-name': ['error', { shared: ['radio', 'checkbox', 'submit'] }],
