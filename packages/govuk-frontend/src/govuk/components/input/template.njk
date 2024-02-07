@@ -8,6 +8,8 @@
 
 {%- set hasPrefix = true if params.prefix and (params.prefix.text or params.prefix.html) else false %}
 {%- set hasSuffix = true if params.suffix and (params.suffix.text or params.suffix.html) else false %}
+{%- set hasBeforeInput = true if params.formGroup.beforeInput and (params.formGroup.beforeInput.text or params.formGroup.beforeInput.html) else false %}
+{%- set hasAfterInput = true if params.formGroup.afterInput and (params.formGroup.afterInput.text or params.formGroup.afterInput.html) else false %}
 
 {%- macro _inputElement(params) -%}
   <input class="govuk-input {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-input--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="{{ params.type | default("text", true) }}"
@@ -60,11 +62,11 @@
   }) | trim | indent(2) }}
 {% endif %}
 
-{%- if params.formGroup.beforeInput %}
-  {{ params.formGroup.beforeInput.html | safe | trim | indent(2) if params.formGroup.beforeInput.html else params.formGroup.beforeInput.text }}
-{% endif %}
-{%- if hasPrefix or hasSuffix %}
+{%- if hasPrefix or hasSuffix or hasBeforeInput or hasAfterInput %}
   <div class="govuk-input__wrapper">
+    {% if hasBeforeInput %}
+      {{- params.formGroup.beforeInput.html | safe | trim | indent(4, true) if params.formGroup.beforeInput.html else params.formGroup.beforeInput.text }}
+    {% endif %}
     {% if hasPrefix %}
       {{- _affixItem(params.prefix, "prefix") | indent(2, true) }}
     {% endif %}
@@ -72,11 +74,11 @@
     {% if hasSuffix %}
       {{- _affixItem(params.suffix, "suffix") | indent(2, true) }}
     {% endif %}
+    {% if hasAfterInput %}
+      {{- params.formGroup.afterInput.html | safe | trim | indent(4, true) if params.formGroup.afterInput.html else params.formGroup.afterInput.text }}
+    {% endif %}
   </div>
 {% else %}
   {{ _inputElement(params) }}
 {% endif %}
-{%- if params.formGroup.afterInput %}
-  {{ params.formGroup.afterInput.html | safe | trim | indent(2) if params.formGroup.afterInput.html else params.formGroup.afterInput.text }}
-{% endif -%}
 </div>
