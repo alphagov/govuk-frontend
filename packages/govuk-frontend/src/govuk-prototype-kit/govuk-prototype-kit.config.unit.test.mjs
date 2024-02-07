@@ -137,6 +137,10 @@ describe('GOV.UK Prototype Kit config', () => {
           macroName: 'govukPanel'
         },
         {
+          importFrom: 'govuk/components/password-input/macro.njk',
+          macroName: 'govukPasswordInput'
+        },
+        {
           importFrom: 'govuk/components/phase-banner/macro.njk',
           macroName: 'govukPhaseBanner'
         },

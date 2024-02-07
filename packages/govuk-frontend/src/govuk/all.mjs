@@ -10,6 +10,7 @@ import { ErrorSummary } from './components/error-summary/error-summary.mjs'
 import { ExitThisPage } from './components/exit-this-page/exit-this-page.mjs'
 import { Header } from './components/header/header.mjs'
 import { NotificationBanner } from './components/notification-banner/notification-banner.mjs'
+import { PasswordInput } from './components/password-input/password-input.mjs'
 import { Radios } from './components/radios/radios.mjs'
 import { SkipLink } from './components/skip-link/skip-link.mjs'
 import { Tabs } from './components/tabs/tabs.mjs'
@@ -41,6 +42,7 @@ function initAll(config) {
     [ExitThisPage, config.exitThisPage],
     [Header],
     [NotificationBanner, config.notificationBanner],
+    [PasswordInput],
     [Radios],
     [SkipLink],
     [Tabs]
@@ -81,6 +83,7 @@ export {
   ExitThisPage,
   Header,
   NotificationBanner,
+  PasswordInput,
   Radios,
   SkipLink,
   Tabs

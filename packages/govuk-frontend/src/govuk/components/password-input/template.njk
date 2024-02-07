@@ -1,0 +1,60 @@
+{% from "../button/macro.njk" import govukButton %}
+{% from "../input/macro.njk" import govukInput %}
+
+{%- macro _showHideButton(params, button) -%}
+  {{ govukButton({
+    text: button.text,
+    html: button.html,
+    type: "button",
+    disabled: button.disabled,
+    classes: "govuk-button--secondary" + (" " + button.classes if button.classes),
+    attributes: {
+      "aria-controls": params.id,
+      "hidden": ""
+    },
+    id: button.id
+  }) | trim }}
+{%- endmacro -%}
+
+{%- set buttonHtml %}
+{{ _showHideButton(params, {
+  text: params.buttonShow.html if (params.buttonShow.html or params.buttonShow.text) else "Show",
+  html: params.buttonShow.html,
+  classes: "govuk-js-password-input-show"
+}) }}
+{{ _showHideButton(params, {
+  text: params.buttonHide.html if (params.buttonHide.html or params.buttonHide.text) else "Hide",
+  html: params.buttonHide.html,
+  classes: "govuk-js-password-input-hide"
+}) }}
+{% if params.formGroup.afterInput %}
+  {{- params.formGroup.afterInput.html | safe | trim if params.formGroup.afterInput.html else params.formGroup.afterInput.text }}
+{% endif -%}
+{% endset -%}
+
+{{ govukInput({
+  id: params.id,
+  name: params.name,
+  type: "password",
+  value: params.value,
+  disabled: params.disabled,
+  describedBy: params.describedBy,
+  label: params.label,
+  hint: params.hint,
+  errorMessage: params.errorMessage,
+  formGroup: {
+    classes: "govuk-password-input" + (" " + params.formGroup.classes if params.formGroup.classes),
+    attributes: {
+      "data-module": "govuk-password-input"
+    },
+    beforeInput: params.formGroup.beforeInput,
+    afterInput: {
+      html: buttonHtml
+    }
+  },
+  classes: "govuk-js-password-input" + (" " + params.classes if params.classes),
+  autocapitalize: "off",
+  autocomplete: params.autocomplete,
+  spellcheck: "off",
+  attributes: params.attributes
+}) | trim }}
