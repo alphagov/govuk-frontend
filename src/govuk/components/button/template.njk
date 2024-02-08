@@ -1,4 +1,6 @@
-{# Set classes for this component #}
+{% from "../../macros/attributes.njk" import govukAttributes %}
+
+{#- Set classes for this component #}
 {%- set classNames = "govuk-button" -%}
 
 {%- if params.classes %}
@@ -31,7 +33,7 @@
 
 {#- Define common attributes that we can use across all element types #}
 
-{%- set commonAttributes %} class="{{ classNames }}" data-module="govuk-button" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}{% if params.id %} id="{{ params.id }}"{% endif %}{% endset %}
+{%- set commonAttributes %} class="{{ classNames }}" data-module="govuk-button" {{- govukAttributes(params.attributes) -}} {% if params.id %} id="{{ params.id }}"{% endif %}{% endset %}
 
 {#- Define common attributes we can use for both button and input types #}
 
