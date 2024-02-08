@@ -2,11 +2,11 @@
   Renders component attributes as string
 
   @private
-  @param {{ [attribute: string]: string }} attributes - Component attributes param
+  @param {{ [attribute: string]: string } | string} attributes - Component attributes param
 #}
 {% macro govukAttributes(attributes) -%}
   {#- Default attributes output -#}
-  {% set attributesHtml = "" %}
+  {% set attributesHtml = attributes if attributes is string else "" %}
 
   {#- Append attribute name/value pairs -#}
   {%- if attributes is mapping %}
