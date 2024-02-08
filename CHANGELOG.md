@@ -4,6 +4,27 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### New features
+
+#### Insert custom HTML into component form group wrappers
+
+You can now insert custom HTML into form group wrappers for all components with form fields.
+
+```njk
+govukInput({
+  formGroup: {
+    beforeInput: {
+      html: "example"
+    },
+    afterInput: {
+      html: "example"
+    },
+  }
+})
+```
+
+This change was introduced in [pull request #4567: Add `beforeInput(s)` and `beforeInput(s)` options to form groups](https://github.com/alphagov/govuk-frontend/pull/4567).
+
 ## 5.1.0 (Feature release)
 
 To install this version with npm, run `npm install govuk-frontend@5.1.0`. You can also find more information about [how to stay up to date in our documentation](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version).

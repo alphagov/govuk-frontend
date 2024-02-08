@@ -37,9 +37,15 @@
     visuallyHiddenText: params.errorMessage.visuallyHiddenText
   }) | trim | indent(2) }}
 {% endif %}
+{% if params.formGroup.beforeInput %}
+  {{ params.formGroup.beforeInput.html | safe | trim | indent(2) if params.formGroup.beforeInput.html else params.formGroup.beforeInput.text }}
+{% endif %}
   <input class="govuk-file-upload {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-file-upload--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="file"
   {%- if params.value %} value="{{ params.value }}"{% endif %}
   {%- if params.disabled %} disabled{% endif %}
   {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+{% if params.formGroup.afterInput %}
+  {{ params.formGroup.afterInput.html | safe | trim | indent(2) if params.formGroup.afterInput.html else params.formGroup.afterInput.text }}
+{% endif %}
 </div>
