@@ -34,6 +34,18 @@ describe('attributes.njk', () => {
       )
     })
 
+    it('outputs attributes if already stringified', () => {
+      const attributes = renderMacro(
+        'govukAttributes',
+        'govuk/macros/attributes.njk',
+        {
+          context: ' data-attribute="value"'
+        }
+      )
+
+      expect(attributes).toEqual(' data-attribute="value"')
+    })
+
     it('outputs nothing if there are no attributes', () => {
       const attributes = renderMacro(
         'govukAttributes',
