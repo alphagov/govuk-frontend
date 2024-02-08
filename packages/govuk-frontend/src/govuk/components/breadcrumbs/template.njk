@@ -1,4 +1,6 @@
-{# Set classes for this component #}
+{% from "../../macros/attributes.njk" import govukAttributes %}
+
+{#- Set classes for this component #}
 {%- set classNames = "govuk-breadcrumbs" -%}
 
 {% if params.classes %}
@@ -9,12 +11,12 @@
   {% set classNames = classNames + " govuk-breadcrumbs--collapse-on-mobile" %}
 {% endif -%}
 
-<div class="{{ classNames }}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+<div class="{{ classNames }}" {{- govukAttributes(params.attributes) }}>
   <ol class="govuk-breadcrumbs__list">
 {% for item in params.items %}
   {% if item.href %}
     <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="{{ item.href }}" {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+      <a class="govuk-breadcrumbs__link" href="{{ item.href }}" {{- govukAttributes(item.attributes) }}>
         {{- item.html | safe if item.html else item.text -}}
       </a>
     </li>

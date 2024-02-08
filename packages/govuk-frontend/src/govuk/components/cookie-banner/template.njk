@@ -1,11 +1,12 @@
+{% from "../../macros/attributes.njk" import govukAttributes %}
 {% from "../button/macro.njk" import govukButton -%}
 
 <div class="govuk-cookie-banner {%- if params.classes %} {{ params.classes }}{% endif %}" data-nosnippet role="region" aria-label="{{ params.ariaLabel | default("Cookie banner", true) }}"
   {%- if params.hidden %} hidden{% endif %}
-  {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  {{- govukAttributes(params.attributes) }}>
   {% for message in params.messages %}
   <div class="govuk-cookie-banner__message {%- if message.classes %} {{ message.classes }}{% endif %} govuk-width-container" {%- if message.role %} role="{{ message.role }}"{% endif %}
-    {%- for attribute, value in message.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
+    {{- govukAttributes(message.attributes) -}}
     {%- if message.hidden %} hidden{% endif %}>
 
     <div class="govuk-grid-row">
@@ -41,7 +42,9 @@
           }) }}
         {% else %}
           <a class="govuk-link {%- if action.classes %} {{ action.classes }}{% endif %}" href="{{ action.href }}"
-            {%- for attribute, value in action.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>{{ action.text }}</a>
+            {{- govukAttributes(action.attributes) }}>
+            {{- action.text -}}
+          </a>
         {% endif %}
       {%- endset %}
       {{ buttonHtml | safe | trim | indent(6) }}

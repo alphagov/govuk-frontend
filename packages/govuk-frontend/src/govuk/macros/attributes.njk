@@ -1,0 +1,19 @@
+{#
+  Renders component attributes as string
+
+  @private
+  @param {{ [attribute: string]: string } | string} attributes - Component attributes param
+#}
+{% macro govukAttributes(attributes) -%}
+  {#- Default attributes output -#}
+  {% set attributesHtml = attributes if attributes is string else "" %}
+
+  {#- Append attribute name/value pairs -#}
+  {%- if attributes is mapping %}
+    {% for name, value in attributes %}
+      {% set attributesHtml = attributesHtml + " " + name | escape + '="' + value | escape + '"' %}
+    {% endfor %}
+  {% endif -%}
+
+  {{- attributesHtml | safe -}}
+{%- endmacro %}

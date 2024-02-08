@@ -341,7 +341,7 @@ module.exports = {
  * Nunjucks macro render options
  *
  * @typedef {object} MacroRenderOptions
- * @property {MacroOptions} [context] - Nunjucks context object (optional)
+ * @property {MacroOptions | unknown} [context] - Nunjucks mixed context (optional)
  * @property {string} [callBlock] - Nunjucks macro `caller()` content (optional)
  * @property {import('nunjucks').Environment} [env] - Nunjucks environment (optional)
  * @property {ComponentFixture} [fixture] - Component fixture (optional)

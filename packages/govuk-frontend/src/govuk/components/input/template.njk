@@ -1,3 +1,4 @@
+{% from "../../macros/attributes.njk" import govukAttributes %}
 {% from "../error-message/macro.njk" import govukErrorMessage %}
 {% from "../hint/macro.njk" import govukHint %}
 {% from "../label/macro.njk" import govukLabel %}
@@ -20,16 +21,17 @@
     {%- if params.autocomplete %} autocomplete="{{ params.autocomplete }}"{% endif %}
     {%- if params.pattern %} pattern="{{ params.pattern }}"{% endif %}
     {%- if params.inputmode %} inputmode="{{ params.inputmode }}"{% endif %}
-    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    {{- govukAttributes(params.attributes) }}>
 {%- endmacro -%}
 
 {%- macro _affixItem(affix, type) %}
-  <div class="govuk-input__{{ type }} {%- if affix.classes %} {{ affix.classes }}{% endif %}" aria-hidden="true" {%- for attribute, value in affix.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  <div class="govuk-input__{{ type }} {%- if affix.classes %} {{ affix.classes }}{% endif %}" aria-hidden="true" {{- govukAttributes(affix.attributes) }}>
     {{- affix.html | safe | trim | indent(4) if affix.html else affix.text -}}
   </div>
 {%- endmacro -%}
 
-<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}" {%- for attribute, value in params.formGroup.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}"
+  {{- govukAttributes(params.formGroup.attributes) }}>
   {{ govukLabel({
     html: params.label.html,
     text: params.label.text,

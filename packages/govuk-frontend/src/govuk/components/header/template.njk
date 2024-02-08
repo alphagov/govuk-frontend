@@ -1,3 +1,5 @@
+{% from "../../macros/attributes.njk" import govukAttributes -%}
+
 {% set menuButtonText = params.menuButtonText if params.menuButtonText else 'Menu' -%}
 
 {% set _stEdwardsCrown %}
@@ -33,7 +35,7 @@
 {% endset %}
 
 <header class="govuk-header {%- if params.classes %} {{ params.classes }}{% endif %}" role="banner" data-module="govuk-header"
-  {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  {{- govukAttributes(params.attributes) }}>
   <div class="govuk-header__container {{ params.containerClasses | default("govuk-width-container", true) }}">
     <div class="govuk-header__logo">
       <a href="{{ params.homepageUrl | default("/", true) }}" class="govuk-header__link govuk-header__link--homepage">
@@ -73,7 +75,8 @@
           {% if item.text or item.html %}
             <li class="govuk-header__navigation-item {%- if item.active %} govuk-header__navigation-item--active{% endif %}">
               {% if item.href %}
-                <a class="govuk-header__link" href="{{ item.href }}" {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+                <a class="govuk-header__link" href="{{ item.href }}"
+                  {{- govukAttributes(item.attributes) -}}>
               {% endif %}
                 {{ item.html | safe if item.html else item.text }}
               {% if item.href %}
