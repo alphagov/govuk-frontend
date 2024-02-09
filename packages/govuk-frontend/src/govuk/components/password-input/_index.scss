@@ -1,13 +1,11 @@
 @import "../button/index";
-@import "../error-message/index";
-@import "../hint/index";
 @import "../input/index";
-@import "../label/index";
 
 @include govuk-exports("govuk/component/password-input") {
-  .govuk-password-input {
-    display: flex;
-    flex-direction: column;
+  .govuk-password-input__wrapper {
+    // This element inherits styles from .govuk-input__wrapper, including:
+    // - being display: block with contents in a stacked column below the mobile breakpoint
+    // - being display: flex above the mobile breakpoint
 
     @include govuk-media-query($from: mobile) {
       flex-direction: row;
@@ -34,6 +32,11 @@
 
     // Remove default margin-bottom from button
     margin-bottom: 0;
+
+    // Hide the button by default, JS removes this attribute
+    &[hidden] {
+      display: none;
+    }
 
     @include govuk-media-query($from: mobile) {
       // Buttons are normally 100% width on this breakpoint, but we don't want that in this case
