@@ -23,12 +23,6 @@ export class PasswordInput extends GOVUKFrontendComponent {
 
   /**
    * @private
-   * @type {HTMLButtonElement | null}
-   */
-  $showHideButton = null
-
-  /**
-   * @private
    * @type {HTMLElement | null}
    */
   $statusText = null
@@ -48,15 +42,25 @@ export class PasswordInput extends GOVUKFrontendComponent {
       })
     }
 
-    this.$wrapper = $module
-    this.$input = $module.querySelector('input')
-
+    this.$input = $module.querySelector('.govuk-js-password-input-input')
     if (!(this.$input instanceof HTMLInputElement)) {
       throw new ElementError({
         componentName: 'Password input',
         element: this.$input,
         expectedType: 'HTMLInputElement',
-        identifier: 'Form field (`.govuk-password-input`)'
+        identifier: 'Form field (`.govuk-js-password-input-input`)'
+      })
+    }
+
+    this.$showHideButton = $module.querySelector(
+      '.govuk-js-password-input-toggle'
+    )
+    if (!(this.$showHideButton instanceof HTMLButtonElement)) {
+      throw new ElementError({
+        componentName: 'Password input',
+        element: this.$showHideButton,
+        expectedType: 'HTMLButtonElement',
+        identifier: 'Button (`.govuk-js-password-input-toggle`)'
       })
     }
 
@@ -77,25 +81,21 @@ export class PasswordInput extends GOVUKFrontendComponent {
       locale: closestAttributeValue($module, 'lang')
     })
 
-    // Create and append the button element
-    this.$showHideButton = document.createElement('button')
-    this.$showHideButton.className =
-      'govuk-button govuk-button--secondary govuk-password-input__toggle'
-    this.$showHideButton.setAttribute('aria-controls', this.$input.id)
-    this.$showHideButton.setAttribute('type', 'button')
-    this.$showHideButton.setAttribute(
-      'aria-label',
-      this.i18n.t('showPasswordAriaLabel')
-    )
-    this.$showHideButton.innerHTML = this.i18n.t('showPassword')
-    this.$wrapper.insertBefore(this.$showHideButton, this.$input.nextSibling)
+    // Show the toggle button element
+    this.$showHideButton.removeAttribute('hidden')
 
-    // Create and append the status text for screen readers
+    // Create and append the status text for screen readers.
+    // This is injected between the input and button so that users get a sensible reading order if
+    // moving through the page content linearly:
+    // [password input] -> [your password is visible/hidden] -> [show/hide password]
     this.$statusText = document.createElement('span')
     this.$statusText.className = 'govuk-visually-hidden'
     this.$statusText.innerText = this.i18n.t('passwordHiddenAnnouncement')
     this.$statusText.setAttribute('aria-live', 'polite')
-    this.$wrapper.insertBefore(this.$statusText, this.$input.nextSibling)
+    this.$input.parentNode?.insertBefore(
+      this.$statusText,
+      this.$input.nextSibling
+    )
 
     // Bind toggle button
     this.$showHideButton.addEventListener(
@@ -117,7 +117,7 @@ export class PasswordInput extends GOVUKFrontendComponent {
   togglePassword(event) {
     event.preventDefault()
 
-    if (!this.$showHideButton || !this.$statusText) {
+    if (!this.$statusText) {
       return
     }
 
@@ -145,7 +145,7 @@ export class PasswordInput extends GOVUKFrontendComponent {
    * user agents potentially saving or caching the plain text password.
    */
   revertToPasswordOnFormSubmit() {
-    if (!this.$showHideButton || !this.$statusText) {
+    if (!this.$statusText) {
       return
     }
 
