@@ -2,7 +2,26 @@
 {% from "../textarea/macro.njk" import govukTextarea %}
 {% from "../hint/macro.njk" import govukHint %}
 
+{#-
+  If the limit is set in JavaScript, we won't be able to interpolate the message
+  until JavaScript, so we only set a text if the `maxlength` or `maxwords` options
+  were provided to the macro.
+#}
 {%- set hasNoLimit = (not params.maxwords and not params.maxlength) -%}
+{%- set textareaDescriptionLength = params.maxwords or params.maxlength -%}
+{%- set textareaDescriptionText = params.textareaDescriptionText or 'You can enter up to %{count} ' + ('words' if params.maxwords else 'characters') -%}
+{%- set textareaDescriptionTextNoLimit = textareaDescriptionText | replace('%{count}', textareaDescriptionLength) if not hasNoLimit -%}
+
+{%- set countMessageHtml %}
+{{ govukHint({
+  text: textareaDescriptionTextNoLimit,
+  id: params.id + '-info',
+  classes: 'govuk-character-count__message' + (' ' + params.countMessage.classes if params.countMessage.classes)
+}) | trim }}
+{% if params.formGroup.afterInput %}
+  {{- params.formGroup.afterInput.html | safe | trim if params.formGroup.afterInput.html else params.formGroup.afterInput.text }}
+{% endif -%}
+{% endset -%}
 
 <div class="govuk-character-count" data-module="govuk-character-count"
   {%- if params.maxlength %} data-maxlength="{{ params.maxlength }}"{% endif %}
@@ -57,7 +76,14 @@
     rows: params.rows,
     spellcheck: params.spellcheck,
     value: params.value,
-    formGroup: params.formGroup,
+    formGroup: {
+      classes: params.formGroup.classes,
+      attributes: params.formGroup.attributes,
+      beforeInput: params.formGroup.beforeInput,
+      afterInput: {
+        html: countMessageHtml
+      }
+    },
     classes: 'govuk-js-character-count' + (' ' + params.classes if params.classes),
     label: {
       html: params.label.html,
@@ -70,18 +96,5 @@
     hint: params.hint,
     errorMessage: params.errorMessage,
     attributes: params.attributes
-  }) }}
-
-  {%- set textareaDescriptionLength = params.maxwords or params.maxlength %}
-  {%- set textareaDescriptionText = params.textareaDescriptionText or 'You can enter up to %{count} ' + ('words' if params.maxwords else 'characters') %}
-  {#-
-    If the limit is set in JavaScript, we won't be able to interpolate the message
-    until JavaScript, so we only set a text if the `maxlength` or `maxwords` options
-    were provided to the macro.
-  #}
-  {{ govukHint({
-    text: ((textareaDescriptionText) | replace('%{count}', textareaDescriptionLength) if not hasNoLimit),
-    id: params.id + '-info',
-    classes: 'govuk-character-count__message' + (' ' + params.countMessage.classes if params.countMessage.classes)
-  }) | trim | indent(2) }}
+  }) | trim }}
 </div>
