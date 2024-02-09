@@ -85,7 +85,12 @@
   }) -}}
 {% endset -%}
 
-<div class="govuk-character-count" {{- attributesHtml | safe }}>
+{#- Append form group attributes onto attributes set above #}
+{%- for name, value in params.formGroup.attributes %}
+  {% set attributesHtml = attributesHtml + " " + name | escape + '="' + value | escape + '"' %}
+{% endfor -%}
+
+<div class="govuk-character-count">
   {{ govukTextarea({
     id: params.id,
     name: params.name,
@@ -95,7 +100,7 @@
     value: params.value,
     formGroup: {
       classes: params.formGroup.classes,
-      attributes: params.formGroup.attributes,
+      attributes: attributesHtml,
       beforeInput: params.formGroup.beforeInput,
       afterInput: {
         html: countMessageHtml
