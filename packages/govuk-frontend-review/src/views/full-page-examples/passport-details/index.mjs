@@ -14,7 +14,9 @@ router.post(
   body('expiry-year').notEmpty().withMessage('Enter your expiry year'),
 
   (req, res) => {
-    const viewPath = './full-page-examples/passport-details'
+    const { example } = res.locals
+
+    const viewPath = `./full-page-examples/${example.path}`
     const errors = formatValidationErrors(validationResult(req))
 
     if (!errors) {

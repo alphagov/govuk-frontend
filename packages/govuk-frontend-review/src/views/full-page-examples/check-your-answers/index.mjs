@@ -6,7 +6,9 @@ import { formatValidationErrors } from '../../../utils.mjs'
 const router = express.Router()
 
 router.post('/check-your-answers', (req, res) => {
-  const viewPath = './full-page-examples/check-your-answers'
+  const { example } = res.locals
+
+  const viewPath = `./full-page-examples/${example.path}`
   const errors = formatValidationErrors(validationResult(req))
 
   if (!errors) {

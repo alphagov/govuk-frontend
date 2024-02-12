@@ -18,7 +18,9 @@ router.post(
   body('address-postcode').notEmpty().withMessage('Enter your postcode'),
 
   (req, res) => {
-    const viewPath = './full-page-examples/what-is-your-address'
+    const { example } = res.locals
+
+    const viewPath = `./full-page-examples/${example.path}`
     const errors = formatValidationErrors(validationResult(req))
 
     if (!errors) {

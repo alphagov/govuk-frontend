@@ -3,7 +3,11 @@ import express from 'express'
 const router = express.Router()
 
 router.post('/cookie-banner-essential-cookies', (req, res) => {
-  res.render('./full-page-examples/update-your-account-details/confirm', {
+  const { example } = res.locals
+
+  const viewPath = `./full-page-examples/${example.path}`
+
+  res.render(`${viewPath}/index`, {
     cookies: req.body.cookies
   })
 })

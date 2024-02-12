@@ -15,7 +15,9 @@ router.post(
     .withMessage('Select I accept the terms and conditions'),
 
   (req, res) => {
-    const viewPath = './full-page-examples/upload-your-photo'
+    const { example } = res.locals
+
+    const viewPath = `./full-page-examples/${example.path}`
     const errors = formatValidationErrors(validationResult(req))
 
     if (!errors) {

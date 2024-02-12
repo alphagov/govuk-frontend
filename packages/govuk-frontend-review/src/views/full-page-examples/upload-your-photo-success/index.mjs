@@ -6,7 +6,11 @@ router.post(
   '/upload-your-photo-success',
 
   (req, res) => {
-    res.render('./full-page-examples/upload-your-photo-success/index', {
+    const { example } = res.locals
+
+    const viewPath = `./full-page-examples/${example.path}`
+
+    res.render(`${viewPath}/index`, {
       isSuccess: true
     })
   }

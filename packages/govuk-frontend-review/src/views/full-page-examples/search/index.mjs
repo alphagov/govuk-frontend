@@ -25,6 +25,9 @@ router.get(
   query('organisation').toArray(),
 
   (req, res) => {
+    const { example } = res.locals
+
+    const viewPath = `./full-page-examples/${example.path}`
     const errors = formatValidationErrors(validationResult(req))
 
     // Shuffle the documents based on the query string, to simulate different responses.
@@ -36,7 +39,7 @@ router.get(
     // Shuffle the total based on the query string
     const randomizedTotal = shuffleSeed.shuffle(total.split(''), seed).join('')
 
-    res.render('./full-page-examples/search/index', {
+    res.render(`${viewPath}/index`, {
       documents: shuffledDocuments,
 
       // Make the total more readable

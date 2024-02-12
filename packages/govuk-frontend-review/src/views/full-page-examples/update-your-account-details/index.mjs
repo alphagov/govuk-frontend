@@ -19,7 +19,9 @@ router.post(
   body('password').notEmpty().withMessage('Enter your password'),
 
   (req, res) => {
-    const viewPath = './full-page-examples/update-your-account-details'
+    const { example } = res.locals
+
+    const viewPath = `./full-page-examples/${example.path}`
     const errors = formatValidationErrors(validationResult(req))
 
     if (!errors) {

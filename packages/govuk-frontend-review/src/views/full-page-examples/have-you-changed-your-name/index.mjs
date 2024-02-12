@@ -13,7 +13,9 @@ router.post(
     .withMessage('Select if you have changed your name'),
 
   (req, res) => {
-    const viewPath = './full-page-examples/have-you-changed-your-name'
+    const { example } = res.locals
+
+    const viewPath = `./full-page-examples/${example.path}`
     const errors = formatValidationErrors(validationResult(req))
 
     if (!errors) {
