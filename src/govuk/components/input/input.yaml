@@ -139,6 +139,23 @@ params:
     type: boolean
     required: false
     description: Optional field to enable or disable the `spellcheck` attribute on the input.
+  - name: autocapitalize
+    type: string
+    required: false
+    description: Optional field to enable or disable autocapitalisation of user input. See [autocapitalization](https://html.spec.whatwg.org/multipage/interaction.html#autocapitalization) for a full list of values that can be used.
+  - name: inputWrapper
+    type: object
+    required: false
+    description: If any of `prefix`, `suffix`, `formGroup.beforeInput` or `formGroup.afterInput` have a value, a wrapping element is added around the input and inserted content. This object allows you to customise that wrapping element.
+    params:
+      - name: classes
+        type: string
+        required: false
+        description: Classes to add to the wrapping element.
+      - name: attributes
+        type: object
+        required: false
+        description: HTML attributes (for example data attributes) to add to the wrapping element.
   - name: attributes
     type: object
     required: false
