@@ -10,11 +10,19 @@
     <meta name="theme-color" content="{{ themeColor | default("#0b0c0c", true) }}"> {#- Hardcoded value of $govuk-black #}
 
     {% block headIcons %}
+    {% if useTudorCrown %}
+      <link rel="icon" sizes="48x48" href="{{ assetPath | default("/assets", true) }}/images/favicon-a90776c99c.ico">
+      <link rel="icon" sizes="any" href="{{ assetPath | default("/assets", true) }}/images/favicon-e1321ba525.svg" type="image/svg+xml">
+      <link rel="mask-icon" href="{{ assetPath | default("/assets", true) }}/images/govuk-icon-mask-ff75b23964.svg" color="{{ themeColor | default("#0b0c0c") }}"> {#- Hardcoded value of $govuk-black #}
+      <link rel="apple-touch-icon" href="{{ assetPath | default("/assets", true) }}/images/govuk-icon-180-ae577696a9.png">
+      <link rel="manifest" href="{{ assetPath | default("/assets", true) }}/manifest.json">
+    {% else %}
       <link rel="icon" sizes="48x48" href="{{ assetPath | default("/assets", true) }}/images/favicon.ico">
       <link rel="icon" sizes="any" href="{{ assetPath | default("/assets", true) }}/images/favicon.svg" type="image/svg+xml">
       <link rel="mask-icon" href="{{ assetPath | default("/assets", true) }}/images/govuk-icon-mask.svg" color="{{ themeColor | default("#0b0c0c") }}"> {#- Hardcoded value of $govuk-black #}
       <link rel="apple-touch-icon" href="{{ assetPath | default("/assets", true) }}/images/govuk-icon-180.png">
       <link rel="manifest" href="{{ assetPath | default("/assets", true) }}/manifest.json">
+    {% endif %}
     {% endblock %}
 
     {% block head %}{% endblock %}
@@ -36,7 +44,9 @@
     {% endblock %}
 
     {% block header %}
-      {{ govukHeader({}) }}
+      {{ govukHeader({
+        useTudorCrown: useTudorCrown
+      }) }}
     {% endblock %}
 
     {% block main %}
