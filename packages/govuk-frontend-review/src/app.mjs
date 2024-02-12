@@ -11,6 +11,7 @@ import { filterPath, getDirectories, hasPath } from '@govuk-frontend/lib/files'
 import { getStats, modulePaths } from '@govuk-frontend/stats'
 import express from 'express'
 
+import { getFullPageExamples } from './common/lib/files.mjs'
 import * as middleware from './common/middleware/index.mjs'
 import * as nunjucks from './common/nunjucks/index.mjs'
 import * as routes from './routes/index.mjs'
@@ -28,7 +29,7 @@ export default async () => {
     componentNames,
     componentNamesWithJavaScript,
     exampleNames,
-    exampleNamesFullPage
+    fullPageExamples
   ] = await Promise.all([
     getComponentsFixtures(packageOptions),
 
@@ -43,7 +44,7 @@ export default async () => {
     ),
 
     getDirectories(join(paths.app, 'src/views/examples')),
-    getDirectories(join(paths.app, 'src/views/full-page-examples'))
+    getFullPageExamples()
   ])
 
   // Feature flags
@@ -152,7 +153,7 @@ export default async () => {
       componentNames,
       componentNamesWithJavaScript,
       exampleNames,
-      exampleNamesFullPage
+      fullPageExamples
     })
   })
 
