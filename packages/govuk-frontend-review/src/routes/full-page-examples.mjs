@@ -36,10 +36,11 @@ router.param(
 /**
  * Full page example name handler
  *
- * Empty handler ensures `router.param()` matches above to populate
+ * Empty handlers ensure `router.param()` matches above to populate
  * `res.locals.example` before routes with custom handling are run
  */
 router.all('/:exampleName', (req, res, next) => next())
+router.all('/:exampleName/confirm', (req, res, next) => next())
 
 /**
  * Full page examples index
@@ -63,15 +64,26 @@ for (const route of Object.values(routes)) {
 router.get('/:exampleName', (req, res, next) => {
   const { exampleName } = req.params
 
-  // Check for known examples
-  const hasExample = fullPageExampleNames.includes(exampleName)
-
-  // No matching example so continue to page not found
-  if (!hasExample) {
+  // No matching example? Continue to page not found
+  if (!fullPageExampleNames.includes(exampleName)) {
     return next()
   }
 
   res.render(`full-page-examples/${exampleName}/index`)
+})
+
+/**
+ * Full page example confirmation page and 404 handler
+ */
+router.get('/:exampleName/confirm', (req, res, next) => {
+  const { exampleName } = req.params
+
+  // No matching example? Continue to page not found
+  if (!fullPageExampleNames.includes(exampleName)) {
+    return next()
+  }
+
+  res.render(`full-page-examples/${exampleName}/confirm`)
 })
 
 export default router

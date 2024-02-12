@@ -21,7 +21,7 @@ router.post(
     const errors = formatValidationErrors(validationResult(req))
 
     if (!errors) {
-      return res.render(`${viewPath}/confirm`)
+      return res.redirect(303, `./${example.path}/confirm`)
     }
 
     res.render(`${viewPath}/index`, {

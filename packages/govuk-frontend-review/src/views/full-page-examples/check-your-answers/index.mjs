@@ -12,7 +12,7 @@ router.post('/check-your-answers', (req, res) => {
   const errors = formatValidationErrors(validationResult(req))
 
   if (!errors) {
-    return res.render(`${viewPath}/confirm`)
+    return res.redirect(303, `./${example.path}/confirm`)
   }
 
   res.render(`${viewPath}/index`, {
