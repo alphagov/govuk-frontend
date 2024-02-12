@@ -21,6 +21,7 @@
     {%- if params.autocomplete %} autocomplete="{{ params.autocomplete }}"{% endif %}
     {%- if params.pattern %} pattern="{{ params.pattern }}"{% endif %}
     {%- if params.inputmode %} inputmode="{{ params.inputmode }}"{% endif %}
+    {%- if params.autocapitalize %} autocapitalize="{{ params.autocapitalize }}"{% endif %}
     {{- govukAttributes(params.attributes) }}>
 {%- endmacro -%}
 
@@ -65,7 +66,8 @@
 {% endif %}
 
 {%- if hasPrefix or hasSuffix or hasBeforeInput or hasAfterInput %}
-  <div class="govuk-input__wrapper">
+  <div class="govuk-input__wrapper {%- if params.inputWrapper.classes %} {{ params.inputWrapper.classes }}{% endif %}"
+    {{- govukAttributes(params.inputWrapper.attributes) }}>
     {% if hasBeforeInput %}
       {{- params.formGroup.beforeInput.html | safe | trim | indent(4, true) if params.formGroup.beforeInput.html else params.formGroup.beforeInput.text }}
     {% endif %}
