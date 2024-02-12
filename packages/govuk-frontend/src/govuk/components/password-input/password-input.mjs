@@ -98,64 +98,84 @@ export class PasswordInput extends GOVUKFrontendComponent {
     )
 
     // Bind toggle button
-    this.$showHideButton.addEventListener(
-      'click',
-      this.togglePassword.bind(this)
-    )
+    this.$showHideButton.addEventListener('click', this.toggle.bind(this))
 
-    // Bind form submit check, unless it's been disabled
+    // Bind event to revert the password visibility to hidden, unless it's been explicitly disabled
     if (this.$input.form && !this.config.disableFormSubmitCheck) {
-      this.$input.form.addEventListener('submit', () =>
-        this.revertToPasswordOnFormSubmit()
-      )
+      this.$input.form.addEventListener('submit', () => this.hide())
+    }
+
+    // When the page is restored after navigating 'back' in some browsers the value of form
+    // controls may be retained. This is undesirable in the case of passwords, as it may allow
+    // a bad actor to view a previously entered password.
+    //
+    // Here we're intentionally clearing and resetting the component upon the page being loaded,
+    // unless the input has explicitly had a value set.
+    if (!this.$input.hasAttribute('value')) {
+      window.addEventListener('pageshow', () => {
+        this.hide()
+        this.$input.value = ''
+      })
+
+      // The component may have been dynamically loaded, in which case `pageshow` may have
+      // already passed, so run it again just in case.
+      this.hide()
+      this.$input.value = ''
     }
   }
 
   /**
+   * Toggle the visibility of the password input
+   *
+   * @private
    * @param {MouseEvent} event -
    */
-  togglePassword(event) {
+  toggle(event) {
     event.preventDefault()
 
-    if (!this.$statusText) {
+    // If on this click, the field is type="password", show the value
+    if (this.$input.type === 'password') {
+      this.show()
       return
     }
 
-    this.$input.setAttribute(
-      'type',
-      this.$input.type === 'password' ? 'text' : 'password'
-    )
-    const passwordIsHidden = this.$input.type === 'password'
-    this.$showHideButton.innerHTML = passwordIsHidden
-      ? this.i18n.t('showPassword')
-      : this.i18n.t('hidePassword')
-    this.$showHideButton.setAttribute(
-      'aria-label',
-      passwordIsHidden
-        ? this.i18n.t('showPasswordAriaLabel')
-        : this.i18n.t('hidePasswordAriaLabel')
-    )
-    this.$statusText.innerText = passwordIsHidden
-      ? this.i18n.t('passwordHiddenAnnouncement')
-      : this.i18n.t('passwordShownAnnouncement')
+    // Otherwise, hide it
+    // Being defensive - hiding should always be the default
+    this.hide()
   }
 
   /**
-   * Revert the input to type=password when the form is submitted. This prevents
-   * user agents potentially saving or caching the plain text password.
+   * Show the password input value in plain text.
+   *
+   * @private
    */
-  revertToPasswordOnFormSubmit() {
-    if (!this.$statusText) {
-      return
+  show() {
+    this.$input.setAttribute('type', 'text')
+    this.$showHideButton.innerHTML = this.i18n.t('hidePassword')
+    this.$showHideButton.setAttribute(
+      'aria-label',
+      this.i18n.t('hidePasswordAriaLabel')
+    )
+    if (this.$statusText) {
+      this.$statusText.innerText = this.i18n.t('passwordShownAnnouncement')
     }
+  }
 
+  /**
+   * Hide the password input value.
+   *
+   * @private
+   */
+  hide() {
+    this.$input.setAttribute('type', 'password')
+    this.$showHideButton.innerHTML = this.i18n.t('showPassword')
     this.$showHideButton.setAttribute(
       'aria-label',
       this.i18n.t('showPasswordAriaLabel')
     )
-    this.$showHideButton.innerHTML = this.i18n.t('showPassword')
-    this.$statusText.innerText = this.i18n.t('passwordHiddenAnnouncement')
-    this.$input.setAttribute('type', 'password')
+    if (this.$statusText) {
+      this.$statusText.innerText = this.i18n.t('passwordHiddenAnnouncement')
+    }
   }
 
   /**
