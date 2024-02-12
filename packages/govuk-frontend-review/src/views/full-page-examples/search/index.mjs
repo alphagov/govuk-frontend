@@ -45,7 +45,7 @@ router.get(
       }),
 
       errors,
-      errorSummary: Object.values(errors),
+      errorSummary: Object.values(errors ?? {}),
       values: matchedData(req, { onlyValidData: false }) // In production this should sanitized.
     })
   }
