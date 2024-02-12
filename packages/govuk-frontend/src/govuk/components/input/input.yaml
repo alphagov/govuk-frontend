@@ -296,6 +296,14 @@ examples:
       name: spellcheck
       type: text
       spellcheck: false
+  - name: with autocapitalize turned off
+    options:
+      label:
+        text: Autocapitalize is turned off
+      id: input-with-autocapitalize-off
+      name: autocapitalize
+      type: text
+      autocapitalize: none
 
   - name: with prefix
     options:
@@ -539,3 +547,18 @@ examples:
         html: <span>kg</span>
         attributes:
           data-attribute: value
+  - name: with customised input wrapper
+    hidden: true
+    options:
+      label:
+        text: Cost per item, in pounds
+      id: input-with-customised-input-wrapper
+      name: cost
+      inputWrapper:
+        classes: app-input-wrapper--custom-modifier
+        attributes:
+          data-attribute: value
+      prefix:
+        text: £
+      suffix:
+        text: per item
