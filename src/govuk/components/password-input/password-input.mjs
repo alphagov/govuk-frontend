@@ -175,9 +175,7 @@ export class PasswordInput extends GOVUKFrontendComponent {
       'aria-label',
       this.i18n.t('hidePasswordAriaLabel')
     )
-    if (this.$statusText) {
-      this.$statusText.innerText = this.i18n.t('passwordShownAnnouncement')
-    }
+    this.$statusText.innerText = this.i18n.t('passwordShownAnnouncement')
   }
 
   /**
@@ -192,9 +190,7 @@ export class PasswordInput extends GOVUKFrontendComponent {
       'aria-label',
       this.i18n.t('showPasswordAriaLabel')
     )
-    if (this.$statusText) {
-      this.$statusText.innerText = this.i18n.t('passwordHiddenAnnouncement')
-    }
+    this.$statusText.innerText = this.i18n.t('passwordHiddenAnnouncement')
   }
 
   /**
