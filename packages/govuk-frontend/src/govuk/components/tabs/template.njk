@@ -10,6 +10,18 @@
 </li>
 {% endmacro -%}
 
+{%- macro _tabPanel(params, item, index) %}
+{% set tabPanelId = item.id if item.id else idPrefix + "-" + index -%}
+<div class="govuk-tabs__panel {%- if index > 1 %} govuk-tabs__panel--hidden{% endif %}" id="{{ tabPanelId }}"
+  {{- govukAttributes(item.panel.attributes) }}>
+  {% if item.panel.html %}
+    {{ item.panel.html | safe }}
+  {% elif item.panel.text %}
+    <p class="govuk-body">{{ item.panel.text }}</p>
+  {% endif %}
+</div>
+{% endmacro -%}
+
 {#- If an id 'prefix' is not passed, fall back to using the name attribute
   instead. We need this for error messages and hints as well -#}
 {% set idPrefix = params.idPrefix if params.idPrefix -%}
@@ -30,15 +42,7 @@
   {% endif %}
   {% for item in params.items %}
     {% if item %}
-      {% set id = item.id if item.id else idPrefix + "-" + loop.index %}
-      <div class="govuk-tabs__panel {%- if loop.index > 1 %} govuk-tabs__panel--hidden{% endif %}" id="{{ id }}"
-        {{- govukAttributes(item.panel.attributes) }}>
-        {% if item.panel.html %}
-          {{ item.panel.html | safe }}
-        {% elif item.panel.text %}
-          <p class="govuk-body">{{ item.panel.text }}</p>
-        {% endif %}
-      </div>
+      {{- _tabPanel(params, item, loop.index) }}
     {% endif %}
   {% endfor %}
 </div>
