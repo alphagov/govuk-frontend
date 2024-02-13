@@ -39,6 +39,11 @@
   }) -}}
 {%- endset -%}
 
+{#- Append form group attributes onto attributes set above #}
+{%- for name, value in params.formGroup.attributes %}
+  {% set attributesHtml = attributesHtml + " " + name | escape + '="' + value | escape + '"' %}
+{% endfor -%}
+
 {% set afterInput %}
   {{ govukButton({
     type: "button",
@@ -58,9 +63,9 @@
 
 {{ govukInput({
   formGroup: {
-    classes: "govuk-password-input",
+    classes: "govuk-password-input" + (" " + params.formGroup.classes if params.formGroup.classes),
     attributes: attributesHtml,
-    beforeInput: params.beforeInput,
+    beforeInput: params.formGroup.beforeInput,
     afterInput: {
       html: afterInput
     }
