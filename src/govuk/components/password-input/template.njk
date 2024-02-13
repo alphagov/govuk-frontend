@@ -1,5 +1,5 @@
 {% from "../../macros/attributes.njk" import govukAttributes -%}
-{% from "../../macros/i18n.njk" import govukI18nAttributes %}
+{% from "../../macros/i18n.njk" import govukI18nAttributes -%}
 
 {% from "../button/macro.njk" import govukButton -%}
 {% from "../input/macro.njk" import govukInput -%}
@@ -44,22 +44,21 @@
   {% set attributesHtml = attributesHtml + " " + name | escape + '="' + value | escape + '"' %}
 {% endfor -%}
 
-{% set afterInput %}
-  {{ govukButton({
-    type: "button",
-    classes: "govuk-button--secondary govuk-password-input__toggle govuk-js-password-input-toggle" + (" " + params.button.classes if params.button.classes),
-    text: params.showPasswordText | default("Show"),
-    attributes: {
-      "aria-controls": params.id,
-      "aria-label": params.showPasswordAriaLabelText | default("Show password"),
-      "hidden": ""
-    }
-  }) }}
-
-  {% if params.formGroup.afterInput %}
-    {{- params.formGroup.afterInput.html | safe if params.formGroup.afterInput.html else params.formGroup.afterInput.text }}
-  {% endif %}
-{% endset %}
+{%- set buttonHtml %}
+{{ govukButton({
+  type: "button",
+  classes: "govuk-button--secondary govuk-password-input__toggle govuk-js-password-input-toggle" + (" " + params.button.classes if params.button.classes),
+  text: params.showPasswordText | default("Show"),
+  attributes: {
+    "aria-controls": params.id,
+    "aria-label": params.showPasswordAriaLabelText | default("Show password"),
+    "hidden": ""
+  }
+}) | trim }}
+{% if params.formGroup.afterInput %}
+  {{- params.formGroup.afterInput.html | safe | trim if params.formGroup.afterInput.html else params.formGroup.afterInput.text }}
+{% endif -%}
+{% endset -%}
 
 {{ govukInput({
   formGroup: {
@@ -67,7 +66,7 @@
     attributes: attributesHtml,
     beforeInput: params.formGroup.beforeInput,
     afterInput: {
-      html: afterInput
+      html: buttonHtml
     }
   },
   inputWrapper: {
@@ -88,4 +87,4 @@
   disabled: params.disabled,
   describedBy: params.describedBy,
   attributes: params.attributes
-}) }}
+}) | trim }}
