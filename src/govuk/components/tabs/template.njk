@@ -1,5 +1,15 @@
 {% from "../../macros/attributes.njk" import govukAttributes %}
 
+{%- macro _tabListItem(params, item, index) %}
+{% set tabPanelId = item.id if item.id else idPrefix + "-" + index -%}
+<li class="govuk-tabs__list-item {%- if index == 1 %} govuk-tabs__list-item--selected{% endif %}">
+  <a class="govuk-tabs__tab" href="#{{ tabPanelId }}"
+    {{- govukAttributes(item.attributes) }}>
+    {{ item.label }}
+  </a>
+</li>
+{% endmacro -%}
+
 {#- If an id 'prefix' is not passed, fall back to using the name attribute
   instead. We need this for error messages and hints as well -#}
 {% set idPrefix = params.idPrefix if params.idPrefix -%}
@@ -13,13 +23,7 @@
   <ul class="govuk-tabs__list">
     {% for item in params.items %}
       {% if item %}
-        {% set id = item.id if item.id else idPrefix + "-" + loop.index %}
-        <li class="govuk-tabs__list-item {%- if loop.index == 1 %} govuk-tabs__list-item--selected{% endif %}">
-          <a class="govuk-tabs__tab" href="#{{ id }}"
-            {{- govukAttributes(item.attributes) }}>
-            {{ item.label }}
-          </a>
-        </li>
+        {{- _tabListItem(params, item, loop.index) }}
       {% endif %}
     {% endfor %}
   </ul>
