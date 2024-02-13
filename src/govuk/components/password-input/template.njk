@@ -6,7 +6,7 @@
 
 {% set attributesHtml -%}
   {{- ' data-module="govuk-password-input"' | safe }}
-  {%- if params.disableFormSubmitCheck %} data-disable-form-submit-check="true"{% endif %}
+  {%- if params.disableFormSubmitCheck == true %} data-disable-form-submit-check="true"{% endif %}
 
   {{- govukI18nAttributes({
     key: 'show-password',
