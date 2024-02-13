@@ -6,6 +6,29 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ### New features
 
+#### We've adjusted our responsive type scale
+
+We've made the following adjustments to our responsive type scale:
+
+- point 16 now returns 16px across all screen sizes
+- point 19 now returns 19px across all screen sizes
+- point 24 remains as 24px on large screens
+- point 24 now returns 21px on small screens instead of 18px and has a line height 25px instead of 20px
+- point 27 remains as 27px on large screens
+- point 27 now returns 21px on small screens instead of 18px and has a line height 25px instead of 20px
+- point 36 remains as 27px on large screens
+- point 36 now returns 27px on small screens instead of 24px and has a line height 30px instead of 25px
+
+To enable these changes, set `$govuk-new-typography-scale` to `true` before you import GOV.UK Frontend in your Sass:
+
+```
+// application.scss
+$govuk-new-typography-scale: true;
+@import "govuk-frontend/all";
+```
+
+If your service uses custom elements made using GOV.UK Frontend, test your service against the new typography scale to assess if you need to make any adjustments. You can read more on upgrading your service to the new type scale in our [upgrade guide](https://design-system.service.gov.uk/get-started/new-type-scale/).
+
 #### Insert custom HTML into component form group wrappers
 
 You can now insert custom HTML into form group wrappers for all components with form fields.

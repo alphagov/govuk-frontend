@@ -18,7 +18,13 @@
 
   .govuk-phase-banner__content__tag {
     @include govuk-font-size($size: 16);
-    margin-right: govuk-spacing(2);
+    margin-right: govuk-spacing(if($govuk-new-typography-scale, 3, 2));
+
+    @if $govuk-new-typography-scale {
+      @include govuk-media-query($from: tablet) {
+        margin-right: govuk-spacing(2);
+      }
+    }
 
     // When forced colour mode is active, for example to provide high contrast,
     // the background colour of the tag is the same as the rest of the page. To ensure
