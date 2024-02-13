@@ -15,17 +15,32 @@ import { I18n } from '../../i18n.mjs'
  * @preserve
  */
 export class PasswordInput extends GOVUKFrontendComponent {
+  /** @private */
+  $module
+
   /**
    * @private
    * @type {PasswordInputConfig}
    */
   config
 
+  /** @private */
+  i18n
+
   /**
    * @private
-   * @type {HTMLElement | null}
+   * @type {HTMLInputElement}
    */
-  $statusText = null
+  $input
+
+  /**
+   * @private
+   * @type {HTMLButtonElement}
+   */
+  $showHideButton
+
+  /** @private */
+  $statusText
 
   /**
    * @param {Element} $module - HTML element to use for password input
@@ -42,27 +57,31 @@ export class PasswordInput extends GOVUKFrontendComponent {
       })
     }
 
-    this.$input = $module.querySelector('.govuk-js-password-input-input')
-    if (!(this.$input instanceof HTMLInputElement)) {
+    const $input = $module.querySelector('.govuk-js-password-input-input')
+    if (!($input instanceof HTMLInputElement)) {
       throw new ElementError({
         componentName: 'Password input',
-        element: this.$input,
+        element: $input,
         expectedType: 'HTMLInputElement',
         identifier: 'Form field (`.govuk-js-password-input-input`)'
       })
     }
 
-    this.$showHideButton = $module.querySelector(
+    const $showHideButton = $module.querySelector(
       '.govuk-js-password-input-toggle'
     )
-    if (!(this.$showHideButton instanceof HTMLButtonElement)) {
+    if (!($showHideButton instanceof HTMLButtonElement)) {
       throw new ElementError({
         componentName: 'Password input',
-        element: this.$showHideButton,
+        element: $showHideButton,
         expectedType: 'HTMLButtonElement',
         identifier: 'Button (`.govuk-js-password-input-toggle`)'
       })
     }
+
+    this.$module = $module
+    this.$input = $input
+    this.$showHideButton = $showHideButton
 
     this.config = mergeConfigs(
       PasswordInput.defaults,
