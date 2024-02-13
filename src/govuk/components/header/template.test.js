@@ -154,7 +154,7 @@ describe('header', () => {
       const $button = $component.find('.govuk-header__menu-button')
 
       expect($nav.attr('aria-label')).toEqual('Custom navigation label')
-      expect($button.text()).toEqual('Custom menu button text')
+      expect($button.text().trim()).toEqual('Custom menu button text')
     })
 
     it('renders navigation with active item', () => {
@@ -237,14 +237,14 @@ describe('header', () => {
 
         const $button = $('.govuk-header__menu-button')
 
-        expect($button.text()).toEqual('Menu')
+        expect($button.text().trim()).toEqual('Menu')
       })
       it('allows text to be customised', () => {
         const $ = render('header', examples['with custom menu button text'])
 
         const $button = $('.govuk-header__menu-button')
 
-        expect($button.text()).toEqual('Dewislen')
+        expect($button.text().trim()).toEqual('Dewislen')
       })
     })
   })
