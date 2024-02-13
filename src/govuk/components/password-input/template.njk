@@ -4,16 +4,40 @@
 {% from "../button/macro.njk" import govukButton -%}
 {% from "../input/macro.njk" import govukInput -%}
 
-{% set moduleAttributes %}
-  data-module="govuk-password-input"
+{% set attributesHtml -%}
+  {{- ' data-module="govuk-password-input"' | safe }}
   {%- if params.disableFormSubmitCheck %} data-disable-form-submit-check="true"{% endif %}
-  {{- govukI18nAttributes({ key: 'show-password', message: params.showPasswordText }) -}}
-  {{- govukI18nAttributes({ key: 'hide-password', message: params.hidePasswordText }) -}}
-  {{- govukI18nAttributes({ key: 'show-password-aria-label', message: params.showPasswordAriaLabelText }) -}}
-  {{- govukI18nAttributes({ key: 'hide-password-aria-label', message: params.hidePasswordAriaLabelText }) -}}
-  {{- govukI18nAttributes({ key: 'password-shown-announcement', message: params.passwordShownAnnouncementText }) -}}
-  {{- govukI18nAttributes({ key: 'password-hidden-announcement', message: params.passwordHiddenAnnouncementText }) -}}
-{% endset %}
+
+  {{- govukI18nAttributes({
+    key: 'show-password',
+    message: params.showPasswordText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'hide-password',
+    message: params.hidePasswordText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'show-password-aria-label',
+    message: params.showPasswordAriaLabelText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'hide-password-aria-label',
+    message: params.hidePasswordAriaLabelText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'password-shown-announcement',
+    message: params.passwordShownAnnouncementText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'password-hidden-announcement',
+    message: params.passwordHiddenAnnouncementText
+  }) -}}
+{%- endset -%}
 
 {% set afterInput %}
   {{ govukButton({
@@ -35,7 +59,7 @@
 {{ govukInput({
   formGroup: {
     classes: "govuk-password-input",
-    attributes: moduleAttributes,
+    attributes: attributesHtml,
     beforeInput: params.beforeInput,
     afterInput: {
       html: afterInput
