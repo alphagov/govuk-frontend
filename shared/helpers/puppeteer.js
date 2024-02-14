@@ -25,7 +25,7 @@ async function axe(page, overrides = {}) {
    *
    * @satisfies {import('axe-core').RunOptions}
    */
-  const defaultOptions = {
+  const options = {
     runOnly: {
       type: 'tag',
       values: [
@@ -49,21 +49,18 @@ async function axe(page, overrides = {}) {
        * Ignore 'Some page content is not contained by landmarks'
        * {@link https://github.com/alphagov/govuk-frontend/issues/1604}
        */
-      region: { enabled: false }
+      region: { enabled: false },
+      ...overrides
     }
   }
 
   // Ignore colour contrast for 'inactive' components
   if (page.url().includes('-disabled')) {
-    defaultOptions.rules['color-contrast'] = { enabled: false }
+    options.rules['color-contrast'] = { enabled: false }
   }
 
-  const mergedOptions = defaultOptions
-
-  mergedOptions.rules = { ...defaultOptions.rules, ...overrides }
-
   // Create report
-  const report = await reporter.options(mergedOptions).analyze()
+  const report = await reporter.options(options).analyze()
 
   // Add preview URL to report violations
   report.violations.forEach((violation) => {
