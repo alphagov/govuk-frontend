@@ -19,39 +19,48 @@ async function axe(page, overrides = {}) {
   const reporter = new AxePuppeteer(page)
     .setLegacyMode(true) // Share single page via iframe
     .include('body')
-    .withRules([
-      'best-practice',
 
-      // WCAG 2.x
-      'wcag2a',
-      'wcag2aa',
-      'wcag2aaa',
+  /**
+   * Shared options for GOV.UK Frontend
+   *
+   * @satisfies {import('axe-core').RunOptions}
+   */
+  const options = {
+    runOnly: {
+      type: 'tag',
+      values: [
+        'best-practice',
 
-      // WCAG 2.1
-      'wcag21a',
-      'wcag21aa',
+        // WCAG 2.x
+        'wcag2a',
+        'wcag2aa',
+        'wcag2aaa',
 
-      // WCAG 2.2
-      'wcag22aa'
-    ])
+        // WCAG 2.1
+        'wcag21a',
+        'wcag21aa',
+
+        // WCAG 2.2
+        'wcag22aa'
+      ]
+    },
+    rules: {
+      /**
+       * Ignore 'Some page content is not contained by landmarks'
+       * {@link https://github.com/alphagov/govuk-frontend/issues/1604}
+       */
+      region: { enabled: false },
+      ...overrides
+    }
+  }
 
   // Ignore colour contrast for 'inactive' components
   if (page.url().includes('-disabled')) {
-    overrides['color-contrast'] = { enabled: false }
-  }
-
-  // Shared rules for GOV.UK Frontend
-  const rules = {
-    /**
-     * Ignore 'Some page content is not contained by landmarks'
-     * {@link https://github.com/alphagov/govuk-frontend/issues/1604}
-     */
-    region: { enabled: false },
-    ...overrides
+    options.rules['color-contrast'] = { enabled: false }
   }
 
   // Create report
-  const report = await reporter.options({ rules }).analyze()
+  const report = await reporter.options(options).analyze()
 
   // Add preview URL to report violations
   report.violations.forEach((violation) => {
