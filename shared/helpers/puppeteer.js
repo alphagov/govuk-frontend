@@ -30,7 +30,7 @@ async function axe(page, overrides = {}) {
     .setLegacyMode(true) // Share single page via iframe
     .options({ rules })
     .include('body')
-    .withRules([
+    .withTags([
       'best-practice',
 
       // WCAG 2.x
