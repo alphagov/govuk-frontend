@@ -43,9 +43,7 @@ async function axe(page, overrides = {}) {
        * Ignore 'Some page content is not contained by landmarks'
        * {@link https://github.com/alphagov/govuk-frontend/issues/1604}
        */
-      region: { enabled: false },
-      // Ignore colour contrast (enhanced) from WCAG Level AAA
-      'color-contrast-enhanced': { enabled: false }
+      region: { enabled: false }
     }
   }
 
