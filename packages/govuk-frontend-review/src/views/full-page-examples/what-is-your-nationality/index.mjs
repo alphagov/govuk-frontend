@@ -23,11 +23,13 @@ router.post(
   body('other-nationality'),
 
   (req, res) => {
-    const viewPath = './full-page-examples/what-is-your-nationality'
+    const { example } = res.locals
+
+    const viewPath = `./full-page-examples/${example.path}`
     const errors = formatValidationErrors(validationResult(req))
 
     if (!errors) {
-      return res.render(`${viewPath}/confirm`)
+      return res.redirect(303, `./${example.path}/confirm`)
     }
 
     res.render(`${viewPath}/index`, {

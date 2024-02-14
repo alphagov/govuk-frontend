@@ -39,9 +39,17 @@
           <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Full page examples</h2>
           <p class="govuk-body"><a href="/full-page-examples" class="govuk-link govuk-link--muted">View all full page examples</a></p>
 
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">With single page</h3>
+          <ul class="govuk-list govuk-!-margin-bottom-4">
+          {% for example in fullPageExamples | rejectattr("hasPageConfirm") %}
+            <li><a href="/full-page-examples/{{ example.path }}" class="govuk-link">{{ example.name | unslugify }}</a></li>
+          {% endfor %}
+          </ul>
+
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">With multiple pages</h3>
           <ul class="govuk-list govuk-!-margin-bottom-8">
-          {% for exampleName in exampleNamesFullPage %}
-            <li><a href="/full-page-examples/{{ exampleName }}" class="govuk-link">{{ exampleName | unslugify }}</a></li>
+          {% for example in fullPageExamples | selectattr("hasPageConfirm") %}
+            <li><a href="/full-page-examples/{{ example.path }}" class="govuk-link">{{ example.name | unslugify }}</a></li>
           {% endfor %}
           </ul>
         </div>

@@ -2,7 +2,7 @@ import { readFile } from 'fs/promises'
 import { join } from 'path'
 
 import { paths } from '@govuk-frontend/config'
-import { getDirectories } from '@govuk-frontend/lib/files'
+import { getDirectories, getListing } from '@govuk-frontend/lib/files'
 import fm from 'front-matter'
 
 /**
@@ -11,24 +11,33 @@ import fm from 'front-matter'
  * @returns {Promise<FullPageExample[]>} Full page examples
  */
 export async function getFullPageExamples() {
-  const directories = await getDirectories(
-    join(paths.app, 'src/views/full-page-examples')
-  )
+  const examplesPath = join(paths.app, 'src/views/full-page-examples')
+  const directories = await getDirectories(examplesPath)
 
-  // Add metadata (front matter) to each example
+  /**
+   * Add metadata (front matter) to each example
+   *
+   * @type {FullPageExample[]}
+   */
   const examples = await Promise.all(
     directories.map(async (exampleName) => {
-      const templatePath = join(
-        paths.app,
-        'src/views/full-page-examples',
-        exampleName,
-        'index.njk'
+      const { attributes } = fm(
+        await readFile(join(examplesPath, exampleName, 'index.njk'), 'utf8')
       )
-      const { attributes } = fm(await readFile(templatePath, 'utf8'))
+
+      const exampleFiles = await getListing('*', {
+        cwd: join(examplesPath, exampleName)
+      })
 
       return {
         name: exampleName,
         path: exampleName,
+        files: exampleFiles,
+
+        // Add flags for Nunjucks filtering
+        hasPageConfirm: exampleFiles.includes('confirm.njk'),
+
+        // Add metadata (front matter)
         ...attributes
       }
     })
@@ -48,6 +57,8 @@ export async function getFullPageExamples() {
  * @property {string} name - Example name
  * @property {string} path - Example directory name
  * @property {string} title - Example title
+ * @property {string[]} files - Example file names
+ * @property {boolean} hasPageConfirm - Whether example has confirm page
  * @property {string} [scenario] - Description explaining the example
  * @property {string} [notes] - Additional notes about the example
  */

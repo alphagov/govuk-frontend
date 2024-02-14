@@ -13,12 +13,13 @@ router.post(
     .withMessage('Enter the last country you visited'),
 
   (req, res) => {
-    const viewPath =
-      './full-page-examples/what-was-the-last-country-you-visited'
+    const { example } = res.locals
+
+    const viewPath = `./full-page-examples/${example.path}`
     const errors = formatValidationErrors(validationResult(req))
 
     if (!errors) {
-      return res.render(`${viewPath}/confirm`)
+      return res.redirect(303, `./${example.path}/confirm`)
     }
 
     res.render(`${viewPath}/index`, {

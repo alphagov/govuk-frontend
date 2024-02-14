@@ -5,20 +5,22 @@
  * @returns {Record<string, ErrorFormatted> | undefined} Formatted errors
  */
 export function formatValidationErrors(errors) {
-  return errors
-    .formatWith((error) => {
-      if (error.type !== 'field') {
-        throw new Error(`Unknown error: ${error.type}`)
-      }
+  const result = errors.formatWith((error) => {
+    if (error.type !== 'field') {
+      throw new Error(`Unknown error: ${error.type}`)
+    }
 
-      return {
-        id: error.path,
-        href: `#${error.path}`,
-        value: error.value,
-        text: error.msg
-      }
-    })
-    .mapped()
+    return {
+      id: error.path,
+      href: `#${error.path}`,
+      value: error.value,
+      text: error.msg
+    }
+  })
+
+  if (!result.isEmpty()) {
+    return result.mapped()
+  }
 }
 
 /**

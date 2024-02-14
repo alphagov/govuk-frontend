@@ -11,11 +11,13 @@ router.post(
   body('address-postcode').notEmpty().withMessage('Enter your home postcode'),
 
   (req, res) => {
-    const viewPath = './full-page-examples/what-is-your-postcode'
+    const { example } = res.locals
+
+    const viewPath = `./full-page-examples/${example.path}`
     const errors = formatValidationErrors(validationResult(req))
 
     if (!errors) {
-      return res.render(`${viewPath}/confirm`)
+      return res.redirect(303, `./${example.path}/confirm`)
     }
 
     res.render(`${viewPath}/index`, {

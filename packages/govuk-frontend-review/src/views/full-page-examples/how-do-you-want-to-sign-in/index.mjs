@@ -11,11 +11,13 @@ router.post(
   body('sign-in').notEmpty().withMessage('Select how you want to sign in'),
 
   (req, res) => {
-    const viewPath = './full-page-examples/how-do-you-want-to-sign-in'
+    const { example } = res.locals
+
+    const viewPath = `./full-page-examples/${example.path}`
     const errors = formatValidationErrors(validationResult(req))
 
     if (!errors) {
-      return res.render(`${viewPath}/confirm`)
+      return res.redirect(303, `./${example.path}/confirm`)
     }
 
     res.render(`${viewPath}/index`, {
