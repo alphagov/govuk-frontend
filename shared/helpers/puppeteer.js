@@ -16,46 +16,50 @@ const slug = require('slug')
  * @returns {Promise<import('axe-core').AxeResults>} Axe Puppeteer instance
  */
 async function axe(page, overrides = {}) {
-  // Shared rules for GOV.UK Frontend
-  const rules = {
-    /**
-     * Ignore 'Some page content is not contained by landmarks'
-     * {@link https://github.com/alphagov/govuk-frontend/issues/1604}
-     */
-    region: { enabled: false },
-    ...overrides
-  }
-
   const reporter = new AxePuppeteer(page)
     .setLegacyMode(true) // Share single page via iframe
-    .options({ rules })
     .include('body')
-    .withTags([
-      'best-practice',
 
-      // WCAG 2.x
-      'wcag2a',
-      'wcag2aa',
-      'wcag2aaa',
-
-      // WCAG 2.1
-      'wcag21a',
-      'wcag21aa',
-
-      // WCAG 2.2
-      'wcag22aa'
-    ])
-
-  // Ignore colour contrast (enhanced) from WCAG Level AAA
-  reporter.disableRules('color-contrast-enhanced')
+  const defaultOptions = {
+    /** @type {import('axe-core').RunOnly} */
+    runOnly: {
+      type: 'tag',
+      values: [
+        'best-practice',
+        // WCAG 2.x
+        'wcag2a',
+        'wcag2aa',
+        'wcag2aaa',
+        // WCAG 2.1
+        'wcag21a',
+        'wcag21aa',
+        // WCAG 2.2
+        'wcag22aa'
+      ]
+    },
+    /** @type {import('axe-core').RuleObject} */
+    rules: {
+      /**
+       * Ignore 'Some page content is not contained by landmarks'
+       * {@link https://github.com/alphagov/govuk-frontend/issues/1604}
+       */
+      region: { enabled: false },
+      // Ignore colour contrast (enhanced) from WCAG Level AAA
+      'color-contrast-enhanced': { enabled: false }
+    }
+  }
 
   // Ignore colour contrast for 'inactive' components
   if (page.url().includes('-disabled')) {
-    reporter.disableRules('color-contrast')
+    defaultOptions.rules['color-contrast'] = { enabled: false }
   }
 
+  const mergedOptions = defaultOptions
+
+  mergedOptions.rules = { ...defaultOptions.rules, ...overrides }
+
   // Create report
-  const report = await reporter.analyze()
+  const report = await reporter.options(mergedOptions).analyze()
 
   // Add preview URL to report violations
   report.violations.forEach((violation) => {
