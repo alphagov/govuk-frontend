@@ -46,6 +46,9 @@ async function axe(page, overrides = {}) {
       'wcag22aa'
     ])
 
+  // Ignore colour contrast (enhanced) from WCAG Level AAA
+  reporter.disableRules('color-contrast-enhanced')
+
   // Ignore colour contrast for 'inactive' components
   if (page.url().includes('-disabled')) {
     reporter.disableRules('color-contrast')
