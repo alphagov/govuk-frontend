@@ -10,7 +10,9 @@ describe('/components/notification-banner', () => {
        * Ignore 'Element has a tabindex greater than 0' for custom
        * tabindex tests
        */
-      tabindex: { enabled: false }
+      tabindex: { enabled: false },
+      // Ignore colour contrast (enhanced) from WCAG Level AAA
+      'color-contrast-enhanced': { enabled: false }
     }
   })
 
