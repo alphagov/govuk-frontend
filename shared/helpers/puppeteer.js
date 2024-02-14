@@ -20,24 +20,30 @@ async function axe(page, overrides = {}) {
     .setLegacyMode(true) // Share single page via iframe
     .include('body')
 
+  /**
+   * Shared options for GOV.UK Frontend
+   *
+   * @satisfies {import('axe-core').RunOptions}
+   */
   const defaultOptions = {
-    /** @type {import('axe-core').RunOnly} */
     runOnly: {
       type: 'tag',
       values: [
         'best-practice',
+
         // WCAG 2.x
         'wcag2a',
         'wcag2aa',
         'wcag2aaa',
+
         // WCAG 2.1
         'wcag21a',
         'wcag21aa',
+
         // WCAG 2.2
         'wcag22aa'
       ]
     },
-    /** @type {import('axe-core').RuleObject} */
     rules: {
       /**
        * Ignore 'Some page content is not contained by landmarks'
