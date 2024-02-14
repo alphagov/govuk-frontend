@@ -16,8 +16,19 @@ const slug = require('slug')
  * @returns {Promise<import('axe-core').AxeResults>} Axe Puppeteer instance
  */
 async function axe(page, overrides = {}) {
+  // Shared rules for GOV.UK Frontend
+  const rules = {
+    /**
+     * Ignore 'Some page content is not contained by landmarks'
+     * {@link https://github.com/alphagov/govuk-frontend/issues/1604}
+     */
+    region: { enabled: false },
+    ...overrides
+  }
+
   const reporter = new AxePuppeteer(page)
     .setLegacyMode(true) // Share single page via iframe
+    .options({ rules })
     .include('body')
     .withRules([
       'best-practice',
@@ -37,21 +48,11 @@ async function axe(page, overrides = {}) {
 
   // Ignore colour contrast for 'inactive' components
   if (page.url().includes('-disabled')) {
-    overrides['color-contrast'] = { enabled: false }
-  }
-
-  // Shared rules for GOV.UK Frontend
-  const rules = {
-    /**
-     * Ignore 'Some page content is not contained by landmarks'
-     * {@link https://github.com/alphagov/govuk-frontend/issues/1604}
-     */
-    region: { enabled: false },
-    ...overrides
+    reporter.disableRules('color-contrast')
   }
 
   // Create report
-  const report = await reporter.options({ rules }).analyze()
+  const report = await reporter.analyze()
 
   // Add preview URL to report violations
   report.violations.forEach((violation) => {
