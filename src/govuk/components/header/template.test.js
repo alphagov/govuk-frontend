@@ -281,8 +281,8 @@ describe('header', () => {
       $svg = $('.govuk-header__logotype')
     })
 
-    it("defaults to St Edward's crown", () => {
-      expect($svg.attr('viewBox')).toEqual('0 0 152 30')
+    it('defaults to Tudor crown', () => {
+      expect($svg.attr('viewBox')).toEqual('0 0 148 30')
     })
 
     it('sets focusable="false" so that IE does not treat it as an interactive element', () => {
@@ -301,11 +301,11 @@ describe('header', () => {
       expect($svg.html()).toContain('<title>GOV.UK</title>')
     })
 
-    it('uses the Tudor Crown if useTudorCrown is set', () => {
-      $ = render('header', examples['with Tudor crown'])
+    it("uses the St Edward's Crown if useTudorCrown is false", () => {
+      $ = render('header', examples["with St Edward's crown"])
       $svg = $('.govuk-header__logotype')
 
-      expect($svg.attr('viewBox')).toEqual('0 0 148 30')
+      expect($svg.attr('viewBox')).toEqual('0 0 152 30')
     })
   })
 })
