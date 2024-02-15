@@ -7,6 +7,57 @@
 
   {@link https://developer.mozilla.org/en-US/docs/Glossary/Boolean/HTML}
 
+  @example
+  Output attribute ` aria-hidden="true"` when `true` (boolean) or `"true"` (string)
+
+  ```njk
+  govukAttributes({
+    "aria-hidden": true
+  })
+  ```
+
+  @example
+  Output attribute ` aria-hidden="false"` when `false` (boolean) or `"false"` (string)
+
+  ```njk
+  govukAttributes({
+    "aria-hidden": false
+  })
+  ```
+
+  @example
+  Output attribute ` hidden=""` when `null`, `undefined` or empty `""` (string)
+
+  ```njk
+  govukAttributes({
+    "hidden": undefined
+  })
+  ```
+
+  @example
+  Output attribute ` hidden` as boolean attribute when optional and `true`
+
+  ```njk
+  govukAttributes({
+    hidden: {
+      value: true,
+      optional: true
+    },
+  })
+  ```
+
+  @example
+  Output empty string when optional and `null`, `undefined` or `false`
+
+  ```njk
+  govukAttributes({
+    hidden: {
+      value: undefined,
+      optional: true
+    },
+  })
+  ```
+
   @private
   @param {{ [attribute: string]: string | { value: string, optional?: boolean } } | string} attributes - Component attributes param
 #}
