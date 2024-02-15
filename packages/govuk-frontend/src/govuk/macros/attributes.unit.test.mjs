@@ -24,13 +24,36 @@ describe('attributes.njk', () => {
         {
           context: {
             'data-attribute': 'value',
-            'data-second-attribute': 'second-value'
+            'data-second-attribute': 'second-value',
+            'data-third-attribute': {
+              type: 'string',
+              value: 'third-value'
+            }
           }
         }
       )
 
       expect(attributes).toEqual(
-        ' data-attribute="value" data-second-attribute="second-value"'
+        ' data-attribute="value" data-second-attribute="second-value" data-third-attribute="third-value"'
+      )
+    })
+
+    it('renders attribute values as strings by default', () => {
+      const attributes = renderMacro(
+        'govukAttributes',
+        'govuk/macros/attributes.njk',
+        {
+          context: {
+            viewBox: '0 0 15 13',
+            focusable: false,
+            'aria-hidden': true
+          }
+        }
+      )
+
+      // Note that `aria-hidden` and `focusable` are not converted to boolean attributes
+      expect(attributes).toEqual(
+        ' viewBox="0 0 15 13" focusable="false" aria-hidden="true"'
       )
     })
 
