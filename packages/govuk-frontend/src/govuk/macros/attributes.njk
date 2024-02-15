@@ -1,8 +1,14 @@
 {#
   Renders component attributes as string
 
+  * By default or using `optional: false`, attributes render as ` name="value"`
+  * Using `optional: true`, attributes with empty (`null`, `undefined` or `false`) values are omitted
+  * Using `optional: true`, attributes with `true` (boolean) values render `name` only without value
+
+  {@link https://developer.mozilla.org/en-US/docs/Glossary/Boolean/HTML}
+
   @private
-  @param {{ [attribute: string]: string | { value: string } } | string} attributes - Component attributes param
+  @param {{ [attribute: string]: string | { value: string, optional?: boolean } } | string} attributes - Component attributes param
 #}
 {% macro govukAttributes(attributes) -%}
   {#- Default attributes output -#}
@@ -13,11 +19,17 @@
     {% for name, value in attributes %}
       {#- Set default attribute options -#}
       {% set options = value if value is mapping else {
-        value: value
+        value: value,
+        optional: false
       } %}
 
-      {#- Always render ` name="value"` pair -#}
-      {% set attributesHtml = attributesHtml + " " + name | escape + '="' + options.value | escape + '"' %}
+      {#- Output ` name` only (no value) for boolean attributes -#}
+      {% if options.optional === true and options.value === true %}
+        {% set attributesHtml = attributesHtml + " " + name | escape %}
+      {#- Skip optional empty attributes or output ` name="value"` pair by default -#}
+      {% elif (options.optional === true and not [undefined, null, false].includes(options.value)) or options.optional !== true %}
+        {% set attributesHtml = attributesHtml + " " + name | escape + '="' + options.value | escape + '"' %}
+      {% endif %}
     {% endfor %}
   {% endif -%}
 
