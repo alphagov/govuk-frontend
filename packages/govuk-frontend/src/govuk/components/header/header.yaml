@@ -71,7 +71,7 @@ params:
   - name: useTudorCrown
     type: boolean
     required: false
-    description: If `true`, the header uses the Tudor crown from King Charles III's royal cypher. This will become the default in a future version of GOV.UK Frontend.
+    description: Deprecated. If `true`, uses the Tudor crown from King Charles III's royal cypher. Otherwise, uses the St. Edward's crown. Default is `true`.
 
 previewLayout: full-width
 accessibilityCriteria: |
@@ -98,10 +98,10 @@ examples:
     description: The standard header as used on information pages on GOV.UK
     options: {}
 
-  - name: with Tudor crown
-    description: Standard header with King Charles III's crown.
+  - name: with St Edward's crown
+    description: Legacy header with Queen Elizabeth II's crown.
     options:
-      useTudorCrown: true
+      useTudorCrown: false
 
   - name: with service name
     description: If your service is more than a few pages long, you can help users understand where they are by adding the service name.
