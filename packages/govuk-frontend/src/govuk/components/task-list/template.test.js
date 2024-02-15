@@ -87,7 +87,9 @@ describe('Task List', () => {
 
       const $itemWithLink = $('.govuk-task-list__item:first-child')
       const $itemWithLinkTitle = $itemWithLink.find('.govuk-task-list__link')
-      expect($itemWithLinkTitle.text()).toEqual('<strong>Linked Title</strong>')
+      expect($itemWithLinkTitle.text().trim()).toEqual(
+        '<strong>Linked Title</strong>'
+      )
     })
 
     it('allows HTML in the title when passed as html', () => {
@@ -95,7 +97,9 @@ describe('Task List', () => {
 
       const $itemWithLink = $('.govuk-task-list__item:first-child')
       const $itemWithLinkTitle = $itemWithLink.find('.govuk-task-list__link')
-      expect($itemWithLinkTitle.html()).toEqual('<strong>Linked Title</strong>')
+      expect($itemWithLinkTitle.html().trim()).toEqual(
+        '<strong>Linked Title</strong>'
+      )
     })
   })
 
