@@ -1,5 +1,27 @@
 {% from "../../macros/attributes.njk" import govukAttributes %}
 
+{%- macro _tabListItem(params, item, index) %}
+{% set tabPanelId = item.id if item.id else idPrefix + "-" + index -%}
+<li class="govuk-tabs__list-item {%- if index == 1 %} govuk-tabs__list-item--selected{% endif %}">
+  <a class="govuk-tabs__tab" href="#{{ tabPanelId }}"
+    {{- govukAttributes(item.attributes) }}>
+    {{ item.label }}
+  </a>
+</li>
+{% endmacro -%}
+
+{%- macro _tabPanel(params, item, index) %}
+{% set tabPanelId = item.id if item.id else idPrefix + "-" + index -%}
+<div class="govuk-tabs__panel {%- if index > 1 %} govuk-tabs__panel--hidden{% endif %}" id="{{ tabPanelId }}"
+  {{- govukAttributes(item.panel.attributes) }}>
+{% if item.panel.html %}
+  {{ item.panel.html | safe | trim | indent(2) }}
+{% elif item.panel.text %}
+  <p class="govuk-body">{{ item.panel.text }}</p>
+{% endif %}
+</div>
+{% endmacro -%}
+
 {#- If an id 'prefix' is not passed, fall back to using the name attribute
   instead. We need this for error messages and hints as well -#}
 {% set idPrefix = params.idPrefix if params.idPrefix -%}
@@ -9,32 +31,18 @@
   <h2 class="govuk-tabs__title">
     {{ params.title | default ("Contents") }}
   </h2>
-  {% if(params.items | length) %}
+{% if params.items | length %}
   <ul class="govuk-tabs__list">
     {% for item in params.items %}
       {% if item %}
-        {% set id = item.id if item.id else idPrefix + "-" + loop.index %}
-        <li class="govuk-tabs__list-item {%- if loop.index == 1 %} govuk-tabs__list-item--selected{% endif %}">
-          <a class="govuk-tabs__tab" href="#{{ id }}"
-            {{- govukAttributes(item.attributes) }}>
-            {{ item.label }}
-          </a>
-        </li>
+        {{- _tabListItem(params, item, loop.index) | trim | indent(4, true) }}
       {% endif %}
     {% endfor %}
   </ul>
-  {% endif %}
   {% for item in params.items %}
     {% if item %}
-      {% set id = item.id if item.id else idPrefix + "-" + loop.index %}
-      <div class="govuk-tabs__panel {%- if loop.index > 1 %} govuk-tabs__panel--hidden{% endif %}" id="{{ id }}"
-        {{- govukAttributes(item.panel.attributes) }}>
-        {% if item.panel.html %}
-          {{ item.panel.html | safe }}
-        {% elif item.panel.text %}
-          <p class="govuk-body">{{ item.panel.text }}</p>
-        {% endif %}
-      </div>
+      {{- _tabPanel(params, item, loop.index) | trim | indent(2, true) }}
     {% endif %}
   {% endfor %}
+{% endif %}
 </div>
