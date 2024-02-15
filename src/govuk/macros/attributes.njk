@@ -2,7 +2,7 @@
   Renders component attributes as string
 
   @private
-  @param {{ [attribute: string]: string } | string} attributes - Component attributes param
+  @param {{ [attribute: string]: string | { value: string } } | string} attributes - Component attributes param
 #}
 {% macro govukAttributes(attributes) -%}
   {#- Default attributes output -#}
@@ -11,7 +11,13 @@
   {#- Append attribute name/value pairs -#}
   {%- if attributes is mapping %}
     {% for name, value in attributes %}
-      {% set attributesHtml = attributesHtml + " " + name | escape + '="' + value | escape + '"' %}
+      {#- Set default attribute options -#}
+      {% set options = value if value is mapping else {
+        value: value
+      } %}
+
+      {#- Always render ` name="value"` pair -#}
+      {% set attributesHtml = attributesHtml + " " + name | escape + '="' + options.value | escape + '"' %}
     {% endfor %}
   {% endif -%}
 
