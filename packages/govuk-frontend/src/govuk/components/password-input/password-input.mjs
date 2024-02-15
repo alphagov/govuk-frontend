@@ -40,7 +40,7 @@ export class PasswordInput extends GOVUKFrontendComponent {
   $showHideButton
 
   /** @private */
-  $statusText
+  $screenReaderStatusMessage
 
   /**
    * @param {Element} $module - HTML element to use for password input
@@ -107,13 +107,16 @@ export class PasswordInput extends GOVUKFrontendComponent {
     // This is injected between the input and button so that users get a sensible reading order if
     // moving through the page content linearly:
     // [password input] -> [your password is visible/hidden] -> [show/hide password]
-    this.$statusText = document.createElement('span')
-    this.$statusText.className = 'govuk-visually-hidden'
-    this.$statusText.innerText = this.i18n.t('passwordHiddenAnnouncement')
-    this.$statusText.setAttribute('aria-live', 'polite')
-    this.$input.parentNode?.insertBefore(
-      this.$statusText,
-      this.$input.nextSibling
+    this.$screenReaderStatusMessage = document.createElement('div')
+    this.$screenReaderStatusMessage.className =
+      'govuk-password-input__sr-status govuk-visually-hidden'
+    this.$screenReaderStatusMessage.innerText = this.i18n.t(
+      'passwordHiddenAnnouncement'
+    )
+    this.$screenReaderStatusMessage.setAttribute('aria-live', 'polite')
+    this.$input.insertAdjacentElement(
+      'afterend',
+      this.$screenReaderStatusMessage
     )
 
     // Bind toggle button
@@ -175,7 +178,9 @@ export class PasswordInput extends GOVUKFrontendComponent {
       'aria-label',
       this.i18n.t('hidePasswordAriaLabel')
     )
-    this.$statusText.innerText = this.i18n.t('passwordShownAnnouncement')
+    this.$screenReaderStatusMessage.innerText = this.i18n.t(
+      'passwordShownAnnouncement'
+    )
   }
 
   /**
@@ -190,7 +195,9 @@ export class PasswordInput extends GOVUKFrontendComponent {
       'aria-label',
       this.i18n.t('showPasswordAriaLabel')
     )
-    this.$statusText.innerText = this.i18n.t('passwordHiddenAnnouncement')
+    this.$screenReaderStatusMessage.innerText = this.i18n.t(
+      'passwordHiddenAnnouncement'
+    )
   }
 
   /**
