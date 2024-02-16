@@ -56,6 +56,12 @@ As the beginning of the GOV.UK logo rollout has passed, the Tudor crown logo is 
 
 The `useTudorCrown` parameter, along with any other adjustments made to display the Tudor crown logo in your service, can now be removed.
 
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#4768 : Fix z-index of inputs in Radios and Checkboxes component](https://github.com/alphagov/govuk-frontend/pull/4768)
+
 ## 5.1.0 (Feature release)
 
 To install this version with npm, run `npm install govuk-frontend@5.1.0`. You can also find more information about [how to stay up to date in our documentation](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version).
