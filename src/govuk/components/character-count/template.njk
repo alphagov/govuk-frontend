@@ -1,3 +1,4 @@
+{% from "../../macros/attributes.njk" import govukAttributes %}
 {% from "../../macros/i18n.njk" import govukI18nAttributes %}
 {% from "../textarea/macro.njk" import govukTextarea %}
 {% from "../hint/macro.njk" import govukHint %}
@@ -23,10 +24,23 @@
 {% endif -%}
 {% endset -%}
 
-<div class="govuk-character-count" data-module="govuk-character-count"
-  {%- if params.maxlength %} data-maxlength="{{ params.maxlength }}"{% endif %}
-  {%- if params.threshold %} data-threshold="{{ params.threshold }}"{% endif %}
-  {%- if params.maxwords %} data-maxwords="{{ params.maxwords }}"{% endif %}
+{%- set attributesHtml %}
+  {{- govukAttributes({
+    "data-module": "govuk-character-count",
+    "data-maxlength": {
+      value: params.maxlength,
+      optional: true
+    },
+    "data-threshold": {
+      value: params.threshold,
+      optional: true
+    },
+    "data-maxwords": {
+      value: params.maxwords,
+      optional: true
+    }
+  }) -}}
+
   {#-
     Without maxlength or maxwords, we can't guess if the component will count words or characters.
     We can't guess a default textarea description to be interpolated in JavaScript
@@ -68,7 +82,10 @@
   {{- govukI18nAttributes({
     key: 'words-over-limit',
     messages: params.wordsOverLimitText
-  }) -}}>
+  }) -}}
+{% endset -%}
+
+<div class="govuk-character-count" {{- attributesHtml | safe }}>
   {{ govukTextarea({
     id: params.id,
     name: params.name,
