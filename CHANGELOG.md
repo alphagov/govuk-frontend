@@ -29,6 +29,8 @@ $govuk-new-typography-scale: true;
 
 If your service uses custom elements made using GOV.UK Frontend, test your service against the new typography scale to assess if you need to make any adjustments. You can read more on upgrading your service to the new type scale in our [upgrade guide](https://design-system.service.gov.uk/get-started/new-type-scale/).
 
+This change was introduced in [pull request #2421: Adjust the responsive type scale](https://github.com/alphagov/govuk-frontend/pull/2421).
+
 #### Insert custom HTML into component form group wrappers
 
 You can now insert custom HTML into form group wrappers for all components with form fields.
