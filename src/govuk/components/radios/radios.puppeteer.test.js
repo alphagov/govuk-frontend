@@ -14,6 +14,24 @@ describe('Radios', () => {
     examples = await getExamples('radios')
   })
 
+  describe('input position', () => {
+    // Check that the input sits above the label, enabling its proper detection
+    // when exploring by touch or using automation tools like Selenium
+    it('displays the input above the label', async () => {
+      await render(page, 'radios', examples.default)
+
+      const $firstInput = await page.$('.govuk-radios__input')
+
+      const clickPosition = await $firstInput.clickablePoint()
+      const elementTagNames = await page.evaluate(
+        ({ x, y }) => document.elementsFromPoint(x, y).map((el) => el.tagName),
+        clickPosition
+      )
+      expect(elementTagNames[0]).toBe('INPUT')
+      expect(elementTagNames[1]).toBe('LABEL')
+    })
+  })
+
   describe('with conditional reveals', () => {
     describe('when JavaScript is unavailable or fails', () => {
       beforeAll(async () => {

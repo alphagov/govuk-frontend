@@ -26,6 +26,9 @@
   }
 
   .govuk-radios__input {
+    // Allow the input to sit above the label, enabling its proper detection
+    // when exploring by touch or using automation tools like Selenium
+    z-index: 1;
     width: $govuk-touch-target-size;
     height: $govuk-touch-target-size;
     margin: 0;
