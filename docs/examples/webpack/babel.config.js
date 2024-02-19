@@ -12,12 +12,11 @@ module.exports = function (api) {
   const browserslistEnv = isBrowser ? 'javascripts' : 'node'
 
   return {
+    browserslistEnv,
     presets: [
       [
         '@babel/preset-env',
         {
-          browserslistEnv,
-
           // Apply bug fixes to avoid transforms
           bugfixes: true,
 

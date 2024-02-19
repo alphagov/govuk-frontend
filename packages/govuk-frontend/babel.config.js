@@ -1,9 +1,13 @@
+const { pkg } = require('@govuk-frontend/config')
+
 /**
  * Babel config
  *
  * @type {import('@babel/core').ConfigFunction}
  */
 module.exports = function (api) {
+  const isProduction = !api.env('development')
+
   // Assume browser environment via Rollup plugin
   const isBrowser = api.caller(
     (caller) => caller?.name === '@rollup/plugin-babel'
@@ -14,6 +18,7 @@ module.exports = function (api) {
   const browserslistEnv = isBrowser ? 'javascripts' : 'node'
 
   return {
+    browserslistEnv,
     generatorOpts: {
       shouldPrintComment(comment) {
         if (!isBrowser || comment.includes('* @preserve')) {
@@ -35,12 +40,55 @@ module.exports = function (api) {
         return !isPrivate && isDocumentation
       }
     },
+    plugins: [
+      [
+        'polyfill-corejs3',
+        {
+          // Add logging for required polyfills
+          debug: isProduction,
+
+          // Browser support polyfills to exclude
+          exclude: [
+            // Ignore various fixes in supported features
+            // https://github.com/zloirock/core-js/blob/v3/packages/core-js-compat/src/data.mjs
+            'es.array.includes',
+            'es.array.iterator',
+            'es.array.push',
+            'es.regexp.exec',
+            'es.regexp.to-string',
+            'es.string.includes',
+            'es.string.match',
+            'es.string.replace',
+            'es.string.trim',
+
+            // ES2022 Error cause is unused
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/cause
+            'es.error.cause',
+
+            // DOM collection iteration is unnecessary with `Array.from()`
+            // see https://github.com/zloirock/core-js/issues/1003
+            'web.dom-collections.iterator',
+
+            // WHATWG URL constructor `undefined` base fix is unnecessary
+            // https://bugs.webkit.org/show_bug.cgi?id=216841
+            // https://github.com/zloirock/core-js/commit/0ef4be7352e900dfa6f1eda27de22f7974576531
+            'web.url',
+            'web.url-search-params',
+            'web.url-search-params.delete',
+            'web.url-search-params.has',
+            'web.url-search-params.size'
+          ],
+
+          // Replace unsupported code with polyfills
+          method: 'usage-global',
+          version: pkg.devDependencies['core-js']
+        }
+      ]
+    ],
     presets: [
       [
         '@babel/preset-env',
         {
-          browserslistEnv,
-
           // Apply bug fixes to avoid transforms
           bugfixes: true,
 
