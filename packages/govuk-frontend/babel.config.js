@@ -51,7 +51,16 @@ module.exports = function (api) {
           exclude: [
             // ES2022 Error cause is unused
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/cause
-            'es.error.cause'
+            'es.error.cause',
+
+            // WHATWG URL constructor `undefined` base fix is unnecessary
+            // https://bugs.webkit.org/show_bug.cgi?id=216841
+            // https://github.com/zloirock/core-js/commit/0ef4be7352e900dfa6f1eda27de22f7974576531
+            'web.url',
+            'web.url-search-params',
+            'web.url-search-params.delete',
+            'web.url-search-params.has',
+            'web.url-search-params.size'
           ],
 
           // Replace unsupported code with polyfills
