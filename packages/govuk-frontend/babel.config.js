@@ -49,6 +49,18 @@ module.exports = function (api) {
 
           // Browser support polyfills to exclude
           exclude: [
+            // Ignore various fixes in supported features
+            // https://github.com/zloirock/core-js/blob/v3/packages/core-js-compat/src/data.mjs
+            'es.array.includes',
+            'es.array.iterator',
+            'es.array.push',
+            'es.regexp.exec',
+            'es.regexp.to-string',
+            'es.string.includes',
+            'es.string.match',
+            'es.string.replace',
+            'es.string.trim',
+
             // ES2022 Error cause is unused
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/cause
             'es.error.cause',
