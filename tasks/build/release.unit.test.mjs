@@ -37,6 +37,10 @@ describe('dist/', () => {
       expect(stylesheet).not.toMatch(/body:before{content:/)
     })
 
+    it('should not contain Sass variables', () => {
+      expect(stylesheet).not.toContain('$govuk-')
+    })
+
     it('should contain the copyright notice', () => {
       expect(stylesheet).toContain(
         '/*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */'
