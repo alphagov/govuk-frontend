@@ -41,7 +41,7 @@
     // container minus the input width minus the padding on either side of
     // the label. This prevents the label from going onto the next line due to
     // __item using flex-wrap because we want hints on a separate line.
-    max-width: calc(100% - (($govuk-checkboxes-label-padding-left-right * 2) + $govuk-touch-target-size));
+    max-width: calc(100% - #{(($govuk-checkboxes-label-padding-left-right * 2) + $govuk-touch-target-size)});
     margin-bottom: 0;
     padding: (govuk-spacing(1) + $govuk-border-width-form-element) govuk-spacing(3);
     cursor: pointer;

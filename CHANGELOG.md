@@ -62,7 +62,8 @@ The `useTudorCrown` parameter, along with any other adjustments made to display 
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
-- [#4768 : Fix z-index of inputs in Radios and Checkboxes component](https://github.com/alphagov/govuk-frontend/pull/4768)
+- [#4768: Fix z-index of inputs in Radios and Checkboxes component](https://github.com/alphagov/govuk-frontend/pull/4768)
+- [#4784: Fix LibSass `calc()` compatibility in Radios and Checkboxes](https://github.com/alphagov/govuk-frontend/pull/4784)
 
 ## 5.1.0 (Feature release)
 
