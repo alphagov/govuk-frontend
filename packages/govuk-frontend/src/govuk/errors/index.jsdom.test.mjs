@@ -78,12 +78,12 @@ describe('errors', () => {
       ).toBe('Component name: variableName not found')
     })
     it('formats the message when the element is not the right type', () => {
-      const element = document.createElement('div')
+      const $element = document.createElement('div')
 
       expect(
         new ElementError({
           componentName: 'Component name',
-          element,
+          element: $element,
           expectedType: 'HTMLAnchorElement',
           identifier: 'variableName'
         }).message
