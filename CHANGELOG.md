@@ -2,7 +2,11 @@
 
 For advice on how to use these release notes see [our guidance on staying up to date with changes](https://frontend.design-system.service.gov.uk/staying-up-to-date/).
 
-## Unreleased
+## 5.2.0 (feature release)
+
+In this release, we’ve adjusted our responsive type scale, which is available behind a feature flag. The type scale change is to make text easier to read on smaller screens. We’ve also deprecated the `useTudorCrown` parameter.
+
+To install this version with npm, run `npm install govuk-frontend@5.2.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
 
 ### New features
 
@@ -19,17 +23,19 @@ We've made the following adjustments to our responsive type scale:
 - point 36 remains as 27px on large screens
 - point 36 now returns 27px on small screens instead of 24px and has a line height 30px instead of 25px
 
-To enable these changes, set `$govuk-new-typography-scale` to `true` before you import GOV.UK Frontend in your Sass:
+To enable these changes, set the feature flag variable `$govuk-new-typography-scale` to `true` before you import GOV.UK Frontend in your Sass files:
 
-```
+```scss
 // application.scss
 $govuk-new-typography-scale: true;
 @import "govuk-frontend/all";
 ```
 
-If your service uses custom elements made using GOV.UK Frontend, test your service against the new typography scale to assess if you need to make any adjustments. You can read more on upgrading your service to the new type scale in our [upgrade guide](https://design-system.service.gov.uk/get-started/new-type-scale/).
+If your service uses custom elements made using GOV.UK Frontend, test your service against the new typography scale to assess if you need to make any adjustments.
 
-This change was introduced in [pull request #2421: Adjust the responsive type scale](https://github.com/alphagov/govuk-frontend/pull/2421).
+You can read more on upgrading your service to the new type scale in our [upgrade guide](https://design-system.service.gov.uk/get-started/new-type-scale/).
+
+This change was introduced in [pull request #2421: Adjust the responsive type scale](https://github.com/alphagov/govuk-frontend/pull/2421)
 
 #### Insert custom HTML into component form group wrappers
 
@@ -54,9 +60,11 @@ This change was introduced in [pull request #4567: Add `beforeInput(s)` and `bef
 
 #### Stop using the `useTudorCrown` parameter in the Heading component
 
-As the beginning of the GOV.UK logo rollout has passed, the Tudor crown logo is now shown by default and the `useTudorCrown` parameter has been deprecated. We will remove it in the next major release.
+The rollout for the revised GOV.UK logo has started and the Tudor crown logo is now shown by default. We’ve deprecated the `useTudorCrown` parameter and will remove it in the next major release.
 
-The `useTudorCrown` parameter, along with any other adjustments made to display the Tudor crown logo in your service, can now be removed.
+You can now remove the `useTudorCrown` parameter, along with any other adjustments made to display the Tudor crown logo in your service.
+
+This change was introduced in [pull request #4740: Make Tudor Crown logo the default](https://github.com/alphagov/govuk-frontend/pull/4740)
 
 ### Fixes
 
