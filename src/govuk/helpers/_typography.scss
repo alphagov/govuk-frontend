@@ -129,6 +129,7 @@
 ///
 /// Example font map:
 ///
+/// ```scss
 /// 19: (
 ///   null: (
 ///     font-size: 16px,
@@ -143,6 +144,7 @@
 ///     line-height: 1.15
 ///   )
 /// );
+/// ```
 ///
 /// @param {Number | String} $size - Point from the type scale (the size as
 ///   it would appear on tablet and above)
