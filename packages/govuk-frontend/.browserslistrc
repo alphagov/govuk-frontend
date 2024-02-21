@@ -3,6 +3,7 @@
 
 [javascripts]
 supports es6-module
+not OperaMobile > 0
 
 [stylesheets]
 > 0.1% in GB and not dead

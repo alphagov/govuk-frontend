@@ -4,6 +4,8 @@
  * @type {import('@babel/core').ConfigFunction}
  */
 module.exports = function (api) {
+  const isProduction = !api.env('development')
+
   // Assume browser environment via Rollup plugin
   const isBrowser = api.caller(
     (caller) => caller?.name === '@rollup/plugin-babel'
@@ -14,6 +16,7 @@ module.exports = function (api) {
   const browserslistEnv = isBrowser ? 'javascripts' : 'node'
 
   return {
+    browserslistEnv,
     generatorOpts: {
       shouldPrintComment(comment) {
         if (!isBrowser || comment.includes('* @preserve')) {
@@ -35,12 +38,35 @@ module.exports = function (api) {
         return !isPrivate && isDocumentation
       }
     },
+    plugins: [
+      [
+        'polyfill-es-shims',
+        {
+          // Add logging for required polyfills
+          debug: isProduction,
+
+          // Browser support polyfills to exclude
+          exclude: [
+            // ES2016 '[].includes()' sparse array fix is unnecessary
+            // https://bugzilla.mozilla.org/show_bug.cgi?id=1767541
+            // https://github.com/zloirock/core-js/commit/66be5f0b673714bc7cc72a3b5e437fe277465973
+            'Array.prototype.includes',
+
+            // ES2022 Error cause is unused
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/cause
+            'Error cause'
+          ],
+
+          // Replace unsupported code with polyfills
+          // without modifying window globals
+          method: 'usage-pure'
+        }
+      ]
+    ],
     presets: [
       [
         '@babel/preset-env',
         {
-          browserslistEnv,
-
           // Apply bug fixes to avoid transforms
           bugfixes: true,
 
