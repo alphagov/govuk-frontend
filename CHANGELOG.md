@@ -2,6 +2,8 @@
 
 For advice on how to use these release notes see [our guidance on staying up to date with changes](https://frontend.design-system.service.gov.uk/staying-up-to-date/).
 
+## Unreleased
+
 ## 5.2.0 (feature release)
 
 In this release, we’ve adjusted our responsive type scale, which is available behind a feature flag. The type scale change is to make text easier to read on smaller screens. We’ve also deprecated the `useTudorCrown` parameter.
