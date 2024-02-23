@@ -78,6 +78,11 @@ $_govuk-organisation-colours: (
     colour: #00af43,
     contrast-safe: #008733
   ),
+  "department-for-exiting-the-european-union": (
+    colour: #009fe3,
+    contrast-safe: #007db6,
+    deprecation-message: "`department-for-exiting-the-european-union` was dissolved in 2020."
+  ),
   "department-for-international-development": (
     colour: #002878,
     deprecation-message:
