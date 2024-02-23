@@ -1,0 +1,18 @@
+.app-organisation-swatch {
+  padding-left: govuk-spacing(3);
+  border-left: 6px solid #777777;
+
+  h2 {
+    color: #777777;
+  }
+}
+
+@each $key, $map in $govuk-colours-organisations {
+  .app-organisation-swatch--#{$key} {
+    border-left-color: govuk-organisation-colour($key, $contrast-safe: false);
+
+    h2 {
+      color: govuk-organisation-colour($key);
+    }
+  }
+}
