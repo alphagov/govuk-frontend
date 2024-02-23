@@ -103,6 +103,7 @@ describe('@function govuk-colour', () => {
 
 describe('@function govuk-organisation-colour', () => {
   const sassBootstrap = `
+    $govuk-new-organisation-colours: true;
     $govuk-colours-organisations: (
       'floo-network-authority': (
         colour: #EC22FF,
@@ -247,6 +248,76 @@ describe('@function govuk-organisation-colour', () => {
             color: #e52d13;
           }
         `
+    })
+  })
+
+  describe('legacy palette', () => {
+    const sassBootstrapLegacy = `
+      $govuk-colours-organisations: (
+        'floo-network-authority': (
+          colour: #EC22FF,
+          colour-websafe: #9A00A8
+        ),
+        'broom-regulatory-control': (
+          colour: #A81223
+        )
+      );
+
+      @import "helpers/colour";
+    `
+
+    it('returns the contrast-safe colour for a given organisation by default', async () => {
+      const sass = `
+        ${sassBootstrapLegacy}
+
+        .foo {
+          color: govuk-organisation-colour('floo-network-authority');
+        }
+      `
+
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: outdent`
+          .foo {
+            color: #9A00A8;
+          }
+        `
+      })
+    })
+
+    it('falls back to the default colour if a contrast-safe colour is not explicitly defined', async () => {
+      const sass = `
+        ${sassBootstrapLegacy}
+
+        .foo {
+          color: govuk-organisation-colour('broom-regulatory-control');
+        }
+      `
+
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: outdent`
+          .foo {
+            color: #A81223;
+          }
+        `
+      })
+    })
+
+    it('can be overridden to return the non-contrast-safe colour ($websafe parameter)', async () => {
+      const sass = `
+        ${sassBootstrapLegacy}
+
+        .foo {
+          border-color: govuk-organisation-colour('floo-network-authority', $websafe: false);
+        }
+      `
+
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
+        css: outdent`
+          .foo {
+            border-color: #EC22FF;
+          }
+        `
+      })
     })
   })
 })
