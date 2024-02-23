@@ -611,6 +611,19 @@ export class Accordion extends GOVUKFrontendComponent {
     },
     rememberExpanded: true
   })
+
+  /**
+   * Accordion config schema
+   *
+   * @constant
+   * @satisfies {Schema}
+   */
+  static schema = Object.freeze({
+    properties: {
+      i18n: { type: 'object' },
+      rememberExpanded: { type: 'boolean' }
+    }
+  })
 }
 
 const helper = {
@@ -665,4 +678,8 @@ const helper = {
  *   button, used when a section is collapsed.
  * @property {string} [showSectionAriaLabel] - The text content appended to the
  *   'Show' button's accessible name when a section is expanded.
+ */
+
+/**
+ * @typedef {import('../../common/index.mjs').Schema} Schema
  */

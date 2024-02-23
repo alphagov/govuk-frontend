@@ -459,6 +459,12 @@ export class CharacterCount extends GOVUKFrontendComponent {
    * @satisfies {Schema}
    */
   static schema = Object.freeze({
+    properties: {
+      i18n: { type: 'object' },
+      maxwords: { type: 'number' },
+      maxlength: { type: 'number' },
+      threshold: { type: 'number' }
+    },
     anyOf: [
       {
         required: ['maxwords'],

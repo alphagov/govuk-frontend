@@ -196,6 +196,18 @@ export class ErrorSummary extends GOVUKFrontendComponent {
   static defaults = Object.freeze({
     disableAutoFocus: false
   })
+
+  /**
+   * Error summary config schema
+   *
+   * @constant
+   * @satisfies {Schema}
+   */
+  static schema = Object.freeze({
+    properties: {
+      disableAutoFocus: { type: 'boolean' }
+    }
+  })
 }
 
 /**
@@ -204,4 +216,8 @@ export class ErrorSummary extends GOVUKFrontendComponent {
  * @typedef {object} ErrorSummaryConfig
  * @property {boolean} [disableAutoFocus=false] - If set to `true` the error
  *   summary will not be focussed when the page loads.
+ */
+
+/**
+ * @typedef {import('../../common/index.mjs').Schema} Schema
  */
