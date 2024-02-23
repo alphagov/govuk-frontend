@@ -11,28 +11,47 @@
  *
  * @internal
  * @param {string | undefined} value - The value to normalise
+ * @param {SchemaProperty} [options] - Component config schema property options
  * @returns {string | boolean | number | undefined} Normalised data
  */
-export function normaliseString(value) {
+export function normaliseString(value, options) {
+  let output = /** @type {ReturnType<normaliseString>} */ (value)
+
+  // Skip conversion
   if (typeof value !== 'string') {
     return value
   }
 
   const trimmedValue = value.trim()
 
-  if (trimmedValue === 'true') {
-    return true
+  // No schema type set? Determine automatically
+  if (!options?.type) {
+    options = { type: 'string' }
+
+    // Type: Boolean
+    if (['true', 'false'].includes(trimmedValue)) {
+      options.type = 'boolean'
+    }
+
+    // Type: Number
+    if (trimmedValue.length > 0 && isFinite(Number(trimmedValue))) {
+      options.type = 'number'
+    }
   }
 
-  if (trimmedValue === 'false') {
-    return false
+  switch (options.type) {
+    case 'boolean':
+      output = trimmedValue === 'true'
+      break
+
+    case 'number':
+      output = Number(trimmedValue)
+      break
   }
 
-  // Empty / whitespace-only strings are considered finite so we need to check
-  // the length of the trimmed string as well
-  if (trimmedValue.length > 0 && isFinite(Number(trimmedValue))) {
-    return Number(trimmedValue)
-  }
-
-  return value
+  return output
 }
+
+/**
+ * @typedef {import('./index.mjs').SchemaProperty} SchemaProperty
+ */

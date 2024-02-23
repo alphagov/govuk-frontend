@@ -19,10 +19,9 @@ export function normaliseDataset(dataset, schema) {
   for (const field of Object.keys(schema.properties)) {
     const options = schema.properties[field]
 
-    // Normalise top-level dataset ('data-*') values
-    // but discard if type does not match schema
-    if (field in dataset && options.type === typeof out[field]) {
-      out[field] = normaliseString(dataset[field])
+    // Normalise top-level dataset ('data-*') values using schema types
+    if (field in dataset) {
+      out[field] = normaliseString(dataset[field], options)
     }
 
     /**
