@@ -78,7 +78,16 @@ module.exports = {
         // JSDoc @param required in (mandatory) blocks but
         // @param description is necessary in source code
         'jsdoc/require-param-description': 'warn',
-        'jsdoc/require-param': 'error'
+        'jsdoc/require-param': 'error',
+
+        // Allow 'typeof' comparisons on variables and config properties,
+        // not just string literals, e.g. `typeof thing === 'string'`
+        'valid-typeof': [
+          'error',
+          {
+            requireStringLiterals: false
+          }
+        ]
       }
     },
     {
