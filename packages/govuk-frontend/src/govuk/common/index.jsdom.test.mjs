@@ -30,33 +30,35 @@ describe('Common JS utilities', () => {
       }
     }
 
-    it('flattens a single object', () => {
+    it('ignores a single object', () => {
       const config = mergeConfigs(config1)
       expect(config).toEqual({
         a: 'antelope',
-        'c.a': 'camel'
+        c: { a: 'camel' }
       })
     })
 
-    it('flattens and merges two objects', () => {
+    it('merges two objects', () => {
       const config = mergeConfigs(config1, config2)
       expect(config).toEqual({
         a: 'aardvark',
         b: 'bee',
-        'c.a': 'cat',
-        'c.o': 'cobra'
+        c: { a: 'cat', o: 'cobra' }
       })
     })
 
-    it('flattens and merges three objects', () => {
+    it('merges three objects', () => {
       const config = mergeConfigs(config1, config2, config3)
       expect(config).toEqual({
         a: 'aardvark',
         b: 'bat',
-        'c.a': 'cat',
-        'c.o': 'cow',
+        c: { a: 'cat', o: 'cow' },
         d: 'dog',
-        'e.l.e': 'elephant'
+        e: {
+          l: {
+            e: 'elephant'
+          }
+        }
       })
     })
 
@@ -75,10 +77,29 @@ describe('Common JS utilities', () => {
       expect(config).toEqual({
         a: 'antelope',
         b: 'bat',
-        'c.a': 'camel',
-        'c.o': 'cow',
+        c: { a: 'camel', o: 'cow' },
         d: 'dog',
-        'e.l.e': 'elephant'
+        e: {
+          l: {
+            e: 'elephant'
+          }
+        }
+      })
+    })
+
+    it('prioritises the last parameter provided (different types)', () => {
+      const config = mergeConfigs(config1, config2, config3, {
+        c: 'jellyfish', // Replaces top-level object with string
+        e: { l: 'shark' } // Replaces nested object with string
+      })
+      expect(config).toEqual({
+        a: 'aardvark',
+        b: 'bat',
+        c: 'jellyfish',
+        d: 'dog',
+        e: {
+          l: 'shark'
+        }
       })
     })
 

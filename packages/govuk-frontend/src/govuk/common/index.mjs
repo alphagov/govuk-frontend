@@ -7,72 +7,36 @@
  */
 
 /**
- * Config flattening function
+ * Config merging function
  *
- * Takes any number of objects, flattens them into namespaced key-value pairs,
- * (e.g. \{'i18n.showSection': 'Show section'\}) and combines them together, with
+ * Takes any number of objects and combines them together, with
  * greatest priority on the LAST item passed in.
  *
  * @internal
- * @param {...{ [key: string]: unknown }} configObjects - Config object to merge
- * @returns {{ [key: string]: unknown }} A flattened object of key-value pairs.
+ * @param {...{ [key: string]: unknown }} configObjects - Config objects to merge
+ * @returns {{ [key: string]: unknown }} A merged config object
  */
 export function mergeConfigs(...configObjects) {
-  /**
-   * Function to take nested objects and flatten them to a dot-separated keyed
-   * object. Doing this means we don't need to do any deep/recursive merging of
-   * each of our objects, nor transform our dataset from a flat list into a
-   * nested object.
-   *
-   * @internal
-   * @param {{ [key: string]: unknown }} configObject - Deeply nested object
-   * @returns {{ [key: string]: unknown }} Flattened object with dot-separated keys
-   */
-  function flattenObject(configObject) {
-    // Prepare an empty return object
-    /** @type {{ [key: string]: unknown }} */
-    const flattenedObject = {}
-
-    /**
-     * Our flattening function, this is called recursively for each level of
-     * depth in the object. At each level we prepend the previous level names to
-     * the key using `prefix`.
-     *
-     * @internal
-     * @param {Partial<{ [key: string]: unknown }>} obj - Object to flatten
-     * @param {string} [prefix] - Optional dot-separated prefix
-     */
-    function flattenLoop(obj, prefix) {
-      for (const [key, value] of Object.entries(obj)) {
-        const prefixedKey = prefix ? `${prefix}.${key}` : key
-
-        // If the value is a nested object, recurse over that too
-        if (value && typeof value === 'object') {
-          flattenLoop(value, prefixedKey)
-        } else {
-          // Otherwise, add this value to our return object
-          flattenedObject[prefixedKey] = value
-        }
-      }
-    }
-
-    // Kick off the recursive loop
-    flattenLoop(configObject)
-    return flattenedObject
-  }
-
   // Start with an empty object as our base
   /** @type {{ [key: string]: unknown }} */
   const formattedConfigObject = {}
 
   // Loop through each of the passed objects
   for (const configObject of configObjects) {
-    const obj = flattenObject(configObject)
+    for (const key of Object.keys(configObject)) {
+      const option = formattedConfigObject[key]
+      const override = configObject[key]
 
-    // Push their keys one-by-one into formattedConfigObject. Any duplicate
-    // keys will override the existing key with the new value.
-    for (const [key, value] of Object.entries(obj)) {
-      formattedConfigObject[key] = value
+      // Push their keys one-by-one into formattedConfigObject. Any duplicate
+      // keys with object values will be merged, otherwise the new value will
+      // override the existing value.
+      if (isObject(option) && isObject(override)) {
+        // @ts-expect-error Index signature for type 'string' is missing
+        formattedConfigObject[key] = mergeConfigs(option, override)
+      } else {
+        // Apply override
+        formattedConfigObject[key] = override
+      }
     }
   }
 
@@ -249,6 +213,28 @@ export function validateConfig(schema, config) {
   }
 
   return validationErrors
+}
+
+/**
+ * Check for an array
+ *
+ * @internal
+ * @param {unknown} option - Option to check
+ * @returns {boolean} Whether the option is an array
+ */
+function isArray(option) {
+  return Array.isArray(option)
+}
+
+/**
+ * Check for an object
+ *
+ * @internal
+ * @param {unknown} option - Option to check
+ * @returns {boolean} Whether the option is an object
+ */
+function isObject(option) {
+  return !!option && typeof option === 'object' && !isArray(option)
 }
 
 /**
