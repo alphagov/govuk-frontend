@@ -437,6 +437,18 @@ export class ExitThisPage extends GOVUKFrontendComponent {
       pressOneMoreTime: 'Shift, press 1 more time to exit.'
     }
   })
+
+  /**
+   * Exit this page config schema
+   *
+   * @constant
+   * @satisfies {Schema}
+   */
+  static schema = Object.freeze({
+    properties: {
+      i18n: { type: 'object' }
+    }
+  })
 }
 
 /**
@@ -463,4 +475,8 @@ export class ExitThisPage extends GOVUKFrontendComponent {
  *   the user they must press the activation key two more times.
  * @property {string} [pressOneMoreTime] - Screen reader announcement informing
  *   the user they must press the activation key one more time.
+ */
+
+/**
+ * @typedef {import('../../common/index.mjs').Schema} Schema
  */
