@@ -77,9 +77,9 @@
 
   $org-colour: map-get($govuk-colours-organisations, $organisation);
 
-  @if map-has-key($org-colour, deprecation-message) {
+  @if map-has-key($org-colour, deprecation-message) and not index($govuk-suppressed-warnings, "organisation-colours") {
     @warn _warning-text(
-      "organisation-colour-websafe-param",
+      "organisation-colours",
       map-get($org-colour, deprecation-message)
     );
   }
