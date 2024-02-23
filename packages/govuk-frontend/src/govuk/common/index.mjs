@@ -255,7 +255,15 @@ export function validateConfig(schema, config) {
  * Schema for component config
  *
  * @typedef {object} Schema
+ * @property {{ [field: string]: SchemaProperty }} properties - Schema properties
  * @property {SchemaCondition[]} [anyOf] - List of schema conditions
+ */
+
+/**
+ * Schema property for component config
+ *
+ * @typedef {object} SchemaProperty
+ * @property {'string' | 'boolean' | 'number' | 'object'} type - Property type
  */
 
 /**
