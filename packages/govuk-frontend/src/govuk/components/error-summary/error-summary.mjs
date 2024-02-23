@@ -45,7 +45,7 @@ export class ErrorSummary extends GOVUKFrontendComponent {
     this.config = mergeConfigs(
       ErrorSummary.defaults,
       config,
-      normaliseDataset($module.dataset)
+      normaliseDataset($module.dataset, ErrorSummary.schema)
     )
 
     /**

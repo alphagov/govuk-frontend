@@ -3,19 +3,33 @@ import { normaliseString } from './normalise-string.mjs'
 /**
  * Normalise dataset
  *
- * Loop over an object and normalise each value using normaliseData function
+ * Loop over an object and normalise each value using {@link normaliseString},
+ * optionally expanding nested `i18n.field`
  *
  * @internal
  * @param {DOMStringMap} dataset - HTML element dataset
- * @returns {{ [key: string]: string | boolean | number | undefined }} Normalised dataset
+ * @param {Schema} schema - Component config schema
+ * @returns {ObjectNested} Normalised dataset
  */
-export function normaliseDataset(dataset) {
-  /** @type {ReturnType<typeof normaliseDataset>} */
-  const out = {}
+export function normaliseDataset(dataset, schema) {
+  const out = /** @type {ObjectNested} */ ({})
 
-  for (const [key, value] of Object.entries(dataset)) {
-    out[key] = normaliseString(value)
+  // Loop known properties from config schema
+  for (const field of Object.keys(schema.properties)) {
+    const options = schema.properties[field]
+
+    // Normalise top-level dataset ('data-*') values
+    // but discard if type does not match schema
+    if (field in dataset && options.type === typeof out[field]) {
+      out[field] = normaliseString(dataset[field])
+    }
   }
 
   return out
 }
+
+/**
+ * @internal
+ * @typedef {import('./index.mjs').ObjectNested} ObjectNested
+ * @typedef {import('./index.mjs').Schema} Schema
+ */

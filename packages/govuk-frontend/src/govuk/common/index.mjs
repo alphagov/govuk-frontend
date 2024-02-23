@@ -259,3 +259,8 @@ function isObject(option) {
  * @property {string[]} required - List of required config fields
  * @property {string} errorMessage - Error message when required config fields not provided
  */
+
+/**
+ * @internal
+ * @typedef {{ [key: string]: string | boolean | number | ObjectNested | undefined }} ObjectNested
+ */

@@ -38,7 +38,7 @@ export class NotificationBanner extends GOVUKFrontendComponent {
     this.config = mergeConfigs(
       NotificationBanner.defaults,
       config,
-      normaliseDataset($module.dataset)
+      normaliseDataset($module.dataset, NotificationBanner.schema)
     )
 
     /**

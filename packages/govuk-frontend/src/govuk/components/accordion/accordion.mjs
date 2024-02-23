@@ -132,7 +132,7 @@ export class Accordion extends GOVUKFrontendComponent {
     this.config = mergeConfigs(
       Accordion.defaults,
       config,
-      normaliseDataset($module.dataset)
+      normaliseDataset($module.dataset, Accordion.schema)
     )
 
     this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'))
