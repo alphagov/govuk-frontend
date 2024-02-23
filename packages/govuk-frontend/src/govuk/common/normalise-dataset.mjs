@@ -1,3 +1,4 @@
+import { extractConfigByNamespace } from './index.mjs'
 import { normaliseString } from './normalise-string.mjs'
 
 /**
@@ -22,6 +23,14 @@ export function normaliseDataset(dataset, schema) {
     // but discard if type does not match schema
     if (field in dataset && options.type === typeof out[field]) {
       out[field] = normaliseString(dataset[field])
+    }
+
+    /**
+     * Extract and normalise nested object values automatically using
+     * {@link normaliseString} but without schema types
+     */
+    if (options.type === 'object') {
+      out[field] = extractConfigByNamespace(dataset, field)
     }
   }
 

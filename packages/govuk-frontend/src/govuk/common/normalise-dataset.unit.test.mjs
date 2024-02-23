@@ -8,7 +8,8 @@ describe('normaliseDataset', () => {
         aDecimalNumber: { type: 'number' },
         aBoolean: { type: 'boolean' },
         aString: { type: 'string' },
-        anOptionalString: { type: 'string' }
+        anOptionalString: { type: 'string' },
+        anObject: { type: 'object' }
       }
     })
 
@@ -19,7 +20,10 @@ describe('normaliseDataset', () => {
           aDecimalNumber: '100.50',
           aBoolean: 'true',
           aString: 'Hello!',
-          anOptionalString: ''
+          anOptionalString: '',
+          'anObject.one': '111',
+          'anObject.two': '222',
+          'anObject.three': '333'
         },
         schema
       )
@@ -28,7 +32,12 @@ describe('normaliseDataset', () => {
       aDecimalNumber: 100.5,
       aBoolean: true,
       aString: 'Hello!',
-      anOptionalString: ''
+      anOptionalString: '',
+      anObject: {
+        one: 111,
+        two: 222,
+        three: 333
+      }
     })
   })
 })

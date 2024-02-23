@@ -1,3 +1,5 @@
+import { normaliseString } from './normalise-string.mjs'
+
 /**
  * Common helpers which do not require polyfill.
  *
@@ -44,17 +46,16 @@ export function mergeConfigs(...configObjects) {
 }
 
 /**
- * Extracts keys starting with a particular namespace from a flattened config
- * object, removing the namespace in the process.
+ * Extracts keys starting with a particular namespace from dataset ('data-*')
+ * object, removing the namespace in the process, normalising all values
  *
  * @internal
- * @param {{ [key: string]: unknown }} configObject - The object to extract key-value pairs from.
- * @param {string} namespace - The namespace to filter keys with.
- * @returns {{ [key: string]: unknown }} Flattened object with dot-separated key namespace removed
+ * @param {ObjectNested} configObject - The object to extract key-value pairs from
+ * @param {string} namespace - The namespace to filter keys with
+ * @returns {ObjectNested} Nested object with dot-separated key namespace removed
  */
 export function extractConfigByNamespace(configObject, namespace) {
-  /** @type {{ [key: string]: unknown }} */
-  const newObject = {}
+  const newObject = /** @type {ObjectNested} */ ({})
 
   for (const [key, value] of Object.entries(configObject)) {
     // Split the key into parts, using . as our namespace separator
@@ -68,11 +69,27 @@ export function extractConfigByNamespace(configObject, namespace) {
         keyParts.shift()
       }
 
-      // Join the remaining parts back together
-      const newKey = keyParts.join('.')
+      let current = newObject
 
-      // Add them to our new object
-      newObject[newKey] = value
+      /**
+       * Create new level per part
+       *
+       * e.g. 'i18n.textareaDescription.other' becomes
+       * `{ i18n: { textareaDescription: { other } } }`
+       */
+      for (const name of keyParts) {
+        const next = (current[name] = current[name] ?? {})
+
+        // Add them to our new object
+        if (name === keyParts[keyParts.length - 1]) {
+          current[name] = normaliseString(value)
+        }
+
+        // Or drop down another level
+        if (typeof next === 'object') {
+          current = next
+        }
+      }
     }
   }
 
