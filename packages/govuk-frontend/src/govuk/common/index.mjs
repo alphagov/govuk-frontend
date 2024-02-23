@@ -234,15 +234,17 @@ export function validateConfig(schema, config) {
     const errors = []
 
     // Check errors for each schema condition
-    for (const { required, errorMessage } of conditions) {
-      if (!required.every((key) => !!config[key])) {
-        errors.push(errorMessage) // Missing config key value
+    if (Array.isArray(conditions)) {
+      for (const { required, errorMessage } of conditions) {
+        if (!required.every((key) => !!config[key])) {
+          errors.push(errorMessage) // Missing config key value
+        }
       }
-    }
 
-    // Check one condition passes or add errors
-    if (name === 'anyOf' && !(conditions.length - errors.length >= 1)) {
-      validationErrors.push(...errors)
+      // Check one condition passes or add errors
+      if (name === 'anyOf' && !(conditions.length - errors.length >= 1)) {
+        validationErrors.push(...errors)
+      }
     }
   }
 
