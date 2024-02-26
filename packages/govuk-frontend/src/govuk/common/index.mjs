@@ -50,24 +50,21 @@ export function mergeConfigs(...configObjects) {
  * object, removing the namespace in the process, normalising all values
  *
  * @internal
- * @param {ObjectNested} configObject - The object to extract key-value pairs from
+ * @param {DOMStringMap} dataset - The object to extract key-value pairs from
  * @param {string} namespace - The namespace to filter keys with
  * @returns {ObjectNested} Nested object with dot-separated key namespace removed
  */
-export function extractConfigByNamespace(configObject, namespace) {
+export function extractConfigByNamespace(dataset, namespace) {
   const newObject = /** @type {ObjectNested} */ ({})
 
-  for (const [key, value] of Object.entries(configObject)) {
+  for (const [key, value] of Object.entries(dataset)) {
     // Split the key into parts, using . as our namespace separator
     const keyParts = key.split('.')
 
-    // Check if the first namespace matches the configured namespace
+    // Check if the first part matches the configured namespace and remove it,
+    // but only if there is more than one part (we don't want blank keys!)
     if (keyParts[0] === namespace) {
-      // Remove the first item (the namespace) from the parts array,
-      // but only if there is more than one part (we don't want blank keys!)
-      if (keyParts.length > 1) {
-        keyParts.shift()
-      }
+      keyParts.shift()
 
       let current = newObject
 

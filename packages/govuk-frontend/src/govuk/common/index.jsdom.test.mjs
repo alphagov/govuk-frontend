@@ -94,25 +94,71 @@ describe('Common JS utilities', () => {
   })
 
   describe('extractConfigByNamespace', () => {
-    const flattenedConfig = {
-      a: 'aardvark',
-      'b.a': 'bat',
-      'b.e': 'bear',
-      'b.o': 'boar',
-      'c.a': 'camel',
-      'c.o': 'cow',
-      d: 'dog',
-      e: 'elephant'
-    }
+    /** @type {HTMLElement} */
+    let $element
 
-    it('can extract single key-value pairs', () => {
-      const result = extractConfigByNamespace(flattenedConfig, 'a')
-      expect(result).toEqual({ a: 'aardvark' })
+    beforeEach(() => {
+      document.body.outerHTML = outdent`
+        <div id="app-example"
+          data-a="aardvark"
+          data-b.a="bat"
+          data-b.e="bear"
+          data-b.o="boar"
+          data-c.a="camel"
+          data-c.o="cow"
+          data-d="dog"
+          data-e="element">
+        </div>
+      `
+
+      $element = document.getElementById('app-example')
     })
 
-    it('can extract multiple key-value pairs', () => {
-      const result = extractConfigByNamespace(flattenedConfig, 'b')
+    it('defaults to empty config', () => {
+      // With unknown namespace
+      expect(extractConfigByNamespace($element.dataset, 'unknown')).toEqual({})
+
+      // With known namespace, but no dot-separated keys
+      expect(extractConfigByNamespace($element.dataset, 'a')).toEqual({})
+      expect(extractConfigByNamespace($element.dataset, 'd')).toEqual({})
+      expect(extractConfigByNamespace($element.dataset, 'e')).toEqual({})
+    })
+
+    it('can extract config from key-value pairs', () => {
+      const result = extractConfigByNamespace($element.dataset, 'b')
       expect(result).toEqual({ a: 'bat', e: 'bear', o: 'boar' })
+    })
+
+    it('can extract config from key-value pairs (with invalid namespace, first)', () => {
+      document.body.outerHTML = outdent`
+        <div id="app-example2"
+          data-i18n
+          data-i18n.key1="One"
+          data-i18n.key2="Two"
+          data-i18n.key2="Three">
+        </div>
+      `
+
+      $element = document.getElementById('app-example2')
+
+      const result = extractConfigByNamespace($element.dataset, 'i18n')
+      expect(result).toEqual({ key1: 'One', key2: 'Two' })
+    })
+
+    it('can extract config from key-value pairs (with invalid namespace, last)', () => {
+      document.body.outerHTML = outdent`
+        <div id="app-example2"
+          data-i18n.key1="One"
+          data-i18n.key2="Two"
+          data-i18n.key2="Three">
+          data-i18n
+        </div>
+      `
+
+      $element = document.getElementById('app-example2')
+
+      const result = extractConfigByNamespace($element.dataset, 'i18n')
+      expect(result).toEqual({ key1: 'One', key2: 'Two' })
     })
   })
 
