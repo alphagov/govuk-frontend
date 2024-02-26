@@ -11,7 +11,7 @@ assignees: ''
 
     Your issue might already exist. If so, add a comment to the existing issue instead of creating a new one. You can find existing issues here:
     - an existing Github issue: https://github.com/alphagov/govuk-frontend/issues
-    - our known validation error/warning list: https://github.com/alphagov/govuk-frontend/issues/1280#issuecomment-509588851
+    - known validation errors or warnings: https://github.com/orgs/alphagov/projects/37
 -->
 
 ## Description of the issue
