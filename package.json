@@ -71,7 +71,7 @@
     "@rollup/plugin-replace": "^5.0.5",
     "@rollup/plugin-terser": "^0.4.4",
     "autoprefixer": "^10.4.17",
-    "cssnano": "^6.0.3",
+    "cssnano": "^6.0.5",
     "cssnano-preset-default": "^6.0.1",
     "govuk-prototype-kit": "^13.16.0",
     "gulp": "^4.0.2",
