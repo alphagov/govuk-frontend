@@ -56,9 +56,9 @@ Using Frontend will help your service meet [level AA of WCAG 2.1](https://www.go
 
 You should also use [the JavaScript from GOV.UK Frontend](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#javascript) and read the [accessibility statement for the GOV.UK Design System](https://design-system.service.gov.uk/accessibility/).
 
-### Accessibility warnings
+## Known issues flagged by validators or automated testing tools
 
-If you get a warning from a linter or accessibility checker, check our list of [issues you should not need to fix](https://github.com/alphagov/govuk-frontend/issues/1280#issuecomment-509588851).
+Check our [list of known issues that may be reported by HTML Validators or automated testing tools](https://github.com/orgs/alphagov/projects/37).
 
 ## Security
 

@@ -32,7 +32,7 @@ You should use the bookmarklet if:
 
 If you can, fix any errors or warnings reported by either the validator or bookmarklet.
 
-You do not need to fix any [known issues with our components](https://github.com/alphagov/govuk-frontend/issues/1280#issuecomment-509588851) reported by either the validator or bookmarklet.
+You do not need to fix any [known issues with our components](https://github.com/orgs/alphagov/projects/37) reported by either the validator or bookmarklet.
 
 If you need help with fixing an error or a warning, leave a note in your pull request or [contact the Design System team](https://design-system.service.gov.uk/#support).
 
