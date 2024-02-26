@@ -1,4 +1,4 @@
-import { mergeConfigs, extractConfigByNamespace } from '../../common/index.mjs'
+import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
@@ -105,7 +105,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
       normaliseDataset($module.dataset, ExitThisPage.schema)
     )
 
-    this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'))
+    this.i18n = new I18n(this.config.i18n)
     this.$module = $module
     this.$button = $button
 
