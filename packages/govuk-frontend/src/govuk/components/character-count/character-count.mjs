@@ -1,9 +1,5 @@
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
-import {
-  extractConfigByNamespace,
-  mergeConfigs,
-  validateConfig
-} from '../../common/index.mjs'
+import { mergeConfigs, validateConfig } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { ConfigError, ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
@@ -122,7 +118,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
       throw new ConfigError(`Character count: ${errors[0]}`)
     }
 
-    this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'), {
+    this.i18n = new I18n(this.config.i18n, {
       // Read the fallback if necessary rather than have it set in the defaults
       locale: closestAttributeValue($module, 'lang')
     })
