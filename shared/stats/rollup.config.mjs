@@ -34,9 +34,16 @@ export default defineConfig(
 
           /**
            * Output plugins
+           *
+           * Note: File sizes in both Rollup stats and the Review app are
+           * smaller than GOV.UK Frontend GitHub releases because classes,
+           * functions and export names are mangled by Terser defaults
+           *
+           * {@link file://./../../packages/govuk-frontend/rollup.release.config.mjs}
            */
           plugins: [
             terser({
+              // Allow Terser to remove @preserve comments
               format: { comments: false },
 
               // Include sources content from source maps to inspect

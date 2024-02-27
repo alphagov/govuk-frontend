@@ -21,6 +21,7 @@ export default defineConfig(({ i: input }) => ({
      */
     plugins: [
       terser({
+        // Allow Terser to remove @preserve comments
         format: { comments: false },
 
         // Include sources content from source maps to inspect
