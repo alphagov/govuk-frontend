@@ -124,12 +124,13 @@ export async function commentStats(
 
       return [
         `[${modulePath}](${statsURL})`,
-        `${moduleSize.bundled} (bundled)<br>${moduleSize.minified} (minified)`
+        moduleSize.bundled,
+        moduleSize.minified
       ]
     }
   )
 
-  const modulesHeaders = ['File', 'Size']
+  const modulesHeaders = ['File', 'Size (bundled)', 'Size (minified)']
   const modulesTable = renderTable(modulesHeaders, modulesRows)
   const modulesFooter = `[View stats and visualisations on the review app](${reviewAppURL})`
   const modulesText = [modulesTitle, modulesTable, modulesFooter].join('\n')
