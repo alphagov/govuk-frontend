@@ -35,29 +35,43 @@ export const modulePaths = [packageOptions.modulePath].concat(
 )
 
 /**
- * Rollup module stats
+ * Rollup module stats by path
  *
  * @param {string} modulePath - Rollup input path
- * @returns {Promise<[string, string]>} Rollup module stats
+ * @returns {Promise<[string, { bundled: string; minified: string }]>} Rollup module stats
  */
 export async function getStats(modulePath) {
-  const { base, dir, name } = parse(modulePath)
+  const { dir, name } = parse(modulePath)
 
-  // Path to Rollup `npm run build` YAML stats
-  /** @type {Record<string, ModulesList> | undefined} */
-  const stats = await getYaml(
-    join(paths.stats, `dist/${dir}/${name}.yaml`)
-  ).catch(() => undefined)
+  // Totals from Rollup `npm run build:stats` YAML output
+  const [bundled, minified] = await Promise.all([
+    getStatsByYaml(modulePath, `${dir}/${name}.yaml`),
+    getStatsByYaml(modulePath, `${dir}/${name}.min.yaml`)
+  ])
 
-  // Modules bundled
-  const modules = stats?.[base] ?? {}
+  return [modulePath, { bundled, minified }]
+}
+
+/**
+ * Rollup module stats by YAML path
+ *
+ * @param {string} modulePath - Rollup input path
+ * @param {string} statsPath - Rollup stats output path
+ * @returns {Promise<string>} Total size (formatted)
+ */
+async function getStatsByYaml(modulePath, statsPath) {
+  const { base } = parse(modulePath)
+
+  const stats = /** @type {Record<string, ModulesList> | undefined} */ (
+    await getYaml(join(paths.stats, `dist/${statsPath}`)).catch(() => undefined)
+  )
 
   // Modules total size
-  const total = Object.values(modules)
+  const total = Object.values(stats?.[base] ?? {})
     .map(({ rendered }) => rendered)
     .reduce((total, rendered) => total + rendered, 0)
 
-  return [modulePath, `${filesize(total, { base: 2 })}`]
+  return `${filesize(total, { base: 2 })}`
 }
 
 /**

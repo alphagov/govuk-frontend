@@ -89,6 +89,7 @@ module.exports = ({ WEBPACK_SERVE }, { mode }) => ({
       new TerserPlugin({
         extractComments: true,
         terserOptions: {
+          // Allow Terser to remove @preserve comments
           format: { comments: false },
 
           // Compatibility workarounds

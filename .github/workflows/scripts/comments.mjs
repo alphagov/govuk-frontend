@@ -1,5 +1,5 @@
 import { readFile } from 'node:fs/promises'
-import { basename, join } from 'path'
+import { basename, join, parse } from 'path'
 
 import { getFileSizes } from '@govuk-frontend/lib/files'
 import { getStats, modulePaths } from '@govuk-frontend/stats'
@@ -119,14 +119,16 @@ export async function commentStats(
   const modulesTitle = '### Modules'
   const modulesRows = (await Promise.all(modulePaths.map(getStats))).map(
     ([modulePath, moduleSize]) => {
-      const statsPath = `docs/stats/${modulePath.replace('mjs', 'html')}`
+      const { base, dir, name } = parse(modulePath)
+
+      const statsPath = `docs/stats/${dir}/${name}.html`
       const statsURL = new URL(statsPath, reviewAppURL)
 
-      return [`[${modulePath}](${statsURL})`, moduleSize]
+      return [`[${base}](${statsURL})`, moduleSize.bundled, moduleSize.minified]
     }
   )
 
-  const modulesHeaders = ['File', 'Size']
+  const modulesHeaders = ['File', 'Size (bundled)', 'Size (minified)']
   const modulesTable = renderTable(modulesHeaders, modulesRows)
   const modulesFooter = `[View stats and visualisations on the review app](${reviewAppURL})`
   const modulesText = [modulesTitle, modulesTable, modulesFooter].join('\n')
