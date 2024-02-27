@@ -86,8 +86,8 @@ export default defineConfig(
             projectRoot: dirname(packagePath),
             template: 'treemap',
 
-            // Skip sourcemaps to use original file sizes
-            sourcemap: false
+            // Use sourcemaps to calculate minified sizes
+            sourcemap: true
           })
         ]
       })
