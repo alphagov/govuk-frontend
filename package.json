@@ -80,6 +80,7 @@
     "postcss-markdown": "^1.2.0",
     "postcss-scss": "^4.0.9",
     "prettier": "^3.2.5",
+    "semver": "^7.6.0",
     "standard": "^17.1.0",
     "stylelint": "^16.2.1",
     "stylelint-config-gds": "^2.0.0",
@@ -101,7 +102,7 @@
     "@types/node": "^20.11.19",
     "@types/nunjucks": "^3.2.6",
     "@types/slug": "^5.0.7",
-    "puppeteer": "^22.1.0",
+    "puppeteer": "^22.3.0",
     "typed-query-selector": "^2.11.0"
   },
   "overrides": {
