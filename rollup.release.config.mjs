@@ -29,7 +29,9 @@ export default defineConfig(({ i: input }) => ({
      */
     plugins: [
       terser({
+        // Allow Terser to remove @preserve comments
         format: { comments: false },
+
         mangle: {
           keep_classnames: true,
           keep_fnames: true,
