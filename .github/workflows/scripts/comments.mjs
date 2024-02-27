@@ -122,7 +122,10 @@ export async function commentStats(
       const statsPath = `docs/stats/${modulePath.replace('mjs', 'html')}`
       const statsURL = new URL(statsPath, reviewAppURL)
 
-      return [`[${modulePath}](${statsURL})`, moduleSize]
+      return [
+        `[${modulePath}](${statsURL})`,
+        `${moduleSize.bundled} (bundled)<br>${moduleSize.minified} (minified)`
+      ]
     }
   )
 

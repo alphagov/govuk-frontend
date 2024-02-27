@@ -3,6 +3,7 @@ import { dirname, join, parse } from 'path'
 import { paths } from '@govuk-frontend/config'
 import { packageTypeToPath } from '@govuk-frontend/lib/names'
 import resolve from '@rollup/plugin-node-resolve'
+import terser from '@rollup/plugin-terser'
 import { defineConfig } from 'rollup'
 import { visualizer } from 'rollup-plugin-visualizer'
 
@@ -28,7 +29,26 @@ export default defineConfig(
          */
         output: {
           file: join('dist', modulePath),
-          format: 'es'
+          format: 'es',
+          sourcemap: true,
+
+          /**
+           * Output plugins
+           */
+          plugins: [
+            terser({
+              format: { comments: false },
+
+              // Include sources content from source maps to inspect
+              // GOV.UK Frontend and other dependencies' source code
+              sourceMap: {
+                includeSources: true
+              },
+
+              // Compatibility workarounds
+              safari10: true
+            })
+          ]
         },
 
         /**
@@ -39,24 +59,35 @@ export default defineConfig(
 
           // Stats: File size
           visualizer({
-            filename: join(
-              'dist',
-              dirname(modulePath),
-              `${parse(modulePath).name}.yaml`
-            ),
+            emitFile: true,
+            filename: `${parse(modulePath).name}.yaml`,
             projectRoot: dirname(packagePath),
-            template: 'list'
+            template: 'list',
+
+            // Skip sourcemaps to use original file sizes
+            sourcemap: false
+          }),
+
+          // Stats: File size (minified)
+          visualizer({
+            emitFile: true,
+            filename: `${parse(modulePath).name}.min.yaml`,
+            projectRoot: dirname(packagePath),
+            template: 'list',
+
+            // Use sourcemaps to calculate minified sizes
+            sourcemap: true
           }),
 
           // Stats: Module tree map
           visualizer({
-            filename: join(
-              'dist',
-              dirname(modulePath),
-              `${parse(modulePath).name}.html`
-            ),
+            emitFile: true,
+            filename: `${parse(modulePath).name}.html`,
             projectRoot: dirname(packagePath),
-            template: 'treemap'
+            template: 'treemap',
+
+            // Skip sourcemaps to use original file sizes
+            sourcemap: false
           })
         ]
       })

@@ -73,7 +73,7 @@
   <div class="govuk-grid-row">
 
     <div class="govuk-grid-column-two-thirds-from-desktop">
-      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
       <h2 class="govuk-heading-l">Documentation</h2>
 
       <div class="govuk-grid-row">
@@ -108,49 +108,76 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-      <h2 class="govuk-heading-l">JavaScript modules</h2>
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-2">JavaScript modules</h2>
 
       {% set bundleKey = "all" %}
       {% set bundleSize = stats[bundleKey + ".mjs"] %}
 
       {% set bundleHtml %}
-        Total bundle size<br>
         <a href="/docs/stats/{{ bundleKey }}.html" class="govuk-body-s govuk-link govuk-!-font-weight-regular"><code>{{ bundleKey }}.mjs</code></a>
       {% endset %}
 
-      {% set rows = [{
-        key: {
-          classes: "govuk-!-width-three-quarters",
-          html: bundleHtml
-        },
-        value: {
-          text: bundleSize
-        }
-      }] %}
+      {{ govukSummaryList({
+        classes: "govuk-summary-list--no-border",
+        rows: [
+          {
+            key: {
+              text: "Entry file name"
+            },
+            value: {
+              html: bundleHtml
+            }
+          },
+          {
+            key: {
+              text: "Total file size"
+            },
+            value: {
+              html:
+                bundleSize.bundled + " (bundled) <br>" +
+                bundleSize.minified + " (minified)"
+            }
+          }
+        ]
+      }) }}
 
       {% for componentName in componentNamesWithJavaScript | sort %}
         {% set componentKey = "components/" + componentName + "/" + componentName %}
         {% set componentSize = stats[componentKey + ".mjs"] %}
 
         {% set componentHtml %}
-          {{ componentName | unslugify }}<br>
           <a href="/docs/stats/{{ componentKey }}.html" class="govuk-body-s govuk-link govuk-!-font-weight-regular"><code>{{ componentName }}.mjs</code></a>
         {% endset %}
 
-        {% set rows = (rows.push({
-          key: {
-            classes: "govuk-!-width-three-quarters",
-            html: componentHtml
+        {{ govukSummaryList({
+          card: {
+            title: {
+              text: componentName | unslugify,
+              headingLevel: 3
+            }
           },
-          value: {
-            text: componentSize
-          }
-        }), rows) %}
+          rows: [
+            {
+              key: {
+                text: "File name"
+              },
+              value: {
+                html: componentHtml
+              }
+            },
+            {
+              key: {
+                text: "File size"
+              },
+              value: {
+                html:
+                  componentSize.bundled + " (bundled) <br>" +
+                  componentSize.minified + " (minified)"
+              }
+            }
+          ]
+        }) }}
       {% endfor %}
-
-      {{ govukSummaryList({
-        rows: rows
-      }) }}
     </div>
   </div>
   {% endif %}
