@@ -100,7 +100,6 @@ export class PasswordInput extends GOVUKFrontendComponent {
     const $screenReaderStatusMessage = document.createElement('div')
     $screenReaderStatusMessage.className =
       'govuk-password-input__sr-status govuk-visually-hidden'
-    $screenReaderStatusMessage.setAttribute('aria-live', 'polite')
     this.$screenReaderStatusMessage = $screenReaderStatusMessage
     this.$input.insertAdjacentElement('afterend', $screenReaderStatusMessage)
 
@@ -157,15 +156,7 @@ export class PasswordInput extends GOVUKFrontendComponent {
    * @private
    */
   show() {
-    this.$input.setAttribute('type', 'text')
-    this.$showHideButton.innerHTML = this.i18n.t('hidePassword')
-    this.$showHideButton.setAttribute(
-      'aria-label',
-      this.i18n.t('hidePasswordAriaLabel')
-    )
-    this.$screenReaderStatusMessage.innerText = this.i18n.t(
-      'passwordShownAnnouncement'
-    )
+    this.setType('text')
   }
 
   /**
@@ -174,14 +165,40 @@ export class PasswordInput extends GOVUKFrontendComponent {
    * @private
    */
   hide() {
-    this.$input.setAttribute('type', 'password')
-    this.$showHideButton.innerHTML = this.i18n.t('showPassword')
+    this.setType('password')
+  }
+
+  /**
+   * Set the password input type
+   *
+   * @param {'text' | 'password'} type - Input type
+   * @private
+   */
+  setType(type) {
+    this.$input.setAttribute('type', type)
+
+    const isHidden = type === 'password'
+    const prefixButton = isHidden ? 'show' : 'hide'
+    const prefixStatus = isHidden ? 'passwordHidden' : 'passwordShown'
+
+    // Update button text
+    this.$showHideButton.innerHTML = this.i18n.t(`${prefixButton}Password`)
+
+    // Update button aria-label
     this.$showHideButton.setAttribute(
       'aria-label',
-      this.i18n.t('showPasswordAriaLabel')
+      this.i18n.t(`${prefixButton}AriaLabel`)
     )
+
+    // Skip initial announcement (e.g. on page load) but always set
+    // aria-live ready for the first button press to be announced
+    if (!this.$screenReaderStatusMessage.hasAttribute('aria-live')) {
+      this.$screenReaderStatusMessage.setAttribute('aria-live', 'polite')
+    }
+
+    // Update status change text
     this.$screenReaderStatusMessage.innerText = this.i18n.t(
-      'passwordHiddenAnnouncement'
+      `${prefixStatus}Announcement`
     )
   }
 
