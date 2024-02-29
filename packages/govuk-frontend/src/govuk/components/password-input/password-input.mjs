@@ -140,7 +140,7 @@ export class PasswordInput extends GOVUKFrontendComponent {
    * Toggle the visibility of the password input
    *
    * @private
-   * @param {MouseEvent} event -
+   * @param {MouseEvent} event - Click event
    */
   toggle(event) {
     event.preventDefault()
