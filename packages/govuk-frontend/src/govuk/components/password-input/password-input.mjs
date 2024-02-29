@@ -100,8 +100,13 @@ export class PasswordInput extends GOVUKFrontendComponent {
       locale: closestAttributeValue($module, 'lang')
     })
 
-    // Show the toggle button element
-    this.$showHideButton.removeAttribute('hidden')
+    // Show the toggle button on input
+    this.$input.addEventListener('input', () => {
+      this.updateButtonVisibility()
+    })
+
+    // Show the toggle button element when input has value
+    this.updateButtonVisibility()
 
     // Create and append the status text for screen readers.
     // This is injected between the input and button so that users get a sensible reading order if
@@ -143,6 +148,21 @@ export class PasswordInput extends GOVUKFrontendComponent {
       // already passed, so run it again just in case.
       this.hide()
       this.$input.value = ''
+    }
+  }
+
+  /**
+   * Show or hide button when input has text or not, automatically changing
+   * back to `password` input type when all text is deleted
+   *
+   * @private
+   */
+  updateButtonVisibility() {
+    if (this.$input.value) {
+      this.$showHideButton.removeAttribute('hidden')
+    } else {
+      this.$showHideButton.setAttribute('hidden', '')
+      this.hide()
     }
   }
 
