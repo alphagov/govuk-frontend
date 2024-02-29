@@ -42,11 +42,11 @@ export class ErrorSummary extends GOVUKFrontendComponent {
 
     this.$module = $module
 
-    this.config = mergeConfigs(
+    this.config = mergeConfigs([
       ErrorSummary.defaults,
       config,
       normaliseDataset($module.dataset, ErrorSummary.schema)
-    )
+    ])
 
     /**
      * Focus the error summary

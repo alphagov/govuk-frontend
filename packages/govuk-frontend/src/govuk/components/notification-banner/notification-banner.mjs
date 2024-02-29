@@ -35,11 +35,11 @@ export class NotificationBanner extends GOVUKFrontendComponent {
 
     this.$module = $module
 
-    this.config = mergeConfigs(
+    this.config = mergeConfigs([
       NotificationBanner.defaults,
       config,
       normaliseDataset($module.dataset, NotificationBanner.schema)
-    )
+    ])
 
     /**
      * Focus the notification banner

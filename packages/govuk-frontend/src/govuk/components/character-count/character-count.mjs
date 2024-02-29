@@ -108,12 +108,12 @@ export class CharacterCount extends GOVUKFrontendComponent {
       }
     }
 
-    this.config = mergeConfigs(
+    this.config = mergeConfigs([
       CharacterCount.defaults,
       config,
       configOverrides,
       datasetConfig
-    )
+    ])
 
     // Check for valid config
     const errors = validateConfig(CharacterCount.schema, this.config)

@@ -31,7 +31,7 @@ describe('Common JS utilities', () => {
     }
 
     it('ignores a single object', () => {
-      const config = mergeConfigs(config1)
+      const config = mergeConfigs([config1])
       expect(config).toEqual({
         a: 'antelope',
         c: { a: 'camel' }
@@ -39,7 +39,7 @@ describe('Common JS utilities', () => {
     })
 
     it('merges two objects', () => {
-      const config = mergeConfigs(config1, config2)
+      const config = mergeConfigs([config1, config2])
       expect(config).toEqual({
         a: 'aardvark',
         b: 'bee',
@@ -48,7 +48,7 @@ describe('Common JS utilities', () => {
     })
 
     it('merges three objects', () => {
-      const config = mergeConfigs(config1, config2, config3)
+      const config = mergeConfigs([config1, config2, config3])
       expect(config).toEqual({
         a: 'aardvark',
         b: 'bat',
@@ -63,35 +63,31 @@ describe('Common JS utilities', () => {
     })
 
     it('ignores empty objects when merging', () => {
-      const test1 = mergeConfigs({}, config1)
-      const test2 = mergeConfigs(config1, {}, config2)
-      const test3 = mergeConfigs(config3, {})
+      const test1 = mergeConfigs([{}, config1])
+      const test2 = mergeConfigs([config1, {}, config2])
+      const test3 = mergeConfigs([config3, {}])
 
-      expect(test1).toEqual(mergeConfigs(config1))
-      expect(test2).toEqual(mergeConfigs(config1, config2))
-      expect(test3).toEqual(mergeConfigs(config3))
+      expect(test1).toEqual(mergeConfigs([config1]))
+      expect(test2).toEqual(mergeConfigs([config1, config2]))
+      expect(test3).toEqual(mergeConfigs([config3]))
     })
 
-    it('ignores non-object values for keys that already hold an object', () => {
-      const config = mergeConfigs(config1, config2, config3, {
-        c: 'whoops',
-        e: { l: 'whoops again' }
-      })
-      expect(config).toEqual({
-        a: 'aardvark',
-        b: 'bat',
-        c: { a: 'cat', o: 'cow' },
-        d: 'dog',
-        e: {
-          l: {
-            e: 'elephant'
-          }
-        }
-      })
+    it('throws if attempting to merge non-object values for keys that already hold an object', () => {
+      expect(() =>
+        mergeConfigs([config1, config2, config3, { c: 'whoops' }])
+      ).toThrow(
+        'Trying to merge a non-object value over an object value for `c`'
+      )
+
+      expect(() =>
+        mergeConfigs([config1, config2, config3, { e: { l: 'whoops' } }])
+      ).toThrow(
+        'Trying to merge a non-object value over an object value for `e.l`'
+      )
     })
 
     it('prioritises the last parameter provided', () => {
-      const config = mergeConfigs(config1, config2, config3, config1)
+      const config = mergeConfigs([config1, config2, config3, config1])
       expect(config).toEqual({
         a: 'antelope',
         b: 'bat',
@@ -106,7 +102,7 @@ describe('Common JS utilities', () => {
     })
 
     it('returns an empty object if no parameters are provided', () => {
-      const config = mergeConfigs()
+      const config = mergeConfigs([])
       expect(config).toEqual({})
     })
   })

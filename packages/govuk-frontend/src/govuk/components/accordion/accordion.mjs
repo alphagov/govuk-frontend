@@ -129,11 +129,11 @@ export class Accordion extends GOVUKFrontendComponent {
 
     this.$module = $module
 
-    this.config = mergeConfigs(
+    this.config = mergeConfigs([
       Accordion.defaults,
       config,
       normaliseDataset($module.dataset, Accordion.schema)
-    )
+    ])
 
     this.i18n = new I18n(this.config.i18n)
 

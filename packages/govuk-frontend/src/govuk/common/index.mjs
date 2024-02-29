@@ -15,10 +15,11 @@ import { normaliseString } from './normalise-string.mjs'
  * greatest priority on the LAST item passed in.
  *
  * @internal
- * @param {...{ [key: string]: unknown }} configObjects - Config objects to merge
+ * @param {Array<{ [key: string]: unknown }>} configObjects - Config objects to merge
+ * @param {{path?: [string?]}} [options] - Options to help track the path at which an issue may be happening
  * @returns {{ [key: string]: unknown }} A merged config object
  */
-export function mergeConfigs(...configObjects) {
+export function mergeConfigs(configObjects, { path = [] } = {}) {
   // Start with an empty object as our base
   /** @type {{ [key: string]: unknown }} */
   const formattedConfigObject = {}
@@ -29,19 +30,23 @@ export function mergeConfigs(...configObjects) {
       const option = formattedConfigObject[key]
       const override = configObject[key]
 
-      const nonObjectOverridesObject = isObject(option) && !isObject(override)
+      if (isObject(option) && !isObject(override)) {
+        throw new TypeError(
+          `Trying to merge a non-object value over an object value for \`${[...path, key].join('.')}\``
+        )
+      }
 
-      if (!nonObjectOverridesObject) {
-        // Push their keys one-by-one into formattedConfigObject. Any duplicate
-        // keys with object values will be merged, otherwise the new value will
-        // override the existing value.
-        if (isObject(option) && isObject(override)) {
-          // @ts-expect-error Index signature for type 'string' is missing
-          formattedConfigObject[key] = mergeConfigs(option, override)
-        } else {
-          // Apply override
-          formattedConfigObject[key] = override
-        }
+      // Push their keys one-by-one into formattedConfigObject. Any duplicate
+      // keys with object values will be merged, otherwise the new value will
+      // override the existing value.
+      if (isObject(option) && isObject(override)) {
+        // @ts-expect-error Index signature for type 'string' is missing
+        formattedConfigObject[key] = mergeConfigs([option, override], {
+          path: [...path, key]
+        })
+      } else {
+        // Apply override
+        formattedConfigObject[key] = override
       }
     }
   }

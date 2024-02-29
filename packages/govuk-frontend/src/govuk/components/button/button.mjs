@@ -44,11 +44,11 @@ export class Button extends GOVUKFrontendComponent {
 
     this.$module = $module
 
-    this.config = mergeConfigs(
+    this.config = mergeConfigs([
       Button.defaults,
       config,
       normaliseDataset($module.dataset, Button.schema)
-    )
+    ])
 
     this.$module.addEventListener('keydown', (event) =>
       this.handleKeyDown(event)

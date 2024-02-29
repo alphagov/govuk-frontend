@@ -99,11 +99,11 @@ export class ExitThisPage extends GOVUKFrontendComponent {
       })
     }
 
-    this.config = mergeConfigs(
+    this.config = mergeConfigs([
       ExitThisPage.defaults,
       config,
       normaliseDataset($module.dataset, ExitThisPage.schema)
-    )
+    ])
 
     this.i18n = new I18n(this.config.i18n)
     this.$module = $module
