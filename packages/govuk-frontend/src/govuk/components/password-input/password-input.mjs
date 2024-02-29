@@ -43,7 +43,7 @@ export class PasswordInput extends GOVUKFrontendComponent {
   $screenReaderStatusMessage
 
   /**
-   * @param {Element} $module - HTML element to use for password input
+   * @param {Element | null} $module - HTML element to use for password input
    * @param {PasswordInputConfig} [config] - Password input config
    */
   constructor($module, config = {}) {
