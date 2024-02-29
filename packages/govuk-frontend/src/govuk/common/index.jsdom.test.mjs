@@ -117,11 +117,11 @@ describe('Common JS utilities', () => {
           data-a="aardvark"
           data-b.a="bat"
           data-b.e="bear"
-          data-b.o="boar"
+          data-b.o.a="boar"
           data-c.a="camel"
           data-c.o="cow"
           data-d="dog"
-          data-e="element">
+          data-e="element"
         </div>
       `
 
@@ -131,64 +131,43 @@ describe('Common JS utilities', () => {
     it('defaults to empty config', () => {
       // With unknown namespace
       expect(extractConfigByNamespace($element.dataset, 'unknown')).toEqual({})
-
-      // With known namespace, but no dot-separated keys
-      expect(extractConfigByNamespace($element.dataset, 'a')).toEqual({})
-      expect(extractConfigByNamespace($element.dataset, 'd')).toEqual({})
-      expect(extractConfigByNamespace($element.dataset, 'e')).toEqual({})
     })
 
     it('can extract config from key-value pairs', () => {
       const result = extractConfigByNamespace($element.dataset, 'b')
-      expect(result).toEqual({ a: 'bat', e: 'bear', o: 'boar' })
+      expect(result).toEqual({ a: 'bat', e: 'bear', o: { a: 'boar' } })
     })
 
-    it('can extract config from key-value pairs (with invalid namespace, first)', () => {
+    it('throws if a key would create an object when a value already exists (with invalid attribute first, and being the namespace)', () => {
       document.body.outerHTML = outdent`
         <div id="app-example2"
           data-i18n
           data-i18n.key1="One"
-          data-i18n.key2="Two"
-          data-i18n.key2="Three">
+          data-i18n.key2="Two">
         </div>
       `
 
       $element = document.getElementById('app-example2')
 
-      const result = extractConfigByNamespace($element.dataset, 'i18n')
-      expect(result).toEqual({ key1: 'One', key2: 'Two' })
+      expect(() => extractConfigByNamespace($element.dataset, 'i18n')).toThrow(
+        '`data-i18n` cannot exist on its own'
+      )
     })
 
-    it('can extract config from key-value pairs (with invalid namespace, last)', () => {
-      document.body.outerHTML = outdent`
-        <div id="app-example2"
-          data-i18n.key1="One"
-          data-i18n.key2="Two"
-          data-i18n.key2="Three">
-          data-i18n
-        </div>
-      `
-
-      $element = document.getElementById('app-example2')
-
-      const result = extractConfigByNamespace($element.dataset, 'i18n')
-      expect(result).toEqual({ key1: 'One', key2: 'Two' })
-    })
-
-    it('can handle multiple levels of nesting', () => {
+    it('throws if a key would create an object when a value already exists (with invalid attribute last, and nested)', () => {
       document.body.outerHTML = outdent`
         <div id="app-example2"
           data-i18n.key1="One"
           data-i18n.key2.other="Two"
           data-i18n.key2>
-          data-i18n
         </div>
       `
 
       $element = document.getElementById('app-example2')
 
-      const result = extractConfigByNamespace($element.dataset, 'i18n')
-      expect(result).toEqual({ key1: 'One', key2: { other: 'Two' } })
+      expect(() => extractConfigByNamespace($element.dataset, 'i18n')).toThrow(
+        '`data-i18n.key2.other` cannot exist if `data-i18n.key2` is present'
+      )
     })
   })
 

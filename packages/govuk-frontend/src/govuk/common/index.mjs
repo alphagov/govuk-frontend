@@ -80,6 +80,10 @@ export function extractConfigByNamespace(dataset, namespace) {
     if (keyParts[0] === namespace) {
       keyParts.shift()
 
+      if (!keyParts.length) {
+        throw new TypeError(`\`data-${namespace}\` cannot exist on its own`)
+      }
+
       let current = newObject
 
       /**
@@ -88,8 +92,17 @@ export function extractConfigByNamespace(dataset, namespace) {
        * e.g. 'i18n.textareaDescription.other' becomes
        * `{ i18n: { textareaDescription: { other } } }`
        */
+      const path = []
       for (const name of keyParts) {
+        path.push(name)
+
         if (!isObject(current[name])) {
+          if (name in current) {
+            throw new TypeError(
+              `\`data-${namespace}.${keyParts.join('.')}\` cannot exist if \`data-${namespace}.${path.join('.')}\` is present`
+            )
+          }
+
           current[name] = {}
         }
 
