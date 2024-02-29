@@ -72,6 +72,24 @@ describe('Common JS utilities', () => {
       expect(test3).toEqual(mergeConfigs(config3))
     })
 
+    it('ignores non-object values for keys that already hold an object', () => {
+      const config = mergeConfigs(config1, config2, config3, {
+        c: 'whoops',
+        e: { l: 'whoops again' }
+      })
+      expect(config).toEqual({
+        a: 'aardvark',
+        b: 'bat',
+        c: { a: 'cat', o: 'cow' },
+        d: 'dog',
+        e: {
+          l: {
+            e: 'elephant'
+          }
+        }
+      })
+    })
+
     it('prioritises the last parameter provided', () => {
       const config = mergeConfigs(config1, config2, config3, config1)
       expect(config).toEqual({

@@ -29,15 +29,19 @@ export function mergeConfigs(...configObjects) {
       const option = formattedConfigObject[key]
       const override = configObject[key]
 
-      // Push their keys one-by-one into formattedConfigObject. Any duplicate
-      // keys with object values will be merged, otherwise the new value will
-      // override the existing value.
-      if (isObject(option) && isObject(override)) {
-        // @ts-expect-error Index signature for type 'string' is missing
-        formattedConfigObject[key] = mergeConfigs(option, override)
-      } else {
-        // Apply override
-        formattedConfigObject[key] = override
+      const nonObjectOverridesObject = isObject(option) && !isObject(override)
+
+      if (!nonObjectOverridesObject) {
+        // Push their keys one-by-one into formattedConfigObject. Any duplicate
+        // keys with object values will be merged, otherwise the new value will
+        // override the existing value.
+        if (isObject(option) && isObject(override)) {
+          // @ts-expect-error Index signature for type 'string' is missing
+          formattedConfigObject[key] = mergeConfigs(option, override)
+        } else {
+          // Apply override
+          formattedConfigObject[key] = override
+        }
       }
     }
   }
