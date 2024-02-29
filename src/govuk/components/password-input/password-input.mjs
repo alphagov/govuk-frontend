@@ -97,17 +97,15 @@ export class PasswordInput extends GOVUKFrontendComponent {
     // This is injected between the input and button so that users get a sensible reading order if
     // moving through the page content linearly:
     // [password input] -> [your password is visible/hidden] -> [show/hide password]
-    this.$screenReaderStatusMessage = document.createElement('div')
-    this.$screenReaderStatusMessage.className =
+    const $screenReaderStatusMessage = document.createElement('div')
+    $screenReaderStatusMessage.className =
       'govuk-password-input__sr-status govuk-visually-hidden'
-    this.$screenReaderStatusMessage.innerText = this.i18n.t(
+    $screenReaderStatusMessage.innerText = this.i18n.t(
       'passwordHiddenAnnouncement'
     )
-    this.$screenReaderStatusMessage.setAttribute('aria-live', 'polite')
-    this.$input.insertAdjacentElement(
-      'afterend',
-      this.$screenReaderStatusMessage
-    )
+    $screenReaderStatusMessage.setAttribute('aria-live', 'polite')
+    this.$screenReaderStatusMessage = $screenReaderStatusMessage
+    this.$input.insertAdjacentElement('afterend', $screenReaderStatusMessage)
 
     // Bind toggle button
     this.$showHideButton.addEventListener('click', this.toggle.bind(this))
