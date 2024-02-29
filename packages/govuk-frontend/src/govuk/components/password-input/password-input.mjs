@@ -175,6 +175,11 @@ export class PasswordInput extends GOVUKFrontendComponent {
    * @private
    */
   setType(type) {
+    if (type === this.$input.type) {
+      return
+    }
+
+    // Update input type
     this.$input.setAttribute('type', type)
 
     const isHidden = type === 'password'
