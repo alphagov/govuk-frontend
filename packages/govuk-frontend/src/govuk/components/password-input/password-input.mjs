@@ -100,9 +100,6 @@ export class PasswordInput extends GOVUKFrontendComponent {
     const $screenReaderStatusMessage = document.createElement('div')
     $screenReaderStatusMessage.className =
       'govuk-password-input__sr-status govuk-visually-hidden'
-    $screenReaderStatusMessage.innerText = this.i18n.t(
-      'passwordHiddenAnnouncement'
-    )
     $screenReaderStatusMessage.setAttribute('aria-live', 'polite')
     this.$screenReaderStatusMessage = $screenReaderStatusMessage
     this.$input.insertAdjacentElement('afterend', $screenReaderStatusMessage)
