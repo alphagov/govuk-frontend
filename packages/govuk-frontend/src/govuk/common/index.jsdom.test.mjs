@@ -160,6 +160,22 @@ describe('Common JS utilities', () => {
       const result = extractConfigByNamespace($element.dataset, 'i18n')
       expect(result).toEqual({ key1: 'One', key2: 'Two' })
     })
+
+    it('can handle multiple levels of nesting', () => {
+      document.body.outerHTML = outdent`
+        <div id="app-example2"
+          data-i18n.key1="One"
+          data-i18n.key2.other="Two"
+          data-i18n.key2>
+          data-i18n
+        </div>
+      `
+
+      $element = document.getElementById('app-example2')
+
+      const result = extractConfigByNamespace($element.dataset, 'i18n')
+      expect(result).toEqual({ key1: 'One', key2: { other: 'Two' } })
+    })
   })
 
   describe('isSupported', () => {

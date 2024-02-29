@@ -57,7 +57,12 @@ export function mergeConfigs(...configObjects) {
 export function extractConfigByNamespace(dataset, namespace) {
   const newObject = /** @type {ObjectNested} */ ({})
 
-  for (const [key, value] of Object.entries(dataset)) {
+  // Iterate over dataset keys sorted as strings so that deeper keys
+  // are processed after shallower ones and override them
+  const datasetKeys = Object.keys(dataset).sort()
+
+  for (const key of datasetKeys) {
+    const value = dataset[key]
     // Split the key into parts, using . as our namespace separator
     const keyParts = key.split('.')
 
@@ -75,7 +80,11 @@ export function extractConfigByNamespace(dataset, namespace) {
        * `{ i18n: { textareaDescription: { other } } }`
        */
       for (const name of keyParts) {
-        const next = (current[name] = current[name] ?? {})
+        if (!isObject(current[name])) {
+          current[name] = {}
+        }
+
+        const next = current[name]
 
         // Add them to our new object
         if (name === keyParts[keyParts.length - 1]) {
