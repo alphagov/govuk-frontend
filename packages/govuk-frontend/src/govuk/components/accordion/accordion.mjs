@@ -1,6 +1,6 @@
 import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
-import { ElementError } from '../../errors/index.mjs'
+import { ConfigError, ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 import { I18n } from '../../i18n.mjs'
 
@@ -129,11 +129,17 @@ export class Accordion extends GOVUKFrontendComponent {
 
     this.$module = $module
 
-    this.config = mergeConfigs([
-      Accordion.defaults,
-      config,
-      normaliseDataset($module.dataset, Accordion.schema)
-    ])
+    try {
+      this.config = mergeConfigs([
+        Accordion.defaults,
+        config,
+        normaliseDataset($module.dataset, Accordion.schema)
+      ])
+    } catch (error) {
+      throw new ConfigError(
+        `Accordion: ${error instanceof Error ? error.message : String(error)}`
+      )
+    }
 
     this.i18n = new I18n(this.config.i18n)
 

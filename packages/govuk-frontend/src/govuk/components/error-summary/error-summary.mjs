@@ -4,7 +4,7 @@ import {
   setFocus
 } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
-import { ElementError } from '../../errors/index.mjs'
+import { ConfigError, ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
@@ -42,11 +42,17 @@ export class ErrorSummary extends GOVUKFrontendComponent {
 
     this.$module = $module
 
-    this.config = mergeConfigs([
-      ErrorSummary.defaults,
-      config,
-      normaliseDataset($module.dataset, ErrorSummary.schema)
-    ])
+    try {
+      this.config = mergeConfigs([
+        ErrorSummary.defaults,
+        config,
+        normaliseDataset($module.dataset, ErrorSummary.schema)
+      ])
+    } catch (error) {
+      throw new ConfigError(
+        `Error summary: ${error instanceof Error ? error.message : String(error)}`
+      )
+    }
 
     /**
      * Focus the error summary

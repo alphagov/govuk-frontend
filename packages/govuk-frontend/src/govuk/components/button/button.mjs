@@ -1,6 +1,6 @@
 import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
-import { ElementError } from '../../errors/index.mjs'
+import { ConfigError, ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 const KEY_SPACE = 32
@@ -44,11 +44,17 @@ export class Button extends GOVUKFrontendComponent {
 
     this.$module = $module
 
-    this.config = mergeConfigs([
-      Button.defaults,
-      config,
-      normaliseDataset($module.dataset, Button.schema)
-    ])
+    try {
+      this.config = mergeConfigs([
+        Button.defaults,
+        config,
+        normaliseDataset($module.dataset, Button.schema)
+      ])
+    } catch (error) {
+      throw new ConfigError(
+        `Button: ${error instanceof Error ? error.message : String(error)}`
+      )
+    }
 
     this.$module.addEventListener('keydown', (event) =>
       this.handleKeyDown(event)

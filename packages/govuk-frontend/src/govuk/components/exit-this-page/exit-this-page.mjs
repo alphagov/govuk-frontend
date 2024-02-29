@@ -1,6 +1,6 @@
 import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
-import { ElementError } from '../../errors/index.mjs'
+import { ConfigError, ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 import { I18n } from '../../i18n.mjs'
 
@@ -99,11 +99,17 @@ export class ExitThisPage extends GOVUKFrontendComponent {
       })
     }
 
-    this.config = mergeConfigs([
-      ExitThisPage.defaults,
-      config,
-      normaliseDataset($module.dataset, ExitThisPage.schema)
-    ])
+    try {
+      this.config = mergeConfigs([
+        ExitThisPage.defaults,
+        config,
+        normaliseDataset($module.dataset, ExitThisPage.schema)
+      ])
+    } catch (error) {
+      throw new ConfigError(
+        `Exit this page: ${error instanceof Error ? error.message : String(error)}`
+      )
+    }
 
     this.i18n = new I18n(this.config.i18n)
     this.$module = $module

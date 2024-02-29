@@ -1,6 +1,6 @@
 import { mergeConfigs, setFocus } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
-import { ElementError } from '../../errors/index.mjs'
+import { ConfigError, ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
@@ -35,11 +35,17 @@ export class NotificationBanner extends GOVUKFrontendComponent {
 
     this.$module = $module
 
-    this.config = mergeConfigs([
-      NotificationBanner.defaults,
-      config,
-      normaliseDataset($module.dataset, NotificationBanner.schema)
-    ])
+    try {
+      this.config = mergeConfigs([
+        NotificationBanner.defaults,
+        config,
+        normaliseDataset($module.dataset, NotificationBanner.schema)
+      ])
+    } catch (error) {
+      throw new ConfigError(
+        `Notification banner: ${error instanceof Error ? error.message : String(error)}`
+      )
+    }
 
     /**
      * Focus the notification banner
