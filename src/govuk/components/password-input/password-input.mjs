@@ -111,23 +111,15 @@ export class PasswordInput extends GOVUKFrontendComponent {
       this.$input.form.addEventListener('submit', () => this.hide())
     }
 
-    // When the page is restored after navigating 'back' in some browsers the value of form
-    // controls may be retained. This is undesirable in the case of passwords, as it may allow
-    // a bad actor to view a previously entered password.
-    //
-    // Here we're intentionally clearing and resetting the component upon the page being loaded,
-    // unless the input has explicitly had a value set.
-    if (!this.$input.hasAttribute('value')) {
-      window.addEventListener('pageshow', () => {
+    // If the page is restored from bfcache and the password is visible, hide it again
+    window.addEventListener('pageshow', (event) => {
+      if (event.persisted && this.$input.type !== 'password') {
         this.hide()
-        this.$input.value = ''
-      })
+      }
+    })
 
-      // The component may have been dynamically loaded, in which case `pageshow` may have
-      // already passed, so run it again just in case.
-      this.hide()
-      this.$input.value = ''
-    }
+    // Default the component to having the password hidden.
+    this.hide()
   }
 
   /**
