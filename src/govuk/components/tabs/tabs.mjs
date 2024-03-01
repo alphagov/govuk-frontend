@@ -21,9 +21,6 @@ export class Tabs extends GOVUKFrontendComponent {
   $tabListItems
 
   /** @private */
-  keys = { left: 37, right: 39, up: 38, down: 40 }
-
-  /** @private */
   jsHiddenClass = 'govuk-tabs__panel--hidden'
 
   /** @private */
@@ -375,14 +372,19 @@ export class Tabs extends GOVUKFrontendComponent {
    * @param {KeyboardEvent} event - Keydown event
    */
   onTabKeydown(event) {
-    switch (event.keyCode) {
-      case this.keys.left:
-      case this.keys.up:
+    switch (event.key) {
+      // 'Left', 'Right', 'Up' and 'Down' required for Edge 16 support.
+      case 'ArrowLeft':
+      case 'ArrowUp':
+      case 'Left':
+      case 'Up':
         this.activatePreviousTab()
         event.preventDefault()
         break
-      case this.keys.right:
-      case this.keys.down:
+      case 'ArrowRight':
+      case 'ArrowDown':
+      case 'Right':
+      case 'Down':
         this.activateNextTab()
         event.preventDefault()
         break
