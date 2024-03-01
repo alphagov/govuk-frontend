@@ -284,10 +284,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
     // This works because using Shift as a modifier key (e.g. pressing Shift + A)
     // will fire TWO keyup events, one for A (with e.shiftKey: true) and the other
     // for Shift (with e.shiftKey: false).
-    if (
-      (event.key === 'Shift' || event.keyCode === 16 || event.which === 16) &&
-      !this.lastKeyWasModified
-    ) {
+    if (event.key === 'Shift' && !this.lastKeyWasModified) {
       this.keypressCounter += 1
 
       // Update the indicator before the below if statement can reset it back to 0
