@@ -3,7 +3,6 @@ import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
-const KEY_SPACE = 32
 const DEBOUNCE_TIMEOUT_IN_SECONDS = 1
 
 /**
@@ -72,7 +71,7 @@ export class Button extends GOVUKFrontendComponent {
     const $target = event.target
 
     // Handle space bar only
-    if (event.keyCode !== KEY_SPACE) {
+    if (event.key !== ' ') {
       return
     }
 
