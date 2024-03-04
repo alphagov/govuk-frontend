@@ -51,7 +51,10 @@
   attributes: {
     "aria-controls": params.id,
     "aria-label": params.showPasswordAriaLabelText | default("Show password"),
-    "hidden": ""
+    "hidden": {
+      value: true,
+      optional: true
+    }
   }
 }) | trim }}
 {% if params.formGroup.afterInput %}
