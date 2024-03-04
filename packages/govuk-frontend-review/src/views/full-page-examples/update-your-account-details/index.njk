@@ -13,6 +13,7 @@ scenario: |
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/password-input/macro.njk" import govukPasswordInput %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% set pageTitle = example.title %}
@@ -52,18 +53,16 @@ scenario: |
           spellcheck: false
         }) }}
 
-        {{ govukInput({
+        {{ govukPasswordInput({
           label: {
             text: "New password",
             classes: "govuk-label--m"
           },
-          type: "password",
           id: "password",
           name: "password",
           value: values["password"],
           errorMessage: errors["password"],
-          autocomplete: "new-password",
-          spellcheck: false
+          autocomplete: "new-password"
         }) }}
 
         {{ govukButton({
