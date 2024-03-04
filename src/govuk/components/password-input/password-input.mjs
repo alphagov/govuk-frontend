@@ -106,8 +106,8 @@ export class PasswordInput extends GOVUKFrontendComponent {
     // Bind toggle button
     this.$showHideButton.addEventListener('click', this.toggle.bind(this))
 
-    // Bind event to revert the password visibility to hidden, unless it's been explicitly disabled
-    if (this.$input.form && !this.config.disableFormSubmitCheck) {
+    // Bind event to revert the password visibility to hidden
+    if (this.$input.form) {
       this.$input.form.addEventListener('submit', () => this.hide())
     }
 
@@ -213,7 +213,6 @@ export class PasswordInput extends GOVUKFrontendComponent {
    * @type {PasswordInputConfig}
    */
   static defaults = Object.freeze({
-    disableFormSubmitCheck: false,
     i18n: {
       showPassword: 'Show',
       hidePassword: 'Hide',
@@ -229,9 +228,6 @@ export class PasswordInput extends GOVUKFrontendComponent {
  * Password input config
  *
  * @typedef {object} PasswordInputConfig
- * @property {boolean} [disableFormSubmitCheck=false] - If set to `true` the
- *   password input will not automatically change back to the `password` type
- *   upon submission of the parent form.
  * @property {PasswordInputTranslations} [i18n=PasswordInput.defaults.i18n] - Password input translations
  */
 
