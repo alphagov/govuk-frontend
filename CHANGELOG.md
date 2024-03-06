@@ -4,6 +4,43 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+#### Update the HTML for the character count
+
+We've updated the HTML for the character count.
+
+The component wrapper `data-module="govuk-character-count"` and its form group `class="govuk-form-group"` are now combined as the same `<div>`. The hint text used as the count message is now placed directly after the `<textarea>`.
+
+If you're not using Nunjucks macros, then you should:
+
+- move all classes and attributes from the form group `<div>` to the component wrapper `<div>`
+- remove the opening `<div>` and closing `</div>` tags used by the form group
+- check the count message is now directly after the `<textarea>`
+
+The following example shows some HTML and the difference once it is updated.
+
+HTML before:
+
+```html
+<div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="100">
+  <div class="govuk-form-group">
+    <!-- // Label, hint, error and textarea -->
+  </div>
+  <!-- // Count message -->
+</div>
+```
+
+HTML after:
+
+```html
+<div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="100">
+  <!-- // Label, hint, error, textarea and count message -->
+</div>
+```
+
+Check your changes against [the character count example in the Design System](https://design-system.service.gov.uk/components/character-count/#character-count-example) to make sure you have correctly implemented them.
+
+This change was introduced in [pull request #4566: Use Character count `formGroup` as module wrapper](https://github.com/alphagov/govuk-frontend/pull/4566).
+
 ### Fixes
 
 - [#4811: Use `KeyboardEvent.key` over deprecated `KeyboardEvent.keyCode` in the Tabs component](https://github.com/alphagov/govuk-frontend/pull/4811)
