@@ -1,5 +1,6 @@
 import autoprefixer from 'autoprefixer'
 import cssnano from 'cssnano'
+import cssnanoPresetDefault from 'cssnano-preset-default'
 import pseudoclasses from 'postcss-pseudo-classes'
 
 /**
@@ -20,6 +21,10 @@ export default {
     }),
 
     // Always minify CSS
-    cssnano()
+    cssnano({
+      preset: cssnanoPresetDefault({
+        env: 'stylesheets'
+      })
+    })
   ]
 }
