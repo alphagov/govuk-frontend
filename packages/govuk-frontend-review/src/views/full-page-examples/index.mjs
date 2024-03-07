@@ -8,6 +8,7 @@ export { default as haveYouChangedYourName } from './have-you-changed-your-name/
 export { default as feedback } from './feedback/index.mjs'
 export { default as howDoYouWantToSignIn } from './how-do-you-want-to-sign-in/index.mjs'
 export { default as search } from './search/index.mjs'
+export { default as signIn } from './sign-in/index.mjs'
 export { default as passportDetails } from './passport-details/index.mjs'
 export { default as updateYourAccountDetails } from './update-your-account-details/index.mjs'
 export { default as uploadYourPhoto } from './upload-your-photo/index.mjs'
