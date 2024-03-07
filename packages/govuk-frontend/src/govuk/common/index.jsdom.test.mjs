@@ -110,25 +110,197 @@ describe('Common JS utilities', () => {
   })
 
   describe('extractConfigByNamespace', () => {
-    const flattenedConfig = {
-      a: 'aardvark',
-      'b.a': 'bat',
-      'b.e': 'bear',
-      'b.o': 'boar',
-      'c.a': 'camel',
-      'c.o': 'cow',
-      d: 'dog',
-      e: 'elephant'
+    class Component {
+      /**
+       * @satisfies {Schema}
+       */
+      static schema = {
+        properties: {
+          a: { type: 'string' },
+          b: { type: 'object' },
+          c: { type: 'object' },
+          d: { type: 'string' },
+          e: { type: 'string' },
+          f: { type: 'object' }
+        }
+      }
     }
 
-    it('can extract single key-value pairs', () => {
-      const result = extractConfigByNamespace(flattenedConfig, 'a')
-      expect(result).toEqual({ a: 'aardvark' })
+    /** @type {HTMLElement} */
+    let $element
+
+    beforeEach(() => {
+      document.body.outerHTML = outdent`
+        <div id="app-example"
+          data-a="aardvark"
+          data-b.a="bat"
+          data-b.e="bear"
+          data-b.o="boar"
+          data-c.a="camel"
+          data-c.o="cow"
+          data-d="dog"
+          data-e="element">
+        </div>
+      `
+
+      $element = document.getElementById('app-example')
     })
 
-    it('can extract multiple key-value pairs', () => {
-      const result = extractConfigByNamespace(flattenedConfig, 'b')
+    it('defaults to empty config for known namespaces only', () => {
+      const { dataset } = $element
+
+      const nonObject1 = extractConfigByNamespace(Component, dataset, 'a')
+      const nonObject2 = extractConfigByNamespace(Component, dataset, 'd')
+      const nonObject3 = extractConfigByNamespace(Component, dataset, 'e')
+
+      const namespaceKnown = extractConfigByNamespace(Component, dataset, 'f')
+      const namespaceUnknown = extractConfigByNamespace(
+        Component,
+        dataset,
+        'unknown'
+      )
+
+      // With known namespace but non-object type, default to no config
+      expect(nonObject1).toEqual(undefined)
+      expect(nonObject2).toEqual(undefined)
+      expect(nonObject3).toEqual(undefined)
+
+      // With known namespace, default to empty config
+      expect(namespaceKnown).toEqual({})
+
+      // With unknown namespace, default to no config
+      expect(namespaceUnknown).toEqual(undefined)
+    })
+
+    it('can extract config from key-value pairs', () => {
+      const result = extractConfigByNamespace(Component, $element.dataset, 'b')
       expect(result).toEqual({ a: 'bat', e: 'bear', o: 'boar' })
+    })
+
+    it('can extract config from key-value pairs (with invalid namespace, first)', () => {
+      document.body.outerHTML = outdent`
+        <div id="app-example2"
+          data-i18n
+          data-i18n.key1="One"
+          data-i18n.key2="Two"
+          data-i18n.key3="Three">
+        </div>
+      `
+
+      const { dataset } = document.getElementById('app-example2')
+      const result = extractConfigByNamespace(
+        class Component {
+          /**
+           * @satisfies {Schema}
+           */
+          static schema = {
+            properties: {
+              i18n: { type: 'object' }
+            }
+          }
+        },
+        dataset,
+        'i18n'
+      )
+
+      expect(result).toEqual({ key1: 'One', key2: 'Two', key3: 'Three' })
+    })
+
+    it('can extract config from key-value pairs (with invalid namespace, last)', () => {
+      document.body.outerHTML = outdent`
+        <div id="app-example2"
+          data-i18n.key1="One"
+          data-i18n.key2="Two"
+          data-i18n.key3="Three"
+          data-i18n>
+        </div>
+      `
+
+      const { dataset } = document.getElementById('app-example2')
+      const result = extractConfigByNamespace(
+        class Component {
+          /**
+           * @satisfies {Schema}
+           */
+          static schema = {
+            properties: {
+              i18n: { type: 'object' }
+            }
+          }
+        },
+        dataset,
+        'i18n'
+      )
+
+      expect(result).toEqual({ key1: 'One', key2: 'Two', key3: 'Three' })
+    })
+
+    it('can handle multiple levels of nesting', () => {
+      document.body.outerHTML = outdent`
+        <div id="app-example2"
+          data-i18n.key1="This, That"
+          data-i18n.key2.one="The"
+          data-i18n.key2.other="Other">
+        </div>
+      `
+
+      const { dataset } = document.getElementById('app-example2')
+      const result = extractConfigByNamespace(
+        class Component {
+          /**
+           * @satisfies {Schema}
+           */
+          static schema = {
+            properties: {
+              i18n: { type: 'object' }
+            }
+          }
+        },
+        dataset,
+        'i18n'
+      )
+
+      expect(result).toEqual({
+        key1: 'This, That',
+        key2: {
+          one: 'The',
+          other: 'Other'
+        }
+      })
+    })
+
+    it('can handle multiple levels of nesting (prioritises the last parameter provided)', () => {
+      document.body.outerHTML = outdent`
+        <div id="app-example2"
+          data-i18n.key1.one="This"
+          data-i18n.key1.other="That"
+          data-i18n.key2.one="The"
+          data-i18n.key2.other="Other"
+          data-i18n.key1="This, That"
+          data-i18n.key2="The Other">
+        </div>
+      `
+
+      const { dataset } = document.getElementById('app-example2')
+      const result = extractConfigByNamespace(
+        class Component {
+          /**
+           * @satisfies {Schema}
+           */
+          static schema = {
+            properties: {
+              i18n: { type: 'object' }
+            }
+          }
+        },
+        dataset,
+        'i18n'
+      )
+
+      expect(result).toEqual({
+        key1: 'This, That',
+        key2: 'The Other'
+      })
     })
   })
 
@@ -240,3 +412,7 @@ describe('Common JS utilities', () => {
     })
   })
 })
+
+/**
+ * @typedef {import('./index.mjs').Schema} Schema
+ */
