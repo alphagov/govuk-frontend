@@ -1,3 +1,5 @@
+import { normaliseString } from './normalise-string.mjs'
+
 /**
  * Common helpers which do not require polyfill.
  *
@@ -44,39 +46,56 @@ export function mergeConfigs(...configObjects) {
 }
 
 /**
- * Extracts keys starting with a particular namespace from a flattened config
- * object, removing the namespace in the process.
+ * Extracts keys starting with a particular namespace from dataset ('data-*')
+ * object, removing the namespace in the process, normalising all values
  *
  * @internal
- * @param {{ [key: string]: unknown }} configObject - The object to extract key-value pairs from.
- * @param {string} namespace - The namespace to filter keys with.
- * @returns {{ [key: string]: unknown }} Flattened object with dot-separated key namespace removed
+ * @param {{ schema: Schema }} Component - Component class
+ * @param {DOMStringMap} dataset - The object to extract key-value pairs from
+ * @param {string} namespace - The namespace to filter keys with
+ * @returns {ObjectNested | undefined} Nested object with dot-separated key namespace removed
  */
-export function extractConfigByNamespace(configObject, namespace) {
-  /** @type {{ [key: string]: unknown }} */
-  const newObject = {}
+export function extractConfigByNamespace(Component, dataset, namespace) {
+  const property = Component.schema.properties[namespace]
 
-  for (const [key, value] of Object.entries(configObject)) {
+  // Only extract configs for object schema properties
+  if (property?.type !== 'object') {
+    return
+  }
+
+  // Add default empty config
+  const newObject = {
+    [namespace]: /** @type {ObjectNested} */ ({})
+  }
+
+  for (const [key, value] of Object.entries(dataset)) {
+    /** @type {ObjectNested | ObjectNested[NestedKey]} */
+    let current = newObject
+
     // Split the key into parts, using . as our namespace separator
     const keyParts = key.split('.')
 
-    // Check if the first namespace matches the configured namespace
-    if (keyParts[0] === namespace) {
-      // Remove the first item (the namespace) from the parts array,
-      // but only if there is more than one part (we don't want blank keys!)
-      if (keyParts.length > 1) {
-        keyParts.shift()
+    /**
+     * Create new level per part
+     *
+     * e.g. 'i18n.textareaDescription.other' becomes
+     * `{ i18n: { textareaDescription: { other } } }`
+     */
+    for (const [index, name] of keyParts.entries()) {
+      if (typeof current === 'object') {
+        // Drop down to what we assume is a nested object
+        // but check for object type on the next loop
+        if (index < keyParts.length - 1) {
+          current = current[name] = current[name] ?? {}
+        } else if (name !== namespace) {
+          // Add normalised value to overwrite default
+          current[name] = normaliseString(value)
+        }
       }
-
-      // Join the remaining parts back together
-      const newKey = keyParts.join('.')
-
-      // Add them to our new object
-      newObject[newKey] = value
     }
   }
 
-  return newObject
+  return newObject[namespace]
 }
 
 /**
@@ -185,6 +204,11 @@ export function isSupported($scope = document.body) {
 /**
  * Validate component config by schema
  *
+ * Follows limited examples in JSON schema for wider support in future
+ *
+ * {@link https://ajv.js.org/json-schema.html#compound-keywords}
+ * {@link https://ajv.js.org/packages/ajv-errors.html#single-message}
+ *
  * @internal
  * @param {Schema} schema - Config schema
  * @param {{ [key: string]: unknown }} config - Component config
@@ -258,4 +282,10 @@ function isObject(option) {
  * @typedef {object} SchemaCondition
  * @property {string[]} required - List of required config fields
  * @property {string} errorMessage - Error message when required config fields not provided
+ */
+
+/**
+ * @internal
+ * @typedef {keyof ObjectNested} NestedKey
+ * @typedef {{ [key: string]: string | boolean | number | ObjectNested | undefined }} ObjectNested
  */
