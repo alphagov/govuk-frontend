@@ -1,14 +1,16 @@
+import { extractConfigByNamespace } from './index.mjs'
 import { normaliseString } from './normalise-string.mjs'
 
 /**
  * Normalise dataset
  *
- * Loop over an object and normalise each value using {@link normaliseString}
+ * Loop over an object and normalise each value using {@link normaliseString},
+ * optionally expanding nested `i18n.field`
  *
  * @internal
  * @param {DOMStringMap} dataset - HTML element dataset
  * @param {{ schema: Schema }} Component - Component class
- * @returns {{ [key: string]: string | boolean | number | undefined }} Normalised dataset
+ * @returns {ObjectNested} Normalised dataset
  */
 export function normaliseDataset(dataset, Component) {
   const out = /** @type {ReturnType<typeof normaliseDataset>} */ ({})
@@ -24,6 +26,14 @@ export function normaliseDataset(dataset, Component) {
         out[field] = value
       }
     }
+
+    /**
+     * Extract and normalise nested object values automatically using
+     * {@link normaliseString} but only schema object types are allowed
+     */
+    if (property?.type === 'object') {
+      out[field] = extractConfigByNamespace(Component, dataset, field)
+    }
   }
 
   return out
@@ -31,5 +41,6 @@ export function normaliseDataset(dataset, Component) {
 
 /**
  * @internal
+ * @typedef {import('./index.mjs').ObjectNested} ObjectNested
  * @typedef {import('./index.mjs').Schema} Schema
  */
