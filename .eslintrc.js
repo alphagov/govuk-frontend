@@ -98,12 +98,10 @@ module.exports = {
 
         // Ignore failing eslint-plugin-jest rules
         'jest/expect-expect': 'off',
-        'jest/no-alias-methods': 'off',
         'jest/no-conditional-expect': 'off',
         'jest/no-identical-title': 'off',
         'jest/no-standalone-expect': 'off',
-        'jest/valid-expect': 'off',
-        'jest/valid-title': 'off'
+        'jest/valid-expect': 'off'
       },
       settings: {
         jsdoc: {
