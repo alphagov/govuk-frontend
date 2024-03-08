@@ -255,7 +255,7 @@ describe('Checkboxes', () => {
     })
   })
 
-  describe('when they include a hint', () => {
+  describe('when a radio button includes a hint', () => {
     it('renders the hint text', () => {
       const $ = render('checkboxes', examples['with hints on items'])
 
@@ -435,7 +435,7 @@ describe('Checkboxes', () => {
     })
   })
 
-  describe('when they include a hint', () => {
+  describe('when the fieldset includes a hint', () => {
     it('renders the hint', () => {
       const $ = render('checkboxes', examples['multiple hints'])
 
