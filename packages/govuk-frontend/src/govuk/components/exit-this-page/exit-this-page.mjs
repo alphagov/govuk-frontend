@@ -102,7 +102,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
     this.config = mergeConfigs(
       ExitThisPage.defaults,
       config,
-      normaliseDataset($module.dataset)
+      normaliseDataset(ExitThisPage, $module.dataset)
     )
 
     this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'))
