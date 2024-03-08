@@ -235,6 +235,91 @@ describe('Common JS utilities', () => {
       expect(result).toEqual({ key1: 'One', key2: 'Two', key3: 'Three' })
     })
 
+    it('handles when both shallow and deep keys are set (namespace collision)', () => {
+      document.body.outerHTML = outdent`
+        <div id="app-example"
+          data-a="aardvark"
+          data-b="bat"
+          data-c="jellyfish"
+          data-c.a="cat"
+          data-c.o="cow"
+          data-d="dog"
+          data-e="element"
+          data-f.e="elk"
+          data-f.e.l="elephant">
+        </div>
+      `
+
+      const { dataset } = document.getElementById('app-example')
+      const result = extractConfigByNamespace(Component, dataset, 'c')
+
+      expect(result).toEqual({ a: 'cat', o: 'cow' })
+    })
+
+    it('handles when both shallow and deep keys are set (namespace collision + key collision in namespace)', () => {
+      document.body.outerHTML = outdent`
+        <div id="app-example"
+          data-a="aardvark"
+          data-b="bat"
+          data-c.c="crow"
+          data-c="jellyfish"
+          data-c.a="cat"
+          data-c.o="cow"
+          data-d="dog"
+          data-e="element"
+          data-f.e="elk"
+          data-f.e.l="elephant">
+        </div>
+      `
+
+      const { dataset } = document.getElementById('app-example')
+      const result = extractConfigByNamespace(Component, dataset, 'c')
+
+      expect(result).toEqual({ a: 'cat', c: 'crow', o: 'cow' })
+    })
+
+    it('handles when both shallow and deep keys are set (namespace collision + key collision in namespace after shallow)', () => {
+      document.body.outerHTML = outdent`
+        <div id="app-example"
+          data-a="aardvark"
+          data-b="bat"
+          data-c="jellyfish"
+          data-c.a="cat"
+          data-c.c="crow"
+          data-c.o="cow"
+          data-d="dog"
+          data-e="element"
+          data-f.e="elk"
+          data-f.e.l="elephant">
+        </div>
+      `
+
+      const { dataset } = document.getElementById('app-example')
+      const result = extractConfigByNamespace(Component, dataset, 'c')
+
+      expect(result).toEqual({ a: 'cat', c: 'crow', o: 'cow' })
+    })
+
+    it('handles when both shallow and deep keys are set (deeper collision)', () => {
+      document.body.outerHTML = outdent`
+        <div id="app-example"
+          data-a="aardvark"
+          data-b="bat"
+          data-c="jellyfish"
+          data-c.a="cat"
+          data-c.o="cow"
+          data-d="dog"
+          data-f.e="elk"
+          data-f.e.l="elephant">
+        </div>
+      `
+
+      const { dataset } = document.getElementById('app-example')
+      const result = extractConfigByNamespace(Component, dataset, 'f')
+
+      expect(result).toEqual({ e: { l: 'elephant' } })
+    })
+
     it('can handle multiple levels of nesting', () => {
       document.body.outerHTML = outdent`
         <div id="app-example2"
