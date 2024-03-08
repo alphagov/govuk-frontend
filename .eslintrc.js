@@ -17,6 +17,7 @@ module.exports = {
       extends: [
         'eslint:recommended',
         'plugin:import/recommended',
+        'plugin:jest/recommended',
         'plugin:jsdoc/recommended-typescript-flavor',
         'plugin:n/recommended',
         'plugin:promise/recommended',
@@ -32,7 +33,7 @@ module.exports = {
       parserOptions: {
         ecmaVersion: 'latest'
       },
-      plugins: ['import', 'jsdoc', 'n', 'promise'],
+      plugins: ['import', 'jsdoc', 'n', 'promise', 'jest'],
       rules: {
         // Check import or require statements are A-Z ordered
         'import/order': [
@@ -93,7 +94,16 @@ module.exports = {
         // Flow control – avoid continue and else blocks after return statements
         // in if statements
         'no-continue': 'error',
-        'no-else-return': 'error'
+        'no-else-return': 'error',
+
+        // Ignore failing eslint-plugin-jest rules
+        'jest/expect-expect': 'off',
+        'jest/no-alias-methods': 'off',
+        'jest/no-conditional-expect': 'off',
+        'jest/no-identical-title': 'off',
+        'jest/no-standalone-expect': 'off',
+        'jest/valid-expect': 'off',
+        'jest/valid-title': 'off'
       },
       settings: {
         jsdoc: {
