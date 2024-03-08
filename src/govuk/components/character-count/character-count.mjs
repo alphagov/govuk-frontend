@@ -1,9 +1,5 @@
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
-import {
-  extractConfigByNamespace,
-  mergeConfigs,
-  validateConfig
-} from '../../common/index.mjs'
+import { mergeConfigs, validateConfig } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { ConfigError, ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
@@ -92,7 +88,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
     }
 
     // Read config set using dataset ('data-' values)
-    const datasetConfig = normaliseDataset($module.dataset)
+    const datasetConfig = normaliseDataset(CharacterCount, $module.dataset)
 
     // To ensure data-attributes take complete precedence, even if they change
     // the type of count, we need to reset the `maxlength` and `maxwords` from
@@ -122,7 +118,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
       throw new ConfigError(`Character count: ${errors[0]}`)
     }
 
-    this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'), {
+    this.i18n = new I18n(this.config.i18n, {
       // Read the fallback if necessary rather than have it set in the defaults
       locale: closestAttributeValue($module, 'lang')
     })
@@ -459,6 +455,12 @@ export class CharacterCount extends GOVUKFrontendComponent {
    * @satisfies {Schema}
    */
   static schema = Object.freeze({
+    properties: {
+      i18n: { type: 'object' },
+      maxwords: { type: 'number' },
+      maxlength: { type: 'number' },
+      threshold: { type: 'number' }
+    },
     anyOf: [
       {
         required: ['maxwords'],

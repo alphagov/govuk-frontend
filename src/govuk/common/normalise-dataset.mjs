@@ -1,58 +1,40 @@
-/**
- * Normalise string
- *
- * 'If it looks like a duck, and it quacks like a duck…' 🦆
- *
- * If the passed value looks like a boolean or a number, convert it to a boolean
- * or number.
- *
- * Designed to be used to convert config passed via data attributes (which are
- * always strings) into something sensible.
- *
- * @internal
- * @param {string | undefined} value - The value to normalise
- * @returns {string | boolean | number | undefined} Normalised data
- */
-export function normaliseString(value) {
-  if (typeof value !== 'string') {
-    return value
-  }
-
-  const trimmedValue = value.trim()
-
-  if (trimmedValue === 'true') {
-    return true
-  }
-
-  if (trimmedValue === 'false') {
-    return false
-  }
-
-  // Empty / whitespace-only strings are considered finite so we need to check
-  // the length of the trimmed string as well
-  if (trimmedValue.length > 0 && isFinite(Number(trimmedValue))) {
-    return Number(trimmedValue)
-  }
-
-  return value
-}
+import { extractConfigByNamespace } from './index.mjs'
+import { normaliseString } from './normalise-string.mjs'
 
 /**
  * Normalise dataset
  *
- * Loop over an object and normalise each value using normaliseData function
+ * Loop over an object and normalise each value using {@link normaliseString},
+ * optionally expanding nested `i18n.field`
  *
  * @internal
+ * @param {{ schema: Schema }} Component - Component class
  * @param {DOMStringMap} dataset - HTML element dataset
- * @returns {{ [key: string]: string | boolean | number | undefined }} Normalised dataset
+ * @returns {ObjectNested} Normalised dataset
  */
-export function normaliseDataset(dataset) {
-  /** @type {ReturnType<typeof normaliseDataset>} */
-  const out = {}
+export function normaliseDataset(Component, dataset) {
+  const out = /** @type {ReturnType<typeof normaliseDataset>} */ ({})
 
-  for (const [key, value] of Object.entries(dataset)) {
-    out[key] = normaliseString(value)
+  // Normalise top-level dataset ('data-*') values using schema types
+  for (const [field, property] of Object.entries(Component.schema.properties)) {
+    if (field in dataset) {
+      out[field] = normaliseString(dataset[field], property)
+    }
+
+    /**
+     * Extract and normalise nested object values automatically using
+     * {@link normaliseString} but only schema object types are allowed
+     */
+    if (property?.type === 'object') {
+      out[field] = extractConfigByNamespace(Component, dataset, field)
+    }
   }
 
   return out
 }
+
+/**
+ * @internal
+ * @typedef {import('./index.mjs').ObjectNested} ObjectNested
+ * @typedef {import('./index.mjs').Schema} Schema
+ */

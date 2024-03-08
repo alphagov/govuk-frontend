@@ -38,7 +38,7 @@ export class NotificationBanner extends GOVUKFrontendComponent {
     this.config = mergeConfigs(
       NotificationBanner.defaults,
       config,
-      normaliseDataset($module.dataset)
+      normaliseDataset(NotificationBanner, $module.dataset)
     )
 
     /**
@@ -75,6 +75,18 @@ export class NotificationBanner extends GOVUKFrontendComponent {
   static defaults = Object.freeze({
     disableAutoFocus: false
   })
+
+  /**
+   * Notification banner config schema
+   *
+   * @constant
+   * @satisfies {Schema}
+   */
+  static schema = Object.freeze({
+    properties: {
+      disableAutoFocus: { type: 'boolean' }
+    }
+  })
 }
 
 /**
@@ -85,4 +97,8 @@ export class NotificationBanner extends GOVUKFrontendComponent {
  *   notification banner will not be focussed when the page loads. This only
  *   applies if the component has a `role` of `alert` – in other cases the
  *   component will not be focused on page load, regardless of this option.
+ */
+
+/**
+ * @typedef {import('../../common/index.mjs').Schema} Schema
  */
