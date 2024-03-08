@@ -82,6 +82,23 @@ describe('Common JS utilities', () => {
       })
     })
 
+    it.only('handles when both shallow and deep keys are set', () => {
+      const config = mergeConfigs(config1, config2, config3, {
+        c: 'jellyfish', // Replaces top-level object with string
+        e: { l: 'elk' } // Replaces nested object with string
+      })
+      expect(config).toEqual({
+        a: 'aardvark',
+        b: 'bat',
+        c: 'jellyfish',
+        'c.a': 'cat',
+        'c.o': 'cow',
+        d: 'dog',
+        'e.l': 'elk',
+        'e.l.e': 'elephant'
+      })
+    })
+
     it('returns an empty object if no parameters are provided', () => {
       const config = mergeConfigs()
       expect(config).toEqual({})
@@ -108,6 +125,84 @@ describe('Common JS utilities', () => {
     it('can extract multiple key-value pairs', () => {
       const result = extractConfigByNamespace(flattenedConfig, 'b')
       expect(result).toEqual({ a: 'bat', e: 'bear', o: 'boar' })
+    })
+
+    it.only('handles when both shallow and deep keys are set (namespace collision)', () => {
+      const flattenedConfigWithShallowOverridingDeep = {
+        a: 'aardvark',
+        b: 'bat',
+        c: 'jellyfish',
+        'c.a': 'cat',
+        'c.o': 'cow',
+        d: 'dog',
+        'e.l': 'elk',
+        'e.l.e': 'elephant'
+      }
+
+      const result = extractConfigByNamespace(
+        flattenedConfigWithShallowOverridingDeep,
+        'c'
+      )
+      expect(result).toEqual({ a: 'cat', c: 'jellyfish', o: 'cow' })
+    })
+
+    it.only('handles when both shallow and deep keys are set (namespace collision + key collision in namespace)', () => {
+      const flattenedConfigWithShallowOverridingDeep = {
+        a: 'aardvark',
+        b: 'bat',
+        'c.c': 'ccrow',
+        c: 'jellyfish',
+        'c.a': 'cat',
+        'c.o': 'cow',
+        d: 'dog',
+        'e.l': 'elk',
+        'e.l.e': 'elephant'
+      }
+
+      const result = extractConfigByNamespace(
+        flattenedConfigWithShallowOverridingDeep,
+        'c'
+      )
+      expect(result).toEqual({ a: 'cat', c: 'jellyfish', o: 'cow' })
+    })
+
+    it.only('handles when both shallow and deep keys are set (namespace collision + key collision in namespace after shallow)', () => {
+      const flattenedConfigWithShallowOverridingDeep = {
+        a: 'aardvark',
+        b: 'bat',
+        c: 'jellyfish',
+        'c.a': 'cat',
+        'c.c': 'ccrow',
+        'c.o': 'cow',
+        d: 'dog',
+        'e.l': 'elk',
+        'e.l.e': 'elephant'
+      }
+
+      const result = extractConfigByNamespace(
+        flattenedConfigWithShallowOverridingDeep,
+        'c'
+      )
+      expect(result).toEqual({ a: 'cat', c: 'ccrow', o: 'cow' })
+    })
+
+    it.only('handles when both shallow and deep keys are set (deeper collision)', () => {
+      const flattenedConfigWithShallowOverridingDeep = {
+        a: 'aardvark',
+        b: 'bat',
+        c: 'jellyfish',
+        'c.a': 'cat',
+        'c.o': 'cow',
+        d: 'dog',
+        'e.l': 'elk',
+        'e.l.e': 'elephant'
+      }
+
+      const result = extractConfigByNamespace(
+        flattenedConfigWithShallowOverridingDeep,
+        'e'
+      )
+      expect(result).toEqual({ l: 'elk', 'l.e': 'elephant' })
     })
   })
 
