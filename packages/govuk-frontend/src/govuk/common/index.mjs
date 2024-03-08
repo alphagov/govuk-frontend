@@ -241,7 +241,7 @@ function isObject(option) {
  * Schema for component config
  *
  * @typedef {object} Schema
- * @property {{ [field: string]: SchemaProperty }} properties - Schema properties
+ * @property {{ [field: string]: SchemaProperty | undefined }} properties - Schema properties
  * @property {SchemaCondition[]} [anyOf] - List of schema conditions
  */
 
