@@ -97,8 +97,7 @@ module.exports = {
         'no-else-return': 'error',
 
         // Ignore failing eslint-plugin-jest rules
-        'jest/expect-expect': 'off',
-        'jest/no-identical-title': 'off'
+        'jest/expect-expect': 'off'
       },
       settings: {
         jsdoc: {
