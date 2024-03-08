@@ -103,6 +103,36 @@ describe('Common JS utilities', () => {
       })
     })
 
+    it('handles when both shallow and deep keys are set', () => {
+      const config = mergeConfigs(config1, config2, config3, {
+        c: 'jellyfish', // Replaces top-level object with string
+        e: { l: 'elk' } // Replaces nested object with string
+      })
+
+      // Before: Flat config behaviour
+      // expect(config).toEqual({
+      //   a: 'aardvark',
+      //   b: 'bat',
+      //   c: 'jellyfish',
+      //   'c.a': 'cat',
+      //   'c.o': 'cow',
+      //   d: 'dog',
+      //   'e.l': 'elk',
+      //   'e.l.e': 'elephant'
+      // })
+
+      // After: Nested config behaviour
+      expect(config).toEqual({
+        a: 'aardvark',
+        b: 'bat',
+        c: 'jellyfish',
+        d: 'dog',
+        e: {
+          l: 'elk'
+        }
+      })
+    })
+
     it('returns an empty object if no parameters are provided', () => {
       const config = mergeConfigs()
       expect(config).toEqual({})
@@ -233,6 +263,103 @@ describe('Common JS utilities', () => {
       )
 
       expect(result).toEqual({ key1: 'One', key2: 'Two', key3: 'Three' })
+    })
+
+    it('handles when both shallow and deep keys are set (namespace collision)', () => {
+      document.body.outerHTML = outdent`
+        <div id="app-example"
+          data-a="aardvark"
+          data-b="bat"
+          data-c="jellyfish"
+          data-c.a="cat"
+          data-c.o="cow"
+          data-d="dog"
+          data-e="element"
+          data-f.e="elk"
+          data-f.e.l="elephant">
+        </div>
+      `
+
+      const { dataset } = document.getElementById('app-example')
+      const result = extractConfigByNamespace(Component, dataset, 'c')
+
+      // Before: Flat config behaviour
+      // expect(result).toEqual({ a: 'cat', c: 'jellyfish', o: 'cow' })
+
+      // After: Nested config behaviour
+      expect(result).toEqual({ a: 'cat', o: 'cow' })
+    })
+
+    it('handles when both shallow and deep keys are set (namespace collision + key collision in namespace)', () => {
+      document.body.outerHTML = outdent`
+        <div id="app-example"
+          data-a="aardvark"
+          data-b="bat"
+          data-c.c="ccrow"
+          data-c="jellyfish"
+          data-c.a="cat"
+          data-c.o="cow"
+          data-d="dog"
+          data-e="element"
+          data-f.e="elk"
+          data-f.e.l="elephant">
+        </div>
+      `
+
+      const { dataset } = document.getElementById('app-example')
+      const result = extractConfigByNamespace(Component, dataset, 'c')
+
+      // Before: Flat config behaviour
+      // expect(result).toEqual({ a: 'cat', c: 'jellyfish', o: 'cow' })
+
+      // After: Nested config behaviour
+      expect(result).toEqual({ a: 'cat', c: 'ccrow', o: 'cow' })
+    })
+
+    it('handles when both shallow and deep keys are set (namespace collision + key collision in namespace after shallow)', () => {
+      document.body.outerHTML = outdent`
+        <div id="app-example"
+          data-a="aardvark"
+          data-b="bat"
+          data-c="jellyfish"
+          data-c.a="cat"
+          data-c.c="ccrow"
+          data-c.o="cow"
+          data-d="dog"
+          data-e="element"
+          data-f.e="elk"
+          data-f.e.l="elephant">
+        </div>
+      `
+
+      const { dataset } = document.getElementById('app-example')
+      const result = extractConfigByNamespace(Component, dataset, 'c')
+
+      expect(result).toEqual({ a: 'cat', c: 'ccrow', o: 'cow' })
+    })
+
+    it('handles when both shallow and deep keys are set (deeper collision)', () => {
+      document.body.outerHTML = outdent`
+        <div id="app-example"
+          data-a="aardvark"
+          data-b="bat"
+          data-c="jellyfish"
+          data-c.a="cat"
+          data-c.o="cow"
+          data-d="dog"
+          data-f.l="elk"
+          data-f.l.e="elephant">
+        </div>
+      `
+
+      const { dataset } = document.getElementById('app-example')
+      const result = extractConfigByNamespace(Component, dataset, 'f')
+
+      // Before: Flat config behaviour
+      // expect(result).toEqual({ l: 'elk', 'l.e': 'elephant' })
+
+      // After: Nested config behaviour
+      expect(result).toEqual({ l: { e: 'elephant' } })
     })
 
     it('can handle multiple levels of nesting', () => {
