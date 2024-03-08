@@ -154,5 +154,25 @@ describe('Password input', () => {
       expect($component.attr('data-attribute')).toEqual('value')
       expect($component.attr('data-another')).toEqual('ok')
     })
+
+    it('renders with localisation data attributes', () => {
+      const $ = render('password-input', examples['with translations'])
+      const $component = $('[data-module]')
+
+      expect($component.attr('data-i18n.show-password')).toEqual('Datguddia')
+      expect($component.attr('data-i18n.hide-password')).toEqual('Cuddio')
+      expect($component.attr('data-i18n.show-password-aria-label')).toEqual(
+        'Datgelu cyfrinair'
+      )
+      expect($component.attr('data-i18n.hide-password-aria-label')).toEqual(
+        'Cuddio cyfrinair'
+      )
+      expect($component.attr('data-i18n.password-shown-announcement')).toEqual(
+        'Mae eich cyfrinair yn weladwy.'
+      )
+      expect($component.attr('data-i18n.password-hidden-announcement')).toEqual(
+        "Mae eich cyfrinair wedi'i guddio."
+      )
+    })
   })
 })
