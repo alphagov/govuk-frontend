@@ -4,6 +4,8 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### Recommended changes
+
 #### Update the HTML for the character count
 
 We've updated the HTML for the character count.
@@ -42,6 +44,13 @@ Check your changes against [the character count example in the Design System](ht
 This change was introduced in [pull request #4566: Use Character count `formGroup` as module wrapper](https://github.com/alphagov/govuk-frontend/pull/4566).
 
 ### Fixes
+
+We've fixed an upstream issue in the [cssnano npm package](https://www.npmjs.com/package/cssnano) that caused elements with transparency to render incorrectly in Internet Explorer 11. This affected the pre-compiled CSS files in the [GOV.UK Frontend npm package](https://www.npmjs.com/package/govuk-frontend) and [GitHub releases](https://github.com/alphagov/govuk-frontend/releases) for versions 5.0, 5.1 and 5.2. This was fixed in:
+
+- [#1573: feat: add preset and plugin options for browserslist](https://github.com/cssnano/cssnano/pull/1573) in the cssnano repository
+- [#4829: Bump the postcss group with 2 updates](https://github.com/alphagov/govuk-frontend/pull/4829)
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#4811: Use `KeyboardEvent.key` over deprecated `KeyboardEvent.keyCode` in the Tabs component](https://github.com/alphagov/govuk-frontend/pull/4811)
 - [#4812: Use `KeyboardEvent.key` over deprecated `KeyboardEvent.keyCode` in the Button component](https://github.com/alphagov/govuk-frontend/pull/4812)
