@@ -83,12 +83,17 @@ export function extractConfigByNamespace(Component, dataset, namespace) {
      */
     for (const [index, name] of keyParts.entries()) {
       if (typeof current === 'object') {
-        // Drop down to what we assume is a nested object
-        // but check for object type on the next loop
+        // Drop down to nested object until the last part
         if (index < keyParts.length - 1) {
-          current = current[name] = current[name] ?? {}
+          // New nested object (optionally) replaces existing value
+          if (!isObject(current[name])) {
+            current[name] = {}
+          }
+
+          // Drop down into new or existing nested object
+          current = current[name]
         } else if (key !== namespace) {
-          // Add normalised value to overwrite default
+          // Normalised value (optionally) replaces existing value
           current[name] = normaliseString(value)
         }
       }
