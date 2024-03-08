@@ -201,11 +201,13 @@ describe('Radios', () => {
       describe('with conditional items with special characters', () => {
         it('does not error when ID of revealed content contains special characters', async () => {
           // Errors logged to the console will cause this test to fail
-          await render(
-            page,
-            'radios',
-            examples['with conditional items with special characters']
-          )
+          return expect(
+            render(
+              page,
+              'radios',
+              examples['with conditional items with special characters']
+            )
+          ).resolves.not.toThrow()
         })
       })
     })
