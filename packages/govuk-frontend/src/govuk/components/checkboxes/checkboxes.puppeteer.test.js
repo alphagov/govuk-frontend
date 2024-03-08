@@ -53,7 +53,9 @@ describe('Checkboxes', () => {
           $component = await page.$('.govuk-checkboxes')
           $inputs = await $component.$$('.govuk-checkboxes__input')
           $conditionals = await $component.$$('.govuk-checkboxes__conditional')
+        })
 
+        it('includes the expected number of inputs and conditionals', () => {
           expect($inputs.length).toBe(3)
           expect($conditionals.length).toBe(3)
         })

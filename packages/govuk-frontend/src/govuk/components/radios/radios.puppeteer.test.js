@@ -53,7 +53,9 @@ describe('Radios', () => {
           $component = await page.$('.govuk-radios')
           $inputs = await $component.$$('.govuk-radios__input')
           $conditionals = await $component.$$('.govuk-radios__conditional')
+        })
 
+        it('includes the expected number of inputs and conditionals', () => {
           expect($inputs.length).toBe(3)
           expect($conditionals.length).toBe(3)
         })
