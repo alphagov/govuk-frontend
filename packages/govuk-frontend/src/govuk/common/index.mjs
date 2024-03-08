@@ -1,3 +1,5 @@
+import { normaliseString } from './normalise-string.mjs'
+
 /**
  * Common helpers which do not require polyfill.
  *
@@ -7,72 +9,36 @@
  */
 
 /**
- * Config flattening function
+ * Config merging function
  *
- * Takes any number of objects, flattens them into namespaced key-value pairs,
- * (e.g. \{'i18n.showSection': 'Show section'\}) and combines them together, with
+ * Takes any number of objects and combines them together, with
  * greatest priority on the LAST item passed in.
  *
  * @internal
- * @param {...{ [key: string]: unknown }} configObjects - Config object to merge
- * @returns {{ [key: string]: unknown }} A flattened object of key-value pairs.
+ * @param {...{ [key: string]: unknown }} configObjects - Config objects to merge
+ * @returns {{ [key: string]: unknown }} A merged config object
  */
 export function mergeConfigs(...configObjects) {
-  /**
-   * Function to take nested objects and flatten them to a dot-separated keyed
-   * object. Doing this means we don't need to do any deep/recursive merging of
-   * each of our objects, nor transform our dataset from a flat list into a
-   * nested object.
-   *
-   * @internal
-   * @param {{ [key: string]: unknown }} configObject - Deeply nested object
-   * @returns {{ [key: string]: unknown }} Flattened object with dot-separated keys
-   */
-  function flattenObject(configObject) {
-    // Prepare an empty return object
-    /** @type {{ [key: string]: unknown }} */
-    const flattenedObject = {}
-
-    /**
-     * Our flattening function, this is called recursively for each level of
-     * depth in the object. At each level we prepend the previous level names to
-     * the key using `prefix`.
-     *
-     * @internal
-     * @param {Partial<{ [key: string]: unknown }>} obj - Object to flatten
-     * @param {string} [prefix] - Optional dot-separated prefix
-     */
-    function flattenLoop(obj, prefix) {
-      for (const [key, value] of Object.entries(obj)) {
-        const prefixedKey = prefix ? `${prefix}.${key}` : key
-
-        // If the value is a nested object, recurse over that too
-        if (value && typeof value === 'object') {
-          flattenLoop(value, prefixedKey)
-        } else {
-          // Otherwise, add this value to our return object
-          flattenedObject[prefixedKey] = value
-        }
-      }
-    }
-
-    // Kick off the recursive loop
-    flattenLoop(configObject)
-    return flattenedObject
-  }
-
   // Start with an empty object as our base
   /** @type {{ [key: string]: unknown }} */
   const formattedConfigObject = {}
 
   // Loop through each of the passed objects
   for (const configObject of configObjects) {
-    const obj = flattenObject(configObject)
+    for (const key of Object.keys(configObject)) {
+      const option = formattedConfigObject[key]
+      const override = configObject[key]
 
-    // Push their keys one-by-one into formattedConfigObject. Any duplicate
-    // keys will override the existing key with the new value.
-    for (const [key, value] of Object.entries(obj)) {
-      formattedConfigObject[key] = value
+      // Push their keys one-by-one into formattedConfigObject. Any duplicate
+      // keys with object values will be merged, otherwise the new value will
+      // override the existing value.
+      if (isObject(option) && isObject(override)) {
+        // @ts-expect-error Index signature for type 'string' is missing
+        formattedConfigObject[key] = mergeConfigs(option, override)
+      } else {
+        // Apply override
+        formattedConfigObject[key] = override
+      }
     }
   }
 
@@ -80,39 +46,61 @@ export function mergeConfigs(...configObjects) {
 }
 
 /**
- * Extracts keys starting with a particular namespace from a flattened config
- * object, removing the namespace in the process.
+ * Extracts keys starting with a particular namespace from dataset ('data-*')
+ * object, removing the namespace in the process, normalising all values
  *
  * @internal
- * @param {{ [key: string]: unknown }} configObject - The object to extract key-value pairs from.
- * @param {string} namespace - The namespace to filter keys with.
- * @returns {{ [key: string]: unknown }} Flattened object with dot-separated key namespace removed
+ * @param {{ schema: Schema }} Component - Component class
+ * @param {DOMStringMap} dataset - The object to extract key-value pairs from
+ * @param {string} namespace - The namespace to filter keys with
+ * @returns {ObjectNested | undefined} Nested object with dot-separated key namespace removed
  */
-export function extractConfigByNamespace(configObject, namespace) {
-  /** @type {{ [key: string]: unknown }} */
-  const newObject = {}
+export function extractConfigByNamespace(Component, dataset, namespace) {
+  const property = Component.schema.properties[namespace]
 
-  for (const [key, value] of Object.entries(configObject)) {
+  // Only extract configs for object schema properties
+  if (property?.type !== 'object') {
+    return
+  }
+
+  // Add default empty config
+  const newObject = {
+    [namespace]: /** @type {ObjectNested} */ ({})
+  }
+
+  for (const [key, value] of Object.entries(dataset)) {
+    /** @type {ObjectNested | ObjectNested[NestedKey]} */
+    let current = newObject
+
     // Split the key into parts, using . as our namespace separator
     const keyParts = key.split('.')
 
-    // Check if the first namespace matches the configured namespace
-    if (keyParts[0] === namespace) {
-      // Remove the first item (the namespace) from the parts array,
-      // but only if there is more than one part (we don't want blank keys!)
-      if (keyParts.length > 1) {
-        keyParts.shift()
+    /**
+     * Create new level per part
+     *
+     * e.g. 'i18n.textareaDescription.other' becomes
+     * `{ i18n: { textareaDescription: { other } } }`
+     */
+    for (const [index, name] of keyParts.entries()) {
+      if (typeof current === 'object') {
+        // Drop down to nested object until the last part
+        if (index < keyParts.length - 1) {
+          // New nested object (optionally) replaces existing value
+          if (!isObject(current[name])) {
+            current[name] = {}
+          }
+
+          // Drop down into new or existing nested object
+          current = current[name]
+        } else if (key !== namespace) {
+          // Normalised value (optionally) replaces existing value
+          current[name] = normaliseString(value)
+        }
       }
-
-      // Join the remaining parts back together
-      const newKey = keyParts.join('.')
-
-      // Add them to our new object
-      newObject[newKey] = value
     }
   }
 
-  return newObject
+  return newObject[namespace]
 }
 
 /**
@@ -221,6 +209,11 @@ export function isSupported($scope = document.body) {
 /**
  * Validate component config by schema
  *
+ * Follows limited examples in JSON schema for wider support in future
+ *
+ * {@link https://ajv.js.org/json-schema.html#compound-keywords}
+ * {@link https://ajv.js.org/packages/ajv-errors.html#single-message}
+ *
  * @internal
  * @param {Schema} schema - Config schema
  * @param {{ [key: string]: unknown }} config - Component config
@@ -234,15 +227,17 @@ export function validateConfig(schema, config) {
     const errors = []
 
     // Check errors for each schema condition
-    for (const { required, errorMessage } of conditions) {
-      if (!required.every((key) => !!config[key])) {
-        errors.push(errorMessage) // Missing config key value
+    if (Array.isArray(conditions)) {
+      for (const { required, errorMessage } of conditions) {
+        if (!required.every((key) => !!config[key])) {
+          errors.push(errorMessage) // Missing config key value
+        }
       }
-    }
 
-    // Check one condition passes or add errors
-    if (name === 'anyOf' && !(conditions.length - errors.length >= 1)) {
-      validationErrors.push(...errors)
+      // Check one condition passes or add errors
+      if (name === 'anyOf' && !(conditions.length - errors.length >= 1)) {
+        validationErrors.push(...errors)
+      }
     }
   }
 
@@ -250,10 +245,40 @@ export function validateConfig(schema, config) {
 }
 
 /**
+ * Check for an array
+ *
+ * @internal
+ * @param {unknown} option - Option to check
+ * @returns {boolean} Whether the option is an array
+ */
+function isArray(option) {
+  return Array.isArray(option)
+}
+
+/**
+ * Check for an object
+ *
+ * @internal
+ * @param {unknown} option - Option to check
+ * @returns {boolean} Whether the option is an object
+ */
+function isObject(option) {
+  return !!option && typeof option === 'object' && !isArray(option)
+}
+
+/**
  * Schema for component config
  *
  * @typedef {object} Schema
+ * @property {{ [field: string]: SchemaProperty | undefined }} properties - Schema properties
  * @property {SchemaCondition[]} [anyOf] - List of schema conditions
+ */
+
+/**
+ * Schema property for component config
+ *
+ * @typedef {object} SchemaProperty
+ * @property {'string' | 'boolean' | 'number' | 'object'} type - Property type
  */
 
 /**
@@ -262,4 +287,10 @@ export function validateConfig(schema, config) {
  * @typedef {object} SchemaCondition
  * @property {string[]} required - List of required config fields
  * @property {string} errorMessage - Error message when required config fields not provided
+ */
+
+/**
+ * @internal
+ * @typedef {keyof ObjectNested} NestedKey
+ * @typedef {{ [key: string]: string | boolean | number | ObjectNested | undefined }} ObjectNested
  */

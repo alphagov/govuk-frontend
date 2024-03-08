@@ -10,7 +10,7 @@ export class I18n {
 
   /**
    * @internal
-   * @param {{ [key: string]: unknown }} translations - Key-value pairs of the translation strings to use.
+   * @param {{ [key: string]: string | TranslationPluralForms }} translations - Key-value pairs of the translation strings to use.
    * @param {object} [config] - Configuration options for the function.
    * @param {string | null} [config.locale] - An overriding locale for the PluralRules functionality.
    */
@@ -39,33 +39,35 @@ export class I18n {
       throw new Error('i18n: lookup key missing')
     }
 
+    // Fetch the translation for that lookup key
+    let translation = this.translations[lookupKey]
+
     // If the `count` option is set, determine which plural suffix is needed and
     // change the lookupKey to match. We check to see if it's numeric instead of
     // falsy, as this could legitimately be 0.
-    if (typeof options?.count === 'number') {
-      // Get the plural suffix
-      lookupKey = `${lookupKey}.${this.getPluralSuffix(
-        lookupKey,
-        options.count
-      )}`
+    if (typeof options?.count === 'number' && typeof translation === 'object') {
+      const translationPluralForm =
+        translation[this.getPluralSuffix(lookupKey, options.count)]
+
+      // Update translation with plural suffix
+      if (translationPluralForm) {
+        translation = translationPluralForm
+      }
     }
 
-    // Fetch the translation string for that lookup key
-    const translationString = this.translations[lookupKey]
-
-    if (typeof translationString === 'string') {
+    if (typeof translation === 'string') {
       // Check for ${} placeholders in the translation string
-      if (translationString.match(/%{(.\S+)}/)) {
+      if (translation.match(/%{(.\S+)}/)) {
         if (!options) {
           throw new Error(
             'i18n: cannot replace placeholders in string if no option data provided'
           )
         }
 
-        return this.replacePlaceholders(translationString, options)
+        return this.replacePlaceholders(translation, options)
       }
 
-      return translationString
+      return translation
     }
 
     // If the key wasn't found in our translations object,
@@ -174,6 +176,9 @@ export class I18n {
       return 'other'
     }
 
+    // Fetch the translation for that lookup key
+    const translation = this.translations[lookupKey]
+
     // Check to verify that all the requirements for Intl.PluralRules are met.
     // If so, we can use that instead of our custom implementation. Otherwise,
     // use the hardcoded fallback.
@@ -182,16 +187,18 @@ export class I18n {
       : this.selectPluralFormUsingFallbackRules(count)
 
     // Use the correct plural form if provided
-    if (`${lookupKey}.${preferredForm}` in this.translations) {
-      return preferredForm
-      // Fall back to `other` if the plural form is missing, but log a warning
-      // to the console
-    } else if (`${lookupKey}.other` in this.translations) {
-      console.warn(
-        `i18n: Missing plural form ".${preferredForm}" for "${this.locale}" locale. Falling back to ".other".`
-      )
+    if (typeof translation === 'object') {
+      if (preferredForm in translation) {
+        return preferredForm
+        // Fall back to `other` if the plural form is missing, but log a warning
+        // to the console
+      } else if ('other' in translation) {
+        console.warn(
+          `i18n: Missing plural form ".${preferredForm}" for "${this.locale}" locale. Falling back to ".other".`
+        )
 
-      return 'other'
+        return 'other'
+      }
     }
 
     // If the required `other` plural form is missing, all we can do is error

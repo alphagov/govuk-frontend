@@ -46,7 +46,7 @@ export class Button extends GOVUKFrontendComponent {
     this.config = mergeConfigs(
       Button.defaults,
       config,
-      normaliseDataset($module.dataset)
+      normaliseDataset(Button, $module.dataset)
     )
 
     this.$module.addEventListener('keydown', (event) =>
@@ -128,6 +128,18 @@ export class Button extends GOVUKFrontendComponent {
   static defaults = Object.freeze({
     preventDoubleClick: false
   })
+
+  /**
+   * Button config schema
+   *
+   * @constant
+   * @satisfies {Schema}
+   */
+  static schema = Object.freeze({
+    properties: {
+      preventDoubleClick: { type: 'boolean' }
+    }
+  })
 }
 
 /**
@@ -136,4 +148,8 @@ export class Button extends GOVUKFrontendComponent {
  * @typedef {object} ButtonConfig
  * @property {boolean} [preventDoubleClick=false] - Prevent accidental double
  *   clicks on submit buttons from submitting forms multiple times.
+ */
+
+/**
+ * @typedef {import('../../common/index.mjs').Schema} Schema
  */

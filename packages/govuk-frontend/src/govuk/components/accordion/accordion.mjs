@@ -1,4 +1,4 @@
-import { mergeConfigs, extractConfigByNamespace } from '../../common/index.mjs'
+import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
@@ -132,10 +132,10 @@ export class Accordion extends GOVUKFrontendComponent {
     this.config = mergeConfigs(
       Accordion.defaults,
       config,
-      normaliseDataset($module.dataset)
+      normaliseDataset(Accordion, $module.dataset)
     )
 
-    this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'))
+    this.i18n = new I18n(this.config.i18n)
 
     const $sections = this.$module.querySelectorAll(`.${this.sectionClass}`)
     if (!$sections.length) {
@@ -611,6 +611,19 @@ export class Accordion extends GOVUKFrontendComponent {
     },
     rememberExpanded: true
   })
+
+  /**
+   * Accordion config schema
+   *
+   * @constant
+   * @satisfies {Schema}
+   */
+  static schema = Object.freeze({
+    properties: {
+      i18n: { type: 'object' },
+      rememberExpanded: { type: 'boolean' }
+    }
+  })
 }
 
 const helper = {
@@ -665,4 +678,8 @@ const helper = {
  *   button, used when a section is collapsed.
  * @property {string} [showSectionAriaLabel] - The text content appended to the
  *   'Show' button's accessible name when a section is expanded.
+ */
+
+/**
+ * @typedef {import('../../common/index.mjs').Schema} Schema
  */

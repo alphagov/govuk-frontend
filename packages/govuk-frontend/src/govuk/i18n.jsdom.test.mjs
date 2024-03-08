@@ -208,8 +208,10 @@ describe('I18n', () => {
       it('interpolates the count variable into the correct plural form', () => {
         const i18n = new I18n(
           {
-            'test.one': '%{count} test',
-            'test.other': '%{count} tests'
+            test: {
+              one: '%{count} test',
+              other: '%{count} tests'
+            }
           },
           {
             locale: 'en'
@@ -245,8 +247,10 @@ describe('I18n', () => {
 
       const i18n = new I18n(
         {
-          'test.one': 'test',
-          'test.other': 'test'
+          test: {
+            one: 'test',
+            other: 'test'
+          }
         },
         {
           locale: 'en'
@@ -260,8 +264,10 @@ describe('I18n', () => {
     it('falls back to internal fallback rules', () => {
       const i18n = new I18n(
         {
-          'test.one': 'test',
-          'test.other': 'test'
+          test: {
+            one: 'test',
+            other: 'test'
+          }
         },
         {
           locale: 'en'
@@ -284,8 +290,10 @@ describe('I18n', () => {
     it('returns the preferred plural form for the locale if a translation exists', () => {
       const i18n = new I18n(
         {
-          'test.one': 'test',
-          'test.other': 'test'
+          test: {
+            one: 'test',
+            other: 'test'
+          }
         },
         {
           locale: 'en'
@@ -304,7 +312,9 @@ describe('I18n', () => {
       ({ count }) => {
         const i18n = new I18n(
           {
-            'test.other': 'test'
+            test: {
+              other: 'test'
+            }
           },
           {
             locale: 'cy'
@@ -318,7 +328,9 @@ describe('I18n', () => {
     it('logs a console warning when falling back to `other`', () => {
       const i18n = new I18n(
         {
-          'test.other': 'test'
+          test: {
+            other: 'test'
+          }
         },
         {
           locale: 'en'
@@ -348,7 +360,9 @@ describe('I18n', () => {
     it('throws an error if a plural form is not provided and neither is `other`', () => {
       const i18n = new I18n(
         {
-          'test.one': 'test'
+          test: {
+            one: 'test'
+          }
         },
         {
           locale: 'en'
@@ -363,7 +377,9 @@ describe('I18n', () => {
     it('returns `other` for non-numbers', () => {
       const i18n = new I18n(
         {
-          'test.other': 'test'
+          test: {
+            other: 'test'
+          }
         },
         {
           locale: 'en'
