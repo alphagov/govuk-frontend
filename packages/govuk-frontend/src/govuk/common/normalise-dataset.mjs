@@ -15,16 +15,10 @@ import { normaliseString } from './normalise-string.mjs'
 export function normaliseDataset(Component, dataset) {
   const out = /** @type {ReturnType<typeof normaliseDataset>} */ ({})
 
-  // Normalise top-level dataset ('data-*') values
+  // Normalise top-level dataset ('data-*') values using schema types
   for (const [field, property] of Object.entries(Component.schema.properties)) {
     if (field in dataset) {
-      const value = normaliseString(dataset[field])
-
-      // But skip if type does not match schema
-      // eslint-disable-next-line valid-typeof
-      if (property?.type === typeof value) {
-        out[field] = value
-      }
+      out[field] = normaliseString(dataset[field], property)
     }
 
     /**
