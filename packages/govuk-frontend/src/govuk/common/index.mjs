@@ -87,7 +87,7 @@ export function extractConfigByNamespace(Component, dataset, namespace) {
         // but check for object type on the next loop
         if (index < keyParts.length - 1) {
           current = current[name] = current[name] ?? {}
-        } else if (name !== namespace) {
+        } else if (key !== namespace) {
           // Add normalised value to overwrite default
           current[name] = normaliseString(value)
         }
