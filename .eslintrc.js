@@ -94,10 +94,7 @@ module.exports = {
         // Flow control – avoid continue and else blocks after return statements
         // in if statements
         'no-continue': 'error',
-        'no-else-return': 'error',
-
-        // Ignore failing eslint-plugin-jest rules
-        'jest/expect-expect': 'off'
+        'no-else-return': 'error'
       },
       settings: {
         jsdoc: {

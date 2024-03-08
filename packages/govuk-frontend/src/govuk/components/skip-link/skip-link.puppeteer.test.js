@@ -68,43 +68,51 @@ describe('Skip Link', () => {
 
   describe('errors at instantiation', () => {
     it('can return early without errors for external href', async () => {
-      await render(page, 'skip-link', {
-        context: {
-          text: 'Exit this page',
-          href: 'https://www.bbc.co.uk/weather'
-        }
-      })
+      return expect(
+        render(page, 'skip-link', {
+          context: {
+            text: 'Exit this page',
+            href: 'https://www.bbc.co.uk/weather'
+          }
+        })
+      ).resolves.not.toThrow()
     })
 
     it('can return early without errors when linking to another page (without hash fragment)', async () => {
-      await render(page, 'skip-link', {
-        context: {
-          text: 'Exit this page',
-          href: '/clear-session-data'
-        }
-      })
+      return expect(
+        render(page, 'skip-link', {
+          context: {
+            text: 'Exit this page',
+            href: '/clear-session-data'
+          }
+        })
+      ).resolves.not.toThrow()
     })
 
     it('can return early without errors when linking to another page (with hash fragment)', async () => {
-      await render(page, 'skip-link', {
-        context: {
-          text: 'Skip to main content',
-          href: '/somewhere-else#main-content'
-        }
-      })
+      return expect(
+        render(page, 'skip-link', {
+          context: {
+            text: 'Skip to main content',
+            href: '/somewhere-else#main-content'
+          }
+        })
+      ).resolves.not.toThrow()
     })
 
     it('can return early without errors when linking to the current page (with hash fragment)', async () => {
-      await render(page, 'skip-link', {
-        context: {
-          text: 'Skip to main content',
-          href: '#content'
-        }
-      })
+      return expect(
+        render(page, 'skip-link', {
+          context: {
+            text: 'Skip to main content',
+            href: '#content'
+          }
+        })
+      ).resolves.not.toThrow()
     })
 
     it('can throw a SupportError if appropriate', async () => {
-      await expect(
+      return expect(
         render(page, 'skip-link', examples.default, {
           beforeInitialisation() {
             document.body.classList.remove('govuk-frontend-supported')
@@ -120,7 +128,7 @@ describe('Skip Link', () => {
     })
 
     it('throws when $module is not set', async () => {
-      await expect(
+      return expect(
         render(page, 'skip-link', examples.default, {
           beforeInitialisation($module) {
             $module.remove()
@@ -135,7 +143,7 @@ describe('Skip Link', () => {
     })
 
     it('throws when receiving the wrong type for $module', async () => {
-      await expect(
+      return expect(
         render(page, 'skip-link', examples.default, {
           beforeInitialisation($module) {
             // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
@@ -152,7 +160,7 @@ describe('Skip Link', () => {
     })
 
     it('throws when the linked element is missing', async () => {
-      await expect(
+      return expect(
         render(page, 'skip-link', {
           context: {
             text: 'Skip to main content',
@@ -169,7 +177,7 @@ describe('Skip Link', () => {
     })
 
     it('throws when the href does not contain a hash', async () => {
-      await expect(
+      return expect(
         render(page, 'skip-link', {
           context: {
             text: 'Skip to main content',
