@@ -184,7 +184,7 @@ export class PasswordInput extends GOVUKFrontendComponent {
     // Update button aria-label
     this.$showHideButton.setAttribute(
       'aria-label',
-      this.i18n.t(`${prefixButton}AriaLabel`)
+      this.i18n.t(`${prefixButton}PasswordAriaLabel`)
     )
 
     // Skip initial announcement (e.g. on page load) but always set
