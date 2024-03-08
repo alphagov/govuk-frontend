@@ -235,7 +235,7 @@ describe('Checkboxes', () => {
     })
 
     describe('when they include attributes', () => {
-      it('it renders the attributes', () => {
+      it('renders the attributes', () => {
         const $ = render('checkboxes', examples['items with attributes'])
 
         const $component = $('.govuk-checkboxes')
@@ -256,7 +256,7 @@ describe('Checkboxes', () => {
   })
 
   describe('when they include a hint', () => {
-    it('it renders the hint text', () => {
+    it('renders the hint text', () => {
       const $ = render('checkboxes', examples['with hints on items'])
 
       const $firstHint = $('.govuk-checkboxes__hint').first()
@@ -265,7 +265,7 @@ describe('Checkboxes', () => {
       )
     })
 
-    it('it renders the correct id attribute for the hint', () => {
+    it('renders the correct id attribute for the hint', () => {
       const $ = render('checkboxes', examples['with hints on items'])
 
       expect($('.govuk-checkboxes__hint').attr('id')).toBe(

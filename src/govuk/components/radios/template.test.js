@@ -148,7 +148,7 @@ describe('Radios', () => {
     })
 
     describe('when they include attributes', () => {
-      it('it renders the attributes', () => {
+      it('renders the attributes', () => {
         const $ = render('radios', examples['items with attributes'])
 
         const $component = $('.govuk-radios')
@@ -168,7 +168,7 @@ describe('Radios', () => {
     })
 
     describe('when they include a hint', () => {
-      it('it renders the hint text', () => {
+      it('renders the hint text', () => {
         const $ = render('radios', examples['with hints on items'])
 
         expect($('.govuk-radios__hint').text()).toContain(
@@ -176,7 +176,7 @@ describe('Radios', () => {
         )
       })
 
-      it('it renders the correct id attribute for the hint', () => {
+      it('renders the correct id attribute for the hint', () => {
         const $ = render('radios', examples['with hints on items'])
 
         expect($('.govuk-radios__hint').attr('id')).toBe('gateway-item-hint')
