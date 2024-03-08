@@ -10,15 +10,11 @@
  * always strings) into something sensible.
  *
  * @internal
- * @param {string | undefined} value - The value to normalise
+ * @param {DOMStringMap[string]} value - The value to normalise
  * @returns {string | boolean | number | undefined} Normalised data
  */
 export function normaliseString(value) {
-  if (typeof value !== 'string') {
-    return value
-  }
-
-  const trimmedValue = value.trim()
+  const trimmedValue = value ? value.trim() : ''
 
   if (trimmedValue === 'true') {
     return true

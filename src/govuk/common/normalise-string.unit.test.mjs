@@ -1,17 +1,6 @@
 import { normaliseString } from './normalise-string.mjs'
 
 describe('normaliseString', () => {
-  it('does not normalise non-strings', () => {
-    // @ts-expect-error Parameter 'value' not a string
-    expect(normaliseString(100)).toEqual(100)
-    // @ts-expect-error Parameter 'value' not a string
-    expect(normaliseString(false)).toEqual(false)
-    // @ts-expect-error Parameter 'value' not a string
-    expect(normaliseString({})).toEqual({})
-    // @ts-expect-error Parameter 'value' not a string
-    expect(normaliseString(NaN)).toEqual(NaN)
-  })
-
   it('normalises the string "true" to boolean true', () => {
     expect(normaliseString('true')).toEqual(true)
   })

@@ -92,7 +92,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
     }
 
     // Read config set using dataset ('data-' values)
-    const datasetConfig = normaliseDataset($module.dataset)
+    const datasetConfig = normaliseDataset(CharacterCount, $module.dataset)
 
     // To ensure data-attributes take complete precedence, even if they change
     // the type of count, we need to reset the `maxlength` and `maxwords` from
