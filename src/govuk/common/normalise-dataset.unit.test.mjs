@@ -14,6 +14,8 @@ describe('normaliseDataset', () => {
               aDecimalNumber: { type: 'number' },
               aBoolean: { type: 'boolean' },
               aString: { type: 'string' },
+              aStringBoolean: { type: 'string' },
+              aStringNumber: { type: 'string' },
               anOptionalString: { type: 'string' },
               anObject: { type: 'object' }
             }
@@ -24,6 +26,8 @@ describe('normaliseDataset', () => {
           aDecimalNumber: '100.50',
           aBoolean: 'true',
           aString: 'Hello!',
+          aStringBoolean: 'false',
+          aStringNumber: '2024',
           anOptionalString: '',
           'anObject.one': '111',
           'anObject.two': '222',
@@ -35,6 +39,8 @@ describe('normaliseDataset', () => {
       aDecimalNumber: 100.5,
       aBoolean: true,
       aString: 'Hello!',
+      aStringBoolean: 'false',
+      aStringNumber: '2024',
       anOptionalString: '',
       anObject: {
         one: 111,

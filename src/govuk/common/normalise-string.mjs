@@ -11,24 +11,44 @@
  *
  * @internal
  * @param {DOMStringMap[string]} value - The value to normalise
+ * @param {SchemaProperty} [property] - Component schema property
  * @returns {string | boolean | number | undefined} Normalised data
  */
-export function normaliseString(value) {
+export function normaliseString(value, property) {
   const trimmedValue = value ? value.trim() : ''
 
-  if (trimmedValue === 'true') {
-    return true
+  let output
+  let outputType = property?.type
+
+  // No schema type set? Determine automatically
+  if (!outputType) {
+    if (['true', 'false'].includes(trimmedValue)) {
+      outputType = 'boolean'
+    }
+
+    // Empty / whitespace-only strings are considered finite so we need to check
+    // the length of the trimmed string as well
+    if (trimmedValue.length > 0 && isFinite(Number(trimmedValue))) {
+      outputType = 'number'
+    }
   }
 
-  if (trimmedValue === 'false') {
-    return false
+  switch (outputType) {
+    case 'boolean':
+      output = trimmedValue === 'true'
+      break
+
+    case 'number':
+      output = Number(trimmedValue)
+      break
+
+    default:
+      output = value
   }
 
-  // Empty / whitespace-only strings are considered finite so we need to check
-  // the length of the trimmed string as well
-  if (trimmedValue.length > 0 && isFinite(Number(trimmedValue))) {
-    return Number(trimmedValue)
-  }
-
-  return value
+  return output
 }
+
+/**
+ * @typedef {import('./index.mjs').SchemaProperty} SchemaProperty
+ */
