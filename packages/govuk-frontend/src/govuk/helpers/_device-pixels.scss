@@ -4,6 +4,9 @@
 
 /// Media query for retina images (device-pixel-ratio)
 ///
+/// @deprecated Use `background-size` to downsize a larger image instead.
+///   See https://github.com/alphagov/govuk-frontend/pull/3873
+///
 /// @param {Number} $ratio [2] - Device pixel ratio
 /// @content Passed content will be outputted within the media query
 ///
