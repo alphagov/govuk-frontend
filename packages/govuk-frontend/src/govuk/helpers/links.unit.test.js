@@ -49,7 +49,7 @@ describe('@mixin govuk-link-decoration', () => {
   })
 
   describe('when $govuk-link-underline-offset is falsey', () => {
-    it('does not set text-decoration-offset ', async () => {
+    it('does not set text-decoration-offset', async () => {
       const sass = `
       $govuk-link-underline-offset: false;
       @import "base";

@@ -60,7 +60,7 @@ describe('Home page', () => {
     const $title = await page.$('title')
 
     // Check the page responded correctly
-    expect(getProperty($title, 'textContent')).resolves.toEqual(
+    await expect(getProperty($title, 'textContent')).resolves.toEqual(
       `GOV.UK Frontend`
     )
 

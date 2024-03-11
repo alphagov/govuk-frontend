@@ -53,7 +53,9 @@ describe('Checkboxes', () => {
           $component = await page.$('.govuk-checkboxes')
           $inputs = await $component.$$('.govuk-checkboxes__input')
           $conditionals = await $component.$$('.govuk-checkboxes__conditional')
+        })
 
+        it('includes the expected number of inputs and conditionals', () => {
           expect($inputs.length).toBe(3)
           expect($conditionals.length).toBe(3)
         })
@@ -199,11 +201,13 @@ describe('Checkboxes', () => {
       describe('with conditional items with special characters', () => {
         it('does not error when ID of revealed content contains special characters', async () => {
           // Errors logged to the console will cause this test to fail
-          await render(
-            page,
-            'checkboxes',
-            examples['with conditional items with special characters']
-          )
+          return expect(
+            render(
+              page,
+              'checkboxes',
+              examples['with conditional items with special characters']
+            )
+          ).resolves.not.toThrow()
         })
       })
     })

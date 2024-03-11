@@ -40,50 +40,33 @@ describe('CharacterCount', () => {
         })
       })
 
-      const cases = [
-        {
-          number: 1,
-          type: 'characters',
-          expected: 'You have 1 character remaining'
-        },
-        {
-          number: 10,
-          type: 'characters',
-          expected: 'You have 10 characters remaining'
-        },
-        {
-          number: -1,
-          type: 'characters',
-          expected: 'You have 1 character too many'
-        },
-        {
-          number: -10,
-          type: 'characters',
-          expected: 'You have 10 characters too many'
-        },
-        {
-          number: 0,
-          type: 'characters',
-          expected: 'You have 0 characters remaining'
-        },
+      it.each([
+        { number: 1, expected: 'You have 1 character remaining' },
+        { number: 10, expected: 'You have 10 characters remaining' },
+        { number: -1, expected: 'You have 1 character too many' },
+        { number: -10, expected: 'You have 10 characters too many' },
+        { number: 0, expected: 'You have 0 characters remaining' }
+      ])(
+        'outputs the expected translation for $number characters',
+        ({ number, expected }) => {
+          expect(
+            componentWithMaxLength.formatCountMessage(number, 'characters')
+          ).toEqual(expected)
+        }
+      )
+
+      it.each([
         { number: 1, type: 'words', expected: 'You have 1 word remaining' },
         { number: 10, type: 'words', expected: 'You have 10 words remaining' },
         { number: -1, type: 'words', expected: 'You have 1 word too many' },
         { number: -10, type: 'words', expected: 'You have 10 words too many' },
         { number: 0, type: 'words', expected: 'You have 0 words remaining' }
-      ]
-      it.each(cases)(
-        'picks the relevant translation for $number $type',
-        function test({ number, type, expected }) {
-          if (type === 'characters') {
-            expect(
-              componentWithMaxLength.formatCountMessage(number, type)
-            ).toEqual(expected)
-          } else {
-            expect(
-              componentWithMaxWords.formatCountMessage(number, type)
-            ).toEqual(expected)
-          }
+      ])(
+        'outputs the expected translation for $number words',
+        ({ number, expected }) => {
+          expect(
+            componentWithMaxWords.formatCountMessage(number, 'words')
+          ).toEqual(expected)
         }
       )
 
