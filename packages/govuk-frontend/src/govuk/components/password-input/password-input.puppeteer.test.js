@@ -31,7 +31,7 @@ describe('/components/password-input', () => {
           inputClass
         )
 
-        expect(inputType).toEqual('password')
+        expect(inputType).toBe('password')
       })
 
       it('renders the toggle button hidden', async () => {
@@ -79,7 +79,7 @@ describe('/components/password-input', () => {
             statusClass
           )
 
-          expect(statusText).toEqual('')
+          expect(statusText).toBe('')
         })
 
         it('shows the toggle button', async () => {
@@ -106,7 +106,7 @@ describe('/components/password-input', () => {
             inputClass
           )
 
-          expect(inputType).toEqual('text')
+          expect(inputType).toBe('text')
         })
 
         it('changes the status to aria-live="assertive"', async () => {
@@ -116,7 +116,7 @@ describe('/components/password-input', () => {
             statusClass
           )
 
-          expect(statusAriaLiveAttribute).toEqual('assertive')
+          expect(statusAriaLiveAttribute).toBe('assertive')
         })
 
         it('changes the status to say the password is visible', async () => {
@@ -126,7 +126,7 @@ describe('/components/password-input', () => {
             statusClass
           )
 
-          expect(statusText).toEqual('Your password is visible')
+          expect(statusText).toBe('Your password is visible')
         })
 
         it('changes the button text to "hide"', async () => {
@@ -136,7 +136,7 @@ describe('/components/password-input', () => {
             buttonClass
           )
 
-          expect(buttonText).toEqual('Hide')
+          expect(buttonText).toBe('Hide')
         })
 
         it('changes the button aria-label to "hide password"', async () => {
@@ -146,7 +146,7 @@ describe('/components/password-input', () => {
             buttonClass
           )
 
-          expect(buttonAriaLabel).toEqual('Hide password')
+          expect(buttonAriaLabel).toBe('Hide password')
         })
       })
 
@@ -164,7 +164,7 @@ describe('/components/password-input', () => {
             inputClass
           )
 
-          expect(inputType).toEqual('password')
+          expect(inputType).toBe('password')
         })
 
         it('changes the status to say the password is hidden', async () => {
@@ -174,7 +174,7 @@ describe('/components/password-input', () => {
             statusClass
           )
 
-          expect(statusText).toEqual('Your password is hidden')
+          expect(statusText).toBe('Your password is hidden')
         })
 
         it('changes the button text to "show"', async () => {
@@ -184,7 +184,7 @@ describe('/components/password-input', () => {
             buttonClass
           )
 
-          expect(buttonText).toEqual('Show')
+          expect(buttonText).toBe('Show')
         })
 
         it('changes the button aria-label to "show password"', async () => {
@@ -194,7 +194,7 @@ describe('/components/password-input', () => {
             buttonClass
           )
 
-          expect(buttonAriaLabel).toEqual('Show password')
+          expect(buttonAriaLabel).toBe('Show password')
         })
       })
 
@@ -234,8 +234,8 @@ describe('/components/password-input', () => {
             inputClass
           )
 
-          expect(beforeSubmitType).toEqual('text')
-          expect(afterSubmitType).toEqual('password')
+          expect(beforeSubmitType).toBe('text')
+          expect(afterSubmitType).toBe('password')
         })
       })
 
