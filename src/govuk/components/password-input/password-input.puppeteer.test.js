@@ -109,6 +109,16 @@ describe('/components/password-input', () => {
           expect(inputType).toEqual('text')
         })
 
+        it('changes the status to aria-live="assertive"', async () => {
+          const statusAriaLiveAttribute = await page.evaluate(
+            (statusClass) =>
+              document.querySelector(statusClass).getAttribute('aria-live'),
+            statusClass
+          )
+
+          expect(statusAriaLiveAttribute).toEqual('assertive')
+        })
+
         it('changes the status to say the password is visible', async () => {
           const statusText = await page.evaluate(
             (statusClass) =>
