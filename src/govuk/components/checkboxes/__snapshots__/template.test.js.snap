@@ -36,7 +36,7 @@ exports[`Checkboxes nested dependant components passes through label params with
 </label>
 `;
 
-exports[`Checkboxes when they include a hint renders the hint 1`] = `
+exports[`Checkboxes when the fieldset includes a hint renders the hint 1`] = `
 <div id="example-multiple-hints-hint"
      class="govuk-hint"
 >

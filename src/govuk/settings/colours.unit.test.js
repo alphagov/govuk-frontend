@@ -25,6 +25,6 @@ describe('Organisation colours', () => {
       }
     `
 
-    await expect(compileSassString(sass)).resolves
+    await expect(compileSassString(sass)).resolves.not.toThrow()
   })
 })

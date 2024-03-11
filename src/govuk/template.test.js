@@ -151,7 +151,7 @@ describe('Template', () => {
     })
 
     describe('opengraph image', () => {
-      it('is not included if neither assetUrl nor opengraphImageUrl are set ', () => {
+      it('is not included if neither assetUrl nor opengraphImageUrl are set', () => {
         const $ = renderTemplate('govuk/template.njk')
         const $ogImage = $('meta[property="og:image"]')
 

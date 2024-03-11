@@ -47,7 +47,9 @@ describe('Header navigation', () => {
     describe('when no navigation is present', () => {
       it('exits gracefully with no errors', async () => {
         // Errors logged to the console will cause this test to fail
-        await render(page, 'header', examples.default)
+        return expect(
+          render(page, 'header', examples.default)
+        ).resolves.not.toThrow()
       })
     })
 
@@ -194,14 +196,6 @@ describe('Header navigation', () => {
             message: 'Header: Root element (`$module`) not found'
           }
         })
-      })
-
-      it('does not throw if the toggle is absent', async () => {
-        // The default example is rendered without navigation
-        // and should keep rendering. No expectations as the JavaScript
-        // will just return early. All we ask of that test is for it not
-        // to throw during the initialisation
-        await render(page, 'header', examples.default)
       })
 
       it("throws when the toggle's aria-control attribute is missing", async () => {
