@@ -144,7 +144,7 @@ describe('dist/', () => {
     })
 
     it('should contain the correct version', () => {
-      expect(version).toEqual(`${pkg.version}\n`)
+      expect(version).toBe(`${pkg.version}\n`)
     })
   })
 })

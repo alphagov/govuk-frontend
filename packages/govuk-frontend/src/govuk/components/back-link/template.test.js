@@ -12,9 +12,9 @@ describe('back-link component', () => {
     const $ = render('back-link', examples.default)
 
     const $component = $('.govuk-back-link')
-    expect($component.get(0).tagName).toEqual('a')
-    expect($component.attr('href')).toEqual('#')
-    expect($component.text()).toEqual('Back')
+    expect($component.get(0).tagName).toBe('a')
+    expect($component.attr('href')).toBe('#')
+    expect($component.text()).toBe('Back')
   })
 
   it('renders classes correctly', () => {
@@ -28,36 +28,36 @@ describe('back-link component', () => {
     const $ = render('back-link', examples['with custom text'])
 
     const $component = $('.govuk-back-link')
-    expect($component.html()).toEqual('Back to home')
+    expect($component.html()).toBe('Back to home')
   })
 
   it('renders escaped html when passed to text', () => {
     const $ = render('back-link', examples['html as text'])
 
     const $component = $('.govuk-back-link')
-    expect($component.html()).toEqual('&lt;b&gt;Home&lt;/b&gt;')
+    expect($component.html()).toBe('&lt;b&gt;Home&lt;/b&gt;')
   })
 
   it('renders html correctly', () => {
     const $ = render('back-link', examples.html)
 
     const $component = $('.govuk-back-link')
-    expect($component.html()).toEqual('<b>Back</b>')
+    expect($component.html()).toBe('<b>Back</b>')
   })
 
   it('renders default text correctly', () => {
     const $ = render('back-link', examples.default)
 
     const $component = $('.govuk-back-link')
-    expect($component.html()).toEqual('Back')
+    expect($component.html()).toBe('Back')
   })
 
   it('renders attributes correctly', () => {
     const $ = render('back-link', examples.attributes)
 
     const $component = $('.govuk-back-link')
-    expect($component.attr('data-test')).toEqual('attribute')
-    expect($component.attr('aria-label')).toEqual('Back to home')
+    expect($component.attr('data-test')).toBe('attribute')
+    expect($component.attr('aria-label')).toBe('Back to home')
   })
 
   it('renders with inverted colours if specified', () => {

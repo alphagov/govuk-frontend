@@ -13,7 +13,7 @@ describe('Tag', () => {
       const $ = render('tag', examples.default)
 
       const $component = $('.govuk-tag')
-      expect($component.get(0).tagName).toEqual('strong')
+      expect($component.get(0).tagName).toBe('strong')
       expect($component.text()).toContain('Alpha')
     })
 
@@ -37,8 +37,8 @@ describe('Tag', () => {
       const $ = render('tag', examples.attributes)
 
       const $component = $('.govuk-tag')
-      expect($component.attr('data-test')).toEqual('attribute')
-      expect($component.attr('id')).toEqual('my-tag')
+      expect($component.attr('data-test')).toBe('attribute')
+      expect($component.attr('id')).toBe('my-tag')
     })
   })
 

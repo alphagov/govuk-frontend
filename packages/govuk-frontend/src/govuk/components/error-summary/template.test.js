@@ -15,14 +15,14 @@ describe('Error-summary', () => {
         'role'
       )
 
-      expect(childRoleAttr).toEqual('alert')
+      expect(childRoleAttr).toBe('alert')
     })
 
     it('renders title text', () => {
       const $ = render('error-summary', examples.default)
       const summaryTitle = $('.govuk-error-summary__title').text().trim()
 
-      expect(summaryTitle).toEqual('There is a problem')
+      expect(summaryTitle).toBe('There is a problem')
     })
 
     it('number of error items matches the number of items specified', () => {
@@ -38,7 +38,7 @@ describe('Error-summary', () => {
       const errorItem = $(
         '.govuk-error-summary .govuk-error-summary__list li:first-child'
       )
-      expect(errorItem.children().get(0).tagName).toEqual('a')
+      expect(errorItem.children().get(0).tagName).toBe('a')
     })
 
     it('render anchor tag href attribute is correctly', () => {
@@ -47,7 +47,7 @@ describe('Error-summary', () => {
       const errorItem = $(
         '.govuk-error-summary .govuk-error-summary__list li:first-child a'
       )
-      expect(errorItem.attr('href')).toEqual('#example-error-1')
+      expect(errorItem.attr('href')).toBe('#example-error-1')
     })
   })
 
@@ -56,35 +56,35 @@ describe('Error-summary', () => {
       const $ = render('error-summary', examples['html as titleText'])
 
       const summaryTitle = $('.govuk-error-summary__title').html().trim()
-      expect(summaryTitle).toEqual('Alert, &lt;em&gt;alert&lt;/em&gt;')
+      expect(summaryTitle).toBe('Alert, &lt;em&gt;alert&lt;/em&gt;')
     })
 
     it('allows title HTML to be passed un-escaped', () => {
       const $ = render('error-summary', examples['title html'])
 
       const summaryTitle = $('.govuk-error-summary__title').html().trim()
-      expect(summaryTitle).toEqual('Alert, <em>alert</em>')
+      expect(summaryTitle).toBe('Alert, <em>alert</em>')
     })
 
     it('renders description text', () => {
       const $ = render('error-summary', examples.description)
       const summaryDescription = $('.govuk-error-summary__body p').text().trim()
 
-      expect(summaryDescription).toEqual('Lorem ipsum')
+      expect(summaryDescription).toBe('Lorem ipsum')
     })
 
     it('allows description text to be passed whilst escaping HTML entities', () => {
       const $ = render('error-summary', examples['html as descriptionText'])
 
       const summaryDescription = $('.govuk-error-summary__body p').html().trim()
-      expect(summaryDescription).toEqual('See errors below (&gt;)')
+      expect(summaryDescription).toBe('See errors below (&gt;)')
     })
 
     it('allows description HTML to be passed un-escaped', () => {
       const $ = render('error-summary', examples['description html'])
 
       const summaryDescription = $('.govuk-error-summary__body p').html().trim()
-      expect(summaryDescription).toEqual('See <span>errors</span> below')
+      expect(summaryDescription).toBe('See <span>errors</span> below')
     })
 
     it('renders nested components in description using `call`', () => {
@@ -108,16 +108,16 @@ describe('Error-summary', () => {
       const $ = render('error-summary', examples.attributes)
 
       const $component = $('.govuk-error-summary')
-      expect($component.attr('first-attribute')).toEqual('foo')
-      expect($component.attr('second-attribute')).toEqual('bar')
+      expect($component.attr('first-attribute')).toBe('foo')
+      expect($component.attr('second-attribute')).toBe('bar')
     })
 
     it('renders anchor tag with attributes', () => {
       const $ = render('error-summary', examples['error list with attributes'])
 
       const $component = $('.govuk-error-summary__list a')
-      expect($component.attr('data-attribute')).toEqual('my-attribute')
-      expect($component.attr('data-attribute-2')).toEqual('my-attribute-2')
+      expect($component.attr('data-attribute')).toBe('my-attribute')
+      expect($component.attr('data-attribute-2')).toBe('my-attribute-2')
     })
 
     it('renders error item text', () => {
@@ -128,7 +128,7 @@ describe('Error-summary', () => {
         .text()
         .trim()
 
-      expect(errorItemText).toEqual('Invalid username or password')
+      expect(errorItemText).toBe('Invalid username or password')
     })
 
     it('allows error item HTML to be passed un-escaped', () => {
@@ -140,7 +140,7 @@ describe('Error-summary', () => {
         .html()
         .trim()
 
-      expect(errorItemText).toEqual(
+      expect(errorItemText).toBe(
         'The date your passport was issued <b>must</b> be in the past'
       )
     })
@@ -157,7 +157,7 @@ describe('Error-summary', () => {
         .html()
         .trim()
 
-      expect(errorItemText).toEqual(
+      expect(errorItemText).toBe(
         'Descriptive link to the &lt;b&gt;question&lt;/b&gt; with an error'
       )
     })
@@ -171,7 +171,7 @@ describe('Error-summary', () => {
         .html()
         .trim()
 
-      expect(errorItemText).toEqual(
+      expect(errorItemText).toBe(
         'Descriptive link to the <b>question</b> with an error'
       )
     })
@@ -188,7 +188,7 @@ describe('Error-summary', () => {
         .html()
         .trim()
 
-      expect(errorItemText).toEqual(
+      expect(errorItemText).toBe(
         'Descriptive link to the &lt;b&gt;question&lt;/b&gt; with an error'
       )
     })

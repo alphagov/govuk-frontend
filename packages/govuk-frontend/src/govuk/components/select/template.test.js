@@ -17,48 +17,48 @@ describe('Select', () => {
       const $ = render('select', examples.default)
 
       const $component = $('.govuk-select')
-      expect($component.attr('id')).toEqual('select-1')
+      expect($component.attr('id')).toBe('select-1')
     })
 
     it('renders with name', () => {
       const $ = render('select', examples.default)
 
       const $component = $('.govuk-select')
-      expect($component.attr('name')).toEqual('select-1')
+      expect($component.attr('name')).toBe('select-1')
     })
 
     it('renders with items', () => {
       const $ = render('select', examples.default)
       const $items = $('.govuk-select option')
-      expect($items.length).toEqual(3)
+      expect($items).toHaveLength(3)
     })
 
     it('includes the value attribute', () => {
       const $ = render('select', examples.default)
 
       const $firstItem = $('.govuk-select option:first-child')
-      expect($firstItem.attr('value')).toEqual('1')
+      expect($firstItem.attr('value')).toBe('1')
     })
 
     it('includes the value attribute when the value option is an empty string', () => {
       const $ = render('select', examples['with falsey values'])
 
       const $firstItem = $('.govuk-select option:nth(0)')
-      expect($firstItem.attr('value')).toEqual('')
+      expect($firstItem.attr('value')).toBe('')
     })
 
     it('includes the value attribute when the value option is false', () => {
       const $ = render('select', examples['with falsey values'])
 
       const $secondItem = $('.govuk-select option:nth(1)')
-      expect($secondItem.attr('value')).toEqual('false')
+      expect($secondItem.attr('value')).toBe('false')
     })
 
     it('includes the value attribute when the value option is 0', () => {
       const $ = render('select', examples['with falsey values'])
 
       const $thirdItem = $('.govuk-select option:nth(2)')
-      expect($thirdItem.attr('value')).toEqual('0')
+      expect($thirdItem.attr('value')).toBe('0')
     })
 
     it('omits the value attribute if no value option is provided', () => {
@@ -74,7 +74,7 @@ describe('Select', () => {
       const $ = render('select', examples.default)
 
       const $firstItem = $('.govuk-select option:first-child')
-      expect($firstItem.text()).toEqual('GOV.UK frontend option 1')
+      expect($firstItem.text()).toBe('GOV.UK frontend option 1')
     })
 
     it('renders item with selected', () => {
@@ -130,7 +130,7 @@ describe('Select', () => {
       const $ = render('select', examples['with falsey items'])
 
       const $items = $('.govuk-select option')
-      expect($items.length).toEqual(2)
+      expect($items).toHaveLength(2)
     })
   })
 
@@ -153,7 +153,7 @@ describe('Select', () => {
       const $ = render('select', examples.attributes)
 
       const $component = $('.govuk-select')
-      expect($component.attr('data-attribute')).toEqual('my data value')
+      expect($component.attr('data-attribute')).toBe('my data value')
     })
 
     it('renders with attributes on items', () => {
@@ -162,12 +162,12 @@ describe('Select', () => {
       const $component = $('.govuk-select')
 
       const $firstInput = $component.find('option:first-child')
-      expect($firstInput.attr('data-attribute')).toEqual('ABC')
-      expect($firstInput.attr('data-second-attribute')).toEqual('DEF')
+      expect($firstInput.attr('data-attribute')).toBe('ABC')
+      expect($firstInput.attr('data-second-attribute')).toBe('DEF')
 
       const $secondInput = $component.find('option:last-child')
-      expect($secondInput.attr('data-attribute')).toEqual('GHI')
-      expect($secondInput.attr('data-second-attribute')).toEqual('JKL')
+      expect($secondInput.attr('data-attribute')).toBe('GHI')
+      expect($secondInput.attr('data-second-attribute')).toBe('JKL')
     })
   })
 
@@ -287,7 +287,7 @@ describe('Select', () => {
       const $ = render('select', examples.default)
 
       const $label = $('.govuk-label')
-      expect($label.attr('for')).toEqual('select-1')
+      expect($label.attr('for')).toBe('select-1')
     })
   })
 })

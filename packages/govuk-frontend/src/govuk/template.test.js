@@ -14,7 +14,7 @@ describe('Template', () => {
       })
 
       const output = env.render('./govuk/template.njk')
-      expect(output.charAt(0)).toEqual('<')
+      expect(output.charAt(0)).toBe('<')
     })
   })
 
@@ -26,14 +26,14 @@ describe('Template', () => {
       })
 
       const output = env.render('./govuk/template.njk')
-      expect(output.charAt(0)).toEqual('<')
+      expect(output.charAt(0)).toBe('<')
     })
   })
 
   describe('<html>', () => {
     it('defaults to lang="en"', () => {
       const $ = renderTemplate('govuk/template.njk')
-      expect($('html').attr('lang')).toEqual('en')
+      expect($('html').attr('lang')).toBe('en')
     })
 
     it('can have a custom lang set using htmlLang', () => {
@@ -43,7 +43,7 @@ describe('Template', () => {
         }
       })
 
-      expect($('html').attr('lang')).toEqual('zu')
+      expect($('html').attr('lang')).toBe('zu')
     })
 
     it('can have custom classes added using htmlClasses', () => {
@@ -89,14 +89,14 @@ describe('Template', () => {
         }
       })
 
-      expect($('head meta[property="foo"]').attr('content')).toEqual('bar')
+      expect($('head meta[property="foo"]').attr('content')).toBe('bar')
     })
 
     it('uses a default assets path of /assets', () => {
       const $ = renderTemplate('govuk/template.njk')
       const $icon = $('link[rel="icon"][sizes="48x48"]')
 
-      expect($icon.attr('href')).toEqual('/assets/images/favicon.ico')
+      expect($icon.attr('href')).toBe('/assets/images/favicon.ico')
     })
 
     it('can have the assets path overridden using assetPath', () => {
@@ -107,7 +107,7 @@ describe('Template', () => {
       })
       const $icon = $('link[rel="icon"][sizes="48x48"]')
 
-      expect($icon.attr('href')).toEqual('/whatever/images/favicon.ico')
+      expect($icon.attr('href')).toBe('/whatever/images/favicon.ico')
     })
 
     describe('favicons', () => {
@@ -115,38 +115,38 @@ describe('Template', () => {
         const $ = renderTemplate('govuk/template.njk')
         const $icon = $('link[rel="icon"][href$=".ico"]')
 
-        expect($icon.attr('sizes')).toEqual('48x48')
-        expect($icon.attr('href')).toEqual('/assets/images/favicon.ico')
+        expect($icon.attr('sizes')).toBe('48x48')
+        expect($icon.attr('href')).toBe('/assets/images/favicon.ico')
       })
 
       it('has an .svg icon', () => {
         const $ = renderTemplate('govuk/template.njk')
         const $icon = $('link[rel="icon"][href$=".svg"]')
 
-        expect($icon.attr('sizes')).toEqual('any')
-        expect($icon.attr('href')).toEqual('/assets/images/favicon.svg')
+        expect($icon.attr('sizes')).toBe('any')
+        expect($icon.attr('href')).toBe('/assets/images/favicon.svg')
       })
 
       it('has a mask-icon', () => {
         const $ = renderTemplate('govuk/template.njk')
         const $icon = $('link[rel="mask-icon"]')
 
-        expect($icon.attr('color')).toEqual('#0b0c0c')
-        expect($icon.attr('href')).toEqual('/assets/images/govuk-icon-mask.svg')
+        expect($icon.attr('color')).toBe('#0b0c0c')
+        expect($icon.attr('href')).toBe('/assets/images/govuk-icon-mask.svg')
       })
 
       it('has an apple-touch-icon', () => {
         const $ = renderTemplate('govuk/template.njk')
         const $icon = $('link[rel="apple-touch-icon"]')
 
-        expect($icon.attr('href')).toEqual('/assets/images/govuk-icon-180.png')
+        expect($icon.attr('href')).toBe('/assets/images/govuk-icon-180.png')
       })
 
       it('has a linked web manifest file', () => {
         const $ = renderTemplate('govuk/template.njk')
         const $icon = $('link[rel="manifest"]')
 
-        expect($icon.attr('href')).toEqual('/assets/manifest.json')
+        expect($icon.attr('href')).toBe('/assets/manifest.json')
       })
     })
 
@@ -155,7 +155,7 @@ describe('Template', () => {
         const $ = renderTemplate('govuk/template.njk')
         const $ogImage = $('meta[property="og:image"]')
 
-        expect($ogImage.length).toBe(0)
+        expect($ogImage).toHaveLength(0)
       })
 
       it('is included using default path and filename if assetUrl is set', () => {
@@ -167,7 +167,7 @@ describe('Template', () => {
 
         const $ogImage = $('meta[property="og:image"]')
 
-        expect($ogImage.attr('content')).toEqual(
+        expect($ogImage.attr('content')).toBe(
           'https://foo.com/my-assets/images/govuk-opengraph-image.png'
         )
       })
@@ -181,7 +181,7 @@ describe('Template', () => {
 
         const $ogImage = $('meta[property="og:image"]')
 
-        expect($ogImage.attr('content')).toEqual(
+        expect($ogImage.attr('content')).toBe(
           'https://foo.com/custom/og-image.png'
         )
       })
@@ -190,7 +190,7 @@ describe('Template', () => {
     describe('<meta name="theme-color">', () => {
       it('has a default content of #0b0c0c', () => {
         const $ = renderTemplate('govuk/template.njk')
-        expect($('meta[name="theme-color"]').attr('content')).toEqual('#0b0c0c')
+        expect($('meta[name="theme-color"]').attr('content')).toBe('#0b0c0c')
       })
 
       it('can be overridden using themeColor', () => {
@@ -200,7 +200,7 @@ describe('Template', () => {
           }
         })
 
-        expect($('meta[name="theme-color"]').attr('content')).toEqual('#ff69b4')
+        expect($('meta[name="theme-color"]').attr('content')).toBe('#ff69b4')
       })
     })
 
@@ -222,7 +222,7 @@ describe('Template', () => {
           }
         })
 
-        expect($('head > title').text()).toEqual('Foo')
+        expect($('head > title').text()).toBe('Foo')
       })
 
       it('does not have a lang attribute by default', () => {
@@ -237,7 +237,7 @@ describe('Template', () => {
           }
         })
 
-        expect($('head > title').attr('lang')).toEqual('zu')
+        expect($('head > title').attr('lang')).toBe('zu')
       })
     })
   })
@@ -260,7 +260,7 @@ describe('Template', () => {
         }
       })
 
-      expect($('body').attr('data-foo')).toEqual('bar')
+      expect($('body').attr('data-foo')).toBe('bar')
     })
 
     it('can have additional content added after the opening tag using bodyStart block', () => {
@@ -270,7 +270,7 @@ describe('Template', () => {
         }
       })
 
-      expect($('body > div:first-of-type').text()).toEqual('bodyStart')
+      expect($('body > div:first-of-type').text()).toBe('bodyStart')
     })
 
     it('can have additional content added before the closing tag using bodyEnd block', () => {
@@ -280,7 +280,7 @@ describe('Template', () => {
         }
       })
 
-      expect($('body > div:last-of-type').text()).toEqual('bodyEnd')
+      expect($('body > div:last-of-type').text()).toBe('bodyEnd')
     })
 
     describe('inline script that adds "js-enabled" and "govuk-frontend-supported" classes', () => {
@@ -293,7 +293,7 @@ describe('Template', () => {
 
         // A change to the inline script would be a breaking change, and it would also require
         // updating the hash published in https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#if-your-javascript-isn-t-working-properly
-        expect(`sha256-${hash}`).toEqual(
+        expect(`sha256-${hash}`).toBe(
           'sha256-GUQ5ad8JK5KmEWmROf3LZd9ge94daqNvd8xy9YS1iDw='
         )
       })
@@ -302,7 +302,7 @@ describe('Template', () => {
         const $ = renderTemplate('govuk/template.njk')
         const scriptTag = $('body > script').first()
 
-        expect(scriptTag.attr('nonce')).toEqual(undefined)
+        expect(scriptTag.attr('nonce')).toBeUndefined()
       })
 
       it('should have a nonce attribute when nonce is provided', () => {
@@ -314,7 +314,7 @@ describe('Template', () => {
 
         const scriptTag = $('body > script').first()
 
-        expect(scriptTag.attr('nonce')).toEqual('abcdef')
+        expect(scriptTag.attr('nonce')).toBe('abcdef')
       })
     })
 
@@ -326,8 +326,8 @@ describe('Template', () => {
           }
         })
 
-        expect($('.my-skip-link').length).toEqual(1)
-        expect($('.govuk-skip-link').length).toEqual(0)
+        expect($('.my-skip-link')).toHaveLength(1)
+        expect($('.govuk-skip-link')).toHaveLength(0)
       })
     })
 
@@ -339,15 +339,15 @@ describe('Template', () => {
           }
         })
 
-        expect($('.my-header').length).toEqual(1)
-        expect($('.govuk-header').length).toEqual(0)
+        expect($('.my-header')).toHaveLength(1)
+        expect($('.govuk-header')).toHaveLength(0)
       })
     })
 
     describe('<main>', () => {
       it('has role="main", supporting browsers that do not natively support HTML5 elements', () => {
         const $ = renderTemplate('govuk/template.njk')
-        expect($('main').attr('role')).toEqual('main')
+        expect($('main').attr('role')).toBe('main')
       })
 
       it('can have custom classes added using mainClasses', () => {
@@ -372,7 +372,7 @@ describe('Template', () => {
           }
         })
 
-        expect($('main').attr('lang')).toEqual('zu')
+        expect($('main').attr('lang')).toBe('zu')
       })
 
       it('can be overridden using the main block', () => {
@@ -382,7 +382,7 @@ describe('Template', () => {
           }
         })
 
-        expect($('main').length).toEqual(1)
+        expect($('main')).toHaveLength(1)
         expect($('main').hasClass('my-main')).toBe(true)
       })
 
@@ -403,7 +403,7 @@ describe('Template', () => {
           }
         })
 
-        expect($('main').text().trim()).toEqual('Foo')
+        expect($('main').text().trim()).toBe('Foo')
       })
     })
 
@@ -415,8 +415,8 @@ describe('Template', () => {
           }
         })
 
-        expect($('.my-footer').length).toEqual(1)
-        expect($('.govuk-footer').length).toEqual(0)
+        expect($('.my-footer')).toHaveLength(1)
+        expect($('.govuk-footer')).toHaveLength(0)
       })
     })
   })

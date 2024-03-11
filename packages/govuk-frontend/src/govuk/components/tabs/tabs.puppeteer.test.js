@@ -44,7 +44,7 @@ describe('/components/tabs', () => {
             )
             .getAttribute('aria-selected')
         )
-        expect(firstTabAriaSelected).toEqual('true')
+        expect(firstTabAriaSelected).toBe('true')
 
         const firstTabClasses = await page.evaluate(
           () =>
@@ -91,7 +91,7 @@ describe('/components/tabs', () => {
             )
             .getAttribute('aria-selected')
         )
-        expect(secondTabAriaSelected).toEqual('true')
+        expect(secondTabAriaSelected).toBe('true')
 
         const secondTabClasses = await page.evaluate(
           () =>
@@ -169,7 +169,7 @@ describe('/components/tabs', () => {
             )
             .getAttribute('aria-selected')
         )
-        expect(secondTabAriaSelected).toEqual('true')
+        expect(secondTabAriaSelected).toBe('true')
 
         const secondTabClasses = await page.evaluate(
           () =>
@@ -211,7 +211,7 @@ describe('/components/tabs', () => {
             .querySelector('.govuk-tabs__tab[href="#past-week"]')
             .getAttribute('aria-selected')
         )
-        expect(currentTabAriaSelected).toEqual('true')
+        expect(currentTabAriaSelected).toBe('true')
 
         const currentTabClasses = await page.evaluate(
           () =>
@@ -236,7 +236,7 @@ describe('/components/tabs', () => {
         const activeElementId = await page.evaluate(
           () => document.activeElement.id
         )
-        expect(activeElementId).toEqual('anchor')
+        expect(activeElementId).toBe('anchor')
       })
     })
 

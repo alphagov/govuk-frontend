@@ -22,14 +22,14 @@ describe('Warning text', () => {
       const $ = render('warning-text', examples.default)
 
       const $assistiveText = $('.govuk-visually-hidden')
-      expect($assistiveText.text()).toEqual('Warning')
+      expect($assistiveText.text()).toBe('Warning')
     })
 
     it('hides the icon from screen readers using the aria-hidden attribute', () => {
       const $ = render('warning-text', examples.default)
 
       const $icon = $('.govuk-warning-text__icon')
-      expect($icon.attr('aria-hidden')).toEqual('true')
+      expect($icon.attr('aria-hidden')).toBe('true')
     })
   })
 
@@ -54,8 +54,8 @@ describe('Warning text', () => {
       const $ = render('warning-text', examples.attributes)
 
       const $component = $('.govuk-warning-text')
-      expect($component.attr('data-test')).toEqual('attribute')
-      expect($component.attr('id')).toEqual('my-warning-text')
+      expect($component.attr('data-test')).toBe('attribute')
+      expect($component.attr('id')).toBe('my-warning-text')
     })
   })
 

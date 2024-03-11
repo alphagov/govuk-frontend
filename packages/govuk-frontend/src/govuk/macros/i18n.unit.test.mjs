@@ -17,7 +17,7 @@ describe('i18n.njk', () => {
       )
 
       // Note the starting space so we ensure it doesn't stick to possible other previous attributes
-      expect(attributes).toEqual(
+      expect(attributes).toBe(
         ' data-i18n.translation-key.other="You have %{count} characters remaining."'
       )
     })
@@ -37,7 +37,7 @@ describe('i18n.njk', () => {
         }
       )
 
-      expect(attributes).toEqual(
+      expect(attributes).toBe(
         ' data-i18n.translation-key.other="You have %{count} characters remaining." data-i18n.translation-key.one="One character remaining"'
       )
     })
@@ -53,7 +53,7 @@ describe('i18n.njk', () => {
         }
       )
 
-      expect(attributes).toEqual('')
+      expect(attributes).toBe('')
     })
   })
 })

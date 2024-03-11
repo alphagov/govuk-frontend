@@ -19,14 +19,14 @@ describe('Radios', () => {
 
     const $firstInput = $component.find('.govuk-radios__item:first-child input')
     const $firstLabel = $component.find('.govuk-radios__item:first-child label')
-    expect($firstInput.attr('name')).toEqual('example-default')
-    expect($firstInput.val()).toEqual('yes')
+    expect($firstInput.attr('name')).toBe('example-default')
+    expect($firstInput.val()).toBe('yes')
     expect($firstLabel.text()).toContain('Yes')
 
     const $lastInput = $component.find('.govuk-radios__item:last-child input')
     const $lastLabel = $component.find('.govuk-radios__item:last-child label')
-    expect($lastInput.attr('name')).toEqual('example-default')
-    expect($lastInput.val()).toEqual('no')
+    expect($lastInput.attr('name')).toBe('example-default')
+    expect($lastInput.val()).toBe('no')
     expect($lastLabel.text()).toContain('No')
   })
 
@@ -35,7 +35,7 @@ describe('Radios', () => {
 
     const $component = $('.govuk-radios')
     const $items = $component.find('.govuk-radios__item input')
-    expect($items.length).toEqual(2)
+    expect($items).toHaveLength(2)
   })
 
   it('render classes', () => {
@@ -60,8 +60,8 @@ describe('Radios', () => {
 
     const $component = $('.govuk-radios')
 
-    expect($component.attr('data-attribute')).toEqual('value')
-    expect($component.attr('data-second-attribute')).toEqual('second-value')
+    expect($component.attr('data-attribute')).toBe('value')
+    expect($component.attr('data-second-attribute')).toBe('second-value')
   })
 
   it('render a custom class on the form group', () => {
@@ -86,13 +86,13 @@ describe('Radios', () => {
       const $firstLabel = $component.find(
         '.govuk-radios__item:first-child label'
       )
-      expect($firstInput.attr('id')).toEqual('example-default')
-      expect($firstLabel.attr('for')).toEqual('example-default')
+      expect($firstInput.attr('id')).toBe('example-default')
+      expect($firstLabel.attr('for')).toBe('example-default')
 
       const $lastInput = $component.find('.govuk-radios__item:last-child input')
       const $lastLabel = $component.find('.govuk-radios__item:last-child label')
-      expect($lastInput.attr('id')).toEqual('example-default-2')
-      expect($lastLabel.attr('for')).toEqual('example-default-2')
+      expect($lastInput.attr('id')).toBe('example-default-2')
+      expect($lastLabel.attr('for')).toBe('example-default-2')
     })
 
     it('render a matching label and input using custom idPrefix', () => {
@@ -106,13 +106,13 @@ describe('Radios', () => {
       const $firstLabel = $component.find(
         '.govuk-radios__item:first-child label'
       )
-      expect($firstInput.attr('id')).toEqual('example-id-prefix')
-      expect($firstLabel.attr('for')).toEqual('example-id-prefix')
+      expect($firstInput.attr('id')).toBe('example-id-prefix')
+      expect($firstLabel.attr('for')).toBe('example-id-prefix')
 
       const $lastInput = $component.find('.govuk-radios__item:last-child input')
       const $lastLabel = $component.find('.govuk-radios__item:last-child label')
-      expect($lastInput.attr('id')).toEqual('example-id-prefix-2')
-      expect($lastLabel.attr('for')).toEqual('example-id-prefix-2')
+      expect($lastInput.attr('id')).toBe('example-id-prefix-2')
+      expect($lastLabel.attr('for')).toBe('example-id-prefix-2')
     })
 
     it('render disabled', () => {
@@ -121,7 +121,7 @@ describe('Radios', () => {
       const $component = $('.govuk-radios')
 
       const $lastInput = $component.find('input[value="verify"]')
-      expect($lastInput.attr('disabled')).toEqual('disabled')
+      expect($lastInput.attr('disabled')).toBe('disabled')
     })
 
     it('render checked', () => {
@@ -129,7 +129,7 @@ describe('Radios', () => {
 
       const $component = $('.govuk-radios')
       const $lastInput = $component.find('.govuk-radios__item:last-child input')
-      expect($lastInput.attr('checked')).toEqual('checked')
+      expect($lastInput.attr('checked')).toBe('checked')
     })
 
     it('checks the radio that matches value', () => {
@@ -137,7 +137,7 @@ describe('Radios', () => {
 
       const $component = $('.govuk-radios')
       const $lastInput = $component.find('input[value="no"]')
-      expect($lastInput.attr('checked')).toEqual('checked')
+      expect($lastInput.attr('checked')).toBe('checked')
     })
 
     it('allows item.checked to override value', () => {
@@ -156,14 +156,14 @@ describe('Radios', () => {
         const $firstInput = $component.find(
           '.govuk-radios__item:first-child input'
         )
-        expect($firstInput.attr('data-attribute')).toEqual('ABC')
-        expect($firstInput.attr('data-second-attribute')).toEqual('DEF')
+        expect($firstInput.attr('data-attribute')).toBe('ABC')
+        expect($firstInput.attr('data-second-attribute')).toBe('DEF')
 
         const $lastInput = $component.find(
           '.govuk-radios__item:last-child input'
         )
-        expect($lastInput.attr('data-attribute')).toEqual('GHI')
-        expect($lastInput.attr('data-second-attribute')).toEqual('JKL')
+        expect($lastInput.attr('data-attribute')).toBe('GHI')
+        expect($lastInput.attr('data-second-attribute')).toBe('JKL')
       })
     })
 
@@ -253,7 +253,7 @@ describe('Radios', () => {
         const $ = render('radios', examples['with empty conditional'])
 
         const $component = $('.govuk-radios')
-        expect($component.find('.govuk-radios__conditional').length).toEqual(0)
+        expect($component.find('.govuk-radios__conditional')).toHaveLength(0)
       })
 
       it('does not associate radios with empty conditionals', () => {
@@ -324,7 +324,7 @@ describe('Radios', () => {
       const $ = render('radios', examples['with error message and idPrefix'])
       const $errorMessage = $('.govuk-error-message')
 
-      expect($errorMessage.attr('id')).toEqual('id-prefix-error')
+      expect($errorMessage.attr('id')).toBe('id-prefix-error')
     })
 
     it('falls back to using the name for the error message id', () => {
@@ -332,7 +332,7 @@ describe('Radios', () => {
 
       const $errorMessage = $('.govuk-error-message')
 
-      expect($errorMessage.attr('id')).toEqual('example-error-message-error')
+      expect($errorMessage.attr('id')).toBe('example-error-message-error')
     })
 
     it('associates the fieldset as "described by" the error message', () => {

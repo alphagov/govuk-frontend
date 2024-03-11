@@ -15,7 +15,7 @@ describe('Hint', () => {
       const $ = render('hint', examples.default)
 
       const content = $('.govuk-hint').text()
-      expect(content).toEqual(
+      expect(content).toBe(
         "\n  It's on your National Insurance card, benefit letter, payslip or P60.\nFor example, 'QQ 12 34 56 C'.\n\n"
       )
     })
@@ -31,14 +31,14 @@ describe('Hint', () => {
       const $ = render('hint', examples.id)
 
       const $component = $('.govuk-hint')
-      expect($component.attr('id')).toEqual('my-hint')
+      expect($component.attr('id')).toBe('my-hint')
     })
 
     it('allows text to be passed whilst escaping HTML entities', () => {
       const $ = render('hint', examples['html as text'])
 
       const content = $('.govuk-hint').html().trim()
-      expect(content).toEqual(
+      expect(content).toBe(
         'Unexpected &lt;strong&gt;bold text&lt;/strong&gt; in body'
       )
     })
@@ -62,7 +62,7 @@ describe('Hint', () => {
       const $ = render('hint', examples.attributes)
 
       const $component = $('.govuk-hint')
-      expect($component.attr('data-attribute')).toEqual('my data value')
+      expect($component.attr('data-attribute')).toBe('my data value')
     })
   })
 })

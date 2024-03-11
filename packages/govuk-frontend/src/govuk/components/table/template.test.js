@@ -17,7 +17,7 @@ describe('Table', () => {
   it('can have additional attributes', () => {
     const $ = render('table', examples.attributes)
 
-    expect($('.govuk-table').attr('data-foo')).toEqual('bar')
+    expect($('.govuk-table').attr('data-foo')).toBe('bar')
   })
 
   // =========================================================
@@ -66,7 +66,7 @@ describe('Table', () => {
 
       const $th = $('.govuk-table thead tr th')
 
-      expect($th.html()).toEqual(
+      expect($th.html()).toBe(
         'Foo &lt;script&gt;hacking.do(1337)&lt;/script&gt;'
       )
     })
@@ -76,7 +76,7 @@ describe('Table', () => {
 
       const $th = $('.govuk-table thead tr th')
 
-      expect($th.html()).toEqual('Foo <span>bar</span>')
+      expect($th.html()).toBe('Foo <span>bar</span>')
     })
 
     it('can have a format specified', () => {
@@ -100,7 +100,7 @@ describe('Table', () => {
 
       const $th = $('.govuk-table thead tr th')
 
-      expect($th.attr('rowspan')).toEqual('2')
+      expect($th.attr('rowspan')).toBe('2')
     })
 
     it('can have colspan specified', () => {
@@ -108,7 +108,7 @@ describe('Table', () => {
 
       const $th = $('.govuk-table thead tr th')
 
-      expect($th.attr('colspan')).toEqual('2')
+      expect($th.attr('colspan')).toBe('2')
     })
 
     it('can have additional attributes', () => {
@@ -116,7 +116,7 @@ describe('Table', () => {
 
       const $th = $('.govuk-table thead tr th')
 
-      expect($th.attr('data-fizz')).toEqual('buzz')
+      expect($th.attr('data-fizz')).toBe('buzz')
     })
   })
 
@@ -168,7 +168,7 @@ describe('Table', () => {
 
         const $th = $('.govuk-table tbody tr th')
 
-        expect($th.html()).toEqual(
+        expect($th.html()).toBe(
           'Foo &lt;script&gt;hacking.do(1337)&lt;/script&gt;'
         )
       })
@@ -178,7 +178,7 @@ describe('Table', () => {
 
         const $th = $('.govuk-table tbody tr th')
 
-        expect($th.html()).toEqual('Foo <span>bar</span>')
+        expect($th.html()).toBe('Foo <span>bar</span>')
       })
 
       it('are associated with their rows using scope="row"', () => {
@@ -186,7 +186,7 @@ describe('Table', () => {
 
         const $th = $('.govuk-table').find('tbody tr th')
 
-        expect($th.attr('scope')).toEqual('row')
+        expect($th.attr('scope')).toBe('row')
       })
 
       it('have the govuk-table__header class', () => {
@@ -213,7 +213,7 @@ describe('Table', () => {
 
         const $th = $('.govuk-table').find('tbody tr th')
 
-        expect($th.attr('rowspan')).toEqual('2')
+        expect($th.attr('rowspan')).toBe('2')
       })
 
       it('can have colspan specified', () => {
@@ -224,7 +224,7 @@ describe('Table', () => {
 
         const $th = $('.govuk-table').find('tbody tr th')
 
-        expect($th.attr('colspan')).toEqual('2')
+        expect($th.attr('colspan')).toBe('2')
       })
 
       it('can have additional attributes', () => {
@@ -232,7 +232,7 @@ describe('Table', () => {
 
         const $th = $('.govuk-table').find('tbody tr th')
 
-        expect($th.attr('data-fizz')).toEqual('buzz')
+        expect($th.attr('data-fizz')).toBe('buzz')
       })
     })
   })
@@ -291,7 +291,7 @@ describe('Table', () => {
 
       const $td = $('.govuk-table td')
 
-      expect($td.html()).toEqual(
+      expect($td.html()).toBe(
         'Foo &lt;script&gt;hacking.do(1337)&lt;/script&gt;'
       )
     })
@@ -301,7 +301,7 @@ describe('Table', () => {
 
       const $td = $('.govuk-table td')
 
-      expect($td.html()).toEqual('Foo <span>bar</span>')
+      expect($td.html()).toBe('Foo <span>bar</span>')
     })
 
     it('can have a format specified', () => {
@@ -325,7 +325,7 @@ describe('Table', () => {
 
       const $td = $('.govuk-table td')
 
-      expect($td.attr('rowspan')).toEqual('2')
+      expect($td.attr('rowspan')).toBe('2')
     })
 
     it('can have colspan specified', () => {
@@ -333,7 +333,7 @@ describe('Table', () => {
 
       const $td = $('.govuk-table td')
 
-      expect($td.attr('colspan')).toEqual('2')
+      expect($td.attr('colspan')).toBe('2')
     })
 
     it('can have additional attributes', () => {
@@ -341,7 +341,7 @@ describe('Table', () => {
 
       const $td = $('.govuk-table td')
 
-      expect($td.attr('data-fizz')).toEqual('buzz')
+      expect($td.attr('data-fizz')).toBe('buzz')
     })
   })
 })

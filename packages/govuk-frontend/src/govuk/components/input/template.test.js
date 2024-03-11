@@ -17,21 +17,21 @@ describe('Input', () => {
       const $ = render('input', examples.default)
 
       const $component = $('.govuk-input')
-      expect($component.attr('id')).toEqual('input-example')
+      expect($component.attr('id')).toBe('input-example')
     })
 
     it('renders with name', () => {
       const $ = render('input', examples.default)
 
       const $component = $('.govuk-input')
-      expect($component.attr('name')).toEqual('test-name')
+      expect($component.attr('name')).toBe('test-name')
     })
 
     it('renders with type="text" by default', () => {
       const $ = render('input', examples.default)
 
       const $component = $('.govuk-input')
-      expect($component.attr('type')).toEqual('text')
+      expect($component.attr('type')).toBe('text')
     })
 
     it('renders with a form group wrapper', () => {
@@ -54,21 +54,21 @@ describe('Input', () => {
       const $ = render('input', examples['custom type'])
 
       const $component = $('.govuk-input')
-      expect($component.attr('type')).toEqual('number')
+      expect($component.attr('type')).toBe('number')
     })
 
     it('renders with pattern attribute', () => {
       const $ = render('input', examples['with pattern attribute'])
 
       const $component = $('.govuk-input')
-      expect($component.attr('pattern')).toEqual('[0-9]*')
+      expect($component.attr('pattern')).toBe('[0-9]*')
     })
 
     it('renders with value', () => {
       const $ = render('input', examples.value)
 
       const $component = $('.govuk-input')
-      expect($component.val()).toEqual('QQ 12 34 56 C')
+      expect($component.val()).toBe('QQ 12 34 56 C')
     })
 
     it('renders with aria-describedby', () => {
@@ -82,7 +82,7 @@ describe('Input', () => {
       const $ = render('input', examples.attributes)
 
       const $component = $('.govuk-input')
-      expect($component.attr('data-attribute')).toEqual('my data value')
+      expect($component.attr('data-attribute')).toBe('my data value')
     })
 
     it('renders with a form group wrapper that has extra classes', () => {
@@ -187,14 +187,14 @@ describe('Input', () => {
       const $ = render('input', examples['with spellcheck enabled'])
 
       const $component = $('.govuk-input')
-      expect($component.attr('spellcheck')).toEqual('true')
+      expect($component.attr('spellcheck')).toBe('true')
     })
 
     it('renders with spellcheck attribute set to false', () => {
       const $ = render('input', examples['with spellcheck disabled'])
 
       const $component = $('.govuk-input')
-      expect($component.attr('spellcheck')).toEqual('false')
+      expect($component.attr('spellcheck')).toBe('false')
     })
 
     it('renders without spellcheck attribute by default', () => {
@@ -253,7 +253,7 @@ describe('Input', () => {
       const $ = render('input', examples.default)
 
       const $label = $('.govuk-label')
-      expect($label.attr('for')).toEqual('input-example')
+      expect($label.attr('for')).toBe('input-example')
     })
   })
 
@@ -262,7 +262,7 @@ describe('Input', () => {
       const $ = render('input', examples['with autocomplete attribute'])
 
       const $component = $('.govuk-input')
-      expect($component.attr('autocomplete')).toEqual('postal-code')
+      expect($component.attr('autocomplete')).toBe('postal-code')
     })
   })
 
@@ -271,7 +271,7 @@ describe('Input', () => {
       const $ = render('input', examples.inputmode)
 
       const $component = $('.govuk-form-group > .govuk-input')
-      expect($component.attr('inputmode')).toEqual('decimal')
+      expect($component.attr('inputmode')).toBe('decimal')
     })
   })
 
@@ -299,7 +299,7 @@ describe('Input', () => {
         '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix'
       )
 
-      expect($prefix.html()).toEqual('£')
+      expect($prefix.html()).toBe('£')
     })
 
     it('allows prefix text to be passed whilst escaping HTML entities', () => {
@@ -309,7 +309,7 @@ describe('Input', () => {
         '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix'
       )
 
-      expect($prefix.html()).toEqual('&lt;span&gt;£&lt;/span&gt;')
+      expect($prefix.html()).toBe('&lt;span&gt;£&lt;/span&gt;')
     })
 
     it('allows prefix HTML to be passed un-escaped', () => {
@@ -319,7 +319,7 @@ describe('Input', () => {
         '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix'
       )
 
-      expect($prefix.html()).toEqual('<span>£</span>')
+      expect($prefix.html()).toBe('<span>£</span>')
     })
 
     it('hides the prefix from screen readers using the aria-hidden attribute', () => {
@@ -328,7 +328,7 @@ describe('Input', () => {
       const $prefix = $(
         '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix'
       )
-      expect($prefix.attr('aria-hidden')).toEqual('true')
+      expect($prefix.attr('aria-hidden')).toBe('true')
     })
 
     it('renders with classes', () => {
@@ -348,7 +348,7 @@ describe('Input', () => {
       const $prefix = $(
         '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix'
       )
-      expect($prefix.attr('data-attribute')).toEqual('value')
+      expect($prefix.attr('data-attribute')).toBe('value')
     })
   })
 
@@ -376,7 +376,7 @@ describe('Input', () => {
         '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix'
       )
 
-      expect($prefix.html()).toEqual('£')
+      expect($prefix.html()).toBe('£')
     })
 
     it('allows suffix text to be passed whilst escaping HTML entities', () => {
@@ -386,7 +386,7 @@ describe('Input', () => {
         '.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix'
       )
 
-      expect($suffix.html()).toEqual('&lt;span&gt;kg&lt;/span&gt;')
+      expect($suffix.html()).toBe('&lt;span&gt;kg&lt;/span&gt;')
     })
 
     it('allows suffix HTML to be passed un-escaped', () => {
@@ -396,7 +396,7 @@ describe('Input', () => {
         '.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix'
       )
 
-      expect($suffix.html()).toEqual('<span>kg</span>')
+      expect($suffix.html()).toBe('<span>kg</span>')
     })
 
     it('hides the suffix from screen readers using the aria-hidden attribute', () => {
@@ -405,7 +405,7 @@ describe('Input', () => {
       const $suffix = $(
         '.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix'
       )
-      expect($suffix.attr('aria-hidden')).toEqual('true')
+      expect($suffix.attr('aria-hidden')).toBe('true')
     })
 
     it('renders with classes', () => {
@@ -425,7 +425,7 @@ describe('Input', () => {
       const $suffix = $(
         '.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix'
       )
-      expect($suffix.attr('data-attribute')).toEqual('value')
+      expect($suffix.attr('data-attribute')).toBe('value')
     })
   })
 

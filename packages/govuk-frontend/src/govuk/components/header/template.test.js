@@ -13,7 +13,7 @@ describe('header', () => {
       const $ = render('header', examples.default)
 
       const $component = $('.govuk-header')
-      expect($component.attr('role')).toEqual('banner')
+      expect($component.attr('role')).toBe('banner')
     })
   })
 
@@ -22,8 +22,8 @@ describe('header', () => {
       const $ = render('header', examples.attributes)
 
       const $component = $('.govuk-header')
-      expect($component.attr('data-test-attribute')).toEqual('value')
-      expect($component.attr('data-test-attribute-2')).toEqual('value-2')
+      expect($component.attr('data-test-attribute')).toBe('value')
+      expect($component.attr('data-test-attribute-2')).toBe('value-2')
     })
 
     it('renders classes', () => {
@@ -58,7 +58,7 @@ describe('header', () => {
 
       const $component = $('.govuk-header')
       const $homepageLink = $component.find('.govuk-header__link--homepage')
-      expect($homepageLink.attr('href')).toEqual('/')
+      expect($homepageLink.attr('href')).toBe('/')
     })
   })
 
@@ -68,7 +68,7 @@ describe('header', () => {
 
       const $component = $('.govuk-header')
       const $productName = $component.find('.govuk-header__product-name')
-      expect($productName.text().trim()).toEqual('Product Name')
+      expect($productName.text().trim()).toBe('Product Name')
     })
   })
 
@@ -78,7 +78,7 @@ describe('header', () => {
 
       const $component = $('.govuk-header')
       const $serviceName = $component.find('.govuk-header__service-name')
-      expect($serviceName.text().trim()).toEqual('Service Name')
+      expect($serviceName.text().trim()).toBe('Service Name')
     })
 
     it('wraps the service name with a link when a url is provided', () => {
@@ -86,8 +86,8 @@ describe('header', () => {
 
       const $component = $('.govuk-header')
       const $serviceName = $component.find('.govuk-header__service-name')
-      expect($serviceName.get(0).tagName).toEqual('a')
-      expect($serviceName.attr('href')).toEqual('/components/header')
+      expect($serviceName.get(0).tagName).toBe('a')
+      expect($serviceName.attr('href')).toBe('/components/header')
     })
 
     it('does not use a link when no service url is provided', () => {
@@ -98,7 +98,7 @@ describe('header', () => {
 
       const $component = $('.govuk-header')
       const $serviceName = $component.find('.govuk-header__service-name')
-      expect($serviceName.get(0).tagName).toEqual('span')
+      expect($serviceName.get(0).tagName).toBe('span')
       expect($serviceName.attr('href')).toBeUndefined()
     })
   })
@@ -111,8 +111,8 @@ describe('header', () => {
       const $list = $component.find('ul.govuk-header__navigation-list')
       const $items = $list.find('li.govuk-header__navigation-item')
       const $firstItem = $items.find('a.govuk-header__link:first-child')
-      expect($items.length).toEqual(4)
-      expect($firstItem.attr('href')).toEqual('#1')
+      expect($items).toHaveLength(4)
+      expect($firstItem.attr('href')).toBe('#1')
       expect($firstItem.text()).toContain('Navigation item 1')
     })
 
@@ -122,7 +122,7 @@ describe('header', () => {
       const $component = $('.govuk-header')
       const $nav = $component.find('nav')
 
-      expect($nav.attr('aria-label')).toEqual('Menu')
+      expect($nav.attr('aria-label')).toBe('Menu')
     })
 
     it('renders navigation label correctly when custom menu button text is set', () => {
@@ -131,7 +131,7 @@ describe('header', () => {
       const $component = $('.govuk-header')
       const $nav = $component.find('nav')
 
-      expect($nav.attr('aria-label')).toEqual('Dewislen')
+      expect($nav.attr('aria-label')).toBe('Dewislen')
     })
 
     it('allows navigation label to be customised', () => {
@@ -140,7 +140,7 @@ describe('header', () => {
       const $component = $('.govuk-header')
       const $nav = $component.find('nav')
 
-      expect($nav.attr('aria-label')).toEqual('Custom navigation label')
+      expect($nav.attr('aria-label')).toBe('Custom navigation label')
     })
 
     it('renders navigation label and menu button text when these are both set', () => {
@@ -153,8 +153,8 @@ describe('header', () => {
       const $nav = $component.find('nav')
       const $button = $component.find('.govuk-header__menu-button')
 
-      expect($nav.attr('aria-label')).toEqual('Custom navigation label')
-      expect($button.text().trim()).toEqual('Custom menu button text')
+      expect($nav.attr('aria-label')).toBe('Custom navigation label')
+      expect($button.text().trim()).toBe('Custom menu button text')
     })
 
     it('renders navigation with active item', () => {
@@ -189,7 +189,7 @@ describe('header', () => {
       )
 
       const $navigationItem = $('.govuk-header__navigation-item')
-      expect($navigationItem.html().trim()).toEqual('Navigation item 1')
+      expect($navigationItem.html().trim()).toBe('Navigation item 1')
     })
 
     it('renders navigation item with html without a link', () => {
@@ -206,8 +206,8 @@ describe('header', () => {
       const $ = render('header', examples['navigation item with attributes'])
 
       const $navigationLink = $('.govuk-header__navigation-item a')
-      expect($navigationLink.attr('data-attribute')).toEqual('my-attribute')
-      expect($navigationLink.attr('data-attribute-2')).toEqual('my-attribute-2')
+      expect($navigationLink.attr('data-attribute')).toBe('my-attribute')
+      expect($navigationLink.attr('data-attribute-2')).toBe('my-attribute-2')
     })
 
     describe('menu button', () => {
@@ -216,7 +216,7 @@ describe('header', () => {
 
         const $button = $('.govuk-header__menu-button')
 
-        expect($button.attr('type')).toEqual('button')
+        expect($button.attr('type')).toBe('button')
       })
       it('has a hidden attribute on load so that it does not show an unusable button without js', () => {
         const $ = render('header', examples['with navigation'])
@@ -230,21 +230,21 @@ describe('header', () => {
 
         const $button = $('.govuk-header__menu-button')
 
-        expect($button.attr('aria-label')).toEqual('Custom button label')
+        expect($button.attr('aria-label')).toBe('Custom button label')
       })
       it('renders default text correctly', () => {
         const $ = render('header', examples['with navigation'])
 
         const $button = $('.govuk-header__menu-button')
 
-        expect($button.text().trim()).toEqual('Menu')
+        expect($button.text().trim()).toBe('Menu')
       })
       it('allows text to be customised', () => {
         const $ = render('header', examples['with custom menu button text'])
 
         const $button = $('.govuk-header__menu-button')
 
-        expect($button.text().trim()).toEqual('Dewislen')
+        expect($button.text().trim()).toBe('Dewislen')
       })
     })
   })
@@ -282,19 +282,19 @@ describe('header', () => {
     })
 
     it('defaults to Tudor crown', () => {
-      expect($svg.attr('viewBox')).toEqual('0 0 148 30')
+      expect($svg.attr('viewBox')).toBe('0 0 148 30')
     })
 
     it('sets focusable="false" so that IE does not treat it as an interactive element', () => {
-      expect($svg.attr('focusable')).toEqual('false')
+      expect($svg.attr('focusable')).toBe('false')
     })
 
     it('sets role="img" so that assistive technologies do not treat it as an embedded document', () => {
-      expect($svg.attr('role')).toEqual('img')
+      expect($svg.attr('role')).toBe('img')
     })
 
     it('sets aria-label so that assistive technologies have an accessible name to fall back to', () => {
-      expect($svg.attr('aria-label')).toEqual('GOV.UK')
+      expect($svg.attr('aria-label')).toBe('GOV.UK')
     })
 
     it('has an embedded <title> element to serve as alternative text', () => {
@@ -305,7 +305,7 @@ describe('header', () => {
       $ = render('header', examples["with St Edward's crown"])
       $svg = $('.govuk-header__logotype')
 
-      expect($svg.attr('viewBox')).toEqual('0 0 152 30')
+      expect($svg.attr('viewBox')).toBe('0 0 152 30')
     })
   })
 })

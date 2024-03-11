@@ -12,7 +12,7 @@ describe('Task List', () => {
     const $ = render('task-list', examples.default)
 
     const $component = $('.govuk-task-list')
-    expect($component.get(0).tagName).toEqual('ul')
+    expect($component.get(0).tagName).toBe('ul')
   })
 
   it('allows for custom classes on the root of the component', () => {
@@ -40,7 +40,7 @@ describe('Task List', () => {
     const $ = render('task-list', examples['custom attributes'])
 
     const $component = $('.govuk-task-list')
-    expect($component.attr('data-custom-attribute')).toEqual('custom-value')
+    expect($component.attr('data-custom-attribute')).toBe('custom-value')
   })
 
   describe('when a task has an href set', () => {
@@ -53,7 +53,7 @@ describe('Task List', () => {
 
     it('wraps the task title in a link', async () => {
       const $itemLink = $component.find('a.govuk-task-list__link')
-      expect($itemLink.attr('href')).toEqual('#')
+      expect($itemLink.attr('href')).toBe('#')
     })
 
     it('adds a with-link modifier class to the task', async () => {
@@ -87,7 +87,7 @@ describe('Task List', () => {
 
       const $itemWithLink = $('.govuk-task-list__item:first-child')
       const $itemWithLinkTitle = $itemWithLink.find('.govuk-task-list__link')
-      expect($itemWithLinkTitle.text().trim()).toEqual(
+      expect($itemWithLinkTitle.text().trim()).toBe(
         '<strong>Linked Title</strong>'
       )
     })
@@ -97,7 +97,7 @@ describe('Task List', () => {
 
       const $itemWithLink = $('.govuk-task-list__item:first-child')
       const $itemWithLinkTitle = $itemWithLink.find('.govuk-task-list__link')
-      expect($itemWithLinkTitle.html().trim()).toEqual(
+      expect($itemWithLinkTitle.html().trim()).toBe(
         '<strong>Linked Title</strong>'
       )
     })
@@ -178,7 +178,7 @@ describe('Task List', () => {
       const $ = render('task-list', examples['custom attributes'])
 
       const $component = $('.govuk-tag')
-      expect($component.attr('data-tag-attribute')).toEqual('tag-value')
+      expect($component.attr('data-tag-attribute')).toBe('tag-value')
     })
   })
 
@@ -218,7 +218,7 @@ describe('Task List', () => {
 
     it('associates the hint text with the task link using aria', () => {
       const $hintText = $component.find('.govuk-task-list__hint')
-      expect($hintText.attr('id')).toEqual('task-list-3-hint')
+      expect($hintText.attr('id')).toBe('task-list-3-hint')
 
       const $itemAssociatedWithHint = $component.find(
         `.govuk-task-list__link[aria-describedby~="${$hintText.attr('id')}"]`
@@ -251,17 +251,17 @@ describe('Task List', () => {
 
     it('uses the id prefix for the hint id', () => {
       const $hint = $component.find('.govuk-task-list__hint')
-      expect($hint.attr('id')).toEqual('my-custom-id-1-hint')
+      expect($hint.attr('id')).toBe('my-custom-id-1-hint')
     })
 
     it('uses the id prefix for the status', () => {
       const $hint = $component.find('.govuk-task-list__status')
-      expect($hint.attr('id')).toEqual('my-custom-id-1-status')
+      expect($hint.attr('id')).toBe('my-custom-id-1-status')
     })
 
     it('uses the id prefix for the aria-describedby association', () => {
       const $hint = $component.find('.govuk-task-list__link')
-      expect($hint.attr('aria-describedby')).toEqual(
+      expect($hint.attr('aria-describedby')).toBe(
         'my-custom-id-1-hint my-custom-id-1-status'
       )
     })

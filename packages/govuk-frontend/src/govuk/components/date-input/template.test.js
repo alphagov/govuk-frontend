@@ -17,35 +17,35 @@ describe('Date input', () => {
       const $ = render('date-input', examples.default)
 
       const $component = $('.govuk-date-input')
-      expect($component.attr('id')).toEqual('dob')
+      expect($component.attr('id')).toBe('dob')
     })
 
     it('renders default inputs', () => {
       const $ = render('date-input', examples.default)
 
       const $items = $('.govuk-date-input__item')
-      expect($items.length).toEqual(3)
+      expect($items).toHaveLength(3)
     })
 
     it('renders item with capitalised label text', () => {
       const $ = render('date-input', examples.default)
 
       const $firstItems = $('.govuk-date-input__item:first-child')
-      expect($firstItems.text().trim()).toEqual('Day')
+      expect($firstItems.text().trim()).toBe('Day')
     })
 
     it('renders inputs with type="text"', () => {
       const $ = render('date-input', examples.default)
 
       const $firstInput = $('.govuk-date-input__item:first-child input')
-      expect($firstInput.attr('type')).toEqual('text')
+      expect($firstInput.attr('type')).toBe('text')
     })
 
     it('renders inputs with inputmode="numeric"', () => {
       const $ = render('date-input', examples.default)
 
       const $firstInput = $('.govuk-date-input__item:first-child input')
-      expect($firstInput.attr('inputmode')).toEqual('numeric')
+      expect($firstInput.attr('inputmode')).toBe('numeric')
     })
 
     it('renders item with implicit class for label', () => {
@@ -75,7 +75,7 @@ describe('Date input', () => {
       const $ = render('date-input', examples['with empty items'])
 
       const $items = $('.govuk-date-input__item')
-      expect($items.length).toEqual(3)
+      expect($items).toHaveLength(3)
     })
 
     it('renders with default items', () => {
@@ -86,36 +86,36 @@ describe('Date input', () => {
         '.govuk-date-input:first-child .govuk-date-input__input'
       )
 
-      expect($items.length).toEqual(3)
-      expect($firstItemInput.attr('name')).toEqual('day')
+      expect($items).toHaveLength(3)
+      expect($firstItemInput.attr('name')).toBe('day')
     })
 
     it('renders item with suffixed name for input', () => {
       const $ = render('date-input', examples['complete question'])
 
       const $firstItems = $('.govuk-date-input__item:first-child input')
-      expect($firstItems.attr('name')).toEqual('dob-day')
+      expect($firstItems.attr('name')).toBe('dob-day')
     })
 
     it('renders items with id', () => {
       const $ = render('date-input', examples['with id on items'])
 
       const $firstItems = $('.govuk-date-input__item:first-child input')
-      expect($firstItems.attr('id')).toEqual('day')
+      expect($firstItems.attr('id')).toBe('day')
     })
 
     it('renders item with suffixed id for input', () => {
       const $ = render('date-input', examples['suffixed id'])
 
       const $firstItems = $('.govuk-date-input__item:first-child input')
-      expect($firstItems.attr('id')).toEqual('my-date-input-day')
+      expect($firstItems.attr('id')).toBe('my-date-input-day')
     })
 
     it('renders items with value', () => {
       const $ = render('date-input', examples['with values'])
 
       const $lastItems = $('.govuk-date-input__item:last-child input')
-      expect($lastItems.val()).toEqual('2018')
+      expect($lastItems.val()).toBe('2018')
     })
   })
 
@@ -133,7 +133,7 @@ describe('Date input', () => {
       const $ = render('date-input', examples.attributes)
 
       const $component = $('.govuk-date-input')
-      expect($component.attr('data-attribute')).toEqual('my data value')
+      expect($component.attr('data-attribute')).toBe('my data value')
     })
 
     it('renders with item attributes', () => {
@@ -143,30 +143,30 @@ describe('Date input', () => {
       const $input2 = $('.govuk-date-input__item:nth-of-type(2) input')
       const $input3 = $('.govuk-date-input__item:nth-of-type(3) input')
 
-      expect($input1.attr('data-example-day')).toEqual('day')
-      expect($input2.attr('data-example-month')).toEqual('month')
-      expect($input3.attr('data-example-year')).toEqual('year')
+      expect($input1.attr('data-example-day')).toBe('day')
+      expect($input2.attr('data-example-month')).toBe('month')
+      expect($input3.attr('data-example-year')).toBe('year')
     })
 
     it('renders items with name', () => {
       const $ = render('date-input', examples['with nested name'])
 
       const $firstItems = $('.govuk-date-input__item:first-child input')
-      expect($firstItems.attr('name')).toEqual('day[dd]')
+      expect($firstItems.attr('name')).toBe('day[dd]')
     })
 
     it('renders inputs with custom pattern attribute', () => {
       const $ = render('date-input', examples['custom pattern'])
 
       const $firstInput = $('.govuk-date-input__item:first-child input')
-      expect($firstInput.attr('pattern')).toEqual('[0-8]*')
+      expect($firstInput.attr('pattern')).toBe('[0-8]*')
     })
 
     it('renders inputs with custom inputmode="text"', () => {
       const $ = render('date-input', examples['custom inputmode'])
 
       const $firstInput = $('.govuk-date-input__item:first-child input')
-      expect($firstInput.attr('inputmode')).toEqual('text')
+      expect($firstInput.attr('inputmode')).toBe('text')
     })
 
     it('renders with a form group wrapper that has extra classes', () => {
@@ -224,7 +224,7 @@ describe('Date input', () => {
 
       const $errorMessage = $('.govuk-error-message')
 
-      expect($errorMessage.attr('id')).toEqual('dob-errors-error')
+      expect($errorMessage.attr('id')).toBe('dob-errors-error')
     })
 
     it('associates the fieldset as "described by" the error message', () => {
@@ -264,7 +264,7 @@ describe('Date input', () => {
 
       const $fieldset = $('.govuk-fieldset')
 
-      expect($fieldset.attr('role')).toEqual('group')
+      expect($fieldset.attr('role')).toBe('group')
     })
 
     it('associates the fieldset as described by both the hint and the error message', () => {
@@ -348,7 +348,7 @@ describe('Date input', () => {
       const $ = render('date-input', examples['with autocomplete values'])
 
       const $firstItems = $('.govuk-date-input__item:first-child input')
-      expect($firstItems.attr('autocomplete')).toEqual('bday-day')
+      expect($firstItems.attr('autocomplete')).toBe('bday-day')
     })
   })
 })

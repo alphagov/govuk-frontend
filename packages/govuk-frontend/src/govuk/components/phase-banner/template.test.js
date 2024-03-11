@@ -21,7 +21,7 @@ describe('Phase banner', () => {
       const $ = render('phase-banner', examples.text)
       const phaseBannerText = $('.govuk-phase-banner__text').text().trim()
 
-      expect(phaseBannerText).toEqual(
+      expect(phaseBannerText).toBe(
         'This is a new service – your feedback will help us to improve it'
       )
     })
@@ -30,7 +30,7 @@ describe('Phase banner', () => {
       const $ = render('phase-banner', examples['html as text'])
 
       const phaseBannerText = $('.govuk-phase-banner__text').html().trim()
-      expect(phaseBannerText).toEqual(
+      expect(phaseBannerText).toBe(
         'This is a new service - your &lt;a href="#" class="govuk-link"&gt;feedback&lt;/a&gt; will help us to improve it.'
       )
     })
@@ -39,7 +39,7 @@ describe('Phase banner', () => {
       const $ = render('phase-banner', examples.default)
 
       const phaseBannerText = $('.govuk-phase-banner__text').html().trim()
-      expect(phaseBannerText).toEqual(
+      expect(phaseBannerText).toBe(
         'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
       )
     })
@@ -48,8 +48,8 @@ describe('Phase banner', () => {
       const $ = render('phase-banner', examples.attributes)
 
       const $component = $('.govuk-phase-banner')
-      expect($component.attr('first-attribute')).toEqual('foo')
-      expect($component.attr('second-attribute')).toEqual('bar')
+      expect($component.attr('first-attribute')).toBe('foo')
+      expect($component.attr('second-attribute')).toBe('bar')
     })
   })
 
