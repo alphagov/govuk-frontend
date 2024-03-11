@@ -94,7 +94,10 @@ module.exports = {
         // Flow control – avoid continue and else blocks after return statements
         // in if statements
         'no-continue': 'error',
-        'no-else-return': 'error'
+        'no-else-return': 'error',
+
+        // Avoid hard to read multi assign statements
+        'no-multi-assign': 'error'
       },
       settings: {
         jsdoc: {
