@@ -24,7 +24,7 @@ describe('Inset text', () => {
       const $ = render('inset-text', examples.id)
 
       const $component = $('.govuk-inset-text')
-      expect($component.attr('id')).toEqual('my-inset-text')
+      expect($component.attr('id')).toBe('my-inset-text')
     })
 
     it('renders nested components using `call`', () => {
@@ -39,7 +39,7 @@ describe('Inset text', () => {
       const $ = render('inset-text', examples['html as text'])
 
       const content = $('.govuk-inset-text').html().trim()
-      expect(content).toEqual(
+      expect(content).toBe(
         'It can take &lt;b&gt;up to 8 weeks&lt;/b&gt; to register a lasting power of attorney if there are no mistakes in the application.'
       )
     })
@@ -55,7 +55,7 @@ describe('Inset text', () => {
         .text()
         .trim()
 
-      expect(mainContent).toEqual(
+      expect(mainContent).toBe(
         'It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.'
       )
 
@@ -74,7 +74,7 @@ describe('Inset text', () => {
       const $ = render('inset-text', examples.attributes)
 
       const $component = $('.govuk-inset-text')
-      expect($component.attr('data-attribute')).toEqual('my data value')
+      expect($component.attr('data-attribute')).toBe('my data value')
     })
   })
 })

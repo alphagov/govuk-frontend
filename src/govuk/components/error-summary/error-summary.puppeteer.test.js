@@ -15,7 +15,7 @@ describe('Error Summary', () => {
       el.getAttribute('tabindex')
     )
 
-    expect(tabindex).toEqual('-1')
+    expect(tabindex).toBe('-1')
   })
 
   it('is automatically focused when the page loads', async () => {
@@ -105,7 +105,7 @@ describe('Error Summary', () => {
         const tabindex = await page.$eval('.govuk-error-summary', (el) =>
           el.getAttribute('tabindex')
         )
-        expect(tabindex).toEqual('-1')
+        expect(tabindex).toBe('-1')
       })
 
       it('is automatically focused when the page loads', async () => {

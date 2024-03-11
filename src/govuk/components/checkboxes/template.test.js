@@ -23,8 +23,8 @@ describe('Checkboxes', () => {
     const $firstLabel = $component.find(
       '.govuk-checkboxes__item:first-child label'
     )
-    expect($firstInput.attr('name')).toEqual('nationality')
-    expect($firstInput.val()).toEqual('british')
+    expect($firstInput.attr('name')).toBe('nationality')
+    expect($firstInput.val()).toBe('british')
     expect($firstLabel.text()).toContain('British')
 
     const $lastInput = $component.find(
@@ -33,8 +33,8 @@ describe('Checkboxes', () => {
     const $lastLabel = $component.find(
       '.govuk-checkboxes__item:last-child label'
     )
-    expect($lastInput.attr('name')).toEqual('nationality')
-    expect($lastInput.val()).toEqual('other')
+    expect($lastInput.attr('name')).toBe('nationality')
+    expect($lastInput.val()).toBe('other')
     expect($lastLabel.text()).toContain('Citizen of another country')
   })
 
@@ -44,7 +44,7 @@ describe('Checkboxes', () => {
     const $component = $('.govuk-checkboxes')
     const $items = $component.find('.govuk-checkboxes__item')
 
-    expect($items.length).toEqual(2)
+    expect($items).toHaveLength(2)
   })
 
   it('render example with a divider and ‘None’ checkbox with exclusive behaviour', () => {
@@ -53,13 +53,13 @@ describe('Checkboxes', () => {
     const $component = $('.govuk-checkboxes')
 
     const $divider = $component.find('.govuk-checkboxes__divider').first()
-    expect($divider.text().trim()).toEqual('or')
+    expect($divider.text().trim()).toBe('or')
 
     const $items = $component.find('.govuk-checkboxes__item')
-    expect($items.length).toEqual(4)
+    expect($items).toHaveLength(4)
 
     const $orItemInput = $items.last().find('input').first()
-    expect($orItemInput.attr('data-behaviour')).toEqual('exclusive')
+    expect($orItemInput.attr('data-behaviour')).toBe('exclusive')
   })
 
   it('render additional label classes', () => {
@@ -90,8 +90,8 @@ describe('Checkboxes', () => {
 
     const $component = $('.govuk-checkboxes')
 
-    expect($component.attr('data-attribute')).toEqual('value')
-    expect($component.attr('data-second-attribute')).toEqual('second-value')
+    expect($component.attr('data-attribute')).toBe('value')
+    expect($component.attr('data-second-attribute')).toBe('second-value')
   })
 
   it('renders with a form group wrapper', () => {
@@ -123,8 +123,8 @@ describe('Checkboxes', () => {
       const $firstLabel = $component.find(
         '.govuk-checkboxes__item:first-child label'
       )
-      expect($firstInput.attr('id')).toEqual('nationality')
-      expect($firstLabel.attr('for')).toEqual('nationality')
+      expect($firstInput.attr('id')).toBe('nationality')
+      expect($firstLabel.attr('for')).toBe('nationality')
 
       const $lastInput = $component.find(
         '.govuk-checkboxes__item:last-child input'
@@ -132,8 +132,8 @@ describe('Checkboxes', () => {
       const $lastLabel = $component.find(
         '.govuk-checkboxes__item:last-child label'
       )
-      expect($lastInput.attr('id')).toEqual('nationality-3')
-      expect($lastLabel.attr('for')).toEqual('nationality-3')
+      expect($lastInput.attr('id')).toBe('nationality-3')
+      expect($lastLabel.attr('for')).toBe('nationality-3')
     })
 
     it('render a matching label and input using custom idPrefix', () => {
@@ -147,8 +147,8 @@ describe('Checkboxes', () => {
       const $firstLabel = $component.find(
         '.govuk-checkboxes__item:first-child label'
       )
-      expect($firstInput.attr('id')).toEqual('nationality')
-      expect($firstLabel.attr('for')).toEqual('nationality')
+      expect($firstInput.attr('id')).toBe('nationality')
+      expect($firstLabel.attr('for')).toBe('nationality')
 
       const $lastInput = $component.find(
         '.govuk-checkboxes__item:last-child input'
@@ -156,8 +156,8 @@ describe('Checkboxes', () => {
       const $lastLabel = $component.find(
         '.govuk-checkboxes__item:last-child label'
       )
-      expect($lastInput.attr('id')).toEqual('nationality-2')
-      expect($lastLabel.attr('for')).toEqual('nationality-2')
+      expect($lastInput.attr('id')).toBe('nationality-2')
+      expect($lastLabel.attr('for')).toBe('nationality-2')
     })
 
     it('render explicitly passed item ids', () => {
@@ -177,7 +177,7 @@ describe('Checkboxes', () => {
         '.govuk-checkboxes__item:first-child label'
       )
       expect($firstInput.attr('id')).toBe('item_british')
-      expect($firstLabel.attr('for')).toEqual('item_british')
+      expect($firstLabel.attr('for')).toBe('item_british')
     })
 
     it('render explicitly passed item names', () => {
@@ -199,7 +199,7 @@ describe('Checkboxes', () => {
       const $disabledInput = $component.find(
         '.govuk-checkboxes__item:last-child input'
       )
-      expect($disabledInput.attr('disabled')).toEqual('disabled')
+      expect($disabledInput.attr('disabled')).toBe('disabled')
     })
 
     it('render checked', () => {
@@ -212,8 +212,8 @@ describe('Checkboxes', () => {
       const $lastInput = $component.find(
         '.govuk-checkboxes__item:last-child input'
       )
-      expect($secondInput.attr('checked')).toEqual('checked')
-      expect($lastInput.attr('checked')).toEqual('checked')
+      expect($secondInput.attr('checked')).toBe('checked')
+      expect($lastInput.attr('checked')).toBe('checked')
     })
 
     it('checks the checkboxes in values', () => {
@@ -221,10 +221,10 @@ describe('Checkboxes', () => {
 
       const $component = $('.govuk-checkboxes')
       const $british = $component.find('input[value="british"]')
-      expect($british.attr('checked')).toEqual('checked')
+      expect($british.attr('checked')).toBe('checked')
 
       const $other = $component.find('input[value="other"]')
-      expect($other.attr('checked')).toEqual('checked')
+      expect($other.attr('checked')).toBe('checked')
     })
 
     it('allows item.checked to override values', () => {
@@ -243,14 +243,14 @@ describe('Checkboxes', () => {
         const $firstInput = $component.find(
           '.govuk-checkboxes__item:first-child input'
         )
-        expect($firstInput.attr('data-attribute')).toEqual('ABC')
-        expect($firstInput.attr('data-second-attribute')).toEqual('DEF')
+        expect($firstInput.attr('data-attribute')).toBe('ABC')
+        expect($firstInput.attr('data-second-attribute')).toBe('DEF')
 
         const $lastInput = $component.find(
           '.govuk-checkboxes__item:last-child input'
         )
-        expect($lastInput.attr('data-attribute')).toEqual('GHI')
-        expect($lastInput.attr('data-second-attribute')).toEqual('JKL')
+        expect($lastInput.attr('data-attribute')).toBe('GHI')
+        expect($lastInput.attr('data-second-attribute')).toBe('JKL')
       })
     })
   })
@@ -344,9 +344,7 @@ describe('Checkboxes', () => {
       const $ = render('checkboxes', examples['empty conditional'])
 
       const $component = $('.govuk-checkboxes')
-      expect($component.find('.govuk-checkboxes__conditional').length).toEqual(
-        0
-      )
+      expect($component.find('.govuk-checkboxes__conditional')).toHaveLength(0)
     })
 
     it('does not associate checkboxes with empty conditionals', () => {
@@ -368,14 +366,14 @@ describe('Checkboxes', () => {
       const $ = render('checkboxes', examples['with error and idPrefix'])
 
       const errorMessageId = $('.govuk-error-message').attr('id')
-      expect(errorMessageId).toEqual('id-prefix-error')
+      expect(errorMessageId).toBe('id-prefix-error')
     })
 
     it('falls back to using the name for the error message id', () => {
       const $ = render('checkboxes', examples['with error message'])
 
       const errorMessageId = $('.govuk-error-message').attr('id')
-      expect(errorMessageId).toEqual('waste-error')
+      expect(errorMessageId).toBe('waste-error')
     })
 
     it('associates the fieldset as "described by" the error message', () => {

@@ -47,7 +47,7 @@ describe('/components/accordion', () => {
               '.govuk-accordion .govuk-accordion__section .govuk-accordion-nav__chevron'
             ).length
         )
-        expect(numberOfIcons).toEqual(0)
+        expect(numberOfIcons).toBe(0)
       })
     })
 
@@ -73,7 +73,7 @@ describe('/components/accordion', () => {
               .getAttribute('aria-expanded')
           }, i)
 
-          expect(sectionHeaderButtonExpanded).toEqual('false')
+          expect(sectionHeaderButtonExpanded).toBe('false')
         }
       })
 
@@ -94,7 +94,7 @@ describe('/components/accordion', () => {
         )
         await page.click('.govuk-accordion__show-all')
 
-        expect(openOrCloseAllButtonText).toEqual('Hide all sections')
+        expect(openOrCloseAllButtonText).toBe('Hide all sections')
       })
 
       it('should open both sections when the Show all sections button is clicked', async () => {
@@ -143,7 +143,7 @@ describe('/components/accordion', () => {
               .getAttribute('aria-expanded')
           }, i)
 
-          expect(sectionHeaderButtonExpanded).toEqual('true')
+          expect(sectionHeaderButtonExpanded).toBe('true')
         }
 
         const openOrCloseAllButtonText = await page.evaluate(
@@ -152,7 +152,7 @@ describe('/components/accordion', () => {
               .textContent
         )
 
-        expect(openOrCloseAllButtonText).toEqual('Hide all sections')
+        expect(openOrCloseAllButtonText).toBe('Hide all sections')
       })
 
       it('should maintain the expanded state after a page refresh', async () => {
@@ -222,7 +222,7 @@ describe('/components/accordion', () => {
             ).tagName
         )
 
-        expect(buttonTag).toEqual('BUTTON')
+        expect(buttonTag).toBe('BUTTON')
       })
 
       it('should contain a heading text container', async () => {
@@ -311,11 +311,11 @@ describe('/components/accordion', () => {
               ).nextElementSibling.innerHTML
           )
 
-          expect(commaAfterHeadingTextClassName).toEqual(
+          expect(commaAfterHeadingTextClassName).toBe(
             'govuk-visually-hidden govuk-accordion__section-heading-divider'
           )
 
-          expect(commaAfterHeadingTextContent).toEqual(', ')
+          expect(commaAfterHeadingTextContent).toBe(', ')
         })
 
         it('should contain hidden comma " ," after the summary line for when CSS does not load', async () => {
@@ -337,11 +337,11 @@ describe('/components/accordion', () => {
                 .nextElementSibling.innerHTML
           )
 
-          expect(commaAfterHeadingTextClassName).toEqual(
+          expect(commaAfterHeadingTextClassName).toBe(
             'govuk-visually-hidden govuk-accordion__section-heading-divider'
           )
 
-          expect(commaAfterHeadingTextContent).toEqual(', ')
+          expect(commaAfterHeadingTextContent).toBe(', ')
         })
       })
 
@@ -400,7 +400,7 @@ describe('/components/accordion', () => {
               .textContent
         )
 
-        expect(ShowOrHideButtonText).toEqual('Hide')
+        expect(ShowOrHideButtonText).toBe('Hide')
       })
 
       it('should have a data-nosnippet attribute on the "Show / hide" container to hide it from search result snippets', async () => {
@@ -412,7 +412,7 @@ describe('/components/accordion', () => {
             .getAttribute('data-nosnippet')
         )
 
-        expect(dataNoSnippetAttribute).toEqual('')
+        expect(dataNoSnippetAttribute).toBe('')
       })
 
       describe('accessible name', () => {
@@ -679,10 +679,10 @@ describe('/components/accordion', () => {
                   .querySelector('.govuk-accordion__section-toggle-text')
                   .innerHTML.trim()
               }))
-            expect(toggleAllContent).toEqual(
+            expect(toggleAllContent).toBe(
               'Show &lt;strong&gt;all sections&lt;/strong&gt;'
             )
-            expect(firstSectionToggleContent).toEqual(
+            expect(firstSectionToggleContent).toBe(
               'Show &lt;strong&gt;this section&lt;/strong&gt;'
             )
           })

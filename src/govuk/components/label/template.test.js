@@ -13,7 +13,7 @@ describe('Label', () => {
       const $ = render('label', examples.default)
 
       const $component = $('.govuk-label')
-      expect($component.get(0).tagName).toEqual('label')
+      expect($component.get(0).tagName).toBe('label')
     })
 
     it('does not output anything if no html or text is provided', () => {
@@ -21,7 +21,7 @@ describe('Label', () => {
 
       const $component = $('.govuk-label')
 
-      expect($component.length).toEqual(0)
+      expect($component).toHaveLength(0)
     })
 
     it('allows additional classes to be added to the component', () => {
@@ -35,14 +35,14 @@ describe('Label', () => {
       const $ = render('label', examples.default)
       const labelText = $('.govuk-label').text().trim()
 
-      expect(labelText).toEqual('National Insurance number')
+      expect(labelText).toBe('National Insurance number')
     })
 
     it('allows label text to be passed whilst escaping HTML entities', () => {
       const $ = render('label', examples['html as text'])
 
       const labelText = $('.govuk-label').html().trim()
-      expect(labelText).toEqual(
+      expect(labelText).toBe(
         'National Insurance number, &lt;em&gt;NINO&lt;/em&gt;'
       )
     })
@@ -51,14 +51,14 @@ describe('Label', () => {
       const $ = render('label', examples.html)
 
       const labelText = $('.govuk-label').html().trim()
-      expect(labelText).toEqual('National Insurance number <em>NINO</em>')
+      expect(labelText).toBe('National Insurance number <em>NINO</em>')
     })
 
     it('renders for attribute if specified', () => {
       const $ = render('label', examples.for)
 
       const labelForAttr = $('.govuk-label').attr('for')
-      expect(labelForAttr).toEqual('test-target-element')
+      expect(labelForAttr).toBe('test-target-element')
     })
 
     it('can be nested inside an H1 using isPageHeading', () => {
@@ -72,8 +72,8 @@ describe('Label', () => {
       const $ = render('label', examples.attributes)
 
       const $component = $('.govuk-label')
-      expect($component.attr('first-attribute')).toEqual('foo')
-      expect($component.attr('second-attribute')).toEqual('bar')
+      expect($component.attr('first-attribute')).toBe('foo')
+      expect($component.attr('second-attribute')).toBe('bar')
     })
   })
 })

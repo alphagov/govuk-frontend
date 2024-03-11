@@ -69,7 +69,7 @@ describe('PostCSS config', () => {
         const property = { value: 'development' }
         await Declaration['--govuk-frontend-version'](property)
 
-        expect(property.value).toEqual('"development"')
+        expect(property.value).toBe('"development"')
       })
 
       it('Adds version number for NODE_ENV=production', async () => {
@@ -83,7 +83,7 @@ describe('PostCSS config', () => {
         const property = { value: 'development' }
         await Declaration['--govuk-frontend-version'](property)
 
-        expect(property.value).toEqual(`"${pkg.version}"`)
+        expect(property.value).toBe(`"${pkg.version}"`)
       })
 
       it('Adds version number for NODE_ENV=test', async () => {
@@ -97,7 +97,7 @@ describe('PostCSS config', () => {
         const property = { value: 'development' }
         await Declaration['--govuk-frontend-version'](property)
 
-        expect(property.value).toEqual(`"${pkg.version}"`)
+        expect(property.value).toBe(`"${pkg.version}"`)
       })
     })
 

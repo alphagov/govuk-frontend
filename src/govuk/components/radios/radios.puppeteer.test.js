@@ -56,8 +56,8 @@ describe('Radios', () => {
         })
 
         it('includes the expected number of inputs and conditionals', () => {
-          expect($inputs.length).toBe(3)
-          expect($conditionals.length).toBe(3)
+          expect($inputs).toHaveLength(3)
+          expect($conditionals).toHaveLength(3)
         })
 
         it('has no ARIA attributes applied', async () => {
@@ -68,8 +68,8 @@ describe('Radios', () => {
             '.govuk-radios__input[aria-controls]'
           )
 
-          expect($inputsWithAriaExpanded.length).toBe(0)
-          expect($inputsWithAriaControls.length).toBe(0)
+          expect($inputsWithAriaExpanded).toHaveLength(0)
+          expect($inputsWithAriaControls).toHaveLength(0)
         })
 
         it('falls back to making all conditional content visible', async () => {

@@ -25,7 +25,7 @@ describe('GOV.UK Frontend', () => {
         'initAll'
       )
 
-      expect(typeofInitAll).toEqual('function')
+      expect(typeofInitAll).toBe('function')
     })
 
     it('exports Components', async () => {

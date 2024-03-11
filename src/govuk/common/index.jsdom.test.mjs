@@ -161,15 +161,15 @@ describe('Common JS utilities', () => {
       )
 
       // With known namespace but non-object type, default to no config
-      expect(nonObject1).toEqual(undefined)
-      expect(nonObject2).toEqual(undefined)
-      expect(nonObject3).toEqual(undefined)
+      expect(nonObject1).toBeUndefined()
+      expect(nonObject2).toBeUndefined()
+      expect(nonObject3).toBeUndefined()
 
       // With known namespace, default to empty config
       expect(namespaceKnown).toEqual({})
 
       // With unknown namespace, default to no config
-      expect(namespaceUnknown).toEqual(undefined)
+      expect(namespaceUnknown).toBeUndefined()
     })
 
     it('can extract config from key-value pairs', () => {

@@ -5,7 +5,7 @@ describe('closestAttributeValue', () => {
     const $element = document.createElement('div')
     $element.setAttribute('lang', 'en-GB')
 
-    expect(closestAttributeValue($element, 'lang')).toEqual('en-GB')
+    expect(closestAttributeValue($element, 'lang')).toBe('en-GB')
   })
 
   it('returns the value of the closest parent with the attribute if it exists', () => {
@@ -21,7 +21,7 @@ describe('closestAttributeValue', () => {
       `
 
     const $element = template.content.querySelector('.target')
-    expect(closestAttributeValue($element, 'lang')).toEqual('en-GB')
+    expect(closestAttributeValue($element, 'lang')).toBe('en-GB')
   })
 
   it('returns null if neither the element or a parent have the attribute', () => {

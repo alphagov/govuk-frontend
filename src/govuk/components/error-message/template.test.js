@@ -12,7 +12,7 @@ describe('Error message', () => {
     const $ = render('error-message', examples.id)
 
     const $component = $('.govuk-error-message')
-    expect($component.attr('id')).toEqual('my-error-message-id')
+    expect($component.attr('id')).toBe('my-error-message-id')
   })
 
   it('allows additional classes to specified', () => {
@@ -40,15 +40,15 @@ describe('Error message', () => {
     const $ = render('error-message', examples.attributes)
 
     const $component = $('.govuk-error-message')
-    expect($component.attr('data-test')).toEqual('attribute')
-    expect($component.attr('id')).toEqual('my-error-message')
+    expect($component.attr('data-test')).toBe('attribute')
+    expect($component.attr('id')).toBe('my-error-message')
   })
 
   it('includes a visually hidden "Error" prefix by default', () => {
     const $ = render('error-message', examples.default)
 
     const $component = $('.govuk-error-message')
-    expect($component.text().trim()).toEqual(
+    expect($component.text().trim()).toBe(
       'Error: Error message about full name goes here'
     )
   })
@@ -57,14 +57,14 @@ describe('Error message', () => {
     const $ = render('error-message', examples['with visually hidden text'])
 
     const $component = $('.govuk-error-message')
-    expect($component.text().trim()).toEqual('Gwall: Rhowch eich enw llawn')
+    expect($component.text().trim()).toBe('Gwall: Rhowch eich enw llawn')
   })
 
   it('allows the visually hidden prefix to be removed', () => {
     const $ = render('error-message', examples['visually hidden text removed'])
 
     const $component = $('.govuk-error-message')
-    expect($component.text().trim()).toEqual('There is an error on line 42')
+    expect($component.text().trim()).toBe('There is an error on line 42')
   })
 
   it('allows the visually hidden prefix to be removed and then manually added with HTML', () => {

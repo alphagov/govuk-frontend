@@ -23,16 +23,14 @@ describe('Notification-banner', () => {
       const $ = render('notification-banner', examples.default)
       const $component = $('.govuk-notification-banner')
 
-      expect($component.attr('role')).toEqual('region')
+      expect($component.attr('role')).toBe('region')
     })
 
     it('has data-module attribute to initialise JavaScript', () => {
       const $ = render('notification-banner', examples.default)
       const $component = $('.govuk-notification-banner')
 
-      expect($component.attr('data-module')).toEqual(
-        'govuk-notification-banner'
-      )
+      expect($component.attr('data-module')).toBe('govuk-notification-banner')
     })
 
     it('renders header container', () => {
@@ -46,21 +44,21 @@ describe('Notification-banner', () => {
       const $ = render('notification-banner', examples.default)
       const $title = $('.govuk-notification-banner__title')
 
-      expect($title.get(0).tagName).toEqual('h2')
+      expect($title.get(0).tagName).toBe('h2')
     })
 
     it('renders default title text', () => {
       const $ = render('notification-banner', examples.default)
       const $title = $('.govuk-notification-banner__title')
 
-      expect($title.html().trim()).toEqual('Important')
+      expect($title.html().trim()).toBe('Important')
     })
 
     it('renders content', () => {
       const $ = render('notification-banner', examples.default)
       const $content = $('.govuk-notification-banner__heading')
 
-      expect($content.html().trim()).toEqual(
+      expect($content.html().trim()).toBe(
         'This publication was withdrawn on 7 March 2014.'
       )
     })
@@ -71,14 +69,14 @@ describe('Notification-banner', () => {
       const $ = render('notification-banner', examples['custom title'])
       const $title = $('.govuk-notification-banner__title')
 
-      expect($title.html().trim()).toEqual('Important information')
+      expect($title.html().trim()).toBe('Important information')
     })
 
     it('renders custom content', () => {
       const $ = render('notification-banner', examples['custom text'])
       const $content = $('.govuk-notification-banner__heading')
 
-      expect($content.html().trim()).toEqual(
+      expect($content.html().trim()).toBe(
         'This publication was withdrawn on 7 March 2014.'
       )
     })
@@ -90,14 +88,14 @@ describe('Notification-banner', () => {
       )
       const $title = $('.govuk-notification-banner__title')
 
-      expect($title.get(0).tagName).toEqual('h3')
+      expect($title.get(0).tagName).toBe('h3')
     })
 
     it('renders custom role', () => {
       const $ = render('notification-banner', examples['custom role'])
       const $component = $('.govuk-notification-banner')
 
-      expect($component.attr('role')).toEqual('banner')
+      expect($component.attr('role')).toBe('banner')
     })
 
     it('renders aria-labelledby attribute matching the title id when role overridden to region', () => {
@@ -115,14 +113,14 @@ describe('Notification-banner', () => {
       const $ = render('notification-banner', examples['custom title id'])
       const $title = $('.govuk-notification-banner__title')
 
-      expect($title.attr('id')).toEqual('my-id')
+      expect($title.attr('id')).toBe('my-id')
     })
 
     it('has an aria-labelledby attribute matching the title id', () => {
       const $ = render('notification-banner', examples['custom title id'])
       const ariaAttr = $('.govuk-notification-banner').attr('aria-labelledby')
 
-      expect(ariaAttr).toEqual('my-id')
+      expect(ariaAttr).toBe('my-id')
     })
 
     it('adds data-disable-auto-focus="true" if disableAutoFocus is true', () => {
@@ -156,7 +154,7 @@ describe('Notification-banner', () => {
       const $ = render('notification-banner', examples.attributes)
 
       const $component = $('.govuk-notification-banner')
-      expect($component.attr('my-attribute')).toEqual('value')
+      expect($component.attr('my-attribute')).toBe('value')
     })
   })
 
@@ -165,7 +163,7 @@ describe('Notification-banner', () => {
       const $ = render('notification-banner', examples['title html as text'])
       const $title = $('.govuk-notification-banner__title')
 
-      expect($title.html().trim()).toEqual(
+      expect($title.html().trim()).toBe(
         '&lt;span&gt;Important information&lt;/span&gt;'
       )
     })
@@ -184,7 +182,7 @@ describe('Notification-banner', () => {
       const $ = render('notification-banner', examples['title as html'])
       const $title = $('.govuk-notification-banner__title')
 
-      expect($title.html().trim()).toEqual('<span>Important information</span>')
+      expect($title.html().trim()).toBe('<span>Important information</span>')
     })
 
     it('renders content as escaped html when passed as text', () => {
@@ -235,14 +233,14 @@ describe('Notification-banner', () => {
       const $ = render('notification-banner', examples['with type as success'])
 
       const $component = $('.govuk-notification-banner')
-      expect($component.attr('role')).toEqual('alert')
+      expect($component.attr('role')).toBe('alert')
     })
 
     it('does render aria-labelledby', () => {
       const $ = render('notification-banner', examples['with type as success'])
       const $component = $('.govuk-notification-banner')
 
-      expect($component.attr('aria-labelledby')).toEqual(
+      expect($component.attr('aria-labelledby')).toBe(
         'govuk-notification-banner-title'
       )
     })
@@ -251,14 +249,14 @@ describe('Notification-banner', () => {
       const $ = render('notification-banner', examples['with type as success'])
       const $component = $('.govuk-notification-banner__title')
 
-      expect($component.attr('id')).toEqual('govuk-notification-banner-title')
+      expect($component.attr('id')).toBe('govuk-notification-banner-title')
     })
 
     it('renders default success title text', () => {
       const $ = render('notification-banner', examples['with type as success'])
       const $title = $('.govuk-notification-banner__title')
 
-      expect($title.html().trim()).toEqual('Success')
+      expect($title.html().trim()).toBe('Success')
     })
 
     it('renders custom title id and aria-labelledby', () => {
@@ -269,8 +267,8 @@ describe('Notification-banner', () => {
       const $component = $('.govuk-notification-banner')
       const $title = $('.govuk-notification-banner__title')
 
-      expect($component.attr('aria-labelledby')).toEqual('my-id')
-      expect($title.attr('id')).toEqual('my-id')
+      expect($component.attr('aria-labelledby')).toBe('my-id')
+      expect($title.attr('id')).toBe('my-id')
     })
   })
 
@@ -279,7 +277,7 @@ describe('Notification-banner', () => {
       const $ = render('notification-banner', examples['with invalid type'])
       const $component = $('.govuk-notification-banner')
 
-      expect($component.attr('role')).toEqual('region')
+      expect($component.attr('role')).toBe('region')
     })
 
     it('aria-labelledby attribute matches the title id', () => {

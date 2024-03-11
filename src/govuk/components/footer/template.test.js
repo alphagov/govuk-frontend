@@ -12,15 +12,15 @@ describe('footer', () => {
     const $ = render('footer', examples.default)
 
     const $component = $('.govuk-footer')
-    expect($component.attr('role')).toEqual('contentinfo')
+    expect($component.attr('role')).toBe('contentinfo')
   })
 
   it('renders attributes correctly', () => {
     const $ = render('footer', examples.attributes)
 
     const $component = $('.govuk-footer')
-    expect($component.attr('data-test-attribute')).toEqual('value')
-    expect($component.attr('data-test-attribute-2')).toEqual('value-2')
+    expect($component.attr('data-test-attribute')).toBe('value')
+    expect($component.attr('data-test-attribute-2')).toBe('value-2')
   })
 
   it('renders classes', () => {
@@ -45,7 +45,7 @@ describe('footer', () => {
 
       const $component = $('.govuk-footer')
       const $heading = $component.find('h2.govuk-visually-hidden')
-      expect($heading.text()).toEqual('Items')
+      expect($heading.text()).toBe('Items')
     })
 
     it('renders default heading when none supplied', () => {
@@ -53,13 +53,13 @@ describe('footer', () => {
 
       const $component = $('.govuk-footer')
       const $heading = $component.find('h2.govuk-visually-hidden')
-      expect($heading.text()).toEqual('Support links')
+      expect($heading.text()).toBe('Support links')
     })
 
     it("doesn't render footer link list when no items are provided", () => {
       const $ = render('footer', examples['with empty meta items'])
 
-      expect($('.govuk-footer__inline-list').length).toEqual(0)
+      expect($('.govuk-footer__inline-list')).toHaveLength(0)
     })
 
     it('renders links', () => {
@@ -68,8 +68,8 @@ describe('footer', () => {
       const $list = $('ul.govuk-footer__inline-list')
       const $items = $list.find('li.govuk-footer__inline-list-item')
       const $firstItem = $items.find('a.govuk-footer__link:first-child')
-      expect($items.length).toEqual(3)
-      expect($firstItem.attr('href')).toEqual('#1')
+      expect($items).toHaveLength(3)
+      expect($firstItem.attr('href')).toBe('#1')
       expect($firstItem.text()).toContain('Item 1')
     })
 
@@ -100,8 +100,8 @@ describe('footer', () => {
       const $ = render('footer', examples['with meta item attributes'])
 
       const $metaLink = $('.govuk-footer__meta .govuk-footer__link')
-      expect($metaLink.attr('data-attribute')).toEqual('my-attribute')
-      expect($metaLink.attr('data-attribute-2')).toEqual('my-attribute-2')
+      expect($metaLink.attr('data-attribute')).toBe('my-attribute')
+      expect($metaLink.attr('data-attribute-2')).toBe('my-attribute-2')
     })
   })
 
@@ -109,7 +109,7 @@ describe('footer', () => {
     it('no items displayed when no item array is provided', () => {
       const $ = render('footer', examples['with empty navigation'])
 
-      expect($('.govuk-footer__navigation').length).toEqual(0)
+      expect($('.govuk-footer__navigation')).toHaveLength(0)
     })
 
     it('renders headings', () => {
@@ -119,8 +119,8 @@ describe('footer', () => {
       const $lastSection = $('.govuk-footer__section:last-child')
       const $firstHeading = $firstSection.find('h2.govuk-footer__heading')
       const $lastHeading = $lastSection.find('h2.govuk-footer__heading')
-      expect($firstHeading.text()).toEqual('Two column list')
-      expect($lastHeading.text()).toEqual('Single column list')
+      expect($firstHeading.text()).toBe('Two column list')
+      expect($lastHeading.text()).toBe('Single column list')
     })
 
     it('renders lists of links', () => {
@@ -129,8 +129,8 @@ describe('footer', () => {
       const $list = $('ul.govuk-footer__list')
       const $items = $list.find('li.govuk-footer__list-item')
       const $firstItem = $items.find('a.govuk-footer__link:first-child')
-      expect($items.length).toEqual(9)
-      expect($firstItem.attr('href')).toEqual('#1')
+      expect($items).toHaveLength(9)
+      expect($firstItem.attr('href')).toBe('#1')
       expect($firstItem.text()).toContain('Navigation item 1')
     })
 
@@ -138,8 +138,8 @@ describe('footer', () => {
       const $ = render('footer', examples['with navigation item attributes'])
 
       const $navigationLink = $('.govuk-footer__list .govuk-footer__link')
-      expect($navigationLink.attr('data-attribute')).toEqual('my-attribute')
-      expect($navigationLink.attr('data-attribute-2')).toEqual('my-attribute-2')
+      expect($navigationLink.attr('data-attribute')).toBe('my-attribute')
+      expect($navigationLink.attr('data-attribute-2')).toBe('my-attribute-2')
     })
 
     it('renders lists in columns', () => {
