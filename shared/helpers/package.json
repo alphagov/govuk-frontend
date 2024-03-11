@@ -28,7 +28,7 @@
     "outdent": "^0.8.0",
     "puppeteer": "^22.4.1",
     "sass-embedded": "^1.71.1",
-    "slug": "^8.2.3"
+    "slug": "^9.0.0"
   },
   "peerDependencies": {
     "@puppeteer/browsers": "^2.1.0",
