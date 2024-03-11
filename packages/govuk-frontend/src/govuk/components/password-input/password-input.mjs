@@ -190,7 +190,7 @@ export class PasswordInput extends GOVUKFrontendComponent {
     // Skip initial announcement (e.g. on page load) but always set
     // aria-live ready for the first button press to be announced
     if (!this.$screenReaderStatusMessage.hasAttribute('aria-live')) {
-      this.$screenReaderStatusMessage.setAttribute('aria-live', 'polite')
+      this.$screenReaderStatusMessage.setAttribute('aria-live', 'assertive')
     }
 
     // Update status change text
