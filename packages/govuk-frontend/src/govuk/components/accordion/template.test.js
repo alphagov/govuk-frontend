@@ -13,7 +13,7 @@ describe('Accordion', () => {
       const $ = render('accordion', examples.default)
       const $componentHeadingButton = $('.govuk-accordion__section-button')
 
-      expect($componentHeadingButton.html().trim()).toEqual('Section A')
+      expect($componentHeadingButton.html().trim()).toBe('Section A')
     })
 
     it('renders with content as text, wrapped in styled paragraph', () => {
@@ -21,7 +21,7 @@ describe('Accordion', () => {
       const $componentContent = $('.govuk-accordion__section-content').first()
 
       expect($componentContent.find('p').hasClass('govuk-body')).toBeTruthy()
-      expect($componentContent.text().trim()).toEqual(
+      expect($componentContent.text().trim()).toBe(
         'We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.'
       )
     })
@@ -30,15 +30,15 @@ describe('Accordion', () => {
       const $ = render('accordion', examples.default)
       const $componentContent = $('.govuk-accordion__section-content').last()
 
-      expect($componentContent.find('p.gvouk-body').length).toEqual(0)
-      expect($componentContent.text().trim()).toEqual('Example item 2')
+      expect($componentContent.find('p.gvouk-body')).toHaveLength(0)
+      expect($componentContent.text().trim()).toBe('Example item 2')
     })
 
     it('renders with id', () => {
       const $ = render('accordion', examples.default)
 
       const $component = $('.govuk-accordion')
-      expect($component.attr('id')).toEqual('default-example')
+      expect($component.attr('id')).toBe('default-example')
     })
   })
 
@@ -53,21 +53,21 @@ describe('Accordion', () => {
     it('renders with attributes', () => {
       const $ = render('accordion', examples.attributes)
       const $component = $('.govuk-accordion')
-      expect($component.attr('data-attribute')).toEqual('value')
+      expect($component.attr('data-attribute')).toBe('value')
     })
 
     it('renders with specified heading level', () => {
       const $ = render('accordion', examples['custom heading level'])
       const $componentHeading = $('.govuk-accordion__section-heading')
 
-      expect($componentHeading.get(0).tagName).toEqual('h3')
+      expect($componentHeading.get(0).tagName).toBe('h3')
     })
 
     it('renders with heading button html', () => {
       const $ = render('accordion', examples['heading html'])
       const $componentHeadingButton = $('.govuk-accordion__section-button')
 
-      expect($componentHeadingButton.html().trim()).toEqual(
+      expect($componentHeadingButton.html().trim()).toBe(
         '<span class="myClass">Section A</span>'
       )
     })
@@ -85,7 +85,7 @@ describe('Accordion', () => {
       const $ = render('accordion', examples['with additional descriptions'])
       const $componentSummary = $('.govuk-accordion__section-summary').first()
 
-      expect($componentSummary.text().trim()).toEqual('Additional description')
+      expect($componentSummary.text().trim()).toBe('Additional description')
     })
 
     it('renders list without falsely values', () => {
@@ -93,25 +93,25 @@ describe('Accordion', () => {
       const $component = $('.govuk-accordion')
       const $items = $component.find('.govuk-accordion__section')
 
-      expect($items.length).toEqual(2)
+      expect($items).toHaveLength(2)
     })
 
     it('renders with localisation data attributes', () => {
       const $ = render('accordion', examples['with translations'])
       const $component = $('.govuk-accordion')
 
-      expect($component.attr('data-i18n.hide-all-sections')).toEqual(
+      expect($component.attr('data-i18n.hide-all-sections')).toBe(
         'Collapse all sections'
       )
-      expect($component.attr('data-i18n.show-all-sections')).toEqual(
+      expect($component.attr('data-i18n.show-all-sections')).toBe(
         'Expand all sections'
       )
-      expect($component.attr('data-i18n.hide-section')).toEqual('Collapse')
-      expect($component.attr('data-i18n.hide-section-aria-label')).toEqual(
+      expect($component.attr('data-i18n.hide-section')).toBe('Collapse')
+      expect($component.attr('data-i18n.hide-section-aria-label')).toBe(
         'Collapse this section'
       )
-      expect($component.attr('data-i18n.show-section')).toEqual('Expand')
-      expect($component.attr('data-i18n.show-section-aria-label')).toEqual(
+      expect($component.attr('data-i18n.show-section')).toBe('Expand')
+      expect($component.attr('data-i18n.show-section-aria-label')).toBe(
         'Expand this section'
       )
     })
@@ -120,7 +120,7 @@ describe('Accordion', () => {
       const $ = render('accordion', examples['with remember expanded off'])
       const $component = $('.govuk-accordion')
 
-      expect($component.attr('data-remember-expanded')).toEqual('false')
+      expect($component.attr('data-remember-expanded')).toBe('false')
     })
   })
 })

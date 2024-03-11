@@ -17,14 +17,14 @@ describe('File upload', () => {
       const $ = render('file-upload', examples.default)
 
       const $component = $('.govuk-file-upload')
-      expect($component.attr('id')).toEqual('file-upload-1')
+      expect($component.attr('id')).toBe('file-upload-1')
     })
 
     it('renders with name', () => {
       const $ = render('file-upload', examples.default)
 
       const $component = $('.govuk-file-upload')
-      expect($component.attr('name')).toEqual('file-upload-1')
+      expect($component.attr('name')).toBe('file-upload-1')
     })
 
     it('renders with a form group wrapper', () => {
@@ -49,7 +49,7 @@ describe('File upload', () => {
       const $ = render('file-upload', examples['with value'])
 
       const $component = $('.govuk-file-upload')
-      expect($component.val()).toEqual('C:\\fakepath\\myphoto.jpg')
+      expect($component.val()).toBe('C:\\fakepath\\myphoto.jpg')
     })
 
     it('renders with aria-describedby', () => {
@@ -63,7 +63,7 @@ describe('File upload', () => {
       const $ = render('file-upload', examples.attributes)
 
       const $component = $('.govuk-file-upload')
-      expect($component.attr('accept')).toEqual('.jpg, .jpeg, .png')
+      expect($component.attr('accept')).toBe('.jpg, .jpeg, .png')
     })
 
     it('renders with a form group wrapper that has extra classes', () => {
@@ -212,7 +212,7 @@ describe('File upload', () => {
       const $ = render('file-upload', examples.default)
 
       const $label = $('.govuk-label')
-      expect($label.attr('for')).toEqual('file-upload-1')
+      expect($label.attr('for')).toBe('file-upload-1')
     })
   })
 })

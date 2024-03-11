@@ -14,7 +14,7 @@ describe('attributes.njk', () => {
       )
 
       // Note the starting space so we ensure it doesn't stick to possible other previous attributes
-      expect(attributes).toEqual(' data-attribute="value"')
+      expect(attributes).toBe(' data-attribute="value"')
     })
 
     it('renders multiple attributes', () => {
@@ -33,7 +33,7 @@ describe('attributes.njk', () => {
         }
       )
 
-      expect(attributes).toEqual(
+      expect(attributes).toBe(
         ' data-attribute="value" data-second-attribute="second-value" data-third-attribute="third-value"'
       )
     })
@@ -52,7 +52,7 @@ describe('attributes.njk', () => {
       )
 
       // Note that `aria-hidden` and `focusable` are not converted to boolean attributes
-      expect(attributes).toEqual(
+      expect(attributes).toBe(
         ' viewBox="0 0 15 13" focusable="false" aria-hidden="true"'
       )
     })
@@ -75,7 +75,7 @@ describe('attributes.njk', () => {
       )
 
       // Note that `aria-hidden` and `focusable` are not converted to boolean attributes
-      expect(attributes).toEqual(
+      expect(attributes).toBe(
         ' viewBox="0 0 15 13" focusable="false" aria-hidden="true"'
       )
     })
@@ -118,7 +118,7 @@ describe('attributes.njk', () => {
 
       // Note that all non-optional values are rendered to strings by Nunjucks,
       // even true/false which only become boolean attributes when optional
-      expect(attributes).toEqual(
+      expect(attributes).toBe(
         ' example-empty-1="" example-empty-2="" example-falsy-1="" example-falsy-2="0" example-falsy-3="false"'
       )
     })
@@ -160,7 +160,7 @@ describe('attributes.njk', () => {
       )
 
       // Note that null, undefined and false are skipped, intentionally falsy values are preserved
-      expect(attributes).toEqual(' example-falsy-1="" example-falsy-2="0"')
+      expect(attributes).toBe(' example-falsy-1="" example-falsy-2="0"')
     })
 
     it('renders attribute when (string) `"true"` with `optional: true` as strings`', () => {
@@ -179,7 +179,7 @@ describe('attributes.njk', () => {
       )
 
       // Note that `checked` defaults to a string value unless strictly a boolean
-      expect(attributes).toEqual(' type="radio" checked="true"')
+      expect(attributes).toBe(' type="radio" checked="true"')
     })
 
     it('renders attribute when (string) `"false"` with `optional: true` as strings', () => {
@@ -198,7 +198,7 @@ describe('attributes.njk', () => {
       )
 
       // Note that `checked` defaults to a string value unless strictly a boolean
-      expect(attributes).toEqual(' type="radio" checked="false"')
+      expect(attributes).toBe(' type="radio" checked="false"')
     })
 
     it('renders attribute when (boolean) `true` with `optional: true` as boolean attribute', () => {
@@ -217,7 +217,7 @@ describe('attributes.njk', () => {
       )
 
       // Note that `checked` has no value is, e.g. `<input type="radio" checked>`
-      expect(attributes).toEqual(' type="radio" checked')
+      expect(attributes).toBe(' type="radio" checked')
     })
 
     it('skip attribute when (boolean) `false` with `optional: true` as boolean attribute', () => {
@@ -236,7 +236,7 @@ describe('attributes.njk', () => {
       )
 
       // Note that `checked` is removed when false
-      expect(attributes).toEqual(' type="radio"')
+      expect(attributes).toBe(' type="radio"')
     })
 
     it('outputs attributes if already stringified', () => {
@@ -248,7 +248,7 @@ describe('attributes.njk', () => {
         }
       )
 
-      expect(attributes).toEqual(' data-attribute="value"')
+      expect(attributes).toBe(' data-attribute="value"')
     })
 
     it('outputs nothing if there are no attributes', () => {
@@ -260,7 +260,7 @@ describe('attributes.njk', () => {
         }
       )
 
-      expect(attributes).toEqual('')
+      expect(attributes).toBe('')
     })
   })
 })

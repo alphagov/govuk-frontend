@@ -20,8 +20,8 @@ describe('Summary list', () => {
       const $ = render('summary-list', examples.attributes)
 
       const $component = $('.govuk-summary-list')
-      expect($component.attr('data-attribute-1')).toEqual('value-1')
-      expect($component.attr('data-attribute-2')).toEqual('value-2')
+      expect($component.attr('data-attribute-1')).toBe('value-1')
+      expect($component.attr('data-attribute-2')).toBe('value-2')
     })
   })
 
@@ -31,7 +31,7 @@ describe('Summary list', () => {
 
       const $component = $('.govuk-summary-list')
       const $row = $component.find('.govuk-summary-list__row')
-      expect($row.length).toBe(2)
+      expect($row).toHaveLength(2)
     })
 
     it('renders classes', async () => {
@@ -162,8 +162,8 @@ describe('Summary list', () => {
         const $component = $('.govuk-summary-list')
         const $actionLink = $component.find('.govuk-summary-list__actions > a')
 
-        expect($actionLink.attr('data-test-attribute')).toEqual('value')
-        expect($actionLink.attr('data-test-attribute-2')).toEqual('value-2')
+        expect($actionLink.attr('data-test-attribute')).toBe('value')
+        expect($actionLink.attr('data-test-attribute-2')).toBe('value-2')
       })
 
       it('renders a single anchor with one action', async () => {
@@ -202,7 +202,7 @@ describe('Summary list', () => {
         const $component = $('.govuk-summary-list')
         const $action = $component.find('.govuk-summary-list__actions')
 
-        expect($action.length).toEqual(0)
+        expect($action).toHaveLength(0)
       })
 
       it('skips the action column when no items are in the array provided', async () => {
@@ -211,7 +211,7 @@ describe('Summary list', () => {
         const $component = $('.govuk-summary-list')
         const $action = $component.find('.govuk-summary-list__actions')
 
-        expect($action.length).toEqual(0)
+        expect($action).toHaveLength(0)
       })
 
       describe('when only some rows have actions', () => {
@@ -278,7 +278,7 @@ describe('Summary list', () => {
         )
 
         const $actionItems = $('.govuk-summary-card__action')
-        expect($actionItems.length).toBe(2)
+        expect($actionItems).toHaveLength(2)
       })
 
       it('does not render a list if only one action is present', () => {
@@ -289,7 +289,7 @@ describe('Summary list', () => {
 
         const $singleAction = $('.govuk-summary-card__actions > a')
         const $actionItems = $('.govuk-summary-card__action')
-        expect($actionItems.length).toBe(0)
+        expect($actionItems).toHaveLength(0)
         expect($singleAction.text().trim()).toBe(
           'My lonely action (Undergraduate teaching assistant)'
         )
@@ -326,7 +326,7 @@ describe('Summary list', () => {
         )
 
         const $title = $('.govuk-summary-card__title')
-        expect($title.get(0).tagName).toEqual('h3')
+        expect($title.get(0).tagName).toBe('h3')
       })
     })
 
@@ -353,8 +353,8 @@ describe('Summary list', () => {
         const $card = $('.govuk-summary-card')
         expect($list.attr('data-attribute-1')).toBeFalsy()
         expect($list.attr('data-attribute-2')).toBeFalsy()
-        expect($card.attr('data-attribute-1')).toEqual('value-1')
-        expect($card.attr('data-attribute-2')).toEqual('value-2')
+        expect($card.attr('data-attribute-1')).toBe('value-1')
+        expect($card.attr('data-attribute-2')).toBe('value-2')
       })
     })
   })

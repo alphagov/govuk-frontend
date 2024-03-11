@@ -43,7 +43,7 @@ describe('Warnings mixin', () => {
 
     // Expect our mocked @warn function to have been called once with a single
     // argument, which should be the test message
-    expect(mockWarnFunction.mock.calls.length).toEqual(1)
+    expect(mockWarnFunction.mock.calls).toHaveLength(1)
   })
 
   it('Does not fire a @warn if the key is already in $govuk-suppressed-warnings', async () => {

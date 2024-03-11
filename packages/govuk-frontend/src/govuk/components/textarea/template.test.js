@@ -17,21 +17,21 @@ describe('Textarea', () => {
       const $ = render('textarea', examples.default)
 
       const $component = $('.govuk-textarea')
-      expect($component.attr('id')).toEqual('more-detail')
+      expect($component.attr('id')).toBe('more-detail')
     })
 
     it('renders with name', () => {
       const $ = render('textarea', examples.default)
 
       const $component = $('.govuk-textarea')
-      expect($component.attr('name')).toEqual('more-detail')
+      expect($component.attr('name')).toBe('more-detail')
     })
 
     it('renders with default number of rows', () => {
       const $ = render('textarea', examples.default)
 
       const $component = $('.govuk-textarea')
-      expect($component.attr('rows')).toEqual('5')
+      expect($component.attr('rows')).toBe('5')
     })
 
     it('renders with a form group wrapper', () => {
@@ -54,14 +54,14 @@ describe('Textarea', () => {
       const $ = render('textarea', examples['with default value'])
 
       const $component = $('.govuk-textarea')
-      expect($component.text()).toEqual('221B Baker Street\nLondon\nNW1 6XE\n')
+      expect($component.text()).toBe('221B Baker Street\nLondon\nNW1 6XE\n')
     })
 
     it('renders with attributes', () => {
       const $ = render('textarea', examples.attributes)
 
       const $component = $('.govuk-textarea')
-      expect($component.attr('data-attribute')).toEqual('my data value')
+      expect($component.attr('data-attribute')).toBe('my data value')
     })
 
     it('renders with aria-describedby', () => {
@@ -75,7 +75,7 @@ describe('Textarea', () => {
       const $ = render('textarea', examples['with custom rows'])
 
       const $component = $('.govuk-textarea')
-      expect($component.attr('rows')).toEqual('8')
+      expect($component.attr('rows')).toBe('8')
     })
 
     it('renders with a form group wrapper that has extra classes', () => {
@@ -91,14 +91,14 @@ describe('Textarea', () => {
       const $ = render('textarea', examples['with spellcheck enabled'])
 
       const $component = $('.govuk-textarea')
-      expect($component.attr('spellcheck')).toEqual('true')
+      expect($component.attr('spellcheck')).toBe('true')
     })
 
     it('renders with spellcheck attribute set to false', () => {
       const $ = render('textarea', examples['with spellcheck disabled'])
 
       const $component = $('.govuk-textarea')
-      expect($component.attr('spellcheck')).toEqual('false')
+      expect($component.attr('spellcheck')).toBe('false')
     })
 
     it('renders without spellcheck attribute by default', () => {
@@ -245,7 +245,7 @@ describe('Textarea', () => {
       const $ = render('textarea', examples.default)
 
       const $label = $('.govuk-label')
-      expect($label.attr('for')).toEqual('more-detail')
+      expect($label.attr('for')).toBe('more-detail')
     })
 
     it('renders label as page heading', () => {
@@ -253,7 +253,7 @@ describe('Textarea', () => {
 
       const $label = $('.govuk-label')
       expect($('.govuk-label-wrapper')).toBeTruthy()
-      expect($label.attr('for')).toEqual('textarea-with-page-heading')
+      expect($label.attr('for')).toBe('textarea-with-page-heading')
     })
   })
 
@@ -262,7 +262,7 @@ describe('Textarea', () => {
       const $ = render('textarea', examples['with autocomplete attribute'])
 
       const $component = $('.govuk-textarea')
-      expect($component.attr('autocomplete')).toEqual('street-address')
+      expect($component.attr('autocomplete')).toBe('street-address')
     })
   })
 })

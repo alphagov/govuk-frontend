@@ -51,7 +51,7 @@ describe('Home page', () => {
     const componentNames = await getComponentNames()
     const componentsList = await page.$$('li a[href^="/components/"]')
 
-    await expect(componentsList.length).toEqual(componentNames.length)
+    await expect(componentsList).toHaveLength(componentNames.length)
   })
 
   it('should display the banner by default', async () => {
@@ -60,7 +60,7 @@ describe('Home page', () => {
     const $title = await page.$('title')
 
     // Check the page responded correctly
-    await expect(getProperty($title, 'textContent')).resolves.toEqual(
+    await expect(getProperty($title, 'textContent')).resolves.toBe(
       `GOV.UK Frontend`
     )
 
@@ -74,7 +74,7 @@ describe('Home page', () => {
     const $title = await page.$('title')
 
     // Check the page responded correctly
-    await expect(getProperty($title, 'textContent')).resolves.toEqual(
+    await expect(getProperty($title, 'textContent')).resolves.toBe(
       `GOV.UK Frontend`
     )
 

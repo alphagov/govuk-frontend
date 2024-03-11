@@ -20,7 +20,7 @@ describe('Notification banner', () => {
         el.getAttribute('tabindex')
       )
 
-      expect(tabindex).toEqual('-1')
+      expect(tabindex).toBe('-1')
     })
 
     it('is automatically focused when the page loads', async () => {
@@ -162,7 +162,7 @@ describe('Notification banner', () => {
           el.getAttribute('tabindex')
         )
 
-        expect(tabindex).toEqual('-1')
+        expect(tabindex).toBe('-1')
       })
 
       it('is automatically focused when the page loads', async () => {
@@ -214,7 +214,7 @@ describe('Notification banner', () => {
         const tabindex = await page.$eval('.govuk-notification-banner', (el) =>
           el.getAttribute('tabindex')
         )
-        expect(tabindex).toEqual('2')
+        expect(tabindex).toBe('2')
       })
     })
   })

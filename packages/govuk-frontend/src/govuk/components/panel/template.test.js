@@ -13,21 +13,21 @@ describe('Panel', () => {
       const $ = render('panel', examples.default)
       const panelTitle = $('.govuk-panel__title').text().trim()
 
-      expect(panelTitle).toEqual('Application complete')
+      expect(panelTitle).toBe('Application complete')
     })
 
     it('renders title as h1 (as the default heading level)', () => {
       const $ = render('panel', examples.default)
       const panelTitleHeadingLevel = $('.govuk-panel__title')[0].name
 
-      expect(panelTitleHeadingLevel).toEqual('h1')
+      expect(panelTitleHeadingLevel).toBe('h1')
     })
 
     it('renders body text', () => {
       const $ = render('panel', examples.default)
       const panelBodyText = $('.govuk-panel__body').text().trim()
 
-      expect(panelBodyText).toEqual('Your reference number: HDJ2123F')
+      expect(panelBodyText).toBe('Your reference number: HDJ2123F')
     })
 
     it('doesnt render panel body if no body text is passed', () => {
@@ -43,7 +43,7 @@ describe('Panel', () => {
       const $ = render('panel', examples['title html as text'])
 
       const panelTitle = $('.govuk-panel__title').html().trim()
-      expect(panelTitle).toEqual(
+      expect(panelTitle).toBe(
         'Application &lt;strong&gt;not&lt;/strong&gt; complete'
       )
     })
@@ -52,14 +52,14 @@ describe('Panel', () => {
       const $ = render('panel', examples['custom heading level'])
       const panelTitleHeadingLevel = $('.govuk-panel__title')[0].name
 
-      expect(panelTitleHeadingLevel).toEqual('h2')
+      expect(panelTitleHeadingLevel).toBe('h2')
     })
 
     it('allows title HTML to be passed un-escaped', () => {
       const $ = render('panel', examples['title html'])
 
       const panelTitle = $('.govuk-panel__title').html().trim()
-      expect(panelTitle).toEqual('Application <strong>not</strong> complete')
+      expect(panelTitle).toBe('Application <strong>not</strong> complete')
     })
 
     it('renders nested components using `call`', () => {
@@ -74,7 +74,7 @@ describe('Panel', () => {
       const $ = render('panel', examples['body html as text'])
 
       const panelBodyText = $('.govuk-panel__body').html().trim()
-      expect(panelBodyText).toEqual(
+      expect(panelBodyText).toBe(
         'Your reference number&lt;br&gt;&lt;strong&gt;HDJ2123F&lt;/strong&gt;'
       )
     })
@@ -83,7 +83,7 @@ describe('Panel', () => {
       const $ = render('panel', examples['body html'])
 
       const panelBodyText = $('.govuk-panel__body').html().trim()
-      expect(panelBodyText).toEqual(
+      expect(panelBodyText).toBe(
         'Your reference number<br><strong>HDJ2123F</strong>'
       )
     })
@@ -99,8 +99,8 @@ describe('Panel', () => {
       const $ = render('panel', examples.attributes)
 
       const $component = $('.govuk-panel')
-      expect($component.attr('first-attribute')).toEqual('foo')
-      expect($component.attr('second-attribute')).toEqual('bar')
+      expect($component.attr('first-attribute')).toBe('foo')
+      expect($component.attr('second-attribute')).toBe('bar')
     })
   })
 })
