@@ -31,28 +31,77 @@
   </svg>
 {%- endmacro -%}
 
-{#- Define common attributes that we can use across all element types #}
+{#- Define attributes for links only #}
 
-{%- set commonAttributes %} class="{{ classNames }}" data-module="govuk-button" {{- govukAttributes(params.attributes) -}} {% if params.id %} id="{{ params.id }}"{% endif %}{% endset %}
+{%- set attributesLinkHtml %}
+  {{- govukAttributes({
+    href: params.href
+      if params.href
+      else "#",
+    role: "button",
+    draggable: "false"
+  }) -}}
+{% endset %}
 
-{#- Define common attributes we can use for both button and input types #}
+{#- Define attributes for buttons and inputs only #}
 
-{%- set buttonAttributes %}{% if params.name %} name="{{ params.name }}"{% endif %}{% if params.disabled %} disabled aria-disabled="true"{% endif %}{% if params.preventDoubleClick !== undefined %} data-prevent-double-click="{{ params.preventDoubleClick }}"{% endif %}{% endset %}
+{%- set attributesButtonHtml %}
+  {{- govukAttributes({
+    value: {
+      value: params.text
+        if element == "input"
+        else params.value,
+      optional: true
+    },
+    type: params.type
+      if params.type
+      else "submit",
+    name: {
+      value: params.name,
+      optional: true
+    },
+    disabled: {
+      value: params.disabled,
+      optional: true
+    },
+    "aria-disabled": {
+      value: params.disabled | string
+        if params.disabled !== undefined
+        else undefined,
+      optional: true
+    },
+    "data-prevent-double-click": {
+      value: params.preventDoubleClick | string
+        if params.preventDoubleClick !== undefined
+        else undefined,
+      optional: true
+    }
+  }) -}}
+{% endset %}
+
+{#- Define attributes for component #}
+
+{%- set attributesHtml %}
+  {{- (attributesButtonHtml if ["button", "input"].includes(element) else attributesLinkHtml) | safe -}}
+
+  {{- govukAttributes({
+    class: classNames,
+    "data-module": "govuk-button",
+    id: {
+      value: params.id,
+      optional: true
+    }
+  }) -}}
+{% endset %}
 
 {#- Actually create a button... or a link! #}
 
-{%- if element == 'a' %}
-<a href="{{ params.href if params.href else '#' }}" role="button" draggable="false" {{- commonAttributes | safe }}>
+{%- if ["button", "a"].includes(element) %}
+<{{ element }} {{- attributesHtml | safe }} {{- govukAttributes(params.attributes) }}>
   {{ params.html | safe | trim | indent(2) if params.html else params.text }}
   {{- _startIcon() | safe if params.isStartButton }}
-</a>
+</{{ element }}>
 
-{%- elseif element == 'button' %}
-<button {%- if params.value %} value="{{ params.value }}"{% endif %} type="{{ params.type if params.type else 'submit' }}" {{- buttonAttributes | safe }} {{- commonAttributes | safe }}>
-  {{ params.html | safe | trim | indent(2) if params.html else params.text }}
-  {{- _startIcon() | safe if params.isStartButton }}
-</button>
-
-{%- elseif element == 'input' %}
-<input value="{{ params.text }}" type="{{ params.type if params.type else 'submit' }}" {{- buttonAttributes | safe }} {{- commonAttributes | safe }}>
+{%- elif element == 'input' %}
+<input {{- attributesHtml | safe }} {{- govukAttributes(params.attributes) }}>
 {%- endif %}
