@@ -13,42 +13,42 @@ describe('Password input', () => {
       const $ = render('password-input', examples.default)
 
       const $component = $('.govuk-input')
-      expect($component.attr('id')).toEqual('password-input')
+      expect($component.attr('id')).toBe('password-input')
     })
 
     it('renders with name', () => {
       const $ = render('password-input', examples.default)
 
       const $component = $('.govuk-input')
-      expect($component.attr('name')).toEqual('password')
+      expect($component.attr('name')).toBe('password')
     })
 
     it('renders with type="password" by default', () => {
       const $ = render('password-input', examples.default)
 
       const $component = $('.govuk-input')
-      expect($component.attr('type')).toEqual('password')
+      expect($component.attr('type')).toBe('password')
     })
 
     it('renders with autocomplete="current-password" by default', () => {
       const $ = render('password-input', examples.default)
 
       const $component = $('.govuk-input')
-      expect($component.attr('autocomplete')).toEqual('current-password')
+      expect($component.attr('autocomplete')).toBe('current-password')
     })
 
     it('renders with spellcheck="false" by default', () => {
       const $ = render('password-input', examples.default)
 
       const $component = $('.govuk-input')
-      expect($component.attr('spellcheck')).toEqual('false')
+      expect($component.attr('spellcheck')).toBe('false')
     })
 
     it('renders with autocapitalize="none" by default', () => {
       const $ = render('password-input', examples.default)
 
       const $component = $('.govuk-input')
-      expect($component.attr('autocapitalize')).toEqual('none')
+      expect($component.attr('autocapitalize')).toBe('none')
     })
 
     it('renders with a form group wrapper', () => {
@@ -91,7 +91,7 @@ describe('Password input', () => {
         const $button = $(
           '.govuk-form-group > .govuk-input__wrapper > .govuk-button'
         )
-        expect($button.attr('aria-label')).toEqual('Show password')
+        expect($button.attr('aria-label')).toBe('Show password')
       })
 
       it('renders the toggle button with the correct aria-controls', () => {
@@ -101,7 +101,7 @@ describe('Password input', () => {
         const $button = $(
           '.govuk-form-group > .govuk-input__wrapper > .govuk-button'
         )
-        expect($button.attr('aria-controls')).toEqual($component.attr('id'))
+        expect($button.attr('aria-controls')).toBe($component.attr('id'))
       })
 
       it('renders the toggle button initially hidden', () => {
@@ -127,7 +127,7 @@ describe('Password input', () => {
       const $ = render('password-input', examples.value)
 
       const $component = $('.govuk-input')
-      expect($component.val()).toEqual('Hunter2')
+      expect($component.val()).toBe('Hunter2')
     })
 
     it('renders with aria-describedby', () => {
@@ -144,33 +144,33 @@ describe('Password input', () => {
       )
 
       const $component = $('.govuk-input')
-      expect($component.attr('autocomplete')).toEqual('new-password')
+      expect($component.attr('autocomplete')).toBe('new-password')
     })
 
     it('renders with attributes', () => {
       const $ = render('password-input', examples.attributes)
 
       const $component = $('.govuk-input')
-      expect($component.attr('data-attribute')).toEqual('value')
-      expect($component.attr('data-another')).toEqual('ok')
+      expect($component.attr('data-attribute')).toBe('value')
+      expect($component.attr('data-another')).toBe('ok')
     })
 
     it('renders with localisation data attributes', () => {
       const $ = render('password-input', examples['with translations'])
       const $component = $('[data-module]')
 
-      expect($component.attr('data-i18n.show-password')).toEqual('Datguddia')
-      expect($component.attr('data-i18n.hide-password')).toEqual('Cuddio')
-      expect($component.attr('data-i18n.show-password-aria-label')).toEqual(
+      expect($component.attr('data-i18n.show-password')).toBe('Datguddia')
+      expect($component.attr('data-i18n.hide-password')).toBe('Cuddio')
+      expect($component.attr('data-i18n.show-password-aria-label')).toBe(
         'Datgelu cyfrinair'
       )
-      expect($component.attr('data-i18n.hide-password-aria-label')).toEqual(
+      expect($component.attr('data-i18n.hide-password-aria-label')).toBe(
         'Cuddio cyfrinair'
       )
-      expect($component.attr('data-i18n.password-shown-announcement')).toEqual(
+      expect($component.attr('data-i18n.password-shown-announcement')).toBe(
         'Mae eich cyfrinair yn weladwy.'
       )
-      expect($component.attr('data-i18n.password-hidden-announcement')).toEqual(
+      expect($component.attr('data-i18n.password-hidden-announcement')).toBe(
         "Mae eich cyfrinair wedi'i guddio."
       )
     })

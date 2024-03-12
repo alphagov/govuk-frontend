@@ -1,5 +1,5 @@
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
-import { extractConfigByNamespace, mergeConfigs } from '../../common/index.mjs'
+import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
@@ -82,10 +82,10 @@ export class PasswordInput extends GOVUKFrontendComponent {
     this.config = mergeConfigs(
       PasswordInput.defaults,
       config,
-      normaliseDataset($module.dataset)
+      normaliseDataset(PasswordInput, $module.dataset)
     )
 
-    this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'), {
+    this.i18n = new I18n(this.config.i18n, {
       // Read the fallback if necessary rather than have it set in the defaults
       locale: closestAttributeValue($module, 'lang')
     })
@@ -222,6 +222,18 @@ export class PasswordInput extends GOVUKFrontendComponent {
       passwordHiddenAnnouncement: 'Your password is hidden'
     }
   })
+
+  /**
+   * Password input config schema
+   *
+   * @constant
+   * @satisfies {Schema}
+   */
+  static schema = Object.freeze({
+    properties: {
+      i18n: { type: 'object' }
+    }
+  })
 }
 
 /**
@@ -252,4 +264,9 @@ export class PasswordInput extends GOVUKFrontendComponent {
  * @property {string} [passwordHiddenAnnouncement] - Screen reader
  *   announcement to make when the password has just been hidden.
  *   Plain text only.
+ */
+
+/**
+ * @typedef {import('../../common/index.mjs').Schema} Schema
+ * @typedef {import('../../i18n.mjs').TranslationPluralForms} TranslationPluralForms
  */
