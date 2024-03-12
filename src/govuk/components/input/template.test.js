@@ -210,7 +210,7 @@ describe('Input', () => {
       const $ = render('input', examples['with autocapitalize turned off'])
 
       const $component = $('.govuk-input')
-      expect($component.attr('autocapitalize')).toEqual('none')
+      expect($component.attr('autocapitalize')).toBe('none')
     })
 
     it('renders without autocapitalize attribute by default', () => {
@@ -470,7 +470,7 @@ describe('Input', () => {
       const $ = render('input', examples['with customised input wrapper'])
 
       const $wrapper = $('.govuk-form-group > .govuk-input__wrapper')
-      expect($wrapper.attr('data-attribute')).toEqual('value')
+      expect($wrapper.attr('data-attribute')).toBe('value')
     })
   })
 })
