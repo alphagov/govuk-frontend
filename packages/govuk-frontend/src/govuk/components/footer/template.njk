@@ -1,6 +1,6 @@
 {% from "../../macros/attributes.njk" import govukAttributes -%}
 
-<footer class="govuk-footer {%- if params.classes %} {{ params.classes }}{% endif %}" role="contentinfo"
+<footer class="govuk-footer {%- if params.classes %} {{ params.classes }}{% endif %}"
   {{- govukAttributes(params.attributes) }}>
   <div class="govuk-width-container {%- if params.containerClasses %} {{ params.containerClasses }}{% endif %}">
     {% if params.navigation | length %}
