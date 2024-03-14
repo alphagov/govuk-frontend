@@ -79,92 +79,19 @@ describe('/components/password-input', () => {
         })
       })
 
-      describe('when the toggle button is clicked once', () => {
+      describe.each([
+        [1, itShowsThePassword],
+        [2, itHidesThePassword],
+        [3, itShowsThePassword]
+      ])('when clicked %i time(s)', (clicks, expectation) => {
         beforeAll(async () => {
           await render(page, 'password-input', examples.default)
-          await page.click(buttonSelector)
+          for (let i = 0; i < clicks; i++) {
+            await page.click(buttonSelector)
+          }
         })
 
-        it('changes the input to type="text"', async () => {
-          const inputType = await page.$eval(inputSelector, (el) =>
-            el.getAttribute('type')
-          )
-
-          expect(inputType).toBe('text')
-        })
-
-        it('changes the status to aria-live="assertive"', async () => {
-          const statusAriaLiveAttribute = await page.$eval(
-            statusSelector,
-            (el) => el.getAttribute('aria-live')
-          )
-
-          expect(statusAriaLiveAttribute).toBe('assertive')
-        })
-
-        it('changes the status to say the password is visible', async () => {
-          const statusText = await page.$eval(statusSelector, (el) =>
-            el.innerHTML.trim()
-          )
-
-          expect(statusText).toBe('Your password is visible')
-        })
-
-        it('changes the button text to "hide"', async () => {
-          const buttonText = await page.$eval(buttonSelector, (el) =>
-            el.innerHTML.trim()
-          )
-
-          expect(buttonText).toBe('Hide')
-        })
-
-        it('changes the button aria-label to "hide password"', async () => {
-          const buttonAriaLabel = await page.$eval(buttonSelector, (el) =>
-            el.getAttribute('aria-label')
-          )
-
-          expect(buttonAriaLabel).toBe('Hide password')
-        })
-      })
-
-      describe('when the toggle button is clicked twice', () => {
-        beforeAll(async () => {
-          await render(page, 'password-input', examples.default)
-          await page.click(buttonSelector)
-          await page.click(buttonSelector)
-        })
-
-        it('changes the input to type="password"', async () => {
-          const inputType = await page.$eval(inputSelector, (el) =>
-            el.getAttribute('type')
-          )
-
-          expect(inputType).toBe('password')
-        })
-
-        it('changes the status to say the password is hidden', async () => {
-          const statusText = await page.$eval(statusSelector, (el) =>
-            el.innerHTML.trim()
-          )
-
-          expect(statusText).toBe('Your password is hidden')
-        })
-
-        it('changes the button text to "show"', async () => {
-          const buttonText = await page.$eval(buttonSelector, (el) =>
-            el.innerHTML.trim()
-          )
-
-          expect(buttonText).toBe('Show')
-        })
-
-        it('changes the button aria-label to "show password"', async () => {
-          const buttonAriaLabel = await page.$eval(buttonSelector, (el) =>
-            el.getAttribute('aria-label')
-          )
-
-          expect(buttonAriaLabel).toBe('Show password')
-        })
+        expectation()
       })
 
       describe('when the form is submitted', () => {
@@ -376,3 +303,84 @@ describe('/components/password-input', () => {
     })
   })
 })
+
+// A bundle of tests for when the password has been shown via a user interaction.
+// It's been extracted out as multiple tests check for this state.
+function itShowsThePassword() {
+  it('changes the input to type="text"', async () => {
+    const inputType = await page.$eval(inputSelector, (el) =>
+      el.getAttribute('type')
+    )
+
+    expect(inputType).toBe('text')
+  })
+
+  it('changes the status to aria-live="assertive"', async () => {
+    const statusAriaLiveAttribute = await page.$eval(statusSelector, (el) =>
+      el.getAttribute('aria-live')
+    )
+
+    expect(statusAriaLiveAttribute).toBe('assertive')
+  })
+
+  it('changes the status to say the password is visible', async () => {
+    const statusText = await page.$eval(statusSelector, (el) =>
+      el.innerHTML.trim()
+    )
+
+    expect(statusText).toBe('Your password is visible')
+  })
+
+  it('changes the button text to "hide"', async () => {
+    const buttonText = await page.$eval(buttonSelector, (el) =>
+      el.innerHTML.trim()
+    )
+
+    expect(buttonText).toBe('Hide')
+  })
+
+  it('changes the button aria-label to "hide password"', async () => {
+    const buttonAriaLabel = await page.$eval(buttonSelector, (el) =>
+      el.getAttribute('aria-label')
+    )
+
+    expect(buttonAriaLabel).toBe('Hide password')
+  })
+}
+
+// A bundle of tests for when the password has been hidden via a user interaction.
+// (Note: NOT when the component is initially loaded.)
+// It's been extracted out as multiple tests check for this state.
+function itHidesThePassword() {
+  it('changes the input to type="password"', async () => {
+    const inputType = await page.$eval(inputSelector, (el) =>
+      el.getAttribute('type')
+    )
+
+    expect(inputType).toBe('password')
+  })
+
+  it('changes the status to say the password is hidden', async () => {
+    const statusText = await page.$eval(statusSelector, (el) =>
+      el.innerHTML.trim()
+    )
+
+    expect(statusText).toBe('Your password is hidden')
+  })
+
+  it('changes the button text to "show"', async () => {
+    const buttonText = await page.$eval(buttonSelector, (el) =>
+      el.innerHTML.trim()
+    )
+
+    expect(buttonText).toBe('Show')
+  })
+
+  it('changes the button aria-label to "show password"', async () => {
+    const buttonAriaLabel = await page.$eval(buttonSelector, (el) =>
+      el.getAttribute('aria-label')
+    )
+
+    expect(buttonAriaLabel).toBe('Show password')
+  })
+}
