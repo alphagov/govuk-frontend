@@ -59,6 +59,9 @@ describe('packages/govuk-frontend/dist/', () => {
       '!**/*.test.*',
       '!**/__snapshots__/',
       '!**/__snapshots__/**',
+      '!**/govuk-prototype-kit.config.mjs',
+      '!**/options/examples.mjs',
+      '!**/options/params.mjs',
       '!**/tsconfig?(.build).json',
       '!README.md'
     ]
@@ -67,8 +70,15 @@ describe('packages/govuk-frontend/dist/', () => {
     const listingExpected = listingSource
       .filter(filterPath(filterPatterns))
 
-      // Removes GOV.UK Prototype kit config (moved to package top level)
-      .flatMap(mapPathTo(['**/govuk-prototype-kit.config.mjs'], () => []))
+      // Replaces source component '**/options/data.mjs' with:
+      // - `fixtures.json` fixtures for tests
+      // - `macro-options.json` component options
+      .flatMap(
+        mapPathTo(['**/options/data.mjs'], ({ dir: requirePath }) => [
+          join(requirePath, '../fixtures.json'),
+          join(requirePath, '../macro-options.json')
+        ])
+      )
 
       // All source `**/*.mjs` files compiled to ES modules
       .flatMap(
@@ -123,16 +133,6 @@ describe('packages/govuk-frontend/dist/', () => {
         mapPathTo(['**/*.scss'], ({ dir: requirePath, name }) => [
           join(requirePath, `${name}.scss`),
           join(requirePath, `${name}.scss.map`) // with source map
-        ])
-      )
-
-      // Replaces source component '*.yaml' with:
-      // - `fixtures.json` fixtures for tests
-      // - `macro-options.json` component options
-      .flatMap(
-        mapPathTo(['**/*.yaml'], ({ dir: requirePath }) => [
-          join(requirePath, 'fixtures.json'),
-          join(requirePath, 'macro-options.json')
         ])
       )
       .sort()

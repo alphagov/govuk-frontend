@@ -16,10 +16,10 @@ export default (options) =>
     npm.script('clean:package', [], options),
 
     assets(options),
+    templates(options),
     fixtures(options),
     scripts(options),
     styles(options),
-    templates(options),
 
     // Copy GOV.UK Prototype Kit JavaScript
     task.name("copy:files 'govuk-prototype-kit'", () =>

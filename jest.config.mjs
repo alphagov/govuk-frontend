@@ -48,7 +48,7 @@ const config = {
 
     // Transform some `*.js` to compatible CommonJS
     ...Object.fromEntries(
-      ['slash'].map((packagePath) => [
+      ['@govuk-frontend/lib/components', 'slash'].map((packagePath) => [
         replacePathSepForRegex(`${packageResolveToPath(packagePath)}$`),
         [
           'babel-jest',
