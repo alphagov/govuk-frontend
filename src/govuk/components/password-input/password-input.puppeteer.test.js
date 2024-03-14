@@ -131,6 +131,60 @@ describe('/components/password-input', () => {
         })
       })
 
+      describe('i18n', () => {
+        it('uses the correct translations when the password is visible', async () => {
+          await render(page, 'password-input', examples['with translations'])
+          await page.click(buttonSelector)
+
+          const statusText = await page.$eval(statusSelector, (el) =>
+            el.innerHTML.trim()
+          )
+          const buttonText = await page.$eval(buttonSelector, (el) =>
+            el.innerHTML.trim()
+          )
+          const buttonAriaLabel = await page.$eval(buttonSelector, (el) =>
+            el.getAttribute('aria-label')
+          )
+
+          // Expect: passwordShownAnnouncementText
+          expect(statusText).toBe('Mae eich cyfrinair yn weladwy.')
+
+          // Expect: hidePasswordText
+          expect(buttonText).toBe('Cuddio')
+
+          // Expect: hidePasswordAriaLabelText
+          expect(buttonAriaLabel).toBe('Cuddio cyfrinair')
+        })
+
+        it('uses the correct translations when the password is hidden', async () => {
+          await render(page, 'password-input', examples['with translations'])
+
+          // This test clicks the toggle twice because the status element is not populated when
+          // the component is initialised, it only becomes populated after the first toggle.
+          await page.click(buttonSelector)
+          await page.click(buttonSelector)
+
+          const statusText = await page.$eval(statusSelector, (el) =>
+            el.innerHTML.trim()
+          )
+          const buttonText = await page.$eval(buttonSelector, (el) =>
+            el.innerHTML.trim()
+          )
+          const buttonAriaLabel = await page.$eval(buttonSelector, (el) =>
+            el.getAttribute('aria-label')
+          )
+
+          // Expect: passwordHiddenAnnouncementText
+          expect(statusText).toBe("Mae eich cyfrinair wedi'i guddio.")
+
+          // Expect: showPasswordText
+          expect(buttonText).toBe('Datguddia')
+
+          // Expect: showPasswordAriaLabelText
+          expect(buttonAriaLabel).toBe('Datgelu cyfrinair')
+        })
+      })
+
       describe('errors at instantiation', () => {
         it('can throw a SupportError if appropriate', async () => {
           await expect(
