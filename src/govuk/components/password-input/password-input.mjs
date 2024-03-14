@@ -100,6 +100,7 @@ export class PasswordInput extends GOVUKFrontendComponent {
     const $screenReaderStatusMessage = document.createElement('div')
     $screenReaderStatusMessage.className =
       'govuk-password-input__sr-status govuk-visually-hidden'
+    $screenReaderStatusMessage.setAttribute('aria-live', 'polite')
     this.$screenReaderStatusMessage = $screenReaderStatusMessage
     this.$input.insertAdjacentElement('afterend', $screenReaderStatusMessage)
 
@@ -186,12 +187,6 @@ export class PasswordInput extends GOVUKFrontendComponent {
       'aria-label',
       this.i18n.t(`${prefixButton}PasswordAriaLabel`)
     )
-
-    // Skip initial announcement (e.g. on page load) but always set
-    // aria-live ready for the first button press to be announced
-    if (!this.$screenReaderStatusMessage.hasAttribute('aria-live')) {
-      this.$screenReaderStatusMessage.setAttribute('aria-live', 'assertive')
-    }
 
     // Update status change text
     this.$screenReaderStatusMessage.innerText = this.i18n.t(
