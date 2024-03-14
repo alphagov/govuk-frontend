@@ -307,7 +307,7 @@ describe('/components/password-input', () => {
           })
         })
 
-        it('throws when the input element is not the right type', async () => {
+        it('throws when the input is not an <input> element', async () => {
           await expect(
             render(page, 'password-input', examples.default, {
               beforeInitialisation($module, { selector }) {
@@ -324,6 +324,26 @@ describe('/components/password-input', () => {
               name: 'ElementError',
               message:
                 'Password input: Form field (`.govuk-js-password-input-input`) is not of type HTMLInputElement'
+            }
+          })
+        })
+
+        it('throws when the input is not a `password` type', async () => {
+          await expect(
+            render(page, 'password-input', examples.default, {
+              beforeInitialisation($module, { selector }) {
+                // Make the input a number input instead
+                $module.querySelector(selector).setAttribute('type', 'number')
+              },
+              context: {
+                selector: inputSelector
+              }
+            })
+          ).rejects.toMatchObject({
+            cause: {
+              name: 'ElementError',
+              message:
+                'Password input: Form field (`.govuk-js-password-input-input`) must be of type `password`.'
             }
           })
         })
@@ -347,7 +367,7 @@ describe('/components/password-input', () => {
           })
         })
 
-        it('throws when the button is not the right type', async () => {
+        it('throws when the button is not a <button> element', async () => {
           await expect(
             render(page, 'password-input', examples.default, {
               beforeInitialisation($module, { selector }) {
@@ -364,6 +384,26 @@ describe('/components/password-input', () => {
               name: 'ElementError',
               message:
                 'Password input: Button (`.govuk-js-password-input-toggle`) is not of type HTMLButtonElement'
+            }
+          })
+        })
+
+        it('throws when the button is not a `button` type', async () => {
+          await expect(
+            render(page, 'password-input', examples.default, {
+              beforeInitialisation($module, { selector }) {
+                // Make the button a submit button
+                $module.querySelector(selector).setAttribute('type', 'submit')
+              },
+              context: {
+                selector: buttonSelector
+              }
+            })
+          ).rejects.toMatchObject({
+            cause: {
+              name: 'ElementError',
+              message:
+                'Password input: Button (`.govuk-js-password-input-toggle`) must be of type `button`.'
             }
           })
         })
