@@ -25,24 +25,18 @@ describe('/components/password-input', () => {
       it('still renders an unmodified password input', async () => {
         await render(page, 'password-input', examples.default)
 
-        const inputType = await page.evaluate(
-          (inputSelector) =>
-            document.querySelector(inputSelector).getAttribute('type'),
-          inputSelector
+        const inputType = await page.$eval(inputSelector, (el) =>
+          el.getAttribute('type')
         )
-
         expect(inputType).toBe('password')
       })
 
       it('renders the toggle button hidden', async () => {
         await render(page, 'password-input', examples.default)
 
-        const buttonHiddenAttribute = await page.evaluate(
-          (buttonSelector) =>
-            document.querySelector(buttonSelector).hasAttribute('hidden'),
-          buttonSelector
+        const buttonHiddenAttribute = await page.$eval(buttonSelector, (el) =>
+          el.hasAttribute('hidden')
         )
-
         expect(buttonHiddenAttribute).toBeTruthy()
       })
     })
@@ -54,39 +48,31 @@ describe('/components/password-input', () => {
         })
 
         it('renders the status element', async () => {
-          const statusElement = await page.evaluate(
-            (statusSelector) => document.querySelector(statusSelector),
-            statusSelector
-          )
+          const statusElement = await page.$eval(statusSelector, (el) => el)
 
           expect(statusElement).toBeDefined()
         })
 
         it('renders the status element without aria-live', async () => {
-          const statusAriaLiveAttribute = await page.evaluate(
-            (statusSelector) =>
-              document.querySelector(statusSelector).hasAttribute('aria-live'),
-            statusSelector
+          const statusAriaLiveAttribute = await page.$eval(
+            statusSelector,
+            (el) => el.hasAttribute('aria-live')
           )
 
           expect(statusAriaLiveAttribute).toBeFalsy()
         })
 
         it('renders the status element empty', async () => {
-          const statusText = await page.evaluate(
-            (statusSelector) =>
-              document.querySelector(statusSelector).innerHTML.trim(),
-            statusSelector
+          const statusText = await page.$eval(statusSelector, (el) =>
+            el.innerHTML.trim()
           )
 
           expect(statusText).toBe('')
         })
 
         it('shows the toggle button', async () => {
-          const buttonHiddenAttribute = await page.evaluate(
-            (buttonSelector) =>
-              document.querySelector(buttonSelector).hasAttribute('hidden'),
-            buttonSelector
+          const buttonHiddenAttribute = await page.$eval(buttonSelector, (el) =>
+            el.hasAttribute('hidden')
           )
 
           expect(buttonHiddenAttribute).toBeFalsy()
@@ -100,50 +86,41 @@ describe('/components/password-input', () => {
         })
 
         it('changes the input to type="text"', async () => {
-          const inputType = await page.evaluate(
-            (inputSelector) =>
-              document.querySelector(inputSelector).getAttribute('type'),
-            inputSelector
+          const inputType = await page.$eval(inputSelector, (el) =>
+            el.getAttribute('type')
           )
 
           expect(inputType).toBe('text')
         })
 
         it('changes the status to aria-live="assertive"', async () => {
-          const statusAriaLiveAttribute = await page.evaluate(
-            (statusSelector) =>
-              document.querySelector(statusSelector).getAttribute('aria-live'),
-            statusSelector
+          const statusAriaLiveAttribute = await page.$eval(
+            statusSelector,
+            (el) => el.getAttribute('aria-live')
           )
 
           expect(statusAriaLiveAttribute).toBe('assertive')
         })
 
         it('changes the status to say the password is visible', async () => {
-          const statusText = await page.evaluate(
-            (statusSelector) =>
-              document.querySelector(statusSelector).innerHTML.trim(),
-            statusSelector
+          const statusText = await page.$eval(statusSelector, (el) =>
+            el.innerHTML.trim()
           )
 
           expect(statusText).toBe('Your password is visible')
         })
 
         it('changes the button text to "hide"', async () => {
-          const buttonText = await page.evaluate(
-            (buttonSelector) =>
-              document.querySelector(buttonSelector).innerHTML.trim(),
-            buttonSelector
+          const buttonText = await page.$eval(buttonSelector, (el) =>
+            el.innerHTML.trim()
           )
 
           expect(buttonText).toBe('Hide')
         })
 
         it('changes the button aria-label to "hide password"', async () => {
-          const buttonAriaLabel = await page.evaluate(
-            (buttonSelector) =>
-              document.querySelector(buttonSelector).getAttribute('aria-label'),
-            buttonSelector
+          const buttonAriaLabel = await page.$eval(buttonSelector, (el) =>
+            el.getAttribute('aria-label')
           )
 
           expect(buttonAriaLabel).toBe('Hide password')
@@ -158,40 +135,32 @@ describe('/components/password-input', () => {
         })
 
         it('changes the input to type="password"', async () => {
-          const inputType = await page.evaluate(
-            (inputSelector) =>
-              document.querySelector(inputSelector).getAttribute('type'),
-            inputSelector
+          const inputType = await page.$eval(inputSelector, (el) =>
+            el.getAttribute('type')
           )
 
           expect(inputType).toBe('password')
         })
 
         it('changes the status to say the password is hidden', async () => {
-          const statusText = await page.evaluate(
-            (statusSelector) =>
-              document.querySelector(statusSelector).innerHTML.trim(),
-            statusSelector
+          const statusText = await page.$eval(statusSelector, (el) =>
+            el.innerHTML.trim()
           )
 
           expect(statusText).toBe('Your password is hidden')
         })
 
         it('changes the button text to "show"', async () => {
-          const buttonText = await page.evaluate(
-            (buttonSelector) =>
-              document.querySelector(buttonSelector).innerHTML.trim(),
-            buttonSelector
+          const buttonText = await page.$eval(buttonSelector, (el) =>
+            el.innerHTML.trim()
           )
 
           expect(buttonText).toBe('Show')
         })
 
         it('changes the button aria-label to "show password"', async () => {
-          const buttonAriaLabel = await page.evaluate(
-            (buttonSelector) =>
-              document.querySelector(buttonSelector).getAttribute('aria-label'),
-            buttonSelector
+          const buttonAriaLabel = await page.$eval(buttonSelector, (el) =>
+            el.getAttribute('aria-label')
           )
 
           expect(buttonAriaLabel).toBe('Show password')
@@ -218,20 +187,16 @@ describe('/components/password-input', () => {
           await page.click(buttonSelector)
 
           // Check that the type change has occurred as expected
-          const beforeSubmitType = await page.evaluate(
-            (inputSelector) =>
-              document.querySelector(inputSelector).getAttribute('type'),
-            inputSelector
+          const beforeSubmitType = await page.$eval(inputSelector, (el) =>
+            el.getAttribute('type')
           )
 
           // Submit the form
           await page.click('[type="submit"]')
 
           // Check the input type again
-          const afterSubmitType = await page.evaluate(
-            (inputSelector) =>
-              document.querySelector(inputSelector).getAttribute('type'),
-            inputSelector
+          const afterSubmitType = await page.$eval(inputSelector, (el) =>
+            el.getAttribute('type')
           )
 
           expect(beforeSubmitType).toBe('text')
