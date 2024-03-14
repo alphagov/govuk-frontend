@@ -53,13 +53,13 @@ describe('/components/password-input', () => {
           expect(statusElement).toBeDefined()
         })
 
-        it('renders the status element without aria-live', async () => {
+        it('renders the status element with aria-live', async () => {
           const statusAriaLiveAttribute = await page.$eval(
             statusSelector,
-            (el) => el.hasAttribute('aria-live')
+            (el) => el.getAttribute('aria-live')
           )
 
-          expect(statusAriaLiveAttribute).toBeFalsy()
+          expect(statusAriaLiveAttribute).toBe('polite')
         })
 
         it('renders the status element empty', async () => {
@@ -369,12 +369,12 @@ function itShowsThePassword() {
     expect(inputType).toBe('text')
   })
 
-  it('changes the status to aria-live="assertive"', async () => {
+  it('changes the status to aria-live="polite"', async () => {
     const statusAriaLiveAttribute = await page.$eval(statusSelector, (el) =>
       el.getAttribute('aria-live')
     )
 
-    expect(statusAriaLiveAttribute).toBe('assertive')
+    expect(statusAriaLiveAttribute).toBe('polite')
   })
 
   it('changes the status to say the password is visible', async () => {
