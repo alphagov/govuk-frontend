@@ -1,9 +1,9 @@
 const { render, goTo } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
-const inputClass = '.govuk-js-password-input-input'
-const buttonClass = '.govuk-js-password-input-toggle'
-const statusClass = '.govuk-password-input__sr-status'
+const inputSelector = '.govuk-js-password-input-input'
+const buttonSelector = '.govuk-js-password-input-toggle'
+const statusSelector = '.govuk-password-input__sr-status'
 
 describe('/components/password-input', () => {
   let examples
@@ -26,9 +26,9 @@ describe('/components/password-input', () => {
         await render(page, 'password-input', examples.default)
 
         const inputType = await page.evaluate(
-          (inputClass) =>
-            document.querySelector(inputClass).getAttribute('type'),
-          inputClass
+          (inputSelector) =>
+            document.querySelector(inputSelector).getAttribute('type'),
+          inputSelector
         )
 
         expect(inputType).toBe('password')
@@ -38,9 +38,9 @@ describe('/components/password-input', () => {
         await render(page, 'password-input', examples.default)
 
         const buttonHiddenAttribute = await page.evaluate(
-          (buttonClass) =>
-            document.querySelector(buttonClass).hasAttribute('hidden'),
-          buttonClass
+          (buttonSelector) =>
+            document.querySelector(buttonSelector).hasAttribute('hidden'),
+          buttonSelector
         )
 
         expect(buttonHiddenAttribute).toBeTruthy()
@@ -55,18 +55,18 @@ describe('/components/password-input', () => {
 
         it('renders the status element', async () => {
           const statusElement = await page.evaluate(
-            (statusClass) => document.querySelector(statusClass),
-            statusClass
+            (statusSelector) => document.querySelector(statusSelector),
+            statusSelector
           )
 
-          expect(statusElement).not.toBeUndefined()
+          expect(statusElement).toBeDefined()
         })
 
         it('renders the status element without aria-live', async () => {
           const statusAriaLiveAttribute = await page.evaluate(
-            (statusClass) =>
-              document.querySelector(statusClass).hasAttribute('aria-live'),
-            statusClass
+            (statusSelector) =>
+              document.querySelector(statusSelector).hasAttribute('aria-live'),
+            statusSelector
           )
 
           expect(statusAriaLiveAttribute).toBeFalsy()
@@ -74,9 +74,9 @@ describe('/components/password-input', () => {
 
         it('renders the status element empty', async () => {
           const statusText = await page.evaluate(
-            (statusClass) =>
-              document.querySelector(statusClass).innerHTML.trim(),
-            statusClass
+            (statusSelector) =>
+              document.querySelector(statusSelector).innerHTML.trim(),
+            statusSelector
           )
 
           expect(statusText).toBe('')
@@ -84,9 +84,9 @@ describe('/components/password-input', () => {
 
         it('shows the toggle button', async () => {
           const buttonHiddenAttribute = await page.evaluate(
-            (buttonClass) =>
-              document.querySelector(buttonClass).hasAttribute('hidden'),
-            buttonClass
+            (buttonSelector) =>
+              document.querySelector(buttonSelector).hasAttribute('hidden'),
+            buttonSelector
           )
 
           expect(buttonHiddenAttribute).toBeFalsy()
@@ -96,14 +96,14 @@ describe('/components/password-input', () => {
       describe('when the toggle button is clicked once', () => {
         beforeAll(async () => {
           await render(page, 'password-input', examples.default)
-          await page.click(buttonClass)
+          await page.click(buttonSelector)
         })
 
         it('changes the input to type="text"', async () => {
           const inputType = await page.evaluate(
-            (inputClass) =>
-              document.querySelector(inputClass).getAttribute('type'),
-            inputClass
+            (inputSelector) =>
+              document.querySelector(inputSelector).getAttribute('type'),
+            inputSelector
           )
 
           expect(inputType).toBe('text')
@@ -111,9 +111,9 @@ describe('/components/password-input', () => {
 
         it('changes the status to aria-live="assertive"', async () => {
           const statusAriaLiveAttribute = await page.evaluate(
-            (statusClass) =>
-              document.querySelector(statusClass).getAttribute('aria-live'),
-            statusClass
+            (statusSelector) =>
+              document.querySelector(statusSelector).getAttribute('aria-live'),
+            statusSelector
           )
 
           expect(statusAriaLiveAttribute).toBe('assertive')
@@ -121,9 +121,9 @@ describe('/components/password-input', () => {
 
         it('changes the status to say the password is visible', async () => {
           const statusText = await page.evaluate(
-            (statusClass) =>
-              document.querySelector(statusClass).innerHTML.trim(),
-            statusClass
+            (statusSelector) =>
+              document.querySelector(statusSelector).innerHTML.trim(),
+            statusSelector
           )
 
           expect(statusText).toBe('Your password is visible')
@@ -131,9 +131,9 @@ describe('/components/password-input', () => {
 
         it('changes the button text to "hide"', async () => {
           const buttonText = await page.evaluate(
-            (buttonClass) =>
-              document.querySelector(buttonClass).innerHTML.trim(),
-            buttonClass
+            (buttonSelector) =>
+              document.querySelector(buttonSelector).innerHTML.trim(),
+            buttonSelector
           )
 
           expect(buttonText).toBe('Hide')
@@ -141,9 +141,9 @@ describe('/components/password-input', () => {
 
         it('changes the button aria-label to "hide password"', async () => {
           const buttonAriaLabel = await page.evaluate(
-            (buttonClass) =>
-              document.querySelector(buttonClass).getAttribute('aria-label'),
-            buttonClass
+            (buttonSelector) =>
+              document.querySelector(buttonSelector).getAttribute('aria-label'),
+            buttonSelector
           )
 
           expect(buttonAriaLabel).toBe('Hide password')
@@ -153,15 +153,15 @@ describe('/components/password-input', () => {
       describe('when the toggle button is clicked twice', () => {
         beforeAll(async () => {
           await render(page, 'password-input', examples.default)
-          await page.click(buttonClass)
-          await page.click(buttonClass)
+          await page.click(buttonSelector)
+          await page.click(buttonSelector)
         })
 
         it('changes the input to type="password"', async () => {
           const inputType = await page.evaluate(
-            (inputClass) =>
-              document.querySelector(inputClass).getAttribute('type'),
-            inputClass
+            (inputSelector) =>
+              document.querySelector(inputSelector).getAttribute('type'),
+            inputSelector
           )
 
           expect(inputType).toBe('password')
@@ -169,9 +169,9 @@ describe('/components/password-input', () => {
 
         it('changes the status to say the password is hidden', async () => {
           const statusText = await page.evaluate(
-            (statusClass) =>
-              document.querySelector(statusClass).innerHTML.trim(),
-            statusClass
+            (statusSelector) =>
+              document.querySelector(statusSelector).innerHTML.trim(),
+            statusSelector
           )
 
           expect(statusText).toBe('Your password is hidden')
@@ -179,9 +179,9 @@ describe('/components/password-input', () => {
 
         it('changes the button text to "show"', async () => {
           const buttonText = await page.evaluate(
-            (buttonClass) =>
-              document.querySelector(buttonClass).innerHTML.trim(),
-            buttonClass
+            (buttonSelector) =>
+              document.querySelector(buttonSelector).innerHTML.trim(),
+            buttonSelector
           )
 
           expect(buttonText).toBe('Show')
@@ -189,9 +189,9 @@ describe('/components/password-input', () => {
 
         it('changes the button aria-label to "show password"', async () => {
           const buttonAriaLabel = await page.evaluate(
-            (buttonClass) =>
-              document.querySelector(buttonClass).getAttribute('aria-label'),
-            buttonClass
+            (buttonSelector) =>
+              document.querySelector(buttonSelector).getAttribute('aria-label'),
+            buttonSelector
           )
 
           expect(buttonAriaLabel).toBe('Show password')
@@ -215,13 +215,13 @@ describe('/components/password-input', () => {
           await page.type('[type="password"]', 'Hunter2')
 
           // Click the "show" button so the password is visible in plain text
-          await page.click(buttonClass)
+          await page.click(buttonSelector)
 
           // Check that the type change has occurred as expected
           const beforeSubmitType = await page.evaluate(
-            (inputClass) =>
-              document.querySelector(inputClass).getAttribute('type'),
-            inputClass
+            (inputSelector) =>
+              document.querySelector(inputSelector).getAttribute('type'),
+            inputSelector
           )
 
           // Submit the form
@@ -229,9 +229,9 @@ describe('/components/password-input', () => {
 
           // Check the input type again
           const afterSubmitType = await page.evaluate(
-            (inputClass) =>
-              document.querySelector(inputClass).getAttribute('type'),
-            inputClass
+            (inputSelector) =>
+              document.querySelector(inputSelector).getAttribute('type'),
+            inputSelector
           )
 
           expect(beforeSubmitType).toBe('text')
@@ -295,7 +295,7 @@ describe('/components/password-input', () => {
                 $module.querySelector(selector).remove()
               },
               context: {
-                selector: inputClass
+                selector: inputSelector
               }
             })
           ).rejects.toMatchObject({
@@ -316,7 +316,7 @@ describe('/components/password-input', () => {
                   '<textarea class="govuk-js-password-input-input"></textarea>'
               },
               context: {
-                selector: inputClass
+                selector: inputSelector
               }
             })
           ).rejects.toMatchObject({
@@ -335,7 +335,7 @@ describe('/components/password-input', () => {
                 $module.querySelector(selector).remove()
               },
               context: {
-                selector: buttonClass
+                selector: buttonSelector
               }
             })
           ).rejects.toMatchObject({
@@ -356,7 +356,7 @@ describe('/components/password-input', () => {
                   '<div class="govuk-js-password-input-toggle"></div>'
               },
               context: {
-                selector: buttonClass
+                selector: buttonSelector
               }
             })
           ).rejects.toMatchObject({
