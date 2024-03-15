@@ -65,6 +65,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 - [#4811: Use `KeyboardEvent.key` over deprecated `KeyboardEvent.keyCode` in the Tabs component](https://github.com/alphagov/govuk-frontend/pull/4811)
 - [#4812: Use `KeyboardEvent.key` over deprecated `KeyboardEvent.keyCode` in the Button component](https://github.com/alphagov/govuk-frontend/pull/4812)
 - [#4813: Remove deprecated `KeyboardEvent` properties from the Exit this Page component](https://github.com/alphagov/govuk-frontend/pull/4813)
+- [#4855: Fix mobile product name being misaligned in new type scale](https://github.com/alphagov/govuk-frontend/pull/4855)
 
 ## 5.2.0 (feature release)
 
