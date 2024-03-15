@@ -206,18 +206,18 @@ describe('Input', () => {
   })
 
   describe('when it has the autocapitalize attribute', () => {
-    it('renders with autocapitalize attribute when set', () => {
-      const $ = render('input', examples['with autocapitalize turned off'])
-
-      const $component = $('.govuk-input')
-      expect($component.attr('autocapitalize')).toBe('none')
-    })
-
     it('renders without autocapitalize attribute by default', () => {
       const $ = render('input', examples.default)
 
       const $component = $('.govuk-input')
       expect($component.attr('autocapitalize')).toBeUndefined()
+    })
+
+    it('renders with autocapitalize attribute when set', () => {
+      const $ = render('input', examples['with autocapitalize turned off'])
+
+      const $component = $('.govuk-input')
+      expect($component.attr('autocapitalize')).toBe('none')
     })
   })
 
