@@ -63,6 +63,12 @@ export class PasswordInput extends GOVUKFrontendComponent {
       })
     }
 
+    if ($input.type !== 'password') {
+      throw new ElementError(
+        'Password input: Form field (`.govuk-js-password-input-input`) must be of type `password`.'
+      )
+    }
+
     const $showHideButton = $module.querySelector(
       '.govuk-js-password-input-toggle'
     )
@@ -73,6 +79,12 @@ export class PasswordInput extends GOVUKFrontendComponent {
         expectedType: 'HTMLButtonElement',
         identifier: 'Button (`.govuk-js-password-input-toggle`)'
       })
+    }
+
+    if ($showHideButton.type !== 'button') {
+      throw new ElementError(
+        'Password input: Button (`.govuk-js-password-input-toggle`) must be of type `button`.'
+      )
     }
 
     this.$module = $module
