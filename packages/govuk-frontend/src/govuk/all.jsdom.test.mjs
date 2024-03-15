@@ -14,6 +14,7 @@ jest.mock(`./components/error-summary/error-summary.mjs`)
 jest.mock(`./components/exit-this-page/exit-this-page.mjs`)
 jest.mock(`./components/header/header.mjs`)
 jest.mock(`./components/notification-banner/notification-banner.mjs`)
+jest.mock(`./components/password-input/password-input.mjs`)
 jest.mock(`./components/radios/radios.mjs`)
 jest.mock(`./components/skip-link/skip-link.mjs`)
 jest.mock(`./components/tabs/tabs.mjs`)
@@ -27,7 +28,8 @@ describe('initAll', () => {
     'character-count',
     'error-summary',
     'exit-this-page',
-    'notification-banner'
+    'notification-banner',
+    'password-input'
   ]
 
   afterEach(() => {

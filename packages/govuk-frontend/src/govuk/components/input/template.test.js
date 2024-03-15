@@ -205,6 +205,22 @@ describe('Input', () => {
     })
   })
 
+  describe('when it has the autocapitalize attribute', () => {
+    it('renders without autocapitalize attribute by default', () => {
+      const $ = render('input', examples.default)
+
+      const $component = $('.govuk-input')
+      expect($component.attr('autocapitalize')).toBeUndefined()
+    })
+
+    it('renders with autocapitalize attribute when set', () => {
+      const $ = render('input', examples['with autocapitalize turned off'])
+
+      const $component = $('.govuk-input')
+      expect($component.attr('autocapitalize')).toBe('none')
+    })
+  })
+
   describe('when it includes both a hint and an error message', () => {
     it('associates the input as described by both the hint and the error message', () => {
       const $ = render('input', examples['with error and hint'])
@@ -437,6 +453,24 @@ describe('Input', () => {
         '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix ~ .govuk-input__suffix'
       )
       expect($prefixBeforeSuffix.length).toBeTruthy()
+    })
+  })
+
+  describe('when it includes the input wrapper', () => {
+    it('renders the input wrapper with custom classes', () => {
+      const $ = render('input', examples['with customised input wrapper'])
+
+      const $wrapper = $('.govuk-form-group > .govuk-input__wrapper')
+      expect(
+        $wrapper.hasClass('app-input-wrapper--custom-modifier')
+      ).toBeTruthy()
+    })
+
+    it('renders the input wrapper with custom attributes', () => {
+      const $ = render('input', examples['with customised input wrapper'])
+
+      const $wrapper = $('.govuk-form-group > .govuk-input__wrapper')
+      expect($wrapper.attr('data-attribute')).toBe('value')
     })
   })
 })

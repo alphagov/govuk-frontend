@@ -4,6 +4,16 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### New features
+
+#### Use the Passwords input component to help users accessibly enter passwords
+
+The [Password input component](https://design-system.service.gov.uk/components/password-input/) allows users to toggle the visibility of passwords and enter their passwords in plain text if they choose to do so.
+
+This helps users use longer and more complex passwords without needing to remember what they've already typed.
+
+This change was introduced in [pull request #4442: Create password input component](https://github.com/alphagov/govuk-frontend/pull/4442). Thanks to [@andysellick](https://github.com/andysellick) for the original contribution.
+
 ### Recommended changes
 
 #### Update the HTML for the character count

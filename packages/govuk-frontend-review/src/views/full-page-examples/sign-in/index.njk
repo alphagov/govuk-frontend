@@ -1,7 +1,8 @@
 ---
-title: Update your account details
+title: Sign in to a service
+name: Sign in to a service
 scenario: |
-  As part of an online service, you wish to update your account details.
+  As part of an online service, you have to sign in before accessing it.
 
   Things to try:
 
@@ -14,6 +15,7 @@ scenario: |
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/password-input/macro.njk" import govukPasswordInput %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% set pageTitle = example.title %}
@@ -37,6 +39,8 @@ scenario: |
 
       <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
 
+      <p class="govuk-body">You'll first need to <a class="govuk-link" href="#">create an account</a> if you haven't already. You can also <a class="govuk-link" href="#">reset your password</a> if you can't remember it.</p>
+
       <form method="post" novalidate>
 
         {{ govukInput({
@@ -55,18 +59,29 @@ scenario: |
 
         {{ govukPasswordInput({
           label: {
-            text: "New password",
+            text: "Password",
             classes: "govuk-label--m"
           },
           id: "password",
           name: "password",
           value: values["password"],
           errorMessage: errors["password"],
-          autocomplete: "new-password"
+          autocomplete: "current-password"
+        }) }}
+
+        {{ govukCheckboxes({
+          name: "remember-me",
+          classes: "govuk-checkboxes--small",
+          items: [
+            {
+              value: "true",
+              text: "Keep me signed in on this device"
+            }
+          ]
         }) }}
 
         {{ govukButton({
-          text: "Save account details"
+          text: "Sign in"
         }) }}
 
       </form>

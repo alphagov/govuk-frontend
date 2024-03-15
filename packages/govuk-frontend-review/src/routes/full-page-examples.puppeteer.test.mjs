@@ -53,6 +53,10 @@ describe('Full page examples (with form submit)', () => {
       path: '/full-page-examples/passport-details'
     },
     {
+      title: 'Sign in to a service',
+      path: '/full-page-examples/sign-in'
+    },
+    {
       title: 'Update your account details',
       path: '/full-page-examples/update-your-account-details'
     },

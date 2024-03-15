@@ -6,7 +6,7 @@ import { formatValidationErrors } from '../../../utils.mjs'
 const router = express.Router()
 
 router.post(
-  '/update-your-account-details',
+  '/sign-in',
 
   body('email')
     .notEmpty()
@@ -16,7 +16,7 @@ router.post(
       'Enter an email address in the correct format, like name@example.com'
     ),
 
-  body('password').notEmpty().withMessage('Enter a password'),
+  body('password').notEmpty().withMessage('Enter your password'),
 
   (req, res) => {
     const { example } = res.locals
