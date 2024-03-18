@@ -192,7 +192,7 @@ export class PasswordInput extends GOVUKFrontendComponent {
     const prefixStatus = isHidden ? 'passwordHidden' : 'passwordShown'
 
     // Update button text
-    this.$showHideButton.innerHTML = this.i18n.t(`${prefixButton}Password`)
+    this.$showHideButton.innerText = this.i18n.t(`${prefixButton}Password`)
 
     // Update button aria-label
     this.$showHideButton.setAttribute(
@@ -258,9 +258,9 @@ export class PasswordInput extends GOVUKFrontendComponent {
  *
  * Messages displayed to the user indicating the state of the show/hide toggle.
  * @property {string} [showPassword] - Visible text of the button when the
- *   password is currently hidden. HTML is acceptable.
+ *   password is currently hidden. Plain text only.
  * @property {string} [hidePassword] - Visible text of the button when the
- *   password is currently visible. HTML is acceptable.
+ *   password is currently visible. Plain text only.
  * @property {string} [showPasswordAriaLabel] - aria-label of the button when
  *   the password is currently hidden. Plain text only.
  * @property {string} [hidePasswordAriaLabel] - aria-label of the button when
