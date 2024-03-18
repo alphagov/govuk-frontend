@@ -24,11 +24,6 @@ module.exports = defineConfig({
     // Require all form field and ARIA references to exist
     'no-missing-references': 'error',
 
-    // Allow for explicit roles on regions that have implict roles
-    // We do this to better support AT with older versions of IE that
-    // have partial support for HTML5 semantic elements
-    'no-redundant-role': 'off',
-
     // More hassle than it's worth 👾
     'no-trailing-whitespace': 'off',
 
@@ -67,6 +62,13 @@ module.exports = defineConfig({
       button: {
         attributes: {
           type: { required: false }
+        }
+      },
+      fieldset: {
+        attributes: {
+          role: {
+            enum: ['group']
+          }
         }
       }
     }

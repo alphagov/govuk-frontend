@@ -345,11 +345,6 @@ describe('Template', () => {
     })
 
     describe('<main>', () => {
-      it('has role="main", supporting browsers that do not natively support HTML5 elements', () => {
-        const $ = renderTemplate('govuk/template.njk')
-        expect($('main').attr('role')).toBe('main')
-      })
-
       it('can have custom classes added using mainClasses', () => {
         const $ = renderTemplate('govuk/template.njk', {
           context: {
