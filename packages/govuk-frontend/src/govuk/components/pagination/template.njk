@@ -50,7 +50,7 @@
   </li>
 {%- endmacro -%}
 
-<nav class="govuk-pagination {%- if blockLevel %} govuk-pagination--block{% endif %} {%- if params.classes %} {{ params.classes }}{% endif %}" role="navigation" aria-label="{{ params.landmarkLabel | default("Pagination", true) }}"
+<nav class="govuk-pagination {%- if blockLevel %} govuk-pagination--block{% endif %} {%- if params.classes %} {{ params.classes }}{% endif %}" aria-label="{{ params.landmarkLabel | default("Pagination", true) }}"
   {{- govukAttributes(params.attributes) }}>
   {% set previous = params.previous %}
   {% set next = params.next %}

@@ -53,6 +53,23 @@ Check your changes against [the character count example in the Design System](ht
 
 This change was introduced in [pull request #4566: Use Character count `formGroup` as module wrapper](https://github.com/alphagov/govuk-frontend/pull/4566).
 
+#### Remove redundant `role` attributes from elements
+
+We've made minor changes to the HTML of the page template, as well as the header, footer and pagination components.
+
+You can update your HTML to remove the `role` attribute from some elements. These include:
+
+- the `main` role on the `main` element in the template.
+- the `banner` role on the `header` element in the header component.
+- the `contentinfo` role on the `footer` element in the footer component.
+- the `navigation` role on the `nav` element in the pagination component.
+
+These roles were present to support legacy browsers, such as older versions of Internet Explorer. GOV.UK Frontend no longer supports these browsers, so the roles can now be removed.
+
+If you're using the Nunjucks versions of the page template or these components, you don't need to change anything.
+
+This change was introduced in [pull request #4854: Remove redundant `role` attributes](https://github.com/alphagov/govuk-frontend/pull/4854).
+
 ### Fixes
 
 We've fixed an upstream issue in the [cssnano npm package](https://www.npmjs.com/package/cssnano) that caused elements with transparency to render incorrectly in Internet Explorer 11. This affected the pre-compiled CSS files in the [GOV.UK Frontend npm package](https://www.npmjs.com/package/govuk-frontend) and [GitHub releases](https://github.com/alphagov/govuk-frontend/releases) for versions 5.0, 5.1 and 5.2. This was fixed in:

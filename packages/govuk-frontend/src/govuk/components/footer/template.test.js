@@ -8,13 +8,6 @@ describe('footer', () => {
     examples = await getExamples('footer')
   })
 
-  it('entire component must have a role of `contentinfo`', () => {
-    const $ = render('footer', examples.default)
-
-    const $component = $('.govuk-footer')
-    expect($component.attr('role')).toBe('contentinfo')
-  })
-
   it('renders attributes correctly', () => {
     const $ = render('footer', examples.attributes)
 
