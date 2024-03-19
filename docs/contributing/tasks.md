@@ -1,74 +1,88 @@
-# npm and Gulp tasks
+# npm and Gulp Tasks for GOV.UK Frontend
 
-This document describes the npm scripts that run the Express.js review app, and the Gulp tasks they trigger to build files, update the package, copy assets and watch for changes.
+This document describes the npm scripts that run the Express.js review app and the Gulp tasks they trigger for building files, updating the package, copying assets, and watching for changes.
 
-To run the Express.js review app without any tasks being triggered, see [Review app only](#review-app-only).
+## Running the Express.js Review App
 
-## npm script aliases
+To run the Express.js review app without triggering any tasks, follow the instructions under [Review app only](#review-app-only).
 
-npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
+## npm Script Aliases
 
-**`npm start` will trigger `npm run dev` that will:**
+These npm scripts are defined in `package.json` and trigger various Gulp tasks.
 
-- runs `npm run build`
-- starts the review app, restarting when `.mjs`, `.json` or `.yaml` files change
-- compile again when frontend `.mjs` and `.scss` files change
+### npm start
 
-**`npm test` will do the following:**
+Running `npm start` will trigger `npm run dev`, which:
 
-- run Nunjucks macros tests
-- run JavaScript tests on the review app
-- run accessibility and HTML validation tests
+- Runs `npm run build`
+- Starts the review app, restarting when `.mjs`, `.json`, or `.yaml` files change
+- Compiles again when frontend `.mjs` and `.scss` files change
 
-**`npm run build` will do the following:**
+### npm test
 
-- run tasks from `npm run build:package`
-- run tasks from `npm run build:app`
+Running `npm test` performs the following tasks:
 
-**`npm run clean` will do the following:**
+- Runs Nunjucks macros tests
+- Runs JavaScript tests on the review app
+- Runs accessibility and HTML validation tests
 
-- clean the `./dist` folder from all workspaces
+### npm run build
 
-**`npm run build:app` will trigger `npm run build --workspace @govuk-frontend/review` that will:**
+Running `npm run build` performs the following tasks:
 
-- clean the `./packages/govuk-frontend-review/dist` folder
-- output files into `./packages/govuk-frontend-review/dist`
-- copy fonts and images
-- compile JavaScript and Sass, including documentation
+- Runs tasks from `npm run build:package`
+- Runs tasks from `npm run build:app`
 
-**`npm run build:package` will do the following:**
+### npm run clean
 
-- clean the `./packages/govuk-frontend/dist` folder
-- output files into `./packages/govuk-frontend/dist`
-- copy Sass files, applying Autoprefixer via PostCSS
-- copy Nunjucks component template/macro files, including JSON configs
-- copy GOV.UK Prototype Kit config files
-- compile Sass to CSS
-- compile JavaScript to ECMAScript (ES) modules
-- compile JavaScript to Universal Module Definition (UMD) bundles
-- compile Rollup build stats into `./shared/stats/dist`
-- runs `npm run postbuild:package` (which will test the output is correct)
+Running `npm run clean` cleans the `./dist` folder from all workspaces.
 
-**`npm run build:release` will do the following:**
+### npm run build:app
 
-- clean the `./dist` folder
-- output files into `./dist`
-- copy fonts and images
-- compile JavaScript and Sass
-- append version number from `packages/govuk-frontend/package.json` to compiled JavaScript and CSS files
-- runs `npm run postbuild:release` (which will test the output is correct)
+Running `npm run build:app` triggers `npm run build --workspace @govuk-frontend/review`, which:
 
-**`npm run build:types` will do the following:**
+- Cleans the `./packages/govuk-frontend-review/dist` folder
+- Outputs files into `./packages/govuk-frontend-review/dist`
+- Copies fonts and images
+- Compiles JavaScript and Sass, including documentation
 
-- run the [TypeScript compiler](https://www.typescriptlang.org/docs/handbook/compiler-options.html) to build type declarations for the GOV.UK Frontend package
+### npm run build:package
 
-To verify the types in all our JavaScript files, run `npm run lint:types`
+Running `npm run build:package` performs the following tasks:
 
-## Gulp tasks
+- Cleans the `./packages/govuk-frontend/dist` folder
+- Outputs files into `./packages/govuk-frontend/dist`
+- Copies Sass files, applying Autoprefixer via PostCSS
+- Copies Nunjucks component template/macro files, including JSON configs
+- Copies GOV.UK Prototype Kit config files
+- Compiles Sass to CSS
+- Compiles JavaScript to ECMAScript (ES) modules
+- Compiles JavaScript to Universal Module Definition (UMD) bundles
+- Compiles Rollup build stats into `./shared/stats/dist`
+- Runs `npm run postbuild:package` (which will test the output is correct)
+
+### npm run build:release
+
+Running `npm run build:release` performs the following tasks:
+
+- Cleans the `./dist` folder
+- Outputs files into `./dist`
+- Copies fonts and images
+- Compiles JavaScript and Sass
+- Appends the version number from `packages/govuk-frontend/package.json` to compiled JavaScript and CSS files
+- Runs `npm run postbuild:release` (which will test the output is correct)
+
+### npm run build:types
+
+Running `npm run build:types` uses the TypeScript compiler to build type declarations for the GOV.UK Frontend package.
+
+To verify the types in all JavaScript files, run `npm run lint:types`.
+
+## Gulp Tasks
 
 Project Gulp tasks are defined in [`gulpfile.mjs`](/gulpfile.mjs) and the [`tasks/`](/shared/tasks) folder.
 
-Gulp tasks from npm workspaces (such as the review app) can be run as shown:
+Gulp tasks from npm workspaces (such as the review app) can be run with the following command:
 
 **`npx --workspace @govuk-frontend/review -- gulp --tasks`**
 
