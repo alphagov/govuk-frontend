@@ -141,8 +141,9 @@ module.exports = {
       }
     },
     {
-      // Add plugin for markdown `*.md` code blocks
-      extends: ['plugin:markdown/recommended'],
+      // Add plugin for markdown `*.md` code blocks. Its config is in the new
+      // "flat" format, so we need to use the legacy config
+      extends: ['plugin:markdown/recommended-legacy'],
       files: ['**/*.md'],
       plugins: ['markdown'],
       processor: 'markdown/markdown'
