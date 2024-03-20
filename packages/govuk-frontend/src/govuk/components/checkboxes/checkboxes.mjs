@@ -28,7 +28,7 @@ export class Checkboxes extends GOVUKFrontendComponent {
    * @param {Element | null} $module - HTML element to use for checkboxes
    */
   constructor($module) {
-    super()
+    super($module)
 
     if (!($module instanceof HTMLElement)) {
       throw new ElementError({

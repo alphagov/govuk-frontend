@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 const {
   goToExample,
   getProperty,
@@ -317,6 +319,20 @@ describe('Radios', () => {
           message:
             'GOV.UK Frontend initialised without `<body class="govuk-frontend-supported">` from template `<script>` snippet'
         }
+      })
+    })
+
+    it('throws when initialised twice', async () => {
+      await expect(
+        render(page, 'radios', examples.default, {
+          async afterInitialisation($module) {
+            const { Radios } = await import('govuk-frontend')
+            new Radios($module)
+          }
+        })
+      ).rejects.toMatchObject({
+        name: 'InitError',
+        message: 'Root element (`$module`) already initialised (`govuk-radios`)'
       })
     })
 

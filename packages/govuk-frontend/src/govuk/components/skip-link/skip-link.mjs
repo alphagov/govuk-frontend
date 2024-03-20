@@ -18,7 +18,7 @@ export class SkipLink extends GOVUKFrontendComponent {
    * @throws {ElementError} when the linked element is missing or the wrong type
    */
   constructor($module) {
-    super()
+    super($module)
 
     if (!($module instanceof HTMLAnchorElement)) {
       throw new ElementError({

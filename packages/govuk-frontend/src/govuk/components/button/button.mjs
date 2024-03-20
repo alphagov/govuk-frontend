@@ -31,7 +31,7 @@ export class Button extends GOVUKFrontendComponent {
    * @param {ButtonConfig} [config] - Button config
    */
   constructor($module, config = {}) {
-    super()
+    super($module)
 
     if (!($module instanceof HTMLElement)) {
       throw new ElementError({

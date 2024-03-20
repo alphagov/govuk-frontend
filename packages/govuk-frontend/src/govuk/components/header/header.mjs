@@ -43,7 +43,7 @@ export class Header extends GOVUKFrontendComponent {
    * @param {Element | null} $module - HTML element to use for header
    */
   constructor($module) {
-    super()
+    super($module)
 
     if (!$module) {
       throw new ElementError({

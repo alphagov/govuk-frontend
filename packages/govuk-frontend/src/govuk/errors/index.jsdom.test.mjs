@@ -1,4 +1,9 @@
-import { ElementError, GOVUKFrontendError, SupportError } from './index.mjs'
+import {
+  ElementError,
+  GOVUKFrontendError,
+  InitError,
+  SupportError
+} from './index.mjs'
 
 describe('errors', () => {
   describe('GOVUKFrontendError', () => {
@@ -43,6 +48,29 @@ describe('errors', () => {
       // will see support checks run when document.body is still `null`
       expect(new SupportError(null).message).toBe(
         'GOV.UK Frontend initialised without `<script type="module">`'
+      )
+    })
+  })
+
+  describe('InitError', () => {
+    let $element
+
+    beforeAll(() => {
+      $element = document.createElement('div')
+      $element.setAttribute('data-module', 'govuk-accordion')
+    })
+
+    it('is an instance of GOVUKFrontendError', () => {
+      expect(new InitError($element)).toBeInstanceOf(GOVUKFrontendError)
+    })
+
+    it('has its own name set', () => {
+      expect(new InitError($element).name).toBe('InitError')
+    })
+
+    it('provides feedback for modules already initialised', () => {
+      expect(new InitError($element).message).toBe(
+        'Root element (`$module`) already initialised (`govuk-accordion`)'
       )
     })
   })
