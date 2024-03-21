@@ -60,6 +60,11 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
   $button-shadow-size: $govuk-border-width-form-element;
 
   .govuk-button {
+    --background-color: #{$govuk-button-colour};
+    --shadow-color: #{$govuk-button-shadow-colour};
+    --text-color: #{$govuk-button-text-colour};
+    --hover-color: #{$govuk-button-hover-colour};
+
     @include govuk-font($size: 19, $line-height: 19px);
 
     box-sizing: border-box;
@@ -74,9 +79,9 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
       (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2)); // s1
     border: $govuk-border-width-form-element solid transparent;
     border-radius: 0;
-    color: $govuk-button-text-colour;
-    background-color: $govuk-button-colour;
-    box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
+    color: var(--text-color);
+    background-color: var(--background-color);
+    box-shadow: 0 $button-shadow-size 0 var(--shadow-color); // s0
     text-align: center;
     vertical-align: top;
     cursor: pointer;
@@ -91,7 +96,7 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
     &:visited,
     &:active,
     &:hover {
-      color: $govuk-button-text-colour;
+      color: var(--text-color);
       text-decoration: none;
     }
 
@@ -102,7 +107,7 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
     }
 
     &:hover {
-      background-color: $govuk-button-hover-colour;
+      background-color: var(--hover-color);
     }
 
     &:active {
@@ -111,13 +116,8 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
     }
 
     &:focus {
-      border-color: $govuk-focus-colour;
+      border-color: $govuk-focus-text-colour;
       outline: $govuk-focus-width solid transparent;
-      box-shadow: inset 0 0 0 1px $govuk-focus-colour;
-    }
-
-    &:focus:not(:active):not(:hover) {
-      border-color: $govuk-focus-colour;
       color: $govuk-focus-text-colour;
       background-color: $govuk-focus-colour;
       box-shadow: 0 2px 0 $govuk-focus-text-colour;
@@ -161,77 +161,35 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
     opacity: (0.5);
 
     &:hover {
-      background-color: $govuk-button-colour;
+      background-color: var(--background-color);
       cursor: not-allowed;
     }
 
     &:active {
       top: 0;
-      box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
+      box-shadow: 0 $button-shadow-size 0 var(--shadow-color); // s0
     }
   }
 
   .govuk-button--secondary {
-    background-color: $govuk-secondary-button-colour;
-    box-shadow: 0 $button-shadow-size 0 $govuk-secondary-button-shadow-colour;
-
-    &,
-    &:link,
-    &:visited,
-    &:active,
-    &:hover {
-      color: $govuk-secondary-button-text-colour;
-    }
-
-    &:hover {
-      background-color: $govuk-secondary-button-hover-colour;
-
-      &[disabled] {
-        background-color: $govuk-secondary-button-colour;
-      }
-    }
+    --background-color: #{$govuk-secondary-button-colour};
+    --shadow-color: #{$govuk-secondary-button-shadow-colour};
+    --text-color: #{$govuk-secondary-button-text-colour};
+    --hover-color: #{$govuk-secondary-button-hover-colour};
   }
 
   .govuk-button--warning {
-    background-color: $govuk-warning-button-colour;
-    box-shadow: 0 $button-shadow-size 0 $govuk-warning-button-shadow-colour;
-
-    &,
-    &:link,
-    &:visited,
-    &:active,
-    &:hover {
-      color: $govuk-warning-button-text-colour;
-    }
-
-    &:hover {
-      background-color: $govuk-warning-button-hover-colour;
-
-      &[disabled] {
-        background-color: $govuk-warning-button-colour;
-      }
-    }
+    --background-color: #{$govuk-warning-button-colour};
+    --shadow-color: #{$govuk-warning-button-shadow-colour};
+    --text-color: #{$govuk-warning-button-text-colour};
+    --hover-color: #{$govuk-warning-button-hover-colour};
   }
 
   .govuk-button--inverse {
-    background-color: $govuk-inverse-button-colour;
-    box-shadow: 0 $button-shadow-size 0 $govuk-inverse-button-shadow-colour;
-
-    &,
-    &:link,
-    &:visited,
-    &:active,
-    &:hover {
-      color: $govuk-inverse-button-text-colour;
-    }
-
-    &:hover {
-      background-color: $govuk-inverse-button-hover-colour;
-
-      &[disabled] {
-        background-color: $govuk-inverse-button-colour;
-      }
-    }
+    --background-color: #{$govuk-inverse-button-colour};
+    --shadow-color: #{$govuk-inverse-button-shadow-colour};
+    --text-color: #{$govuk-inverse-button-text-colour};
+    --hover-color: #{$govuk-inverse-button-hover-colour};
   }
 
   .govuk-button--start {

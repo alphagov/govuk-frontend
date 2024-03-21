@@ -2,6 +2,8 @@
   $govuk-tag-max-width: if(map-has-key($govuk-breakpoints, "mobile"), map-get($govuk-breakpoints, "mobile") / 2, 160px);
 
   .govuk-tag {
+    --tag-background-colour: #{govuk-tint(govuk-colour("blue"), 70%)};
+    --tag-text-colour: #{govuk-shade(govuk-colour("blue"), 60%)};
     @include govuk-font($size: 19);
 
     display: inline-block;
@@ -24,8 +26,8 @@
     padding-right: 8px;
     padding-bottom: 3px;
     padding-left: 8px;
-    color: govuk-shade(govuk-colour("blue"), 60%);
-    background-color: govuk-tint(govuk-colour("blue"), 70%);
+    color: var(--tag-text-colour);
+    background-color: var(--tag-background-colour);
     text-decoration: none;
     overflow-wrap: break-word;
 
@@ -41,52 +43,52 @@
   }
 
   .govuk-tag--grey {
-    color: govuk-shade(govuk-colour("dark-grey"), 50%);
-    background-color: govuk-tint(govuk-colour("dark-grey"), 85%);
+    --tag-text-colour: #{govuk-shade(govuk-colour("dark-grey"), 50%)};
+    --tag-background-colour: #{govuk-tint(govuk-colour("dark-grey"), 85%)};
   }
 
   .govuk-tag--purple {
-    color: govuk-shade(govuk-colour("bright-purple"), 50%);
-    background-color: govuk-tint(govuk-colour("bright-purple"), 85%);
+    --tag-text-colour: #{govuk-shade(govuk-colour("bright-purple"), 50%)};
+    --tag-background-colour: #{govuk-tint(govuk-colour("bright-purple"), 85%)};
   }
 
   .govuk-tag--turquoise {
-    color: govuk-shade(govuk-colour("turquoise"), 60%);
-    background-color: govuk-tint(govuk-colour("turquoise"), 80%);
+    --tag-text-colour: #{govuk-shade(govuk-colour("turquoise"), 60%)};
+    --tag-background-colour: #{govuk-tint(govuk-colour("turquoise"), 80%)};
   }
 
   .govuk-tag--blue {
-    color: govuk-shade(govuk-colour("blue"), 60%);
-    background-color: govuk-tint(govuk-colour("blue"), 70%);
+    --tag-text-colour: #{govuk-shade(govuk-colour("blue"), 60%)};
+    --tag-background-colour: #{govuk-tint(govuk-colour("blue"), 70%)};
   }
 
   .govuk-tag--light-blue {
-    color: govuk-shade(govuk-colour("blue"), 60%);
-    background-color: govuk-tint(govuk-colour("blue"), 90%);
+    --tag-text-colour: #{govuk-shade(govuk-colour("blue"), 60%)};
+    --tag-background-colour: #{govuk-tint(govuk-colour("blue"), 90%)};
   }
 
   .govuk-tag--yellow {
-    color: govuk-shade(govuk-colour("yellow"), 65%);
-    background-color: govuk-tint(govuk-colour("yellow"), 75%);
+    --tag-text-colour: #{govuk-shade(govuk-colour("yellow"), 65%)};
+    --tag-background-colour: #{govuk-tint(govuk-colour("yellow"), 75%)};
   }
 
   .govuk-tag--orange {
-    color: govuk-shade(govuk-colour("orange"), 55%);
-    background-color: govuk-tint(govuk-colour("orange"), 70%);
+    --tag-text-colour: #{govuk-shade(govuk-colour("orange"), 55%)};
+    --tag-background-colour: #{govuk-tint(govuk-colour("orange"), 70%)};
   }
 
   .govuk-tag--red {
-    color: govuk-shade(govuk-colour("red"), 80%);
-    background-color: govuk-tint(govuk-colour("red"), 75%);
+    --tag-text-colour: #{govuk-shade(govuk-colour("red"), 80%)};
+    --tag-background-colour: #{govuk-tint(govuk-colour("red"), 75%)};
   }
 
   .govuk-tag--pink {
-    color: govuk-shade(govuk-colour("pink"), 50%);
-    background-color: govuk-tint(govuk-colour("pink"), 85%);
+    --tag-text-colour: #{govuk-shade(govuk-colour("pink"), 50%)};
+    --tag-background-colour: #{govuk-tint(govuk-colour("pink"), 85%)};
   }
 
   .govuk-tag--green {
-    color: govuk-shade(govuk-colour("green"), 20%);
-    background-color: govuk-tint(govuk-colour("green"), 80%);
+    --tag-text-colour: #{govuk-shade(govuk-colour("green"), 20%)};
+    --tag-background-colour: #{govuk-tint(govuk-colour("green"), 80%)};
   }
 }
