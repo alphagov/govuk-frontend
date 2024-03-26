@@ -13,7 +13,7 @@
 /// @type Colour
 /// @access public
 
-$govuk-brand-colour: var(--govuk-brand-colour, govuk-colour("blue")) !default;
+$govuk-brand-colour: govuk-colour("blue") !default;
 
 /// Text colour
 ///
@@ -84,7 +84,7 @@ $govuk-focus-text-colour: var(--govuk-focus-text-colour, govuk-colour("black")) 
 /// @type Colour
 /// @access public
 
-$govuk-error-colour: var(--govuk-error-colour, govuk-colour("red")) !default;
+$govuk-error-colour: govuk-colour("red") !default;
 
 /// Success colour
 ///
@@ -93,7 +93,7 @@ $govuk-error-colour: var(--govuk-error-colour, govuk-colour("red")) !default;
 /// @type Colour
 /// @access public
 
-$govuk-success-colour: var(--govuk-success-colour, govuk-colour("green")) !default;
+$govuk-success-colour: govuk-colour("green") !default;
 
 /// Border colour
 ///
