@@ -4,11 +4,16 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+## GOV.UK Frontend v5.3.0 (Feature release)
+
 ### New features
 
-#### Use the Passwords input component to help users accessibly enter passwords
+#### Use the Password input component to help users accessibly enter passwords
 
-The [Password input component](https://design-system.service.gov.uk/components/password-input/) allows users to toggle the visibility of passwords and enter their passwords in plain text if they choose to do so.
+The [Password input component](https://design-system.service.gov.uk/components/password-input/) allows users to choose:
+
+- whether their passwords are visible or not
+- to enter their passwords in plain text
 
 This helps users use longer and more complex passwords without needing to remember what they've already typed.
 
@@ -16,11 +21,9 @@ This change was introduced in [pull request #4442: Create password input compone
 
 ### Recommended changes
 
-#### Update the HTML for the character count
+#### Update the HTML for the Character count component
 
-We've updated the HTML for the character count.
-
-The component wrapper `data-module="govuk-character-count"` and its form group `class="govuk-form-group"` are now combined as the same `<div>`. The hint text used as the count message is now placed directly after the `<textarea>`.
+We've updated the HTML for the Character count component. The component wrapper `data-module="govuk-character-count"` and its form group `class="govuk-form-group"` are now combined as the same `<div>`. The hint text used as the count message now appears directly after the `<textarea>`.
 
 If you're not using Nunjucks macros, then you should:
 
@@ -28,7 +31,7 @@ If you're not using Nunjucks macros, then you should:
 - remove the opening `<div>` and closing `</div>` tags used by the form group
 - check the count message is now directly after the `<textarea>`
 
-The following example shows some HTML and the difference once it is updated.
+The following example shows some HTML and the difference once it’s updated.
 
 HTML before:
 
@@ -49,7 +52,7 @@ HTML after:
 </div>
 ```
 
-Check your changes against [the character count example in the Design System](https://design-system.service.gov.uk/components/character-count/#character-count-example) to make sure you have correctly implemented them.
+Check your changes against [the Character count example in the Design System](https://design-system.service.gov.uk/components/character-count/#character-count-example) to make sure you’ve correctly implemented them.
 
 This change was introduced in [pull request #4566: Use Character count `formGroup` as module wrapper](https://github.com/alphagov/govuk-frontend/pull/4566).
 
@@ -57,16 +60,16 @@ This change was introduced in [pull request #4566: Use Character count `formGrou
 
 We've made minor changes to the HTML of the page template, as well as the header, footer and pagination components.
 
-You can update your HTML to remove the `role` attribute from some elements. These include:
+You can update your HTML to remove the `role` attribute from some elements. These include the:
 
-- the `main` role on the `main` element in the template.
-- the `banner` role on the `header` element in the header component.
-- the `contentinfo` role on the `footer` element in the footer component.
-- the `navigation` role on the `nav` element in the pagination component.
+- `main` role on the `main` element in the template
+- `banner` role on the `header` element in the Header component
+- `contentinfo` role on the `footer` element in the Footer component
+- `navigation` role on the `nav` element in the Pagination component
 
-These roles were present to support legacy browsers, such as older versions of Internet Explorer. GOV.UK Frontend no longer supports these browsers, so the roles can now be removed.
+These roles were present to support legacy browsers, such as older versions of Internet Explorer. GOV.UK Frontend no longer supports these browsers, so you can now remove these roles.
 
-If you're using the Nunjucks versions of the page template or these components, you don't need to change anything.
+You do not need to change anything if you're using the Nunjucks versions of the page template or these components,
 
 This change was introduced in [pull request #4854: Remove redundant `role` attributes](https://github.com/alphagov/govuk-frontend/pull/4854).
 
