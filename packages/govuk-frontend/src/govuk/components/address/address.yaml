@@ -1,0 +1,243 @@
+params:
+  - name: legend
+    type: object
+    required: true
+    description: The legend for the address component.
+    params:
+      - name: text
+        type: string
+        required: true
+        description: If `html` is set, this is not required. Text to use within the legend. If `html` is provided, the `text` option will be ignored.
+      - name: html
+        type: string
+        required: true
+        description: If `text` is set, this is not required. HTML to use within the legend. If `html` is provided, the `text` option will be ignored.
+      - name: classes
+        type: string
+        required: false
+        description: Classes to add to the legend.
+      - name: isPageHeading
+        type: boolean
+        required: false
+        description: Whether the legend also acts as the heading for the page.
+  - name: line1
+    type: object
+    required: true
+    description: Line 1 of the address
+    params:
+      - name: id
+        type: string
+        required: true
+        description: The ID of the address line 1 field.
+      - name: label
+        type: object
+        required: false
+        description: The label used by address line 1. Defaults to "Line 1".
+        isComponent: true
+  - name: line2
+    type: object
+    required: true
+    description: Line 2 of the address
+    params:
+      - name: id
+        type: string
+        required: true
+        description: The ID of the address line 2 field.
+      - name: label
+        type: object
+        required: false
+        description: The label used by address line 2. Defaults to "Line 2".
+        isComponent: true
+      - name: visuallyHiddenText
+        type: boolean
+        required: false
+        description: Optional field to hide the label of line 2 and use hidden text.
+  - name: townOrCity
+    type: object
+    required: true
+    description: Town/city of the address
+    params:
+      - name: id
+        type: string
+        required: true
+        description: The ID of town/city field.
+      - name: label
+        type: object
+        required: false
+        description: The label used by town/city. Defaults to "Town or city".
+        isComponent: true
+  - name: county
+    type: object
+    required: true
+    description: County of the address
+    params:
+      - name: id
+        type: string
+        required: true
+        description: The ID of the county field.
+      - name: label
+        type: object
+        required: false
+        description: The label used by county. Defaults to "County".
+        isComponent: true
+  - name: postcode
+    type: object
+    required: true
+    description: Postcode of the address
+    params:
+      - name: id
+        type: string
+        required: true
+        description: The ID of the postcode field.
+      - name: label
+        type: object
+        required: false
+        description: The label used by postcode. Defaults to "Postcode".
+        isComponent: true
+  - name: values
+    type: object
+    required: false
+    description: Values to pre-populate the address fields with. If an object contains a matching field ID, the value will be used in the text input.
+  - name: errorMessages
+    type: object
+    required: false
+    description: Error messages for each address field. If an object contains a matching field ID, the error will be rendered by the text input.
+
+examples:
+  - name: default
+    options:
+      legend:
+        text: 'What is your address?'
+      line1:
+        id: 'line1'
+      line2:
+        id: 'line2'
+      townOrCity:
+        id: 'townOrCity'
+      county:
+        id: 'county'
+      postcode:
+        id: 'postcode'
+
+  - name: with error messages
+    options:
+      legend:
+        text: 'Where do you live?'
+      line1:
+        id: 'line1'
+      line2:
+        id: 'line2'
+      townOrCity:
+        id: 'townOrCity'
+      county:
+        id: 'county'
+      postcode:
+        id: 'postcode'
+      errorMessages:
+        line1:
+          text: Enter address line 1
+        townOrCity:
+          text: Enter town or city
+        county:
+          text: Enter county
+        postcode:
+          text: Enter postcode
+
+  - name: with required and optional error messages
+    options:
+      legend:
+        text: 'What is your current address?'
+      line1:
+        id: 'line1'
+      line2:
+        id: 'line2'
+      townOrCity:
+        id: 'townOrCity'
+      county:
+        id: 'county'
+      postcode:
+        id: 'postcode'
+      values:
+        line2: Line 2!
+      errorMessages:
+        line1:
+          text: Enter address line 1
+        line2:
+          text: Address line 2 must not contain special characters
+        townOrCity:
+          text: Enter town or city
+        county:
+          text: Enter county
+        postcode:
+          text: Enter postcode
+
+  - name: with submitted values and partial error messages
+    options:
+      legend:
+        text: 'What is your address?'
+      line1:
+        id: 'line1'
+      line2:
+        id: 'line2'
+      townOrCity:
+        id: 'townOrCity'
+      county:
+        id: 'county'
+      postcode:
+        id: 'postcode'
+      values:
+        line1: Line 1!
+        county: London
+      errorMessages:
+        line1:
+          text: Address line 1 cannot contain special characters
+        townOrCity:
+          text: Enter town or city
+        postcode:
+          text: Enter postcode
+
+  - name: with hidden line 2 label
+    options:
+      legend:
+        text: 'What is your address?'
+      line1:
+        id: 'line1'
+        label: 'Building and street'
+      line2:
+        id: 'line2'
+        visuallyHiddenText: true
+      townOrCity:
+        id: 'townOrCity'
+      county:
+        id: 'county'
+      postcode:
+        id: 'postcode'
+
+  - name: with hidden line 2 label, submitted values and error messages
+    options:
+      legend:
+        text: 'What is your address?'
+      line1:
+        id: 'line1'
+        label: 'Building and street'
+      line2:
+        id: 'line2'
+        visuallyHiddenText: true
+      townOrCity:
+        id: 'townOrCity'
+      county:
+        id: 'county'
+      postcode:
+        id: 'postcode'
+      values:
+        line1: Line 1
+        postcode: W1A
+      errorMessages:
+        line2:
+          text: Enter a value
+        townOrCity:
+          text: Enter town or city
+        county:
+          text: Enter county
+        postcode:
+          text: Postcode is too short
