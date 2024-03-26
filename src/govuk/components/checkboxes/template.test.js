@@ -353,6 +353,15 @@ describe('Checkboxes', () => {
       const $input = $('.govuk-checkboxes__input').first()
       expect($input.attr('data-aria-controls')).toBeFalsy()
     })
+
+    // Indentation in nunjucks can mutate the value of textareas, since
+    // textarea value is defined between the html tags
+    it('does not add space to the input value of textareas inside conditionals', () => {
+      const $ = render('checkboxes', examples['textarea in conditional'])
+
+      const $textarea = $('#conditional-textarea')
+      expect($textarea.text()).toBe('test\n')
+    })
   })
 
   describe('when they include an error message', () => {

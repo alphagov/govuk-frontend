@@ -955,3 +955,16 @@ examples:
         - value: blue
           text: Blue
       values: [red, green]
+  - name: textarea in conditional
+    hidden: true
+    options:
+      name: conditional
+      items:
+        - value: other
+          text: Other
+          conditional:
+            html: |
+              <label class="govuk-label" for="conditional-textarea">textarea</label>
+              <textarea class="govuk-textarea govuk-!-width-one-third" name="conditional-textarea" id="conditional-textarea">
+              test
+              </textarea>
