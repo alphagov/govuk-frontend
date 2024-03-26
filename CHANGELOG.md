@@ -10,6 +10,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#4906: Update the icon in the warning text component to match the defined text colour and background colour, rather than always being white on black](https://github.com/alphagov/govuk-frontend/pull/4906)
 - [#4919: Use canvas colour for cookie banner over hardcoded grey](https://github.com/alphagov/govuk-frontend/pull/4919)
+- [#4899: Remove indents from conditional reveals in radios and checkboxes](https://github.com/alphagov/govuk-frontend/pull/4899)
 
 ## GOV.UK Frontend v5.3.0 (Feature release)
 
