@@ -35,7 +35,7 @@
 /// @access public
 
 @mixin govuk-text-colour {
-  color: $govuk-text-colour;
+  color: var(--govuk-text-colour);
 
   @include govuk-media-query($media-type: print) {
     color: $govuk-print-text-colour;

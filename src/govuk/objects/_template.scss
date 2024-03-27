@@ -5,7 +5,7 @@
   .govuk-template {
     // Set the overall page background colour to the same colour as used by the
     // footer to give the illusion of a long footer.
-    background-color: $govuk-canvas-background-colour;
+    background-color: var(--govuk-canvas-background-colour);
 
     // Prevent automatic text sizing, as we already cater for small devices and
     // would like the browser to stay on 100% text zoom by default.
@@ -44,6 +44,6 @@
     // own containers.
     margin: 0;
     // Set the overall body of the page back to the typical background colour.
-    background-color: $govuk-body-background-colour;
+    background-color: var(--govuk-body-background-colour);
   }
 }

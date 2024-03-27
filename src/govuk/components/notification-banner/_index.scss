@@ -38,7 +38,7 @@
     @include govuk-text-colour;
     padding: govuk-spacing(3);
 
-    background-color: $govuk-body-background-colour;
+    background-color: var(--govuk-body-background-colour);
 
     @include govuk-media-query($from: tablet) {
       padding: $padding-tablet;
