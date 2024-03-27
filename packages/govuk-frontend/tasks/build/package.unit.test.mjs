@@ -74,7 +74,8 @@ describe('packages/govuk-frontend/dist/', () => {
       .flatMap(
         mapPathTo(['**/*.mjs'], ({ dir: requirePath, name }) => [
           join(requirePath, `${name}.mjs`),
-          join(requirePath, `${name}.mjs.map`) // with source map
+          join(requirePath, `${name}.mjs.map`), // with source map
+          join(requirePath, `${name}.d.mts`) // with type declaration
         ])
       )
 
