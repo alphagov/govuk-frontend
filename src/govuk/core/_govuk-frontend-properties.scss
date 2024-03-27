@@ -7,4 +7,22 @@
   @each $name, $value in $govuk-breakpoints {
     --govuk-frontend-breakpoint-#{$name}: #{govuk-px-to-rem($value)};
   }
+
+  --govuk-brand-colour: #{$govuk-brand-colour};
+  --govuk-text-colour: #{$govuk-text-colour};
+  --govuk-canvas-background-colour: #{$govuk-canvas-background-colour};
+  --govuk-body-background-colour: #{$govuk-body-background-colour};
+  --govuk-print-text-colour: #{$govuk-print-text-colour};
+  --govuk-secondary-text-colour: #{$govuk-secondary-text-colour};
+  --govuk-focus-colour: #{$govuk-focus-colour};
+  --govuk-focus-text-colour: #{$govuk-focus-text-colour};
+  --govuk-error-colour: #{$govuk-error-colour};
+  --govuk-success-colour: #{$govuk-success-colour};
+  --govuk-border-colour: #{$govuk-border-colour};
+  --govuk-input-border-colour: #{$govuk-input-border-colour};
+  --govuk-hover-colour: #{$govuk-hover-colour};
+  --govuk-link-colour: #{$govuk-link-colour};
+  --govuk-link-visited-colour: #{$govuk-link-visited-colour};
+  --govuk-link-hover-colour: #{$govuk-link-hover-colour};
+  --govuk-link-active-colour: #{$govuk-link-active-colour};
 }
