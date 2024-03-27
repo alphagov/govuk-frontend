@@ -189,7 +189,7 @@
 @mixin govuk-link-style-muted {
   &:link,
   &:visited {
-    color: $govuk-secondary-text-colour;
+    color: var(--govuk-secondary-text-colour);
   }
 
   &:hover,
