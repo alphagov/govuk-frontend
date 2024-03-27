@@ -11,7 +11,7 @@
     // when user changes colours in their browser.
     border-bottom: $border-bottom-width solid transparent;
 
-    background-color: $govuk-canvas-background-colour;
+    background-color: var(--govuk-canvas-background-colour);
   }
 
   // Support older browsers which don't hide elements with the `hidden` attribute
