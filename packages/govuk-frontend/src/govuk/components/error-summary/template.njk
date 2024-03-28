@@ -20,7 +20,7 @@
       {% for item in params.errorList %}
         <li>
         {% if item.href %}
-          <a href="{{ item.href }}"
+          <a class="govuk-link" href="{{ item.href }}"
             {{- govukAttributes(item.attributes) }}>
             {{- item.html | safe | trim | indent(12) if item.html else item.text -}}
           </a>

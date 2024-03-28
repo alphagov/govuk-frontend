@@ -96,43 +96,6 @@
   }
 }
 
-/// Error link styles
-///
-/// Makes links use the error colour. The link will darken if it's active or a
-/// user hovers their cursor over it.
-///
-/// If you use this mixin in a component, you must also include the
-/// `govuk-link-common` mixin to get the correct focus and hover states.
-///
-/// @example scss
-///   .govuk-component__link {
-///     @include govuk-link-common;
-///     @include govuk-link-style-error;
-///   }
-///
-/// @access public
-
-@mixin govuk-link-style-error {
-  &:link,
-  &:visited {
-    color: $govuk-error-colour;
-  }
-
-  &:hover {
-    color: scale-color($govuk-error-colour, $lightness: -30%);
-  }
-
-  &:active {
-    color: $govuk-error-colour;
-  }
-
-  // When focussed, the text colour needs to be darker to ensure that colour
-  // contrast is still acceptable
-  &:focus {
-    color: var(--govuk-focus-text-colour);
-  }
-}
-
 /// Success link styles
 ///
 /// Makes links use the success colour. The link will darken if it's active or a
