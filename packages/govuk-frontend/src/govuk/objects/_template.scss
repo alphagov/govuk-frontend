@@ -50,6 +50,8 @@
 
   @include govuk-media-query($media-type: screen) {
     .govuk-template--dark {
+      color-scheme: dark;
+
       --govuk-canvas-background-colour: #333;
       --govuk-body-background-colour: #222;
       --govuk-text-colour: #fff;
