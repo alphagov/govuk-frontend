@@ -66,7 +66,7 @@
 
     margin-bottom: govuk-spacing(1);
 
-    color: $govuk-secondary-text-colour;
+    color: var(--govuk-secondary-text-colour);
   }
 
   .govuk-caption-l {
@@ -75,7 +75,7 @@
     display: block;
 
     margin-bottom: govuk-spacing(1);
-    color: $govuk-secondary-text-colour;
+    color: var(--govuk-secondary-text-colour);
 
     @include govuk-media-query($from: tablet) {
       margin-bottom: 0;
@@ -87,7 +87,7 @@
 
     display: block;
 
-    color: $govuk-secondary-text-colour;
+    color: var(--govuk-secondary-text-colour);
   }
 
   // Body (paragraphs)

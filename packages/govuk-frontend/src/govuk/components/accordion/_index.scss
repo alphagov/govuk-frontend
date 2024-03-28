@@ -194,7 +194,7 @@
       // browser. See https://github.com/alphagov/govuk-frontend/issues/2321#issuecomment-924201488
       border-bottom: govuk-spacing(2) solid transparent;
 
-      color: $govuk-text-colour;
+      color: var(--govuk-text-colour);
       background: none;
 
       text-align: left;

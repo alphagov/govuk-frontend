@@ -13,7 +13,7 @@
 /// @access public
 
 @mixin govuk-typography-common($font-family: $govuk-font-family) {
-  font-family: $font-family;
+  font-family: var(--govuk-font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -21,10 +21,6 @@
   // the font-face declarations.
   @if $govuk-include-default-font-face {
     @include _govuk-font-face-gds-transport;
-  }
-
-  @include govuk-media-query($media-type: print) {
-    font-family: $govuk-font-family-print;
   }
 }
 
@@ -35,11 +31,7 @@
 /// @access public
 
 @mixin govuk-text-colour {
-  color: $govuk-text-colour;
-
-  @include govuk-media-query($media-type: print) {
-    color: $govuk-print-text-colour;
-  }
+  color: var(--govuk-text-colour);
 }
 
 /// Regular font weight helper

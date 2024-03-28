@@ -1,7 +1,7 @@
 @include govuk-exports("govuk/component/footer") {
-  $govuk-footer-background: $govuk-canvas-background-colour;
+  $govuk-footer-background: var(--govuk-canvas-background-colour);
   $govuk-footer-border: $govuk-border-colour;
-  $govuk-footer-text: $govuk-text-colour;
+  $govuk-footer-text: var(--govuk-text-colour);
 
   // Based on the govuk-crest-2x.png image dimensions.
   $govuk-footer-crest-image-width-2x: 250px;

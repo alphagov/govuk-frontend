@@ -74,62 +74,25 @@
 
 @mixin govuk-link-style-default {
   &:link {
-    color: $govuk-link-colour;
+    color: var(--govuk-link-colour);
   }
 
   &:visited {
-    color: $govuk-link-visited-colour;
+    color: var(--govuk-link-visited-colour);
   }
 
   &:hover {
-    color: $govuk-link-hover-colour;
+    color: var(--govuk-link-hover-colour);
   }
 
   &:active {
-    color: $govuk-link-active-colour;
+    color: var(--govuk-link-active-colour);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
   // contrast is still acceptable
   &:focus {
-    color: $govuk-focus-text-colour;
-  }
-}
-
-/// Error link styles
-///
-/// Makes links use the error colour. The link will darken if it's active or a
-/// user hovers their cursor over it.
-///
-/// If you use this mixin in a component, you must also include the
-/// `govuk-link-common` mixin to get the correct focus and hover states.
-///
-/// @example scss
-///   .govuk-component__link {
-///     @include govuk-link-common;
-///     @include govuk-link-style-error;
-///   }
-///
-/// @access public
-
-@mixin govuk-link-style-error {
-  &:link,
-  &:visited {
-    color: $govuk-error-colour;
-  }
-
-  &:hover {
-    color: scale-color($govuk-error-colour, $lightness: -30%);
-  }
-
-  &:active {
-    color: $govuk-error-colour;
-  }
-
-  // When focussed, the text colour needs to be darker to ensure that colour
-  // contrast is still acceptable
-  &:focus {
-    color: $govuk-focus-text-colour;
+    color: var(--govuk-focus-text-colour);
   }
 }
 
@@ -166,7 +129,7 @@
   // When focussed, the text colour needs to be darker to ensure that colour
   // contrast is still acceptable
   &:focus {
-    color: $govuk-focus-text-colour;
+    color: var(--govuk-focus-text-colour);
   }
 }
 
@@ -189,18 +152,18 @@
 @mixin govuk-link-style-muted {
   &:link,
   &:visited {
-    color: $govuk-secondary-text-colour;
+    color: var(--govuk-secondary-text-colour);
   }
 
   &:hover,
   &:active {
-    color: $govuk-text-colour;
+    color: var(--govuk-text-colour);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
   // contrast is still acceptable
   &:focus {
-    color: $govuk-focus-text-colour;
+    color: var(--govuk-focus-text-colour);
   }
 }
 
@@ -270,7 +233,7 @@
   }
 
   &:focus {
-    color: $govuk-focus-text-colour;
+    color: var(--govuk-focus-text-colour);
   }
 }
 
@@ -296,25 +259,25 @@
 
 @mixin govuk-link-style-no-visited-state {
   &:link {
-    color: $govuk-link-colour;
+    color: var(--govuk-link-colour);
   }
 
   &:visited {
-    color: $govuk-link-colour;
+    color: var(--govuk-link-colour);
   }
 
   &:hover {
-    color: $govuk-link-hover-colour;
+    color: var(--govuk-link-hover-colour);
   }
 
   &:active {
-    color: $govuk-link-active-colour;
+    color: var(--govuk-link-active-colour);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
   // contrast is still acceptable
   &:focus {
-    color: $govuk-focus-text-colour;
+    color: var(--govuk-focus-text-colour);
   }
 }
 

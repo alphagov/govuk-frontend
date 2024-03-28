@@ -52,7 +52,7 @@
   }
 
   .govuk-task-list__status--cannot-start-yet {
-    color: $govuk-secondary-text-colour;
+    color: var(--govuk-secondary-text-colour);
   }
 
   // This adds an empty transparent box covering the whole row, including the task status and
@@ -70,6 +70,6 @@
 
   .govuk-task-list__hint {
     margin-top: govuk-spacing(1);
-    color: $govuk-secondary-text-colour;
+    color: var(--govuk-secondary-text-colour);
   }
 }
