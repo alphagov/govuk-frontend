@@ -33,11 +33,14 @@
   .govuk-error-summary__list {
     margin-top: 0;
     margin-bottom: 0;
+
+    --govuk-link-colour: var(--govuk-error-colour);
+    --govuk-link-hover-colour: var(--govuk-error-colour-dark);
+    --govuk-link-active-colour: var(--govuk-error-colour);
+    --govuk-link-focus-colour: var(--govuk-focus-text-colour);
   }
 
   .govuk-error-summary__list a {
     @include govuk-typography-weight-bold;
-    @include govuk-link-common;
-    @include govuk-link-style-error;
   }
 }
