@@ -1,0 +1,42 @@
+params:
+  - name: items
+    type: array
+    required: true
+    description: The navigation items within the navigation component.
+    params:
+      - name: label
+        type: string
+        required: true
+        description: The displayed text for the navigation item
+      - name: url
+        type: string
+        required: true
+        description: The path for the url
+
+examples:
+  - name: default
+    options:
+      name: example-default
+      items:
+        - label: Get started
+          url: get-started
+        - label: Styles
+          url: styles
+        - label: Components
+          url: components
+        - label: Patterns
+          url: patterns
+        - label: Community
+          url: community
+        - label: Accessibility
+          url: accessibility
+  - name: default
+    options:
+      name: example-default
+      hint:
+        text: This includes changing your last name or spelling your name differently.
+      items:
+        - value: yes
+          text: Yes
+        - value: no
+          text: No
