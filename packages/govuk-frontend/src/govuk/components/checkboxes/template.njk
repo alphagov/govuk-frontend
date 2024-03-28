@@ -59,7 +59,7 @@
     </div>
     {% if item.conditional.html %}
     <div class="govuk-checkboxes__conditional {%- if not isChecked %} govuk-checkboxes__conditional--hidden{% endif %}" id="{{ conditionalId }}">
-      {{ item.conditional.html | safe | trim | indent(6) }}
+      {{ item.conditional.html | safe | trim }}
     </div>
     {% endif %}
   {% endif %}
