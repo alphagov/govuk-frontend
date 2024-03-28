@@ -8,6 +8,7 @@
     --govuk-frontend-breakpoint-#{$name}: #{govuk-px-to-rem($value)};
   }
 
+  --govuk-font-family: #{$govuk-font-family};
   --govuk-brand-colour: #{$govuk-brand-colour};
   --govuk-text-colour: #{$govuk-text-colour};
   --govuk-canvas-background-colour: #{$govuk-canvas-background-colour};
@@ -25,4 +26,9 @@
   --govuk-link-visited-colour: #{$govuk-link-visited-colour};
   --govuk-link-hover-colour: #{$govuk-link-hover-colour};
   --govuk-link-active-colour: #{$govuk-link-active-colour};
+
+  @include govuk-media-query($media-type: print) {
+    --govuk-text-colour: #{$govuk-print-text-colour};
+    --govuk-font-family: #{$govuk-font-family-print};
+  }
 }
