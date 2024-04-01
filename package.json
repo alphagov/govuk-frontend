@@ -103,7 +103,7 @@
     "@types/node": "^20.11.30",
     "@types/nunjucks": "^3.2.6",
     "@types/slug": "^5.0.8",
-    "puppeteer": "^22.6.0",
+    "puppeteer": "^22.6.1",
     "typed-query-selector": "^2.11.2"
   },
   "overrides": {
