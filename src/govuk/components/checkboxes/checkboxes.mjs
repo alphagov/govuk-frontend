@@ -112,10 +112,7 @@ export class Checkboxes extends GOVUKFrontendComponent {
     }
 
     const $target = document.getElementById(targetId)
-    if (
-      $target &&
-      $target.classList.contains('govuk-checkboxes__conditional')
-    ) {
+    if ($target?.classList.contains('govuk-checkboxes__conditional')) {
       const inputIsChecked = $input.checked
 
       $input.setAttribute('aria-expanded', inputIsChecked.toString())
