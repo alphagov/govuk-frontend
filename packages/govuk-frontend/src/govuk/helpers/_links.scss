@@ -197,9 +197,12 @@
     }
   }
 
-  &:active,
-  &:focus {
+  &:active {
     @include govuk-text-colour;
+  }
+
+  &:focus {
+    color: var(--govuk-focus-text-colour);
   }
 }
 
