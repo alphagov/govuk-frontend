@@ -2,6 +2,7 @@ import autoprefixer from 'autoprefixer'
 import cssnano from 'cssnano'
 import cssnanoPresetDefault from 'cssnano-preset-default'
 import postcss from 'postcss'
+import postcssCustomProperties from 'postcss-custom-properties'
 import scss from 'postcss-scss'
 
 /**
@@ -14,7 +15,8 @@ export default ({ to = '' } = {}) => ({
   plugins: [
     // Add vendor prefixes
     autoprefixer({ env: 'stylesheets' }),
-
+    // Custom properties for old browsers
+    postcssCustomProperties(),
     // Add GOV.UK Frontend release version
     {
       postcssPlugin: 'govuk-frontend-version',
