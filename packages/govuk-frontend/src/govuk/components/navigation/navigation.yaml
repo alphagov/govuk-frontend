@@ -23,18 +23,37 @@ examples:
       name: example-default
       items:
         - label: Get started
-          url: get-started
+          url: '#get-started'
+          active: true
         - label: Styles
-          url: styles
+          url: '#styles'
         - label: Components
-          url: components
+          url: '#components'
         - label: Patterns
-          url: patterns
+          url: '#patterns'
         - label: Community
-          url: community
+          url: '#community'
         - label: Accessibility
-          url: accessibility
+          url: '#accessibility'
   - name: with service name only
     options:
-      name: example-default
+      name: example-service-name
       serviceName: Service Name
+  - name: with service name and links
+    options:
+      name: example-name-and-links
+      serviceName: Service Name
+      items:
+        - label: Get started
+          url: '#get-started'
+          active: true
+        - label: Styles
+          url: '#styles'
+        - label: Components
+          url: '#components'
+        - label: Patterns
+          url: '#patterns'
+        - label: Community
+          url: '#community'
+        - label: Accessibility
+          url: '#accessibility'

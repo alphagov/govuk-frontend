@@ -1,53 +1,42 @@
-<nav id="govuk-navigation" class="govuk-navigation js-govuk-navigation govuk-clearfix" role="navigation" aria-labelledby="govuk-navigation-heading">
-  <h2 class="govuk-visually-hidden" id="govuk-navigation-heading">Menu</h2>
+<div class="service-header" data-one-login-header-nav>
   <div class="govuk-width-container">
-    {% if params.serviceName %}
-      <h2 class="govuk-navigation__service-name">{{ params.serviceName }}</h2>
-    {% endif %}
-
-    {% if params.items %}
-    <ul class="govuk-navigation__list govuk-width-container">
-      {% for item in params.items %}
-        <li class="govuk-navigation__list-item {% if permalink and (permalink == item.url or item.url and permalink.startsWith(item.url)) %} govuk-navigation__list-item--current{% endif %}">
-          <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline govuk-navigation__link js-govuk-navigation__link" href="/{{ item.url }}/">
-            {{ item.label }}
-          </a>
-
-          {% if item.items %}
-            <button type="button" class="govuk-navigation__button js-govuk-navigation__button" hidden>
-              {{ item.label }}
-            </button>
-            <!-- [html-validate-disable-next aria-label-misuse --- inline fix for html-validate rule, rather than disable it entirely] -->
-            <ul class="govuk-navigation__subnav js-govuk-navigation__subnav {% if permalink and permalink.startsWith(item.url) %}govuk-navigation__subnav--active{% endif %}"
-              aria-label="{{ item.label }}"
-              hidden
-            >
-              <li class="govuk-navigation__subnav-item{% if permalink == item.url %} govuk-navigation__subnav-item--current{% endif %}">
-                <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline" href="/{{ item.url }}/">
-                  {{ item.label }} overview
-                </a>
-              </li>
-              {% for theme, items in item.items | groupby("theme") %}
-                <li>
-                  {% if theme != 'undefined' %}
-                    <h3 class="govuk-navigation__theme">{{ theme }}</h3>
-                  {% endif %}
-                  <ul class="govuk-navigation__list">
-                    {% for subitem in items %}
-                      <li class="govuk-navigation__subnav-item{% if permalink == subitem.url %} govuk-navigation__subnav-item--current{% endif %}">
-                        <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline" href="/{{ subitem.url }}/">
-                          {{ subitem.label }}
-                        </a>
-                      </li>
-                    {% endfor %}
-                  </ul>
-                </li>
-              {% endfor %}
-            </ul>
-          {% endif %}
-        </li>
-      {% endfor %}
-    </ul>
-    {% endif %}
+    <div class="service-header__container">
+      {% if params.serviceName %}
+        <h2 class="service-header__heading">{{ params.serviceName }}</h2>
+      {% endif %}
+      {%- if params.items %}
+      <div>
+        <!-- Label the toggle button appropriately (you might want to use the name of your service) to provide support for screen reader users -->
+        <button type="button"
+          aria-controls="service-header__nav"
+          data-open-class="cross-service-header__button--open"
+          aria-label="Show service navigation menu"
+          data-label-for-show="Show service navigation menu"
+          data-label-for-hide="Hide service navigation menu"
+          data-text-for-show="Menu"
+          data-text-for-hide="Close"
+          aria-expanded="false"
+          class="cross-service-header__button cross-service-header__button--service-header js-x-header-toggle">
+          <span class="service-header__button-content">Menu</span>
+        </button>
+        <!-- Important! Label your navigation appropriately! When there are multiple navigation landmarks on a page, additional labelling is required to provide support for screen reader users -->
+        <nav aria-label="{{ params.serviceName }} menu">
+          <ul class="service-header__nav-list service-header__nav" id="service-header__nav" data-open-class="service-header__nav--open">
+            {%- for item in params.items %}
+            <!-- Use the "service-header__nav-list-item--active" modifier class on the li to visually highlight the page the user is currently viewing -->
+            <li class="service-header__nav-list-item {{ 'service-header__nav-list-item--active' if (item.active) else '' }}">
+              <!-- Use the aria-current="page" attribute on the anchor tag -->
+              <a class="service-header__nav-list-item-link"
+                {%- if (item.active) -%} aria-current="page" {%- endif %}
+                href="{{item.url}}">
+                {{item.label}}
+              </a>
+            </li>
+            {%- endfor %}
+          </ul>
+        </nav>
+      </div>
+      {% endif %}
+    </div>
   </div>
-</nav>
+</div>
