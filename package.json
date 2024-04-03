@@ -80,6 +80,7 @@
     "nunjucks": "^3.2.4",
     "outdent": "^0.8.0",
     "postcss": "^8.4.36",
+    "postcss-custom-properties": "^13.3.6",
     "postcss-scss": "^4.0.9",
     "puppeteer": "^22.6.0",
     "rollup": "^4.13.0",
