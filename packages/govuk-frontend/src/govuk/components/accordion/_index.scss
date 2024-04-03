@@ -83,7 +83,7 @@
 
       border-width: 0;
 
-      color: $govuk-link-colour;
+      color: var(--govuk-link-colour);
       background: none;
 
       cursor: pointer;
@@ -296,7 +296,7 @@
     .govuk-accordion__section-toggle {
       @include govuk-font-size($size: 19);
       @include govuk-typography-weight-regular;
-      color: $govuk-link-colour;
+      color: var(--govuk-link-colour);
     }
 
     // Add space between the icon and text.
@@ -353,7 +353,7 @@
       .govuk-accordion__section-header:hover {
         border-top-color: $govuk-border-colour;
 
-        box-shadow: inset 0 3px 0 0 $govuk-link-colour;
+        box-shadow: inset 0 3px 0 0 var(--govuk-link-colour);
 
         .govuk-accordion__section-button {
           border-top-color: $govuk-border-colour;
