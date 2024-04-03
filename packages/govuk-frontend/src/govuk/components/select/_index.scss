@@ -48,7 +48,7 @@
   }
 
   .govuk-select--error {
-    border-color: $govuk-error-colour;
+    border-color: var(--govuk-error-colour);
 
     &:focus {
       border-color: $govuk-input-border-colour;

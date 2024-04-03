@@ -115,15 +115,15 @@
 @mixin govuk-link-style-error {
   &:link,
   &:visited {
-    color: $govuk-error-colour;
+    color: var(--govuk-error-colour);
   }
 
   &:hover {
-    color: scale-color($govuk-error-colour, $lightness: -30%);
+    color: hsl(from var(--govuk-error-colour) h s calc(l * .7));
   }
 
   &:active {
-    color: $govuk-error-colour;
+    color: var(--govuk-error-colour);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour

@@ -7,6 +7,6 @@
     margin-bottom: govuk-spacing(3);
     clear: both;
 
-    color: $govuk-error-colour;
+    color: var(--govuk-error-colour);
   }
 }
