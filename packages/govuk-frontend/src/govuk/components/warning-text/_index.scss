@@ -27,11 +27,11 @@
 
     // When a user customises their colours the background colour will often be removed.
     // Adding a border to the component keeps it's shape as a circle.
-    border: 3px solid $govuk-text-colour;
+    border: 3px solid var(--govuk-text-colour);
     border-radius: 50%;
 
-    color: $govuk-body-background-colour;
-    background: $govuk-text-colour;
+    color: var(--govuk-body-background-colour);
+    background: var(--govuk-text-colour);
 
     font-size: 30px;
     line-height: 29px;
