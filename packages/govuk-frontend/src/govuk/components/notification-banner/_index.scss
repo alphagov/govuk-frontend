@@ -3,9 +3,9 @@
     @include govuk-font($size: 19);
     @include govuk-responsive-margin(8, "bottom");
 
-    border: $govuk-border-width solid $govuk-brand-colour;
+    border: $govuk-border-width solid var(--govuk-brand-colour);
 
-    background-color: $govuk-brand-colour;
+    background-color: var(--govuk-brand-colour);
 
     &:focus {
       outline: $govuk-focus-width solid $govuk-focus-colour;
