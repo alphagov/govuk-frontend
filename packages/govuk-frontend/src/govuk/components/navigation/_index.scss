@@ -5,6 +5,17 @@ $navigation-height: 50px;
   background-color: govuk-colour("light-grey");
 }
 
+.govuk-navigation__service-name {
+  @include govuk-font($size: 24, $weight: bold);
+  margin: 0;
+  padding: govuk-spacing(3) 0;
+  color: $govuk-text-colour;
+
+  @include govuk-media-query($until: tablet) {
+    padding: govuk-spacing(1) 0;
+  }
+}
+
 .govuk-navigation__list {
   margin: 0;
   padding: 0;

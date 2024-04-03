@@ -1,7 +1,11 @@
 params:
+  - name: serviceName
+    type: string
+    required: false
+    description: The name of your service.
   - name: items
     type: array
-    required: true
+    required: false
     description: The navigation items within the navigation component.
     params:
       - name: label
@@ -30,13 +34,7 @@ examples:
           url: community
         - label: Accessibility
           url: accessibility
-  - name: default
+  - name: with service name only
     options:
       name: example-default
-      hint:
-        text: This includes changing your last name or spelling your name differently.
-      items:
-        - value: yes
-          text: Yes
-        - value: no
-          text: No
+      serviceName: Service Name

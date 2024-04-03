@@ -1,45 +1,53 @@
 <nav id="govuk-navigation" class="govuk-navigation js-govuk-navigation govuk-clearfix" role="navigation" aria-labelledby="govuk-navigation-heading">
   <h2 class="govuk-visually-hidden" id="govuk-navigation-heading">Menu</h2>
-  <ul class="govuk-navigation__list govuk-width-container">
-    {% for item in params.items %}
-      <li class="govuk-navigation__list-item {% if permalink and (permalink == item.url or item.url and permalink.startsWith(item.url)) %} govuk-navigation__list-item--current{% endif %}">
-        <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline govuk-navigation__link js-govuk-navigation__link" href="/{{ item.url }}/">
-          {{ item.label }}
-        </a>
+  <div class="govuk-width-container">
+    {% if params.serviceName %}
+      <h2 class="govuk-navigation__service-name">{{ params.serviceName }}</h2>
+    {% endif %}
 
-        {% if item.items %}
-          <button type="button" class="govuk-navigation__button js-govuk-navigation__button" hidden>
+    {% if params.items %}
+    <ul class="govuk-navigation__list govuk-width-container">
+      {% for item in params.items %}
+        <li class="govuk-navigation__list-item {% if permalink and (permalink == item.url or item.url and permalink.startsWith(item.url)) %} govuk-navigation__list-item--current{% endif %}">
+          <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline govuk-navigation__link js-govuk-navigation__link" href="/{{ item.url }}/">
             {{ item.label }}
-          </button>
-          <!-- [html-validate-disable-next aria-label-misuse --- inline fix for html-validate rule, rather than disable it entirely] -->
-          <ul class="govuk-navigation__subnav js-govuk-navigation__subnav {% if permalink and permalink.startsWith(item.url) %}govuk-navigation__subnav--active{% endif %}"
-            aria-label="{{ item.label }}"
-            hidden
-          >
-            <li class="govuk-navigation__subnav-item{% if permalink == item.url %} govuk-navigation__subnav-item--current{% endif %}">
-              <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline" href="/{{ item.url }}/">
-                {{ item.label }} overview
-              </a>
-            </li>
-            {% for theme, items in item.items | groupby("theme") %}
-              <li>
-                {% if theme != 'undefined' %}
-                  <h3 class="govuk-navigation__theme">{{ theme }}</h3>
-                {% endif %}
-                <ul class="govuk-navigation__list">
-                  {% for subitem in items %}
-                    <li class="govuk-navigation__subnav-item{% if permalink == subitem.url %} govuk-navigation__subnav-item--current{% endif %}">
-                      <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline" href="/{{ subitem.url }}/">
-                        {{ subitem.label }}
-                      </a>
-                    </li>
-                  {% endfor %}
-                </ul>
+          </a>
+
+          {% if item.items %}
+            <button type="button" class="govuk-navigation__button js-govuk-navigation__button" hidden>
+              {{ item.label }}
+            </button>
+            <!-- [html-validate-disable-next aria-label-misuse --- inline fix for html-validate rule, rather than disable it entirely] -->
+            <ul class="govuk-navigation__subnav js-govuk-navigation__subnav {% if permalink and permalink.startsWith(item.url) %}govuk-navigation__subnav--active{% endif %}"
+              aria-label="{{ item.label }}"
+              hidden
+            >
+              <li class="govuk-navigation__subnav-item{% if permalink == item.url %} govuk-navigation__subnav-item--current{% endif %}">
+                <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline" href="/{{ item.url }}/">
+                  {{ item.label }} overview
+                </a>
               </li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-      </li>
-    {% endfor %}
-  </ul>
+              {% for theme, items in item.items | groupby("theme") %}
+                <li>
+                  {% if theme != 'undefined' %}
+                    <h3 class="govuk-navigation__theme">{{ theme }}</h3>
+                  {% endif %}
+                  <ul class="govuk-navigation__list">
+                    {% for subitem in items %}
+                      <li class="govuk-navigation__subnav-item{% if permalink == subitem.url %} govuk-navigation__subnav-item--current{% endif %}">
+                        <a class="govuk-link govuk-link--no-visited-state govuk-link--no-underline" href="/{{ subitem.url }}/">
+                          {{ subitem.label }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
 </nav>
