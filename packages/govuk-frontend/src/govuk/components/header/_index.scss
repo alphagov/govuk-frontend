@@ -1,6 +1,6 @@
 @include govuk-exports("govuk/component/header") {
   $govuk-header-background: govuk-colour("black");
-  $govuk-header-border-color: $govuk-brand-colour;
+  $govuk-header-border-color: var(--govuk-brand-colour);
   $govuk-header-border-width: govuk-spacing(2);
   $govuk-header-text: govuk-colour("white");
   $govuk-header-link-active: #1d8feb;
@@ -305,7 +305,7 @@
       // When printing, use the normal blue as this contrasts better with the
       // white printing header
       @include govuk-media-query($media-type: print) {
-        color: $govuk-brand-colour;
+        color: var(--govuk-brand-colour);
       }
 
       // When focussed, the text colour needs to be darker to ensure that colour
