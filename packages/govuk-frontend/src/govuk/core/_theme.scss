@@ -34,8 +34,10 @@
     @include _govuk-theme-light;
 
     @include govuk-media-query($media-type: screen, $and: "(prefers-color-scheme: dark)") {
-      color-scheme: dark;
-      @include _govuk-theme-dark;
+      &:not(.govuk-theme--light) {
+        color-scheme: dark;
+        @include _govuk-theme-dark;
+      }
     }
   }
 
