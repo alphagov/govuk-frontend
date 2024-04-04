@@ -1,0 +1,58 @@
+{
+    "component": "exit-this-page",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "redirectUrl": "/full-page-examples/announcements",
+                "id": null,
+                "classes": null,
+                "attributes": {}
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-exit-this-page\" data-module=\"govuk-exit-this-page\">\n  <a href=\"/full-page-examples/announcements\" role=\"button\" draggable=\"false\" class=\"govuk-button govuk-button--warning govuk-exit-this-page__button govuk-js-exit-this-page-button\" data-module=\"govuk-button\" rel=\"nofollow noreferrer\">\n    <span class=\"govuk-visually-hidden\">Emergency</span> Exit this page\n  </a>\n</div>"
+        },
+        {
+            "name": "translated",
+            "options": {
+                "text": "Gadael y dudalen",
+                "activatedText": "Tudalen ymadael",
+                "timedOutText": "Wedi'i amseru",
+                "pressTwoMoreTimesText": "Pwyswch 'Shift' 2 gwaith arall",
+                "pressOneMoreTimeText": "Pwyswch 'Shift' 1 mwy o amser"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-exit-this-page\" data-module=\"govuk-exit-this-page\" data-i18n.activated=\"Tudalen ymadael\" data-i18n.timed-out=\"Wedi&#39;i amseru\" data-i18n.press-two-more-times=\"Pwyswch &#39;Shift&#39; 2 gwaith arall\" data-i18n.press-one-more-time=\"Pwyswch &#39;Shift&#39; 1 mwy o amser\">\n  <a href=\"https://www.bbc.co.uk/weather\" role=\"button\" draggable=\"false\" class=\"govuk-button govuk-button--warning govuk-exit-this-page__button govuk-js-exit-this-page-button\" data-module=\"govuk-button\" rel=\"nofollow noreferrer\">\n    Gadael y dudalen\n  </a>\n</div>"
+        },
+        {
+            "name": "testing",
+            "options": {
+                "text": "Exit this test",
+                "redirectUrl": "https://www.test.co.uk",
+                "id": "test-id",
+                "classes": "test-class",
+                "attributes": {
+                    "test-attribute": true
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div id=\"test-id\" class=\"govuk-exit-this-page test-class\" data-module=\"govuk-exit-this-page\" test-attribute=\"true\">\n  <a href=\"https://www.test.co.uk\" role=\"button\" draggable=\"false\" class=\"govuk-button govuk-button--warning govuk-exit-this-page__button govuk-js-exit-this-page-button\" data-module=\"govuk-button\" rel=\"nofollow noreferrer\">\n    Exit this test\n  </a>\n</div>"
+        },
+        {
+            "name": "testing-html",
+            "options": {
+                "html": "Exit <em>this</em> test"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-exit-this-page\" data-module=\"govuk-exit-this-page\">\n  <a href=\"https://www.bbc.co.uk/weather\" role=\"button\" draggable=\"false\" class=\"govuk-button govuk-button--warning govuk-exit-this-page__button govuk-js-exit-this-page-button\" data-module=\"govuk-button\" rel=\"nofollow noreferrer\">\n    Exit <em>this</em> test\n  </a>\n</div>"
+        }
+    ]
+}

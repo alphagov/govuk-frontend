@@ -1,0 +1,225 @@
+{
+    "component": "file-upload",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "id": "file-upload-1",
+                "name": "file-upload-1",
+                "label": {
+                    "text": "Upload a file"
+                }
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"file-upload-1\">\n    Upload a file\n  </label>\n  <input class=\"govuk-file-upload\" id=\"file-upload-1\" name=\"file-upload-1\" type=\"file\">\n</div>"
+        },
+        {
+            "name": "with hint text",
+            "options": {
+                "id": "file-upload-2",
+                "name": "file-upload-2",
+                "label": {
+                    "text": "Upload your photo"
+                },
+                "hint": {
+                    "text": "Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto."
+                }
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"file-upload-2\">\n    Upload your photo\n  </label>\n  <div id=\"file-upload-2-hint\" class=\"govuk-hint\">\n    Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.\n  </div>\n  <input class=\"govuk-file-upload\" id=\"file-upload-2\" name=\"file-upload-2\" type=\"file\" aria-describedby=\"file-upload-2-hint\">\n</div>"
+        },
+        {
+            "name": "with error message and hint",
+            "options": {
+                "id": "file-upload-3",
+                "name": "file-upload-3",
+                "label": {
+                    "text": "Upload a file"
+                },
+                "hint": {
+                    "text": "Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto."
+                },
+                "errorMessage": {
+                    "text": "Error message goes here"
+                }
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"file-upload-3\">\n    Upload a file\n  </label>\n  <div id=\"file-upload-3-hint\" class=\"govuk-hint\">\n    Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.\n  </div>\n  <p id=\"file-upload-3-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message goes here\n  </p>\n  <input class=\"govuk-file-upload govuk-file-upload--error\" id=\"file-upload-3\" name=\"file-upload-3\" type=\"file\" aria-describedby=\"file-upload-3-hint file-upload-3-error\">\n</div>"
+        },
+        {
+            "name": "with value",
+            "options": {
+                "id": "file-upload-4",
+                "name": "file-upload-4",
+                "value": "C:\\fakepath\\myphoto.jpg",
+                "label": {
+                    "text": "Upload a photo"
+                }
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"file-upload-4\">\n    Upload a photo\n  </label>\n  <input class=\"govuk-file-upload\" id=\"file-upload-4\" name=\"file-upload-4\" type=\"file\" value=\"C:&#92;fakepath&#92;myphoto.jpg\">\n</div>"
+        },
+        {
+            "name": "with label as page heading",
+            "options": {
+                "id": "file-upload-1",
+                "name": "file-upload-1",
+                "label": {
+                    "text": "Upload a file",
+                    "classes": "govuk-label--l",
+                    "isPageHeading": true
+                }
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group\">\n  <h1 class=\"govuk-label-wrapper\">\n    <label class=\"govuk-label govuk-label--l\" for=\"file-upload-1\">\n      Upload a file\n    </label>\n  </h1>\n  <input class=\"govuk-file-upload\" id=\"file-upload-1\" name=\"file-upload-1\" type=\"file\">\n</div>"
+        },
+        {
+            "name": "with optional form-group classes",
+            "options": {
+                "id": "file-upload-1",
+                "name": "file-upload-1",
+                "label": {
+                    "text": "Upload a file"
+                },
+                "formGroup": {
+                    "classes": "extra-class"
+                }
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group extra-class\">\n  <label class=\"govuk-label\" for=\"file-upload-1\">\n    Upload a file\n  </label>\n  <input class=\"govuk-file-upload\" id=\"file-upload-1\" name=\"file-upload-1\" type=\"file\">\n</div>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "id": "file-upload-attributes",
+                "name": "file-upload-attributes",
+                "label": {
+                    "text": "Upload a file"
+                },
+                "attributes": {
+                    "accept": ".jpg, .jpeg, .png"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"file-upload-attributes\">\n    Upload a file\n  </label>\n  <input class=\"govuk-file-upload\" id=\"file-upload-attributes\" name=\"file-upload-attributes\" type=\"file\" accept=\".jpg, .jpeg, .png\">\n</div>"
+        },
+        {
+            "name": "classes",
+            "options": {
+                "id": "file-upload-classes",
+                "name": "file-upload-classes",
+                "label": {
+                    "text": "Upload a file"
+                },
+                "classes": "app-file-upload--custom-modifier"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"file-upload-classes\">\n    Upload a file\n  </label>\n  <input class=\"govuk-file-upload app-file-upload--custom-modifier\" id=\"file-upload-classes\" name=\"file-upload-classes\" type=\"file\">\n</div>"
+        },
+        {
+            "name": "with describedBy",
+            "options": {
+                "id": "file-upload-describedby",
+                "name": "file-upload-describedby",
+                "label": {
+                    "text": "Upload a file"
+                },
+                "describedBy": "test-target-element"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"file-upload-describedby\">\n    Upload a file\n  </label>\n  <input class=\"govuk-file-upload\" id=\"file-upload-describedby\" name=\"file-upload-describedby\" type=\"file\" aria-describedby=\"test-target-element\">\n</div>"
+        },
+        {
+            "name": "with hint and describedBy",
+            "options": {
+                "id": "file-upload-hint-describedby",
+                "name": "file-upload-hint-describedby",
+                "label": {
+                    "text": "Upload a file"
+                },
+                "describedBy": "test-target-element",
+                "hint": {
+                    "text": "Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto."
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"file-upload-hint-describedby\">\n    Upload a file\n  </label>\n  <div id=\"file-upload-hint-describedby-hint\" class=\"govuk-hint\">\n    Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.\n  </div>\n  <input class=\"govuk-file-upload\" id=\"file-upload-hint-describedby\" name=\"file-upload-hint-describedby\" type=\"file\" aria-describedby=\"test-target-element file-upload-hint-describedby-hint\">\n</div>"
+        },
+        {
+            "name": "error",
+            "options": {
+                "id": "file-upload-with-error",
+                "name": "file-upload-with-error",
+                "label": {
+                    "text": "Upload a file"
+                },
+                "errorMessage": {
+                    "text": "Error message"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"file-upload-with-error\">\n    Upload a file\n  </label>\n  <p id=\"file-upload-with-error-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </p>\n  <input class=\"govuk-file-upload govuk-file-upload--error\" id=\"file-upload-with-error\" name=\"file-upload-with-error\" type=\"file\" aria-describedby=\"file-upload-with-error-error\">\n</div>"
+        },
+        {
+            "name": "with error and describedBy",
+            "options": {
+                "id": "file-upload-error-describedby",
+                "name": "file-upload-error-describedby",
+                "label": {
+                    "text": "Upload a file"
+                },
+                "describedBy": "test-target-element",
+                "errorMessage": {
+                    "text": "Error message"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"file-upload-error-describedby\">\n    Upload a file\n  </label>\n  <p id=\"file-upload-error-describedby-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </p>\n  <input class=\"govuk-file-upload govuk-file-upload--error\" id=\"file-upload-error-describedby\" name=\"file-upload-error-describedby\" type=\"file\" aria-describedby=\"test-target-element file-upload-error-describedby-error\">\n</div>"
+        },
+        {
+            "name": "with error, describedBy and hint",
+            "options": {
+                "id": "file-upload-error-describedby-hint",
+                "name": "file-upload-error-describedby-hint",
+                "label": {
+                    "text": "Upload a file"
+                },
+                "describedBy": "test-target-element",
+                "errorMessage": {
+                    "text": "Error message"
+                },
+                "hint": {
+                    "text": "hint"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"file-upload-error-describedby-hint\">\n    Upload a file\n  </label>\n  <div id=\"file-upload-error-describedby-hint-hint\" class=\"govuk-hint\">\n    hint\n  </div>\n  <p id=\"file-upload-error-describedby-hint-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </p>\n  <input class=\"govuk-file-upload govuk-file-upload--error\" id=\"file-upload-error-describedby-hint\" name=\"file-upload-error-describedby-hint\" type=\"file\" aria-describedby=\"test-target-element file-upload-error-describedby-hint-hint file-upload-error-describedby-hint-error\">\n</div>"
+        }
+    ]
+}

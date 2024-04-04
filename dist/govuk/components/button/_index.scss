@@ -1,0 +1,262 @@
+////
+/// @group components/button
+////
+
+/// Button component background colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-button-background-colour: govuk-colour("green") !default;
+
+/// Button component text colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-button-text-colour: govuk-colour("white") !default;
+
+/// Inverted button component background colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-inverse-button-background-colour: govuk-colour("white") !default;
+
+/// Inverted button component text colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-inverse-button-text-colour: $govuk-brand-colour !default;
+
+@include govuk-exports("govuk/component/button") {
+  $govuk-button-colour: $govuk-button-background-colour;
+  $govuk-button-text-colour: $govuk-button-text-colour;
+  $govuk-button-hover-colour: govuk-shade($govuk-button-colour, 20%);
+  $govuk-button-shadow-colour: govuk-shade($govuk-button-colour, 60%);
+
+  // Secondary button variables
+  $govuk-secondary-button-colour: govuk-colour("light-grey");
+  $govuk-secondary-button-text-colour: govuk-colour("black");
+  $govuk-secondary-button-hover-colour: govuk-shade($govuk-secondary-button-colour, 10%);
+  $govuk-secondary-button-shadow-colour: govuk-shade($govuk-secondary-button-colour, 40%);
+
+  // Warning button variables
+  $govuk-warning-button-colour: govuk-colour("red");
+  $govuk-warning-button-text-colour: govuk-colour("white");
+  $govuk-warning-button-hover-colour: govuk-shade($govuk-warning-button-colour, 20%);
+  $govuk-warning-button-shadow-colour: govuk-shade($govuk-warning-button-colour, 60%);
+
+  // Inverse button variables
+  $govuk-inverse-button-colour: $govuk-inverse-button-background-colour;
+  $govuk-inverse-button-text-colour: $govuk-inverse-button-text-colour;
+  $govuk-inverse-button-hover-colour: govuk-tint($govuk-inverse-button-text-colour, 90%);
+  $govuk-inverse-button-shadow-colour: govuk-shade($govuk-inverse-button-text-colour, 30%);
+
+  // Because the shadow (s0) is visually 'part of' the button, we need to reduce
+  // the height of the button to compensate by adjusting its padding (s1) and
+  // increase the bottom margin to include it (s2).
+  $button-shadow-size: $govuk-border-width-form-element;
+
+  .govuk-button {
+    @include govuk-font($size: 19, $line-height: 19px);
+
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin-top: 0;
+    margin-right: 0;
+    margin-left: 0;
+    @include govuk-responsive-margin(6, "bottom", $adjustment: $button-shadow-size); // s2
+    padding: (govuk-spacing(2) - $govuk-border-width-form-element) govuk-spacing(2)
+      (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2)); // s1
+    border: $govuk-border-width-form-element solid transparent;
+    border-radius: 0;
+    color: $govuk-button-text-colour;
+    background-color: $govuk-button-colour;
+    box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
+    text-align: center;
+    vertical-align: top;
+    cursor: pointer;
+    -webkit-appearance: none;
+
+    @include govuk-media-query($from: tablet) {
+      width: auto;
+    }
+
+    // Ensure that any global link styles are overridden
+    &:link,
+    &:visited,
+    &:active,
+    &:hover {
+      color: $govuk-button-text-colour;
+      text-decoration: none;
+    }
+
+    // Fix unwanted button padding in Firefox
+    &::-moz-focus-inner {
+      padding: 0;
+      border: 0;
+    }
+
+    &:hover {
+      background-color: $govuk-button-hover-colour;
+    }
+
+    &:active {
+      // Bump the button down so it looks like its being pressed in
+      top: $button-shadow-size;
+    }
+
+    &:focus {
+      border-color: $govuk-focus-colour;
+      outline: $govuk-focus-width solid transparent;
+      box-shadow: inset 0 0 0 1px $govuk-focus-colour;
+    }
+
+    &:focus:not(:active):not(:hover) {
+      border-color: $govuk-focus-colour;
+      color: $govuk-focus-text-colour;
+      background-color: $govuk-focus-colour;
+      box-shadow: 0 2px 0 $govuk-focus-text-colour;
+    }
+
+    // The following adjustments do not work for <input type="button"> as
+    // non-container elements cannot include pseudo elements (i.e. ::before).
+
+    // Use a pseudo element to expand the click target area to include the
+    // button's shadow as well, in case users try to click it.
+    &::before {
+      content: "";
+      display: block;
+
+      position: absolute;
+
+      top: -$govuk-border-width-form-element;
+      right: -$govuk-border-width-form-element;
+      bottom: -($govuk-border-width-form-element + $button-shadow-size);
+      left: -$govuk-border-width-form-element;
+
+      background: transparent;
+    }
+
+    // When the button is active it is shifted down by $button-shadow-size to
+    // denote a 'pressed' state. If the user happened to click at the very top
+    // of the button, their mouse is no longer over the button (because it has
+    // 'moved beneath them') and so the click event is not fired.
+    //
+    // This corrects that by shifting the top of the pseudo element so that it
+    // continues to cover the area that the user originally clicked, which means
+    // the click event is still fired.
+    //
+    // 🎉
+    &:active::before {
+      top: -($govuk-border-width-form-element + $button-shadow-size);
+    }
+  }
+
+  .govuk-button[disabled] {
+    opacity: (0.5);
+
+    &:hover {
+      background-color: $govuk-button-colour;
+      cursor: not-allowed;
+    }
+
+    &:active {
+      top: 0;
+      box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
+    }
+  }
+
+  .govuk-button--secondary {
+    background-color: $govuk-secondary-button-colour;
+    box-shadow: 0 $button-shadow-size 0 $govuk-secondary-button-shadow-colour;
+
+    &,
+    &:link,
+    &:visited,
+    &:active,
+    &:hover {
+      color: $govuk-secondary-button-text-colour;
+    }
+
+    &:hover {
+      background-color: $govuk-secondary-button-hover-colour;
+
+      &[disabled] {
+        background-color: $govuk-secondary-button-colour;
+      }
+    }
+  }
+
+  .govuk-button--warning {
+    background-color: $govuk-warning-button-colour;
+    box-shadow: 0 $button-shadow-size 0 $govuk-warning-button-shadow-colour;
+
+    &,
+    &:link,
+    &:visited,
+    &:active,
+    &:hover {
+      color: $govuk-warning-button-text-colour;
+    }
+
+    &:hover {
+      background-color: $govuk-warning-button-hover-colour;
+
+      &[disabled] {
+        background-color: $govuk-warning-button-colour;
+      }
+    }
+  }
+
+  .govuk-button--inverse {
+    background-color: $govuk-inverse-button-colour;
+    box-shadow: 0 $button-shadow-size 0 $govuk-inverse-button-shadow-colour;
+
+    &,
+    &:link,
+    &:visited,
+    &:active,
+    &:hover {
+      color: $govuk-inverse-button-text-colour;
+    }
+
+    &:hover {
+      background-color: $govuk-inverse-button-hover-colour;
+
+      &[disabled] {
+        background-color: $govuk-inverse-button-colour;
+      }
+    }
+  }
+
+  .govuk-button--start {
+    @include govuk-typography-weight-bold;
+    @include govuk-font-size($size: 24, $line-height: 1);
+
+    display: inline-flex;
+    min-height: auto;
+
+    justify-content: center;
+  }
+
+  .govuk-button__start-icon {
+    margin-left: govuk-spacing(1);
+
+    @include govuk-media-query($from: desktop) {
+      margin-left: govuk-spacing(2);
+    }
+    vertical-align: middle;
+    flex-shrink: 0;
+    align-self: center;
+    // Work around SVGs not inheriting color from parent in forced color mode
+    // (https://github.com/w3c/csswg-drafts/issues/6310)
+    forced-color-adjust: auto;
+  }
+}
+
+/*# sourceMappingURL=_index.scss.map */

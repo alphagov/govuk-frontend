@@ -1,0 +1,37 @@
+:root {
+  // This variable is automatically overwritten during builds and releases.
+  // It doesn't need to be updated manually.
+  --govuk-frontend-version: "5.3.0";
+
+  // CSS custom property for each breakpoint
+  @each $name, $value in $govuk-breakpoints {
+    --govuk-frontend-breakpoint-#{$name}: #{govuk-px-to-rem($value)};
+  }
+
+  --govuk-font-family: #{$govuk-font-family};
+  --govuk-brand-colour: #{$govuk-brand-colour};
+  --govuk-text-colour: #{$govuk-text-colour};
+  --govuk-canvas-background-colour: #{$govuk-canvas-background-colour};
+  --govuk-body-background-colour: #{$govuk-body-background-colour};
+  --govuk-print-text-colour: #{$govuk-print-text-colour};
+  --govuk-secondary-text-colour: #{$govuk-secondary-text-colour};
+  --govuk-focus-colour: #{$govuk-focus-colour};
+  --govuk-focus-text-colour: #{$govuk-focus-text-colour};
+  --govuk-error-colour: #{$govuk-error-colour};
+  --govuk-error-colour-dark: #{scale-color($govuk-error-colour, $lightness: -30%)};
+  --govuk-success-colour: #{$govuk-success-colour};
+  --govuk-border-colour: #{$govuk-border-colour};
+  --govuk-input-border-colour: #{$govuk-input-border-colour};
+  --govuk-hover-colour: #{$govuk-hover-colour};
+  --govuk-link-colour: #{$govuk-link-colour};
+  --govuk-link-visited-colour: #{$govuk-link-visited-colour};
+  --govuk-link-hover-colour: #{$govuk-link-hover-colour};
+  --govuk-link-active-colour: #{$govuk-link-active-colour};
+
+  @include govuk-media-query($media-type: print) {
+    --govuk-text-colour: #{$govuk-print-text-colour};
+    --govuk-font-family: #{$govuk-font-family-print};
+  }
+}
+
+/*# sourceMappingURL=_govuk-frontend-properties.scss.map */

@@ -1,0 +1,398 @@
+{
+    "component": "character-count",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "name": "more-detail",
+                "id": "more-detail",
+                "maxlength": 10,
+                "label": {
+                    "text": "Can you provide more detail?"
+                }
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  <label class=\"govuk-label\" for=\"more-detail\">\n    Can you provide more detail?\n  </label>\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"more-detail\" name=\"more-detail\" rows=\"5\" aria-describedby=\"more-detail-info\"></textarea>\n  <div id=\"more-detail-info\" class=\"govuk-hint govuk-character-count__message\">\n    You can enter up to 10 characters\n  </div>\n</div>"
+        },
+        {
+            "name": "with custom textarea description",
+            "options": {
+                "name": "custom-textarea-description",
+                "id": "custom-textarea-description",
+                "maxlength": 10,
+                "label": {
+                    "text": "Can you provide more detail?"
+                },
+                "textareaDescriptionText": "Gallwch ddefnyddio hyd at %{count} nod"
+            },
+            "hidden": false,
+            "description": "with textarea description translated into Welsh.",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  <label class=\"govuk-label\" for=\"custom-textarea-description\">\n    Can you provide more detail?\n  </label>\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"custom-textarea-description\" name=\"custom-textarea-description\" rows=\"5\" aria-describedby=\"custom-textarea-description-info\"></textarea>\n  <div id=\"custom-textarea-description-info\" class=\"govuk-hint govuk-character-count__message\">\n    Gallwch ddefnyddio hyd at 10 nod\n  </div>\n</div>"
+        },
+        {
+            "name": "with hint",
+            "options": {
+                "name": "with-hint",
+                "id": "with-hint",
+                "maxlength": 10,
+                "label": {
+                    "text": "Can you provide more detail?"
+                },
+                "hint": {
+                    "text": "Don't include personal or financial information, eg your National Insurance number or credit card details."
+                }
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  <label class=\"govuk-label\" for=\"with-hint\">\n    Can you provide more detail?\n  </label>\n  <div id=\"with-hint-hint\" class=\"govuk-hint\">\n    Don&#39;t include personal or financial information, eg your National Insurance number or credit card details.\n  </div>\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"with-hint\" name=\"with-hint\" rows=\"5\" aria-describedby=\"with-hint-info with-hint-hint\"></textarea>\n  <div id=\"with-hint-info\" class=\"govuk-hint govuk-character-count__message\">\n    You can enter up to 10 characters\n  </div>\n</div>"
+        },
+        {
+            "name": "with default value",
+            "options": {
+                "id": "with-default-value",
+                "name": "default-value",
+                "maxlength": 100,
+                "label": {
+                    "text": "Full address"
+                },
+                "value": "221B Baker Street\nLondon\nNW1 6XE\n"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"100\">\n  <label class=\"govuk-label\" for=\"with-default-value\">\n    Full address\n  </label>\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"with-default-value\" name=\"default-value\" rows=\"5\" aria-describedby=\"with-default-value-info\">221B Baker Street\nLondon\nNW1 6XE\n</textarea>\n  <div id=\"with-default-value-info\" class=\"govuk-hint govuk-character-count__message\">\n    You can enter up to 100 characters\n  </div>\n</div>"
+        },
+        {
+            "name": "with default value exceeding limit",
+            "options": {
+                "id": "exceeding-characters",
+                "name": "exceeding",
+                "maxlength": 10,
+                "value": "221B Baker Street\nLondon\nNW1 6XE\n",
+                "label": {
+                    "text": "Full address"
+                },
+                "errorMessage": {
+                    "text": "Please do not exceed the maximum allowed limit"
+                }
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-form-group--error govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  <label class=\"govuk-label\" for=\"exceeding-characters\">\n    Full address\n  </label>\n  <p id=\"exceeding-characters-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Please do not exceed the maximum allowed limit\n  </p>\n  <textarea class=\"govuk-textarea govuk-textarea--error govuk-js-character-count\" id=\"exceeding-characters\" name=\"exceeding\" rows=\"5\" aria-describedby=\"exceeding-characters-info exceeding-characters-error\">221B Baker Street\nLondon\nNW1 6XE\n</textarea>\n  <div id=\"exceeding-characters-info\" class=\"govuk-hint govuk-character-count__message\">\n    You can enter up to 10 characters\n  </div>\n</div>"
+        },
+        {
+            "name": "with custom rows",
+            "options": {
+                "id": "custom-rows",
+                "name": "custom",
+                "maxlength": 10,
+                "label": {
+                    "text": "Full address"
+                },
+                "rows": 8
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  <label class=\"govuk-label\" for=\"custom-rows\">\n    Full address\n  </label>\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"custom-rows\" name=\"custom\" rows=\"8\" aria-describedby=\"custom-rows-info\"></textarea>\n  <div id=\"custom-rows-info\" class=\"govuk-hint govuk-character-count__message\">\n    You can enter up to 10 characters\n  </div>\n</div>"
+        },
+        {
+            "name": "with label as page heading",
+            "options": {
+                "id": "textarea-with-page-heading",
+                "name": "address",
+                "maxlength": 10,
+                "label": {
+                    "text": "Full address",
+                    "classes": "govuk-label--l",
+                    "isPageHeading": true
+                }
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  <h1 class=\"govuk-label-wrapper\">\n    <label class=\"govuk-label govuk-label--l\" for=\"textarea-with-page-heading\">\n      Full address\n    </label>\n  </h1>\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"textarea-with-page-heading\" name=\"address\" rows=\"5\" aria-describedby=\"textarea-with-page-heading-info\"></textarea>\n  <div id=\"textarea-with-page-heading-info\" class=\"govuk-hint govuk-character-count__message\">\n    You can enter up to 10 characters\n  </div>\n</div>"
+        },
+        {
+            "name": "with word count",
+            "options": {
+                "id": "word-count",
+                "name": "word-count",
+                "maxwords": 10,
+                "label": {
+                    "text": "Full address"
+                }
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-character-count\" data-module=\"govuk-character-count\" data-maxwords=\"10\">\n  <label class=\"govuk-label\" for=\"word-count\">\n    Full address\n  </label>\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"word-count\" name=\"word-count\" rows=\"5\" aria-describedby=\"word-count-info\"></textarea>\n  <div id=\"word-count-info\" class=\"govuk-hint govuk-character-count__message\">\n    You can enter up to 10 words\n  </div>\n</div>"
+        },
+        {
+            "name": "with threshold",
+            "options": {
+                "id": "with-threshold",
+                "name": "with-threshold",
+                "maxlength": 10,
+                "threshold": 75,
+                "label": {
+                    "text": "Full address"
+                }
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\" data-threshold=\"75\">\n  <label class=\"govuk-label\" for=\"with-threshold\">\n    Full address\n  </label>\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"with-threshold\" name=\"with-threshold\" rows=\"5\" aria-describedby=\"with-threshold-info\"></textarea>\n  <div id=\"with-threshold-info\" class=\"govuk-hint govuk-character-count__message\">\n    You can enter up to 10 characters\n  </div>\n</div>"
+        },
+        {
+            "name": "with translations",
+            "options": {
+                "id": "with-translations",
+                "name": "with-translations",
+                "maxlength": 10,
+                "label": {
+                    "text": "Full address"
+                },
+                "charactersUnderLimitText": {
+                    "other": "%{count} characters to go",
+                    "one": "One character to go"
+                },
+                "charactersAtLimitText": "Zero characters left",
+                "charactersOverLimitText": {
+                    "other": "%{count} characters too many",
+                    "one": "One character too many"
+                },
+                "wordsUnderLimitText": {
+                    "other": "%{count} words to go",
+                    "one": "One word to go"
+                },
+                "wordsAtLimitText": "Zero words left",
+                "wordsOverLimitText": {
+                    "other": "%{count} words too many",
+                    "one": "One word too many"
+                }
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\" data-i18n.characters-under-limit.other=\"%{count} characters to go\" data-i18n.characters-under-limit.one=\"One character to go\" data-i18n.characters-at-limit=\"Zero characters left\" data-i18n.characters-over-limit.other=\"%{count} characters too many\" data-i18n.characters-over-limit.one=\"One character too many\" data-i18n.words-under-limit.other=\"%{count} words to go\" data-i18n.words-under-limit.one=\"One word to go\" data-i18n.words-at-limit=\"Zero words left\" data-i18n.words-over-limit.other=\"%{count} words too many\" data-i18n.words-over-limit.one=\"One word too many\">\n  <label class=\"govuk-label\" for=\"with-translations\">\n    Full address\n  </label>\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"with-translations\" name=\"with-translations\" rows=\"5\" aria-describedby=\"with-translations-info\"></textarea>\n  <div id=\"with-translations-info\" class=\"govuk-hint govuk-character-count__message\">\n    You can enter up to 10 characters\n  </div>\n</div>"
+        },
+        {
+            "name": "classes",
+            "options": {
+                "id": "with-classes",
+                "name": "with-classes",
+                "maxlength": 10,
+                "label": {
+                    "text": "With classes"
+                },
+                "classes": "app-character-count--custom-modifier"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  <label class=\"govuk-label\" for=\"with-classes\">\n    With classes\n  </label>\n  <textarea class=\"govuk-textarea govuk-js-character-count app-character-count--custom-modifier\" id=\"with-classes\" name=\"with-classes\" rows=\"5\" aria-describedby=\"with-classes-info\"></textarea>\n  <div id=\"with-classes-info\" class=\"govuk-hint govuk-character-count__message\">\n    You can enter up to 10 characters\n  </div>\n</div>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "id": "with-attributes",
+                "name": "with-attributes",
+                "maxlength": 10,
+                "label": {
+                    "text": "With attributes"
+                },
+                "attributes": {
+                    "data-attribute": "my data value"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  <label class=\"govuk-label\" for=\"with-attributes\">\n    With attributes\n  </label>\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"with-attributes\" name=\"with-attributes\" rows=\"5\" aria-describedby=\"with-attributes-info\" data-attribute=\"my data value\"></textarea>\n  <div id=\"with-attributes-info\" class=\"govuk-hint govuk-character-count__message\">\n    You can enter up to 10 characters\n  </div>\n</div>"
+        },
+        {
+            "name": "formGroup with classes",
+            "options": {
+                "id": "with-formgroup",
+                "name": "with-formgroup",
+                "maxlength": 10,
+                "label": {
+                    "text": "With formgroup"
+                },
+                "formGroup": {
+                    "classes": "app-character-count--custom-modifier"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-character-count app-character-count--custom-modifier\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  <label class=\"govuk-label\" for=\"with-formgroup\">\n    With formgroup\n  </label>\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"with-formgroup\" name=\"with-formgroup\" rows=\"5\" aria-describedby=\"with-formgroup-info\"></textarea>\n  <div id=\"with-formgroup-info\" class=\"govuk-hint govuk-character-count__message\">\n    You can enter up to 10 characters\n  </div>\n</div>"
+        },
+        {
+            "name": "custom classes on countMessage",
+            "options": {
+                "id": "with-custom-countmessage-class",
+                "name": "with-custom-countmessage-class",
+                "maxlength": 10,
+                "label": {
+                    "text": "With custom countMessage class"
+                },
+                "countMessage": {
+                    "classes": "app-custom-count-message"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  <label class=\"govuk-label\" for=\"with-custom-countmessage-class\">\n    With custom countMessage class\n  </label>\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"with-custom-countmessage-class\" name=\"with-custom-countmessage-class\" rows=\"5\" aria-describedby=\"with-custom-countmessage-class-info\"></textarea>\n  <div id=\"with-custom-countmessage-class-info\" class=\"govuk-hint govuk-character-count__message app-custom-count-message\">\n    You can enter up to 10 characters\n  </div>\n</div>"
+        },
+        {
+            "name": "spellcheck enabled",
+            "options": {
+                "id": "with-spellcheck",
+                "name": "with-spellcheck",
+                "maxlength": 10,
+                "label": {
+                    "text": "With spellcheck"
+                },
+                "spellcheck": true
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  <label class=\"govuk-label\" for=\"with-spellcheck\">\n    With spellcheck\n  </label>\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"with-spellcheck\" name=\"with-spellcheck\" rows=\"5\" spellcheck=\"true\" aria-describedby=\"with-spellcheck-info\"></textarea>\n  <div id=\"with-spellcheck-info\" class=\"govuk-hint govuk-character-count__message\">\n    You can enter up to 10 characters\n  </div>\n</div>"
+        },
+        {
+            "name": "spellcheck disabled",
+            "options": {
+                "id": "without-spellcheck",
+                "name": "without-spellcheck",
+                "maxlength": 10,
+                "label": {
+                    "text": "Without spellcheck"
+                },
+                "spellcheck": false
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  <label class=\"govuk-label\" for=\"without-spellcheck\">\n    Without spellcheck\n  </label>\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"without-spellcheck\" name=\"without-spellcheck\" rows=\"5\" spellcheck=\"false\" aria-describedby=\"without-spellcheck-info\"></textarea>\n  <div id=\"without-spellcheck-info\" class=\"govuk-hint govuk-character-count__message\">\n    You can enter up to 10 characters\n  </div>\n</div>"
+        },
+        {
+            "name": "custom classes with error message",
+            "options": {
+                "id": "with-custom-error-class",
+                "name": "with-custom-error-class",
+                "maxlength": 10,
+                "label": {
+                    "text": "With custom error class"
+                },
+                "classes": "app-character-count--custom-modifier",
+                "errorMessage": {
+                    "text": "Error message"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-form-group--error govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  <label class=\"govuk-label\" for=\"with-custom-error-class\">\n    With custom error class\n  </label>\n  <p id=\"with-custom-error-class-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </p>\n  <textarea class=\"govuk-textarea govuk-textarea--error govuk-js-character-count app-character-count--custom-modifier\" id=\"with-custom-error-class\" name=\"with-custom-error-class\" rows=\"5\" aria-describedby=\"with-custom-error-class-info with-custom-error-class-error\"></textarea>\n  <div id=\"with-custom-error-class-info\" class=\"govuk-hint govuk-character-count__message\">\n    You can enter up to 10 characters\n  </div>\n</div>"
+        },
+        {
+            "name": "with id starting with number",
+            "options": {
+                "name": "more-detail",
+                "id": "1_more-detail",
+                "maxlength": 10,
+                "label": {
+                    "text": "Can you provide more detail?"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  <label class=\"govuk-label\" for=\"1_more-detail\">\n    Can you provide more detail?\n  </label>\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"1_more-detail\" name=\"more-detail\" rows=\"5\" aria-describedby=\"1_more-detail-info\"></textarea>\n  <div id=\"1_more-detail-info\" class=\"govuk-hint govuk-character-count__message\">\n    You can enter up to 10 characters\n  </div>\n</div>"
+        },
+        {
+            "name": "with id with special characters",
+            "options": {
+                "id": "user1.profile[address]",
+                "name": "address",
+                "maxlength": 10,
+                "label": {
+                    "text": "Full address"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  <label class=\"govuk-label\" for=\"user1.profile[address]\">\n    Full address\n  </label>\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"user1.profile[address]\" name=\"address\" rows=\"5\" aria-describedby=\"user1.profile[address]-info\"></textarea>\n  <div id=\"user1.profile[address]-info\" class=\"govuk-hint govuk-character-count__message\">\n    You can enter up to 10 characters\n  </div>\n</div>"
+        },
+        {
+            "name": "with textarea maxlength attribute",
+            "options": {
+                "id": "maxlength-should-be-removed",
+                "name": "address",
+                "maxlength": 10,
+                "attributes": {
+                    "maxlength": 10
+                },
+                "label": {
+                    "text": "Full address"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  <label class=\"govuk-label\" for=\"maxlength-should-be-removed\">\n    Full address\n  </label>\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"maxlength-should-be-removed\" name=\"address\" rows=\"5\" aria-describedby=\"maxlength-should-be-removed-info\" maxlength=\"10\"></textarea>\n  <div id=\"maxlength-should-be-removed-info\" class=\"govuk-hint govuk-character-count__message\">\n    You can enter up to 10 characters\n  </div>\n</div>"
+        },
+        {
+            "name": "to configure in JavaScript",
+            "options": {
+                "id": "to-configure-in-javascript",
+                "name": "address",
+                "label": {
+                    "text": "Full address"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-character-count\" data-module=\"govuk-character-count\">\n  <label class=\"govuk-label\" for=\"to-configure-in-javascript\">\n    Full address\n  </label>\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"to-configure-in-javascript\" name=\"address\" rows=\"5\" aria-describedby=\"to-configure-in-javascript-info\"></textarea>\n  <div id=\"to-configure-in-javascript-info\" class=\"govuk-hint govuk-character-count__message\">\n    \n  </div>\n</div>"
+        },
+        {
+            "name": "when neither maxlength nor maxwords are set",
+            "options": {
+                "id": "no-maximum",
+                "name": "no-maximum",
+                "label": {
+                    "text": "Full address"
+                },
+                "textareaDescriptionText": "No more than %{count} characters"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-character-count\" data-module=\"govuk-character-count\" data-i18n.textarea-description.other=\"No more than %{count} characters\">\n  <label class=\"govuk-label\" for=\"no-maximum\">\n    Full address\n  </label>\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"no-maximum\" name=\"no-maximum\" rows=\"5\" aria-describedby=\"no-maximum-info\"></textarea>\n  <div id=\"no-maximum-info\" class=\"govuk-hint govuk-character-count__message\">\n    \n  </div>\n</div>"
+        },
+        {
+            "name": "when neither maxlength/maxwords nor textarea description are set",
+            "options": {
+                "id": "no-maximum",
+                "name": "no-maximum",
+                "label": {
+                    "text": "Full address"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-form-group govuk-character-count\" data-module=\"govuk-character-count\">\n  <label class=\"govuk-label\" for=\"no-maximum\">\n    Full address\n  </label>\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"no-maximum\" name=\"no-maximum\" rows=\"5\" aria-describedby=\"no-maximum-info\"></textarea>\n  <div id=\"no-maximum-info\" class=\"govuk-hint govuk-character-count__message\">\n    \n  </div>\n</div>"
+        }
+    ]
+}

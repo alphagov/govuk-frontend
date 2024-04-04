@@ -1,0 +1,71 @@
+{
+    "component": "hint",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "text": "It's on your National Insurance card, benefit letter, payslip or P60.\nFor example, 'QQ 12 34 56 C'.\n"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-hint\">\n  It&#39;s on your National Insurance card, benefit letter, payslip or P60.\nFor example, &#39;QQ 12 34 56 C&#39;.\n\n</div>"
+        },
+        {
+            "name": "with html",
+            "options": {
+                "html": "It's on your National Insurance card, benefit letter, payslip or <a class=\"govuk-link\" href=\"#\">P60</a>.\nFor example, 'QQ 12 34 56 C'.\n"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-hint\">\n  It's on your National Insurance card, benefit letter, payslip or <a class=\"govuk-link\" href=\"#\">P60</a>.\n  For example, 'QQ 12 34 56 C'.\n</div>"
+        },
+        {
+            "name": "classes",
+            "options": {
+                "id": "example-hint",
+                "classes": "app-hint--custom-modifier",
+                "text": "It's on your National Insurance card, benefit letter, payslip or P60."
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div id=\"example-hint\" class=\"govuk-hint app-hint--custom-modifier\">\n  It&#39;s on your National Insurance card, benefit letter, payslip or P60.\n</div>"
+        },
+        {
+            "name": "id",
+            "options": {
+                "id": "my-hint",
+                "text": "It's on your National Insurance card, benefit letter, payslip or P60."
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div id=\"my-hint\" class=\"govuk-hint\">\n  It&#39;s on your National Insurance card, benefit letter, payslip or P60.\n</div>"
+        },
+        {
+            "name": "html as text",
+            "options": {
+                "text": "Unexpected <strong>bold text</strong> in body"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-hint\">\n  Unexpected &lt;strong&gt;bold text&lt;/strong&gt; in body\n</div>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "text": "It's on your National Insurance card, benefit letter, payslip or P60.",
+                "attributes": {
+                    "data-attribute": "my data value"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "html": "<div class=\"govuk-hint\" data-attribute=\"my data value\">\n  It&#39;s on your National Insurance card, benefit letter, payslip or P60.\n</div>"
+        }
+    ]
+}
