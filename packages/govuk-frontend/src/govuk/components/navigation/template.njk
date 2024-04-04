@@ -20,16 +20,16 @@
           <span class="govuk-navigation__button-content">Menu</span>
         </button>
         <!-- Important! Label your navigation appropriately! When there are multiple navigation landmarks on a page, additional labelling is required to provide support for screen reader users -->
-        <nav aria-label="{{ params.serviceName }} menu">
+        <nav aria-label="{{ (params.serviceName + " ") if params.serviceName else "" }}menu">
           <ul class="govuk-navigation__nav-list govuk-navigation__nav" id="govuk-navigation__nav" data-open-class="govuk-navigation__nav--open">
             {%- for item in params.items %}
             <!-- Use the "govuk-navigation__nav-list-item--active" modifier class on the li to visually highlight the page the user is currently viewing -->
             <li class="govuk-navigation__nav-list-item {{ 'govuk-navigation__nav-list-item--active' if (item.active) else '' }}">
               <!-- Use the aria-current="page" attribute on the anchor tag -->
               <a class="govuk-navigation__nav-list-item-link"
-                {%- if (item.active) -%} aria-current="page" {%- endif %}
-                href="{{item.url}}">
-                {{item.label}}
+                {%- if item.active -%} aria-current="page" {%- endif %}
+                href="{{ item.href }}">
+                {{- item.html | safe if item.html else item.text }}
               </a>
             </li>
             {%- endfor %}

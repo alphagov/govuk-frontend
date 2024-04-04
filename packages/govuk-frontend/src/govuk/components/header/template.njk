@@ -1,4 +1,5 @@
 {% from "../../macros/attributes.njk" import govukAttributes %}
+{% from "../navigation/macro.njk" import govukNavigation %}
 {% from "../button/macro.njk" import govukButton %}
 
 <header class="govuk-header" {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-header"
@@ -132,3 +133,9 @@
 
   </div>
 </header>
+
+{% if params.navigation %}
+  {{ govukNavigation({
+    items: params.navigation
+  }) }}
+{% endif %}
