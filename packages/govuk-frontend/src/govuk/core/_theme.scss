@@ -1,4 +1,6 @@
 @mixin _govuk-theme-light() {
+  color-scheme: light;
+
   --govuk-brand-colour: #{$govuk-brand-colour};
   --govuk-text-colour: #{$govuk-text-colour};
   --govuk-canvas-background-colour: #{$govuk-canvas-background-colour};
@@ -19,6 +21,8 @@
 }
 
 @mixin _govuk-theme-dark() {
+  color-scheme: dark;
+
   --govuk-canvas-background-colour: #333333;
   --govuk-body-background-colour: #222222;
   --govuk-text-colour: #ffffff;
@@ -35,7 +39,6 @@
 
     @include govuk-media-query($media-type: screen, $and: "(prefers-color-scheme: dark)") {
       &:not(.govuk-theme--light) {
-        color-scheme: dark;
         @include _govuk-theme-dark;
       }
     }
@@ -45,7 +48,6 @@
   // reducing the risk of printing big areas of black
   @include govuk-media-query($media-type: screen) {
     .govuk-theme--dark {
-      color-scheme: dark;
       @include _govuk-theme-dark;
     }
   }
