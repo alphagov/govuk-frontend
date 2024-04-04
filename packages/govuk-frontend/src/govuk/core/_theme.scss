@@ -32,6 +32,11 @@
 @include govuk-exports("govuk/core/theme") {
   :root {
     @include _govuk-theme-light;
+
+    @include govuk-media-query($media-type: screen, $and: "(prefers-color-scheme: dark)") {
+      color-scheme: dark;
+      @include _govuk-theme-dark;
+    }
   }
 
   // Prevent dark theme to leak into print if some variables don't get overridden
