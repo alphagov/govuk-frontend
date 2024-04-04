@@ -9,6 +9,7 @@ import { Checkboxes } from './components/checkboxes/checkboxes.mjs'
 import { ErrorSummary } from './components/error-summary/error-summary.mjs'
 import { ExitThisPage } from './components/exit-this-page/exit-this-page.mjs'
 import { Header } from './components/header/header.mjs'
+import { Navigation } from './components/navigation/navigation.mjs'
 import { NotificationBanner } from './components/notification-banner/notification-banner.mjs'
 import { PasswordInput } from './components/password-input/password-input.mjs'
 import { Radios } from './components/radios/radios.mjs'
@@ -41,6 +42,7 @@ function initAll(config) {
     [ErrorSummary, config.errorSummary],
     [ExitThisPage, config.exitThisPage],
     [Header],
+    [Navigation],
     [NotificationBanner, config.notificationBanner],
     [PasswordInput, config.passwordInput],
     [Radios],
@@ -82,6 +84,7 @@ export {
   ErrorSummary,
   ExitThisPage,
   Header,
+  Navigation,
   NotificationBanner,
   PasswordInput,
   Radios,

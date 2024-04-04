@@ -42,8 +42,10 @@ $govuk-header-link-underline-thickness: 3px;
   }
 }
 
-.cross-service-header__button {
+.govuk-navigation__button {
   display: none;
+
+  @include toggle-button-focus($govuk-link-colour);
 
   .toggle-enabled & {
     display: inline;
@@ -60,89 +62,73 @@ $govuk-header-link-underline-thickness: 3px;
   min-width: 240px;
   min-width: max-content;
   margin: 0;
-  padding: govuk-spacing(2) 0 govuk-spacing(1) govuk-spacing(4);
+  padding: govuk-spacing(2) 0 govuk-spacing(1) 0;
   border: 0;
   background: none;
   cursor: pointer;
 
-  &::before {
+  &::after {
+    @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
     content: "";
-    box-sizing: border-box;
-    display: inline-block;
-    position: absolute;
-    top: 50%;
-    left: 0.15rem;
-    width: 0.6rem;
-    height: 0.6rem;
-    transform: translateY(-65%) rotate(135deg);
-    border-top: 0.15rem solid;
-    border-right: 0.15rem solid;
+    margin-left: govuk-spacing(1);
   }
 
-  &.cross-service-header__button--open {
+  &.govuk-navigation__button--open {
     &::before {
       transform: translateY(-15%) rotate(-45deg);
     }
   }
-
-  &.cross-service-header__button--service-header {
-    @include toggle-button-focus($govuk-link-colour);
-  }
-
-  &.cross-service-header__button--one-login {
-    @include toggle-button-focus(govuk-colour("white"));
-  }
 }
 
-.cross-service-header__button-icon {
+.govuk-navigation__button-icon {
   margin-left: govuk-spacing(2);
   font-size: 0;
 
-  &.cross-service-header__button-icon--focus {
+  &.govuk-navigation__button-icon--focus {
     display: none;
   }
 
   // apply focus style on :focus for browsers which support :focus but not :focus-visible
-  .cross-service-header__button:focus & {
-    &.cross-service-header__button-icon--default {
+  .govuk-navigation__button:focus & {
+    &.govuk-navigation__button-icon--default {
       display: none;
     }
 
-    &.cross-service-header__button-icon--focus {
+    &.govuk-navigation__button-icon--focus {
       display: inline;
     }
   }
 
   // overwrite previous styles for browsers which support :focus-visible
-  .cross-service-header__button:focus:not(:focus-visible) & {
-    &.cross-service-header__button-icon--default {
+  .govuk-navigation__button:focus:not(:focus-visible) & {
+    &.govuk-navigation__button-icon--default {
       display: inline;
     }
 
-    &.cross-service-header__button-icon--focus {
+    &.govuk-navigation__button-icon--focus {
       display: none;
     }
   }
 
   // apply focus style on :focus-visible for browsers which support :focus-visible
-  .cross-service-header__button:focus-visible & {
-    &.cross-service-header__button-icon--default {
+  .govuk-navigation__button:focus-visible & {
+    &.govuk-navigation__button-icon--default {
       display: none;
     }
 
-    &.cross-service-header__button-icon--focus {
+    &.govuk-navigation__button-icon--focus {
       display: inline;
     }
   }
 }
 
 // start service navigation styles
-.service-header {
+.govuk-navigation {
   border-bottom: 1px solid govuk-colour("mid-grey");
   background-color: govuk-colour("light-grey");
 }
 
-.service-header__container {
+.govuk-navigation__container {
   @include govuk-media-query($until: tablet) {
     margin-bottom: govuk-spacing(1);
   }
@@ -153,7 +139,7 @@ $govuk-header-link-underline-thickness: 3px;
   }
 }
 
-.service-header__heading {
+.govuk-navigation__heading {
   @include govuk-font($size: 24, $weight: bold);
   margin: 0;
   padding: govuk-spacing(2) 0;
@@ -165,11 +151,11 @@ $govuk-header-link-underline-thickness: 3px;
   }
 }
 
-.service-header__nav {
-  @include nav-style(".service-header__nav--open");
+.govuk-navigation__nav {
+  @include nav-style(".govuk-navigation__nav--open");
 }
 
-.service-header__nav-list {
+.govuk-navigation__nav-list {
   @include govuk-font($size: 19, $weight: bold);
   margin: 0;
   padding: 0;
@@ -180,10 +166,10 @@ $govuk-header-link-underline-thickness: 3px;
   }
 }
 
-.service-header__nav-list-item {
+.govuk-navigation__nav-list-item {
   margin: govuk-spacing(3) 0 govuk-spacing(4);
 
-  &.service-header__nav-list-item--active {
+  &.govuk-navigation__nav-list-item--active {
     padding-left: govuk-spacing(3);
     border-left: govuk-spacing(1) solid $govuk-link-colour;
   }
@@ -197,7 +183,7 @@ $govuk-header-link-underline-thickness: 3px;
       margin: 0;
     }
 
-    &.service-header__nav-list-item--active {
+    &.govuk-navigation__nav-list-item--active {
       padding-left: 0;
       border-bottom: govuk-spacing(1) solid $govuk-link-colour;
       border-left: 0;
@@ -205,7 +191,7 @@ $govuk-header-link-underline-thickness: 3px;
   }
 }
 
-.service-header__nav-list-item-link {
+.govuk-navigation__nav-list-item-link {
   @include govuk-link-common;
   @include govuk-link-style-default;
   @include govuk-link-style-no-visited-state;
