@@ -1,7 +1,7 @@
 @import "../tag/index";
 
 @include govuk-exports("govuk/component/task-list") {
-  $govuk-task-list-hover-colour: govuk-colour("light-grey");
+  $govuk-task-list-hover-colour: var(--govuk-hover-colour);
 
   .govuk-task-list {
     @include govuk-font($size: 19);
@@ -34,7 +34,7 @@
   // The background hover colour is added to help indicate that the whole row is clickable, rather
   // than just the visible link text.
   .govuk-task-list__item--with-link:hover {
-    background: $govuk-task-list-hover-colour;
+    background: var(--govuk-hover-colour);
   }
 
   .govuk-task-list__name-and-hint {
