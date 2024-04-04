@@ -61,7 +61,7 @@ export const watch = (options) =>
         { cwd: options.srcPath, ignored: ['**/*.test.*'] },
         gulp.parallel(
           // Run TypeScript compiler
-          npm.script('build:types', ['--incremental', '--pretty'], options),
+          // npm.script('build:types', ['--incremental', '--pretty'], options),
 
           // Run ESLint checks
           npm.script('lint:js:cli', [

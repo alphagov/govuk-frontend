@@ -1,11 +1,16 @@
 /* eslint-disable */
-
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
+import { ElementError } from '../../errors/index.mjs'
 
 /**
  * Website navigation
  */
 export class Navigation extends GOVUKFrontendComponent {
+  /**
+   * Class constructor
+   *
+   * @param {Element | null} $module - HTML element to use for header
+   */
   constructor($module) {
     super()
 
@@ -16,8 +21,9 @@ export class Navigation extends GOVUKFrontendComponent {
         identifier: 'Root element (`$module`)'
       })
     }
-    this.$navigation = $module
-    const $nav = this.$navigation
+
+    const $nav = $module
+
     $nav.$menuButton = $nav.querySelector('.js-x-header-toggle')
 
     $nav.$menu =
