@@ -1,4 +1,4 @@
-@mixin govuk-colour-scheme-light() {
+@mixin govuk-theme-light() {
   --govuk-brand-colour: #{$govuk-brand-colour};
   --govuk-text-colour: #{$govuk-text-colour};
   --govuk-canvas-background-colour: #{$govuk-canvas-background-colour};
@@ -16,4 +16,15 @@
   --govuk-link-visited-colour: #{$govuk-link-visited-colour};
   --govuk-link-hover-colour: #{$govuk-link-hover-colour};
   --govuk-link-active-colour: #{$govuk-link-active-colour};
+}
+
+@mixin govuk-theme-dark() {
+  --govuk-canvas-background-colour: #333333;
+  --govuk-body-background-colour: #222222;
+  --govuk-text-colour: #ffffff;
+  --govuk-secondary-text-colour: #cccccc;
+  --govuk-link-colour: #add8e6;
+  --govuk-link-visited-colour: #ffb6c1;
+  --govuk-link-hover-colour: #00ffff;
+  --govuk-link-active-colour: #ffffff;
 }
