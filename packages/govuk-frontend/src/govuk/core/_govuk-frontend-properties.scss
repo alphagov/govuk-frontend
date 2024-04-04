@@ -9,10 +9,4 @@
   }
 
   --govuk-font-family: #{$govuk-font-family};
-  @include govuk-theme-light;
-
-  @include govuk-media-query($media-type: print) {
-    --govuk-text-colour: #{$govuk-print-text-colour};
-    --govuk-font-family: #{$govuk-font-family-print};
-  }
 }

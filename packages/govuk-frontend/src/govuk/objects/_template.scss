@@ -46,12 +46,4 @@
     // Set the overall body of the page back to the typical background colour.
     background-color: var(--govuk-body-background-colour);
   }
-
-  @include govuk-media-query($media-type: screen) {
-    .govuk-template--dark {
-      color-scheme: dark;
-
-      @include govuk-theme-dark;
-    }
-  }
 }
