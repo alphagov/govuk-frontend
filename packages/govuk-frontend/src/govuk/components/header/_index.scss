@@ -99,6 +99,7 @@
     // - all links get a 3px underline regardless of text size, as there are
     //   multiple grouped elements close to one another and having slightly
     //   different underline widths looks unbalanced
+    @include govuk-link-colours;
     @include govuk-link-style-inverse;
 
     text-decoration: none;
