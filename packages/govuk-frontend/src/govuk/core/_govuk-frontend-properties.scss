@@ -18,7 +18,6 @@
   --govuk-focus-colour: #{$govuk-focus-colour};
   --govuk-focus-text-colour: #{$govuk-focus-text-colour};
   --govuk-error-colour: #{$govuk-error-colour};
-  --govuk-error-colour-dark: #{scale-color($govuk-error-colour, $lightness: -30%)};
   --govuk-success-colour: #{$govuk-success-colour};
   --govuk-border-colour: #{$govuk-border-colour};
   --govuk-input-border-colour: #{$govuk-input-border-colour};
