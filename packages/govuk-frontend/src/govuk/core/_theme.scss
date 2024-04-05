@@ -25,16 +25,18 @@ $govuk-theme-from-system: true !default;
 }
 
 @mixin _govuk-theme-dark() {
-  color-scheme: dark;
+  @supports (color-scheme: dark) {
+    color-scheme: dark;
 
-  --govuk-canvas-background-colour: #333333;
-  --govuk-body-background-colour: #222222;
-  --govuk-text-colour: #ffffff;
-  --govuk-secondary-text-colour: #cccccc;
-  --govuk-link-colour: #add8e6;
-  --govuk-link-visited-colour: #ffb6c1;
-  --govuk-link-hover-colour: #00ffff;
-  --govuk-link-active-colour: #ffffff;
+    --govuk-canvas-background-colour: #333333;
+    --govuk-body-background-colour: #222222;
+    --govuk-text-colour: #ffffff;
+    --govuk-secondary-text-colour: #cccccc;
+    --govuk-link-colour: #add8e6;
+    --govuk-link-visited-colour: #ffb6c1;
+    --govuk-link-hover-colour: #00ffff;
+    --govuk-link-active-colour: #ffffff;
+  }
 }
 
 @include govuk-exports("govuk/core/theme") {
