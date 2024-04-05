@@ -20,6 +20,14 @@
     @include govuk-link-style-text;
   }
 
+  .govuk-link--error {
+    @include govuk-link-style-error;
+  }
+
+  .govuk-link--success {
+    @include govuk-link-style-success;
+  }
+
   .govuk-link--inverse {
     @include govuk-link-style-inverse;
   }
