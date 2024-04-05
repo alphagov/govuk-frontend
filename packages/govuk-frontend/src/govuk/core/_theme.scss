@@ -1,3 +1,7 @@
+// This would likely go in a proper 'settings' file
+// and default to `false`.
+$govuk-theme-from-system: true !default;
+
 @mixin _govuk-theme-light() {
   color-scheme: light;
 
@@ -37,9 +41,11 @@
   :root {
     @include _govuk-theme-light;
 
-    @include govuk-media-query($media-type: screen, $and: "(prefers-color-scheme: dark)") {
-      &:not(.govuk-theme--light) {
-        @include _govuk-theme-dark;
+    @if $govuk-theme-from-system {
+      @include govuk-media-query($media-type: screen, $and: "(prefers-color-scheme: dark)") {
+        &:not(.govuk-theme--light) {
+          @include _govuk-theme-dark;
+        }
       }
     }
   }
