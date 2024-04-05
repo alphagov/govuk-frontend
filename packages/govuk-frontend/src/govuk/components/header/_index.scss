@@ -4,7 +4,7 @@
   $govuk-header-border-color: $govuk-brand-colour;
   $govuk-header-border-width: govuk-spacing(2);
   $govuk-header-link-underline-thickness: 3px;
-  $govuk-header-separator-color: #2e3133;
+  $govuk-header-separator-color: #ffffff;
   $govuk-header-toolbox-arrow-size: 12px;
 
   .govuk-header {
@@ -128,6 +128,7 @@
     @include govuk-media-query($from: tablet) {
       margin-top: 0;
       padding-left: govuk-spacing(2);
+      margin-left: govuk-spacing(2);
       border-left: 1px solid $govuk-header-separator-color;
     }
   }
