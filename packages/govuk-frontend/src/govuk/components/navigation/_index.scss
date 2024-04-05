@@ -56,7 +56,7 @@ $govuk-header-link-underline-thickness: 3px;
     }
   }
 
-  @include govuk-font($size: 19, $weight: bold);
+  @include govuk-font($size: 19, $weight: normal);
   position: relative;
   align-items: center;
   min-width: 240px;
