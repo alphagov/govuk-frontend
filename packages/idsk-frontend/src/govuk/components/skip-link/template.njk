@@ -1,6 +1,0 @@
-{% from "../../macros/attributes.njk" import govukAttributes -%}
-
-<a href="{{ params.href | default("#content", true) }}" class="govuk-skip-link {%- if params.classes %} {{ params.classes }}{% endif %}"
-  {{- govukAttributes(params.attributes) }} data-module="govuk-skip-link">
-  {{- params.html | safe if params.html else params.text -}}
-</a>

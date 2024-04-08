@@ -1,6 +1,0 @@
-{% from "../../macros/attributes.njk" import govukAttributes -%}
-
-<a href="{% if params.href %}{{ params.href }}{% else %}#{% endif %}" class="govuk-back-link {%- if params.classes %} {{ params.classes }}{% endif %}"
-  {{- govukAttributes(params.attributes) }}>
-  {{- params.html | safe if params.html else (params.text if params.text else "Back") -}}
-</a>

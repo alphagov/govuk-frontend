@@ -1,6 +1,0 @@
-{% from "../../macros/attributes.njk" import govukAttributes -%}
-
-<strong class="govuk-tag {%- if params.classes %} {{ params.classes }}{% endif %}"
-  {{- govukAttributes(params.attributes) }}>
-  {{ params.html | safe | trim | indent(2) if params.html else params.text }}
-</strong>
