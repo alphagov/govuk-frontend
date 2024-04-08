@@ -135,22 +135,23 @@ examples:
   - name: with language selector
     options:
       languages:
-        currentLanguageText: English
-        links:
+        label:
+          html: <span class="govuk-visually-hidden">Select language</span> English
+        options:
           - locale: ar
             href: '#'
-            name: 'العربيَّة'
+            text: 'العربيَّة'
             rtl: true
           - locale: cy
             href: '#'
-            name: Cymraeg
+            text: Cymraeg
           - locale: en
             href: '#'
-            name: English
+            text: English
             current: true
           - locale: jp
             href: '#'
-            name: 日本語
+            text: 日本語
 
   - name: with GOV.UK One Login links
     options:
@@ -230,22 +231,23 @@ examples:
         button:
           text: Go
       languages:
-        currentLanguageText: English
-        links:
+        label:
+          html: <span class="govuk-visually-hidden">Select language</span> English
+        options:
           - locale: ar
             href: '#'
-            name: 'العربيَّة'
+            text: 'العربيَّة'
             rtl: true
           - locale: cy
             href: '#'
-            name: Cymraeg
+            text: Cymraeg
           - locale: en
             href: '#'
-            name: English
+            text: English
             current: true
           - locale: jp
             href: '#'
-            name: 日本語
+            text: 日本語
       oneLogin:
         links:
           - href: '#'

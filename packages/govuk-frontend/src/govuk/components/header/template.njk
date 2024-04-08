@@ -2,6 +2,21 @@
 {% from "../navigation/macro.njk" import govukNavigation %}
 {% from "../button/macro.njk" import govukButton %}
 
+{% macro _govukHeaderToolboxDetails(box) %}
+<details class="govuk-header__toolbox govuk-js-header-toolbox" name="govuk-header-toolbox">
+  <summary class="govuk-header__toolbox-summary">
+    {{- box.label.html | safe if box.label.html else box.label.text -}}
+  </summary>
+  <div class="govuk-header__toolbox-contents">
+    {% if caller %}
+      {{ caller() }}
+    {% else %}
+      {{ box.html | safe if box.html else box.text }}
+    {% endif %}
+  </div>
+</details>
+{% endmacro %}
+
 <header class="govuk-header" {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-header"
   {{- govukAttributes(params.attributes) }}>
   <div class="govuk-header__container {{ params.containerClasses | default("govuk-width-container", true) }}">
@@ -54,7 +69,7 @@
     </div>
 
     {# Bottom row #}
-    {% if params.search or params.languages or params.oneLogin %}
+    {% if params.search or params.toolboxes or params.languages or params.oneLogin %}
     <div class="govuk-header__bottom">
 
       {# Search form #}
@@ -73,59 +88,66 @@
       </form>
       {% endif %}
 
-      {% if params.languages or params.oneLogin %}
-      <div class="govuk-header__toolboxes">
+      {% if params.toolboxes or params.languages or params.oneLogin %}
+      <ul class="govuk-header__toolboxes">
 
-        {# Language selector #}
+        {% for box in params.toolboxes %}
+          <li class="govuk-header__toolboxes-item">
+            {% if (box.options | length) > 1 %}
+              {% call _govukHeaderToolboxDetails(box) %}
+                <ul class="govuk-list govuk-list--spaced">
+                  {% for link in box.options %}
+                  <li>
+                    <a class="govuk-header__link" href="{{ link.href }}">
+                      {{- link.html | safe if link.html else link.text -}}
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              {% endcall %}
+            {% else %}
+              {% set link = box.options[0] %}
+              <a class="govuk-header__link" href="{{ link.href }}">
+                {{- link.html | safe if link.html else link.text -}}
+              </a>
+            {% endif %}
+          </li>
+        {% endfor %}
+
         {% if params.languages %}
-        <details class="govuk-header__toolbox govuk-js-header-toolbox" name="govuk-header-toolbox">
-          <summary class="govuk-header__toolbox-summary">
-            <span class="govuk-visually-hidden">
-              {{- params.languages.labelText | default('Select language') -}}
-            </span>
-            {{- params.languages.currentLanguageText -}}
-          </summary>
-          <div class="govuk-header__toolbox-contents">
-            <ul class="govuk-list govuk-list--spaced">
-              {% for item in params.languages.links %}
-              <li lang="{{ item.locale }}" dir="{{ 'rtl' if item.rtl else 'ltr' }}">
-                <a class="govuk-header__link" href="{{ item.href }}" hreflang="{{ item.locale }}" {%- if item.current %} aria-current="page"{% endif %}>
-                  {{- item.name -}}
-                </a>
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-        </details>
+          <li class="govuk-header__toolboxes-item">
+            {% call _govukHeaderToolboxDetails(params.languages) %}
+              <ul class="govuk-list govuk-list--spaced">
+                {% for link in box.options %}
+                <li lang="{{ link.locale }}" dir="{{ 'rtl' if link.rtl else 'ltr' }}">
+                  <a class="govuk-header__link" href="{{ link.href }}" hreflang="{{ link.locale }}" {%- if link.current %} aria-current="page"{% endif %}>
+                    {{- link.html | safe if link.html else link.text -}}
+                  </a>
+                </li>
+                {% endfor %}
+              </ul>
+            {% endcall %}
+          </li>
         {% endif %}
 
-        {# One Login #}
         {% if params.oneLogin %}
-        <details class="govuk-header__toolbox govuk-header__toolbox--one-login govuk-js-header-toolbox" name="govuk-header-toolbox">
-          <summary class="govuk-header__toolbox-summary">
-            <svg class="govuk-header__one-login-icon" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
-              <circle class="background" cx="11" cy="11" r="11" fill="white"></circle>
-              <path class="person" fill-rule="evenodd" clip-rule="evenodd" d="M3.29297 18.8487C4.23255 15.4753 7.32741 13 11.0004 13C14.6731 13 17.7678 15.4749 18.7076 18.848C17.8058 19.7338 16.752 20.4654 15.5889 21H11.0004H6.41097C5.24819 20.4655 4.19463 19.7342 3.29297 18.8487Z" fill="#1D70B8"></path>
-              <circle class="person" cx="11" cy="7.75" r="3.75" fill="#1D70B8"></circle>
-              <circle class="border" cx="11" cy="11" r="10" stroke="white" stroke-width="2"></circle>
-            </svg>
-            {{- params.oneLogin.labelText | default('One Login') -}}
-          </summary>
-          <div class="govuk-header__toolbox-contents">
-            <ul class="govuk-list govuk-list--spaced">
-              {% for item in params.oneLogin.links %}
-              <li>
-                <a class="govuk-header__link" href="{{ item.href }}">
-                  {{- item.html | safe if item.html else item.text -}}
-                </a>
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-        </details>
+          <li class="govuk-header__toolboxes-item">
+            <a class="govuk-header__link govuk-header__link--one-login" href="#">
+              {{- (params.oneLogin.label.html | safe if params.oneLogin.label.html else params.oneLogin.label.text) | default('GOV.UK One Login') -}}
+              <svg class="govuk-header__one-login-icon" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+                <circle class="background" cx="11" cy="11" r="11" fill="white"></circle>
+                <path class="person" fill-rule="evenodd" clip-rule="evenodd" d="M3.29297 18.8487C4.23255 15.4753 7.32741 13 11.0004 13C14.6731 13 17.7678 15.4749 18.7076 18.848C17.8058 19.7338 16.752 20.4654 15.5889 21H11.0004H6.41097C5.24819 20.4655 4.19463 19.7342 3.29297 18.8487Z" fill="#1D70B8"></path>
+                <circle class="person" cx="11" cy="7.75" r="3.75" fill="#1D70B8"></circle>
+                <circle class="border" cx="11" cy="11" r="10" stroke="white" stroke-width="2"></circle>
+              </svg>
+            </a>
+          </li>
+          <li class="govuk-header__toolboxes-item">
+            <a class="govuk-header__link" href="#">Sign out</a>
+          </li>
         {% endif %}
 
-      </div>
+      </ul>
       {% endif %}
 
     </div>
