@@ -6,8 +6,10 @@
 ///
 /// @type Colour
 /// @access public
+///
+/// Same green as govuk-success-colour
 
-$govuk-button-background-colour: govuk-colour("green") !default;
+$govuk-button-background-colour: #00a357 !default;
 
 /// Button component text colour
 ///
@@ -34,7 +36,7 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
   $govuk-button-colour: $govuk-button-background-colour;
   $govuk-button-text-colour: $govuk-button-text-colour;
   $govuk-button-hover-colour: govuk-shade($govuk-button-colour, 20%);
-  $govuk-button-shadow-colour: govuk-shade($govuk-button-colour, 60%);
+  $govuk-button-shadow-colour: govuk-shade($govuk-button-colour, 40%);
 
   // Secondary button variables
   $govuk-secondary-button-colour: govuk-colour("light-grey");

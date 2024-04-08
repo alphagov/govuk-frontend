@@ -1,6 +1,6 @@
 @include govuk-exports("govuk/component/accordion") {
-  $govuk-accordion-base-colour: govuk-colour("black");
-  $govuk-accordion-hover-colour: govuk-colour("light-grey");
+  $govuk-accordion-base-colour: govuk-colour("white");
+  $govuk-accordion-hover-colour: govuk-colour("black");
   $govuk-accordion-icon-focus-colour: $govuk-focus-colour;
   $govuk-accordion-bottom-border-width: 1px;
 

@@ -19,7 +19,7 @@
     // https://bugs.webkit.org/show_bug.cgi?id=224746
     &::-webkit-file-upload-button {
       -webkit-appearance: button;
-      color: inherit;
+      color: govuk-colour("black");
       font: inherit;
     }
 

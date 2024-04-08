@@ -18,6 +18,9 @@
     border: $govuk-border-width-form-element solid $govuk-input-border-colour;
     border-radius: 0;
 
+    color: $govuk-text-colour;
+    background-color: $govuk-body-background-colour;
+
     -webkit-appearance: none;
 
     &:focus {

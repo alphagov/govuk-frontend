@@ -9,7 +9,7 @@
 
     // Visually separate the cookie banner from content underneath
     // when user changes colours in their browser.
-    border-bottom: $border-bottom-width solid transparent;
+    border-bottom: 1px solid $govuk-border-colour;
 
     background-color: $govuk-canvas-background-colour;
   }

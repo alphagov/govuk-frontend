@@ -16,7 +16,7 @@
   .govuk-header {
     @include govuk-font($size: 16, $line-height: 1);
 
-    border-bottom: govuk-spacing(2) solid govuk-colour("white");
+    border-bottom: govuk-spacing(2) solid $govuk-body-background-colour;
     color: $govuk-header-text;
     background: $govuk-header-background;
   }

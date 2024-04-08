@@ -20,7 +20,7 @@ $govuk-brand-colour: govuk-colour("blue") !default;
 /// @type Colour
 /// @access public
 
-$govuk-text-colour: govuk-colour("black") !default;
+$govuk-text-colour: #ffffff !default;
 
 /// Canvas background colour
 ///
@@ -30,14 +30,14 @@ $govuk-text-colour: govuk-colour("black") !default;
 /// @type Colour
 /// @access public
 
-$govuk-canvas-background-colour: govuk-colour("light-grey") !default;
+$govuk-canvas-background-colour: #263136 !default;
 
 /// Body background colour
 ///
 /// @type Colour
 /// @access public
 
-$govuk-body-background-colour: govuk-colour("white") !default;
+$govuk-body-background-colour: #1e1f21 !default;
 
 /// Text colour for print media
 ///
@@ -55,7 +55,7 @@ $govuk-print-text-colour: #000000 !default;
 /// @type Colour
 /// @access public
 
-$govuk-secondary-text-colour: govuk-colour("dark-grey") !default;
+$govuk-secondary-text-colour: #cccccc !default;
 
 /// Focus colour
 ///
@@ -83,8 +83,10 @@ $govuk-focus-text-colour: govuk-colour("black") !default;
 ///
 /// @type Colour
 /// @access public
+///
+/// Increased the luminance of existing red until it reached 5:1 contrast
 
-$govuk-error-colour: govuk-colour("red") !default;
+$govuk-error-colour: #e96753 !default;
 
 /// Success colour
 ///
@@ -92,8 +94,10 @@ $govuk-error-colour: govuk-colour("red") !default;
 ///
 /// @type Colour
 /// @access public
+///
+/// Increased the luminance of existing green until it reached 5:1 contrast
 
-$govuk-success-colour: govuk-colour("green") !default;
+$govuk-success-colour: #00a357 !default;
 
 /// Border colour
 ///
@@ -111,7 +115,7 @@ $govuk-border-colour: govuk-colour("mid-grey") !default;
 /// @type Colour
 /// @access public
 
-$govuk-input-border-colour: govuk-colour("black") !default;
+$govuk-input-border-colour: govuk-colour("white") !default;
 
 /// Input hover colour
 ///
@@ -131,25 +135,25 @@ $govuk-hover-colour: govuk-colour("mid-grey") !default;
 /// @type Colour
 /// @access public
 
-$govuk-link-colour: govuk-colour("blue") !default;
+$govuk-link-colour: #3892e0 !default;
 
 /// Visited link colour
 ///
 /// @type Colour
 /// @access public
 
-$govuk-link-visited-colour: govuk-colour("purple") !default;
+$govuk-link-visited-colour: #906fd6 !default;
 
 /// Link hover colour
 ///
 /// @type Colour
 /// @access public
 
-$govuk-link-hover-colour: govuk-colour("dark-blue") !default;
+$govuk-link-hover-colour: #3892e0 !default;
 
 /// Active link colour
 ///
 /// @type Colour
 /// @access public
 
-$govuk-link-active-colour: govuk-colour("black") !default;
+$govuk-link-active-colour: govuk-colour("white") !default;
