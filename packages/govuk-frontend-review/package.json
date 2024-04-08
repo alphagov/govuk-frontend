@@ -12,7 +12,7 @@
     "dev": "gulp dev --color",
     "prebuild": "npm run clean",
     "build": "gulp build --color",
-    "build:sassdoc": "sassdoc --config sassdoc.config.yaml ../govuk-frontend/src/govuk",
+    "build:sassdoc": "sassdoc --config sassdoc.config.yaml ../idsk-frontend/src/govuk",
     "build:types": "tsc --build tsconfig.build.json",
     "build:jsdoc": "typedoc",
     "postbuild": "npm run build:jsdoc && npm run build:sassdoc",

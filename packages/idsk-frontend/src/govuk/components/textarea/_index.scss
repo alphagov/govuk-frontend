@@ -1,6 +1,6 @@
 @import "../error-message/index";
-@import "../hint/index";
-@import "../label/index";
+@import "../../../../../govuk-frontend/src/govuk/components/hint/index";
+@import "../../../../../govuk-frontend/src/govuk/components/label/index";
 
 @include govuk-exports("govuk/component/textarea") {
   .govuk-textarea {
