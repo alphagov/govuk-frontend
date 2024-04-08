@@ -4,7 +4,7 @@
   $govuk-header-border-color: $govuk-brand-colour;
   $govuk-header-border-width: govuk-spacing(2);
   $govuk-header-link-underline-thickness: 3px;
-  $govuk-header-separator-color: #2e3133;
+  $govuk-header-separator-color:$govuk-border-colour;
   $govuk-header-toolbox-arrow-size: 12px;
 
   .govuk-header {
