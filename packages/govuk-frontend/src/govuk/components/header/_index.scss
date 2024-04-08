@@ -1,7 +1,7 @@
 @include govuk-exports("govuk/component/header") {
   $govuk-header-background: govuk-colour("black");
   $govuk-header-text: govuk-colour("white");
-  $govuk-header-border-color: $govuk-border-colour;
+  $govuk-header-border-color: $govuk-brand-colour;
   $govuk-header-border-width: govuk-spacing(2);
   $govuk-header-link-underline-thickness: 3px;
   $govuk-header-separator-color: $govuk-border-colour;
