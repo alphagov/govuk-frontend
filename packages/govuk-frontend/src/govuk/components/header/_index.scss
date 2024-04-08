@@ -4,7 +4,7 @@
   $govuk-header-border-color: $govuk-brand-colour;
   $govuk-header-border-width: govuk-spacing(2);
   $govuk-header-link-underline-thickness: 3px;
-  $govuk-header-separator-color: #ffffff;
+  $govuk-header-separator-color: #2e3133;
   $govuk-header-toolbox-arrow-size: 12px;
 
   .govuk-header {
@@ -94,6 +94,28 @@
     }
   }
 
+  // TEMPORARY HACKY CODE TO POSITION ONE LOGIN ICON
+  .govuk-header__one-login-icon {
+    margin-top: -1px;
+    margin-left: govuk-spacing(1);
+    vertical-align: text-bottom;
+  }
+
+  // One Login icon focus code
+  .govuk-header__link--one-login:focus .govuk-header__one-login-icon {
+    .background {
+      fill: govuk-colour("black");
+    }
+
+    .border {
+      stroke: govuk-colour("black");
+    }
+
+    .person {
+      fill: govuk-colour("white");
+    }
+  }
+
   // Logo container
   .govuk-header__logo {
     display: block;
@@ -127,8 +149,8 @@
 
     @include govuk-media-query($from: tablet) {
       margin-top: 0;
-      padding-left: govuk-spacing(4);
       margin-left: govuk-spacing(2);
+      padding-left: govuk-spacing(4);
       border-left: 1px solid $govuk-header-separator-color;
     }
   }
@@ -141,11 +163,39 @@
   .govuk-header__toolboxes {
     @include govuk-font-size(16);
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 
-    @include govuk-media-query($from: tablet) {
+    @include govuk-media-query($from: mobile) {
+      flex-direction: row;
       margin-left: auto;
+    }
+  }
+
+  .govuk-header__toolboxes-item {
+    padding: govuk-spacing(2) 0;
+    border-bottom: 1px solid $govuk-header-separator-color;
+
+    @include govuk-media-query($from: mobile) {
+      padding: govuk-spacing(1) govuk-spacing(2);
+      border-bottom: none;
+
+      // Add separators between toolbox items
+      + .govuk-header__toolboxes-item {
+        border-left: 1px solid $govuk-header-separator-color;
+      }
+
+      // Remove left padding from first toolbox
+      &:first-child {
+        padding-left: 0;
+      }
+
+      // Remove right padding from last toolbox, to ensure alignment with container edge
+      &:last-child {
+        padding-right: 0;
+      }
     }
   }
 
@@ -153,14 +203,9 @@
     position: relative;
   }
 
-  .govuk-header__toolbox + .govuk-header__toolbox {
-    border-left: 1px solid $govuk-header-separator-color;
-  }
-
   .govuk-header__toolbox-summary {
     display: inline-block;
     position: relative;
-    padding: govuk-spacing(2) 0;
     padding-right: calc(#{$govuk-header-toolbox-arrow-size} + #{govuk-spacing(2)});
 
     &::-webkit-details-marker {
@@ -186,16 +231,6 @@
 
     &:focus {
       @include govuk-focused-text;
-    }
-
-    // Add margin-left to all toolboxes except the first
-    .govuk-header__toolbox:not(:first-child) & {
-      margin-left: govuk-spacing(2);
-    }
-
-    // Add margin-right to all toolboxes except the last
-    .govuk-header__toolbox:not(:last-child) & {
-      margin-right: govuk-spacing(2);
     }
   }
 
@@ -224,31 +259,6 @@
       li:last-child {
         margin-bottom: 0;
       }
-    }
-  }
-
-  // Toolbox - One Login specific code
-  .govuk-header__toolbox--one-login {
-    // Change colours of One Login icon when focused
-    .govuk-header__toolbox-summary:focus .govuk-header__one-login-icon {
-      .background {
-        fill: govuk-colour("black");
-      }
-
-      .border {
-        stroke: govuk-colour("black");
-      }
-
-      .person {
-        fill: govuk-colour("white");
-      }
-    }
-
-    // TEMPORARY HACKY CODE TO POSITION ONE LOGIN ICON
-    .govuk-header__one-login-icon {
-      margin-top: -1px;
-      margin-right: govuk-spacing(1);
-      vertical-align: text-bottom;
     }
   }
 
