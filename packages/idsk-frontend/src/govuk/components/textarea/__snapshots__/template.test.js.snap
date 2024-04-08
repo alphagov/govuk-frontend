@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Textarea when it includes a hint renders with hint 1`] = `
+<div id="more-detail-hint"
+     class="govuk-hint"
+>
+  Don't include personal or financial information, eg your National Insurance number or credit card details.
+</div>
+`;
+
+exports[`Textarea when it includes an error message renders with error message 1`] = `
+<p id="no-ni-reason-error"
+   class="govuk-error-message"
+>
+  You must provide an explanation
+</p>
+`;
+
+exports[`Textarea with dependant components renders with label 1`] = `
+<label class="govuk-label"
+       for="more-detail"
+>
+  Can you provide more detail?
+</label>
+`;

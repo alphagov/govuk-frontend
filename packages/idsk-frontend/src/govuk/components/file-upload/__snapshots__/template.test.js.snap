@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`File upload when it includes a hint renders with hint 1`] = `
+<div id="file-upload-2-hint"
+     class="govuk-hint"
+>
+  Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
+</div>
+`;
+
+exports[`File upload when it includes an error message renders with error message 1`] = `
+<p id="file-upload-with-error-error"
+   class="govuk-error-message"
+>
+  Error message
+</p>
+`;
+
+exports[`File upload with dependant components renders with label 1`] = `
+<label class="govuk-label"
+       for="file-upload-1"
+>
+  Upload a file
+</label>
+`;

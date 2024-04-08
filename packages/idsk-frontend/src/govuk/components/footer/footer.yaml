@@ -1,0 +1,472 @@
+params:
+  - name: meta
+    type: object
+    required: false
+    description: The meta section of the footer after any navigation, before the copyright and license information.
+    params:
+      - name: visuallyHiddenTitle
+        type: string
+        required: false
+        description: Title for a meta item section. Defaults to `"Support links"`.
+      - name: html
+        type: string
+        required: false
+        description: HTML to add to the meta section of the footer, which will appear below any links specified using meta `items`.
+      - name: text
+        type: string
+        required: false
+        description: Text to add to the meta section of the footer, which will appear below any links specified using meta `items`. If meta `html` is specified, this option is ignored.
+      - name: items
+        type: array
+        required: false
+        description: The meta `items` add content within a unordered list to the meta section of the footer component. These appear above any text or custom html in the meta section.
+        params:
+          - name: text
+            type: string
+            required: true
+            description: List item text in the meta section of the footer.
+          - name: href
+            type: string
+            required: true
+            description: List item link `href` attribute in the meta section of the footer.
+          - name: attributes
+            type: object
+            required: false
+            description: HTML attributes (for example data attributes) to add to the anchor in the footer meta section.
+  - name: navigation
+    type: array
+    required: false
+    description: The navigation section of the footer before a section break and the copyright and license information.
+    params:
+      - name: title
+        type: string
+        required: true
+        description: Title for a section.
+      - name: columns
+        type: integer
+        required: false
+        description: Amount of columns to display items in navigation section of the footer.
+      - name: width
+        type: string
+        required: false
+        description: Width of each navigation section in the footer. You can pass any Design System grid width here – for example, `"one-third"`, `"two-thirds"` or `"one-half"`. Defaults to `"full"`.
+      - name: items
+        type: array
+        required: false
+        description: The items within the navigation section of the footer component.
+        params:
+          - name: text
+            type: string
+            required: true
+            description: List item text in the navigation section of the footer.
+          - name: href
+            type: string
+            required: true
+            description: List item link `href` attribute in the navigation section of the footer. Both `text` and `href` attributes need to be present to create a link.
+          - name: attributes
+            type: object
+            required: false
+            description: HTML attributes (for example data attributes) to add to the anchor in the footer navigation section.
+  - name: contentLicence
+    type: object
+    required: false
+    description: The content licence information within the footer component. Defaults to Open Government Licence (OGL) v3 licence.
+    params:
+      - name: text
+        type: string
+        required: false
+        description: If `html` is set, this is not required. If `html` is provided, the `text` option will be ignored. If neither are provided, the text for the Open Government Licence is used.
+      - name: html
+        type: string
+        required: false
+        description: If `text` is set, this is not required. If `html` is provided, the `text` option will be ignored. If neither are provided, the text for the Open Government Licence is used. The content licence is inside a `<span>` element, so you can only add [phrasing content](https://html.spec.whatwg.org/#phrasing-content) to it.
+  - name: copyright
+    type: object
+    required: false
+    description: The copyright information in the footer component, this defaults to `"© Crown copyright"`.
+    params:
+      - name: text
+        type: string
+        required: false
+        description: If `html` is set, this is not required. If `html` is provided, the `text` option will be ignored. If neither are provided, `"© Crown copyright"` is used.
+      - name: html
+        type: string
+        required: false
+        description: If `text` is set, this is not required. If `html` is provided, the `text` option will be ignored. If neither are provided, `"© Crown copyright"` is used. The copyright notice is inside an `<a>` element, so you can only use text formatting elements within it.
+  - name: containerClasses
+    type: string
+    required: false
+    description: Classes that can be added to the inner container, useful if you want to make the footer full width.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the footer component container.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the footer component container.
+
+previewLayout: full-width
+accessibilityCriteria: |
+  Text and links in the Footer must:
+  - have a text contrast ratio higher than 4.5:1 against the background colour to meet [WCAG AA](https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast)
+
+  Links in the Footer must:
+  - accept focus
+  - be focusable with a keyboard
+  - be usable with a keyboard
+  - indicate when they have focus
+  - change in appearance when touched (in the touch-down state)
+  - change in appearance when hovered
+  - have visible text
+
+  Images in the Footer must:
+  - be presentational when linked to from accompanying text (Open Government Licence (OGL) icon).
+  - have a meaningful accessible name if also a linked element (crest icon).
+
+  Landmarks and Roles in the Footer should:
+  - avoid navigation landmarks or roles
+    "The footer element alone is sufficient for such cases; while a nav element can be used in such cases, it is usually unnecessary." - (https://html.spec.whatwg.org/multipage/sections.html#the-nav-element)
+    Note: This decision has been made based on prior experience seeing removal of overuse of `<nav>` elements from www.GOV.UK, which made it confusing for users of assistive technologies to know what were the most important navigation aspects of GOV.UK.
+    Should be challenged if user research indicates this is an issue.
+
+  - have a role of `"contentinfo"` at the root of the component (<footer>) (https://www.w3.org/TR/wai-aria-1.1/#contentinfo)
+    Note: This decision has been made given that most uses of this role tend to be used directly on a `<footer>` element.
+    Assumption made is that is most predictable for users of assistive technologies.
+    The spec indicates that `"contentinfo"` is useful for "Examples of information included in this region of the page are copyrights and links to privacy statements.", which may indicate that it might be better placed around the 'meta' section of this component.
+    Should be challenged if user research indicates this is an issue.
+
+    See also: http://www.brucelawson.co.uk/2013/why-does-html-take-rolecontentinfo
+
+examples:
+  - name: default
+    options: {}
+
+  - name: with custom HTML content licence and copyright notice
+    description: Open Government Licence and Crown copyright notice translated into Welsh
+    options:
+      contentLicence:
+        html: 'Mae’r holl gynnwys ar gael dan <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/" rel="license">Drwydded y Llywodraeth Agored v3.0</a>, ac eithrio lle nodir yn wahanol'
+      copyright:
+        html: '<span>Hawlfraint y Goron</span>'
+
+  - name: with custom text content licence and copyright notice
+    description: Open Government Licence and Crown copyright notice translated into Welsh
+    options:
+      contentLicence:
+        text: 'Mae’r holl gynnwys ar gael dan Drwydded y Llywodraeth Agored v3.0, ac eithrio lle nodir yn wahanol'
+      copyright:
+        text: '© Hawlfraint y Goron'
+
+  - name: with meta
+    description: Secondary navigation with meta information relating to the site
+    options:
+      meta:
+        visuallyHiddenTitle: Items
+        items:
+          - href: '#1'
+            text: Item 1
+          - href: '#2'
+            text: Item 2
+          - href: '#3'
+            text: Item 3
+
+  - name: with custom meta
+    description: Custom meta section
+    options:
+      meta:
+        text: GOV.UK Prototype Kit v7.0.1
+
+  - name: with meta links and meta content
+    description: Secondary navigation links and custom meta text
+    options:
+      meta:
+        items:
+          - href: '#1'
+            text: Bibendum Ornare
+          - href: '#2'
+            text: Nullam
+          - href: '#3'
+            text: Tortor Fringilla
+          - href: '#4'
+            text: Tellus
+          - href: '#5'
+            text: Egestas Nullam
+          - href: '#6'
+            text: Euismod Etiam
+          - href: '#7'
+            text: Fusce Sollicitudin
+          - href: '#8'
+            text: Ligula Nullam Ultricies
+        html: Built by the <a href="#" class="govuk-footer__link">Department of Magical Law Enforcement</a>
+
+  - name: with custom meta
+    description: Custom meta section
+    options:
+      meta:
+        text: GOV.UK Prototype Kit v7.0.1
+
+  - name: with default width navigation (one column)
+    options:
+      navigation:
+        - title: Navigation section
+          items:
+            - href: '#1'
+              text: Navigation item 1
+            - href: '#2'
+              text: Navigation item 2
+            - href: '#3'
+              text: Navigation item 3
+            - href: '#4'
+              text: Navigation item 4
+            - href: '#5'
+              text: Navigation item 5
+            - href: '#6'
+              text: Navigation item 6
+
+  - name: with default width navigation (two columns)
+    options:
+      navigation:
+        - title: Navigation section
+          columns: 2
+          items:
+            - href: '#1'
+              text: Navigation item 1
+            - href: '#2'
+              text: Navigation item 2
+            - href: '#3'
+              text: Navigation item 3
+            - href: '#4'
+              text: Navigation item 4
+            - href: '#5'
+              text: Navigation item 5
+            - href: '#6'
+              text: Navigation item 6
+
+  - name: with navigation
+    options:
+      navigation:
+        - title: Two column list
+          width: two-thirds
+          columns: 2
+          items:
+            - href: '#1'
+              text: Navigation item 1
+            - href: '#2'
+              text: Navigation item 2
+            - href: '#3'
+              text: Navigation item 3
+            - href: '#4'
+              text: Navigation item 4
+            - href: '#5'
+              text: Navigation item 5
+            - href: '#6'
+              text: Navigation item 6
+        - title: Single column list
+          width: one-third
+          items:
+            - href: '#1'
+              text: Navigation item 1
+            - href: '#2'
+              text: Navigation item 2
+            - href: '#3'
+              text: Navigation item 3
+
+  - name: Full GDS example
+    description: A full example based on GOV.UK's current footer
+    options:
+      navigation:
+        - title: Coronavirus (COVID-19)
+          width: two-thirds
+          items:
+            - href: '/coronavirus'
+              text: 'Coronavirus (COVID-19): guidance and support'
+        - title: Brexit
+          width: one-third
+          items:
+            - href: '/brexit'
+              text: Check what you need to do
+        - title: Services and information
+          width: two-thirds
+          columns: 2
+          items:
+            - href: '/browse/benefits'
+              text: Benefits
+            - href: '/browse/births-deaths-marriages'
+              text: Births, deaths, marriages and care
+            - href: '/browse/business'
+              text: Business and self-employed
+            - href: '/browse/childcare-parenting'
+              text: Childcare and parenting
+            - href: '/browse/citizenship'
+              text: Citizenship and living in the UK
+            - href: '/browse/justice'
+              text: Crime, justice and the law
+            - href: '/browse/disabilities'
+              text: Disabled people
+            - href: '/browse/driving'
+              text: Driving and transport
+            - href: '/browse/education'
+              text: Education and learning
+            - href: '/browse/employing-people'
+              text: Employing people
+            - href: '/browse/environment-countryside'
+              text: Environment and countryside
+            - href: '/browse/housing-local-services'
+              text: Housing and local services
+            - href: '/browse/tax'
+              text: Money and tax
+            - href: '/browse/abroad'
+              text: Passports, travel and living abroad
+            - href: '/browse/visas-immigration'
+              text: Visas and immigration
+            - href: '/browse/working'
+              text: Working, jobs and pensions
+        - title: Departments and policy
+          width: one-third
+          items:
+            - href: '/government/how-government-works'
+              text: How government works
+            - href: '/government/organisations'
+              text: Departments
+            - href: '/world'
+              text: Worldwide
+            - href: '/government/policies'
+              text: Policies
+            - href: '/government/publications'
+              text: Publications
+            - href: '/government/announcements'
+              text: Announcements
+      meta:
+        items:
+          - href: '/help'
+            text: Help
+          - href: '/help/cookies'
+            text: Cookies
+          - href: '/contact'
+            text: Contact
+          - href: '/help/terms-conditions'
+            text: Terms and conditions
+          - href: '/cymraeg'
+            text: Rhestr o Wasanaethau Cymraeg
+        html: Built by the <a class="govuk-footer__link" href="#">Government Digital Service</a>
+
+  - name: Three equal columns
+    description: A full example to demonstrate three equal width columns
+    options:
+      navigation:
+        - title: Single column list 1
+          width: one-third
+          columns: 1
+          items:
+            - href: '#1'
+              text: Navigation item 1
+            - href: '#2'
+              text: Navigation item 2
+            - href: '#3'
+              text: Navigation item 3
+            - href: '#4'
+              text: Navigation item 4
+            - href: '#5'
+              text: Navigation item 5
+            - href: '#6'
+              text: Navigation item 6
+        - title: Single column list 2
+          width: one-third
+          columns: 1
+          items:
+            - href: '#1'
+              text: Navigation item 1
+            - href: '#2'
+              text: Navigation item 2
+            - href: '#3'
+              text: Navigation item 3
+            - href: '#4'
+              text: Navigation item 4
+            - href: '#5'
+              text: Navigation item 5
+            - href: '#6'
+              text: Navigation item 6
+        - title: Single column list 3
+          width: one-third
+          columns: 1
+          items:
+            - href: '#1'
+              text: Navigation item 1
+            - href: '#2'
+              text: Navigation item 2
+            - href: '#3'
+              text: Navigation item 3
+            - href: '#4'
+              text: Navigation item 4
+            - href: '#5'
+              text: Navigation item 5
+            - href: '#6'
+              text: Navigation item 6
+
+  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: attributes
+    hidden: true
+    options:
+      attributes:
+        data-test-attribute: value
+        data-test-attribute-2: value-2
+  - name: classes
+    hidden: true
+    options:
+      classes: app-footer--custom-modifier
+  - name: with container classes
+    hidden: true
+    options:
+      containerClasses: app-width-container
+  - name: with HTML passed as text content
+    hidden: true
+    options:
+      contentLicence:
+        text: 'Mae’r holl gynnwys ar gael dan <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/" rel="license">Drwydded y Llywodraeth Agored v3.0</a>, ac eithrio lle nodir yn wahanol'
+      copyright:
+        text: '<span>Hawlfraint y Goron</span>'
+  - name: with empty meta
+    hidden: true
+    options:
+      meta: {}
+  - name: with empty meta items
+    hidden: true
+    options:
+      meta:
+        items: []
+  - name: meta html as text
+    hidden: true
+    options:
+      meta:
+        text: GOV.UK Prototype Kit <strong>v7.0.1</strong>
+  - name: with meta html
+    hidden: true
+    options:
+      meta:
+        html: GOV.UK Prototype Kit <strong>v7.0.1</strong>
+  - name: with meta item attributes
+    hidden: true
+    options:
+      meta:
+        items:
+          - href: '#1'
+            text: meta item 1
+            attributes:
+              data-attribute: my-attribute
+              data-attribute-2: my-attribute-2
+  - name: with empty navigation
+    hidden: true
+    options:
+      navigation: []
+  - name: with navigation item attributes
+    hidden: true
+    options:
+      navigation:
+        - title: Single column list 1
+          items:
+            - href: '#1'
+              text: Navigation item 1
+              attributes:
+                data-attribute: my-attribute
+                data-attribute-2: my-attribute-2

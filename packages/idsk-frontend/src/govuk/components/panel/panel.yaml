@@ -1,0 +1,84 @@
+params:
+  - name: titleText
+    type: string
+    required: true
+    description: If `titleHtml` is set, this is not required. Text to use within the panel. If `titleHtml` is provided, the `titleText` option will be ignored.
+  - name: titleHtml
+    type: string
+    required: true
+    description: If `titleText` is set, this is not required. HTML to use within the panel. If `titleHtml` is provided, the `titleText` option will be ignored.
+  - name: headingLevel
+    type: integer
+    required: false
+    description: Heading level, from `1` to `6`. Default is `1`.
+  - name: text
+    type: string
+    required: true
+    description: If `html` is set, this is not required. Text to use within the panel content. If `html` is provided, the `text` option will be ignored.
+  - name: html
+    type: string
+    required: true
+    description: If `text` is set, this is not required. HTML to use within the panel content. If `html` is provided, the `text` option will be ignored.
+  - name: caller
+    type: nunjucks-block
+    required: false
+    description: Not strictly a parameter but [Nunjucks code convention](https://mozilla.github.io/nunjucks/templating.html#call). Using a `call` block enables you to call a macro with all the text inside the tag. This is helpful if you want to pass a lot of content into a macro. To use it, you will need to wrap the entire panel component in a `call` block.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the panel container.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the panel container.
+
+examples:
+  - name: default
+    options:
+      titleHtml: Application complete
+      text: 'Your reference number: HDJ2123F'
+  - name: custom heading level
+    options:
+      titleText: Application complete
+      headingLevel: 2
+      text: 'Your reference number: HDJ2123F'
+
+  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: title html as text
+    hidden: true
+    options:
+      titleText: Application <strong>not</strong> complete
+      text: Please complete form 1
+  - name: title html
+    hidden: true
+    options:
+      titleHtml: Application <strong>not</strong> complete
+      html: Please complete <strong>form 1</strong>
+  - name: body html as text
+    hidden: true
+    options:
+      titleText: Application complete
+      text: Your reference number<br><strong>HDJ2123F</strong>
+  - name: body html
+    hidden: true
+    options:
+      titleText: Application complete
+      html: Your reference number<br><strong>HDJ2123F</strong>
+  - name: classes
+    hidden: true
+    options:
+      titleText: Application complete
+      text: Your reference number is HDJ2123F
+      classes: extra-class one-more-class
+  - name: attributes
+    hidden: true
+    options:
+      titleText: Application complete
+      text: Your reference number is HDJ2123F
+      attributes:
+        first-attribute: foo
+        second-attribute: bar
+  - name: title with no body text
+    hidden: true
+    options:
+      titleText: Application complete

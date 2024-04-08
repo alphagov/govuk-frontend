@@ -1,0 +1,107 @@
+params:
+  - name: summaryText
+    type: string
+    required: true
+    description: If `summmaryHtml` is set, this is not required. Text to use within the summary element (the visible part of the details element). If `summaryHtml` is provided, the `summaryText` option will be ignored.
+  - name: summaryHtml
+    type: string
+    required: true
+    description: If `summmaryText` is set, this is not required. HTML to use within the summary element (the visible part of the details element). If `summaryHtml` is provided, the `summaryText` option will be ignored.
+  - name: text
+    type: string
+    required: true
+    description: If `html` is set, this is not required. Text to use within the disclosed part of the details element. If `html` is provided, the `text` option will be ignored.
+  - name: html
+    type: string
+    required: true
+    description: If `text` is set, this is not required. HTML to use within the disclosed part of the details element. If `html` is provided, the `text` option will be ignored.
+  - name: caller
+    type: nunjucks-block
+    required: false
+    description: Not strictly a parameter but [Nunjucks code convention](https://mozilla.github.io/nunjucks/templating.html#call). Using a `call` block enables you to call a macro with all the text inside the tag. This is helpful if you want to pass a lot of content into a macro. To use it, you will need to wrap the entire details component in a `call` block.
+  - name: id
+    type: string
+    required: false
+    description: ID to add to the details element.
+  - name: open
+    type: boolean
+    required: false
+    description: If `true`, details element will be expanded.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the `<details>` element.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the `<details>` element.
+
+examples:
+  - name: default
+    options:
+      summaryText: Help with nationality
+      text: We need to know your nationality so we can work out which elections
+        you’re entitled to vote in. If you can’t provide your nationality,
+        you’ll have to send copies of identity documents through the post.
+  - name: expanded
+    options:
+      id: help-with-nationality
+      summaryText: Help with nationality
+      text: We need to know your nationality so we can work out which elections
+        you’re entitled to vote in. If you can’t provide your nationality,
+        you’ll have to send copies of identity documents through the post.
+      open: true
+  - name: with html
+    options:
+      summaryText: Where to find your National Insurance Number
+      html: |
+        Your National Insurance number can be found on
+        <ul>
+          <li>your National Insurance card</li>
+          <li>your payslip</li>
+          <li>P60</li>
+          <li>benefits information</li>
+          <li>tax return</li>
+        </ul>
+
+  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: id
+    hidden: true
+    options:
+      id: my-details-element
+      summaryText: Expand this section
+      text: Here are some more details
+  - name: html as text
+    hidden: true
+    options:
+      summaryText: Expand this section
+      text: More about the greater than symbol (>)
+  - name: html
+    hidden: true
+    options:
+      summaryText: Expand this section
+      html: More about <b>bold text</b>
+  - name: summary html as text
+    hidden: true
+    options:
+      summaryText: The greater than symbol (>) is the best
+      text: Here are some more details
+  - name: summary html
+    hidden: true
+    options:
+      summaryHtml: Use <b>bold text</b> sparingly
+      text: Here are some more details
+  - name: classes
+    hidden: true
+    options:
+      classes: some-additional-class
+      text: Here are some more details
+      summaryText: Expand me
+  - name: attributes
+    hidden: true
+    options:
+      text: Here are some more details
+      summaryText: Expand me
+      attributes:
+        data-some-data-attribute: i-love-data
+        another-attribute: foo

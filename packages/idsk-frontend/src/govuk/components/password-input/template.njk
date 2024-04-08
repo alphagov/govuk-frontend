@@ -1,0 +1,92 @@
+{% from "../../macros/attributes.njk" import govukAttributes -%}
+{% from "../../macros/i18n.njk" import govukI18nAttributes -%}
+
+{% from "../button/macro.njk" import govukButton -%}
+{% from "../input/macro.njk" import govukInput -%}
+
+{% set attributesHtml -%}
+  {{- ' data-module="govuk-password-input"' | safe }}
+
+  {{- govukI18nAttributes({
+    key: 'show-password',
+    message: params.showPasswordText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'hide-password',
+    message: params.hidePasswordText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'show-password-aria-label',
+    message: params.showPasswordAriaLabelText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'hide-password-aria-label',
+    message: params.hidePasswordAriaLabelText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'password-shown-announcement',
+    message: params.passwordShownAnnouncementText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'password-hidden-announcement',
+    message: params.passwordHiddenAnnouncementText
+  }) -}}
+{%- endset -%}
+
+{#- Append form group attributes onto attributes set above #}
+{%- for name, value in params.formGroup.attributes %}
+  {% set attributesHtml = attributesHtml + " " + name | escape + '="' + value | escape + '"' %}
+{% endfor -%}
+
+{%- set buttonHtml %}
+{{ govukButton({
+  type: "button",
+  classes: "govuk-button--secondary govuk-password-input__toggle govuk-js-password-input-toggle" + (" " + params.button.classes if params.button.classes),
+  text: params.showPasswordText | default("Show"),
+  attributes: {
+    "aria-controls": params.id,
+    "aria-label": params.showPasswordAriaLabelText | default("Show password"),
+    "hidden": {
+      value: true,
+      optional: true
+    }
+  }
+}) | trim }}
+{% if params.formGroup.afterInput %}
+  {{- params.formGroup.afterInput.html | safe | trim if params.formGroup.afterInput.html else params.formGroup.afterInput.text }}
+{% endif -%}
+{% endset -%}
+
+{{ govukInput({
+  formGroup: {
+    classes: "govuk-password-input" + (" " + params.formGroup.classes if params.formGroup.classes),
+    attributes: attributesHtml,
+    beforeInput: params.formGroup.beforeInput,
+    afterInput: {
+      html: buttonHtml
+    }
+  },
+  inputWrapper: {
+    "classes": "govuk-password-input__wrapper"
+  },
+  label: params.label,
+  hint: params.hint,
+  errorMessage: params.errorMessage,
+  classes: "govuk-password-input__input govuk-js-password-input-input" + (" " + params.classes if params.classes),
+  errorMessage: params.errorMessage,
+  id: params.id,
+  name: params.name,
+  type: "password",
+  spellcheck: false,
+  autocapitalize: "none",
+  autocomplete: params.autocomplete if params.autocomplete else "current-password",
+  value: params.value,
+  disabled: params.disabled,
+  describedBy: params.describedBy,
+  attributes: params.attributes
+}) | trim }}

@@ -1,0 +1,61 @@
+params:
+  - name: text
+    type: string
+    required: false
+    description: Text to use within the back link component. If `html` is provided, the `text` option will be ignored. Defaults to `"Back"`.
+  - name: html
+    type: string
+    required: false
+    description: HTML to use within the back link component. If `html` is provided, the `text` option will be ignored. Defaults to `"Back"`.
+  - name: href
+    type: string
+    required: true
+    description: The value of the link's `href` attribute.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the anchor tag.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the anchor tag.
+
+examples:
+  - name: default
+    options:
+      href: '#'
+  - name: with custom text
+    options:
+      href: '#'
+      text: Back to home
+  - name: inverse
+    previewLayoutModifiers:
+      - inverse
+    options:
+      classes: govuk-back-link--inverse
+      href: '#'
+
+  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: classes
+    hidden: true
+    options:
+      classes: app-back-link--custom-class
+      href: '#'
+  - name: html as text
+    hidden: true
+    options:
+      text: <b>Home</b>
+      href: '#'
+  - name: html
+    hidden: true
+    options:
+      html: <b>Back</b>
+      href: '#'
+  - name: attributes
+    hidden: true
+    options:
+      href: '#'
+      html: <b>Back to home</b>
+      attributes:
+        data-test: attribute
+        aria-label: Back to home

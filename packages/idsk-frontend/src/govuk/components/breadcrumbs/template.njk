@@ -1,0 +1,30 @@
+{% from "../../macros/attributes.njk" import govukAttributes %}
+
+{#- Set classes for this component #}
+{%- set classNames = "govuk-breadcrumbs" -%}
+
+{% if params.classes %}
+  {% set classNames = classNames + " " + params.classes %}
+{% endif -%}
+
+{% if params.collapseOnMobile %}
+  {% set classNames = classNames + " govuk-breadcrumbs--collapse-on-mobile" %}
+{% endif -%}
+
+<div class="{{ classNames }}" {{- govukAttributes(params.attributes) }}>
+  <ol class="govuk-breadcrumbs__list">
+{% for item in params.items %}
+  {% if item.href %}
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="{{ item.href }}" {{- govukAttributes(item.attributes) }}>
+        {{- item.html | safe if item.html else item.text -}}
+      </a>
+    </li>
+  {% else %}
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">
+      {{- item.html | safe if item.html else item.text -}}
+    </li>
+  {% endif %}
+{% endfor %}
+  </ol>
+</div>

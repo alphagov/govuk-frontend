@@ -1,0 +1,89 @@
+@import "../button/index";
+
+@include govuk-exports("govuk/component/exit-this-page") {
+  $indicator-size: 0.75em;
+
+  .govuk-exit-this-page {
+    @include govuk-responsive-margin(8, "bottom");
+    position: sticky;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    @include govuk-media-query($from: tablet) {
+      display: inline-block;
+      right: 0;
+      left: auto;
+      width: auto;
+      float: right;
+    }
+  }
+
+  .govuk-exit-this-page__button {
+    margin-bottom: 0;
+  }
+
+  .govuk-exit-this-page__indicator {
+    @include govuk-responsive-padding(2);
+    display: none;
+    padding-bottom: 0;
+    color: inherit;
+    line-height: 0; // removes extra negative space below the indicators
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .govuk-exit-this-page__indicator--visible {
+    display: block;
+  }
+
+  .govuk-exit-this-page__indicator-light {
+    box-sizing: border-box;
+    display: inline-block;
+    width: $indicator-size;
+    height: $indicator-size;
+    margin: 0 0.125em;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 50%;
+    border-color: currentcolor;
+  }
+
+  .govuk-exit-this-page__indicator-light--on {
+    border-width: $indicator-size / 2;
+  }
+
+  @media only print {
+    .govuk-exit-this-page {
+      display: none;
+    }
+  }
+
+  .govuk-exit-this-page-overlay {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: govuk-colour("white");
+  }
+
+  // This class is added to the body when the Exit This Page button is activated
+  // in addition to the overlay to both block the entire screen and hide everything
+  // underneath it.
+  //
+  // We do this to ensure that users don't risk interacting with the page underneath
+  // the overlay between activating the button and navigating to the next page.
+  .govuk-exit-this-page-hide-content {
+    // stylelint-disable declaration-no-important
+    * {
+      display: none !important;
+    }
+
+    .govuk-exit-this-page-overlay {
+      display: block !important;
+    }
+  }
+}

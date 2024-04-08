@@ -1,0 +1,200 @@
+params:
+  - name: name
+    type: string
+    required: true
+    description: The name of the input, which is submitted with the form data.
+  - name: id
+    type: string
+    required: true
+    description: The ID of the input.
+  - name: value
+    type: string
+    required: false
+    description: Optional initial value of the input.
+  - name: disabled
+    type: boolean
+    required: false
+    description: If `true`, file input will be disabled.
+  - name: describedBy
+    type: string
+    required: false
+    description: One or more element IDs to add to the `aria-describedby` attribute, used to provide additional descriptive information for screenreader users.
+  - name: label
+    type: object
+    required: true
+    description: The label used by the file upload component.
+    isComponent: true
+  - name: hint
+    type: object
+    required: false
+    description: Can be used to add a hint to the file upload component.
+    isComponent: true
+  - name: errorMessage
+    type: object
+    required: false
+    description: Can be used to add an error message to the file upload component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.
+    isComponent: true
+  - name: formGroup
+    type: object
+    required: false
+    description: Additional options for the form group containing the file upload component.
+    params:
+      - name: classes
+        type: string
+        required: false
+        description: Classes to add to the form group (for example to show error state for the whole group).
+      - name: attributes
+        type: object
+        required: false
+        description: HTML attributes (for example data attributes) to add to the form group.
+      - name: beforeInput
+        type: object
+        required: false
+        description: Content to add before the input used by the file upload component.
+        params:
+          - name: text
+            type: string
+            required: true
+            description: Text to add before the input. If `html` is provided, the `text` option will be ignored.
+          - name: html
+            type: string
+            required: true
+            description: HTML to add before the input. If `html` is provided, the `text` option will be ignored.
+      - name: afterInput
+        type: object
+        required: false
+        description: Content to add after the input used by the file upload component.
+        params:
+          - name: text
+            type: string
+            required: true
+            description: Text to add after the input. If `html` is provided, the `text` option will be ignored.
+          - name: html
+            type: string
+            required: true
+            description: HTML to add after the input. If `html` is provided, the `text` option will be ignored.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the file upload component.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the file upload component.
+
+examples:
+  - name: default
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Upload a file
+  - name: with hint text
+    options:
+      id: file-upload-2
+      name: file-upload-2
+      label:
+        text: Upload your photo
+      hint:
+        text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
+  - name: with error message and hint
+    options:
+      id: file-upload-3
+      name: file-upload-3
+      label:
+        text: Upload a file
+      hint:
+        text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
+      errorMessage:
+        text: Error message goes here
+  - name: with value
+    options:
+      id: file-upload-4
+      name: file-upload-4
+      value: C:\fakepath\myphoto.jpg
+      label:
+        text: Upload a photo
+  - name: with label as page heading
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Upload a file
+        classes: govuk-label--l
+        isPageHeading: true
+  - name: with optional form-group classes
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Upload a file
+      formGroup:
+        classes: extra-class
+
+  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: attributes
+    hidden: true
+    options:
+      id: file-upload-attributes
+      name: file-upload-attributes
+      label:
+        text: Upload a file
+      attributes:
+        accept: .jpg, .jpeg, .png
+  - name: classes
+    hidden: true
+    options:
+      id: file-upload-classes
+      name: file-upload-classes
+      label:
+        text: Upload a file
+      classes: app-file-upload--custom-modifier
+  - name: with describedBy
+    hidden: true
+    options:
+      id: file-upload-describedby
+      name: file-upload-describedby
+      label:
+        text: Upload a file
+      describedBy: test-target-element
+  - name: with hint and describedBy
+    hidden: true
+    options:
+      id: file-upload-hint-describedby
+      name: file-upload-hint-describedby
+      label:
+        text: Upload a file
+      describedBy: test-target-element
+      hint:
+        text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
+  - name: error
+    hidden: true
+    options:
+      id: file-upload-with-error
+      name: file-upload-with-error
+      label:
+        text: Upload a file
+      errorMessage:
+        text: Error message
+  - name: with error and describedBy
+    hidden: true
+    options:
+      id: file-upload-error-describedby
+      name: file-upload-error-describedby
+      label:
+        text: Upload a file
+      describedBy: test-target-element
+      errorMessage:
+        text: Error message
+  - name: with error, describedBy and hint
+    hidden: true
+    options:
+      id: file-upload-error-describedby-hint
+      name: file-upload-error-describedby-hint
+      label:
+        text: Upload a file
+      describedBy: test-target-element
+      errorMessage:
+        text: Error message
+      hint:
+        text: hint

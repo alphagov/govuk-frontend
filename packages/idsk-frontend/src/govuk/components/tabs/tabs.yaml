@@ -1,0 +1,295 @@
+params:
+  - name: id
+    type: string
+    required: false
+    description: This is used for the main component and to compose the ID attribute for each item.
+  - name: idPrefix
+    type: string
+    required: false
+    description: Optional prefix. This is used to prefix the `id` attribute for each tab item and panel, separated by `-`.
+  - name: title
+    type: string
+    required: false
+    description: Title for the tabs table of contents.
+  - name: items
+    type: array
+    required: true
+    description: The individual tabs within the tabs component.
+    params:
+      - name: id
+        type: string
+        required: true
+        description: Specific ID attribute for the tab item. If omitted, then `idPrefix` string is required instead.
+      - name: label
+        type: string
+        required: true
+        description: The text label of a tab item.
+      - name: attributes
+        type: object
+        required: false
+        description: HTML attributes (for example data attributes) to add to the tab.
+      - name: panel
+        description: The contents of each tab within the tabs component. This is referenced as a panel.
+        type: object
+        required: true
+        params:
+          - name: text
+            type: string
+            required: true
+            description: If `html` is set, this is not required. Text to use within each tab panel. If `html` is provided, the `text` option will be ignored.
+          - name: html
+            type: string
+            required: true
+            description: If `text` is set, this is not required. HTML to use within each tab panel. If `html` is provided, the `text` option will be ignored.
+          - name: attributes
+            type: object
+            required: false
+            description: HTML attributes (for example data attributes) to add to the tab panel.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the tabs component.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the tabs component.
+
+examples:
+  - name: default
+    options:
+      items:
+        - label: Past day
+          id: past-day
+          panel:
+            html: |
+              <h2 class="govuk-heading-l">Past day</h2>
+              <table class="govuk-table">
+                <thead class="govuk-table__head">
+                  <tr class="govuk-table__row">
+                    <th class="govuk-table__header" scope="col">Case manager</th>
+                    <th class="govuk-table__header" scope="col">Cases opened</th>
+                    <th class="govuk-table__header" scope="col">Cases closed</th>
+                  </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">David Francis</td>
+                    <td class="govuk-table__cell">3</td>
+                    <td class="govuk-table__cell">0</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Paul Farmer</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">0</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Rita Patel</td>
+                    <td class="govuk-table__cell">2</td>
+                    <td class="govuk-table__cell">0</td>
+                  </tr>
+                </tbody>
+              </table>
+        - label: Past week
+          id: past-week
+          panel:
+            html: |
+              <h2 class="govuk-heading-l">Past week</h2>
+              <table class="govuk-table">
+                <thead class="govuk-table__head">
+                  <tr class="govuk-table__row">
+                    <th class="govuk-table__header" scope="col">Case manager</th>
+                    <th class="govuk-table__header" scope="col">Cases opened</th>
+                    <th class="govuk-table__header" scope="col">Cases closed</th>
+                  </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">David Francis</td>
+                    <td class="govuk-table__cell">24</td>
+                    <td class="govuk-table__cell">18</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Paul Farmer</td>
+                    <td class="govuk-table__cell">16</td>
+                    <td class="govuk-table__cell">20</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Rita Patel</td>
+                    <td class="govuk-table__cell">24</td>
+                    <td class="govuk-table__cell">27</td>
+                  </tr>
+                </tbody>
+              </table>
+        - label: Past month
+          id: past-month
+          panel:
+            html: |
+              <h2 class="govuk-heading-l">Past month</h2>
+              <table class="govuk-table">
+                <thead class="govuk-table__head">
+                  <tr class="govuk-table__row">
+                    <th class="govuk-table__header" scope="col">Case manager</th>
+                    <th class="govuk-table__header" scope="col">Cases opened</th>
+                    <th class="govuk-table__header" scope="col">Cases closed</th>
+                  </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">David Francis</td>
+                    <td class="govuk-table__cell">98</td>
+                    <td class="govuk-table__cell">95</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Paul Farmer</td>
+                    <td class="govuk-table__cell">122</td>
+                    <td class="govuk-table__cell">131</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Rita Patel</td>
+                    <td class="govuk-table__cell">126</td>
+                    <td class="govuk-table__cell">142</td>
+                  </tr>
+                </tbody>
+              </table>
+        - label: Past year
+          id: past-year
+          panel:
+            text: There is no data for this year yet, check back later
+
+  - name: tabs-with-anchor-in-panel
+    description: Ensure that anchors that are in tab panels work correctly
+    options:
+      items:
+        - label: Tab 1
+          id: tab-1
+          panel:
+            html: |
+              <h2 class="govuk-heading-l">Tab 1</h2>
+              <p class="govuk-body">Testing that when you click the anchor it moves to the anchor point successfully</p>
+              <p class="govuk-body"><a class="govuk-link" href="#anchor">Anchor</a></p>
+              <p class="govuk-body"><a id="anchor" tabindex="0">Anchor Point</a></p>
+        - label: Tab 2
+          id: tab-2
+          panel:
+            html: |
+              <h2 class="govuk-heading-l">Tab 2</h2>
+
+  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: classes
+    hidden: true
+    options:
+      classes: app-tabs--custom-modifier
+      items:
+        - label: Tab 1
+          id: tab-1
+          panel:
+            text: Information about tabs
+  - name: id
+    hidden: true
+    options:
+      id: my-tabs
+      items:
+        - label: Tab 1
+          id: tab-1
+          panel:
+            text: Information about tabs
+  - name: title
+    hidden: true
+    options:
+      title: Custom title for Contents
+      items:
+        - label: Tab 1
+          id: tab-1
+          panel:
+            text: Information about tabs
+  - name: attributes
+    hidden: true
+    options:
+      attributes:
+        data-attribute: my data value
+      items:
+        - label: Tab 1
+          id: tab-1
+          panel:
+            text: Information about tabs
+  - name: item with attributes
+    hidden: true
+    options:
+      items:
+        - id: tab-1
+          label: Tab 1
+          panel:
+            text: Information about tabs
+          attributes:
+            data-attribute: my-attribute
+            data-attribute-2: my-attribute-2
+  - name: panel with attributes
+    hidden: true
+    options:
+      items:
+        - id: tab-1
+          label: Tab 1
+          panel:
+            text: Panel text
+            attributes:
+              data-attribute: my-attribute
+              data-attribute-2: my-attribute-2
+  - name: no item list
+    hidden: true
+    options:
+      id: my-tabs
+      classes: app-tabs--custom-modifier
+  - name: empty item list
+    hidden: true
+    options:
+      items: []
+  - name: with falsey values
+    hidden: true
+    options:
+      items:
+        - label: Tab 1
+          id: tab-1
+          panel:
+            text: Panel 1 content
+        - null
+        - false
+        - ''
+        - label: Tab 2
+          id: tab-2
+          panel:
+            text: Panel 2 content
+  - name: idPrefix
+    hidden: true
+    options:
+      idPrefix: custom
+      items:
+        - label: Tab 1
+          panel:
+            text: Panel 1 content
+        - label: Tab 2
+          panel:
+            text: Panel 2 content
+  - name: html as text
+    hidden: true
+    options:
+      items:
+        - label: Tab 1
+          id: tab-1
+          panel:
+            text: <p>Panel 1 content</p>
+        - label: Tab 2
+          id: tab-2
+          panel:
+            text: <p>Panel 2 content</p>
+  - name: html
+    hidden: true
+    options:
+      items:
+        - label: Tab 1
+          id: tab-1
+          panel:
+            html: <p>Panel 1 content</p>
+        - label: Tab 2
+          id: tab-2
+          panel:
+            html: <p>Panel 2 content</p>

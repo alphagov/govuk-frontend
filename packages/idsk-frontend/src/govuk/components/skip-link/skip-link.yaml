@@ -1,0 +1,69 @@
+params:
+  - name: text
+    type: string
+    required: true
+    description: If `html` is set, this is not required. Text to use within the skip link component. If `html` is provided, the `text` option will be ignored.
+  - name: html
+    type: string
+    required: true
+    description: If `text` is set, this is not required. HTML to use within the skip link component. If `html` is provided, the `text` option will be ignored.
+  - name: href
+    type: string
+    required: false
+    description: The value of the skip link’s `href` attribute. Defaults to `"#content"` if you do not provide a value.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the skip link.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the skip link.
+
+examples:
+  - name: default
+    options:
+      text: Skip to main content
+      href: '#test-target-element'
+
+  - name: with focus
+    description: Simulate triggering the :focus CSS pseudo-class, not available in the production build.
+    options:
+      classes: :focus
+      text: Skip to main content
+      href: '#test-target-element'
+
+  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: no href
+    hidden: true
+    options:
+      text: Skip to main content
+  - name: custom href
+    hidden: true
+    options:
+      text: Skip to custom content
+      href: '#custom'
+  - name: custom text
+    hidden: true
+    options:
+      text: skip
+  - name: html as text
+    hidden: true
+    options:
+      text: <p>skip</p>
+  - name: html
+    hidden: true
+    options:
+      html: <p>skip</p>
+  - name: classes
+    hidden: true
+    options:
+      text: Skip link
+      classes: app-skip-link--custom-class
+  - name: attributes
+    hidden: true
+    options:
+      text: Skip link
+      attributes:
+        data-test: attribute
+        aria-label: Skip to content
