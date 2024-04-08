@@ -9,7 +9,7 @@
       "path": "./packages/govuk-frontend-review/tsconfig.json"
     },
     {
-      "path": "./packages/govuk-frontend/tsconfig.json"
+      "path": "./packages/idsk-frontend/tsconfig.json"
     },
     {
       "path": "./shared/config/tsconfig.json"
