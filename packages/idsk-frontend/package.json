@@ -1,5 +1,5 @@
 {
-  "name": "govuk-frontend",
+  "name": "idsk-frontend",
   "description": "GOV.UK Frontend contains the code you need to start building a user interface for government platforms and services.",
   "version": "5.2.0",
   "main": "dist/govuk/all.bundle.js",
