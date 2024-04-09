@@ -1,6 +1,6 @@
 {% extends "govuk/template.njk" %}
 
-{% set htmlClasses = 'govuk-template--dark' %}
+{% set htmlClasses = ('govuk-theme--' + govukFrontendTheme) if govukFrontendTheme %}
 
 {% block head %}
   <link rel="stylesheet" href="/stylesheets/app.min.css">

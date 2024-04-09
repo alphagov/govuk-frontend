@@ -62,6 +62,7 @@ export default async () => {
   app.set('query parser', 'simple')
 
   // Set up middleware
+  app.use(middleware.theme)
   app.use('/docs', middleware.docs)
   app.use(middleware.assets)
   app.use(middleware.request)

@@ -46,21 +46,4 @@
     // Set the overall body of the page back to the typical background colour.
     background-color: var(--govuk-body-background-colour);
   }
-
-
-  @include govuk-media-query($media-type: screen) {
-    .govuk-template--dark {
-      color-scheme: dark;
-
-      --govuk-canvas-background-colour: #333;
-      --govuk-hover-colour: #333;
-      --govuk-body-background-colour: #222;
-      --govuk-text-colour: #fff;
-      --govuk-secondary-text-colour: #ccc;
-      --govuk-link-colour: lightblue;
-      --govuk-link-visited-colour: lightpink;
-      --govuk-link-hover-colour: aqua;
-      --govuk-link-active-colour: #fff;
-    }
-  }
 }

@@ -1,0 +1,69 @@
+// This would likely go in a proper 'settings' file
+// and default to `false`.
+$govuk-theme-from-system: true !default;
+
+@mixin _govuk-theme-light() {
+  color-scheme: light;
+
+  --govuk-brand-colour: #{$govuk-brand-colour};
+  --govuk-text-colour: #{$govuk-text-colour};
+  --govuk-canvas-background-colour: #{$govuk-canvas-background-colour};
+  --govuk-body-background-colour: #{$govuk-body-background-colour};
+  --govuk-print-text-colour: #{$govuk-print-text-colour};
+  --govuk-secondary-text-colour: #{$govuk-secondary-text-colour};
+  --govuk-focus-colour: #{$govuk-focus-colour};
+  --govuk-focus-text-colour: #{$govuk-focus-text-colour};
+  --govuk-error-colour: #{$govuk-error-colour};
+  --govuk-success-colour: #{$govuk-success-colour};
+  --govuk-border-colour: #{$govuk-border-colour};
+  --govuk-input-border-colour: #{$govuk-input-border-colour};
+  --govuk-hover-colour: #{$govuk-hover-colour};
+  --govuk-link-colour: #{$govuk-link-colour};
+  --govuk-link-visited-colour: #{$govuk-link-visited-colour};
+  --govuk-link-hover-colour: #{$govuk-link-hover-colour};
+  --govuk-link-active-colour: #{$govuk-link-active-colour};
+}
+
+@mixin _govuk-theme-dark() {
+  @supports (color-scheme: dark) {
+    color-scheme: dark;
+
+    --govuk-canvas-background-colour: #333333;
+    --govuk-body-background-colour: #222222;
+    --govuk-text-colour: #ffffff;
+    --govuk-secondary-text-colour: #cccccc;
+    --govuk-link-colour: #add8e6;
+    --govuk-link-visited-colour: #ffb6c1;
+    --govuk-link-hover-colour: #00ffff;
+    --govuk-link-active-colour: #ffffff;
+  }
+}
+
+@include govuk-exports("govuk/core/theme") {
+  :root {
+    @include _govuk-theme-light;
+
+    @if $govuk-theme-from-system {
+      @include govuk-media-query($media-type: screen, $and: "(prefers-color-scheme: dark)") {
+        &:not(.govuk-theme--light) {
+          @include _govuk-theme-dark;
+        }
+      }
+    }
+  }
+
+  // Prevent dark theme to leak into print if some variables don't get overridden
+  // reducing the risk of printing big areas of black
+  @include govuk-media-query($media-type: screen) {
+    .govuk-theme--dark {
+      @include _govuk-theme-dark;
+    }
+  }
+
+  @include govuk-media-query($media-type: print) {
+    :root {
+      --govuk-text-colour: #{$govuk-print-text-colour};
+      --govuk-font-family: #{$govuk-font-family-print};
+    }
+  }
+}
