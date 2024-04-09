@@ -3,8 +3,7 @@
 
   %govuk-heading-xl {
     @include govuk-text-colour;
-    @include govuk-font($size: 48, $weight: bold);
-
+    @include govuk-font($size: 48, $weight: black);
     display: block;
 
     margin-top: 0;
@@ -45,11 +44,12 @@
 
   %govuk-heading-s {
     @include govuk-text-colour;
-    @include govuk-font($size: 19, $weight: bold);
+    @include govuk-font($size: 20, $weight: bold);
 
     display: block;
 
     margin-top: 0;
+    letter-spacing: 0.15px;
     @include govuk-responsive-margin(4, "bottom");
   }
 

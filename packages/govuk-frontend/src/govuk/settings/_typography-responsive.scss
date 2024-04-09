@@ -111,23 +111,13 @@ $_govuk-typography-scale-legacy: (
       line-height: 1.15
     )
   ),
-  20: (
-    null: (
-      font-size: 19px,
-      line-height: 24px
-    ),
-    tablet: (
-      font-size: 20px,
-      line-height: 26px
-    )
-  ),
   19: (
     null: (
-      font-size: 34px,
-      line-height: 24px
+      font-size: 16px,
+      line-height: 20px
     ),
     tablet: (
-      font-size: 34px,
+      font-size: 19px,
       line-height: 25px
     ),
     print: (
@@ -198,12 +188,12 @@ $_govuk-typography-scale-modern: (
   ),
   48: (
     null: (
-      font-size: 36px,
-      line-height: 45px
+      font-size: 32px,
+      line-height: 35px
     ),
     tablet: (
       font-size: 48px,
-      line-height: 55px
+      line-height: 50px
     ),
     print: (
       font-size: 32pt,
@@ -212,12 +202,12 @@ $_govuk-typography-scale-modern: (
   ),
   36: (
     null: (
-      font-size: 24px,
-      line-height: 35px
+      font-size: 27px,
+      line-height: 30px
     ),
     tablet: (
       font-size: 36px,
-      line-height: 45px
+      line-height: 40px
     ),
     print: (
       font-size: 24pt,
@@ -244,37 +234,25 @@ $_govuk-typography-scale-modern: (
     // Bump up mobile size from 18/20 to 21/25
     null:
       (
-        font-size: 20px,
-        line-height: 26px
+        font-size: 21px,
+        line-height: 25px
       ),
     tablet: (
       font-size: 24px,
-      line-height: 35px
+      line-height: 30px
     ),
     print: (
       font-size: 18pt,
       line-height: 1.15
     )
   ),
-  20: (
-    null: (
-      font-size: 19px,
-      line-height: 24px
-    ),
-    tablet: (
-      font-size: 20px,
-      line-height: 26px
-    )
-  ),
   19: (
-    null: (
-      font-size: 16px,
-      line-height: 24px
-    ),
-    tablet: (
-      font-size: 19px,
-      line-height: 25px
-    ),
+    // Stay at 19/25 at all sizes
+    null:
+      (
+        font-size: 19px,
+        line-height: 25px
+      ),
     print: (
       font-size: 14pt,
       line-height: 1.15
@@ -284,15 +262,9 @@ $_govuk-typography-scale-modern: (
     // Stay at 16/20 at all sizes
     null:
       (
-        font-size: 14px,
-        line-height: 20px,
-        letter-spacing: 0.1px
+        font-size: 16px,
+        line-height: 20px
       ),
-    tablet: (
-      font-size: 16px,
-      line-height: 24px,
-      letter-spacing: 0.5px
-    ),
     print: (
       font-size: 14pt,
       line-height: 1.2
