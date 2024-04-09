@@ -1,6 +1,6 @@
 {% extends "layouts/layout.njk" %}
 
-{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{#{% from "../../../../packages/govuk-frontend/src/govuk/components/summary-list/macro.njk" import govukSummaryList %}#}
 
 {% block content %}
   <h1 class="govuk-heading-xl">
@@ -117,29 +117,29 @@
         <a href="/docs/stats/{{ bundleKey }}.html" class="govuk-body-s govuk-link govuk-!-font-weight-regular"><code>{{ bundleKey }}.mjs</code></a>
       {% endset %}
 
-      {{ govukSummaryList({
-        classes: "govuk-summary-list--no-border",
-        rows: [
-          {
-            key: {
-              text: "Entry file name"
-            },
-            value: {
-              html: bundleHtml
-            }
-          },
-          {
-            key: {
-              text: "Total file size"
-            },
-            value: {
-              html:
-                bundleSize.bundled + " (bundled) <br>" +
-                bundleSize.minified + " (minified)"
-            }
-          }
-        ]
-      }) }}
+{#      {{ govukSummaryList({#}
+{#        classes: "govuk-summary-list--no-border",#}
+{#        rows: [#}
+{#          {#}
+{#            key: {#}
+{#              text: "Entry file name"#}
+{#            },#}
+{#            value: {#}
+{#              html: bundleHtml#}
+{#            }#}
+{#          },#}
+{#          {#}
+{#            key: {#}
+{#              text: "Total file size"#}
+{#            },#}
+{#            value: {#}
+{#              html:#}
+{#                bundleSize.bundled + " (bundled) <br>" +#}
+{#                bundleSize.minified + " (minified)"#}
+{#            }#}
+{#          }#}
+{#        ]#}
+{#      }) }}#}
 
       {% for componentName in componentNamesWithJavaScript | sort %}
         {% set componentKey = "components/" + componentName + "/" + componentName %}

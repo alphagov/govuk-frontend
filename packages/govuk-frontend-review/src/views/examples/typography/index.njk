@@ -1,13 +1,13 @@
 {% extends "layouts/examples.njk" %}
 
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-{% from "govuk/components/table/macro.njk" import govukTable %}
+{#{% from "govuk/components/back-link/macro.njk" import govukBackLink %}#}
+{#{% from "govuk/components/table/macro.njk" import govukTable %}#}
 
-{% block beforeContent %}
-  {{ govukBackLink({
-    href: "/"
-  }) }}
-{% endblock %}
+{#{% block beforeContent %}#}
+{#  {{ govukBackLink({#}
+{#    href: "/"#}
+{#  }) }}#}
+{#{% endblock %}#}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -263,43 +263,43 @@
 
         <p class="govuk-body-m">Details of how to pay and where to send your application are on each form.</p>
 
-        {{ govukTable({
-          "classes": "govuk-!-font-size-16",
-          "head": [
-            {
-              "text": "Who is making the request"
-            },
-            {
-              "text": "Form"
-            }
-          ],
-          "rows": [
-            [
-              {
-                "text": "An individual"
-              },
-              {
-                "html": "<a href=\"/government/publications/v888-request-by-an-individual-for-information-about-a-vehicle\" class=\"govuk-link\">Form V888</a>"
-              }
-            ],
-            [
-              {
-                "text": "A company"
-              },
-              {
-                "html": "<a href=\"/government/publications/v8882-request-by-a-company-for-information-about-a-vehicle\" class=\"govuk-link\">Form V8882</a>"
-              }
-            ],
-            [
-              {
-                "text": "A company that issues parking or trespass charge notices"
-              },
-              {
-                "html": "<a href=\"/government/publications/v8883-request-for-information-for-those-who-issue-a-parking-charge-notice\" class=\"govuk-link\">Form V8883</a>"
-              }
-            ]
-          ]
-        }) }}
+{#        {{ govukTable({#}
+{#          "classes": "govuk-!-font-size-16",#}
+{#          "head": [#}
+{#            {#}
+{#              "text": "Who is making the request"#}
+{#            },#}
+{#            {#}
+{#              "text": "Form"#}
+{#            }#}
+{#          ],#}
+{#          "rows": [#}
+{#            [#}
+{#              {#}
+{#                "text": "An individual"#}
+{#              },#}
+{#              {#}
+{#                "html": "<a href=\"/government/publications/v888-request-by-an-individual-for-information-about-a-vehicle\" class=\"govuk-link\">Form V888</a>"#}
+{#              }#}
+{#            ],#}
+{#            [#}
+{#              {#}
+{#                "text": "A company"#}
+{#              },#}
+{#              {#}
+{#                "html": "<a href=\"/government/publications/v8882-request-by-a-company-for-information-about-a-vehicle\" class=\"govuk-link\">Form V8882</a>"#}
+{#              }#}
+{#            ],#}
+{#            [#}
+{#              {#}
+{#                "text": "A company that issues parking or trespass charge notices"#}
+{#              },#}
+{#              {#}
+{#                "html": "<a href=\"/government/publications/v8883-request-for-information-for-those-who-issue-a-parking-charge-notice\" class=\"govuk-link\">Form V8883</a>"#}
+{#              }#}
+{#            ]#}
+{#          ]#}
+{#        }) }}#}
 
         <p class="govuk-body-m">You can download further information on <a href="/government/publications/giving-people-information-from-our-vehicle-record" class="govuk-link">requesting information from <abbr title="Driver and Vehicle Licensing Agency">DVLA</abbr></a>.</p>
 
@@ -561,48 +561,48 @@
 
         <h3 class="govuk-heading-m">Table with visually hidden text</h3>
 
-        {{ govukTable({
-          caption: "2019",
-          captionClasses: "govuk-!-margin-bottom-4",
-          head: [
-            {
-              text: "Date",
-              classes: "govuk-visually-hidden"
-            },
-            {
-              text: "Day",
-              classes: "govuk-visually-hidden"
-            },
-            {
-              text: "Name",
-              classes: "govuk-visually-hidden"
-            }
-          ],
-          rows: [
-            [
-              {
-                text: "19 April"
-              },
-              {
-                text: "Friday"
-              },
-              {
-                text: "Good Friday"
-              }
-            ],
-            [
-              {
-                text: "22 April"
-              },
-              {
-                text: "Monday"
-              },
-              {
-                text: "Easter Monday"
-              }
-            ]
-          ]
-        }) }}
+{#        {{ govukTable({#}
+{#          caption: "2019",#}
+{#          captionClasses: "govuk-!-margin-bottom-4",#}
+{#          head: [#}
+{#            {#}
+{#              text: "Date",#}
+{#              classes: "govuk-visually-hidden"#}
+{#            },#}
+{#            {#}
+{#              text: "Day",#}
+{#              classes: "govuk-visually-hidden"#}
+{#            },#}
+{#            {#}
+{#              text: "Name",#}
+{#              classes: "govuk-visually-hidden"#}
+{#            }#}
+{#          ],#}
+{#          rows: [#}
+{#            [#}
+{#              {#}
+{#                text: "19 April"#}
+{#              },#}
+{#              {#}
+{#                text: "Friday"#}
+{#              },#}
+{#              {#}
+{#                text: "Good Friday"#}
+{#              }#}
+{#            ],#}
+{#            [#}
+{#              {#}
+{#                text: "22 April"#}
+{#              },#}
+{#              {#}
+{#                text: "Monday"#}
+{#              },#}
+{#              {#}
+{#                text: "Easter Monday"#}
+{#              }#}
+{#            ]#}
+{#          ]#}
+{#        }) }}#}
       </section>
     </div>
   </div>

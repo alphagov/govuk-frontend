@@ -1,8 +1,9 @@
 {% from "../../macros/attributes.njk" import govukAttributes %}
 {% from "../error-message/macro.njk" import govukErrorMessage %}
-{% from "../fieldset/macro.njk" import govukFieldset %}
-{% from "../hint/macro.njk" import govukHint %}
-{% from "../label/macro.njk" import govukLabel %}
+{# TODO #}
+{#{% from "../fieldset/macro.njk" import govukFieldset %}#}
+{#{% from "../hint/macro.njk" import govukHint %}#}
+{#{% from "../label/macro.njk" import govukLabel %}#}
 
 {#- If an id 'prefix' is not passed, fall back to using the name attribute
   instead. We need this for error messages and hints as well -#}
@@ -33,21 +34,21 @@
         {%- if item.conditional.html %} data-aria-controls="{{ conditionalId }}"{% endif -%}
         {%- if hasHint %} aria-describedby="{{ itemHintId }}"{% endif -%}
         {{- govukAttributes(item.attributes) }}>
-      {{ govukLabel({
-        html: item.html,
-        text: item.text,
-        classes: 'govuk-radios__label' + (' ' + item.label.classes if item.label.classes),
-        attributes: item.label.attributes,
-        for: itemId
-      }) | trim | indent(6) }}
+{#      {{ govukLabel({#}
+{#        html: item.html,#}
+{#        text: item.text,#}
+{#        classes: 'govuk-radios__label' + (' ' + item.label.classes if item.label.classes),#}
+{#        attributes: item.label.attributes,#}
+{#        for: itemId#}
+{#      }) | trim | indent(6) }}#}
       {% if hasHint %}
-      {{ govukHint({
-        id: itemHintId,
-        classes: 'govuk-radios__hint' + (' ' + item.hint.classes if item.hint.classes),
-        attributes: item.hint.attributes,
-        html: item.hint.html,
-        text: item.hint.text
-      }) | trim | indent(6) }}
+{#      {{ govukHint({#}
+{#        id: itemHintId,#}
+{#        classes: 'govuk-radios__hint' + (' ' + item.hint.classes if item.hint.classes),#}
+{#        attributes: item.hint.attributes,#}
+{#        html: item.hint.html,#}
+{#        text: item.hint.text#}
+{#      }) | trim | indent(6) }}#}
       {% endif %}
     </div>
     {% if item.conditional.html %}
@@ -63,13 +64,13 @@
 {% if params.hint %}
   {% set hintId = idPrefix + '-hint' %}
   {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
-  {{ govukHint({
-    id: hintId,
-    classes: params.hint.classes,
-    attributes: params.hint.attributes,
-    html: params.hint.html,
-    text: params.hint.text
-  }) | trim | indent(2) }}
+{#  {{ govukHint({#}
+{#    id: hintId,#}
+{#    classes: params.hint.classes,#}
+{#    attributes: params.hint.attributes,#}
+{#    html: params.hint.html,#}
+{#    text: params.hint.text#}
+{#  }) | trim | indent(2) }}#}
 {% endif %}
 {% if params.errorMessage %}
   {% set errorId = idPrefix + '-error' %}
@@ -102,13 +103,13 @@
 <div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}"
   {{- govukAttributes(params.formGroup.attributes) }}>
 {% if hasFieldset %}
-  {{ govukFieldset({
-    describedBy: describedBy,
-    classes: params.fieldset.classes,
-    attributes: params.fieldset.attributes,
-    legend: params.fieldset.legend,
-    html: innerHtml | trim
-  }) | trim | indent(2) }}
+{#  {{ govukFieldset({#}
+{#    describedBy: describedBy,#}
+{#    classes: params.fieldset.classes,#}
+{#    attributes: params.fieldset.attributes,#}
+{#    legend: params.fieldset.legend,#}
+{#    html: innerHtml | trim#}
+{#  }) | trim | indent(2) }}#}
 {% else %}
   {{ innerHtml | safe | trim }}
 {% endif %}
