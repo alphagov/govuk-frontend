@@ -299,6 +299,21 @@ examples:
         - text: Navigation item 2
         - text: Navigation item 3
 
+  - name: kitchen sink
+    options:
+      serviceName: Service Name
+      serviceUrl: '/components/header'
+      productName: Product name
+      oneLogin: true
+      navigation:
+        - href: '#1'
+          text: Navigation item 1
+          active: true
+        - href: '#2'
+          text: Navigation item 2
+        - href: '#3'
+          text: Navigation item 3
+
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: attributes
     hidden: true
