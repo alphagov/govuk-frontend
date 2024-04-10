@@ -122,6 +122,11 @@ examples:
     options:
       serviceName: Service Name
 
+  - name: with long service name
+    options:
+      serviceName: Lorem ipsum dolor sit amet consectetur adipiscing elit nunc quis tortor porttitor
+      serviceUrl: '/components/header'
+
   - name: with navigation
     options:
       navigation:
@@ -230,6 +235,21 @@ examples:
           text: Visas and immigration
         - href: '/browse/working'
           text: Working, jobs and pensions
+
+  - name: with long service name and navigation
+    options:
+      serviceName: Lorem ipsum dolor sit amet consectetur adipiscing elit nunc quis tortor porttitor
+      serviceUrl: '/components/header'
+      navigation:
+        - href: '#1'
+          text: Navigation item 1
+          active: true
+        - href: '#2'
+          text: Navigation item 2
+        - href: '#3'
+          text: Navigation item 3
+        - href: '#4'
+          text: Navigation item 4
 
   - name: with product name
     options:

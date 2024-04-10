@@ -300,6 +300,8 @@
   }
 
   .govuk-service-header__container {
+    display: flex;
+    justify-content: space-between;
     padding-top: govuk-spacing(1);
 
     @include govuk-media-query($until: tablet) {
@@ -307,7 +309,6 @@
     }
 
     @include govuk-media-query($from: tablet) {
-      display: flex;
       flex-wrap: wrap;
     }
   }
@@ -356,12 +357,13 @@
   .govuk-service-header__toggle {
     @include govuk-font($size: 19, $weight: bold);
     display: inline-flex;
-    margin: 0;
+    // Hacky positioning for now, this could probably be done with flexbox or something
     margin-top: 5px;
+    margin-right: 0;
+    margin-left: auto;
     padding: 0;
 
-    // Hacky positioning for now, this could probably be done with flexbox or something
-    float: right;
+    flex-shrink: 0;
     border: 0;
     color: $govuk-link-colour;
     background: none;
