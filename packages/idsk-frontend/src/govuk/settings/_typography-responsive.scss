@@ -123,12 +123,12 @@ $_govuk-typography-scale-legacy: (
   ),
   19: (
     null: (
-      font-size: 34px,
+      font-size: 36px,
       line-height: 24px
     ),
     tablet: (
-      font-size: 34px,
-      line-height: 25px
+      font-size: 19px,
+      line-height: 28px
     ),
     print: (
       font-size: 14pt,
@@ -273,7 +273,7 @@ $_govuk-typography-scale-modern: (
     ),
     tablet: (
       font-size: 19px,
-      line-height: 25px
+      line-height: 28px
     ),
     print: (
       font-size: 14pt,

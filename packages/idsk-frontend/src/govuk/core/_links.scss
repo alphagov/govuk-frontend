@@ -9,6 +9,52 @@
     @extend %govuk-link;
   }
 
+  .idsk-link-l {
+    @extend %govuk-link;
+    font-size: 19px;
+    letter-spacing: 0.5px;
+    line-height: 28px;
+
+    @media (min-width: 40.0625em) {
+      font-size: 24px;
+      line-height: 36px;
+    }
+  }
+
+  .idsk-link-m {
+    @extend %govuk-link;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    line-height: 28px;
+
+    @media (min-width: 40.0625em) {
+      font-size: 19px;
+    }
+  }
+
+  .idsk-link-s {
+    @extend %govuk-link;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    line-height: 20px;
+
+    @media (min-width: 40.0625em) {
+      font-size: 16px;
+      letter-spacing: 0.1px;
+      line-height: 28px;
+    }
+  }
+
+  .idsk-link-caption {
+    @extend %govuk-link;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 16px;
+    @media (max-width: 40.0625em) {
+      letter-spacing: 0.4px;
+    }
+  }
+
   // Variant classes should always be used in conjunction with the .govuk-link
   // class, so we do not need the common link styles as they will be inherited.
 

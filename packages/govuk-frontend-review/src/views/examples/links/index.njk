@@ -1,12 +1,12 @@
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{#{% from "govuk/components/back-link/macro.njk" import govukBackLink %}#}
 
 {% extends "layouts/examples.njk" %}
 
-{% block beforeContent %}
-  {{ govukBackLink({
-    href: "/"
-  }) }}
-{% endblock %}
+{#{% block beforeContent %}#}
+{#  {{ govukBackLink({#}
+{#    href: "/"#}
+{#  }) }}#}
+{#{% endblock %}#}
 
 {% block content %}
 
@@ -49,6 +49,18 @@
       </p>
 
     {% for variant_description, variant_class in variants %}
+
+      <section class="govuk-!-margin-top-8">
+        <h2 class="govuk-heading-l">Hypertextové linky IDSK</h2>
+
+        <p><a href="#" class="idsk-link-l">Link L</a></p>
+        <p><a href="#" class="idsk-link-l font-bold">Link L Bold</a></p>
+        <p><a href="#" class="idsk-link-m">Link M</a></p>
+        <p><a href="#" class="idsk-link-m font-bold">Link M bold</a></p>
+        <p><a href="#" class="govuk-link">Link S</a></p>
+        <p><a href="#" class="idsk-link-s font-bold">Link S Bold</a></p>
+        <p><a href="#" class="idsk-link-caption">Link Caption</a></p>
+      </section>
 
       <section class="govuk-!-margin-top-8"{% if variant_class == "govuk-link--inverse"%} style="background: #1d70b8; padding: 15px; margin: -15px;"{% endif %}>
         <h2 class="govuk-heading-l"{% if variant_class == "govuk-link--inverse"%} style="color: #fff;"{% endif %}>{{ variant_description }}</h2>
