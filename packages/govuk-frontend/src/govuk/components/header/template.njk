@@ -85,6 +85,22 @@
       </nav>
       {% endif %}
 
+      {# Search form #}
+      {% if params.search %}
+      <form class="app-search" method="{{ params.search.method | default('get', true) }}" action="{{ params.search.action | default('/', true) }}">
+        <label>
+          <span class="govuk-visually-hidden">{{ params.search.labelText }}</span>
+          <input class="govuk-input" type="search" name="{{ params.search.name }}" placeholder="{{ params.search.labelText }}">
+        </label>
+
+        {% if params.search %}
+          <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+            Go
+          </button>
+        {% endif %}
+      </form>
+      {% endif %}
+
     </div>
   </div>
 

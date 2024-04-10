@@ -418,4 +418,40 @@
       border-left: 0;
     }
   }
+
+  // Search
+  // Only for examples
+  .app-search {
+    display: flex;
+
+    // If the search is the last thing on the row, it doesn't need the bottom margin
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include govuk-media-query($until: tablet) {
+      margin-top: govuk-spacing(2);
+    }
+
+    @include govuk-media-query($from: tablet) {
+      margin-bottom: 0;
+    }
+
+    // TEMPORARY HACKY CODE
+    label {
+      flex-grow: 1;
+    }
+
+    // MORE TEMPORARY HACKY CODE
+    .govuk-input {
+      border-color: govuk-colour("white");
+    }
+
+    // EVEN MORE TEMPORARY HACKY CODE
+    .govuk-button {
+      width: auto;
+      margin-bottom: 0;
+      box-shadow: none;
+    }
+  }
 }

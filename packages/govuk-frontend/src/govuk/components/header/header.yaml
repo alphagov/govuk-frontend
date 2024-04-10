@@ -75,7 +75,11 @@ params:
   - name: oneLogin
     type: boolean
     required: false
-    description: Enable or disable GOV.UK One Login functionality. Defaults to false.
+    description: Enable or disable GOV.UK One Login functionality.
+  - name: search
+    type: boolean
+    required: false
+    description: Enable or disable example search box.
 
 previewLayout: full-width
 accessibilityCriteria: |
@@ -111,6 +115,11 @@ examples:
     description: Legacy header with Queen Elizabeth II's crown.
     options:
       useTudorCrown: false
+
+  - name: with search
+    description: Example of what a search box might look like
+    options:
+      search: true
 
   - name: with service name
     description: If your service is more than a few pages long, you can help users understand where they are by adding the service name.
