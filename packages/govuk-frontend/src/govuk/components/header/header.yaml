@@ -72,6 +72,10 @@ params:
     type: boolean
     required: false
     description: Deprecated. If `true`, uses the Tudor crown from King Charles III's royal cypher. Otherwise, uses the St. Edward's crown. Default is `true`.
+  - name: oneLogin
+    type: boolean
+    required: false
+    description: Enable or disable GOV.UK One Login functionality. Defaults to false.
 
 previewLayout: full-width
 accessibilityCriteria: |
@@ -97,6 +101,11 @@ examples:
   - name: default
     description: The standard header as used on information pages on GOV.UK
     options: {}
+
+  - name: with GOV.UK One Login
+    description: The standard header and GOV.UK One Login functionality
+    options:
+      oneLogin: true
 
   - name: with St Edward's crown
     description: Legacy header with Queen Elizabeth II's crown.
@@ -232,6 +241,7 @@ examples:
       containerClasses: govuk-header__container--full-width
       navigationClasses: govuk-header__navigation--end
       productName: Product Name
+      oneLogin: true
 
   - name: full width with navigation
     options:

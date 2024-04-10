@@ -1,6 +1,7 @@
 {% from "../../macros/attributes.njk" import govukAttributes %}
 
 {%- set menuButtonText = params.menuButtonText | default("Menu", true) -%}
+{% if (params.oneLogin) %}
 {%- set oneLoginLink = params.oneLogin.accountLink | default("https://home.account.gov.uk/", true) -%}
 {%- set signOutLink = params.oneLogin.signOutLink | default("https://home.account.gov.uk/sign-out", true) -%}
 {%- set oneLoginMenuButtonText = params.oneLogin.menuButtonText | default("GOV.UK One Login menu", true) -%}
@@ -17,6 +18,7 @@
     </svg>
   </span>
 {%- endmacro -%}
+{% endif %}
 
 <header data-module="govuk-header">
   <div class="govuk-header {%- if params.classes %} {{ classes }}{% endif %}"
@@ -53,6 +55,7 @@
         </a>
       </div>
 
+      {% if (params.oneLogin) %}
       {# One Login mobile menu toggle #}
       <button type="button"
         class="govuk-header__one-login-toggle govuk-js-one-login-toggle"
@@ -80,6 +83,7 @@
           </li>
         </ul>
       </nav>
+      {% endif %}
 
     </div>
   </div>
