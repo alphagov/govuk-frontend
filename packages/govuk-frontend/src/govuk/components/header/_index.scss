@@ -316,6 +316,14 @@
     }
   }
 
+  .govuk-service-header__link,
+  .govuk-service-header__navigation-text {
+    @include govuk-media-query($from: tablet) {
+      display: inline-block;
+      padding: govuk-spacing(3) 0;
+    }
+  }
+
   .govuk-service-header__link {
     @include govuk-link-common;
     @include govuk-link-style-default;
@@ -326,9 +334,6 @@
     }
 
     @include govuk-media-query($from: tablet) {
-      display: inline-block;
-      padding: govuk-spacing(3) 0;
-
       &:focus {
         box-shadow:
           0 (-(govuk-spacing(1))) $govuk-focus-colour,
@@ -393,6 +398,34 @@
     list-style: none;
   }
 
+  .govuk-service-header__navigation-list--sublist {
+    @include govuk-media-query($until: tablet) {
+      margin-top: govuk-spacing(4);
+      margin-left: govuk-spacing(5);
+    }
+
+    @include govuk-media-query($from: tablet) {
+      position: absolute;
+      top: calc(100% + #{govuk-spacing(1)});
+      right: 0;
+      width: max-content;
+      border: 1px solid $govuk-service-header-border-color;
+      border-top: none;
+      background-color: $govuk-service-header-background;
+    }
+  }
+
+  .govuk-service-header__navigation-list--sublist .govuk-service-header__navigation-item {
+    @include govuk-media-query($from: tablet) {
+      display: block;
+
+      &,
+      &:last-child {
+        margin: 0 govuk-spacing(3);
+      }
+    }
+  }
+
   .govuk-service-header__navigation-item {
     margin: govuk-spacing(2) 0 govuk-spacing(4);
 
@@ -415,6 +448,22 @@
       padding-left: 0;
       border-bottom: govuk-spacing(1) solid $govuk-link-colour;
       border-left: 0;
+    }
+  }
+
+  .govuk-service-header__navigation-item--has-children {
+    position: relative;
+
+    @at-root .govuk-frontend-supported & > .govuk-service-header__link {
+      &::after {
+        @include govuk-shape-arrow($direction: down, $base: 12px, $display: inline-block);
+        content: "";
+        margin-left: govuk-spacing(1);
+      }
+
+      &[aria-expanded="true"]::after {
+        @include govuk-shape-arrow($direction: up, $base: 12px, $display: inline-block);
+      }
     }
   }
 

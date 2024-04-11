@@ -66,6 +66,9 @@ export class Header extends GOVUKFrontendComponent {
     const $oneLoginMenuButton = $module.querySelector(
       '.govuk-js-one-login-toggle'
     )
+    const $serviceNavigationDropdowns = $module.querySelectorAll(
+      '.govuk-service-header__navigation-item--has-children'
+    )
 
     // Headers don't necessarily have a navigation. When they don't, the menu
     // toggle won't be rendered by our macro (or may be omitted when writing
@@ -126,6 +129,36 @@ export class Header extends GOVUKFrontendComponent {
       this.$oneLoginMenuButton.addEventListener('click', () =>
         this.handleOneLoginMenuButtonClick()
       )
+    }
+
+    // Hacky spikey spike code
+    if ($serviceNavigationDropdowns.length) {
+      $serviceNavigationDropdowns.forEach(($container) => {
+        const $dropdownToggle = $container.querySelector(
+          '.govuk-service-header__link'
+        )
+        const $dropdownList = $container.querySelector(
+          '.govuk-service-header__navigation-list'
+        )
+
+        $dropdownToggle?.setAttribute('aria-expanded', 'false')
+
+        $dropdownToggle?.addEventListener('click', (event) => {
+          event.preventDefault()
+
+          const isExpanded =
+            $dropdownToggle.getAttribute('aria-expanded') === 'true'
+          $dropdownToggle.setAttribute(
+            'aria-expanded',
+            isExpanded ? 'false' : 'true'
+          )
+          if (isExpanded) {
+            $dropdownList?.setAttribute('hidden', '')
+          } else {
+            $dropdownList?.removeAttribute('hidden')
+          }
+        })
+      })
     }
 
     this.setupResponsiveChecks()

@@ -308,6 +308,51 @@ examples:
         - text: Navigation item 2
         - text: Navigation item 3
 
+  - name: navigation with dropdown lists
+    options:
+      serviceName: Service Name
+      serviceUrl: '/components/header'
+      navigation:
+        - text: My applications
+          href: '#/applications'
+          children:
+            - href: '#/applications'
+              text: All applications
+            - href: '#/applications/pending'
+              text: 'Applications needing review'
+            - href: '#/applications/complete'
+              text: 'Completed applications'
+        - html: <span class="govuk-visually-hidden">Current language:</span> English
+          href: '#'
+          children:
+            - href: '#'
+              text: 'العربيَّة'
+              attributes:
+                lang: ar
+                hreflang: ar
+                dir: rtl
+            - href: '#'
+              text: Cymraeg
+              attributes:
+                lang: cy
+                hreflang: cy
+            - href: '#'
+              text: English
+              active: true
+              attributes:
+                lang: en
+                hreflang: en
+            - href: '#'
+              text: Bahasa Indonesia
+              attributes:
+                lang: id
+                hreflang: id
+            - href: '#'
+              text: 日本語
+              attributes:
+                lang: jp
+                hreflang: jp
+
   - name: kitchen sink
     options:
       serviceName: Service Name
@@ -320,8 +365,37 @@ examples:
           active: true
         - href: '#2'
           text: Navigation item 2
-        - href: '#3'
-          text: Navigation item 3
+        - html: <em>Non-link item</em>
+        - html: <span class="govuk-visually-hidden">Current language:</span> English
+          href: '#'
+          children:
+            - href: '#'
+              text: 'العربيَّة'
+              attributes:
+                lang: ar
+                hreflang: ar
+                dir: rtl
+            - href: '#'
+              text: Cymraeg
+              attributes:
+                lang: cy
+                hreflang: cy
+            - href: '#'
+              text: English
+              active: true
+              attributes:
+                lang: en
+                hreflang: en
+            - href: '#'
+              text: Bahasa Indonesia
+              attributes:
+                lang: id
+                hreflang: id
+            - href: '#'
+              text: 日本語
+              attributes:
+                lang: jp
+                hreflang: jp
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: attributes

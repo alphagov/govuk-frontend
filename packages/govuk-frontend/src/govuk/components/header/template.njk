@@ -129,12 +129,31 @@
           <nav id="navigation" aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-service-header__navigation {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
             <ul class="govuk-service-header__navigation-list">
               {% for item in params.navigation %}
-                <li class="govuk-service-header__navigation-item {%- if item.active %} govuk-service-header__navigation-item--active{% endif %}">
-                  {% if item.href %}
+                <li class="govuk-service-header__navigation-item {%- if item.active %} govuk-service-header__navigation-item--active{% endif %} {%- if item.children %} govuk-service-header__navigation-item--has-children{% endif %}">
+                  {% if item.children %}
                     <a class="govuk-service-header__link" href="{{ item.href }}"
                       {{- govukAttributes(item.attributes) -}}>
-                      {{ item.html | safe | trim | indent(14) if item.html else item.text }}
+                      {{- item.html | safe if item.html else item.text -}}
                     </a>
+                    <ul class="govuk-service-header__navigation-list govuk-service-header__navigation-list--sublist" hidden>
+                      {% for child in item.children %}
+                        <li class="govuk-service-header__navigation-item {%- if child.active %} govuk-service-header__navigation-item--active{% endif %}">
+                          <a class="govuk-service-header__link" href="{{ child.href }}"
+                            {{- govukAttributes(child.attributes) -}}>
+                            {{- child.html | safe if child.html else child.text -}}
+                          </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% elif item.href %}
+                    <a class="govuk-service-header__link" href="{{ item.href }}"
+                      {{- govukAttributes(item.attributes) -}}>
+                      {{- item.html | safe if item.html else item.text -}}
+                    </a>
+                  {% elif item.html or item.text %}
+                    <span class="govuk-service-header__navigation-text">
+                      {{- item.html | safe if item.html else item.text -}}
+                    </span>
                   {% endif %}
                 </li>
               {% endfor %}
