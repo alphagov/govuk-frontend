@@ -176,7 +176,6 @@ export class Header extends GOVUKFrontendComponent {
     if (!this.mql || !this.$menu || !this.$menuButton) {
       return
     }
-    console.log(this.mql, this.$menu, this.$menuButton)
 
     if (this.mql.matches) {
       this.$menu.removeAttribute('hidden')

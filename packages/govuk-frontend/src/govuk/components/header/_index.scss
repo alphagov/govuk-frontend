@@ -301,15 +301,18 @@
 
   .govuk-service-header__container {
     display: flex;
-    justify-content: space-between;
     padding-top: govuk-spacing(1);
 
     @include govuk-media-query($until: tablet) {
+      flex-direction: column;
+      align-items: start;
       margin-bottom: govuk-spacing(1);
     }
 
     @include govuk-media-query($from: tablet) {
+      flex-direction: row;
       flex-wrap: wrap;
+      justify-content: space-between;
     }
   }
 
@@ -345,11 +348,12 @@
     @include govuk-font($size: 19, $weight: bold);
     display: inline-block;
     margin: govuk-spacing(1) 0;
-    flex-grow: 1;
     color: $govuk-text-colour;
 
     @include govuk-media-query($from: tablet) {
+      // Add a bit of right margin so service name and nav items don't smush together
       margin: 0;
+      margin-right: govuk-spacing(3);
       padding: govuk-spacing(3) 0;
     }
   }
@@ -357,13 +361,8 @@
   .govuk-service-header__toggle {
     @include govuk-font($size: 19, $weight: bold);
     display: inline-flex;
-    // Hacky positioning for now, this could probably be done with flexbox or something
-    margin-top: 5px;
-    margin-right: 0;
-    margin-left: auto;
+    margin: govuk-spacing(1) 0;
     padding: 0;
-
-    flex-shrink: 0;
     border: 0;
     color: $govuk-link-colour;
     background: none;
