@@ -322,8 +322,12 @@ examples:
               text: 'Applications needing review'
             - href: '#/applications/complete'
               text: 'Completed applications'
-        - html: <span class="govuk-visually-hidden">Current language:</span> English
+        - html: <span class="govuk-visually-hidden">Select language. Current language:</span> English
           href: '#'
+          listItem:
+            attributes:
+              role: region
+              'aria-label': Select language
           children:
             - href: '#'
               text: 'العربيَّة'
@@ -366,8 +370,12 @@ examples:
         - href: '#2'
           text: Navigation item 2
         - html: <em>Non-link item</em>
-        - html: <span class="govuk-visually-hidden">Current language:</span> English
+        - html: <span class="govuk-visually-hidden">Select language. Current language:</span> English
           href: '#'
+          listItem:
+            attributes:
+              role: region
+              'aria-label': Select language
           children:
             - href: '#'
               text: 'العربيَّة'

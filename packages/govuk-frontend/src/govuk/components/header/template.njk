@@ -129,7 +129,8 @@
           <nav id="navigation" aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-service-header__navigation {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
             <ul class="govuk-service-header__navigation-list">
               {% for item in params.navigation %}
-                <li class="govuk-service-header__navigation-item {%- if item.active %} govuk-service-header__navigation-item--active{% endif %} {%- if item.children %} govuk-service-header__navigation-item--has-children{% endif %}">
+                <li class="govuk-service-header__navigation-item {%- if item.active %} govuk-service-header__navigation-item--active{% endif %} {%- if item.children %} govuk-service-header__navigation-item--has-children{% endif %}"
+                {{- govukAttributes(item.listItem.attributes) -}}>
                   {% if item.children %}
                     <a class="govuk-service-header__link" href="{{ item.href }}"
                       {{- govukAttributes(item.attributes) -}}>
@@ -146,10 +147,14 @@
                       {% endfor %}
                     </ul>
                   {% elif item.href %}
+                    {# We wrap active links in strong tags so that users who override colours or styles can still have some indicator of the current nav item. #}
+                    {%- if item.active %}<strong>{% endif %}
                     <a class="govuk-service-header__link" href="{{ item.href }}"
+                      {%- if item.active %} aria-current="true"{% endif %}
                       {{- govukAttributes(item.attributes) -}}>
                       {{- item.html | safe if item.html else item.text -}}
                     </a>
+                    {%- if item.active %}</strong>{% endif %}
                   {% elif item.html or item.text %}
                     <span class="govuk-service-header__navigation-text">
                       {{- item.html | safe if item.html else item.text -}}
