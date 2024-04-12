@@ -1,0 +1,510 @@
+{
+  "// url": "https://www.gov.uk/news-and-communications.json?keywords=&level_one_taxon=&public_timestamp%5Bfrom%5D=&public_timestamp%5Bto%5D=&order=most-viewed",
+  "total": "128,124",
+  "generic_description": "publications matched your criteria",
+  "pluralised_document_noun": "results",
+  "applied_filters": [],
+  "documents": [
+    {
+      "document": {
+        "title": "Income tax",
+        "link": "/income-tax-rates",
+        "summary": "Income tax is a tax you pay on your earnings - find out about what it is, how you pay and how to check you're paying the right amount using HMRC's tax calculator",
+        "is_historic": false,
+        "government_name": null,
+        "document_index": 1,
+        "children": [
+          {
+            "title": "Overview",
+            "link": "#",
+            "summary": "Income Tax is a tax you pay on your income. You do not have to pay tax on…"
+          },
+          {
+            "title": "How you pay Income Tax",
+            "link": "#",
+            "summary": "Pay As You Earn (PAYE) Most people pay Income Tax through PAYE. This is…"
+          },
+          {
+            "title": "Tax-free and taxable state benefits",
+            "link": "#",
+            "summary": "State benefits that are taxable The most common benefits that you pay…"
+          },
+          {
+            "title": "Work out if you need to pay Income Tax",
+            "link": "#",
+            "summary": "To work out if you should be paying Income Tax, follow these steps. Add up…"
+          },
+          {
+            "title": "Check you're paying the right amount",
+            "link": "#",
+            "summary": "You can see if you’re paying the right amount of Income Tax online. For…"
+          }
+        ]
+      }
+    },
+    {
+      "document": {
+        "title": "Update 4: AAIB investigation into the loss of aircraft N264DB",
+        "link": "/government/news/aaib-investigation-into-the-loss-of-aircraft-n264db",
+        "summary": "The AAIB is investigating the loss of an aircraft north of Guernsey.",
+        "is_historic": false,
+        "government_name": null,
+        "metadata": [
+          {
+            "label": "From",
+            "value": "Air Accidents Investigation Branch",
+            "is_text": true
+          },
+          {
+            "label": "Updated",
+            "is_date": true,
+            "machine_date": "2019-02-07",
+            "human_date": "7 February 2019"
+          }
+        ]
+      },
+      "document_index": 1
+    },
+    {
+      "document": {
+        "title": "Proposed new timetable for State Pension age increases",
+        "link": "/government/news/proposed-new-timetable-for-state-pension-age-increases",
+        "summary": "The government’s review proposes a new timetable for the rise to 68, in line with continuing increases in life expectancy.",
+        "is_historic": false,
+        "government_name": null,
+        "metadata": [
+          {
+            "label": "From",
+            "value": "Department for Work and Pensions",
+            "is_text": true
+          },
+          {
+            "label": "Updated",
+            "is_date": true,
+            "machine_date": "2017-07-19",
+            "human_date": "19 July 2017"
+          }
+        ]
+      },
+      "document_index": 2
+    },
+    {
+      "document": {
+        "title": "LPC welcomes acceptance of its 2019 minimum wage rate recommendations",
+        "link": "/government/news/lpc-welcomes-acceptance-of-its-2019-minimum-wage-rate-recommendations",
+        "summary": "Bryan Sanderson, Chair of the Low Pay Commission (LPC), today welcomed the Government's announcement that it has accepted in full the recommendations the LPC made for future minimum wage rates.",
+        "is_historic": false,
+        "government_name": null,
+        "metadata": [
+          {
+            "label": "From",
+            "value": "Low Pay Commission",
+            "is_text": true
+          },
+          {
+            "label": "Updated",
+            "is_date": true,
+            "machine_date": "2018-10-30",
+            "human_date": "30 October 2018"
+          }
+        ]
+      },
+      "document_index": 3
+    },
+    {
+      "document": {
+        "title": "MOT rule changes: 20 May 2018",
+        "link": "/government/news/mot-changes-20-may-2018",
+        "summary": "The MOT test changed on 20 May 2018, with new defect types, stricter rules for diesel car emissions, and some vehicles over 40 years old becoming exempt.",
+        "is_historic": false,
+        "government_name": null,
+        "metadata": [
+          {
+            "label": "From",
+            "value": "Driver and Vehicle Standards Agency",
+            "is_text": true
+          },
+          {
+            "label": "Updated",
+            "is_date": true,
+            "machine_date": "2018-05-20",
+            "human_date": "20 May 2018"
+          }
+        ]
+      },
+      "document_index": 4
+    },
+    {
+      "document": {
+        "title": "UK and Faroe Islands sign trade continuity agreement",
+        "link": "/government/news/uk-and-faroe-islands-sign-trade-continuity-agreement",
+        "summary": "The UK has signed a new trade continuity agreement with the Faroe Islands.",
+        "is_historic": false,
+        "government_name": null,
+        "metadata": [
+          {
+            "label": "From",
+            "value": "Department for International Trade",
+            "is_text": true
+          },
+          {
+            "label": "Updated",
+            "is_date": true,
+            "machine_date": "2019-02-01",
+            "human_date": "1 February 2019"
+          }
+        ]
+      },
+      "document_index": 5
+    },
+    {
+      "document": {
+        "title": "One of the largest mental health trials launches in schools",
+        "link": "/government/news/one-of-the-largest-mental-health-trials-launches-in-schools",
+        "summary": "Up to 370 schools to join one of the largest trials in the world to boost the evidence about what works to support mental health and wellbeing",
+        "is_historic": false,
+        "government_name": null,
+        "metadata": [
+          {
+            "label": "From",
+            "value": "Department for Education and 1 others",
+            "is_text": true
+          },
+          {
+            "label": "Updated",
+            "is_date": true,
+            "machine_date": "2019-02-04",
+            "human_date": "4 February 2019"
+          }
+        ]
+      },
+      "document_index": 6
+    },
+    {
+      "document": {
+        "title": "Free helplines for Universal Credit claimants",
+        "link": "/government/news/free-helplines-for-universal-credit-claimants",
+        "summary": "From today (29 November 2017) all Universal Credit telephone lines are Freephone numbers.",
+        "is_historic": false,
+        "government_name": null,
+        "metadata": [
+          {
+            "label": "From",
+            "value": "Department for Work and Pensions",
+            "is_text": true
+          },
+          {
+            "label": "Updated",
+            "is_date": true,
+            "machine_date": "2017-11-29",
+            "human_date": "29 November 2017"
+          }
+        ]
+      },
+      "document_index": 7
+    },
+    {
+      "document": {
+        "title": "Hiring a vehicle",
+        "link": "/government/news/hiring-a-vehicle",
+        "summary": "If you are going on holiday and hiring a vehicle, or you are a company hiring out vehicles, these changes may affect you. ",
+        "is_historic": false,
+        "government_name": null,
+        "metadata": [
+          {
+            "label": "From",
+            "value": "Driver and Vehicle Licensing Agency",
+            "is_text": true
+          },
+          {
+            "label": "Updated",
+            "is_date": true,
+            "machine_date": "2015-07-10",
+            "human_date": "10 July 2015"
+          }
+        ]
+      },
+      "document_index": 8
+    },
+    {
+      "document": {
+        "title": "HM Revenue and Customs simplifies importing from the EU as part of 'no deal' preparation",
+        "link": "/government/news/hm-revenue-and-customs-simplifies-importing-from-the-eu-as-part-of-no-deal-preparation",
+        "summary": "HMRC announces Transitional Simplified Procedures for customs, should we leave the EU without a deal, by writing to 145,000 VAT registered businesses trading with the EU. ",
+        "is_historic": false,
+        "government_name": null,
+        "metadata": [
+          {
+            "label": "From",
+            "value": "HM Treasury and 1 others",
+            "is_text": true
+          },
+          {
+            "label": "Updated",
+            "is_date": true,
+            "machine_date": "2019-02-04",
+            "human_date": "4 February 2019"
+          }
+        ]
+      },
+      "document_index": 9
+    },
+    {
+      "document": {
+        "title": "Check and update your charity details",
+        "link": "/government/news/update-your-charity-details-improved-service-coming-soon",
+        "summary": "All registered charities in England and Wales will need to check and update their details before they can submit an annual return. ",
+        "is_historic": false,
+        "government_name": null,
+        "metadata": [
+          {
+            "label": "From",
+            "value": "The Charity Commission",
+            "is_text": true
+          },
+          {
+            "label": "Updated",
+            "is_date": true,
+            "machine_date": "2019-01-02",
+            "human_date": "2 January 2019"
+          }
+        ]
+      },
+      "document_index": 10
+    },
+    {
+      "document": {
+        "title": "Joint statement on behalf of the Prime Minister and President Juncker",
+        "link": "/government/news/joint-statement-on-behalf-of-the-prime-minister-and-president-juncker",
+        "summary": "Prime Minister Theresa May met President Juncker in Brussels.",
+        "is_historic": false,
+        "government_name": null,
+        "metadata": [
+          {
+            "label": "From",
+            "value": "Prime Minister's Office, 10 Downing Street",
+            "is_text": true
+          },
+          {
+            "label": "Updated",
+            "is_date": true,
+            "machine_date": "2019-02-07",
+            "human_date": "7 February 2019"
+          }
+        ]
+      },
+      "document_index": 11
+    },
+    {
+      "document": {
+        "title": "Government outlines no deal arrangements for EU citizens",
+        "link": "/government/news/government-outlines-no-deal-arrangements-for-eu-citizens",
+        "summary": "In the event of no deal, EU citizens will be able to enter the UK to visit, work or study after 29 March 2019.",
+        "is_historic": false,
+        "government_name": null,
+        "metadata": [
+          {
+            "label": "From",
+            "value": "Home Office and 1 others",
+            "is_text": true
+          },
+          {
+            "label": "Updated",
+            "is_date": true,
+            "machine_date": "2019-01-28",
+            "human_date": "28 January 2019"
+          }
+        ]
+      },
+      "document_index": 12
+    },
+    {
+      "document": {
+        "title": "Class 4 defect information: Amoxicillin 500mg Capsules BP (MDR 92-12/18)",
+        "link": "/drug-device-alerts/class-4-defect-information-amoxicillin-500mg-capsules-bp-mdr-92-12-18",
+        "summary": "Accord Healthcare Limited has informed us that that a change to the Patient Information Leaflet (PIL) for\r\nthis product has not been implemented by the required timeline.",
+        "is_historic": false,
+        "government_name": null,
+        "metadata": [
+          {
+            "label": "From",
+            "value": "Medicines and Healthcare products Regulatory Agency",
+            "is_text": true
+          },
+          {
+            "label": "Updated",
+            "is_date": true,
+            "machine_date": "2019-02-04",
+            "human_date": "4 February 2019"
+          }
+        ]
+      },
+      "document_index": 13
+    },
+    {
+      "document": {
+        "title": "HMRC warns on tax refund scams",
+        "link": "/government/news/hmrc-warns-on-tax-refund-scams",
+        "summary": "Fraudsters are sending scam emails and SMS-messages that promise tax rebates to trick people into disclosing their account and personal details.",
+        "is_historic": false,
+        "government_name": null,
+        "metadata": [
+          {
+            "label": "From",
+            "value": "HM Revenue & Customs",
+            "is_text": true
+          },
+          {
+            "label": "Updated",
+            "is_date": true,
+            "machine_date": "2018-05-09",
+            "human_date": "9 May 2018"
+          }
+        ]
+      },
+      "document_index": 14
+    },
+    {
+      "document": {
+        "title": "7 tips for motorists to stay safe online",
+        "link": "/government/news/7-tips-for-motorists-to-stay-safe-online",
+        "summary": "With new online scams cropping up all the time, motorists have increasingly become a target for fraudsters.",
+        "is_historic": false,
+        "government_name": null,
+        "metadata": [
+          {
+            "label": "From",
+            "value": "Driver and Vehicle Licensing Agency",
+            "is_text": true
+          },
+          {
+            "label": "Updated",
+            "is_date": true,
+            "machine_date": "2019-02-05",
+            "human_date": "5 February 2019"
+          }
+        ]
+      },
+      "document_index": 15
+    },
+    {
+      "document": {
+        "title": "New advice for travellers visiting the UK, EU or European Economic Area in the event of a no-deal EU Exit",
+        "link": "/government/news/new-advice-for-travellers-visiting-the-uk-eu-or-european-economic-area-in-the-event-of-a-no-deal-eu-exit",
+        "summary": "The government has published its latest advice for people travelling to the UK, European Union, European Economic Area or Switzerland after 29 March 2019.",
+        "is_historic": false,
+        "government_name": null,
+        "metadata": [
+          {
+            "label": "From",
+            "value": "Department of Health and Social Care",
+            "is_text": true
+          },
+          {
+            "label": "Updated",
+            "is_date": true,
+            "machine_date": "2019-01-28",
+            "human_date": "28 January 2019"
+          }
+        ]
+      },
+      "document_index": 16
+    },
+    {
+      "document": {
+        "title": "Letters on 'no deal' Brexit advice for businesses only trading with the EU",
+        "link": "/government/publications/no-deal-brexit-advice-for-businesses-only-trading-with-the-eu",
+        "summary": "HMRC letters to VAT-registered businesses only trading with the EU explaining how to prepare for changes to customs, excise and VAT if the UK leaves the EU without a deal.  ",
+        "is_historic": false,
+        "government_name": null,
+        "metadata": [
+          {
+            "label": "From",
+            "value": "HM Revenue & Customs",
+            "is_text": true
+          },
+          {
+            "label": "Updated",
+            "is_date": true,
+            "machine_date": "2019-02-04",
+            "human_date": "4 February 2019"
+          }
+        ]
+      },
+      "document_index": 17
+    },
+    {
+      "document": {
+        "title": "Defence in Global Britain",
+        "link": "/government/speeches/defence-in-global-britain",
+        "summary": "Defence Secretary Gavin Williamson gave a speech at RUSI outlining the future direction of the UK Armed Forces.",
+        "is_historic": false,
+        "government_name": null,
+        "metadata": [
+          {
+            "label": "From",
+            "value": "Ministry of Defence",
+            "is_text": true
+          },
+          {
+            "label": "Updated",
+            "is_date": true,
+            "machine_date": "2019-02-11",
+            "human_date": "11 February 2019"
+          }
+        ]
+      },
+      "document_index": 18
+    },
+    {
+      "document": {
+        "title": "Dart Charge: Dartford Crossing remote payment",
+        "link": "/government/news/dart-charge-dartford-crossing-remote-payment",
+        "summary": "Dart Charge: new payment arrangements are now in place.",
+        "is_historic": false,
+        "government_name": null,
+        "metadata": [
+          {
+            "label": "From",
+            "value": "Closed organisation: Highways Agency",
+            "is_text": true
+          },
+          {
+            "label": "Updated",
+            "is_date": true,
+            "machine_date": "2014-12-16",
+            "human_date": "16 December 2014"
+          }
+        ]
+      },
+      "document_index": 19
+    },
+    {
+      "document": {
+        "title": "Charitable think tank warned over breaches of charity law",
+        "link": "/government/news/charitable-think-tank-warned-over-breaches-of-charity-law",
+        "summary": "Charity Commission issues formal legal warning against Institute of Economic Affairs",
+        "is_historic": false,
+        "government_name": null,
+        "metadata": [
+          {
+            "label": "From",
+            "value": "The Charity Commission",
+            "is_text": true
+          },
+          {
+            "label": "Updated",
+            "is_date": true,
+            "machine_date": "2019-02-05",
+            "human_date": "5 February 2019"
+          }
+        ]
+      },
+      "document_index": 20
+    }
+  ],
+  "page_count": 20,
+  "finder_name": "Search",
+  "any_filters_applied": false,
+  "atom_url": "/search.atom?order=most-viewed&public_timestamp%5Bfrom%5D=&public_timestamp%5Bto%5D="
+}

@@ -1,0 +1,68 @@
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{% extends "layouts/examples.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<form action="/" method="post">
+
+  {{ govukErrorSummary({
+    "titleText": "Message to alert the user to a problem goes here",
+    "descriptionText": "Optional description of the errors and how to correct them",
+    "classes": "optional-extra-class",
+    "errorList": [
+      {
+        "text": "Date of birth must include a month and year",
+        "href": "#dob-month"
+      }
+    ]
+  }) }}
+
+  {{ govukDateInput({
+    id: 'dob',
+    name: 'dob',
+    fieldset: {
+      legend: {
+        text: 'What is your date of birth?',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--xl'
+      }
+    },
+    hint: {
+      text: 'For example 5 12 1987'
+    },
+    items:[
+      {
+        name: 'day',
+        classes: 'govuk-input--width-2',
+        value: '22'
+      },
+      {
+        name: 'month',
+        classes: 'govuk-input--width-2 govuk-input--error'
+      },
+      {
+        name: 'year',
+        classes: 'govuk-input--width-4 govuk-input--error'
+      }
+    ],
+    errorMessage: {
+      text: "Date of birth must include a month and year"
+    }
+    })
+  }}
+
+  {{ govukButton({
+    "text": "Continue"
+  }) }}
+
+</form>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+{% macro showExamples(componentFixtures, exampleNames) %}
+
+{% set componentName = componentFixtures.component %}
+
+{% for example in componentFixtures.fixtures %}
+  {% if (not exampleNames and not example.hidden) or (exampleNames and example.name in exampleNames) %}
+
+  {% set exampleName = example.name | slugify %}
+
+  {% if example.name == 'default' %}
+    {% set heading = componentName | unslugify %}
+    {% set path = '/components/' + componentName + "/preview" %}
+  {% else %}
+    {% set heading %}{{ componentName | unslugify }} {{ example.name }}{% endset %}
+    {% set path = '/components/' + componentName + '/' + exampleName + "/preview" %}
+  {% endif %}
+
+  <section aria-labelledby="heading-{{ exampleName }}" class="govuk-!-margin-bottom-9">
+    <div class="govuk-width-container">
+      <h3 id="heading-{{ exampleName }}" class="govuk-heading-m govuk-!-margin-bottom-2">{{ heading | safe }}</h3>
+      <p class="govuk-body">
+        <a href="{{ path }}" class="govuk-link" rel="noreferrer noopener" target="_blank">
+          Open this example in a new tab<span class="govuk-visually-hidden">: {{ heading | safe | lower }}</span>
+        </a>
+      </p>
+
+    {% if example.description %}
+      <p class="govuk-body">
+        {{ example.description }}
+      </p>
+    {% endif %}
+    </div>
+    <div class="app-component-preview">
+      <iframe src="{{ path }}?iframe=true" loading="{{ "eager" if loop.index <= 3 else "lazy" }}" class="js-component-preview app-component-preview__iframe"></iframe>
+    </div>
+
+    <div class="govuk-width-container">
+      {% set codeExamplesHtml %}
+        <h4 class="govuk-heading-s">Markup</h4>
+        <pre class="app-code"><code tabindex="0" class="app-code__container hljs language-html">
+          {{- getHTMLCode(componentName, {
+            context: example.options,
+            fixture: example
+          }) | highlight("html") | safe -}}
+        </code></pre>
+
+        <h4 class="govuk-heading-s">Macro</h4>
+        <pre class="app-code"><code tabindex="0" class="app-code__container hljs language-js">
+          {{- getNunjucksCode(componentName, {
+            context: example.options
+          }) | highlight("js") | safe -}}
+        </code></pre>
+      {% endset %}
+
+      {{ govukDetails({
+        summaryText: "Code",
+        html: codeExamplesHtml
+      }) }}
+    </div>
+
+  </section>
+  {% endif %}
+{% endfor %}
+{% endmacro %}

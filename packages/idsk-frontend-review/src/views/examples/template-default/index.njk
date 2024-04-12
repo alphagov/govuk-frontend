@@ -1,0 +1,21 @@
+{% extends "govuk/template.njk" %}
+
+{% block head %}
+  <link rel="stylesheet" href="/stylesheets/app.min.css">
+{% endblock %}
+
+{% block content %}
+  <!-- block:content -->
+  <h1 class="govuk-heading-xl">Default page template</h1>
+  <!-- endblock:content -->
+{% endblock %}
+
+{% block bodyEnd %}
+  <!-- block:bodyEnd -->
+  <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+  <script type="module">
+    import { initAll } from '/javascripts/govuk-frontend.min.js'
+    initAll()
+  </script>
+  <!-- endblock:bodyEnd -->
+{% endblock %}

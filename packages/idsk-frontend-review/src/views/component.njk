@@ -1,0 +1,44 @@
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "macros/showExamples.njk" import showExamples %}
+
+{% extends "layouts/full-width-landmarks.njk" %}
+
+{% block pageTitle %}{{ componentName | unslugify }} - GOV.UK Frontend{% endblock %}
+
+{% set bodyClasses = "language-markup" %}
+
+{% set htmlMarkup %}
+  {% include componentName + "/" + componentName + ".njk" ignore missing %}
+{% endset %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "GOV.UK Frontend",
+        href: "/"
+      },
+      {
+        text: "All components",
+        href: "/components"
+      },
+      {
+        text: componentName | unslugify
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    <h1 class="govuk-heading-xl">
+      {% block componentName %}
+        {{ componentName | unslugify }}
+      {% endblock %}
+    </h1>
+  </div>
+
+  {% block examples %}
+    {{ showExamples(componentFixtures) }}
+  {% endblock %}
+{% endblock %}

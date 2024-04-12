@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": ["**/*.js", "**/*.mjs"],
+  "exclude": ["./dist", "./node_modules"],
+  "compilerOptions": {
+    "types": [
+      "browser-sync",
+      "express",
+      "gulp",
+      "jest",
+      "jest-puppeteer",
+      "node",
+      "nunjucks",
+      "slug",
+      "typed-query-selector"
+    ]
+  }
+}

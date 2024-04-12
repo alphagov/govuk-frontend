@@ -1,5 +1,5 @@
-@import "../../../../idsk-frontend/src/govuk/base";
-@import "../../../../idsk-frontend/src/govuk/core/all";
+@import "govuk/base";
+@import "govuk/core/all";
 
 .app-document-list > li {
   padding-top: govuk-spacing(4);

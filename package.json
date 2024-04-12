@@ -10,7 +10,7 @@
   "workspaces": [
     ".github/workflows/scripts",
     "packages/idsk-frontend",
-    "packages/govuk-frontend-review",
+    "packages/idsk-frontend-review",
     "shared/*",
     "docs/examples/*"
   ],

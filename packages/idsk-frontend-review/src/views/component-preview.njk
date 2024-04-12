@@ -1,0 +1,20 @@
+{% extends "layouts/" + previewLayout | default('layout') + ".njk" %}
+
+{% set templateTitle = ("Default " + componentName if exampleName == "default" else componentName + " " + exampleName) | unslugify %}
+
+{% block pageTitle %}{{ templateTitle }} - GOV.UK Frontend{% endblock %}
+
+{# Remove standard template banners/headers/frontmatter #}
+{% block skipLink %}{% endblock %}
+{% block bodyStart %} {% endblock %}
+{% block header %}{% endblock %}
+
+{% block content %}
+  <div class="app-whitespace-highlight">
+    {{ componentView | safe }}
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script type="module" src="/javascripts/component-preview-iframe.bundle.min.mjs"></script>
+{% endblock %}

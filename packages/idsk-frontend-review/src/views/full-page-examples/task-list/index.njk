@@ -1,0 +1,247 @@
+---
+title: Apply for teacher training
+scenario: |
+  You want to apply for a teacher training course
+
+  Things to try:
+
+  1. Making sure all content is visible without overlapping on narrower screens.
+
+notes: The buttons and links on this page are not functional.
+---
+
+{# This example is based of the live "Apply for teacher training" service at: https://www.apply-for-teacher-training.service.gov.uk/candidate/application #}
+{% extends "layouts/full-page-example.njk" %}
+
+{% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set pageTitle = example.title %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+
+
+{% block content %}
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Your application</h1>
+  <p class="govuk-hint govuk-!-margin-bottom-8">Last saved on 15 May 2023 at 2:21pm</p>
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h2 class="govuk-heading-m">Personal details</h2>
+      {{ govukTaskList({
+        items: [
+          {
+            title: { text: "Personal information" },
+            href: "#",
+            status: {
+              text: "Completed"
+            }
+          },
+          {
+            title: { text: "Contact information" },
+            href: "#",
+            status: {
+              tag: {
+                text: "Incomplete",
+                classes: "govuk-tag--blue"
+              }
+            }
+          }
+        ]
+      })}}
+
+      <h2 class="govuk-heading-m">Courses</h2>
+      <p class="govuk-body">You can apply for up to 4 courses.</p>
+      {{ govukTaskList({
+        items: [
+          {
+            title: { text: "Choose your courses" },
+            href: "#",
+            status: {
+              tag: {
+                text: "Incomplete",
+                classes: "govuk-tag--blue"
+              }
+            }
+          }
+        ]
+      })}}
+
+      <h2 class="govuk-heading-m">Qualifications</h2>
+      {{ govukTaskList({
+        items: [
+          {
+            title: { text: "English GCSE or equivalent" },
+            href: "#",
+            status: {
+              tag: {
+                text: "Incomplete",
+                classes: "govuk-tag--blue"
+              }
+            }
+          },
+          {
+            title: { text: "Maths GCSE or equivalent" },
+            href: "#",
+            status: {
+              tag: {
+                text: "Incomplete",
+                classes: "govuk-tag--blue"
+              }
+            }
+          },
+          {
+            title: { text: "A levels and other qualifications" },
+            href: "#",
+            status: {
+              tag: {
+                text: "Incomplete",
+                classes: "govuk-tag--blue"
+              }
+            }
+          },
+          {
+            title: { text: "Degree" },
+            href: "#",
+            status: {
+              tag: {
+                text: "Incomplete",
+                classes: "govuk-tag--blue"
+              }
+            }
+          }
+        ]
+      })}}
+
+      <h2 class="govuk-heading-m">Work experience</h2>
+      {{ govukTaskList({
+        items: [
+          {
+            title: { text: "Work history" },
+            href: "#",
+            status: {
+              tag: {
+                text: "Incomplete",
+                classes: "govuk-tag--blue"
+              }
+            }
+          },
+          {
+            title: { text: "Unpaid experience" },
+            href: "#",
+            status: {
+              tag: {
+                text: "Incomplete",
+                classes: "govuk-tag--blue"
+              }
+            }
+          }
+        ]
+      })}}
+
+      <h2 class="govuk-heading-m">Personal statement</h2>
+      {{ govukTaskList({
+        items: [
+          {
+            title: { text: "Your personal statement" },
+            href: "#",
+            status: {
+              tag: {
+                text: "Incomplete",
+                classes: "govuk-tag--blue"
+              }
+            }
+          }
+        ]
+      })}}
+
+      <h2 class="govuk-heading-m">Adjustments</h2>
+      {{ govukTaskList({
+        items: [
+          {
+            title: { text: "Ask for support if you’re disabled" },
+            href: "#",
+            status: {
+              tag: {
+                text: "Incomplete",
+                classes: "govuk-tag--blue"
+              }
+            }
+          },
+          {
+            title: { text: "Interview needs" },
+            href: "#",
+            status: {
+              tag: {
+                text: "Incomplete",
+                classes: "govuk-tag--blue"
+              }
+            }
+          }
+        ]
+      })}}
+
+      <h2 class="govuk-heading-m">Safeguarding</h2>
+      {{ govukTaskList({
+        items: [
+          {
+            title: { text: "References to be requested if you accept an offer" },
+            href: "#",
+            status: {
+              tag: {
+                text: "Incomplete",
+                classes: "govuk-tag--blue"
+              }
+            }
+          },
+          {
+            title: { text: "Declare any safeguarding issues" },
+            href: "#",
+            status: {
+              tag: {
+                text: "Incomplete",
+                classes: "govuk-tag--blue"
+              }
+            }
+          }
+        ]
+      })}}
+
+      <h2 class="govuk-heading-m">Equality and diversity</h2>
+      <p class="govuk-body">Training providers will only see your answers to this section if you accept an offer from them.</p>
+      {{ govukTaskList({
+        items: [
+          {
+            title: { text: "Equality and diversity questions" },
+            href: "#",
+            status: {
+              tag: {
+                text: "Incomplete",
+                classes: "govuk-tag--blue"
+              }
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Check and submit</h2>
+
+      {{ govukButton({ text: "Check and submit your applications"}) }}
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <aside class="app-related">
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-2" id="support-title">Get help</h2>
+
+        <ul class="govuk-list govuk-!-font-size-16">
+          <li>Call 0800 389 2500 or <a class="govuk-link" href="#">chat online</a></li>
+          <li>Monday to Friday, 8:30am to 5:30pm (except public&nbsp;holidays)</li>
+          <li>Free of charge</li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+{% endblock %}

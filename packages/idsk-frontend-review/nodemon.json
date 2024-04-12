@@ -1,0 +1,17 @@
+{
+  "watch": [
+    "./src",
+    "./dist/**/index.html",
+    "../govuk-frontend/dist/govuk/**/fixtures.json",
+    "../../shared/config",
+    "../../shared/lib",
+    "../../shared/stats"
+  ],
+  "ignore": ["./src/javascripts/**", "**/*.test.*"],
+  "events": {
+    "restart": "browser-sync reload --config browsersync.config.js"
+  },
+  "ext": "js,mjs,json",
+  "quiet": true,
+  "signal": "SIGINT"
+}

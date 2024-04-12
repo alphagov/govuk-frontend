@@ -1,0 +1,148 @@
+---
+title: Send your feedback - Verify
+scenario: |
+  You have used a service called GOV.UK Verify and wish to report an issue.
+
+  Things to try:
+
+  1. Intentionally put too much content in the feedback box.
+
+    “What were you trying to do” question has a limit of 100 characters.
+
+    “Please provide details of your question, problem or feedback” has a limit
+    of 300 characters.
+
+  2. Say that you want a reply, but avoid filling in the details of how you
+      would like to be contacted.
+
+  3. Avoid answering the question “Do you want a reply?”
+
+notes: Based on https://www.signin.service.gov.uk/feedback
+---
+{% extends "layouts/full-page-example.njk" %}
+
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{% set pageTitle = example.title %}
+{% block pageTitle %}{{ "Error: " if errorSummary | length }}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    productName: "Verify"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form method="post" novalidate>
+            {% if errorSummary | length %}
+              {{ govukErrorSummary({
+                titleText: "There is a problem",
+                errorList: errorSummary
+              }) }}
+            {% endif %}
+
+            <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
+
+            <p class="govuk-body">
+                Use this form to ask a question, report a problem or suggest an improvement GOV.UK Verify can make.
+            </p>
+
+            {{ govukWarningText({
+                text: "Don't include any personal or financial information like your National Insurance number or credit card details."
+            }) }}
+
+            {{ govukCharacterCount({
+                name: "what-were-you-trying-to-do",
+                id: "what-were-you-trying-to-do",
+                maxlength: 100,
+                threshold: 50,
+                rows: 5,
+                label: {
+                    text: "What were you trying to do?"
+                },
+                value: values["what-were-you-trying-to-do"],
+                errorMessage: errors["what-were-you-trying-to-do"]
+            }) }}
+
+            {{ govukCharacterCount({
+                name: "detail",
+                id: "detail",
+                maxlength: 300,
+                rows: 10,
+                label: {
+                    text: "Please provide details of your question, problem or feedback"
+                },
+                value: values["detail"],
+                errorMessage: errors["detail"]
+            }) }}
+
+            {% set yesHTML %}
+                <p class="govuk-body">Leave your details below if you'd like a response from GOV.UK Verify.</p>
+
+                {{ govukInput({
+                    id: "name",
+                    name: "name",
+                    label: {
+                        text: "Name"
+                    },
+                    value: values["name"],
+                    errorMessage: errors["name"]
+                }) }}
+
+                {{ govukInput({
+                    id: "email",
+                    name: "email",
+                    type: "email",
+                    label: {
+                        text: "Email address"
+                    },
+                    hint: {
+                        text: "We’ll only use this to reply to your message."
+                    },
+                    value: values["email"],
+                    errorMessage: errors["email"]
+                }) }}
+
+                <p class="govuk-body govuk-!-margin-top-6">By sending this message, you consent to us using your information as detailed in the privacy notice.</p>
+            {% endset -%}
+
+            {{ govukRadios({
+                idPrefix: "do-you-want-a-reply",
+                name: "do-you-want-a-reply",
+                fieldset: {
+                    legend: {
+                        text: "Do you want a reply?"
+                    }
+                },
+                items: [
+                    {
+                        id: "do-you-want-a-reply",
+                        value: "yes",
+                        text: "Yes",
+                        conditional: {
+                            html: yesHTML
+                        }
+                    },
+                    {
+                        value: "no",
+                        text: "No"
+                    }
+                ],
+                value: values["do-you-want-a-reply"],
+                errorMessage: errors["do-you-want-a-reply"]
+            }) }}
+
+            {{ govukButton({
+                text: "Send message"
+            }) }}
+        </form>
+    </div>
+  </div>
+{% endblock %}
