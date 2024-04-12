@@ -20,7 +20,7 @@
     // IE 11 and Microsoft Edge comes with its own password reveal function. We want to hide it,
     // so that there aren't two controls presented to the user that do the same thing but aren't in
     // sync with one another. This doesn't affect the function that allows Edge users to toggle
-    // password visibility by pressing Alt+F8, which cannot be programatically disabled.
+    // password visibility by pressing Alt+F8, which cannot be programmatically disabled.
     &::-ms-reveal {
       display: none;
     }
@@ -41,7 +41,6 @@
     @include govuk-media-query($from: mobile) {
       // Buttons are normally 100% width on this breakpoint, but we don't want that in this case
       width: auto;
-      flex-grow: 1;
       flex-shrink: 0;
       flex-basis: 5em;
 
