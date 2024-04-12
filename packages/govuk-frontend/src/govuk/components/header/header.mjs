@@ -23,6 +23,9 @@ export class Header extends GOVUKFrontendComponent {
   /** @private */
   $oneLoginMenu
 
+  /** @private */
+  $serviceNavigationDropdowns
+
   /**
    * Save the opened/closed state for the nav in memory so that we can
    * accurately maintain state when the screen is changed from small to big and
@@ -134,31 +137,22 @@ export class Header extends GOVUKFrontendComponent {
     // Hacky spikey spike code
     if ($serviceNavigationDropdowns.length) {
       $serviceNavigationDropdowns.forEach(($container) => {
-        const $dropdownToggle = $container.querySelector(
+        const $toolboxToggle = $container.querySelector(
           '.govuk-service-header__link'
         )
-        const $dropdownList = $container.querySelector(
+        const $toolboxList = $container.querySelector(
           '.govuk-service-header__navigation-list'
         )
 
-        $dropdownToggle?.setAttribute('aria-expanded', 'false')
+        $toolboxToggle?.setAttribute('aria-expanded', 'false')
 
-        $dropdownToggle?.addEventListener('click', (event) => {
+        $toolboxToggle?.addEventListener('click', (event) => {
           event.preventDefault()
-
-          const isExpanded =
-            $dropdownToggle.getAttribute('aria-expanded') === 'true'
-          $dropdownToggle.setAttribute(
-            'aria-expanded',
-            isExpanded ? 'false' : 'true'
-          )
-          if (isExpanded) {
-            $dropdownList?.setAttribute('hidden', '')
-          } else {
-            $dropdownList?.removeAttribute('hidden')
-          }
+          this.handleToolboxClick($toolboxToggle, $toolboxList)
         })
       })
+
+      this.$serviceNavigationDropdowns = $serviceNavigationDropdowns
     }
 
     this.setupResponsiveChecks()
@@ -277,6 +271,60 @@ export class Header extends GOVUKFrontendComponent {
   handleOneLoginMenuButtonClick() {
     this.oneLoginMenuIsOpen = !this.oneLoginMenuIsOpen
     this.checkOneLoginMode()
+  }
+
+  /**
+   * @param {Element} $header - the clicked toolbox heading
+   * @param {Element | null} $content - the toolbox contents
+   * @private
+   */
+  handleToolboxClick($header, $content) {
+    const isExpanded = $header.getAttribute('aria-expanded') === 'true'
+    this.closeAllToolboxes()
+
+    if (!isExpanded) {
+      this.openToolbox($header, $content)
+    }
+  }
+
+  /**
+   * @param {Element | null} $header - the clicked toolbox heading
+   * @param {Element | null} $content - the toolbox contents
+   * @private
+   */
+  openToolbox($header, $content) {
+    $header?.setAttribute('aria-expanded', 'true')
+    $content?.removeAttribute('hidden')
+  }
+
+  /**
+   * @param {Element | null} $header - the clicked toolbox heading
+   * @param {Element | null} $content - the toolbox contents
+   * @private
+   */
+  closeToolbox($header, $content) {
+    $header?.setAttribute('aria-expanded', 'false')
+    $content?.setAttribute('hidden', '')
+  }
+
+  /**
+   * @private
+   */
+  closeAllToolboxes() {
+    if (!this.$serviceNavigationDropdowns) {
+      return
+    }
+
+    this.$serviceNavigationDropdowns.forEach(($container) => {
+      const $toolboxToggle = $container.querySelector(
+        '.govuk-service-header__link'
+      )
+      const $toolboxList = $container.querySelector(
+        '.govuk-service-header__navigation-list'
+      )
+
+      this.closeToolbox($toolboxToggle, $toolboxList)
+    })
   }
 
   /**
