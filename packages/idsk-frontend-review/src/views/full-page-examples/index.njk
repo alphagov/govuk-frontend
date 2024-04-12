@@ -1,0 +1,60 @@
+{% extends "layouts/layout.njk" %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{% block pageTitle %}Full page examples - GOV.UK Frontend{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "GOV.UK Frontend",
+        href: "/"
+      },
+      {
+        text: "Full page examples"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Full page examples
+    </h1>
+
+    <p class="govuk-body-l">These examples are designed to test the styles, components and patterns from GOV.UK Frontend in a realistic context.</p>
+
+    <p class="govuk-body">Your responses to any questions asked in the examples will not be recorded.</p>
+
+    <hr class="govuk-section-break govuk-section-break--l" />
+
+    {% for example in fullPageExamples %}
+    <section aria-labelledby="heading-{{ example.name }}">
+      <h2 id="heading-{{ example.name }}" class="govuk-heading-l govuk-!-margin-bottom-2">{{ example.name | unslugify }}</h2>
+
+      <p class="govuk-body">
+        <a href="/full-page-examples/{{ example.path }}" class="govuk-link" rel="noreferrer noopener" target="_blank">
+          Open this example in a new tab<span class="govuk-visually-hidden">: {{ example.name | unslugify | lower }}</span>
+        </a>
+      </p>
+
+    {% if example.scenario or example.notes %}
+      <div class="app-prose-scope govuk-!-margin-top-6">
+        {{ example.scenario | markdown if example.scenario }}
+
+      {% if example.notes %}
+        <h3>Notes</h3>
+        {{ example.notes | markdown }}
+      {% endif %}
+      </div>
+    {% endif %}
+
+    </section>
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl" />
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,236 @@
+---
+title: Entry requirements - Narnia travel advice
+scenario: You want to read guidance about the entry requirements for travelling to Narnia.
+notes: Based on https://www.gov.uk/foreign-travel-advice/iceland/entry-requirements
+---
+{% extends "layouts/full-page-example.njk" %}
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/pagination/macro.njk" import govukPagination %}
+
+{% set pageTitle = example.title %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/"
+      },
+      {
+        text: "Passports, travel and living abroad",
+        href: "#/browse/abroad"
+      },
+      {
+        text: "Travel abroad",
+        href: "#/browse/abroad/travel-abroad"
+      },
+      {
+        text: "Foreign travel advice",
+        href: "#/foreign-travel-advice"
+      }
+    ]
+  }) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    <div class="govuk-!-margin-bottom-8">
+      <span class="govuk-caption-xl">Foreign travel advice</span>
+      <h1 class="govuk-heading-xl">Narnia entry requirements</h1>
+    </div>
+
+    <aside class="govuk-!-padding-bottom-3">
+      <nav aria-label="Travel advice pages">
+        <h2 class="govuk-heading-s">Contents</h2>
+        <ol class="govuk-list govuk-list--bullet govuk-!-font-size-16">
+          <li><a class="govuk-link" href="#/foreign-travel-advice/narnia">Summary</a></li>
+          <li><a class="govuk-link" href="#/foreign-travel-advice/narnia/safety-and-security">Safety and security</a></li>
+          <li aria-current="true">Entry requirements</li>
+          <li><a class="govuk-link" href="#/foreign-travel-advice/narnia/time-dilation">Time dilation</a></li>
+          <li><a class="govuk-link" href="#/foreign-travel-advice/narnia/archenland-travel">Archenland travel</a></li>
+          <li><a class="govuk-link" href="#/foreign-travel-advice/narnia/travel-advice-help-support">Travel advice help and support</a></li>
+        </ol>
+      </nav>
+    </aside>
+    <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-5">
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    <p class="govuk-body">This page reflects the UK government’s understanding of current rules for people travelling on a full ‘British Citizen’ passport from the UK, for the most common types of travel.</p>
+    <p class="govuk-body">Aslan the Great Lion sets and enforces entry rules. If you’re unsure how Narnia’s entry requirements apply to you, contact <a href="#" class="govuk-link">Narnia’s Embassy in the UK</a>, located in your nearest wardrobe.</p>
+
+    <h2 class="govuk-heading-m" id="children-and-young-people">Children and young people</h2>
+    <p class="govuk-body">There are no specific entry requirements for children and young people.</p>
+
+    <h2 class="govuk-heading-m" id="transiting">If you're transiting through Narnia</h2>
+    <p class="govuk-body">Transiting is when you pass through one country on the way to your final destination.</p>
+    <p class="govuk-body">Check with your wardobe manufacturer before departing.</p>
+
+    <h2 class="govuk-heading-m" id="exemptions">Exemptions</h2>
+    <p class="govuk-body">There are no exemptions to Narnia’s entry requirements.</p>
+
+    <h2 class="govuk-heading-m" id="travel-documents">Check your passport and travel documents before you travel</h2>
+
+    <h3 class="govuk-heading-s" id="passport-validity">Passport validity</h3>
+    <p class="govuk-body">If you are planning to travel to a fantasy country (except Middle Earth), you must follow the <a href="#" class="govuk-link">Phantasia area passport requirements</a>.</p>
+    <p class="govuk-body">Your passport must be:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>issued less than 10 years before the date you enter the country (check the ‘date of issue’)</li>
+      <li>valid for at least 3 months after the day you plan to leave (check the ‘expiry date’), accounting for time dilation</li>
+    </ul>
+    <p class="govuk-body">You must check your passport meets these requirements before you travel. If your passport was issued before 1 October 2018, extra months may have been added to its expiry date.</p>
+    <p class="govuk-body">Contact <a href="#" class="govuk-link">Narnia's Embassy in the UK</a> if you think that your passport does not meet both these requirements. <a href="#" class="govuk-link">Renew your passport if you need to</a>.</p>
+
+    <h3 class="govuk-heading-s" id="visas">Visas</h3>
+    <p class="govuk-body">You can travel to countries in the  <a href="#" class="govuk-link">Phantasia area</a> for up to 90 days in any 180-day period without a visa. This applies if you travel as a tourist, to visit family or friends, to attend business meetings, cultural or sports events, or for short-term studies or training.</p>
+    <p class="govuk-body">If you are travelling to Narnia and other Phantasia countries without a visa, make sure your whole visit is within the 90-day limit. Visits to Phantasia countries within the previous 180 days before you travel count towards your 90 days.</p>
+
+    {{ govukPagination({
+      previous: { href: "#/foreign-travel-advice/narnia/safety-and-security", labelText: "Safety and security" },
+      next: { href: "#/foreign-travel-advice/narnia/time-dilation", labelText: "Time dilation" }
+    }) }}
+  </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+
+{{ govukFooter({
+  navigation: [
+    {
+      title: "Services and information",
+      width: "two-thirds",
+      columns: 2,
+      items: [
+        {
+          href: "#",
+          text: "Benefits"
+        },
+        {
+          href: "#",
+          text: "Births, deaths, marriages and care"
+        },
+        {
+          href: "#",
+          text: "Business and self-employed"
+        },
+        {
+          href: "#",
+          text: "Childcare and parenting"
+        },
+        {
+          href: "#",
+          text: "Citizenship and living in the UK"
+        },
+        {
+          href: "#",
+          text: "Crime, justice and the law"
+        },
+        {
+          href: "#",
+          text: "Disabled people"
+        },
+        {
+          href: "#",
+          text: "Driving and transport"
+        },
+        {
+          href: "#",
+          text: "Education and learning"
+        },
+        {
+          href: "#",
+          text: "Employing people"
+        },
+        {
+          href: "#",
+          text: "Environment and countryside"
+        },
+        {
+          href: "#",
+          text: "Housing and local services"
+        },
+        {
+          href: "#",
+          text: "Money and tax"
+        },
+        {
+          href: "#",
+          text: "Passports, travel and living abroad"
+        },
+        {
+          href: "#",
+          text: "Visas and immigration"
+        },
+        {
+          href: "#",
+          text: "Working, jobs and pensions"
+        }
+      ]
+    },
+    {
+      title: "Departments and policy",
+      width: "one-third",
+      items: [
+        {
+          href: "#",
+          text: "How government works"
+        },
+        {
+          href: "#",
+          text: "Departments"
+        },
+        {
+          href: "#",
+          text: "Worldwide"
+        },
+        {
+          href: "#",
+          text: "Policies"
+        },
+        {
+          href: "#",
+          text: "Publications"
+        },
+        {
+          href: "#",
+          text: "Announcements"
+        }
+      ]
+    }
+  ],
+  meta: {
+    items: [
+      {
+        href: "#",
+        text: "Help"
+      },
+      {
+        href: "#",
+        text: "Cookies"
+      },
+      {
+        href: "#",
+        text: "Contact"
+      },
+      {
+        href: "#",
+        text: "Terms and conditions"
+      },
+      {
+        href: "#",
+        text: "Rhestr o Wasanaethau Cymraeg"
+      }
+    ],
+    html: 'Built by the <a href="#" class="govuk-footer__link">Government Digital Service</a>'
+  }
+}) }}
+
+{% endblock %}

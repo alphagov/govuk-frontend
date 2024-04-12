@@ -1,0 +1,48 @@
+---
+title: Are you sure you want to delete Josh Lyman’s account?
+---
+{% extends "layouts/full-page-example.njk" %}
+
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set homepage_url = "/" %}
+{% set pageTitle = example.title %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        {{ pageTitle }}
+      </h1>
+
+      <p class="govuk-body">Josh Lyman last logged in <strong>3 days ago</strong>.</p>
+
+      <p class="govuk-body">By deleting their administrator account they will no longer have access to this system. All cases that <strong>Josh Lyman</strong> is assigned to will remain open but their name will be removed from the case history.</p>
+
+      {{ govukWarningText({
+        text: "This action is final and cannot be undone.",
+        iconFallbackText: "Warning",
+        classes: "govuk-!-margin-bottom-8"
+      }) }}
+
+      <form method="post" novalidate>
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Delete account",
+            classes: "govuk-button--warning"
+          }) }}
+
+          {{ govukButton({
+            text: "Cancel",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

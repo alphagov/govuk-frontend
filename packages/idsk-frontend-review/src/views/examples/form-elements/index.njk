@@ -1,0 +1,178 @@
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+
+{% extends "layouts/examples.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl">Form elements</h1>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li><a href="#input" class="govuk-link">Label and text input</a></li>
+    <li><a href="#textarea" class="govuk-link">Label and textarea</a></li>
+    <li><a href="#radio-stacked" class="govuk-link">Fieldset, legend and radio buttons (stacked)</a></li>
+    <li><a href="#radio-inline" class="govuk-link">Fieldset, legend and radio buttons (inline - yes or no)</a></li>
+    <li><a href="#checkboxes-stacked" class="govuk-link">Fieldset, legend and checkboxes (stacked)</a></li>
+    <li><a href="#date" class="govuk-link">Date pattern</a></li>
+    <li><a href="#select" class="govuk-link">Select box</a></li>
+    <li><a href="#file" class="govuk-link">File upload</a></li>
+  </ul>
+
+  <form action="/" method="post">
+    {% call govukFieldset() %}
+      <span id="input"></span>
+      {{ govukInput({
+        id: "govuk-input-a",
+        label: {
+          text: "National Insurance number"
+        }
+      }) }}
+      {{ govukButton({
+        "text": "Save and continue"
+      }) }}
+    {% endcall %}
+
+    {% call govukFieldset() %}
+      <span id="textarea"></span>
+      {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+      {{ govukTextarea({
+        id: "govuk-textarea-a",
+        name: "govuk-textarea-a",
+        rows: "5",
+        label: {
+          text: "Why can't you provide a National Insurance number?"
+        }
+      }) }}
+    {% endcall %}
+
+    <span id="radio-stacked"></span>
+    {{ govukRadios({
+      "fieldset": {
+        "legend": {
+          text: "How do you want to be contacted?",
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      "idPrefix": "radio-stacked",
+      "name": "radio-stacked",
+      "items": [
+        {
+          "value": "email",
+          "text": "Email"
+        },
+        {
+          "value": "phone",
+          "text": "Phone"
+        },
+        {
+          "value": "text",
+          "text": "Text message"
+        }
+      ]
+    }) }}
+
+    <span id="radio-inline"></span>
+    {{ govukRadios({
+      "fieldset": {},
+      "classes": "govuk-radios--inline",
+      "idPrefix": "radio-inline",
+      "name": "radio-inline",
+      "items": [
+        {
+          "value": "yes",
+          "text": "Yes"
+        },
+        {
+          "value": "no",
+          "text": "No"
+        }
+      ]
+    }) }}
+
+    <span id="checkboxes-stacked"></span>
+    {{ govukCheckboxes({
+      "fieldset": {},
+      "idPrefix": "checkboxes-stacked",
+      "name": "checkboxes-stacked",
+      "items": [
+        {
+          "value": "waste-animal",
+          "text": "Waste from animal carcasses"
+        },
+        {
+          "value": "waste-mines",
+          "text": "Waste from mines or quarries"
+        },
+        {
+          "value": "waste-other",
+          "text": "Waste from other"
+        }
+      ]
+    }) }}
+
+    <span id="date"></span>
+    {{- govukDateInput({
+      "fieldset": {
+        "legend": {
+          "text": "What is your date of birth?",
+          "classes": "govuk-fieldset__legend--m"
+        }
+      },
+      "hint": {
+        "text": "For example, 31 3 1980"
+      },
+      "id": "dob",
+      "name": "dob"
+    }) -}}
+
+    {% call govukFieldset() %}
+      <span id="select"></span>
+      {{ govukSelect({
+        "id": "select-1",
+        "name": "select-1",
+        "label": {
+          "html": "Label text goes here"
+        },
+        "items": [
+          {
+            "value": 1,
+            "text": "GOV.UK frontend option 1"
+          },
+          {
+            "value": 2,
+            "text": "GOV.UK frontend option 2",
+            "selected": true
+          },
+          {
+            "value": 3,
+            "text": "GOV.UK frontend option 3"
+          }
+        ]
+      }) }}
+    {% endcall %}
+
+    {% call govukFieldset() %}
+      <span id="file"></span>
+      {{- govukFileUpload({
+        id: 'file-upload-1',
+        name: 'file-upload-1',
+        label: {
+          text: 'Upload a file'
+        }
+      }) -}}
+    {% endcall %}
+
+  </form>
+{% endblock %}

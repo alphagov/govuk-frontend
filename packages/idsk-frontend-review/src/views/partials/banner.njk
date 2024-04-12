@@ -1,0 +1,14 @@
+{% if shouldShowAppBanner %}
+<div class="app-banner app-banner--warning" data-module="app-banner">
+  <div class="govuk-width-container">
+    <p class="govuk-body">
+      This is an internal development app.
+      <br>
+      To learn how to use the GOV.UK Design System in your project, see <a class="govuk-link govuk-link--inverse" href="https://design-system.service.gov.uk/get-started/">Get started</a>.
+    </p>
+    <form method="post" action="/hide-banner">
+      <button class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0">Hide this banner</button>
+    </form>
+  </div>
+</div>
+{% endif %}

@@ -1,0 +1,427 @@
+{% extends "layouts/examples.njk" %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{% set examples = [
+  { name: "Initial" },
+  { name: "Hover", classes: ":hover" },
+  { name: "Focus", classes: ":focus" },
+  { name: "Hover, Focus", classes: ":hover :focus" },
+  { name: "Disabled", attributes: { "disabled": "disabled" } },
+  { name: "Disabled, Hover", classes: ":hover", attributes: { "disabled": "disabled" } },
+  { name: "Error", error: true },
+  { name: "Error, Hover", error: true, classes: ":hover" },
+  { name: "Error, Focus", error: true, classes: ":focus" },
+  { name: "Error, Hover, Focus", error: true, classes: ":hover :focus" }
+] %}
+
+{% set examplesTextInputs = examples.concat([
+  { name: "Readonly",attributes: { "readonly": "readonly" } },
+  { name: "Readonly, Hover", classes: ":hover", attributes: { "readonly": "readonly" } },
+  { name: "Readonly, Focus", classes: ":focus", attributes: { "readonly": "readonly" } },
+  { name: "Readonly, Hover, Focus", classes: ":hover :focus", attributes: { "readonly": "readonly" } },
+  { name: "X-Ray", xray: true }
+]) %}
+
+{% set examples = examples.concat([{ name: "X-Ray", xray: true }]) %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<style>
+.x-ray {
+  box-shadow: 0 0 0 3px rgba(175, 175, 175, 0.5);
+}
+
+.x-ray input,
+.x-ray select,
+.x-ray textarea {
+  opacity: 1 !important;
+  box-shadow: 0 0 0 3px rgba(0, 0, 255, 0.5);
+  -webkit-appearance: none;
+}
+
+.x-ray label {
+  box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.5);
+}
+</style>
+
+<div class="govuk-grid-row">
+  {% for hasValue in [false, true] %}
+    <div class="govuk-grid-column-one-half">
+      {% for item in examplesTextInputs %}
+        {{ govukInput({
+          id: 'input-' + loop.index,
+          value: 'Bats are mammals of the order Chiroptera' if hasValue else '',
+          classes: item.classes if item.classes else '',
+          label: {
+            text: item.name
+          },
+          formGroup: { classes: 'x-ray' if item.xray else '' },
+          attributes: item.attributes if item.attributes else {},
+          errorMessage: item.error
+        }) }}
+      {% endfor %}
+    </div>
+  {% endfor %}
+</div>
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+<div class="govuk-grid-row">
+  {% for hasValue in [false, true] %}
+    <div class="govuk-grid-column-one-half">
+      {% for item in examplesTextInputs %}
+        {{ govukTextarea({
+          id: 'textarea-' + loop.index,
+          value: "With their forelimbs adapted as wings, they are the only mammals capable of true and sustained flight. Bats are more agile in flight than most birds, flying with their very long spread-out digits covered with a thin membrane or patagium. The smallest bat, and arguably the smallest extant mammal, is Kitti's hog-nosed bat, which is 29–34 millimetres in length, 150 mm  across the wings and 2–2.6 g in mass. The largest bats are the flying foxes, with the giant golden-crowned flying fox, reaching a weight of 1.6 kg and having a wingspan of 1.7 m." if hasValue else '',
+          classes: item.classes if item.classes else '',
+          label: {
+            text: item.name
+          },
+          formGroup: { classes: 'x-ray' if item.xray else '' },
+          attributes: item.attributes if item.attributes else {},
+          errorMessage: item.error
+        }) }}
+      {% endfor %}
+    </div>
+  {% endfor %}
+</div>
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    <div class="govuk-form-group">
+      <div class="govuk-checkboxes govuk-checkboxes--small">
+
+        <div class="govuk-checkboxes__item govuk-!-margin-bottom-2">
+          <input class="govuk-checkboxes__input" id="foo1" name="foo" type="checkbox" value="bar">
+          <label class="govuk-label govuk-checkboxes__label" for="foo">
+            Unchecked
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item govuk-!-margin-bottom-2">
+          <input class="govuk-checkboxes__input" id="foo2" name="foo" type="checkbox" value="bar" checked>
+          <label class="govuk-label govuk-checkboxes__label" for="foo2">
+            Checked
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item govuk-!-margin-bottom-2 :hover">
+          <input class="govuk-checkboxes__input" id="foo3" name="foo" type="checkbox" value="bar">
+          <label class="govuk-label govuk-checkboxes__label" for="foo3">
+            Hover
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item govuk-!-margin-bottom-2 :hover">
+          <input class="govuk-checkboxes__input" id="foo4" name="foo" type="checkbox" value="bar" checked>
+          <label class="govuk-label govuk-checkboxes__label" for="foo4">
+            Hover, Checked
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item govuk-!-margin-bottom-2">
+          <input class="govuk-checkboxes__input :focus" id="foo5" name="foo" type="checkbox" value="bar">
+          <label class="govuk-label govuk-checkboxes__label" for="foo5">
+            Focus
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item govuk-!-margin-bottom-2">
+          <input class="govuk-checkboxes__input :focus" id="foo6" name="foo" type="checkbox" value="bar" checked>
+          <label class="govuk-label govuk-checkboxes__label" for="foo6">
+            Focus, Checked
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item govuk-!-margin-bottom-2 :hover">
+          <input class="govuk-checkboxes__input :focus" id="foo7" name="foo" type="checkbox" value="bar">
+          <label class="govuk-label govuk-checkboxes__label" for="foo7">
+            Focus, Hover
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item govuk-!-margin-bottom-2 :hover">
+          <input class="govuk-checkboxes__input :focus" id="foo8" name="foo" type="checkbox" value="bar" checked>
+          <label class="govuk-label govuk-checkboxes__label" for="foo8">
+            Focus, Checked, Hover
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item govuk-!-margin-bottom-2">
+          <input class="govuk-checkboxes__input" id="foo9" name="foo" type="checkbox" value="bar" disabled>
+          <label class="govuk-label govuk-checkboxes__label" for="foo9">
+            Disabled
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item govuk-!-margin-bottom-2">
+          <input class="govuk-checkboxes__input" id="foo10" name="foo" type="checkbox" value="bar" disabled checked>
+          <label class="govuk-label govuk-checkboxes__label" for="foo10">
+            Disabled, Checked
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item govuk-!-margin-bottom-2 x-ray">
+          <input class="govuk-checkboxes__input" id="foox" name="foo" type="checkbox" value="bar" checked>
+          <label class="govuk-label govuk-checkboxes__label" for="foox">
+            X-Ray
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="govuk-grid-column-one-half">
+    <div class="govuk-form-group">
+      <div class="govuk-radios govuk-radios--small">
+        <div class="govuk-radios__item govuk-!-margin-bottom-2">
+          <input class="govuk-radios__input" id="fizz1" name="fizz1" type="radio" value="">
+          <label class="govuk-label govuk-radios__label" for="fizz1">
+            Unchecked
+          </label>
+        </div>
+
+        <div class="govuk-radios__item govuk-!-margin-bottom-2">
+          <input class="govuk-radios__input" id="fizz2" name="fizz2" type="radio" value="" checked>
+          <label class="govuk-label govuk-radios__label" for="fizz2">
+            Checked
+          </label>
+        </div>
+
+        <div class="govuk-radios__item govuk-!-margin-bottom-2 :hover">
+          <input class="govuk-radios__input" id="fizz3" name="fizz3" type="radio" value="">
+          <label class="govuk-label govuk-radios__label" for="fizz3">
+            Hover
+          </label>
+        </div>
+
+        <div class="govuk-radios__item govuk-!-margin-bottom-2 :hover">
+          <input class="govuk-radios__input" id="fizz4" name="fizz4" type="radio" value="" checked>
+          <label class="govuk-label govuk-radios__label" for="fizz4">
+            Hover, Checked
+          </label>
+        </div>
+
+        <div class="govuk-radios__item govuk-!-margin-bottom-2">
+          <input class="govuk-radios__input :focus" id="fizz5" name="fizz5" type="radio" value="">
+          <label class="govuk-label govuk-radios__label" for="fizz5">
+            Focus
+          </label>
+        </div>
+
+        <div class="govuk-radios__item govuk-!-margin-bottom-2">
+          <input class="govuk-radios__input :focus" id="fizz6" name="fizz6" type="radio" value="" checked>
+          <label class="govuk-label govuk-radios__label" for="fizz6">
+            Focus, Checked
+          </label>
+        </div>
+
+        <div class="govuk-radios__item govuk-!-margin-bottom-2 :hover">
+          <input class="govuk-radios__input :focus" id="fizz7" name="fizz7" type="radio" value="">
+          <label class="govuk-label govuk-radios__label" for="fizz7">
+            Focus, Hover
+          </label>
+        </div>
+
+        <div class="govuk-radios__item govuk-!-margin-bottom-2 :hover">
+          <input class="govuk-radios__input :focus" id="fizz8" name="fizz8" type="radio" value="" checked>
+          <label class="govuk-label govuk-radios__label" for="fizz8">
+            Focus, Checked, Hover
+          </label>
+        </div>
+
+        <div class="govuk-radios__item govuk-!-margin-bottom-2">
+          <input class="govuk-radios__input" id="fizz9" name="fizz9" type="radio" value="" disabled>
+          <label class="govuk-label govuk-radios__label" for="fizz9">
+            Disabled
+          </label>
+        </div>
+
+        <div class="govuk-radios__item govuk-!-margin-bottom-2">
+          <input class="govuk-radios__input" id="fizz10" name="fizz10" type="radio" value="" disabled checked>
+          <label class="govuk-label govuk-radios__label" for="fizz10">
+            Disabled, Checked
+          </label>
+        </div>
+
+        <div class="govuk-radios__item govuk-!-margin-bottom-2 x-ray">
+          <input class="govuk-radios__input" id="fizz10" name="fizzx" type="radio" value="" checked>
+          <label class="govuk-label govuk-radios__label" for="fizzx">
+            X-Ray
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    <div class="govuk-checkboxes">
+      <div class="govuk-checkboxes__item govuk-!-margin-bottom-2">
+        <input class="govuk-checkboxes__input" id="foo1" name="foo" type="checkbox" value="bar">
+        <label class="govuk-label govuk-checkboxes__label" for="foo">
+          Unchecked
+        </label>
+      </div>
+
+      <div class="govuk-checkboxes__item govuk-!-margin-bottom-2">
+        <input class="govuk-checkboxes__input" id="foo2" name="foo" type="checkbox" value="bar" checked>
+        <label class="govuk-label govuk-checkboxes__label" for="foo2">
+          Checked
+        </label>
+      </div>
+
+      <div class="govuk-checkboxes__item govuk-!-margin-bottom-2">
+        <input class="govuk-checkboxes__input :focus" id="foo5" name="foo" type="checkbox" value="bar">
+        <label class="govuk-label govuk-checkboxes__label" for="foo5">
+          Focus
+        </label>
+      </div>
+
+      <div class="govuk-checkboxes__item govuk-!-margin-bottom-2">
+        <input class="govuk-checkboxes__input :focus" id="foo6" name="foo" type="checkbox" value="bar" checked>
+        <label class="govuk-label govuk-checkboxes__label" for="foo6">
+          Focus, Checked
+        </label>
+      </div>
+
+      <div class="govuk-checkboxes__item govuk-!-margin-bottom-2">
+        <input class="govuk-checkboxes__input" id="foo9" name="foo" type="checkbox" value="bar" disabled>
+        <label class="govuk-label govuk-checkboxes__label" for="foo9">
+          Disabled
+        </label>
+      </div>
+
+      <div class="govuk-checkboxes__item govuk-!-margin-bottom-2">
+        <input class="govuk-checkboxes__input" id="foo10" name="foo" type="checkbox" value="bar" disabled checked>
+        <label class="govuk-label govuk-checkboxes__label" for="foo10">
+          Disabled, Checked
+        </label>
+      </div>
+
+      <div class="govuk-checkboxes__item govuk-!-margin-bottom-2 x-ray">
+        <input class="govuk-checkboxes__input" id="foox" name="foox" type="checkbox" value="bar" checked>
+        <label class="govuk-label govuk-checkboxes__label" for="foox">
+          X-Ray
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="govuk-grid-column-one-half">
+    <div class="govuk-radios">
+      <div class="govuk-radios__item govuk-!-margin-bottom-2">
+        <input class="govuk-radios__input" id="radio-large1" name="radio-large1" type="radio" value="">
+        <label class="govuk-label govuk-radios__label" for="radio-large1">
+          Unchecked
+        </label>
+      </div>
+
+      <div class="govuk-radios__item govuk-!-margin-bottom-2">
+        <input class="govuk-radios__input" id="radio-large2" name="radio-large2" type="radio" value="" checked>
+        <label class="govuk-label govuk-radios__label" for="radio-large2">
+          Checked
+        </label>
+      </div>
+
+      <div class="govuk-radios__item govuk-!-margin-bottom-2">
+        <input class="govuk-radios__input :focus" id="radio-large5" name="radio-large5" type="radio" value="">
+        <label class="govuk-label govuk-radios__label" for="radio-large5">
+          Focus
+        </label>
+      </div>
+
+      <div class="govuk-radios__item govuk-!-margin-bottom-2">
+        <input class="govuk-radios__input :focus" id="radio-large6" name="radio-large6" type="radio" value="" checked>
+        <label class="govuk-label govuk-radios__label" for="radio-large6">
+          Focus, Checked
+        </label>
+      </div>
+
+      <div class="govuk-radios__item govuk-!-margin-bottom-2">
+        <input class="govuk-radios__input" id="radio-large9" name="radio-large9" type="radio" value="" disabled>
+        <label class="govuk-label govuk-radios__label" for="radio-large9">
+          Disabled
+        </label>
+      </div>
+
+      <div class="govuk-radios__item govuk-!-margin-bottom-2">
+        <input class="govuk-radios__input" id="radio-large10" name="radio-large10" type="radio" value="" disabled checked>
+        <label class="govuk-label govuk-radios__label" for="radio-large10">
+          Disabled, Checked
+        </label>
+      </div>
+
+      <div class="govuk-radios__item govuk-!-margin-bottom-2 x-ray">
+        <input class="govuk-radios__input" id="radio-largex" name="radio-largex" type="radio" value="" checked>
+        <label class="govuk-label govuk-radios__label" for="radio-largex">
+          X-Ray
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    {% for item in examples %}
+      {{ govukSelect({
+        id: 'select-' + loop.index,
+        items: [
+          { value: 'Aethalops aequalis', text: 'Borneo fruit bat' },
+          { value: 'Pteropus mariannus mariannus', text: 'Guam Mariana fruit bat' },
+          { value: 'Ectophylla alba', text: 'Honduran white bat', selected: true },
+          { value: 'Pteropus medius', text: 'Indian flying fox' },
+          { value: 'Megaerops kusnotoi', text: 'Javan tailless fruit bat' },
+          { value: 'Pteropus rufus', text: 'Madagascan flying fox' },
+          { value: 'Myzopoda aurita', text: 'Madagascar sucker-footed bat' },
+          { value: 'Miniopterus mossambicus', text: 'Mozambique long-fingered bat' },
+          { value: 'Miniopterus paululus', text: 'Philippine long-fingered bat' },
+          { value: 'Myonycteris brachycephala', text: 'São Tomé collared fruit bat' },
+          { value: 'Pteropus seychellensis', text: 'Seychelles fruit bat' },
+          { value: 'Harpyionycteris celebensis', text: 'Sulawesi harpy fruit bat' }
+        ],
+        classes: item.classes if item.classes else '',
+        label: {
+          text: item.name
+        },
+        formGroup: { classes: 'x-ray' if item.xray else '' },
+        attributes: item.attributes if item.attributes else {},
+        errorMessage: item.error
+      }) }}
+    {% endfor %}
+  </div>
+  <div class="govuk-grid-column-one-half">
+    {% for item in examples %}
+      {{ govukFileUpload({
+        id: 'file-upload-' + loop.index,
+        classes: item.classes if item.classes else '',
+        label: {
+          text: item.name
+        },
+        formGroup: { classes: 'x-ray' if item.xray else '' },
+        attributes: item.attributes if item.attributes else {},
+        errorMessage: item.error
+      }) }}
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

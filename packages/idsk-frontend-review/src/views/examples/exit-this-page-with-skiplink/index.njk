@@ -1,0 +1,38 @@
+{% from "govuk/components/exit-this-page/macro.njk" import govukExitThisPage %}
+{% from "govuk/components/skip-link/macro.njk" import govukSkipLink %}
+
+{% extends "layouts/examples.njk" %}
+
+{% block skipLink %}
+  {{ super() }}
+  {{ govukSkipLink({
+    href: "https://www.gov.uk/",
+    text: "Exit this page",
+    classes: "govuk-js-exit-this-page-skiplink",
+    attributes: {
+      rel: "nofollow noreferrer"
+    }
+  }) }}
+{% endblock %}
+
+{% block content %}
+  {{ govukExitThisPage({
+    redirectUrl: "https://www.gov.uk/"
+  }) }}
+{% endblock %}
+
+{% block bodyEnd %}
+  <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+  <script type="module">
+    import { ExitThisPage, SkipLink } from '/javascripts/govuk-frontend.min.js'
+
+    const $skipLinks = document.querySelectorAll('[data-module="govuk-skip-link"]')
+    const $exitThisPage = document.querySelector('[data-module="govuk-exit-this-page"]')
+
+    $skipLinks.forEach(($skipLink) => {
+      new SkipLink($skipLink)
+    })
+
+    new ExitThisPage($exitThisPage)
+  </script>
+{% endblock %}

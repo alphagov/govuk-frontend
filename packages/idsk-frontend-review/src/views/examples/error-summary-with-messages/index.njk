@@ -1,0 +1,84 @@
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% extends "layouts/examples.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<form action="/" method="post">
+
+  {{ govukErrorSummary({
+    "titleText": "Message to alert the user to a problem goes here",
+    "descriptionText": "Optional description of the errors and how to correct them",
+    "classes": "optional-extra-class",
+    "errorList": [
+      {
+        "text": "You must provide your passport number",
+        "href": "#passport-number"
+      },
+      {
+        "text": "You must provide your expiry date",
+        "href": "#expiry-month"
+      }
+    ]
+  }) }}
+
+  <h1 class="govuk-heading-xl">Passport details</h1>
+
+  {{ govukInput({
+    label: {
+      text: "Passport number",
+      classes: "govuk-label--m"
+    },
+    hint: {
+      text: "For example, 502135326"
+    },
+    id: "passport-number",
+    name: "passport-number",
+    errorMessage: {
+      "text": "You must provide your passport number"
+    }
+  }) }}
+
+  {{ govukDateInput({
+    fieldset: {
+      legend: {
+        text: 'Expiry date',
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    hint: {
+      text: 'For example, 08 2014'
+    },
+    id: 'expiry',
+    name: 'expiry',
+    items:[
+      {
+        name: 'month',
+        classes: 'govuk-input--width-2 govuk-input--error'
+      },
+      {
+        name: 'year',
+        classes: 'govuk-input--width-4 govuk-input--error'
+      }
+    ],
+    errorMessage: {
+      "text": "Enter your expiry date"
+    }
+    })
+  }}
+
+  {{ govukButton({
+    "text": "Continue"
+  }) }}
+
+</form>
+{% endblock %}

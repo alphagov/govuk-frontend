@@ -1,0 +1,57 @@
+---
+title: What is your home postcode?
+scenario: |
+  As part of an online service, you are asked to provide your postcode.
+
+  Prompts:
+
+  1. Do not answer the question
+---
+
+{# This example is based of the  "What is your home postcode?" example: https://design-system.service.gov.uk/patterns/question-pages/postcode/index.html #}
+{% extends "layouts/full-page-example.njk" %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% set pageTitle = example.title %}
+{% block pageTitle %}{{ "Error: " if errorSummary | length }}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <form method="post" novalidate>
+    {% if errorSummary | length %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorSummary
+      }) }}
+    {% endif %}
+
+    {{ govukInput({
+      label: {
+        text: pageTitle,
+        classes: "govuk-label--xl",
+        isPageHeading: true
+      },
+      classes: "govuk-input--width-10",
+      id: "address-postcode",
+      name: "address-postcode",
+      autocomplete: "postal-code",
+      value: values["address-postcode"],
+      errorMessage: errors["address-postcode"]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  </form>
+
+{% endblock %}
