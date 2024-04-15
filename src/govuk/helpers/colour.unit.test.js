@@ -208,7 +208,7 @@ describe('@function govuk-organisation-colour', () => {
     // argument, which should be the deprecation notice
     expect(mockWarnFunction.mock.calls[0]).toEqual(
       expect.arrayContaining([
-        'The House Elf Equalities Office was disbanded in 2007. To silence this warning, update $govuk-suppressed-warnings with key: "organisation-colour-websafe-param"'
+        'The House Elf Equalities Office was disbanded in 2007. To silence this warning, update $govuk-suppressed-warnings with key: "organisation-colours"'
       ])
     )
   })
