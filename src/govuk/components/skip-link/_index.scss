@@ -27,6 +27,7 @@
 
       // Undo unwanted changes when global styles are enabled
       @if $govuk-global-styles {
+        @include govuk-link-decoration;
         box-shadow: none;
       }
     }
