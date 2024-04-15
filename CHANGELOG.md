@@ -12,6 +12,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 - [#4919: Use canvas colour for cookie banner over hardcoded grey](https://github.com/alphagov/govuk-frontend/pull/4919)
 - [#4899: Remove indents from conditional reveals in radios and checkboxes](https://github.com/alphagov/govuk-frontend/pull/4899)
 - [#4935: Fix password input button unexpectedly stretching](https://github.com/alphagov/govuk-frontend/pull/4935)
+- [#4936: Fix skip link underline being removed when global styles are enabled](https://github.com/alphagov/govuk-frontend/pull/4936)
 
 ## GOV.UK Frontend v5.3.0 (Feature release)
 
