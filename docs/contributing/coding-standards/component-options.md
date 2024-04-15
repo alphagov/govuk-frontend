@@ -30,9 +30,11 @@ Next, use the `mergeConfigs` helper to combine the default config and the config
 
 The order in which variables are written defines their priority, with objects passed sooner being overwritten by those passed later. As we want the user's configuration to take precedence over our defaults, we list our default configuration object first.
 
-There is no guarantee `config` will have any value at all, so it'll be `undefined`. We use an OR operator (`||`) as a safety check. If the value is `undefined`, we use an empty object instead.
+There is no guarantee `config` will have any value at all, so we set the default to an empty object (`{}`) in the constructor parameters.
 
 ```mjs
+import { mergeConfigs } from '../../common/index.mjs'
+
 export class Accordion {
   constructor($module, config = {}) {
     this.config = mergeConfigs(
@@ -66,7 +68,7 @@ It's now possible to individually initialise the component with configuration op
 
 ## Allowing options to be passed through the `initAll` function
 
-Usually, teams will not be individually initialising components. Instead, GOV.UK Frontend ships with an `initAll` function, which searches the page for instances of components and automatically initialises them.
+Often, teams will not be individually initialising components. Instead, GOV.UK Frontend ships with an `initAll` function, which searches the page for instances of components and automatically initialises them.
 
 In `src/govuk/all.mjs`, update the component's `new` class to pass through a nested configuration object. The nested object should use the component's name converted to camelCase (for example, the 'Character Count' component becomes `characterCount`).
 
@@ -95,25 +97,30 @@ It's now possible to pass configuration options for your component, as well as m
 
 For convenience, we also allow for configuration options to be passed through HTML `data-*` attributes.
 
-You can find `data-*` attributes in JavaScript by looking at an element's `dataset` property. Browsers will convert the attribute names from HTML's kebab-case to more JavaScript-friendly camelCase when working with `dataset`. See ['Naming configuration options'](#naming-configuration-options) for exceptions.
+You can find `data-*` attributes in JavaScript by looking at an element's `dataset` property. Browsers will convert the attribute names from HTML's kebab-case to more JavaScript-friendly camelCase when working with `dataset`.
+
+See ['Naming configuration options'](#naming-configuration-options) for exceptions to how names are transformed.
 
 As we expect configuration-related `data-*` attributes to always be on the component's root element (the same element with the `data-module` attribute), we can access them all using `$module.dataset`.
 
 Using the `mergeConfigs` call discussed earlier in this document, update it to include `$module.dataset` as the highest priority.
 
 ```mjs
+import { mergeConfigs } from '../../common/index.mjs'
+import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+
 export class Accordion {
   constructor($module, config = {}) {
     this.config = mergeConfigs(
       Accordion.defaults,
       config,
-      normaliseDataset($module.dataset)
+      normaliseDataset(Accordion, $module.dataset)
     )
   }
 }
 ```
 
-Here, we pass the value of `$module.dataset` through our `normaliseDataset` function. This is because attribute values in dataset are always interpreted as strings. `normaliseDataset` runs a few simple checks to convert values back to numbers or booleans where appropriate.
+Here, we pass the value of `$module.dataset` through our `normaliseDataset` function. This is because attribute values in dataset are always interpreted as strings. `normaliseDataset` looks at the component's configuration schema and converts values into numbers or booleans where needed.
 
 Now, in our HTML, we could pass configuration options by using the kebab-case version of the option's name.
 
@@ -127,6 +134,51 @@ Now, in our HTML, we could pass configuration options by using the kebab-case ve
 ```
 
 However, this only works for developers who are writing raw HTML. We include Nunjucks macros for each component with GOV.UK Frontend to make development easier and faster, but this also makes it harder for developers to manually alter the raw HTML. We'll add a new parameter to Nunjucks to help them out.
+
+### Adding a configuration schema
+
+Components that accept configuration using `data-*` attributes also require a schema. This schema documents what parameters a configuration object may contain and what types of value they're expected to be.
+
+Having a schema is required for the `normaliseDataset` function to work. A schema is also needed to use the `validateConfig` and `extractConfigByNamespace` functions we'll cover later on.
+
+```mjs
+export class Accordion {
+  static schema = Object.freeze({
+    properties: {
+      i18n: { type: 'object' },
+      rememberExpanded: { type: 'boolean' }
+    }
+  })
+}
+```
+
+### Validating a provided configuration against the schema
+
+You can use the `validateConfig` function to ensure that a configuration object matches the schema format.
+
+If it doesn't, you can return a `ConfigError`.
+
+```mjs
+import { mergeConfigs, validateConfig } from '../../common/index.mjs'
+import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { ConfigError } from '../../errors/index.mjs'
+
+export class Accordion {
+  constructor($module, config = {}) {
+    this.config = mergeConfigs(
+      Accordion.defaults,
+      config,
+      normaliseDataset(Accordion, $module.dataset)
+    )
+
+    // Check that the configuration provided is valid
+    const errors = validateConfig(Accordion.schema, this.config)
+    if (errors[0]) {
+      throw new ConfigError(`Accordion: ${errors[0]}`)
+    }
+  }
+}
+```
 
 ## Adding a Nunjucks parameter
 
@@ -177,7 +229,7 @@ In our example, `rememberExpanded` becomes `data-remember-expanded`.
 
 Unlike the `data-*` attribute in HTML and our use of `dataset` in JavaScript, there is no intrinsic link between the Nunjucks parameter name and the names used elsewhere. The Nunjucks parameter can therefore be named differently, if convenient.
 
-A common case is specifying whether a parameter accepts HTML or only plain text. For example, if a configuration option's value is inserted into the page using `innerText`, you might want to name the Nunjucks parameter something like `sectionLabelText` to indicate that HTML will not be rendered.
+A common case is specifying whether a parameter accepts HTML or only plain text. For example, if a configuration option's value is inserted into the page using `innerText`, you might want to name the Nunjucks parameter something like `sectionLabelText` to indicate that HTML will not be parsed if provided.
 
 There is more guidance on naming Nunjucks parameters in [the Nunjucks API documentation](https://github.com/alphagov/govuk-frontend/blob/main/docs/contributing/coding-standards/nunjucks-api.md#naming-options).
 
@@ -185,22 +237,25 @@ There is more guidance on naming Nunjucks parameters in [the Nunjucks API docume
 
 You can group configuration options in JavaScript and HTML together by using namespaces; period-separated strings that prefix the configuration option name. Namespaces follow the same formats as other option names, being camelCase in JavaScript and kebab-case in HTML.
 
-These are most commonly used for translation strings, which are usually namespaced under `i18n` (for 'internationalisation').
+These are most commonly used for translation strings, which are usually namespaced under `i18n` (short for 'internationalisation').
 
 For example, we could namespace our `rememberExpanded` option under the `stateInfo` namespace. Our `data-*` attribute would now be named `data-state-info.remember-expanded` and accessed in the component's JavaScript using `this.config.stateInfo.rememberExpanded`.
 
 The `extractConfigByNamespace` JavaScript helper can be used to create an object containing _only_ the configuration options that belong to a certain namespace.
 
 ```mjs
+import { mergeConfigs, extractConfigByNamespace } from '../../common/index.mjs'
+import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+
 export class Accordion {
   constructor($module, config = {}) {
     this.config = mergeConfigs(
       Accordion.defaults,
       config,
-      normaliseDataset($module.dataset)
+      normaliseDataset(Accordion, $module.dataset)
     )
 
-    this.stateInfo = extractConfigByNamespace(this.config, 'stateInfo');
+    this.stateInfo = extractConfigByNamespace(Accordion, this.config, 'stateInfo');
   }
 }
 ```
