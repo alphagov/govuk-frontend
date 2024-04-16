@@ -5,7 +5,6 @@
 # Node.js modules
 node_modules/
 .idea
-
 # Test coverage
 coverage/
 

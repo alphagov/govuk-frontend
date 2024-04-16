@@ -7,8 +7,8 @@ const {
   nunjucksEnv,
   render
 } = require('@govuk-frontend/lib/components')
-const validatorConfig = require('govuk-frontend/.htmlvalidate.js')
 const { HtmlValidate } = require('html-validate')
+const validatorConfig = require('idsk-frontend/.htmlvalidate.js')
 const { outdent } = require('outdent')
 
 describe('Components', () => {

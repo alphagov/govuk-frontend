@@ -62,6 +62,10 @@
   font-weight: $govuk-font-weight-bold if($important, !important, null);
 }
 
+@mixin govuk-typography-weight-black($important: false) {
+  font-weight: $govuk-font-weight-black if($important, important, null);
+}
+
 /// Tabular number helper
 ///
 /// Switches numerical glyphs (0–9) to use alternative forms with a
@@ -261,6 +265,8 @@
     @include govuk-typography-weight-regular;
   } @else if $weight == bold {
     @include govuk-typography-weight-bold;
+  } @else if $weight == black {
+    @include govuk-typography-weight-black;
   }
 
   @if $size {
