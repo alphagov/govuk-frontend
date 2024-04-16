@@ -1,10 +1,13 @@
 @include govuk-exports("govuk/core/typography") {
+  .font-bold {
+    font-weight: bold;
+  }
+
   // Headings
 
   %govuk-heading-xl {
     @include govuk-text-colour;
-    @include govuk-font($size: 48, $weight: bold);
-
+    @include govuk-font($size: 48, $weight: black);
     display: block;
 
     margin-top: 0;
@@ -45,11 +48,12 @@
 
   %govuk-heading-s {
     @include govuk-text-colour;
-    @include govuk-font($size: 19, $weight: bold);
+    @include govuk-font($size: 20, $weight: bold);
 
     display: block;
 
     margin-top: 0;
+    letter-spacing: 0.15px;
     @include govuk-responsive-margin(4, "bottom");
   }
 
@@ -57,7 +61,36 @@
     @extend %govuk-heading-s;
   }
 
+  // Subtitle
+
+  .idsk-subtitle {
+    font-family: $govuk-font-family;
+    font-size: 19px;
+    letter-spacing: 0.5px;
+    line-height: 28px;
+    @media (min-width: 40.0625em) {
+      font-size: 24px;
+      letter-spacing: 0.15px;
+      line-height: 36px;
+    }
+  }
+
   // Captions to be used inside headings
+
+  .idsk-caption {
+    color: $govuk-text-colour;
+    font-family: $govuk-font-family;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    line-height: 16px;
+  }
+
+  .idsk-text-button {
+    font-family: $govuk-font-family;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    line-height: 24px;
+  }
 
   .govuk-caption-xl {
     @include govuk-font($size: 27);

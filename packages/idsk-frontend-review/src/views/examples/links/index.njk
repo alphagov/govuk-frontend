@@ -1,33 +1,33 @@
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{#{% from "govuk/components/back-link/macro.njk" import govukBackLink %}#}
 
 {% extends "layouts/examples.njk" %}
 
-{% block beforeContent %}
-  {{ govukBackLink({
-    href: "/"
-  }) }}
-{% endblock %}
+{#{% block beforeContent %}#}
+{#  {{ govukBackLink({#}
+{#    href: "/"#}
+{#  }) }}#}
+{#{% endblock %}#}
 
 {% block content %}
 
-{% set variants = {
-  'Link': '',
-  'Link with no visited state': 'govuk-link--no-visited-state',
-  'Text link': 'govuk-link--text-colour',
-  'Muted link': 'govuk-link--muted',
-  'Inverse': 'govuk-link--inverse'
-} %}
+  {% set variants = {
+    'Link': '',
+    'Link with no visited state': 'govuk-link--no-visited-state',
+    'Text link': 'govuk-link--text-colour',
+    'Muted link': 'govuk-link--muted',
+    'Inverse': 'govuk-link--inverse'
+  } %}
 
-{% set states = {
-  'Link': ':link',
-  'Visited link': ':visited',
-  'Hovered link': ':hover',
-  'Active link': ':active',
-  'Focussed link': ':focus',
-  'Focussed visited link': ':focus :visited',
-  'Focussed hovered link': ':focus :hover',
-  'Focussed active link': ':focus :active'
-} %}
+  {% set states = {
+    'Link': ':link',
+    'Visited link': ':visited',
+    'Hovered link': ':hover',
+    'Active link': ':active',
+    'Focussed link': ':focus',
+    'Focussed visited link': ':focus :visited',
+    'Focussed hovered link': ':focus :hover',
+    'Focussed active link': ':focus :active'
+  } %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -48,20 +48,32 @@
         <a class="govuk-link govuk-link--no-underline" href="#">Link with no underline</a>
       </p>
 
-    {% for variant_description, variant_class in variants %}
+      {% for variant_description, variant_class in variants %}
 
-      <section class="govuk-!-margin-top-8"{% if variant_class == "govuk-link--inverse"%} style="background: #1d70b8; padding: 15px; margin: -15px;"{% endif %}>
-        <h2 class="govuk-heading-l"{% if variant_class == "govuk-link--inverse"%} style="color: #fff;"{% endif %}>{{ variant_description }}</h2>
+        <section class="govuk-!-margin-top-8">
+          <h2 class="govuk-heading-l">Hypertextové linky IDSK</h2>
 
-      {% for state_description, state_class in states %}
-        <p class="govuk-body">
-          <a href="/#{{ randomPageHash }}" class="govuk-link {{ variant_class }} {{ state_class }}">
-            {{ state_description}}
-          </a>
-        </p>
+          <p><a href="#" class="idsk-link-l">Link L</a></p>
+          <p><a href="#" class="idsk-link-l font-bold">Link L Bold</a></p>
+          <p><a href="#" class="idsk-link-m">Link M</a></p>
+          <p><a href="#" class="idsk-link-m font-bold">Link M bold</a></p>
+          <p><a href="#" class="govuk-link">Link S</a></p>
+          <p><a href="#" class="idsk-link-s font-bold">Link S Bold</a></p>
+          <p><a href="#" class="idsk-link-caption">Link Caption</a></p>
+        </section>
+
+        <section class="govuk-!-margin-top-8"{% if variant_class == "govuk-link--inverse"%} style="background: #1d70b8; padding: 15px; margin: -15px;"{% endif %}>
+          <h2 class="govuk-heading-l"{% if variant_class == "govuk-link--inverse"%} style="color: #fff;"{% endif %}>{{ variant_description }}</h2>
+
+          {% for state_description, state_class in states %}
+            <p class="govuk-body">
+              <a href="/#{{ randomPageHash }}" class="govuk-link {{ variant_class }} {{ state_class }}">
+                {{ state_description}}
+              </a>
+            </p>
+          {% endfor %}
+        </section>
       {% endfor %}
-      </section>
-    {% endfor %}
 
       <section class="govuk-!-margin-top-8">
         <h2 class="govuk-heading-l govuk-!-margin-top-6">Multi-line links</h2>
