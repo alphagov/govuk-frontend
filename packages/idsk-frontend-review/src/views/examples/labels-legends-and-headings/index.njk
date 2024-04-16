@@ -1,0 +1,2788 @@
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% extends "layouts/examples.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl">Labels, legends and headings</h1>
+
+  <h2 class="govuk-heading-l">Text input</h2>
+
+  <h3 class="govuk-heading-s">isPageHeading: true</h3>
+
+  {{ govukInput({
+    "label": {
+      "text": "<h1> govuk-label--xl",
+      isPageHeading: true,
+      classes: 'govuk-label--xl '
+    },
+    "id": "text-input-heading-xl",
+    "name": "text-input-heading-xl"
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<h1> govuk-label--l",
+      isPageHeading: true,
+      classes: 'govuk-label--l '
+    },
+    "id": "text-input-heading-l",
+    "name": "text-input-heading-l"
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<h1> govuk-label--m",
+      isPageHeading: true,
+      classes: 'govuk-label--m '
+    },
+    "id": "text-input-heading-m",
+    "name": "text-input-heading-m"
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<h1> govuk-label--s",
+      isPageHeading: true,
+      classes: 'govuk-label--s '
+    },
+    "id": "text-input-heading-s",
+    "name": "text-input-heading-s"
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<h1> No class",
+      isPageHeading: true,
+      classes: ''
+    },
+    "id": "text-input-heading-no-class",
+    "name": "text-input-heading-no-class"
+  }) }}
+
+  <h3 class="govuk-heading-s">isPageHeading: false</h3>
+
+  {{ govukInput({
+    "label": {
+      "text": "<label> govuk-label--xl",
+      classes: 'govuk-label--xl '
+    },
+    "id": "text-input-xl",
+    "name": "text-input-xl"
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<label> govuk-label--l",
+      classes: 'govuk-label--l '
+    },
+    "id": "text-input-l",
+    "name": "text-input-l"
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<label> govuk-label--m",
+      classes: 'govuk-label--m'
+    },
+    "id": "text-input-m",
+    "name": "text-input-m"
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<label> govuk-label--s",
+      classes: 'govuk-label--s'
+    },
+    "id": "text-input-s",
+    "name": "text-input-s"
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<label> No class",
+      classes: ''
+    },
+    "id": "text-input-no-class",
+    "name": "text-input-no-class"
+  }) }}
+
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+  <h2 class="govuk-heading-l">Text input (with hint)</h2>
+
+  <h3 class="govuk-heading-s">isPageHeading: true</h3>
+
+  {{ govukInput({
+    "label": {
+      "text": "<h1> govuk-label--xl",
+      isPageHeading: true,
+      classes: 'govuk-label--xl '
+    },
+    "hint": {
+      "html": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    },
+    "id": "text-input-hint-heading-xl",
+    "name": "text-input-hint-heading-xl"
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<h1> govuk-label--l",
+      isPageHeading: true,
+      classes: 'govuk-label--l '
+    },
+    "hint": {
+      "html": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    },
+    "id": "text-input-hint-heading-l",
+    "name": "text-input-hint-heading-l"
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<h1> govuk-label--m",
+      isPageHeading: true,
+      classes: 'govuk-label--m '
+    },
+    "hint": {
+      "html": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    },
+    "id": "text-input-hint-heading-m",
+    "name": "text-input-hint-heading-m"
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<h1> govuk-label--s",
+      isPageHeading: true,
+      classes: 'govuk-label--s '
+    },
+    "hint": {
+      "html": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    },
+    "id": "text-input-hint-heading-s",
+    "name": "text-input-hint-heading-s"
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<h1> No class",
+      isPageHeading: true,
+      classes: ''
+    },
+    "hint": {
+      "html": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    },
+    "id": "text-input-hint-heading-no-class",
+    "name": "text-input-hint-heading-no-class"
+  }) }}
+
+  <h3 class="govuk-heading-s">isPageHeading: false</h3>
+
+  {{ govukInput({
+    "label": {
+      "text": "<label> govuk-label--xl",
+      classes: 'govuk-label--xl '
+    },
+    "hint": {
+      "html": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    },
+    "id": "text-input-hint-xl",
+    "name": "text-input-hint-xl"
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<label> govuk-label--l",
+      classes: 'govuk-label--l '
+    },
+    "hint": {
+      "html": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    },
+    "id": "text-input-hint-l",
+    "name": "text-input-hint-l"
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<label> govuk-label--m",
+      classes: 'govuk-label--m'
+    },
+    "hint": {
+      "html": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    },
+    "id": "text-input-hint-m",
+    "name": "text-input-hint-m"
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<label> govuk-label--s",
+      classes: 'govuk-label--s'
+    },
+    "hint": {
+      "html": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    },
+    "id": "text-input-hint-s",
+    "name": "text-input-hint-s"
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<label> No class",
+      classes: ''
+    },
+    "hint": {
+      "html": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    },
+    "id": "text-input-hint-no-class",
+    "name": "text-input-hint-no-class"
+  }) }}
+
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+  <h2 class="govuk-heading-l">Text input (with hint and error)</h2>
+
+  <h3 class="govuk-heading-s">isPageHeading: true</h3>
+
+  {{ govukInput({
+    "label": {
+      "text": "<h1> govuk-label--xl",
+      isPageHeading: true,
+      classes: 'govuk-label--xl '
+    },
+    "hint": {
+      "html": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    },
+    "id": "text-input-heading-hint-error-xl",
+    "name": "text-input-heading-hint-error-xl",
+    "errorMessage": {
+      "text": "Error message goes here"
+    }
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<h1> govuk-label--l",
+      isPageHeading: true,
+      classes: 'govuk-label--l '
+    },
+    "hint": {
+      "html": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    },
+    "id": "text-input-heading-hint-error-l",
+    "name": "text-input-heading-hint-error-l",
+    "errorMessage": {
+      "text": "Error message goes here"
+    }
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<h1> govuk-label--m",
+      isPageHeading: true,
+      classes: 'govuk-label--m '
+    },
+    "hint": {
+      "html": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    },
+    "id": "text-input-heading-hint-error-m",
+    "name": "text-input-heading-hint-error-m",
+    "errorMessage": {
+      "text": "Error message goes here"
+    }
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<h1> govuk-label--s",
+      isPageHeading: true,
+      classes: 'govuk-label--s '
+    },
+    "hint": {
+      "html": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    },
+    "id": "text-input-heading-hint-error-s",
+    "name": "text-input-heading-hint-error-s",
+    "errorMessage": {
+      "text": "Error message goes here"
+    }
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<h1> No class",
+      isPageHeading: true,
+      classes: ''
+    },
+    "hint": {
+      "html": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    },
+    "id": "text-input-heading-hint-error-no-class",
+    "name": "text-input-heading-hint-error-no-class",
+    "errorMessage": {
+      "text": "Error message goes here"
+    }
+  }) }}
+
+  <h3 class="govuk-heading-s">isPageHeading: false</h3>
+
+  {{ govukInput({
+    "label": {
+      "text": "<label> govuk-label--xl",
+      classes: 'govuk-label--xl '
+    },
+    "hint": {
+      "html": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    },
+    "id": "text-input-hint-error-xl",
+    "name": "text-input-hint-error-xl",
+    "errorMessage": {
+      "text": "Error message goes here"
+    }
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<label> govuk-label--l",
+      classes: 'govuk-label--l '
+    },
+    "hint": {
+      "html": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    },
+    "id": "text-input-hint-error-l",
+    "name": "text-input-hint-error-l",
+    "errorMessage": {
+      "text": "Error message goes here"
+    }
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<label> govuk-label--m",
+      classes: 'govuk-label--m '
+    },
+    "hint": {
+      "html": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    },
+    "id": "text-input-hint-error-m",
+    "name": "text-input-hint-error-m",
+    "errorMessage": {
+      "text": "Error message goes here"
+    }
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<label> govuk-label--s",
+      classes: 'govuk-label--s '
+    },
+    "hint": {
+      "html": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    },
+    "id": "text-input-hint-error-s",
+    "name": "text-input-hint-error-s",
+    "errorMessage": {
+      "text": "Error message goes here"
+    }
+  }) }}
+
+  {{ govukInput({
+    "label": {
+      "text": "<label> No class",
+      classes: ''
+    },
+    "hint": {
+      "html": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    },
+    "id": "text-input-hint-error-no-class",
+    "name": "text-input-hint-error-no-class",
+    "errorMessage": {
+      "text": "Error message goes here"
+    }
+  }) }}
+
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+  <h2 class="govuk-heading-l">Checkboxes</h2>
+
+  <h3 class="govuk-heading-s">isPageHeading: true</h3>
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-heading-xl",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--xl',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--xl'
+      }
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-heading-l",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--l',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--l'
+      }
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-heading-m",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--m',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-heading-s",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--s',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--s'
+      }
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-heading-no-class",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> No class',
+        isPageHeading: true,
+        classes: ''
+      }
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  <h3 class="govuk-heading-s">isPageHeading: false</h3>
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-xl",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--xl',
+        classes: 'govuk-fieldset__legend--xl'
+      }
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-l",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--l',
+        classes: 'govuk-fieldset__legend--l'
+      }
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-m",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--m',
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-s",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--s',
+        classes: 'govuk-fieldset__legend--s'
+      }
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-no-class",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> No class',
+        classes: ''
+      }
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+  <h2 class="govuk-heading-l">Checkboxes (with hint)</h2>
+
+  <h3 class="govuk-heading-s">isPageHeading: true</h3>
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-heading-hint-xl",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--xl',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--xl'
+      }
+    },
+    "hint": {
+      "text": "If you have dual nationality, select all options that are relevant to you."
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-heading-hint-l",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--l',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--l'
+      }
+    },
+    "hint": {
+      "text": "If you have dual nationality, select all options that are relevant to you."
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-heading-hint-m",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--m',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    "hint": {
+      "text": "If you have dual nationality, select all options that are relevant to you."
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-heading-hint-s",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--s',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--s'
+      }
+    },
+    "hint": {
+      "text": "If you have dual nationality, select all options that are relevant to you."
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-heading-hint-no-class",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> No class',
+        isPageHeading: true,
+        classes: ''
+      }
+    },
+    "hint": {
+      "text": "If you have dual nationality, select all options that are relevant to you."
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  <h3 class="govuk-heading-s">isPageHeading: false</h3>
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-hint-xl",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--xl',
+        classes: 'govuk-fieldset__legend--xl'
+      }
+    },
+    "hint": {
+      "text": "If you have dual nationality, select all options that are relevant to you."
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-hint-l",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--l',
+        classes: 'govuk-fieldset__legend--l'
+      }
+    },
+    "hint": {
+      "text": "If you have dual nationality, select all options that are relevant to you."
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-hint-m",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--m',
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    "hint": {
+      "text": "If you have dual nationality, select all options that are relevant to you."
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-hint-s",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--s',
+        classes: 'govuk-fieldset__legend--s'
+      }
+    },
+    "hint": {
+      "text": "If you have dual nationality, select all options that are relevant to you."
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-hint-no-class",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> No class',
+        classes: ''
+      }
+    },
+    "hint": {
+      "text": "If you have dual nationality, select all options that are relevant to you."
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+  <h2 class="govuk-heading-l">Checkboxes (with hint and error)</h2>
+
+  <h3 class="govuk-heading-s">isPageHeading: true</h3>
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-heading-hint-error-xl",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--xl',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--xl'
+      }
+    },
+    "hint": {
+      "text": "If you have dual nationality, select all options that are relevant to you."
+    },
+    "errorMessage": {
+      "text": "Please select an option"
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-heading-hint-error-l",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--l',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--l'
+      }
+    },
+    "hint": {
+      "text": "If you have dual nationality, select all options that are relevant to you."
+    },
+    "errorMessage": {
+      "text": "Please select an option"
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-heading-hint-error-m",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--m',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    "hint": {
+      "text": "If you have dual nationality, select all options that are relevant to you."
+    },
+    "errorMessage": {
+      "text": "Please select an option"
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-heading-hint-error-s",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--s',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--s'
+      }
+    },
+    "hint": {
+      "text": "If you have dual nationality, select all options that are relevant to you."
+    },
+    "errorMessage": {
+      "text": "Please select an option"
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-heading-hint-error-no-class",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> No class',
+        isPageHeading: true,
+        classes: ''
+      }
+    },
+    "hint": {
+      "text": "If you have dual nationality, select all options that are relevant to you."
+    },
+    "errorMessage": {
+      "text": "Please select an option"
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  <h3 class="govuk-heading-s">isPageHeading: false</h3>
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-hint-error-xl",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--xl',
+        classes: 'govuk-fieldset__legend--xl'
+      }
+    },
+    "hint": {
+      "text": "If you have dual nationality, select all options that are relevant to you."
+    },
+    "errorMessage": {
+      "text": "Please select an option"
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-hint-error-l",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--l',
+        classes: 'govuk-fieldset__legend--l'
+      }
+    },
+    "hint": {
+      "text": "If you have dual nationality, select all options that are relevant to you."
+    },
+    "errorMessage": {
+      "text": "Please select an option"
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-hint-error-m",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--m',
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    "hint": {
+      "text": "If you have dual nationality, select all options that are relevant to you."
+    },
+    "errorMessage": {
+      "text": "Please select an option"
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-hint-error-s",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--s',
+        classes: 'govuk-fieldset__legend--s'
+      }
+    },
+    "hint": {
+      "text": "If you have dual nationality, select all options that are relevant to you."
+    },
+    "errorMessage": {
+      "text": "Please select an option"
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    "name": "checkboxes-hint-error-no-class",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> No class',
+        classes: ''
+      }
+    },
+    "hint": {
+      "text": "If you have dual nationality, select all options that are relevant to you."
+    },
+    "errorMessage": {
+      "text": "Please select an option"
+    },
+    "items": [
+      {
+        "value": "british",
+        "text": "British"
+      },
+      {
+        "value": "irish",
+        "text": "Irish"
+      },
+      {
+        "value": "other",
+        "text": "Citizen of another country"
+      }
+    ]
+  }) }}
+
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+  <h2 class="govuk-heading-l">Radios</h2>
+
+  <h3 class="govuk-heading-s">isPageHeading: true</h3>
+
+  {{ govukRadios({
+    "name": "radios-heading-xl",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--xl',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--xl'
+      }
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-heading-l",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--l',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--l'
+      }
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-heading-m",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--m',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-heading-s",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--s',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--s'
+      }
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-heading-no-class",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> No class',
+        isPageHeading: true,
+        classes: ''
+      }
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  <h3 class="govuk-heading-s">isPageHeading: false</h3>
+
+  {{ govukRadios({
+    "name": "radios-xl",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--xl',
+        classes: 'govuk-fieldset__legend--xl'
+      }
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-l",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--l',
+        classes: 'govuk-fieldset__legend--l'
+      }
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-m",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--m',
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-s",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--s',
+        classes: 'govuk-fieldset__legend--s'
+      }
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-no-class",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> No class',
+        classes: ''
+      }
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+  <h2 class="govuk-heading-l">Radios (with hint)</h2>
+
+  <h3 class="govuk-heading-s">isPageHeading: true</h3>
+
+  {{ govukRadios({
+    "name": "radios-heading-hint-xl",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--xl',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--xl'
+      }
+    },
+    "hint": {
+      "text": "This includes changing your last name or spelling your name differently."
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-heading-hint-l",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--l',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--l'
+      }
+    },
+    "hint": {
+      "text": "This includes changing your last name or spelling your name differently."
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-heading-hint-m",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--m',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    "hint": {
+      "text": "This includes changing your last name or spelling your name differently."
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-heading-hint-s",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--s',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--s'
+      }
+    },
+    "hint": {
+      "text": "This includes changing your last name or spelling your name differently."
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-heading-hint-no-class",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> No class',
+        isPageHeading: true,
+        classes: ''
+      }
+    },
+    "hint": {
+      "text": "This includes changing your last name or spelling your name differently."
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  <h3 class="govuk-heading-s">isPageHeading: false</h3>
+
+  {{ govukRadios({
+    "name": "radios-hint-xl",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--xl',
+        classes: 'govuk-fieldset__legend--xl'
+      }
+    },
+    "hint": {
+      "text": "This includes changing your last name or spelling your name differently."
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-hint-l",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--l',
+        classes: 'govuk-fieldset__legend--l'
+      }
+    },
+    "hint": {
+      "text": "This includes changing your last name or spelling your name differently."
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-hint-m",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--m',
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    "hint": {
+      "text": "This includes changing your last name or spelling your name differently."
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-hint-s",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--s',
+        classes: 'govuk-fieldset__legend--s'
+      }
+    },
+    "hint": {
+      "text": "This includes changing your last name or spelling your name differently."
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-hint-no-class",
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> No class',
+        classes: ''
+      }
+    },
+    "hint": {
+      "text": "This includes changing your last name or spelling your name differently."
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+  <h2 class="govuk-heading-l">Radios (with hint and error)</h2>
+
+  <h3 class="govuk-heading-s">isPageHeading: true</h3>
+
+  {{ govukRadios({
+    "name": "radios-heading-hint-error-xl",
+    "errorMessage": {
+      "text": "Please select an option"
+    },
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--xl',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--xl'
+      }
+    },
+    "hint": {
+      "text": "This includes changing your last name or spelling your name differently."
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-heading-hint-error-l",
+    "errorMessage": {
+      "text": "Please select an option"
+    },
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--l',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--l'
+      }
+    },
+    "hint": {
+      "text": "This includes changing your last name or spelling your name differently."
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-heading-hint-error-m",
+    "errorMessage": {
+      "text": "Please select an option"
+    },
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--m',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    "hint": {
+      "text": "This includes changing your last name or spelling your name differently."
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-heading-hint-error-s",
+    "errorMessage": {
+      "text": "Please select an option"
+    },
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> govuk-fieldset__legend--s',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--s'
+      }
+    },
+    "hint": {
+      "text": "This includes changing your last name or spelling your name differently."
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-heading-hint-error-no-class",
+    "errorMessage": {
+      "text": "Please select an option"
+    },
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<h1> No class',
+        isPageHeading: true,
+        classes: ''
+      }
+    },
+    "hint": {
+      "text": "This includes changing your last name or spelling your name differently."
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  <h3 class="govuk-heading-s">isPageHeading: false</h3>
+
+  {{ govukRadios({
+    "name": "radios-hint-error-xl",
+    "errorMessage": {
+      "text": "Please select an option"
+    },
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--xl',
+        classes: 'govuk-fieldset__legend--xl'
+      }
+    },
+    "hint": {
+      "text": "This includes changing your last name or spelling your name differently."
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-hint-error-l",
+    "errorMessage": {
+      "text": "Please select an option"
+    },
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--l',
+        classes: 'govuk-fieldset__legend--l'
+      }
+    },
+    "hint": {
+      "text": "This includes changing your last name or spelling your name differently."
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-hint-error-m",
+    "errorMessage": {
+      "text": "Please select an option"
+    },
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--m',
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    "hint": {
+      "text": "This includes changing your last name or spelling your name differently."
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-hint-error-s",
+    "errorMessage": {
+      "text": "Please select an option"
+    },
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> govuk-fieldset__legend--s',
+        classes: 'govuk-fieldset__legend--s'
+      }
+    },
+    "hint": {
+      "text": "This includes changing your last name or spelling your name differently."
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    "name": "radios-hint-error-no-class",
+    "errorMessage": {
+      "text": "Please select an option"
+    },
+    "fieldset": {
+      "classes": "app-fieldset--custom-modifier",
+      "attributes": {
+        "data-attribute": "value",
+        "data-second-attribute": "second-value"
+      },
+      legend: {
+        text: '<legend> No class',
+        classes: ''
+      }
+    },
+    "hint": {
+      "text": "This includes changing your last name or spelling your name differently."
+    },
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+  <h2 class="govuk-heading-l">Date Input</h2>
+
+  <h3 class="govuk-heading-s">isPageHeading: true</h3>
+
+  {{ govukDateInput({
+    id: 'date-heading-xl',
+    name: 'date-heading-xl',
+    fieldset: {
+      legend: {
+        text: '<h1> govuk-fieldset__legend--xl',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--xl'
+      }
+    }
+    })
+  }}
+
+  {{ govukDateInput({
+    id: 'date-heading-l',
+    name: 'date-heading-l',
+    fieldset: {
+      legend: {
+        text: '<h1> govuk-fieldset__legend--l',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--l'
+      }
+    }
+    })
+  }}
+
+  {{ govukDateInput({
+    id: 'date-heading-m',
+    name: 'date-heading-m',
+    fieldset: {
+      legend: {
+        text: '<h1> govuk-fieldset__legend--m',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--m'
+      }
+    }
+    })
+  }}
+
+  {{ govukDateInput({
+    id: 'date-heading-s',
+    name: 'date-heading-s',
+    fieldset: {
+      legend: {
+        text: '<h1> govuk-fieldset__legend--s',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--s'
+      }
+    }
+    })
+  }}
+
+  {{ govukDateInput({
+    id: 'date-heading-no-class',
+    name: 'date-heading-no-class',
+    fieldset: {
+      legend: {
+        text: '<h1> No class',
+        isPageHeading: true,
+        classes: ''
+      }
+    }
+    })
+  }}
+
+
+  <h3 class="govuk-heading-s">isPageHeading: false</h3>
+
+  {{ govukDateInput({
+    id: 'date-xl',
+    name: 'date-xl',
+    fieldset: {
+      legend: {
+        text: '<legend> govuk-fieldset__legend--xl',
+        classes: 'govuk-fieldset__legend--xl'
+      }
+    }
+    })
+  }}
+
+  {{ govukDateInput({
+    id: 'date-l',
+    name: 'date-l',
+    fieldset: {
+      legend: {
+        text: '<legend> govuk-fieldset__legend--l',
+        classes: 'govuk-fieldset__legend--l'
+      }
+    }
+    })
+  }}
+
+  {{ govukDateInput({
+    id: 'date-m',
+    name: 'date-m',
+    fieldset: {
+      legend: {
+        text: '<legend> govuk-fieldset__legend--m',
+        classes: 'govuk-fieldset__legend--m'
+      }
+    }
+    })
+  }}
+
+  {{ govukDateInput({
+    id: 'date-s',
+    name: 'date-s',
+    fieldset: {
+      legend: {
+        text: '<legend> govuk-fieldset__legend--s',
+        classes: 'govuk-fieldset__legend--s'
+      }
+    }
+    })
+  }}
+
+  {{ govukDateInput({
+    id: 'date-no-class',
+    name: 'date-no-class',
+    fieldset: {
+      legend: {
+        text: '<legend> No class',
+        classes: ''
+      }
+    }
+    })
+  }}
+
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+  <h2 class="govuk-heading-l">Date Input (with hint)</h2>
+
+  <h3 class="govuk-heading-s">isPageHeading: true</h3>
+
+  {{ govukDateInput({
+    id: 'date-heading-hint-xl',
+    name: 'date-heading-hint-xl',
+    fieldset: {
+      legend: {
+        text: '<h1> govuk-fieldset__legend--xl',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--xl'
+      }
+    },
+    hint: {
+      text: 'For example 5 12 1987'
+    }
+    })
+  }}
+
+  {{ govukDateInput({
+    id: 'date-heading-hint-l',
+    name: 'date-heading-hint-l',
+    fieldset: {
+      legend: {
+        text: '<h1> govuk-fieldset__legend--l',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--l'
+      }
+    },
+    hint: {
+      text: 'For example 5 12 1987'
+    }
+    })
+  }}
+
+  {{ govukDateInput({
+    id: 'date-heading-hint-m',
+    name: 'date-heading-hint-m',
+    fieldset: {
+      legend: {
+        text: '<h1> govuk-fieldset__legend--m',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    hint: {
+      text: 'For example 5 12 1987'
+    }
+    })
+  }}
+
+  {{ govukDateInput({
+    id: 'date-heading-hint-s',
+    name: 'date-heading-hint-s',
+    fieldset: {
+      legend: {
+        text: '<h1> govuk-fieldset__legend--s',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--s'
+      }
+    },
+    hint: {
+      text: 'For example 5 12 1987'
+    }
+    })
+  }}
+
+  {{ govukDateInput({
+    id: 'date-heading-hint-no-class',
+    name: 'date-heading-hint-no-class',
+    fieldset: {
+      legend: {
+        text: '<h1> No class',
+        isPageHeading: true,
+        classes: ''
+      }
+    },
+    hint: {
+      text: 'For example 5 12 1987'
+    }
+    })
+  }}
+
+  <h3 class="govuk-heading-s">isPageHeading: false</h3>
+
+  <form action="/" method="post">
+
+  {{ govukDateInput({
+    id: 'date-hint-xl',
+    name: 'date-hint-xl',
+    fieldset: {
+      legend: {
+        text: '<legend> govuk-fieldset__legend--xl',
+        classes: 'govuk-fieldset__legend--xl'
+      }
+    },
+    hint: {
+      text: 'For example 5 12 1987'
+    }
+    })
+  }}
+
+  {{ govukDateInput({
+    id: 'date-hint-l',
+    name: 'date-hint-l',
+    fieldset: {
+      legend: {
+        text: '<legend> govuk-fieldset__legend--l',
+        classes: 'govuk-fieldset__legend--l'
+      }
+    },
+    hint: {
+      text: 'For example 5 12 1987'
+    }
+    })
+  }}
+
+  {{ govukDateInput({
+    id: 'date-hint-m',
+    name: 'date-hint-m',
+    fieldset: {
+      legend: {
+        text: '<legend> govuk-fieldset__legend--m',
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    hint: {
+      text: 'For example 5 12 1987'
+    }
+    })
+  }}
+
+  {{ govukDateInput({
+    id: 'date-hint-s',
+    name: 'date-hint-s',
+    fieldset: {
+      legend: {
+        text: '<legend> govuk-fieldset__legend--s',
+        classes: 'govuk-fieldset__legend--s'
+      }
+    },
+    hint: {
+      text: 'For example 5 12 1987'
+    }
+    })
+  }}
+
+  {{ govukDateInput({
+    id: 'date-hint-no-class',
+    name: 'date-hint-no-class',
+    fieldset: {
+      legend: {
+        text: '<legend> No class',
+        classes: ''
+      }
+    },
+    hint: {
+      text: 'For example 5 12 1987'
+    }
+    })
+  }}
+
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+  <h2 class="govuk-heading-l">Date Input (with hint and error)</h2>
+
+  <h3 class="govuk-heading-s">isPageHeading: true</h3>
+
+  {{ govukDateInput({
+    id: 'date-heading-hint-error-xl',
+    name: 'date-heading-hint-error-xl',
+    fieldset: {
+      legend: {
+        text: '<h1> govuk-fieldset__legend--xl',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--xl'
+      }
+    },
+    hint: {
+      text: 'For example 5 12 1987'
+    },
+    errorMessage: {
+      text: "You must provide your date of birth"
+    }
+    })
+  }}
+
+  {{ govukDateInput({
+    id: 'date-heading-hint-error-l',
+    name: 'date-heading-hint-error-l',
+    fieldset: {
+      legend: {
+        text: '<h1> govuk-fieldset__legend--l',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--l'
+      }
+    },
+    hint: {
+      text: 'For example 5 12 1987'
+    },
+    errorMessage: {
+      text: "You must provide your date of birth"
+    }
+    })
+  }}
+
+  {{ govukDateInput({
+    id: 'date-heading-hint-error-m',
+    name: 'date-heading-hint-error-m',
+    fieldset: {
+      legend: {
+        text: '<h1> govuk-fieldset__legend--m',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    hint: {
+      text: 'For example 5 12 1987'
+    },
+    errorMessage: {
+      text: "You must provide your date of birth"
+    }
+    })
+  }}
+
+
+  {{ govukDateInput({
+    id: 'date-heading-hint-error-s',
+    name: 'date-heading-hint-error-s',
+    fieldset: {
+      legend: {
+        text: '<h1> govuk-fieldset__legend--s',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--s'
+      }
+    },
+    hint: {
+      text: 'For example 5 12 1987'
+    },
+    errorMessage: {
+      text: "You must provide your date of birth"
+    }
+    })
+  }}
+
+
+  {{ govukDateInput({
+    id: 'date-heading-hint-error-no-class',
+    name: 'date-heading-hint-error-no-class',
+    fieldset: {
+      legend: {
+        text: '<h1> No class',
+        isPageHeading: true,
+        classes: ''
+      }
+    },
+    hint: {
+      text: 'For example 5 12 1987'
+    },
+    errorMessage: {
+      text: "You must provide your date of birth"
+    }
+    })
+  }}
+
+  <h3 class="govuk-heading-s">isPageHeading: false</h3>
+
+  {{ govukDateInput({
+    id: 'date-hint-error-xl',
+    name: 'date-hint-error-xl',
+    fieldset: {
+      legend: {
+        text: '<legend> govuk-fieldset__legend--xl',
+        classes: 'govuk-fieldset__legend--xl'
+      }
+    },
+    hint: {
+      text: 'For example 5 12 1987'
+    },
+    errorMessage: {
+      text: "You must provide your date of birth"
+    }
+    })
+  }}
+
+  {{ govukDateInput({
+    id: 'date-hint-error-l',
+    name: 'date-hint-error-l',
+    fieldset: {
+      legend: {
+        text: '<legend> govuk-fieldset__legend--l',
+        classes: 'govuk-fieldset__legend--l'
+      }
+    },
+    hint: {
+      text: 'For example 5 12 1987'
+    },
+    errorMessage: {
+      text: "You must provide your date of birth"
+    }
+    })
+  }}
+
+  {{ govukDateInput({
+    id: 'date-hint-error-m',
+    name: 'date-hint-error-m',
+    fieldset: {
+      legend: {
+        text: '<legend> govuk-fieldset__legend--m',
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    hint: {
+      text: 'For example 5 12 1987'
+    },
+    errorMessage: {
+      text: "You must provide your date of birth"
+    }
+    })
+  }}
+
+  {{ govukDateInput({
+    id: 'date-hint-error-s',
+    name: 'date-hint-error-s',
+    fieldset: {
+      legend: {
+        text: '<legend> govuk-fieldset__legend--s',
+        classes: 'govuk-fieldset__legend--s'
+      }
+    },
+    hint: {
+      text: 'For example 5 12 1987'
+    },
+    errorMessage: {
+      text: "You must provide your date of birth"
+    }
+    })
+  }}
+
+  {{ govukDateInput({
+    id: 'date-hint-error-no-class',
+    name: 'date-hint-error-no-class',
+    fieldset: {
+      legend: {
+        text: '<legend> No class',
+        classes: ''
+      }
+    },
+    hint: {
+      text: 'For example 5 12 1987'
+    },
+    errorMessage: {
+      text: "You must provide your date of birth"
+    }
+    })
+  }}
+{% endblock %}

@@ -1,0 +1,75 @@
+---
+title: Update your account details
+scenario: |
+  As part of an online service, you wish to update your account details.
+
+  Things to try:
+
+  1. Intentionally avoid answering the questions before continuing to the next page.
+---
+
+{% extends "layouts/full-page-example.njk" %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/password-input/macro.njk" import govukPasswordInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set pageTitle = example.title %}
+{% block pageTitle %}{{ "Error: " if errorSummary | length }}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if errorSummary | length %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errorSummary
+        }) }}
+      {% endif %}
+
+      <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
+
+      <form method="post" novalidate>
+
+        {{ govukInput({
+          label: {
+            text: "Email address",
+            classes: "govuk-label--m"
+          },
+          type: "email",
+          id: "email",
+          name: "email",
+          value: values["email"],
+          errorMessage: errors["email"],
+          autocomplete: "email",
+          spellcheck: false
+        }) }}
+
+        {{ govukPasswordInput({
+          label: {
+            text: "New password",
+            classes: "govuk-label--m"
+          },
+          id: "password",
+          name: "password",
+          value: values["password"],
+          errorMessage: errors["password"],
+          autocomplete: "new-password"
+        }) }}
+
+        {{ govukButton({
+          text: "Save account details"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

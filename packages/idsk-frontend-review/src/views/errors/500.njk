@@ -1,0 +1,40 @@
+{% extends "layouts/layout.njk" %}
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{% block pageTitle %}Sorry, there is a problem with the service - GOV.UK Frontend{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "GOV.UK Frontend",
+        href: "/"
+      },
+      {
+        text: "Server error"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters govuk-grid-column-two-thirds-from-desktop">
+      <h1 class="govuk-heading-l">Sorry, there is a problem with the service</h1>
+
+      <p class="govuk-body">Try again later.</p>
+
+      <p class="govuk-body">
+        <a class="govuk-link" href="https://design-system.service.gov.uk/get-in-touch/" rel="noreferrer noopener" target="_blank">Contact the Design System team (opens in new tab)</a> if you believe you are seeing this message in error.
+      </p>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <pre class="app-code"><code tabindex="0" class="app-code__container">
+        {{- error | inspect | safe -}}
+      </code></pre>
+  </div>
+{% endblock %}

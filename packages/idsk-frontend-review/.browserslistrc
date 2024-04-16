@@ -1,0 +1,16 @@
+[javascripts]
+supports es6-module
+
+[stylesheets]
+> 0.1% in GB and not dead
+last 6 Chrome versions
+last 6 Firefox versions
+last 6 Edge versions
+last 2 Samsung versions
+Firefox ESR
+Safari >= 11
+iOS >= 11
+ie 11
+
+[node]
+node 20

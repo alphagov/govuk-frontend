@@ -10,10 +10,10 @@ module.exports = {
   root: rootPath,
 
   // Package for npm publish
-  package: join(rootPath, 'packages/govuk-frontend'),
+  package: join(rootPath, 'packages/idsk-frontend'),
 
   // Express.js review app
-  app: join(rootPath, 'packages/govuk-frontend-review'),
+  app: join(rootPath, 'packages/idsk-frontend-review'),
 
   // Rollup build stats
   stats: join(rootPath, 'shared/stats')

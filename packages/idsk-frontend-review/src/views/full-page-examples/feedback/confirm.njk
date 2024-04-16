@@ -1,0 +1,22 @@
+{% extends "layouts/full-page-example.njk" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% set pageTitle = "Thank you for your feedback" %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    productName: "Verify"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: pageTitle
+      }) }}
+    </div>
+  </div>
+{% endblock %}

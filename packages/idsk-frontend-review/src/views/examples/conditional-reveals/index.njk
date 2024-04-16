@@ -1,0 +1,336 @@
+{% extends "layouts/examples.njk" %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% set emailHtml %}
+    {{ govukInput({
+      id: "contact-by-email",
+      name: "contact-by-email",
+      type: "email",
+      spellcheck: false,
+      classes: "govuk-!-width-one-third",
+      label: {
+        text: "Email address"
+      }
+    }) }}
+    {% endset -%}
+
+    {% set phoneHtml %}
+    {{ govukInput({
+      id: "contact-by-phone",
+      name: "contact-by-phone",
+      type: "tel",
+      classes: "govuk-!-width-one-third",
+      label: {
+        text: "Phone number"
+      }
+    }) }}
+    {% endset -%}
+
+    {% set textHtml %}
+    {{ govukInput({
+      id: "contact-by-text",
+      name: "contact-by-text",
+      type: "tel",
+      classes: "govuk-!-width-one-third",
+      label: {
+        text: "Mobile phone number"
+      }
+    }) }}
+    {% endset -%}
+
+    <a class="govuk-link" href="#">Focusable element</a>
+
+    {{ govukCheckboxes({
+      idPrefix: "contact",
+      name: "contact",
+      fieldset: {
+        legend: {
+          text: "How would you like to be contacted?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+        text: "Select all options that are relevant to you."
+      },
+      items: [
+        {
+          value: "email",
+          text: "Email",
+          conditional: {
+            html: emailHtml
+          }
+        },
+        {
+          value: "phone",
+          text: "Phone",
+          conditional: {
+            html: phoneHtml
+          }
+        },
+        {
+          value: "text message",
+          text: "Text message",
+          conditional: {
+            html: textHtml
+          }
+        }
+      ]
+    }) }}
+
+    {% set emailHtml %}
+    {{ govukInput({
+      id: "radio-email",
+      name: "contact-by-email",
+      type: "email",
+      spellcheck: false,
+      classes: "govuk-!-width-one-third",
+      label: {
+        text: "Email address"
+      }
+    }) }}
+    {% endset -%}
+
+    {% set phoneHtml %}
+    {{ govukInput({
+      id: "radio-phone",
+      name: "contact-by-phone",
+      type: "tel",
+      classes: "govuk-!-width-one-third",
+      label: {
+        text: "Phone number"
+      }
+    }) }}
+    {% endset -%}
+
+    {% set textHtml %}
+    {{ govukInput({
+      id: "radio-text",
+      name: "contact-by-text",
+      type: "tel",
+      classes: "govuk-!-width-one-third",
+      label: {
+        text: "Mobile phone number"
+      }
+    }) }}
+    {% endset -%}
+
+    <a class="govuk-link" href="#">Focusable element</a>
+
+    {{ govukRadios({
+      idPrefix: "radio-contact",
+      name: "contact",
+      fieldset: {
+        legend: {
+          text: "How would you prefer to be contacted?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+        text: "Select one option."
+      },
+      items: [
+        {
+          value: "email",
+          text: "Email",
+          conditional: {
+            html: emailHtml
+          }
+        },
+        {
+          value: "phone",
+          text: "Phone",
+          conditional: {
+            html: phoneHtml
+          }
+        },
+        {
+          value: "text",
+          text: "Text message",
+          conditional: {
+            html: textHtml
+          }
+        }
+      ]
+    }) }}
+
+    <hr class="govuk-section-break govuk-section-break--l">
+
+    {% call govukFieldset({
+      legend: {
+        text: "Which colours do you like?",
+        classes: "govuk-fieldset__legend--l"
+      }
+    })%}
+
+      <h2 class="govuk-heading-m">Primary colours</h2>
+
+      {{ govukCheckboxes({
+        idPrefix: "colour-primary",
+        name: "colour",
+        items: [
+          {
+            value: "red",
+            text: "Red"
+          },
+          {
+            value: "yellow",
+            text: "Yellow",
+            conditional: {
+              html: '<p class="govuk-body">Orange is much nicer than yellow!</p>'
+            }
+          },
+          {
+            value: "blue",
+            text: "Blue"
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Secondary colours</h2>
+
+      {{ govukCheckboxes({
+        idPrefix: "colour-secondary",
+        name: "colour",
+        items: [
+          {
+            value: "green",
+            text: "Green"
+          },
+          {
+            value: "purple",
+            text: "Purple"
+          },
+          {
+            value: "orange",
+            text: "Orange",
+            conditional: {
+              html: '<p class="govuk-body">I like orange too!</p>'
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Other colours</h2>
+
+      {{ govukCheckboxes({
+        idPrefix: "colour-other",
+        name: "colour",
+        items: [
+          {
+            value: "imaginary",
+            text: "An imaginary colour"
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: "none",
+            text: "None of the above",
+            behaviour: "exclusive"
+          }
+        ]
+      }) }}
+
+    {% endcall %}
+
+    <hr class="govuk-section-break govuk-section-break--l">
+
+    {% call govukFieldset({
+      legend: {
+        text: "Which colour is your favourite?",
+        classes: "govuk-fieldset__legend--l"
+      }
+    })%}
+
+      <h2 class="govuk-heading-m">Primary colours</h2>
+
+      {{ govukRadios({
+        idPrefix: "fave-primary",
+        name: "fave",
+        items: [
+          {
+            value: "red",
+            text: "Red"
+          },
+          {
+            value: "yellow",
+            text: "Yellow",
+            conditional: {
+              html: '<p class="govuk-body">Orange is much nicer than yellow!</p>'
+            }
+          },
+          {
+            value: "blue",
+            text: "Blue"
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Secondary colours</h2>
+
+      {{ govukRadios({
+        idPrefix: "fave-secondary",
+        name: "fave",
+        items: [
+          {
+            value: "green",
+            text: "Green"
+          },
+          {
+            value: "purple",
+            text: "Purple"
+          },
+          {
+            value: "orange",
+            text: "Orange",
+            conditional: {
+              html: '<p class="govuk-body">Orange is my favourite colour!</p>'
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Other colours</h2>
+
+      {{ govukRadios({
+        idPrefix: "fave-other",
+        name: "fave",
+        items: [
+          {
+            value: "imaginary",
+            text: "An imaginary colour"
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: "none",
+            text: "None of the above",
+            behaviour: "exclusive"
+          }
+        ]
+      }) }}
+
+    {% endcall %}
+
+  </div>
+</div>
+{% endblock %}

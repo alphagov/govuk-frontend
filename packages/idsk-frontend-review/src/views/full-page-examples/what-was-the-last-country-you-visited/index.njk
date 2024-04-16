@@ -1,0 +1,77 @@
+---
+title: What was the last country you visited?
+scenario: |
+  As part of an online service, you are asked to provide the last country you visited.
+
+  Things to try:
+
+  1. Intentionally avoid answering the question before continuing to the next page.
+---
+
+{# This example is based of the  "What is your home postcode?" example: https://design-system.service.gov.uk/patterns/question-pages/postcode/index.html #}
+{% extends "layouts/full-page-example.njk" %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% set pageTitle = example.title %}
+{% block pageTitle %}{{ "Error: " if errorSummary | length }}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <form method="post" novalidate>
+    {% if errorSummary | length %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorSummary
+      }) }}
+    {% endif %}
+
+    {{ govukSelect({
+        id: "last-visited-country",
+        name: "last-visited-country",
+        label: {
+          text: pageTitle,
+          classes: "govuk-label--xl",
+          isPageHeading: true
+        },
+        hint: {
+          text: "This excludes visits within the UK"
+        },
+        items: [
+          {
+              value: "",
+              text: "Select an option"
+          },
+          {
+              value: "france",
+              text: "France"
+          },
+          {
+              value: "spain",
+              text: "Spain"
+          },
+          {
+              value: "other",
+              text: "Other"
+          }
+        ],
+        value: values["last-visited-country"],
+        errorMessage: errors["last-visited-country"]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  </form>
+
+{% endblock %}

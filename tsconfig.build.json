@@ -3,10 +3,10 @@
   "files": [],
   "references": [
     {
-      "path": "./packages/govuk-frontend-review/tsconfig.build.json"
+      "path": "./packages/idsk-frontend-review/tsconfig.build.json"
     },
     {
-      "path": "./packages/govuk-frontend/tsconfig.build.json"
+      "path": "./packages/idsk-frontend/tsconfig.build.json"
     }
   ]
 }

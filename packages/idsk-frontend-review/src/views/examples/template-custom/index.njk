@@ -1,0 +1,130 @@
+{# Example that changes every setting in the template #}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/skip-link/macro.njk" import govukSkipLink %}
+{% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{% extends "govuk/template.njk" %}
+
+{% set htmlClasses = 'app-html-class' %}
+{% set htmlLang = 'fr' %}
+{% set assetPath = '' %}
+{% set themeColor = 'blue' %}
+{% set bodyClasses = 'app-body-class' %}
+{% set containerClasses = "app-width-container--wide" %}
+
+{% block pageTitle %}GOV.UK - Le meilleur endroit pour trouver des services gouvernementaux et de l'information{% endblock %}
+
+{% block headIcons %}
+  <!-- block:headIcons -->
+    {{ super() }}
+  <!-- endblock:headIcons -->
+{% endblock %}
+
+{% block head %}
+  <!-- block:head -->
+  <link rel="stylesheet" href="/stylesheets/app.min.css">
+  <!-- endblock:head -->
+{% endblock %}
+
+{% block bodyStart %}
+  <!-- block:bodyStart -->
+  <!-- endblock:bodyStart -->
+{% endblock %}
+
+{% block skipLink %}
+  <!-- block:skipLink -->
+  {{ govukSkipLink({
+    href: '#main-content',
+    text: 'Passer au contenu principal'
+  }) }}
+  <!-- endblock:skipLink -->
+{% endblock %}
+
+{% block header %}
+  <!-- block:header -->
+  {{ govukHeader({
+    serviceName: "Nom du service",
+    containerClasses: "app-width-container--wide",
+    navigation: [
+      {
+        href: '#1',
+        text: 'Élément de navigation 1',
+        active: true
+      },
+      {
+        href: '#2',
+        text: 'Élément de navigation 2'
+      },
+      {
+        href: '#3',
+        text: 'Élément de navigation 3'
+      }
+    ]
+  }) }}
+  <!-- endblock:header -->
+{% endblock %}
+
+{% set mainClasses = 'govuk-main-wrapper--auto-spacing app-main-class' %}
+
+{% block main %}
+  <!-- block:main -->
+  {{ super() }}
+  <!-- endblock:main -->
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- block:beforeContent -->
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Alpha"
+    },
+    html: 'C\'est un nouveau service - vos <a class="govuk-link" href="#">commentaires</a> nous aideront à l\'améliorer.'
+  }) }}
+  {{ govukBackLink({
+    href: "/"
+  }) }}
+  <!-- endblock:beforeContent -->
+{% endblock %}
+
+{% block content %}
+  <!-- block:content -->
+  {{ super() }}
+  <!-- endblock:content -->
+{% endblock %}
+
+{% block footer %}
+  <!-- block:footer -->
+  {{ govukFooter({
+    containerClasses: "app-width-container--wide",
+    "meta": {
+      "items": [
+        {
+          "href": "#1",
+          "text": "Aidez-moi"
+        },
+        {
+          "href": "#2",
+          "text": "Politique de confidentialité"
+        },
+        {
+          "href": "#3",
+          "text": "Contactez-nous"
+        }
+      ]
+    }
+  }) }}
+  <!-- endblock:footer -->
+{% endblock %}
+
+{% block bodyEnd %}
+  <!-- block:bodyEnd -->
+  <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+  <script type="module">
+    import { initAll } from '/javascripts/govuk-frontend.min.js'
+    initAll()
+  </script>
+  <!-- endblock:bodyEnd -->
+{% endblock %}

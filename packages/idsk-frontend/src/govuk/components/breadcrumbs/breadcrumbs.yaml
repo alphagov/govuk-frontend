@@ -1,0 +1,133 @@
+params:
+  - name: items
+    type: array
+    required: true
+    description: The items within breadcrumbs.
+    params:
+      - name: text
+        type: string
+        required: true
+        description: If `html` is set, this is not required. Text to use within the breadcrumbs item. If `html` is provided, the `text` option will be ignored.
+      - name: html
+        type: string
+        required: true
+        description: If `text` is set, this is not required. HTML to use within the breadcrumbs item. If `html` is provided, the `text` option will be ignored.
+      - name: href
+        type: string
+        required: false
+        description: Link for the breadcrumbs item. If not specified, breadcrumbs item is a normal list item.
+      - name: attributes
+        type: object
+        required: false
+        description: HTML attributes (for example data attributes) to add to the individual crumb.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the breadcrumbs container.
+  - name: collapseOnMobile
+    type: boolean
+    required: false
+    description: When true, the breadcrumbs will collapse to the first and last item only on tablet breakpoint and below.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the breadcrumbs container.
+
+examples:
+  - name: default
+    options:
+      items:
+        - text: Section
+          href: '/section'
+        - text: Sub-section
+          href: '/section/sub-section'
+  - name: with one level
+    options:
+      items:
+        - text: Section
+          href: '/section'
+  - name: with multiple levels
+    options:
+      items:
+        - text: Home
+          href: '/'
+        - text: Section
+          href: '/section'
+        - text: Sub-section
+          href: '/section/sub-section'
+        - text: Sub Sub-section
+          href: '/section/sub-section/sub-sub-section'
+  - name: without the home section
+    options:
+      items:
+        - text: Service Manual
+          href: '/service-manual'
+        - text: Agile Delivery
+          href: '/service-manual/agile-delivery'
+  - name: with last breadcrumb as current page
+    options:
+      items:
+        - text: Home
+          href: '/'
+        - text: Passports, travel and living abroad
+          href: '/browse/abroad'
+        - text: Travel abroad
+  - name: with collapse on mobile
+    options:
+      collapseOnMobile: true
+      items:
+        - text: Home
+          href: '/'
+        - text: Education, training and skills
+          href: '/education'
+        - text: Special educational needs and disability (SEND) and high needs
+          href: '/education/special-educational-needs-and-disability-send-and-high-needs'
+  - name: inverse
+    description: Breadcrumbs that appear on dark backgrounds
+    previewLayoutModifiers:
+      - inverse
+    options:
+      classes: govuk-breadcrumbs--inverse
+      items:
+        - text: Home
+          href: '/'
+        - text: Passports, travel and living abroad
+          href: '/browse/abroad'
+        - text: Travel abroad
+
+  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: classes
+    hidden: true
+    options:
+      classes: app-breadcrumbs--custom-modifier
+      items:
+        - text: Home
+  - name: attributes
+    hidden: true
+    options:
+      attributes:
+        id: my-navigation
+        role: navigation
+      items:
+        - text: Home
+  - name: item attributes
+    hidden: true
+    options:
+      items:
+        - text: Section 1
+          href: /section
+          attributes:
+            data-attribute: my-attribute
+            data-attribute-2: my-attribute-2
+  - name: html as text
+    hidden: true
+    options:
+      items:
+        - text: <span>Section 1</span>
+  - name: html
+    hidden: true
+    options:
+      items:
+        - html: <em>Section 1</em>
+        - html: <em>Section 2</em>
+          href: /section-2

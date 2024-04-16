@@ -1,0 +1,20 @@
+////
+/// @group tools/unit-conversion
+////
+
+/// Convert pixels to em
+///
+/// @param {Number} $value - Length in pixels
+/// @param {Number} $context-font-size - Font size of element
+/// @return {Number} Length in ems
+/// @access public
+
+@function govuk-em($value, $context-font-size) {
+  @if unitless($value) {
+    $value: $value * 1px;
+  }
+  @if unitless($context-font-size) {
+    $context-font-size: $context-font-size * 1px;
+  }
+  @return $value / $context-font-size * 1em;
+}

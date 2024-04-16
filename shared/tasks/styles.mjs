@@ -90,7 +90,7 @@ export async function compileStylesheet([
       // Resolve @imports via
       loadPaths: [
         // Remove `govuk/` suffix using `modulePath`
-        packageTypeToPath('govuk-frontend', {
+        packageTypeToPath('idsk-frontend', {
           modulePath: '../',
           moduleRoot: basePath
         }),

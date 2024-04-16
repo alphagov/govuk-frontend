@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input when it includes a hint renders the hint 1`] = `
+<div id="input-with-hint-text-hint"
+     class="govuk-hint"
+>
+  It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+</div>
+`;
+
+exports[`Input when it includes an error message renders the error message 1`] = `
+<p id="input-with-error-message-error"
+   class="govuk-error-message"
+>
+  Error message goes here
+</p>
+`;
+
+exports[`Input with dependant components renders with label 1`] = `
+<label class="govuk-label"
+       for="input-example"
+>
+  National Insurance number
+</label>
+`;
