@@ -1,4 +1,5 @@
 import { renderMacro } from '@govuk-frontend/lib/components'
+import nunjucks from 'nunjucks'
 
 describe('attributes.njk', () => {
   describe('govukAttributes', () => {
@@ -261,6 +262,24 @@ describe('attributes.njk', () => {
       )
 
       expect(attributes).toBe('')
+    })
+
+    it('outputs values that are passed from the `safe` filter', () => {
+      // Set up a tiny Nunjucks environment, just so we can get the native `safe` filter
+      const nunjucksEnv = nunjucks.configure([])
+
+      const attributes = renderMacro(
+        'govukAttributes',
+        'govuk/macros/attributes.njk',
+        {
+          context: {
+            'data-text': 'Testing',
+            'data-safe-text': nunjucksEnv.getFilter('safe')('Testing')
+          }
+        }
+      )
+
+      expect(attributes).toBe(' data-text="Testing" data-safe-text="Testing"')
     })
   })
 })
