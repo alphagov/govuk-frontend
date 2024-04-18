@@ -68,6 +68,12 @@
   {#- Append attribute name/value pairs -#}
   {%- if attributes is mapping %}
     {% for name, value in attributes %}
+      {#- Detect if this is a `safe` filtered value. Just pass the value through if so. -#}
+      {#- https://github.com/alphagov/govuk-frontend/issues/4937 -#}
+      {% if value is mapping and not [undefined, null].includes(value.val) and value.length %}
+        {% set value = value.val %}
+      {% endif %}
+
       {#- Set default attribute options -#}
       {% set options = value if value is mapping else {
         value: value,
