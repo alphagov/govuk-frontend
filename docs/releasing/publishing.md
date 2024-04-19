@@ -23,10 +23,10 @@ Developers should pair on releases. When remote working, it can be useful to be 
 4. Pick a new version number according to the [versioning documentation](/docs/contributing/versioning.md) and apply it by running:
 
    ```shell
-   npm version <NEW VERSION NUMBER> --no-git-tag-version --workspace govuk-frontend
+   npm version --no-git-tag-version --workspace govuk-frontend <NEW VERSION NUMBER>
    ```
 
-   This step will update [`govuk-frontend`'s `package.json`](/packages/govuk-frontend/package.json) and project [`package-lock.json`](/package-lock.json) files.
+   ...where `<NEW VERSION NUMBER>` is the literal number without a 'v' in front of it. This step will update [`govuk-frontend`'s `package.json`](/packages/govuk-frontend/package.json) and project [`package-lock.json`](/package-lock.json) files.
 
    Do not commit the changes.
 
@@ -60,7 +60,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 1. Check out the **main** branch and pull the latest changes.
 
-2. Sign in to npm (`npm login`), using the credentials for the govuk-patterns-and-tools npm user from Bitwarden.
+2. Sign in to npm (`npm login`), using the credentials for the **govuk-patterns-and-tools** npm user from Bitwarden.
 
 3. Run `npm run publish-release`, which will prompt you to check whether the npm tag looks as expected.
 
