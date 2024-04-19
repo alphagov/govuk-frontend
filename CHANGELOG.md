@@ -4,7 +4,15 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#4942: Remove duplicate `errorMessage` argument for the password input component](https://github.com/alphagov/govuk-frontend/pull/4942) - thanks to [Tim South](https://github.com/tim-s-ccs) for contributing this change
+
 ## 5.3.1 (Fix release)
+
+To install this version with npm, run `npm install govuk-frontend@5.3.1`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
 
 ### Fixes
 
@@ -17,7 +25,9 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 - [#4936: Fix skip link underline being removed when global styles are enabled](https://github.com/alphagov/govuk-frontend/pull/4936)
 - [#4938: Fix `attributes` option ignoring values passed from the `safe` filter ](https://github.com/alphagov/govuk-frontend/pull/4938)
 
-## GOV.UK Frontend v5.3.0 (Feature release)
+## 5.3.0 (Feature release)
+
+To install this version with npm, run `npm install govuk-frontend@5.3.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
 
 ### New features
 
@@ -100,7 +110,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 - [#4813: Remove deprecated `KeyboardEvent` properties from the Exit this Page component](https://github.com/alphagov/govuk-frontend/pull/4813)
 - [#4855: Fix mobile product name being misaligned in new type scale](https://github.com/alphagov/govuk-frontend/pull/4855)
 
-## 5.2.0 (feature release)
+## 5.2.0 (Feature release)
 
 In this release, we’ve adjusted our responsive type scale, which is available behind a feature flag. The type scale change is to make text easier to read on smaller screens. We’ve also deprecated the `useTudorCrown` parameter.
 
@@ -3363,7 +3373,7 @@ If you're using your own components that rely on the overflow state of the docum
 
   ([PR #1119](https://github.com/alphagov/govuk-frontend/pull/1119))
 
-## 2.4.1 (fix release)
+## 2.4.1 (Fix release)
 
 🔧 Fixes:
 
@@ -3732,7 +3742,7 @@ If you're using your own components that rely on the overflow state of the docum
 - Defend tables against GOV.UK Elements code
   ([PR #983](https://github.com/alphagov/govuk-frontend/pull/983))
 
-## 1.3.0 (feature release)
+## 1.3.0 (Feature release)
 
 🆕 New features:
 
@@ -3774,7 +3784,7 @@ If you're using your own components that rely on the overflow state of the docum
 - Adjust tag component padding to compensate for font spacing
   ([PR #955](https://github.com/alphagov/govuk-frontend/pull/955))
 
-## 1.2.0 (feature release)
+## 1.2.0 (Feature release)
 
 🆕 New features:
 
@@ -3819,7 +3829,7 @@ If you're using your own components that rely on the overflow state of the docum
 
   ([PR #885](https://github.com/alphagov/govuk-frontend/pull/885))
 
-## 1.1.1 (fix release)
+## 1.1.1 (Fix release)
 
 🔧 Fixes:
 
@@ -3846,7 +3856,7 @@ If you're using your own components that rely on the overflow state of the docum
 - Fix undefined class displaying in date input
   ([PR #913](https://github.com/alphagov/govuk-frontend/pull/913))
 
-## 1.1.0 (feature release)
+## 1.1.0 (Feature release)
 
 🆕 New features:
 
