@@ -4,6 +4,12 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#4942: Remove duplicate `errorMessage` argument for the password input component](https://github.com/alphagov/govuk-frontend/pull/4942)
+
 ## 5.3.1 (Fix release)
 
 ### Fixes
