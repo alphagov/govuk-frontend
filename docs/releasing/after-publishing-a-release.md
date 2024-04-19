@@ -8,7 +8,7 @@ Developers should update [govuk-design-system](https://github.com/alphagov/govuk
 
 ## Let the community know about the new release
 
-We now need to update or comms channels.
+We now need to update our comms channels.
 
 ### The mailing list
 
@@ -46,6 +46,6 @@ We should check if we need to update the following places on the website:
 
 Finally, we should make sure that our issue list and sprint board are tidy by making sure:
 
-- issues created for this release are all complete, closed, and moved into the **Done** column on the [Design System sprint board](https://github.com/orgs/alphagov/projects/4)
+- issues created for this release are all complete, closed, and moved into the **Done** column on the [Design System cycle board](https://github.com/orgs/alphagov/projects/53)
 - that all the issues (on the same board) solved and/or published in this release have been moved from the **Ready to Release** column to **Done**
 - any associated milestones are closed

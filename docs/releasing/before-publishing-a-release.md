@@ -4,11 +4,9 @@ When preparing to publish a release of GOV.UK Frontend we need to ensure we are 
 
 ## Kick off the release
 
-Both squads should coordinate when either wants to publish a new release. Choose a team member to lead on the release, typically a developer.
+The whole team should coordinate whether to publish a new release. Choose a team member to lead on the release, typically a developer.
 
 We next need to define a cutoff date for this release. Once the cutoff date passes, do not add any further major changes. We can still add small fixes before we publish as long as we notify the team. However, we should try to avoid adding too many fixes in this way, as it requires us to have to repeat steps of the release process.
-
-Optionally, we can also let the prototype kit know that we are coordinating a release. The prototype kit team have [their own release process](https://github.com/alphagov/govuk-prototype-kit/tree/main/internal_docs) and we don't need to run releases synchronously.
 
 ## Raise release issues
 
@@ -16,7 +14,7 @@ Release issues should be created in the team GitHub repositories: [govuk-fronten
 
 All these issues should be:
 
-- added to the [Design System sprint board](https://github.com/orgs/alphagov/projects/53) backlog
+- added to the [Design System cycle board](https://github.com/orgs/alphagov/projects/53) backlog
 - added to that release's milestone
 - tagged with the '🚀 release' label
 
