@@ -18,21 +18,22 @@ $govuk-page-width: 960px !default;
 /// @type Map
 /// @access public
 
-$govuk-grid-widths: (
+$govuk-grid-widths: ( 
+  // using direct values instead of divisions to keep compatibility with previous frameworks
   one-quarter: (
-    100% / 4
+    25%
   ),
   one-third: (
-    100% / 3
+    33.3333333%
   ),
   one-half: (
-    100% / 2
+    50%
   ),
   two-thirds: (
-    200% / 3
+    66.6666667%
   ),
   three-quarters: (
-    300% / 4
+    75%
   ),
   full: 100%
 ) !default;
