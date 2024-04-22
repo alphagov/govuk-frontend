@@ -1,0 +1,188 @@
+params:
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the service header container.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example, data attributes) to add to the service header container.
+  - name: menuButtonText
+    type: string
+    required: false
+    description: The text of the mobile navigation menu toggle.
+  - name: menuButtonLabel
+    type: string
+    required: false
+    description: The screen reader label for the mobile navigation menu toggle. Defaults to the same value as `menuButtonText` if not specified.
+  - name: navigationLabel
+    type: string
+    required: false
+    description: The screen reader label for the mobile navigation menu. Defaults to the same value as `menuButtonText` if not specified.
+  - name: navigationId
+    type: string
+    required: false
+    description: The ID used to associate the mobile navigation toggle with the navigation menu. Defaults to `navigation`.
+  - name: navigationClasses
+    type: string
+    required: false
+    description: Classes to add to the navigation menu container.
+  - name: serviceName
+    type: string
+    required: false
+    description: The name of your service.
+  - name: serviceUrl
+    type: string
+    required: false
+    description: The homepage of your service.
+  - name: navigation
+    type: array
+    required: false
+    description: Can be used to add navigation to the service header.
+    params:
+      - name: current
+        type: boolean
+        required: false
+        description: If `true`, indicates that the user is currently on this page. This takes precedence over `active`.
+      - name: active
+        type: boolean
+        required: false
+        description: If `true`, indicates that the user is within this group of pages in the navigation hierarchy.
+      - name: html
+        type: string
+        required: true
+        description: HTML for the navigation item. If `html` is provided, the `text` option will be ignored.
+      - name: text
+        type: string
+        required: true
+        description: Text for the navigation item. If `html` is provided, the `text` option will be ignored.
+      - name: href
+        type: string
+        required: false
+        description: URL of the navigation item anchor.
+      - name: attributes
+        type: object
+        required: false
+        description: HTML attributes (for example data attributes) to add to the navigation item anchor.
+
+previewLayout: full-width
+
+examples:
+  - name: default
+    options:
+      serviceName: Service name
+  - name: with service link
+    options:
+      serviceName: Service name
+      serviceUrl: '#/'
+  - name: with long service name
+    options:
+      serviceName: Apply to receive a rare holofoil Charizard Pokémon card from the King
+      serviceUrl: '#/'
+  - name: with navigation
+    options:
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2
+        - href: '#/3'
+          text: Navigation item 3
+        - href: '#/4'
+          text: Navigation item 4
+  - name: with navigation with a current item
+    description: The current item indicates that the user is present on that exact page. It looks the same as an active item, but has different underlying semantics.
+    options:
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2
+          current: true
+        - href: '#/3'
+          text: Navigation item 3
+        - href: '#/4'
+          text: Navigation item 4
+  - name: with navigation with an active item
+    description: The active item indicates that the user is within that section, but not on the exact page being linked. It looks the same as a current item, but has different underlying semantics.
+    options:
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2
+          active: true
+        - href: '#/3'
+          text: Navigation item 3
+        - href: '#/4'
+          text: Navigation item 4
+  - name: with large navigation
+    options:
+      navigation:
+        - href: '#/browse/benefits'
+          text: Benefits
+        - href: '#/browse/births-deaths-marriages'
+          text: Births, deaths, marriages and care
+        - href: '#/browse/business'
+          text: Business and self-employed
+        - href: '#/browse/childcare-parenting'
+          text: Childcare and parenting
+        - href: '#/browse/citizenship'
+          text: Citizenship and living in the UK
+        - href: '#/browse/justice'
+          text: Crime, justice and the law
+        - href: '#/browse/disabilities'
+          text: Disabled people
+        - href: '#/browse/driving'
+          text: Driving and transport
+        - href: '#/browse/education'
+          text: Education and learning
+        - href: '#/browse/employing-people'
+          text: Employing people
+        - href: '#/browse/environment-countryside'
+          text: Environment and countryside
+        - href: '#/browse/housing-local-services'
+          text: Housing and local services
+        - href: '#/browse/tax'
+          text: Money and tax
+        - href: '#/browse/abroad'
+          text: Passports, travel and living abroad
+        - href: '#/browse/visas-immigration'
+          text: Visas and immigration
+        - href: '#/browse/working'
+          text: Working, jobs and pensions
+  - name: with HTML navigation items
+    options:
+      navigation:
+        - href: '#/1'
+          html: <em>Navigation item 1</em>
+        - href: '#/2'
+          html: <em>Navigation item 2</em>
+        - href: '#/3'
+          html: <em>Navigation item 3</em>
+  - name: with non-link navigation items
+    options:
+      navigation:
+        - text: Navigation item 1
+        - text: Navigation item 2
+        - text: Navigation item 3
+  - name: with service name and navigation
+    options:
+      serviceName: Apply for a juggling license
+      serviceUrl: '#/'
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2
+          active: true
+        - href: '#/3'
+          text: Navigation item 3
+        - href: '#/4'
+          text: Navigation item 4
+
+  # Hidden examples
+  - name: with no options set
+    description: If no serviceName or navigation is set, don't render anything.
+    hidden: true
+    options: {}
