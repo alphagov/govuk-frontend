@@ -1,0 +1,135 @@
+@include govuk-exports("govuk/component/service-header") {
+  $govuk-service-header-background: $govuk-canvas-background-colour;
+  $govuk-service-header-border-color: $govuk-border-colour;
+
+  .govuk-service-header {
+    border-bottom: 1px solid $govuk-service-header-border-color;
+    background-color: $govuk-service-header-background;
+  }
+
+  .govuk-service-header__container {
+    display: flex;
+    padding-top: govuk-spacing(1);
+
+    @include govuk-media-query($until: tablet) {
+      flex-direction: column;
+      align-items: start;
+      margin-bottom: govuk-spacing(1);
+    }
+
+    @include govuk-media-query($from: tablet) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+
+  .govuk-service-header__link,
+  .govuk-service-header__navigation-text {
+    @include govuk-media-query($from: tablet) {
+      display: inline-block;
+      padding: govuk-spacing(3) 0;
+    }
+  }
+
+  .govuk-service-header__link {
+    @include govuk-link-common;
+    @include govuk-link-style-default;
+    @include govuk-link-style-no-visited-state;
+
+    &:not(:hover) {
+      text-decoration: none;
+    }
+
+    @include govuk-media-query($from: tablet) {
+      &:focus {
+        box-shadow:
+          0 (-(govuk-spacing(1))) $govuk-focus-colour,
+          0 govuk-spacing(1) $govuk-focus-text-colour;
+      }
+    }
+  }
+
+  .govuk-service-header__link--service-name {
+    &,
+    &:visited {
+      color: $govuk-text-colour;
+    }
+  }
+
+  .govuk-service-header__service-name {
+    @include govuk-font($size: 19, $weight: bold);
+    display: inline-block;
+    margin: govuk-spacing(1) 0;
+    color: $govuk-text-colour;
+
+    @include govuk-media-query($from: tablet) {
+      // Add a bit of right margin so service name and nav items don't smush together
+      margin: 0;
+      margin-right: govuk-spacing(3);
+      padding: govuk-spacing(3) 0;
+    }
+  }
+
+  .govuk-service-header__toggle {
+    @include govuk-font($size: 19, $weight: bold);
+    display: inline-flex;
+    margin: govuk-spacing(1) 0;
+    padding: 0;
+    border: 0;
+    color: $govuk-link-colour;
+    background: none;
+    word-break: break-all;
+    cursor: pointer;
+    align-items: center;
+
+    &::after {
+      @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
+      content: "";
+      margin-left: govuk-spacing(1);
+    }
+
+    &[aria-expanded="true"]::after {
+      @include govuk-shape-arrow($direction: up, $base: 10px, $display: inline-block);
+    }
+
+    // Ensure the button stays hidden if the hidden attribute is present
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  .govuk-service-header__navigation-list {
+    @include govuk-font($size: 19);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .govuk-service-header__navigation-item {
+    margin: govuk-spacing(2) 0 govuk-spacing(4);
+
+    @include govuk-media-query($from: tablet) {
+      display: inline-block;
+      margin: 0 govuk-spacing(6) 0 0;
+      border-bottom: govuk-spacing(1) solid transparent;
+
+      &:last-of-type {
+        margin: 0;
+      }
+    }
+  }
+
+  .govuk-service-header__navigation-item--active {
+    margin-left: 0 - govuk-spacing(2) - govuk-spacing(1);
+    padding-left: govuk-spacing(2);
+    border-left: govuk-spacing(1) solid $govuk-link-colour;
+
+    @include govuk-media-query($from: tablet) {
+      margin-left: 0;
+      padding-left: 0;
+      border-bottom: govuk-spacing(1) solid $govuk-link-colour;
+      border-left: 0;
+    }
+  }
+}
