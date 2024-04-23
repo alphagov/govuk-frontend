@@ -10,15 +10,15 @@
 
         {# Service name #}
         {% if params.serviceName %}
-          {% if params.serviceUrl %}
-          <a href="{{ params.serviceUrl }}" class="govuk-service-header__link govuk-service-header__link--service-name govuk-service-header__service-name">
-            {{ params.serviceName }}
-          </a>
-          {% else %}
           <span class="govuk-service-header__service-name">
-            {{ params.serviceName }}
+            {% if params.serviceUrl %}
+            <a href="{{ params.serviceUrl }}" class="govuk-service-header__link govuk-service-header__link--service-name">
+              {{ params.serviceName }}
+            </a>
+            {% else %}
+              {{- params.serviceName -}}
+            {% endif %}
           </span>
-          {% endif %}
         {% endif %}
 
         {# Navigation #}
@@ -31,14 +31,17 @@
               {% for item in params.navigation %}
                 <li class="govuk-service-header__navigation-item {%- if item.active or item.current %} govuk-service-header__navigation-item--active{% endif %}">
                   {% if item.href %}
-                    {# We wrap active links in strong tags so that users who override colours or styles can still have some indicator of the current nav item. #}
-                    {%- if item.active %}<strong>{% endif %}
                     <a class="govuk-service-header__link" href="{{ item.href }}"
                       {%- if item.active or item.current %} aria-current="{{ 'page' if item.current else 'true' }}"{% endif %}
                       {{- govukAttributes(item.attributes) -}}>
-                      {{- item.html | safe if item.html else item.text -}}
+                      {# We wrap active links in strong tags so that users who override colours or
+                      styles will still have some indicator of the current nav item. #}
+                      {% if item.active or item.current %}
+                        <strong class="govuk-service-header__active-fallback">{{- item.html | safe if item.html else item.text -}}</strong>
+                      {% else %}
+                        {{- item.html | safe if item.html else item.text -}}
+                      {% endif %}
                     </a>
-                    {%- if item.active %}</strong>{% endif %}
                   {% elif item.html or item.text %}
                     <span class="govuk-service-header__navigation-text">
                       {{- item.html | safe if item.html else item.text -}}
