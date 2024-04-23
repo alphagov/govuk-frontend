@@ -1,0 +1,104 @@
+params:
+  - name: text
+    type: string
+    required: true
+    description: If `html` is set, this is not required. Text to use within the label. If `html` is provided, the `text` option will be ignored.
+  - name: html
+    type: string
+    required: true
+    description: If `text` is set, this is not required. HTML to use within the label. If `html` is provided, the `text` option will be ignored.
+  - name: for
+    type: string
+    required: false
+    description: The value of the `for` attribute, the ID of the input the label is associated with.
+  - name: isPageHeading
+    type: boolean
+    required: false
+    description: Whether the label also acts as the heading for the page.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the label tag.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the label tag.
+
+examples:
+  - name: default
+    options:
+      text: National Insurance number
+  - name: with bold text
+    options:
+      classes: govuk-label--s
+      text: National Insurance number
+  - name: styled as xl text
+    options:
+      text: National Insurance number
+      classes: govuk-label--xl
+  - name: styled as large text
+    options:
+      text: National Insurance number
+      classes: govuk-label--l
+  - name: styled as medium text
+    options:
+      text: National Insurance number
+      classes: govuk-label--m
+  - name: styled as small text
+    options:
+      text: National Insurance number
+      classes: govuk-label--s
+  - name: as page heading xl
+    options:
+      text: National Insurance number
+      classes: govuk-label--xl
+      isPageHeading: true
+  - name: as page heading l
+    options:
+      text: National Insurance number
+      classes: govuk-label--l
+      isPageHeading: true
+  - name: as page heading m
+    options:
+      text: National Insurance number
+      classes: govuk-label--m
+      isPageHeading: true
+  - name: as page heading s
+    options:
+      text: National Insurance number
+      classes: govuk-label--s
+      isPageHeading: true
+  - name: as page heading without class
+    options:
+      text: National Insurance number
+      isPageHeading: true
+
+  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: empty
+    hidden: true
+    options: {}
+  - name: classes
+    hidden: true
+    options:
+      text: National Insurance number
+      classes: extra-class one-more-class
+  - name: html as text
+    hidden: true
+    options:
+      text: National Insurance number, <em>NINO</em>
+  - name: html
+    hidden: true
+    options:
+      html: National Insurance number <em>NINO</em>
+  - name: for
+    hidden: true
+    options:
+      for: test-target-element
+      text: National Insurance number
+  - name: attributes
+    hidden: true
+    options:
+      text: National Insurance number
+      attributes:
+        first-attribute: 'foo'
+        second-attribute: 'bar'
