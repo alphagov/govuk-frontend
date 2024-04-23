@@ -1,6 +1,7 @@
 @include govuk-exports("govuk/component/service-header") {
   $govuk-service-header-background: $govuk-canvas-background-colour;
   $govuk-service-header-border-color: $govuk-border-colour;
+  $govuk-service-header-active-link-border-width: govuk-spacing(1);
 
   .govuk-service-header {
     border-bottom: 1px solid $govuk-service-header-border-color;
@@ -9,7 +10,7 @@
 
   .govuk-service-header__container {
     display: flex;
-    padding-top: govuk-spacing(1);
+    padding-top: $govuk-service-header-active-link-border-width;
 
     @include govuk-media-query($until: tablet) {
       flex-direction: column;
@@ -24,50 +25,50 @@
     }
   }
 
-  .govuk-service-header__link,
-  .govuk-service-header__navigation-text {
+  .govuk-service-header__link {
+    @include govuk-link-common;
+    @include govuk-link-style-default;
+    @include govuk-link-style-no-visited-state;
+
+    // Don't show underlines on navigation links (on hover only)
+    &:not(:hover) {
+      text-decoration: none;
+    }
+
+    // Extend the clickable area of the link to fill the entire
+    // list item container.
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  .govuk-service-header__link--service-name {
+    @include govuk-link-style-text;
+  }
+
+  // Shared styles between service name container and nav items
+  .govuk-service-header__service-name,
+  .govuk-service-header__navigation-item {
+    position: relative;
+
     @include govuk-media-query($from: tablet) {
       display: inline-block;
       padding: govuk-spacing(3) 0;
     }
   }
 
-  .govuk-service-header__link {
-    @include govuk-link-common;
-    @include govuk-link-style-default;
-    @include govuk-link-style-no-visited-state;
-
-    &:not(:hover) {
-      text-decoration: none;
-    }
-
-    @include govuk-media-query($from: tablet) {
-      &:focus {
-        box-shadow:
-          0 (-(govuk-spacing(1))) $govuk-focus-colour,
-          0 govuk-spacing(1) $govuk-focus-text-colour;
-      }
-    }
-  }
-
-  .govuk-service-header__link--service-name {
-    &,
-    &:visited {
-      color: $govuk-text-colour;
-    }
-  }
-
   .govuk-service-header__service-name {
     @include govuk-font($size: 19, $weight: bold);
-    display: inline-block;
-    margin: govuk-spacing(1) 0;
-    color: $govuk-text-colour;
 
     @include govuk-media-query($from: tablet) {
-      // Add a bit of right margin so service name and nav items don't smush together
-      margin: 0;
-      margin-right: govuk-spacing(3);
-      padding: govuk-spacing(3) 0;
+      // Add a little extra space to the bottom of the service name so that it
+      // has the same visual height as navigation items.
+      margin-bottom: $govuk-service-header-active-link-border-width;
     }
   }
 
@@ -107,12 +108,20 @@
   }
 
   .govuk-service-header__navigation-item {
-    margin: govuk-spacing(2) 0 govuk-spacing(4);
+    // Negative offset the left margin so we can place a current page indicator
+    // to the left without misaligning the list item text.
+    margin: govuk-spacing(2) 0 govuk-spacing(2)
+      ((govuk-spacing(2) + $govuk-service-header-active-link-border-width) * -1);
+
+    padding-left: govuk-spacing(2);
+    border: 0 solid transparent;
+    border-left-width: $govuk-service-header-active-link-border-width;
 
     @include govuk-media-query($from: tablet) {
-      display: inline-block;
       margin: 0 govuk-spacing(6) 0 0;
-      border-bottom: govuk-spacing(1) solid transparent;
+      padding-left: 0;
+      border-bottom-width: $govuk-service-header-active-link-border-width;
+      border-left-width: 0;
 
       &:last-of-type {
         margin: 0;
@@ -121,15 +130,14 @@
   }
 
   .govuk-service-header__navigation-item--active {
-    margin-left: 0 - govuk-spacing(2) - govuk-spacing(1);
-    padding-left: govuk-spacing(2);
-    border-left: govuk-spacing(1) solid $govuk-link-colour;
+    border-color: $govuk-link-colour;
+  }
 
-    @include govuk-media-query($from: tablet) {
-      margin-left: 0;
-      padding-left: 0;
-      border-bottom: govuk-spacing(1) solid $govuk-link-colour;
-      border-left: 0;
-    }
+  // This is a <strong> element that is used as a fallback mechanism for
+  // visually indicating the current page in scenarios where CSS is unavailable
+  // or colours may have been overridden. We don't actually want it to be bold
+  // normally, so set it to regular weight.
+  .govuk-service-header__active-fallback {
+    @include govuk-typography-weight-regular;
   }
 }
