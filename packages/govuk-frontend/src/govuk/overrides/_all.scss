@@ -1,5 +1,2 @@
-@import "display";
-@import "spacing";
-@import "text-align";
-@import "typography";
-@import "width";
+@warn "Importing using 'govuk/overrides/all' is deprecated. Update your import statement to import 'govuk/overrides/index'";
+@import "index";

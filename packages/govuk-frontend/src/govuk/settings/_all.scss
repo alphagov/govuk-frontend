@@ -1,21 +1,2 @@
-// The order we import settings in is important, as some settings files rely on
-// others
-
-@import "assets";
-
-@import "warnings";
-@import "global-styles";
-
-@import "media-queries";
-
-@import "colours-palette";
-@import "colours-organisations";
-@import "colours-applied";
-
-@import "spacing";
-@import "measurements";
-
-@import "typography-font";
-@import "typography-responsive";
-
-@import "links";
+@warn "Importing using 'govuk/settings/all' is deprecated. Update your import statement to import 'govuk/settings/index'";
+@import "index";
