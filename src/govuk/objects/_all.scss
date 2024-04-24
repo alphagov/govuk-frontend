@@ -1,6 +1,2 @@
-@import "button-group";
-@import "form-group";
-@import "grid";
-@import "main-wrapper";
-@import "template";
-@import "width-container";
+@warn "Importing using 'govuk/objects/all' is deprecated. Update your import statement to import 'govuk/objects/index'";
+@import "index";

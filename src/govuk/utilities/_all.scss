@@ -1,2 +1,2 @@
-@import "clearfix";
-@import "visually-hidden";
+@warn "Importing using 'govuk/utilities/all' is deprecated. Update your import statement to import 'govuk/utilities/index'";
+@import "index";

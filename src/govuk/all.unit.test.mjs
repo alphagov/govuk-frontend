@@ -1,7 +1,10 @@
 import { paths } from '@govuk-frontend/config'
 import { compileSassString } from '@govuk-frontend/helpers/tests'
+import { sassNull } from 'sass-embedded'
 import sassdoc from 'sassdoc'
 import slash from 'slash'
+
+let mockWarnFunction, sassConfig
 
 describe('GOV.UK Frontend', () => {
   describe('global styles', () => {
@@ -95,6 +98,58 @@ describe('GOV.UK Frontend', () => {
             })
           })
         )
+    })
+  })
+
+  describe('importing using "all" files', () => {
+    beforeAll(() => {
+      // Create a mock warn function that we can use to override the native @warn
+      // function, that we can make assertions about post-render.
+      mockWarnFunction = jest.fn().mockReturnValue(sassNull)
+
+      sassConfig = {
+        logger: {
+          warn: mockWarnFunction
+        }
+      }
+    })
+
+    it('outputs a warning for each layer that has an "all" file', async () => {
+      const sass = `
+      /* equivalent to importing 'base' */
+      @import "settings/all";
+      @import "tools/all";
+      @import "helpers/all";
+
+      @import "core/all";
+      @import "objects/all";
+
+      @import "components/all";
+
+      @import "utilities/all";
+      @import "overrides/all";
+      `
+
+      await compileSassString(sass, sassConfig)
+
+      return Promise.all(
+        [
+          'settings',
+          'tools',
+          'helpers',
+          'core',
+          'objects',
+          'components',
+          'utilities',
+          'overrides'
+        ].map((section, index) =>
+          expect(mockWarnFunction).toHaveBeenNthCalledWith(
+            index + 1,
+            `Importing using 'govuk/${section}/all' is deprecated. Update your import statement to import 'govuk/${section}/index'`,
+            expect.anything()
+          )
+        )
+      )
     })
   })
 })
