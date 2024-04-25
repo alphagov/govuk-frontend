@@ -16,14 +16,13 @@
   .govuk-header {
     @include govuk-font($size: 16, $line-height: 1);
 
-    border-bottom: govuk-spacing(2) solid govuk-colour("white");
+    border-bottom: govuk-spacing(2) solid $govuk-header-border-color;
     color: $govuk-header-text;
     background: $govuk-header-background;
   }
 
   .govuk-header__container--full-width {
     padding: 0 govuk-spacing(3);
-    border-color: $govuk-header-border-color;
 
     .govuk-header__menu-button {
       right: govuk-spacing(3);
@@ -33,9 +32,7 @@
   .govuk-header__container {
     @include govuk-clearfix;
     position: relative;
-    margin-bottom: -$govuk-header-border-width;
     padding-top: govuk-spacing($govuk-header-vertical-spacing-value);
-    border-bottom: $govuk-header-border-width solid $govuk-header-border-color;
   }
 
   .govuk-header__logotype {

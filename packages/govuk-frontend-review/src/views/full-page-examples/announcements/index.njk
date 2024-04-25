@@ -7,12 +7,14 @@ notes: Based on https://www.gov.uk/government/news/strictly-vampires-and-sausage
 
 {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/service-header/macro.njk" import govukServiceHeader %}
 
 {% set pageTitle = example.title %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block header %}
-{{ govukHeader({
+{{ govukHeader() }}
+{{ govukServiceHeader({
   navigation: [
     {
       href: "#1",
