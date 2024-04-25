@@ -84,6 +84,23 @@ examples:
           <li><a href="link-1" class="govuk-notification-banner__link">government-strategy.pdf</a></li>
           <li><a href="link-2" class="govuk-notification-banner__link">government-strategy-v1.pdf</a></li>
         </ul>
+  - name: with type warning
+    options:
+      type: warning
+      html: |
+        <h3 class="govuk-notification-banner__heading">
+          Oops! Something went wrong
+        </h3>
+  - name: warning with custom html
+    options:
+      type: warning
+      html: |
+        <h3 class="govuk-notification-banner__heading">
+          This publication was withdrawn on 7 March 2014
+        </h3>
+        <p class="govuk-body">
+          Sorry for the inconvenience, but it seems like an error has occurred. You can report this error to <a href="#" class="govuk-notification-banner__link">our support</a>.
+        </p>
   - name: with a list
     options:
       html: |
@@ -131,6 +148,16 @@ examples:
       text: Email sent to example@email.com
       attributes:
         tabindex: 2
+  - name: of small size
+    options:
+      isSmall: true
+      html: |
+        <h3 class="govuk-notification-banner__heading">
+          This publication was withdrawn on 7 March 2014
+        </h3>
+        <p class="govuk-body">
+          Archived and replaced by the <a href="#" class="govuk-notification-banner__link">new planning guidance</a> launched 6 March 2014 on an external website
+        </p>
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
 

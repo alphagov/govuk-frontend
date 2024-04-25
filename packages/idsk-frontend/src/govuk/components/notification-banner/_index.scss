@@ -4,6 +4,7 @@
     @include govuk-responsive-margin(8, "bottom");
 
     border: $govuk-border-width solid $govuk-brand-colour;
+    border-radius: 10px;
 
     background-color: $govuk-brand-colour;
 
@@ -37,6 +38,7 @@
     $padding-tablet: govuk-spacing(4);
     @include govuk-text-colour;
     padding: govuk-spacing(3);
+    border-radius: 0 0 5px 5px;
 
     background-color: $govuk-body-background-colour;
 
@@ -82,9 +84,34 @@
     border-color: $govuk-success-colour;
 
     background-color: $govuk-success-colour;
+  }
 
-    .govuk-notification-banner__link {
-      @include govuk-link-style-success;
+  .govuk-notification-banner--warning {
+    border-color: $govuk-error-colour;
+
+    background-color: $govuk-error-colour;
+  }
+
+  .govuk-notification-banner--small {
+    .govuk-notification-banner__heading {
+      @include govuk-font-size($size: 19);
+    }
+
+    .govuk-notification-banner__header {
+      padding: govuk-spacing(1) govuk-spacing(3);
+    }
+
+    .govuk-notification-banner__title {
+      @include govuk-font-size($size: 16);
+    }
+
+    .govuk-body,
+    .govuk-notification-banner__content {
+      @include govuk-font-size($size: 16);
+    }
+
+    .govuk-notification-banner__content {
+      padding: govuk-spacing(3);
     }
   }
 }

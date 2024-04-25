@@ -4,13 +4,21 @@
   {% set successBanner = true %}
 {% endif %}
 
+{%- if params.type == "warning" %}
+  {% set warningBanner = true %}
+{% endif %}
+
 {%- if successBanner %}
+  {% set typeClass = "govuk-notification-banner--" + params.type %}
+{% endif %}
+
+{%- if warningBanner %}
   {% set typeClass = "govuk-notification-banner--" + params.type %}
 {% endif %}
 
 {%- if params.role %}
   {% set role = params.role %}
-{% elif successBanner %}
+{% elif successBanner or warningBanner %}
   {#- If type is success, add `role="alert"` to prioritise the information in the notification banner to users of assistive technologies -#}
   {% set role = "alert" %}
 {% else %}
@@ -24,11 +32,17 @@
   {% set title = params.titleText %}
 {%- elif successBanner %}
   {% set title = "Success" %}
+{%- elif warningBanner %}
+  {% set title = "Warning" %}
 {%- else %}
   {% set title = "Important" %}
 {%- endif -%}
 
-<div class="govuk-notification-banner {%- if typeClass %} {{ typeClass }}{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}" role="{{ role }}" aria-labelledby="{{ params.titleId | default("govuk-notification-banner-title", true) }}" data-module="govuk-notification-banner"
+{%- if params.isSmall %}
+  {% set isSmall = true %}
+{% endif %}
+
+<div class="govuk-notification-banner {%- if isSmall %} govuk-notification-banner--small {% endif %} {%- if typeClass %} {{ typeClass }}{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}" role="{{ role }}" aria-labelledby="{{ params.titleId | default("govuk-notification-banner-title", true) }}" data-module="govuk-notification-banner"
   {%- if params.disableAutoFocus !== undefined %} data-disable-auto-focus="{{ params.disableAutoFocus }}"{% endif %}
   {{- govukAttributes(params.attributes) }}>
   <div class="govuk-notification-banner__header">
