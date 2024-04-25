@@ -178,7 +178,7 @@ examples:
   - name: custom role
     hidden: true
     options:
-      role: banner
+      role: dialog
       text: This publication was withdrawn on 7 March 2014.
 
   - name: classes

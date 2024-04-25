@@ -36,9 +36,11 @@
       }) }}
     {% endblock %}
 
+    <header>
     {% block header %}
       {{ govukHeader({}) }}
     {% endblock %}
+    </header>
 
     {% block main %}
       <div class="govuk-width-container {%- if containerClasses %} {{ containerClasses }}{% endif %}">
