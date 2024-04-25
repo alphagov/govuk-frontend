@@ -5,6 +5,7 @@
 {% from "govuk/components/header/macro.njk" import govukHeader %}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 {% from "govuk/components/footer/macro.njk" import govukFooter %}
+{% from "govuk/components/service-header/macro.njk" import govukServiceHeader %}
 
 {% extends "govuk/template.njk" %}
 
@@ -46,8 +47,18 @@
 {% block header %}
   <!-- block:header -->
   {{ govukHeader({
+    containerClasses: "app-width-container--wide"
+  }) }}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Alpha"
+    },
+    html: 'C\'est un nouveau service - vos <a class="govuk-link" href="#">commentaires</a> nous aideront à l\'améliorer.'
+  }) }}
+
+  {{ govukServiceHeader({
     serviceName: "Nom du service",
-    containerClasses: "app-width-container--wide",
     navigation: [
       {
         href: '#1',
@@ -77,12 +88,6 @@
 
 {% block beforeContent %}
   <!-- block:beforeContent -->
-  {{ govukPhaseBanner({
-    tag: {
-      text: "Alpha"
-    },
-    html: 'C\'est un nouveau service - vos <a class="govuk-link" href="#">commentaires</a> nous aideront à l\'améliorer.'
-  }) }}
   {{ govukBackLink({
     href: "/"
   }) }}

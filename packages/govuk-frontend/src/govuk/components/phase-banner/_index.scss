@@ -12,8 +12,9 @@
     @include govuk-font($size: 16);
     @include govuk-text-colour;
 
-    display: table;
-    margin: 0;
+    display: flex;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   .govuk-phase-banner__content__tag {
