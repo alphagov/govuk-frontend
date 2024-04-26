@@ -164,7 +164,7 @@ examples:
     options:
       navigation:
         - text: Navigation item 1
-        - text: Navigation item 2
+        - html: <em>Navigation item 2</em>
         - text: Navigation item 3
   - name: with service name and navigation
     options:
@@ -186,3 +186,66 @@ examples:
     description: If no serviceName or navigation is set, don't render anything.
     hidden: true
     options: {}
+  - name: attributes
+    hidden: true
+    options:
+      serviceName: Service name
+      attributes:
+        'data-foo': bar
+        'data-pika': chu
+  - name: classes
+    hidden: true
+    options:
+      serviceName: Service name
+      classes: app-my-curious-custom-class
+  - name: with custom navigation toggle text
+    hidden: true
+    options:
+      menuButtonText: Enter the NavZone
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+  - name: with custom navigation toggle label
+    hidden: true
+    options:
+      menuButtonLabel: Enter the NavZone
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+  - name: with identical navigation toggle text and label
+    hidden: true
+    options:
+      menuButtonText: Enter the NavZone
+      menuButtonLabel: Enter the NavZone
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+  - name: with custom navigation label
+    hidden: true
+    options:
+      navigationLabel: Main navigation
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+  - name: with custom navigation toggle text and navigation label
+    hidden: true
+    options:
+      menuButtonText: Enter the NavZone
+      navigationLabel: The NavZone
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+  - name: with custom navigation classes
+    hidden: true
+    options:
+      navigationClasses: app-my-neat-navigation-class
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+  - name: with custom navigation ID
+    hidden: true
+    options:
+      navigationId: main-nav
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
