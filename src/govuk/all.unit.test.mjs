@@ -145,7 +145,7 @@ describe('GOV.UK Frontend', () => {
         ].map((section, index) =>
           expect(mockWarnFunction).toHaveBeenNthCalledWith(
             index + 1,
-            `Importing using 'govuk/${section}/all' is deprecated. Update your import statement to import 'govuk/${section}/index'`,
+            `Importing using 'govuk/${section}/all' is deprecated. Update your import statement to import 'govuk/${section}/index'. To silence this warning, update $govuk-suppressed-warnings with key: "import-using-all"`,
             expect.anything()
           )
         )
