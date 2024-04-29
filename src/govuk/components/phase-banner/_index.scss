@@ -1,4 +1,5 @@
 @import "../tag/index";
+@import "../../objects/width-container";
 
 @include govuk-exports("govuk/component/phase-banner") {
   .govuk-phase-banner {
