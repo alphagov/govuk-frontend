@@ -331,8 +331,29 @@ describe('Template', () => {
       })
     })
 
-    describe('header', () => {
-      it('can be overridden using the header block', () => {
+    describe('<header>', () => {
+      it('can have custom classes added using headerClasses', () => {
+        const $ = renderTemplate('govuk/template.njk', {
+          context: {
+            headerClasses: 'custom-header-class'
+          }
+        })
+
+        expect($('header').hasClass('custom-header-class')).toBeTruthy()
+      })
+
+      it('can be overridden using the headerContainer block', () => {
+        const $ = renderTemplate('govuk/template.njk', {
+          blocks: {
+            headerContainer: '<div class="my-header">header</div>'
+          }
+        })
+
+        expect($('.my-header')).toHaveLength(1)
+        expect($('.govuk-template__header')).toHaveLength(0)
+      })
+
+      it('content can be overridden using the header block', () => {
         const $ = renderTemplate('govuk/template.njk', {
           blocks: {
             header: '<div class="my-header">header</div>'
@@ -340,6 +361,7 @@ describe('Template', () => {
         })
 
         expect($('.my-header')).toHaveLength(1)
+        expect($('.govuk-template__header')).toHaveLength(1)
         expect($('.govuk-header')).toHaveLength(0)
       })
     })
