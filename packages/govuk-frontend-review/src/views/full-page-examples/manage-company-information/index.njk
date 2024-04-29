@@ -1,0 +1,308 @@
+---
+title: William Wonka - Wonka Industries company information
+name: Manage company information (complex navigation)
+scenario: A page containing multiple navigational layers and header elements.
+notes: Based on elements of Companies Houses company information view
+---
+{% extends "layouts/full-page-example.njk" %}
+
+{% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
+{% from "govuk/components/skip-link/macro.njk" import govukSkipLink -%}
+{% from "govuk/components/header/macro.njk" import govukHeader -%}
+{% from "govuk/components/service-header/macro.njk" import govukServiceHeader -%}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner -%}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs -%}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList -%}
+
+{% set pageTitle = example.title %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% set html %}
+  <p class="govuk-body">We’d like to use analytics cookies so we can understand how you use this site.</p>
+  <p class="govuk-body">We also use essential cookies to remember if you’ve accepted analytics cookies.</p>
+{% endset %}
+
+{% set acceptHtml %}
+  <p class="govuk-body">You’ve accepted analytics cookies. You can <a class="govuk-link" href="/cookies">change your cookie settings</a> at any time.</p>
+{% endset %}
+
+{% set rejectHtml %}
+  <p class="govuk-body">You’ve rejected analytics cookies. You can <a class="govuk-link" href="/cookies">change your cookie settings</a> at any time.</p>
+{% endset %}
+
+{% block bodyStart %}
+  {{ super() }}
+  {{ govukCookieBanner({
+    classes: "js-cookies-banner",
+    messages: [
+      {
+        headingText: "Cookies on this government service",
+        html: html,
+        actions: [
+          {
+            text: "Accept analytics cookies",
+            type: "button",
+            classes: "js-cookies-button-accept"
+          },
+          {
+            text: "Reject analytics cookies",
+            type: "button",
+            classes: "js-cookies-button-reject"
+          },
+          {
+            text: "View cookie preferences",
+            href: "#"
+          }
+        ],
+        classes: "js-question-banner"
+      },
+      {
+        html: acceptHtml,
+        role: "alert",
+        actions: [
+          {
+              text: "Hide cookie message",
+              type: "button",
+              classes: "js-hide"
+          }
+        ],
+        classes: "js-cookies-accepted",
+        hidden: true
+      },
+      {
+        html: rejectHtml,
+        role: "alert",
+        actions: [
+          {
+            text: "Hide cookie message",
+            type: "button",
+            classes: "js-hide"
+          }
+        ],
+        classes: "js-cookies-rejected",
+        hidden: true
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block skipLink %}
+  {{ govukSkipLink({
+    href: '#main-content',
+    text: 'Skip to content'
+  }) }}
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader() }}
+  {{ govukPhaseBanner({
+    tag: { text: 'Alpha' },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukServiceHeader({
+    serviceName: 'Manage company information',
+    serviceUrl: '#/',
+    navigation: [
+      { href: '#/1', text: 'Overview' },
+      { href: '#/2', text: 'Filing History' },
+      { href: '#/3', text: 'People', active: true },
+      { href: '#/4', text: 'Registers' },
+      { href: '#/4', text: 'More' }
+    ]
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "#"
+    },
+    {
+      text: "Directory",
+      href: "#"
+    },
+    {
+      text: "Wonka Indstries",
+      href: "#"
+    },
+    {
+      text: "People",
+      href: "#"
+    }
+  ]
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    <span class="govuk-caption-xl">Wonka Industries</span>
+    <h1 class="govuk-heading-xl">William Wonka</h1>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: "William Wonka"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Roles"
+          },
+          value: {
+            text: "Founder, Managing director"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Add",
+                visuallyHiddenText: "role"
+              },
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "roles"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Date appointed"
+          },
+          value: {
+            text: "15 July 2005"
+          }
+        },
+        {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            text: "30 June 1971"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "date of birth"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Correspondence address"
+          },
+          value: {
+            html: '<p class="govuk-body">Bavaria Studios<br>Geiselgasteig, Grünwald<br>Munich<br>Germany</p>'
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "correspondence address"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Contact details"
+          },
+          value: {
+            html: '<p class="govuk-body">07700 900289</p><p class="govuk-body">willy@wonka.ind</p>'
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Add",
+                visuallyHiddenText: "contact details"
+              },
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "contact details"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+    <p class="govuk-body">If there is an issue that you cannot rectify, lorem ipsum dolor sit amet veniam proident dolor ullamco anim exercitation irure deserunt esse incididunt.</p>
+    <p class="govuk-body">Reprehenderit non consectetur est magna ad et consectetur do et laboris nostrud aliqua cillum.</p>
+  </div>
+</div>
+{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="/stylesheets/app.min.css">
+{% endblock %}
+
+{% block bodyEnd %}
+  <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+  <script type="module">
+    import { initAll } from '/javascripts/govuk-frontend.min.js'
+    initAll()
+  </script>
+  <script type="module">
+    const acceptButton = document.querySelector('.js-cookies-button-accept')
+    const rejectButton = document.querySelector('.js-cookies-button-reject')
+
+    const acceptedBanner = document.querySelector('.js-cookies-accepted')
+    const rejectedBanner = document.querySelector('.js-cookies-rejected')
+    const questionBanner = document.querySelector('.js-question-banner')
+    const cookieBanner = document.querySelector('.js-cookies-banner')
+
+    function showBanner(banner) {
+        questionBanner.setAttribute('hidden', 'hidden')
+        banner.removeAttribute('hidden')
+
+        // Shift focus to the banner
+        banner.setAttribute('tabindex', '-1')
+        banner.focus()
+
+        banner.addEventListener('blur', function () {
+            banner.removeAttribute('tabindex')
+        })
+    }
+
+    acceptButton.addEventListener('click', function (event) {
+        showBanner(acceptedBanner)
+        event.preventDefault()
+    })
+
+    rejectButton.addEventListener('click', function (event) {
+        showBanner(rejectedBanner)
+        event.preventDefault()
+    })
+
+    acceptedBanner.querySelector('.js-hide').addEventListener('click', function () {
+      cookieBanner.setAttribute('hidden', 'hidden')
+    })
+
+    rejectedBanner.querySelector('.js-hide').addEventListener('click', function () {
+      cookieBanner.setAttribute('hidden', 'hidden')
+    })
+  </script>
+{% endblock %}
