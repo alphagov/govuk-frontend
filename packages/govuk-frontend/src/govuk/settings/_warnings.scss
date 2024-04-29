@@ -37,17 +37,22 @@ $govuk-suppressed-warnings: () !default;
 /// - To format the passed warning `$message` with the warning key at the end
 /// - To prevent duplicate warnings by adding the passed `$key` to
 /// `$govuk-suppressed-warnings` after `@warn` is called to ensure it only runs
-/// once per sass compilation
+/// once per sass compilation (unless $silence-further-warnings is false)
 ///
 /// @param {String} $key - The key to be checked against `$govuk-suppressed-warnings`
 /// and then passed to it to prevent multiple of the same warning.
 /// @param {String} $message - The message to use when calling `@warn`
+/// @param {Boolean} $silence-further-warnings - Whether to silence future
+/// warnings that use the same $key
 /// @access private
 
-@mixin _warning($key, $message) {
+@mixin _warning($key, $message, $silence-further-warnings: true) {
   @if _should-warn($key) {
     @warn _warning-text($key, $message);
-    $govuk-suppressed-warnings: append($govuk-suppressed-warnings, $key) !global;
+
+    @if $silence-further-warnings {
+      $govuk-suppressed-warnings: append($govuk-suppressed-warnings, $key) !global;
+    }
   }
 }
 
