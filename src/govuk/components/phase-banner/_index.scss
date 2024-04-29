@@ -13,8 +13,8 @@
     @include govuk-text-colour;
 
     display: flex;
-    margin-top: 0;
-    margin-bottom: 0;
+    align-items: baseline;
+    margin: 0;
   }
 
   .govuk-phase-banner__content__tag {
@@ -39,5 +39,12 @@
   .govuk-phase-banner__text {
     display: table-cell;
     vertical-align: middle;
+  }
+
+  // Teams can optionally decide to put the phase banner into the header
+  // instead. In that scenario, we need to apply some different styles to
+  // control the element's width.
+  .govuk-template__header .govuk-phase-banner__content {
+    @include govuk-width-container;
   }
 }
