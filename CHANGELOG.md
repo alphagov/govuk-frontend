@@ -4,6 +4,27 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### Deprecations
+
+#### Importing layers using `all` files
+
+You'll see a warning when compiling your Sass if you import any of our layers using the `all` file. Importing using the `all` files is deprecated, and we will remove them in the next major release.
+
+Update your import statements to refer to the `index` file for each layer rather than `all`:
+
+```scss
+@import "node_modules/govuk-frontend/dist/govuk/base";
+@import "node_modules/govuk-frontend/dist/govuk/core/index";
+@import "node_modules/govuk-frontend/dist/govuk/objects/index";
+@import "node_modules/govuk-frontend/dist/govuk/components/index";
+@import "node_modules/govuk-frontend/dist/govuk/utilities/index";
+@import "node_modules/govuk-frontend/dist/govuk/overrides/index";
+```
+
+You do not need `/index` at the end of each import path if you’re using Dart Sass, LibSass 3.6.0 or higher, or Ruby Sass 3.6.0 or higher.
+
+This change was introduced in [pull request #4955: Rename `all` files to `index` for our Sass entrypoints](https://github.com/alphagov/govuk-frontend/pull/4955).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
