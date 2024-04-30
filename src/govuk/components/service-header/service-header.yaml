@@ -64,6 +64,27 @@ params:
         type: object
         required: false
         description: HTML attributes (for example data attributes) to add to the navigation item anchor.
+  - name: slots
+    type: object
+    required: false
+    description: Specified points for injecting custom HTML into the service header.
+    params:
+      - name: start
+        type: string
+        required: false
+        description: HTML injected at the start of the service header container.
+      - name: end
+        type: string
+        required: false
+        description: HTML injected at the end of the service header container.
+      - name: navigationStart
+        type: string
+        required: false
+        description: HTML injected before the first list item in the navigation list. Requires `navigation` to be set.
+      - name: navigationEnd
+        type: string
+        required: false
+        description: HTML injected after the last list item in the navigation list. Requires `navigation` to be set.
 
 previewLayout: full-width
 
@@ -249,3 +270,23 @@ examples:
       navigation:
         - href: '#/1'
           text: Navigation item 1
+  - name: with slotted content
+    hidden: true
+    options:
+      serviceName: Apply for a juggling license
+      serviceUrl: '#/'
+      navigation:
+        - href: '#/1'
+          text: Navigation item 1
+        - href: '#/2'
+          text: Navigation item 2
+          active: true
+        - href: '#/3'
+          text: Navigation item 3
+        - href: '#/4'
+          text: Navigation item 4
+      slots:
+        start: '<div>[start]</div>'
+        end: '<div>[end]</div>'
+        navigationStart: '<li>[navigation start]</li>'
+        navigationEnd: '<li>[navigation end]</li>'
