@@ -1,0 +1,41 @@
+name: Bundler integrations
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  test-tree-shaking:
+    name: Test tree shaking
+    runs-on: ubuntu-latest
+
+    env:
+      PUPPETEER_SKIP_DOWNLOAD: true
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        bundler:
+          - rollup
+          - webpack
+          - vite
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.4
+
+      - name: Restore dependencies
+        uses: ./.github/workflows/actions/install-node
+
+      - name: Build GOV.UK Frontend
+        uses: ./.github/workflows/actions/build
+
+      - name: Build with bundler
+        run: npm run ${{matrix.bundler}} -w @govuk-frontend/bundler-integrations
+
+      # Check output for modules that should not be included
+      - name: Check output
+        working-directory: ./.github/workflows/bundler-integrations
+        run: |
+          ! grep "Accordion" dist/${{matrix.bundler}}/*.js
