@@ -6,10 +6,12 @@
     "rollup": "rollup -c rollup.config.mjs src/index.mjs -o dist/rollup/main.js",
     "webpack": "webpack ./src/index.mjs --mode production -o dist/webpack",
     "vite": "vite build",
-    "clean": "del-cli dist"
+    "clean": "del-cli dist",
+    "build:all": "concurrently \"npm run rollup\" \"npm run webpack\" \"npm run vite\" --names \"rollup,webpack,vite\" --prefix-colors \"red.dim,blue.dim,yellow.dim\""
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.2.3",
+    "concurrently": "^8.2.2",
     "del-cli": "^5.1.0",
     "govuk-frontend": "*",
     "rollup": "^4.17.2",
