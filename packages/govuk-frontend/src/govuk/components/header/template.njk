@@ -37,6 +37,10 @@
 <div class="govuk-header {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-header"
   {{- govukAttributes(params.attributes) }}>
   <div class="govuk-header__container {{ params.containerClasses | default("govuk-width-container", true) }}">
+
+    {# Slot: start #}
+    {%- if params.slots.start %}{{ params.slots.start | safe }}{% endif -%}
+
     <div class="govuk-header__logo">
       <a href="{{ params.homepageUrl | default("/", true) }}" class="govuk-header__link govuk-header__link--homepage">
         {#- The SVG needs `focusable="false"` so that Internet Explorer does
@@ -92,5 +96,8 @@
     {% endif %}
     </div>
   {% endif %}
+
+  {# Slot: end #}
+  {%- if params.slots.end %}{{ params.slots.end | safe }}{% endif -%}
   </div>
 </div>

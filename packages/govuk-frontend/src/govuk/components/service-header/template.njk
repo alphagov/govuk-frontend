@@ -8,6 +8,9 @@
     {{- govukAttributes(params.attributes) }}>
     <div class="govuk-service-header__container govuk-width-container">
 
+        {# Slot: start #}
+        {%- if params.slots.start %}{{ params.slots.start | safe }}{% endif -%}
+
         {# Service name #}
         {% if params.serviceName %}
           <span class="govuk-service-header__service-name">
@@ -28,6 +31,10 @@
           </button>
           <nav id="{{ navigationId }}" aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-service-header__navigation {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
             <ul class="govuk-service-header__navigation-list">
+
+              {# Slot: navigationStart #}
+              {%- if params.slots.navigationStart %}{{ params.slots.navigationStart | safe }}{% endif -%}
+
               {% for item in params.navigation %}
                 <li class="govuk-service-header__navigation-item {%- if item.active or item.current %} govuk-service-header__navigation-item--active{% endif %}">
                   {% if item.href %}
@@ -49,9 +56,15 @@
                   {% endif %}
                 </li>
               {% endfor %}
+
+              {# Slot: navigationEnd #}
+              {%- if params.slots.navigationEnd %}{{ params.slots.navigationEnd | safe }}{% endif -%}
             </ul>
           </nav>
         {% endif %}
+
+        {# Slot: end #}
+        {%- if params.slots.end %}{{ params.slots.end | safe }}{% endif -%}
 
     </div>
   </div>
