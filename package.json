@@ -9,6 +9,7 @@
   "license": "MIT",
   "workspaces": [
     ".github/workflows/scripts",
+    ".github/workflows/bundler-integrations",
     "packages/govuk-frontend",
     "packages/govuk-frontend-review",
     "shared/*",
