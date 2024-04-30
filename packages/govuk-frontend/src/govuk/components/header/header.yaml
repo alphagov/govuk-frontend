@@ -72,6 +72,19 @@ params:
     type: boolean
     required: false
     description: Deprecated. If `true`, uses the Tudor crown from King Charles III's royal cypher. Otherwise, uses the St. Edward's crown. Default is `true`.
+  - name: slots
+    type: object
+    required: false
+    description: Specified points for injecting custom HTML into the header.
+    params:
+      - name: start
+        type: string
+        required: false
+        description: HTML injected at the start of the header container.
+      - name: end
+        type: string
+        required: false
+        description: HTML injected at the end of the header container.
 
 previewLayout: full-width
 accessibilityCriteria: |
@@ -331,8 +344,13 @@ examples:
           text: Navigation item 3
         - href: '#4'
           text: Navigation item 4
-
   - name: empty navigation array
     hidden: true
     options:
       navigation: []
+  - name: with slotted content
+    hidden: true
+    options:
+      slots:
+        start: '<div>[start]</div>'
+        end: '<div>[end]</div>'

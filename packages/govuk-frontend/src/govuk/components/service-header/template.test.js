@@ -353,4 +353,54 @@ describe('Service Header', () => {
       })
     })
   })
+
+  describe('slots', () => {
+    it('inserts HTML from the `start` slot in the right place', () => {
+      const $ = render('service-header', examples['with slotted content'])
+
+      // Expected to be first thing in the inner container
+      const $slottedElement = $(
+        '.govuk-service-header__container > :first-child'
+      )
+
+      expect($slottedElement.prop('outerHTML')).toBe('<div>[start]</div>')
+    })
+
+    it('inserts HTML from the `end` slot in the right place', () => {
+      const $ = render('service-header', examples['with slotted content'])
+
+      // Expected to be last thing in the inner container
+      const $slottedElement = $(
+        '.govuk-service-header__container > :last-child'
+      )
+
+      expect($slottedElement.prop('outerHTML')).toBe('<div>[end]</div>')
+    })
+
+    it('inserts HTML from the `navigationStart` slot in the right place', () => {
+      const $ = render('service-header', examples['with slotted content'])
+
+      // Expected to be first thing in the nav list
+      const $slottedElement = $(
+        '.govuk-service-header__navigation-list > :first-child'
+      )
+
+      expect($slottedElement.prop('outerHTML')).toBe(
+        '<li>[navigation start]</li>'
+      )
+    })
+
+    it('inserts HTML from the `navigationEnd` slot in the right place', () => {
+      const $ = render('service-header', examples['with slotted content'])
+
+      // Expected to be first thing in the nav list
+      const $slottedElement = $(
+        '.govuk-service-header__navigation-list > :last-child'
+      )
+
+      expect($slottedElement.prop('outerHTML')).toBe(
+        '<li>[navigation end]</li>'
+      )
+    })
+  })
 })

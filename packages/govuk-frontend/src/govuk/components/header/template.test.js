@@ -299,4 +299,24 @@ describe('header', () => {
       expect($svg.attr('viewBox')).toBe('0 0 152 30')
     })
   })
+
+  describe('slots', () => {
+    it('inserts HTML from the `start` slot in the right place', () => {
+      const $ = render('header', examples['with slotted content'])
+
+      // Expected to be first thing in the inner container
+      const $slottedElement = $('.govuk-header__container > :first-child')
+
+      expect($slottedElement.prop('outerHTML')).toBe('<div>[start]</div>')
+    })
+
+    it('inserts HTML from the `end` slot in the right place', () => {
+      const $ = render('header', examples['with slotted content'])
+
+      // Expected to be last thing in the inner container
+      const $slottedElement = $('.govuk-header__container > :last-child')
+
+      expect($slottedElement.prop('outerHTML')).toBe('<div>[end]</div>')
+    })
+  })
 })
