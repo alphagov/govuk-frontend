@@ -38,4 +38,5 @@ jobs:
       - name: Check output
         working-directory: ./.github/workflows/bundler-integrations
         run: |
-          ! grep "Accordion" dist/${{matrix.bundler}}/*.js
+          ! grep "Accordion" dist/${{matrix.bundler}}/single-component.js -q
+          grep "Accordion" dist/${{matrix.bundler}}/initAll.js -q

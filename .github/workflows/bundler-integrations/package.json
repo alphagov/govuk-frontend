@@ -3,8 +3,11 @@
   "description": "Boilerplate to verify that GOV.UK Frontend works OK with main bundlers",
   "private": true,
   "scripts": {
-    "rollup": "rollup -c rollup.config.mjs src/index.mjs -o dist/rollup/main.js",
-    "webpack": "webpack ./src/index.mjs --mode production -o dist/webpack",
+    "rollup": "npm run rollup:single-component && npm run rollup:initAll",
+    "rollup:single-component": "npm run rollup:cli -- -o dist/rollup/single-component.js ./src/single-component.mjs",
+    "rollup:initAll": "npm run rollup:cli -- -o dist/rollup/initAll.js ./src/initAll.mjs",
+    "rollup:cli": "rollup -c rollup.config.mjs",
+    "webpack": "webpack --mode production -o dist/webpack",
     "vite": "vite build",
     "clean": "del-cli dist",
     "build:all": "concurrently \"npm run rollup\" \"npm run webpack\" \"npm run vite\" --names \"rollup,webpack,vite\" --prefix-colors \"red.dim,blue.dim,yellow.dim\""

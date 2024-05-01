@@ -7,5 +7,12 @@ module.exports = {
     // Prevent minification so we can see what's going on in the built file
     minimize: false
   },
-  target: 'web'
+  target: 'web',
+  entry: {
+    'single-component': './src/single-component.mjs',
+    initAll: './src/initAll.mjs'
+  },
+  output: {
+    filename: '[name].js'
+  }
 }
