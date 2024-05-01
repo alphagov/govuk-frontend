@@ -46,6 +46,18 @@ describe('Warnings mixin', () => {
     expect(mockWarnFunction.mock.calls).toHaveLength(1)
   })
 
+  it('fires every @warn if $silence-further-warnings is false', async () => {
+    const sass = `
+      ${sassBootstrap}
+      @include _warning('test', 'This is a warning.', $silence-further-warnings: false);
+      @include _warning('test', 'This is a warning.');
+    `
+
+    await compileSassString(sass, sassConfig)
+
+    expect(mockWarnFunction.mock.calls).toHaveLength(2)
+  })
+
   it('Does not fire a @warn if the key is already in $govuk-suppressed-warnings', async () => {
     const sass = `
       ${sassBootstrap}

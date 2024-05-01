@@ -1,12 +1,8 @@
-@import "clearfix";
-@import "colour";
-@import "device-pixels";
-@import "focused";
-@import "font-faces";
-@import "grid";
-@import "links";
-@import "media-queries";
-@import "shape-arrow";
-@import "spacing";
-@import "typography";
-@import "visually-hidden";
+@import "../settings/warnings";
+@import "index";
+
+@include _warning(
+  "import-using-all",
+  "Importing using 'govuk/helpers/all' is deprecated. Update your import statement to import 'govuk/helpers/index'.",
+  $silence-further-warnings: false
+);

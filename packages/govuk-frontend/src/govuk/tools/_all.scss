@@ -1,5 +1,8 @@
-@import "exports";
-@import "font-url";
-@import "image-url";
-@import "px-to-em";
-@import "px-to-rem";
+@import "../settings/warnings";
+@import "index";
+
+@include _warning(
+  "import-using-all",
+  "Importing using 'govuk/tools/all' is deprecated. Update your import statement to import 'govuk/tools/index'.",
+  $silence-further-warnings: false
+);
