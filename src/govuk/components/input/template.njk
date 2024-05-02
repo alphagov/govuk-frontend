@@ -3,9 +3,20 @@
 {% from "../hint/macro.njk" import govukHint %}
 {% from "../label/macro.njk" import govukLabel %}
 
+{#- Set classes for this component #}
+{%- set classNames = "govuk-input" -%}
+
+{%- if params.classes %}
+  {% set classNames = classNames + " " + params.classes %}
+{% endif %}
+
+{%- if params.errorMessage %}
+  {% set classNames = classNames + " govuk-input--error" %}
+{% endif %}
+
 {#- a record of other elements that we need to associate with the input using
   aria-describedby – for example hints or error messages -#}
-{% set describedBy = params.describedBy if params.describedBy else "" -%}
+{% set describedBy = params.describedBy if params.describedBy else undefined -%}
 
 {%- set hasPrefix = true if params.prefix and (params.prefix.text or params.prefix.html) else false %}
 {%- set hasSuffix = true if params.suffix and (params.suffix.text or params.suffix.html) else false %}
@@ -13,15 +24,48 @@
 {%- set hasAfterInput = true if params.formGroup.afterInput and (params.formGroup.afterInput.text or params.formGroup.afterInput.html) else false %}
 
 {%- macro _inputElement(params) -%}
-  <input class="govuk-input {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-input--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="{{ params.type | default("text", true) }}"
-    {%- if (params.spellcheck === false) or (params.spellcheck === true) %} spellcheck="{{ params.spellcheck }}"{% endif %}
-    {%- if params.value %} value="{{ params.value }}"{% endif %}
-    {%- if params.disabled %} disabled{% endif %}
-    {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
-    {%- if params.autocomplete %} autocomplete="{{ params.autocomplete }}"{% endif %}
-    {%- if params.pattern %} pattern="{{ params.pattern }}"{% endif %}
-    {%- if params.inputmode %} inputmode="{{ params.inputmode }}"{% endif %}
-    {%- if params.autocapitalize %} autocapitalize="{{ params.autocapitalize }}"{% endif %}
+  <input
+    {{- govukAttributes({
+      class: classNames,
+      id: params.id,
+      name: params.name,
+      type: params.type | default("text", true),
+      spellcheck: {
+        value: params.spellcheck | string
+          if [true, false].includes(params.spellcheck)
+          else false,
+        optional: true
+      },
+      value: {
+        value: params.value,
+        optional: true
+      },
+      disabled: {
+        value: params.disabled,
+        optional: true
+      },
+      "aria-describedby": {
+        value: describedBy,
+        optional: true
+      },
+      autocomplete: {
+        value: params.autocomplete,
+        optional: true
+      },
+      autocapitalize: {
+        value: params.autocapitalize,
+        optional: true
+      },
+      pattern: {
+        value: params.pattern,
+        optional: true
+      },
+      inputmode: {
+        value: params.inputmode,
+        optional: true
+      }
+    }) -}}
+
     {{- govukAttributes(params.attributes) }}>
 {%- endmacro -%}
 

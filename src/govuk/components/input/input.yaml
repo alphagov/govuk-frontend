@@ -399,6 +399,14 @@ examples:
       label:
         text: With value
       value: QQ 12 34 56 C
+  - name: zero value
+    hidden: true
+    options:
+      id: with-zero-value
+      name: with-zero-value
+      label:
+        text: With zero value
+      value: 0
   - name: with describedBy
     hidden: true
     options:
