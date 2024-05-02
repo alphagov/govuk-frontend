@@ -43,6 +43,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#4942: Remove duplicate `errorMessage` argument for the password input component](https://github.com/alphagov/govuk-frontend/pull/4942) - thanks to [Tim South](https://github.com/tim-s-ccs) for contributing this change
 - [#4961: Fix tree-shaking when importing `govuk-frontend`](https://github.com/alphagov/govuk-frontend/pull/4961)
+- [#4963: Fix input value not being set if the value was '0'](https://github.com/alphagov/govuk-frontend/pull/4963) – thanks to [@dwp-dmitri-algazin](https://github.com/dwp-dmitri-algazin) for reporting this issue
 
 ## 5.3.1 (Fix release)
 
