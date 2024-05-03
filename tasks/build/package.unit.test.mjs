@@ -151,6 +151,7 @@ describe('packages/govuk-frontend/dist/', () => {
       'govuk-prototype-kit.config.json',
       'gulpfile.mjs',
       'package.json',
+      'package.json.unit.test.mjs',
       'postcss.config.mjs',
       'postcss.config.unit.test.mjs',
       'rollup.publish.config.mjs',
