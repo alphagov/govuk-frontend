@@ -23,6 +23,7 @@
     "./govuk-prototype-kit.config.json": "./govuk-prototype-kit.config.json",
     "./package.json": "./package.json"
   },
+  "sideEffects": false,
   "engines": {
     "node": ">= 4.2.0"
   },

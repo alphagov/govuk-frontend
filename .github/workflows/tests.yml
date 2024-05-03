@@ -324,3 +324,11 @@ jobs:
     # Run existing "Stats comment" workflow
     # (after only install has been cached)
     uses: ./.github/workflows/stats-comment.yml
+
+  bundler-integrations:
+    name: Bundler integrations
+    needs: [install, build]
+
+    # Run existing "Bundler integrations" workflow
+    # (after install and build have been cached)
+    uses: ./.github/workflows/bundler-integrations.yml

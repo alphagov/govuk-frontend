@@ -30,6 +30,7 @@ This change was introduced in [pull request #4955: Rename `all` files to `index`
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#4942: Remove duplicate `errorMessage` argument for the password input component](https://github.com/alphagov/govuk-frontend/pull/4942) - thanks to [Tim South](https://github.com/tim-s-ccs) for contributing this change
+- [#4961: Fix tree-shaking when importing `govuk-frontend`](https://github.com/alphagov/govuk-frontend/pull/4961)
 
 ## 5.3.1 (Fix release)
 

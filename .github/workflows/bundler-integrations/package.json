@@ -1,0 +1,24 @@
+{
+  "name": "@govuk-frontend/bundler-integrations",
+  "description": "Boilerplate to verify that GOV.UK Frontend works OK with main bundlers",
+  "private": true,
+  "scripts": {
+    "rollup": "npm run rollup:single-component && npm run rollup:initAll",
+    "rollup:single-component": "npm run rollup:cli -- -o dist/rollup/single-component.js ./src/single-component.mjs",
+    "rollup:initAll": "npm run rollup:cli -- -o dist/rollup/initAll.js ./src/initAll.mjs",
+    "rollup:cli": "rollup -c rollup.config.mjs",
+    "webpack": "webpack --mode production -o dist/webpack",
+    "vite": "vite build",
+    "clean": "del-cli dist",
+    "build:all": "concurrently \"npm run rollup\" \"npm run webpack\" \"npm run vite\" --names \"rollup,webpack,vite\" --prefix-colors \"red.dim,blue.dim,yellow.dim\""
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "concurrently": "^8.2.2",
+    "del-cli": "^5.1.0",
+    "govuk-frontend": "*",
+    "rollup": "^4.17.2",
+    "vite": "^5.2.10",
+    "webpack": "^5.91.0"
+  }
+}
