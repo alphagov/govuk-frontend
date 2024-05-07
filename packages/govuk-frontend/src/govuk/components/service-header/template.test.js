@@ -142,7 +142,7 @@ describe('Service Header', () => {
       const $ = render('service-header', examples['with navigation'])
       const $component = $('.govuk-service-header')
 
-      const $nav = $component.find('.govuk-service-header__navigation')
+      const $nav = $component.find('.govuk-service-header__navigation-list')
       const $navToggle = $component.find('.govuk-service-header__toggle')
 
       const navId = $nav.attr('id')
@@ -155,7 +155,7 @@ describe('Service Header', () => {
       const $ = render('service-header', examples['with custom navigation ID'])
       const $component = $('.govuk-service-header')
 
-      const $nav = $component.find('.govuk-service-header__navigation')
+      const $nav = $component.find('.govuk-service-header__navigation-list')
       const $navToggle = $component.find('.govuk-service-header__toggle')
 
       const navId = $nav.attr('id')
