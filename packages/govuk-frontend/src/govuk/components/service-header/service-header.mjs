@@ -74,7 +74,7 @@ export class ServiceHeader extends GOVUKFrontendComponent {
       throw new ElementError({
         componentName: 'Service Header',
         element: $menu,
-        identifier: `Navigation (\`<nav id="${menuId}">\`)`
+        identifier: `Navigation (\`<ul id="${menuId}">\`)`
       })
     }
 
