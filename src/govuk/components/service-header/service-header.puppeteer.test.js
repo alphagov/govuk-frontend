@@ -4,7 +4,7 @@ const { KnownDevices } = require('puppeteer')
 
 const iPhone = KnownDevices['iPhone 6']
 
-const navigationSelector = `.govuk-service-header__navigation`
+const navigationSelector = `.govuk-service-header__navigation-list`
 const toggleButtonSelector = '.govuk-js-service-header-toggle'
 
 describe('/components/service-header', () => {
@@ -115,7 +115,7 @@ describe('/components/service-header', () => {
           await expect(
             render(page, 'service-header', examples['with navigation'], {
               beforeInitialisation($module, { selector }) {
-                // Remove the `<nav>` referenced by $menuButton's `aria-controls`
+                // Remove the `<ul>` referenced by $menuButton's `aria-controls`
                 $module.querySelector(selector).remove()
               },
               context: {
@@ -126,7 +126,7 @@ describe('/components/service-header', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Service Header: Navigation (`<nav id="navigation">`) not found'
+                'Service Header: Navigation (`<ul id="navigation">`) not found'
             }
           })
         })
