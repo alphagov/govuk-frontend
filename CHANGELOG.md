@@ -4,6 +4,18 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### New features
+
+#### Use tabular numbers easily with `govuk-!-font-tabular-numbers`
+
+We've added a new override class for tabular number styling: `govuk-!-font-tabular-numbers`.
+
+Tabular numbers are useful when numbers are intended to be compared, for numerical sequences that may otherwise be difficult to read, or for numbers that dynamically update.
+
+It was previously only possible to use tabular numbers by using the `govuk-font-tabular-numbers` Sass mixin.
+
+This change was introduced in [pull request #4973: Add override class for tabular numbers](https://github.com/alphagov/govuk-frontend/pull/4973).
+
 ### Deprecations
 
 #### Importing layers using `all` files
