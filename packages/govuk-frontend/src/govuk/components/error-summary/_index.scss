@@ -24,14 +24,21 @@
 
   .govuk-error-summary__body {
     p {
-      margin-top: 0;
-      @include govuk-responsive-margin(4, "bottom");
+      margin-bottom: 0;
+    }
+
+    > * + * {
+      @include govuk-responsive-margin(4, "top");
     }
   }
 
   // Cross-component class - adjusts styling of list component
   .govuk-error-summary__list {
-    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  // Remove the bottom margin from the last list item
+  .govuk-error-summary__list li:last-child {
     margin-bottom: 0;
   }
 
