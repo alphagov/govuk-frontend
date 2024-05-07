@@ -181,24 +181,20 @@ describe('packages/govuk-frontend/dist/', () => {
 
         // Look for ES import for each component
         expect(contents).toContain(outdent`
-          import { Accordion } from './components/accordion/accordion.mjs';
-          import { Button } from './components/button/button.mjs';
-          import { CharacterCount } from './components/character-count/character-count.mjs';
-          import { Checkboxes } from './components/checkboxes/checkboxes.mjs';
-          import { ErrorSummary } from './components/error-summary/error-summary.mjs';
-          import { ExitThisPage } from './components/exit-this-page/exit-this-page.mjs';
-          import { Header } from './components/header/header.mjs';
-          import { NotificationBanner } from './components/notification-banner/notification-banner.mjs';
-          import { PasswordInput } from './components/password-input/password-input.mjs';
-          import { Radios } from './components/radios/radios.mjs';
-          import { SkipLink } from './components/skip-link/skip-link.mjs';
-          import { Tabs } from './components/tabs/tabs.mjs';
+          export { Accordion } from './components/accordion/accordion.mjs';
+          export { Button } from './components/button/button.mjs';
+          export { CharacterCount } from './components/character-count/character-count.mjs';
+          export { Checkboxes } from './components/checkboxes/checkboxes.mjs';
+          export { ErrorSummary } from './components/error-summary/error-summary.mjs';
+          export { ExitThisPage } from './components/exit-this-page/exit-this-page.mjs';
+          export { Header } from './components/header/header.mjs';
+          export { NotificationBanner } from './components/notification-banner/notification-banner.mjs';
+          export { PasswordInput } from './components/password-input/password-input.mjs';
+          export { Radios } from './components/radios/radios.mjs';
+          export { SkipLink } from './components/skip-link/skip-link.mjs';
+          export { Tabs } from './components/tabs/tabs.mjs';
+          export { initAll } from './init.mjs';
         `)
-
-        // Look for ES modules named exports
-        expect(contents).toContain(
-          'export { Accordion, Button, CharacterCount, Checkboxes, ErrorSummary, ExitThisPage, Header, NotificationBanner, PasswordInput, Radios, SkipLink, Tabs, initAll };'
-        )
       })
     })
 
