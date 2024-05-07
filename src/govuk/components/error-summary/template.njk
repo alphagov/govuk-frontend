@@ -16,20 +16,22 @@
         {{ caller() if caller else (params.descriptionHtml | safe | trim | indent(8) if params.descriptionHtml else params.descriptionText) }}
       </p>
       {% endif %}
-      <ul class="govuk-list govuk-error-summary__list">
-      {% for item in params.errorList %}
-        <li>
-        {% if item.href %}
-          <a href="{{ item.href }}"
-            {{- govukAttributes(item.attributes) }}>
-            {{- item.html | safe | trim | indent(12) if item.html else item.text -}}
-          </a>
-        {% else %}
-          {{ item.html | safe | trim | indent(10) if item.html else item.text }}
-        {% endif %}
-        </li>
-      {% endfor %}
-      </ul>
+      {% if params.errorList | length %}
+        <ul class="govuk-list govuk-error-summary__list">
+        {% for item in params.errorList %}
+          <li>
+          {% if item.href %}
+            <a href="{{ item.href }}"
+              {{- govukAttributes(item.attributes) }}>
+              {{- item.html | safe | trim | indent(12) if item.html else item.text -}}
+            </a>
+          {% else %}
+            {{ item.html | safe | trim | indent(10) if item.html else item.text }}
+          {% endif %}
+          </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
     </div>
   </div>
 </div>
