@@ -26,11 +26,12 @@
 
         {# Navigation #}
         {% if params.navigation | length %}
-          <button type="button" class="govuk-service-header__toggle govuk-js-service-header-toggle" aria-controls="{{ navigationId }}" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden>
-            {{ menuButtonText }}
-          </button>
-          <nav id="{{ navigationId }}" aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-service-header__navigation {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
-            <ul class="govuk-service-header__navigation-list">
+          <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-service-header__navigation {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
+            <button type="button" class="govuk-service-header__toggle govuk-js-service-header-toggle" aria-controls="{{ navigationId }}" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden>
+              {{ menuButtonText }}
+            </button>
+
+            <ul class="govuk-service-header__navigation-list" id="{{ navigationId }}" >
 
               {# Slot: navigationStart #}
               {%- if params.slots.navigationStart %}{{ params.slots.navigationStart | safe }}{% endif -%}
