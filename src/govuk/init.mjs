@@ -50,24 +50,54 @@ function initAll(config) {
   const $scope = config.scope ?? document
 
   components.forEach(([Component, config]) => {
-    const $elements = $scope.querySelectorAll(
-      `[data-module="${Component.moduleName}"]`
-    )
+    createAll(Component, config, $scope)
+  })
+}
 
-    $elements.forEach(($element) => {
-      try {
-        // Only pass config to components that accept it
-        'defaults' in Component
-          ? new Component($element, config)
-          : new Component($element)
-      } catch (error) {
-        console.log(error)
-      }
-    })
+/**
+ * Create all instances of a specific component on the page
+ *
+ * Uses the `data-module` attribute to find all elements matching the specified
+ * component on the page, creating instances of the component object for each
+ * of them.
+ *
+ * Any component errors will be caught and logged to the console.
+ *
+ * @template {CompatibleClass} T
+ * @param {T} Component - class of the component to create
+ * @param {T["defaults"]} [config] - config for the component
+ * @param {Element|Document} [$scope] - scope of the document to search within
+ */
+function createAll(Component, config, $scope = document) {
+  const $elements = $scope.querySelectorAll(
+    `[data-module="${Component.moduleName}"]`
+  )
+
+  $elements.forEach(($element) => {
+    try {
+      // Only pass config to components that accept it
+      'defaults' in Component
+        ? new Component($element, config)
+        : new Component($element)
+    } catch (error) {
+      console.log(error)
+    }
   })
 }
 
 export { initAll }
+
+/* eslint-disable jsdoc/valid-types --
+ * `{new(...args: any[] ): object}` is not recognised as valid
+ * https://github.com/gajus/eslint-plugin-jsdoc/issues/145#issuecomment-1308722878
+ * https://github.com/jsdoc-type-pratt-parser/jsdoc-type-pratt-parser/issues/131
+ **/
+
+/**
+ * @typedef {{new (...args: any[]): unknown, defaults?: object, moduleName: string}} CompatibleClass
+ */
+
+/* eslint-enable jsdoc/valid-types */
 
 /**
  * Config for all components via `initAll()`
