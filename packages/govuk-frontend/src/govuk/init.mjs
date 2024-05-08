@@ -85,7 +85,7 @@ function createAll(Component, config, $scope = document) {
   })
 }
 
-export { initAll }
+export { initAll, createAll }
 
 /* eslint-disable jsdoc/valid-types --
  * `{new(...args: any[] ): object}` is not recognised as valid
