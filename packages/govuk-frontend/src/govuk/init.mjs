@@ -86,7 +86,7 @@ function createAll(Component, config, $scope = document) {
       try {
         // Only pass config to components that accept it
         // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-        return 'defaults' in Component
+        return 'defaults' in Component && typeof config !== 'undefined'
           ? new Component($element, config)
           : new Component($element)
       } catch (error) {
