@@ -67,22 +67,34 @@ function initAll(config) {
  * @param {T} Component - class of the component to create
  * @param {T["defaults"]} [config] - config for the component
  * @param {Element|Document} [$scope] - scope of the document to search within
+ * @returns {Array<InstanceType<T>>} - array of instantiated components
  */
 function createAll(Component, config, $scope = document) {
   const $elements = $scope.querySelectorAll(
     `[data-module="${Component.moduleName}"]`
   )
 
-  $elements.forEach(($element) => {
-    try {
-      // Only pass config to components that accept it
-      'defaults' in Component
-        ? new Component($element, config)
-        : new Component($element)
-    } catch (error) {
-      console.log(error)
-    }
-  })
+  /* eslint-disable-next-line @typescript-eslint/no-unsafe-return --
+   * We can't define CompatibleClass as `{new(): CompatibleClass, moduleName: string}`,
+   * as when doing `typeof Accordion` (or any component), TypeScript doesn't seem
+   * to acknowledge the static `moduleName` that's set in our component classes.
+   * This means we have to set the constructor of `CompatibleClass` as `{new(): any}`,
+   * leading to ESLint frowning that we're returning `any[]`.
+   */
+  return Array.from($elements)
+    .map(($element) => {
+      try {
+        // Only pass config to components that accept it
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+        return 'defaults' in Component
+          ? new Component($element, config)
+          : new Component($element)
+      } catch (error) {
+        console.log(error)
+        return null
+      }
+    })
+    .filter(Boolean) // Exclude components that errored
 }
 
 export { initAll, createAll }
@@ -94,7 +106,7 @@ export { initAll, createAll }
  **/
 
 /**
- * @typedef {{new (...args: any[]): unknown, defaults?: object, moduleName: string}} CompatibleClass
+ * @typedef {{new (...args: any[]): any, defaults?: object, moduleName: string}} CompatibleClass
  */
 
 /* eslint-enable jsdoc/valid-types */
