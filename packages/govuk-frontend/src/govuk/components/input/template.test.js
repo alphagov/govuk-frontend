@@ -71,6 +71,13 @@ describe('Input', () => {
       expect($component.val()).toBe('QQ 12 34 56 C')
     })
 
+    it('renders with zero value', () => {
+      const $ = render('input', examples['zero value'])
+
+      const $component = $('.govuk-input')
+      expect($component.val()).toBe('0')
+    })
+
     it('renders with aria-describedby', () => {
       const $ = render('input', examples['with describedBy'])
 
