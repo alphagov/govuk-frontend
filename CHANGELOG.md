@@ -4,7 +4,33 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+This release includes new features to help you include only the components your service uses. Doing this can help reduce the weight of the JavaScript and CSS files sent to users, improving their experience.
+
 ### New features
+
+#### Create individual components with `createAll`
+
+We've added a new `createAll` function that lets you initialise specific components in the same way that `initAll` does.
+
+It will:
+
+- find all elements in the page with the corresponding `data-module` attribute
+- instantiate a component object for each element
+- catch errors and log them in the console
+- return an array of all the successfully instantiated component objects.
+
+```js
+import { createAll, Button, Checkboxes } from 'govuk-frontend'
+
+createAll(Button)
+createAll(Checkboxes)
+```
+
+You can also pass a config object and a scope within which to search for elements.
+
+You can find out more about [how to use the `createAll` function](https://frontend.design-system.service.gov.uk/import-javascript/#import-individual-components) in our documentation.
+
+This change was introduced in [pull request #4975: Add createAll function to initialise individual components](https://github.com/alphagov/govuk-frontend/pull/4975).
 
 #### Use tabular numbers easily with `govuk-!-font-tabular-numbers`
 
