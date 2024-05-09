@@ -199,6 +199,33 @@ describe('createAll', () => {
     })
   })
 
+  it('returns an empty array if no components exist on the page', () => {
+    class MockComponent {
+      static moduleName = 'mock-component'
+    }
+
+    const result = createAll(MockComponent)
+
+    expect(result).toEqual([])
+  })
+
+  it('returns an array of instantiated component objects', () => {
+    class MockComponent {
+      static moduleName = 'mock-component'
+    }
+
+    document.body.innerHTML = `
+      <div data-module="mock-component"></div>
+      <div data-module="mock-component"></div>`
+
+    const result = createAll(MockComponent)
+
+    expect(result).toEqual([
+      expect.any(MockComponent),
+      expect.any(MockComponent)
+    ])
+  })
+
   it('only initialises components within a given scope', () => {
     const constructorSpy = jest.fn()
 
@@ -257,5 +284,29 @@ describe('createAll', () => {
         message: 'Error thrown from constructor'
       })
     )
+  })
+
+  it('omits components that failed to instantiate', () => {
+    class MockComponent {
+      constructor($element) {
+        if ($element.hasAttribute('data-boom')) {
+          throw new Error('Error thrown from constructor')
+        }
+      }
+
+      static moduleName = 'mock-component'
+    }
+
+    document.body.innerHTML = `
+      <div data-module="mock-component"></div>
+      <div data-module="mock-component" data-boom="true"></div>
+      <div data-module="mock-component"></div>`
+
+    const result = createAll(MockComponent)
+
+    expect(result).toEqual([
+      expect.any(MockComponent),
+      expect.any(MockComponent)
+    ])
   })
 })
