@@ -28,9 +28,24 @@ describe('GOV.UK Frontend', () => {
       expect(typeofInitAll).toBe('function')
     })
 
+    it('exports `createAll` function', async () => {
+      const typeofCreateAll = await page.evaluate(
+        async (importPath, exportName) => {
+          const namespace = await import(importPath)
+          return typeof namespace[exportName]
+        },
+        scriptsPath.href,
+        'createAll'
+      )
+
+      expect(typeofCreateAll).toBe('function')
+    })
+
     it('exports Components', async () => {
       const components = exported
-        .filter((method) => !['initAll', 'version'].includes(method))
+        .filter(
+          (method) => !['initAll', 'createAll', 'version'].includes(method)
+        )
         .sort()
 
       // Ensure GOV.UK Frontend exports the expected components
