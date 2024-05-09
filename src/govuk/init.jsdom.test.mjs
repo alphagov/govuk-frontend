@@ -117,8 +117,7 @@ describe('initAll', () => {
     // Expect to have been called exactly once with the accordion in .my-scope
     expect(GOVUKFrontend.Accordion).toHaveBeenCalledTimes(1)
     expect(GOVUKFrontend.Accordion).toHaveBeenCalledWith(
-      document.querySelector('.my-scope [data-module="govuk-accordion"]'),
-      undefined
+      document.querySelector('.my-scope [data-module="govuk-accordion"]')
     )
   })
 
@@ -151,162 +150,196 @@ describe('createAll', () => {
     document.body.innerHTML = ''
   })
 
+  class MockComponent {
+    constructor(...args) {
+      this.args = args
+    }
+
+    static moduleName = 'mock-component'
+  }
+
   it('initialises a component, passing the component root', () => {
-    const constructorSpy = jest.fn()
-
-    class MockComponent {
-      constructor(...args) {
-        constructorSpy(...args)
-      }
-
-      static moduleName = 'mock-component'
-    }
-
     const componentRoot = document.createElement('div')
     componentRoot.setAttribute('data-module', 'mock-component')
     document.body.appendChild(componentRoot)
 
-    createAll(MockComponent)
+    const result = createAll(MockComponent)
 
-    expect(constructorSpy).toHaveBeenCalledWith(componentRoot)
-  })
+    expect(result).toStrictEqual([expect.any(MockComponent)])
 
-  it('initialises a component, passing the component root and config', () => {
-    const constructorSpy = jest.fn()
-
-    class MockComponent {
-      constructor(...args) {
-        constructorSpy(...args)
-      }
-
-      static moduleName = 'mock-component'
-
-      static defaults = {
-        __test: false
-      }
-    }
-
-    const componentRoot = document.createElement('div')
-    componentRoot.setAttribute('data-module', 'mock-component')
-    document.body.appendChild(componentRoot)
-
-    createAll(MockComponent, {
-      __test: true
-    })
-
-    expect(constructorSpy).toHaveBeenCalledWith(componentRoot, {
-      __test: true
-    })
+    expect(result[0].args).toStrictEqual([componentRoot])
   })
 
   it('returns an empty array if no components exist on the page', () => {
-    class MockComponent {
-      static moduleName = 'mock-component'
-    }
+    const result = createAll(MockComponent)
+
+    expect(result).toStrictEqual([])
+  })
+
+  it('returns an empty array if no matching components exist on the page', () => {
+    const componentRoot = document.createElement('div')
+    componentRoot.setAttribute(
+      'data-module',
+      'this-is-not-the-component-you-are-looking-for'
+    )
+    document.body.appendChild(componentRoot)
 
     const result = createAll(MockComponent)
 
-    expect(result).toEqual([])
+    expect(result).toStrictEqual([])
   })
 
   it('returns an array of instantiated component objects', () => {
-    class MockComponent {
-      static moduleName = 'mock-component'
-    }
-
     document.body.innerHTML = `
-      <div data-module="mock-component"></div>
-      <div data-module="mock-component"></div>`
+      <div data-module="mock-component" id="a"></div>
+      <div data-module="mock-component" id="b"></div>`
 
     const result = createAll(MockComponent)
 
-    expect(result).toEqual([
+    expect(result).toStrictEqual([
       expect.any(MockComponent),
       expect.any(MockComponent)
     ])
+
+    expect(result[0].args).toStrictEqual([document.getElementById('a')])
+    expect(result[1].args).toStrictEqual([document.getElementById('b')])
   })
 
-  it('only initialises components within a given scope', () => {
-    const constructorSpy = jest.fn()
-
-    class MockComponent {
-      constructor(...args) {
-        constructorSpy(...args)
-      }
-
-      static moduleName = 'mock-component'
-
+  describe('when a component accepts config', () => {
+    class MockComponentWithConfig extends MockComponent {
       static defaults = {
         __test: false
       }
     }
 
-    document.body.innerHTML = `
-      <div data-module="mock-component"></div>
-      <div class="not-in-scope">
-        <div data-module="mock-component"></div>
-      </div>'
-      <div class="my-scope">
-        <div data-module="mock-component"></div>
-      </div>`
+    it('initialises a component, passing the component root and config', () => {
+      const componentRoot = document.createElement('div')
+      componentRoot.setAttribute('data-module', 'mock-component')
+      document.body.appendChild(componentRoot)
 
-    createAll(MockComponent, undefined, document.querySelector('.my-scope'))
+      const result = createAll(MockComponentWithConfig, {
+        __test: true
+      })
 
-    // Expect to have been called exactly once with the mock-component in .my-scope
-    expect(constructorSpy).toHaveBeenCalledTimes(1)
-    expect(constructorSpy).toHaveBeenCalledWith(
-      document.querySelector('.my-scope [data-module="mock-component"]'),
-      undefined
-    )
-  })
+      expect(result).toStrictEqual([expect.any(MockComponentWithConfig)])
 
-  it('catches errors thrown by components and logs them to the console', () => {
-    class MockComponent {
-      constructor(...args) {
-        throw new Error('Error thrown from constructor')
+      expect(result[0].args).toStrictEqual([
+        componentRoot,
+        {
+          __test: true
+        }
+      ])
+    })
+
+    it('initialises a component, passing the component root even when no config is passed', () => {
+      const componentRoot = document.createElement('div')
+      componentRoot.setAttribute('data-module', 'mock-component')
+      document.body.appendChild(componentRoot)
+
+      const result = createAll(MockComponentWithConfig)
+
+      expect(result).toStrictEqual([expect.any(MockComponentWithConfig)])
+
+      console.log(result[0].args)
+
+      expect(result[0].args).toStrictEqual([componentRoot])
+    })
+
+    it('passes the config to all component objects', () => {
+      document.body.innerHTML = `
+      <div data-module="mock-component" id="a"></div>
+      <div data-module="mock-component" id="b"></div>`
+
+      const config = {
+        __test: true
       }
 
-      static moduleName = 'mock-component'
-    }
+      const result = createAll(MockComponentWithConfig, config)
 
-    document.body.innerHTML = `<div data-module="mock-component"></div>`
+      expect(result).toStrictEqual([
+        expect.any(MockComponentWithConfig),
+        expect.any(MockComponentWithConfig)
+      ])
 
-    // Silence warnings in test output, and allow us to 'expect' them
-    jest.spyOn(global.console, 'log').mockImplementation()
-
-    expect(() => {
-      createAll(MockComponent)
-    }).not.toThrow()
-
-    expect(global.console.log).toHaveBeenCalledWith(expect.any(Error))
-    expect(global.console.log).toHaveBeenCalledWith(
-      expect.objectContaining({
-        message: 'Error thrown from constructor'
-      })
-    )
+      expect(result[0].args).toStrictEqual([
+        document.getElementById('a'),
+        config
+      ])
+      expect(result[1].args).toStrictEqual([
+        document.getElementById('b'),
+        config
+      ])
+    })
   })
 
-  it('omits components that failed to instantiate', () => {
-    class MockComponent {
-      constructor($element) {
+  describe('when a $scope is passed', () => {
+    it('only initialises components within that scope', () => {
+      document.body.innerHTML = `
+        <div data-module="mock-component"></div>
+        <div class="not-in-scope">
+          <div data-module="mock-component"></div>
+        </div>'
+        <div class="my-scope">
+          <div data-module="mock-component"></div>
+        </div>`
+
+      const result = createAll(
+        MockComponent,
+        undefined,
+        document.querySelector('.my-scope')
+      )
+
+      expect(result).toStrictEqual([expect.any(MockComponent)])
+
+      expect(result[0].args).toStrictEqual([
+        document.querySelector('.my-scope [data-module="mock-component"]')
+      ])
+    })
+  })
+
+  describe('when components throw errors', () => {
+    class MockComponentThatErrors extends MockComponent {
+      constructor($element, ...otherArgs) {
+        super($element, ...otherArgs)
         if ($element.hasAttribute('data-boom')) {
           throw new Error('Error thrown from constructor')
         }
       }
-
-      static moduleName = 'mock-component'
     }
 
-    document.body.innerHTML = `
-      <div data-module="mock-component"></div>
-      <div data-module="mock-component" data-boom="true"></div>
-      <div data-module="mock-component"></div>`
+    it('catches errors thrown by components and logs them to the console', () => {
+      document.body.innerHTML = `<div data-module="mock-component" data-boom></div>`
 
-    const result = createAll(MockComponent)
+      // Silence warnings in test output, and allow us to 'expect' them
+      jest.spyOn(global.console, 'log').mockImplementation()
 
-    expect(result).toEqual([
-      expect.any(MockComponent),
-      expect.any(MockComponent)
-    ])
+      expect(() => {
+        createAll(MockComponentThatErrors)
+      }).not.toThrow()
+
+      expect(global.console.log).toHaveBeenCalledWith(expect.any(Error))
+      expect(global.console.log).toHaveBeenCalledWith(
+        expect.objectContaining({
+          message: 'Error thrown from constructor'
+        })
+      )
+    })
+
+    it('omits components that failed to instantiate', () => {
+      document.body.innerHTML = `
+        <div data-module="mock-component" id="a"></div>
+        <div data-module="mock-component" id="b" data-boom></div>
+        <div data-module="mock-component" id="c"></div>`
+
+      const result = createAll(MockComponentThatErrors)
+
+      expect(result).toStrictEqual([
+        expect.any(MockComponentThatErrors),
+        expect.any(MockComponentThatErrors)
+      ])
+
+      expect(result[0].args).toStrictEqual([document.getElementById('a')])
+      expect(result[1].args).toStrictEqual([document.getElementById('c')])
+    })
   })
 })
