@@ -11,7 +11,7 @@ export { PasswordInput } from './components/password-input/password-input.mjs'
 export { Radios } from './components/radios/radios.mjs'
 export { SkipLink } from './components/skip-link/skip-link.mjs'
 export { Tabs } from './components/tabs/tabs.mjs'
-export { initAll } from './init.mjs'
+export { initAll, createAll } from './init.mjs'
 
 /**
  * @typedef {import('./init.mjs').Config} Config
