@@ -126,7 +126,7 @@ describe('dist/', () => {
 
     it('should contain relative paths to sources', () => {
       expect(sourcemap.sources).toContain(
-        '../packages/govuk-frontend/src/govuk/all.mjs'
+        '../packages/govuk-frontend/src/govuk/init.mjs'
       )
       expect(sourcemap.sources).toContain(
         '../packages/govuk-frontend/src/govuk/common/govuk-frontend-version.mjs'
