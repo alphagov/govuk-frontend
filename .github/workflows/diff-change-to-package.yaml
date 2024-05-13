@@ -17,7 +17,7 @@ jobs:
     if: ${{ github.event.pull_request && !github.event.pull_request.head.repo.fork }}
 
     steps:
-      - uses: actions/checkout@v4.1.4
+      - uses: actions/checkout@v4.1.5
         with:
           fetch-depth: 0 # Need to also checkout the base branch to compare
 
