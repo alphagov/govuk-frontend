@@ -18,6 +18,7 @@
     "del-cli": "^5.1.0",
     "govuk-frontend": "*",
     "rollup": "^4.17.2",
+    "terser-webpack-plugin": "^5.3.10",
     "vite": "^5.2.10",
     "webpack": "^5.91.0"
   }
