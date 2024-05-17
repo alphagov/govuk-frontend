@@ -94,7 +94,13 @@ Developers should pair on releases. When remote working, it can be useful to be 
    If the release has been assigned the wrong tag (mistakes happen),
    you can use [`npm dist-tag`](https://docs.npmjs.com/cli/v8/commands/npm-dist-tag) to quickly correct.
 
-7. Run `npm logout` to log out from npm in the command line. If you've logged in through your browser, remember to log out from <https://npmjs.com> there as well.
+7. Have a quick look at the diff of the new package with the previous one at:
+
+   ```txt
+   https://diff.intrinsic.com/govuk-frontend/<PREVIOUS_VERSION_NUMBER>/<RELEASED_VERSION_NUMBER>
+   ```
+
+8. Run `npm logout` to log out from npm in the command line. If you've logged in through your browser, remember to log out from <https://npmjs.com> there as well.
 
 ## Create a release on Github
 
