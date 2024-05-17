@@ -14,7 +14,7 @@ logical structure, loosely following the conventions of [ITCSS].
 7. [Utilities](#utilities)
 8. [Overrides](#overrides)
 
-Each folder has its own entry point (`_all.scss`).
+Each folder has its own entry point (`_index.scss`).
 
 ## Settings
 
