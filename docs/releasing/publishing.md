@@ -11,6 +11,13 @@ See the [documentation on support branches](https://team-playbook.design-system.
 
 Developers should pair on releases. When remote working, it can be useful to be on a call together.
 
+> [!IMPORTANT]
+> Before starting to publish, make sure the developer running the commands:
+>
+> - has [nvm](https://github.com/nvm-sh/nvm) or [`asdf`](https://asdf-vm.com/guide/getting-started.html)
+>   on their machine to install the correct version of NodeJS and npm
+> - has access to Bitwarden to retreive the credentials for publishing on npm
+
 1. Check out the **main** branch and pull the latest changes.
 
 2. Ensure you're running the version of NodeJS matching [`.nvmrc`](/.nvmrc).
@@ -59,6 +66,13 @@ Developers should pair on releases. When remote working, it can be useful to be 
 ## Publish a release to npm
 
 1. Check out the **main** branch and pull the latest changes.
+
+   If there was an interruption between the raising of the PR and its merge,
+   or it's another developer running the publication to npm, rebuild the package with:
+
+   ```shell
+   npm run build:package
+   ```
 
 2. Sign in to npm (`npm login`), using the credentials for the **govuk-patterns-and-tools** npm user from Bitwarden.
 
