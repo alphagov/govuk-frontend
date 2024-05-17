@@ -636,7 +636,7 @@ describe('@mixin govuk-font-size', () => {
         }
       `
 
-      await expect(compileSassString(sass)).resolves.toMatchObject({
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
         css: (await compileSassString(expectedSass)).css
       })
     })
