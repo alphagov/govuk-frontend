@@ -25,6 +25,13 @@ describe('Error-summary', () => {
       expect(summaryTitle).toBe('There is a problem')
     })
 
+    it('renders error list element', () => {
+      const $ = render('error-summary', examples.default)
+      const $errorList = $('.govuk-error-summary__list')
+
+      expect($errorList).toHaveLength(1)
+    })
+
     it('number of error items matches the number of items specified', () => {
       const $ = render('error-summary', examples.default)
       const errorList = $('.govuk-error-summary .govuk-error-summary__list li')
@@ -110,6 +117,13 @@ describe('Error-summary', () => {
       const $component = $('.govuk-error-summary')
       expect($component.attr('first-attribute')).toBe('foo')
       expect($component.attr('second-attribute')).toBe('bar')
+    })
+
+    it("doesn't render the error list element if no errors are passed", () => {
+      const $ = render('error-summary', examples['with description only'])
+      const $errorList = $('.govuk-error-summary__list')
+
+      expect($errorList).toHaveLength(0)
     })
 
     it('renders anchor tag with attributes', () => {
