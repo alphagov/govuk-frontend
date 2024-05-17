@@ -4,7 +4,11 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
-This release includes new features to help you include only the components your service uses. Doing this can help reduce the weight of the JavaScript and CSS files sent to users, improving their experience.
+## 5.4.0 (Feature release)
+
+To install this version with npm, run `npm install govuk-frontend@5.4.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
+
+This release includes new features to help you include only the components your service uses. Doing this can help reduce the size of the JavaScript and CSS files sent to users, improving their experience.
 
 ### New features
 
@@ -12,7 +16,7 @@ This release includes new features to help you include only the components your 
 
 We've added a new `createAll` function that lets you initialise specific components in the same way that `initAll` does.
 
-It will:
+The `createAll` function will:
 
 - find all elements in the page with the corresponding `data-module` attribute
 - instantiate a component object for each element
@@ -30,13 +34,13 @@ You can also pass a config object and a scope within which to search for element
 
 You can find out more about [how to use the `createAll` function](https://frontend.design-system.service.gov.uk/import-javascript/#import-individual-components) in our documentation.
 
-This change was introduced in [pull request #4975: Add createAll function to initialise individual components](https://github.com/alphagov/govuk-frontend/pull/4975).
+This change was introduced in [pull request #4975: Add `createAll` function to initialise individual components](https://github.com/alphagov/govuk-frontend/pull/4975).
 
 #### Use tabular numbers easily with `govuk-!-font-tabular-numbers`
 
 We've added a new override class for tabular number styling: `govuk-!-font-tabular-numbers`.
 
-Tabular numbers are useful when numbers are intended to be compared, for numerical sequences that may otherwise be difficult to read, or for numbers that dynamically update.
+Using tabular numbers can make it easier for users to read numbers intended for comparison to one another, or for numbers that dynamically update.
 
 It was previously only possible to use tabular numbers by using the `govuk-font-tabular-numbers` Sass mixin.
 
@@ -46,7 +50,7 @@ This change was introduced in [pull request #4973: Add override class for tabula
 
 #### Importing layers using `all` files
 
-You'll see a warning when compiling your Sass if you import any of our layers using the `all` file. Importing using the `all` files is deprecated, and we will remove them in the next major release.
+You'll see a warning when compiling your Sass if you import any of our layers using the `all` file. Importing using the `all` files is deprecated, and we’ll remove them in the next major release.
 
 Update your import statements to refer to the `index` file for each layer rather than `all`:
 
@@ -61,7 +65,7 @@ Update your import statements to refer to the `index` file for each layer rather
 
 You do not need `/index` at the end of each import path if you’re using Dart Sass, LibSass 3.6.0 or higher, or Ruby Sass 3.6.0 or higher.
 
-This change was introduced in [pull request #4955: Rename `all` files to `index` for our Sass entrypoints](https://github.com/alphagov/govuk-frontend/pull/4955).
+This change was introduced in [pull request #4955: Rename `all` files to `index` for our Sass entry points](https://github.com/alphagov/govuk-frontend/pull/4955).
 
 ### Fixes
 
@@ -71,6 +75,8 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 - [#4961: Fix tree-shaking when importing `govuk-frontend`](https://github.com/alphagov/govuk-frontend/pull/4961)
 - [#4963: Fix input value not being set if the value was '0'](https://github.com/alphagov/govuk-frontend/pull/4963) – thanks to [@dwp-dmitri-algazin](https://github.com/dwp-dmitri-algazin) for reporting this issue
 - [#4971: Fix Error Summary component outputting list HTML when no `errorList` is provided](https://github.com/alphagov/govuk-frontend/pull/4971)
+- [#442: Update content to streamline installation info](https://github.com/alphagov/govuk-frontend-docs/pull/442)
+- [#438: Split up the 'Import CSS, assets and JavaScript' page](https://github.com/alphagov/govuk-frontend-docs/pull/438)
 
 ## 5.3.1 (Fix release)
 
