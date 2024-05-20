@@ -18,6 +18,14 @@ describe('Breadcrumbs', () => {
       $listItems = document.querySelectorAll('li.govuk-breadcrumbs__list-item')
     })
 
+    it('renders as a nav element', () => {
+      expect($component.tagName.toLowerCase()).toBe('nav')
+    })
+
+    it('renders with default aria-label', () => {
+      expect($component).toHaveAttribute('aria-label', 'Breadcrumb')
+    })
+
     it('includes an ordered list', () => {
       expect($component).toContainElement($list)
     })
@@ -152,7 +160,14 @@ describe('Breadcrumbs', () => {
 
       const $component = document.querySelector('.govuk-breadcrumbs')
       expect($component).toHaveAttribute('id', 'my-navigation')
-      expect($component).toHaveAttribute('role', 'navigation')
+      expect($component).toHaveAttribute('data-foo', 'bar')
+    })
+
+    it('renders with a custom aria-label', () => {
+      document.body.innerHTML = render('breadcrumbs', examples['custom label'])
+
+      const $component = document.querySelector('.govuk-breadcrumbs')
+      expect($component).toHaveAttribute('aria-label', 'Briwsion bara')
     })
   })
 })
