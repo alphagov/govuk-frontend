@@ -4,6 +4,16 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### Recommended changes
+
+#### Update Breadcrumbs to use `nav` and `aria-label`
+
+We've made changes to the Breadcrumbs component to improve how it appears to screen readers.
+
+We've changed the wrapping element to use the `nav` tag to expose it as a navigational landmark, and added an `aria-label` attribute to differentiate it as breadcrumb navigation.
+
+This change was introduced in [pull request #4995: Update Breadcrumb component to improve screen reader accessibility](https://github.com/alphagov/govuk-frontend/pull/4995).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
