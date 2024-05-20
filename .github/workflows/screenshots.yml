@@ -27,7 +27,7 @@ jobs:
         run: echo "::warning title=GitHub Actions secrets::Workflow requires 'PERCY_TOKEN' secret"
 
       - name: Checkout
-        uses: actions/checkout@v4.1.4
+        uses: actions/checkout@v4.1.6
 
       - name: Install dependencies
         uses: ./.github/workflows/actions/install-node
