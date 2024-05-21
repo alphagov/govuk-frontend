@@ -52,16 +52,11 @@ This change was introduced in [pull request #4973: Add override class for tabula
 
 You'll see a warning when compiling your Sass if you import any of our layers using the `all` file. Importing using the `all` files is deprecated, and we’ll remove them in the next major release.
 
-Update your import statements to refer to the `index` file for each layer rather than `all`:
+In your import statements, use a trailing `/index` rather than `/all` to load GOV.UK Frontend's files.
+For example:
 
-```scss
-@import "node_modules/govuk-frontend/dist/govuk/base";
-@import "node_modules/govuk-frontend/dist/govuk/core/index";
-@import "node_modules/govuk-frontend/dist/govuk/objects/index";
-@import "node_modules/govuk-frontend/dist/govuk/components/index";
-@import "node_modules/govuk-frontend/dist/govuk/utilities/index";
-@import "node_modules/govuk-frontend/dist/govuk/overrides/index";
-```
+- `@import "govuk/index";` instead of `@import "govuk/all";`;
+- `@import "govuk/<PATH>/index";` instead of `@import "govuk/<PATH>/all";`;
 
 You do not need `/index` at the end of each import path if you’re using Dart Sass, LibSass 3.6.0 or higher, or Ruby Sass 3.6.0 or higher.
 
