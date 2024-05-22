@@ -16,7 +16,7 @@ describe('Components', () => {
 
   describe('Sass render', () => {
     it('renders CSS for all components', () => {
-      const file = join(paths.package, 'src/govuk/components/_all.scss')
+      const file = join(paths.package, 'src/govuk/components/_index.scss')
 
       return expect(compileSassFile(file)).resolves.toMatchObject({
         css: expect.any(String),

@@ -1,7 +1,7 @@
 const { join } = require('path')
 
 const { paths } = require('@govuk-frontend/config')
-const { compileAsync, compileStringAsync, Logger } = require('sass-embedded')
+const { compileAsync, compileStringAsync } = require('sass-embedded')
 
 const sassPaths = [
   join(paths.package, 'src/govuk'),
@@ -18,7 +18,7 @@ const sassPaths = [
 async function compileSassFile(path, options = {}) {
   return compileAsync(path, {
     loadPaths: sassPaths,
-    logger: Logger.silent,
+    silenceDeprecations: ['slash-div'],
     quietDeps: true,
     ...options
   })
@@ -34,7 +34,7 @@ async function compileSassFile(path, options = {}) {
 async function compileSassString(source, options = {}) {
   return compileStringAsync(source, {
     loadPaths: sassPaths,
-    logger: Logger.silent,
+    silenceDeprecations: ['slash-div'],
     quietDeps: true,
     ...options
   })

@@ -11,12 +11,12 @@ describe('The helpers layer', () => {
   beforeAll(async () => {
     sassFiles = await getListing('**/src/govuk/helpers/**/*.scss', {
       cwd: paths.package,
-      ignore: ['**/_all.scss']
+      ignore: ['**/_all.scss', '**/_index.scss']
     })
   })
 
   it('should not output any CSS', async () => {
-    const file = join(paths.package, 'src/govuk/helpers/_all.scss')
+    const file = join(paths.package, 'src/govuk/helpers/_index.scss')
     await expect(compileSassFile(file)).resolves.toMatchObject({ css: '' })
   })
 
