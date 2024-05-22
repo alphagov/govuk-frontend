@@ -60,8 +60,8 @@ const sassBootstrap = `
 describe('@mixin govuk-typography-common', () => {
   it('should output a @font-face declaration by default', async () => {
     const sass = `
-      @import "settings/all";
-      @import "helpers/all";
+      @import "settings";
+      @import "helpers";
 
       :root {
         @include govuk-typography-common;
@@ -86,8 +86,8 @@ describe('@mixin govuk-typography-common', () => {
     const sass = `
       $govuk-font-family: Helvetica, Arial, sans-serif;
       $govuk-font-family-tabular: monospace;
-      @import "settings/all";
-      @import "helpers/all";
+      @import "settings";
+      @import "helpers";
 
       :root {
         @include govuk-typography-common;
@@ -111,8 +111,8 @@ describe('@mixin govuk-typography-common', () => {
   it('should not output a @font-face declaration when the user has turned off this feature', async () => {
     const sass = `
       $govuk-include-default-font-face: false;
-      @import "settings/all";
-      @import "helpers/all";
+      @import "settings";
+      @import "helpers";
 
       :root {
         @include govuk-typography-common;
@@ -636,7 +636,7 @@ describe('@mixin govuk-font-size', () => {
         }
       `
 
-      await expect(compileSassString(sass)).resolves.toMatchObject({
+      await expect(compileSassString(sass, sassConfig)).resolves.toMatchObject({
         css: (await compileSassString(expectedSass)).css
       })
     })

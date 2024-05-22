@@ -11,7 +11,7 @@ describe('The objects layer', () => {
   beforeAll(async () => {
     sassFiles = await getListing('**/src/govuk/objects/**/*.scss', {
       cwd: paths.package,
-      ignore: ['**/_all.scss']
+      ignore: ['**/_all.scss', '**/_index.scss']
     })
   })
 

@@ -11,12 +11,12 @@ describe('The settings layer', () => {
   beforeAll(async () => {
     sassFiles = await getListing('**/src/govuk/settings/**/*.scss', {
       cwd: paths.package,
-      ignore: ['**/_all.scss']
+      ignore: ['**/_all.scss', '**/_index.scss']
     })
   })
 
   it('should not output any CSS', async () => {
-    const file = join(paths.package, 'src/govuk/settings/_all.scss')
+    const file = join(paths.package, 'src/govuk/settings/_index.scss')
     await expect(compileSassFile(file)).resolves.toMatchObject({ css: '' })
   })
 

@@ -11,12 +11,12 @@ describe('The tools layer', () => {
   beforeAll(async () => {
     sassFiles = await getListing('**/src/govuk/tools/**/*.scss', {
       cwd: paths.package,
-      ignore: ['**/_all.scss']
+      ignore: ['**/_all.scss', '**/_index.scss']
     })
   })
 
   it('should not output any CSS', async () => {
-    const file = join(paths.package, 'src/govuk/tools/_all.scss')
+    const file = join(paths.package, 'src/govuk/tools/_index.scss')
     await expect(compileSassFile(file)).resolves.toMatchObject({ css: '' })
   })
 
