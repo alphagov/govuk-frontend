@@ -4,7 +4,6 @@ import { join, parse } from 'path'
 import { paths } from '@govuk-frontend/config'
 import { getListing } from '@govuk-frontend/lib/files'
 import { packageTypeToPath } from '@govuk-frontend/lib/names'
-import chalk from 'chalk'
 import PluginError from 'plugin-error'
 import postcss from 'postcss'
 // eslint-disable-next-line import/default
@@ -82,6 +81,7 @@ export async function compileStylesheet([
 
       // Turn off dependency warnings
       quietDeps: true,
+      silenceDeprecations: ['slash-div'],
 
       // Enable source maps
       sourceMap: true,
@@ -99,14 +99,6 @@ export async function compileStylesheet([
         join(basePath, 'node_modules'),
         join(paths.root, 'node_modules')
       ],
-
-      // Sass custom logger
-      logger: logger({
-        suppressed: [
-          'Using / for division is deprecated and will be removed in Dart Sass 2.0.0.',
-          'Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.'
-        ]
-      }),
 
       verbose: true
     }))
@@ -133,61 +125,6 @@ export async function compileStylesheet([
   // Write to files
   await assets.write(moduleDestPath, result)
 }
-
-/**
- * Sass custom logger
- *
- * @param {{ suppressed: string[] }} config - Logger config
- * @returns {import('sass-embedded').Logger} Sass logger
- */
-export const logger = (config) => ({
-  warn(message, options) {
-    let log = `${message}\n`
-
-    // Silence Sass suppressed warnings
-    if (config.suppressed.some((warning) => log.includes(warning))) {
-      return
-    }
-
-    // Check for code snippet
-    if (options.span) {
-      const { context, start, text } = options.span
-
-      // Line number with column width
-      const number = start.line + 1
-      const column = ' '.repeat(`${number}`.length)
-
-      // Source code warning arrows
-      const arrows = '^'
-        .repeat(text.length)
-        .padStart(context.indexOf(text) + text.length)
-
-      // Source code snippet showing warning in red
-      log += '\n\n'
-      log += `${chalk.blue(`${column} ╷`)}\n`
-      log += `${chalk.blue(`${number} │`)} ${context.replace(
-        text,
-        chalk.red(text)
-      )}`
-      log += `${chalk.blue(`${column} │`)} ${chalk.red(arrows)}\n`
-      log += `${chalk.blue(`${column} ╵`)}\n`
-    }
-
-    // Check for stack trace
-    options.stack
-      ?.trim()
-      .split('\n')
-      .forEach((line) => {
-        log += `    ${line}\n`
-      })
-
-    const title = chalk.bold.yellow(
-      options.deprecation ? 'Deprecation Warning' : 'Warning'
-    )
-
-    console.warn(`${title}: ${log}`)
-  }
-})
 
 /**
  * @typedef {import('./assets.mjs').AssetEntry} AssetEntry
