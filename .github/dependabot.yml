@@ -16,8 +16,6 @@ updates:
         patterns:
           - '@typescript-eslint/*'
           - 'editorconfig-checker'
-          - 'eslint'
-          - 'eslint-*'
           - 'standard'
           - 'prettier'
           - 'stylelint'
@@ -64,6 +62,9 @@ updates:
         exclude-patterns:
           - '@types/jest'
           - '@types/jest-*'
+    ignore:
+      - dependency-name: 'eslint-*'
+      - dependency-name: 'eslint'
 
     reviewers:
       - alphagov/design-system-developers
