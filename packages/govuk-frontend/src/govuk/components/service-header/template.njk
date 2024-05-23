@@ -6,23 +6,25 @@
 {% if params.serviceName or params.navigation | length %}
   <div class="govuk-service-header {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-service-header"
     {{- govukAttributes(params.attributes) }}>
+    {# Service name #}
+    {% if params.serviceName %}
+      <div class="govuk-width-container">
+        <span class="govuk-service-header__service-name">
+          {% if params.serviceUrl %}
+          <a href="{{ params.serviceUrl }}" class="govuk-service-header__link govuk-service-header__link--service-name">
+            {{ params.serviceName }}
+          </a>
+          {% else %}
+            {{- params.serviceName -}}
+          {% endif %}
+        </span>
+      </div>
+    {% endif %}    
     <div class="govuk-service-header__container govuk-width-container">
-
         {# Slot: start #}
         {%- if params.slots.start %}{{ params.slots.start | safe }}{% endif -%}
 
-        {# Service name #}
-        {% if params.serviceName %}
-          <span class="govuk-service-header__service-name">
-            {% if params.serviceUrl %}
-            <a href="{{ params.serviceUrl }}" class="govuk-service-header__link govuk-service-header__link--service-name">
-              {{ params.serviceName }}
-            </a>
-            {% else %}
-              {{- params.serviceName -}}
-            {% endif %}
-          </span>
-        {% endif %}
+
 
         {# Navigation #}
         {% if params.navigation | length %}
