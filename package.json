@@ -68,6 +68,7 @@
     "eslint-plugin-es-x": "^7.6.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jest": "^27.9.0",
+    "eslint-plugin-jest-dom": "^5.4.0",
     "eslint-plugin-jsdoc": "^48.2.2",
     "eslint-plugin-markdown": "^4.0.1",
     "eslint-plugin-n": "^16.6.2",
