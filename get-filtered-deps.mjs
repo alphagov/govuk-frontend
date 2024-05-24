@@ -4,7 +4,7 @@ import { readFileSync } from 'fs'
 import { Octokit } from 'octokit'
 
 const notAServiceWords = ['prototype', 'beta', 'alpha']
-const filteredDeps = new Set()
+const filteredDeps = []
 
 async function getDeps() {
   // This is a really gross way to get the json files but we're running into
@@ -25,28 +25,29 @@ async function getDeps() {
       ) &&
       ownerList.includes(repo.owner)
     ) {
-      filteredDeps.add(repo)
+      filteredDeps.push(repo)
     }
   }
 
-  // Create a personal access token at https://github.com/settings/tokens/new?scopes=repo
-  const octokit = new Octokit({ auth: '' })
-
-  const test = await octokit.rest.repos.listCommits({
-    owner: 'alphagov',
-    repo: 'govuk-design-system',
-    path: 'package.json'
+  const octokit = new Octokit({
+    auth: 'not committing my own auth token'
   })
 
-  const sha = test.data[0].sha
-
-  const shaTest = await octokit.rest.repos.getCommit({
+  const commitRange = await octokit.rest.repos.listCommits({
     owner: 'alphagov',
     repo: 'govuk-design-system',
-    ref: sha
+    path: 'package-lock.json',
+    per_page: 100
   })
 
-  console.log(shaTest.data)
+  const depDiff = await octokit.rest.dependencyGraph.diffRange({
+    owner: 'alphagov',
+    repo: 'govuk-design-system',
+    basehead: `${commitRange.data[commitRange.data.length - 1].sha}...${commitRange.data[0].sha}`
+  })
+
+  console.log(depDiff.data.filter((item) => item.name === 'govuk-frontend'))
+  console.log(filteredDeps[10])
 }
 
 getDeps()
