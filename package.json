@@ -54,8 +54,8 @@
     "@govuk-frontend/helpers": "*",
     "@govuk-frontend/lib": "*",
     "@govuk-frontend/tasks": "*",
-    "@typescript-eslint/eslint-plugin": "^7.4.0",
-    "@typescript-eslint/parser": "^7.4.0",
+    "@typescript-eslint/eslint-plugin": "^7.10.0",
+    "@typescript-eslint/parser": "^7.10.0",
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "del-cli": "^5.1.0",
@@ -84,10 +84,10 @@
     "prettier": "^3.2.5",
     "semver": "^7.6.0",
     "standard": "^17.1.0",
-    "stylelint": "^16.3.1",
+    "stylelint": "^16.6.0",
     "stylelint-config-gds": "^2.0.0",
     "stylelint-order": "^6.0.4",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.5"
   },
   "optionalDependencies": {
     "@actions/github": "^6.0.0",
