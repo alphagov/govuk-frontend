@@ -1,9 +1,4 @@
-const { render } = require('@govuk-frontend/helpers/nunjucks')
-const { htmlWithClassName } = require('@govuk-frontend/helpers/tests')
-const { getExamples } = require('@govuk-frontend/lib/components')
-
-const WORD_BOUNDARY = '\\b'
-const WHITESPACE = '\\s'
+const { getExamples, render } = require('@govuk-frontend/lib/components')
 
 describe('Input', () => {
   let examples
@@ -13,471 +8,489 @@ describe('Input', () => {
   })
 
   describe('default example', () => {
-    it('renders with id', () => {
-      const $ = render('input', examples.default)
+    let $component
+    let $label
 
-      const $component = $('.govuk-input')
-      expect($component.attr('id')).toBe('input-example')
+    beforeAll(() => {
+      document.body.innerHTML = render('input', examples.default)
+      $component = document.querySelector('.govuk-input')
+      $label = document.querySelector('.govuk-label')
     })
 
-    it('renders with name', () => {
-      const $ = render('input', examples.default)
-
-      const $component = $('.govuk-input')
-      expect($component.attr('name')).toBe('test-name')
+    it('sets the `id` attribute based on the `id` option', () => {
+      expect($component).toHaveAttribute('id', 'input-example')
     })
 
-    it('renders with type="text" by default', () => {
-      const $ = render('input', examples.default)
-
-      const $component = $('.govuk-input')
-      expect($component.attr('type')).toBe('text')
+    it('sets the `name` attribute based on the `name` option', () => {
+      expect($component).toHaveAttribute('name', 'test-name')
     })
 
-    it('renders with a form group wrapper', () => {
-      const $ = render('input', examples.default)
+    it('sets the `type` attribute to a default value of "text"', () => {
+      expect($component).toHaveAttribute('type', 'text')
+    })
 
-      const $formGroup = $('.govuk-form-group')
-      expect($formGroup.length).toBeTruthy()
+    it('includes a form group wrapper', () => {
+      const $formGroup = document.querySelector('.govuk-form-group')
+
+      expect($formGroup).toBeInTheDocument()
+      expect($formGroup).toContainElement($component)
+    })
+
+    it('includes a label', () => {
+      expect($label).toBeInTheDocument()
+    })
+
+    it('the input is named by the label', () => {
+      expect($component).toHaveAccessibleName($label.textContent.trim())
+    })
+
+    it('does not include the input wrapper', () => {
+      const $wrapper = document.querySelector(
+        '.govuk-form-group > .govuk-input__wrapper'
+      )
+
+      expect($wrapper).toBeNull()
+    })
+
+    it.each([
+      'autocapitalize',
+      'autocomplete',
+      'disabled',
+      'inputmode',
+      'pattern',
+      'spellcheck'
+    ])('does not set the `%s` attribute', (attribute) => {
+      expect($component).not.toHaveAttribute(attribute)
     })
   })
 
   describe('custom options', () => {
-    it('renders with classes', () => {
-      const $ = render('input', examples.classes)
+    it('includes additional classes from the `classes` option', () => {
+      document.body.innerHTML = render('input', examples.classes)
 
-      const $component = $('.govuk-input')
-      expect($component.hasClass('app-input--custom-modifier')).toBeTruthy()
+      const $component = document.querySelector('.govuk-input')
+      expect($component).toHaveClass('app-input--custom-modifier')
     })
 
-    it('allows you to override the type', () => {
-      const $ = render('input', examples['custom type'])
+    it('sets the `type` attribute based on the `type` option', () => {
+      document.body.innerHTML = render('input', examples['custom type'])
 
-      const $component = $('.govuk-input')
-      expect($component.attr('type')).toBe('number')
+      const $component = document.querySelector('.govuk-input')
+      expect($component).toHaveAttribute('type', 'number')
     })
 
-    it('renders with pattern attribute', () => {
-      const $ = render('input', examples['with pattern attribute'])
-
-      const $component = $('.govuk-input')
-      expect($component.attr('pattern')).toBe('[0-9]*')
-    })
-
-    it('renders with value', () => {
-      const $ = render('input', examples.value)
-
-      const $component = $('.govuk-input')
-      expect($component.val()).toBe('QQ 12 34 56 C')
-    })
-
-    it('renders with zero value', () => {
-      const $ = render('input', examples['zero value'])
-
-      const $component = $('.govuk-input')
-      expect($component.val()).toBe('0')
-    })
-
-    it('renders with aria-describedby', () => {
-      const $ = render('input', examples['with describedBy'])
-
-      const $component = $('.govuk-input')
-      expect($component.attr('aria-describedby')).toMatch('test-target-element')
-    })
-
-    it('renders with attributes', () => {
-      const $ = render('input', examples.attributes)
-
-      const $component = $('.govuk-input')
-      expect($component.attr('data-attribute')).toBe('my data value')
-    })
-
-    it('renders with a form group wrapper that has extra classes', () => {
-      const $ = render('input', examples['with optional form-group classes'])
-
-      const $formGroup = $('.govuk-form-group')
-      expect($formGroup.hasClass('extra-class')).toBeTruthy()
-    })
-
-    it("doesn't render the input wrapper", () => {
-      const $ = render('input', examples.default)
-
-      const $wrapper = $('.govuk-form-group > .govuk-input__wrapper')
-      expect($wrapper.length).toBeFalsy()
-    })
-  })
-
-  describe('when it includes a hint', () => {
-    it('renders the hint', () => {
-      const $ = render('input', examples['with hint text'])
-
-      expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
-    })
-
-    it('associates the input as "described by" the hint', () => {
-      const $ = render('input', examples['with hint text'])
-
-      const $input = $('.govuk-input')
-      const hintId = $('.govuk-hint').attr('id')
-
-      const describedBy = new RegExp(
-        `${WORD_BOUNDARY}${hintId}${WORD_BOUNDARY}`
+    it('sets the `pattern` attribute based on the `pattern` option', () => {
+      document.body.innerHTML = render(
+        'input',
+        examples['with pattern attribute']
       )
 
-      expect($input.attr('aria-describedby')).toMatch(describedBy)
+      const $component = document.querySelector('.govuk-input')
+      expect($component).toHaveAttribute('pattern', '[0-9]*')
     })
 
-    it('associates the input as "described by" the hint and parent fieldset', () => {
-      const $ = render('input', examples['hint with describedBy'])
+    it('sets the `value` attribute based on the `value` option', () => {
+      document.body.innerHTML = render('input', examples.value)
 
-      const $input = $('.govuk-input')
-      const hintId = $('.govuk-hint').attr('id')
+      const $component = document.querySelector('.govuk-input')
+      expect($component).toHaveValue('QQ 12 34 56 C')
+    })
 
-      const describedBy = new RegExp(
-        `${WORD_BOUNDARY}test-target-element${WHITESPACE}${hintId}${WORD_BOUNDARY}`
+    it('sets the `value` attribute based on a `value` of 0', () => {
+      document.body.innerHTML = render('input', examples['zero value'])
+
+      const $component = document.querySelector('.govuk-input')
+      expect($component).toHaveValue('0')
+    })
+
+    it('sets the `aria-describedby` attribute based on the `describedBy` option', () => {
+      document.body.innerHTML = render('input', examples['with describedBy'])
+
+      const $component = document.querySelector('.govuk-input')
+      expect($component).toHaveAttribute(
+        'aria-describedby',
+        'test-target-element'
+      )
+    })
+
+    it('sets any additional attributes based on the `attributes` option', () => {
+      document.body.innerHTML = render('input', examples.attributes)
+
+      const $component = document.querySelector('.govuk-input')
+      expect($component).toHaveAttribute('data-attribute', 'my data value')
+    })
+
+    it('includes additional classes from the `formGroup.classes` option on the form group', () => {
+      document.body.innerHTML = render(
+        'input',
+        examples['with optional form-group classes']
       )
 
-      expect($input.attr('aria-describedby')).toMatch(describedBy)
+      const $formGroup = document.querySelector('.govuk-form-group')
+      expect($formGroup).toHaveClass('extra-class')
     })
   })
 
-  describe('when it includes an error message', () => {
-    it('renders the error message', () => {
-      const $ = render('input', examples['with error message'])
+  describe('when a hint is passed', () => {
+    let $component
+    let $hint
 
-      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+    beforeAll(() => {
+      document.body.innerHTML = render('input', examples['with hint text'])
+
+      $component = document.querySelector('.govuk-input')
+      $hint = document.querySelector('.govuk-hint')
     })
 
-    it('associates the input as "described by" the error message', () => {
-      const $ = render('input', examples['with error message'])
+    it('includes the hint', () => {
+      expect($hint).toBeInTheDocument()
+    })
 
-      const $input = $('.govuk-input')
-      const errorMessageId = $('.govuk-error-message').attr('id')
+    it('associates the input as described by the hint', () => {
+      expect($component).toHaveAccessibleDescription($hint.textContent.trim())
+    })
 
-      const describedBy = new RegExp(
-        `${WORD_BOUNDARY}${errorMessageId}${WORD_BOUNDARY}`
+    it('associates the input as described by both the hint and the `describedBy` option', () => {
+      document.body.innerHTML = render(
+        'input',
+        examples['hint with describedBy']
       )
 
-      expect($input.attr('aria-describedby')).toMatch(describedBy)
+      const $additionalDescription = document.createElement('p')
+      $additionalDescription.id = 'test-target-element'
+      $additionalDescription.textContent = 'Additional description'
+      document.body.appendChild($additionalDescription)
+
+      const $input = document.querySelector('.govuk-input')
+      const $hint = document.querySelector('.govuk-hint')
+
+      expect($input).toHaveAccessibleDescription(
+        [$additionalDescription, $hint]
+          .map((el) => el.textContent.trim())
+          .join(' ')
+      )
+    })
+  })
+
+  describe('when an error message is passed', () => {
+    let $component
+    let $errorMessage
+
+    beforeAll(() => {
+      document.body.innerHTML = render('input', examples['with error message'])
+
+      $component = document.querySelector('.govuk-input')
+      $errorMessage = document.querySelector('.govuk-error-message')
     })
 
-    it('associates the input as "described by" the error message and parent fieldset', () => {
-      const $ = render('input', examples['error with describedBy'])
+    it('includes the error message', () => {
+      expect($errorMessage).toBeInTheDocument()
+    })
 
-      const $input = $('.govuk-input')
-      const errorMessageId = $('.govuk-error-message').attr('id')
+    it('associates the input as described by the error message', () => {
+      expect($component).toHaveAccessibleDescription(
+        $errorMessage.textContent.trim()
+      )
+    })
 
-      const describedBy = new RegExp(
-        `${WORD_BOUNDARY}test-target-element${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
+    it('associates the input as described by the error message and the `describedBy` option', () => {
+      document.body.innerHTML = render(
+        'input',
+        examples['error with describedBy']
       )
 
-      expect($input.attr('aria-describedby')).toMatch(describedBy)
+      const $additionalDescription = document.createElement('p')
+      $additionalDescription.id = 'test-target-element'
+      $additionalDescription.textContent = 'Additional description'
+      document.body.appendChild($additionalDescription)
+
+      const $input = document.querySelector('.govuk-input')
+      const $errorMessage = document.querySelector('.govuk-error-message')
+
+      expect($input).toHaveAccessibleDescription(
+        [$additionalDescription, $errorMessage]
+          .map((el) => el.textContent.trim())
+          .join(' ')
+      )
     })
 
-    it('includes the error class on the input', () => {
-      const $ = render('input', examples['with error message'])
-
-      const $component = $('.govuk-input')
-      expect($component.hasClass('govuk-input--error')).toBeTruthy()
+    it('includes the error modifier class on the input', () => {
+      expect($component).toHaveClass('govuk-input--error')
     })
 
-    it('renders with a form group wrapper that has an error state', () => {
-      const $ = render('input', examples['with error message'])
+    it('includes the error modifier class on the form group wrapper', () => {
+      const $formGroup = document.querySelector('.govuk-form-group')
 
-      const $formGroup = $('.govuk-form-group')
-      expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
-    })
-  })
-
-  describe('when it has the spellcheck attribute', () => {
-    it('renders with spellcheck attribute set to true', () => {
-      const $ = render('input', examples['with spellcheck enabled'])
-
-      const $component = $('.govuk-input')
-      expect($component.attr('spellcheck')).toBe('true')
-    })
-
-    it('renders with spellcheck attribute set to false', () => {
-      const $ = render('input', examples['with spellcheck disabled'])
-
-      const $component = $('.govuk-input')
-      expect($component.attr('spellcheck')).toBe('false')
-    })
-
-    it('renders without spellcheck attribute by default', () => {
-      const $ = render('input', examples.default)
-
-      const $component = $('.govuk-input')
-      expect($component.attr('spellcheck')).toBeUndefined()
+      expect($formGroup).toHaveClass('govuk-form-group--error')
     })
   })
 
-  describe('when it has the autocapitalize attribute', () => {
-    it('renders without autocapitalize attribute by default', () => {
-      const $ = render('input', examples.default)
-
-      const $component = $('.govuk-input')
-      expect($component.attr('autocapitalize')).toBeUndefined()
-    })
-
-    it('renders with autocapitalize attribute when set', () => {
-      const $ = render('input', examples['with autocapitalize turned off'])
-
-      const $component = $('.govuk-input')
-      expect($component.attr('autocapitalize')).toBe('none')
-    })
-  })
-
-  describe('when it includes both a hint and an error message', () => {
+  describe('when both a hint and an error message are passed', () => {
     it('associates the input as described by both the hint and the error message', () => {
-      const $ = render('input', examples['with error and hint'])
+      document.body.innerHTML = render('input', examples['with error and hint'])
 
-      const $component = $('.govuk-input')
-      const errorMessageId = $('.govuk-error-message').attr('id')
-      const hintId = $('.govuk-hint').attr('id')
+      const $component = document.querySelector('.govuk-input')
+      const $errorMessage = document.querySelector('.govuk-error-message')
+      const $hint = document.querySelector('.govuk-hint')
 
-      const describedByCombined = new RegExp(
-        `${WORD_BOUNDARY}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
+      expect($component).toHaveAccessibleDescription(
+        [$hint, $errorMessage].map((el) => el.textContent.trim()).join(' ')
+      )
+    })
+
+    it('associates the input as described by the hint, error message and the `describedBy` option', () => {
+      document.body.innerHTML = render(
+        'input',
+        examples['with error, hint and describedBy']
       )
 
-      expect($component.attr('aria-describedby')).toMatch(describedByCombined)
+      const $additionalDescription = document.createElement('p')
+      $additionalDescription.id = 'test-target-element'
+      $additionalDescription.textContent = 'Additional description'
+      document.body.appendChild($additionalDescription)
+
+      const $component = document.querySelector('.govuk-input')
+      const $errorMessage = document.querySelector('.govuk-error-message')
+      const $hint = document.querySelector('.govuk-hint')
+
+      expect($component).toHaveAccessibleDescription(
+        [$additionalDescription, $hint, $errorMessage]
+          .map((el) => el.textContent.trim())
+          .join(' ')
+      )
     })
+  })
 
-    it('associates the input as described by the hint, error message and parent fieldset', () => {
-      const $ = render('input', examples['with error, hint and describedBy'])
-
-      const $component = $('.govuk-input')
-      const errorMessageId = $('.govuk-error-message').attr('id')
-      const hintId = $('.govuk-hint').attr('id')
-
-      const describedByCombined = new RegExp(
-        `${WORD_BOUNDARY}test-target-element${WHITESPACE}${hintId}${WHITESPACE}${errorMessageId}${WORD_BOUNDARY}`
+  describe('when the `spellcheck` option is set', () => {
+    it('sets the `spellcheck` attribute to "true" if the option is true', () => {
+      document.body.innerHTML = render(
+        'input',
+        examples['with spellcheck enabled']
       )
 
-      expect($component.attr('aria-describedby')).toMatch(describedByCombined)
+      const $component = document.querySelector('.govuk-input')
+      expect($component).toHaveAttribute('spellcheck', 'true')
+    })
+
+    it('sets the `spellcheck` attribute to "false" if the option is false', () => {
+      document.body.innerHTML = render(
+        'input',
+        examples['with spellcheck disabled']
+      )
+
+      const $component = document.querySelector('.govuk-input')
+      expect($component).toHaveAttribute('spellcheck', 'false')
     })
   })
 
-  describe('with dependant components', () => {
-    it('have correct nesting order', () => {
-      const $ = render('input', examples.default)
+  describe('when the `autocapitalize` option is set', () => {
+    it('sets the `autocapitalize` attribute based on the option', () => {
+      document.body.innerHTML = render(
+        'input',
+        examples['with autocapitalize turned off']
+      )
 
-      const $component = $('.govuk-form-group > .govuk-input')
-      expect($component.length).toBeTruthy()
-    })
-
-    it('renders with label', () => {
-      const $ = render('input', examples.default)
-
-      expect(htmlWithClassName($, '.govuk-label')).toMatchSnapshot()
-    })
-
-    it('renders label with "for" attribute reffering the input "id"', () => {
-      const $ = render('input', examples.default)
-
-      const $label = $('.govuk-label')
-      expect($label.attr('for')).toBe('input-example')
+      const $component = document.querySelector('.govuk-input')
+      expect($component).toHaveAttribute('autocapitalize', 'none')
     })
   })
 
-  describe('when it includes an autocomplete attribute', () => {
-    it('renders the autocomplete attribute', () => {
-      const $ = render('input', examples['with autocomplete attribute'])
+  describe('when the `autocomplete` option is set', () => {
+    it('sets the `autocomplete` attribute based on the option', () => {
+      document.body.innerHTML = render(
+        'input',
+        examples['with autocomplete attribute']
+      )
 
-      const $component = $('.govuk-input')
-      expect($component.attr('autocomplete')).toBe('postal-code')
+      const $component = document.querySelector('.govuk-input')
+      expect($component).toHaveAttribute('autocomplete', 'postal-code')
     })
   })
 
-  describe('when it includes an inputmode', () => {
-    it('renders with an inputmode attached to the input', () => {
-      const $ = render('input', examples.inputmode)
+  describe('when the `inputmode` option is set', () => {
+    it('sets the `inputmode` attribute based on the option', () => {
+      document.body.innerHTML = render('input', examples.inputmode)
 
-      const $component = $('.govuk-form-group > .govuk-input')
-      expect($component.attr('inputmode')).toBe('decimal')
+      const $component = document.querySelector('.govuk-input')
+      expect($component).toHaveAttribute('inputmode', 'decimal')
+    })
+  })
+
+  describe('when the `disabled` option is set', () => {
+    it('disables the input', () => {
+      document.body.innerHTML = render('input', examples.disabled)
+
+      const $component = document.querySelector('.govuk-input')
+      expect($component).toBeDisabled()
     })
   })
 
   describe('when it includes a prefix', () => {
-    it('renders the input wrapper', () => {
-      const $ = render('input', examples['with prefix'])
+    let $wrapper
+    let $prefix
 
-      const $wrapper = $('.govuk-form-group > .govuk-input__wrapper')
-      expect($wrapper.length).toBeTruthy()
+    beforeAll(() => {
+      document.body.innerHTML = render('input', examples['with prefix'])
+
+      $wrapper = document.querySelector('.govuk-input__wrapper')
+      $prefix = document.querySelector('.govuk-input__prefix')
+    })
+
+    it('renders the input wrapper', () => {
+      expect($wrapper).toBeInTheDocument()
     })
 
     it('renders the prefix inside the wrapper', () => {
-      const $ = render('input', examples['with prefix'])
-
-      const $prefix = $(
-        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix'
-      )
-      expect($prefix.length).toBeTruthy()
+      expect($wrapper).toContainElement($prefix)
     })
 
     it('renders the text in the prefix', () => {
-      const $ = render('input', examples['with prefix'])
-
-      const $prefix = $(
-        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix'
-      )
-
-      expect($prefix.html()).toBe('£')
+      expect($prefix).toHaveTextContent('£')
     })
 
-    it('allows prefix text to be passed whilst escaping HTML entities', () => {
-      const $ = render('input', examples['with prefix with html as text'])
-
-      const $prefix = $(
-        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix'
-      )
-
-      expect($prefix.html()).toBe('&lt;span&gt;£&lt;/span&gt;')
+    it('hides the prefix from screen readers using `aria-hidden`', () => {
+      expect($prefix).toHaveAttribute('aria-hidden', 'true')
     })
 
-    it('allows prefix HTML to be passed un-escaped', () => {
-      const $ = render('input', examples['with prefix with html'])
-
-      const $prefix = $(
-        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix'
+    it('escapes HTML entities when using the `text` option', () => {
+      document.body.innerHTML = render(
+        'input',
+        examples['with prefix with html as text']
       )
+      const $prefix = document.querySelector('.govuk-input__prefix')
 
-      expect($prefix.html()).toBe('<span>£</span>')
+      expect($prefix).toHaveTextContent('<span>£</span>')
     })
 
-    it('hides the prefix from screen readers using the aria-hidden attribute', () => {
-      const $ = render('input', examples['with prefix'])
-
-      const $prefix = $(
-        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix'
+    it('allows HTML to be passed when using the `html` option', () => {
+      document.body.innerHTML = render(
+        'input',
+        examples['with prefix with html']
       )
-      expect($prefix.attr('aria-hidden')).toBe('true')
+      const $prefix = document.querySelector('.govuk-input__prefix')
+
+      expect($prefix).toContainHTML('<span>£</span>')
     })
 
-    it('renders with classes', () => {
-      const $ = render('input', examples['with prefix with classes'])
-
-      const $prefix = $(
-        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix'
+    it('includes additional classes from the `prefix.classes` option', () => {
+      document.body.innerHTML = render(
+        'input',
+        examples['with prefix with classes']
       )
-      expect(
-        $prefix.hasClass('app-input__prefix--custom-modifier')
-      ).toBeTruthy()
+      const $prefix = document.querySelector('.govuk-input__prefix')
+
+      expect($prefix).toHaveClass('app-input__prefix--custom-modifier')
     })
 
-    it('renders with attributes', () => {
-      const $ = render('input', examples['with prefix with attributes'])
-
-      const $prefix = $(
-        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix'
+    it('sets additional attributes from the `prefix.attributes` option', () => {
+      document.body.innerHTML = render(
+        'input',
+        examples['with prefix with attributes']
       )
-      expect($prefix.attr('data-attribute')).toBe('value')
+      const $prefix = document.querySelector('.govuk-input__prefix')
+
+      expect($prefix).toHaveAttribute('data-attribute', 'value')
     })
   })
 
   describe('when it includes a suffix', () => {
-    it('renders the input wrapper', () => {
-      const $ = render('input', examples['with suffix'])
+    let $wrapper
+    let $suffix
 
-      const $wrapper = $('.govuk-form-group > .govuk-input__wrapper')
-      expect($wrapper.length).toBeTruthy()
+    beforeAll(() => {
+      document.body.innerHTML = render('input', examples['with suffix'])
+
+      $wrapper = document.querySelector('.govuk-input__wrapper')
+      $suffix = document.querySelector('.govuk-input__suffix')
+    })
+
+    it('renders the input wrapper', () => {
+      expect($wrapper).toBeInTheDocument()
     })
 
     it('renders the suffix inside the wrapper', () => {
-      const $ = render('input', examples['with suffix'])
-
-      const $suffix = $(
-        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix'
-      )
-      expect($suffix.length).toBeTruthy()
+      expect($wrapper).toContainElement($suffix)
     })
 
-    it('renders the text in the prefix', () => {
-      const $ = render('input', examples['with prefix'])
-
-      const $prefix = $(
-        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix'
-      )
-
-      expect($prefix.html()).toBe('£')
+    it('renders the text in the suffix', () => {
+      expect($suffix).toHaveTextContent('kg')
     })
 
-    it('allows suffix text to be passed whilst escaping HTML entities', () => {
-      const $ = render('input', examples['with suffix with html as text'])
-
-      const $suffix = $(
-        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix'
-      )
-
-      expect($suffix.html()).toBe('&lt;span&gt;kg&lt;/span&gt;')
+    it('hides the suffix from screen readers using `aria-hidden`', () => {
+      expect($suffix).toHaveAttribute('aria-hidden', 'true')
     })
 
-    it('allows suffix HTML to be passed un-escaped', () => {
-      const $ = render('input', examples['with suffix with html'])
-
-      const $suffix = $(
-        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix'
+    it('escapes HTML entities when using the `text` option', () => {
+      document.body.innerHTML = render(
+        'input',
+        examples['with suffix with html as text']
       )
+      const $suffix = document.querySelector('.govuk-input__suffix')
 
-      expect($suffix.html()).toBe('<span>kg</span>')
+      expect($suffix).toHaveTextContent('<span>kg</span>')
     })
 
-    it('hides the suffix from screen readers using the aria-hidden attribute', () => {
-      const $ = render('input', examples['with suffix'])
-
-      const $suffix = $(
-        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix'
+    it('allows HTML to be passed when using the `html` option', () => {
+      document.body.innerHTML = render(
+        'input',
+        examples['with suffix with html']
       )
-      expect($suffix.attr('aria-hidden')).toBe('true')
+      const $suffix = document.querySelector('.govuk-input__suffix')
+
+      expect($suffix).toContainHTML('<span>kg</span>')
     })
 
-    it('renders with classes', () => {
-      const $ = render('input', examples['with suffix with classes'])
-
-      const $suffix = $(
-        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix'
+    it('includes additional classes from the `prefix.classes` option', () => {
+      document.body.innerHTML = render(
+        'input',
+        examples['with prefix with classes']
       )
-      expect(
-        $suffix.hasClass('app-input__suffix--custom-modifier')
-      ).toBeTruthy()
+      const $prefix = document.querySelector('.govuk-input__prefix')
+
+      expect($prefix).toHaveClass('app-input__prefix--custom-modifier')
     })
 
-    it('renders with attributes', () => {
-      const $ = render('input', examples['with suffix with attributes'])
-
-      const $suffix = $(
-        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix'
+    it('sets additional attributes from the `prefix.attributes` option', () => {
+      document.body.innerHTML = render(
+        'input',
+        examples['with prefix with attributes']
       )
-      expect($suffix.attr('data-attribute')).toBe('value')
+      const $prefix = document.querySelector('.govuk-input__prefix')
+
+      expect($prefix).toHaveAttribute('data-attribute', 'value')
     })
   })
 
   describe('when it includes both a prefix and a suffix', () => {
     it('renders the prefix before the suffix', () => {
-      const $ = render('input', examples['with prefix and suffix'])
-
-      const $prefixBeforeSuffix = $(
-        '.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix ~ .govuk-input__suffix'
+      document.body.innerHTML = render(
+        'input',
+        examples['with prefix and suffix']
       )
-      expect($prefixBeforeSuffix.length).toBeTruthy()
+
+      expect(
+        document.querySelector('.govuk-input__prefix ~ .govuk-input__suffix')
+      ).toBeInTheDocument()
     })
   })
 
   describe('when it includes the input wrapper', () => {
-    it('renders the input wrapper with custom classes', () => {
-      const $ = render('input', examples['with customised input wrapper'])
+    let $wrapper
 
-      const $wrapper = $('.govuk-form-group > .govuk-input__wrapper')
-      expect(
-        $wrapper.hasClass('app-input-wrapper--custom-modifier')
-      ).toBeTruthy()
+    beforeAll(() => {
+      document.body.innerHTML = render(
+        'input',
+        examples['with customised input wrapper']
+      )
+      $wrapper = document.querySelector('.govuk-input__wrapper')
+    })
+
+    it('includes additional classes from the `inputWrapper.classes` option', () => {
+      expect($wrapper).toHaveClass('app-input-wrapper--custom-modifier')
     })
 
     it('renders the input wrapper with custom attributes', () => {
-      const $ = render('input', examples['with customised input wrapper'])
-
-      const $wrapper = $('.govuk-form-group > .govuk-input__wrapper')
-      expect($wrapper.attr('data-attribute')).toBe('value')
+      expect($wrapper).toHaveAttribute('data-attribute', 'value')
     })
   })
 })
