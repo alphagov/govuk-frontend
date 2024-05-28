@@ -11,7 +11,8 @@
       "jest-axe",
       "jest-puppeteer",
       "node",
-      "typed-query-selector"
+      "typed-query-selector",
+      "@testing-library/jest-dom"
     ]
   }
 }
