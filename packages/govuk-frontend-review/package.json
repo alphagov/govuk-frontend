@@ -61,7 +61,7 @@
     "rollup": "^4.18.0",
     "sassdoc": "^2.7.4",
     "supertest": "^6.3.4",
-    "typedoc": "^0.25.12"
+    "typedoc": "^0.25.13"
   },
   "optionalDependencies": {
     "nunjucks": "^3.2.4"
