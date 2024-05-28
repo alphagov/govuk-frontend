@@ -46,7 +46,7 @@
     "@govuk-frontend/helpers": "*",
     "@govuk-frontend/tasks": "*",
     "@percy/cli": "^1.28.2",
-    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-commonjs": "^25.0.8",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "autoprefixer": "^10.4.19",
@@ -58,7 +58,7 @@
     "nodemon": "^3.1.0",
     "postcss-pseudo-classes": "^0.4.0",
     "puppeteer": "^22.6.2",
-    "rollup": "^4.13.2",
+    "rollup": "^4.18.0",
     "sassdoc": "^2.7.4",
     "supertest": "^6.3.4",
     "typedoc": "^0.25.12"
