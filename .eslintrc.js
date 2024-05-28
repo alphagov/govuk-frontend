@@ -18,6 +18,7 @@ module.exports = {
         'eslint:recommended',
         'plugin:import/recommended',
         'plugin:jest/style',
+        'plugin:jest-dom/recommended',
         'plugin:jsdoc/recommended-typescript-flavor',
         'plugin:n/recommended',
         'plugin:promise/recommended',
@@ -33,7 +34,7 @@ module.exports = {
       parserOptions: {
         ecmaVersion: 'latest'
       },
-      plugins: ['import', 'jsdoc', 'n', 'promise', 'jest'],
+      plugins: ['import', 'jsdoc', 'n', 'promise', 'jest', 'jest-dom'],
       rules: {
         // Check import or require statements are A-Z ordered
         'import/order': [
