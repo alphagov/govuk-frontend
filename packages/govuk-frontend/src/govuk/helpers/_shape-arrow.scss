@@ -53,7 +53,7 @@
   @if $direction == "up" {
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%); // 3
 
-    border-width: 0 $perpendicular $height $perpendicular;
+    border-width: 0 $perpendicular $height;
     border-bottom-color: inherit; // 2
   } @else if $direction == "right" {
     clip-path: polygon(0% 0%, 100% 50%, 0% 100%); // 3

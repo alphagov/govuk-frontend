@@ -68,7 +68,7 @@
     @include govuk-font-size($size: 24);
     @include govuk-typography-weight-bold;
 
-    margin: 0 0 govuk-spacing(3) 0;
+    margin: 0 0 govuk-spacing(3);
 
     padding: 0;
   }
