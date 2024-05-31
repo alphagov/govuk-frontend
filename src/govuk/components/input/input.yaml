@@ -180,12 +180,20 @@ examples:
     options:
       label:
         text: National Insurance number
-      hint:
-        text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
       id: input-with-error-message
       name: test-name-3
       errorMessage:
-        text: Error message goes here
+        text: Enter a National Insurance number in the correct format
+  - name: with error and hint
+    options:
+      id: with-error-hint
+      name: with-error-hint
+      label:
+        text: National insurance number
+      errorMessage:
+        text: Enter a National Insurance number in the correct format
+      hint:
+        text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
   - name: with width-2 class
     options:
       label:
@@ -304,6 +312,12 @@ examples:
       name: autocapitalize
       type: text
       autocapitalize: none
+  - name: disabled
+    options:
+      label:
+        text: Disabled input
+      id: disabled-input
+      disabled: true
 
   - name: with prefix
     options:
@@ -444,17 +458,6 @@ examples:
       describedBy: test-target-element
       errorMessage:
         text: Error message
-  - name: with error and hint
-    hidden: true
-    options:
-      id: with-error-hint
-      name: with-error-hint
-      label:
-        text: With error and hint
-      errorMessage:
-        text: Error message
-      hint:
-        text: Hint
   - name: with error, hint and describedBy
     hidden: true
     options:
