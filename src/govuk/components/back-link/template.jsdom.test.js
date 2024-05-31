@@ -1,5 +1,4 @@
-const { render } = require('@govuk-frontend/helpers/nunjucks')
-const { getExamples } = require('@govuk-frontend/lib/components')
+const { getExamples, render } = require('@govuk-frontend/lib/components')
 
 describe('back-link component', () => {
   let examples
@@ -8,48 +7,61 @@ describe('back-link component', () => {
     examples = await getExamples('back-link')
   })
 
-  it('renders the default example with an anchor, href and text correctly', () => {
-    const $ = render('back-link', examples.default)
+  describe('by default', () => {
+    let $component
 
-    const $component = $('.govuk-back-link')
-    expect($component.get(0).tagName).toBe('a')
-    expect($component.attr('href')).toBe('#')
-    expect($component.text()).toBe('Back')
+    beforeAll(() => {
+      document.body.innerHTML = render('back-link', examples.default)
+      $component = document.querySelector('.govuk-back-link')
+    })
+
+    it('outputs a link', () => {
+      expect($component.tagName).toBe('A')
+    })
+
+    it('has an href of "#"', () => {
+      expect($component).toHaveAttribute('href', '#')
+    })
+
+    it('includes the text "Back"', () => {
+      expect($component).toHaveTextContent('Back')
+    })
   })
 
-  it('renders classes correctly', () => {
-    const $ = render('back-link', examples.classes)
+  it('includes additional classes from the `classes` option', () => {
+    document.body.innerHTML = render('back-link', examples.classes)
 
-    const $component = $('.govuk-back-link')
-    expect($component.hasClass('app-back-link--custom-class')).toBeTruthy()
+    const $component = document.querySelector('.govuk-back-link')
+    expect($component).toHaveClass('app-back-link--custom-class')
   })
 
-  it('renders custom text correctly', () => {
-    const $ = render('back-link', examples['with custom text'])
+  it('allows the text to be customised using the `text` option', () => {
+    document.body.innerHTML = render('back-link', examples['with custom text'])
 
-    const $component = $('.govuk-back-link')
-    expect($component.html()).toBe('Back to home')
+    const $component = document.querySelector('.govuk-back-link')
+    expect($component).toHaveTextContent('Back to home')
   })
 
-  it('renders escaped html when passed to text', () => {
-    const $ = render('back-link', examples['html as text'])
+  it('escapes HTML when using the `text` option', () => {
+    document.body.innerHTML = render('back-link', examples['html as text'])
 
-    const $component = $('.govuk-back-link')
-    expect($component.html()).toBe('&lt;b&gt;Home&lt;/b&gt;')
+    const $component = document.querySelector('.govuk-back-link')
+    expect($component).toHaveTextContent('<b>Home</b>')
   })
 
-  it('renders html correctly', () => {
-    const $ = render('back-link', examples.html)
+  it('does not escape HTML when using the `html` option', () => {
+    document.body.innerHTML = render('back-link', examples.html)
 
-    const $component = $('.govuk-back-link')
-    expect($component.html()).toBe('<b>Back</b>')
+    const $component = document.querySelector('.govuk-back-link')
+    expect($component).toContainHTML('<b>Back</b>')
   })
 
-  it('renders attributes correctly', () => {
-    const $ = render('back-link', examples.attributes)
+  it('sets any additional attributes based on the `attributes` option', () => {
+    document.body.innerHTML = render('back-link', examples.attributes)
 
-    const $component = $('.govuk-back-link')
-    expect($component.attr('data-test')).toBe('attribute')
-    expect($component.attr('aria-label')).toBe('Back to home')
+    const $component = document.querySelector('.govuk-back-link')
+
+    expect($component).toHaveAttribute('data-test', 'attribute')
+    expect($component).toHaveAttribute('aria-label', 'Back to home')
   })
 })
