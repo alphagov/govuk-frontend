@@ -1,74 +1,87 @@
 {% from "../../macros/attributes.njk" import govukAttributes %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 
 {%- set menuButtonText = params.menuButtonText | default("Menu", true) -%}
 {%- set navigationId = params.navigationId | default("navigation", true) %}
 
 {% if params.serviceName or params.navigation | length %}
-  <div class="govuk-service-header {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-service-header"
+  <div class="{%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-service-header"
     {{- govukAttributes(params.attributes) }}>
     {# Service name #}
     {% if params.serviceName %}
-      <div class="govuk-width-container">
-        <span class="govuk-service-header__service-name">
-          {% if params.serviceUrl %}
-          <a href="{{ params.serviceUrl }}" class="govuk-service-header__link govuk-service-header__link--service-name">
-            {{ params.serviceName }}
-          </a>
-          {% else %}
-            {{- params.serviceName -}}
-          {% endif %}
-        </span>
+      <div class="govuk-service-header">
+        <div class="govuk-width-container">
+          <span class="govuk-service-header__service-name">
+            {% if params.serviceUrl %}
+            <a href="{{ params.serviceUrl }}" class="govuk-service-header__link govuk-service-header__link--service-name">
+              {{ params.serviceName }}
+            </a>
+            {% else %}
+              {{- params.serviceName -}}
+            {% endif %}
+          </span>        
+        </div>
       </div>
-    {% endif %}    
-    <div class="govuk-service-header__container govuk-width-container">
-        {# Slot: start #}
-        {%- if params.slots.start %}{{ params.slots.start | safe }}{% endif -%}
+    {% endif %}
+    {% if params.phaseExample %}
+      {{ govukPhaseBanner({
+        tag: {
+          text: "Beta"
+        },
+        html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+      }) }}
+    {% endif %}   
+    <div class="govuk-service-header">
+      <div class="govuk-service-header__container govuk-width-container">
+          {# Slot: start #}
+          {%- if params.slots.start %}{{ params.slots.start | safe }}{% endif -%}
 
 
 
-        {# Navigation #}
-        {% if params.navigation | length %}
-          <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-service-header__navigation {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
-            <button type="button" class="govuk-service-header__toggle govuk-js-service-header-toggle" aria-controls="{{ navigationId }}" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden>
-              {{ menuButtonText }}
-            </button>
+          {# Navigation #}
+          {% if params.navigation | length %}
+            <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-service-header__navigation {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
+              <button type="button" class="govuk-service-header__toggle govuk-js-service-header-toggle" aria-controls="{{ navigationId }}" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden>
+                {{ menuButtonText }}
+              </button>
 
-            <ul class="govuk-service-header__navigation-list" id="{{ navigationId }}" >
+              <ul class="govuk-service-header__navigation-list" id="{{ navigationId }}" >
 
-              {# Slot: navigationStart #}
-              {%- if params.slots.navigationStart %}{{ params.slots.navigationStart | safe }}{% endif -%}
+                {# Slot: navigationStart #}
+                {%- if params.slots.navigationStart %}{{ params.slots.navigationStart | safe }}{% endif -%}
 
-              {% for item in params.navigation %}
-                <li class="govuk-service-header__navigation-item {%- if item.active or item.current %} govuk-service-header__navigation-item--active{% endif %}">
-                  {% if item.href %}
-                    <a class="govuk-service-header__link" href="{{ item.href }}"
-                      {%- if item.active or item.current %} aria-current="{{ 'page' if item.current else 'true' }}"{% endif %}
-                      {{- govukAttributes(item.attributes) -}}>
-                      {# We wrap active links in strong tags so that users who override colours or
-                      styles will still have some indicator of the current nav item. #}
-                      {% if item.active or item.current %}
-                        <strong class="govuk-service-header__active-fallback">{{- item.html | safe if item.html else item.text -}}</strong>
-                      {% else %}
+                {% for item in params.navigation %}
+                  <li class="govuk-service-header__navigation-item {%- if item.active or item.current %} govuk-service-header__navigation-item--active{% endif %}">
+                    {% if item.href %}
+                      <a class="govuk-service-header__link" href="{{ item.href }}"
+                        {%- if item.active or item.current %} aria-current="{{ 'page' if item.current else 'true' }}"{% endif %}
+                        {{- govukAttributes(item.attributes) -}}>
+                        {# We wrap active links in strong tags so that users who override colours or
+                        styles will still have some indicator of the current nav item. #}
+                        {% if item.active or item.current %}
+                          <strong class="govuk-service-header__active-fallback">{{- item.html | safe if item.html else item.text -}}</strong>
+                        {% else %}
+                          {{- item.html | safe if item.html else item.text -}}
+                        {% endif %}
+                      </a>
+                    {% elif item.html or item.text %}
+                      <span class="govuk-service-header__navigation-text">
                         {{- item.html | safe if item.html else item.text -}}
-                      {% endif %}
-                    </a>
-                  {% elif item.html or item.text %}
-                    <span class="govuk-service-header__navigation-text">
-                      {{- item.html | safe if item.html else item.text -}}
-                    </span>
-                  {% endif %}
-                </li>
-              {% endfor %}
+                      </span>
+                    {% endif %}
+                  </li>
+                {% endfor %}
 
-              {# Slot: navigationEnd #}
-              {%- if params.slots.navigationEnd %}{{ params.slots.navigationEnd | safe }}{% endif -%}
-            </ul>
-          </nav>
-        {% endif %}
+                {# Slot: navigationEnd #}
+                {%- if params.slots.navigationEnd %}{{ params.slots.navigationEnd | safe }}{% endif -%}
+              </ul>
+            </nav>
+          {% endif %}
 
-        {# Slot: end #}
-        {%- if params.slots.end %}{{ params.slots.end | safe }}{% endif -%}
+          {# Slot: end #}
+          {%- if params.slots.end %}{{ params.slots.end | safe }}{% endif -%}
 
+      </div>
     </div>
   </div>
 {% endif %}
