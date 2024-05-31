@@ -1,5 +1,4 @@
-const { render } = require('@govuk-frontend/helpers/nunjucks')
-const { getExamples } = require('@govuk-frontend/lib/components')
+const { getExamples, render } = require('@govuk-frontend/lib/components')
 
 describe('Accordion', () => {
   let examples
@@ -9,118 +8,158 @@ describe('Accordion', () => {
   })
 
   describe('default example', () => {
-    it('renders with heading button text', () => {
-      const $ = render('accordion', examples.default)
-      const $componentHeadingButton = $('.govuk-accordion__section-button')
+    beforeAll(() => {
+      document.body.innerHTML = render('accordion', examples.default)
+    })
 
-      expect($componentHeadingButton.html().trim()).toBe('Section A')
+    it('renders with heading button text', () => {
+      const $componentHeadingButton = document.querySelector(
+        '.govuk-accordion__section-button'
+      )
+
+      expect($componentHeadingButton).toHaveTextContent('Section A')
     })
 
     it('renders with content as text, wrapped in styled paragraph', () => {
-      const $ = render('accordion', examples.default)
-      const $componentContent = $('.govuk-accordion__section-content').first()
+      const $componentContent = document.querySelector(
+        '.govuk-accordion__section-content'
+      )
+      const $paragraph = $componentContent.querySelector('p')
 
-      expect($componentContent.find('p').hasClass('govuk-body')).toBeTruthy()
-      expect($componentContent.text().trim()).toBe(
+      expect($paragraph).toHaveClass('govuk-body')
+      expect($componentContent).toHaveTextContent(
         'We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.'
       )
     })
 
     it('renders with content as html', () => {
-      const $ = render('accordion', examples.default)
-      const $componentContent = $('.govuk-accordion__section-content').last()
+      const $componentContent = document.querySelector(
+        '.govuk-accordion__section:last-child .govuk-accordion__section-content'
+      )
 
-      expect($componentContent.find('p.gvouk-body')).toHaveLength(0)
-      expect($componentContent.text().trim()).toBe('Example item 2')
+      expect($componentContent.querySelector('p')).toBeNull()
+      expect($componentContent).toHaveTextContent('Example item 2')
     })
 
     it('renders with id', () => {
-      const $ = render('accordion', examples.default)
+      const $component = document.querySelector('.govuk-accordion')
 
-      const $component = $('.govuk-accordion')
-      expect($component.attr('id')).toBe('default-example')
+      expect($component).toHaveAttribute('id', 'default-example')
     })
   })
 
   describe('custom options', () => {
     it('renders with classes', () => {
-      const $ = render('accordion', examples.classes)
+      document.body.innerHTML = render('accordion', examples.classes)
+      const $component = document.querySelector('.govuk-accordion')
 
-      const $component = $('.govuk-accordion')
-      expect($component.hasClass('myClass')).toBeTruthy()
+      expect($component).toHaveClass('myClass')
     })
 
     it('renders with attributes', () => {
-      const $ = render('accordion', examples.attributes)
-      const $component = $('.govuk-accordion')
-      expect($component.attr('data-attribute')).toBe('value')
+      document.body.innerHTML = render('accordion', examples.attributes)
+      const $component = document.querySelector('.govuk-accordion')
+
+      expect($component).toHaveAttribute('data-attribute', 'value')
     })
 
     it('renders with specified heading level', () => {
-      const $ = render('accordion', examples['custom heading level'])
-      const $componentHeading = $('.govuk-accordion__section-heading')
+      document.body.innerHTML = render(
+        'accordion',
+        examples['custom heading level']
+      )
+      const $componentHeading = document.querySelector(
+        '.govuk-accordion__section-heading'
+      )
 
-      expect($componentHeading.get(0).tagName).toBe('h3')
+      expect($componentHeading.tagName).toBe('H3')
     })
 
     it('renders with heading button html', () => {
-      const $ = render('accordion', examples['heading html'])
-      const $componentHeadingButton = $('.govuk-accordion__section-button')
+      document.body.innerHTML = render('accordion', examples['heading html'])
+      const $componentHeadingButton = document.querySelector(
+        '.govuk-accordion__section-button'
+      )
 
-      expect($componentHeadingButton.html().trim()).toBe(
+      expect($componentHeadingButton).toContainHTML(
         '<span class="myClass">Section A</span>'
       )
     })
 
     it('renders with section expanded class', () => {
-      const $ = render('accordion', examples['with one section open'])
-      const $componentSection = $('.govuk-accordion__section').first()
+      document.body.innerHTML = render(
+        'accordion',
+        examples['with one section open']
+      )
+      const $componentSection = document.querySelector(
+        '.govuk-accordion__section'
+      )
 
-      expect(
-        $componentSection.hasClass('govuk-accordion__section--expanded')
-      ).toBeTruthy()
+      expect($componentSection).toHaveClass(
+        'govuk-accordion__section--expanded'
+      )
     })
 
     it('renders with summary', () => {
-      const $ = render('accordion', examples['with additional descriptions'])
-      const $componentSummary = $('.govuk-accordion__section-summary').first()
+      document.body.innerHTML = render(
+        'accordion',
+        examples['with additional descriptions']
+      )
+      const $componentSummary = document.querySelector(
+        '.govuk-accordion__section-summary'
+      )
 
-      expect($componentSummary.text().trim()).toBe('Additional description')
+      expect($componentSummary).toHaveTextContent('Additional description')
     })
 
     it('renders list without falsely values', () => {
-      const $ = render('accordion', examples['with falsey values'])
-      const $component = $('.govuk-accordion')
-      const $items = $component.find('.govuk-accordion__section')
+      document.body.innerHTML = render(
+        'accordion',
+        examples['with falsey values']
+      )
+      const $sections = document.querySelectorAll('.govuk-accordion__section')
 
-      expect($items).toHaveLength(2)
+      expect($sections).toHaveLength(2)
     })
 
     it('renders with localisation data attributes', () => {
-      const $ = render('accordion', examples['with translations'])
-      const $component = $('.govuk-accordion')
+      document.body.innerHTML = render(
+        'accordion',
+        examples['with translations']
+      )
+      const $component = document.querySelector('.govuk-accordion')
 
-      expect($component.attr('data-i18n.hide-all-sections')).toBe(
+      expect($component).toHaveAttribute(
+        'data-i18n.hide-all-sections',
         'Collapse all sections'
       )
-      expect($component.attr('data-i18n.show-all-sections')).toBe(
+
+      expect($component).toHaveAttribute(
+        'data-i18n.show-all-sections',
         'Expand all sections'
       )
-      expect($component.attr('data-i18n.hide-section')).toBe('Collapse')
-      expect($component.attr('data-i18n.hide-section-aria-label')).toBe(
+
+      expect($component).toHaveAttribute('data-i18n.hide-section', 'Collapse')
+      expect($component).toHaveAttribute(
+        'data-i18n.hide-section-aria-label',
         'Collapse this section'
       )
-      expect($component.attr('data-i18n.show-section')).toBe('Expand')
-      expect($component.attr('data-i18n.show-section-aria-label')).toBe(
+
+      expect($component).toHaveAttribute('data-i18n.show-section', 'Expand')
+      expect($component).toHaveAttribute(
+        'data-i18n.show-section-aria-label',
         'Expand this section'
       )
     })
 
     it('renders with remember expanded data attribute', () => {
-      const $ = render('accordion', examples['with remember expanded off'])
-      const $component = $('.govuk-accordion')
+      document.body.innerHTML = render(
+        'accordion',
+        examples['with remember expanded off']
+      )
+      const $component = document.querySelector('.govuk-accordion')
 
-      expect($component.attr('data-remember-expanded')).toBe('false')
+      expect($component).toHaveAttribute('data-remember-expanded', 'false')
     })
   })
 })
