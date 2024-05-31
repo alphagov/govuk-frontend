@@ -2,6 +2,7 @@ import { readFileSync } from 'fs'
 
 // eslint-disable-next-line import/no-unresolved
 import { Octokit } from 'octokit'
+import { satisfies } from 'semver'
 
 const notAServiceWords = ['prototype', 'beta', 'alpha']
 const filteredDeps = []
@@ -30,24 +31,59 @@ async function getDeps() {
   }
 
   const octokit = new Octokit({
-    auth: 'not committing my own auth token'
+    auth: 'not committing my auth token soz'
   })
 
-  const commitRange = await octokit.rest.repos.listCommits({
-    owner: 'alphagov',
-    repo: 'govuk-design-system',
-    path: 'package-lock.json',
+  const repoOwner = 'alphagov'
+  const repoName = 'govuk-design-system'
+  let lockfileName = 'package-lock.json'
+
+  let commitRange = await octokit.rest.repos.listCommits({
+    owner: repoOwner,
+    repo: repoName,
+    path: lockfileName,
     per_page: 100
   })
 
+  if (commitRange.data.length === 0) {
+    lockfileName = 'yarn.lock'
+    commitRange = await octokit.rest.repos.listCommits({
+      owner: repoOwner,
+      repo: repoName,
+      path: lockfileName,
+      per_page: 100
+    })
+  }
+
+  if (commitRange.data.length === 0) {
+    console.log('no data :(')
+    return
+  }
+
   const depDiff = await octokit.rest.dependencyGraph.diffRange({
-    owner: 'alphagov',
-    repo: 'govuk-design-system',
+    owner: repoOwner,
+    repo: repoName,
     basehead: `${commitRange.data[commitRange.data.length - 1].sha}...${commitRange.data[0].sha}`
   })
 
-  console.log(depDiff.data.filter((item) => item.name === 'govuk-frontend'))
-  console.log(filteredDeps[10])
+  const frontendVersionChanges = depDiff.data.filter(
+    (item) => item.name === 'govuk-frontend' && item.manifest === lockfileName
+  )
+  const latestVersion = frontendVersionChanges.find(
+    (item) => item.change_type === 'added'
+  ).version
+  const oldestVersion = frontendVersionChanges.find(
+    (item) => item.change_type === 'removed'
+  )?.version
+
+  if (
+    satisfies(latestVersion, '>=5.1.0') &&
+    satisfies(oldestVersion, '<5.1.0')
+  ) {
+    console.log('Crown update detected')
+    console.log(commitRange.data[0])
+  }
+  // If latestVersion >= 5.1.0 && oldestVersion < 5.1.0 -> That's a crown upgrade
 }
 
 getDeps()
