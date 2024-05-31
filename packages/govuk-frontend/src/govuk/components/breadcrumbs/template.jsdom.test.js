@@ -1,5 +1,4 @@
-const { render } = require('@govuk-frontend/helpers/nunjucks')
-const { getExamples } = require('@govuk-frontend/lib/components')
+const { getExamples, render } = require('@govuk-frontend/lib/components')
 
 describe('Breadcrumbs', () => {
   let examples
@@ -9,94 +8,151 @@ describe('Breadcrumbs', () => {
   })
 
   describe('default example', () => {
-    it('renders with items', () => {
-      const $ = render('breadcrumbs', examples.default)
+    let $component, $list, $listItems
 
-      const $items = $('.govuk-breadcrumbs__list-item')
-      expect($items).toHaveLength(2)
+    beforeAll(() => {
+      document.body.innerHTML = render('breadcrumbs', examples.default)
+
+      $component = document.querySelector('.govuk-breadcrumbs')
+      $list = document.querySelector('ol.govuk-breadcrumbs__list')
+      $listItems = document.querySelectorAll('li.govuk-breadcrumbs__list-item')
     })
 
-    it('renders 2 items', () => {
-      const $ = render('breadcrumbs', examples.default)
-      const $items = $('.govuk-breadcrumbs__list-item')
-      expect($items).toHaveLength(2)
+    it('includes an ordered list', () => {
+      expect($component).toContainElement($list)
     })
 
-    it('renders item with anchor', () => {
-      const $ = render('breadcrumbs', examples.default)
-
-      const $anchor = $('.govuk-breadcrumbs__list-item a').first()
-      expect($anchor.get(0).tagName).toBe('a')
-      expect($anchor.attr('class')).toBe('govuk-breadcrumbs__link')
-      expect($anchor.attr('href')).toBe('/section')
-      expect($anchor.text()).toBe('Section')
+    it('includes 2 list items within the list', () => {
+      expect($listItems).toHaveLength(2)
     })
+
+    describe.each([
+      { index: 0, expectedText: 'Section', expectedHref: '/section' },
+      {
+        index: 1,
+        expectedText: 'Sub-section',
+        expectedHref: '/section/sub-section'
+      }
+    ])(
+      'the "$expectedText" breadcrumb',
+      ({ index, expectedText, expectedHref }) => {
+        it(`includes the text "${expectedText}"`, () => {
+          expect($listItems[index]).toHaveTextContent(expectedText)
+        })
+
+        it(`includes a link with the class govuk-breadcrumbs__link`, () => {
+          expect($listItems[index].querySelector('a')).toHaveClass(
+            'govuk-breadcrumbs__link'
+          )
+        })
+
+        it(`includes a link with the href "${expectedHref}"`, () => {
+          expect($listItems[index].querySelector('a')).toHaveAttribute(
+            'href',
+            expectedHref
+          )
+        })
+      }
+    )
   })
 
-  describe('custom options', () => {
-    it('renders item with text', () => {
-      const $ = render(
+  describe('when the last breadcrumb is the current page', () => {
+    let $lastItem
+
+    beforeAll(() => {
+      document.body.innerHTML = render(
         'breadcrumbs',
         examples['with last breadcrumb as current page']
       )
 
-      const $item = $('.govuk-breadcrumbs__list-item').last()
-      expect($item.text()).toBe('Travel abroad')
+      $lastItem = document.querySelector(
+        '.govuk-breadcrumbs__list-item:last-child'
+      )
     })
 
-    it('renders item with escaped entities in text', () => {
-      const $ = render('breadcrumbs', examples['html as text'])
-
-      const $item = $('.govuk-breadcrumbs__list-item')
-      expect($item.html()).toBe('&lt;span&gt;Section 1&lt;/span&gt;')
+    it('includes the current page as the last list item', () => {
+      expect($lastItem).toHaveTextContent('Travel abroad')
     })
 
-    it('renders item with html', () => {
-      const $ = render('breadcrumbs', examples.html)
-
-      const $item = $('.govuk-breadcrumbs__list-item').first()
-      expect($item.html()).toBe('<em>Section 1</em>')
+    it('does not link the last list item', () => {
+      expect($lastItem.querySelector('a')).toBeNull()
     })
 
-    it('renders item with html inside anchor', () => {
-      const $ = render('breadcrumbs', examples.html)
+    it('sets the aria-current attribute to "page"', () => {
+      expect($lastItem).toHaveAttribute('aria-current', 'page')
+    })
+  })
 
-      const $anchor = $('.govuk-breadcrumbs__list-item a').last()
-      expect($anchor.html()).toBe('<em>Section 2</em>')
+  describe('custom options', () => {
+    it('escapes HTML when using the `text` option', () => {
+      document.body.innerHTML = render('breadcrumbs', examples['html as text'])
+      const $item = document.querySelector('.govuk-breadcrumbs__list-item')
+
+      expect($item).toHaveTextContent('<span>Section 1</span>')
     })
 
-    it('renders item anchor with attributes', () => {
-      const $ = render('breadcrumbs', examples['item attributes'])
+    it('escapes HTML when using the `text` option without a link', () => {
+      document.body.innerHTML = render('breadcrumbs', examples['html as text'])
+      const $item = document.querySelector(
+        '.govuk-breadcrumbs__list-item:nth-child(2)'
+      )
 
-      const $breadcrumbLink = $('.govuk-breadcrumbs__link')
-      expect($breadcrumbLink.attr('data-attribute')).toBe('my-attribute')
-      expect($breadcrumbLink.attr('data-attribute-2')).toBe('my-attribute-2')
+      expect($item).toHaveTextContent('<span>Section 2</span>')
     })
 
-    it('renders with classes', () => {
-      const $ = render('breadcrumbs', examples.classes)
+    it('does not escape HTML when using the `html` option', () => {
+      document.body.innerHTML = render('breadcrumbs', examples.html)
+      const $item = document.querySelector('.govuk-breadcrumbs__list-item')
 
-      const $component = $('.govuk-breadcrumbs')
-      expect(
-        $component.hasClass('app-breadcrumbs--custom-modifier')
-      ).toBeTruthy()
+      expect($item).toContainHTML('<em>Section 1</em>')
     })
 
-    it('renders with attributes', () => {
-      const $ = render('breadcrumbs', examples.attributes)
+    it('does not escape HTML when using the `html` option without a link', () => {
+      document.body.innerHTML = render('breadcrumbs', examples.html)
+      const $item = document.querySelector(
+        '.govuk-breadcrumbs__list-item:nth-child(2)'
+      )
 
-      const $component = $('.govuk-breadcrumbs')
-      expect($component.attr('id')).toBe('my-navigation')
-      expect($component.attr('role')).toBe('navigation')
+      expect($item).toContainHTML('<em>Section 2</em>')
     })
 
-    it('renders item as collapse on mobile if specified', () => {
-      const $ = render('breadcrumbs', examples['with collapse on mobile'])
+    it('sets any additional attributes on the link based on the `item.attributes` option', () => {
+      document.body.innerHTML = render(
+        'breadcrumbs',
+        examples['item attributes']
+      )
+      const $breadcrumbLink = document.querySelector('.govuk-breadcrumbs__link')
 
-      const $component = $('.govuk-breadcrumbs')
-      expect(
-        $component.hasClass('govuk-breadcrumbs--collapse-on-mobile')
-      ).toBeTruthy()
+      expect($breadcrumbLink).toHaveAttribute('data-attribute', 'my-attribute')
+      expect($breadcrumbLink).toHaveAttribute(
+        'data-attribute-2',
+        'my-attribute-2'
+      )
+    })
+
+    it('includes additional classes from the `classes` option', () => {
+      document.body.innerHTML = render('breadcrumbs', examples.classes)
+
+      const $component = document.querySelector('.govuk-breadcrumbs')
+      expect($component).toHaveClass('app-breadcrumbs--custom-modifier')
+    })
+
+    it('adds the `--collapse-on-mobile` modifier class if `collapseOnMobile` is true', () => {
+      document.body.innerHTML = render(
+        'breadcrumbs',
+        examples['with collapse on mobile']
+      )
+
+      const $component = document.querySelector('.govuk-breadcrumbs')
+      expect($component).toHaveClass('govuk-breadcrumbs--collapse-on-mobile')
+    })
+
+    it('sets any additional attributes based on the `attributes` option', () => {
+      document.body.innerHTML = render('breadcrumbs', examples.attributes)
+
+      const $component = document.querySelector('.govuk-breadcrumbs')
+      expect($component).toHaveAttribute('id', 'my-navigation')
+      expect($component).toHaveAttribute('role', 'navigation')
     })
   })
 })
