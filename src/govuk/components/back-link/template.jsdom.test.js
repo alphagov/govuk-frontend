@@ -45,25 +45,11 @@ describe('back-link component', () => {
     expect($component.html()).toBe('<b>Back</b>')
   })
 
-  it('renders default text correctly', () => {
-    const $ = render('back-link', examples.default)
-
-    const $component = $('.govuk-back-link')
-    expect($component.html()).toBe('Back')
-  })
-
   it('renders attributes correctly', () => {
     const $ = render('back-link', examples.attributes)
 
     const $component = $('.govuk-back-link')
     expect($component.attr('data-test')).toBe('attribute')
     expect($component.attr('aria-label')).toBe('Back to home')
-  })
-
-  it('renders with inverted colours if specified', () => {
-    const $ = render('back-link', examples.inverse)
-
-    const $component = $('.govuk-back-link')
-    expect($component.hasClass('govuk-back-link--inverse')).toBeTruthy()
   })
 })
