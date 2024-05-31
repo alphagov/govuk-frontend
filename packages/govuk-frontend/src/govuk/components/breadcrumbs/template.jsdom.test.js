@@ -98,12 +98,5 @@ describe('Breadcrumbs', () => {
         $component.hasClass('govuk-breadcrumbs--collapse-on-mobile')
       ).toBeTruthy()
     })
-
-    it('renders with inverted colours if specified', () => {
-      const $ = render('breadcrumbs', examples.inverse)
-
-      const $component = $('.govuk-breadcrumbs')
-      expect($component.hasClass('govuk-breadcrumbs--inverse')).toBeTruthy()
-    })
   })
 })
