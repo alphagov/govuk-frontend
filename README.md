@@ -52,7 +52,7 @@ GOV.UK Frontend also supports:
 
 The GOV.UK Design System team works hard to ensure that GOV.UK Frontend is accessible.
 
-Using Frontend will help your service meet [level AA of WCAG 2.1](https://www.gov.uk/service-manual/helping-people-to-use-your-service/understanding-wcag). But you must still [check that your service meets accessibility requirements](https://www.gov.uk/service-manual/helping-people-to-use-your-service/making-your-service-accessible-an-introduction), especially if you extend or modify components.
+Using Frontend will help your service meet [level AA of WCAG 2.2](https://www.gov.uk/service-manual/helping-people-to-use-your-service/understanding-wcag). But you must still [check that your service meets accessibility requirements](https://www.gov.uk/service-manual/helping-people-to-use-your-service/making-your-service-accessible-an-introduction), especially if you extend or modify components.
 
 You should also use [the JavaScript from GOV.UK Frontend](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#javascript) and read the [accessibility statement for the GOV.UK Design System](https://design-system.service.gov.uk/accessibility/).
 
