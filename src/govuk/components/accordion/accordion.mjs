@@ -491,13 +491,9 @@ export class Accordion extends GOVUKFrontendComponent {
    * @returns {boolean} True if all sections are open
    */
   checkIfAllSectionsOpen() {
-    const sectionsCount = this.$sections.length
-    const expandedSectionCount = this.$module.querySelectorAll(
-      `.${this.sectionExpandedClass}`
-    ).length
-    const areAllSectionsOpen = sectionsCount === expandedSectionCount
-
-    return areAllSectionsOpen
+    return Array.from(this.$sections).every(($section) =>
+      this.isExpanded($section)
+    )
   }
 
   /**
