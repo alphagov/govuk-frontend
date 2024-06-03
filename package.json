@@ -84,7 +84,7 @@
     "lint-staged": "^15.2.5",
     "postcss-markdown": "^1.2.0",
     "postcss-scss": "^4.0.9",
-    "prettier": "^3.2.5",
+    "prettier": "^3.3.0",
     "semver": "^7.6.0",
     "standard": "^17.1.0",
     "stylelint": "^16.6.1",
