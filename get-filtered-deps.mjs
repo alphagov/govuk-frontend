@@ -31,7 +31,7 @@ async function getDeps() {
   }
 
   const octokit = new Octokit({
-    auth: 'not committing my auth token soz'
+    auth: 'tee hee'
   })
 
   const repoOwner = 'alphagov'
@@ -42,7 +42,7 @@ async function getDeps() {
     owner: repoOwner,
     repo: repoName,
     path: lockfileName,
-    per_page: 100
+    per_page: 64
   })
 
   if (commitRange.data.length === 0) {
@@ -51,7 +51,7 @@ async function getDeps() {
       owner: repoOwner,
       repo: repoName,
       path: lockfileName,
-      per_page: 100
+      per_page: 64
     })
   }
 
@@ -60,30 +60,62 @@ async function getDeps() {
     return
   }
 
-  const depDiff = await octokit.rest.dependencyGraph.diffRange({
-    owner: repoOwner,
-    repo: repoName,
-    basehead: `${commitRange.data[commitRange.data.length - 1].sha}...${commitRange.data[0].sha}`
-  })
+  const results = await bisectDiffRange(commitRange.data, containsCrownUpdate)
+  console.log(results)
 
-  const frontendVersionChanges = depDiff.data.filter(
-    (item) => item.name === 'govuk-frontend' && item.manifest === lockfileName
-  )
-  const latestVersion = frontendVersionChanges.find(
-    (item) => item.change_type === 'added'
-  ).version
-  const oldestVersion = frontendVersionChanges.find(
-    (item) => item.change_type === 'removed'
-  )?.version
+  async function containsCrownUpdate(range) {
+    const depDiff = await octokit.rest.dependencyGraph.diffRange({
+      owner: repoOwner,
+      repo: repoName,
+      basehead: `${range[range.length - 1].sha}...${range[0].sha}`
+    })
 
-  if (
-    satisfies(latestVersion, '>=5.1.0') &&
-    satisfies(oldestVersion, '<5.1.0')
-  ) {
-    console.log('Crown update detected')
-    console.log(commitRange.data[0])
+    const frontendVersionChanges = depDiff.data.filter(
+      (item) => item.name === 'govuk-frontend' && item.manifest === lockfileName
+    )
+
+    const latestVersion = frontendVersionChanges.find(
+      (item) => item.change_type === 'added'
+    )?.version
+    const oldestVersion = frontendVersionChanges.find(
+      (item) => item.change_type === 'removed'
+    )?.version
+
+    if (!latestVersion) {
+      return false
+    }
+
+    if (
+      satisfies(latestVersion, '>=5.3.0') &&
+      satisfies(oldestVersion, '<5.3.0')
+    ) {
+      console.log('Crown update detected')
+      return true
+    }
   }
-  // If latestVersion >= 5.1.0 && oldestVersion < 5.1.0 -> That's a crown upgrade
 }
 
 getDeps()
+
+async function bisectDiffRange(range, func) {
+  console.log('we bisectin...', range.length)
+  if (await func(range)) {
+    if (range.length === 2) {
+      return range[0]
+    }
+
+    const rangeHalfLength = range.length / 2
+    const firstHalf = range.slice(0, rangeHalfLength)
+    const secondHalf = range.slice(rangeHalfLength)
+    // The change of version may have happened between the first item of the second half
+    // and the last item of the first half, so we need to also test a small range
+    // containing these two if nothing is found in the first or second half of the commit range
+    const inBetweenRange = range.slice(rangeHalfLength - 1, rangeHalfLength + 1)
+
+    return (
+      (await bisectDiffRange(firstHalf, func)) ||
+      (await bisectDiffRange(secondHalf, func)) ||
+      (await bisectDiffRange(inBetweenRange, func))
+    )
+  }
+}
