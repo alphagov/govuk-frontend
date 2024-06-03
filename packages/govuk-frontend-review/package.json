@@ -29,7 +29,7 @@
     "@prettier/sync": "^0.5.1",
     "cookie-parser": "^1.4.6",
     "express": "^4.19.2",
-    "express-validator": "^7.0.1",
+    "express-validator": "^7.1.0",
     "front-matter": "^4.0.2",
     "govuk-frontend": "*",
     "highlight.js": "^11.9.0",
