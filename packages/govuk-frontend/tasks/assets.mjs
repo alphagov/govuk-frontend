@@ -12,7 +12,8 @@ export const assets = (options) =>
       gulp
         .src('govuk/assets/**/*', {
           base: options.srcPath,
-          cwd: options.srcPath
+          cwd: options.srcPath,
+          encoding: false
         })
         .pipe(gulp.dest(options.destPath))
     )
