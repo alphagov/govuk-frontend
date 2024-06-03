@@ -38,27 +38,16 @@ export async function screenshots() {
     // Screenshot "default" example
     await screenshotComponent(browser, componentName)
 
-    // Screenshot "inverse" example
-    if (Object.keys(componentExamples).includes('inverse')) {
+    // Screenshot any other examples with 'screenshot: true'
+    const otherExamples = Object.keys(componentExamples).filter(
+      (key) => componentExamples[key].fixture.screenshot
+    )
+
+    for (const exampleName of otherExamples) {
       await screenshotComponent(browser, componentName, {
-        exampleName: 'inverse'
+        exampleName
       })
     }
-  }
-
-  // Screenshot specific component examples
-  for (const [componentName, options] of /** @type {const} */ ([
-    ['button', { exampleName: 'start' }],
-    ['button', { exampleName: 'inverse-start' }],
-    ['checkboxes', { exampleName: 'with-hints-on-items' }],
-    ['checkboxes', { exampleName: 'small' }],
-    ['details', { exampleName: 'expanded' }],
-    ['pagination', { exampleName: 'with-prev-and-next-only' }],
-    ['pagination', { exampleName: 'with-prev-and-next-only-and-labels' }],
-    ['radios', { exampleName: 'with-hints-on-items' }],
-    ['radios', { exampleName: 'small' }]
-  ])) {
-    await screenshotComponent(browser, componentName, options)
   }
 
   // Screenshot specific example pages
