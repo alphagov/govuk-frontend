@@ -31,37 +31,55 @@ async function getDeps() {
   }
 
   const octokit = new Octokit({
-    auth: 'tee hee'
+    auth: 'nope'
   })
 
   const repoOwner = 'alphagov'
   const repoName = 'govuk-design-system'
   let lockfileName = 'package-lock.json'
-
-  let commitRange = await octokit.rest.repos.listCommits({
-    owner: repoOwner,
-    repo: repoName,
-    path: lockfileName,
-    per_page: 64
-  })
-
-  if (commitRange.data.length === 0) {
-    lockfileName = 'yarn.lock'
-    commitRange = await octokit.rest.repos.listCommits({
+  let bisectResults
+  let page = 1
+  let lastCommitOfPreviousRange
+  while (!bisectResults) {
+    console.log('Page', page)
+    let commitRange = await octokit.rest.repos.listCommits({
       owner: repoOwner,
       repo: repoName,
       path: lockfileName,
-      per_page: 64
+      per_page: 64,
+      page
     })
-  }
 
-  if (commitRange.data.length === 0) {
-    console.log('no data :(')
-    return
-  }
+    if (commitRange.data.length === 0) {
+      lockfileName = 'yarn.lock'
+      commitRange = await octokit.rest.repos.listCommits({
+        owner: repoOwner,
+        repo: repoName,
+        path: lockfileName,
+        per_page: 64,
+        page
+      })
+    }
 
-  const results = await bisectDiffRange(commitRange.data, containsCrownUpdate)
-  console.log(results)
+    if (commitRange.data.length === 0) {
+      console.log('no data :(')
+      return
+    }
+
+    if (lastCommitOfPreviousRange) {
+      bisectResults = await bisectDiffRange(
+        [lastCommitOfPreviousRange, commitRange.data[0]],
+        containsCrownUpdate
+      )
+    }
+
+    bisectResults =
+      bisectResults ||
+      (await bisectDiffRange(commitRange.data, containsCrownUpdate))
+    console.log(bisectResults)
+    lastCommitOfPreviousRange = commitRange.data[commitRange.data.length - 1]
+    page++
+  }
 
   async function containsCrownUpdate(range) {
     const depDiff = await octokit.rest.dependencyGraph.diffRange({
@@ -86,8 +104,8 @@ async function getDeps() {
     }
 
     if (
-      satisfies(latestVersion, '>=5.3.0') &&
-      satisfies(oldestVersion, '<5.3.0')
+      satisfies(latestVersion, '>=5.1.0') &&
+      satisfies(oldestVersion, '<5.1.0')
     ) {
       console.log('Crown update detected')
       return true
