@@ -258,6 +258,7 @@ examples:
           text: Create an account
 
   - name: with hints on items
+    screenshot: true
     options:
       idPrefix: gov
       name: gov
@@ -504,6 +505,7 @@ examples:
               <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
   - name: small
+    screenshot: true
     options:
       idPrefix: 'how-contacted-2'
       name: 'how-contacted-2'
