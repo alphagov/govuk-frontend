@@ -31,7 +31,7 @@ async function getDeps() {
   }
 
   const octokit = new Octokit({
-    auth: 'nope'
+    auth: process.env.GITHUB_AUTH_TOKEN
   })
 
   const repoOwner = 'alphagov'
