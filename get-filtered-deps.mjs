@@ -24,7 +24,8 @@ async function getDeps() {
           repo.repo_name.includes(word) &&
           repo.repo_name !== 'govuk-prototype-kit'
       ) &&
-      ownerList.includes(repo.owner)
+      ownerList.includes(repo.owner) &&
+      repo.name !== 'alphagov/govuk-frontend'
     ) {
       filteredDeps.push(repo)
     }
@@ -35,50 +36,59 @@ async function getDeps() {
   })
 
   const repoOwner = 'alphagov'
-  const repoName = 'govuk-design-system'
+  const repoName = 'whitehall'
   let lockfileName = 'package-lock.json'
   let bisectResults
   let page = 1
   let lastCommitOfPreviousRange
-  while (!bisectResults) {
-    console.log('Page', page)
-    let commitRange = await octokit.rest.repos.listCommits({
-      owner: repoOwner,
-      repo: repoName,
-      path: lockfileName,
-      per_page: 64,
-      page
-    })
-
-    if (commitRange.data.length === 0) {
-      lockfileName = 'yarn.lock'
-      commitRange = await octokit.rest.repos.listCommits({
+  try {
+    while (!bisectResults) {
+      console.log('Page', page)
+      let commitRange = await octokit.rest.repos.listCommits({
         owner: repoOwner,
         repo: repoName,
         path: lockfileName,
         per_page: 64,
         page
       })
-    }
 
-    if (commitRange.data.length === 0) {
-      console.log('no data :(')
+      if (commitRange.data.length === 0) {
+        lockfileName = 'yarn.lock'
+        commitRange = await octokit.rest.repos.listCommits({
+          owner: repoOwner,
+          repo: repoName,
+          path: lockfileName,
+          per_page: 64,
+          page
+        })
+      }
+
+      if (commitRange.data.length === 0) {
+        console.log('no data :(')
+        return
+      }
+
+      if (lastCommitOfPreviousRange) {
+        bisectResults = await bisectDiffRange(
+          [lastCommitOfPreviousRange, commitRange.data[0]],
+          containsCrownUpdate
+        )
+      }
+
+      bisectResults =
+        bisectResults ||
+        (await bisectDiffRange(commitRange.data, containsCrownUpdate))
+      console.log(bisectResults)
+      lastCommitOfPreviousRange = commitRange.data[commitRange.data.length - 1]
+      page++
+    }
+  } catch (e) {
+    if (e instanceof IndirectDependencyError) {
+      console.log('Indirect dependency')
       return
     }
 
-    if (lastCommitOfPreviousRange) {
-      bisectResults = await bisectDiffRange(
-        [lastCommitOfPreviousRange, commitRange.data[0]],
-        containsCrownUpdate
-      )
-    }
-
-    bisectResults =
-      bisectResults ||
-      (await bisectDiffRange(commitRange.data, containsCrownUpdate))
-    console.log(bisectResults)
-    lastCommitOfPreviousRange = commitRange.data[commitRange.data.length - 1]
-    page++
+    throw e
   }
 
   async function containsCrownUpdate(range) {
@@ -89,17 +99,32 @@ async function getDeps() {
     })
 
     const frontendVersionChanges = depDiff.data.filter(
-      (item) => item.name === 'govuk-frontend' && item.manifest === lockfileName
+      (item) => item.name === 'govuk-frontend'
     )
 
+    // `govuk-frontend` may appear in lockfiles, but not be listed in `package.json`
+    // when brought as a dependency of a dependency. We can skip those by throwing
+    // (easier than returning)
+    if (
+      !frontendVersionChanges.find((item) => item.manifest === 'package.json')
+    ) {
+      throw new IndirectDependencyError()
+    }
+
     const latestVersion = frontendVersionChanges.find(
-      (item) => item.change_type === 'added'
+      (item) => item.change_type === 'added' && item.manifest === lockfileName
     )?.version
     const oldestVersion = frontendVersionChanges.find(
-      (item) => item.change_type === 'removed'
+      (item) => item.change_type === 'removed' && item.manifest === lockfileName
     )?.version
 
     if (!latestVersion) {
+      console.log('Missing added entry')
+      return false
+    }
+
+    if (!oldestVersion) {
+      console.log('Missing removed entry')
       return false
     }
 
@@ -118,6 +143,14 @@ getDeps()
 async function bisectDiffRange(range, func) {
   console.log('we bisectin...', range.length)
   if (await func(range)) {
+    // Handle odd arrays where towards the end of the bisection
+    // we'd get an array of only 1 element. That element will
+    // be accounted for by the 'inBetweenRange' test
+    // so we can ignore arrays with less than 2 items
+    if (range < 2) {
+      return
+    }
+
     if (range.length === 2) {
       return range[0]
     }
@@ -137,3 +170,5 @@ async function bisectDiffRange(range, func) {
     )
   }
 }
+
+class IndirectDependencyError extends Error {}
