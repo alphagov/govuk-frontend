@@ -104,7 +104,7 @@
     "@types/jest-axe": "^3.5.9",
     "@types/js-yaml": "^4.0.9",
     "@types/mime-types": "^2.1.4",
-    "@types/node": "^20.12.13",
+    "@types/node": "^20.14.0",
     "@types/nunjucks": "^3.2.6",
     "@types/slug": "^5.0.8",
     "puppeteer": "^22.10.0",
