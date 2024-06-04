@@ -314,7 +314,7 @@ export class Accordion extends GOVUKFrontendComponent {
     $button.appendChild(this.getButtonPunctuationEl())
 
     // If summary content exists add to DOM in correct order
-    if ($summary?.parentNode) {
+    if ($summary) {
       // Create a new `span` element and copy the summary line content from the
       // original `div` to the new `span`. This is because the summary line text
       // is now inside a button element, which can only contain phrasing
@@ -337,7 +337,7 @@ export class Accordion extends GOVUKFrontendComponent {
       )
 
       // Replace the original summary `div` with the new summary `span`
-      $summary.parentNode.replaceChild($summarySpan, $summary)
+      $summary.remove()
 
       $button.appendChild($summarySpan)
       $button.appendChild(this.getButtonPunctuationEl())
