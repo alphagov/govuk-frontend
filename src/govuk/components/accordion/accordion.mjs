@@ -151,7 +151,7 @@ export class Accordion extends GOVUKFrontendComponent {
     this.initControls()
     this.initSectionHeaders()
 
-    this.updateShowAllButton(this.checkIfAllSectionsOpen())
+    this.updateShowAllButton(this.areAllSectionsOpen())
   }
 
   /**
@@ -388,7 +388,7 @@ export class Accordion extends GOVUKFrontendComponent {
    * @private
    */
   onShowOrHideAllToggle() {
-    const nowExpanded = !this.checkIfAllSectionsOpen()
+    const nowExpanded = !this.areAllSectionsOpen()
 
     this.$sections.forEach(($section) => {
       this.setExpanded(nowExpanded, $section)
@@ -471,7 +471,7 @@ export class Accordion extends GOVUKFrontendComponent {
     }
 
     // See if "Show all sections" button text should be updated
-    this.updateShowAllButton(this.checkIfAllSectionsOpen())
+    this.updateShowAllButton(this.areAllSectionsOpen())
   }
 
   /**
@@ -491,7 +491,7 @@ export class Accordion extends GOVUKFrontendComponent {
    * @private
    * @returns {boolean} True if all sections are open
    */
-  checkIfAllSectionsOpen() {
+  areAllSectionsOpen() {
     return Array.from(this.$sections).every(($section) =>
       this.isExpanded($section)
     )
