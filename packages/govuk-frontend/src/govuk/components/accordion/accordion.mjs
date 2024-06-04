@@ -373,11 +373,11 @@ export class Accordion extends GOVUKFrontendComponent {
    * @param {Element} $section - Section element
    */
   onSectionToggle($section) {
-    const expanded = this.isExpanded($section)
-    this.setExpanded(!expanded, $section)
+    const nowExpanded = !this.isExpanded($section)
+    this.setExpanded(nowExpanded, $section)
 
     // Store the state in sessionStorage when a change is triggered
-    this.storeState($section)
+    this.storeState($section, nowExpanded)
   }
 
   /**
@@ -390,7 +390,7 @@ export class Accordion extends GOVUKFrontendComponent {
 
     this.$sections.forEach(($section) => {
       this.setExpanded(nowExpanded, $section)
-      this.storeState($section)
+      this.storeState($section, nowExpanded)
     })
 
     this.updateShowAllButton(nowExpanded)
@@ -519,8 +519,9 @@ export class Accordion extends GOVUKFrontendComponent {
    *
    * @private
    * @param {Element} $section - Section element
+   * @param {boolean} isExpanded - Whether the section is expanded
    */
-  storeState($section) {
+  storeState($section, isExpanded) {
     if (this.browserSupportsSessionStorage && this.config.rememberExpanded) {
       // We need a unique way of identifying each content in the Accordion.
       // Since an `#id` should be unique and an `id` is required for `aria-`
@@ -529,12 +530,9 @@ export class Accordion extends GOVUKFrontendComponent {
 
       if ($button) {
         const contentId = $button.getAttribute('aria-controls')
-        const contentState = $button.getAttribute('aria-expanded')
 
-        // Only set the state when both `contentId` and `contentState` are taken
-        // from the DOM.
-        if (contentId && contentState) {
-          window.sessionStorage.setItem(contentId, contentState)
+        if (contentId) {
+          window.sessionStorage.setItem(contentId, isExpanded.toString())
         }
       }
     }
