@@ -580,7 +580,7 @@ export class Accordion extends GOVUKFrontendComponent {
       'govuk-visually-hidden',
       this.sectionHeadingDividerClass
     )
-    $punctuationEl.innerHTML = ', '
+    $punctuationEl.textContent = ', '
     return $punctuationEl
   }
 
