@@ -282,7 +282,9 @@ export class Accordion extends GOVUKFrontendComponent {
     $headingText.appendChild($headingTextFocus)
     // span could contain HTML elements
     // (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
-    $headingTextFocus.innerHTML = $span.innerHTML
+    Array.from($span.childNodes).forEach(($child) =>
+      $headingTextFocus.appendChild($child)
+    )
 
     // Create container for show / hide icons and text.
     const $showHideToggle = document.createElement('span')
@@ -330,7 +332,9 @@ export class Accordion extends GOVUKFrontendComponent {
       }
 
       // Copy original contents of summary to the new summary span
-      $summarySpanFocus.innerHTML = $summary.innerHTML
+      Array.from($summary.childNodes).forEach(($child) =>
+        $summarySpanFocus.appendChild($child)
+      )
 
       // Replace the original summary `div` with the new summary `span`
       $summary.parentNode.replaceChild($summarySpan, $summary)
