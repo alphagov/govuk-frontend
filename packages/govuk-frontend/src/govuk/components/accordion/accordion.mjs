@@ -263,8 +263,8 @@ export class Accordion extends GOVUKFrontendComponent {
     // Copy all attributes from $span to $button (except `id`, which gets added
     // to the `$headingText` element)
     for (const attr of Array.from($span.attributes)) {
-      if (attr.nodeName !== 'id') {
-        $button.setAttribute(attr.nodeName, `${attr.nodeValue}`)
+      if (attr.name !== 'id') {
+        $button.setAttribute(attr.name, attr.value)
       }
     }
 
@@ -326,7 +326,7 @@ export class Accordion extends GOVUKFrontendComponent {
 
       // Get original attributes, and pass them to the replacement
       for (const attr of Array.from($summary.attributes)) {
-        $summarySpan.setAttribute(attr.nodeName, `${attr.nodeValue}`)
+        $summarySpan.setAttribute(attr.name, attr.value)
       }
 
       // Copy original contents of summary to the new summary span
