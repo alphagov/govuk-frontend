@@ -25,7 +25,7 @@ export class Accordion extends ConfigurableComponent {
   sectionClass = 'govuk-accordion__section'
 
   /** @private */
-  sectionExpandedClass = 'govuk-accordion__section--expanded'
+  sectionExpandedModifier = 'govuk-accordion__section--expanded'
 
   /** @private */
   sectionButtonClass = 'govuk-accordion__section-button'
@@ -40,13 +40,13 @@ export class Accordion extends ConfigurableComponent {
   sectionHeadingTextClass = 'govuk-accordion__section-heading-text'
 
   /** @private */
-  sectionShowHideTextClass = 'govuk-accordion__section-toggle-text'
+  sectionToggleTextClass = 'govuk-accordion__section-toggle-text'
 
   /** @private */
-  upChevronIconClass = 'govuk-accordion-nav__chevron'
+  iconClass = 'govuk-accordion-nav__chevron'
 
   /** @private */
-  downChevronIconClass = 'govuk-accordion-nav__chevron--down'
+  iconOpenModifier = 'govuk-accordion-nav__chevron--down'
 
   /** @private */
   sectionSummaryClass = 'govuk-accordion__section-summary'
@@ -114,7 +114,7 @@ export class Accordion extends ConfigurableComponent {
 
     // Create icon, add to element
     this.$showAllIcon = document.createElement('span')
-    this.$showAllIcon.classList.add(this.upChevronIconClass)
+    this.$showAllIcon.classList.add(this.iconClass)
     this.$showAllButton.appendChild(this.$showAllIcon)
 
     // Create control wrapper and add controls to it
@@ -246,9 +246,9 @@ export class Accordion extends ConfigurableComponent {
     // Create wrapper for the show / hide text. Append text after the show/hide icon
     const $showHideText = document.createElement('span')
     const $showHideIcon = document.createElement('span')
-    $showHideIcon.classList.add(this.upChevronIconClass)
+    $showHideIcon.classList.add(this.iconClass)
     $showHideToggleFocus.appendChild($showHideIcon)
-    $showHideText.classList.add(this.sectionShowHideTextClass)
+    $showHideText.classList.add(this.sectionToggleTextClass)
     $showHideToggleFocus.appendChild($showHideText)
 
     // Append elements to the button:
@@ -354,9 +354,9 @@ export class Accordion extends ConfigurableComponent {
    * @param {Element} $section - Section element
    */
   setExpanded(expanded, $section) {
-    const $showHideIcon = $section.querySelector(`.${this.upChevronIconClass}`)
+    const $showHideIcon = $section.querySelector(`.${this.iconClass}`)
     const $showHideText = $section.querySelector(
-      `.${this.sectionShowHideTextClass}`
+      `.${this.sectionToggleTextClass}`
     )
     const $button = $section.querySelector(`.${this.sectionButtonClass}`)
     const $content = $section.querySelector(`.${this.sectionContentClass}`)
@@ -410,12 +410,12 @@ export class Accordion extends ConfigurableComponent {
     // Swap icon, change class
     if (expanded) {
       $content.removeAttribute('hidden')
-      $section.classList.add(this.sectionExpandedClass)
-      $showHideIcon.classList.remove(this.downChevronIconClass)
+      $section.classList.add(this.sectionExpandedModifier)
+      $showHideIcon.classList.remove(this.iconOpenModifier)
     } else {
       $content.setAttribute('hidden', 'until-found')
-      $section.classList.remove(this.sectionExpandedClass)
-      $showHideIcon.classList.add(this.downChevronIconClass)
+      $section.classList.remove(this.sectionExpandedModifier)
+      $showHideIcon.classList.add(this.iconOpenModifier)
     }
 
     // See if "Show all sections" button text should be updated
@@ -430,7 +430,7 @@ export class Accordion extends ConfigurableComponent {
    * @returns {boolean} True if expanded
    */
   isExpanded($section) {
-    return $section.classList.contains(this.sectionExpandedClass)
+    return $section.classList.contains(this.sectionExpandedModifier)
   }
 
   /**
@@ -460,7 +460,7 @@ export class Accordion extends ConfigurableComponent {
     this.$showAllText.textContent = expanded
       ? this.i18n.t('hideAllSections')
       : this.i18n.t('showAllSections')
-    this.$showAllIcon.classList.toggle(this.downChevronIconClass, !expanded)
+    this.$showAllIcon.classList.toggle(this.iconOpenModifier, !expanded)
   }
 
   /**
