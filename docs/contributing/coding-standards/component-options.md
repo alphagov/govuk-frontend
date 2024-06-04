@@ -70,7 +70,7 @@ It's now possible to individually initialise the component with configuration op
 
 Often, teams will not be individually initialising components. Instead, GOV.UK Frontend ships with an `initAll` function, which searches the page for instances of components and automatically initialises them.
 
-In `src/govuk/all.mjs`, update the component's `new` class to pass through a nested configuration object. The nested object should use the component's name converted to camelCase (for example, the 'Character Count' component becomes `characterCount`).
+In `packages/govuk-frontend/src/govuk/init.mjs`, update the component's `new` class to pass through a nested configuration object. The nested object should use the component's name converted to camelCase (for example, the 'Character Count' component becomes `characterCount`).
 
 ```js
 new Accordion($accordion, config.accordion)
