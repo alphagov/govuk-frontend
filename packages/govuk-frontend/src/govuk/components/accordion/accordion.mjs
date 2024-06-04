@@ -151,9 +151,7 @@ export class Accordion extends GOVUKFrontendComponent {
     this.initControls()
     this.initSectionHeaders()
 
-    // See if "Show all sections" button text should be updated
-    const areAllSectionsOpen = this.checkIfAllSectionsOpen()
-    this.updateShowAllButton(areAllSectionsOpen)
+    this.updateShowAllButton(this.checkIfAllSectionsOpen())
   }
 
   /**
@@ -473,8 +471,7 @@ export class Accordion extends GOVUKFrontendComponent {
     }
 
     // See if "Show all sections" button text should be updated
-    const areAllSectionsOpen = this.checkIfAllSectionsOpen()
-    this.updateShowAllButton(areAllSectionsOpen)
+    this.updateShowAllButton(this.checkIfAllSectionsOpen())
   }
 
   /**
