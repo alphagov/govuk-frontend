@@ -4,8 +4,8 @@ import { readFileSync } from 'fs'
 import { Octokit, RequestError } from 'octokit'
 import { satisfies } from 'semver'
 
-const notAServiceWords = ['prototype', 'beta', 'alpha']
-const initialDepsFilter = []
+// const notAServiceWords = ['prototype', 'beta', 'alpha']
+// const initialDepsFilter = []
 const pageLimit = 10
 let repoOwner
 let repoName
@@ -18,33 +18,35 @@ const octokit = new Octokit({
 getDeps()
 
 async function getDeps() {
-  // This is a really gross way to get the json files but we're running into
-  // a problem when we try to import json. Eslint and node are intersecting
-  // in a way that makes it a bother to import json normally.
-  //
-  // See https://github.com/eslint/eslint/discussions/15305
-  // Solution taken from https://github.com/eslint/eslint/discussions/15305#discussioncomment-2400923
-  const ownerList = await JSON.parse(readFileSync('./actual-owners.json'))
-  const dependents = await JSON.parse(readFileSync('./dependents.json'))
+  // // This is a really gross way to get the json files but we're running into
+  // // a problem when we try to import json. Eslint and node are intersecting
+  // // in a way that makes it a bother to import json normally.
+  // //
+  // // See https://github.com/eslint/eslint/discussions/15305
+  // // Solution taken from https://github.com/eslint/eslint/discussions/15305#discussioncomment-2400923
+  // const ownerList = await JSON.parse(readFileSync('./actual-owners.json'))
+  // const dependents = await JSON.parse(readFileSync('./dependents.json'))
 
-  for (const repo of dependents.all_public_dependent_repos) {
-    if (
-      !notAServiceWords.some(
-        (word) =>
-          repo.repo_name.includes(word) &&
-          repo.repo_name !== 'govuk-prototype-kit'
-      ) &&
-      ownerList.includes(repo.owner) &&
-      repo.name !== 'alphagov/govuk-frontend'
-    ) {
-      initialDepsFilter.push(repo)
-    }
-  }
+  // for (const repo of dependents.all_public_dependent_repos) {
+  //   if (
+  //     !notAServiceWords.some(
+  //       (word) =>
+  //         repo.repo_name.includes(word) &&
+  //         repo.repo_name !== 'govuk-prototype-kit'
+  //     ) &&
+  //     ownerList.includes(repo.owner) &&
+  //     repo.name !== 'alphagov/govuk-frontend'
+  //   ) {
+  //     initialDepsFilter.push(repo)
+  //   }
+  // }
 
-  const filterTest = initialDepsFilter.slice(0, 10)
+  const deps = await JSON.parse(
+    readFileSync('dependents-filtered-by-name-and-owner.json')
+  )
   const filteredDeps = []
 
-  for (const dependent of filterTest) {
+  for (const dependent of deps) {
     let bisectResults = false
     let page = 1
     let lastCommitOfPreviousRange
