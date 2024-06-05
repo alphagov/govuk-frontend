@@ -45,6 +45,7 @@ async function getDeps() {
     readFileSync('dependents-filtered-by-name-and-owner.json')
   ).slice(0, 10)
   const filteredDeps = []
+  let csvDeps
 
   for (const dependent of deps) {
     let bisectResults = false
@@ -138,6 +139,11 @@ async function getDeps() {
         `${rateLimitData.data.rate.remaining} remaining on rate limit`
       )
 
+      csvDeps = await json2csv(filteredDeps)
+      await writeFileSync('dependents-clean.csv', csvDeps)
+
+      console.log('CSV file updated')
+
       if (rateLimitData.data.rate.remaining <= 10) {
         console.log(`We're about to hit the rate limit! Stopping the script.`)
       }
@@ -169,8 +175,7 @@ async function getDeps() {
     }
   }
 
-  const csvDeps = await json2csv(filteredDeps)
-  await writeFileSync('dependents-clean.csv', csvDeps)
+  console.log('All done!')
 }
 
 async function bisectDiffRange(
