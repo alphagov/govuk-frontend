@@ -36,6 +36,6 @@
 <ul class="govuk-task-list {%- if params.classes %} {{ params.classes }}{% endif %}"
   {{- govukAttributes(params.attributes) }}>
   {% for item in params.items %}
-    {{- _taskListItem(params, item, loop.index) }}
+    {{- _taskListItem(params, item, loop.index) if item }}
   {% endfor %}
 </ul>
