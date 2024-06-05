@@ -124,5 +124,8 @@
     "sassdoc-extras@^2": {
       "marked": "^0.8.2"
     }
+  },
+  "dependencies": {
+    "json-2-csv": "^5.5.1"
   }
 }

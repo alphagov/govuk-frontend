@@ -1,9 +1,9 @@
-import { readFileSync } from 'fs'
+import { readFileSync, writeFileSync } from 'fs'
 
+import { json2csv } from 'json-2-csv'
 // eslint-disable-next-line import/no-unresolved
 import { Octokit, RequestError } from 'octokit'
 import { satisfies } from 'semver'
-
 // const notAServiceWords = ['prototype', 'beta', 'alpha']
 // const initialDepsFilter = []
 const pageLimit = 10
@@ -43,7 +43,7 @@ async function getDeps() {
 
   const deps = await JSON.parse(
     readFileSync('dependents-filtered-by-name-and-owner.json')
-  )
+  ).slice(0, 10)
   const filteredDeps = []
 
   for (const dependent of deps) {
@@ -120,8 +120,9 @@ async function getDeps() {
 
       filteredDeps.push({
         name: dependent.name,
+        url: `https://github.com/${dependent.name}`,
         currentVersion,
-        crownUpdateVersion: bisectResults?.commit?.author?.date
+        crownUpdateDate: bisectResults?.commit?.author?.date
       })
 
       currentVersion = false
@@ -156,8 +157,9 @@ async function getDeps() {
         console.log(`${repoOwner}/${repoName} isn't using the new crown.`)
         filteredDeps.push({
           name: dependent.name,
+          url: `https://github.com/${dependent.name}`,
           currentVersion,
-          crownUpdateVersion: false
+          crownUpdateDate: 'N/A'
         })
 
         currentVersion = false
@@ -167,7 +169,8 @@ async function getDeps() {
     }
   }
 
-  console.log(filteredDeps)
+  const csvDeps = await json2csv(filteredDeps)
+  await writeFileSync('dependents-clean.csv', csvDeps)
 }
 
 async function bisectDiffRange(
