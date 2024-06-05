@@ -2,6 +2,25 @@
 
 {%- set menuButtonText = params.menuButtonText if params.menuButtonText else 'Menu' -%}
 
+{% if (params.oneLogin) %}
+{%- set oneLoginLink = params.oneLogin.accountLink | default("https://home.account.gov.uk/", true) -%}
+{%- set signOutLink = params.oneLogin.signOutLink | default("https://home.account.gov.uk/sign-out", true) -%}
+{%- set oneLoginMenuButtonText = params.oneLogin.menuButtonText | default("GOV.UK One Login menu", true) -%}
+{%- set oneLoginName = params.oneLogin.nameText | default("GOV.UK One Login") -%}
+{%- set oneLoginShortName = params.oneLogin.shortNameText | default("One Login") -%}
+
+{%- macro _userIcon() -%}
+  <span class="govuk-header__one-login-icon">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+      <circle cx="11" cy="11" r="11" fill="#fff"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M3.29297 18.8487C4.23255 15.4753 7.32741 13 11.0004 13C14.6731 13 17.7678 15.4749 18.7076 18.848C17.8058 19.7338 16.752 20.4654 15.5889 21H11.0004H6.41097C5.24819 20.4655 4.19463 19.7342 3.29297 18.8487Z" fill="#1D70B8"/>
+      <circle cx="11" cy="7.75" r="3.75" fill="#1D70B8"/>
+      <circle cx="11" cy="11" r="10" stroke="#fff" stroke-width="2"/>
+    </svg>
+  </span>
+{%- endmacro -%}
+{% endif %}
+
 {%- set _stEdwardsCrown %}
 <svg
   focusable="false"
@@ -57,6 +76,37 @@
         {% endif %}
       </a>
     </div>
+
+    {% if (params.oneLogin) %}
+      {# One Login mobile menu toggle #}
+      <button type="button"
+        class="govuk-header__one-login-toggle govuk-js-one-login-toggle"
+        aria-controls="govuk-header__one-login-menu"
+        aria-label="{{ oneLoginMenuButtonText }}"
+        aria-expanded="false"
+        hidden>
+        <span class="">{{ oneLoginShortName }}</span>
+          {{ _userIcon() }}
+      </button>
+
+      {# One Login menu #}
+      <nav aria-label="{{ oneLoginMenuButtonText }}" class="govuk-header__navigation govuk-header__navigation--end" id="govuk-header__one-login-menu">
+        <ul class="govuk-header__navigation-list">
+          <li class="govuk-header__navigation-item">
+            <a class="govuk-header__link govuk-header__link--one-login" href="{{ oneLoginLink }}">
+              <span class="">{{ oneLoginName }}</span>
+              {{ _userIcon() }}
+            </a>
+          </li>
+          <li class="govuk-header__navigation-item">
+            <a class="govuk-header__link" href="{{ signOutLink }}">
+              Sign out
+            </a>
+          </li>
+        </ul>
+      </nav>
+    {% endif %}
+
   {% if params.serviceName or params.navigation | length %}
     <div class="govuk-header__content">
     {% if params.serviceName %}

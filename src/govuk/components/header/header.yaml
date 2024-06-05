@@ -126,6 +126,11 @@ examples:
     options:
       serviceName: Service Name
 
+  - name: with GOV.UK One Login
+    description: The standard header and GOV.UK One Login functionality
+    options:
+      oneLogin: true
+
   - name: with navigation
     options:
       navigation:
