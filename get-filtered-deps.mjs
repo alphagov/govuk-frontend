@@ -43,7 +43,7 @@ async function getDeps() {
 
   const deps = await JSON.parse(
     readFileSync('dependents-filtered-by-name-and-owner.json')
-  ).slice(0, 10)
+  )
   const filteredDeps = []
   let csvDeps
 
