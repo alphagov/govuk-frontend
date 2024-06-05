@@ -127,6 +127,19 @@ async function getDeps() {
       currentVersion = false
 
       console.log(`Analysis finished of ${dependent.name}`)
+
+      const index = deps.findIndex((item) => item === dependent)
+
+      console.log(`This was item number ${index + 1} of ${deps.length}`)
+
+      const rateLimitData = await octokit.rest.rateLimit.get()
+      console.log(
+        `${rateLimitData.data.rate.remaining} remaining on rate limit`
+      )
+
+      if (rateLimitData.data.rate.remaining <= 10) {
+        console.log(`We're about to hit the rate limit! Stopping the script.`)
+      }
     } catch (e) {
       if (
         e instanceof RequestError &&
