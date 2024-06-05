@@ -281,4 +281,10 @@ describe('Task List', () => {
       expect($link).toHaveAttribute('aria-describedby')
     })
   })
+
+  it('omits empty items from the task list', () => {
+    document.body.innerHTML = render('task-list', examples['with empty values'])
+
+    expect(document.querySelectorAll('.govuk-task-list__item')).toHaveLength(2)
+  })
 })
