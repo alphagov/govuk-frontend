@@ -15,7 +15,16 @@ export class Header extends GOVUKFrontendComponent {
   $menuButton
 
   /** @private */
+  $oneLoginMenuButton
+
+  /** @private */
   $menu
+
+  /** @private */
+  $oneLoginMenu
+
+  /** @private */
+  $serviceNavigationDropdowns
 
   /**
    * Save the opened/closed state for the nav in memory so that we can
@@ -25,6 +34,7 @@ export class Header extends GOVUKFrontendComponent {
    * @private
    */
   menuIsOpen = false
+  oneLoginMenuIsOpen = false
 
   /**
    * A global const for storing a matchMedia instance which we'll use to detect
@@ -54,41 +64,98 @@ export class Header extends GOVUKFrontendComponent {
     }
 
     this.$module = $module
-    const $menuButton = $module.querySelector('.govuk-js-header-toggle')
+
+    const $menuButton = $module.querySelector('.govuk-js-service-menu-toggle')
+    const $oneLoginMenuButton = $module.querySelector(
+      '.govuk-js-one-login-toggle'
+    )
+    const $serviceNavigationDropdowns = $module.querySelectorAll(
+      '.govuk-service-header__navigation-item--has-children'
+    )
 
     // Headers don't necessarily have a navigation. When they don't, the menu
     // toggle won't be rendered by our macro (or may be omitted when writing
     // plain HTML)
-    if (!$menuButton) {
+    if (!$menuButton && !$oneLoginMenuButton) {
       return this
     }
 
-    const menuId = $menuButton.getAttribute('aria-controls')
-    if (!menuId) {
-      throw new ElementError({
-        componentName: 'Header',
-        identifier:
-          'Navigation button (`<button class="govuk-js-header-toggle">`) attribute (`aria-controls`)'
-      })
+    if ($menuButton) {
+      const menuId = $menuButton.getAttribute('aria-controls')
+      if (!menuId) {
+        throw new ElementError({
+          componentName: 'Header',
+          identifier:
+            'Menu button (`<button class="govuk-js-service-menu-toggle">`) attribute (`aria-controls`)'
+        })
+      }
+
+      const $menu = document.getElementById(menuId)
+      if (!$menu) {
+        throw new ElementError({
+          componentName: 'Header',
+          element: $menu,
+          identifier: `Navigation (\`<ul id="${menuId}">\`)`
+        })
+      }
+
+      this.$menu = $menu
+      this.$menuButton = $menuButton
+
+      this.$menuButton.addEventListener('click', () =>
+        this.handleMenuButtonClick()
+      )
     }
 
-    const $menu = document.getElementById(menuId)
-    if (!$menu) {
-      throw new ElementError({
-        componentName: 'Header',
-        element: $menu,
-        identifier: `Navigation (\`<ul id="${menuId}">\`)`
-      })
+    if ($oneLoginMenuButton) {
+      const menuId = $oneLoginMenuButton.getAttribute('aria-controls')
+      if (!menuId) {
+        throw new ElementError({
+          componentName: 'Header',
+          identifier:
+            'One Login menu button (`<button class="govuk-js-one-login-toggle">`) attribute (`aria-controls`)'
+        })
+      }
+
+      const $oneLoginMenu = document.getElementById(menuId)
+      if (!$oneLoginMenu) {
+        throw new ElementError({
+          componentName: 'Header',
+          element: $oneLoginMenu,
+          identifier: `Navigation (\`<ul id="${menuId}">\`)`
+        })
+      }
+
+      this.$oneLoginMenu = $oneLoginMenu
+      this.$oneLoginMenuButton = $oneLoginMenuButton
+
+      this.$oneLoginMenuButton.addEventListener('click', () =>
+        this.handleOneLoginMenuButtonClick()
+      )
     }
 
-    this.$menu = $menu
-    this.$menuButton = $menuButton
+    // Hacky spikey spike code
+    if ($serviceNavigationDropdowns.length) {
+      $serviceNavigationDropdowns.forEach(($container) => {
+        const $toolboxToggle = $container.querySelector(
+          '.govuk-service-header__link'
+        )
+        const $toolboxList = $container.querySelector(
+          '.govuk-service-header__navigation-list'
+        )
+
+        $toolboxToggle?.setAttribute('aria-expanded', 'false')
+
+        $toolboxToggle?.addEventListener('click', (event) => {
+          event.preventDefault()
+          this.handleToolboxClick($toolboxToggle, $toolboxList)
+        })
+      })
+
+      this.$serviceNavigationDropdowns = $serviceNavigationDropdowns
+    }
 
     this.setupResponsiveChecks()
-
-    this.$menuButton.addEventListener('click', () =>
-      this.handleMenuButtonClick()
-    )
   }
 
   /**
@@ -97,7 +164,7 @@ export class Header extends GOVUKFrontendComponent {
    * @private
    */
   setupResponsiveChecks() {
-    const breakpoint = getBreakpoint('desktop')
+    const breakpoint = getBreakpoint('tablet')
 
     if (!breakpoint.value) {
       throw new ElementError({
@@ -112,24 +179,24 @@ export class Header extends GOVUKFrontendComponent {
     // MediaQueryList.addEventListener isn't supported by Safari < 14 so we need
     // to be able to fall back to the deprecated MediaQueryList.addListener
     if ('addEventListener' in this.mql) {
-      this.mql.addEventListener('change', () => this.checkMode())
+      this.mql.addEventListener('change', () => {
+        this.checkMode()
+        this.checkOneLoginMode()
+      })
     } else {
       // @ts-expect-error Property 'addListener' does not exist
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-      this.mql.addListener(() => this.checkMode())
+      this.mql.addListener(() => {
+        this.checkMode()
+        this.checkOneLoginMode()
+      })
     }
 
     this.checkMode()
+    this.checkOneLoginMode()
   }
 
   /**
-   * Sync menu state
-   *
-   * Uses the global variable menuIsOpen to correctly set the accessible and
-   * visual states of the menu and the menu button.
-   * Additionally will force the menu to be visible and the menu button to be
-   * hidden if the matchMedia is triggered to desktop.
-   *
    * @private
    */
   checkMode() {
@@ -153,6 +220,47 @@ export class Header extends GOVUKFrontendComponent {
   }
 
   /**
+   * Sync menu state
+   *
+   * Uses the global variable menuIsOpen to correctly set the accessible and
+   * visual states of the menu and the menu button.
+   * Additionally will force the menu to be visible and the menu button to be
+   * hidden if the matchMedia is triggered to desktop.
+   *
+   * @private
+   */
+  checkOneLoginMode() {
+    if (!this.mql || !this.$oneLoginMenu || !this.$oneLoginMenuButton) {
+      return
+    }
+
+    if (this.mql.matches) {
+      this.$oneLoginMenu.removeAttribute('hidden')
+      this.$oneLoginMenuButton.setAttribute('hidden', '')
+    } else {
+      this.$oneLoginMenuButton.removeAttribute('hidden')
+      this.$oneLoginMenuButton.setAttribute(
+        'aria-expanded',
+        this.oneLoginMenuIsOpen.toString()
+      )
+
+      if (this.oneLoginMenuIsOpen) {
+        this.$oneLoginMenu.removeAttribute('hidden')
+      } else {
+        this.$oneLoginMenu.setAttribute('hidden', '')
+      }
+    }
+  }
+
+  /**
+   * @private
+   */
+  handleMenuButtonClick() {
+    this.menuIsOpen = !this.menuIsOpen
+    this.checkMode()
+  }
+
+  /**
    * Handle menu button click
    *
    * When the menu button is clicked, change the visibility of the menu and then
@@ -160,9 +268,63 @@ export class Header extends GOVUKFrontendComponent {
    *
    * @private
    */
-  handleMenuButtonClick() {
-    this.menuIsOpen = !this.menuIsOpen
-    this.checkMode()
+  handleOneLoginMenuButtonClick() {
+    this.oneLoginMenuIsOpen = !this.oneLoginMenuIsOpen
+    this.checkOneLoginMode()
+  }
+
+  /**
+   * @param {Element} $header - the clicked toolbox heading
+   * @param {Element | null} $content - the toolbox contents
+   * @private
+   */
+  handleToolboxClick($header, $content) {
+    const isExpanded = $header.getAttribute('aria-expanded') === 'true'
+    this.closeAllToolboxes()
+
+    if (!isExpanded) {
+      this.openToolbox($header, $content)
+    }
+  }
+
+  /**
+   * @param {Element | null} $header - the clicked toolbox heading
+   * @param {Element | null} $content - the toolbox contents
+   * @private
+   */
+  openToolbox($header, $content) {
+    $header?.setAttribute('aria-expanded', 'true')
+    $content?.removeAttribute('hidden')
+  }
+
+  /**
+   * @param {Element | null} $header - the clicked toolbox heading
+   * @param {Element | null} $content - the toolbox contents
+   * @private
+   */
+  closeToolbox($header, $content) {
+    $header?.setAttribute('aria-expanded', 'false')
+    $content?.setAttribute('hidden', '')
+  }
+
+  /**
+   * @private
+   */
+  closeAllToolboxes() {
+    if (!this.$serviceNavigationDropdowns) {
+      return
+    }
+
+    this.$serviceNavigationDropdowns.forEach(($container) => {
+      const $toolboxToggle = $container.querySelector(
+        '.govuk-service-header__link'
+      )
+      const $toolboxList = $container.querySelector(
+        '.govuk-service-header__navigation-list'
+      )
+
+      this.closeToolbox($toolboxToggle, $toolboxList)
+    })
   }
 
   /**
