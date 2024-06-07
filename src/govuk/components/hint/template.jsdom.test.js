@@ -1,7 +1,4 @@
-const { render } = require('@govuk-frontend/helpers/nunjucks')
-const { getExamples } = require('@govuk-frontend/lib/components')
-const { indent } = require('nunjucks/src/filters')
-const { outdent } = require('outdent')
+const { getExamples, render } = require('@govuk-frontend/lib/components')
 
 describe('Hint', () => {
   let examples
@@ -10,59 +7,58 @@ describe('Hint', () => {
     examples = await getExamples('hint')
   })
 
-  describe('by default', () => {
-    it('renders with text', () => {
-      const $ = render('hint', examples.default)
+  it('contains the hint text', () => {
+    document.body.innerHTML = render('hint', examples.default)
 
-      const content = $('.govuk-hint').text()
-      expect(content).toBe(
-        "\n  It's on your National Insurance card, benefit letter, payslip or P60.\nFor example, 'QQ 12 34 56 C'.\n\n"
-      )
-    })
+    const $component = document.querySelector('.govuk-hint')
+    expect($component).toHaveTextContent(
+      "It's on your National Insurance card, benefit letter, payslip or P60. For example, 'QQ 12 34 56 C'."
+    )
+  })
 
-    it('renders with classes', () => {
-      const $ = render('hint', examples.classes)
+  it('includes additional classes from the `classes` option', () => {
+    document.body.innerHTML = render('hint', examples.classes)
 
-      const $component = $('.govuk-hint')
-      expect($component.hasClass('app-hint--custom-modifier')).toBeTruthy()
-    })
+    const $component = document.querySelector('.govuk-hint')
+    expect($component).toHaveClass('app-hint--custom-modifier')
+  })
 
-    it('renders with id', () => {
-      const $ = render('hint', examples.id)
+  it('does not include an `id` attribute if the `id` option is not set', () => {
+    document.body.innerHTML = render('hint', examples.default)
 
-      const $component = $('.govuk-hint')
-      expect($component.attr('id')).toBe('my-hint')
-    })
+    const $component = document.querySelector('.govuk-hint')
+    expect($component).not.toHaveAttribute('id')
+  })
 
-    it('allows text to be passed whilst escaping HTML entities', () => {
-      const $ = render('hint', examples['html as text'])
+  it('sets the `id` attribute based on the `id` option', () => {
+    document.body.innerHTML = render('hint', examples.id)
 
-      const content = $('.govuk-hint').html().trim()
-      expect(content).toBe(
-        'Unexpected &lt;strong&gt;bold text&lt;/strong&gt; in body'
-      )
-    })
+    const $component = document.querySelector('.govuk-hint')
+    expect($component).toHaveAttribute('id', 'my-hint')
+  })
 
-    it('allows HTML to be passed un-escaped', () => {
-      const $ = render('hint', examples['with html'])
+  it('escapes HTML when using the `text` option', () => {
+    document.body.innerHTML = render('hint', examples['html as text'])
 
-      const content = $('.govuk-hint').html().trim()
-      expect(content).toEqual(
-        indent(
-          outdent`
-            It's on your National Insurance card, benefit letter, payslip or <a class="govuk-link" href="#">P60</a>.
-            For example, 'QQ 12 34 56 C'.
-          `,
-          2
-        )
-      )
-    })
+    const $component = document.querySelector('.govuk-hint')
+    expect($component).toHaveTextContent(
+      'Unexpected <strong>bold text</strong> in body'
+    )
+  })
 
-    it('renders with attributes', () => {
-      const $ = render('hint', examples.attributes)
+  it('does not escape HTML when using the `html` option', () => {
+    document.body.innerHTML = render('hint', examples['with html'])
 
-      const $component = $('.govuk-hint')
-      expect($component.attr('data-attribute')).toBe('my data value')
-    })
+    const $component = document.querySelector('.govuk-hint')
+    expect($component).toContainHTML(
+      'It\'s on your National Insurance card, benefit letter, payslip or <a class="govuk-link" href="#">P60</a>.\n  For example, \'QQ 12 34 56 C\'.'
+    )
+  })
+
+  it('sets any additional attributes based on the `attributes` option', () => {
+    document.body.innerHTML = render('hint', examples.attributes)
+
+    const $component = document.querySelector('.govuk-hint')
+    expect($component).toHaveAttribute('data-attribute', 'my data value')
   })
 })
