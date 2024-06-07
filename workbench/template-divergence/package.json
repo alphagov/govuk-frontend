@@ -3,8 +3,10 @@
   "private": true,
   "scripts": {
     "start": "./diff-templates.sh",
-    "dev": "nodemon -e sh -x './diff-templates.sh'"
+    "dev": "nodemon -e sh -x './diff-templates.sh'",
+    "get-diffs": "node -e \"import {getTemplateDiffs} from './index.mjs'; const files = await getTemplateDiffs(); console.log(files)\" --experimental-default-type=module"
   },
+  "main": "index.mjs",
   "dependencies": {
     "govuk-frontend": "^4.8.0"
   },

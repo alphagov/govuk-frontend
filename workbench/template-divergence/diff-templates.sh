@@ -4,8 +4,8 @@ set -ex
 mkdir -p dist
 
 for f in ./node_modules/govuk-frontend/govuk/components/*; do
-
-  if [[ -d "${f}" ]]; then
+  echo $f
+  if [ -d "${f}" ]; then
 
     COMPONENT_NAME=`basename ${f}`
 

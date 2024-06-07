@@ -314,6 +314,17 @@ jobs:
     # (after only install has been cached)
     uses: ./.github/workflows/diff-change-to-package.yaml
 
+  generate-template-diff:
+    name: Diff changes to templates in 4.8.0
+    needs: [install]
+
+    permissions:
+      pull-requests: write
+
+    # Run existing "Diff changes to npm package" workflow
+    # (after only install has been cached)
+    uses: ./.github/workflows/diff-change-to-templates.yaml
+
   generate-stats:
     name: Stats comment
     needs: [install]
