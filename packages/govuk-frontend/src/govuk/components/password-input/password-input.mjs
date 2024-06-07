@@ -1,4 +1,5 @@
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
+import { createElement } from '../../common/create-element.mjs'
 import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { ElementError } from '../../errors/index.mjs'
@@ -35,7 +36,10 @@ export class PasswordInput extends GOVUKFrontendComponent {
    */
   $showHideButton
 
-  /** @private */
+  /**
+   * @private
+   * @type {HTMLDivElement}
+   */
   $screenReaderStatusMessage
 
   /**
@@ -109,10 +113,10 @@ export class PasswordInput extends GOVUKFrontendComponent {
     // This is injected between the input and button so that users get a sensible reading order if
     // moving through the page content linearly:
     // [password input] -> [your password is visible/hidden] -> [show/hide password]
-    const $screenReaderStatusMessage = document.createElement('div')
-    $screenReaderStatusMessage.className =
-      'govuk-password-input__sr-status govuk-visually-hidden'
-    $screenReaderStatusMessage.setAttribute('aria-live', 'polite')
+    const $screenReaderStatusMessage = createElement('div', {
+      class: 'govuk-password-input__sr-status govuk-visually-hidden',
+      'aria-live': 'polite'
+    })
     this.$screenReaderStatusMessage = $screenReaderStatusMessage
     this.$input.insertAdjacentElement('afterend', $screenReaderStatusMessage)
 

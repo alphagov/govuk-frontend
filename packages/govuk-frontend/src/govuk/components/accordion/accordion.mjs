@@ -1,3 +1,4 @@
+import { createElement } from '../../common/create-element.mjs'
 import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { ElementError } from '../../errors/index.mjs'
@@ -133,25 +134,29 @@ export class Accordion extends GOVUKFrontendComponent {
    */
   initControls() {
     // Create "Show all" button and set attributes
-    this.$showAllButton = document.createElement('button')
-    this.$showAllButton.setAttribute('type', 'button')
-    this.$showAllButton.setAttribute('class', 'govuk-accordion__show-all')
-    this.$showAllButton.setAttribute('aria-expanded', 'false')
+    this.$showAllButton = createElement('button', {
+      type: 'button',
+      class: 'govuk-accordion__show-all',
+      'aria-expanded': 'false'
+    })
 
     // Create icon, add to element
-    this.$showAllIcon = document.createElement('span')
-    this.$showAllIcon.classList.add(this.iconClass)
+    this.$showAllIcon = createElement('span', {
+      class: this.iconClass
+    })
     this.$showAllButton.appendChild(this.$showAllIcon)
 
     // Create control wrapper and add controls to it
-    const $accordionControls = document.createElement('div')
-    $accordionControls.setAttribute('class', 'govuk-accordion__controls')
+    const $accordionControls = createElement('div', {
+      class: 'govuk-accordion__controls'
+    })
     $accordionControls.appendChild(this.$showAllButton)
-    this.$module.insertBefore($accordionControls, this.$module.firstChild)
+    this.$module.insertAdjacentElement('afterbegin', $accordionControls)
 
     // Build additional wrapper for Show all toggle text and place after icon
-    this.$showAllText = document.createElement('span')
-    this.$showAllText.classList.add('govuk-accordion__show-all-text')
+    this.$showAllText = createElement('span', {
+      class: 'govuk-accordion__show-all-text'
+    })
     this.$showAllButton.appendChild(this.$showAllText)
 
     // Handle click events on the show/hide all button
@@ -223,12 +228,10 @@ export class Accordion extends GOVUKFrontendComponent {
 
     // Create a button element that will replace the
     // '.govuk-accordion__section-button' span
-    const $button = document.createElement('button')
-    $button.setAttribute('type', 'button')
-    $button.setAttribute(
-      'aria-controls',
-      `${this.$module.id}-content-${index + 1}`
-    )
+    const $button = createElement('button', {
+      type: 'button',
+      'aria-controls': `${this.$module.id}-content-${index + 1}`
+    })
 
     // Copy all attributes from $span to $button (except `id`, which gets added
     // to the `$headingText` element)
@@ -239,18 +242,16 @@ export class Accordion extends GOVUKFrontendComponent {
     }
 
     // Create container for heading text so it can be styled
-    const $headingText = document.createElement('span')
-    $headingText.classList.add(this.sectionHeadingTextClass)
-    // Copy the span ID to the heading text to allow it to be referenced by
-    // `aria-labelledby` on the hidden content area without "Show this section"
-    $headingText.id = $span.id
+    const $headingText = createElement('span', {
+      class: this.sectionHeadingTextClass,
+      id: $span.id
+    })
 
     // Create an inner heading text container to limit the width of the focus
     // state
-    const $headingTextFocus = document.createElement('span')
-    $headingTextFocus.classList.add(
-      'govuk-accordion__section-heading-text-focus'
-    )
+    const $headingTextFocus = createElement('span', {
+      class: 'govuk-accordion__section-heading-text-focus'
+    })
     $headingText.appendChild($headingTextFocus)
     // span could contain HTML elements
     // (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
@@ -259,23 +260,32 @@ export class Accordion extends GOVUKFrontendComponent {
     )
 
     // Create container for show / hide icons and text.
-    const $showHideToggle = document.createElement('span')
-    $showHideToggle.classList.add('govuk-accordion__section-toggle')
-    // Tell Google not to index the 'show' text as part of the heading. Must be
-    // set on the element before it's added to the DOM.
-    // See https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#data-nosnippet-attr
-    $showHideToggle.setAttribute('data-nosnippet', '')
+    const $showHideToggle = createElement('span', {
+      class: 'govuk-accordion__section-toggle',
+      // Tell Google not to index the 'show' text as part of the heading. Must be
+      // set on the element before it's added to the DOM.
+      // See https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#data-nosnippet-attr
+      'data-nosnippet': ''
+    })
+
     // Create an inner container to limit the width of the focus state
-    const $showHideToggleFocus = document.createElement('span')
-    $showHideToggleFocus.classList.add('govuk-accordion__section-toggle-focus')
+    const $showHideToggleFocus = createElement('span', {
+      class: 'govuk-accordion__section-toggle-focus'
+    })
+
     $showHideToggle.appendChild($showHideToggleFocus)
     // Create wrapper for the show / hide text. Append text after the show/hide icon
-    const $showHideText = document.createElement('span')
-    const $showHideIcon = document.createElement('span')
-    $showHideIcon.classList.add(this.iconClass)
-    $showHideToggleFocus.appendChild($showHideIcon)
-    $showHideText.classList.add(this.sectionToggleTextClass)
-    $showHideToggleFocus.appendChild($showHideText)
+
+    $showHideToggleFocus.appendChild(
+      createElement('span', {
+        class: this.iconClass
+      })
+    )
+    $showHideToggleFocus.appendChild(
+      createElement('span', {
+        class: this.sectionToggleTextClass
+      })
+    )
 
     // Append elements to the button:
     // 1. Heading text
@@ -291,11 +301,12 @@ export class Accordion extends GOVUKFrontendComponent {
       // original `div` to the new `span`. This is because the summary line text
       // is now inside a button element, which can only contain phrasing
       // content.
-      const $summarySpan = document.createElement('span')
+      const $summarySpan = createElement('span')
       // Create an inner summary container to limit the width of the summary
       // focus state
-      const $summarySpanFocus = document.createElement('span')
-      $summarySpanFocus.classList.add('govuk-accordion__section-summary-focus')
+      const $summarySpanFocus = createElement('span', {
+        class: 'govuk-accordion__section-summary-focus'
+      })
       $summarySpan.appendChild($summarySpanFocus)
 
       // Get original attributes, and pass them to the replacement
@@ -562,13 +573,12 @@ export class Accordion extends GOVUKFrontendComponent {
    * @returns {Element} DOM element
    */
   getButtonPunctuationEl() {
-    const $punctuationEl = document.createElement('span')
-    $punctuationEl.classList.add(
-      'govuk-visually-hidden',
-      'govuk-accordion__section-heading-divider'
-    )
-    $punctuationEl.textContent = ', '
-    return $punctuationEl
+    const $element = createElement('span', {
+      class: 'govuk-visually-hidden govuk-accordion__section-heading-divider'
+    })
+
+    $element.textContent = ', '
+    return $element
   }
 
   /**

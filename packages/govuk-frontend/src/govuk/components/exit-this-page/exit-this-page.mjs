@@ -1,3 +1,4 @@
+import { createElement } from '../../common/create-element.mjs'
 import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { ElementError } from '../../errors/index.mjs'
@@ -138,9 +139,10 @@ export class ExitThisPage extends GOVUKFrontendComponent {
    * @private
    */
   initUpdateSpan() {
-    this.$updateSpan = document.createElement('span')
-    this.$updateSpan.setAttribute('role', 'status')
-    this.$updateSpan.className = 'govuk-visually-hidden'
+    this.$updateSpan = createElement('span', {
+      role: 'status',
+      class: 'govuk-visually-hidden'
+    })
 
     this.$module.appendChild(this.$updateSpan)
   }
@@ -171,15 +173,18 @@ export class ExitThisPage extends GOVUKFrontendComponent {
   buildIndicator() {
     // Build container
     // Putting `aria-hidden` on it as it won't contain any readable information
-    this.$indicatorContainer = document.createElement('div')
-    this.$indicatorContainer.className = 'govuk-exit-this-page__indicator'
-    this.$indicatorContainer.setAttribute('aria-hidden', 'true')
+    this.$indicatorContainer = createElement('div', {
+      class: 'govuk-exit-this-page__indicator',
+      'aria-hidden': 'true'
+    })
 
     // Create three 'lights' and place them within the container
     for (let i = 0; i < 3; i++) {
-      const $indicator = document.createElement('div')
-      $indicator.className = 'govuk-exit-this-page__indicator-light'
-      this.$indicatorContainer.appendChild($indicator)
+      this.$indicatorContainer.appendChild(
+        createElement('div', {
+          class: 'govuk-exit-this-page__indicator-light'
+        })
+      )
     }
 
     // Append it all to the module
@@ -235,9 +240,10 @@ export class ExitThisPage extends GOVUKFrontendComponent {
     // to prevent screen reader and sequential navigation users potentially
     // navigating through the page behind the overlay during loading
     document.body.classList.add('govuk-exit-this-page-hide-content')
-    this.$overlay = document.createElement('div')
-    this.$overlay.className = 'govuk-exit-this-page-overlay'
-    this.$overlay.setAttribute('role', 'alert')
+    this.$overlay = createElement('div', {
+      class: 'govuk-exit-this-page-overlay',
+      role: 'alert'
+    })
 
     // we do these this way round, thus incurring a second paint, because changing
     // the element text after adding it means that screen readers pick up the
