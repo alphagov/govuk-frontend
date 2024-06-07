@@ -1,5 +1,4 @@
-const { render } = require('@govuk-frontend/helpers/nunjucks')
-const { getExamples } = require('@govuk-frontend/lib/components')
+const { getExamples, render } = require('@govuk-frontend/lib/components')
 
 describe('Tag', () => {
   let examples
@@ -8,53 +7,46 @@ describe('Tag', () => {
     examples = await getExamples('tag')
   })
 
-  describe('default example', () => {
-    it('renders the default example with strong element and text', () => {
-      const $ = render('tag', examples.default)
+  it('outputs a <strong> element', () => {
+    document.body.innerHTML = render('tag', examples.default)
+    const $component = document.querySelector('.govuk-tag')
 
-      const $component = $('.govuk-tag')
-      expect($component.get(0).tagName).toBe('strong')
-      expect($component.text()).toContain('Alpha')
-    })
-
-    it('renders classes', () => {
-      const $ = render('tag', examples.grey)
-
-      const $component = $('.govuk-tag')
-      expect($component.hasClass('govuk-tag--grey')).toBeTruthy()
-    })
+    expect($component.tagName).toBe('STRONG')
   })
 
-  describe('custom options', () => {
-    it('renders custom text', () => {
-      const $ = render('tag', examples.grey)
+  it('contains the content from the `text` option', () => {
+    document.body.innerHTML = render('tag', examples.default)
+    const $component = document.querySelector('.govuk-tag')
 
-      const $component = $('.govuk-tag')
-      expect($component.html()).toContain('Grey')
-    })
-
-    it('renders attributes', () => {
-      const $ = render('tag', examples.attributes)
-
-      const $component = $('.govuk-tag')
-      expect($component.attr('data-test')).toBe('attribute')
-      expect($component.attr('id')).toBe('my-tag')
-    })
+    expect($component).toHaveTextContent('Alpha')
   })
 
-  describe('html', () => {
-    it('renders escaped html when passed to text', () => {
-      const $ = render('tag', examples['html as text'])
+  it('includes additional classes from the `classes` option', () => {
+    document.body.innerHTML = render('tag', examples.grey)
+    const $component = document.querySelector('.govuk-tag')
 
-      const $component = $('.govuk-tag')
-      expect($component.html()).toContain('&lt;span&gt;Alpha&lt;/span&gt;')
-    })
+    expect($component).toHaveClass('govuk-tag--grey')
+  })
 
-    it('renders html', () => {
-      const $ = render('tag', examples.html)
+  it('escapes HTML when using the `text` option', () => {
+    document.body.innerHTML = render('tag', examples['html as text'])
+    const $component = document.querySelector('.govuk-tag')
 
-      const $component = $('.govuk-tag')
-      expect($component.html()).toContain('<span>Alpha</span>')
-    })
+    expect($component).toHaveTextContent('<span>Alpha</span>')
+  })
+
+  it('does not escape HTML when using the `html` option', () => {
+    document.body.innerHTML = render('tag', examples.html)
+    const $component = document.querySelector('.govuk-tag')
+
+    expect($component).toContainHTML('<span>Alpha</span>')
+  })
+
+  it('sets any additional attributes based on the `attributes` option', () => {
+    document.body.innerHTML = render('tag', examples.attributes)
+    const $component = document.querySelector('.govuk-tag')
+
+    expect($component).toHaveAttribute('data-test', 'attribute')
+    expect($component).toHaveAttribute('id', 'my-tag')
   })
 })
