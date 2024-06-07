@@ -13,7 +13,8 @@
     "packages/govuk-frontend",
     "packages/govuk-frontend-review",
     "shared/*",
-    "docs/examples/*"
+    "docs/examples/*",
+    "workbench/*"
   ],
   "scripts": {
     "postinstall": "npm ls --depth=0",

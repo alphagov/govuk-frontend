@@ -1,0 +1,7 @@
+{
+  "name": "@govuk-frontend/template-divergence",
+  "private": true,
+  "dependencies": {
+    "govuk-frontend": "^4.8.0"
+  }
+}
