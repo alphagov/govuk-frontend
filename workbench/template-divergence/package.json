@@ -1,7 +1,14 @@
 {
   "name": "@govuk-frontend/template-divergence",
   "private": true,
+  "scripts": {
+    "start": "./diff-templates.sh",
+    "dev": "nodemon -e sh -x './diff-templates.sh'"
+  },
   "dependencies": {
     "govuk-frontend": "^4.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.3"
   }
 }
