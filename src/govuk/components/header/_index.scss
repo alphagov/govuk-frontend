@@ -168,7 +168,7 @@
     // logo with right padding using the button's width
     padding-right: $govuk-header-menu-button-width;
 
-    @include govuk-media-query($from: desktop) {
+    @include govuk-media-query($from: tablet) {
       width: 33.33%;
       padding-right: $govuk-gutter-half;
       float: left;
@@ -184,7 +184,7 @@
   }
 
   .govuk-header__content {
-    @include govuk-media-query($from: desktop) {
+    @include govuk-media-query($from: tablet) {
       width: 66.66%;
       padding-left: $govuk-gutter-half;
       float: left;
@@ -249,7 +249,7 @@
   }
 
   .govuk-header__navigation {
-    @include govuk-media-query($from: desktop) {
+    @include govuk-media-query($from: tablet) {
       margin-bottom: govuk-spacing(2);
     }
   }
@@ -266,7 +266,7 @@
   }
 
   .govuk-header__navigation--end {
-    @include govuk-media-query($from: desktop) {
+    @include govuk-media-query($from: tablet) {
       margin: 0;
       padding: govuk-spacing(1) 0;
       text-align: right;
@@ -277,7 +277,7 @@
     padding: govuk-spacing(2) 0;
     border-bottom: 1px solid $govuk-header-nav-item-border-color;
 
-    @include govuk-media-query($from: desktop) {
+    @include govuk-media-query($from: tablet) {
       display: inline-block;
       margin-right: govuk-spacing(3);
       padding: govuk-spacing(1) 0;
@@ -334,6 +334,135 @@
       // Do not append link href to GOV.UK link when printing (e.g. '(/)')
       &::after {
         display: none;
+      }
+    }
+  }
+
+  // GOV.UK One Login styles
+
+  .govuk-header__link--one-login {
+    @include govuk-typography-weight-bold;
+
+    // Hide the user icon on narrow screens, as it already appears in the toggle menu
+    @include govuk-media-query($until: tablet) {
+      .govuk-header__one-login-icon {
+        display: none;
+      }
+    }
+
+    @include govuk-media-query($from: tablet) {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  // Apply specific styles to the icon when the One Login link is focused.
+  // TODO: I wrote this in such a way that avoids adding classes into the SVG's elements, but this
+  // does feel nasty. Should probably change this for some other method.
+  .govuk-header__link--one-login:focus .govuk-header__one-login-icon {
+    // Background
+    circle:nth-child(1) {
+      fill: $govuk-focus-text-colour;
+    }
+
+    circle:nth-child(4) {
+      stroke: $govuk-focus-text-colour;
+    }
+
+    // Foreground (person)
+    path,
+    circle:nth-child(3) {
+      fill: $govuk-focus-colour;
+    }
+  }
+
+  .govuk-header__one-login-icon {
+    margin-left: govuk-spacing(2);
+    font-size: 0;
+  }
+
+  .govuk-header__one-login-toggle {
+    @include govuk-font($size: 16);
+    display: inline-flex;
+    align-items: center;
+    position: absolute;
+    top: (((govuk-spacing($govuk-header-vertical-spacing-value) * 2) + $govuk-header-crown-height) / 2) -
+      ($govuk-header-menu-button-height / 2);
+    right: 0;
+    min-height: $govuk-header-menu-button-height;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: govuk-colour("white");
+    background: none;
+    word-break: break-all;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: solid underline $govuk-header-link-underline-thickness;
+
+      @if $govuk-link-underline-offset {
+        text-underline-offset: $govuk-link-underline-offset;
+      }
+    }
+
+    &:focus {
+      @include govuk-focused-text;
+    }
+
+    &::before {
+      @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
+      content: "";
+      margin-right: govuk-spacing(1);
+    }
+
+    &[aria-expanded="true"]::before {
+      @include govuk-shape-arrow($direction: up, $base: 10px, $display: inline-block);
+    }
+
+    // Ensure the button stays hidden if the hidden attribute is present
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  // Prevent the One Login links wrapping onto multiple lines when a product name squeezes them
+  .govuk-header__one-login-menu {
+    flex-shrink: 0;
+  }
+
+  .govuk-header__one-login-menu-list {
+    margin: govuk-spacing(2) 0 0;
+    padding: 0;
+    list-style: none;
+
+    @include govuk-media-query($from: tablet) {
+      display: flex;
+      align-items: center;
+      margin-top: 0;
+    }
+  }
+
+  .govuk-header__one-login-menu-item {
+    @include govuk-font($size: 16);
+    display: inline-block;
+    padding: govuk-spacing(2) 0;
+
+    @include govuk-media-query($until: tablet) {
+      width: 100%;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid $govuk-header-nav-item-border-color;
+      }
+    }
+
+    @include govuk-media-query($from: tablet) {
+      padding: govuk-spacing(2) 0 govuk-spacing(2) govuk-spacing(4);
+      border-left: 1px solid $govuk-header-nav-item-border-color;
+      align-self: stretch;
+
+      &:not(:last-child) {
+        margin-right: govuk-spacing(4);
       }
     }
   }
