@@ -64,8 +64,11 @@
 
   .govuk-service-header__service-name {
     @include govuk-font($size: 19, $weight: bold);
+    margin: govuk-spacing(1) 0;
 
     @include govuk-media-query($from: tablet) {
+      margin-top: 0;
+
       // Add a little extra space to the bottom of the service name so that it
       // has the same visual height as navigation items.
       margin-bottom: $govuk-service-header-active-link-border-width;
@@ -108,7 +111,7 @@
   }
 
   .govuk-service-header__navigation-item {
-    margin: govuk-spacing(2) 0 govuk-spacing(2);
+    margin: govuk-spacing(2) 0;
     border: 0 solid;
 
     @include govuk-media-query($from: tablet) {
