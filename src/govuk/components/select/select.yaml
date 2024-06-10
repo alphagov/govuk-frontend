@@ -261,11 +261,11 @@ examples:
           attributes:
             data-attribute: GHI
             data-second-attribute: JKL
-  - name: with falsey items
+  - name: with falsy items
     hidden: true
     options:
-      id: with-falsey-items
-      name: with-falsey-items
+      id: with-falsy-items
+      name: with-falsy-items
       label:
         text: Label text goes here
       items:
@@ -355,11 +355,11 @@ examples:
         - text: Blue
       value: Green
 
-  - name: with falsey values
+  - name: with falsy values
     hidden: true
     options:
-      name: falsey-values
-      id: falsey-values
+      name: falsy-values
+      id: falsy-values
       label:
         text: Label text goes here
       items:

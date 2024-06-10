@@ -275,10 +275,10 @@ examples:
             html: <span class="myClass">Section A</span>
           content:
             text: Some content
-  - name: with falsey values
+  - name: with falsy values
     hidden: true
     options:
-      id: accordion-falsey
+      id: accordion-falsy
       items:
         - heading:
             text: Section A

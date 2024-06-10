@@ -710,7 +710,7 @@ examples:
           text: Option 1
         - value: 2
           text: Option 2
-  - name: with falsey values
+  - name: with falsy values
     hidden: true
     options:
       name: example-name

@@ -30,8 +30,8 @@ describe('Radios', () => {
     expect($lastLabel.text()).toContain('No')
   })
 
-  it('renders without falsely items', () => {
-    const $ = render('radios', examples['with falsey items'])
+  it('renders without falsy items', () => {
+    const $ = render('radios', examples['with falsy items'])
 
     const $component = $('.govuk-radios')
     const $items = $component.find('.govuk-radios__item input')
