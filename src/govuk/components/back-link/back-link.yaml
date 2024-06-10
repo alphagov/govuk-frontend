@@ -29,6 +29,7 @@ examples:
       href: '#'
       text: Back to home
   - name: inverse
+    screenshot: true
     previewLayoutModifiers:
       - inverse
     options:

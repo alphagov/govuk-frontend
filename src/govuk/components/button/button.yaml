@@ -65,6 +65,7 @@ examples:
       text: Link button
       href: '/'
   - name: start
+    screenshot: true
     options:
       text: Start now button
       isStartButton: true
@@ -144,6 +145,7 @@ examples:
       href: '/'
       classes: govuk-button--warning
   - name: inverse
+    screenshot: true
     description: A button that appears on dark backgrounds
     previewLayoutModifiers:
       - inverse
@@ -169,6 +171,7 @@ examples:
       href: '/'
       classes: govuk-button--inverse
   - name: inverse start
+    screenshot: true
     description: A start button that appears on dark backgrounds
     previewLayoutModifiers:
       - inverse
