@@ -112,10 +112,10 @@ describe('Accordion', () => {
       expect($componentSummary).toHaveTextContent('Additional description')
     })
 
-    it('renders list without falsely values', () => {
+    it('renders list without falsy values', () => {
       document.body.innerHTML = render(
         'accordion',
-        examples['with falsey values']
+        examples['with falsy values']
       )
       const $sections = document.querySelectorAll('.govuk-accordion__section')
 

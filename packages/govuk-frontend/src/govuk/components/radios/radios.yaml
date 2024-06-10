@@ -714,7 +714,7 @@ examples:
           text: Yes
         - value: no
           text: No
-  - name: with falsey items
+  - name: with falsy items
     hidden: true
     options:
       name: example-name

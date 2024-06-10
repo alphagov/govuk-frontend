@@ -834,7 +834,7 @@ examples:
       attributes:
         data-attribute-1: value-1
         data-attribute-2: value-2
-  - name: with falsey values
+  - name: with falsy values
     hidden: true
     options:
       rows:

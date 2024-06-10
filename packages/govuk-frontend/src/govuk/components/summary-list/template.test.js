@@ -26,8 +26,8 @@ describe('Summary list', () => {
   })
 
   describe('rows', () => {
-    it('renders list without falsely values', async () => {
-      const $ = render('summary-list', examples['with falsey values'])
+    it('renders list without falsy values', async () => {
+      const $ = render('summary-list', examples['with falsy values'])
 
       const $component = $('.govuk-summary-list')
       const $row = $component.find('.govuk-summary-list__row')

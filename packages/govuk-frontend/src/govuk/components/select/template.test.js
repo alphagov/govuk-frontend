@@ -41,21 +41,21 @@ describe('Select', () => {
     })
 
     it('includes the value attribute when the value option is an empty string', () => {
-      const $ = render('select', examples['with falsey values'])
+      const $ = render('select', examples['with falsy values'])
 
       const $firstItem = $('.govuk-select option:nth(0)')
       expect($firstItem.attr('value')).toBe('')
     })
 
     it('includes the value attribute when the value option is false', () => {
-      const $ = render('select', examples['with falsey values'])
+      const $ = render('select', examples['with falsy values'])
 
       const $secondItem = $('.govuk-select option:nth(1)')
       expect($secondItem.attr('value')).toBe('false')
     })
 
     it('includes the value attribute when the value option is 0', () => {
-      const $ = render('select', examples['with falsey values'])
+      const $ = render('select', examples['with falsy values'])
 
       const $thirdItem = $('.govuk-select option:nth(2)')
       expect($thirdItem.attr('value')).toBe('0')
@@ -126,8 +126,8 @@ describe('Select', () => {
       expect($formGroup.hasClass('extra-class')).toBeTruthy()
     })
 
-    it('renders without falsely items', () => {
-      const $ = render('select', examples['with falsey items'])
+    it('renders without falsy items', () => {
+      const $ = render('select', examples['with falsy items'])
 
       const $items = $('.govuk-select option')
       expect($items).toHaveLength(2)
