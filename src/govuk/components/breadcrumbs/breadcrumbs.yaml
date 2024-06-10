@@ -125,10 +125,12 @@ examples:
     options:
       items:
         - text: <span>Section 1</span>
+          href: /section-1
+        - text: <span>Section 2</span>
   - name: html
     hidden: true
     options:
       items:
         - html: <em>Section 1</em>
+          href: /section-1
         - html: <em>Section 2</em>
-          href: /section-2
