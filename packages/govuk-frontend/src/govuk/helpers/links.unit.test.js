@@ -31,7 +31,7 @@ describe('@mixin govuk-link-decoration', () => {
     })
   })
 
-  describe('when $govuk-link-underline-thickness is falsey', () => {
+  describe('when $govuk-link-underline-thickness is falsy', () => {
     it('does not set text-decoration-thickness', async () => {
       const sass = `
         $govuk-link-underline-thickness: false;
@@ -48,7 +48,7 @@ describe('@mixin govuk-link-decoration', () => {
     })
   })
 
-  describe('when $govuk-link-underline-offset is falsey', () => {
+  describe('when $govuk-link-underline-offset is falsy', () => {
     it('does not set text-decoration-offset', async () => {
       const sass = `
       $govuk-link-underline-offset: false;
@@ -81,7 +81,7 @@ describe('@mixin govuk-link-hover-decoration', () => {
     })
   })
 
-  describe('when $govuk-link-hover-underline-thickness is falsey', () => {
+  describe('when $govuk-link-hover-underline-thickness is falsy', () => {
     it('does not set a hover state', async () => {
       const sass = `
       $govuk-link-hover-underline-thickness: false;

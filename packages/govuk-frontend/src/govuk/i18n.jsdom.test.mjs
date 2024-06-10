@@ -111,7 +111,7 @@ describe('I18n', () => {
         expect(i18n.t('nameString', { name: 'John' })).toBe('My name is John')
       })
 
-      it('can replace a placeholder with a falsey value', () => {
+      it('can replace a placeholder with a falsy value', () => {
         const i18n = new I18n({
           nameString: 'My name is %{name}',
           stock: 'Stock level: %{quantity}'

@@ -289,7 +289,7 @@ examples:
         - - text: Foo
             attributes:
               data-fizz: buzz
-  - name: with falsey items
+  - name: with falsy items
     hidden: true
     options:
       rows:

@@ -264,8 +264,8 @@ describe('Table', () => {
       ])
     })
 
-    it('can be skipped when falsely', () => {
-      const $ = render('table', examples['with falsey items'])
+    it('can be skipped when falsy', () => {
+      const $ = render('table', examples['with falsy items'])
 
       const cells = $('.govuk-table')
         .find('tbody tr')

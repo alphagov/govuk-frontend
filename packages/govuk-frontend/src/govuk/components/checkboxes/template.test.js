@@ -38,8 +38,8 @@ describe('Checkboxes', () => {
     expect($lastLabel.text()).toContain('Citizen of another country')
   })
 
-  it('render example without falsely values', () => {
-    const $ = render('checkboxes', examples['with falsey values'])
+  it('render example without falsy values', () => {
+    const $ = render('checkboxes', examples['with falsy values'])
 
     const $component = $('.govuk-checkboxes')
     const $items = $component.find('.govuk-checkboxes__item')

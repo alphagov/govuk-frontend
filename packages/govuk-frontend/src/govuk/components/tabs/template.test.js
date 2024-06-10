@@ -85,8 +85,8 @@ describe('Tabs', () => {
       expect($firstPanel.attr('id')).toBe('past-day')
     })
 
-    it('render without falsey values', () => {
-      const $ = render('tabs', examples['with falsey values'])
+    it('render without falsy values', () => {
+      const $ = render('tabs', examples['with falsy values'])
 
       const $component = $('.govuk-tabs')
 
