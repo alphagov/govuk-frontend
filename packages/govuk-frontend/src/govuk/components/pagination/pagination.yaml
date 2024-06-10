@@ -203,12 +203,14 @@ examples:
           href: '/page/3'
           current: true
   - name: with prev and next only
+    screenshot: true
     options:
       previous:
         href: '/previous'
       next:
         href: '/next'
   - name: with prev and next only and labels
+    screenshot: true
     options:
       previous:
         text: 'Previous page'

@@ -44,6 +44,7 @@ examples:
         you’re entitled to vote in. If you can’t provide your nationality,
         you’ll have to send copies of identity documents through the post.
   - name: expanded
+    screenshot: true
     options:
       id: help-with-nationality
       summaryText: Help with nationality

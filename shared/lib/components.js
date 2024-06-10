@@ -320,6 +320,7 @@ module.exports = {
  * @property {string} name - Example name
  * @property {string} [description] - Example description
  * @property {boolean} [hidden] - Example hidden from review app
+ * @property {boolean} [screenshot] - Screenshot and include in visual regression tests
  * @property {string[]} [previewLayoutModifiers] - Component preview layout class modifiers
  * @property {MacroOptions} options - Nunjucks macro options (or params)
  */
