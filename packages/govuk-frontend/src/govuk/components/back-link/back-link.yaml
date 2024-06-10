@@ -22,11 +22,13 @@ params:
 
 examples:
   - name: default
-    options:
-      href: '#'
+    options: {}
   - name: with custom text
     options:
-      href: '#'
+      text: Back to home
+  - name: with custom link
+    options:
+      href: '/home'
       text: Back to home
   - name: inverse
     screenshot: true
@@ -34,29 +36,23 @@ examples:
       - inverse
     options:
       classes: govuk-back-link--inverse
-      href: '#'
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes
     hidden: true
     options:
       classes: app-back-link--custom-class
-      href: '#'
   - name: html as text
     hidden: true
     options:
       text: <b>Home</b>
-      href: '#'
   - name: html
     hidden: true
     options:
       html: <b>Back</b>
-      href: '#'
   - name: attributes
     hidden: true
     options:
-      href: '#'
-      html: <b>Back to home</b>
       attributes:
         data-test: attribute
         aria-label: Back to home
