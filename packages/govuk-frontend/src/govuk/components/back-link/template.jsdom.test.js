@@ -35,6 +35,13 @@ describe('back-link component', () => {
     expect($component).toHaveClass('app-back-link--custom-class')
   })
 
+  it('allows the link to be customised using the `href` option', () => {
+    document.body.innerHTML = render('back-link', examples['with custom link'])
+
+    const $component = document.querySelector('.govuk-back-link')
+    expect($component).toHaveAttribute('href', '/home')
+  })
+
   it('allows the text to be customised using the `text` option', () => {
     document.body.innerHTML = render('back-link', examples['with custom text'])
 

@@ -26,6 +26,10 @@ examples:
   - name: with custom text
     options:
       text: Back to home
+  - name: with custom link
+    options:
+      href: '/home'
+      text: Back to home
   - name: inverse
     previewLayoutModifiers:
       - inverse
