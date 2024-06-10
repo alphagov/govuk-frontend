@@ -19,7 +19,7 @@
     "@govuk-frontend/lib": "*",
     "cheerio": "^1.0.0-rc.12",
     "govuk-frontend": "*",
-    "jest-axe": "^8.0.0",
+    "jest-axe": "^9.0.0",
     "jest-dev-server": "^10.0.0",
     "jest-environment-jsdom": "^29.7.0",
     "jest-environment-node-single-context": "^29.4.0",
