@@ -73,7 +73,7 @@
     "eslint-plugin-markdown": "^4.0.1",
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-promise": "^6.1.1",
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.0",
     "gulp-cli": "^3.0.0",
     "husky": "^9.0.11",
     "jest": "^29.7.0",
