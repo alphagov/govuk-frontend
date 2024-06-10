@@ -30,6 +30,10 @@
     > * + * {
       @include govuk-responsive-margin(4, "top");
     }
+
+    > :last-child {
+      @include govuk-responsive-margin(1, "bottom");
+    }
   }
 
   // Cross-component class - adjusts styling of list component
