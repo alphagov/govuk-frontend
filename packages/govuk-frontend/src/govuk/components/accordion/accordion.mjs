@@ -91,9 +91,6 @@ export class Accordion extends GOVUKFrontendComponent {
   /** @private */
   $sections
 
-  /** @private */
-  browserSupportsSessionStorage = false
-
   /**
    * @private
    * @type {HTMLButtonElement | null}
@@ -146,7 +143,6 @@ export class Accordion extends GOVUKFrontendComponent {
     }
 
     this.$sections = $sections
-    this.browserSupportsSessionStorage = helper.checkForSessionStorage()
 
     this.initControls()
     this.initSectionHeaders()
@@ -516,6 +512,22 @@ export class Accordion extends GOVUKFrontendComponent {
   }
 
   /**
+   * Get the identifier for a section
+   *
+   * We need a unique way of identifying each content in the Accordion.
+   * Since an `#id` should be unique and an `id` is required for `aria-`
+   * attributes `id` can be safely used.
+   *
+   * @param {Element} $section - Section element
+   * @returns {string | undefined | null} Identifier for section
+   */
+  getIdentifier($section) {
+    const $button = $section.querySelector(`.${this.sectionButtonClass}`)
+
+    return $button?.getAttribute('aria-controls')
+  }
+
+  /**
    * Set the state of the accordions in sessionStorage
    *
    * @private
@@ -523,19 +535,16 @@ export class Accordion extends GOVUKFrontendComponent {
    * @param {boolean} isExpanded - Whether the section is expanded
    */
   storeState($section, isExpanded) {
-    if (this.browserSupportsSessionStorage && this.config.rememberExpanded) {
-      // We need a unique way of identifying each content in the Accordion.
-      // Since an `#id` should be unique and an `id` is required for `aria-`
-      // attributes `id` can be safely used.
-      const $button = $section.querySelector(`.${this.sectionButtonClass}`)
+    if (!this.config.rememberExpanded) {
+      return
+    }
 
-      if ($button) {
-        const contentId = $button.getAttribute('aria-controls')
+    const id = this.getIdentifier($section)
 
-        if (contentId) {
-          window.sessionStorage.setItem(contentId, isExpanded.toString())
-        }
-      }
+    if (id) {
+      try {
+        window.sessionStorage.setItem(id, isExpanded.toString())
+      } catch (exception) {}
     }
   }
 
@@ -546,19 +555,20 @@ export class Accordion extends GOVUKFrontendComponent {
    * @param {Element} $section - Section element
    */
   setInitialState($section) {
-    if (this.browserSupportsSessionStorage && this.config.rememberExpanded) {
-      const $button = $section.querySelector(`.${this.sectionButtonClass}`)
+    if (!this.config.rememberExpanded) {
+      return
+    }
 
-      if ($button) {
-        const contentId = $button.getAttribute('aria-controls')
-        const contentState = contentId
-          ? window.sessionStorage.getItem(contentId)
-          : null
+    const id = this.getIdentifier($section)
 
-        if (contentState !== null) {
-          this.setExpanded(contentState === 'true', $section)
+    if (id) {
+      try {
+        const state = window.sessionStorage.getItem(id)
+
+        if (state !== null) {
+          this.setExpanded(state === 'true', $section)
         }
-      }
+      } catch (exception) {}
     }
   }
 
@@ -619,27 +629,6 @@ export class Accordion extends GOVUKFrontendComponent {
       rememberExpanded: { type: 'boolean' }
     }
   })
-}
-
-const helper = {
-  /**
-   * Check for `window.sessionStorage`, and that it actually works.
-   *
-   * @returns {boolean} True if session storage is available
-   */
-  checkForSessionStorage: function () {
-    const testString = 'this is the test string'
-    let result
-    try {
-      window.sessionStorage.setItem(testString, testString)
-      result =
-        window.sessionStorage.getItem(testString) === testString.toString()
-      window.sessionStorage.removeItem(testString)
-      return result
-    } catch (exception) {
-      return false
-    }
-  }
 }
 
 /**
