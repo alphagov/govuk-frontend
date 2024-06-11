@@ -357,7 +357,7 @@ describe('Template', () => {
           .digest('base64')
 
         // A change to the inline script would be a breaking change, and it would also require
-        // updating the hash published in https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#if-your-javascript-isn-t-working-properly
+        // updating the hash published in https://frontend.design-system.service.gov.uk/import-javascript/#use-a-hash-to-unblock-inline-javascript
         expect(`sha256-${hash}`).toBe(
           'sha256-GUQ5ad8JK5KmEWmROf3LZd9ge94daqNvd8xy9YS1iDw='
         )
