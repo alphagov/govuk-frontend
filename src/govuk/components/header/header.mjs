@@ -62,7 +62,7 @@ export class Header extends GOVUKFrontendComponent {
 
     this.$module = $module
 
-    const $menuButton = $module.querySelector('.govuk-js-service-menu-toggle')
+    const $menuButton = $module.querySelector('.govuk-js-header-toggle')
     const $oneLoginMenuButton = $module.querySelector(
       '.govuk-js-one-login-toggle'
     )
@@ -80,7 +80,7 @@ export class Header extends GOVUKFrontendComponent {
         throw new ElementError({
           componentName: 'Header',
           identifier:
-            'Menu button (`<button class="govuk-js-service-menu-toggle">`) attribute (`aria-controls`)'
+            'Navigation button (`<button class="govuk-js-header-toggle">`) attribute (`aria-controls`)'
         })
       }
 
