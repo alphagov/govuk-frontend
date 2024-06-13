@@ -1,0 +1,110 @@
+{% from "../../macros/attributes.njk" import govukAttributes -%}
+{% from "../fieldset/macro.njk" import govukFieldset %}
+{% from "../input/macro.njk" import govukInput %}
+
+{% set legend = params.legend %}
+{% set line1 = params.line1 %}
+{% set line2 = params.line2 %}
+{% set townOrCity = params.townOrCity %}
+{% set county = params.county %}
+{% set postcode = params.postcode %}
+{% set values = params.values %}
+{% set errorMessages = params.errorMessages %}
+
+{% set defaultLine1Label = "Line 1" %}
+{% set defaultLine2Label = "Line 2" %}
+{% set defaultTownCityLabel = "Town or city" %}
+{% set defaultCountyLabel = "County" %}
+{% set defaultPostcodeLabel = "Postcode" %}
+
+{% set line2LabelVisuallyHidden = line2.visuallyHiddenText %}
+
+{% if line2LabelVisuallyHidden %}
+  {% set line1VisuallyHiddenText %}
+    {{ line1.label or defaultLine1Label }} <span class="govuk-visually-hidden">line 1 of 2</span>
+  {% endset %}
+
+  {% set line2VisuallyHiddenText %}
+    <span class="govuk-visually-hidden">{{ line1.label or defaultLine1Label }} line 2 of 2</span>
+  {% endset %}
+
+{% endif %}
+
+{% call govukFieldset({
+  legend: {
+    text: legend.text,
+    html: legend.html,
+    classes: legend.classes or "govuk-fieldset__legend--l",
+    isPageHeading: legend.isPageHeading
+  }
+}) %}
+  {{ govukInput({
+    label: {
+      text: not line2LabelVisuallyHidden and line1.label or defaultLine1Label,
+      html: line2LabelVisuallyHidden and line1VisuallyHiddenText
+    },
+    id: line1.id,
+    name: line1.id,
+    value: values[line1.id],
+    type: "text",
+    errorMessage: errorMessages[line1.id] and {
+      text: errorMessages[line1.id].text
+    }
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: not line2LabelVisuallyHidden and line2.label or defaultLine2Label,
+      html: line2LabelVisuallyHidden and line2VisuallyHiddenText
+    },
+    id: line2.id,
+    name: line2.id,
+    value: values[line2.id],
+    type: "text",
+    errorMessage: errorMessages[line2.id] and {
+      text: errorMessages[line2.id].text
+    }
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: townOrCity.label or defaultTownCityLabel
+    },
+    id: townOrCity.id,
+    classes: "govuk-!-width-two-thirds",
+    name: townOrCity.id,
+    value: values[townOrCity.id],
+    type: "text",
+    errorMessage: errorMessages[townOrCity.id] and {
+      text: errorMessages[townOrCity.id].text
+    }
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: county.label or defaultCountyLabel
+    },
+    id: county.id,
+    classes: "govuk-!-width-two-thirds",
+    name: county.id,
+    value: values[county.id],
+    type: "text",
+    errorMessage: errorMessages[county.id] and {
+      text: errorMessages[county.id].text
+    }
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: postcode.label or defaultPostcodeLabel
+    },
+    id: postcode.id,
+    classes: "govuk-input--width-10",
+    name: postcode.id,
+    value: values[postcode.id],
+    type: "text",
+    errorMessage: errorMessages[postcode.id] and {
+      text: errorMessages[postcode.id].text
+    }
+  }) }}
+{% endcall %}
