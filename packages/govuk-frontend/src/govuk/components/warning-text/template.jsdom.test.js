@@ -1,5 +1,4 @@
-const { render } = require('@govuk-frontend/helpers/nunjucks')
-const { getExamples } = require('@govuk-frontend/lib/components')
+const { getExamples, render } = require('@govuk-frontend/lib/components')
 
 describe('Warning text', () => {
   let examples
@@ -9,73 +8,69 @@ describe('Warning text', () => {
   })
 
   describe('default example', () => {
-    it('renders with text', () => {
-      const $ = render('warning-text', examples.default)
+    beforeAll(() => {
+      document.body.innerHTML = render('warning-text', examples.default)
+    })
 
-      const $component = $('.govuk-warning-text')
-      expect($component.text()).toContain(
+    it('contains the text from the `text` option', () => {
+      const $component = document.querySelector('.govuk-warning-text')
+
+      expect($component).toHaveTextContent(
         'You can be fined up to £5,000 if you don’t register.'
       )
     })
 
-    it('renders with default assistive text', () => {
-      const $ = render('warning-text', examples.default)
+    it('includes the default assistive text', () => {
+      const $assistiveText = document.querySelector('.govuk-visually-hidden')
 
-      const $assistiveText = $('.govuk-visually-hidden')
-      expect($assistiveText.text()).toBe('Warning')
+      expect($assistiveText).toHaveTextContent('Warning')
     })
 
-    it('hides the icon from screen readers using the aria-hidden attribute', () => {
-      const $ = render('warning-text', examples.default)
+    it('hides the icon from screen readers using the `aria-hidden` attribute', () => {
+      const $icon = document.querySelector('.govuk-warning-text__icon')
 
-      const $icon = $('.govuk-warning-text__icon')
-      expect($icon.attr('aria-hidden')).toBe('true')
+      expect($icon).toHaveAttribute('aria-hidden', 'true')
     })
   })
 
-  describe('custom options', () => {
-    it('renders classes', () => {
-      const $ = render('warning-text', examples.classes)
+  it('includes additional classes from the `classes` option', () => {
+    document.body.innerHTML = render('warning-text', examples.classes)
+    const $component = document.querySelector('.govuk-warning-text')
 
-      const $component = $('.govuk-warning-text')
-      expect(
-        $component.hasClass('govuk-warning-text--custom-class')
-      ).toBeTruthy()
-    })
-
-    it('renders custom assistive text', () => {
-      const $ = render('warning-text', examples['icon fallback text only'])
-
-      const $assistiveText = $('.govuk-visually-hidden')
-      expect($assistiveText.html()).toContain('Some custom fallback text')
-    })
-
-    it('renders attributes', () => {
-      const $ = render('warning-text', examples.attributes)
-
-      const $component = $('.govuk-warning-text')
-      expect($component.attr('data-test')).toBe('attribute')
-      expect($component.attr('id')).toBe('my-warning-text')
-    })
+    expect($component).toHaveClass('govuk-warning-text--custom-class')
   })
 
-  describe('html', () => {
-    it('renders escaped html when passed to text', () => {
-      const $ = render('warning-text', examples['html as text'])
+  it('includes custom assistive text based on the `iconFallbackText` option', () => {
+    document.body.innerHTML = render(
+      'warning-text',
+      examples['icon fallback text only']
+    )
+    const $assistiveText = document.querySelector('.govuk-visually-hidden')
 
-      const $component = $('.govuk-warning-text')
-      expect($component.html()).toContain(
-        '&lt;span&gt;Some custom warning text&lt;/span&gt;'
-      )
-    })
+    expect($assistiveText).toHaveTextContent('Some custom fallback text')
+  })
 
-    it('renders html', () => {
-      const $ = render('warning-text', examples.html)
+  it('sets any additional attributes based on the `attributes` option', () => {
+    document.body.innerHTML = render('warning-text', examples.attributes)
+    const $component = document.querySelector('.govuk-warning-text')
 
-      const $component = $('.govuk-warning-text')
-      expect($component.html()).toContain(
-        '<span>Some custom warning text</span>'
-      )
-    })
+    expect($component).toHaveAttribute('data-test', 'attribute')
+    expect($component).toHaveAttribute('id', 'my-warning-text')
+  })
+
+  it('escapes HTML when using the `text` option', () => {
+    document.body.innerHTML = render('warning-text', examples['html as text'])
+    const $component = document.querySelector('.govuk-warning-text')
+
+    expect($component).toHaveTextContent(
+      '<span>Some custom warning text</span>'
+    )
+  })
+
+  it('does not escape HTML when using the `html` option', () => {
+    document.body.innerHTML = render('warning-text', examples.html)
+    const $component = document.querySelector('.govuk-warning-text')
+
+    expect($component).toContainHTML('<span>Some custom warning text</span>')
   })
 })
