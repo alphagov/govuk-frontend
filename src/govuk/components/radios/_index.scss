@@ -176,7 +176,7 @@
   // to be an even number in order to be centred under the 40px checkbox or radio.
   $conditional-border-width: $govuk-border-width-narrow;
   // Calculate the amount of padding needed to keep the border centered against the radios.
-  $conditional-border-padding: ($govuk-radios-size / 2) - ($conditional-border-width / 2);
+  $conditional-border-padding: ($govuk-touch-target-size / 2) - ($conditional-border-width / 2);
   // Move the border centered with the radios
   $conditional-margin-left: $conditional-border-padding;
   // Move the contents of the conditional inline with the label
