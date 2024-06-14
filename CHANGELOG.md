@@ -11,6 +11,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 - [#5043: Refactor the accordion JavaScript](https://github.com/alphagov/govuk-frontend/pull/5043)
 - [#5044: Remove session storage checks from accordion JavaScript](https://github.com/alphagov/govuk-frontend/pull/5044)
 - [#5060: Reintroduce additional bottom margin to Error Summary content](https://github.com/alphagov/govuk-frontend/pull/5060)
+- [#5070: Fix alignment of content in conditional checkboxes and radio buttons](https://github.com/alphagov/govuk-frontend/pull/5070)
 
 ## 5.4.0 (Feature release)
 

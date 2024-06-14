@@ -520,6 +520,7 @@ examples:
               <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
   - name: with conditional item checked
+    screenshot: true
     options:
       name: how-contacted-checked
       idPrefix: how-contacted-checked
