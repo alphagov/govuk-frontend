@@ -4,6 +4,42 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### New features
+
+#### We've updated the list of organisations and brand colours included in Frontend
+
+We've overhauled the list of organisations and organisation brand colours that are shipped with GOV.UK Frontend.
+
+The previous list was outdated and had not kept up with changes to the machinery of government. We have updated the list to:
+
+- add all current government departments and their brand colours
+- add variants of brand colours that meet a 4.5:1 contrast ratio against white, where required
+- provide warnings if defunct organisations are still being referenced in your Sass code
+
+To enable these changes, set the feature flag variable `$govuk-new-organisation-colours` to `true` before you import GOV.UK Frontend in your Sass files:
+
+```scss
+// application.scss
+$govuk-new-organisation-colours: true;
+@import "govuk-frontend/all";
+```
+
+You can also silence warnings about defunct organisations by adding `organisation-colours` to the [`$govuk-suppressed-warnings`](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-suppressed-warnings) setting.
+
+This change was introduced in [pull request #3407: Update organisation colours](https://github.com/alphagov/govuk-frontend/pull/3407).
+
+### Suggested changes
+
+### Update the `$websafe` parameter on the `govuk-organisation-colour` function
+
+The `govuk-organisation-colour` Sass function's `$websafe` parameter on has been renamed to `$contrast-safe`.
+
+This is to more accurately describe the functionality of the parameter.
+
+The old parameter name will stop working in the next major version of GOV.UK Frontend.
+
+This change was introduced in [pull request #3407: Update organisation colours](https://github.com/alphagov/govuk-frontend/pull/3407).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
