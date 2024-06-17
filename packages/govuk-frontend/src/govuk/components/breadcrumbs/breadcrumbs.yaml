@@ -32,6 +32,10 @@ params:
     type: object
     required: false
     description: HTML attributes (for example data attributes) to add to the breadcrumbs container.
+  - name: labelText
+    type: string
+    required: false
+    description: Plain text label identifying the landmark to screen readers. Defaults to "Breadcrumb".
 
 examples:
   - name: default
@@ -108,7 +112,7 @@ examples:
     options:
       attributes:
         id: my-navigation
-        role: navigation
+        'data-foo': 'bar'
       items:
         - text: Home
   - name: item attributes
@@ -134,3 +138,13 @@ examples:
         - html: <em>Section 1</em>
           href: /section-1
         - html: <em>Section 2</em>
+          href: /section-2
+  - name: custom label
+    hidden: true
+    options:
+      labelText: Briwsion bara
+      items:
+        - text: Hafan
+          href: '/'
+        - text: Sefydliadau
+          href: '/organisations'
