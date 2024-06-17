@@ -26,7 +26,7 @@
     "jest-environment-puppeteer": "^10.0.0",
     "mime-types": "^2.1.35",
     "outdent": "^0.8.0",
-    "puppeteer": "^22.10.0",
+    "puppeteer": "^22.11.1",
     "sass-embedded": "^1.72.0",
     "slug": "^9.1.0"
   },
