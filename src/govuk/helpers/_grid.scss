@@ -37,7 +37,7 @@
 ///   }
 ///
 /// @example scss - Customising the breakpoint where width percentage is applied
-///   .govuk-grid-column-one-half-at-desktop {
+///   .govuk-grid-column-one-half-from-desktop {
 ///     @include govuk-grid-column(one-half, $at: desktop);
 ///   }
 ///
