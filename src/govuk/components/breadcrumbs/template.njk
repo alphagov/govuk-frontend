@@ -11,7 +11,7 @@
   {% set classNames = classNames + " govuk-breadcrumbs--collapse-on-mobile" %}
 {% endif -%}
 
-<div class="{{ classNames }}" {{- govukAttributes(params.attributes) }}>
+<nav class="{{ classNames }}" {{- govukAttributes(params.attributes) }} aria-label="{{ params.labelText | default("Breadcrumb") }}">
   <ol class="govuk-breadcrumbs__list">
 {% for item in params.items %}
   {% if item.href %}
@@ -27,4 +27,4 @@
   {% endif %}
 {% endfor %}
   </ol>
-</div>
+</nav>
