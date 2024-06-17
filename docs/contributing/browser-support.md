@@ -15,7 +15,7 @@ You can view a summary of [the grades and the support we provide](https://fronte
 
 - **grade A** - Most recent stable versions of Chrome, Firefox, Edge, Samsung Internet and Safari
 - **grade B** - All stable versions of Chrome, Firefox and Edge released in the last 6 months and all the major stable releases of Safari which are not supported in Grade A
-- **grade C** - [All browsers that support `<script type="module">`](https://caniuse.com/es6-module) (Chrome 61+, Edge 16-18, Edge 79+, Safari 10.1+ (mac), Firefox 60+, Opera 48+, Safari 10.3+ (iOS), Samsung Internet 8.2+)
+- **grade C** - [All browsers that support `<script type="module">`](https://caniuse.com/es6-module) (Chrome 61+, Edge 16-18, Edge 79+, Safari 11+, Firefox 60+, Opera 48+, Samsung Internet 8.2+)
 - **grade X** - All other browsers (including IE11 and older)
 
 > **Note: Only browsers in grades A, B and C will run our JavaScript enhancements. We will not support our JavaScript enhancements for older browsers in grade X.**
@@ -102,13 +102,12 @@ This grade covers browsers not in Grade A or B which support <script type="modul
 - Chrome 61+
 - Edge 16-18
 - Edge 79+
-- Safari 11 (mac)
+- Safari 11+
 - Firefox 60+
 - Opera 48+
-- Safari 10.3+ (iOS)
 - Samsung Internet 8.2+
 
-Safari 10.1 also supports `<script type="module">` but will 'exit early' as it does not support `HTMLScriptElement.prototype.noModule` which is how we test support for `<script type="module">` from within our JavaScript.
+Safari 10.1 (macOS) and Safari 10.3 (iOS) support `<script type="module">` but will 'exit early' as they does not support `HTMLScriptElement.prototype.noModule`, which is how we test support for `<script type="module">` from within our JavaScript. GOV.UK Frontend component JavaScript will not run in these versions.
 
 For support we will:
 
