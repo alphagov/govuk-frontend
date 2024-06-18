@@ -1,0 +1,19 @@
+{% extends "layouts/full-page-example.njk" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% set pageTitle = "Payment accepted" %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: pageTitle
+      }) }}
+      <p class="govuk-body">We have sent you an email confirming receipt of the payment.</p>
+      <p class="govuk-body">It may take up to 3 working days for the payment to process and for the money to leave your bank account.</p>
+    </div>
+  </div>
+{% endblock %}
