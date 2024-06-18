@@ -9,6 +9,7 @@ router.post(
   '/update-your-account-details',
 
   body('email')
+    .trim()
     .notEmpty()
     .withMessage('Enter your email address')
     .isEmail()
@@ -16,7 +17,13 @@ router.post(
       'Enter an email address in the correct format, like name@example.com'
     ),
 
-  body('password').notEmpty().withMessage('Enter a password'),
+  body('password').notEmpty().withMessage('Enter a new password'),
+
+  body('confirm-password')
+    .notEmpty()
+    .withMessage('Enter your new password again')
+    .custom((value, { req }) => req.body.password === value)
+    .withMessage('Enter the same password again'),
 
   (req, res) => {
     const { example } = res.locals

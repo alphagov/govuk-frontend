@@ -14,6 +14,7 @@ scenario: |
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/password-input/macro.njk" import govukPasswordInput %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% set pageTitle = example.title %}
@@ -53,17 +54,44 @@ scenario: |
           spellcheck: false
         }) }}
 
-        {{ govukPasswordInput({
-          label: {
-            text: "New password",
-            classes: "govuk-label--m"
-          },
-          id: "password",
-          name: "password",
-          value: values["password"],
-          errorMessage: errors["password"],
-          autocomplete: "new-password"
-        }) }}
+        {% call govukFieldset({
+          legend: {
+            text: "Change your password",
+            classes: "govuk-fieldset__legend govuk-fieldset__legend--m"
+          }
+        }) %}
+
+          {{ govukPasswordInput({
+            label: {
+              text: "Choose new password"
+            },
+            id: "password",
+            name: "password",
+            value: values["password"],
+            errorMessage: errors["password"],
+            autocomplete: "new-password",
+            showPasswordAriaLabelText: "Show new password",
+            hidePasswordAriaLabelText: "Hide new password",
+            passwordShownAnnouncementText: "New password is visible",
+            passwordHiddenAnnouncementText: "New password is hidden"
+          }) }}
+
+          {{ govukPasswordInput({
+            label: {
+              text: "Type new password again"
+            },
+            id: "confirm-password",
+            name: "confirm-password",
+            value: values["confirm-password"],
+            errorMessage: errors["confirm-password"],
+            autocomplete: "new-password",
+            showPasswordAriaLabelText: "Show confirmed password",
+            hidePasswordAriaLabelText: "Hide confirmed password",
+            passwordShownAnnouncementText: "Confirmed password is visible",
+            passwordHiddenAnnouncementText: "Confirmed password is hidden"
+          }) }}
+
+        {% endcall %}
 
         {{ govukButton({
           text: "Save account details"
