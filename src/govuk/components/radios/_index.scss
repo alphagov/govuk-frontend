@@ -9,8 +9,9 @@
   $govuk-touch-target-size: ($govuk-radios-size + $govuk-touch-target-gutter);
   $govuk-small-radios-size: 24px;
   $govuk-radios-label-padding-left-right: govuk-spacing(3);
-  // When the default focus width is used on a curved edge it looks visually smaller.
-  // So for the circular radios we bump the default to make it look visually consistent.
+  // When the default focus width is used on a curved edge it looks visually
+  // smaller. So for the circular radios we bump the default to make it look
+  // visually consistent.
   $govuk-radios-focus-width: $govuk-focus-width + 1px;
 
   .govuk-radios__item {
@@ -173,9 +174,10 @@
   // =========================================================
 
   // The narrow border is used in the conditional reveals because the border has
-  // to be an even number in order to be centred under the 40px checkbox or radio.
+  // to be an even number in order to be centred under the 40px checkbox radio.
   $conditional-border-width: $govuk-border-width-narrow;
-  // Calculate the amount of padding needed to keep the border centered against the radios.
+  // Calculate the amount of padding needed to keep the border centered against
+  // the radios.
   $conditional-border-padding: ($govuk-touch-target-size / 2) - ($conditional-border-width / 2);
   // Move the border centered with the radios
   $conditional-margin-left: $conditional-border-padding;

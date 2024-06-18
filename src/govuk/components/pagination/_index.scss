@@ -54,8 +54,8 @@
   .govuk-pagination__next {
     @include govuk-typography-weight-bold;
 
-    // Use flex to get around a whitespace issue between the arrow svg and the link text
-    // without having to rely on whitespace control from backend tooling
+    // Use flex to avoid extra space being introduced when whitespace exists
+    // between the arrow svg and the link text
     .govuk-pagination__link {
       display: flex;
       align-items: center;
@@ -96,7 +96,7 @@
     @include govuk-typography-weight-bold;
     color: $govuk-secondary-text-colour;
 
-    // Remove hover state for ellipsis items as they don't have links within them
+    // Remove hover state for ellipsis items as they don't contain links
     &:hover {
       background-color: transparent;
     }
@@ -118,8 +118,8 @@
       }
     }
 
-    // Add link hover decoration to prev/next text if no label present on prev/next only mode
-    // We do this so that we have a hover state in all possible instances
+    // Add link hover decoration to prev/next text if no label present on
+    // prev/next only mode,  so that we have a hover state in all cases
     &:hover,
     &:active {
       .govuk-pagination__link-title--decorated {
@@ -155,7 +155,7 @@
   }
 
   .govuk-pagination__icon {
-    // Set size using rems to make the icon scale with text if user resizes text in their browser
+    // Set size using rems to make the icon scale with text
     width: govuk-px-to-rem(15px);
     height: govuk-px-to-rem(13px);
     color: $govuk-secondary-text-colour;
@@ -199,17 +199,17 @@
       border-top: 1px solid $govuk-border-colour;
     }
 
-    // Reset both these elements to their inline default, both to ensure that the focus state
-    // for block mode "shrink wraps" text as expected
+    // Reset both these elements to their inline default, both to ensure that
+    // the focus state for block mode "shrink wraps" text as expected
     .govuk-pagination__link,
     .govuk-pagination__link-title {
       display: inline;
     }
 
-    // Set the after pseudo element to a block which makes the title visually display
-    // as block level whilst programmatically being inline
-    // We do this to get around an NVDA quirk where adjacent block level
-    // elements are always read out separately
+    // Set the after pseudo element to a block which makes the title visually
+    // display as block level whilst programmatically being inline. We do this
+    // to get around an NVDA quirk where adjacent block level elements are
+    // always read out separately
     .govuk-pagination__link-title::after {
       content: "";
       display: block;
@@ -219,9 +219,9 @@
       text-align: left;
 
       &:focus {
-        // apply focus styling to the label within the link as if it were being focused
-        // to get around a display issue with a focusable inline element containing a mixture
-        // of inline and inline-block level elements
+        // Apply focus styling to the label within the link as if it were being
+        // focused to get around a display issue with a focusable inline element
+        // containing a mixture of inline and inline-block level elements
         .govuk-pagination__link-label {
           @include govuk-focused-text;
         }
