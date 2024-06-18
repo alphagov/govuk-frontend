@@ -6,7 +6,7 @@
   .govuk-select {
     @include govuk-font($size: 19, $line-height: 1.25);
 
-    box-sizing: border-box; // should this be global?
+    box-sizing: border-box;
 
     // This min-width was chosen because:
     // - it makes the Select noticeably wider than it is taller (which is what users expect)
@@ -15,7 +15,7 @@
     min-width: 11.5em;
     max-width: 100%;
     height: govuk-px-to-rem(40px);
-    padding: govuk-spacing(1); // was 5px 4px 4px - size of it should be adjusted to match other form elements
+    padding: govuk-spacing(1);
     border: $govuk-border-width-form-element solid $govuk-input-border-colour;
 
     // Default user agent colours for selects can have low contrast,

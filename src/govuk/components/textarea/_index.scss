@@ -6,7 +6,7 @@
   .govuk-textarea {
     @include govuk-font($size: 19, $line-height: 1.25);
 
-    box-sizing: border-box; // should this be global?
+    box-sizing: border-box;
     display: block;
     width: 100%;
     min-height: 40px;
