@@ -8,8 +8,7 @@
   }
 
   .govuk-details__summary {
-    // Make the focus outline shrink-wrap the text content of the summary
-    display: inline-block;
+    display: block;
   }
 
   .govuk-details[open] .govuk-details__summary {
@@ -73,6 +72,9 @@
     .govuk-details__summary {
       // Absolutely position the marker against this element
       position: relative;
+
+      // Make the focus outline shrink-wrap the text content of the summary
+      width: fit-content;
 
       // Allow for absolutely positioned marker and align with disclosed text
       padding-left: govuk-spacing(4) + $govuk-border-width;
