@@ -54,7 +54,7 @@
     "@govuk-frontend/helpers": "*",
     "@govuk-frontend/lib": "*",
     "@govuk-frontend/tasks": "*",
-    "@testing-library/jest-dom": "^6.4.5",
+    "@testing-library/jest-dom": "^6.4.6",
     "@types/testing-library__jest-dom": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^7.13.0",
     "@typescript-eslint/parser": "^7.13.0",
