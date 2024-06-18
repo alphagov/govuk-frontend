@@ -12,11 +12,12 @@
     // where to break off of.
     max-width: $govuk-tag-max-width;
 
-    // These negative margins make sure that the tag component doesn’t increase the
-    // size of its container. Otherwise, for example, a table row containing a tag
-    // will be taller than one containing plain text.
+    // These negative margins make sure that the tag component doesn’t increase
+    // the size of its container. Otherwise, for example, a table row containing
+    // a tag will be taller than one containing plain text.
     //
-    // The negative margin added to the top and bottom matches the extra padding added.
+    // The negative margin added to the top and bottom matches the extra padding
+    // added.
     margin-top: -2px;
     margin-bottom: -3px;
 
@@ -30,11 +31,13 @@
     overflow-wrap: break-word;
 
     // When forced colour mode is active, for example to provide high contrast,
-    // the background colour of the tag is the same as the rest of the page. To ensure
-    // that the tag is perceived as separate from any surround text, it is made bold.
+    // the background colour of the tag is the same as the rest of the page. To
+    // ensure that the tag is perceived as separate from any surround text, it
+    // is made bold.
     //
-    // Transparent outlines are no longer added, as they make the Tag look indistinguishable
-    // from a button – but the tag is not interactive in the same way.
+    // Transparent outlines are no longer added, as they make the Tag look
+    // indistinguishable from a button – but the tag is not interactive in the
+    // same way.
     @media screen and (forced-colors: active) {
       font-weight: bold;
     }
