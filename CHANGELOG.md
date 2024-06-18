@@ -22,6 +22,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 - [#5044: Remove session storage checks from accordion JavaScript](https://github.com/alphagov/govuk-frontend/pull/5044)
 - [#5060: Reintroduce additional bottom margin to Error Summary content](https://github.com/alphagov/govuk-frontend/pull/5060)
 - [#5070: Fix alignment of content in conditional checkboxes and radio buttons](https://github.com/alphagov/govuk-frontend/pull/5070)
+- [#5090: Remove redundant tag CSS from phase banner](https://github.com/alphagov/govuk-frontend/pull/5090)
 
 ## 5.4.0 (Feature release)
 

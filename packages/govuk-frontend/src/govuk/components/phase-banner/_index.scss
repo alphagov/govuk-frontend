@@ -25,14 +25,6 @@
         margin-right: govuk-spacing(2);
       }
     }
-
-    // When forced colour mode is active, for example to provide high contrast,
-    // the background colour of the tag is the same as the rest of the page. To ensure
-    // that the tag is perceived as separate to the rest of the text in the phase banner,
-    // it is made bold.
-    @media screen and (forced-colors: active) {
-      font-weight: bold;
-    }
   }
 
   .govuk-phase-banner__text {
