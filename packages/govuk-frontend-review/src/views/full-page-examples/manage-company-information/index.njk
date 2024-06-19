@@ -95,10 +95,12 @@ notes: Based on elements of Companies Houses company information view
 
 {% block header %}
   {{ govukHeader() }}
-  {{ govukPhaseBanner({
-    tag: { text: 'Alpha' },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
+  {% set phaseBanner %}
+    {{ govukPhaseBanner({
+      tag: { text: 'Alpha' },
+      html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    }) }}
+  {% endset %}
   {{ govukServiceHeader({
     serviceName: 'Manage company information',
     serviceUrl: '#/',
@@ -108,7 +110,10 @@ notes: Based on elements of Companies Houses company information view
       { href: '#/3', text: 'People', active: true },
       { href: '#/4', text: 'Registers' },
       { href: '#/4', text: 'More' }
-    ]
+    ],
+    slots: {
+      end: phaseBanner
+    }
   }) }}
 {% endblock %}
 

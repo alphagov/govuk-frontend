@@ -24,14 +24,19 @@ scenario: |
 
 {% block header %}
   {{ super() }}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "Beta"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
+  {% set phaseBanner %}
+    {{ govukPhaseBanner({
+      tag: {
+        text: "Beta"
+      },
+      html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    }) }}
+  {% endset %}
   {{ govukServiceHeader({
-    serviceName: "Apply for a passport"
+    serviceName: "Apply for a passport",
+    slots: {
+      end: phaseBanner
+    }
   }) }}
 {% endblock %}
 
