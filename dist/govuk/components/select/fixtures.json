@@ -1,0 +1,551 @@
+{
+    "component": "select",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "id": "select-1",
+                "name": "select-1",
+                "label": {
+                    "text": "Label text goes here"
+                },
+                "items": [
+                    {
+                        "value": 1,
+                        "text": "GOV.UK frontend option 1"
+                    },
+                    {
+                        "value": 2,
+                        "text": "GOV.UK frontend option 2",
+                        "selected": true
+                    },
+                    {
+                        "value": 3,
+                        "text": "GOV.UK frontend option 3",
+                        "disabled": true
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"select-1\">\n    Label text goes here\n  </label>\n  <select class=\"govuk-select\" id=\"select-1\" name=\"select-1\">\n    <option value=\"1\">GOV.UK frontend option 1</option>\n    <option value=\"2\" selected>GOV.UK frontend option 2</option>\n    <option value=\"3\" disabled>GOV.UK frontend option 3</option>\n  </select>\n</div>"
+        },
+        {
+            "name": "with no items",
+            "options": {
+                "id": "select-1",
+                "name": "select-1",
+                "label": {
+                    "text": "Horse with no name"
+                },
+                "items": []
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"select-1\">\n    Horse with no name\n  </label>\n  <select class=\"govuk-select\" id=\"select-1\" name=\"select-1\">\n  </select>\n</div>"
+        },
+        {
+            "name": "with selected value",
+            "options": {
+                "id": "select-1",
+                "name": "select-1",
+                "label": {
+                    "text": "Label text goes here"
+                },
+                "items": [
+                    {
+                        "value": 1,
+                        "text": "GOV.UK frontend option 1"
+                    },
+                    {
+                        "value": 2,
+                        "text": "GOV.UK frontend option 2"
+                    },
+                    {
+                        "value": 3,
+                        "text": "GOV.UK frontend option 3",
+                        "disabled": true
+                    }
+                ],
+                "value": 2
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"select-1\">\n    Label text goes here\n  </label>\n  <select class=\"govuk-select\" id=\"select-1\" name=\"select-1\">\n    <option value=\"1\">GOV.UK frontend option 1</option>\n    <option value=\"2\" selected>GOV.UK frontend option 2</option>\n    <option value=\"3\" disabled>GOV.UK frontend option 3</option>\n  </select>\n</div>"
+        },
+        {
+            "name": "with hint text and error message",
+            "options": {
+                "id": "select-2",
+                "name": "select-2",
+                "label": {
+                    "text": "Label text goes here"
+                },
+                "hint": {
+                    "text": "Hint text goes here"
+                },
+                "errorMessage": {
+                    "text": "Error message goes here"
+                },
+                "items": [
+                    {
+                        "value": 1,
+                        "text": "GOV.UK frontend option 1"
+                    },
+                    {
+                        "value": 2,
+                        "text": "GOV.UK frontend option 2"
+                    },
+                    {
+                        "value": 3,
+                        "text": "GOV.UK frontend option 3"
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"select-2\">\n    Label text goes here\n  </label>\n  <div id=\"select-2-hint\" class=\"govuk-hint\">\n    Hint text goes here\n  </div>\n  <p id=\"select-2-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message goes here\n  </p>\n  <select class=\"govuk-select govuk-select--error\" id=\"select-2\" name=\"select-2\" aria-describedby=\"select-2-hint select-2-error\">\n    <option value=\"1\">GOV.UK frontend option 1</option>\n    <option value=\"2\">GOV.UK frontend option 2</option>\n    <option value=\"3\">GOV.UK frontend option 3</option>\n  </select>\n</div>"
+        },
+        {
+            "name": "with label as page heading",
+            "options": {
+                "id": "select-3",
+                "name": "select-3",
+                "label": {
+                    "text": "Label text goes here",
+                    "classes": "govuk-label--l",
+                    "isPageHeading": true
+                },
+                "items": [
+                    {
+                        "value": 1,
+                        "text": "GOV.UK frontend option 1"
+                    },
+                    {
+                        "value": 2,
+                        "text": "GOV.UK frontend option 2",
+                        "selected": true
+                    },
+                    {
+                        "value": 3,
+                        "text": "GOV.UK frontend option 3",
+                        "disabled": true
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-form-group\">\n  <h1 class=\"govuk-label-wrapper\">\n    <label class=\"govuk-label govuk-label--l\" for=\"select-3\">\n      Label text goes here\n    </label>\n  </h1>\n  <select class=\"govuk-select\" id=\"select-3\" name=\"select-3\">\n    <option value=\"1\">GOV.UK frontend option 1</option>\n    <option value=\"2\" selected>GOV.UK frontend option 2</option>\n    <option value=\"3\" disabled>GOV.UK frontend option 3</option>\n  </select>\n</div>"
+        },
+        {
+            "name": "with full width override",
+            "options": {
+                "id": "select-1",
+                "name": "select-1",
+                "classes": "govuk-!-width-full",
+                "label": {
+                    "text": "Label text goes here"
+                },
+                "items": [
+                    {
+                        "value": 1,
+                        "text": "GOV.UK frontend option 1"
+                    },
+                    {
+                        "value": 2,
+                        "text": "GOV.UK frontend option 2",
+                        "selected": true
+                    },
+                    {
+                        "value": 3,
+                        "text": "GOV.UK frontend option 3",
+                        "disabled": true
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"select-1\">\n    Label text goes here\n  </label>\n  <select class=\"govuk-select govuk-!-width-full\" id=\"select-1\" name=\"select-1\">\n    <option value=\"1\">GOV.UK frontend option 1</option>\n    <option value=\"2\" selected>GOV.UK frontend option 2</option>\n    <option value=\"3\" disabled>GOV.UK frontend option 3</option>\n  </select>\n</div>"
+        },
+        {
+            "name": "with optional form-group classes",
+            "options": {
+                "id": "select-1",
+                "name": "select-1",
+                "classes": "govuk-!-width-full",
+                "label": {
+                    "text": "Label text goes here"
+                },
+                "formGroup": {
+                    "classes": "extra-class"
+                },
+                "items": [
+                    {
+                        "value": 1,
+                        "text": "GOV.UK frontend option 1"
+                    },
+                    {
+                        "value": 2,
+                        "text": "GOV.UK frontend option 2",
+                        "selected": true
+                    },
+                    {
+                        "value": 3,
+                        "text": "GOV.UK frontend option 3",
+                        "disabled": true
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-form-group extra-class\">\n  <label class=\"govuk-label\" for=\"select-1\">\n    Label text goes here\n  </label>\n  <select class=\"govuk-select govuk-!-width-full\" id=\"select-1\" name=\"select-1\">\n    <option value=\"1\">GOV.UK frontend option 1</option>\n    <option value=\"2\" selected>GOV.UK frontend option 2</option>\n    <option value=\"3\" disabled>GOV.UK frontend option 3</option>\n  </select>\n</div>"
+        },
+        {
+            "name": "with describedBy",
+            "options": {
+                "id": "with-describedby",
+                "name": "with-describedby",
+                "label": {
+                    "text": "Label text goes here"
+                },
+                "items": [
+                    {
+                        "value": 1,
+                        "text": "GOV.UK frontend option 1"
+                    },
+                    {
+                        "value": 2,
+                        "text": "GOV.UK frontend option 2"
+                    }
+                ],
+                "describedBy": "test-target-element"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-describedby\">\n    Label text goes here\n  </label>\n  <select class=\"govuk-select\" id=\"with-describedby\" name=\"with-describedby\" aria-describedby=\"test-target-element\">\n    <option value=\"1\">GOV.UK frontend option 1</option>\n    <option value=\"2\">GOV.UK frontend option 2</option>\n  </select>\n</div>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "id": "with-attributes",
+                "name": "with-attributes",
+                "label": {
+                    "text": "Label text goes here"
+                },
+                "items": [
+                    {
+                        "value": 1,
+                        "text": "GOV.UK frontend option 1"
+                    },
+                    {
+                        "value": 2,
+                        "text": "GOV.UK frontend option 2"
+                    }
+                ],
+                "attributes": {
+                    "data-attribute": "my data value"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-attributes\">\n    Label text goes here\n  </label>\n  <select class=\"govuk-select\" id=\"with-attributes\" name=\"with-attributes\" data-attribute=\"my data value\">\n    <option value=\"1\">GOV.UK frontend option 1</option>\n    <option value=\"2\">GOV.UK frontend option 2</option>\n  </select>\n</div>"
+        },
+        {
+            "name": "attributes on items",
+            "options": {
+                "id": "with-item-attributes",
+                "name": "with-item-attributes",
+                "label": {
+                    "text": "Label text goes here"
+                },
+                "value": 2,
+                "items": [
+                    {
+                        "text": "Option 1",
+                        "value": 1,
+                        "attributes": {
+                            "data-attribute": "ABC",
+                            "data-second-attribute": "DEF"
+                        }
+                    },
+                    {
+                        "text": "Option 2",
+                        "value": 2,
+                        "attributes": {
+                            "data-attribute": "GHI",
+                            "data-second-attribute": "JKL"
+                        }
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-item-attributes\">\n    Label text goes here\n  </label>\n  <select class=\"govuk-select\" id=\"with-item-attributes\" name=\"with-item-attributes\">\n    <option value=\"1\" data-attribute=\"ABC\" data-second-attribute=\"DEF\">Option 1</option>\n    <option value=\"2\" selected data-attribute=\"GHI\" data-second-attribute=\"JKL\">Option 2</option>\n  </select>\n</div>"
+        },
+        {
+            "name": "with falsy items",
+            "options": {
+                "id": "with-falsy-items",
+                "name": "with-falsy-items",
+                "label": {
+                    "text": "Label text goes here"
+                },
+                "items": [
+                    {
+                        "text": "Option 1",
+                        "value": 1
+                    },
+                    null,
+                    false,
+                    "",
+                    {
+                        "text": "Options 2",
+                        "value": 2
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-falsy-items\">\n    Label text goes here\n  </label>\n  <select class=\"govuk-select\" id=\"with-falsy-items\" name=\"with-falsy-items\">\n    <option value=\"1\">Option 1</option>\n    <option value=\"2\">Options 2</option>\n  </select>\n</div>"
+        },
+        {
+            "name": "hint",
+            "options": {
+                "id": "select-with-hint",
+                "name": "select-with-hint",
+                "label": {
+                    "text": "Label text goes here"
+                },
+                "hint": {
+                    "text": "Hint text goes here"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"select-with-hint\">\n    Label text goes here\n  </label>\n  <div id=\"select-with-hint-hint\" class=\"govuk-hint\">\n    Hint text goes here\n  </div>\n  <select class=\"govuk-select\" id=\"select-with-hint\" name=\"select-with-hint\" aria-describedby=\"select-with-hint-hint\">\n  </select>\n</div>"
+        },
+        {
+            "name": "hint and describedBy",
+            "options": {
+                "id": "select-with-hint",
+                "name": "select-with-hint",
+                "label": {
+                    "text": "Label text goes here"
+                },
+                "describedBy": "test-target-element",
+                "hint": {
+                    "text": "Hint text goes here"
+                },
+                "items": [
+                    {
+                        "value": 1,
+                        "text": "GOV.UK frontend option 1"
+                    },
+                    {
+                        "value": 2,
+                        "text": "GOV.UK frontend option 2"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"select-with-hint\">\n    Label text goes here\n  </label>\n  <div id=\"select-with-hint-hint\" class=\"govuk-hint\">\n    Hint text goes here\n  </div>\n  <select class=\"govuk-select\" id=\"select-with-hint\" name=\"select-with-hint\" aria-describedby=\"test-target-element select-with-hint-hint\">\n    <option value=\"1\">GOV.UK frontend option 1</option>\n    <option value=\"2\">GOV.UK frontend option 2</option>\n  </select>\n</div>"
+        },
+        {
+            "name": "error",
+            "options": {
+                "id": "select-with-error",
+                "name": "select-with-error",
+                "label": {
+                    "text": "Label text goes here"
+                },
+                "errorMessage": {
+                    "text": "Error message"
+                },
+                "items": [
+                    {
+                        "value": 1,
+                        "text": "GOV.UK frontend option 1"
+                    },
+                    {
+                        "value": 2,
+                        "text": "GOV.UK frontend option 2"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"select-with-error\">\n    Label text goes here\n  </label>\n  <p id=\"select-with-error-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </p>\n  <select class=\"govuk-select govuk-select--error\" id=\"select-with-error\" name=\"select-with-error\" aria-describedby=\"select-with-error-error\">\n    <option value=\"1\">GOV.UK frontend option 1</option>\n    <option value=\"2\">GOV.UK frontend option 2</option>\n  </select>\n</div>"
+        },
+        {
+            "name": "error and describedBy",
+            "options": {
+                "id": "select-with-error",
+                "name": "select-with-error",
+                "label": {
+                    "text": "Label text goes here"
+                },
+                "describedBy": "test-target-element",
+                "errorMessage": {
+                    "text": "Error message"
+                },
+                "items": [
+                    {
+                        "value": 1,
+                        "text": "GOV.UK frontend option 1"
+                    },
+                    {
+                        "value": 2,
+                        "text": "GOV.UK frontend option 2"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"select-with-error\">\n    Label text goes here\n  </label>\n  <p id=\"select-with-error-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </p>\n  <select class=\"govuk-select govuk-select--error\" id=\"select-with-error\" name=\"select-with-error\" aria-describedby=\"test-target-element select-with-error-error\">\n    <option value=\"1\">GOV.UK frontend option 1</option>\n    <option value=\"2\">GOV.UK frontend option 2</option>\n  </select>\n</div>"
+        },
+        {
+            "name": "without values",
+            "options": {
+                "name": "colors",
+                "id": "colors",
+                "label": {
+                    "text": "Label text goes here"
+                },
+                "items": [
+                    {
+                        "text": "Red"
+                    },
+                    {
+                        "text": "Green"
+                    },
+                    {
+                        "text": "Blue"
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"colors\">\n    Label text goes here\n  </label>\n  <select class=\"govuk-select\" id=\"colors\" name=\"colors\">\n    <option>Red</option>\n    <option>Green</option>\n    <option>Blue</option>\n  </select>\n</div>"
+        },
+        {
+            "name": "without values with selected value",
+            "options": {
+                "name": "colors",
+                "id": "colors",
+                "label": {
+                    "text": "Label text goes here"
+                },
+                "items": [
+                    {
+                        "text": "Red"
+                    },
+                    {
+                        "text": "Green"
+                    },
+                    {
+                        "text": "Blue"
+                    }
+                ],
+                "value": "Green"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"colors\">\n    Label text goes here\n  </label>\n  <select class=\"govuk-select\" id=\"colors\" name=\"colors\">\n    <option>Red</option>\n    <option selected>Green</option>\n    <option>Blue</option>\n  </select>\n</div>"
+        },
+        {
+            "name": "with falsy values",
+            "options": {
+                "name": "falsy-values",
+                "id": "falsy-values",
+                "label": {
+                    "text": "Label text goes here"
+                },
+                "items": [
+                    {
+                        "text": "Empty string",
+                        "value": ""
+                    },
+                    {
+                        "text": "Boolean false",
+                        "value": false
+                    },
+                    {
+                        "text": "Number zero",
+                        "value": 0
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"falsy-values\">\n    Label text goes here\n  </label>\n  <select class=\"govuk-select\" id=\"falsy-values\" name=\"falsy-values\">\n    <option value=\"\">Empty string</option>\n    <option value=\"false\">Boolean false</option>\n    <option value=\"0\">Number zero</option>\n  </select>\n</div>"
+        },
+        {
+            "name": "item selected overrides value",
+            "options": {
+                "name": "colors",
+                "id": "colors",
+                "label": {
+                    "text": "Label text goes here"
+                },
+                "items": [
+                    {
+                        "value": "red",
+                        "text": "Red"
+                    },
+                    {
+                        "value": "green",
+                        "text": "Green",
+                        "selected": false
+                    },
+                    {
+                        "value": "blue",
+                        "text": "Blue"
+                    }
+                ],
+                "value": "green"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"colors\">\n    Label text goes here\n  </label>\n  <select class=\"govuk-select\" id=\"colors\" name=\"colors\">\n    <option value=\"red\">Red</option>\n    <option value=\"green\">Green</option>\n    <option value=\"blue\">Blue</option>\n  </select>\n</div>"
+        }
+    ]
+}

@@ -1,0 +1,132 @@
+{% from "../../macros/attributes.njk" import govukAttributes %}
+{% from "../error-message/macro.njk" import govukErrorMessage %}
+{% from "../hint/macro.njk" import govukHint %}
+{% from "../label/macro.njk" import govukLabel %}
+
+{#- Set classes for this component #}
+{%- set classNames = "govuk-input" -%}
+
+{%- if params.classes %}
+  {% set classNames = classNames + " " + params.classes %}
+{% endif %}
+
+{%- if params.errorMessage %}
+  {% set classNames = classNames + " govuk-input--error" %}
+{% endif %}
+
+{#- a record of other elements that we need to associate with the input using
+  aria-describedby – for example hints or error messages -#}
+{% set describedBy = params.describedBy if params.describedBy else undefined -%}
+
+{%- set hasPrefix = true if params.prefix and (params.prefix.text or params.prefix.html) else false %}
+{%- set hasSuffix = true if params.suffix and (params.suffix.text or params.suffix.html) else false %}
+{%- set hasBeforeInput = true if params.formGroup.beforeInput and (params.formGroup.beforeInput.text or params.formGroup.beforeInput.html) else false %}
+{%- set hasAfterInput = true if params.formGroup.afterInput and (params.formGroup.afterInput.text or params.formGroup.afterInput.html) else false %}
+
+{%- macro _inputElement(params) -%}
+  <input
+    {{- govukAttributes({
+      class: classNames,
+      id: params.id,
+      name: params.name,
+      type: params.type | default("text", true),
+      spellcheck: {
+        value: params.spellcheck | string
+          if [true, false].includes(params.spellcheck)
+          else false,
+        optional: true
+      },
+      value: {
+        value: params.value,
+        optional: true
+      },
+      disabled: {
+        value: params.disabled,
+        optional: true
+      },
+      "aria-describedby": {
+        value: describedBy,
+        optional: true
+      },
+      autocomplete: {
+        value: params.autocomplete,
+        optional: true
+      },
+      autocapitalize: {
+        value: params.autocapitalize,
+        optional: true
+      },
+      pattern: {
+        value: params.pattern,
+        optional: true
+      },
+      inputmode: {
+        value: params.inputmode,
+        optional: true
+      }
+    }) -}}
+
+    {{- govukAttributes(params.attributes) }}>
+{%- endmacro -%}
+
+{%- macro _affixItem(affix, type) %}
+  <div class="govuk-input__{{ type }} {%- if affix.classes %} {{ affix.classes }}{% endif %}" aria-hidden="true" {{- govukAttributes(affix.attributes) }}>
+    {{- affix.html | safe | trim | indent(4) if affix.html else affix.text -}}
+  </div>
+{%- endmacro -%}
+
+<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}"
+  {{- govukAttributes(params.formGroup.attributes) }}>
+  {{ govukLabel({
+    html: params.label.html,
+    text: params.label.text,
+    classes: params.label.classes,
+    isPageHeading: params.label.isPageHeading,
+    attributes: params.label.attributes,
+    for: params.id
+  }) | trim | indent(2) }}
+{% if params.hint %}
+  {% set hintId = params.id + '-hint' %}
+  {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
+  {{ govukHint({
+    id: hintId,
+    classes: params.hint.classes,
+    attributes: params.hint.attributes,
+    html: params.hint.html,
+    text: params.hint.text
+  }) | trim | indent(2) }}
+{% endif %}
+{% if params.errorMessage %}
+  {% set errorId = params.id + '-error' %}
+  {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
+  {{ govukErrorMessage({
+    id: errorId,
+    classes: params.errorMessage.classes,
+    attributes: params.errorMessage.attributes,
+    html: params.errorMessage.html,
+    text: params.errorMessage.text,
+    visuallyHiddenText: params.errorMessage.visuallyHiddenText
+  }) | trim | indent(2) }}
+{% endif %}
+
+{%- if hasPrefix or hasSuffix or hasBeforeInput or hasAfterInput %}
+  <div class="govuk-input__wrapper {%- if params.inputWrapper.classes %} {{ params.inputWrapper.classes }}{% endif %}"
+    {{- govukAttributes(params.inputWrapper.attributes) }}>
+    {% if hasBeforeInput %}
+      {{- params.formGroup.beforeInput.html | safe | trim | indent(4, true) if params.formGroup.beforeInput.html else params.formGroup.beforeInput.text }}
+    {% endif %}
+    {% if hasPrefix %}
+      {{- _affixItem(params.prefix, "prefix") | indent(2, true) }}
+    {% endif %}
+    {{ _inputElement(params) }}
+    {% if hasSuffix %}
+      {{- _affixItem(params.suffix, "suffix") | indent(2, true) }}
+    {% endif %}
+    {% if hasAfterInput %}
+      {{- params.formGroup.afterInput.html | safe | trim | indent(4, true) if params.formGroup.afterInput.html else params.formGroup.afterInput.text }}
+    {% endif %}
+  </div>
+{% else %}
+  {{ _inputElement(params) }}
+{% endif %}
+</div>

@@ -1,0 +1,26 @@
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#tab-1">
+        Tab 1
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#tab-2">
+        Tab 2
+      </a>
+    </li>
+  </ul>
+  <div class="govuk-tabs__panel" id="tab-1">
+    <h2 class="govuk-heading-l">Tab 1</h2>
+    <p class="govuk-body">Testing that when you click the anchor it moves to the anchor point successfully</p>
+    <p class="govuk-body"><a class="govuk-link" href="#anchor">Anchor</a></p>
+    <p class="govuk-body"><a id="anchor" tabindex="0">Anchor Point</a></p>
+  </div>
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="tab-2">
+    <h2 class="govuk-heading-l">Tab 2</h2>
+  </div>
+</div>

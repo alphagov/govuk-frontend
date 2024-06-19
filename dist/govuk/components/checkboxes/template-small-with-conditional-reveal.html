@@ -1,0 +1,25 @@
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend">
+      How do you want to be contacted?
+    </legend>
+    <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="how-contacted" name="how-contacted" type="checkbox" value="a" data-aria-controls="conditional-how-contacted">
+        <label class="govuk-label govuk-checkboxes__label" for="how-contacted">
+          a thing
+        </label>
+      </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-how-contacted">
+        <label class="govuk-label" for="context-email">Foo</label>
+  <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="how-contacted-2" name="how-contacted" type="checkbox" value="b">
+        <label class="govuk-label govuk-checkboxes__label" for="how-contacted-2">
+          another thing
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>

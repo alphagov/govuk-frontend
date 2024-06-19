@@ -1,0 +1,148 @@
+@include govuk-exports("govuk/component/service-header") {
+  $govuk-service-header-background: $govuk-canvas-background-colour;
+  $govuk-service-header-border-color: $govuk-border-colour;
+  $govuk-service-header-active-link-border-width: govuk-spacing(1);
+
+  .govuk-service-header__container {
+    display: flex;
+    padding-top: $govuk-service-header-active-link-border-width;
+    border-bottom: 1px solid $govuk-service-header-border-color;
+    background-color: $govuk-service-header-background;
+
+    @include govuk-media-query($until: tablet) {
+      flex-direction: column;
+      align-items: start;
+      margin-bottom: govuk-spacing(1);
+    }
+
+    @include govuk-media-query($from: tablet) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+
+  .govuk-service-header__link {
+    @include govuk-link-common;
+    @include govuk-link-style-default;
+    @include govuk-link-style-no-visited-state;
+
+    // Don't show underlines on navigation links (on hover only)
+    &:not(:hover) {
+      text-decoration: none;
+    }
+
+    // Extend the clickable area of the link to fill the entire
+    // list item container.
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  .govuk-service-header__link--service-name {
+    @include govuk-link-style-text;
+  }
+
+  // Shared styles between service name container and nav items
+  .govuk-service-header__service-name,
+  .govuk-service-header__navigation-item {
+    position: relative;
+
+    @include govuk-media-query($from: tablet) {
+      display: inline-block;
+      padding: govuk-spacing(3) 0;
+    }
+  }
+
+  .govuk-service-header__service-name {
+    @include govuk-font($size: 19, $weight: bold);
+    margin: govuk-spacing(1) 0;
+
+    @include govuk-media-query($from: tablet) {
+      margin-top: 0;
+
+      // Add a little extra space to the bottom of the service name so that it
+      // has the same visual height as navigation items.
+      margin-bottom: $govuk-service-header-active-link-border-width;
+    }
+  }
+
+  .govuk-service-header__toggle {
+    @include govuk-font($size: 19, $weight: bold);
+    display: inline-flex;
+    margin: govuk-spacing(1) 0;
+    padding: 0;
+    border: 0;
+    color: $govuk-link-colour;
+    background: none;
+    word-break: break-all;
+    cursor: pointer;
+    align-items: center;
+
+    &::after {
+      @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
+      content: "";
+      margin-left: govuk-spacing(1);
+    }
+
+    &[aria-expanded="true"]::after {
+      @include govuk-shape-arrow($direction: up, $base: 10px, $display: inline-block);
+    }
+
+    // Ensure the button stays hidden if the hidden attribute is present
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  .govuk-service-header__navigation-list {
+    @include govuk-font($size: 19);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .govuk-service-header__navigation-item {
+    margin: govuk-spacing(2) 0;
+    border: 0 solid;
+
+    @include govuk-media-query($from: tablet) {
+      margin: 0 govuk-spacing(6) 0 0;
+
+      &:last-of-type {
+        margin: 0;
+      }
+    }
+  }
+
+  .govuk-service-header__navigation-item--active {
+    border-color: $govuk-link-colour;
+
+    @include govuk-media-query($until: tablet) {
+      // Negative offset the left margin so we can place a current page indicator
+      // to the left without misaligning the list item text.
+      margin-left: ((govuk-spacing(2) + $govuk-service-header-active-link-border-width) * -1);
+      padding-left: govuk-spacing(2);
+      border-left-width: $govuk-service-header-active-link-border-width;
+    }
+
+    @include govuk-media-query($from: tablet) {
+      border-bottom-width: $govuk-service-header-active-link-border-width;
+    }
+  }
+
+  // This is a <strong> element that is used as a fallback mechanism for
+  // visually indicating the current page in scenarios where CSS is unavailable
+  // or colours may have been overridden. We don't actually want it to be bold
+  // normally, so set it to regular weight.
+  .govuk-service-header__active-fallback {
+    @include govuk-typography-weight-regular;
+  }
+}
+
+/*# sourceMappingURL=_index.scss.map */
