@@ -4,14 +4,14 @@
 {%- set navigationId = params.navigationId | default("navigation", true) %}
 
 {% if params.serviceName or params.navigation | length %}
-  <div class="govuk-service-header {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-service-header"
-    role="region" aria-label="Service information and navigation" {{- govukAttributes(params.attributes) }}>
+  <section class="govuk-service-header {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-service-header" aria-label="Service information and navigation"
+  {{- govukAttributes(params.attributes) }}>
     <div class="govuk-width-container">
 
         {# Slot: start #}
         {%- if params.slots.start %}{{ params.slots.start | safe }}{% endif -%}
 
-        <section class="govuk-service-header__container">
+        <div class="govuk-service-header__container">
           {# Service name #}
           {% if params.serviceName %}
             <span class="govuk-service-header__service-name">
@@ -64,11 +64,11 @@
               </ul>
             </nav>
           {% endif %}
-        </section>
+        </div>
 
         {# Slot: end #}
         {%- if params.slots.end %}{{ params.slots.end | safe }}{% endif -%}
 
     </div>
-  </div>
+  </section>
 {% endif %}

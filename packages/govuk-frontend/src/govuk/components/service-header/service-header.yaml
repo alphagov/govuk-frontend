@@ -290,30 +290,3 @@ examples:
         end: '<div>[end]</div>'
         navigationStart: '<li>[navigation start]</li>'
         navigationEnd: '<li>[navigation end]</li>'
-  - name: with phase banner
-    hidden: true
-    options:
-      serviceName: Apply for a juggling license
-      serviceUrl: '#/'
-      navigation:
-        - href: '#/1'
-          text: Navigation item 1
-        - href: '#/2'
-          text: Navigation item 2
-          active: true
-        - href: '#/3'
-          text: Navigation item 3
-        - href: '#/4'
-          text: Navigation item 4
-      slots:
-        end: |
-          <div class="govuk-phase-banner">
-          <p class="govuk-phase-banner__content">
-          <strong class="govuk-tag govuk-phase-banner__content__tag">
-          Alpha
-          </strong>
-          <span class="govuk-phase-banner__text">
-          This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback by email</a>.
-          </span>
-          </p>
-          </div>

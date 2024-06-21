@@ -33,11 +33,4 @@
     display: table-cell;
     vertical-align: middle;
   }
-
-  // Teams can optionally decide to put the phase banner into the header
-  // instead. In that scenario, we need to apply some different styles to
-  // control the element's width.
-  .govuk-template__header .govuk-phase-banner__content {
-    @include govuk-width-container;
-  }
 }
