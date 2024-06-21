@@ -185,12 +185,15 @@ notes: |
       </ul>
 
       {{ govukPagination({
+        previous: {
+          href: "#"
+        },
         next: {
           href: "#"
         },
         items: [
-          { href: "#", number: 1, current: true },
-          { href: "#", number: 2 },
+          { href: "#", number: 1 },
+          { href: "#", number: 2, current: true },
           { href: "#", number: 3 },
           { ellipsis: true },
           { href: "#", number: 2939 }
