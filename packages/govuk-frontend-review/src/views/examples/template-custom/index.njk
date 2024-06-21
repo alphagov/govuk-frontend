@@ -51,14 +51,12 @@
     containerClasses: "app-width-container--wide"
   }) }}
 
-  {% set phaseBanner %}
-    {{ govukPhaseBanner({
-      tag: {
-        text: "Alpha"
-      },
-      html: 'C\'est un nouveau service - vos <a class="govuk-link" href="#">commentaires</a> nous aideront à l\'améliorer.'
-    }) }}
-  {% endset %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Alpha"
+    },
+    html: 'C\'est un nouveau service - vos <a class="govuk-link" href="#">commentaires</a> nous aideront à l\'améliorer.'
+  }) }}
 
   {{ govukServiceHeader({
     serviceName: "Nom du service",
@@ -76,10 +74,7 @@
         href: '#3',
         text: 'Élément de navigation 3'
       }
-    ],
-    slots: {
-      end: phaseBanner
-    }
+    ]
   }) }}
   <!-- endblock:header -->
 {% endblock %}
