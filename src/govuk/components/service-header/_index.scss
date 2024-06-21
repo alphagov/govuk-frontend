@@ -3,11 +3,14 @@
   $govuk-service-header-border-color: $govuk-border-colour;
   $govuk-service-header-active-link-border-width: govuk-spacing(1);
 
+  .govuk-service-header {
+    border-bottom: 1px solid $govuk-service-header-border-color;
+    background-color: $govuk-service-header-background;
+  }
+
   .govuk-service-header__container {
     display: flex;
     padding-top: $govuk-service-header-active-link-border-width;
-    border-bottom: 1px solid $govuk-service-header-border-color;
-    background-color: $govuk-service-header-background;
 
     @include govuk-media-query($until: tablet) {
       flex-direction: column;
