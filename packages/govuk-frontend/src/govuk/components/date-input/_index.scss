@@ -6,8 +6,7 @@
 @include govuk-exports("govuk/component/date-input") {
   .govuk-date-input {
     @include govuk-clearfix;
-    // font-size: 0 removes whitespace caused by inline-block
-    font-size: 0;
+    font-size: 0; // removes whitespace caused by inline-block
   }
 
   .govuk-date-input__item {
