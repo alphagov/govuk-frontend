@@ -4,11 +4,11 @@
 
   .govuk-cookie-banner {
     padding-top: govuk-spacing(4);
-    // The component does not set bottom spacing.
-    // The bottom spacing should be created by the items inside the component.
+    // The component does not set bottom spacing. The bottom spacing should be
+    // created by the items inside the component.
 
-    // Visually separate the cookie banner from content underneath
-    // when user changes colours in their browser.
+    // Visually separate the cookie banner from content underneath when user
+    // changes colours in their browser.
     border-bottom: $border-bottom-width solid transparent;
 
     background-color: $govuk-canvas-background-colour;
@@ -25,21 +25,24 @@
     margin-bottom: -$border-bottom-width;
 
     &[hidden] {
-      // Support older browsers which don't hide elements with the `hidden` attribute
-      // when the visibility of cookie and replacement messages is toggled.
+      // Support older browsers which don't hide elements with the `hidden`
+      // attribute when the visibility of cookie and replacement messages is
+      // toggled.
       display: none;
     }
 
     &:focus {
-      // Remove the native visible focus indicator when the element is programmatically focused.
+      // Remove the native visible focus indicator when the element is
+      // programmatically focused.
       //
-      // The focused cookie banner is the first element on the page and the last thing the user
-      // interacted with prior to it gaining focus.
-      // We therefore assume that moving focus to it is not going to surprise users, and that giving
-      // it a visible focus indicator could be more confusing than helpful, especially as the
-      // element is not normally keyboard operable.
+      // The focused cookie banner is the first element on the page and the last
+      // thing the user interacted with prior to it gaining focus. We therefore
+      // assume that moving focus to it is not going to surprise users, and that
+      // giving it a visible focus indicator could be more confusing than
+      // helpful, especially as the element is not normally keyboard operable.
       //
-      // We have flagged this in the research section of the guidance as something to monitor.
+      // We have flagged this in the research section of the guidance as
+      // something to monitor.
       //
       // A related discussion: https://github.com/w3c/wcag/issues/1001
       outline: none;

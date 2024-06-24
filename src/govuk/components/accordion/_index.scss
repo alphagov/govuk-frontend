@@ -102,9 +102,9 @@
       &:hover {
         color: $govuk-accordion-base-colour;
         background: $govuk-accordion-hover-colour;
-        // The GOV.UK Design System focus state adds a box-shadow to the top and bottom of the
-        // button. We add a grey box-shadow on hover too, to make the height of the hover state
-        // match the height of the focus state.
+        // The focus state adds a box-shadow to the top and bottom of the
+        // button. We add a grey box-shadow on hover too, to make the height of
+        // the hover state match the height of the focus state.
         box-shadow:
           0 -2px $govuk-accordion-hover-colour,
           0 4px $govuk-accordion-hover-colour;
@@ -147,7 +147,7 @@
 
       position: relative;
 
-      // Set size using rems to make the icon scale with text if user resizes text in their browser
+      // Set size using rems so icon scales with text
       width: govuk-px-to-rem(20px);
       height: govuk-px-to-rem(20px);
 
@@ -190,8 +190,9 @@
 
       border-top: $govuk-accordion-bottom-border-width solid $govuk-border-colour;
 
-      // Visually separate the section from the one underneath when user changes colours in their
-      // browser. See https://github.com/alphagov/govuk-frontend/issues/2321#issuecomment-924201488
+      // Visually separate the section from the one underneath when user changes
+      // colours in their browser. See
+      // https://github.com/alphagov/govuk-frontend/issues/2321#issuecomment-924201488
       border-bottom: govuk-spacing(2) solid transparent;
 
       color: $govuk-text-colour;
@@ -230,8 +231,8 @@
       }
 
       &:focus {
-        // Remove default focus border around button as
-        // styling is being applied to inner text elements that receive focus
+        // Remove default focus border around button as styling is being applied
+        // to inner text elements that receive focus
         outline: 0;
 
         .govuk-accordion__section-heading-text-focus,
@@ -257,9 +258,10 @@
       }
     }
 
-    // Remove the transparent border when the section is expanded to make it clear that the heading
-    // relates to the content below. Adjust padding to maintain the height of the element.
-    // See https://github.com/alphagov/govuk-frontend/pull/2257#issuecomment-951920798
+    // Remove the transparent border when the section is expanded to make it
+    // clear that the heading relates to the content below. Adjust padding to
+    // maintain the height of the element. See
+    // https://github.com/alphagov/govuk-frontend/pull/2257#issuecomment-951920798
     .govuk-accordion__section--expanded .govuk-accordion__section-button {
       padding-bottom: govuk-spacing(3);
       border-bottom: 0;
@@ -269,8 +271,8 @@
       }
     }
 
-    // As Chevron icon is vertically aligned it overlaps with the focus state bottom border
-    // Styling adds some spacing
+    // As Chevron icon is vertically aligned it overlaps with the focus state
+    // bottom border – this adds some spacing
     .govuk-accordion__section-button:focus .govuk-accordion__section-toggle-focus {
       padding-bottom: 3px;
 
@@ -299,9 +301,9 @@
       color: $govuk-link-colour;
     }
 
-    // Add space between the icon and text.
-    // Avoid applying spacing directly to the icon as the use of `transform` will change the
-    // placement of any margins.
+    // Add space between the icon and text. Avoid applying spacing directly to
+    // the icon as the use of `transform` will change the placement of any
+    // margins.
     .govuk-accordion__show-all-text,
     .govuk-accordion__section-toggle-text {
       margin-left: govuk-spacing(1);
@@ -310,23 +312,25 @@
 
     // Background colour adjustment when user changes colours in Firefox
     //
-    // When user changes colours in Firefox, text colour inside <button> is always black
-    // (regardless of the custom colours the user has set). This is fine when the text in the
-    // button is not nested inside another element because when user changes colours in Firefox,
-    // the immediate background colour of buttons is always white (again, regardless of user's
-    // custom colours).
+    // When user changes colours in Firefox, text colour inside <button> is
+    // always black (regardless of the custom colours the user has set). This is
+    // fine when the text in the button is not nested inside another element
+    // because when user changes colours in Firefox, the immediate background
+    // colour of buttons is always white (again, regardless of user's custom
+    // colours).
     //
-    // However, when the text inside <button> is wrapped inside another element AND that element
-    // sets a background colour, the text colour is still black but the background of that nested
-    // element gets the user's custom background colour. When the custom background is a lighter
-    // hue, the contrast might be sufficient. But if the user's custom background colour is a
-    // darker colour, the contrast with the text might not be sufficient.
+    // However, when the text inside <button> is wrapped inside another element
+    // AND that element sets a background colour, the text colour is still black
+    // but the background of that nested element gets the user's custom
+    // background colour. When the custom background is a lighter hue, the
+    // contrast might be sufficient. But if the user's custom background colour
+    // is a darker colour, the contrast with the text might not be sufficient.
     //
-    // To ensure sufficient contrast, override the background colour set by the focus state on the
-    // nested elements to be transparent.
+    // To ensure sufficient contrast, override the background colour set by the
+    // focus state on the nested elements to be transparent.
     //
-    // Also override the background colour of the Show/Hide chevrons which set a background colour
-    // on hover.
+    // Also override the background colour of the Show/Hide chevrons which set a
+    // background colour on hover.
     @media screen and (forced-colors: active) {
       .govuk-accordion__show-all:hover,
       .govuk-accordion__section-button:hover {

@@ -11,11 +11,13 @@
     list-style-type: none;
   }
 
-  // This uses table layout so that the task name and status always appear side-by-side, with the width of
-  // each 'column' being flexible depending upon the length of the task names and statuses.
+  // This uses table layout so that the task name and status always appear
+  // side-by-side, with the width of each 'column' being flexible depending upon
+  // the length of the task names and statuses.
   //
-  // The position is set to 'relative' so than an absolutely-positioned transparent element box
-  // can be added within the link so that the whole row can be clickable.
+  // The position is set to 'relative' so than an absolutely-positioned
+  // transparent element box can be added within the link so that the whole row
+  // can be clickable.
   .govuk-task-list__item {
     display: table;
     position: relative;
@@ -30,9 +32,9 @@
     border-top: 1px solid $govuk-border-colour;
   }
 
-  // This class is added to the <li> elements where the task name is a link.
-  // The background hover colour is added to help indicate that the whole row is clickable, rather
-  // than just the visible link text.
+  // This class is added to the <li> elements where the task name is a link. The
+  // background hover colour is added to help indicate that the whole row is
+  // clickable, rather than just the visible link text.
   .govuk-task-list__item--with-link:hover {
     background: $govuk-task-list-hover-colour;
   }
@@ -55,9 +57,9 @@
     color: $govuk-secondary-text-colour;
   }
 
-  // This adds an empty transparent box covering the whole row, including the task status and
-  // any hint text. Because this is generated within the link element, this allows the whole area
-  // to be clickable.
+  // This adds an empty transparent box covering the whole row, including the
+  // task status and any hint text. Because this is generated within the link
+  // element, this allows the whole area to be clickable.
   .govuk-task-list__link::after {
     content: "";
     display: block;

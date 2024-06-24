@@ -7,9 +7,8 @@
     @include govuk-clearfix;
   }
 
-  // Fix for Firefox < 53
-  // https://bugzilla.mozilla.org/show_bug.cgi?id=504622
-  // stylelint-disable selector-type-no-unknown -- Ignore unknown 'x:-moz-any-link'
+  // Fix for Firefox < 53 (https://bugzil.la/504622)
+  // stylelint-disable selector-type-no-unknown -- Ignore 'x:-moz-any-link'
   @supports not (caret-color: auto) {
     .govuk-fieldset,
     x:-moz-any-link {
@@ -59,8 +58,7 @@
   }
 
   // When the legend contains an H1, we want the H1 to inherit all styles from
-  // the legend. Effectively we want to be able to treat the heading as if it is
-  // not there.
+  // the legend. Effectively treat the heading as if it is not there.
   .govuk-fieldset__heading {
     margin: 0;
     font-size: inherit;
