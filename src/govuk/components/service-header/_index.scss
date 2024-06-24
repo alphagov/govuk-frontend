@@ -108,6 +108,18 @@
     margin: 0;
     padding: 0;
     list-style: none;
+
+    // Make the navigation list a flexbox. Doing so resolves a couple of
+    // accessibility problems caused by the list items being inline-blocks:
+    //
+    // - Removes the extra whitespace from between each list item that screen
+    //   readers would pointlessly announce.
+    // - Fixes an NVDA issue in Firefox and Chrome <= 124 where it would read
+    //   all of the links as a run-on sentence.
+    @include govuk-media-query($from: tablet) {
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
 
   .govuk-service-header__navigation-item {
