@@ -1,0 +1,13 @@
+{% from "../../macros/attributes.njk" import govukAttributes -%}
+
+{% set visuallyHiddenText = params.visuallyHiddenText | default("Error") -%}
+{% set errorMessageText = params.html | safe | trim | indent(2) if params.html else params.text -%}
+
+<p {%- if params.id %} id="{{ params.id }}"{% endif %} class="govuk-error-message {%- if params.classes %} {{ params.classes }}{% endif %}"
+  {{- govukAttributes(params.attributes) }}>
+  {% if visuallyHiddenText %}
+  <span class="govuk-visually-hidden">{{ visuallyHiddenText }}:</span> {{ errorMessageText }}
+  {% else %}
+  {{ errorMessageText }}
+  {% endif %}
+</p>

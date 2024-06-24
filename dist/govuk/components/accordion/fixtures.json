@@ -1,0 +1,372 @@
+{
+    "component": "accordion",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "id": "default-example",
+                "items": [
+                    {
+                        "heading": {
+                            "text": "Section A"
+                        },
+                        "content": {
+                            "text": "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post."
+                        }
+                    },
+                    {
+                        "heading": {
+                            "text": "Section B"
+                        },
+                        "content": {
+                            "html": "<ul class=\"govuk-list govuk-list--bullet\">\n  <li>Example item 2</li>\n</ul>\n"
+                        }
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-accordion\" data-module=\"govuk-accordion\" id=\"default-example\">\n  <div class=\"govuk-accordion__section\">\n    <div class=\"govuk-accordion__section-header\">\n      <h2 class=\"govuk-accordion__section-heading\">\n        <span class=\"govuk-accordion__section-button\" id=\"default-example-heading-1\">\n          Section A\n        </span>\n      </h2>\n    </div>\n    <div id=\"default-example-content-1\" class=\"govuk-accordion__section-content\">\n      <p class=\"govuk-body\">\n        We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.\n      </p>\n    </div>\n  </div>\n  <div class=\"govuk-accordion__section\">\n    <div class=\"govuk-accordion__section-header\">\n      <h2 class=\"govuk-accordion__section-heading\">\n        <span class=\"govuk-accordion__section-button\" id=\"default-example-heading-2\">\n          Section B\n        </span>\n      </h2>\n    </div>\n    <div id=\"default-example-content-2\" class=\"govuk-accordion__section-content\">\n      <ul class=\"govuk-list govuk-list--bullet\">\n        <li>Example item 2</li>\n      </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "with additional descriptions",
+            "options": {
+                "id": "with-descriptions",
+                "items": [
+                    {
+                        "heading": {
+                            "text": "Test"
+                        },
+                        "summary": {
+                            "text": "Additional description"
+                        },
+                        "content": {
+                            "html": "<p class=\"govuk-body\">\n  We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.\n</p>\n<ul class=\"govuk-list govuk-list--bullet\">\n  <li>Example item 1</li>\n</ul>\n"
+                        }
+                    },
+                    {
+                        "heading": {
+                            "text": "Test 2"
+                        },
+                        "summary": {
+                            "html": "<span class=\"govuk-!-font-weight-regular\">Additional description (wrapped in span)</span>"
+                        },
+                        "content": {
+                            "html": "<ul class=\"govuk-list govuk-list--bullet\">\n  <li>Example item 2</li>\n</ul>\n"
+                        }
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-accordion\" data-module=\"govuk-accordion\" id=\"with-descriptions\">\n  <div class=\"govuk-accordion__section\">\n    <div class=\"govuk-accordion__section-header\">\n      <h2 class=\"govuk-accordion__section-heading\">\n        <span class=\"govuk-accordion__section-button\" id=\"with-descriptions-heading-1\">\n          Test\n        </span>\n      </h2>\n      <div class=\"govuk-accordion__section-summary govuk-body\" id=\"with-descriptions-summary-1\">\n        Additional description\n      </div>\n    </div>\n    <div id=\"with-descriptions-content-1\" class=\"govuk-accordion__section-content\">\n      <p class=\"govuk-body\">\n        We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.\n      </p>\n      <ul class=\"govuk-list govuk-list--bullet\">\n        <li>Example item 1</li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"govuk-accordion__section\">\n    <div class=\"govuk-accordion__section-header\">\n      <h2 class=\"govuk-accordion__section-heading\">\n        <span class=\"govuk-accordion__section-button\" id=\"with-descriptions-heading-2\">\n          Test 2\n        </span>\n      </h2>\n      <div class=\"govuk-accordion__section-summary govuk-body\" id=\"with-descriptions-summary-2\">\n        <span class=\"govuk-!-font-weight-regular\">Additional description (wrapped in span)</span>\n      </div>\n    </div>\n    <div id=\"with-descriptions-content-2\" class=\"govuk-accordion__section-content\">\n      <ul class=\"govuk-list govuk-list--bullet\">\n        <li>Example item 2</li>\n      </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "with long content and description",
+            "options": {
+                "id": "with-long-content-and-description",
+                "items": [
+                    {
+                        "heading": {
+                            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis tortor porttitor."
+                        },
+                        "summary": {
+                            "text": "Etiam diam dui, tempus ut pharetra in, aliquet non dui. Nunc pulvinar maximus tortor, ac finibus augue congue vitae. Donec sed cursus lorem."
+                        },
+                        "content": {
+                            "html": "<ul class=\"govuk-list govuk-list--bullet\">\n  <li>Example item 1</li>\n</ul>\n"
+                        }
+                    },
+                    {
+                        "heading": {
+                            "text": "Praesent faucibus leo feugiat libero pharetra lacinia. Aliquam aliquet ante vitae mollis vestibulum."
+                        },
+                        "summary": {
+                            "html": "<span class=\"govuk-!-font-weight-regular\">Maecenas nec <abbr>est</abbr> sapien. Etiam varius luctus mauris non porttitor. </span>"
+                        },
+                        "content": {
+                            "html": "<ul class=\"govuk-list govuk-list--bullet\">\n  <li>Example item 2</li>\n</ul>\n"
+                        }
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-accordion\" data-module=\"govuk-accordion\" id=\"with-long-content-and-description\">\n  <div class=\"govuk-accordion__section\">\n    <div class=\"govuk-accordion__section-header\">\n      <h2 class=\"govuk-accordion__section-heading\">\n        <span class=\"govuk-accordion__section-button\" id=\"with-long-content-and-description-heading-1\">\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis tortor porttitor.\n        </span>\n      </h2>\n      <div class=\"govuk-accordion__section-summary govuk-body\" id=\"with-long-content-and-description-summary-1\">\n        Etiam diam dui, tempus ut pharetra in, aliquet non dui. Nunc pulvinar maximus tortor, ac finibus augue congue vitae. Donec sed cursus lorem.\n      </div>\n    </div>\n    <div id=\"with-long-content-and-description-content-1\" class=\"govuk-accordion__section-content\">\n      <ul class=\"govuk-list govuk-list--bullet\">\n        <li>Example item 1</li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"govuk-accordion__section\">\n    <div class=\"govuk-accordion__section-header\">\n      <h2 class=\"govuk-accordion__section-heading\">\n        <span class=\"govuk-accordion__section-button\" id=\"with-long-content-and-description-heading-2\">\n          Praesent faucibus leo feugiat libero pharetra lacinia. Aliquam aliquet ante vitae mollis vestibulum.\n        </span>\n      </h2>\n      <div class=\"govuk-accordion__section-summary govuk-body\" id=\"with-long-content-and-description-summary-2\">\n        <span class=\"govuk-!-font-weight-regular\">Maecenas nec <abbr>est</abbr> sapien. Etiam varius luctus mauris non porttitor. </span>\n      </div>\n    </div>\n    <div id=\"with-long-content-and-description-content-2\" class=\"govuk-accordion__section-content\">\n      <ul class=\"govuk-list govuk-list--bullet\">\n        <li>Example item 2</li>\n      </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "with one section open",
+            "options": {
+                "id": "one-section-open-example",
+                "items": [
+                    {
+                        "heading": {
+                            "text": "Section A"
+                        },
+                        "expanded": true,
+                        "content": {
+                            "html": "<ul class=\"govuk-list govuk-list--bullet\">\n  <li>Example item 1</li>\n</ul>\n"
+                        }
+                    },
+                    {
+                        "heading": {
+                            "text": "Section B"
+                        },
+                        "content": {
+                            "html": "<ul class=\"govuk-list govuk-list--bullet\">\n  <li>Example item 2</li>\n</ul>\n"
+                        }
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-accordion\" data-module=\"govuk-accordion\" id=\"one-section-open-example\">\n  <div class=\"govuk-accordion__section govuk-accordion__section--expanded\">\n    <div class=\"govuk-accordion__section-header\">\n      <h2 class=\"govuk-accordion__section-heading\">\n        <span class=\"govuk-accordion__section-button\" id=\"one-section-open-example-heading-1\">\n          Section A\n        </span>\n      </h2>\n    </div>\n    <div id=\"one-section-open-example-content-1\" class=\"govuk-accordion__section-content\">\n      <ul class=\"govuk-list govuk-list--bullet\">\n        <li>Example item 1</li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"govuk-accordion__section\">\n    <div class=\"govuk-accordion__section-header\">\n      <h2 class=\"govuk-accordion__section-heading\">\n        <span class=\"govuk-accordion__section-button\" id=\"one-section-open-example-heading-2\">\n          Section B\n        </span>\n      </h2>\n    </div>\n    <div id=\"one-section-open-example-content-2\" class=\"govuk-accordion__section-content\">\n      <ul class=\"govuk-list govuk-list--bullet\">\n        <li>Example item 2</li>\n      </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "with all sections already open",
+            "options": {
+                "id": "all-sections-open-example",
+                "items": [
+                    {
+                        "heading": {
+                            "text": "Section A"
+                        },
+                        "expanded": true,
+                        "content": {
+                            "html": "<ul class=\"govuk-list govuk-list--bullet\">\n  <li>Example item 1</li>\n</ul>\n"
+                        }
+                    },
+                    {
+                        "heading": {
+                            "text": "Section B"
+                        },
+                        "expanded": true,
+                        "content": {
+                            "html": "<ul class=\"govuk-list govuk-list--bullet\">\n  <li>Example item 2</li>\n</ul>\n"
+                        }
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-accordion\" data-module=\"govuk-accordion\" id=\"all-sections-open-example\">\n  <div class=\"govuk-accordion__section govuk-accordion__section--expanded\">\n    <div class=\"govuk-accordion__section-header\">\n      <h2 class=\"govuk-accordion__section-heading\">\n        <span class=\"govuk-accordion__section-button\" id=\"all-sections-open-example-heading-1\">\n          Section A\n        </span>\n      </h2>\n    </div>\n    <div id=\"all-sections-open-example-content-1\" class=\"govuk-accordion__section-content\">\n      <ul class=\"govuk-list govuk-list--bullet\">\n        <li>Example item 1</li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"govuk-accordion__section govuk-accordion__section--expanded\">\n    <div class=\"govuk-accordion__section-header\">\n      <h2 class=\"govuk-accordion__section-heading\">\n        <span class=\"govuk-accordion__section-button\" id=\"all-sections-open-example-heading-2\">\n          Section B\n        </span>\n      </h2>\n    </div>\n    <div id=\"all-sections-open-example-content-2\" class=\"govuk-accordion__section-content\">\n      <ul class=\"govuk-list govuk-list--bullet\">\n        <li>Example item 2</li>\n      </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "with focusable elements inside",
+            "options": {
+                "id": "with-focusable-elements",
+                "items": [
+                    {
+                        "heading": {
+                            "text": "Section A"
+                        },
+                        "content": {
+                            "html": "<a class=\"govuk-link\" href=\"#\">Link A</a>"
+                        }
+                    },
+                    {
+                        "heading": {
+                            "text": "Section B"
+                        },
+                        "content": {
+                            "html": "<a class=\"govuk-link\" href=\"#\">Link B</a>"
+                        }
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-accordion\" data-module=\"govuk-accordion\" id=\"with-focusable-elements\">\n  <div class=\"govuk-accordion__section\">\n    <div class=\"govuk-accordion__section-header\">\n      <h2 class=\"govuk-accordion__section-heading\">\n        <span class=\"govuk-accordion__section-button\" id=\"with-focusable-elements-heading-1\">\n          Section A\n        </span>\n      </h2>\n    </div>\n    <div id=\"with-focusable-elements-content-1\" class=\"govuk-accordion__section-content\">\n      <a class=\"govuk-link\" href=\"#\">Link A</a>\n    </div>\n  </div>\n  <div class=\"govuk-accordion__section\">\n    <div class=\"govuk-accordion__section-header\">\n      <h2 class=\"govuk-accordion__section-heading\">\n        <span class=\"govuk-accordion__section-button\" id=\"with-focusable-elements-heading-2\">\n          Section B\n        </span>\n      </h2>\n    </div>\n    <div id=\"with-focusable-elements-content-2\" class=\"govuk-accordion__section-content\">\n      <a class=\"govuk-link\" href=\"#\">Link B</a>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "with translations",
+            "options": {
+                "id": "with-translations",
+                "hideAllSectionsText": "Collapse all sections",
+                "showAllSectionsText": "Expand all sections",
+                "hideSectionText": "Collapse",
+                "hideSectionAriaLabelText": "Collapse this section",
+                "showSectionText": "Expand",
+                "showSectionAriaLabelText": "Expand this section",
+                "items": [
+                    {
+                        "heading": {
+                            "text": "Section A"
+                        },
+                        "content": {
+                            "text": "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post."
+                        }
+                    },
+                    {
+                        "heading": {
+                            "text": "Section B"
+                        },
+                        "content": {
+                            "html": "<ul class=\"govuk-list govuk-list--bullet\">\n  <li>Example item 2</li>\n</ul>\n"
+                        }
+                    }
+                ]
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-accordion\" data-module=\"govuk-accordion\" id=\"with-translations\" data-i18n.hide-all-sections=\"Collapse all sections\" data-i18n.hide-section=\"Collapse\" data-i18n.hide-section-aria-label=\"Collapse this section\" data-i18n.show-all-sections=\"Expand all sections\" data-i18n.show-section=\"Expand\" data-i18n.show-section-aria-label=\"Expand this section\">\n  <div class=\"govuk-accordion__section\">\n    <div class=\"govuk-accordion__section-header\">\n      <h2 class=\"govuk-accordion__section-heading\">\n        <span class=\"govuk-accordion__section-button\" id=\"with-translations-heading-1\">\n          Section A\n        </span>\n      </h2>\n    </div>\n    <div id=\"with-translations-content-1\" class=\"govuk-accordion__section-content\">\n      <p class=\"govuk-body\">\n        We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.\n      </p>\n    </div>\n  </div>\n  <div class=\"govuk-accordion__section\">\n    <div class=\"govuk-accordion__section-header\">\n      <h2 class=\"govuk-accordion__section-heading\">\n        <span class=\"govuk-accordion__section-button\" id=\"with-translations-heading-2\">\n          Section B\n        </span>\n      </h2>\n    </div>\n    <div id=\"with-translations-content-2\" class=\"govuk-accordion__section-content\">\n      <ul class=\"govuk-list govuk-list--bullet\">\n        <li>Example item 2</li>\n      </ul>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "classes",
+            "options": {
+                "id": "accordion-classes",
+                "classes": "myClass",
+                "items": [
+                    {
+                        "heading": {
+                            "text": "Section A"
+                        },
+                        "content": {
+                            "text": "Some content"
+                        }
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-accordion myClass\" data-module=\"govuk-accordion\" id=\"accordion-classes\">\n  <div class=\"govuk-accordion__section\">\n    <div class=\"govuk-accordion__section-header\">\n      <h2 class=\"govuk-accordion__section-heading\">\n        <span class=\"govuk-accordion__section-button\" id=\"accordion-classes-heading-1\">\n          Section A\n        </span>\n      </h2>\n    </div>\n    <div id=\"accordion-classes-content-1\" class=\"govuk-accordion__section-content\">\n      <p class=\"govuk-body\">\n        Some content\n      </p>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "id": "accordion-attributes",
+                "attributes": {
+                    "data-attribute": "value"
+                },
+                "items": [
+                    {
+                        "heading": {
+                            "text": "Section A"
+                        },
+                        "content": {
+                            "text": "Some content"
+                        }
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-accordion\" data-module=\"govuk-accordion\" id=\"accordion-attributes\" data-attribute=\"value\">\n  <div class=\"govuk-accordion__section\">\n    <div class=\"govuk-accordion__section-header\">\n      <h2 class=\"govuk-accordion__section-heading\">\n        <span class=\"govuk-accordion__section-button\" id=\"accordion-attributes-heading-1\">\n          Section A\n        </span>\n      </h2>\n    </div>\n    <div id=\"accordion-attributes-content-1\" class=\"govuk-accordion__section-content\">\n      <p class=\"govuk-body\">\n        Some content\n      </p>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "custom heading level",
+            "options": {
+                "id": "accordion-heading",
+                "headingLevel": 3,
+                "items": [
+                    {
+                        "heading": {
+                            "text": "Section A"
+                        },
+                        "content": {
+                            "text": "Some content"
+                        }
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-accordion\" data-module=\"govuk-accordion\" id=\"accordion-heading\">\n  <div class=\"govuk-accordion__section\">\n    <div class=\"govuk-accordion__section-header\">\n      <h3 class=\"govuk-accordion__section-heading\">\n        <span class=\"govuk-accordion__section-button\" id=\"accordion-heading-heading-1\">\n          Section A\n        </span>\n      </h3>\n    </div>\n    <div id=\"accordion-heading-content-1\" class=\"govuk-accordion__section-content\">\n      <p class=\"govuk-body\">\n        Some content\n      </p>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "heading html",
+            "options": {
+                "id": "accordion-heading-html",
+                "items": [
+                    {
+                        "heading": {
+                            "html": "<span class=\"myClass\">Section A</span>"
+                        },
+                        "content": {
+                            "text": "Some content"
+                        }
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-accordion\" data-module=\"govuk-accordion\" id=\"accordion-heading-html\">\n  <div class=\"govuk-accordion__section\">\n    <div class=\"govuk-accordion__section-header\">\n      <h2 class=\"govuk-accordion__section-heading\">\n        <span class=\"govuk-accordion__section-button\" id=\"accordion-heading-html-heading-1\">\n          <span class=\"myClass\">Section A</span>\n        </span>\n      </h2>\n    </div>\n    <div id=\"accordion-heading-html-content-1\" class=\"govuk-accordion__section-content\">\n      <p class=\"govuk-body\">\n        Some content\n      </p>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "with falsy values",
+            "options": {
+                "id": "accordion-falsy",
+                "items": [
+                    {
+                        "heading": {
+                            "text": "Section A"
+                        },
+                        "content": {
+                            "text": "Some content"
+                        }
+                    },
+                    false,
+                    "",
+                    null,
+                    {
+                        "heading": {
+                            "text": "Section B"
+                        },
+                        "content": {
+                            "text": "Some content"
+                        }
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-accordion\" data-module=\"govuk-accordion\" id=\"accordion-falsy\">\n  <div class=\"govuk-accordion__section\">\n    <div class=\"govuk-accordion__section-header\">\n      <h2 class=\"govuk-accordion__section-heading\">\n        <span class=\"govuk-accordion__section-button\" id=\"accordion-falsy-heading-1\">\n          Section A\n        </span>\n      </h2>\n    </div>\n    <div id=\"accordion-falsy-content-1\" class=\"govuk-accordion__section-content\">\n      <p class=\"govuk-body\">\n        Some content\n      </p>\n    </div>\n  </div>\n  <div class=\"govuk-accordion__section\">\n    <div class=\"govuk-accordion__section-header\">\n      <h2 class=\"govuk-accordion__section-heading\">\n        <span class=\"govuk-accordion__section-button\" id=\"accordion-falsy-heading-5\">\n          Section B\n        </span>\n      </h2>\n    </div>\n    <div id=\"accordion-falsy-content-5\" class=\"govuk-accordion__section-content\">\n      <p class=\"govuk-body\">\n        Some content\n      </p>\n    </div>\n  </div>\n</div>"
+        },
+        {
+            "name": "with remember expanded off",
+            "options": {
+                "id": "accordion-remember-expanded-off",
+                "rememberExpanded": false,
+                "items": [
+                    {
+                        "heading": {
+                            "text": "Section A"
+                        },
+                        "content": {
+                            "text": "Some content"
+                        }
+                    }
+                ]
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-accordion\" data-module=\"govuk-accordion\" id=\"accordion-remember-expanded-off\" data-remember-expanded=\"false\">\n  <div class=\"govuk-accordion__section\">\n    <div class=\"govuk-accordion__section-header\">\n      <h2 class=\"govuk-accordion__section-heading\">\n        <span class=\"govuk-accordion__section-button\" id=\"accordion-remember-expanded-off-heading-1\">\n          Section A\n        </span>\n      </h2>\n    </div>\n    <div id=\"accordion-remember-expanded-off-content-1\" class=\"govuk-accordion__section-content\">\n      <p class=\"govuk-body\">\n        Some content\n      </p>\n    </div>\n  </div>\n</div>"
+        }
+    ]
+}

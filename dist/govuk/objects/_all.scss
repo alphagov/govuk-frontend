@@ -1,0 +1,10 @@
+@import "../settings/warnings";
+@import "index";
+
+@include _warning(
+  "import-using-all",
+  "Importing using 'govuk/objects/all' is deprecated. Update your import statement to import 'govuk/objects/index'.",
+  $silence-further-warnings: false
+);
+
+/*# sourceMappingURL=_all.scss.map */

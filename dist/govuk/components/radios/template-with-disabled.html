@@ -1,0 +1,29 @@
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        How do you want to sign in?
+      </h1>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="gateway" name="gov" type="radio" value="gateway" aria-describedby="gateway-item-hint">
+        <label class="govuk-label govuk-radios__label" for="gateway">
+          Sign in with Government Gateway
+        </label>
+        <div id="gateway-item-hint" class="govuk-hint govuk-radios__hint">
+          You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.
+        </div>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="verify" name="gov" type="radio" value="verify" disabled aria-describedby="verify-item-hint">
+        <label class="govuk-label govuk-radios__label" for="verify">
+          Sign in with GOV.UK Verify
+        </label>
+        <div id="verify-item-hint" class="govuk-hint govuk-radios__hint">
+          You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>

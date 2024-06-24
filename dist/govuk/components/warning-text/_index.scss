@@ -1,0 +1,65 @@
+@include govuk-exports("govuk/component/warning-text") {
+  .govuk-warning-text {
+    @include govuk-font($size: 19);
+    @include govuk-responsive-margin(6, "bottom");
+    position: relative;
+    padding: govuk-spacing(2) 0;
+  }
+
+  .govuk-warning-text__icon {
+    // We apply this here and not at the parent level because the actual text is
+    // a <strong> and so will always be bold
+    @include govuk-typography-weight-bold;
+    box-sizing: border-box;
+
+    display: inline-block;
+
+    position: absolute;
+    left: 0;
+
+    min-width: 35px;
+    min-height: 35px;
+    margin-top: -7px;
+
+    @include govuk-media-query($from: tablet) {
+      margin-top: -5px;
+    }
+
+    // When a user customises their colours the background colour will often be removed.
+    // Adding a border to the component keeps it's shape as a circle.
+    border: 3px solid $govuk-text-colour;
+    border-radius: 50%;
+
+    color: $govuk-body-background-colour;
+    background: $govuk-text-colour;
+
+    font-size: 30px;
+    line-height: 29px;
+
+    text-align: center;
+
+    // Prevent the exclamation mark from being included when the warning text
+    // is copied, for example.
+    -webkit-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+
+    // Improve rendering in Windows High Contrast Mode (Edge), where a
+    // readability backplate behind the exclamation mark obscures the circle
+    forced-color-adjust: none;
+
+    @media screen and (forced-colors: active) {
+      border-color: windowText;
+      color: windowText;
+      background: transparent;
+    }
+  }
+
+  .govuk-warning-text__text {
+    @include govuk-text-colour;
+    display: block;
+    padding-left: 45px;
+  }
+}
+
+/*# sourceMappingURL=_index.scss.map */

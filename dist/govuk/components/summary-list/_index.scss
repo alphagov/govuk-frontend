@@ -1,0 +1,277 @@
+@include govuk-exports("govuk/component/summary-list") {
+  .govuk-summary-list {
+    @include govuk-font($size: 19);
+    @include govuk-text-colour;
+    @include govuk-media-query($from: tablet) {
+      display: table;
+      width: 100%;
+      table-layout: fixed; // Required to allow us to wrap words that overflow.
+      border-collapse: collapse;
+    }
+    margin: 0; // Reset default user agent styles
+    @include govuk-responsive-margin(6, "bottom");
+  }
+
+  .govuk-summary-list__row {
+    border-bottom: 1px solid $govuk-border-colour;
+
+    @include govuk-media-query($until: tablet) {
+      margin-bottom: govuk-spacing(3);
+    }
+    @include govuk-media-query($from: tablet) {
+      display: table-row;
+    }
+  }
+
+  // Remove right padding from the last column in the row
+  .govuk-summary-list__row:not(.govuk-summary-list__row--no-actions) > :last-child {
+    padding-right: 0;
+  }
+
+  // Provide an empty 'cell' for rows that don't have actions – otherwise the
+  // bottom border is not drawn for that part of the row in some browsers.
+  .govuk-summary-list__row--no-actions {
+    @include govuk-media-query($from: tablet) {
+      &::after {
+        content: "";
+        display: table-cell;
+        width: 20%;
+      }
+    }
+  }
+
+  .govuk-summary-list__key,
+  .govuk-summary-list__value,
+  .govuk-summary-list__actions {
+    margin: 0; // Reset default user agent styles
+
+    @include govuk-media-query($from: tablet) {
+      display: table-cell;
+      padding-top: govuk-spacing(2);
+      padding-right: govuk-spacing(4);
+      padding-bottom: govuk-spacing(2);
+    }
+  }
+
+  .govuk-summary-list__actions {
+    margin-bottom: govuk-spacing(3);
+    @include govuk-media-query($from: tablet) {
+      width: 20%;
+      text-align: right;
+    }
+  }
+
+  .govuk-summary-list__key,
+  .govuk-summary-list__value {
+    // Automatic wrapping for unbreakable text (e.g. URLs)
+    word-wrap: break-word; // Fallback for older browsers only
+    overflow-wrap: break-word;
+  }
+
+  .govuk-summary-list__key {
+    margin-bottom: govuk-spacing(1);
+    @include govuk-typography-weight-bold;
+    @include govuk-media-query($from: tablet) {
+      width: 30%;
+    }
+  }
+
+  .govuk-summary-list__value {
+    @include govuk-media-query($until: tablet) {
+      margin-bottom: govuk-spacing(3);
+    }
+  }
+
+  .govuk-summary-list__value > p {
+    margin-bottom: govuk-spacing(2);
+  }
+
+  .govuk-summary-list__value > :last-child {
+    margin-bottom: 0;
+  }
+
+  .govuk-summary-list__actions-list {
+    width: 100%;
+    margin: 0; // Reset default user agent styles
+    padding: 0; // Reset default user agent styles
+  }
+
+  .govuk-summary-list__actions-list-item {
+    display: inline-block;
+  }
+
+  @include govuk-media-query($until: tablet) {
+    .govuk-summary-list__actions-list-item {
+      margin-right: govuk-spacing(2);
+      padding-right: govuk-spacing(2);
+      border-right: 1px solid $govuk-border-colour;
+    }
+
+    .govuk-summary-list__actions-list-item:last-child {
+      margin-right: 0;
+      padding-right: 0;
+      border: 0;
+    }
+  }
+
+  @include govuk-media-query($from: tablet) {
+    .govuk-summary-list__actions-list-item {
+      margin-left: govuk-spacing(2);
+      padding-left: govuk-spacing(2);
+    }
+
+    .govuk-summary-list__actions-list-item:not(:first-child) {
+      border-left: 1px solid $govuk-border-colour;
+    }
+
+    .govuk-summary-list__actions-list-item:first-child {
+      margin-left: 0;
+      padding-left: 0;
+      border: 0;
+    }
+  }
+
+  // Large groups of action links may wrap onto multiple lines. Because the link
+  // focus styles are applied outside of the link's bounding box, there are
+  // situations where the focus style on a link can be overlapped by subsequent
+  // links. We don't want this, so let's create a new stacking context on focus
+  // so the link always appears to be 'on top'.
+  .govuk-summary-list__actions-list-item .govuk-link:focus {
+    isolation: isolate;
+  }
+
+  // No border on entire summary list
+  .govuk-summary-list--no-border {
+    .govuk-summary-list__row {
+      border: 0;
+    }
+
+    // Increase padding by 1px to compensate for 'missing' border
+    @include govuk-media-query($from: tablet) {
+      .govuk-summary-list__key,
+      .govuk-summary-list__value,
+      .govuk-summary-list__actions {
+        padding-bottom: govuk-spacing(2) + 1px;
+      }
+    }
+  }
+
+  // No border on specific rows
+  .govuk-summary-list__row--no-border {
+    border: 0;
+
+    // Increase padding by 1px to compensate for 'missing' border
+    @include govuk-media-query($from: tablet) {
+      .govuk-summary-list__key,
+      .govuk-summary-list__value,
+      .govuk-summary-list__actions {
+        padding-bottom: govuk-spacing(2) + 1px;
+      }
+    }
+  }
+
+  // Additional block for the summary card
+  .govuk-summary-card {
+    @include govuk-responsive-margin(6, "bottom");
+    border: 1px solid $govuk-border-colour;
+  }
+
+  .govuk-summary-card__title-wrapper {
+    padding: govuk-spacing(3);
+
+    // Ensures the card header appears separate to the summary list in forced colours mode
+    border-bottom: 1px solid transparent;
+    background-color: govuk-colour("light-grey");
+
+    @include govuk-media-query($from: "tablet") {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      padding: govuk-spacing(3) govuk-spacing(4);
+    }
+  }
+
+  .govuk-summary-card__title {
+    @include govuk-font($size: 19, $weight: bold);
+    @include govuk-text-colour;
+    margin: govuk-spacing(1) govuk-spacing(4) govuk-spacing(2) 0;
+
+    @include govuk-media-query($from: "tablet") {
+      margin-bottom: govuk-spacing(1);
+    }
+  }
+
+  .govuk-summary-card__actions {
+    @include govuk-font-size($size: 19);
+    @include govuk-typography-weight-bold;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    margin: govuk-spacing(1) 0;
+    padding: 0;
+    list-style: none;
+
+    @include govuk-media-query($from: "tablet") {
+      justify-content: right;
+      text-align: right;
+    }
+  }
+
+  .govuk-summary-card__action {
+    display: inline;
+    margin: 0 govuk-spacing(2) 0 0;
+    padding-right: govuk-spacing(2);
+    border-right: 1px solid $govuk-border-colour;
+
+    @include govuk-media-query($from: "tablet") {
+      margin-right: 0;
+    }
+
+    // We use the following media query to target IE11 and 10 only to add margin
+    // between actions.
+    //
+    // We do this because we're using row-gap to create space between actions on
+    // more evergreen browsers which IE doesn't support. @supports currently isn't
+    // a viable solution, see https://github.com/w3c/csswg-drafts/issues/3559.
+    //
+    // Solution taken from https://stackoverflow.com/questions/11173106/apply-style-only-on-ie#answer-36448860
+    // which also includes an explanation of why this works
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      margin-bottom: govuk-spacing(1);
+    }
+  }
+
+  .govuk-summary-card__action:last-child {
+    margin: 0;
+    padding-right: 0;
+    border-right: none;
+
+    @include govuk-media-query($from: "tablet") {
+      padding-left: govuk-spacing(2);
+    }
+
+    // See above comment for why this is here
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      margin-bottom: 0;
+    }
+  }
+
+  .govuk-summary-card__content {
+    padding: govuk-spacing(3) govuk-spacing(3) 0;
+
+    @include govuk-media-query($from: "tablet") {
+      padding: govuk-spacing(3) govuk-spacing(4);
+    }
+
+    .govuk-summary-list {
+      margin-bottom: 0;
+    }
+
+    .govuk-summary-list__row:last-of-type {
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+  }
+}
+
+/*# sourceMappingURL=_index.scss.map */

@@ -1,0 +1,113 @@
+{
+    "component": "error-message",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "text": "Error message about full name goes here"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<p class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> Error message about full name goes here\n</p>"
+        },
+        {
+            "name": "translated",
+            "options": {
+                "visuallyHiddenText": "",
+                "html": "<span class=\"govuk-visually-hidden\">Gwall:</span> Neges gwall am yr enw llawn yn mynd yma"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<p class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Gwall:</span> Neges gwall am yr enw llawn yn mynd yma\n</p>"
+        },
+        {
+            "name": "id",
+            "options": {
+                "id": "my-error-message-id",
+                "text": "This is an error message"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<p id=\"my-error-message-id\" class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> This is an error message\n</p>"
+        },
+        {
+            "name": "classes",
+            "options": {
+                "classes": "custom-class",
+                "text": "This is an error message"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<p class=\"govuk-error-message custom-class\">\n  <span class=\"govuk-visually-hidden\">Error:</span> This is an error message\n</p>"
+        },
+        {
+            "name": "html as text",
+            "options": {
+                "text": "Unexpected > in body"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<p class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> Unexpected &gt; in body\n</p>"
+        },
+        {
+            "name": "html",
+            "options": {
+                "html": "Unexpected <b>bold text</b> in body copy"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<p class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> Unexpected <b>bold text</b> in body copy\n</p>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "text": "This is an error message",
+                "attributes": {
+                    "data-test": "attribute",
+                    "id": "my-error-message"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<p class=\"govuk-error-message\" data-test=\"attribute\" id=\"my-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> This is an error message\n</p>"
+        },
+        {
+            "name": "with visually hidden text",
+            "options": {
+                "text": "Rhowch eich enw llawn",
+                "visuallyHiddenText": "Gwall"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<p class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Gwall:</span> Rhowch eich enw llawn\n</p>"
+        },
+        {
+            "name": "visually hidden text removed",
+            "options": {
+                "text": "There is an error on line 42",
+                "visuallyHiddenText": ""
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<p class=\"govuk-error-message\">\n  There is an error on line 42\n</p>"
+        }
+    ]
+}

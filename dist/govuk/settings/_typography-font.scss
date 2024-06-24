@@ -1,0 +1,52 @@
+////
+/// @group settings/typography
+////
+
+// =========================================================
+// Font families
+// =========================================================
+
+/// Font families to use for all typography on screen media
+///
+/// @type List
+/// @access public
+
+$govuk-font-family: "GDS Transport", arial, sans-serif !default;
+
+/// Font families to use for print media
+///
+/// We recommend that you use system fonts when printing. This will avoid issues
+/// with some printer drivers and operating systems.
+///
+/// @type List
+/// @access public
+
+$govuk-font-family-print: sans-serif !default;
+
+/// Include the default @font-face declarations
+///
+/// Defaults to true if "GDS Transport" appears in the $govuk-font-family
+/// setting.
+///
+/// @type Boolean
+/// @access public
+
+$govuk-include-default-font-face: if(index($govuk-font-family, "GDS Transport"), true, false) !default;
+
+// =========================================================
+// Font weights
+// =========================================================
+
+/// Font weight for regular typography
+///
+/// @type Number
+/// @access public
+$govuk-font-weight-regular: 400 !default;
+
+/// Font weight for bold typography
+///
+/// @type Number
+/// @access public
+$govuk-font-weight-bold: 700 !default;
+
+/*# sourceMappingURL=_typography-font.scss.map */

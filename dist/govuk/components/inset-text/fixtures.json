@@ -1,0 +1,76 @@
+{
+    "component": "inset-text",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "text": "It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application."
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-inset-text\">\n  It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.\n</div>"
+        },
+        {
+            "name": "with html",
+            "options": {
+                "html": "<p class=\"govuk-body\">It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.</p>\n<div class=\"govuk-warning-text\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-warning-text__assistive\">Warning</span>\n    You can be fined up to £5,000 if you don’t register.\n  </strong>\n</div>\n<p class=\"govuk-body\">It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.</p>\n"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-inset-text\">\n  <p class=\"govuk-body\">It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.</p>\n  <div class=\"govuk-warning-text\">\n    <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n    <strong class=\"govuk-warning-text__text\">\n      <span class=\"govuk-warning-text__assistive\">Warning</span>\n      You can be fined up to £5,000 if you don’t register.\n    </strong>\n  </div>\n  <p class=\"govuk-body\">It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.</p>\n</div>"
+        },
+        {
+            "name": "classes",
+            "options": {
+                "classes": "app-inset-text--custom-modifier",
+                "text": "It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application."
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-inset-text app-inset-text--custom-modifier\">\n  It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.\n</div>"
+        },
+        {
+            "name": "id",
+            "options": {
+                "id": "my-inset-text",
+                "text": "It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application."
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div id=\"my-inset-text\" class=\"govuk-inset-text\">\n  It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.\n</div>"
+        },
+        {
+            "name": "html as text",
+            "options": {
+                "text": "It can take <b>up to 8 weeks</b> to register a lasting power of attorney if there are no mistakes in the application."
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-inset-text\">\n  It can take &lt;b&gt;up to 8 weeks&lt;/b&gt; to register a lasting power of attorney if there are no mistakes in the application.\n</div>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "text": "It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.",
+                "attributes": {
+                    "data-attribute": "my data value"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-inset-text\" data-attribute=\"my data value\">\n  It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.\n</div>"
+        }
+    ]
+}

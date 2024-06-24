@@ -1,0 +1,54 @@
+@include govuk-exports("govuk/component/panel") {
+  .govuk-panel {
+    @include govuk-font($size: 36);
+
+    box-sizing: border-box;
+
+    margin-bottom: govuk-spacing(3);
+    padding: govuk-spacing(7) - $govuk-border-width;
+
+    border: $govuk-border-width solid transparent;
+
+    text-align: center;
+
+    @include govuk-media-query($until: tablet) {
+      padding: govuk-spacing(if($govuk-new-typography-scale, 4, 3)) - $govuk-border-width;
+
+      // This is an if-all-else-fails attempt to stop long words from overflowing the container
+      // on very narrow viewports by forcing them to break and wrap instead. This
+      // overflowing is more likely to happen when user increases text size on a mobile eg. using
+      // iOS Safari text resize controls.
+      //
+      // The overflowing is a particular problem with the panel component since it uses white
+      // text: when the text overflows the container, it is invisible on the white (page)
+      // background. When the text in our other components overflow, the user might have to scroll
+      // horizontally to view it but the the text remains legible.
+      overflow-wrap: break-word;
+      word-wrap: break-word; // Support IE (autoprefixer doesn't add this as it's not a prefix)
+    }
+  }
+
+  .govuk-panel--confirmation {
+    color: govuk-colour("white");
+    background: govuk-colour("green");
+
+    @include govuk-media-query($media-type: print) {
+      border-color: currentcolor;
+      color: $govuk-print-text-colour;
+      background: none;
+    }
+  }
+
+  .govuk-panel__title {
+    @include govuk-font-size($size: 48);
+    @include govuk-typography-weight-bold;
+    margin-top: 0;
+    margin-bottom: govuk-spacing(6);
+  }
+
+  .govuk-panel__title:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/*# sourceMappingURL=_index.scss.map */

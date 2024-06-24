@@ -1,0 +1,91 @@
+@import "../settings/colours-palette";
+@import "../settings/colours-organisations";
+@import "../settings/warnings";
+
+////
+/// @group helpers/colour
+////
+
+/// Get colour
+///
+/// @param {String | Colour} $colour - Name of colour from the colour palette
+///   (`$govuk-colours`)
+/// @param {String | Colour | Boolean} $legacy [false] - Deprecated.
+///   The `$legacy` parameter is deprecated and is non-operational, as the
+///   legacy colour palette has been removed. The parameter will be removed in
+///   the next major version.
+/// @return {Colour} Representation of named colour
+///
+/// @throw if `$colour` is not a colour from the colour palette
+/// @access public
+
+@function govuk-colour($colour, $legacy: false) {
+  // Output a warning if $legacy is set to anything.
+  @if $legacy and _should-warn("legacy-colour-param") {
+    @warn _warning-text("legacy-colour-param", "The `$legacy` parameter of " +
+    "`govuk-colour` is deprecated and is non-operational. It will be " +
+    "removed in the next major version.");
+  }
+
+  @if type-of($colour) == "color" {
+    // stylelint-disable-next-line scss/function-quote-no-quoted-strings-inside
+    $colour: quote("#{$colour}");
+  }
+
+  @if not map-has-key($govuk-colours, $colour) {
+    @error "Unknown colour `#{$colour}`";
+  }
+
+  @return map-get($govuk-colours, $colour);
+}
+
+/// Get the colour for a government organisation
+///
+/// @param {String} $organisation - Organisation name, lowercase, hyphenated
+/// @param {Boolean} $websafe [true] - By default a 'websafe' version of the
+///   colour will be returned which meets contrast requirements . If you want to
+///   use the non-websafe version you can set this to `false` but your should
+///   ensure that you still meets contrast requirements for accessibility - for
+///   example, do not use the non-websafe version for text.
+///
+/// @return {Colour} Representation of colour for organisation
+/// @throw if `$organisation` is not a known organisation
+/// @access public
+
+@function govuk-organisation-colour($organisation, $websafe: true) {
+  @if not map-has-key($govuk-colours-organisations, $organisation) {
+    @error "Unknown organisation `#{$organisation}`";
+  }
+
+  $org-colour: map-get($govuk-colours-organisations, $organisation);
+
+  @if $websafe and map-has-key($org-colour, colour-websafe) {
+    @return map-get($org-colour, colour-websafe);
+  } @else {
+    @return map-get($org-colour, colour);
+  }
+}
+
+/// Make a colour darker by mixing it with black
+///
+/// @param {Colour} $colour - colour to shade
+/// @param {Number} $percentage - percentage of black to mix with $colour
+/// @return {Colour}
+/// @access public
+
+@function govuk-shade($colour, $percentage) {
+  @return mix(#000000, $colour, $percentage);
+}
+
+/// Make a colour lighter by mixing it with white
+///
+/// @param {Colour} $colour - colour to tint
+/// @param {Number} $percentage - percentage of white to mix with $colour
+/// @return {Colour}
+/// @access public
+
+@function govuk-tint($colour, $percentage) {
+  @return mix(govuk-colour("white"), $colour, $percentage);
+}
+
+/*# sourceMappingURL=_colour.scss.map */

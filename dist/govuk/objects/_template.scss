@@ -1,0 +1,53 @@
+@import "../base";
+
+@include govuk-exports("govuk/objects/template") {
+  // Applied to the <html> element
+  .govuk-template {
+    // Set the overall page background colour to the same colour as used by the
+    // footer to give the illusion of a long footer.
+    background-color: $govuk-canvas-background-colour;
+
+    // Prevent automatic text sizing, as we already cater for small devices and
+    // would like the browser to stay on 100% text zoom by default.
+    -webkit-text-size-adjust: 100%;
+       -moz-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+
+    // Add scroll padding to the top of govuk-template but remove it if the
+    // exit this page component is present.
+    //
+    // This is a solution to exit this page potentially failing WCAG SC 2.4.12:
+    // Focus Not Obscured (https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html)
+    // due to it's sticky positioning.
+    //
+    // This will apply scroll-padding-top in any browsers that don't support :has
+    // (https://caniuse.com/css-has). This is part of the reason we do this in
+    // a "wrong way round" way as we hypothesise that the risks of having
+    // scroll-padding unnecessarily is better than risking not having scroll-padding
+    // and needing it to account for exit this page.
+    @supports ((position: -webkit-sticky) or (position: sticky)) {
+      scroll-padding-top: govuk-spacing(9);
+
+      &:not(:has(.govuk-exit-this-page)) {
+        scroll-padding-top: 0;
+      }
+    }
+
+    // Force the scrollbar to always display in IE, to prevent horizontal page
+    // jumps as content height changes (e.g. autocomplete results open).
+    @include govuk-media-query($media-type: screen) {
+      overflow-y: scroll;
+    }
+  }
+
+  // Applied to the <body> element
+  .govuk-template__body {
+    // The default margins set by user-agents are not required since we have our
+    // own containers.
+    margin: 0;
+    // Set the overall body of the page back to the typical background colour.
+    background-color: $govuk-body-background-colour;
+  }
+}
+
+/*# sourceMappingURL=_template.scss.map */
