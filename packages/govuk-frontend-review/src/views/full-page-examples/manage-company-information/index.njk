@@ -94,25 +94,26 @@ notes: Based on elements of Companies Houses company information view
 {% endblock %}
 
 {% block header %}
-  {{ govukHeader() }}
-  {{ govukPhaseBanner({
-    tag: { text: 'Alpha' },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  {{ govukHeader({
+    oneLogin: true
   }) }}
   {{ govukServiceHeader({
     serviceName: 'Manage company information',
     serviceUrl: '#/',
     navigation: [
       { href: '#/1', text: 'Overview' },
-      { href: '#/2', text: 'Filing History' },
-      { href: '#/3', text: 'People', active: true },
-      { href: '#/4', text: 'Registers' },
+      { href: '#/2', text: 'My companies', active: true },
+      { href: '#/3', text: 'Filing history' },
       { href: '#/4', text: 'More' }
     ]
   }) }}
 {% endblock %}
 
 {% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: { text: 'Alpha' },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
 {{ govukBreadcrumbs({
   items: [
     {
@@ -120,11 +121,11 @@ notes: Based on elements of Companies Houses company information view
       href: "#"
     },
     {
-      text: "Directory",
+      text: "My companies",
       href: "#"
     },
     {
-      text: "Wonka Indstries",
+      text: "Wonka Industries",
       href: "#"
     },
     {
@@ -138,8 +139,13 @@ notes: Based on elements of Companies Houses company information view
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
-    <span class="govuk-caption-xl">Wonka Industries</span>
+    <span class="govuk-caption-xl">People</span>
     <h1 class="govuk-heading-xl">William Wonka</h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
 
     {{ govukSummaryList({
       rows: [
@@ -251,6 +257,24 @@ notes: Based on elements of Companies Houses company information view
 
     <p class="govuk-body">If there is an issue that you cannot rectify, lorem ipsum dolor sit amet veniam proident dolor ullamco anim exercitation irure deserunt esse incididunt.</p>
     <p class="govuk-body">Reprehenderit non consectetur est magna ad et consectetur do et laboris nostrud aliqua cillum.</p>
+  </div>
+
+  <div class="govuk-grid-column-one-third-from-desktop">
+    <div class="">
+      <h2 class="govuk-heading-s" id="related-navigation-heading">
+        People in Wonka Industries
+      </h2>
+      <nav role="navigation" aria-labelledby="related-navigation-heading">
+        <ul class="govuk-list">
+          <li><a class="govuk-link" href="#">Charles Bucket</a></li>
+          <li><a class="govuk-link" href="#">M. R. Wilkinson</a></li>
+          <li><a class="govuk-link" href="#">Oompa Loompa</a></li>
+          <li><a class="govuk-link" href="#" aria-current="page">William Wonka</a></li>
+        </ul>
+      </nav>
+    </nav>
+
+    </div>
   </div>
 </div>
 {% endblock %}
