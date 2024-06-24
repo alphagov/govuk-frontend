@@ -359,9 +359,7 @@ describe('Service Header', () => {
       const $ = render('service-header', examples['with slotted content'])
 
       // Expected to be first thing in the inner container
-      const $slottedElement = $(
-        '.govuk-service-header__container > :first-child'
-      )
+      const $slottedElement = $('.govuk-width-container > :first-child')
 
       expect($slottedElement.prop('outerHTML')).toBe('<div>[start]</div>')
     })
@@ -370,9 +368,7 @@ describe('Service Header', () => {
       const $ = render('service-header', examples['with slotted content'])
 
       // Expected to be last thing in the inner container
-      const $slottedElement = $(
-        '.govuk-service-header__container > :last-child'
-      )
+      const $slottedElement = $('.govuk-width-container > :last-child')
 
       expect($slottedElement.prop('outerHTML')).toBe('<div>[end]</div>')
     })
