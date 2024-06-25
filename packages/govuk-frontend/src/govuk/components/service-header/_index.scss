@@ -67,6 +67,7 @@
     margin: govuk-spacing(1) 0;
 
     @include govuk-media-query($from: tablet) {
+      @include govuk-responsive-margin(5, "right");
       margin-top: 0;
 
       // Add a little extra space to the bottom of the service name so that it
