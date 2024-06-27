@@ -17,6 +17,36 @@ notes: Based on elements of Companies Houses company information view
 {% set pageTitle = example.title %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
+{#
+  This is an example of an organisation/persona switcher component.
+  The GOV.UK Design System doesn't have one of these, but many organisation
+  forks of it do and it's a frequently mentioned feature of how the various
+  navigations should interact. This one is based on the MoJ component.
+  https://design-patterns.service.justice.gov.uk/components/organisation-switcher/
+#}
+
+{% set _organisationSwitcher %}
+<style>
+.page-organisation-switcher {
+  background-color: #fff;
+  border-bottom: 1px solid #b1b4b6;
+}
+
+.page-organisation-switcher .govuk-width-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+</style>
+<section class="govuk-body govuk-!-margin-0 page-organisation-switcher" aria-label="Organisation switcher">
+  <div class="govuk-width-container govuk-!-padding-top-2 govuk-!-padding-bottom-2">
+    <strong class="govuk-!-font-weight-bold govuk-!-margin-right-3">Wonka Industries</strong>
+    <a class="govuk-link" href="#">Change company</a>
+  </div>
+</section>
+{% endset %}
+
+{# Cookie banner content #}
 {% set html %}
   <p class="govuk-body">We’d like to use analytics cookies so we can understand how you use this site.</p>
   <p class="govuk-body">We also use essential cookies to remember if you’ve accepted analytics cookies.</p>
@@ -97,14 +127,15 @@ notes: Based on elements of Companies Houses company information view
   {{ govukHeader({
     oneLogin: true
   }) }}
+  {{ _organisationSwitcher | safe }}
   {{ govukServiceHeader({
     serviceName: 'Manage company information',
     serviceUrl: '#/',
     navigation: [
       { href: '#/1', text: 'Overview' },
-      { href: '#/2', text: 'My companies', active: true },
+      { href: '#/2', text: 'People', active: true },
       { href: '#/3', text: 'Filing history' },
-      { href: '#/4', text: 'More' }
+      { href: '#/4', text: 'More options' }
     ]
   }) }}
 {% endblock %}
@@ -116,14 +147,6 @@ notes: Based on elements of Companies Houses company information view
 }) }}
 {{ govukBreadcrumbs({
   items: [
-    {
-      text: "Home",
-      href: "#"
-    },
-    {
-      text: "My companies",
-      href: "#"
-    },
     {
       text: "Wonka Industries",
       href: "#"
@@ -139,7 +162,6 @@ notes: Based on elements of Companies Houses company information view
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
-    <span class="govuk-caption-xl">People</span>
     <h1 class="govuk-heading-xl">William Wonka</h1>
   </div>
 </div>
@@ -284,11 +306,12 @@ notes: Based on elements of Companies Houses company information view
 {% endblock %}
 
 {% block bodyEnd %}
-  <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
   <script type="module">
     import { initAll } from '/javascripts/govuk-frontend.min.js'
     initAll()
   </script>
+
+  {# Cookie banner JS #}
   <script type="module">
     const acceptButton = document.querySelector('.js-cookies-button-accept')
     const rejectButton = document.querySelector('.js-cookies-button-reject')
