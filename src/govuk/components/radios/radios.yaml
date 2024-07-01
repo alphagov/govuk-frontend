@@ -249,7 +249,7 @@ examples:
         legend:
           text: How do you want to sign in?
       items:
-        - value: governement-gateway
+        - value: government-gateway
           text: Use Government Gateway
         - value: govuk-verify
           text: Use GOV.UK Verify
@@ -688,7 +688,7 @@ examples:
           text: How do you want to sign in?
       classes: govuk-radios--small
       items:
-        - value: governement-gateway
+        - value: government-gateway
           text: Use Government Gateway
         - value: govuk-verify
           text: Use GOV.UK Verify
