@@ -255,6 +255,11 @@
       padding-left: ($govuk-touch-target-size - $input-offset) - ($margin-left + $conditional-border-width);
     }
 
+    .govuk-checkboxes__divider {
+      width: $govuk-small-checkboxes-size;
+      margin-bottom: govuk-spacing(1);
+    }
+
     // Hover state for small checkboxes.
     //
     // We use a hover state for small checkboxes because the touch target size
