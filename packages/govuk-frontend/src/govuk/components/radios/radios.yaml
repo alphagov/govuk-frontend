@@ -242,6 +242,7 @@ examples:
             For properties that are within a geographical area defined by a local council
 
   - name: with a divider
+    screenshot: true
     options:
       idPrefix: example-divider
       name: example
@@ -680,6 +681,7 @@ examples:
           text: funkiness
 
   - name: small with a divider
+    screenshot: true
     options:
       idPrefix: example-small-divider
       name: example
