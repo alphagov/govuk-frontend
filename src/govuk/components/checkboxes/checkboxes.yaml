@@ -700,6 +700,25 @@ examples:
         - value: b
           text: another thing
 
+  - name: small with divider and None
+    options:
+      name: small-with-divider-and-none
+      classes: govuk-checkboxes--small
+      fieldset:
+        legend:
+          text: Which types of waste do you transport regularly?
+      items:
+        - value: animal
+          text: Waste from animal carcasses
+        - value: mines
+          text: Waste from mines or quarries
+        - value: farm
+          text: Farm or agricultural waste
+        - divider: or
+        - value: none
+          text: None of these
+          behaviour: exclusive
+
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: with idPrefix
     hidden: true
