@@ -4,13 +4,13 @@
     @include govuk-text-colour;
     @include govuk-responsive-margin(6, "bottom");
 
-    display: block;
+    // Prevent bottom margins on summary and details from collapsing in Firefox
+    // and Safari, matching Chrome's behaviour (https://crbug.com/40815464)
+    display: flow-root;
   }
 
   .govuk-details__summary {
-    // Make the focus outline shrink-wrap the text content of the summary
-    display: inline-block;
-
+    display: block;
     margin-bottom: govuk-spacing(1);
   }
 
@@ -71,6 +71,9 @@
     .govuk-details__summary {
       // Absolutely position the marker against this element
       position: relative;
+
+      // Make the focus outline shrink-wrap the text content of the summary
+      width: fit-content;
 
       // Allow for absolutely positioned marker and align with disclosed text
       padding-left: govuk-spacing(4) + $govuk-border-width;
