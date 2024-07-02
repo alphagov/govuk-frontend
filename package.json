@@ -107,6 +107,7 @@
     "@types/node": "^20.14.2",
     "@types/nunjucks": "^3.2.6",
     "@types/slug": "^5.0.8",
+    "@types/vinyl": "^2.0.12",
     "puppeteer": "^22.12.1",
     "typed-query-selector": "^2.11.2"
   },
