@@ -38,22 +38,27 @@
                 {%- if params.slots.navigationStart %}{{ params.slots.navigationStart | safe }}{% endif -%}
 
                 {% for item in params.navigation %}
+                  {% set linkInnerContent %}
+                    {# We wrap active links in strong tags so that users who override colours or
+                    styles will still have some indicator of the current nav item. #}
+                    {% if item.active or item.current %}
+                      <strong class="govuk-service-header__active-fallback">{{- item.html | safe if item.html else item.text -}}</strong>
+                    {% else %}
+                      {{- item.html | safe if item.html else item.text -}}
+                    {% endif %}
+                  {% endset %}
+
                   <li class="govuk-service-header__navigation-item {%- if item.active or item.current %} govuk-service-header__navigation-item--active{% endif %}">
                     {% if item.href %}
                       <a class="govuk-service-header__link" href="{{ item.href }}"
                         {%- if item.active or item.current %} aria-current="{{ 'page' if item.current else 'true' }}"{% endif %}
                         {{- govukAttributes(item.attributes) -}}>
-                        {# We wrap active links in strong tags so that users who override colours or
-                        styles will still have some indicator of the current nav item. #}
-                        {% if item.active or item.current %}
-                          <strong class="govuk-service-header__active-fallback">{{- item.html | safe if item.html else item.text -}}</strong>
-                        {% else %}
-                          {{- item.html | safe if item.html else item.text -}}
-                        {% endif %}
+                        {{ linkInnerContent | safe }}
                       </a>
                     {% elif item.html or item.text %}
-                      <span class="govuk-service-header__navigation-text">
-                        {{- item.html | safe if item.html else item.text -}}
+                      <span class="govuk-service-header__navigation-text"
+                        {%- if item.active or item.current %} aria-current="{{ 'page' if item.current else 'true' }}"{% endif %}>
+                        {{ linkInnerContent | safe }}
                       </span>
                     {% endif %}
                   </li>

@@ -165,8 +165,8 @@
   // This is a <strong> element that is used as a fallback mechanism for
   // visually indicating the current page in scenarios where CSS is unavailable
   // or colours may have been overridden. We don't actually want it to be bold
-  // normally, so set it to regular weight.
+  // normally, so set it to inherit the parent font-weight.
   .govuk-service-header__active-fallback {
-    @include govuk-typography-weight-regular;
+    font-weight: inherit;
   }
 }
