@@ -95,7 +95,7 @@ describe('Notification-banner', () => {
       const $ = render('notification-banner', examples['custom role'])
       const $component = $('.govuk-notification-banner')
 
-      expect($component.attr('role')).toBe('dialog')
+      expect($component.attr('role')).toBe('banner')
     })
 
     it('renders aria-labelledby attribute matching the title id when role overridden to region', () => {

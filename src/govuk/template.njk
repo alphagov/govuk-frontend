@@ -36,12 +36,8 @@
       }) }}
     {% endblock %}
 
-    {% block headerContainer %}
-      <header class="govuk-template__header {%- if headerClasses %} {{ headerClasses }}{% endif %}">
-        {% block header %}
-          {{ govukHeader({}) }}
-        {% endblock %}
-      </header>
+    {% block header %}
+      {{ govukHeader({}) }}
     {% endblock %}
 
     {% block main %}

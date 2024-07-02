@@ -53,7 +53,7 @@
 </svg>
 {% endset -%}
 
-<div class="govuk-header {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-header"
+<header class="govuk-header {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-header"
   {{- govukAttributes(params.attributes) }}>
   <div class="govuk-header__container {{ params.containerClasses | default("govuk-width-container", true) }}">
 
@@ -150,4 +150,4 @@
   {# Slot: end #}
   {%- if params.slots.end %}{{ params.slots.end | safe }}{% endif -%}
   </div>
-</div>
+</header>
