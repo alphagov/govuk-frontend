@@ -41,14 +41,17 @@ scenario: |
   }) }}
 {% endblock %}
 
-{% block beforeContent %}
+{% block header %}
+  {{ super() }}
   {{ govukPhaseBanner({
     tag: {
       text: "Beta"
     },
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
+{% endblock %}
 
+{% block beforeContent %}
   {{ govukBreadcrumbs({
     classes: "",
     collapseOnMobile: true,

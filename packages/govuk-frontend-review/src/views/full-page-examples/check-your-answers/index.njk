@@ -17,12 +17,14 @@ notes: The links to change your answers are not functional.
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/service-header/macro.njk" import govukServiceHeader %}
 
 {% set pageTitle = example.title %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block header %}
-  {{ govukHeader({
+  {{ govukHeader() }}
+  {{ govukServiceHeader({
     serviceName: "Temporary events notice"
   }) }}
 {% endblock %}
