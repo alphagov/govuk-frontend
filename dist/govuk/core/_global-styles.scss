@@ -1,0 +1,20 @@
+@import "links";
+@import "typography";
+
+@mixin govuk-global-styles {
+  a {
+    @extend %govuk-link;
+  }
+
+  p {
+    @extend %govuk-body-m;
+  }
+}
+
+@include govuk-exports("govuk/core/global-styles") {
+  @if $govuk-global-styles == true {
+    @include govuk-global-styles;
+  }
+}
+
+/*# sourceMappingURL=_global-styles.scss.map */

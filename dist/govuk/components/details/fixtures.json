@@ -1,0 +1,133 @@
+{
+    "component": "details",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "summaryText": "Help with nationality",
+                "text": "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post."
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<details class=\"govuk-details\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      Help with nationality\n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.\n  </div>\n</details>"
+        },
+        {
+            "name": "expanded",
+            "options": {
+                "id": "help-with-nationality",
+                "summaryText": "Help with nationality",
+                "text": "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.",
+                "open": true
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": true,
+            "html": "<details id=\"help-with-nationality\" class=\"govuk-details\" open>\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      Help with nationality\n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.\n  </div>\n</details>"
+        },
+        {
+            "name": "with html",
+            "options": {
+                "summaryText": "Where to find your National Insurance Number",
+                "html": "Your National Insurance number can be found on\n<ul>\n  <li>your National Insurance card</li>\n  <li>your payslip</li>\n  <li>P60</li>\n  <li>benefits information</li>\n  <li>tax return</li>\n</ul>\n"
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<details class=\"govuk-details\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      Where to find your National Insurance Number\n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    Your National Insurance number can be found on\n<ul>\n  <li>your National Insurance card</li>\n  <li>your payslip</li>\n  <li>P60</li>\n  <li>benefits information</li>\n  <li>tax return</li>\n</ul>\n\n  </div>\n</details>"
+        },
+        {
+            "name": "id",
+            "options": {
+                "id": "my-details-element",
+                "summaryText": "Expand this section",
+                "text": "Here are some more details"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<details id=\"my-details-element\" class=\"govuk-details\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      Expand this section\n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    Here are some more details\n  </div>\n</details>"
+        },
+        {
+            "name": "html as text",
+            "options": {
+                "summaryText": "Expand this section",
+                "text": "More about the greater than symbol (>)"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<details class=\"govuk-details\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      Expand this section\n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    More about the greater than symbol (&gt;)\n  </div>\n</details>"
+        },
+        {
+            "name": "html",
+            "options": {
+                "summaryText": "Expand this section",
+                "html": "More about <b>bold text</b>"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<details class=\"govuk-details\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      Expand this section\n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    More about <b>bold text</b>\n  </div>\n</details>"
+        },
+        {
+            "name": "summary html as text",
+            "options": {
+                "summaryText": "The greater than symbol (>) is the best",
+                "text": "Here are some more details"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<details class=\"govuk-details\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      The greater than symbol (&gt;) is the best\n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    Here are some more details\n  </div>\n</details>"
+        },
+        {
+            "name": "summary html",
+            "options": {
+                "summaryHtml": "Use <b>bold text</b> sparingly",
+                "text": "Here are some more details"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<details class=\"govuk-details\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      Use <b>bold text</b> sparingly\n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    Here are some more details\n  </div>\n</details>"
+        },
+        {
+            "name": "classes",
+            "options": {
+                "classes": "some-additional-class",
+                "text": "Here are some more details",
+                "summaryText": "Expand me"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<details class=\"govuk-details some-additional-class\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      Expand me\n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    Here are some more details\n  </div>\n</details>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "text": "Here are some more details",
+                "summaryText": "Expand me",
+                "attributes": {
+                    "data-some-data-attribute": "i-love-data",
+                    "another-attribute": "foo"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<details class=\"govuk-details\" data-some-data-attribute=\"i-love-data\" another-attribute=\"foo\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      Expand me\n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    Here are some more details\n  </div>\n</details>"
+        }
+    ]
+}

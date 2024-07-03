@@ -1,0 +1,39 @@
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend">
+      How do you want to be contacted?
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="how-contacted-checked" name="how-contacted-checked" type="radio" value="email" checked data-aria-controls="conditional-how-contacted-checked">
+        <label class="govuk-label govuk-radios__label" for="how-contacted-checked">
+          Email
+        </label>
+      </div>
+      <div class="govuk-radios__conditional" id="conditional-how-contacted-checked">
+        <label class="govuk-label" for="context-email">Email</label>
+  <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="how-contacted-checked-2" name="how-contacted-checked" type="radio" value="phone" data-aria-controls="conditional-how-contacted-checked-2">
+        <label class="govuk-label govuk-radios__label" for="how-contacted-checked-2">
+          Phone
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-how-contacted-checked-2">
+        <label class="govuk-label" for="contact-phone">Phone number</label>
+  <input class="govuk-input govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="how-contacted-checked-3" name="how-contacted-checked" type="radio" value="text" data-aria-controls="conditional-how-contacted-checked-3">
+        <label class="govuk-label govuk-radios__label" for="how-contacted-checked-3">
+          Text message
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-how-contacted-checked-3">
+        <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
+  <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
+      </div>
+    </div>
+  </fieldset>
+</div>

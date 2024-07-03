@@ -1,0 +1,25 @@
+@import "../base";
+
+@include govuk-exports("govuk/objects/form-group") {
+  .govuk-form-group {
+    @include govuk-clearfix;
+    @include govuk-responsive-margin(6, "bottom");
+
+    .govuk-form-group:last-of-type {
+      margin-bottom: 0; // Remove margin from last item in nested groups
+    }
+  }
+
+  .govuk-form-group--error {
+    padding-left: govuk-spacing(3);
+    border-left: $govuk-border-width-form-group-error solid $govuk-error-colour;
+
+    .govuk-form-group {
+      // Reset error styles in nested form groups that might have error class
+      padding: 0;
+      border: 0;
+    }
+  }
+}
+
+/*# sourceMappingURL=_form-group.scss.map */
