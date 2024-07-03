@@ -4,7 +4,7 @@
 {%- set navigationId = params.navigationId | default("navigation", true) %}
 
 {% if params.serviceName or params.navigation | length %}
-  <section class="govuk-service-header {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-service-header" aria-label="Service information and navigation"
+  <section class="govuk-service-header {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-service-header" aria-label="Service information"
   {{- govukAttributes(params.attributes) }}>
     <div class="govuk-width-container">
 
