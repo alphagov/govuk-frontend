@@ -8,6 +8,22 @@ describe('Service Header', () => {
     examples = await getExamples('service-header')
   })
 
+  describe('with no options set', () => {
+    it("doesn't output anything", () => {
+      const $ = render('service-header', examples['with no options set'])
+      const $component = $('.govuk-service-header')
+
+      expect($component).toHaveLength(0)
+    })
+
+    it('renders default aria-label', () => {
+      const $ = render('service-header', examples.default)
+      const $component = $('.govuk-service-header')
+
+      expect($component.attr('aria-label')).toBe('Service information')
+    })
+  })
+
   describe('custom options', () => {
     it('renders attributes correctly', () => {
       const $ = render('service-header', examples.attributes)
@@ -23,14 +39,12 @@ describe('Service Header', () => {
 
       expect($component.hasClass('app-my-curious-custom-class')).toBeTruthy()
     })
-  })
 
-  describe('with no options set', () => {
-    it("doesn't output anything", () => {
-      const $ = render('service-header', examples['with no options set'])
+    it('renders custom aria-label correctly', () => {
+      const $ = render('service-header', examples['with custom aria-label'])
       const $component = $('.govuk-service-header')
 
-      expect($component).toHaveLength(0)
+      expect($component.attr('aria-label')).toBe('Service name and nav')
     })
   })
 

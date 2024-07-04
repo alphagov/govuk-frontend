@@ -7,6 +7,10 @@ params:
     type: object
     required: false
     description: HTML attributes (for example, data attributes) to add to the service header container.
+  - name: ariaLabel
+    type: string
+    required: false
+    description: The text for the `aria-label` which labels the service header. Defaults to `"Service information"`.
   - name: menuButtonText
     type: string
     required: false
@@ -219,6 +223,11 @@ examples:
     options:
       serviceName: Service name
       classes: app-my-curious-custom-class
+  - name: with custom aria-label
+    hidden: true
+    options:
+      serviceName: Service name
+      ariaLabel: Service name and nav
   - name: with custom navigation toggle text
     hidden: true
     options:
