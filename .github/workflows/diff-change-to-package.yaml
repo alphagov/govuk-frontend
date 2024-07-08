@@ -37,7 +37,7 @@ jobs:
           bin/package-diff.sh $GITHUB_BASE_REF $GITHUB_WORKSPACE
 
       - name: Save npm package diffs
-        uses: actions/upload-artifact@v4.3.3
+        uses: actions/upload-artifact@v4.3.4
         with:
           name: Package diff
           path: .cache/diff/package/*.diff

@@ -37,7 +37,7 @@ jobs:
           bin/dist-diff.sh origin/$GITHUB_BASE_REF $GITHUB_WORKSPACE
 
       - name: Save GitHub release diffs
-        uses: actions/upload-artifact@v4.3.3
+        uses: actions/upload-artifact@v4.3.4
         with:
           name: GitHub release diffs
           path: .cache/diff/dist/*.diff
