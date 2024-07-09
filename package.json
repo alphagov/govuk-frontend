@@ -90,7 +90,7 @@
     "stylelint": "^16.6.1",
     "stylelint-config-gds": "^2.0.0",
     "stylelint-order": "^6.0.4",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.3"
   },
   "optionalDependencies": {
     "@actions/github": "^6.0.0",
