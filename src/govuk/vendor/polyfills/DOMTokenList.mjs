@@ -1,7 +1,6 @@
 // @ts-nocheck
 (function (undefined) {
 
-    // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/master/packages/polyfill-library/polyfills/DOMTokenList/detect.js
     var detect = (
       'DOMTokenList' in this && (function (x) {
         return 'classList' in x ? !x.classList.toggle('x', false) && !x.className : true;
@@ -10,7 +9,6 @@
 
     if (detect) return
 
-    // Polyfill from https://raw.githubusercontent.com/Financial-Times/polyfill-service/master/packages/polyfill-library/polyfills/DOMTokenList/polyfill.js
     (function (global) {
       var nativeImpl = "DOMTokenList" in global && global.DOMTokenList;
 

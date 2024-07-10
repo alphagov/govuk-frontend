@@ -2,12 +2,10 @@
 import '../../Object/defineProperty.mjs'
 
 (function(undefined) {
-  // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Function/prototype/bind/detect.js
   var detect = 'bind' in Function.prototype
 
   if (detect) return
 
-  // Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Function.prototype.bind&flags=always
   Object.defineProperty(Function.prototype, 'bind', {
       value: function bind(that) { // .length is 1
           // add necessary es5-shim utilities

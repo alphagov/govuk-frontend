@@ -5,7 +5,6 @@ import './Object/defineProperty.mjs'
 
 (function(undefined) {
 
-// Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Event/detect.js
 var detect = (
   (function(global) {
 
@@ -25,7 +24,6 @@ var detect = (
 
 if (detect) return
 
-// Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Event&flags=always
 (function () {
 	var unlistenableWindowEvents = {
 		click: 1,

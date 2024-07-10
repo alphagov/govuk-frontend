@@ -5,7 +5,6 @@ import '../../Element.mjs'
 
 (function(undefined) {
 
-    // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/8717a9e04ac7aff99b4980fbedead98036b0929a/packages/polyfill-library/polyfills/Element/prototype/classList/detect.js
     var detect = (
       'document' in this && "classList" in document.documentElement && 'Element' in this && 'classList' in Element.prototype && (function () {
         var e = document.createElement('span');
@@ -16,7 +15,6 @@ import '../../Element.mjs'
 
     if (detect) return
 
-    // Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Element.prototype.classList&flags=always
     (function (global) {
       var dpSupport = true;
       var defineGetter = function (object, name, fn, configurable) {
