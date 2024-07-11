@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+### Fixes
+
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#5127: Remove direct links to Polyfill[dot]io](https://github.com/alphagov/govuk-frontend/pull/5127)
+
 ## GOV.UK Frontend v4.8.0 (Feature release)
 
 This release includes the ability to update the crown logo. You must do this between 19 February and 1 March 2024.
