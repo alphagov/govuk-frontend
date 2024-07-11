@@ -18,6 +18,7 @@ This change was introduced in [pull request #4995: Update Breadcrumb component t
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
+- [#5114: Fix divider width for small checkboxes](https://github.com/alphagov/govuk-frontend/pull/5114) – thanks to [@colinrotherham](https://github.com/colinrotherham)
 - [#5043: Refactor the accordion JavaScript](https://github.com/alphagov/govuk-frontend/pull/5043)
 - [#5044: Remove session storage checks from accordion JavaScript](https://github.com/alphagov/govuk-frontend/pull/5044)
 - [#5060: Reintroduce additional bottom margin to Error Summary content](https://github.com/alphagov/govuk-frontend/pull/5060)
