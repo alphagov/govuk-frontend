@@ -19,7 +19,8 @@ export default (options) =>
       gulp
         .src('govuk/assets/**/*', {
           base: join(options.srcPath, 'govuk'),
-          cwd: options.srcPath
+          cwd: options.srcPath,
+          encoding: false
         })
         .pipe(gulp.dest(options.destPath))
     ),
