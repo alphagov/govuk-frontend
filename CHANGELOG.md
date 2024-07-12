@@ -4,6 +4,8 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+## 5.4.1 (Fix release)
+
 ### Recommended changes
 
 #### Update Breadcrumbs to use `nav` and `aria-label`
