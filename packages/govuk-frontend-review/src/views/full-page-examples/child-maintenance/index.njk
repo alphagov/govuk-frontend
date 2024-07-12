@@ -70,10 +70,7 @@ scenario: |
 {% endblock %}
 
 {% block content %}
-  {{ govukExitThisPage({
-    text: "Exit this page",
-    redirectUrl: "https://bbc.co.uk/weather/"
-  }) }}
+  {{ govukExitThisPage() }}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
