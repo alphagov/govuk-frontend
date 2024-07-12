@@ -4,7 +4,6 @@ import '../../Element.mjs'
 
 (function(undefined) {
 
-  // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-library/13cf7c340974d128d557580b5e2dafcd1b1192d1/polyfills/Element/prototype/dataset/detect.js
   var detect = (function(){
     if (!document.documentElement.dataset) {
       return false;
@@ -16,7 +15,6 @@ import '../../Element.mjs'
 
   if (detect) return
 
-  // Polyfill derived from  https://raw.githubusercontent.com/Financial-Times/polyfill-library/13cf7c340974d128d557580b5e2dafcd1b1192d1/polyfills/Element/prototype/dataset/polyfill.js
   Object.defineProperty(Element.prototype, 'dataset', {
     get: function() {
       var element = this;
