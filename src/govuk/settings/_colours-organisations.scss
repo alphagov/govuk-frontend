@@ -57,7 +57,7 @@ $_govuk-organisation-colours: (
     colour: #009999,
     contrast-safe: #008080,
     deprecation-message:
-      "`department-for-communities-local-government` became `ministry-of-housing-communities-local-government` in 2018. As of 2021, it is equivalent to `department-for-levelling-up-housing-communities`."
+      "`department-for-communities-local-government` became `ministry-of-housing-communities-local-government` in 2018."
   ),
   "department-for-culture-media-sport": (
     colour: #d6006e
@@ -93,7 +93,9 @@ $_govuk-organisation-colours: (
     deprecation-message: "`department-for-international-trade` was merged into `department-for-business-trade` in 2023."
   ),
   "department-for-levelling-up-housing-communities": (
-    colour: #012169
+    colour: #012169,
+    deprecation-message:
+      "`department-for-levelling-up-housing-communities` was renamed to `ministry-of-housing-communities-local-government` in 2024."
   ),
   "department-for-science-innovation-technology": (
     colour: #00f9f8,
@@ -148,10 +150,7 @@ $_govuk-organisation-colours: (
     colour: #532a45
   ),
   "ministry-of-housing-communities-local-government": (
-    colour: #009999,
-    contrast-safe: #008080,
-    deprecation-message:
-      "`ministry-of-housing-communities-local-government` became `department-for-levelling-up-housing-communities` in 2021."
+    colour: #00625e
   ),
   "ministry-of-justice": (
     colour: #000000
