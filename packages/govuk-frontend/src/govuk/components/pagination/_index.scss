@@ -151,7 +151,6 @@
     @include govuk-typography-weight-regular;
     @include govuk-link-decoration;
     display: inline-block;
-    padding-left: govuk-spacing(6);
   }
 
   .govuk-pagination__icon {
@@ -175,35 +174,23 @@
   .govuk-pagination--block {
     display: block;
 
-    .govuk-pagination__item {
-      padding: govuk-spacing(3);
-      float: none;
-    }
-
     .govuk-pagination__next,
     .govuk-pagination__prev {
       padding-left: 0;
       float: none;
+
+      .govuk-pagination__link {
+        display: inline-block;
+      }
     }
 
     .govuk-pagination__next {
       padding-right: govuk-spacing(3);
-
-      .govuk-pagination__icon {
-        margin-left: 0;
-      }
     }
 
     // Only apply a border between prev and next if both are present
     .govuk-pagination__prev + .govuk-pagination__next {
       border-top: 1px solid $govuk-border-colour;
-    }
-
-    // Reset both these elements to their inline default, both to ensure that
-    // the focus state for block mode "shrink wraps" text as expected
-    .govuk-pagination__link,
-    .govuk-pagination__link-title {
-      display: inline;
     }
 
     // Set the after pseudo element to a block which makes the title visually
@@ -216,16 +203,8 @@
     }
 
     .govuk-pagination__link {
+      padding-left: govuk-spacing(6);
       text-align: left;
-
-      &:focus {
-        // Apply focus styling to the label within the link as if it were being
-        // focused to get around a display issue with a focusable inline element
-        // containing a mixture of inline and inline-block level elements
-        .govuk-pagination__link-label {
-          @include govuk-focused-text;
-        }
-      }
 
       &:not(:focus) {
         text-decoration: none;
@@ -233,7 +212,15 @@
     }
 
     .govuk-pagination__icon {
-      margin-right: govuk-spacing(2);
+      // This magic number is brought to you by the following equation:
+      // ((lineHeight − arrowHeight) ÷ 2) ÷ fontSize
+      // ((25 − 13) ÷ 2) ÷ 19 = 0.326em
+      //
+      // This could have been done programmatically but we don't have functions
+      // for grabbing the line-height of specific typography sizes just yet.
+      margin-top: 0.326em;
+      margin-left: govuk-spacing(6) * -1;
+      float: left;
     }
   }
 }
