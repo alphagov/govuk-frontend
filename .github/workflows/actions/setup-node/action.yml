@@ -11,7 +11,7 @@ runs:
 
   steps:
     - name: Setup Node.js
-      uses: actions/setup-node@v4.0.2
+      uses: actions/setup-node@v4.0.3
       id: setup-node
 
       with:
