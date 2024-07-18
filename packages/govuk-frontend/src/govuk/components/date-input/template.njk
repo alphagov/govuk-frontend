@@ -17,15 +17,18 @@
   {% set dateInputItems = [
     {
       name: "day",
-      classes: "govuk-input--width-2"
+      classes: "govuk-input--width-2",
+      value: params.values[0]
     },
     {
       name: "month",
-      classes: "govuk-input--width-2"
+      classes: "govuk-input--width-2",
+      value: params.values[1]
     },
     {
       name: "year",
-      classes: "govuk-input--width-4"
+      classes: "govuk-input--width-4",
+      value: params.values[2]
     }
   ] %}
 {% endif %}
