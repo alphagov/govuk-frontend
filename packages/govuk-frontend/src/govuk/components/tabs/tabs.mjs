@@ -365,26 +365,22 @@ export class Tabs extends GOVUKFrontendComponent {
   /**
    * Handle tab keydown event
    *
-   * - Press right/down arrow for next tab
-   * - Press left/up arrow for previous tab
+   * - Press right arrow for next tab
+   * - Press left arrow for previous tab
    *
    * @private
    * @param {KeyboardEvent} event - Keydown event
    */
   onTabKeydown(event) {
     switch (event.key) {
-      // 'Left', 'Right', 'Up' and 'Down' required for Edge 16 support.
+      // 'Left' and 'Right' required for Edge 16 support.
       case 'ArrowLeft':
-      case 'ArrowUp':
       case 'Left':
-      case 'Up':
         this.activatePreviousTab()
         event.preventDefault()
         break
       case 'ArrowRight':
-      case 'ArrowDown':
       case 'Right':
-      case 'Down':
         this.activateNextTab()
         event.preventDefault()
         break
