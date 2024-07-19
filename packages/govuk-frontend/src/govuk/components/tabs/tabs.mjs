@@ -1,4 +1,8 @@
-import { getBreakpoint, getFragmentFromUrl } from '../../common/index.mjs'
+import {
+  getBreakpoint,
+  getFragmentFromUrl,
+  setFocus
+} from '../../common/index.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
@@ -373,7 +377,7 @@ export class Tabs extends GOVUKFrontendComponent {
    */
   onTabKeydown(event) {
     switch (event.key) {
-      // 'Left' and 'Right' required for Edge 16 support.
+      // 'Left', 'Right' and 'Down' required for Edge 16 support.
       case 'ArrowLeft':
       case 'Left':
         this.activatePreviousTab()
@@ -382,6 +386,11 @@ export class Tabs extends GOVUKFrontendComponent {
       case 'ArrowRight':
       case 'Right':
         this.activateNextTab()
+        event.preventDefault()
+        break
+      case 'ArrowDown':
+      case 'Down':
+        this.focusCurrentPanel()
         event.preventDefault()
         break
     }
@@ -486,6 +495,24 @@ export class Tabs extends GOVUKFrontendComponent {
     }
 
     $panel.classList.add(this.jsHiddenClass)
+  }
+
+  /**
+   * Move keyboard focus to the currently visible panel
+   *
+   * @private
+   */
+  focusCurrentPanel() {
+    const $currentTab = this.getCurrentTab()
+    if (!$currentTab?.parentElement) {
+      return
+    }
+
+    // We have to forcibly cast the variable to HTMLElement here, as the
+    // `focus` method doesn't exist on the base Element type.
+    const $panel = /** @type {HTMLElement} */ (this.getPanel($currentTab))
+
+    setFocus($panel)
   }
 
   /**

@@ -122,6 +122,14 @@
         & > :last-child {
           margin-bottom: 0;
         }
+
+        &:focus {
+          @include govuk-focused-box;
+
+          // Create a new stacking context so that the focus style isn't
+          // obscured by the tablist
+          position: relative;
+        }
       }
 
       .govuk-tabs__panel--hidden {
