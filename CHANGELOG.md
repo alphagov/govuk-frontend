@@ -8,6 +8,7 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
+- [#5046: Skip ‘empty’ tasks in the task list](https://github.com/alphagov/govuk-frontend/pull/5046)
 - [#5066: Fix whitespace affecting text alignment in pagination block variant](https://github.com/alphagov/govuk-frontend/pull/5066)
 
 ## 5.4.1 (Fix release)

@@ -376,3 +376,21 @@ examples:
           status:
             tag:
               html: <strong>Tag</strong>
+
+  - name: with empty values
+    options:
+      items:
+        -
+        - null
+        - title:
+            text: Task A
+          href: '#'
+          status:
+            text: Completed
+        - false
+        - ''
+        - title:
+            text: Task B
+          href: '#'
+          status:
+            text: Completed
