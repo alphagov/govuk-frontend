@@ -34,6 +34,10 @@ module.exports = {
     strict: false
   },
 
+  // Document private methods. These are behind a checkbox in the
+  // settings menu of the JSDoc page.
+  excludePrivate: false,
+
   // Ignore known undocumented types (@internal, @private etc)
   intentionallyNotExported: ['I18n', 'TranslationPluralForms']
 }
