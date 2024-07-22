@@ -18,7 +18,7 @@ const sassPaths = [
 async function compileSassFile(path, options = {}) {
   return compileAsync(path, {
     loadPaths: sassPaths,
-    silenceDeprecations: ['slash-div'],
+    silenceDeprecations: ['slash-div', 'mixed-decls'],
     quietDeps: true,
     ...options
   })
@@ -34,7 +34,7 @@ async function compileSassFile(path, options = {}) {
 async function compileSassString(source, options = {}) {
   return compileStringAsync(source, {
     loadPaths: sassPaths,
-    silenceDeprecations: ['slash-div'],
+    silenceDeprecations: ['slash-div', 'mixed-decls'],
     quietDeps: true,
     ...options
   })
