@@ -54,5 +54,5 @@ describe('normaliseDataset', () => {
 })
 
 /**
- * @typedef {import('./../configuration.mjs').Schema} Schema
+ * @import { Schema } from './../configuration.mjs'
  */

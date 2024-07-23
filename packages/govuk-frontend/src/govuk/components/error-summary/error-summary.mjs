@@ -189,5 +189,5 @@ export class ErrorSummary extends ConfigurableComponent {
  */
 
 /**
- * @typedef {import('../../common/configuration.mjs').Schema} Schema
+ * @import { Schema } from '../../common/configuration.mjs'
  */
