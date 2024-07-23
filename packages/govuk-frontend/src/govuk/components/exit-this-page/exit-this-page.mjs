@@ -453,5 +453,5 @@ export class ExitThisPage extends GOVUKFrontendComponentConfigurable {
  */
 
 /**
- * @typedef {import('../../common/configuration.mjs').Schema} Schema
+ * @import { Schema } from '../../common/configuration.mjs'
  */

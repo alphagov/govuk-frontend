@@ -122,5 +122,5 @@ export class Button extends GOVUKFrontendComponentConfigurable {
  */
 
 /**
- * @typedef {import('../../common/configuration.mjs').Schema} Schema
+ * @import { Schema } from '../../common/configuration.mjs'
  */
