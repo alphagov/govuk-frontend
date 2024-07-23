@@ -262,6 +262,5 @@ export class PasswordInput extends GOVUKFrontendComponent {
  */
 
 /**
- * @typedef {import('../../common/index.mjs').Schema} Schema
- * @typedef {import('../../i18n.mjs').TranslationPluralForms} TranslationPluralForms
+ * @import { Schema } from '../../common/index.mjs'
  */

@@ -183,16 +183,13 @@ export { initAll, createAll }
 /**
  * Config for individual components
  *
- * @typedef {import('./components/accordion/accordion.mjs').AccordionConfig} AccordionConfig
- * @typedef {import('./components/accordion/accordion.mjs').AccordionTranslations} AccordionTranslations
- * @typedef {import('./components/button/button.mjs').ButtonConfig} ButtonConfig
- * @typedef {import('./components/character-count/character-count.mjs').CharacterCountConfig} CharacterCountConfig
- * @typedef {import('./components/character-count/character-count.mjs').CharacterCountTranslations} CharacterCountTranslations
- * @typedef {import('./components/error-summary/error-summary.mjs').ErrorSummaryConfig} ErrorSummaryConfig
- * @typedef {import('./components/exit-this-page/exit-this-page.mjs').ExitThisPageConfig} ExitThisPageConfig
- * @typedef {import('./components/exit-this-page/exit-this-page.mjs').ExitThisPageTranslations} ExitThisPageTranslations
- * @typedef {import('./components/notification-banner/notification-banner.mjs').NotificationBannerConfig} NotificationBannerConfig
- * @typedef {import('./components/password-input/password-input.mjs').PasswordInputConfig} PasswordInputConfig
+ * @import { AccordionConfig } from './components/accordion/accordion.mjs'
+ * @import { ButtonConfig } from './components/button/button.mjs'
+ * @import { CharacterCountConfig } from './components/character-count/character-count.mjs'
+ * @import { ErrorSummaryConfig } from './components/error-summary/error-summary.mjs'
+ * @import { ExitThisPageConfig } from './components/exit-this-page/exit-this-page.mjs'
+ * @import { NotificationBannerConfig } from './components/notification-banner/notification-banner.mjs'
+ * @import { PasswordInputConfig } from './components/password-input/password-input.mjs'
  */
 
 /**
