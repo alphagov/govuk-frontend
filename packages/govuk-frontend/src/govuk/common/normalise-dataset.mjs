@@ -34,7 +34,5 @@ export function normaliseDataset(Component, dataset) {
 }
 
 /**
- * @internal
- * @typedef {import('./index.mjs').ObjectNested} ObjectNested
- * @typedef {import('./index.mjs').Schema} Schema
+ * @import { ObjectNested, Schema } from './index.mjs'
  */

@@ -499,5 +499,5 @@ describe('Common JS utilities', () => {
 })
 
 /**
- * @typedef {import('./index.mjs').Schema} Schema
+ * @import { Schema } from './index.mjs'
  */
