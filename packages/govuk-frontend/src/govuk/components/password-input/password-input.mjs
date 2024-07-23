@@ -249,6 +249,5 @@ export class PasswordInput extends ConfigurableComponent {
  */
 
 /**
- * @typedef {import('../../common/configuration.mjs').Schema} Schema
- * @typedef {import('../../i18n.mjs').TranslationPluralForms} TranslationPluralForms
+ * @import { Schema } from '../../common/configuration.mjs'
  */

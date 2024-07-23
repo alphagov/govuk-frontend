@@ -261,5 +261,5 @@ describe('extractConfigByNamespace', () => {
 })
 
 /**
- * @typedef {import('../configuration.mjs').Schema} Schema
+ * @import { Schema } from '../configuration.mjs'
  */
