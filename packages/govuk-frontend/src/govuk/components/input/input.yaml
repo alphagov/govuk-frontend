@@ -1,8 +1,8 @@
 params:
   - name: id
     type: string
-    required: true
-    description: The ID of the input.
+    required: false
+    description: The ID of the input. Defaults to matching `name`.
   - name: name
     type: string
     required: true
@@ -166,7 +166,6 @@ examples:
     options:
       label:
         text: National Insurance number
-      id: input-example
       name: test-name
   - name: with hint text
     options:
