@@ -2,11 +2,11 @@ params:
   - name: id
     type: string
     required: false
-    description: This is used for the main component and to compose the ID attribute for each item.
+    description: This is used for the main component and to compose the ID attribute for each item. Default is `"tabs"`.
   - name: idPrefix
     type: string
     required: false
-    description: Optional prefix. This is used to prefix the `id` attribute for each tab item and panel, separated by `-`.
+    description: Optional prefix. This is used to prefix the `id` attribute for each tab item and panel, separated by `-`. Defaults to matching `id`.
   - name: title
     type: string
     required: false
