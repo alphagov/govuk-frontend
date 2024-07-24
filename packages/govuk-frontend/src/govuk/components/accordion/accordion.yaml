@@ -1,7 +1,7 @@
 params:
   - name: id
     type: string
-    required: true
+    required: false
     description: Must be unique across the domain of your service if `rememberExpanded` is `true` (as the expanded state of individual instances of the component persists across page loads using [session storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)). Used as an `id` in the HTML for the accordion as a whole, and also as a prefix for the `id`s of the section contents and the buttons that open them, so that those `id`s can be the target of `aria-control` attributes.
   - name: headingLevel
     type: integer
@@ -95,7 +95,6 @@ params:
 examples:
   - name: default
     options:
-      id: default-example
       items:
         - heading:
             text: Section A
