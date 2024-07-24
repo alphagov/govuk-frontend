@@ -1,10 +1,10 @@
 {% from "../../macros/attributes.njk" import govukAttributes %}
 
 {%- set componentId = params.id | default("tabs") -%}
-{%- set prefixId = params.prefixId | default(componentid) -%}
+{%- set idPrefix = params.idPrefix | default(componentid) -%}
 
 {%- macro _tabListItem(params, item, index) %}
-{% set tabPanelId = item.id if item.id else prefixId + "-" + index -%}
+{% set tabPanelId = item.id if item.id else idPrefix + "-" + index -%}
 <li class="govuk-tabs__list-item {%- if index == 1 %} govuk-tabs__list-item--selected{% endif %}">
   <a class="govuk-tabs__tab" href="#{{ tabPanelId }}"
     {{- govukAttributes(item.attributes) }}>
@@ -14,7 +14,7 @@
 {% endmacro -%}
 
 {%- macro _tabPanel(params, item, index) %}
-{% set tabPanelId = item.id if item.id else prefixId + "-" + index -%}
+{% set tabPanelId = item.id if item.id else idPrefix + "-" + index -%}
 <div class="govuk-tabs__panel {%- if index > 1 %} govuk-tabs__panel--hidden{% endif %}" id="{{ tabPanelId }}"
   {{- govukAttributes(item.panel.attributes) }}>
 {% if item.panel.html %}
