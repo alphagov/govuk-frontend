@@ -28,9 +28,13 @@
     @include govuk-typography-weight-bold($important: true);
   }
 
-  // Tabular numbers
+  // Typography helpers
 
   .govuk-\!-font-tabular-numbers {
     @include govuk-font-tabular-numbers($important: true);
+  }
+
+  .govuk-\!-text-break-word {
+    @include govuk-text-break-word($important: true);
   }
 }
