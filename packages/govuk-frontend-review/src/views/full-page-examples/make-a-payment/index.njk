@@ -1,0 +1,63 @@
+---
+title: Make a payment
+scenario: |
+  As part of an online service, you make a variable value payment to the service.
+
+  Things to try:
+
+  1. Don't enter an amount before continuing to the next page.
+  2. Enter a non-number value for an amount.
+  3. Enter a negative number for an amount.
+---
+{% extends "layouts/full-page-example.njk" %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set pageTitle = example.title %}
+{% block pageTitle %}{{ "Error: " if errorSummary | length }}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if errorSummary | length %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errorSummary
+        }) }}
+      {% endif %}
+
+      <form method="post" novalidate>
+
+        {{ govukInput({
+          label: {
+            text: "How much do you want to pay?",
+            classes: "govuk-label--xl",
+            isPageHeading: true
+          },
+          type: "text",
+          inputmode: "numeric",
+          id: "amount",
+          name: "amount",
+          value: values["amount"],
+          errorMessage: errors["amount"],
+          classes: "govuk-input--width-5",
+          prefix: { text: "£" }
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
