@@ -4,6 +4,22 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### New features
+
+#### Stop long words breaking out of components with `govuk-!-text-break-word`
+
+We've added a new override class to help display long or unpredictable words on narrow screens, such as an email address entered by a user.
+
+Wrapping the content with the `govuk-!-text-break-word` class forces words that are too long for the parent element to break onto a new line.
+
+```html
+A confirmation email will be sent to <span class="govuk-!-text-break-word">arthur_phillip_dent.42@peoplepersonalitydivision.siriuscyberneticscorporation.corp</span>.
+```
+
+Sass users can also use the `govuk-text-break-word` mixin.
+
+This change was introduced in [pull request #5159: Add break-word typography helper](https://github.com/alphagov/govuk-frontend/pull/5159).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
