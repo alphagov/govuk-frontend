@@ -17,12 +17,13 @@ describe('Input', () => {
       $label = document.querySelector('.govuk-label')
     })
 
-    it('sets the `id` attribute based on the `id` option', () => {
-      expect($component).toHaveAttribute('id', 'input-example')
-    })
-
     it('sets the `name` attribute based on the `name` option', () => {
       expect($component).toHaveAttribute('name', 'test-name')
+    })
+
+    it('sets the `id` attribute based on the `name` option', () => {
+      const inputName = $component.getAttribute('name')
+      expect($component).toHaveAttribute('id', inputName)
     })
 
     it('sets the `type` attribute to a default value of "text"', () => {
@@ -65,6 +66,13 @@ describe('Input', () => {
   })
 
   describe('custom options', () => {
+    it('sets the `id` attribute based on the `id` option', () => {
+      document.body.innerHTML = render('input', examples.id)
+
+      const $component = document.querySelector('.govuk-input')
+      expect($component).toHaveAttribute('id', 'test-id')
+    })
+
     it('includes additional classes from the `classes` option', () => {
       document.body.innerHTML = render('input', examples.classes)
 

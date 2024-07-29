@@ -388,6 +388,13 @@ examples:
       value: QQ 12 34 56 C
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: id
+    hidden: true
+    options:
+      id: test-id
+      name: different-name
+      label:
+        text: With custom ID
   - name: classes
     hidden: true
     options:
