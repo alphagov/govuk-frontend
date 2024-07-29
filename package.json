@@ -56,8 +56,8 @@
     "@govuk-frontend/tasks": "*",
     "@testing-library/jest-dom": "^6.4.6",
     "@types/testing-library__jest-dom": "^6.0.0",
-    "@typescript-eslint/eslint-plugin": "^7.16.1",
-    "@typescript-eslint/parser": "^7.16.1",
+    "@typescript-eslint/eslint-plugin": "^7.17.0",
+    "@typescript-eslint/parser": "^7.17.0",
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "del-cli": "^5.1.0",
@@ -90,7 +90,7 @@
     "stylelint": "^16.7.0",
     "stylelint-config-gds": "^2.0.0",
     "stylelint-order": "^6.0.4",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.4"
   },
   "optionalDependencies": {
     "@actions/github": "^6.0.0",
