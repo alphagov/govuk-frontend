@@ -22,7 +22,7 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "govuk-frontend": "*",
-    "rollup": "^4.19.0",
+    "rollup": "^4.19.1",
     "rollup-plugin-visualizer": "^5.12.0"
   }
 }
