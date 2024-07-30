@@ -170,6 +170,50 @@ describe('@mixin govuk-font-tabular-numbers', () => {
   })
 })
 
+describe('@mixin govuk-text-break-word', () => {
+  it('adds the word-wrap and overflow-wrap properties', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        @include govuk-text-break-word;
+      }
+    `
+
+    const results = compileSassString(sass)
+
+    await expect(results).resolves.toMatchObject({
+      css: outdent`
+        .foo {
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+        }
+      `
+    })
+  })
+
+  it('marks the properties as important if $important is set to true', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        @include govuk-text-break-word($important: true);
+      }
+    `
+
+    const results = compileSassString(sass)
+
+    await expect(results).resolves.toMatchObject({
+      css: outdent`
+        .foo {
+          word-wrap: break-word !important;
+          overflow-wrap: break-word !important;
+        }
+      `
+    })
+  })
+})
+
 describe('@function _govuk-line-height', () => {
   it('preserves line-height if already unitless', async () => {
     const sass = `

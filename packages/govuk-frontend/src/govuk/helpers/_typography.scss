@@ -79,6 +79,23 @@
   font-variant-numeric: tabular-nums if($important, !important, null);
 }
 
+/// Word break helper
+///
+/// Forcibly breaks long words that lack spaces, such as email addresses,
+/// across multiple lines when they wouldn't otherwise fit.
+///
+/// @param {Boolean} $important [false] - Whether to mark declarations as
+///   `!important`. Generally used to create override classes.
+/// @access public
+
+@mixin govuk-text-break-word($important: false) {
+  // IE 11 and Edge 16–17 only support the non-standard `word-wrap` property
+  word-wrap: break-word if($important, !important, null);
+
+  // All other browsers support `overflow-wrap`
+  overflow-wrap: break-word if($important, !important, null);
+}
+
 /// Convert line-heights specified in pixels into a relative value, unless
 /// they are already unit-less (and thus already treated as relative values)
 /// or the units do not match the units used for the font size.
