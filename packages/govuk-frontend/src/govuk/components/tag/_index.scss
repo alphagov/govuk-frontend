@@ -3,10 +3,11 @@
 
   .govuk-tag {
     @include govuk-font($size: 19);
+    @include govuk-text-break-word;
 
     display: inline-block;
 
-    // set a max-width along with overflow-wrap: break-word below for instances
+    // set a max-width along with govuk-text-break-word mixin for instances
     // where a tag has a single long word and could overflow its boundaries.
     // The max-width is necessary as break-word requires a bounding box to base
     // where to break off of.
@@ -28,7 +29,6 @@
     color: govuk-shade(govuk-colour("blue"), 60%);
     background-color: govuk-tint(govuk-colour("blue"), 70%);
     text-decoration: none;
-    overflow-wrap: break-word;
 
     // When forced colour mode is active, for example to provide high contrast,
     // the background colour of the tag is the same as the rest of the page. To

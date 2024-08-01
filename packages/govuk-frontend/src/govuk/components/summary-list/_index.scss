@@ -63,9 +63,7 @@
 
   .govuk-summary-list__key,
   .govuk-summary-list__value {
-    // Automatic wrapping for unbreakable text (e.g. URLs)
-    word-wrap: break-word; // Fallback for older browsers only
-    overflow-wrap: break-word;
+    @include govuk-text-break-word;
   }
 
   .govuk-summary-list__key {
