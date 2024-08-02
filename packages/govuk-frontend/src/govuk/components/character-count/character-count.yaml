@@ -1,8 +1,8 @@
 params:
   - name: id
     type: string
-    required: true
-    description: The ID of the textarea.
+    required: false
+    description: The ID of the textarea and also as a prefix for the `id`s of the textarea's hints, so that those `id`s can be the target of `aria-describedby` attributes. Defaults to matching `name`.
   - name: name
     type: string
     required: true
@@ -135,7 +135,6 @@ examples:
   - name: default
     options:
       name: more-detail
-      id: more-detail
       maxlength: 10
       label:
         text: Can you provide more detail?
