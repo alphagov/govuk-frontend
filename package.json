@@ -71,7 +71,7 @@
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-replace": "^5.0.7",
     "@rollup/plugin-terser": "^0.4.4",
-    "autoprefixer": "^10.4.19",
+    "autoprefixer": "^10.4.20",
     "cssnano": "^7.0.4",
     "cssnano-preset-default": "^7.0.1",
     "govuk-prototype-kit": "^13.16.2",
