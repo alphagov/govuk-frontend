@@ -1,7 +1,7 @@
 const { compileSassString } = require('@govuk-frontend/helpers/tests')
 
 describe('Organisation colours', () => {
-  it('should define websafe colours that meet contrast requirements', async () => {
+  it('should define contrast-safe colours that meet contrast requirements', async () => {
     const sass = `
       $govuk-new-organisation-colours: true;
 
