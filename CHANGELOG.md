@@ -42,6 +42,18 @@ Sass users can also use the `govuk-text-break-word` mixin.
 
 This change was introduced in [pull request #5159: Add break-word typography helper](https://github.com/alphagov/govuk-frontend/pull/5159).
 
+### Recommended changes
+
+#### Update the `$websafe` parameter on the `govuk-organisation-colour` function
+
+The `govuk-organisation-colour` Sass function's `$websafe` parameter on has been renamed to `$contrast-safe`.
+
+This is to more accurately describe the functionality of the parameter.
+
+The old parameter name will stop working in the next major version of GOV.UK Frontend.
+
+This change was introduced in [pull request #3407: Update organisation colours](https://github.com/alphagov/govuk-frontend/pull/3407).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
@@ -61,16 +73,6 @@ We've made changes to the Breadcrumbs component to improve how it appears to scr
 We've changed the wrapping element to use the `nav` tag to expose it as a navigational landmark, and added an `aria-label` attribute to differentiate it as breadcrumb navigation.
 
 This change was introduced in [pull request #4995: Update Breadcrumb component to improve screen reader accessibility](https://github.com/alphagov/govuk-frontend/pull/4995).
-
-### Update the `$websafe` parameter on the `govuk-organisation-colour` function
-
-The `govuk-organisation-colour` Sass function's `$websafe` parameter on has been renamed to `$contrast-safe`.
-
-This is to more accurately describe the functionality of the parameter.
-
-The old parameter name will stop working in the next major version of GOV.UK Frontend.
-
-This change was introduced in [pull request #3407: Update organisation colours](https://github.com/alphagov/govuk-frontend/pull/3407).
 
 ### Fixes
 
