@@ -1,4 +1,4 @@
-# Bolognese
+# Pasta Bolognese
 
 ## Ingredients
 
@@ -9,6 +9,9 @@
 - Carrot, chopped
 - Celery, chopped
 - Tomato paste/puree
--
+- Milk
+- Bay leaves
+- Parmesan rinds
+- Pasta, ideally
 
 ## Method
