@@ -60,6 +60,7 @@ describe('GOV.UK Frontend', () => {
         'NotificationBanner',
         'PasswordInput',
         'Radios',
+        'ServiceNavigation',
         'SkipLink',
         'Tabs'
       ])

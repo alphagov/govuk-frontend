@@ -17,11 +17,19 @@ jest.mock(`./components/header/header.mjs`)
 jest.mock(`./components/notification-banner/notification-banner.mjs`)
 jest.mock(`./components/password-input/password-input.mjs`)
 jest.mock(`./components/radios/radios.mjs`)
+jest.mock(`./components/service-navigation/service-navigation.mjs`)
 jest.mock(`./components/skip-link/skip-link.mjs`)
 jest.mock(`./components/tabs/tabs.mjs`)
 
 describe('initAll', () => {
-  const components = ['checkboxes', 'header', 'radios', 'skip-link', 'tabs']
+  const components = [
+    'checkboxes',
+    'header',
+    'radios',
+    'service-navigation',
+    'skip-link',
+    'tabs'
+  ]
 
   const componentsThatTakeConfig = [
     'accordion',
