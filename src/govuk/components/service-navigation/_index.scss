@@ -1,10 +1,14 @@
 @include govuk-exports("govuk/component/service-navigation") {
-  $govuk-service-navigation-background: $govuk-canvas-background-colour;
-  $govuk-service-navigation-border-color: $govuk-border-colour;
   $govuk-service-navigation-active-link-border-width: govuk-spacing(1);
+  $govuk-service-navigation-background: $govuk-canvas-background-colour;
+  $govuk-service-navigation-border-colour: $govuk-border-colour;
+
+  // We make the link colour a little darker than normal here so that it has
+  // better perceptual contrast with the navigation background.
+  $govuk-service-navigation-link-colour: govuk-shade($govuk-link-colour, 10%);
 
   .govuk-service-navigation {
-    border-bottom: 1px solid $govuk-service-navigation-border-color;
+    border-bottom: 1px solid $govuk-service-navigation-border-colour;
     background-color: $govuk-service-navigation-background;
   }
 
@@ -29,8 +33,11 @@
     @include govuk-link-style-default;
     @include govuk-link-style-no-visited-state;
 
-    // Don't show underlines on navigation links (on hover only)
     &:not(:hover) {
+      // We set the colour here as we don't want to override the hover colour
+      color: $govuk-service-navigation-link-colour;
+
+      // Don't show underlines on navigation links (on hover only)
       text-decoration: none;
     }
 
