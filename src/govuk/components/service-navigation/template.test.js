@@ -37,9 +37,9 @@ describe('Service Navigation', () => {
       const $ = render('service-navigation', examples.default)
       const $component = $('.govuk-service-navigation')
 
-      const $nav = $component.find('nav.govuk-service-navigation__navigation')
-      const $list = $nav.find('ul.govuk-service-navigation__navigation-list')
-      const $items = $list.find('li.govuk-service-navigation__navigation-item')
+      const $nav = $component.find('nav.govuk-service-navigation__wrapper')
+      const $list = $nav.find('ul.govuk-service-navigation__list')
+      const $items = $list.find('li.govuk-service-navigation__item')
       const $firstItem = $items.find(
         'a.govuk-service-navigation__link:first-child'
       )
@@ -57,8 +57,8 @@ describe('Service Navigation', () => {
         examples['with HTML navigation items']
       )
 
-      const $list = $('ul.govuk-service-navigation__navigation-list')
-      const $items = $list.find('li.govuk-service-navigation__navigation-item')
+      const $list = $('ul.govuk-service-navigation__list')
+      const $items = $list.find('li.govuk-service-navigation__item')
       const $firstItem = $items.find(
         'a.govuk-service-navigation__link:first-child'
       )
@@ -70,7 +70,7 @@ describe('Service Navigation', () => {
       const $ = render('service-navigation', examples.default)
       const $component = $('.govuk-service-navigation')
 
-      const $nav = $component.find('nav.govuk-service-navigation__navigation')
+      const $nav = $component.find('nav.govuk-service-navigation__wrapper')
 
       expect($nav.attr('aria-label')).toBe('Menu')
     })
@@ -79,7 +79,7 @@ describe('Service Navigation', () => {
       const $ = render('service-navigation', examples.default)
       const $component = $('.govuk-service-navigation')
 
-      const $nav = $component.find('.govuk-service-navigation__navigation-list')
+      const $nav = $component.find('.govuk-service-navigation__list')
       const $navToggle = $component.find('.govuk-service-navigation__toggle')
 
       const navId = $nav.attr('id')
@@ -96,7 +96,7 @@ describe('Service Navigation', () => {
         )
         const $component = $('.govuk-service-navigation')
 
-        const $nav = $component.find('nav.govuk-service-navigation__navigation')
+        const $nav = $component.find('nav.govuk-service-navigation__wrapper')
 
         expect($nav.hasClass('app-my-neat-navigation-class')).toBeTruthy()
       })
@@ -108,7 +108,7 @@ describe('Service Navigation', () => {
         )
         const $component = $('.govuk-service-navigation')
 
-        const $nav = $component.find('nav.govuk-service-navigation__navigation')
+        const $nav = $component.find('nav.govuk-service-navigation__wrapper')
 
         expect($nav.attr('aria-label')).toBe('Main navigation')
       })
@@ -120,9 +120,7 @@ describe('Service Navigation', () => {
         )
         const $component = $('.govuk-service-navigation')
 
-        const $nav = $component.find(
-          '.govuk-service-navigation__navigation-list'
-        )
+        const $nav = $component.find('.govuk-service-navigation__list')
         const $navToggle = $component.find('.govuk-service-navigation__toggle')
 
         const navId = $nav.attr('id')
@@ -228,9 +226,7 @@ describe('Service Navigation', () => {
           )
           const $component = $('.govuk-service-navigation')
 
-          const $nav = $component.find(
-            'nav.govuk-service-navigation__navigation'
-          )
+          const $nav = $component.find('nav.govuk-service-navigation__wrapper')
           const $navToggle = $component.find(
             '.govuk-service-navigation__toggle'
           )
@@ -249,9 +245,7 @@ describe('Service Navigation', () => {
           )
           const $component = $('.govuk-service-navigation')
 
-          const $nav = $component.find(
-            'nav.govuk-service-navigation__navigation'
-          )
+          const $nav = $component.find('nav.govuk-service-navigation__wrapper')
           const $navToggle = $component.find(
             '.govuk-service-navigation__toggle'
           )
@@ -272,13 +266,9 @@ describe('Service Navigation', () => {
           examples['with non-link navigation items']
         )
 
-        const $navItem = $(
-          '.govuk-service-navigation__navigation-item:first-child'
-        )
+        const $navItem = $('.govuk-service-navigation__item:first-child')
         const $navLink = $navItem.find('a')
-        const $navText = $navItem.find(
-          '.govuk-service-navigation__navigation-text'
-        )
+        const $navText = $navItem.find('.govuk-service-navigation__text')
 
         expect($navLink).toHaveLength(0)
         expect($navText).toHaveLength(1)
@@ -291,13 +281,9 @@ describe('Service Navigation', () => {
           examples['with non-link navigation items']
         )
 
-        const $navItem = $(
-          '.govuk-service-navigation__navigation-item:nth-child(2)'
-        )
+        const $navItem = $('.govuk-service-navigation__item:nth-child(2)')
         const $navLink = $navItem.find('a')
-        const $navText = $navItem.find(
-          '.govuk-service-navigation__navigation-text'
-        )
+        const $navText = $navItem.find('.govuk-service-navigation__text')
 
         expect($navLink).toHaveLength(0)
         expect($navText).toHaveLength(1)
@@ -312,17 +298,10 @@ describe('Service Navigation', () => {
           examples['with navigation with an active item']
         )
 
-        const $activeItem = $(
-          'li.govuk-service-navigation__navigation-item:nth-child(2)'
-        )
+        const $activeItem = $('li.govuk-service-navigation__item:nth-child(2)')
         const $activeLink = $activeItem.find('a')
         const $activeFallback = $activeItem.find('strong')
 
-        expect(
-          $activeItem.hasClass(
-            'govuk-service-navigation__navigation-item--active'
-          )
-        ).toBeTruthy()
         expect($activeLink.attr('aria-current')).toBe('true')
         expect($activeFallback).toHaveLength(1)
       })
@@ -333,17 +312,10 @@ describe('Service Navigation', () => {
           examples['with navigation with a current item']
         )
 
-        const $activeItem = $(
-          'li.govuk-service-navigation__navigation-item:nth-child(2)'
-        )
+        const $activeItem = $('li.govuk-service-navigation__item:nth-child(2)')
         const $activeLink = $activeItem.find('a')
         const $activeFallback = $activeItem.find('strong')
 
-        expect(
-          $activeItem.hasClass(
-            'govuk-service-navigation__navigation-item--active'
-          )
-        ).toBeTruthy()
         expect($activeLink.attr('aria-current')).toBe('page')
         expect($activeFallback).toHaveLength(1)
       })
@@ -370,9 +342,7 @@ describe('Service Navigation', () => {
       const $serviceName = $component.find(
         '.govuk-service-navigation__service-name'
       )
-      const $serviceLink = $serviceName.find(
-        '.govuk-service-navigation__link--service-name'
-      )
+      const $serviceLink = $serviceName.find('.govuk-service-navigation__link')
 
       expect($serviceLink).toHaveLength(1)
       expect($serviceLink.get(0).tagName).toBe('a')
@@ -386,9 +356,7 @@ describe('Service Navigation', () => {
       const $serviceName = $component.find(
         '.govuk-service-navigation__service-name'
       )
-      const $serviceLink = $serviceName.find(
-        '.govuk-service-navigation__link--service-name'
-      )
+      const $serviceLink = $serviceName.find('.govuk-service-navigation__link')
 
       expect($serviceLink).toHaveLength(0)
     })
@@ -444,7 +412,7 @@ describe('Service Navigation', () => {
 
       // Expected to be first thing in the nav list
       const $slottedElement = $(
-        '.govuk-service-navigation__navigation-list > :first-child'
+        '.govuk-service-navigation__list > :first-child'
       )
 
       expect($slottedElement.prop('outerHTML')).toBe(
@@ -456,9 +424,7 @@ describe('Service Navigation', () => {
       const $ = render('service-navigation', examples['with slotted content'])
 
       // Expected to be first thing in the nav list
-      const $slottedElement = $(
-        '.govuk-service-navigation__navigation-list > :last-child'
-      )
+      const $slottedElement = $('.govuk-service-navigation__list > :last-child')
 
       expect($slottedElement.prop('outerHTML')).toBe(
         '<li>[navigation end]</li>'

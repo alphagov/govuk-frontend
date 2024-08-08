@@ -20,23 +20,25 @@ data-module="govuk-service-navigation"
       {% if params.serviceName %}
         <span class="govuk-service-navigation__service-name">
           {% if params.serviceUrl %}
-          <a href="{{ params.serviceUrl }}" class="govuk-service-navigation__link govuk-service-navigation__link--service-name">
-            {{ params.serviceName }}
-          </a>
+            <a href="{{ params.serviceUrl }}" class="govuk-service-navigation__link">
+              {{ params.serviceName }}
+            </a>
           {% else %}
-            {{- params.serviceName -}}
+            <span class="govuk-service-navigation__text">
+              {{- params.serviceName -}}
+            </span>
           {% endif %}
         </span>
       {% endif %}
 
       {# Navigation #}
       {% if params.navigation | length %}
-        <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-service-navigation__navigation {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
+        <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-service-navigation__wrapper {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
           <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="{{ navigationId }}" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden>
             {{ menuButtonText }}
           </button>
 
-          <ul class="govuk-service-navigation__navigation-list" id="{{ navigationId }}" >
+          <ul class="govuk-service-navigation__list" id="{{ navigationId }}" >
 
             {# Slot: navigationStart #}
             {%- if params.slots.navigationStart %}{{ params.slots.navigationStart | safe }}{% endif -%}
@@ -53,7 +55,7 @@ data-module="govuk-service-navigation"
                 {% endif %}
               {% endset %}
 
-              <li class="govuk-service-navigation__navigation-item {%- if item.active or item.current %} govuk-service-navigation__navigation-item--active{% endif %}">
+              <li class="govuk-service-navigation__item">
                 {% if item.href %}
                   <a class="govuk-service-navigation__link" href="{{ item.href }}"
                     {%- if item.active or item.current %} aria-current="{{ 'page' if item.current else 'true' }}"{% endif %}
@@ -61,7 +63,7 @@ data-module="govuk-service-navigation"
                     {{ linkInnerContent | safe }}
                   </a>
                 {% elif item.html or item.text %}
-                  <span class="govuk-service-navigation__navigation-text"
+                  <span class="govuk-service-navigation__text"
                     {%- if item.active or item.current %} aria-current="{{ 'page' if item.current else 'true' }}"{% endif %}>
                     {{ linkInnerContent | safe }}
                   </span>
