@@ -2,15 +2,15 @@ params:
   - name: classes
     type: string
     required: false
-    description: Classes to add to the service header container.
+    description: Classes to add to the service navigation container.
   - name: attributes
     type: object
     required: false
-    description: HTML attributes (for example, data attributes) to add to the service header container.
+    description: HTML attributes (for example, data attributes) to add to the service navigation container.
   - name: ariaLabel
     type: string
     required: false
-    description: The text for the `aria-label` which labels the service header. Defaults to `"Service information"`.
+    description: The text for the `aria-label` which labels the service navigation container when a service name is included. Defaults to `"Service information"`.
   - name: menuButtonText
     type: string
     required: false
@@ -41,8 +41,8 @@ params:
     description: The homepage of your service.
   - name: navigation
     type: array
-    required: false
-    description: Can be used to add navigation to the service header.
+    required: true
+    description: Used to add navigation to the service header.
     params:
       - name: current
         type: boolean
@@ -94,17 +94,6 @@ previewLayout: full-width
 
 examples:
   - name: default
-    options:
-      serviceName: Service name
-  - name: with service link
-    options:
-      serviceName: Service name
-      serviceUrl: '#/'
-  - name: with long service name
-    options:
-      serviceName: Apply to receive a rare holofoil Charizard Pokémon card from the King
-      serviceUrl: '#/'
-  - name: with navigation
     options:
       navigation:
         - href: '#/1'
@@ -191,6 +180,17 @@ examples:
         - text: Navigation item 1
         - html: <em>Navigation item 2</em>
         - text: Navigation item 3
+  - name: with service name
+    options:
+      serviceName: Service name
+  - name: with service link
+    options:
+      serviceName: Service name
+      serviceUrl: '#/'
+  - name: with long service name
+    options:
+      serviceName: Apply to receive a rare holofoil Charizard Pokémon card from the King
+      serviceUrl: '#/'
   - name: with service name and navigation
     options:
       serviceName: Apply for a juggling license
