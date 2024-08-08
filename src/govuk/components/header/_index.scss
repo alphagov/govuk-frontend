@@ -38,6 +38,14 @@
     border-bottom: $govuk-header-border-width solid $govuk-header-border-color;
   }
 
+  .govuk-header--full-width-border {
+    border-bottom-color: $govuk-header-border-color;
+
+    .govuk-header__container {
+      border-bottom-color: transparent;
+    }
+  }
+
   .govuk-header__logotype {
     display: inline-block;
     position: relative;
