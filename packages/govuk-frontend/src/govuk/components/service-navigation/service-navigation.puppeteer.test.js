@@ -4,7 +4,7 @@ const { KnownDevices } = require('puppeteer')
 
 const iPhone = KnownDevices['iPhone 6']
 
-const navigationSelector = `.govuk-service-navigation__navigation-list`
+const navigationSelector = `.govuk-service-navigation__list`
 const toggleButtonSelector = '.govuk-js-service-navigation-toggle'
 
 describe('/components/service-navigation', () => {
