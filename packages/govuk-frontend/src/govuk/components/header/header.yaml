@@ -247,6 +247,12 @@ examples:
         - href: '#3'
           text: Navigation item 3
 
+  - name: with full width border
+    description: Makes the header's bottom border full width without affecting the header's content.
+    options:
+      classes: govuk-header--full-width-border
+      productName: Product Name
+
   - name: navigation item with html
     options:
       serviceName: Service Name
