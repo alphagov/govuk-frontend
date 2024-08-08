@@ -1,27 +1,18 @@
 const { render } = require('@govuk-frontend/helpers/nunjucks')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
-describe('Service Header', () => {
+describe('Service Navigation', () => {
   let examples
 
   beforeAll(async () => {
     examples = await getExamples('service-navigation')
   })
 
-  describe('with no options set', () => {
-    it("doesn't output anything", () => {
-      const $ = render('service-navigation', examples['with no options set'])
-      const $component = $('.govuk-service-navigation')
+  it('renders the container as a <div> if a service name is missing', () => {
+    const $ = render('service-navigation', examples.default)
+    const tagName = $('.govuk-service-navigation').get(0).tagName
 
-      expect($component).toHaveLength(0)
-    })
-
-    it('renders default aria-label', () => {
-      const $ = render('service-navigation', examples.default)
-      const $component = $('.govuk-service-navigation')
-
-      expect($component.attr('aria-label')).toBe('Service information')
-    })
+    expect(tagName.toLowerCase()).toBe('div')
   })
 
   describe('custom options', () => {
@@ -39,62 +30,11 @@ describe('Service Header', () => {
 
       expect($component.hasClass('app-my-curious-custom-class')).toBeTruthy()
     })
-
-    it('renders custom aria-label correctly', () => {
-      const $ = render('service-navigation', examples['with custom aria-label'])
-      const $component = $('.govuk-service-navigation')
-
-      expect($component.attr('aria-label')).toBe('Service name and nav')
-    })
-  })
-
-  describe('with service name', () => {
-    it('renders the service name', () => {
-      const $ = render('service-navigation', examples.default)
-      const $component = $('.govuk-service-navigation')
-
-      const $serviceName = $component.find(
-        '.govuk-service-navigation__service-name'
-      )
-
-      expect($serviceName.get(0).tagName).toBe('span')
-      expect($serviceName.text().trim()).toBe('Service name')
-    })
-
-    it('wraps the service name with a link when a url is provided', () => {
-      const $ = render('service-navigation', examples['with service link'])
-      const $component = $('.govuk-service-navigation')
-
-      const $serviceName = $component.find(
-        '.govuk-service-navigation__service-name'
-      )
-      const $serviceLink = $serviceName.find(
-        '.govuk-service-navigation__link--service-name'
-      )
-
-      expect($serviceLink).toHaveLength(1)
-      expect($serviceLink.get(0).tagName).toBe('a')
-      expect($serviceLink.attr('href')).toBe('#/')
-    })
-
-    it('does not use a link when no service url is provided', () => {
-      const $ = render('service-navigation', examples.default)
-      const $component = $('.govuk-service-navigation')
-
-      const $serviceName = $component.find(
-        '.govuk-service-navigation__service-name'
-      )
-      const $serviceLink = $serviceName.find(
-        '.govuk-service-navigation__link--service-name'
-      )
-
-      expect($serviceLink).toHaveLength(0)
-    })
   })
 
   describe('with navigation', () => {
     it('renders navigation', () => {
-      const $ = render('service-navigation', examples['with navigation'])
+      const $ = render('service-navigation', examples.default)
       const $component = $('.govuk-service-navigation')
 
       const $nav = $component.find('nav.govuk-service-navigation__navigation')
@@ -127,7 +67,7 @@ describe('Service Header', () => {
     })
 
     it('renders default navigation label', () => {
-      const $ = render('service-navigation', examples['with navigation'])
+      const $ = render('service-navigation', examples.default)
       const $component = $('.govuk-service-navigation')
 
       const $nav = $component.find('nav.govuk-service-navigation__navigation')
@@ -135,32 +75,8 @@ describe('Service Header', () => {
       expect($nav.attr('aria-label')).toBe('Menu')
     })
 
-    it('renders custom navigation label', () => {
-      const $ = render(
-        'service-navigation',
-        examples['with custom navigation label']
-      )
-      const $component = $('.govuk-service-navigation')
-
-      const $nav = $component.find('nav.govuk-service-navigation__navigation')
-
-      expect($nav.attr('aria-label')).toBe('Main navigation')
-    })
-
-    it('renders custom navigation classes', () => {
-      const $ = render(
-        'service-navigation',
-        examples['with custom navigation classes']
-      )
-      const $component = $('.govuk-service-navigation')
-
-      const $nav = $component.find('nav.govuk-service-navigation__navigation')
-
-      expect($nav.hasClass('app-my-neat-navigation-class')).toBeTruthy()
-    })
-
     it('renders the default navigation ID', () => {
-      const $ = render('service-navigation', examples['with navigation'])
+      const $ = render('service-navigation', examples.default)
       const $component = $('.govuk-service-navigation')
 
       const $nav = $component.find('.govuk-service-navigation__navigation-list')
@@ -172,25 +88,53 @@ describe('Service Header', () => {
       expect($navToggle.attr('aria-controls')).toBe(navId)
     })
 
-    it('renders custom navigation ID', () => {
-      const $ = render(
-        'service-navigation',
-        examples['with custom navigation ID']
-      )
-      const $component = $('.govuk-service-navigation')
+    describe('custom options', () => {
+      it('renders custom navigation classes', () => {
+        const $ = render(
+          'service-navigation',
+          examples['with custom navigation classes']
+        )
+        const $component = $('.govuk-service-navigation')
 
-      const $nav = $component.find('.govuk-service-navigation__navigation-list')
-      const $navToggle = $component.find('.govuk-service-navigation__toggle')
+        const $nav = $component.find('nav.govuk-service-navigation__navigation')
 
-      const navId = $nav.attr('id')
+        expect($nav.hasClass('app-my-neat-navigation-class')).toBeTruthy()
+      })
 
-      expect(navId).toBe('main-nav')
-      expect($navToggle.attr('aria-controls')).toBe(navId)
+      it('renders custom navigation label', () => {
+        const $ = render(
+          'service-navigation',
+          examples['with custom navigation label']
+        )
+        const $component = $('.govuk-service-navigation')
+
+        const $nav = $component.find('nav.govuk-service-navigation__navigation')
+
+        expect($nav.attr('aria-label')).toBe('Main navigation')
+      })
+
+      it('renders custom navigation ID', () => {
+        const $ = render(
+          'service-navigation',
+          examples['with custom navigation ID']
+        )
+        const $component = $('.govuk-service-navigation')
+
+        const $nav = $component.find(
+          '.govuk-service-navigation__navigation-list'
+        )
+        const $navToggle = $component.find('.govuk-service-navigation__toggle')
+
+        const navId = $nav.attr('id')
+
+        expect(navId).toBe('main-nav')
+        expect($navToggle.attr('aria-controls')).toBe(navId)
+      })
     })
 
     describe('toggle button', () => {
       it('renders the navigation toggle button', () => {
-        const $ = render('service-navigation', examples['with navigation'])
+        const $ = render('service-navigation', examples.default)
         const $component = $('.govuk-service-navigation')
 
         const $navToggle = $component.find('.govuk-service-navigation__toggle')
@@ -201,7 +145,7 @@ describe('Service Header', () => {
       })
 
       it('renders the navigation toggle button hidden by default', () => {
-        const $ = render('service-navigation', examples['with navigation'])
+        const $ = render('service-navigation', examples.default)
         const $component = $('.govuk-service-navigation')
 
         const $navToggle = $component.find('.govuk-service-navigation__toggle')
@@ -211,7 +155,7 @@ describe('Service Header', () => {
 
       describe('toggle label', () => {
         it("doesn't render the label by default", () => {
-          const $ = render('service-navigation', examples['with navigation'])
+          const $ = render('service-navigation', examples.default)
           const $component = $('.govuk-service-navigation')
 
           const $navToggle = $component.find(
@@ -253,7 +197,7 @@ describe('Service Header', () => {
 
       describe('toggle text', () => {
         it('renders default text', () => {
-          const $ = render('service-navigation', examples['with navigation'])
+          const $ = render('service-navigation', examples.default)
           const $component = $('.govuk-service-navigation')
 
           const $navToggle = $component.find(
@@ -402,6 +346,76 @@ describe('Service Header', () => {
         ).toBeTruthy()
         expect($activeLink.attr('aria-current')).toBe('page')
         expect($activeFallback).toHaveLength(1)
+      })
+    })
+  })
+
+  describe('with service name', () => {
+    it('renders the service name', () => {
+      const $ = render('service-navigation', examples['with service name'])
+      const $component = $('.govuk-service-navigation')
+
+      const $serviceName = $component.find(
+        '.govuk-service-navigation__service-name'
+      )
+
+      expect($serviceName.get(0).tagName).toBe('span')
+      expect($serviceName.text().trim()).toBe('Service name')
+    })
+
+    it('wraps the service name with a link when a url is provided', () => {
+      const $ = render('service-navigation', examples['with service link'])
+      const $component = $('.govuk-service-navigation')
+
+      const $serviceName = $component.find(
+        '.govuk-service-navigation__service-name'
+      )
+      const $serviceLink = $serviceName.find(
+        '.govuk-service-navigation__link--service-name'
+      )
+
+      expect($serviceLink).toHaveLength(1)
+      expect($serviceLink.get(0).tagName).toBe('a')
+      expect($serviceLink.attr('href')).toBe('#/')
+    })
+
+    it('does not use a link when no service url is provided', () => {
+      const $ = render('service-navigation', examples['with service name'])
+      const $component = $('.govuk-service-navigation')
+
+      const $serviceName = $component.find(
+        '.govuk-service-navigation__service-name'
+      )
+      const $serviceLink = $serviceName.find(
+        '.govuk-service-navigation__link--service-name'
+      )
+
+      expect($serviceLink).toHaveLength(0)
+    })
+
+    describe('<section> wrapper', () => {
+      it('renders the container as a <section> if a service name is present', () => {
+        const $ = render('service-navigation', examples['with service name'])
+        const tagName = $('.govuk-service-navigation').get(0).tagName
+
+        expect(tagName.toLowerCase()).toBe('section')
+      })
+
+      it('renders default aria-label on the <section>', () => {
+        const $ = render('service-navigation', examples['with service name'])
+        const $component = $('.govuk-service-navigation')
+
+        expect($component.attr('aria-label')).toBe('Service information')
+      })
+
+      it('renders custom aria-label on the <section>', () => {
+        const $ = render(
+          'service-navigation',
+          examples['with custom aria-label']
+        )
+        const $component = $('.govuk-service-navigation')
+
+        expect($component.attr('aria-label')).toBe('Service name and nav')
       })
     })
   })
