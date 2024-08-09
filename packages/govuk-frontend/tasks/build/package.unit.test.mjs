@@ -191,6 +191,7 @@ describe('packages/govuk-frontend/dist/', () => {
           export { NotificationBanner } from './components/notification-banner/notification-banner.mjs';
           export { PasswordInput } from './components/password-input/password-input.mjs';
           export { Radios } from './components/radios/radios.mjs';
+          export { ServiceNavigation } from './components/service-navigation/service-navigation.mjs';
           export { SkipLink } from './components/skip-link/skip-link.mjs';
           export { Tabs } from './components/tabs/tabs.mjs';
           export { createAll, initAll } from './init.mjs';
