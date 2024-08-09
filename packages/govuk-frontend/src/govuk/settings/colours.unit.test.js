@@ -4,6 +4,7 @@ describe('Organisation colours', () => {
   it('should define contrast-safe colours that meet contrast requirements', async () => {
     const sass = `
       $govuk-new-organisation-colours: true;
+      $govuk-suppressed-warnings: ("organisation-colours");
 
       @import "settings/colours-palette";
       @import "settings/colours-organisations";
