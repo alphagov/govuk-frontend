@@ -1,4 +1,5 @@
 @import "../tag/index";
+@import "../../objects/width-container";
 
 @include govuk-exports("govuk/component/phase-banner") {
   .govuk-phase-banner {
@@ -12,7 +13,8 @@
     @include govuk-font($size: 16);
     @include govuk-text-colour;
 
-    display: table;
+    display: flex;
+    align-items: baseline;
     margin: 0;
   }
 

@@ -1,0 +1,79 @@
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "govuk/components/service-header/macro.njk" import govukServiceHeader %}
+
+{% extends "layouts/full-width-landmarks.njk" %}
+
+{% block pageTitle %}{{ exampleName | unslugify }} - GOV.UK Frontend{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  <style>
+  .app-example { margin-bottom: 40px; }
+  </style>
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-width-container govuk-heading-l">Navigation examples</h1>
+
+<h2 class="govuk-width-container govuk-heading-m">Header component examples</h2>
+
+<h3 class="govuk-width-container govuk-heading-s">Header (default)</h3>
+<div class="app-example">
+  {{ govukHeader() }}
+</div>
+
+<h3 class="govuk-width-container govuk-heading-s">Header with One Login links</h3>
+<div class="app-example">
+  {{ govukHeader({ oneLogin: true }) }}
+</div>
+
+<h2 class="govuk-width-container govuk-heading-m">Service Header component examples</h2>
+
+<h3 class="govuk-width-container govuk-heading-s">Header with Service Header</h3>
+<div class="app-example">
+  {{ govukHeader() }}
+  {{ govukServiceHeader({
+    serviceName: "Service name"
+  }) }}
+</div>
+
+<h3 class="govuk-width-container govuk-heading-s">Service Header with navigation</h3>
+<div class="app-example">
+  {{ govukHeader() }}
+  {{ govukServiceHeader({
+    navigationId: "service-header-with-navigation",
+    navigation: [
+      { href: '#/1', text: "Navigation item 1" },
+      { href: '#/2', text: "Navigation item 2", active: true },
+      { href: '#/3', text: "Navigation item 3" },
+      { href: '#/4', text: "Navigation item 4" }
+    ]
+  }) }}
+</div>
+
+<h3 class="govuk-width-container govuk-heading-s">Service Header with service name and navigation</h3>
+<div class="app-example">
+  {{ govukHeader() }}
+  {{ govukServiceHeader({
+    serviceName: "Service name",
+    serviceUrl: "#/",
+    navigationId: "service-header-with-name-and-navigation",
+    navigation: [
+      { href: '#/1', text: "Navigation item 1" },
+      { href: '#/2', text: "Navigation item 2", active: true },
+      { href: '#/3', text: "Navigation item 3" },
+      { href: '#/4', text: "Navigation item 4" }
+    ]
+  }) }}
+</div>
+
+
+{% endblock %}

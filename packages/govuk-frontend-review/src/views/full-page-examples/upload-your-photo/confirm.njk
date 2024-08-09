@@ -1,12 +1,20 @@
 {% extends "layouts/full-page-example.njk" %}
 
 {% from "govuk/components/panel/macro.njk" import govukPanel %}
+{% from "govuk/components/service-header/macro.njk" import govukServiceHeader %}
 
 {% set pageTitle = "Photo submitted" %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block header %}
-  {{ govukHeader({
+  {{ super() }}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukServiceHeader({
     serviceName: "Apply for a passport",
     navigation: [
         {

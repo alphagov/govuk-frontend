@@ -153,6 +153,10 @@ describe('GOV.UK Prototype Kit config', () => {
           macroName: 'govukSelect'
         },
         {
+          importFrom: 'govuk/components/service-header/macro.njk',
+          macroName: 'govukServiceHeader'
+        },
+        {
           importFrom: 'govuk/components/skip-link/macro.njk',
           macroName: 'govukSkipLink'
         },

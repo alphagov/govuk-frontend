@@ -19,12 +19,20 @@ scenario: |
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+{% from "govuk/components/service-header/macro.njk" import govukServiceHeader %}
 
 {% set pageTitle = example.title %}
 {% block pageTitle %}{{ "Error: " if errorSummary | length }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block header %}
-  {{ govukHeader({
+  {{ super() }}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukServiceHeader({
     serviceName: "Apply for a passport",
     navigation: [
         {
@@ -41,12 +49,6 @@ scenario: |
 {% endblock %}
 
 {% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "Beta"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
   {{ govukBackLink({
     href: "/"
   }) }}

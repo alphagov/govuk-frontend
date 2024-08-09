@@ -6,19 +6,19 @@ params:
   - name: productName
     type: string
     required: false
-    description: Product name, used when the product name follows on directly from ‘GOV.UK’. For example, GOV.UK Pay or GOV.UK Design System. In most circumstances, you should use `serviceName`.
+    description: Product name, used when the product name explicitly includes ‘GOV.UK’ in it. For example, GOV.UK Pay or GOV.UK Design System. Don't use this for service names, as the resulting link text will be incorrect and it prevents users from clicking on the GOV.UK logo to return to the GOV.UK homepage.
   - name: serviceName
     type: string
     required: false
-    description: The name of your service, included in the header.
+    description: Deprecated. The name of your service, included in the header. Use the [Service Header](https://design-system.service.gov.uk/components/service-header/) component instead.
   - name: serviceUrl
     type: string
     required: false
-    description: URL for the service name anchor.
+    description: Deprecated. URL for the service name anchor. Use the [Service Header](https://design-system.service.gov.uk/components/service-header/) component instead.
   - name: navigation
     type: array
     required: false
-    description: Can be used to add navigation to the header component.
+    description: Deprecated. Can be used to add navigation to the header component. Use the [Service Header](https://design-system.service.gov.uk/components/service-header/) component instead.
     params:
       - name: text
         type: string
@@ -43,19 +43,19 @@ params:
   - name: navigationClasses
     type: string
     required: false
-    description: Classes for the navigation section of the header.
+    description: Deprecated. Classes for the navigation section of the header.
   - name: navigationLabel
     type: string
     required: false
-    description: Text for the `aria-label` attribute of the navigation. Defaults to the same value as `menuButtonText`.
+    description: Deprecated. Text for the `aria-label` attribute of the navigation. Defaults to the same value as `menuButtonText`.
   - name: menuButtonLabel
     type: string
     required: false
-    description: Text for the `aria-label` attribute of the button that opens the mobile navigation, if there is a mobile navigation menu.
+    description: Deprecated. Text for the `aria-label` attribute of the button that opens the mobile navigation, if there is a mobile navigation menu.
   - name: menuButtonText
     type: string
     required: false
-    description: Text of the button that opens the mobile navigation menu, if there is a mobile navigation menu. There is no enforced character limit, but there is a limited display space so keep text as short as possible. By default, this is set to 'Menu'.
+    description: Deprecated. Text of the button that opens the mobile navigation menu, if there is a mobile navigation menu. There is no enforced character limit, but there is a limited display space so keep text as short as possible. By default, this is set to 'Menu'.
   - name: containerClasses
     type: string
     required: false
@@ -72,6 +72,19 @@ params:
     type: boolean
     required: false
     description: Deprecated. If `true`, uses the Tudor crown from King Charles III's royal cypher. Otherwise, uses the St. Edward's crown. Default is `true`.
+  - name: slots
+    type: object
+    required: false
+    description: Specified points for injecting custom HTML into the header.
+    params:
+      - name: start
+        type: string
+        required: false
+        description: HTML injected at the start of the header container.
+      - name: end
+        type: string
+        required: false
+        description: HTML injected at the end of the header container.
 
 previewLayout: full-width
 accessibilityCriteria: |
@@ -112,6 +125,11 @@ examples:
   - name: with service name but no service url
     options:
       serviceName: Service Name
+
+  - name: with GOV.UK One Login
+    description: The standard header and GOV.UK One Login functionality
+    options:
+      oneLogin: true
 
   - name: with navigation
     options:
@@ -331,8 +349,13 @@ examples:
           text: Navigation item 3
         - href: '#4'
           text: Navigation item 4
-
   - name: empty navigation array
     hidden: true
     options:
       navigation: []
+  - name: with slotted content
+    hidden: true
+    options:
+      slots:
+        start: '<div>[start]</div>'
+        end: '<div>[end]</div>'
