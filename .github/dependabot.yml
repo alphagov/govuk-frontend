@@ -65,6 +65,10 @@ updates:
     ignore:
       - dependency-name: 'eslint-*'
       - dependency-name: 'eslint'
+      # iframe-resizer has switched to GPL licence in v5
+      # so we need to avoid upgrading to their next major version
+      - dependency-name: 'iframe-resizer'
+        update-types: ['version-update:semver-major']
 
     reviewers:
       - alphagov/design-system-developers
