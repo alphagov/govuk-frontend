@@ -51,7 +51,7 @@
     "@rollup/plugin-terser": "^0.4.4",
     "autoprefixer": "^10.4.20",
     "browser-sync": "^3.0.2",
-    "cssnano": "^7.0.4",
+    "cssnano": "^7.0.5",
     "cssnano-preset-default": "^7.0.1",
     "gulp": "^5.0.0",
     "gulp-cli": "^3.0.0",
