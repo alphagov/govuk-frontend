@@ -36,7 +36,7 @@
     "iframe-resizer": "^4.4.5",
     "marked": "^13.0.3",
     "marked-linkify-it": "^3.1.10",
-    "marked-smartypants": "^1.1.7",
+    "marked-smartypants": "^1.1.8",
     "outdent": "^0.8.0",
     "shuffle-seed": "^1.1.6",
     "slash": "^3.0.0",
