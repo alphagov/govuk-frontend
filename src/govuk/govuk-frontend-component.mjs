@@ -7,7 +7,7 @@ import { SupportError } from './errors/index.mjs'
  * Centralises the behaviours shared by our components
  *
  * @internal
- * @abstract
+ * @virtual
  */
 export class GOVUKFrontendComponent {
   /**
