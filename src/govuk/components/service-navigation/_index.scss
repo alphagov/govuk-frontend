@@ -27,11 +27,14 @@
   // ensure that both of them remain vertically aligned with one another
   .govuk-service-navigation__item,
   .govuk-service-navigation__service-name {
+    position: relative;
     margin: govuk-spacing(2) 0;
+    border: 0 solid $govuk-service-navigation-link-colour;
 
     @include govuk-media-query($from: tablet) {
       margin-top: 0;
       margin-bottom: 0;
+      padding: govuk-spacing(4) 0;
 
       &:not(:last-child) {
         @include govuk-responsive-margin(6, $direction: right);
@@ -39,30 +42,25 @@
     }
   }
 
+  .govuk-service-navigation__item--active {
+    @include govuk-media-query($until: tablet) {
+      // Negative offset the left margin so we can place a current page indicator
+      // to the left without misaligning the list item text.
+      margin-left: ((govuk-spacing(2) + $govuk-service-navigation-active-link-border-width) * -1);
+      padding-left: govuk-spacing(2);
+      border-left-width: $govuk-service-navigation-active-link-border-width;
+    }
+
+    @include govuk-media-query($from: tablet) {
+      padding-bottom: govuk-spacing(4) - $govuk-service-navigation-active-link-border-width;
+      border-bottom-width: $govuk-service-navigation-active-link-border-width;
+    }
+  }
+
   // These styles are shared by links and non-linked text items
   .govuk-service-navigation__link,
   .govuk-service-navigation__text {
     display: inline-block;
-    border: 0 solid currentcolor;
-
-    @include govuk-media-query($until: tablet) {
-      &[aria-current] {
-        // Negative offset the left margin so we can place a current page indicator
-        // to the left without misaligning the list item text.
-        margin-left: ((govuk-spacing(2) + $govuk-service-navigation-active-link-border-width) * -1);
-        padding-left: govuk-spacing(2);
-        border-left-width: $govuk-service-navigation-active-link-border-width;
-      }
-    }
-
-    @include govuk-media-query($from: tablet) {
-      padding: govuk-spacing(4) 0;
-
-      &[aria-current] {
-        padding-bottom: govuk-spacing(4) - $govuk-service-navigation-active-link-border-width;
-        border-bottom-width: $govuk-service-navigation-active-link-border-width;
-      }
-    }
   }
 
   .govuk-service-navigation__link {

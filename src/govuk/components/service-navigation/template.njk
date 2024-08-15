@@ -55,7 +55,7 @@ data-module="govuk-service-navigation"
                 {% endif %}
               {% endset %}
 
-              <li class="govuk-service-navigation__item">
+              <li class="govuk-service-navigation__item {%- if item.active or item.current %} govuk-service-navigation__item--active{% endif %}">
                 {% if item.href %}
                   <a class="govuk-service-navigation__link" href="{{ item.href }}"
                     {%- if item.active or item.current %} aria-current="{{ 'page' if item.current else 'true' }}"{% endif %}
