@@ -16,7 +16,7 @@
  *   name = "MissingRootError"
  * }
  * ```
- * @abstract
+ * @virtual
  */
 export class GOVUKFrontendError extends Error {
   name = 'GOVUKFrontendError'
