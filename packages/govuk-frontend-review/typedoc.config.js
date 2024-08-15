@@ -6,6 +6,7 @@ const {
   packageNameToPath
 } = require('@govuk-frontend/lib/names')
 const slash = require('slash')
+const typedoc = require('typedoc')
 
 const basePath = join(packageNameToPath('govuk-frontend'), 'src')
 const workspacePath = slash(relative(paths.root, basePath))
@@ -50,5 +51,13 @@ module.exports = {
   placeInternalsInOwningModule: true,
   // The missing-exports plugin will include built-in symbols, like the DOM API.
   // We don't want those in our documentation, so we need to exclude them
-  excludeExternals: true
+  excludeExternals: true,
+
+  // Make TypeDoc aware of tags we use but it does not parse by default
+  // so it doesn't warn unnecessarily
+  modifierTags: [
+    ...typedoc.Configuration.OptionDefaults.modifierTags,
+    '@preserve',
+    '@constant'
+  ]
 }
