@@ -112,6 +112,10 @@
     cursor: pointer;
     align-items: center;
 
+    &:focus {
+      @include govuk-focused-text;
+    }
+
     &::after {
       @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
       content: "";
