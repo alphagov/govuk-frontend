@@ -59,5 +59,10 @@ module.exports = {
     ...typedoc.Configuration.OptionDefaults.modifierTags,
     '@preserve',
     '@constant'
-  ]
+  ],
+
+  // We don't want typedoc to render a 'Preserve' tag
+  // as it's only for controlling which comments get rendered or not
+  // after transpilation
+  excludeTags: ['@preserve']
 }
