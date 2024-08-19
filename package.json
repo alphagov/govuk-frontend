@@ -109,7 +109,7 @@
     "@types/slug": "^5.0.9",
     "@types/vinyl": "^2.0.12",
     "puppeteer": "^22.15.0",
-    "typed-query-selector": "^2.11.3"
+    "typed-query-selector": "^2.12.0"
   },
   "overrides": {
     "chokidar@^2": {
