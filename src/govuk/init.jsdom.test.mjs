@@ -154,8 +154,12 @@ describe('initAll', () => {
 })
 
 describe('createAll', () => {
+  beforeEach(() => {
+    document.body.classList.add('govuk-frontend-supported')
+  })
+
   afterEach(() => {
-    document.body.innerHTML = ''
+    document.body.outerHTML = '<body></body>'
   })
 
   class MockComponent {
@@ -180,6 +184,20 @@ describe('createAll', () => {
 
   it('returns an empty array if no components exist on the page', () => {
     const result = createAll(MockComponent)
+
+    expect(result).toStrictEqual([])
+  })
+
+  it('throws error and returns empty array if not supported', () => {
+    document.body.classList.remove('govuk-frontend-supported')
+
+    const result = createAll(MockComponent)
+
+    expect(global.console.log).toHaveBeenCalledWith(
+      expect.objectContaining({
+        message: 'GOV.UK Frontend is not supported in this browser'
+      })
+    )
 
     expect(result).toStrictEqual([])
   })
