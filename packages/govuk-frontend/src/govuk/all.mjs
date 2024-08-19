@@ -13,6 +13,7 @@ export { ServiceNavigation } from './components/service-navigation/service-navig
 export { SkipLink } from './components/skip-link/skip-link.mjs'
 export { Tabs } from './components/tabs/tabs.mjs'
 export { initAll, createAll } from './init.mjs'
+export { isSupported } from './common/index.mjs'
 
 /**
  * @typedef {import('./init.mjs').Config} Config
