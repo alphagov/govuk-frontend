@@ -194,8 +194,7 @@ export function setFocus($element, options = {}) {
  * Some browsers will load and run our JavaScript but GOV.UK Frontend
  * won't be supported.
  *
- * @internal
- * @param {HTMLElement | null} [$scope] - HTML element `<body>` checked for browser support
+ * @param {HTMLElement | null} [$scope] - (internal) `<body>` HTML element checked for browser support
  * @returns {boolean} Whether GOV.UK Frontend is supported on this page
  */
 export function isSupported($scope = document.body) {
