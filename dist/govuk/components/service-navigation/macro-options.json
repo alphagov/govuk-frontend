@@ -1,0 +1,138 @@
+[
+    {
+        "name": "classes",
+        "type": "string",
+        "required": false,
+        "description": "Classes to add to the service navigation container."
+    },
+    {
+        "name": "attributes",
+        "type": "object",
+        "required": false,
+        "description": "HTML attributes (for example, data attributes) to add to the service navigation container."
+    },
+    {
+        "name": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "description": "The text for the `aria-label` which labels the service navigation container when a service name is included. Defaults to `\"Service information\"`."
+    },
+    {
+        "name": "menuButtonText",
+        "type": "string",
+        "required": false,
+        "description": "The text of the mobile navigation menu toggle."
+    },
+    {
+        "name": "menuButtonLabel",
+        "type": "string",
+        "required": false,
+        "description": "The screen reader label for the mobile navigation menu toggle. Defaults to the same value as `menuButtonText` if not specified."
+    },
+    {
+        "name": "navigationLabel",
+        "type": "string",
+        "required": false,
+        "description": "The screen reader label for the mobile navigation menu. Defaults to the same value as `menuButtonText` if not specified."
+    },
+    {
+        "name": "navigationId",
+        "type": "string",
+        "required": false,
+        "description": "The ID used to associate the mobile navigation toggle with the navigation menu. Defaults to `navigation`."
+    },
+    {
+        "name": "navigationClasses",
+        "type": "string",
+        "required": false,
+        "description": "Classes to add to the navigation menu container."
+    },
+    {
+        "name": "serviceName",
+        "type": "string",
+        "required": false,
+        "description": "The name of your service."
+    },
+    {
+        "name": "serviceUrl",
+        "type": "string",
+        "required": false,
+        "description": "The homepage of your service."
+    },
+    {
+        "name": "navigation",
+        "type": "array",
+        "required": true,
+        "description": "Used to add navigation to the service header.",
+        "params": [
+            {
+                "name": "current",
+                "type": "boolean",
+                "required": false,
+                "description": "If `true`, indicates that the user is currently on this page. This takes precedence over `active`."
+            },
+            {
+                "name": "active",
+                "type": "boolean",
+                "required": false,
+                "description": "If `true`, indicates that the user is within this group of pages in the navigation hierarchy."
+            },
+            {
+                "name": "html",
+                "type": "string",
+                "required": true,
+                "description": "HTML for the navigation item. If `html` is provided, the `text` option will be ignored."
+            },
+            {
+                "name": "text",
+                "type": "string",
+                "required": true,
+                "description": "Text for the navigation item. If `html` is provided, the `text` option will be ignored."
+            },
+            {
+                "name": "href",
+                "type": "string",
+                "required": false,
+                "description": "URL of the navigation item anchor."
+            },
+            {
+                "name": "attributes",
+                "type": "object",
+                "required": false,
+                "description": "HTML attributes (for example data attributes) to add to the navigation item anchor."
+            }
+        ]
+    },
+    {
+        "name": "slots",
+        "type": "object",
+        "required": false,
+        "description": "Specified points for injecting custom HTML into the service header.",
+        "params": [
+            {
+                "name": "start",
+                "type": "string",
+                "required": false,
+                "description": "HTML injected at the start of the service header container."
+            },
+            {
+                "name": "end",
+                "type": "string",
+                "required": false,
+                "description": "HTML injected at the end of the service header container."
+            },
+            {
+                "name": "navigationStart",
+                "type": "string",
+                "required": false,
+                "description": "HTML injected before the first list item in the navigation list. Requires `navigation` to be set."
+            },
+            {
+                "name": "navigationEnd",
+                "type": "string",
+                "required": false,
+                "description": "HTML injected after the last list item in the navigation list. Requires `navigation` to be set."
+            }
+        ]
+    }
+]

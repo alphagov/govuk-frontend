@@ -1,0 +1,42 @@
+@include govuk-exports("govuk/overrides/typography") {
+  // Font size and line height
+
+  // Generate typography override classes for each responsive font map in the
+  // typography scale eg .govuk-\!-font-size-80
+  //
+  // govuk-!-font-size-14 is deprecated
+  @each $size, $font-map in $govuk-typography-scale {
+    .govuk-\!-font-size-#{$size} {
+      $font-map: map-get($govuk-typography-scale, $size);
+
+      // Add underscore to deprecated typography scale keys
+      @if map-has-key($font-map, "deprecation") {
+        $size: _#{$size};
+      }
+
+      @include govuk-font-size($size, $important: true);
+    }
+  }
+
+  // Weights
+
+  .govuk-\!-font-weight-regular {
+    @include govuk-typography-weight-regular($important: true);
+  }
+
+  .govuk-\!-font-weight-bold {
+    @include govuk-typography-weight-bold($important: true);
+  }
+
+  // Typography helpers
+
+  .govuk-\!-font-tabular-numbers {
+    @include govuk-font-tabular-numbers($important: true);
+  }
+
+  .govuk-\!-text-break-word {
+    @include govuk-text-break-word($important: true);
+  }
+}
+
+/*# sourceMappingURL=_typography.scss.map */

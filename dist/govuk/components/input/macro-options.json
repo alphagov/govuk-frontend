@@ -1,0 +1,245 @@
+[
+    {
+        "name": "id",
+        "type": "string",
+        "required": true,
+        "description": "The ID of the input."
+    },
+    {
+        "name": "name",
+        "type": "string",
+        "required": true,
+        "description": "The name of the input, which is submitted with the form data."
+    },
+    {
+        "name": "type",
+        "type": "string",
+        "required": false,
+        "description": "Type of input control to render, for example, a password input control. Defaults to `\"text\"`."
+    },
+    {
+        "name": "inputmode",
+        "type": "string",
+        "required": false,
+        "description": "Optional value for [inputmode](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode)."
+    },
+    {
+        "name": "value",
+        "type": "string",
+        "required": false,
+        "description": "Optional initial value of the input."
+    },
+    {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": "If `true`, input will be disabled."
+    },
+    {
+        "name": "describedBy",
+        "type": "string",
+        "required": false,
+        "description": "One or more element IDs to add to the `aria-describedby` attribute, used to provide additional descriptive information for screenreader users."
+    },
+    {
+        "name": "label",
+        "type": "object",
+        "required": true,
+        "description": "The label used by the text input component.",
+        "isComponent": true
+    },
+    {
+        "name": "hint",
+        "type": "object",
+        "required": false,
+        "description": "Can be used to add a hint to a text input component.",
+        "isComponent": true
+    },
+    {
+        "name": "errorMessage",
+        "type": "object",
+        "required": false,
+        "description": "Can be used to add an error message to the text input component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.",
+        "isComponent": true
+    },
+    {
+        "name": "prefix",
+        "type": "object",
+        "required": false,
+        "description": "Can be used to add a prefix to the text input component.",
+        "params": [
+            {
+                "name": "text",
+                "type": "string",
+                "required": true,
+                "description": "Required. If `html` is set, this is not required. Text to use within the prefix. If `html` is provided, the `text` option will be ignored."
+            },
+            {
+                "name": "html",
+                "type": "string",
+                "required": true,
+                "description": "Required. If `text` is set, this is not required. HTML to use within the prefix. If `html` is provided, the `text` option will be ignored."
+            },
+            {
+                "name": "classes",
+                "type": "string",
+                "required": false,
+                "description": "Classes to add to the prefix."
+            },
+            {
+                "name": "attributes",
+                "type": "object",
+                "required": false,
+                "description": "HTML attributes (for example data attributes) to add to the prefix element."
+            }
+        ]
+    },
+    {
+        "name": "suffix",
+        "type": "object",
+        "required": false,
+        "description": "Can be used to add a suffix to the text input component.",
+        "params": [
+            {
+                "name": "text",
+                "type": "string",
+                "required": true,
+                "description": "If `html` is set, this is not required. Text to use within the suffix. If `html` is provided, the `text` option will be ignored."
+            },
+            {
+                "name": "html",
+                "type": "string",
+                "required": true,
+                "description": "If `text` is set, this is not required. HTML to use within the suffix. If `html` is provided, the `text` option will be ignored."
+            },
+            {
+                "name": "classes",
+                "type": "string",
+                "required": false,
+                "description": "Classes to add to the suffix element."
+            },
+            {
+                "name": "attributes",
+                "type": "object",
+                "required": false,
+                "description": "HTML attributes (for example data attributes) to add to the suffix element."
+            }
+        ]
+    },
+    {
+        "name": "formGroup",
+        "type": "object",
+        "required": false,
+        "description": "Additional options for the form group containing the text input component.",
+        "params": [
+            {
+                "name": "classes",
+                "type": "string",
+                "required": false,
+                "description": "Classes to add to the form group (for example to show error state for the whole group)."
+            },
+            {
+                "name": "attributes",
+                "type": "object",
+                "required": false,
+                "description": "HTML attributes (for example data attributes) to add to the form group."
+            },
+            {
+                "name": "beforeInput",
+                "type": "object",
+                "required": false,
+                "description": "Content to add before the input used by the text input component.",
+                "params": [
+                    {
+                        "name": "text",
+                        "type": "string",
+                        "required": true,
+                        "description": "Text to add before the input. If `html` is provided, the `text` option will be ignored."
+                    },
+                    {
+                        "name": "html",
+                        "type": "string",
+                        "required": true,
+                        "description": "HTML to add before the input. If `html` is provided, the `text` option will be ignored."
+                    }
+                ]
+            },
+            {
+                "name": "afterInput",
+                "type": "object",
+                "required": false,
+                "description": "Content to add after the input used by the text input component.",
+                "params": [
+                    {
+                        "name": "text",
+                        "type": "string",
+                        "required": true,
+                        "description": "Text to add after the input. If `html` is provided, the `text` option will be ignored."
+                    },
+                    {
+                        "name": "html",
+                        "type": "string",
+                        "required": true,
+                        "description": "HTML to add after the input. If `html` is provided, the `text` option will be ignored."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "classes",
+        "type": "string",
+        "required": false,
+        "description": "Classes to add to the input."
+    },
+    {
+        "name": "autocomplete",
+        "type": "string",
+        "required": false,
+        "description": "Attribute to [identify input purpose](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html), for instance \"postal-code\" or \"username\". See [autofill](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for full list of attributes that can be used."
+    },
+    {
+        "name": "pattern",
+        "type": "string",
+        "required": false,
+        "description": "Attribute to [provide a regular expression pattern](https://html.spec.whatwg.org/multipage/sec-forms.html#the-pattern-attribute), used to match allowed character combinations for the input value."
+    },
+    {
+        "name": "spellcheck",
+        "type": "boolean",
+        "required": false,
+        "description": "Optional field to enable or disable the `spellcheck` attribute on the input."
+    },
+    {
+        "name": "autocapitalize",
+        "type": "string",
+        "required": false,
+        "description": "Optional field to enable or disable autocapitalisation of user input. See [autocapitalization](https://html.spec.whatwg.org/multipage/interaction.html#autocapitalization) for a full list of values that can be used."
+    },
+    {
+        "name": "inputWrapper",
+        "type": "object",
+        "required": false,
+        "description": "If any of `prefix`, `suffix`, `formGroup.beforeInput` or `formGroup.afterInput` have a value, a wrapping element is added around the input and inserted content. This object allows you to customise that wrapping element.",
+        "params": [
+            {
+                "name": "classes",
+                "type": "string",
+                "required": false,
+                "description": "Classes to add to the wrapping element."
+            },
+            {
+                "name": "attributes",
+                "type": "object",
+                "required": false,
+                "description": "HTML attributes (for example data attributes) to add to the wrapping element."
+            }
+        ]
+    },
+    {
+        "name": "attributes",
+        "type": "object",
+        "required": false,
+        "description": "HTML attributes (for example data attributes) to add to the input."
+    }
+]

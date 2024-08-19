@@ -1,0 +1,354 @@
+@include govuk-exports("govuk/component/header") {
+  $govuk-header-background: govuk-colour("black");
+  $govuk-header-border-color: $govuk-brand-colour;
+  $govuk-header-border-width: govuk-spacing(2);
+  $govuk-header-text: govuk-colour("white");
+  $govuk-header-link-active: #1d8feb;
+  $govuk-header-nav-item-border-color: #2e3133;
+  $govuk-header-link-underline-thickness: 3px;
+  $govuk-header-vertical-spacing-value: 2;
+  // This crown height is only used to calculate top offset of mobile menu button
+  // as the crown svg height is the only thing that controls the height of the header
+  $govuk-header-crown-height: 30px;
+  $govuk-header-menu-button-height: 24px;
+  $govuk-header-menu-button-width: 80px;
+
+  .govuk-header {
+    @include govuk-font($size: 16, $line-height: 1);
+
+    border-bottom: govuk-spacing(2) solid govuk-colour("white");
+    color: $govuk-header-text;
+    background: $govuk-header-background;
+  }
+
+  .govuk-header__container--full-width {
+    padding: 0 govuk-spacing(3);
+    border-color: $govuk-header-border-color;
+
+    .govuk-header__menu-button {
+      right: govuk-spacing(3);
+    }
+  }
+
+  .govuk-header__container {
+    @include govuk-clearfix;
+    position: relative;
+    margin-bottom: -$govuk-header-border-width;
+    padding-top: govuk-spacing($govuk-header-vertical-spacing-value);
+    border-bottom: $govuk-header-border-width solid $govuk-header-border-color;
+  }
+
+  .govuk-header--full-width-border {
+    border-bottom-color: $govuk-header-border-color;
+
+    .govuk-header__container {
+      border-bottom-color: transparent;
+    }
+  }
+
+  .govuk-header__logotype {
+    display: inline-block;
+    position: relative;
+    top: -3px;
+
+    // Add a gap after the logo in case it's followed by a product name. This
+    // gets removed later if the logotype is a :last-child.
+    margin-right: govuk-spacing(1);
+    fill: currentcolor;
+    vertical-align: top;
+
+    // Prevent readability backplate from obscuring underline in Windows High
+    // Contrast Mode
+    @media (forced-colors: active) {
+      forced-color-adjust: none;
+      color: linktext;
+    }
+
+    // Remove the gap after the logo if there's no product name to keep hover
+    // and focus states neat
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .govuk-header__product-name {
+    $product-name-offset: if($govuk-new-typography-scale, 7px, 10px);
+    $product-name-offset-tablet: 5px;
+
+    @include govuk-font-size($size: 24, $line-height: 1);
+    @include govuk-typography-weight-regular;
+    display: inline-table;
+
+    // Maintain space below logo when wrapped
+    margin-top: $product-name-offset;
+
+    // Firefox places the GOV.UK logo one pixel higher, due to how it rounds
+    // subpixels, so nudge the product name in FF to still be aligned.
+    @-moz-document url-prefix() {
+      margin-top: $product-name-offset - 0.5px;
+    }
+
+    // Align vertically with logo when not wrapped
+    vertical-align: top;
+
+    @include govuk-media-query($from: tablet) {
+      margin-top: $product-name-offset-tablet;
+      @-moz-document url-prefix() {
+        margin-top: $product-name-offset-tablet - 0.5px;
+      }
+    }
+  }
+
+  .govuk-header__link {
+    // Avoid using the `govuk-link-common` mixin because the links in the header
+    // get a special treatment, because:
+    //
+    // - underlines are only visible on hover
+    // - all links get a 3px underline regardless of text size, as there are
+    //   multiple grouped elements close to one another and having slightly
+    //   different underline widths looks unbalanced
+    @include govuk-link-style-inverse;
+
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-thickness: $govuk-header-link-underline-thickness;
+
+      @if $govuk-link-underline-offset {
+        text-underline-offset: $govuk-link-underline-offset;
+      }
+    }
+
+    &:focus {
+      @include govuk-focused-text;
+    }
+  }
+
+  .govuk-header__link--homepage {
+    // Font size needs to be set on the link so that the box sizing is correct
+    // in Firefox
+    display: inline-block;
+    margin-right: govuk-spacing(2);
+    font-size: 30px; // We don't have a mixin that produces 30px font size
+
+    @include govuk-media-query($from: desktop) {
+      display: inline;
+
+      &:focus {
+        // Replicate the focus box shadow but without the -2px y-offset of the first yellow shadow
+        // This is to stop the logo getting cut off by the box shadow when focused on above a product name
+        box-shadow: 0 0 $govuk-focus-colour;
+      }
+    }
+
+    &:link,
+    &:visited {
+      text-decoration: none;
+    }
+
+    &:hover,
+    &:active {
+      // Negate the added border
+      margin-bottom: $govuk-header-link-underline-thickness * -1;
+      border-bottom: $govuk-header-link-underline-thickness solid;
+    }
+
+    // Remove any borders that show when focused and hovered.
+    &:focus {
+      margin-bottom: 0;
+      border-bottom: 0;
+    }
+  }
+
+  .govuk-header__service-name {
+    display: inline-block;
+    margin-bottom: govuk-spacing(2);
+    @include govuk-font-size($size: 24);
+    @include govuk-typography-weight-bold;
+  }
+
+  .govuk-header__logo,
+  .govuk-header__content {
+    box-sizing: border-box;
+  }
+
+  .govuk-header__logo {
+    @include govuk-responsive-margin($govuk-header-vertical-spacing-value, "bottom");
+    // Protect the absolute positioned menu button from overlapping with the
+    // logo with right padding using the button's width
+    padding-right: $govuk-header-menu-button-width;
+
+    @include govuk-media-query($from: desktop) {
+      width: 33.33%;
+      padding-right: $govuk-gutter-half;
+      float: left;
+      vertical-align: top;
+
+      // Reset float when logo is the last child, without a navigation
+      &:last-child {
+        width: auto;
+        padding-right: 0;
+        float: none;
+      }
+    }
+  }
+
+  .govuk-header__content {
+    @include govuk-media-query($from: desktop) {
+      width: 66.66%;
+      padding-left: $govuk-gutter-half;
+      float: left;
+    }
+  }
+
+  .govuk-header__menu-button {
+    @include govuk-font($size: 16);
+    position: absolute;
+    // calculate top offset by:
+    // - getting the vertical spacing for the top and the bottom of the header
+    // - adding that to the crown height
+    // - dividing it by 2 so you have the vertical centre of the header
+    // - subtracting half the height of the menu button
+    top: (((govuk-spacing($govuk-header-vertical-spacing-value) * 2) + $govuk-header-crown-height) / 2) -
+      ($govuk-header-menu-button-height / 2);
+    right: 0;
+    max-width: $govuk-header-menu-button-width;
+    min-height: $govuk-header-menu-button-height;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: govuk-colour("white");
+    background: none;
+    word-break: break-all;
+    cursor: pointer;
+
+    &:hover {
+      -webkit-text-decoration: solid underline $govuk-header-link-underline-thickness;
+              text-decoration: solid underline $govuk-header-link-underline-thickness;
+
+      @if $govuk-link-underline-offset {
+        text-underline-offset: $govuk-link-underline-offset;
+      }
+    }
+
+    &:focus {
+      @include govuk-focused-text;
+    }
+
+    &::after {
+      @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
+      content: "";
+      margin-left: govuk-spacing(1);
+    }
+
+    &[aria-expanded="true"]::after {
+      @include govuk-shape-arrow($direction: up, $base: 10px, $display: inline-block);
+    }
+
+    @include govuk-media-query($from: tablet) {
+      top: govuk-spacing(3);
+    }
+
+    .govuk-frontend-supported & {
+      display: block;
+    }
+
+    &[hidden],
+    .govuk-frontend-supported &[hidden] {
+      display: none;
+    }
+  }
+
+  .govuk-header__navigation {
+    @include govuk-media-query($from: desktop) {
+      margin-bottom: govuk-spacing(2);
+    }
+  }
+
+  .govuk-header__navigation-list {
+    // Reset user-agent default list styles
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  .govuk-header__navigation--end {
+    @include govuk-media-query($from: desktop) {
+      margin: 0;
+      padding: govuk-spacing(1) 0;
+      text-align: right;
+    }
+  }
+
+  .govuk-header__navigation-item {
+    padding: govuk-spacing(2) 0;
+    border-bottom: 1px solid $govuk-header-nav-item-border-color;
+
+    @include govuk-media-query($from: desktop) {
+      display: inline-block;
+      margin-right: govuk-spacing(3);
+      padding: govuk-spacing(1) 0;
+      border: 0;
+    }
+
+    a {
+      @include govuk-font-size($size: 16);
+      @include govuk-typography-weight-bold;
+      white-space: nowrap;
+    }
+  }
+
+  .govuk-header__navigation-item--active {
+    a {
+      &:link,
+      &:hover,
+      &:visited {
+        color: $govuk-header-link-active;
+      }
+
+      // When printing, use the normal blue as this contrasts better with the
+      // white printing header
+      @include govuk-media-query($media-type: print) {
+        color: $govuk-brand-colour;
+      }
+
+      // When focussed, the text colour needs to be darker to ensure that colour
+      // contrast is still acceptable
+      &:focus {
+        color: $govuk-focus-text-colour;
+      }
+    }
+  }
+
+  .govuk-header__navigation-item:last-child {
+    margin-right: 0;
+    border-bottom: 0;
+  }
+
+  @include govuk-media-query($media-type: print) {
+    .govuk-header {
+      border-bottom-width: 0;
+      color: govuk-colour("black");
+      background: transparent;
+    }
+
+    .govuk-header__link {
+      &:link,
+      &:visited {
+        color: govuk-colour("black");
+      }
+
+      // Do not append link href to GOV.UK link when printing (e.g. '(/)')
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
+/*# sourceMappingURL=_index.scss.map */

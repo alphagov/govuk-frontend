@@ -1,0 +1,17 @@
+{% from "../../macros/attributes.njk" import govukAttributes %}
+{% from "../tag/macro.njk" import govukTag -%}
+
+<div class="govuk-phase-banner
+  {%- if params.classes %} {{ params.classes }}{% endif %}"
+  {{- govukAttributes(params.attributes) }}>
+  <p class="govuk-phase-banner__content">
+    {{ govukTag({
+      text: params.tag.text,
+      html: params.tag.html,
+      classes: "govuk-phase-banner__content__tag" + (" " + params.tag.classes if params.tag.classes)
+    }) | trim | indent(4) }}
+    <span class="govuk-phase-banner__text">
+      {{ params.html | safe | trim | indent(6) if params.html else params.text }}
+    </span>
+  </p>
+</div>

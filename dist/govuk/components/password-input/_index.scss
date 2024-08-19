@@ -1,0 +1,57 @@
+@import "../button/index";
+@import "../input/index";
+
+@include govuk-exports("govuk/component/password-input") {
+  .govuk-password-input__wrapper {
+    // This element inherits styles from .govuk-input__wrapper, including:
+    // - being display: block with contents in a stacked column below the mobile
+    //   breakpoint
+    // - being display: flex above the mobile breakpoint
+
+    @include govuk-media-query($from: mobile) {
+      flex-direction: row;
+
+      // The default of `stretch` makes the toggle button appear taller than the
+      // input, due to using box-shadow, which we don't particularly want in
+      // this situation
+      align-items: flex-start;
+    }
+  }
+
+  .govuk-password-input__input {
+    // IE 11 and Microsoft Edge comes with its own password reveal function. We
+    // want to hide it, so that there aren't two controls presented to the user
+    // that do the same thing but aren't in sync with one another. This doesn't
+    // affect the function that allows Edge users to toggle password visibility
+    // by pressing Alt+F8, which cannot be programmatically disabled.
+    &::-ms-reveal {
+      display: none;
+    }
+  }
+
+  .govuk-password-input__toggle {
+    // Add top margin so the button doesn't obscure the input's focus style
+    margin-top: govuk-spacing(1);
+
+    // Remove default margin-bottom from button
+    margin-bottom: 0;
+
+    // Hide the button by default, JS removes this attribute
+    &[hidden] {
+      display: none;
+    }
+
+    @include govuk-media-query($from: mobile) {
+      // Buttons are normally 100% wide on mobile, but we don't want that here
+      width: auto;
+      flex-shrink: 0;
+      flex-basis: 5em;
+
+      // Move the spacing from top to the left
+      margin-top: 0;
+      margin-left: govuk-spacing(1);
+    }
+  }
+}
+
+/*# sourceMappingURL=_index.scss.map */

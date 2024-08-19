@@ -1,0 +1,58 @@
+{% from "./macros/attributes.njk" import govukAttributes -%}
+{% from "./components/skip-link/macro.njk" import govukSkipLink -%}
+{% from "./components/header/macro.njk" import govukHeader -%}
+{% from "./components/footer/macro.njk" import govukFooter -%}
+<!DOCTYPE html>
+<html lang="{{ htmlLang | default("en", true) }}" class="govuk-template {%- if htmlClasses %} {{ htmlClasses }}{% endif %}">
+  <head>
+    <meta charset="utf-8">
+    <title {%- if pageTitleLang %} lang="{{ pageTitleLang }}"{% endif %}>{% block pageTitle %}GOV.UK - The best place to find government services and information{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="{{ themeColor | default("#0b0c0c", true) }}"> {#- Hardcoded value of $govuk-black #}
+
+    {% block headIcons %}
+      <link rel="icon" sizes="48x48" href="{{ assetPath | default("/assets", true) }}/images/favicon.ico">
+      <link rel="icon" sizes="any" href="{{ assetPath | default("/assets", true) }}/images/favicon.svg" type="image/svg+xml">
+      <link rel="mask-icon" href="{{ assetPath | default("/assets", true) }}/images/govuk-icon-mask.svg" color="{{ themeColor | default("#0b0c0c") }}"> {#- Hardcoded value of $govuk-black #}
+      <link rel="apple-touch-icon" href="{{ assetPath | default("/assets", true) }}/images/govuk-icon-180.png">
+      <link rel="manifest" href="{{ assetPath | default("/assets", true) }}/manifest.json">
+    {% endblock %}
+
+    {% block head %}{% endblock %}
+
+    {#- OpenGraph images needs to be absolute, so we need either a URL for the image or for assetUrl to be set #}
+    {% if opengraphImageUrl or assetUrl %}
+    <meta property="og:image" content="{{ opengraphImageUrl | default(assetUrl + "/images/govuk-opengraph-image.png", true) }}">
+    {% endif %}
+  </head>
+  <body class="govuk-template__body {%- if bodyClasses %} {{ bodyClasses }}{% endif %}" {{- govukAttributes(bodyAttributes) }}>
+    <script {%- if cspNonce %} nonce="{{ cspNonce }}"{% endif %}>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+    {% block bodyStart %}{% endblock %}
+
+    {% block skipLink %}
+      {{ govukSkipLink({
+        href: '#main-content',
+        text: 'Skip to main content'
+      }) }}
+    {% endblock %}
+
+    {% block header %}
+      {{ govukHeader({}) }}
+    {% endblock %}
+
+    {% block main %}
+      <div class="govuk-width-container {%- if containerClasses %} {{ containerClasses }}{% endif %}">
+        {% block beforeContent %}{% endblock %}
+        <main class="govuk-main-wrapper {%- if mainClasses %} {{ mainClasses }}{% endif %}" id="main-content" {%- if mainLang %} lang="{{ mainLang }}"{% endif %}>
+          {% block content %}{% endblock %}
+        </main>
+      </div>
+    {% endblock %}
+
+    {% block footer %}
+      {{ govukFooter({}) }}
+    {% endblock %}
+
+    {% block bodyEnd %}{% endblock %}
+  </body>
+</html>

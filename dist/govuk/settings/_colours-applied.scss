@@ -1,0 +1,157 @@
+////
+/// @group settings/colours
+////
+
+@import "../helpers/colour";
+
+// =========================================================
+// Generic
+// =========================================================
+
+/// Brand colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-brand-colour: govuk-colour("blue") !default;
+
+/// Text colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-text-colour: govuk-colour("black") !default;
+
+/// Canvas background colour
+///
+/// Used by the footer component and template to give the illusion of a long
+/// footer.
+///
+/// @type Colour
+/// @access public
+
+$govuk-canvas-background-colour: govuk-colour("light-grey") !default;
+
+/// Body background colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-body-background-colour: govuk-colour("white") !default;
+
+/// Text colour for print media
+///
+/// Use 'true black' to avoid printers using colour ink to print body text
+///
+/// @type Colour
+/// @access public
+
+$govuk-print-text-colour: #000000 !default;
+
+/// Secondary text colour
+///
+/// Used in for example 'muted' text and help text.
+///
+/// @type Colour
+/// @access public
+
+$govuk-secondary-text-colour: govuk-colour("dark-grey") !default;
+
+/// Focus colour
+///
+/// Used for outline (and background, where appropriate) when interactive
+/// elements (links, form controls) have keyboard focus.
+///
+/// @type Colour
+/// @access public
+
+$govuk-focus-colour: govuk-colour("yellow") !default;
+
+/// Focused text colour
+///
+/// Ensure that the contrast between the text and background colour passes
+/// WCAG Level AA contrast requirements.
+///
+/// @type Colour
+/// @access public
+
+$govuk-focus-text-colour: govuk-colour("black") !default;
+
+/// Error colour
+///
+/// Used to highlight error messages and form controls in an error state
+///
+/// @type Colour
+/// @access public
+
+$govuk-error-colour: govuk-colour("red") !default;
+
+/// Success colour
+///
+/// Used to highlight success messages and banners
+///
+/// @type Colour
+/// @access public
+
+$govuk-success-colour: govuk-colour("green") !default;
+
+/// Border colour
+///
+/// Used in for example borders, separators, rules and keylines.
+///
+/// @type Colour
+/// @access public
+
+$govuk-border-colour: govuk-colour("mid-grey") !default;
+
+/// Input border colour
+///
+/// Used for form inputs and controls
+///
+/// @type Colour
+/// @access public
+
+$govuk-input-border-colour: govuk-colour("black") !default;
+
+/// Input hover colour
+///
+/// Used for hover states on form controls
+///
+/// @type Colour
+/// @access public
+
+$govuk-hover-colour: govuk-colour("mid-grey") !default;
+
+// =============================================================================
+// Links
+// =============================================================================
+
+/// Link colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-link-colour: govuk-colour("blue") !default;
+
+/// Visited link colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-link-visited-colour: govuk-colour("purple") !default;
+
+/// Link hover colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-link-hover-colour: govuk-colour("dark-blue") !default;
+
+/// Active link colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-link-active-colour: govuk-colour("black") !default;
+
+/*# sourceMappingURL=_colours-applied.scss.map */

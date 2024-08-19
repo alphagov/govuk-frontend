@@ -1,0 +1,97 @@
+{
+    "component": "phase-banner",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "tag": {
+                    "text": "Alpha"
+                },
+                "html": "This is a new service - your <a href=\"#\" class=\"govuk-link\">feedback</a> will help us to improve it."
+            },
+            "hidden": false,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-phase-banner\">\n  <p class=\"govuk-phase-banner__content\">\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag\">\n      Alpha\n    </strong>\n    <span class=\"govuk-phase-banner__text\">\n      This is a new service - your <a href=\"#\" class=\"govuk-link\">feedback</a> will help us to improve it.\n    </span>\n  </p>\n</div>"
+        },
+        {
+            "name": "classes",
+            "options": {
+                "text": "This is a new service – your feedback will help us to improve it",
+                "classes": "extra-class one-more-class"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-phase-banner extra-class one-more-class\">\n  <p class=\"govuk-phase-banner__content\">\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag\">\n      \n    </strong>\n    <span class=\"govuk-phase-banner__text\">\n      This is a new service – your feedback will help us to improve it\n    </span>\n  </p>\n</div>"
+        },
+        {
+            "name": "text",
+            "options": {
+                "text": "This is a new service – your feedback will help us to improve it"
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-phase-banner\">\n  <p class=\"govuk-phase-banner__content\">\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag\">\n      \n    </strong>\n    <span class=\"govuk-phase-banner__text\">\n      This is a new service – your feedback will help us to improve it\n    </span>\n  </p>\n</div>"
+        },
+        {
+            "name": "html as text",
+            "options": {
+                "text": "This is a new service - your <a href=\"#\" class=\"govuk-link\">feedback</a> will help us to improve it."
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-phase-banner\">\n  <p class=\"govuk-phase-banner__content\">\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag\">\n      \n    </strong>\n    <span class=\"govuk-phase-banner__text\">\n      This is a new service - your &lt;a href=&quot;#&quot; class=&quot;govuk-link&quot;&gt;feedback&lt;/a&gt; will help us to improve it.\n    </span>\n  </p>\n</div>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "text": "This is a new service – your feedback will help us to improve it",
+                "attributes": {
+                    "first-attribute": "foo",
+                    "second-attribute": "bar"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-phase-banner\" first-attribute=\"foo\" second-attribute=\"bar\">\n  <p class=\"govuk-phase-banner__content\">\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag\">\n      \n    </strong>\n    <span class=\"govuk-phase-banner__text\">\n      This is a new service – your feedback will help us to improve it\n    </span>\n  </p>\n</div>"
+        },
+        {
+            "name": "tag html",
+            "options": {
+                "text": "This is a new service – your feedback will help us to improve it",
+                "tag": {
+                    "html": "<em>Alpha</em>"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-phase-banner\">\n  <p class=\"govuk-phase-banner__content\">\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag\">\n      <em>Alpha</em>\n    </strong>\n    <span class=\"govuk-phase-banner__text\">\n      This is a new service – your feedback will help us to improve it\n    </span>\n  </p>\n</div>"
+        },
+        {
+            "name": "tag classes",
+            "options": {
+                "text": "This is a new service – your feedback will help us to improve it",
+                "tag": {
+                    "classes": "govuk-tag--grey",
+                    "text": "Alpha"
+                }
+            },
+            "hidden": true,
+            "description": "",
+            "previewLayoutModifiers": [],
+            "screenshot": false,
+            "html": "<div class=\"govuk-phase-banner\">\n  <p class=\"govuk-phase-banner__content\">\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag govuk-tag--grey\">\n      Alpha\n    </strong>\n    <span class=\"govuk-phase-banner__text\">\n      This is a new service – your feedback will help us to improve it\n    </span>\n  </p>\n</div>"
+        }
+    ]
+}
