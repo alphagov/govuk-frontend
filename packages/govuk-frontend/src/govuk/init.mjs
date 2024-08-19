@@ -76,6 +76,12 @@ function createAll(Component, config, $scope = document) {
     `[data-module="${Component.moduleName}"]`
   )
 
+  // Skip initialisation when GOV.UK Frontend is not supported
+  if (!isSupported()) {
+    console.log(new SupportError())
+    return []
+  }
+
   /* eslint-disable-next-line @typescript-eslint/no-unsafe-return --
    * We can't define CompatibleClass as `{new(): CompatibleClass, moduleName: string}`,
    * as when doing `typeof Accordion` (or any component), TypeScript doesn't seem
