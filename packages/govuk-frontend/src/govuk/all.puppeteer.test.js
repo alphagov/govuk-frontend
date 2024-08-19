@@ -41,10 +41,24 @@ describe('GOV.UK Frontend', () => {
       expect(typeofCreateAll).toBe('function')
     })
 
+    it('exports `isSupported` function', async () => {
+      const typeofIsSupported = await page.evaluate(
+        async (importPath, exportName) => {
+          const namespace = await import(importPath)
+          return typeof namespace[exportName]
+        },
+        scriptsPath.href,
+        'isSupported'
+      )
+
+      expect(typeofIsSupported).toBe('function')
+    })
+
     it('exports Components', async () => {
       const components = exported
         .filter(
-          (method) => !['initAll', 'createAll', 'version'].includes(method)
+          (method) =>
+            !['initAll', 'createAll', 'version', 'isSupported'].includes(method)
         )
         .sort()
 
