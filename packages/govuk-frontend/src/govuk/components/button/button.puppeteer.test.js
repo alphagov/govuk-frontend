@@ -43,8 +43,8 @@ describe('/components/button', () => {
     /**
      * Sets the number of times a button was clicked
      *
-     * @param {import('puppeteer').ElementHandle<HTMLButtonElement>} $button - Puppeteer button element
-     * @returns {Promise<import('puppeteer').ElementHandle<HTMLButtonElement>>} Puppeteer button element
+     * @param {ElementHandle<HTMLButtonElement>} $button - Puppeteer button element
+     * @returns {Promise<ElementHandle<HTMLButtonElement>>} Puppeteer button element
      */
     async function setButtonTracking($button) {
       const counts = {
@@ -80,7 +80,7 @@ describe('/components/button', () => {
     /**
      * Gets the number of times the button was clicked
      *
-     * @param {import('puppeteer').ElementHandle<HTMLButtonElement>} $button - Puppeteer button element
+     * @param {ElementHandle<HTMLButtonElement>} $button - Puppeteer button element
      * @returns {Promise<{ click: number; debounce: number; }>} Number of times the button was clicked
      */
     function getButtonTracking($button) {
@@ -91,7 +91,7 @@ describe('/components/button', () => {
     }
 
     describe('not enabled', () => {
-      /** @type {import('puppeteer').ElementHandle<HTMLButtonElement>} */
+      /** @type {ElementHandle<HTMLButtonElement>} */
       let $button
 
       beforeEach(async () => {
@@ -111,7 +111,7 @@ describe('/components/button', () => {
     })
 
     describe('using data-attributes', () => {
-      /** @type {import('puppeteer').ElementHandle<HTMLButtonElement>} */
+      /** @type {ElementHandle<HTMLButtonElement>} */
       let $button
 
       beforeEach(async () => {
@@ -165,7 +165,7 @@ describe('/components/button', () => {
     })
 
     describe('using JavaScript configuration', () => {
-      /** @type {import('puppeteer').ElementHandle<HTMLButtonElement>} */
+      /** @type {ElementHandle<HTMLButtonElement>} */
       let $button
 
       beforeEach(async () => {
@@ -224,7 +224,7 @@ describe('/components/button', () => {
     })
 
     describe('using JavaScript configuration, but cancelled by data-attributes', () => {
-      /** @type {import('puppeteer').ElementHandle<HTMLButtonElement>} */
+      /** @type {ElementHandle<HTMLButtonElement>} */
       let $button
 
       beforeEach(async () => {
@@ -248,7 +248,7 @@ describe('/components/button', () => {
     })
 
     describe('using `initAll`', () => {
-      /** @type {import('puppeteer').ElementHandle<HTMLButtonElement>} */
+      /** @type {ElementHandle<HTMLButtonElement>} */
       let $button
 
       beforeEach(async () => {
@@ -363,3 +363,7 @@ describe('/components/button', () => {
     })
   })
 })
+
+/**
+ * @import { ElementHandle } from 'puppeteer'
+ */

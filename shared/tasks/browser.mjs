@@ -12,7 +12,7 @@ import puppeteer from 'puppeteer'
 /**
  * Puppeteer browser launcher
  *
- * @returns {Promise<import('puppeteer').Browser>} Puppeteer browser object
+ * @returns {Promise<Browser>} Puppeteer browser object
  */
 export async function launch() {
   await download()
@@ -63,7 +63,7 @@ export async function screenshots() {
  * Send single component screenshots to Percy
  * for visual regression testing
  *
- * @param {import('puppeteer').Browser} browser - Puppeteer browser object
+ * @param {Browser} browser - Puppeteer browser object
  * @param {string} componentName - Component name
  * @param {object} [options] - Component options
  * @param {string} options.exampleName - Example name
@@ -100,7 +100,7 @@ export async function screenshotComponent(browser, componentName, options) {
  * Send single example screenshot to Percy
  * for visual regression testing
  *
- * @param {import('puppeteer').Browser} browser - Puppeteer browser object
+ * @param {Browser} browser - Puppeteer browser object
  * @param {string} exampleName - Component name
  * @returns {Promise<void>}
  */
@@ -121,3 +121,7 @@ export async function screenshotExample(browser, exampleName) {
   // Close page
   return page.close()
 }
+
+/**
+ * @import { Browser } from 'puppeteer'
+ */
