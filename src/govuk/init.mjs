@@ -67,18 +67,46 @@ function initAll(config) {
  *
  * @template {CompatibleClass} T
  * @param {T} Component - class of the component to create
- * @param {T["defaults"]} [config] - config for the component
- * @param {Element|Document} [$scope] - scope of the document to search within
+ * @param {T["defaults"]} [config] - Config supplied to component
+ * @param {OnErrorCallback<T> | Element | Document | CreateAllOptions<T> } [createAllOptions] - options for createAll including scope of the document to search within and callback function if error throw by component on init
  * @returns {Array<InstanceType<T>>} - array of instantiated components
  */
-function createAll(Component, config, $scope = document) {
+function createAll(Component, config, createAllOptions) {
+  let /** @type {Element | Document} */ $scope = document
+  let /** @type {OnErrorCallback<Component> | undefined} */ onError
+
+  if (typeof createAllOptions === 'object') {
+    createAllOptions = /** @type {CreateAllOptions<Component>} */ (
+      // eslint-disable-next-line no-self-assign
+      createAllOptions
+    )
+
+    $scope = createAllOptions.scope ?? $scope
+    onError = createAllOptions.onError
+  }
+
+  if (typeof createAllOptions === 'function') {
+    onError = createAllOptions
+  }
+
+  if (createAllOptions instanceof HTMLElement) {
+    $scope = createAllOptions
+  }
+
   const $elements = $scope.querySelectorAll(
     `[data-module="${Component.moduleName}"]`
   )
 
   // Skip initialisation when GOV.UK Frontend is not supported
   if (!isSupported()) {
-    console.log(new SupportError())
+    if (onError) {
+      onError(new SupportError(), {
+        component: Component,
+        config
+      })
+    } else {
+      console.log(new SupportError())
+    }
     return []
   }
 
@@ -98,7 +126,16 @@ function createAll(Component, config, $scope = document) {
           ? new Component($element, config)
           : new Component($element)
       } catch (error) {
-        console.log(error)
+        if (onError && error instanceof Error) {
+          onError(error, {
+            element: $element,
+            component: Component,
+            config
+          })
+        } else {
+          console.log(error)
+        }
+
         return null
       }
     })
@@ -151,4 +188,26 @@ export { initAll, createAll }
  * Component config keys, e.g. `accordion` and `characterCount`
  *
  * @typedef {keyof Config} ConfigKey
+ */
+
+/**
+ * @template {CompatibleClass} T
+ * @typedef {object} ErrorContext
+ * @property {Element} [element] - Element used for component module initialisation
+ * @property {T} component - Class of component
+ * @property {T["defaults"]} config - Config supplied to component
+ */
+
+/**
+ * @template {CompatibleClass} T
+ * @callback OnErrorCallback
+ * @param {Error} error - Thrown error
+ * @param {ErrorContext<T>} context - Object containing the element, component class and configuration
+ */
+
+/**
+ * @template {CompatibleClass} T
+ * @typedef {object} CreateAllOptions
+ * @property {Element | Document} [scope] - scope of the document to search within
+ * @property {OnErrorCallback<T>} [onError] - callback function if error throw by component on init
  */
