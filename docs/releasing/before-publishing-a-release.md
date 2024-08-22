@@ -8,33 +8,19 @@ The whole team should coordinate whether to publish a new release. Choose a team
 
 We next need to define a cutoff date for this release. Once the cutoff date passes, do not add any further major changes. We can still add small fixes before we publish as long as we notify the team. However, we should try to avoid adding too many fixes in this way, as it requires us to have to repeat steps of the release process.
 
-## Raise release issues
+## Raise an issue for the release
 
-Release issues should be created in the team GitHub repositories: [govuk-frontend](https://github.com/alphagov/govuk-frontend), [govuk-design-system](https://github.com/alphagov/govuk-design-system/) and [govuk-frontend-docs](https://github.com/alphagov/govuk-frontend-docs).
+Use the '🚀 Release' issue template to [create an issue in the govuk-frontend repository](https://github.com/alphagov/govuk-frontend/issues/new/choose) tracking the tasks for this release.
 
-All these issues should be:
+The template lists the main tasks that happen for every release. If the release at hand needs some specific steps, make sure to add items to the lists for each of them, especially:
+
+- merging documentation [PRs on govuk-design-system](https://github.com/alphagov/govuk-design-system/pulls?q=sort%3Aupdated-desc+is%3Apr+is%3Aopen)
+- merging documentation [PRs on govuk-frontend-docs](https://github.com/alphagov/govuk-frontend-docs/pulls?q=sort%3Aupdated-desc+is%3Apr+is%3Aopen)
+
+This issue should be:
 
 - added to the [Design System cycle board](https://github.com/orgs/alphagov/projects/53) backlog
-- added to that release's milestone
-- tagged with the '🚀 release' label
-
-Those leading on the release should raise new issues to track the following:
-
-- draft comms for the new release (example issue: [#2507](https://github.com/alphagov/govuk-frontend/issues/2507))
-- create release notes for the new release (example issue: [#2508](https://github.com/alphagov/govuk-frontend/issues/2508))
-- release the new version of GOV.UK Frontend to npm (example issue: [#2509](https://github.com/alphagov/govuk-frontend/issues/2509))
-- update the GOV.UK Design System to use the new release of GOV.UK Frontend (example issue: [#2024](https://github.com/alphagov/govuk-design-system/issues/2024)):
-  - bump the version of `govuk-frontend`
-  - update the "What's new" section on the home page
-  - update the "Recently shipped" section of the roadmap
-  - merge any other documentation PRs specific to the release
-- update the GOV.UK Frontend Docs to use the new release of GOV.UK Frontend (example issue: [#184](https://github.com/alphagov/govuk-frontend-docs/issues/184)):
-  - bump the version of `govuk-frontend`
-  - update the "Updating with npm" example for `package.json` with the current number
-  - merge any other documentation PRs specific to the release
-- post the comms and do tidy-up tasks (example issue: [#2510](https://github.com/alphagov/govuk-frontend/issues/2510))
-
-Once the developers have created these issues, the person leading the release should add them to an epic (example issue: [#2511](https://github.com/alphagov/govuk-frontend/issues/2511)).
+- added to that release's milestone if there's one
 
 ## Draft comms and release notes for the community
 
