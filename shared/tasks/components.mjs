@@ -161,10 +161,12 @@ async function generateMacroOption(componentDataPath, options) {
 }
 
 /**
- * @typedef {import('./assets.mjs').AssetEntry} AssetEntry
- * @typedef {import('@govuk-frontend/lib/components').ComponentData} ComponentData
- * @typedef {import('@govuk-frontend/lib/components').ComponentOption} ComponentOption
- * @typedef {import('@govuk-frontend/lib/components').ComponentExample} ComponentExample
- * @typedef {import('@govuk-frontend/lib/components').ComponentFixture} ComponentFixture
- * @typedef {import('@govuk-frontend/lib/components').ComponentFixtures} ComponentFixtures
+ * @import { AssetEntry } from './assets.mjs'
+ * @import {
+ *  ComponentData,
+ *  ComponentOption,
+ *  ComponentExample,
+ *  ComponentFixture,
+ *  ComponentFixtures
+ * } from '@govuk-frontend/lib/components'
  */
