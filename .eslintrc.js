@@ -103,7 +103,11 @@ module.exports = {
       settings: {
         jsdoc: {
           // Allows us to use type declarations that exist in our dependencies
-          mode: 'typescript'
+          mode: 'typescript',
+          tagNamePreference: {
+            // TypeDoc doesn't understand '@abstract' but '@virtual'
+            abstract: 'virtual'
+          }
         }
       }
     },

@@ -6,6 +6,7 @@ const {
   packageNameToPath
 } = require('@govuk-frontend/lib/names')
 const slash = require('slash')
+const typedoc = require('typedoc')
 
 const basePath = join(packageNameToPath('govuk-frontend'), 'src')
 const workspacePath = slash(relative(paths.root, basePath))
@@ -38,6 +39,30 @@ module.exports = {
   // settings menu of the JSDoc page.
   excludePrivate: false,
 
-  // Ignore known undocumented types (@internal, @private etc)
-  intentionallyNotExported: ['I18n', 'TranslationPluralForms']
+  plugin: [
+    // Use typedoc-plugin-missing-exports to ensure that internal symbols which
+    // are not exported are included in the documentation (like the `I18n` class
+    // or the components' config types)
+    'typedoc-plugin-missing-exports'
+  ],
+  // By default, missing-exports will regroup all symbols under an `<internal>`
+  // module whose naming is a bit poor. Instead, we let the symbols be displayed
+  // alongside the others
+  placeInternalsInOwningModule: true,
+  // The missing-exports plugin will include built-in symbols, like the DOM API.
+  // We don't want those in our documentation, so we need to exclude them
+  excludeExternals: true,
+
+  // Make TypeDoc aware of tags we use but it does not parse by default
+  // so it doesn't warn unnecessarily
+  modifierTags: [
+    ...typedoc.Configuration.OptionDefaults.modifierTags,
+    '@preserve',
+    '@constant'
+  ],
+
+  // We don't want typedoc to render a 'Preserve' tag
+  // as it's only for controlling which comments get rendered or not
+  // after transpilation
+  excludeTags: ['@preserve']
 }
