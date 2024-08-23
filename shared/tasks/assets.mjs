@@ -103,7 +103,10 @@ export async function write(filePath, result) {
  * 2. Terser minified bundle
  * 3. Sass compiler result
  *
- * @typedef {import('rollup').OutputChunk | import('terser').MinifyOutput | import('postcss').Result} AssetOutput
+ * @import {OutputChunk} from 'rollup'
+ * @import {MinifyOutput} from 'terser'
+ * @import {Result} from 'postcss'
+ * @typedef {OutputChunk | MinifyOutput | Result} AssetOutput
  */
 
 /**
@@ -111,5 +114,6 @@ export async function write(filePath, result) {
  *
  * {@link https://github.com/source-map/source-map-spec}
  *
- * @typedef {import('@jridgewell/source-map').DecodedSourceMap | import('@jridgewell/source-map').EncodedSourceMap} SourceMap
+ * @import {DecodedSourceMap, EncodedSourceMap} from '@jridgewell/source-map'
+ * @typedef {DecodedSourceMap | EncodedSourceMap} SourceMap
  */
