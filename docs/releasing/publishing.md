@@ -45,9 +45,9 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 6. Update the [`CHANGELOG.md`](/CHANGELOG.md) by:
 
-   - changing the 'Unreleased' heading to the new version number and release type. For example, '3.11.0 (Feature release)'
-   - adding a new 'Unreleased' heading above the new version number and release type, so users will know where to add PRs to the changelog
-   - if the changelog has headings from [pre-releases](/docs/releasing/publishing-a-pre-release.md#publish-a-new-version-of-govuk-frontend), regroup the content under those headings in a single block
+   - checking that the 'Unreleased' section of the changelog has the same content as the drafted release notes and updating it if necessary
+     - if the changelog has headings from [pre-releases](/docs/releasing/publishing-a-pre-release.md#publish-a-new-version-of-govuk-frontend), regroup the content under those headings in a single block
+   - adding a new heading with the version number and release type (`## <VERSION_NUMBER> (<RELEASE_TYPE>)`) after the 'Unreleased' heading. For example, '## 3.11.0 (Feature release)'
    - saving your changes
 
 7. Run `npm run build-release` to:
