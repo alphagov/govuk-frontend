@@ -29,7 +29,5 @@ module.exports = {
 }
 
 /**
- * @typedef {import('@govuk-frontend/lib/components').MacroOptions} MacroOptions
- * @typedef {import('@govuk-frontend/lib/components').MacroRenderOptions} MacroRenderOptions
- * @typedef {import('@govuk-frontend/lib/components').TemplateRenderOptions} TemplateRenderOptions
+ * @import { MacroRenderOptions, TemplateRenderOptions } from '@govuk-frontend/lib/components'
  */
