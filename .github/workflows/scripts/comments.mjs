@@ -333,7 +333,8 @@ function getReviewAppUrl(prNumber, path = '/') {
  */
 
 /**
- * @typedef {import('@octokit/plugin-rest-endpoint-methods').RestEndpointMethodTypes["issues"]} IssuesEndpoint
+ * @import {RestEndpointMethodTypes} from '@octokit/plugin-rest-endpoint-methods'
+ * @typedef {RestEndpointMethodTypes["issues"]} IssuesEndpoint
  * @typedef {IssuesEndpoint["listComments"]["parameters"]} IssueCommentsListParams
  * @typedef {IssuesEndpoint["getComment"]["response"]["data"]} IssueCommentData
  */
