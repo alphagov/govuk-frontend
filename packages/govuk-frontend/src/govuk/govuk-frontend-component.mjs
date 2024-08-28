@@ -11,6 +11,10 @@ import { InitError, SupportError } from './errors/index.mjs'
  */
 export class GOVUKFrontendComponent {
   /**
+   * @type {string|undefined}
+   */
+  static moduleName
+  /**
    * Constructs a new component, validating that GOV.UK Frontend is supported
    *
    * @internal
@@ -20,8 +24,15 @@ export class GOVUKFrontendComponent {
     this.checkSupport()
     this.checkInitialised($module)
 
-    // Mark component as initialised in HTML
-    $module?.setAttribute('data-module-init', 'true')
+    const moduleName = /** @type {typeof GOVUKFrontendComponent} */ (
+      this.constructor
+    ).moduleName
+
+    if (typeof moduleName === 'string') {
+      moduleName && $module?.setAttribute(`data-${moduleName}-init`, 'true')
+    } else {
+      throw new InitError(moduleName, this.constructor.name)
+    }
   }
 
   /**
@@ -32,8 +43,12 @@ export class GOVUKFrontendComponent {
    * @throws {InitError} when component is already initialised
    */
   checkInitialised($module) {
-    if ($module && isInitialised($module)) {
-      throw new InitError($module)
+    const moduleName = /** @type {typeof GOVUKFrontendComponent} */ (
+      this.constructor
+    ).moduleName
+
+    if ($module && moduleName && isInitialised($module, moduleName)) {
+      throw new InitError(moduleName)
     }
   }
 

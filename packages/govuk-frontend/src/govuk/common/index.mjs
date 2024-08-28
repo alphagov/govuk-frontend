@@ -193,10 +193,14 @@ export function setFocus($element, options = {}) {
  *
  * @internal
  * @param {Element} $module - HTML element to be checked
+ * @param {string} moduleName - name of component module
  * @returns {boolean} Whether component is already initialised
  */
-export function isInitialised($module) {
-  return $module instanceof HTMLElement && 'moduleInit' in $module.dataset
+export function isInitialised($module, moduleName) {
+  return (
+    $module instanceof HTMLElement &&
+    !!$module.getAttribute(`data-${moduleName}-init`)
+  )
 }
 
 /**

@@ -54,23 +54,33 @@ describe('errors', () => {
 
   describe('InitError', () => {
     let $element
+    let $moduleName
 
     beforeAll(() => {
       $element = document.createElement('div')
       $element.setAttribute('data-module', 'govuk-accordion')
+      $moduleName = 'govuk-accordion'
     })
 
     it('is an instance of GOVUKFrontendError', () => {
-      expect(new InitError($element)).toBeInstanceOf(GOVUKFrontendError)
+      expect(new InitError($moduleName)).toBeInstanceOf(GOVUKFrontendError)
     })
 
     it('has its own name set', () => {
-      expect(new InitError($element).name).toBe('InitError')
+      expect(new InitError($moduleName).name).toBe('InitError')
     })
 
     it('provides feedback for modules already initialised', () => {
-      expect(new InitError($element).message).toBe(
+      expect(new InitError($moduleName).message).toBe(
         'Root element (`$module`) already initialised (`govuk-accordion`)'
+      )
+    })
+
+    it('provides feedback for modules already initialised', () => {
+      $moduleName = undefined
+
+      expect(new InitError($moduleName, 'Accordion').message).toBe(
+        'moduleName not defined in component (`Accordion`)'
       )
     })
   })

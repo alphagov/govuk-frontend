@@ -105,11 +105,17 @@ export class InitError extends GOVUKFrontendError {
 
   /**
    * @internal
-   * @param {Element} $module - HTML element already initialised
+   * @param {string|undefined} moduleName - name of the component module
+   * @param {string} [className] - name of the component module
    */
-  constructor($module) {
-    const moduleName = $module.getAttribute('data-module')
-    super(`Root element (\`$module\`) already initialised (\`${moduleName}\`)`)
+  constructor(moduleName, className) {
+    let errorText = `moduleName not defined in component (\`${className}\`)`
+
+    if (typeof moduleName === 'string') {
+      errorText = `Root element (\`$module\`) already initialised (\`${moduleName}\`)`
+    }
+
+    super(errorText)
   }
 }
 

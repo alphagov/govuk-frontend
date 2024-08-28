@@ -159,7 +159,8 @@ module.exports = {
   componentNameToMacroName,
   packageResolveToPath,
   packageTypeToPath,
-  packageNameToPath
+  packageNameToPath,
+  kebabCaseToCamelCase
 }
 
 /**
