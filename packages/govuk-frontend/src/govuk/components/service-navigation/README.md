@@ -1,4 +1,4 @@
-# Service Navigation
+# Service navigation
 
 ## Installation
 
@@ -6,7 +6,7 @@ See the [main README quick start guide](https://github.com/alphagov/govuk-fronte
 
 ## Guidance and Examples
 
-Find out when to use the service header component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/service-navigation).
+Find out when to use the Service navigation component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/service-navigation).
 
 ## Component options
 

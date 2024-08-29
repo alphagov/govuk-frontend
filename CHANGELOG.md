@@ -4,6 +4,19 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### New features
+
+#### Make it easier to navigate complex services with the Service navigation component
+
+We've added a new [Service navigation component](https://design-system.service.gov.uk/components/service-navigation/) to help users to navigate services with multiple top-level sections. This replaces the navigation functions of the Header component, which will be deprecated in a future release of GOV.UK Frontend.
+
+This component includes some features we consider experimental. We intend to iterate these features in response to user feedback. These are:
+
+- moving the service name from the Header to the Service navigation
+- providing slots for injecting custom HTML into specified locations within the component
+
+We introduced this change in [pull request #5206: Service navigation component](https://github.com/alphagov/govuk-frontend/pull/5206).
+
 ## v5.5.0 (Feature release)
 
 To install this version with npm, run `npm install govuk-frontend@5.5.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
