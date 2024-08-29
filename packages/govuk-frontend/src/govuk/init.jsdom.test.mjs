@@ -194,6 +194,40 @@ describe('createAll', () => {
     expect(result).toStrictEqual([])
   })
 
+  it('executes specified onError callback and returns empty array if not supported', () => {
+    document.body.classList.remove('govuk-frontend-supported')
+
+    const errorCallback = jest.fn((error, context) => {
+      console.log(error)
+      console.log(context)
+    })
+
+    // Silence warnings in test output, and allow us to 'expect' them
+    jest.spyOn(global.console, 'log').mockImplementation()
+
+    expect(() => {
+      createAll(
+        MockComponent,
+        { attribute: 'random' },
+        { onError: errorCallback }
+      )
+    }).not.toThrow()
+
+    expect(errorCallback).toHaveBeenCalled()
+
+    expect(global.console.log).toHaveBeenCalledWith(
+      expect.objectContaining({
+        message: 'GOV.UK Frontend is not supported in this browser'
+      })
+    )
+    expect(global.console.log).toHaveBeenCalledWith(
+      expect.objectContaining({
+        component: MockComponent,
+        config: { attribute: 'random' }
+      })
+    )
+  })
+
   it('returns an empty array if no matching components exist on the page', () => {
     const componentRoot = document.createElement('div')
     componentRoot.setAttribute(
@@ -290,7 +324,7 @@ describe('createAll', () => {
     })
   })
 
-  describe('when a $scope is passed', () => {
+  describe('when a $scope is passed as third parameter', () => {
     it('only initialises components within that scope', () => {
       document.body.innerHTML = `
         <div data-module="mock-component"></div>
@@ -313,6 +347,28 @@ describe('createAll', () => {
         document.querySelector('.my-scope [data-module="mock-component"]')
       ])
     })
+
+    it('only initialises components within that scope if scope passed as options attribute', () => {
+      document.body.innerHTML = `
+        <div data-module="mock-component"></div>
+        <div class="not-in-scope">
+          <div data-module="mock-component"></div>
+        </div>'
+        <div class="my-scope">
+          <div data-module="mock-component"></div>
+        </div>`
+
+      const result = createAll(MockComponent, undefined, {
+        onError: (e, x) => {},
+        scope: document.querySelector('.my-scope')
+      })
+
+      expect(result).toStrictEqual([expect.any(MockComponent)])
+
+      expect(result[0].args).toStrictEqual([
+        document.querySelector('.my-scope [data-module="mock-component"]')
+      ])
+    })
   })
 
   describe('when components throw errors', () => {
@@ -324,6 +380,68 @@ describe('createAll', () => {
         }
       }
     }
+
+    it('executes callback if specified as part of options object', () => {
+      document.body.innerHTML = `<div data-module="mock-component" data-boom></div>`
+
+      const errorCallback = jest.fn((error, context) => {
+        console.log(error)
+        console.log(context)
+      })
+
+      // Silence warnings in test output, and allow us to 'expect' them
+      jest.spyOn(global.console, 'log').mockImplementation()
+
+      expect(() => {
+        createAll(
+          MockComponentThatErrors,
+          { attribute: 'random' },
+          { onError: errorCallback }
+        )
+      }).not.toThrow()
+
+      expect(errorCallback).toHaveBeenCalled()
+
+      expect(global.console.log).toHaveBeenCalledWith(expect.any(Error))
+      expect(global.console.log).toHaveBeenCalledWith(
+        expect.objectContaining({
+          component: MockComponentThatErrors,
+          config: { attribute: 'random' },
+          element: document.querySelector('[data-module="mock-component"]')
+        })
+      )
+    })
+
+    it('executes callback if specified as function', () => {
+      document.body.innerHTML = `<div data-module="mock-component" data-boom></div>`
+
+      const errorCallback = jest.fn((error, context) => {
+        console.log(error)
+        console.log(context)
+      })
+
+      // Silence warnings in test output, and allow us to 'expect' them
+      jest.spyOn(global.console, 'log').mockImplementation()
+
+      expect(() => {
+        createAll(
+          MockComponentThatErrors,
+          { attribute: 'random' },
+          errorCallback
+        )
+      }).not.toThrow()
+
+      expect(errorCallback).toHaveBeenCalled()
+
+      expect(global.console.log).toHaveBeenCalledWith(expect.any(Error))
+      expect(global.console.log).toHaveBeenCalledWith(
+        expect.objectContaining({
+          component: MockComponentThatErrors,
+          config: { attribute: 'random' },
+          element: document.querySelector('[data-module="mock-component"]')
+        })
+      )
+    })
 
     it('catches errors thrown by components and logs them to the console', () => {
       document.body.innerHTML = `<div data-module="mock-component" data-boom></div>`
