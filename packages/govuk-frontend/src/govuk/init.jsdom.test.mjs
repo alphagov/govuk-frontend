@@ -97,6 +97,38 @@ describe('initAll', () => {
         })
       )
     })
+
+    it('executes onError if specified', () => {
+      const errorCallback = jest.fn((error, context) => {
+        console.log(error)
+        console.log(context)
+      })
+
+      initAll({
+        accordion: {
+          rememberExpanded: true
+        },
+        onError: errorCallback
+      })
+
+      expect(errorCallback).toHaveBeenCalled()
+
+      expect(global.console.log).toHaveBeenCalledWith(
+        expect.objectContaining({
+          message: 'GOV.UK Frontend is not supported in this browser'
+        })
+      )
+      expect(global.console.log).toHaveBeenCalledWith(
+        expect.objectContaining({
+          config: {
+            accordion: {
+              rememberExpanded: true
+            },
+            onError: errorCallback
+          }
+        })
+      )
+    })
   })
 
   it('only initialises components within a given scope', () => {
@@ -140,6 +172,42 @@ describe('initAll', () => {
     expect(global.console.log).toHaveBeenCalledWith(
       expect.objectContaining({
         message: 'Error thrown from accordion'
+      })
+    )
+  })
+
+  it('executes onError callback on component create if specified', () => {
+    document.body.classList.add('govuk-frontend-supported')
+    document.body.innerHTML = '<div data-module="govuk-accordion"></div>'
+
+    jest.mocked(GOVUKFrontend.Accordion).mockImplementation(() => {
+      throw new Error('Error thrown from accordion')
+    })
+
+    const errorCallback = jest.fn((error, context) => {
+      console.log(error)
+      console.log(context)
+    })
+
+    // Silence warnings in test output, and allow us to 'expect' them
+    jest.spyOn(global.console, 'log').mockImplementation()
+
+    initAll({
+      onError: errorCallback,
+      accordion: {
+        rememberExpanded: true
+      }
+    })
+
+    expect(global.console.log).toHaveBeenCalledWith(
+      expect.objectContaining({
+        message: 'Error thrown from accordion'
+      })
+    )
+    expect(global.console.log).toHaveBeenCalledWith(
+      expect.objectContaining({
+        component: GOVUKFrontend.Accordion,
+        config: { rememberExpanded: true }
       })
     )
   })

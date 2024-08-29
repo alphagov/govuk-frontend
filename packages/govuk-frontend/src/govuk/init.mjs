@@ -19,14 +19,20 @@ import { SupportError } from './errors/index.mjs'
  * Use the `data-module` attributes to find, instantiate and init all of the
  * components provided as part of GOV.UK Frontend.
  *
- * @param {Config & { scope?: Element }} [config] - Config for all components (with optional scope)
+ * @param {Config & { scope?: Element, onError?: OnErrorCallback<CompatibleClass> }} [config] - Config for all components (with optional scope)
  */
 function initAll(config) {
   config = typeof config !== 'undefined' ? config : {}
 
   // Skip initialisation when GOV.UK Frontend is not supported
   if (!isSupported()) {
-    console.log(new SupportError())
+    if (config.onError) {
+      config.onError(new SupportError(), {
+        config
+      })
+    } else {
+      console.log(new SupportError())
+    }
     return
   }
 
@@ -47,10 +53,15 @@ function initAll(config) {
 
   // Allow the user to initialise GOV.UK Frontend in only certain sections of the page
   // Defaults to the entire document if nothing is set.
-  const $scope = config.scope ?? document
+  // const $scope = config.scope ?? document
+
+  const options = {
+    scope: config.scope ?? document,
+    onError: config.onError
+  }
 
   components.forEach(([Component, config]) => {
-    createAll(Component, config, $scope)
+    createAll(Component, config, options)
   })
 }
 
@@ -192,7 +203,7 @@ export { initAll, createAll }
  * @template {CompatibleClass} T
  * @typedef {object} ErrorContext
  * @property {Element} [element] - Element used for component module initialisation
- * @property {T} component - Class of component
+ * @property {T} [component] - Class of component
  * @property {T["defaults"]} config - Config supplied to component
  */
 
