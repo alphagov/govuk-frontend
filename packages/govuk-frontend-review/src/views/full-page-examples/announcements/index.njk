@@ -5,6 +5,7 @@ notes: Based on https://www.gov.uk/government/news/strictly-vampires-and-sausage
 ---
 {% extends "layouts/full-page-example.njk" %}
 
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
 {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
@@ -12,7 +13,8 @@ notes: Based on https://www.gov.uk/government/news/strictly-vampires-and-sausage
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block header %}
-{{ govukHeader({
+{{ govukHeader({}) }}
+{{ govukServiceNavigation({
   navigation: [
     {
       href: "#1",
