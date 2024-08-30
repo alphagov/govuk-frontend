@@ -90,7 +90,7 @@
   .govuk-service-navigation__toggle {
     @include govuk-font($size: 19, $weight: bold);
     display: inline-flex;
-    margin: 0 0 govuk-spacing(2);
+    margin: govuk-spacing(2) 0;
     padding: 0;
     border: 0;
     color: $govuk-service-navigation-link-colour;
@@ -116,6 +116,12 @@
     // Ensure the button stays hidden if the hidden attribute is present
     &[hidden] {
       display: none;
+    }
+
+    // If we have both a service name and navigation toggle, remove the
+    // margin-top so that there isn't a bunch of space between them
+    .govuk-service-navigation__service-name + .govuk-service-navigation__wrapper & {
+      margin-top: 0;
     }
   }
 

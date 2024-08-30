@@ -4,6 +4,12 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#5278: Fix service navigation mobile toggle spacing](https://github.com/alphagov/govuk-frontend/pull/5278)
+
 ## v5.6.0 (Feature release)
 
 To install this version with npm, run `npm install govuk-frontend@5.6.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
