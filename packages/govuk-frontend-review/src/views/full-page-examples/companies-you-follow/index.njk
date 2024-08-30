@@ -1,0 +1,101 @@
+---
+title: Companies you follow
+name: Companies you follow (service navigation)
+scenario: |
+  You are a user logged into Companies House WebFiling service, looking at a
+  list of companies you are following.
+notes: Based on Companies House "Find an update company information" service
+---
+
+{% extends "layouts/full-page-example.njk" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+
+{% set pageTitle = example.title %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  <style>
+    .app-service-navigation .govuk-service-navigation__wrapper {
+      flex-grow: 1;
+    }
+    .app-sign-out {
+      margin-left: auto;
+      padding: 15px 0 10px;
+    }
+    .app-sign-out .govuk-button {
+      margin: 0;
+      width: auto;
+    }
+  </style>
+{% endblock %}
+
+{% set signOutButton %}
+  <li class="govuk-service-navigation__item app-sign-out">
+    {{ govukButton({
+      type: "button",
+      classes: "govuk-button--inverse",
+      text: "Sign out"
+    }) }}
+  </li>
+{% endset %}
+
+{% block header %}
+  {{ govukHeader({
+    classes: "govuk-header--full-width-border",
+    serviceName: "Find and update company information",
+    serviceUrl: "#0"
+  }) }}
+  {{ govukServiceNavigation({
+    classes: "app-service-navigation",
+    navigation: [
+      {
+        href: '#1',
+        text: 'Search the register'
+      },
+      {
+        href: '#2',
+        text: 'Your details'
+      },
+      {
+        href: '#3',
+        text: 'Your filings'
+      },
+      {
+        href: '#4',
+        text: 'Companies you follow',
+        current: true
+      }
+    ],
+    slots: {
+      navigationEnd: signOutButton
+    }
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Alpha"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback by email</a>.'
+  }) }}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#0"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl">Companies you follow</h1>
+  <p class="govuk-body">You are not following any companies.</p>
+{% endblock %}
