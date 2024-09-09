@@ -78,7 +78,7 @@
     "husky": "^9.1.5",
     "jest": "^29.7.0",
     "jest-environment-node-single-context": "^29.4.0",
-    "jest-puppeteer": "^10.1.0",
+    "jest-puppeteer": "^10.1.1",
     "jest-regex-util": "^29.4.3",
     "jest-serializer-html": "^7.1.0",
     "lint-staged": "^15.2.10",
@@ -108,7 +108,7 @@
     "@types/nunjucks": "^3.2.6",
     "@types/slug": "^5.0.9",
     "@types/vinyl": "^2.0.12",
-    "puppeteer": "^23.2.1",
+    "puppeteer": "^23.3.0",
     "typed-query-selector": "^2.12.0"
   },
   "overrides": {
