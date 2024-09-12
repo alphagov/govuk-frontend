@@ -71,6 +71,7 @@ describe('GOV.UK Frontend', () => {
         'Component',
         'ErrorSummary',
         'ExitThisPage',
+        'FileUpload',
         'Header',
         'NotificationBanner',
         'PasswordInput',
