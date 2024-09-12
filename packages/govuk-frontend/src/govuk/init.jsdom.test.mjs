@@ -107,10 +107,7 @@ describe('initAll', () => {
     })
 
     it('executes onError if specified', () => {
-      const errorCallback = jest.fn((error, context) => {
-        console.log(error)
-        console.log(context)
-      })
+      const errorCallback = jest.fn((_error, _context) => {})
 
       initAll({
         accordion: {
@@ -119,14 +116,12 @@ describe('initAll', () => {
         onError: errorCallback
       })
 
-      expect(errorCallback).toHaveBeenCalled()
+      expect(global.console.log).not.toHaveBeenCalled()
 
-      expect(global.console.log).toHaveBeenCalledWith(
+      expect(errorCallback).toHaveBeenCalledWith(
         expect.objectContaining({
           message: 'GOV.UK Frontend is not supported in this browser'
-        })
-      )
-      expect(global.console.log).toHaveBeenCalledWith(
+        }),
         expect.objectContaining({
           config: {
             accordion: {
@@ -188,17 +183,15 @@ describe('initAll', () => {
     document.body.classList.add('govuk-frontend-supported')
     document.body.innerHTML = '<div data-module="govuk-accordion"></div>'
 
+    const accordionEl = document.querySelector(
+      "[data-module='govuk-accordion']"
+    )
+
     jest.mocked(GOVUKFrontend.Accordion).mockImplementation(() => {
       throw new Error('Error thrown from accordion')
     })
 
-    const errorCallback = jest.fn((error, context) => {
-      console.log(error)
-      console.log(context)
-    })
-
-    // Silence warnings in test output, and allow us to 'expect' them
-    jest.spyOn(global.console, 'log').mockImplementation()
+    const errorCallback = jest.fn((_error, _context) => {})
 
     initAll({
       onError: errorCallback,
@@ -207,15 +200,18 @@ describe('initAll', () => {
       }
     })
 
-    expect(global.console.log).toHaveBeenCalledWith(
+    expect(global.console.log).not.toHaveBeenCalled()
+
+    expect(errorCallback).toHaveBeenCalledWith(
       expect.objectContaining({
         message: 'Error thrown from accordion'
-      })
-    )
-    expect(global.console.log).toHaveBeenCalledWith(
+      }),
       expect.objectContaining({
         component: GOVUKFrontend.Accordion,
-        config: { rememberExpanded: true }
+        config: {
+          rememberExpanded: true
+        },
+        element: accordionEl
       })
     )
   })
@@ -273,13 +269,7 @@ describe('createAll', () => {
   it('executes specified onError callback and returns empty array if not supported', () => {
     document.body.classList.remove('govuk-frontend-supported')
 
-    const errorCallback = jest.fn((error, context) => {
-      console.log(error)
-      console.log(context)
-    })
-
-    // Silence warnings in test output, and allow us to 'expect' them
-    jest.spyOn(global.console, 'log').mockImplementation()
+    const errorCallback = jest.fn((_error, _context) => {})
 
     expect(() => {
       createAll(
@@ -289,14 +279,12 @@ describe('createAll', () => {
       )
     }).not.toThrow()
 
-    expect(errorCallback).toHaveBeenCalled()
+    expect(global.console.log).not.toHaveBeenCalled()
 
-    expect(global.console.log).toHaveBeenCalledWith(
+    expect(errorCallback).toHaveBeenCalledWith(
       expect.objectContaining({
         message: 'GOV.UK Frontend is not supported in this browser'
-      })
-    )
-    expect(global.console.log).toHaveBeenCalledWith(
+      }),
       expect.objectContaining({
         component: MockComponent,
         config: { attribute: 'random' }
