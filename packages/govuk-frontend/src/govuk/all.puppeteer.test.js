@@ -56,6 +56,7 @@ describe('GOV.UK Frontend', () => {
         'Checkboxes',
         'ErrorSummary',
         'ExitThisPage',
+        'FileUpload',
         'Header',
         'NotificationBanner',
         'PasswordInput',
