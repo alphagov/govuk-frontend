@@ -46,4 +46,52 @@
       cursor: not-allowed;
     }
   }
+
+  .govuk-file-upload-wrapper {
+    display: inline-flex;
+    align-items: baseline;
+    position: relative;
+  }
+
+  .govuk-file-upload-wrapper--show-dropzone {
+    $dropzone-padding: govuk-spacing(2);
+
+    margin-top: -$dropzone-padding;
+    margin-left: -$dropzone-padding;
+    padding: $dropzone-padding;
+    outline: 2px dotted govuk-colour("mid-grey");
+    background-color: govuk-colour("light-grey");
+
+    .govuk-file-upload__button,
+    .govuk-file-upload__status {
+      // When the dropzone is hovered over, make these aspects not accept
+      // mouse events, so dropped files fall through to the input beneath them
+      pointer-events: none;
+    }
+  }
+
+  .govuk-file-upload-wrapper .govuk-file-upload {
+    // Make the native control take up the entire space of the element, but
+    // invisible and behind the other elements until we need it
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+  }
+
+  .govuk-file-upload__button {
+    width: auto;
+    margin-bottom: 0;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+  .govuk-file-upload__status {
+    margin-bottom: 0;
+    margin-left: govuk-spacing(2);
+  }
 }
