@@ -89,6 +89,31 @@ examples:
       name: file-upload-1
       label:
         text: Upload a file
+  - name: allows multiple files
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Upload a file
+      attributes:
+        multiple: true
+  - name: allows image files only
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Upload a file
+      attributes:
+        accept: 'image/*'
+  - name: allows direct media capture
+    description: Currently only works on mobile devices.
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Upload a file
+      attributes:
+        capture: 'user'
   - name: with hint text
     options:
       id: file-upload-2
@@ -107,13 +132,6 @@ examples:
         text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
       errorMessage:
         text: Error message goes here
-  - name: with value
-    options:
-      id: file-upload-4
-      name: file-upload-4
-      value: C:\fakepath\myphoto.jpg
-      label:
-        text: Upload a photo
   - name: with label as page heading
     options:
       id: file-upload-1
@@ -132,6 +150,14 @@ examples:
         classes: extra-class
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: with value
+    hidden: true
+    options:
+      id: file-upload-4
+      name: file-upload-4
+      value: C:\fakepath\myphoto.jpg
+      label:
+        text: Upload a photo
   - name: attributes
     hidden: true
     options:
