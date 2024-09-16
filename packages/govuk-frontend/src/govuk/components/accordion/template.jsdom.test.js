@@ -44,11 +44,18 @@ describe('Accordion', () => {
     it('renders with id', () => {
       const $component = document.querySelector('.govuk-accordion')
 
-      expect($component).toHaveAttribute('id', 'default-example')
+      expect($component).toHaveAttribute('id', 'accordion')
     })
   })
 
   describe('custom options', () => {
+    it('renders with id', () => {
+      document.body.innerHTML = render('accordion', examples.id)
+      const $component = document.querySelector('.govuk-accordion')
+
+      expect($component).toHaveAttribute('id', 'custom-id')
+    })
+
     it('renders with classes', () => {
       document.body.innerHTML = render('accordion', examples.classes)
       const $component = document.querySelector('.govuk-accordion')
