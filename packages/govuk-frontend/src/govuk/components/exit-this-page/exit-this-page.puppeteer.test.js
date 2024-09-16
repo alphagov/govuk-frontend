@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 const { setTimeout } = require('timers/promises')
 
 const { goToExample, render } = require('@govuk-frontend/helpers/puppeteer')
@@ -228,6 +230,21 @@ describe('/components/exit-this-page', () => {
             message:
               'GOV.UK Frontend initialised without `<body class="govuk-frontend-supported">` from template `<script>` snippet'
           }
+        })
+      })
+
+      it('throws when initialised twice', async () => {
+        await expect(
+          render(page, 'exit-this-page', examples.default, {
+            async afterInitialisation($module) {
+              const { ExitThisPage } = await import('govuk-frontend')
+              new ExitThisPage($module)
+            }
+          })
+        ).rejects.toMatchObject({
+          name: 'InitError',
+          message:
+            'Root element (`$module`) already initialised (`govuk-exit-this-page`)'
         })
       })
 
