@@ -67,7 +67,11 @@
   }
 
   .govuk-footer__licence-description {
+    // This makes the license description reflow under the logo when space gets too narrow
     display: inline-block;
+    // This prevents the description from having orphans when space is narrow enough
+    // and makes the text reflow more nicely
+    text-wrap: balance;
   }
 
   .govuk-footer__copyright-logo {
