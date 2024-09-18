@@ -281,6 +281,18 @@ function isObject(option) {
 }
 
 /**
+ * Format error message
+ *
+ * @internal
+ * @param {CompatibleClass} Component - Component that threw the error
+ * @param {string} message - Error message
+ * @returns {string} - Formatted error message
+ */
+export function formatErrorMessage(Component, message) {
+  return `${Component.moduleName}: ${message}`
+}
+
+/**
  * Schema for component config
  *
  * @typedef {object} Schema
@@ -308,3 +320,15 @@ function isObject(option) {
  * @typedef {keyof ObjectNested} NestedKey
  * @typedef {{ [key: string]: string | boolean | number | ObjectNested | undefined }} ObjectNested
  */
+
+/* eslint-disable jsdoc/valid-types --
+ * `{new(...args: any[] ): object}` is not recognised as valid
+ * https://github.com/gajus/eslint-plugin-jsdoc/issues/145#issuecomment-1308722878
+ * https://github.com/jsdoc-type-pratt-parser/jsdoc-type-pratt-parser/issues/131
+ **/
+
+/**
+ * @typedef {{new (...args: any[]): any, defaults?: object, moduleName: string}} CompatibleClass
+ */
+
+/* eslint-enable jsdoc/valid-types */

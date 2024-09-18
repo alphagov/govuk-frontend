@@ -1,3 +1,5 @@
+import { Accordion } from 'govuk-frontend'
+
 import {
   ElementError,
   GOVUKFrontendError,
@@ -102,6 +104,14 @@ describe('errors', () => {
         }).name
       ).toBe('ElementError')
     })
+    it('has name set by Component', () => {
+      expect(
+        new ElementError({
+          component: Accordion,
+          identifier: 'variableName'
+        }).name
+      ).toBe('ElementError')
+    })
     it('accepts a string and does not process it in any way', () => {
       expect(new ElementError('Complex custom error message').message).toBe(
         'Complex custom error message'
@@ -126,6 +136,20 @@ describe('errors', () => {
           identifier: 'variableName'
         }).message
       ).toBe('Component name: variableName is not of type HTMLAnchorElement')
+    })
+    it('formats the message when the element is not the right type and Component in config', () => {
+      const $element = document.createElement('div')
+
+      expect(
+        new ElementError({
+          component: Accordion,
+          element: $element,
+          expectedType: 'HTMLAnchorElement',
+          identifier: 'variableName'
+        }).message
+      ).toBe(
+        `${Accordion.moduleName}: variableName is not of type HTMLAnchorElement`
+      )
     })
   })
 })

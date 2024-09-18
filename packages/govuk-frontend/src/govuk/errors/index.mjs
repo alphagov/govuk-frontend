@@ -1,3 +1,5 @@
+import { formatErrorMessage } from '../common/index.mjs'
+
 /**
  * GOV.UK Frontend error
  *
@@ -81,11 +83,18 @@ export class ElementError extends GOVUKFrontendError {
 
     // Build message from options
     if (typeof messageOrOptions === 'object') {
-      const { componentName, identifier, element, expectedType } =
+      const { component, componentName, identifier, element, expectedType } =
         messageOrOptions
 
-      // Add prefix and identifier
-      message = `${componentName}: ${identifier}`
+      if (typeof componentName !== 'undefined') {
+        // Add prefix and identifier
+        message = `${componentName}: ${identifier}`
+      } else {
+        message = identifier
+        if (typeof component !== 'undefined') {
+          message = formatErrorMessage(component, message)
+        }
+      }
 
       // Append reason
       message += element
@@ -124,8 +133,9 @@ export class InitError extends GOVUKFrontendError {
  *
  * @internal
  * @typedef {object} ElementErrorOptions
- * @property {string} componentName - The name of the component throwing the error
+ * @property {string} [componentName] - The name of the component throwing the error
  * @property {string} identifier - An identifier that'll let the user understand which element has an error. This is whatever makes the most sense
  * @property {Element | null} [element] - The element in error
  * @property {string} [expectedType] - The type that was expected for the identifier
+ * @property {import("../init.mjs").CompatibleClass} [component] - Component throwing the error
  */
