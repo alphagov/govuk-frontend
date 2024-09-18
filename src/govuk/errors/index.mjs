@@ -1,3 +1,5 @@
+import { formatErrorMessage } from '../common/index.mjs'
+
 /**
  * GOV.UK Frontend error
  *
@@ -81,16 +83,16 @@ export class ElementError extends GOVUKFrontendError {
 
     // Build message from options
     if (typeof messageOrOptions === 'object') {
-      const { componentName, identifier, element, expectedType } =
-        messageOrOptions
+      const { component, identifier, element, expectedType } = messageOrOptions
 
-      // Add prefix and identifier
-      message = `${componentName}: ${identifier}`
+      message = identifier
 
       // Append reason
       message += element
         ? ` is not of type ${expectedType ?? 'HTMLElement'}`
         : ' not found'
+
+      message = formatErrorMessage(component, message)
     }
 
     super(message)
@@ -124,8 +126,8 @@ export class InitError extends GOVUKFrontendError {
  *
  * @internal
  * @typedef {object} ElementErrorOptions
- * @property {string} componentName - The name of the component throwing the error
  * @property {string} identifier - An identifier that'll let the user understand which element has an error. This is whatever makes the most sense
  * @property {Element | null} [element] - The element in error
  * @property {string} [expectedType] - The type that was expected for the identifier
+ * @property {import('../common/index.mjs').ComponentWithModuleName} component - Component throwing the error
  */
