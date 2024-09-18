@@ -55,6 +55,13 @@ export class ConfigError extends GOVUKFrontendError {
 }
 
 /**
+ * Indicates that a component encountered a false `canInitialise` function call result
+ */
+export class CanInitError extends GOVUKFrontendError {
+  name = 'CanInitError'
+}
+
+/**
  * Indicates an issue with an element (possibly `null` or `undefined`)
  */
 export class ElementError extends GOVUKFrontendError {

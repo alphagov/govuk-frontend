@@ -1,5 +1,5 @@
 import { isInitialised, isSupported } from './common/index.mjs'
-import { InitError, SupportError } from './errors/index.mjs'
+import { InitError, SupportError, CanInitError } from './errors/index.mjs'
 
 /**
  * Base Component class
@@ -20,8 +20,18 @@ export class GOVUKFrontendComponent {
     this.checkSupport()
     this.checkInitialised($module)
 
-    const moduleName = /** @type {ChildClassConstructor} */ (this.constructor)
-      .moduleName
+    const childClassConstructor = /** @type {ChildClassConstructor} */ (
+      this.constructor
+    )
+
+    const moduleName = childClassConstructor.moduleName
+    const canInitialise = childClassConstructor.canInitialise
+
+    if (typeof canInitialise === 'function') {
+      if (!canInitialise()) {
+        throw new CanInitError('`canInitialise` returned `false`')
+      }
+    }
 
     if (typeof moduleName === 'string') {
       moduleName && $module?.setAttribute(`data-${moduleName}-init`, '')
@@ -72,6 +82,7 @@ export class GOVUKFrontendComponent {
 /**
  * @typedef ChildClass
  * @property {string} [moduleName] - The module name that'll be looked for in the DOM when initialising the component
+ * @property {() => boolean} [canInitialise] - The module name that'll be looked for in the DOM when initialising the component
  */
 
 /**

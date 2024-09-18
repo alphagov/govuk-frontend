@@ -4,6 +4,7 @@ import {
 } from '@govuk-frontend/lib/names'
 
 import * as GOVUKFrontend from './all.mjs'
+import { GOVUKFrontendComponent } from './govuk-frontend-component.mjs'
 import { initAll, createAll } from './init.mjs'
 
 // Annoyingly these don't get hoisted if done in a loop
@@ -226,8 +227,9 @@ describe('createAll', () => {
     document.body.outerHTML = '<body></body>'
   })
 
-  class MockComponent {
+  class MockComponent extends GOVUKFrontendComponent {
     constructor(...args) {
+      super()
       this.args = args
     }
 
@@ -319,6 +321,46 @@ describe('createAll', () => {
 
     expect(result[0].args).toStrictEqual([document.getElementById('a')])
     expect(result[1].args).toStrictEqual([document.getElementById('b')])
+  })
+
+  describe('when a component defines canInitialise', () => {
+    class MockComponentWithCanInitialise extends MockComponent {
+      static canInitialise = () => {
+        return document
+          .querySelector('[id="mocked-component"]')
+          .hasAttribute('data-condition')
+      }
+    }
+
+    it('prints error and returns empty array if canInitialise returns false', () => {
+      document.body.innerHTML = `<div id="mocked-component" data-module="mock-component"></div>`
+
+      jest.spyOn(global.console, 'log').mockImplementation()
+
+      const result = createAll(MockComponentWithCanInitialise)
+
+      expect(global.console.log).toHaveBeenCalledWith(
+        expect.objectContaining({
+          message: '`canInitialise` returned `false`'
+        })
+      )
+
+      expect(result).toStrictEqual([])
+    })
+
+    it('creates component if canInitialise returns true', () => {
+      document.body.innerHTML = `<div id="mocked-component" data-condition data-module="mock-component"></div>`
+
+      jest.spyOn(global.console, 'log').mockImplementation()
+
+      const result = createAll(MockComponentWithCanInitialise)
+
+      expect(global.console.log).not.toHaveBeenCalled()
+
+      expect(result[0].args).toStrictEqual([
+        document.querySelector('[id="mocked-component"]')
+      ])
+    })
   })
 
   describe('when a component accepts config', () => {
