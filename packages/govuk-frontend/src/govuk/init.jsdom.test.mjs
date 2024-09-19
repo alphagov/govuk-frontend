@@ -4,6 +4,7 @@ import {
 } from '@govuk-frontend/lib/names'
 
 import * as GOVUKFrontend from './all.mjs'
+import { GOVUKFrontendComponent } from './govuk-frontend-component.mjs'
 import { initAll, createAll } from './init.mjs'
 
 // Annoyingly these don't get hoisted if done in a loop
@@ -226,9 +227,14 @@ describe('createAll', () => {
     document.body.outerHTML = '<body></body>'
   })
 
-  class MockComponent {
+  class MockComponent extends GOVUKFrontendComponent {
     constructor(...args) {
+      super(...args)
       this.args = args
+    }
+
+    static checkSupport() {
+      GOVUKFrontendComponent.checkSupport()
     }
 
     static moduleName = 'mock-component'
@@ -288,6 +294,47 @@ describe('createAll', () => {
       expect.objectContaining({
         component: MockComponent,
         config: { attribute: 'random' }
+      })
+    )
+  })
+
+  it('executes overloaded checkSupport of component', () => {
+    const componentRoot = document.createElement('div')
+    componentRoot.setAttribute('data-module', 'mock-component')
+    document.body.appendChild(componentRoot)
+
+    const checkSupportMock = jest.spyOn(MockComponent, 'checkSupport')
+
+    const result = createAll(MockComponent)
+
+    expect(checkSupportMock).toHaveBeenCalled()
+    expect(result).toStrictEqual([expect.any(MockComponent)])
+  })
+
+  it('returns empty array if overloaded checkSupport of component throws error', () => {
+    const componentRoot = document.createElement('div')
+    componentRoot.setAttribute('data-module', 'mock-component')
+    document.body.appendChild(componentRoot)
+
+    // Silence warnings in test output, and allow us to 'expect' them
+    jest.spyOn(global.console, 'log').mockImplementation()
+
+    const checkSupportMock = jest.fn(() => {
+      throw Error('Mock error')
+    })
+
+    class MockComponentWithCheckSupport extends MockComponent {
+      static checkSupport() {
+        return checkSupportMock()
+      }
+    }
+
+    const result = createAll(MockComponentWithCheckSupport)
+    expect(checkSupportMock).toHaveBeenCalled()
+    expect(result).toStrictEqual([])
+    expect(global.console.log).toHaveBeenCalledWith(
+      expect.objectContaining({
+        message: 'Mock error'
       })
     )
   })
