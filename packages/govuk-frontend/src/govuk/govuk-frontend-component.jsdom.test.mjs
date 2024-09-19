@@ -30,7 +30,7 @@ describe('GOVUKFrontendComponent', () => {
         class ServiceComponent extends GOVUKFrontendComponent {
           static moduleName = 'app-service-component'
 
-          isSupported() {
+          static isSupported() {
             return true
           }
         }
