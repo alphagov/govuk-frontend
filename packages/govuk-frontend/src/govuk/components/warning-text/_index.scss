@@ -2,14 +2,12 @@
   .govuk-warning-text {
     @include govuk-font($size: 19);
     @include govuk-responsive-margin(6, "bottom");
+    @include govuk-typography-weight-bold;
     position: relative;
     padding: govuk-spacing(2) 0;
   }
 
   .govuk-warning-text__icon {
-    // We apply this here and not at the parent level because the actual text is
-    // a <strong> and so will always be bold
-    @include govuk-typography-weight-bold;
     box-sizing: border-box;
 
     display: inline-block;
@@ -57,5 +55,8 @@
     @include govuk-text-colour;
     display: block;
     padding-left: 45px;
+    // While `<strong>` is styled `bold` or `bolder` by user-agents
+    // this can be reset by the app's stylesheet
+    font-weight: inherit;
   }
 }
