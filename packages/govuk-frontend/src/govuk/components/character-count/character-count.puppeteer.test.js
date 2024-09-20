@@ -825,7 +825,7 @@ describe('Character count', () => {
         ).rejects.toMatchObject({
           name: 'InitError',
           message:
-            'Root element (`$module`) already initialised (`govuk-character-count`)'
+            'Root element (`$root`) already initialised (`govuk-character-count`)'
         })
       })
 
