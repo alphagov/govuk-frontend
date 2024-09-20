@@ -169,14 +169,14 @@ async function render(page, componentName, renderOptions, browserOptions) {
           return namespace.initAll()
         }
 
-        // Find all matching modules
-        const $modules = document.querySelectorAll(selector)
+        // Find all component roots
+        const $roots = document.querySelectorAll(selector)
 
         try {
-          // Loop and initialise all $modules or use default
+          // Loop and initialise all $roots or use default
           // selector `null` return value when none found
-          ;($modules.length ? $modules : [null]).forEach(
-            ($module) => new namespace[exportName]($module, config)
+          ;($roots.length ? $roots : [null]).forEach(
+            ($root) => new namespace[exportName]($root, config)
           )
         } catch ({ name, message }) {
           return { name, message }
