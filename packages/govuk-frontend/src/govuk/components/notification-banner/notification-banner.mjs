@@ -10,7 +10,7 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  */
 export class NotificationBanner extends GOVUKFrontendComponent {
   /** @private */
-  $module
+  $root
 
   /**
    * @private
@@ -19,26 +19,26 @@ export class NotificationBanner extends GOVUKFrontendComponent {
   config
 
   /**
-   * @param {Element | null} $module - HTML element to use for notification banner
+   * @param {Element | null} $root - HTML element to use for notification banner
    * @param {NotificationBannerConfig} [config] - Notification banner config
    */
-  constructor($module, config = {}) {
-    super($module)
+  constructor($root, config = {}) {
+    super($root)
 
-    if (!($module instanceof HTMLElement)) {
+    if (!($root instanceof HTMLElement)) {
       throw new ElementError({
         componentName: 'Notification banner',
-        element: $module,
-        identifier: 'Root element (`$module`)'
+        element: $root,
+        identifier: 'Root element (`$root`)'
       })
     }
 
-    this.$module = $module
+    this.$root = $root
 
     this.config = mergeConfigs(
       NotificationBanner.defaults,
       config,
-      normaliseDataset(NotificationBanner, $module.dataset)
+      normaliseDataset(NotificationBanner, $root.dataset)
     )
 
     /**
@@ -53,10 +53,10 @@ export class NotificationBanner extends GOVUKFrontendComponent {
      * element which should be focused when the page loads.
      */
     if (
-      this.$module.getAttribute('role') === 'alert' &&
+      this.$root.getAttribute('role') === 'alert' &&
       !this.config.disableAutoFocus
     ) {
-      setFocus(this.$module)
+      setFocus(this.$root)
     }
   }
 
