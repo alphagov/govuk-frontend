@@ -186,9 +186,9 @@ describe('Header navigation', () => {
       it('throws when initialised twice', async () => {
         await expect(
           render(page, 'header', examples.default, {
-            async afterInitialisation($module) {
+            async afterInitialisation($root) {
               const { Header } = await import('govuk-frontend')
-              new Header($module)
+              new Header($root)
             }
           })
         ).rejects.toMatchObject({
@@ -197,19 +197,19 @@ describe('Header navigation', () => {
         })
       })
 
-      it('throws when $module is not set', async () => {
+      it('throws when $root is not set', async () => {
         await expect(
           render(page, 'header', examples.default, {
-            beforeInitialisation($module) {
+            beforeInitialisation($root) {
               // Remove the root of the components as a way
-              // for the constructor to receive the wrong type for `$module`
-              $module.remove()
+              // for the constructor to receive the wrong type for `$root`
+              $root.remove()
             }
           })
         ).rejects.toMatchObject({
           cause: {
             name: 'ElementError',
-            message: 'Header: Root element (`$module`) not found'
+            message: 'Header: Root element (`$root`) not found'
           }
         })
       })
@@ -217,8 +217,8 @@ describe('Header navigation', () => {
       it("throws when the toggle's aria-control attribute is missing", async () => {
         await expect(
           render(page, 'header', examples['with navigation'], {
-            beforeInitialisation($module, { selector }) {
-              $module.querySelector(selector).removeAttribute('aria-controls')
+            beforeInitialisation($root, { selector }) {
+              $root.querySelector(selector).removeAttribute('aria-controls')
             },
             context: {
               selector: '.govuk-js-header-toggle'
@@ -236,9 +236,9 @@ describe('Header navigation', () => {
       it('throws when the menu is missing, but a toggle is present', async () => {
         await expect(
           render(page, 'header', examples['with navigation'], {
-            beforeInitialisation($module, { selector }) {
+            beforeInitialisation($root, { selector }) {
               // Remove the menu `<ul>` referenced by $menuButton's `aria-controls`
-              $module.querySelector(selector).remove()
+              $root.querySelector(selector).remove()
             },
             context: {
               selector: '#navigation'
