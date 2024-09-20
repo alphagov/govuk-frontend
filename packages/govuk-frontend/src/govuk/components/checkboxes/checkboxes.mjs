@@ -8,7 +8,7 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  */
 export class Checkboxes extends GOVUKFrontendComponent {
   /** @private */
-  $module
+  $root
 
   /** @private */
   $inputs
@@ -25,20 +25,20 @@ export class Checkboxes extends GOVUKFrontendComponent {
    * (for example if the user has navigated back), and set up event handlers to
    * keep the reveal in sync with the checkbox state.
    *
-   * @param {Element | null} $module - HTML element to use for checkboxes
+   * @param {Element | null} $root - HTML element to use for checkboxes
    */
-  constructor($module) {
-    super($module)
+  constructor($root) {
+    super($root)
 
-    if (!($module instanceof HTMLElement)) {
+    if (!($root instanceof HTMLElement)) {
       throw new ElementError({
         componentName: 'Checkboxes',
-        element: $module,
-        identifier: 'Root element (`$module`)'
+        element: $root,
+        identifier: 'Root element (`$root`)'
       })
     }
 
-    const $inputs = $module.querySelectorAll('input[type="checkbox"]')
+    const $inputs = $root.querySelectorAll('input[type="checkbox"]')
     if (!$inputs.length) {
       throw new ElementError({
         componentName: 'Checkboxes',
@@ -46,7 +46,7 @@ export class Checkboxes extends GOVUKFrontendComponent {
       })
     }
 
-    this.$module = $module
+    this.$root = $root
     this.$inputs = $inputs
 
     this.$inputs.forEach(($input) => {
@@ -82,11 +82,11 @@ export class Checkboxes extends GOVUKFrontendComponent {
     this.syncAllConditionalReveals()
 
     // Handle events
-    this.$module.addEventListener('click', (event) => this.handleClick(event))
+    this.$root.addEventListener('click', (event) => this.handleClick(event))
   }
 
   /**
-   * Sync the conditional reveal states for all checkboxes in this $module.
+   * Sync the conditional reveal states for all checkboxes in this component.
    *
    * @private
    */
@@ -174,7 +174,7 @@ export class Checkboxes extends GOVUKFrontendComponent {
   /**
    * Click event handler
    *
-   * Handle a click within the $module – if the click occurred on a checkbox,
+   * Handle a click within the component root – if the click occurred on a checkbox,
    * sync the state of any associated conditional reveal with the checkbox
    * state.
    *
