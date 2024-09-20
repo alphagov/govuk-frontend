@@ -372,9 +372,9 @@ describe('Checkboxes', () => {
         it('throws when initialised twice', async () => {
           await expect(
             render(page, 'checkboxes', examples.default, {
-              async afterInitialisation($module) {
+              async afterInitialisation($root) {
                 const { Checkboxes } = await import('govuk-frontend')
-                new Checkboxes($module)
+                new Checkboxes($root)
               }
             })
           ).rejects.toMatchObject({
@@ -384,34 +384,34 @@ describe('Checkboxes', () => {
           })
         })
 
-        it('throws when $module is not set', async () => {
+        it('throws when $root is not set', async () => {
           await expect(
             render(page, 'checkboxes', examples.default, {
-              beforeInitialisation($module) {
-                $module.remove()
+              beforeInitialisation($root) {
+                $root.remove()
               }
             })
           ).rejects.toMatchObject({
             cause: {
               name: 'ElementError',
-              message: 'Checkboxes: Root element (`$module`) not found'
+              message: 'Checkboxes: Root element (`$root`) not found'
             }
           })
         })
 
-        it('throws when receiving the wrong type for $module', async () => {
+        it('throws when receiving the wrong type for $root', async () => {
           await expect(
             render(page, 'checkboxes', examples.default, {
-              beforeInitialisation($module) {
+              beforeInitialisation($root) {
                 // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
-                $module.outerHTML = `<svg data-module="govuk-checkboxes"></svg>`
+                $root.outerHTML = `<svg data-module="govuk-checkboxes"></svg>`
               }
             })
           ).rejects.toMatchObject({
             cause: {
               name: 'ElementError',
               message:
-                'Checkboxes: Root element (`$module`) is not of type HTMLElement'
+                'Checkboxes: Root element (`$root`) is not of type HTMLElement'
             }
           })
         })
@@ -419,8 +419,8 @@ describe('Checkboxes', () => {
         it('throws when the input list is empty', async () => {
           await expect(
             render(page, 'checkboxes', examples.default, {
-              beforeInitialisation($module, { selector }) {
-                $module
+              beforeInitialisation($root, { selector }) {
+                $root
                   .querySelectorAll(selector)
                   .forEach((item) => item.remove())
               },
@@ -440,8 +440,8 @@ describe('Checkboxes', () => {
         it('throws when a conditional target element is not found', async () => {
           await expect(
             render(page, 'checkboxes', examples['with conditional items'], {
-              beforeInitialisation($module, { selector }) {
-                $module.querySelector(selector).remove()
+              beforeInitialisation($root, { selector }) {
+                $root.querySelector(selector).remove()
               },
               context: {
                 selector: '.govuk-checkboxes__conditional'
