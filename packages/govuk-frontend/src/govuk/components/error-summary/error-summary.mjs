@@ -17,7 +17,7 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  */
 export class ErrorSummary extends GOVUKFrontendComponent {
   /** @private */
-  $module
+  $root
 
   /**
    * @private
@@ -26,36 +26,36 @@ export class ErrorSummary extends GOVUKFrontendComponent {
   config
 
   /**
-   * @param {Element | null} $module - HTML element to use for error summary
+   * @param {Element | null} $root - HTML element to use for error summary
    * @param {ErrorSummaryConfig} [config] - Error summary config
    */
-  constructor($module, config = {}) {
-    super($module)
+  constructor($root, config = {}) {
+    super($root)
 
-    if (!($module instanceof HTMLElement)) {
+    if (!($root instanceof HTMLElement)) {
       throw new ElementError({
         componentName: 'Error summary',
-        element: $module,
-        identifier: 'Root element (`$module`)'
+        element: $root,
+        identifier: 'Root element (`$root`)'
       })
     }
 
-    this.$module = $module
+    this.$root = $root
 
     this.config = mergeConfigs(
       ErrorSummary.defaults,
       config,
-      normaliseDataset(ErrorSummary, $module.dataset)
+      normaliseDataset(ErrorSummary, $root.dataset)
     )
 
     /**
      * Focus the error summary
      */
     if (!this.config.disableAutoFocus) {
-      setFocus(this.$module)
+      setFocus(this.$root)
     }
 
-    this.$module.addEventListener('click', (event) => this.handleClick(event))
+    this.$root.addEventListener('click', (event) => this.handleClick(event))
   }
 
   /**
