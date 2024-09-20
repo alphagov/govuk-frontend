@@ -13,21 +13,28 @@ component
 ## Skeleton
 
 ```mjs
+import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
+
 /**
  * Component name
  *
  * @preserve
  */
-export class Example {
+export class Example extends GOVUKFrontendComponent {
   /**
    * @param {Element | null} $root - HTML element to use for component
    */
-  constructor($root) {
-    if (
-      !($root instanceof HTMLElement) ||
-      !document.body.classList.contains('govuk-frontend-supported')
-    ) {
-      return this
+  constructor($root){
+    super($root)
+
+    if (!($root instanceof HTMLElement)) {
+      if (!($root instanceof HTMLElement)) {
+        throw new ElementError({
+          componentName: 'Example',
+          element: $root,
+          identifier: 'Root element (`$root`)'
+        })
+      }
     }
 
     this.$root = $root
