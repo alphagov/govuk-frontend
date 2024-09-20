@@ -202,34 +202,34 @@ describe('/components/password-input', () => {
           })
         })
 
-        it('throws when $module is not set', async () => {
+        it('throws when $root is not set', async () => {
           await expect(
             render(page, 'password-input', examples.default, {
-              beforeInitialisation($module) {
-                $module.remove()
+              beforeInitialisation($root) {
+                $root.remove()
               }
             })
           ).rejects.toMatchObject({
             cause: {
               name: 'ElementError',
-              message: 'Password input: Root element (`$module`) not found'
+              message: 'Password input: Root element (`$root`) not found'
             }
           })
         })
 
-        it('throws when receiving the wrong type for $module', async () => {
+        it('throws when receiving the wrong type for $root', async () => {
           await expect(
             render(page, 'password-input', examples.default, {
-              beforeInitialisation($module) {
+              beforeInitialisation($root) {
                 // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
-                $module.outerHTML = `<svg data-module="govuk-password-input"></svg>`
+                $root.outerHTML = `<svg data-module="govuk-password-input"></svg>`
               }
             })
           ).rejects.toMatchObject({
             cause: {
               name: 'ElementError',
               message:
-                'Password input: Root element (`$module`) is not of type HTMLElement'
+                'Password input: Root element (`$root`) is not of type HTMLElement'
             }
           })
         })
@@ -237,8 +237,8 @@ describe('/components/password-input', () => {
         it('throws when the input element is missing', async () => {
           await expect(
             render(page, 'password-input', examples.default, {
-              beforeInitialisation($module, { selector }) {
-                $module.querySelector(selector).remove()
+              beforeInitialisation($root, { selector }) {
+                $root.querySelector(selector).remove()
               },
               context: {
                 selector: inputSelector
@@ -256,9 +256,9 @@ describe('/components/password-input', () => {
         it('throws when the input is not an <input> element', async () => {
           await expect(
             render(page, 'password-input', examples.default, {
-              beforeInitialisation($module, { selector }) {
+              beforeInitialisation($root, { selector }) {
                 // Replace the input with a textarea
-                $module.querySelector(selector).outerHTML =
+                $root.querySelector(selector).outerHTML =
                   '<textarea class="govuk-js-password-input-input"></textarea>'
               },
               context: {
@@ -277,9 +277,9 @@ describe('/components/password-input', () => {
         it('throws when the input is not a `password` type', async () => {
           await expect(
             render(page, 'password-input', examples.default, {
-              beforeInitialisation($module, { selector }) {
+              beforeInitialisation($root, { selector }) {
                 // Make the input a number input instead
-                $module.querySelector(selector).setAttribute('type', 'number')
+                $root.querySelector(selector).setAttribute('type', 'number')
               },
               context: {
                 selector: inputSelector
@@ -297,8 +297,8 @@ describe('/components/password-input', () => {
         it('throws when the button is missing', async () => {
           await expect(
             render(page, 'password-input', examples.default, {
-              beforeInitialisation($module, { selector }) {
-                $module.querySelector(selector).remove()
+              beforeInitialisation($root, { selector }) {
+                $root.querySelector(selector).remove()
               },
               context: {
                 selector: buttonSelector
@@ -316,9 +316,9 @@ describe('/components/password-input', () => {
         it('throws when the button is not a <button> element', async () => {
           await expect(
             render(page, 'password-input', examples.default, {
-              beforeInitialisation($module, { selector }) {
+              beforeInitialisation($root, { selector }) {
                 // Replace the button with a <div>
-                $module.querySelector(selector).outerHTML =
+                $root.querySelector(selector).outerHTML =
                   '<div class="govuk-js-password-input-toggle"></div>'
               },
               context: {
@@ -337,9 +337,9 @@ describe('/components/password-input', () => {
         it('throws when the button is not a `button` type', async () => {
           await expect(
             render(page, 'password-input', examples.default, {
-              beforeInitialisation($module, { selector }) {
+              beforeInitialisation($root, { selector }) {
                 // Make the button a submit button
-                $module.querySelector(selector).setAttribute('type', 'submit')
+                $root.querySelector(selector).setAttribute('type', 'submit')
               },
               context: {
                 selector: buttonSelector
