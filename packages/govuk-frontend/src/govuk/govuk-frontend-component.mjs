@@ -14,17 +14,17 @@ export class GOVUKFrontendComponent {
    * Constructs a new component, validating that GOV.UK Frontend is supported
    *
    * @internal
-   * @param {Element | null} [$module] - HTML element to use for component
+   * @param {Element | null} [$root] - HTML element to use for component
    */
-  constructor($module) {
+  constructor($root) {
     this.checkSupport()
-    this.checkInitialised($module)
+    this.checkInitialised($root)
 
     const moduleName = /** @type {ChildClassConstructor} */ (this.constructor)
       .moduleName
 
     if (typeof moduleName === 'string') {
-      moduleName && $module?.setAttribute(`data-${moduleName}-init`, '')
+      moduleName && $root?.setAttribute(`data-${moduleName}-init`, '')
     } else {
       throw new InitError(moduleName)
     }
@@ -34,14 +34,14 @@ export class GOVUKFrontendComponent {
    * Validates whether component is already initialised
    *
    * @private
-   * @param {Element | null} [$module] - HTML element to be checked
+   * @param {Element | null} [$root] - HTML element to be checked
    * @throws {InitError} when component is already initialised
    */
-  checkInitialised($module) {
+  checkInitialised($root) {
     const moduleName = /** @type {ChildClassConstructor} */ (this.constructor)
       .moduleName
 
-    if ($module && moduleName && isInitialised($module, moduleName)) {
+    if ($root && moduleName && isInitialised($root, moduleName)) {
       throw new InitError(moduleName)
     }
   }
