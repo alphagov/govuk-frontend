@@ -249,7 +249,7 @@ describe('Error Summary', () => {
       ).rejects.toMatchObject({
         name: 'InitError',
         message:
-          'Root element (`$module`) already initialised (`govuk-error-summary`)'
+          'Root element (`$root`) already initialised (`govuk-error-summary`)'
       })
     })
 
