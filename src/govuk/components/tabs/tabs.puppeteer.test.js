@@ -274,9 +274,9 @@ describe('/components/tabs', () => {
       it('throws when initialised twice', async () => {
         await expect(
           render(page, 'tabs', examples.default, {
-            async afterInitialisation($module) {
+            async afterInitialisation($root) {
               const { Tabs } = await import('govuk-frontend')
-              new Tabs($module)
+              new Tabs($root)
             }
           })
         ).rejects.toMatchObject({
@@ -285,17 +285,17 @@ describe('/components/tabs', () => {
         })
       })
 
-      it('throws when $module is not set', async () => {
+      it('throws when $root is not set', async () => {
         await expect(
           render(page, 'tabs', examples.default, {
-            beforeInitialisation($module) {
-              $module.remove()
+            beforeInitialisation($root) {
+              $root.remove()
             }
           })
         ).rejects.toMatchObject({
           cause: {
             name: 'ElementError',
-            message: 'Tabs: Root element (`$module`) not found'
+            message: 'Tabs: Root element (`$root`) not found'
           }
         })
       })
@@ -303,10 +303,8 @@ describe('/components/tabs', () => {
       it('throws when there are no tabs', async () => {
         await expect(
           render(page, 'tabs', examples.default, {
-            beforeInitialisation($module, { selector }) {
-              $module
-                .querySelectorAll(selector)
-                .forEach((item) => item.remove())
+            beforeInitialisation($root, { selector }) {
+              $root.querySelectorAll(selector).forEach((item) => item.remove())
             },
             context: {
               selector: 'a.govuk-tabs__tab'
@@ -323,8 +321,8 @@ describe('/components/tabs', () => {
       it('throws when the tab list is missing', async () => {
         await expect(
           render(page, 'tabs', examples.default, {
-            beforeInitialisation($module, { selector }) {
-              $module
+            beforeInitialisation($root, { selector }) {
+              $root
                 .querySelector(selector)
                 .setAttribute('class', 'govuk-tabs__typo')
             },
@@ -343,8 +341,8 @@ describe('/components/tabs', () => {
       it('throws when there the tab list is empty', async () => {
         await expect(
           render(page, 'tabs', examples.default, {
-            beforeInitialisation($module, { selector, className }) {
-              $module
+            beforeInitialisation($root, { selector, className }) {
+              $root
                 .querySelectorAll(selector)
                 .forEach((item) => item.setAttribute('class', className))
             },
