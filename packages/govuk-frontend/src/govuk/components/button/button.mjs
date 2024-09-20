@@ -12,7 +12,7 @@ const DEBOUNCE_TIMEOUT_IN_SECONDS = 1
  */
 export class Button extends GOVUKFrontendComponent {
   /** @private */
-  $module
+  $root
 
   /**
    * @private
@@ -27,32 +27,30 @@ export class Button extends GOVUKFrontendComponent {
   debounceFormSubmitTimer = null
 
   /**
-   * @param {Element | null} $module - HTML element to use for button
+   * @param {Element | null} $root - HTML element to use for button
    * @param {ButtonConfig} [config] - Button config
    */
-  constructor($module, config = {}) {
-    super($module)
+  constructor($root, config = {}) {
+    super($root)
 
-    if (!($module instanceof HTMLElement)) {
+    if (!($root instanceof HTMLElement)) {
       throw new ElementError({
         componentName: 'Button',
-        element: $module,
-        identifier: 'Root element (`$module`)'
+        element: $root,
+        identifier: 'Root element (`$root`)'
       })
     }
 
-    this.$module = $module
+    this.$root = $root
 
     this.config = mergeConfigs(
       Button.defaults,
       config,
-      normaliseDataset(Button, $module.dataset)
+      normaliseDataset(Button, $root.dataset)
     )
 
-    this.$module.addEventListener('keydown', (event) =>
-      this.handleKeyDown(event)
-    )
-    this.$module.addEventListener('click', (event) => this.debounce(event))
+    this.$root.addEventListener('keydown', (event) => this.handleKeyDown(event))
+    this.$root.addEventListener('click', (event) => this.debounce(event))
   }
 
   /**
