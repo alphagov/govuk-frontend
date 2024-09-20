@@ -241,46 +241,46 @@ describe('Error Summary', () => {
     it('throws when initialised twice', async () => {
       await expect(
         render(page, 'error-summary', examples.default, {
-          async afterInitialisation($module) {
+          async afterInitialisation($root) {
             const { ErrorSummary } = await import('govuk-frontend')
-            new ErrorSummary($module)
+            new ErrorSummary($root)
           }
         })
       ).rejects.toMatchObject({
         name: 'InitError',
         message:
-          'Root element (`$module`) already initialised (`govuk-error-summary`)'
+          'Root element (`$root`) already initialised (`govuk-error-summary`)'
       })
     })
 
-    it('throws when $module is not set', async () => {
+    it('throws when $root is not set', async () => {
       await expect(
         render(page, 'error-summary', examples.default, {
-          beforeInitialisation($module) {
-            $module.remove()
+          beforeInitialisation($root) {
+            $root.remove()
           }
         })
       ).rejects.toMatchObject({
         cause: {
           name: 'ElementError',
-          message: 'Error summary: Root element (`$module`) not found'
+          message: 'Error summary: Root element (`$root`) not found'
         }
       })
     })
 
-    it('throws when receiving the wrong type for $module', async () => {
+    it('throws when receiving the wrong type for $root', async () => {
       await expect(
         render(page, 'error-summary', examples.default, {
-          beforeInitialisation($module) {
+          beforeInitialisation($root) {
             // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
-            $module.outerHTML = `<svg data-module="govuk-error-summary"></svg>`
+            $root.outerHTML = `<svg data-module="govuk-error-summary"></svg>`
           }
         })
       ).rejects.toMatchObject({
         cause: {
           name: 'ElementError',
           message:
-            'Error summary: Root element (`$module`) is not of type HTMLElement'
+            'Error summary: Root element (`$root`) is not of type HTMLElement'
         }
       })
     })

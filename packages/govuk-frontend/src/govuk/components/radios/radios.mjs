@@ -8,7 +8,7 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  */
 export class Radios extends GOVUKFrontendComponent {
   /** @private */
-  $module
+  $root
 
   /** @private */
   $inputs
@@ -25,20 +25,20 @@ export class Radios extends GOVUKFrontendComponent {
    * (for example if the user has navigated back), and set up event handlers to
    * keep the reveal in sync with the radio state.
    *
-   * @param {Element | null} $module - HTML element to use for radios
+   * @param {Element | null} $root - HTML element to use for radios
    */
-  constructor($module) {
-    super($module)
+  constructor($root) {
+    super($root)
 
-    if (!($module instanceof HTMLElement)) {
+    if (!($root instanceof HTMLElement)) {
       throw new ElementError({
         componentName: 'Radios',
-        element: $module,
-        identifier: 'Root element (`$module`)'
+        element: $root,
+        identifier: 'Root element (`$root`)'
       })
     }
 
-    const $inputs = $module.querySelectorAll('input[type="radio"]')
+    const $inputs = $root.querySelectorAll('input[type="radio"]')
     if (!$inputs.length) {
       throw new ElementError({
         componentName: 'Radios',
@@ -46,7 +46,7 @@ export class Radios extends GOVUKFrontendComponent {
       })
     }
 
-    this.$module = $module
+    this.$root = $root
     this.$inputs = $inputs
 
     this.$inputs.forEach(($input) => {
@@ -82,11 +82,11 @@ export class Radios extends GOVUKFrontendComponent {
     this.syncAllConditionalReveals()
 
     // Handle events
-    this.$module.addEventListener('click', (event) => this.handleClick(event))
+    this.$root.addEventListener('click', (event) => this.handleClick(event))
   }
 
   /**
-   * Sync the conditional reveal states for all radio buttons in this $module.
+   * Sync the conditional reveal states for all radio buttons in this component.
    *
    * @private
    */
@@ -126,10 +126,10 @@ export class Radios extends GOVUKFrontendComponent {
   /**
    * Click event handler
    *
-   * Handle a click within the $module – if the click occurred on a radio, sync
+   * Handle a click within the component root – if the click occurred on a radio, sync
    * the state of the conditional reveal for all radio buttons in the same form
    * with the same name (because checking one radio could have un-checked a
-   * radio in another $module)
+   * radio under the root of another Radio component)
    *
    * @private
    * @param {MouseEvent} event - Click event

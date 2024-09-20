@@ -132,46 +132,46 @@ describe('Skip Link', () => {
     it('throws when initialised twice', async () => {
       await expect(
         render(page, 'skip-link', examples.default, {
-          async afterInitialisation($module) {
+          async afterInitialisation($root) {
             const { SkipLink } = await import('govuk-frontend')
-            new SkipLink($module)
+            new SkipLink($root)
           }
         })
       ).rejects.toMatchObject({
         name: 'InitError',
         message:
-          'Root element (`$module`) already initialised (`govuk-skip-link`)'
+          'Root element (`$root`) already initialised (`govuk-skip-link`)'
       })
     })
 
-    it('throws when $module is not set', async () => {
+    it('throws when $root is not set', async () => {
       return expect(
         render(page, 'skip-link', examples.default, {
-          beforeInitialisation($module) {
-            $module.remove()
+          beforeInitialisation($root) {
+            $root.remove()
           }
         })
       ).rejects.toMatchObject({
         cause: {
           name: 'ElementError',
-          message: 'Skip link: Root element (`$module`) not found'
+          message: 'Skip link: Root element (`$root`) not found'
         }
       })
     })
 
-    it('throws when receiving the wrong type for $module', async () => {
+    it('throws when receiving the wrong type for $root', async () => {
       return expect(
         render(page, 'skip-link', examples.default, {
-          beforeInitialisation($module) {
+          beforeInitialisation($root) {
             // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
-            $module.outerHTML = `<svg data-module="govuk-skip-link"></svg>`
+            $root.outerHTML = `<svg data-module="govuk-skip-link"></svg>`
           }
         })
       ).rejects.toMatchObject({
         cause: {
           name: 'ElementError',
           message:
-            'Skip link: Root element (`$module`) is not of type HTMLAnchorElement'
+            'Skip link: Root element (`$root`) is not of type HTMLAnchorElement'
         }
       })
     })

@@ -10,7 +10,7 @@ First, make sure the component class has a constructor parameter for passing in 
 
 ```mjs
 export class Accordion {
-  constructor($module, config = {}) {
+  constructor($root, config = {}) {
     // ...
   }
 }
@@ -36,7 +36,7 @@ There is no guarantee `config` will have any value at all, so we set the default
 import { mergeConfigs } from '../../common/index.mjs'
 
 export class Accordion {
-  constructor($module, config = {}) {
+  constructor($root, config = {}) {
     this.config = mergeConfigs(
       Accordion.defaults,
       config
@@ -101,26 +101,26 @@ You can find `data-*` attributes in JavaScript by looking at an element's `datas
 
 See ['Naming configuration options'](#naming-configuration-options) for exceptions to how names are transformed.
 
-As we expect configuration-related `data-*` attributes to always be on the component's root element (the same element with the `data-module` attribute), we can access them all using `$module.dataset`.
+As we expect configuration-related `data-*` attributes to always be on the component's root element (the same element with the `data-module` attribute), we can access them all using `$root.dataset`.
 
-Using the `mergeConfigs` call discussed earlier in this document, update it to include `$module.dataset` as the highest priority.
+Using the `mergeConfigs` call discussed earlier in this document, update it to include `$root.dataset` as the highest priority.
 
 ```mjs
 import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 
 export class Accordion {
-  constructor($module, config = {}) {
+  constructor($root, config = {}) {
     this.config = mergeConfigs(
       Accordion.defaults,
       config,
-      normaliseDataset(Accordion, $module.dataset)
+      normaliseDataset(Accordion, $root.dataset)
     )
   }
 }
 ```
 
-Here, we pass the value of `$module.dataset` through our `normaliseDataset` function. This is because attribute values in dataset are always interpreted as strings. `normaliseDataset` looks at the component's configuration schema and converts values into numbers or booleans where needed.
+Here, we pass the value of `$root.dataset` through our `normaliseDataset` function. This is because attribute values in dataset are always interpreted as strings. `normaliseDataset` looks at the component's configuration schema and converts values into numbers or booleans where needed.
 
 Now, in our HTML, we could pass configuration options by using the kebab-case version of the option's name.
 
@@ -164,11 +164,11 @@ import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { ConfigError } from '../../errors/index.mjs'
 
 export class Accordion {
-  constructor($module, config = {}) {
+  constructor($root, config = {}) {
     this.config = mergeConfigs(
       Accordion.defaults,
       config,
-      normaliseDataset(Accordion, $module.dataset)
+      normaliseDataset(Accordion, $root.dataset)
     )
 
     // Check that the configuration provided is valid
@@ -248,11 +248,11 @@ import { mergeConfigs, extractConfigByNamespace } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 
 export class Accordion {
-  constructor($module, config = {}) {
+  constructor($root, config = {}) {
     this.config = mergeConfigs(
       Accordion.defaults,
       config,
-      normaliseDataset(Accordion, $module.dataset)
+      normaliseDataset(Accordion, $root.dataset)
     )
 
     this.stateInfo = extractConfigByNamespace(Accordion, this.config, 'stateInfo');

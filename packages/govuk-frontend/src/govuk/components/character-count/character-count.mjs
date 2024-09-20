@@ -19,7 +19,7 @@ import { I18n } from '../../i18n.mjs'
  */
 export class CharacterCount extends GOVUKFrontendComponent {
   /** @private */
-  $module
+  $root
 
   /** @private */
   $textarea
@@ -58,21 +58,21 @@ export class CharacterCount extends GOVUKFrontendComponent {
   maxLength
 
   /**
-   * @param {Element | null} $module - HTML element to use for character count
+   * @param {Element | null} $root - HTML element to use for character count
    * @param {CharacterCountConfig} [config] - Character count config
    */
-  constructor($module, config = {}) {
-    super($module)
+  constructor($root, config = {}) {
+    super($root)
 
-    if (!($module instanceof HTMLElement)) {
+    if (!($root instanceof HTMLElement)) {
       throw new ElementError({
         componentName: 'Character count',
-        element: $module,
-        identifier: 'Root element (`$module`)'
+        element: $root,
+        identifier: 'Root element (`$root`)'
       })
     }
 
-    const $textarea = $module.querySelector('.govuk-js-character-count')
+    const $textarea = $root.querySelector('.govuk-js-character-count')
     if (
       !(
         $textarea instanceof HTMLTextAreaElement ||
@@ -88,7 +88,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
     }
 
     // Read config set using dataset ('data-' values)
-    const datasetConfig = normaliseDataset(CharacterCount, $module.dataset)
+    const datasetConfig = normaliseDataset(CharacterCount, $root.dataset)
 
     // To ensure data-attributes take complete precedence, even if they change
     // the type of count, we need to reset the `maxlength` and `maxwords` from
@@ -120,13 +120,13 @@ export class CharacterCount extends GOVUKFrontendComponent {
 
     this.i18n = new I18n(this.config.i18n, {
       // Read the fallback if necessary rather than have it set in the defaults
-      locale: closestAttributeValue($module, 'lang')
+      locale: closestAttributeValue($root, 'lang')
     })
 
     // Determine the limit attribute (characters or words)
     this.maxLength = this.config.maxwords ?? this.config.maxlength ?? Infinity
 
-    this.$module = $module
+    this.$root = $root
     this.$textarea = $textarea
 
     const textareaDescriptionId = `${this.$textarea.id}-info`

@@ -325,44 +325,44 @@ describe('Radios', () => {
     it('throws when initialised twice', async () => {
       await expect(
         render(page, 'radios', examples.default, {
-          async afterInitialisation($module) {
+          async afterInitialisation($root) {
             const { Radios } = await import('govuk-frontend')
-            new Radios($module)
+            new Radios($root)
           }
         })
       ).rejects.toMatchObject({
         name: 'InitError',
-        message: 'Root element (`$module`) already initialised (`govuk-radios`)'
+        message: 'Root element (`$root`) already initialised (`govuk-radios`)'
       })
     })
 
-    it('throws when $module is not set', async () => {
+    it('throws when $root is not set', async () => {
       await expect(
         render(page, 'radios', examples.default, {
-          beforeInitialisation($module) {
-            $module.remove()
+          beforeInitialisation($root) {
+            $root.remove()
           }
         })
       ).rejects.toMatchObject({
         cause: {
           name: 'ElementError',
-          message: 'Radios: Root element (`$module`) not found'
+          message: 'Radios: Root element (`$root`) not found'
         }
       })
     })
 
-    it('throws when receiving the wrong type for $module', async () => {
+    it('throws when receiving the wrong type for $root', async () => {
       await expect(
         render(page, 'radios', examples.default, {
-          beforeInitialisation($module) {
+          beforeInitialisation($root) {
             // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
-            $module.outerHTML = `<svg data-module="govuk-radios"></svg>`
+            $root.outerHTML = `<svg data-module="govuk-radios"></svg>`
           }
         })
       ).rejects.toMatchObject({
         cause: {
           name: 'ElementError',
-          message: 'Radios: Root element (`$module`) is not of type HTMLElement'
+          message: 'Radios: Root element (`$root`) is not of type HTMLElement'
         }
       })
     })
@@ -370,8 +370,8 @@ describe('Radios', () => {
     it('throws when the input list is empty', async () => {
       await expect(
         render(page, 'radios', examples.default, {
-          beforeInitialisation($module, { selector }) {
-            $module.querySelectorAll(selector).forEach((item) => item.remove())
+          beforeInitialisation($root, { selector }) {
+            $root.querySelectorAll(selector).forEach((item) => item.remove())
           },
           context: {
             selector: '.govuk-radios__item'
@@ -388,8 +388,8 @@ describe('Radios', () => {
     it('throws when a conditional target element is not found', async () => {
       await expect(
         render(page, 'radios', examples['with conditional items'], {
-          beforeInitialisation($module) {
-            $module.querySelector('.govuk-radios__conditional').remove()
+          beforeInitialisation($root) {
+            $root.querySelector('.govuk-radios__conditional').remove()
           }
         })
       ).rejects.toMatchObject({

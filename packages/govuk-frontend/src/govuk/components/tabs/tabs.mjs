@@ -9,7 +9,7 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  */
 export class Tabs extends GOVUKFrontendComponent {
   /** @private */
-  $module
+  $root
 
   /** @private */
   $tabs
@@ -42,20 +42,20 @@ export class Tabs extends GOVUKFrontendComponent {
   mql = null
 
   /**
-   * @param {Element | null} $module - HTML element to use for tabs
+   * @param {Element | null} $root - HTML element to use for tabs
    */
-  constructor($module) {
-    super($module)
+  constructor($root) {
+    super($root)
 
-    if (!$module) {
+    if (!$root) {
       throw new ElementError({
         componentName: 'Tabs',
-        element: $module,
-        identifier: 'Root element (`$module`)'
+        element: $root,
+        identifier: 'Root element (`$root`)'
       })
     }
 
-    const $tabs = $module.querySelectorAll('a.govuk-tabs__tab')
+    const $tabs = $root.querySelectorAll('a.govuk-tabs__tab')
     if (!$tabs.length) {
       throw new ElementError({
         componentName: 'Tabs',
@@ -63,7 +63,7 @@ export class Tabs extends GOVUKFrontendComponent {
       })
     }
 
-    this.$module = $module
+    this.$root = $root
     this.$tabs = $tabs
 
     // Save bound functions so we can remove event listeners during teardown
@@ -71,8 +71,8 @@ export class Tabs extends GOVUKFrontendComponent {
     this.boundTabKeydown = this.onTabKeydown.bind(this)
     this.boundOnHashChange = this.onHashChange.bind(this)
 
-    const $tabList = this.$module.querySelector('.govuk-tabs__list')
-    const $tabListItems = this.$module.querySelectorAll(
+    const $tabList = this.$root.querySelector('.govuk-tabs__list')
+    const $tabListItems = this.$root.querySelectorAll(
       'li.govuk-tabs__list-item'
     )
 
@@ -258,7 +258,7 @@ export class Tabs extends GOVUKFrontendComponent {
    * @returns {HTMLAnchorElement | null} Tab link
    */
   getTab(hash) {
-    return this.$module.querySelector(`a.govuk-tabs__tab[href="${hash}"]`)
+    return this.$root.querySelector(`a.govuk-tabs__tab[href="${hash}"]`)
   }
 
   /**
@@ -455,7 +455,7 @@ export class Tabs extends GOVUKFrontendComponent {
       return null
     }
 
-    return this.$module.querySelector(`#${panelId}`)
+    return this.$root.querySelector(`#${panelId}`)
   }
 
   /**
@@ -527,7 +527,7 @@ export class Tabs extends GOVUKFrontendComponent {
    * @returns {HTMLAnchorElement | null} Tab link
    */
   getCurrentTab() {
-    return this.$module.querySelector(
+    return this.$root.querySelector(
       '.govuk-tabs__list-item--selected a.govuk-tabs__tab'
     )
   }

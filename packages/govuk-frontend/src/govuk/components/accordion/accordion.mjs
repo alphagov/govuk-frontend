@@ -20,7 +20,7 @@ import { I18n } from '../../i18n.mjs'
  */
 export class Accordion extends GOVUKFrontendComponent {
   /** @private */
-  $module
+  $root
 
   /**
    * @private
@@ -110,31 +110,31 @@ export class Accordion extends GOVUKFrontendComponent {
   $showAllText = null
 
   /**
-   * @param {Element | null} $module - HTML element to use for accordion
+   * @param {Element | null} $root - HTML element to use for accordion
    * @param {AccordionConfig} [config] - Accordion config
    */
-  constructor($module, config = {}) {
-    super($module)
+  constructor($root, config = {}) {
+    super($root)
 
-    if (!($module instanceof HTMLElement)) {
+    if (!($root instanceof HTMLElement)) {
       throw new ElementError({
         componentName: 'Accordion',
-        element: $module,
-        identifier: 'Root element (`$module`)'
+        element: $root,
+        identifier: 'Root element (`$root`)'
       })
     }
 
-    this.$module = $module
+    this.$root = $root
 
     this.config = mergeConfigs(
       Accordion.defaults,
       config,
-      normaliseDataset(Accordion, $module.dataset)
+      normaliseDataset(Accordion, $root.dataset)
     )
 
     this.i18n = new I18n(this.config.i18n)
 
-    const $sections = this.$module.querySelectorAll(`.${this.sectionClass}`)
+    const $sections = this.$root.querySelectorAll(`.${this.sectionClass}`)
     if (!$sections.length) {
       throw new ElementError({
         componentName: 'Accordion',
@@ -171,7 +171,7 @@ export class Accordion extends GOVUKFrontendComponent {
     const $accordionControls = document.createElement('div')
     $accordionControls.setAttribute('class', this.controlsClass)
     $accordionControls.appendChild(this.$showAllButton)
-    this.$module.insertBefore($accordionControls, this.$module.firstChild)
+    this.$root.insertBefore($accordionControls, this.$root.firstChild)
 
     // Build additional wrapper for Show all toggle text and place after icon
     this.$showAllText = document.createElement('span')
@@ -251,7 +251,7 @@ export class Accordion extends GOVUKFrontendComponent {
     $button.setAttribute('type', 'button')
     $button.setAttribute(
       'aria-controls',
-      `${this.$module.id}-content-${index + 1}`
+      `${this.$root.id}-content-${index + 1}`
     )
 
     // Copy all attributes from $span to $button (except `id`, which gets added
