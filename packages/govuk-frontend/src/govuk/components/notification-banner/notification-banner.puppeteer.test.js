@@ -241,9 +241,9 @@ describe('Notification banner', () => {
     it('throws when initialised twice', async () => {
       await expect(
         render(page, 'notification-banner', examples.default, {
-          async afterInitialisation($module) {
+          async afterInitialisation($root) {
             const { NotificationBanner } = await import('govuk-frontend')
-            new NotificationBanner($module)
+            new NotificationBanner($root)
           }
         })
       ).rejects.toMatchObject({
@@ -253,34 +253,34 @@ describe('Notification banner', () => {
       })
     })
 
-    it('throws when $module is not set', async () => {
+    it('throws when $root is not set', async () => {
       await expect(
         render(page, 'notification-banner', examples.default, {
-          beforeInitialisation($module) {
-            $module.remove()
+          beforeInitialisation($root) {
+            $root.remove()
           }
         })
       ).rejects.toMatchObject({
         cause: {
           name: 'ElementError',
-          message: 'Notification banner: Root element (`$module`) not found'
+          message: 'Notification banner: Root element (`$root`) not found'
         }
       })
     })
 
-    it('throws when receiving the wrong type for $module', async () => {
+    it('throws when receiving the wrong type for $root', async () => {
       await expect(
         render(page, 'notification-banner', examples.default, {
-          beforeInitialisation($module) {
+          beforeInitialisation($root) {
             // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
-            $module.outerHTML = `<svg data-module="govuk-notification-banner"></svg>`
+            $root.outerHTML = `<svg data-module="govuk-notification-banner"></svg>`
           }
         })
       ).rejects.toMatchObject({
         cause: {
           name: 'ElementError',
           message:
-            'Notification banner: Root element (`$module`) is not of type HTMLElement'
+            'Notification banner: Root element (`$root`) is not of type HTMLElement'
         }
       })
     })
