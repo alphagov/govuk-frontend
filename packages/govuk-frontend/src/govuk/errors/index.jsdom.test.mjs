@@ -72,7 +72,7 @@ describe('errors', () => {
 
     it('provides feedback for modules already initialised', () => {
       expect(new InitError($moduleName).message).toBe(
-        'Root element (`$module`) already initialised (`govuk-accordion`)'
+        'Root element (`$root`) already initialised (`govuk-accordion`)'
       )
     })
 

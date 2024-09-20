@@ -380,7 +380,7 @@ describe('Checkboxes', () => {
           ).rejects.toMatchObject({
             name: 'InitError',
             message:
-              'Root element (`$module`) already initialised (`govuk-checkboxes`)'
+              'Root element (`$root`) already initialised (`govuk-checkboxes`)'
           })
         })
 

@@ -725,7 +725,7 @@ describe('/components/accordion', () => {
           ).rejects.toMatchObject({
             name: 'InitError',
             message:
-              'Root element (`$module`) already initialised (`govuk-accordion`)'
+              'Root element (`$root`) already initialised (`govuk-accordion`)'
           })
         })
 

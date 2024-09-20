@@ -140,7 +140,7 @@ describe('Skip Link', () => {
       ).rejects.toMatchObject({
         name: 'InitError',
         message:
-          'Root element (`$module`) already initialised (`govuk-skip-link`)'
+          'Root element (`$root`) already initialised (`govuk-skip-link`)'
       })
     })
 

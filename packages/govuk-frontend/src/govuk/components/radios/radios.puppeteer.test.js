@@ -332,7 +332,7 @@ describe('Radios', () => {
         })
       ).rejects.toMatchObject({
         name: 'InitError',
-        message: 'Root element (`$module`) already initialised (`govuk-radios`)'
+        message: 'Root element (`$root`) already initialised (`govuk-radios`)'
       })
     })
 
