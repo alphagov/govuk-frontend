@@ -112,7 +112,7 @@ export class InitError extends GOVUKFrontendError {
     let errorText = `moduleName not defined in component (\`${className}\`)`
 
     if (typeof moduleName === 'string') {
-      errorText = `Root element (\`$module\`) already initialised (\`${moduleName}\`)`
+      errorText = `Root element (\`$root\`) already initialised (\`${moduleName}\`)`
     }
 
     super(errorText)
