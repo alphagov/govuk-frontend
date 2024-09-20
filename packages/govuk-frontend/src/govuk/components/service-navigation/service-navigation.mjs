@@ -9,7 +9,7 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  */
 export class ServiceNavigation extends GOVUKFrontendComponent {
   /** @private */
-  $module
+  $root
 
   /** @private */
   $menuButton
@@ -36,22 +36,22 @@ export class ServiceNavigation extends GOVUKFrontendComponent {
   mql = null
 
   /**
-   * @param {Element | null} $module - HTML element to use for header
+   * @param {Element | null} $root - HTML element to use for header
    */
-  constructor($module) {
+  constructor($root) {
     super()
 
-    if (!$module) {
+    if (!$root) {
       throw new ElementError({
         componentName: 'Service Navigation',
-        element: $module,
-        identifier: 'Root element (`$module`)'
+        element: $root,
+        identifier: 'Root element (`$root`)'
       })
     }
 
-    this.$module = $module
+    this.$root = $root
 
-    const $menuButton = $module.querySelector(
+    const $menuButton = $root.querySelector(
       '.govuk-js-service-navigation-toggle'
     )
 
