@@ -11,7 +11,7 @@ import { I18n } from '../../i18n.mjs'
  */
 export class ExitThisPage extends GOVUKFrontendComponent {
   /** @private */
-  $module
+  $root
 
   /**
    * @private
@@ -75,21 +75,21 @@ export class ExitThisPage extends GOVUKFrontendComponent {
   timeoutMessageId = null
 
   /**
-   * @param {Element | null} $module - HTML element that wraps the Exit This Page button
+   * @param {Element | null} $root - HTML element that wraps the Exit This Page button
    * @param {ExitThisPageConfig} [config] - Exit This Page config
    */
-  constructor($module, config = {}) {
-    super($module)
+  constructor($root, config = {}) {
+    super($root)
 
-    if (!($module instanceof HTMLElement)) {
+    if (!($root instanceof HTMLElement)) {
       throw new ElementError({
         componentName: 'Exit this page',
-        element: $module,
-        identifier: 'Root element (`$module`)'
+        element: $root,
+        identifier: 'Root element (`$root`)'
       })
     }
 
-    const $button = $module.querySelector('.govuk-exit-this-page__button')
+    const $button = $root.querySelector('.govuk-exit-this-page__button')
     if (!($button instanceof HTMLAnchorElement)) {
       throw new ElementError({
         componentName: 'Exit this page',
@@ -102,11 +102,11 @@ export class ExitThisPage extends GOVUKFrontendComponent {
     this.config = mergeConfigs(
       ExitThisPage.defaults,
       config,
-      normaliseDataset(ExitThisPage, $module.dataset)
+      normaliseDataset(ExitThisPage, $root.dataset)
     )
 
     this.i18n = new I18n(this.config.i18n)
-    this.$module = $module
+    this.$root = $root
     this.$button = $button
 
     const $skiplinkButton = document.querySelector(
@@ -142,7 +142,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
     this.$updateSpan.setAttribute('role', 'status')
     this.$updateSpan.className = 'govuk-visually-hidden'
 
-    this.$module.appendChild(this.$updateSpan)
+    this.$root.appendChild(this.$updateSpan)
   }
 
   /**
