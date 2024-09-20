@@ -20,20 +20,20 @@ component
  */
 export class Example {
   /**
-   * @param {Element | null} $module - HTML element to use for component
+   * @param {Element | null} $root - HTML element to use for component
    */
-  constructor($module) {
+  constructor($root) {
     if (
-      !($module instanceof HTMLElement) ||
+      !($root instanceof HTMLElement) ||
       !document.body.classList.contains('govuk-frontend-supported')
     ) {
       return this
     }
 
-    this.$module = $module
+    this.$root = $root
 
     // Code goes here
-    this.$module.addEventListener('click', () => {
+    this.$root.addEventListener('click', () => {
       // ...
     })
   }
