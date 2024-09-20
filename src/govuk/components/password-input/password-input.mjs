@@ -12,7 +12,7 @@ import { I18n } from '../../i18n.mjs'
  */
 export class PasswordInput extends GOVUKFrontendComponent {
   /** @private */
-  $module
+  $root
 
   /**
    * @private
@@ -39,21 +39,21 @@ export class PasswordInput extends GOVUKFrontendComponent {
   $screenReaderStatusMessage
 
   /**
-   * @param {Element | null} $module - HTML element to use for password input
+   * @param {Element | null} $root - HTML element to use for password input
    * @param {PasswordInputConfig} [config] - Password input config
    */
-  constructor($module, config = {}) {
+  constructor($root, config = {}) {
     super()
 
-    if (!($module instanceof HTMLElement)) {
+    if (!($root instanceof HTMLElement)) {
       throw new ElementError({
         componentName: 'Password input',
-        element: $module,
-        identifier: 'Root element (`$module`)'
+        element: $root,
+        identifier: 'Root element (`$root`)'
       })
     }
 
-    const $input = $module.querySelector('.govuk-js-password-input-input')
+    const $input = $root.querySelector('.govuk-js-password-input-input')
     if (!($input instanceof HTMLInputElement)) {
       throw new ElementError({
         componentName: 'Password input',
@@ -69,7 +69,7 @@ export class PasswordInput extends GOVUKFrontendComponent {
       )
     }
 
-    const $showHideButton = $module.querySelector(
+    const $showHideButton = $root.querySelector(
       '.govuk-js-password-input-toggle'
     )
     if (!($showHideButton instanceof HTMLButtonElement)) {
@@ -87,19 +87,19 @@ export class PasswordInput extends GOVUKFrontendComponent {
       )
     }
 
-    this.$module = $module
+    this.$root = $root
     this.$input = $input
     this.$showHideButton = $showHideButton
 
     this.config = mergeConfigs(
       PasswordInput.defaults,
       config,
-      normaliseDataset(PasswordInput, $module.dataset)
+      normaliseDataset(PasswordInput, $root.dataset)
     )
 
     this.i18n = new I18n(this.config.i18n, {
       // Read the fallback if necessary rather than have it set in the defaults
-      locale: closestAttributeValue($module, 'lang')
+      locale: closestAttributeValue($root, 'lang')
     })
 
     // Show the toggle button element
