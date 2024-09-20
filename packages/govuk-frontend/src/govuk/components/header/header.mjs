@@ -9,7 +9,7 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  */
 export class Header extends GOVUKFrontendComponent {
   /** @private */
-  $module
+  $root
 
   /** @private */
   $menuButton
@@ -40,21 +40,21 @@ export class Header extends GOVUKFrontendComponent {
    * Apply a matchMedia for desktop which will trigger a state sync if the
    * browser viewport moves between states.
    *
-   * @param {Element | null} $module - HTML element to use for header
+   * @param {Element | null} $root - HTML element to use for header
    */
-  constructor($module) {
-    super($module)
+  constructor($root) {
+    super($root)
 
-    if (!$module) {
+    if (!$root) {
       throw new ElementError({
         componentName: 'Header',
-        element: $module,
-        identifier: 'Root element (`$module`)'
+        element: $root,
+        identifier: 'Root element (`$root`)'
       })
     }
 
-    this.$module = $module
-    const $menuButton = $module.querySelector('.govuk-js-header-toggle')
+    this.$root = $root
+    const $menuButton = $root.querySelector('.govuk-js-header-toggle')
 
     // Headers don't necessarily have a navigation. When they don't, the menu
     // toggle won't be rendered by our macro (or may be omitted when writing
