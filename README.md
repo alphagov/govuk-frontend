@@ -82,3 +82,7 @@ The govuk-frontend repository is public and we welcome contributions from anyone
 Contributors to alphagov repositories are expected to follow the [Contributor Covenant Code of Conduct](https://github.com/alphagov/.github/blob/main/CODE_OF_CONDUCT.md#contributor-covenant-code-of-conduct). Contributors working within government are also expected to follow the [Civil Service code](https://www.gov.uk/government/publications/civil-service-code/the-civil-service-code).
 
 We're unable to monitor activity on this repository outside of our office hours (10am to 4pm, UK time). To get a faster response at other times, you can [report abuse or spam to GitHub](https://docs.github.com/en/communities/maintaining-your-safety-on-github/reporting-abuse-or-spam).
+
+### Contributors
+
+<img src="https://markupgo.com/github/alphagov/govuk-frontend/contributors?count=0&circleSize=40&circleRadius=40&center=true" width="100%" /> 
