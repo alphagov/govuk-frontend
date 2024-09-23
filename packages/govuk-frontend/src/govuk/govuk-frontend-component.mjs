@@ -56,19 +56,9 @@ export class GOVUKFrontendComponent {
    * @throws {SupportError} when the components are not supported
    */
   static checkSupport() {
-    if (!this.isSupported()) {
+    if (!isSupported()) {
       throw new SupportError()
     }
-  }
-
-  /**
-   * Defines whether the components are supported
-   *
-   * @protected
-   * @returns {boolean} whether the components are supported
-   */
-  static isSupported() {
-    return isSupported()
   }
 }
 
