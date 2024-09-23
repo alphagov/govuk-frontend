@@ -2,7 +2,7 @@ import { SupportError } from './errors/index.mjs'
 import { GOVUKFrontendComponent } from './govuk-frontend-component.mjs'
 
 describe('GOVUKFrontendComponent', () => {
-  describe('isSupported()', () => {
+  describe('checkSupport()', () => {
     beforeEach(() => {
       // Jest does not tidy the JSDOM document between tests
       // so we need to take care of that ourselves
@@ -30,13 +30,14 @@ describe('GOVUKFrontendComponent', () => {
         class ServiceComponent extends GOVUKFrontendComponent {
           static moduleName = 'app-service-component'
 
-          static isSupported() {
-            return true
+          static checkSupport() {
+            throw new Error('Custom error')
           }
         }
 
-        expect(() => new ServiceComponent(document.body)).not.toThrow(
-          SupportError
+        // Use the message rather than the class as `SupportError` extends `Error`
+        expect(() => new ServiceComponent(document.body)).toThrow(
+          'Custom error'
         )
       })
     })
