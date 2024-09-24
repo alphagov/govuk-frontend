@@ -20,6 +20,15 @@ You can safely delete the old image files, named `govuk-crest.png` and `govuk-cr
 
 We introduced this change in [pull request #5376: Update the Royal Arms graphic in footer (v5.x)](https://github.com/alphagov/govuk-frontend/pull/5376).
 
+#### Use our base component to build your own components
+
+We've added a `Component` class to help you build your own components. It allows you to focus on your components' specific features by handling these shared behaviours across components:
+
+- Checking that GOV.UK Frontend is supported
+- Checking that the component is not already initialised on its root element
+
+We introduced this change in [pull request #5350: Export a base `Component` class](https://github.com/alphagov/govuk-frontend/pull/5350).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
