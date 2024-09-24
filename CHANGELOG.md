@@ -4,6 +4,17 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### New features
+
+#### Use our base component to build your own components
+
+We've added a `Component` class to help you build your own components. It allows you to focus on your components' specific features by handling these shared behaviours across components:
+
+- Checking that GOV.UK Frontend is supported
+- Checking that the component is not already initialised on its root element
+
+We introduced this change in [pull request #5350: Export a base `Component` class](https://github.com/alphagov/govuk-frontend/pull/5350).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
