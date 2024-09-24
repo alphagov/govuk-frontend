@@ -3,6 +3,7 @@ import { Accordion } from './components/accordion/accordion.mjs'
 import { Button } from './components/button/button.mjs'
 import { CharacterCount } from './components/character-count/character-count.mjs'
 import { Checkboxes } from './components/checkboxes/checkboxes.mjs'
+import { Details } from './components/details/details.mjs'
 import { ErrorSummary } from './components/error-summary/error-summary.mjs'
 import { ExitThisPage } from './components/exit-this-page/exit-this-page.mjs'
 import { Header } from './components/header/header.mjs'
@@ -36,6 +37,7 @@ function initAll(config) {
     [Button, config.button],
     [CharacterCount, config.characterCount],
     [Checkboxes],
+    [Details],
     [ErrorSummary, config.errorSummary],
     [ExitThisPage, config.exitThisPage],
     [Header],
