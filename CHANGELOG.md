@@ -6,6 +6,17 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ### New features
 
+#### Respond to initialisation errors when using `createAll` and `initAll`
+
+We've added a new `onError` option for `createAll` and `initAll` that lets you respond to initialisation errors.
+The functions will continue catching errors and initialising components further down the page if one component fails to initialise,
+but this option will let you react to a component failing to initialise (for example, reporting to an error monitoring service).
+
+We introduced this change in:
+
+- [pull request #5252: Add `onError` to `createAll`](https://github.com/alphagov/govuk-frontend/pull/5252)
+- [pull request #5276: Add `onError` to `initAll`](https://github.com/alphagov/govuk-frontend/pull/5276)
+
 #### Check if GOV.UK Frontend is supported
 
 We've added the `isSupported` function to let you check if GOV.UK Frontend is supported in the browser where your script is running.
