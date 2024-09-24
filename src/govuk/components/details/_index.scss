@@ -10,7 +10,9 @@
   .govuk-details__summary {
     // Make the focus outline shrink-wrap the text content of the summary
     display: inline-block;
+  }
 
+  .govuk-details[open] .govuk-details__summary {
     margin-bottom: govuk-spacing(1);
   }
 
