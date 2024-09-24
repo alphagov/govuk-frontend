@@ -10,6 +10,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#5278: Fix service navigation mobile toggle spacing](https://github.com/alphagov/govuk-frontend/pull/5278)
 - [#5331: Fix Warning Text font weight when <strong> styles are reset](https://github.com/alphagov/govuk-frontend/pull/5331)
+- [#5352: Only apply margin to details summary when open](https://github.com/alphagov/govuk-frontend/pull/5352)
 
 ## v5.6.0 (Feature release)
 
