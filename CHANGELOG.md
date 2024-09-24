@@ -6,6 +6,13 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ### New features
 
+#### Components can no longer be initialised twice on the same element
+
+GOV.UK Frontend components now throw an error if they've already been initialised on the DOM Element they're receiving for initialisation.
+This prevents components from being initialised more than once and therefore not working properly.
+
+We introduced this change in [pull request #5272: Prevent multiple initialisations of a single component instance](https://github.com/alphagov/govuk-frontend/pull/5272)
+
 #### Respond to initialisation errors when using `createAll` and `initAll`
 
 We've added a new `onError` option for `createAll` and `initAll` that lets you respond to initialisation errors.
