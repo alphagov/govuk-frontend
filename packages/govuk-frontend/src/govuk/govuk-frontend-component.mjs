@@ -17,11 +17,15 @@ export class GOVUKFrontendComponent {
    * @param {Element | null} [$root] - HTML element to use for component
    */
   constructor($root) {
-    this.checkSupport()
+    const childConstructor = /** @type {ChildClassConstructor} */ (
+      this.constructor
+    )
+
+    childConstructor.checkSupport()
+
     this.checkInitialised($root)
 
-    const moduleName = /** @type {ChildClassConstructor} */ (this.constructor)
-      .moduleName
+    const moduleName = childConstructor.moduleName
 
     if (typeof moduleName === 'string') {
       moduleName && $root?.setAttribute(`data-${moduleName}-init`, '')
@@ -49,23 +53,12 @@ export class GOVUKFrontendComponent {
   /**
    * Validates whether components are supported
    *
-   * @private
    * @throws {SupportError} when the components are not supported
    */
-  checkSupport() {
-    if (!this.isSupported()) {
+  static checkSupport() {
+    if (!isSupported()) {
       throw new SupportError()
     }
-  }
-
-  /**
-   * Defines whether the components are supported
-   *
-   * @protected
-   * @returns {boolean} whether the components are supported
-   */
-  isSupported() {
-    return isSupported()
   }
 }
 
