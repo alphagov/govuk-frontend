@@ -20,6 +20,13 @@ You can safely delete the old image files, named `govuk-crest.png` and `govuk-cr
 
 We introduced this change in [pull request #5376: Update the Royal Arms graphic in footer (v5.x)](https://github.com/alphagov/govuk-frontend/pull/5376).
 
+#### Components can no longer be initialised twice on the same element
+
+GOV.UK Frontend components now throw an error if they've already been initialised on the DOM Element they're receiving for initialisation.
+This prevents components from being initialised more than once and therefore not working properly.
+
+We introduced this change in [pull request #5272: Prevent multiple initialisations of a single component instance](https://github.com/alphagov/govuk-frontend/pull/5272)
+
 #### Respond to initialisation errors when using `createAll` and `initAll`
 
 We've added a new `onError` option for `createAll` and `initAll` that lets you respond to initialisation errors.
