@@ -1,3 +1,5 @@
+import { Accordion } from 'govuk-frontend'
+
 import {
   ElementError,
   GOVUKFrontendError,
@@ -80,7 +82,7 @@ describe('errors', () => {
     it('is an instance of GOVUKFrontendError', () => {
       expect(
         new ElementError({
-          componentName: 'Component name',
+          component: Accordion,
           identifier: 'variableName'
         })
       ).toBeInstanceOf(GOVUKFrontendError)
@@ -88,7 +90,15 @@ describe('errors', () => {
     it('has its own name set', () => {
       expect(
         new ElementError({
-          componentName: 'Component name',
+          component: Accordion,
+          identifier: 'variableName'
+        }).name
+      ).toBe('ElementError')
+    })
+    it('has name set by Component', () => {
+      expect(
+        new ElementError({
+          component: Accordion,
           identifier: 'variableName'
         }).name
       ).toBe('ElementError')
@@ -101,22 +111,38 @@ describe('errors', () => {
     it('formats the message when the element is not found', () => {
       expect(
         new ElementError({
-          componentName: 'Component name',
+          component: Accordion,
           identifier: 'variableName'
         }).message
-      ).toBe('Component name: variableName not found')
+      ).toBe(`${Accordion.moduleName}: variableName not found`)
     })
     it('formats the message when the element is not the right type', () => {
       const $element = document.createElement('div')
 
       expect(
         new ElementError({
-          componentName: 'Component name',
+          component: Accordion,
           element: $element,
           expectedType: 'HTMLAnchorElement',
           identifier: 'variableName'
         }).message
-      ).toBe('Component name: variableName is not of type HTMLAnchorElement')
+      ).toBe(
+        `${Accordion.moduleName}: variableName is not of type HTMLAnchorElement`
+      )
+    })
+    it('formats the message when the element is not the right type and Component in config', () => {
+      const $element = document.createElement('div')
+
+      expect(
+        new ElementError({
+          component: Accordion,
+          element: $element,
+          expectedType: 'HTMLAnchorElement',
+          identifier: 'variableName'
+        }).message
+      ).toBe(
+        `${Accordion.moduleName}: variableName is not of type HTMLAnchorElement`
+      )
     })
   })
 })

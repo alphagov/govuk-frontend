@@ -739,7 +739,7 @@ describe('/components/accordion', () => {
           ).rejects.toMatchObject({
             cause: {
               name: 'ElementError',
-              message: 'Accordion: Root element (`$root`) not found'
+              message: 'govuk-accordion: Root element (`$root`) not found'
             }
           })
         })
@@ -756,7 +756,7 @@ describe('/components/accordion', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Accordion: Root element (`$root`) is not of type HTMLElement'
+                'govuk-accordion: Root element (`$root`) is not of type HTMLElement'
             }
           })
         })
@@ -777,7 +777,7 @@ describe('/components/accordion', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Accordion: Sections (`<div class="govuk-accordion__section">`) not found'
+                'govuk-accordion: Sections (`<div class="govuk-accordion__section">`) not found'
             }
           })
         })
@@ -798,7 +798,7 @@ describe('/components/accordion', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Accordion: Section headers (`<div class="govuk-accordion__section-header">`) not found'
+                'govuk-accordion: Section headers (`<div class="govuk-accordion__section-header">`) not found'
             }
           })
         })
@@ -817,7 +817,7 @@ describe('/components/accordion', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Accordion: Section heading (`.govuk-accordion__section-heading`) not found'
+                'govuk-accordion: Section heading (`.govuk-accordion__section-heading`) not found'
             }
           })
         })
@@ -836,7 +836,7 @@ describe('/components/accordion', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Accordion: Section button placeholder (`<span class="govuk-accordion__section-button">`) not found'
+                'govuk-accordion: Section button placeholder (`<span class="govuk-accordion__section-button">`) not found'
             }
           })
         })
@@ -855,7 +855,7 @@ describe('/components/accordion', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Accordion: Section content (`<div class="govuk-accordion__section-content">`) not found'
+                'govuk-accordion: Section content (`<div class="govuk-accordion__section-content">`) not found'
             }
           })
         })

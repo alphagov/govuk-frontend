@@ -47,7 +47,7 @@ export class Header extends GOVUKFrontendComponent {
 
     if (!$root) {
       throw new ElementError({
-        componentName: 'Header',
+        component: Header,
         element: $root,
         identifier: 'Root element (`$root`)'
       })
@@ -66,7 +66,7 @@ export class Header extends GOVUKFrontendComponent {
     const menuId = $menuButton.getAttribute('aria-controls')
     if (!menuId) {
       throw new ElementError({
-        componentName: 'Header',
+        component: Header,
         identifier:
           'Navigation button (`<button class="govuk-js-header-toggle">`) attribute (`aria-controls`)'
       })
@@ -75,7 +75,7 @@ export class Header extends GOVUKFrontendComponent {
     const $menu = document.getElementById(menuId)
     if (!$menu) {
       throw new ElementError({
-        componentName: 'Header',
+        component: Header,
         element: $menu,
         identifier: `Navigation (\`<ul id="${menuId}">\`)`
       })
@@ -101,7 +101,7 @@ export class Header extends GOVUKFrontendComponent {
 
     if (!breakpoint.value) {
       throw new ElementError({
-        componentName: 'Header',
+        component: Header,
         identifier: `CSS custom property (\`${breakpoint.property}\`) on pseudo-class \`:root\``
       })
     }

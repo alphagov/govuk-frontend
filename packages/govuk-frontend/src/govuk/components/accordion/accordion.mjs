@@ -118,7 +118,7 @@ export class Accordion extends GOVUKFrontendComponent {
 
     if (!($root instanceof HTMLElement)) {
       throw new ElementError({
-        componentName: 'Accordion',
+        component: Accordion,
         element: $root,
         identifier: 'Root element (`$root`)'
       })
@@ -137,7 +137,7 @@ export class Accordion extends GOVUKFrontendComponent {
     const $sections = this.$root.querySelectorAll(`.${this.sectionClass}`)
     if (!$sections.length) {
       throw new ElementError({
-        componentName: 'Accordion',
+        component: Accordion,
         identifier: `Sections (\`<div class="${this.sectionClass}">\`)`
       })
     }
@@ -201,7 +201,7 @@ export class Accordion extends GOVUKFrontendComponent {
       const $header = $section.querySelector(`.${this.sectionHeaderClass}`)
       if (!$header) {
         throw new ElementError({
-          componentName: 'Accordion',
+          component: Accordion,
           identifier: `Section headers (\`<div class="${this.sectionHeaderClass}">\`)`
         })
       }
@@ -233,14 +233,14 @@ export class Accordion extends GOVUKFrontendComponent {
 
     if (!$heading) {
       throw new ElementError({
-        componentName: 'Accordion',
+        component: Accordion,
         identifier: `Section heading (\`.${this.sectionHeadingClass}\`)`
       })
     }
 
     if (!$span) {
       throw new ElementError({
-        componentName: 'Accordion',
+        component: Accordion,
         identifier: `Section button placeholder (\`<span class="${this.sectionButtonClass}">\`)`
       })
     }
@@ -411,7 +411,7 @@ export class Accordion extends GOVUKFrontendComponent {
 
     if (!$content) {
       throw new ElementError({
-        componentName: 'Accordion',
+        component: Accordion,
         identifier: `Section content (\`<div class="${this.sectionContentClass}">\`)`
       })
     }

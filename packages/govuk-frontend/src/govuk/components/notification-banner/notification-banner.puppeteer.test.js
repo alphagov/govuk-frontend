@@ -263,7 +263,7 @@ describe('Notification banner', () => {
       ).rejects.toMatchObject({
         cause: {
           name: 'ElementError',
-          message: 'Notification banner: Root element (`$root`) not found'
+          message: 'govuk-notification-banner: Root element (`$root`) not found'
         }
       })
     })
@@ -280,7 +280,7 @@ describe('Notification banner', () => {
         cause: {
           name: 'ElementError',
           message:
-            'Notification banner: Root element (`$root`) is not of type HTMLElement'
+            'govuk-notification-banner: Root element (`$root`) is not of type HTMLElement'
         }
       })
     })
