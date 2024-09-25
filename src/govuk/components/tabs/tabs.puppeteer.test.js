@@ -295,7 +295,7 @@ describe('/components/tabs', () => {
         ).rejects.toMatchObject({
           cause: {
             name: 'ElementError',
-            message: 'Tabs: Root element (`$root`) not found'
+            message: 'govuk-tabs: Root element (`$root`) not found'
           }
         })
       })
@@ -313,7 +313,8 @@ describe('/components/tabs', () => {
         ).rejects.toMatchObject({
           cause: {
             name: 'ElementError',
-            message: 'Tabs: Links (`<a class="govuk-tabs__tab">`) not found'
+            message:
+              'govuk-tabs: Links (`<a class="govuk-tabs__tab">`) not found'
           }
         })
       })
@@ -333,7 +334,8 @@ describe('/components/tabs', () => {
         ).rejects.toMatchObject({
           cause: {
             name: 'ElementError',
-            message: 'Tabs: List (`<ul class="govuk-tabs__list">`) not found'
+            message:
+              'govuk-tabs: List (`<ul class="govuk-tabs__list">`) not found'
           }
         })
       })
@@ -355,7 +357,7 @@ describe('/components/tabs', () => {
           cause: {
             name: 'ElementError',
             message:
-              'Tabs: List items (`<li class="govuk-tabs__list-item">`) not found'
+              'govuk-tabs: List items (`<li class="govuk-tabs__list-item">`) not found'
           }
         })
       })

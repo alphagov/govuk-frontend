@@ -263,7 +263,7 @@ describe('Error Summary', () => {
       ).rejects.toMatchObject({
         cause: {
           name: 'ElementError',
-          message: 'Error summary: Root element (`$root`) not found'
+          message: 'govuk-error-summary: Root element (`$root`) not found'
         }
       })
     })
@@ -280,7 +280,7 @@ describe('Error Summary', () => {
         cause: {
           name: 'ElementError',
           message:
-            'Error summary: Root element (`$root`) is not of type HTMLElement'
+            'govuk-error-summary: Root element (`$root`) is not of type HTMLElement'
         }
       })
     })

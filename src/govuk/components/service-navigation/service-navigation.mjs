@@ -43,7 +43,7 @@ export class ServiceNavigation extends GOVUKFrontendComponent {
 
     if (!$root) {
       throw new ElementError({
-        componentName: 'Service Navigation',
+        component: ServiceNavigation,
         element: $root,
         identifier: 'Root element (`$root`)'
       })
@@ -65,7 +65,7 @@ export class ServiceNavigation extends GOVUKFrontendComponent {
     const menuId = $menuButton.getAttribute('aria-controls')
     if (!menuId) {
       throw new ElementError({
-        componentName: 'Service Navigation',
+        component: ServiceNavigation,
         identifier:
           'Navigation button (`<button class="govuk-js-service-navigation-toggle">`) attribute (`aria-controls`)'
       })
@@ -74,7 +74,7 @@ export class ServiceNavigation extends GOVUKFrontendComponent {
     const $menu = document.getElementById(menuId)
     if (!$menu) {
       throw new ElementError({
-        componentName: 'Service Navigation',
+        component: ServiceNavigation,
         element: $menu,
         identifier: `Navigation (\`<ul id="${menuId}">\`)`
       })
@@ -100,7 +100,7 @@ export class ServiceNavigation extends GOVUKFrontendComponent {
 
     if (!breakpoint.value) {
       throw new ElementError({
-        componentName: 'Service Navigation',
+        component: ServiceNavigation,
         identifier: `CSS custom property (\`${breakpoint.property}\`) on pseudo-class \`:root\``
       })
     }
