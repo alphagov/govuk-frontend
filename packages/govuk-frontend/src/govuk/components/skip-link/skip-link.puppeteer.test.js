@@ -154,7 +154,7 @@ describe('Skip Link', () => {
       ).rejects.toMatchObject({
         cause: {
           name: 'ElementError',
-          message: 'Skip link: Root element (`$root`) not found'
+          message: 'govuk-skip-link: Root element (`$root`) not found'
         }
       })
     })
@@ -171,7 +171,7 @@ describe('Skip Link', () => {
         cause: {
           name: 'ElementError',
           message:
-            'Skip link: Root element (`$root`) is not of type HTMLAnchorElement'
+            'govuk-skip-link: Root element (`$root`) is not of type HTMLAnchorElement'
         }
       })
     })
@@ -188,7 +188,7 @@ describe('Skip Link', () => {
         cause: {
           name: 'ElementError',
           message:
-            'Skip link: Target content (`id="this-element-does-not-exist"`) not found'
+            'govuk-skip-link: Target content (`id="this-element-does-not-exist"`) not found'
         }
       })
     })

@@ -394,7 +394,7 @@ describe('Checkboxes', () => {
           ).rejects.toMatchObject({
             cause: {
               name: 'ElementError',
-              message: 'Checkboxes: Root element (`$root`) not found'
+              message: 'govuk-checkboxes: Root element (`$root`) not found'
             }
           })
         })
@@ -411,7 +411,7 @@ describe('Checkboxes', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Checkboxes: Root element (`$root`) is not of type HTMLElement'
+                'govuk-checkboxes: Root element (`$root`) is not of type HTMLElement'
             }
           })
         })
@@ -432,7 +432,7 @@ describe('Checkboxes', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Checkboxes: Form inputs (`<input type="checkbox">`) not found'
+                'govuk-checkboxes: Form inputs (`<input type="checkbox">`) not found'
             }
           })
         })
@@ -451,7 +451,7 @@ describe('Checkboxes', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Checkboxes: Conditional reveal (`id="conditional-how-contacted"`) not found'
+                'govuk-checkboxes: Conditional reveal (`id="conditional-how-contacted"`) not found'
             }
           })
         })

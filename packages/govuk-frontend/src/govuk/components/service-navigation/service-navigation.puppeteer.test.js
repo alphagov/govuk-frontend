@@ -86,7 +86,8 @@ describe('/components/service-navigation', () => {
         ).rejects.toMatchObject({
           cause: {
             name: 'ElementError',
-            message: 'Service Navigation: Root element (`$root`) not found'
+            message:
+              'govuk-service-navigation: Root element (`$root`) not found'
           }
         })
       })
@@ -105,7 +106,7 @@ describe('/components/service-navigation', () => {
           cause: {
             name: 'ElementError',
             message:
-              'Service Navigation: Navigation button (`<button class="govuk-js-service-navigation-toggle">`) attribute (`aria-controls`) not found'
+              'govuk-service-navigation: Navigation button (`<button class="govuk-js-service-navigation-toggle">`) attribute (`aria-controls`) not found'
           }
         })
       })
@@ -125,7 +126,7 @@ describe('/components/service-navigation', () => {
           cause: {
             name: 'ElementError',
             message:
-              'Service Navigation: Navigation (`<ul id="navigation">`) not found'
+              'govuk-service-navigation: Navigation (`<ul id="navigation">`) not found'
           }
         })
       })

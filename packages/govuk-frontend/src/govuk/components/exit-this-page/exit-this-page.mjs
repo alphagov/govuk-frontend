@@ -83,7 +83,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
 
     if (!($root instanceof HTMLElement)) {
       throw new ElementError({
-        componentName: 'Exit this page',
+        component: ExitThisPage,
         element: $root,
         identifier: 'Root element (`$root`)'
       })
@@ -92,7 +92,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
     const $button = $root.querySelector('.govuk-exit-this-page__button')
     if (!($button instanceof HTMLAnchorElement)) {
       throw new ElementError({
-        componentName: 'Exit this page',
+        component: ExitThisPage,
         element: $button,
         expectedType: 'HTMLAnchorElement',
         identifier: 'Button (`.govuk-exit-this-page__button`)'
