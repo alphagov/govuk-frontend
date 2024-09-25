@@ -49,7 +49,7 @@ export class Tabs extends GOVUKFrontendComponent {
 
     if (!$root) {
       throw new ElementError({
-        componentName: 'Tabs',
+        component: Tabs,
         element: $root,
         identifier: 'Root element (`$root`)'
       })
@@ -58,7 +58,7 @@ export class Tabs extends GOVUKFrontendComponent {
     const $tabs = $root.querySelectorAll('a.govuk-tabs__tab')
     if (!$tabs.length) {
       throw new ElementError({
-        componentName: 'Tabs',
+        component: Tabs,
         identifier: 'Links (`<a class="govuk-tabs__tab">`)'
       })
     }
@@ -78,14 +78,14 @@ export class Tabs extends GOVUKFrontendComponent {
 
     if (!$tabList) {
       throw new ElementError({
-        componentName: 'Tabs',
+        component: Tabs,
         identifier: 'List (`<ul class="govuk-tabs__list">`)'
       })
     }
 
     if (!$tabListItems.length) {
       throw new ElementError({
-        componentName: 'Tabs',
+        component: Tabs,
         identifier: 'List items (`<li class="govuk-tabs__list-item">`)'
       })
     }
@@ -106,7 +106,7 @@ export class Tabs extends GOVUKFrontendComponent {
 
     if (!breakpoint.value) {
       throw new ElementError({
-        componentName: 'Tabs',
+        component: Tabs,
         identifier: `CSS custom property (\`${breakpoint.property}\`) on pseudo-class \`:root\``
       })
     }

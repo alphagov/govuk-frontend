@@ -47,7 +47,7 @@ export class PasswordInput extends GOVUKFrontendComponent {
 
     if (!($root instanceof HTMLElement)) {
       throw new ElementError({
-        componentName: 'Password input',
+        component: PasswordInput,
         element: $root,
         identifier: 'Root element (`$root`)'
       })
@@ -56,7 +56,7 @@ export class PasswordInput extends GOVUKFrontendComponent {
     const $input = $root.querySelector('.govuk-js-password-input-input')
     if (!($input instanceof HTMLInputElement)) {
       throw new ElementError({
-        componentName: 'Password input',
+        component: PasswordInput,
         element: $input,
         expectedType: 'HTMLInputElement',
         identifier: 'Form field (`.govuk-js-password-input-input`)'
@@ -74,7 +74,7 @@ export class PasswordInput extends GOVUKFrontendComponent {
     )
     if (!($showHideButton instanceof HTMLButtonElement)) {
       throw new ElementError({
-        componentName: 'Password input',
+        component: PasswordInput,
         element: $showHideButton,
         expectedType: 'HTMLButtonElement',
         identifier: 'Button (`.govuk-js-password-input-toggle`)'

@@ -355,7 +355,7 @@ describe('/components/button', () => {
         ).rejects.toMatchObject({
           cause: {
             name: 'ElementError',
-            message: 'Button: Root element (`$root`) not found'
+            message: 'govuk-button: Root element (`$root`) not found'
           }
         })
       })
@@ -371,7 +371,8 @@ describe('/components/button', () => {
         ).rejects.toMatchObject({
           cause: {
             name: 'ElementError',
-            message: 'Button: Root element (`$root`) is not of type HTMLElement'
+            message:
+              'govuk-button: Root element (`$root`) is not of type HTMLElement'
           }
         })
       })

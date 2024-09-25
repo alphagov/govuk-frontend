@@ -258,7 +258,7 @@ describe('/components/exit-this-page', () => {
         ).rejects.toMatchObject({
           cause: {
             name: 'ElementError',
-            message: 'Exit this page: Root element (`$root`) not found'
+            message: 'govuk-exit-this-page: Root element (`$root`) not found'
           }
         })
       })
@@ -275,7 +275,7 @@ describe('/components/exit-this-page', () => {
           cause: {
             name: 'ElementError',
             message:
-              'Exit this page: Root element (`$root`) is not of type HTMLElement'
+              'govuk-exit-this-page: Root element (`$root`) is not of type HTMLElement'
           }
         })
       })
@@ -294,7 +294,7 @@ describe('/components/exit-this-page', () => {
           cause: {
             name: 'ElementError',
             message:
-              'Exit this page: Button (`.govuk-exit-this-page__button`) not found'
+              'govuk-exit-this-page: Button (`.govuk-exit-this-page__button`) not found'
           }
         })
       })

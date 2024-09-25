@@ -212,7 +212,7 @@ describe('/components/password-input', () => {
           ).rejects.toMatchObject({
             cause: {
               name: 'ElementError',
-              message: 'Password input: Root element (`$root`) not found'
+              message: 'govuk-password-input: Root element (`$root`) not found'
             }
           })
         })
@@ -229,7 +229,7 @@ describe('/components/password-input', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Password input: Root element (`$root`) is not of type HTMLElement'
+                'govuk-password-input: Root element (`$root`) is not of type HTMLElement'
             }
           })
         })
@@ -248,7 +248,7 @@ describe('/components/password-input', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Password input: Form field (`.govuk-js-password-input-input`) not found'
+                'govuk-password-input: Form field (`.govuk-js-password-input-input`) not found'
             }
           })
         })
@@ -269,7 +269,7 @@ describe('/components/password-input', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Password input: Form field (`.govuk-js-password-input-input`) is not of type HTMLInputElement'
+                'govuk-password-input: Form field (`.govuk-js-password-input-input`) is not of type HTMLInputElement'
             }
           })
         })
@@ -308,7 +308,7 @@ describe('/components/password-input', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Password input: Button (`.govuk-js-password-input-toggle`) not found'
+                'govuk-password-input: Button (`.govuk-js-password-input-toggle`) not found'
             }
           })
         })
@@ -329,7 +329,7 @@ describe('/components/password-input', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Password input: Button (`.govuk-js-password-input-toggle`) is not of type HTMLButtonElement'
+                'govuk-password-input: Button (`.govuk-js-password-input-toggle`) is not of type HTMLButtonElement'
             }
           })
         })
