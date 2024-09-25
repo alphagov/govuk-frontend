@@ -346,7 +346,7 @@ describe('Radios', () => {
       ).rejects.toMatchObject({
         cause: {
           name: 'ElementError',
-          message: 'Radios: Root element (`$root`) not found'
+          message: 'govuk-radios: Root element (`$root`) not found'
         }
       })
     })
@@ -362,7 +362,8 @@ describe('Radios', () => {
       ).rejects.toMatchObject({
         cause: {
           name: 'ElementError',
-          message: 'Radios: Root element (`$root`) is not of type HTMLElement'
+          message:
+            'govuk-radios: Root element (`$root`) is not of type HTMLElement'
         }
       })
     })
@@ -380,7 +381,8 @@ describe('Radios', () => {
       ).rejects.toMatchObject({
         cause: {
           name: 'ElementError',
-          message: 'Radios: Form inputs (`<input type="radio">`) not found'
+          message:
+            'govuk-radios: Form inputs (`<input type="radio">`) not found'
         }
       })
     })
@@ -396,7 +398,7 @@ describe('Radios', () => {
         cause: {
           name: 'ElementError',
           message:
-            'Radios: Conditional reveal (`id="conditional-how-contacted"`) not found'
+            'govuk-radios: Conditional reveal (`id="conditional-how-contacted"`) not found'
         }
       })
     })

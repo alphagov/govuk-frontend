@@ -32,7 +32,7 @@ export class Radios extends GOVUKFrontendComponent {
 
     if (!($root instanceof HTMLElement)) {
       throw new ElementError({
-        componentName: 'Radios',
+        component: Radios,
         element: $root,
         identifier: 'Root element (`$root`)'
       })
@@ -41,7 +41,7 @@ export class Radios extends GOVUKFrontendComponent {
     const $inputs = $root.querySelectorAll('input[type="radio"]')
     if (!$inputs.length) {
       throw new ElementError({
-        componentName: 'Radios',
+        component: Radios,
         identifier: 'Form inputs (`<input type="radio">`)'
       })
     }
@@ -60,7 +60,7 @@ export class Radios extends GOVUKFrontendComponent {
       // Throw if target conditional element does not exist.
       if (!document.getElementById(targetId)) {
         throw new ElementError({
-          componentName: 'Radios',
+          component: Radios,
           identifier: `Conditional reveal (\`id="${targetId}"\`)`
         })
       }
