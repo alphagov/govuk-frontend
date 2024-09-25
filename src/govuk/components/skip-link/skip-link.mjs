@@ -22,7 +22,7 @@ export class SkipLink extends GOVUKFrontendComponent {
 
     if (!($root instanceof HTMLAnchorElement)) {
       throw new ElementError({
-        componentName: 'Skip link',
+        component: SkipLink,
         element: $root,
         expectedType: 'HTMLAnchorElement',
         identifier: 'Root element (`$root`)'
@@ -74,7 +74,7 @@ export class SkipLink extends GOVUKFrontendComponent {
     // Check for link target element
     if (!$linkedElement) {
       throw new ElementError({
-        componentName: 'Skip link',
+        component: SkipLink,
         element: $linkedElement,
         identifier: `Target content (\`id="${linkedElementId}"\`)`
       })

@@ -839,7 +839,7 @@ describe('Character count', () => {
         ).rejects.toMatchObject({
           cause: {
             name: 'ElementError',
-            message: 'Character count: Root element (`$root`) not found'
+            message: 'govuk-character-count: Root element (`$root`) not found'
           }
         })
       })
@@ -856,7 +856,7 @@ describe('Character count', () => {
           cause: {
             name: 'ElementError',
             message:
-              'Character count: Root element (`$root`) is not of type HTMLElement'
+              'govuk-character-count: Root element (`$root`) is not of type HTMLElement'
           }
         })
       })
@@ -875,7 +875,7 @@ describe('Character count', () => {
           cause: {
             name: 'ElementError',
             message:
-              'Character count: Form field (`.govuk-js-character-count`) not found'
+              'govuk-character-count: Form field (`.govuk-js-character-count`) not found'
           }
         })
       })
@@ -896,7 +896,7 @@ describe('Character count', () => {
           cause: {
             name: 'ElementError',
             message:
-              'Character count: Form field (`.govuk-js-character-count`) is not of type HTMLTextareaElement or HTMLInputElement'
+              'govuk-character-count: Form field (`.govuk-js-character-count`) is not of type HTMLTextareaElement or HTMLInputElement'
           }
         })
       })
@@ -915,7 +915,7 @@ describe('Character count', () => {
           cause: {
             name: 'ElementError',
             message:
-              'Character count: Count message (`id="more-detail-info"`) not found'
+              'govuk-character-count: Count message (`id="more-detail-info"`) not found'
           }
         })
       })

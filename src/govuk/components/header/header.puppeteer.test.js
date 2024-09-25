@@ -209,7 +209,7 @@ describe('Header navigation', () => {
         ).rejects.toMatchObject({
           cause: {
             name: 'ElementError',
-            message: 'Header: Root element (`$root`) not found'
+            message: 'govuk-header: Root element (`$root`) not found'
           }
         })
       })
@@ -228,7 +228,7 @@ describe('Header navigation', () => {
           cause: {
             name: 'ElementError',
             message:
-              'Header: Navigation button (`<button class="govuk-js-header-toggle">`) attribute (`aria-controls`) not found'
+              'govuk-header: Navigation button (`<button class="govuk-js-header-toggle">`) attribute (`aria-controls`) not found'
           }
         })
       })
@@ -247,7 +247,8 @@ describe('Header navigation', () => {
         ).rejects.toMatchObject({
           cause: {
             name: 'ElementError',
-            message: 'Header: Navigation (`<ul id="navigation">`) not found'
+            message:
+              'govuk-header: Navigation (`<ul id="navigation">`) not found'
           }
         })
       })
