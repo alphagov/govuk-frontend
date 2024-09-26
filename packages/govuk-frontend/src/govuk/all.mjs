@@ -14,6 +14,7 @@ export { SkipLink } from './components/skip-link/skip-link.mjs'
 export { Tabs } from './components/tabs/tabs.mjs'
 export { initAll, createAll } from './init.mjs'
 export { isSupported } from './common/index.mjs'
+export { GOVUKFrontendComponent as Component } from './govuk-frontend-component.mjs'
 
 /**
  * @typedef {import('./init.mjs').Config} Config
