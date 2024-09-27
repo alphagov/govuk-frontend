@@ -249,7 +249,7 @@ describe('Notification banner', () => {
       ).rejects.toMatchObject({
         name: 'InitError',
         message:
-          'Root element (`$root`) already initialised (`govuk-notification-banner`)'
+          'govuk-notification-banner: Root element (`$root`) already initialised'
       })
     })
 

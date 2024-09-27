@@ -244,7 +244,7 @@ describe('/components/exit-this-page', () => {
         ).rejects.toMatchObject({
           name: 'InitError',
           message:
-            'Root element (`$root`) already initialised (`govuk-exit-this-page`)'
+            'govuk-exit-this-page: Root element (`$root`) already initialised'
         })
       })
 
