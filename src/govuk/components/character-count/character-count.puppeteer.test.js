@@ -931,7 +931,7 @@ describe('Character count', () => {
           cause: {
             name: 'ConfigError',
             message:
-              'Character count: Either "maxlength" or "maxwords" must be provided'
+              'govuk-character-count: Either "maxlength" or "maxwords" must be provided'
           }
         })
       })
