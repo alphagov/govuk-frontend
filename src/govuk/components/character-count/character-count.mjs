@@ -1,5 +1,9 @@
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
-import { mergeConfigs, validateConfig } from '../../common/index.mjs'
+import {
+  formatErrorMessage,
+  mergeConfigs,
+  validateConfig
+} from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { ConfigError, ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
@@ -115,7 +119,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
     // Check for valid config
     const errors = validateConfig(CharacterCount.schema, this.config)
     if (errors[0]) {
-      throw new ConfigError(`Character count: ${errors[0]}`)
+      throw new ConfigError(formatErrorMessage(CharacterCount, errors[0]))
     }
 
     this.i18n = new I18n(this.config.i18n, {
