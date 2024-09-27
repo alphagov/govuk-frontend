@@ -20,17 +20,24 @@ export class GOVUKFrontendComponent {
       this.constructor
     )
 
+    // TypeScript does not enforce that inheriting classes will define a `moduleName`
+    // (even if we add a `@virtual` `static moduleName` property to this class).
+    // While we trust users to do this correctly, we do a little check to provide them
+    // a helpful error message.
+    //
+    // After this, we'll be sure that `childConstructor` has a `moduleName`
+    // as expected of the `ChildClassConstructor` we've cast `this.constructor` to.
+    if (typeof childConstructor.moduleName !== 'string') {
+      throw new InitError(childConstructor.moduleName)
+    }
+
     childConstructor.checkSupport()
 
     this.checkInitialised($root)
 
     const moduleName = childConstructor.moduleName
 
-    if (typeof moduleName === 'string') {
-      moduleName && $root?.setAttribute(`data-${moduleName}-init`, '')
-    } else {
-      throw new InitError(moduleName)
-    }
+    $root?.setAttribute(`data-${moduleName}-init`, '')
   }
 
   /**
@@ -63,7 +70,7 @@ export class GOVUKFrontendComponent {
 
 /**
  * @typedef ChildClass
- * @property {string} [moduleName] - The module name that'll be looked for in the DOM when initialising the component
+ * @property {string} moduleName - The module name that'll be looked for in the DOM when initialising the component
  */
 
 /**
