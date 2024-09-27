@@ -193,7 +193,7 @@ describe('Header navigation', () => {
           })
         ).rejects.toMatchObject({
           name: 'InitError',
-          message: 'Root element (`$root`) already initialised (`govuk-header`)'
+          message: 'govuk-header: Root element (`$root`) already initialised'
         })
       })
 

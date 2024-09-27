@@ -341,7 +341,7 @@ describe('/components/button', () => {
           })
         ).rejects.toMatchObject({
           name: 'InitError',
-          message: 'Root element (`$root`) already initialised (`govuk-button`)'
+          message: 'govuk-button: Root element (`$root`) already initialised'
         })
       })
 
