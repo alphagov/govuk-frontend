@@ -28,7 +28,7 @@ export class GOVUKFrontendComponent {
     // After this, we'll be sure that `childConstructor` has a `moduleName`
     // as expected of the `ChildClassConstructor` we've cast `this.constructor` to.
     if (typeof childConstructor.moduleName !== 'string') {
-      throw new InitError(childConstructor.moduleName)
+      throw new InitError(`\`moduleName\` not defined in component`)
     }
 
     childConstructor.checkSupport()
@@ -48,11 +48,11 @@ export class GOVUKFrontendComponent {
    * @throws {InitError} when component is already initialised
    */
   checkInitialised($root) {
-    const moduleName = /** @type {ChildClassConstructor} */ (this.constructor)
-      .moduleName
+    const constructor = /** @type {ChildClassConstructor} */ (this.constructor)
+    const moduleName = constructor.moduleName
 
     if ($root && moduleName && isInitialised($root, moduleName)) {
-      throw new InitError(moduleName)
+      throw new InitError(constructor)
     }
   }
 
