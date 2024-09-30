@@ -15,7 +15,7 @@
     position: absolute;
     left: 0;
 
-    min-width: 35px;
+    min-width: 40px;
     min-height: 35px;
     margin-top: -7px;
 
@@ -23,10 +23,10 @@
       margin-top: -5px;
     }
 
-    // When a user customises their colours the background colour will often be
-    // removed. Adding a border to the component keeps it's shape as a circle.
-    border: 3px solid $govuk-text-colour;
-    border-radius: 50%;
+    padding-top: 6px;
+
+    // Make it triangular
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
 
     color: $govuk-body-background-colour;
     background: $govuk-text-colour;
@@ -45,16 +45,15 @@
     forced-color-adjust: none;
 
     @media screen and (forced-colors: active) {
-      border-color: windowText;
-      color: windowText;
-      background: transparent;
+      color: Window;
+      background: WindowText;
     }
   }
 
   .govuk-warning-text__text {
     @include govuk-text-colour;
     display: block;
-    padding-left: 45px;
+    padding-left: 50px;
     // While `<strong>` is styled `bold` or `bolder` by user-agents
     // this can be reset by the app's stylesheet
     font-weight: inherit;
