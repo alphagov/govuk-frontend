@@ -9,9 +9,6 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  */
 export class Tabs extends GOVUKFrontendComponent {
   /** @private */
-  $root
-
-  /** @private */
   $tabs
 
   /** @private */
@@ -47,15 +44,7 @@ export class Tabs extends GOVUKFrontendComponent {
   constructor($root) {
     super($root)
 
-    if (!$root) {
-      throw new ElementError({
-        component: Tabs,
-        element: $root,
-        identifier: 'Root element (`$root`)'
-      })
-    }
-
-    const $tabs = $root.querySelectorAll('a.govuk-tabs__tab')
+    const $tabs = this.$root.querySelectorAll('a.govuk-tabs__tab')
     if (!$tabs.length) {
       throw new ElementError({
         component: Tabs,
@@ -63,7 +52,6 @@ export class Tabs extends GOVUKFrontendComponent {
       })
     }
 
-    this.$root = $root
     this.$tabs = $tabs
 
     // Save bound functions so we can remove event listeners during teardown

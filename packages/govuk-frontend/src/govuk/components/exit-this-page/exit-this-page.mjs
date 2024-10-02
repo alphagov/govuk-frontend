@@ -10,9 +10,6 @@ import { I18n } from '../../i18n.mjs'
  * @preserve
  */
 export class ExitThisPage extends GOVUKFrontendComponent {
-  /** @private */
-  $root
-
   /**
    * @private
    * @type {ExitThisPageConfig}
@@ -81,15 +78,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
   constructor($root, config = {}) {
     super($root)
 
-    if (!($root instanceof HTMLElement)) {
-      throw new ElementError({
-        component: ExitThisPage,
-        element: $root,
-        identifier: 'Root element (`$root`)'
-      })
-    }
-
-    const $button = $root.querySelector('.govuk-exit-this-page__button')
+    const $button = this.$root.querySelector('.govuk-exit-this-page__button')
     if (!($button instanceof HTMLAnchorElement)) {
       throw new ElementError({
         component: ExitThisPage,
@@ -102,11 +91,10 @@ export class ExitThisPage extends GOVUKFrontendComponent {
     this.config = mergeConfigs(
       ExitThisPage.defaults,
       config,
-      normaliseDataset(ExitThisPage, $root.dataset)
+      normaliseDataset(ExitThisPage, this.$root.dataset)
     )
 
     this.i18n = new I18n(this.config.i18n)
-    this.$root = $root
     this.$button = $button
 
     const $skiplinkButton = document.querySelector(
