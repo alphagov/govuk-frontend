@@ -6,10 +6,10 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  * Skip link component
  *
  * @preserve
+ * @augments GOVUKFrontendComponent<HTMLAnchorElement>
  */
 export class SkipLink extends GOVUKFrontendComponent {
-  /** @private */
-  $root
+  static elementType = HTMLAnchorElement
 
   /**
    * @param {Element | null} $root - HTML element to use for skip link
@@ -19,17 +19,6 @@ export class SkipLink extends GOVUKFrontendComponent {
    */
   constructor($root) {
     super($root)
-
-    if (!($root instanceof HTMLAnchorElement)) {
-      throw new ElementError({
-        component: SkipLink,
-        element: $root,
-        expectedType: 'HTMLAnchorElement',
-        identifier: 'Root element (`$root`)'
-      })
-    }
-
-    this.$root = $root
 
     const hash = this.$root.hash
     const href = this.$root.getAttribute('href') ?? ''

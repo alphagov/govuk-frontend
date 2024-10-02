@@ -8,9 +8,6 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  */
 export class Radios extends GOVUKFrontendComponent {
   /** @private */
-  $root
-
-  /** @private */
   $inputs
 
   /**
@@ -30,15 +27,7 @@ export class Radios extends GOVUKFrontendComponent {
   constructor($root) {
     super($root)
 
-    if (!($root instanceof HTMLElement)) {
-      throw new ElementError({
-        component: Radios,
-        element: $root,
-        identifier: 'Root element (`$root`)'
-      })
-    }
-
-    const $inputs = $root.querySelectorAll('input[type="radio"]')
+    const $inputs = this.$root.querySelectorAll('input[type="radio"]')
     if (!$inputs.length) {
       throw new ElementError({
         component: Radios,
@@ -46,7 +35,6 @@ export class Radios extends GOVUKFrontendComponent {
       })
     }
 
-    this.$root = $root
     this.$inputs = $inputs
 
     this.$inputs.forEach(($input) => {

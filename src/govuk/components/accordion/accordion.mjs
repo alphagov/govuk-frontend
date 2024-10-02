@@ -19,9 +19,6 @@ import { I18n } from '../../i18n.mjs'
  * @preserve
  */
 export class Accordion extends GOVUKFrontendComponent {
-  /** @private */
-  $root
-
   /**
    * @private
    * @type {AccordionConfig}
@@ -116,20 +113,10 @@ export class Accordion extends GOVUKFrontendComponent {
   constructor($root, config = {}) {
     super($root)
 
-    if (!($root instanceof HTMLElement)) {
-      throw new ElementError({
-        component: Accordion,
-        element: $root,
-        identifier: 'Root element (`$root`)'
-      })
-    }
-
-    this.$root = $root
-
     this.config = mergeConfigs(
       Accordion.defaults,
       config,
-      normaliseDataset(Accordion, $root.dataset)
+      normaliseDataset(Accordion, this.$root.dataset)
     )
 
     this.i18n = new I18n(this.config.i18n)

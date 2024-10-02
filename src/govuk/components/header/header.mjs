@@ -9,9 +9,6 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  */
 export class Header extends GOVUKFrontendComponent {
   /** @private */
-  $root
-
-  /** @private */
   $menuButton
 
   /** @private */
@@ -45,16 +42,7 @@ export class Header extends GOVUKFrontendComponent {
   constructor($root) {
     super($root)
 
-    if (!$root) {
-      throw new ElementError({
-        component: Header,
-        element: $root,
-        identifier: 'Root element (`$root`)'
-      })
-    }
-
-    this.$root = $root
-    const $menuButton = $root.querySelector('.govuk-js-header-toggle')
+    const $menuButton = this.$root.querySelector('.govuk-js-header-toggle')
 
     // Headers don't necessarily have a navigation. When they don't, the menu
     // toggle won't be rendered by our macro (or may be omitted when writing

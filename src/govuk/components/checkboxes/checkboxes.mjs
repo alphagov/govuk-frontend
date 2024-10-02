@@ -8,9 +8,6 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  */
 export class Checkboxes extends GOVUKFrontendComponent {
   /** @private */
-  $root
-
-  /** @private */
   $inputs
 
   /**
@@ -30,15 +27,7 @@ export class Checkboxes extends GOVUKFrontendComponent {
   constructor($root) {
     super($root)
 
-    if (!($root instanceof HTMLElement)) {
-      throw new ElementError({
-        component: Checkboxes,
-        element: $root,
-        identifier: 'Root element (`$root`)'
-      })
-    }
-
-    const $inputs = $root.querySelectorAll('input[type="checkbox"]')
+    const $inputs = this.$root.querySelectorAll('input[type="checkbox"]')
     if (!$inputs.length) {
       throw new ElementError({
         component: Checkboxes,
@@ -46,7 +35,6 @@ export class Checkboxes extends GOVUKFrontendComponent {
       })
     }
 
-    this.$root = $root
     this.$inputs = $inputs
 
     this.$inputs.forEach(($input) => {
