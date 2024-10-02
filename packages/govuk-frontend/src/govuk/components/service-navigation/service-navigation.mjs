@@ -6,11 +6,9 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  * Service Navigation component
  *
  * @preserve
+ * @augments GOVUKFrontendComponent<Element>
  */
 export class ServiceNavigation extends GOVUKFrontendComponent {
-  /** @private */
-  $root
-
   /** @private */
   $menuButton
 
@@ -39,7 +37,7 @@ export class ServiceNavigation extends GOVUKFrontendComponent {
    * @param {Element | null} $root - HTML element to use for header
    */
   constructor($root) {
-    super()
+    super($root)
 
     if (!$root) {
       throw new ElementError({

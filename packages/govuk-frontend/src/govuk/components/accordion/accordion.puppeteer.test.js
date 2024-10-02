@@ -719,7 +719,7 @@ describe('/components/accordion', () => {
             render(page, 'accordion', examples.default, {
               async afterInitialisation($root) {
                 const { Accordion } = await import('govuk-frontend')
-                new Accordion($root)
+                new Accordion(/** @type {HTMLElement} */ ($root))
               }
             })
           ).rejects.toMatchObject({

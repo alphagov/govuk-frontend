@@ -11,9 +11,6 @@ const DEBOUNCE_TIMEOUT_IN_SECONDS = 1
  * @preserve
  */
 export class Button extends GOVUKFrontendComponent {
-  /** @private */
-  $root
-
   /**
    * @private
    * @type {ButtonConfig}

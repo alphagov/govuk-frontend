@@ -16,9 +16,6 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  * @preserve
  */
 export class ErrorSummary extends GOVUKFrontendComponent {
-  /** @private */
-  $root
-
   /**
    * @private
    * @type {ErrorSummaryConfig}

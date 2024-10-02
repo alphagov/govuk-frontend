@@ -11,9 +11,6 @@ import { I18n } from '../../i18n.mjs'
  * @preserve
  */
 export class PasswordInput extends GOVUKFrontendComponent {
-  /** @private */
-  $root
-
   /**
    * @private
    * @type {PasswordInputConfig}
@@ -43,7 +40,7 @@ export class PasswordInput extends GOVUKFrontendComponent {
    * @param {PasswordInputConfig} [config] - Password input config
    */
   constructor($root, config = {}) {
-    super()
+    super($root)
 
     if (!($root instanceof HTMLElement)) {
       throw new ElementError({

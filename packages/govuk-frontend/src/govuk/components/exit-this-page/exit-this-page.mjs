@@ -10,9 +10,6 @@ import { I18n } from '../../i18n.mjs'
  * @preserve
  */
 export class ExitThisPage extends GOVUKFrontendComponent {
-  /** @private */
-  $root
-
   /**
    * @private
    * @type {ExitThisPageConfig}

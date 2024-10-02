@@ -6,11 +6,9 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  * Header component
  *
  * @preserve
+ * @augments GOVUKFrontendComponent<Element>
  */
 export class Header extends GOVUKFrontendComponent {
-  /** @private */
-  $root
-
   /** @private */
   $menuButton
 

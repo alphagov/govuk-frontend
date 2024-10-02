@@ -17,11 +17,9 @@ import { I18n } from '../../i18n.mjs'
  * attribute, which also provides accessibility.
  *
  * @preserve
+ * @augments GOVUKFrontendComponent
  */
 export class Accordion extends GOVUKFrontendComponent {
-  /** @private */
-  $root
-
   /**
    * @private
    * @type {AccordionConfig}
@@ -110,26 +108,16 @@ export class Accordion extends GOVUKFrontendComponent {
   $showAllText = null
 
   /**
-   * @param {Element | null} $root - HTML element to use for accordion
+   * @param {HTMLElement | null} $root - HTML element to use for accordion
    * @param {AccordionConfig} [config] - Accordion config
    */
   constructor($root, config = {}) {
     super($root)
 
-    if (!($root instanceof HTMLElement)) {
-      throw new ElementError({
-        component: Accordion,
-        element: $root,
-        identifier: 'Root element (`$root`)'
-      })
-    }
-
-    this.$root = $root
-
     this.config = mergeConfigs(
       Accordion.defaults,
       config,
-      normaliseDataset(Accordion, $root.dataset)
+      normaliseDataset(Accordion, this.$root.dataset)
     )
 
     this.i18n = new I18n(this.config.i18n)

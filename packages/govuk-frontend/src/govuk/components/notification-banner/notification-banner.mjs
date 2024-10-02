@@ -9,9 +9,6 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  * @preserve
  */
 export class NotificationBanner extends GOVUKFrontendComponent {
-  /** @private */
-  $root
-
   /**
    * @private
    * @type {NotificationBannerConfig}

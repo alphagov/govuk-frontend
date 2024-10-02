@@ -23,9 +23,6 @@ import { I18n } from '../../i18n.mjs'
  */
 export class CharacterCount extends GOVUKFrontendComponent {
   /** @private */
-  $root
-
-  /** @private */
   $textarea
 
   /** @private */
