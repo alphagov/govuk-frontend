@@ -4,7 +4,6 @@ import {
   setFocus
 } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
-import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
@@ -16,9 +15,6 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  * @preserve
  */
 export class ErrorSummary extends GOVUKFrontendComponent {
-  /** @private */
-  $root
-
   /**
    * @private
    * @type {ErrorSummaryConfig}
@@ -32,20 +28,10 @@ export class ErrorSummary extends GOVUKFrontendComponent {
   constructor($root, config = {}) {
     super($root)
 
-    if (!($root instanceof HTMLElement)) {
-      throw new ElementError({
-        component: ErrorSummary,
-        element: $root,
-        identifier: 'Root element (`$root`)'
-      })
-    }
-
-    this.$root = $root
-
     this.config = mergeConfigs(
       ErrorSummary.defaults,
       config,
-      normaliseDataset(ErrorSummary, $root.dataset)
+      normaliseDataset(ErrorSummary, this.$root.dataset)
     )
 
     /**

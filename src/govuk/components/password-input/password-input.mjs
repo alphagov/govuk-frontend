@@ -11,9 +11,6 @@ import { I18n } from '../../i18n.mjs'
  * @preserve
  */
 export class PasswordInput extends GOVUKFrontendComponent {
-  /** @private */
-  $root
-
   /**
    * @private
    * @type {PasswordInputConfig}
@@ -43,17 +40,9 @@ export class PasswordInput extends GOVUKFrontendComponent {
    * @param {PasswordInputConfig} [config] - Password input config
    */
   constructor($root, config = {}) {
-    super()
+    super($root)
 
-    if (!($root instanceof HTMLElement)) {
-      throw new ElementError({
-        component: PasswordInput,
-        element: $root,
-        identifier: 'Root element (`$root`)'
-      })
-    }
-
-    const $input = $root.querySelector('.govuk-js-password-input-input')
+    const $input = this.$root.querySelector('.govuk-js-password-input-input')
     if (!($input instanceof HTMLInputElement)) {
       throw new ElementError({
         component: PasswordInput,
@@ -69,7 +58,7 @@ export class PasswordInput extends GOVUKFrontendComponent {
       )
     }
 
-    const $showHideButton = $root.querySelector(
+    const $showHideButton = this.$root.querySelector(
       '.govuk-js-password-input-toggle'
     )
     if (!($showHideButton instanceof HTMLButtonElement)) {
@@ -87,19 +76,18 @@ export class PasswordInput extends GOVUKFrontendComponent {
       )
     }
 
-    this.$root = $root
     this.$input = $input
     this.$showHideButton = $showHideButton
 
     this.config = mergeConfigs(
       PasswordInput.defaults,
       config,
-      normaliseDataset(PasswordInput, $root.dataset)
+      normaliseDataset(PasswordInput, this.$root.dataset)
     )
 
     this.i18n = new I18n(this.config.i18n, {
       // Read the fallback if necessary rather than have it set in the defaults
-      locale: closestAttributeValue($root, 'lang')
+      locale: closestAttributeValue(this.$root, 'lang')
     })
 
     // Show the toggle button element

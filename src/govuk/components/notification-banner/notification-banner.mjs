@@ -1,6 +1,5 @@
 import { mergeConfigs, setFocus } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
-import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
@@ -9,9 +8,6 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  * @preserve
  */
 export class NotificationBanner extends GOVUKFrontendComponent {
-  /** @private */
-  $root
-
   /**
    * @private
    * @type {NotificationBannerConfig}
@@ -25,20 +21,10 @@ export class NotificationBanner extends GOVUKFrontendComponent {
   constructor($root, config = {}) {
     super($root)
 
-    if (!($root instanceof HTMLElement)) {
-      throw new ElementError({
-        component: NotificationBanner,
-        element: $root,
-        identifier: 'Root element (`$root`)'
-      })
-    }
-
-    this.$root = $root
-
     this.config = mergeConfigs(
       NotificationBanner.defaults,
       config,
-      normaliseDataset(NotificationBanner, $root.dataset)
+      normaliseDataset(NotificationBanner, this.$root.dataset)
     )
 
     /**
