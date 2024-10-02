@@ -23,9 +23,6 @@ import { I18n } from '../../i18n.mjs'
  */
 export class CharacterCount extends GOVUKFrontendComponent {
   /** @private */
-  $root
-
-  /** @private */
   $textarea
 
   /** @private */
@@ -68,15 +65,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
   constructor($root, config = {}) {
     super($root)
 
-    if (!($root instanceof HTMLElement)) {
-      throw new ElementError({
-        component: CharacterCount,
-        element: $root,
-        identifier: 'Root element (`$root`)'
-      })
-    }
-
-    const $textarea = $root.querySelector('.govuk-js-character-count')
+    const $textarea = this.$root.querySelector('.govuk-js-character-count')
     if (
       !(
         $textarea instanceof HTMLTextAreaElement ||
@@ -92,7 +81,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
     }
 
     // Read config set using dataset ('data-' values)
-    const datasetConfig = normaliseDataset(CharacterCount, $root.dataset)
+    const datasetConfig = normaliseDataset(CharacterCount, this.$root.dataset)
 
     // To ensure data-attributes take complete precedence, even if they change
     // the type of count, we need to reset the `maxlength` and `maxwords` from
@@ -124,13 +113,12 @@ export class CharacterCount extends GOVUKFrontendComponent {
 
     this.i18n = new I18n(this.config.i18n, {
       // Read the fallback if necessary rather than have it set in the defaults
-      locale: closestAttributeValue($root, 'lang')
+      locale: closestAttributeValue(this.$root, 'lang')
     })
 
     // Determine the limit attribute (characters or words)
     this.maxLength = this.config.maxwords ?? this.config.maxlength ?? Infinity
 
-    this.$root = $root
     this.$textarea = $textarea
 
     const textareaDescriptionId = `${this.$textarea.id}-info`
