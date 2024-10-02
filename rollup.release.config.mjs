@@ -2,16 +2,35 @@ import config from '@govuk-frontend/config'
 import { babel } from '@rollup/plugin-babel'
 import replace from '@rollup/plugin-replace'
 import terser from '@rollup/plugin-terser'
-import * as GOVUKFrontend from 'govuk-frontend/src/govuk/all.mjs'
 import { defineConfig } from 'rollup'
+
+// GOV.UK Frontend uses browser APIs at `import` time
+// because of static properties. These APIs are not available
+// in Node.js.
+// We mock them the time of the `import` so we can read
+// the name of GOV.UK Frontend's exports without errors
+async function getGOVUKFrontendExportsNames() {
+  try {
+    global.HTMLElement = /** @type {any} */ (function () {})
+    global.HTMLAnchorElement = /** @type {any} */ (function () {})
+    return Object.keys(await import('govuk-frontend/src/govuk/all.mjs'))
+  } finally {
+    delete global.HTMLElement
+    delete global.HTMLAnchorElement
+  }
+}
 
 /**
  * Rollup config for GitHub release
  *
  * ECMAScript (ES) module bundles for browser <script type="module">
  * or using `import` for modern browsers and Node.js scripts
+ *
+ * @param {import('rollup').RollupOptions} input
+ * @returns {Promise<import('rollup').RollupOptions|import('rollup').RollupOptions[]>} rollup config
  */
-export default defineConfig(({ i: input }) => ({
+
+export default defineConfig(async ({ i: input }) => ({
   input,
 
   /**
@@ -37,7 +56,7 @@ export default defineConfig(({ i: input }) => ({
           keep_fnames: true,
           // Ensure all top-level exports skip mangling, for example
           // non-function string constants like `export { version }`
-          reserved: Object.keys(GOVUKFrontend)
+          reserved: await getGOVUKFrontendExportsNames()
         },
 
         // Include sources content from source maps to inspect
