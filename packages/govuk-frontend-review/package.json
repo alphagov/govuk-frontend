@@ -50,7 +50,7 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "autoprefixer": "^10.4.20",
-    "browser-sync": "^3.0.2",
+    "browser-sync": "^3.0.3",
     "cssnano": "^7.0.6",
     "cssnano-preset-default": "^7.0.1",
     "gulp": "^5.0.0",
