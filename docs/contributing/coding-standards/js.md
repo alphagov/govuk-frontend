@@ -27,18 +27,6 @@ export class Example extends GOVUKFrontendComponent {
   constructor($root){
     super($root)
 
-    if (!($root instanceof HTMLElement)) {
-      if (!($root instanceof HTMLElement)) {
-        throw new ElementError({
-          componentName: 'Example',
-          element: $root,
-          identifier: 'Root element (`$root`)'
-        })
-      }
-    }
-
-    this.$root = $root
-
     // Code goes here
     this.$root.addEventListener('click', () => {
       // ...
