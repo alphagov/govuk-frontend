@@ -1,5 +1,5 @@
 import { isInitialised, isSupported } from './common/index.mjs'
-import { InitError, SupportError } from './errors/index.mjs'
+import { ElementError, InitError, SupportError } from './errors/index.mjs'
 
 /**
  * Base Component class
@@ -7,8 +7,20 @@ import { InitError, SupportError } from './errors/index.mjs'
  * Centralises the behaviours shared by our components
  *
  * @virtual
+ * @template {Element} [RootElementType=HTMLElement]
  */
 export class GOVUKFrontendComponent {
+  /**
+   * @type {typeof Element}
+   */
+  static elementType = HTMLElement
+
+  /**
+   * @protected
+   * @type {RootElementType}
+   */
+  $root
+
   /**
    * Constructs a new component, validating that GOV.UK Frontend is supported
    *
@@ -31,27 +43,37 @@ export class GOVUKFrontendComponent {
       throw new InitError(`\`moduleName\` not defined in component`)
     }
 
+    if (!($root instanceof childConstructor.elementType)) {
+      throw new ElementError({
+        element: $root,
+        component: childConstructor,
+        identifier: 'Root element (`$root`)',
+        expectedType: childConstructor.elementType.name
+      })
+    } else {
+      this.$root = /** @type {RootElementType} */ ($root)
+    }
+
     childConstructor.checkSupport()
 
-    this.checkInitialised($root)
+    this.checkInitialised()
 
     const moduleName = childConstructor.moduleName
 
-    $root?.setAttribute(`data-${moduleName}-init`, '')
+    this.$root.setAttribute(`data-${moduleName}-init`, '')
   }
 
   /**
    * Validates whether component is already initialised
    *
    * @private
-   * @param {Element | null} [$root] - HTML element to be checked
    * @throws {InitError} when component is already initialised
    */
-  checkInitialised($root) {
+  checkInitialised() {
     const constructor = /** @type {ChildClassConstructor} */ (this.constructor)
     const moduleName = constructor.moduleName
 
-    if ($root && moduleName && isInitialised($root, moduleName)) {
+    if (moduleName && isInitialised(this.$root, moduleName)) {
       throw new InitError(constructor)
     }
   }
