@@ -137,7 +137,7 @@ function createAll(Component, config, createAllOptions) {
           ? new Component($element, config)
           : new Component($element)
       } catch (error) {
-        if (onError && error instanceof Error) {
+        if (onError) {
           onError(error, {
             element: $element,
             component: Component,
@@ -212,7 +212,7 @@ export { initAll, createAll }
 /**
  * @template {CompatibleClass} T
  * @callback OnErrorCallback
- * @param {Error} error - Thrown error
+ * @param {unknown} error - Thrown error
  * @param {ErrorContext<T>} context - Object containing the element, component class and configuration
  */
 
