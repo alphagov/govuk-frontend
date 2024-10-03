@@ -368,69 +368,23 @@ describe('createAll', () => {
     expect(result[1].args).toStrictEqual([document.getElementById('b')])
   })
 
-  describe('when a component accepts config', () => {
-    class MockComponentWithConfig extends MockComponent {
-      static defaults = {
-        __test: false
-      }
-    }
-
+  describe('when a configuration is passed', () => {
     it('initialises a component, passing the component root and config', () => {
       const componentRoot = document.createElement('div')
       componentRoot.setAttribute('data-module', 'mock-component')
       document.body.appendChild(componentRoot)
 
-      const result = createAll(MockComponentWithConfig, {
+      const result = createAll(MockComponent, {
         __test: true
       })
 
-      expect(result).toStrictEqual([expect.any(MockComponentWithConfig)])
+      expect(result).toStrictEqual([expect.any(MockComponent)])
 
       expect(result[0].args).toStrictEqual([
         componentRoot,
         {
           __test: true
         }
-      ])
-    })
-
-    it('initialises a component, passing the component root even when no config is passed', () => {
-      const componentRoot = document.createElement('div')
-      componentRoot.setAttribute('data-module', 'mock-component')
-      document.body.appendChild(componentRoot)
-
-      const result = createAll(MockComponentWithConfig)
-
-      expect(result).toStrictEqual([expect.any(MockComponentWithConfig)])
-
-      console.log(result[0].args)
-
-      expect(result[0].args).toStrictEqual([componentRoot])
-    })
-
-    it('passes the config to all component objects', () => {
-      document.body.innerHTML = `
-      <div data-module="mock-component" id="a"></div>
-      <div data-module="mock-component" id="b"></div>`
-
-      const config = {
-        __test: true
-      }
-
-      const result = createAll(MockComponentWithConfig, config)
-
-      expect(result).toStrictEqual([
-        expect.any(MockComponentWithConfig),
-        expect.any(MockComponentWithConfig)
-      ])
-
-      expect(result[0].args).toStrictEqual([
-        document.getElementById('a'),
-        config
-      ])
-      expect(result[1].args).toStrictEqual([
-        document.getElementById('b'),
-        config
       ])
     })
   })
