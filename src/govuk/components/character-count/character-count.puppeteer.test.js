@@ -825,7 +825,7 @@ describe('Character count', () => {
         ).rejects.toMatchObject({
           name: 'InitError',
           message:
-            'Root element (`$root`) already initialised (`govuk-character-count`)'
+            'govuk-character-count: Root element (`$root`) already initialised'
         })
       })
 
@@ -931,7 +931,7 @@ describe('Character count', () => {
           cause: {
             name: 'ConfigError',
             message:
-              'Character count: Either "maxlength" or "maxwords" must be provided'
+              'govuk-character-count: Either "maxlength" or "maxwords" must be provided'
           }
         })
       })

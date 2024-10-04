@@ -107,17 +107,18 @@ export class InitError extends GOVUKFrontendError {
 
   /**
    * @internal
-   * @param {string|undefined} moduleName - name of the component module
-   * @param {string} [className] - name of the component module
+   * @param {ComponentWithModuleName | string} componentOrMessage - name of the component module
    */
-  constructor(moduleName, className) {
-    let errorText = `moduleName not defined in component (\`${className}\`)`
+  constructor(componentOrMessage) {
+    const message =
+      typeof componentOrMessage === 'string'
+        ? componentOrMessage
+        : formatErrorMessage(
+            componentOrMessage,
+            `Root element (\`$root\`) already initialised`
+          )
 
-    if (typeof moduleName === 'string') {
-      errorText = `Root element (\`$root\`) already initialised (\`${moduleName}\`)`
-    }
-
-    super(errorText)
+    super(message)
   }
 }
 
@@ -129,5 +130,9 @@ export class InitError extends GOVUKFrontendError {
  * @property {string} identifier - An identifier that'll let the user understand which element has an error. This is whatever makes the most sense
  * @property {Element | null} [element] - The element in error
  * @property {string} [expectedType] - The type that was expected for the identifier
- * @property {import('../common/index.mjs').ComponentWithModuleName} component - Component throwing the error
+ * @property {ComponentWithModuleName} component - Component throwing the error
+ */
+
+/**
+ * @typedef {import('../common/index.mjs').ComponentWithModuleName} ComponentWithModuleName
  */

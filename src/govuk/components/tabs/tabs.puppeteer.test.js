@@ -281,7 +281,7 @@ describe('/components/tabs', () => {
           })
         ).rejects.toMatchObject({
           name: 'InitError',
-          message: 'Root element (`$root`) already initialised (`govuk-tabs`)'
+          message: 'govuk-tabs: Root element (`$root`) already initialised'
         })
       })
 
