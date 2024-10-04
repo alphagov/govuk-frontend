@@ -74,6 +74,15 @@ export class FileUpload extends GOVUKFrontendComponent {
       locale: closestAttributeValue($input, 'lang')
     })
 
+    this.$label = document.querySelector(`[for="${$input.id}"]`)
+
+    if (!this.$label) {
+      throw new ElementError({
+        componentName: 'File upload',
+        identifier: 'No label'
+      })
+    }
+
     $input.addEventListener('change', this.onChange.bind(this))
     this.$input = $input
 
@@ -147,7 +156,9 @@ export class FileUpload extends GOVUKFrontendComponent {
    * When the button is clicked, emulate clicking the actual, hidden file input
    */
   onClick() {
-    this.$input.click()
+    if (this.$label instanceof HTMLElement) {
+      this.$label.click()
+    }
   }
 
   /**
