@@ -56,25 +56,21 @@ describe('errors', () => {
 
   describe('InitError', () => {
     it('is an instance of GOVUKFrontendError', () => {
-      expect(new InitError('govuk-accordion')).toBeInstanceOf(
-        GOVUKFrontendError
-      )
+      expect(new InitError(Accordion)).toBeInstanceOf(GOVUKFrontendError)
     })
 
     it('has its own name set', () => {
-      expect(new InitError('govuk-accordion').name).toBe('InitError')
+      expect(new InitError(Accordion).name).toBe('InitError')
     })
 
     it('provides feedback for modules already initialised', () => {
-      expect(new InitError('govuk-accordion').message).toBe(
-        'Root element (`$root`) already initialised (`govuk-accordion`)'
+      expect(new InitError(Accordion).message).toBe(
+        'govuk-accordion: Root element (`$root`) already initialised'
       )
     })
 
-    it('provides feedback when no module name is provided', () => {
-      expect(new InitError(undefined, 'Accordion').message).toBe(
-        'moduleName not defined in component (`Accordion`)'
-      )
+    it('allows a custom message to be provided', () => {
+      expect(new InitError('custom message').message).toBe('custom message')
     })
   })
 
