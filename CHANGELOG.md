@@ -4,6 +4,22 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### New features
+
+#### The Royal Arms has been updated
+
+The Royal Arms in the [GOV.UK footer](https://design-system.service.gov.uk/components/footer/) has been updated to reflect the version introduced by King Charles III.
+
+You should ensure that the new image is being copied to your service's image assets folder if it's not being used directly from the Frontend package. By default this folder is located at `/assets/images`.
+
+If you’re using Nunjucks, the asset path may have been changed by the `assetPath` global variable or `assetsPath` parameter on the header component.
+
+Copy the `govuk-crest.svg` file from `/dist/assets/images` into your assets folder.
+
+You can safely delete the old image files, named `govuk-crest.png` and `govuk-crest@2x.png`.
+
+We introduced this change in [pull request #5376: Update the Royal Arms graphic in footer (v5.x)](https://github.com/alphagov/govuk-frontend/pull/5376).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
