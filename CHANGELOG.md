@@ -6,6 +6,10 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ### New features
 
+#### New brand colours.
+
+We've added a brand colour for the Serious Fraud Office in [pull request #5389](https://github.com/alphagov/govuk-frontend/pull/5389).
+
 #### The Royal Arms has been updated
 
 The Royal Arms in the [GOV.UK footer](https://design-system.service.gov.uk/components/footer/) has been updated to reflect the version introduced by King Charles III.
