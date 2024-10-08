@@ -101,26 +101,29 @@ You can find `data-*` attributes in JavaScript by looking at an element's `datas
 
 See ['Naming configuration options'](#naming-configuration-options) for exceptions to how names are transformed.
 
-As we expect configuration-related `data-*` attributes to always be on the component's root element (the same element with the `data-module` attribute), we can access them all using `$root.dataset`.
+As we expect configuration-related `data-*` attributes to always be on the component's root element (the same element with the `data-module` attribute), we can access them all using `this.$root.dataset`.
 
-Using the `mergeConfigs` call discussed earlier in this document, update it to include `$root.dataset` as the highest priority.
+Using the `mergeConfigs` call discussed earlier in this document, update it to include `this.$root.dataset` as the highest priority after calling the constuctor of `GOVUKFrontendComponent` with `super()`.
 
 ```mjs
 import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
-export class Accordion {
+export class Accordion extends GOVUKFrontendComponent{
   constructor($root, config = {}) {
+    super($root)
+
     this.config = mergeConfigs(
       Accordion.defaults,
       config,
-      normaliseDataset(Accordion, $root.dataset)
+      normaliseDataset(Accordion, this.$root.dataset)
     )
   }
 }
 ```
 
-Here, we pass the value of `$root.dataset` through our `normaliseDataset` function. This is because attribute values in dataset are always interpreted as strings. `normaliseDataset` looks at the component's configuration schema and converts values into numbers or booleans where needed.
+Here, we pass the value of `this.$root.dataset` through our `normaliseDataset` function. This is because attribute values in dataset are always interpreted as strings. `normaliseDataset` looks at the component's configuration schema and converts values into numbers or booleans where needed.
 
 Now, in our HTML, we could pass configuration options by using the kebab-case version of the option's name.
 
@@ -162,19 +165,22 @@ If it doesn't, you can return a `ConfigError`.
 import { mergeConfigs, validateConfig } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { ConfigError } from '../../errors/index.mjs'
+import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
-export class Accordion {
+export class Accordion extends GOVUKFrontendComponent {
   constructor($root, config = {}) {
+    super($root)
+
     this.config = mergeConfigs(
       Accordion.defaults,
       config,
-      normaliseDataset(Accordion, $root.dataset)
+      normaliseDataset(Accordion, this.$root.dataset)
     )
 
     // Check that the configuration provided is valid
     const errors = validateConfig(Accordion.schema, this.config)
     if (errors[0]) {
-      throw new ConfigError(`Accordion: ${errors[0]}`)
+      throw new ConfigError(formatErrorMessage(CharacterCount, errors[0]))
     }
   }
 }
@@ -246,13 +252,16 @@ The `extractConfigByNamespace` JavaScript helper can be used to create an object
 ```mjs
 import { mergeConfigs, extractConfigByNamespace } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
-export class Accordion {
+export class Accordion extends GOVUKFrontendComponent {
   constructor($root, config = {}) {
+    super($root)
+
     this.config = mergeConfigs(
       Accordion.defaults,
       config,
-      normaliseDataset(Accordion, $root.dataset)
+      normaliseDataset(Accordion, this.$root.dataset)
     )
 
     this.stateInfo = extractConfigByNamespace(Accordion, this.config, 'stateInfo');
