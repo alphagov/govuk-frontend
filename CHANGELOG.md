@@ -28,6 +28,7 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 - [#5331: Fix Warning Text font weight when `<strong>` styles are reset](https://github.com/alphagov/govuk-frontend/pull/5331)
 - [#5352: Only apply margin to details summary when open](https://github.com/alphagov/govuk-frontend/pull/5352)
 - [#5089: Fix details expanded state not announced on iOS](https://github.com/alphagov/govuk-frontend/pull/5089)
+- [#5332: Improve how licence description wraps in the footer](https://github.com/alphagov/govuk-frontend/pull/5332)
 
 ## v5.6.0 (Feature release)
 
