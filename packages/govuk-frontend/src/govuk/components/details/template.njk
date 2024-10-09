@@ -1,6 +1,6 @@
 {% from "../../macros/attributes.njk" import govukAttributes -%}
 
-<details {%- if params.id %} id="{{ params.id }}"{% endif %} class="govuk-details {%- if params.classes %} {{ params.classes }}{% endif %}"
+<details {%- if params.id %} id="{{ params.id }}"{% endif %} data-module="govuk-details" class="govuk-details {%- if params.classes %} {{ params.classes }}{% endif %}"
   {{- govukAttributes(params.attributes) -}}
   {{- " open" if params.open }}>
   <summary class="govuk-details__summary">
