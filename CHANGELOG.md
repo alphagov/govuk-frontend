@@ -4,17 +4,17 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+## v5.7.0 (Feature release)
+
+To install this version with npm, run `npm install govuk-frontend@5.7.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
+
 ### New features
-
-#### New brand colours.
-
-We've added a brand colour for the Serious Fraud Office in [pull request #5389](https://github.com/alphagov/govuk-frontend/pull/5389).
 
 #### The Royal Arms has been updated
 
 The Royal Arms in the [GOV.UK footer](https://design-system.service.gov.uk/components/footer/) has been updated to reflect the version introduced by King Charles III.
 
-You should ensure that the new image is being copied to your service's image assets folder if it's not being used directly from the Frontend package. By default this folder is located at `/assets/images`.
+If your service does not use the image directly from the Frontend package, you should ensure the new image is being copied to your service’s image assets folder. By default this folder is located at `/assets/images`.
 
 If you’re using Nunjucks, the asset path may have been changed by the `assetPath` global variable or `assetsPath` parameter on the header component.
 
@@ -24,7 +24,7 @@ You can safely delete the old image files, named `govuk-crest.png` and `govuk-cr
 
 We introduced this change in [pull request #5376: Update the Royal Arms graphic in footer (v5.x)](https://github.com/alphagov/govuk-frontend/pull/5376).
 
-#### Components can no longer be initialised twice on the same element
+#### Components will not longer initialise twice on the same element
 
 GOV.UK Frontend components now throw an error if they've already been initialised on the DOM Element they're receiving for initialisation.
 This prevents components from being initialised more than once and therefore not working properly.
@@ -35,7 +35,7 @@ We introduced this change in [pull request #5272: Prevent multiple initialisatio
 
 We've added a new `onError` option for `createAll` and `initAll` that lets you respond to initialisation errors.
 The functions will continue catching errors and initialising components further down the page if one component fails to initialise,
-but this option will let you react to a component failing to initialise (for example, reporting to an error monitoring service).
+but this option will let you react to a component failing to initialise. For example, to allow reporting to an error monitoring service.
 
 We introduced this change in:
 
@@ -44,8 +44,8 @@ We introduced this change in:
 
 #### Check if GOV.UK Frontend is supported
 
-We've added the `isSupported` function to let you check if GOV.UK Frontend is supported in the browser where your script is running.
-GOV.UK Frontend components will check this automatically, but you may want to use the `isSupported` function to avoid running some code when GOV.UK Frontend is not supported.
+We've added the `isSupported` function to let you check if GOV.UK Frontend is supported in the browser running your script.
+GOV.UK Frontend components check this automatically, but you may want to use the `isSupported` function to avoid running some code when GOV.UK Frontend is not supported.
 
 We introduced this change in [pull request #5250: Add `isSupported` to `all.mjs`](https://github.com/alphagov/govuk-frontend/pull/5250)
 
@@ -53,10 +53,18 @@ We introduced this change in [pull request #5250: Add `isSupported` to `all.mjs`
 
 We've added a `Component` class to help you build your own components. It allows you to focus on your components' specific features by handling these shared behaviours across components:
 
-- Checking that GOV.UK Frontend is supported
-- Checking that the component is not already initialised on its root element
+- checking that GOV.UK Frontend is supported
+- checking that the component is not already initialised on its root element
+- checking the type of the root element and storing it for access within the component as `this.$root`
 
-We introduced this change in [pull request #5350: Export a base `Component` class](https://github.com/alphagov/govuk-frontend/pull/5350).
+We introduced this change in:
+
+- [pull request #5350: Export a base `Component` class](https://github.com/alphagov/govuk-frontend/pull/5350).
+- [pull request #5354: Refactor the root type check in `GOVUKFrontendComponent`](https://github.com/alphagov/govuk-frontend/pull/5354)
+
+#### New brand colour
+
+We've added a brand colour for the Serious Fraud Office in [pull request #5389](https://github.com/alphagov/govuk-frontend/pull/5389).
 
 ### Fixes
 
