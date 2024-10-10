@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/govuk/components/pagination/_pagination.scss"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,iBAAiB","file":"_pagination.scss","sourcesContent":["@import \"../../base\";\n@import \"./index\";\n"]}
