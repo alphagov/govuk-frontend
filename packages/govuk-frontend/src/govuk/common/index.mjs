@@ -189,13 +189,27 @@ export function setFocus($element, options = {}) {
 }
 
 /**
+ * Checks if component is already initialised
+ *
+ * @internal
+ * @param {Element} $root - HTML element to be checked
+ * @param {string} moduleName - name of component module
+ * @returns {boolean} Whether component is already initialised
+ */
+export function isInitialised($root, moduleName) {
+  return (
+    $root instanceof HTMLElement &&
+    $root.hasAttribute(`data-${moduleName}-init`)
+  )
+}
+
+/**
  * Checks if GOV.UK Frontend is supported on this page
  *
  * Some browsers will load and run our JavaScript but GOV.UK Frontend
  * won't be supported.
  *
- * @internal
- * @param {HTMLElement | null} [$scope] - HTML element `<body>` checked for browser support
+ * @param {HTMLElement | null} [$scope] - (internal) `<body>` HTML element checked for browser support
  * @returns {boolean} Whether GOV.UK Frontend is supported on this page
  */
 export function isSupported($scope = document.body) {
@@ -267,6 +281,18 @@ function isObject(option) {
 }
 
 /**
+ * Format error message
+ *
+ * @internal
+ * @param {ComponentWithModuleName} Component - Component that threw the error
+ * @param {string} message - Error message
+ * @returns {string} - Formatted error message
+ */
+export function formatErrorMessage(Component, message) {
+  return `${Component.moduleName}: ${message}`
+}
+
+/**
  * Schema for component config
  *
  * @typedef {object} Schema
@@ -294,3 +320,16 @@ function isObject(option) {
  * @typedef {keyof ObjectNested} NestedKey
  * @typedef {{ [key: string]: string | boolean | number | ObjectNested | undefined }} ObjectNested
  */
+
+/* eslint-disable jsdoc/valid-types --
+ * `{new(...args: any[] ): object}` is not recognised as valid
+ * https://github.com/gajus/eslint-plugin-jsdoc/issues/145#issuecomment-1308722878
+ * https://github.com/jsdoc-type-pratt-parser/jsdoc-type-pratt-parser/issues/131
+ **/
+
+/**
+ * @typedef ComponentWithModuleName
+ * @property {string} moduleName - Name of the component
+ */
+
+/* eslint-enable jsdoc/valid-types */

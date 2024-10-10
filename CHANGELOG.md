@@ -24,6 +24,40 @@ You can safely delete the old image files, named `govuk-crest.png` and `govuk-cr
 
 We introduced this change in [pull request #5376: Update the Royal Arms graphic in footer (v5.x)](https://github.com/alphagov/govuk-frontend/pull/5376).
 
+#### Components can no longer be initialised twice on the same element
+
+GOV.UK Frontend components now throw an error if they've already been initialised on the DOM Element they're receiving for initialisation.
+This prevents components from being initialised more than once and therefore not working properly.
+
+We introduced this change in [pull request #5272: Prevent multiple initialisations of a single component instance](https://github.com/alphagov/govuk-frontend/pull/5272)
+
+#### Respond to initialisation errors when using `createAll` and `initAll`
+
+We've added a new `onError` option for `createAll` and `initAll` that lets you respond to initialisation errors.
+The functions will continue catching errors and initialising components further down the page if one component fails to initialise,
+but this option will let you react to a component failing to initialise (for example, reporting to an error monitoring service).
+
+We introduced this change in:
+
+- [pull request #5252: Add `onError` to `createAll`](https://github.com/alphagov/govuk-frontend/pull/5252)
+- [pull request #5276: Add `onError` to `initAll`](https://github.com/alphagov/govuk-frontend/pull/5276)
+
+#### Check if GOV.UK Frontend is supported
+
+We've added the `isSupported` function to let you check if GOV.UK Frontend is supported in the browser where your script is running.
+GOV.UK Frontend components will check this automatically, but you may want to use the `isSupported` function to avoid running some code when GOV.UK Frontend is not supported.
+
+We introduced this change in [pull request #5250: Add `isSupported` to `all.mjs`](https://github.com/alphagov/govuk-frontend/pull/5250)
+
+#### Use our base component to build your own components
+
+We've added a `Component` class to help you build your own components. It allows you to focus on your components' specific features by handling these shared behaviours across components:
+
+- Checking that GOV.UK Frontend is supported
+- Checking that the component is not already initialised on its root element
+
+We introduced this change in [pull request #5350: Export a base `Component` class](https://github.com/alphagov/govuk-frontend/pull/5350).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:

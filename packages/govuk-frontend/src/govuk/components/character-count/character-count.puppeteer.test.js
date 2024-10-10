@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 const { setTimeout } = require('timers/promises')
 
 const { render } = require('@govuk-frontend/helpers/puppeteer')
@@ -812,34 +814,49 @@ describe('Character count', () => {
         })
       })
 
-      it('throws when $module is not set', async () => {
+      it('throws when initialised twice', async () => {
         await expect(
           render(page, 'character-count', examples.default, {
-            beforeInitialisation($module) {
-              $module.remove()
+            async afterInitialisation($root) {
+              const { CharacterCount } = await import('govuk-frontend')
+              new CharacterCount($root)
+            }
+          })
+        ).rejects.toMatchObject({
+          name: 'InitError',
+          message:
+            'govuk-character-count: Root element (`$root`) already initialised'
+        })
+      })
+
+      it('throws when $root is not set', async () => {
+        await expect(
+          render(page, 'character-count', examples.default, {
+            beforeInitialisation($root) {
+              $root.remove()
             }
           })
         ).rejects.toMatchObject({
           cause: {
             name: 'ElementError',
-            message: 'Character count: Root element (`$module`) not found'
+            message: 'govuk-character-count: Root element (`$root`) not found'
           }
         })
       })
 
-      it('throws when receiving the wrong type for $module', async () => {
+      it('throws when receiving the wrong type for $root', async () => {
         await expect(
           render(page, 'character-count', examples.default, {
-            beforeInitialisation($module) {
+            beforeInitialisation($root) {
               // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
-              $module.outerHTML = `<svg data-module="govuk-character-count"></svg>`
+              $root.outerHTML = `<svg data-module="govuk-character-count"></svg>`
             }
           })
         ).rejects.toMatchObject({
           cause: {
             name: 'ElementError',
             message:
-              'Character count: Root element (`$module`) is not of type HTMLElement'
+              'govuk-character-count: Root element (`$root`) is not of type HTMLElement'
           }
         })
       })
@@ -847,8 +864,8 @@ describe('Character count', () => {
       it('throws when the textarea is missing', async () => {
         await expect(
           render(page, 'character-count', examples.default, {
-            beforeInitialisation($module, { selector }) {
-              $module.querySelector(selector).remove()
+            beforeInitialisation($root, { selector }) {
+              $root.querySelector(selector).remove()
             },
             context: {
               selector: '.govuk-js-character-count'
@@ -858,7 +875,7 @@ describe('Character count', () => {
           cause: {
             name: 'ElementError',
             message:
-              'Character count: Form field (`.govuk-js-character-count`) not found'
+              'govuk-character-count: Form field (`.govuk-js-character-count`) not found'
           }
         })
       })
@@ -866,9 +883,9 @@ describe('Character count', () => {
       it('throws when the textarea is not the right type', async () => {
         await expect(
           render(page, 'character-count', examples.default, {
-            beforeInitialisation($module, { selector }) {
+            beforeInitialisation($root, { selector }) {
               // Replace with a tag that's neither an `<input>` or `<textarea>`
-              $module.querySelector(selector).outerHTML =
+              $root.querySelector(selector).outerHTML =
                 '<div class="govuk-js-character-count"></div>'
             },
             context: {
@@ -879,7 +896,7 @@ describe('Character count', () => {
           cause: {
             name: 'ElementError',
             message:
-              'Character count: Form field (`.govuk-js-character-count`) is not of type HTMLTextareaElement or HTMLInputElement'
+              'govuk-character-count: Form field (`.govuk-js-character-count`) is not of type HTMLTextareaElement or HTMLInputElement'
           }
         })
       })
@@ -887,8 +904,8 @@ describe('Character count', () => {
       it('throws when the textarea description is missing', async () => {
         await expect(
           render(page, 'character-count', examples.default, {
-            beforeInitialisation($module, { selector }) {
-              $module.querySelector(selector).remove()
+            beforeInitialisation($root, { selector }) {
+              $root.querySelector(selector).remove()
             },
             context: {
               selector: '#more-detail-info'
@@ -898,7 +915,7 @@ describe('Character count', () => {
           cause: {
             name: 'ElementError',
             message:
-              'Character count: Count message (`id="more-detail-info"`) not found'
+              'govuk-character-count: Count message (`id="more-detail-info"`) not found'
           }
         })
       })
@@ -914,7 +931,7 @@ describe('Character count', () => {
           cause: {
             name: 'ConfigError',
             message:
-              'Character count: Either "maxlength" or "maxwords" must be provided'
+              'govuk-character-count: Either "maxlength" or "maxwords" must be provided'
           }
         })
       })
@@ -932,14 +949,14 @@ describe('Character count', () => {
           // Override maxlength to 10
           maxlength: 10
         },
-        beforeInitialisation($module) {
+        beforeInitialisation($root) {
           // Set locale to Welsh, which expects translations for 'one', 'two',
           // 'few' 'many' and 'other' forms – with the default English strings
           // provided we only have translations for 'one' and 'other'.
           //
           // We want to make sure we handle this gracefully in case users have
           // an existing character count inside an incorrect locale.
-          $module.setAttribute('lang', 'cy')
+          $root.setAttribute('lang', 'cy')
         }
       })
 

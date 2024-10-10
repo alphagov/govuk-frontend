@@ -1,5 +1,9 @@
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
-import { mergeConfigs, validateConfig } from '../../common/index.mjs'
+import {
+  formatErrorMessage,
+  mergeConfigs,
+  validateConfig
+} from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { ConfigError, ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
@@ -18,9 +22,6 @@ import { I18n } from '../../i18n.mjs'
  * @preserve
  */
 export class CharacterCount extends GOVUKFrontendComponent {
-  /** @private */
-  $module
-
   /** @private */
   $textarea
 
@@ -58,21 +59,13 @@ export class CharacterCount extends GOVUKFrontendComponent {
   maxLength
 
   /**
-   * @param {Element | null} $module - HTML element to use for character count
+   * @param {Element | null} $root - HTML element to use for character count
    * @param {CharacterCountConfig} [config] - Character count config
    */
-  constructor($module, config = {}) {
-    super()
+  constructor($root, config = {}) {
+    super($root)
 
-    if (!($module instanceof HTMLElement)) {
-      throw new ElementError({
-        componentName: 'Character count',
-        element: $module,
-        identifier: 'Root element (`$module`)'
-      })
-    }
-
-    const $textarea = $module.querySelector('.govuk-js-character-count')
+    const $textarea = this.$root.querySelector('.govuk-js-character-count')
     if (
       !(
         $textarea instanceof HTMLTextAreaElement ||
@@ -80,7 +73,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
       )
     ) {
       throw new ElementError({
-        componentName: 'Character count',
+        component: CharacterCount,
         element: $textarea,
         expectedType: 'HTMLTextareaElement or HTMLInputElement',
         identifier: 'Form field (`.govuk-js-character-count`)'
@@ -88,7 +81,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
     }
 
     // Read config set using dataset ('data-' values)
-    const datasetConfig = normaliseDataset(CharacterCount, $module.dataset)
+    const datasetConfig = normaliseDataset(CharacterCount, this.$root.dataset)
 
     // To ensure data-attributes take complete precedence, even if they change
     // the type of count, we need to reset the `maxlength` and `maxwords` from
@@ -115,25 +108,24 @@ export class CharacterCount extends GOVUKFrontendComponent {
     // Check for valid config
     const errors = validateConfig(CharacterCount.schema, this.config)
     if (errors[0]) {
-      throw new ConfigError(`Character count: ${errors[0]}`)
+      throw new ConfigError(formatErrorMessage(CharacterCount, errors[0]))
     }
 
     this.i18n = new I18n(this.config.i18n, {
       // Read the fallback if necessary rather than have it set in the defaults
-      locale: closestAttributeValue($module, 'lang')
+      locale: closestAttributeValue(this.$root, 'lang')
     })
 
     // Determine the limit attribute (characters or words)
     this.maxLength = this.config.maxwords ?? this.config.maxlength ?? Infinity
 
-    this.$module = $module
     this.$textarea = $textarea
 
     const textareaDescriptionId = `${this.$textarea.id}-info`
     const $textareaDescription = document.getElementById(textareaDescriptionId)
     if (!$textareaDescription) {
       throw new ElementError({
-        componentName: 'Character count',
+        component: CharacterCount,
         element: $textareaDescription,
         identifier: `Count message (\`id="${textareaDescriptionId}"\`)`
       })

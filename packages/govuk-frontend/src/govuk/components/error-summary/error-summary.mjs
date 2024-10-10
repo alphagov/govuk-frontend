@@ -4,7 +4,6 @@ import {
   setFocus
 } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
-import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
@@ -16,9 +15,6 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  * @preserve
  */
 export class ErrorSummary extends GOVUKFrontendComponent {
-  /** @private */
-  $module
-
   /**
    * @private
    * @type {ErrorSummaryConfig}
@@ -26,36 +22,26 @@ export class ErrorSummary extends GOVUKFrontendComponent {
   config
 
   /**
-   * @param {Element | null} $module - HTML element to use for error summary
+   * @param {Element | null} $root - HTML element to use for error summary
    * @param {ErrorSummaryConfig} [config] - Error summary config
    */
-  constructor($module, config = {}) {
-    super()
-
-    if (!($module instanceof HTMLElement)) {
-      throw new ElementError({
-        componentName: 'Error summary',
-        element: $module,
-        identifier: 'Root element (`$module`)'
-      })
-    }
-
-    this.$module = $module
+  constructor($root, config = {}) {
+    super($root)
 
     this.config = mergeConfigs(
       ErrorSummary.defaults,
       config,
-      normaliseDataset(ErrorSummary, $module.dataset)
+      normaliseDataset(ErrorSummary, this.$root.dataset)
     )
 
     /**
      * Focus the error summary
      */
     if (!this.config.disableAutoFocus) {
-      setFocus(this.$module)
+      setFocus(this.$root)
     }
 
-    this.$module.addEventListener('click', (event) => this.handleClick(event))
+    this.$root.addEventListener('click', (event) => this.handleClick(event))
   }
 
   /**

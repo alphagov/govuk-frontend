@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 const { render } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 const { KnownDevices } = require('puppeteer')
@@ -269,17 +271,31 @@ describe('/components/tabs', () => {
         })
       })
 
-      it('throws when $module is not set', async () => {
+      it('throws when initialised twice', async () => {
         await expect(
           render(page, 'tabs', examples.default, {
-            beforeInitialisation($module) {
-              $module.remove()
+            async afterInitialisation($root) {
+              const { Tabs } = await import('govuk-frontend')
+              new Tabs($root)
+            }
+          })
+        ).rejects.toMatchObject({
+          name: 'InitError',
+          message: 'govuk-tabs: Root element (`$root`) already initialised'
+        })
+      })
+
+      it('throws when $root is not set', async () => {
+        await expect(
+          render(page, 'tabs', examples.default, {
+            beforeInitialisation($root) {
+              $root.remove()
             }
           })
         ).rejects.toMatchObject({
           cause: {
             name: 'ElementError',
-            message: 'Tabs: Root element (`$module`) not found'
+            message: 'govuk-tabs: Root element (`$root`) not found'
           }
         })
       })
@@ -287,10 +303,8 @@ describe('/components/tabs', () => {
       it('throws when there are no tabs', async () => {
         await expect(
           render(page, 'tabs', examples.default, {
-            beforeInitialisation($module, { selector }) {
-              $module
-                .querySelectorAll(selector)
-                .forEach((item) => item.remove())
+            beforeInitialisation($root, { selector }) {
+              $root.querySelectorAll(selector).forEach((item) => item.remove())
             },
             context: {
               selector: 'a.govuk-tabs__tab'
@@ -299,7 +313,8 @@ describe('/components/tabs', () => {
         ).rejects.toMatchObject({
           cause: {
             name: 'ElementError',
-            message: 'Tabs: Links (`<a class="govuk-tabs__tab">`) not found'
+            message:
+              'govuk-tabs: Links (`<a class="govuk-tabs__tab">`) not found'
           }
         })
       })
@@ -307,8 +322,8 @@ describe('/components/tabs', () => {
       it('throws when the tab list is missing', async () => {
         await expect(
           render(page, 'tabs', examples.default, {
-            beforeInitialisation($module, { selector }) {
-              $module
+            beforeInitialisation($root, { selector }) {
+              $root
                 .querySelector(selector)
                 .setAttribute('class', 'govuk-tabs__typo')
             },
@@ -319,7 +334,8 @@ describe('/components/tabs', () => {
         ).rejects.toMatchObject({
           cause: {
             name: 'ElementError',
-            message: 'Tabs: List (`<ul class="govuk-tabs__list">`) not found'
+            message:
+              'govuk-tabs: List (`<ul class="govuk-tabs__list">`) not found'
           }
         })
       })
@@ -327,8 +343,8 @@ describe('/components/tabs', () => {
       it('throws when there the tab list is empty', async () => {
         await expect(
           render(page, 'tabs', examples.default, {
-            beforeInitialisation($module, { selector, className }) {
-              $module
+            beforeInitialisation($root, { selector, className }) {
+              $root
                 .querySelectorAll(selector)
                 .forEach((item) => item.setAttribute('class', className))
             },
@@ -341,7 +357,7 @@ describe('/components/tabs', () => {
           cause: {
             name: 'ElementError',
             message:
-              'Tabs: List items (`<li class="govuk-tabs__list-item">`) not found'
+              'govuk-tabs: List items (`<li class="govuk-tabs__list-item">`) not found'
           }
         })
       })

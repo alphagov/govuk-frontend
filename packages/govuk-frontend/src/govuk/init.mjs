@@ -20,14 +20,20 @@ import { SupportError } from './errors/index.mjs'
  * Use the `data-module` attributes to find, instantiate and init all of the
  * components provided as part of GOV.UK Frontend.
  *
- * @param {Config & { scope?: Element }} [config] - Config for all components (with optional scope)
+ * @param {Config & { scope?: Element, onError?: OnErrorCallback<CompatibleClass> }} [config] - Config for all components (with optional scope)
  */
 function initAll(config) {
   config = typeof config !== 'undefined' ? config : {}
 
   // Skip initialisation when GOV.UK Frontend is not supported
   if (!isSupported()) {
-    console.log(new SupportError())
+    if (config.onError) {
+      config.onError(new SupportError(), {
+        config
+      })
+    } else {
+      console.log(new SupportError())
+    }
     return
   }
 
@@ -49,10 +55,15 @@ function initAll(config) {
 
   // Allow the user to initialise GOV.UK Frontend in only certain sections of the page
   // Defaults to the entire document if nothing is set.
-  const $scope = config.scope ?? document
+  // const $scope = config.scope ?? document
+
+  const options = {
+    scope: config.scope ?? document,
+    onError: config.onError
+  }
 
   components.forEach(([Component, config]) => {
-    createAll(Component, config, $scope)
+    createAll(Component, config, options)
   })
 }
 
@@ -67,14 +78,48 @@ function initAll(config) {
  *
  * @template {CompatibleClass} T
  * @param {T} Component - class of the component to create
- * @param {T["defaults"]} [config] - config for the component
- * @param {Element|Document} [$scope] - scope of the document to search within
+ * @param {T["defaults"]} [config] - Config supplied to component
+ * @param {OnErrorCallback<T> | Element | Document | CreateAllOptions<T> } [createAllOptions] - options for createAll including scope of the document to search within and callback function if error throw by component on init
  * @returns {Array<InstanceType<T>>} - array of instantiated components
  */
-function createAll(Component, config, $scope = document) {
+function createAll(Component, config, createAllOptions) {
+  let /** @type {Element | Document} */ $scope = document
+  let /** @type {OnErrorCallback<Component> | undefined} */ onError
+
+  if (typeof createAllOptions === 'object') {
+    createAllOptions = /** @type {CreateAllOptions<Component>} */ (
+      // eslint-disable-next-line no-self-assign
+      createAllOptions
+    )
+
+    $scope = createAllOptions.scope ?? $scope
+    onError = createAllOptions.onError
+  }
+
+  if (typeof createAllOptions === 'function') {
+    onError = createAllOptions
+  }
+
+  if (createAllOptions instanceof HTMLElement) {
+    $scope = createAllOptions
+  }
+
   const $elements = $scope.querySelectorAll(
     `[data-module="${Component.moduleName}"]`
   )
+
+  // Skip initialisation when GOV.UK Frontend is not supported
+  if (!isSupported()) {
+    if (onError) {
+      onError(new SupportError(), {
+        component: Component,
+        config
+      })
+    } else {
+      console.log(new SupportError())
+    }
+    return []
+  }
 
   /* eslint-disable-next-line @typescript-eslint/no-unsafe-return --
    * We can't define CompatibleClass as `{new(): CompatibleClass, moduleName: string}`,
@@ -88,11 +133,20 @@ function createAll(Component, config, $scope = document) {
       try {
         // Only pass config to components that accept it
         // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-        return 'defaults' in Component && typeof config !== 'undefined'
+        return typeof config !== 'undefined'
           ? new Component($element, config)
           : new Component($element)
       } catch (error) {
-        console.log(error)
+        if (onError) {
+          onError(error, {
+            element: $element,
+            component: Component,
+            config
+          })
+        } else {
+          console.log(error)
+        }
+
         return null
       }
     })
@@ -145,4 +199,26 @@ export { initAll, createAll }
  * Component config keys, e.g. `accordion` and `characterCount`
  *
  * @typedef {keyof Config} ConfigKey
+ */
+
+/**
+ * @template {CompatibleClass} T
+ * @typedef {object} ErrorContext
+ * @property {Element} [element] - Element used for component module initialisation
+ * @property {T} [component] - Class of component
+ * @property {T["defaults"]} config - Config supplied to component
+ */
+
+/**
+ * @template {CompatibleClass} T
+ * @callback OnErrorCallback
+ * @param {unknown} error - Thrown error
+ * @param {ErrorContext<T>} context - Object containing the element, component class and configuration
+ */
+
+/**
+ * @template {CompatibleClass} T
+ * @typedef {object} CreateAllOptions
+ * @property {Element | Document} [scope] - scope of the document to search within
+ * @property {OnErrorCallback<T>} [onError] - callback function if error throw by component on init
  */

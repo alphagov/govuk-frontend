@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 const { render } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 const { KnownDevices } = require('puppeteer')
@@ -181,19 +183,33 @@ describe('Header navigation', () => {
         })
       })
 
-      it('throws when $module is not set', async () => {
+      it('throws when initialised twice', async () => {
         await expect(
           render(page, 'header', examples.default, {
-            beforeInitialisation($module) {
+            async afterInitialisation($root) {
+              const { Header } = await import('govuk-frontend')
+              new Header($root)
+            }
+          })
+        ).rejects.toMatchObject({
+          name: 'InitError',
+          message: 'govuk-header: Root element (`$root`) already initialised'
+        })
+      })
+
+      it('throws when $root is not set', async () => {
+        await expect(
+          render(page, 'header', examples.default, {
+            beforeInitialisation($root) {
               // Remove the root of the components as a way
-              // for the constructor to receive the wrong type for `$module`
-              $module.remove()
+              // for the constructor to receive the wrong type for `$root`
+              $root.remove()
             }
           })
         ).rejects.toMatchObject({
           cause: {
             name: 'ElementError',
-            message: 'Header: Root element (`$module`) not found'
+            message: 'govuk-header: Root element (`$root`) not found'
           }
         })
       })
@@ -201,8 +217,8 @@ describe('Header navigation', () => {
       it("throws when the toggle's aria-control attribute is missing", async () => {
         await expect(
           render(page, 'header', examples['with navigation'], {
-            beforeInitialisation($module, { selector }) {
-              $module.querySelector(selector).removeAttribute('aria-controls')
+            beforeInitialisation($root, { selector }) {
+              $root.querySelector(selector).removeAttribute('aria-controls')
             },
             context: {
               selector: '.govuk-js-header-toggle'
@@ -212,7 +228,7 @@ describe('Header navigation', () => {
           cause: {
             name: 'ElementError',
             message:
-              'Header: Navigation button (`<button class="govuk-js-header-toggle">`) attribute (`aria-controls`) not found'
+              'govuk-header: Navigation button (`<button class="govuk-js-header-toggle">`) attribute (`aria-controls`) not found'
           }
         })
       })
@@ -220,9 +236,9 @@ describe('Header navigation', () => {
       it('throws when the menu is missing, but a toggle is present', async () => {
         await expect(
           render(page, 'header', examples['with navigation'], {
-            beforeInitialisation($module, { selector }) {
+            beforeInitialisation($root, { selector }) {
               // Remove the menu `<ul>` referenced by $menuButton's `aria-controls`
-              $module.querySelector(selector).remove()
+              $root.querySelector(selector).remove()
             },
             context: {
               selector: '#navigation'
@@ -231,7 +247,8 @@ describe('Header navigation', () => {
         ).rejects.toMatchObject({
           cause: {
             name: 'ElementError',
-            message: 'Header: Navigation (`<ul id="navigation">`) not found'
+            message:
+              'govuk-header: Navigation (`<ul id="navigation">`) not found'
           }
         })
       })

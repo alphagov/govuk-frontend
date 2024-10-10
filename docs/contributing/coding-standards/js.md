@@ -13,27 +13,22 @@ component
 ## Skeleton
 
 ```mjs
+import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
+
 /**
  * Component name
  *
  * @preserve
  */
-export class Example {
+export class Example extends GOVUKFrontendComponent {
   /**
-   * @param {Element | null} $module - HTML element to use for component
+   * @param {Element | null} $root - HTML element to use for component
    */
-  constructor($module) {
-    if (
-      !($module instanceof HTMLElement) ||
-      !document.body.classList.contains('govuk-frontend-supported')
-    ) {
-      return this
-    }
-
-    this.$module = $module
+  constructor($root){
+    super($root)
 
     // Code goes here
-    this.$module.addEventListener('click', () => {
+    this.$root.addEventListener('click', () => {
       // ...
     })
   }

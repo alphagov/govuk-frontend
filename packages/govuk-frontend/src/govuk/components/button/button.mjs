@@ -1,6 +1,5 @@
 import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
-import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 const DEBOUNCE_TIMEOUT_IN_SECONDS = 1
@@ -11,9 +10,6 @@ const DEBOUNCE_TIMEOUT_IN_SECONDS = 1
  * @preserve
  */
 export class Button extends GOVUKFrontendComponent {
-  /** @private */
-  $module
-
   /**
    * @private
    * @type {ButtonConfig}
@@ -27,32 +23,20 @@ export class Button extends GOVUKFrontendComponent {
   debounceFormSubmitTimer = null
 
   /**
-   * @param {Element | null} $module - HTML element to use for button
+   * @param {Element | null} $root - HTML element to use for button
    * @param {ButtonConfig} [config] - Button config
    */
-  constructor($module, config = {}) {
-    super()
-
-    if (!($module instanceof HTMLElement)) {
-      throw new ElementError({
-        componentName: 'Button',
-        element: $module,
-        identifier: 'Root element (`$module`)'
-      })
-    }
-
-    this.$module = $module
+  constructor($root, config = {}) {
+    super($root)
 
     this.config = mergeConfigs(
       Button.defaults,
       config,
-      normaliseDataset(Button, $module.dataset)
+      normaliseDataset(Button, this.$root.dataset)
     )
 
-    this.$module.addEventListener('keydown', (event) =>
-      this.handleKeyDown(event)
-    )
-    this.$module.addEventListener('click', (event) => this.debounce(event))
+    this.$root.addEventListener('keydown', (event) => this.handleKeyDown(event))
+    this.$root.addEventListener('click', (event) => this.debounce(event))
   }
 
   /**

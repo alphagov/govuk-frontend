@@ -1,4 +1,11 @@
-import { ElementError, GOVUKFrontendError, SupportError } from './index.mjs'
+import { Accordion } from 'govuk-frontend'
+
+import {
+  ElementError,
+  GOVUKFrontendError,
+  InitError,
+  SupportError
+} from './index.mjs'
 
 describe('errors', () => {
   describe('GOVUKFrontendError', () => {
@@ -47,11 +54,31 @@ describe('errors', () => {
     })
   })
 
+  describe('InitError', () => {
+    it('is an instance of GOVUKFrontendError', () => {
+      expect(new InitError(Accordion)).toBeInstanceOf(GOVUKFrontendError)
+    })
+
+    it('has its own name set', () => {
+      expect(new InitError(Accordion).name).toBe('InitError')
+    })
+
+    it('provides feedback for modules already initialised', () => {
+      expect(new InitError(Accordion).message).toBe(
+        'govuk-accordion: Root element (`$root`) already initialised'
+      )
+    })
+
+    it('allows a custom message to be provided', () => {
+      expect(new InitError('custom message').message).toBe('custom message')
+    })
+  })
+
   describe('ElementError', () => {
     it('is an instance of GOVUKFrontendError', () => {
       expect(
         new ElementError({
-          componentName: 'Component name',
+          component: Accordion,
           identifier: 'variableName'
         })
       ).toBeInstanceOf(GOVUKFrontendError)
@@ -59,7 +86,15 @@ describe('errors', () => {
     it('has its own name set', () => {
       expect(
         new ElementError({
-          componentName: 'Component name',
+          component: Accordion,
+          identifier: 'variableName'
+        }).name
+      ).toBe('ElementError')
+    })
+    it('has name set by Component', () => {
+      expect(
+        new ElementError({
+          component: Accordion,
           identifier: 'variableName'
         }).name
       ).toBe('ElementError')
@@ -72,22 +107,38 @@ describe('errors', () => {
     it('formats the message when the element is not found', () => {
       expect(
         new ElementError({
-          componentName: 'Component name',
+          component: Accordion,
           identifier: 'variableName'
         }).message
-      ).toBe('Component name: variableName not found')
+      ).toBe(`${Accordion.moduleName}: variableName not found`)
     })
     it('formats the message when the element is not the right type', () => {
       const $element = document.createElement('div')
 
       expect(
         new ElementError({
-          componentName: 'Component name',
+          component: Accordion,
           element: $element,
           expectedType: 'HTMLAnchorElement',
           identifier: 'variableName'
         }).message
-      ).toBe('Component name: variableName is not of type HTMLAnchorElement')
+      ).toBe(
+        `${Accordion.moduleName}: variableName is not of type HTMLAnchorElement`
+      )
+    })
+    it('formats the message when the element is not the right type and Component in config', () => {
+      const $element = document.createElement('div')
+
+      expect(
+        new ElementError({
+          component: Accordion,
+          element: $element,
+          expectedType: 'HTMLAnchorElement',
+          identifier: 'variableName'
+        }).message
+      ).toBe(
+        `${Accordion.moduleName}: variableName is not of type HTMLAnchorElement`
+      )
     })
   })
 })

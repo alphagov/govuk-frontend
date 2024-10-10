@@ -8,9 +8,6 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  */
 export class Checkboxes extends GOVUKFrontendComponent {
   /** @private */
-  $module
-
-  /** @private */
   $inputs
 
   /**
@@ -25,28 +22,19 @@ export class Checkboxes extends GOVUKFrontendComponent {
    * (for example if the user has navigated back), and set up event handlers to
    * keep the reveal in sync with the checkbox state.
    *
-   * @param {Element | null} $module - HTML element to use for checkboxes
+   * @param {Element | null} $root - HTML element to use for checkboxes
    */
-  constructor($module) {
-    super()
+  constructor($root) {
+    super($root)
 
-    if (!($module instanceof HTMLElement)) {
-      throw new ElementError({
-        componentName: 'Checkboxes',
-        element: $module,
-        identifier: 'Root element (`$module`)'
-      })
-    }
-
-    const $inputs = $module.querySelectorAll('input[type="checkbox"]')
+    const $inputs = this.$root.querySelectorAll('input[type="checkbox"]')
     if (!$inputs.length) {
       throw new ElementError({
-        componentName: 'Checkboxes',
+        component: Checkboxes,
         identifier: 'Form inputs (`<input type="checkbox">`)'
       })
     }
 
-    this.$module = $module
     this.$inputs = $inputs
 
     this.$inputs.forEach(($input) => {
@@ -60,7 +48,7 @@ export class Checkboxes extends GOVUKFrontendComponent {
       // Throw if target conditional element does not exist.
       if (!document.getElementById(targetId)) {
         throw new ElementError({
-          componentName: 'Checkboxes',
+          component: Checkboxes,
           identifier: `Conditional reveal (\`id="${targetId}"\`)`
         })
       }
@@ -82,11 +70,11 @@ export class Checkboxes extends GOVUKFrontendComponent {
     this.syncAllConditionalReveals()
 
     // Handle events
-    this.$module.addEventListener('click', (event) => this.handleClick(event))
+    this.$root.addEventListener('click', (event) => this.handleClick(event))
   }
 
   /**
-   * Sync the conditional reveal states for all checkboxes in this $module.
+   * Sync the conditional reveal states for all checkboxes in this component.
    *
    * @private
    */
@@ -174,7 +162,7 @@ export class Checkboxes extends GOVUKFrontendComponent {
   /**
    * Click event handler
    *
-   * Handle a click within the $module – if the click occurred on a checkbox,
+   * Handle a click within the component root – if the click occurred on a checkbox,
    * sync the state of any associated conditional reveal with the checkbox
    * state.
    *

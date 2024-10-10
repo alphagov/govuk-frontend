@@ -9,9 +9,6 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  */
 export class ServiceNavigation extends GOVUKFrontendComponent {
   /** @private */
-  $module
-
-  /** @private */
   $menuButton
 
   /** @private */
@@ -36,22 +33,12 @@ export class ServiceNavigation extends GOVUKFrontendComponent {
   mql = null
 
   /**
-   * @param {Element | null} $module - HTML element to use for header
+   * @param {Element | null} $root - HTML element to use for header
    */
-  constructor($module) {
-    super()
+  constructor($root) {
+    super($root)
 
-    if (!$module) {
-      throw new ElementError({
-        componentName: 'Service Navigation',
-        element: $module,
-        identifier: 'Root element (`$module`)'
-      })
-    }
-
-    this.$module = $module
-
-    const $menuButton = $module.querySelector(
+    const $menuButton = this.$root.querySelector(
       '.govuk-js-service-navigation-toggle'
     )
 
@@ -65,7 +52,7 @@ export class ServiceNavigation extends GOVUKFrontendComponent {
     const menuId = $menuButton.getAttribute('aria-controls')
     if (!menuId) {
       throw new ElementError({
-        componentName: 'Service Navigation',
+        component: ServiceNavigation,
         identifier:
           'Navigation button (`<button class="govuk-js-service-navigation-toggle">`) attribute (`aria-controls`)'
       })
@@ -74,7 +61,7 @@ export class ServiceNavigation extends GOVUKFrontendComponent {
     const $menu = document.getElementById(menuId)
     if (!$menu) {
       throw new ElementError({
-        componentName: 'Service Navigation',
+        component: ServiceNavigation,
         element: $menu,
         identifier: `Navigation (\`<ul id="${menuId}">\`)`
       })
@@ -100,7 +87,7 @@ export class ServiceNavigation extends GOVUKFrontendComponent {
 
     if (!breakpoint.value) {
       throw new ElementError({
-        componentName: 'Service Navigation',
+        component: ServiceNavigation,
         identifier: `CSS custom property (\`${breakpoint.property}\`) on pseudo-class \`:root\``
       })
     }

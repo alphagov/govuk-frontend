@@ -19,9 +19,6 @@ import { I18n } from '../../i18n.mjs'
  * @preserve
  */
 export class Accordion extends GOVUKFrontendComponent {
-  /** @private */
-  $module
-
   /**
    * @private
    * @type {AccordionConfig}
@@ -110,34 +107,24 @@ export class Accordion extends GOVUKFrontendComponent {
   $showAllText = null
 
   /**
-   * @param {Element | null} $module - HTML element to use for accordion
+   * @param {Element | null} $root - HTML element to use for accordion
    * @param {AccordionConfig} [config] - Accordion config
    */
-  constructor($module, config = {}) {
-    super()
-
-    if (!($module instanceof HTMLElement)) {
-      throw new ElementError({
-        componentName: 'Accordion',
-        element: $module,
-        identifier: 'Root element (`$module`)'
-      })
-    }
-
-    this.$module = $module
+  constructor($root, config = {}) {
+    super($root)
 
     this.config = mergeConfigs(
       Accordion.defaults,
       config,
-      normaliseDataset(Accordion, $module.dataset)
+      normaliseDataset(Accordion, this.$root.dataset)
     )
 
     this.i18n = new I18n(this.config.i18n)
 
-    const $sections = this.$module.querySelectorAll(`.${this.sectionClass}`)
+    const $sections = this.$root.querySelectorAll(`.${this.sectionClass}`)
     if (!$sections.length) {
       throw new ElementError({
-        componentName: 'Accordion',
+        component: Accordion,
         identifier: `Sections (\`<div class="${this.sectionClass}">\`)`
       })
     }
@@ -171,7 +158,7 @@ export class Accordion extends GOVUKFrontendComponent {
     const $accordionControls = document.createElement('div')
     $accordionControls.setAttribute('class', this.controlsClass)
     $accordionControls.appendChild(this.$showAllButton)
-    this.$module.insertBefore($accordionControls, this.$module.firstChild)
+    this.$root.insertBefore($accordionControls, this.$root.firstChild)
 
     // Build additional wrapper for Show all toggle text and place after icon
     this.$showAllText = document.createElement('span')
@@ -201,7 +188,7 @@ export class Accordion extends GOVUKFrontendComponent {
       const $header = $section.querySelector(`.${this.sectionHeaderClass}`)
       if (!$header) {
         throw new ElementError({
-          componentName: 'Accordion',
+          component: Accordion,
           identifier: `Section headers (\`<div class="${this.sectionHeaderClass}">\`)`
         })
       }
@@ -233,14 +220,14 @@ export class Accordion extends GOVUKFrontendComponent {
 
     if (!$heading) {
       throw new ElementError({
-        componentName: 'Accordion',
+        component: Accordion,
         identifier: `Section heading (\`.${this.sectionHeadingClass}\`)`
       })
     }
 
     if (!$span) {
       throw new ElementError({
-        componentName: 'Accordion',
+        component: Accordion,
         identifier: `Section button placeholder (\`<span class="${this.sectionButtonClass}">\`)`
       })
     }
@@ -251,7 +238,7 @@ export class Accordion extends GOVUKFrontendComponent {
     $button.setAttribute('type', 'button')
     $button.setAttribute(
       'aria-controls',
-      `${this.$module.id}-content-${index + 1}`
+      `${this.$root.id}-content-${index + 1}`
     )
 
     // Copy all attributes from $span to $button (except `id`, which gets added
@@ -411,7 +398,7 @@ export class Accordion extends GOVUKFrontendComponent {
 
     if (!$content) {
       throw new ElementError({
-        componentName: 'Accordion',
+        component: Accordion,
         identifier: `Section content (\`<div class="${this.sectionContentClass}">\`)`
       })
     }
