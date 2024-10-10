@@ -169,17 +169,18 @@ $_govuk-organisation-colours: (
     colour: #9c182f
   ),
   "office-of-the-secretary-of-state-for-scotland": (
-    colour: #00205c
+    colour: #00205c,
+    deprecation-message: "`office-of-the-secretary-of-state-for-scotland` was renamed to `scotland-office` in 2024."
   ),
   "office-of-the-secretary-of-state-for-wales": (
-    colour: #a8353a
+    colour: #a8353a,
+    deprecation-message: "`office-of-the-secretary-of-state-for-wales` was renamed to `wales-office` in 2024."
   ),
   "prime-ministers-office-10-downing-street": (
     colour: #0b0c0c
   ),
   "scotland-office": (
-    colour: #002663,
-    deprecation-message: "`scotland-office` became `office-of-the-secretary-of-state-for-scotland` in 2018."
+    colour: #00205c
   ),
   "serious-fraud-office": (
     colour: #82368c
@@ -193,8 +194,7 @@ $_govuk-organisation-colours: (
       "`uk-trade-investment` became `department-for-international-trade` in 2016. As of 2023, it is equivalent to `department-for-business-trade`."
   ),
   "wales-office": (
-    colour: #a33038,
-    deprecation-message: "`wales-office` became `office-of-the-secretary-of-state-for-wales` in 2018."
+    colour: #a33038
   )
 );
 
