@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 const {
   goToExample,
   getAttribute,
@@ -367,34 +369,49 @@ describe('Checkboxes', () => {
           })
         })
 
-        it('throws when $module is not set', async () => {
+        it('throws when initialised twice', async () => {
           await expect(
             render(page, 'checkboxes', examples.default, {
-              beforeInitialisation($module) {
-                $module.remove()
+              async afterInitialisation($root) {
+                const { Checkboxes } = await import('govuk-frontend')
+                new Checkboxes($root)
+              }
+            })
+          ).rejects.toMatchObject({
+            name: 'InitError',
+            message:
+              'govuk-checkboxes: Root element (`$root`) already initialised'
+          })
+        })
+
+        it('throws when $root is not set', async () => {
+          await expect(
+            render(page, 'checkboxes', examples.default, {
+              beforeInitialisation($root) {
+                $root.remove()
               }
             })
           ).rejects.toMatchObject({
             cause: {
               name: 'ElementError',
-              message: 'Checkboxes: Root element (`$module`) not found'
+              message: 'govuk-checkboxes: Root element (`$root`) not found'
             }
           })
         })
 
-        it('throws when receiving the wrong type for $module', async () => {
+        it('throws when receiving the wrong type for $root', async () => {
           await expect(
             render(page, 'checkboxes', examples.default, {
-              beforeInitialisation($module) {
+              beforeInitialisation($root) {
                 // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
-                $module.outerHTML = `<svg data-module="govuk-checkboxes"></svg>`
+                $root.outerHTML = `<svg data-module="govuk-checkboxes"></svg>`
               }
             })
           ).rejects.toMatchObject({
             cause: {
               name: 'ElementError',
               message:
-                'Checkboxes: Root element (`$module`) is not of type HTMLElement'
+                'govuk-checkboxes: Root element (`$root`) is not of type HTMLElement'
             }
           })
         })
@@ -402,8 +419,8 @@ describe('Checkboxes', () => {
         it('throws when the input list is empty', async () => {
           await expect(
             render(page, 'checkboxes', examples.default, {
-              beforeInitialisation($module, { selector }) {
-                $module
+              beforeInitialisation($root, { selector }) {
+                $root
                   .querySelectorAll(selector)
                   .forEach((item) => item.remove())
               },
@@ -415,7 +432,7 @@ describe('Checkboxes', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Checkboxes: Form inputs (`<input type="checkbox">`) not found'
+                'govuk-checkboxes: Form inputs (`<input type="checkbox">`) not found'
             }
           })
         })
@@ -423,8 +440,8 @@ describe('Checkboxes', () => {
         it('throws when a conditional target element is not found', async () => {
           await expect(
             render(page, 'checkboxes', examples['with conditional items'], {
-              beforeInitialisation($module, { selector }) {
-                $module.querySelector(selector).remove()
+              beforeInitialisation($root, { selector }) {
+                $root.querySelector(selector).remove()
               },
               context: {
                 selector: '.govuk-checkboxes__conditional'
@@ -434,7 +451,7 @@ describe('Checkboxes', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Checkboxes: Conditional reveal (`id="conditional-how-contacted"`) not found'
+                'govuk-checkboxes: Conditional reveal (`id="conditional-how-contacted"`) not found'
             }
           })
         })

@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 const { setTimeout } = require('timers/promises')
 
 const { goToExample, render } = require('@govuk-frontend/helpers/puppeteer')
@@ -231,34 +233,49 @@ describe('/components/exit-this-page', () => {
         })
       })
 
-      it('throws when $module is not set', async () => {
+      it('throws when initialised twice', async () => {
         await expect(
           render(page, 'exit-this-page', examples.default, {
-            beforeInitialisation($module) {
-              $module.remove()
+            async afterInitialisation($root) {
+              const { ExitThisPage } = await import('govuk-frontend')
+              new ExitThisPage($root)
+            }
+          })
+        ).rejects.toMatchObject({
+          name: 'InitError',
+          message:
+            'govuk-exit-this-page: Root element (`$root`) already initialised'
+        })
+      })
+
+      it('throws when $root is not set', async () => {
+        await expect(
+          render(page, 'exit-this-page', examples.default, {
+            beforeInitialisation($root) {
+              $root.remove()
             }
           })
         ).rejects.toMatchObject({
           cause: {
             name: 'ElementError',
-            message: 'Exit this page: Root element (`$module`) not found'
+            message: 'govuk-exit-this-page: Root element (`$root`) not found'
           }
         })
       })
 
-      it('throws when receiving the wrong type for $module', async () => {
+      it('throws when receiving the wrong type for $root', async () => {
         await expect(
           render(page, 'exit-this-page', examples.default, {
-            beforeInitialisation($module) {
+            beforeInitialisation($root) {
               // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
-              $module.outerHTML = `<svg data-module="govuk-exit-this-page"></svg>`
+              $root.outerHTML = `<svg data-module="govuk-exit-this-page"></svg>`
             }
           })
         ).rejects.toMatchObject({
           cause: {
             name: 'ElementError',
             message:
-              'Exit this page: Root element (`$module`) is not of type HTMLElement'
+              'govuk-exit-this-page: Root element (`$root`) is not of type HTMLElement'
           }
         })
       })
@@ -266,8 +283,8 @@ describe('/components/exit-this-page', () => {
       it('throws when the button is missing', async () => {
         await expect(
           render(page, 'exit-this-page', examples.default, {
-            beforeInitialisation($module, { selector }) {
-              $module.querySelector(selector).remove()
+            beforeInitialisation($root, { selector }) {
+              $root.querySelector(selector).remove()
             },
             context: {
               selector: '.govuk-exit-this-page__button'
@@ -277,7 +294,7 @@ describe('/components/exit-this-page', () => {
           cause: {
             name: 'ElementError',
             message:
-              'Exit this page: Button (`.govuk-exit-this-page__button`) not found'
+              'govuk-exit-this-page: Button (`.govuk-exit-this-page__button`) not found'
           }
         })
       })

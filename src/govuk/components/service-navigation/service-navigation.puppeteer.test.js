@@ -74,19 +74,20 @@ describe('/components/service-navigation', () => {
         })
       })
 
-      it('throws when $module is not set', async () => {
+      it('throws when $root is not set', async () => {
         await expect(
           render(page, 'service-navigation', examples.default, {
-            beforeInitialisation($module) {
+            beforeInitialisation($root) {
               // Remove the root of the components as a way
-              // for the constructor to receive the wrong type for `$module`
-              $module.remove()
+              // for the constructor to receive the wrong type for `$root`
+              $root.remove()
             }
           })
         ).rejects.toMatchObject({
           cause: {
             name: 'ElementError',
-            message: 'Service Navigation: Root element (`$module`) not found'
+            message:
+              'govuk-service-navigation: Root element (`$root`) not found'
           }
         })
       })
@@ -94,8 +95,8 @@ describe('/components/service-navigation', () => {
       it("throws when the toggle's aria-control attribute is missing", async () => {
         await expect(
           render(page, 'service-navigation', examples.default, {
-            beforeInitialisation($module, { selector }) {
-              $module.querySelector(selector).removeAttribute('aria-controls')
+            beforeInitialisation($root, { selector }) {
+              $root.querySelector(selector).removeAttribute('aria-controls')
             },
             context: {
               selector: toggleButtonSelector
@@ -105,7 +106,7 @@ describe('/components/service-navigation', () => {
           cause: {
             name: 'ElementError',
             message:
-              'Service Navigation: Navigation button (`<button class="govuk-js-service-navigation-toggle">`) attribute (`aria-controls`) not found'
+              'govuk-service-navigation: Navigation button (`<button class="govuk-js-service-navigation-toggle">`) attribute (`aria-controls`) not found'
           }
         })
       })
@@ -113,9 +114,9 @@ describe('/components/service-navigation', () => {
       it('throws when the menu is missing, but a toggle is present', async () => {
         await expect(
           render(page, 'service-navigation', examples.default, {
-            beforeInitialisation($module, { selector }) {
+            beforeInitialisation($root, { selector }) {
               // Remove the `<ul>` referenced by $menuButton's `aria-controls`
-              $module.querySelector(selector).remove()
+              $root.querySelector(selector).remove()
             },
             context: {
               selector: navigationSelector
@@ -125,7 +126,7 @@ describe('/components/service-navigation', () => {
           cause: {
             name: 'ElementError',
             message:
-              'Service Navigation: Navigation (`<ul id="navigation">`) not found'
+              'govuk-service-navigation: Navigation (`<ul id="navigation">`) not found'
           }
         })
       })

@@ -9,9 +9,6 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  */
 export class Header extends GOVUKFrontendComponent {
   /** @private */
-  $module
-
-  /** @private */
   $menuButton
 
   /** @private */
@@ -40,21 +37,12 @@ export class Header extends GOVUKFrontendComponent {
    * Apply a matchMedia for desktop which will trigger a state sync if the
    * browser viewport moves between states.
    *
-   * @param {Element | null} $module - HTML element to use for header
+   * @param {Element | null} $root - HTML element to use for header
    */
-  constructor($module) {
-    super()
+  constructor($root) {
+    super($root)
 
-    if (!$module) {
-      throw new ElementError({
-        componentName: 'Header',
-        element: $module,
-        identifier: 'Root element (`$module`)'
-      })
-    }
-
-    this.$module = $module
-    const $menuButton = $module.querySelector('.govuk-js-header-toggle')
+    const $menuButton = this.$root.querySelector('.govuk-js-header-toggle')
 
     // Headers don't necessarily have a navigation. When they don't, the menu
     // toggle won't be rendered by our macro (or may be omitted when writing
@@ -66,7 +54,7 @@ export class Header extends GOVUKFrontendComponent {
     const menuId = $menuButton.getAttribute('aria-controls')
     if (!menuId) {
       throw new ElementError({
-        componentName: 'Header',
+        component: Header,
         identifier:
           'Navigation button (`<button class="govuk-js-header-toggle">`) attribute (`aria-controls`)'
       })
@@ -75,7 +63,7 @@ export class Header extends GOVUKFrontendComponent {
     const $menu = document.getElementById(menuId)
     if (!$menu) {
       throw new ElementError({
-        componentName: 'Header',
+        component: Header,
         element: $menu,
         identifier: `Navigation (\`<ul id="${menuId}">\`)`
       })
@@ -101,7 +89,7 @@ export class Header extends GOVUKFrontendComponent {
 
     if (!breakpoint.value) {
       throw new ElementError({
-        componentName: 'Header',
+        component: Header,
         identifier: `CSS custom property (\`${breakpoint.property}\`) on pseudo-class \`:root\``
       })
     }

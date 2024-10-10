@@ -1,6 +1,5 @@
 import { mergeConfigs, setFocus } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
-import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
@@ -9,9 +8,6 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  * @preserve
  */
 export class NotificationBanner extends GOVUKFrontendComponent {
-  /** @private */
-  $module
-
   /**
    * @private
    * @type {NotificationBannerConfig}
@@ -19,26 +15,16 @@ export class NotificationBanner extends GOVUKFrontendComponent {
   config
 
   /**
-   * @param {Element | null} $module - HTML element to use for notification banner
+   * @param {Element | null} $root - HTML element to use for notification banner
    * @param {NotificationBannerConfig} [config] - Notification banner config
    */
-  constructor($module, config = {}) {
-    super()
-
-    if (!($module instanceof HTMLElement)) {
-      throw new ElementError({
-        componentName: 'Notification banner',
-        element: $module,
-        identifier: 'Root element (`$module`)'
-      })
-    }
-
-    this.$module = $module
+  constructor($root, config = {}) {
+    super($root)
 
     this.config = mergeConfigs(
       NotificationBanner.defaults,
       config,
-      normaliseDataset(NotificationBanner, $module.dataset)
+      normaliseDataset(NotificationBanner, this.$root.dataset)
     )
 
     /**
@@ -53,10 +39,10 @@ export class NotificationBanner extends GOVUKFrontendComponent {
      * element which should be focused when the page loads.
      */
     if (
-      this.$module.getAttribute('role') === 'alert' &&
+      this.$root.getAttribute('role') === 'alert' &&
       !this.config.disableAutoFocus
     ) {
-      setFocus(this.$module)
+      setFocus(this.$root)
     }
   }
 

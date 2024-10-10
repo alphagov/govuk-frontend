@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 const {
   goToExample,
   render,
@@ -712,34 +714,49 @@ describe('/components/accordion', () => {
           })
         })
 
-        it('throws when $module is not set', async () => {
+        it('throws when initialised twice', async () => {
           await expect(
             render(page, 'accordion', examples.default, {
-              beforeInitialisation($module) {
-                $module.remove()
+              async afterInitialisation($root) {
+                const { Accordion } = await import('govuk-frontend')
+                new Accordion($root)
+              }
+            })
+          ).rejects.toMatchObject({
+            name: 'InitError',
+            message:
+              'govuk-accordion: Root element (`$root`) already initialised'
+          })
+        })
+
+        it('throws when $root is not set', async () => {
+          await expect(
+            render(page, 'accordion', examples.default, {
+              beforeInitialisation($root) {
+                $root.remove()
               }
             })
           ).rejects.toMatchObject({
             cause: {
               name: 'ElementError',
-              message: 'Accordion: Root element (`$module`) not found'
+              message: 'govuk-accordion: Root element (`$root`) not found'
             }
           })
         })
 
-        it('throws when receiving the wrong type for $module', async () => {
+        it('throws when receiving the wrong type for $root', async () => {
           await expect(
             render(page, 'accordion', examples.default, {
-              beforeInitialisation($module) {
+              beforeInitialisation($root) {
                 // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
-                $module.outerHTML = `<svg data-module="govuk-accordion"></svg>`
+                $root.outerHTML = `<svg data-module="govuk-accordion"></svg>`
               }
             })
           ).rejects.toMatchObject({
             cause: {
               name: 'ElementError',
               message:
-                'Accordion: Root element (`$module`) is not of type HTMLElement'
+                'govuk-accordion: Root element (`$root`) is not of type HTMLElement'
             }
           })
         })
@@ -747,8 +764,8 @@ describe('/components/accordion', () => {
         it('throws when the accordion sections are missing', async () => {
           await expect(
             render(page, 'accordion', examples.default, {
-              beforeInitialisation($module, { selector }) {
-                $module
+              beforeInitialisation($root, { selector }) {
+                $root
                   .querySelectorAll(selector)
                   .forEach((item) => item.remove())
               },
@@ -760,7 +777,7 @@ describe('/components/accordion', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Accordion: Sections (`<div class="govuk-accordion__section">`) not found'
+                'govuk-accordion: Sections (`<div class="govuk-accordion__section">`) not found'
             }
           })
         })
@@ -768,8 +785,8 @@ describe('/components/accordion', () => {
         it('throws when section header is missing', async () => {
           await expect(
             render(page, 'accordion', examples.default, {
-              beforeInitialisation($module, { selector }) {
-                $module
+              beforeInitialisation($root, { selector }) {
+                $root
                   .querySelectorAll(selector)
                   .forEach((item) => item.remove())
               },
@@ -781,7 +798,7 @@ describe('/components/accordion', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Accordion: Section headers (`<div class="govuk-accordion__section-header">`) not found'
+                'govuk-accordion: Section headers (`<div class="govuk-accordion__section-header">`) not found'
             }
           })
         })
@@ -789,8 +806,8 @@ describe('/components/accordion', () => {
         it('throws when any section heading is missing', async () => {
           await expect(
             render(page, 'accordion', examples.default, {
-              beforeInitialisation($module, { selector }) {
-                $module.querySelector(selector).remove()
+              beforeInitialisation($root, { selector }) {
+                $root.querySelector(selector).remove()
               },
               context: {
                 selector: '.govuk-accordion__section-heading'
@@ -800,7 +817,7 @@ describe('/components/accordion', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Accordion: Section heading (`.govuk-accordion__section-heading`) not found'
+                'govuk-accordion: Section heading (`.govuk-accordion__section-heading`) not found'
             }
           })
         })
@@ -808,8 +825,8 @@ describe('/components/accordion', () => {
         it('throws when any section button placeholder span is missing', async () => {
           await expect(
             render(page, 'accordion', examples.default, {
-              beforeInitialisation($module, { selector }) {
-                $module.querySelector(selector).remove()
+              beforeInitialisation($root, { selector }) {
+                $root.querySelector(selector).remove()
               },
               context: {
                 selector: '.govuk-accordion__section-button'
@@ -819,7 +836,7 @@ describe('/components/accordion', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Accordion: Section button placeholder (`<span class="govuk-accordion__section-button">`) not found'
+                'govuk-accordion: Section button placeholder (`<span class="govuk-accordion__section-button">`) not found'
             }
           })
         })
@@ -827,8 +844,8 @@ describe('/components/accordion', () => {
         it('throws when any section content is missing', async () => {
           await expect(
             render(page, 'accordion', examples.default, {
-              beforeInitialisation($module, { selector }) {
-                $module.querySelector(selector).remove()
+              beforeInitialisation($root, { selector }) {
+                $root.querySelector(selector).remove()
               },
               context: {
                 selector: '.govuk-accordion__section-content'
@@ -838,7 +855,7 @@ describe('/components/accordion', () => {
             cause: {
               name: 'ElementError',
               message:
-                'Accordion: Section content (`<div class="govuk-accordion__section-content">`) not found'
+                'govuk-accordion: Section content (`<div class="govuk-accordion__section-content">`) not found'
             }
           })
         })

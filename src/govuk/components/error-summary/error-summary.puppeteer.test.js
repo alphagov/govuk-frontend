@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 const { goToExample, render } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
@@ -236,34 +238,49 @@ describe('Error Summary', () => {
       })
     })
 
-    it('throws when $module is not set', async () => {
+    it('throws when initialised twice', async () => {
       await expect(
         render(page, 'error-summary', examples.default, {
-          beforeInitialisation($module) {
-            $module.remove()
+          async afterInitialisation($root) {
+            const { ErrorSummary } = await import('govuk-frontend')
+            new ErrorSummary($root)
+          }
+        })
+      ).rejects.toMatchObject({
+        name: 'InitError',
+        message:
+          'govuk-error-summary: Root element (`$root`) already initialised'
+      })
+    })
+
+    it('throws when $root is not set', async () => {
+      await expect(
+        render(page, 'error-summary', examples.default, {
+          beforeInitialisation($root) {
+            $root.remove()
           }
         })
       ).rejects.toMatchObject({
         cause: {
           name: 'ElementError',
-          message: 'Error summary: Root element (`$module`) not found'
+          message: 'govuk-error-summary: Root element (`$root`) not found'
         }
       })
     })
 
-    it('throws when receiving the wrong type for $module', async () => {
+    it('throws when receiving the wrong type for $root', async () => {
       await expect(
         render(page, 'error-summary', examples.default, {
-          beforeInitialisation($module) {
+          beforeInitialisation($root) {
             // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
-            $module.outerHTML = `<svg data-module="govuk-error-summary"></svg>`
+            $root.outerHTML = `<svg data-module="govuk-error-summary"></svg>`
           }
         })
       ).rejects.toMatchObject({
         cause: {
           name: 'ElementError',
           message:
-            'Error summary: Root element (`$module`) is not of type HTMLElement'
+            'govuk-error-summary: Root element (`$root`) is not of type HTMLElement'
         }
       })
     })

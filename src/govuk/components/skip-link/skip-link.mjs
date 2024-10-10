@@ -6,33 +6,22 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  * Skip link component
  *
  * @preserve
+ * @augments GOVUKFrontendComponent<HTMLAnchorElement>
  */
 export class SkipLink extends GOVUKFrontendComponent {
-  /** @private */
-  $module
+  static elementType = HTMLAnchorElement
 
   /**
-   * @param {Element | null} $module - HTML element to use for skip link
-   * @throws {ElementError} when $module is not set or the wrong type
-   * @throws {ElementError} when $module.hash does not contain a hash
+   * @param {Element | null} $root - HTML element to use for skip link
+   * @throws {ElementError} when $root is not set or the wrong type
+   * @throws {ElementError} when $root.hash does not contain a hash
    * @throws {ElementError} when the linked element is missing or the wrong type
    */
-  constructor($module) {
-    super()
+  constructor($root) {
+    super($root)
 
-    if (!($module instanceof HTMLAnchorElement)) {
-      throw new ElementError({
-        componentName: 'Skip link',
-        element: $module,
-        expectedType: 'HTMLAnchorElement',
-        identifier: 'Root element (`$module`)'
-      })
-    }
-
-    this.$module = $module
-
-    const hash = this.$module.hash
-    const href = this.$module.getAttribute('href') ?? ''
+    const hash = this.$root.hash
+    const href = this.$root.getAttribute('href') ?? ''
 
     /** @type {URL | undefined} */
     let url
@@ -45,7 +34,7 @@ export class SkipLink extends GOVUKFrontendComponent {
      *
      */
     try {
-      url = new window.URL(this.$module.href)
+      url = new window.URL(this.$root.href)
     } catch (error) {
       throw new ElementError(
         `Skip link: Target link (\`href="${href}"\`) is invalid`
@@ -74,7 +63,7 @@ export class SkipLink extends GOVUKFrontendComponent {
     // Check for link target element
     if (!$linkedElement) {
       throw new ElementError({
-        componentName: 'Skip link',
+        component: SkipLink,
         element: $linkedElement,
         identifier: `Target content (\`id="${linkedElementId}"\`)`
       })
@@ -86,7 +75,7 @@ export class SkipLink extends GOVUKFrontendComponent {
      * Adds a helper CSS class to hide native focus styles,
      * but removes it on blur to restore native focus styles
      */
-    this.$module.addEventListener('click', () =>
+    this.$root.addEventListener('click', () =>
       setFocus($linkedElement, {
         onBeforeFocus() {
           $linkedElement.classList.add('govuk-skip-link-focused-element')
