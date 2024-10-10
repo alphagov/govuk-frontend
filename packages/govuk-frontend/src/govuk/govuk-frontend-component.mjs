@@ -15,11 +15,24 @@ export class GOVUKFrontendComponent {
    */
   static elementType = HTMLElement
 
+  // allows Typescript user to work around the lack of types
+  // in GOVUKFrontend package, Typescript is not aware of $root
+  // in components that extend GOVUKFrontendComponent
+  /**
+   * Returns the root element of the component
+   *
+   * @protected
+   * @returns {RootElementType} - the root element of component
+   */
+  get $root() {
+    return this._$root
+  }
+
   /**
    * @protected
    * @type {RootElementType}
    */
-  $root
+  _$root
 
   /**
    * Constructs a new component, validating that GOV.UK Frontend is supported
@@ -51,7 +64,7 @@ export class GOVUKFrontendComponent {
         expectedType: childConstructor.elementType.name
       })
     } else {
-      this.$root = /** @type {RootElementType} */ ($root)
+      this._$root = /** @type {RootElementType} */ ($root)
     }
 
     childConstructor.checkSupport()
