@@ -4,6 +4,16 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### Recommended changes
+
+#### Stop setting a `value` for File upload components
+
+The File upload component currently supports a `value` parameter, which populates the `value` HTML attribute of the input.
+
+However, since no modern browser supports passing a `value` to a file input, we've made the decision to remove this parameter. It has been deprecated and will be removed in a future version of GOV.UK Frontend.
+
+We introduced this change in [pull request #5330: Deprecate File upload component's `value` parameter](https://github.com/alphagov/govuk-frontend/pull/5330).
+
 ## v5.7.0 (Feature release)
 
 To install this version with npm, run `npm install govuk-frontend@5.7.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
