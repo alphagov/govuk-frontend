@@ -529,6 +529,6 @@ export class CharacterCount extends GOVUKFrontendComponent {
  */
 
 /**
- * @typedef {import('../../common/index.mjs').Schema} Schema
- * @typedef {import('../../i18n.mjs').TranslationPluralForms} TranslationPluralForms
+ * @import { Schema } from '../../common/index.mjs'
+ * @import { TranslationPluralForms } from '../../i18n.mjs'
  */

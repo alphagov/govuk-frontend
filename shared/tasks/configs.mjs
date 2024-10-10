@@ -32,5 +32,5 @@ export async function compile(modulePath, options) {
 }
 
 /**
- * @typedef {import('./assets.mjs').AssetEntry} AssetEntry
+ * @import { AssetEntry } from './assets.mjs'
  */

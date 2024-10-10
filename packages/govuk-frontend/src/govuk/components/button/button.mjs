@@ -135,5 +135,5 @@ export class Button extends GOVUKFrontendComponent {
  */
 
 /**
- * @typedef {import('../../common/index.mjs').Schema} Schema
+ * @import { Schema } from '../../common/index.mjs'
  */
