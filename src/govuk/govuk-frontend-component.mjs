@@ -16,10 +16,19 @@ export class GOVUKFrontendComponent {
   static elementType = HTMLElement
 
   /**
+   * Returns the $root
+   *
+   * @returns {RootElementType} - the root element of component
+   */
+  get $root() {
+    return this._$root
+  }
+
+  /**
    * @protected
    * @type {RootElementType}
    */
-  $root
+  _$root
 
   /**
    * Constructs a new component, validating that GOV.UK Frontend is supported
@@ -51,7 +60,7 @@ export class GOVUKFrontendComponent {
         expectedType: childConstructor.elementType.name
       })
     } else {
-      this.$root = /** @type {RootElementType} */ ($root)
+      this._$root = /** @type {RootElementType} */ ($root)
     }
 
     childConstructor.checkSupport()
