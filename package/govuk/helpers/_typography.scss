@@ -189,12 +189,10 @@
       @include govuk-typography-common($font-family: $govuk-font-family-tabular);
     } @else {
       @include govuk-typography-common;
-      -webkit-font-feature-settings: "tnum" 1;
-              font-feature-settings: "tnum" 1;
+      font-feature-settings: "tnum" 1;
 
       @supports (font-variant-numeric: tabular-nums) {
-        -webkit-font-feature-settings: normal;
-                font-feature-settings: normal;
+        font-feature-settings: normal;
         font-variant-numeric: tabular-nums;
       }
     }

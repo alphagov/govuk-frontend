@@ -7,12 +7,10 @@
 	// @ts-nocheck
 	(function (undefined) {
 
-	// Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Document/detect.js
 	var detect = ("Document" in this);
 
 	if (detect) return
 
-	// Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Document&flags=always
 	if ((typeof WorkerGlobalScope === "undefined") && (typeof importScripts !== "function")) {
 
 		if (this.HTMLDocument) { // IE8
@@ -36,12 +34,10 @@
 
 	(function(undefined) {
 
-	// Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Element/detect.js
 	var detect = ('Element' in this && 'HTMLElement' in this);
 
 	if (detect) return
 
-	// Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Element&flags=always
 	(function () {
 
 		// IE8

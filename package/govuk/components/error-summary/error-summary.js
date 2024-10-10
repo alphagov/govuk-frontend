@@ -103,7 +103,6 @@
   // @ts-nocheck
   (function (undefined) {
 
-  // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Object/defineProperty/detect.js
   var detect = (
     // In IE8, defineProperty could only act on DOM elements, so full support
     // for the feature requires the ability to set a property on an arbitrary object
@@ -120,7 +119,6 @@
 
   if (detect) return
 
-  // Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Object.defineProperty&flags=always
   (function (nativeDefineProperty) {
 
   	var supportsAccessors = Object.prototype.hasOwnProperty('__defineGetter__');
@@ -191,12 +189,10 @@
   // @ts-nocheck
   (function (undefined) {
 
-  // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Document/detect.js
   var detect = ("Document" in this);
 
   if (detect) return
 
-  // Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Document&flags=always
   if ((typeof WorkerGlobalScope === "undefined") && (typeof importScripts !== "function")) {
 
   	if (this.HTMLDocument) { // IE8
@@ -220,12 +216,10 @@
 
   (function(undefined) {
 
-  // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Element/detect.js
   var detect = ('Element' in this && 'HTMLElement' in this);
 
   if (detect) return
 
-  // Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Element&flags=always
   (function () {
 
   	// IE8
@@ -335,7 +329,6 @@
 
   (function(undefined) {
 
-    // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-library/13cf7c340974d128d557580b5e2dafcd1b1192d1/polyfills/Element/prototype/dataset/detect.js
     var detect = (function(){
       if (!document.documentElement.dataset) {
         return false;
@@ -347,7 +340,6 @@
 
     if (detect) return
 
-    // Polyfill derived from  https://raw.githubusercontent.com/Financial-Times/polyfill-library/13cf7c340974d128d557580b5e2dafcd1b1192d1/polyfills/Element/prototype/dataset/polyfill.js
     Object.defineProperty(Element.prototype, 'dataset', {
       get: function() {
         var element = this;
@@ -402,12 +394,10 @@
   // @ts-nocheck
   (function (undefined) {
 
-      // Detection from https://github.com/mdn/content/blob/cf607d68522cd35ee7670782d3ee3a361eaef2e4/files/en-us/web/javascript/reference/global_objects/string/trim/index.md#polyfill
       var detect = ('trim' in String.prototype);
 
       if (detect) return
 
-      // Polyfill from https://github.com/mdn/content/blob/cf607d68522cd35ee7670782d3ee3a361eaef2e4/files/en-us/web/javascript/reference/global_objects/string/trim/index.md#polyfill
       String.prototype.trim = function () {
           return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
       };
@@ -478,14 +468,12 @@
   // @ts-nocheck
   (function (undefined) {
 
-    // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/matches/detect.js
     var detect = (
       'document' in this && "matches" in document.documentElement
     );
 
     if (detect) return
 
-    // Polyfill from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/matches/polyfill.js
     Element.prototype.matches = Element.prototype.webkitMatchesSelector || Element.prototype.oMatchesSelector || Element.prototype.msMatchesSelector || Element.prototype.mozMatchesSelector || function matches(selector) {
       var element = this;
       var elements = (element.document || element.ownerDocument).querySelectorAll(selector);
@@ -504,14 +492,12 @@
 
   (function(undefined) {
 
-    // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/closest/detect.js
     var detect = (
       'document' in this && "closest" in document.documentElement
     );
 
     if (detect) return
 
-    // Polyfill from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/closest/polyfill.js
     Element.prototype.closest = function closest(selector) {
       var node = this;
 
@@ -528,12 +514,10 @@
   // @ts-nocheck
   (function (undefined) {
 
-  // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Window/detect.js
   var detect = ('Window' in this);
 
   if (detect) return
 
-  // Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Window&flags=always
   if ((typeof WorkerGlobalScope === "undefined") && (typeof importScripts !== "function")) {
   	(function (global) {
   		if (global.constructor) {
@@ -551,7 +535,6 @@
 
   (function(undefined) {
 
-  // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Event/detect.js
   var detect = (
     (function(global) {
 
@@ -571,7 +554,6 @@
 
   if (detect) return
 
-  // Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Event&flags=always
   (function () {
   	var unlistenableWindowEvents = {
   		click: 1,
@@ -801,12 +783,10 @@
   // @ts-nocheck
 
   (function(undefined) {
-    // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Function/prototype/bind/detect.js
     var detect = 'bind' in Function.prototype;
 
     if (detect) return
 
-    // Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Function.prototype.bind&flags=always
     Object.defineProperty(Function.prototype, 'bind', {
         value: function bind(that) { // .length is 1
             // add necessary es5-shim utilities

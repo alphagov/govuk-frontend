@@ -46,7 +46,6 @@
   // @ts-nocheck
   (function (undefined) {
 
-  // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Object/defineProperty/detect.js
   var detect = (
     // In IE8, defineProperty could only act on DOM elements, so full support
     // for the feature requires the ability to set a property on an arbitrary object
@@ -63,7 +62,6 @@
 
   if (detect) return
 
-  // Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Object.defineProperty&flags=always
   (function (nativeDefineProperty) {
 
   	var supportsAccessors = Object.prototype.hasOwnProperty('__defineGetter__');
@@ -134,7 +132,6 @@
   // @ts-nocheck
   (function (undefined) {
 
-      // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/master/packages/polyfill-library/polyfills/DOMTokenList/detect.js
       var detect = (
         'DOMTokenList' in this && (function (x) {
           return 'classList' in x ? !x.classList.toggle('x', false) && !x.className : true;
@@ -143,7 +140,6 @@
 
       if (detect) return
 
-      // Polyfill from https://raw.githubusercontent.com/Financial-Times/polyfill-service/master/packages/polyfill-library/polyfills/DOMTokenList/polyfill.js
       (function (global) {
         var nativeImpl = "DOMTokenList" in global && global.DOMTokenList;
 
@@ -400,12 +396,10 @@
   // @ts-nocheck
   (function (undefined) {
 
-  // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Document/detect.js
   var detect = ("Document" in this);
 
   if (detect) return
 
-  // Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Document&flags=always
   if ((typeof WorkerGlobalScope === "undefined") && (typeof importScripts !== "function")) {
 
   	if (this.HTMLDocument) { // IE8
@@ -429,12 +423,10 @@
 
   (function(undefined) {
 
-  // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Element/detect.js
   var detect = ('Element' in this && 'HTMLElement' in this);
 
   if (detect) return
 
-  // Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Element&flags=always
   (function () {
 
   	// IE8
@@ -544,7 +536,6 @@
 
   (function(undefined) {
 
-      // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/8717a9e04ac7aff99b4980fbedead98036b0929a/packages/polyfill-library/polyfills/Element/prototype/classList/detect.js
       var detect = (
         'document' in this && "classList" in document.documentElement && 'Element' in this && 'classList' in Element.prototype && (function () {
           var e = document.createElement('span');
@@ -555,7 +546,6 @@
 
       if (detect) return
 
-      // Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Element.prototype.classList&flags=always
       (function (global) {
         var dpSupport = true;
         var defineGetter = function (object, name, fn, configurable) {
@@ -636,14 +626,12 @@
 
   (function(undefined) {
 
-      // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-library/master/polyfills/Element/prototype/nextElementSibling/detect.js
       var detect = (
         'document' in this && "nextElementSibling" in document.documentElement
       );
 
       if (detect) return
 
-      // Polyfill from https://raw.githubusercontent.com/Financial-Times/polyfill-library/master/polyfills/Element/prototype/nextElementSibling/polyfill.js
       Object.defineProperty(Element.prototype, "nextElementSibling", {
         get: function(){
           var el = this.nextSibling;
@@ -658,14 +646,12 @@
 
   (function(undefined) {
 
-      // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-library/master/polyfills/Element/prototype/previousElementSibling/detect.js
       var detect = (
         'document' in this && "previousElementSibling" in document.documentElement
       );
 
       if (detect) return
 
-      // Polyfill from https://raw.githubusercontent.com/Financial-Times/polyfill-library/master/polyfills/Element/prototype/previousElementSibling/polyfill.js
       Object.defineProperty(Element.prototype, 'previousElementSibling', {
         get: function(){
           var el = this.previousSibling;
@@ -679,12 +665,10 @@
   // @ts-nocheck
   (function (undefined) {
 
-  // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Window/detect.js
   var detect = ('Window' in this);
 
   if (detect) return
 
-  // Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Window&flags=always
   if ((typeof WorkerGlobalScope === "undefined") && (typeof importScripts !== "function")) {
   	(function (global) {
   		if (global.constructor) {
@@ -702,7 +686,6 @@
 
   (function(undefined) {
 
-  // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Event/detect.js
   var detect = (
     (function(global) {
 
@@ -722,7 +705,6 @@
 
   if (detect) return
 
-  // Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Event&flags=always
   (function () {
   	var unlistenableWindowEvents = {
   		click: 1,
@@ -952,12 +934,10 @@
   // @ts-nocheck
 
   (function(undefined) {
-    // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Function/prototype/bind/detect.js
     var detect = 'bind' in Function.prototype;
 
     if (detect) return
 
-    // Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Function.prototype.bind&flags=always
     Object.defineProperty(Function.prototype, 'bind', {
         value: function bind(that) { // .length is 1
             // add necessary es5-shim utilities
