@@ -1,7 +1,6 @@
 // @ts-nocheck
 (function (undefined) {
 
-// Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Object/defineProperty/detect.js
 var detect = (
   // In IE8, defineProperty could only act on DOM elements, so full support
   // for the feature requires the ability to set a property on an arbitrary object
@@ -18,7 +17,6 @@ var detect = (
 
 if (detect) return
 
-// Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Object.defineProperty&flags=always
 (function (nativeDefineProperty) {
 
 	var supportsAccessors = Object.prototype.hasOwnProperty('__defineGetter__');

@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v4.9.0 (Feature release)
+
+To install this version with npm, run `npm install govuk-frontend@4.9.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/v4/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
+
 ### New features
 
 #### The Royal Arms has been updated
