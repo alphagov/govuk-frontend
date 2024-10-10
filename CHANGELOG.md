@@ -8,7 +8,7 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
-- [#5396: Update DCMS, Defra, DSIT and FCDO brand colours](https://github.com/alphagov/govuk-frontend/pull/5396)
+- [#5396: Update various department brand colours](https://github.com/alphagov/govuk-frontend/pull/5396)
 
 ## v5.7.0 (Feature release)
 
