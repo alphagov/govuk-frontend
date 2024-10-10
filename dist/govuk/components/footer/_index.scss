@@ -1,0 +1,152 @@
+@include govuk-exports("govuk/component/footer") {
+  $govuk-footer-background: $govuk-canvas-background-colour;
+  $govuk-footer-border: $govuk-border-colour;
+  $govuk-footer-text: $govuk-text-colour;
+
+  // Based on the govuk-crest-2x.png image dimensions.
+  $govuk-footer-crest-image-width-2x: 250px;
+  $govuk-footer-crest-image-height-2x: 204px;
+  // Half the 2x image so that it fits the regular 1x size.
+  $govuk-footer-crest-image-width: ($govuk-footer-crest-image-width-2x / 2);
+  $govuk-footer-crest-image-height: ($govuk-footer-crest-image-height-2x / 2);
+
+  .govuk-footer {
+    @include govuk-font($size: if($govuk-new-typography-scale, 19, 16));
+    @include govuk-responsive-padding(7, "top");
+    @include govuk-responsive-padding(5, "bottom");
+
+    border-top: 1px solid $govuk-footer-border;
+    color: $govuk-footer-text;
+    background: $govuk-footer-background;
+  }
+
+  .govuk-footer__link {
+    @include govuk-link-common;
+    @include govuk-link-style-text;
+  }
+
+  .govuk-footer__section-break {
+    margin: 0; // Reset `<hr>` default margins
+    @include govuk-responsive-margin(8, "bottom");
+    border: 0; // Reset `<hr>` default borders
+    border-bottom: 1px solid $govuk-footer-border;
+  }
+
+  .govuk-footer__meta {
+    display: flex; // Support: Flexbox
+    margin-right: -$govuk-gutter-half;
+    margin-left: -$govuk-gutter-half;
+    flex-wrap: wrap; // Support: Flexbox
+    align-items: flex-end; // Support: Flexbox
+    justify-content: center; // Support: Flexbox
+  }
+
+  .govuk-footer__meta-item {
+    margin-right: $govuk-gutter-half;
+    margin-bottom: govuk-spacing(5);
+    margin-left: $govuk-gutter-half;
+  }
+
+  .govuk-footer__meta-item--grow {
+    flex: 1; // Support: Flexbox
+    @include govuk-media-query($until: tablet) {
+      flex-basis: 320px; // Support: Flexbox
+    }
+  }
+
+  .govuk-footer__licence-logo {
+    display: inline-block;
+    margin-right: govuk-spacing(2);
+    @include govuk-media-query($until: desktop) {
+      margin-bottom: govuk-spacing(3);
+    }
+    vertical-align: top;
+    // Work around SVGs not inheriting color from parent in forced color mode
+    // (https://github.com/w3c/csswg-drafts/issues/6310)
+    forced-color-adjust: auto;
+  }
+
+  .govuk-footer__licence-description {
+    display: inline-block;
+  }
+
+  .govuk-footer__copyright-logo {
+    display: inline-block;
+    min-width: $govuk-footer-crest-image-width;
+    padding-top: ($govuk-footer-crest-image-height + govuk-spacing(2));
+    background-image: govuk-image-url("govuk-crest.png");
+    @include govuk-device-pixel-ratio {
+      background-image: govuk-image-url("govuk-crest-2x.png");
+    }
+    background-repeat: no-repeat;
+    background-position: 50% 0%;
+    background-size: $govuk-footer-crest-image-width $govuk-footer-crest-image-height;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .govuk-footer__inline-list {
+    margin-top: 0;
+    margin-bottom: govuk-spacing(3);
+    padding: 0;
+  }
+
+  .govuk-footer__meta-custom {
+    margin-bottom: govuk-spacing(4);
+  }
+
+  .govuk-footer__inline-list-item {
+    display: inline-block;
+    margin-right: govuk-spacing(3);
+    margin-bottom: govuk-spacing(1);
+  }
+
+  .govuk-footer__heading {
+    margin-bottom: govuk-spacing(6);
+    padding-bottom: govuk-spacing(4);
+
+    @include govuk-media-query($until: tablet) {
+      padding-bottom: govuk-spacing(2);
+    }
+    border-bottom: 1px solid $govuk-footer-border;
+  }
+
+  .govuk-footer__navigation {
+    @include govuk-clearfix;
+    margin-right: -$govuk-gutter-half;
+    margin-left: -$govuk-gutter-half;
+  }
+
+  .govuk-footer__section {
+    display: inline-block;
+    margin-bottom: $govuk-gutter;
+    vertical-align: top;
+  }
+
+  .govuk-footer__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    column-gap: $govuk-gutter; // Support: Columns
+  }
+
+  @include govuk-media-query($from: desktop) {
+    .govuk-footer__list--columns-2 {
+      column-count: 2; // Support: Columns
+    }
+
+    .govuk-footer__list--columns-3 {
+      column-count: 3; // Support: Columns
+    }
+  }
+
+  .govuk-footer__list-item {
+    @include govuk-responsive-margin(4, "bottom");
+  }
+
+  .govuk-footer__list-item:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/*# sourceMappingURL=_index.scss.map */
