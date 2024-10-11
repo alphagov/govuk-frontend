@@ -4,6 +4,10 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+## v5.7.1 (Fix release)
+
+To install this version with npm, run `npm install govuk-frontend@5.7.1`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
+
 ### Recommended changes
 
 #### Stop setting a `value` for File upload components
