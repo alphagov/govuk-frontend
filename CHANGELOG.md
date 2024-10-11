@@ -36,7 +36,7 @@ If you’re using Nunjucks, the asset path may have been changed by the `assetPa
 
 Copy the `govuk-crest.svg` file from `/dist/assets/images` into your assets folder.
 
-You can safely delete the old image files, named `govuk-crest.png` and `govuk-crest@2x.png`.
+You can safely delete the old image files, named `govuk-crest.png` and `govuk-crest-2x.png`.
 
 We introduced this change in [pull request #5376: Update the Royal Arms graphic in footer (v5.x)](https://github.com/alphagov/govuk-frontend/pull/5376).
 
