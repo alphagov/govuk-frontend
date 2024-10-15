@@ -1,8 +1,8 @@
 params:
   - name: id
     type: string
-    required: true
-    description: The ID of the textarea.
+    required: false
+    description: The ID of the textarea. Defaults to matching `name`.
   - name: name
     type: string
     required: true
@@ -98,7 +98,6 @@ examples:
   - name: default
     options:
       name: more-detail
-      id: more-detail
       label:
         text: Can you provide more detail?
   - name: with hint

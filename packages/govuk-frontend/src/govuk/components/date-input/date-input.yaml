@@ -1,8 +1,8 @@
 params:
   - name: id
     type: string
-    required: true
-    description: This is used for the main component and to compose the ID attribute for each item.
+    required: false
+    description: This is used for the main component and to compose the ID attribute for each item. Defaults to `namePrefix` if set, otherwise uses `"date-input"`.
   - name: namePrefix
     type: string
     required: false
@@ -109,8 +109,6 @@ params:
 
 examples:
   - name: default
-    options:
-      id: dob
   - name: complete question
     options:
       id: dob
