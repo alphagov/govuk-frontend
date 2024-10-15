@@ -65,7 +65,7 @@ We introduced this change in:
 #### Check if GOV.UK Frontend is supported
 
 We've added the `isSupported` function to let you check if GOV.UK Frontend is supported in the browser running your script.
-GOV.UK Frontend components check this automatically, but you may want to use the `isSupported` function to avoid running some code when GOV.UK Frontend is not supported.
+GOV.UK Frontend components have been checking this automatically since [the release of v5.0.0](https://github.com/alphagov/govuk-frontend/releases/v5.0.0), but you may want to use the `isSupported` function to avoid running some code when GOV.UK Frontend is not supported.
 
 We introduced this change in [pull request #5250: Add `isSupported` to `all.mjs`](https://github.com/alphagov/govuk-frontend/pull/5250)
 
