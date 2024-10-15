@@ -17,6 +17,6 @@ export { isSupported } from './common/index.mjs'
 export { GOVUKFrontendComponent as Component } from './govuk-frontend-component.mjs'
 
 /**
- * @typedef {import('./init.mjs').Config} Config
- * @typedef {import('./init.mjs').ConfigKey} ConfigKey
+ * @typedef {import('./init.mjs').Config} Config for all components via `initAll()`
+ * @typedef {import('./init.mjs').ConfigKey} ConfigKey - Component config keys, e.g. `accordion` and `characterCount`
  */

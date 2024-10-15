@@ -134,5 +134,5 @@ export class InitError extends GOVUKFrontendError {
  */
 
 /**
- * @typedef {import('../common/index.mjs').ComponentWithModuleName} ComponentWithModuleName
+ * @import {ComponentWithModuleName} from '../common/index.mjs'
  */

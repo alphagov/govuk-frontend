@@ -50,5 +50,5 @@ export function normaliseString(value, property) {
 }
 
 /**
- * @typedef {import('./index.mjs').SchemaProperty} SchemaProperty
+ * @import { SchemaProperty } from './index.mjs'
  */
