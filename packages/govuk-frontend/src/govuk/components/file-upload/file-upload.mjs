@@ -12,25 +12,16 @@ import { I18n } from '../../i18n.mjs'
 export class FileUpload extends GOVUKFrontendComponent {
   /**
    * @private
-   * @type {HTMLInputElement}
-   */
-  $input
-
-  /**
-   * @private
-   * @type {HTMLElement}
    */
   $wrapper
 
   /**
    * @private
-   * @type {HTMLButtonElement}
    */
   $button
 
   /**
    * @private
-   * @type {HTMLElement}
    */
   $status
 
@@ -38,60 +29,53 @@ export class FileUpload extends GOVUKFrontendComponent {
    * @private
    * @type {FileUploadConfig}
    */
+  // eslint-disable-next-line
+  // @ts-ignore
   config
 
   /** @private */
   i18n
 
   /**
-   * @param {Element | null} $input - File input element
+   * @param {Element | null} $root - File input element
    * @param {FileUploadConfig} [config] - File Upload config
    */
-  constructor($input, config = {}) {
-    super($input)
+  constructor($root, config = {}) {
+    super($root)
 
-    if (!($input instanceof HTMLInputElement)) {
-      throw new ElementError({
-        component: FileUpload,
-        element: $input,
-        expectedType: 'HTMLInputElement',
-        identifier: 'Root element (`$module`)'
-      })
+    if (!(this.$root instanceof HTMLInputElement)) {
+      return
     }
 
-    if ($input.type !== 'file') {
-      throw new ElementError('File upload: Form field must be of type `file`.')
+    if (this.$root.type !== 'file') {
+      throw new ElementError(
+        'File upload: Form field must be an input of type `file`.'
+      )
     }
 
     this.config = mergeConfigs(
       FileUpload.defaults,
       config,
-      normaliseDataset(FileUpload, $input.dataset)
+      normaliseDataset(FileUpload, this.$root.dataset)
     )
 
     this.i18n = new I18n(this.config.i18n, {
       // Read the fallback if necessary rather than have it set in the defaults
-      locale: closestAttributeValue($input, 'lang')
+      locale: closestAttributeValue(this.$root, 'lang')
     })
 
-    this.$label = document.querySelector(`[for="${$input.id}"]`)
+    this.$label = document.querySelector(`[for="${this.$root.id}"]`)
 
     if (!this.$label) {
       throw new ElementError({
-        componentName: 'File upload',
+        component: FileUpload,
         identifier: 'No label'
       })
     }
 
-    $input.addEventListener('change', this.onChange.bind(this))
-    this.$input = $input
-
     // Wrapping element. This defines the boundaries of our drag and drop area.
     const $wrapper = document.createElement('div')
     $wrapper.className = 'govuk-file-upload-wrapper'
-    $wrapper.addEventListener('dragover', this.onDragOver.bind(this))
-    $wrapper.addEventListener('dragleave', this.onDragLeaveOrDrop.bind(this))
-    $wrapper.addEventListener('drop', this.onDragLeaveOrDrop.bind(this))
 
     // Create the file selection button
     const $button = document.createElement('button')
@@ -112,29 +96,50 @@ export class FileUpload extends GOVUKFrontendComponent {
     $wrapper.insertAdjacentElement('beforeend', $status)
 
     // Inject all this *after* the native file input
-    this.$input.insertAdjacentElement('afterend', $wrapper)
+    this.$root.insertAdjacentElement('afterend', $wrapper)
 
     // Move the native file input to inside of the wrapper
-    $wrapper.insertAdjacentElement('afterbegin', this.$input)
+    $wrapper.insertAdjacentElement('afterbegin', this.$root)
 
     // Make all these new variables available to the module
     this.$wrapper = $wrapper
     this.$button = $button
     this.$status = $status
 
+    // with everything set up, apply attributes to programmatically hide the input
+    this.$root.setAttribute('aria-hidden', 'true')
+    this.$root.setAttribute('tabindex', '-1')
+
     // Bind change event to the underlying input
-    this.$input.addEventListener('change', this.onChange.bind(this))
+    this.$root.addEventListener('change', this.onChange.bind(this))
+    this.$wrapper.addEventListener('dragover', this.onDragOver.bind(this))
+    this.$wrapper.addEventListener(
+      'dragleave',
+      this.onDragLeaveOrDrop.bind(this)
+    )
+    this.$wrapper.addEventListener('drop', this.onDragLeaveOrDrop.bind(this))
   }
 
   /**
    * Check if the value of the underlying input has changed
    */
   onChange() {
-    if (!this.$input.files) {
+    if (!('files' in this.$root)) {
       return
     }
 
-    const fileCount = this.$input.files.length
+    if (!this.$root.files) {
+      return
+    }
+
+    // eslint-disable-next-line
+    // @ts-ignore
+    const fileCount = this.$root.files.length // eslint-disable-line
+
+    // trying to appease typescript
+    if (!this.$status || !this.i18n) {
+      return
+    }
 
     if (fileCount === 0) {
       // If there are no files, show the default selection text
@@ -143,7 +148,9 @@ export class FileUpload extends GOVUKFrontendComponent {
       // If there is 1 file, just show the file name
       fileCount === 1
     ) {
-      this.$status.innerText = this.$input.files[0].name
+      // eslint-disable-next-line
+      // @ts-ignore
+      this.$status.innerText = this.$root.files[0].name // eslint-disable-line
     } else {
       // Otherwise, tell the user how many files are selected
       this.$status.innerText = this.i18n.t('filesSelected', {
@@ -166,6 +173,8 @@ export class FileUpload extends GOVUKFrontendComponent {
    * file can be dropped here.
    */
   onDragOver() {
+    // eslint-disable-next-line
+    // @ts-ignore
     this.$wrapper.classList.add('govuk-file-upload-wrapper--show-dropzone')
   }
 
@@ -174,6 +183,8 @@ export class FileUpload extends GOVUKFrontendComponent {
    * remove the visual indicator.
    */
   onDragLeaveOrDrop() {
+    // eslint-disable-next-line
+    // @ts-ignore
     this.$wrapper.classList.remove('govuk-file-upload-wrapper--show-dropzone')
   }
 
