@@ -276,7 +276,7 @@ function isArray(option) {
  * @param {unknown} option - Option to check
  * @returns {boolean} Whether the option is an object
  */
-function isObject(option) {
+export function isObject(option) {
   return !!option && typeof option === 'object' && !isArray(option)
 }
 
