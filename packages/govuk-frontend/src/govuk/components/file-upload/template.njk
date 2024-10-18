@@ -45,6 +45,7 @@
   <input class="govuk-file-upload {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-file-upload--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="file" data-module="govuk-file-upload"
   {%- if params.value %} value="{{ params.value }}"{% endif %}
   {%- if params.disabled %} disabled{% endif %}
+  {%- if params.multiple %} multiple{% endif %}
   {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
   {{- govukAttributes(params.attributes) }}>
 {% if params.formGroup.afterInput %}
