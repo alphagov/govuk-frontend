@@ -55,12 +55,14 @@
 
   .govuk-file-upload-wrapper--show-dropzone {
     $dropzone-padding: govuk-spacing(2);
+    $dropzone-offset: $dropzone-padding + $govuk-border-width-form-element;
 
-    margin-top: -$dropzone-padding;
-    margin-left: -$dropzone-padding;
+    // Add negative margins to all sides so that content doesn't jump due to
+    // the addition of the padding and border.
+    margin: -$dropzone-offset;
     padding: $dropzone-padding;
-    outline: 2px dotted govuk-colour("mid-grey");
-    background-color: govuk-colour("light-grey");
+    border: $govuk-border-width-form-element dashed $govuk-input-border-colour;
+    background-color: $govuk-body-background-colour;
 
     .govuk-file-upload__button,
     .govuk-file-upload__status {
