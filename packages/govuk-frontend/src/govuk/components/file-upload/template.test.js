@@ -59,6 +59,13 @@ describe('File upload', () => {
       expect($component.attr('aria-describedby')).toMatch('test-target-element')
     })
 
+    it('renders with multiple', () => {
+      const $ = render('file-upload', examples['allows multiple files'])
+
+      const $component = $('.govuk-file-upload')
+      expect($component.attr('multiple')).toBeTruthy()
+    })
+
     it('renders with attributes', () => {
       const $ = render('file-upload', examples.attributes)
 
