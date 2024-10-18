@@ -15,6 +15,10 @@ params:
     type: boolean
     required: false
     description: If `true`, file input will be disabled.
+  - name: multiple
+    type: boolean
+    required: false
+    description: If `true`, a user may select multiple files at the same time. The exact mechanism to do this differs depending on operating system.
   - name: describedBy
     type: string
     required: false
@@ -94,8 +98,7 @@ examples:
       name: file-upload-1
       label:
         text: Upload a file
-      attributes:
-        multiple: true
+      multiple: true
   - name: allows image files only
     options:
       id: file-upload-1
