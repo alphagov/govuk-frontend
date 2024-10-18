@@ -55,7 +55,6 @@ export class CharacterCount extends GOVUKFrontendComponent {
   /** @private */
   i18n
 
-  /** @private */
   maxLength
 
   /**

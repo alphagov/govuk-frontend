@@ -188,6 +188,7 @@ describe('CharacterCount', () => {
               'data-i18n.characters-under-limit.one',
               'Custom text. Count: %{count}'
             )
+            $div.setAttribute('data.maxlength', '50')
 
             const component = new CharacterCount($div, {
               maxlength: 100,
@@ -197,6 +198,8 @@ describe('CharacterCount', () => {
                 }
               }
             })
+
+            expect(component.maxLength).toBe('50')
 
             // @ts-expect-error Property 'formatCountMessage' is private
             expect(component.formatCountMessage(1, 'characters')).toBe(

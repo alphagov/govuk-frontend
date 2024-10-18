@@ -3,14 +3,16 @@ import { isObject } from './index.mjs'
 
 /**
  * Config
+ *
+ * @template {ConfigObject} [ConfigurationType=import('./index.mjs').ObjectNested]
  */
 class Config {
   /**
    * Config Object
    *
-   * @type {ConfigObject}
+   * @type {ConfigurationType}
    */
-  configObject = {}
+  configObject
 
   /**
    * Config flattening function
@@ -20,9 +22,9 @@ class Config {
    * greatest priority on the LAST item passed in.
    *
    * @param {...ConfigObject} configObjects - configuration objects
-   * @returns {ConfigObject} - merged configuration object
+   * @returns {ConfigurationType} - merged configuration object
    */
-  static mergeConfigs = (...configObjects) => {
+  mergeConfigs(...configObjects) {
     // Start with an empty object as our base
     /** @type {{ [key: string]: unknown }} */
     const formattedConfigObject = {}
@@ -38,7 +40,7 @@ class Config {
         // override the existing value.
         if (isObject(option) && isObject(override)) {
           // @ts-expect-error Index signature for type 'string' is missing
-          formattedConfigObject[key] = Config.mergeConfigs(option, override)
+          formattedConfigObject[key] = this.mergeConfigs(option, override)
         } else {
           // Apply override
           formattedConfigObject[key] = override
@@ -46,7 +48,7 @@ class Config {
       }
     }
 
-    return formattedConfigObject
+    return /** @type {ConfigurationType} */ (formattedConfigObject)
   }
 
   /**
@@ -59,11 +61,21 @@ class Config {
   // * @param {ComponentInstance} component - instance of component
 
   /**
-   * @param {...ConfigObject} configObjects - configuration objects
+   * @param {...ConfigurationType} configObjects - configuration objects
    */
   constructor(...configObjects) {
-    this.configObject = Config.mergeConfigs(...configObjects)
-    // this.component = component;
+    this.configObject = this.mergeConfigs(...configObjects)
+
+    const configObject = this.configObject
+
+    return new Proxy(this, {
+      get(target, name, receiver) {
+        if (!Reflect.has(target, name)) {
+          return configObject[String(name)]
+        }
+        return Reflect.get(target, name, receiver)
+      }
+    })
   }
 
   /**

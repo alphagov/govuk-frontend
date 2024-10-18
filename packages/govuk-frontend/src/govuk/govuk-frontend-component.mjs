@@ -18,22 +18,6 @@ import {
  */
 export class GOVUKFrontendComponent {
   /**
-   * Returns the root element of the component
-   *
-   * @protected
-   * @returns {Config | undefined} - the root element of component
-   */
-  get config() {
-    return this._config
-  }
-
-  /**
-   *
-   * @type {Config | undefined}
-   */
-  _config
-
-  /**
    * @type {typeof Element}
    */
   static elementType = HTMLElement
@@ -62,32 +46,11 @@ export class GOVUKFrontendComponent {
    *
    * @internal
    * @param {Element | null} [$root] - HTML element to use for component
-   * @param {import('./common/index.mjs').ObjectNested} [config] - HTML element to use for component
    */
-  constructor($root, config = {}) {
+  constructor($root) {
     const childConstructor = /** @type {ChildClassConstructor} */ (
       this.constructor
     )
-
-    // If component has config, schema needs to be defined by the component
-    // for subsequent config functionality
-    if (
-      Object.entries(config).length &&
-      typeof childConstructor.schema === 'undefined'
-    ) {
-      throw new ConfigError(
-        'Config passed as parameter into constructor but no schema defined'
-      )
-    }
-
-    if (
-      Object.entries(config).length &&
-      typeof childConstructor.defaults === 'undefined'
-    ) {
-      throw new ConfigError(
-        'Config passed as parameter into constructor but no defaults defined'
-      )
-    }
 
     // TypeScript does not enforce that inheriting classes will define a `moduleName`
     // (even if we add a `@virtual` `static moduleName` property to this class).
@@ -116,30 +79,6 @@ export class GOVUKFrontendComponent {
     this.checkInitialised()
 
     const moduleName = childConstructor.moduleName
-
-    // if the user has passed in an object with entries for config
-    if (Object.entries(config).length) {
-      // we can assume schema and defaults are defined now
-      // if no error thrown, so new variable that is of type
-      // ChildClassConstructorWithConfig
-      const childConstructorWithConfig =
-        /** @type {ChildClassConstructorWithConfig} */ (this.constructor)
-
-      this._config = new Config(
-        childConstructorWithConfig.defaults,
-        config,
-        normaliseDataset(
-          childConstructorWithConfig,
-          // dataset isnt obtainable on Element
-          // but what the user will actual pass as $root
-          // will have dataset defined because it will be
-          // a class that extends Element and implements dataset?
-          /** @type {{ dataset: DOMStringMap }} */ (
-            /** @type {unknown} */ (this.$root)
-          ).dataset
-        )
-      )
-    }
 
     this.$root.setAttribute(`data-${moduleName}-init`, '')
   }
@@ -172,10 +111,80 @@ export class GOVUKFrontendComponent {
 }
 
 /**
- * @typedef ElementWithDataset
- * @property {DOMStringMap} dataset - dataset
- * @augments Element
+ * Base Component class
+ *
+ * Centralises the behaviours shared by our components
+ *
+ * @virtual
+ * @template {import('./common/index.mjs').ObjectNested} [ConfigurationType={}]
+ * @template {Element} [RootElementType=HTMLElement]
+ * @augments GOVUKFrontendComponent<RootElementType>
  */
+export class GOVUKFrontendComponentConfigurable extends GOVUKFrontendComponent {
+  /**
+   * Returns the root element of the component
+   *
+   * @protected
+   * @returns {Config<ConfigurationType> & ConfigurationType} - the root element of component
+   */
+  get config() {
+    return this._config
+  }
+
+  /**
+   *
+   * @type {Config<ConfigurationType> & ConfigurationType}
+   */
+  _config
+
+  /**
+   * Constructs a new component, validating that GOV.UK Frontend is supported
+   *
+   * @internal
+   * @param {Element | null} [$root] - HTML element to use for component
+   * @param {...ConfigurationType} config - HTML element to use for component
+   */
+  constructor($root, ...config) {
+    super($root)
+
+    const childConstructor = /** @type {ChildClassConstructor} */ (
+      this.constructor
+    )
+
+    if (typeof childConstructor.schema === 'undefined') {
+      throw new ConfigError(
+        'Config passed as parameter into constructor but no schema defined'
+      )
+    }
+
+    if (typeof childConstructor.defaults === 'undefined') {
+      throw new ConfigError(
+        'Config passed as parameter into constructor but no defaults defined'
+      )
+    }
+
+    const childConstructorWithConfig =
+      /** @type {ChildClassConstructorWithConfig} */ (this.constructor)
+
+    this._config =
+      /** @type {Config<ConfigurationType> & ConfigurationType} */ (
+        new Config(
+          childConstructorWithConfig.defaults,
+          ...config,
+          normaliseDataset(
+            childConstructorWithConfig,
+            // dataset isnt obtainable on Element
+            // but what the user will actual pass as $root
+            // will have dataset defined because it will be
+            // a class that extends Element and implements dataset?
+            /** @type {{ dataset: DOMStringMap }} */ (
+              /** @type {unknown} */ (this.$root)
+            ).dataset
+          )
+        )
+      )
+  }
+}
 
 /**
  * @typedef ChildClass
