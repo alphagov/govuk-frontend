@@ -74,6 +74,13 @@ describe('File upload', () => {
       expect($component.attr('multiple')).toBeTruthy()
     })
 
+    it('renders with multiple', () => {
+      const $ = render('file-upload', examples['is disabled'])
+
+      const $component = $('.govuk-file-upload')
+      expect($component.attr('disabled')).toBeTruthy()
+    })
+
     it('renders with attributes', () => {
       const $ = render('file-upload', examples.attributes)
 

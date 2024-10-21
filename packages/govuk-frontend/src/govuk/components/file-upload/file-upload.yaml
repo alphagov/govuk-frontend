@@ -116,6 +116,13 @@ examples:
         text: Upload a file
       attributes:
         capture: 'user'
+  - name: is disabled
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Upload a file
+      disabled: true
   - name: with hint text
     options:
       id: file-upload-2
