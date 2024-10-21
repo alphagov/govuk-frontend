@@ -1,4 +1,5 @@
 {% from "../../macros/attributes.njk" import govukAttributes %}
+{% from "../../macros/i18n.njk" import govukI18nAttributes %}
 {% from "../error-message/macro.njk" import govukErrorMessage %}
 {% from "../hint/macro.njk" import govukHint %}
 {% from "../label/macro.njk" import govukLabel %}
@@ -47,6 +48,18 @@
   {%- if params.disabled %} disabled{% endif %}
   {%- if params.multiple %} multiple{% endif %}
   {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
+  {{- govukI18nAttributes({
+    key: 'select-files-button',
+    message: params.selectFilesButtonText
+  }) -}}
+  {{- govukI18nAttributes({
+    key: 'files-selected-default',
+    message: params.filesSelectedDefaultText
+  }) -}}
+  {{- govukI18nAttributes({
+    key: 'files-selected',
+    message: params.filesSelectedText
+  }) -}}
   {{- govukAttributes(params.attributes) }}>
 {% if params.formGroup.afterInput %}
   {{ params.formGroup.afterInput.html | safe | trim | indent(2) if params.formGroup.afterInput.html else params.formGroup.afterInput.text }}
