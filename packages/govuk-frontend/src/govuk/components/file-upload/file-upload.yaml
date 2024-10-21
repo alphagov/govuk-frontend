@@ -157,6 +157,17 @@ examples:
         text: Upload a file
       formGroup:
         classes: extra-class
+  - name: translated
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Llwythwch ffeil i fyny
+      selectFilesButtonText: Dewiswch ffeil
+      filesSelectedDefaultText: Dim ffeiliau wedi'u dewis
+      filesSelectedText:
+        one: "%{count} ffeil wedi'i dewis"
+        other: "%{count} ffeil wedi'u dewis"
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: with value
