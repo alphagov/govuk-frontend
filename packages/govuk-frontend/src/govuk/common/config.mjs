@@ -1,5 +1,5 @@
+import { GOVUKFrontendComponent } from '../govuk-frontend-component.mjs'
 import { isObject } from './index.mjs'
-// import { normaliseString } from "./normalise-string.mjs"
 
 /**
  * Config
@@ -8,11 +8,26 @@ import { isObject } from './index.mjs'
  */
 class Config {
   /**
-   * Config Object
-   *
-   * @type {ConfigurationType}
+   * Schema for configuration
+   * 
+   * @type {Schema}
    */
-  configObject
+  static schema
+
+
+  /**
+   * Defaults for configuration
+   * 
+   * @type {ConfigObject}
+   */
+  static defaults
+
+  /**
+   * Dataset overrides
+   * 
+   * @type {ConfigObject}
+   */
+  static overrides
 
   /**
    * Config flattening function
@@ -22,9 +37,9 @@ class Config {
    * greatest priority on the LAST item passed in.
    *
    * @param {...ConfigObject} configObjects - configuration objects
-   * @returns {ConfigurationType} - merged configuration object
+   * @returns {import('./index.mjs').ObjectNested} - merged configuration object
    */
-  mergeConfigs(...configObjects) {
+  static mergeConfigs(...configObjects) {
     // Start with an empty object as our base
     /** @type {{ [key: string]: unknown }} */
     const formattedConfigObject = {}
@@ -48,25 +63,20 @@ class Config {
       }
     }
 
-    return /** @type {ConfigurationType} */ (formattedConfigObject)
+    return /** @type {import('./index.mjs').ObjectNested} */ (formattedConfigObject)
   }
 
-  /**
-   * Instance of component
-   *
-   * @type {ComponentInstance}
-   */
-  // component
+  configObject = {}
 
-  // * @param {ComponentInstance} component - instance of component
 
   /**
-   * @param {...ConfigurationType} configObjects - configuration objects
-   */
-  constructor(...configObjects) {
-    this.configObject = this.mergeConfigs(...configObjects)
+   * @param {import('../govuk-frontend-component.mjs').ChildClassConstructorWithConfig} component - component instance
+   * @param {...ConfigObject} configObjects - configuration objects
+   */ 
+  constructor(component, ...configObjects) {
+    // const configObject = Config.mergeConfigs(...configObjects)
 
-    const configObject = this.configObject
+    this.configObject = configObject
 
     return new Proxy(this, {
       get(target, name, receiver) {
@@ -75,67 +85,8 @@ class Config {
         }
         return Reflect.get(target, name, receiver)
       }
-    })
+    })    
   }
-
-  /**
-   * Extracts keys starting with a particular namespace from dataset ('data-*')
-   * object, removing the namespace in the process, normalising all values
-   *
-   * @param {string} namespace - The namespace to filter keys with
-   * @returns {ObjectNested | undefined} Nested object with dot-separated key namespace removed
-   */
-  // extractConfigByNamespace (namespace) {
-  // 	const componentClass = this.component.constructor;
-  // 	const dataset = this.component.$root.dataset;
-
-  //   // const property = Component.schema.properties[namespace]
-  //   const property = componentClass.schema.properties[namespace]
-
-  //   // Only extract configs for object schema properties
-  //   if (property.type !== 'object') {
-  //     return
-  //   }
-
-  //   // Add default empty config
-  //   const newObject = {
-  //     [namespace]: /** @type {ObjectNested} */ ({})
-  //   }
-
-  //   for (const [key, value] of Object.entries(dataset)) {
-  //     /** @type {ObjectNested | ObjectNested[NestedKey]} */
-  //     let current = newObject
-
-  //     // Split the key into parts, using . as our namespace separator
-  //     const keyParts = key.split('.')
-
-  //     /**
-  //      * Create new level per part
-  //      *
-  //      * e.g. 'i18n.textareaDescription.other' becomes
-  //      * `{ i18n: { textareaDescription: { other } } }`
-  //      */
-  //     for (const [index, name] of keyParts.entries()) {
-  //       if (typeof current === 'object') {
-  //         // Drop down to nested object until the last part
-  //         if (index < keyParts.length - 1) {
-  //           // New nested object (optionally) replaces existing value
-  //           if (!isObject(current[name])) {
-  //             current[name] = {}
-  //           }
-
-  //           // Drop down into new or existing nested object
-  //           current = current[name]
-  //         } else if (key !== namespace) {
-  //           // Normalised value (optionally) replaces existing value
-  //           current[name] = normaliseString(value)
-  //         }
-  //       }
-  //     }
-  //   }
-
-  //   return newObject[namespace]
-  // }
 }
 
 /* eslint-disable jsdoc/valid-types --
@@ -162,6 +113,10 @@ class Config {
  * @internal
  * @typedef {keyof ObjectNested} NestedKey
  * @typedef {{ [key: string]: string | boolean | number | ObjectNested | undefined }} ObjectNested
+ */
+
+/**
+ * @typedef {import('./index.mjs').Schema} Schema
  */
 
 export default Config

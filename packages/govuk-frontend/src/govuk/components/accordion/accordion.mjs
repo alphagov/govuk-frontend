@@ -1,7 +1,8 @@
 // import { mergeConfigs } from '../../common/index.mjs'
-// import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponentConfigurable } from '../../govuk-frontend-component.mjs'
+import Config from '../../common/config.mjs'
 import { I18n } from '../../i18n.mjs'
 
 /**
@@ -605,6 +606,57 @@ export class Accordion extends GOVUKFrontendComponentConfigurable {
       rememberExpanded: { type: 'boolean' }
     }
   })
+}
+
+
+/**
+ * Accordion Config Class
+ * 
+ * @augments Config<AccordionConfig>
+ */
+class AccordionConfigClass extends Config {
+  /**
+   * Accordion default config
+   *
+   * @see {@link AccordionConfig}
+   * @constant
+   * @type {AccordionConfig}
+   */
+  static defaults = Object.freeze({
+    i18n: {
+      hideAllSections: 'Hide all sections',
+      hideSection: 'Hide',
+      hideSectionAriaLabel: 'Hide this section',
+      showAllSections: 'Show all sections',
+      showSection: 'Show',
+      showSectionAriaLabel: 'Show this section'
+    },
+    rememberExpanded: true
+  })  
+
+  /**
+   * Accordion config schema
+   *
+   * @constant
+   * @satisfies {Schema}
+   */
+  static schema = Object.freeze({
+    properties: {
+      i18n: { type: 'object' },
+      rememberExpanded: { type: 'boolean' }
+    }
+  })
+
+  /**
+   * @param {...AccordionConfig} configs - objects to set config
+   */ 
+  constructor(Component, ...configs) {
+    super(AccordionConfigClass.defaults, ...configs, normaliseDataset(
+
+    ));
+
+    console.log('hello')
+  }
 }
 
 /**
