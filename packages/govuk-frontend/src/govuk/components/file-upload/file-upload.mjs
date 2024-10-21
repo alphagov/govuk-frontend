@@ -106,8 +106,7 @@ export class FileUpload extends GOVUKFrontendComponent {
     this.$button = $button
     this.$status = $status
 
-    // with everything set up, apply attributes to programmatically hide the input
-    this.$root.setAttribute('aria-hidden', 'true')
+    // Prevent the hidden input being tabbed to by keyboard users
     this.$root.setAttribute('tabindex', '-1')
 
     // Bind change event to the underlying input
