@@ -1,3 +1,4 @@
+import Config from '../../common/config.mjs'
 import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { ElementError } from '../../errors/index.mjs'
@@ -19,6 +20,11 @@ import { I18n } from '../../i18n.mjs'
  * @preserve
  */
 export class Accordion extends GOVUKFrontendComponent {
+  /**
+   * @type {Config<AccordionConfig> & AccordionConfig}
+   */
+  configClass
+
   /**
    * @private
    * @type {AccordionConfig}
@@ -112,6 +118,12 @@ export class Accordion extends GOVUKFrontendComponent {
    */
   constructor($root, config = {}) {
     super($root)
+
+    this.configClass = new Config(
+      Accordion,
+      config,
+      normaliseDataset(Accordion, this.$root.dataset)
+    )
 
     this.config = mergeConfigs(
       Accordion.defaults,
