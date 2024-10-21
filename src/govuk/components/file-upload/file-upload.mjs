@@ -109,6 +109,10 @@ export class FileUpload extends GOVUKFrontendComponent {
     // Prevent the hidden input being tabbed to by keyboard users
     this.$root.setAttribute('tabindex', '-1')
 
+    // Syncronise the `disabled` state between the button and underlying input
+    this.updateDisabledState()
+    this.observeDisabledState()
+
     // Bind change event to the underlying input
     this.$root.addEventListener('change', this.onChange.bind(this))
     this.$wrapper.addEventListener('dragover', this.onDragOver.bind(this))
@@ -185,6 +189,41 @@ export class FileUpload extends GOVUKFrontendComponent {
     // eslint-disable-next-line
     // @ts-ignore
     this.$wrapper.classList.remove('govuk-file-upload-wrapper--show-dropzone')
+  }
+
+  /**
+   * Create a mutation observer to check if the input's attributes altered.
+   */
+  observeDisabledState() {
+    const observer = new MutationObserver((mutationList) => {
+      for (const mutation of mutationList) {
+        console.log('mutation', mutation)
+        if (
+          mutation.type === 'attributes' &&
+          mutation.attributeName === 'disabled'
+        ) {
+          this.updateDisabledState()
+        }
+      }
+    })
+
+    observer.observe(this.$root, {
+      attributes: true
+    })
+  }
+
+  /**
+   * Synchronise the `disabled` state between the input and replacement button.
+   */
+  updateDisabledState() {
+    if (
+      !(this.$root instanceof HTMLInputElement) ||
+      !(this.$button instanceof HTMLButtonElement)
+    ) {
+      return
+    }
+
+    this.$button.disabled = this.$root.disabled
   }
 
   /**
