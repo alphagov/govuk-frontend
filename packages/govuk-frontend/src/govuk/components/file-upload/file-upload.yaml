@@ -77,6 +77,18 @@ params:
             type: string
             required: true
             description: HTML to add after the input. If `html` is provided, the `text` option will be ignored.
+  - name: selectFilesButtonText
+    type: string
+    required: false
+    description: The text of the button that opens the file picker. JavaScript enhanced version of the component only. Default is "Choose file".
+  - name: filesSelected
+    type: object
+    required: false
+    description: The text to display when multiple files has been chosen by the user. JavaScript enhanced version of the component only. The component will replace the `%{count}` placeholder with the number of files selected. This is a [pluralised list of messages](https://frontend.design-system.service.gov.uk/localise-govuk-frontend).
+  - name: filesSelectedDefault
+    type: string
+    required: false
+    description: The text to display when no file has been chosen by the user. JavaScript enhanced version of the component only. Default is "No file chosen".
   - name: classes
     type: string
     required: false
