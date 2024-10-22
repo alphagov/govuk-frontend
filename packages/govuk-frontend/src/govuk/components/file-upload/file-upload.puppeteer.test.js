@@ -281,6 +281,51 @@ describe('/components/file-upload', () => {
           })
         })
       })
+
+      describe('disabled state syncing', () => {
+        it('disables the button if the input is disabled on page load', async () => {
+          await render(page, 'file-upload', examples.disabled)
+
+          const buttonDisabled = await page.$eval(buttonSelector, (el) =>
+            el.hasAttribute('disabled')
+          )
+
+          expect(buttonDisabled).toBeTruthy()
+        })
+
+        it('disables the button if the input is disabled programatically', async () => {
+          await render(page, 'file-upload', examples.default)
+
+          await page.$eval(inputSelector, (el) =>
+            el.setAttribute('disabled', '')
+          )
+
+          const buttonDisabledAfter = await page.$eval(buttonSelector, (el) =>
+            el.hasAttribute('disabled')
+          )
+
+          expect(buttonDisabledAfter).toBeTruthy()
+        })
+
+        it('enables the button if the input is enabled programatically', async () => {
+          await render(page, 'file-upload', examples.disabled)
+
+          const buttonDisabledBefore = await page.$eval(buttonSelector, (el) =>
+            el.hasAttribute('disabled')
+          )
+
+          await page.$eval(inputSelector, (el) =>
+            el.removeAttribute('disabled')
+          )
+
+          const buttonDisabledAfter = await page.$eval(buttonSelector, (el) =>
+            el.hasAttribute('disabled')
+          )
+
+          expect(buttonDisabledBefore).toBeTruthy()
+          expect(buttonDisabledAfter).toBeFalsy()
+        })
+      })
     })
   })
 })

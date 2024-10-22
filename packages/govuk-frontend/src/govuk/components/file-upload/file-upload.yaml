@@ -129,7 +129,7 @@ examples:
         text: Upload a file
       attributes:
         capture: 'user'
-  - name: is disabled
+  - name: disabled
     options:
       id: file-upload-1
       name: file-upload-1
