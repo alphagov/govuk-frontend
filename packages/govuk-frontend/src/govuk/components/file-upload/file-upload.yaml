@@ -164,11 +164,12 @@ examples:
       name: file-upload-1
       label:
         text: Llwythwch ffeil i fyny
+      multiple: true
       selectFilesButtonText: Dewiswch ffeil
       filesSelectedDefaultText: Dim ffeiliau wedi'u dewis
       filesSelectedText:
-        one: "%{count} ffeil wedi'i dewis"
         other: "%{count} ffeil wedi'u dewis"
+        one: "%{count} ffeil wedi'i dewis"
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: with value
