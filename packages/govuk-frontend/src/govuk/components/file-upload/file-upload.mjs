@@ -243,6 +243,8 @@ export class FileUpload extends GOVUKFrontendComponent {
       selectFilesButton: 'Choose file',
       filesSelectedDefault: 'No file chosen',
       filesSelected: {
+        // the 'one' string isn't used as the component displays the filename
+        // instead, however it's here for coverage's sake
         one: '%{count} file chosen',
         other: '%{count} files chosen'
       }
