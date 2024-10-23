@@ -229,12 +229,13 @@ export function isSupported($scope = document.body) {
  * {@link https://ajv.js.org/packages/ajv-errors.html#single-message}
  *
  * @internal
- * @param {Schema} schema - Config schema
- * @param {{ [key: string]: unknown }} config - Component config
+ * @param {import('./config.mjs').default<{[key:string]: unknown}>} config - instance of config
  * @returns {string[]} List of validation errors
  */
-export function validateConfig(schema, config) {
+export function validateConfig(config) {
   const validationErrors = []
+
+  const schema = config.component.schema
 
   // Check errors for each schema
   for (const [name, conditions] of Object.entries(schema)) {
@@ -243,7 +244,7 @@ export function validateConfig(schema, config) {
     // Check errors for each schema condition
     if (Array.isArray(conditions)) {
       for (const { required, errorMessage } of conditions) {
-        if (!required.every((key) => !!config[key])) {
+        if (!required.every((key) => config.configObject[key])) {
           errors.push(errorMessage) // Missing config key value
         }
       }
@@ -254,7 +255,6 @@ export function validateConfig(schema, config) {
       }
     }
   }
-
   return validationErrors
 }
 

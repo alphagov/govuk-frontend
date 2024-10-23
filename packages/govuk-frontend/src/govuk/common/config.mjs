@@ -1,6 +1,7 @@
 import { ConfigError } from '../errors/index.mjs'
 
 import { isObject } from './index.mjs'
+import { normaliseDataset } from './normalise-dataset.mjs'
 
 /**
  * Config
@@ -8,7 +9,6 @@ import { isObject } from './index.mjs'
  * Instance of configuration for a component
  *
  * @template {{[key:string]: unknown}} [ConfigType=ObjectNested]
- * @augments ConfigType
  */
 class Config {
   /**
@@ -17,7 +17,7 @@ class Config {
   configObject
 
   /**
-   *  @type {CompatibleClass}
+   *  @type {CompatibleClass<ConfigType>}
    */
   component
 
@@ -61,9 +61,10 @@ class Config {
 
   /**
    * @param {ComponentClass} component - Class of component using config
+   * @param {DOMStringMap} dataset - dataset of root component
    * @param {...ConfigType} configObjects - Config objects to merge
    */
-  constructor(component, ...configObjects) {
+  constructor(component, dataset, ...configObjects) {
     if (typeof component.defaults === 'undefined') {
       throw new ConfigError('No defaults specified in component')
     }
@@ -72,12 +73,21 @@ class Config {
       throw new ConfigError('No schema specified in component')
     }
 
-    this.component = /** @type {CompatibleClass} */ (component)
+    this.component = /** @type {CompatibleClass<ConfigType>} */ (component)
 
-    // we know mergeConfigs will return a ConfigType object as
-    // we only accept configObjects of type ConfigType
+    const normalisedDataset = /** @type {ConfigType} */ (
+      normaliseDataset(this.component, dataset)
+    )
+
     this.configObject = /** @type {ConfigType} */ (
-      Config.mergeConfigs(this.component.defaults, ...configObjects)
+      Config.mergeConfigs(
+        this.component.defaults,
+        ...configObjects,
+        this.component.configOverride
+          ? this.component.configOverride(normalisedDataset)
+          : {},
+        normalisedDataset
+      )
     )
 
     // have to assign to a separate variable
@@ -116,7 +126,8 @@ class Config {
  **/
 
 /**
- * @typedef {{new (...args: any[]): any, moduleName: string, schema: {[key:string]: unknown}, defaults: {[key:string]: unknown} }} CompatibleClass
+ * @template {{[key:string]: unknown}} [ConfigType=ObjectNested]
+ * @typedef {{new (...args: any[]): any, moduleName: string, schema: import('./index.mjs').Schema, defaults: ConfigType, configOverride?: (config: ConfigType) => ConfigType }} CompatibleClass
  */
 
 export default Config
