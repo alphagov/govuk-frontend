@@ -1,31 +1,19 @@
-import { mergeConfigs, setFocus } from '../../common/index.mjs'
-import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
+import { setFocus } from '../../common/index.mjs'
 
 /**
  * Notification Banner component
  *
  * @preserve
+ * @augments GOVUKFrontendComponent<HTMLElement,NotificationBannerConfig>
  */
 export class NotificationBanner extends GOVUKFrontendComponent {
-  /**
-   * @private
-   * @type {NotificationBannerConfig}
-   */
-  config
-
   /**
    * @param {Element | null} $root - HTML element to use for notification banner
    * @param {NotificationBannerConfig} [config] - Notification banner config
    */
   constructor($root, config = {}) {
-    super($root)
-
-    this.config = mergeConfigs(
-      NotificationBanner.defaults,
-      config,
-      normaliseDataset(NotificationBanner, this.$root.dataset)
-    )
+    super($root, config)
 
     /**
      * Focus the notification banner

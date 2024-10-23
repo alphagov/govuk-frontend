@@ -118,6 +118,7 @@ function createAll(Component, config, createAllOptions) {
     } else {
       console.log(new SupportError())
     }
+
     return []
   }
 

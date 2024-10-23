@@ -7,7 +7,7 @@ import { isObject } from './index.mjs'
  *
  * Instance of configuration for a component
  *
- * @template {{[key:string]: unknown}} [ConfigType=ObjectNested]
+ * @template {{[key:string]: unknown}} [ConfigType={}]
  * @augments ConfigType
  */
 class Config {
@@ -17,7 +17,7 @@ class Config {
   configObject
 
   /**
-   *  @type {CompatibleClass}
+   *  @type {CompatibleClass<ConfigType>}
    */
   component
 
@@ -64,6 +64,16 @@ class Config {
    * @param {...ConfigType} configObjects - Config objects to merge
    */
   constructor(component, ...configObjects) {
+    this.component = /** @type {CompatibleClass<ConfigType>} */ (component)
+
+    // no configuration objects supplied
+    // then config object is just empty...
+    if (!configObjects.length) {
+      this.configObject = /** @type {ConfigType} */ ({})
+
+      return
+    }
+
     if (typeof component.defaults === 'undefined') {
       throw new ConfigError('No defaults specified in component')
     }
@@ -71,8 +81,6 @@ class Config {
     if (typeof component.schema === 'undefined') {
       throw new ConfigError('No schema specified in component')
     }
-
-    this.component = /** @type {CompatibleClass} */ (component)
 
     // we know mergeConfigs will return a ConfigType object as
     // we only accept configObjects of type ConfigType
@@ -116,7 +124,12 @@ class Config {
  **/
 
 /**
- * @typedef {{new (...args: any[]): any, moduleName: string, schema: {[key:string]: unknown}, defaults: {[key:string]: unknown} }} CompatibleClass
+ * @typedef {import("./index.mjs").Schema} Schema
+ */
+
+/**
+ * @template {{[key:string]: unknown}} [ConfigType={}]
+ * @typedef {{new (...args: any[]): any, moduleName: string, schema: Schema, defaults: {[key:string]: unknown}, configOverride?: (config: ConfigType) => ConfigType }} CompatibleClass
  */
 
 export default Config

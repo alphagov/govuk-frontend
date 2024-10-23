@@ -229,6 +229,44 @@ export function isSupported($scope = document.body) {
  * {@link https://ajv.js.org/packages/ajv-errors.html#single-message}
  *
  * @internal
+ * @param {import('./config.mjs').default<{[key:string]: unknown}>} config - instance of config
+ * @returns {string[]} List of validation errors
+ */
+export function validateConfigClass(config) {
+  const validationErrors = []
+
+  const schema = config.component.schema
+
+  // Check errors for each schema
+  for (const [name, conditions] of Object.entries(schema)) {
+    const errors = []
+
+    // Check errors for each schema condition
+    if (Array.isArray(conditions)) {
+      for (const { required, errorMessage } of conditions) {
+        if (!required.every((key) => config.configObject[key])) {
+          errors.push(errorMessage) // Missing config key value
+        }
+      }
+
+      // Check one condition passes or add errors
+      if (name === 'anyOf' && !(conditions.length - errors.length >= 1)) {
+        validationErrors.push(...errors)
+      }
+    }
+  }
+  return validationErrors
+}
+
+/**
+ * Validate component config by schema
+ *
+ * Follows limited examples in JSON schema for wider support in future
+ *
+ * {@link https://ajv.js.org/json-schema.html#compound-keywords}
+ * {@link https://ajv.js.org/packages/ajv-errors.html#single-message}
+ *
+ * @internal
  * @param {Schema} schema - Config schema
  * @param {{ [key: string]: unknown }} config - Component config
  * @returns {string[]} List of validation errors

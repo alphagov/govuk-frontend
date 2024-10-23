@@ -1,10 +1,5 @@
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
-import {
-  formatErrorMessage,
-  mergeConfigs,
-  validateConfig
-} from '../../common/index.mjs'
-import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { formatErrorMessage, validateConfigClass } from '../../common/index.mjs'
 import { ConfigError, ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 import { I18n } from '../../i18n.mjs'
@@ -20,6 +15,7 @@ import { I18n } from '../../i18n.mjs'
  * of the available characters/words has been entered.
  *
  * @preserve
+ * @augments GOVUKFrontendComponent<HTMLElement,CharacterCountConfig>
  */
 export class CharacterCount extends GOVUKFrontendComponent {
   /** @private */
@@ -46,12 +42,6 @@ export class CharacterCount extends GOVUKFrontendComponent {
    */
   valueChecker = null
 
-  /**
-   * @private
-   * @type {CharacterCountConfig}
-   */
-  config
-
   /** @private */
   i18n
 
@@ -63,7 +53,7 @@ export class CharacterCount extends GOVUKFrontendComponent {
    * @param {CharacterCountConfig} [config] - Character count config
    */
   constructor($root, config = {}) {
-    super($root)
+    super($root, config)
 
     const $textarea = this.$root.querySelector('.govuk-js-character-count')
     if (
@@ -80,33 +70,11 @@ export class CharacterCount extends GOVUKFrontendComponent {
       })
     }
 
-    // Read config set using dataset ('data-' values)
-    const datasetConfig = normaliseDataset(CharacterCount, this.$root.dataset)
+    // could also be a static method defined
+    // in component class that is then run
+    // in constructor of GOVUKFrontendComponent ??
+    const errors = validateConfigClass(this.config)
 
-    // To ensure data-attributes take complete precedence, even if they change
-    // the type of count, we need to reset the `maxlength` and `maxwords` from
-    // the JavaScript config.
-    //
-    // We can't mutate `config`, though, as it may be shared across multiple
-    // components inside `initAll`.
-    /** @type {CharacterCountConfig} */
-    let configOverrides = {}
-    if ('maxwords' in datasetConfig || 'maxlength' in datasetConfig) {
-      configOverrides = {
-        maxlength: undefined,
-        maxwords: undefined
-      }
-    }
-
-    this.config = mergeConfigs(
-      CharacterCount.defaults,
-      config,
-      configOverrides,
-      datasetConfig
-    )
-
-    // Check for valid config
-    const errors = validateConfig(CharacterCount.schema, this.config)
     if (errors[0]) {
       throw new ConfigError(formatErrorMessage(CharacterCount, errors[0]))
     }
@@ -397,6 +365,25 @@ export class CharacterCount extends GOVUKFrontendComponent {
     const thresholdValue = (maxLength * this.config.threshold) / 100
 
     return thresholdValue <= currentLength
+  }
+
+  /**
+   * Override configuration
+   *
+   * @param {CharacterCountConfig} config - config to override
+   * @returns {CharacterCountConfig} - overidden config
+   */
+  static configOverride = (config) => {
+    /** @type {CharacterCountConfig} */
+    let configOverrides = {}
+    if ('maxwords' in config || 'maxlength' in config) {
+      configOverrides = {
+        maxlength: undefined,
+        maxwords: undefined
+      }
+    }
+
+    return configOverrides
   }
 
   /**

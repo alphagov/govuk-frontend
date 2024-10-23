@@ -1,9 +1,4 @@
-import {
-  getFragmentFromUrl,
-  mergeConfigs,
-  setFocus
-} from '../../common/index.mjs'
-import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { getFragmentFromUrl, setFocus } from '../../common/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
@@ -13,26 +8,15 @@ import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
  * configuration.
  *
  * @preserve
+ * @augments GOVUKFrontendComponent<HTMLElement,ErrorSummaryConfig>
  */
 export class ErrorSummary extends GOVUKFrontendComponent {
-  /**
-   * @private
-   * @type {ErrorSummaryConfig}
-   */
-  config
-
   /**
    * @param {Element | null} $root - HTML element to use for error summary
    * @param {ErrorSummaryConfig} [config] - Error summary config
    */
   constructor($root, config = {}) {
-    super($root)
-
-    this.config = mergeConfigs(
-      ErrorSummary.defaults,
-      config,
-      normaliseDataset(ErrorSummary, this.$root.dataset)
-    )
+    super($root, config)
 
     /**
      * Focus the error summary
