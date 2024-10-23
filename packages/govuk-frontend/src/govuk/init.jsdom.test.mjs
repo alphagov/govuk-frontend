@@ -228,9 +228,13 @@ describe('createAll', () => {
   })
 
   class MockComponent extends GOVUKFrontendComponent {
-    constructor(...args) {
-      super(...args)
-      this.args = args
+    /**
+     * @param {Element | null} $root - HTML element to use for accordion
+     * @param {...MockConfig} [config] - Accordion config
+     */
+    constructor($root, ...config) {
+      super($root, ...config)
+      this.args = [$root, ...config]
     }
 
     static checkSupport() {
@@ -238,7 +242,27 @@ describe('createAll', () => {
     }
 
     static moduleName = 'mock-component'
+
+    static schema = Object.freeze({
+      properties: {
+        attribute: { type: 'string' },
+        __test: { type: 'boolean' }
+      }
+    })
+
+    /**
+     * @type {MockConfig}
+     */
+    static defaults = Object.freeze({
+      attribute: '',
+      __test: false
+    })
   }
+  /**
+   * @typedef {object} MockConfig
+   * @property {string} [attribute=MockComponent.defaults.attribute] - Mock attribute
+   * @property {boolean} [__test=MockComponent.defaults.__test] - Mock __test attribute
+   */
 
   it('initialises a component, passing the component root', () => {
     const componentRoot = document.createElement('div')
@@ -278,11 +302,9 @@ describe('createAll', () => {
     const errorCallback = jest.fn((_error, _context) => {})
 
     expect(() => {
-      createAll(
-        MockComponent,
-        { attribute: 'random' },
-        { onError: errorCallback }
-      )
+      createAll(MockComponent, /** @type {any} */ ({ attribute: 'random' }), {
+        onError: errorCallback
+      })
     }).not.toThrow()
 
     expect(global.console.log).not.toHaveBeenCalled()
