@@ -1,5 +1,5 @@
-import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 import { setFocus } from '../../common/index.mjs'
+import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
  * Notification Banner component
