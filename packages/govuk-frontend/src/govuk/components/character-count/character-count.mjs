@@ -5,6 +5,7 @@ import {
   validateConfig
 } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { observeElementProperty } from '../../common/observe-element-property.mjs'
 import { ConfigError, ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 import { I18n } from '../../i18n.mjs'
@@ -183,6 +184,14 @@ export class CharacterCount extends GOVUKFrontendComponent {
     // could be called after those events have fired, for example if they are
     // added to the page dynamically, so update now too.
     this.updateCountMessage()
+
+    // Lastly, add an observer to the textarea's value property so that we can
+    // update the counter in response to programmatic value changes too.
+    observeElementProperty(
+      this.$textarea,
+      'value',
+      this.updateCountMessage.bind(this)
+    )
   }
 
   /**
