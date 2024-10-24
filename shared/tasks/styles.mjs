@@ -127,6 +127,5 @@ export async function compileStylesheet([
 }
 
 /**
- * @typedef {import('./assets.mjs').AssetEntry} AssetEntry
- * @typedef {import('./assets.mjs').AssetOutput} AssetOutput
+ * @import { AssetEntry } from './assets.mjs'
  */
