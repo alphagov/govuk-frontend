@@ -115,12 +115,13 @@ export class FileUpload extends GOVUKFrontendComponent {
 
     // Bind change event to the underlying input
     this.$root.addEventListener('change', this.onChange.bind(this))
-    this.$wrapper.addEventListener('dragover', this.onDragOver.bind(this))
-    this.$wrapper.addEventListener(
-      'dragleave',
-      this.onDragLeaveOrDrop.bind(this)
-    )
+
+    // When a file is dropped on the input
     this.$wrapper.addEventListener('drop', this.onDragLeaveOrDrop.bind(this))
+
+    // When a file is dragged over the page (or dragged off the page)
+    document.addEventListener('dragover', this.onDragOver.bind(this))
+    document.addEventListener('dragleave', this.onDragLeaveOrDrop.bind(this))
   }
 
   /**
