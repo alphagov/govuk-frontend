@@ -20,6 +20,7 @@ export default [
   },
   ...neostandard({ noStyle: true }),
   eslintConfigPrettier,
+  ...markdown.configs.recommended,
   {
     ignores: [
       '**/.cache/**',
@@ -42,7 +43,7 @@ export default [
     ...jestDom.configs['flat/recommended'],
     ...jsDoc.configs['flat/recommended-typescript-flavor'],
     ...plugins.n.configs['flat/recommended'],
-    ...plugins.promise.configs['flat/recommended'], 
+    ...plugins.promise.configs['flat/recommended'],
     files: [
       '**/*.{cjs,js,mjs}',
 
@@ -56,7 +57,7 @@ export default [
       },
       parserOptions: {
         ecmaVersion: 'latest'
-      },      
+      },
     },
     rules: {
       // Check import or require statements are A-Z ordered
@@ -133,7 +134,7 @@ export default [
         }
       }
     }
-  },  
+  },
   {
     // Extensions required for ESM import
     files: ['**/*.mjs'],
@@ -152,7 +153,7 @@ export default [
       ]
     }
   },
-  {  
+  {
     files: ['**/*.test.{cjs,js,mjs}','**/helpers/jest/*.js'],
     languageOptions: {
       globals: {
@@ -171,14 +172,9 @@ export default [
         // page: 'readonly',
         browser: 'readonly',
         jestPuppeteer: 'readonly'
-      }      
+      }
     }
-  },
-  {
-    // ...markdown.configs.recommended,
-    files: ['**/*.md'],
-    processor: 'markdown/markdown'
-  },
+  }, 
   {
     files: [
       '**/coding-standards/component-options.md/*.{cjs,js,mjs}',
@@ -207,6 +203,6 @@ export default [
       parserOptions: {
         project: './tsconfig.json'
       }
-    }
-  },  
+    }    
+  }
 ]
