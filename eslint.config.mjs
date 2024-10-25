@@ -5,33 +5,24 @@ import jest from 'eslint-plugin-jest'
 import jestDom from 'eslint-plugin-jest-dom'
 import jsDoc from 'eslint-plugin-jsdoc'
 import markdown from 'eslint-plugin-markdown'
-import n from 'eslint-plugin-n'
-import pluginPromise from 'eslint-plugin-promise'
-import neostandard from 'neostandard'
+import globals from "globals";
+import neostandard, { plugins } from 'neostandard'
 
 export default [
-  ...neostandard(),
-  eslintConfigPrettier,
   {
     plugins: {
       import: importPlugin,
       jsdoc: jsDoc,
-      n,
-      promise: pluginPromise,
       jest,
       'jest-dom': jestDom,
       markdown,
     }
   },
+  ...neostandard({ noStyle: true }),
+  eslintConfigPrettier,
   {
-    ...js.configs.recommended,
-    ...importPlugin.flatConfigs.recommended,
-    ...jest.configs['flat/style'],
-    ...jestDom.configs['flat/recommended'],
-    ...jsDoc.configs['flat/recommended-typescript-flavor'],
-    ...n.configs['flat/recommended'],
-    ...pluginPromise.configs['flat/recommended'],
     ignores: [
+      '**/.cache/**',
       '**/dist/**',
       '**/vendor/**',
 
@@ -42,7 +33,16 @@ export default [
 
       // Prevent CHANGELOG history changes
       'CHANGELOG.md'
-    ],
+    ]
+  },
+  {
+    ...js.configs.recommended,
+    ...importPlugin.flatConfigs.recommended,
+    ...jest.configs['flat/style'],
+    ...jestDom.configs['flat/recommended'],
+    ...jsDoc.configs['flat/recommended-typescript-flavor'],
+    ...plugins.n.configs['flat/recommended'],
+    ...plugins.promise.configs['flat/recommended'], 
     files: [
       '**/*.{cjs,js,mjs}',
 
@@ -51,18 +51,13 @@ export default [
       '**/*.md/*.{cjs,js,mjs}'
     ],
     languageOptions: {
+      globals: {
+        ...globals.browser
+      },
       parserOptions: {
         ecmaVersion: 'latest'
-      },
+      },      
     },
-    // plugins: {
-    //   'import': importPlugin,
-    //   'jsdoc': jsDoc,
-    //   n,
-    //   'promise': pluginPromise,
-    //   jest,
-    //   'jest-dom': jestDOM,
-    // },
     rules: {
       // Check import or require statements are A-Z ordered
       'import/order': [
@@ -138,7 +133,7 @@ export default [
         }
       }
     }
-  },
+  },  
   {
     // Extensions required for ESM import
     files: ['**/*.mjs'],
@@ -157,11 +152,11 @@ export default [
       ]
     }
   },
-  {
-    files: ['**/*.test.{cjs,js,mjs}'],
+  {  
+    files: ['**/*.test.{cjs,js,mjs}','**/helpers/jest/*.js'],
     languageOptions: {
       globals: {
-        jest: true
+        ...globals.jest
       }
     }
   },
@@ -171,13 +166,16 @@ export default [
     files: ['**/*.puppeteer.test.{js,mjs}'],
     languageOptions: {
       globals: {
+        ...globals.browser,
         page: 'readonly',
+        // page: 'readonly',
         browser: 'readonly',
         jestPuppeteer: 'readonly'
-      }
+      }      
     }
   },
   {
+    // ...markdown.configs.recommended,
     files: ['**/*.md'],
     processor: 'markdown/markdown'
   },
@@ -204,4 +202,11 @@ export default [
       'n/no-missing-import': 'off'
     }
   },
+  {
+    languageOptions: {
+      parserOptions: {
+        project: './tsconfig.json'
+      }
+    }
+  },  
 ]
