@@ -120,7 +120,7 @@ export class FileUpload extends GOVUKFrontendComponent {
     this.$wrapper.addEventListener('drop', this.onDragLeaveOrDrop.bind(this))
 
     // When a file is dragged over the page (or dragged off the page)
-    document.addEventListener('dragover', this.onDragOver.bind(this))
+    document.addEventListener('dragenter', this.onDragEnter.bind(this))
     document.addEventListener('dragleave', this.onDragLeaveOrDrop.bind(this))
   }
 
@@ -175,8 +175,14 @@ export class FileUpload extends GOVUKFrontendComponent {
   /**
    * When a file is dragged over the container, show a visual indicator that a
    * file can be dropped here.
+   *
+   * @param {DragEvent} event - the drag event
    */
-  onDragOver() {
+  onDragEnter(event) {
+    // Check if the thing being dragged is a file (and not text or something
+    // else), we only want to indicate files.
+    console.log(event)
+
     // eslint-disable-next-line
     // @ts-ignore
     this.$wrapper.classList.add('govuk-file-upload-wrapper--show-dropzone')
