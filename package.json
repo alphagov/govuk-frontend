@@ -3,7 +3,7 @@
   "name": "@govuk-frontend/repository",
   "description": "Used only for the development of GOV.UK Frontend, see `packages/govuk-frontend/package.json` for the published `package.json`",
   "engines": {
-    "node": "^20.9.0",
+    "node": "^22.11.0",
     "npm": "^10.1.0"
   },
   "license": "MIT",
