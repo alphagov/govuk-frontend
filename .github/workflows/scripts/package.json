@@ -3,7 +3,7 @@
   "name": "@govuk-frontend/workflow-scripts",
   "description": "GOV.UK Frontend GitHub Actions workflow scripts",
   "engines": {
-    "node": "^20.9.0",
+    "node": "^22.11.0",
     "npm": "^10.1.0"
   },
   "license": "MIT",
