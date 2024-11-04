@@ -34,7 +34,7 @@ export const watch = (options) => gulp.parallel(...getTasks(options))
  */
 function getTasks(options) {
   const tasks = {
-    'lint:scss watch': () =>
+    'lint:scss watch': disabledBy('GOVUK_DS_FRONTEND_NO_LINTING', 'scss', () =>
       gulp.watch(
         '**/*.scss',
         { cwd: options.srcPath },
@@ -43,7 +43,8 @@ function getTasks(options) {
         npm.script('lint:scss:cli', [
           slash(join(options.workspace, '**/*.scss'))
         ])
-      ),
+      )
+    ),
     'compile:scss watch': () =>
       gulp.watch(
         '**/*.scss',
@@ -52,7 +53,7 @@ function getTasks(options) {
         // Run Sass compile
         styles(options)
       ),
-    'lint:js watch': () =>
+    'lint:js watch': disabledBy('GOVUK_DS_FRONTEND_NO_LINTING', 'js', () =>
       gulp.watch(
         '**/*.{cjs,js,mjs}',
         { cwd: options.srcPath, ignored: ['**/*.test.*'] },
@@ -65,7 +66,8 @@ function getTasks(options) {
             slash(join(options.workspace, '**/*.{cjs,js,mjs}'))
           ])
         )
-      ),
+      )
+    ),
     'compile:js watch': () =>
       gulp.watch(
         '**/*.{cjs,js,mjs}',
@@ -100,5 +102,19 @@ function getTasks(options) {
       )
   }
 
-  return Object.entries(tasks).map(([taskName, fn]) => task.name(taskName, fn))
+  return Object.entries(tasks)
+    .filter(([taskName, fn]) => !!fn)
+    .map(([taskName, fn]) => task.name(taskName, fn))
+}
+
+function disabledBy(envVariableName, value, fn) {
+  // Split by comma to ensure we'll match full options
+  // avoiding `css` to match `scss` if we were looking in the whole string
+  const disabledValues = process.env[envVariableName]?.split?.(',')
+
+  if (disabledValues?.includes?.(value)) {
+    return null
+  }
+
+  return fn
 }
