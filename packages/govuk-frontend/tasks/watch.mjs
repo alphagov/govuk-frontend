@@ -22,12 +22,19 @@ import { assets, fixtures, scripts, styles, templates } from './index.mjs'
  *
  * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
-export const watch = (options) =>
-  gulp.parallel(
-    /**
-     * Stylesheets lint watcher
-     */
-    task.name('lint:scss watch', () =>
+export const watch = (options) => gulp.parallel(...getTasks(options))
+
+/**
+ * Compute the lists of tasks to be run in parallel
+ *
+ * Allows some of the tasks to be disabled by environment variables
+ *
+ * @param {import('@govuk-frontend/tasks').TaskOptions} options
+ * @returns {any[]} The list of tasks to run in parallel
+ */
+function getTasks(options) {
+  const tasks = {
+    'lint:scss watch': () =>
       gulp.watch(
         '**/*.scss',
         { cwd: options.srcPath },
@@ -36,26 +43,16 @@ export const watch = (options) =>
         npm.script('lint:scss:cli', [
           slash(join(options.workspace, '**/*.scss'))
         ])
-      )
-    ),
-
-    /**
-     * Stylesheets build watcher
-     */
-    task.name('compile:scss watch', () =>
+      ),
+    'compile:scss watch': () =>
       gulp.watch(
         '**/*.scss',
         { cwd: options.srcPath },
 
         // Run Sass compile
         styles(options)
-      )
-    ),
-
-    /**
-     * JavaScripts lint watcher
-     */
-    task.name('lint:js watch', () =>
+      ),
+    'lint:js watch': () =>
       gulp.watch(
         '**/*.{cjs,js,mjs}',
         { cwd: options.srcPath, ignored: ['**/*.test.*'] },
@@ -68,50 +65,32 @@ export const watch = (options) =>
             slash(join(options.workspace, '**/*.{cjs,js,mjs}'))
           ])
         )
-      )
-    ),
-
-    /**
-     * JavaScripts build watcher
-     */
-    task.name('compile:js watch', () =>
+      ),
+    'compile:js watch': () =>
       gulp.watch(
         '**/*.{cjs,js,mjs}',
         { cwd: options.srcPath, ignored: ['**/*.test.*'] },
 
         // Run JavaScripts compile
         scripts(options)
-      )
-    ),
-
-    /**
-     * Component fixtures watcher
-     */
-    task.name('compile:fixtures watch', () =>
+      ),
+    'compile:fixtures watch': () =>
       gulp.watch(
         'govuk/components/*/*.yaml',
         { cwd: options.srcPath },
 
         // Run fixtures compile
         fixtures(options)
-      )
-    ),
-
-    /**
-     * Component template watcher
-     */
-    task.name('copy:templates watch', () =>
+      ),
+    'copy:templates watch': () =>
       gulp.watch(
         'govuk/**/*.{md,njk}',
         { cwd: options.srcPath },
 
         // Run templates copy
         templates(options)
-      )
-    ),
-
-    // Copy GOV.UK Frontend static assets
-    task.name('copy:assets watch', () =>
+      ),
+    'copy:assets watch': () =>
       gulp.watch(
         'govuk/assets/**',
         { cwd: options.srcPath },
@@ -119,5 +98,7 @@ export const watch = (options) =>
         // Run assets copy
         assets(options)
       )
-    )
-  )
+  }
+
+  return Object.entries(tasks).map(([taskName, fn]) => task.name(taskName, fn))
+}
