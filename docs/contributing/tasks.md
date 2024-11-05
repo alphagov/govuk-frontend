@@ -13,6 +13,15 @@ npm scripts are defined in `package.json`. These trigger a number of Gulp tasks.
 - runs `npm run build`
 - starts the review app, restarting when `.mjs`, `.json` or `.yaml` files change
 - compile again when frontend `.mjs` and `.scss` files change
+- lint the JavaScript and Sass files of the project when they change
+
+  The linting can be disabled using the `GOVUK_DS_FRONTEND_NO_LINTING` environment variable.
+  It accepts a comma separated list of values with the types of linting you want to disable (`scss` and/or `js`).
+  For example:
+
+  ```sh
+  GOVUK_DS_FRONTEND_NO_LINTING=scss,js npm start
+  ```
 
 **`npm test` will do the following:**
 
