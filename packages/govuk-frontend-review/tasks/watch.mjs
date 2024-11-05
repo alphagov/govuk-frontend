@@ -20,12 +20,17 @@ import { scripts, styles } from './index.mjs'
  *
  * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
-export const watch = (options) =>
-  gulp.parallel(
-    /**
-     * Stylesheets lint watcher
-     */
-    task.name('lint:scss watch', () =>
+export const watch = (options) => gulp.parallel(...getTasks(options))
+
+/**
+ * Compute the lists of tasks to be run in parallel
+ *
+ * @param {import('@govuk-frontend/tasks').TaskOptions} options
+ * @returns {any[]} The list of tasks to run in parallel
+ */
+function getTasks(options) {
+  const tasks = {
+    'lint:scss watch': () =>
       gulp.watch(
         '**/*.scss',
         { cwd: options.srcPath },
@@ -34,13 +39,8 @@ export const watch = (options) =>
         npm.script('lint:scss:cli', [
           slash(join(options.workspace, '**/*.scss'))
         ])
-      )
-    ),
-
-    /**
-     * Stylesheets build watcher
-     */
-    task.name('compile:scss watch', () =>
+      ),
+    'compile:scss watch': () =>
       gulp.watch(
         ['**/*.scss', join(paths.package, 'dist/govuk/all.scss')],
         {
@@ -54,13 +54,8 @@ export const watch = (options) =>
 
         // Run Sass compile
         styles(options)
-      )
-    ),
-
-    /**
-     * JavaScripts lint watcher
-     */
-    task.name('lint:js watch', () =>
+      ),
+    'lint:js watch': () =>
       gulp.watch(
         '**/*.{cjs,js,mjs}',
         { cwd: options.srcPath, ignored: ['**/*.test.*'] },
@@ -73,13 +68,8 @@ export const watch = (options) =>
             slash(join(options.workspace, '**/*.{cjs,js,mjs}'))
           ])
         )
-      )
-    ),
-
-    /**
-     * JavaScripts build watcher
-     */
-    task.name('compile:js watch', () =>
+      ),
+    'compile:js watch': () =>
       gulp.watch(
         'javascripts/**/*.mjs',
         { cwd: options.srcPath },
@@ -87,5 +77,7 @@ export const watch = (options) =>
         // Run JavaScripts compile
         scripts(options)
       )
-    )
-  )
+  }
+
+  return Object.entries(tasks).map(([taskName, fn]) => task.name(taskName, fn))
+}
