@@ -1,5 +1,4 @@
-import { mergeConfigs } from '../../common/index.mjs'
-import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { mergeConfigs, normaliseDataset } from '../../common/configuration.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 const DEBOUNCE_TIMEOUT_IN_SECONDS = 1
@@ -135,5 +134,5 @@ export class Button extends GOVUKFrontendComponent {
  */
 
 /**
- * @typedef {import('../../common/index.mjs').Schema} Schema
+ * @typedef {import('../../common/configuration.mjs').Schema} Schema
  */
