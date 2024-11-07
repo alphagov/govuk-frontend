@@ -1,6 +1,66 @@
 import { ConfigError } from '../errors/index.mjs'
+import { GOVUKFrontendComponent } from '../govuk-frontend-component.mjs'
 
 import { isObject, formatErrorMessage } from './index.mjs'
+
+/**
+ * Base Component class
+ *
+ * Centralises the behaviours shared by our components
+ *
+ * @virtual
+ * @template {ObjectNested} [ConfigurationType={}]
+ * @template {Element & { dataset: DOMStringMap }} [RootElementType=HTMLElement]
+ * @augments GOVUKFrontendComponent<RootElementType>
+ */
+export class GOVUKFrontendComponentConfigurable extends GOVUKFrontendComponent {
+  /**
+   * Returns the root element of the component
+   *
+   * @protected
+   * @returns {ConfigurationType} - the root element of component
+   */
+  get config() {
+    return this._config
+  }
+
+  /**
+   *
+   * @type {ConfigurationType}
+   */
+  _config
+
+  /**
+   * Constructs a new component, validating that GOV.UK Frontend is supported
+   *
+   * @internal
+   * @param {Element | null} [$root] - HTML element to use for component
+   * @param {ConfigurationType} [config] - HTML element to use for component
+   */
+  constructor($root, config) {
+    super($root)
+
+    const childConstructor =
+      /** @type {ChildClassConstructor<ConfigurationType>} */ (this.constructor)
+
+    if (typeof childConstructor.defaults === 'undefined') {
+      throw new ConfigError(
+        formatErrorMessage(
+          childConstructor,
+          'Config passed as parameter into constructor but no defaults defined'
+        )
+      )
+    }
+
+    this._config = /** @type {ConfigurationType} */ (
+      mergeConfigs(
+        childConstructor.defaults,
+        config ?? {},
+        normaliseDataset(childConstructor, this._$root.dataset)
+      )
+    )
+  }
+}
 
 /**
  * Normalise string
@@ -254,4 +314,17 @@ export function extractConfigByNamespace(schema, dataset, namespace) {
  * @typedef {object} SchemaCondition
  * @property {string[]} required - List of required config fields
  * @property {string} errorMessage - Error message when required config fields not provided
+ */
+
+/**
+ * @template {ObjectNested} [ConfigurationType={}]
+ * @typedef ChildClass
+ * @property {string} moduleName - The module name that'll be looked for in the DOM when initialising the component
+ * @property {Schema} [schema] - The schema of the component configuration
+ * @property {ConfigurationType} [defaults] - The default values of the configuration of the component
+ */
+
+/**
+ * @template {ObjectNested} [ConfigurationType={}]
+ * @typedef {typeof GOVUKFrontendComponent & ChildClass<ConfigurationType>} ChildClassConstructor<ConfigurationType>
  */
