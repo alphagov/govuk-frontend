@@ -3,19 +3,17 @@ import { outdent } from 'outdent'
 import { extractConfigByNamespace } from '../configuration.mjs'
 
 describe('extractConfigByNamespace', () => {
-  class Component {
-    /**
-     * @satisfies {Schema}
-     */
-    static schema = {
-      properties: {
-        a: { type: 'string' },
-        b: { type: 'object' },
-        c: { type: 'object' },
-        d: { type: 'string' },
-        e: { type: 'string' },
-        f: { type: 'object' }
-      }
+  /**
+   * @satisfies {Schema}
+   */
+  const schema = {
+    properties: {
+      a: { type: 'string' },
+      b: { type: 'object' },
+      c: { type: 'object' },
+      d: { type: 'string' },
+      e: { type: 'string' },
+      f: { type: 'object' }
     }
   }
 
@@ -42,13 +40,13 @@ describe('extractConfigByNamespace', () => {
   it('defaults to empty config for known namespaces only', () => {
     const { dataset } = $element
 
-    const nonObject1 = extractConfigByNamespace(Component, dataset, 'a')
-    const nonObject2 = extractConfigByNamespace(Component, dataset, 'd')
-    const nonObject3 = extractConfigByNamespace(Component, dataset, 'e')
+    const nonObject1 = extractConfigByNamespace(schema, dataset, 'a')
+    const nonObject2 = extractConfigByNamespace(schema, dataset, 'd')
+    const nonObject3 = extractConfigByNamespace(schema, dataset, 'e')
 
-    const namespaceKnown = extractConfigByNamespace(Component, dataset, 'f')
+    const namespaceKnown = extractConfigByNamespace(schema, dataset, 'f')
     const namespaceUnknown = extractConfigByNamespace(
-      Component,
+      schema,
       dataset,
       'unknown'
     )
@@ -66,7 +64,7 @@ describe('extractConfigByNamespace', () => {
   })
 
   it('can extract config from key-value pairs', () => {
-    const result = extractConfigByNamespace(Component, $element.dataset, 'b')
+    const result = extractConfigByNamespace(schema, $element.dataset, 'b')
     expect(result).toEqual({ a: 'bat', e: 'bear', o: 'boar' })
   })
 
@@ -82,14 +80,9 @@ describe('extractConfigByNamespace', () => {
 
     const { dataset } = document.getElementById('app-example2')
     const result = extractConfigByNamespace(
-      class Component {
-        /**
-         * @satisfies {Schema}
-         */
-        static schema = {
-          properties: {
-            i18n: { type: 'object' }
-          }
+      {
+        properties: {
+          i18n: { type: 'object' }
         }
       },
       dataset,
@@ -111,14 +104,9 @@ describe('extractConfigByNamespace', () => {
 
     const { dataset } = document.getElementById('app-example2')
     const result = extractConfigByNamespace(
-      class Component {
-        /**
-         * @satisfies {Schema}
-         */
-        static schema = {
-          properties: {
-            i18n: { type: 'object' }
-          }
+      {
+        properties: {
+          i18n: { type: 'object' }
         }
       },
       dataset,
@@ -144,7 +132,7 @@ describe('extractConfigByNamespace', () => {
     `
 
     const { dataset } = document.getElementById('app-example')
-    const result = extractConfigByNamespace(Component, dataset, 'c')
+    const result = extractConfigByNamespace(schema, dataset, 'c')
 
     expect(result).toEqual({ a: 'cat', o: 'cow' })
   })
@@ -166,7 +154,7 @@ describe('extractConfigByNamespace', () => {
     `
 
     const { dataset } = document.getElementById('app-example')
-    const result = extractConfigByNamespace(Component, dataset, 'c')
+    const result = extractConfigByNamespace(schema, dataset, 'c')
 
     expect(result).toEqual({ a: 'cat', c: 'crow', o: 'cow' })
   })
@@ -188,7 +176,7 @@ describe('extractConfigByNamespace', () => {
     `
 
     const { dataset } = document.getElementById('app-example')
-    const result = extractConfigByNamespace(Component, dataset, 'c')
+    const result = extractConfigByNamespace(schema, dataset, 'c')
 
     expect(result).toEqual({ a: 'cat', c: 'crow', o: 'cow' })
   })
@@ -208,7 +196,7 @@ describe('extractConfigByNamespace', () => {
     `
 
     const { dataset } = document.getElementById('app-example')
-    const result = extractConfigByNamespace(Component, dataset, 'f')
+    const result = extractConfigByNamespace(schema, dataset, 'f')
 
     expect(result).toEqual({ e: { l: 'elephant' } })
   })
@@ -224,14 +212,9 @@ describe('extractConfigByNamespace', () => {
 
     const { dataset } = document.getElementById('app-example2')
     const result = extractConfigByNamespace(
-      class Component {
-        /**
-         * @satisfies {Schema}
-         */
-        static schema = {
-          properties: {
-            i18n: { type: 'object' }
-          }
+      {
+        properties: {
+          i18n: { type: 'object' }
         }
       },
       dataset,
@@ -261,14 +244,9 @@ describe('extractConfigByNamespace', () => {
 
     const { dataset } = document.getElementById('app-example2')
     const result = extractConfigByNamespace(
-      class Component {
-        /**
-         * @satisfies {Schema}
-         */
-        static schema = {
-          properties: {
-            i18n: { type: 'object' }
-          }
+      {
+        properties: {
+          i18n: { type: 'object' }
         }
       },
       dataset,
