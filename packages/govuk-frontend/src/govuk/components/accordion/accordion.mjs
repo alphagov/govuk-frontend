@@ -1,6 +1,5 @@
-import { mergeConfigs, normaliseDataset } from '../../common/configuration.mjs'
+import { GOVUKFrontendComponentConfigurable } from '../../common/configuration.mjs'
 import { ElementError } from '../../errors/index.mjs'
-import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 import { I18n } from '../../i18n.mjs'
 
 /**
@@ -16,14 +15,9 @@ import { I18n } from '../../i18n.mjs'
  * attribute, which also provides accessibility.
  *
  * @preserve
+ * @augments GOVUKFrontendComponentConfigurable<AccordionConfig>
  */
-export class Accordion extends GOVUKFrontendComponent {
-  /**
-   * @private
-   * @type {AccordionConfig}
-   */
-  config
-
+export class Accordion extends GOVUKFrontendComponentConfigurable {
   /** @private */
   i18n
 
@@ -110,13 +104,7 @@ export class Accordion extends GOVUKFrontendComponent {
    * @param {AccordionConfig} [config] - Accordion config
    */
   constructor($root, config = {}) {
-    super($root)
-
-    this.config = mergeConfigs(
-      Accordion.defaults,
-      config,
-      normaliseDataset(Accordion, this.$root.dataset)
-    )
+    super($root, config)
 
     this.i18n = new I18n(this.config.i18n)
 
