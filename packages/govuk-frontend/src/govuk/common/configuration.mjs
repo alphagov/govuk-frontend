@@ -1,4 +1,6 @@
-import { isObject } from './index.mjs'
+import { ConfigError } from '../errors/index.mjs'
+
+import { isObject, formatErrorMessage } from './index.mjs'
 
 /**
  * Normalise string
@@ -58,11 +60,20 @@ export function normaliseString(value, property) {
  * optionally expanding nested `i18n.field`
  *
  * @internal
- * @param {{ schema: Schema }} Component - Component class
+ * @param {{ schema?: Schema, moduleName: string }} Component - Component class
  * @param {DOMStringMap} dataset - HTML element dataset
  * @returns {ObjectNested} Normalised dataset
  */
 export function normaliseDataset(Component, dataset) {
+  if (typeof Component.schema === 'undefined') {
+    throw new ConfigError(
+      formatErrorMessage(
+        Component,
+        'Config passed as parameter into constructor but no schema defined'
+      )
+    )
+  }
+
   const out = /** @type {ReturnType<typeof normaliseDataset>} */ ({})
 
   // Normalise top-level dataset ('data-*') values using schema types
@@ -76,7 +87,7 @@ export function normaliseDataset(Component, dataset) {
      * {@link normaliseString} but only schema object types are allowed
      */
     if (property?.type === 'object') {
-      out[field] = extractConfigByNamespace(Component, dataset, field)
+      out[field] = extractConfigByNamespace(Component.schema, dataset, field)
     }
   }
 
@@ -163,13 +174,13 @@ export function validateConfig(schema, config) {
  * object, removing the namespace in the process, normalising all values
  *
  * @internal
- * @param {{ schema: Schema }} Component - Component class
+ * @param {Schema} schema - The schema of a component
  * @param {DOMStringMap} dataset - The object to extract key-value pairs from
  * @param {string} namespace - The namespace to filter keys with
  * @returns {ObjectNested | undefined} Nested object with dot-separated key namespace removed
  */
-export function extractConfigByNamespace(Component, dataset, namespace) {
-  const property = Component.schema.properties[namespace]
+export function extractConfigByNamespace(schema, dataset, namespace) {
+  const property = schema.properties[namespace]
 
   // Only extract configs for object schema properties
   if (property?.type !== 'object') {
