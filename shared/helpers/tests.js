@@ -34,12 +34,7 @@ async function compileSassFile(path, options = {}) {
 async function compileSassString(source, options = {}) {
   return compileStringAsync(source, {
     loadPaths: sassPaths,
-    silenceDeprecations: [
-      'slash-div',
-      'mixed-decls',
-      'import',
-      'global-builtin'
-    ],
+    silenceDeprecations: ['slash-div', 'mixed-decls'],
     quietDeps: true,
     ...options
   })
