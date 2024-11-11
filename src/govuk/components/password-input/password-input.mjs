@@ -1,21 +1,15 @@
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
-import { mergeConfigs, normaliseDataset } from '../../common/configuration.mjs'
+import { GOVUKFrontendComponentConfigurable } from '../../common/configuration.mjs'
 import { ElementError } from '../../errors/index.mjs'
-import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 import { I18n } from '../../i18n.mjs'
 
 /**
  * Password input component
  *
  * @preserve
+ * @augments GOVUKFrontendComponentConfigurable<PasswordInputConfig>
  */
-export class PasswordInput extends GOVUKFrontendComponent {
-  /**
-   * @private
-   * @type {PasswordInputConfig}
-   */
-  config
-
+export class PasswordInput extends GOVUKFrontendComponentConfigurable {
   /** @private */
   i18n
 
@@ -39,7 +33,7 @@ export class PasswordInput extends GOVUKFrontendComponent {
    * @param {PasswordInputConfig} [config] - Password input config
    */
   constructor($root, config = {}) {
-    super($root)
+    super($root, config)
 
     const $input = this.$root.querySelector('.govuk-js-password-input-input')
     if (!($input instanceof HTMLInputElement)) {
@@ -77,12 +71,6 @@ export class PasswordInput extends GOVUKFrontendComponent {
 
     this.$input = $input
     this.$showHideButton = $showHideButton
-
-    this.config = mergeConfigs(
-      PasswordInput.defaults,
-      config,
-      normaliseDataset(PasswordInput, this.$root.dataset)
-    )
 
     this.i18n = new I18n(this.config.i18n, {
       // Read the fallback if necessary rather than have it set in the defaults
