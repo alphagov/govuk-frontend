@@ -87,6 +87,7 @@
     "sass-color-helpers": "^2.1.1",
     "sass-embedded": "^1.79.4",
     "sassdoc": "^2.7.4",
-    "slash": "^5.1.0"
+    "slash": "^5.1.0",
+    "typescript-eslint": "^8.13.0"
   }
 }

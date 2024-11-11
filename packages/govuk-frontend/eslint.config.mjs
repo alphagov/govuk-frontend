@@ -1,7 +1,16 @@
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
 import commonConfig from './../../shared/config/eslint/common.mjs';
 import govukFrontendConfig from './../../shared/config/eslint/govuk-frontend-config.mjs';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+console.log('ayy')
+console.log(__dirname)
+
 export default [
   ...commonConfig,
-  ...govukFrontendConfig,
+  ...govukFrontendConfig(__dirname),
 ]
