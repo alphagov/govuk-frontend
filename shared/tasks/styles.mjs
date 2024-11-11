@@ -81,7 +81,12 @@ export async function compileStylesheet([
 
       // Turn off dependency warnings
       quietDeps: true,
-      silenceDeprecations: ['slash-div', 'mixed-decls'],
+      silenceDeprecations: [
+        'slash-div',
+        'mixed-decls',
+        'import',
+        'global-builtin'
+      ],
 
       // Enable source maps
       sourceMap: true,
