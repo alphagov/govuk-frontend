@@ -248,6 +248,11 @@ export function validateConfig(schema, config) {
         }
       }
 
+      // Check all conditions pass or add errors
+      if (name === 'allOf' && errors.length) {
+        validationErrors.push(...errors)
+      }
+
       // Check one condition passes or add errors
       if (name === 'anyOf' && !(conditions.length - errors.length >= 1)) {
         validationErrors.push(...errors)
@@ -297,7 +302,8 @@ export function formatErrorMessage(Component, message) {
  *
  * @typedef {object} Schema
  * @property {{ [field: string]: SchemaProperty | undefined }} properties - Schema properties
- * @property {SchemaCondition[]} [anyOf] - List of schema conditions
+ * @property {SchemaCondition[]} [allOf] - List of schema conditions, all must pass
+ * @property {SchemaCondition[]} [anyOf] - List of schema conditions, any must pass
  */
 
 /**
