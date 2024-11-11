@@ -1,4 +1,6 @@
+import Config from './common/config.mjs'
 import { isInitialised, isSupported } from './common/index.mjs'
+import { normaliseDataset } from './common/normalise-dataset.mjs'
 import { ElementError, InitError, SupportError } from './errors/index.mjs'
 
 /**
@@ -8,8 +10,27 @@ import { ElementError, InitError, SupportError } from './errors/index.mjs'
  *
  * @virtual
  * @template {Element} [RootElementType=HTMLElement]
+ * @template {{[key:string]: unknown}} [ConfigType={}]
  */
 export class GOVUKFrontendComponent {
+  /**
+   * @type {Config<ConfigType> & ConfigType}
+   */
+  _config
+
+  // allows Typescript user to work around the lack of types
+  // in GOVUKFrontend package, Typescript is not aware of $root
+  // in components that extend GOVUKFrontendComponent
+  /**
+   * Returns the root element of the component
+   *
+   * @protected
+   * @returns {Config<ConfigType> & ConfigType} - the root element of component
+   */
+  get config() {
+    return this._config
+  }
+
   /**
    * @type {typeof Element}
    */
@@ -39,8 +60,9 @@ export class GOVUKFrontendComponent {
    *
    * @internal
    * @param {Element | null} [$root] - HTML element to use for component
+   * @param {...ConfigType} configObjects - Configuration objects for component
    */
-  constructor($root) {
+  constructor($root, ...configObjects) {
     const childConstructor = /** @type {ChildClassConstructor} */ (
       this.constructor
     )
@@ -70,6 +92,37 @@ export class GOVUKFrontendComponent {
     childConstructor.checkSupport()
 
     this.checkInitialised()
+
+    if (configObjects.length) {
+      const childConstructorWithConfig =
+        /** @type {ChildClassConstructorConfig<ConfigType>} */ (
+          this.constructor
+        )
+
+      const dataset = /** @type {{ dataset: DOMStringMap }} */ (
+        /** @type {unknown} */ (this._$root)
+      ).dataset
+      const normalisedDataset = /** @type {ConfigType} */ (
+        normaliseDataset(childConstructorWithConfig, dataset)
+      )
+
+      const configObjectOveride = /** @type {ConfigType} */ (
+        childConstructorWithConfig.configOverride(normalisedDataset)
+      )
+
+      this._config = /** @type {Config<ConfigType> & ConfigType} */ (
+        new Config(
+          childConstructor,
+          ...configObjects,
+          configObjectOveride,
+          normalisedDataset
+        )
+      )
+    } else {
+      this._config = /** @type {Config<ConfigType> & ConfigType} */ (
+        new Config(childConstructor)
+      )
+    }
 
     const moduleName = childConstructor.moduleName
 
@@ -101,13 +154,46 @@ export class GOVUKFrontendComponent {
       throw new SupportError()
     }
   }
+
+  /**
+   * Override configuration
+   *
+   * @param {{[key:string]: unknown}} config - config to override
+   * @returns {{[key:string]: unknown}} - overidden config
+   */
+  static configOverride(config) {
+    return config
+  }
 }
 
 /**
  * @typedef ChildClass
  * @property {string} moduleName - The module name that'll be looked for in the DOM when initialising the component
+ * @property {Schema} [schema] - The module name that'll be looked for in the DOM when initialising the component
+ * @property {{[key:string]: unknown}} [defaults] - The module name that'll be looked for in the DOM when initialising the component
+ */
+
+/**
+ * @template {{[key:string]: unknown}} [ConfigType={}]
+ * @typedef ChildClassConfig
+ * @property {string} moduleName - The module name that'll be looked for in the DOM when initialising the component
+ * @property {Schema} schema - The module name that'll be looked for in the DOM when initialising the component
+ * @property {{[key:string]: unknown}} defaults - The module name that'll be looked for in the DOM when initialising the component
  */
 
 /**
  * @typedef {typeof GOVUKFrontendComponent & ChildClass} ChildClassConstructor
+ */
+
+/**
+ * @template {{[key:string]: unknown}} [ConfigType={}]
+ * @typedef {typeof GOVUKFrontendComponent & ChildClassConfig<ConfigType>} ChildClassConstructorConfig
+ */
+
+/**
+ * @typedef {import("./common/index.mjs").Schema} Schema
+ */
+
+/**
+ * @typedef {import("./common/index.mjs").ObjectNested} ObjectNested
  */
