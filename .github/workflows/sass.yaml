@@ -45,6 +45,14 @@ jobs:
         run: |
           ! grep "\$govuk-" .tmp/all.css
 
+      - name: Save compiled Sass
+        uses: actions/upload-artifact@v4.3.1
+        if: ${{ !cancelled() }}
+        with:
+          name: Dart Sass v1.0.0 output
+          path: .tmp/all.css
+          if-no-files-found: ignore
+
   dart-sass-latest:
     name: Dart Sass v1 (latest)
     runs-on: ubuntu-latest
@@ -80,6 +88,14 @@ jobs:
         run: |
           ! grep "\$govuk-" .tmp/all.css
 
+      - name: Save compiled Sass
+        uses: actions/upload-artifact@v4.3.1
+        if: ${{ !cancelled() }}
+        with:
+          name: Dart Sass v1 (latest) output
+          path: .tmp/all.css
+          if-no-files-found: ignore
+
   # Node Sass v3.4.0 = LibSass v3.3.0
   lib-sass:
     name: LibSass v3.3.0 (deprecated)
@@ -109,6 +125,14 @@ jobs:
       - name: Check output
         run: |
           ! grep "\$govuk-" .tmp/all.css
+
+      - name: Save compiled Sass
+        uses: actions/upload-artifact@v4.3.1
+        if: ${{ !cancelled() }}
+        with:
+          name: LibSass v3.3.0 (deprecated) output
+          path: .tmp/all.css
+          if-no-files-found: ignore
 
   # Node Sass v8.x = LibSass v3 latest
   lib-sass-latest:
@@ -140,6 +164,14 @@ jobs:
         run: |
           ! grep "\$govuk-" .tmp/all.css
 
+      - name: Save compiled Sass
+        uses: actions/upload-artifact@v4.3.1
+        if: ${{ !cancelled() }}
+        with:
+          name: LibSass v3 (latest, deprecated) output
+          path: .tmp/all.css
+          if-no-files-found: ignore
+
   ruby-sass:
     name: Ruby Sass v3.4.0 (deprecated)
     runs-on: ubuntu-latest
@@ -168,6 +200,14 @@ jobs:
         run: |
           ! grep "\$govuk-" .tmp/all.css
 
+      - name: Save compiled Sass
+        uses: actions/upload-artifact@v4.3.1
+        if: ${{ !cancelled() }}
+        with:
+          name: Ruby Sass v3.4.0 (deprecated) output
+          path: .tmp/all.css
+          if-no-files-found: ignore
+
   ruby-sass-latest:
     name: Ruby Sass v3 (latest, deprecated)
     runs-on: ubuntu-latest
@@ -195,3 +235,11 @@ jobs:
       - name: Check output
         run: |
           ! grep "\$govuk-" .tmp/all.css
+
+      - name: Save compiled Sass
+        uses: actions/upload-artifact@v4.3.1
+        if: ${{ !cancelled() }}
+        with:
+          name: Ruby Sass v3 (latest, deprecated) output
+          path: .tmp/all.css
+          if-no-files-found: ignore
