@@ -1,10 +1,10 @@
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
 import {
-  formatErrorMessage,
   mergeConfigs,
-  validateConfig
-} from '../../common/index.mjs'
-import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+  validateConfig,
+  normaliseDataset
+} from '../../common/configuration.mjs'
+import { formatErrorMessage } from '../../common/index.mjs'
 import { ConfigError, ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 import { I18n } from '../../i18n.mjs'
@@ -529,6 +529,6 @@ export class CharacterCount extends GOVUKFrontendComponent {
  */
 
 /**
- * @typedef {import('../../common/index.mjs').Schema} Schema
+ * @typedef {import('../../common/configuration.mjs').Schema} Schema
  * @typedef {import('../../i18n.mjs').TranslationPluralForms} TranslationPluralForms
  */

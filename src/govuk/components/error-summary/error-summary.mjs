@@ -1,9 +1,5 @@
-import {
-  getFragmentFromUrl,
-  mergeConfigs,
-  setFocus
-} from '../../common/index.mjs'
-import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { mergeConfigs, normaliseDataset } from '../../common/configuration.mjs'
+import { getFragmentFromUrl, setFocus } from '../../common/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
@@ -205,5 +201,5 @@ export class ErrorSummary extends GOVUKFrontendComponent {
  */
 
 /**
- * @typedef {import('../../common/index.mjs').Schema} Schema
+ * @typedef {import('../../common/configuration.mjs').Schema} Schema
  */

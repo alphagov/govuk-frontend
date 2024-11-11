@@ -1,4 +1,4 @@
-import { normaliseString } from './normalise-string.mjs'
+import { normaliseString } from '../configuration.mjs'
 
 describe('normaliseString', () => {
   it('normalises the string "true" to boolean true', () => {
