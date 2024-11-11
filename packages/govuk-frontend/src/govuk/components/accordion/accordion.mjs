@@ -577,9 +577,9 @@ export class Accordion extends GOVUKFrontendComponentConfigurable {
    *
    * @see {@link AccordionConfig}
    * @constant
-   * @type {AccordionConfig}
+   * @type {ReadonlyDeep<AccordionConfig>}
    */
-  static defaults = Object.freeze({
+  static defaults = {
     i18n: {
       hideAllSections: 'Hide all sections',
       hideSection: 'Hide',
@@ -589,7 +589,7 @@ export class Accordion extends GOVUKFrontendComponentConfigurable {
       showSectionAriaLabel: 'Show this section'
     },
     rememberExpanded: true
-  })
+  }
 
   /**
    * Accordion config schema
@@ -603,6 +603,11 @@ export class Accordion extends GOVUKFrontendComponentConfigurable {
       rememberExpanded: { type: 'boolean' }
     }
   })
+}
+
+Accordion.defaults.rememberExpanded = false
+if (Accordion.defaults.i18n?.hideSection) {
+  Accordion.defaults.i18n.hideSection = 'Some new string'
 }
 
 /**
@@ -640,4 +645,9 @@ export class Accordion extends GOVUKFrontendComponentConfigurable {
 
 /**
  * @typedef {import('../../common/configuration.mjs').Schema} Schema
+ */
+
+/**
+ * @template T
+ * @typedef {import('type-fest').ReadonlyDeep<T>} ReadonlyDeep<T>
  */
