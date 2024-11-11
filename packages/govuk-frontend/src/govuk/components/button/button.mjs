@@ -1,5 +1,4 @@
-import { mergeConfigs, normaliseDataset } from '../../common/configuration.mjs'
-import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
+import { GOVUKFrontendComponentConfigurable } from '../../common/configuration.mjs'
 
 const DEBOUNCE_TIMEOUT_IN_SECONDS = 1
 
@@ -7,14 +6,9 @@ const DEBOUNCE_TIMEOUT_IN_SECONDS = 1
  * JavaScript enhancements for the Button component
  *
  * @preserve
+ * @augments GOVUKFrontendComponentConfigurable<ButtonConfig>
  */
-export class Button extends GOVUKFrontendComponent {
-  /**
-   * @private
-   * @type {ButtonConfig}
-   */
-  config
-
+export class Button extends GOVUKFrontendComponentConfigurable {
   /**
    * @private
    * @type {number | null}
@@ -26,13 +20,7 @@ export class Button extends GOVUKFrontendComponent {
    * @param {ButtonConfig} [config] - Button config
    */
   constructor($root, config = {}) {
-    super($root)
-
-    this.config = mergeConfigs(
-      Button.defaults,
-      config,
-      normaliseDataset(Button, this.$root.dataset)
-    )
+    super($root, config)
 
     this.$root.addEventListener('keydown', (event) => this.handleKeyDown(event))
     this.$root.addEventListener('click', (event) => this.debounce(event))
