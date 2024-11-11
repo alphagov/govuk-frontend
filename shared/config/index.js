@@ -9,6 +9,7 @@ const { NODE_ENV = 'development' } = process.env
  */
 const paths = require('./paths')
 const ports = require('./ports')
+const sass = require('./sass')
 const urls = require('./urls')
 
 /**
@@ -25,6 +26,7 @@ module.exports = {
   paths,
   pkg,
   ports,
+  sass,
   urls,
   version
 }

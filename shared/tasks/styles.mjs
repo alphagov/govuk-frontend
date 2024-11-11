@@ -1,7 +1,7 @@
 import { readFile } from 'fs/promises'
 import { join, parse } from 'path'
 
-import { paths } from '@govuk-frontend/config'
+import { paths, sass as sassConfig } from '@govuk-frontend/config'
 import { getListing } from '@govuk-frontend/lib/files'
 import { packageTypeToPath } from '@govuk-frontend/lib/names'
 import PluginError from 'plugin-error'
@@ -80,13 +80,7 @@ export async function compileStylesheet([
       alertColor: true,
 
       // Turn off dependency warnings
-      quietDeps: true,
-      silenceDeprecations: [
-        'slash-div',
-        'mixed-decls',
-        'import',
-        'global-builtin'
-      ],
+      ...sassConfig.deprecationOptions,
 
       // Enable source maps
       sourceMap: true,
