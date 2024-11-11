@@ -1,20 +1,14 @@
-import { mergeConfigs, normaliseDataset } from '../../common/configuration.mjs'
+import { GOVUKFrontendComponentConfigurable } from '../../common/configuration.mjs'
 import { ElementError } from '../../errors/index.mjs'
-import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 import { I18n } from '../../i18n.mjs'
 
 /**
  * Exit this page component
  *
  * @preserve
+ * @augments GOVUKFrontendComponentConfigurable<ExitThisPageConfig>
  */
-export class ExitThisPage extends GOVUKFrontendComponent {
-  /**
-   * @private
-   * @type {ExitThisPageConfig}
-   */
-  config
-
+export class ExitThisPage extends GOVUKFrontendComponentConfigurable {
   /** @private */
   i18n
 
@@ -75,7 +69,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
    * @param {ExitThisPageConfig} [config] - Exit This Page config
    */
   constructor($root, config = {}) {
-    super($root)
+    super($root, config)
 
     const $button = this.$root.querySelector('.govuk-exit-this-page__button')
     if (!($button instanceof HTMLAnchorElement)) {
@@ -86,12 +80,6 @@ export class ExitThisPage extends GOVUKFrontendComponent {
         identifier: 'Button (`.govuk-exit-this-page__button`)'
       })
     }
-
-    this.config = mergeConfigs(
-      ExitThisPage.defaults,
-      config,
-      normaliseDataset(ExitThisPage, this.$root.dataset)
-    )
 
     this.i18n = new I18n(this.config.i18n)
     this.$button = $button
