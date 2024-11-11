@@ -1,10 +1,12 @@
-import { normaliseDataset } from './normalise-dataset.mjs'
+import { normaliseDataset } from '../configuration.mjs'
 
 describe('normaliseDataset', () => {
   it('normalises the entire dataset', () => {
     expect(
       normaliseDataset(
         class Component {
+          static moduleName = 'Component'
+
           /**
            * @satisfies {Schema}
            */
@@ -52,5 +54,5 @@ describe('normaliseDataset', () => {
 })
 
 /**
- * @typedef {import('./index.mjs').Schema} Schema
+ * @typedef {import('./../configuration.mjs').Schema} Schema
  */

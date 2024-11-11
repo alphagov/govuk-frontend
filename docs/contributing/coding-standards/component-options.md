@@ -33,7 +33,7 @@ The order in which variables are written defines their priority, with objects pa
 There is no guarantee `config` will have any value at all, so we set the default to an empty object (`{}`) in the constructor parameters.
 
 ```mjs
-import { mergeConfigs } from '../../common/index.mjs'
+import { mergeConfigs } from '../../common/configuration.mjs'
 
 export class Accordion {
   constructor($root, config = {}) {
@@ -106,8 +106,7 @@ As we expect configuration-related `data-*` attributes to always be on the compo
 Using the `mergeConfigs` call discussed earlier in this document, update it to include `this.$root.dataset` as the highest priority after calling the constuctor of `GOVUKFrontendComponent` with `super()`.
 
 ```mjs
-import { mergeConfigs } from '../../common/index.mjs'
-import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { mergeConfigs, normaliseDataset } from '../../common/configuration.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 export class Accordion extends GOVUKFrontendComponent{
@@ -162,8 +161,7 @@ You can use the `validateConfig` function to ensure that a configuration object 
 If it doesn't, you can return a `ConfigError`.
 
 ```mjs
-import { mergeConfigs, validateConfig } from '../../common/index.mjs'
-import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { mergeConfigs, validateConfig, normaliseDataset } from '../../common/configuration.mjs'
 import { ConfigError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
@@ -250,8 +248,7 @@ For example, we could namespace our `rememberExpanded` option under the `stateIn
 The `extractConfigByNamespace` JavaScript helper can be used to create an object containing _only_ the configuration options that belong to a certain namespace.
 
 ```mjs
-import { mergeConfigs, extractConfigByNamespace } from '../../common/index.mjs'
-import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { mergeConfigs, extractConfigByNamespace, normaliseDataset } from '../../common/configuration.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 export class Accordion extends GOVUKFrontendComponent {
