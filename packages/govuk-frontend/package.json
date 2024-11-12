@@ -65,6 +65,7 @@
     "@babel/core": "^7.25.8",
     "@babel/preset-env": "^7.25.8",
     "@govuk-frontend/config": "*",
+    "@govuk-frontend/eslint-config": "*",    
     "@govuk-frontend/helpers": "*",
     "@govuk-frontend/lib": "*",
     "@govuk-frontend/tasks": "*",

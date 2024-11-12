@@ -4,6 +4,8 @@ import { fileURLToPath } from 'url';
 import commonConfig from './../../shared/config/eslint/common.mjs';
 import govukFrontendConfig from './../../shared/config/eslint/govuk-frontend-config.mjs';
 
+import { common, govukFrontendConfig } from '@govuk-frontend/eslint-config'
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
