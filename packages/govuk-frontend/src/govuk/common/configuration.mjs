@@ -3,6 +3,8 @@ import { GOVUKFrontendComponent } from '../govuk-frontend-component.mjs'
 
 import { isObject, formatErrorMessage } from './index.mjs'
 
+export const configOverride = Symbol.for('configOverride')
+
 /**
  * Base Component class
  *
@@ -14,6 +16,27 @@ import { isObject, formatErrorMessage } from './index.mjs'
  * @augments GOVUKFrontendComponent<RootElementType>
  */
 export class GOVUKFrontendComponentConfigurable extends GOVUKFrontendComponent {
+  /**
+   * configOverride
+   *
+   * Function which defines configuration overrides to prioritize
+   * properties from the root element's dataset.
+   *
+   * It should take a subset of configuration as input and return
+   * a new configuration object with properties that should be
+   * overridden based on the root element's dataset. A Symbol
+   * is used for indexing to prevent conflicts.
+   *
+   * @internal
+   * @virtual
+   * @param {ObjectNested} [param] - Configuration object
+   * @returns {ObjectNested} return - Configuration object
+   */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  [configOverride](param) {
+    return {}
+  }
+
   /**
    * Returns the root element of the component
    *
@@ -52,11 +75,16 @@ export class GOVUKFrontendComponentConfigurable extends GOVUKFrontendComponent {
       )
     }
 
+    const datasetConfig = /** @type {ConfigurationType} */ (
+      normaliseDataset(childConstructor, this._$root.dataset)
+    )
+
     this._config = /** @type {ConfigurationType} */ (
       mergeConfigs(
         childConstructor.defaults,
         config ?? {},
-        normaliseDataset(childConstructor, this._$root.dataset)
+        this[configOverride](datasetConfig),
+        datasetConfig
       )
     )
   }
