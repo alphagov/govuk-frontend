@@ -162,7 +162,7 @@ export { initAll, createAll }
  **/
 
 /**
- * @typedef {{new (...args: any[]): any, defaults?: object, moduleName: string}} CompatibleClass
+ * @typedef {{new (...args: any[]): any, moduleName: string}} CompatibleClass
  */
 
 /* eslint-enable jsdoc/valid-types */
@@ -203,7 +203,7 @@ export { initAll, createAll }
 
 /**
  * @template {CompatibleClass} ComponentClass
- * @typedef {ComponentClass["defaults"]} ComponentConfig
+ * @typedef {ConstructorParameters<ComponentClass>[1]} ComponentConfig
  */
 
 /**
