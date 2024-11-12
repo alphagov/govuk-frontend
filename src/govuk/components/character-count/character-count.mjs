@@ -1,12 +1,11 @@
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
 import {
-  mergeConfigs,
   validateConfig,
-  normaliseDataset
+  GOVUKFrontendComponentConfigurable,
+  configOverride
 } from '../../common/configuration.mjs'
 import { formatErrorMessage } from '../../common/index.mjs'
 import { ConfigError, ElementError } from '../../errors/index.mjs'
-import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 import { I18n } from '../../i18n.mjs'
 
 /**
@@ -20,8 +19,9 @@ import { I18n } from '../../i18n.mjs'
  * of the available characters/words has been entered.
  *
  * @preserve
+ * @augments GOVUKFrontendComponentConfigurable<CharacterCountConfig>
  */
-export class CharacterCount extends GOVUKFrontendComponent {
+export class CharacterCount extends GOVUKFrontendComponentConfigurable {
   /** @private */
   $textarea
 
@@ -46,24 +46,41 @@ export class CharacterCount extends GOVUKFrontendComponent {
    */
   valueChecker = null
 
-  /**
-   * @private
-   * @type {CharacterCountConfig}
-   */
-  config
-
   /** @private */
   i18n
 
   /** @private */
-  maxLength
+  maxLength;
+
+  /**
+   * Character count config override
+   *
+   * To ensure data-attributes take complete precedence, even if they change
+   * the type of count, we need to reset the `maxlength` and `maxwords` from
+   * the JavaScript config.
+   *
+   * @internal
+   * @param {CharacterCountConfig} datasetConfig - configuration specified by dataset
+   * @returns {CharacterCountConfig} - configuration to override by dataset
+   */
+  [configOverride](datasetConfig) {
+    let configOverrides = {}
+    if ('maxwords' in datasetConfig || 'maxlength' in datasetConfig) {
+      configOverrides = {
+        maxlength: undefined,
+        maxwords: undefined
+      }
+    }
+
+    return configOverrides
+  }
 
   /**
    * @param {Element | null} $root - HTML element to use for character count
    * @param {CharacterCountConfig} [config] - Character count config
    */
   constructor($root, config = {}) {
-    super($root)
+    super($root, config)
 
     const $textarea = this.$root.querySelector('.govuk-js-character-count')
     if (
@@ -79,31 +96,6 @@ export class CharacterCount extends GOVUKFrontendComponent {
         identifier: 'Form field (`.govuk-js-character-count`)'
       })
     }
-
-    // Read config set using dataset ('data-' values)
-    const datasetConfig = normaliseDataset(CharacterCount, this.$root.dataset)
-
-    // To ensure data-attributes take complete precedence, even if they change
-    // the type of count, we need to reset the `maxlength` and `maxwords` from
-    // the JavaScript config.
-    //
-    // We can't mutate `config`, though, as it may be shared across multiple
-    // components inside `initAll`.
-    /** @type {CharacterCountConfig} */
-    let configOverrides = {}
-    if ('maxwords' in datasetConfig || 'maxlength' in datasetConfig) {
-      configOverrides = {
-        maxlength: undefined,
-        maxwords: undefined
-      }
-    }
-
-    this.config = mergeConfigs(
-      CharacterCount.defaults,
-      config,
-      configOverrides,
-      datasetConfig
-    )
 
     // Check for valid config
     const errors = validateConfig(CharacterCount.schema, this.config)
