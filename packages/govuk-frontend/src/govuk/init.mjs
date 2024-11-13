@@ -155,17 +155,9 @@ function createAll(Component, config, createAllOptions) {
 
 export { initAll, createAll }
 
-/* eslint-disable jsdoc/valid-types --
- * `{new(...args: any[] ): object}` is not recognised as valid
- * https://github.com/gajus/eslint-plugin-jsdoc/issues/145#issuecomment-1308722878
- * https://github.com/jsdoc-type-pratt-parser/jsdoc-type-pratt-parser/issues/131
- **/
-
 /**
  * @typedef {{new (...args: any[]): any, defaults?: object, moduleName: string}} CompatibleClass
  */
-
-/* eslint-enable jsdoc/valid-types */
 
 /**
  * Config for all components via `initAll()`

@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@govuk-frontend/config": "*",
+    "@govuk-frontend/eslint-config": "*",    
     "@govuk-frontend/lib": "*",
     "@govuk-frontend/stats": "*",
     "@prettier/sync": "^0.5.2",

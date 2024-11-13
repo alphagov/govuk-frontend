@@ -38,8 +38,9 @@
     "lint": "npm run lint:editorconfig && npm run lint:prettier && npm run lint:js && npm run lint:types && npm run lint:scss",
     "lint:editorconfig": "npm run lint:editorconfig:cli",
     "lint:editorconfig:cli": "editorconfig-checker",
-    "lint:js": "npm run lint:js:cli -- \"**/*.{cjs,js,md,mjs}\"",
-    "lint:js:cli": "eslint --cache --cache-location .cache/eslint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0",
+    "lint:js": "npm run lint:js:cli:frontend && npm run lint:js:cli:frontend-review",
+    "lint:js:cli:frontend": "eslint --flag unstable_config_lookup_from_file --cache --cache-location .cache/eslint --cache-strategy content --color --ignore-pattern .gitignore --max-warnings 0 packages/govuk-frontend/",
+    "lint:js:cli:frontend-review": "eslint --flag unstable_config_lookup_from_file  --cache --cache-location .cache/eslint --cache-strategy content --color --ignore-pattern .gitignore --max-warnings 0 packages/govuk-frontend/",
     "lint:prettier": "npm run lint:prettier:cli -- \"**/*.{cjs,js,json,md,mjs,scss,yaml,yml}\"",
     "lint:prettier:cli": "prettier --cache --cache-location .cache/prettier --cache-strategy content --check",
     "lint:scss": "npm run lint:scss:cli -- \"**/*.{md,scss}\"",
@@ -62,17 +63,6 @@
     "cross-env": "^7.0.3",
     "del-cli": "^5.1.0",
     "editorconfig-checker": "^5.1.8",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-es-x": "^7.6.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jest": "^27.9.0",
-    "eslint-plugin-jest-dom": "^5.4.0",
-    "eslint-plugin-jsdoc": "^48.2.2",
-    "eslint-plugin-markdown": "^4.0.1",
-    "eslint-plugin-n": "^16.6.2",
-    "eslint-plugin-promise": "^6.1.1",
     "gulp": "^5.0.0",
     "gulp-cli": "^3.0.0",
     "husky": "^9.1.6",
@@ -86,7 +76,6 @@
     "postcss-scss": "^4.0.9",
     "prettier": "^3.3.3",
     "semver": "^7.6.2",
-    "standard": "^17.1.0",
     "stylelint": "^16.9.0",
     "stylelint-config-gds": "^2.0.0",
     "stylelint-order": "^6.0.4",
@@ -127,5 +116,8 @@
     "sassdoc-extras@^2": {
       "marked": "^0.8.2"
     }
+  },
+  "dependencies": {
+    "eslint": "^9.13.0"
   }
 }

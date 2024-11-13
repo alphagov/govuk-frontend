@@ -1,13 +1,9 @@
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-
 import commonConfig from './common.mjs'
-import govukFrontendConfig from './govuk-frontend-config.mjs'
+import govukFrontendConfig from './govuk-frontend-config.mjs';
+import govukFrontendReviewConfig from './govuk-frontend-review.mjs';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-export default [
-  ...commonConfig,
-  ...govukFrontendConfig(__dirname),
-]
+export {
+  commonConfig,
+  govukFrontendConfig,
+  govukFrontendReviewConfig
+}

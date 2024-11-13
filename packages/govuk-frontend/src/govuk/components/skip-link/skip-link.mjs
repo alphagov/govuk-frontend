@@ -35,6 +35,7 @@ export class SkipLink extends GOVUKFrontendComponent {
      */
     try {
       url = new window.URL(this.$root.href)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       throw new ElementError(
         `Skip link: Target link (\`href="${href}"\`) is invalid`
