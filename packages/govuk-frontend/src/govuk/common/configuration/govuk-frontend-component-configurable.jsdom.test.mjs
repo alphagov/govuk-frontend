@@ -1,5 +1,8 @@
 import { ConfigError } from '../../errors/index.mjs'
-import { GOVUKFrontendComponentConfigurable } from '../configuration.mjs'
+import {
+  GOVUKFrontendComponentConfigurable,
+  configOverride
+} from '../configuration.mjs'
 
 describe('GOVUKFrontendComponentConfigurable', () => {
   beforeEach(() => {
@@ -156,6 +159,44 @@ describe('GOVUKFrontendComponentConfigurable', () => {
       })
 
       expect(configComponent._config).toMatchObject({ randomAttribute: 12 })
+    })
+
+    it('dataset overrides if configOverride set', () => {
+      const configOverrideFunction = jest.fn((config) => {
+        return { randomAttribute: undefined }
+      })
+
+      document.body.innerHTML = `
+        <div id="test-component" data-random-attribute="13"></div>
+      `
+
+      class ConfigurableComponent extends GOVUKFrontendComponentConfigurable {
+        [configOverride](config) {
+          return configOverrideFunction(config)
+        }
+
+        static moduleName = 'config-component'
+
+        static schema = {
+          properties: {
+            randomAttribute: { type: 'number' }
+          }
+        }
+
+        static defaults = {
+          randomAttribute: 0
+        }
+      }
+
+      const testComponent = document.querySelector('#test-component')
+
+      const configComponent = new ConfigurableComponent(testComponent, {
+        randomAttribute: '14'
+      })
+
+      expect(configComponent._config).toMatchObject({ randomAttribute: 13 })
+
+      expect(configOverrideFunction).toHaveBeenCalled()
     })
   })
 })
