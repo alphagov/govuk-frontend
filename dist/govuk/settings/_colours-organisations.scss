@@ -1,0 +1,378 @@
+////
+/// @group settings/colours
+////
+
+/// Feature flag for updated organisation list and colours
+///
+/// When set to true, $govuk-colours-organisations will use the new
+/// organisation list and colour selection.
+///
+/// Should be removed in 6.0.
+///
+/// @type Boolean
+/// @access public
+
+$govuk-new-organisation-colours: false !default;
+
+/// Current organisation colours
+///
+/// @type Map
+///
+/// @prop $organisation.colour - Colour for the given `$organisation`
+/// @prop $organisation.contrast-safe - 'Contrast safe' colour for the given
+///   `$organisation`. This colour has at least a 4.5:1 contrast against
+///   white, to be used for copy and meet the AAA (large text) and AA (smaller
+///   copy) WCAG guidelines.
+/// @prop $organisation.deprecation-message - Marks this organisation as
+///   deprecated (usually because it has ceased to exist). Value is the
+///   deprecation message output to the terminal when compiling.
+///
+/// @access private
+
+$_govuk-organisation-colours: (
+  "attorney-generals-office": (
+    colour: #a91c8e
+  ),
+  "cabinet-office": (
+    colour: #0056b8
+  ),
+  "civil-service": (
+    colour: #b2292e
+  ),
+  "department-for-business-trade": (
+    colour: #e52d13,
+    contrast-safe: #e02c13
+  ),
+  "department-for-business-energy-industrial-strategy": (
+    colour: #003479,
+    deprecation-message:
+      "`department-for-business-energy-industrial-strategy` was dissolved in 2023. It was replaced by `department-for-business-trade`, `department-for-energy-security-net-zero` and `department-science-innovation-technology`."
+  ),
+  "department-for-business-innovation-skills": (
+    colour: #003479,
+    deprecation-message:
+      "`department-for-business-innovation-skills` became `department-for-business-energy-industrial-strategy` in 2016. As of 2023, it is equivalent to `department-for-business-trade` or `department-science-innovation-technology`."
+  ),
+  "department-for-communities-local-government": (
+    colour: #009999,
+    contrast-safe: #008080,
+    deprecation-message:
+      "`department-for-communities-local-government` became `ministry-of-housing-communities-local-government` in 2018."
+  ),
+  "department-for-culture-media-sport": (
+    colour: #ed1588,
+    contrast-safe: #d6177a
+  ),
+  "department-for-digital-culture-media-sport": (
+    colour: #d40072,
+    deprecation-message:
+      "`department-for-digital-culture-media-sport` became `department-for-culture-media-sport` in 2023."
+  ),
+  "department-for-education": (
+    colour: #003764
+  ),
+  "department-for-energy-security-net-zero": (
+    colour: #00a33b,
+    contrast-safe: #00852f
+  ),
+  "department-for-environment-food-rural-affairs": (
+    colour: #00a33b,
+    contrast-safe: #008531
+  ),
+  "department-for-exiting-the-european-union": (
+    colour: #009fe3,
+    contrast-safe: #007db6,
+    deprecation-message: "`department-for-exiting-the-european-union` was dissolved in 2020."
+  ),
+  "department-for-international-development": (
+    colour: #002878,
+    deprecation-message:
+      "`department-for-international-development` was merged into `foreign-commonwealth-development-office` in 2020."
+  ),
+  "department-for-international-trade": (
+    colour: #cf102d,
+    deprecation-message: "`department-for-international-trade` was merged into `department-for-business-trade` in 2023."
+  ),
+  "department-for-levelling-up-housing-communities": (
+    colour: #012169,
+    deprecation-message:
+      "`department-for-levelling-up-housing-communities` was renamed to `ministry-of-housing-communities-local-government` in 2024."
+  ),
+  "department-for-science-innovation-technology": (
+    colour: #00f8f8,
+    contrast-safe: #008180
+  ),
+  "department-for-transport": (
+    colour: #006853
+  ),
+  "department-for-work-pensions": (
+    colour: #00bcb5,
+    contrast-safe: #00857e
+  ),
+  "department-of-energy-climate-change": (
+    colour: #009ddb,
+    contrast-safe: #007db3,
+    deprecation-message:
+      "`department-of-energy-climate-change` was merged into `department-for-business-energy-industrial-strategy` in 2016. As of 2023, it is equivalent to `department-for-energy-security-net-zero`."
+  ),
+  "department-of-health": (
+    colour: #00ad93,
+    contrast-safe: #008573,
+    deprecation-message: "`department-of-health` became `department-of-health-social-care` in 2018."
+  ),
+  "department-of-health-social-care": (
+    colour: #00a990,
+    contrast-safe: #008674
+  ),
+  "foreign-commonwealth-office": (
+    colour: #003e74,
+    deprecation-message: "`foreign-commonwealth-office` became `foreign-commonwealth-development-office` in 2018."
+  ),
+  "foreign-commonwealth-development-office": (
+    colour: #012069
+  ),
+  "government-equalities-office": (
+    colour: #0056b8,
+    deprecation-message: "`government-equalities-office` is deprecated. Use `cabinet-office` instead."
+  ),
+  "hm-government": (
+    colour: #266ebc
+  ),
+  "hm-revenue-customs": (
+    colour: #008476
+  ),
+  "hm-treasury": (
+    colour: #b2292e
+  ),
+  "home-office": (
+    colour: #732282
+  ),
+  "ministry-of-defence": (
+    colour: #532a45
+  ),
+  "ministry-of-housing-communities-local-government": (
+    colour: #00625e
+  ),
+  "ministry-of-justice": (
+    colour: #000000
+  ),
+  "northern-ireland-office": (
+    colour: #00205c
+  ),
+  "office-of-the-advocate-general-for-scotland": (
+    colour: #00205c
+  ),
+  "office-of-the-leader-of-the-house-of-commons": (
+    colour: #497629
+  ),
+  "office-of-the-leader-of-the-house-of-lords": (
+    colour: #9c182f
+  ),
+  "office-of-the-secretary-of-state-for-scotland": (
+    colour: #00205c,
+    deprecation-message: "`office-of-the-secretary-of-state-for-scotland` was renamed to `scotland-office` in 2024."
+  ),
+  "office-of-the-secretary-of-state-for-wales": (
+    colour: #a8353a,
+    deprecation-message: "`office-of-the-secretary-of-state-for-wales` was renamed to `wales-office` in 2024."
+  ),
+  "prime-ministers-office-10-downing-street": (
+    colour: #0b0c0c
+  ),
+  "scotland-office": (
+    colour: #00205c
+  ),
+  "serious-fraud-office": (
+    colour: #82368c
+  ),
+  "uk-export-finance": (
+    colour: #cf102d
+  ),
+  "uk-trade-investment": (
+    colour: #c80651,
+    deprecation-message:
+      "`uk-trade-investment` became `department-for-international-trade` in 2016. As of 2023, it is equivalent to `department-for-business-trade`."
+  ),
+  "wales-office": (
+    colour: #a33038
+  )
+);
+
+/// Legacy organisation colours
+///
+/// These are the colours included with Frontend prior to 5.3.0. They will be
+/// removed in a future major version of Frontend.
+///
+/// @type Map
+///
+/// @prop $organisation.colour - Colour for the given `$organisation`
+/// @prop $organisation.colour-websafe - Optional alternative shade of the
+///   organisation colour. Despite the name, is not guaranteed to be websafe
+///   nor provide better contrast than the base colour.
+///
+/// @access private
+
+$_govuk-legacy-organisation-colours: (
+  "attorney-generals-office": (
+    colour: #9f1888,
+    colour-websafe: #a03a88
+  ),
+  "cabinet-office": (
+    colour: #005abb,
+    colour-websafe: #347da4
+  ),
+  "civil-service": (
+    colour: #af292e
+  ),
+  "department-for-business-innovation-skills": (
+    colour: #003479,
+    colour-websafe: #347da4
+  ),
+  "department-for-communities-local-government": (
+    colour: #009999,
+    colour-websafe: #37836e
+  ),
+  "department-for-culture-media-sport": (
+    colour: #d40072,
+    colour-websafe: #a03155
+  ),
+  "department-for-education": (
+    colour: #003a69,
+    colour-websafe: #347ca9
+  ),
+  "department-for-environment-food-rural-affairs": (
+    colour: #00a33b,
+    colour-websafe: #008938
+  ),
+  "department-for-international-development": (
+    colour: #002878,
+    colour-websafe: #405e9a
+  ),
+  "department-for-international-trade": (
+    colour: #cf102d,
+    colour-websafe: #005ea5
+  ),
+  "department-for-business-trade": (
+    colour: #cf102d,
+    colour-websafe: #005ea5
+  ),
+  "department-for-levelling-up-housing-communities": (
+    colour: #012169
+  ),
+  "department-for-transport": (
+    colour: #006c56,
+    colour-websafe: #398373
+  ),
+  "department-for-work-pensions": (
+    colour: #00beb7,
+    colour-websafe: #37807b
+  ),
+  "department-of-energy-climate-change": (
+    colour: #009ddb,
+    colour-websafe: #2b7cac
+  ),
+  "department-of-health": (
+    colour: #00ad93,
+    colour-websafe: #39836e
+  ),
+  "foreign-commonwealth-development-office": (
+    colour: #012169
+  ),
+  "foreign-commonwealth-office": (
+    colour: #003e74,
+    colour-websafe: #406e97
+  ),
+  "government-equalities-office": (
+    colour: #9325b2
+  ),
+  "hm-government": (
+    colour: #0076c0,
+    colour-websafe: #347da4
+  ),
+  "hm-revenue-customs": (
+    colour: #009390,
+    colour-websafe: #008670
+  ),
+  "hm-treasury": (
+    colour: #af292e,
+    colour-websafe: #832322
+  ),
+  "home-office": (
+    colour: #9325b2,
+    colour-websafe: #9440b2
+  ),
+  "ministry-of-defence": (
+    colour: #4d2942,
+    colour-websafe: #5a5c92
+  ),
+  "ministry-of-justice": (
+    colour: #231f20,
+    colour-websafe: #5a5c92
+  ),
+  "northern-ireland-office": (
+    colour: #002663,
+    colour-websafe: #3e598c
+  ),
+  "office-of-the-advocate-general-for-scotland": (
+    colour: #002663,
+    colour-websafe: #005ea5
+  ),
+  "office-of-the-leader-of-the-house-of-commons": (
+    colour: #317023,
+    colour-websafe: #005f8f
+  ),
+  "office-of-the-leader-of-the-house-of-lords": (
+    colour: #9c132e,
+    colour-websafe: #c2395d
+  ),
+  "scotland-office": (
+    colour: #002663,
+    colour-websafe: #405c8a
+  ),
+  "uk-export-finance": (
+    colour: #005747,
+    colour-websafe: #005ea5
+  ),
+  "uk-trade-investment": (
+    colour: #c80651,
+    colour-websafe: #005ea5
+  ),
+  "wales-office": (
+    colour: #a33038,
+    colour-websafe: #7a242a
+  )
+);
+
+/// Set public organisation colours variable to one of the two maps.
+/// Users can also pass their own map to this to override it entirely.
+///
+/// @type Map
+/// @access public
+
+$govuk-colours-organisations: if(
+  $govuk-new-organisation-colours,
+  $_govuk-organisation-colours,
+  $_govuk-legacy-organisation-colours
+) !default;
+
+/// Organisation colour aliases
+///
+/// Some organisations have been renamed within our code over time. Here we
+/// map the prior key to the new equivalent key.
+///
+/// Note: This is for internal renames only. If a department has changed name
+/// or brand colour in a machinery of government change, it should be added to
+/// $govuk-colours-organisations as a new entry with any superseded
+/// organisations marked deprecated.
+///
+/// @type Map
+///
+/// @access private
+
+$_govuk-colours-organisations-aliases: (
+  "department-for-business-and-trade": "department-for-business-trade",
+  "department-for-communities-and-local-government": "department-for-communities-local-government",
+  "department-for-levelling-up-housing-and-communities": "department-for-levelling-up-housing-communities"
+);
+
+/*# sourceMappingURL=_colours-organisations.scss.map */
