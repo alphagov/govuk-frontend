@@ -76,11 +76,11 @@ function initAll(config) {
  *
  * Any component errors will be caught and logged to the console.
  *
- * @template {CompatibleClass} T
- * @param {T} Component - class of the component to create
- * @param {T["defaults"]} [config] - Config supplied to component
- * @param {OnErrorCallback<T> | Element | Document | CreateAllOptions<T> } [createAllOptions] - options for createAll including scope of the document to search within and callback function if error throw by component on init
- * @returns {Array<InstanceType<T>>} - array of instantiated components
+ * @template {CompatibleClass} ComponentClass
+ * @param {ComponentClass} Component - class of the component to create
+ * @param {ComponentConfig<ComponentClass>} [config] - Config supplied to component
+ * @param {OnErrorCallback<ComponentClass> | Element | Document | CreateAllOptions<ComponentClass> } [createAllOptions] - options for createAll including scope of the document to search within and callback function if error throw by component on init
+ * @returns {Array<InstanceType<ComponentClass>>} - array of instantiated components
  */
 function createAll(Component, config, createAllOptions) {
   let /** @type {Element | Document} */ $scope = document
@@ -162,7 +162,7 @@ export { initAll, createAll }
  **/
 
 /**
- * @typedef {{new (...args: any[]): any, defaults?: object, moduleName: string}} CompatibleClass
+ * @typedef {{new (...args: any[]): any, moduleName: string}} CompatibleClass
  */
 
 /* eslint-enable jsdoc/valid-types */
@@ -202,23 +202,28 @@ export { initAll, createAll }
  */
 
 /**
- * @template {CompatibleClass} T
+ * @template {CompatibleClass} ComponentClass
+ * @typedef {ConstructorParameters<ComponentClass>[1]} ComponentConfig
+ */
+
+/**
+ * @template {CompatibleClass} ComponentClass
  * @typedef {object} ErrorContext
  * @property {Element} [element] - Element used for component module initialisation
- * @property {T} [component] - Class of component
- * @property {T["defaults"]} config - Config supplied to component
+ * @property {ComponentClass} [component] - Class of component
+ * @property {ComponentConfig<ComponentClass>} config - Config supplied to component
  */
 
 /**
- * @template {CompatibleClass} T
+ * @template {CompatibleClass} ComponentClass
  * @callback OnErrorCallback
  * @param {unknown} error - Thrown error
- * @param {ErrorContext<T>} context - Object containing the element, component class and configuration
+ * @param {ErrorContext<ComponentClass>} context - Object containing the element, component class and configuration
  */
 
 /**
- * @template {CompatibleClass} T
+ * @template {CompatibleClass} ComponentClass
  * @typedef {object} CreateAllOptions
  * @property {Element | Document} [scope] - scope of the document to search within
- * @property {OnErrorCallback<T>} [onError] - callback function if error throw by component on init
+ * @property {OnErrorCallback<ComponentClass>} [onError] - callback function if error throw by component on init
  */
