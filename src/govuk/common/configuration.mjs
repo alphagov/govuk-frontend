@@ -15,7 +15,7 @@ export const configOverride = Symbol.for('configOverride')
  * @template {Element & { dataset: DOMStringMap }} [RootElementType=HTMLElement]
  * @augments GOVUKFrontendComponent<RootElementType>
  */
-export class GOVUKFrontendComponentConfigurable extends GOVUKFrontendComponent {
+export class ConfigurableComponent extends GOVUKFrontendComponent {
   /**
    * configOverride
    *
