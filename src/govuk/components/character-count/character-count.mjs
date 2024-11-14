@@ -1,7 +1,7 @@
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
 import {
   validateConfig,
-  GOVUKFrontendComponentConfigurable,
+  ConfigurableComponent,
   configOverride
 } from '../../common/configuration.mjs'
 import { formatErrorMessage } from '../../common/index.mjs'
@@ -19,9 +19,9 @@ import { I18n } from '../../i18n.mjs'
  * of the available characters/words has been entered.
  *
  * @preserve
- * @augments GOVUKFrontendComponentConfigurable<CharacterCountConfig>
+ * @augments ConfigurableComponent<CharacterCountConfig>
  */
-export class CharacterCount extends GOVUKFrontendComponentConfigurable {
+export class CharacterCount extends ConfigurableComponent {
   /** @private */
   $textarea
 

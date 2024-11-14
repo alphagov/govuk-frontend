@@ -1,10 +1,7 @@
 import { ConfigError } from '../../errors/index.mjs'
-import {
-  GOVUKFrontendComponentConfigurable,
-  configOverride
-} from '../configuration.mjs'
+import { ConfigurableComponent, configOverride } from '../configuration.mjs'
 
-describe('GOVUKFrontendComponentConfigurable', () => {
+describe('ConfigurableComponent', () => {
   beforeEach(() => {
     // Jest does not tidy the JSDOM document between tests
     // so we need to take care of that ourselves
@@ -18,7 +15,7 @@ describe('GOVUKFrontendComponentConfigurable', () => {
 
   describe('throws error', () => {
     it('if no schema defined', () => {
-      class ConfigurableComponent extends GOVUKFrontendComponentConfigurable {
+      class MockConfigurableComponent extends ConfigurableComponent {
         static moduleName = 'config-component'
 
         static defaults = {
@@ -26,7 +23,7 @@ describe('GOVUKFrontendComponentConfigurable', () => {
         }
       }
 
-      expect(() => new ConfigurableComponent(document.body)).toThrow(
+      expect(() => new MockConfigurableComponent(document.body)).toThrow(
         new ConfigError(
           'config-component: Config passed as parameter into constructor but no schema defined'
         )
@@ -34,7 +31,7 @@ describe('GOVUKFrontendComponentConfigurable', () => {
     })
 
     it('if no defaults defined', () => {
-      class ConfigurableComponent extends GOVUKFrontendComponentConfigurable {
+      class MockConfigurableComponent extends ConfigurableComponent {
         static moduleName = 'config-component'
 
         static schema = {
@@ -44,7 +41,7 @@ describe('GOVUKFrontendComponentConfigurable', () => {
         }
       }
 
-      expect(() => new ConfigurableComponent(document.body)).toThrow(
+      expect(() => new MockConfigurableComponent(document.body)).toThrow(
         new ConfigError(
           'config-component: Config passed as parameter into constructor but no defaults defined'
         )
@@ -58,7 +55,7 @@ describe('GOVUKFrontendComponentConfigurable', () => {
         <div id="test-component"></div>
       `
 
-      class ConfigurableComponent extends GOVUKFrontendComponentConfigurable {
+      class MockConfigurableComponent extends ConfigurableComponent {
         static moduleName = 'config-component'
 
         static schema = {
@@ -74,7 +71,7 @@ describe('GOVUKFrontendComponentConfigurable', () => {
 
       const testComponent = document.querySelector('#test-component')
 
-      const configComponent = new ConfigurableComponent(testComponent)
+      const configComponent = new MockConfigurableComponent(testComponent)
 
       expect(configComponent._config).toMatchObject({ randomAttribute: 0 })
     })
@@ -84,7 +81,7 @@ describe('GOVUKFrontendComponentConfigurable', () => {
         <div id="test-component" data-random-attribute="42"></div>
       `
 
-      class ConfigurableComponent extends GOVUKFrontendComponentConfigurable {
+      class MockConfigurableComponent extends ConfigurableComponent {
         static moduleName = 'config-component'
 
         static schema = {
@@ -100,7 +97,7 @@ describe('GOVUKFrontendComponentConfigurable', () => {
 
       const testComponent = document.querySelector('#test-component')
 
-      const configComponent = new ConfigurableComponent(testComponent)
+      const configComponent = new MockConfigurableComponent(testComponent)
 
       expect(configComponent._config).toMatchObject({ randomAttribute: 42 })
     })
@@ -110,7 +107,7 @@ describe('GOVUKFrontendComponentConfigurable', () => {
         <div id="test-component"></div>
       `
 
-      class ConfigurableComponent extends GOVUKFrontendComponentConfigurable {
+      class MockConfigurableComponent extends ConfigurableComponent {
         static moduleName = 'config-component'
 
         static schema = {
@@ -126,7 +123,7 @@ describe('GOVUKFrontendComponentConfigurable', () => {
 
       const testComponent = document.querySelector('#test-component')
 
-      const configComponent = new ConfigurableComponent(testComponent, {
+      const configComponent = new MockConfigurableComponent(testComponent, {
         randomAttribute: 100
       })
 
@@ -138,7 +135,7 @@ describe('GOVUKFrontendComponentConfigurable', () => {
         <div id="test-component" data-random-attribute="12"></div>
       `
 
-      class ConfigurableComponent extends GOVUKFrontendComponentConfigurable {
+      class MockConfigurableComponent extends ConfigurableComponent {
         static moduleName = 'config-component'
 
         static schema = {
@@ -154,7 +151,7 @@ describe('GOVUKFrontendComponentConfigurable', () => {
 
       const testComponent = document.querySelector('#test-component')
 
-      const configComponent = new ConfigurableComponent(testComponent, {
+      const configComponent = new MockConfigurableComponent(testComponent, {
         randomAttribute: 100
       })
 
@@ -170,7 +167,7 @@ describe('GOVUKFrontendComponentConfigurable', () => {
         <div id="test-component" data-random-attribute="13"></div>
       `
 
-      class ConfigurableComponent extends GOVUKFrontendComponentConfigurable {
+      class MockConfigurableComponent extends ConfigurableComponent {
         [configOverride](config) {
           return configOverrideFunction(config)
         }
@@ -190,7 +187,7 @@ describe('GOVUKFrontendComponentConfigurable', () => {
 
       const testComponent = document.querySelector('#test-component')
 
-      const configComponent = new ConfigurableComponent(testComponent, {
+      const configComponent = new MockConfigurableComponent(testComponent, {
         randomAttribute: '14'
       })
 
