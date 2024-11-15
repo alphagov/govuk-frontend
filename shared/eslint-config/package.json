@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "name": "@govuk-frontend/eslint-config",
+  "main": "index.mjs",
+  "description": "",
+  "engines": {
+    "node": "^22.11.0",
+    "npm": "^10.1.0"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "govuk-frontend": "*"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "eslint": "^9.13.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-es-x": "^8.0.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jest": "^28.8.3",
+    "eslint-plugin-jest-dom": "^5.4.0",
+    "eslint-plugin-jsdoc": "^50.4.3",
+    "eslint-plugin-markdown": "^5.1.0",
+    "eslint-plugin-n": "^17.11.1",
+    "eslint-plugin-promise": "^7.1.0",
+    "neostandard": "^0.11.7",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.11.0"
+  }
+}
