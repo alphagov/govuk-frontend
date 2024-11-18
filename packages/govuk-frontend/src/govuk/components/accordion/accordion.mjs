@@ -1,4 +1,4 @@
-import { GOVUKFrontendComponentConfigurable } from '../../common/configuration.mjs'
+import { ConfigurableComponent } from '../../common/configuration.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { I18n } from '../../i18n.mjs'
 
@@ -15,9 +15,9 @@ import { I18n } from '../../i18n.mjs'
  * attribute, which also provides accessibility.
  *
  * @preserve
- * @augments GOVUKFrontendComponentConfigurable<AccordionConfig>
+ * @augments ConfigurableComponent<AccordionConfig>
  */
-export class Accordion extends GOVUKFrontendComponentConfigurable {
+export class Accordion extends ConfigurableComponent {
   /** @private */
   i18n
 

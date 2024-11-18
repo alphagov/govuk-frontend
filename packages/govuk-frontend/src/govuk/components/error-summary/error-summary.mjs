@@ -1,4 +1,4 @@
-import { GOVUKFrontendComponentConfigurable } from '../../common/configuration.mjs'
+import { ConfigurableComponent } from '../../common/configuration.mjs'
 import { getFragmentFromUrl, setFocus } from '../../common/index.mjs'
 
 /**
@@ -8,9 +8,9 @@ import { getFragmentFromUrl, setFocus } from '../../common/index.mjs'
  * configuration.
  *
  * @preserve
- * @augments GOVUKFrontendComponentConfigurable<ErrorSummaryConfig>
+ * @augments ConfigurableComponent<ErrorSummaryConfig>
  */
-export class ErrorSummary extends GOVUKFrontendComponentConfigurable {
+export class ErrorSummary extends ConfigurableComponent {
   /**
    * @param {Element | null} $root - HTML element to use for error summary
    * @param {ErrorSummaryConfig} [config] - Error summary config

@@ -1,4 +1,4 @@
-import { GOVUKFrontendComponentConfigurable } from '../../common/configuration.mjs'
+import { ConfigurableComponent } from '../../common/configuration.mjs'
 
 const DEBOUNCE_TIMEOUT_IN_SECONDS = 1
 
@@ -6,9 +6,9 @@ const DEBOUNCE_TIMEOUT_IN_SECONDS = 1
  * JavaScript enhancements for the Button component
  *
  * @preserve
- * @augments GOVUKFrontendComponentConfigurable<ButtonConfig>
+ * @augments ConfigurableComponent<ButtonConfig>
  */
-export class Button extends GOVUKFrontendComponentConfigurable {
+export class Button extends ConfigurableComponent {
   /**
    * @private
    * @type {number | null}
