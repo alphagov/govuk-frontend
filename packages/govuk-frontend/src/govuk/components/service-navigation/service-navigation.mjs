@@ -1,13 +1,13 @@
 import { getBreakpoint } from '../../common/index.mjs'
+import { Component } from '../../component.mjs'
 import { ElementError } from '../../errors/index.mjs'
-import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
  * Service Navigation component
  *
  * @preserve
  */
-export class ServiceNavigation extends GOVUKFrontendComponent {
+export class ServiceNavigation extends Component {
   /** @private */
   $menuButton
 
