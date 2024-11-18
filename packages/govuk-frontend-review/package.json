@@ -62,7 +62,7 @@
     "sassdoc": "^2.7.4",
     "supertest": "^7.0.0",
     "typedoc": "^0.26.11",
-    "typedoc-plugin-missing-exports": "^3.0.0"
+    "typedoc-plugin-missing-exports": "^3.0.2"
   },
   "optionalDependencies": {
     "nunjucks": "^3.2.4"
