@@ -1,12 +1,12 @@
+import { Component } from '../../component.mjs'
 import { ElementError } from '../../errors/index.mjs'
-import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
  * Checkboxes component
  *
  * @preserve
  */
-export class Checkboxes extends GOVUKFrontendComponent {
+export class Checkboxes extends Component {
   /** @private */
   $inputs
 
