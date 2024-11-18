@@ -9,7 +9,7 @@ import { ElementError, InitError, SupportError } from './errors/index.mjs'
  * @virtual
  * @template {Element} [RootElementType=HTMLElement]
  */
-export class GOVUKFrontendComponent {
+export class Component {
   /**
    * @type {typeof Element}
    */
@@ -109,5 +109,5 @@ export class GOVUKFrontendComponent {
  */
 
 /**
- * @typedef {typeof GOVUKFrontendComponent & ChildClass} ChildClassConstructor
+ * @typedef {typeof Component & ChildClass} ChildClassConstructor
  */
