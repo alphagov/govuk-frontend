@@ -1,12 +1,12 @@
+import { Component } from '../../component.mjs'
 import { ElementError } from '../../errors/index.mjs'
-import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
  * Radios component
  *
  * @preserve
  */
-export class Radios extends GOVUKFrontendComponent {
+export class Radios extends Component {
   /** @private */
   $inputs
 
