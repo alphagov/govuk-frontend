@@ -4,7 +4,7 @@ import {
 } from '@govuk-frontend/lib/names'
 
 import * as GOVUKFrontend from './all.mjs'
-import { GOVUKFrontendComponent } from './govuk-frontend-component.mjs'
+import { Component } from './component.mjs'
 import { initAll, createAll } from './init.mjs'
 
 // Annoyingly these don't get hoisted if done in a loop
@@ -227,14 +227,14 @@ describe('createAll', () => {
     document.body.outerHTML = '<body></body>'
   })
 
-  class MockComponent extends GOVUKFrontendComponent {
+  class MockComponent extends Component {
     constructor(...args) {
       super(...args)
       this.args = args
     }
 
     static checkSupport() {
-      GOVUKFrontendComponent.checkSupport()
+      Component.checkSupport()
     }
 
     static moduleName = 'mock-component'
