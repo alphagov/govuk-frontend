@@ -3,6 +3,9 @@ GOV.UK Frontend ·
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 =====================
 
+> [!IMPORTANT]
+> Dummy change to test which actions get triggered by an external Pull Request
+
 GOV.UK Frontend contains the code you need to start building a user interface
 for government platforms and services.
 
