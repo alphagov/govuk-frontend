@@ -15,6 +15,7 @@ export { Tabs } from './components/tabs/tabs.mjs'
 export { initAll, createAll } from './init.mjs'
 export { isSupported } from './common/index.mjs'
 export { Component } from './component.mjs'
+export { GOVUKFrontendComponent } from './govuk-frontend-component.mjs'
 
 /**
  * @typedef {import('./init.mjs').Config} Config
