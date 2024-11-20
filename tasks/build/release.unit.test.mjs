@@ -81,7 +81,7 @@ describe('dist/', () => {
 
     it('should contain relative paths to sources', () => {
       expect(sourcemap.sources).toContain(
-        '../packages/govuk-frontend/src/govuk/all.scss'
+        '../packages/govuk-frontend/src/govuk/index.scss'
       )
       expect(sourcemap.sources).toContain(
         '../packages/govuk-frontend/src/govuk/core/_govuk-frontend-properties.scss'
