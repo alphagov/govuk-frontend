@@ -46,7 +46,7 @@ export default (options) =>
 
     // Compile GOV.UK Frontend Sass
     task.name('compile:scss', () =>
-      styles.compile('all.scss', {
+      styles.compile('index.scss', {
         ...options,
 
         srcPath: join(options.srcPath, 'govuk'),

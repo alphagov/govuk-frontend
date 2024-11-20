@@ -114,6 +114,20 @@ describe('GOV.UK Frontend', () => {
       }
     })
 
+    it('outputs a warning when importing the "all" file at root', async () => {
+      const sass = `
+      @import "all";
+      `
+
+      await compileSassString(sass, sassConfig)
+
+      expect(mockWarnFunction.mock.calls[0]).toEqual(
+        expect.arrayContaining([
+          `Importing using 'govuk/all' is deprecated. Update your import statement to import 'govuk/index'. To silence this warning, update $govuk-suppressed-warnings with key: "import-using-all"`
+        ])
+      )
+    })
+
     it('outputs a warning for each layer that has an "all" file', async () => {
       const sass = `
       /* equivalent to importing 'base' */

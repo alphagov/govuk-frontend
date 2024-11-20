@@ -4,7 +4,7 @@
   "version": "5.7.1",
   "main": "dist/govuk/all.bundle.js",
   "module": "dist/govuk/all.mjs",
-  "sass": "dist/govuk/all.scss",
+  "sass": "dist/govuk/index.scss",
   "files": [
     "dist",
     "govuk-prototype-kit.config.json",
@@ -13,7 +13,7 @@
   ],
   "exports": {
     ".": {
-      "sass": "./dist/govuk/all.scss",
+      "sass": "./dist/govuk/index.scss",
       "import": "./dist/govuk/all.mjs",
       "require": "./dist/govuk/all.bundle.js",
       "default": "./dist/govuk/all.bundle.js"

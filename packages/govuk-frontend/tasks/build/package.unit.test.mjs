@@ -109,8 +109,8 @@ describe('packages/govuk-frontend/dist/', () => {
 
       // Only sass package entry is compiled to minified CSS bundle
       .flatMap(
-        mapPathTo(['**/govuk/all.scss'], ({ dir: requirePath }) => [
-          join(requirePath, 'all.scss'),
+        mapPathTo(['**/govuk/index.scss'], ({ dir: requirePath }) => [
+          join(requirePath, 'index.scss'),
 
           // CSS bundle, minified
           join(requirePath, 'govuk-frontend.min.css'),
@@ -163,6 +163,15 @@ describe('packages/govuk-frontend/dist/', () => {
   })
 
   describe('Sass stylesheets', () => {
+    describe('index.scss', () => {
+      it('should compile without throwing an exception', async () => {
+        const file = join(paths.package, 'dist/govuk/index.scss')
+        await expect(compileSassFile(file)).resolves.not.toThrow()
+      })
+    })
+
+    // all.scss is deprecated but we still want to make sure it works when used
+    // as the root for compilation
     describe('all.scss', () => {
       it('should compile without throwing an exception', async () => {
         const file = join(paths.package, 'dist/govuk/all.scss')
