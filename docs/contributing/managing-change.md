@@ -122,6 +122,31 @@ If possible, update the mixin or function to maintain the existing functionality
 }
 ```
 
+### Deprecating a JavaScript file ahead of its removal
+
+JavaScript files may be removed because the module is no longer needed or has been moved to another place in the project.
+
+However, the file needs to remain included in the built package, marked as deprecated, until it is removed in the next breaking release.
+
+1. To make sure the file remains in the package, add its path within `src/govuk` to the list of paths in `packages/tasks/config/deprecated-scripts.mjs`. For example:
+
+```mjs
+export const deprecatedFilesPaths = [
+  'govuk-frontend-component.mjs'
+]
+```
+
+This will build the file individually when creating the package, as the file is no longer being discovered automatically by Rollup when building `all.mjs`.
+
+2. To mark the file as deprecated, add the following JSDoc comment at the top of the file:
+
+```js
+/**
+ * @deprecated - Optionally describe where the file has been moved to or why it's been removed
+ * @module
+ */
+```
+
 ## Renaming things
 
 When renaming things, keep the old name available as an alias and mark it as deprecated, following the steps above to [make sure we remember to remove the deprecated feature](#make-sure-we-remember-to-remove-the-deprecated-feature).
