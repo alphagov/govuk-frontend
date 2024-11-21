@@ -80,9 +80,9 @@ jobs:
         run: |
           ! grep "\$govuk-" .tmp/all.css
 
-  # Node Sass v3.7.0 = LibSass v3.5.0
+  # Node Sass v5.0.0 = LibSass v3.5.5
   lib-sass:
-    name: LibSass v3.5.0 (deprecated)
+    name: LibSass v3.5.5 (deprecated)
     runs-on: ubuntu-latest
 
     steps:
@@ -93,11 +93,15 @@ jobs:
         uses: actions/setup-node@v4.1.0
         with:
           cache: npm
-          node-version: 6 # Node.js 6 supported by Node Sass v3.7.0
+          # Node.js 15 is required for the stable support of ES Module
+          # used when installing `node-sass`
+          node-version: 15
 
       - name: Install package
+        # Sass 5.0.0 is the first version that supports Python 3
+        # and as such can be built on a GitHub Actions runner
         run: |
-          npm install -g node-sass@v3.7.0
+          npm install -g node-sass@v5.0.0
           node-sass --version
 
       - name: Run command
