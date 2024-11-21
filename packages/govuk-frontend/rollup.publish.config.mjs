@@ -3,6 +3,8 @@ import { babel } from '@rollup/plugin-babel'
 import replace from '@rollup/plugin-replace'
 import { defineConfig } from 'rollup'
 
+import { isDeprecated } from './tasks/config/deprecated-scripts.mjs'
+
 /**
  * Rollup config for npm publish
  */
@@ -28,31 +30,35 @@ export default defineConfig(({ i: input }) => ({
      * ECMAScript (ES) module bundles for browser <script type="module">
      * or using `import` for modern browsers and Node.js scripts
      */
-    {
-      format: 'es',
+    isDeprecated(input)
+      ? null
+      : {
+          format: 'es',
 
-      // Bundled modules
-      preserveModules: false
-    },
+          // Bundled modules
+          preserveModules: false
+        },
 
     /**
      * Universal Module Definition (UMD) bundle for browser <script>
      * `window` globals and compatibility with CommonJS and AMD `require()`
      */
-    {
-      format: 'umd',
+    isDeprecated(input)
+      ? null
+      : {
+          format: 'umd',
 
-      // Bundled modules
-      preserveModules: false,
+          // Bundled modules
+          preserveModules: false,
 
-      // Export via `window.GOVUKFrontend.${exportName}`
-      name: 'GOVUKFrontend',
+          // Export via `window.GOVUKFrontend.${exportName}`
+          name: 'GOVUKFrontend',
 
-      // Loading multiple files will add their export to the same
-      // `GOVUKFrontend` object rather than re-creating a new `GOVUKFrontend`
-      // for each and wiping the components previously loaded
-      extend: true
-    }
+          // Loading multiple files will add their export to the same
+          // `GOVUKFrontend` object rather than re-creating a new `GOVUKFrontend`
+          // for each and wiping the components previously loaded
+          extend: true
+        }
   ],
 
   /**
