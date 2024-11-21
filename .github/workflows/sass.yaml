@@ -96,7 +96,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4.1.0
         with:
-          cache: npm
+          # cache: npm
           # Node Sass v3.7.0 is supported from Node 6
           # but some of the code ran at installation
           # runs ES modules, so we need a Node version able to run this
