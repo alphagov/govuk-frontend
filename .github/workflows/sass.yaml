@@ -93,7 +93,11 @@ jobs:
         uses: actions/setup-node@v4.1.0
         with:
           cache: npm
-          node-version: 6 # Node.js 6 supported by Node Sass v3.7.0
+          # Node Sass v3.7.0 is supported from Node 6
+          # but some of the code ran at installation
+          # runs ES modules, so we need a Node version able to run this
+          # Node 15 is the first version with ES modules marked as stable"
+          node-version: 15
 
       - name: Install package
         run: |
