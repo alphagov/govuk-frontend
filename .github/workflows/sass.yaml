@@ -83,7 +83,7 @@ jobs:
   # Node Sass v3.7.0 = LibSass v3.5.0
   lib-sass:
     name: LibSass v3.5.0 (deprecated)
-    runs-on: ubuntu-20
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -101,7 +101,7 @@ jobs:
 
       - name: Install package
         run: |
-          npm install -g node-sass@v3.7.0
+          npm install -g node-sass@v4.0.0
           node-sass --version
 
       - name: Run command
