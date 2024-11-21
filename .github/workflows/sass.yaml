@@ -101,7 +101,7 @@ jobs:
 
       - name: Install package
         run: |
-          npm install -g node-sass@v4.0.0
+          npm install -g node-sass@v5.0.0
           node-sass --version
 
       - name: Run command
