@@ -66,28 +66,38 @@ jobs:
       - name: Run command
         run: time sh -c 'echo "@import "\""govuk/all"\"";" | sass --stdin --quiet-deps --load-path=src > /dev/null'
 
-  # Node Sass v3.4.0 = LibSass v3.3.0
+  # Node Sass v5.0.0 = LibSass v3.5.5
   lib-sass:
-    name: LibSass v3.3.0 (deprecated)
+    name: LibSass v3.5.5 (deprecated)
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3.5.3
+        uses: actions/checkout@v4.2.2
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3.7.0
+        uses: actions/setup-node@v4.1.0
         with:
           cache: npm
-          node-version: 4 # Node.js 4 supported by Node Sass v3.4.0
+          # Node.js 15 is required for the stable support of ES Module
+          # used when installing `node-sass`
+          node-version: 15
 
       - name: Install package
+        # Sass 5.0.0 is the first version that supports Python 3
+        # and as such can be built on a GitHub Actions runner
         run: |
-          npm install -g node-sass@v3.4.0
+          npm install -g node-sass@v5.0.0
           node-sass --version
 
       - name: Run command
-        run: time node-sass src/govuk/all.scss > /dev/null
+        run: |
+          time node-sass src/govuk/all.scss > /dev/null
+
+      # Check output for uncompiled Sass
+      - name: Check output
+        run: |
+          ! grep "\$govuk-" .tmp/all.css
 
   # Node Sass v8.x = LibSass v3 latest
   lib-sass-latest:
