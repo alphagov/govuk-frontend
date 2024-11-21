@@ -83,7 +83,7 @@ jobs:
   # Node Sass v3.7.0 = LibSass v3.5.0
   lib-sass:
     name: LibSass v3.5.0 (deprecated)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20
 
     steps:
       - name: Checkout code
