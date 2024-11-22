@@ -1,13 +1,13 @@
-import { GOVUKFrontendComponentConfigurable } from '../../common/configuration.mjs'
+import { ConfigurableComponent } from '../../common/configuration.mjs'
 import { setFocus } from '../../common/index.mjs'
 
 /**
  * Notification Banner component
  *
  * @preserve
- * @augments GOVUKFrontendComponentConfigurable<NotificationBannerConfig>
+ * @augments ConfigurableComponent<NotificationBannerConfig>
  */
-export class NotificationBanner extends GOVUKFrontendComponentConfigurable {
+export class NotificationBanner extends ConfigurableComponent {
   /**
    * @param {Element | null} $root - HTML element to use for notification banner
    * @param {NotificationBannerConfig} [config] - Notification banner config

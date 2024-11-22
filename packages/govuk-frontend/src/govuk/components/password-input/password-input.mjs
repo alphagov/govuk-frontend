@@ -1,5 +1,5 @@
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
-import { GOVUKFrontendComponentConfigurable } from '../../common/configuration.mjs'
+import { ConfigurableComponent } from '../../common/configuration.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { I18n } from '../../i18n.mjs'
 
@@ -7,9 +7,9 @@ import { I18n } from '../../i18n.mjs'
  * Password input component
  *
  * @preserve
- * @augments GOVUKFrontendComponentConfigurable<PasswordInputConfig>
+ * @augments ConfigurableComponent<PasswordInputConfig>
  */
-export class PasswordInput extends GOVUKFrontendComponentConfigurable {
+export class PasswordInput extends ConfigurableComponent {
   /** @private */
   i18n
 
