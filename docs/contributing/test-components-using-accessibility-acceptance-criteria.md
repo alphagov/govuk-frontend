@@ -18,7 +18,7 @@ You should also [test your component with disabled people](https://www.gov.uk/se
 
 ## How the GOV.UK Design System's accessibility acceptance criteria relate to WCAG
 
-The GOV.UK Design System accessibility acceptance criteria are a combination of the [WCAG (Web Content Accessibility Guidelines)](https://www.w3.org/TR/WCAG21/) and the general accessibility requirements that components need to meet.
+The GOV.UK Design System accessibility acceptance criteria are a combination of the [WCAG (Web Content Accessibility Guidelines)](https://www.w3.org/TR/WCAG22/) and the general accessibility requirements that components need to meet.
 
 The GOV.UK Design System’s accessibility acceptance criteria are complementary to WCAG and do not replace it.
 
@@ -44,7 +44,7 @@ To show clearly to users, components should:
 - not depend on colour alone to communicate information
 - not move (for example, flash or blink)
 - be visually distinct from other elements on the page
-- use [semantic markup](https://www.w3.org/WAI/WCAG21/Techniques/general/G115.html)
+- use [semantic markup](https://www.w3.org/WAI/WCAG22/Techniques/general/G115.html)
 - if necessary, hide and display content consistently for both screen reader users and sighted users - [learn more about hiding and displaying content](https://webaim.org/techniques/css/invisiblecontent/#intro)
 
 To make sure users can use them, components should at least be operable with:
