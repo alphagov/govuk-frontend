@@ -64,5 +64,10 @@ Technical writers, Developers
 ```
 
 ```[tasklist]
-- [ ] Tidy up issues on GitHub
+## Logistics
+- [ ] Ensure issues published in the release are gathered in a [GitHub milestone](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- [ ] Verify that decisions are appropriately documented (in code/issues/pull request comments or in separate documents linked from issues/pull requests)
+- [ ] Update state of published issues on project board
+- [ ] Close published issues when appropriate
+- [ ] Open any follow-up issues if necessary
 ```
