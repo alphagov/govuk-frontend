@@ -43,7 +43,7 @@ function getTasks(options) {
     ),
     'compile:scss watch': () =>
       gulp.watch(
-        ['**/*.scss', join(paths.package, 'dist/govuk/all.scss')],
+        ['**/*.scss', join(paths.package, 'dist/govuk/index.scss')],
         {
           awaitWriteFinish: true,
           cwd: options.srcPath,

@@ -38,12 +38,12 @@ jobs:
       - name: Run command
         run: |
           mkdir -p .tmp
-          time sass packages/govuk-frontend/src/govuk/all.scss > .tmp/all.css
+          time sass packages/govuk-frontend/src/govuk/index.scss > .tmp/index.css
 
       # Check output for uncompiled Sass
       - name: Check output
         run: |
-          ! grep "\$govuk-" .tmp/all.css
+          ! grep "\$govuk-" .tmp/index.css
 
   dart-sass-latest:
     name: Dart Sass v1 (latest)
@@ -73,12 +73,12 @@ jobs:
       - name: Run command
         run: |
           mkdir -p .tmp
-          time sh -c 'echo "@import "\""govuk/all"\"";" | sass --stdin --quiet-deps --load-path=packages/govuk-frontend/src > .tmp/all.css'
+          time sh -c 'echo "@import "\""govuk/all"\"";" | sass --stdin --quiet-deps --load-path=packages/govuk-frontend/src > .tmp/index.css'
 
       # Check output for uncompiled Sass
       - name: Check output
         run: |
-          ! grep "\$govuk-" .tmp/all.css
+          ! grep "\$govuk-" .tmp/index.css
 
   # Node Sass v5.0.0 = LibSass v3.5.5
   lib-sass:
@@ -107,12 +107,12 @@ jobs:
       - name: Run command
         run: |
           mkdir -p .tmp
-          time node-sass packages/govuk-frontend/src/govuk/all.scss > .tmp/all.css
+          time node-sass packages/govuk-frontend/src/govuk/index.scss > .tmp/index.css
 
       # Check output for uncompiled Sass
       - name: Check output
         run: |
-          ! grep "\$govuk-" .tmp/all.css
+          ! grep "\$govuk-" .tmp/index.css
 
   # Node Sass v8.x = LibSass v3 latest
   lib-sass-latest:
@@ -137,12 +137,12 @@ jobs:
       - name: Run command
         run: |
           mkdir -p .tmp
-          time node-sass packages/govuk-frontend/src/govuk/all.scss > .tmp/all.css
+          time node-sass packages/govuk-frontend/src/govuk/index.scss > .tmp/index.css
 
       # Check output for uncompiled Sass
       - name: Check output
         run: |
-          ! grep "\$govuk-" .tmp/all.css
+          ! grep "\$govuk-" .tmp/index.css
 
   ruby-sass:
     name: Ruby Sass v3.4.0 (deprecated)
@@ -165,12 +165,12 @@ jobs:
       - name: Run command
         run: |
           mkdir -p .tmp
-          time sass packages/govuk-frontend/src/govuk/all.scss > .tmp/all.css
+          time sass packages/govuk-frontend/src/govuk/index.scss > .tmp/index.css
 
       # Check output for uncompiled Sass
       - name: Check output
         run: |
-          ! grep "\$govuk-" .tmp/all.css
+          ! grep "\$govuk-" .tmp/index.css
 
   ruby-sass-latest:
     name: Ruby Sass v3 (latest, deprecated)
@@ -193,9 +193,9 @@ jobs:
       - name: Run command
         run: |
           mkdir -p .tmp
-          time sass packages/govuk-frontend/src/govuk/all.scss > .tmp/all.css
+          time sass packages/govuk-frontend/src/govuk/index.scss > .tmp/index.css
 
       # Check output for uncompiled Sass
       - name: Check output
         run: |
-          ! grep "\$govuk-" .tmp/all.css
+          ! grep "\$govuk-" .tmp/index.css

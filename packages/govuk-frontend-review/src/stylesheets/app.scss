@@ -4,7 +4,7 @@ $govuk-new-organisation-colours: true;
 
 $govuk-suppressed-warnings: ("organisation-colours");
 
-@import "govuk/all";
+@import "govuk";
 @import "partials/app";
 @import "partials/code";
 @import "partials/banner";

@@ -19,6 +19,20 @@ We introduced this change in:
 - [#5499: Rename GOVUKFrontendComponentConfigurable, export ConfigurableComponent](https://github.com/alphagov/govuk-frontend/pull/5499)
 - [#5456: Refactor Accordion to extend from a GOVUKFrontendConfigurableComponent](https://github.com/alphagov/govuk-frontend/issues/5456)
 
+### Deprecated features
+
+#### Importing Sass using `govuk/all`
+
+You'll see a warning when compiling your Sass if you import all of GOV.UK Frontend's styling using `govuk/all`. Importing using the `all` file is deprecated, and we’ll remove it in the next major release.
+
+In your import statements, use a trailing `/index` rather than `/all` to load GOV.UK Frontend's files:
+
+- `@import "govuk/index";` instead of `@import "govuk/all";`;
+
+You do not need `/index` at the end of each import path if you’re using Dart Sass.
+
+This change was introduced in [pull request #5518: Deprecate `govuk/all.scss` and only reference `govuk/index.scss` internally](https://github.com/alphagov/govuk-frontend/pull/5518).
+
 ## v5.7.1 (Fix release)
 
 To install this version with npm, run `npm install govuk-frontend@5.7.1`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
