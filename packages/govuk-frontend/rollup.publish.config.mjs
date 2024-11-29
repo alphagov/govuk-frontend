@@ -46,7 +46,12 @@ export default defineConfig(({ i: input }) => ({
       preserveModules: false,
 
       // Export via `window.GOVUKFrontend.${exportName}`
-      name: 'GOVUKFrontend'
+      name: 'GOVUKFrontend',
+
+      // Loading multiple files will add their export to the same
+      // `GOVUKFrontend` object rather than re-creating a new `GOVUKFrontend`
+      // for each and wiping the components previously loaded
+      extend: true
     }
   ],
 
