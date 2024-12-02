@@ -41,5 +41,5 @@ export async function write(assetPath, { destPath, filePath, fileContents }) {
 }
 
 /**
- * @typedef {import('./assets.mjs').AssetEntry} AssetEntry
+ * @import { AssetEntry } from './assets.mjs'
  */
