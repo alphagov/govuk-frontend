@@ -1,21 +1,22 @@
-const { join, relative } = require('path')
+import { join, relative } from 'node:path'
 
-const { paths } = require('@govuk-frontend/config')
-const {
+import { paths } from '@govuk-frontend/config'
+import {
   packageResolveToPath,
   packageNameToPath
-} = require('@govuk-frontend/lib/names')
-const slash = require('slash')
-const typedoc = require('typedoc')
+} from '@govuk-frontend/lib/names'
+import slash from 'slash'
+// eslint-disable-next-line import/no-unresolved -- 'typedoc' is a devDependency
+import { Configuration } from 'typedoc'
 
 const basePath = join(packageNameToPath('govuk-frontend'), 'src')
 const workspacePath = slash(relative(paths.root, basePath))
 const { HEROKU_APP, HEROKU_BRANCH = 'main' } = process.env
 
 /**
- * @type {import('typedoc').TypeDocOptions}
+ * @type {Partial<import('typedoc').TypeDocOptions> & {placeInternalsInOwningModule: boolean}}
  */
-module.exports = {
+export default {
   disableGit: !!HEROKU_APP,
   emit: 'both',
   name: 'govuk-frontend',
@@ -45,9 +46,9 @@ module.exports = {
     // or the components' config types)
     'typedoc-plugin-missing-exports'
   ],
-  // By default, missing-exports will regroup all symbols under an `<internal>`
-  // module whose naming is a bit poor. Instead, we let the symbols be displayed
-  // alongside the others
+  // // By default, missing-exports will regroup all symbols under an `<internal>`
+  // // module whose naming is a bit poor. Instead, we let the symbols be displayed
+  // // alongside the others
   placeInternalsInOwningModule: true,
   // The missing-exports plugin will include built-in symbols, like the DOM API.
   // We don't want those in our documentation, so we need to exclude them
@@ -56,7 +57,7 @@ module.exports = {
   // Make TypeDoc aware of tags we use but it does not parse by default
   // so it doesn't warn unnecessarily
   modifierTags: [
-    ...typedoc.Configuration.OptionDefaults.modifierTags,
+    ...Configuration.OptionDefaults.modifierTags,
     '@preserve',
     '@constant'
   ],
