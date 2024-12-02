@@ -4,6 +4,11 @@ import { pkg } from '@govuk-frontend/config'
 import { configs, scripts, task } from '@govuk-frontend/tasks'
 import gulp from 'gulp'
 
+import {
+  createGlobFromPaths,
+  deprecatedFilesPaths
+} from './config/deprecated-scripts.mjs'
+
 /**
  * JavaScripts task (for watch)
  *
@@ -16,6 +21,20 @@ export const compile = (options) =>
      */
     task.name("compile:js 'components'", () =>
       scripts.compile('**/components/*/!(*.test).mjs', {
+        ...options,
+
+        srcPath: join(options.srcPath, 'govuk'),
+        destPath: join(options.destPath, 'govuk'),
+        configPath: join(options.basePath, 'rollup.publish.config.mjs')
+      })
+    ),
+
+    /**
+     * Compile deprecated files no longer imported by `all.mjs`
+     * but that need to be kept in the package
+     */
+    task.name("compile:js 'deprecations'", () =>
+      scripts.compile(createGlobFromPaths(deprecatedFilesPaths), {
         ...options,
 
         srcPath: join(options.srcPath, 'govuk'),

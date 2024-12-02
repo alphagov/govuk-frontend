@@ -1,7 +1,7 @@
+import { Component } from './component.mjs'
 import { SupportError } from './errors/index.mjs'
-import { GOVUKFrontendComponent } from './govuk-frontend-component.mjs'
 
-describe('GOVUKFrontendComponent', () => {
+describe('Component', () => {
   describe('checkSupport()', () => {
     beforeEach(() => {
       // Jest does not tidy the JSDOM document between tests
@@ -10,7 +10,7 @@ describe('GOVUKFrontendComponent', () => {
     })
 
     describe('default implementation', () => {
-      class ServiceComponent extends GOVUKFrontendComponent {
+      class ServiceComponent extends Component {
         static moduleName = 'app-service-component'
       }
 
@@ -27,7 +27,7 @@ describe('GOVUKFrontendComponent', () => {
 
     describe('when overriden', () => {
       it('Allows child classes to define their own condition for support', () => {
-        class ServiceComponent extends GOVUKFrontendComponent {
+        class ServiceComponent extends Component {
           static moduleName = 'app-service-component'
 
           static checkSupport() {
