@@ -1,6 +1,6 @@
 const { join } = require('path')
 
-module.exports = {
+module.exports = (dirname) => ({
   settings: {
     node: {
       version: '^18.12.0'
@@ -14,7 +14,7 @@ module.exports = {
       parserOptions: {
         // Note: Allow ES2015 for import/export syntax
         ecmaVersion: '2015',
-        project: [join(__dirname, 'tsconfig.build.json')]
+        project: [join(dirname, 'tsconfig.build.json')]
       },
       plugins: ['@typescript-eslint', 'es-x'],
       extends: [
@@ -95,4 +95,4 @@ module.exports = {
       }
     }
   ]
-}
+})
