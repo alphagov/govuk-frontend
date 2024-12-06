@@ -3,9 +3,12 @@
 {% from "../hint/macro.njk" import govukHint %}
 {% from "../label/macro.njk" import govukLabel %}
 
+{%- set componentId = params.id | default(params.name) -%}
+
 {#- a record of other elements that we need to associate with the input using
   aria-describedby – for example hints or error messages -#}
 {% set describedBy = params.describedBy if params.describedBy else "" %}
+
 <div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}"
   {{- govukAttributes(params.formGroup.attributes) }}>
   {{ govukLabel({
@@ -14,10 +17,10 @@
     classes: params.label.classes,
     isPageHeading: params.label.isPageHeading,
     attributes: params.label.attributes,
-    for: params.id
+    for: componentId
   }) | trim | indent(2) }}
 {% if params.hint %}
-  {% set hintId = params.id + '-hint' %}
+  {% set hintId = componentId + '-hint' %}
   {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
   {{ govukHint({
     id: hintId,
@@ -28,7 +31,7 @@
   }) | trim | indent(2) }}
 {% endif %}
 {% if params.errorMessage %}
-  {% set errorId = params.id + '-error' %}
+  {% set errorId = componentId + '-error' %}
   {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
   {{ govukErrorMessage({
     id: errorId,
@@ -43,7 +46,7 @@
   {{ params.formGroup.beforeInput.html | safe | trim | indent(2) if params.formGroup.beforeInput.html else params.formGroup.beforeInput.text }}
 {% endif %}
   <select class="govuk-select
-    {%- if params.classes %} {{ params.classes }}{% endif %}{%- if params.errorMessage %} govuk-select--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}"
+    {%- if params.classes %} {{ params.classes }}{% endif %}{%- if params.errorMessage %} govuk-select--error{% endif %}" id="{{ componentId }}" name="{{ params.name }}"
     {%- if params.disabled %} disabled{% endif %}
     {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
     {{- govukAttributes(params.attributes) }}>

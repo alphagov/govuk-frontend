@@ -3,6 +3,8 @@
 {% from "../textarea/macro.njk" import govukTextarea %}
 {% from "../hint/macro.njk" import govukHint %}
 
+{%- set componentId = params.id | default(params.name) -%}
+
 {#-
   If the limit is set in JavaScript, we won't be able to interpolate the message
   until JavaScript, so we only set a text if the `maxlength` or `maxwords` options
@@ -16,7 +18,7 @@
 {%- set countMessageHtml %}
 {{ govukHint({
   text: textareaDescriptionTextNoLimit,
-  id: params.id + '-info',
+  id: componentId + '-info',
   classes: 'govuk-character-count__message' + (' ' + params.countMessage.classes if params.countMessage.classes)
 }) | trim }}
 {% if params.formGroup.afterInput %}
@@ -91,9 +93,9 @@
 {% endfor -%}
 
 {{ govukTextarea({
-  id: params.id,
+  id: componentId,
   name: params.name,
-  describedBy: params.id + '-info',
+  describedBy: componentId + '-info',
   rows: params.rows,
   spellcheck: params.spellcheck,
   value: params.value,
@@ -112,7 +114,7 @@
     classes: params.label.classes,
     isPageHeading: params.label.isPageHeading,
     attributes: params.label.attributes,
-    for: params.id
+    for: componentId
   },
   hint: params.hint,
   errorMessage: params.errorMessage,
