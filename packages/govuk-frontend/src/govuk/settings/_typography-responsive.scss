@@ -216,8 +216,7 @@ $_govuk-typography-scale-modern: (
   ),
   27: (
     // Made same as 24 on mobile (consider deprecating this size)
-    null:
-      (
+    null: (
         font-size: 21px,
         line-height: 25px
       ),
@@ -232,8 +231,7 @@ $_govuk-typography-scale-modern: (
   ),
   24: (
     // Bump up mobile size from 18/20 to 21/25
-    null:
-      (
+    null: (
         font-size: 21px,
         line-height: 25px
       ),
@@ -248,8 +246,7 @@ $_govuk-typography-scale-modern: (
   ),
   19: (
     // Stay at 19/25 at all sizes
-    null:
-      (
+    null: (
         font-size: 19px,
         line-height: 25px
       ),
@@ -260,8 +257,7 @@ $_govuk-typography-scale-modern: (
   ),
   16: (
     // Stay at 16/20 at all sizes
-    null:
-      (
+    null: (
         font-size: 16px,
         line-height: 20px
       ),
@@ -272,8 +268,7 @@ $_govuk-typography-scale-modern: (
   ),
   14: (
     // Stay at 14/20 at all sizes (consider deprecating this size)
-    null:
-      (
+    null: (
         font-size: 14px,
         line-height: 20px
       ),
