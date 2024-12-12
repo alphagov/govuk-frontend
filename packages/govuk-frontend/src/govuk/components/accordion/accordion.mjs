@@ -3,6 +3,39 @@ import { createElement } from '../../common/create-element.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { I18n } from '../../i18n.mjs'
 
+/** @private */
+const sectionClass = 'govuk-accordion__section'
+
+/** @private */
+const sectionExpandedModifier = 'govuk-accordion__section--expanded'
+
+/** @private */
+const sectionButtonClass = 'govuk-accordion__section-button'
+
+/** @private */
+const sectionHeaderClass = 'govuk-accordion__section-header'
+
+/** @private */
+const sectionHeadingClass = 'govuk-accordion__section-heading'
+
+/** @private */
+const sectionHeadingTextClass = 'govuk-accordion__section-heading-text'
+
+/** @private */
+const sectionToggleTextClass = 'govuk-accordion__section-toggle-text'
+
+/** @private */
+const iconClass = 'govuk-accordion-nav__chevron'
+
+/** @private */
+const iconOpenModifier = 'govuk-accordion-nav__chevron--down'
+
+/** @private */
+const sectionSummaryClass = 'govuk-accordion__section-summary'
+
+/** @private */
+const sectionContentClass = 'govuk-accordion__section-content'
+
 /**
  * Accordion component
  *
@@ -21,39 +54,6 @@ import { I18n } from '../../i18n.mjs'
 export class Accordion extends ConfigurableComponent {
   /** @private */
   i18n
-
-  /** @private */
-  sectionClass = 'govuk-accordion__section'
-
-  /** @private */
-  sectionExpandedModifier = 'govuk-accordion__section--expanded'
-
-  /** @private */
-  sectionButtonClass = 'govuk-accordion__section-button'
-
-  /** @private */
-  sectionHeaderClass = 'govuk-accordion__section-header'
-
-  /** @private */
-  sectionHeadingClass = 'govuk-accordion__section-heading'
-
-  /** @private */
-  sectionHeadingTextClass = 'govuk-accordion__section-heading-text'
-
-  /** @private */
-  sectionToggleTextClass = 'govuk-accordion__section-toggle-text'
-
-  /** @private */
-  iconClass = 'govuk-accordion-nav__chevron'
-
-  /** @private */
-  iconOpenModifier = 'govuk-accordion-nav__chevron--down'
-
-  /** @private */
-  sectionSummaryClass = 'govuk-accordion__section-summary'
-
-  /** @private */
-  sectionContentClass = 'govuk-accordion__section-content'
 
   /** @private */
   $sections
@@ -85,11 +85,11 @@ export class Accordion extends ConfigurableComponent {
 
     this.i18n = new I18n(this.config.i18n)
 
-    const $sections = this.$root.querySelectorAll(`.${this.sectionClass}`)
+    const $sections = this.$root.querySelectorAll(`.${sectionClass}`)
     if (!$sections.length) {
       throw new ElementError({
         component: Accordion,
-        identifier: `Sections (\`<div class="${this.sectionClass}">\`)`
+        identifier: `Sections (\`<div class="${sectionClass}">\`)`
       })
     }
 
@@ -116,7 +116,7 @@ export class Accordion extends ConfigurableComponent {
 
     // Create icon, add to element
     this.$showAllIcon = createElement('span', {
-      class: this.iconClass
+      class: iconClass
     })
     this.$showAllButton.appendChild(this.$showAllIcon)
 
@@ -153,11 +153,11 @@ export class Accordion extends ConfigurableComponent {
    */
   initSectionHeaders() {
     this.$sections.forEach(($section, i) => {
-      const $header = $section.querySelector(`.${this.sectionHeaderClass}`)
+      const $header = $section.querySelector(`.${sectionHeaderClass}`)
       if (!$header) {
         throw new ElementError({
           component: Accordion,
-          identifier: `Section headers (\`<div class="${this.sectionHeaderClass}">\`)`
+          identifier: `Section headers (\`<div class="${sectionHeaderClass}">\`)`
         })
       }
 
@@ -182,21 +182,21 @@ export class Accordion extends ConfigurableComponent {
    * @param {number} index - Section index
    */
   constructHeaderMarkup($header, index) {
-    const $span = $header.querySelector(`.${this.sectionButtonClass}`)
-    const $heading = $header.querySelector(`.${this.sectionHeadingClass}`)
-    const $summary = $header.querySelector(`.${this.sectionSummaryClass}`)
+    const $span = $header.querySelector(`.${sectionButtonClass}`)
+    const $heading = $header.querySelector(`.${sectionHeadingClass}`)
+    const $summary = $header.querySelector(`.${sectionSummaryClass}`)
 
     if (!$heading) {
       throw new ElementError({
         component: Accordion,
-        identifier: `Section heading (\`.${this.sectionHeadingClass}\`)`
+        identifier: `Section heading (\`.${sectionHeadingClass}\`)`
       })
     }
 
     if (!$span) {
       throw new ElementError({
         component: Accordion,
-        identifier: `Section button placeholder (\`<span class="${this.sectionButtonClass}">\`)`
+        identifier: `Section button placeholder (\`<span class="${sectionButtonClass}">\`)`
       })
     }
 
@@ -217,7 +217,7 @@ export class Accordion extends ConfigurableComponent {
 
     // Create container for heading text so it can be styled
     const $headingText = createElement('span', {
-      class: this.sectionHeadingTextClass,
+      class: sectionHeadingTextClass,
       id: $span.id
     })
 
@@ -252,12 +252,12 @@ export class Accordion extends ConfigurableComponent {
 
     $showHideToggleFocus.appendChild(
       createElement('span', {
-        class: this.iconClass
+        class: iconClass
       })
     )
     $showHideToggleFocus.appendChild(
       createElement('span', {
-        class: this.sectionToggleTextClass
+        class: sectionToggleTextClass
       })
     )
 
@@ -321,7 +321,7 @@ export class Accordion extends ConfigurableComponent {
     }
 
     // Handle when fragment is inside section
-    const $section = $fragment.closest(`.${this.sectionClass}`)
+    const $section = $fragment.closest(`.${sectionClass}`)
     if ($section) {
       this.setExpanded(true, $section)
     }
@@ -365,17 +365,15 @@ export class Accordion extends ConfigurableComponent {
    * @param {Element} $section - Section element
    */
   setExpanded(expanded, $section) {
-    const $showHideIcon = $section.querySelector(`.${this.iconClass}`)
-    const $showHideText = $section.querySelector(
-      `.${this.sectionToggleTextClass}`
-    )
-    const $button = $section.querySelector(`.${this.sectionButtonClass}`)
-    const $content = $section.querySelector(`.${this.sectionContentClass}`)
+    const $showHideIcon = $section.querySelector(`.${iconClass}`)
+    const $showHideText = $section.querySelector(`.${sectionToggleTextClass}`)
+    const $button = $section.querySelector(`.${sectionButtonClass}`)
+    const $content = $section.querySelector(`.${sectionContentClass}`)
 
     if (!$content) {
       throw new ElementError({
         component: Accordion,
-        identifier: `Section content (\`<div class="${this.sectionContentClass}">\`)`
+        identifier: `Section content (\`<div class="${sectionContentClass}">\`)`
       })
     }
 
@@ -394,14 +392,12 @@ export class Accordion extends ConfigurableComponent {
     // Update aria-label combining
     const ariaLabelParts = []
 
-    const $headingText = $section.querySelector(
-      `.${this.sectionHeadingTextClass}`
-    )
+    const $headingText = $section.querySelector(`.${sectionHeadingTextClass}`)
     if ($headingText) {
       ariaLabelParts.push(`${$headingText.textContent}`.trim())
     }
 
-    const $summary = $section.querySelector(`.${this.sectionSummaryClass}`)
+    const $summary = $section.querySelector(`.${sectionSummaryClass}`)
     if ($summary) {
       ariaLabelParts.push(`${$summary.textContent}`.trim())
     }
@@ -421,12 +417,12 @@ export class Accordion extends ConfigurableComponent {
     // Swap icon, change class
     if (expanded) {
       $content.removeAttribute('hidden')
-      $section.classList.add(this.sectionExpandedModifier)
-      $showHideIcon.classList.remove(this.iconOpenModifier)
+      $section.classList.add(sectionExpandedModifier)
+      $showHideIcon.classList.remove(iconOpenModifier)
     } else {
       $content.setAttribute('hidden', 'until-found')
-      $section.classList.remove(this.sectionExpandedModifier)
-      $showHideIcon.classList.add(this.iconOpenModifier)
+      $section.classList.remove(sectionExpandedModifier)
+      $showHideIcon.classList.add(iconOpenModifier)
     }
 
     // See if "Show all sections" button text should be updated
@@ -441,7 +437,7 @@ export class Accordion extends ConfigurableComponent {
    * @returns {boolean} True if expanded
    */
   isExpanded($section) {
-    return $section.classList.contains(this.sectionExpandedModifier)
+    return $section.classList.contains(sectionExpandedModifier)
   }
 
   /**
@@ -471,7 +467,7 @@ export class Accordion extends ConfigurableComponent {
     this.$showAllText.textContent = expanded
       ? this.i18n.t('hideAllSections')
       : this.i18n.t('showAllSections')
-    this.$showAllIcon.classList.toggle(this.iconOpenModifier, !expanded)
+    this.$showAllIcon.classList.toggle(iconOpenModifier, !expanded)
   }
 
   /**
@@ -485,7 +481,7 @@ export class Accordion extends ConfigurableComponent {
    * @returns {string | undefined | null} Identifier for section
    */
   getIdentifier($section) {
-    const $button = $section.querySelector(`.${this.sectionButtonClass}`)
+    const $button = $section.querySelector(`.${sectionButtonClass}`)
 
     return $button?.getAttribute('aria-controls')
   }
