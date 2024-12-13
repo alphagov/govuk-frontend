@@ -200,21 +200,6 @@ export class Accordion extends ConfigurableComponent {
       })
     }
 
-    // Create a button element that will replace the
-    // '.govuk-accordion__section-button' span
-    const $button = createElement('button', {
-      type: 'button',
-      'aria-controls': `${this.$root.id}-content-${index + 1}`
-    })
-
-    // Copy all attributes from $span to $button (except `id`, which gets added
-    // to the `$headingText` element)
-    for (const attr of Array.from($span.attributes)) {
-      if (attr.name !== 'id') {
-        $button.setAttribute(attr.name, attr.value)
-      }
-    }
-
     // Create container for heading text so it can be styled
     const $headingText = createElement('span', {
       class: sectionHeadingTextClass,
@@ -260,6 +245,21 @@ export class Accordion extends ConfigurableComponent {
         class: sectionToggleTextClass
       })
     )
+
+    // Create a button element that will replace the
+    // '.govuk-accordion__section-button' span
+    const $button = createElement('button', {
+      type: 'button',
+      'aria-controls': `${this.$root.id}-content-${index + 1}`
+    })
+
+    // Copy all attributes from $span to $button (except `id`, which gets added
+    // to the `$headingText` element)
+    for (const attr of Array.from($span.attributes)) {
+      if (attr.name !== 'id') {
+        $button.setAttribute(attr.name, attr.value)
+      }
+    }
 
     // Append elements to the button:
     // 1. Heading text
