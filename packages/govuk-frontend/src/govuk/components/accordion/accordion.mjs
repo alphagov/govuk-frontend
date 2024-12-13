@@ -245,30 +245,32 @@ export class Accordion extends ConfigurableComponent {
    */
   createShowHideToggle() {
     // Create an inner container to limit the width of the focus state
-    const $showHideToggleFocus = createElement('span', {
-      class: 'govuk-accordion__section-toggle-focus'
-    })
-
-    $showHideToggleFocus.appendChild(
-      createElement('span', {
-        class: iconClass
-      })
+    const $showHideToggleFocus = createElement(
+      'span',
+      {
+        class: 'govuk-accordion__section-toggle-focus'
+      },
+      [
+        createElement('span', {
+          class: iconClass
+        }),
+        createElement('span', {
+          class: sectionToggleTextClass
+        })
+      ]
     )
-    $showHideToggleFocus.appendChild(
-      createElement('span', {
-        class: sectionToggleTextClass
-      })
+
+    const $showHideToggle = createElement(
+      'span',
+      {
+        class: 'govuk-accordion__section-toggle',
+        // Tell Google not to index the 'show' text as part of the heading. Must be
+        // set on the element before it's added to the DOM.
+        // See https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#data-nosnippet-attr
+        'data-nosnippet': ''
+      },
+      [$showHideToggleFocus]
     )
-
-    const $showHideToggle = createElement('span', {
-      class: 'govuk-accordion__section-toggle',
-      // Tell Google not to index the 'show' text as part of the heading. Must be
-      // set on the element before it's added to the DOM.
-      // See https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#data-nosnippet-attr
-      'data-nosnippet': ''
-    })
-
-    $showHideToggle.appendChild($showHideToggleFocus)
 
     return $showHideToggle
   }
@@ -282,23 +284,25 @@ export class Accordion extends ConfigurableComponent {
   createHeadingText($span) {
     // Create an inner heading text container to limit the width of the focus
     // state
-    const $headingTextFocus = createElement('span', {
-      class: 'govuk-accordion__section-heading-text-focus'
-    })
-
-    // span could contain HTML elements which need moving to the new span
-    // (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
-    Array.from($span.childNodes).forEach(($child) =>
-      $headingTextFocus.appendChild($child)
+    const $headingTextFocus = createElement(
+      'span',
+      {
+        class: 'govuk-accordion__section-heading-text-focus'
+      },
+      // span could contain HTML elements which need moving to the new span
+      // (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
+      Array.from($span.childNodes)
     )
 
     // Create container for heading text so it can be styled
-    const $headingText = createElement('span', {
-      class: sectionHeadingTextClass,
-      id: $span.id
-    })
-
-    $headingText.appendChild($headingTextFocus)
+    const $headingText = createElement(
+      'span',
+      {
+        class: sectionHeadingTextClass,
+        id: $span.id
+      },
+      [$headingTextFocus]
+    )
 
     return $headingText
   }
@@ -316,23 +320,20 @@ export class Accordion extends ConfigurableComponent {
   createSummarySpan($summary) {
     // Create an inner summary container to limit the width of the summary
     // focus state
-    const $summarySpanFocus = createElement('span', {
-      class: 'govuk-accordion__section-summary-focus'
-    })
+    const $summarySpanFocus = createElement(
+      'span',
+      {
+        class: 'govuk-accordion__section-summary-focus'
+      },
+      Array.from($summary.childNodes)
+    )
 
-    const $summarySpan = createElement('span')
-
-    $summarySpan.appendChild($summarySpanFocus)
+    const $summarySpan = createElement('span', {}, [$summarySpanFocus])
 
     // Get original attributes, and pass them to the replacement
     for (const attr of Array.from($summary.attributes)) {
       $summarySpan.setAttribute(attr.name, attr.value)
     }
-
-    // Copy original contents of summary to the new summary span
-    Array.from($summary.childNodes).forEach(($child) =>
-      $summarySpanFocus.appendChild($child)
-    )
 
     return $summarySpan
   }
