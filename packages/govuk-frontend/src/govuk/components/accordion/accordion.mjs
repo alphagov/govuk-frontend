@@ -231,47 +231,10 @@ export class Accordion extends ConfigurableComponent {
       $button.appendChild(this.getButtonPunctuationEl())
     }
 
-    $button.appendChild(this.createShowHideToggle())
+    $button.appendChild(section.$toggle)
 
     $heading.removeChild($span)
     $heading.appendChild($button)
-  }
-
-  /**
-   * Creates a `<span>` rendering the 'Show'/'Hide' toggle
-   *
-   * @returns {HTMLSpanElement} - The `<span>` with the visual representation of the 'Show/Hide' toggle
-   */
-  createShowHideToggle() {
-    // Create an inner container to limit the width of the focus state
-    const $showHideToggleFocus = createElement(
-      'span',
-      {
-        class: 'govuk-accordion__section-toggle-focus'
-      },
-      [
-        createElement('span', {
-          class: iconClass
-        }),
-        createElement('span', {
-          class: sectionToggleTextClass
-        })
-      ]
-    )
-
-    const $showHideToggle = createElement(
-      'span',
-      {
-        class: 'govuk-accordion__section-toggle',
-        // Tell Google not to index the 'show' text as part of the heading. Must be
-        // set on the element before it's added to the DOM.
-        // See https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#data-nosnippet-attr
-        'data-nosnippet': ''
-      },
-      [$showHideToggleFocus]
-    )
-
-    return $showHideToggle
   }
 
   /**
