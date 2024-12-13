@@ -29,9 +29,6 @@ const iconOpenModifier = 'govuk-accordion-nav__chevron--down'
 /** @private */
 const sectionSummaryClass = 'govuk-accordion__section-summary'
 
-/** @private */
-const sectionContentClass = 'govuk-accordion__section-content'
-
 /**
  * Accordion component
  *
@@ -373,14 +370,7 @@ export class Accordion extends ConfigurableComponent {
     const $showHideIcon = section.$toggleIcon
     const $showHideText = section.$toggleText
     const $button = $section.querySelector(`.${sectionButtonClass}`)
-    const $content = $section.querySelector(`.${sectionContentClass}`)
-
-    if (!$content) {
-      throw new ElementError({
-        component: Accordion,
-        identifier: `Section content (\`<div class="${sectionContentClass}">\`)`
-      })
-    }
+    const $content = section.$content
 
     if (!$button) {
       // Return early for elements we create

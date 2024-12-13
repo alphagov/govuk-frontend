@@ -26,6 +26,21 @@ export class AccordionSection extends Component {
       })
     }
 
+    // Technically slightly different from the current implementation
+    // However, I'm not sure we originally intended to check whether the content element
+    // is present every time we toggle a section.
+    // If that's the case, we can always wrap this in a setter
+    this.$content = this.$root.querySelector(
+      `.govuk-accordion__section-content`
+    )
+
+    if (!this.$content) {
+      throw new ElementError({
+        component: AccordionSection,
+        identifier: `Section content (\`<div class="govuk-accordion__section-content">\`)`
+      })
+    }
+
     this.$toggleIcon = createElement('span', {
       class: 'govuk-accordion-nav__chevron'
     })
