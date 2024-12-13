@@ -3,6 +3,8 @@ import { createElement } from '../../common/create-element.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { I18n } from '../../i18n.mjs'
 
+import { AccordionSection } from './accordion-section.mjs'
+
 /** @private */
 const sectionClass = 'govuk-accordion__section'
 
@@ -11,9 +13,6 @@ const sectionExpandedModifier = 'govuk-accordion__section--expanded'
 
 /** @private */
 const sectionButtonClass = 'govuk-accordion__section-button'
-
-/** @private */
-const sectionHeaderClass = 'govuk-accordion__section-header'
 
 /** @private */
 const sectionHeadingClass = 'govuk-accordion__section-heading'
@@ -153,20 +152,16 @@ export class Accordion extends ConfigurableComponent {
    */
   initSectionHeaders() {
     this.$sections.forEach(($section, i) => {
-      const $header = $section.querySelector(`.${sectionHeaderClass}`)
-      if (!$header) {
-        throw new ElementError({
-          component: Accordion,
-          identifier: `Section headers (\`<div class="${sectionHeaderClass}">\`)`
-        })
-      }
+      const section = new AccordionSection($section)
 
       // Set header attributes
-      this.constructHeaderMarkup($header, i)
+      this.constructHeaderMarkup(section, i)
       this.setExpanded(this.isExpanded($section), $section)
 
       // Handle events
-      $header.addEventListener('click', () => this.onSectionToggle($section))
+      section.$header.addEventListener('click', () =>
+        this.onSectionToggle($section)
+      )
 
       // See if there is any state stored in sessionStorage and set the sections
       // to open or closed.
@@ -178,10 +173,14 @@ export class Accordion extends ConfigurableComponent {
    * Construct section header
    *
    * @private
-   * @param {Element} $header - Section header
+   * @param {AccordionSection} section - The section to build the header for
    * @param {number} index - Section index
    */
-  constructHeaderMarkup($header, index) {
+  constructHeaderMarkup(section, index) {
+    // TEMPORARY: This helps keeping current code intact
+    // before it gets moved to the `AccordionSection` class
+    const $header = section.$header
+
     const $span = $header.querySelector(`.${sectionButtonClass}`)
     const $heading = $header.querySelector(`.${sectionHeadingClass}`)
     const $summary = $header.querySelector(`.${sectionSummaryClass}`)

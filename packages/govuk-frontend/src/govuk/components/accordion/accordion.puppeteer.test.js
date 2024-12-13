@@ -798,7 +798,7 @@ describe('/components/accordion', () => {
             cause: {
               name: 'ElementError',
               message:
-                'govuk-accordion: Section headers (`<div class="govuk-accordion__section-header">`) not found'
+                'govuk-accordion-section: Section headers (`<div class="govuk-accordion__section-header">`) not found'
             }
           })
         })
