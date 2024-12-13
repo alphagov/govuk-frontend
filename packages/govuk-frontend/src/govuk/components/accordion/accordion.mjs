@@ -271,32 +271,10 @@ export class Accordion extends ConfigurableComponent {
 
     // If summary content exists add to DOM in correct order
     if ($summary) {
-      // Create a new `span` element and copy the summary line content from the
-      // original `div` to the new `span`. This is because the summary line text
-      // is now inside a button element, which can only contain phrasing
-      // content.
-      const $summarySpan = createElement('span')
-      // Create an inner summary container to limit the width of the summary
-      // focus state
-      const $summarySpanFocus = createElement('span', {
-        class: 'govuk-accordion__section-summary-focus'
-      })
-      $summarySpan.appendChild($summarySpanFocus)
-
-      // Get original attributes, and pass them to the replacement
-      for (const attr of Array.from($summary.attributes)) {
-        $summarySpan.setAttribute(attr.name, attr.value)
-      }
-
-      // Copy original contents of summary to the new summary span
-      Array.from($summary.childNodes).forEach(($child) =>
-        $summarySpanFocus.appendChild($child)
-      )
-
       // Replace the original summary `div` with the new summary `span`
       $summary.remove()
 
-      $button.appendChild($summarySpan)
+      $button.appendChild(this.createSummarySpan($summary))
       $button.appendChild(this.getButtonPunctuationEl())
     }
 
@@ -304,6 +282,40 @@ export class Accordion extends ConfigurableComponent {
 
     $heading.removeChild($span)
     $heading.appendChild($button)
+  }
+
+  /**
+   * Creates the `<span>` element with the summary for the section
+   *
+   * This is necessary because the summary line text is now inside
+   * a button element, which can only contain phrasing content, and
+   * not a `<div>` element
+   *
+   * @param {Element} $summary - The original `<div>` containing the summary
+   * @returns {HTMLSpanElement} - The `<span>` element containing the summary
+   */
+  createSummarySpan($summary) {
+    // Create an inner summary container to limit the width of the summary
+    // focus state
+    const $summarySpanFocus = createElement('span', {
+      class: 'govuk-accordion__section-summary-focus'
+    })
+
+    const $summarySpan = createElement('span')
+
+    $summarySpan.appendChild($summarySpanFocus)
+
+    // Get original attributes, and pass them to the replacement
+    for (const attr of Array.from($summary.attributes)) {
+      $summarySpan.setAttribute(attr.name, attr.value)
+    }
+
+    // Copy original contents of summary to the new summary span
+    Array.from($summary.childNodes).forEach(($child) =>
+      $summarySpanFocus.appendChild($child)
+    )
+
+    return $summarySpan
   }
 
   /**
