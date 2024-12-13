@@ -21,9 +21,6 @@ const sectionHeadingClass = 'govuk-accordion__section-heading'
 const sectionHeadingTextClass = 'govuk-accordion__section-heading-text'
 
 /** @private */
-const sectionToggleTextClass = 'govuk-accordion__section-toggle-text'
-
-/** @private */
 const iconClass = 'govuk-accordion-nav__chevron'
 
 /** @private */
@@ -93,6 +90,11 @@ export class Accordion extends ConfigurableComponent {
     }
 
     this.$sections = $sections
+    // This will help access the sections from their element
+    // hopefully only while migrating code to AccordionSection
+    // but possibly later.
+    /** @type {Map<Element,AccordionSection>} */
+    this.sections = new Map()
 
     this.initControls()
     this.initSectionHeaders()
@@ -153,6 +155,8 @@ export class Accordion extends ConfigurableComponent {
   initSectionHeaders() {
     this.$sections.forEach(($section, i) => {
       const section = new AccordionSection($section)
+      // Cache the AccordionSection for future retrieval
+      this.sections.set($section, section)
 
       // Set header attributes
       this.constructHeaderMarkup(section, i)
@@ -359,8 +363,15 @@ export class Accordion extends ConfigurableComponent {
    * @param {Element} $section - Section element
    */
   setExpanded(expanded, $section) {
-    const $showHideIcon = $section.querySelector(`.${iconClass}`)
-    const $showHideText = $section.querySelector(`.${sectionToggleTextClass}`)
+    // TEMPORARY: Access the section until the `expanded` state
+    // is handled inside the `AccordionSection` itself
+    const section = this.sections.get($section)
+    if (!section) {
+      return
+    }
+
+    const $showHideIcon = section.$toggleIcon
+    const $showHideText = section.$toggleText
     const $button = $section.querySelector(`.${sectionButtonClass}`)
     const $content = $section.querySelector(`.${sectionContentClass}`)
 
@@ -371,7 +382,7 @@ export class Accordion extends ConfigurableComponent {
       })
     }
 
-    if (!$showHideIcon || !$showHideText || !$button) {
+    if (!$button) {
       // Return early for elements we create
       return
     }
