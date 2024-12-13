@@ -200,24 +200,6 @@ export class Accordion extends ConfigurableComponent {
       })
     }
 
-    // Create container for heading text so it can be styled
-    const $headingText = createElement('span', {
-      class: sectionHeadingTextClass,
-      id: $span.id
-    })
-
-    // Create an inner heading text container to limit the width of the focus
-    // state
-    const $headingTextFocus = createElement('span', {
-      class: 'govuk-accordion__section-heading-text-focus'
-    })
-    $headingText.appendChild($headingTextFocus)
-    // span could contain HTML elements
-    // (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
-    Array.from($span.childNodes).forEach(($child) =>
-      $headingTextFocus.appendChild($child)
-    )
-
     // Create a button element that will replace the
     // '.govuk-accordion__section-button' span
     const $button = createElement('button', {
@@ -238,7 +220,7 @@ export class Accordion extends ConfigurableComponent {
     // 2. Punctuation
     // 3. (Optional: Summary line followed by punctuation)
     // 4. Show / hide toggle
-    $button.appendChild($headingText)
+    $button.appendChild(this.createHeadingText($span))
     $button.appendChild(this.getButtonPunctuationEl())
 
     // If summary content exists add to DOM in correct order
@@ -289,6 +271,36 @@ export class Accordion extends ConfigurableComponent {
     $showHideToggle.appendChild($showHideToggleFocus)
 
     return $showHideToggle
+  }
+
+  /**
+   * Creates the `<span>` containing the text of the section's heading
+   *
+   * @param {Element} $span - The heading of the span
+   * @returns {HTMLSpanElement} - The `<span>` containing the text of the section's heading
+   */
+  createHeadingText($span) {
+    // Create an inner heading text container to limit the width of the focus
+    // state
+    const $headingTextFocus = createElement('span', {
+      class: 'govuk-accordion__section-heading-text-focus'
+    })
+
+    // span could contain HTML elements which need moving to the new span
+    // (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
+    Array.from($span.childNodes).forEach(($child) =>
+      $headingTextFocus.appendChild($child)
+    )
+
+    // Create container for heading text so it can be styled
+    const $headingText = createElement('span', {
+      class: sectionHeadingTextClass,
+      id: $span.id
+    })
+
+    $headingText.appendChild($headingTextFocus)
+
+    return $headingText
   }
 
   /**
