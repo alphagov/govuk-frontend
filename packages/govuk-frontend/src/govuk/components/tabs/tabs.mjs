@@ -1,13 +1,13 @@
 import { getBreakpoint, getFragmentFromUrl } from '../../common/index.mjs'
+import { Component } from '../../component.mjs'
 import { ElementError } from '../../errors/index.mjs'
-import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
  * Tabs component
  *
  * @preserve
  */
-export class Tabs extends GOVUKFrontendComponent {
+export class Tabs extends Component {
   /** @private */
   $tabs
 
