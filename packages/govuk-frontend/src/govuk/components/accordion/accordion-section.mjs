@@ -26,6 +26,16 @@ export class AccordionSection extends Component {
       })
     }
 
+    this.$buttonPlaceholder = this.$header.querySelector(
+      `.govuk-accordion__section-button`
+    )
+    if (!this.$buttonPlaceholder) {
+      throw new ElementError({
+        component: AccordionSection,
+        identifier: `Section button placeholder (\`<span class="govuk-accordion__section-button">\`)`
+      })
+    }
+
     // Technically slightly different from the current implementation
     // However, I'm not sure we originally intended to check whether the content element
     // is present every time we toggle a section.

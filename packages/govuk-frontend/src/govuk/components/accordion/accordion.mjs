@@ -182,7 +182,6 @@ export class Accordion extends ConfigurableComponent {
     // before it gets moved to the `AccordionSection` class
     const $header = section.$header
 
-    const $span = $header.querySelector(`.${sectionButtonClass}`)
     const $heading = $header.querySelector(`.${sectionHeadingClass}`)
     const $summary = $header.querySelector(`.${sectionSummaryClass}`)
 
@@ -190,13 +189,6 @@ export class Accordion extends ConfigurableComponent {
       throw new ElementError({
         component: Accordion,
         identifier: `Section heading (\`.${sectionHeadingClass}\`)`
-      })
-    }
-
-    if (!$span) {
-      throw new ElementError({
-        component: Accordion,
-        identifier: `Section button placeholder (\`<span class="${sectionButtonClass}">\`)`
       })
     }
 
@@ -209,7 +201,7 @@ export class Accordion extends ConfigurableComponent {
 
     // Copy all attributes from $span to $button (except `id`, which gets added
     // to the `$headingText` element)
-    for (const attr of Array.from($span.attributes)) {
+    for (const attr of Array.from(section.$buttonPlaceholder.attributes)) {
       if (attr.name !== 'id') {
         $button.setAttribute(attr.name, attr.value)
       }
@@ -220,7 +212,7 @@ export class Accordion extends ConfigurableComponent {
     // 2. Punctuation
     // 3. (Optional: Summary line followed by punctuation)
     // 4. Show / hide toggle
-    $button.appendChild(this.createHeadingText($span))
+    $button.appendChild(this.createHeadingText(section.$buttonPlaceholder))
     $button.appendChild(this.getButtonPunctuationEl())
 
     // If summary content exists add to DOM in correct order
@@ -234,17 +226,17 @@ export class Accordion extends ConfigurableComponent {
 
     $button.appendChild(section.$toggle)
 
-    $heading.removeChild($span)
+    $heading.removeChild(section.$buttonPlaceholder)
     $heading.appendChild($button)
   }
 
   /**
    * Creates the `<span>` containing the text of the section's heading
    *
-   * @param {Element} $span - The heading of the span
+   * @param {Element} $buttonPlaceholder - The heading of the span
    * @returns {HTMLSpanElement} - The `<span>` containing the text of the section's heading
    */
-  createHeadingText($span) {
+  createHeadingText($buttonPlaceholder) {
     // Create an inner heading text container to limit the width of the focus
     // state
     const $headingTextFocus = createElement(
@@ -254,7 +246,7 @@ export class Accordion extends ConfigurableComponent {
       },
       // span could contain HTML elements which need moving to the new span
       // (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
-      Array.from($span.childNodes)
+      Array.from($buttonPlaceholder.childNodes)
     )
 
     // Create container for heading text so it can be styled
@@ -262,7 +254,7 @@ export class Accordion extends ConfigurableComponent {
       'span',
       {
         class: sectionHeadingTextClass,
-        id: $span.id
+        id: $buttonPlaceholder.id
       },
       [$headingTextFocus]
     )

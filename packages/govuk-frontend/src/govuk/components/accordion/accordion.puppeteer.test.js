@@ -836,7 +836,7 @@ describe('/components/accordion', () => {
             cause: {
               name: 'ElementError',
               message:
-                'govuk-accordion: Section button placeholder (`<span class="govuk-accordion__section-button">`) not found'
+                'govuk-accordion-section: Section button placeholder (`<span class="govuk-accordion__section-button">`) not found'
             }
           })
         })
