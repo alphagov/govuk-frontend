@@ -20,9 +20,6 @@ const iconClass = 'govuk-accordion-nav__chevron'
 /** @private */
 const iconOpenModifier = 'govuk-accordion-nav__chevron--down'
 
-/** @private */
-const sectionSummaryClass = 'govuk-accordion__section-summary'
-
 /**
  * Accordion component
  *
@@ -172,12 +169,6 @@ export class Accordion extends ConfigurableComponent {
    * @param {number} index - Section index
    */
   constructHeaderMarkup(section, index) {
-    // TEMPORARY: This helps keeping current code intact
-    // before it gets moved to the `AccordionSection` class
-    const $header = section.$header
-
-    const $summary = $header.querySelector(`.${sectionSummaryClass}`)
-
     // Create a button element that will replace the
     // '.govuk-accordion__section-button' span
     const $button = createElement('button', {
@@ -202,11 +193,8 @@ export class Accordion extends ConfigurableComponent {
     $button.appendChild(this.getButtonPunctuationEl())
 
     // If summary content exists add to DOM in correct order
-    if ($summary) {
-      // Replace the original summary `div` with the new summary `span`
-      $summary.remove()
-
-      $button.appendChild(this.createSummarySpan($summary))
+    if (section.$summary) {
+      $button.appendChild(section.$summary)
       $button.appendChild(this.getButtonPunctuationEl())
     }
 
@@ -214,37 +202,6 @@ export class Accordion extends ConfigurableComponent {
 
     section.$heading.removeChild(section.$buttonPlaceholder)
     section.$heading.appendChild($button)
-  }
-
-  /**
-   * Creates the `<span>` element with the summary for the section
-   *
-   * This is necessary because the summary line text is now inside
-   * a button element, which can only contain phrasing content, and
-   * not a `<div>` element
-   *
-   * @param {Element} $summary - The original `<div>` containing the summary
-   * @returns {HTMLSpanElement} - The `<span>` element containing the summary
-   */
-  createSummarySpan($summary) {
-    // Create an inner summary container to limit the width of the summary
-    // focus state
-    const $summarySpanFocus = createElement(
-      'span',
-      {
-        class: 'govuk-accordion__section-summary-focus'
-      },
-      Array.from($summary.childNodes)
-    )
-
-    const $summarySpan = createElement('span', {}, [$summarySpanFocus])
-
-    // Get original attributes, and pass them to the replacement
-    for (const attr of Array.from($summary.attributes)) {
-      $summarySpan.setAttribute(attr.name, attr.value)
-    }
-
-    return $summarySpan
   }
 
   /**
@@ -335,9 +292,8 @@ export class Accordion extends ConfigurableComponent {
 
     ariaLabelParts.push(`${section.$headingText.textContent}`.trim())
 
-    const $summary = $section.querySelector(`.${sectionSummaryClass}`)
-    if ($summary) {
-      ariaLabelParts.push(`${$summary.textContent}`.trim())
+    if (section.$summary) {
+      ariaLabelParts.push(`${section.$summary.textContent}`.trim())
     }
 
     const ariaLabelMessage = expanded
