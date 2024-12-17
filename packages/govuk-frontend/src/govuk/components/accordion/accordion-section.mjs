@@ -53,6 +53,15 @@ export class AccordionSection extends Component {
       '.govuk-accordion__section-heading',
       'Section heading (`.govuk-accordion__section-heading`)'
     )
+
+    const $summary = this.$root.querySelector(
+      `.govuk-accordion__section-summary`
+    )
+    if ($summary) {
+      this.$summary = createSummarySpan($summary)
+
+      $summary.remove()
+    }
   }
 
   /**
@@ -77,6 +86,37 @@ export class AccordionSection extends Component {
 
     return $element
   }
+}
+
+/**
+ * Creates the `<span>` element with the summary for the section
+ *
+ * This is necessary because the summary line text is now inside
+ * a button element, which can only contain phrasing content, and
+ * not a `<div>` element
+ *
+ * @param {Element} $summary - The original `<div>` containing the summary
+ * @returns {HTMLSpanElement} - The `<span>` element containing the summary
+ */
+function createSummarySpan($summary) {
+  // Create an inner summary container to limit the width of the summary
+  // focus state
+  const $summarySpanFocus = createElement(
+    'span',
+    {
+      class: 'govuk-accordion__section-summary-focus'
+    },
+    Array.from($summary.childNodes)
+  )
+
+  const $summarySpan = createElement('span', {}, [$summarySpanFocus])
+
+  // Get original attributes, and pass them to the replacement
+  for (const attr of Array.from($summary.attributes)) {
+    $summarySpan.setAttribute(attr.name, attr.value)
+  }
+
+  return $summarySpan
 }
 
 /**
