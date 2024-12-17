@@ -232,7 +232,7 @@ describe('packages/govuk-frontend/dist/', () => {
 
         // Look for AMD module definition for 'GOVUKFrontend'
         expect(contents).toContain(
-          "(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.GOVUKFrontend = {}));"
+          "(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.GOVUKFrontend = global.GOVUKFrontend || {}));"
         )
 
         // Look for bundled components with CommonJS named exports
@@ -355,6 +355,12 @@ describe('packages/govuk-frontend/dist/', () => {
           )
 
           expect(moduleTextESM).toContain(`export { ${componentClassName} }`)
+
+          // Look for AMD module definition for 'GOVUKFrontend'
+          expect(moduleTextUMD).toContain(
+            "(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.GOVUKFrontend = global.GOVUKFrontend || {}));"
+          )
+
           expect(moduleTextUMD).toContain(
             `exports.${componentClassName} = ${componentClassName};`
           )

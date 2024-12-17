@@ -33,6 +33,12 @@ You do not need `/index` at the end of each import path if you’re using Dart S
 
 This change was introduced in [pull request #5518: Deprecate `govuk/all.scss` and only reference `govuk/index.scss` internally](https://github.com/alphagov/govuk-frontend/pull/5518).
 
+### Fixes
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#5533: Fix UMD files overriding existing global](https://github.com/alphagov/govuk-frontend/pull/5533)
+
 ## v5.7.1 (Fix release)
 
 To install this version with npm, run `npm install govuk-frontend@5.7.1`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
