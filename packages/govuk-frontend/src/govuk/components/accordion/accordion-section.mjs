@@ -36,6 +36,8 @@ export class AccordionSection extends Component {
       })
     }
 
+    this.$headingText = createHeadingText(this.$buttonPlaceholder)
+
     // Technically slightly different from the current implementation
     // However, I'm not sure we originally intended to check whether the content element
     // is present every time we toggle a section.
@@ -61,6 +63,38 @@ export class AccordionSection extends Component {
 
     this.$toggle = createShowHideToggle(this.$toggleIcon, this.$toggleText)
   }
+}
+
+/**
+ * Creates the `<span>` containing the text of the section's heading
+ *
+ * @param {Element} $buttonPlaceholder - The heading of the span
+ * @returns {HTMLSpanElement} - The `<span>` containing the text of the section's heading
+ */
+function createHeadingText($buttonPlaceholder) {
+  // Create an inner heading text container to limit the width of the focus
+  // state
+  const $headingTextFocus = createElement(
+    'span',
+    {
+      class: 'govuk-accordion__section-heading-text-focus'
+    },
+    // span could contain HTML elements which need moving to the new span
+    // (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
+    Array.from($buttonPlaceholder.childNodes)
+  )
+
+  // Create container for heading text so it can be styled
+  const $headingText = createElement(
+    'span',
+    {
+      class: 'govuk-accordion__section-heading-text',
+      id: $buttonPlaceholder.id
+    },
+    [$headingTextFocus]
+  )
+
+  return $headingText
 }
 
 /**
