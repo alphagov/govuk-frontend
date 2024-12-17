@@ -18,23 +18,15 @@ export class AccordionSection extends Component {
   constructor($root) {
     super($root)
 
-    this.$header = this.$root.querySelector(`.govuk-accordion__section-header`)
-    if (!this.$header) {
-      throw new ElementError({
-        component: AccordionSection,
-        identifier: `Section headers (\`<div class="govuk-accordion__section-header">\`)`
-      })
-    }
-
-    this.$buttonPlaceholder = this.$header.querySelector(
-      `.govuk-accordion__section-button`
+    this.$header = this.findRequiredElement(
+      `.govuk-accordion__section-header`,
+      `Section headers (\`<div class="govuk-accordion__section-header">\`)`
     )
-    if (!this.$buttonPlaceholder) {
-      throw new ElementError({
-        component: AccordionSection,
-        identifier: `Section button placeholder (\`<span class="govuk-accordion__section-button">\`)`
-      })
-    }
+
+    this.$buttonPlaceholder = this.findRequiredElement(
+      '.govuk-accordion__section-button',
+      'Section button placeholder (`<span class="govuk-accordion__section-button">`)'
+    )
 
     this.$headingText = createHeadingText(this.$buttonPlaceholder)
 
@@ -42,16 +34,10 @@ export class AccordionSection extends Component {
     // However, I'm not sure we originally intended to check whether the content element
     // is present every time we toggle a section.
     // If that's the case, we can always wrap this in a setter
-    this.$content = this.$root.querySelector(
-      `.govuk-accordion__section-content`
+    this.$content = this.findRequiredElement(
+      `.govuk-accordion__section-content`,
+      `Section content (\`<div class="govuk-accordion__section-content">\`)`
     )
-
-    if (!this.$content) {
-      throw new ElementError({
-        component: AccordionSection,
-        identifier: `Section content (\`<div class="govuk-accordion__section-content">\`)`
-      })
-    }
 
     this.$toggleIcon = createElement('span', {
       class: 'govuk-accordion-nav__chevron'
@@ -63,16 +49,33 @@ export class AccordionSection extends Component {
 
     this.$toggle = createShowHideToggle(this.$toggleIcon, this.$toggleText)
 
-    this.$heading = this.$root.querySelector(
-      '.govuk-accordion__section-heading'
+    this.$heading = this.findRequiredElement(
+      '.govuk-accordion__section-heading',
+      'Section heading (`.govuk-accordion__section-heading`)'
     )
+  }
 
-    if (!this.$heading) {
+  /**
+   * Finds a require element under the component's root
+   *
+   * Throws if the element does not exist
+   *
+   * @param {string} selector - The selector to use for looking up the element
+   * @param {string} identifier - A message that'll help user identify the element if it's missing
+   * @returns {Element} - The element
+   * @throws {ElementError} - If the element is not present
+   */
+  findRequiredElement(selector, identifier) {
+    const $element = this.$root.querySelector(selector)
+
+    if (!$element) {
       throw new ElementError({
         component: AccordionSection,
-        identifier: `Section heading (\`.govuk-accordion__section-heading\`)`
+        identifier
       })
     }
+
+    return $element
   }
 }
 
