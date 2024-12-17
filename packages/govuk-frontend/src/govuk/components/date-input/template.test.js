@@ -17,7 +17,7 @@ describe('Date input', () => {
       const $ = render('date-input', examples.default)
 
       const $component = $('.govuk-date-input')
-      expect($component.attr('id')).toBe('dob')
+      expect($component.attr('id')).toBe('date-input')
     })
 
     it('renders default inputs', () => {

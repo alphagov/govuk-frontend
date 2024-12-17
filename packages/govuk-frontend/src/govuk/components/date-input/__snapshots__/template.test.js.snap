@@ -13,17 +13,17 @@ exports[`Date input nested dependant components passes through fieldset params w
 
 exports[`Date input nested dependant components passes through label params without breaking 1`] = `
 <label class="govuk-label govuk-date-input__label"
-       for="dob-day"
+       for="date-input-day"
 >
   Day
 </label>
 <label class="govuk-label govuk-date-input__label"
-       for="dob-month"
+       for="date-input-month"
 >
   Month
 </label>
 <label class="govuk-label govuk-date-input__label"
-       for="dob-year"
+       for="date-input-year"
 >
   Year
 </label>
