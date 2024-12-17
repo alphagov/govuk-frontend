@@ -14,9 +14,15 @@ export class AccordionSection extends Component {
 
   /**
    * @param {Element} $root - The root of the section
+   * @param {{accordionId: string, index: number}} config - Configuration for the section
    */
-  constructor($root) {
+  constructor($root, config) {
     super($root)
+    // We do not need all the cruft of ConfigurableComponent as there's no defaults
+    // or need to read config from the root's HTML attributes
+    // If anything we actually don't need to store the config at all during the section's lifetime
+    // only the contentId
+    this.contentId = `${config.accordionId}-content-${config.index + 1}`
 
     this.$header = this.findRequiredElement(
       `.govuk-accordion__section-header`,
@@ -34,6 +40,7 @@ export class AccordionSection extends Component {
     // However, I'm not sure we originally intended to check whether the content element
     // is present every time we toggle a section.
     // If that's the case, we can always wrap this in a setter
+    // TODO: Update to use the ID computed for the `aria-controls` of the `<button>`
     this.$content = this.findRequiredElement(
       `.govuk-accordion__section-content`,
       `Section content (\`<div class="govuk-accordion__section-content">\`)`
