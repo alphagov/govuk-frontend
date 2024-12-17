@@ -141,13 +141,16 @@ export class Accordion extends ConfigurableComponent {
    * @private
    */
   initSectionHeaders() {
-    this.$sections.forEach(($section, i) => {
-      const section = new AccordionSection($section)
+    this.$sections.forEach(($section, index) => {
+      const section = new AccordionSection($section, {
+        accordionId: this.$root.id,
+        index
+      })
       // Cache the AccordionSection for future retrieval
       this.sections.set($section, section)
 
       // Set header attributes
-      this.constructHeaderMarkup(section, i)
+      this.constructHeaderMarkup(section, index)
       this.setExpanded(this.isExpanded($section), $section)
 
       // Handle events
@@ -375,9 +378,10 @@ export class Accordion extends ConfigurableComponent {
    * @returns {string | undefined | null} Identifier for section
    */
   getIdentifier($section) {
-    const $button = $section.querySelector(`.${sectionButtonClass}`)
-
-    return $button?.getAttribute('aria-controls')
+    // TODO: Temporary, this should be lifted once the accordion
+    // all section related features as within `AccordionSection`
+    const section = this.sections.get($section)
+    return section?.contentId
   }
 
   /**
