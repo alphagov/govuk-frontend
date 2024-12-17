@@ -15,9 +15,6 @@ const sectionExpandedModifier = 'govuk-accordion__section--expanded'
 const sectionButtonClass = 'govuk-accordion__section-button'
 
 /** @private */
-const sectionHeadingClass = 'govuk-accordion__section-heading'
-
-/** @private */
 const iconClass = 'govuk-accordion-nav__chevron'
 
 /** @private */
@@ -179,15 +176,7 @@ export class Accordion extends ConfigurableComponent {
     // before it gets moved to the `AccordionSection` class
     const $header = section.$header
 
-    const $heading = $header.querySelector(`.${sectionHeadingClass}`)
     const $summary = $header.querySelector(`.${sectionSummaryClass}`)
-
-    if (!$heading) {
-      throw new ElementError({
-        component: Accordion,
-        identifier: `Section heading (\`.${sectionHeadingClass}\`)`
-      })
-    }
 
     // Create a button element that will replace the
     // '.govuk-accordion__section-button' span
@@ -223,8 +212,8 @@ export class Accordion extends ConfigurableComponent {
 
     $button.appendChild(section.$toggle)
 
-    $heading.removeChild(section.$buttonPlaceholder)
-    $heading.appendChild($button)
+    section.$heading.removeChild(section.$buttonPlaceholder)
+    section.$heading.appendChild($button)
   }
 
   /**
