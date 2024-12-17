@@ -62,6 +62,17 @@ export class AccordionSection extends Component {
     })
 
     this.$toggle = createShowHideToggle(this.$toggleIcon, this.$toggleText)
+
+    this.$heading = this.$root.querySelector(
+      '.govuk-accordion__section-heading'
+    )
+
+    if (!this.$heading) {
+      throw new ElementError({
+        component: AccordionSection,
+        identifier: `Section heading (\`.govuk-accordion__section-heading\`)`
+      })
+    }
   }
 }
 
