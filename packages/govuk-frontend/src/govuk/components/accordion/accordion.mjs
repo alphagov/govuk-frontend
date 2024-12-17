@@ -18,9 +18,6 @@ const sectionButtonClass = 'govuk-accordion__section-button'
 const sectionHeadingClass = 'govuk-accordion__section-heading'
 
 /** @private */
-const sectionHeadingTextClass = 'govuk-accordion__section-heading-text'
-
-/** @private */
 const iconClass = 'govuk-accordion-nav__chevron'
 
 /** @private */
@@ -212,7 +209,7 @@ export class Accordion extends ConfigurableComponent {
     // 2. Punctuation
     // 3. (Optional: Summary line followed by punctuation)
     // 4. Show / hide toggle
-    $button.appendChild(this.createHeadingText(section.$buttonPlaceholder))
+    $button.appendChild(section.$headingText)
     $button.appendChild(this.getButtonPunctuationEl())
 
     // If summary content exists add to DOM in correct order
@@ -228,38 +225,6 @@ export class Accordion extends ConfigurableComponent {
 
     $heading.removeChild(section.$buttonPlaceholder)
     $heading.appendChild($button)
-  }
-
-  /**
-   * Creates the `<span>` containing the text of the section's heading
-   *
-   * @param {Element} $buttonPlaceholder - The heading of the span
-   * @returns {HTMLSpanElement} - The `<span>` containing the text of the section's heading
-   */
-  createHeadingText($buttonPlaceholder) {
-    // Create an inner heading text container to limit the width of the focus
-    // state
-    const $headingTextFocus = createElement(
-      'span',
-      {
-        class: 'govuk-accordion__section-heading-text-focus'
-      },
-      // span could contain HTML elements which need moving to the new span
-      // (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
-      Array.from($buttonPlaceholder.childNodes)
-    )
-
-    // Create container for heading text so it can be styled
-    const $headingText = createElement(
-      'span',
-      {
-        class: sectionHeadingTextClass,
-        id: $buttonPlaceholder.id
-      },
-      [$headingTextFocus]
-    )
-
-    return $headingText
   }
 
   /**
@@ -379,10 +344,7 @@ export class Accordion extends ConfigurableComponent {
     // Update aria-label combining
     const ariaLabelParts = []
 
-    const $headingText = $section.querySelector(`.${sectionHeadingTextClass}`)
-    if ($headingText) {
-      ariaLabelParts.push(`${$headingText.textContent}`.trim())
-    }
+    ariaLabelParts.push(`${section.$headingText.textContent}`.trim())
 
     const $summary = $section.querySelector(`.${sectionSummaryClass}`)
     if ($summary) {
