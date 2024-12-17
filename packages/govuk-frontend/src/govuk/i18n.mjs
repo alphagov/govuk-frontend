@@ -57,7 +57,7 @@ export class I18n {
 
     if (typeof translation === 'string') {
       // Check for ${} placeholders in the translation string
-      if (translation.match(/%{(.\S+)}/)) {
+      if (/%{(.\S+)}/.exec(translation)) {
         if (!options) {
           throw new Error(
             'i18n: cannot replace placeholders in string if no option data provided'

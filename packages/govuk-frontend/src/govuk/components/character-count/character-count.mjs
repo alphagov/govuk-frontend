@@ -126,7 +126,7 @@ export class CharacterCount extends GOVUKFrontendComponentConfigurable {
     // Inject a description for the textarea if none is present already
     // for when the component was rendered with no maxlength, maxwords
     // nor custom textareaDescriptionText
-    if (`${$textareaDescription.textContent}`.match(/^\s*$/)) {
+    if (/^\s*$/.exec((`${$textareaDescription.textContent}`))) {
       $textareaDescription.textContent = this.i18n.t('textareaDescription', {
         count: this.maxLength
       })
