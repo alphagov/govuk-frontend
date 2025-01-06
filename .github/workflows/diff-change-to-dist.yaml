@@ -10,7 +10,7 @@ permissions:
 jobs:
   generate-diff:
     name: Generate Diff
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     # Abort if run from a fork, as token won't have write access to post comment
     if: github.event.pull_request.head.repo.full_name == github.repository
     steps:
