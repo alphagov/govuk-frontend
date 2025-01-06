@@ -7,7 +7,7 @@ on:
 jobs:
   test-tree-shaking:
     name: Test tree shaking
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     env:
       PUPPETEER_SKIP_DOWNLOAD: true

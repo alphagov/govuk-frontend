@@ -28,7 +28,7 @@ jobs:
 
       matrix:
         runner:
-          - ubuntu-latest
+          - ubuntu-22.04
           - windows-latest
 
     steps:
@@ -48,7 +48,7 @@ jobs:
 
       matrix:
         runner:
-          - ubuntu-latest
+          - ubuntu-22.04
           - windows-latest
 
     steps:
@@ -76,7 +76,7 @@ jobs:
 
       matrix:
         runner:
-          - ubuntu-latest
+          - ubuntu-22.04
           - windows-latest
 
         task:
@@ -133,7 +133,7 @@ jobs:
 
       matrix:
         runner:
-          - ubuntu-latest
+          - ubuntu-22.04
           - windows-latest
 
         task:
@@ -215,7 +215,7 @@ jobs:
 
       matrix:
         runner:
-          - ubuntu-latest
+          - ubuntu-22.04
           - windows-latest
 
         task:
@@ -242,7 +242,7 @@ jobs:
 
   package:
     name: Export ${{ matrix.conditions }}, Node.js ${{ matrix.node-version }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: [install, build]
 
     strategy:

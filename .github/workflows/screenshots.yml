@@ -11,7 +11,7 @@ concurrency:
 jobs:
   screenshots:
     name: Send screenshots
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     env:
       PERCY_POSTINSTALL_BROWSER: false
