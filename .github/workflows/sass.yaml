@@ -18,7 +18,7 @@ concurrency:
 jobs:
   dart-sass:
     name: Dart Sass v1.0.0
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout code
@@ -47,7 +47,7 @@ jobs:
 
   dart-sass-latest:
     name: Dart Sass v1 (latest)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout code
@@ -83,7 +83,7 @@ jobs:
   # Node Sass v5.0.0 = LibSass v3.5.5
   lib-sass:
     name: LibSass v3.5.5 (deprecated)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout code
@@ -117,7 +117,7 @@ jobs:
   # Node Sass v8.x = LibSass v3 latest
   lib-sass-latest:
     name: LibSass v3 (latest, deprecated)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout code
@@ -146,7 +146,7 @@ jobs:
 
   ruby-sass:
     name: Ruby Sass v3.4.0 (deprecated)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout code
@@ -174,7 +174,7 @@ jobs:
 
   ruby-sass-latest:
     name: Ruby Sass v3 (latest, deprecated)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout code

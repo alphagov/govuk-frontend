@@ -10,7 +10,7 @@ permissions:
 jobs:
   generate-diff:
     name: Generate diff
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     # Skip workflows other than PRs such as merges to `main` but
     # also when token write permissions are unavailable on forks
