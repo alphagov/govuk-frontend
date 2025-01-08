@@ -96,4 +96,8 @@
     margin-bottom: 0;
     margin-left: govuk-spacing(2);
   }
+
+  .govuk-file-upload-wrapper:active button {
+    background-color: $govuk-focus-colour;
+  }
 }

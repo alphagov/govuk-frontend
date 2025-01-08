@@ -83,6 +83,8 @@ export class FileUpload extends GOVUKFrontendComponent {
       'govuk-button govuk-button--secondary govuk-file-upload__button'
     $button.type = 'button'
     $button.innerText = this.i18n.t('selectFilesButton')
+    // Prevent the button being tabbed to by keyboard users
+    $button.setAttribute('tabindex', '-1')
     $button.addEventListener('click', this.onClick.bind(this))
 
     // Create status element that shows what/how many files are selected
@@ -105,9 +107,6 @@ export class FileUpload extends GOVUKFrontendComponent {
     this.$wrapper = $wrapper
     this.$button = $button
     this.$status = $status
-
-    // Prevent the hidden input being tabbed to by keyboard users
-    this.$root.setAttribute('tabindex', '-1')
 
     // Syncronise the `disabled` state between the button and underlying input
     this.updateDisabledState()
