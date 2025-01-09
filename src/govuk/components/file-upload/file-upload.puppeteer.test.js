@@ -326,6 +326,49 @@ describe('/components/file-upload', () => {
           expect(buttonDisabledAfter).toBeFalsy()
         })
       })
+
+      describe('errors at instantiation', () => {
+        let examples
+
+        beforeAll(async () => {
+          examples = await getExamples('file-upload')
+        })
+
+        describe('missing or misconfigured elements', () => {
+          it('throws if the input type is not "file"', async () => {
+            await expect(
+              render(page, 'file-upload', examples.default, {
+                beforeInitialisation() {
+                  document
+                    .querySelector('[type="file"]')
+                    .setAttribute('type', 'text')
+                }
+              })
+            ).rejects.toMatchObject({
+              cause: {
+                name: 'ElementError',
+                message:
+                  'File upload: Form field must be an input of type `file`.'
+              }
+            })
+          })
+
+          it('throws if no label is present', async () => {
+            await expect(
+              render(page, 'file-upload', examples.default, {
+                beforeInitialisation() {
+                  document.querySelector('label').remove()
+                }
+              })
+            ).rejects.toMatchObject({
+              cause: {
+                name: 'ElementError',
+                message: 'govuk-file-upload: No label not found'
+              }
+            })
+          })
+        })
+      })
     })
   })
 })
