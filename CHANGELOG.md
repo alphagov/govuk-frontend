@@ -4,14 +4,20 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
-### Use our base configurable component to build your own configurable component
+## v5.8.0 (Feature release)
 
-We've added a `ConfigurableComponent` class to help you build your own configurable components. It extends our base component class and so it allows you to focus on your components' specific features by handling these shared behaviours across components:
+To install this version with npm, run `npm install govuk-frontend@5.8.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
+
+### New features
+
+#### Use our base configurable component to build your own configurable component
+
+We've added a `ConfigurableComponent` class to help you build your own configurable components. It extends our `Component` class and allows you to focus on your components' specific features by handling these shared behaviours across components:
 
 - checking that GOV.UK Frontend is supported
 - checking that the component is not already initialised on its root element
-- checking the type of the root element and storing it for access within the component as this.$root
-- taking a configuration object as a parameter and then storing it for access within the component as this.config
+- checking the type of the root element and storing it for access within the component as `this.$root`
+- taking a configuration object as a parameter and then storing it for access within the component as `this.config`
 - merging a passed configuration object with configuration options specified on the data attributes of the root element
 
 We introduced this change in:
@@ -27,7 +33,7 @@ You'll see a warning when compiling your Sass if you import all of GOV.UK Fronte
 
 In your import statements, use a trailing `/index` rather than `/all` to load GOV.UK Frontend's files:
 
-- `@import "govuk/index";` instead of `@import "govuk/all";`;
+- `@import "govuk/index";` instead of `@import "govuk/all";`
 
 You do not need `/index` at the end of each import path if you’re using Dart Sass.
 
