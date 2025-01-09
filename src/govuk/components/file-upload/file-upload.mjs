@@ -1,15 +1,15 @@
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
-import { mergeConfigs, normaliseDataset } from '../../common/configuration.mjs'
+import { ConfigurableComponent } from '../../common/configuration.mjs'
 import { ElementError } from '../../errors/index.mjs'
-import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 import { I18n } from '../../i18n.mjs'
 
 /**
  * File upload component
  *
  * @preserve
+ * @augments ConfigurableComponent<FileUploadConfig,HTMLInputElement>
  */
-export class FileUpload extends GOVUKFrontendComponent {
+export class FileUpload extends ConfigurableComponent {
   /**
    * @private
    */
@@ -25,14 +25,6 @@ export class FileUpload extends GOVUKFrontendComponent {
    */
   $status
 
-  /**
-   * @private
-   * @type {FileUploadConfig}
-   */
-  // eslint-disable-next-line
-  // @ts-ignore
-  config
-
   /** @private */
   i18n
 
@@ -41,23 +33,13 @@ export class FileUpload extends GOVUKFrontendComponent {
    * @param {FileUploadConfig} [config] - File Upload config
    */
   constructor($root, config = {}) {
-    super($root)
-
-    if (!(this.$root instanceof HTMLInputElement)) {
-      return
-    }
+    super($root, config)
 
     if (this.$root.type !== 'file') {
       throw new ElementError(
         'File upload: Form field must be an input of type `file`.'
       )
     }
-
-    this.config = mergeConfigs(
-      FileUpload.defaults,
-      config,
-      normaliseDataset(FileUpload, this.$root.dataset)
-    )
 
     this.i18n = new I18n(this.config.i18n, {
       // Read the fallback if necessary rather than have it set in the defaults
@@ -139,11 +121,6 @@ export class FileUpload extends GOVUKFrontendComponent {
     // eslint-disable-next-line
     // @ts-ignore
     const fileCount = this.$root.files.length // eslint-disable-line
-
-    // trying to appease typescript
-    if (!this.$status || !this.i18n) {
-      return
-    }
 
     if (fileCount === 0) {
       // If there are no files, show the default selection text

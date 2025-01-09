@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 const { render } = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
@@ -332,6 +334,69 @@ describe('/components/file-upload', () => {
 
         beforeAll(async () => {
           examples = await getExamples('file-upload')
+        })
+
+        it('can throw a SupportError if appropriate', async () => {
+          await expect(
+            render(page, 'file-upload', examples.default, {
+              beforeInitialisation() {
+                document.body.classList.remove('govuk-frontend-supported')
+              }
+            })
+          ).rejects.toMatchObject({
+            cause: {
+              name: 'SupportError',
+              message:
+                'GOV.UK Frontend initialised without `<body class="govuk-frontend-supported">` from template `<script>` snippet'
+            }
+          })
+        })
+
+        it('throws when initialised twice', async () => {
+          await expect(
+            render(page, 'file-upload', examples.default, {
+              async afterInitialisation($root) {
+                const { FileUpload } = await import('govuk-frontend')
+                new FileUpload($root)
+              }
+            })
+          ).rejects.toMatchObject({
+            name: 'InitError',
+            message:
+              'govuk-file-upload: Root element (`$root`) already initialised'
+          })
+        })
+
+        it('throws when $root is not set', async () => {
+          await expect(
+            render(page, 'file-upload', examples.default, {
+              beforeInitialisation($root) {
+                $root.remove()
+              }
+            })
+          ).rejects.toMatchObject({
+            cause: {
+              name: 'ElementError',
+              message: 'govuk-file-upload: Root element (`$root`) not found'
+            }
+          })
+        })
+
+        it('throws when receiving the wrong type for $root', async () => {
+          await expect(
+            render(page, 'file-upload', examples.default, {
+              beforeInitialisation($root) {
+                // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
+                $root.outerHTML = `<svg data-module="govuk-file-upload"></svg>`
+              }
+            })
+          ).rejects.toMatchObject({
+            cause: {
+              name: 'ElementError',
+              message:
+                'govuk-file-upload: Root element (`$root`) is not of type HTMLElement'
+            }
+          })
         })
 
         describe('missing or misconfigured elements', () => {
