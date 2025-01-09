@@ -413,7 +413,7 @@ describe('/components/file-upload', () => {
               cause: {
                 name: 'ElementError',
                 message:
-                  'File upload: Form field must be an input of type `file`.'
+                  'govuk-file-upload: Form field must be an input of type `file`.'
               }
             })
           })

@@ -1,5 +1,6 @@
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs'
 import { ConfigurableComponent } from '../../common/configuration.mjs'
+import { formatErrorMessage } from '../../common/index.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { I18n } from '../../i18n.mjs'
 
@@ -37,7 +38,10 @@ export class FileUpload extends ConfigurableComponent {
 
     if (this.$root.type !== 'file') {
       throw new ElementError(
-        'File upload: Form field must be an input of type `file`.'
+        formatErrorMessage(
+          FileUpload,
+          'Form field must be an input of type `file`.'
+        )
       )
     }
 
