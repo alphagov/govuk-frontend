@@ -97,7 +97,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
 7. Have a quick look at the diff of the new package with the previous one at:
 
    ```txt
-   https://diff.intrinsic.com/govuk-frontend/<PREVIOUS_VERSION_NUMBER>/<RELEASED_VERSION_NUMBER>
+   https://npmdiff.dev/govuk-frontend/<PREVIOUS_VERSION_NUMBER>/<RELEASED_VERSION_NUMBER>
    ```
 
 8. Run `npm logout` to log out from npm in the command line. If you've logged in through your browser, remember to log out from <https://npmjs.com> there as well.
