@@ -122,9 +122,7 @@ export class FileUpload extends ConfigurableComponent {
       return
     }
 
-    // eslint-disable-next-line
-    // @ts-ignore
-    const fileCount = this.$root.files.length // eslint-disable-line
+    const fileCount = this.$root.files.length
 
     if (fileCount === 0) {
       // If there are no files, show the default selection text
@@ -133,9 +131,7 @@ export class FileUpload extends ConfigurableComponent {
       // If there is 1 file, just show the file name
       fileCount === 1
     ) {
-      // eslint-disable-next-line
-      // @ts-ignore
-      this.$status.innerText = this.$root.files[0].name // eslint-disable-line
+      this.$status.innerText = this.$root.files[0].name
     } else {
       // Otherwise, tell the user how many files are selected
       this.$status.innerText = this.i18n.t('filesSelected', {
@@ -164,8 +160,6 @@ export class FileUpload extends ConfigurableComponent {
     // else), we only want to indicate files.
     console.log(event)
 
-    // eslint-disable-next-line
-    // @ts-ignore
     this.$wrapper.classList.add('govuk-file-upload-wrapper--show-dropzone')
   }
 
@@ -174,8 +168,6 @@ export class FileUpload extends ConfigurableComponent {
    * remove the visual indicator.
    */
   onDragLeaveOrDrop() {
-    // eslint-disable-next-line
-    // @ts-ignore
     this.$wrapper.classList.remove('govuk-file-upload-wrapper--show-dropzone')
   }
 
