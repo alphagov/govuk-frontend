@@ -8,7 +8,7 @@ import { I18n } from '../../i18n.mjs'
  * File upload component
  *
  * @preserve
- * @augments ConfigurableComponent<FileUploadConfig,HTMLInputElement>
+ * @augments ConfigurableComponent<FileUploadConfig,HTMLFileInputElement>
  */
 export class FileUpload extends ConfigurableComponent {
   /**
@@ -107,10 +107,6 @@ export class FileUpload extends ConfigurableComponent {
    * Check if the value of the underlying input has changed
    */
   onChange() {
-    if (!this.$root.files) {
-      return
-    }
-
     const fileCount = this.$root.files.length
 
     if (fileCount === 0) {
@@ -244,6 +240,10 @@ export class FileUpload extends ConfigurableComponent {
     }
   })
 }
+
+/**
+ * @typedef {HTMLInputElement & {files: FileList}} HTMLFileInputElement
+ */
 
 /**
  * File upload config
