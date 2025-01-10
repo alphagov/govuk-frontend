@@ -40,7 +40,7 @@
     "outdent": "^0.8.0",
     "shuffle-seed": "^1.1.6",
     "slash": "^3.0.0",
-    "slug": "^9.1.0"
+    "slug": "^10.0.0"
   },
   "devDependencies": {
     "@govuk-frontend/helpers": "*",
