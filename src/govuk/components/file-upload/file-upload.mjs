@@ -114,10 +114,6 @@ export class FileUpload extends ConfigurableComponent {
    * Check if the value of the underlying input has changed
    */
   onChange() {
-    if (!('files' in this.$root)) {
-      return
-    }
-
     if (!this.$root.files) {
       return
     }
@@ -196,13 +192,6 @@ export class FileUpload extends ConfigurableComponent {
    * Synchronise the `disabled` state between the input and replacement button.
    */
   updateDisabledState() {
-    if (
-      !(this.$root instanceof HTMLInputElement) ||
-      !(this.$button instanceof HTMLButtonElement)
-    ) {
-      return
-    }
-
     this.$button.disabled = this.$root.disabled
   }
 
