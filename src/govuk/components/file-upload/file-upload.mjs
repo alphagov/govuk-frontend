@@ -50,14 +50,7 @@ export class FileUpload extends ConfigurableComponent {
       locale: closestAttributeValue(this.$root, 'lang')
     })
 
-    this.$label = document.querySelector(`[for="${this.$root.id}"]`)
-
-    if (!this.$label) {
-      throw new ElementError({
-        component: FileUpload,
-        identifier: 'No label'
-      })
-    }
+    this.$label = this.findLabel()
 
     // Wrapping element. This defines the boundaries of our drag and drop area.
     const $wrapper = document.createElement('div')
@@ -137,12 +130,31 @@ export class FileUpload extends ConfigurableComponent {
   }
 
   /**
+   * Looks up the `<label>` element associated to the field
+   *
+   * @private
+   * @returns {HTMLElement} The `<label>` element associated to the field
+   * @throws {ElementError} If the `<label>` cannot be found
+   */
+  findLabel() {
+    // Use `label` in the selector so TypeScript knows the type fo `HTMLElement`
+    const $label = document.querySelector(`label[for="${this.$root.id}"]`)
+
+    if (!$label) {
+      throw new ElementError({
+        component: FileUpload,
+        identifier: 'No label'
+      })
+    }
+
+    return $label
+  }
+
+  /**
    * When the button is clicked, emulate clicking the actual, hidden file input
    */
   onClick() {
-    if (this.$label instanceof HTMLElement) {
-      this.$label.click()
-    }
+    this.$label.click()
   }
 
   /**
