@@ -8,7 +8,7 @@ import { I18n } from '../../i18n.mjs'
  * File upload component
  *
  * @preserve
- * @augments ConfigurableComponent<FileUploadConfig,HTMLInputElement>
+ * @augments ConfigurableComponent<FileUploadConfig,HTMLFileInputElement>
  */
 export class FileUpload extends ConfigurableComponent {
   /**
@@ -50,14 +50,7 @@ export class FileUpload extends ConfigurableComponent {
       locale: closestAttributeValue(this.$root, 'lang')
     })
 
-    this.$label = document.querySelector(`[for="${this.$root.id}"]`)
-
-    if (!this.$label) {
-      throw new ElementError({
-        component: FileUpload,
-        identifier: 'No label'
-      })
-    }
+    this.$label = this.findLabel()
 
     // Wrapping element. This defines the boundaries of our drag and drop area.
     const $wrapper = document.createElement('div')
@@ -114,17 +107,7 @@ export class FileUpload extends ConfigurableComponent {
    * Check if the value of the underlying input has changed
    */
   onChange() {
-    if (!('files' in this.$root)) {
-      return
-    }
-
-    if (!this.$root.files) {
-      return
-    }
-
-    // eslint-disable-next-line
-    // @ts-ignore
-    const fileCount = this.$root.files.length // eslint-disable-line
+    const fileCount = this.$root.files.length
 
     if (fileCount === 0) {
       // If there are no files, show the default selection text
@@ -133,9 +116,7 @@ export class FileUpload extends ConfigurableComponent {
       // If there is 1 file, just show the file name
       fileCount === 1
     ) {
-      // eslint-disable-next-line
-      // @ts-ignore
-      this.$status.innerText = this.$root.files[0].name // eslint-disable-line
+      this.$status.innerText = this.$root.files[0].name
     } else {
       // Otherwise, tell the user how many files are selected
       this.$status.innerText = this.i18n.t('filesSelected', {
@@ -145,12 +126,31 @@ export class FileUpload extends ConfigurableComponent {
   }
 
   /**
+   * Looks up the `<label>` element associated to the field
+   *
+   * @private
+   * @returns {HTMLElement} The `<label>` element associated to the field
+   * @throws {ElementError} If the `<label>` cannot be found
+   */
+  findLabel() {
+    // Use `label` in the selector so TypeScript knows the type fo `HTMLElement`
+    const $label = document.querySelector(`label[for="${this.$root.id}"]`)
+
+    if (!$label) {
+      throw new ElementError({
+        component: FileUpload,
+        identifier: 'No label'
+      })
+    }
+
+    return $label
+  }
+
+  /**
    * When the button is clicked, emulate clicking the actual, hidden file input
    */
   onClick() {
-    if (this.$label instanceof HTMLElement) {
-      this.$label.click()
-    }
+    this.$label.click()
   }
 
   /**
@@ -164,8 +164,6 @@ export class FileUpload extends ConfigurableComponent {
     // else), we only want to indicate files.
     console.log(event)
 
-    // eslint-disable-next-line
-    // @ts-ignore
     this.$wrapper.classList.add('govuk-file-upload-wrapper--show-dropzone')
   }
 
@@ -174,8 +172,6 @@ export class FileUpload extends ConfigurableComponent {
    * remove the visual indicator.
    */
   onDragLeaveOrDrop() {
-    // eslint-disable-next-line
-    // @ts-ignore
     this.$wrapper.classList.remove('govuk-file-upload-wrapper--show-dropzone')
   }
 
@@ -204,13 +200,6 @@ export class FileUpload extends ConfigurableComponent {
    * Synchronise the `disabled` state between the input and replacement button.
    */
   updateDisabledState() {
-    if (
-      !(this.$root instanceof HTMLInputElement) ||
-      !(this.$button instanceof HTMLButtonElement)
-    ) {
-      return
-    }
-
     this.$button.disabled = this.$root.disabled
   }
 
@@ -251,6 +240,10 @@ export class FileUpload extends ConfigurableComponent {
     }
   })
 }
+
+/**
+ * @typedef {HTMLInputElement & {files: FileList}} HTMLFileInputElement
+ */
 
 /**
  * File upload config
