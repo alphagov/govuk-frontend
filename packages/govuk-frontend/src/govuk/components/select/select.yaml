@@ -1,8 +1,8 @@
 params:
   - name: id
     type: string
-    required: true
-    description: ID for each select box.
+    required: false
+    description: ID for each select box. Defaults to matching `name`.
   - name: name
     type: string
     required: true
@@ -110,7 +110,6 @@ params:
 examples:
   - name: default
     options:
-      id: select-1
       name: select-1
       label:
         text: Label text goes here
