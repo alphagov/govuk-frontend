@@ -95,12 +95,61 @@ export class FileUpload extends ConfigurableComponent {
     // Bind change event to the underlying input
     this.$root.addEventListener('change', this.onChange.bind(this))
 
-    // When a file is dropped on the input
-    this.$wrapper.addEventListener('drop', this.onDragLeaveOrDrop.bind(this))
+    // Handle drag'n'drop events
+    this.$wrapper.addEventListener('drop', this.onDrop.bind(this))
 
-    // When a file is dragged over the page (or dragged off the page)
-    document.addEventListener('dragenter', this.onDragEnter.bind(this))
-    document.addEventListener('dragleave', this.onDragLeaveOrDrop.bind(this))
+    this.$wrapper.addEventListener('dragenter', this.onDragEnter.bind(this))
+    this.$wrapper.addEventListener('dragleave', this.onDragLeave.bind(this))
+  }
+
+  /**
+   * Handles the users entering the area where they can drop their files
+   *
+   * Reveals the drop zone if the user components accepts what the user
+   * is dragging
+   *
+   * @param {DragEvent} event - The `dragenter` event
+   */
+  onDragEnter(event) {
+    // TypeScript anticipates that `event.dataTransfer` may be `null`
+    // so we need to check for falsiness first
+    if (event.dataTransfer && isContainingFiles(event.dataTransfer)) {
+      this.$wrapper.classList.add('govuk-file-upload-wrapper--show-dropzone')
+    }
+  }
+
+  /**
+   * Hides the drop zone visually when users mouse leave it
+   *
+   * `dragleave` events will fire for each element that the user moves
+   * their move out of. We only want to remove the styling when
+   * they either leave the wrapper or the window altogether
+   *
+   * @param {DragEvent} event - The `dragleave` event
+   */
+  onDragLeave(event) {
+    // `relatedTarget` is only an `EventTarget` so we need to check if it's :
+    // - it's a `Node` in which case we'd still be on the page
+    // - something else in which case user has left the page
+    const relatedTarget =
+      event.relatedTarget instanceof Node ? event.relatedTarget : null
+
+    const leavesWindow = !relatedTarget
+    const leavesDropZone = !this.$wrapper.contains(relatedTarget)
+    if (leavesWindow || leavesDropZone) {
+      this.$wrapper.classList.remove('govuk-file-upload-wrapper--show-dropzone')
+    }
+  }
+
+  /**
+   * Hides the dropzone once user has dropped files on the `<input>`
+   *
+   * Note: the component relies on the native behaviour to get the files
+   * being dragged set as value of the `<input>`. This allows a `change`
+   * event to be automatically fired from the element.
+   */
+  onDrop() {
+    this.$wrapper.classList.remove('govuk-file-upload-wrapper--show-dropzone')
   }
 
   /**
@@ -151,28 +200,6 @@ export class FileUpload extends ConfigurableComponent {
    */
   onClick() {
     this.$label.click()
-  }
-
-  /**
-   * When a file is dragged over the container, show a visual indicator that a
-   * file can be dropped here.
-   *
-   * @param {DragEvent} event - the drag event
-   */
-  onDragEnter(event) {
-    // Check if the thing being dragged is a file (and not text or something
-    // else), we only want to indicate files.
-    console.log(event)
-
-    this.$wrapper.classList.add('govuk-file-upload-wrapper--show-dropzone')
-  }
-
-  /**
-   * When a dragged file leaves the container, or the file is dropped,
-   * remove the visual indicator.
-   */
-  onDragLeaveOrDrop() {
-    this.$wrapper.classList.remove('govuk-file-upload-wrapper--show-dropzone')
   }
 
   /**
@@ -239,6 +266,25 @@ export class FileUpload extends ConfigurableComponent {
       i18n: { type: 'object' }
     }
   })
+}
+
+/**
+ * Checks if the given `DataTransfer` contains files
+ *
+ * @internal
+ * @param {DataTransfer} dataTransfer - The `DataTransfer` to check
+ * @returns {boolean} - `true` if it contains files or we can't infer it, `false` otherwise
+ */
+function isContainingFiles(dataTransfer) {
+  // Safari sometimes does not provide info about types :'(
+  // In which case best not to assume anything and try to set the files
+  const hasNoTypesInfo = dataTransfer.types.length === 0
+
+  // When dragging images, there's a mix of mime types + Files
+  // which we can't assign to the native input
+  const isDraggingFiles = dataTransfer.types.some((type) => type === 'Files')
+
+  return hasNoTypesInfo || isDraggingFiles
 }
 
 /**
