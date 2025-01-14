@@ -11,7 +11,7 @@ export const configOverride = Symbol.for('configOverride')
  * Centralises the behaviours shared by our components
  *
  * @virtual
- * @template {ObjectNested} [ConfigurationType={}]
+ * @template {Partial<Record<keyof ConfigurationType, unknown>>} [ConfigurationType=ObjectNested]
  * @template {Element & { dataset: DOMStringMap }} [RootElementType=HTMLElement]
  * @augments GOVUKFrontendComponent<RootElementType>
  */
@@ -29,8 +29,8 @@ export class ConfigurableComponent extends GOVUKFrontendComponent {
    *
    * @internal
    * @virtual
-   * @param {ObjectNested} [param] - Configuration object
-   * @returns {ObjectNested} return - Configuration object
+   * @param {Partial<ConfigurationType>} [param] - Configuration object
+   * @returns {Partial<ConfigurationType>} return - Configuration object
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   [configOverride](param) {
@@ -148,7 +148,7 @@ export function normaliseString(value, property) {
  * optionally expanding nested `i18n.field`
  *
  * @internal
- * @template {ObjectNested} ConfigurationType
+ * @template {Partial<Record<keyof ConfigurationType, unknown>>} ConfigurationType
  * @param {{ schema?: Schema<ConfigurationType>, moduleName: string }} Component - Component class
  * @param {DOMStringMap} dataset - HTML element dataset
  * @returns {ObjectNested} Normalised dataset
@@ -237,7 +237,7 @@ export function mergeConfigs(...configObjects) {
  * {@link https://ajv.js.org/packages/ajv-errors.html#single-message}
  *
  * @internal
- * @template {ObjectNested} ConfigurationType
+ * @template {Partial<Record<keyof ConfigurationType, unknown>>} ConfigurationType
  * @param {Schema<ConfigurationType>} schema - The schema of a component
  * @param {ConfigurationType} config - Component config
  * @returns {string[]} List of validation errors
@@ -272,7 +272,7 @@ export function validateConfig(schema, config) {
  * object, removing the namespace in the process, normalising all values
  *
  * @internal
- * @template {ObjectNested} ConfigurationType
+ * @template {Partial<Record<keyof ConfigurationType, unknown>>} ConfigurationType
  * @param {Schema<ConfigurationType>} schema - The schema of a component
  * @param {DOMStringMap} dataset - The object to extract key-value pairs from
  * @param {keyof ConfigurationType} namespace - The namespace to filter keys with
@@ -335,7 +335,7 @@ export function extractConfigByNamespace(schema, dataset, namespace) {
 /**
  * Schema for component config
  *
- * @template {ObjectNested} ConfigurationType
+ * @template {Partial<Record<keyof ConfigurationType, unknown>>} ConfigurationType
  * @typedef {object} Schema
  * @property {Record<keyof ConfigurationType, SchemaProperty | undefined>} properties - Schema properties
  * @property {SchemaCondition<ConfigurationType>[]} [anyOf] - List of schema conditions
@@ -351,14 +351,14 @@ export function extractConfigByNamespace(schema, dataset, namespace) {
 /**
  * Schema condition for component config
  *
- * @template {ObjectNested} [ConfigurationType={}]
+ * @template {Partial<Record<keyof ConfigurationType, unknown>>} ConfigurationType
  * @typedef {object} SchemaCondition
  * @property {(keyof ConfigurationType)[]} required - List of required config fields
  * @property {string} errorMessage - Error message when required config fields not provided
  */
 
 /**
- * @template {ObjectNested} [ConfigurationType={}]
+ * @template {Partial<Record<keyof ConfigurationType, unknown>>} [ConfigurationType=ObjectNested]
  * @typedef ChildClass
  * @property {string} moduleName - The module name that'll be looked for in the DOM when initialising the component
  * @property {Schema<ConfigurationType>} [schema] - The schema of the component configuration
@@ -366,6 +366,6 @@ export function extractConfigByNamespace(schema, dataset, namespace) {
  */
 
 /**
- * @template {ObjectNested} [ConfigurationType={}]
+ * @template {Partial<Record<keyof ConfigurationType, unknown>>} [ConfigurationType=ObjectNested]
  * @typedef {typeof GOVUKFrontendComponent & ChildClass<ConfigurationType>} ChildClassConstructor<ConfigurationType>
  */
