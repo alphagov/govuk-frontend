@@ -148,7 +148,8 @@ export function normaliseString(value, property) {
  * optionally expanding nested `i18n.field`
  *
  * @internal
- * @param {{ schema?: Schema, moduleName: string }} Component - Component class
+ * @template {ObjectNested} ConfigurationType
+ * @param {{ schema?: Schema<ConfigurationType>, moduleName: string }} Component - Component class
  * @param {DOMStringMap} dataset - HTML element dataset
  * @returns {ObjectNested} Normalised dataset
  */
@@ -165,7 +166,12 @@ export function normaliseDataset(Component, dataset) {
   const out = /** @type {ReturnType<typeof normaliseDataset>} */ ({})
 
   // Normalise top-level dataset ('data-*') values using schema types
-  for (const [field, property] of Object.entries(Component.schema.properties)) {
+  for (const entries of /** @type {[keyof ConfigurationType, SchemaProperty | undefined][]} */ (
+    Object.entries(Component.schema.properties)
+  )) {
+    const [namespace, property] = entries
+    const field = namespace.toString()
+
     if (field in dataset) {
       out[field] = normaliseString(dataset[field], property)
     }
@@ -175,7 +181,11 @@ export function normaliseDataset(Component, dataset) {
      * {@link normaliseString} but only schema object types are allowed
      */
     if (property?.type === 'object') {
-      out[field] = extractConfigByNamespace(Component.schema, dataset, field)
+      out[field] = extractConfigByNamespace(
+        Component.schema,
+        dataset,
+        namespace
+      )
     }
   }
 
@@ -228,8 +238,9 @@ export function mergeConfigs(...configObjects) {
  * {@link https://ajv.js.org/packages/ajv-errors.html#single-message}
  *
  * @internal
- * @param {Schema} schema - Config schema
- * @param {{ [key: string]: unknown }} config - Component config
+ * @template {ObjectNested} ConfigurationType
+ * @param {Schema<ConfigurationType>} schema - The schema of a component
+ * @param {ConfigurationType} config - Component config
  * @returns {string[]} List of validation errors
  */
 export function validateConfig(schema, config) {
@@ -262,9 +273,10 @@ export function validateConfig(schema, config) {
  * object, removing the namespace in the process, normalising all values
  *
  * @internal
- * @param {Schema} schema - The schema of a component
+ * @template {ObjectNested} ConfigurationType
+ * @param {Schema<ConfigurationType>} schema - The schema of a component
  * @param {DOMStringMap} dataset - The object to extract key-value pairs from
- * @param {string} namespace - The namespace to filter keys with
+ * @param {keyof ConfigurationType} namespace - The namespace to filter keys with
  * @returns {ObjectNested | undefined} Nested object with dot-separated key namespace removed
  */
 export function extractConfigByNamespace(schema, dataset, namespace) {
@@ -276,9 +288,9 @@ export function extractConfigByNamespace(schema, dataset, namespace) {
   }
 
   // Add default empty config
-  const newObject = {
-    [namespace]: /** @type {ObjectNested} */ ({})
-  }
+  const newObject = /** @type {Record<typeof namespace, ObjectNested>} */ ({
+    [namespace]: {}
+  })
 
   for (const [key, value] of Object.entries(dataset)) {
     /** @type {ObjectNested | ObjectNested[NestedKey]} */
@@ -324,9 +336,10 @@ export function extractConfigByNamespace(schema, dataset, namespace) {
 /**
  * Schema for component config
  *
+ * @template {ObjectNested} ConfigurationType
  * @typedef {object} Schema
- * @property {{ [field: string]: SchemaProperty | undefined }} properties - Schema properties
- * @property {SchemaCondition[]} [anyOf] - List of schema conditions
+ * @property {Record<keyof ConfigurationType, SchemaProperty | undefined>} properties - Schema properties
+ * @property {SchemaCondition<ConfigurationType>[]} [anyOf] - List of schema conditions
  */
 
 /**
@@ -339,8 +352,9 @@ export function extractConfigByNamespace(schema, dataset, namespace) {
 /**
  * Schema condition for component config
  *
+ * @template {ObjectNested} [ConfigurationType={}]
  * @typedef {object} SchemaCondition
- * @property {string[]} required - List of required config fields
+ * @property {(keyof ConfigurationType)[]} required - List of required config fields
  * @property {string} errorMessage - Error message when required config fields not provided
  */
 
@@ -348,7 +362,7 @@ export function extractConfigByNamespace(schema, dataset, namespace) {
  * @template {ObjectNested} [ConfigurationType={}]
  * @typedef ChildClass
  * @property {string} moduleName - The module name that'll be looked for in the DOM when initialising the component
- * @property {Schema} [schema] - The schema of the component configuration
+ * @property {Schema<ConfigurationType>} [schema] - The schema of the component configuration
  * @property {ConfigurationType} [defaults] - The default values of the configuration of the component
  */
 
