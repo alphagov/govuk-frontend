@@ -4,9 +4,9 @@ import { extractConfigByNamespace } from '../configuration.mjs'
 
 describe('extractConfigByNamespace', () => {
   /**
-   * @satisfies {Schema}
+   * @satisfies {Schema<Config1>}
    */
-  const schema = {
+  const schema1 = {
     properties: {
       a: { type: 'string' },
       b: { type: 'object' },
@@ -14,6 +14,17 @@ describe('extractConfigByNamespace', () => {
       d: { type: 'string' },
       e: { type: 'string' },
       f: { type: 'object' }
+    }
+  }
+
+  /**
+   * @satisfies {Schema<Config2>}
+   */
+  const schema2 = {
+    properties: {
+      i18n: {
+        type: 'object'
+      }
     }
   }
 
@@ -40,13 +51,13 @@ describe('extractConfigByNamespace', () => {
   it('defaults to empty config for known namespaces only', () => {
     const { dataset } = $element
 
-    const nonObject1 = extractConfigByNamespace(schema, dataset, 'a')
-    const nonObject2 = extractConfigByNamespace(schema, dataset, 'd')
-    const nonObject3 = extractConfigByNamespace(schema, dataset, 'e')
+    const nonObject1 = extractConfigByNamespace(schema1, dataset, 'a')
+    const nonObject2 = extractConfigByNamespace(schema1, dataset, 'd')
+    const nonObject3 = extractConfigByNamespace(schema1, dataset, 'e')
 
-    const namespaceKnown = extractConfigByNamespace(schema, dataset, 'f')
+    const namespaceKnown = extractConfigByNamespace(schema1, dataset, 'f')
     const namespaceUnknown = extractConfigByNamespace(
-      schema,
+      schema1,
       dataset,
       'unknown'
     )
@@ -64,7 +75,7 @@ describe('extractConfigByNamespace', () => {
   })
 
   it('can extract config from key-value pairs', () => {
-    const result = extractConfigByNamespace(schema, $element.dataset, 'b')
+    const result = extractConfigByNamespace(schema1, $element.dataset, 'b')
     expect(result).toEqual({ a: 'bat', e: 'bear', o: 'boar' })
   })
 
@@ -79,15 +90,7 @@ describe('extractConfigByNamespace', () => {
     `
 
     const { dataset } = document.getElementById('app-example2')
-    const result = extractConfigByNamespace(
-      {
-        properties: {
-          i18n: { type: 'object' }
-        }
-      },
-      dataset,
-      'i18n'
-    )
+    const result = extractConfigByNamespace(schema2, dataset, 'i18n')
 
     expect(result).toEqual({ key1: 'One', key2: 'Two', key3: 'Three' })
   })
@@ -103,15 +106,7 @@ describe('extractConfigByNamespace', () => {
     `
 
     const { dataset } = document.getElementById('app-example2')
-    const result = extractConfigByNamespace(
-      {
-        properties: {
-          i18n: { type: 'object' }
-        }
-      },
-      dataset,
-      'i18n'
-    )
+    const result = extractConfigByNamespace(schema2, dataset, 'i18n')
 
     expect(result).toEqual({ key1: 'One', key2: 'Two', key3: 'Three' })
   })
@@ -132,7 +127,7 @@ describe('extractConfigByNamespace', () => {
     `
 
     const { dataset } = document.getElementById('app-example')
-    const result = extractConfigByNamespace(schema, dataset, 'c')
+    const result = extractConfigByNamespace(schema1, dataset, 'c')
 
     expect(result).toEqual({ a: 'cat', o: 'cow' })
   })
@@ -154,7 +149,7 @@ describe('extractConfigByNamespace', () => {
     `
 
     const { dataset } = document.getElementById('app-example')
-    const result = extractConfigByNamespace(schema, dataset, 'c')
+    const result = extractConfigByNamespace(schema1, dataset, 'c')
 
     expect(result).toEqual({ a: 'cat', c: 'crow', o: 'cow' })
   })
@@ -176,7 +171,7 @@ describe('extractConfigByNamespace', () => {
     `
 
     const { dataset } = document.getElementById('app-example')
-    const result = extractConfigByNamespace(schema, dataset, 'c')
+    const result = extractConfigByNamespace(schema1, dataset, 'c')
 
     expect(result).toEqual({ a: 'cat', c: 'crow', o: 'cow' })
   })
@@ -196,7 +191,7 @@ describe('extractConfigByNamespace', () => {
     `
 
     const { dataset } = document.getElementById('app-example')
-    const result = extractConfigByNamespace(schema, dataset, 'f')
+    const result = extractConfigByNamespace(schema1, dataset, 'f')
 
     expect(result).toEqual({ e: { l: 'elephant' } })
   })
@@ -211,15 +206,7 @@ describe('extractConfigByNamespace', () => {
     `
 
     const { dataset } = document.getElementById('app-example2')
-    const result = extractConfigByNamespace(
-      {
-        properties: {
-          i18n: { type: 'object' }
-        }
-      },
-      dataset,
-      'i18n'
-    )
+    const result = extractConfigByNamespace(schema2, dataset, 'i18n')
 
     expect(result).toEqual({
       key1: 'This, That',
@@ -243,15 +230,7 @@ describe('extractConfigByNamespace', () => {
     `
 
     const { dataset } = document.getElementById('app-example2')
-    const result = extractConfigByNamespace(
-      {
-        properties: {
-          i18n: { type: 'object' }
-        }
-      },
-      dataset,
-      'i18n'
-    )
+    const result = extractConfigByNamespace(schema2, dataset, 'i18n')
 
     expect(result).toEqual({
       key1: 'This, That',
@@ -261,5 +240,21 @@ describe('extractConfigByNamespace', () => {
 })
 
 /**
+ * @typedef {object} Config1
+ * @property {string} a - Item A
+ * @property {string | { a: string, e: string, o: string }} b - Item B
+ * @property {string | { a: string, c?: string, o: string }} c - Item C
+ * @property {string} d - Item D
+ * @property {string} [e] - Item E
+ * @property {{ e: string | { l: string } }} [f] - Item F
+ */
+
+/**
+ * @typedef {object} Config2
+ * @property {{ key1: string | TranslationPluralForms, key2: string | TranslationPluralForms }} i18n - Translations
+ */
+
+/**
  * @import { Schema } from '../configuration.mjs'
+ * @import { TranslationPluralForms } from '../../i18n.mjs'
  */

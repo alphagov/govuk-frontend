@@ -171,7 +171,7 @@ export class ErrorSummary extends ConfigurableComponent {
    * Error summary config schema
    *
    * @constant
-   * @satisfies {Schema}
+   * @satisfies {Schema<ErrorSummaryConfig>}
    */
   static schema = Object.freeze({
     properties: {
