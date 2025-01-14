@@ -417,7 +417,7 @@ export class ExitThisPage extends ConfigurableComponent {
    * Exit this page config schema
    *
    * @constant
-   * @satisfies {Schema}
+   * @satisfies {Schema<ExitThisPageConfig>}
    */
   static schema = Object.freeze({
     properties: {

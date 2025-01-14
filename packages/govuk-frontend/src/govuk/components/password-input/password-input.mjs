@@ -209,7 +209,7 @@ export class PasswordInput extends ConfigurableComponent {
    * Password input config schema
    *
    * @constant
-   * @satisfies {Schema}
+   * @satisfies {Schema<PasswordInputConfig>}
    */
   static schema = Object.freeze({
     properties: {
