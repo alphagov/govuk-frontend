@@ -66,7 +66,7 @@ export class ConfigurableComponent extends GOVUKFrontendComponent {
     const childConstructor =
       /** @type {ChildClassConstructor<ConfigurationType>} */ (this.constructor)
 
-    if (typeof childConstructor.defaults === 'undefined') {
+    if (!isObject(childConstructor.defaults)) {
       throw new ConfigError(
         formatErrorMessage(
           childConstructor,
@@ -154,7 +154,7 @@ export function normaliseString(value, property) {
  * @returns {ObjectNested} Normalised dataset
  */
 export function normaliseDataset(Component, dataset) {
-  if (typeof Component.schema === 'undefined') {
+  if (!isObject(Component.schema)) {
     throw new ConfigError(
       formatErrorMessage(
         Component,
@@ -217,7 +217,6 @@ export function mergeConfigs(...configObjects) {
       // keys with object values will be merged, otherwise the new value will
       // override the existing value.
       if (isObject(option) && isObject(override)) {
-        // @ts-expect-error Index signature for type 'string' is missing
         formattedConfigObject[key] = mergeConfigs(option, override)
       } else {
         // Apply override
@@ -306,7 +305,7 @@ export function extractConfigByNamespace(schema, dataset, namespace) {
      * `{ i18n: { textareaDescription: { other } } }`
      */
     for (const [index, name] of keyParts.entries()) {
-      if (typeof current === 'object') {
+      if (isObject(current)) {
         // Drop down to nested object until the last part
         if (index < keyParts.length - 1) {
           // New nested object (optionally) replaces existing value
