@@ -59,6 +59,7 @@ describe('extractConfigByNamespace', () => {
     const namespaceUnknown = extractConfigByNamespace(
       schema1,
       dataset,
+      // @ts-expect-error - Allow unknown schema key for test
       'unknown'
     )
 
