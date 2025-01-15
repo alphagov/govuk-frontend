@@ -45,6 +45,14 @@ export class FileUpload extends ConfigurableComponent {
       )
     }
 
+    if (!this.$root.id.length) {
+      throw new ElementError(
+        formatErrorMessage(FileUpload, 'Form field must specify an `id`.')
+      )
+    }
+
+    this.id = this.$root.id
+
     this.i18n = new I18n(this.config.i18n, {
       // Read the fallback if necessary rather than have it set in the defaults
       locale: closestAttributeValue(this.$root, 'lang')
@@ -58,24 +66,34 @@ export class FileUpload extends ConfigurableComponent {
 
     // Create the file selection button
     const $button = document.createElement('button')
-    $button.className =
-      'govuk-button govuk-button--secondary govuk-file-upload__button'
+    $button.classList.add('govuk-file-upload__button')
     $button.type = 'button'
-    $button.innerText = this.i18n.t('selectFilesButton')
+
+    const buttonSpan = document.createElement('span')
+    buttonSpan.className =
+      'govuk-button govuk-button--secondary govuk-file-upload__pseudo-button'
+    buttonSpan.innerText = this.i18n.t('selectFilesButton')
+
+    $button.appendChild(buttonSpan)
     $button.addEventListener('click', this.onClick.bind(this))
 
     // Create status element that shows what/how many files are selected
     const $status = document.createElement('span')
     $status.className = 'govuk-body govuk-file-upload__status'
     $status.innerText = this.i18n.t('filesSelectedDefault')
-    $status.setAttribute('role', 'status')
+    // $status.setAttribute('aria-hidden', 'true')
+
+    $button.appendChild($status)
 
     // Assemble these all together
     $wrapper.insertAdjacentElement('beforeend', $button)
-    $wrapper.insertAdjacentElement('beforeend', $status)
+    // $wrapper.insertAdjacentElement('beforeend', $status)
 
     // Inject all this *after* the native file input
     this.$root.insertAdjacentElement('afterend', $wrapper)
+
+    this.$root.setAttribute('tabindex', '-1')
+    this.$root.setAttribute('aria-hidden', 'true')
 
     // Move the native file input to inside of the wrapper
     $wrapper.insertAdjacentElement('afterbegin', this.$root)
@@ -85,8 +103,8 @@ export class FileUpload extends ConfigurableComponent {
     this.$button = $button
     this.$status = $status
 
-    // Prevent the hidden input being tabbed to by keyboard users
-    this.$root.setAttribute('tabindex', '-1')
+    // Bind change event to the underlying input
+    this.$root.addEventListener('change', this.onChange.bind(this))
 
     // Syncronise the `disabled` state between the button and underlying input
     this.updateDisabledState()
