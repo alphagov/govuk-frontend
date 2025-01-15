@@ -1,0 +1,65 @@
+name: Build release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'New version number eg: 5.0.0'
+        required: true
+        type: string
+  pull_request:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  build-release:
+    name: Build release
+    runs-on: Ubuntu-22.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+
+      - name: Install dependencies
+        uses: ./.github/workflows/actions/install-node
+
+      - name: Validate version
+        # a script here to validate the parsed version no. using semver, both to
+        # make sure it's a valid semver and to make sure it is sensibly sequential
+        # node script? Shell script/command using semver's cli?
+        run:
+
+      - name: Update package version
+        run: npm version --no-git-tag-version --workspace govuk-frontend ${{ inputs.version }}
+
+      - name: Update CHANGELOG
+        # Node (?) script to replace unreleased heading with version number and
+        # create new unreleased heading.
+        run:
+
+      - name: Get release notes for release from CHANGELOG
+        # Script to get contents of release from changelog. Could also be used for
+        # version validation above?
+        run:
+
+      - name: Run tests
+        run: npm run test
+
+      - name: Build package
+        run: npm run build:package
+
+      - name: Build release
+        run: npm run build:release
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: release-${{ inputs.version }}
+          delete-branch: true
+          commit-message: 'Release ${{ inputs.version }}'
+          title: 'Release ${{ inputs.version }}'
+          body: ''
+          base: ${{ github.head_ref }}
