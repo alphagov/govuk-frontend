@@ -18,6 +18,7 @@
   "scripts": {
     "postinstall": "npm ls --depth=0",
     "start": "npm run dev",
+    "generate-npm-tag": "./bin/generate-npm-tag.sh",
     "build-release": "./bin/build-release.sh",
     "publish-release": "./bin/publish-release.sh",
     "publish-preview": "./bin/publish-preview.sh",
