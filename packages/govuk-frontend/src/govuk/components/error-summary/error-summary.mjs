@@ -171,7 +171,7 @@ export class ErrorSummary extends ConfigurableComponent {
    * Error summary config schema
    *
    * @constant
-   * @satisfies {Schema}
+   * @satisfies {Schema<ErrorSummaryConfig>}
    */
   static schema = Object.freeze({
     properties: {
@@ -189,5 +189,5 @@ export class ErrorSummary extends ConfigurableComponent {
  */
 
 /**
- * @typedef {import('../../common/configuration.mjs').Schema} Schema
+ * @import { Schema } from '../../common/configuration.mjs'
  */

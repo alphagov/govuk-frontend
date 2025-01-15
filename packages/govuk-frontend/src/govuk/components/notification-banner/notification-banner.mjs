@@ -54,7 +54,7 @@ export class NotificationBanner extends ConfigurableComponent {
    * Notification banner config schema
    *
    * @constant
-   * @satisfies {Schema}
+   * @satisfies {Schema<NotificationBannerConfig>}
    */
   static schema = Object.freeze({
     properties: {
@@ -74,5 +74,5 @@ export class NotificationBanner extends ConfigurableComponent {
  */
 
 /**
- * @typedef {import('../../common/configuration.mjs').Schema} Schema
+ * @import { Schema } from '../../common/configuration.mjs'
  */
