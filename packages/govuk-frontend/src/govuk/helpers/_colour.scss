@@ -75,6 +75,14 @@
     );
   }
 
+  // Output a deprecation warning if using the legacy colour palette
+  @if not $govuk-new-organisation-colours and not index($govuk-suppressed-warnings, "legacy-organisation-colours") {
+    @warn _warning-text("legacy-organisation-colours",
+      "The legacy organisation colour palette has been deprecated and will " +
+      "be removed in the next major version."
+    );
+  }
+
   $org-colour: map-get($govuk-colours-organisations, $organisation);
 
   @if map-has-key($org-colour, deprecation-message) and not index($govuk-suppressed-warnings, "organisation-colours") {

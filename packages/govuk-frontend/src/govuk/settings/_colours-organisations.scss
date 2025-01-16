@@ -11,6 +11,7 @@
 ///
 /// @type Boolean
 /// @access public
+/// @deprecated Using new organisation colours will become the default in Frontend v6.0.
 
 $govuk-new-organisation-colours: false !default;
 
@@ -211,6 +212,7 @@ $_govuk-organisation-colours: (
 ///   nor provide better contrast than the base colour.
 ///
 /// @access private
+/// @deprecated Migrate to using the new organisation colour palette instead.
 
 $_govuk-legacy-organisation-colours: (
   "attorney-generals-office": (
