@@ -98,46 +98,34 @@ export class FileUpload extends ConfigurableComponent {
     // Handle drag'n'drop events
     this.$wrapper.addEventListener('drop', this.onDrop.bind(this))
 
-    this.$wrapper.addEventListener('dragenter', this.onDragEnter.bind(this))
-    this.$wrapper.addEventListener('dragleave', this.onDragLeave.bind(this))
+    document.addEventListener('dragenter', this.onDragEnter.bind(this))
   }
 
   /**
-   * Handles the users entering the area where they can drop their files
+   * Handles the users entering elements on the page
    *
-   * Reveals the drop zone if the user components accepts what the user
-   * is dragging
+   * Because of Safari's lack of support for `relatedTarget` on `dragleave`,
+   * we need to use this both to reveal the drop zone when user's cursor enter it,
+   * and hide it when leaving (ie. entering another element).
+   * https://bugs.webkit.org/show_bug.cgi?id=66547
    *
    * @param {DragEvent} event - The `dragenter` event
    */
   onDragEnter(event) {
-    // TypeScript anticipates that `event.dataTransfer` may be `null`
-    // so we need to check for falsiness first
-    if (event.dataTransfer && isContainingFiles(event.dataTransfer)) {
-      this.$wrapper.classList.add('govuk-file-upload-wrapper--show-dropzone')
-    }
-  }
-
-  /**
-   * Hides the drop zone visually when users mouse leave it
-   *
-   * `dragleave` events will fire for each element that the user moves
-   * their move out of. We only want to remove the styling when
-   * they either leave the wrapper or the window altogether
-   *
-   * @param {DragEvent} event - The `dragleave` event
-   */
-  onDragLeave(event) {
-    // `relatedTarget` is only an `EventTarget` so we need to check if it's :
-    // - it's a `Node` in which case we'd still be on the page
-    // - something else in which case user has left the page
-    const relatedTarget =
-      event.relatedTarget instanceof Node ? event.relatedTarget : null
-
-    const leavesWindow = !relatedTarget
-    const leavesDropZone = !this.$wrapper.contains(relatedTarget)
-    if (leavesWindow || leavesDropZone) {
-      this.$wrapper.classList.remove('govuk-file-upload-wrapper--show-dropzone')
+    // DOM interfaces only type `event.target` as `EventTarget`
+    // so we first need to make sure it's a `Node`
+    if (event.target instanceof Node) {
+      if (this.$wrapper.contains(event.target)) {
+        if (event.dataTransfer && isContainingFiles(event.dataTransfer)) {
+          this.$wrapper.classList.add(
+            'govuk-file-upload-wrapper--show-dropzone'
+          )
+        }
+      } else {
+        this.$wrapper.classList.remove(
+          'govuk-file-upload-wrapper--show-dropzone'
+        )
+      }
     }
   }
 
