@@ -61,5 +61,5 @@ jobs:
           delete-branch: true
           commit-message: 'Release ${{ inputs.version }}'
           title: 'Release ${{ inputs.version }}'
-          body: ''
+          body-path: release-notes-body
           base: ${{ github.head_ref }}
