@@ -96,6 +96,12 @@ export class FileUpload extends ConfigurableComponent {
     this.$root.addEventListener('change', this.onChange.bind(this))
 
     // Handle drop zone visibility
+    // A live region to announce when users enter or leave the drop zone
+    this.$announcements = document.createElement('span')
+    this.$announcements.classList.add('govuk-visually-hidden')
+    this.$announcements.setAttribute('aria-live', 'assertive')
+    this.$wrapper.insertAdjacentElement('afterend', this.$announcements)
+
     // The easy bit, when dropping hide the dropzone
     //
     // Note: the component relies on the native behaviour to get the files
@@ -150,12 +156,30 @@ export class FileUpload extends ConfigurableComponent {
     if (event.target instanceof Node) {
       if (this.$wrapper.contains(event.target)) {
         if (event.dataTransfer && isContainingFiles(event.dataTransfer)) {
-          this.$wrapper.classList.add(
-            'govuk-file-upload-wrapper--show-dropzone'
-          )
+          // Only update the class and make the announcement if not already visible
+          // to avoid repeated announcements on NVDA (2024.4) + Firefox (133)
+          if (
+            !this.$wrapper.classList.contains(
+              'govuk-file-upload-wrapper--show-dropzone'
+            )
+          ) {
+            this.$wrapper.classList.add(
+              'govuk-file-upload-wrapper--show-dropzone'
+            )
+            this.$announcements.innerText = this.i18n.t('dropZoneEntered')
+          }
         }
       } else {
-        this.hideDropZone()
+        // Only hide the dropzone if it is visible to prevent announcing user
+        // left the drop zone when they enter the page but haven't reached yet
+        // the file upload component
+        if (
+          this.$wrapper.classList.contains(
+            'govuk-file-upload-wrapper--show-dropzone'
+          )
+        ) {
+          this.hideDropZone()
+        }
       }
     }
   }
@@ -165,6 +189,7 @@ export class FileUpload extends ConfigurableComponent {
    */
   hideDropZone() {
     this.$wrapper.classList.remove('govuk-file-upload-wrapper--show-dropzone')
+    this.$announcements.innerText = this.i18n.t('dropZoneLeft')
   }
 
   /**
@@ -266,7 +291,9 @@ export class FileUpload extends ConfigurableComponent {
         // instead, however it's here for coverage's sake
         one: '%{count} file chosen',
         other: '%{count} files chosen'
-      }
+      },
+      dropZoneEntered: 'Entered drop zone',
+      dropZoneLeft: 'Left drop zone'
     }
   })
 
@@ -324,6 +351,10 @@ function isContainingFiles(dataTransfer) {
  * @property {string} [selectFiles] - Text of button that opens file browser
  * @property {TranslationPluralForms} [filesSelected] - Text indicating how
  *   many files have been selected
+ * @property {string} [dropZoneEntered] - Text announced to assistive technology
+ *   when users entered the drop zone while dragging
+ * @property {string} [dropZoneLeft] - Text announced to assistive technology
+ *   when users left the drop zone while dragging
  */
 
 /**
