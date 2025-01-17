@@ -95,23 +95,56 @@ export class FileUpload extends ConfigurableComponent {
     // Bind change event to the underlying input
     this.$root.addEventListener('change', this.onChange.bind(this))
 
-    // Handle drag'n'drop events
-    this.$wrapper.addEventListener('drop', this.onDrop.bind(this))
+    // Handle drop zone visibility
+    // The easy bit, when dropping hide the dropzone
+    //
+    // Note: the component relies on the native behaviour to get the files
+    // being dragged set as value of the `<input>`. This allows a `change`
+    // event to be automatically fired from the element and saves us from having
+    // to do anything more than hiding the dropzone on drop.
+    this.$wrapper.addEventListener('drop', this.hideDropZone.bind(this))
 
-    document.addEventListener('dragenter', this.onDragEnter.bind(this))
+    // While user is dragging, it gets a little more complex because of Safari.
+    // Safari doesn't fill `relatedTarget` on `dragleave` (nor `dragenter`).
+    // This means we can't use `relatedTarget` to:
+    // - check if the user is still within the wrapper
+    //   (`relatedTarget` being a descendant of the wrapper)
+    // - check if the user is still over the viewport
+    //   (`relatedTarget` being null if outside)
+
+    // Thanks to `dragenter` bubbling, we can listen on the `document` with a
+    // single function and update the visibility based on whether we entered a
+    // node inside or outside the wrapper.
+    document.addEventListener(
+      'dragenter',
+      this.updateDropzoneVisibility.bind(this)
+    )
+
+    // To detect if we're outside the document, we can track if there was a
+    // `dragenter` event preceding a `dragleave`. If there wasn't, this means
+    // we're outside the document.
+    //
+    // The order of events is guaranteed by the HTML specs:
+    // https://html.spec.whatwg.org/multipage/dnd.html#drag-and-drop-processing-model
+    document.addEventListener('dragenter', () => {
+      this.enteredAnotherElement = true
+    })
+
+    document.addEventListener('dragleave', () => {
+      if (!this.enteredAnotherElement) {
+        this.hideDropZone()
+      }
+
+      this.enteredAnotherElement = false
+    })
   }
 
   /**
-   * Handles the users entering elements on the page
-   *
-   * Because of Safari's lack of support for `relatedTarget` on `dragleave`,
-   * we need to use this both to reveal the drop zone when user's cursor enter it,
-   * and hide it when leaving (ie. entering another element).
-   * https://bugs.webkit.org/show_bug.cgi?id=66547
+   * Updates the visibility of the dropzone as users enters the various elements on the page
    *
    * @param {DragEvent} event - The `dragenter` event
    */
-  onDragEnter(event) {
+  updateDropzoneVisibility(event) {
     // DOM interfaces only type `event.target` as `EventTarget`
     // so we first need to make sure it's a `Node`
     if (event.target instanceof Node) {
@@ -122,21 +155,15 @@ export class FileUpload extends ConfigurableComponent {
           )
         }
       } else {
-        this.$wrapper.classList.remove(
-          'govuk-file-upload-wrapper--show-dropzone'
-        )
+        this.hideDropZone()
       }
     }
   }
 
   /**
    * Hides the dropzone once user has dropped files on the `<input>`
-   *
-   * Note: the component relies on the native behaviour to get the files
-   * being dragged set as value of the `<input>`. This allows a `change`
-   * event to be automatically fired from the element.
    */
-  onDrop() {
+  hideDropZone() {
     this.$wrapper.classList.remove('govuk-file-upload-wrapper--show-dropzone')
   }
 
