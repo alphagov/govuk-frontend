@@ -11,6 +11,14 @@
     .govuk-textarea {
       margin-bottom: govuk-spacing(1);
     }
+
+    // If the textarea enters the error state whilst the user is focused on it,
+    // show the error state. This presents feedback to the user that the value
+    // has become invalid without needing to see the counter.
+    .govuk-textarea--error:focus {
+      border-color: $govuk-error-colour;
+      box-shadow: inset 0 0 0 $govuk-border-width-form-element $govuk-error-colour;
+    }
   }
 
   .govuk-character-count__message {
