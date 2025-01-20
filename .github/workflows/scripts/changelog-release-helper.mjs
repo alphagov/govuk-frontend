@@ -2,109 +2,87 @@ import { readFileSync, writeFileSync } from 'fs'
 
 import semver from 'semver'
 
-getLatestChangelog()
+export async function validateVersion(newVersion) {
+  const changelogLines = await getChangelogLines()
+  const previousReleaseLineIndex = getChangelogLineIndexes(changelogLines)[1]
 
-async function getLatestChangelog() {
-  // Process parsed arguments. We are expecting at least a valid semver via the
-  // --version flag OR the --release-notes-only flag which stops the changelog
-  // update and the version checking from happening, meaning we don't need to
-  // parse in the new version
-  const args = process.argv.slice(2)
-  const newVersionArg = args.indexOf('--version')
-  const releaseNotesOnly = args.indexOf('--release-notes-only') !== -1
-
-  // Retrieve the changelog and line indexes for the unreleased heading and the
-  // previous release
-  const changelogLines = (await readFileSync('./CHANGELOG.md', 'utf8')).split(
-    '\n'
-  )
-
-  const versionTitleRegex = /^#+\s+v\d+\.\d+\.\d+\s+\(.+\)$/i
-
-  const startIndex = findIndexOfFirstMatchingLine(
-    changelogLines,
-    releaseNotesOnly ? versionTitleRegex : /^#+\s+Unreleased\s*$/i
-  )
-  const previousReleaseLineIndex = findIndexOfFirstMatchingLine(
-    changelogLines,
-    versionTitleRegex,
-    releaseNotesOnly ? startIndex + 1 : 0
-  )
-
-  if (!releaseNotesOnly) {
-    if (newVersionArg === -1) {
-      throw new Error(
-        'Required --version flag not detected. Please provide a valid semantic version using the --version flag'
-      )
-    }
-
-    const newVersion = args[newVersionArg + 1]
-
-    if (!semver.valid(newVersion)) {
-      throw new Error(
-        'New version number could not be processed. Please ensure you are providing a valid semantic version using the --version flag'
-      )
-    }
-
-    // Convert the previous release heading into a processable semver
-    const previousReleaseNumber = semver.valid(
-      semver.coerce(changelogLines[previousReleaseLineIndex])
+  if (!semver.valid(newVersion)) {
+    throw new Error(
+      'New version number could not be processed by Semver. Please ensure you are providing a valid semantic version'
     )
-
-    // Check the new version against the old version. Firstly a quick check that
-    // the new one isn't less than the old one
-    if (semver.lte(newVersion, previousReleaseNumber)) {
-      throw new Error(
-        `The new version provided is less than or equal to the most recent version (${previousReleaseNumber}). Please provide a newer version number`
-      )
-    }
-
-    // Get the version diff keyword (major, minor or patch) which we can use both
-    // to help with validating the new version and building the title for the new
-    // version to go in the changelog
-    const versionDiff = semver.diff(newVersion, previousReleaseNumber)
-    let newVersionTitle = null
-
-    if (versionDiff === 'major') {
-      newVersionIsOnlyIncrementingByOne(
-        newVersion,
-        previousReleaseNumber,
-        'major'
-      )
-      newVersionTitle = buildNewReleaseTitle(newVersion, 'major')
-    } else if (versionDiff === 'minor') {
-      newVersionIsOnlyIncrementingByOne(
-        newVersion,
-        previousReleaseNumber,
-        'minor'
-      )
-      newVersionTitle = buildNewReleaseTitle(newVersion, 'minor')
-    } else if (versionDiff === 'patch') {
-      newVersionIsOnlyIncrementingByOne(
-        newVersion,
-        previousReleaseNumber,
-        'patch'
-      )
-      newVersionTitle = buildNewReleaseTitle(newVersion, 'patch')
-    }
-
-    if (!newVersionTitle) {
-      throw new Error('Could not build new version title')
-    }
-
-    const newChangelogLines = [].concat(changelogLines)
-    newChangelogLines.splice(startIndex + 1, 0, '', newVersionTitle)
-
-    await writeFileSync('./CHANGELOG.md', newChangelogLines.join('\n'))
   }
 
-  const partialChangelog = changelogLines
+  // Convert the previous release heading into a processable semver
+  const previousReleaseNumber = convertVersionHeadingToSemver(
+    changelogLines[previousReleaseLineIndex]
+  )
+
+  // Check the new version against the old version. Firstly a quick check that
+  // the new one isn't less than the old one
+  if (semver.lte(newVersion, previousReleaseNumber)) {
+    throw new Error(
+      `The new version provided is less than or equal to the most recent version (${previousReleaseNumber}). Please provide a newer version number`
+    )
+  }
+
+  // Get the version diff keyword (major, minor or patch) which we can use to
+  // help with validating the new version
+  const versionDiff = semver.diff(newVersion, previousReleaseNumber)
+
+  if (versionDiff === 'major') {
+    newVersionIsOnlyIncrementingByOne(
+      newVersion,
+      previousReleaseNumber,
+      'major'
+    )
+  } else if (versionDiff === 'minor') {
+    newVersionIsOnlyIncrementingByOne(
+      newVersion,
+      previousReleaseNumber,
+      'minor'
+    )
+  } else if (versionDiff === 'patch') {
+    newVersionIsOnlyIncrementingByOne(
+      newVersion,
+      previousReleaseNumber,
+      'patch'
+    )
+  }
+
+  console.log('No errors noted in the new version. We can proceed!')
+}
+
+export async function updateChangelog(newVersion) {
+  const changelogLines = await getChangelogLines()
+  const [startIndex, previousReleaseLineIndex] =
+    getChangelogLineIndexes(changelogLines)
+
+  // Convert the previous release heading into a processable semver
+  const previousReleaseNumber = convertVersionHeadingToSemver(
+    changelogLines[previousReleaseLineIndex]
+  )
+
+  const newVersionTitle = buildNewReleaseTitle(
+    newVersion,
+    semver.diff(newVersion, previousReleaseNumber)
+  )
+  const newChangelogLines = [].concat(changelogLines)
+
+  newChangelogLines.splice(startIndex + 1, 0, '', newVersionTitle)
+  await writeFileSync('./CHANGELOG.md', newChangelogLines.join('\n'))
+}
+
+export async function generateReleaseNotes(fromUnreleasedHeading = false) {
+  const changelogLines = await getChangelogLines()
+  const [startIndex, previousReleaseLineIndex] = getChangelogLineIndexes(
+    changelogLines,
+    fromUnreleasedHeading
+  )
+
+  const releaseNotes = changelogLines
     .slice(startIndex + 1, previousReleaseLineIndex - 1)
     .filter((value, index, arr) => {
-      if (
-        value !== '' &&
-        !value.startsWith('To install this version with npm')
-      ) {
+      if (value !== '') {
         return true
       }
       if (
@@ -116,7 +94,28 @@ async function getLatestChangelog() {
       return false
     })
 
-  await writeFileSync('./release-notes-body', partialChangelog.join('\n'))
+  await writeFileSync('./release-notes-body', releaseNotes.join('\n'))
+}
+
+async function getChangelogLines() {
+  return (await readFileSync('./CHANGELOG.md', 'utf8')).split('\n')
+}
+
+function getChangelogLineIndexes(changelogLines, fromUnreleasedHeading = true) {
+  const versionTitleRegex = /^#+\s+v\d+\.\d+\.\d+\s+\(.+\)$/i
+  const startIndex = findIndexOfFirstMatchingLine(
+    changelogLines,
+    fromUnreleasedHeading ? /^#+\s+Unreleased\s*$/i : versionTitleRegex
+  )
+
+  return [
+    startIndex,
+    findIndexOfFirstMatchingLine(
+      changelogLines,
+      versionTitleRegex,
+      fromUnreleasedHeading ? 0 : startIndex + 1
+    )
+  ]
 }
 
 function findIndexOfFirstMatchingLine(changelogLines, regExp, offset = 0) {
@@ -127,6 +126,10 @@ function findIndexOfFirstMatchingLine(changelogLines, regExp, offset = 0) {
       .filter((x) => x !== undefined)
       .at(0) + offset
   )
+}
+
+function convertVersionHeadingToSemver(heading) {
+  return semver.valid(semver.coerce(heading))
 }
 
 // Checks to see if the new version increments from the old version by one for
