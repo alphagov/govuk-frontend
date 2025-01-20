@@ -53,6 +53,7 @@ describe('/components/file-upload', () => {
       describe('on page load', () => {
         beforeAll(async () => {
           await render(page, 'file-upload', examples.default)
+          await setTimeout(() => {}, 3000) // do i need to wait for the js to render...
         })
 
         describe('wrapper element', () => {
@@ -244,11 +245,25 @@ describe('/components/file-upload', () => {
         })
 
         it('uses the correct translation for the choose file button', async () => {
-          const buttonText = await page.$eval(buttonSelector, (el) =>
+          const buttonElementText = await page.$eval(
+            pseudoButtonSelector,
+            (el) => el.innerHTML.trim()
+          )
+
+          const statusElementText = await page.$eval(statusSelector, (el) =>
             el.innerHTML.trim()
           )
 
-          expect(buttonText).toBe('Dewiswch ffeil')
+          const hiddenStatusElementText = await page.$eval(
+            hiddenStatusSelector,
+            (el) => el.innerHTML.trim()
+          )
+
+          expect(buttonElementText).toBe('Dewiswch ffeil')
+          expect(statusElementText).toBe("Dim ffeiliau wedi'u dewis")
+          expect(hiddenStatusElementText).toBe(
+            "Llwythwch ffeil i fyny, Dim ffeiliau wedi'u dewis"
+          )
         })
 
         describe('status element', () => {
