@@ -61,7 +61,7 @@
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "del-cli": "^5.1.0",
-    "editorconfig-checker": "^6.0.0",
+    "editorconfig-checker": "^6.0.1",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard": "^17.1.0",
@@ -87,10 +87,10 @@
     "prettier": "^3.4.2",
     "semver": "^7.6.2",
     "standard": "^17.1.2",
-    "stylelint": "^16.12.0",
+    "stylelint": "^16.13.2",
     "stylelint-config-gds": "^2.0.0",
     "stylelint-order": "^6.0.4",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.3"
   },
   "optionalDependencies": {
     "@actions/github": "^6.0.0",
