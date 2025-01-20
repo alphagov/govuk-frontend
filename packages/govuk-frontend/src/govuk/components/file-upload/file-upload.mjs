@@ -26,6 +26,11 @@ export class FileUpload extends ConfigurableComponent {
    */
   $status
 
+  /**
+   * @private
+   */
+  $visuallyHiddenStatus
+
   /** @private */
   i18n
 
@@ -45,12 +50,15 @@ export class FileUpload extends ConfigurableComponent {
       )
     }
 
+    this.$root.setAttribute('hidden', 'true')
+
     this.i18n = new I18n(this.config.i18n, {
       // Read the fallback if necessary rather than have it set in the defaults
       locale: closestAttributeValue(this.$root, 'lang')
     })
 
     this.$label = this.findLabel()
+    this.$label.setAttribute('id', `${this.$root.getAttribute('id')}-label`)
 
     // Wrapping element. This defines the boundaries of our drag and drop area.
     const $wrapper = document.createElement('div')
@@ -65,6 +73,7 @@ export class FileUpload extends ConfigurableComponent {
     buttonSpan.className =
       'govuk-button govuk-button--secondary govuk-file-upload__pseudo-button'
     buttonSpan.innerText = this.i18n.t('selectFilesButton')
+    buttonSpan.setAttribute('aria-hidden', 'true')
 
     $button.appendChild(buttonSpan)
     $button.addEventListener('click', this.onClick.bind(this))
@@ -73,13 +82,21 @@ export class FileUpload extends ConfigurableComponent {
     const $status = document.createElement('span')
     $status.className = 'govuk-body govuk-file-upload__status'
     $status.innerText = this.i18n.t('filesSelectedDefault')
-    // $status.setAttribute('aria-hidden', 'true')
+    $status.setAttribute('aria-hidden', 'true')
 
     $button.appendChild($status)
 
+    // visually hidden status to be read by screen reader
+    const $visuallyHiddenStatus = document.createElement('span')
+    $visuallyHiddenStatus.className = 'govuk-visually-hidden'
+    $visuallyHiddenStatus.innerText = `${this.$label.innerText}, ${this.i18n.t('filesSelectedDefault')}`
+
+    this.$visuallyHiddenStatus = $visuallyHiddenStatus
+
+    $button.appendChild($visuallyHiddenStatus)
+
     // Assemble these all together
     $wrapper.insertAdjacentElement('beforeend', $button)
-    // $wrapper.insertAdjacentElement('beforeend', $status)
 
     // Inject all this *after* the native file input
     this.$root.insertAdjacentElement('afterend', $wrapper)
@@ -119,16 +136,24 @@ export class FileUpload extends ConfigurableComponent {
     if (fileCount === 0) {
       // If there are no files, show the default selection text
       this.$status.innerText = this.i18n.t('filesSelectedDefault')
+      this.$visuallyHiddenStatus.innerText = `${this.$label.innerText}, ${this.i18n.t('filesSelectedDefault')}`
     } else if (
       // If there is 1 file, just show the file name
       fileCount === 1
     ) {
       this.$status.innerText = this.$root.files[0].name
+      this.$visuallyHiddenStatus.innerText = `${this.$label.innerText}, ${this.$root.files[0].name}`
     } else {
       // Otherwise, tell the user how many files are selected
       this.$status.innerText = this.i18n.t('filesSelected', {
         count: fileCount
       })
+      this.$visuallyHiddenStatus.innerText = `${this.$label.innerText}, ${this.i18n.t(
+        'filesSelected',
+        {
+          count: fileCount
+        }
+      )}`
     }
   }
 
