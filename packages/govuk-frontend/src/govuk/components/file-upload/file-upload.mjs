@@ -58,7 +58,7 @@ export class FileUpload extends ConfigurableComponent {
     })
 
     this.$label = this.findLabel()
-    this.$label.setAttribute('id', `${this.$root.getAttribute('id')}-label`)
+    this.$label.setAttribute('id', `${this.$root.dataset.id}-label`)
 
     // Wrapping element. This defines the boundaries of our drag and drop area.
     const $wrapper = document.createElement('div')
