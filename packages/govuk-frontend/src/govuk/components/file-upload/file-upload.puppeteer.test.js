@@ -7,6 +7,8 @@ const inputSelector = '.govuk-file-upload'
 const wrapperSelector = '.govuk-file-upload-wrapper'
 const buttonSelector = '.govuk-file-upload__button'
 const statusSelector = '.govuk-file-upload__status'
+const pseudoButtonSelector = '.govuk-file-upload__pseudo-button'
+const hiddenStatusSelector = '.govuk-file-upload__hidden-status'
 
 describe('/components/file-upload', () => {
   let examples
@@ -93,35 +95,25 @@ describe('/components/file-upload', () => {
           })
 
           it('renders the button with default text', async () => {
-            const buttonElementText = await page.$eval(buttonSelector, (el) =>
-              el.innerHTML.trim()
+            const buttonElementText = await page.$eval(
+              pseudoButtonSelector,
+              (el) => el.innerHTML.trim()
             )
 
-            expect(buttonElementText).toBe('Choose file')
-          })
-        })
-
-        describe('status element', () => {
-          it('renders the status element', async () => {
-            const statusElement = await page.$eval(statusSelector, (el) => el)
-
-            expect(statusElement).toBeDefined()
-          })
-
-          it('renders the status element with role', async () => {
-            const statusElementRole = await page.$eval(statusSelector, (el) =>
-              el.getAttribute('role')
-            )
-
-            expect(statusElementRole).toBe('status')
-          })
-
-          it('renders the status element with default text', async () => {
             const statusElementText = await page.$eval(statusSelector, (el) =>
               el.innerHTML.trim()
             )
 
+            const hiddenStatusElementText = await page.$eval(
+              hiddenStatusSelector,
+              (el) => el.innerHTML.trim()
+            )
+
+            expect(buttonElementText).toBe('Choose file')
             expect(statusElementText).toBe('No file chosen')
+            expect(hiddenStatusElementText).toBe(
+              'Upload a file, No file chosen'
+            )
           })
         })
       })
