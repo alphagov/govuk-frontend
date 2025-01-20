@@ -246,6 +246,108 @@ describe('/components/file-upload', () => {
         })
       })
 
+      describe('dropzone', () => {
+        let $wrapper
+        let $announcements
+        let wrapperBoundingBox
+
+        // Shared data to drag on the element
+        const dragData = {
+          items: [],
+          files: [__filename],
+          dragOperationsMask: 1 // Copy
+        }
+
+        const selectorDropzoneVisible =
+          '.govuk-file-upload-wrapper.govuk-file-upload-wrapper--show-dropzone'
+        const selectorDropzoneHidden =
+          '.govuk-file-upload-wrapper:not(.govuk-file-upload-wrapper--show-dropzone)'
+
+        beforeEach(async () => {
+          await render(page, 'file-upload', examples.default)
+
+          $wrapper = await page.$('.govuk-file-upload-wrapper')
+          wrapperBoundingBox = await $wrapper.boundingBox()
+
+          $announcements = await page.$('.govuk-file-upload-announcements')
+        })
+
+        it('is not shown by default', async () => {
+          await expect(page.$(selectorDropzoneHidden)).resolves.toBeTruthy()
+          await expect(
+            $announcements.evaluate((e) => e.textContent)
+          ).resolves.toBe('')
+        })
+
+        it('gets shown when entering the field', async () => {
+          // Add a little pixel to make sure we're effectively within the element
+          await page.mouse.dragEnter(
+            { x: wrapperBoundingBox.x + 1, y: wrapperBoundingBox.y + 1 },
+            structuredClone(dragData)
+          )
+
+          await expect(page.$(selectorDropzoneVisible)).resolves.toBeTruthy()
+          await expect(
+            $announcements.evaluate((e) => e.textContent)
+          ).resolves.toBe('Entered drop zone')
+        })
+
+        it('gets hidden when dropping on the field', async () => {
+          // Add a little pixel to make sure we're effectively within the element
+          await page.mouse.drop(
+            { x: wrapperBoundingBox.x + 1, y: wrapperBoundingBox.y + 1 },
+            structuredClone(dragData)
+          )
+
+          await expect(page.$(selectorDropzoneHidden)).resolves.toBeTruthy()
+          // The presence of 'Left drop zone' confirms we handled the leaving of the drop zone
+          // rather than being in the initial state
+          await expect(
+            $announcements.evaluate((e) => e.textContent)
+          ).resolves.toBe('Left drop zone')
+        })
+
+        it('gets hidden when dragging a file and leaving the field', async () => {
+          // Add a little pixel to make sure we're effectively within the element
+          await page.mouse.dragEnter(
+            { x: wrapperBoundingBox.x + 1, y: wrapperBoundingBox.y + 1 },
+            structuredClone(dragData)
+          )
+
+          // Move enough to the left to be out of the wrapper properly
+          // but not up or down in case there's other elements in the flow of the page
+          await page.mouse.dragEnter(
+            { x: wrapperBoundingBox.x - 20, y: wrapperBoundingBox.y },
+            structuredClone(dragData)
+          )
+
+          await expect(page.$(selectorDropzoneHidden)).resolves.toBeTruthy()
+          await expect(
+            $announcements.evaluate((e) => e.textContent)
+          ).resolves.toBe('Left drop zone')
+        })
+
+        it('gets hidden when dragging a file and leaving the document', async () => {
+          // Add a little pixel to make sure we're effectively within the element
+          await page.mouse.dragEnter(
+            { x: wrapperBoundingBox.x + 1, y: wrapperBoundingBox.y + 1 },
+            structuredClone(dragData)
+          )
+
+          // It doesn't seem doable to make Puppeteer drag outside the viewport
+          // so instead, we can only mock two 'dragleave' events
+          await page.$eval('.govuk-file-upload-wrapper', ($el) => {
+            $el.dispatchEvent(new Event('dragleave', { bubbles: true }))
+            $el.dispatchEvent(new Event('dragleave', { bubbles: true }))
+          })
+
+          await expect(page.$(selectorDropzoneHidden)).resolves.toBeTruthy()
+          await expect(
+            $announcements.evaluate((e) => e.textContent)
+          ).resolves.toBe('Left drop zone')
+        })
+      })
+
       describe('i18n', () => {
         beforeEach(async () => {
           await render(page, 'file-upload', examples.translated)
