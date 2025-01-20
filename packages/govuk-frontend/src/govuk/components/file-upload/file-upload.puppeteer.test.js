@@ -156,7 +156,7 @@ describe('/components/file-upload', () => {
 
           const [fileChooser] = await Promise.all([
             page.waitForFileChooser(),
-            page.click(inputSelector)
+            page.click(buttonSelector)
           ])
           await fileChooser.accept([testFilename])
         })
@@ -199,7 +199,7 @@ describe('/components/file-upload', () => {
 
           const [fileChooser] = await Promise.all([
             page.waitForFileChooser(),
-            page.click(inputSelector)
+            page.click(buttonSelector)
           ])
           await fileChooser.accept(['testfile1.txt', 'testfile2.pdf'])
         })
@@ -278,7 +278,7 @@ describe('/components/file-upload', () => {
           it('uses the correct translation when multiple files are selected', async () => {
             const [fileChooser] = await Promise.all([
               page.waitForFileChooser(),
-              page.click(inputSelector)
+              page.click(buttonSelector)
             ])
             await fileChooser.accept(['testfile1.txt', 'testfile2.pdf'])
 
