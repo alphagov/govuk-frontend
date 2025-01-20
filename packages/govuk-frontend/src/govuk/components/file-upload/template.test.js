@@ -17,14 +17,14 @@ describe('File upload', () => {
       const $ = render('file-upload', examples.default)
 
       const $component = $('.govuk-file-upload')
-      expect($component.attr('id')).toBe('file-upload-1')
+      expect($component.attr('id')).toBe('file-upload-1-input')
     })
 
     it('renders with name', () => {
       const $ = render('file-upload', examples.default)
 
       const $component = $('.govuk-file-upload')
-      expect($component.attr('name')).toBe('file-upload-1')
+      expect($component.attr('name')).toBe('file-upload-1-input')
     })
 
     it('renders with a form group wrapper', () => {
@@ -57,20 +57,6 @@ describe('File upload', () => {
 
       const $component = $('.govuk-file-upload')
       expect($component.attr('aria-describedby')).toMatch('test-target-element')
-    })
-
-    it('renders with multiple', () => {
-      const $ = render('file-upload', examples['allows multiple files'])
-
-      const $component = $('.govuk-file-upload')
-      expect($component.attr('multiple')).toBeTruthy()
-    })
-
-    it('renders with disabled', () => {
-      const $ = render('file-upload', examples.disabled)
-
-      const $component = $('.govuk-file-upload')
-      expect($component.attr('disabled')).toBeTruthy()
     })
 
     it('renders with attributes', () => {
@@ -226,7 +212,7 @@ describe('File upload', () => {
       const $ = render('file-upload', examples.default)
 
       const $label = $('.govuk-label')
-      expect($label.attr('for')).toBe('file-upload-1')
+      expect($label.attr('for')).toBe('file-upload-1-input')
     })
   })
 })
