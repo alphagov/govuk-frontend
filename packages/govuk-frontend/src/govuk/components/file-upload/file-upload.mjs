@@ -88,7 +88,8 @@ export class FileUpload extends ConfigurableComponent {
 
     // visually hidden status to be read by screen reader
     const $visuallyHiddenStatus = document.createElement('span')
-    $visuallyHiddenStatus.className = 'govuk-visually-hidden'
+    $visuallyHiddenStatus.className =
+      'govuk-visually-hidden govuk-file-upload__hidden-status'
     $visuallyHiddenStatus.innerText = `${this.$label.innerText}, ${this.i18n.t('filesSelectedDefault')}`
 
     this.$visuallyHiddenStatus = $visuallyHiddenStatus
