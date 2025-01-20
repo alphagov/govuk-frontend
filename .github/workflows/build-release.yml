@@ -26,23 +26,31 @@ jobs:
         uses: ./.github/workflows/actions/install-node
 
       - name: Validate version
-        # a script here to validate the parsed version no. using semver, both to
-        # make sure it's a valid semver and to make sure it is sensibly sequential
-        # node script? Shell script/command using semver's cli?
-        run:
+        uses: actions/github-script@v7.0.1
+        with:
+          script: |
+            const { validateVersion } = await import('${{ github.workspace }}/.github/workflows/scripts/changelog-release-helper.mjs')
+
+            await validateVersion(${{ inputs.version }})
 
       - name: Update package version
         run: npm version --no-git-tag-version --workspace govuk-frontend ${{ inputs.version }}
 
       - name: Update CHANGELOG
-        # Node (?) script to replace unreleased heading with version number and
-        # create new unreleased heading.
-        run:
+        uses: actions/github-script@v7.0.1
+        with:
+          script: |
+            const { updateChangelog } = await import('${{ github.workspace }}/.github/workflows/scripts/changelog-release-helper.mjs')
 
-      - name: Get release notes for release from CHANGELOG
-        # Script to get contents of release from changelog. Could also be used for
-        # version validation above?
-        run:
+            await updateChangelog(${{ inputs.version }})
+
+      - name: Generate release notes
+        uses: actions/github-script@v7.0.1
+        with:
+          script: |
+            const { generateReleaseNotes } = await import('${{ github.workspace }}/.github/workflows/scripts/changelog-release-helper.mjs')
+
+            await generateReleaseNotes()
 
       - name: Run tests
         run: npm run test
