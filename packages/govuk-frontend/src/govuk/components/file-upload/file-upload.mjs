@@ -59,6 +59,7 @@ export class FileUpload extends ConfigurableComponent {
     })
 
     this.$label = this.findLabel()
+    this.$label.setAttribute('id', `${this.$root.getAttribute('id')}-label`)
 
     // Wrapping element. This defines the boundaries of our drag and drop area.
     const $wrapper = document.createElement('div')
@@ -73,6 +74,7 @@ export class FileUpload extends ConfigurableComponent {
     buttonSpan.className =
       'govuk-button govuk-button--secondary govuk-file-upload__pseudo-button'
     buttonSpan.innerText = this.i18n.t('selectFilesButton')
+    buttonSpan.setAttribute('aria-hidden', 'true')
 
     $button.appendChild(buttonSpan)
     $button.addEventListener('click', this.onClick.bind(this))
@@ -81,13 +83,16 @@ export class FileUpload extends ConfigurableComponent {
     const $status = document.createElement('span')
     $status.className = 'govuk-body govuk-file-upload__status'
     $status.innerText = this.i18n.t('filesSelectedDefault')
-    // $status.setAttribute('aria-hidden', 'true')
+    $status.setAttribute('aria-hidden', 'true')
 
     $button.appendChild($status)
+    $button.setAttribute(
+      'aria-label',
+      `${this.$label.innerText}, ${this.i18n.t('selectFilesButton')}, ${this.i18n.t('filesSelectedDefault')}`
+    )
 
     // Assemble these all together
     $wrapper.insertAdjacentElement('beforeend', $button)
-    // $wrapper.insertAdjacentElement('beforeend', $status)
 
     // Inject all this *after* the native file input
     this.$root.insertAdjacentElement('afterend', $wrapper)
@@ -231,6 +236,11 @@ export class FileUpload extends ConfigurableComponent {
         count: fileCount
       })
     }
+
+    this.$button.setAttribute(
+      'aria-label',
+      `${this.$label.innerText}, ${this.i18n.t('selectFilesButton')}, ${this.$status.innerText}`
+    )
   }
 
   /**
