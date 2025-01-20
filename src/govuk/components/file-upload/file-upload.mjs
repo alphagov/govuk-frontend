@@ -98,6 +98,7 @@ export class FileUpload extends ConfigurableComponent {
     // Handle drop zone visibility
     // A live region to announce when users enter or leave the drop zone
     this.$announcements = document.createElement('span')
+    this.$announcements.classList.add('govuk-file-upload-announcements')
     this.$announcements.classList.add('govuk-visually-hidden')
     this.$announcements.setAttribute('aria-live', 'assertive')
     this.$wrapper.insertAdjacentElement('afterend', this.$announcements)
