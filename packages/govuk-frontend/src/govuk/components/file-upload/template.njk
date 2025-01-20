@@ -4,6 +4,8 @@
 {% from "../hint/macro.njk" import govukHint %}
 {% from "../label/macro.njk" import govukLabel %}
 
+{% set inputId = [ params.id, "input" ] | join("-") %}
+
 {#- a record of other elements that we need to associate with the input using
   aria-describedby – for example hints or error messages -#}
 {% set describedBy = params.describedBy if params.describedBy else "" %}
@@ -15,7 +17,7 @@
     classes: params.label.classes,
     isPageHeading: params.label.isPageHeading,
     attributes: params.label.attributes,
-    for: params.id
+    for: inputId
   }) | trim | indent(2) }}
 {% if params.hint %}
   {% set hintId = params.id + '-hint' %}
@@ -43,7 +45,7 @@
 {% if params.formGroup.beforeInput %}
   {{ params.formGroup.beforeInput.html | safe | trim | indent(2) if params.formGroup.beforeInput.html else params.formGroup.beforeInput.text }}
 {% endif %}
-  <input class="govuk-file-upload {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-file-upload--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="file" data-module="govuk-file-upload"
+  <input class="govuk-file-upload {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-file-upload--error{% endif %}" id="{{ inputId }}" data-id="{{ params.id }}" name="{{ params.name }}" type="file" data-module="govuk-file-upload"
   {%- if params.value %} value="{{ params.value }}"{% endif %}
   {%- if params.disabled %} disabled{% endif %}
   {%- if params.multiple %} multiple{% endif %}
