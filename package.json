@@ -20,7 +20,7 @@
     "start": "npm run dev",
     "generate-npm-tag": "./bin/generate-npm-tag.sh",
     "build-release": "./bin/build-release.sh",
-    "publish-release": "./bin/publish-release.sh",
+    "publish-prerelease": "./bin/publish-prerelease.sh",
     "publish-preview": "./bin/publish-preview.sh",
     "predev": "npm run build -- --ignore-scripts",
     "dev": "concurrently \"npm run dev --workspace @govuk-frontend/review\" \"npm run dev --workspace govuk-frontend\" --kill-others --names \"app,pkg\" --prefix-colors \"red.dim,blue.dim\"",
