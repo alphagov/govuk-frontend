@@ -95,12 +95,102 @@ export class FileUpload extends ConfigurableComponent {
     // Bind change event to the underlying input
     this.$root.addEventListener('change', this.onChange.bind(this))
 
-    // When a file is dropped on the input
-    this.$wrapper.addEventListener('drop', this.onDragLeaveOrDrop.bind(this))
+    // Handle drop zone visibility
+    // A live region to announce when users enter or leave the drop zone
+    this.$announcements = document.createElement('span')
+    this.$announcements.classList.add('govuk-file-upload-announcements')
+    this.$announcements.classList.add('govuk-visually-hidden')
+    this.$announcements.setAttribute('aria-live', 'assertive')
+    this.$wrapper.insertAdjacentElement('afterend', this.$announcements)
 
-    // When a file is dragged over the page (or dragged off the page)
-    document.addEventListener('dragenter', this.onDragEnter.bind(this))
-    document.addEventListener('dragleave', this.onDragLeaveOrDrop.bind(this))
+    // The easy bit, when dropping hide the dropzone
+    //
+    // Note: the component relies on the native behaviour to get the files
+    // being dragged set as value of the `<input>`. This allows a `change`
+    // event to be automatically fired from the element and saves us from having
+    // to do anything more than hiding the dropzone on drop.
+    this.$wrapper.addEventListener('drop', this.hideDropZone.bind(this))
+
+    // While user is dragging, it gets a little more complex because of Safari.
+    // Safari doesn't fill `relatedTarget` on `dragleave` (nor `dragenter`).
+    // This means we can't use `relatedTarget` to:
+    // - check if the user is still within the wrapper
+    //   (`relatedTarget` being a descendant of the wrapper)
+    // - check if the user is still over the viewport
+    //   (`relatedTarget` being null if outside)
+
+    // Thanks to `dragenter` bubbling, we can listen on the `document` with a
+    // single function and update the visibility based on whether we entered a
+    // node inside or outside the wrapper.
+    document.addEventListener(
+      'dragenter',
+      this.updateDropzoneVisibility.bind(this)
+    )
+
+    // To detect if we're outside the document, we can track if there was a
+    // `dragenter` event preceding a `dragleave`. If there wasn't, this means
+    // we're outside the document.
+    //
+    // The order of events is guaranteed by the HTML specs:
+    // https://html.spec.whatwg.org/multipage/dnd.html#drag-and-drop-processing-model
+    document.addEventListener('dragenter', () => {
+      this.enteredAnotherElement = true
+    })
+
+    document.addEventListener('dragleave', () => {
+      if (!this.enteredAnotherElement) {
+        this.hideDropZone()
+      }
+
+      this.enteredAnotherElement = false
+    })
+  }
+
+  /**
+   * Updates the visibility of the dropzone as users enters the various elements on the page
+   *
+   * @param {DragEvent} event - The `dragenter` event
+   */
+  updateDropzoneVisibility(event) {
+    // DOM interfaces only type `event.target` as `EventTarget`
+    // so we first need to make sure it's a `Node`
+    if (event.target instanceof Node) {
+      if (this.$wrapper.contains(event.target)) {
+        if (event.dataTransfer && isContainingFiles(event.dataTransfer)) {
+          // Only update the class and make the announcement if not already visible
+          // to avoid repeated announcements on NVDA (2024.4) + Firefox (133)
+          if (
+            !this.$wrapper.classList.contains(
+              'govuk-file-upload-wrapper--show-dropzone'
+            )
+          ) {
+            this.$wrapper.classList.add(
+              'govuk-file-upload-wrapper--show-dropzone'
+            )
+            this.$announcements.innerText = this.i18n.t('dropZoneEntered')
+          }
+        }
+      } else {
+        // Only hide the dropzone if it is visible to prevent announcing user
+        // left the drop zone when they enter the page but haven't reached yet
+        // the file upload component
+        if (
+          this.$wrapper.classList.contains(
+            'govuk-file-upload-wrapper--show-dropzone'
+          )
+        ) {
+          this.hideDropZone()
+        }
+      }
+    }
+  }
+
+  /**
+   * Hides the dropzone once user has dropped files on the `<input>`
+   */
+  hideDropZone() {
+    this.$wrapper.classList.remove('govuk-file-upload-wrapper--show-dropzone')
+    this.$announcements.innerText = this.i18n.t('dropZoneLeft')
   }
 
   /**
@@ -154,28 +244,6 @@ export class FileUpload extends ConfigurableComponent {
   }
 
   /**
-   * When a file is dragged over the container, show a visual indicator that a
-   * file can be dropped here.
-   *
-   * @param {DragEvent} event - the drag event
-   */
-  onDragEnter(event) {
-    // Check if the thing being dragged is a file (and not text or something
-    // else), we only want to indicate files.
-    console.log(event)
-
-    this.$wrapper.classList.add('govuk-file-upload-wrapper--show-dropzone')
-  }
-
-  /**
-   * When a dragged file leaves the container, or the file is dropped,
-   * remove the visual indicator.
-   */
-  onDragLeaveOrDrop() {
-    this.$wrapper.classList.remove('govuk-file-upload-wrapper--show-dropzone')
-  }
-
-  /**
    * Create a mutation observer to check if the input's attributes altered.
    */
   observeDisabledState() {
@@ -224,7 +292,9 @@ export class FileUpload extends ConfigurableComponent {
         // instead, however it's here for coverage's sake
         one: '%{count} file chosen',
         other: '%{count} files chosen'
-      }
+      },
+      dropZoneEntered: 'Entered drop zone',
+      dropZoneLeft: 'Left drop zone'
     }
   })
 
@@ -239,6 +309,25 @@ export class FileUpload extends ConfigurableComponent {
       i18n: { type: 'object' }
     }
   })
+}
+
+/**
+ * Checks if the given `DataTransfer` contains files
+ *
+ * @internal
+ * @param {DataTransfer} dataTransfer - The `DataTransfer` to check
+ * @returns {boolean} - `true` if it contains files or we can't infer it, `false` otherwise
+ */
+function isContainingFiles(dataTransfer) {
+  // Safari sometimes does not provide info about types :'(
+  // In which case best not to assume anything and try to set the files
+  const hasNoTypesInfo = dataTransfer.types.length === 0
+
+  // When dragging images, there's a mix of mime types + Files
+  // which we can't assign to the native input
+  const isDraggingFiles = dataTransfer.types.some((type) => type === 'Files')
+
+  return hasNoTypesInfo || isDraggingFiles
 }
 
 /**
@@ -263,6 +352,10 @@ export class FileUpload extends ConfigurableComponent {
  * @property {string} [selectFiles] - Text of button that opens file browser
  * @property {TranslationPluralForms} [filesSelected] - Text indicating how
  *   many files have been selected
+ * @property {string} [dropZoneEntered] - Text announced to assistive technology
+ *   when users entered the drop zone while dragging
+ * @property {string} [dropZoneLeft] - Text announced to assistive technology
+ *   when users left the drop zone while dragging
  */
 
 /**
