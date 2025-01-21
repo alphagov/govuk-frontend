@@ -7,6 +7,7 @@ const inputSelector = '.govuk-file-upload'
 const wrapperSelector = '.govuk-file-upload-wrapper'
 const buttonSelector = '.govuk-file-upload__button'
 const statusSelector = '.govuk-file-upload__status'
+const pseudoButtonSelector = '.govuk-file-upload__pseudo-button'
 
 describe('/components/file-upload', () => {
   let examples
@@ -93,66 +94,59 @@ describe('/components/file-upload', () => {
           })
 
           it('renders the button with default text', async () => {
-            const buttonElementText = await page.$eval(buttonSelector, (el) =>
-              el.innerHTML.trim()
+            const buttonElementText = await page.$eval(
+              `${buttonSelector} ${pseudoButtonSelector}`,
+              (el) => el.innerHTML.trim()
+            )
+
+            const statusElementText = await page.$eval(
+              `${buttonSelector} ${statusSelector}`,
+              (el) => el.innerHTML.trim()
+            )
+
+            const buttonAriaText = await page.$eval(buttonSelector, (el) =>
+              el.getAttribute('aria-label')
             )
 
             expect(buttonElementText).toBe('Choose file')
-          })
-        })
-
-        describe('status element', () => {
-          it('renders the status element', async () => {
-            const statusElement = await page.$eval(statusSelector, (el) => el)
-
-            expect(statusElement).toBeDefined()
-          })
-
-          it('renders the status element with role', async () => {
-            const statusElementRole = await page.$eval(statusSelector, (el) =>
-              el.getAttribute('role')
-            )
-
-            expect(statusElementRole).toBe('status')
-          })
-
-          it('renders the status element with default text', async () => {
-            const statusElementText = await page.$eval(statusSelector, (el) =>
-              el.innerHTML.trim()
-            )
-
             expect(statusElementText).toBe('No file chosen')
+            expect(buttonAriaText).toBe(
+              'Upload a file, Choose file, No file chosen'
+            )
           })
         })
       })
 
       describe('when clicking the choose file button', () => {
-        it('opens the file picker', async () => {
-          // It doesn't seem to be possible to check if the file picker dialog
-          // opens as an isolated test, so this test clicks the button, tries to
-          // set a value in the file chooser, then checks if that value was set
-          // on the input as expected.
-          const testFilename = 'test.gif'
-          await render(page, 'file-upload', examples.default)
+        it.each([buttonSelector, pseudoButtonSelector, statusSelector])(
+          'opens the file picker',
+          async (selector) => {
+            // It doesn't seem to be possible to check if the file picker dialog
+            // opens as an isolated test, so this test clicks the button, tries to
+            // set a value in the file chooser, then checks if that value was set
+            // on the input as expected.
+            const testFilename = 'test.gif'
+            await render(page, 'file-upload', examples.default)
 
-          const [fileChooser] = await Promise.all([
-            page.waitForFileChooser(),
-            page.click(buttonSelector)
-          ])
+            const [fileChooser] = await Promise.all([
+              page.waitForFileChooser(),
+              page.click(selector)
+            ])
 
-          await fileChooser.accept([testFilename])
+            await fileChooser.accept([testFilename])
 
-          const inputElementValue = await page.$eval(
-            inputSelector,
-            (el) =>
-              // @ts-ignore
-              el.value
-          )
+            const inputElementValue = await page.$eval(
+              inputSelector,
+              (el) =>
+                // @ts-ignore
+                el.value
+            )
 
-          // For Windows and backward compatibility, the values of file inputs
-          // are always formatted starting with `C:\\fakepath\\`
-          expect(inputElementValue).toBe(`C:\\fakepath\\${testFilename}`)
-        })
+            // For Windows and backward compatibility, the values of file inputs
+            // are always formatted starting with `C:\\fakepath\\`
+            expect(inputElementValue).toBe(`C:\\fakepath\\${testFilename}`)
+          }
+        )
       })
 
       describe('when selecting a file', () => {
@@ -163,7 +157,7 @@ describe('/components/file-upload', () => {
 
           const [fileChooser] = await Promise.all([
             page.waitForFileChooser(),
-            page.click(inputSelector)
+            page.click(buttonSelector)
           ])
           await fileChooser.accept([testFilename])
         })
@@ -206,7 +200,7 @@ describe('/components/file-upload', () => {
 
           const [fileChooser] = await Promise.all([
             page.waitForFileChooser(),
-            page.click(inputSelector)
+            page.click(buttonSelector)
           ])
           await fileChooser.accept(['testfile1.txt', 'testfile2.pdf'])
         })
@@ -354,11 +348,24 @@ describe('/components/file-upload', () => {
         })
 
         it('uses the correct translation for the choose file button', async () => {
-          const buttonText = await page.$eval(buttonSelector, (el) =>
+          const buttonElementText = await page.$eval(
+            pseudoButtonSelector,
+            (el) => el.innerHTML.trim()
+          )
+
+          const statusElementText = await page.$eval(statusSelector, (el) =>
             el.innerHTML.trim()
           )
 
-          expect(buttonText).toBe('Dewiswch ffeil')
+          const buttonAriaText = await page.$eval(buttonSelector, (el) =>
+            el.getAttribute('aria-label')
+          )
+
+          expect(buttonElementText).toBe('Dewiswch ffeil')
+          expect(statusElementText).toBe("Dim ffeiliau wedi'u dewis")
+          expect(buttonAriaText).toBe(
+            "Llwythwch ffeil i fyny, Dewiswch ffeil, Dim ffeiliau wedi'u dewis"
+          )
         })
 
         describe('status element', () => {
@@ -373,7 +380,7 @@ describe('/components/file-upload', () => {
           it('uses the correct translation when multiple files are selected', async () => {
             const [fileChooser] = await Promise.all([
               page.waitForFileChooser(),
-              page.click(inputSelector)
+              page.click(buttonSelector)
             ])
             await fileChooser.accept(['testfile1.txt', 'testfile2.pdf'])
 
