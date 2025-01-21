@@ -9,14 +9,16 @@ CURRENT_VERSION=$(npm run version --silent --workspace govuk-frontend)
 
 version() { echo "$@" | awk -F. '{ printf("%d%03d%03d\n", $1,$2,$3); }'; }
 
-if [ $CURRENT_VERSION == $HIGHEST_PUBLISHED_VERSION ]; then
+if [ "$CURRENT_VERSION" = "$HIGHEST_PUBLISHED_VERSION" ]; then
   echo "⚠️ Git tag $TAG already exists. Check you have run \`npm version\` correctly."
   exit 1
-elif [ $(version $CURRENT_VERSION) -ge $(version $HIGHEST_PUBLISHED_VERSION) ]; then
+elif echo "$CURRENT_VERSION" | grep -q "internal"; then
+  NPM_TAG="internal"
+elif [ $(version "$CURRENT_VERSION") -ge $(version "$HIGHEST_PUBLISHED_VERSION") ]; then
   NPM_TAG="latest"
 else
-  major_version_num=$(echo $CURRENT_VERSION | cut -d. -f1)
+  major_version_num=$(echo "$CURRENT_VERSION" | cut -d. -f1)
   NPM_TAG="latest-$major_version_num"
 fi
 
-echo $NPM_TAG
+echo "$NPM_TAG"
