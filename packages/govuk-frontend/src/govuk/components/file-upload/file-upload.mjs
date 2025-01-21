@@ -29,6 +29,9 @@ export class FileUpload extends ConfigurableComponent {
   /** @private */
   i18n
 
+  /** @private */
+  id
+
   /**
    * @param {Element | null} $root - File input element
    * @param {FileUploadConfig} [config] - File Upload config
@@ -59,7 +62,11 @@ export class FileUpload extends ConfigurableComponent {
     })
 
     this.$label = this.findLabel()
-    this.$label.setAttribute('id', `${this.$root.getAttribute('id')}-label`)
+
+    // we need to copy the 'id' of the root element
+    // to the new button replacement element
+    // so that focus will work in the error summary
+    this.$root.id = `${this.id}-input`
 
     // Wrapping element. This defines the boundaries of our drag and drop area.
     const $wrapper = document.createElement('div')
@@ -69,6 +76,7 @@ export class FileUpload extends ConfigurableComponent {
     const $button = document.createElement('button')
     $button.classList.add('govuk-file-upload__button')
     $button.type = 'button'
+    $button.id = this.id
 
     const buttonSpan = document.createElement('span')
     buttonSpan.className =
@@ -268,7 +276,7 @@ export class FileUpload extends ConfigurableComponent {
    * When the button is clicked, emulate clicking the actual, hidden file input
    */
   onClick() {
-    this.$label.click()
+    this.$root.click()
   }
 
   /**
