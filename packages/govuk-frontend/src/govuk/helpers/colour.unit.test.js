@@ -90,13 +90,11 @@ describe('@function govuk-colour', () => {
 
     // Expect our mocked @warn function to have been called once with a single
     // argument, which should be the deprecation notice
-    expect(mockWarnFunction.mock.calls[0]).toEqual(
-      expect.arrayContaining([
-        'The `$legacy` parameter of `govuk-colour` is deprecated and is ' +
-          'non-operational. It will be removed in the next major version. To ' +
-          'silence this warning, update $govuk-suppressed-warnings with key: ' +
-          '"legacy-colour-param"'
-      ])
+    expect(mockWarnFunction.mock.calls).toThrowSassWarning(
+      'The `$legacy` parameter of `govuk-colour` is deprecated and is ' +
+        'non-operational. It will be removed in the next major version. To ' +
+        'silence this warning, update $govuk-suppressed-warnings with key: ' +
+        '"legacy-colour-param"'
     )
   })
 })
@@ -206,10 +204,8 @@ describe('@function govuk-organisation-colour', () => {
 
     // Expect our mocked @warn function to have been called once with a single
     // argument, which should be the deprecation notice
-    expect(mockWarnFunction.mock.calls[0]).toEqual(
-      expect.arrayContaining([
-        'The House Elf Equalities Office was disbanded in 2007. To silence this warning, update $govuk-suppressed-warnings with key: "organisation-colours"'
-      ])
+    expect(mockWarnFunction.mock.calls).toThrowSassWarning(
+      'The House Elf Equalities Office was disbanded in 2007. To silence this warning, update $govuk-suppressed-warnings with key: "organisation-colours"'
     )
   })
 

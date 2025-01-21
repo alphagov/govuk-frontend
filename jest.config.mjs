@@ -101,6 +101,7 @@ export default {
     {
       ...config,
       displayName: 'JavaScript unit tests',
+      setupFilesAfterEnv: ['@govuk-frontend/helpers/jest/matchers.js'],
       testMatch: [
         '**/*.unit.test.{js,mjs}',
 
