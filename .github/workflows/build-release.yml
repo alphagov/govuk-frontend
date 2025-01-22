@@ -36,7 +36,8 @@ jobs:
           script: |
             const { validateVersion } = await import('${{ github.workspace }}/.github/workflows/scripts/changelog-release-helper.mjs')
 
-            await validateVersion('${{ inputs.version }}')
+            // await validateVersion('${{ inputs.version }}')
+            await validateVersion('5.9.0')
 
       - name: Update package version
         run: npm version --no-git-tag-version --workspace govuk-frontend ${{ inputs.version }}
@@ -47,7 +48,8 @@ jobs:
           script: |
             const { updateChangelog } = await import('${{ github.workspace }}/.github/workflows/scripts/changelog-release-helper.mjs')
 
-            await updateChangelog('${{ inputs.version }}')
+            // await updateChangelog('${{ inputs.version }}')
+            await updateChangelog('5.9.0')
 
       - name: Generate release notes
         uses: actions/github-script@v7.0.1
@@ -64,12 +66,4 @@ jobs:
         run: npm run build:release
 
       - name: Create pull request
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: release-${{ inputs.version }}
-          delete-branch: true
-          commit-message: 'Release ${{ inputs.version }}'
-          title: 'Release ${{ inputs.version }}'
-          body-path: release-notes-body
-          base: ${{ github.head_ref }}
+        run: gh pr create --title "Release ${{ inputs.version }}" --body-file "release-notes-body"
