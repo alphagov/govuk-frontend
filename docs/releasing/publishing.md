@@ -65,42 +65,17 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 ## Publish a release to npm
 
-1. Check out the **main** branch and pull the latest changes.
+1. Once the release pull request has been merged, open the Actions tab on the `alphagov/govuk-frontend` repo.
 
-   If there was an interruption between the raising of the PR and its merge,
-   or it's another developer running the publication to npm, rebuild the package with:
+2. Select the ["RELEASE: Publish to npm" workflow](https://github.com/alphagov/govuk-frontend/actions/workflows/publish-to-npm.yaml) and run the workflow on the `main` branch. This will publish the release to npm.
 
-   ```shell
-   npm run build:package
-   ```
+3. Verify the presence of the release and its tag on [npm](https://www.npmjs.com/package/govuk-frontend?activeTab=versions)
 
-2. Sign in to npm (`npm login`), using the credentials for the **govuk-patterns-and-tools** npm user from Bitwarden.
-
-3. Run `npm run publish-release`, which will prompt you to check whether the npm tag looks as expected.
-
-   If you're following these instructions, you're probably doing a sequential release, meaning
-   the tag should be 'latest'.
-
-4. Enter `y` to continue. If you think the tag should be different, enter `N` to have the option to set your own npm tag.
-
-5. You will now be prompted to continue or cancel the release. Check the details and enter `y` to continue. If something does not look right, press `N` to cancel the release.
-
-   This step will create a ZIP file containing the release in the root of your govuk-frontend git directory. You will need this file when creating the GitHub release.
-
-   This step will also automatically create a tag in Github which you can use to create a Github release in the following section.
-
-6. Verify the presence of the release and its tag on [npm](https://www.npmjs.com/package/govuk-frontend?activeTab=versions)
-
-   If the release has been assigned the wrong tag (mistakes happen),
-   you can use [`npm dist-tag`](https://docs.npmjs.com/cli/v8/commands/npm-dist-tag) to quickly correct.
-
-7. Have a quick look at the diff of the new package with the previous one at:
+4. Have a quick look at the diff of the new package with the previous one at:
 
    ```txt
    https://npmdiff.dev/govuk-frontend/<PREVIOUS_VERSION_NUMBER>/<RELEASED_VERSION_NUMBER>
    ```
-
-8. Run `npm logout` to log out from npm in the command line. If you've logged in through your browser, remember to log out from <https://npmjs.com> there as well.
 
 ## Create a release on Github
 

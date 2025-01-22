@@ -1,19 +1,14 @@
 #!/bin/sh
 set -e
 
-source ./bin/generate-npm-tag.sh
+echo "Publishing a pre-release to npm."
 
-# Check npm tag looks as expected
-# https://npm.github.io/publishing-pkgs-docs/updating/using-tags.html#publishing-with-tags
-echo "This will publish the package with the following npm tag:"
-echo $NPM_TAG
-echo " "
+# User should enter "internal" or "beta", as per the documentation for pre-releases
+echo "Enter the npm tag for this pre-release."
+echo "For internal releases, use 'internal'."
+echo "For beta releases, use 'beta'."
 
-read -r -p "Does this look correct? [y/N] " continue_prompt
-
-if [[ $continue_prompt != 'y' ]]; then
-    read -r -p "What should the npm tag be: " NPM_TAG
-fi
+read -r -p "Enter npm tag: " NPM_TAG
 
 echo "Starting a release..."
 echo " "

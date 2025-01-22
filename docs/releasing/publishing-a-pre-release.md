@@ -97,31 +97,29 @@ Developers should pair on pre-releases. When working remotely, it can be useful 
 
 2. Sign in to npm (`npm login`), using the credentials for the govuk-patterns-and-tools npm user from Bitwarden.
 
-3. Run `npm run publish-release`, which will prompt you to check whether the npm tag looks as expected.
-
-4. Enter `N` to continue to set the npm tag corresponding to the kind of release you're publishing:
+3. Run `npm run publish-prerelease`, which will prompt you to enter an NPM tag. Set the npm tag corresponding to the kind of release you're publishing:
 
    - `internal` for internal pre-releases
    - `next` for beta pre-releases
 
-5. You will now be prompted to continue or cancel the release. Check the details and enter `y` to continue. If something does not look right, press `N` to cancel the release.
+4. You will now be prompted to continue or cancel the release. Check the details and enter `y` to continue. If something does not look right, press `N` to cancel the release.
 
    This step will create a ZIP file containing the release in the root of your govuk-frontend git directory. You will need this file when creating the GitHub release.
 
    This step will also automatically create a tag in GitHub which you can use to create a GitHub release in the following section.
 
-6. Verify the presence of the pre-release and its tag on [npm](https://www.npmjs.com/package/govuk-frontend?activeTab=versions)
+5. Verify the presence of the pre-release and its tag on [npm](https://www.npmjs.com/package/govuk-frontend?activeTab=versions)
 
    If the pre-release has been assigned the wrong tag (mistakes happen),
    you can use [`npm dist-tag`](https://docs.npmjs.com/cli/v8/commands/npm-dist-tag) to quickly correct.
 
-7. Have a quick look at the diff of the new package with the previous one at:
+6. Have a quick look at the diff of the new package with the previous one at:
 
    ```txt
    https://diff.intrinsic.com/govuk-frontend/<PREVIOUS_VERSION_NUMBER>/<RELEASED_VERSION_NUMBER>
    ```
 
-8. Run `npm logout` to log out from npm. If you've logged in through your browser, remember to log out from <https://npmjs.com> there as well.
+7. Run `npm logout` to log out from npm. If you've logged in through your browser, remember to log out from <https://npmjs.com> there as well.
 
 ## If publishing a beta pre-release, create a release on GitHub
 
