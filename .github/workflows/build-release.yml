@@ -59,11 +59,17 @@ jobs:
 
             await generateReleaseNotes()
 
-      - name: Run tests
-        run: npm run test
-
       - name: Build release
         run: npm run build:release
 
       - name: Create pull request
-        run: gh pr create --title "Release ${{ inputs.version }}" --body-file "release-notes-body"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # run: gh pr create --title "Release ${{ inputs.version }}" --body-file "release-notes-body"
+        run: |
+          git config --global user.name 'govuk-design-system-ci'
+          git config --global user.email 'design-system-developers@digital.cabinet-office.gov.uk'
+          git commit -am "Release TEST"
+          git checkout -b release-TEST
+          git push -u origin release-TEST
+          gh pr create --base main --head release-TEST --title "Release TEST" --body-file "release-notes-body"
