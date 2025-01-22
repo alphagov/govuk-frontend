@@ -105,6 +105,7 @@ export class FileUpload extends ConfigurableComponent {
     $visuallyHiddenStatus.innerText = `${this.$label.innerText}, ${this.i18n.t('selectFilesButton')}, ${this.i18n.t('filesSelectedDefault')}`
 
     $button.appendChild(buttonSpan)
+    $button.appendChild($status)
     $button.appendChild($visuallyHiddenStatus)
 
     $button.setAttribute('aria-labelledby', $visuallyHiddenStatus.id)
