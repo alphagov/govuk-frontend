@@ -8,7 +8,7 @@ export async function validateVersion(newVersion) {
 
   if (!semver.valid(newVersion)) {
     throw new Error(
-      'New version number could not be processed by Semver. Please ensure you are providing a valid semantic version'
+      `New version number ${newVersion} could not be processed by Semver. Please ensure you are providing a valid semantic version`
     )
   }
 
@@ -21,7 +21,7 @@ export async function validateVersion(newVersion) {
   // the new one isn't less than the old one
   if (semver.lte(newVersion, previousReleaseNumber)) {
     throw new Error(
-      `The new version provided is less than or equal to the most recent version (${previousReleaseNumber}). Please provide a newer version number`
+      `New version number ${newVersion} is less than or equal to the most recent version (${previousReleaseNumber}). Please provide a newer version number`
     )
   }
 
@@ -143,7 +143,7 @@ function newVersionIsOnlyIncrementingByOne(newVersion, oldVersion, incType) {
 
   if (!semver.satisfies(newVersion, `<=${correctIncrement}`)) {
     throw new Error(
-      `New version is incrementing more than one for its increment type ${incType}. Please provide a version number than only increments by one from the current version. In this case, it's likely that your new version number should be: ${correctIncrement}`
+      `New version number ${newVersion} is incrementing more than one for its increment type (${incType}). Please provide a version number than only increments by one from the current version. In this case, it's likely that your new version number should be: ${correctIncrement}`
     )
   }
 }
