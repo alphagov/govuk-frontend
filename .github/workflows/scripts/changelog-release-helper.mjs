@@ -102,10 +102,10 @@ async function getChangelogLines() {
 }
 
 function getChangelogLineIndexes(changelogLines, fromUnreleasedHeading = true) {
-  const versionTitleRegex = /^\s+#+\s+v\d+\.\d+\.\d+\s+\(.+\)$/i
+  const versionTitleRegex = /^\s*#+\s+v\d+\.\d+\.\d+\s+\(.+\)$/i
   const startIndex = findIndexOfFirstMatchingLine(
     changelogLines,
-    fromUnreleasedHeading ? /^\s+#+\s+Unreleased\s*$/i : versionTitleRegex
+    fromUnreleasedHeading ? /^\s*#+\s+Unreleased\s*$/i : versionTitleRegex
   )
 
   return [
