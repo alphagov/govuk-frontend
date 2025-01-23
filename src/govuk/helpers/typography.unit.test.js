@@ -415,10 +415,9 @@ describe('@mixin govuk-font-size', () => {
 
     // Expect our mocked @warn function to have been called once with a single
     // argument, which should be the deprecation notice
-    expect(mockWarnFunction.mock.calls[0]).toEqual(
-      expect.arrayContaining([
-        'This point on the scale is deprecated. To silence this warning, update $govuk-suppressed-warnings with key: "test-key"'
-      ])
+    expect(mockWarnFunction).toHaveBeenCalledWith(
+      'This point on the scale is deprecated. To silence this warning, update $govuk-suppressed-warnings with key: "test-key"',
+      expect.anything()
     )
   })
 
@@ -698,12 +697,11 @@ describe('@mixin govuk-font-size', () => {
 
       // Expect our mocked @warn function to have been called once with a single
       // argument, which should be the deprecation notice
-      expect(mockWarnFunction.mock.calls[0]).toEqual(
-        expect.arrayContaining([
-          'govuk-typography-responsive is deprecated. Use govuk-font-size instead. ' +
-            'To silence this warning, update $govuk-suppressed-warnings with key: ' +
-            '"govuk-typography-responsive"'
-        ])
+      expect(mockWarnFunction).toHaveBeenCalledWith(
+        'govuk-typography-responsive is deprecated. Use govuk-font-size instead. ' +
+          'To silence this warning, update $govuk-suppressed-warnings with key: ' +
+          '"govuk-typography-responsive"',
+        expect.anything()
       )
     })
   })

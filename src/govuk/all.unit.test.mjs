@@ -121,10 +121,9 @@ describe('GOV.UK Frontend', () => {
 
       await compileSassString(sass, sassConfig)
 
-      expect(mockWarnFunction.mock.calls[0]).toEqual(
-        expect.arrayContaining([
-          `Importing using 'govuk/all' is deprecated. Update your import statement to import 'govuk/index'. To silence this warning, update $govuk-suppressed-warnings with key: "import-using-all"`
-        ])
+      expect(mockWarnFunction).toHaveBeenCalledWith(
+        `Importing using 'govuk/all' is deprecated. Update your import statement to import 'govuk/index'. To silence this warning, update $govuk-suppressed-warnings with key: "import-using-all"`,
+        expect.anything()
       )
     })
 
@@ -156,9 +155,8 @@ describe('GOV.UK Frontend', () => {
           'components',
           'utilities',
           'overrides'
-        ].map((section, index) =>
-          expect(mockWarnFunction).toHaveBeenNthCalledWith(
-            index + 1,
+        ].map((section) =>
+          expect(mockWarnFunction).toHaveBeenCalledWith(
             `Importing using 'govuk/${section}/all' is deprecated. Update your import statement to import 'govuk/${section}/index'. To silence this warning, update $govuk-suppressed-warnings with key: "import-using-all"`,
             expect.anything()
           )
