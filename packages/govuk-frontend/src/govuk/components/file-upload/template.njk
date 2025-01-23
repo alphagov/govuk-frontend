@@ -60,6 +60,10 @@
     key: 'files-selected',
     messages: params.filesSelectedText
   }) -}}
+  {{- govukI18nAttributes({
+    key: 'instruction',
+    messages: params.instructionText
+  }) -}}
   {{- govukAttributes(params.attributes) }}>
 {% if params.formGroup.afterInput %}
   {{ params.formGroup.afterInput.html | safe | trim | indent(2) if params.formGroup.afterInput.html else params.formGroup.afterInput.text }}

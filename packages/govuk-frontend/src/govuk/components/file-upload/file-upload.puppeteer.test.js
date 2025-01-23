@@ -111,7 +111,7 @@ describe('/components/file-upload', () => {
             expect(buttonElementText).toBe('Choose file')
             expect(statusElementText).toBe('No file chosen')
             expect(buttonAriaText).toBe(
-              'Upload a file, Choose file, No file chosen'
+              'Upload a file, Choose file or drop file, No file chosen'
             )
           })
         })

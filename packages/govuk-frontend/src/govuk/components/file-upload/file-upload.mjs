@@ -68,9 +68,15 @@ export class FileUpload extends ConfigurableComponent {
     // so that focus will work in the error summary
     this.$root.id = `${this.id}-input`
 
+    this.$label.setAttribute('for', `${this.id}-input`)
+
     // Wrapping element. This defines the boundaries of our drag and drop area.
     const $wrapper = document.createElement('div')
     $wrapper.className = 'govuk-file-upload-wrapper'
+
+    const commaSpan = document.createElement('span')
+    commaSpan.className = 'govuk-visually-hidden'
+    commaSpan.innerText = ', '
 
     // Create the file selection button
     const $button = document.createElement('button')
@@ -78,26 +84,43 @@ export class FileUpload extends ConfigurableComponent {
     $button.type = 'button'
     $button.id = this.id
 
-    const buttonSpan = document.createElement('span')
-    buttonSpan.className =
-      'govuk-button govuk-button--secondary govuk-file-upload__pseudo-button'
-    buttonSpan.innerText = this.i18n.t('selectFilesButton')
-    buttonSpan.setAttribute('aria-hidden', 'true')
-
-    $button.appendChild(buttonSpan)
-    $button.addEventListener('click', this.onClick.bind(this))
-
     // Create status element that shows what/how many files are selected
     const $status = document.createElement('span')
     $status.className = 'govuk-body govuk-file-upload__status'
     $status.innerText = this.i18n.t('filesSelectedDefault')
     $status.setAttribute('aria-hidden', 'true')
 
+    if (!this.$root.files.length) {
+      $status.classList.add('govuk-tag--light-blue')
+    }
+
     $button.appendChild($status)
+    $button.appendChild(commaSpan.cloneNode(true))
+
+    const buttonParentSpan = document.createElement('span')
+    buttonParentSpan.className = 'govuk-file-upload__pseudo-button-container'
+
+    const buttonSpan = document.createElement('span')
+    buttonSpan.className =
+      'govuk-button govuk-button--secondary govuk-file-upload__pseudo-button'
+    buttonSpan.innerText = this.i18n.t('selectFilesButton')
+    buttonSpan.setAttribute('aria-hidden', 'true')
+
+    buttonParentSpan.appendChild(buttonSpan)
+    buttonParentSpan.appendChild(commaSpan.cloneNode(true))
+
+    const instructionSpan = document.createElement('span')
+    instructionSpan.className = 'govuk-body govuk-file-upload__instruction'
+    instructionSpan.innerText = this.i18n.t('instruction')
+
+    buttonParentSpan.appendChild(instructionSpan)
+
+    $button.appendChild(buttonParentSpan)
     $button.setAttribute(
       'aria-label',
-      `${this.$label.innerText}, ${this.i18n.t('selectFilesButton')}, ${this.i18n.t('filesSelectedDefault')}`
+      `${this.$label.innerText}, ${this.i18n.t('selectFilesButton')} ${this.i18n.t('instruction')}, ${$status.innerText}`
     )
+    $button.addEventListener('click', this.onClick.bind(this))
 
     // Assemble these all together
     $wrapper.insertAdjacentElement('beforeend', $button)
@@ -233,21 +256,26 @@ export class FileUpload extends ConfigurableComponent {
     if (fileCount === 0) {
       // If there are no files, show the default selection text
       this.$status.innerText = this.i18n.t('filesSelectedDefault')
-    } else if (
-      // If there is 1 file, just show the file name
-      fileCount === 1
-    ) {
-      this.$status.innerText = this.$root.files[0].name
+      this.$status.classList.add('govuk-tag--light-blue')
     } else {
-      // Otherwise, tell the user how many files are selected
-      this.$status.innerText = this.i18n.t('filesSelected', {
-        count: fileCount
-      })
+      if (
+        // If there is 1 file, just show the file name
+        fileCount === 1
+      ) {
+        this.$status.innerText = this.$root.files[0].name
+      } else {
+        // Otherwise, tell the user how many files are selected
+        this.$status.innerText = this.i18n.t('filesSelected', {
+          count: fileCount
+        })
+      }
+
+      this.$status.classList.remove('govuk-tag--light-blue')
     }
 
     this.$button.setAttribute(
       'aria-label',
-      `${this.$label.innerText}, ${this.i18n.t('selectFilesButton')}, ${this.$status.innerText}`
+      `${this.$label.innerText}, ${this.i18n.t('selectFilesButton')} ${this.i18n.t('instruction')}, ${this.$status.innerText}`
     )
   }
 
@@ -330,7 +358,8 @@ export class FileUpload extends ConfigurableComponent {
         other: '%{count} files chosen'
       },
       dropZoneEntered: 'Entered drop zone',
-      dropZoneLeft: 'Left drop zone'
+      dropZoneLeft: 'Left drop zone',
+      instructions: 'or drop file'
     }
   })
 
