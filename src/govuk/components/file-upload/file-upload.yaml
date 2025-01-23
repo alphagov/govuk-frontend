@@ -77,6 +77,10 @@ params:
             type: string
             required: true
             description: HTML to add after the input. If `html` is provided, the `text` option will be ignored.
+  - name: javascript
+    type: boolean
+    required: false
+    description: Whether to enable JavaScript enhancements for the component
   - name: selectFilesButtonText
     type: string
     required: false
@@ -169,6 +173,14 @@ examples:
         text: Upload a file
       formGroup:
         classes: extra-class
+  - name: javascript
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Upload a file
+      javascript: true
+      multiple: true
   - name: translated
     options:
       id: file-upload-1
@@ -176,6 +188,7 @@ examples:
       label:
         text: Llwythwch ffeil i fyny
       multiple: true
+      javascript: true
       selectFilesButtonText: Dewiswch ffeil
       filesSelectedDefaultText: Dim ffeiliau wedi'u dewis
       filesSelectedText:
@@ -264,3 +277,16 @@ examples:
         text: Error message
       hint:
         text: hint
+  - name: translated, no javascript enhancement
+    hidden: true
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Llwythwch ffeil i fyny
+      multiple: true
+      selectFilesButtonText: Dewiswch ffeil
+      filesSelectedDefaultText: Dim ffeiliau wedi'u dewis
+      filesSelectedText:
+        other: "%{count} ffeil wedi'u dewis"
+        one: "%{count} ffeil wedi'i dewis"

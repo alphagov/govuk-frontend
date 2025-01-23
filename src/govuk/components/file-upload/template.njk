@@ -45,23 +45,27 @@
 {% if params.formGroup.beforeInput %}
   {{ params.formGroup.beforeInput.html | safe | trim | indent(2) if params.formGroup.beforeInput.html else params.formGroup.beforeInput.text }}
 {% endif %}
-  <input class="govuk-file-upload {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-file-upload--error{% endif %}" id="{{ id }}" name="{{ params.name }}" type="file" data-module="govuk-file-upload"
+  <input class="govuk-file-upload {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-file-upload--error{% endif %}" id="{{ id }}" name="{{ params.name }}" type="file"
   {%- if params.value %} value="{{ params.value }}"{% endif %}
   {%- if params.disabled %} disabled{% endif %}
   {%- if params.multiple %} multiple{% endif %}
   {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
-  {{- govukI18nAttributes({
-    key: 'select-files-button',
-    message: params.selectFilesButtonText
-  }) -}}
-  {{- govukI18nAttributes({
-    key: 'files-selected-default',
-    message: params.filesSelectedDefaultText
-  }) -}}
-  {{- govukI18nAttributes({
-    key: 'files-selected',
-    messages: params.filesSelectedText
-  }) -}}
+  {%- if params.javascript %}
+    data-module="govuk-file-upload"
+
+    {{- govukI18nAttributes({
+      key: 'select-files-button',
+      message: params.selectFilesButtonText
+    }) -}}
+    {{- govukI18nAttributes({
+      key: 'files-selected-default',
+      message: params.filesSelectedDefaultText
+    }) -}}
+    {{- govukI18nAttributes({
+      key: 'files-selected',
+      messages: params.filesSelectedText
+    }) -}}
+  {%- endif %}
   {{- govukAttributes(params.attributes) }}>
 {% if params.formGroup.afterInput %}
   {{ params.formGroup.afterInput.html | safe | trim | indent(2) if params.formGroup.afterInput.html else params.formGroup.afterInput.text }}

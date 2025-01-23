@@ -216,6 +216,64 @@ describe('File upload', () => {
     })
   })
 
+  describe('`javascript` option', () => {
+    it('is falsy by default', () => {
+      const $ = render('file-upload', examples.javascript)
+
+      const $input = $('.govuk-form-group > .govuk-file-upload input')
+      expect($input.attr('data-module')).toBeUndefined()
+    })
+
+    it('adds the data-module attribute to the input when `true`', () => {
+      const $ = render('file-upload', examples.javascript)
+
+      const $input = $('.govuk-form-group > .govuk-file-upload')
+
+      expect($input.attr('data-module')).toBe('govuk-file-upload')
+    })
+
+    it('adds the data-module attribute when receiving an object', () => {
+      const $ = render('file-upload', examples.translated)
+
+      const $input = $('.govuk-form-group > .govuk-file-upload')
+
+      expect($input.attr('data-module')).toBe('govuk-file-upload')
+    })
+
+    it('enables the rendering of translation messages when true', () => {
+      const $ = render('file-upload', examples.translated)
+
+      const $input = $('.govuk-form-group > .govuk-file-upload')
+
+      expect($input.attr('data-i18n.select-files-button')).toBe(
+        'Dewiswch ffeil'
+      )
+      expect($input.attr('data-i18n.files-selected-default')).toBe(
+        "Dim ffeiliau wedi'u dewis"
+      )
+      expect($input.attr('data-i18n.files-selected.one')).toBe(
+        "%{count} ffeil wedi'i dewis"
+      )
+      expect($input.attr('data-i18n.files-selected.other')).toBe(
+        "%{count} ffeil wedi'u dewis"
+      )
+    })
+
+    it('prevents the rendering of translation messages when false', () => {
+      const $ = render(
+        'file-upload',
+        examples['translated, no javascript enhancement']
+      )
+
+      const $input = $('.govuk-form-group > .govuk-file-upload')
+
+      expect($input.attr('data-i18n.select-files-button')).toBeUndefined()
+      expect($input.attr('data-i18n.files-selected-default')).toBeUndefined()
+      expect($input.attr('data-i18n.files-selected.one')).toBeUndefined()
+      expect($input.attr('data-i18n.files-selected.other')).toBeUndefined()
+    })
+  })
+
   describe('with dependant components', () => {
     it('have correct nesting order', () => {
       const $ = render('file-upload', examples.error)
