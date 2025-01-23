@@ -29,6 +29,9 @@ export class FileUpload extends ConfigurableComponent {
   /** @private */
   i18n
 
+  /** @private */
+  id
+
   /**
    * @param {Element | null} $root - File input element
    * @param {FileUploadConfig} [config] - File Upload config
@@ -45,6 +48,14 @@ export class FileUpload extends ConfigurableComponent {
       )
     }
 
+    if (!this.$root.id.length) {
+      throw new ElementError(
+        formatErrorMessage(FileUpload, 'Form field must specify an `id`.')
+      )
+    }
+
+    this.id = this.$root.id
+
     this.i18n = new I18n(this.config.i18n, {
       // Read the fallback if necessary rather than have it set in the defaults
       locale: closestAttributeValue(this.$root, 'lang')
@@ -52,30 +63,50 @@ export class FileUpload extends ConfigurableComponent {
 
     this.$label = this.findLabel()
 
+    // we need to copy the 'id' of the root element
+    // to the new button replacement element
+    // so that focus will work in the error summary
+    this.$root.id = `${this.id}-input`
+
     // Wrapping element. This defines the boundaries of our drag and drop area.
     const $wrapper = document.createElement('div')
     $wrapper.className = 'govuk-file-upload-wrapper'
 
     // Create the file selection button
     const $button = document.createElement('button')
-    $button.className =
-      'govuk-button govuk-button--secondary govuk-file-upload__button'
+    $button.classList.add('govuk-file-upload__button')
     $button.type = 'button'
-    $button.innerText = this.i18n.t('selectFilesButton')
+    $button.id = this.id
+
+    const buttonSpan = document.createElement('span')
+    buttonSpan.className =
+      'govuk-button govuk-button--secondary govuk-file-upload__pseudo-button'
+    buttonSpan.innerText = this.i18n.t('selectFilesButton')
+    buttonSpan.setAttribute('aria-hidden', 'true')
+
+    $button.appendChild(buttonSpan)
     $button.addEventListener('click', this.onClick.bind(this))
 
     // Create status element that shows what/how many files are selected
     const $status = document.createElement('span')
     $status.className = 'govuk-body govuk-file-upload__status'
     $status.innerText = this.i18n.t('filesSelectedDefault')
-    $status.setAttribute('role', 'status')
+    $status.setAttribute('aria-hidden', 'true')
+
+    $button.appendChild($status)
+    $button.setAttribute(
+      'aria-label',
+      `${this.$label.innerText}, ${this.i18n.t('selectFilesButton')}, ${this.i18n.t('filesSelectedDefault')}`
+    )
 
     // Assemble these all together
     $wrapper.insertAdjacentElement('beforeend', $button)
-    $wrapper.insertAdjacentElement('beforeend', $status)
 
     // Inject all this *after* the native file input
     this.$root.insertAdjacentElement('afterend', $wrapper)
+
+    this.$root.setAttribute('tabindex', '-1')
+    this.$root.setAttribute('aria-hidden', 'true')
 
     // Move the native file input to inside of the wrapper
     $wrapper.insertAdjacentElement('afterbegin', this.$root)
@@ -85,8 +116,8 @@ export class FileUpload extends ConfigurableComponent {
     this.$button = $button
     this.$status = $status
 
-    // Prevent the hidden input being tabbed to by keyboard users
-    this.$root.setAttribute('tabindex', '-1')
+    // Bind change event to the underlying input
+    this.$root.addEventListener('change', this.onChange.bind(this))
 
     // Syncronise the `disabled` state between the button and underlying input
     this.updateDisabledState()
@@ -213,6 +244,11 @@ export class FileUpload extends ConfigurableComponent {
         count: fileCount
       })
     }
+
+    this.$button.setAttribute(
+      'aria-label',
+      `${this.$label.innerText}, ${this.i18n.t('selectFilesButton')}, ${this.$status.innerText}`
+    )
   }
 
   /**
@@ -240,7 +276,7 @@ export class FileUpload extends ConfigurableComponent {
    * When the button is clicked, emulate clicking the actual, hidden file input
    */
   onClick() {
-    this.$label.click()
+    this.$root.click()
   }
 
   /**
