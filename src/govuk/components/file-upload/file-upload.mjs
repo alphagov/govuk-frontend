@@ -78,6 +78,13 @@ export class FileUpload extends ConfigurableComponent {
     $button.type = 'button'
     $button.id = this.id
 
+    // Copy `aria-describedby` if present so hints and errors
+    // are associated to the `<button>`
+    const ariaDescribedBy = this.$root.getAttribute('aria-describedby')
+    if (ariaDescribedBy) {
+      $button.setAttribute('aria-describedby', ariaDescribedBy)
+    }
+
     const buttonSpan = document.createElement('span')
     buttonSpan.className =
       'govuk-button govuk-button--secondary govuk-file-upload__pseudo-button'
