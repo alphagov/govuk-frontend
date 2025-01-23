@@ -61,7 +61,16 @@ export class FileUpload extends ConfigurableComponent {
       locale: closestAttributeValue(this.$root, 'lang')
     })
 
-    this.$label = this.findLabel()
+    const $label = this.findLabel()
+    // Wrap the content of the label in a `<span>` to work around
+    // buttons struggling to use `aria-labelledby` with their own `<label>`\
+    const $labelWrapper = document.createElement('span')
+    $labelWrapper.id = `${this.$root.id}-label`
+    Array.from($label.childNodes).forEach(($child) =>
+      $labelWrapper.appendChild($child)
+    )
+    $label.innerText = ''
+    $label.appendChild($labelWrapper)
 
     // we need to copy the 'id' of the root element
     // to the new button replacement element
@@ -83,6 +92,7 @@ export class FileUpload extends ConfigurableComponent {
       'govuk-button govuk-button--secondary govuk-file-upload__pseudo-button'
     buttonSpan.innerText = this.i18n.t('selectFilesButton')
     buttonSpan.setAttribute('aria-hidden', 'true')
+    buttonSpan.id = `${this.id}-button`
 
     $button.appendChild(buttonSpan)
     $button.addEventListener('click', this.onClick.bind(this))
@@ -92,11 +102,30 @@ export class FileUpload extends ConfigurableComponent {
     $status.className = 'govuk-body govuk-file-upload__status'
     $status.innerText = this.i18n.t('filesSelectedDefault')
     $status.setAttribute('aria-hidden', 'true')
+    $status.id = `${this.id}-status`
+
+    // Adding two comma elements to give the label some pause,
+    // as the Accessible Name and Description Computation
+    // algorithm will only add the accessible name of an element
+    // with a given ID in `aria-labelledby` once, even if it appears
+    // multiple times:
+    // https://www.w3.org/TR/accname-1.1/#mapping_additional_nd_te
+    const $comma = document.createElement('span')
+    $comma.innerText = ', '
+    $comma.setAttribute('hidden', '')
+    $comma.id = `${this.id}-comma`
+    $wrapper.appendChild($comma)
+
+    const $comma2 = document.createElement('span')
+    $comma2.innerText = ', '
+    $comma2.setAttribute('hidden', '')
+    $comma2.id = `${this.id}-comma2`
+    $wrapper.appendChild($comma2)
 
     $button.appendChild($status)
     $button.setAttribute(
-      'aria-label',
-      `${this.$label.innerText}, ${this.i18n.t('selectFilesButton')}, ${this.i18n.t('filesSelectedDefault')}`
+      'aria-labelledby',
+      `${this.id}-label ${this.id}-comma ${this.id}-button ${this.id}-comma2 ${this.id}-status`
     )
 
     // Assemble these all together
@@ -244,11 +273,6 @@ export class FileUpload extends ConfigurableComponent {
         count: fileCount
       })
     }
-
-    this.$button.setAttribute(
-      'aria-label',
-      `${this.$label.innerText}, ${this.i18n.t('selectFilesButton')}, ${this.$status.innerText}`
-    )
   }
 
   /**
