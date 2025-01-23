@@ -85,6 +85,10 @@ params:
     type: string
     required: false
     description: The text of the button that opens the file picker. JavaScript enhanced version of the component only. Default is "Choose file".
+  - name: instructionText
+    type: string
+    required: false
+    description: The text of the instruction text that follows the button that opens the file picker. JavaScript enhanced version of the component only. Default is "or drop file".
   - name: filesSelected
     type: object
     required: false
@@ -201,6 +205,7 @@ examples:
       multiple: true
       javascript: true
       selectFilesButtonText: Dewiswch ffeil
+      instructionText: neu ollwng ffeil
       filesSelectedDefaultText: Dim ffeiliau wedi'u dewis
       filesSelectedText:
         other: "%{count} ffeil wedi'u dewis"
