@@ -24,11 +24,10 @@ describe('Warnings mixin', () => {
 
     // Expect our mocked @warn function to have been called once with a single
     // argument, which should be the test message
-    expect(mockWarnFunction.mock.calls[0]).toEqual(
-      expect.arrayContaining([
-        'This is a warning. To silence this warning, update ' +
-          '$govuk-suppressed-warnings with key: "test"'
-      ])
+    expect(mockWarnFunction).toHaveBeenCalledWith(
+      'This is a warning. To silence this warning, update ' +
+        '$govuk-suppressed-warnings with key: "test"',
+      expect.anything()
     )
   })
 
