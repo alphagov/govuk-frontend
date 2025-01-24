@@ -1,0 +1,74 @@
+name: Build release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'New version number eg: 5.0.0'
+        required: true
+        type: string
+  pull_request:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  build-release:
+    name: Build release
+    runs-on: Ubuntu-22.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+
+      - name: Setup Node
+        uses: actions/setup-node@v4.1.0
+        with:
+          node-version-file: .nvmrc
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate version
+        uses: actions/github-script@v7.0.1
+        with:
+          script: |
+            const { validateVersion } = await import('${{ github.workspace }}/.github/workflows/scripts/changelog-release-helper.mjs')
+
+            // await validateVersion('${{ inputs.version }}')
+            await validateVersion('5.9.0')
+
+      - name: Update package version
+        run: npm version --no-git-tag-version --workspace govuk-frontend ${{ inputs.version }}
+
+      - name: Update CHANGELOG
+        uses: actions/github-script@v7.0.1
+        with:
+          script: |
+            const { updateChangelog } = await import('${{ github.workspace }}/.github/workflows/scripts/changelog-release-helper.mjs')
+
+            // await updateChangelog('${{ inputs.version }}')
+            await updateChangelog('5.9.0')
+
+      - name: Generate release notes
+        uses: actions/github-script@v7.0.1
+        with:
+          script: |
+            const { generateReleaseNotes } = await import('${{ github.workspace }}/.github/workflows/scripts/changelog-release-helper.mjs')
+
+            await generateReleaseNotes()
+
+      - name: Build release
+        run: npm run build:release
+
+      - name: Create pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name 'owenatgov'
+          git config --global user.email 'owen.jones@digital.cabinet-office.gov.uk'
+          git commit -am "Release TEST"
+          git checkout -b release-TEST
+          git push -u origin release-TEST
+          gh pr create --base main --head release-TEST --title "Release TEST" --body-file "release-notes-body"

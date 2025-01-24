@@ -19,6 +19,7 @@ dist/
 *.log
 *.tsbuildinfo
 *.zip
+release-notes-body
 
 # Project lockfile only
 package-lock.json
