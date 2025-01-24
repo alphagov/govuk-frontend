@@ -65,7 +65,6 @@ jobs:
       - name: Create pull request
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        # run: gh pr create --title "Release ${{ inputs.version }}" --body-file "release-notes-body"
         run: |
           git config --global user.name 'govuk-design-system-ci'
           git config --global user.email 'design-system-developers@digital.cabinet-office.gov.uk'
