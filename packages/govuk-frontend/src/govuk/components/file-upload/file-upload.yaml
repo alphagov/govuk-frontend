@@ -182,7 +182,7 @@ examples:
         text: Llwythwch ffeil i fyny
       multiple: true
       selectFilesButtonText: Dewiswch ffeil
-      instructionsText: neu ollwng ffeil
+      instructionText: neu ollwng ffeil
       filesSelectedDefaultText: Dim ffeiliau wedi'u dewis
       filesSelectedText:
         other: "%{count} ffeil wedi'u dewis"

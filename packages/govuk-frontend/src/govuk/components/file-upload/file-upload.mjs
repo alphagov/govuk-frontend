@@ -359,7 +359,7 @@ export class FileUpload extends ConfigurableComponent {
       },
       dropZoneEntered: 'Entered drop zone',
       dropZoneLeft: 'Left drop zone',
-      instructions: 'or drop file'
+      instruction: 'or drop file'
     }
   })
 
