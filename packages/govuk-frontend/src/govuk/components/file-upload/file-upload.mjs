@@ -61,7 +61,13 @@ export class FileUpload extends ConfigurableComponent {
       locale: closestAttributeValue(this.$root, 'lang')
     })
 
-    this.$label = this.findLabel()
+    const $label = this.findLabel()
+    $label.setAttribute('for', `${this.id}-input`)
+    // Add an ID to the label if it doesn't have one already
+    // so it can be referenced by `aria-labelledby`
+    if (!$label.id) {
+      $label.id = `${this.id}-label`
+    }
 
     // we need to copy the 'id' of the root element
     // to the new button replacement element
@@ -71,10 +77,6 @@ export class FileUpload extends ConfigurableComponent {
     // Wrapping element. This defines the boundaries of our drag and drop area.
     const $wrapper = document.createElement('div')
     $wrapper.className = 'govuk-file-upload-wrapper'
-
-    const commaSpan = document.createElement('span')
-    commaSpan.className = 'govuk-visually-hidden'
-    commaSpan.innerText = ', '
 
     // Create the file selection button
     const $button = document.createElement('button')
@@ -93,11 +95,16 @@ export class FileUpload extends ConfigurableComponent {
     const $status = document.createElement('span')
     $status.className = 'govuk-body govuk-file-upload__status'
     $status.innerText = this.i18n.t('filesSelectedDefault')
-    $status.setAttribute('aria-hidden', 'true')
     $status.classList.add('govuk-file-upload__status--empty')
 
     $button.appendChild($status)
-    $button.appendChild(commaSpan.cloneNode(true))
+
+    const commaSpan = document.createElement('span')
+    commaSpan.className = 'govuk-visually-hidden'
+    commaSpan.innerText = ', '
+    commaSpan.id = `${this.id}-comma`
+
+    $button.appendChild(commaSpan)
 
     const containerSpan = document.createElement('span')
     containerSpan.className = 'govuk-file-upload__pseudo-button-container'
@@ -106,10 +113,12 @@ export class FileUpload extends ConfigurableComponent {
     buttonSpan.className =
       'govuk-button govuk-button--secondary govuk-file-upload__pseudo-button'
     buttonSpan.innerText = this.i18n.t('selectFilesButton')
-    buttonSpan.setAttribute('aria-hidden', 'true')
 
     containerSpan.appendChild(buttonSpan)
-    containerSpan.appendChild(commaSpan.cloneNode(true))
+
+    // Add a space so the button and instruction read correctly
+    // when CSS is disabled
+    containerSpan.insertAdjacentText('beforeend', ' ')
 
     const instructionSpan = document.createElement('span')
     instructionSpan.className = 'govuk-body govuk-file-upload__instruction'
@@ -119,8 +128,8 @@ export class FileUpload extends ConfigurableComponent {
 
     $button.appendChild(containerSpan)
     $button.setAttribute(
-      'aria-label',
-      `${this.$label.innerText}, ${this.i18n.t('selectFilesButton')} ${this.i18n.t('instruction')}, ${$status.innerText}`
+      'aria-labelledby',
+      `${$label.id} ${commaSpan.id} ${$button.id}`
     )
     $button.addEventListener('click', this.onClick.bind(this))
 
@@ -144,7 +153,7 @@ export class FileUpload extends ConfigurableComponent {
     // Bind change event to the underlying input
     this.$root.addEventListener('change', this.onChange.bind(this))
 
-    // Syncronise the `disabled` state between the button and underlying input
+    // Synchronise the `disabled` state between the button and underlying input
     this.updateDisabledState()
     this.observeDisabledState()
 
@@ -271,11 +280,6 @@ export class FileUpload extends ConfigurableComponent {
 
       this.$status.classList.remove('govuk-file-upload__status--empty')
     }
-
-    this.$button.setAttribute(
-      'aria-label',
-      `${this.$label.innerText}, ${this.i18n.t('selectFilesButton')} ${this.i18n.t('instruction')}, ${this.$status.innerText}`
-    )
   }
 
   /**
