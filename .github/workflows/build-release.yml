@@ -1,0 +1,36 @@
+name: 'RELEASE: Build release'
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'New version number eg: 5.3.1'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  build-release:
+    name: Build release
+    runs-on: Ubuntu-22.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+
+      - name: Setup Node
+        uses: actions/setup-node@v4.2.0
+        with:
+          node-version-file: .nvmrc
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Update package version
+        run: npm version --no-git-tag-version --workspace govuk-frontend ${{ inputs.version }}
+
+      - name: Build release
+        run: npm run build:release
