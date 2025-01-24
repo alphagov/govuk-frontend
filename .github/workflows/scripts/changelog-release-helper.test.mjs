@@ -13,6 +13,8 @@ describe('Changelog release helper', () => {
     fs.readFileSync.mockReturnValue(`
     ## Unreleased
 
+    ### Fixes
+
     Bing bong
 
     ## v3.0.0 (Breaking release)
@@ -92,6 +94,8 @@ describe('Changelog release helper', () => {
 
         ## v3.1.0 (Feature release)
 
+        ### Fixes
+
         Bing bong
 
         ## v3.0.0 (Breaking release)
@@ -101,6 +105,18 @@ describe('Changelog release helper', () => {
       expect(fs.writeFileSync).toHaveBeenCalledWith(
         './release-notes-body',
         expect.stringContaining('Bing bong')
+      )
+    })
+
+    it('increases the heading levels from the changelog by one', async () => {
+      await generateReleaseNotes(true)
+      expect(fs.writeFileSync).toHaveBeenCalledWith(
+        './release-notes-body',
+        expect.stringContaining('## Fixes')
+      )
+      expect(fs.writeFileSync).toHaveBeenCalledWith(
+        './release-notes-body',
+        expect.not.stringContaining('### Fixes')
       )
     })
   })

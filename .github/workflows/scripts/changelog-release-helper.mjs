@@ -125,6 +125,10 @@ export async function generateReleaseNotes(fromUnreleasedHeading = false) {
       }
       return false
     })
+    .map((value) => {
+      const line = value.replace(/^\s+/, '')
+      return line.startsWith('##') ? line.substring(1) : line
+    })
 
   await writeFileSync('./release-notes-body', releaseNotes.join('\n'))
 }
