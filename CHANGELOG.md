@@ -4,6 +4,16 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### Deprecated features
+
+#### Migrate to the new organisation colour palette
+
+The legacy organisation colour palette has been deprecated and will be removed in the next major version.
+
+If your service uses the organisation colour palette, make sure that things still look as expected with the `$govuk-new-organisation-colours` feature flag enabled.
+
+This change was introduced in [pull request #5627: Deprecate legacy organisation colour palette](https://github.com/alphagov/govuk-frontend/pull/5627).
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:

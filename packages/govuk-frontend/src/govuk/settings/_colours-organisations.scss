@@ -1,3 +1,5 @@
+@import "../settings/warnings";
+
 ////
 /// @group settings/colours
 ////
@@ -11,6 +13,7 @@
 ///
 /// @type Boolean
 /// @access public
+/// @deprecated Using new organisation colours will become the default in Frontend v6.0.
 
 $govuk-new-organisation-colours: false !default;
 
@@ -211,6 +214,7 @@ $_govuk-organisation-colours: (
 ///   nor provide better contrast than the base colour.
 ///
 /// @access private
+/// @deprecated Migrate to using the new organisation colour palette instead.
 
 $_govuk-legacy-organisation-colours: (
   "attorney-generals-office": (
@@ -349,11 +353,20 @@ $_govuk-legacy-organisation-colours: (
 /// @type Map
 /// @access public
 
-$govuk-colours-organisations: if(
-  $govuk-new-organisation-colours,
-  $_govuk-organisation-colours,
-  $_govuk-legacy-organisation-colours
-) !default;
+$govuk-colours-organisations: $_govuk-legacy-organisation-colours !default;
+
+@if $govuk-new-organisation-colours and $govuk-colours-organisations == $_govuk-legacy-organisation-colours {
+  $govuk-colours-organisations: $_govuk-organisation-colours;
+}
+
+// Output a deprecation warning if the legacy colour palette is being used.
+// Remove in next major version.
+@if $govuk-colours-organisations == $_govuk-legacy-organisation-colours {
+  @include _warning(
+    "legacy-organisation-colours",
+    "The legacy organisation colour palette has been deprecated and will be removed in the next major version."
+  );
+}
 
 /// Organisation colour aliases
 ///
