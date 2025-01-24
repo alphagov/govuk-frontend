@@ -58,3 +58,14 @@ jobs:
 
       - name: Build release
         run: npm run build:release
+
+      - name: Create pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name '${{ github.actor }}'
+          git config --global user.email '${{ github.actor }}@digital.cabinet-office.gov.uk'
+          git commit -am "Release ${{ inputs.version }}"
+          git checkout -b release-${{ inputs.version }}
+          git push -u origin release-${{ inputs.version }}
+          gh pr create --base main --head release-${{ inputs.version }} --title "Release ${{ inputs.version }}" --body-file "release-notes-body"
