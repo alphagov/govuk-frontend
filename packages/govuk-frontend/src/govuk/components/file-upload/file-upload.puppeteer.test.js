@@ -438,6 +438,34 @@ describe('/components/file-upload', () => {
         })
       })
 
+      describe('aria-describedby', () => {
+        it('copies the `aria-describedby` attribute from the `<input>` to the `<button>`', async () => {
+          await render(
+            page,
+            'file-upload',
+            examples['with error message and hint']
+          )
+
+          const $button = await page.$(buttonSelector)
+          const ariaDescribedBy = await $button.evaluate((el) =>
+            el.getAttribute('aria-describedby')
+          )
+
+          expect(ariaDescribedBy).toBe('file-upload-3-hint file-upload-3-error')
+        })
+
+        it('does not add an `aria-describedby` attribute to the `<button>` if there is none on the `<input>`', async () => {
+          await render(page, 'file-upload', examples.default)
+
+          const $button = await page.$(buttonSelector)
+          const ariaDescribedBy = await $button.evaluate((el) =>
+            el.getAttribute('aria-describedby')
+          )
+
+          expect(ariaDescribedBy).toBeNull()
+        })
+      })
+
       describe('errors at instantiation', () => {
         let examples
 
