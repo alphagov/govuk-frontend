@@ -12,11 +12,12 @@
 {%- set textareaDescriptionLength = params.maxwords or params.maxlength -%}
 {%- set textareaDescriptionText = params.textareaDescriptionText or 'You can enter up to %{count} ' + ('words' if params.maxwords else 'characters') -%}
 {%- set textareaDescriptionTextNoLimit = textareaDescriptionText | replace('%{count}', textareaDescriptionLength) if not hasNoLimit -%}
+{%- set id = params.id if params.id else params.name -%}
 
 {%- set countMessageHtml %}
 {{ govukHint({
   text: textareaDescriptionTextNoLimit,
-  id: params.id + '-info',
+  id: id + '-info',
   classes: 'govuk-character-count__message' + (' ' + params.countMessage.classes if params.countMessage.classes)
 }) | trim }}
 {% if params.formGroup.afterInput %}
@@ -91,9 +92,9 @@
 {% endfor -%}
 
 {{ govukTextarea({
-  id: params.id,
+  id: id,
   name: params.name,
-  describedBy: params.id + '-info',
+  describedBy: id + '-info',
   rows: params.rows,
   spellcheck: params.spellcheck,
   value: params.value,
@@ -112,7 +113,7 @@
     classes: params.label.classes,
     isPageHeading: params.label.isPageHeading,
     attributes: params.label.attributes,
-    for: params.id
+    for: id
   },
   hint: params.hint,
   errorMessage: params.errorMessage,
