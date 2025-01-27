@@ -1,8 +1,8 @@
 params:
   - name: id
     type: string
-    required: true
-    description: The ID of the input.
+    required: false
+    description: The ID of the input. Defaults to the value of `name`.
   - name: name
     type: string
     required: true

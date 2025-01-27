@@ -1,8 +1,8 @@
 params:
   - name: id
     type: string
-    required: true
-    description: ID for each select box.
+    required: false
+    description: ID for the select box. Defaults to the value of `name`.
   - name: name
     type: string
     required: true
