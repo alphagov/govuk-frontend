@@ -11,6 +11,10 @@ See the [documentation on support branches](https://team-playbook.design-system.
 
 Developers should pair on releases. When remote working, it can be useful to be on a call together.
 
+## Ensure access tokens are up to date
+
+[Check that the access tokens we use in these workflows have not expired](/docs/releasing/secret-management.md).
+
 ## Build the release
 
 1. Before running the build release workflow, make sure that the [`CHANGELOG`](/CHANGELOG.md) is up to date with the latest release notes under the 'Unreleased' heading. If it isn't, do so in a separate pull request before proceeding.
