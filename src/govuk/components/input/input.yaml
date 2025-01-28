@@ -166,7 +166,6 @@ examples:
     options:
       label:
         text: National Insurance number
-      id: input-example
       name: test-name
   - name: with hint text
     options:
@@ -397,6 +396,13 @@ examples:
       label:
         text: With classes
       classes: app-input--custom-modifier
+  - name: id
+    hidden: true
+    options:
+      id: input-id
+      name: testing-name
+      label:
+        text: With custom id
   - name: custom type
     hidden: true
     options:
