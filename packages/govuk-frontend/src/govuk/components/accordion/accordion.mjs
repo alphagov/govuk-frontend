@@ -595,7 +595,7 @@ export class Accordion extends ConfigurableComponent {
    * Accordion config schema
    *
    * @constant
-   * @satisfies {Schema}
+   * @satisfies {Schema<AccordionConfig>}
    */
   static schema = Object.freeze({
     properties: {
@@ -639,5 +639,5 @@ export class Accordion extends ConfigurableComponent {
  */
 
 /**
- * @typedef {import('../../common/configuration.mjs').Schema} Schema
+ * @import { Schema } from '../../common/configuration.mjs'
  */
