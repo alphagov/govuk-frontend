@@ -13,11 +13,11 @@ describe('Select', () => {
   })
 
   describe('by default', () => {
-    it('renders with id', () => {
+    it('autopopulates default id from name', () => {
       const $ = render('select', examples.default)
 
       const $component = $('.govuk-select')
-      expect($component.attr('id')).toBe('select-1')
+      expect($component.attr('id')).toBe($component.attr('name'))
     })
 
     it('renders with name', () => {
@@ -135,6 +135,14 @@ describe('Select', () => {
   })
 
   describe('custom options', () => {
+    it('renders with id', () => {
+      const $ = render('select', examples.id)
+
+      const $component = $('.govuk-select')
+      expect($component.attr('id')).not.toBe($component.attr('name'))
+      expect($component.attr('id')).toBe('select-id')
+    })
+
     it('renders with classes', () => {
       const $ = render('select', examples['with full width override'])
 

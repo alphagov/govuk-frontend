@@ -12,11 +12,11 @@ describe('Character count', () => {
   })
 
   describe('default example', () => {
-    it('renders with id', () => {
+    it('autopopulates default id from name', () => {
       const $ = render('character-count', examples.default)
 
       const $component = $('.govuk-js-character-count')
-      expect($component.attr('id')).toBe('more-detail')
+      expect($component.attr('id')).toBe($component.attr('name'))
     })
 
     it('renders with name', () => {
@@ -35,6 +35,14 @@ describe('Character count', () => {
   })
 
   describe('custom options', () => {
+    it('renders with id', () => {
+      const $ = render('character-count', examples.id)
+
+      const $component = $('.govuk-js-character-count')
+      expect($component.attr('id')).not.toBe($component.attr('name'))
+      expect($component.attr('id')).toBe('character-count-id')
+    })
+
     it('renders with classes', () => {
       const $ = render('character-count', examples.classes)
 

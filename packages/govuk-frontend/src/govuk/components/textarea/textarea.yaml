@@ -1,8 +1,8 @@
 params:
   - name: id
     type: string
-    required: true
-    description: The ID of the textarea.
+    required: false
+    description: The ID of the textarea. Defaults to the value of `name`.
   - name: name
     type: string
     required: true
@@ -98,7 +98,6 @@ examples:
   - name: default
     options:
       name: more-detail
-      id: more-detail
       label:
         text: Can you provide more detail?
   - name: with hint
@@ -181,6 +180,13 @@ examples:
       spellcheck: false
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: id
+    hidden: true
+    options:
+      id: textarea-id
+      name: test-name
+      label:
+        text: With custom id
   - name: classes
     hidden: true
     options:

@@ -13,11 +13,11 @@ describe('Textarea', () => {
   })
 
   describe('default example', () => {
-    it('renders with id', () => {
+    it('autopopulates default id from name', () => {
       const $ = render('textarea', examples.default)
 
       const $component = $('.govuk-textarea')
-      expect($component.attr('id')).toBe('more-detail')
+      expect($component.attr('id')).toBe($component.attr('name'))
     })
 
     it('renders with name', () => {
@@ -43,6 +43,14 @@ describe('Textarea', () => {
   })
 
   describe('custom options', () => {
+    it('renders with id', () => {
+      const $ = render('textarea', examples.id)
+
+      const $component = $('.govuk-textarea')
+      expect($component.attr('id')).not.toBe($component.attr('name'))
+      expect($component.attr('id')).toBe('textarea-id')
+    })
+
     it('renders with classes', () => {
       const $ = render('textarea', examples.classes)
 
