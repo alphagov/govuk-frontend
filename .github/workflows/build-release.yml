@@ -1,6 +1,7 @@
 name: 'RELEASE: Build release'
 
 on:
+  pull_request:
   workflow_dispatch:
     inputs:
       version:
@@ -11,6 +12,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  checks: write
 
 jobs:
   build-release:
@@ -35,10 +37,10 @@ jobs:
           script: |
             const { validateVersion } = await import('${{ github.workspace }}/.github/workflows/scripts/changelog-release-helper.mjs')
 
-            validateVersion('${{ inputs.version }}')
+            validateVersion('5.9.0')
 
       - name: Update package version
-        run: npm version --no-git-tag-version --workspace govuk-frontend ${{ inputs.version }}
+        run: npm version --no-git-tag-version --workspace govuk-frontend 5.9.0
 
       - name: Update CHANGELOG
         uses: actions/github-script@v7.0.1
@@ -46,7 +48,7 @@ jobs:
           script: |
             const { updateChangelog } = await import('${{ github.workspace }}/.github/workflows/scripts/changelog-release-helper.mjs')
 
-            updateChangelog('${{ inputs.version }}')
+            updateChangelog('5.9.0')
 
       - name: Generate release notes
         uses: actions/github-script@v7.0.1
@@ -65,7 +67,8 @@ jobs:
         run: |
           git config --global user.name '${{ github.actor }}'
           git config --global user.email '${{ github.actor }}@digital.cabinet-office.gov.uk'
-          git commit -am "Release ${{ inputs.version }}"
-          git checkout -b release-${{ inputs.version }}
-          git push -u origin release-${{ inputs.version }}
-          gh pr create --base main --head release-${{ inputs.version }} --title "Release ${{ inputs.version }}" --body-file "release-notes-body"
+          git add .
+          git commit -m "Release TEST"
+          git checkout -b release-TEST
+          git push -u origin release-TEST
+          gh pr create --base main --head release-TEST --title "Release TEST" --body-file "release-notes-body"
