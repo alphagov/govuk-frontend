@@ -11,57 +11,17 @@ See the [documentation on support branches](https://team-playbook.design-system.
 
 Developers should pair on releases. When remote working, it can be useful to be on a call together.
 
-> [!IMPORTANT]
-> Before starting to publish, make sure the developer running the commands:
->
-> - has [nvm](https://github.com/nvm-sh/nvm) or [`asdf`](https://asdf-vm.com/guide/getting-started.html)
->   on their machine to install the correct version of NodeJS and npm
-> - has access to Bitwarden to retreive the credentials for publishing on npm
+## Build the release
 
-1. Check out the **main** branch and pull the latest changes.
+1. Before running the build release workflow, make sure that the [`CHANGELOG`](/CHANGELOG.md) is up to date with the latest release notes under the 'Unreleased' heading. If it isn't, do so in a separate pull request before proceeding.
 
-2. Ensure you're running the version of NodeJS matching [`.nvmrc`](/.nvmrc).
+2. Open the actions tab on the `alphagov/govuk-frontend` repo.
 
-   - If you use NVM, run `nvm use` to set up the right version
-   - If you use another management system (like [`asdf`](https://asdf-vm.com/guide/getting-started.html)), compare the output of `node --version` and install the right one if necessary
+3. Select the ["RELEASE: Build release" workflow](https://github.com/alphagov/govuk-frontend/actions/workflows/build-release.yml), provide the new version of GOV.UK Frontend you are releasing and run the workflow on the `main` branch. This will build the release and generate a pull request to review the new build.
 
-3. Run `npm ci` to make sure you have the exact dependencies installed.
+4. When reviewing the PR, check that the version numbers have been updated and that the compiled assets use this version number.
 
-4. Pick a new version number according to the [versioning documentation](/docs/contributing/versioning.md) and apply it by running:
-
-   ```shell
-   npm version --no-git-tag-version --workspace govuk-frontend <NEW VERSION NUMBER>
-   ```
-
-   ...where `<NEW VERSION NUMBER>` is the literal number without a 'v' in front of it. This step will update [`govuk-frontend`'s `package.json`](/packages/govuk-frontend/package.json) and project [`package-lock.json`](/package-lock.json) files.
-
-   Do not commit the changes.
-
-5. Create and check out a new branch (`release-[version]`)
-
-   ```shell
-   git switch -c "release-$(npm run version --silent --workspace govuk-frontend)"
-   ```
-
-6. Update the [`CHANGELOG.md`](/CHANGELOG.md) by:
-
-   - checking that the 'Unreleased' section of the changelog has the same content as the drafted release notes and updating it if necessary
-     - if the changelog has headings from [pre-releases](/docs/releasing/publishing-a-pre-release.md#publish-a-new-version-of-govuk-frontend), regroup the content under those headings in a single block
-   - adding a new heading with the version number and release type (`## <VERSION_NUMBER> (<RELEASE_TYPE>)`) after the 'Unreleased' heading. For example, '## 3.11.0 (Feature release)'
-   - saving your changes
-
-7. Run `npm run build-release` to:
-
-   - build GOV.UK Frontend into [the package's `/dist`](/packages/govuk-frontend/dist) and [root `/dist`](/dist) directories
-   - commit the changes
-   - push a branch to GitHub
-
-   You will now be prompted to continue or cancel. Check the details and enter `y` to continue. If something does not look right, press `N` to cancel the build and creation of the branch on GitHub.
-
-8. Create a pull request and copy the changelog text.
-   When reviewing the PR, check that the version numbers have been updated and that the compiled assets use this version number.
-
-9. Once a reviewer approves the pull request, merge it to **main**.
+5. Once a reviewer approves the pull request, merge it to **main**.
 
 ## Publish a release to npm
 
