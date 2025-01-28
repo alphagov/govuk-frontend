@@ -15,7 +15,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 1. Before running the build release workflow, make sure that the [`CHANGELOG`](/CHANGELOG.md) is up to date with the latest release notes under the 'Unreleased' heading. If it isn't, do so in a separate pull request before proceeding.
 
-2. Open the actions tab on the `alphagov/govuk-frontend` repo.
+2. Open [the actions tab](https://github.com/alphagov/govuk-frontend/actions) on the `alphagov/govuk-frontend` repo.
 
 3. Select the ["RELEASE: Build release" workflow](https://github.com/alphagov/govuk-frontend/actions/workflows/build-release.yml), provide the new version of GOV.UK Frontend you are releasing and run the workflow on the `main` branch. This will build the release and generate a pull request to review the new build.
 
