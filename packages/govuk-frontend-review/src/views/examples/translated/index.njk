@@ -340,6 +340,21 @@
     }
   }) }}
 
+  {{ govukFileUpload({
+    id: "file-upload-1",
+    name: "file-upload-1",
+    label: {
+      text: "Llwythwch ffeil i fyny"
+    },
+    javascript: true,
+    selectFilesButtonText: "Dewiswch ffeil",
+    filesSelectedDefaultText: "Dim ffeiliau wedi'u dewis",
+    filesSelectedText: {
+        other: "%{count} ffeil wedi'u dewis",
+        one: "%{count} ffeil wedi'i dewis"
+    }
+  }) }}
+
   {{ govukFooter({
     classes: "govuk-!-margin-bottom-4",
     navigation: [

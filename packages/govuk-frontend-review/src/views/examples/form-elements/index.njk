@@ -28,6 +28,7 @@
     <li><a href="#date" class="govuk-link">Date pattern</a></li>
     <li><a href="#select" class="govuk-link">Select box</a></li>
     <li><a href="#file" class="govuk-link">File upload</a></li>
+    <li><a href="#file-enhanced" class="govuk-link">File upload (enhanced)</a></li>
   </ul>
 
   <form action="/" method="post">
@@ -171,6 +172,18 @@
         label: {
           text: 'Upload a file'
         }
+      }) -}}
+    {% endcall %}
+
+    {% call govukFieldset() %}
+      <span id="file-enhanced"></span>
+      {{- govukFileUpload({
+        id: 'file-upload-2',
+        name: 'file-upload-2',
+        label: {
+          text: 'Upload a file'
+        },
+        javascript: true
       }) -}}
     {% endcall %}
 
