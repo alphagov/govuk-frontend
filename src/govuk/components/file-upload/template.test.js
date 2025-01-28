@@ -225,7 +225,7 @@ describe('File upload', () => {
     })
 
     it('adds the data-module attribute to the input when `true`', () => {
-      const $ = render('file-upload', examples.javascript)
+      const $ = render('file-upload', examples.enhanced)
 
       const $input = $('.govuk-form-group > .govuk-file-upload')
 
