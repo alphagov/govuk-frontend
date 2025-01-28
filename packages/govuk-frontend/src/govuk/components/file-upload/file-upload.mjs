@@ -91,7 +91,12 @@ export class FileUpload extends ConfigurableComponent {
     buttonSpan.innerText = this.i18n.t('selectFilesButton')
     buttonSpan.setAttribute('aria-hidden', 'true')
 
+    const commaSpan = document.createElement('span')
+    commaSpan.className = 'govuk-visually-hidden'
+    commaSpan.innerText = ', '
+
     $button.appendChild(buttonSpan)
+    $button.appendChild(commaSpan)
     $button.addEventListener('click', this.onClick.bind(this))
 
     // Create status element that shows what/how many files are selected
