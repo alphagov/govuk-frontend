@@ -51,7 +51,7 @@ describe('/components/file-upload', () => {
     describe('when JavaScript is available', () => {
       describe('on page load', () => {
         beforeAll(async () => {
-          await render(page, 'file-upload', examples.javascript)
+          await render(page, 'file-upload', examples.enhanced)
         })
 
         describe('wrapper element', () => {
@@ -126,7 +126,7 @@ describe('/components/file-upload', () => {
             // set a value in the file chooser, then checks if that value was set
             // on the input as expected.
             const testFilename = 'test.gif'
-            await render(page, 'file-upload', examples.javascript)
+            await render(page, 'file-upload', examples.enhanced)
 
             const [fileChooser] = await Promise.all([
               page.waitForFileChooser(),
@@ -153,7 +153,7 @@ describe('/components/file-upload', () => {
         const testFilename = 'fakefile.txt'
 
         beforeEach(async () => {
-          await render(page, 'file-upload', examples.javascript)
+          await render(page, 'file-upload', examples.enhanced)
 
           const [fileChooser] = await Promise.all([
             page.waitForFileChooser(),
@@ -196,7 +196,7 @@ describe('/components/file-upload', () => {
 
       describe('when selecting multiple files', () => {
         beforeEach(async () => {
-          await render(page, 'file-upload', examples.javascript, {
+          await render(page, 'file-upload', examples.enhanced, {
             beforeInitialisation() {
               document
                 .querySelector('[type="file"]')
@@ -264,7 +264,7 @@ describe('/components/file-upload', () => {
           '.govuk-file-upload-wrapper:not(.govuk-file-upload-wrapper--show-dropzone)'
 
         beforeEach(async () => {
-          await render(page, 'file-upload', examples.javascript)
+          await render(page, 'file-upload', examples.enhanced)
 
           $wrapper = await page.$('.govuk-file-upload-wrapper')
           wrapperBoundingBox = await $wrapper.boundingBox()
@@ -401,7 +401,7 @@ describe('/components/file-upload', () => {
 
       describe('disabled state syncing', () => {
         it('disables the button if the input is disabled on page load', async () => {
-          await render(page, 'file-upload', examples.javascript, {
+          await render(page, 'file-upload', examples.enhanced, {
             beforeInitialisation() {
               document
                 .querySelector('[type="file"]')
@@ -417,7 +417,7 @@ describe('/components/file-upload', () => {
         })
 
         it('disables the button if the input is disabled programatically', async () => {
-          await render(page, 'file-upload', examples.javascript)
+          await render(page, 'file-upload', examples.enhanced)
 
           await page.$eval(inputSelector, (el) =>
             el.setAttribute('disabled', '')
@@ -431,7 +431,7 @@ describe('/components/file-upload', () => {
         })
 
         it('enables the button if the input is enabled programatically', async () => {
-          await render(page, 'file-upload', examples.javascript, {
+          await render(page, 'file-upload', examples.enhanced, {
             beforeInitialisation() {
               document
                 .querySelector('[type="file"]')
@@ -461,7 +461,7 @@ describe('/components/file-upload', () => {
           await render(
             page,
             'file-upload',
-            examples['javascript, with error message and hint']
+            examples['enhanced, with error message and hint']
           )
 
           const $button = await page.$(buttonSelector)
@@ -473,7 +473,7 @@ describe('/components/file-upload', () => {
         })
 
         it('does not add an `aria-describedby` attribute to the `<button>` if there is none on the `<input>`', async () => {
-          await render(page, 'file-upload', examples.javascript)
+          await render(page, 'file-upload', examples.enhanced)
 
           const $button = await page.$(buttonSelector)
           const ariaDescribedBy = await $button.evaluate((el) =>
@@ -493,7 +493,7 @@ describe('/components/file-upload', () => {
 
         it('can throw a SupportError if appropriate', async () => {
           await expect(
-            render(page, 'file-upload', examples.javascript, {
+            render(page, 'file-upload', examples.enhanced, {
               beforeInitialisation() {
                 document.body.classList.remove('govuk-frontend-supported')
               }
@@ -509,7 +509,7 @@ describe('/components/file-upload', () => {
 
         it('throws when initialised twice', async () => {
           await expect(
-            render(page, 'file-upload', examples.javascript, {
+            render(page, 'file-upload', examples.enhanced, {
               async afterInitialisation($root) {
                 const { FileUpload } = await import('govuk-frontend')
                 new FileUpload($root)
@@ -524,7 +524,7 @@ describe('/components/file-upload', () => {
 
         it('throws when $root is not set', async () => {
           await expect(
-            render(page, 'file-upload', examples.javascript, {
+            render(page, 'file-upload', examples.enhanced, {
               beforeInitialisation($root) {
                 $root.remove()
               }
@@ -539,7 +539,7 @@ describe('/components/file-upload', () => {
 
         it('throws when receiving the wrong type for $root', async () => {
           await expect(
-            render(page, 'file-upload', examples.javascript, {
+            render(page, 'file-upload', examples.enhanced, {
               beforeInitialisation($root) {
                 // Replace with an `<svg>` element which is not an `HTMLElement` in the DOM (but an `SVGElement`)
                 $root.outerHTML = `<svg data-module="govuk-file-upload"></svg>`
@@ -557,7 +557,7 @@ describe('/components/file-upload', () => {
         describe('missing or misconfigured elements', () => {
           it('throws if the input type is not "file"', async () => {
             await expect(
-              render(page, 'file-upload', examples.javascript, {
+              render(page, 'file-upload', examples.enhanced, {
                 beforeInitialisation() {
                   document
                     .querySelector('[type="file"]')
@@ -575,7 +575,7 @@ describe('/components/file-upload', () => {
 
           it('throws if no label is present', async () => {
             await expect(
-              render(page, 'file-upload', examples.javascript, {
+              render(page, 'file-upload', examples.enhanced, {
                 beforeInitialisation() {
                   document.querySelector('label').remove()
                 }
