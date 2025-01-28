@@ -4,6 +4,8 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+## v5.9.0 (Feature release)
+
 ### Deprecated features
 
 #### Migrate to the new organisation colour palette
