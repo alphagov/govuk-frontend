@@ -26,6 +26,11 @@ export class FileUpload extends ConfigurableComponent {
    */
   $status
 
+  /**
+   * @private
+   */
+  $visuallyHiddenStatus
+
   /** @private */
   i18n
 
@@ -100,11 +105,17 @@ export class FileUpload extends ConfigurableComponent {
     $status.innerText = this.i18n.t('filesSelectedDefault')
     $status.setAttribute('aria-hidden', 'true')
 
+    // Create status element that shows what/how many files are selected
+    const $visuallyHiddenStatus = document.createElement('span')
+    $visuallyHiddenStatus.id = `${this.id}-visually-hidden`
+    $visuallyHiddenStatus.className = 'govuk-visually-hidden'
+    $visuallyHiddenStatus.innerText = `${this.$label.innerText}, ${this.i18n.t('selectFilesButton')}, ${this.i18n.t('filesSelectedDefault')}`
+
+    $button.appendChild(buttonSpan)
     $button.appendChild($status)
-    $button.setAttribute(
-      'aria-label',
-      `${this.$label.innerText}, ${this.i18n.t('selectFilesButton')}, ${this.i18n.t('filesSelectedDefault')}`
-    )
+    $button.appendChild($visuallyHiddenStatus)
+
+    $button.setAttribute('aria-labelledby', $visuallyHiddenStatus.id)
 
     // Assemble these all together
     $wrapper.insertAdjacentElement('beforeend', $button)
@@ -122,6 +133,7 @@ export class FileUpload extends ConfigurableComponent {
     this.$wrapper = $wrapper
     this.$button = $button
     this.$status = $status
+    this.$visuallyHiddenStatus = $visuallyHiddenStatus
 
     // Bind change event to the underlying input
     this.$root.addEventListener('change', this.onChange.bind(this))
@@ -252,10 +264,7 @@ export class FileUpload extends ConfigurableComponent {
       })
     }
 
-    this.$button.setAttribute(
-      'aria-label',
-      `${this.$label.innerText}, ${this.i18n.t('selectFilesButton')}, ${this.$status.innerText}`
-    )
+    this.$visuallyHiddenStatus.innerText = `${this.$label.innerText}, ${this.i18n.t('selectFilesButton')}, ${this.$status.innerText}`
   }
 
   /**
