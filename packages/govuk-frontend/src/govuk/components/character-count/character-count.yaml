@@ -135,7 +135,6 @@ examples:
   - name: default
     options:
       name: more-detail
-      id: more-detail
       maxlength: 10
       label:
         text: Can you provide more detail?
@@ -255,6 +254,14 @@ examples:
       label:
         text: With classes
       classes: app-character-count--custom-modifier
+  - name: id
+    hidden: true
+    options:
+      id: character-count-id
+      name: test-name
+      maxlength: 10
+      label:
+        text: With custom id
   - name: attributes
     hidden: true
     options:

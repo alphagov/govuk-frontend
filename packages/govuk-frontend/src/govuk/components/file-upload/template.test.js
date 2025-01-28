@@ -13,11 +13,11 @@ describe('File upload', () => {
   })
 
   describe('default example', () => {
-    it('renders with id', () => {
+    it('autopopulates default id from name', () => {
       const $ = render('file-upload', examples.default)
 
       const $component = $('.govuk-file-upload')
-      expect($component.attr('id')).toBe('file-upload-1')
+      expect($component.attr('id')).toBe($component.attr('name'))
     })
 
     it('renders with name', () => {
@@ -36,6 +36,14 @@ describe('File upload', () => {
   })
 
   describe('custom options', () => {
+    it('renders with id', () => {
+      const $ = render('file-upload', examples.id)
+
+      const $component = $('.govuk-file-upload')
+      expect($component.attr('id')).not.toBe($component.attr('name'))
+      expect($component.attr('id')).toBe('file-upload-id')
+    })
+
     it('renders with classes', () => {
       const $ = render('file-upload', examples.classes)
 
