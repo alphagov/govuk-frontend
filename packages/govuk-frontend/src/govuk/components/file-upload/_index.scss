@@ -46,4 +46,101 @@
       cursor: not-allowed;
     }
   }
+
+  .govuk-file-upload-wrapper {
+    display: inline-flex;
+    align-items: baseline;
+    position: relative;
+  }
+
+  .govuk-file-upload-wrapper--show-dropzone {
+    $dropzone-padding: govuk-spacing(2);
+    $dropzone-offset: $dropzone-padding + $govuk-border-width-form-element;
+
+    // Add negative margins to all sides so that content doesn't jump due to
+    // the addition of the padding and border.
+    margin: -$dropzone-offset;
+    padding: $dropzone-padding;
+    border: $govuk-border-width-form-element dashed $govuk-input-border-colour;
+    background-color: $govuk-body-background-colour;
+
+    .govuk-file-upload__pseudo-button,
+    .govuk-file-upload__status {
+      // When the dropzone is hovered over, make these aspects not accept
+      // mouse events, so dropped files fall through to the input beneath them
+      pointer-events: none;
+    }
+  }
+
+  .govuk-file-upload-wrapper .govuk-file-upload {
+    // Make the native control take up the entire space of the element, but
+    // invisible and behind the other elements until we need it
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+  }
+
+  .govuk-file-upload__pseudo-button {
+    width: auto;
+    margin-bottom: 0;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+  .govuk-file-upload__status {
+    margin-bottom: 0;
+    margin-left: govuk-spacing(2);
+  }
+}
+
+.govuk-file-upload__button:focus {
+  outline: none;
+}
+
+.govuk-file-upload__button:focus .govuk-file-upload__pseudo-button {
+  outline: 3px solid transparent;
+  background-color: $govuk-focus-colour;
+  box-shadow: 0 2px 0 govuk-colour("black");
+}
+
+.govuk-file-upload__button:focus .govuk-file-upload__pseudo-button:hover {
+  border-color: $govuk-focus-colour;
+  outline: 3px solid transparent;
+  background-color: govuk-colour("light-grey");
+  box-shadow: inset 0 0 0 1px $govuk-focus-colour;
+}
+
+.govuk-file-upload__button:active .govuk-file-upload__pseudo-button:hover {
+  background-color: govuk-shade(govuk-colour("light-grey"), 20%);
+}
+
+.govuk-file-upload__button {
+  align-items: center;
+  display: flex;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+.govuk-file-upload:disabled + .govuk-file-upload__button {
+  pointer-events: none;
+}
+
+.govuk-file-upload:disabled + .govuk-file-upload__button .govuk-file-upload__pseudo-button {
+  opacity: (0.5);
+
+  &:hover {
+    background-color: govuk-colour("light-grey");
+    cursor: not-allowed;
+  }
+
+  &:active {
+    top: 0;
+    box-shadow: 0 $govuk-border-width-form-element 0 govuk-shade(govuk-colour("white"), 60%); // s0
+  }
 }
