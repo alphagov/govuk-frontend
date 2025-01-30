@@ -174,7 +174,7 @@ examples:
         text: Upload a file
       formGroup:
         classes: extra-class
-  - name: javascript
+  - name: enhanced
     screenshot: true
     options:
       id: file-upload-1
@@ -182,6 +182,17 @@ examples:
       label:
         text: Upload a file
       javascript: true
+  - name: enhanced, with error message and hint
+    options:
+      javascript: true
+      id: file-upload-3
+      name: file-upload-3
+      label:
+        text: Upload a file
+      hint:
+        text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
+      errorMessage:
+        text: Error message goes here
   - name: translated
     options:
       id: file-upload-1
@@ -271,18 +282,6 @@ examples:
         text: Error message
       hint:
         text: hint
-  - name: javascript, with error message and hint
-    hidden: true
-    options:
-      javascript: true
-      id: file-upload-3
-      name: file-upload-3
-      label:
-        text: Upload a file
-      hint:
-        text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
-      errorMessage:
-        text: Error message goes here
   - name: translated, no javascript enhancement
     hidden: true
     options:

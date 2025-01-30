@@ -50,6 +50,10 @@
         "href": "#file"
       },
       {
+        "text": "Problem with file (enhanced)",
+        "href": "#file-enhanced"
+      },
+      {
         "text": "Problem with radios",
         "href": "#radios"
       },
@@ -190,6 +194,18 @@
     errorMessage: {
       "text": "Problem with file"
     }
+  }) }}
+
+  {{ govukFileUpload({
+    label: {
+      "text": 'Label for enhanced file upload'
+    },
+    id: "file-enhanced",
+    name: "file-enhanced",
+    errorMessage: {
+      "text": "Problem with file"
+    },
+    javascript: true
   }) }}
 
   {{ govukRadios({
