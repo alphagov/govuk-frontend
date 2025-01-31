@@ -56,6 +56,15 @@ export class FileUpload extends ConfigurableComponent {
 
     this.id = this.$root.id
 
+    // Wrapping element. This defines the boundaries of our drag and drop area.
+    const $wrapper = document.querySelector(`#${this.id}-wrapper`)
+    this.$wrapper = $wrapper
+    if (!this.$wrapper) {
+      throw new ElementError(
+        formatErrorMessage(FileUpload, 'No file wrapper exists')
+      )
+    }
+
     this.i18n = new I18n(this.config.i18n, {
       // Read the fallback if necessary rather than have it set in the defaults
       locale: closestAttributeValue(this.$root, 'lang')
@@ -67,10 +76,6 @@ export class FileUpload extends ConfigurableComponent {
     // to the new button replacement element
     // so that focus will work in the error summary
     this.$root.id = `${this.id}-input`
-
-    // Wrapping element. This defines the boundaries of our drag and drop area.
-    const $wrapper = document.createElement('div')
-    $wrapper.className = 'govuk-file-upload-wrapper'
 
     const commaSpan = document.createElement('span')
     commaSpan.className = 'govuk-visually-hidden'
@@ -125,16 +130,10 @@ export class FileUpload extends ConfigurableComponent {
     $button.addEventListener('click', this.onClick.bind(this))
 
     // Assemble these all together
-    $wrapper.insertAdjacentElement('beforeend', $button)
-
-    // Inject all this *after* the native file input
-    this.$root.insertAdjacentElement('afterend', $wrapper)
+    this.$wrapper.insertAdjacentElement('beforeend', $button)
 
     this.$root.setAttribute('tabindex', '-1')
     this.$root.setAttribute('aria-hidden', 'true')
-
-    // Move the native file input to inside of the wrapper
-    $wrapper.insertAdjacentElement('afterbegin', this.$root)
 
     // Make all these new variables available to the module
     this.$wrapper = $wrapper
