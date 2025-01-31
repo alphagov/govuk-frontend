@@ -8,13 +8,14 @@ import { I18n } from '../../i18n.mjs'
  * File upload component
  *
  * @preserve
- * @augments ConfigurableComponent<FileUploadConfig,HTMLFileInputElement>
+ * @augments ConfigurableComponent<FileUploadConfig>
  */
 export class FileUpload extends ConfigurableComponent {
   /**
    * @private
+   * @type {HTMLFileInputElement}
    */
-  $wrapper
+  $input
 
   /**
    * @private
@@ -39,7 +40,18 @@ export class FileUpload extends ConfigurableComponent {
   constructor($root, config = {}) {
     super($root, config)
 
-    if (this.$root.type !== 'file') {
+    const $input = this.$root.querySelector('input')
+
+    if ($input === null) {
+      throw new ElementError(
+        formatErrorMessage(
+          FileUpload,
+          'File upload wrapper must have `input` element of type `file`'
+        )
+      )
+    }
+
+    if ($input.type !== 'file') {
       throw new ElementError(
         formatErrorMessage(
           FileUpload,
@@ -48,13 +60,15 @@ export class FileUpload extends ConfigurableComponent {
       )
     }
 
-    if (!this.$root.id.length) {
+    this.$input = /** @type {HTMLFileInputElement} */ ($input)
+
+    if (!this.$input.id.length) {
       throw new ElementError(
         formatErrorMessage(FileUpload, 'Form field must specify an `id`.')
       )
     }
 
-    this.id = this.$root.id
+    this.id = this.$input.id
 
     this.i18n = new I18n(this.config.i18n, {
       // Read the fallback if necessary rather than have it set in the defaults
@@ -72,11 +86,7 @@ export class FileUpload extends ConfigurableComponent {
     // we need to copy the 'id' of the root element
     // to the new button replacement element
     // so that focus will work in the error summary
-    this.$root.id = `${this.id}-input`
-
-    // Wrapping element. This defines the boundaries of our drag and drop area.
-    const $wrapper = document.createElement('div')
-    $wrapper.className = 'govuk-file-upload-wrapper'
+    this.$input.id = `${this.id}-input`
 
     // Create the file selection button
     const $button = document.createElement('button')
@@ -86,7 +96,7 @@ export class FileUpload extends ConfigurableComponent {
 
     // Copy `aria-describedby` if present so hints and errors
     // are associated to the `<button>`
-    const ariaDescribedBy = this.$root.getAttribute('aria-describedby')
+    const ariaDescribedBy = this.$input.getAttribute('aria-describedby')
     if (ariaDescribedBy) {
       $button.setAttribute('aria-describedby', ariaDescribedBy)
     }
@@ -134,24 +144,17 @@ export class FileUpload extends ConfigurableComponent {
     $button.addEventListener('click', this.onClick.bind(this))
 
     // Assemble these all together
-    $wrapper.insertAdjacentElement('beforeend', $button)
+    this.$root.insertAdjacentElement('beforeend', $button)
 
-    // Inject all this *after* the native file input
-    this.$root.insertAdjacentElement('afterend', $wrapper)
-
-    this.$root.setAttribute('tabindex', '-1')
-    this.$root.setAttribute('aria-hidden', 'true')
-
-    // Move the native file input to inside of the wrapper
-    $wrapper.insertAdjacentElement('afterbegin', this.$root)
+    this.$input.setAttribute('tabindex', '-1')
+    this.$input.setAttribute('aria-hidden', 'true')
 
     // Make all these new variables available to the module
-    this.$wrapper = $wrapper
     this.$button = $button
     this.$status = $status
 
     // Bind change event to the underlying input
-    this.$root.addEventListener('change', this.onChange.bind(this))
+    this.$input.addEventListener('change', this.onChange.bind(this))
 
     // Synchronise the `disabled` state between the button and underlying input
     this.updateDisabledState()
@@ -163,7 +166,7 @@ export class FileUpload extends ConfigurableComponent {
     this.$announcements.classList.add('govuk-file-upload-announcements')
     this.$announcements.classList.add('govuk-visually-hidden')
     this.$announcements.setAttribute('aria-live', 'assertive')
-    this.$wrapper.insertAdjacentElement('afterend', this.$announcements)
+    this.$root.insertAdjacentElement('afterend', this.$announcements)
 
     // The easy bit, when dropping hide the dropzone
     //
@@ -171,7 +174,7 @@ export class FileUpload extends ConfigurableComponent {
     // being dragged set as value of the `<input>`. This allows a `change`
     // event to be automatically fired from the element and saves us from having
     // to do anything more than hiding the dropzone on drop.
-    this.$wrapper.addEventListener('drop', this.hideDropZone.bind(this))
+    this.$input.addEventListener('drop', this.hideDropZone.bind(this))
 
     // While user is dragging, it gets a little more complex because of Safari.
     // Safari doesn't fill `relatedTarget` on `dragleave` (nor `dragenter`).
@@ -217,18 +220,16 @@ export class FileUpload extends ConfigurableComponent {
     // DOM interfaces only type `event.target` as `EventTarget`
     // so we first need to make sure it's a `Node`
     if (event.target instanceof Node) {
-      if (this.$wrapper.contains(event.target)) {
+      if (this.$root.contains(event.target)) {
         if (event.dataTransfer && isContainingFiles(event.dataTransfer)) {
           // Only update the class and make the announcement if not already visible
           // to avoid repeated announcements on NVDA (2024.4) + Firefox (133)
           if (
-            !this.$wrapper.classList.contains(
+            !this.$root.classList.contains(
               'govuk-file-upload-wrapper--show-dropzone'
             )
           ) {
-            this.$wrapper.classList.add(
-              'govuk-file-upload-wrapper--show-dropzone'
-            )
+            this.$root.classList.add('govuk-file-upload-wrapper--show-dropzone')
             this.$announcements.innerText = this.i18n.t('dropZoneEntered')
           }
         }
@@ -237,7 +238,7 @@ export class FileUpload extends ConfigurableComponent {
         // left the drop zone when they enter the page but haven't reached yet
         // the file upload component
         if (
-          this.$wrapper.classList.contains(
+          this.$root.classList.contains(
             'govuk-file-upload-wrapper--show-dropzone'
           )
         ) {
@@ -251,7 +252,7 @@ export class FileUpload extends ConfigurableComponent {
    * Hides the dropzone once user has dropped files on the `<input>`
    */
   hideDropZone() {
-    this.$wrapper.classList.remove('govuk-file-upload-wrapper--show-dropzone')
+    this.$root.classList.remove('govuk-file-upload-wrapper--show-dropzone')
     this.$announcements.innerText = this.i18n.t('dropZoneLeft')
   }
 
@@ -259,7 +260,7 @@ export class FileUpload extends ConfigurableComponent {
    * Check if the value of the underlying input has changed
    */
   onChange() {
-    const fileCount = this.$root.files.length
+    const fileCount = this.$input.files.length
 
     if (fileCount === 0) {
       // If there are no files, show the default selection text
@@ -270,7 +271,7 @@ export class FileUpload extends ConfigurableComponent {
         // If there is 1 file, just show the file name
         fileCount === 1
       ) {
-        this.$status.innerText = this.$root.files[0].name
+        this.$status.innerText = this.$input.files[0].name
       } else {
         // Otherwise, tell the user how many files are selected
         this.$status.innerText = this.i18n.t('filesSelected', {
@@ -291,7 +292,7 @@ export class FileUpload extends ConfigurableComponent {
    */
   findLabel() {
     // Use `label` in the selector so TypeScript knows the type fo `HTMLElement`
-    const $label = document.querySelector(`label[for="${this.$root.id}"]`)
+    const $label = document.querySelector(`label[for="${this.$input.id}"]`)
 
     if (!$label) {
       throw new ElementError({
@@ -307,7 +308,7 @@ export class FileUpload extends ConfigurableComponent {
    * When the button is clicked, emulate clicking the actual, hidden file input
    */
   onClick() {
-    this.$root.click()
+    this.$input.click()
   }
 
   /**
@@ -326,7 +327,7 @@ export class FileUpload extends ConfigurableComponent {
       }
     })
 
-    observer.observe(this.$root, {
+    observer.observe(this.$input, {
       attributes: true
     })
   }
@@ -335,7 +336,7 @@ export class FileUpload extends ConfigurableComponent {
    * Synchronise the `disabled` state between the input and replacement button.
    */
   updateDisabledState() {
-    this.$button.disabled = this.$root.disabled
+    this.$button.disabled = this.$input.disabled
   }
 
   /**

@@ -55,7 +55,7 @@
     background-color: $govuk-body-background-colour;
   }
 
-  .govuk-file-upload-wrapper .govuk-file-upload {
+  .govuk-frontend-supported .govuk-file-upload-wrapper .govuk-file-upload {
     position: absolute;
     // Make the native control take up the entire space of the element, but
     // invisible and behind the other elements until we need it

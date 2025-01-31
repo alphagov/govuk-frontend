@@ -224,37 +224,37 @@ describe('File upload', () => {
       expect($input.attr('data-module')).toBeUndefined()
     })
 
-    it('adds the data-module attribute to the input when `true`', () => {
+    it('adds the data-module attribute to the wrapper when `true`', () => {
       const $ = render('file-upload', examples.enhanced)
 
-      const $input = $('.govuk-form-group > .govuk-file-upload')
+      const $wrapper = $('.govuk-form-group > .govuk-file-upload-wrapper')
 
-      expect($input.attr('data-module')).toBe('govuk-file-upload')
+      expect($wrapper.attr('data-module')).toBe('govuk-file-upload')
     })
 
     it('adds the data-module attribute when receiving an object', () => {
       const $ = render('file-upload', examples.translated)
 
-      const $input = $('.govuk-form-group > .govuk-file-upload')
+      const $wrapper = $('.govuk-form-group > .govuk-file-upload-wrapper')
 
-      expect($input.attr('data-module')).toBe('govuk-file-upload')
+      expect($wrapper.attr('data-module')).toBe('govuk-file-upload')
     })
 
     it('enables the rendering of translation messages when true', () => {
       const $ = render('file-upload', examples.translated)
 
-      const $input = $('.govuk-form-group > .govuk-file-upload')
+      const $wrapper = $('.govuk-form-group > .govuk-file-upload-wrapper')
 
-      expect($input.attr('data-i18n.select-files-button')).toBe(
+      expect($wrapper.attr('data-i18n.select-files-button')).toBe(
         'Dewiswch ffeil'
       )
-      expect($input.attr('data-i18n.files-selected-default')).toBe(
+      expect($wrapper.attr('data-i18n.files-selected-default')).toBe(
         "Dim ffeiliau wedi'u dewis"
       )
-      expect($input.attr('data-i18n.files-selected.one')).toBe(
+      expect($wrapper.attr('data-i18n.files-selected.one')).toBe(
         "%{count} ffeil wedi'i dewis"
       )
-      expect($input.attr('data-i18n.files-selected.other')).toBe(
+      expect($wrapper.attr('data-i18n.files-selected.other')).toBe(
         "%{count} ffeil wedi'u dewis"
       )
     })
