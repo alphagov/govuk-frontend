@@ -1,9 +1,11 @@
 ---
-name: 'Spike'
-about: For internal use only - issue template for spikes, research and investigation pieces
+name: Spike
+about: For internal use only - issue template for spikes, research and investigation
+  pieces
 title: ''
-labels: '🔍 investigation'
+labels: "\U0001F50D investigation"
 assignees: ''
+
 ---
 
 <!--

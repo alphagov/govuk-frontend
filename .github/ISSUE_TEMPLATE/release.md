@@ -1,11 +1,10 @@
 ---
-name: '🚀 Release'
+name: "\U0001F680 Release"
 about: For internal use only - issue template for release tasks
-title: 'Release vX.Y.Z'
-labels: 
- - '🚀 release'
- - epic
+title: Release vX.Y.Z
+labels: "epic, \U0001F680 release"
 assignees: ''
+
 ---
 
 <!--
@@ -67,6 +66,7 @@ Technical writers, Developers
 ## Logistics
 - [ ] Ensure issues published in the release are gathered in a [GitHub milestone](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
 - [ ] Verify that decisions are appropriately documented (in code/issues/pull request comments or in separate documents linked from issues/pull requests)
+- [ ] 🔑 Ensure that [relevant access tokens are up to date](https://github.com/alphagov/govuk-frontend/blob/main/docs/releasing/before-publishing-a-release.md#make-sure-access-tokens-are-up-to-date)
 - [ ] Update state of published issues on project board
 - [ ] Close published issues when appropriate
 - [ ] Open any follow-up issues if necessary

@@ -1,9 +1,11 @@
 ---
-name: "Cycle brief template"
-about: For internal use only – issue template for writing briefs at the beginning of each cycle
-title: ""
-labels: "epic"
-assignees: ""
+name: Cycle brief template
+about: For internal use only – issue template for writing briefs at the beginning
+  of each cycle
+title: ''
+labels: epic
+assignees: ''
+
 ---
 
 ## Brief
