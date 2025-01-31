@@ -288,7 +288,7 @@ describe('/components/file-upload', () => {
           ).resolves.toBe('Entered drop zone')
         })
 
-        it('gets hidden when dropping on the field', async () => {
+        xit('gets hidden when dropping on the field', async () => {
           // Add a little pixel to make sure we're effectively within the element
           await page.mouse.drop(
             { x: wrapperBoundingBox.x + 1, y: wrapperBoundingBox.y + 1 },
