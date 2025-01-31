@@ -63,6 +63,10 @@
       key: 'files-selected',
       messages: params.filesSelectedText
     }) -}}
+    {{- govukI18nAttributes({
+      key: 'instruction',
+      message: params.instructionText
+    }) -}}    
   {%- endif %}
   {{- govukAttributes(params.attributes) }}>
 {% if params.formGroup.afterInput %}
