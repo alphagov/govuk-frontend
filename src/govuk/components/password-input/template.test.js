@@ -9,11 +9,11 @@ describe('Password input', () => {
   })
 
   describe('default example', () => {
-    it('renders with id', () => {
+    it('autopopulates default id from name', () => {
       const $ = render('password-input', examples.default)
 
       const $component = $('.govuk-input')
-      expect($component.attr('id')).toBe('password-input')
+      expect($component.attr('id')).toBe($component.attr('name'))
     })
 
     it('renders with name', () => {
@@ -116,6 +116,14 @@ describe('Password input', () => {
   })
 
   describe('custom options', () => {
+    it('renders with id', () => {
+      const $ = render('password-input', examples.id)
+
+      const $component = $('.govuk-input')
+      expect($component.attr('id')).not.toBe($component.attr('name'))
+      expect($component.attr('id')).toBe('password-id')
+    })
+
     it('renders with classes', () => {
       const $ = render('password-input', examples.classes)
 

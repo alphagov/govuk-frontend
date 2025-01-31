@@ -5,8 +5,8 @@ params:
     description: The name of the input, which is submitted with the form data.
   - name: id
     type: string
-    required: true
-    description: The ID of the input.
+    required: false
+    description: The ID of the input. Defaults to the value of `name`.
   - name: value
     type: string
     required: false
@@ -85,7 +85,6 @@ params:
 examples:
   - name: default
     options:
-      id: file-upload-1
       name: file-upload-1
       label:
         text: Upload a file
@@ -149,6 +148,13 @@ examples:
       label:
         text: Upload a file
       classes: app-file-upload--custom-modifier
+  - name: id
+    hidden: true
+    options:
+      id: file-upload-id
+      name: test-name
+      label:
+        text: Upload a file
   - name: with describedBy
     hidden: true
     options:
