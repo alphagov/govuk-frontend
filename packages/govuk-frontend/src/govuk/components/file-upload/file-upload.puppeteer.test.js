@@ -1,6 +1,9 @@
 /* eslint-disable no-new */
 
-const { render } = require('@govuk-frontend/helpers/puppeteer')
+const {
+  render,
+  getAccessibleName
+} = require('@govuk-frontend/helpers/puppeteer')
 const { getExamples } = require('@govuk-frontend/lib/components')
 
 const inputSelector = '.govuk-file-upload'
@@ -104,15 +107,8 @@ describe('/components/file-upload', () => {
               (el) => el.innerHTML.trim()
             )
 
-            const buttonAriaText = await page.$eval(buttonSelector, (el) =>
-              el.getAttribute('aria-label')
-            )
-
             expect(buttonElementText).toBe('Choose file')
             expect(statusElementText).toBe('No file chosen')
-            expect(buttonAriaText).toBe(
-              'Upload a file, Choose file or drop file, No file chosen'
-            )
           })
         })
       })
@@ -348,6 +344,61 @@ describe('/components/file-upload', () => {
         })
       })
 
+      describe('accessible name', () => {
+        beforeEach(async () => {})
+
+        it('includes the label, the status, the pseudo button and instruction', async () => {
+          await render(page, 'file-upload', examples.enhanced)
+
+          const $element = await page.$('.govuk-file-upload__button')
+
+          const accessibleName = await getAccessibleName(page, $element)
+          await expect(accessibleName.replaceAll(/\s+/g, ' ')).toBe(
+            'Upload a file , No file chosen , Choose file or drop file'
+          )
+        })
+
+        it('includes the label, file name, pseudo button and instruction once a file is selected', async () => {
+          await render(page, 'file-upload', examples.enhanced)
+
+          const $element = await page.$('.govuk-file-upload__button')
+
+          const [fileChooser] = await Promise.all([
+            page.waitForFileChooser(),
+            page.click(buttonSelector)
+          ])
+          await fileChooser.accept(['fakefile.txt'])
+
+          const accessibleName = await getAccessibleName(page, $element)
+          await expect(accessibleName.replaceAll(/\s+/g, ' ')).toBe(
+            'Upload a file , fakefile.txt , Choose file or drop file'
+          )
+        })
+
+        it('includes the label, file name, pseudo button and instruction once a file is selected', async () => {
+          await render(page, 'file-upload', examples.enhanced, {
+            beforeInitialisation() {
+              document
+                .querySelector('[type="file"]')
+                .setAttribute('multiple', '')
+            }
+          })
+
+          const $element = await page.$('.govuk-file-upload__button')
+
+          const [fileChooser] = await Promise.all([
+            page.waitForFileChooser(),
+            page.click(buttonSelector)
+          ])
+          await fileChooser.accept(['fakefile1.txt', 'fakefile2.txt'])
+
+          const accessibleName = await getAccessibleName(page, $element)
+          await expect(accessibleName.replaceAll(/\s+/g, ' ')).toBe(
+            'Upload a file , 2 files chosen , Choose file or drop file'
+          )
+        })
+      })
+
       describe('i18n', () => {
         beforeEach(async () => {
           await render(page, 'file-upload', examples.translated)
@@ -363,15 +414,8 @@ describe('/components/file-upload', () => {
             el.innerHTML.trim()
           )
 
-          const buttonAriaText = await page.$eval(buttonSelector, (el) =>
-            el.getAttribute('aria-label')
-          )
-
           expect(buttonElementText).toBe('Dewiswch ffeil')
           expect(statusElementText).toBe("Dim ffeiliau wedi'u dewis")
-          expect(buttonAriaText).toBe(
-            "Llwythwch ffeil i fyny, Dewiswch ffeil neu ollwng ffeil, Dim ffeiliau wedi'u dewis"
-          )
         })
 
         describe('status element', () => {
