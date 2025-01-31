@@ -1,4 +1,5 @@
 {% from "../../macros/attributes.njk" import govukAttributes %}
+{% from "../../macros/i18n.njk" import govukI18nAttributes %}
 {% from "../error-message/macro.njk" import govukErrorMessage %}
 {% from "../hint/macro.njk" import govukHint %}
 {% from "../label/macro.njk" import govukLabel %}
@@ -47,7 +48,28 @@
   <input class="govuk-file-upload {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-file-upload--error{% endif %}" id="{{ id }}" name="{{ params.name }}" type="file"
   {%- if params.value %} value="{{ params.value }}"{% endif %}
   {%- if params.disabled %} disabled{% endif %}
+  {%- if params.multiple %} multiple{% endif %}
   {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
+  {%- if params.javascript %}
+    data-module="govuk-file-upload"
+
+    {{- govukI18nAttributes({
+      key: 'select-files-button',
+      message: params.selectFilesButtonText
+    }) -}}
+    {{- govukI18nAttributes({
+      key: 'files-selected-default',
+      message: params.filesSelectedDefaultText
+    }) -}}
+    {{- govukI18nAttributes({
+      key: 'files-selected',
+      messages: params.filesSelectedText
+    }) -}}
+    {{- govukI18nAttributes({
+      key: 'instruction',
+      message: params.instructionText
+    }) -}}    
+  {%- endif %}
   {{- govukAttributes(params.attributes) }}>
 {% if params.formGroup.afterInput %}
   {{ params.formGroup.afterInput.html | safe | trim | indent(2) if params.formGroup.afterInput.html else params.formGroup.afterInput.text }}
