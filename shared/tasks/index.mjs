@@ -14,6 +14,10 @@ export * as task from './task.mjs'
 /**
  * Types for tasks
  *
- * @typedef {import('./assets.mjs').AssetPathOptions} TaskOptions
- * @typedef {(options: TaskOptions) => import('gulp').TaskFunction} TaskFunction
+ * @typedef {(options: TaskOptions) => TaskFunction} TaskFunction
+ */
+
+/**
+ * @import { TaskFunction } from 'gulp'
+ * @import { AssetPathOptions as TaskOptions } from './assets.mjs'
  */
