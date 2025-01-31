@@ -17,8 +17,8 @@ describe('Input', () => {
       $label = document.querySelector('.govuk-label')
     })
 
-    it('sets the `id` attribute based on the `id` option', () => {
-      expect($component).toHaveAttribute('id', 'input-example')
+    it('autopopulates `id` based on the `name` option', () => {
+      expect($component).toHaveAttribute('id', $component.name)
     })
 
     it('sets the `name` attribute based on the `name` option', () => {
@@ -65,6 +65,13 @@ describe('Input', () => {
   })
 
   describe('custom options', () => {
+    it('sets the `id` attribute based on the `id` option', () => {
+      document.body.innerHTML = render('input', examples.id)
+
+      const $component = document.querySelector('.govuk-input')
+      expect($component).toHaveAttribute('id', 'input-id')
+    })
+
     it('includes additional classes from the `classes` option', () => {
       document.body.innerHTML = render('input', examples.classes)
 

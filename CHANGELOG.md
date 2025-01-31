@@ -4,6 +4,18 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### New features
+
+#### Form control components now have default `id` attributes
+
+If you're using the included Nunjucks macros, the Text input, Textarea, Password input, Character count, File upload, and Select components now automatically use the value of the `name` parameter for the `id` parameter.
+
+This means that you only have to provide the `name` parameters if they both have the same value.
+
+Note that the Date input component still requires an `id` attribute.
+
+This change was introduced in [pull request #5658: Update form control components to set a default `id` based on `name`](https://github.com/alphagov/govuk-frontend/pull/5658).
+
 ### Deprecated features
 
 #### Migrate to the new organisation colour palette
