@@ -436,7 +436,7 @@ export class CharacterCount extends ConfigurableComponent {
    * Character count config schema
    *
    * @constant
-   * @satisfies {Schema}
+   * @satisfies {Schema<CharacterCountConfig>}
    */
   static schema = Object.freeze({
     properties: {
@@ -521,6 +521,6 @@ export class CharacterCount extends ConfigurableComponent {
  */
 
 /**
- * @typedef {import('../../common/configuration.mjs').Schema} Schema
- * @typedef {import('../../i18n.mjs').TranslationPluralForms} TranslationPluralForms
+ * @import { Schema } from '../../common/configuration.mjs'
+ * @import { TranslationPluralForms } from '../../i18n.mjs'
  */

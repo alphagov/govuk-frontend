@@ -417,7 +417,7 @@ export class ExitThisPage extends ConfigurableComponent {
    * Exit this page config schema
    *
    * @constant
-   * @satisfies {Schema}
+   * @satisfies {Schema<ExitThisPageConfig>}
    */
   static schema = Object.freeze({
     properties: {
@@ -453,5 +453,5 @@ export class ExitThisPage extends ConfigurableComponent {
  */
 
 /**
- * @typedef {import('../../common/configuration.mjs').Schema} Schema
+ * @import { Schema } from '../../common/configuration.mjs'
  */

@@ -209,7 +209,7 @@ export class PasswordInput extends ConfigurableComponent {
    * Password input config schema
    *
    * @constant
-   * @satisfies {Schema}
+   * @satisfies {Schema<PasswordInputConfig>}
    */
   static schema = Object.freeze({
     properties: {
@@ -249,6 +249,5 @@ export class PasswordInput extends ConfigurableComponent {
  */
 
 /**
- * @typedef {import('../../common/configuration.mjs').Schema} Schema
- * @typedef {import('../../i18n.mjs').TranslationPluralForms} TranslationPluralForms
+ * @import { Schema } from '../../common/configuration.mjs'
  */
