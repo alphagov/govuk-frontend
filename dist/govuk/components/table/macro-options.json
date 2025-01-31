@@ -1,0 +1,132 @@
+[
+    {
+        "name": "rows",
+        "type": "array",
+        "required": true,
+        "description": "The rows within the table component.",
+        "params": [
+            {
+                "name": "text",
+                "type": "string",
+                "required": true,
+                "description": "If `html` is set, this is not required. Text for cells in table rows. If `html` is provided, the `text` option will be ignored."
+            },
+            {
+                "name": "html",
+                "type": "string",
+                "required": true,
+                "description": "If `text` is set, this is not required. HTML for cells in table rows. If `html` is provided, the `text` option will be ignored."
+            },
+            {
+                "name": "format",
+                "type": "string",
+                "required": false,
+                "description": "Specify format of a cell. Currently we only use \"numeric\"."
+            },
+            {
+                "name": "classes",
+                "type": "string",
+                "required": false,
+                "description": "Classes to add to the table row cell."
+            },
+            {
+                "name": "colspan",
+                "type": "integer",
+                "required": false,
+                "description": "Specify how many columns a cell extends."
+            },
+            {
+                "name": "rowspan",
+                "type": "integer",
+                "required": false,
+                "description": "Specify how many rows a cell extends."
+            },
+            {
+                "name": "attributes",
+                "type": "object",
+                "required": false,
+                "description": "HTML attributes (for example data attributes) to add to the table cell."
+            }
+        ]
+    },
+    {
+        "name": "head",
+        "type": "array",
+        "required": false,
+        "description": "Can be used to add a row of table header cells (`<th>`) at the top of the table component.",
+        "params": [
+            {
+                "name": "text",
+                "type": "string",
+                "required": false,
+                "description": "If `html` is set, this is not required. Text for table head cells. If `html` is provided, the `text` option will be ignored."
+            },
+            {
+                "name": "html",
+                "type": "string",
+                "required": false,
+                "description": "If `text` is set, this is not required. HTML for table head cells. If `html` is provided, the `text` option will be ignored."
+            },
+            {
+                "name": "format",
+                "type": "string",
+                "required": false,
+                "description": "Specify format of a cell. Currently we only use \"numeric\"."
+            },
+            {
+                "name": "classes",
+                "type": "string",
+                "required": false,
+                "description": "Classes to add to the table head cell."
+            },
+            {
+                "name": "colspan",
+                "type": "integer",
+                "required": false,
+                "description": "Specify how many columns a cell extends."
+            },
+            {
+                "name": "rowspan",
+                "type": "integer",
+                "required": false,
+                "description": "Specify how many rows a cell extends."
+            },
+            {
+                "name": "attributes",
+                "type": "object",
+                "required": false,
+                "description": "HTML attributes (for example data attributes) to add to the table cell."
+            }
+        ]
+    },
+    {
+        "name": "caption",
+        "type": "string",
+        "required": false,
+        "description": "Caption text."
+    },
+    {
+        "name": "captionClasses",
+        "type": "string",
+        "required": false,
+        "description": "Classes for caption text size. Classes should correspond to the available typography heading classes."
+    },
+    {
+        "name": "firstCellIsHeader",
+        "type": "boolean",
+        "required": false,
+        "description": "If set to `true`, the first cell in each row will be a table header (`<th>`)."
+    },
+    {
+        "name": "classes",
+        "type": "string",
+        "required": false,
+        "description": "Classes to add to the table container."
+    },
+    {
+        "name": "attributes",
+        "type": "object",
+        "required": false,
+        "description": "HTML attributes (for example data attributes) to add to the table container."
+    }
+]

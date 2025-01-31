@@ -1,0 +1,143 @@
+[
+    {
+        "name": "id",
+        "type": "string",
+        "required": true,
+        "description": "The ID of the textarea."
+    },
+    {
+        "name": "name",
+        "type": "string",
+        "required": true,
+        "description": "The name of the textarea, which is submitted with the form data."
+    },
+    {
+        "name": "spellcheck",
+        "type": "boolean",
+        "required": false,
+        "description": "Optional field to enable or disable the `spellcheck` attribute on the textarea."
+    },
+    {
+        "name": "rows",
+        "type": "string",
+        "required": false,
+        "description": "Optional number of textarea rows (default is 5 rows)."
+    },
+    {
+        "name": "value",
+        "type": "string",
+        "required": false,
+        "description": "Optional initial value of the textarea."
+    },
+    {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "description": "If `true`, textarea will be disabled."
+    },
+    {
+        "name": "describedBy",
+        "type": "string",
+        "required": false,
+        "description": "One or more element IDs to add to the `aria-describedby` attribute, used to provide additional descriptive information for screenreader users."
+    },
+    {
+        "name": "label",
+        "type": "object",
+        "required": true,
+        "description": "The label used by the textarea component.",
+        "isComponent": true
+    },
+    {
+        "name": "hint",
+        "type": "object",
+        "required": false,
+        "description": "Can be used to add a hint to the textarea component.",
+        "isComponent": true
+    },
+    {
+        "name": "errorMessage",
+        "type": "object",
+        "required": false,
+        "description": "Can be used to add an error message to the textarea component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.",
+        "isComponent": true
+    },
+    {
+        "name": "formGroup",
+        "type": "object",
+        "required": false,
+        "description": "Additional options for the form group containing the textarea component.",
+        "params": [
+            {
+                "name": "classes",
+                "type": "string",
+                "required": false,
+                "description": "Classes to add to the form group (for example to show error state for the whole group)."
+            },
+            {
+                "name": "attributes",
+                "type": "object",
+                "required": false,
+                "description": "HTML attributes (for example data attributes) to add to the form group."
+            },
+            {
+                "name": "beforeInput",
+                "type": "object",
+                "required": false,
+                "description": "Content to add before the textarea used by the textarea component.",
+                "params": [
+                    {
+                        "name": "text",
+                        "type": "string",
+                        "required": true,
+                        "description": "Text to add before the textarea. If `html` is provided, the `text` option will be ignored."
+                    },
+                    {
+                        "name": "html",
+                        "type": "string",
+                        "required": true,
+                        "description": "HTML to add before the textarea. If `html` is provided, the `text` option will be ignored."
+                    }
+                ]
+            },
+            {
+                "name": "afterInput",
+                "type": "object",
+                "required": false,
+                "description": "Content to add after the textarea used by the textarea component.",
+                "params": [
+                    {
+                        "name": "text",
+                        "type": "string",
+                        "required": true,
+                        "description": "Text to add after the textarea. If `html` is provided, the `text` option will be ignored."
+                    },
+                    {
+                        "name": "html",
+                        "type": "string",
+                        "required": true,
+                        "description": "HTML to add after the textarea. If `html` is provided, the `text` option will be ignored."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "classes",
+        "type": "string",
+        "required": false,
+        "description": "Classes to add to the textarea."
+    },
+    {
+        "name": "autocomplete",
+        "type": "string",
+        "required": false,
+        "description": "Attribute to meet [WCAG success criterion 1.3.5: Identify input purpose](https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html), for instance `\"bday-day\"`. See the [Autofill section in the HTML standard](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) section in the HTML standard for full list of attributes that can be used."
+    },
+    {
+        "name": "attributes",
+        "type": "object",
+        "required": false,
+        "description": "HTML attributes (for example data attributes) to add to the textarea."
+    }
+]

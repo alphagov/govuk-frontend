@@ -1,0 +1,120 @@
+{% from "../../macros/attributes.njk" import govukAttributes %}
+{% from "../../macros/i18n.njk" import govukI18nAttributes %}
+{% from "../textarea/macro.njk" import govukTextarea %}
+{% from "../hint/macro.njk" import govukHint %}
+
+{#-
+  If the limit is set in JavaScript, we won't be able to interpolate the message
+  until JavaScript, so we only set a text if the `maxlength` or `maxwords` options
+  were provided to the macro.
+#}
+{%- set hasNoLimit = (not params.maxwords and not params.maxlength) -%}
+{%- set textareaDescriptionLength = params.maxwords or params.maxlength -%}
+{%- set textareaDescriptionText = params.textareaDescriptionText or 'You can enter up to %{count} ' + ('words' if params.maxwords else 'characters') -%}
+{%- set textareaDescriptionTextNoLimit = textareaDescriptionText | replace('%{count}', textareaDescriptionLength) if not hasNoLimit -%}
+
+{%- set countMessageHtml %}
+{{ govukHint({
+  text: textareaDescriptionTextNoLimit,
+  id: params.id + '-info',
+  classes: 'govuk-character-count__message' + (' ' + params.countMessage.classes if params.countMessage.classes)
+}) | trim }}
+{% if params.formGroup.afterInput %}
+  {{- params.formGroup.afterInput.html | safe | trim if params.formGroup.afterInput.html else params.formGroup.afterInput.text }}
+{% endif -%}
+{% endset -%}
+
+{%- set attributesHtml %}
+  {{- govukAttributes({
+    "data-module": "govuk-character-count",
+    "data-maxlength": {
+      value: params.maxlength,
+      optional: true
+    },
+    "data-threshold": {
+      value: params.threshold,
+      optional: true
+    },
+    "data-maxwords": {
+      value: params.maxwords,
+      optional: true
+    }
+  }) -}}
+
+  {#-
+    Without maxlength or maxwords, we can't guess if the component will count words or characters.
+    We can't guess a default textarea description to be interpolated in JavaScript
+    once the maximum gets configured there.
+    So we only add the attribute if a textarea description was explicitely provided.
+  #}
+  {%- if hasNoLimit and params.textareaDescriptionText %}
+    {{- govukI18nAttributes({
+      key: 'textarea-description',
+      messages: { other: params.textareaDescriptionText }
+    }) -}}
+  {% endif -%}
+
+  {{- govukI18nAttributes({
+    key: 'characters-under-limit',
+    messages: params.charactersUnderLimitText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'characters-at-limit',
+    message: params.charactersAtLimitText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'characters-over-limit',
+    messages: params.charactersOverLimitText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'words-under-limit',
+    messages: params.wordsUnderLimitText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'words-at-limit',
+    message: params.wordsAtLimitText
+  }) -}}
+
+  {{- govukI18nAttributes({
+    key: 'words-over-limit',
+    messages: params.wordsOverLimitText
+  }) -}}
+{% endset -%}
+
+{#- Append form group attributes onto attributes set above #}
+{%- for name, value in params.formGroup.attributes %}
+  {% set attributesHtml = attributesHtml + " " + name | escape + '="' + value | escape + '"' %}
+{% endfor -%}
+
+{{ govukTextarea({
+  id: params.id,
+  name: params.name,
+  describedBy: params.id + '-info',
+  rows: params.rows,
+  spellcheck: params.spellcheck,
+  value: params.value,
+  formGroup: {
+    classes: 'govuk-character-count' + (' ' + params.formGroup.classes if params.formGroup.classes),
+    attributes: attributesHtml,
+    beforeInput: params.formGroup.beforeInput,
+    afterInput: {
+      html: countMessageHtml
+    }
+  },
+  classes: 'govuk-js-character-count' + (' ' + params.classes if params.classes),
+  label: {
+    html: params.label.html,
+    text: params.label.text,
+    classes: params.label.classes,
+    isPageHeading: params.label.isPageHeading,
+    attributes: params.label.attributes,
+    for: params.id
+  },
+  hint: params.hint,
+  errorMessage: params.errorMessage,
+  attributes: params.attributes
+}) | trim }}
