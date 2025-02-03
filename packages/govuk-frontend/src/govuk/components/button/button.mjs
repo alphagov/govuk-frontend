@@ -104,7 +104,7 @@ export class Button extends ConfigurableComponent {
    * Button config schema
    *
    * @constant
-   * @satisfies {Schema}
+   * @satisfies {Schema<ButtonConfig>}
    */
   static schema = Object.freeze({
     properties: {

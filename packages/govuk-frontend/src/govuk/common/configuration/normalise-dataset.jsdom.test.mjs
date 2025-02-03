@@ -1,14 +1,20 @@
-import { normaliseDataset } from '../configuration.mjs'
+import {
+  ConfigurableComponent,
+  normaliseDataset
+} from '../../common/configuration.mjs'
 
 describe('normaliseDataset', () => {
   it('normalises the entire dataset', () => {
     expect(
       normaliseDataset(
-        class Component {
+        /**
+         * @augments ConfigurableComponent<Config>
+         */
+        class Component extends ConfigurableComponent {
           static moduleName = 'Component'
 
           /**
-           * @satisfies {Schema}
+           * @satisfies {Schema<Config>}
            */
           static schema = {
             properties: {
@@ -54,5 +60,17 @@ describe('normaliseDataset', () => {
 })
 
 /**
- * @import { Schema } from './../configuration.mjs'
+ * @typedef {object} Config
+ * @property {number} aNumber - A number
+ * @property {number} aDecimalNumber - A decimal number
+ * @property {boolean} aBoolean - A boolean
+ * @property {string} aString - A string
+ * @property {'true' | 'false'} aStringBoolean - A string boolean
+ * @property {string} aStringNumber - A string number
+ * @property {string} [anOptionalString] - An optional string
+ * @property {{ one: string, two: string, three: string }} anObject - An object
+ */
+
+/**
+ * @import { Schema } from '../configuration.mjs'
  */
