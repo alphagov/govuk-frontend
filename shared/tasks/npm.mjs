@@ -60,5 +60,5 @@ export function script(name, args = [], options) {
 }
 
 /**
- * @typedef {import('./index.mjs').TaskOptions} TaskOptions
+ * @import {TaskOptions} from './index.mjs'
  */

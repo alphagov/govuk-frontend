@@ -11,9 +11,9 @@ const slug = require('slug')
 /**
  * Axe Puppeteer reporter
  *
- * @param {import('puppeteer').Page} page - Puppeteer page object
- * @param {import('axe-core').RuleObject} [overrides] - Axe rule overrides
- * @returns {Promise<import('axe-core').AxeResults>} Axe Puppeteer instance
+ * @param {Page} page - Puppeteer page object
+ * @param {RuleObject} [overrides] - Axe rule overrides
+ * @returns {Promise<AxeResults>} Axe Puppeteer instance
  */
 async function axe(page, overrides = {}) {
   const reporter = new AxePuppeteer(page)
@@ -23,7 +23,7 @@ async function axe(page, overrides = {}) {
   /**
    * Shared options for GOV.UK Frontend
    *
-   * @satisfies {import('axe-core').RunOptions}
+   * @satisfies {RunOptions}
    */
   const options = {
     runOnly: {
@@ -101,11 +101,11 @@ async function axe(page, overrides = {}) {
  * functions as nested context values aren't passed into Puppeteer correctly
  *
  * @template {object} HandlerContext
- * @param {import('puppeteer').Page} page - Puppeteer page object
+ * @param {Page} page - Puppeteer page object
  * @param {string} [componentName] - The kebab-cased name of the component
  * @param {MacroRenderOptions} [renderOptions] - Nunjucks macro render options
  * @param {BrowserRenderOptions<HandlerContext>} [browserOptions] - Puppeteer browser render options
- * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
+ * @returns {Promise<Page>} Puppeteer page object
  */
 async function render(page, componentName, renderOptions, browserOptions) {
   await page.setRequestInterception(true)
@@ -225,7 +225,7 @@ async function render(page, componentName, renderOptions, browserOptions) {
  * - Responds to file:// asset requests (web fonts etc)
  * - Skips unknown requests
  *
- * @param {import('puppeteer').HTTPRequest} request - Puppeteer HTTP request
+ * @param {HTTPRequest} request - Puppeteer HTTP request
  * @returns {Promise<void>}
  */
 async function requestHandler(request) {
@@ -250,11 +250,11 @@ async function requestHandler(request) {
 /**
  * Navigate to path
  *
- * @param {import('puppeteer').Page} page - Puppeteer page object
+ * @param {Page} page - Puppeteer page object
  * @param {URL | string} path - Path or URL to navigate to
  * @param {object} [options] - Navigation options
  * @param {URL} [options.baseURL] - Base URL to override
- * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
+ * @returns {Promise<Page>} Puppeteer page object
  */
 async function goTo(page, path, options) {
   const { href, pathname } = !(path instanceof URL)
@@ -278,11 +278,11 @@ async function goTo(page, path, options) {
 /**
  * Navigate to example
  *
- * @param {import('puppeteer').Browser} browser - Puppeteer browser object
+ * @param {Browser} browser - Puppeteer browser object
  * @param {string} exampleName - Example name
  * @param {object} [options] - Navigation options
  * @param {URL} [options.baseURL] - Base URL to override
- * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
+ * @returns {Promise<Page>} Puppeteer page object
  */
 async function goToExample(browser, exampleName, options) {
   return goTo(await browser.newPage(), `/examples/${exampleName}`, options)
@@ -291,10 +291,10 @@ async function goToExample(browser, exampleName, options) {
 /**
  * Navigate to component preview page
  *
- * @param {import('puppeteer').Browser} browser - Puppeteer browser object
+ * @param {Browser} browser - Puppeteer browser object
  * @param {string} [componentName] - Component name
  * @param {Parameters<typeof getComponentURL>[1]} [options] - Navigation options
- * @returns {Promise<import('puppeteer').Page>} Puppeteer page object
+ * @returns {Promise<Page>} Puppeteer page object
  */
 async function goToComponent(browser, componentName, options) {
   return goTo(await browser.newPage(), getComponentURL(componentName, options))
@@ -336,7 +336,7 @@ function getComponentURL(componentName, options) {
 /**
  * Get property value for element
  *
- * @param {import('puppeteer').ElementHandle} $element - Puppeteer element handle
+ * @param {ElementHandle} $element - Puppeteer element handle
  * @param {string} propertyName - Property name to return value for
  * @returns {Promise<unknown>} Property value
  */
@@ -348,7 +348,7 @@ async function getProperty($element, propertyName) {
 /**
  * Get attribute value for element
  *
- * @param {import('puppeteer').ElementHandle} $element - Puppeteer element handle
+ * @param {ElementHandle} $element - Puppeteer element handle
  * @param {string} attributeName - Attribute name to return value for
  * @returns {Promise<string | null>} Attribute value
  */
@@ -359,8 +359,8 @@ function getAttribute($element, attributeName) {
 /**
  * Gets the accessible name of the given element, if it exists in the accessibility tree
  *
- * @param {import('puppeteer').Page} page - Puppeteer page object
- * @param {import('puppeteer').ElementHandle} $element - Puppeteer element handle
+ * @param {Page} page - Puppeteer page object
+ * @param {ElementHandle} $element - Puppeteer element handle
  * @returns {Promise<string>} The element's accessible name
  * @throws {TypeError} If the element has no corresponding node in the accessibility tree
  */
@@ -377,7 +377,7 @@ async function getAccessibleName(page, $element) {
 /**
  * Check if element is visible
  *
- * @param {import('puppeteer').ElementHandle} $element - Puppeteer element handle
+ * @param {ElementHandle} $element - Puppeteer element handle
  * @returns {Promise<boolean>} Element visibility
  */
 async function isVisible($element) {
@@ -404,19 +404,13 @@ module.exports = {
  * @typedef {object} BrowserRenderOptions - Component render options
  * @property {Config[ConfigKey]} [config] - Component JavaScript config
  * @property {HandlerContext} [context] - Context options for custom functions
- * @property {HandlerFunction<HandlerContext>} [beforeInitialisation] - Custom function to run before initialisation
- * @property {HandlerFunction<HandlerContext>} [afterInitialisation] - Custom function to run after initialisation
+ * @property {EvaluateFuncWith<Element, [HandlerContext]>} [beforeInitialisation] - Custom function to run before initialisation
+ * @property {EvaluateFuncWith<Element, [HandlerContext]>} [afterInitialisation] - Custom function to run after initialisation
  */
 
 /**
- * Browser handler function with context options
- *
- * @template {object} HandlerContext
- * @typedef {import('puppeteer').EvaluateFuncWith<Element, [HandlerContext]>} HandlerFunction
- */
-
-/**
- * @typedef {import('@govuk-frontend/lib/components').MacroRenderOptions} MacroRenderOptions
- * @typedef {import('govuk-frontend').Config} Config - Config for all components via `initAll()`
- * @typedef {import('govuk-frontend').ConfigKey} ConfigKey - Component config keys, e.g. `accordion` and `characterCount`
+ * @import { MacroRenderOptions } from '@govuk-frontend/lib/components'
+ * @import { AxeResults, RuleObject, RunOptions } from 'axe-core'
+ * @import { Config, ConfigKey } from 'govuk-frontend'
+ * @import { Browser, ElementHandle, EvaluateFuncWith, HTTPRequest, Page } from 'puppeteer'
  */

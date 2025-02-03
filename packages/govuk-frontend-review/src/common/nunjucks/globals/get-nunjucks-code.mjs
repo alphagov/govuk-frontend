@@ -32,5 +32,5 @@ export function getNunjucksCode(componentName, options) {
 }
 
 /**
- * @typedef {import('@govuk-frontend/lib/components').MacroRenderOptions} MacroRenderOptions
+ * @import {MacroRenderOptions} from '@govuk-frontend/lib/components'
  */

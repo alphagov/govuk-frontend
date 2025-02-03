@@ -27,9 +27,12 @@ module.exports = function (api) {
         )
 
         // Flag any JSDoc comments worth keeping
-        const isDocumentation = ['* @param', '* @returns', '* @typedef'].some(
-          (tag) => comment.includes(tag)
-        )
+        const isDocumentation = [
+          '* @param',
+          '* @returns',
+          '* @typedef',
+          '* @import'
+        ].some((tag) => comment.includes(tag))
 
         // Print only public JSDoc comments
         return !isPrivate && isDocumentation
