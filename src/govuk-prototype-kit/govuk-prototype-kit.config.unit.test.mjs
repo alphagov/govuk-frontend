@@ -3,7 +3,7 @@ import { pkg } from '@govuk-frontend/config'
 import configFn from './govuk-prototype-kit.config.mjs'
 
 describe('GOV.UK Prototype Kit config', () => {
-  /** @type {import('./govuk-prototype-kit.config.mjs').PrototypeKitConfig} */
+  /** @type {PrototypeKitConfig} */
   let config
 
   beforeAll(async () => {
@@ -196,3 +196,7 @@ describe('GOV.UK Prototype Kit config', () => {
     })
   })
 })
+
+/**
+ * @import { PrototypeKitConfig } from './govuk-prototype-kit.config.mjs'
+ */
