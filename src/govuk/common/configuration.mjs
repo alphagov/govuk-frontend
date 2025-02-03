@@ -149,6 +149,7 @@ export function normaliseString(value, property) {
  *
  * @internal
  * @template {Partial<Record<keyof ConfigurationType, unknown>>} ConfigurationType
+ * @template {[keyof ConfigurationType, SchemaProperty | undefined][]} SchemaEntryType
  * @param {{ schema?: Schema<ConfigurationType>, moduleName: string }} Component - Component class
  * @param {DOMStringMap} dataset - HTML element dataset
  * @returns {ObjectNested} Normalised dataset
@@ -163,13 +164,16 @@ export function normaliseDataset(Component, dataset) {
     )
   }
 
-  const out = /** @type {ReturnType<typeof normaliseDataset>} */ ({})
+  const out = /** @type {ObjectNested} */ ({})
+  const entries = /** @type {SchemaEntryType} */ (
+    Object.entries(Component.schema.properties)
+  )
 
   // Normalise top-level dataset ('data-*') values using schema types
-  for (const entries of /** @type {[keyof ConfigurationType, SchemaProperty | undefined][]} */ (
-    Object.entries(Component.schema.properties)
-  )) {
-    const [namespace, property] = entries
+  for (const entry of entries) {
+    const [namespace, property] = entry
+
+    // Cast the `namespace` to string so it can be used to access the dataset
     const field = namespace.toString()
 
     if (field in dataset) {
