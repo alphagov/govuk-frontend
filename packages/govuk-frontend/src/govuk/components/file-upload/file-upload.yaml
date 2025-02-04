@@ -224,7 +224,7 @@ examples:
       javascript: true
       chooseFilesButtonText: Dewiswch ffeil
       dropInstructionText: neu ollwng ffeil
-      filesSelectedDefaultText: Dim ffeiliau wedi'u dewis
+      noFileChosenText: Dim ffeil wedi'i dewis
       filesSelectedText:
         other: "%{count} ffeil wedi'u dewis"
         one: "%{count} ffeil wedi'i dewis"
@@ -320,7 +320,7 @@ examples:
         text: Llwythwch ffeil i fyny
       multiple: true
       chooseFilesButtonText: Dewiswch ffeil
-      filesSelectedDefaultText: Dim ffeiliau wedi'u dewis
+      noFileChosenText: Dim ffeiliau wedi'u dewis
       filesSelectedText:
         other: "%{count} ffeil wedi'u dewis"
         one: "%{count} ffeil wedi'i dewis"

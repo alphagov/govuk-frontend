@@ -105,7 +105,7 @@ export class FileUpload extends ConfigurableComponent {
     // Create status element that shows what/how many files are selected
     const $status = document.createElement('span')
     $status.className = 'govuk-body govuk-file-upload__status'
-    $status.innerText = this.i18n.t('filesSelectedDefault')
+    $status.innerText = this.i18n.t('noFileChosen')
 
     $button.appendChild($status)
 
@@ -264,7 +264,7 @@ export class FileUpload extends ConfigurableComponent {
 
     if (fileCount === 0) {
       // If there are no files, show the default selection text
-      this.$status.innerText = this.i18n.t('filesSelectedDefault')
+      this.$status.innerText = this.i18n.t('noFileChosen')
       this.$button.classList.add('govuk-file-upload__button--empty')
     } else {
       if (
@@ -361,7 +361,7 @@ export class FileUpload extends ConfigurableComponent {
     i18n: {
       chooseFilesButton: 'Choose file',
       dropInstruction: 'or drop file',
-      filesSelectedDefault: 'No file chosen',
+      noFileChosen: 'No file chosen',
       filesSelected: {
         // the 'one' string isn't used as the component displays the filename
         // instead, however it's here for coverage's sake
