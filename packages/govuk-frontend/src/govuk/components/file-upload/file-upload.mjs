@@ -274,7 +274,7 @@ export class FileUpload extends ConfigurableComponent {
         this.$status.innerText = this.$input.files[0].name
       } else {
         // Otherwise, tell the user how many files are selected
-        this.$status.innerText = this.i18n.t('filesSelected', {
+        this.$status.innerText = this.i18n.t('multipleFilesChosen', {
           count: fileCount
         })
       }
@@ -362,7 +362,7 @@ export class FileUpload extends ConfigurableComponent {
       chooseFilesButton: 'Choose file',
       dropInstruction: 'or drop file',
       noFileChosen: 'No file chosen',
-      filesSelected: {
+      multipleFilesChosen: {
         // the 'one' string isn't used as the component displays the filename
         // instead, however it's here for coverage's sake
         one: '%{count} file chosen',
@@ -425,7 +425,7 @@ function isContainingFiles(dataTransfer) {
  *
  * Messages used by the component
  * @property {string} [selectFiles] - Text of button that opens file browser
- * @property {TranslationPluralForms} [filesSelected] - Text indicating how
+ * @property {TranslationPluralForms} [multipleFilesChosen] - Text indicating how
  *   many files have been selected
  * @property {string} [dropZoneEntered] - Text announced to assistive technology
  *   when users entered the drop zone while dragging
