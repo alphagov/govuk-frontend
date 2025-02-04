@@ -253,7 +253,7 @@ export class FileUpload extends ConfigurableComponent {
    */
   hideDropZone() {
     this.$root.classList.remove('govuk-file-upload-wrapper--show-dropzone')
-    this.$announcements.innerText = this.i18n.t('dropZoneLeft')
+    this.$announcements.innerText = this.i18n.t('leftDropZone')
   }
 
   /**
@@ -363,7 +363,7 @@ export class FileUpload extends ConfigurableComponent {
         other: '%{count} files chosen'
       },
       enteredDropZone: 'Entered drop zone',
-      dropZoneLeft: 'Left drop zone'
+      leftDropZone: 'Left drop zone'
     }
   })
 
@@ -423,7 +423,7 @@ function isContainingFiles(dataTransfer) {
  *   many files have been selected
  * @property {string} [enteredDropZone] - Text announced to assistive technology
  *   when users entered the drop zone while dragging
- * @property {string} [dropZoneLeft] - Text announced to assistive technology
+ * @property {string} [leftDropZone] - Text announced to assistive technology
  *   when users left the drop zone while dragging
  */
 
