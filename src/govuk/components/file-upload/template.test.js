@@ -263,6 +263,9 @@ describe('File upload', () => {
       expect($wrapper.attr('data-i18n.entered-drop-zone')).toBe(
         "Wedi mynd i mewn i'r parth gollwng"
       )
+      expect($wrapper.attr('data-i18n.left-drop-zone')).toBe(
+        "Parth gollwng i'r chwith"
+      )
     })
 
     it('prevents the rendering of translation messages when false', () => {
