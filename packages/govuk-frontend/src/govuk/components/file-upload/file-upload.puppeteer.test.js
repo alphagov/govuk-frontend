@@ -415,7 +415,7 @@ describe('/components/file-upload', () => {
           )
 
           expect(buttonElementText).toBe('Dewiswch ffeil')
-          expect(statusElementText).toBe("Dim ffeiliau wedi'u dewis")
+          expect(statusElementText).toBe("Dim ffeil wedi'i dewis")
         })
 
         describe('status element', () => {
@@ -424,7 +424,7 @@ describe('/components/file-upload', () => {
               el.innerHTML.trim()
             )
 
-            expect(statusText).toBe("Dim ffeiliau wedi'u dewis")
+            expect(statusText).toBe("Dim ffeil wedi'i dewis")
           })
 
           it('uses the correct translation when multiple files are selected', async () => {

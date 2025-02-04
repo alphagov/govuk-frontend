@@ -251,8 +251,8 @@ describe('File upload', () => {
       expect($wrapper.attr('data-i18n.drop-instruction')).toBe(
         'neu ollwng ffeil'
       )
-      expect($wrapper.attr('data-i18n.files-selected-default')).toBe(
-        "Dim ffeiliau wedi'u dewis"
+      expect($wrapper.attr('data-i18n.no-file-chosen')).toBe(
+        "Dim ffeil wedi'i dewis"
       )
       expect($wrapper.attr('data-i18n.files-selected.one')).toBe(
         "%{count} ffeil wedi'i dewis"
