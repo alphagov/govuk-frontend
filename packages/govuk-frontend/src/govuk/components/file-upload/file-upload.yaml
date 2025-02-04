@@ -103,7 +103,7 @@ params:
     description: The text announced by assistive technology when user drags files and enters the drop zone. Default is `"Entered drop zone"`. If `javascript` is not provided, this option will be ignored.
   - name: leftDropZoneText
     type: string
-    require: false
+    required: false
     description: The text announced by assistive technology when user drags files and leaves the drop zone without dropping. Default is `"Left drop zone"`. If `javascript` is not provided, this option will be ignored.
   - name: classes
     type: string
@@ -229,6 +229,7 @@ examples:
         other: "%{count} ffeil wedi'u dewis"
         one: "%{count} ffeil wedi'i dewis"
       enteredDropZoneText: Wedi mynd i mewn i'r parth gollwng
+      leftDropZoneText: Parth gollwng i'r chwith
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: with value
@@ -326,3 +327,4 @@ examples:
         other: "%{count} ffeil wedi'u dewis"
         one: "%{count} ffeil wedi'i dewis"
       enteredDropZoneText: Wedi mynd i mewn i'r parth gollwng
+      leftDropZoneText: Parth gollwng i'r chwith
