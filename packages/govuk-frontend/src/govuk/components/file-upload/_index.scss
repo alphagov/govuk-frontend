@@ -110,13 +110,13 @@
   .govuk-file-upload__button {
     width: 100%;
     // align the padding to be same as notification banner and error summary accounting for the thicker borders
-    padding: govuk-spacing(3) (govuk-spacing(3) + $govuk-border-width - $file-upload-border-width);
+    padding: (govuk-spacing(3) + $govuk-border-width - $file-upload-border-width);
     border: $file-upload-border-width govuk-colour("mid-grey") dashed;
     background-color: govuk-colour("white");
     cursor: pointer;
 
     @include govuk-media-query($from: tablet) {
-      padding: govuk-spacing(3) (govuk-spacing(4) + $govuk-border-width - $file-upload-border-width);
+      padding: (govuk-spacing(4) + $govuk-border-width - $file-upload-border-width);
     }
   }
 
