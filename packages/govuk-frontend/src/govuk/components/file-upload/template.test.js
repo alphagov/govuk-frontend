@@ -245,7 +245,7 @@ describe('File upload', () => {
 
       const $wrapper = $('.govuk-form-group > .govuk-file-upload-wrapper')
 
-      expect($wrapper.attr('data-i18n.select-files-button')).toBe(
+      expect($wrapper.attr('data-i18n.choose-files-button')).toBe(
         'Dewiswch ffeil'
       )
       expect($wrapper.attr('data-i18n.files-selected-default')).toBe(
