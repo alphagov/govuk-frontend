@@ -248,6 +248,9 @@ describe('File upload', () => {
       expect($wrapper.attr('data-i18n.choose-files-button')).toBe(
         'Dewiswch ffeil'
       )
+      expect($wrapper.attr('data-i18n.drop-instruction')).toBe(
+        'neu ollwng ffeil'
+      )
       expect($wrapper.attr('data-i18n.files-selected-default')).toBe(
         "Dim ffeiliau wedi'u dewis"
       )
