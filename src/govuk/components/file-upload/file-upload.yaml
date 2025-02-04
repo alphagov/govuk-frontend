@@ -228,6 +228,7 @@ examples:
       multipleFilesChosenText:
         other: "%{count} ffeil wedi'u dewis"
         one: "%{count} ffeil wedi'i dewis"
+      enteredDropZoneText: Wedi mynd i mewn i'r parth gollwng
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: with value
@@ -324,3 +325,4 @@ examples:
       multipleFilesChosenText:
         other: "%{count} ffeil wedi'u dewis"
         one: "%{count} ffeil wedi'i dewis"
+      enteredDropZoneText: Wedi mynd i mewn i'r parth gollwng

@@ -65,6 +65,10 @@
       key: 'drop-instruction',
       message: params.dropInstructionText
     }) -}}
+    {{- govukI18nAttributes({
+      key: 'entered-drop-zone',
+      message: params.enteredDropZoneText
+    }) -}}
   >
 {% endif %}
   <input class="govuk-file-upload {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-file-upload--error{% endif %}" id="{{ id }}" name="{{ params.name }}" type="file"

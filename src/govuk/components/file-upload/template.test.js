@@ -260,6 +260,9 @@ describe('File upload', () => {
       expect($wrapper.attr('data-i18n.multiple-files-chosen.other')).toBe(
         "%{count} ffeil wedi'u dewis"
       )
+      expect($wrapper.attr('data-i18n.entered-drop-zone')).toBe(
+        "Wedi mynd i mewn i'r parth gollwng"
+      )
     })
 
     it('prevents the rendering of translation messages when false', () => {
