@@ -223,7 +223,7 @@ examples:
       multiple: true
       javascript: true
       chooseFilesButtonText: Dewiswch ffeil
-      instructionText: neu ollwng ffeil
+      dropInstructionText: neu ollwng ffeil
       filesSelectedDefaultText: Dim ffeiliau wedi'u dewis
       filesSelectedText:
         other: "%{count} ffeil wedi'u dewis"

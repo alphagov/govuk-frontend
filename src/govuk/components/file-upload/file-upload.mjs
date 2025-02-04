@@ -132,7 +132,7 @@ export class FileUpload extends ConfigurableComponent {
 
     const instructionSpan = document.createElement('span')
     instructionSpan.className = 'govuk-body govuk-file-upload__instruction'
-    instructionSpan.innerText = this.i18n.t('instruction')
+    instructionSpan.innerText = this.i18n.t('dropInstruction')
 
     containerSpan.appendChild(instructionSpan)
 
@@ -360,6 +360,7 @@ export class FileUpload extends ConfigurableComponent {
   static defaults = Object.freeze({
     i18n: {
       chooseFilesButton: 'Choose file',
+      dropInstruction: 'or drop file',
       filesSelectedDefault: 'No file chosen',
       filesSelected: {
         // the 'one' string isn't used as the component displays the filename
@@ -368,8 +369,7 @@ export class FileUpload extends ConfigurableComponent {
         other: '%{count} files chosen'
       },
       dropZoneEntered: 'Entered drop zone',
-      dropZoneLeft: 'Left drop zone',
-      instruction: 'or drop file'
+      dropZoneLeft: 'Left drop zone'
     }
   })
 
