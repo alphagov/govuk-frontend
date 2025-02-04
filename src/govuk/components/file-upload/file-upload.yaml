@@ -222,7 +222,7 @@ examples:
         text: Llwythwch ffeil i fyny
       multiple: true
       javascript: true
-      selectFilesButtonText: Dewiswch ffeil
+      chooseFilesButtonText: Dewiswch ffeil
       instructionText: neu ollwng ffeil
       filesSelectedDefaultText: Dim ffeiliau wedi'u dewis
       filesSelectedText:
@@ -319,7 +319,7 @@ examples:
       label:
         text: Llwythwch ffeil i fyny
       multiple: true
-      selectFilesButtonText: Dewiswch ffeil
+      chooseFilesButtonText: Dewiswch ffeil
       filesSelectedDefaultText: Dim ffeiliau wedi'u dewis
       filesSelectedText:
         other: "%{count} ffeil wedi'u dewis"

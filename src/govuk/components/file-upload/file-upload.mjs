@@ -122,7 +122,7 @@ export class FileUpload extends ConfigurableComponent {
     const buttonSpan = document.createElement('span')
     buttonSpan.className =
       'govuk-button govuk-button--secondary govuk-file-upload__pseudo-button'
-    buttonSpan.innerText = this.i18n.t('selectFilesButton')
+    buttonSpan.innerText = this.i18n.t('chooseFilesButton')
 
     containerSpan.appendChild(buttonSpan)
 
@@ -359,7 +359,7 @@ export class FileUpload extends ConfigurableComponent {
    */
   static defaults = Object.freeze({
     i18n: {
-      selectFilesButton: 'Choose file',
+      chooseFilesButton: 'Choose file',
       filesSelectedDefault: 'No file chosen',
       filesSelected: {
         // the 'one' string isn't used as the component displays the filename
