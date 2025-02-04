@@ -424,13 +424,15 @@ function isContainingFiles(dataTransfer) {
  * @typedef {object} FileUploadTranslations
  *
  * Messages used by the component
- * @property {string} [selectFiles] - Text of button that opens file browser
- * @property {TranslationPluralForms} [multipleFilesChosen] - Text indicating how
- *   many files have been selected
- * @property {string} [enteredDropZone] - Text announced to assistive technology
- *   when users entered the drop zone while dragging
- * @property {string} [leftDropZone] - Text announced to assistive technology
- *   when users left the drop zone while dragging
+ * @property {string} [chooseFile] - The text of the button that opens the file picker
+ * @property {string} [dropInstruction] - The text informing users they can drop files
+ * @property {TranslationPluralForms} [multipleFilesChosen] - The text displayed when multiple files
+ *   have been chosen by the user
+ * @property {string} [noFileChosen] - The text to displayed when no file has been chosen by the user
+ * @property {string} [enteredDropZone] - The text announced by assistive technology
+ *   when user drags files and enters the drop zone
+ * @property {string} [leftDropZone] - The text announced by assistive technology
+ *   when user drags files and leaves the drop zone without dropping
  */
 
 /**
