@@ -55,6 +55,10 @@
     background-color: $govuk-body-background-colour;
   }
 
+  .govuk-file-upload-wrapper--disabled {
+    cursor: not-allowed;
+  }
+
   .govuk-frontend-supported .govuk-file-upload-wrapper .govuk-file-upload {
     position: absolute;
     // Make the native control take up the entire space of the element, but
@@ -69,7 +73,7 @@
     opacity: 0;
   }
 
-  .govuk-frontend-supported .govuk-file-upload-wrapper--show-dropzone .govuk-file-upload {
+  .govuk-frontend-supported .govuk-file-upload-wrapper .govuk-file-upload--dragging {
     z-index: 1;
   }
 
@@ -123,33 +127,30 @@
   .govuk-file-upload__button:disabled {
     pointer-events: none;
     opacity: 0.5;
-    cursor: not-allowed;
   }
 
-  .govuk-file-upload-wrapper--show-dropzone .govuk-file-upload__button:not(:disabled),
+  .govuk-file-upload__button--dragging:not(:disabled),
   .govuk-file-upload__button:hover {
     border-color: govuk-shade(govuk-colour("mid-grey"), 20%);
     background-color: govuk-colour("light-grey");
   }
 
-  .govuk-file-upload-wrapper--show-dropzone .govuk-file-upload__pseudo-button,
+  .govuk-file-upload__button--dragging:not(:disabled) .govuk-file-upload__pseudo-button,
   .govuk-file-upload__button:hover .govuk-file-upload__pseudo-button {
     background-color: govuk-shade(govuk-colour("light-grey"), 10%);
   }
 
-  .govuk-file-upload-wrapper--show-dropzone .govuk-file-upload__button:not(:disabled) {
+  .govuk-file-upload__button--dragging:not(:disabled) {
     border: $file-upload-border-width solid govuk-colour("black");
   }
 
-  .govuk-file-upload-wrapper--show-dropzone .govuk-file-upload__button:not(:disabled) .govuk-file-upload__status--empty,
+  .govuk-file-upload__button--dragging:not(:disabled) .govuk-file-upload__status--empty,
   .govuk-file-upload__button:hover .govuk-file-upload__status--empty,
   .govuk-file-upload__button:focus .govuk-file-upload__status--empty {
     background-color: govuk-tint(govuk-colour("blue"), 80%);
   }
 
-  .govuk-file-upload-wrapper--show-dropzone
-    .govuk-file-upload__button:not(:disabled)
-    .govuk-file-upload__pseudo-button {
+  .govuk-file-upload__button--dragging .govuk-file-upload__pseudo-button {
     background-color: govuk-colour("white");
   }
 
