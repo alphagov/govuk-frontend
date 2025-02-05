@@ -93,6 +93,7 @@ export class FileUpload extends ConfigurableComponent {
     $button.classList.add('govuk-file-upload__button')
     $button.type = 'button'
     $button.id = this.id
+    $button.classList.add('govuk-file-upload__button--empty')
 
     // Copy `aria-describedby` if present so hints and errors
     // are associated to the `<button>`
@@ -105,7 +106,6 @@ export class FileUpload extends ConfigurableComponent {
     const $status = document.createElement('span')
     $status.className = 'govuk-body govuk-file-upload__status'
     $status.innerText = this.i18n.t('filesSelectedDefault')
-    $status.classList.add('govuk-file-upload__status--empty')
 
     $button.appendChild($status)
 
@@ -265,7 +265,7 @@ export class FileUpload extends ConfigurableComponent {
     if (fileCount === 0) {
       // If there are no files, show the default selection text
       this.$status.innerText = this.i18n.t('filesSelectedDefault')
-      this.$status.classList.add('govuk-file-upload__status--empty')
+      this.$button.classList.add('govuk-file-upload__button--empty')
     } else {
       if (
         // If there is 1 file, just show the file name
@@ -279,7 +279,7 @@ export class FileUpload extends ConfigurableComponent {
         })
       }
 
-      this.$status.classList.remove('govuk-file-upload__status--empty')
+      this.$button.classList.remove('govuk-file-upload__button--empty')
     }
   }
 
