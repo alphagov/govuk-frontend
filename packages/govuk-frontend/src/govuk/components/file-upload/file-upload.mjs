@@ -144,7 +144,7 @@ export class FileUpload extends ConfigurableComponent {
     $button.addEventListener('click', this.onClick.bind(this))
 
     // Assemble these all together
-    this.$root.insertAdjacentElement('beforeend', $button)
+    this.$root.insertAdjacentElement('afterbegin', $button)
 
     this.$input.setAttribute('tabindex', '-1')
     this.$input.setAttribute('aria-hidden', 'true')
@@ -225,11 +225,12 @@ export class FileUpload extends ConfigurableComponent {
           // Only update the class and make the announcement if not already visible
           // to avoid repeated announcements on NVDA (2024.4) + Firefox (133)
           if (
-            !this.$root.classList.contains(
-              'govuk-file-upload-wrapper--show-dropzone'
+            !this.$button.classList.contains(
+              'govuk-file-upload__button--dragging'
             )
           ) {
-            this.$root.classList.add('govuk-file-upload-wrapper--show-dropzone')
+            this.$button.classList.add('govuk-file-upload__button--dragging')
+            this.$input.classList.add('govuk-file-upload--dragging')
             this.$announcements.innerText = this.i18n.t('dropZoneEntered')
           }
         }
@@ -238,9 +239,7 @@ export class FileUpload extends ConfigurableComponent {
         // left the drop zone when they enter the page but haven't reached yet
         // the file upload component
         if (
-          this.$root.classList.contains(
-            'govuk-file-upload-wrapper--show-dropzone'
-          )
+          this.$button.classList.contains('govuk-file-upload__button--dragging')
         ) {
           this.hideDropZone()
         }
@@ -252,7 +251,8 @@ export class FileUpload extends ConfigurableComponent {
    * Hides the dropzone once user has dropped files on the `<input>`
    */
   hideDropZone() {
-    this.$root.classList.remove('govuk-file-upload-wrapper--show-dropzone')
+    this.$button.classList.remove('govuk-file-upload__button--dragging')
+    this.$input.classList.remove('govuk-file-upload--dragging')
     this.$announcements.innerText = this.i18n.t('dropZoneLeft')
   }
 
@@ -337,6 +337,12 @@ export class FileUpload extends ConfigurableComponent {
    */
   updateDisabledState() {
     this.$button.disabled = this.$input.disabled
+
+    if (this.$button.disabled) {
+      this.$root.classList.add('govuk-file-upload-wrapper--disabled')
+    } else {
+      this.$root.classList.remove('govuk-file-upload-wrapper--disabled')
+    }
   }
 
   /**
