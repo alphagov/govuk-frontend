@@ -50,20 +50,28 @@
     class="govuk-file-upload-wrapper"
     data-module="govuk-file-upload"
     {{- govukI18nAttributes({
-      key: 'select-files-button',
-      message: params.selectFilesButtonText
+      key: 'choose-files-button',
+      message: params.chooseFilesButtonText
     }) -}}
     {{- govukI18nAttributes({
-      key: 'files-selected-default',
-      message: params.filesSelectedDefaultText
+      key: 'no-file-chosen',
+      message: params.noFileChosenText
     }) -}}
     {{- govukI18nAttributes({
-      key: 'files-selected',
-      messages: params.filesSelectedText
+      key: 'multiple-files-chosen',
+      messages: params.multipleFilesChosenText
     }) -}}
     {{- govukI18nAttributes({
-      key: 'instruction',
-      message: params.instructionText
+      key: 'drop-instruction',
+      message: params.dropInstructionText
+    }) -}}
+    {{- govukI18nAttributes({
+      key: 'entered-drop-zone',
+      message: params.enteredDropZoneText
+    }) -}}
+    {{- govukI18nAttributes({
+      key: 'left-drop-zone',
+      message: params.leftDropZoneText
     }) -}}
   >
 {% endif %}

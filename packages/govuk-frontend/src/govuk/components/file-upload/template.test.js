@@ -245,17 +245,26 @@ describe('File upload', () => {
 
       const $wrapper = $('.govuk-form-group > .govuk-file-upload-wrapper')
 
-      expect($wrapper.attr('data-i18n.select-files-button')).toBe(
+      expect($wrapper.attr('data-i18n.choose-files-button')).toBe(
         'Dewiswch ffeil'
       )
-      expect($wrapper.attr('data-i18n.files-selected-default')).toBe(
-        "Dim ffeiliau wedi'u dewis"
+      expect($wrapper.attr('data-i18n.drop-instruction')).toBe(
+        'neu ollwng ffeil'
       )
-      expect($wrapper.attr('data-i18n.files-selected.one')).toBe(
+      expect($wrapper.attr('data-i18n.no-file-chosen')).toBe(
+        "Dim ffeil wedi'i dewis"
+      )
+      expect($wrapper.attr('data-i18n.multiple-files-chosen.one')).toBe(
         "%{count} ffeil wedi'i dewis"
       )
-      expect($wrapper.attr('data-i18n.files-selected.other')).toBe(
+      expect($wrapper.attr('data-i18n.multiple-files-chosen.other')).toBe(
         "%{count} ffeil wedi'u dewis"
+      )
+      expect($wrapper.attr('data-i18n.entered-drop-zone')).toBe(
+        "Wedi mynd i mewn i'r parth gollwng"
+      )
+      expect($wrapper.attr('data-i18n.left-drop-zone')).toBe(
+        "Parth gollwng i'r chwith"
       )
     })
 
