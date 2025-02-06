@@ -14,6 +14,8 @@ if [ "$CURRENT_VERSION" = "$HIGHEST_PUBLISHED_VERSION" ]; then
   exit 1
 elif echo "$CURRENT_VERSION" | grep -q "internal"; then
   NPM_TAG="internal"
+elif echo "$CURRENT_VERSION" | grep -q "beta"; then
+  NPM_TAG="next"
 elif [ $(version "$CURRENT_VERSION") -ge $(version "$HIGHEST_PUBLISHED_VERSION") ]; then
   NPM_TAG="latest"
 else
