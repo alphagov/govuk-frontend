@@ -185,6 +185,16 @@ examples:
       label:
         text: Upload a file
       javascript: true
+  - name: enhanced, disabled
+    options:
+      javascript: true
+      disabled: true
+      id: file-upload-error
+      name: file-upload-error
+      label:
+        text: Upload a file
+      hint:
+        text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
   - name: enhanced, with error message and hint
     options:
       javascript: true

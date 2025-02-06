@@ -255,9 +255,9 @@ describe('/components/file-upload', () => {
         }
 
         const selectorDropzoneVisible =
-          '.govuk-file-upload-wrapper.govuk-file-upload-wrapper--show-dropzone'
+          '.govuk-file-upload__button.govuk-file-upload__button--dragging'
         const selectorDropzoneHidden =
-          '.govuk-file-upload-wrapper:not(.govuk-file-upload-wrapper--show-dropzone)'
+          '.govuk-file-upload__button:not(.govuk-file-upload__button--dragging)'
 
         beforeEach(async () => {
           await render(page, 'file-upload', examples.enhanced)

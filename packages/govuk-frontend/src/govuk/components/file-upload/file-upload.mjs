@@ -93,6 +93,7 @@ export class FileUpload extends ConfigurableComponent {
     $button.classList.add('govuk-file-upload__button')
     $button.type = 'button'
     $button.id = this.id
+    $button.classList.add('govuk-file-upload__button--empty')
 
     // Copy `aria-describedby` if present so hints and errors
     // are associated to the `<button>`
@@ -105,7 +106,6 @@ export class FileUpload extends ConfigurableComponent {
     const $status = document.createElement('span')
     $status.className = 'govuk-body govuk-file-upload__status'
     $status.innerText = this.i18n.t('filesSelectedDefault')
-    $status.classList.add('govuk-file-upload__status--empty')
 
     $button.appendChild($status)
 
@@ -144,7 +144,7 @@ export class FileUpload extends ConfigurableComponent {
     $button.addEventListener('click', this.onClick.bind(this))
 
     // Assemble these all together
-    this.$root.insertAdjacentElement('beforeend', $button)
+    this.$root.insertAdjacentElement('afterbegin', $button)
 
     this.$input.setAttribute('tabindex', '-1')
     this.$input.setAttribute('aria-hidden', 'true')
@@ -225,11 +225,12 @@ export class FileUpload extends ConfigurableComponent {
           // Only update the class and make the announcement if not already visible
           // to avoid repeated announcements on NVDA (2024.4) + Firefox (133)
           if (
-            !this.$root.classList.contains(
-              'govuk-file-upload-wrapper--show-dropzone'
+            !this.$button.classList.contains(
+              'govuk-file-upload__button--dragging'
             )
           ) {
-            this.$root.classList.add('govuk-file-upload-wrapper--show-dropzone')
+            this.$button.classList.add('govuk-file-upload__button--dragging')
+            this.$input.classList.add('govuk-file-upload--dragging')
             this.$announcements.innerText = this.i18n.t('dropZoneEntered')
           }
         }
@@ -238,9 +239,7 @@ export class FileUpload extends ConfigurableComponent {
         // left the drop zone when they enter the page but haven't reached yet
         // the file upload component
         if (
-          this.$root.classList.contains(
-            'govuk-file-upload-wrapper--show-dropzone'
-          )
+          this.$button.classList.contains('govuk-file-upload__button--dragging')
         ) {
           this.hideDropZone()
         }
@@ -252,7 +251,8 @@ export class FileUpload extends ConfigurableComponent {
    * Hides the dropzone once user has dropped files on the `<input>`
    */
   hideDropZone() {
-    this.$root.classList.remove('govuk-file-upload-wrapper--show-dropzone')
+    this.$button.classList.remove('govuk-file-upload__button--dragging')
+    this.$input.classList.remove('govuk-file-upload--dragging')
     this.$announcements.innerText = this.i18n.t('dropZoneLeft')
   }
 
@@ -265,7 +265,7 @@ export class FileUpload extends ConfigurableComponent {
     if (fileCount === 0) {
       // If there are no files, show the default selection text
       this.$status.innerText = this.i18n.t('filesSelectedDefault')
-      this.$status.classList.add('govuk-file-upload__status--empty')
+      this.$button.classList.add('govuk-file-upload__button--empty')
     } else {
       if (
         // If there is 1 file, just show the file name
@@ -279,7 +279,7 @@ export class FileUpload extends ConfigurableComponent {
         })
       }
 
-      this.$status.classList.remove('govuk-file-upload__status--empty')
+      this.$button.classList.remove('govuk-file-upload__button--empty')
     }
   }
 
@@ -337,6 +337,12 @@ export class FileUpload extends ConfigurableComponent {
    */
   updateDisabledState() {
     this.$button.disabled = this.$input.disabled
+
+    if (this.$button.disabled) {
+      this.$root.classList.add('govuk-file-upload-wrapper--disabled')
+    } else {
+      this.$root.classList.remove('govuk-file-upload-wrapper--disabled')
+    }
   }
 
   /**
