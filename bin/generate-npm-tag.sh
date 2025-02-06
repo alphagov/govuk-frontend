@@ -14,6 +14,11 @@ if [ "$CURRENT_VERSION" = "$HIGHEST_PUBLISHED_VERSION" ]; then
   exit 1
 elif echo "$CURRENT_VERSION" | grep -q "internal"; then
   NPM_TAG="internal"
+elif echo "$CURRENT_VERSION" | grep -q "beta"; then
+  NPM_TAG="next"
+elif echo "$CURRENT_VERSION" | grep -q -E '^\d+\.\d+\.\d+-\D+(\.\d+)?$'; then
+  echo "⚠️ Pre-releases with an identifier other than 'beta' or 'internal' are not allowed, therefore we will not generate an npm tag. Please check your current version."
+  exit 1
 elif [ $(version "$CURRENT_VERSION") -ge $(version "$HIGHEST_PUBLISHED_VERSION") ]; then
   NPM_TAG="latest"
 else
