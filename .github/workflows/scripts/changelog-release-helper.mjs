@@ -107,8 +107,7 @@ export function updateChangelog(newVersion) {
   if (!versionDiff) {
     throw new Error(processingErrorMessage)
   }
-
-  const newVersionTitle = buildNewReleaseTitle(newVersion, versionDiff)
+  const newVersionTitle = `## v${newVersion} (${convertIncTypeWord(versionDiff, newVersion, true, changelogLines[previousReleaseLineIndex])} release)`
 
   changelogLines.splice(startIndex + 1, 0, '', newVersionTitle)
   writeFileSync('./CHANGELOG.md', changelogLines.join('\n'))
@@ -256,25 +255,52 @@ function getPrereleaseIdentifier(version) {
 }
 
 /**
- * Constructs a release heading for the changelog based on a passed semver and
- * a diff keyword (major, minor or patch)
+ * Convert a standard SemVer increment word eg: major, minor or patch into the
+ * wording we use for release titles. The conversion:
  *
- * @param {string} newVersion
+ * - major -> breaking
+ * - minor -> feature
+ * - patch -> fix
+ *
+ * If the increment is a pre-release eg: prepatch, we split the 'pre' substring
+ * from the inc and call this function recursively to generate a string of the
+ * format '{identifier} {increment type}' Eg: where the current version is 6.2.1
+ * and the new version is 6.3.0-beta.0, the generated string would be
+ * 'Beta feature'
+ *
  * @param {string} incType
- * @returns {string} - Constructed release heading of format '## v[semver (X.Y.Z)] ([Type] release)'
+ * @param {string|null} version
+ * @param {boolean} capitalise
+ * @param {string|null} lastReleaseTitle
+ * @returns {string} - The reworded increment type
  */
-function buildNewReleaseTitle(newVersion, incType) {
+function convertIncTypeWord(
+  incType,
+  version = null,
+  capitalise = false,
+  lastReleaseTitle = null
+) {
   let rewordedIncType
 
   if (incType === 'major') {
-    rewordedIncType = 'Breaking'
+    rewordedIncType = 'breaking'
   } else if (incType === 'minor') {
-    rewordedIncType = 'Feature'
+    rewordedIncType = 'feature'
   } else if (incType === 'patch') {
-    rewordedIncType = 'Fix'
+    rewordedIncType = 'fix'
+  } else if (incType === 'prerelease' && lastReleaseTitle != null) {
+    rewordedIncType = lastReleaseTitle.substring(
+      lastReleaseTitle.indexOf('(') + 1,
+      lastReleaseTitle.indexOf(' release')
+    )
+  } else if (incType.includes('pre') && version != null) {
+    const identifier = getPrereleaseIdentifier(version)
+    rewordedIncType = `${identifier} ${convertIncTypeWord(incType.slice(3))}`
   } else {
     rewordedIncType = incType
   }
 
-  return `## v${newVersion} (${rewordedIncType} release)`
+  return capitalise
+    ? `${rewordedIncType.charAt(0).toUpperCase()}${rewordedIncType.slice(1)}`
+    : rewordedIncType
 }
