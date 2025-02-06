@@ -121,6 +121,16 @@ describe('Changelog release helper', () => {
         expect.stringContaining('## v3.1.0-beta.1 (Beta feature release)')
       )
     })
+
+    it('does not change the changelog if the provided version is an internal pre-release', () => {
+      const consoleLogSpy = jest.spyOn(console, 'log')
+
+      updateChangelog('3.1.0-internal.0')
+      expect(consoleLogSpy).toHaveBeenCalledWith(
+        'This is an internal release, intended for testing only. The changelog will therefore not be updated.'
+      )
+      expect(fs.writeFileSync).not.toHaveBeenCalled()
+    })
   })
 
   describe('Generate release notes', () => {
