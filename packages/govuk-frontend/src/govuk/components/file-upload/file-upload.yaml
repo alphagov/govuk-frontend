@@ -15,6 +15,10 @@ params:
     type: boolean
     required: false
     description: If `true`, file input will be disabled.
+  - name: multiple
+    type: boolean
+    required: false
+    description: If `true`, a user may select multiple files at the same time. The exact mechanism to do this differs depending on operating system.
   - name: describedBy
     type: string
     required: false
@@ -73,6 +77,26 @@ params:
             type: string
             required: true
             description: HTML to add after the input. If `html` is provided, the `text` option will be ignored.
+  - name: javascript
+    type: boolean
+    required: false
+    description: Whether to enable JavaScript enhancements for the component
+  - name: selectFilesButtonText
+    type: string
+    required: false
+    description: The text of the button that opens the file picker. JavaScript enhanced version of the component only. Default is "Choose file".
+  - name: instructionText
+    type: string
+    required: false
+    description: The text of the instruction text that follows the button that opens the file picker. JavaScript enhanced version of the component only. Default is "or drop file".
+  - name: filesSelected
+    type: object
+    required: false
+    description: The text to display when multiple files has been chosen by the user. JavaScript enhanced version of the component only. The component will replace the `%{count}` placeholder with the number of files selected. This is a [pluralised list of messages](https://frontend.design-system.service.gov.uk/localise-govuk-frontend).
+  - name: filesSelectedDefault
+    type: string
+    required: false
+    description: The text to display when no file has been chosen by the user. JavaScript enhanced version of the component only. Default is "No file chosen".
   - name: classes
     type: string
     required: false
@@ -88,6 +112,37 @@ examples:
       name: file-upload-1
       label:
         text: Upload a file
+  - name: allows multiple files
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Upload a file
+      multiple: true
+  - name: allows image files only
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Upload a file
+      attributes:
+        accept: 'image/*'
+  - name: allows direct media capture
+    description: Currently only works on mobile devices.
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Upload a file
+      attributes:
+        capture: 'user'
+  - name: disabled
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Upload a file
+      disabled: true
   - name: with hint text
     options:
       id: file-upload-2
@@ -106,13 +161,6 @@ examples:
         text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
       errorMessage:
         text: Error message goes here
-  - name: with value
-    options:
-      id: file-upload-4
-      name: file-upload-4
-      value: C:\fakepath\myphoto.jpg
-      label:
-        text: Upload a photo
   - name: with label as page heading
     options:
       id: file-upload-1
@@ -129,8 +177,49 @@ examples:
         text: Upload a file
       formGroup:
         classes: extra-class
+  - name: enhanced
+    screenshot: true
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Upload a file
+      javascript: true
+  - name: enhanced, with error message and hint
+    options:
+      javascript: true
+      id: file-upload-3
+      name: file-upload-3
+      label:
+        text: Upload a file
+      hint:
+        text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
+      errorMessage:
+        text: Error message goes here
+  - name: translated
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Llwythwch ffeil i fyny
+      multiple: true
+      javascript: true
+      selectFilesButtonText: Dewiswch ffeil
+      instructionText: neu ollwng ffeil
+      filesSelectedDefaultText: Dim ffeiliau wedi'u dewis
+      filesSelectedText:
+        other: "%{count} ffeil wedi'u dewis"
+        one: "%{count} ffeil wedi'i dewis"
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: with value
+    hidden: true
+    options:
+      id: file-upload-4
+      name: file-upload-4
+      value: C:\fakepath\myphoto.jpg
+      label:
+        text: Upload a photo
   - name: attributes
     hidden: true
     options:
@@ -204,3 +293,16 @@ examples:
         text: Error message
       hint:
         text: hint
+  - name: translated, no javascript enhancement
+    hidden: true
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Llwythwch ffeil i fyny
+      multiple: true
+      selectFilesButtonText: Dewiswch ffeil
+      filesSelectedDefaultText: Dim ffeiliau wedi'u dewis
+      filesSelectedText:
+        other: "%{count} ffeil wedi'u dewis"
+        one: "%{count} ffeil wedi'i dewis"

@@ -5,6 +5,7 @@ import { CharacterCount } from './components/character-count/character-count.mjs
 import { Checkboxes } from './components/checkboxes/checkboxes.mjs'
 import { ErrorSummary } from './components/error-summary/error-summary.mjs'
 import { ExitThisPage } from './components/exit-this-page/exit-this-page.mjs'
+import { FileUpload } from './components/file-upload/file-upload.mjs'
 import { Header } from './components/header/header.mjs'
 import { NotificationBanner } from './components/notification-banner/notification-banner.mjs'
 import { PasswordInput } from './components/password-input/password-input.mjs'
@@ -44,6 +45,7 @@ function initAll(config) {
     [Checkboxes],
     [ErrorSummary, config.errorSummary],
     [ExitThisPage, config.exitThisPage],
+    [FileUpload, config.fileUpload],
     [Header],
     [NotificationBanner, config.notificationBanner],
     [PasswordInput, config.passwordInput],
@@ -176,6 +178,7 @@ export { initAll, createAll }
  * @property {CharacterCountConfig} [characterCount] - Character Count config
  * @property {ErrorSummaryConfig} [errorSummary] - Error Summary config
  * @property {ExitThisPageConfig} [exitThisPage] - Exit This Page config
+ * @property {FileUploadConfig} [fileUpload] - File Upload config
  * @property {NotificationBannerConfig} [notificationBanner] - Notification Banner config
  * @property {PasswordInputConfig} [passwordInput] - Password input config
  */
@@ -190,6 +193,7 @@ export { initAll, createAll }
  * @import { ExitThisPageConfig } from './components/exit-this-page/exit-this-page.mjs'
  * @import { NotificationBannerConfig } from './components/notification-banner/notification-banner.mjs'
  * @import { PasswordInputConfig } from './components/password-input/password-input.mjs'
+ * @import { FileUploadConfig } from './components/file-upload/file-upload.mjs'
  */
 
 /**
