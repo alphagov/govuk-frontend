@@ -174,7 +174,7 @@ export class FileUpload extends ConfigurableComponent {
     // being dragged set as value of the `<input>`. This allows a `change`
     // event to be automatically fired from the element and saves us from having
     // to do anything more than hiding the dropzone on drop.
-    this.$input.addEventListener('drop', this.hideDropZone.bind(this))
+    this.$input.addEventListener('drop', this.onDrop.bind(this))
 
     // While user is dragging, it gets a little more complex because of Safari.
     // Safari doesn't fill `relatedTarget` on `dragleave` (nor `dragenter`).
@@ -204,7 +204,8 @@ export class FileUpload extends ConfigurableComponent {
 
     document.addEventListener('dragleave', () => {
       if (!this.enteredAnotherElement) {
-        this.hideDropZone()
+        this.hideDraggingState()
+        this.$announcements.innerText = this.i18n.t('leftDropZone')
       }
 
       this.enteredAnotherElement = false
@@ -229,8 +230,7 @@ export class FileUpload extends ConfigurableComponent {
               'govuk-file-upload__button--dragging'
             )
           ) {
-            this.$button.classList.add('govuk-file-upload__button--dragging')
-            this.$input.classList.add('govuk-file-upload--dragging')
+            this.showDraggingState()
             this.$announcements.innerText = this.i18n.t('enteredDropZone')
           }
         }
@@ -241,19 +241,45 @@ export class FileUpload extends ConfigurableComponent {
         if (
           this.$button.classList.contains('govuk-file-upload__button--dragging')
         ) {
-          this.hideDropZone()
+          this.hideDraggingState()
+          this.$announcements.innerText = this.i18n.t('leftDropZone')
         }
       }
     }
   }
 
   /**
-   * Hides the dropzone once user has dropped files on the `<input>`
+   * Show the drop zone visually
    */
-  hideDropZone() {
+  showDraggingState() {
+    this.$button.classList.add('govuk-file-upload__button--dragging')
+    this.$input.classList.add('govuk-file-upload--dragging')
+  }
+
+  /**
+   * Hides the drop zone visually
+   */
+  hideDraggingState() {
     this.$button.classList.remove('govuk-file-upload__button--dragging')
     this.$input.classList.remove('govuk-file-upload--dragging')
-    this.$announcements.innerText = this.i18n.t('leftDropZone')
+  }
+
+  /**
+   * Handles user dropping on the component
+   */
+  onDrop() {
+    this.hideDraggingState()
+
+    // The change event updating the text will only happen after the `drop`
+    // Because this listener is registered after `onChange`, it'll run after
+    // the status is updated and can pick it up for announcement
+    this.$input.addEventListener(
+      'change',
+      () => {
+        this.$announcements.innerText = this.$status.innerText
+      },
+      { once: true }
+    )
   }
 
   /**
@@ -317,7 +343,6 @@ export class FileUpload extends ConfigurableComponent {
   observeDisabledState() {
     const observer = new MutationObserver((mutationList) => {
       for (const mutation of mutationList) {
-        console.log('mutation', mutation)
         if (
           mutation.type === 'attributes' &&
           mutation.attributeName === 'disabled'
