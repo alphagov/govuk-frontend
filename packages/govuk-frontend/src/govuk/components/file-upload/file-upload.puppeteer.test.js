@@ -9,9 +9,9 @@ const { getExamples } = require('@govuk-frontend/lib/components')
 const inputSelector = '.govuk-file-upload'
 const enhancedInputSelector = '.govuk-file-upload--enhanced'
 const wrapperSelector = '.govuk-drop-zone'
-const buttonSelector = '.govuk-file-upload__button'
-const statusSelector = '.govuk-file-upload__status'
-const pseudoButtonSelector = '.govuk-file-upload__pseudo-button'
+const buttonSelector = '.govuk-file-upload-button'
+const statusSelector = '.govuk-file-upload-button__status'
+const pseudoButtonSelector = '.govuk-file-upload-button__pseudo-button'
 
 describe('/components/file-upload', () => {
   let examples
@@ -257,9 +257,9 @@ describe('/components/file-upload', () => {
         }
 
         const selectorDropzoneVisible =
-          '.govuk-file-upload__button.govuk-file-upload__button--dragging'
+          '.govuk-file-upload-button.govuk-file-upload-button--dragging'
         const selectorDropzoneHidden =
-          '.govuk-file-upload__button:not(.govuk-file-upload__button--dragging)'
+          '.govuk-file-upload-button:not(.govuk-file-upload-button--dragging)'
 
         beforeEach(async () => {
           await render(page, 'file-upload', examples.enhanced)
@@ -359,7 +359,7 @@ describe('/components/file-upload', () => {
         it('includes the label, the status, the pseudo button and instruction', async () => {
           await render(page, 'file-upload', examples.enhanced)
 
-          const $element = await page.$('.govuk-file-upload__button')
+          const $element = await page.$('.govuk-file-upload-button')
 
           const accessibleName = await getAccessibleName(page, $element)
           await expect(accessibleName.replaceAll(/\s+/g, ' ')).toBe(
@@ -370,7 +370,7 @@ describe('/components/file-upload', () => {
         it('includes the label, file name, pseudo button and instruction once a file is selected', async () => {
           await render(page, 'file-upload', examples.enhanced)
 
-          const $element = await page.$('.govuk-file-upload__button')
+          const $element = await page.$('.govuk-file-upload-button')
 
           const [fileChooser] = await Promise.all([
             page.waitForFileChooser(),
@@ -393,7 +393,7 @@ describe('/components/file-upload', () => {
             }
           })
 
-          const $element = await page.$('.govuk-file-upload__button')
+          const $element = await page.$('.govuk-file-upload-button')
 
           const [fileChooser] = await Promise.all([
             page.waitForFileChooser(),
