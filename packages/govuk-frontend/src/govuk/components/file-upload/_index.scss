@@ -122,6 +122,10 @@
       padding: (govuk-spacing(4) + $govuk-border-width - $file-upload-border-width);
     }
 
+    .govuk-file-upload-button__pseudo-button {
+      background-color: govuk-colour("white");
+    }
+
     &:hover {
       background-color: govuk-tint(govuk-colour("mid-grey"), 20%);
 
@@ -171,6 +175,10 @@
     border-style: dashed;
     background-color: govuk-colour("white");
 
+    .govuk-file-upload-button__pseudo-button {
+      background-color: govuk-colour("light-grey");
+    }
+
     .govuk-file-upload-button__status {
       color: govuk-shade(govuk-colour("blue"), 60%);
       background-color: govuk-tint(govuk-colour("blue"), 70%);
@@ -204,12 +212,7 @@
   }
 
   .govuk-file-upload-button--empty.govuk-file-upload-button--dragging:not(:disabled) .govuk-file-upload-button__status,
-  .govuk-file-upload-button .govuk-file-upload-button__pseudo-button,
   .govuk-file-upload-button--empty.govuk-file-upload-button--dragging .govuk-file-upload-button__pseudo-button {
     background-color: govuk-colour("white");
-  }
-
-  .govuk-file-upload-button--empty .govuk-file-upload-button__pseudo-button {
-    background-color: govuk-colour("light-grey");
   }
 }
