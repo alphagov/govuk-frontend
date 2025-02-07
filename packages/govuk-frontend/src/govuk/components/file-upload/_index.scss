@@ -101,11 +101,6 @@
     text-align: left;
   }
 
-  .govuk-file-upload-button--empty .govuk-file-upload-button__status {
-    color: govuk-shade(govuk-colour("blue"), 60%);
-    background-color: govuk-tint(govuk-colour("blue"), 70%);
-  }
-
   // bugs documented with button using flex
   // https://github.com/philipwalton/flexbugs#flexbug-9
   // so we need a container here
@@ -175,10 +170,21 @@
   .govuk-file-upload-button--empty {
     border-style: dashed;
     background-color: govuk-colour("white");
-  }
 
-  .govuk-file-upload-button--empty:hover {
-    background-color: govuk-colour("light-grey");
+    .govuk-file-upload-button__status {
+      color: govuk-shade(govuk-colour("blue"), 60%);
+      background-color: govuk-tint(govuk-colour("blue"), 70%);
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: govuk-colour("light-grey");
+
+      .govuk-file-upload-button__status {
+        background-color: govuk-tint(govuk-colour("blue"), 80%);
+      }
+    }
   }
 
   .govuk-file-upload-button--dragging.govuk-file-upload-button {
@@ -198,21 +204,12 @@
   }
 
   .govuk-file-upload-button--empty.govuk-file-upload-button--dragging:not(:disabled) .govuk-file-upload-button__status,
-  .govuk-file-upload-button--empty:focus .govuk-file-upload-button__status {
-    background-color: govuk-tint(govuk-colour("blue"), 80%);
-  }
-
   .govuk-file-upload-button .govuk-file-upload-button__pseudo-button,
   .govuk-file-upload-button--empty.govuk-file-upload-button--dragging .govuk-file-upload-button__pseudo-button {
     background-color: govuk-colour("white");
   }
 
   .govuk-file-upload-button--empty .govuk-file-upload-button__pseudo-button {
-    background-color: govuk-colour("light-grey");
-  }
-
-  .govuk-file-upload-button--empty:active,
-  .govuk-file-upload-button--empty:focus {
     background-color: govuk-colour("light-grey");
   }
 }
