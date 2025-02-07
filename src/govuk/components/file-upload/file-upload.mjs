@@ -364,9 +364,9 @@ export class FileUpload extends ConfigurableComponent {
     this.$button.disabled = this.$input.disabled
 
     if (this.$button.disabled) {
-      this.$root.classList.add('govuk-file-upload-wrapper--disabled')
+      this.$root.classList.add('govuk-drop-zone--disabled')
     } else {
-      this.$root.classList.remove('govuk-file-upload-wrapper--disabled')
+      this.$root.classList.remove('govuk-drop-zone--disabled')
     }
   }
 
