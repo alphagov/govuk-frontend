@@ -62,7 +62,7 @@
     cursor: not-allowed;
   }
 
-  .govuk-frontend-supported .govuk-drop-zone .govuk-file-upload {
+  .govuk-file-upload--enhanced {
     position: absolute;
     // Make the native control take up the entire space of the element, but
     // invisible and behind the other elements until we need it
@@ -76,7 +76,7 @@
     opacity: 0;
   }
 
-  .govuk-frontend-supported .govuk-drop-zone .govuk-file-upload--dragging {
+  .govuk-file-upload--dragging {
     z-index: 1;
   }
 
