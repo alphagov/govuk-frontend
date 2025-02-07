@@ -7,7 +7,7 @@ const {
 const { getExamples } = require('@govuk-frontend/lib/components')
 
 const inputSelector = '.govuk-file-upload'
-const wrapperSelector = '.govuk-file-upload-wrapper'
+const wrapperSelector = '.govuk-drop-zone'
 const buttonSelector = '.govuk-file-upload__button'
 const statusSelector = '.govuk-file-upload__status'
 const pseudoButtonSelector = '.govuk-file-upload__pseudo-button'
@@ -262,7 +262,7 @@ describe('/components/file-upload', () => {
         beforeEach(async () => {
           await render(page, 'file-upload', examples.enhanced)
 
-          $wrapper = await page.$('.govuk-file-upload-wrapper')
+          $wrapper = await page.$('.govuk-drop-zone')
           wrapperBoundingBox = await $wrapper.boundingBox()
 
           $announcements = await page.$('.govuk-file-upload-announcements')
@@ -339,7 +339,7 @@ describe('/components/file-upload', () => {
 
           // It doesn't seem doable to make Puppeteer drag outside the viewport
           // so instead, we can only mock two 'dragleave' events
-          await page.$eval('.govuk-file-upload-wrapper', ($el) => {
+          await page.$eval('.govuk-drop-zone', ($el) => {
             $el.dispatchEvent(new Event('dragleave', { bubbles: true }))
             $el.dispatchEvent(new Event('dragleave', { bubbles: true }))
           })

@@ -48,7 +48,7 @@
     }
   }
 
-  .govuk-file-upload-wrapper {
+  .govuk-drop-zone {
     display: block;
     position: relative;
     z-index: 0;
@@ -58,11 +58,11 @@
   // required because disabling pointer events
   // on the button means that the cursor style
   // be applied on the button itself
-  .govuk-file-upload-wrapper--disabled {
+  .govuk-drop-zone--disabled {
     cursor: not-allowed;
   }
 
-  .govuk-frontend-supported .govuk-file-upload-wrapper .govuk-file-upload {
+  .govuk-frontend-supported .govuk-drop-zone .govuk-file-upload {
     position: absolute;
     // Make the native control take up the entire space of the element, but
     // invisible and behind the other elements until we need it
@@ -76,7 +76,7 @@
     opacity: 0;
   }
 
-  .govuk-frontend-supported .govuk-file-upload-wrapper .govuk-file-upload--dragging {
+  .govuk-frontend-supported .govuk-drop-zone .govuk-file-upload--dragging {
     z-index: 1;
   }
 
