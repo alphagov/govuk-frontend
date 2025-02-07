@@ -138,6 +138,33 @@
         background-color: govuk-tint(govuk-colour("blue"), 80%);
       }
     }
+
+    &:active,
+    &:focus {
+      border: $file-upload-border-width solid govuk-colour("black");
+      outline: $govuk-focus-width solid $govuk-focus-colour;
+      // Ensure outline appears outside of the element
+      outline-offset: 0;
+      background-color: govuk-tint(govuk-colour("mid-grey"), 20%);
+      // Double the border by adding its width again. Use `box-shadow` for this
+      // instead of changing `border-width` - this is for consistency with
+      // components such as textarea where we avoid changing `border-width` as
+      // it will change the element size. Also, `outline` cannot be utilised
+      // here as it is already used for the yellow focus state.
+      box-shadow: inset 0 0 0 $govuk-border-width-form-element;
+
+      .govuk-file-upload-button__pseudo-button {
+        background-color: $govuk-focus-colour;
+        box-shadow: 0 2px 0 govuk-colour("black");
+      }
+
+      &:hover .govuk-file-upload-button__pseudo-button {
+        border-color: $govuk-focus-colour;
+        outline: 3px solid transparent;
+        background-color: govuk-colour("light-grey");
+        box-shadow: inset 0 0 0 1px $govuk-focus-colour;
+      }
+    }
   }
 
   .govuk-file-upload-button--empty {
@@ -184,35 +211,8 @@
     background-color: govuk-colour("light-grey");
   }
 
-  .govuk-file-upload-button:active,
-  .govuk-file-upload-button:focus {
-    border: $file-upload-border-width solid govuk-colour("black");
-    outline: $govuk-focus-width solid $govuk-focus-colour;
-    // Ensure outline appears outside of the element
-    outline-offset: 0;
-    background-color: govuk-tint(govuk-colour("mid-grey"), 20%);
-    // Double the border by adding its width again. Use `box-shadow` for this
-    // instead of changing `border-width` - this is for consistency with
-    // components such as textarea where we avoid changing `border-width` as
-    // it will change the element size. Also, `outline` cannot be utilised
-    // here as it is already used for the yellow focus state.
-    box-shadow: inset 0 0 0 $govuk-border-width-form-element;
-  }
-
   .govuk-file-upload-button--empty:active,
   .govuk-file-upload-button--empty:focus {
     background-color: govuk-colour("light-grey");
-  }
-
-  .govuk-file-upload-button:focus .govuk-file-upload-button__pseudo-button {
-    background-color: $govuk-focus-colour;
-    box-shadow: 0 2px 0 govuk-colour("black");
-  }
-
-  .govuk-file-upload-button:focus:hover .govuk-file-upload-button__pseudo-button {
-    border-color: $govuk-focus-colour;
-    outline: 3px solid transparent;
-    background-color: govuk-colour("light-grey");
-    box-shadow: inset 0 0 0 1px $govuk-focus-colour;
   }
 }
