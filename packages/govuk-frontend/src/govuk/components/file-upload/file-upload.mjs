@@ -148,6 +148,8 @@ export class FileUpload extends ConfigurableComponent {
 
     this.$input.setAttribute('tabindex', '-1')
     this.$input.setAttribute('aria-hidden', 'true')
+    this.$input.classList.remove('govuk-file-upload')
+    this.$input.classList.add('govuk-file-upload--enhanced')
 
     // Make all these new variables available to the module
     this.$button = $button

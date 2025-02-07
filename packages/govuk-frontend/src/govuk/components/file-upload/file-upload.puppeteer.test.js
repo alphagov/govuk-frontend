@@ -7,6 +7,7 @@ const {
 const { getExamples } = require('@govuk-frontend/lib/components')
 
 const inputSelector = '.govuk-file-upload'
+const enhancedInputSelector = '.govuk-file-upload--enhanced'
 const wrapperSelector = '.govuk-drop-zone'
 const buttonSelector = '.govuk-file-upload__button'
 const statusSelector = '.govuk-file-upload__status'
@@ -66,7 +67,7 @@ describe('/components/file-upload', () => {
 
           it('moves the file input inside of the wrapper element', async () => {
             const inputElementParent = await page.$eval(
-              inputSelector,
+              enhancedInputSelector,
               (el) => el.parentNode
             )
             const wrapperElement = await page.$eval(wrapperSelector, (el) => el)
@@ -77,8 +78,9 @@ describe('/components/file-upload', () => {
 
         describe('file input', () => {
           it('sets tabindex to -1', async () => {
-            const inputElementTabindex = await page.$eval(inputSelector, (el) =>
-              el.getAttribute('tabindex')
+            const inputElementTabindex = await page.$eval(
+              enhancedInputSelector,
+              (el) => el.getAttribute('tabindex')
             )
 
             expect(inputElementTabindex).toBe('-1')
@@ -132,7 +134,7 @@ describe('/components/file-upload', () => {
             await fileChooser.accept([testFilename])
 
             const inputElementValue = await page.$eval(
-              inputSelector,
+              enhancedInputSelector,
               (el) =>
                 // @ts-ignore
                 el.value
@@ -160,14 +162,14 @@ describe('/components/file-upload', () => {
 
         it('updates the file input value', async () => {
           const inputElementValue = await page.$eval(
-            inputSelector,
+            enhancedInputSelector,
             (el) =>
               // @ts-ignore
               el.value
           )
 
           const inputElementFiles = await page.$eval(
-            inputSelector,
+            enhancedInputSelector,
             (el) =>
               // @ts-ignore
               el.files
@@ -209,14 +211,14 @@ describe('/components/file-upload', () => {
 
         it('updates the file input value', async () => {
           const inputElementValue = await page.$eval(
-            inputSelector,
+            enhancedInputSelector,
             (el) =>
               // @ts-ignore
               el.value
           )
 
           const inputElementFiles = await page.$eval(
-            inputSelector,
+            enhancedInputSelector,
             (el) =>
               // @ts-ignore
               el.files
@@ -470,7 +472,7 @@ describe('/components/file-upload', () => {
         it('disables the button if the input is disabled programatically', async () => {
           await render(page, 'file-upload', examples.enhanced)
 
-          await page.$eval(inputSelector, (el) =>
+          await page.$eval(enhancedInputSelector, (el) =>
             el.setAttribute('disabled', '')
           )
 
@@ -494,7 +496,7 @@ describe('/components/file-upload', () => {
             el.hasAttribute('disabled')
           )
 
-          await page.$eval(inputSelector, (el) =>
+          await page.$eval(enhancedInputSelector, (el) =>
             el.removeAttribute('disabled')
           )
 
