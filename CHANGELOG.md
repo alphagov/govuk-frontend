@@ -6,6 +6,54 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ### New features
 
+#### Use our improved File Upload component
+
+We've added a [JavaScript enhancement to the File Upload component](https://design-system.service.gov.uk/components/file-upload/#using-the-improved-file-upload-component) which:
+
+- makes the component easier to use for drag and drop
+- allows the text of the component to be translated
+- fixes accessibility issues for users of Dragon, a speech recognition software
+
+This improvement is opt-in, as it's a substantial visual change which risks shifting other content on the page.
+
+To enable this improvement for your users, you'll first need to update the markup of your File Upload component:
+
+- if you use our Nunjucks macro, using the new `javascript` option of `govukFileUpload`
+
+  ```njk
+  {{ govukFileUpload({
+  id: "file-upload",
+  name: "photo",
+  label: {
+  	text: "Upload your photo"
+  },
+  javascript: true
+  }) }}
+  ```
+
+- if you're using HTML, wrapping the `<input type="file">` of the File Upload markup in a `<div class="govuk-drop-zone" data-module="govuk-file-upload">`
+
+  ```html
+  <div class="govuk-form-group">
+  <label class="govuk-label" for="file-upload-1">
+  	Upload your photo
+  </label>
+  <div class="govuk-drop-zone" data-module="govuk-file-upload">
+  	<input class="govuk-file-upload" id="file-upload" name="photo" type="file">
+  </div>
+  </div>
+  ```
+
+If you're importing components individually in your JavaScript, which we recommend for better performance, you'll then need to import and initialise the new `FileUpload` component.
+
+```js
+import {FileUpload} from 'govuk-frontend'
+
+createAll(FileUpload)
+```
+
+This change was introduced in [pull request #5305: Add progressively enhanced File Upload component](https://github.com/alphagov/govuk-frontend/pull/5305)
+
 #### Form control components now have default `id` attributes
 
 If you're using the included Nunjucks macros, the Text input, Textarea, Password input, Character count, File upload, and Select components now automatically use the value of the `name` parameter for the `id` parameter.
