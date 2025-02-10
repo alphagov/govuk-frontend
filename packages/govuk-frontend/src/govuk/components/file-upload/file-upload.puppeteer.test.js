@@ -288,8 +288,15 @@ describe('/components/file-upload', () => {
           ).resolves.toBe('Entered drop zone')
         })
 
-        xit('gets hidden when dropping on the field', async () => {
-          // Add a little pixel to make sure we're effectively within the element
+        it('gets hidden when dropping on the field', async () => {
+          // Puppeteer's Mouse.drop is meant to do both the `dragEnter` and
+          // `drop` in a row but it seems to do this too quickly for the
+          // `<input>` to effectively receive the drop
+          await page.mouse.dragEnter(
+            { x: wrapperBoundingBox.x + 1, y: wrapperBoundingBox.y + 1 },
+            structuredClone(dragData)
+          )
+
           await page.mouse.drop(
             { x: wrapperBoundingBox.x + 1, y: wrapperBoundingBox.y + 1 },
             structuredClone(dragData)
@@ -300,7 +307,7 @@ describe('/components/file-upload', () => {
           // rather than being in the initial state
           await expect(
             $announcements.evaluate((e) => e.textContent)
-          ).resolves.toBe('Left drop zone')
+          ).resolves.toBe('file-upload.puppeteer.test.js')
         })
 
         it('gets hidden when dragging a file and leaving the field', async () => {
