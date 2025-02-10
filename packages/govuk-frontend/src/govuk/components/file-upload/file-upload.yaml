@@ -80,23 +80,31 @@ params:
   - name: javascript
     type: boolean
     required: false
-    description: Whether to enable JavaScript enhancements for the component
-  - name: selectFilesButtonText
+    description: Can be used to enable JavaScript enhancements for the component.
+  - name: chooseFilesButtonText
     type: string
     required: false
-    description: The text of the button that opens the file picker. JavaScript enhanced version of the component only. Default is "Choose file".
-  - name: instructionText
+    description: The text of the button that opens the file picker. Default is `"Choose file"`. If `javascript` is not provided, this option will be ignored.
+  - name: dropInstructionText
     type: string
     required: false
-    description: The text of the instruction text that follows the button that opens the file picker. JavaScript enhanced version of the component only. Default is "or drop file".
-  - name: filesSelected
+    description: The text informing users they can drop files. Default is `"or drop file"`. If `javascript` is not provided, this option will be ignored.
+  - name: multipleFilesChosenText
     type: object
     required: false
-    description: The text to display when multiple files has been chosen by the user. JavaScript enhanced version of the component only. The component will replace the `%{count}` placeholder with the number of files selected. This is a [pluralised list of messages](https://frontend.design-system.service.gov.uk/localise-govuk-frontend).
-  - name: filesSelectedDefault
+    description: The text displayed when multiple files have been chosen by the user. The component will replace the `%{count}` placeholder with the number of files selected. [Our pluralisation rules apply to this macro option](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/#understanding-pluralisation-rules). If `javascript` is not provided, this option will be ignored.
+  - name: noFileChosenText
     type: string
     required: false
-    description: The text to display when no file has been chosen by the user. JavaScript enhanced version of the component only. Default is "No file chosen".
+    description: The text displayed when no file has been chosen by the user. Default is `"No file chosen"`. If `javascript` is not provided, this option will be ignored.
+  - name: enteredDropZoneText
+    type: string
+    required: false
+    description: The text announced by assistive technology when user drags files and enters the drop zone. Default is `"Entered drop zone"`. If `javascript` is not provided, this option will be ignored.
+  - name: leftDropZoneText
+    type: string
+    required: false
+    description: The text announced by assistive technology when user drags files and leaves the drop zone without dropping. Default is `"Left drop zone"`. If `javascript` is not provided, this option will be ignored.
   - name: classes
     type: string
     required: false
@@ -214,12 +222,14 @@ examples:
         text: Llwythwch ffeil i fyny
       multiple: true
       javascript: true
-      selectFilesButtonText: Dewiswch ffeil
-      instructionText: neu ollwng ffeil
-      filesSelectedDefaultText: Dim ffeiliau wedi'u dewis
-      filesSelectedText:
+      chooseFilesButtonText: Dewiswch ffeil
+      dropInstructionText: neu ollwng ffeil
+      noFileChosenText: Dim ffeil wedi'i dewis
+      multipleFilesChosenText:
         other: "%{count} ffeil wedi'u dewis"
         one: "%{count} ffeil wedi'i dewis"
+      enteredDropZoneText: Wedi mynd i mewn i'r parth gollwng
+      leftDropZoneText: Parth gollwng i'r chwith
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: with value
@@ -311,8 +321,10 @@ examples:
       label:
         text: Llwythwch ffeil i fyny
       multiple: true
-      selectFilesButtonText: Dewiswch ffeil
-      filesSelectedDefaultText: Dim ffeiliau wedi'u dewis
-      filesSelectedText:
+      chooseFilesButtonText: Dewiswch ffeil
+      noFileChosenText: Dim ffeiliau wedi'u dewis
+      multipleFilesChosenText:
         other: "%{count} ffeil wedi'u dewis"
         one: "%{count} ffeil wedi'i dewis"
+      enteredDropZoneText: Wedi mynd i mewn i'r parth gollwng
+      leftDropZoneText: Parth gollwng i'r chwith

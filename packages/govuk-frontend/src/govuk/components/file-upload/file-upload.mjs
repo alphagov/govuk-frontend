@@ -105,7 +105,7 @@ export class FileUpload extends ConfigurableComponent {
     // Create status element that shows what/how many files are selected
     const $status = document.createElement('span')
     $status.className = 'govuk-body govuk-file-upload__status'
-    $status.innerText = this.i18n.t('filesSelectedDefault')
+    $status.innerText = this.i18n.t('noFileChosen')
 
     $button.appendChild($status)
 
@@ -122,7 +122,7 @@ export class FileUpload extends ConfigurableComponent {
     const buttonSpan = document.createElement('span')
     buttonSpan.className =
       'govuk-button govuk-button--secondary govuk-file-upload__pseudo-button'
-    buttonSpan.innerText = this.i18n.t('selectFilesButton')
+    buttonSpan.innerText = this.i18n.t('chooseFilesButton')
 
     containerSpan.appendChild(buttonSpan)
 
@@ -132,7 +132,7 @@ export class FileUpload extends ConfigurableComponent {
 
     const instructionSpan = document.createElement('span')
     instructionSpan.className = 'govuk-body govuk-file-upload__instruction'
-    instructionSpan.innerText = this.i18n.t('instruction')
+    instructionSpan.innerText = this.i18n.t('dropInstruction')
 
     containerSpan.appendChild(instructionSpan)
 
@@ -231,7 +231,7 @@ export class FileUpload extends ConfigurableComponent {
           ) {
             this.$button.classList.add('govuk-file-upload__button--dragging')
             this.$input.classList.add('govuk-file-upload--dragging')
-            this.$announcements.innerText = this.i18n.t('dropZoneEntered')
+            this.$announcements.innerText = this.i18n.t('enteredDropZone')
           }
         }
       } else {
@@ -253,7 +253,7 @@ export class FileUpload extends ConfigurableComponent {
   hideDropZone() {
     this.$button.classList.remove('govuk-file-upload__button--dragging')
     this.$input.classList.remove('govuk-file-upload--dragging')
-    this.$announcements.innerText = this.i18n.t('dropZoneLeft')
+    this.$announcements.innerText = this.i18n.t('leftDropZone')
   }
 
   /**
@@ -264,7 +264,7 @@ export class FileUpload extends ConfigurableComponent {
 
     if (fileCount === 0) {
       // If there are no files, show the default selection text
-      this.$status.innerText = this.i18n.t('filesSelectedDefault')
+      this.$status.innerText = this.i18n.t('noFileChosen')
       this.$button.classList.add('govuk-file-upload__button--empty')
     } else {
       if (
@@ -274,7 +274,7 @@ export class FileUpload extends ConfigurableComponent {
         this.$status.innerText = this.$input.files[0].name
       } else {
         // Otherwise, tell the user how many files are selected
-        this.$status.innerText = this.i18n.t('filesSelected', {
+        this.$status.innerText = this.i18n.t('multipleFilesChosen', {
           count: fileCount
         })
       }
@@ -359,17 +359,17 @@ export class FileUpload extends ConfigurableComponent {
    */
   static defaults = Object.freeze({
     i18n: {
-      selectFilesButton: 'Choose file',
-      filesSelectedDefault: 'No file chosen',
-      filesSelected: {
+      chooseFilesButton: 'Choose file',
+      dropInstruction: 'or drop file',
+      noFileChosen: 'No file chosen',
+      multipleFilesChosen: {
         // the 'one' string isn't used as the component displays the filename
         // instead, however it's here for coverage's sake
         one: '%{count} file chosen',
         other: '%{count} files chosen'
       },
-      dropZoneEntered: 'Entered drop zone',
-      dropZoneLeft: 'Left drop zone',
-      instruction: 'or drop file'
+      enteredDropZone: 'Entered drop zone',
+      leftDropZone: 'Left drop zone'
     }
   })
 
@@ -424,13 +424,15 @@ function isContainingFiles(dataTransfer) {
  * @typedef {object} FileUploadTranslations
  *
  * Messages used by the component
- * @property {string} [selectFiles] - Text of button that opens file browser
- * @property {TranslationPluralForms} [filesSelected] - Text indicating how
- *   many files have been selected
- * @property {string} [dropZoneEntered] - Text announced to assistive technology
- *   when users entered the drop zone while dragging
- * @property {string} [dropZoneLeft] - Text announced to assistive technology
- *   when users left the drop zone while dragging
+ * @property {string} [chooseFile] - The text of the button that opens the file picker
+ * @property {string} [dropInstruction] - The text informing users they can drop files
+ * @property {TranslationPluralForms} [multipleFilesChosen] - The text displayed when multiple files
+ *   have been chosen by the user
+ * @property {string} [noFileChosen] - The text to displayed when no file has been chosen by the user
+ * @property {string} [enteredDropZone] - The text announced by assistive technology
+ *   when user drags files and enters the drop zone
+ * @property {string} [leftDropZone] - The text announced by assistive technology
+ *   when user drags files and leaves the drop zone without dropping
  */
 
 /**
