@@ -7,10 +7,11 @@ const {
 const { getExamples } = require('@govuk-frontend/lib/components')
 
 const inputSelector = '.govuk-file-upload'
-const wrapperSelector = '.govuk-file-upload-wrapper'
-const buttonSelector = '.govuk-file-upload__button'
-const statusSelector = '.govuk-file-upload__status'
-const pseudoButtonSelector = '.govuk-file-upload__pseudo-button'
+const enhancedInputSelector = '.govuk-file-upload--enhanced'
+const wrapperSelector = '.govuk-drop-zone'
+const buttonSelector = '.govuk-file-upload-button'
+const statusSelector = '.govuk-file-upload-button__status'
+const pseudoButtonSelector = '.govuk-file-upload-button__pseudo-button'
 
 describe('/components/file-upload', () => {
   let examples
@@ -66,7 +67,7 @@ describe('/components/file-upload', () => {
 
           it('moves the file input inside of the wrapper element', async () => {
             const inputElementParent = await page.$eval(
-              inputSelector,
+              enhancedInputSelector,
               (el) => el.parentNode
             )
             const wrapperElement = await page.$eval(wrapperSelector, (el) => el)
@@ -77,8 +78,9 @@ describe('/components/file-upload', () => {
 
         describe('file input', () => {
           it('sets tabindex to -1', async () => {
-            const inputElementTabindex = await page.$eval(inputSelector, (el) =>
-              el.getAttribute('tabindex')
+            const inputElementTabindex = await page.$eval(
+              enhancedInputSelector,
+              (el) => el.getAttribute('tabindex')
             )
 
             expect(inputElementTabindex).toBe('-1')
@@ -132,7 +134,7 @@ describe('/components/file-upload', () => {
             await fileChooser.accept([testFilename])
 
             const inputElementValue = await page.$eval(
-              inputSelector,
+              enhancedInputSelector,
               (el) =>
                 // @ts-ignore
                 el.value
@@ -160,14 +162,14 @@ describe('/components/file-upload', () => {
 
         it('updates the file input value', async () => {
           const inputElementValue = await page.$eval(
-            inputSelector,
+            enhancedInputSelector,
             (el) =>
               // @ts-ignore
               el.value
           )
 
           const inputElementFiles = await page.$eval(
-            inputSelector,
+            enhancedInputSelector,
             (el) =>
               // @ts-ignore
               el.files
@@ -209,14 +211,14 @@ describe('/components/file-upload', () => {
 
         it('updates the file input value', async () => {
           const inputElementValue = await page.$eval(
-            inputSelector,
+            enhancedInputSelector,
             (el) =>
               // @ts-ignore
               el.value
           )
 
           const inputElementFiles = await page.$eval(
-            inputSelector,
+            enhancedInputSelector,
             (el) =>
               // @ts-ignore
               el.files
@@ -255,14 +257,14 @@ describe('/components/file-upload', () => {
         }
 
         const selectorDropzoneVisible =
-          '.govuk-file-upload__button.govuk-file-upload__button--dragging'
+          '.govuk-file-upload-button.govuk-file-upload-button--dragging'
         const selectorDropzoneHidden =
-          '.govuk-file-upload__button:not(.govuk-file-upload__button--dragging)'
+          '.govuk-file-upload-button:not(.govuk-file-upload-button--dragging)'
 
         beforeEach(async () => {
           await render(page, 'file-upload', examples.enhanced)
 
-          $wrapper = await page.$('.govuk-file-upload-wrapper')
+          $wrapper = await page.$('.govuk-drop-zone')
           wrapperBoundingBox = await $wrapper.boundingBox()
 
           $announcements = await page.$('.govuk-file-upload-announcements')
@@ -339,7 +341,7 @@ describe('/components/file-upload', () => {
 
           // It doesn't seem doable to make Puppeteer drag outside the viewport
           // so instead, we can only mock two 'dragleave' events
-          await page.$eval('.govuk-file-upload-wrapper', ($el) => {
+          await page.$eval('.govuk-drop-zone', ($el) => {
             $el.dispatchEvent(new Event('dragleave', { bubbles: true }))
             $el.dispatchEvent(new Event('dragleave', { bubbles: true }))
           })
@@ -357,7 +359,7 @@ describe('/components/file-upload', () => {
         it('includes the label, the status, the pseudo button and instruction', async () => {
           await render(page, 'file-upload', examples.enhanced)
 
-          const $element = await page.$('.govuk-file-upload__button')
+          const $element = await page.$('.govuk-file-upload-button')
 
           const accessibleName = await getAccessibleName(page, $element)
           await expect(accessibleName.replaceAll(/\s+/g, ' ')).toBe(
@@ -368,7 +370,7 @@ describe('/components/file-upload', () => {
         it('includes the label, file name, pseudo button and instruction once a file is selected', async () => {
           await render(page, 'file-upload', examples.enhanced)
 
-          const $element = await page.$('.govuk-file-upload__button')
+          const $element = await page.$('.govuk-file-upload-button')
 
           const [fileChooser] = await Promise.all([
             page.waitForFileChooser(),
@@ -391,7 +393,7 @@ describe('/components/file-upload', () => {
             }
           })
 
-          const $element = await page.$('.govuk-file-upload__button')
+          const $element = await page.$('.govuk-file-upload-button')
 
           const [fileChooser] = await Promise.all([
             page.waitForFileChooser(),
@@ -470,7 +472,7 @@ describe('/components/file-upload', () => {
         it('disables the button if the input is disabled programatically', async () => {
           await render(page, 'file-upload', examples.enhanced)
 
-          await page.$eval(inputSelector, (el) =>
+          await page.$eval(enhancedInputSelector, (el) =>
             el.setAttribute('disabled', '')
           )
 
@@ -494,7 +496,7 @@ describe('/components/file-upload', () => {
             el.hasAttribute('disabled')
           )
 
-          await page.$eval(inputSelector, (el) =>
+          await page.$eval(enhancedInputSelector, (el) =>
             el.removeAttribute('disabled')
           )
 

@@ -227,7 +227,7 @@ describe('File upload', () => {
     it('adds the data-module attribute to the wrapper when `true`', () => {
       const $ = render('file-upload', examples.enhanced)
 
-      const $wrapper = $('.govuk-form-group > .govuk-file-upload-wrapper')
+      const $wrapper = $('.govuk-form-group > .govuk-drop-zone')
 
       expect($wrapper.attr('data-module')).toBe('govuk-file-upload')
     })
@@ -235,7 +235,7 @@ describe('File upload', () => {
     it('adds the data-module attribute when receiving an object', () => {
       const $ = render('file-upload', examples.translated)
 
-      const $wrapper = $('.govuk-form-group > .govuk-file-upload-wrapper')
+      const $wrapper = $('.govuk-form-group > .govuk-drop-zone')
 
       expect($wrapper.attr('data-module')).toBe('govuk-file-upload')
     })
@@ -243,7 +243,7 @@ describe('File upload', () => {
     it('enables the rendering of translation messages when true', () => {
       const $ = render('file-upload', examples.translated)
 
-      const $wrapper = $('.govuk-form-group > .govuk-file-upload-wrapper')
+      const $wrapper = $('.govuk-form-group > .govuk-drop-zone')
 
       expect($wrapper.attr('data-i18n.choose-files-button')).toBe(
         'Dewiswch ffeil'
