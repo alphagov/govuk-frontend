@@ -155,8 +155,6 @@ export class FileUpload extends ConfigurableComponent {
 
     this.$input.setAttribute('tabindex', '-1')
     this.$input.setAttribute('aria-hidden', 'true')
-    this.$input.classList.remove('govuk-file-upload')
-    this.$input.classList.add('govuk-file-upload--enhanced')
 
     // Make all these new variables available to the module
     this.$button = $button
@@ -176,14 +174,6 @@ export class FileUpload extends ConfigurableComponent {
     this.$announcements.classList.add('govuk-visually-hidden')
     this.$announcements.setAttribute('aria-live', 'assertive')
     this.$root.insertAdjacentElement('afterend', this.$announcements)
-
-    // The easy bit, when dropping hide the dropzone
-    //
-    // Note: the component relies on the native behaviour to get the files
-    // being dragged set as value of the `<input>`. This allows a `change`
-    // event to be automatically fired from the element and saves us from having
-    // to do anything more than hiding the dropzone on drop.
-    this.$input.addEventListener('drop', this.onDrop.bind(this))
 
     // if there is no CSS and input is hidden
     // button will need to handle drop event
@@ -266,7 +256,6 @@ export class FileUpload extends ConfigurableComponent {
    */
   showDraggingState() {
     this.$button.classList.add('govuk-file-upload-button--dragging')
-    this.$input.classList.add('govuk-file-upload--dragging')
   }
 
   /**
@@ -274,7 +263,6 @@ export class FileUpload extends ConfigurableComponent {
    */
   hideDraggingState() {
     this.$button.classList.remove('govuk-file-upload-button--dragging')
-    this.$input.classList.remove('govuk-file-upload--dragging')
   }
 
   /**

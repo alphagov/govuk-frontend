@@ -62,24 +62,6 @@
     cursor: not-allowed;
   }
 
-  .govuk-file-upload--enhanced {
-    position: absolute;
-    // Make the native control take up the entire space of the element, but
-    // invisible and behind the other elements until we need it
-    z-index: -1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    opacity: 0;
-  }
-
-  .govuk-file-upload--dragging {
-    z-index: 1;
-  }
-
   .govuk-file-upload-button__pseudo-button {
     width: auto;
     margin-right: govuk-spacing(2);
