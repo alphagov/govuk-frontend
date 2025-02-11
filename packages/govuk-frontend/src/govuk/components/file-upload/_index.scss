@@ -178,6 +178,8 @@
   }
 
   .govuk-file-upload-button--dragging {
+    border-style: solid;
+
     // extra specificity to apply when
     // empty
     &.govuk-file-upload-button {
@@ -189,7 +191,7 @@
     }
 
     &:not(:disabled) {
-      border-color: govuk-shade(govuk-colour("mid-grey"), 20%);
+      border-color: govuk-colour("black");
 
       .govuk-file-upload-button__pseudo-button {
         background-color: govuk-shade(govuk-colour("light-grey"), 10%);
