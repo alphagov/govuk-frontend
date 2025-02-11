@@ -32,6 +32,8 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#5628: Add focused error state to Character count](https://github.com/alphagov/govuk-frontend/pull/5628)
 
+- [#5717: Fix prototype kit sass import path](https://github.com/alphagov/govuk-frontend/pull/5717)
+
 ## v5.8.0 (Feature release)
 
 To install this version with npm, run `npm install govuk-frontend@5.8.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
