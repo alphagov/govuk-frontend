@@ -10,7 +10,8 @@ params:
   - name: value
     type: string
     required: false
-    description: Deprecated. Optional initial value of the input.
+    description: Optional initial value of the input.
+    deprecated: '5.7.1'
   - name: disabled
     type: boolean
     required: false
