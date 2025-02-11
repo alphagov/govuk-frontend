@@ -14,8 +14,8 @@ import {
  *
  * @type {import('@govuk-frontend/tasks').TaskFunction}
  */
-export const compile = (options) =>
-  gulp.series(
+export const compile = (options) => {
+  const args = [
     /**
      * Compile GOV.UK Frontend JavaScript for component entry points
      */
@@ -29,19 +29,23 @@ export const compile = (options) =>
       })
     ),
 
-    /**
-     * Compile deprecated files no longer imported by `all.mjs`
-     * but that need to be kept in the package
-     */
-    task.name("compile:js 'deprecations'", () =>
-      scripts.compile(createGlobFromPaths(deprecatedFilesPaths), {
-        ...options,
+    ...(deprecatedFilesPaths?.length
+      ? [
+          /**
+           * Compile deprecated files no longer imported by `all.mjs`
+           * but that need to be kept in the package
+           */
+          task.name("compile:js 'deprecations'", () =>
+            scripts.compile(createGlobFromPaths(deprecatedFilesPaths), {
+              ...options,
 
-        srcPath: join(options.srcPath, 'govuk'),
-        destPath: join(options.destPath, 'govuk'),
-        configPath: join(options.basePath, 'rollup.publish.config.mjs')
-      })
-    ),
+              srcPath: join(options.srcPath, 'govuk'),
+              destPath: join(options.destPath, 'govuk'),
+              configPath: join(options.basePath, 'rollup.publish.config.mjs')
+            })
+          )
+        ]
+      : []),
 
     /**
      * Compile GOV.UK Frontend JavaScript for main entry point only
@@ -84,4 +88,7 @@ export const compile = (options) =>
         destPath: resolve(options.destPath, '../') // Top level (not dist) for compatibility
       })
     )
-  )
+  ]
+
+  return gulp.series(...args)
+}
