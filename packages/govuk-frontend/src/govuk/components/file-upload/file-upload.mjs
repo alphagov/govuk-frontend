@@ -61,6 +61,7 @@ export class FileUpload extends ConfigurableComponent {
     }
 
     this.$input = /** @type {HTMLFileInputElement} */ ($input)
+    this.$input.setAttribute('hidden', 'true')
 
     if (!this.$input.id.length) {
       throw new ElementError(
@@ -144,14 +145,16 @@ export class FileUpload extends ConfigurableComponent {
       `${$label.id} ${commaSpan.id} ${$button.id}`
     )
     $button.addEventListener('click', this.onClick.bind(this))
+    $button.addEventListener('dragover', (event) => {
+      // prevent default to allow drop
+      event.preventDefault()
+    })
 
     // Assemble these all together
     this.$root.insertAdjacentElement('afterbegin', $button)
 
     this.$input.setAttribute('tabindex', '-1')
     this.$input.setAttribute('aria-hidden', 'true')
-    this.$input.classList.remove('govuk-file-upload')
-    this.$input.classList.add('govuk-file-upload--enhanced')
 
     // Make all these new variables available to the module
     this.$button = $button
@@ -172,13 +175,9 @@ export class FileUpload extends ConfigurableComponent {
     this.$announcements.setAttribute('aria-live', 'assertive')
     this.$root.insertAdjacentElement('afterend', this.$announcements)
 
-    // The easy bit, when dropping hide the dropzone
-    //
-    // Note: the component relies on the native behaviour to get the files
-    // being dragged set as value of the `<input>`. This allows a `change`
-    // event to be automatically fired from the element and saves us from having
-    // to do anything more than hiding the dropzone on drop.
-    this.$input.addEventListener('drop', this.onDrop.bind(this))
+    // if there is no CSS and input is hidden
+    // button will need to handle drop event
+    this.$button.addEventListener('drop', this.onDrop.bind(this))
 
     // While user is dragging, it gets a little more complex because of Safari.
     // Safari doesn't fill `relatedTarget` on `dragleave` (nor `dragenter`).
@@ -257,7 +256,6 @@ export class FileUpload extends ConfigurableComponent {
    */
   showDraggingState() {
     this.$button.classList.add('govuk-file-upload-button--dragging')
-    this.$input.classList.add('govuk-file-upload--dragging')
   }
 
   /**
@@ -265,25 +263,27 @@ export class FileUpload extends ConfigurableComponent {
    */
   hideDraggingState() {
     this.$button.classList.remove('govuk-file-upload-button--dragging')
-    this.$input.classList.remove('govuk-file-upload--dragging')
   }
 
   /**
    * Handles user dropping on the component
+   *
+   * @param {DragEvent} event - The `dragenter` event
    */
-  onDrop() {
-    this.hideDraggingState()
+  onDrop(event) {
+    event.preventDefault()
 
-    // The change event updating the text will only happen after the `drop`
-    // Because this listener is registered after `onChange`, it'll run after
-    // the status is updated and can pick it up for announcement
-    this.$input.addEventListener(
-      'change',
-      () => {
-        this.$announcements.innerText = this.$status.innerText
-      },
-      { once: true }
-    )
+    if (event.dataTransfer && isContainingFiles(event.dataTransfer)) {
+      this.$input.files = event.dataTransfer.files
+
+      // Dispatch a `change` event so external code that would rely on the `<input>`
+      // dispatching an event when files are dropped still work.
+      // Use a `CustomEvent` so our events are distinguishable from browser's native events
+      this.$input.dispatchEvent(new CustomEvent('change'))
+
+      this.$announcements.innerText = this.$status.innerText
+      this.hideDraggingState()
+    }
   }
 
   /**
