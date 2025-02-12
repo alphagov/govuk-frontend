@@ -349,6 +349,23 @@ describe('/components/file-upload', () => {
             $announcements.evaluate((e) => e.textContent)
           ).resolves.toBe('Left drop zone')
         })
+
+        it('does not appear if button disabled', async () => {
+          await render(page, 'file-upload', examples.enhanced, {
+            beforeInitialisation() {
+              document
+                .querySelector('[type="file"]')
+                .setAttribute('disabled', '')
+            }
+          })
+
+          await page.mouse.dragEnter(
+            { x: wrapperBoundingBox.x + 1, y: wrapperBoundingBox.y + 1 },
+            structuredClone(dragData)
+          )
+
+          await expect(page.$(selectorDropzoneHidden)).resolves.toBeTruthy()
+        })
       })
 
       describe('accessible name', () => {
