@@ -179,6 +179,7 @@
 
   .govuk-file-upload-button--dragging {
     border-style: solid;
+    border-color: govuk-colour("black");
 
     // extra specificity to apply when
     // empty
@@ -190,17 +191,13 @@
       background-color: govuk-colour("light-grey");
     }
 
-    &:not(:disabled) {
-      border-color: govuk-colour("black");
-
-      .govuk-file-upload-button__pseudo-button {
-        background-color: govuk-shade(govuk-colour("light-grey"), 10%);
-      }
-    }
-
     &.govuk-file-upload-button--empty:not(:disabled) .govuk-file-upload-button__status,
     &.govuk-file-upload-button--empty .govuk-file-upload-button__pseudo-button {
       background-color: govuk-colour("white");
+    }
+
+    .govuk-file-upload-button__pseudo-button {
+      background-color: govuk-shade(govuk-colour("light-grey"), 10%);
     }
   }
 }

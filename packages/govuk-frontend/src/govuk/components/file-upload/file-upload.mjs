@@ -221,6 +221,8 @@ export class FileUpload extends ConfigurableComponent {
    * @param {DragEvent} event - The `dragenter` event
    */
   updateDropzoneVisibility(event) {
+    if (this.$button.disabled) return
+
     // DOM interfaces only type `event.target` as `EventTarget`
     // so we first need to make sure it's a `Node`
     if (event.target instanceof Node) {
