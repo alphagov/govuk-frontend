@@ -1,5 +1,5 @@
+import { Component } from '../component.mjs'
 import { ConfigError } from '../errors/index.mjs'
-import { GOVUKFrontendComponent } from '../govuk-frontend-component.mjs'
 
 import { isObject, formatErrorMessage } from './index.mjs'
 
@@ -13,9 +13,9 @@ export const configOverride = Symbol.for('configOverride')
  * @virtual
  * @template {Partial<Record<keyof ConfigurationType, unknown>>} [ConfigurationType=ObjectNested]
  * @template {Element & { dataset: DOMStringMap }} [RootElementType=HTMLElement]
- * @augments GOVUKFrontendComponent<RootElementType>
+ * @augments Component<RootElementType>
  */
-export class ConfigurableComponent extends GOVUKFrontendComponent {
+export class ConfigurableComponent extends Component {
   /**
    * configOverride
    *
@@ -371,5 +371,5 @@ export function extractConfigByNamespace(schema, dataset, namespace) {
 
 /**
  * @template {Partial<Record<keyof ConfigurationType, unknown>>} [ConfigurationType=ObjectNested]
- * @typedef {typeof GOVUKFrontendComponent & ChildClass<ConfigurationType>} ChildClassConstructor<ConfigurationType>
+ * @typedef {typeof Component & ChildClass<ConfigurationType>} ChildClassConstructor<ConfigurationType>
  */
