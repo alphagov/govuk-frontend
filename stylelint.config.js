@@ -10,6 +10,7 @@ module.exports = {
     // Legacy source symlinks
     'src/govuk/**',
     'src/govuk-prototype-kit/**',
+    'codegen/generator/generators/app/templates/_index.scss',
 
     // Prevent CHANGELOG history changes
     'CHANGELOG.md'
