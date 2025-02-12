@@ -18,8 +18,7 @@ const config = {
     '.test.(js|mjs)',
     '.eslintrc.js',
     'config/*',
-    'vendor/*',
-    'codegen/*'
+    'vendor/*'
   ],
 
   modulePathIgnorePatterns: [
