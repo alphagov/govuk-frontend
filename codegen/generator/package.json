@@ -1,6 +1,7 @@
 {
   "name": "govuk-component-generator",
   "version": "0.0.1",
+  "type": "module",
   "main": "generators/index.js",
   "dependencies": {
     "yeoman-generator": "7.4.0",
