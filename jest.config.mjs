@@ -18,12 +18,14 @@ const config = {
     '.test.(js|mjs)',
     '.eslintrc.js',
     'config/*',
-    'vendor/*'
+    'vendor/*',
+    'codegen/*'
   ],
 
   modulePathIgnorePatterns: [
     '<rootDir>/dist/',
-    '<rootDir>/packages/govuk-frontend/dist/'
+    '<rootDir>/packages/govuk-frontend/dist/',
+    '<rootDir>/codegen/'
   ],
 
   /**

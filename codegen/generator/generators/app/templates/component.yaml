@@ -1,0 +1,12 @@
+params:
+  - name: id
+    type: string
+    required: false
+    description: The ID of the <%= kebabName %>.
+
+examples:
+  # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: id
+    hidden: true
+    options:
+      id: <%= kebabName %>
