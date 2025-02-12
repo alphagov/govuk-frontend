@@ -364,7 +364,14 @@ describe('/components/file-upload', () => {
             structuredClone(dragData)
           )
 
+          const disabledAnnouncement = await page.$(
+            '.govuk-file-upload-announcements'
+          )
+
           await expect(page.$(selectorDropzoneHidden)).resolves.toBeTruthy()
+          await expect(
+            disabledAnnouncement.evaluate((e) => e.textContent)
+          ).resolves.toBe('')
         })
       })
 

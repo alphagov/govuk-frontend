@@ -206,7 +206,7 @@ export class FileUpload extends ConfigurableComponent {
     })
 
     document.addEventListener('dragleave', () => {
-      if (!this.enteredAnotherElement) {
+      if (!this.enteredAnotherElement && !this.$button.disabled) {
         this.hideDraggingState()
         this.$announcements.innerText = this.i18n.t('leftDropZone')
       }
