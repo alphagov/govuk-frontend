@@ -822,6 +822,77 @@ examples:
               - href: '#'
                 text: Change
                 visuallyHiddenText: date of birth
+  - name: as a summary card extreme
+    options:
+      card:
+        title:
+          text: Senior mid-level customer experience enhancement consultant
+        actions:
+          items:
+            - text: Bop it
+              href: '#'
+            - text: Twist it
+              href: '#'
+            - text: Pull it
+              href: '#'
+            - text: Flick it
+              href: '#'
+            - text: Spin it
+              href: '#'
+            - text: Shout it
+              href: '#'
+            - text: Shake it
+              href: '#'
+      rows:
+        - key:
+            text: Name
+          value:
+            text: Barnaby Marmaduke Aloysius Benjy Cobweb Dartagnan Egbert Felix Gaspar Humbert Ignatius Jayden Kasper Leroy Maximilian Neddy Obiajulu Pepin Quilliam Rosencrantz Sexton Teddy Upwood Vivatma Wayland Xylon Yardley Zachary Usansky
+          actions:
+            items:
+              - href: '#'
+                text: Buy
+              - href: '#'
+                text: Use
+              - href: '#'
+                text: Break
+              - href: '#'
+                text: Fix
+              - href: '#'
+                text: Trash
+              - href: '#'
+                text: Change
+              - href: '#'
+                text: Mail
+              - href: '#'
+                text: Upgrade
+              - href: '#'
+                text: Charge
+              - href: '#'
+                text: Point
+              - href: '#'
+                text: Zoom
+              - href: '#'
+                text: Press
+              - href: '#'
+                text: Snap
+              - href: '#'
+                text: Work
+              - href: '#'
+                text: Quick
+              - href: '#'
+                text: Erase
+        - key:
+            text: Long website address
+          value:
+            html: |
+              <a class="govuk-link" href="https://cs.wikipedia.org/wiki/Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch">https://cs.wikipedia.org/wiki/Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch</a>
+          actions:
+            items:
+              - href: '#'
+                text: Change
+                visuallyHiddenText: long website address
+
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: attributes
     hidden: true

@@ -31,8 +31,8 @@ This change was introduced in [pull request #5627: Deprecate legacy organisation
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#5628: Add focused error state to Character count](https://github.com/alphagov/govuk-frontend/pull/5628)
-
 - [#5717: Fix prototype kit sass import path](https://github.com/alphagov/govuk-frontend/pull/5717)
+- [#5720: Fix summary card actions appearance when there are lots of links](https://github.com/alphagov/govuk-frontend/pull/5720)
 
 ## v5.8.0 (Feature release)
 
