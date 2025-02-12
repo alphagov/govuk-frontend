@@ -1,4 +1,4 @@
 @include govuk-exports("govuk/component/<%= kebabName %>") {
-  .govuk-<%= kebabName % > {
+  .govuk-<%= kebabName %> {
   }
 }
