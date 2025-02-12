@@ -25,7 +25,7 @@ export default class extends Generator {
 
   writing() {
     const { name, folder } = this.govUKComponent
-    const pascalWithSpaces = this._toPascalWithSpaces(name)
+    const pascalWithSpaces = this._toPascal(name, ' ')
     const pascalName = this._toPascal(name)
 
     const templates = [
@@ -75,17 +75,10 @@ export default class extends Generator {
     })
   }
 
-  _toPascal(input) {
+  _toPascal(input, joinChar = '') {
     return input
       .split('-')
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join('')
-  }
-
-  _toPascalWithSpaces(input) {
-    return input
-      .split('-')
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ')
+      .join(joinChar)
   }
 }
