@@ -67,6 +67,20 @@ describe('File upload', () => {
       expect($component.attr('aria-describedby')).toMatch('test-target-element')
     })
 
+    it('renders with multiple', () => {
+      const $ = render('file-upload', examples['allows multiple files'])
+
+      const $component = $('.govuk-file-upload')
+      expect($component.attr('multiple')).toBeTruthy()
+    })
+
+    it('renders with disabled', () => {
+      const $ = render('file-upload', examples.disabled)
+
+      const $component = $('.govuk-file-upload')
+      expect($component.attr('disabled')).toBeTruthy()
+    })
+
     it('renders with attributes', () => {
       const $ = render('file-upload', examples.attributes)
 
@@ -199,6 +213,73 @@ describe('File upload', () => {
       )
 
       expect($component.attr('aria-describedby')).toMatch(describedByCombined)
+    })
+  })
+
+  describe('`javascript` option', () => {
+    it('is falsy by default', () => {
+      const $ = render('file-upload', examples.javascript)
+
+      const $input = $('.govuk-form-group > .govuk-file-upload input')
+      expect($input.attr('data-module')).toBeUndefined()
+    })
+
+    it('adds the data-module attribute to the wrapper when `true`', () => {
+      const $ = render('file-upload', examples.enhanced)
+
+      const $wrapper = $('.govuk-form-group > .govuk-drop-zone')
+
+      expect($wrapper.attr('data-module')).toBe('govuk-file-upload')
+    })
+
+    it('adds the data-module attribute when receiving an object', () => {
+      const $ = render('file-upload', examples.translated)
+
+      const $wrapper = $('.govuk-form-group > .govuk-drop-zone')
+
+      expect($wrapper.attr('data-module')).toBe('govuk-file-upload')
+    })
+
+    it('enables the rendering of translation messages when true', () => {
+      const $ = render('file-upload', examples.translated)
+
+      const $wrapper = $('.govuk-form-group > .govuk-drop-zone')
+
+      expect($wrapper.attr('data-i18n.choose-files-button')).toBe(
+        'Dewiswch ffeil'
+      )
+      expect($wrapper.attr('data-i18n.drop-instruction')).toBe(
+        'neu ollwng ffeil'
+      )
+      expect($wrapper.attr('data-i18n.no-file-chosen')).toBe(
+        "Dim ffeil wedi'i dewis"
+      )
+      expect($wrapper.attr('data-i18n.multiple-files-chosen.one')).toBe(
+        "%{count} ffeil wedi'i dewis"
+      )
+      expect($wrapper.attr('data-i18n.multiple-files-chosen.other')).toBe(
+        "%{count} ffeil wedi'u dewis"
+      )
+      expect($wrapper.attr('data-i18n.entered-drop-zone')).toBe(
+        "Wedi mynd i mewn i'r parth gollwng"
+      )
+      expect($wrapper.attr('data-i18n.left-drop-zone')).toBe(
+        "Parth gollwng i'r chwith"
+      )
+    })
+
+    it('prevents the rendering of translation messages when false', () => {
+      const $ = render(
+        'file-upload',
+        examples['translated, no javascript enhancement']
+      )
+
+      const $input = $('.govuk-form-group > .govuk-file-upload')
+
+      expect($input.attr('data-i18n.select-files-button')).toBeUndefined()
+      expect($input.attr('data-i18n.files-selected-default')).toBeUndefined()
+      expect($input.attr('data-i18n.files-selected.one')).toBeUndefined()
+      expect($input.attr('data-i18n.files-selected.other')).toBeUndefined()
     })
   })
 

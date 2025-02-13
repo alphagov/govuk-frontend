@@ -71,7 +71,8 @@ scenario: |
                 hint: {
                     text: "Your photo must be at least 50KB and no more than 10MB"
                 },
-                errorMessage: errors["photo"]
+                errorMessage: errors["photo"],
+                javascript: true
             }) }}
 
             {{ govukCheckboxes({
