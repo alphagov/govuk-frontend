@@ -1,5 +1,7 @@
 @import "base";
 
+$govuk-test-flag: true;
+
 @import "core/index";
 @import "objects/index";
 

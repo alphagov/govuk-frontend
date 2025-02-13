@@ -1,5 +1,5 @@
 @include govuk-exports("govuk/component/header") {
-  $govuk-header-background: govuk-colour("black");
+  $govuk-header-background: if($govuk-test-flag, govuk-colour("blue"), govuk-colour("black"));
   $govuk-header-border-color: $govuk-brand-colour;
   $govuk-header-border-width: govuk-spacing(2);
   $govuk-header-text: govuk-colour("white");
@@ -16,26 +16,31 @@
   .govuk-header {
     @include govuk-font($size: 16, $line-height: 1);
 
-    border-bottom: govuk-spacing(2) solid govuk-colour("white");
+    border-bottom: if($govuk-test-flag, none, govuk-spacing(2) solid govuk-colour("white"));
     color: $govuk-header-text;
     background: $govuk-header-background;
-  }
-
-  .govuk-header__container--full-width {
-    padding: 0 govuk-spacing(3);
-    border-color: $govuk-header-border-color;
-
-    .govuk-header__menu-button {
-      right: govuk-spacing(3);
-    }
   }
 
   .govuk-header__container {
     @include govuk-clearfix;
     position: relative;
-    margin-bottom: -$govuk-header-border-width;
-    padding-top: govuk-spacing($govuk-header-vertical-spacing-value);
-    border-bottom: $govuk-header-border-width solid $govuk-header-border-color;
+    border-bottom: if($govuk-test-flag, none, $govuk-header-border-width solid $govuk-header-border-color);
+
+    @if $govuk-test-flag {
+      padding: govuk-spacing($govuk-header-vertical-spacing-value) 0;
+    } @else {
+      margin-bottom: -$govuk-header-border-width;
+      padding-top: govuk-spacing($govuk-header-vertical-spacing-value);
+    }
+  }
+
+  .govuk-header__container--full-width {
+    padding: if($govuk-test-flag, govuk-spacing($govuk-header-vertical-spacing-value), 0) govuk-spacing(3);
+    border-color: $govuk-header-border-color;
+
+    .govuk-header__menu-button {
+      right: govuk-spacing(3);
+    }
   }
 
   .govuk-header--full-width-border {
@@ -163,7 +168,7 @@
 
   .govuk-header__service-name {
     display: inline-block;
-    margin-bottom: govuk-spacing(2);
+    margin-bottom: if($govuk-test-flag, none, govuk-spacing(2));
     @include govuk-font-size($size: 24);
     @include govuk-typography-weight-bold;
   }
@@ -174,10 +179,13 @@
   }
 
   .govuk-header__logo {
-    @include govuk-responsive-margin($govuk-header-vertical-spacing-value, "bottom");
     // Protect the absolute positioned menu button from overlapping with the
     // logo with right padding using the button's width
     padding-right: $govuk-header-menu-button-width;
+
+    @if not $govuk-test-flag {
+      @include govuk-responsive-margin($govuk-header-vertical-spacing-value, "bottom");
+    }
 
     @include govuk-media-query($from: desktop) {
       width: 33.33%;
@@ -261,7 +269,7 @@
 
   .govuk-header__navigation {
     @include govuk-media-query($from: desktop) {
-      margin-bottom: govuk-spacing(2);
+      margin-bottom: if($govuk-test-flag, none, govuk-spacing(2));
     }
   }
 
@@ -279,7 +287,7 @@
   .govuk-header__navigation--end {
     @include govuk-media-query($from: desktop) {
       margin: 0;
-      padding: govuk-spacing(1) 0;
+      padding: if($govuk-test-flag, 0, govuk-spacing(1) 0);
       text-align: right;
     }
   }
