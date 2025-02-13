@@ -23,7 +23,8 @@ const config = {
 
   modulePathIgnorePatterns: [
     '<rootDir>/dist/',
-    '<rootDir>/packages/govuk-frontend/dist/'
+    '<rootDir>/packages/govuk-frontend/dist/',
+    '<rootDir>/codegen/'
   ],
 
   /**
