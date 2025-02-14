@@ -156,6 +156,15 @@ export class FileUpload extends ConfigurableComponent {
     this.$input.setAttribute('tabindex', '-1')
     this.$input.setAttribute('aria-hidden', 'true')
 
+    // Create a hidden empty span to take focus before opening the file picker
+    // (the focus moves to the file picker straight away anyways)
+    //
+    // This helps JAWS announce the accessible name of the button after it gets updated
+    // with the new file name consistently
+    this.$focusMagnet = document.createElement('span')
+    this.$focusMagnet.setAttribute('tabindex', '-1')
+    this.$root.appendChild(this.$focusMagnet)
+
     // Make all these new variables available to the module
     this.$button = $button
     this.$status = $status
@@ -340,6 +349,20 @@ export class FileUpload extends ConfigurableComponent {
    * When the button is clicked, emulate clicking the actual, hidden file input
    */
   onClick() {
+    // Move the focus out of the button before opening the picker
+    this.$focusMagnet.focus({ preventScroll: true })
+
+    // Once back in the document, set the focus on the button
+    // which lets JAWS announce the correct accessible name
+    // rather than the one before picking a file
+    document.addEventListener(
+      'focusin',
+      () => this.$button.focus({ preventScroll: true }),
+      {
+        once: true
+      }
+    )
+
     this.$input.click()
   }
 
