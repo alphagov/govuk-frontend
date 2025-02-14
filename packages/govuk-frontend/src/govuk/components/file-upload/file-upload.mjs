@@ -340,6 +340,13 @@ export class FileUpload extends ConfigurableComponent {
    * When the button is clicked, emulate clicking the actual, hidden file input
    */
   onClick() {
+    this.$button.addEventListener(
+      'focusin',
+      () => {
+        this.$button.focus()
+      },
+      { once: true }
+    )
     this.$input.click()
   }
 
