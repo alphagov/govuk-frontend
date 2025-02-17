@@ -204,18 +204,9 @@
 
   .govuk-header__menu-button {
     @include govuk-font($size: 16);
-    position: absolute;
-    // calculate top offset by:
-    // - getting the vertical spacing for the top and the bottom of the header
-    // - adding that to the crown height
-    // - dividing it by 2 so you have the vertical centre of the header
-    // - subtracting half the height of the menu button
-    top: (((govuk-spacing($govuk-header-vertical-spacing-value) * 2) + $govuk-header-crown-height) / 2) -
-      ($govuk-header-menu-button-height / 2);
-    right: 0;
     max-width: $govuk-header-menu-button-width;
     min-height: $govuk-header-menu-button-height;
-    margin: 0;
+    margin-bottom: govuk-spacing(1);
     padding: 0;
     border: 0;
     color: govuk-colour("white");
@@ -243,6 +234,19 @@
 
     &[aria-expanded="true"]::after {
       @include govuk-shape-arrow($direction: up, $base: 10px, $display: inline-block);
+    }
+
+    @include govuk-media-query($from: mobile) {
+      position: absolute;
+      // calculate top offset by:
+      // - getting the vertical spacing for the top and the bottom of the header
+      // - adding that to the crown height
+      // - dividing it by 2 so you have the vertical centre of the header
+      // - subtracting half the height of the menu button
+      top: (((govuk-spacing($govuk-header-vertical-spacing-value) * 2) + $govuk-header-crown-height) / 2) -
+        ($govuk-header-menu-button-height / 2);
+      right: 0;
+      margin: 0;
     }
 
     @include govuk-media-query($from: tablet) {
