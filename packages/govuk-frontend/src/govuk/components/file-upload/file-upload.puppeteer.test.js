@@ -143,6 +143,33 @@ describe('/components/file-upload', () => {
             expect(inputElementValue).toBe(`C:\\fakepath\\${testFilename}`)
           }
         )
+
+        it('moves the focus after clicking to help JAWS announce the correct content', async () => {
+          await render(page, 'file-upload', examples.enhanced)
+
+          const [fileChooser, activeElementHTML] = await Promise.all([
+            page.waitForFileChooser(),
+            (async () => {
+              await page.click(buttonSelector)
+              return page.evaluate(() => document.activeElement.outerHTML)
+            })()
+          ])
+
+          expect(activeElementHTML).toBe('<span tabindex="-1"></span>')
+
+          await fileChooser.accept(['test.txt'])
+          // Puppeteer does not seem to support focus events in headless mode
+          // so we can trigger it ourselves
+          // https://github.com/puppeteer/puppeteer/issues/1462
+          await page.evaluate(() =>
+            document.dispatchEvent(new CustomEvent('focusin'))
+          )
+
+          const activeElementClassList = await page.evaluate(() =>
+            Array.from(document.activeElement.classList)
+          )
+          expect(activeElementClassList).toContain('govuk-file-upload-button')
+        })
       })
 
       describe('when selecting a file', () => {
