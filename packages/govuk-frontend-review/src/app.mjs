@@ -186,7 +186,8 @@ export default async () => {
 
       res.render(componentName ? 'component' : 'components', {
         componentsFixtures,
-        componentName
+        componentName,
+        colourFlag: req.query.colourFlag
       })
     }
   )
@@ -235,7 +236,8 @@ export default async () => {
       res.render('component-preview', {
         bodyClasses,
         componentView,
-        previewLayout: fixtures.previewLayout
+        previewLayout: fixtures.previewLayout,
+        colourFlag: req.query.colourFlag
       })
     }
   )

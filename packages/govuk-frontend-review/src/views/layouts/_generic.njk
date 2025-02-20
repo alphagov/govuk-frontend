@@ -1,7 +1,11 @@
 {% extends "govuk/template.njk" %}
 
 {% block head %}
-  <link rel="stylesheet" href="/stylesheets/app.min.css">
+  {% if colourFlag == 'true' %}
+    <link rel="stylesheet" href="/stylesheets/app-with-colour-flag.min.css">
+  {% else %}
+    <link rel="stylesheet" href="/stylesheets/app.min.css">
+  {% endif %}
 
   {% block styles %}{% endblock %}
 {% endblock %}
