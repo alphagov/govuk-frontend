@@ -289,7 +289,8 @@ describe('packages/govuk-frontend/dist/', () => {
         expect(options).toBeInstanceOf(Array)
 
         // Component options requirements
-        const optionTasks = options.map(async (option) =>
+        const optionTasks = options.map(async (option) => {
+          // Required fields
           expect(option).toEqual(
             expect.objectContaining({
               name: expect.stringMatching(/^[A-Z]+$/i),
@@ -300,7 +301,18 @@ describe('packages/govuk-frontend/dist/', () => {
               description: expect.any(String)
             })
           )
-        )
+
+          // Optional fields
+          if (option.deprecated) {
+            if (typeof option.deprecated !== 'boolean') {
+              expect(option.deprecated).toMatch(/^\d+\.\d+\.\d+$/)
+            }
+          }
+
+          if (option.isComponent) {
+            expect(option.isComponent).toEqual(expect.any(Boolean))
+          }
+        })
 
         // Check all component options
         return Promise.all(optionTasks)
