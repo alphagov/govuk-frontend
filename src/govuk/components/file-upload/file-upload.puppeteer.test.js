@@ -102,13 +102,15 @@ describe('/components/file-upload', () => {
               (el) => el.innerHTML.trim()
             )
 
-            const statusElementText = await page.$eval(
-              `${buttonSelector} ${statusSelector}`,
-              (el) => el.innerHTML.trim()
-            )
+            const [statusElementText, statusElementAriaLiveAttribute] =
+              await page.$eval(`${buttonSelector} ${statusSelector}`, (el) => [
+                el.innerHTML.trim(),
+                el.getAttribute('aria-live')
+              ])
 
             expect(buttonElementText).toBe('Choose file')
             expect(statusElementText).toBe('No file chosen')
+            expect(statusElementAriaLiveAttribute).toBe('polite')
           })
         })
       })
@@ -270,9 +272,17 @@ describe('/components/file-upload', () => {
 
         it('is not shown by default', async () => {
           await expect(page.$(selectorDropzoneHidden)).resolves.toBeTruthy()
-          await expect(
-            $announcements.evaluate((e) => e.textContent)
-          ).resolves.toBe('')
+
+          const [announcementsText, announcementsAriaLive] =
+            await $announcements.evaluate((e) => [
+              e.textContent,
+              e.getAttribute('aria-live')
+            ])
+
+          expect(announcementsText).toBe('')
+          // As the announcement is feedback while user is dragging,
+          // best to announce it as soon as the user enters the zone
+          expect(announcementsAriaLive).toBe('assertive')
         })
 
         it('gets shown when entering the field', async () => {
@@ -303,11 +313,11 @@ describe('/components/file-upload', () => {
           )
 
           await expect(page.$(selectorDropzoneHidden)).resolves.toBeTruthy()
-          // The presence of 'Left drop zone' confirms we handled the leaving of the drop zone
+          // The presence of 'Entered drop zone' confirms we entered the drop zone
           // rather than being in the initial state
           await expect(
             $announcements.evaluate((e) => e.textContent)
-          ).resolves.toBe('file-upload.puppeteer.test.js')
+          ).resolves.toBe('Entered drop zone')
         })
 
         it('gets hidden when dragging a file and leaving the field', async () => {
