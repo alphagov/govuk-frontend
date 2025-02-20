@@ -106,6 +106,7 @@ export class FileUpload extends ConfigurableComponent {
     // Create status element that shows what/how many files are selected
     const $status = document.createElement('span')
     $status.className = 'govuk-body govuk-file-upload-button__status'
+    $status.setAttribute('aria-live', 'polite')
     $status.innerText = this.i18n.t('noFileChosen')
 
     $button.appendChild($status)
@@ -292,7 +293,6 @@ export class FileUpload extends ConfigurableComponent {
       // Use a `CustomEvent` so our events are distinguishable from browser's native events
       this.$input.dispatchEvent(new CustomEvent('change'))
 
-      this.$announcements.innerText = this.$status.innerText
       this.hideDraggingState()
     }
   }
