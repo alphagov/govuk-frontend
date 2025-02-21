@@ -10,6 +10,11 @@
   {% block banner %}
     {% include "../partials/banner.njk" %}
   {% endblock %}
+  <div class="govuk-width-container">
+    <a class="govuk-link" href="/{{ 'recolour-off' if useRecolourClass else 'recolour-on' }}">
+      Use {{ 'old' if useRecolourClass else 'new' }} colours
+    </a>
+  </div>
 {% endblock %}
 
 {% set mainClasses = 'govuk-main-wrapper--auto-spacing' %}
