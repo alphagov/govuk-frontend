@@ -1,0 +1,21 @@
+<div class="app-feature-flag-banner">
+  <div class="govuk-width-container">
+    <h2 class="govuk-heading-m">Feature flag control</h2>
+    <p class="govuk-body">This component is impacted by the following feature flags:</p>
+
+    {% for flag in featureFlags %}
+    <h3 class="govuk-heading-s">{{ flag.name }}</h3>
+    <p class="govuk-body">{{ flag.description }}</p>
+    <p class="govuk-body">
+      <a class="govuk-button govuk-!-margin-bottom-0" href="?{{ flag.param }}={{ not featureFlagStates[flag.param] }}">
+        Turn flag '{{ flag.name }}' {{ 'off' if featureFlagStates[flag.param] else 'on' }}
+      </a>
+    </p>
+    {% endfor %}
+    <p class="govuk-body">
+      <a class="govuk-button govuk-!-margin-bottom-0" href="?showAllFlagStates={{ not showAllFlagStates }}">
+        {{ 'Only show one example state' if showAllFlagStates else 'Show both states' }}
+      </a>
+    </p>
+  </div>
+</div>

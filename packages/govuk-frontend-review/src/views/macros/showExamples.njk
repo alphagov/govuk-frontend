@@ -1,6 +1,6 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 
-{% macro showExamples(componentFixtures, exampleNames) %}
+{% macro showExamples(componentFixtures, exampleNames, renderTwoIframes) %}
 
 {% set componentName = componentFixtures.component %}
 
@@ -32,9 +32,19 @@
       </p>
     {% endif %}
     </div>
-    <div class="app-component-preview">
-      <iframe src="{{ path }}?iframe=true" loading="{{ "eager" if loop.index <= 3 else "lazy" }}" class="js-component-preview app-component-preview__iframe"></iframe>
-    </div>
+
+    {% if renderTwoIframes %}
+      <div class="app-component-preview">
+        <iframe src="{{ path }}?iframe=true&recolourOverride=true" loading="{{ "eager" if loop.index <= 3 else "lazy" }}" class="js-component-preview app-component-preview__iframe"></iframe>
+      </div>
+      <div class="app-component-preview">
+        <iframe src="{{ path }}?iframe=true&recolourOverride=false" loading="{{ "eager" if loop.index <= 3 else "lazy" }}" class="js-component-preview app-component-preview__iframe"></iframe>
+      </div>
+    {% else %}
+      <div class="app-component-preview">
+        <iframe src="{{ path }}?iframe=true" loading="{{ "eager" if loop.index <= 3 else "lazy" }}" class="js-component-preview app-component-preview__iframe"></iframe>
+      </div>
+    {% endif %}
 
     <div class="govuk-width-container">
       {% set codeExamplesHtml %}

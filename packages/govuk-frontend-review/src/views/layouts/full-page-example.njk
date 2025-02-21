@@ -1,5 +1,8 @@
 {% extends "layouts/_generic.njk" %}
 
+{% set htmlClasses = "govuk-feature--recolour" if featureFlagStates['recolour'] else "" %}
+
+
 {% block banner %}
   {% include "../partials/exampleBanner.njk" %}
 {% endblock %}

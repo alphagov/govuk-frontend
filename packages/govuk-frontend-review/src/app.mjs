@@ -11,6 +11,7 @@ import { filterPath, getDirectories, hasPath } from '@govuk-frontend/lib/files'
 import { getStats, modulePaths } from '@govuk-frontend/stats'
 import express from 'express'
 
+import featureFlags from './common/lib/feature-flags.json' with { type: 'json' }
 import { getFullPageExamples } from './common/lib/files.mjs'
 import * as middleware from './common/middleware/index.mjs'
 import * as nunjucks from './common/nunjucks/index.mjs'
@@ -67,6 +68,7 @@ export default async () => {
   app.use(middleware.request)
   app.use(middleware.robots)
   app.use(middleware.banner)
+  app.use(middleware.featureFlags)
 
   // Add build stats
   app.locals.stats = Object.fromEntries(
@@ -184,9 +186,16 @@ export default async () => {
         return next()
       }
 
+      const showFeatureFlagBanner =
+        featureFlags.find((flag) =>
+          flag.affectedComponents.includes(componentName)
+        ) !== undefined
+
       res.render(componentName ? 'component' : 'components', {
         componentsFixtures,
-        componentName
+        componentName,
+        showFeatureFlagBanner,
+        featureFlags: showFeatureFlagBanner && featureFlags
       })
     }
   )

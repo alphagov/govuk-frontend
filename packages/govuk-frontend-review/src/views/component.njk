@@ -38,7 +38,11 @@
     </h1>
   </div>
 
+  {% if showFeatureFlagBanner %}
+    {% include "./partials/featureFlags.njk" %}
+  {% endif %}
+
   {% block examples %}
-    {{ showExamples(componentFixtures) }}
+    {{ showExamples(componentFixtures, false, showAllFlagStates) }}
   {% endblock %}
 {% endblock %}
