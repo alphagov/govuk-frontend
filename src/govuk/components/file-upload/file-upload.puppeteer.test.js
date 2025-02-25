@@ -649,6 +649,38 @@ describe('/components/file-upload', () => {
         })
 
         describe('missing or misconfigured elements', () => {
+          it('throws if the input is missing', async () => {
+            await expect(
+              render(page, 'file-upload', examples.enhanced, {
+                beforeInitialisation() {
+                  document.querySelector('[type="file"]').remove()
+                }
+              })
+            ).rejects.toMatchObject({
+              cause: {
+                name: 'ElementError',
+                message:
+                  'govuk-file-upload: File inputs (`<input type="file">`) not found'
+              }
+            })
+          })
+
+          it('throws if the input has no `id` attribute', async () => {
+            await expect(
+              render(page, 'file-upload', examples.enhanced, {
+                beforeInitialisation() {
+                  document.querySelector('[type="file"]').removeAttribute('id')
+                }
+              })
+            ).rejects.toMatchObject({
+              cause: {
+                name: 'ElementError',
+                message:
+                  'govuk-file-upload: File input (`<input type="file">`) attribute (`id`) not found'
+              }
+            })
+          })
+
           it('throws if the input type is not "file"', async () => {
             await expect(
               render(page, 'file-upload', examples.enhanced, {
@@ -662,7 +694,7 @@ describe('/components/file-upload', () => {
               cause: {
                 name: 'ElementError',
                 message:
-                  'govuk-file-upload: Form field must be an input of type `file`.'
+                  'govuk-file-upload: File input (`<input type="file">`) attribute (`type`) is not `file`'
               }
             })
           })
@@ -677,7 +709,8 @@ describe('/components/file-upload', () => {
             ).rejects.toMatchObject({
               cause: {
                 name: 'ElementError',
-                message: 'govuk-file-upload: No label not found'
+                message:
+                  'govuk-file-upload: Field label (`<label for=file-upload-1>`) not found'
               }
             })
           })
