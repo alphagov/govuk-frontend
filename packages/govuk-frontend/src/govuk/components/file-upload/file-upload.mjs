@@ -30,9 +30,6 @@ export class FileUpload extends ConfigurableComponent {
   /** @private */
   i18n
 
-  /** @private */
-  id
-
   /**
    * @param {Element | null} $root - File input element
    * @param {FileUploadConfig} [config] - File Upload config
@@ -61,37 +58,36 @@ export class FileUpload extends ConfigurableComponent {
     this.$input = /** @type {HTMLFileInputElement} */ ($input)
     this.$input.setAttribute('hidden', 'true')
 
-    if (!this.$input.id) {
+    const fieldId = this.$input.id
+    if (!fieldId) {
       throw new ElementError({
         component: FileUpload,
         identifier: 'File input (`<input type="file">`) attribute (`id`)'
       })
     }
 
-    this.id = this.$input.id
-
     this.i18n = new I18n(this.config.i18n, {
       // Read the fallback if necessary rather than have it set in the defaults
       locale: closestAttributeValue(this.$root, 'lang')
     })
 
-    const $label = this.findLabel()
+    const $label = this.findLabel(fieldId)
     // Add an ID to the label if it doesn't have one already
     // so it can be referenced by `aria-labelledby`
     if (!$label.id) {
-      $label.id = `${this.id}-label`
+      $label.id = `${fieldId}-label`
     }
 
     // we need to copy the 'id' of the root element
     // to the new button replacement element
     // so that focus will work in the error summary
-    this.$input.id = `${this.id}-input`
+    this.$input.id = `${fieldId}-input`
 
     // Create the file selection button
     const $button = document.createElement('button')
     $button.classList.add('govuk-file-upload-button')
     $button.type = 'button'
-    $button.id = this.id
+    $button.id = fieldId
     $button.classList.add('govuk-file-upload-button--empty')
 
     // Copy `aria-describedby` if present so hints and errors
@@ -112,7 +108,7 @@ export class FileUpload extends ConfigurableComponent {
     const commaSpan = document.createElement('span')
     commaSpan.className = 'govuk-visually-hidden'
     commaSpan.innerText = ', '
-    commaSpan.id = `${this.id}-comma`
+    commaSpan.id = `${fieldId}-comma`
 
     $button.appendChild(commaSpan)
 
@@ -317,17 +313,18 @@ export class FileUpload extends ConfigurableComponent {
    * Looks up the `<label>` element associated to the field
    *
    * @private
+   * @param {string} fieldId - The `id` of the field
    * @returns {HTMLElement} The `<label>` element associated to the field
    * @throws {ElementError} If the `<label>` cannot be found
    */
-  findLabel() {
+  findLabel(fieldId) {
     // Use `label` in the selector so TypeScript knows the type fo `HTMLElement`
-    const $label = document.querySelector(`label[for="${this.$input.id}"]`)
+    const $label = document.querySelector(`label[for="${fieldId}"]`)
 
     if (!$label) {
       throw new ElementError({
         component: FileUpload,
-        identifier: `Field label (\`<label for=${this.$input.id}>\`)`
+        identifier: `Field label (\`<label for=${fieldId}>\`)`
       })
     }
 
