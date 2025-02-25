@@ -98,7 +98,7 @@ updates:
 
     # Schedule run every Monday, local time
     schedule:
-      interval: weekly
+      interval: monthly
       time: '10:30'
       timezone: 'Europe/London'
 
@@ -110,7 +110,7 @@ updates:
 
     # Schedule run every Monday, local time
     schedule:
-      interval: weekly
+      interval: monthly
       time: '10:30'
       timezone: 'Europe/London'
 
@@ -122,7 +122,7 @@ updates:
 
     # Schedule run every Monday, local time
     schedule:
-      interval: weekly
+      interval: monthly
       time: '10:30'
       timezone: 'Europe/London'
 
@@ -134,6 +134,6 @@ updates:
 
     # Schedule run every Monday, local time
     schedule:
-      interval: weekly
+      interval: monthly
       time: '10:30'
       timezone: 'Europe/London'
