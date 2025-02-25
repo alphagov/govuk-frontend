@@ -148,9 +148,6 @@ export class FileUpload extends ConfigurableComponent {
     // Assemble these all together
     this.$root.insertAdjacentElement('afterbegin', $button)
 
-    this.$input.setAttribute('tabindex', '-1')
-    this.$input.setAttribute('aria-hidden', 'true')
-
     // Make all these new variables available to the module
     this.$button = $button
     this.$status = $status
