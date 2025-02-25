@@ -171,58 +171,10 @@ export class FileUpload extends ConfigurableComponent {
     // button will need to handle drop event
     this.$button.addEventListener('drop', this.onDrop.bind(this))
 
-    // While user is dragging, it gets a little more complex because of Safari.
-    // Safari doesn't fill `relatedTarget` on `dragleave` (nor `dragenter`).
-    // This means we can't use `relatedTarget` to:
-    // - check if the user is still within the wrapper
-    //   (`relatedTarget` being a descendant of the wrapper)
-    // - check if the user is still over the viewport
-    //   (`relatedTarget` being null if outside)
-
-    // Thanks to `dragenter` bubbling, we can listen on the `document` with a
-    // single function and update the visibility based on whether we entered a
-    // node inside or outside the wrapper.
-    document.addEventListener(
-      'dragenter',
-      this.updateDropzoneVisibility.bind(this)
-    )
-
-    // To detect if we're outside the document, we can track if there was a
-    // `dragenter` event preceding a `dragleave`. If there wasn't, this means
-    // we're outside the document.
-    //
-    // The order of events is guaranteed by the HTML specs:
-    // https://html.spec.whatwg.org/multipage/dnd.html#drag-and-drop-processing-model
-    document.addEventListener('dragenter', () => {
-      this.enteredAnotherElement = true
+    this.dropZone = new DropZone(this.$root, {
+      onEnter: this.onDropZoneEnter.bind(this),
+      onLeave: this.onDropZoneLeave.bind(this)
     })
-
-    document.addEventListener('dragleave', () => {
-      if (!this.enteredAnotherElement && !this.$button.disabled) {
-        this.onDropZoneLeave()
-      }
-
-      this.enteredAnotherElement = false
-    })
-  }
-
-  /**
-   * Updates the visibility of the dropzone as users enters the various elements on the page
-   *
-   * @param {DragEvent} event - The `dragenter` event
-   */
-  updateDropzoneVisibility(event) {
-    if (this.$button.disabled) return
-
-    // DOM interfaces only type `event.target` as `EventTarget`
-    // so we first need to make sure it's a `Node`
-    if (event.target instanceof Node) {
-      if (this.$root.contains(event.target)) {
-        this.onDropZoneEnter(event)
-      } else {
-        this.onDropZoneLeave()
-      }
-    }
   }
 
   /**
@@ -245,6 +197,8 @@ export class FileUpload extends ConfigurableComponent {
    * @param {DragEvent} event - The `dragenter` event
    */
   onDropZoneEnter(event) {
+    if (this.$button.disabled) return
+
     if (event.dataTransfer && isContainingFiles(event.dataTransfer)) {
       // Only update the class and make the announcement if not already visible
       // to avoid repeated announcements on NVDA (2024.4) + Firefox (133)
@@ -259,6 +213,8 @@ export class FileUpload extends ConfigurableComponent {
    * Hides the dropzone if the user is already dragging
    */
   onDropZoneLeave() {
+    if (this.$button.disabled) return
+
     // Only hide the dropzone if it is visible to prevent announcing user
     // left the drop zone when they enter the page but haven't reached yet
     // the file upload component
@@ -416,6 +372,94 @@ export class FileUpload extends ConfigurableComponent {
     }
   })
 }
+
+/**
+ * A DropZone that monitors when users enter or leave
+ * a given element while dragging, taking care of the
+ * difference of implementation of drag and drop events
+ * across browsers
+ *
+ * @internal
+ */
+class DropZone {
+  /** @private */
+  $root
+
+  /**
+   * @private
+   */
+  onEnter
+
+  /** @private */
+  onLeave
+
+  /**
+   * @param {HTMLElement} $root - The root element of the dropzone
+   * @param {DropZoneOptions} options - The options for the dropzone
+   */
+  constructor($root, { onEnter, onLeave }) {
+    this.$root = $root
+    this.onEnter = onEnter
+    this.onLeave = onLeave
+
+    // While user is dragging, it gets a little more complex because of Safari.
+    // Safari doesn't fill `relatedTarget` on `dragleave` (nor `dragenter`).
+    // This means we can't use `relatedTarget` to:
+    // - check if the user is still within the wrapper
+    //   (`relatedTarget` being a descendant of the wrapper)
+    // - check if the user is still over the viewport
+    //   (`relatedTarget` being null if outside)
+
+    // Thanks to `dragenter` bubbling, we can listen on the `document` with a
+    // single function and update the visibility based on whether we entered a
+    // node inside or outside the wrapper.
+    document.addEventListener(
+      'dragenter',
+      this.updateDropzoneVisibility.bind(this)
+    )
+
+    // To detect if we're outside the document, we can track if there was a
+    // `dragenter` event preceding a `dragleave`. If there wasn't, this means
+    // we're outside the document.
+    //
+    // The order of events is guaranteed by the HTML specs:
+    // https://html.spec.whatwg.org/multipage/dnd.html#drag-and-drop-processing-model
+    document.addEventListener('dragenter', () => {
+      this.enteredAnotherElement = true
+    })
+
+    document.addEventListener('dragleave', (event) => {
+      if (!this.enteredAnotherElement) {
+        this.onLeave(event)
+      }
+
+      this.enteredAnotherElement = false
+    })
+  }
+
+  /**
+   * Updates the visibility of the dropzone as users enters the various elements on the page
+   *
+   * @param {DragEvent} event - The `dragenter` event
+   */
+  updateDropzoneVisibility(event) {
+    // DOM interfaces only type `event.target` as `EventTarget`
+    // so we first need to make sure it's a `Node`
+    if (event.target instanceof Node) {
+      if (this.$root.contains(event.target)) {
+        this.onEnter(event)
+      } else {
+        this.onLeave(event)
+      }
+    }
+  }
+}
+
+/**
+ * @typedef DropZoneOptions
+ * @property {(event: DragEvent) => void} onEnter - Callback invoked when user enters the dropzone while dragging
+ * @property {(event?: DragEvent) => void} onLeave - Callback invoked when user leaves the dropzone while dragging
+ */
 
 /**
  * Checks if the given `DataTransfer` contains files
