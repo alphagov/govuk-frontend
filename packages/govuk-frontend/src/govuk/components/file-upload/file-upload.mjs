@@ -43,19 +43,17 @@ export class FileUpload extends ConfigurableComponent {
     const $input = this.$root.querySelector('input')
 
     if ($input === null) {
-      throw new ElementError(
-        formatErrorMessage(
-          FileUpload,
-          'File upload wrapper must have `input` element of type `file`'
-        )
-      )
+      throw new ElementError({
+        component: FileUpload,
+        identifier: 'File inputs (`<input type="file">`)'
+      })
     }
 
     if ($input.type !== 'file') {
       throw new ElementError(
         formatErrorMessage(
           FileUpload,
-          'Form field must be an input of type `file`.'
+          'File input (`<input type="file">`) attribute (`type`) is not `file`'
         )
       )
     }
@@ -63,10 +61,11 @@ export class FileUpload extends ConfigurableComponent {
     this.$input = /** @type {HTMLFileInputElement} */ ($input)
     this.$input.setAttribute('hidden', 'true')
 
-    if (!this.$input.id.length) {
-      throw new ElementError(
-        formatErrorMessage(FileUpload, 'Form field must specify an `id`.')
-      )
+    if (!this.$input.id) {
+      throw new ElementError({
+        component: FileUpload,
+        identifier: 'File input (`<input type="file">`) attribute (`id`)'
+      })
     }
 
     this.id = this.$input.id
@@ -328,7 +327,7 @@ export class FileUpload extends ConfigurableComponent {
     if (!$label) {
       throw new ElementError({
         component: FileUpload,
-        identifier: 'No label'
+        identifier: `Field label (\`<label for=${this.$input.id}>\`)`
       })
     }
 
