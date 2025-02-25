@@ -199,7 +199,7 @@ export class FileUpload extends ConfigurableComponent {
 
     document.addEventListener('dragleave', () => {
       if (!this.enteredAnotherElement && !this.$button.disabled) {
-        this.hideDraggingState()
+        this.dragging = false
         this.$announcements.innerText = this.i18n.t('leftDropZone')
       }
 
@@ -222,12 +222,8 @@ export class FileUpload extends ConfigurableComponent {
         if (event.dataTransfer && isContainingFiles(event.dataTransfer)) {
           // Only update the class and make the announcement if not already visible
           // to avoid repeated announcements on NVDA (2024.4) + Firefox (133)
-          if (
-            !this.$button.classList.contains(
-              'govuk-file-upload-button--dragging'
-            )
-          ) {
-            this.showDraggingState()
+          if (!this.dragging) {
+            this.dragging = true
             this.$announcements.innerText = this.i18n.t('enteredDropZone')
           }
         }
@@ -235,10 +231,8 @@ export class FileUpload extends ConfigurableComponent {
         // Only hide the dropzone if it is visible to prevent announcing user
         // left the drop zone when they enter the page but haven't reached yet
         // the file upload component
-        if (
-          this.$button.classList.contains('govuk-file-upload-button--dragging')
-        ) {
-          this.hideDraggingState()
+        if (this.dragging) {
+          this.dragging = false
           this.$announcements.innerText = this.i18n.t('leftDropZone')
         }
       }
@@ -246,17 +240,17 @@ export class FileUpload extends ConfigurableComponent {
   }
 
   /**
-   * Show the drop zone visually
+   * @returns {boolean} Whether the user is dragging
    */
-  showDraggingState() {
-    this.$button.classList.add('govuk-file-upload-button--dragging')
+  get dragging() {
+    return this.$button.classList.contains('govuk-file-upload-button--dragging')
   }
 
   /**
-   * Hides the drop zone visually
+   * @param {boolean} value - Whether the user is dragging
    */
-  hideDraggingState() {
-    this.$button.classList.remove('govuk-file-upload-button--dragging')
+  set dragging(value) {
+    this.$button.classList.toggle('govuk-file-upload-button--dragging', value)
   }
 
   /**
@@ -275,7 +269,7 @@ export class FileUpload extends ConfigurableComponent {
       // Use a `CustomEvent` so our events are distinguishable from browser's native events
       this.$input.dispatchEvent(new CustomEvent('change'))
 
-      this.hideDraggingState()
+      this.dragging = false
     }
   }
 
