@@ -85,6 +85,15 @@ describe('/components/file-upload', () => {
           })
         })
 
+        describe('label element', () => {
+          it('targets the button in its `for` attribute', async () => {
+            const buttonId = await page.$eval(buttonSelector, (el) => el.id)
+            const label = await page.$(`[for="${buttonId}"]`)
+
+            expect(label).not.toBeNull()
+          })
+        })
+
         describe('choose file button', () => {
           it('renders the button element', async () => {
             const buttonElement = await page.$eval(buttonSelector, (el) => el)

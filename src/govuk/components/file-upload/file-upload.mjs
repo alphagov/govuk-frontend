@@ -77,7 +77,6 @@ export class FileUpload extends ConfigurableComponent {
     })
 
     const $label = this.findLabel()
-    $label.setAttribute('for', `${this.id}-input`)
     // Add an ID to the label if it doesn't have one already
     // so it can be referenced by `aria-labelledby`
     if (!$label.id) {
