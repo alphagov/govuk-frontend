@@ -156,8 +156,7 @@ export class FileUpload extends ConfigurableComponent {
     this.$input.addEventListener('change', this.onChange.bind(this))
 
     // Synchronise the `disabled` state between the button and underlying input
-    this.updateDisabledState()
-    this.observeDisabledState()
+    this.synchroniseDisabledState()
 
     // Handle drop zone visibility
     // A live region to announce when users enter or leave the drop zone
@@ -175,6 +174,22 @@ export class FileUpload extends ConfigurableComponent {
       onEnter: this.onDropZoneEnter.bind(this),
       onLeave: this.onDropZoneLeave.bind(this)
     })
+  }
+
+  /**
+   * @returns {boolean} - Whether the component is disabled
+   */
+  get disabled() {
+    return this.$button.disabled
+  }
+
+  /**
+   * @private
+   * @param {boolean} value - Whether the component is disabled
+   */
+  set disabled(value) {
+    this.$button.disabled = value
+    this.$root.classList.toggle('govuk-drop-zone--disabled', value)
   }
 
   /**
@@ -197,7 +212,7 @@ export class FileUpload extends ConfigurableComponent {
    * @param {DragEvent} event - The `dragenter` event
    */
   onDropZoneEnter(event) {
-    if (this.$button.disabled) return
+    if (this.disabled) return
 
     if (event.dataTransfer && isContainingFiles(event.dataTransfer)) {
       // Only update the class and make the announcement if not already visible
@@ -213,7 +228,7 @@ export class FileUpload extends ConfigurableComponent {
    * Hides the dropzone if the user is already dragging
    */
   onDropZoneLeave() {
-    if (this.$button.disabled) return
+    if (this.disabled) return
 
     // Only hide the dropzone if it is visible to prevent announcing user
     // left the drop zone when they enter the page but haven't reached yet
@@ -303,14 +318,16 @@ export class FileUpload extends ConfigurableComponent {
   /**
    * Create a mutation observer to check if the input's attributes altered.
    */
-  observeDisabledState() {
+  synchroniseDisabledState() {
+    this.disabled = this.$input.disabled
+
     const observer = new MutationObserver((mutationList) => {
       for (const mutation of mutationList) {
         if (
           mutation.type === 'attributes' &&
           mutation.attributeName === 'disabled'
         ) {
-          this.updateDisabledState()
+          this.disabled = this.$input.disabled
         }
       }
     })
@@ -318,18 +335,6 @@ export class FileUpload extends ConfigurableComponent {
     observer.observe(this.$input, {
       attributes: true
     })
-  }
-
-  /**
-   * Synchronise the `disabled` state between the input and replacement button.
-   */
-  updateDisabledState() {
-    this.$button.disabled = this.$input.disabled
-
-    this.$root.classList.toggle(
-      'govuk-drop-zone--disabled',
-      this.$button.disabled
-    )
   }
 
   /**
