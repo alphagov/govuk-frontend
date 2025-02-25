@@ -199,8 +199,7 @@ export class FileUpload extends ConfigurableComponent {
 
     document.addEventListener('dragleave', () => {
       if (!this.enteredAnotherElement && !this.$button.disabled) {
-        this.dragging = false
-        this.$announcements.innerText = this.i18n.t('leftDropZone')
+        this.onDropZoneLeave()
       }
 
       this.enteredAnotherElement = false
@@ -219,22 +218,9 @@ export class FileUpload extends ConfigurableComponent {
     // so we first need to make sure it's a `Node`
     if (event.target instanceof Node) {
       if (this.$root.contains(event.target)) {
-        if (event.dataTransfer && isContainingFiles(event.dataTransfer)) {
-          // Only update the class and make the announcement if not already visible
-          // to avoid repeated announcements on NVDA (2024.4) + Firefox (133)
-          if (!this.dragging) {
-            this.dragging = true
-            this.$announcements.innerText = this.i18n.t('enteredDropZone')
-          }
-        }
+        this.onDropZoneEnter(event)
       } else {
-        // Only hide the dropzone if it is visible to prevent announcing user
-        // left the drop zone when they enter the page but haven't reached yet
-        // the file upload component
-        if (this.dragging) {
-          this.dragging = false
-          this.$announcements.innerText = this.i18n.t('leftDropZone')
-        }
+        this.onDropZoneLeave()
       }
     }
   }
@@ -251,6 +237,35 @@ export class FileUpload extends ConfigurableComponent {
    */
   set dragging(value) {
     this.$button.classList.toggle('govuk-file-upload-button--dragging', value)
+  }
+
+  /**
+   * Shows the dropzone if user is not already dragging
+   *
+   * @param {DragEvent} event - The `dragenter` event
+   */
+  onDropZoneEnter(event) {
+    if (event.dataTransfer && isContainingFiles(event.dataTransfer)) {
+      // Only update the class and make the announcement if not already visible
+      // to avoid repeated announcements on NVDA (2024.4) + Firefox (133)
+      if (!this.dragging) {
+        this.dragging = true
+        this.$announcements.innerText = this.i18n.t('enteredDropZone')
+      }
+    }
+  }
+
+  /**
+   * Hides the dropzone if the user is already dragging
+   */
+  onDropZoneLeave() {
+    // Only hide the dropzone if it is visible to prevent announcing user
+    // left the drop zone when they enter the page but haven't reached yet
+    // the file upload component
+    if (this.dragging) {
+      this.dragging = false
+      this.$announcements.innerText = this.i18n.t('leftDropZone')
+    }
   }
 
   /**
