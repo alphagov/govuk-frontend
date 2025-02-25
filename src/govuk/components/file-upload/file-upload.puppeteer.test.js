@@ -506,11 +506,15 @@ describe('/components/file-upload', () => {
           const buttonDisabled = await page.$eval(buttonSelector, (el) =>
             el.hasAttribute('disabled')
           )
+          const dropZoneDisabled = await page.$eval(wrapperSelector, (el) =>
+            el.classList.contains('govuk-drop-zone--disabled')
+          )
 
           expect(buttonDisabled).toBeTruthy()
+          expect(dropZoneDisabled).toBeTruthy()
         })
 
-        it('disables the button if the input is disabled programatically', async () => {
+        it('disables the button if the input is disabled programmatically', async () => {
           await render(page, 'file-upload', examples.enhanced)
 
           await page.$eval(inputSelector, (el) =>
@@ -520,11 +524,15 @@ describe('/components/file-upload', () => {
           const buttonDisabledAfter = await page.$eval(buttonSelector, (el) =>
             el.hasAttribute('disabled')
           )
+          const dropZoneDisabled = await page.$eval(wrapperSelector, (el) =>
+            el.classList.contains('govuk-drop-zone--disabled')
+          )
 
           expect(buttonDisabledAfter).toBeTruthy()
+          expect(dropZoneDisabled).toBeTruthy()
         })
 
-        it('enables the button if the input is enabled programatically', async () => {
+        it('enables the button if the input is enabled programmatically', async () => {
           await render(page, 'file-upload', examples.enhanced, {
             beforeInitialisation() {
               document
@@ -533,20 +541,19 @@ describe('/components/file-upload', () => {
             }
           })
 
-          const buttonDisabledBefore = await page.$eval(buttonSelector, (el) =>
-            el.hasAttribute('disabled')
-          )
-
           await page.$eval(inputSelector, (el) =>
             el.removeAttribute('disabled')
           )
 
-          const buttonDisabledAfter = await page.$eval(buttonSelector, (el) =>
+          const buttonDisabled = await page.$eval(buttonSelector, (el) =>
             el.hasAttribute('disabled')
           )
+          const dropZoneDisabled = await page.$eval(wrapperSelector, (el) =>
+            el.classList.contains('govuk-drop-zone--disabled')
+          )
 
-          expect(buttonDisabledBefore).toBeTruthy()
-          expect(buttonDisabledAfter).toBeFalsy()
+          expect(buttonDisabled).toBeFalsy()
+          expect(dropZoneDisabled).toBeFalsy()
         })
       })
 
