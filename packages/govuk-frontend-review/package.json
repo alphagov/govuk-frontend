@@ -61,7 +61,7 @@
     "rollup": "^4.19.1",
     "sassdoc": "^2.7.4",
     "supertest": "^7.0.0",
-    "typedoc": "^0.27.7",
+    "typedoc": "^0.27.9",
     "typedoc-plugin-missing-exports": "^3.1.0"
   },
   "optionalDependencies": {
