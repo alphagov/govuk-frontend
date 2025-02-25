@@ -39,5 +39,5 @@ describe('/components/file-upload', () => {
 })
 
 /**
- * @typedef {import('@govuk-frontend/lib/components').MacroOptions} MacroOptions
+ * @import {MacroOptions} from '@govuk-frontend/lib/components'
  */
