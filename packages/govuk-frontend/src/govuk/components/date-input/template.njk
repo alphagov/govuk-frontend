@@ -15,19 +15,22 @@
   {% set dateInputItems = params.items %}
 {% else %}
   {% set dateInputItems = [
-    {
-      name: "day",
-      classes: "govuk-input--width-2"
-    },
-    {
-      name: "month",
-      classes: "govuk-input--width-2"
-    },
-    {
-      name: "year",
-      classes: "govuk-input--width-4"
-    }
-  ] %}
+  {
+    name: "day",
+    classes: "govuk-input--width-2" + (" govuk-input--error" if params.errors[0] else ""),
+    value: params.values[0]
+  },
+  {
+    name: "month",
+    classes: "govuk-input--width-2" + (" govuk-input--error" if params.errors[1] else ""),
+    value: params.values[1]
+  },
+  {
+    name: "year",
+    classes: "govuk-input--width-4" + (" govuk-input--error" if params.errors[2] else ""),
+    value: params.values[2]
+  }
+] %}
 {% endif %}
 
 {#- Capture the HTML so we can optionally nest it in a fieldset -#}
