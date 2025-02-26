@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Recolour",
+    "description": "An experimentation of changing the colours of some things",
+    "param": "recolour",
+    "cookieName": "use-recolour",
+    "affectedComponents": ["header"]
+  }
+]

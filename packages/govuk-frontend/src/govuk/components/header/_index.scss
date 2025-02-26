@@ -1,5 +1,6 @@
 @include govuk-exports("govuk/component/header") {
   $govuk-header-background: govuk-colour("black");
+  $govuk-recoloured-header-background: govuk-colour("blue");
   $govuk-header-border-color: $govuk-brand-colour;
   $govuk-header-border-width: govuk-spacing(2);
   $govuk-header-text: govuk-colour("white");
@@ -350,6 +351,87 @@
       &::after {
         display: none;
       }
+    }
+  }
+
+  .govuk-feature--recolour {
+    .govuk-header {
+      border-bottom: 1px solid $govuk-recoloured-header-background;
+      background: $govuk-recoloured-header-background;
+    }
+
+    .govuk-header__container {
+      margin-bottom: 0;
+      padding: 0;
+      border-bottom: 0;
+    }
+
+    .govuk-header__service-name {
+      margin: govuk-spacing(2) 0 0;
+    }
+
+    .govuk-header__logo {
+      @include govuk-responsive-padding($govuk-header-vertical-spacing-value, "top");
+    }
+
+    .govuk-header__navigation {
+      margin-bottom: 0;
+    }
+
+    .govuk-header__navigation--end {
+      padding: 0;
+    }
+
+    .govuk-header__navigation-list {
+      @include govuk-media-query($until: desktop) {
+        padding-top: govuk-spacing(1);
+      }
+    }
+
+    .govuk-header__navigation-item {
+      margin: govuk-spacing(2) 0 govuk-spacing(4);
+      padding: 0;
+      border-bottom: 0;
+
+      @include govuk-media-query($from: desktop) {
+        margin: govuk-spacing(3) govuk-spacing(3) 0 0;
+        padding: 0;
+      }
+
+      a {
+        @include govuk-typography-weight-regular;
+      }
+    }
+
+    .govuk-header__navigation-item--active {
+      border: 0 solid;
+
+      @include govuk-media-query($until: desktop) {
+        margin-left: govuk-spacing(-3);
+        padding-left: govuk-spacing(2);
+        border-left-width: govuk-spacing(1);
+      }
+
+      @include govuk-media-query($from: desktop) {
+        padding-bottom: govuk-spacing(2);
+        border-bottom-width: govuk-spacing(1);
+      }
+
+      a {
+        &:link,
+        &:hover,
+        &:visited {
+          color: inherit;
+        }
+
+        &:focus {
+          color: $govuk-focus-text-colour;
+        }
+      }
+    }
+
+    .govuk-header__navigation-item:last-child {
+      margin-bottom: govuk-spacing(3);
     }
   }
 }
