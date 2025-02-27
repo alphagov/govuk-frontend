@@ -1,0 +1,12 @@
+:root {
+  // This variable is automatically overwritten during builds and releases.
+  // It doesn't need to be updated manually.
+  --govuk-frontend-version: "5.8.0";
+
+  // CSS custom property for each breakpoint
+  @each $name, $value in $govuk-breakpoints {
+    --govuk-frontend-breakpoint-#{$name}: #{govuk-px-to-rem($value)};
+  }
+}
+
+/*# sourceMappingURL=_govuk-frontend-properties.scss.map */
