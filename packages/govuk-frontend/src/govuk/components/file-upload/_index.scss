@@ -5,6 +5,9 @@
 @include govuk-exports("govuk/component/file-upload") {
   $file-upload-border-width: 2px;
   $component-padding: govuk-spacing(1);
+  $empty-button-background-colour: govuk-colour("white");
+  $empty-pseudo-button-background-colour: govuk-colour("light-grey");
+  $empty-status-background-colour: govuk-tint(govuk-colour("blue"), 70%);
 
   .govuk-file-upload {
     @include govuk-font($size: 19);
@@ -146,24 +149,19 @@
         box-shadow: inset 0 0 0 1px $govuk-focus-colour;
       }
     }
-
-    &:disabled {
-      pointer-events: none;
-      opacity: 0.5;
-    }
   }
 
   .govuk-file-upload-button--empty {
     border-style: dashed;
-    background-color: govuk-colour("white");
+    background-color: $empty-button-background-colour;
 
     .govuk-file-upload-button__pseudo-button {
-      background-color: govuk-colour("light-grey");
+      background-color: $empty-pseudo-button-background-colour;
     }
 
     .govuk-file-upload-button__status {
       color: govuk-shade(govuk-colour("blue"), 60%);
-      background-color: govuk-tint(govuk-colour("blue"), 70%);
+      background-color: $empty-status-background-colour;
     }
 
     &:hover,
@@ -198,6 +196,21 @@
 
     .govuk-file-upload-button__pseudo-button {
       background-color: govuk-shade(govuk-colour("light-grey"), 10%);
+    }
+  }
+
+  .govuk-file-upload-button:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+
+    background-color: $empty-button-background-colour;
+
+    .govuk-file-upload-button__pseudo-button {
+      background-color: $empty-pseudo-button-background-colour;
+    }
+
+    .govuk-file-upload-button__status {
+      background-color: $empty-status-background-colour;
     }
   }
 }
