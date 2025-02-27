@@ -85,6 +85,15 @@ describe('/components/file-upload', () => {
           })
         })
 
+        describe('label element', () => {
+          it('targets the button in its `for` attribute', async () => {
+            const buttonId = await page.$eval(buttonSelector, (el) => el.id)
+            const label = await page.$(`[for="${buttonId}"]`)
+
+            expect(label).not.toBeNull()
+          })
+        })
+
         describe('choose file button', () => {
           it('renders the button element', async () => {
             const buttonElement = await page.$eval(buttonSelector, (el) => el)
@@ -497,11 +506,15 @@ describe('/components/file-upload', () => {
           const buttonDisabled = await page.$eval(buttonSelector, (el) =>
             el.hasAttribute('disabled')
           )
+          const dropZoneDisabled = await page.$eval(wrapperSelector, (el) =>
+            el.classList.contains('govuk-drop-zone--disabled')
+          )
 
           expect(buttonDisabled).toBeTruthy()
+          expect(dropZoneDisabled).toBeTruthy()
         })
 
-        it('disables the button if the input is disabled programatically', async () => {
+        it('disables the button if the input is disabled programmatically', async () => {
           await render(page, 'file-upload', examples.enhanced)
 
           await page.$eval(inputSelector, (el) =>
@@ -511,11 +524,15 @@ describe('/components/file-upload', () => {
           const buttonDisabledAfter = await page.$eval(buttonSelector, (el) =>
             el.hasAttribute('disabled')
           )
+          const dropZoneDisabled = await page.$eval(wrapperSelector, (el) =>
+            el.classList.contains('govuk-drop-zone--disabled')
+          )
 
           expect(buttonDisabledAfter).toBeTruthy()
+          expect(dropZoneDisabled).toBeTruthy()
         })
 
-        it('enables the button if the input is enabled programatically', async () => {
+        it('enables the button if the input is enabled programmatically', async () => {
           await render(page, 'file-upload', examples.enhanced, {
             beforeInitialisation() {
               document
@@ -524,20 +541,19 @@ describe('/components/file-upload', () => {
             }
           })
 
-          const buttonDisabledBefore = await page.$eval(buttonSelector, (el) =>
-            el.hasAttribute('disabled')
-          )
-
           await page.$eval(inputSelector, (el) =>
             el.removeAttribute('disabled')
           )
 
-          const buttonDisabledAfter = await page.$eval(buttonSelector, (el) =>
+          const buttonDisabled = await page.$eval(buttonSelector, (el) =>
             el.hasAttribute('disabled')
           )
+          const dropZoneDisabled = await page.$eval(wrapperSelector, (el) =>
+            el.classList.contains('govuk-drop-zone--disabled')
+          )
 
-          expect(buttonDisabledBefore).toBeTruthy()
-          expect(buttonDisabledAfter).toBeFalsy()
+          expect(buttonDisabled).toBeFalsy()
+          expect(dropZoneDisabled).toBeFalsy()
         })
       })
 
@@ -640,6 +656,38 @@ describe('/components/file-upload', () => {
         })
 
         describe('missing or misconfigured elements', () => {
+          it('throws if the input is missing', async () => {
+            await expect(
+              render(page, 'file-upload', examples.enhanced, {
+                beforeInitialisation() {
+                  document.querySelector('[type="file"]').remove()
+                }
+              })
+            ).rejects.toMatchObject({
+              cause: {
+                name: 'ElementError',
+                message:
+                  'govuk-file-upload: File inputs (`<input type="file">`) not found'
+              }
+            })
+          })
+
+          it('throws if the input has no `id` attribute', async () => {
+            await expect(
+              render(page, 'file-upload', examples.enhanced, {
+                beforeInitialisation() {
+                  document.querySelector('[type="file"]').removeAttribute('id')
+                }
+              })
+            ).rejects.toMatchObject({
+              cause: {
+                name: 'ElementError',
+                message:
+                  'govuk-file-upload: File input (`<input type="file">`) attribute (`id`) not found'
+              }
+            })
+          })
+
           it('throws if the input type is not "file"', async () => {
             await expect(
               render(page, 'file-upload', examples.enhanced, {
@@ -653,7 +701,7 @@ describe('/components/file-upload', () => {
               cause: {
                 name: 'ElementError',
                 message:
-                  'govuk-file-upload: Form field must be an input of type `file`.'
+                  'govuk-file-upload: File input (`<input type="file">`) attribute (`type`) is not `file`'
               }
             })
           })
@@ -668,7 +716,8 @@ describe('/components/file-upload', () => {
             ).rejects.toMatchObject({
               cause: {
                 name: 'ElementError',
-                message: 'govuk-file-upload: No label not found'
+                message:
+                  'govuk-file-upload: Field label (`<label for=file-upload-1>`) not found'
               }
             })
           })

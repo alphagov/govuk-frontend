@@ -322,7 +322,8 @@ examples:
         text: Llwythwch ffeil i fyny
       multiple: true
       chooseFilesButtonText: Dewiswch ffeil
-      noFileChosenText: Dim ffeiliau wedi'u dewis
+      dropInstructionText: neu ollwng ffeil
+      noFileChosenText: Dim ffeil wedi'i dewis
       multipleFilesChosenText:
         other: "%{count} ffeil wedi'u dewis"
         one: "%{count} ffeil wedi'i dewis"
