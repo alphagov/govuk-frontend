@@ -5,6 +5,9 @@ import { ElementError } from '../../errors/index.mjs'
 /** @internal */
 export const sectionExpandedModifier = 'govuk-accordion__section--expanded'
 
+/** @private */
+const iconOpenModifier = 'govuk-accordion-nav__chevron--down'
+
 /**
  * A section of the Accordion component
  *
@@ -17,9 +20,12 @@ export class AccordionSection extends Component {
 
   /**
    * @param {Element} $root - The root of the section
+   * @param {AccordionSectionConfig} config - The configuration for this AccordionSection
    */
-  constructor($root) {
+  constructor($root, { i18n }) {
     super($root)
+
+    this.i18n = i18n
 
     this.ariaLabelParts = []
 
@@ -108,6 +114,44 @@ export class AccordionSection extends Component {
    */
   set expanded(value) {
     this.$root.classList.toggle(sectionExpandedModifier, value)
+
+    this.render(value)
+  }
+
+  /**
+   * @param {boolean} expanded - Whether the section is expanded
+   */
+  render(expanded) {
+    const newButtonText = expanded
+      ? this.i18n.t('hideSection')
+      : this.i18n.t('showSection')
+
+    this.$toggleText.textContent = newButtonText
+    this.$button.setAttribute('aria-expanded', `${expanded}`)
+
+    // Update aria-label combining
+    const ariaLabelParts = [].concat(this.ariaLabelParts)
+
+    const ariaLabelMessage = expanded
+      ? this.i18n.t('hideSectionAriaLabel')
+      : this.i18n.t('showSectionAriaLabel')
+    ariaLabelParts.push(ariaLabelMessage)
+
+    /*
+     * Join with a comma to add pause for assistive technology.
+     * Example: [heading]Section A ,[pause] Show this section.
+     * https://accessibility.blog.gov.uk/2017/12/18/what-working-on-gov-uk-navigation-taught-us-about-accessibility/
+     */
+    this.$button.setAttribute('aria-label', ariaLabelParts.join(' , '))
+
+    // Swap icon, change class
+    if (expanded) {
+      this.$content.removeAttribute('hidden')
+      this.$toggleIcon.classList.remove(iconOpenModifier)
+    } else {
+      this.$content.setAttribute('hidden', 'until-found')
+      this.$toggleIcon.classList.add(iconOpenModifier)
+    }
   }
 
   /**
@@ -293,3 +337,12 @@ function createShowHideToggle($toggleIcon, $toggleText) {
 
   return $showHideToggle
 }
+
+/**
+ * @typedef AccordionSectionConfig
+ * @property {I18n} i18n - The i18n instance of the Accordion the section belongs to
+ */
+
+/**
+ * @import {I18n} from '../../i18n.mjs'
+ */

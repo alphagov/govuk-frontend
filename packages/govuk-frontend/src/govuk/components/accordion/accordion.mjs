@@ -136,7 +136,9 @@ export class Accordion extends ConfigurableComponent {
    */
   initSectionHeaders() {
     this.$sections.forEach(($section) => {
-      const section = new AccordionSection($section)
+      const section = new AccordionSection($section, {
+        i18n: this.i18n
+      })
       // Cache the AccordionSection for future retrieval
       this.sections.set($section, section)
 
@@ -227,42 +229,6 @@ export class Accordion extends ConfigurableComponent {
     }
 
     section.expanded = expanded
-
-    const $showHideIcon = section.$toggleIcon
-    const $showHideText = section.$toggleText
-    const $button = section.$button
-    const $content = section.$content
-
-    const newButtonText = expanded
-      ? this.i18n.t('hideSection')
-      : this.i18n.t('showSection')
-
-    $showHideText.textContent = newButtonText
-    $button.setAttribute('aria-expanded', `${expanded}`)
-
-    // Update aria-label combining
-    const ariaLabelParts = [].concat(section.ariaLabelParts)
-
-    const ariaLabelMessage = expanded
-      ? this.i18n.t('hideSectionAriaLabel')
-      : this.i18n.t('showSectionAriaLabel')
-    ariaLabelParts.push(ariaLabelMessage)
-
-    /*
-     * Join with a comma to add pause for assistive technology.
-     * Example: [heading]Section A ,[pause] Show this section.
-     * https://accessibility.blog.gov.uk/2017/12/18/what-working-on-gov-uk-navigation-taught-us-about-accessibility/
-     */
-    $button.setAttribute('aria-label', ariaLabelParts.join(' , '))
-
-    // Swap icon, change class
-    if (expanded) {
-      $content.removeAttribute('hidden')
-      $showHideIcon.classList.remove(iconOpenModifier)
-    } else {
-      $content.setAttribute('hidden', 'until-found')
-      $showHideIcon.classList.add(iconOpenModifier)
-    }
 
     // See if "Show all sections" button text should be updated
     this.updateShowAllButton(this.areAllSectionsOpen())
