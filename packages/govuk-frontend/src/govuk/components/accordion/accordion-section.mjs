@@ -87,6 +87,13 @@ export class AccordionSection extends Component {
   }
 
   /**
+   * @param {boolean} value - Whether the section is expanded
+   */
+  set expanded(value) {
+    this.$root.classList.toggle(sectionExpandedModifier, value)
+  }
+
+  /**
    * Construct section header
    *
    * @private

@@ -3,10 +3,7 @@ import { createElement } from '../../common/create-element.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { I18n } from '../../i18n.mjs'
 
-import {
-  AccordionSection,
-  sectionExpandedModifier
-} from './accordion-section.mjs'
+import { AccordionSection } from './accordion-section.mjs'
 
 /** @private */
 const sectionClass = 'govuk-accordion__section'
@@ -232,6 +229,8 @@ export class Accordion extends ConfigurableComponent {
       return
     }
 
+    section.expanded = expanded
+
     const $showHideIcon = section.$toggleIcon
     const $showHideText = section.$toggleText
     const $button = section.$button
@@ -268,11 +267,9 @@ export class Accordion extends ConfigurableComponent {
     // Swap icon, change class
     if (expanded) {
       $content.removeAttribute('hidden')
-      $section.classList.add(sectionExpandedModifier)
       $showHideIcon.classList.remove(iconOpenModifier)
     } else {
       $content.setAttribute('hidden', 'until-found')
-      $section.classList.remove(sectionExpandedModifier)
       $showHideIcon.classList.add(iconOpenModifier)
     }
 
