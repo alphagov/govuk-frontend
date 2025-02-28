@@ -29,12 +29,12 @@ export class AccordionSection extends Component {
       `Section headers (\`<div class="govuk-accordion__section-header">\`)`
     )
 
-    this.$buttonPlaceholder = this.findRequiredElement(
+    const $buttonPlaceholder = this.findRequiredElement(
       '.govuk-accordion__section-button',
       'Section button placeholder (`<span class="govuk-accordion__section-button">`)'
     )
 
-    this.$headingText = createHeadingText(this.$buttonPlaceholder)
+    this.$headingText = createHeadingText($buttonPlaceholder)
 
     // Technically slightly different from the current implementation
     // However, I'm not sure we originally intended to check whether the content element
@@ -70,9 +70,9 @@ export class AccordionSection extends Component {
       $summary.remove()
     }
 
-    this.$button = this.constructHeaderMarkup(this.$buttonPlaceholder)
+    this.$button = this.constructHeaderMarkup($buttonPlaceholder)
 
-    this.$heading.removeChild(this.$buttonPlaceholder)
+    this.$heading.removeChild($buttonPlaceholder)
     this.$heading.appendChild(this.$button)
   }
 
