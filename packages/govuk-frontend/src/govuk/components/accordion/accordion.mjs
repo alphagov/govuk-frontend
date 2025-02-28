@@ -135,11 +135,8 @@ export class Accordion extends ConfigurableComponent {
    * @private
    */
   initSectionHeaders() {
-    this.$sections.forEach(($section, index) => {
-      const section = new AccordionSection($section, {
-        accordionId: this.$root.id,
-        index
-      })
+    this.$sections.forEach(($section) => {
+      const section = new AccordionSection($section)
       // Cache the AccordionSection for future retrieval
       this.sections.set($section, section)
 

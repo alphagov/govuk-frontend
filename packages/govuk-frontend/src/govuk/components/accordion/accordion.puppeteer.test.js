@@ -859,6 +859,22 @@ describe('/components/accordion', () => {
             }
           })
         })
+
+        it('throws if a section content is missing an `id` attribute', async () => {
+          await expect(
+            render(page, 'accordion', examples.default, {
+              beforeInitialisation($root) {
+                $root.querySelector('.govuk-accordion__section-content').id = ''
+              }
+            })
+          ).rejects.toMatchObject({
+            cause: {
+              name: 'ElementError',
+              message:
+                'govuk-accordion-section: Section content (`<div class="govuk-accordion__section-content">`) attribute (`id`) not found'
+            }
+          })
+        })
       })
     })
   })
