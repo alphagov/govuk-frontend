@@ -21,6 +21,8 @@ export class AccordionSection extends Component {
   constructor($root) {
     super($root)
 
+    this.ariaLabelParts = []
+
     this.$header = this.findRequiredElement(
       `.govuk-accordion__section-header`,
       `Section headers (\`<div class="govuk-accordion__section-header">\`)`
@@ -31,7 +33,8 @@ export class AccordionSection extends Component {
       'Section button placeholder (`<span class="govuk-accordion__section-button">`)'
     )
 
-    this.$headingText = createHeadingText($buttonPlaceholder)
+    const $headingText = createHeadingText($buttonPlaceholder)
+    this.ariaLabelParts.push($headingText.textContent.trim())
 
     // Technically slightly different from the current implementation
     // However, I'm not sure we originally intended to check whether the content element
@@ -65,16 +68,22 @@ export class AccordionSection extends Component {
       'Section heading (`.govuk-accordion__section-heading`)'
     )
 
-    const $summary = this.$root.querySelector(
+    const $summaryDiv = this.$root.querySelector(
       `.govuk-accordion__section-summary`
     )
-    if ($summary) {
-      this.$summary = createSummarySpan($summary)
+    let $summarySpan
+    if ($summaryDiv) {
+      this.ariaLabelParts.push($summaryDiv.textContent.trim())
 
-      $summary.remove()
+      $summarySpan = createSummarySpan($summaryDiv)
+      $summaryDiv.remove()
     }
 
-    this.$button = this.constructHeaderMarkup($buttonPlaceholder)
+    this.$button = this.constructHeaderMarkup({
+      $buttonPlaceholder,
+      $headingText,
+      $summarySpan
+    })
 
     this.$heading.removeChild($buttonPlaceholder)
     this.$heading.appendChild(this.$button)
@@ -105,10 +114,13 @@ export class AccordionSection extends Component {
    * Construct section header
    *
    * @private
-   * @param {Element} $buttonPlaceholder - The heading of the span
+   * @param {object} options - Function options
+   * @param {Element} options.$buttonPlaceholder - The button placeholder
+   * @param {Element} options.$headingText - The element with the text of the heading
+   * @param {Element} [options.$summarySpan] - The element with the summary
    * @returns {HTMLButtonElement} - The button element
    */
-  constructHeaderMarkup($buttonPlaceholder) {
+  constructHeaderMarkup({ $buttonPlaceholder, $headingText, $summarySpan }) {
     // Create a button element that will replace the
     // '.govuk-accordion__section-button' span
     const $button = createElement('button', {
@@ -129,12 +141,12 @@ export class AccordionSection extends Component {
     // 2. Punctuation
     // 3. (Optional: Summary line followed by punctuation)
     // 4. Show / hide toggle
-    $button.appendChild(this.$headingText)
+    $button.appendChild($headingText)
     $button.appendChild(createVisuallyHiddenComma())
 
     // If summary content exists add to DOM in correct order
-    if (this.$summary) {
-      $button.appendChild(this.$summary)
+    if ($summarySpan) {
+      $button.appendChild($summarySpan)
       $button.appendChild(createVisuallyHiddenComma())
     }
 
@@ -194,10 +206,10 @@ function createVisuallyHiddenComma() {
  * a button element, which can only contain phrasing content, and
  * not a `<div>` element
  *
- * @param {Element} $summary - The original `<div>` containing the summary
+ * @param {Element} $summaryDiv - The original `<div>` containing the summary
  * @returns {HTMLSpanElement} - The `<span>` element containing the summary
  */
-function createSummarySpan($summary) {
+function createSummarySpan($summaryDiv) {
   // Create an inner summary container to limit the width of the summary
   // focus state
   const $summarySpanFocus = createElement(
@@ -205,13 +217,13 @@ function createSummarySpan($summary) {
     {
       class: 'govuk-accordion__section-summary-focus'
     },
-    Array.from($summary.childNodes)
+    Array.from($summaryDiv.childNodes)
   )
 
   const $summarySpan = createElement('span', {}, [$summarySpanFocus])
 
   // Get original attributes, and pass them to the replacement
-  for (const attr of Array.from($summary.attributes)) {
+  for (const attr of Array.from($summaryDiv.attributes)) {
     $summarySpan.setAttribute(attr.name, attr.value)
   }
 

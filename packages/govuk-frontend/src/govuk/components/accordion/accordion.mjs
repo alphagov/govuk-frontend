@@ -241,13 +241,7 @@ export class Accordion extends ConfigurableComponent {
     $button.setAttribute('aria-expanded', `${expanded}`)
 
     // Update aria-label combining
-    const ariaLabelParts = []
-
-    ariaLabelParts.push(`${section.$headingText.textContent}`.trim())
-
-    if (section.$summary) {
-      ariaLabelParts.push(`${section.$summary.textContent}`.trim())
-    }
+    const ariaLabelParts = [].concat(section.ariaLabelParts)
 
     const ariaLabelMessage = expanded
       ? this.i18n.t('hideSectionAriaLabel')
