@@ -69,6 +69,53 @@ export class AccordionSection extends Component {
 
       $summary.remove()
     }
+
+    this.$button = this.constructHeaderMarkup(this.$buttonPlaceholder)
+
+    this.$heading.removeChild(this.$buttonPlaceholder)
+    this.$heading.appendChild(this.$button)
+  }
+
+  /**
+   * Construct section header
+   *
+   * @private
+   * @param {Element} $buttonPlaceholder - The heading of the span
+   * @returns {HTMLButtonElement} - The button element
+   */
+  constructHeaderMarkup($buttonPlaceholder) {
+    // Create a button element that will replace the
+    // '.govuk-accordion__section-button' span
+    const $button = createElement('button', {
+      type: 'button',
+      'aria-controls': this.$content.id
+    })
+
+    // Copy all attributes from $span to $button (except `id`, which gets added
+    // to the `$headingText` element)
+    for (const attr of Array.from($buttonPlaceholder.attributes)) {
+      if (attr.name !== 'id') {
+        $button.setAttribute(attr.name, attr.value)
+      }
+    }
+
+    // Append elements to the button:
+    // 1. Heading text
+    // 2. Punctuation
+    // 3. (Optional: Summary line followed by punctuation)
+    // 4. Show / hide toggle
+    $button.appendChild(this.$headingText)
+    $button.appendChild(createVisuallyHiddenComma())
+
+    // If summary content exists add to DOM in correct order
+    if (this.$summary) {
+      $button.appendChild(this.$summary)
+      $button.appendChild(createVisuallyHiddenComma())
+    }
+
+    $button.appendChild(this.$toggle)
+
+    return $button
   }
 
   /**
@@ -93,6 +140,26 @@ export class AccordionSection extends Component {
 
     return $element
   }
+}
+
+/**
+ * Create an element to improve semantics of the section button with
+ * punctuation
+ *
+ * Adding punctuation to the button can also improve its general semantics by
+ * dividing its contents into thematic chunks. See
+ * https://github.com/alphagov/govuk-frontend/issues/2327#issuecomment-922957442
+ *
+ * @private
+ * @returns {Element} DOM element
+ */
+function createVisuallyHiddenComma() {
+  const $element = createElement('span', {
+    class: 'govuk-visually-hidden govuk-accordion__section-heading-divider'
+  })
+
+  $element.textContent = ', '
+  return $element
 }
 
 /**

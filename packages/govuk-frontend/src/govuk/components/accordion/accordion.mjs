@@ -12,9 +12,6 @@ const sectionClass = 'govuk-accordion__section'
 const sectionExpandedModifier = 'govuk-accordion__section--expanded'
 
 /** @private */
-const sectionButtonClass = 'govuk-accordion__section-button'
-
-/** @private */
 const iconClass = 'govuk-accordion-nav__chevron'
 
 /** @private */
@@ -149,8 +146,6 @@ export class Accordion extends ConfigurableComponent {
       // Cache the AccordionSection for future retrieval
       this.sections.set($section, section)
 
-      // Set header attributes
-      this.constructHeaderMarkup(section, index)
       this.setExpanded(this.isExpanded($section), $section)
 
       // Handle events
@@ -162,49 +157,6 @@ export class Accordion extends ConfigurableComponent {
       // to open or closed.
       this.setInitialState($section)
     })
-  }
-
-  /**
-   * Construct section header
-   *
-   * @private
-   * @param {AccordionSection} section - The section to build the header for
-   * @param {number} index - Section index
-   */
-  constructHeaderMarkup(section, index) {
-    // Create a button element that will replace the
-    // '.govuk-accordion__section-button' span
-    const $button = createElement('button', {
-      type: 'button',
-      'aria-controls': `${this.$root.id}-content-${index + 1}`
-    })
-
-    // Copy all attributes from $span to $button (except `id`, which gets added
-    // to the `$headingText` element)
-    for (const attr of Array.from(section.$buttonPlaceholder.attributes)) {
-      if (attr.name !== 'id') {
-        $button.setAttribute(attr.name, attr.value)
-      }
-    }
-
-    // Append elements to the button:
-    // 1. Heading text
-    // 2. Punctuation
-    // 3. (Optional: Summary line followed by punctuation)
-    // 4. Show / hide toggle
-    $button.appendChild(section.$headingText)
-    $button.appendChild(this.getButtonPunctuationEl())
-
-    // If summary content exists add to DOM in correct order
-    if (section.$summary) {
-      $button.appendChild(section.$summary)
-      $button.appendChild(this.getButtonPunctuationEl())
-    }
-
-    $button.appendChild(section.$toggle)
-
-    section.$heading.removeChild(section.$buttonPlaceholder)
-    section.$heading.appendChild($button)
   }
 
   /**
@@ -275,13 +227,8 @@ export class Accordion extends ConfigurableComponent {
 
     const $showHideIcon = section.$toggleIcon
     const $showHideText = section.$toggleText
-    const $button = $section.querySelector(`.${sectionButtonClass}`)
+    const $button = section.$button
     const $content = section.$content
-
-    if (!$button) {
-      // Return early for elements we create
-      return
-    }
 
     const newButtonText = expanded
       ? this.i18n.t('hideSection')
@@ -427,26 +374,6 @@ export class Accordion extends ConfigurableComponent {
         }
       } catch (exception) {}
     }
-  }
-
-  /**
-   * Create an element to improve semantics of the section button with
-   * punctuation
-   *
-   * Adding punctuation to the button can also improve its general semantics by
-   * dividing its contents into thematic chunks. See
-   * https://github.com/alphagov/govuk-frontend/issues/2327#issuecomment-922957442
-   *
-   * @private
-   * @returns {Element} DOM element
-   */
-  getButtonPunctuationEl() {
-    const $element = createElement('span', {
-      class: 'govuk-visually-hidden govuk-accordion__section-heading-divider'
-    })
-
-    $element.textContent = ', '
-    return $element
   }
 
   /**
