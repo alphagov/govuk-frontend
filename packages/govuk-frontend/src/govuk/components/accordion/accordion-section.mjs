@@ -2,6 +2,9 @@ import { createElement } from '../../common/create-element.mjs'
 import { Component } from '../../component.mjs'
 import { ElementError } from '../../errors/index.mjs'
 
+/** @internal */
+export const sectionExpandedModifier = 'govuk-accordion__section--expanded'
+
 /**
  * A section of the Accordion component
  *
@@ -74,6 +77,13 @@ export class AccordionSection extends Component {
 
     this.$heading.removeChild($buttonPlaceholder)
     this.$heading.appendChild(this.$button)
+  }
+
+  /**
+   * @returns {boolean} Whether the section is expanded
+   */
+  get expanded() {
+    return this.$root.classList.contains(sectionExpandedModifier)
   }
 
   /**

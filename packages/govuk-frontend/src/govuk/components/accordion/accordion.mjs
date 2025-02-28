@@ -3,13 +3,13 @@ import { createElement } from '../../common/create-element.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { I18n } from '../../i18n.mjs'
 
-import { AccordionSection } from './accordion-section.mjs'
+import {
+  AccordionSection,
+  sectionExpandedModifier
+} from './accordion-section.mjs'
 
 /** @private */
 const sectionClass = 'govuk-accordion__section'
-
-/** @private */
-const sectionExpandedModifier = 'govuk-accordion__section--expanded'
 
 /** @private */
 const iconClass = 'govuk-accordion-nav__chevron'
@@ -146,7 +146,7 @@ export class Accordion extends ConfigurableComponent {
       // Cache the AccordionSection for future retrieval
       this.sections.set($section, section)
 
-      this.setExpanded(this.isExpanded($section), $section)
+      this.setExpanded(section.expanded, $section)
 
       // Handle events
       section.$header.addEventListener('click', () =>
@@ -187,7 +187,14 @@ export class Accordion extends ConfigurableComponent {
    * @param {Element} $section - Section element
    */
   onSectionToggle($section) {
-    const nowExpanded = !this.isExpanded($section)
+    // TEMPORARY: Access the section until the `expanded` state
+    // is handled inside the `AccordionSection` itself
+    const section = this.sections.get($section)
+    if (!section) {
+      return
+    }
+
+    const nowExpanded = !section.expanded
     this.setExpanded(nowExpanded, $section)
 
     // Store the state in sessionStorage when a change is triggered
@@ -274,26 +281,13 @@ export class Accordion extends ConfigurableComponent {
   }
 
   /**
-   * Get state of section
-   *
-   * @private
-   * @param {Element} $section - Section element
-   * @returns {boolean} True if expanded
-   */
-  isExpanded($section) {
-    return $section.classList.contains(sectionExpandedModifier)
-  }
-
-  /**
    * Check if all sections are open
    *
    * @private
    * @returns {boolean} True if all sections are open
    */
   areAllSectionsOpen() {
-    return Array.from(this.$sections).every(($section) =>
-      this.isExpanded($section)
-    )
+    return this.sections.values().every((section) => section.expanded)
   }
 
   /**
