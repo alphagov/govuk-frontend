@@ -16,6 +16,10 @@ params:
     type: boolean
     required: false
     description: If `true`, file input will be disabled.
+  - name: multiple
+    type: boolean
+    required: false
+    description: If `true`, a user may select multiple files at the same time. The exact mechanism to do this differs depending on operating system.
   - name: describedBy
     type: string
     required: false
@@ -74,6 +78,34 @@ params:
             type: string
             required: true
             description: HTML to add after the input. If `html` is provided, the `text` option will be ignored.
+  - name: javascript
+    type: boolean
+    required: false
+    description: Can be used to enable JavaScript enhancements for the component.
+  - name: chooseFilesButtonText
+    type: string
+    required: false
+    description: The text of the button that opens the file picker. Default is `"Choose file"`. If `javascript` is not provided, this option will be ignored.
+  - name: dropInstructionText
+    type: string
+    required: false
+    description: The text informing users they can drop files. Default is `"or drop file"`. If `javascript` is not provided, this option will be ignored.
+  - name: multipleFilesChosenText
+    type: object
+    required: false
+    description: The text displayed when multiple files have been chosen by the user. The component will replace the `%{count}` placeholder with the number of files selected. [Our pluralisation rules apply to this macro option](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/#understanding-pluralisation-rules). If `javascript` is not provided, this option will be ignored.
+  - name: noFileChosenText
+    type: string
+    required: false
+    description: The text displayed when no file has been chosen by the user. Default is `"No file chosen"`. If `javascript` is not provided, this option will be ignored.
+  - name: enteredDropZoneText
+    type: string
+    required: false
+    description: The text announced by assistive technology when user drags files and enters the drop zone. Default is `"Entered drop zone"`. If `javascript` is not provided, this option will be ignored.
+  - name: leftDropZoneText
+    type: string
+    required: false
+    description: The text announced by assistive technology when user drags files and leaves the drop zone without dropping. Default is `"Left drop zone"`. If `javascript` is not provided, this option will be ignored.
   - name: classes
     type: string
     required: false
@@ -89,6 +121,37 @@ examples:
       name: file-upload-1
       label:
         text: Upload a file
+  - name: allows multiple files
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Upload a file
+      multiple: true
+  - name: allows image files only
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Upload a file
+      attributes:
+        accept: 'image/*'
+  - name: allows direct media capture
+    description: Currently only works on mobile devices.
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Upload a file
+      attributes:
+        capture: 'user'
+  - name: disabled
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Upload a file
+      disabled: true
   - name: with hint text
     options:
       id: file-upload-2
@@ -107,13 +170,6 @@ examples:
         text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
       errorMessage:
         text: Error message goes here
-  - name: with value
-    options:
-      id: file-upload-4
-      name: file-upload-4
-      value: C:\fakepath\myphoto.jpg
-      label:
-        text: Upload a photo
   - name: with label as page heading
     options:
       id: file-upload-1
@@ -130,8 +186,61 @@ examples:
         text: Upload a file
       formGroup:
         classes: extra-class
+  - name: enhanced
+    screenshot: true
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Upload a file
+      javascript: true
+  - name: enhanced, disabled
+    options:
+      javascript: true
+      disabled: true
+      id: file-upload-error
+      name: file-upload-error
+      label:
+        text: Upload a file
+      hint:
+        text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
+  - name: enhanced, with error message and hint
+    options:
+      javascript: true
+      id: file-upload-3
+      name: file-upload-3
+      label:
+        text: Upload a file
+      hint:
+        text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
+      errorMessage:
+        text: Error message goes here
+  - name: translated
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Llwythwch ffeil i fyny
+      multiple: true
+      javascript: true
+      chooseFilesButtonText: Dewiswch ffeil
+      dropInstructionText: neu ollwng ffeil
+      noFileChosenText: Dim ffeil wedi'i dewis
+      multipleFilesChosenText:
+        other: "%{count} ffeil wedi'u dewis"
+        one: "%{count} ffeil wedi'i dewis"
+      enteredDropZoneText: Wedi mynd i mewn i'r parth gollwng
+      leftDropZoneText: Parth gollwng i'r chwith
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: with value
+    hidden: true
+    options:
+      id: file-upload-4
+      name: file-upload-4
+      value: C:\fakepath\myphoto.jpg
+      label:
+        text: Upload a photo
   - name: attributes
     hidden: true
     options:
@@ -205,3 +314,19 @@ examples:
         text: Error message
       hint:
         text: hint
+  - name: translated, no javascript enhancement
+    hidden: true
+    options:
+      id: file-upload-1
+      name: file-upload-1
+      label:
+        text: Llwythwch ffeil i fyny
+      multiple: true
+      chooseFilesButtonText: Dewiswch ffeil
+      dropInstructionText: neu ollwng ffeil
+      noFileChosenText: Dim ffeil wedi'i dewis
+      multipleFilesChosenText:
+        other: "%{count} ffeil wedi'u dewis"
+        one: "%{count} ffeil wedi'i dewis"
+      enteredDropZoneText: Wedi mynd i mewn i'r parth gollwng
+      leftDropZoneText: Parth gollwng i'r chwith

@@ -340,6 +340,24 @@
     }
   }) }}
 
+  {{ govukFileUpload({
+    id: "file-upload-1",
+    name: "file-upload-1",
+    label: {
+      text: "Llwythwch ffeil i fyny"
+    },
+    javascript: true,
+    chooseFilesButtonText: "Dewiswch ffeil",
+    dropInstructionText: "neu ollwng ffeil",
+    noFileChosenText: "Dim ffeil wedi'i dewis",
+    multipleFilesChosenText: {
+      other: "%{count} ffeil wedi'u dewis",
+      one: "%{count} ffeil wedi'i dewis"
+    },
+    enteredDropZoneText: "Wedi mynd i mewn i'r parth gollwng",
+    leftDropZoneText: "Parth gollwng i'r chwith"
+  }) }}
+
   {{ govukFooter({
     classes: "govuk-!-margin-bottom-4",
     navigation: [
