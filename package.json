@@ -88,10 +88,10 @@
     "prettier": "^3.5.2",
     "semver": "^7.6.2",
     "standard": "^17.1.2",
-    "stylelint": "^16.14.1",
+    "stylelint": "^16.15.0",
     "stylelint-config-gds": "^2.0.0",
     "stylelint-order": "^6.0.4",
-    "typescript": "^5.7.3"
+    "typescript": "^5.8.2"
   },
   "optionalDependencies": {
     "@actions/github": "^6.0.0",
