@@ -4,6 +4,8 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+To install this version with npm, run `npm install govuk-frontend@5.9.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
+
 ### New features
 
 #### Use our improved File upload component
@@ -56,15 +58,32 @@ This change was introduced in [pull request #5305: Add progressively enhanced Fi
 
 #### Form control components now have default `id` attributes
 
-If you're using the included Nunjucks macros, the Text input, Textarea, Password input, Character count, File upload, and Select components now automatically use the value of the `name` parameter for the `id` parameter.
+If you're using the included Nunjucks macros, these components now automatically use the value of the name parameter for the `id` parameter:
 
-This means that you only have to provide the `name` parameters if they both have the same value.
+- Text input
+- Textarea
+- Password input
+- Character count
+- File upload
+- Select
 
-Note that the Date input component still requires an `id` attribute.
+You’ll only have to provide the `name` parameters if they both have the same value.
 
-This change was introduced in [pull request #5658: Update form control components to set a default `id` based on `name`](https://github.com/alphagov/govuk-frontend/pull/5658).
+The Date input component still requires an `id` attribute.
+
+This change was introduced in [pull request #5658: Update form control components to set a default id based on name](https://github.com/alphagov/govuk-frontend/pull/5658).
 
 ### Deprecated features
+
+#### Move service name and navigation links from the GOV.UK header to Service navigation component
+
+We’ve deprecated the option to show a service name in the GOV.UK header component. This option will be removed from the GOV.UK header in the next breaking release of GOV.UK Frontend.
+
+We recommend updating your service to use the [Service navigation component](https://design-system.service.gov.uk/components/service-navigation/) as soon as possible.
+
+Previously, we deprecated the option to show navigation links in the GOV.UK header component. This option will be removed as well, along with the GOV.UK header JavaScript component, since its only purpose was to make the navigation links responsive.
+
+This change was introduced in pull request #5721: [Add deprecation field and deprecate header navigation](https://github.com/alphagov/govuk-frontend/pull/5721).
 
 #### Migrate to the new organisation colour palette
 
@@ -72,15 +91,16 @@ The legacy organisation colour palette has been deprecated and will be removed i
 
 If your service uses the organisation colour palette, make sure that things still look as expected with the `$govuk-new-organisation-colours` feature flag enabled.
 
-This change was introduced in [pull request #5627: Deprecate legacy organisation colour palette](https://github.com/alphagov/govuk-frontend/pull/5627).
+This change was introduced in pull request #5627: [Deprecate legacy organisation colour palette](https://github.com/alphagov/govuk-frontend/pull/5627).
 
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
 
-- [#5628: Add focused error state to Character count](https://github.com/alphagov/govuk-frontend/pull/5628)
-- [#5717: Fix prototype kit sass import path](https://github.com/alphagov/govuk-frontend/pull/5717)
+- [#5628: Add focused error state to Character count](https://github.com/alphagov/govuk-frontend/pull/5628) - thanks to @edwardhorsford for reporting this issue
+- [#5717: Fix prototype kit sass import path](https://github.com/alphagov/govuk-frontend/pull/5717) - thanks to @joelanman
 - [#5720: Fix summary card actions appearance when there are lots of links](https://github.com/alphagov/govuk-frontend/pull/5720)
+- [#5728: Prevent menu button being overlaid at high zoom levels](https://github.com/alphagov/govuk-frontend/pull/5728) - thanks to @govindmalurwardwp for reporting this issue
 
 ## v5.8.0 (Feature release)
 
