@@ -24,12 +24,12 @@ To enable this improvement for your users, you'll first need to update the marku
 
   ```njk
   {{ govukFileUpload({
-  id: "file-upload",
-  name: "photo",
-  label: {
-  	text: "Upload your photo"
-  },
-  javascript: true
+    id: "file-upload",
+    name: "photo",
+    label: {
+      text: "Upload your photo"
+    },
+    javascript: true
   }) }}
   ```
 
@@ -37,12 +37,12 @@ To enable this improvement for your users, you'll first need to update the marku
 
   ```html
   <div class="govuk-form-group">
-  <label class="govuk-label" for="file-upload-1">
-  	Upload your photo
-  </label>
-  <div class="govuk-drop-zone" data-module="govuk-file-upload">
-  	<input class="govuk-file-upload" id="file-upload" name="photo" type="file">
-  </div>
+    <label class="govuk-label" for="file-upload-1">
+      Upload your photo
+    </label>
+    <div class="govuk-drop-zone" data-module="govuk-file-upload">
+      <input class="govuk-file-upload" id="file-upload" name="photo" type="file">
+    </div>
   </div>
   ```
 
