@@ -45,16 +45,36 @@ export function validateVersion(newVersion) {
     )
   }
 
-  // Get the version diff keyword (major, minor or patch) which we can use to
-  // help with validating the new version
+  // Get the version diff keyword (major, minor, patch plus prerelease versions
+  // of those 3 and prerelease for differences between prereleases) which we can
+  // use to help with validating the new version
   const versionDiff = semver.diff(newVersion, previousReleaseNumber)
+  const identifier = versionIsAPrerelease(newVersion)
+    ? getPrereleaseIdentifier(newVersion)
+    : undefined
 
-  if (versionDiff === 'major') {
-    checkVersionIncrement(newVersion, previousReleaseNumber, 'major')
-  } else if (versionDiff === 'minor') {
-    checkVersionIncrement(newVersion, previousReleaseNumber, 'minor')
-  } else if (versionDiff === 'patch') {
-    checkVersionIncrement(newVersion, previousReleaseNumber, 'patch')
+  if (!versionDiff) {
+    throw new Error(
+      'Could not determine difference between new and previous versions. Please check the version number you provided and the changelog content'
+    )
+  }
+
+  // Check if the new version increments from the old version by one for
+  // its change type (major, minor, patch) and throws an error if it doesn't.
+  // Eg: if the current version is 4.3.12:
+  // - 4.3.13, 4.4.0 and 5.0.0 are valid
+  // - 4.3.14, 4.5.0, 6.0.0 and above for all aren't valid
+  const correctIncrement = semver.inc(
+    previousReleaseNumber,
+    versionDiff,
+    false,
+    identifier
+  )
+
+  if (!semver.satisfies(newVersion, `<=${correctIncrement}`)) {
+    throw new Error(
+      `New version number ${newVersion} is incrementing more than one for its increment type (${versionDiff}). Please provide a version number than only increments by one from the current version. In this case, it's likely that your new version number should be: ${correctIncrement}`
+    )
   }
 
   console.log('No errors noted in the new version. We can proceed!')
@@ -69,6 +89,18 @@ export function validateVersion(newVersion) {
  * @param {string} newVersion
  */
 export function updateChangelog(newVersion) {
+  // Skip the entire function if the release version is internal eg: 5.1.0-internal.0
+  if (versionIsAPrerelease(newVersion)) {
+    const identifier = getPrereleaseIdentifier(newVersion)
+
+    if (identifier === 'internal') {
+      console.log(
+        'This is an internal release, intended for testing only. The changelog will therefore not be updated.'
+      )
+      return
+    }
+  }
+
   const changelogLines = getChangelogLines()
   const [startIndex, previousReleaseLineIndex] =
     getChangelogLineIndexes(changelogLines)
@@ -87,8 +119,7 @@ export function updateChangelog(newVersion) {
   if (!versionDiff) {
     throw new Error(processingErrorMessage)
   }
-
-  const newVersionTitle = buildNewReleaseTitle(newVersion, versionDiff)
+  const newVersionTitle = `## v${newVersion} (${convertIncTypeWord(versionDiff, newVersion, true, changelogLines[previousReleaseLineIndex])} release)`
 
   changelogLines.splice(startIndex + 1, 0, '', newVersionTitle)
   writeFileSync('./CHANGELOG.md', changelogLines.join('\n'))
@@ -150,7 +181,7 @@ function getChangelogLines() {
  * @returns {Array<number>} - Indexes in the changelog identifying start and end lines
  */
 function getChangelogLineIndexes(changelogLines, fromUnreleasedHeading = true) {
-  const versionTitleRegex = /^\s*#+\s+v\d+\.\d+\.\d+\s+\(.+\)$/i
+  const versionTitleRegex = /^\s*#+\s+v\d+\.\d+\.\d+(-.+\.\d+)?\s+\(.+\)$/i
   const startIndex = findIndexOfFirstMatchingLine(
     changelogLines,
     fromUnreleasedHeading ? /^\s*#+\s+Unreleased\s*$/i : versionTitleRegex
@@ -193,56 +224,95 @@ function findIndexOfFirstMatchingLine(changelogLines, regExp, offset = 0) {
 /**
  * Convert a release heading into a semver
  *
+ * Presumes the heading param follows the changelog heading format of:
+ * '## v{version} ({release type})'
+ *
  * @param {string} heading
- * @returns {string|null} - Processed semver which we expect to have the format X.Y.Z
+ * @returns {string|null} - Processed semver which we expect to have the format
+ *   X.Y.Z(-{identifier}.{base})
  */
 function convertVersionHeadingToSemver(heading) {
-  const coercedHeading = semver.coerce(heading)
-  return coercedHeading && semver.valid(coercedHeading)
+  const trimmedHeading = heading.trim()
+  return semver.valid(
+    trimmedHeading.trim().substring(4, trimmedHeading.indexOf(' ('))
+  )
 }
 
 /**
- * Checks to see if the new version increments from the old version by one for
- * its change type (major, minor or patch) and throws an error if it doesn't.
- * Eg: if the current version is 4.3.12:
+ * Checks if a version string is a pre-release or not
  *
- * - 4.3.13, 4.4.0 and 5.0.0 are valid
- * - 4.3.14, 4.5.0, 6.0.0 and above for all aren't valid
+ * Returns true only if a semver is a pre-release with an identifier and an
+ * identifier base, eg:
  *
- * @param {string} newVersion
- * @param {string} oldVersion
- * @param {import('semver').ReleaseType} incType
+ * - 4.0.0 - false
+ * - 4.0.0-beta false
+ * - 4.0.0-0 false
+ * - 4.0.0.beta.0 true
+ *
+ * @param {string} version
+ * @returns {boolean} - If the passed version is a pre-release or not
  */
-function checkVersionIncrement(newVersion, oldVersion, incType) {
-  const correctIncrement = semver.inc(oldVersion, incType)
-
-  if (!semver.satisfies(newVersion, `<=${correctIncrement}`)) {
-    throw new Error(
-      `New version number ${newVersion} is incrementing more than one for its increment type (${incType}). Please provide a version number than only increments by one from the current version. In this case, it's likely that your new version number should be: ${correctIncrement}`
-    )
-  }
+function versionIsAPrerelease(version) {
+  return /^\d+\.\d+\.\d+-\D+\.\d+$/i.test(version)
 }
 
 /**
- * Constructs a release heading for the changelog based on a passed semver and
- * a diff keyword (major, minor or patch)
+ * Get the identifier and identifier base of a pre-release semver
  *
- * @param {string} newVersion
+ * @param {string} version
+ * @returns {string} - the identifier of the pre-release
+ */
+function getPrereleaseIdentifier(version) {
+  return version.substring(version.indexOf('-') + 1, version.lastIndexOf('.'))
+}
+
+/**
+ * Convert a standard SemVer increment word eg: major, minor or patch into the
+ * wording we use for release titles. The conversion:
+ *
+ * - major -> breaking
+ * - minor -> feature
+ * - patch -> fix
+ *
+ * If the increment is a pre-release eg: prepatch, we split the 'pre' substring
+ * from the inc and call this function recursively to generate a string of the
+ * format '{identifier} {increment type}' Eg: where the current version is 6.2.1
+ * and the new version is 6.3.0-beta.0, the generated string would be
+ * 'Beta feature'
+ *
  * @param {string} incType
- * @returns {string} - Constructed release heading of format '## v[semver (X.Y.Z)] ([Type] release)'
+ * @param {string|null} version
+ * @param {boolean} capitalise
+ * @param {string|null} lastReleaseTitle
+ * @returns {string} - The reworded increment type
  */
-function buildNewReleaseTitle(newVersion, incType) {
+function convertIncTypeWord(
+  incType,
+  version = null,
+  capitalise = false,
+  lastReleaseTitle = null
+) {
   let rewordedIncType
 
   if (incType === 'major') {
-    rewordedIncType = 'Breaking'
+    rewordedIncType = 'breaking'
   } else if (incType === 'minor') {
-    rewordedIncType = 'Feature'
+    rewordedIncType = 'feature'
   } else if (incType === 'patch') {
-    rewordedIncType = 'Fix'
+    rewordedIncType = 'fix'
+  } else if (incType === 'prerelease' && lastReleaseTitle != null) {
+    rewordedIncType = lastReleaseTitle.substring(
+      lastReleaseTitle.indexOf('(') + 1,
+      lastReleaseTitle.indexOf(' release')
+    )
+  } else if (incType.includes('pre') && version != null) {
+    const identifier = getPrereleaseIdentifier(version)
+    rewordedIncType = `${identifier} ${convertIncTypeWord(incType.slice(3))}`
   } else {
     rewordedIncType = incType
   }
 
-  return `## v${newVersion} (${rewordedIncType} release)`
+  return capitalise
+    ? `${rewordedIncType.charAt(0).toUpperCase()}${rewordedIncType.slice(1)}`
+    : rewordedIncType
 }
