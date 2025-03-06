@@ -1,5 +1,5 @@
 ---
-name: "Cycle brief template"
+name: "Cycle brief"
 about: For internal use only – issue template for writing briefs at the beginning of each cycle
 title: ""
 labels: "epic"
@@ -12,17 +12,8 @@ assignees: ""
 
 ## Epic lead
 
-## Driving role(s)
-
-## Supporting roles
-
-## Needs awareness
+## Squad
 
 ## Further detail
 
 <!-- Any extra context that might help – can include things that are out of scope, things to consider, related work, references -->
-
-```[tasklist]
-### Tasks
-- [ ] Add a draft title or issue reference here
-```
