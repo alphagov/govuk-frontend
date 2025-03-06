@@ -2,7 +2,7 @@
 name: '✨ Feature request'
 about: Suggest a new feature or idea
 title: ''
-labels: 'feature request, awaiting triage'
+labels: 'feature request'
 assignees: ''
 ---
 
