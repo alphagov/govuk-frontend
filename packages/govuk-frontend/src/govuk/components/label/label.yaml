@@ -72,6 +72,11 @@ examples:
     options:
       text: National Insurance number
       isPageHeading: true
+  - name: as page heading with defined heading level
+    options:
+      text: National Insurance number
+      isPageHeading: true
+      headingLevel: 2
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: empty
