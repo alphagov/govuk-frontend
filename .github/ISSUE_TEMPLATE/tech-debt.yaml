@@ -1,6 +1,6 @@
 name: Tech debt
 description: For internal use only - Issue template for tracking technical debt
-labels: [tech debt, awaiting triage]
+labels: [tech debt]
 
 body:
   - type: markdown
