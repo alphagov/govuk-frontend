@@ -1,49 +1,30 @@
 @include govuk-exports("govuk/component/header") {
-  $govuk-header-background: govuk-colour("black");
-  $govuk-header-border-color: $govuk-brand-colour;
-  $govuk-header-border-width: govuk-spacing(2);
+  $govuk-header-background: govuk-colour("blue");
   $govuk-header-text: govuk-colour("white");
   $govuk-header-link-active: #1d8feb;
   $govuk-header-nav-item-border-color: #2e3133;
   $govuk-header-link-underline-thickness: 3px;
-  $govuk-header-vertical-spacing-value: 2;
+  $govuk-header-vertical-spacing-value: 3;
   // This crown height is only used to calculate top offset of mobile menu button
   // as the crown svg height is the only thing that controls the height of the header
   $govuk-header-crown-height: 30px;
   $govuk-header-menu-button-height: 24px;
   $govuk-header-menu-button-width: 80px;
 
+  $govuk-header-logo-dot-color: #11e0f1;
+
   .govuk-header {
     @include govuk-font($size: 16, $line-height: 1);
 
-    border-bottom: govuk-spacing(2) solid govuk-colour("white");
     color: $govuk-header-text;
     background: $govuk-header-background;
-  }
-
-  .govuk-header__container--full-width {
-    padding: 0 govuk-spacing(3);
-    border-color: $govuk-header-border-color;
-
-    .govuk-header__menu-button {
-      right: govuk-spacing(3);
-    }
   }
 
   .govuk-header__container {
     @include govuk-clearfix;
     position: relative;
-    margin-bottom: -$govuk-header-border-width;
     padding-top: govuk-spacing($govuk-header-vertical-spacing-value);
-    border-bottom: $govuk-header-border-width solid $govuk-header-border-color;
-  }
-
-  .govuk-header--full-width-border {
-    border-bottom-color: $govuk-header-border-color;
-
-    .govuk-header__container {
-      border-bottom-color: transparent;
-    }
+    padding-bottom: govuk-spacing($govuk-header-vertical-spacing-value);
   }
 
   .govuk-header__logotype {
@@ -69,6 +50,10 @@
     &:last-child {
       margin-right: 0;
     }
+  }
+
+  .govuk-header__logotype-dot {
+    fill: $govuk-header-logo-dot-color;
   }
 
   .govuk-header__product-name {
@@ -163,7 +148,6 @@
 
   .govuk-header__service-name {
     display: inline-block;
-    margin-bottom: govuk-spacing(2);
     @include govuk-font-size($size: 24);
     @include govuk-typography-weight-bold;
   }
@@ -174,7 +158,6 @@
   }
 
   .govuk-header__logo {
-    @include govuk-responsive-margin($govuk-header-vertical-spacing-value, "bottom");
     // Protect the absolute positioned menu button from overlapping with the
     // logo with right padding using the button's width
     padding-right: $govuk-header-menu-button-width;
@@ -206,6 +189,7 @@
     @include govuk-font($size: 16);
     max-width: $govuk-header-menu-button-width;
     min-height: $govuk-header-menu-button-height;
+    margin-top: govuk-spacing($govuk-header-vertical-spacing-value);
     margin-bottom: govuk-spacing(1);
     padding: 0;
     border: 0;
@@ -249,10 +233,6 @@
       margin: 0;
     }
 
-    @include govuk-media-query($from: tablet) {
-      top: govuk-spacing(3);
-    }
-
     .govuk-frontend-supported & {
       display: block;
     }
@@ -260,12 +240,6 @@
     &[hidden],
     .govuk-frontend-supported &[hidden] {
       display: none;
-    }
-  }
-
-  .govuk-header__navigation {
-    @include govuk-media-query($from: desktop) {
-      margin-bottom: govuk-spacing(2);
     }
   }
 
@@ -350,6 +324,11 @@
       &::after {
         display: none;
       }
+    }
+
+    // Remove colour from the GOV.UK dot when printing
+    .govuk-header__logotype-dot {
+      fill: currentcolor;
     }
   }
 }
