@@ -10,6 +10,16 @@ We've made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#5785: Add missing Sass imports of components depended on](https://github.com/alphagov/govuk-frontend/pull/5785) - thanks to @matthew-shaw for reporting this issue and proposing a fix
 
+### Deprecated features
+
+#### Deprecation of `$govuk-canvas-background-colour`
+
+The responsibilities of the `$govuk-canvas-background-colour` were unclear due to its naming and use by components outside of its description. We're replacing it by a `$govuk-template-background-colour` variable with a more restricted role of controlling only the background colour of the page and elements that need to match that colour to provide visual continuity (for example Footer and Cookie banner), as well as a name matching its responsibilities.
+
+If you were using `$govuk-canvas-background-colour` to match the background colour of the page then use `$govuk-template-background-colour` instead.
+
+If you were using `$govuk-canvas-background-colour` to set the background colour in your custom styling to `light-grey` then use `govuk-colour('light-grey')` instead.
+
 ## v5.9.0 (Feature release)
 
 To install this version with npm, run `npm install govuk-frontend@5.9.0`. You can also find more information about [how to stay up to date](https://frontend.design-system.service.gov.uk/staying-up-to-date/#updating-to-the-latest-version) in our documentation.
