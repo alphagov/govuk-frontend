@@ -1,5 +1,5 @@
 @include govuk-exports("govuk/component/service-navigation") {
-  $govuk-service-navigation-active-link-border-width: 1px;
+  $govuk-service-navigation-active-link-border-width: 3px;
   $govuk-service-navigation-link-hover-border-width: govuk-spacing(1);
   $govuk-service-navigation-background: $govuk-canvas-background-colour;
   $govuk-service-navigation-border-colour: $govuk-border-colour;
@@ -80,6 +80,10 @@
         width: 100%;
         height: 0;
         background-color: $govuk-link-colour;
+
+        // Although this pseudo-element is attached to the link, we don't want
+        // it to be clickable like the link as the element is visually separate.
+        pointer-events: none;
       }
 
       &:hover {
@@ -87,6 +91,7 @@
 
         &::after {
           height: 5px;
+          background-color: $govuk-link-hover-colour;
         }
       }
 
@@ -107,7 +112,7 @@
       @include govuk-typography-weight-bold;
 
       &::after {
-        height: 1px;
+        height: $govuk-service-navigation-active-link-border-width;
       }
     }
   }
