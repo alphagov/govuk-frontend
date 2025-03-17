@@ -111,11 +111,6 @@ examples:
     description: The standard header as used on information pages on GOV.UK
     options: {}
 
-  - name: with St Edward's crown
-    description: Legacy header with Queen Elizabeth II's crown.
-    options:
-      useTudorCrown: false
-
   - name: with service name
     description: If your service is more than a few pages long, you can help users understand where they are by adding the service name.
     options:
