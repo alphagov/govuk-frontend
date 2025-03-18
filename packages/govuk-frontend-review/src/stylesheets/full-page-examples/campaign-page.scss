@@ -1,8 +1,13 @@
 @import "govuk/base";
 @import "govuk/core";
 
-.app-header--campaign {
+.app-header--campaign,
+.govuk-feature--recolour .app-header--campaign {
   padding-bottom: govuk-spacing(2);
+}
+
+.govuk-feature--recolour .app-header--campaign {
+  padding-bottom: 0;
   border-bottom: $govuk-border-width-wide solid #fff500;
 }
 
