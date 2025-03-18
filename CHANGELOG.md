@@ -4,6 +4,14 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### New features
+
+#### Footer top border is now consistent with GOV.UK
+
+We've updated the border of the Footer component so it matches the border used on GOV.UK. This will provide a more consistent experience for users as they navigate from GOV.UK to services.
+
+This change was introduced in [pull request #5792: Update footer top border to be consistent with GOV.UK](https://github.com/alphagov/govuk-frontend/pull/5792)
+
 ### Fixes
 
 We've made fixes to GOV.UK Frontend in the following pull requests:
