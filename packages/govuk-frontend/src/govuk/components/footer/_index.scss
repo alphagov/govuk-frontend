@@ -12,7 +12,7 @@
     @include govuk-responsive-padding(7, "top");
     @include govuk-responsive-padding(5, "bottom");
 
-    border-top: 1px solid $govuk-footer-border;
+    border-top: 10px solid $govuk-brand-colour;
     color: $govuk-footer-text;
     background: $govuk-footer-background;
   }
