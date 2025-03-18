@@ -85,6 +85,10 @@ params:
     required: false
     description: If `true`, uses the Tudor crown from King Charles III's royal cypher. Otherwise, uses the St. Edward's crown. Default is `true`.
     deprecated: '5.2.0'
+  - name: rebrand
+    type: boolean
+    required: false
+    description: If `true`, use the redesigned header and new GOV.UK logotype. Default is `false`.
 
 previewLayout: full-width
 accessibilityCriteria: |
@@ -282,6 +286,24 @@ examples:
         - text: Navigation item 1
         - text: Navigation item 2
         - text: Navigation item 3
+
+  - name: rebranded
+    description: With the refreshed design and logo.
+    options:
+      rebrand: true
+      productName: Product
+      serviceName: Service Name
+      serviceUrl: '/components/header'
+      navigation:
+        - href: '#1'
+          text: Navigation item 1
+          active: true
+        - href: '#2'
+          text: Navigation item 2
+        - href: '#3'
+          text: Navigation item 3
+        - href: '#4'
+          text: Navigation item 4
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: attributes
