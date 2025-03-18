@@ -134,12 +134,6 @@
 
     @include govuk-media-query($from: desktop) {
       display: inline;
-
-      &:focus {
-        // Replicate the focus box shadow but without the -2px y-offset of the first yellow shadow
-        // This is to stop the logo getting cut off by the box shadow when focused on above a product name
-        box-shadow: 0 0 $govuk-focus-colour;
-      }
     }
 
     &:link,
@@ -350,6 +344,99 @@
       &::after {
         display: none;
       }
+    }
+  }
+}
+
+// Rebrand styles
+.govuk-header--rebrand {
+  // Remove border that placeholds the blue bar
+  border-bottom: none;
+
+  // Make the background brand blue
+  background-color: $govuk-brand-colour;
+
+  .govuk-header__container {
+    // Remove the space allocated to the blue bar
+    margin-bottom: 0;
+
+    // Remove padding as the child elements are now responsible for spacing
+    padding-top: 0;
+
+    // Remove the blue bar
+    border-bottom: none;
+  }
+
+  // Apply margins to internal elements to emulate padding
+  .govuk-header__logo {
+    margin-bottom: 0;
+    padding: govuk-spacing(3) 0;
+  }
+
+  .govuk-header__navigation {
+    @include govuk-media-query($from: desktop) {
+      margin-bottom: 0;
+      padding: govuk-spacing(3) 0;
+    }
+  }
+
+  .govuk-header__navigation-list {
+    @include govuk-media-query($until: desktop) {
+      padding-bottom: govuk-spacing(3);
+    }
+  }
+
+  .govuk-header__service-name {
+    margin-bottom: govuk-spacing(3);
+
+    @include govuk-media-query($from: desktop) {
+      margin: govuk-spacing(3) 0;
+    }
+  }
+
+  // If there's both a service name and navigation,
+  // remove the extra margin between them on desktop
+  .govuk-header__service-name + .govuk-header__navigation {
+    @include govuk-media-query($from: desktop) {
+      padding-top: 0;
+    }
+  }
+
+  .govuk-header__navigation-item {
+    // Remove the dividing lines between mobile nav items
+    border-bottom: none;
+
+    // Reduce default weight of links so that we can use bold for active ones
+    a {
+      @include govuk-typography-weight-regular;
+    }
+  }
+
+  // Change active links to use bold text instead of changing colour
+  .govuk-header__navigation-item--active {
+    a {
+      @include govuk-typography-weight-bold;
+
+      &:link,
+      &:hover,
+      &:visited {
+        color: inherit;
+      }
+
+      &:focus {
+        color: $govuk-focus-text-colour;
+      }
+    }
+  }
+
+  .govuk-header__product-name {
+    // Reduce letter spacing (this is roughly equivalent to -3.5% in Figma)
+    letter-spacing: -0.035em;
+
+    // Change product name font-size to match the GOV.UK logotype on desktop
+    @include govuk-media-query($from: desktop) {
+      margin-top: 0;
+      font-size: govuk-px-to-rem(29px);
     }
   }
 }
