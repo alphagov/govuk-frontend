@@ -2,6 +2,7 @@
 @import "../input/index";
 @import "../hint/index";
 @import "../label/index";
+@import "../fieldset/index";
 
 @include govuk-exports("govuk/component/date-input") {
   .govuk-date-input {
