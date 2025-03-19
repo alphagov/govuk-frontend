@@ -1,0 +1,63 @@
+////
+/// @group helpers/layout
+////
+
+/// Grid width percentage
+///
+/// @param {String} $key - Name of grid width (e.g. two-thirds)
+/// @return {Number} Percentage width
+/// @throw if `$key` is not a valid grid width
+/// @access public
+
+@function govuk-grid-width($key) {
+  @if map-has-key($govuk-grid-widths, $key) {
+    @return map-get($govuk-grid-widths, $key);
+  }
+
+  @error "Unknown grid width `#{$key}`";
+}
+
+/// Generate grid column styles
+///
+/// Creates a grid column with standard gutter between the columns.
+///
+/// Grid widths are defined in the `$govuk-grid-widths` map.
+///
+/// By default the column width changes from 100% to specified width at the
+/// 'tablet' breakpoint, but other breakpoints can be specified using the `$at`
+/// parameter.
+///
+/// @param {String} $width [full] name of a grid width from $govuk-grid-widths
+/// @param {String} $float [left] left | right
+/// @param {String} $at [tablet] - mobile | tablet | desktop | any custom breakpoint
+///
+/// @example scss - Default
+///   .govuk-grid-column-two-thirds {
+///     @include govuk-grid-column(two-thirds)
+///   }
+///
+/// @example scss - Customising the breakpoint where width percentage is applied
+///   .govuk-grid-column-one-half-from-desktop {
+///     @include govuk-grid-column(one-half, $at: desktop);
+///   }
+///
+/// @example scss - Customising the float direction
+///   .govuk-grid-column-one-half-right {
+///     @include govuk-grid-column(two-thirds, $float: right);
+///   }
+///
+/// @access public
+
+@mixin govuk-grid-column($width: full, $float: left, $at: tablet) {
+  box-sizing: border-box;
+  @if $at != desktop {
+    width: 100%;
+  }
+  padding: 0 $govuk-gutter-half;
+  @include govuk-media-query($from: $at) {
+    width: govuk-grid-width($width);
+    float: $float;
+  }
+}
+
+/*# sourceMappingURL=_grid.scss.map */
