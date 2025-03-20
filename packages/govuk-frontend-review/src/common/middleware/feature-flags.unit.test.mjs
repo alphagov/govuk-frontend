@@ -30,7 +30,9 @@ describe('Middleware: Feature flag toggling', () => {
       await agent.get('/')
 
       expect(res.locals).toEqual({
-        useRebrand: false
+        useRebrand: false,
+        showAllFlagStates: false,
+        exampleStates: [false]
       })
     })
 
@@ -45,6 +47,21 @@ describe('Middleware: Feature flag toggling', () => {
     it("updates 'useRebrand' based on 'rebrandOverride' param", async () => {
       await agent.get('/?rebrandOverride=true')
       expect(res.locals.useRebrand).toBe(true)
+    })
+
+    it("updates 'showAllFlagStates' based on param of the same name", async () => {
+      await agent.get('/?showAllFlagStates')
+      expect(res.locals.showAllFlagStates).toBe(true)
+    })
+
+    it("updates 'exampleStates' based on 'useRebrand'", async () => {
+      await agent.get('/').set('Cookie', ['use_rebrand=true'])
+      expect(res.locals.exampleStates).toEqual([true])
+    })
+
+    it("updates 'exampleStates' based on 'showAllFlagStates'", async () => {
+      await agent.get('/?showAllFlagStates')
+      expect(res.locals.exampleStates).toEqual([true, false])
     })
   })
 
