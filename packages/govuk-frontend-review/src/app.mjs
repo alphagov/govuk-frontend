@@ -67,6 +67,7 @@ export default async () => {
   app.use(middleware.request)
   app.use(middleware.robots)
   app.use(middleware.banner)
+  app.use(middleware.featureFlags)
 
   // Add build stats
   app.locals.stats = Object.fromEntries(
