@@ -125,6 +125,10 @@ describe('GOV.UK Prototype Kit config', () => {
           macroName: 'govukLabel'
         },
         {
+          importFrom: 'govuk/components/logo/macro.njk',
+          macroName: 'govukLogo'
+        },
+        {
           importFrom: 'govuk/components/notification-banner/macro.njk',
           macroName: 'govukNotificationBanner'
         },
