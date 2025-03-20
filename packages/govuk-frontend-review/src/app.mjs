@@ -96,8 +96,19 @@ export default async () => {
     (req, res, next, componentName) => {
       const exampleName = 'default'
 
+      // Map componentsFixtures so that each componentFixtures includes a `states`
+      // param used in feature flag management
+      const allFixturesWithStates = componentsFixtures.map((fixtures) => {
+        return {
+          states: res.locals.showAllFlagStates
+            ? [true, false]
+            : [res.locals.useRebrand],
+          ...fixtures
+        }
+      })
+
       // Find all fixtures for component
-      const componentFixtures = componentsFixtures.find(
+      const componentFixtures = allFixturesWithStates.find(
         ({ component }) => component === componentName
       )
 
@@ -108,6 +119,7 @@ export default async () => {
 
       // Add response locals
       res.locals.componentName = componentName
+      res.locals.componentsFixtures = allFixturesWithStates
       res.locals.componentFixtures = componentFixtures
       res.locals.componentFixture = componentFixture
       res.locals.exampleName = 'default'
@@ -186,7 +198,6 @@ export default async () => {
       }
 
       res.render(componentName ? 'component' : 'components', {
-        componentsFixtures,
         componentName
       })
     }
@@ -268,11 +279,19 @@ export default async () => {
 }
 
 /**
+ * @import {ComponentFixtures} from '@govuk-frontend/lib/components'
+ * @import {ComponentFixture} from '@govuk-frontend/lib/components'
+ */
+
+/**
  * @typedef {object} PreviewLocals
- * @property {import('@govuk-frontend/lib/components').ComponentFixtures} componentFixtures - All Component fixtures
- * @property {import('@govuk-frontend/lib/components').ComponentFixture} [componentFixture] - Single component fixture
+ * @property {Array<ComponentFixtures>} componentsFixtures - All Component fixtures
+ * @property {ComponentFixtures} componentFixtures - All Component fixtures
+ * @property {ComponentFixture} [componentFixture] - Single component fixture
  * @property {string} componentName - Component name
  * @property {string} [exampleName] - Example name
+ * @property {boolean} showAllFlagStates - if multiple feature flag states should be shown, defined in feature flag middleware
+ * @property {boolean} useRebrand - if the rebrand flag should be on or not, defined in feature flag middleware
  */
 
 /**

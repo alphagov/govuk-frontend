@@ -42,6 +42,7 @@ router.use((req, res, next) => {
     overrideQuery in req.query
       ? req.query[overrideQuery] === 'true'
       : req.cookies?.[COOKIE_NAME] === 'true'
+  res.locals.showAllFlagStates = 'showAllFlagStates' in req.query
 
   next()
 })
