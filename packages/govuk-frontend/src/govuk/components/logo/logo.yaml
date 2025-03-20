@@ -52,3 +52,8 @@ examples:
     hidden: true
     options:
       classes: app-logo--custom-modifier
+  - name: force Tudor Crown
+    hidden: true
+    options:
+      rebrand: true
+      useTudorCrown: false
