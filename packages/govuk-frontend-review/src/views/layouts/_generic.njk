@@ -1,5 +1,7 @@
 {% extends "govuk/template.njk" %}
 
+{% set htmlClasses = ["govuk-template--rebrand", htmlClasses] | join(" ") if useRebrand else htmlClasses %}
+
 {% block head %}
   <link rel="stylesheet" href="/stylesheets/app.min.css">
 
