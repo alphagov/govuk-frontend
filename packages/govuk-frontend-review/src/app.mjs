@@ -94,23 +94,14 @@ export default async () => {
      * @param {string} componentName
      */
     (req, res, next, componentName) => {
-      const exampleName = 'default'
-
       // Find all fixtures for component
       const componentFixtures = componentsFixtures.find(
         ({ component }) => component === componentName
       )
 
-      // Find default fixture for component
-      const componentFixture = componentFixtures?.fixtures.find(
-        ({ name }) => name === exampleName
-      )
-
       // Add response locals
       res.locals.componentName = componentName
       res.locals.componentFixtures = componentFixtures
-      res.locals.componentFixture = componentFixture
-      res.locals.exampleName = 'default'
 
       next()
     }
@@ -197,11 +188,17 @@ export default async () => {
     }
   )
 
+  app.get('/components/:componentName/preview', (req, res, next) => {
+    // Rewrite the URL to set the example to 'default' without redirecting
+    req.url = req.url.replace('/preview', '/default/preview')
+    next()
+  })
+
   /**
    * Component example preview
    */
   app.get(
-    '/components/:componentName/:exampleName?/preview',
+    '/components/:componentName/:exampleName/preview',
 
     /**
      * @param {import('express').Request} req
