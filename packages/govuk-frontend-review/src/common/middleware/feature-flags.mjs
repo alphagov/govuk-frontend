@@ -44,6 +44,10 @@ router.use((req, res, next) => {
       : req.cookies?.[COOKIE_NAME] === 'true'
   res.locals.showAllFlagStates = 'showAllFlagStates' in req.query
 
+  res.locals.exampleStates = res.locals.showAllFlagStates
+    ? [true, false]
+    : [res.locals.useRebrand]
+
   next()
 })
 
