@@ -170,6 +170,19 @@ export default async () => {
     })
   })
 
+  app.get('/components', function (req, res) {
+    res.render('components', {
+      componentsFixtures: componentsFixtures.map((fixtures) => {
+        return {
+          states: res.locals.showAllFlagStates
+            ? [true, false]
+            : [res.locals.useRebrand],
+          ...fixtures
+        }
+      })
+    })
+  })
+
   /**
    * All components redirect
    */
@@ -181,7 +194,7 @@ export default async () => {
    * Component examples
    */
   app.get(
-    '/components/:componentName?',
+    '/components/:componentName',
 
     /**
      * @param {import('express').Request} req
@@ -197,7 +210,7 @@ export default async () => {
         return next()
       }
 
-      res.render(componentName ? 'component' : 'components', {
+      res.render('component', {
         componentName
       })
     }
