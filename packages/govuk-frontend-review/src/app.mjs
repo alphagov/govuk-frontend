@@ -94,35 +94,18 @@ export default async () => {
      * @param {string} componentName
      */
     (req, res, next, componentName) => {
-      const exampleName = 'default'
-
-      // Map componentsFixtures so that each componentFixtures includes a `states`
-      // param used in feature flag management
-      const allFixturesWithStates = componentsFixtures.map((fixtures) => {
-        return {
-          states: res.locals.showAllFlagStates
-            ? [true, false]
-            : [res.locals.useRebrand],
-          ...fixtures
-        }
-      })
-
       // Find all fixtures for component
-      const componentFixtures = allFixturesWithStates.find(
+      const componentFixtures = componentsFixtures.find(
         ({ component }) => component === componentName
       )
 
-      // Find default fixture for component
-      const componentFixture = componentFixtures?.fixtures.find(
-        ({ name }) => name === exampleName
-      )
+      if (!componentFixtures) {
+        throw new NotFoundError(`Component not found: ${componentName}`)
+      }
 
       // Add response locals
       res.locals.componentName = componentName
-      res.locals.componentsFixtures = allFixturesWithStates
       res.locals.componentFixtures = componentFixtures
-      res.locals.componentFixture = componentFixture
-      res.locals.exampleName = 'default'
 
       next()
     }
@@ -150,6 +133,10 @@ export default async () => {
         ({ name }) => nunjucks.filters.slugify(name) === exampleName
       )
 
+      if (!componentFixture) {
+        throw new NotFoundError(`Example not found: ${exampleName}`)
+      }
+
       // Update response locals
       res.locals.componentFixture = componentFixture
       res.locals.exampleName = exampleName
@@ -170,6 +157,12 @@ export default async () => {
     })
   })
 
+  app.get('/components', function (req, res) {
+    res.render('components', {
+      componentsFixtures
+    })
+  })
+
   /**
    * All components redirect
    */
@@ -180,34 +173,21 @@ export default async () => {
   /**
    * Component examples
    */
-  app.get(
-    '/components/:componentName?',
+  app.get('/components/:componentName', (req, res, next) => {
+    res.render('component')
+  })
 
-    /**
-     * @param {import('express').Request} req
-     * @param {import('express').Response<{}, Partial<PreviewLocals>>} res
-     * @param {import('express').NextFunction} next
-     * @returns {void}
-     */
-    (req, res, next) => {
-      const { componentName } = res.locals
-
-      // Unknown component, continue to page not found
-      if (componentName && !componentNames.includes(componentName)) {
-        return next()
-      }
-
-      res.render(componentName ? 'component' : 'components', {
-        componentName
-      })
-    }
-  )
+  app.get('/components/:componentName/preview', (req, res, next) => {
+    // Rewrite the URL to set the example to 'default' without redirecting
+    req.url = req.url.replace('/preview', '/default/preview')
+    next()
+  })
 
   /**
    * Component example preview
    */
   app.get(
-    '/components/:componentName/:exampleName?/preview',
+    '/components/:componentName/:exampleName/preview',
 
     /**
      * @param {import('express').Request} req
@@ -221,11 +201,6 @@ export default async () => {
         componentFixtures: fixtures,
         componentFixture: fixture
       } = res.locals
-
-      // Unknown component or fixture, continue to page not found
-      if (!componentNames.includes(componentName) || !fixtures || !fixture) {
-        return next()
-      }
 
       // Render component using fixture
       const componentView = render(componentName, {
@@ -269,6 +244,12 @@ export default async () => {
    * Error handler
    */
   app.use((error, req, res, next) => {
+    if (error instanceof NotFoundError) {
+      return res.status(404).render('errors/404', {
+        error
+      })
+    }
+
     console.error(error)
     res.status(500).render('errors/500', {
       error
@@ -278,6 +259,10 @@ export default async () => {
   return app
 }
 
+class NotFoundError extends Error {
+  name = 'NotFoundError'
+}
+
 /**
  * @import {ComponentFixtures} from '@govuk-frontend/lib/components'
  * @import {ComponentFixture} from '@govuk-frontend/lib/components'
@@ -285,7 +270,6 @@ export default async () => {
 
 /**
  * @typedef {object} PreviewLocals
- * @property {Array<ComponentFixtures>} componentsFixtures - All Component fixtures
  * @property {ComponentFixtures} componentFixtures - All Component fixtures
  * @property {ComponentFixture} [componentFixture] - Single component fixture
  * @property {string} componentName - Component name
