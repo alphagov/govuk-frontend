@@ -34,7 +34,7 @@
     @include govuk-media-query($from: tablet) {
       margin-top: 0;
       margin-bottom: 0;
-      padding: govuk-spacing(4) 0;
+      padding: govuk-spacing(3) 0 govuk-spacing(4);
 
       &:not(:last-child) {
         @include govuk-responsive-margin(6, $direction: right);
