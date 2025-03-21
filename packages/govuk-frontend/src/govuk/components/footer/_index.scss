@@ -3,6 +3,8 @@
   $govuk-footer-text: $govuk-text-colour;
   $govuk-footer-content-border: $govuk-border-colour;
 
+  $govuk-rebrand-footer-content-border: #5694CA; // Blue tint 25%
+
   // Royal Arms image dimensions
   $govuk-footer-crest-image-width: 125px;
   $govuk-footer-crest-image-height: 102px;
@@ -14,8 +16,11 @@
 
     border-top: 10px solid $govuk-brand-colour;
     color: $govuk-footer-text;
-    background: $govuk-footer-background;
+    @include _govuk-rebrand("background",
+      $from: $govuk-footer-background,
+      $to: $_govuk-rebrand-template-background-colour)
   }
+
 
   .govuk-footer__link {
     @include govuk-link-common;
@@ -26,7 +31,10 @@
     margin: 0; // Reset `<hr>` default margins
     @include govuk-responsive-margin(8, "bottom");
     border: 0; // Reset `<hr>` default borders
-    border-bottom: 1px solid $govuk-footer-content-border;
+    border-bottom: 1px solid;
+    @include _govuk-rebrand("border-bottom-color",
+      $from: $govuk-footer-content-border,
+      $to: $govuk-rebrand-footer-content-border)
   }
 
   .govuk-footer__meta {
@@ -106,7 +114,11 @@
     @include govuk-media-query($until: tablet) {
       padding-bottom: govuk-spacing(2);
     }
-    border-bottom: 1px solid $govuk-footer-content-border;
+
+    border-bottom: 1px solid;
+    @include _govuk-rebrand("border-bottom-color",
+      $from: $govuk-footer-content-border,
+      $to: $govuk-rebrand-footer-content-border)
   }
 
   .govuk-footer__navigation {
