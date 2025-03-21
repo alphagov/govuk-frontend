@@ -99,6 +99,10 @@ export default async () => {
         ({ component }) => component === componentName
       )
 
+      if (!componentFixtures) {
+        throw new NotFoundError(`Component not found: ${componentName}`)
+      }
+
       // Add response locals
       res.locals.componentName = componentName
       res.locals.componentFixtures = componentFixtures
@@ -128,6 +132,10 @@ export default async () => {
       const componentFixture = componentFixtures?.fixtures.find(
         ({ name }) => nunjucks.filters.slugify(name) === exampleName
       )
+
+      if (!componentFixture) {
+        throw new NotFoundError(`Example not found: ${exampleName}`)
+      }
 
       // Update response locals
       res.locals.componentFixture = componentFixture
@@ -165,28 +173,9 @@ export default async () => {
   /**
    * Component examples
    */
-  app.get(
-    '/components/:componentName',
-
-    /**
-     * @param {import('express').Request} req
-     * @param {import('express').Response<{}, Partial<PreviewLocals>>} res
-     * @param {import('express').NextFunction} next
-     * @returns {void}
-     */
-    (req, res, next) => {
-      const { componentName } = res.locals
-
-      // Unknown component, continue to page not found
-      if (componentName && !componentNames.includes(componentName)) {
-        return next()
-      }
-
-      res.render('component', {
-        componentName
-      })
-    }
-  )
+  app.get('/components/:componentName', (req, res, next) => {
+    res.render('component')
+  })
 
   app.get('/components/:componentName/preview', (req, res, next) => {
     // Rewrite the URL to set the example to 'default' without redirecting
@@ -212,11 +201,6 @@ export default async () => {
         componentFixtures: fixtures,
         componentFixture: fixture
       } = res.locals
-
-      // Unknown component or fixture, continue to page not found
-      if (!componentNames.includes(componentName) || !fixtures || !fixture) {
-        return next()
-      }
 
       // Render component using fixture
       const componentView = render(componentName, {
@@ -260,6 +244,12 @@ export default async () => {
    * Error handler
    */
   app.use((error, req, res, next) => {
+    if (error instanceof NotFoundError) {
+      return res.status(404).render('errors/404', {
+        error
+      })
+    }
+
     console.error(error)
     res.status(500).render('errors/500', {
       error
@@ -267,6 +257,10 @@ export default async () => {
   })
 
   return app
+}
+
+class NotFoundError extends Error {
+  name = 'NotFoundError'
 }
 
 /**
