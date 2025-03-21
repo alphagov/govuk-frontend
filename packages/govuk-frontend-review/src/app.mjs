@@ -108,12 +108,7 @@ export default async () => {
 
       // Add response locals
       res.locals.componentName = componentName
-      res.locals.componentFixtures = {
-        states: res.locals.showAllFlagStates
-          ? [true, false]
-          : [res.locals.useRebrand],
-        ...componentFixtures
-      }
+      res.locals.componentFixtures = componentFixtures
       res.locals.componentFixture = componentFixture
       res.locals.exampleName = 'default'
 
@@ -165,14 +160,7 @@ export default async () => {
 
   app.get('/components', function (req, res) {
     res.render('components', {
-      componentsFixtures: componentsFixtures.map((fixtures) => {
-        return {
-          states: res.locals.showAllFlagStates
-            ? [true, false]
-            : [res.locals.useRebrand],
-          ...fixtures
-        }
-      })
+      componentsFixtures
     })
   })
 
@@ -291,7 +279,7 @@ export default async () => {
 
 /**
  * @typedef {object} PreviewLocals
- * @property {ComponentFixtures & {states: boolean[]}} componentFixtures - All Component fixtures
+ * @property {ComponentFixtures} componentFixtures - All Component fixtures
  * @property {ComponentFixture} [componentFixture] - Single component fixture
  * @property {string} componentName - Component name
  * @property {string} [exampleName] - Example name

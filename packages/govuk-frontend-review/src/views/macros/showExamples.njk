@@ -7,6 +7,8 @@
 {% for example in componentFixtures.fixtures %}
   {% if (not exampleNames and not example.hidden) or (exampleNames and example.name in exampleNames) %}
 
+  {% set exampleStates = exampleStates | default([false]) %}
+
   {% set exampleName = example.name | slugify %}
 
   {% if example.name == 'default' %}
@@ -20,13 +22,14 @@
   <section aria-labelledby="heading-{{ exampleName }}" class="govuk-!-margin-bottom-9">
     <div class="govuk-width-container">
       <h3 id="heading-{{ exampleName }}" class="govuk-heading-m govuk-!-margin-bottom-2">{{ heading | safe }}</h3>
+
       {% if example.description %}
         <p class="govuk-body">
           {{ example.description }}
         </p>
       {% endif %}
     </div>
-    {% for state in componentFixtures.states %}
+    {% for state in exampleStates %}
       <div class="app-component-preview">
         <div class="govuk-width-container">
           <p class="govuk-body">
