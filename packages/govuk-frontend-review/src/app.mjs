@@ -96,19 +96,8 @@ export default async () => {
     (req, res, next, componentName) => {
       const exampleName = 'default'
 
-      // Map componentsFixtures so that each componentFixtures includes a `states`
-      // param used in feature flag management
-      const allFixturesWithStates = componentsFixtures.map((fixtures) => {
-        return {
-          states: res.locals.showAllFlagStates
-            ? [true, false]
-            : [res.locals.useRebrand],
-          ...fixtures
-        }
-      })
-
       // Find all fixtures for component
-      const componentFixtures = allFixturesWithStates.find(
+      const componentFixtures = componentsFixtures.find(
         ({ component }) => component === componentName
       )
 
@@ -119,8 +108,12 @@ export default async () => {
 
       // Add response locals
       res.locals.componentName = componentName
-      res.locals.componentsFixtures = allFixturesWithStates
-      res.locals.componentFixtures = componentFixtures
+      res.locals.componentFixtures = {
+        states: res.locals.showAllFlagStates
+          ? [true, false]
+          : [res.locals.useRebrand],
+        ...componentFixtures
+      }
       res.locals.componentFixture = componentFixture
       res.locals.exampleName = 'default'
 
@@ -298,8 +291,7 @@ export default async () => {
 
 /**
  * @typedef {object} PreviewLocals
- * @property {Array<ComponentFixtures>} componentsFixtures - All Component fixtures
- * @property {ComponentFixtures} componentFixtures - All Component fixtures
+ * @property {ComponentFixtures & {states: boolean[]}} componentFixtures - All Component fixtures
  * @property {ComponentFixture} [componentFixture] - Single component fixture
  * @property {string} componentName - Component name
  * @property {string} [exampleName] - Example name
