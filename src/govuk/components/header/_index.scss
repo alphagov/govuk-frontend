@@ -429,14 +429,34 @@
     }
   }
 
+  // Turn the logo lockup into an inline flexbox so we have more control over
+  // the margins when a product name is involved
+  .govuk-header__link--homepage {
+    display: inline-flex;
+    flex-wrap: wrap;
+  }
+
+  // IE doesn't support `gap`, only remove the logo's margin if we can use it
+  @supports (gap: 1px) {
+    .govuk-header__link--homepage {
+      gap: 7px;
+    }
+
+    .govuk-header__logotype {
+      margin-right: 0;
+    }
+  }
+
   .govuk-header__product-name {
+    // Stop reducing the product name size on narrow screens
+    font-size: govuk-px-to-rem(30px);
+
     // Reduce letter spacing (this is roughly equivalent to -3.5% in Figma)
     letter-spacing: -0.035em;
 
     // Change product name font-size to match the GOV.UK logotype on desktop
     @include govuk-media-query($from: desktop) {
-      margin-top: 0;
-      font-size: govuk-px-to-rem(29px);
+      margin-top: 1px;
     }
   }
 }
